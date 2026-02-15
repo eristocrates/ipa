@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Link.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
 </Project>
+
