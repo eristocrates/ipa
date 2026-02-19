@@ -1,0 +1,45 @@
+﻿namespace R2rml.Namespace
+module r2rml =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://www.w3.org/ns/r2rml#" (Some @"http://www.w3.org/ns/r2rml#") (Some @"r2rml") None
+    let BaseTableOrView = {_prefixID with _localName = "BaseTableOrView"}
+    let BlankNode = {_prefixID with _localName = "BlankNode"}
+    let GraphMap = {_prefixID with _localName = "GraphMap"}
+    let IRI = {_prefixID with _localName = "IRI"}
+    let Join = {_prefixID with _localName = "Join"}
+    let Literal = {_prefixID with _localName = "Literal"}
+    let LogicalTable = {_prefixID with _localName = "LogicalTable"}
+    let ObjectMap = {_prefixID with _localName = "ObjectMap"}
+    let PredicateMap = {_prefixID with _localName = "PredicateMap"}
+    let PredicateObjectMap = {_prefixID with _localName = "PredicateObjectMap"}
+    let R2RMLView = {_prefixID with _localName = "R2RMLView"}
+    let RefObjectMap = {_prefixID with _localName = "RefObjectMap"}
+    let SQL2008 = {_prefixID with _localName = "SQL2008"}
+    let SubjectMap = {_prefixID with _localName = "SubjectMap"}
+    let TermMap = {_prefixID with _localName = "TermMap"}
+    let TriplesMap = {_prefixID with _localName = "TriplesMap"}
+    let child = {_prefixID with _localName = "child"}
+    let ``class`` = {_prefixID with _localName = "class"}
+    let column = {_prefixID with _localName = "column"}
+    let constant = {_prefixID with _localName = "constant"}
+    let datatype = {_prefixID with _localName = "datatype"}
+    let defaultGraph = {_prefixID with _localName = "defaultGraph"}
+    let graph = {_prefixID with _localName = "graph"}
+    let graphMap = {_prefixID with _localName = "graphMap"}
+    let inverseExpression = {_prefixID with _localName = "inverseExpression"}
+    let joinCondition = {_prefixID with _localName = "joinCondition"}
+    let language = {_prefixID with _localName = "language"}
+    let logicalTable = {_prefixID with _localName = "logicalTable"}
+    let object = {_prefixID with _localName = "object"}
+    let objectMap = {_prefixID with _localName = "objectMap"}
+    let parent = {_prefixID with _localName = "parent"}
+    let parentTriplesMap = {_prefixID with _localName = "parentTriplesMap"}
+    let predicate = {_prefixID with _localName = "predicate"}
+    let predicateMap = {_prefixID with _localName = "predicateMap"}
+    let predicateObjectMap = {_prefixID with _localName = "predicateObjectMap"}
+    let sqlQuery = {_prefixID with _localName = "sqlQuery"}
+    let sqlVersion = {_prefixID with _localName = "sqlVersion"}
+    let subject = {_prefixID with _localName = "subject"}
+    let subjectMap = {_prefixID with _localName = "subjectMap"}
+    let tableName = {_prefixID with _localName = "tableName"}
+    let template = {_prefixID with _localName = "template"}
+    let termType = {_prefixID with _localName = "termType"}

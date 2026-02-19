@@ -1,0 +1,39 @@
+﻿namespace Qube.Namespace
+module qube =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.org/linked-data/cube#" (Some "http://purl.org/linked-data/cube#") (Some "qube") None
+    let Attachable = {_prefixID with _localName = "Attachable"}
+    let AttributeProperty = {_prefixID with _localName = "AttributeProperty"}
+    let CodedProperty = {_prefixID with _localName = "CodedProperty"}
+    let ComponentProperty = {_prefixID with _localName = "ComponentProperty"}
+    let ComponentSet = {_prefixID with _localName = "ComponentSet"}
+    let ComponentSpecification = {_prefixID with _localName = "ComponentSpecification"}
+    let DataSet = {_prefixID with _localName = "DataSet"}
+    let DataStructureDefinition = {_prefixID with _localName = "DataStructureDefinition"}
+    let DimensionProperty = {_prefixID with _localName = "DimensionProperty"}
+    let HierarchicalCodeList = {_prefixID with _localName = "HierarchicalCodeList"}
+    let MeasureProperty = {_prefixID with _localName = "MeasureProperty"}
+    let Observation = {_prefixID with _localName = "Observation"}
+    let ObservationGroup = {_prefixID with _localName = "ObservationGroup"}
+    let Slice = {_prefixID with _localName = "Slice"}
+    let SliceKey = {_prefixID with _localName = "SliceKey"}
+    let attribute = {_prefixID with _localName = "attribute"}
+    let codeList = {_prefixID with _localName = "codeList"}
+    let ``component`` = {_prefixID with _localName = "component"}
+    let componentAttachment = {_prefixID with _localName = "componentAttachment"}
+    let componentProperty = {_prefixID with _localName = "componentProperty"}
+    let componentRequired = {_prefixID with _localName = "componentRequired"}
+    let concept = {_prefixID with _localName = "concept"}
+    let dataSet = {_prefixID with _localName = "dataSet"}
+    let dimension = {_prefixID with _localName = "dimension"}
+    let hierarchyRoot = {_prefixID with _localName = "hierarchyRoot"}
+    let measure = {_prefixID with _localName = "measure"}
+    let measureDimension = {_prefixID with _localName = "measureDimension"}
+    let measureType = {_prefixID with _localName = "measureType"}
+    let observation = {_prefixID with _localName = "observation"}
+    let observationGroup = {_prefixID with _localName = "observationGroup"}
+    let order = {_prefixID with _localName = "order"}
+    let parentChildProperty = {_prefixID with _localName = "parentChildProperty"}
+    let slice = {_prefixID with _localName = "slice"}
+    let sliceKey = {_prefixID with _localName = "sliceKey"}
+    let sliceStructure = {_prefixID with _localName = "sliceStructure"}
+    let structure = {_prefixID with _localName = "structure"}

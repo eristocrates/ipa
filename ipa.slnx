@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="visual_studio_solutions/ResourceDescriptionFramework/ResourceDescriptionFramework.fsproj" />
+  <Project Path="visual_studio_solutions/shared_kernel/shared_kernel.fsproj" />
+</Solution>

@@ -1,0 +1,1539 @@
+{
+  "m_GameObject": {
+    "m_FileID": 0,
+    "m_PathID": 0
+  },
+  "m_Enabled": 1,
+  "m_Script": {
+    "m_FileID": 1,
+    "m_PathID": -7538914998101167413
+  },
+  "m_Name": "SongDatabase",
+  "CommitId": "5e12eba96ac51dbafe1d3ad50e5afef902c6874d",
+  "allSongInfo": [
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 2
+      },
+      "BaseName": "alamode",
+      "ChartInfos": [
+        {
+          "Id": "alamode0",
+          "Available": 1,
+          "Difficulty": 1,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner1",
+          "Rating": 1,
+          "LevelSectionIndicator": "1"
+        },
+        {
+          "Id": "alamode1",
+          "Available": 1,
+          "Difficulty": 2,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner2",
+          "Rating": 5,
+          "LevelSectionIndicator": "5"
+        },
+        {
+          "Id": "alamode2",
+          "Available": 1,
+          "Difficulty": 4,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner3",
+          "Rating": 9,
+          "LevelSectionIndicator": "9"
+        },
+        {
+          "Id": "alamode3",
+          "Available": 1,
+          "Difficulty": 8,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner4",
+          "Rating": 11,
+          "LevelSectionIndicator": "11"
+        }
+      ],
+      "PreviewStartSeconds": 92.57101,
+      "PreviewEndSeconds": 113.142006,
+      "DisplayNameSectionIndicator": "A",
+      "DisplayArtistSectionIndicator": "A",
+      "GameplayBackground": 3,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 11
+      },
+      "BaseName": "cryogenic",
+      "ChartInfos": [
+        {
+          "Id": "cryogenic0",
+          "Available": 1,
+          "Difficulty": 1,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner1",
+          "Rating": 2,
+          "LevelSectionIndicator": "2"
+        },
+        {
+          "Id": "cryogenic1",
+          "Available": 1,
+          "Difficulty": 2,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner2",
+          "Rating": 5,
+          "LevelSectionIndicator": "5"
+        },
+        {
+          "Id": "cryogenic2",
+          "Available": 1,
+          "Difficulty": 4,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner3",
+          "Rating": 9,
+          "LevelSectionIndicator": "9"
+        },
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        }
+      ],
+      "PreviewStartSeconds": 68.275,
+      "PreviewEndSeconds": 93.1030045,
+      "DisplayNameSectionIndicator": "C",
+      "DisplayArtistSectionIndicator": "C",
+      "GameplayBackground": 12,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 23
+      },
+      "BaseName": "hyalouyne",
+      "ChartInfos": [
+        {
+          "Id": "hyalouyne0",
+          "Available": 1,
+          "Difficulty": 1,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner1",
+          "Rating": 3,
+          "LevelSectionIndicator": "3"
+        },
+        {
+          "Id": "hyalouyne1",
+          "Available": 1,
+          "Difficulty": 2,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner2",
+          "Rating": 6,
+          "LevelSectionIndicator": "6"
+        },
+        {
+          "Id": "hyalouyne2",
+          "Available": 1,
+          "Difficulty": 4,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner3",
+          "Rating": 10,
+          "LevelSectionIndicator": "10"
+        },
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        }
+      ],
+      "PreviewStartSeconds": 38.289,
+      "PreviewEndSeconds": 58.421,
+      "DisplayNameSectionIndicator": "H",
+      "DisplayArtistSectionIndicator": "A",
+      "GameplayBackground": 8,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 64
+      },
+      "BaseName": "ghostray",
+      "ChartInfos": [
+        {
+          "Id": "ghostray0",
+          "Available": 1,
+          "Difficulty": 1,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner1",
+          "Rating": 1,
+          "LevelSectionIndicator": "1"
+        },
+        {
+          "Id": "ghostray1",
+          "Available": 1,
+          "Difficulty": 2,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner2",
+          "Rating": 4,
+          "LevelSectionIndicator": "4"
+        },
+        {
+          "Id": "ghostray2",
+          "Available": 1,
+          "Difficulty": 4,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner3",
+          "Rating": 8,
+          "LevelSectionIndicator": "8"
+        },
+        {
+          "Id": "ghostray3",
+          "Available": 1,
+          "Difficulty": 8,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner4",
+          "Rating": 10,
+          "LevelSectionIndicator": "10"
+        }
+      ],
+      "PreviewStartSeconds": -1.0,
+      "PreviewEndSeconds": -1.0,
+      "DisplayNameSectionIndicator": "G",
+      "DisplayArtistSectionIndicator": "Q",
+      "GameplayBackground": 10,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 69
+      },
+      "BaseName": "ordirehv",
+      "ChartInfos": [
+        {
+          "Id": "ordirehv0",
+          "Available": 1,
+          "Difficulty": 1,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner1",
+          "Rating": 1,
+          "LevelSectionIndicator": "1"
+        },
+        {
+          "Id": "ordirehv1",
+          "Available": 1,
+          "Difficulty": 2,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner2",
+          "Rating": 4,
+          "LevelSectionIndicator": "4"
+        },
+        {
+          "Id": "ordirehv2",
+          "Available": 1,
+          "Difficulty": 4,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner3",
+          "Rating": 8,
+          "LevelSectionIndicator": "8"
+        },
+        {
+          "Id": "ordirehv3",
+          "Available": 1,
+          "Difficulty": 8,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "jacketDesigner4",
+          "Rating": 10,
+          "LevelSectionIndicator": "10"
+        }
+      ],
+      "PreviewStartSeconds": -1.0,
+      "PreviewEndSeconds": -1.0,
+      "DisplayNameSectionIndicator": "O",
+      "DisplayArtistSectionIndicator": "F",
+      "GameplayBackground": 13,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 0
+      },
+      "BaseName": "",
+      "ChartInfos": [],
+      "PreviewStartSeconds": 0.0,
+      "PreviewEndSeconds": 0.0,
+      "DisplayNameSectionIndicator": "",
+      "DisplayArtistSectionIndicator": "",
+      "GameplayBackground": 0,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 74
+      },
+      "BaseName": "tutorialevolong",
+      "ChartInfos": [
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        },
+        {
+          "Id": "tutorialevolong1",
+          "Available": 0,
+          "Difficulty": 2,
+          "DisplayChartDesigner": "ChartDesigner2",
+          "DisplayJacketDesigner": "jacketDesigner2",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        },
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        },
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        }
+      ],
+      "PreviewStartSeconds": -1.0,
+      "PreviewEndSeconds": -1.0,
+      "DisplayNameSectionIndicator": "A",
+      "DisplayArtistSectionIndicator": "V",
+      "GameplayBackground": 9,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 75
+      },
+      "BaseName": "tutorialevoshort",
+      "ChartInfos": [
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        },
+        {
+          "Id": "tutorialevoshort1",
+          "Available": 0,
+          "Difficulty": 2,
+          "DisplayChartDesigner": "ChartDesigner2",
+          "DisplayJacketDesigner": "jacketDesigner2",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        },
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        },
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        }
+      ],
+      "PreviewStartSeconds": -1.0,
+      "PreviewEndSeconds": -1.0,
+      "DisplayNameSectionIndicator": "A",
+      "DisplayArtistSectionIndicator": "V",
+      "GameplayBackground": 9,
+      "RewardStyle": 0
+    },
+    {
+      "Id": {
+        "Value": 76
+      },
+      "BaseName": "tutorialmin",
+      "ChartInfos": [
+        {
+          "Id": "tutorialmin0",
+          "Available": 0,
+          "Difficulty": 1,
+          "DisplayChartDesigner": "ChartDesigner1",
+          "DisplayJacketDesigner": "jacketDesigner1",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        },
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        },
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        },
+        {
+          "Id": "",
+          "Available": 0,
+          "Difficulty": 0,
+          "DisplayChartDesigner": "",
+          "DisplayJacketDesigner": "",
+          "Rating": 0,
+          "LevelSectionIndicator": "?"
+        }
+      ],
+      "PreviewStartSeconds": -1.0,
+      "PreviewEndSeconds": -1.0,
+      "DisplayNameSectionIndicator": "A",
+      "DisplayArtistSectionIndicator": "V",
+      "GameplayBackground": 9,
+      "RewardStyle": 0
+    }
+  ],
+  "FallbackJacketMaterial": {
+    "m_FileID": 3,
+    "m_PathID": 1420864758912775416
+  },
+  "songIdJacketMaterials": [
+    {
+      "SongId": {
+        "Value": 2
+      },
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 7842177235196309503
+      }
+    },
+    {
+      "SongId": {
+        "Value": 11
+      },
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -7783726601469022595
+      }
+    },
+    {
+      "SongId": {
+        "Value": 64
+      },
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 8912202332642827680
+      }
+    },
+    {
+      "SongId": {
+        "Value": 23
+      },
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -3407529774486857165
+      }
+    },
+    {
+      "SongId": {
+        "Value": 69
+      },
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 267923418196822890
+      }
+    },
+    {
+      "SongId": {
+        "Value": 74
+      },
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 6838034433618223600
+      }
+    },
+    {
+      "SongId": {
+        "Value": 75
+      },
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -6469053253714979469
+      }
+    },
+    {
+      "SongId": {
+        "Value": 76
+      },
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -163145016703283624
+      }
+    }
+  ],
+  "chartIdJacketMaterials": [
+    {
+      "ChartId": "alamode0",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 7842177235196309503
+      }
+    },
+    {
+      "ChartId": "alamode1",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 7842177235196309503
+      }
+    },
+    {
+      "ChartId": "alamode2",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 7842177235196309503
+      }
+    },
+    {
+      "ChartId": "alamode3",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 7842177235196309503
+      }
+    },
+    {
+      "ChartId": "cryogenic0",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -7783726601469022595
+      }
+    },
+    {
+      "ChartId": "cryogenic1",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -7783726601469022595
+      }
+    },
+    {
+      "ChartId": "cryogenic2",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -7783726601469022595
+      }
+    },
+    {
+      "ChartId": "ghostray0",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 8912202332642827680
+      }
+    },
+    {
+      "ChartId": "ghostray1",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 8912202332642827680
+      }
+    },
+    {
+      "ChartId": "ghostray2",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 8912202332642827680
+      }
+    },
+    {
+      "ChartId": "ghostray3",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 8912202332642827680
+      }
+    },
+    {
+      "ChartId": "hyalouyne0",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -3407529774486857165
+      }
+    },
+    {
+      "ChartId": "hyalouyne1",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -3407529774486857165
+      }
+    },
+    {
+      "ChartId": "hyalouyne2",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -3407529774486857165
+      }
+    },
+    {
+      "ChartId": "ordirehv0",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 267923418196822890
+      }
+    },
+    {
+      "ChartId": "ordirehv1",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 267923418196822890
+      }
+    },
+    {
+      "ChartId": "ordirehv2",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 267923418196822890
+      }
+    },
+    {
+      "ChartId": "ordirehv3",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 267923418196822890
+      }
+    },
+    {
+      "ChartId": "tutorialevolong1",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": 6838034433618223600
+      }
+    },
+    {
+      "ChartId": "tutorialevoshort1",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -6469053253714979469
+      }
+    },
+    {
+      "ChartId": "tutorialmin0",
+      "JacketMaterial": {
+        "m_FileID": 0,
+        "m_PathID": -163145016703283624
+      }
+    }
+  ]
+}

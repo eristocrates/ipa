@@ -1,0 +1,11 @@
+﻿FAIL (codegenFromNamespaceIris:templateOrWrite)
+  namespaceUriString:  https://termlex.oeg.fi.upm.es/termlex#
+  dereferencedUrl: https://termlex.oeg.fi.upm.es/static/termlex.rdf
+  httpStatus: <none>
+  httpMediaType: <none>
+  attempts: <none>
+System.Exception: No local names found after namespace match.
+   at Program.localNamesFrom(Type namespaceIri, IGraph g) in C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework\Program.fs:line 1103
+   at Program.codegenFromNamespaceIris@1441.Invoke(Type namespaceIri) in C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework\Program.fs:line 1481
+
+            

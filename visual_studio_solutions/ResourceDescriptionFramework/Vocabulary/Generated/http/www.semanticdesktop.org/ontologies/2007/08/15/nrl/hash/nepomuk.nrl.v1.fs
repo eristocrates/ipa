@@ -1,0 +1,46 @@
+﻿namespace Nepomuk.nrl.v1.Namespace
+module v1 =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#" (Some "http://www.semanticdesktop.org/ontologies/2007/08/15/nrl/nrl.trig") (Some "nepomuk.nrl.v1") None
+    let AsymmetricProperty = {_prefixID with _localName = "AsymmetricProperty"}
+    let Configuration = {_prefixID with _localName = "Configuration"}
+    let Data = {_prefixID with _localName = "Data"}
+    let DefaultGraph = {_prefixID with _localName = "DefaultGraph"}
+    let DefiningProperty = {_prefixID with _localName = "DefiningProperty"}
+    let DiscardableInstanceBase = {_prefixID with _localName = "DiscardableInstanceBase"}
+    let DocumentGraph = {_prefixID with _localName = "DocumentGraph"}
+    let ExternalViewSpecification = {_prefixID with _localName = "ExternalViewSpecification"}
+    let FunctionalProperty = {_prefixID with _localName = "FunctionalProperty"}
+    let Graph = {_prefixID with _localName = "Graph"}
+    let GraphMetadata = {_prefixID with _localName = "GraphMetadata"}
+    let GraphView = {_prefixID with _localName = "GraphView"}
+    let InstanceBase = {_prefixID with _localName = "InstanceBase"}
+    let InverseFunctionalProperty = {_prefixID with _localName = "InverseFunctionalProperty"}
+    let KnowledgeBase = {_prefixID with _localName = "KnowledgeBase"}
+    let NonDefiningProperty = {_prefixID with _localName = "NonDefiningProperty"}
+    let Ontology = {_prefixID with _localName = "Ontology"}
+    let ReflexiveProperty = {_prefixID with _localName = "ReflexiveProperty"}
+    let RuleViewSpecification = {_prefixID with _localName = "RuleViewSpecification"}
+    let Schema = {_prefixID with _localName = "Schema"}
+    let Semantics = {_prefixID with _localName = "Semantics"}
+    let SymmetricProperty = {_prefixID with _localName = "SymmetricProperty"}
+    let TransitiveProperty = {_prefixID with _localName = "TransitiveProperty"}
+    let ViewSpecification = {_prefixID with _localName = "ViewSpecification"}
+    let cardinality = {_prefixID with _localName = "cardinality"}
+    let coreGraphMetadataFor = {_prefixID with _localName = "coreGraphMetadataFor"}
+    let equivalentGraph = {_prefixID with _localName = "equivalentGraph"}
+    let externalRealizer = {_prefixID with _localName = "externalRealizer"}
+    let graphMetadataFor = {_prefixID with _localName = "graphMetadataFor"}
+    let hasSemantics = {_prefixID with _localName = "hasSemantics"}
+    let hasSpecification = {_prefixID with _localName = "hasSpecification"}
+    let imports = {_prefixID with _localName = "imports"}
+    let inverseProperty = {_prefixID with _localName = "inverseProperty"}
+    let maxCardinality = {_prefixID with _localName = "maxCardinality"}
+    let minCardinality = {_prefixID with _localName = "minCardinality"}
+    let realizes = {_prefixID with _localName = "realizes"}
+    let rule = {_prefixID with _localName = "rule"}
+    let ruleLanguage = {_prefixID with _localName = "ruleLanguage"}
+    let semanticsDefinedBy = {_prefixID with _localName = "semanticsDefinedBy"}
+    let subGraphOf = {_prefixID with _localName = "subGraphOf"}
+    let superGraphOf = {_prefixID with _localName = "superGraphOf"}
+    let updatable = {_prefixID with _localName = "updatable"}
+    let viewOn = {_prefixID with _localName = "viewOn"}

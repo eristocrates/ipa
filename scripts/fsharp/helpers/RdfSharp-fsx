@@ -1,0 +1,32 @@
+#if INTERACTIVE
+#r "nuget: Iride"
+#load "../ResourceDescriptionFramework.fsx"
+#load "PrefixDecl.fsx"
+#load "Writers.fsx"
+
+open ResourceDescriptionFramework
+open PrefixDecl
+open Writers
+#endif
+
+open Iride
+open Iride.Extensions
+open System
+open System.IO
+
+
+
+let defaultGraph = new VDS.RDF.ThreadSafeGraph()
+let tripleStore = new VDS.RDF.DiskDemandTripleStore()
+let dataset = new VDS.RDF.Query.Datasets.InMemoryDataset(tripleStore)
+
+
+// Rdf.Assert.Statement(Rdf.defaultGraph, colon, "this", rdf, "type", colon, "example")
+let x = Rdf.IRI.value "http:"
+x.lexical
+// x = Ok (IRIREF "urn:adhoc:this")
+
+
+let outPath = Path.Combine(__SOURCE_DIRECTORY__, "test.ttl")
+
+writeTtlToFile outPath defaultGraph

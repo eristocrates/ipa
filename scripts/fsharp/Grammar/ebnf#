@@ -1,0 +1,9 @@
+| EBNF | Meaning      | F# type                           |
+| ---- | ------------ | --------------------------------- |
+| `X`  | exactly one  | `X`                               |
+| `X?` | zero or one  | `X option` ([Microsoft Learn][1]) |
+| `X*` | zero or more | `X list` ([Microsoft Learn][2])   |
+| `X+` | one or more  | `NonEmptyList<X>` ⟦proposed⟧      |
+
+[1]: https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/options?utm_source=chatgpt.com "Options - F# | Microsoft Learn"
+[2]: https://learn.microsoft.com/en-us/dotnet/fsharp/tour?utm_source=chatgpt.com "Tour of F# - .NET"

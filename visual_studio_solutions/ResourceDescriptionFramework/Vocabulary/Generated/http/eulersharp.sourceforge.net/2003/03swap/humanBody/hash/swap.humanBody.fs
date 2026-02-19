@@ -1,0 +1,40 @@
+﻿namespace Swap.humanBody.Namespace
+module humanBody =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://eulersharp.sourceforge.net/2003/03swap/humanBody#" (Some "http://eulersharp.sourceforge.net/2003/03swap/humanBody") (Some "swap.humanBody") None
+    let AcquiredStructure = {_prefixID with _localName = "AcquiredStructure"}
+    let AdultBodyMassIndex = {_prefixID with _localName = "AdultBodyMassIndex"}
+    let AdultBodyMassIndexMeasurement = {_prefixID with _localName = "AdultBodyMassIndexMeasurement"}
+    let AnatomicalStructure = {_prefixID with _localName = "AnatomicalStructure"}
+    let BirthWeight = {_prefixID with _localName = "BirthWeight"}
+    let BirthWeightMeasurement = {_prefixID with _localName = "BirthWeightMeasurement"}
+    let Body = {_prefixID with _localName = "Body"}
+    let DeadBody = {_prefixID with _localName = "DeadBody"}
+    let Death = {_prefixID with _localName = "Death"}
+    let Length = {_prefixID with _localName = "Length"}
+    let LengthMeasurement = {_prefixID with _localName = "LengthMeasurement"}
+    let LengthMeasuring = {_prefixID with _localName = "LengthMeasuring"}
+    let MorbidlyObese = {_prefixID with _localName = "MorbidlyObese"}
+    let Newborn = {_prefixID with _localName = "Newborn"}
+    let NormalWeight = {_prefixID with _localName = "NormalWeight"}
+    let Obese = {_prefixID with _localName = "Obese"}
+    let Overweight = {_prefixID with _localName = "Overweight"}
+    let SeverelyUnderweight = {_prefixID with _localName = "SeverelyUnderweight"}
+    let Structure = {_prefixID with _localName = "Structure"}
+    let Substance = {_prefixID with _localName = "Substance"}
+    let SuperObese = {_prefixID with _localName = "SuperObese"}
+    let Surface = {_prefixID with _localName = "Surface"}
+    let SurfaceArea = {_prefixID with _localName = "SurfaceArea"}
+    let SurfaceAreaMeasurement = {_prefixID with _localName = "SurfaceAreaMeasurement"}
+    let Underweight = {_prefixID with _localName = "Underweight"}
+    let Weighing = {_prefixID with _localName = "Weighing"}
+    let WeighingDevice = {_prefixID with _localName = "WeighingDevice"}
+    let Weight = {_prefixID with _localName = "Weight"}
+    let WeightMeasurement = {_prefixID with _localName = "WeightMeasurement"}
+    let WeightStatus = {_prefixID with _localName = "WeightStatus"}
+    let hasBirthWeight = {_prefixID with _localName = "hasBirthWeight"}
+    let hasBodyMassIndex = {_prefixID with _localName = "hasBodyMassIndex"}
+    let hasLength = {_prefixID with _localName = "hasLength"}
+    let hasSurfaceArea = {_prefixID with _localName = "hasSurfaceArea"}
+    let hasWeight = {_prefixID with _localName = "hasWeight"}
+    let hasWeightStatus = {_prefixID with _localName = "hasWeightStatus"}
+    let weightOf = {_prefixID with _localName = "weightOf"}

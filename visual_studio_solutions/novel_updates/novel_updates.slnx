@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="browser_automation/browser_automation.fsproj" Id="66b10555-259c-41b9-b281-ad5d98a401c2" />
   <Project Path="inforg/inforg.fsproj" />
 </Solution>

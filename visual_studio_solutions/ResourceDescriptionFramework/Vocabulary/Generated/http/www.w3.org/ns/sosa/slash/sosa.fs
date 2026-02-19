@@ -1,0 +1,39 @@
+﻿namespace Sosa.Namespace
+module sosa =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://www.w3.org/ns/sosa/" (Some "http://www.w3.org/ns/sosa/") (Some "sosa") None
+    let ActuatableProperty = {_prefixID with _localName = "ActuatableProperty"}
+    let Actuation = {_prefixID with _localName = "Actuation"}
+    let Actuator = {_prefixID with _localName = "Actuator"}
+    let FeatureOfInterest = {_prefixID with _localName = "FeatureOfInterest"}
+    let ObservableProperty = {_prefixID with _localName = "ObservableProperty"}
+    let Observation = {_prefixID with _localName = "Observation"}
+    let Platform = {_prefixID with _localName = "Platform"}
+    let Procedure = {_prefixID with _localName = "Procedure"}
+    let Result = {_prefixID with _localName = "Result"}
+    let Sample = {_prefixID with _localName = "Sample"}
+    let Sampler = {_prefixID with _localName = "Sampler"}
+    let Sampling = {_prefixID with _localName = "Sampling"}
+    let Sensor = {_prefixID with _localName = "Sensor"}
+    let actsOnProperty = {_prefixID with _localName = "actsOnProperty"}
+    let hasFeatureOfInterest = {_prefixID with _localName = "hasFeatureOfInterest"}
+    let hasResult = {_prefixID with _localName = "hasResult"}
+    let hasSample = {_prefixID with _localName = "hasSample"}
+    let hasSimpleResult = {_prefixID with _localName = "hasSimpleResult"}
+    let hosts = {_prefixID with _localName = "hosts"}
+    let isActedOnBy = {_prefixID with _localName = "isActedOnBy"}
+    let isFeatureOfInterestOf = {_prefixID with _localName = "isFeatureOfInterestOf"}
+    let isHostedBy = {_prefixID with _localName = "isHostedBy"}
+    let isObservedBy = {_prefixID with _localName = "isObservedBy"}
+    let isResultOf = {_prefixID with _localName = "isResultOf"}
+    let isSampleOf = {_prefixID with _localName = "isSampleOf"}
+    let madeActuation = {_prefixID with _localName = "madeActuation"}
+    let madeByActuator = {_prefixID with _localName = "madeByActuator"}
+    let madeBySampler = {_prefixID with _localName = "madeBySampler"}
+    let madeBySensor = {_prefixID with _localName = "madeBySensor"}
+    let madeObservation = {_prefixID with _localName = "madeObservation"}
+    let madeSampling = {_prefixID with _localName = "madeSampling"}
+    let observedProperty = {_prefixID with _localName = "observedProperty"}
+    let observes = {_prefixID with _localName = "observes"}
+    let phenomenonTime = {_prefixID with _localName = "phenomenonTime"}
+    let resultTime = {_prefixID with _localName = "resultTime"}
+    let usedProcedure = {_prefixID with _localName = "usedProcedure"}

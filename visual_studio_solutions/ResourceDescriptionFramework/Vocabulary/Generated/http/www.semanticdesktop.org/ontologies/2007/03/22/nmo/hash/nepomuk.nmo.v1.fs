@@ -1,0 +1,42 @@
+﻿namespace Nepomuk.nmo.v1.Namespace
+module v1 =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#" (Some "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo/nmo.trig") (Some "nepomuk.nmo.v1") None
+    let Email = {_prefixID with _localName = "Email"}
+    let IMMessage = {_prefixID with _localName = "IMMessage"}
+    let Mailbox = {_prefixID with _localName = "Mailbox"}
+    let MailboxDataObject = {_prefixID with _localName = "MailboxDataObject"}
+    let Message = {_prefixID with _localName = "Message"}
+    let MessageHeader = {_prefixID with _localName = "MessageHeader"}
+    let MimeEntity = {_prefixID with _localName = "MimeEntity"}
+    let bcc = {_prefixID with _localName = "bcc"}
+    let cc = {_prefixID with _localName = "cc"}
+    let contentMimeType = {_prefixID with _localName = "contentMimeType"}
+    let emailBcc = {_prefixID with _localName = "emailBcc"}
+    let emailCc = {_prefixID with _localName = "emailCc"}
+    let emailTo = {_prefixID with _localName = "emailTo"}
+    let from = {_prefixID with _localName = "from"}
+    let hasAttachment = {_prefixID with _localName = "hasAttachment"}
+    let headerName = {_prefixID with _localName = "headerName"}
+    let headerValue = {_prefixID with _localName = "headerValue"}
+    let htmlMessageContent = {_prefixID with _localName = "htmlMessageContent"}
+    let inReplyTo = {_prefixID with _localName = "inReplyTo"}
+    let isRead = {_prefixID with _localName = "isRead"}
+    let messageFrom = {_prefixID with _localName = "messageFrom"}
+    let messageHeader = {_prefixID with _localName = "messageHeader"}
+    let messageId = {_prefixID with _localName = "messageId"}
+    let messageRecipient = {_prefixID with _localName = "messageRecipient"}
+    let messageReplyTo = {_prefixID with _localName = "messageReplyTo"}
+    let messageSender = {_prefixID with _localName = "messageSender"}
+    let messageSubject = {_prefixID with _localName = "messageSubject"}
+    let plainTextMessageContent = {_prefixID with _localName = "plainTextMessageContent"}
+    let primaryMessageRecipient = {_prefixID with _localName = "primaryMessageRecipient"}
+    let primaryRecipient = {_prefixID with _localName = "primaryRecipient"}
+    let receivedDate = {_prefixID with _localName = "receivedDate"}
+    let recipient = {_prefixID with _localName = "recipient"}
+    let references = {_prefixID with _localName = "references"}
+    let replyTo = {_prefixID with _localName = "replyTo"}
+    let secondaryMessageRecipient = {_prefixID with _localName = "secondaryMessageRecipient"}
+    let secondaryRecipient = {_prefixID with _localName = "secondaryRecipient"}
+    let sender = {_prefixID with _localName = "sender"}
+    let sentDate = {_prefixID with _localName = "sentDate"}
+    let ``to`` = {_prefixID with _localName = "to"}

@@ -1,0 +1,135 @@
+﻿Id,Name,Category,ParsingName,RelativePath,ParentFolder
+31c0dd25-9439-4f12-bf41-7ff4eda38722,3D Objects,,,3D Objects,5e6c858f-0e22-4760-9afe-ea3317b67173
+008ca0b1-55b4-4c56-b8a8-4de4b299d3be,AccountPictures,,,Microsoft\Windows\AccountPictures,3eb685db-65f9-4cf6-a03a-e3ef65729f3d
+de61d971-5ebc-4f02-a3a9-6c82895e5c04,AddNewProgramsFolder,,shell:::{26EE0668-A00A-44D7-9371-BEB064C98683}\0\::{15eae92e-f17a-4431-9f28-805e482dafd4},,
+724ef170-a42d-4fef-9f26-b60e846fba4f,Administrative Tools,,,Administrative Tools,a77f5d77-2e2b-44c3-a6a2-aba601054a51
+3eb685db-65f9-4cf6-a03a-e3ef65729f3d,AppData,,,AppData\Roaming,
+b2c5e279-7add-439f-b28c-c41fe1bbf672,AppDataDesktop,,,Desktop,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+7be16610-1f7f-44ac-bff0-83e15f2ffca1,AppDataDocuments,,,Documents,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+7cfbefbc-de1f-45aa-b843-a542ac536cc9,AppDataFavorites,,,Favorites,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+559d40a3-a036-40fa-af61-84cb430a4d34,AppDataProgramData,,,ProgramData,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+7ad67899-66af-43ba-9156-6aad42e6c596,AppMods,,,AppMods,5e6c858f-0e22-4760-9afe-ea3317b67173
+a305ce99-f527-492b-8b1a-7e76fa98d6e4,AppUpdatesFolder,,::{26EE0668-A00A-44D7-9371-BEB064C98683}\0\::{7b81be6a-ce2b-4676-a29e-eb907a5126c5}\::{d450a8a1-9568-45c7-9c0e-b4f9fb4537bd},,
+a3918781-e5f2-4890-b3d9-a7e54332328c,Application Shortcuts,,,Microsoft\Windows\Application Shortcuts,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+1e87508d-89c2-42f0-8a7e-645a0f50ca58,AppsFolder,,shell:::{4234d49b-0245-4df3-b780-3893943456e1},,
+9e52ab10-f80d-49df-acb8-4330f5687855,CD Burning,,,Microsoft\Windows\Burn\Burn,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+ee32e446-31ca-4aba-814f-a5ebd2fd6d5e,CSCFolder,,shell:::{BD7A2E7B-21CB-41b2-A086-B309680C6B7E}\*,,
+352481e8-33be-4251-ba85-6007caedcf9d,Cache,,,Microsoft\Windows\INetCache,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+ab5fb87b-7ce2-4f83-915d-550846c9537b,Camera Roll,,,Camera Roll,33e28130-4e1e-4676-835a-98395c3bc3bb
+2b20df75-1eda-4039-8097-38798227d5b7,CameraRollLibrary,,::{031E4825-7B94-4dc3-B131-E946B44C8DD5}\{2B20DF75-1EDA-4039-8097-38798227D5B7},CameraRoll.library-ms,1b3ea5dc-b587-4786-b4ef-bd1dc332aeae
+edc0fe71-98d8-4f4a-b920-c8dc133cb165,Captures,,,Captures,18989b1d-99b5-455b-841c-ab7c74e4ddfc
+df7266ac-9274-4867-8d55-3bd661de872d,ChangeRemoveProgramsFolder,,::{26EE0668-A00A-44D7-9371-BEB064C98683}\0\::{7b81be6a-ce2b-4676-a29e-eb907a5126c5},,
+d0384e7d-bac3-4797-8f14-cba229b392b5,Common Administrative Tools,,,Administrative Tools,0139d44e-6afe-49f2-8690-3dafcae6ffb8
+62ab5d82-fdc1-4dc3-a9dd-070d1d495d97,Common AppData,,,,
+c4aa340d-f20f-4863-afef-f87ef2e6ba25,Common Desktop,,,Desktop,dfdf76a2-c82a-4d63-906a-5644ac457385
+ed4824af-dce4-45a8-81e2-fc7965083634,Common Documents,,,Documents,dfdf76a2-c82a-4d63-906a-5644ac457385
+0139d44e-6afe-49f2-8690-3dafcae6ffb8,Common Programs,,,Programs,a4115719-d62e-491d-aa7c-e74b8be3b067
+a4115719-d62e-491d-aa7c-e74b8be3b067,Common Start Menu,,,Microsoft\Windows\Start Menu,62ab5d82-fdc1-4dc3-a9dd-070d1d495d97
+a440879f-87a0-4f7d-b700-0207b966194a,Common Start Menu Places,,,Microsoft\Windows\Start Menu Places,62ab5d82-fdc1-4dc3-a9dd-070d1d495d97
+82a5ea35-d9cd-47c5-9629-e15d2f714e6e,Common Startup,,,StartUp,0139d44e-6afe-49f2-8690-3dafcae6ffb8
+b94237e7-57ac-4347-9151-b08c6c32d1f7,Common Templates,,,Microsoft\Windows\Templates,62ab5d82-fdc1-4dc3-a9dd-070d1d495d97
+3d644c9b-1fb8-4f30-9b45-f670235f79c0,CommonDownloads,,,Downloads,dfdf76a2-c82a-4d63-906a-5644ac457385
+3214fab5-9757-4298-bb61-92a9deaa44ff,CommonMusic,,,Music,dfdf76a2-c82a-4d63-906a-5644ac457385
+b6ebfb86-6907-413c-9af7-4fc2abf07cc5,CommonPictures,,,Pictures,dfdf76a2-c82a-4d63-906a-5644ac457385
+e555ab60-153b-4d17-9f04-a5fe99fc15ec,CommonRingtones,,,Microsoft\Windows\Ringtones,62ab5d82-fdc1-4dc3-a9dd-070d1d495d97
+2400183a-6185-49fb-a2d8-4a392a602ba3,CommonVideo,,,Videos,dfdf76a2-c82a-4d63-906a-5644ac457385
+4bfefb45-347d-4006-a5be-ac0cb0567192,ConflictFolder,,"::{26EE0668-A00A-44D7-9371-BEB064C98683}\0\::{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\::{E413D040-6788-4C22-957E-175D1C513A34},",,
+6f0cd92b-2e97-45d1-88ff-b0d186b8dedd,ConnectionsFolder,,::{26EE0668-A00A-44D7-9371-BEB064C98683}\0\::{7007ACC7-3202-11D1-AAD2-00805FC1270E},,
+56784854-c6cb-462b-8169-88e350acb882,Contacts,,::{59031a47-3f72-44a7-89c5-5595fe6b30ee}\{56784854-C6CB-462B-8169-88E350ACB882},Contacts,
+82a74aeb-aeb4-465c-a014-d097ee346d63,ControlPanelFolder,,::{26EE0668-A00A-44D7-9371-BEB064C98683}\0,,
+2b0f765d-c0e9-4171-908e-08a611b84ff6,Cookies,,,Microsoft\Windows\INetCookies,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+915221fb-9efe-4bda-8fd7-f78dca774f87,CredentialManager,,,,
+b88f4daa-e7bd-49a9-b74d-02885a5dc765,CryptoKeys,,,,
+b4bfcc3a-db2c-424c-b029-7fe99a87c641,Desktop,,,Desktop,
+dbe8e08e-3053-4bbc-b183-2a7b2b191e59,Development Files,,,DevelopmentFiles,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+5ce4a5e9-e4eb-479d-b89f-130c02886155,Device Metadata Store,,,Microsoft\Windows\DeviceMetadataStore,62ab5d82-fdc1-4dc3-a9dd-070d1d495d97
+7b0db17d-9cd2-4a93-9733-46cc89022e7c,DocumentsLibrary,,::{031E4825-7B94-4dc3-B131-E946B44C8DD5}\{7b0db17d-9cd2-4a93-9733-46cc89022e7c},Documents.library-ms,1b3ea5dc-b587-4786-b4ef-bd1dc332aeae
+374de290-123f-4565-9164-39c4925e467b,Downloads,,shell:::{374DE290-123F-4565-9164-39C4925E467B},Downloads,
+10c07cd0-ef91-4567-b850-448b77cb37f9,DpapiKeys,,,,
+1777f761-68ad-4d8a-87bd-30b759fa33dd,Favorites,,,Favorites,
+fd228cb7-ae11-4ae3-864c-16f3910ab8fe,Fonts,,,,f38bf404-1d43-42f2-9305-67de0b28fc23
+054fae61-4dd8-4787-80b6-090220c4b700,GameTasks,,,Microsoft\Windows\GameExplorer,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+d9dc8a3b-b784-432e-a781-5a1130a75963,History,,,Microsoft\Windows\History,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+bcb5256f-79f6-4cee-b725-dc34e402fd46,ImplicitAppShortcuts,,,ImplicitAppShortcuts,9e3995ab-1f9c-4f13-b827-48b24b6c7174
+4d9f7874-4e0c-4904-967b-40b0d20c3e4b,InternetFolder,,::{871C5380-42A0-1069-A2EA-08002B30309D},,
+1b3ea5dc-b587-4786-b4ef-bd1dc332aeae,Libraries,,,Microsoft\Windows\Libraries,3eb685db-65f9-4cf6-a03a-e3ef65729f3d
+bfb9d5e0-c6a9-404c-b2b2-ae6db6af4968,Links,,::{59031a47-3f72-44a7-89c5-5595fe6b30ee}\{bfb9d5e0-c6a9-404c-b2b2-ae6db6af4968},Links,
+f1b32785-6fba-4fcf-9d55-7b8e7f157091,Local AppData,,,AppData\Local,
+f42ee2d3-909f-4907-8871-4c22fc0bf756,Local Documents,,shell:::{d3162b92-9365-467a-956b-92703aca08af},Documents,
+7d83ee9b-2244-4e70-b1f5-5393042af1e4,Local Downloads,,shell:::{088e3905-0323-4b02-9826-5d99428e115f},Downloads,
+a0c69a99-21c8-4671-8703-7934162fcf1d,Local Music,,shell:::{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de},Music,
+0ddd015d-b06c-45d5-8c4c-f59713854639,Local Pictures,,shell:::{24ad3ad4-a569-4530-98e1-ab02f9417aa8},Pictures,
+35286a68-3c57-41a1-bbb1-0eae73d76c95,Local Videos,,shell:::{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a},Videos,
+a520a1a4-1780-4ff6-bd18-167343c5af16,LocalAppDataLow,,,AppData\LocalLow,
+2a00375e-224c-49de-b8d1-440df7ef3ddc,LocalizedResourcesDir,,,,
+98ec0e18-2098-4d44-8644-66979315a281,MAPIFolder,,shell:::{89D83576-6BD1-4C86-9454-BEB04E94C819}\*,,
+2112ab0a-c86a-4ffe-a368-0de96e47012e,MusicLibrary,,::{031E4825-7B94-4dc3-B131-E946B44C8DD5}\{2112AB0A-C86A-4ffe-A368-0DE96E47012E},Music.library-ms,1b3ea5dc-b587-4786-b4ef-bd1dc332aeae
+4bd8d571-6d19-48d3-be97-422220080e43,My Music,,shell:::{1CF1260C-4DD0-4EBB-811F-33C572699FDE},Music,
+33e28130-4e1e-4676-835a-98395c3bc3bb,My Pictures,,shell:::{3ADD1653-EB32-4CB0-BBD7-DFA0ABB5ACCA},Pictures,
+18989b1d-99b5-455b-841c-ab7c74e4ddfc,My Video,,shell:::{A0953C92-50DC-43BF-BE83-3742FED03C9C},Videos,
+0ac0837c-bbf8-452a-850d-79d08e667ca7,MyComputerFolder,,::{20D04FE0-3AEA-1069-A2D8-08002B30309D},,
+c5abbf53-e17f-4121-8900-86626fc2c973,NetHood,,,Microsoft\Windows\Network Shortcuts,3eb685db-65f9-4cf6-a03a-e3ef65729f3d
+d20beec4-5ca8-4905-ae3b-bf251ea09b53,NetworkPlacesFolder,,::{F02C1A0D-BE21-4350-88B0-7367FC96EF3C},,
+c1bae2d0-10df-4334-bedd-7aa20b227a9d,OEM Links,,,OEM Links,62ab5d82-fdc1-4dc3-a9dd-070d1d495d97
+a52bba46-e9e1-435f-b3d9-28daa648c0f6,OneDrive,,shell:::{018D5C66-4533-4307-9B53-224DE2ED1FE6},OneDrive,5e6c858f-0e22-4760-9afe-ea3317b67173
+767e6811-49cb-4273-87c2-20f355e1085b,OneDriveCameraRoll,,,Camera Roll,339719b5-8c47-4894-94c2-d8f77add44a6
+24d89e24-2f19-4534-9dde-6a6671fbb8fe,OneDriveDocuments,,,Documents,a52bba46-e9e1-435f-b3d9-28daa648c0f6
+c3f2459e-80d6-45dc-bfef-1f769f2be730,OneDriveMusic,,,Music,a52bba46-e9e1-435f-b3d9-28daa648c0f6
+339719b5-8c47-4894-94c2-d8f77add44a6,OneDrivePictures,,,Pictures,a52bba46-e9e1-435f-b3d9-28daa648c0f6
+2c36c0aa-5812-4b87-bfd0-4cd0dfb19b39,Original Images,,,Microsoft\Windows Photo Gallery\Original Images,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+fdd39ad0-238f-46af-adb4-6c85480369c7,Personal,,shell:::{A8CDFF1C-4878-43be-B5FD-F8091C1C60D0},Documents,
+69d2cf90-fc33-4fb7-9a0c-ebb0f0fcb43c,PhotoAlbums,,,Slide Shows,33e28130-4e1e-4676-835a-98395c3bc3bb
+a990ae9f-a03b-4e80-94bc-9912d7504104,PicturesLibrary,,::{031E4825-7B94-4dc3-B131-E946B44C8DD5}\{A990AE9F-A03B-4e80-94BC-9912D7504104},Pictures.library-ms,1b3ea5dc-b587-4786-b4ef-bd1dc332aeae
+de92c1c7-837f-4f69-a3bb-86e631204a23,Playlists,,,Playlists,4bd8d571-6d19-48d3-be97-422220080e43
+9274bd8d-cfd1-41c3-b35e-b13f55a758f4,PrintHood,,,Microsoft\Windows\Printer Shortcuts,3eb685db-65f9-4cf6-a03a-e3ef65729f3d
+76fc4e2d-d6ad-4519-a663-37bd56068185,PrintersFolder,,::{21EC2020-3AEA-1069-A2DD-08002B30309D}\::{2227A280-3AEA-1069-A2DE-08002B30309D},,
+5e6c858f-0e22-4760-9afe-ea3317b67173,Profile,,,,
+905e63b6-c1bf-494e-b29c-65b732d3d21a,ProgramFiles,,,,
+f7f1ed05-9f6d-47a2-aaae-29d317c6f066,ProgramFilesCommon,,,,
+6365d5a7-0f0d-45e5-87f6-0da56b6a4f7d,ProgramFilesCommonX64,,,,
+de974d24-d9c6-4d3e-bf91-f4455120b917,ProgramFilesCommonX86,,,,
+6d809377-6af0-444b-8957-a3773f02200e,ProgramFilesX64,,,,
+7c5a40ef-a0fb-4bfc-874a-c0f2e0b9fa8e,ProgramFilesX86,,,,
+a77f5d77-2e2b-44c3-a6a2-aba601054a51,Programs,,,Programs,625b53c3-ab48-4ec1-ba1f-a1ef4146fc19
+dfdf76a2-c82a-4d63-906a-5644ac457385,Public,,,,
+0482af6c-08f1-4c34-8c90-e17ec98b1e17,PublicAccountPictures,,,AccountPictures,dfdf76a2-c82a-4d63-906a-5644ac457385
+debf2536-e1a8-4c59-b6a2-414586476aea,PublicGameTasks,,,Microsoft\Windows\GameExplorer,62ab5d82-fdc1-4dc3-a9dd-070d1d495d97
+48daf80b-e6cf-4f4e-b800-0e69d84ee384,PublicLibraries,,,Libraries,dfdf76a2-c82a-4d63-906a-5644ac457385
+52a4f021-7b75-48a9-9f6b-4b87a210bc8f,Quick Launch,,,Microsoft\Internet Explorer\Quick Launch,3eb685db-65f9-4cf6-a03a-e3ef65729f3d
+ae50c081-ebd2-438a-8655-8a092e34987a,Recent,,,Microsoft\Windows\Recent,3eb685db-65f9-4cf6-a03a-e3ef65729f3d
+2f8b40c2-83ed-48ee-b383-a1f157ec6f9a,Recorded Calls,,,Recorded Calls,5e6c858f-0e22-4760-9afe-ea3317b67173
+1a6fdba2-f42d-4358-a798-b74d745926c5,RecordedTVLibrary,,,RecordedTV.library-ms,48daf80b-e6cf-4f4e-b800-0e69d84ee384
+b7534046-3ecb-4c18-be4e-64cd4cb7d6ac,RecycleBinFolder,,::{645FF040-5081-101B-9F08-00AA002F954E},,
+8ad10c31-2adb-4296-a8f7-e4701232c972,ResourceDir,,,,
+12d4c69e-24ad-4923-be19-31321c43a767,Retail Demo,,,Microsoft\Windows\RetailDemo,62ab5d82-fdc1-4dc3-a9dd-070d1d495d97
+c870044b-f49e-4126-a9c3-b52a1ff411e8,Ringtones,,,Microsoft\Windows\Ringtones,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+aaa8d5a5-f1d6-4259-baa8-78e7ef60835e,Roamed Tile Images,,,Microsoft\Windows\RoamedTileImages,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+00bcfc5a-ed94-4e48-96a1-3f6217f21990,Roaming Tiles,,,Microsoft\Windows\RoamingTiles,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+4c5c32ff-bb9d-43b0-b5b4-2d72e54eaaa4,SavedGames,,::{59031a47-3f72-44a7-89c5-5595fe6b30ee}\{4C5C32FF-BB9D-43b0-B5B4-2D72E54EAAA4},Saved Games,
+3b193882-d3ad-4eab-965a-69829d1fb59f,SavedPictures,,,Saved Pictures,33e28130-4e1e-4676-835a-98395c3bc3bb
+e25b5812-be88-4bd9-94b0-29233477b6c3,SavedPicturesLibrary,,::{031E4825-7B94-4dc3-B131-E946B44C8DD5}\{E25B5812-BE88-4bd9-94B0-29233477B6C3},SavedPictures.library-ms,1b3ea5dc-b587-4786-b4ef-bd1dc332aeae
+b7bede81-df94-4682-a7d8-57a52620b86f,Screenshots,,,Screenshots,33e28130-4e1e-4676-835a-98395c3bc3bb
+0d4c3db6-03a3-462f-a0e6-08924c41b5d4,SearchHistoryFolder,,,Microsoft\Windows\ConnectedSearch\History,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+190337d1-b8ca-4121-a639-6d472d16972a,SearchHomeFolder,,::{9343812e-1c37-4a49-a12e-4b2d810d956b},,
+7e636bfe-dfa9-4d5e-b456-d7b39851d8a9,SearchTemplatesFolder,,,Microsoft\Windows\ConnectedSearch\Templates,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+7d1d3a04-debb-4115-95cf-2f29da2920da,Searches,,::{59031a47-3f72-44a7-89c5-5595fe6b30ee}\{7d1d3a04-debb-4115-95cf-2f29da2920da},Searches,
+8983036c-27c0-404b-8f08-102d10dcfd74,SendTo,,,Microsoft\Windows\SendTo,3eb685db-65f9-4cf6-a03a-e3ef65729f3d
+625b53c3-ab48-4ec1-ba1f-a1ef4146fc19,Start Menu,,,Microsoft\Windows\Start Menu,3eb685db-65f9-4cf6-a03a-e3ef65729f3d
+b97d20bb-f46a-4c97-ba10-5e3608430854,Startup,,,StartUp,a77f5d77-2e2b-44c3-a6a2-aba601054a51
+43668bf8-c14e-49b2-97c9-747784d784b7,SyncCenterFolder,,::{26EE0668-A00A-44D7-9371-BEB064C98683}\0\::{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF},,
+289a9a43-be44-4057-a41b-587a76d7e7f9,SyncResultsFolder,,"::{26EE0668-A00A-44D7-9371-BEB064C98683}\0\::{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\::{BC48B32F-5910-47F5-8570-5074A8A5636A},",,
+0f214138-b1d3-4a90-bba9-27cbc0c5389a,SyncSetupFolder,,"::{26EE0668-A00A-44D7-9371-BEB064C98683}\0\::{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}\::{F1390A9A-A3F4-4E5D-9C5F-98F3BD8D935C},",,
+1ac14e77-02e7-4e5d-b744-2eb1ae5198b7,System,,,,
+54eed2e0-e7ca-4fdb-9148-0f4247291cfa,SystemCertificates,,,,
+d65231b0-b2f1-4857-a4ce-a8e7c6ea7d27,SystemX86,,,,
+a63293e8-664e-48db-a079-df759e0509f7,Templates,,,Microsoft\Windows\Templates,3eb685db-65f9-4cf6-a03a-e3ef65729f3d
+1c2ac1dc-4358-4b6c-9733-af21156576f0,ThisDeviceFolder,,::{f8278c54-a712-415b-b593-b77a2be0dda9},,
+754ac886-df64-4cba-86b5-f7fbf4fbcef5,ThisPCDesktopFolder,,shell:::{B4BFCC3A-DB2C-424C-B029-7FE99A87C641},Desktop,
+9e3995ab-1f9c-4f13-b827-48b24b6c7174,User Pinned,,,User Pinned,52a4f021-7b75-48a9-9f6b-4b87a210bc8f
+0762d272-c50a-4bb0-a382-697dcd729b80,UserProfiles,,,,
+5cd7aee2-2219-4a67-b85d-6c9ce15660cb,UserProgramFiles,,,Programs,f1b32785-6fba-4fcf-9d55-7b8e7f157091
+bcbd3057-ca5c-4622-b42d-bc56db0ae516,UserProgramFilesCommon,,,Common,5cd7aee2-2219-4a67-b85d-6c9ce15660cb
+f3ce0f7c-4901-4acc-8648-d5d44b04ef8f,UsersFilesFolder,,::{59031a47-3f72-44a7-89c5-5595fe6b30ee},,
+a302545d-deff-464b-abe8-61c8648d939b,UsersLibrariesFolder,,::{031E4825-7B94-4dc3-B131-E946B44C8DD5},,
+491e922f-5643-4af4-a7eb-4e7a138d8174,VideosLibrary,,::{031E4825-7B94-4dc3-B131-E946B44C8DD5}\{491E922F-5643-4af4-A7EB-4E7A138D8174},Videos.library-ms,1b3ea5dc-b587-4786-b4ef-bd1dc332aeae
+f38bf404-1d43-42f2-9305-67de0b28fc23,Windows,,,,

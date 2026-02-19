@@ -1,0 +1,94 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix ontolex.termlex: <https://termlex.oeg.fi.upm.es/termlex#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://termlex.oeg.fi.upm.es/termlex> a owl:Ontology .
+<https://termlex.oeg.fi.upm.es/termlex> owl:imports <http://www.w3.org/ns/lemon/ontolex> .
+<https://termlex.oeg.fi.upm.es/termlex> owl:imports <http://www.w3.org/2004/02/skos/core> .
+<https://termlex.oeg.fi.upm.es/termlex> dc:title "Termlex Extension for Terminologies"@en .
+<https://termlex.oeg.fi.upm.es/termlex> dc:contributor "Patricia Martín-Chozas"@en .
+<https://termlex.oeg.fi.upm.es/termlex> dc:contributor "Thierry Declerck"@en .
+<https://termlex.oeg.fi.upm.es/termlex> dc:contributor "Elena Montiel-Ponsoda"@en .
+<https://termlex.oeg.fi.upm.es/termlex> dc:contributor "Víctor Rodríguez-Doncel"@en .
+<https://termlex.oeg.fi.upm.es/termlex> cc:licence <https://creativecommons.org/licenses/by/4.0/> .
+<https://termlex.oeg.fi.upm.es/termlex> dcterms:license <https://creativecommons.org/licenses/by/4.0/> .
+ontolex.termlex:Definition a owl:Class .
+ontolex.termlex:Definition rdfs:subClassOf owl:Thing .
+ontolex.termlex:Definition rdfs:label "Definition"@en .
+ontolex.termlex:Definition rdfs:comment "The Definition class represents the description of a resource, may it be a concept, a term or any other entity. Additional information can be attached to it, such as the source and authorship of the definition."@en .
+ontolex.termlex:Note a owl:Class .
+ontolex.termlex:Note rdfs:subClassOf owl:Thing .
+ontolex.termlex:Note rdfs:label "Note"@en .
+ontolex.termlex:Note rdfs:comment "The Note class represents additional information given about a resource, may it be a concept, a term or any other entity. Oher data can be attached to it, such as the source and authorship of the note."@en .
+ontolex.termlex:Source a owl:Class .
+ontolex.termlex:Source rdfs:subClassOf owl:Thing .
+ontolex.termlex:Source rdfs:label "Source"@en .
+ontolex.termlex:Source rdfs:comment "The Source class represents the provenance information of an element, may it be the authorship, notes or other sources."@en .
+ontolex.termlex:ReliabilityCode a owl:Class .
+ontolex.termlex:ReliabilityCode rdfs:subClassOf owl:Thing .
+ontolex.termlex:ReliabilityCode rdfs:label "Reliability Code"@en .
+ontolex.termlex:ReliabilityCode rdfs:comment """The ReliabilityCode class represents the trustworthiness degree of a determined resource, may it be a concept, a term or any other entity. This class points at a fixed set of values, from 1 to 5, for standardisation purposes.
+"""@en .
+ontolex.termlex:ReliabilityCode rdf:value ontolex.termlex:1 .
+ontolex.termlex:ReliabilityCode rdf:value ontolex.termlex:2 .
+ontolex.termlex:ReliabilityCode rdf:value ontolex.termlex:3 .
+ontolex.termlex:ReliabilityCode rdf:value ontolex.termlex:4 .
+ontolex.termlex:ReliabilityCode rdf:value ontolex.termlex:5 .
+ontolex.termlex:1 a ontolex.termlex:ReliabilityCode .
+ontolex.termlex:2 a ontolex.termlex:ReliabilityCode .
+ontolex.termlex:3 a ontolex.termlex:ReliabilityCode .
+ontolex.termlex:4 a ontolex.termlex:ReliabilityCode .
+ontolex.termlex:5 a ontolex.termlex:ReliabilityCode .
+ontolex.termlex:Usage a owl:Class .
+ontolex.termlex:Usage rdfs:subClassOf owl:Thing .
+ontolex.termlex:Usage rdfs:label "Usage"@en .
+ontolex.termlex:Usage rdfs:comment "The Usage class represents usage notes, advices or indications regarding the lexical sense of a given terminological concept. "@en .
+ontolex.termlex:TerminologicalConcept a owl:Class .
+ontolex.termlex:TerminologicalConcept rdfs:subClassOf owl:Thing .
+ontolex.termlex:TerminologicalConcept rdfs:subClassOf <http://www.w3.org/2004/02/skos/core#Concept> .
+ontolex.termlex:TerminologicalConcept rdfs:label "Terminological Concept"@en .
+ontolex.termlex:TerminologicalConcept rdfs:comment "The TerminologicalConcept class represents a mental abstraction, concept or unit of thought that embodies the meaning of one or more lexical entries, that refer to the same lexical sense, thus, belong to the same area of epertise."@en .
+ontolex.termlex:isEvokedBy a owl:ObjectProperty .
+ontolex.termlex:isEvokedBy rdfs:label "is evoked by"@en .
+ontolex.termlex:isEvokedBy rdfs:comment "The isEvokedBy property relates a terminological concept to one of the lexical entries that evoke it."@en .
+ontolex.termlex:isEvokedBy rdfs:range <http://www.w3.org/ns/lemon/ontolex#LexicalEntry> .
+ontolex.termlex:isEvokedBy rdfs:domain ontolex.termlex:TerminologicalConcept .
+ontolex.termlex:lexicalizedSense a owl:ObjectProperty .
+ontolex.termlex:lexicalizedSense rdfs:label "lexicalized sense"@en .
+ontolex.termlex:lexicalizedSense rdfs:comment "The lexicalizedSense property relates a terminological concept to a unique corresponding lexical sense."@en .
+ontolex.termlex:lexicalizedSense rdfs:range <http://www.w3.org/ns/lemon/ontolex#LexicalSense> .
+ontolex.termlex:lexicalizedSense rdfs:domain ontolex.termlex:TerminologicalConcept .
+ontolex.termlex:lexicalizedSense owl:inverseOf ontolex.termlex:isLexicalizedSenseOf .
+ontolex.termlex:isLexicalizedSenseOf a owl:ObjectProperty .
+ontolex.termlex:isLexicalizedSenseOf rdfs:label "is lexicalized sense of"@en .
+ontolex.termlex:isLexicalizedSenseOf rdfs:comment "The isLexicalizedSense property relates a lexical sense to a unique corresponding terminological concept."@en .
+ontolex.termlex:isLexicalizedSenseOf rdfs:range ontolex.termlex:TerminologicalConcept .
+ontolex.termlex:isLexicalizedSenseOf rdfs:domain <http://www.w3.org/ns/lemon/ontolex#LexicalSense> .
+ontolex.termlex:isLexicalizedSenseOf owl:inverseOf ontolex.termlex:lexicalizedSense .
+ontolex.termlex:evokes a rdf:Property .
+ontolex.termlex:evokes rdfs:label "evokes"@en .
+ontolex.termlex:evokes rdfs:comment "The evokes property relates a lexical entry to the terminological concepts it evokes."@en .
+ontolex.termlex:evokes rdfs:range ontolex.termlex:TerminologicalConcept .
+ontolex.termlex:evokes rdfs:domain <http://www.w3.org/ns/lemon/ontolex#LexicalEntry> .
+ontolex.termlex:evokes owl:inverseOf ontolex.termlex:isEvokedBy .
+ontolex.termlex:reliabilityCode a owl:ObjectProperty .
+ontolex.termlex:reliabilityCode rdfs:label "Reliability Code"@en .
+ontolex.termlex:reliabilityCode rdfs:comment "The reliabilityCode property relates a lexical sense to the the reliability code class."@en .
+ontolex.termlex:reliabilityCode rdfs:range ontolex.termlex:ReliabilityCode .
+ontolex.termlex:isConceptOf a owl:ObjectProperty .
+ontolex.termlex:isConceptOf rdfs:label "is concept of"@en .
+ontolex.termlex:isConceptOf rdfs:comment "The isConceptOf property relates the meaning of a Terminological Concept by linking it to a particular ontological meaning."@en .
+ontolex.termlex:isConceptOf rdfs:domain ontolex.termlex:TerminologicalConcept .
+ontolex.termlex:isConceptOf owl:inverseOf ontolex.termlex:concept .
+ontolex.termlex:concept a owl:ObjectProperty .
+ontolex.termlex:concept rdfs:label "concept"@en .
+ontolex.termlex:concept rdfs:comment "The concept property relates an ontological entity to a terminological concept that represents the corresponding meaning."@en .
+ontolex.termlex:concept rdfs:range ontolex.termlex:TerminologicalConcept .
+ontolex.termlex:concept owl:inverseOf ontolex.termlex:isConceptOf .
