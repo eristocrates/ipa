@@ -13,8 +13,7 @@ let thresholdBytes = 100L * 1024L * 1024L // 100 MiB
 let normalizeToGitPath (p: string) = p.Replace('\\', '/')
 
 let relativeGitPath (rootDir: string) (fullPath: string) =
-    Path.GetRelativePath(rootDir, fullPath)
-    |> normalizeToGitPath
+    Path.GetRelativePath(rootDir, fullPath) |> normalizeToGitPath
 
 let escapeGitignoreLine (line: string) =
     // Avoid accidental comment/negation if the path starts with '#' or '!'
@@ -37,12 +36,9 @@ let tryFileSize (path: string) =
     try
         let fi = FileInfo(path)
 
-        if fi.Exists then
-            Some fi.Length
-        else
-            None
-    with
-    | _ -> None
+        if fi.Exists then Some fi.Length else None
+    with _ ->
+        None
 
 let rootFull = Path.GetFullPath(rootDirectory)
 
@@ -65,6 +61,7 @@ let gitignoreLines =
         yield @"**obj/"
         yield @"**.vs/"
         yield @".fake"
+        yield @"secret/"
         yield ""
         yield "# ------------------------------------------------------------"
         yield "# GENERATED: ignores files >= 100 MiB"
@@ -74,10 +71,7 @@ let gitignoreLines =
         if largeFiles.IsEmpty then
             yield "# (no files met or exceeded the threshold)"
         else
-            yield!
-                largeFiles
-                |> Seq.map (relativeGitPath rootFull)
-                |> Seq.map escapeGitignoreLine
+            yield! largeFiles |> Seq.map (relativeGitPath rootFull) |> Seq.map escapeGitignoreLine
     }
     |> Seq.toArray
 
@@ -87,8 +81,7 @@ let outputPath =
     else
         Path.Combine(rootFull, gitignoreFilepath)
 
-Directory.CreateDirectory(Path.GetDirectoryName(outputPath))
-|> ignore
+Directory.CreateDirectory(Path.GetDirectoryName(outputPath)) |> ignore
 
 File.WriteAllLines(outputPath, gitignoreLines)
 
