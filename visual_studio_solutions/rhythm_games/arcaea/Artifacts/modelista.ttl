@@ -1,0 +1,44 @@
+@prefix arcaea.modelista: <https://arcaea.lowiro.com/#modelista#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.modelista:.
+arcaea.modelista: arcaea:artist arcaea:HiTECH%20NINJA;
+                  arcaea:audioPreview 26181 ;
+                  arcaea:audioPreviewEnd 52363 ;
+                  arcaea:bg arcaea:modelista;
+                  arcaea:bpm "165"@en-us;
+                  arcaea:bpm_base 165 ;
+                  arcaea:category arcaea:original;
+                  arcaea:date 1505520001 ;
+                  arcaea:difficulties arcaea.modelista:PRS,
+                                      arcaea.modelista:PST,
+                                      arcaea.modelista:FTR;
+                  arcaea:id "modelista"@en-us;
+                  arcaea:idx 50 ;
+                  arcaea:purchase "modelista"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "はいてっくにんじゃ"@ja,
+                                      "하이테크 닌자"@ko,
+                                      "もでりすた"@ja,
+                                      "모델리스타"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Modelista"@en;
+                  arcaea:version "1.1"@en-us.
+arcaea.modelista:FTR arcaea:chartDesigner arcaea:NITRO;
+                     arcaea:jacketDesigner "yusi."@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.modelista:PRS arcaea:chartDesigner arcaea:NITRO;
+                     arcaea:jacketDesigner "yusi."@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.modelista:PST arcaea:chartDesigner arcaea:NITRO;
+                     arcaea:jacketDesigner "yusi."@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

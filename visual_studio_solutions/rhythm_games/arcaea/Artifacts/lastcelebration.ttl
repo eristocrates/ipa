@@ -1,0 +1,45 @@
+@prefix arcaea.lastcelebration: <https://arcaea.lowiro.com/#lastcelebration#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lastcelebration:.
+arcaea.lastcelebration: arcaea:artist arcaea:Laur%20vs%20CK;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:chunithmthird_conflict;
+                        arcaea:bpm "238"@en-us;
+                        arcaea:bpm_base 238 ;
+                        arcaea:date 1611187201 ;
+                        arcaea:difficulties arcaea.lastcelebration:FTR,
+                                            arcaea.lastcelebration:PRS,
+                                            arcaea.lastcelebration:PST;
+                        arcaea:id "lastcelebration"@en-us;
+                        arcaea:idx 200 ;
+                        arcaea:no_stream true;
+                        arcaea:purchase "chunithm_append_1"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "らうる"@ja,
+                                            "しーけー"@ja,
+                                            "라우르"@ko,
+                                            "시케이"@ko,
+                                            "らすとせれぶれーしょん"@ja,
+                                            "라스트 셀레브레이션"@ko;
+                        arcaea:set "chunithm_append_1"@en-us;
+                        arcaea:side arcaea:conflict_side;
+                        arcaea:source_copyright "©SEGA"@en-us;
+                        arcaea:title_localized "Last Celebration"@en,
+                                               "CHUNITHM"@en;
+                        arcaea:version "3.5"@en-us;
+                        arcaea:world_unlock false.
+arcaea.lastcelebration:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20affected%20by%20'CHUNITHM'>;
+                           arcaea:rating 10 ;
+                           arcaea:ratingClass 2 .
+arcaea.lastcelebration:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20affected%20by%20'CHUNITHM'>;
+                           arcaea:rating 6 ;
+                           arcaea:ratingClass 1 .
+arcaea.lastcelebration:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20affected%20by%20'CHUNITHM'>;
+                           arcaea:rating 3 ;
+                           arcaea:ratingClass 0 .

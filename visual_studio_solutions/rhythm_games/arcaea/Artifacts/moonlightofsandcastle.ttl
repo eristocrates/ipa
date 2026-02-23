@@ -1,0 +1,44 @@
+@prefix arcaea.moonlightofsandcastle: <https://arcaea.lowiro.com/#moonlightofsandcastle#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.moonlightofsandcastle:.
+arcaea.moonlightofsandcastle: arcaea:artist arcaea:%E6%97%85%E4%BA%BAE;
+                              arcaea:audioPreview 55500 ;
+                              arcaea:audioPreviewEnd 82500 ;
+                              arcaea:bg arcaea:dynamix_light;
+                              arcaea:bg_inverse arcaea:dynamix_conflict;
+                              arcaea:bpm "160"@en-us;
+                              arcaea:bpm_base 160 ;
+                              arcaea:date 1498176001 ;
+                              arcaea:difficulties arcaea.moonlightofsandcastle:FTR,
+                                                  arcaea.moonlightofsandcastle:PRS,
+                                                  arcaea.moonlightofsandcastle:PST;
+                              arcaea:id "moonlightofsandcastle"@en-us;
+                              arcaea:idx 34 ;
+                              arcaea:no_stream true;
+                              arcaea:purchase "dynamix"@en-us;
+                              arcaea:remote_dl true;
+                              arcaea:search_title "たびびといー"@ja,
+                                                  "타비비토 이"@ko,
+                                                  "tabibito e"@en,
+                                                  "むーんらいとおぶさんどきゃっする"@ja,
+                                                  "문라이트 오브 샌드 캐슬"@ko;
+                              arcaea:set "dynamix"@en-us;
+                              arcaea:side arcaea:light_side;
+                              arcaea:title_localized "Moonlight of Sand Castle"@en,
+                                                     "Dynamix"@en;
+                              arcaea:version "1.1"@en-us.
+arcaea.moonlightofsandcastle:FTR arcaea:chartDesigner arcaea:Kurorak;
+                                 arcaea:rating 7 ;
+                                 arcaea:ratingClass 2 ;
+                                 arcaea:ratingPlus true.
+arcaea.moonlightofsandcastle:PRS arcaea:chartDesigner arcaea:Kurorak;
+                                 arcaea:rating 5 ;
+                                 arcaea:ratingClass 1 .
+arcaea.moonlightofsandcastle:PST arcaea:chartDesigner arcaea:Kurorak;
+                                 arcaea:rating 1 ;
+                                 arcaea:ratingClass 0 .

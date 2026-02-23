@@ -1,0 +1,64 @@
+﻿namespace Cco.Time.Namespace
+module Time =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://www.commoncoreontologies.org/" (Some @"https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-modules/TimeOntology.ttl") (Some @"cco.Time") None
+    let ExtendedRelationOntology = {_prefixID with _localName = "ExtendedRelationOntology"}
+    let TimeOntology = {_prefixID with _localName = "TimeOntology"}
+    let ``Multi-Hour_Temporal_Interval'ont00000063`` = {_prefixID with _localName = "ont00000063"}
+    let Minute'ont00000085 = {_prefixID with _localName = "ont00000085"}
+    let Unix_Temporal_Instant'ont00000114 = {_prefixID with _localName = "ont00000114"}
+    let Axial_Rotation_Period'ont00000184 = {_prefixID with _localName = "ont00000184"}
+    let ``Multi-Day_Temporal_Interval'ont00000211`` = {_prefixID with _localName = "ont00000211"}
+    let Time_of_Day'ont00000223 = {_prefixID with _localName = "ont00000223"}
+    let Month'ont00000225 = {_prefixID with _localName = "ont00000225"}
+    let Julian_Year'ont00000227 = {_prefixID with _localName = "ont00000227"}
+    let Calendar_Month'ont00000259 = {_prefixID with _localName = "ont00000259"}
+    let ``Multi-Month_Temporal_Interval'ont00000329`` = {_prefixID with _localName = "ont00000329"}
+    let Julian_Date'ont00000359 = {_prefixID with _localName = "ont00000359"}
+    let Gregorian_Year'ont00000425 = {_prefixID with _localName = "ont00000425"}
+    let Gregorian_Day'ont00000435 = {_prefixID with _localName = "ont00000435"}
+    let Modified_Julian_Date'ont00000465 = {_prefixID with _localName = "ont00000465"}
+    let Julian_Day'ont00000498 = {_prefixID with _localName = "ont00000498"}
+    let Morning'ont00000550 = {_prefixID with _localName = "ont00000550"}
+    let Week'ont00000619 = {_prefixID with _localName = "ont00000619"}
+    let Calendar_Year'ont00000674 = {_prefixID with _localName = "ont00000674"}
+    let Afternoon'ont00000699 = {_prefixID with _localName = "ont00000699"}
+    let Day'ont00000800 = {_prefixID with _localName = "ont00000800"}
+    let ``Multi-Week_Temporal_Interval'ont00000810`` = {_prefixID with _localName = "ont00000810"}
+    let Year'ont00000832 = {_prefixID with _localName = "ont00000832"}
+    let Calendar_Day'ont00000921 = {_prefixID with _localName = "ont00000921"}
+    let Second'ont00000992 = {_prefixID with _localName = "ont00000992"}
+    let Calendar_Week'ont00001023 = {_prefixID with _localName = "ont00001023"}
+    let Hour'ont00001058 = {_prefixID with _localName = "ont00001058"}
+    let Decade'ont00001088 = {_prefixID with _localName = "ont00001088"}
+    let Evening'ont00001110 = {_prefixID with _localName = "ont00001110"}
+    let Reference_Time'ont00001116 = {_prefixID with _localName = "ont00001116"}
+    let ``Multi-Second_Temporal_Interval'ont00001154`` = {_prefixID with _localName = "ont00001154"}
+    let ``Multi-Minute_Temporal_Interval'ont00001166`` = {_prefixID with _localName = "ont00001166"}
+    let Night'ont00001204 = {_prefixID with _localName = "ont00001204"}
+    let ``Multi-Year_Temporal_Interval'ont00001206`` = {_prefixID with _localName = "ont00001206"}
+    let ont00001753 = {_prefixID with _localName = "ont00001753"}
+    let ont00001754 = {_prefixID with _localName = "ont00001754"}
+    let ont00001760 = {_prefixID with _localName = "ont00001760"}
+    let has_inside_instant'ont00001779 = {_prefixID with _localName = "ont00001779"}
+    let has_inside_interval'ont00001795 = {_prefixID with _localName = "ont00001795"}
+    let interval_finishes'ont00001814 = {_prefixID with _localName = "ont00001814"}
+    let interval_finished_by'ont00001821 = {_prefixID with _localName = "ont00001821"}
+    let interval_equals'ont00001822 = {_prefixID with _localName = "ont00001822"}
+    let interval_overlaps'ont00001825 = {_prefixID with _localName = "ont00001825"}
+    let interval_is_after'ont00001847 = {_prefixID with _localName = "ont00001847"}
+    let is_inside_instant_of'ont00001848 = {_prefixID with _localName = "ont00001848"}
+    let interval_disjoint'ont00001862 = {_prefixID with _localName = "ont00001862"}
+    let interval_during'ont00001869 = {_prefixID with _localName = "ont00001869"}
+    let interval_overlapped_by'ont00001870 = {_prefixID with _localName = "ont00001870"}
+    let interval_started_by'ont00001875 = {_prefixID with _localName = "ont00001875"}
+    let instant_is_after'ont00001893 = {_prefixID with _localName = "ont00001893"}
+    let interval_meets'ont00001896 = {_prefixID with _localName = "ont00001896"}
+    let interval_met_by'ont00001915 = {_prefixID with _localName = "ont00001915"}
+    let interval_starts'ont00001923 = {_prefixID with _localName = "ont00001923"}
+    let interval_contains'ont00001924 = {_prefixID with _localName = "ont00001924"}
+    let interval_is_before'ont00001940 = {_prefixID with _localName = "ont00001940"}
+    let interval_contained_by'ont00001971 = {_prefixID with _localName = "ont00001971"}
+    let instant_is_before'ont00001990 = {_prefixID with _localName = "ont00001990"}
+    module ``2024_11_06_`` =
+        let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://www.commoncoreontologies.org/2024-11-06/" (Some @"https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-modules/TimeOntology.ttl") (Some "cco.Time.2024-11-06") None 
+        let TimeOntology = {_prefixID with _localName = "TimeOntology"}

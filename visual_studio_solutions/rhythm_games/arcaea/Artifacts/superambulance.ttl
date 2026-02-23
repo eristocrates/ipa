@@ -1,0 +1,45 @@
+@prefix arcaea.superambulance: <https://arcaea.lowiro.com/#superambulance#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.superambulance:.
+arcaea.superambulance: arcaea:artist arcaea:AJURIKA;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:ongeki_light;
+                       arcaea:bg_inverse arcaea:ongeki_conflict;
+                       arcaea:bpm "200"@en-us;
+                       arcaea:bpm_base 200 ;
+                       arcaea:date 1732147202 ;
+                       arcaea:difficulties arcaea.superambulance:FTR,
+                                           arcaea.superambulance:PRS,
+                                           arcaea.superambulance:PST;
+                       arcaea:id "superambulance"@en-us;
+                       arcaea:idx 425 ;
+                       arcaea:purchase "ongeki_append_2"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "あじゅりか"@ja,
+                                           "아쥬리카"@ko,
+                                           "아주리카"@ko,
+                                           "すーぱーあんびゅらんす"@ja,
+                                           "슈퍼 앰뷸런스"@ko,
+                                           "수퍼 앰뷸런스"@ko;
+                       arcaea:set "ongeki_append_2"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:source_copyright "©SEGA"@en-us;
+                       arcaea:title_localized "SUPER AMBULANCE"@en,
+                                              "O.N.G.E.K.I."@en;
+                       arcaea:version "6.0"@en-us;
+                       arcaea:world_unlock false.
+arcaea.superambulance:FTR arcaea:chartDesigner arcaea:moonquay%20v.MASTER;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 .
+arcaea.superambulance:PRS arcaea:chartDesigner arcaea:moonquay%20v.EXPERT;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.superambulance:PST arcaea:chartDesigner arcaea:moonquay%E3%80%90%E6%96%B0%E5%85%A5%E7%94%9F%E3%80%91;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

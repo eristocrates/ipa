@@ -1,0 +1,43 @@
+@prefix arcaea.worldexecuteme: <https://arcaea.lowiro.com/#worldexecuteme#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.worldexecuteme:.
+arcaea.worldexecuteme: arcaea:artist arcaea:Mili;
+                       arcaea:audioPreview 105230 ;
+                       arcaea:audioPreviewEnd 134269 ;
+                       arcaea:bg arcaea:prelude_light;
+                       arcaea:bg_inverse arcaea:prelude_conflict;
+                       arcaea:bpm "130"@en-us;
+                       arcaea:bpm_base 130 ;
+                       arcaea:date 1582243200 ;
+                       arcaea:difficulties arcaea.worldexecuteme:PRS,
+                                           arcaea.worldexecuteme:PST,
+                                           arcaea.worldexecuteme:FTR;
+                       arcaea:id "worldexecuteme"@en-us;
+                       arcaea:idx 150 ;
+                       arcaea:remote_dl false;
+                       arcaea:search_title "みり"@ja,
+                                           "밀리"@ko,
+                                           "わーるどえくぜきゅーとみー"@ja,
+                                           "월드 엑스큐트 미"@ko;
+                       arcaea:set "base"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "world.execute(me);"@en;
+                       arcaea:version "2.5"@en-us;
+                       arcaea:world_unlock false.
+arcaea.worldexecuteme:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#toaster.chart(this);>;
+                          arcaea:jacketDesigner "そゐち"@en-us;
+                          arcaea:rating 8 ;
+                          arcaea:ratingClass 2 .
+arcaea.worldexecuteme:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#toaster.chart(this);>;
+                          arcaea:jacketDesigner "そゐち"@en-us;
+                          arcaea:rating 5 ;
+                          arcaea:ratingClass 1 .
+arcaea.worldexecuteme:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#toaster.chart(this);>;
+                          arcaea:jacketDesigner "そゐち"@en-us;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

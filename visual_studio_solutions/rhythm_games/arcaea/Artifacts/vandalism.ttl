@@ -1,0 +1,49 @@
+@prefix arcaea.vandalism: <https://arcaea.lowiro.com/#vandalism#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.vandalism:.
+arcaea.vandalism: arcaea:artist arcaea:Ashrount;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:prelude_conflict;
+                  arcaea:bg_inverse arcaea:prelude_light;
+                  arcaea:bpm "194"@en-us;
+                  arcaea:bpm_base 194 ;
+                  arcaea:date 1620691208 ;
+                  arcaea:difficulties arcaea.vandalism:FTR,
+                                      arcaea.vandalism:PRS,
+                                      arcaea.vandalism:PST;
+                  arcaea:id "vandalism"@en-us;
+                  arcaea:idx 217 ;
+                  arcaea:purchase "extend"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "あしゅらうんと"@ja,
+                                      "애쉬라운트"@ko,
+                                      "애쉬런트"@ko,
+                                      "애시라운트"@ko,
+                                      "애시런트"@ko,
+                                      "ばんだりずむ"@ja,
+                                      "ゔぁんだりずむ"@ja,
+                                      "반달리즘"@ko;
+                  arcaea:set "extend"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Vandalism"@en;
+                  arcaea:version "3.6"@en-us;
+                  arcaea:world_unlock true.
+arcaea.vandalism:FTR arcaea:chartDesigner arcaea:Kurorak;
+                     arcaea:jacketDesigner "Asagon."@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.vandalism:PRS arcaea:chartDesigner arcaea:Kurorak;
+                     arcaea:jacketDesigner "Asagon."@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.vandalism:PST arcaea:chartDesigner arcaea:Kurorak;
+                     arcaea:jacketDesigner "Asagon."@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

@@ -139,24 +139,7 @@ module Artifact =
     module LovFailures =
         let txt = "LovFailures.txt"
 
-    module PrefixDeclaration =
-        let fsx = "PrefixDeclaration.fsx"
-        let fs = "PrefixDeclaration.fs"
 
-    module Infor =
-        let Hansen8Directory =
-            $"""{surfaceDirectory}\Leon_County\OIT\MIS\Infor\Servers\InforProd\D\www\production\operations"""
-
-        module Monikers_debug =
-            let basename = "Monikers_debug"
-            let config = $"""{Hansen8Directory}\Config\Monikers\Monikers_debug.config"""
-            let ttl = "Artifact/Monikers_debug.ttl"
-            let syntax'ttl = "Artifact/Monikers_debug.syntax.ttl"
-            let xmlDocument = XDocument.Load(config)
-            let xpathNavigator = xmlDocument.Root.CreateNavigator()
-
-    module Stormwater =
-        let ttl = "Artifact/Stormwater.ttl"
 
 module Fsharp =
     module Identifier =

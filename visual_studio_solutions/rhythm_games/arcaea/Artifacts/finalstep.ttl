@@ -1,0 +1,43 @@
+@prefix arcaea.finalstep: <https://arcaea.lowiro.com/#finalstep#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.finalstep:.
+arcaea.finalstep: arcaea:artist arcaea:Lime;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:musedash_conflict;
+                  arcaea:bg_inverse arcaea:musedash_light;
+                  arcaea:bpm "180"@en-us;
+                  arcaea:bpm_base 180 ;
+                  arcaea:date 1640304000 ;
+                  arcaea:difficulties arcaea.finalstep:FTR,
+                                      arcaea.finalstep:PRS,
+                                      arcaea.finalstep:PST;
+                  arcaea:id "finalstep"@en-us;
+                  arcaea:idx 250 ;
+                  arcaea:no_stream true;
+                  arcaea:purchase "musedash"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "らいむ"@ja,
+                                      "라임"@ko,
+                                      "ふぁいなるすてっぷ"@ja,
+                                      "파이널 스텝"@ko;
+                  arcaea:set "musedash"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Final Step!"@en,
+                                         "Muse Dash"@en;
+                  arcaea:version "3.11"@en-us;
+                  arcaea:world_unlock false.
+arcaea.finalstep:FTR arcaea:chartDesigner arcaea:CERiNG;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.finalstep:PRS arcaea:chartDesigner arcaea:CERiNG;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.finalstep:PST arcaea:chartDesigner arcaea:CERiNG;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

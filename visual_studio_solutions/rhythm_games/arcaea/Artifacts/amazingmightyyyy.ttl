@@ -1,0 +1,46 @@
+@prefix arcaea.amazingmightyyyy: <https://arcaea.lowiro.com/#amazingmightyyyy#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.amazingmightyyyy:.
+arcaea.amazingmightyyyy: arcaea:artist arcaea:WAiKURO;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:maimai_boss;
+                         arcaea:bpm "185"@en-us;
+                         arcaea:bpm_base 185 ;
+                         arcaea:date 1610064003 ;
+                         arcaea:difficulties arcaea.amazingmightyyyy:FTR,
+                                             arcaea.amazingmightyyyy:PRS,
+                                             arcaea.amazingmightyyyy:PST;
+                         arcaea:id "amazingmightyyyy"@en-us;
+                         arcaea:idx 198 ;
+                         arcaea:no_stream true;
+                         arcaea:purchase "maimai"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "わいくろ"@ja,
+                                             "와이쿠로"@ko,
+                                             "あめいじんぐまいてぃぃいい"@ja,
+                                             "あめーじんぐまいてぃぃいい"@ja,
+                                             "어메이징 마이티이이이이"@ko;
+                         arcaea:set "maimai"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:source_copyright "©SEGA"@en-us;
+                         arcaea:title_localized "AMAZING MIGHTYYYY!!!!"@en,
+                                                "maimai"@en;
+                         arcaea:version "3.4"@en-us;
+                         arcaea:world_unlock false.
+arcaea.amazingmightyyyy:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#AMAZING%20TOASTYYYY!!!!>;
+                            arcaea:rating 10 ;
+                            arcaea:ratingClass 2 ;
+                            arcaea:ratingPlus true.
+arcaea.amazingmightyyyy:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#AMAZING%20TOASTYYYY!!!!>;
+                            arcaea:rating 7 ;
+                            arcaea:ratingClass 1 ;
+                            arcaea:ratingPlus true.
+arcaea.amazingmightyyyy:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#AMAZING%20TOASTYYYY!!!!>;
+                            arcaea:rating 4 ;
+                            arcaea:ratingClass 0 .

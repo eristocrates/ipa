@@ -1,0 +1,43 @@
+@prefix arcaea.worldfragments: <https://arcaea.lowiro.com/#worldfragments#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.worldfragments:.
+arcaea.worldfragments: arcaea:artist arcaea:xi;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:prelude_light;
+                       arcaea:bg_inverse arcaea:prelude_conflict;
+                       arcaea:bpm "200"@en-us;
+                       arcaea:bpm_base 200 ;
+                       arcaea:date 1674691202 ;
+                       arcaea:difficulties arcaea.worldfragments:FTR,
+                                           arcaea.worldfragments:PRS,
+                                           arcaea.worldfragments:PST;
+                       arcaea:id "worldfragments"@en-us;
+                       arcaea:idx 296 ;
+                       arcaea:purchase "extend_2"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "さい"@ja,
+                                           "사이"@ko,
+                                           "わーるどふらぐめんつすりー"@ja,
+                                           "월드 프래그먼트 쓰리"@ko,
+                                           "월드 프래그먼츠 스리"@ko;
+                       arcaea:set "extend_2"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "World Fragments III(radio edit)"@en;
+                       arcaea:version "4.2"@en-us;
+                       arcaea:world_unlock true.
+arcaea.worldfragments:FTR arcaea:chartDesigner arcaea:%C3%A9n%20supported%20by%20Nitro;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.worldfragments:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.worldfragments:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

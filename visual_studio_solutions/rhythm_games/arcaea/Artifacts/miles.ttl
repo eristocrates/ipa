@@ -1,0 +1,50 @@
+@prefix arcaea.miles: <https://arcaea.lowiro.com/#miles#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.miles:.
+arcaea.miles: arcaea:artist arcaea:Electronic%20Boutique;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:djmax_light;
+              arcaea:bg_inverse arcaea:djmax_conflict;
+              arcaea:bpm "130"@en-us;
+              arcaea:bpm_base 130 ;
+              arcaea:category arcaea:musicgames;
+              arcaea:date 1750896002 ;
+              arcaea:difficulties arcaea.miles:FTR,
+                                  arcaea.miles:PRS,
+                                  arcaea.miles:PST,
+                                  arcaea.miles:ETR;
+              arcaea:id "miles"@en-us;
+              arcaea:idx 466 ;
+              arcaea:purchase "miles"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "えれくとろにっくぶてぃっく"@ja,
+                                  "일렉트릭 부티크"@ko,
+                                  "일렉트릭 부띠끄"@ko,
+                                  "まいるす"@ja,
+                                  "마일스"@ko;
+              arcaea:set "single"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:source_copyright "© Neowiz. All Rights Reserved."@en-us;
+              arcaea:title_localized "Miles"@en,
+                                     "DJMAX"@en;
+              arcaea:version "6.6"@en-us;
+              arcaea:world_unlock false.
+arcaea.miles:ETR arcaea:chartDesigner arcaea:Interator;
+                 arcaea:rating 9 ;
+                 arcaea:ratingClass 4 ;
+                 arcaea:ratingPlus true.
+arcaea.miles:FTR arcaea:chartDesigner arcaea:Interator;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 2 .
+arcaea.miles:PRS arcaea:chartDesigner arcaea:Interator;
+                 arcaea:rating 6 ;
+                 arcaea:ratingClass 1 .
+arcaea.miles:PST arcaea:chartDesigner arcaea:Interator;
+                 arcaea:rating 3 ;
+                 arcaea:ratingClass 0 .

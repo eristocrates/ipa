@@ -1,0 +1,46 @@
+@prefix arcaea.iconoclast: <https://arcaea.lowiro.com/#iconoclast#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.iconoclast:.
+arcaea.iconoclast: arcaea:artist arcaea:Yamajet;
+                   arcaea:audioPreview 35996 ;
+                   arcaea:audioPreviewEnd 63425 ;
+                   arcaea:bg arcaea:yugamu;
+                   arcaea:bg_inverse arcaea:rei;
+                   arcaea:bpm "140"@en-us;
+                   arcaea:bpm_base 140 ;
+                   arcaea:date 1509667203 ;
+                   arcaea:difficulties arcaea.iconoclast:FTR,
+                                       arcaea.iconoclast:PRS,
+                                       arcaea.iconoclast:PST;
+                   arcaea:id "iconoclast"@en-us;
+                   arcaea:idx 53 ;
+                   arcaea:purchase "yugamu"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "やまじぇっと"@ja,
+                                       "야마젯"@ko,
+                                       "야마제트"@ko,
+                                       "いこのくらすと"@ja,
+                                       "あいこのくらすと"@ja,
+                                       "아이코노클래스트"@ko,
+                                       "아이코노클라스트"@ko;
+                   arcaea:set "yugamu"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Iconoclast"@en;
+                   arcaea:version "1.5"@en-us.
+arcaea.iconoclast:FTR arcaea:chartDesigner arcaea:Toaster;
+                      arcaea:jacketDesigner "SKT"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.iconoclast:PRS arcaea:chartDesigner arcaea:Toaster;
+                      arcaea:jacketDesigner "SKT"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 .
+arcaea.iconoclast:PST arcaea:chartDesigner arcaea:Toaster;
+                      arcaea:jacketDesigner "SKT"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

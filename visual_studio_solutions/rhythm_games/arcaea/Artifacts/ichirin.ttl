@@ -1,0 +1,47 @@
+@prefix arcaea.ichirin: <https://arcaea.lowiro.com/#ichirin#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ichirin:.
+arcaea.ichirin: arcaea:artist <https://arcaea.lowiro.com/#Kolaa%20&%20熊子>;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:prelude_light;
+                arcaea:bg_inverse arcaea:prelude_conflict;
+                arcaea:bpm "145"@en-us;
+                arcaea:bpm_base 145 ;
+                arcaea:date 1711324801 ;
+                arcaea:difficulties arcaea.ichirin:FTR,
+                                    arcaea.ichirin:PRS,
+                                    arcaea.ichirin:PST;
+                arcaea:id "ichirin"@en-us;
+                arcaea:idx 379 ;
+                arcaea:purchase "extend_3"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "こーらー"@ja,
+                                    "くまこ"@ja,
+                                    "콜라아"@ko,
+                                    "いちりん"@ja,
+                                    "이치린"@ko,
+                                    "ichirin"@en;
+                arcaea:set "extend_3"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "、"@ko,
+                                       "〇、"@en;
+                arcaea:version "5.5"@en-us;
+                arcaea:world_unlock true.
+arcaea.ichirin:FTR arcaea:chartDesigner arcaea:CERiNG%E3%80%81;
+                   arcaea:jacketDesigner "毛腿猪兔子 & Kolaa"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.ichirin:PRS arcaea:chartDesigner arcaea:CERiNG%E3%80%81;
+                   arcaea:jacketDesigner "毛腿猪兔子 & Kolaa"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.ichirin:PST arcaea:chartDesigner arcaea:CERiNG%E3%80%81;
+                   arcaea:jacketDesigner "毛腿猪兔子 & Kolaa"@en-us;
+                   arcaea:rating 2 ;
+                   arcaea:ratingClass 0 .

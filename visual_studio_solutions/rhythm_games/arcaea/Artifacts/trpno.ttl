@@ -1,0 +1,49 @@
+@prefix arcaea.trpno: <https://arcaea.lowiro.com/#trpno#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.trpno:.
+arcaea.trpno: arcaea:artist arcaea:Nauts;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:alice_light;
+              arcaea:bg_inverse arcaea:alice_conflict;
+              arcaea:bpm "150"@en-us;
+              arcaea:bpm_base 150 ;
+              arcaea:date 1743033602 ;
+              arcaea:difficulties arcaea.trpno:PRS,
+                                  arcaea.trpno:PST,
+                                  arcaea.trpno:FTR;
+              arcaea:id "trpno"@en-us;
+              arcaea:idx 453 ;
+              arcaea:purchase "extend_3"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "のーつ"@ja,
+                                  "너츠"@ko,
+                                  "てぃーあーるぴーえぬおー"@ja,
+                                  "とらんぺっとぴあの"@ja,
+                                  "티알피엔오"@ko,
+                                  "트럼펫 피아노"@ko;
+              arcaea:set "extend_3"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:source_copyright "©Neonovice / SQUARE PIXELS"@en-us;
+              arcaea:title_localized "TRPNO"@en,
+                                     "EZ2ON"@en;
+              arcaea:version "6.3"@en-us;
+              arcaea:world_unlock true.
+arcaea.trpno:FTR arcaea:chartDesigner arcaea:raycast;
+                 arcaea:jacketDesigner "BBBBB_old"@en-us;
+                 arcaea:rating 10 ;
+                 arcaea:ratingClass 2 .
+arcaea.trpno:PRS arcaea:chartDesigner arcaea:raycast;
+                 arcaea:jacketDesigner "BBBBB_old"@en-us;
+                 arcaea:rating 7 ;
+                 arcaea:ratingClass 1 ;
+                 arcaea:ratingPlus true.
+arcaea.trpno:PST arcaea:chartDesigner arcaea:raycast;
+                 arcaea:jacketDesigner "BBBBB_old"@en-us;
+                 arcaea:rating 4 ;
+                 arcaea:ratingClass 0 .

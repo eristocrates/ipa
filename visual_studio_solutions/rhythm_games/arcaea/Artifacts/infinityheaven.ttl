@@ -1,0 +1,54 @@
+@prefix arcaea.infinityheaven: <https://arcaea.lowiro.com/#infinityheaven#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.infinityheaven:.
+arcaea.infinityheaven: arcaea:artist arcaea:HyuN;
+                       arcaea:audioPreview 49500 ;
+                       arcaea:audioPreviewEnd 73500 ;
+                       arcaea:bg arcaea:base_light;
+                       arcaea:bg_inverse arcaea:base_conflict;
+                       arcaea:bpm "160"@en-us;
+                       arcaea:bpm_base 160 ;
+                       arcaea:date 1491868800 ;
+                       arcaea:difficulties arcaea.infinityheaven:BYD,
+                                           arcaea.infinityheaven:FTR,
+                                           arcaea.infinityheaven:PRS,
+                                           arcaea.infinityheaven:PST;
+                       arcaea:id "infinityheaven"@en-us;
+                       arcaea:idx 22 ;
+                       arcaea:search_title "ひゅん"@ja,
+                                           "휸"@ko,
+                                           "현"@ko,
+                                           "いんふぃにてぃへぶん"@ja,
+                                           "いんふぃにてぃーへぶん"@ja,
+                                           "いんふぃにてぃへゔん"@ja,
+                                           "いんふぃにてぃーへゔん"@ja,
+                                           "인피니티 헤븐"@ko;
+                       arcaea:set "base"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Infinity Heaven"@en;
+                       arcaea:version "1.0"@en-us.
+arcaea.infinityheaven:BYD arcaea:chartDesigner arcaea:Nitr%E2%88%9E;
+                          arcaea:date 1590537602 ;
+                          arcaea:jacketDesigner "Tagtraume"@en-us;
+                          arcaea:jacketOverride true;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 3 ;
+                          arcaea:version "3.0"@en-us.
+arcaea.infinityheaven:FTR arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:jacketDesigner "Tagtraume"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.infinityheaven:PRS arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:jacketDesigner "Tagtraume"@en-us;
+                          arcaea:rating 5 ;
+                          arcaea:ratingClass 1 .
+arcaea.infinityheaven:PST arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:jacketDesigner "Tagtraume"@en-us;
+                          arcaea:rating 1 ;
+                          arcaea:ratingClass 0 .

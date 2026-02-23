@@ -1,0 +1,50 @@
+@prefix arcaea.vainspire: <https://arcaea.lowiro.com/#vainspire#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.vainspire:.
+arcaea.vainspire: arcaea:artist arcaea:satella;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:eclipse_conflict;
+                  arcaea:bg_inverse arcaea:eclipse_light;
+                  arcaea:bpm "180"@en-us;
+                  arcaea:bpm_base 180 ;
+                  arcaea:date 1759363202 ;
+                  arcaea:difficulties arcaea.vainspire:FTR,
+                                      arcaea.vainspire:PRS,
+                                      arcaea.vainspire:PST,
+                                      arcaea.vainspire:ETR;
+                  arcaea:id "vainspire"@en-us;
+                  arcaea:idx 488 ;
+                  arcaea:purchase "eclipse"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "さてら"@ja,
+                                      "사텔라"@ko,
+                                      "ゔぇいんすぱいあ"@ja,
+                                      "베인스파이어"@ko;
+                  arcaea:set "eclipse"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Vainspire"@en;
+                  arcaea:version "6.9"@en-us;
+                  arcaea:world_unlock false.
+arcaea.vainspire:ETR arcaea:chartDesigner arcaea:%7Ckarat%7C;
+                     arcaea:jacketDesigner "Ugi"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 4 ;
+                     arcaea:ratingPlus true.
+arcaea.vainspire:FTR arcaea:chartDesigner arcaea:%7Ckarat%7C;
+                     arcaea:jacketDesigner "Ugi"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 .
+arcaea.vainspire:PRS arcaea:chartDesigner arcaea:%7Ckarat%7C;
+                     arcaea:jacketDesigner "Ugi"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.vainspire:PST arcaea:chartDesigner arcaea:%7Ckarat%7C;
+                     arcaea:jacketDesigner "Ugi"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

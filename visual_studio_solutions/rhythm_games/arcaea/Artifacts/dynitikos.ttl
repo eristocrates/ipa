@@ -1,0 +1,48 @@
+@prefix arcaea.dynitikos: <https://arcaea.lowiro.com/#dynitikos#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dynitikos:.
+arcaea.dynitikos: arcaea:artist arcaea:Prower;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:nijuusei2_conflict;
+                  arcaea:bg_inverse arcaea:nijuusei2_light;
+                  arcaea:bpm "180"@en-us;
+                  arcaea:bpm_base 180 ;
+                  arcaea:date 1695772801 ;
+                  arcaea:difficulties arcaea.dynitikos:FTR,
+                                      arcaea.dynitikos:PRS,
+                                      arcaea.dynitikos:PST;
+                  arcaea:id "dynitikos"@en-us;
+                  arcaea:idx 345 ;
+                  arcaea:purchase "extend_2"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ぷらわー"@ja,
+                                      "프라우어"@ko,
+                                      "프로워"@ko,
+                                      "でぃにてぃこす"@ja,
+                                      "でぃにてぃこーす"@ja,
+                                      "디니티코스"@ko,
+                                      "dynitikos"@en;
+                  arcaea:set "extend_2"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Dynitikos"@ko,
+                                         "Dynitikós"@en;
+                  arcaea:version "5.0"@en-us;
+                  arcaea:world_unlock true.
+arcaea.dynitikos:FTR arcaea:chartDesigner arcaea:Exschwasi%C3%B3n;
+                     arcaea:jacketDesigner "AT基調"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.dynitikos:PRS arcaea:chartDesigner arcaea:Exschwasi%C3%B3n;
+                     arcaea:jacketDesigner "AT基調"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.dynitikos:PST arcaea:chartDesigner arcaea:Exschwasi%C3%B3n;
+                     arcaea:jacketDesigner "AT基調"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

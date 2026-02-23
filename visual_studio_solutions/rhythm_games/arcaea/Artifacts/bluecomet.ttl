@@ -1,0 +1,44 @@
+@prefix arcaea.bluecomet: <https://arcaea.lowiro.com/#bluecomet#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.bluecomet:.
+arcaea.bluecomet: arcaea:artist arcaea:%E3%81%82%E3%81%82%E3%81%82%E3%81%82;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:nijuusei-light-b;
+                  arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+                  arcaea:bpm "100-172"@en-us;
+                  arcaea:bpm_base 172 ;
+                  arcaea:date 1629849601 ;
+                  arcaea:difficulties arcaea.bluecomet:PRS,
+                                      arcaea.bluecomet:PST,
+                                      arcaea.bluecomet:FTR;
+                  arcaea:id "bluecomet"@en-us;
+                  arcaea:idx 234 ;
+                  arcaea:purchase "extend"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "아아아아"@ko,
+                                      "aaaa"@en,
+                                      "ぶるーこめっと"@ja,
+                                      "블루 코멧"@ko;
+                  arcaea:set "extend"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "blue comet"@en;
+                  arcaea:version "3.8"@en-us;
+                  arcaea:world_unlock true.
+arcaea.bluecomet:FTR arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "Bison"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 .
+arcaea.bluecomet:PRS arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "Bison"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 1 .
+arcaea.bluecomet:PST arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "Bison"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

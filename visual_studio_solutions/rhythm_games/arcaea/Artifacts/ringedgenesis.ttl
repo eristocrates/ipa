@@ -1,0 +1,44 @@
+@prefix arcaea.ringedgenesis: <https://arcaea.lowiro.com/#ringedgenesis#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ringedgenesis:.
+arcaea.ringedgenesis: arcaea:artist arcaea:Edelritter;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:ringedgenesis;
+                      arcaea:bpm "160"@en-us;
+                      arcaea:bpm_base 160 ;
+                      arcaea:date 1563408004 ;
+                      arcaea:difficulties arcaea.ringedgenesis:PRS,
+                                          arcaea.ringedgenesis:PST,
+                                          arcaea.ringedgenesis:FTR;
+                      arcaea:id "ringedgenesis"@en-us;
+                      arcaea:idx 130 ;
+                      arcaea:purchase "prelude"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "えーでるりったー"@ja,
+                                          "에델리터"@ko,
+                                          "りんぐどじぇねしす"@ja,
+                                          "링드 제네시스"@ko;
+                      arcaea:set "prelude"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "Ringed Genesis"@en;
+                      arcaea:version "2.2"@en-us;
+                      arcaea:world_unlock false.
+arcaea.ringedgenesis:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20vs%20Nitro;
+                         arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.ringedgenesis:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20vs%20Nitro;
+                         arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 1 .
+arcaea.ringedgenesis:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20vs%20Nitro;
+                         arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 5 ;
+                         arcaea:ratingClass 0 .

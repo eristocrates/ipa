@@ -1,0 +1,47 @@
+@prefix arcaea.dazzlehop: <https://arcaea.lowiro.com/#dazzlehop#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dazzlehop:.
+arcaea.dazzlehop: arcaea:artist arcaea:Sampling%20Masters%20MEGA;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:ongeki_conflict;
+                  arcaea:bg_inverse arcaea:ongeki_light;
+                  arcaea:bpm "220"@en-us;
+                  arcaea:bpm_base 220 ;
+                  arcaea:date 1608163201 ;
+                  arcaea:difficulties arcaea.dazzlehop:FTR,
+                                      arcaea.dazzlehop:PRS,
+                                      arcaea.dazzlehop:PST;
+                  arcaea:id "dazzlehop"@en-us;
+                  arcaea:idx 192 ;
+                  arcaea:no_stream true;
+                  arcaea:purchase "ongeki"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "さんぷりんぐますたーずめが"@ja,
+                                      "샘플링 마스터즈 메가"@ko,
+                                      "샘플링 마스터스 메가"@ko,
+                                      "だずるほっぷ"@ja,
+                                      "대즐 합"@ko,
+                                      "대즐 홉"@ko;
+                  arcaea:set "ongeki"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "©SEGA"@en-us;
+                  arcaea:title_localized "Dazzle hop"@en,
+                                         "O.N.G.E.K.I."@en;
+                  arcaea:version "3.4"@en-us;
+                  arcaea:world_unlock false.
+arcaea.dazzlehop:FTR arcaea:chartDesigner arcaea:Kuro%20rak;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.dazzlehop:PRS arcaea:chartDesigner arcaea:Kuro%20rak;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.dazzlehop:PST arcaea:chartDesigner arcaea:Kuro%20rak;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,46 @@
+@prefix arcaea.eccentrictale: <https://arcaea.lowiro.com/#eccentrictale#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.eccentrictale:.
+arcaea.eccentrictale: arcaea:artist arcaea:Yamajet;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:alice_conflict;
+                      arcaea:bg_inverse arcaea:alice_light;
+                      arcaea:bpm "132"@en-us;
+                      arcaea:bpm_base 132 ;
+                      arcaea:date 1606953601 ;
+                      arcaea:difficulties arcaea.eccentrictale:PRS,
+                                          arcaea.eccentrictale:PST,
+                                          arcaea.eccentrictale:FTR;
+                      arcaea:id "eccentrictale"@en-us;
+                      arcaea:idx 184 ;
+                      arcaea:purchase "alice"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "やまじぇっと"@ja,
+                                          "야마젯"@ko,
+                                          "야마제트"@ko,
+                                          "えきせんとりっくてーる"@ja,
+                                          "えきせんとりっくている"@ja,
+                                          "에센트릭 테일"@ko;
+                      arcaea:set "alice"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Eccentric Tale"@en;
+                      arcaea:version "3.3"@en-us;
+                      arcaea:world_unlock false.
+arcaea.eccentrictale:FTR arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 2 .
+arcaea.eccentrictale:PRS arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 5 ;
+                         arcaea:ratingClass 1 .
+arcaea.eccentrictale:PST arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 2 ;
+                         arcaea:ratingClass 0 .

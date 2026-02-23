@@ -1,0 +1,43 @@
+@prefix arcaea.hikari: <https://arcaea.lowiro.com/#hikari#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.hikari:.
+arcaea.hikari: arcaea:artist arcaea:THB;
+               arcaea:audioPreview 96923 ;
+               arcaea:audioPreviewEnd 125961 ;
+               arcaea:bg arcaea:tonesphere-darksphere;
+               arcaea:bg_inverse arcaea:tonesphere-solarsphere;
+               arcaea:bpm "130"@en-us;
+               arcaea:bpm_base 130 ;
+               arcaea:date 1538870400 ;
+               arcaea:difficulties arcaea.hikari:FTR,
+                                   arcaea.hikari:PRS,
+                                   arcaea.hikari:PST;
+               arcaea:id "hikari"@en-us;
+               arcaea:idx 96 ;
+               arcaea:no_stream true;
+               arcaea:purchase "tonesphere"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "てぃーえいちびー"@ja,
+                                   "티에이치비"@ko,
+                                   "ひかり"@ja,
+                                   "히카리"@ko;
+               arcaea:set "tonesphere"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "光"@ja,
+                                      "Hikari"@en,
+                                      "Tone Sphere"@en;
+               arcaea:version "1.8"@en-us.
+arcaea.hikari:FTR arcaea:chartDesigner arcaea:OptoNuke;
+                  arcaea:rating 8 ;
+                  arcaea:ratingClass 2 .
+arcaea.hikari:PRS arcaea:chartDesigner arcaea:OptoNuke;
+                  arcaea:rating 6 ;
+                  arcaea:ratingClass 1 .
+arcaea.hikari:PST arcaea:chartDesigner arcaea:OptoNuke;
+                  arcaea:rating 2 ;
+                  arcaea:ratingClass 0 .

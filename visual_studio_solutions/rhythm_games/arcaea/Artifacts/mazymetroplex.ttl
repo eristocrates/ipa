@@ -1,0 +1,48 @@
+@prefix arcaea.mazymetroplex: <https://arcaea.lowiro.com/#mazymetroplex#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mazymetroplex:.
+arcaea.mazymetroplex: arcaea:artist arcaea:aran;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:wacca_light;
+                      arcaea:bg_inverse arcaea:wacca_conflict;
+                      arcaea:bpm "155"@en-us;
+                      arcaea:bpm_base 155 ;
+                      arcaea:date 1628553603 ;
+                      arcaea:difficulties arcaea.mazymetroplex:FTR,
+                                          arcaea.mazymetroplex:PRS,
+                                          arcaea.mazymetroplex:PST;
+                      arcaea:id "mazymetroplex"@en-us;
+                      arcaea:idx 227 ;
+                      arcaea:no_stream true;
+                      arcaea:purchase "wacca"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "あらん"@ja,
+                                          "아란"@ko,
+                                          "めいじーめとろぷれくす"@ja,
+                                          "めいじーめとろぷれっくす"@ja,
+                                          "めーじーめとろぷれくす"@ja,
+                                          "めーじーめとろぷれっくす"@ja,
+                                          "메이지 메트로플렉스"@ko;
+                      arcaea:set "wacca"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:source_copyright "©Marvelous Inc. / Supported by HARDCORE TANO*C"@en-us;
+                      arcaea:title_localized "Mazy Metroplex"@en;
+                      arcaea:version "3.8"@en-us;
+                      arcaea:world_unlock false.
+arcaea.mazymetroplex:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.mazymetroplex:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.mazymetroplex:PST arcaea:chartDesigner arcaea:Exschwasion;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

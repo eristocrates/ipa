@@ -1,0 +1,44 @@
+@prefix arcaea.oshamascramble: <https://arcaea.lowiro.com/#oshamascramble#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.oshamascramble:.
+arcaea.oshamascramble: arcaea:artist <https://arcaea.lowiro.com/#t+pazolite>;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:maimai_light;
+                       arcaea:bg_inverse arcaea:maimai_conflict;
+                       arcaea:bpm "190"@en-us;
+                       arcaea:bpm_base 190 ;
+                       arcaea:date 1610064002 ;
+                       arcaea:difficulties arcaea.oshamascramble:PRS,
+                                           arcaea.oshamascramble:PST,
+                                           arcaea.oshamascramble:FTR;
+                       arcaea:id "oshamascramble"@en-us;
+                       arcaea:idx 197 ;
+                       arcaea:no_stream true;
+                       arcaea:purchase "maimai"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "とぱぞらいと"@ja,
+                                           "토파졸라이트"@ko,
+                                           "おしゃますくらんぶる"@ja,
+                                           "오샤마 스크램블!"@ko;
+                       arcaea:set "maimai"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:source_copyright "©SEGA"@en-us;
+                       arcaea:title_localized "Oshama Scramble!"@en,
+                                              "maimai"@en;
+                       arcaea:version "3.4"@en-us;
+                       arcaea:world_unlock false.
+arcaea.oshamascramble:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro!+999牛乳>;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 .
+arcaea.oshamascramble:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro!+99牛乳>;
+                          arcaea:rating 6 ;
+                          arcaea:ratingClass 1 .
+arcaea.oshamascramble:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro!+9牛乳>;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

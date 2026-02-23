@@ -1,0 +1,48 @@
+@prefix arcaea.wishuponasnow: <https://arcaea.lowiro.com/#wishuponasnow#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.wishuponasnow:.
+arcaea.wishuponasnow: arcaea:artist arcaea:%E6%89%93%E6%89%93%E3%81%A0%E3%81%84%E3%81%9A;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:eden_light;
+                      arcaea:bg_inverse arcaea:eden_conflict;
+                      arcaea:bpm "218"@en-us;
+                      arcaea:bpm_base 218 ;
+                      arcaea:category arcaea:original;
+                      arcaea:date 1701302406 ;
+                      arcaea:difficulties arcaea.wishuponasnow:PRS,
+                                          arcaea.wishuponasnow:PST,
+                                          arcaea.wishuponasnow:FTR;
+                      arcaea:id "wishuponasnow"@en-us;
+                      arcaea:idx 363 ;
+                      arcaea:purchase "wishuponasnow"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "だだだいず"@ja,
+                                          "다다다이즈"@ko,
+                                          "dadadaizu"@en,
+                                          "dddice"@en,
+                                          "うぃっしゅあぽんあすのー"@ja,
+                                          "うぃっしゅあぽんあすのう"@ja,
+                                          "위시 어폰 어 스노우"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "Wish Upon a Snow"@en;
+                      arcaea:version "5.2"@en-us;
+                      arcaea:world_unlock false.
+arcaea.wishuponasnow:FTR arcaea:chartDesigner arcaea:0%C2%B0%E7%B5%B6%E6%BB%85;
+                         arcaea:jacketDesigner "桶乃かもく"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 .
+arcaea.wishuponasnow:PRS arcaea:chartDesigner arcaea:0%C2%B0%E7%B5%B6%E6%BB%85;
+                         arcaea:jacketDesigner "桶乃かもく"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 .
+arcaea.wishuponasnow:PST arcaea:chartDesigner arcaea:0%C2%B0%E7%B5%B6%E6%BB%85;
+                         arcaea:jacketDesigner "桶乃かもく"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

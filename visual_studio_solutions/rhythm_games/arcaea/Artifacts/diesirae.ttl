@@ -1,0 +1,53 @@
+@prefix arcaea.diesirae: <https://arcaea.lowiro.com/#diesirae#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.diesirae:.
+arcaea.diesirae: arcaea:artist arcaea:%E3%81%8A%E6%9C%88%E3%81%95%E3%81%BE%E4%BA%A4%E9%9F%BF%E6%9B%B2;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:hime_conflict;
+                 arcaea:bg_inverse arcaea:hime_light;
+                 arcaea:bpm "172"@en-us;
+                 arcaea:bpm_base 172 ;
+                 arcaea:category arcaea:original;
+                 arcaea:date 1729728004 ;
+                 arcaea:difficulties arcaea.diesirae:FTR,
+                                     arcaea.diesirae:PRS,
+                                     arcaea.diesirae:PST,
+                                     arcaea.diesirae:ETR;
+                 arcaea:id "diesirae"@en-us;
+                 arcaea:idx 422 ;
+                 arcaea:purchase "diesirae"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "おつきさまこうきょうきょく"@ja,
+                                     "오츠키사마코우쿄우쿄쿠"@ko,
+                                     "달님 교향곡"@ko,
+                                     "otsukisamakoukyoukyoku"@en,
+                                     "でぃえすいれ"@ja,
+                                     "でぃえすいらえ"@ja,
+                                     "디에스 이레"@ko;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "Dies irae"@en;
+                 arcaea:version "5.10"@en-us;
+                 arcaea:world_unlock false.
+arcaea.diesirae:ETR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                    arcaea:jacketDesigner "michele"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 4 .
+arcaea.diesirae:FTR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                    arcaea:jacketDesigner "michele"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.diesirae:PRS arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                    arcaea:jacketDesigner "michele"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.diesirae:PST arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                    arcaea:jacketDesigner "michele"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

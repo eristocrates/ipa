@@ -1,0 +1,51 @@
+@prefix arcaea.vexaria: <https://arcaea.lowiro.com/#vexaria#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.vexaria:.
+arcaea.vexaria: arcaea:artist <https://arcaea.lowiro.com/#ak+q>;
+                arcaea:audioPreview 31057 ;
+                arcaea:audioPreviewEnd 66390 ;
+                arcaea:bg arcaea:base_light;
+                arcaea:bg_inverse arcaea:base_conflict;
+                arcaea:bpm "180"@en-us;
+                arcaea:bpm_base 180 ;
+                arcaea:date 1487980802 ;
+                arcaea:difficulties arcaea.vexaria:BYD,
+                                    arcaea.vexaria:FTR,
+                                    arcaea.vexaria:PRS,
+                                    arcaea.vexaria:PST;
+                arcaea:id "vexaria"@en-us;
+                arcaea:idx 13 ;
+                arcaea:search_title "えーけーぷらすきゅー"@ja,
+                                    "에이케이 플러스 큐"@ko,
+                                    "うぇくさりあ"@ja,
+                                    "ゔぇくさりあ"@ja,
+                                    "벡자리아"@ko,
+                                    "벡사리아"@ko;
+                arcaea:set "base"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "Vexaria"@en;
+                arcaea:version "1.0"@en-us.
+arcaea.vexaria:BYD arcaea:chartDesigner arcaea:%E7%9F%B3%E6%A8%82;
+                   arcaea:date 1590537600 ;
+                   arcaea:jacketDesigner "Koyama Mai"@en-us;
+                   arcaea:jacketOverride true;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 3 ;
+                   arcaea:version "3.0"@en-us.
+arcaea.vexaria:FTR arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:jacketDesigner "Koyama Mai"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 2 .
+arcaea.vexaria:PRS arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:jacketDesigner "Koyama Mai"@en-us;
+                   arcaea:rating 5 ;
+                   arcaea:ratingClass 1 .
+arcaea.vexaria:PST arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:jacketDesigner "Koyama Mai"@en-us;
+                   arcaea:rating 2 ;
+                   arcaea:ratingClass 0 .

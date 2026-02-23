@@ -1,0 +1,46 @@
+@prefix arcaea.crosssoul: <https://arcaea.lowiro.com/#crosssoul#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.crosssoul:.
+arcaea.crosssoul: arcaea:artist arcaea:HyuN%20feat.%20Syepias;
+                  arcaea:audioPreview 51392 ;
+                  arcaea:audioPreviewEnd 80192 ;
+                  arcaea:bg arcaea:single_conflict;
+                  arcaea:bg_inverse arcaea:single_light;
+                  arcaea:bpm "200"@en-us;
+                  arcaea:bpm_base 200 ;
+                  arcaea:category arcaea:variety;
+                  arcaea:date 1496188803 ;
+                  arcaea:difficulties arcaea.crosssoul:PRS,
+                                      arcaea.crosssoul:PST,
+                                      arcaea.crosssoul:FTR;
+                  arcaea:id "crosssoul"@en-us;
+                  arcaea:idx 30 ;
+                  arcaea:purchase "crosssoul"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ひゅん"@ja,
+                                      "しぇぴあす"@ja,
+                                      "현"@ko,
+                                      "셰피아스"@ko,
+                                      "くろすそうる"@ja,
+                                      "크로스 소울"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "CROSS†SOUL"@en;
+                  arcaea:version "1.1"@en-us.
+arcaea.crosssoul:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                     arcaea:jacketDesigner "Khronetic"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.crosssoul:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                     arcaea:jacketDesigner "Khronetic"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.crosssoul:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                     arcaea:jacketDesigner "Khronetic"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,41 @@
+﻿namespace Fibo.FBC.FinancialInstruments.FinancialInstruments.Namespace
+module FinancialInstruments =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FinancialInstruments/FinancialInstruments.rdf") (Some @"fibo.FBC.FinancialInstruments.FinancialInstruments") None
+    let CalculationAgent = {_prefixID with _localName = "CalculationAgent"}
+    let CashInstrument = {_prefixID with _localName = "CashInstrument"}
+    let CommodityInstrument = {_prefixID with _localName = "CommodityInstrument"}
+    let CurrencyInstrument = {_prefixID with _localName = "CurrencyInstrument"}
+    let DebtInstrument = {_prefixID with _localName = "DebtInstrument"}
+    let DerivativeInstrument = {_prefixID with _localName = "DerivativeInstrument"}
+    let Entitlement = {_prefixID with _localName = "Entitlement"}
+    let EquityInstrument = {_prefixID with _localName = "EquityInstrument"}
+    let ExemptSecurity = {_prefixID with _localName = "ExemptSecurity"}
+    let FinancialInstrument = {_prefixID with _localName = "FinancialInstrument"}
+    let FinancialInstrumentIdentifier = {_prefixID with _localName = "FinancialInstrumentIdentifier"}
+    let Future = {_prefixID with _localName = "Future"}
+    let Issuer = {_prefixID with _localName = "Issuer"}
+    let NegotiableSecurity = {_prefixID with _localName = "NegotiableSecurity"}
+    let NonNegotiableSecurity = {_prefixID with _localName = "NonNegotiableSecurity"}
+    let Option = {_prefixID with _localName = "Option"}
+    let PackagedFinancialProduct = {_prefixID with _localName = "PackagedFinancialProduct"}
+    let PromissoryNote = {_prefixID with _localName = "PromissoryNote"}
+    let RedemptionProvision = {_prefixID with _localName = "RedemptionProvision"}
+    let SecuritiesTransaction = {_prefixID with _localName = "SecuritiesTransaction"}
+    let Security = {_prefixID with _localName = "Security"}
+    let SpotContract = {_prefixID with _localName = "SpotContract"}
+    let StandardizedTerms = {_prefixID with _localName = "StandardizedTerms"}
+    let Underlier = {_prefixID with _localName = "Underlier"}
+    let hasBuyingCurrency = {_prefixID with _localName = "hasBuyingCurrency"}
+    let hasCalculationAgent = {_prefixID with _localName = "hasCalculationAgent"}
+    let hasCommodityValueAsOfExecutionDate = {_prefixID with _localName = "hasCommodityValueAsOfExecutionDate"}
+    let hasNominalValue = {_prefixID with _localName = "hasNominalValue"}
+    let hasPrincipalExecutiveOfficeAddress = {_prefixID with _localName = "hasPrincipalExecutiveOfficeAddress"}
+    let hasRedemptionProvision = {_prefixID with _localName = "hasRedemptionProvision"}
+    let hasSellingCurrency = {_prefixID with _localName = "hasSellingCurrency"}
+    let hasShareholder = {_prefixID with _localName = "hasShareholder"}
+    let hasUnderlier = {_prefixID with _localName = "hasUnderlier"}
+    let hasValueExpressedIn = {_prefixID with _localName = "hasValueExpressedIn"}
+    let holdsSharesIn = {_prefixID with _localName = "holdsSharesIn"}
+    let isDenominatedIn = {_prefixID with _localName = "isDenominatedIn"}
+    let isLegallyRecordedIn = {_prefixID with _localName = "isLegallyRecordedIn"}
+    let isNegotiable = {_prefixID with _localName = "isNegotiable"}

@@ -1,0 +1,48 @@
+@prefix arcaea.bassline: <https://arcaea.lowiro.com/#bassline#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.bassline:.
+arcaea.bassline: arcaea:artist arcaea:%E3%81%8B%E3%82%81%E3%82%8A%E3%81%82%20feat.%20%E3%81%AA%E3%81%AA%E3%81%B2%E3%82%89;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:prelude_light;
+                 arcaea:bg_inverse arcaea:prelude_conflict;
+                 arcaea:bpm "128"@en-us;
+                 arcaea:bpm_base 128 ;
+                 arcaea:category arcaea:variety;
+                 arcaea:date 1617926400 ;
+                 arcaea:difficulties arcaea.bassline:FTR,
+                                     arcaea.bassline:PRS,
+                                     arcaea.bassline:PST;
+                 arcaea:id "bassline"@en-us;
+                 arcaea:idx 207 ;
+                 arcaea:purchase "bassline"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "카메리아"@ko,
+                                     "나나히라"@ko,
+                                     "kameria"@en,
+                                     "nanahira"@en,
+                                     "camellia"@en,
+                                     "캔 아이 프렌드 유 온 베이스북 롤"@ko,
+                                     "베이스라인 얏떼루"@ko,
+                                     "베이스라인 하고있니"@ko,
+                                     "베이스라인 하니"@ko;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "ベースラインやってる？ｗ"@ja,
+                                        "Can I Friend You on Bassbook? Lol"@en;
+                 arcaea:version "3.5"@en-us;
+                 arcaea:world_unlock false.
+arcaea.bassline:FTR arcaea:chartDesigner arcaea:%E3%83%88%E3%83%BC%E3%82%B9%E3%83%88%E9%A3%9F%E3%81%B9%E3%82%8B%EF%BC%9F%E7%AC%91;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.bassline:PRS arcaea:chartDesigner arcaea:%E3%83%88%E3%83%BC%E3%82%B9%E3%83%88%E9%A3%9F%E3%81%B9%E3%82%8B%EF%BC%9F%E7%AC%91;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.bassline:PST arcaea:chartDesigner arcaea:%E3%83%88%E3%83%BC%E3%82%B9%E3%83%88%E9%A3%9F%E3%81%B9%E3%82%8B%EF%BC%9F%E7%AC%91;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

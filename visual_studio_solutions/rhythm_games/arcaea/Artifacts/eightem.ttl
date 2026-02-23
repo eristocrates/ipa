@@ -1,0 +1,48 @@
+@prefix arcaea.eightem: <https://arcaea.lowiro.com/#eightem#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.eightem:.
+arcaea.eightem: arcaea:artist arcaea:Sampling%20Masters%20AYA;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:chunithmnew_conflict;
+                arcaea:bg_inverse arcaea:chunithmnew_light;
+                arcaea:bpm "168"@en-us;
+                arcaea:bpm_base 168 ;
+                arcaea:date 1734566402 ;
+                arcaea:difficulties arcaea.eightem:FTR,
+                                    arcaea.eightem:PRS,
+                                    arcaea.eightem:PST,
+                                    arcaea.eightem:ETR;
+                arcaea:id "eightem"@en-us;
+                arcaea:idx 437 ;
+                arcaea:purchase "chunithm_append_3"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "さんぷりんぐますたーずあや"@ja,
+                                    "샘플링 마스터스 아야"@ko,
+                                    "えいてぃーえむ"@ja,
+                                    "에이티엠"@ko;
+                arcaea:set "chunithm_append_3"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:source_copyright "©SEGA"@en-us;
+                arcaea:title_localized "8-EM"@en,
+                                       "CHUNITHM"@en;
+                arcaea:version "6.1"@en-us;
+                arcaea:world_unlock false.
+arcaea.eightem:ETR arcaea:chartDesigner arcaea:X-SCHWASION;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 4 .
+arcaea.eightem:FTR arcaea:chartDesigner arcaea:Rave%20Gallery;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.eightem:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 ;
+                   arcaea:ratingPlus true.
+arcaea.eightem:PST arcaea:chartDesigner arcaea:Exschwasion;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

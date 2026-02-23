@@ -1,0 +1,53 @@
+@prefix arcaea.cyberneciacatharsis: <https://arcaea.lowiro.com/#cyberneciacatharsis#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.cyberneciacatharsis:.
+arcaea.cyberneciacatharsis: arcaea:artist arcaea:Tanchiky;
+                            arcaea:audioPreview 30978 ;
+                            arcaea:audioPreviewEnd 62604 ;
+                            arcaea:bg arcaea:yugamu;
+                            arcaea:bg_inverse arcaea:rei;
+                            arcaea:bpm "184"@en-us;
+                            arcaea:bpm_base 184 ;
+                            arcaea:date 1527811200 ;
+                            arcaea:difficulties arcaea.cyberneciacatharsis:BYD,
+                                                arcaea.cyberneciacatharsis:FTR,
+                                                arcaea.cyberneciacatharsis:PRS,
+                                                arcaea.cyberneciacatharsis:PST;
+                            arcaea:id "cyberneciacatharsis"@en-us;
+                            arcaea:idx 79 ;
+                            arcaea:remote_dl true;
+                            arcaea:search_title "たんちきー"@ja,
+                                                "타친키"@ko,
+                                                "さいばーねしあかたるしす"@ja,
+                                                "さいばねしあかたるしす"@ja,
+                                                "사이버네시아 카타르시스"@ko;
+                            arcaea:set "base"@en-us;
+                            arcaea:side arcaea:conflict_side;
+                            arcaea:title_localized "Cybernecia Catharsis"@en;
+                            arcaea:version "1.6"@en-us;
+                            arcaea:world_unlock true.
+arcaea.cyberneciacatharsis:BYD arcaea:chartDesigner arcaea:antymis;
+                               arcaea:date 1706140801 ;
+                               arcaea:jacketDesigner "mirimo"@en-us;
+                               arcaea:jacketOverride true;
+                               arcaea:rating 9 ;
+                               arcaea:ratingClass 3 ;
+                               arcaea:ratingPlus true;
+                               arcaea:version "5.3"@en-us.
+arcaea.cyberneciacatharsis:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Kero%20+%20Nitro>;
+                               arcaea:jacketDesigner "mirimo"@en-us;
+                               arcaea:rating 9 ;
+                               arcaea:ratingClass 2 .
+arcaea.cyberneciacatharsis:PRS arcaea:chartDesigner arcaea:Kero;
+                               arcaea:jacketDesigner "mirimo"@en-us;
+                               arcaea:rating 7 ;
+                               arcaea:ratingClass 1 .
+arcaea.cyberneciacatharsis:PST arcaea:chartDesigner arcaea:Kero;
+                               arcaea:jacketDesigner "mirimo"@en-us;
+                               arcaea:rating 4 ;
+                               arcaea:ratingClass 0 .

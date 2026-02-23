@@ -1,0 +1,48 @@
+@prefix arcaea.primitivelights: <https://arcaea.lowiro.com/#primitivelights#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.primitivelights:.
+arcaea.primitivelights: arcaea:artist arcaea:TAG;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:vs_light;
+                        arcaea:bg_inverse arcaea:vs_conflict;
+                        arcaea:bpm "205"@en-us;
+                        arcaea:bpm_base 205 ;
+                        arcaea:category arcaea:original;
+                        arcaea:date 1678320000 ;
+                        arcaea:difficulties arcaea.primitivelights:PRS,
+                                            arcaea.primitivelights:PST,
+                                            arcaea.primitivelights:FTR;
+                        arcaea:id "primitivelights"@en-us;
+                        arcaea:idx 308 ;
+                        arcaea:purchase "primitivelights"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "たぐ"@ja,
+                                            "태그"@ko,
+                                            "ぷりみてぃぶらいつ"@ja,
+                                            "프리미티브 라이츠"@ko,
+                                            "프리미티브 라이트"@ko;
+                        arcaea:set "single"@en-us;
+                        arcaea:side arcaea:light_side;
+                        arcaea:title_localized "PRIMITIVE LIGHTS"@en;
+                        arcaea:version "4.3"@en-us;
+                        arcaea:world_unlock false.
+arcaea.primitivelights:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E5%8E%9F%E5%88%9D%E3%81%AE%E7%81%AF;
+                           arcaea:jacketDesigner "Waterswing"@en-us;
+                           arcaea:rating 10 ;
+                           arcaea:ratingClass 2 ;
+                           arcaea:ratingPlus true.
+arcaea.primitivelights:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E5%8E%9F%E5%88%9D%E3%81%AE%E7%81%AF;
+                           arcaea:jacketDesigner "Waterswing"@en-us;
+                           arcaea:rating 8 ;
+                           arcaea:ratingClass 1 ;
+                           arcaea:ratingPlus true.
+arcaea.primitivelights:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E5%8E%9F%E5%88%9D%E3%81%AE%E7%81%AF;
+                           arcaea:jacketDesigner "Waterswing"@en-us;
+                           arcaea:rating 5 ;
+                           arcaea:ratingClass 0 .

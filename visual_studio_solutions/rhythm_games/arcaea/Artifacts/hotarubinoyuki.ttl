@@ -1,0 +1,51 @@
+@prefix arcaea.hotarubinoyuki: <https://arcaea.lowiro.com/#hotarubinoyuki#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.hotarubinoyuki:.
+arcaea:bg_daynight arcaea:day arcaea:omatsuri_light;
+                   arcaea:night arcaea:omatsuri_conflict.
+arcaea.hotarubinoyuki: arcaea:artist <https://arcaea.lowiro.com/#Endorfin.>;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:omatsuri_light;
+                       arcaea:bg_daynight arcaea.hotarubinoyuki:bg_daynight;
+                       arcaea:bg_inverse arcaea:omatsuri_conflict;
+                       arcaea:bpm "159"@en-us;
+                       arcaea:bpm_base 159 ;
+                       arcaea:date 1705017600 ;
+                       arcaea:difficulties arcaea.hotarubinoyuki:FTR,
+                                           arcaea.hotarubinoyuki:PRS,
+                                           arcaea.hotarubinoyuki:PST;
+                       arcaea:id "hotarubinoyuki"@en-us;
+                       arcaea:idx 368 ;
+                       arcaea:purchase "omatsuri"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "えんどるふぃん"@ja,
+                                           "엔돌핀"@ko,
+                                           "엔도르핀"@ko,
+                                           "ほたるびのゆき"@ja,
+                                           "호타루비노 유키"@ko,
+                                           "반딧불의 눈"@ko;
+                       arcaea:set "omatsuri"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "蛍火の雪"@ja,
+                                              "Hotarubi no Yuki"@en;
+                       arcaea:version "5.2"@en-us;
+                       arcaea:world_unlock true.
+arcaea.hotarubinoyuki:FTR arcaea:chartDesigner arcaea:0%C2%B0Nitro;
+                          arcaea:jacketDesigner "Bison"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.hotarubinoyuki:PRS arcaea:chartDesigner arcaea:0%C2%B0Nitro;
+                          arcaea:jacketDesigner "Bison"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.hotarubinoyuki:PST arcaea:chartDesigner arcaea:0%C2%B0Nitro;
+                          arcaea:jacketDesigner "Bison"@en-us;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

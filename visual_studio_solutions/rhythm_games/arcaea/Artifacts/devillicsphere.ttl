@@ -1,0 +1,47 @@
+@prefix arcaea.devillicsphere: <https://arcaea.lowiro.com/#devillicsphere#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.devillicsphere:.
+arcaea.devillicsphere: arcaea:artist arcaea:3R2;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:cytus_conflict;
+                       arcaea:bg_inverse arcaea:cytus_light;
+                       arcaea:bpm "160"@en-us;
+                       arcaea:bpm_base 160 ;
+                       arcaea:date 1687910402 ;
+                       arcaea:difficulties arcaea.devillicsphere:FTR,
+                                           arcaea.devillicsphere:PRS,
+                                           arcaea.devillicsphere:PST;
+                       arcaea:id "devillicsphere"@en-us;
+                       arcaea:idx 325 ;
+                       arcaea:purchase "cytusii"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "すりーあーるつー"@ja,
+                                           "삼알이"@ko,
+                                           "쓰리 알 투"@ko,
+                                           "스리 알 투"@ko,
+                                           "でびりっくすふぃあ"@ja,
+                                           "데빌릭 스피어"@ko;
+                       arcaea:set "cytusii"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:source_copyright "© Rayark Inc."@en-us;
+                       arcaea:title_localized "Devillic Sphere"@en,
+                                              "CYTUS II®"@en;
+                       arcaea:version "4.5"@en-us;
+                       arcaea:world_unlock false.
+arcaea.devillicsphere:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#₸öα$†ε₹>;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.devillicsphere:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#₸öα$†ε₹>;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 ;
+                          arcaea:ratingPlus true.
+arcaea.devillicsphere:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#₸öα$†ε₹>;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

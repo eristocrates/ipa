@@ -1,0 +1,44 @@
+@prefix arcaea.livefastdieyoung: <https://arcaea.lowiro.com/#livefastdieyoung#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.livefastdieyoung:.
+arcaea.livefastdieyoung: arcaea:artist arcaea:anubasu-anubasu;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:nijuusei2_light;
+                         arcaea:bg_inverse arcaea:nijuusei2_conflict;
+                         arcaea:bpm "153"@en-us;
+                         arcaea:bpm_base 153 ;
+                         arcaea:date 1636588802 ;
+                         arcaea:difficulties arcaea.livefastdieyoung:PRS,
+                                             arcaea.livefastdieyoung:PST,
+                                             arcaea.livefastdieyoung:FTR;
+                         arcaea:id "livefastdieyoung"@en-us;
+                         arcaea:idx 242 ;
+                         arcaea:purchase "nijuusei_append_1"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "あぬばすあぬばす"@ja,
+                                             "아누바스 아누바스"@ko,
+                                             "りぶふぁすとだいやんぐ"@ja,
+                                             "리브 패스트 다이 영"@ko;
+                         arcaea:set "nijuusei_append_1"@en-us;
+                         arcaea:side arcaea:light_side;
+                         arcaea:title_localized "Live Fast Die Young"@en;
+                         arcaea:version "3.9"@en-us;
+                         arcaea:world_unlock false.
+arcaea.livefastdieyoung:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20with%20Toaster.>;
+                            arcaea:jacketDesigner "シエラ"@en-us;
+                            arcaea:rating 10 ;
+                            arcaea:ratingClass 2 .
+arcaea.livefastdieyoung:PRS arcaea:chartDesigner arcaea:Nitro;
+                            arcaea:jacketDesigner "シエラ"@en-us;
+                            arcaea:rating 8 ;
+                            arcaea:ratingClass 1 .
+arcaea.livefastdieyoung:PST arcaea:chartDesigner arcaea:Nitro;
+                            arcaea:jacketDesigner "シエラ"@en-us;
+                            arcaea:rating 4 ;
+                            arcaea:ratingClass 0 .

@@ -1,0 +1,51 @@
+@prefix arcaea.impact: <https://arcaea.lowiro.com/#impact#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.impact:.
+arcaea.impact: arcaea:artist arcaea:USAO%20feat.%20%E5%85%89%E5%90%89%E7%8C%9B%E4%BF%AE;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:chunithmnew_light;
+               arcaea:bg_inverse arcaea:chunithmnew_conflict;
+               arcaea:bpm "210"@en-us;
+               arcaea:bpm_base 210 ;
+               arcaea:date 1679529601 ;
+               arcaea:difficulties arcaea.impact:BYD,
+                                   arcaea.impact:FTR,
+                                   arcaea.impact:PRS,
+                                   arcaea.impact:PST;
+               arcaea:id "impact"@en-us;
+               arcaea:idx 310 ;
+               arcaea:purchase "chunithm_append_2"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "うさお"@ja,
+                                   "みつよしたけのぶ"@ja,
+                                   "우사오"@ko,
+                                   "타케노부 미츠요시"@ko,
+                                   "takenobu mitsuyoshi"@en,
+                                   "いんぱくと"@ja,
+                                   "임팩트"@ko;
+               arcaea:set "chunithm_append_2"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:source_copyright "©SEGA"@en-us;
+               arcaea:title_localized "IMPACT"@en,
+                                      "CHUNITHM"@en;
+               arcaea:version "4.4"@en-us;
+               arcaea:world_unlock false.
+arcaea.impact:BYD arcaea:chartDesigner <https://arcaea.lowiro.com/#Toaster%20NEW!!>;
+                  arcaea:rating 10 ;
+                  arcaea:ratingClass 3 .
+arcaea.impact:FTR arcaea:chartDesigner arcaea:%C3%A9n%20feat.%20%C3%A9cologie;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.impact:PRS arcaea:chartDesigner arcaea:%C3%89N%20IMPACT;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 ;
+                  arcaea:ratingPlus true.
+arcaea.impact:PST arcaea:chartDesigner arcaea:%C3%89COLOGIE%20IMPACT;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

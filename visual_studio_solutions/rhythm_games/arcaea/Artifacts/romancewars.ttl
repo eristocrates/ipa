@@ -1,0 +1,49 @@
+@prefix arcaea.romancewars: <https://arcaea.lowiro.com/#romancewars#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.romancewars:.
+arcaea.romancewars: arcaea:artist <https://arcaea.lowiro.com/#U-ske%20(feat.%20lueur)>;
+                    arcaea:audioPreview 51974 ;
+                    arcaea:audioPreviewEnd 73151 ;
+                    arcaea:bg arcaea:mirai_light;
+                    arcaea:bg_inverse arcaea:mirai_conflict;
+                    arcaea:bpm "187"@en-us;
+                    arcaea:bpm_base 187 ;
+                    arcaea:date 1502323202 ;
+                    arcaea:difficulties arcaea.romancewars:FTR,
+                                        arcaea.romancewars:PRS,
+                                        arcaea.romancewars:PST;
+                    arcaea:id "romancewars"@en-us;
+                    arcaea:idx 43 ;
+                    arcaea:purchase "mirai"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "ゆーすけ"@ja,
+                                        "ゆうすけ"@ja,
+                                        "りゅーる"@ja,
+                                        "유스케"@ko,
+                                        "ばーさすきみせんそう"@ja,
+                                        "로맨스 워즈"@ko,
+                                        "바사스 키미 센소"@ko,
+                                        "버서스 너 전쟁"@ko;
+                    arcaea:set "mirai"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "vsキミ戦争"@ja,
+                                           "Romance Wars"@en;
+                    arcaea:version "1.1"@en-us.
+arcaea.romancewars:FTR arcaea:chartDesigner arcaea:Kurorak;
+                       arcaea:jacketDesigner "橙乃遥"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.romancewars:PRS arcaea:chartDesigner arcaea:Kurorak;
+                       arcaea:jacketDesigner "橙乃遥"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 1 .
+arcaea.romancewars:PST arcaea:chartDesigner arcaea:Kurorak;
+                       arcaea:jacketDesigner "橙乃遥"@en-us;
+                       arcaea:rating 1 ;
+                       arcaea:ratingClass 0 .

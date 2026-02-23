@@ -1,0 +1,58 @@
+@prefix arcaea.spidersthread: <https://arcaea.lowiro.com/#spidersthread#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.spidersthread:.
+arcaea.spidersthread: arcaea:artist arcaea:%E3%81%8D%E3%81%8F%E3%81%8A%C3%97cosMo%EF%BC%A0%E6%9A%B4%E8%B5%B0P%20feat.%E5%BD%B1%E7%B8%AB%E8%8B%B1;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:spidersthread;
+                      arcaea:bpm "180"@en-us;
+                      arcaea:bpm_base 180 ;
+                      arcaea:date 1679529604 ;
+                      arcaea:difficulties arcaea.spidersthread:FTR,
+                                          arcaea.spidersthread:PRS,
+                                          arcaea.spidersthread:PST;
+                      arcaea:id "spidersthread"@en-us;
+                      arcaea:idx 313 ;
+                      arcaea:purchase "chunithm_append_2"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "kagenui hana"@en,
+                                          "bousou"@en,
+                                          "kikuo"@en,
+                                          "카게누이 하나"@ko,
+                                          "코스모 폭주 피"@ko,
+                                          "키쿠오"@ko,
+                                          "こすもあっとぼうそうぴー"@ja,
+                                          "こすもぼうそうぴー"@ja,
+                                          "かげぬいはな"@ja,
+                                          "こすも"@ja,
+                                          "くものいと"@ja,
+                                          "스파이더스 스레드"@ko,
+                                          "스파이더즈 스레드"@ko,
+                                          "스파이더스 쓰레드"@ko,
+                                          "스파이더즈 쓰레드"@ko,
+                                          "쿠모노 이토"@ko,
+                                          "거미줄"@ko;
+                      arcaea:set "chunithm_append_2"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:source_copyright "©SEGA"@en-us;
+                      arcaea:title_localized "蜘蛛の糸"@ja,
+                                             "Spider's Thread"@en,
+                                             "CHUNITHM"@en;
+                      arcaea:version "4.4"@en-us;
+                      arcaea:world_unlock false.
+arcaea.spidersthread:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20%3C-%3E;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.spidersthread:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20%3C-%3E;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.spidersthread:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20%3C-%3E;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

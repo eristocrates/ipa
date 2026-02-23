@@ -1,0 +1,52 @@
+@prefix arcaea.ultradiaxon: <https://arcaea.lowiro.com/#ultradiaxon#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ultradiaxon:.
+arcaea.ultradiaxon: arcaea:artist <https://arcaea.lowiro.com/#nitro%20(lowiro)>;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:single2_conflict;
+                    arcaea:bg_inverse arcaea:single2_light;
+                    arcaea:bpm "150"@en-us;
+                    arcaea:bpm_base 150 ;
+                    arcaea:category arcaea:partner;
+                    arcaea:date 1712016000 ;
+                    arcaea:difficulties arcaea.ultradiaxon:FTR,
+                                        arcaea.ultradiaxon:PRS,
+                                        arcaea.ultradiaxon:PST;
+                    arcaea:id "ultradiaxon"@en-us;
+                    arcaea:idx 384 ;
+                    arcaea:purchase "ultradiaxon"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "にとろ"@ja,
+                                        "ないとろ"@ja,
+                                        "니트로"@ko,
+                                        "うるとらでぃあくそんえぬすりー"@ja,
+                                        "うるとらじあくそんえぬすりー"@ja,
+                                        "うるとらだいあくそんえぬすりー"@ja,
+                                        "あるとれじあくそんえぬすりー"@ja,
+                                        "あるとれでぃあくそんえぬすりー"@ja,
+                                        "울트라디악손 엔쓰리"@ko,
+                                        "울트라다이악손 엔쓰리"@ko,
+                                        "울트레이디악손 엔쓰리"@ko;
+                    arcaea:set "single"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "ultradiaxon-N3"@en;
+                    arcaea:version "5.5"@en-us;
+                    arcaea:world_unlock false.
+arcaea.ultradiaxon:FTR arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "MiyU"@en-us;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 2 .
+arcaea.ultradiaxon:PRS arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "MiyU"@en-us;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 1 .
+arcaea.ultradiaxon:PST arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "MiyU"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

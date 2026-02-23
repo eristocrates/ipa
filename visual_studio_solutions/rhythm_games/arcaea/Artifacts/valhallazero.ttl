@@ -1,0 +1,49 @@
+@prefix arcaea.valhallazero: <https://arcaea.lowiro.com/#valhallazero#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.valhallazero:.
+arcaea:bg_daynight arcaea:day arcaea:omatsuri_light;
+                   arcaea:night arcaea:omatsuri_conflict.
+arcaea.valhallazero: arcaea:artist <https://arcaea.lowiro.com/#Juggernaut.>;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:omatsuri_conflict;
+                     arcaea:bg_daynight arcaea.valhallazero:bg_daynight;
+                     arcaea:bg_inverse arcaea:omatsuri_light;
+                     arcaea:bpm "200"@en-us;
+                     arcaea:bpm_base 200 ;
+                     arcaea:date 1566432004 ;
+                     arcaea:difficulties arcaea.valhallazero:PRS,
+                                         arcaea.valhallazero:PST,
+                                         arcaea.valhallazero:FTR;
+                     arcaea:id "valhallazero"@en-us;
+                     arcaea:idx 135 ;
+                     arcaea:purchase "omatsuri"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "じゃがーのーと"@ja,
+                                         "저거넛"@ko,
+                                         "저거너트"@ko,
+                                         "ばるはらぜろ"@ja,
+                                         "ゔぁるはらぜろ"@ja,
+                                         "발할라 제로"@ko;
+                     arcaea:set "omatsuri"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Valhalla:0"@en;
+                     arcaea:version "2.3"@en-us;
+                     arcaea:world_unlock false.
+arcaea.valhallazero:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                        arcaea:jacketDesigner "すずなし"@en-us;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 2 .
+arcaea.valhallazero:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                        arcaea:jacketDesigner "すずなし"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.valhallazero:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                        arcaea:jacketDesigner "すずなし"@en-us;
+                        arcaea:rating 4 ;
+                        arcaea:ratingClass 0 .

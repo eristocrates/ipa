@@ -1,0 +1,48 @@
+@prefix arcaea.hybris: <https://arcaea.lowiro.com/#hybris#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.hybris:.
+arcaea.hybris: arcaea:artist arcaea:qfeileadh%20feat.%E3%81%AE%E3%81%82;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:vs_conflict;
+               arcaea:bg_inverse arcaea:vs_light;
+               arcaea:bpm "158"@en-us;
+               arcaea:bpm_base 158 ;
+               arcaea:date 1684972803 ;
+               arcaea:difficulties arcaea.hybris:FTR,
+                                   arcaea.hybris:PRS,
+                                   arcaea.hybris:PST;
+               arcaea:id "hybris"@en-us;
+               arcaea:idx 321 ;
+               arcaea:purchase "extend_2"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "ふぇいりあ"@ja,
+                                   "のあ"@ja,
+                                   "페일리아"@ko,
+                                   "노아"@ko,
+                                   "noa"@en,
+                                   "ひゅぶりすのいただきにそびえるのは"@ja,
+                                   "휴브리스의 끝에 솟아오른 것은"@ko,
+                                   "휴브리스노 이타다키니 소비에루노와"@ko;
+               arcaea:set "extend_2"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "ヒュブリスの頂に聳えるのは"@ja,
+                                      "Hybris (The one who shattered)"@en;
+               arcaea:version "4.4"@en-us;
+               arcaea:world_unlock true.
+arcaea.hybris:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.hybris:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 ;
+                  arcaea:ratingPlus true.
+arcaea.hybris:PST arcaea:chartDesigner arcaea:Exschwasion;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

@@ -1,0 +1,43 @@
+@prefix arcaea.hallofmirrors: <https://arcaea.lowiro.com/#hallofmirrors#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.hallofmirrors:.
+arcaea.hallofmirrors: arcaea:artist arcaea:Sta;
+                      arcaea:audioPreview 79908 ;
+                      arcaea:audioPreviewEnd 112160 ;
+                      arcaea:bg arcaea:tonesphere-darksphere;
+                      arcaea:bg_inverse arcaea:tonesphere-solarsphere;
+                      arcaea:bpm "147"@en-us;
+                      arcaea:bpm_base 147.01;
+                      arcaea:date 1538870401 ;
+                      arcaea:difficulties arcaea.hallofmirrors:FTR,
+                                          arcaea.hallofmirrors:PRS,
+                                          arcaea.hallofmirrors:PST;
+                      arcaea:id "hallofmirrors"@en-us;
+                      arcaea:idx 98 ;
+                      arcaea:no_stream true;
+                      arcaea:purchase "tonesphere"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "すた"@ja,
+                                          "스타"@ko,
+                                          "ほーるおぶみらーず"@ja,
+                                          "홀 오브 미러즈"@ko,
+                                          "홀 오브 미러스"@ko;
+                      arcaea:set "tonesphere"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Hall of Mirrors"@en,
+                                             "Tone Sphere"@en;
+                      arcaea:version "1.8"@en-us.
+arcaea.hallofmirrors:FTR arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 2 .
+arcaea.hallofmirrors:PRS arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:rating 5 ;
+                         arcaea:ratingClass 1 .
+arcaea.hallofmirrors:PST arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

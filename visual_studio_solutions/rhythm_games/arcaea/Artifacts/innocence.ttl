@@ -1,0 +1,52 @@
+@prefix arcaea.innocence: <https://arcaea.lowiro.com/#innocence#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.innocence:.
+arcaea.innocence: arcaea:artist arcaea:Powerless%20feat.%20Sennzai;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:vs_light;
+                  arcaea:bg_inverse arcaea:vs_conflict;
+                  arcaea:bpm "190"@en-us;
+                  arcaea:bpm_base 190 ;
+                  arcaea:category arcaea:original;
+                  arcaea:date 1709856004 ;
+                  arcaea:difficulties arcaea.innocence:FTR,
+                                      arcaea.innocence:PRS,
+                                      arcaea.innocence:PST,
+                                      arcaea.innocence:ETR;
+                  arcaea:id "innocence"@en-us;
+                  arcaea:idx 372 ;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ぱわーれす"@ja,
+                                      "せんざい"@ja,
+                                      "파워리스"@ko,
+                                      "센자이"@ko,
+                                      "いのせんす"@ja,
+                                      "이노센스"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Innocence"@en;
+                  arcaea:version "5.4"@en-us;
+                  arcaea:world_unlock true.
+arcaea.innocence:ETR arcaea:chartDesigner arcaea:First%20Dawn;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 4 ;
+                     arcaea:ratingPlus true.
+arcaea.innocence:FTR arcaea:chartDesigner arcaea:First%20Dawn;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 .
+arcaea.innocence:PRS arcaea:chartDesigner arcaea:First%20Dawn;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.innocence:PST arcaea:chartDesigner arcaea:First%20Dawn;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

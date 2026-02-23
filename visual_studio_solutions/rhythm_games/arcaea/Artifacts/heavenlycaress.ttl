@@ -1,0 +1,48 @@
+@prefix arcaea.heavenlycaress: <https://arcaea.lowiro.com/#heavenlycaress#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.heavenlycaress:.
+arcaea.heavenlycaress: arcaea:artist arcaea:Noah;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:omatsuri_light;
+                       arcaea:bg_inverse arcaea:omatsuri_conflict;
+                       arcaea:bpm "241"@en-us;
+                       arcaea:bpm_base 241 ;
+                       arcaea:category arcaea:original;
+                       arcaea:date 1572048001 ;
+                       arcaea:difficulties arcaea.heavenlycaress:PRS,
+                                           arcaea.heavenlycaress:PST,
+                                           arcaea.heavenlycaress:FTR;
+                       arcaea:id "heavenlycaress"@en-us;
+                       arcaea:idx 141 ;
+                       arcaea:purchase "heavenlycaress"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "のあ"@ja,
+                                           "노아"@ko,
+                                           "へぶんりーかれす"@ja,
+                                           "へゔんりーかれす"@ja,
+                                           "헤븐리 카레스"@ko,
+                                           "헤븐리 커레스"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Heavenly caress"@en;
+                       arcaea:version "2.4"@en-us;
+                       arcaea:world_unlock false.
+arcaea.heavenlycaress:FTR arcaea:chartDesigner arcaea:Toaster;
+                          arcaea:jacketDesigner "fixro2n"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.heavenlycaress:PRS arcaea:chartDesigner arcaea:Toaster;
+                          arcaea:jacketDesigner "fixro2n"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.heavenlycaress:PST arcaea:chartDesigner arcaea:Toaster;
+                          arcaea:jacketDesigner "fixro2n"@en-us;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

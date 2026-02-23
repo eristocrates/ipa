@@ -1,0 +1,49 @@
+@prefix arcaea.saikyostronger: <https://arcaea.lowiro.com/#saikyostronger#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.saikyostronger:.
+arcaea.saikyostronger: arcaea:artist arcaea:REDALiCE%20vs%20USAO;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:saikyostronger;
+                       arcaea:bpm "205"@en-us;
+                       arcaea:bpm_base 205 ;
+                       arcaea:category arcaea:partner;
+                       arcaea:date 1579478403 ;
+                       arcaea:difficulties arcaea.saikyostronger:FTR,
+                                           arcaea.saikyostronger:PRS,
+                                           arcaea.saikyostronger:PST;
+                       arcaea:id "saikyostronger"@en-us;
+                       arcaea:idx 149 ;
+                       arcaea:purchase "saikyostronger"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "れっどありす"@ja,
+                                           "うさお"@ja,
+                                           "레드앨리스"@ko,
+                                           "우사오"@ko,
+                                           "さいきょうすとろんがー"@ja,
+                                           "사이쿄 스트롱거"@ko,
+                                           "최강 스트롱거"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "最強STRONGER"@ja,
+                                              "SAIKYO STRONGER"@en;
+                       arcaea:version "2.5"@en-us;
+                       arcaea:world_unlock false.
+arcaea.saikyostronger:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#最強FUMEN%20(夜浪%20ft.%20東星)>;
+                          arcaea:jacketDesigner "KEI"@en-us;
+                          arcaea:legacy11 true;
+                          arcaea:rating 11 ;
+                          arcaea:ratingClass 2 .
+arcaea.saikyostronger:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#最強FUMEN%20(夜浪%20ft.%20東星)>;
+                          arcaea:jacketDesigner "KEI"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 1 .
+arcaea.saikyostronger:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#最強FUMEN%20(夜浪%20ft.%20東星)>;
+                          arcaea:jacketDesigner "KEI"@en-us;
+                          arcaea:rating 5 ;
+                          arcaea:ratingClass 0 .

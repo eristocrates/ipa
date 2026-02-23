@@ -1,0 +1,49 @@
+@prefix arcaea.syuten: <https://arcaea.lowiro.com/#syuten#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.syuten:.
+arcaea.syuten: arcaea:artist arcaea:Apo11o%22COLLAPSAR%22program%20ft.%20%E5%A4%A7%E7%80%AC%E8%89%AF%E3%81%82%E3%81%84;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:cytus_light;
+               arcaea:bg_inverse arcaea:cytus_conflict;
+               arcaea:bpm "76-96"@en-us;
+               arcaea:bpm_base 96 ;
+               arcaea:date 1689724801 ;
+               arcaea:difficulties arcaea.syuten:FTR,
+                                   arcaea.syuten:PRS,
+                                   arcaea.syuten:PST;
+               arcaea:id "syuten"@en-us;
+               arcaea:idx 330 ;
+               arcaea:purchase "cytusii_append_1"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "おおせらあい"@ja,
+                                   "あぽろこらぷさーぷろぐらむ"@ja,
+                                   "아폴로 콜랍사 프로그램"@ko,
+                                   "오오세라 아이"@ko,
+                                   "apollo collapsar program"@en,
+                                   "oosera ai"@en,
+                                   "しゅうてん"@ja,
+                                   "슈텐"@ko,
+                                   "syuten"@en;
+               arcaea:set "cytusii_append_1"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:source_copyright "© Rayark Inc."@en-us;
+               arcaea:title_localized "syuten"@ko,
+                                      "syūten"@en,
+                                      "CYTUS II®"@en;
+               arcaea:version "4.6"@en-us;
+               arcaea:world_unlock false.
+arcaea.syuten:FTR arcaea:chartDesigner arcaea:antym%C4%ABs;
+                  arcaea:rating 8 ;
+                  arcaea:ratingClass 2 .
+arcaea.syuten:PRS arcaea:chartDesigner arcaea:antym%C4%ABs;
+                  arcaea:rating 5 ;
+                  arcaea:ratingClass 1 .
+arcaea.syuten:PST arcaea:chartDesigner arcaea:antym%C4%ABs;
+                  arcaea:rating 2 ;
+                  arcaea:ratingClass 0 .

@@ -1,0 +1,46 @@
+@prefix arcaea.thesurvivor: <https://arcaea.lowiro.com/#thesurvivor#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.thesurvivor:.
+arcaea.thesurvivor: arcaea:artist arcaea:Taishi;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:nijuusei2_conflict;
+                    arcaea:bg_inverse arcaea:nijuusei2_light;
+                    arcaea:bpm "132"@en-us;
+                    arcaea:bpm_base 132 ;
+                    arcaea:category arcaea:variety;
+                    arcaea:date 1682553602 ;
+                    arcaea:difficulties arcaea.thesurvivor:PRS,
+                                        arcaea.thesurvivor:PST,
+                                        arcaea.thesurvivor:FTR;
+                    arcaea:id "thesurvivor"@en-us;
+                    arcaea:idx 316 ;
+                    arcaea:purchase "thesurvivor"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "たいし"@ja,
+                                        "타이시"@ko,
+                                        "ざさばいばー"@ja,
+                                        "더 서바이버"@ko;
+                    arcaea:set "single"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "The Survivor (Game Edit)"@en;
+                    arcaea:version "4.4"@en-us;
+                    arcaea:world_unlock false.
+arcaea.thesurvivor:FTR arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "12d"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.thesurvivor:PRS arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "12d"@en-us;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.thesurvivor:PST arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "12d"@en-us;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

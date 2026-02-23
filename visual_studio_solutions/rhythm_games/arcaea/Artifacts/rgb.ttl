@@ -1,0 +1,48 @@
+@prefix arcaea.rgb: <https://arcaea.lowiro.com/#rgb#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.rgb:.
+arcaea.rgb: arcaea:artist arcaea:MEMODEMO%20X%20AQUASINE;
+            arcaea:audioPreview 0 ;
+            arcaea:audioPreviewEnd 0 ;
+            arcaea:bg arcaea:observer_light;
+            arcaea:bg_inverse arcaea:observer_conflict;
+            arcaea:bpm "163"@en-us;
+            arcaea:bpm_base 163 ;
+            arcaea:date 1692230401 ;
+            arcaea:difficulties arcaea.rgb:FTR,
+                                arcaea.rgb:PRS,
+                                arcaea.rgb:PST;
+            arcaea:id "rgb"@en-us;
+            arcaea:idx 336 ;
+            arcaea:purchase "extend_2"@en-us;
+            arcaea:remote_dl true;
+            arcaea:search_title "めもでも"@ja,
+                                "あくあさいん"@ja,
+                                "메모데모"@ko,
+                                "아쿠아사인"@ko,
+                                "あーるじーびー"@ja,
+                                "알지비"@ko;
+            arcaea:set "extend_2"@en-us;
+            arcaea:side arcaea:light_side;
+            arcaea:title_localized "RGB"@en;
+            arcaea:version "4.7"@en-us;
+            arcaea:world_unlock true.
+arcaea.rgb:FTR arcaea:chartDesigner arcaea:NO%E2%82%82;
+               arcaea:jacketDesigner "いわこ脳"@en-us;
+               arcaea:rating 9 ;
+               arcaea:ratingClass 2 ;
+               arcaea:ratingPlus true.
+arcaea.rgb:PRS arcaea:chartDesigner arcaea:NO%E2%82%82;
+               arcaea:jacketDesigner "いわこ脳"@en-us;
+               arcaea:rating 7 ;
+               arcaea:ratingClass 1 ;
+               arcaea:ratingPlus true.
+arcaea.rgb:PST arcaea:chartDesigner arcaea:NO%E2%82%82;
+               arcaea:jacketDesigner "いわこ脳"@en-us;
+               arcaea:rating 4 ;
+               arcaea:ratingClass 0 .

@@ -1,0 +1,46 @@
+@prefix arcaea.supernova: <https://arcaea.lowiro.com/#supernova#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.supernova:.
+arcaea.supernova: arcaea:artist arcaea:BACO;
+                  arcaea:audioPreview 104000 ;
+                  arcaea:audioPreviewEnd 128500 ;
+                  arcaea:bg arcaea:nijuusei-conflict-b;
+                  arcaea:bg_inverse arcaea:nijuusei-light-b;
+                  arcaea:bpm "150"@en-us;
+                  arcaea:bpm_base 150 ;
+                  arcaea:date 1556755201 ;
+                  arcaea:difficulties arcaea.supernova:FTR,
+                                      arcaea.supernova:PRS,
+                                      arcaea.supernova:PST;
+                  arcaea:id "supernova"@en-us;
+                  arcaea:idx 121 ;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ばこ"@ja,
+                                      "바코"@ko,
+                                      "すーぱーのゔぁ"@ja,
+                                      "すーぱーのば"@ja,
+                                      "수퍼노바"@ko,
+                                      "슈퍼노바"@ko;
+                  arcaea:set "base"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "SUPERNOVA"@en;
+                  arcaea:version "2.0"@en-us;
+                  arcaea:world_unlock true.
+arcaea.supernova:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E8%B6%85%E6%96%B0%E6%98%9F;
+                     arcaea:jacketDesigner "Khronetic"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.supernova:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E8%B6%85%E6%96%B0%E6%98%9F;
+                     arcaea:jacketDesigner "Khronetic"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.supernova:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E8%B6%85%E6%96%B0%E6%98%9F;
+                     arcaea:jacketDesigner "Khronetic"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

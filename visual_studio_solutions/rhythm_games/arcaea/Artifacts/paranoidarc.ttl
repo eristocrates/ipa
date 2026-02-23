@@ -1,0 +1,51 @@
+@prefix arcaea.paranoidarc: <https://arcaea.lowiro.com/#paranoidarc#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.paranoidarc:.
+arcaea.paranoidarc: arcaea:artist <https://arcaea.lowiro.com/#t+pazolite>;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:vs_conflict;
+                    arcaea:bg_inverse arcaea:vs_light;
+                    arcaea:bpm "180"@en-us;
+                    arcaea:bpm_base 180 ;
+                    arcaea:category arcaea:partner;
+                    arcaea:date 1766534402 ;
+                    arcaea:difficulties arcaea.paranoidarc:PRS,
+                                        arcaea.paranoidarc:PST,
+                                        arcaea.paranoidarc:FTR,
+                                        arcaea.paranoidarc:ETR;
+                    arcaea:id "paranoidarc"@en-us;
+                    arcaea:idx 510 ;
+                    arcaea:purchase "paranoidarc"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "とぱぞらいと"@ja,
+                                        "토파졸라이트"@ko,
+                                        "ぱらのいどあーく"@ja,
+                                        "파라노이드 아크"@ko;
+                    arcaea:set "single"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "Paranoid Arc"@en;
+                    arcaea:version "6.11"@en-us;
+                    arcaea:world_unlock false.
+arcaea.paranoidarc:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#Exschwasion%20v.●/○/○>;
+                       arcaea:jacketDesigner "まるい"@en-us;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 4 .
+arcaea.paranoidarc:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Exschwasion%20v.●/○/○>;
+                       arcaea:jacketDesigner "まるい"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.paranoidarc:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Exschwasion%20v.●/○/○>;
+                       arcaea:jacketDesigner "まるい"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 ;
+                       arcaea:ratingPlus true.
+arcaea.paranoidarc:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Exschwasion%20v.●/○/○>;
+                       arcaea:jacketDesigner "まるい"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

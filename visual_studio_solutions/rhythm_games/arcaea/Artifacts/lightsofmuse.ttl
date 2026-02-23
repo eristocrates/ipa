@@ -1,0 +1,45 @@
+@prefix arcaea.lightsofmuse: <https://arcaea.lowiro.com/#lightsofmuse#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lightsofmuse:.
+arcaea.lightsofmuse: arcaea:artist arcaea:Ayatsugu_Otowa;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:musedash_light;
+                     arcaea:bg_inverse arcaea:musedash_conflict;
+                     arcaea:bpm "180"@en-us;
+                     arcaea:bpm_base 180 ;
+                     arcaea:date 1640304000 ;
+                     arcaea:difficulties arcaea.lightsofmuse:FTR,
+                                         arcaea.lightsofmuse:PRS,
+                                         arcaea.lightsofmuse:PST;
+                     arcaea:id "lightsofmuse"@en-us;
+                     arcaea:idx 249 ;
+                     arcaea:no_stream true;
+                     arcaea:purchase "musedash"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "あやつぐおとわ"@ja,
+                                         "아야츠구 오토와"@ko,
+                                         "らいとおぶみゅーず"@ja,
+                                         "라이츠 오브 뮤즈"@ko,
+                                         "라이트 오브 뮤즈"@ko;
+                     arcaea:set "musedash"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "Lights of Muse"@en,
+                                            "Muse Dash"@en;
+                     arcaea:version "3.11"@en-us;
+                     arcaea:world_unlock false.
+arcaea.lightsofmuse:FTR arcaea:chartDesigner arcaea:antymis;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.lightsofmuse:PRS arcaea:chartDesigner arcaea:antymis;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.lightsofmuse:PST arcaea:chartDesigner arcaea:antymis;
+                        arcaea:rating 2 ;
+                        arcaea:ratingClass 0 .

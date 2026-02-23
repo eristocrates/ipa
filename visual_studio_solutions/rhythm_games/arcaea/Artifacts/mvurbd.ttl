@@ -1,0 +1,47 @@
+@prefix arcaea.mvurbd: <https://arcaea.lowiro.com/#mvurbd#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mvurbd:.
+arcaea.mvurbd: arcaea:artist <https://arcaea.lowiro.com/#ETIA.>;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:rotaeno_conflict;
+               arcaea:bg_inverse arcaea:rotaeno_light;
+               arcaea:bpm "175"@en-us;
+               arcaea:bpm_base 175 ;
+               arcaea:date 1724889604 ;
+               arcaea:difficulties arcaea.mvurbd:PRS,
+                                   arcaea.mvurbd:PST,
+                                   arcaea.mvurbd:FTR;
+               arcaea:id "mvurbd"@en-us;
+               arcaea:idx 411 ;
+               arcaea:purchase "rotaeno"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "えちあ"@ja,
+                                   "에치아"@ko,
+                                   "むーぶゆあぼでぃ"@ja,
+                                   "므브유알보디"@ko;
+               arcaea:set "rotaeno"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:source_copyright "© Dream Engine Games"@en-us;
+               arcaea:title_localized "MVURBD"@en,
+                                      "Rotaeno"@en;
+               arcaea:version "5.10"@en-us;
+               arcaea:world_unlock false.
+arcaea.mvurbd:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                  arcaea:jacketDesigner "noel"@en-us;
+                  arcaea:rating 10 ;
+                  arcaea:ratingClass 2 .
+arcaea.mvurbd:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                  arcaea:jacketDesigner "noel"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 ;
+                  arcaea:ratingPlus true.
+arcaea.mvurbd:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                  arcaea:jacketDesigner "noel"@en-us;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

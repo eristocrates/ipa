@@ -1,0 +1,62 @@
+@prefix arcaea.ignotus: <https://arcaea.lowiro.com/#ignotus#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ignotus:.
+arcaea.ignotus: arcaea:artist <https://arcaea.lowiro.com/#ak+q>;
+                arcaea:audioPreview 87176 ;
+                arcaea:audioPreviewEnd 115764 ;
+                arcaea:bg arcaea:base_conflict;
+                arcaea:bg_inverse arcaea:base_light;
+                arcaea:bpm "170"@en-us;
+                arcaea:bpm_base 170 ;
+                arcaea:date 1500163200 ;
+                arcaea:difficulties arcaea.ignotus:BYD,
+                                    arcaea.ignotus:FTR,
+                                    arcaea.ignotus:PRS,
+                                    arcaea.ignotus:PST;
+                arcaea:id "ignotus"@en-us;
+                arcaea:idx 41 ;
+                arcaea:remote_dl true;
+                arcaea:search_title "えーけーぷらすきゅー"@ja,
+                                    "에이케이 큐"@ko,
+                                    "いぐのたす"@ja,
+                                    "いぐのーたす"@ja,
+                                    "いのーたす"@ja,
+                                    "いぐのたすあふたーばーん"@ja,
+                                    "いぐのーたすあふたーばーん"@ja,
+                                    "いのーたすあふたーばーん"@ja,
+                                    "이그노투스"@ko,
+                                    "이그노터스"@ko;
+                arcaea:set "base"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Ignotus"@en;
+                arcaea:version "1.1"@en-us;
+                arcaea:world_unlock true.
+arcaea.ignotus:BYD arcaea:artist arcaea:Arcaea%20Sound%20Team;
+                   arcaea:audioOverride true;
+                   arcaea:bg arcaea:byd_conflict;
+                   arcaea:bg_inverse arcaea:byd_light;
+                   arcaea:chartDesigner arcaea:Toaster%20%C3%97%20%E7%9F%B3%E6%A8%82;
+                   arcaea:date 1646784000 ;
+                   arcaea:jacketDesigner "Khronetic"@en-us;
+                   arcaea:jacketOverride true;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 3 ;
+                   arcaea:ratingPlus true;
+                   arcaea:version "3.12"@en-us.
+arcaea.ignotus:FTR arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "Khronetic"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.ignotus:PRS arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "Khronetic"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.ignotus:PST arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "Khronetic"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

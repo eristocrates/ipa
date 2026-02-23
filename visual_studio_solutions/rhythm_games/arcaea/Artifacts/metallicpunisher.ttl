@@ -1,0 +1,44 @@
+@prefix arcaea.metallicpunisher: <https://arcaea.lowiro.com/#metallicpunisher#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.metallicpunisher:.
+arcaea.metallicpunisher: arcaea:artist arcaea:INNOCENT%20NOIZE;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:yugamu;
+                         arcaea:bg_inverse arcaea:rei;
+                         arcaea:bpm "165"@en-us;
+                         arcaea:bpm_base 165 ;
+                         arcaea:category arcaea:partner;
+                         arcaea:date 1518480000 ;
+                         arcaea:difficulties arcaea.metallicpunisher:PRS,
+                                             arcaea.metallicpunisher:PST,
+                                             arcaea.metallicpunisher:FTR;
+                         arcaea:id "metallicpunisher"@en-us;
+                         arcaea:idx 74 ;
+                         arcaea:purchase "metallicpunisher"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "いのせんとのいず"@ja,
+                                             "이노센트 노이즈"@ko,
+                                             "めたりっくぱにっしゃー"@ja,
+                                             "메탈릭 퍼니셔"@ko;
+                         arcaea:set "single"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "Metallic Punisher"@en;
+                         arcaea:version "1.5"@en-us.
+arcaea.metallicpunisher:FTR arcaea:chartDesigner arcaea:Black%20Tea;
+                            arcaea:jacketDesigner "nonokuro"@en-us;
+                            arcaea:rating 10 ;
+                            arcaea:ratingClass 2 .
+arcaea.metallicpunisher:PRS arcaea:chartDesigner arcaea:Kurorak;
+                            arcaea:jacketDesigner "nonokuro"@en-us;
+                            arcaea:rating 7 ;
+                            arcaea:ratingClass 1 .
+arcaea.metallicpunisher:PST arcaea:chartDesigner arcaea:Kurorak;
+                            arcaea:jacketDesigner "nonokuro"@en-us;
+                            arcaea:rating 3 ;
+                            arcaea:ratingClass 0 .

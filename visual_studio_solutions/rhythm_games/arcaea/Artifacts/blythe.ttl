@@ -1,0 +1,47 @@
+@prefix arcaea.blythe: <https://arcaea.lowiro.com/#blythe#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.blythe:.
+arcaea.blythe: arcaea:artist arcaea:M2U;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:djmax_conflict;
+               arcaea:bg_inverse arcaea:djmax_light;
+               arcaea:bpm "180"@en-us;
+               arcaea:bpm_base 180 ;
+               arcaea:date 1750896006 ;
+               arcaea:difficulties arcaea.blythe:FTR,
+                                   arcaea.blythe:PRS,
+                                   arcaea.blythe:PST,
+                                   arcaea.blythe:ETR;
+               arcaea:id "blythe"@en-us;
+               arcaea:idx 470 ;
+               arcaea:purchase "djmax_append_1"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "えむつーゆー"@ja,
+                                   "엠투유"@ko,
+                                   "ぶらいす"@ja,
+                                   "블라이스"@ko;
+               arcaea:set "djmax_append_1"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:source_copyright "© Neowiz. All Rights Reserved."@en-us;
+               arcaea:title_localized "BlythE"@en,
+                                      "DJMAX"@en;
+               arcaea:version "6.6"@en-us;
+               arcaea:world_unlock false.
+arcaea.blythe:ETR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                  arcaea:rating 10 ;
+                  arcaea:ratingClass 4 .
+arcaea.blythe:FTR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.blythe:PRS arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.blythe:PST arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

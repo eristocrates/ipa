@@ -1,0 +1,46 @@
+@prefix arcaea.onandon: <https://arcaea.lowiro.com/#onandon#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.onandon:.
+arcaea.onandon: arcaea:artist <https://arcaea.lowiro.com/#ETIA.>;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:nijuusei2_light;
+                arcaea:bg_inverse arcaea:nijuusei2_conflict;
+                arcaea:bpm "170"@en-us;
+                arcaea:bpm_base 170 ;
+                arcaea:date 1703116802 ;
+                arcaea:difficulties arcaea.onandon:PRS,
+                                    arcaea.onandon:PST,
+                                    arcaea.onandon:FTR;
+                arcaea:id "onandon"@en-us;
+                arcaea:idx 366 ;
+                arcaea:purchase "extend_2"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "えちあ"@ja,
+                                    "じぇんが"@ja,
+                                    "에치아"@ko,
+                                    "젠가"@ko,
+                                    "おんあんどおん"@ja,
+                                    "온 앤 온"@ko;
+                arcaea:set "extend_2"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "On And On!! feat. Jenga"@en;
+                arcaea:version "5.2"@en-us;
+                arcaea:world_unlock true.
+arcaea.onandon:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#én%20and%20én!!>;
+                   arcaea:jacketDesigner "Keizou"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.onandon:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#én%20and%20én!!>;
+                   arcaea:jacketDesigner "Keizou"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.onandon:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#én%20and%20én!!>;
+                   arcaea:jacketDesigner "Keizou"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

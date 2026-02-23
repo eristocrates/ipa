@@ -1,0 +1,54 @@
+@prefix arcaea.marenyx: <https://arcaea.lowiro.com/#marenyx#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.marenyx:.
+arcaea.marenyx: arcaea:artist arcaea:BlackY%20%C3%97%20Aoi;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:nextstage_conflict;
+                arcaea:bg_inverse arcaea:nextstage_light;
+                arcaea:bpm "195"@en-us;
+                arcaea:bpm_base 195 ;
+                arcaea:date 1763769603 ;
+                arcaea:difficulties arcaea.marenyx:FTR,
+                                    arcaea.marenyx:PRS,
+                                    arcaea.marenyx:PST,
+                                    arcaea.marenyx:ETR;
+                arcaea:id "marenyx"@en-us;
+                arcaea:idx 503 ;
+                arcaea:purchase "nextstage"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "ぶらっきー"@ja,
+                                    "あおい"@ja,
+                                    "블래키"@ko,
+                                    "아오이"@ko,
+                                    "まれにくす"@ja,
+                                    "まーれにくす"@ja,
+                                    "마레닉스"@ko;
+                arcaea:set "nextstage"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "MARENYX"@en;
+                arcaea:version "6.10"@en-us;
+                arcaea:world_unlock false.
+arcaea.marenyx:ETR arcaea:chartDesigner arcaea:raycast%20against.%20%E9%9B%B6%E4%B8%8B;
+                   arcaea:jacketDesigner "かえで《もみじの木》"@en-us;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 4 ;
+                   arcaea:ratingPlus true.
+arcaea.marenyx:FTR arcaea:chartDesigner arcaea:raycast%20against.%20%E9%9B%B6%E4%B8%8B;
+                   arcaea:jacketDesigner "かえで《もみじの木》"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.marenyx:PRS arcaea:chartDesigner arcaea:raycast%20against.%20%E9%9B%B6%E4%B8%8B;
+                   arcaea:jacketDesigner "かえで《もみじの木》"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 ;
+                   arcaea:ratingPlus true.
+arcaea.marenyx:PST arcaea:chartDesigner arcaea:raycast%20against.%20%E9%9B%B6%E4%B8%8B;
+                   arcaea:jacketDesigner "かえで《もみじの木》"@en-us;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

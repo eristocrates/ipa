@@ -1,0 +1,45 @@
+@prefix arcaea.themessage: <https://arcaea.lowiro.com/#themessage#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.themessage:.
+arcaea.themessage: arcaea:artist arcaea:Jun%20Kuroda;
+                   arcaea:audioPreview 39207 ;
+                   arcaea:audioPreviewEnd 58217 ;
+                   arcaea:bg arcaea:rei;
+                   arcaea:bg_inverse arcaea:yugamu;
+                   arcaea:bpm "202"@en-us;
+                   arcaea:bpm_base 202 ;
+                   arcaea:date 1531699204 ;
+                   arcaea:difficulties arcaea.themessage:PRS,
+                                       arcaea.themessage:PST,
+                                       arcaea.themessage:FTR;
+                   arcaea:id "themessage"@en-us;
+                   arcaea:idx 83 ;
+                   arcaea:purchase "rei"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "じゅんくろだ"@ja,
+                                       "준 쿠로다"@ko,
+                                       "쥰 쿠로다"@ko,
+                                       "ざめっせーじ"@ja,
+                                       "더 메세지"@ko;
+                   arcaea:set "rei"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "The Message"@en;
+                   arcaea:version "1.7"@en-us.
+arcaea.themessage:FTR arcaea:chartDesigner arcaea:Toaster;
+                      arcaea:jacketDesigner "Shionty + Khronetic"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.themessage:PRS arcaea:chartDesigner arcaea:Toaster;
+                      arcaea:jacketDesigner "Shionty + Khronetic"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.themessage:PST arcaea:chartDesigner arcaea:Toaster;
+                      arcaea:jacketDesigner "Shionty + Khronetic"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

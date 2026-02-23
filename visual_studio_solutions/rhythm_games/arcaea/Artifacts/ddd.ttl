@@ -1,0 +1,43 @@
+@prefix arcaea.ddd: <https://arcaea.lowiro.com/#ddd#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ddd:.
+arcaea.ddd: arcaea:artist arcaea:%E3%81%AF%E3%81%8C%E3%81%AD;
+            arcaea:audioPreview 43478 ;
+            arcaea:audioPreviewEnd 71304 ;
+            arcaea:bg arcaea:nijuusei2_light;
+            arcaea:bg_inverse arcaea:nijuusei2_conflict;
+            arcaea:bpm "138"@en-us;
+            arcaea:bpm_base 138 ;
+            arcaea:date 1647993601 ;
+            arcaea:difficulties arcaea.ddd:PRS,
+                                arcaea.ddd:PST,
+                                arcaea.ddd:FTR;
+            arcaea:id "ddd"@en-us;
+            arcaea:idx 263 ;
+            arcaea:remote_dl true;
+            arcaea:search_title "하가네"@ko,
+                                "hagane"@en,
+                                "でぃーでぃーでぃー"@ja,
+                                "디디디"@ko;
+            arcaea:set "base"@en-us;
+            arcaea:side arcaea:light_side;
+            arcaea:title_localized "DDD"@en;
+            arcaea:version "3.12"@en-us;
+            arcaea:world_unlock true.
+arcaea.ddd:FTR arcaea:chartDesigner arcaea:%C3%A9n;
+               arcaea:jacketDesigner "わっふゑ"@en-us;
+               arcaea:rating 8 ;
+               arcaea:ratingClass 2 .
+arcaea.ddd:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+               arcaea:jacketDesigner "わっふゑ"@en-us;
+               arcaea:rating 6 ;
+               arcaea:ratingClass 1 .
+arcaea.ddd:PST arcaea:chartDesigner arcaea:%C3%A9n;
+               arcaea:jacketDesigner "わっふゑ"@en-us;
+               arcaea:rating 2 ;
+               arcaea:ratingClass 0 .

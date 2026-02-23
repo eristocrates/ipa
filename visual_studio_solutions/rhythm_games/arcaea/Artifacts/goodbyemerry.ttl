@@ -1,0 +1,47 @@
+@prefix arcaea.goodbyemerry: <https://arcaea.lowiro.com/#goodbyemerry#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.goodbyemerry:.
+arcaea.goodbyemerry: arcaea:artist arcaea:Yooh;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:ongeki_conflict;
+                     arcaea:bg_inverse arcaea:ongeki_light;
+                     arcaea:bpm "185"@en-us;
+                     arcaea:bpm_base 185 ;
+                     arcaea:date 1664409603 ;
+                     arcaea:difficulties arcaea.goodbyemerry:FTR,
+                                         arcaea.goodbyemerry:PRS,
+                                         arcaea.goodbyemerry:PST;
+                     arcaea:id "goodbyemerry"@en-us;
+                     arcaea:idx 288 ;
+                     arcaea:no_stream true;
+                     arcaea:purchase "ongeki_append_1"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "ゆー"@ja,
+                                         "유"@ko,
+                                         "ぐっどばいめりーごーらんど"@ja,
+                                         "ぐっどばいめりーごーらうんど"@ja,
+                                         "ぐっばいめりーごーらんど"@ja,
+                                         "ぐっばいめりーごーらうんど"@ja,
+                                         "굿바이 메리 고 라운드"@ko;
+                     arcaea:set "ongeki_append_1"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:source_copyright "©SEGA"@en-us;
+                     arcaea:title_localized "Good bye, Merry-Go-Round."@en,
+                                            "O.N.G.E.K.I."@en;
+                     arcaea:version "4.1"@en-us;
+                     arcaea:world_unlock false.
+arcaea.goodbyemerry:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 2 .
+arcaea.goodbyemerry:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.goodbyemerry:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                        arcaea:rating 4 ;
+                        arcaea:ratingClass 0 .

@@ -1,0 +1,46 @@
+@prefix arcaea.xanatos: <https://arcaea.lowiro.com/#xanatos#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.xanatos:.
+arcaea.xanatos: arcaea:artist arcaea:Tatsh;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:yugamu;
+                arcaea:bg_inverse arcaea:rei;
+                arcaea:bpm "170"@en-us;
+                arcaea:bpm_base 170 ;
+                arcaea:category arcaea:original;
+                arcaea:date 1605744000 ;
+                arcaea:difficulties arcaea.xanatos:PRS,
+                                    arcaea.xanatos:PST,
+                                    arcaea.xanatos:FTR;
+                arcaea:id "xanatos"@en-us;
+                arcaea:idx 181 ;
+                arcaea:purchase "xanatos"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "たっしゅ"@ja,
+                                    "탓시"@ko,
+                                    "탓슈"@ko,
+                                    "ざなとす"@ja,
+                                    "자나토스"@ko;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Xanatos"@en;
+                arcaea:version "3.2"@en-us;
+                arcaea:world_unlock false.
+arcaea.xanatos:FTR arcaea:chartDesigner arcaea:XERiNG%20%C3%97%20eXschwasion%20%C3%97%20NitromeX;
+                   arcaea:jacketDesigner "クリス"@en-us;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 2 .
+arcaea.xanatos:PRS arcaea:chartDesigner arcaea:eXschwasion;
+                   arcaea:jacketDesigner "クリス"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.xanatos:PST arcaea:chartDesigner arcaea:XERiNG;
+                   arcaea:jacketDesigner "クリス"@en-us;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

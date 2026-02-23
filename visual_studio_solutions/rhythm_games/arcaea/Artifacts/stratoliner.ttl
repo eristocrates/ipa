@@ -1,0 +1,42 @@
+@prefix arcaea.stratoliner: <https://arcaea.lowiro.com/#stratoliner#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.stratoliner:.
+arcaea.stratoliner: arcaea:artist arcaea:C-Show;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:wacca_conflict;
+                    arcaea:bg_inverse arcaea:wacca_light;
+                    arcaea:bpm "175"@en-us;
+                    arcaea:bpm_base 175 ;
+                    arcaea:date 1701302400 ;
+                    arcaea:difficulties arcaea.stratoliner:PRS,
+                                        arcaea.stratoliner:PST,
+                                        arcaea.stratoliner:FTR;
+                    arcaea:id "stratoliner"@en-us;
+                    arcaea:idx 357 ;
+                    arcaea:purchase "wacca_append_1"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "ししょう"@ja,
+                                        "시쇼"@ko,
+                                        "すとらとらいなー"@ja,
+                                        "스트라토라이너"@ko;
+                    arcaea:set "wacca_append_1"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:source_copyright "©Marvelous Inc. / Supported by HARDCORE TANO*C"@en-us;
+                    arcaea:title_localized "Stratoliner"@en;
+                    arcaea:version "5.2"@en-us;
+                    arcaea:world_unlock false.
+arcaea.stratoliner:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.stratoliner:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.stratoliner:PST arcaea:chartDesigner arcaea:Exschwasion;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

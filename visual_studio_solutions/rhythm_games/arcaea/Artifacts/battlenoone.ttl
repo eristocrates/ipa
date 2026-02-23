@@ -1,0 +1,46 @@
+@prefix arcaea.battlenoone: <https://arcaea.lowiro.com/#battlenoone#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.battlenoone:.
+arcaea.battlenoone: arcaea:artist <https://arcaea.lowiro.com/#TANO*C%20Sound%20Team>;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:tanoc_conflict;
+                    arcaea:bg_inverse arcaea:tanoc_light;
+                    arcaea:bpm "200"@en-us;
+                    arcaea:bpm_base 200 ;
+                    arcaea:category arcaea:variety;
+                    arcaea:date 1579046400 ;
+                    arcaea:difficulties arcaea.battlenoone:PRS,
+                                        arcaea.battlenoone:PST,
+                                        arcaea.battlenoone:FTR;
+                    arcaea:id "battlenoone"@en-us;
+                    arcaea:idx 145 ;
+                    arcaea:purchase "battlenoone"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "たのしーさうんどちーむ"@ja,
+                                        "타노시 사운드 팀"@ko,
+                                        "ばとるなんばーわん"@ja,
+                                        "배틀 넘버 원"@ko;
+                    arcaea:set "single"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "BATTLE NO.1"@en;
+                    arcaea:version "2.4"@en-us;
+                    arcaea:world_unlock false.
+arcaea.battlenoone:FTR arcaea:chartDesigner arcaea:Arcaea%20Team;
+                       arcaea:jacketDesigner "Hanamori Hiro"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.battlenoone:PRS arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "Hanamori Hiro"@en-us;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.battlenoone:PST arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "Hanamori Hiro"@en-us;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

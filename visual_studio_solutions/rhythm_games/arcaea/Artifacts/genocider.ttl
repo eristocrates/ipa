@@ -1,0 +1,50 @@
+@prefix arcaea.genocider: <https://arcaea.lowiro.com/#genocider#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.genocider:.
+arcaea.genocider: arcaea:artist arcaea:DJ%20Myosuke;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:wacca_boss;
+                  arcaea:bpm "250-390"@en-us;
+                  arcaea:bpm_base 250 ;
+                  arcaea:date 1628553604 ;
+                  arcaea:difficulties arcaea.genocider:FTR,
+                                      arcaea.genocider:PRS,
+                                      arcaea.genocider:PST;
+                  arcaea:id "genocider"@en-us;
+                  arcaea:idx 230 ;
+                  arcaea:no_stream true;
+                  arcaea:purchase "wacca"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "でぃーじぇーみょーすけ"@ja,
+                                      "でぃーじぇーみょうすけ"@ja,
+                                      "でぃーじぇいみょーすけ"@ja,
+                                      "でぃーじぇいみょうすけ"@ja,
+                                      "디제이 묘스케"@ko,
+                                      "じぇのさいだー"@ja,
+                                      "제노사이더"@ko;
+                  arcaea:set "wacca"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "©Marvelous Inc. / Supported by HARDCORE TANO*C"@en-us;
+                  arcaea:title_localized "GENOCIDER"@en;
+                  arcaea:version "3.8"@en-us;
+                  arcaea:world_unlock false.
+arcaea.genocider:FTR arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "Taiyo Yamamoto"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.genocider:PRS arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "Taiyo Yamamoto"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 ;
+                     arcaea:ratingPlus true.
+arcaea.genocider:PST arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "Taiyo Yamamoto"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

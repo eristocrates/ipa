@@ -1,0 +1,47 @@
+@prefix arcaea.impurebird: <https://arcaea.lowiro.com/#impurebird#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.impurebird:.
+arcaea.impurebird: arcaea:artist arcaea:MIssionary;
+                   arcaea:audioPreview 19565 ;
+                   arcaea:audioPreviewEnd 41739 ;
+                   arcaea:bg arcaea:single_light;
+                   arcaea:bg_inverse arcaea:single_conflict;
+                   arcaea:bpm "184"@en-us;
+                   arcaea:bpm_base 184 ;
+                   arcaea:category arcaea:original;
+                   arcaea:date 1500163201 ;
+                   arcaea:difficulties arcaea.impurebird:PRS,
+                                       arcaea.impurebird:PST,
+                                       arcaea.impurebird:FTR;
+                   arcaea:id "impurebird"@en-us;
+                   arcaea:idx 40 ;
+                   arcaea:purchase "impurebird"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "みっしょなりー"@ja,
+                                       "미셔너리"@ko,
+                                       "ふじょうなしろいとり"@ja,
+                                       "임퓨어 버드"@ko,
+                                       "후죠나 시로이 토리"@ko,
+                                       "부정한 하얀 새"@ko;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "不浄な白い鳥"@ja,
+                                          "Impure Bird"@en;
+                   arcaea:version "1.1"@en-us.
+arcaea.impurebird:FTR arcaea:chartDesigner arcaea:Kurorak;
+                      arcaea:jacketDesigner "Nano Kun"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.impurebird:PRS arcaea:chartDesigner arcaea:Kurorak;
+                      arcaea:jacketDesigner "Nano Kun"@en-us;
+                      arcaea:rating 5 ;
+                      arcaea:ratingClass 1 .
+arcaea.impurebird:PST arcaea:chartDesigner arcaea:Kurorak;
+                      arcaea:jacketDesigner "Nano Kun"@en-us;
+                      arcaea:rating 2 ;
+                      arcaea:ratingClass 0 .

@@ -1,0 +1,49 @@
+@prefix arcaea.amekagura: <https://arcaea.lowiro.com/#amekagura#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.amekagura:.
+arcaea.amekagura: arcaea:artist arcaea:%E8%8D%92%E8%B0%B7%E3%82%B5%E3%83%88%E3%83%AB;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:omatsuri_light;
+                  arcaea:bg_inverse arcaea:omatsuri_conflict;
+                  arcaea:bpm "105"@en-us;
+                  arcaea:bpm_base 210 ;
+                  arcaea:date 1695772802 ;
+                  arcaea:difficulties arcaea.amekagura:FTR,
+                                      arcaea.amekagura:PRS,
+                                      arcaea.amekagura:PST;
+                  arcaea:id "amekagura"@en-us;
+                  arcaea:idx 346 ;
+                  arcaea:purchase "extend_2"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "あらたにさとる"@ja,
+                                      "아라타니 사토루"@ko,
+                                      "satoru aratani"@en,
+                                      "あめかぐら"@ja,
+                                      "아메카구라"@ko,
+                                      "우신락"@ko,
+                                      "우신낙"@ko;
+                  arcaea:set "extend_2"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "雨神楽"@ja,
+                                         "Amekagura"@en;
+                  arcaea:version "5.0"@en-us;
+                  arcaea:world_unlock true.
+arcaea.amekagura:FTR arcaea:chartDesigner arcaea:antymis;
+                     arcaea:jacketDesigner "英エイスト"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.amekagura:PRS arcaea:chartDesigner arcaea:antymis;
+                     arcaea:jacketDesigner "英エイスト"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.amekagura:PST arcaea:chartDesigner arcaea:antymis;
+                     arcaea:jacketDesigner "英エイスト"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

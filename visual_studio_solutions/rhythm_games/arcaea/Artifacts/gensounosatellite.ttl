@@ -1,0 +1,56 @@
+@prefix arcaea.gensounosatellite: <https://arcaea.lowiro.com/#gensounosatellite#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.gensounosatellite:.
+arcaea.gensounosatellite: arcaea:artist arcaea:%E8%B1%9A%E4%B9%99%E5%A5%B3;
+                          arcaea:audioPreview 0 ;
+                          arcaea:audioPreviewEnd 0 ;
+                          arcaea:bg arcaea:touhou_conflict;
+                          arcaea:bg_inverse arcaea:touhou_light;
+                          arcaea:bpm "230"@en-us;
+                          arcaea:bpm_base 230 ;
+                          arcaea:category arcaea:poprec;
+                          arcaea:date 1727308803 ;
+                          arcaea:difficulties arcaea.gensounosatellite:FTR,
+                                              arcaea.gensounosatellite:PRS,
+                                              arcaea.gensounosatellite:PST,
+                                              arcaea.gensounosatellite:ETR;
+                          arcaea:id "gensounosatellite"@en-us;
+                          arcaea:idx 417 ;
+                          arcaea:purchase "gensounosatellite"@en-us;
+                          arcaea:remote_dl true;
+                          arcaea:search_title "ぶたおとめ"@ja,
+                                              "부타오토메"@ko,
+                                              "げんそうのさてらいと"@ja,
+                                              "겐소우노 사토라이토"@ko,
+                                              "겐소노 사토라이토"@ko,
+                                              "환상의 새틀라이트"@ko,
+                                              "gensounosateraito"@en;
+                          arcaea:set "single"@en-us;
+                          arcaea:side arcaea:conflict_side;
+                          arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                          arcaea:title_localized "幻想のサテライト"@ja,
+                                                 "Gensou no Satellite"@en;
+                          arcaea:version "5.10"@en-us;
+                          arcaea:world_unlock false.
+arcaea.gensounosatellite:ETR arcaea:chartDesigner arcaea:Luxance;
+                             arcaea:jacketDesigner "ランコの姉 (豚乙女)"@en-us;
+                             arcaea:rating 10 ;
+                             arcaea:ratingClass 4 .
+arcaea.gensounosatellite:FTR arcaea:chartDesigner arcaea:Luxance;
+                             arcaea:jacketDesigner "ランコの姉 (豚乙女)"@en-us;
+                             arcaea:rating 8 ;
+                             arcaea:ratingClass 2 ;
+                             arcaea:ratingPlus true.
+arcaea.gensounosatellite:PRS arcaea:chartDesigner arcaea:Luxance;
+                             arcaea:jacketDesigner "ランコの姉 (豚乙女)"@en-us;
+                             arcaea:rating 6 ;
+                             arcaea:ratingClass 1 .
+arcaea.gensounosatellite:PST arcaea:chartDesigner arcaea:Luxance;
+                             arcaea:jacketDesigner "ランコの姉 (豚乙女)"@en-us;
+                             arcaea:rating 2 ;
+                             arcaea:ratingClass 0 .

@@ -1,0 +1,56 @@
+@prefix arcaea.crimsonquartz: <https://arcaea.lowiro.com/#crimsonquartz#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.crimsonquartz:.
+arcaea.crimsonquartz: arcaea:artist arcaea:DiGiTAL%20WiNG%20with%20%E7%A9%BA%E9%9F%B3;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:touhou_conflict;
+                      arcaea:bg_inverse arcaea:touhou_light;
+                      arcaea:bpm "145"@en-us;
+                      arcaea:bpm_base 145 ;
+                      arcaea:category arcaea:poprec;
+                      arcaea:date 1729728001 ;
+                      arcaea:difficulties arcaea.crimsonquartz:FTR,
+                                          arcaea.crimsonquartz:PRS,
+                                          arcaea.crimsonquartz:PST,
+                                          arcaea.crimsonquartz:ETR;
+                      arcaea:id "crimsonquartz"@en-us;
+                      arcaea:idx 419 ;
+                      arcaea:purchase "crimsonquartz"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "でじたるうぃんぐ"@ja,
+                                          "そらね"@ja,
+                                          "디지털 윙"@ko,
+                                          "소라네"@ko,
+                                          "sorane"@en,
+                                          "くりむぞんくぉーつ"@ja,
+                                          "크림슨 쿼츠"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                      arcaea:title_localized "Crimson Quartz"@en;
+                      arcaea:version "5.10"@en-us;
+                      arcaea:world_unlock false.
+arcaea.crimsonquartz:ETR arcaea:chartDesigner arcaea:raycast;
+                         arcaea:jacketDesigner "雨音くるみ"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 4 ;
+                         arcaea:ratingPlus true.
+arcaea.crimsonquartz:FTR arcaea:chartDesigner arcaea:raycast;
+                         arcaea:jacketDesigner "雨音くるみ"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.crimsonquartz:PRS arcaea:chartDesigner arcaea:raycast;
+                         arcaea:jacketDesigner "雨音くるみ"@en-us;
+                         arcaea:rating 6 ;
+                         arcaea:ratingClass 1 .
+arcaea.crimsonquartz:PST arcaea:chartDesigner arcaea:raycast;
+                         arcaea:jacketDesigner "雨音くるみ"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

@@ -1,0 +1,59 @@
+@prefix arcaea.pentiment: <https://arcaea.lowiro.com/#pentiment#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.pentiment:.
+arcaea:additional_files arcaea:file_name "video_audio.ogg"@en-us,
+                                         "video.mp4"@en-us;
+                        arcaea:requirement "required"@en-us.
+arcaea.pentiment: arcaea:additional_files arcaea.pentiment:additional_files;
+                  arcaea:artist arcaea:Nothing%20But%20Requiem%20with%20Museo;
+                  arcaea:audioPreview 35675 ;
+                  arcaea:audioPreviewEnd 69189 ;
+                  arcaea:bg arcaea:pentiment;
+                  arcaea:bpm "200-222"@en-us;
+                  arcaea:bpm_base 222 ;
+                  arcaea:byd_local_unlock true;
+                  arcaea:date 1657152007 ;
+                  arcaea:difficulties arcaea.pentiment:FTR,
+                                      arcaea.pentiment:PRS,
+                                      arcaea.pentiment:PST,
+                                      arcaea.pentiment:BYD;
+                  arcaea:id "pentiment"@en-us;
+                  arcaea:idx 278 ;
+                  arcaea:purchase "finale"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "なっしんぐばっとれくいえむ"@ja,
+                                      "みゅぜお"@ja,
+                                      "낫띵 벗 레퀴엠 윗 무소"@ko,
+                                      "낫씽 벗 레퀴엠 윗 무소"@ko,
+                                      "ぺんてぃめんと"@ja,
+                                      "펜티먼트"@ko;
+                  arcaea:set "finale"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Pentiment"@en;
+                  arcaea:version "4.0"@en-us;
+                  arcaea:world_unlock false.
+arcaea.pentiment:BYD arcaea:chartDesigner arcaea:Paradox%20Blight;
+                     arcaea:hidden_until "none"@en-us;
+                     arcaea:jacketDesigner "村カルキ"@en-us;
+                     arcaea:legacy11 true;
+                     arcaea:rating 11 ;
+                     arcaea:ratingClass 3 ;
+                     arcaea:world_unlock false.
+arcaea.pentiment:FTR arcaea:chartDesigner arcaea:Paradox%20Blight;
+                     arcaea:jacketDesigner "村カルキ"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.pentiment:PRS arcaea:chartDesigner arcaea:Paradox%20Blight;
+                     arcaea:jacketDesigner "村カルキ"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 ;
+                     arcaea:ratingPlus true.
+arcaea.pentiment:PST arcaea:chartDesigner arcaea:Paradox%20Blight;
+                     arcaea:jacketDesigner "村カルキ"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 0 .

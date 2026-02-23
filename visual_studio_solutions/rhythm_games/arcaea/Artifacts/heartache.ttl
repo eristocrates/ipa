@@ -1,0 +1,49 @@
+@prefix arcaea.heartache: <https://arcaea.lowiro.com/#heartache#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.heartache:.
+arcaea.heartache: arcaea:artist arcaea:Toby%20Fox;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:undertale_light;
+                  arcaea:bg_inverse arcaea:undertale_conflict;
+                  arcaea:bpm "239"@en-us;
+                  arcaea:bpm_base 239 ;
+                  arcaea:date 1741478400 ;
+                  arcaea:difficulties arcaea.heartache:ETR,
+                                      arcaea.heartache:FTR,
+                                      arcaea.heartache:PRS,
+                                      arcaea.heartache:PST;
+                  arcaea:id "heartache"@en-us;
+                  arcaea:idx 444 ;
+                  arcaea:purchase "undertale"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "とびーふぉっくす"@ja,
+                                      "토비 폭스"@ko,
+                                      "はーとえいく"@ja,
+                                      "こころのいたみ"@ja,
+                                      "하트에이크"@ko;
+                  arcaea:set "undertale"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "心の痛み"@ja,
+                                         "Heartache"@en,
+                                         "UNDERTALE®"@en;
+                  arcaea:version "6.3"@en-us;
+                  arcaea:world_unlock false.
+arcaea.heartache:ETR arcaea:chartDesigner arcaea:sidewaves;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 4 ;
+                     arcaea:ratingPlus true.
+arcaea.heartache:FTR arcaea:chartDesigner arcaea:sidewaves;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 2 .
+arcaea.heartache:PRS arcaea:chartDesigner arcaea:sidewaves;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 1 .
+arcaea.heartache:PST arcaea:chartDesigner arcaea:sidewaves;
+                     arcaea:rating 1 ;
+                     arcaea:ratingClass 0 .

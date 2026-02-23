@@ -1,0 +1,43 @@
+@prefix arcaea.cyanine: <https://arcaea.lowiro.com/#cyanine#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.cyanine:.
+arcaea.cyanine: arcaea:artist arcaea:jioyi;
+                arcaea:audioPreview 25542 ;
+                arcaea:audioPreviewEnd 49938 ;
+                arcaea:bg arcaea:lanota-conflict;
+                arcaea:bg_inverse arcaea:lanota-light;
+                arcaea:bpm "182"@en-us;
+                arcaea:bpm_base 182 ;
+                arcaea:date 1517443204 ;
+                arcaea:difficulties arcaea.cyanine:FTR,
+                                    arcaea.cyanine:PRS,
+                                    arcaea.cyanine:PST;
+                arcaea:id "cyanine"@en-us;
+                arcaea:idx 62 ;
+                arcaea:no_stream true;
+                arcaea:purchase "lanota"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "じおい"@ja,
+                                    "죠이"@ko,
+                                    "しあにん"@ja,
+                                    "시아닌"@ko;
+                arcaea:set "lanota"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "cyanine"@en,
+                                       "Lanota"@en;
+                arcaea:version "1.5"@en-us.
+arcaea.cyanine:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 2 .
+arcaea.cyanine:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 ;
+                   arcaea:ratingPlus true.
+arcaea.cyanine:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20-%20Apocalypse;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

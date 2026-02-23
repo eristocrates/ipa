@@ -1,0 +1,53 @@
+@prefix arcaea.xterfusion: <https://arcaea.lowiro.com/#xterfusion#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.xterfusion:.
+arcaea.xterfusion: arcaea:artist <https://arcaea.lowiro.com/#REDALiCE%20×%20t+pazolite>;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:xterfusion;
+                   arcaea:bpm "128-256"@en-us;
+                   arcaea:bpm_base 256 ;
+                   arcaea:category arcaea:original;
+                   arcaea:date 1761782406 ;
+                   arcaea:difficulties arcaea.xterfusion:FTR,
+                                       arcaea.xterfusion:PRS,
+                                       arcaea.xterfusion:PST,
+                                       arcaea.xterfusion:ETR;
+                   arcaea:id "xterfusion"@en-us;
+                   arcaea:idx 499 ;
+                   arcaea:purchase "xterfusion"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "れっどありす"@ja,
+                                       "とぱぞらいと"@ja,
+                                       "레드앨리스"@ko,
+                                       "토파졸라이트"@ko,
+                                       "えくすたーふゅーじょん"@ja,
+                                       "엑스터퓨전"@ko;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Xterfusion"@en;
+                   arcaea:version "6.10"@en-us;
+                   arcaea:world_unlock false.
+arcaea.xterfusion:ETR arcaea:chartDesigner arcaea:Nitro%20-fuze-%20%E5%A4%9C%E6%B5%AA;
+                      arcaea:jacketDesigner "すずなし + Vormis."@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 4 ;
+                      arcaea:ratingPlus true.
+arcaea.xterfusion:FTR arcaea:chartDesigner arcaea:Nitro%20-fuze-%20%E5%A4%9C%E6%B5%AA;
+                      arcaea:jacketDesigner "すずなし + Vormis."@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.xterfusion:PRS arcaea:chartDesigner arcaea:Nitro%20-fuze-%20%E5%A4%9C%E6%B5%AA;
+                      arcaea:jacketDesigner "すずなし + Vormis."@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 1 .
+arcaea.xterfusion:PST arcaea:chartDesigner arcaea:Nitro%20-fuze-%20%E5%A4%9C%E6%B5%AA;
+                      arcaea:jacketDesigner "すずなし + Vormis."@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

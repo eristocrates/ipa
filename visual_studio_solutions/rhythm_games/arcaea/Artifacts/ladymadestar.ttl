@@ -1,0 +1,48 @@
+@prefix arcaea.ladymadestar: <https://arcaea.lowiro.com/#ladymadestar#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ladymadestar:.
+arcaea.ladymadestar: arcaea:artist arcaea:ESTi;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:djmax_light;
+                     arcaea:bg_inverse arcaea:djmax_conflict;
+                     arcaea:bpm "136"@en-us;
+                     arcaea:bpm_base 136 ;
+                     arcaea:date 1747872002 ;
+                     arcaea:difficulties arcaea.ladymadestar:FTR,
+                                         arcaea.ladymadestar:PRS,
+                                         arcaea.ladymadestar:PST,
+                                         arcaea.ladymadestar:ETR;
+                     arcaea:id "ladymadestar"@en-us;
+                     arcaea:idx 458 ;
+                     arcaea:purchase "djmax"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "えすてぃ"@ja,
+                                         "에스티"@ko,
+                                         "れでぃーめいどすたー"@ja,
+                                         "れでぃめいどすたー"@ja,
+                                         "레이디메이드 스타"@ko;
+                     arcaea:set "djmax"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:source_copyright "© NEOWIZ"@en-us;
+                     arcaea:title_localized "Ladymade Star"@en,
+                                            "DJMAX"@en;
+                     arcaea:version "6.5"@en-us;
+                     arcaea:world_unlock false.
+arcaea.ladymadestar:ETR arcaea:chartDesigner arcaea:Nitro%20-RESPECT-;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 4 .
+arcaea.ladymadestar:FTR arcaea:chartDesigner arcaea:Nitro%20-PLATINUM-;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 2 .
+arcaea.ladymadestar:PRS arcaea:chartDesigner arcaea:Nitro%20-STAGE-;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.ladymadestar:PST arcaea:chartDesigner arcaea:Nitro%20-FEVER-;
+                        arcaea:rating 2 ;
+                        arcaea:ratingClass 0 .

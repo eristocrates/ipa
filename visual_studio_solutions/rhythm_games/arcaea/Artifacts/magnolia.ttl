@@ -1,0 +1,45 @@
+@prefix arcaea.magnolia: <https://arcaea.lowiro.com/#magnolia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.magnolia:.
+arcaea.magnolia: arcaea:artist arcaea:M2U%20Vocal%20by%20Guriri;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:magnolia;
+                 arcaea:bpm "160"@en-us;
+                 arcaea:bpm_base 160 ;
+                 arcaea:date 1689724805 ;
+                 arcaea:difficulties arcaea.magnolia:FTR,
+                                     arcaea.magnolia:PRS,
+                                     arcaea.magnolia:PST;
+                 arcaea:id "magnolia"@en-us;
+                 arcaea:idx 334 ;
+                 arcaea:purchase "cytusii_append_1"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "えむつーゆー"@ja,
+                                     "ぐりり"@ja,
+                                     "엠투유"@ko,
+                                     "구리리"@ko,
+                                     "まぐのりあ"@ja,
+                                     "매그놀리아"@ko;
+                 arcaea:set "cytusii_append_1"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:source_copyright "© Rayark Inc."@en-us;
+                 arcaea:title_localized "Magnolia"@en,
+                                        "DEEMO®"@en;
+                 arcaea:version "4.6"@en-us;
+                 arcaea:world_unlock false.
+arcaea.magnolia:FTR arcaea:chartDesigner arcaea:Lacrimosa;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.magnolia:PRS arcaea:chartDesigner arcaea:Lacrimosa;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 ;
+                    arcaea:ratingPlus true.
+arcaea.magnolia:PST arcaea:chartDesigner arcaea:Lacrimosa;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

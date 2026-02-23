@@ -1,0 +1,41 @@
+@prefix arcaea.reinvent: <https://arcaea.lowiro.com/#reinvent#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.reinvent:.
+arcaea.reinvent: arcaea:artist arcaea:Sound%20Souler;
+                 arcaea:audioPreview 89655 ;
+                 arcaea:audioPreviewEnd 122758 ;
+                 arcaea:bg arcaea:base_light;
+                 arcaea:bg_inverse arcaea:base_conflict;
+                 arcaea:bpm "174"@en-us;
+                 arcaea:bpm_base 174 ;
+                 arcaea:date 1513814400 ;
+                 arcaea:difficulties arcaea.reinvent:PRS,
+                                     arcaea.reinvent:PST,
+                                     arcaea.reinvent:FTR;
+                 arcaea:id "reinvent"@en-us;
+                 arcaea:idx 68 ;
+                 arcaea:search_title "さうんどそうらー"@ja,
+                                     "사운드 소울러"@ko,
+                                     "りいんべんと"@ja,
+                                     "리인벤트"@ko;
+                 arcaea:set "base"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "Reinvent"@en;
+                 arcaea:version "1.5"@en-us.
+arcaea.reinvent:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal%20+%20nitro>;
+                    arcaea:jacketDesigner "Khronetic"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 2 .
+arcaea.reinvent:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                    arcaea:jacketDesigner "Khronetic"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.reinvent:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                    arcaea:jacketDesigner "Khronetic"@en-us;
+                    arcaea:rating 2 ;
+                    arcaea:ratingClass 0 .

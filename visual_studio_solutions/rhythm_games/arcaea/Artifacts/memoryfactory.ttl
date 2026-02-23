@@ -1,0 +1,44 @@
+@prefix arcaea.memoryfactory: <https://arcaea.lowiro.com/#memoryfactory#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.memoryfactory:.
+arcaea.memoryfactory: arcaea:artist arcaea:Frums;
+                      arcaea:audioPreview 50400 ;
+                      arcaea:audioPreviewEnd 79200 ;
+                      arcaea:bg arcaea:base_light;
+                      arcaea:bg_inverse arcaea:base_conflict;
+                      arcaea:bpm "100"@en-us;
+                      arcaea:bpm_base 180 ;
+                      arcaea:date 1487980813 ;
+                      arcaea:difficulties arcaea.memoryfactory:PRS,
+                                          arcaea.memoryfactory:PST,
+                                          arcaea.memoryfactory:FTR;
+                      arcaea:id "memoryfactory"@en-us;
+                      arcaea:idx 9 ;
+                      arcaea:purchase "core"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "ふらむす"@ja,
+                                          "프럼스"@ko,
+                                          "めもりーふぁくとりー"@ja,
+                                          "메모리팩토리.이즈"@ko;
+                      arcaea:set "core"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "memoryfactory.lzh"@en;
+                      arcaea:version "1.0"@en-us.
+arcaea.memoryfactory:FTR arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "Frums"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.memoryfactory:PRS arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "Frums"@en-us;
+                         arcaea:rating 5 ;
+                         arcaea:ratingClass 1 .
+arcaea.memoryfactory:PST arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "Frums"@en-us;
+                         arcaea:rating 2 ;
+                         arcaea:ratingClass 0 .

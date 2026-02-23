@@ -1,0 +1,47 @@
+@prefix arcaea.aegleseeker: <https://arcaea.lowiro.com/#aegleseeker#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.aegleseeker:.
+arcaea.aegleseeker: arcaea:artist arcaea:Silentroom%20vs%20Frums;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:aegleseeker;
+                    arcaea:bpm "234"@en-us;
+                    arcaea:bpm_base 234 ;
+                    arcaea:date 1620691204 ;
+                    arcaea:difficulties arcaea.aegleseeker:FTR,
+                                        arcaea.aegleseeker:PRS,
+                                        arcaea.aegleseeker:PST;
+                    arcaea:id "aegleseeker"@en-us;
+                    arcaea:idx 213 ;
+                    arcaea:purchase "observer"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "さいれんとるーむ"@ja,
+                                        "ふらむす"@ja,
+                                        "사일런트 룸"@ko,
+                                        "프럼스"@ko,
+                                        "あいぐれしーかー"@ja,
+                                        "아이글시커"@ko,
+                                        "에이글시커"@ko;
+                    arcaea:set "observer"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Aegleseeker"@en;
+                    arcaea:version "3.6"@en-us;
+                    arcaea:world_unlock false.
+arcaea.aegleseeker:FTR arcaea:chartDesigner arcaea:L%E2%82%86%CB%90%20The%20Void;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:legacy11 true;
+                       arcaea:rating 11 ;
+                       arcaea:ratingClass 2 .
+arcaea.aegleseeker:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#⟨OBSRV⟩%20boundary(?°a,?°A)>;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 1 .
+arcaea.aegleseeker:PST arcaea:chartDesigner arcaea:%E2%9F%A8RECORD%20START%E2%9F%A9%200:;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 5 ;
+                       arcaea:ratingClass 0 .

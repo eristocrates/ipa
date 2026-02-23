@@ -1,0 +1,48 @@
+@prefix arcaea.logos: <https://arcaea.lowiro.com/#logos#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.logos:.
+arcaea.logos: arcaea:artist arcaea:polysha%20feat.%20%E9%AB%98%E5%9F%8E%E3%81%BF%E3%82%88;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:eden_append_conflict;
+              arcaea:bg_inverse arcaea:eden_append_light;
+              arcaea:bpm "189"@en-us;
+              arcaea:bpm_base 189 ;
+              arcaea:date 1695772806 ;
+              arcaea:difficulties arcaea.logos:FTR,
+                                  arcaea.logos:PRS,
+                                  arcaea.logos:PST;
+              arcaea:id "logos"@en-us;
+              arcaea:idx 350 ;
+              arcaea:purchase "eden_append_1"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "ぽりしゃ"@ja,
+                                  "たかしろみよ"@ja,
+                                  "폴리샤"@ko,
+                                  "타카시로 미요"@ko,
+                                  "miyo takashiro"@en,
+                                  "ろごす"@ja,
+                                  "로고스"@ko;
+              arcaea:set "eden_append_1"@en-us;
+              arcaea:side arcaea:conflict_side;
+              arcaea:title_localized "Logos"@en;
+              arcaea:version "5.0"@en-us;
+              arcaea:world_unlock false.
+arcaea.logos:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                 arcaea:jacketDesigner "majamari"@en-us;
+                 arcaea:rating 10 ;
+                 arcaea:ratingClass 2 .
+arcaea.logos:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                 arcaea:jacketDesigner "majamari"@en-us;
+                 arcaea:rating 7 ;
+                 arcaea:ratingClass 1 ;
+                 arcaea:ratingPlus true.
+arcaea.logos:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                 arcaea:jacketDesigner "majamari"@en-us;
+                 arcaea:rating 4 ;
+                 arcaea:ratingClass 0 .

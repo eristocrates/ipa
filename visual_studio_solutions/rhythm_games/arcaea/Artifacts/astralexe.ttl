@@ -1,0 +1,50 @@
+@prefix arcaea.astralexe: <https://arcaea.lowiro.com/#astralexe#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.astralexe:.
+arcaea.astralexe: arcaea:artist <https://arcaea.lowiro.com/#Synzak%20&%20Laxeno57>;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:nijuusei2_light;
+                  arcaea:bg_inverse arcaea:nijuusei2_conflict;
+                  arcaea:bpm "174"@en-us;
+                  arcaea:bpm_base 174 ;
+                  arcaea:date 1732147200 ;
+                  arcaea:difficulties arcaea.astralexe:FTR,
+                                      arcaea.astralexe:PRS,
+                                      arcaea.astralexe:PST;
+                  arcaea:id "astralexe"@en-us;
+                  arcaea:idx 423 ;
+                  arcaea:purchase "extend_3"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "しんざっく"@ja,
+                                      "らぜのっち"@ja,
+                                      "らぜのおっち"@ja,
+                                      "신작"@ko,
+                                      "라지노 오칠"@ko,
+                                      "라제노 오칠"@ko,
+                                      "라지놋치"@ko,
+                                      "라제놋치"@ko,
+                                      "あすとらるどっとえぐぜ"@ja,
+                                      "아스트랄 이엑스이"@ko;
+                  arcaea:set "extend_3"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "astral.exe"@en;
+                  arcaea:version "6.0"@en-us;
+                  arcaea:world_unlock true.
+arcaea.astralexe:FTR arcaea:chartDesigner arcaea:antymis.exe;
+                     arcaea:jacketDesigner "kkmfd"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.astralexe:PRS arcaea:chartDesigner arcaea:antymis.exe;
+                     arcaea:jacketDesigner "kkmfd"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.astralexe:PST arcaea:chartDesigner arcaea:antymis.exe;
+                     arcaea:jacketDesigner "kkmfd"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

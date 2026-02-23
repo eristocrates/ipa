@@ -1,0 +1,47 @@
+@prefix arcaea.altergate: <https://arcaea.lowiro.com/#altergate#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.altergate:.
+arcaea.altergate: arcaea:artist <https://arcaea.lowiro.com/#MisoilePunch♪%20~タケノコ添え~>;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:altergate;
+                  arcaea:bpm "199"@en-us;
+                  arcaea:bpm_base 199 ;
+                  arcaea:date 1755734405 ;
+                  arcaea:difficulties arcaea.altergate:FTR,
+                                      arcaea.altergate:PRS,
+                                      arcaea.altergate:PST;
+                  arcaea:id "altergate"@en-us;
+                  arcaea:idx 483 ;
+                  arcaea:purchase "anima_append_1"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "みそいるぱんちたけのこぞえ"@ja,
+                                      "미소일펀치 타케노코조에"@ko,
+                                      "takenokozoe"@en,
+                                      "あるたーげーと"@ja,
+                                      "알터게이트"@ko,
+                                      "얼터게이트"@ko;
+                  arcaea:set "anima_append_1"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "AlterGate"@en;
+                  arcaea:version "6.8"@en-us;
+                  arcaea:world_unlock false.
+arcaea.altergate:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                     arcaea:jacketDesigner "辷"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.altergate:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                     arcaea:jacketDesigner "辷"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 ;
+                     arcaea:ratingPlus true.
+arcaea.altergate:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                     arcaea:jacketDesigner "辷"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 0 .

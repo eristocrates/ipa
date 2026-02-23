@@ -1,0 +1,50 @@
+@prefix arcaea.darakunosono: <https://arcaea.lowiro.com/#darakunosono#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.darakunosono:.
+arcaea.darakunosono: arcaea:artist <https://arcaea.lowiro.com/#gmtn.%20(witch's%20slave)>;
+                     arcaea:audioPreview 35723 ;
+                     arcaea:audioPreviewEnd 64294 ;
+                     arcaea:bg arcaea:base_conflict;
+                     arcaea:bg_inverse arcaea:base_light;
+                     arcaea:bpm "168"@en-us;
+                     arcaea:bpm_base 168 ;
+                     arcaea:date 1531699202 ;
+                     arcaea:difficulties arcaea.darakunosono:FTR,
+                                         arcaea.darakunosono:PRS,
+                                         arcaea.darakunosono:PST;
+                     arcaea:id "darakunosono"@en-us;
+                     arcaea:idx 90 ;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "がむつん"@ja,
+                                         "うぃっちずすれいぶ"@ja,
+                                         "うぃっちずすれーぶ"@ja,
+                                         "가무츤"@ko,
+                                         "윗치스 슬레이브"@ko,
+                                         "윗치즈 슬레이브"@ko,
+                                         "だらくのその"@ja,
+                                         "일리걸 파라다이스"@ko,
+                                         "일리갈 파라다이스"@ko,
+                                         "타락의 정원"@ko;
+                     arcaea:set "base"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "堕楽の園"@ja,
+                                            "Illegal Paradise"@en;
+                     arcaea:version "1.7"@en-us;
+                     arcaea:world_unlock true.
+arcaea.darakunosono:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal%20+%20nitro>;
+                        arcaea:jacketDesigner "Illegal Khronetic"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.darakunosono:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                        arcaea:jacketDesigner "Illegal Khronetic"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.darakunosono:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                        arcaea:jacketDesigner "Illegal Khronetic"@en-us;
+                        arcaea:rating 2 ;
+                        arcaea:ratingClass 0 .

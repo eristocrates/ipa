@@ -1,0 +1,47 @@
+@prefix arcaea.wontbackdown: <https://arcaea.lowiro.com/#wontbackdown#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.wontbackdown:.
+arcaea.wontbackdown: arcaea:artist <https://arcaea.lowiro.com/#Pure%20100%25%20/%20KASA>;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:djmax_conflict;
+                     arcaea:bg_inverse arcaea:djmax_light;
+                     arcaea:bpm "165"@en-us;
+                     arcaea:bpm_base 165 ;
+                     arcaea:date 1747872000 ;
+                     arcaea:difficulties arcaea.wontbackdown:FTR,
+                                         arcaea.wontbackdown:PRS,
+                                         arcaea.wontbackdown:PST;
+                     arcaea:id "wontbackdown"@en-us;
+                     arcaea:idx 456 ;
+                     arcaea:purchase "extend_3"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "ぴゅあわんはんどれっどぱーせんと"@ja,
+                                         "かさ"@ja,
+                                         "퓨어 원 헌드레드 퍼센트"@ko,
+                                         "카사"@ko,
+                                         "うぉんとばっくだうん"@ja,
+                                         "원트 백 다운"@ko,
+                                         "원 백 다운"@ko;
+                     arcaea:set "extend_3"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:source_copyright "© NEOWIZ"@en-us;
+                     arcaea:title_localized "Won't Back Down"@en,
+                                            "DJMAX"@en;
+                     arcaea:version "6.5"@en-us;
+                     arcaea:world_unlock true.
+arcaea.wontbackdown:FTR arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.wontbackdown:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.wontbackdown:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

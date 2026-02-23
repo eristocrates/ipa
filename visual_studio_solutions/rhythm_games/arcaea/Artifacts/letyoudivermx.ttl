@@ -1,0 +1,46 @@
+@prefix arcaea.letyoudivermx: <https://arcaea.lowiro.com/#letyoudivermx#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.letyoudivermx:.
+arcaea.letyoudivermx: arcaea:artist <https://arcaea.lowiro.com/#nitro%20(lowiro)>;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:wacca_light;
+                      arcaea:bg_inverse arcaea:wacca_conflict;
+                      arcaea:bpm "185"@en-us;
+                      arcaea:bpm_base 185 ;
+                      arcaea:date 1628553602 ;
+                      arcaea:difficulties arcaea.letyoudivermx:FTR,
+                                          arcaea.letyoudivermx:PRS,
+                                          arcaea.letyoudivermx:PST;
+                      arcaea:id "letyoudivermx"@en-us;
+                      arcaea:idx 231 ;
+                      arcaea:no_stream true;
+                      arcaea:purchase "wacca"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "ないとろ"@ja,
+                                          "にとろ"@ja,
+                                          "니트로"@ko,
+                                          "れっとゆーだいぶないとろりみっくす"@ja,
+                                          "れっちゅーだいぶないとろりみっくす"@ja,
+                                          "れっとゆーだいぶにとろりみっくす"@ja,
+                                          "れっちゅーだいぶにとろりみっくす"@ja,
+                                          "렛 유 다이브 니트로 믹스"@ko;
+                      arcaea:set "wacca"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "Let you DIVE! (nitro rmx)"@en;
+                      arcaea:version "3.8"@en-us;
+                      arcaea:world_unlock false.
+arcaea.letyoudivermx:FTR arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 .
+arcaea.letyoudivermx:PRS arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:rating 6 ;
+                         arcaea:ratingClass 1 .
+arcaea.letyoudivermx:PST arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

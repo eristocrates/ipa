@@ -1,0 +1,53 @@
+@prefix arcaea.signal: <https://arcaea.lowiro.com/#signal#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.signal:.
+arcaea.signal: arcaea:artist arcaea:rejection%20feat.%20Such;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:megarex_signal;
+               arcaea:bpm "175"@en-us;
+               arcaea:bpm_base 175 ;
+               arcaea:date 1769644805 ;
+               arcaea:difficulties arcaea.signal:FTR,
+                                   arcaea.signal:PRS,
+                                   arcaea.signal:PST,
+                                   arcaea.signal:ETR;
+               arcaea:id "signal"@en-us;
+               arcaea:idx 518 ;
+               arcaea:purchase "megarex"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "りじぇくしょん"@ja,
+                                   "さち"@ja,
+                                   "리젝션"@ko,
+                                   "서치"@ko,
+                                   "しぐなる"@ja,
+                                   "시그널"@ko;
+               arcaea:set "megarex"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "Signal"@en;
+               arcaea:version "6.12"@en-us;
+               arcaea:world_unlock false.
+arcaea.signal:ETR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                  arcaea:jacketDesigner "Poyoshi"@en-us;
+                  arcaea:rating 10 ;
+                  arcaea:ratingClass 4 ;
+                  arcaea:ratingPlus true.
+arcaea.signal:FTR arcaea:chartDesigner arcaea:%C3%A9n;
+                  arcaea:jacketDesigner "Poyoshi"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.signal:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                  arcaea:jacketDesigner "Poyoshi"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 ;
+                  arcaea:ratingPlus true.
+arcaea.signal:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                  arcaea:jacketDesigner "Poyoshi"@en-us;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

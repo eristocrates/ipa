@@ -1,0 +1,43 @@
+@prefix arcaea.galaxyfriends: <https://arcaea.lowiro.com/#galaxyfriends#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.galaxyfriends:.
+arcaea.galaxyfriends: arcaea:artist arcaea:Kobaryo;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:yugamu;
+                      arcaea:bg_inverse arcaea:rei;
+                      arcaea:bpm "300"@en-us;
+                      arcaea:bpm_base 300 ;
+                      arcaea:category arcaea:variety;
+                      arcaea:date 1602028800 ;
+                      arcaea:difficulties arcaea.galaxyfriends:PRS,
+                                          arcaea.galaxyfriends:PST,
+                                          arcaea.galaxyfriends:FTR;
+                      arcaea:id "galaxyfriends"@en-us;
+                      arcaea:idx 177 ;
+                      arcaea:purchase "galaxyfriends"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "こばりょー"@ja,
+                                          "코바료"@ko,
+                                          "ぎゃらくしーふれんず"@ja,
+                                          "갤럭시 프렌즈"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Galaxy Friends"@en;
+                      arcaea:version "3.2"@en-us;
+                      arcaea:world_unlock false.
+arcaea.galaxyfriends:FTR arcaea:chartDesigner arcaea:Nitrome%20X;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.galaxyfriends:PRS arcaea:chartDesigner arcaea:Nitrome%20X;
+                         arcaea:rating 6 ;
+                         arcaea:ratingClass 1 .
+arcaea.galaxyfriends:PST arcaea:chartDesigner arcaea:Nitrome%20X;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

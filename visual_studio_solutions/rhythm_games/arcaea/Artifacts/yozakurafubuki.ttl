@@ -1,0 +1,45 @@
+@prefix arcaea.yozakurafubuki: <https://arcaea.lowiro.com/#yozakurafubuki#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.yozakurafubuki:.
+arcaea.yozakurafubuki: arcaea:artist arcaea:A.SAKA;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:base_light;
+                       arcaea:bg_inverse arcaea:base_conflict;
+                       arcaea:bpm "172"@en-us;
+                       arcaea:bpm_base 172 ;
+                       arcaea:category arcaea:musicgames;
+                       arcaea:date 1511481601 ;
+                       arcaea:difficulties arcaea.yozakurafubuki:PRS,
+                                           arcaea.yozakurafubuki:PST,
+                                           arcaea.yozakurafubuki:FTR;
+                       arcaea:id "yozakurafubuki"@en-us;
+                       arcaea:idx 61 ;
+                       arcaea:purchase "yozakurafubuki"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "えーさか"@ja,
+                                           "에이 사카"@ko,
+                                           "よざくらふぶき"@ja,
+                                           "요자쿠라 후부키"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "夜桜吹雪"@ja,
+                                              "Yosakura Fubuki"@en;
+                       arcaea:version "1.5"@en-us.
+arcaea.yozakurafubuki:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                          arcaea:jacketDesigner "シエラ"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.yozakurafubuki:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                          arcaea:jacketDesigner "シエラ"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.yozakurafubuki:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                          arcaea:jacketDesigner "シエラ"@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

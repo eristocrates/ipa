@@ -1,0 +1,56 @@
+@prefix arcaea.incarnator: <https://arcaea.lowiro.com/#incarnator#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.incarnator:.
+arcaea.incarnator: arcaea:artist arcaea:Silentroom%20%C3%97%20N%C2%B2;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:nextstage_conflict;
+                   arcaea:bg_inverse arcaea:nextstage_light;
+                   arcaea:bpm "234"@en-us;
+                   arcaea:bpm_base 234 ;
+                   arcaea:date 1763769601 ;
+                   arcaea:difficulties arcaea.incarnator:ETR,
+                                       arcaea.incarnator:FTR,
+                                       arcaea.incarnator:PRS,
+                                       arcaea.incarnator:PST;
+                   arcaea:id "incarnator"@en-us;
+                   arcaea:idx 501 ;
+                   arcaea:purchase "nextstage"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "さいれんとるーむ"@ja,
+                                       "えぬつー"@ja,
+                                       "사일런트 룸"@ko,
+                                       "엔투"@ko,
+                                       "いんかーねーたーおりじん"@ja,
+                                       "인카네이터 오리진"@ko,
+                                       "incarnator origin"@en;
+                   arcaea:set "nextstage"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "INCARNATOR00"@ko,
+                                          "INCARNATOR00"@zh-hans,
+                                          "INCARNATOR00"@zh-hant,
+                                          "INCARNATOR₀₀"@en;
+                   arcaea:version "6.10"@en-us;
+                   arcaea:world_unlock false.
+arcaea.incarnator:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#antymis%20[archetype]>;
+                      arcaea:jacketDesigner "辷 × N²/ANTIREAL"@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 4 .
+arcaea.incarnator:FTR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_origin;
+                      arcaea:jacketDesigner "辷 × N²/ANTIREAL"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.incarnator:PRS arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_origin;
+                      arcaea:jacketDesigner "辷 × N²/ANTIREAL"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.incarnator:PST arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_origin;
+                      arcaea:jacketDesigner "辷 × N²/ANTIREAL"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

@@ -1,0 +1,48 @@
+@prefix arcaea.blazingair: <https://arcaea.lowiro.com/#blazingair#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.blazingair:.
+arcaea.blazingair: arcaea:artist arcaea:kanone;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:chunithmnew_light;
+                   arcaea:bg_inverse arcaea:chunithmnew_conflict;
+                   arcaea:bpm "150"@en-us;
+                   arcaea:bpm_base 150 ;
+                   arcaea:date 1734566401 ;
+                   arcaea:difficulties arcaea.blazingair:FTR,
+                                       arcaea.blazingair:PRS,
+                                       arcaea.blazingair:PST,
+                                       arcaea.blazingair:ETR;
+                   arcaea:id "blazingair"@en-us;
+                   arcaea:idx 436 ;
+                   arcaea:purchase "chunithm_append_3"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "かのね"@ja,
+                                       "카노네"@ko,
+                                       "ぶれいじんぐえあー"@ja,
+                                       "블레이징 에어"@ko;
+                   arcaea:set "chunithm_append_3"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:source_copyright "©SEGA"@en-us;
+                   arcaea:title_localized "BlazinG AIR"@en,
+                                          "CHUNITHM"@en;
+                   arcaea:version "6.1"@en-us;
+                   arcaea:world_unlock false.
+arcaea.blazingair:ETR arcaea:chartDesigner arcaea:BlazinG%20%C3%89ND;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 4 .
+arcaea.blazingair:FTR arcaea:chartDesigner arcaea:BlazinG%20%C3%89ND;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.blazingair:PRS arcaea:chartDesigner arcaea:BlazinG%20%C3%89ND;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.blazingair:PST arcaea:chartDesigner arcaea:BlazinG%20%C3%89ND;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

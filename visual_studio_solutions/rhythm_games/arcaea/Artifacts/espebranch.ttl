@@ -1,0 +1,49 @@
+@prefix arcaea.espebranch: <https://arcaea.lowiro.com/#espebranch#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.espebranch:.
+arcaea.espebranch: arcaea:artist arcaea:Apo11o%20program%20ft.%20%E5%A4%A7%E7%80%AC%E8%89%AF%E3%81%82%E3%81%84;
+                   arcaea:audioPreview 71250 ;
+                   arcaea:audioPreviewEnd 101250 ;
+                   arcaea:bg arcaea:mirai_conflict;
+                   arcaea:bg_inverse arcaea:mirai_light;
+                   arcaea:bpm "192"@en-us;
+                   arcaea:bpm_base 192 ;
+                   arcaea:date 1535673600 ;
+                   arcaea:difficulties arcaea.espebranch:FTR,
+                                       arcaea.espebranch:PRS,
+                                       arcaea.espebranch:PST;
+                   arcaea:id "espebranch"@en-us;
+                   arcaea:idx 94 ;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "あぽろぷろぐらむ"@ja,
+                                       "おおせらあい"@ja,
+                                       "아폴로 프로그램"@ko,
+                                       "오오세라 아이"@ko,
+                                       "oosera ai"@en,
+                                       "びゃくどうたきぼうようとしんじありく"@ja,
+                                       "루나오빗 빌리브 인 더 에스페브랜치 로드"@ko,
+                                       "뱌쿠도우타 키보우요토신지아리쿠"@ko,
+                                       "백도 다희망양으로 믿는다"@ko;
+                   arcaea:set "base"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "白道、多希望羊と信じありく。"@ja,
+                                          "LunarOrbit -believe in the Espebranch road-"@en;
+                   arcaea:version "1.7"@en-us;
+                   arcaea:world_unlock true.
+arcaea.espebranch:FTR arcaea:chartDesigner arcaea:%E6%9C%88%E5%88%8AToaster;
+                      arcaea:jacketDesigner "hideo"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.espebranch:PRS arcaea:chartDesigner arcaea:%E6%9C%88%E5%88%8AToaster;
+                      arcaea:jacketDesigner "hideo"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.espebranch:PST arcaea:chartDesigner arcaea:%E6%9C%88%E5%88%8AToaster;
+                      arcaea:jacketDesigner "hideo"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

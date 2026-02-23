@@ -1,0 +1,46 @@
+@prefix arcaea.tau: <https://arcaea.lowiro.com/#tau#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.tau:.
+arcaea.tau: arcaea:artist arcaea:Wooden;
+            arcaea:audioPreview 0 ;
+            arcaea:audioPreviewEnd 0 ;
+            arcaea:bg arcaea:single2_light;
+            arcaea:bg_inverse arcaea:single2_conflict;
+            arcaea:bpm "155"@en-us;
+            arcaea:bpm_base 155 ;
+            arcaea:date 1745452800 ;
+            arcaea:difficulties arcaea.tau:PRS,
+                                arcaea.tau:PST,
+                                arcaea.tau:FTR;
+            arcaea:id "tau"@en-us;
+            arcaea:idx 454 ;
+            arcaea:purchase "extend_3"@en-us;
+            arcaea:remote_dl true;
+            arcaea:search_title "うっでん"@ja,
+                                "우든"@ko,
+                                "たう"@ja,
+                                "타우"@ko;
+            arcaea:set "extend_3"@en-us;
+            arcaea:side arcaea:light_side;
+            arcaea:title_localized "τ (tau)"@en;
+            arcaea:version "6.4"@en-us;
+            arcaea:world_unlock true.
+arcaea.tau:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#ə%20(exschwasion)>;
+               arcaea:jacketDesigner "Square01"@en-us;
+               arcaea:rating 9 ;
+               arcaea:ratingClass 2 ;
+               arcaea:ratingPlus true.
+arcaea.tau:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#ə%20(exschwasion)>;
+               arcaea:jacketDesigner "Square01"@en-us;
+               arcaea:rating 7 ;
+               arcaea:ratingClass 1 ;
+               arcaea:ratingPlus true.
+arcaea.tau:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#ə%20(exschwasion)>;
+               arcaea:jacketDesigner "Square01"@en-us;
+               arcaea:rating 4 ;
+               arcaea:ratingClass 0 .

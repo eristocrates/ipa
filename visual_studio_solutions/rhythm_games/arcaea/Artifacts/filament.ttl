@@ -1,0 +1,47 @@
+@prefix arcaea.filament: <https://arcaea.lowiro.com/#filament#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.filament:.
+arcaea.filament: arcaea:artist arcaea:Puru;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:omatsuri_light;
+                 arcaea:bg_inverse arcaea:omatsuri_conflict;
+                 arcaea:bpm "170"@en-us;
+                 arcaea:bpm_base 170 ;
+                 arcaea:category arcaea:original;
+                 arcaea:date 1574726400 ;
+                 arcaea:difficulties arcaea.filament:PRS,
+                                     arcaea.filament:PST,
+                                     arcaea.filament:FTR;
+                 arcaea:id "filament"@en-us;
+                 arcaea:idx 143 ;
+                 arcaea:purchase "filament"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ぷる"@ja,
+                                     "푸루"@ko,
+                                     "ふぃらめんと"@ja,
+                                     "필라멘트"@ko;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "Filament"@en;
+                 arcaea:version "2.4"@en-us;
+                 arcaea:world_unlock false.
+arcaea.filament:FTR arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:jacketDesigner "Hanamori Hiro"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.filament:PRS arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:jacketDesigner "Hanamori Hiro"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 ;
+                    arcaea:ratingPlus true.
+arcaea.filament:PST arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:jacketDesigner "Hanamori Hiro"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

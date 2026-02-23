@@ -1,0 +1,51 @@
+@prefix arcaea.seethelights: <https://arcaea.lowiro.com/#seethelights#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.seethelights:.
+arcaea.seethelights: arcaea:artist arcaea:polysha%20feat.%20%E3%81%97%E3%82%8D%E3%81%95%E3%81%8D%E3%81%82%E3%82%84;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:anima_light;
+                     arcaea:bg_inverse arcaea:anima_conflict;
+                     arcaea:bpm "136"@en-us;
+                     arcaea:bpm_base 136 ;
+                     arcaea:date 1753315201 ;
+                     arcaea:difficulties arcaea.seethelights:FTR,
+                                         arcaea.seethelights:PRS,
+                                         arcaea.seethelights:PST,
+                                         arcaea.seethelights:ETR;
+                     arcaea:id "seethelights"@en-us;
+                     arcaea:idx 473 ;
+                     arcaea:purchase "anima"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "ぽりしゃ"@ja,
+                                         "폴리샤"@ko,
+                                         "시로사키 아야"@ko,
+                                         "shirosaki aya"@en,
+                                         "しーざらいつ"@ja,
+                                         "시 더 라이츠"@ko;
+                     arcaea:set "anima"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "See the Lights!"@en;
+                     arcaea:version "6.7"@en-us;
+                     arcaea:world_unlock false.
+arcaea.seethelights:ETR arcaea:chartDesigner arcaea:raycast%E2%98%86;
+                        arcaea:jacketDesigner "桑島黎音"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 4 .
+arcaea.seethelights:FTR arcaea:chartDesigner arcaea:raycast%E2%98%86;
+                        arcaea:jacketDesigner "桑島黎音"@en-us;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 2 .
+arcaea.seethelights:PRS arcaea:chartDesigner arcaea:raycast%E2%98%86;
+                        arcaea:jacketDesigner "桑島黎音"@en-us;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.seethelights:PST arcaea:chartDesigner arcaea:raycast%E2%98%86;
+                        arcaea:jacketDesigner "桑島黎音"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

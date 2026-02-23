@@ -1,0 +1,51 @@
+@prefix arcaea.epitaxy: <https://arcaea.lowiro.com/#epitaxy#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.epitaxy:.
+arcaea.epitaxy: arcaea:artist arcaea:Camellia;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:rotaeno_light;
+                arcaea:bg_inverse arcaea:rotaeno_conflict;
+                arcaea:bpm "183"@en-us;
+                arcaea:bpm_base 183 ;
+                arcaea:date 1724889600 ;
+                arcaea:difficulties arcaea.epitaxy:FTR,
+                                    arcaea.epitaxy:PRS,
+                                    arcaea.epitaxy:PST,
+                                    arcaea.epitaxy:ETR;
+                arcaea:id "epitaxy"@en-us;
+                arcaea:idx 407 ;
+                arcaea:purchase "extend_3"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "かめりあ"@ja,
+                                    "카멜리아"@ko,
+                                    "えぴたくしー"@ja,
+                                    "에피택시"@ko;
+                arcaea:set "extend_3"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:source_copyright "© Dream Engine Games"@en-us;
+                arcaea:title_localized "epitaxy"@en,
+                                       "Rotaeno"@en;
+                arcaea:version "5.10"@en-us;
+                arcaea:world_unlock true.
+arcaea.epitaxy:ETR arcaea:chartDesigner arcaea:Dec18;
+                   arcaea:jacketDesigner "唯莎"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 4 .
+arcaea.epitaxy:FTR arcaea:chartDesigner arcaea:Dec18;
+                   arcaea:jacketDesigner "唯莎"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 .
+arcaea.epitaxy:PRS arcaea:chartDesigner arcaea:Dec18;
+                   arcaea:jacketDesigner "唯莎"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.epitaxy:PST arcaea:chartDesigner arcaea:Dec18;
+                   arcaea:jacketDesigner "唯莎"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

@@ -1,0 +1,47 @@
+@prefix arcaea.straightintolights: <https://arcaea.lowiro.com/#straightintolights#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.straightintolights:.
+arcaea.straightintolights: arcaea:artist arcaea:Cosmograph;
+                           arcaea:audioPreview 0 ;
+                           arcaea:audioPreviewEnd 0 ;
+                           arcaea:bg arcaea:maimai_conflict;
+                           arcaea:bg_inverse arcaea:maimai_light;
+                           arcaea:bpm "90"@en-us;
+                           arcaea:bpm_base 180 ;
+                           arcaea:date 1737417601 ;
+                           arcaea:difficulties arcaea.straightintolights:FTR,
+                                               arcaea.straightintolights:PRS,
+                                               arcaea.straightintolights:PST,
+                                               arcaea.straightintolights:ETR;
+                           arcaea:id "straightintolights"@en-us;
+                           arcaea:idx 440 ;
+                           arcaea:purchase "maimai_append_2"@en-us;
+                           arcaea:remote_dl true;
+                           arcaea:search_title "こすもぐらふ"@ja,
+                                               "코스모그래프"@ko,
+                                               "すとれーといんとぅざらいつ"@ja,
+                                               "스트레이트 인투 더 라이츠"@ko;
+                           arcaea:set "maimai_append_2"@en-us;
+                           arcaea:side arcaea:conflict_side;
+                           arcaea:source_copyright "©SEGA"@en-us;
+                           arcaea:title_localized "Straight into the lights"@en,
+                                                  "maimai"@en;
+                           arcaea:version "6.2"@en-us;
+                           arcaea:world_unlock false.
+arcaea.straightintolights:ETR arcaea:chartDesigner arcaea:%E5%8F%8D%E6%B0%B4%20%C3%97%20%E5%A4%9C%E6%B5%AA;
+                              arcaea:rating 10 ;
+                              arcaea:ratingClass 4 .
+arcaea.straightintolights:FTR arcaea:chartDesigner arcaea:nora::kuma;
+                              arcaea:rating 9 ;
+                              arcaea:ratingClass 2 .
+arcaea.straightintolights:PRS arcaea:chartDesigner arcaea:nora::kuma;
+                              arcaea:rating 7 ;
+                              arcaea:ratingClass 1 .
+arcaea.straightintolights:PST arcaea:chartDesigner arcaea:nora::kuma;
+                              arcaea:rating 4 ;
+                              arcaea:ratingClass 0 .

@@ -1,0 +1,47 @@
+@prefix arcaea.flyburg: <https://arcaea.lowiro.com/#flyburg#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.flyburg:.
+arcaea.flyburg: arcaea:artist arcaea:%E3%82%A2%E3%83%AA%E3%82%B9%E3%82%B7%E3%83%A3%E3%83%83%E3%83%8F%E3%81%A8%E9%AD%94%E6%B3%95%E3%81%AE%E6%A5%BD%E5%9B%A3;
+                arcaea:audioPreview 49334 ;
+                arcaea:audioPreviewEnd 75081 ;
+                arcaea:bg arcaea:shiawase;
+                arcaea:bpm "180"@en-us;
+                arcaea:bpm_base 180 ;
+                arcaea:date 1494547203 ;
+                arcaea:difficulties arcaea.flyburg:FTR,
+                                    arcaea.flyburg:PRS,
+                                    arcaea.flyburg:PST;
+                arcaea:id "flyburg"@en-us;
+                arcaea:idx 25 ;
+                arcaea:purchase "shiawase"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "ありすしゃっはとまほうのがくだん"@ja,
+                                    "아리스샤하토 마호노 가쿠단"@ko,
+                                    "앨리스 샤하와 마법의 오케스트라"@ko,
+                                    "arisushahha to mahou no gakudan"@en,
+                                    "alice schach and the magic orchestra"@en,
+                                    "플라이부르크 앤 엔드롤"@ko,
+                                    "프라이부르크토 엔도로루"@ko,
+                                    "플라이부르크와 엔드롤"@ko;
+                arcaea:set "shiawase"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "フライブルクとエンドロウル"@ja,
+                                       "Flyburg and Endroll"@en;
+                arcaea:version "1.0"@en-us.
+arcaea.flyburg:FTR arcaea:chartDesigner arcaea:N%E3%83%BCHelix;
+                   arcaea:jacketDesigner "アリスシャッハと魔法の楽団"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.flyburg:PRS arcaea:chartDesigner arcaea:N;
+                   arcaea:jacketDesigner "アリスシャッハと魔法の楽団"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.flyburg:PST arcaea:chartDesigner arcaea:N;
+                   arcaea:jacketDesigner "アリスシャッハと魔法の楽団"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

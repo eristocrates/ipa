@@ -1,0 +1,52 @@
+@prefix arcaea.blackmirror: <https://arcaea.lowiro.com/#blackmirror#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.blackmirror:.
+arcaea.blackmirror: arcaea:artist arcaea:%E6%9A%81Records;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:touhou_conflict;
+                    arcaea:bg_inverse arcaea:touhou_light;
+                    arcaea:bpm "130"@en-us;
+                    arcaea:bpm_base 130 ;
+                    arcaea:date 1743033600 ;
+                    arcaea:difficulties arcaea.blackmirror:FTR,
+                                        arcaea.blackmirror:PRS,
+                                        arcaea.blackmirror:PST,
+                                        arcaea.blackmirror:ETR;
+                    arcaea:id "blackmirror"@en-us;
+                    arcaea:idx 451 ;
+                    arcaea:purchase "extend_3"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "あかつきれこーず"@ja,
+                                        "아카츠키 레코드"@ko,
+                                        "akatsuki records"@en,
+                                        "ぶらっくみらーおんざうぉーる"@ja,
+                                        "블랙 미러 온 더 월"@ko;
+                    arcaea:set "extend_3"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                    arcaea:title_localized "Black Mirror on the Wall"@en;
+                    arcaea:version "6.3"@en-us;
+                    arcaea:world_unlock true.
+arcaea.blackmirror:ETR arcaea:chartDesigner arcaea:KLMNOP;
+                       arcaea:jacketDesigner "原之"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 4 ;
+                       arcaea:ratingPlus true.
+arcaea.blackmirror:FTR arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "原之"@en-us;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 2 .
+arcaea.blackmirror:PRS arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "原之"@en-us;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.blackmirror:PST arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "原之"@en-us;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

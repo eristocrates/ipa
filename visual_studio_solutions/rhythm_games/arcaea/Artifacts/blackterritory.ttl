@@ -1,0 +1,49 @@
+@prefix arcaea.blackterritory: <https://arcaea.lowiro.com/#blackterritory#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.blackterritory:.
+arcaea.blackterritory: arcaea:artist arcaea:DJ%20Myosuke;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:zettai;
+                       arcaea:bg_inverse arcaea:zettai_light;
+                       arcaea:bpm "200"@en-us;
+                       arcaea:bpm_base 200 ;
+                       arcaea:date 1553126403 ;
+                       arcaea:difficulties arcaea.blackterritory:FTR,
+                                           arcaea.blackterritory:PRS,
+                                           arcaea.blackterritory:PST;
+                       arcaea:id "blackterritory"@en-us;
+                       arcaea:idx 115 ;
+                       arcaea:purchase "zettai"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "でぃーじぇーみょーすけ"@ja,
+                                           "でぃーじぇーみょうすけ"@ja,
+                                           "でぃーじぇいみょーすけ"@ja,
+                                           "でぃーじぇいみょうすけ"@ja,
+                                           "디제이 묘스케"@ko,
+                                           "ぶらっくてりとりー"@ja,
+                                           "블랙 테러토리"@ko,
+                                           "블랙 테리토리"@ko;
+                       arcaea:set "zettai"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "Black Territory"@en;
+                       arcaea:version "2.0"@en-us;
+                       arcaea:world_unlock false.
+arcaea.blackterritory:FTR arcaea:chartDesigner arcaea:NitroNuke%CE%B4;
+                          arcaea:jacketDesigner "トロ３"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.blackterritory:PRS arcaea:chartDesigner arcaea:NitroNuke%CE%B4;
+                          arcaea:jacketDesigner "トロ３"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.blackterritory:PST arcaea:chartDesigner arcaea:NitroNuke%CE%B4;
+                          arcaea:jacketDesigner "トロ３"@en-us;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

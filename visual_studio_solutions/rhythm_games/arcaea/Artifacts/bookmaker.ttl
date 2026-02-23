@@ -1,0 +1,52 @@
+@prefix arcaea.bookmaker: <https://arcaea.lowiro.com/#bookmaker#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.bookmaker:.
+arcaea.bookmaker: arcaea:artist arcaea:Kobaryo;
+                  arcaea:audioPreview 101574 ;
+                  arcaea:audioPreviewEnd 133488 ;
+                  arcaea:bg arcaea:yugamu;
+                  arcaea:bg_inverse arcaea:rei;
+                  arcaea:bpm "175"@en-us;
+                  arcaea:bpm_base 175 ;
+                  arcaea:date 1531699201 ;
+                  arcaea:difficulties arcaea.bookmaker:FTR,
+                                      arcaea.bookmaker:PRS,
+                                      arcaea.bookmaker:PST,
+                                      arcaea.bookmaker:BYD;
+                  arcaea:id "bookmaker"@en-us;
+                  arcaea:idx 89 ;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "こばりょー"@ja,
+                                      "코바료"@ko,
+                                      "ぶっくめーかーつーでぃーばーじょん"@ja,
+                                      "북메이커 투디 버전"@ko,
+                                      "북메이커 2D 버전"@ko;
+                  arcaea:set "base"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Bookmaker (2D Version)"@en;
+                  arcaea:version "1.7"@en-us;
+                  arcaea:world_unlock true.
+arcaea.bookmaker:BYD arcaea:chartDesigner arcaea:Toastmaker;
+                     arcaea:date 1625011201 ;
+                     arcaea:jacketDesigner "窓壁九真好キ"@en-us;
+                     arcaea:jacketOverride true;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 3 ;
+                     arcaea:version "3.6"@en-us.
+arcaea.bookmaker:FTR arcaea:chartDesigner arcaea:Kurorak;
+                     arcaea:jacketDesigner "窓壁九真好キ"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 .
+arcaea.bookmaker:PRS arcaea:chartDesigner arcaea:Kurorak;
+                     arcaea:jacketDesigner "窓壁九真好キ"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.bookmaker:PST arcaea:chartDesigner arcaea:Kurorak;
+                     arcaea:jacketDesigner "窓壁九真好キ"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

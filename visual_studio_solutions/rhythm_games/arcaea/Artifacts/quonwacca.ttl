@@ -1,0 +1,50 @@
+@prefix arcaea.quonwacca: <https://arcaea.lowiro.com/#quonwacca#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.quonwacca:.
+arcaea.quonwacca: arcaea:artist arcaea:DJ%20Noriken;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:wacca_conflict;
+                  arcaea:bg_inverse arcaea:wacca_light;
+                  arcaea:bpm "170"@en-us;
+                  arcaea:bpm_base 170 ;
+                  arcaea:date 1628553600 ;
+                  arcaea:difficulties arcaea.quonwacca:FTR,
+                                      arcaea.quonwacca:PRS,
+                                      arcaea.quonwacca:PST,
+                                      arcaea.quonwacca:BYD;
+                  arcaea:id "quonwacca"@en-us;
+                  arcaea:idx 228 ;
+                  arcaea:no_stream true;
+                  arcaea:purchase "wacca"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "でぃーじぇーのりけん"@ja,
+                                      "でぃーじぇいのりけん"@ja,
+                                      "디제이 노리켄"@ko,
+                                      "くおん"@ja,
+                                      "쿠온"@ko;
+                  arcaea:set "wacca"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "©Marvelous Inc. / Supported by HARDCORE TANO*C"@en-us;
+                  arcaea:title_localized "Quon"@en;
+                  arcaea:version "3.8"@en-us;
+                  arcaea:world_unlock false.
+arcaea.quonwacca:BYD arcaea:chartDesigner <https://arcaea.lowiro.com/#XIII:%20The%20Journey/Nitro>;
+                     arcaea:jacketOverride false;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 3 .
+arcaea.quonwacca:FTR arcaea:chartDesigner arcaea:CERiNG;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.quonwacca:PRS arcaea:chartDesigner arcaea:CERiNG;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.quonwacca:PST arcaea:chartDesigner arcaea:CERiNG;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,48 @@
+@prefix arcaea.liftoff: <https://arcaea.lowiro.com/#liftoff#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.liftoff:.
+arcaea.liftoff: arcaea:artist arcaea:MAYA%20AKAI;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:ongeki_conflict;
+                arcaea:bg_inverse arcaea:ongeki_light;
+                arcaea:bpm "137"@en-us;
+                arcaea:bpm_base 137 ;
+                arcaea:date 1732147201 ;
+                arcaea:difficulties arcaea.liftoff:FTR,
+                                    arcaea.liftoff:PRS,
+                                    arcaea.liftoff:PST,
+                                    arcaea.liftoff:ETR;
+                arcaea:id "liftoff"@en-us;
+                arcaea:idx 424 ;
+                arcaea:purchase "ongeki_append_2"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "まやあかい"@ja,
+                                    "마야 아카이"@ko,
+                                    "りふとおふ"@ja,
+                                    "리프트오프"@ko;
+                arcaea:set "ongeki_append_2"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:source_copyright "©SEGA"@en-us;
+                arcaea:title_localized "LiftOff"@en,
+                                       "O.N.G.E.K.I."@en;
+                arcaea:version "6.0"@en-us;
+                arcaea:world_unlock false.
+arcaea.liftoff:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#Luxance's%20Case-Book>;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 4 ;
+                   arcaea:ratingPlus true.
+arcaea.liftoff:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Luxance's%20Case-Book>;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 .
+arcaea.liftoff:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Luxance's%20Case-Book>;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.liftoff:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Luxance's%20Case-Book>;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

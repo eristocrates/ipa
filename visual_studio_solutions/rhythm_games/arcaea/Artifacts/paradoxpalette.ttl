@@ -1,0 +1,52 @@
+@prefix arcaea.paradoxpalette: <https://arcaea.lowiro.com/#paradoxpalette#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.paradoxpalette:.
+arcaea.paradoxpalette: arcaea:artist arcaea:Aethoro;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:alice_light;
+                       arcaea:bg_inverse arcaea:alice_conflict;
+                       arcaea:bpm "152"@en-us;
+                       arcaea:bpm_base 152 ;
+                       arcaea:date 1761782403 ;
+                       arcaea:difficulties arcaea.paradoxpalette:FTR,
+                                           arcaea.paradoxpalette:PRS,
+                                           arcaea.paradoxpalette:PST,
+                                           arcaea.paradoxpalette:ETR;
+                       arcaea:id "paradoxpalette"@en-us;
+                       arcaea:idx 496 ;
+                       arcaea:purchase "extend_4"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "えーとろ"@ja,
+                                           "에터로"@ko,
+                                           "애토로"@ko,
+                                           "ぱらどっくすぱれっと"@ja,
+                                           "패러독스 팔레트"@ko;
+                       arcaea:set "extend_4"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Paradox Palette"@en;
+                       arcaea:version "6.10"@en-us;
+                       arcaea:world_unlock true.
+arcaea.paradoxpalette:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#antymis.>;
+                          arcaea:jacketDesigner "HouKou"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 4 ;
+                          arcaea:ratingPlus true.
+arcaea.paradoxpalette:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#antymis.>;
+                          arcaea:jacketDesigner "HouKou"@en-us;
+                          arcaea:rating 8 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.paradoxpalette:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#antymis.>;
+                          arcaea:jacketDesigner "HouKou"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.paradoxpalette:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#antymis.>;
+                          arcaea:jacketDesigner "HouKou"@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

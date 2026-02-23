@@ -1,0 +1,47 @@
+@prefix arcaea.defection: <https://arcaea.lowiro.com/#defection#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.defection:.
+arcaea.defection: arcaea:artist arcaea:TeddyLoid%20feat.%20DELTA;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:finale_light;
+                  arcaea:bg_inverse arcaea:finale_conflict;
+                  arcaea:bpm "160"@en-us;
+                  arcaea:bpm_base 160 ;
+                  arcaea:date 1657152004 ;
+                  arcaea:difficulties arcaea.defection:FTR,
+                                      arcaea.defection:PRS,
+                                      arcaea.defection:PST;
+                  arcaea:id "defection"@en-us;
+                  arcaea:idx 275 ;
+                  arcaea:purchase "finale"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "でてぃーろいど"@ja,
+                                      "でるた"@ja,
+                                      "테디로이드"@ko,
+                                      "델타"@ko,
+                                      "でぃふぇくしょん"@ja,
+                                      "디펙션"@ko;
+                  arcaea:set "finale"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Defection"@en;
+                  arcaea:version "4.0"@en-us;
+                  arcaea:world_unlock false.
+arcaea.defection:FTR arcaea:chartDesigner arcaea:Monolith%20Incarnate;
+                     arcaea:jacketDesigner "美和野らぐ"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.defection:PRS arcaea:chartDesigner arcaea:Monolith%20Incarnate;
+                     arcaea:jacketDesigner "美和野らぐ"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.defection:PST arcaea:chartDesigner arcaea:Monolith%20Incarnate;
+                     arcaea:jacketDesigner "美和野らぐ"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

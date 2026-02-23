@@ -1,0 +1,40 @@
+@prefix arcaea.harutopia: <https://arcaea.lowiro.com/#harutopia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.harutopia:.
+arcaea.harutopia: arcaea:artist arcaea:A-zu-ra;
+                  arcaea:audioPreview 83191 ;
+                  arcaea:audioPreviewEnd 103948 ;
+                  arcaea:bg arcaea:shiawase;
+                  arcaea:bpm "185"@en-us;
+                  arcaea:bpm_base 185 ;
+                  arcaea:date 1502323200 ;
+                  arcaea:difficulties arcaea.harutopia:FTR,
+                                      arcaea.harutopia:PRS,
+                                      arcaea.harutopia:PST;
+                  arcaea:id "harutopia"@en-us;
+                  arcaea:idx 47 ;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "あずら"@ja,
+                                      "아즈라"@ko,
+                                      "はるとぴあゆーとぴあおぶすぷりんぐ"@ja,
+                                      "하루토피아 유토피아 오브 스프링"@ko;
+                  arcaea:set "base"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "ハルトピア ~Utopia of Spring~"@ja,
+                                         "Harutopia ~Utopia of Spring~"@en;
+                  arcaea:version "1.1"@en-us;
+                  arcaea:world_unlock true.
+arcaea.harutopia:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#トーストピア%20%20~Utopia%20of%20Toast~>;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 .
+arcaea.harutopia:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#トーストピア%20%20~Utopia%20of%20Toast~>;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 1 .
+arcaea.harutopia:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#トーストピア%20%20~Utopia%20of%20Toast~>;
+                     arcaea:rating 1 ;
+                     arcaea:ratingClass 0 .

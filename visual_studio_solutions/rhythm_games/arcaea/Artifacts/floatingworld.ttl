@@ -1,0 +1,47 @@
+@prefix arcaea.floatingworld: <https://arcaea.lowiro.com/#floatingworld#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.floatingworld:.
+arcaea.floatingworld: arcaea:artist arcaea:baker%20feat.%20botan;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:nijuusei2_light;
+                      arcaea:bg_inverse arcaea:nijuusei2_conflict;
+                      arcaea:bpm "174"@en-us;
+                      arcaea:bpm_base 174 ;
+                      arcaea:category arcaea:partner;
+                      arcaea:date 1714003202 ;
+                      arcaea:difficulties arcaea.floatingworld:PRS,
+                                          arcaea.floatingworld:PST,
+                                          arcaea.floatingworld:FTR;
+                      arcaea:id "floatingworld"@en-us;
+                      arcaea:idx 387 ;
+                      arcaea:purchase "floatingworld"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "べいかー"@ja,
+                                          "ぼたん"@ja,
+                                          "베이커"@ko,
+                                          "보탄"@ko,
+                                          "ふろーてぃんぐわーるど"@ja,
+                                          "플로팅 월드"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "Floating World"@en;
+                      arcaea:version "5.6"@en-us;
+                      arcaea:world_unlock false.
+arcaea.floatingworld:FTR arcaea:chartDesigner arcaea:%C3%A9n;
+                         arcaea:jacketDesigner "チェリ藻"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 .
+arcaea.floatingworld:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                         arcaea:jacketDesigner "チェリ藻"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 .
+arcaea.floatingworld:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                         arcaea:jacketDesigner "チェリ藻"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

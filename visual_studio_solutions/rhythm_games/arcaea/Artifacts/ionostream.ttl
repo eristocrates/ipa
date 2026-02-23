@@ -1,0 +1,56 @@
+@prefix arcaea.ionostream: <https://arcaea.lowiro.com/#ionostream#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ionostream:.
+arcaea.ionostream: arcaea:artist arcaea:Tatsh;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:nijuusei2_conflict;
+                   arcaea:bg_inverse arcaea:nijuusei2_light;
+                   arcaea:bpm "220-254"@en-us;
+                   arcaea:bpm_base 254 ;
+                   arcaea:category arcaea:musicgames;
+                   arcaea:date 1709856005 ;
+                   arcaea:difficulties arcaea.ionostream:FTR,
+                                       arcaea.ionostream:PRS,
+                                       arcaea.ionostream:PST,
+                                       arcaea.ionostream:ETR;
+                   arcaea:id "ionostream"@en-us;
+                   arcaea:idx 373 ;
+                   arcaea:purchase "ionostream"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "たっしゅ"@ja,
+                                       "탓쉬"@ko,
+                                       "탯쉬"@ko,
+                                       "탓시"@ko,
+                                       "탯시"@ko,
+                                       "あいおのすとりーむ"@ja,
+                                       "아이오노스트림"@ko;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "IONOSTREAM"@en,
+                                          "RESONARK"@en;
+                   arcaea:version "5.4"@en-us;
+                   arcaea:world_unlock false.
+arcaea.ionostream:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#Dec18%20+%20Nitro>;
+                      arcaea:jacketDesigner "Cem, septem47"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 4 ;
+                      arcaea:ratingPlus true.
+arcaea.ionostream:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Dec18%20+%20Nitro>;
+                      arcaea:jacketDesigner "Cem, septem47"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.ionostream:PRS arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "Cem, septem47"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.ionostream:PST arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "Cem, septem47"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

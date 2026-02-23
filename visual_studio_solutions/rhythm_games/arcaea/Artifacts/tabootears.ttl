@@ -1,0 +1,52 @@
+@prefix arcaea.tabootears: <https://arcaea.lowiro.com/#tabootears#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.tabootears:.
+arcaea.tabootears: arcaea:artist arcaea:REDALiCE;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:touhou_conflict;
+                   arcaea:bg_inverse arcaea:touhou_light;
+                   arcaea:bpm "180"@en-us;
+                   arcaea:bpm_base 180 ;
+                   arcaea:date 1764201600 ;
+                   arcaea:difficulties arcaea.tabootears:FTR,
+                                       arcaea.tabootears:PRS,
+                                       arcaea.tabootears:PST,
+                                       arcaea.tabootears:ETR;
+                   arcaea:id "tabootears"@en-us;
+                   arcaea:idx 506 ;
+                   arcaea:purchase "extend_4"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "れっどありす"@ja,
+                                       "레드앨리스"@ko,
+                                       "たぶーてぃあーずゆーあっぷ"@ja,
+                                       "타부 테어즈 유 업"@ko,
+                                       "터부 테어즈 유 업"@ko;
+                   arcaea:set "extend_4"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                   arcaea:title_localized "taboo tears you up 2017"@en;
+                   arcaea:version "6.11"@en-us;
+                   arcaea:world_unlock true.
+arcaea.tabootears:ETR arcaea:chartDesigner arcaea:%C3%A9n;
+                      arcaea:jacketDesigner "ほまでり"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 4 ;
+                      arcaea:ratingPlus true.
+arcaea.tabootears:FTR arcaea:chartDesigner arcaea:SiDEWAVES;
+                      arcaea:jacketDesigner "ほまでり"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 2 .
+arcaea.tabootears:PRS arcaea:chartDesigner arcaea:SiDEWAVES;
+                      arcaea:jacketDesigner "ほまでり"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.tabootears:PST arcaea:chartDesigner arcaea:SiDEWAVES;
+                      arcaea:jacketDesigner "ほまでり"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

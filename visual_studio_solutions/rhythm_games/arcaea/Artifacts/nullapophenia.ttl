@@ -1,0 +1,47 @@
+@prefix arcaea.nullapophenia: <https://arcaea.lowiro.com/#nullapophenia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.nullapophenia:.
+arcaea.nullapophenia: arcaea:artist arcaea:N%C2%B2;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:apophenia;
+                      arcaea:bpm "177"@en-us;
+                      arcaea:bpm_base 177 ;
+                      arcaea:category arcaea:partner;
+                      arcaea:date 1674691205 ;
+                      arcaea:difficulties arcaea.nullapophenia:PRS,
+                                          arcaea.nullapophenia:PST,
+                                          arcaea.nullapophenia:FTR;
+                      arcaea:id "nullapophenia"@en-us;
+                      arcaea:idx 299 ;
+                      arcaea:purchase "nullapophenia"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "えぬつー"@ja,
+                                          "엔투"@ko,
+                                          "ぬるあぽふぇにあ"@ja,
+                                          "널 아포페니아"@ko,
+                                          "눌 아포페니아"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "NULL APOPHENIA"@en;
+                      arcaea:version "4.2"@en-us;
+                      arcaea:world_unlock false.
+arcaea.nullapophenia:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%20vs%20%E5%A4%9C%E6%B5%AA%E3%80%8AAPOPH%C3%84NIE%E3%80%8B;
+                         arcaea:jacketDesigner "softmode"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.nullapophenia:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                         arcaea:jacketDesigner "softmode"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.nullapophenia:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                         arcaea:jacketDesigner "softmode"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

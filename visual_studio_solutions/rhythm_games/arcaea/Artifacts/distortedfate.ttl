@@ -1,0 +1,54 @@
+@prefix arcaea.distortedfate: <https://arcaea.lowiro.com/#distortedfate#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.distortedfate:.
+arcaea.distortedfate: arcaea:artist arcaea:Sakuzyo;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:vs_conflict;
+                      arcaea:bg_inverse arcaea:vs_light;
+                      arcaea:bpm "150"@en-us;
+                      arcaea:bpm_base 200 ;
+                      arcaea:category arcaea:musicgames;
+                      arcaea:date 1714003201 ;
+                      arcaea:difficulties arcaea.distortedfate:FTR,
+                                          arcaea.distortedfate:PRS,
+                                          arcaea.distortedfate:PST,
+                                          arcaea.distortedfate:ETR;
+                      arcaea:id "distortedfate"@en-us;
+                      arcaea:idx 386 ;
+                      arcaea:purchase "distortedfate"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "さくじょ"@ja,
+                                          "사쿠죠"@ko,
+                                          "でぃすとーてっどふぇいと"@ja,
+                                          "디스토디드 페이트"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:source_copyright "© Pigeon Games"@en-us;
+                      arcaea:title_localized "Distorted Fate"@en,
+                                             "Phigros"@en;
+                      arcaea:version "5.6"@en-us;
+                      arcaea:world_unlock false.
+arcaea.distortedfate:ETR arcaea:chartDesigner arcaea:TOASTER%20DATA%20PATCHER;
+                         arcaea:jacketDesigner "knife美工刀"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 4 ;
+                         arcaea:ratingPlus true.
+arcaea.distortedfate:FTR arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:jacketDesigner "knife美工刀"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 .
+arcaea.distortedfate:PRS arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:jacketDesigner "knife美工刀"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.distortedfate:PST arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:jacketDesigner "knife美工刀"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

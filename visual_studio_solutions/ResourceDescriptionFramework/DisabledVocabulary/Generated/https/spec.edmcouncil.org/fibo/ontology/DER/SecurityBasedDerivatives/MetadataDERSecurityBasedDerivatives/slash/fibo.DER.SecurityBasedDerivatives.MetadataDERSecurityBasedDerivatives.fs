@@ -1,0 +1,4 @@
+﻿namespace Fibo.DER.SecurityBasedDerivatives.MetadataDERSecurityBasedDerivatives.Namespace
+module MetadataDERSecurityBasedDerivatives =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/MetadataDERSecurityBasedDerivatives/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/DER/SecurityBasedDerivatives/MetadataDERSecurityBasedDerivatives.rdf") (Some @"fibo.DER.SecurityBasedDerivatives.MetadataDERSecurityBasedDerivatives") None
+    let SecurityBasedDerivativesModule = {_prefixID with _localName = "SecurityBasedDerivativesModule"}

@@ -1,0 +1,50 @@
+@prefix arcaea.nowayback: <https://arcaea.lowiro.com/#nowayback#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.nowayback:.
+arcaea.nowayback: arcaea:artist arcaea:Nhato;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:eclipse_light;
+                  arcaea:bg_inverse arcaea:eclipse_conflict;
+                  arcaea:bpm "153"@en-us;
+                  arcaea:bpm_base 153 ;
+                  arcaea:date 1759363203 ;
+                  arcaea:difficulties arcaea.nowayback:FTR,
+                                      arcaea.nowayback:PRS,
+                                      arcaea.nowayback:PST,
+                                      arcaea.nowayback:ETR;
+                  arcaea:id "nowayback"@en-us;
+                  arcaea:idx 489 ;
+                  arcaea:purchase "eclipse"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "なはと"@ja,
+                                      "나하토"@ko,
+                                      "のーうぇいばっく"@ja,
+                                      "노 웨이 백"@ko;
+                  arcaea:set "eclipse"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "No Way Back"@en;
+                  arcaea:version "6.9"@en-us;
+                  arcaea:world_unlock false.
+arcaea.nowayback:ETR arcaea:chartDesigner arcaea:%E3%80%8CNitro%E3%80%8D;
+                     arcaea:jacketDesigner "AT基調"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 4 .
+arcaea.nowayback:FTR arcaea:chartDesigner arcaea:%E3%80%8CNitro%E3%80%8D;
+                     arcaea:jacketDesigner "AT基調"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.nowayback:PRS arcaea:chartDesigner arcaea:%E3%80%8CNitro%E3%80%8D;
+                     arcaea:jacketDesigner "AT基調"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.nowayback:PST arcaea:chartDesigner arcaea:%E3%80%8CNitro%E3%80%8D;
+                     arcaea:jacketDesigner "AT基調"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

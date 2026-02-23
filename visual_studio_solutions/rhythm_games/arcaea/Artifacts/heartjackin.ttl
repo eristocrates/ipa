@@ -1,0 +1,47 @@
+@prefix arcaea.heartjackin: <https://arcaea.lowiro.com/#heartjackin#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.heartjackin:.
+arcaea.heartjackin: arcaea:artist arcaea:Yu_Asahina;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:alice_light;
+                    arcaea:bg_inverse arcaea:alice_conflict;
+                    arcaea:bpm "160"@en-us;
+                    arcaea:bpm_base 160 ;
+                    arcaea:date 1607558401 ;
+                    arcaea:difficulties arcaea.heartjackin:FTR,
+                                        arcaea.heartjackin:PRS,
+                                        arcaea.heartjackin:PST;
+                    arcaea:id "heartjackin"@en-us;
+                    arcaea:idx 189 ;
+                    arcaea:purchase "alice_append_1"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "ゆーあさひな"@ja,
+                                        "ゆうあさひな"@ja,
+                                        "유 아사히나"@ko,
+                                        "はーとじゃっきん"@ja,
+                                        "하트 잭킹"@ko,
+                                        "하트 잭킨"@ko;
+                    arcaea:set "alice_append_1"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Heart Jackin'"@en;
+                    arcaea:version "3.3"@en-us;
+                    arcaea:world_unlock false.
+arcaea.heartjackin:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#TaroNuke%20+%20Nitro>;
+                       arcaea:jacketDesigner "mins"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.heartjackin:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#TaroNuke%20+%20Nitro>;
+                       arcaea:jacketDesigner "mins"@en-us;
+                       arcaea:rating 5 ;
+                       arcaea:ratingClass 1 .
+arcaea.heartjackin:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#TaroNuke%20+%20Nitro>;
+                       arcaea:jacketDesigner "mins"@en-us;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

@@ -1,0 +1,49 @@
+@prefix arcaea.grievouslady: <https://arcaea.lowiro.com/#grievouslady#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.grievouslady:.
+arcaea.grievouslady: arcaea:artist arcaea:Team%20Grimoire%20vs%20Laur;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 18285 ;
+                     arcaea:bg arcaea:grievouslady;
+                     arcaea:bpm "210"@en-us;
+                     arcaea:bpm_base 210 ;
+                     arcaea:date 1509667208 ;
+                     arcaea:difficulties arcaea.grievouslady:FTR,
+                                         arcaea.grievouslady:PRS,
+                                         arcaea.grievouslady:PST;
+                     arcaea:id "grievouslady"@en-us;
+                     arcaea:idx 56 ;
+                     arcaea:purchase "yugamu"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "ちーむぐりもわーる"@ja,
+                                         "ちーむぐりもあ"@ja,
+                                         "らうる"@ja,
+                                         "팀 그리모어"@ko,
+                                         "라우르"@ko,
+                                         "ぐりーゔぁすでれぃー"@ja,
+                                         "ぐりーばすれでぃー"@ja,
+                                         "그리버스 레이디"@ko;
+                     arcaea:set "yugamu"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Grievous Lady"@en;
+                     arcaea:version "1.5"@en-us.
+arcaea.grievouslady:FTR arcaea:chartDesigner arcaea:%E8%BF%B7%E8%B7%AF%E6%B7%B1%E5%B1%A4;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:legacy11 true;
+                        arcaea:plusFingers true;
+                        arcaea:rating 11 ;
+                        arcaea:ratingClass 2 .
+arcaea.grievouslady:PRS arcaea:chartDesigner arcaea:%E8%BF%B7%E8%B7%AF%E7%AC%AC%E4%BA%8C%E5%B1%A4;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:plusFingers true;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 1 .
+arcaea.grievouslady:PST arcaea:chartDesigner arcaea:%E8%BF%B7%E8%B7%AF%E7%AC%AC%E4%B8%80%E5%B1%A4;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 0 .

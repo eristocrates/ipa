@@ -1,0 +1,50 @@
+@prefix arcaea.altale: <https://arcaea.lowiro.com/#altale#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.altale:.
+arcaea.altale: arcaea:artist arcaea:Sakuzyo;
+               arcaea:audioPreview 60000 ;
+               arcaea:audioPreviewEnd 70000 ;
+               arcaea:bg arcaea:prelude_light;
+               arcaea:bg_inverse arcaea:prelude_conflict;
+               arcaea:bpm "83-90"@en-us;
+               arcaea:bpm_base 180 ;
+               arcaea:category arcaea:variety;
+               arcaea:date 1590537612 ;
+               arcaea:difficulties arcaea.altale:FTR,
+                                   arcaea.altale:PRS,
+                                   arcaea.altale:PST,
+                                   arcaea.altale:BYD;
+               arcaea:id "altale"@en-us;
+               arcaea:idx 162 ;
+               arcaea:purchase "altale"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "さくじょ"@ja,
+                                   "사쿠죠"@ko,
+                                   "あるてーる"@ja,
+                                   "알테일"@ko;
+               arcaea:set "single"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "Altale"@en;
+               arcaea:version "3.0"@en-us;
+               arcaea:world_unlock false.
+arcaea.altale:BYD arcaea:chartDesigner arcaea:nora::neko%20%3C%3C%20fantasy;
+                  arcaea:date 1745452802 ;
+                  arcaea:hidden_until "difficulty"@en-us;
+                  arcaea:rating 10 ;
+                  arcaea:ratingClass 3 ;
+                  arcaea:version "6.4"@en-us.
+arcaea.altale:FTR arcaea:chartDesigner arcaea:Kurorak;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.altale:PRS arcaea:chartDesigner arcaea:Kurorak;
+                  arcaea:rating 5 ;
+                  arcaea:ratingClass 1 .
+arcaea.altale:PST arcaea:chartDesigner arcaea:Kurorak;
+                  arcaea:rating 2 ;
+                  arcaea:ratingClass 0 .

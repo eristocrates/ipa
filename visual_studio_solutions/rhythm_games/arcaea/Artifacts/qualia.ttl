@@ -1,0 +1,55 @@
+@prefix arcaea.qualia: <https://arcaea.lowiro.com/#qualia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.qualia:.
+arcaea.qualia: arcaea:artist arcaea:nitro;
+               arcaea:audioPreview 110000 ;
+               arcaea:audioPreviewEnd 136666 ;
+               arcaea:bg arcaea:base_conflict;
+               arcaea:bg_inverse arcaea:base_light;
+               arcaea:bpm "144"@en-us;
+               arcaea:bpm_base 144 ;
+               arcaea:date 1487980810 ;
+               arcaea:difficulties arcaea.qualia:BYD,
+                                   arcaea.qualia:FTR,
+                                   arcaea.qualia:PRS,
+                                   arcaea.qualia:PST;
+               arcaea:id "qualia"@en-us;
+               arcaea:idx 15 ;
+               arcaea:remote_dl true;
+               arcaea:search_title "ないとろ"@ja,
+                                   "にとろ"@ja,
+                                   "니트로"@ko,
+                                   "くおりあ"@ja,
+                                   "퀄리아 아이디에테지아"@ko,
+                                   "콸리아 아이디에테지아"@ko;
+               arcaea:set "base"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "qualia -ideaesthesia-"@en;
+               arcaea:version "1.0"@en-us;
+               arcaea:world_unlock true.
+arcaea.qualia:BYD arcaea:chartDesigner arcaea:moonquay%20-end%20of%20chartaesthesia-;
+                  arcaea:date 1639008001 ;
+                  arcaea:hidden_until "difficulty"@en-us;
+                  arcaea:jacketDesigner "khronetic -synesthesia-"@en-us;
+                  arcaea:jacketOverride true;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 3 ;
+                  arcaea:ratingPlus true;
+                  arcaea:version "3.10"@en-us.
+arcaea.qualia:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#-chartaesthesia->;
+                  arcaea:jacketDesigner "Khronetic"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.qualia:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#-chartaesthesia->;
+                  arcaea:jacketDesigner "Khronetic"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.qualia:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#-chartaesthesia->;
+                  arcaea:jacketDesigner "Khronetic"@en-us;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

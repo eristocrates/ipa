@@ -1,0 +1,64 @@
+@prefix arcaea.designant: <https://arcaea.lowiro.com/#designant#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.designant:.
+arcaea:additional_files arcaea:file_name "video_1080.mp4"@en-us,
+                                         "video_720.mp4"@en-us;
+                        arcaea:requirement "hi_res"@en-us,
+                                           "low_res"@en-us.
+arcaea.designant: arcaea:additional_files arcaea.designant:additional_files;
+                  arcaea:artist arcaea:Designant;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:designant;
+                  arcaea:bg_inverse arcaea:designant;
+                  arcaea:bpm "200"@en-us;
+                  arcaea:bpm_base 200 ;
+                  arcaea:byd_local_unlock true;
+                  arcaea:date 1732147210 ;
+                  arcaea:difficulties arcaea.designant:FTR,
+                                      arcaea.designant:PRS,
+                                      arcaea.designant:PST,
+                                      arcaea.designant:BYD;
+                  arcaea:id "designant"@en-us;
+                  arcaea:idx 433 ;
+                  arcaea:purchase "lephon"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "でじぐなんと"@ja,
+                                      "데지그넌트"@ko;
+                  arcaea:set "lephon"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Designant."@en;
+                  arcaea:version "6.0"@en-us;
+                  arcaea:world_unlock false.
+arcaea.designant:BYD arcaea:chartDesigner arcaea:Final%20Command.%20Infinity;
+                     arcaea:hidden_until "song"@en-us;
+                     arcaea:hidden_until_unlocked true;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:legacy11 true;
+                     arcaea:rating 11 ;
+                     arcaea:ratingClass 3 ;
+                     arcaea:ratingPlus true.
+arcaea.designant:FTR arcaea:chartDesigner arcaea:3rd%20Command%20%E2%89%92%20Ascendance;
+                     arcaea:hidden_until "song"@en-us;
+                     arcaea:hidden_until_unlocked true;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.designant:PRS arcaea:chartDesigner arcaea:2nd%20Command%20%E2%89%92%20Perfection;
+                     arcaea:hidden_until "song"@en-us;
+                     arcaea:hidden_until_unlocked true;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 1 .
+arcaea.designant:PST arcaea:chartDesigner arcaea:1st%20Command%20%E2%89%92%20Legacy;
+                     arcaea:hidden_until "song"@en-us;
+                     arcaea:hidden_until_unlocked true;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 0 .

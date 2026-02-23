@@ -1,0 +1,45 @@
+@prefix arcaea.chronicle: <https://arcaea.lowiro.com/#chronicle#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.chronicle:.
+arcaea.chronicle: arcaea:artist arcaea:Lime;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:vs_light;
+                  arcaea:bg_inverse arcaea:vs_conflict;
+                  arcaea:bpm "221"@en-us;
+                  arcaea:bpm_base 221 ;
+                  arcaea:date 1674691204 ;
+                  arcaea:difficulties arcaea.chronicle:PRS,
+                                      arcaea.chronicle:PST,
+                                      arcaea.chronicle:FTR;
+                  arcaea:id "chronicle"@en-us;
+                  arcaea:idx 298 ;
+                  arcaea:purchase "extend_2"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "らいむ"@ja,
+                                      "라임"@ko,
+                                      "くろにくる"@ja,
+                                      "크로니클"@ko;
+                  arcaea:set "extend_2"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Chronicle"@en;
+                  arcaea:version "4.2"@en-us;
+                  arcaea:world_unlock true.
+arcaea.chronicle:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20-Annales%20Historiae-;
+                     arcaea:jacketDesigner "fixro2n"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.chronicle:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20-Annales%20Historiae-;
+                     arcaea:jacketDesigner "fixro2n"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 ;
+                     arcaea:ratingPlus true.
+arcaea.chronicle:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20-Annales%20Historiae-;
+                     arcaea:jacketDesigner "fixro2n"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 0 .

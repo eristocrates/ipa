@@ -1,0 +1,43 @@
+@prefix arcaea.gengaozo: <https://arcaea.lowiro.com/#gengaozo#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.gengaozo:.
+arcaea.gengaozo: arcaea:artist <https://arcaea.lowiro.com/#-45>;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:prelude_conflict;
+                 arcaea:bg_inverse arcaea:prelude_light;
+                 arcaea:bpm "153"@en-us;
+                 arcaea:bpm_base 153 ;
+                 arcaea:date 1632873600 ;
+                 arcaea:difficulties arcaea.gengaozo:FTR,
+                                     arcaea.gengaozo:PRS,
+                                     arcaea.gengaozo:PST;
+                 arcaea:id "gengaozo"@en-us;
+                 arcaea:idx 236 ;
+                 arcaea:purchase "extend"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "まいなすよんじゅうご"@ja,
+                                     "まいなすしこう"@ja,
+                                     "마이너스 사십오"@ko,
+                                     "마이너스 욘쥬고"@ko,
+                                     "げんがおぞ"@ja,
+                                     "겐가오조"@ko;
+                 arcaea:set "extend"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "G e n g a o z o"@en;
+                 arcaea:version "3.8"@en-us;
+                 arcaea:world_unlock true.
+arcaea.gengaozo:FTR arcaea:chartDesigner arcaea:_%20F%20U%20T%20U%20R%20E;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.gengaozo:PRS arcaea:chartDesigner arcaea:_%20P%20R%20E%20S%20E%20N%20T;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 1 .
+arcaea.gengaozo:PST arcaea:chartDesigner arcaea:_%20P%20A%20S%20T;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

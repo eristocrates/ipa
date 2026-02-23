@@ -1,0 +1,56 @@
+@prefix arcaea.extradimensional: <https://arcaea.lowiro.com/#extradimensional#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.extradimensional:.
+arcaea.extradimensional: arcaea:artist arcaea:TAKIO%20feat.%20%E3%81%A4%E3%81%90;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:extradimensional;
+                         arcaea:bpm "180-300"@en-us;
+                         arcaea:bpm_base 234 ;
+                         arcaea:date 1753315205 ;
+                         arcaea:difficulties arcaea.extradimensional:ETR,
+                                             arcaea.extradimensional:FTR,
+                                             arcaea.extradimensional:PRS,
+                                             arcaea.extradimensional:PST;
+                         arcaea:id "extradimensional"@en-us;
+                         arcaea:idx 477 ;
+                         arcaea:purchase "anima"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "たきお"@ja,
+                                             "つぐ"@ja,
+                                             "타키오"@ko,
+                                             "츠구"@ko,
+                                             "tsugu"@en,
+                                             "たじげんうちゅうゆうごうろん"@ja,
+                                             "타지겐 우츄우 유우고우론"@ko,
+                                             "다차원 우주 융합론"@ko,
+                                             "tajigen uchuu yuugouron"@en;
+                         arcaea:set "anima"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "多次元宇宙融合論"@ja,
+                                                "Extradimensional Cosmic Phenomenon"@en;
+                         arcaea:version "6.7"@en-us;
+                         arcaea:world_unlock false.
+arcaea.extradimensional:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/##0000遒ｧ>;
+                            arcaea:jacketDesigner "すずなし"@en-us;
+                            arcaea:legacy11 true;
+                            arcaea:rating 11 ;
+                            arcaea:ratingClass 4 .
+arcaea.extradimensional:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/##0000遒ｧ>;
+                            arcaea:jacketDesigner "すずなし"@en-us;
+                            arcaea:rating 10 ;
+                            arcaea:ratingClass 2 .
+arcaea.extradimensional:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/##0000遒ｧ>;
+                            arcaea:jacketDesigner "すずなし"@en-us;
+                            arcaea:rating 8 ;
+                            arcaea:ratingClass 1 ;
+                            arcaea:ratingPlus true.
+arcaea.extradimensional:PST arcaea:chartDesigner <https://arcaea.lowiro.com/##0000遒ｧ>;
+                            arcaea:jacketDesigner "すずなし"@en-us;
+                            arcaea:rating 6 ;
+                            arcaea:ratingClass 0 .

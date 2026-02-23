@@ -1,0 +1,60 @@
+@prefix arcaea.anokumene: <https://arcaea.lowiro.com/#anokumene#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.anokumene:.
+arcaea.anokumene: arcaea:artist arcaea:Jun%20Kuroda;
+                  arcaea:audioPreview 24918 ;
+                  arcaea:audioPreviewEnd 45563 ;
+                  arcaea:bg arcaea:base_conflict;
+                  arcaea:bg_inverse arcaea:base_light;
+                  arcaea:bpm "186"@en-us;
+                  arcaea:bpm_base 186 ;
+                  arcaea:date 1491868801 ;
+                  arcaea:difficulties arcaea.anokumene:BYD,
+                                      arcaea.anokumene:FTR,
+                                      arcaea.anokumene:PRS,
+                                      arcaea.anokumene:PST;
+                  arcaea:id "anokumene"@en-us;
+                  arcaea:idx 21 ;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "じゅんくろだ"@ja,
+                                      "준 쿠로다"@ko,
+                                      "쥰 쿠로다"@ko,
+                                      "あねくめーね"@ja,
+                                      "あねくめね"@ja,
+                                      "아네쿠메네"@ko,
+                                      "anokumene"@en;
+                  arcaea:set "base"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Anokumene"@ko,
+                                         "Anokumene"@zh-hans,
+                                         "Anokumene"@zh-hant,
+                                         "Anökumene"@en;
+                  arcaea:version "1.0"@en-us;
+                  arcaea:world_unlock true.
+arcaea.anokumene:BYD arcaea:bg arcaea:single2_conflict;
+                     arcaea:bg_inverse arcaea:single2_light;
+                     arcaea:chartDesigner arcaea:Astral%20Luxance;
+                     arcaea:date 1745452801 ;
+                     arcaea:hidden_until "difficulty"@en-us;
+                     arcaea:jacketDesigner "Khronetic"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 3 ;
+                     arcaea:ratingPlus true;
+                     arcaea:version "6.4"@en-us.
+arcaea.anokumene:FTR arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "Khronetic"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.anokumene:PRS arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "Khronetic"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.anokumene:PST arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "Khronetic"@en-us;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

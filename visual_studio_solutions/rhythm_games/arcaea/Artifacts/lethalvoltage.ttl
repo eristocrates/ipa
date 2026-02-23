@@ -1,0 +1,46 @@
+@prefix arcaea.lethalvoltage: <https://arcaea.lowiro.com/#lethalvoltage#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lethalvoltage:.
+arcaea.lethalvoltage: arcaea:artist arcaea:siqlo;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:single2_conflict;
+                      arcaea:bg_inverse arcaea:single2_light;
+                      arcaea:bpm "190"@en-us;
+                      arcaea:bpm_base 190 ;
+                      arcaea:date 1711324804 ;
+                      arcaea:difficulties arcaea.lethalvoltage:PRS,
+                                          arcaea.lethalvoltage:PST,
+                                          arcaea.lethalvoltage:FTR;
+                      arcaea:id "lethalvoltage"@en-us;
+                      arcaea:idx 382 ;
+                      arcaea:purchase "extend_3"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "さいくろ"@ja,
+                                          "사이클로"@ko,
+                                          "りーさるぼるてーじ"@ja,
+                                          "리썰 볼티지"@ko,
+                                          "리썰 볼테이지"@ko;
+                      arcaea:set "extend_3"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Lethal Voltage"@en;
+                      arcaea:version "5.5"@en-us;
+                      arcaea:world_unlock true.
+arcaea.lethalvoltage:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#moonquay%20[SHOCK]>;
+                         arcaea:jacketDesigner "mochi’s pizza"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 .
+arcaea.lethalvoltage:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#moonquay%20[FLASH]>;
+                         arcaea:jacketDesigner "mochi’s pizza"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.lethalvoltage:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#moonquay%20[EMP]>;
+                         arcaea:jacketDesigner "mochi’s pizza"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

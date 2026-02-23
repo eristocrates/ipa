@@ -1,0 +1,40 @@
+@prefix arcaea.remindthesouls: <https://arcaea.lowiro.com/#remindthesouls#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.remindthesouls:.
+arcaea.remindthesouls: arcaea:artist arcaea:Nhato;
+                       arcaea:audioPreview 27692 ;
+                       arcaea:audioPreviewEnd 64615 ;
+                       arcaea:bg arcaea:hime_light;
+                       arcaea:bg_inverse arcaea:hime_conflict;
+                       arcaea:bpm "130"@en-us;
+                       arcaea:bpm_base 130 ;
+                       arcaea:date 1695772800 ;
+                       arcaea:difficulties arcaea.remindthesouls:FTR,
+                                           arcaea.remindthesouls:PRS,
+                                           arcaea.remindthesouls:PST;
+                       arcaea:id "remindthesouls"@en-us;
+                       arcaea:idx 344 ;
+                       arcaea:remote_dl false;
+                       arcaea:search_title "なはと"@ja,
+                                           "나하토"@ko,
+                                           "りまいんどざそうるす"@ja,
+                                           "리마인드 더 소울즈"@ko;
+                       arcaea:set "base"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Remind the Souls (Short Version)"@en;
+                       arcaea:version "5.0"@en-us;
+                       arcaea:world_unlock false.
+arcaea.remindthesouls:FTR arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.remindthesouls:PRS arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.remindthesouls:PST arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

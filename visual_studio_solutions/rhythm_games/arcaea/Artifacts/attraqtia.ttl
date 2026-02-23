@@ -1,0 +1,46 @@
+@prefix arcaea.attraqtia: <https://arcaea.lowiro.com/#attraqtia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.attraqtia:.
+arcaea.attraqtia: arcaea:artist arcaea:%E3%81%8B%E3%82%81%E3%82%8A%E3%81%82;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:rei;
+                  arcaea:bg_inverse arcaea:yugamu;
+                  arcaea:bpm "202"@en-us;
+                  arcaea:bpm_base 202 ;
+                  arcaea:category arcaea:original;
+                  arcaea:date 1611187203 ;
+                  arcaea:difficulties arcaea.attraqtia:PRS,
+                                      arcaea.attraqtia:PST,
+                                      arcaea.attraqtia:FTR;
+                  arcaea:id "attraqtia"@en-us;
+                  arcaea:idx 203 ;
+                  arcaea:purchase "attraqtia"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "카메리아"@ko,
+                                      "kameria"@en,
+                                      "camellia"@en,
+                                      "あとらくてぃあ"@ja,
+                                      "어트랙티아"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "AttraqtiA"@en;
+                  arcaea:version "3.5"@en-us;
+                  arcaea:world_unlock false.
+arcaea.attraqtia:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Toaster%20affected%20by%20'CHUNITHM'>;
+                     arcaea:jacketDesigner "Enji"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.attraqtia:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Toaster%20affected%20by%20'CHUNITHM'>;
+                     arcaea:jacketDesigner "Enji"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 .
+arcaea.attraqtia:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Toaster%20affected%20by%20'CHUNITHM'>;
+                     arcaea:jacketDesigner "Enji"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

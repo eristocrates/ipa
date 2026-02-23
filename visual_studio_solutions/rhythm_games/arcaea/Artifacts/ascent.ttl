@@ -1,0 +1,45 @@
+@prefix arcaea.ascent: <https://arcaea.lowiro.com/#ascent#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ascent:.
+arcaea.ascent: arcaea:artist arcaea:TANUKI;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:nijuusei2_light;
+               arcaea:bg_inverse arcaea:nijuusei2_conflict;
+               arcaea:bpm "145"@en-us;
+               arcaea:bpm_base 145 ;
+               arcaea:date 1636588801 ;
+               arcaea:difficulties arcaea.ascent:PRS,
+                                   arcaea.ascent:PST,
+                                   arcaea.ascent:FTR;
+               arcaea:id "ascent"@en-us;
+               arcaea:idx 241 ;
+               arcaea:purchase "nijuusei_append_1"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "たぬき"@ja,
+                                   "타누키"@ko,
+                                   "あせんと"@ja,
+                                   "어센트"@ko;
+               arcaea:set "nijuusei_append_1"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "Ascent"@en;
+               arcaea:version "3.9"@en-us;
+               arcaea:world_unlock false.
+arcaea.ascent:FTR arcaea:chartDesigner arcaea:Exschwas%E2%86%91on%20with%20CER%E2%86%91NG;
+                  arcaea:jacketDesigner "小奈きなこ"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.ascent:PRS arcaea:chartDesigner arcaea:CER%E2%86%91NG;
+                  arcaea:jacketDesigner "小奈きなこ"@en-us;
+                  arcaea:rating 6 ;
+                  arcaea:ratingClass 1 .
+arcaea.ascent:PST arcaea:chartDesigner arcaea:CER%E2%86%91NG;
+                  arcaea:jacketDesigner "小奈きなこ"@en-us;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

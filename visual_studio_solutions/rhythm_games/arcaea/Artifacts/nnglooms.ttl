@@ -1,0 +1,47 @@
+@prefix arcaea.nnglooms: <https://arcaea.lowiro.com/#nnglooms#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.nnglooms:.
+arcaea.nnglooms: arcaea:artist arcaea:Sta;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:cytus_conflict;
+                 arcaea:bg_inverse arcaea:cytus_light;
+                 arcaea:bpm "185"@en-us;
+                 arcaea:bpm_base 185 ;
+                 arcaea:date 1689724803 ;
+                 arcaea:difficulties arcaea.nnglooms:FTR,
+                                     arcaea.nnglooms:PRS,
+                                     arcaea.nnglooms:PST;
+                 arcaea:id "nnglooms"@en-us;
+                 arcaea:idx 332 ;
+                 arcaea:purchase "cytusii_append_1"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "すた"@ja,
+                                     "스타"@ko,
+                                     "ないんてぃないんぐるーむ"@ja,
+                                     "ないんてぃーないんぐるーむ"@ja,
+                                     "나인티나인 글룸즈"@ko,
+                                     "나인티나인 글룸스"@ko,
+                                     "ninetynine glooms"@en;
+                 arcaea:set "cytusii_append_1"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:source_copyright "© Rayark Inc."@en-us;
+                 arcaea:title_localized "99 Glooms"@en,
+                                        "CYTUS II®"@en;
+                 arcaea:version "4.6"@en-us;
+                 arcaea:world_unlock false.
+arcaea.nnglooms:FTR arcaea:chartDesigner arcaea:%E7%B5%82%E7%82%B9;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.nnglooms:PRS arcaea:chartDesigner arcaea:%E7%B5%82%E7%82%B9;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 ;
+                    arcaea:ratingPlus true.
+arcaea.nnglooms:PST arcaea:chartDesigner arcaea:%E7%B5%82%E7%82%B9;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

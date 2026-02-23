@@ -1,0 +1,41 @@
+@prefix arcaea.sakurafubuki: <https://arcaea.lowiro.com/#sakurafubuki#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.sakurafubuki:.
+arcaea.sakurafubuki: arcaea:artist arcaea:Street;
+                     arcaea:audioPreview 25885 ;
+                     arcaea:audioPreviewEnd 48000 ;
+                     arcaea:bg arcaea:hime_light;
+                     arcaea:bg_inverse arcaea:hime_conflict;
+                     arcaea:bpm "175"@en-us;
+                     arcaea:bpm_base 175 ;
+                     arcaea:date 1645056001 ;
+                     arcaea:difficulties arcaea.sakurafubuki:FTR,
+                                         arcaea.sakurafubuki:PRS,
+                                         arcaea.sakurafubuki:PST;
+                     arcaea:id "sakurafubuki"@en-us;
+                     arcaea:idx 255 ;
+                     arcaea:remote_dl false;
+                     arcaea:search_title "すとりーと"@ja,
+                                         "스트릿"@ko,
+                                         "스트리트"@ko,
+                                         "さくらふぶき"@ja,
+                                         "사쿠라 후부키"@ko;
+                     arcaea:set "base"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "Sakura Fubuki"@en;
+                     arcaea:version "3.12"@en-us;
+                     arcaea:world_unlock false.
+arcaea.sakurafubuki:FTR arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.sakurafubuki:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.sakurafubuki:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

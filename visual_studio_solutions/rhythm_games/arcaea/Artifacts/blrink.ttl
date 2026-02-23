@@ -1,0 +1,46 @@
+@prefix arcaea.blrink: <https://arcaea.lowiro.com/#blrink#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.blrink:.
+arcaea.blrink: arcaea:artist arcaea:Sta;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:prelude_conflict;
+               arcaea:bg_inverse arcaea:prelude_light;
+               arcaea:bpm "115"@en-us;
+               arcaea:bpm_base 115 ;
+               arcaea:date 1583712000 ;
+               arcaea:difficulties arcaea.blrink:PRS,
+                                   arcaea.blrink:PST,
+                                   arcaea.blrink:FTR;
+               arcaea:id "blrink"@en-us;
+               arcaea:idx 151 ;
+               arcaea:purchase "prelude"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "すた"@ja,
+                                   "스타"@ko,
+                                   "ぶりんくぶりんく"@ja,
+                                   "블링크"@ko;
+               arcaea:set "prelude"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "BLRINK"@en;
+               arcaea:version "2.5"@en-us;
+               arcaea:world_unlock true.
+arcaea.blrink:FTR arcaea:chartDesigner arcaea:%E6%9C%AA%E6%9D%A5%E3%81%AE%E7%B8%81;
+                  arcaea:jacketDesigner "Sta"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.blrink:PRS arcaea:chartDesigner arcaea:%E7%8F%BE%E5%9C%A8%E3%81%AE%E7%B8%81;
+                  arcaea:jacketDesigner "Sta"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 ;
+                  arcaea:ratingPlus true.
+arcaea.blrink:PST arcaea:chartDesigner arcaea:%E9%81%8E%E5%8E%BB%E3%81%AE%E7%B8%81;
+                  arcaea:jacketDesigner "Sta"@en-us;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

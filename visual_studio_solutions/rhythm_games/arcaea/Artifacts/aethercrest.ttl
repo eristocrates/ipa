@@ -1,0 +1,55 @@
+@prefix arcaea.aethercrest: <https://arcaea.lowiro.com/#aethercrest#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.aethercrest:.
+arcaea.aethercrest: arcaea:artist <https://arcaea.lowiro.com/#void%20(Mournfinale)%20×%20水野健治>;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:aethercrest;
+                    arcaea:bg_inverse arcaea:aethercrest;
+                    arcaea:bpm "180"@en-us;
+                    arcaea:bpm_base 180 ;
+                    arcaea:date 1740700800 ;
+                    arcaea:difficulties arcaea.aethercrest:ETR,
+                                        arcaea.aethercrest:FTR,
+                                        arcaea.aethercrest:PRS,
+                                        arcaea.aethercrest:PST;
+                    arcaea:id "aethercrest"@en-us;
+                    arcaea:idx 443 ;
+                    arcaea:purchase "chunithm_append_3"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "ぼいど"@ja,
+                                        "ゔぉいど"@ja,
+                                        "みずのけんじ"@ja,
+                                        "보이드"@ko,
+                                        "미즈노 켄지"@ko,
+                                        "mizuno kenji"@en,
+                                        "えーてるくれすとあすとらる"@ja,
+                                        "에테르 크레스트 아스트랄"@ko;
+                    arcaea:set "chunithm_append_3"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Aether Crest: Astral"@en;
+                    arcaea:version "6.2"@en-us;
+                    arcaea:world_unlock false.
+arcaea.aethercrest:ETR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20%C3%97%20%E7%B5%B6%E6%BB%85%E3%80%8C%CE%B1%E1%BC%B4%CE%B8%CF%89%CE%BD%E3%80%8D;
+                       arcaea:jacketDesigner "すずなし"@en-us;
+                       arcaea:legacy11 false;
+                       arcaea:rating 11 ;
+                       arcaea:ratingClass 4 .
+arcaea.aethercrest:FTR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96%20%E3%80%8AQuintessence%E3%80%8B;
+                       arcaea:jacketDesigner "すずなし"@en-us;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 2 .
+arcaea.aethercrest:PRS arcaea:chartDesigner arcaea:Empyrean;
+                       arcaea:jacketDesigner "すずなし"@en-us;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 1 ;
+                       arcaea:ratingPlus true.
+arcaea.aethercrest:PST arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "すずなし"@en-us;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 0 .

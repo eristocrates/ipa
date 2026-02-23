@@ -1,0 +1,42 @@
+@prefix arcaea.chronostasis: <https://arcaea.lowiro.com/#chronostasis#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.chronostasis:.
+arcaea.chronostasis: arcaea:artist arcaea:%E9%BB%92%E7%9A%87%E5%B8%9D;
+                     arcaea:audioPreview 79500 ;
+                     arcaea:audioPreviewEnd 100000 ;
+                     arcaea:bg arcaea:base_conflict;
+                     arcaea:bg_inverse arcaea:base_light;
+                     arcaea:bpm "196"@en-us;
+                     arcaea:bpm_base 196 ;
+                     arcaea:date 1496188800 ;
+                     arcaea:difficulties arcaea.chronostasis:FTR,
+                                         arcaea.chronostasis:PRS,
+                                         arcaea.chronostasis:PST;
+                     arcaea:id "chronostasis"@en-us;
+                     arcaea:idx 32 ;
+                     arcaea:search_title "くろこうてい"@ja,
+                                         "쿠로코테이"@ko,
+                                         "흑황제"@ko,
+                                         "kurokotei"@en,
+                                         "くろのすたしす"@ja,
+                                         "くろのすていしす"@ja,
+                                         "크로노스테이시스"@ko;
+                     arcaea:set "base"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Chronostasis"@en;
+                     arcaea:version "1.1"@en-us.
+arcaea.chronostasis:FTR arcaea:chartDesigner arcaea:Kurorak;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.chronostasis:PRS arcaea:chartDesigner arcaea:Kurorak;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.chronostasis:PST arcaea:chartDesigner arcaea:Kurorak;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

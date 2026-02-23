@@ -1,0 +1,46 @@
+@prefix arcaea.angelsboundary: <https://arcaea.lowiro.com/#angelsboundary#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.angelsboundary:.
+arcaea.angelsboundary: arcaea:artist arcaea:MEMODEMO;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:hime_light;
+                       arcaea:bg_inverse arcaea:hime_conflict;
+                       arcaea:bpm "196"@en-us;
+                       arcaea:bpm_base 196 ;
+                       arcaea:category arcaea:original;
+                       arcaea:date 1761782405 ;
+                       arcaea:difficulties arcaea.angelsboundary:PRS,
+                                           arcaea.angelsboundary:PST,
+                                           arcaea.angelsboundary:FTR;
+                       arcaea:id "angelsboundary"@en-us;
+                       arcaea:idx 498 ;
+                       arcaea:purchase "angelsboundary"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "めもでも"@ja,
+                                           "메모데모"@ko,
+                                           "えんじぇるずばうんだりー"@ja,
+                                           "엔젤 바운더리"@ko,
+                                           "앤젤 바운더리"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Angel's Boundary"@en;
+                       arcaea:version "6.10"@en-us;
+                       arcaea:world_unlock false.
+arcaea.angelsboundary:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#[絶,滅)>;
+                          arcaea:jacketDesigner "ぽ院"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 .
+arcaea.angelsboundary:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#[絶,滅)>;
+                          arcaea:jacketDesigner "ぽ院"@en-us;
+                          arcaea:rating 8 ;
+                          arcaea:ratingClass 1 .
+arcaea.angelsboundary:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#[絶,滅)>;
+                          arcaea:jacketDesigner "ぽ院"@en-us;
+                          arcaea:rating 5 ;
+                          arcaea:ratingClass 0 .

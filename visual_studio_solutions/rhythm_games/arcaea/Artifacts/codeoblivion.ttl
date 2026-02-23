@@ -1,0 +1,53 @@
+@prefix arcaea.codeoblivion: <https://arcaea.lowiro.com/#codeoblivion#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.codeoblivion:.
+arcaea.codeoblivion: arcaea:artist arcaea:Kobaryo%20%C3%97%20Gram;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:codeoblivion;
+                     arcaea:bpm "200"@en-us;
+                     arcaea:bpm_base 200 ;
+                     arcaea:date 1763769604 ;
+                     arcaea:difficulties arcaea.codeoblivion:FTR,
+                                         arcaea.codeoblivion:PRS,
+                                         arcaea.codeoblivion:PST,
+                                         arcaea.codeoblivion:ETR;
+                     arcaea:id "codeoblivion"@en-us;
+                     arcaea:idx 504 ;
+                     arcaea:purchase "nextstage"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "こばりょー"@ja,
+                                         "ぐらむ"@ja,
+                                         "코바료"@ko,
+                                         "그람"@ko,
+                                         "그램"@ko,
+                                         "こーどおぶりびおん"@ja,
+                                         "코드 오블리비언"@ko;
+                     arcaea:set "nextstage"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Code: Oblivion"@en;
+                     arcaea:version "6.10"@en-us;
+                     arcaea:world_unlock false.
+arcaea.codeoblivion:ETR arcaea:chartDesigner arcaea:%E7%85%8C%E7%A3%A8;
+                        arcaea:jacketDesigner "MILKteaWegan"@en-us;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 4 ;
+                        arcaea:ratingPlus true.
+arcaea.codeoblivion:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#~sidewaves>;
+                        arcaea:jacketDesigner "MILKteaWegan"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.codeoblivion:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#~sidewaves>;
+                        arcaea:jacketDesigner "MILKteaWegan"@en-us;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 1 .
+arcaea.codeoblivion:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#~sidewaves>;
+                        arcaea:jacketDesigner "MILKteaWegan"@en-us;
+                        arcaea:rating 5 ;
+                        arcaea:ratingClass 0 .

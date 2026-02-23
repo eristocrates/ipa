@@ -1,0 +1,45 @@
+@prefix arcaea.hailstone: <https://arcaea.lowiro.com/#hailstone#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.hailstone:.
+arcaea.hailstone: arcaea:artist arcaea:Kazki%20Misora;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:single2_light;
+                  arcaea:bg_inverse arcaea:single2_conflict;
+                  arcaea:bpm "180"@en-us;
+                  arcaea:bpm_base 180 ;
+                  arcaea:date 1727308801 ;
+                  arcaea:difficulties arcaea.hailstone:PRS,
+                                      arcaea.hailstone:PST,
+                                      arcaea.hailstone:FTR;
+                  arcaea:id "hailstone"@en-us;
+                  arcaea:idx 415 ;
+                  arcaea:purchase "extend_3"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "かずきみそら"@ja,
+                                      "카즈키 미소라"@ko,
+                                      "へいるすとーん"@ja,
+                                      "헤일스톤"@ko;
+                  arcaea:set "extend_3"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Hailstone"@en;
+                  arcaea:version "5.10"@en-us;
+                  arcaea:world_unlock true.
+arcaea.hailstone:FTR arcaea:chartDesigner arcaea:raycast;
+                     arcaea:jacketDesigner "mogami"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.hailstone:PRS arcaea:chartDesigner arcaea:raycast;
+                     arcaea:jacketDesigner "mogami"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.hailstone:PST arcaea:chartDesigner arcaea:raycast;
+                     arcaea:jacketDesigner "mogami"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

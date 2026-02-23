@@ -1,0 +1,47 @@
+@prefix arcaea.dataerror: <https://arcaea.lowiro.com/#dataerror#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dataerror:.
+arcaea.dataerror: arcaea:artist arcaea:Cosmograph;
+                  arcaea:audioPreview 53730 ;
+                  arcaea:audioPreviewEnd 85730 ;
+                  arcaea:bg arcaea:single_conflict;
+                  arcaea:bg_inverse arcaea:single_light;
+                  arcaea:bpm "180"@en-us;
+                  arcaea:bpm_base 180 ;
+                  arcaea:category arcaea:variety;
+                  arcaea:date 1496188802 ;
+                  arcaea:difficulties arcaea.dataerror:PRS,
+                                      arcaea.dataerror:PST,
+                                      arcaea.dataerror:FTR;
+                  arcaea:id "dataerror"@en-us;
+                  arcaea:idx 29 ;
+                  arcaea:purchase "dataerror"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "こすもぐらふ"@ja,
+                                      "코스모그래프"@ko,
+                                      "でーたえらー"@ja,
+                                      "데이타 에러"@ko,
+                                      "데이터 에러"@ko,
+                                      "dataerror"@en;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "DataErr0r"@en;
+                  arcaea:version "1.1"@en-us.
+arcaea.dataerror:FTR arcaea:chartDesigner arcaea:ToastErr0r;
+                     arcaea:jacketDesigner "Photonskyto"@en-us;
+                     arcaea:plusFingers true;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.dataerror:PRS arcaea:chartDesigner arcaea:ToastErr0r;
+                     arcaea:jacketDesigner "Photonskyto"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.dataerror:PST arcaea:chartDesigner arcaea:ToastErr0r;
+                     arcaea:jacketDesigner "Photonskyto"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

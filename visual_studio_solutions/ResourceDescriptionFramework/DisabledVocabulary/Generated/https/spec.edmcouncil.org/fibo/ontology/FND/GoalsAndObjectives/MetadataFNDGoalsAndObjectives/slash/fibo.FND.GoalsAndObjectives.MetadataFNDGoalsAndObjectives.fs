@@ -1,0 +1,4 @@
+﻿namespace Fibo.FND.GoalsAndObjectives.MetadataFNDGoalsAndObjectives.Namespace
+module MetadataFNDGoalsAndObjectives =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/MetadataFNDGoalsAndObjectives/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/GoalsAndObjectives/MetadataFNDGoalsAndObjectives.rdf") (Some @"fibo.FND.GoalsAndObjectives.MetadataFNDGoalsAndObjectives") None
+    let GoalsAndObjectivesModule = {_prefixID with _localName = "GoalsAndObjectivesModule"}

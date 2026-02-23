@@ -1,0 +1,41 @@
+@prefix arcaea.gimmick: <https://arcaea.lowiro.com/#gimmick#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.gimmick:.
+arcaea.gimmick: arcaea:artist arcaea:Ms.Sill;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:prelude_conflict;
+                arcaea:bg_inverse arcaea:prelude_light;
+                arcaea:bpm "143"@en-us;
+                arcaea:bpm_base 143 ;
+                arcaea:date 1682553601 ;
+                arcaea:difficulties arcaea.gimmick:PRS,
+                                    arcaea.gimmick:PST,
+                                    arcaea.gimmick:FTR;
+                arcaea:id "gimmick"@en-us;
+                arcaea:idx 315 ;
+                arcaea:purchase "extend_2"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "みすしる"@ja,
+                                    "미스 실"@ko,
+                                    "ぎみっく"@ja,
+                                    "기믹"@ko;
+                arcaea:set "extend_2"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "GIMMICK"@en;
+                arcaea:version "4.4"@en-us;
+                arcaea:world_unlock true.
+arcaea.gimmick:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#antymis%20+%20Nitro>;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.gimmick:PRS arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.gimmick:PST arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:rating 2 ;
+                   arcaea:ratingClass 0 .

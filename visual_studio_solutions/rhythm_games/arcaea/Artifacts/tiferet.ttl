@@ -1,0 +1,44 @@
+@prefix arcaea.tiferet: <https://arcaea.lowiro.com/#tiferet#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.tiferet:.
+arcaea.tiferet: arcaea:artist <https://arcaea.lowiro.com/#xi%20+%20Sta>;
+                arcaea:audioPreview 32644 ;
+                arcaea:audioPreviewEnd 58358 ;
+                arcaea:bg arcaea:tiferet;
+                arcaea:bpm "140?"@en-us;
+                arcaea:bpm_base 140 ;
+                arcaea:date 1538870404 ;
+                arcaea:difficulties arcaea.tiferet:FTR,
+                                    arcaea.tiferet:PRS,
+                                    arcaea.tiferet:PST;
+                arcaea:id "tiferet"@en-us;
+                arcaea:idx 100 ;
+                arcaea:no_stream true;
+                arcaea:purchase "tonesphere"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "さい"@ja,
+                                    "すた"@ja,
+                                    "사이"@ko,
+                                    "스타"@ko,
+                                    "てぃふぁれと"@ja,
+                                    "티페리트"@ko;
+                arcaea:set "tonesphere"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Tiferet"@en,
+                                       "Tone Sphere"@en;
+                arcaea:version "1.8"@en-us.
+arcaea.tiferet:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#夜浪[Spherical]>;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 2 .
+arcaea.tiferet:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#夜浪[Spherical]>;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 ;
+                   arcaea:ratingPlus true.
+arcaea.tiferet:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#夜浪[Spherical]>;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

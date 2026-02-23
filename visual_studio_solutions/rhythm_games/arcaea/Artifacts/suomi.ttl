@@ -1,0 +1,52 @@
+@prefix arcaea.suomi: <https://arcaea.lowiro.com/#suomi#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.suomi:.
+arcaea.suomi: arcaea:artist arcaea:Aire;
+              arcaea:audioPreview 48000 ;
+              arcaea:audioPreviewEnd 71040 ;
+              arcaea:bg arcaea:nijuusei-light-b;
+              arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+              arcaea:bpm "125"@en-us;
+              arcaea:bpm_base 125 ;
+              arcaea:date 1531699200 ;
+              arcaea:difficulties arcaea.suomi:FTR,
+                                  arcaea.suomi:PRS,
+                                  arcaea.suomi:PST,
+                                  arcaea.suomi:ETR;
+              arcaea:id "suomi"@en-us;
+              arcaea:idx 88 ;
+              arcaea:remote_dl true;
+              arcaea:search_title "あいれ"@ja,
+                                  "아이레"@ko,
+                                  "すおみ"@ja,
+                                  "수오미"@ko;
+              arcaea:set "base"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:title_localized "Suomi"@en;
+              arcaea:version "1.7"@en-us;
+              arcaea:world_unlock true.
+arcaea.suomi:ETR arcaea:chartDesigner arcaea:CERiNG;
+                 arcaea:date 1709856002 ;
+                 arcaea:jacketDesigner "雨風雪夏"@en-us;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 4 ;
+                 arcaea:ratingPlus true;
+                 arcaea:version "5.4"@en-us.
+arcaea.suomi:FTR arcaea:chartDesigner arcaea:Toastie;
+                 arcaea:jacketDesigner "雨風雪夏"@en-us;
+                 arcaea:rating 7 ;
+                 arcaea:ratingClass 2 ;
+                 arcaea:ratingPlus true.
+arcaea.suomi:PRS arcaea:chartDesigner arcaea:Toastie;
+                 arcaea:jacketDesigner "雨風雪夏"@en-us;
+                 arcaea:rating 5 ;
+                 arcaea:ratingClass 1 .
+arcaea.suomi:PST arcaea:chartDesigner arcaea:Toastie;
+                 arcaea:jacketDesigner "雨風雪夏"@en-us;
+                 arcaea:rating 2 ;
+                 arcaea:ratingClass 0 .

@@ -1,0 +1,48 @@
+@prefix arcaea.qovat: <https://arcaea.lowiro.com/#qovat#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.qovat:.
+arcaea.qovat: arcaea:artist arcaea:owl%EF%BC%8Atree;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:hime_conflict;
+              arcaea:bg_inverse arcaea:hime_light;
+              arcaea:bpm "122"@en-us;
+              arcaea:bpm_base 122 ;
+              arcaea:category arcaea:original;
+              arcaea:date 1709856009 ;
+              arcaea:difficulties arcaea.qovat:PRS,
+                                  arcaea.qovat:PST,
+                                  arcaea.qovat:FTR;
+              arcaea:id "qovat"@en-us;
+              arcaea:idx 377 ;
+              arcaea:purchase "qovat"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "おうるつりー"@ja,
+                                  "아울트리"@ko,
+                                  "こばっと"@ja,
+                                  "こゔぁっと"@ja,
+                                  "쿠오밧"@ko,
+                                  "쿼밧"@ko,
+                                  "코밧"@ko;
+              arcaea:set "single"@en-us;
+              arcaea:side arcaea:conflict_side;
+              arcaea:title_localized "Qovat"@en;
+              arcaea:version "5.4"@en-us;
+              arcaea:world_unlock false.
+arcaea.qovat:FTR arcaea:chartDesigner arcaea:ny%EF%BC%8Atree;
+                 arcaea:jacketDesigner "Watersnake"@en-us;
+                 arcaea:rating 10 ;
+                 arcaea:ratingClass 2 .
+arcaea.qovat:PRS arcaea:chartDesigner arcaea:ex%EF%BC%8Atree;
+                 arcaea:jacketDesigner "Watersnake"@en-us;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 1 .
+arcaea.qovat:PST arcaea:chartDesigner arcaea:ex%EF%BC%8Atree;
+                 arcaea:jacketDesigner "Watersnake"@en-us;
+                 arcaea:rating 4 ;
+                 arcaea:ratingClass 0 .

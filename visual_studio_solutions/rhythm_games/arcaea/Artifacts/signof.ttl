@@ -1,0 +1,44 @@
+@prefix arcaea.signof: <https://arcaea.lowiro.com/#signof#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.signof:.
+arcaea.signof: arcaea:artist arcaea:%E6%B8%A1%E9%83%A8%E6%81%AD%E4%B9%85;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:gc_light;
+               arcaea:bg_inverse arcaea:gc_conflict;
+               arcaea:bpm "160"@en-us;
+               arcaea:bpm_base 160 ;
+               arcaea:date 1719446401 ;
+               arcaea:difficulties arcaea.signof:FTR,
+                                   arcaea.signof:PRS,
+                                   arcaea.signof:PST;
+               arcaea:id "signof"@en-us;
+               arcaea:idx 396 ;
+               arcaea:purchase "groovecoaster_append_1"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "わたなべやすひさ"@ja,
+                                   "와타나베 야스히사"@ko,
+                                   "さいんおぶてんぽいんとふぁいぶきろめーとる"@ja,
+                                   "사인 오브 텐 포인트 파이브 킬로미터"@ko,
+                                   "yasuhisa watanabe"@en;
+               arcaea:set "groovecoaster_append_1"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:source_copyright "© TAITO CORPORATION"@en-us;
+               arcaea:title_localized """Sign of \"10.5km\""""@en,
+                                      "Groove Coaster"@en;
+               arcaea:version "5.8"@en-us;
+               arcaea:world_unlock false.
+arcaea.signof:FTR arcaea:chartDesigner arcaea:Dec18;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.signof:PRS arcaea:chartDesigner arcaea:Dec18;
+                  arcaea:rating 6 ;
+                  arcaea:ratingClass 1 .
+arcaea.signof:PST arcaea:chartDesigner arcaea:Dec18;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

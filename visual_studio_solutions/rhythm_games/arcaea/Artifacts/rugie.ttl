@@ -1,0 +1,44 @@
+@prefix arcaea.rugie: <https://arcaea.lowiro.com/#rugie#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.rugie:.
+arcaea.rugie: arcaea:artist arcaea:Feryquitous%20feat.Sennzai;
+              arcaea:audioPreview 96606 ;
+              arcaea:audioPreviewEnd 126920 ;
+              arcaea:bg arcaea:base_conflict;
+              arcaea:bg_inverse arcaea:base_light;
+              arcaea:bpm "191"@en-us;
+              arcaea:bpm_base 191 ;
+              arcaea:date 1541635200 ;
+              arcaea:difficulties arcaea.rugie:FTR,
+                                  arcaea.rugie:PRS,
+                                  arcaea.rugie:PST;
+              arcaea:id "rugie"@en-us;
+              arcaea:idx 102 ;
+              arcaea:remote_dl true;
+              arcaea:search_title "ふぇりきたす"@ja,
+                                  "せんざい"@ja,
+                                  "페리퀴토스"@ko,
+                                  "페리퀴타스"@ko,
+                                  "페리퀴터스"@ko,
+                                  "센자이"@ko,
+                                  "るぎあ"@ja,
+                                  "루기아"@ko;
+              arcaea:set "base"@en-us;
+              arcaea:side arcaea:conflict_side;
+              arcaea:title_localized "Rugie"@en;
+              arcaea:version "1.8"@en-us;
+              arcaea:world_unlock true.
+arcaea.rugie:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//urorak>;
+                 arcaea:rating 9 ;
+                 arcaea:ratingClass 2 .
+arcaea.rugie:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#k//urorak>;
+                 arcaea:rating 6 ;
+                 arcaea:ratingClass 1 .
+arcaea.rugie:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#k//urorak>;
+                 arcaea:rating 3 ;
+                 arcaea:ratingClass 0 .

@@ -1,0 +1,47 @@
+@prefix arcaea.dantalion: <https://arcaea.lowiro.com/#dantalion#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dantalion:.
+arcaea.dantalion: arcaea:artist arcaea:Team%20Grimoire;
+                  arcaea:audioPreview 60000 ;
+                  arcaea:audioPreviewEnd 70000 ;
+                  arcaea:bg arcaea:vs_conflict;
+                  arcaea:bg_inverse arcaea:vs_light;
+                  arcaea:bpm "186"@en-us;
+                  arcaea:bpm_base 186 ;
+                  arcaea:date 1590537603 ;
+                  arcaea:difficulties arcaea.dantalion:FTR,
+                                      arcaea.dantalion:PRS,
+                                      arcaea.dantalion:PST;
+                  arcaea:id "dantalion"@en-us;
+                  arcaea:idx 158 ;
+                  arcaea:purchase "vs"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ちーむぐりもわーる"@ja,
+                                      "ちーむぐりもあ"@ja,
+                                      "팀 그리모어"@ko,
+                                      "だんたりおん"@ja,
+                                      "단탈리온"@ko,
+                                      "단탈라이온"@ko;
+                  arcaea:set "vs"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Dantalion"@en;
+                  arcaea:version "3.0"@en-us;
+                  arcaea:world_unlock false.
+arcaea.dantalion:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20X%20%E6%9D%B1%E6%98%9F%20%22The%20Lost%22;
+                     arcaea:jacketDesigner "Rolua"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.dantalion:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                     arcaea:jacketDesigner "Rolua"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 .
+arcaea.dantalion:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                     arcaea:jacketDesigner "Rolua"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 0 .

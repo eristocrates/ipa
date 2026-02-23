@@ -1,0 +1,4 @@
+﻿namespace Fibo.FBC.FunctionalEntities.NorthAmericanEntities.CAFinancialServicesEntities.Namespace
+module CAFinancialServicesEntities =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities.rdf") (Some @"fibo.FBC.FunctionalEntities.NorthAmericanEntities.CAFinancialServicesEntities") None
+    let CanadianCreditUnion = {_prefixID with _localName = "CanadianCreditUnion"}

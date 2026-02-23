@@ -1,0 +1,41 @@
+@prefix arcaea.lifeispiano: <https://arcaea.lowiro.com/#lifeispiano#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lifeispiano:.
+arcaea.lifeispiano: arcaea:artist arcaea:Junk;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:rei;
+                    arcaea:bg_inverse arcaea:yugamu;
+                    arcaea:bpm "133"@en-us;
+                    arcaea:bpm_base 133 ;
+                    arcaea:date 1617926401 ;
+                    arcaea:difficulties arcaea.lifeispiano:PRS,
+                                        arcaea.lifeispiano:PST,
+                                        arcaea.lifeispiano:FTR;
+                    arcaea:id "lifeispiano"@en-us;
+                    arcaea:idx 208 ;
+                    arcaea:purchase "extend"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "じゃんく"@ja,
+                                        "정크"@ko,
+                                        "らいふいずぴあの"@ja,
+                                        "라이프 이즈 피아노"@ko;
+                    arcaea:set "extend"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Life is PIANO"@en;
+                    arcaea:version "3.5"@en-us;
+                    arcaea:world_unlock true.
+arcaea.lifeispiano:FTR arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.lifeispiano:PRS arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.lifeispiano:PST arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

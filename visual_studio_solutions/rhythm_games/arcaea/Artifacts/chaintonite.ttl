@@ -1,0 +1,54 @@
+@prefix arcaea.chaintonite: <https://arcaea.lowiro.com/#chaintonite#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.chaintonite:.
+arcaea.chaintonite: arcaea:artist arcaea:asuzora%20feat.%20cyber%20milk%20%E3%81%A1%E3%82%83%E3%82%93;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:megarex_conflict;
+                    arcaea:bg_inverse arcaea:megarex_light;
+                    arcaea:bpm "172"@en-us;
+                    arcaea:bpm_base 172 ;
+                    arcaea:date 1769644801 ;
+                    arcaea:difficulties arcaea.chaintonite:ETR,
+                                        arcaea.chaintonite:FTR,
+                                        arcaea.chaintonite:PRS,
+                                        arcaea.chaintonite:PST;
+                    arcaea:id "chaintonite"@en-us;
+                    arcaea:idx 514 ;
+                    arcaea:purchase "megarex"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "あすぞら"@ja,
+                                        "さいばーみるくちゃん"@ja,
+                                        "아스조라"@ko,
+                                        "사이버 밀크쨩"@ko,
+                                        "cyber milk chan"@en,
+                                        "ちぇいんとぅないと"@ja,
+                                        "체인 투나잇"@ko,
+                                        "체인 투나이트"@ko;
+                    arcaea:set "megarex"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "CHAIN2NITE"@en;
+                    arcaea:version "6.12"@en-us;
+                    arcaea:world_unlock false.
+arcaea.chaintonite:ETR arcaea:chartDesigner arcaea:raycast;
+                       arcaea:jacketDesigner "Poyoshi"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 4 ;
+                       arcaea:ratingPlus true.
+arcaea.chaintonite:FTR arcaea:chartDesigner arcaea:raycast;
+                       arcaea:jacketDesigner "Poyoshi"@en-us;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 2 .
+arcaea.chaintonite:PRS arcaea:chartDesigner arcaea:raycast;
+                       arcaea:jacketDesigner "Poyoshi"@en-us;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.chaintonite:PST arcaea:chartDesigner arcaea:raycast;
+                       arcaea:jacketDesigner "Poyoshi"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

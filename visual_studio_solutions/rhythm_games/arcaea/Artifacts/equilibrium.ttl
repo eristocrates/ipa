@@ -1,0 +1,44 @@
+@prefix arcaea.equilibrium: <https://arcaea.lowiro.com/#equilibrium#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.equilibrium:.
+arcaea.equilibrium: arcaea:artist arcaea:Maozon;
+                    arcaea:audioPreview 60000 ;
+                    arcaea:audioPreviewEnd 70000 ;
+                    arcaea:bg arcaea:vs_light;
+                    arcaea:bg_inverse arcaea:vs_conflict;
+                    arcaea:bpm "180"@en-us;
+                    arcaea:bpm_base 180 ;
+                    arcaea:date 1590537600 ;
+                    arcaea:difficulties arcaea.equilibrium:PRS,
+                                        arcaea.equilibrium:PST,
+                                        arcaea.equilibrium:FTR;
+                    arcaea:id "equilibrium"@en-us;
+                    arcaea:idx 155 ;
+                    arcaea:purchase "vs"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "まおぞん"@ja,
+                                        "마오존"@ko,
+                                        "えくりぶりうむ"@ja,
+                                        "이퀼리브리움"@ko;
+                    arcaea:set "vs"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Equilibrium"@en;
+                    arcaea:version "3.0"@en-us;
+                    arcaea:world_unlock false.
+arcaea.equilibrium:FTR arcaea:chartDesigner arcaea:Kurorak;
+                       arcaea:jacketDesigner "巻羊"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.equilibrium:PRS arcaea:chartDesigner arcaea:Kurorak;
+                       arcaea:jacketDesigner "巻羊"@en-us;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.equilibrium:PST arcaea:chartDesigner arcaea:Kurorak;
+                       arcaea:jacketDesigner "巻羊"@en-us;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

@@ -1,0 +1,44 @@
+@prefix arcaea.ifi: <https://arcaea.lowiro.com/#ifi#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ifi:.
+arcaea.ifi: arcaea:artist <https://arcaea.lowiro.com/#かめりあ(EDP)>;
+            arcaea:audioPreview 60000 ;
+            arcaea:audioPreviewEnd 70000 ;
+            arcaea:bg arcaea:vs_conflict;
+            arcaea:bg_inverse arcaea:vs_light;
+            arcaea:bpm "181"@en-us;
+            arcaea:bpm_base 181 ;
+            arcaea:date 1590537604 ;
+            arcaea:difficulties arcaea.ifi:PRS,
+                                arcaea.ifi:PST,
+                                arcaea.ifi:FTR;
+            arcaea:id "ifi"@en-us;
+            arcaea:idx 159 ;
+            arcaea:purchase "vs"@en-us;
+            arcaea:remote_dl true;
+            arcaea:search_title "카메리아"@ko,
+                                "kameria"@en,
+                                "camellia"@en;
+            arcaea:set "vs"@en-us;
+            arcaea:side arcaea:conflict_side;
+            arcaea:title_localized "#1f1e33"@en;
+            arcaea:version "3.0"@en-us;
+            arcaea:world_unlock false.
+arcaea.ifi:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20VS%20%E6%9D%B1%E6%98%9F%20%22Convergence%22;
+               arcaea:jacketDesigner "望月けい"@en-us;
+               arcaea:legacy11 false;
+               arcaea:rating 11 ;
+               arcaea:ratingClass 2 .
+arcaea.ifi:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+               arcaea:jacketDesigner "望月けい"@en-us;
+               arcaea:rating 9 ;
+               arcaea:ratingClass 1 .
+arcaea.ifi:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+               arcaea:jacketDesigner "望月けい"@en-us;
+               arcaea:rating 5 ;
+               arcaea:ratingClass 0 .

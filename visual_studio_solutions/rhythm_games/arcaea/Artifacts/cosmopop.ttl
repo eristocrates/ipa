@@ -1,0 +1,47 @@
+@prefix arcaea.cosmopop: <https://arcaea.lowiro.com/#cosmopop#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.cosmopop:.
+arcaea.cosmopop: arcaea:artist arcaea:%E3%83%8A%E3%83%A6%E3%82%BF%E3%83%B3%E6%98%9F%E4%BA%BA;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:chunithmnew_light;
+                 arcaea:bg_inverse arcaea:chunithmnew_conflict;
+                 arcaea:bpm "129"@en-us;
+                 arcaea:bpm_base 129 ;
+                 arcaea:date 1679529600 ;
+                 arcaea:difficulties arcaea.cosmopop:FTR,
+                                     arcaea.cosmopop:PRS,
+                                     arcaea.cosmopop:PST;
+                 arcaea:id "cosmopop"@en-us;
+                 arcaea:idx 309 ;
+                 arcaea:purchase "chunithm_append_2"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "なゆたんせいじん"@ja,
+                                     "나유탄 성인"@ko,
+                                     "나유탄 세이진"@ko,
+                                     "nayutan seijin"@en,
+                                     "nayutalien"@en,
+                                     "코스모 팝 펀클럽"@ko;
+                 arcaea:set "chunithm_append_2"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:source_copyright "©SEGA"@en-us;
+                 arcaea:title_localized "コスモポップファンクラブ"@ja,
+                                        "Cosmo Pop Funclub"@en,
+                                        "CHUNITHM"@en;
+                 arcaea:version "4.4"@en-us;
+                 arcaea:world_unlock false.
+arcaea.cosmopop:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20NEW!!>;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.cosmopop:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20NEW!!>;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.cosmopop:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20NEW!!>;
+                    arcaea:rating 2 ;
+                    arcaea:ratingClass 0 .

@@ -1,0 +1,47 @@
+@prefix arcaea.onestepcloser: <https://arcaea.lowiro.com/#onestepcloser#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.onestepcloser:.
+arcaea.onestepcloser: arcaea:artist arcaea:Mameyudoufu%20%C3%97%20%E8%97%8D%E6%9C%88%E3%81%AA%E3%81%8F%E3%82%8B;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:megarex_light;
+                      arcaea:bg_inverse arcaea:megarex_conflict;
+                      arcaea:bpm "123"@en-us;
+                      arcaea:bpm_base 123 ;
+                      arcaea:date 1769644802 ;
+                      arcaea:difficulties arcaea.onestepcloser:FTR,
+                                          arcaea.onestepcloser:PRS,
+                                          arcaea.onestepcloser:PST;
+                      arcaea:id "onestepcloser"@en-us;
+                      arcaea:idx 515 ;
+                      arcaea:purchase "megarex"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "まめゆどうふ"@ja,
+                                          "あいつきなくる"@ja,
+                                          "마메유도후"@ko,
+                                          "아이츠키 나쿠루"@ko,
+                                          "aitsuki nakuru"@en,
+                                          "わんすてっぷくろーさー"@ja,
+                                          "원 스텝 클로저"@ko;
+                      arcaea:set "megarex"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "One Step Closer"@en;
+                      arcaea:version "6.12"@en-us;
+                      arcaea:world_unlock false.
+arcaea.onestepcloser:FTR arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                         arcaea:jacketDesigner "Poyoshi + はぐはむ"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 .
+arcaea.onestepcloser:PRS arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                         arcaea:jacketDesigner "Poyoshi + はぐはむ"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 .
+arcaea.onestepcloser:PST arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                         arcaea:jacketDesigner "Poyoshi + はぐはむ"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

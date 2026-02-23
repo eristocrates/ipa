@@ -1,0 +1,54 @@
+@prefix arcaea.factorder: <https://arcaea.lowiro.com/#factorder#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.factorder:.
+arcaea.factorder: arcaea:artist arcaea:%E7%80%AC%E5%90%8D%20feat.%20%E6%A2%A8%E9%9B%9B;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:anima_conflict;
+                  arcaea:bg_inverse arcaea:anima_light;
+                  arcaea:bpm "168"@en-us;
+                  arcaea:bpm_base 168 ;
+                  arcaea:date 1755734401 ;
+                  arcaea:difficulties arcaea.factorder:ETR,
+                                      arcaea.factorder:FTR,
+                                      arcaea.factorder:PRS,
+                                      arcaea.factorder:PST;
+                  arcaea:id "factorder"@en-us;
+                  arcaea:idx 479 ;
+                  arcaea:purchase "anima_append_1"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "せな"@ja,
+                                      "りひな"@ja,
+                                      "세나"@ko,
+                                      "리히나"@ko,
+                                      "sena"@en,
+                                      "rihina"@en,
+                                      "ふぁくとーだー"@ja,
+                                      "팩토더"@ko,
+                                      "팩트오더"@ko;
+                  arcaea:set "anima_append_1"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Factorder"@en;
+                  arcaea:version "6.8"@en-us;
+                  arcaea:world_unlock false.
+arcaea.factorder:ETR arcaea:chartDesigner arcaea:Luxance%20-Lost%20Colors-;
+                     arcaea:jacketDesigner "KUREHA"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 4 .
+arcaea.factorder:FTR arcaea:chartDesigner arcaea:Nitro;
+                     arcaea:jacketDesigner "KUREHA"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 .
+arcaea.factorder:PRS arcaea:chartDesigner arcaea:Luxance%20-Lost%20Colors-;
+                     arcaea:jacketDesigner "KUREHA"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.factorder:PST arcaea:chartDesigner arcaea:Luxance%20-Lost%20Colors-;
+                     arcaea:jacketDesigner "KUREHA"@en-us;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,44 @@
+@prefix arcaea.dreamgoeson: <https://arcaea.lowiro.com/#dreamgoeson#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dreamgoeson:.
+arcaea.dreamgoeson: arcaea:artist arcaea:Tiny%20Minim;
+                    arcaea:audioPreview 70000 ;
+                    arcaea:audioPreviewEnd 103448 ;
+                    arcaea:bg arcaea:lanota-light;
+                    arcaea:bg_inverse arcaea:lanota-conflict;
+                    arcaea:bpm "174"@en-us;
+                    arcaea:bpm_base 174 ;
+                    arcaea:date 1517443200 ;
+                    arcaea:difficulties arcaea.dreamgoeson:FTR,
+                                        arcaea.dreamgoeson:PRS,
+                                        arcaea.dreamgoeson:PST;
+                    arcaea:id "dreamgoeson"@en-us;
+                    arcaea:idx 63 ;
+                    arcaea:no_stream true;
+                    arcaea:purchase "lanota"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "たいにーみにむ"@ja,
+                                        "타이니 미님"@ko,
+                                        "どりーむごーずおん"@ja,
+                                        "드림 고즈 온"@ko,
+                                        "드림 고스 온"@ko;
+                    arcaea:set "lanota"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Dream goes on"@en,
+                                           "Lanota"@en;
+                    arcaea:version "1.5"@en-us.
+arcaea.dreamgoeson:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.dreamgoeson:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                       arcaea:rating 5 ;
+                       arcaea:ratingClass 1 .
+arcaea.dreamgoeson:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                       arcaea:rating 1 ;
+                       arcaea:ratingClass 0 .

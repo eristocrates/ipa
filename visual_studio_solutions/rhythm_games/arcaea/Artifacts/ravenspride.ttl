@@ -1,0 +1,47 @@
+@prefix arcaea.ravenspride: <https://arcaea.lowiro.com/#ravenspride#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ravenspride:.
+arcaea.ravenspride: arcaea:artist arcaea:%E3%81%BF%E3%83%BC%E3%81%AB%20feat.%20%E3%81%AF%E3%82%89%E3%82%82%E3%82%8A%E3%82%88%E3%81%97%E3%81%AA;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:eden_conflict;
+                    arcaea:bg_inverse arcaea:eden_light;
+                    arcaea:bpm "165"@en-us;
+                    arcaea:bpm_base 165 ;
+                    arcaea:date 1692230403 ;
+                    arcaea:difficulties arcaea.ravenspride:FTR,
+                                        arcaea.ravenspride:PRS,
+                                        arcaea.ravenspride:PST;
+                    arcaea:id "ravenspride"@en-us;
+                    arcaea:idx 338 ;
+                    arcaea:purchase "eden"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "미니"@ko,
+                                        "하라모리 요시나"@ko,
+                                        "mini"@en,
+                                        "haramori yoshina"@en,
+                                        "레이븐즈 프라이드"@ko,
+                                        "레이븐스 프라이드"@ko;
+                    arcaea:set "eden"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "レイヴンズ・プライド"@ja,
+                                           "Raven's Pride"@en;
+                    arcaea:version "4.7"@en-us;
+                    arcaea:world_unlock false.
+arcaea.ravenspride:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                       arcaea:jacketDesigner "めとこ"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.ravenspride:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                       arcaea:jacketDesigner "めとこ"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 .
+arcaea.ravenspride:PST arcaea:chartDesigner arcaea:Exschwasion;
+                       arcaea:jacketDesigner "めとこ"@en-us;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

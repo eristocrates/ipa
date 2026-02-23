@@ -1,0 +1,52 @@
+@prefix arcaea.renegade: <https://arcaea.lowiro.com/#renegade#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.renegade:.
+arcaea.renegade: arcaea:artist arcaea:sky_delta;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:lephon;
+                 arcaea:bg_inverse arcaea:lephon;
+                 arcaea:bpm "186"@en-us;
+                 arcaea:bpm_base 186 ;
+                 arcaea:byd_local_unlock true;
+                 arcaea:date 1732147206 ;
+                 arcaea:difficulties arcaea.renegade:FTR,
+                                     arcaea.renegade:PRS,
+                                     arcaea.renegade:PST,
+                                     arcaea.renegade:BYD;
+                 arcaea:id "renegade"@en-us;
+                 arcaea:idx 429 ;
+                 arcaea:purchase "lephon"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "すかいでるた"@ja,
+                                     "스카이 델타"@ko,
+                                     "れねげーど"@ja,
+                                     "레니게이드"@ko;
+                 arcaea:set "lephon"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "Renegade"@en;
+                 arcaea:version "6.0"@en-us;
+                 arcaea:world_unlock false.
+arcaea.renegade:BYD arcaea:chartDesigner <https://arcaea.lowiro.com/#raycast,%20The%20Irresolute>;
+                    arcaea:hidden_until "none"@en-us;
+                    arcaea:jacketDesigner "辷"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 3 .
+arcaea.renegade:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#raycast,%20The%20Devout>;
+                    arcaea:jacketDesigner "辷"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.renegade:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#raycast,%20The%20Devout>;
+                    arcaea:jacketDesigner "辷"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 ;
+                    arcaea:ratingPlus true.
+arcaea.renegade:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#raycast,%20The%20Devout>;
+                    arcaea:jacketDesigner "辷"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

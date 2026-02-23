@@ -1,0 +1,62 @@
+@prefix arcaea.arcanaeden: <https://arcaea.lowiro.com/#arcanaeden#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.arcanaeden:.
+arcaea:additional_files arcaea:file_name "video_audio.ogg"@en-us,
+                                         "video.mp4"@en-us;
+                        arcaea:requirement "required"@en-us.
+arcaea.arcanaeden: arcaea:additional_files arcaea.arcanaeden:additional_files;
+                   arcaea:artist arcaea:Team%20Grimoire%20vs%20Sakuzyo%20vs%20Laur;
+                   arcaea:audioPreview 2274 ;
+                   arcaea:audioPreviewEnd 32985 ;
+                   arcaea:bg arcaea:arcanaeden;
+                   arcaea:bpm "211"@en-us;
+                   arcaea:bpm_base 211 ;
+                   arcaea:byd_local_unlock true;
+                   arcaea:date 1657152008 ;
+                   arcaea:difficulties arcaea.arcanaeden:BYD,
+                                       arcaea.arcanaeden:FTR,
+                                       arcaea.arcanaeden:PRS,
+                                       arcaea.arcanaeden:PST;
+                   arcaea:id "arcanaeden"@en-us;
+                   arcaea:idx 279 ;
+                   arcaea:purchase "finale"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "ちーむぐりもあ"@ja,
+                                       "ちーむぐりもわーる"@ja,
+                                       "さくじょ"@ja,
+                                       "らうる"@ja,
+                                       "팀 그리모어"@ko,
+                                       "사쿠죠"@ko,
+                                       "라우르"@ko,
+                                       "あるかなえでん"@ja,
+                                       "아르카나 에덴"@ko;
+                   arcaea:set "finale"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Arcana Eden"@en;
+                   arcaea:version "4.0"@en-us;
+                   arcaea:world_unlock false.
+arcaea.arcanaeden:BYD arcaea:chartDesigner arcaea:Eye%20of%20the%20Storm;
+                      arcaea:hidden_until "none"@en-us;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:legacy11 true;
+                      arcaea:rating 11 ;
+                      arcaea:ratingClass 3 ;
+                      arcaea:world_unlock false.
+arcaea.arcanaeden:FTR arcaea:chartDesigner arcaea:Eye%20of%20the%20Storm;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 2 .
+arcaea.arcanaeden:PRS arcaea:chartDesigner arcaea:Eye%20of%20the%20Storm;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 1 ;
+                      arcaea:ratingPlus true.
+arcaea.arcanaeden:PST arcaea:chartDesigner arcaea:Eye%20of%20the%20Storm;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:rating 5 ;
+                      arcaea:ratingClass 0 .

@@ -1,0 +1,45 @@
+@prefix arcaea.nekonote: <https://arcaea.lowiro.com/#nekonote#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.nekonote:.
+arcaea.nekonote: arcaea:artist <https://arcaea.lowiro.com/#Ino(chronoize)>;
+                 arcaea:audioPreview 38513 ;
+                 arcaea:audioPreviewEnd 70135 ;
+                 arcaea:bg arcaea:alice_light;
+                 arcaea:bg_inverse arcaea:alice_conflict;
+                 arcaea:bpm "148"@en-us;
+                 arcaea:bpm_base 148 ;
+                 arcaea:date 1651104004 ;
+                 arcaea:difficulties arcaea.nekonote:FTR,
+                                     arcaea.nekonote:PRS,
+                                     arcaea.nekonote:PST;
+                 arcaea:id "nekonote"@en-us;
+                 arcaea:idx 268 ;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "いの"@ja,
+                                     "이노"@ko,
+                                     "댄싱 온 어 캣츠 포"@ko,
+                                     "네코노테 카리타가루"@ko,
+                                     "고양이 손 빌리고싶어걸"@ko;
+                 arcaea:set "base"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "ネコノテ・カリタガール"@ja,
+                                        "Dancin' on a Cat's Paw"@en;
+                 arcaea:version "3.12"@en-us;
+                 arcaea:world_unlock true.
+arcaea.nekonote:FTR arcaea:chartDesigner arcaea:antymis;
+                    arcaea:jacketDesigner "りゅうら + kkkfff2"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.nekonote:PRS arcaea:chartDesigner arcaea:antymis;
+                    arcaea:jacketDesigner "りゅうら + kkkfff2"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.nekonote:PST arcaea:chartDesigner arcaea:antymis;
+                    arcaea:jacketDesigner "りゅうら + kkkfff2"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

@@ -1,0 +1,43 @@
+@prefix arcaea.theformula: <https://arcaea.lowiro.com/#theformula#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.theformula:.
+arcaea.theformula: arcaea:artist arcaea:Junk;
+                   arcaea:audioPreview 98333 ;
+                   arcaea:audioPreviewEnd 125000 ;
+                   arcaea:bg arcaea:nijuusei2_light;
+                   arcaea:bg_inverse arcaea:nijuusei2_conflict;
+                   arcaea:bpm "144"@en-us;
+                   arcaea:bpm_base 144 ;
+                   arcaea:date 1706140807 ;
+                   arcaea:difficulties arcaea.theformula:PRS,
+                                       arcaea.theformula:PST,
+                                       arcaea.theformula:FTR;
+                   arcaea:id "theformula"@en-us;
+                   arcaea:idx 369 ;
+                   arcaea:remote_dl false;
+                   arcaea:search_title "じゃんく"@ja,
+                                       "정크"@ko,
+                                       "ざふぉーみゅら"@ja,
+                                       "더 포뮬라"@ko;
+                   arcaea:set "base"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "The Formula"@en;
+                   arcaea:version "5.3"@en-us;
+                   arcaea:world_unlock false.
+arcaea.theformula:FTR arcaea:chartDesigner arcaea:Dec18;
+                      arcaea:jacketDesigner "鑓田 (alpha complex)"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.theformula:PRS arcaea:chartDesigner arcaea:Dec18;
+                      arcaea:jacketDesigner "鑓田 (alpha complex)"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.theformula:PST arcaea:chartDesigner arcaea:Dec18;
+                      arcaea:jacketDesigner "鑓田 (alpha complex)"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

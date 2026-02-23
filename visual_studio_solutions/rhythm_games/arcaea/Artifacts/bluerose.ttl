@@ -1,0 +1,44 @@
+@prefix arcaea.bluerose: <https://arcaea.lowiro.com/#bluerose#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.bluerose:.
+arcaea.bluerose: arcaea:artist arcaea:Cosmograph;
+                 arcaea:audioPreview 47394 ;
+                 arcaea:audioPreviewEnd 75055 ;
+                 arcaea:bg arcaea:hime_light;
+                 arcaea:bg_inverse arcaea:hime_conflict;
+                 arcaea:bpm "250-295"@en-us;
+                 arcaea:bpm_base 295 ;
+                 arcaea:date 1639008001 ;
+                 arcaea:difficulties arcaea.bluerose:PRS,
+                                     arcaea.bluerose:PST,
+                                     arcaea.bluerose:FTR;
+                 arcaea:id "bluerose"@en-us;
+                 arcaea:idx 245 ;
+                 arcaea:purchase "dividedheart"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "こすもぐらふ"@ja,
+                                     "코스모그래프"@ko,
+                                     "ぶるーろーず"@ja,
+                                     "블루 로즈"@ko;
+                 arcaea:set "dividedheart"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "Blue Rose"@en;
+                 arcaea:version "3.10"@en-us;
+                 arcaea:world_unlock false.
+arcaea.bluerose:FTR arcaea:chartDesigner arcaea:CERiNG;
+                    arcaea:jacketDesigner "チェリム"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.bluerose:PRS arcaea:chartDesigner arcaea:CERiNG;
+                    arcaea:jacketDesigner "チェリム"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.bluerose:PST arcaea:chartDesigner arcaea:CERiNG;
+                    arcaea:jacketDesigner "チェリム"@en-us;
+                    arcaea:rating 2 ;
+                    arcaea:ratingClass 0 .

@@ -1,0 +1,49 @@
+@prefix arcaea.dematerialized: <https://arcaea.lowiro.com/#dematerialized#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dematerialized:.
+arcaea.dematerialized: arcaea:artist arcaea:In%20Love%20With%20A%20Ghost;
+                       arcaea:audioPreview 55813 ;
+                       arcaea:audioPreviewEnd 80930 ;
+                       arcaea:bg arcaea:eden_conflict;
+                       arcaea:bg_inverse arcaea:eden_light;
+                       arcaea:bpm "86"@en-us;
+                       arcaea:bpm_base 172 ;
+                       arcaea:date 1753315200 ;
+                       arcaea:difficulties arcaea.dematerialized:FTR,
+                                           arcaea.dematerialized:PRS,
+                                           arcaea.dematerialized:PST,
+                                           arcaea.dematerialized:ETR;
+                       arcaea:id "dematerialized"@en-us;
+                       arcaea:idx 472 ;
+                       arcaea:remote_dl false;
+                       arcaea:search_title "いんらぶうぃずあごーすと"@ja,
+                                           "인 러브 윗 어 고스트"@ko,
+                                           "인 러브 위드 어 고스트"@ko,
+                                           "でまてりあらいずど"@ja,
+                                           "디메테럴라이즈드"@ko;
+                       arcaea:set "base"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "Dematerialized"@en;
+                       arcaea:version "6.7"@en-us;
+                       arcaea:world_unlock false.
+arcaea.dematerialized:ETR arcaea:chartDesigner arcaea:karat;
+                          arcaea:jacketDesigner "mw2k"@en-us;
+                          arcaea:rating 8 ;
+                          arcaea:ratingClass 4 .
+arcaea.dematerialized:FTR arcaea:chartDesigner arcaea:karat;
+                          arcaea:jacketDesigner "mw2k"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 2 .
+arcaea.dematerialized:PRS arcaea:chartDesigner arcaea:karat;
+                          arcaea:jacketDesigner "mw2k"@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 1 .
+arcaea.dematerialized:PST arcaea:chartDesigner arcaea:karat;
+                          arcaea:jacketDesigner "mw2k"@en-us;
+                          arcaea:rating 1 ;
+                          arcaea:ratingClass 0 .

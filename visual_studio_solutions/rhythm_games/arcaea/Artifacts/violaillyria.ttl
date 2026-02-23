@@ -1,0 +1,44 @@
+@prefix arcaea.violaillyria: <https://arcaea.lowiro.com/#violaillyria#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.violaillyria:.
+arcaea.violaillyria: arcaea:artist arcaea:Kolaa;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:eclipse_light;
+                     arcaea:bg_inverse arcaea:eclipse_conflict;
+                     arcaea:bpm "162"@en-us;
+                     arcaea:bpm_base 162 ;
+                     arcaea:date 1759363201 ;
+                     arcaea:difficulties arcaea.violaillyria:PRS,
+                                         arcaea.violaillyria:PST,
+                                         arcaea.violaillyria:FTR;
+                     arcaea:id "violaillyria"@en-us;
+                     arcaea:idx 487 ;
+                     arcaea:purchase "eclipse"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "こーら"@ja,
+                                         "콜라"@ko,
+                                         "ゔぃおらいりゅりあ"@ja,
+                                         "비올라 이률리아"@ko;
+                     arcaea:set "eclipse"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "Viola Illyria"@en;
+                     arcaea:version "6.9"@en-us;
+                     arcaea:world_unlock false.
+arcaea.violaillyria:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#sidewaves%20+%20Exschwasion>;
+                        arcaea:jacketDesigner "ねこじし"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.violaillyria:PRS arcaea:chartDesigner arcaea:sidewaves;
+                        arcaea:jacketDesigner "ねこじし"@en-us;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.violaillyria:PST arcaea:chartDesigner arcaea:sidewaves;
+                        arcaea:jacketDesigner "ねこじし"@en-us;
+                        arcaea:rating 2 ;
+                        arcaea:ratingClass 0 .

@@ -1,0 +1,39 @@
+﻿namespace Fibo.BE.GovernmentEntities.LatinAmericanJurisdiction.SouthAmericanGovernmentEntitiesAndJurisdictions.Namespace
+module SouthAmericanGovernmentEntitiesAndJurisdictions =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/LatinAmericanJurisdiction/SouthAmericanGovernmentEntitiesAndJurisdictions/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/GovernmentEntities/LatinAmericanJurisdiction/SouthAmericanGovernmentEntitiesAndJurisdictions.rdf") (Some @"fibo.BE.GovernmentEntities.LatinAmericanJurisdiction.SouthAmericanGovernmentEntitiesAndJurisdictions") None
+    let ArgentinianEntity = {_prefixID with _localName = "ArgentinianEntity"}
+    let BolivianEntity = {_prefixID with _localName = "BolivianEntity"}
+    let BrazilianEntity = {_prefixID with _localName = "BrazilianEntity"}
+    let ChileanEntity = {_prefixID with _localName = "ChileanEntity"}
+    let ColombianEntity = {_prefixID with _localName = "ColombianEntity"}
+    let EcuadorianEntity = {_prefixID with _localName = "EcuadorianEntity"}
+    let GovernmentOfTheArgentineRepublic = {_prefixID with _localName = "GovernmentOfTheArgentineRepublic"}
+    let GovernmentOfTheBolivarianRepublicOfVenezuela = {_prefixID with _localName = "GovernmentOfTheBolivarianRepublicOfVenezuela"}
+    let ``GovernmentOfTheCo-operativeRepublicOfGuyana`` = {_prefixID with _localName = "GovernmentOfTheCo-operativeRepublicOfGuyana"}
+    let GovernmentOfTheFederativeRepublicOfBrazil = {_prefixID with _localName = "GovernmentOfTheFederativeRepublicOfBrazil"}
+    let GovernmentOfTheOrientalRepublicOfUruguay = {_prefixID with _localName = "GovernmentOfTheOrientalRepublicOfUruguay"}
+    let GovernmentOfThePlurinationalStateOfBolivia = {_prefixID with _localName = "GovernmentOfThePlurinationalStateOfBolivia"}
+    let GovernmentOfTheRepublicOfChile = {_prefixID with _localName = "GovernmentOfTheRepublicOfChile"}
+    let GovernmentOfTheRepublicOfColombia = {_prefixID with _localName = "GovernmentOfTheRepublicOfColombia"}
+    let GovernmentOfTheRepublicOfEcuador = {_prefixID with _localName = "GovernmentOfTheRepublicOfEcuador"}
+    let GovernmentOfTheRepublicOfParaguay = {_prefixID with _localName = "GovernmentOfTheRepublicOfParaguay"}
+    let GovernmentOfTheRepublicOfPeru = {_prefixID with _localName = "GovernmentOfTheRepublicOfPeru"}
+    let GovernmentOfTheRepublicOfSuriname = {_prefixID with _localName = "GovernmentOfTheRepublicOfSuriname"}
+    let GuyaneseEntity = {_prefixID with _localName = "GuyaneseEntity"}
+    let JurisdictionOfArgentina = {_prefixID with _localName = "JurisdictionOfArgentina"}
+    let JurisdictionOfBolivia = {_prefixID with _localName = "JurisdictionOfBolivia"}
+    let JurisdictionOfBrazil = {_prefixID with _localName = "JurisdictionOfBrazil"}
+    let JurisdictionOfChile = {_prefixID with _localName = "JurisdictionOfChile"}
+    let JurisdictionOfColombia = {_prefixID with _localName = "JurisdictionOfColombia"}
+    let JurisdictionOfEcuador = {_prefixID with _localName = "JurisdictionOfEcuador"}
+    let JurisdictionOfGuyana = {_prefixID with _localName = "JurisdictionOfGuyana"}
+    let JurisdictionOfParaguay = {_prefixID with _localName = "JurisdictionOfParaguay"}
+    let JurisdictionOfPeru = {_prefixID with _localName = "JurisdictionOfPeru"}
+    let JurisdictionOfSuriname = {_prefixID with _localName = "JurisdictionOfSuriname"}
+    let JurisdictionOfUruguay = {_prefixID with _localName = "JurisdictionOfUruguay"}
+    let JurisdictionOfVenezuela = {_prefixID with _localName = "JurisdictionOfVenezuela"}
+    let ParaguayanEntity = {_prefixID with _localName = "ParaguayanEntity"}
+    let PeruvianEntity = {_prefixID with _localName = "PeruvianEntity"}
+    let SurinameseEntity = {_prefixID with _localName = "SurinameseEntity"}
+    let UruguayanEntity = {_prefixID with _localName = "UruguayanEntity"}
+    let VenezuelanEntity = {_prefixID with _localName = "VenezuelanEntity"}

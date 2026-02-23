@@ -1,0 +1,49 @@
+@prefix arcaea.aprilshowers: <https://arcaea.lowiro.com/#aprilshowers#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.aprilshowers:.
+arcaea.aprilshowers: arcaea:artist arcaea:cubesato;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:maimai_light;
+                     arcaea:bg_inverse arcaea:maimai_conflict;
+                     arcaea:bpm "79"@en-us;
+                     arcaea:bpm_base 79 ;
+                     arcaea:date 1610064000 ;
+                     arcaea:difficulties arcaea.aprilshowers:FTR,
+                                         arcaea.aprilshowers:PRS,
+                                         arcaea.aprilshowers:PST;
+                     arcaea:id "aprilshowers"@en-us;
+                     arcaea:idx 195 ;
+                     arcaea:no_stream true;
+                     arcaea:purchase "maimai"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "きゅーぶさとー"@ja,
+                                         "きゅーぶさとう"@ja,
+                                         "큐브사토"@ko,
+                                         "しがつのあめ"@ja,
+                                         "에이프릴 샤워즈"@ko,
+                                         "시가츠노 아메"@ko,
+                                         "4월의 비"@ko,
+                                         "사월의 비"@ko;
+                     arcaea:set "maimai"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:source_copyright "©SEGA"@en-us;
+                     arcaea:title_localized "四月の雨"@ja,
+                                            "April showers"@en,
+                                            "maimai"@en;
+                     arcaea:version "3.4"@en-us;
+                     arcaea:world_unlock false.
+arcaea.aprilshowers:FTR arcaea:chartDesigner arcaea:Nitro-100%E5%8F%B7;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 2 .
+arcaea.aprilshowers:PRS arcaea:chartDesigner arcaea:Nitro-100%E5%8F%B7;
+                        arcaea:rating 5 ;
+                        arcaea:ratingClass 1 .
+arcaea.aprilshowers:PST arcaea:chartDesigner arcaea:Nitro-100%E5%8F%B7;
+                        arcaea:rating 2 ;
+                        arcaea:ratingClass 0 .

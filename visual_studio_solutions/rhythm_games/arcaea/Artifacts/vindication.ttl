@@ -1,0 +1,44 @@
+@prefix arcaea.vindication: <https://arcaea.lowiro.com/#vindication#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.vindication:.
+arcaea.vindication: arcaea:artist arcaea:Laur;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:prelude_light;
+                    arcaea:bg_inverse arcaea:prelude_conflict;
+                    arcaea:bpm "174"@en-us;
+                    arcaea:bpm_base 174 ;
+                    arcaea:date 1563408002 ;
+                    arcaea:difficulties arcaea.vindication:PRS,
+                                        arcaea.vindication:PST,
+                                        arcaea.vindication:FTR;
+                    arcaea:id "vindication"@en-us;
+                    arcaea:idx 128 ;
+                    arcaea:purchase "prelude"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "らうる"@ja,
+                                        "라우르"@ko,
+                                        "ゔぃんでぃけーしょん"@ja,
+                                        "빈디케이션"@ko;
+                    arcaea:set "prelude"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Vindication"@en;
+                    arcaea:version "2.2"@en-us;
+                    arcaea:world_unlock false.
+arcaea.vindication:FTR arcaea:chartDesigner arcaea:Nitro%20vs%20Toaster;
+                       arcaea:jacketDesigner "EB十"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.vindication:PRS arcaea:chartDesigner arcaea:Toaster;
+                       arcaea:jacketDesigner "EB十"@en-us;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.vindication:PST arcaea:chartDesigner arcaea:Toaster;
+                       arcaea:jacketDesigner "EB十"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

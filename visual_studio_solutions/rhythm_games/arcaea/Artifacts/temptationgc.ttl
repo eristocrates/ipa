@@ -1,0 +1,50 @@
+@prefix arcaea.temptationgc: <https://arcaea.lowiro.com/#temptationgc#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.temptationgc:.
+arcaea.temptationgc: arcaea:artist arcaea:Lite%20Show%20Magic;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:gc_conflict;
+                     arcaea:bg_inverse arcaea:gc_light;
+                     arcaea:bpm "128-185"@en-us;
+                     arcaea:bpm_base 185 ;
+                     arcaea:date 1719446402 ;
+                     arcaea:difficulties arcaea.temptationgc:FTR,
+                                         arcaea.temptationgc:PRS,
+                                         arcaea.temptationgc:PST,
+                                         arcaea.temptationgc:ETR;
+                     arcaea:id "temptationgc"@en-us;
+                     arcaea:idx 397 ;
+                     arcaea:purchase "groovecoaster_append_1"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "らいとしょーまじっく"@ja,
+                                         "라이트 쇼 매직"@ko,
+                                         "てんぷてーしょん"@ja,
+                                         "템테이션"@ko,
+                                         "temptation"@en;
+                     arcaea:set "groovecoaster_append_1"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:source_copyright "© TAITO CORPORATION"@en-us;
+                     arcaea:title_localized "10pt8ion"@en,
+                                            "Groove Coaster"@en;
+                     arcaea:version "5.8"@en-us;
+                     arcaea:world_unlock false.
+arcaea.temptationgc:ETR arcaea:chartDesigner arcaea:Nite%20Schwa%20Power;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 4 .
+arcaea.temptationgc:FTR arcaea:chartDesigner arcaea:Nite%20Schwa%20Power;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.temptationgc:PRS arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 ;
+                        arcaea:ratingPlus true.
+arcaea.temptationgc:PST arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:rating 4 ;
+                        arcaea:ratingClass 0 .

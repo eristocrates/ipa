@@ -1,0 +1,54 @@
+@prefix arcaea.tempestissimo: <https://arcaea.lowiro.com/#tempestissimo#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.tempestissimo:.
+arcaea.tempestissimo: arcaea:artist <https://arcaea.lowiro.com/#t+pazolite>;
+                      arcaea:audioPreview 60000 ;
+                      arcaea:audioPreviewEnd 70000 ;
+                      arcaea:bg arcaea:tempestissimo;
+                      arcaea:bpm "231"@en-us;
+                      arcaea:bpm_base 231 ;
+                      arcaea:byd_local_unlock true;
+                      arcaea:date 1590537605 ;
+                      arcaea:difficulties arcaea.tempestissimo:FTR,
+                                          arcaea.tempestissimo:PRS,
+                                          arcaea.tempestissimo:PST,
+                                          arcaea.tempestissimo:BYD;
+                      arcaea:id "tempestissimo"@en-us;
+                      arcaea:idx 160 ;
+                      arcaea:purchase "vs"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "とぱぞらいと"@ja,
+                                          "토파졸라이트"@ko,
+                                          "てんぺすてぃっしも"@ja,
+                                          "템페스티시모"@ko;
+                      arcaea:set "vs"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Tempestissimo"@en;
+                      arcaea:version "3.0"@en-us;
+                      arcaea:world_unlock false.
+arcaea.tempestissimo:BYD arcaea:chartDesigner arcaea:Finale%20-%20The%20Tempest;
+                         arcaea:hidden_until "difficulty"@en-us;
+                         arcaea:hidden_until_unlocked true;
+                         arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:jacketOverride true;
+                         arcaea:legacy11 true;
+                         arcaea:rating 11 ;
+                         arcaea:ratingClass 3 .
+arcaea.tempestissimo:FTR arcaea:chartDesigner arcaea:Onslaught%20-%20Crescendo;
+                         arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.tempestissimo:PRS arcaea:chartDesigner arcaea:Convergence%20-%20Intermezzo;
+                         arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 1 .
+arcaea.tempestissimo:PST arcaea:chartDesigner arcaea:Prelude%20-%20Ouverture;
+                         arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 0 .

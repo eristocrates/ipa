@@ -1,0 +1,47 @@
+@prefix arcaea.leaveallbehind: <https://arcaea.lowiro.com/#leaveallbehind#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.leaveallbehind:.
+arcaea.leaveallbehind: arcaea:artist arcaea:rider;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:prelude_conflict;
+                       arcaea:bg_inverse arcaea:prelude_light;
+                       arcaea:bpm "150"@en-us;
+                       arcaea:bpm_base 150 ;
+                       arcaea:date 1714003200 ;
+                       arcaea:difficulties arcaea.leaveallbehind:PRS,
+                                           arcaea.leaveallbehind:PST,
+                                           arcaea.leaveallbehind:FTR;
+                       arcaea:id "leaveallbehind"@en-us;
+                       arcaea:idx 385 ;
+                       arcaea:purchase "extend_3"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "らいだー"@ja,
+                                           "라이더"@ko,
+                                           "りーぶおーるびはいんど"@ja,
+                                           "りーゔおーるびはいんど"@ja,
+                                           "리브 올 비하인드"@ko;
+                       arcaea:set "extend_3"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:source_copyright "© Pigeon Games"@en-us;
+                       arcaea:title_localized "Leave All Behind"@en,
+                                              "Phigros"@en;
+                       arcaea:version "5.6"@en-us;
+                       arcaea:world_unlock true.
+arcaea.leaveallbehind:FTR arcaea:chartDesigner arcaea:Luxance;
+                          arcaea:jacketDesigner "NoteRE"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.leaveallbehind:PRS arcaea:chartDesigner arcaea:Luxance;
+                          arcaea:jacketDesigner "NoteRE"@en-us;
+                          arcaea:rating 5 ;
+                          arcaea:ratingClass 1 .
+arcaea.leaveallbehind:PST arcaea:chartDesigner arcaea:Luxance;
+                          arcaea:jacketDesigner "NoteRE"@en-us;
+                          arcaea:rating 2 ;
+                          arcaea:ratingClass 0 .

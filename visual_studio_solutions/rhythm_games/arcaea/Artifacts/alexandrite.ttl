@@ -1,0 +1,43 @@
+@prefix arcaea.alexandrite: <https://arcaea.lowiro.com/#alexandrite#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.alexandrite:.
+arcaea.alexandrite: arcaea:artist arcaea:WAiKURO;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:alexandrite;
+                    arcaea:bpm "146"@en-us;
+                    arcaea:bpm_base 146 ;
+                    arcaea:category arcaea:original;
+                    arcaea:date 1537142401 ;
+                    arcaea:difficulties arcaea.alexandrite:PRS,
+                                        arcaea.alexandrite:PST,
+                                        arcaea.alexandrite:FTR;
+                    arcaea:id "alexandrite"@en-us;
+                    arcaea:idx 101 ;
+                    arcaea:purchase "alexandrite"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "わいくろ"@ja,
+                                        "와이쿠로"@ko,
+                                        "あれくさんどらいと"@ja,
+                                        "알렉산드라이트"@ko;
+                    arcaea:set "single"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "Alexandrite"@en;
+                    arcaea:version "1.7"@en-us.
+arcaea.alexandrite:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E7%A9%BA%E3%81%AE%E5%AE%9D%E7%9F%B3;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 2 .
+arcaea.alexandrite:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E7%A9%BA%E3%81%AE%E5%AE%9D%E7%9F%B3;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 .
+arcaea.alexandrite:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E7%A9%BA%E3%81%AE%E5%AE%9D%E7%9F%B3;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

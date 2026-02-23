@@ -1,0 +1,52 @@
+@prefix arcaea.meltyrhapsody: <https://arcaea.lowiro.com/#meltyrhapsody#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.meltyrhapsody:.
+arcaea.meltyrhapsody: arcaea:artist arcaea:lapix%20feat.%20PANXI;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:megarex_light;
+                      arcaea:bg_inverse arcaea:megarex_conflict;
+                      arcaea:bpm "156"@en-us;
+                      arcaea:bpm_base 156 ;
+                      arcaea:date 1769644804 ;
+                      arcaea:difficulties arcaea.meltyrhapsody:FTR,
+                                          arcaea.meltyrhapsody:PRS,
+                                          arcaea.meltyrhapsody:PST,
+                                          arcaea.meltyrhapsody:ETR;
+                      arcaea:id "meltyrhapsody"@en-us;
+                      arcaea:idx 517 ;
+                      arcaea:purchase "megarex"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "らぴす"@ja,
+                                          "ぱんしー"@ja,
+                                          "라픽스"@ko,
+                                          "판시"@ko,
+                                          "멜티 랩소디"@ko,
+                                          "merutexi rapusodexi"@en;
+                      arcaea:set "megarex"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "メルティーラプソディー"@ja,
+                                             "Melty Rhapsody"@en;
+                      arcaea:version "6.12"@en-us;
+                      arcaea:world_unlock false.
+arcaea.meltyrhapsody:ETR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_liquid;
+                         arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 4 .
+arcaea.meltyrhapsody:FTR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_liquid;
+                         arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 .
+arcaea.meltyrhapsody:PRS arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_liquid;
+                         arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 .
+arcaea.meltyrhapsody:PST arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_liquid;
+                         arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

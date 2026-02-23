@@ -1,0 +1,47 @@
+@prefix arcaea.lostintheabyss: <https://arcaea.lowiro.com/#lostintheabyss#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lostintheabyss:.
+arcaea.lostintheabyss: arcaea:artist arcaea:FELT;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:touhou_conflict;
+                       arcaea:bg_inverse arcaea:touhou_light;
+                       arcaea:bpm "183"@en-us;
+                       arcaea:bpm_base 183 ;
+                       arcaea:category arcaea:poprec;
+                       arcaea:date 1684972802 ;
+                       arcaea:difficulties arcaea.lostintheabyss:PRS,
+                                           arcaea.lostintheabyss:PST,
+                                           arcaea.lostintheabyss:FTR;
+                       arcaea:id "lostintheabyss"@en-us;
+                       arcaea:idx 320 ;
+                       arcaea:purchase "lostintheabyss"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "ふぇると"@ja,
+                                           "펠트"@ko,
+                                           "ろすといんじあびす"@ja,
+                                           "로스트 인 디 어비스"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                       arcaea:title_localized "Lost in the Abyss"@en;
+                       arcaea:version "4.4"@en-us;
+                       arcaea:world_unlock false.
+arcaea.lostintheabyss:FTR arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:jacketDesigner "AO"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.lostintheabyss:PRS arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:jacketDesigner "AO"@en-us;
+                          arcaea:rating 6 ;
+                          arcaea:ratingClass 1 .
+arcaea.lostintheabyss:PST arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:jacketDesigner "AO"@en-us;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

@@ -1,0 +1,53 @@
+@prefix arcaea.zephyrlast: <https://arcaea.lowiro.com/#zephyrlast#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.zephyrlast:.
+arcaea.zephyrlast: arcaea:artist <https://arcaea.lowiro.com/#s-don%20×%20nitro%20(lowiro)>;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:nextstage_conflict;
+                   arcaea:bg_inverse arcaea:nextstage_light;
+                   arcaea:bpm "155"@en-us;
+                   arcaea:bpm_base 155 ;
+                   arcaea:date 1763769602 ;
+                   arcaea:difficulties arcaea.zephyrlast:FTR,
+                                       arcaea.zephyrlast:PRS,
+                                       arcaea.zephyrlast:PST,
+                                       arcaea.zephyrlast:ETR;
+                   arcaea:id "zephyrlast"@en-us;
+                   arcaea:idx 502 ;
+                   arcaea:purchase "nextstage"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "すうどん"@ja,
+                                       "にとろ"@ja,
+                                       "ないとろ"@ja,
+                                       "스돈"@ko,
+                                       "니트로"@ko,
+                                       "ぜふぁーらーすてぃんぐ"@ja,
+                                       "제퍼 라스팅"@ko,
+                                       "제피르 라스팅"@ko;
+                   arcaea:set "nextstage"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "zephyrlasting"@en;
+                   arcaea:version "6.10"@en-us;
+                   arcaea:world_unlock false.
+arcaea.zephyrlast:ETR arcaea:chartDesigner arcaea:Nitro%20%E3%80%8CThe%20Timeless%E3%80%8D;
+                      arcaea:jacketDesigner "Men"@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 4 .
+arcaea.zephyrlast:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Souplex%20+%20Nitro>;
+                      arcaea:jacketDesigner "Men"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.zephyrlast:PRS arcaea:chartDesigner arcaea:Souplex;
+                      arcaea:jacketDesigner "Men"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 .
+arcaea.zephyrlast:PST arcaea:chartDesigner arcaea:Souplex;
+                      arcaea:jacketDesigner "Men"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

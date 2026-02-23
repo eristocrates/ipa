@@ -1,0 +1,47 @@
+@prefix arcaea.daat: <https://arcaea.lowiro.com/#daat#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.daat:.
+arcaea.daat: arcaea:artist arcaea:%E6%B0%B4%E9%87%8E%E5%81%A5%E6%B2%BB%20VS%20%E5%A4%A7%E5%9B%BD%E5%A5%8F%E9%9F%B3;
+             arcaea:audioPreview 0 ;
+             arcaea:audioPreviewEnd 0 ;
+             arcaea:bg arcaea:chuni-ikazuchi;
+             arcaea:bpm "222"@en-us;
+             arcaea:bpm_base 222 ;
+             arcaea:date 1734566402 ;
+             arcaea:difficulties arcaea.daat:FTR,
+                                 arcaea.daat:PRS,
+                                 arcaea.daat:PST;
+             arcaea:id "daat"@en-us;
+             arcaea:idx 438 ;
+             arcaea:purchase "chunithm_append_3"@en-us;
+             arcaea:remote_dl true;
+             arcaea:search_title "みずのけんじ"@ja,
+                                 "おおぐにかのん"@ja,
+                                 "미즈노 켄지"@ko,
+                                 "오오구니 카논"@ko,
+                                 "mizuno kenji"@en,
+                                 "oguni kanon"@en,
+                                 "だぁとざふぁーすとしーかーおぶそうるず"@ja,
+                                 "다아트 더 퍼스트 시커 오브 소울즈"@ko;
+             arcaea:set "chunithm_append_3"@en-us;
+             arcaea:side arcaea:conflict_side;
+             arcaea:source_copyright "©SEGA"@en-us;
+             arcaea:title_localized "DA'AT -The First Seeker of Souls-"@en,
+                                    "CHUNITHM"@en;
+             arcaea:version "6.1"@en-us;
+             arcaea:world_unlock false.
+arcaea.daat:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20-Revolutions-;
+                arcaea:rating 10 ;
+                arcaea:ratingClass 2 ;
+                arcaea:ratingPlus true.
+arcaea.daat:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20-Revolutions-;
+                arcaea:rating 8 ;
+                arcaea:ratingClass 1 .
+arcaea.daat:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20-Revolutions-;
+                arcaea:rating 5 ;
+                arcaea:ratingClass 0 .

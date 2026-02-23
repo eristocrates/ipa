@@ -1,0 +1,47 @@
+@prefix arcaea.gimmedablood: <https://arcaea.lowiro.com/#gimmedablood#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.gimmedablood:.
+arcaea.gimmedablood: arcaea:artist arcaea:C-Show;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:yugamu;
+                     arcaea:bg_inverse arcaea:rei;
+                     arcaea:bpm "87-110"@en-us;
+                     arcaea:bpm_base 110 ;
+                     arcaea:category arcaea:partner;
+                     arcaea:date 1615248000 ;
+                     arcaea:difficulties arcaea.gimmedablood:PRS,
+                                         arcaea.gimmedablood:PST,
+                                         arcaea.gimmedablood:FTR;
+                     arcaea:id "gimmedablood"@en-us;
+                     arcaea:idx 206 ;
+                     arcaea:purchase "gimmedablood"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "ししょう"@ja,
+                                         "시 쇼"@ko,
+                                         "ぎみだぶらっど"@ja,
+                                         "ぎみーだぶらっど"@ja,
+                                         "김미 다 블러드"@ko,
+                                         "김미 더 블러드"@ko;
+                     arcaea:set "single"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "GIMME DA BLOOD"@en;
+                     arcaea:version "3.5"@en-us;
+                     arcaea:world_unlock false.
+arcaea.gimmedablood:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                        arcaea:jacketDesigner "すずなし"@en-us;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 2 .
+arcaea.gimmedablood:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                        arcaea:jacketDesigner "すずなし"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.gimmedablood:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                        arcaea:jacketDesigner "すずなし"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

@@ -1,0 +1,49 @@
+@prefix arcaea.headbonkache: <https://arcaea.lowiro.com/#headbonkache#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.headbonkache:.
+arcaea.headbonkache: arcaea:artist <https://arcaea.lowiro.com/#saaa%20ft.%20MC%20iwata%20Bros.>;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:yugamu;
+                     arcaea:bg_inverse arcaea:rei;
+                     arcaea:bpm "132-165"@en-us;
+                     arcaea:bpm_base 165 ;
+                     arcaea:category arcaea:variety;
+                     arcaea:date 1647993602 ;
+                     arcaea:difficulties arcaea.headbonkache:FTR,
+                                         arcaea.headbonkache:PRS,
+                                         arcaea.headbonkache:PST;
+                     arcaea:id "headbonkache"@en-us;
+                     arcaea:idx 262 ;
+                     arcaea:purchase "headbonkache"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "さえさん"@ja,
+                                         "えむしーいわたぶろす"@ja,
+                                         "사에산"@ko,
+                                         "엠씨 이와타 브로스"@ko,
+                                         "엠시 이와타 브로스"@ko,
+                                         "へっどぼんくえいく"@ja,
+                                         "へっどぼんくえーく"@ja,
+                                         "헤드 북 봉크 에이크"@ko;
+                     arcaea:set "single"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Head BONK ache"@en;
+                     arcaea:version "3.12"@en-us;
+                     arcaea:world_unlock false.
+arcaea.headbonkache:FTR arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:jacketDesigner "空読無 白眼"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.headbonkache:PRS arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:jacketDesigner "空読無 白眼"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.headbonkache:PST arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:jacketDesigner "空読無 白眼"@en-us;
+                        arcaea:rating 4 ;
+                        arcaea:ratingClass 0 .

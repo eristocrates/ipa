@@ -1,0 +1,43 @@
+@prefix arcaea.endmoonlight: <https://arcaea.lowiro.com/#endmoonlight#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.endmoonlight:.
+arcaea.endmoonlight: arcaea:artist arcaea:Forte%20Escape;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:djmax_conflict;
+                     arcaea:bg_inverse arcaea:djmax_light;
+                     arcaea:bpm "155"@en-us;
+                     arcaea:bpm_base 155 ;
+                     arcaea:date 1747872003 ;
+                     arcaea:difficulties arcaea.endmoonlight:PRS,
+                                         arcaea.endmoonlight:PST,
+                                         arcaea.endmoonlight:FTR;
+                     arcaea:id "endmoonlight"@en-us;
+                     arcaea:idx 459 ;
+                     arcaea:purchase "djmax"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "ふぉるてえすけーぷ"@ja,
+                                         "포르테 이스케이프"@ko,
+                                         "えんどおぶざむーんらいと"@ja,
+                                         "엔드 오브 더 문라이트"@ko;
+                     arcaea:set "djmax"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:source_copyright "© NEOWIZ"@en-us;
+                     arcaea:title_localized "End of The Moonlight"@en,
+                                            "DJMAX"@en;
+                     arcaea:version "6.5"@en-us;
+                     arcaea:world_unlock false.
+arcaea.endmoonlight:FTR arcaea:chartDesigner arcaea:sidewaves;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.endmoonlight:PRS arcaea:chartDesigner arcaea:sidewaves;
+                        arcaea:rating 5 ;
+                        arcaea:ratingClass 1 .
+arcaea.endmoonlight:PST arcaea:chartDesigner arcaea:sidewaves;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

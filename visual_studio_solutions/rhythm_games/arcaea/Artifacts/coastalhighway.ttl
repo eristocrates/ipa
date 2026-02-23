@@ -1,0 +1,45 @@
+@prefix arcaea.coastalhighway: <https://arcaea.lowiro.com/#coastalhighway#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.coastalhighway:.
+arcaea.coastalhighway: arcaea:artist arcaea:Glitch%20Droids;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:observer_light;
+                       arcaea:bg_inverse arcaea:observer_conflict;
+                       arcaea:bpm "110"@en-us;
+                       arcaea:bpm_base 110 ;
+                       arcaea:date 1620691205 ;
+                       arcaea:difficulties arcaea.coastalhighway:PRS,
+                                           arcaea.coastalhighway:PST,
+                                           arcaea.coastalhighway:FTR;
+                       arcaea:id "coastalhighway"@en-us;
+                       arcaea:idx 214 ;
+                       arcaea:purchase "observer_append_1"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "ぐりっちどろいず"@ja,
+                                           "글리치 드로이드"@ko,
+                                           "글리치 드로이즈"@ko,
+                                           "こーすたるはいうぇい"@ja,
+                                           "코스탈 하이웨이"@ko;
+                       arcaea:set "observer_append_1"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Coastal Highway"@en;
+                       arcaea:version "3.6"@en-us;
+                       arcaea:world_unlock false.
+arcaea.coastalhighway:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                          arcaea:jacketDesigner "水視ずみ"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.coastalhighway:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                          arcaea:jacketDesigner "水視ずみ"@en-us;
+                          arcaea:rating 6 ;
+                          arcaea:ratingClass 1 .
+arcaea.coastalhighway:PST arcaea:chartDesigner arcaea:Exschwasion;
+                          arcaea:jacketDesigner "水視ずみ"@en-us;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

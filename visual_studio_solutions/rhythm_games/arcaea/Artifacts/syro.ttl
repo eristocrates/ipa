@@ -1,0 +1,43 @@
+@prefix arcaea.syro: <https://arcaea.lowiro.com/#syro#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.syro:.
+arcaea.syro: arcaea:artist arcaea:Mitomoro;
+             arcaea:audioPreview 26968 ;
+             arcaea:audioPreviewEnd 48541 ;
+             arcaea:bg arcaea:mirai_light;
+             arcaea:bg_inverse arcaea:mirai_conflict;
+             arcaea:bpm "178"@en-us;
+             arcaea:bpm_base 178 ;
+             arcaea:date 1513814401 ;
+             arcaea:difficulties arcaea.syro:PRS,
+                                 arcaea.syro:PST,
+                                 arcaea.syro:FTR;
+             arcaea:id "syro"@en-us;
+             arcaea:idx 67 ;
+             arcaea:remote_dl true;
+             arcaea:search_title "みともろ"@ja,
+                                 "미소모로"@ko,
+                                 "さいろ"@ja,
+                                 "사이로"@ko;
+             arcaea:set "base"@en-us;
+             arcaea:side arcaea:light_side;
+             arcaea:title_localized "Syro"@en;
+             arcaea:version "1.5"@en-us;
+             arcaea:world_unlock true.
+arcaea.syro:FTR arcaea:chartDesigner arcaea:Toaster;
+                arcaea:jacketDesigner "RiceGnat"@en-us;
+                arcaea:rating 9 ;
+                arcaea:ratingClass 2 .
+arcaea.syro:PRS arcaea:chartDesigner arcaea:Toaster;
+                arcaea:jacketDesigner "RiceGnat"@en-us;
+                arcaea:rating 6 ;
+                arcaea:ratingClass 1 .
+arcaea.syro:PST arcaea:chartDesigner arcaea:Toaster;
+                arcaea:jacketDesigner "RiceGnat"@en-us;
+                arcaea:rating 3 ;
+                arcaea:ratingClass 0 .

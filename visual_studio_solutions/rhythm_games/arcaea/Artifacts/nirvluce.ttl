@@ -1,0 +1,43 @@
+@prefix arcaea.nirvluce: <https://arcaea.lowiro.com/#nirvluce#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.nirvluce:.
+arcaea.nirvluce: arcaea:artist arcaea:%E3%81%97%E3%83%BC%E3%81%91%E3%83%BC;
+                 arcaea:audioPreview 37216 ;
+                 arcaea:audioPreviewEnd 59370 ;
+                 arcaea:bg arcaea:nirvluce;
+                 arcaea:bpm "260"@en-us;
+                 arcaea:bpm_base 260 ;
+                 arcaea:date 1494547205 ;
+                 arcaea:difficulties arcaea.nirvluce:PRS,
+                                     arcaea.nirvluce:PST,
+                                     arcaea.nirvluce:FTR;
+                 arcaea:id "nirvluce"@en-us;
+                 arcaea:idx 26 ;
+                 arcaea:purchase "shiawase"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "시케"@ko,
+                                     "shiikei"@en,
+                                     "ck"@en,
+                                     "にるゔるーちぇ"@ja,
+                                     "너브루체"@ko;
+                 arcaea:set "shiawase"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "Nirv lucE"@en;
+                 arcaea:version "1.0"@en-us.
+arcaea.nirvluce:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E7%B4%85%E7%A9%BA;
+                    arcaea:jacketDesigner "シエラ"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.nirvluce:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E7%B4%85%E7%A9%BA;
+                    arcaea:jacketDesigner "シエラ"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.nirvluce:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E7%B4%85%E7%A9%BA;
+                    arcaea:jacketDesigner "シエラ"@en-us;
+                    arcaea:rating 2 ;
+                    arcaea:ratingClass 0 .

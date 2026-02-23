@@ -1,0 +1,52 @@
+@prefix arcaea.disintegration: <https://arcaea.lowiro.com/#disintegration#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.disintegration:.
+arcaea.disintegration: arcaea:artist arcaea:%E3%81%B2%E3%82%85%E3%80%9C%E3%81%B6;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:eden_append_light;
+                       arcaea:bg_inverse arcaea:eden_append_conflict;
+                       arcaea:bpm "135"@en-us;
+                       arcaea:bpm_base 135 ;
+                       arcaea:date 1755734400 ;
+                       arcaea:difficulties arcaea.disintegration:FTR,
+                                           arcaea.disintegration:PRS,
+                                           arcaea.disintegration:PST,
+                                           arcaea.disintegration:ETR;
+                       arcaea:id "disintegration"@en-us;
+                       arcaea:idx 478 ;
+                       arcaea:purchase "extend_3"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "ひゅーぶ"@ja,
+                                           "휴부"@ko,
+                                           "fuve"@en,
+                                           "hyubu"@en,
+                                           "でぃすいんてぐれーしょん"@ja,
+                                           "디스인터그레이션"@ko;
+                       arcaea:set "extend_3"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "disintegration"@en;
+                       arcaea:version "6.8"@en-us;
+                       arcaea:world_unlock true.
+arcaea.disintegration:ETR arcaea:chartDesigner arcaea:raycast;
+                          arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 4 ;
+                          arcaea:ratingPlus true.
+arcaea.disintegration:FTR arcaea:chartDesigner arcaea:raycast;
+                          arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                          arcaea:rating 8 ;
+                          arcaea:ratingClass 2 .
+arcaea.disintegration:PRS arcaea:chartDesigner arcaea:raycast;
+                          arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                          arcaea:rating 6 ;
+                          arcaea:ratingClass 1 .
+arcaea.disintegration:PST arcaea:chartDesigner arcaea:raycast;
+                          arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

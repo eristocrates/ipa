@@ -1,0 +1,42 @@
+@prefix arcaea.hearditsaid: <https://arcaea.lowiro.com/#hearditsaid#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.hearditsaid:.
+arcaea.hearditsaid: arcaea:artist arcaea:Combatplayer;
+                    arcaea:audioPreview 49454 ;
+                    arcaea:audioPreviewEnd 72727 ;
+                    arcaea:bg arcaea:base_light;
+                    arcaea:bg_inverse arcaea:base_conflict;
+                    arcaea:bpm "165"@en-us;
+                    arcaea:bpm_base 165 ;
+                    arcaea:date 1487980812 ;
+                    arcaea:difficulties arcaea.hearditsaid:FTR,
+                                        arcaea.hearditsaid:PRS,
+                                        arcaea.hearditsaid:PST;
+                    arcaea:id "hearditsaid"@en-us;
+                    arcaea:idx 7 ;
+                    arcaea:purchase "core"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "こんばっとぷれいやー"@ja,
+                                        "컴뱃플레이어"@ko,
+                                        "あいゔはーどいっとせいど"@ja,
+                                        "あいぶはーどいっとせいど"@ja,
+                                        "아이브 허드 잇 셋"@ko,
+                                        "아입 허드 잇 셋"@ko;
+                    arcaea:set "core"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "I've heard it said"@en;
+                    arcaea:version "1.0"@en-us.
+arcaea.hearditsaid:FTR arcaea:chartDesigner arcaea:Toaster;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 2 .
+arcaea.hearditsaid:PRS arcaea:chartDesigner arcaea:Toaster;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.hearditsaid:PST arcaea:chartDesigner arcaea:Toaster;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

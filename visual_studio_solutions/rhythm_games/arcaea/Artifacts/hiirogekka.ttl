@@ -1,0 +1,54 @@
+@prefix arcaea.hiirogekka: <https://arcaea.lowiro.com/#hiirogekka#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.hiirogekka:.
+arcaea.hiirogekka: arcaea:artist <https://arcaea.lowiro.com/#nayuta%20x%20黒鳥(EastNewSound)>;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:touhou_conflict;
+                   arcaea:bg_inverse arcaea:touhou_light;
+                   arcaea:bpm "150"@en-us;
+                   arcaea:bpm_base 150 ;
+                   arcaea:category arcaea:poprec;
+                   arcaea:date 1677715202 ;
+                   arcaea:difficulties arcaea.hiirogekka:FTR,
+                                       arcaea.hiirogekka:PRS,
+                                       arcaea.hiirogekka:PST;
+                   arcaea:id "hiirogekka"@en-us;
+                   arcaea:idx 302 ;
+                   arcaea:purchase "hiirogekka"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "こくちょう"@ja,
+                                       "なゆた"@ja,
+                                       "いーすとにゅーさうんど"@ja,
+                                       "나유타"@ko,
+                                       "코쿠쵸"@ko,
+                                       "흑조"@ko,
+                                       "이스트 뉴 사운드"@ko,
+                                       "kokuchou"@en,
+                                       "ひいろげっかきょうしょうのぜつ"@ja,
+                                       "히이로 겍카 쿄슈노 제츠"@ko,
+                                       "비색월하 광소의 절"@ko;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                   arcaea:title_localized "緋色月下、狂咲ノ絶 (nayuta 2017 ver.)"@ja,
+                                          "Hiiro Gekka, Kyoushou no Zetsu (nayuta 2017 ver.)"@en;
+                   arcaea:version "4.3"@en-us;
+                   arcaea:world_unlock false.
+arcaea.hiirogekka:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85%20Exschwasion%20%E7%B5%B6%E6%BB%85%20Exschwasion;
+                      arcaea:jacketDesigner "ぃやまと"@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 2 .
+arcaea.hiirogekka:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85%20Exschwasion%20%E7%B5%B6%E6%BB%85%20Exschwasion;
+                      arcaea:jacketDesigner "ぃやまと"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.hiirogekka:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85%20Exschwasion%20%E7%B5%B6%E6%BB%85%20Exschwasion;
+                      arcaea:jacketDesigner "ぃやまと"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

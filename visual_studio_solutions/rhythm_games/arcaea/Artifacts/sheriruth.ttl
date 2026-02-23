@@ -1,0 +1,50 @@
+@prefix arcaea.sheriruth: <https://arcaea.lowiro.com/#sheriruth#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.sheriruth:.
+arcaea.sheriruth: arcaea:artist arcaea:Team%20Grimoire;
+                  arcaea:audioPreview 57140 ;
+                  arcaea:audioPreviewEnd 88275 ;
+                  arcaea:bg arcaea:sheriruth;
+                  arcaea:bpm "185"@en-us;
+                  arcaea:bpm_base 185 ;
+                  arcaea:date 1487980818 ;
+                  arcaea:difficulties arcaea.sheriruth:FTR,
+                                      arcaea.sheriruth:PRS,
+                                      arcaea.sheriruth:PST;
+                  arcaea:id "sheriruth"@en-us;
+                  arcaea:idx 17 ;
+                  arcaea:purchase "core"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ちーむぐりもあ"@ja,
+                                      "ちーむぐりもわーる"@ja,
+                                      "팀 그리모어"@ko,
+                                      "しぇりだー"@ja,
+                                      "しぇりるす"@ja,
+                                      "셰리다"@ko,
+                                      "셰리루스"@ko,
+                                      "셰리루트"@ko,
+                                      "셰루트"@ko,
+                                      "셰루스"@ko,
+                                      "셰리더"@ko;
+                  arcaea:set "core"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Sheriruth"@en;
+                  arcaea:version "1.0"@en-us;
+                  arcaea:world_unlock false.
+arcaea.sheriruth:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                     arcaea:jacketDesigner "シエラ"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.sheriruth:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                     arcaea:jacketDesigner "シエラ"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.sheriruth:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                     arcaea:jacketDesigner "シエラ"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 0 .

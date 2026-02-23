@@ -1,0 +1,44 @@
+@prefix arcaea.etherstrike: <https://arcaea.lowiro.com/#etherstrike#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.etherstrike:.
+arcaea.etherstrike: arcaea:artist arcaea:Akira%20Complex;
+                    arcaea:audioPreview 99142 ;
+                    arcaea:audioPreviewEnd 123758 ;
+                    arcaea:bg arcaea:etherstrike;
+                    arcaea:bpm "156"@en-us;
+                    arcaea:bpm_base 156 ;
+                    arcaea:date 1531699207 ;
+                    arcaea:difficulties arcaea.etherstrike:PRS,
+                                        arcaea.etherstrike:PST,
+                                        arcaea.etherstrike:FTR;
+                    arcaea:id "etherstrike"@en-us;
+                    arcaea:idx 86 ;
+                    arcaea:purchase "rei"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "あきらこんぷれっくす"@ja,
+                                        "아키라 컴플렉스"@ko,
+                                        "えーてるすとらいく"@ja,
+                                        "에테르 스트라이크"@ko;
+                    arcaea:set "rei"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Ether Strike"@en;
+                    arcaea:version "1.7"@en-us;
+                    arcaea:world_unlock false.
+arcaea.etherstrike:FTR arcaea:chartDesigner arcaea:Zero%20Sky;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:plusFingers true;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 2 .
+arcaea.etherstrike:PRS arcaea:chartDesigner arcaea:Zero%20Sky;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 1 .
+arcaea.etherstrike:PST arcaea:chartDesigner arcaea:Zero%20Sky;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 5 ;
+                       arcaea:ratingClass 0 .

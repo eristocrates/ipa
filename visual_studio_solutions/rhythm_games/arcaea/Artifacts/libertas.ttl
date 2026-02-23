@@ -1,0 +1,54 @@
+@prefix arcaea.libertas: <https://arcaea.lowiro.com/#libertas#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.libertas:.
+arcaea.libertas: arcaea:artist arcaea:Zekk;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:single_light;
+                 arcaea:bg_inverse arcaea:single_conflict;
+                 arcaea:bpm "160"@en-us;
+                 arcaea:bpm_base 160 ;
+                 arcaea:category arcaea:original;
+                 arcaea:date 1549843200 ;
+                 arcaea:difficulties arcaea.libertas:FTR,
+                                     arcaea.libertas:PRS,
+                                     arcaea.libertas:PST,
+                                     arcaea.libertas:BYD;
+                 arcaea:id "libertas"@en-us;
+                 arcaea:idx 111 ;
+                 arcaea:purchase "libertas"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ぜっく"@ja,
+                                     "젝"@ko,
+                                     "제크"@ko,
+                                     "りべるたす"@ja,
+                                     "리베르타스"@ko;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "Libertas"@en;
+                 arcaea:version "1.9"@en-us;
+                 arcaea:world_unlock false.
+arcaea.libertas:BYD arcaea:chartDesigner arcaea:Exschwasion%20-unbound-;
+                    arcaea:date 1706140803 ;
+                    arcaea:jacketDesigner "wacca"@en-us;
+                    arcaea:jacketOverride true;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 3 ;
+                    arcaea:version "5.3"@en-us.
+arcaea.libertas:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Kurorak%20+%20Nitro>;
+                    arcaea:jacketDesigner "wacca"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.libertas:PRS arcaea:chartDesigner arcaea:Kurorak;
+                    arcaea:jacketDesigner "wacca"@en-us;
+                    arcaea:rating 5 ;
+                    arcaea:ratingClass 1 .
+arcaea.libertas:PST arcaea:chartDesigner arcaea:Kurorak;
+                    arcaea:jacketDesigner "wacca"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

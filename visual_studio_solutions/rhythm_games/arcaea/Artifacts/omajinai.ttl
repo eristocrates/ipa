@@ -1,0 +1,47 @@
+@prefix arcaea.omajinai: <https://arcaea.lowiro.com/#omajinai#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.omajinai:.
+arcaea.omajinai: arcaea:artist <https://arcaea.lowiro.com/#Tsubusare%20BOZZ%20×%20Madoka*>;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:megarex_light;
+                 arcaea:bg_inverse arcaea:megarex_conflict;
+                 arcaea:bpm "133"@en-us;
+                 arcaea:bpm_base 133 ;
+                 arcaea:date 1769644800 ;
+                 arcaea:difficulties arcaea.omajinai:FTR,
+                                     arcaea.omajinai:PRS,
+                                     arcaea.omajinai:PST;
+                 arcaea:id "omajinai"@en-us;
+                 arcaea:idx 513 ;
+                 arcaea:purchase "extend_4"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "つぶされぼっず"@ja,
+                                     "まどか"@ja,
+                                     "스부사레 봇즈"@ko,
+                                     "마도카"@ko,
+                                     "오마지나이"@ko,
+                                     "주문"@ko;
+                 arcaea:set "extend_4"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "おまじない"@ja,
+                                        "OMAJINAI"@en;
+                 arcaea:version "6.12"@en-us;
+                 arcaea:world_unlock true.
+arcaea.omajinai:FTR arcaea:chartDesigner arcaea:Souplex;
+                    arcaea:jacketDesigner "Poyoshi + 内山ユニコ"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.omajinai:PRS arcaea:chartDesigner arcaea:Souplex;
+                    arcaea:jacketDesigner "Poyoshi + 内山ユニコ"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.omajinai:PST arcaea:chartDesigner arcaea:Souplex;
+                    arcaea:jacketDesigner "Poyoshi + 内山ユニコ"@en-us;
+                    arcaea:rating 2 ;
+                    arcaea:ratingClass 0 .

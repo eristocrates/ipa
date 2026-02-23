@@ -1,0 +1,54 @@
+@prefix arcaea.breachoffaith: <https://arcaea.lowiro.com/#breachoffaith#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.breachoffaith:.
+arcaea.breachoffaith: arcaea:artist arcaea:Supire%20feat.eili;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:lephon;
+                      arcaea:bg_inverse arcaea:lephon;
+                      arcaea:bpm "172"@en-us;
+                      arcaea:bpm_base 172 ;
+                      arcaea:byd_local_unlock true;
+                      arcaea:date 1732147208 ;
+                      arcaea:difficulties arcaea.breachoffaith:FTR,
+                                          arcaea.breachoffaith:PRS,
+                                          arcaea.breachoffaith:PST,
+                                          arcaea.breachoffaith:BYD;
+                      arcaea:id "breachoffaith"@en-us;
+                      arcaea:idx 431 ;
+                      arcaea:purchase "lephon"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "すぱいあ"@ja,
+                                          "えいり"@ja,
+                                          "스파이어"@ko,
+                                          "에일리"@ko,
+                                          "ぶりーちおぶふぇいす"@ja,
+                                          "브리치 오브 페이스"@ko;
+                      arcaea:set "lephon"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Breach of Faith"@en;
+                      arcaea:version "6.0"@en-us;
+                      arcaea:world_unlock false.
+arcaea.breachoffaith:BYD arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%8Cperfidulo%E3%80%8D;
+                         arcaea:hidden_until "none"@en-us;
+                         arcaea:jacketDesigner "おにねこ"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 3 ;
+                         arcaea:ratingPlus true.
+arcaea.breachoffaith:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%8Cperfidulo%E3%80%8D;
+                         arcaea:jacketDesigner "おにねこ"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 .
+arcaea.breachoffaith:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%8Cperfidulo%E3%80%8D;
+                         arcaea:jacketDesigner "おにねこ"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 1 .
+arcaea.breachoffaith:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%8Cperfidulo%E3%80%8D;
+                         arcaea:jacketDesigner "おにねこ"@en-us;
+                         arcaea:rating 5 ;
+                         arcaea:ratingClass 0 .

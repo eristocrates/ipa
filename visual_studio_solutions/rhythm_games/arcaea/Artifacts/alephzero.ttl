@@ -1,0 +1,45 @@
+@prefix arcaea.alephzero: <https://arcaea.lowiro.com/#alephzero#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.alephzero:.
+arcaea.alephzero: arcaea:artist arcaea:LeaF;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:single2_conflict;
+                  arcaea:bg_inverse arcaea:single2_light;
+                  arcaea:bpm "35-400"@en-us;
+                  arcaea:bpm_base 250 ;
+                  arcaea:date 1709856006 ;
+                  arcaea:difficulties arcaea.alephzero:PRS,
+                                      arcaea.alephzero:PST,
+                                      arcaea.alephzero:FTR;
+                  arcaea:id "alephzero"@en-us;
+                  arcaea:idx 374 ;
+                  arcaea:purchase "extend_2"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "りーふ"@ja,
+                                      "리프"@ko,
+                                      "あれふぜろ"@ja,
+                                      "알레프 제로"@ko;
+                  arcaea:set "extend_2"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Aleph-0"@en;
+                  arcaea:version "5.4"@en-us;
+                  arcaea:world_unlock true.
+arcaea.alephzero:FTR arcaea:chartDesigner arcaea:%C9%99%E2%82%80;
+                     arcaea:jacketDesigner "Optie"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.alephzero:PRS arcaea:chartDesigner arcaea:%C9%99%E2%82%80;
+                     arcaea:jacketDesigner "Optie"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 ;
+                     arcaea:ratingPlus true.
+arcaea.alephzero:PST arcaea:chartDesigner arcaea:%C9%99%E2%82%80;
+                     arcaea:jacketDesigner "Optie"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,45 @@
+@prefix arcaea.stasis: <https://arcaea.lowiro.com/#stasis#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.stasis:.
+arcaea.stasis: arcaea:artist arcaea:Maozon;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:quon;
+               arcaea:bpm "180"@en-us;
+               arcaea:bpm_base 180 ;
+               arcaea:date 1651104002 ;
+               arcaea:difficulties arcaea.stasis:FTR,
+                                   arcaea.stasis:PRS,
+                                   arcaea.stasis:PST;
+               arcaea:id "stasis"@en-us;
+               arcaea:idx 266 ;
+               arcaea:no_stream true;
+               arcaea:purchase "lanota_append_1"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "まおぞん"@ja,
+                                   "마오존"@ko,
+                                   "すていしす"@ja,
+                                   "스태이시스"@ko;
+               arcaea:set "lanota_append_1"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "Stasis"@en,
+                                      "Lanota"@en;
+               arcaea:version "3.12"@en-us;
+               arcaea:world_unlock false.
+arcaea.stasis:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                  arcaea:rating 10 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.stasis:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                  arcaea:jacketOverride true;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.stasis:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                  arcaea:jacketOverride true;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

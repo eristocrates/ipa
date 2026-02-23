@@ -1,0 +1,59 @@
+@prefix arcaea.redandblue: <https://arcaea.lowiro.com/#redandblue#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.redandblue:.
+arcaea.redandblue: arcaea:artist arcaea:Silentroom;
+                   arcaea:audioPreview 14396 ;
+                   arcaea:audioPreviewEnd 39996 ;
+                   arcaea:bg arcaea:base_conflict;
+                   arcaea:bg_inverse arcaea:base_light;
+                   arcaea:bpm "150"@en-us;
+                   arcaea:bpm_base 150 ;
+                   arcaea:date 1509667202 ;
+                   arcaea:difficulties arcaea.redandblue:BYD,
+                                       arcaea.redandblue:FTR,
+                                       arcaea.redandblue:PRS,
+                                       arcaea.redandblue:PST;
+                   arcaea:id "redandblue"@en-us;
+                   arcaea:idx 58 ;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "さいれんとるーむ"@ja,
+                                       "사일런트 룸"@ko,
+                                       "れっどあんどぶるー"@ja,
+                                       "れっどあんどぶるーあんどぐりーん"@ja,
+                                       "레드 앤 블루"@ko;
+                   arcaea:set "base"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Red and Blue"@en;
+                   arcaea:version "1.5"@en-us;
+                   arcaea:world_unlock true.
+arcaea.redandblue:BYD arcaea:artist <https://arcaea.lowiro.com/#fn(ArcaeaSoundTeam)>;
+                      arcaea:audioOverride true;
+                      arcaea:bg arcaea:byd_conflict;
+                      arcaea:bg_inverse arcaea:byd_light;
+                      arcaea:bpm "160"@en-us;
+                      arcaea:bpm_base 160 ;
+                      arcaea:chartDesigner <https://arcaea.lowiro.com/#moonquay%20%22retrograde%22%0ABLUE=LEFT%20RIGHT=RED>;
+                      arcaea:date 1646784001 ;
+                      arcaea:jacketDesigner "yusi."@en-us;
+                      arcaea:jacketOverride true;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 3 ;
+                      arcaea:version "3.12"@en-us.
+arcaea.redandblue:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#-chartaesthesia-%0ALEFT=BLUE%20RED=RIGHT>;
+                      arcaea:jacketDesigner "Khronetic"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.redandblue:PRS arcaea:chartDesigner arcaea:side%20BLUE%20-chartaesthesia-;
+                      arcaea:jacketDesigner "Khronetic"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 ;
+                      arcaea:ratingPlus true.
+arcaea.redandblue:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#-chartaesthesia-%20RED%20side>;
+                      arcaea:jacketDesigner "Khronetic"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

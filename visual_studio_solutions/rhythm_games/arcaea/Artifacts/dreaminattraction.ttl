@@ -1,0 +1,41 @@
+@prefix arcaea.dreaminattraction: <https://arcaea.lowiro.com/#dreaminattraction#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dreaminattraction:.
+arcaea.dreaminattraction: arcaea:artist arcaea:%E7%BF%A1%E4%B9%83%E3%82%A4%E3%82%B9%E3%82%AB;
+                          arcaea:audioPreview 39804 ;
+                          arcaea:audioPreviewEnd 60878 ;
+                          arcaea:bg arcaea:base_light;
+                          arcaea:bg_inverse arcaea:base_conflict;
+                          arcaea:bpm "205"@en-us;
+                          arcaea:bpm_base 205 ;
+                          arcaea:date 1509667201 ;
+                          arcaea:difficulties arcaea.dreaminattraction:FTR,
+                                              arcaea.dreaminattraction:PRS,
+                                              arcaea.dreaminattraction:PST;
+                          arcaea:id "dreaminattraction"@en-us;
+                          arcaea:idx 57 ;
+                          arcaea:remote_dl true;
+                          arcaea:search_title "ひのいすか"@ja,
+                                              "히노 이스카"@ko,
+                                              "hino isuka"@en,
+                                              "どりーみんあとらくしょん"@ja,
+                                              "드리밍 어트랙션"@ko;
+                          arcaea:set "base"@en-us;
+                          arcaea:side arcaea:light_side;
+                          arcaea:title_localized "Dreamin' Attraction!!"@en;
+                          arcaea:version "1.5"@en-us;
+                          arcaea:world_unlock true.
+arcaea.dreaminattraction:FTR arcaea:chartDesigner arcaea:Nitro;
+                             arcaea:rating 9 ;
+                             arcaea:ratingClass 2 .
+arcaea.dreaminattraction:PRS arcaea:chartDesigner arcaea:Nitro;
+                             arcaea:rating 7 ;
+                             arcaea:ratingClass 1 .
+arcaea.dreaminattraction:PST arcaea:chartDesigner arcaea:Nitro;
+                             arcaea:rating 4 ;
+                             arcaea:ratingClass 0 .

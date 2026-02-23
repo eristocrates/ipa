@@ -1,0 +1,46 @@
+@prefix arcaea.corruption: <https://arcaea.lowiro.com/#corruption#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.corruption:.
+arcaea.corruption: arcaea:artist arcaea:3R2;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:zettai;
+                   arcaea:bg_inverse arcaea:zettai_light;
+                   arcaea:bpm "170"@en-us;
+                   arcaea:bpm_base 170 ;
+                   arcaea:date 1553126404 ;
+                   arcaea:difficulties arcaea.corruption:PRS,
+                                       arcaea.corruption:PST,
+                                       arcaea.corruption:FTR;
+                   arcaea:id "corruption"@en-us;
+                   arcaea:idx 114 ;
+                   arcaea:purchase "zettai"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "すりーあーるつー"@ja,
+                                       "스리 알 투"@ko,
+                                       "쓰리 알 투"@ko,
+                                       "こらぷしょん"@ja,
+                                       "커럽션"@ko;
+                   arcaea:set "zettai"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Corruption"@en;
+                   arcaea:version "2.0"@en-us;
+                   arcaea:world_unlock false.
+arcaea.corruption:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#₸öα$†ε₹>;
+                      arcaea:jacketDesigner "BerryVerrine"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.corruption:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#₸öα$†ε₹>;
+                      arcaea:jacketDesigner "BerryVerrine"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.corruption:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#₸öα$†ε₹>;
+                      arcaea:jacketDesigner "BerryVerrine"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

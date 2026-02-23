@@ -1,0 +1,53 @@
+@prefix arcaea.satisfaction: <https://arcaea.lowiro.com/#satisfaction#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.satisfaction:.
+arcaea.satisfaction: arcaea:artist <https://arcaea.lowiro.com/#P*Light%20&%20DJ%20Noriken%20feat.%20KMNZ>;
+                     arcaea:audioPreview 101333 ;
+                     arcaea:audioPreviewEnd 132666 ;
+                     arcaea:bg arcaea:vs_conflict;
+                     arcaea:bg_inverse arcaea:vs_light;
+                     arcaea:bpm "180"@en-us;
+                     arcaea:bpm_base 180 ;
+                     arcaea:date 1750896000 ;
+                     arcaea:difficulties arcaea.satisfaction:ETR,
+                                         arcaea.satisfaction:FTR,
+                                         arcaea.satisfaction:PRS,
+                                         arcaea.satisfaction:PST;
+                     arcaea:id "satisfaction"@en-us;
+                     arcaea:idx 464 ;
+                     arcaea:remote_dl false;
+                     arcaea:search_title "ぴーらいと"@ja,
+                                         "でぃーじぇーのりけん"@ja,
+                                         "でぃーじぇいのりけん"@ja,
+                                         "けものず"@ja,
+                                         "피 라이트"@ko,
+                                         "디제이 노리켄"@ko,
+                                         "케모노즈"@ko,
+                                         "さてぃすふぁくしょん"@ja,
+                                         "새티스팩션"@ko;
+                     arcaea:set "base"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "SATISFACTION"@en;
+                     arcaea:version "6.6"@en-us;
+                     arcaea:world_unlock false.
+arcaea.satisfaction:ETR arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:jacketDesigner "Yukinobu Ito (RICOL)"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 4 .
+arcaea.satisfaction:FTR arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:jacketDesigner "Yukinobu Ito (RICOL)"@en-us;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 2 .
+arcaea.satisfaction:PRS arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:jacketDesigner "Yukinobu Ito (RICOL)"@en-us;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.satisfaction:PST arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:jacketDesigner "Yukinobu Ito (RICOL)"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

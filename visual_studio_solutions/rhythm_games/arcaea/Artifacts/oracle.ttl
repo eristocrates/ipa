@@ -1,0 +1,42 @@
+@prefix arcaea.oracle: <https://arcaea.lowiro.com/#oracle#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.oracle:.
+arcaea.oracle: arcaea:artist arcaea:TQ%E2%98%86;
+               arcaea:audioPreview 42509 ;
+               arcaea:audioPreviewEnd 69351 ;
+               arcaea:bg arcaea:dynamix_conflict;
+               arcaea:bg_inverse arcaea:dynamix_light;
+               arcaea:bpm "152"@en-us;
+               arcaea:bpm_base 152 ;
+               arcaea:date 1498176004 ;
+               arcaea:difficulties arcaea.oracle:FTR,
+                                   arcaea.oracle:PRS,
+                                   arcaea.oracle:PST;
+               arcaea:id "oracle"@en-us;
+               arcaea:idx 37 ;
+               arcaea:no_stream true;
+               arcaea:purchase "dynamix"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "てぃーきゅー"@ja,
+                                   "티큐"@ko,
+                                   "おらくる"@ja,
+                                   "오라클"@ko;
+               arcaea:set "dynamix"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "Oracle"@en,
+                                      "Dynamix"@en;
+               arcaea:version "1.1"@en-us.
+arcaea.oracle:FTR arcaea:chartDesigner arcaea:Nitro;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.oracle:PRS arcaea:chartDesigner arcaea:Nitro;
+                  arcaea:rating 5 ;
+                  arcaea:ratingClass 1 .
+arcaea.oracle:PST arcaea:chartDesigner arcaea:Nitro;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

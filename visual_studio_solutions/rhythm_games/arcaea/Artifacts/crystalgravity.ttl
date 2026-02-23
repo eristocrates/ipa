@@ -1,0 +1,46 @@
+@prefix arcaea.crystalgravity: <https://arcaea.lowiro.com/#crystalgravity#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.crystalgravity:.
+arcaea.crystalgravity: arcaea:artist arcaea:Tanchiky%20vs.%20siromaru;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:observer_conflict;
+                       arcaea:bg_inverse arcaea:observer_light;
+                       arcaea:bpm "178"@en-us;
+                       arcaea:bpm_base 178 ;
+                       arcaea:date 1620691201 ;
+                       arcaea:difficulties arcaea.crystalgravity:PRS,
+                                           arcaea.crystalgravity:PST,
+                                           arcaea.crystalgravity:FTR;
+                       arcaea:id "crystalgravity"@en-us;
+                       arcaea:idx 210 ;
+                       arcaea:purchase "observer"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "たんちきー"@ja,
+                                           "しろまる"@ja,
+                                           "타친키"@ko,
+                                           "시로마루"@ko,
+                                           "くりすたるぐらびてぃ"@ja,
+                                           "크리스탈 그래비티"@ko;
+                       arcaea:set "observer"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "Crystal Gravity"@en;
+                       arcaea:version "3.6"@en-us;
+                       arcaea:world_unlock false.
+arcaea.crystalgravity:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                          arcaea:jacketDesigner "雨傘ゆん"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.crystalgravity:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                          arcaea:jacketDesigner "雨傘ゆん"@en-us;
+                          arcaea:rating 6 ;
+                          arcaea:ratingClass 1 .
+arcaea.crystalgravity:PST arcaea:chartDesigner arcaea:Exschwasion;
+                          arcaea:jacketDesigner "雨傘ゆん"@en-us;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

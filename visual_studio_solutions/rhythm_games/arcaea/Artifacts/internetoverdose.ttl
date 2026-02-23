@@ -1,0 +1,47 @@
+@prefix arcaea.internetoverdose: <https://arcaea.lowiro.com/#internetoverdose#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.internetoverdose:.
+arcaea.internetoverdose: arcaea:artist arcaea:Aiobahn%20feat.%20KOTOKO;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:single2_light;
+                         arcaea:bg_inverse arcaea:single2_conflict;
+                         arcaea:bpm "163"@en-us;
+                         arcaea:bpm_base 163 ;
+                         arcaea:category arcaea:poprec;
+                         arcaea:date 1645056003 ;
+                         arcaea:difficulties arcaea.internetoverdose:PRS,
+                                             arcaea.internetoverdose:PST,
+                                             arcaea.internetoverdose:FTR;
+                         arcaea:id "internetoverdose"@en-us;
+                         arcaea:idx 254 ;
+                         arcaea:purchase "internetoverdose"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "あいおばん"@ja,
+                                             "ことこ"@ja,
+                                             "아이오반"@ko,
+                                             "코토코"@ko,
+                                             "いんたーねっとおーばーどーず"@ja,
+                                             "인터넷 오버도즈"@ko;
+                         arcaea:set "single"@en-us;
+                         arcaea:side arcaea:light_side;
+                         arcaea:title_localized "INTERNET OVERDOSE"@en;
+                         arcaea:version "3.12"@en-us;
+                         arcaea:world_unlock false.
+arcaea.internetoverdose:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20Ch.>;
+                            arcaea:jacketDesigner "kinakobooster"@en-us;
+                            arcaea:rating 8 ;
+                            arcaea:ratingClass 2 .
+arcaea.internetoverdose:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20Ch.>;
+                            arcaea:jacketDesigner "kinakobooster"@en-us;
+                            arcaea:rating 6 ;
+                            arcaea:ratingClass 1 .
+arcaea.internetoverdose:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20Ch.>;
+                            arcaea:jacketDesigner "kinakobooster"@en-us;
+                            arcaea:rating 3 ;
+                            arcaea:ratingClass 0 .

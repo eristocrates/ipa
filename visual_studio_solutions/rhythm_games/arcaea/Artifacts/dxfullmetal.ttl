@@ -1,0 +1,51 @@
+@prefix arcaea.dxfullmetal: <https://arcaea.lowiro.com/#dxfullmetal#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dxfullmetal:.
+arcaea.dxfullmetal: arcaea:artist <https://arcaea.lowiro.com/#IOSYS%20TRAX%20(uno%20with.ちよこ)>;
+                    arcaea:audioPreview 15603 ;
+                    arcaea:audioPreviewEnd 39603 ;
+                    arcaea:bg arcaea:gc_light;
+                    arcaea:bg_inverse arcaea:gc_conflict;
+                    arcaea:bpm "160"@en-us;
+                    arcaea:bpm_base 160 ;
+                    arcaea:date 1546992001 ;
+                    arcaea:difficulties arcaea.dxfullmetal:FTR,
+                                        arcaea.dxfullmetal:PRS,
+                                        arcaea.dxfullmetal:PST;
+                    arcaea:id "dxfullmetal"@en-us;
+                    arcaea:idx 107 ;
+                    arcaea:no_stream true;
+                    arcaea:purchase "groovecoaster"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "うの"@ja,
+                                        "いおしすとらっくす"@ja,
+                                        "이오시스 트랙스"@ko,
+                                        "우노"@ko,
+                                        "chiyoko"@en,
+                                        "でらっくすちょうせいのうふるめたるしょうじょ"@ja,
+                                        "디엑스 초세이노우 풀 메탈 쇼죠"@ko,
+                                        "DX 초성능 풀 메탈 소녀"@ko,
+                                        "디엑스 초성능 풀 메탈 소녀"@ko;
+                    arcaea:set "groovecoaster"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:source_copyright "© TAITO CORP. 1978, 2019"@en-us;
+                    arcaea:title_localized "DX超性能フルメタル少女"@ja,
+                                           "DX Choseinou Full Metal Shojo"@en,
+                                           "Groove Coaster"@en;
+                    arcaea:version "1.9"@en-us;
+                    arcaea:world_unlock false.
+arcaea.dxfullmetal:FTR arcaea:chartDesigner arcaea:DX%E8%AD%9C%E9%9D%A2%E4%BD%9C%E8%80%85%E3%83%95%E3%83%AB%E3%83%A1%E3%82%BF%E3%83%ABNitro;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.dxfullmetal:PRS arcaea:chartDesigner arcaea:DX%E8%AD%9C%E9%9D%A2%E4%BD%9C%E8%80%85%E3%83%95%E3%83%AB%E3%83%A1%E3%82%BF%E3%83%ABNitro;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.dxfullmetal:PST arcaea:chartDesigner arcaea:DX%E8%AD%9C%E9%9D%A2%E4%BD%9C%E8%80%85%E3%83%95%E3%83%AB%E3%83%A1%E3%82%BF%E3%83%ABNitro;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

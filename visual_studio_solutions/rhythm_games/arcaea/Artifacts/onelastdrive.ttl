@@ -1,0 +1,39 @@
+@prefix arcaea.onelastdrive: <https://arcaea.lowiro.com/#onelastdrive#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.onelastdrive:.
+arcaea.onelastdrive: arcaea:artist arcaea:REDSHiFT;
+                     arcaea:audioPreview 49870 ;
+                     arcaea:audioPreviewEnd 74805 ;
+                     arcaea:bg arcaea:base_light;
+                     arcaea:bg_inverse arcaea:base_conflict;
+                     arcaea:bpm "154 - 175"@en-us;
+                     arcaea:bpm_base 175 ;
+                     arcaea:date 1509667200 ;
+                     arcaea:difficulties arcaea.onelastdrive:FTR,
+                                         arcaea.onelastdrive:PRS,
+                                         arcaea.onelastdrive:PST;
+                     arcaea:id "onelastdrive"@en-us;
+                     arcaea:idx 59 ;
+                     arcaea:search_title "れっどしふと"@ja,
+                                         "레드시프트"@ko,
+                                         "레드쉬프트"@ko,
+                                         "わんらすとどらいぶ"@ja,
+                                         "원 라스트 드라이브"@ko;
+                     arcaea:set "base"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "One Last Drive"@en;
+                     arcaea:version "1.5"@en-us.
+arcaea.onelastdrive:FTR arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 2 .
+arcaea.onelastdrive:PRS arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:rating 5 ;
+                        arcaea:ratingClass 1 .
+arcaea.onelastdrive:PST arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:rating 2 ;
+                        arcaea:ratingClass 0 .

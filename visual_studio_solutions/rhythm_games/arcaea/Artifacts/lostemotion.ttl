@@ -1,0 +1,47 @@
+@prefix arcaea.lostemotion: <https://arcaea.lowiro.com/#lostemotion#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lostemotion:.
+arcaea.lostemotion: arcaea:artist <https://arcaea.lowiro.com/#Masayoshi%20Minoshima(ALR)>;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:touhou_light;
+                    arcaea:bg_inverse arcaea:touhou_conflict;
+                    arcaea:bpm "172"@en-us;
+                    arcaea:bpm_base 172 ;
+                    arcaea:date 1682553600 ;
+                    arcaea:difficulties arcaea.lostemotion:PRS,
+                                        arcaea.lostemotion:PST,
+                                        arcaea.lostemotion:FTR;
+                    arcaea:id "lostemotion"@en-us;
+                    arcaea:idx 314 ;
+                    arcaea:purchase "extend_2"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "まさよしみのしま"@ja,
+                                        "のみこ"@ja,
+                                        "마사요시 미노시마"@ko,
+                                        "노미코"@ko,
+                                        "ろすとえもーしょん"@ja,
+                                        "로스트 이모션"@ko;
+                    arcaea:set "extend_2"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                    arcaea:title_localized "Lost Emotion feat. nomico"@en;
+                    arcaea:version "4.4"@en-us;
+                    arcaea:world_unlock true.
+arcaea.lostemotion:FTR arcaea:chartDesigner arcaea:%E3%83%9D%E3%83%BC%E3%82%AB%E3%83%BC%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B9%E3%81%AEToaster;
+                       arcaea:jacketDesigner "SoU(wavforme)"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.lostemotion:PRS arcaea:chartDesigner arcaea:%E3%83%9D%E3%83%BC%E3%82%AB%E3%83%BC%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B9%E3%81%AEToaster;
+                       arcaea:jacketDesigner "SoU(wavforme)"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 .
+arcaea.lostemotion:PST arcaea:chartDesigner arcaea:%E3%83%9D%E3%83%BC%E3%82%AB%E3%83%BC%E3%83%95%E3%82%A7%E3%82%A4%E3%82%B9%E3%81%AEToaster;
+                       arcaea:jacketDesigner "SoU(wavforme)"@en-us;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

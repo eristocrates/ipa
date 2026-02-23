@@ -1,0 +1,43 @@
+@prefix arcaea.bulletwaiting: <https://arcaea.lowiro.com/#bulletwaiting#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.bulletwaiting:.
+arcaea.bulletwaiting: arcaea:artist arcaea:Nikki%20Simmons;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:cytus_light;
+                      arcaea:bg_inverse arcaea:cytus_conflict;
+                      arcaea:bpm "107"@en-us;
+                      arcaea:bpm_base 107 ;
+                      arcaea:date 1687910401 ;
+                      arcaea:difficulties arcaea.bulletwaiting:PRS,
+                                          arcaea.bulletwaiting:PST,
+                                          arcaea.bulletwaiting:FTR;
+                      arcaea:id "bulletwaiting"@en-us;
+                      arcaea:idx 324 ;
+                      arcaea:purchase "cytusii"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "にっきしもんず"@ja,
+                                          "니키 시몬스"@ko,
+                                          "ばれっとうぇいてぃんぐふぉーみーじぇーむずらんでぃーのりみっくす"@ja,
+                                          "불렛 웨이팅 포 미 제임스 란디노 리믹스"@ko;
+                      arcaea:set "cytusii"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:source_copyright "© Rayark Inc."@en-us;
+                      arcaea:title_localized "Bullet Waiting for Me (James Landino remix)"@en,
+                                             "CYTUS II®"@en;
+                      arcaea:version "4.5"@en-us;
+                      arcaea:world_unlock false.
+arcaea.bulletwaiting:FTR arcaea:chartDesigner arcaea:CERiNG;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 2 .
+arcaea.bulletwaiting:PRS arcaea:chartDesigner arcaea:CERiNG;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 1 .
+arcaea.bulletwaiting:PST arcaea:chartDesigner arcaea:CERiNG;
+                         arcaea:rating 2 ;
+                         arcaea:ratingClass 0 .

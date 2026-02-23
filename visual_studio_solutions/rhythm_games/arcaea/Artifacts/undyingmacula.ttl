@@ -1,0 +1,57 @@
+@prefix arcaea.undyingmacula: <https://arcaea.lowiro.com/#undyingmacula#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.undyingmacula:.
+arcaea:additional_files arcaea:file_name "video_audio.ogg"@en-us,
+                                         "video.mp4"@en-us;
+                        arcaea:requirement "required"@en-us.
+arcaea.undyingmacula: arcaea:additional_files arcaea.undyingmacula:additional_files;
+                      arcaea:artist arcaea:Ashrount;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:macula_conflict_a;
+                      arcaea:bg_inverse arcaea:macula_light_a;
+                      arcaea:bpm "63"@en-us;
+                      arcaea:bpm_base 189 ;
+                      arcaea:date 1759363205 ;
+                      arcaea:difficulties arcaea.undyingmacula:FTR,
+                                          arcaea.undyingmacula:PRS,
+                                          arcaea.undyingmacula:PST,
+                                          arcaea.undyingmacula:ETR;
+                      arcaea:id "undyingmacula"@en-us;
+                      arcaea:idx 491 ;
+                      arcaea:purchase "eclipse"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "あしゅらうんと"@ja,
+                                          "애쉬라운트"@ko,
+                                          "애쉬런트"@ko,
+                                          "あんだいんぐまーきゅら"@ja,
+                                          "あんだいんぐまきゅら"@ja,
+                                          "언다잉 마큘라"@ko;
+                      arcaea:set "eclipse"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Undying Macula"@en;
+                      arcaea:version "6.9"@en-us;
+                      arcaea:world_unlock false.
+arcaea.undyingmacula:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#M/V_BRIDGE>;
+                         arcaea:jacketDesigner "すずなし"@en-us;
+                         arcaea:legacy11 true;
+                         arcaea:rating 11 ;
+                         arcaea:ratingClass 4 .
+arcaea.undyingmacula:FTR arcaea:chartDesigner arcaea:EVENTHORIZON;
+                         arcaea:jacketDesigner "すずなし"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 .
+arcaea.undyingmacula:PRS arcaea:chartDesigner arcaea:ERGOSPHERE;
+                         arcaea:jacketDesigner "すずなし"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.undyingmacula:PST arcaea:chartDesigner arcaea:PHOTONSPHERE;
+                         arcaea:jacketDesigner "すずなし"@en-us;
+                         arcaea:rating 5 ;
+                         arcaea:ratingClass 0 .

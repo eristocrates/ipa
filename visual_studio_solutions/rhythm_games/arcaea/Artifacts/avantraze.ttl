@@ -1,0 +1,49 @@
+@prefix arcaea.avantraze: <https://arcaea.lowiro.com/#avantraze#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.avantraze:.
+arcaea.avantraze: arcaea:artist arcaea:Sampling%20Masters%20MEGA;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:yugamu;
+                  arcaea:bg_inverse arcaea:rei;
+                  arcaea:bpm "200"@en-us;
+                  arcaea:bpm_base 200 ;
+                  arcaea:category arcaea:partner;
+                  arcaea:date 1575849600 ;
+                  arcaea:difficulties arcaea.avantraze:FTR,
+                                      arcaea.avantraze:PRS,
+                                      arcaea.avantraze:PST;
+                  arcaea:id "avantraze"@en-us;
+                  arcaea:idx 144 ;
+                  arcaea:purchase "avantraze"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "さんぷりんぐますたーずめが"@ja,
+                                      "샘플링 마스터즈 메가"@ko,
+                                      "샘플링 마스터스 메가"@ko,
+                                      "あばんとれいず"@ja,
+                                      "あゔぁんとれいず"@ja,
+                                      "あばんとれーず"@ja,
+                                      "あゔぁんとれーず"@ja,
+                                      "아반트 레이즈"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Avant Raze"@en;
+                  arcaea:version "2.4"@en-us;
+                  arcaea:world_unlock false.
+arcaea.avantraze:FTR arcaea:chartDesigner arcaea:Avant%20Toast;
+                     arcaea:jacketDesigner "LAM"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.avantraze:PRS arcaea:chartDesigner arcaea:Avant%20Toast;
+                     arcaea:jacketDesigner "LAM"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.avantraze:PST arcaea:chartDesigner arcaea:Avant%20Toast;
+                     arcaea:jacketDesigner "LAM"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

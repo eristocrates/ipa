@@ -1,0 +1,47 @@
+@prefix arcaea.crossover: <https://arcaea.lowiro.com/#crossover#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.crossover:.
+arcaea.crossover: arcaea:artist arcaea:HyuN%20feat.%20LyuU;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:nijuusei-conflict-b;
+                  arcaea:bg_inverse arcaea:nijuusei-light-b;
+                  arcaea:bpm "200"@en-us;
+                  arcaea:bpm_base 200 ;
+                  arcaea:date 1602028801 ;
+                  arcaea:difficulties arcaea.crossover:FTR,
+                                      arcaea.crossover:PRS,
+                                      arcaea.crossover:PST;
+                  arcaea:id "crossover"@en-us;
+                  arcaea:idx 178 ;
+                  arcaea:purchase "extend"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ひゅん"@ja,
+                                      "りゅう"@ja,
+                                      "현"@ko,
+                                      "류"@ko,
+                                      "くろすおーばー"@ja,
+                                      "くろすおーゔぁー"@ja,
+                                      "크로스오버"@ko;
+                  arcaea:set "extend"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "CROSS†OVER"@en;
+                  arcaea:version "3.2"@en-us;
+                  arcaea:world_unlock true.
+arcaea.crossover:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                     arcaea:jacketDesigner "Aremos"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.crossover:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                     arcaea:jacketDesigner "Aremos"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.crossover:PST arcaea:chartDesigner arcaea:Exschwasion;
+                     arcaea:jacketDesigner "Aremos"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,47 @@
+@prefix arcaea.vividtheory: <https://arcaea.lowiro.com/#vividtheory#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.vividtheory:.
+arcaea.vividtheory: arcaea:artist <https://arcaea.lowiro.com/#ak+q>;
+                    arcaea:audioPreview 60000 ;
+                    arcaea:audioPreviewEnd 70000 ;
+                    arcaea:bg arcaea:rei;
+                    arcaea:bg_inverse arcaea:yugamu;
+                    arcaea:bpm "178"@en-us;
+                    arcaea:bpm_base 178 ;
+                    arcaea:date 1590537607 ;
+                    arcaea:difficulties arcaea.vividtheory:FTR,
+                                        arcaea.vividtheory:PRS,
+                                        arcaea.vividtheory:PST;
+                    arcaea:id "vividtheory"@en-us;
+                    arcaea:idx 166 ;
+                    arcaea:purchase "extend"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "えーけーぷらすきゅー"@ja,
+                                        "에이케이 플러스 큐"@ko,
+                                        "びびっどせおりー"@ja,
+                                        "ゔぃゔぃっどせおりー"@ja,
+                                        "비비드 씨어리"@ko,
+                                        "비비드 시어리"@ko;
+                    arcaea:set "extend"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Vivid Theory"@en;
+                    arcaea:version "3.0"@en-us;
+                    arcaea:world_unlock true.
+arcaea.vividtheory:FTR arcaea:chartDesigner arcaea:TaroNuke;
+                       arcaea:jacketDesigner "Mechari"@en-us;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.vividtheory:PRS arcaea:chartDesigner arcaea:TaroNuke;
+                       arcaea:jacketDesigner "Mechari"@en-us;
+                       arcaea:rating 5 ;
+                       arcaea:ratingClass 1 .
+arcaea.vividtheory:PST arcaea:chartDesigner arcaea:TaroNuke;
+                       arcaea:jacketDesigner "Mechari"@en-us;
+                       arcaea:rating 2 ;
+                       arcaea:ratingClass 0 .

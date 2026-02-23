@@ -1,0 +1,44 @@
+@prefix arcaea.stager: <https://arcaea.lowiro.com/#stager#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.stager:.
+arcaea.stager: arcaea:artist arcaea:Ras;
+               arcaea:audioPreview 105087 ;
+               arcaea:audioPreviewEnd 132398 ;
+               arcaea:bg arcaea:tonesphere-solarsphere;
+               arcaea:bg_inverse arcaea:tonesphere-darksphere;
+               arcaea:bpm "145"@en-us;
+               arcaea:bpm_base 145 ;
+               arcaea:date 1538870402 ;
+               arcaea:difficulties arcaea.stager:FTR,
+                                   arcaea.stager:PRS,
+                                   arcaea.stager:PST;
+               arcaea:id "stager"@en-us;
+               arcaea:idx 97 ;
+               arcaea:no_stream true;
+               arcaea:purchase "tonesphere"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "らす"@ja,
+                                   "라스"@ko,
+                                   "すてーじゃーおーるすてーじくりあー"@ja,
+                                   "스테이저 올 스테이지 클리어"@ko;
+               arcaea:set "tonesphere"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "STAGER (ALL STAGE CLEAR)"@en,
+                                      "Tone Sphere"@en;
+               arcaea:version "1.8"@en-us.
+arcaea.stager:FTR arcaea:chartDesigner arcaea:KURORAK;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.stager:PRS arcaea:chartDesigner arcaea:KURORAK;
+                  arcaea:jacketOverride true;
+                  arcaea:rating 6 ;
+                  arcaea:ratingClass 1 .
+arcaea.stager:PST arcaea:chartDesigner arcaea:KURORAK;
+                  arcaea:jacketOverride true;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

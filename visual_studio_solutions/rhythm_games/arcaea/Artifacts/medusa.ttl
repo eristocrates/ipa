@@ -1,0 +1,43 @@
+@prefix arcaea.medusa: <https://arcaea.lowiro.com/#medusa#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.medusa:.
+arcaea.medusa: arcaea:artist arcaea:HiTECH%20NINJA;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:musedash_conflict;
+               arcaea:bg_inverse arcaea:musedash_light;
+               arcaea:bpm "165"@en-us;
+               arcaea:bpm_base 165 ;
+               arcaea:date 1640304000 ;
+               arcaea:difficulties arcaea.medusa:FTR,
+                                   arcaea.medusa:PRS,
+                                   arcaea.medusa:PST;
+               arcaea:id "medusa"@en-us;
+               arcaea:idx 252 ;
+               arcaea:no_stream true;
+               arcaea:purchase "musedash"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "はいてっくにんじゃ"@ja,
+                                   "하니테크 닌자"@ko,
+                                   "めでゅーさ"@ja,
+                                   "메두사"@ko;
+               arcaea:set "musedash"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "Medusa"@en,
+                                      "Muse Dash"@en;
+               arcaea:version "3.11"@en-us;
+               arcaea:world_unlock false.
+arcaea.medusa:FTR arcaea:chartDesigner arcaea:Toaster;
+                  arcaea:rating 10 ;
+                  arcaea:ratingClass 2 .
+arcaea.medusa:PRS arcaea:chartDesigner arcaea:Toaster;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.medusa:PST arcaea:chartDesigner arcaea:Toaster;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

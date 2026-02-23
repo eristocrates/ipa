@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="visual_studio_solutions/ResourceDescriptionFramework/ResourceDescriptionFramework.fsproj" />
+  <Project Path="visual_studio_solutions/rhythm_games/arcaea/arcaea.fsproj" Id="a2f706d2-cd74-4734-9f41-9486237164e2" />
+  <Project Path="visual_studio_solutions/rhythm_games/infalsus/infalsus.fsproj" Id="883f39d7-2e18-4a28-b692-a7ee96f2d507" />
   <Project Path="visual_studio_solutions/shared_kernel/shared_kernel.fsproj" />
 </Solution>

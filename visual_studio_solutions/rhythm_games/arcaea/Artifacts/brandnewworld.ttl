@@ -1,0 +1,40 @@
+@prefix arcaea.brandnewworld: <https://arcaea.lowiro.com/#brandnewworld#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.brandnewworld:.
+arcaea.brandnewworld: arcaea:artist arcaea:U-ske;
+                      arcaea:audioPreview 54401 ;
+                      arcaea:audioPreviewEnd 79050 ;
+                      arcaea:bg arcaea:shiawase;
+                      arcaea:bpm "160"@en-us;
+                      arcaea:bpm_base 160 ;
+                      arcaea:date 1494547200 ;
+                      arcaea:difficulties arcaea.brandnewworld:FTR,
+                                          arcaea.brandnewworld:PRS,
+                                          arcaea.brandnewworld:PST;
+                      arcaea:id "brandnewworld"@en-us;
+                      arcaea:idx 28 ;
+                      arcaea:search_title "ゆーすけ"@ja,
+                                          "ゆうすけ"@ja,
+                                          "유스케"@ko,
+                                          "ぶらんどにゅーわーるど"@ja,
+                                          "ぶらんにゅーわーるど"@ja,
+                                          "브랜드 뉴 월드"@ko;
+                      arcaea:set "base"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "Brand new world"@en;
+                      arcaea:version "1.0"@en-us.
+arcaea.brandnewworld:FTR arcaea:chartDesigner arcaea:Nitro%202.0;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.brandnewworld:PRS arcaea:chartDesigner arcaea:Nitro%202.0;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 1 .
+arcaea.brandnewworld:PST arcaea:chartDesigner arcaea:Nitro%202.0;
+                         arcaea:rating 2 ;
+                         arcaea:ratingClass 0 .

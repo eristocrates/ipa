@@ -1,0 +1,48 @@
+@prefix arcaea.megalovania: <https://arcaea.lowiro.com/#megalovania#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.megalovania:.
+arcaea.megalovania: arcaea:artist arcaea:Toby%20Fox;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:undertale_conflict;
+                    arcaea:bg_inverse arcaea:undertale_light;
+                    arcaea:bpm "240"@en-us;
+                    arcaea:bpm_base 240 ;
+                    arcaea:date 1741478404 ;
+                    arcaea:difficulties arcaea.megalovania:ETR,
+                                        arcaea.megalovania:FTR,
+                                        arcaea.megalovania:PRS,
+                                        arcaea.megalovania:PST;
+                    arcaea:id "megalovania"@en-us;
+                    arcaea:idx 448 ;
+                    arcaea:purchase "undertale"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "とびーふぉっくす"@ja,
+                                        "토비 폭스"@ko,
+                                        "めがろばにあ"@ja,
+                                        "めがろゔぁにあ"@ja,
+                                        "메갈로바니아"@ko,
+                                        "메갈로베니아"@ko;
+                    arcaea:set "undertale"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "MEGALOVANIA"@en,
+                                           "UNDERTALE®"@en;
+                    arcaea:version "6.3"@en-us;
+                    arcaea:world_unlock false.
+arcaea.megalovania:ETR arcaea:chartDesigner arcaea:%E7%91%9E%E7%8D%A3%E2%80%83%EF%BC%AC%EF%BC%B6%EF%BC%91%EF%BC%99;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 4 .
+arcaea.megalovania:FTR arcaea:chartDesigner arcaea:%E7%91%9E%E7%8D%A3%E2%80%83%EF%BC%AC%EF%BC%B6%EF%BC%91%EF%BC%95;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.megalovania:PRS arcaea:chartDesigner arcaea:%E7%91%9E%E7%8D%A3%E2%80%83%EF%BC%AC%EF%BC%B6%EF%BC%98;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 .
+arcaea.megalovania:PST arcaea:chartDesigner arcaea:%E7%91%9E%E7%8D%A3%E2%80%83%EF%BC%AC%EF%BC%B6%EF%BC%93;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

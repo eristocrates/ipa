@@ -1,0 +1,35 @@
+@prefix fibo.BE.SoleProprietorships.MetadataBESoleProprietorships: <https://spec.edmcouncil.org/fibo/ontology/BE/SoleProprietorships/MetadataBESoleProprietorships/> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix fibo-be-sps-mod: <https://spec.edmcouncil.org/fibo/ontology/BE/SoleProprietorships/MetadataBESoleProprietorships/>.
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+fibo-be-sps-mod: dcterms:abstract "The sole proprietorships module includes ontologies describing business entities or financial ventures that are carried out by a single person who is directly responsible for all liabilities of that venture.";
+                 dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime;
+                 dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI;
+                 dcterms:modified "2023-01-27T18:00:00"^^xsd:dateTime;
+                 a owl:Ontology;
+                 rdfs:label "Metadata about the EDMC-FIBO Business Entities (BE) Sole Proprietorships Module";
+                 owl:imports <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Utilities/AnnotationVocabulary/>,
+                             cmns-av:;
+                 owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/SoleProprietorships/MetadataBESoleProprietorships/>;
+                 cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+                                   "Copyright (c) 2015-2023 Object Management Group, Inc.".
+fibo-be-sps-mod:SoleProprietorshipsModule dcterms:abstract "The sole proprietorships module includes ontologies describing business entities or financial ventures that are carried out by a single person who is directly responsible for all liabilities of that venture.";
+                                          dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/BE/SoleProprietorships/SoleProprietorships/>;
+                                          dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI;
+                                          dcterms:title "FIBO BE Sole Proprietorships Module",
+                                                        "Financial Industry Business Ontology (FIBO) Business Entities (BE) Sole Proprietorships Module";
+                                          a owl:NamedIndividual,
+                                            fibo-fnd-utl-av:Module;
+                                          rdfs:isDefinedBy fibo-be-sps-mod:;
+                                          rdfs:label "sole proprietorships module";
+                                          rdfs:seeAlso <https://spec.edmcouncil.org/fibo/>;
+                                          cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+                                                            "Copyright (c) 2015-2023 Object Management Group, Inc.".

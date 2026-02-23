@@ -1,0 +1,57 @@
+@prefix arcaea.pragmatism: <https://arcaea.lowiro.com/#pragmatism#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.pragmatism:.
+arcaea.pragmatism: arcaea:artist arcaea:Laur;
+                   arcaea:audioPreview 31724 ;
+                   arcaea:audioPreviewEnd 67586 ;
+                   arcaea:bg arcaea:pragmatism;
+                   arcaea:bpm "174"@en-us;
+                   arcaea:bpm_base 174 ;
+                   arcaea:date 1487980817 ;
+                   arcaea:difficulties arcaea.pragmatism:BYD,
+                                       arcaea.pragmatism:FTR,
+                                       arcaea.pragmatism:PRS,
+                                       arcaea.pragmatism:PST;
+                   arcaea:id "pragmatism"@en-us;
+                   arcaea:idx 16 ;
+                   arcaea:purchase "core"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "らうる"@ja,
+                                       "라우르"@ko,
+                                       "ぷらぐまてぃずむ"@ja,
+                                       "ぷらぐまてぃずむりざれくしょん"@ja,
+                                       "프라그마티즘"@ko,
+                                       "프래그마티즘"@ko;
+                   arcaea:set "core"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "PRAGMATISM"@en;
+                   arcaea:version "1.0"@en-us;
+                   arcaea:world_unlock false.
+arcaea.pragmatism:BYD arcaea:audioOverride true;
+                      arcaea:bg arcaea:pragmatism3;
+                      arcaea:chartDesigner arcaea:THE%20LAST%20DREAM;
+                      arcaea:date 1639008004 ;
+                      arcaea:hidden_until "difficulty"@en-us;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:jacketOverride true;
+                      arcaea:legacy11 true;
+                      arcaea:rating 11 ;
+                      arcaea:ratingClass 3 ;
+                      arcaea:version "3.10"@en-us.
+arcaea.pragmatism:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 2 .
+arcaea.pragmatism:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 1 .
+arcaea.pragmatism:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

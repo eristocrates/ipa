@@ -1,0 +1,48 @@
+@prefix arcaea.seventhsense: <https://arcaea.lowiro.com/#seventhsense#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.seventhsense:.
+arcaea.seventhsense: arcaea:artist arcaea:%E5%89%8A%E9%99%A4;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:maimai_conflict;
+                     arcaea:bg_inverse arcaea:maimai_light;
+                     arcaea:bpm "150"@en-us;
+                     arcaea:bpm_base 150 ;
+                     arcaea:date 1610064001 ;
+                     arcaea:difficulties arcaea.seventhsense:FTR,
+                                         arcaea.seventhsense:PRS,
+                                         arcaea.seventhsense:PST;
+                     arcaea:id "seventhsense"@en-us;
+                     arcaea:idx 196 ;
+                     arcaea:no_stream true;
+                     arcaea:purchase "maimai"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "さくじょ"@ja,
+                                         "사쿠죠"@ko,
+                                         "sakuzyo"@en,
+                                         "せぶんすせんす"@ja,
+                                         "세븐스 센스"@ko,
+                                         "세븐 센스"@ko;
+                     arcaea:set "maimai"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:source_copyright "©SEGA"@en-us;
+                     arcaea:title_localized "7thSense"@en,
+                                            "maimai"@en;
+                     arcaea:version "3.4"@en-us;
+                     arcaea:world_unlock false.
+arcaea.seventhsense:FTR arcaea:chartDesigner arcaea:%E7%9F%B3%E6%A8%82;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.seventhsense:PRS arcaea:chartDesigner arcaea:%E7%9F%B3%E6%A8%82;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 ;
+                        arcaea:ratingPlus true.
+arcaea.seventhsense:PST arcaea:chartDesigner arcaea:%E7%9F%B3%E6%A8%82;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

@@ -1,0 +1,43 @@
+@prefix arcaea.genesis: <https://arcaea.lowiro.com/#genesis#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.genesis:.
+arcaea.genesis: arcaea:artist arcaea:Iris;
+                arcaea:audioPreview 61818 ;
+                arcaea:audioPreviewEnd 90909 ;
+                arcaea:bg arcaea:mirai_conflict;
+                arcaea:bg_inverse arcaea:mirai_light;
+                arcaea:bpm "132"@en-us;
+                arcaea:bpm_base 132 ;
+                arcaea:date 1502323204 ;
+                arcaea:difficulties arcaea.genesis:PRS,
+                                    arcaea.genesis:PST,
+                                    arcaea.genesis:FTR;
+                arcaea:id "genesis"@en-us;
+                arcaea:idx 46 ;
+                arcaea:purchase "mirai"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "あいりす"@ja,
+                                    "아이리스"@ko,
+                                    "じぇねしす"@ja,
+                                    "제네시스"@ko;
+                arcaea:set "mirai"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Genesis"@en;
+                arcaea:version "1.1"@en-us.
+arcaea.genesis:FTR arcaea:chartDesigner arcaea:Haruba;
+                   arcaea:jacketDesigner "RiceGnat"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 .
+arcaea.genesis:PRS arcaea:chartDesigner arcaea:Haruba;
+                   arcaea:jacketDesigner "RiceGnat"@en-us;
+                   arcaea:rating 5 ;
+                   arcaea:ratingClass 1 .
+arcaea.genesis:PST arcaea:chartDesigner arcaea:Haruba;
+                   arcaea:jacketDesigner "RiceGnat"@en-us;
+                   arcaea:rating 2 ;
+                   arcaea:ratingClass 0 .

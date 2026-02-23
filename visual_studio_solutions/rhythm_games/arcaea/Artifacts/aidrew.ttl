@@ -1,0 +1,48 @@
+@prefix arcaea.aidrew: <https://arcaea.lowiro.com/#aidrew#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.aidrew:.
+arcaea.aidrew: arcaea:artist arcaea:Feryquitous;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:ongeki_conflict;
+               arcaea:bg_inverse arcaea:ongeki_light;
+               arcaea:bpm "175"@en-us;
+               arcaea:bpm_base 175 ;
+               arcaea:date 1664409601 ;
+               arcaea:difficulties arcaea.aidrew:FTR,
+                                   arcaea.aidrew:PRS,
+                                   arcaea.aidrew:PST;
+               arcaea:id "aidrew"@en-us;
+               arcaea:idx 286 ;
+               arcaea:no_stream true;
+               arcaea:purchase "ongeki_append_1"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "ふぇりきたす"@ja,
+                                   "페리퀴터스"@ko,
+                                   "페리퀴타스"@ko,
+                                   "페리퀴토스"@ko,
+                                   "あいでゅれい"@ja,
+                                   "아이 드루"@ko,
+                                   "아이 드류"@ko;
+               arcaea:set "ongeki_append_1"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:source_copyright "©SEGA"@en-us;
+               arcaea:title_localized "Ai Drew"@en,
+                                      "O.N.G.E.K.I."@en;
+               arcaea:version "4.1"@en-us;
+               arcaea:world_unlock false.
+arcaea.aidrew:FTR arcaea:chartDesigner arcaea:moonquay%20v.MASTER;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.aidrew:PRS arcaea:chartDesigner arcaea:moonquay%20v.EXPERT;
+                  arcaea:rating 6 ;
+                  arcaea:ratingClass 1 .
+arcaea.aidrew:PST arcaea:chartDesigner arcaea:moonquay%E3%80%90%E6%96%B0%E5%85%A5%E7%94%9F%E3%80%91;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

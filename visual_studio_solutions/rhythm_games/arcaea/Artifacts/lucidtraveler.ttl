@@ -1,0 +1,52 @@
+@prefix arcaea.lucidtraveler: <https://arcaea.lowiro.com/#lucidtraveler#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lucidtraveler:.
+arcaea.lucidtraveler: arcaea:artist arcaea:Akira%20Complex%20vs%203R2;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:cytus_conflict;
+                      arcaea:bg_inverse arcaea:cytus_light;
+                      arcaea:bpm "170-200"@en-us;
+                      arcaea:bpm_base 170 ;
+                      arcaea:date 1687910403 ;
+                      arcaea:difficulties arcaea.lucidtraveler:FTR,
+                                          arcaea.lucidtraveler:PRS,
+                                          arcaea.lucidtraveler:PST;
+                      arcaea:id "lucidtraveler"@en-us;
+                      arcaea:idx 326 ;
+                      arcaea:purchase "cytusii"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "あきらこんぷれっくす"@ja,
+                                          "すりーあーるつー"@ja,
+                                          "아키라 컴플렉스"@ko,
+                                          "아키라 콤플렉스"@ko,
+                                          "삼알이"@ko,
+                                          "쓰리 알 투"@ko,
+                                          "스리 알 투"@ko,
+                                          "るーしっどとらべらー"@ja,
+                                          "るしっどとらべらー"@ja,
+                                          "루시드 트래블러"@ko;
+                      arcaea:set "cytusii"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Lucid Traveler"@en;
+                      arcaea:version "4.5"@en-us;
+                      arcaea:world_unlock false.
+arcaea.lucidtraveler:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Toaster%20vs%20₸öα$†ε₹>;
+                         arcaea:jacketDesigner "NC帝國"@en-us;
+                         arcaea:jacketOverride true;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 .
+arcaea.lucidtraveler:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Toaster%20vs%20₸öα$†ε₹>;
+                         arcaea:jacketDesigner "NC帝國"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.lucidtraveler:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Toaster%20vs%20₸öα$†ε₹>;
+                         arcaea:jacketDesigner "NC帝國"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

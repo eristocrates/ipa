@@ -1,0 +1,53 @@
+@prefix arcaea.ouverture: <https://arcaea.lowiro.com/#ouverture#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ouverture:.
+arcaea.ouverture: arcaea:artist <https://arcaea.lowiro.com/#USAO%20&%20DJ%20Genki%20feat.%20ルーン(CV:河瀬茉希)>;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:wacca_conflict;
+                  arcaea:bg_inverse arcaea:wacca_light;
+                  arcaea:bpm "200"@en-us;
+                  arcaea:bpm_base 200 ;
+                  arcaea:date 1701302401 ;
+                  arcaea:difficulties arcaea.ouverture:FTR,
+                                      arcaea.ouverture:PRS,
+                                      arcaea.ouverture:PST;
+                  arcaea:id "ouverture"@en-us;
+                  arcaea:idx 358 ;
+                  arcaea:purchase "wacca_append_1"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "우사오"@ko,
+                                      "かわせまき"@ja,
+                                      "でぃーじぇいげんき"@ja,
+                                      "でぃーじぇーげんき"@ja,
+                                      "うさお"@ja,
+                                      "디제이 겐키"@ko,
+                                      "룬"@ko,
+                                      "카와세 마키"@ko,
+                                      "luin"@en,
+                                      "maki kawase"@en,
+                                      "おばーちゅあ"@ja,
+                                      "오버쳐"@ko,
+                                      "Ouverture"@en;
+                  arcaea:set "wacca_append_1"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "©Marvelous Inc. / Supported by HARDCORE TANO*C"@en-us;
+                  arcaea:title_localized "Ouverture"@ko,
+                                         "Ouvertüre"@en;
+                  arcaea:version "5.2"@en-us;
+                  arcaea:world_unlock false.
+arcaea.ouverture:FTR arcaea:chartDesigner arcaea:%E3%82%8B%E3%81%8F%E3%81%82%E3%82%93%E3%81%99;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.ouverture:PRS arcaea:chartDesigner arcaea:%E3%82%8B%E3%81%8F%E3%81%82%E3%82%93%E3%81%99;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.ouverture:PST arcaea:chartDesigner arcaea:%E3%82%8B%E3%81%8F%E3%81%82%E3%82%93%E3%81%99;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

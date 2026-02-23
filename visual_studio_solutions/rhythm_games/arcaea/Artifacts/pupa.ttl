@@ -1,0 +1,46 @@
+@prefix arcaea.pupa: <https://arcaea.lowiro.com/#pupa#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.pupa:.
+arcaea.pupa: arcaea:artist arcaea:%E3%83%A2%E3%83%AA%E3%83%A2%E3%83%AA%E3%81%82%E3%81%A4%E3%81%97;
+             arcaea:audioPreview 0 ;
+             arcaea:audioPreviewEnd 0 ;
+             arcaea:bg arcaea:single2_conflict;
+             arcaea:bg_inverse arcaea:single2_light;
+             arcaea:bpm "202"@en-us;
+             arcaea:bpm_base 202 ;
+             arcaea:category arcaea:variety;
+             arcaea:date 1657152003 ;
+             arcaea:difficulties arcaea.pupa:PRS,
+                                 arcaea.pupa:PST,
+                                 arcaea.pupa:FTR;
+             arcaea:id "pupa"@en-us;
+             arcaea:idx 274 ;
+             arcaea:purchase "pupa"@en-us;
+             arcaea:remote_dl true;
+             arcaea:search_title "모리모리 아츠시"@ko,
+                                 "morimori atsushi"@en,
+                                 "ぴゅーぱ"@ja,
+                                 "퓨파"@ko;
+             arcaea:set "single"@en-us;
+             arcaea:side arcaea:conflict_side;
+             arcaea:title_localized "PUPA"@en;
+             arcaea:version "4.0"@en-us;
+             arcaea:world_unlock false.
+arcaea.pupa:FTR arcaea:chartDesigner arcaea:%C3%A9n%20-%E8%83%A1%E8%9D%B6%E3%81%AE%E5%A4%A2-;
+                arcaea:jacketDesigner "yoshimo"@en-us;
+                arcaea:rating 10 ;
+                arcaea:ratingClass 2 .
+arcaea.pupa:PRS arcaea:chartDesigner arcaea:%C3%A9n%20-%E8%83%A1%E8%9D%B6%E3%81%AE%E5%A4%A2-;
+                arcaea:jacketDesigner "yoshimo"@en-us;
+                arcaea:rating 7 ;
+                arcaea:ratingClass 1 ;
+                arcaea:ratingPlus true.
+arcaea.pupa:PST arcaea:chartDesigner arcaea:%C3%A9n%20-%E8%83%A1%E8%9D%B6%E3%81%AE%E5%A4%A2-;
+                arcaea:jacketDesigner "yoshimo"@en-us;
+                arcaea:rating 4 ;
+                arcaea:ratingClass 0 .

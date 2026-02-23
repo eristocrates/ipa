@@ -1,0 +1,44 @@
+@prefix arcaea.garakuta: <https://arcaea.lowiro.com/#garakuta#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.garakuta:.
+arcaea.garakuta: arcaea:artist <https://arcaea.lowiro.com/#t+pazolite>;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:chuni-garakuta;
+                 arcaea:bpm "256"@en-us;
+                 arcaea:bpm_base 256 ;
+                 arcaea:date 1558573200 ;
+                 arcaea:difficulties arcaea.garakuta:FTR,
+                                     arcaea.garakuta:PRS,
+                                     arcaea.garakuta:PST;
+                 arcaea:id "garakuta"@en-us;
+                 arcaea:idx 123 ;
+                 arcaea:no_stream true;
+                 arcaea:purchase "chunithm"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "とぱぞらいと"@ja,
+                                     "토파졸라이트"@ko,
+                                     "がらくたどーるぷれい"@ja,
+                                     "がらくたどーるぷれー"@ja,
+                                     "가라쿠타 돌 플레이"@ko;
+                 arcaea:set "chunithm"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:source_copyright "©SEGA"@en-us;
+                 arcaea:title_localized "Garakuta Doll Play"@en,
+                                        "maimai"@en;
+                 arcaea:version "2.1"@en-us;
+                 arcaea:world_unlock false.
+arcaea.garakuta:FTR arcaea:chartDesigner arcaea:Arcaea%20Charting%20Team%E3%81%8B%E3%82%89%E3%81%AE%E6%8C%91%E6%88%A6%E7%8A%B6;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.garakuta:PRS arcaea:chartDesigner arcaea:Arcaea%20Charting%20Team%E3%80%90Royal%20Flush%E3%80%91;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.garakuta:PST arcaea:chartDesigner arcaea:Arcaea%20Charting%20Team%E3%80%90Royal%20Flush%E3%80%91;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

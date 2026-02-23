@@ -1,0 +1,42 @@
+@prefix arcaea.reconstruction: <https://arcaea.lowiro.com/#reconstruction#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.reconstruction:.
+arcaea.reconstruction: arcaea:artist arcaea:Ryazan;
+                       arcaea:audioPreview 45413 ;
+                       arcaea:audioPreviewEnd 77413 ;
+                       arcaea:bg arcaea:dynamix_light;
+                       arcaea:bg_inverse arcaea:dynamix_conflict;
+                       arcaea:bpm "180"@en-us;
+                       arcaea:bpm_base 180 ;
+                       arcaea:date 1498176002 ;
+                       arcaea:difficulties arcaea.reconstruction:FTR,
+                                           arcaea.reconstruction:PRS,
+                                           arcaea.reconstruction:PST;
+                       arcaea:id "reconstruction"@en-us;
+                       arcaea:idx 35 ;
+                       arcaea:no_stream true;
+                       arcaea:purchase "dynamix"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "りゃざん"@ja,
+                                           "랴잔"@ko,
+                                           "りこんすとらくしょん"@ja,
+                                           "리컨스트럭션"@ko;
+                       arcaea:set "dynamix"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "REconstruction"@en,
+                                              "Dynamix"@en;
+                       arcaea:version "1.1"@en-us.
+arcaea.reconstruction:FTR arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:rating 8 ;
+                          arcaea:ratingClass 2 .
+arcaea.reconstruction:PRS arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:rating 6 ;
+                          arcaea:ratingClass 1 .
+arcaea.reconstruction:PST arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:rating 2 ;
+                          arcaea:ratingClass 0 .

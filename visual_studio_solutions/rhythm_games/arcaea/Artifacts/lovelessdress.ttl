@@ -1,0 +1,50 @@
+@prefix arcaea.lovelessdress: <https://arcaea.lowiro.com/#lovelessdress#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lovelessdress:.
+arcaea.lovelessdress: arcaea:artist arcaea:%E3%81%8B%E3%81%AD%E3%81%93%E3%81%A1%E3%81%AF%E3%82%8B;
+                      arcaea:audioPreview 7272 ;
+                      arcaea:audioPreviewEnd 26666 ;
+                      arcaea:bg arcaea:epilogue;
+                      arcaea:bpm "99"@en-us;
+                      arcaea:bpm_base 99 ;
+                      arcaea:date 1657756800 ;
+                      arcaea:difficulties arcaea.lovelessdress:PRS,
+                                          arcaea.lovelessdress:PST,
+                                          arcaea.lovelessdress:FTR;
+                      arcaea:id "lovelessdress"@en-us;
+                      arcaea:idx 281 ;
+                      arcaea:purchase "finale"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "카네코치하루"@ko,
+                                          "kaneko chiharu"@en,
+                                          "らぶれすどれす"@ja,
+                                          "러브리스 드레스"@ko;
+                      arcaea:set "epilogue"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Loveless Dress"@en;
+                      arcaea:version "4.0"@en-us;
+                      arcaea:world_unlock false.
+arcaea.lovelessdress:FTR arcaea:chartDesigner arcaea:Final%20Prayer;
+                         arcaea:hidden_until "song"@en-us;
+                         arcaea:hidden_until_unlocked true;
+                         arcaea:jacketDesigner "Mechari"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.lovelessdress:PRS arcaea:chartDesigner arcaea:Final%20Prayer;
+                         arcaea:hidden_until "song"@en-us;
+                         arcaea:hidden_until_unlocked true;
+                         arcaea:jacketDesigner "Mechari"@en-us;
+                         arcaea:rating 6 ;
+                         arcaea:ratingClass 1 .
+arcaea.lovelessdress:PST arcaea:chartDesigner arcaea:Final%20Prayer;
+                         arcaea:hidden_until "song"@en-us;
+                         arcaea:hidden_until_unlocked true;
+                         arcaea:jacketDesigner "Mechari"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

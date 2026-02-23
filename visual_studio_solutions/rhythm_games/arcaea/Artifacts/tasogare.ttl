@@ -1,0 +1,53 @@
+@prefix arcaea.tasogare: <https://arcaea.lowiro.com/#tasogare#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.tasogare:.
+arcaea.tasogare: arcaea:artist arcaea:Scarlette;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:nijuusei2_conflict;
+                 arcaea:bg_inverse arcaea:nijuusei2_light;
+                 arcaea:bpm "194"@en-us;
+                 arcaea:bpm_base 194 ;
+                 arcaea:category arcaea:musicgames;
+                 arcaea:date 1717027201 ;
+                 arcaea:difficulties arcaea.tasogare:ETR,
+                                     arcaea.tasogare:FTR,
+                                     arcaea.tasogare:PRS,
+                                     arcaea.tasogare:PST;
+                 arcaea:id "tasogare"@en-us;
+                 arcaea:idx 391 ;
+                 arcaea:purchase "tasogare"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "すかーれって"@ja,
+                                     "스칼렛테"@ko,
+                                     "스칼레테"@ko,
+                                     "たそがれのきょうそうきょく"@ja,
+                                     "트와일라잇 콘체르토"@ko,
+                                     "황혼의 협주곡"@ko,
+                                     "타소가레노 쿄소쿄쿠"@ko;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:source_copyright "© QueseraGames Co., Ltd."@en-us;
+                 arcaea:title_localized "黄昏の協奏曲"@ja,
+                                        "Twilight Concerto"@en,
+                                        "KALPA"@en;
+                 arcaea:version "5.7"@en-us;
+                 arcaea:world_unlock false.
+arcaea.tasogare:ETR arcaea:chartDesigner arcaea:Exschwasion;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 4 .
+arcaea.tasogare:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.tasogare:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 ;
+                    arcaea:ratingPlus true.
+arcaea.tasogare:PST arcaea:chartDesigner arcaea:Exschwasion;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

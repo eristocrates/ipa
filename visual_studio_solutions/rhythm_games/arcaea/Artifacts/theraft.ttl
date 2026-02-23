@@ -1,0 +1,55 @@
+@prefix arcaea.theraft: <https://arcaea.lowiro.com/#theraft#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.theraft:.
+arcaea.theraft: arcaea:artist arcaea:%E5%BA%AD%E5%B8%AB;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:eden_conflict;
+                arcaea:bg_inverse arcaea:eden_light;
+                arcaea:bpm "161"@en-us;
+                arcaea:bpm_base 161 ;
+                arcaea:category arcaea:partner;
+                arcaea:date 1767744000 ;
+                arcaea:difficulties arcaea.theraft:FTR,
+                                    arcaea.theraft:PRS,
+                                    arcaea.theraft:PST,
+                                    arcaea.theraft:ETR;
+                arcaea:id "theraft"@en-us;
+                arcaea:idx 512 ;
+                arcaea:purchase "theraft"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "にわし"@ja,
+                                    "니와시"@ko,
+                                    "niwashi"@en,
+                                    "いかだはいういくらひょうりゅうすれどふとうのこころさえあればやがてゆきいたると"@ja,
+                                    "더 래프트 토우트 미 유어 하트 윌 올웨이즈 파인드 어 웨이"@ko,
+                                    "이카다 와 이우 이쿠라 효우류우 스레도 후토우 노 코코로 사에 아레바 야가테 유키이타루토"@ko,
+                                    "뗏목은 말한다 아무리 표류하더라도 불굴의 마음만 있다면 언젠가 도달할 수 있으리라고"@ko,
+                                    "ikada ha iu ikura hyouryuu suredo futou no kokoro sae areba yagate yukiitaru to"@en;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "［筏］は云う。幾ら漂流すれど不撓の心さえ有れば軈て行到ると。"@ja,
+                                       "The 'Raft' taught me: your heart will always find a way."@en;
+                arcaea:version "6.11"@en-us;
+                arcaea:world_unlock false.
+arcaea.theraft:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#raycast%20v.○/○/●>;
+                   arcaea:jacketDesigner "色塩"@en-us;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 4 .
+arcaea.theraft:FTR arcaea:chartDesigner arcaea:Interator;
+                   arcaea:jacketDesigner "色塩"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.theraft:PRS arcaea:chartDesigner arcaea:Interator;
+                   arcaea:jacketDesigner "色塩"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.theraft:PST arcaea:chartDesigner arcaea:Interator;
+                   arcaea:jacketDesigner "色塩"@en-us;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

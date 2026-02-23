@@ -1,0 +1,39 @@
+@prefix arcaea.rise: <https://arcaea.lowiro.com/#rise#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.rise:.
+arcaea.rise: arcaea:artist arcaea:Combatplayer;
+             arcaea:audioPreview 54910 ;
+             arcaea:audioPreviewEnd 82338 ;
+             arcaea:bg arcaea:base_light;
+             arcaea:bg_inverse arcaea:base_conflict;
+             arcaea:bpm "140"@en-us;
+             arcaea:bpm_base 140 ;
+             arcaea:date 1487980803 ;
+             arcaea:difficulties arcaea.rise:FTR,
+                                 arcaea.rise:PRS,
+                                 arcaea.rise:PST;
+             arcaea:id "rise"@en-us;
+             arcaea:idx 4 ;
+             arcaea:search_title "こんばっとぷれいやー"@ja,
+                                 "컴뱃플레이어"@ko,
+                                 "らいず"@ja,
+                                 "라이즈"@ko;
+             arcaea:set "base"@en-us;
+             arcaea:side arcaea:light_side;
+             arcaea:title_localized "Rise"@en;
+             arcaea:version "1.0"@en-us.
+arcaea.rise:FTR arcaea:chartDesigner arcaea:Nitro;
+                arcaea:rating 7 ;
+                arcaea:ratingClass 2 ;
+                arcaea:ratingPlus true.
+arcaea.rise:PRS arcaea:chartDesigner arcaea:Nitro;
+                arcaea:rating 4 ;
+                arcaea:ratingClass 1 .
+arcaea.rise:PST arcaea:chartDesigner arcaea:Nitro;
+                arcaea:rating 2 ;
+                arcaea:ratingClass 0 .

@@ -1,0 +1,48 @@
+@prefix arcaea.surrender: <https://arcaea.lowiro.com/#surrender#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.surrender:.
+arcaea.surrender: arcaea:artist arcaea:void;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:base_light;
+                  arcaea:bg_inverse arcaea:base_conflict;
+                  arcaea:bpm "152"@en-us;
+                  arcaea:bpm_base 152 ;
+                  arcaea:category arcaea:musicgames;
+                  arcaea:date 1511481600 ;
+                  arcaea:difficulties arcaea.surrender:PRS,
+                                      arcaea.surrender:PST,
+                                      arcaea.surrender:FTR;
+                  arcaea:id "surrender"@en-us;
+                  arcaea:idx 60 ;
+                  arcaea:no_stream true;
+                  arcaea:purchase "surrender"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ぼいど"@ja,
+                                      "ゔぉいど"@ja,
+                                      "보이드"@ko,
+                                      "されんだー"@ja,
+                                      "서렌더"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Surrender"@en,
+                                         "STELLIGHTS"@en;
+                  arcaea:version "1.5"@en-us.
+arcaea.surrender:FTR arcaea:chartDesigner arcaea:Nitro;
+                     arcaea:jacketDesigner "softmode"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.surrender:PRS arcaea:chartDesigner arcaea:Nitro;
+                     arcaea:jacketDesigner "softmode"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.surrender:PST arcaea:chartDesigner arcaea:Nitro;
+                     arcaea:jacketDesigner "softmode"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

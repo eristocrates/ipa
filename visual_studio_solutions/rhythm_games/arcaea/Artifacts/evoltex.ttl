@@ -1,0 +1,47 @@
+@prefix arcaea.evoltex: <https://arcaea.lowiro.com/#evoltex#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.evoltex:.
+arcaea.evoltex: arcaea:artist arcaea:Arch%20vs%20n3pu;
+                arcaea:audioPreview 63219 ;
+                arcaea:audioPreviewEnd 92487 ;
+                arcaea:bg arcaea:dynamix_light;
+                arcaea:bg_inverse arcaea:dynamix_conflict;
+                arcaea:bpm "205"@en-us;
+                arcaea:bpm_base 205 ;
+                arcaea:date 1498176003 ;
+                arcaea:difficulties arcaea.evoltex:FTR,
+                                    arcaea.evoltex:PRS,
+                                    arcaea.evoltex:PST;
+                arcaea:id "evoltex"@en-us;
+                arcaea:idx 36 ;
+                arcaea:no_stream true;
+                arcaea:purchase "dynamix"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "あーち"@ja,
+                                    "ねぷ"@ja,
+                                    "아치"@ko,
+                                    "네푸"@ko,
+                                    "えぼるてっくすぽっぴんみっくす"@ja,
+                                    "えゔぉるてっくすぽっぴんみっくす"@ja,
+                                    "이볼텍스 팝핀 믹스"@ko,
+                                    "에볼텍스 팝핀 믹스"@ko;
+                arcaea:set "dynamix"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "Evoltex (poppi'n mix)"@en,
+                                       "Dynamix"@en;
+                arcaea:version "1.1"@en-us.
+arcaea.evoltex:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.evoltex:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.evoltex:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                   arcaea:rating 2 ;
+                   arcaea:ratingClass 0 .

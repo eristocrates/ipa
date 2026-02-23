@@ -1,0 +1,45 @@
+@prefix arcaea.overwhelm: <https://arcaea.lowiro.com/#overwhelm#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.overwhelm:.
+arcaea.overwhelm: arcaea:artist arcaea:xi;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:observer_light;
+                  arcaea:bg_inverse arcaea:observer_conflict;
+                  arcaea:bpm "200"@en-us;
+                  arcaea:bpm_base 200 ;
+                  arcaea:date 1620691207 ;
+                  arcaea:difficulties arcaea.overwhelm:PRS,
+                                      arcaea.overwhelm:PST,
+                                      arcaea.overwhelm:FTR;
+                  arcaea:id "overwhelm"@en-us;
+                  arcaea:idx 216 ;
+                  arcaea:purchase "observer_append_1"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "さい"@ja,
+                                      "사이"@ko,
+                                      "おーばーうぇるむ"@ja,
+                                      "오버웸"@ko,
+                                      "오버웰름"@ko;
+                  arcaea:set "observer_append_1"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Overwhelm"@en;
+                  arcaea:version "3.6"@en-us;
+                  arcaea:world_unlock false.
+arcaea.overwhelm:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                     arcaea:jacketDesigner "緋原ヨウ"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.overwhelm:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                     arcaea:jacketDesigner "緋原ヨウ"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 .
+arcaea.overwhelm:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                     arcaea:jacketDesigner "緋原ヨウ"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 0 .

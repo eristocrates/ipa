@@ -1,0 +1,49 @@
+@prefix arcaea.givemeanightmare: <https://arcaea.lowiro.com/#givemeanightmare#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.givemeanightmare:.
+arcaea.givemeanightmare: arcaea:artist arcaea:%E3%82%A2%E3%83%AA%E3%82%B9%E3%82%B7%E3%83%A3%E3%83%83%E3%83%8F%E3%81%A8%E9%AD%94%E6%B3%95%E3%81%AE%E6%A5%BD%E5%9B%A3;
+                         arcaea:audioPreview 60000 ;
+                         arcaea:audioPreviewEnd 70000 ;
+                         arcaea:bg arcaea:nijuusei-conflict-b;
+                         arcaea:bg_inverse arcaea:nijuusei-light-b;
+                         arcaea:bpm "95-190"@en-us;
+                         arcaea:bpm_base 190 ;
+                         arcaea:date 1590537610 ;
+                         arcaea:difficulties arcaea.givemeanightmare:FTR,
+                                             arcaea.givemeanightmare:PRS,
+                                             arcaea.givemeanightmare:PST;
+                         arcaea:id "givemeanightmare"@en-us;
+                         arcaea:idx 163 ;
+                         arcaea:purchase "extend"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "ありすしゃっはとまほうのがくだん"@ja,
+                                             "아리스샤하토 마호노 가쿠단"@ko,
+                                             "앨리스 샤하와 마법의 오케스트라"@ko,
+                                             "arisushahha to mahou no gakudan"@en,
+                                             "alice schach and the magic orchestra"@en,
+                                             "ぎぶみーあないとめあ"@ja,
+                                             "기브 미 어 나이트메어"@ko,
+                                             "깁 미 어 나이트메어"@ko;
+                         arcaea:set "extend"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "Give Me a Nightmare"@en;
+                         arcaea:version "3.0"@en-us;
+                         arcaea:world_unlock true.
+arcaea.givemeanightmare:FTR arcaea:chartDesigner arcaea:CERiNG;
+                            arcaea:jacketDesigner "mokeo"@en-us;
+                            arcaea:rating 8 ;
+                            arcaea:ratingClass 2 ;
+                            arcaea:ratingPlus true.
+arcaea.givemeanightmare:PRS arcaea:chartDesigner arcaea:CERiNG;
+                            arcaea:jacketDesigner "mokeo"@en-us;
+                            arcaea:rating 5 ;
+                            arcaea:ratingClass 1 .
+arcaea.givemeanightmare:PST arcaea:chartDesigner arcaea:CERiNG;
+                            arcaea:jacketDesigner "mokeo"@en-us;
+                            arcaea:rating 3 ;
+                            arcaea:ratingClass 0 .

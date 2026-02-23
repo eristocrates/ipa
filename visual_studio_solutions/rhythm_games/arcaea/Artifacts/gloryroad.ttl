@@ -1,0 +1,46 @@
+@prefix arcaea.gloryroad: <https://arcaea.lowiro.com/#gloryroad#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.gloryroad:.
+arcaea.gloryroad: arcaea:artist arcaea:uma%20vs.%20%E3%83%A2%E3%83%AA%E3%83%A2%E3%83%AA%E3%81%82%E3%81%A4%E3%81%97;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:shiawase2;
+                  arcaea:bpm "250"@en-us;
+                  arcaea:bpm_base 250 ;
+                  arcaea:date 1570492802 ;
+                  arcaea:difficulties arcaea.gloryroad:FTR,
+                                      arcaea.gloryroad:PRS,
+                                      arcaea.gloryroad:PST;
+                  arcaea:id "gloryroad"@en-us;
+                  arcaea:idx 139 ;
+                  arcaea:purchase "shiawase"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ゆーま"@ja,
+                                      "ゆうま"@ja,
+                                      "유마"@ko,
+                                      "모리모리 아츠시"@ko,
+                                      "morimori atsushi"@en,
+                                      "ぐろーりーろーど"@ja,
+                                      "글로리 로드"@ko;
+                  arcaea:set "shiawase"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "GLORY：ROAD"@en;
+                  arcaea:version "2.4"@en-us;
+                  arcaea:world_unlock true.
+arcaea.gloryroad:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E7%B4%85%E7%A9%BA;
+                     arcaea:jacketDesigner "シエラ"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.gloryroad:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E7%B4%85%E7%A9%BA;
+                     arcaea:jacketDesigner "シエラ"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.gloryroad:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E7%B4%85%E7%A9%BA;
+                     arcaea:jacketDesigner "シエラ"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

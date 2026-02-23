@@ -1,0 +1,54 @@
+@prefix arcaea.kyorenromance: <https://arcaea.lowiro.com/#kyorenromance#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.kyorenromance:.
+arcaea.kyorenromance: arcaea:artist arcaea:REDALiCE%20vs%20DJ%20Myosuke%20feat.%20DELUTAYA;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:saikyostronger;
+                      arcaea:bpm "205"@en-us;
+                      arcaea:bpm_base 205 ;
+                      arcaea:category arcaea:partner;
+                      arcaea:date 1709856008 ;
+                      arcaea:difficulties arcaea.kyorenromance:FTR,
+                                          arcaea.kyorenromance:PRS,
+                                          arcaea.kyorenromance:PST;
+                      arcaea:id "kyorenromance"@en-us;
+                      arcaea:idx 376 ;
+                      arcaea:purchase "kyorenromance"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "れっどありす"@ja,
+                                          "でぃーじぇーみょーすけ"@ja,
+                                          "でぃーじぇーみょうすけ"@ja,
+                                          "でぃーじぇいみょーすけ"@ja,
+                                          "でぃーじぇいみょうすけ"@ja,
+                                          "でるたや"@ja,
+                                          "레드 앨리스"@ko,
+                                          "디제이 묘스케"@ko,
+                                          "きょうれんろまんす"@ja,
+                                          "쿄렌 로맨스"@ko,
+                                          "광연 로맨스"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "狂恋ROMANCE"@ja,
+                                             "KYOREN ROMANCE"@en;
+                      arcaea:version "5.4"@en-us;
+                      arcaea:world_unlock false.
+arcaea.kyorenromance:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Dec18%20+%20Nitro>;
+                         arcaea:jacketDesigner "イカダ"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.kyorenromance:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Dec18%20+%20Nitro>;
+                         arcaea:jacketDesigner "イカダ"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.kyorenromance:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Dec18%20+%20Nitro>;
+                         arcaea:jacketDesigner "イカダ"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

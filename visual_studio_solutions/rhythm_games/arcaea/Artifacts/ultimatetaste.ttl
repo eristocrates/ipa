@@ -1,0 +1,47 @@
+@prefix arcaea.ultimatetaste: <https://arcaea.lowiro.com/#ultimatetaste#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ultimatetaste:.
+arcaea.ultimatetaste: arcaea:artist arcaea:%E3%81%B1%E3%82%89%E3%81%A9%E3%81%A3%E3%81%A8;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:touhou_light;
+                      arcaea:bg_inverse arcaea:touhou_conflict;
+                      arcaea:bpm "200"@en-us;
+                      arcaea:bpm_base 200 ;
+                      arcaea:date 1689724800 ;
+                      arcaea:difficulties arcaea.ultimatetaste:PRS,
+                                          arcaea.ultimatetaste:PST,
+                                          arcaea.ultimatetaste:FTR;
+                      arcaea:id "ultimatetaste"@en-us;
+                      arcaea:idx 329 ;
+                      arcaea:purchase "extend_2"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "파라돗토"@ko,
+                                          "paradot"@en,
+                                          "paradotto"@en,
+                                          "あるてぃめっとていすと"@ja,
+                                          "언리미티드 테이스트"@ko;
+                      arcaea:set "extend_2"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                      arcaea:title_localized "Ultimate taste"@en;
+                      arcaea:version "4.6"@en-us;
+                      arcaea:world_unlock true.
+arcaea.ultimatetaste:FTR arcaea:chartDesigner arcaea:Arcaea%20Charting%20Team%E3%80%90Full%20Flavor%E3%80%91;
+                         arcaea:jacketDesigner "ぱらどっと"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.ultimatetaste:PRS arcaea:chartDesigner arcaea:Arcaea%20Charting%20Team;
+                         arcaea:jacketDesigner "ぱらどっと"@en-us;
+                         arcaea:rating 6 ;
+                         arcaea:ratingClass 1 .
+arcaea.ultimatetaste:PST arcaea:chartDesigner arcaea:Arcaea%20Charting%20Team;
+                         arcaea:jacketDesigner "ぱらどっと"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

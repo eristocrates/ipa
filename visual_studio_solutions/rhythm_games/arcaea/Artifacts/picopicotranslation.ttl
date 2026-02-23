@@ -1,0 +1,52 @@
+@prefix arcaea.picopicotranslation: <https://arcaea.lowiro.com/#picopicotranslation#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.picopicotranslation:.
+arcaea.picopicotranslation: arcaea:artist <https://arcaea.lowiro.com/#t+pazolite,ななひら,Cranky,Pico*>;
+                            arcaea:audioPreview 0 ;
+                            arcaea:audioPreviewEnd 0 ;
+                            arcaea:bg arcaea:nijuusei-conflict-b;
+                            arcaea:bg_inverse arcaea:nijuusei-light-b;
+                            arcaea:bpm "185"@en-us;
+                            arcaea:bpm_base 185 ;
+                            arcaea:category arcaea:variety;
+                            arcaea:date 1651104003 ;
+                            arcaea:difficulties arcaea.picopicotranslation:FTR,
+                                                arcaea.picopicotranslation:PRS,
+                                                arcaea.picopicotranslation:PST;
+                            arcaea:id "picopicotranslation"@en-us;
+                            arcaea:idx 267 ;
+                            arcaea:purchase "picopicotranslation"@en-us;
+                            arcaea:remote_dl true;
+                            arcaea:search_title "とぱぞらいと"@ja,
+                                                "くらんきー"@ja,
+                                                "ぴこ"@ja,
+                                                "토파졸라이트"@ko,
+                                                "나나히라"@ko,
+                                                "크랭키"@ko,
+                                                "피코"@ko,
+                                                "nanahira"@en,
+                                                "ぴこぴことらんすれーしょんっ"@ja,
+                                                "피코 피코 트랜슬레이션"@ko;
+                            arcaea:set "single"@en-us;
+                            arcaea:side arcaea:conflict_side;
+                            arcaea:title_localized "ピコPico*とらんすれーしょんっ！"@ja,
+                                                   "PICO-Pico-Translation!"@en;
+                            arcaea:version "3.12"@en-us;
+                            arcaea:world_unlock false.
+arcaea.picopicotranslation:FTR arcaea:chartDesigner arcaea:Translated%20by%20%C3%A9n;
+                               arcaea:jacketDesigner "九鳥ぱんや & t+pazolite"@en-us;
+                               arcaea:rating 9 ;
+                               arcaea:ratingClass 2 .
+arcaea.picopicotranslation:PRS arcaea:chartDesigner arcaea:Translated%20by%20%C3%A9n;
+                               arcaea:jacketDesigner "九鳥ぱんや & t+pazolite"@en-us;
+                               arcaea:rating 6 ;
+                               arcaea:ratingClass 1 .
+arcaea.picopicotranslation:PST arcaea:chartDesigner arcaea:Translated%20by%20%C3%A9n;
+                               arcaea:jacketDesigner "九鳥ぱんや & t+pazolite"@en-us;
+                               arcaea:rating 2 ;
+                               arcaea:ratingClass 0 .

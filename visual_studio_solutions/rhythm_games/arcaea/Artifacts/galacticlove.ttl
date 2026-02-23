@@ -1,0 +1,43 @@
+@prefix arcaea.galacticlove: <https://arcaea.lowiro.com/#galacticlove#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.galacticlove:.
+arcaea.galacticlove: arcaea:artist arcaea:La%20pri%C3%A8re;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:single2_light;
+                     arcaea:bg_inverse arcaea:single2_conflict;
+                     arcaea:bpm "145"@en-us;
+                     arcaea:bpm_base 145 ;
+                     arcaea:category arcaea:poprec;
+                     arcaea:date 1684972800 ;
+                     arcaea:difficulties arcaea.galacticlove:PRS,
+                                         arcaea.galacticlove:PST,
+                                         arcaea.galacticlove:FTR;
+                     arcaea:id "galacticlove"@en-us;
+                     arcaea:idx 318 ;
+                     arcaea:purchase "galacticlove"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "らぷりえーる"@ja,
+                                         "라 피에르"@ko,
+                                         "la priere"@en,
+                                         "ぎゃらくてぃっくらぶ"@ja,
+                                         "갤럭틱 러브"@ko;
+                     arcaea:set "single"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "Galactic Love"@en;
+                     arcaea:version "4.4"@en-us;
+                     arcaea:world_unlock false.
+arcaea.galacticlove:FTR arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.galacticlove:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.galacticlove:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

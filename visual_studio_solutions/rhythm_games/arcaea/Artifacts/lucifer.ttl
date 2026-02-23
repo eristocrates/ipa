@@ -1,0 +1,40 @@
+@prefix arcaea.lucifer: <https://arcaea.lowiro.com/#lucifer#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lucifer:.
+arcaea.lucifer: arcaea:artist arcaea:chitose;
+                arcaea:audioPreview 46545 ;
+                arcaea:audioPreviewEnd 81454 ;
+                arcaea:bg arcaea:base_conflict;
+                arcaea:bg_inverse arcaea:base_light;
+                arcaea:bpm "165"@en-us;
+                arcaea:bpm_base 165 ;
+                arcaea:date 1487980804 ;
+                arcaea:difficulties arcaea.lucifer:FTR,
+                                    arcaea.lucifer:PRS,
+                                    arcaea.lucifer:PST;
+                arcaea:id "lucifer"@en-us;
+                arcaea:idx 5 ;
+                arcaea:remote_dl true;
+                arcaea:search_title "ちとせ"@ja,
+                                    "치토세"@ko,
+                                    "るしふぁー"@ja,
+                                    "루시퍼"@ko;
+                arcaea:set "base"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Lucifer"@en;
+                arcaea:version "1.0"@en-us;
+                arcaea:world_unlock true.
+arcaea.lucifer:FTR arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 .
+arcaea.lucifer:PRS arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:rating 5 ;
+                   arcaea:ratingClass 1 .
+arcaea.lucifer:PST arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

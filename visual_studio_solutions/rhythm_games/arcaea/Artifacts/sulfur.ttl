@@ -1,0 +1,44 @@
+@prefix arcaea.sulfur: <https://arcaea.lowiro.com/#sulfur#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.sulfur:.
+arcaea.sulfur: arcaea:artist arcaea:%E3%81%BA%E3%81%AE%E3%82%8C%E3%82%8A;
+               arcaea:audioPreview 57414 ;
+               arcaea:audioPreviewEnd 83788 ;
+               arcaea:bg arcaea:rei;
+               arcaea:bg_inverse arcaea:yugamu;
+               arcaea:bpm "182"@en-us;
+               arcaea:bpm_base 182 ;
+               arcaea:date 1531699205 ;
+               arcaea:difficulties arcaea.sulfur:PRS,
+                                   arcaea.sulfur:PST,
+                                   arcaea.sulfur:FTR;
+               arcaea:id "sulfur"@en-us;
+               arcaea:idx 84 ;
+               arcaea:purchase "rei"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "페노레리"@ko,
+                                   "penoreri"@en,
+                                   "さるふぁー"@ja,
+                                   "설퍼"@ko;
+               arcaea:set "rei"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "Sulfur"@en;
+               arcaea:version "1.7"@en-us.
+arcaea.sulfur:FTR arcaea:chartDesigner arcaea:Shirorak;
+                  arcaea:jacketDesigner "すずなし"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.sulfur:PRS arcaea:chartDesigner arcaea:Shirorak;
+                  arcaea:jacketDesigner "すずなし"@en-us;
+                  arcaea:rating 6 ;
+                  arcaea:ratingClass 1 .
+arcaea.sulfur:PST arcaea:chartDesigner arcaea:Shirorak;
+                  arcaea:jacketDesigner "すずなし"@en-us;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

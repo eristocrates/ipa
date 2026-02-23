@@ -1,0 +1,46 @@
+@prefix arcaea.matenrou: <https://arcaea.lowiro.com/#matenrou#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.matenrou:.
+arcaea.matenrou: arcaea:artist arcaea:Demetori;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:touhou_conflict;
+                 arcaea:bg_inverse arcaea:touhou_light;
+                 arcaea:bpm "178"@en-us;
+                 arcaea:bpm_base 178 ;
+                 arcaea:date 1694664000 ;
+                 arcaea:difficulties arcaea.matenrou:FTR,
+                                     arcaea.matenrou:PRS,
+                                     arcaea.matenrou:PST;
+                 arcaea:id "matenrou"@en-us;
+                 arcaea:idx 342 ;
+                 arcaea:purchase "extend_2"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "でめとり"@ja,
+                                     "데메토리"@ko,
+                                     "かんじょうのまてんろうあれんじ"@ja,
+                                     "감정의 마천루"@ko,
+                                     "칸죠노 마텐로우"@ko,
+                                     "kanjou no matenrou"@en;
+                 arcaea:set "extend_2"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                 arcaea:title_localized "感情の摩天楼 ～Arr.Demetori"@ja,
+                                        "Kanjou no Matenrou ～Arr.Demetori"@en;
+                 arcaea:version "4.7"@en-us;
+                 arcaea:world_unlock true.
+arcaea.matenrou:FTR arcaea:chartDesigner arcaea:N%E2%80%A2Ex%E2%80%A2T;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.matenrou:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.matenrou:PST arcaea:chartDesigner arcaea:Exschwasion;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

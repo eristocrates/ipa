@@ -1,0 +1,43 @@
+﻿namespace Fibo.DER.DerivativesContracts.Swaps.Namespace
+module Swaps =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/DER/DerivativesContracts/Swaps.rdf") (Some @"fibo.DER.DerivativesContracts.Swaps") None
+    let BasisSwap = {_prefixID with _localName = "BasisSwap"}
+    let CorrelationLeg = {_prefixID with _localName = "CorrelationLeg"}
+    let CorrelationSwap = {_prefixID with _localName = "CorrelationSwap"}
+    let DispersionLeg = {_prefixID with _localName = "DispersionLeg"}
+    let DispersionSwap = {_prefixID with _localName = "DispersionSwap"}
+    let ExcessReturnSwap = {_prefixID with _localName = "ExcessReturnSwap"}
+    let FixedLeg = {_prefixID with _localName = "FixedLeg"}
+    let FixedPaymentLeg = {_prefixID with _localName = "FixedPaymentLeg"}
+    let FloatingLeg = {_prefixID with _localName = "FloatingLeg"}
+    let IndexReturnSwap = {_prefixID with _localName = "IndexReturnSwap"}
+    let MajorSwapParticipant = {_prefixID with _localName = "MajorSwapParticipant"}
+    let PerformanceBasedVariableLeg = {_prefixID with _localName = "PerformanceBasedVariableLeg"}
+    let RateBasedLeg = {_prefixID with _localName = "RateBasedLeg"}
+    let RatesSwap = {_prefixID with _localName = "RatesSwap"}
+    let RealizedVariableLeg = {_prefixID with _localName = "RealizedVariableLeg"}
+    let ReturnLeg = {_prefixID with _localName = "ReturnLeg"}
+    let ReturnSwap = {_prefixID with _localName = "ReturnSwap"}
+    let SimpleReturnLeg = {_prefixID with _localName = "SimpleReturnLeg"}
+    let StatisticalSwap = {_prefixID with _localName = "StatisticalSwap"}
+    let StrikeLeg = {_prefixID with _localName = "StrikeLeg"}
+    let Swap = {_prefixID with _localName = "Swap"}
+    let SwapConfirmation = {_prefixID with _localName = "SwapConfirmation"}
+    let SwapDataRepository = {_prefixID with _localName = "SwapDataRepository"}
+    let SwapDealer = {_prefixID with _localName = "SwapDealer"}
+    let SwapLeg = {_prefixID with _localName = "SwapLeg"}
+    let SwapLegEvent = {_prefixID with _localName = "SwapLegEvent"}
+    let SwapLifecycleEvent = {_prefixID with _localName = "SwapLifecycleEvent"}
+    let SwapLifecycleEventIdentifier = {_prefixID with _localName = "SwapLifecycleEventIdentifier"}
+    let SwapParty = {_prefixID with _localName = "SwapParty"}
+    let SwapPayingParty = {_prefixID with _localName = "SwapPayingParty"}
+    let SwapReceivingParty = {_prefixID with _localName = "SwapReceivingParty"}
+    let SwapTerms = {_prefixID with _localName = "SwapTerms"}
+    let TotalReturnLeg = {_prefixID with _localName = "TotalReturnLeg"}
+    let TotalReturnSwap = {_prefixID with _localName = "TotalReturnSwap"}
+    let UniqueSwapIdentifier = {_prefixID with _localName = "UniqueSwapIdentifier"}
+    let hasFundingLeg = {_prefixID with _localName = "hasFundingLeg"}
+    let hasLeg = {_prefixID with _localName = "hasLeg"}
+    let hasReturnLeg = {_prefixID with _localName = "hasReturnLeg"}
+    let hasSwapIdentifier = {_prefixID with _localName = "hasSwapIdentifier"}
+    let isLegOf = {_prefixID with _localName = "isLegOf"}

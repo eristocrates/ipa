@@ -1,0 +1,45 @@
+@prefix arcaea.essenceoftwilight: <https://arcaea.lowiro.com/#essenceoftwilight#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.essenceoftwilight:.
+arcaea.essenceoftwilight: arcaea:artist <https://arcaea.lowiro.com/#ak+q>;
+                          arcaea:audioPreview 103371 ;
+                          arcaea:audioPreviewEnd 132639 ;
+                          arcaea:bg arcaea:base_conflict;
+                          arcaea:bg_inverse arcaea:base_light;
+                          arcaea:bpm "164"@en-us;
+                          arcaea:bpm_base 164 ;
+                          arcaea:date 1487980816 ;
+                          arcaea:difficulties arcaea.essenceoftwilight:PRS,
+                                              arcaea.essenceoftwilight:PST,
+                                              arcaea.essenceoftwilight:FTR;
+                          arcaea:id "essenceoftwilight"@en-us;
+                          arcaea:idx 14 ;
+                          arcaea:purchase "core"@en-us;
+                          arcaea:remote_dl true;
+                          arcaea:search_title "えーけーぷらすきゅー"@ja,
+                                              "에이케이 플러스 큐"@ko,
+                                              "えっせんすおぶとわいらいと"@ja,
+                                              "에센스 오브 트와일라잇"@ko,
+                                              "엣센스 오브 트와일라잇"@ko;
+                          arcaea:set "core"@en-us;
+                          arcaea:side arcaea:conflict_side;
+                          arcaea:title_localized "Essence of Twilight"@en;
+                          arcaea:version "1.0"@en-us;
+                          arcaea:world_unlock false.
+arcaea.essenceoftwilight:FTR arcaea:chartDesigner arcaea:Nitro;
+                             arcaea:jacketDesigner "deel"@en-us;
+                             arcaea:rating 9 ;
+                             arcaea:ratingClass 2 .
+arcaea.essenceoftwilight:PRS arcaea:chartDesigner arcaea:Nitro;
+                             arcaea:jacketDesigner "deel"@en-us;
+                             arcaea:rating 7 ;
+                             arcaea:ratingClass 1 .
+arcaea.essenceoftwilight:PST arcaea:chartDesigner arcaea:Nitro;
+                             arcaea:jacketDesigner "deel"@en-us;
+                             arcaea:rating 4 ;
+                             arcaea:ratingClass 0 .

@@ -1,0 +1,45 @@
+@prefix arcaea.revixy: <https://arcaea.lowiro.com/#revixy#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.revixy:.
+arcaea.revixy: arcaea:artist arcaea:ikaruga_nex;
+               arcaea:audioPreview 33333 ;
+               arcaea:audioPreviewEnd 54666 ;
+               arcaea:bg arcaea:base_conflict;
+               arcaea:bg_inverse arcaea:base_light;
+               arcaea:bpm "115-185"@en-us;
+               arcaea:bpm_base 185 ;
+               arcaea:date 1553126401 ;
+               arcaea:difficulties arcaea.revixy:FTR,
+                                   arcaea.revixy:PRS,
+                                   arcaea.revixy:PST;
+               arcaea:id "revixy"@en-us;
+               arcaea:idx 118 ;
+               arcaea:remote_dl true;
+               arcaea:search_title "いかるがねっくす"@ja,
+                                   "이카구라 넥스"@ko,
+                                   "りびじー"@ja,
+                                   "りゔぃじー"@ja,
+                                   "레비지"@ko,
+                                   "래비지"@ko;
+               arcaea:set "base"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "ReviXy"@en;
+               arcaea:version "2.0"@en-us;
+               arcaea:world_unlock true.
+arcaea.revixy:FTR arcaea:chartDesigner arcaea:Revoke%20Kurorak;
+                  arcaea:jacketDesigner "出前"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.revixy:PRS arcaea:chartDesigner arcaea:Revoke%20Kurorak;
+                  arcaea:jacketDesigner "出前"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.revixy:PST arcaea:chartDesigner arcaea:Revoke%20Kurorak;
+                  arcaea:jacketDesigner "出前"@en-us;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

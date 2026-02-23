@@ -1,0 +1,45 @@
+@prefix arcaea.mod: <https://arcaea.lowiro.com/#mod#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mod:.
+arcaea.mod: arcaea:artist arcaea:kalsoer;
+            arcaea:audioPreview 0 ;
+            arcaea:audioPreviewEnd 0 ;
+            arcaea:bg arcaea:single2_light;
+            arcaea:bg_inverse arcaea:single2_conflict;
+            arcaea:bpm "168"@en-us;
+            arcaea:bpm_base 168 ;
+            arcaea:date 1761782401 ;
+            arcaea:difficulties arcaea.mod:PRS,
+                                arcaea.mod:PST,
+                                arcaea.mod:FTR;
+            arcaea:id "mod"@en-us;
+            arcaea:idx 494 ;
+            arcaea:purchase "extend_4"@en-us;
+            arcaea:remote_dl true;
+            arcaea:search_title "かるそあー"@ja,
+                                "칼소어"@ko,
+                                "칼소아"@ko,
+                                "もっど"@ja,
+                                "모드"@ko;
+            arcaea:set "extend_4"@en-us;
+            arcaea:side arcaea:light_side;
+            arcaea:title_localized "mod"@en;
+            arcaea:version "6.10"@en-us;
+            arcaea:world_unlock true.
+arcaea.mod:FTR arcaea:chartDesigner arcaea:karat;
+               arcaea:jacketDesigner "dD9"@en-us;
+               arcaea:rating 9 ;
+               arcaea:ratingClass 2 .
+arcaea.mod:PRS arcaea:chartDesigner arcaea:karat;
+               arcaea:jacketDesigner "dD9"@en-us;
+               arcaea:rating 6 ;
+               arcaea:ratingClass 1 .
+arcaea.mod:PST arcaea:chartDesigner arcaea:karat;
+               arcaea:jacketDesigner "dD9"@en-us;
+               arcaea:rating 3 ;
+               arcaea:ratingClass 0 .

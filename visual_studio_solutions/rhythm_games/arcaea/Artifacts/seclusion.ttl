@@ -1,0 +1,47 @@
+@prefix arcaea.seclusion: <https://arcaea.lowiro.com/#seclusion#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.seclusion:.
+arcaea.seclusion: arcaea:artist arcaea:Laur%20feat.%20Sennzai;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:observer_conflict;
+                  arcaea:bg_inverse arcaea:observer_light;
+                  arcaea:bpm "175"@en-us;
+                  arcaea:bpm_base 175 ;
+                  arcaea:date 1626825603 ;
+                  arcaea:difficulties arcaea.seclusion:FTR,
+                                      arcaea.seclusion:PRS,
+                                      arcaea.seclusion:PST;
+                  arcaea:id "seclusion"@en-us;
+                  arcaea:idx 223 ;
+                  arcaea:purchase "observer"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "らうる"@ja,
+                                      "せんざい"@ja,
+                                      "라우르"@ko,
+                                      "센자이"@ko,
+                                      "せくりゅーじょん"@ja,
+                                      "세클루전"@ko,
+                                      "서클루전"@ko;
+                  arcaea:set "observer"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Seclusion"@en;
+                  arcaea:version "3.7"@en-us;
+                  arcaea:world_unlock true.
+arcaea.seclusion:FTR arcaea:chartDesigner arcaea:N%E2%80%A2Ex%E2%80%A2T;
+                     arcaea:jacketDesigner "海鵜げそ"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.seclusion:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                     arcaea:jacketDesigner "海鵜げそ"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.seclusion:PST arcaea:chartDesigner arcaea:Exschwasion;
+                     arcaea:jacketDesigner "海鵜げそ"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

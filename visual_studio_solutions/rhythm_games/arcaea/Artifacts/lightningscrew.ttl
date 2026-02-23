@@ -1,0 +1,45 @@
+@prefix arcaea.lightningscrew: <https://arcaea.lowiro.com/#lightningscrew#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lightningscrew:.
+arcaea.lightningscrew: arcaea:artist arcaea:HiTECH%20NINJA;
+                       arcaea:audioPreview 12631 ;
+                       arcaea:audioPreviewEnd 36631 ;
+                       arcaea:bg arcaea:hime_light;
+                       arcaea:bg_inverse arcaea:hime_conflict;
+                       arcaea:bpm "190"@en-us;
+                       arcaea:bpm_base 190 ;
+                       arcaea:date 1639008004 ;
+                       arcaea:difficulties arcaea.lightningscrew:PRS,
+                                           arcaea.lightningscrew:PST,
+                                           arcaea.lightningscrew:FTR;
+                       arcaea:id "lightningscrew"@en-us;
+                       arcaea:idx 248 ;
+                       arcaea:purchase "dividedheart"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "はいてっくにんじゃ"@ja,
+                                           "하이테크 닌자"@ko,
+                                           "らいとにんぐすくりゅー"@ja,
+                                           "라이트닝 스크류"@ko;
+                       arcaea:set "dividedheart"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Lightning Screw"@en;
+                       arcaea:version "3.10"@en-us;
+                       arcaea:world_unlock false.
+arcaea.lightningscrew:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                          arcaea:jacketDesigner "シエラ"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 .
+arcaea.lightningscrew:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                          arcaea:jacketDesigner "シエラ"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 ;
+                          arcaea:ratingPlus true.
+arcaea.lightningscrew:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                          arcaea:jacketDesigner "シエラ"@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

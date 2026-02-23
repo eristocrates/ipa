@@ -1,0 +1,63 @@
+@prefix arcaea.melodyoflove: <https://arcaea.lowiro.com/#melodyoflove#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.melodyoflove:.
+arcaea:bg_daynight arcaea:day arcaea:omatsuri_light;
+                   arcaea:night arcaea:omatsuri_conflict.
+arcaea.melodyoflove: arcaea:artist arcaea:%E3%81%8B%E3%82%89%E3%81%A8P%CE%B1nchii%E5%B0%91%E5%B9%B4%20feat.%E3%81%AF%E3%82%8B%E3%81%AE;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:omatsuri_light;
+                     arcaea:bg_daynight arcaea.melodyoflove:bg_daynight;
+                     arcaea:bg_inverse arcaea:omatsuri_conflict;
+                     arcaea:bpm "165"@en-us;
+                     arcaea:bpm_base 165 ;
+                     arcaea:date 1566432002 ;
+                     arcaea:difficulties arcaea.melodyoflove:FTR,
+                                         arcaea.melodyoflove:PRS,
+                                         arcaea.melodyoflove:PST;
+                     arcaea:id "melodyoflove"@en-us;
+                     arcaea:idx 133 ;
+                     arcaea:purchase "omatsuri"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "かぷちー"@ja,
+                                         "ぱん"@ja,
+                                         "からと"@ja,
+                                         "たけのこしょうねん"@ja,
+                                         "はるの"@ja,
+                                         "からとぱんちーしょうねん"@ja,
+                                         "카라토"@ko,
+                                         "하루노"@ko,
+                                         "판치쇼넨"@ko,
+                                         "karatop"@en,
+                                         "panchii shounen"@en,
+                                         "haruno"@en,
+                                         "まよえるねいろはこいのうた"@ja,
+                                         "어 원더링 멜로디 오브 러브"@ko,
+                                         "마요에루 이로와 코이노우타"@ko,
+                                         "망설이는 음색은 사랑의 노래"@ko;
+                     arcaea:set "omatsuri"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "迷える音色は恋の唄"@ja,
+                                            "A Wandering Melody of Love"@en;
+                     arcaea:version "2.3"@en-us;
+                     arcaea:world_unlock false.
+arcaea.melodyoflove:FTR arcaea:chartDesigner arcaea:%E6%81%8B%E3%81%AEToaster;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:jacket_night "base_night"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.melodyoflove:PRS arcaea:chartDesigner arcaea:%E6%81%8B%E3%81%AEToaster;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:jacket_night "base_night"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.melodyoflove:PST arcaea:chartDesigner arcaea:%E6%81%8B%E3%81%AEToaster;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:jacket_night "base_night"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

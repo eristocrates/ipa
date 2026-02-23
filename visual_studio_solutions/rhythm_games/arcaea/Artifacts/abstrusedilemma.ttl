@@ -1,0 +1,52 @@
+@prefix arcaea.abstrusedilemma: <https://arcaea.lowiro.com/#abstrusedilemma#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.abstrusedilemma:.
+arcaea.abstrusedilemma: arcaea:artist arcaea:Ashrount%20vs.%20%E6%89%93%E6%89%93%E3%81%A0%E3%81%84%E3%81%9A;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:eden_boss;
+                        arcaea:bpm "216"@en-us;
+                        arcaea:bpm_base 216 ;
+                        arcaea:date 1692230406 ;
+                        arcaea:difficulties arcaea.abstrusedilemma:FTR,
+                                            arcaea.abstrusedilemma:PRS,
+                                            arcaea.abstrusedilemma:PST;
+                        arcaea:id "abstrusedilemma"@en-us;
+                        arcaea:idx 341 ;
+                        arcaea:purchase "eden"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "あしゅらうんと"@ja,
+                                            "だだだいず"@ja,
+                                            "애쉬라운트"@ko,
+                                            "애쉬런트"@ko,
+                                            "다다다이즈"@ko,
+                                            "dadadaizu"@en,
+                                            "dddice"@en,
+                                            "あぶすとぅるすじれんま"@ja,
+                                            "あぶすとぅるーすじれんま"@ja,
+                                            "업스트루스 딜레마"@ko,
+                                            "앱스트루스 딜레마"@ko;
+                        arcaea:set "eden"@en-us;
+                        arcaea:side arcaea:light_side;
+                        arcaea:title_localized "Abstruse Dilemma"@en;
+                        arcaea:version "4.7"@en-us;
+                        arcaea:world_unlock false.
+arcaea.abstrusedilemma:FTR arcaea:chartDesigner arcaea:Remnant%20%E2%87%91%E2%87%93%20Volition;
+                           arcaea:jacketDesigner "おぐち"@en-us;
+                           arcaea:legacy11 true;
+                           arcaea:rating 11 ;
+                           arcaea:ratingClass 2 .
+arcaea.abstrusedilemma:PRS arcaea:chartDesigner arcaea:Remnant%20%E2%87%92%20Doubt;
+                           arcaea:jacketDesigner "おぐち"@en-us;
+                           arcaea:rating 8 ;
+                           arcaea:ratingClass 1 ;
+                           arcaea:ratingPlus true.
+arcaea.abstrusedilemma:PST arcaea:chartDesigner arcaea:Remnant%20%E2%87%90%20Guilt;
+                           arcaea:jacketDesigner "おぐち"@en-us;
+                           arcaea:rating 5 ;
+                           arcaea:ratingClass 0 .

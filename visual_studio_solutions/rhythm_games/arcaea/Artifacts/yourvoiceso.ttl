@@ -1,0 +1,45 @@
+@prefix arcaea.yourvoiceso: <https://arcaea.lowiro.com/#yourvoiceso#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.yourvoiceso:.
+arcaea.yourvoiceso: arcaea:artist arcaea:PSYQUI;
+                    arcaea:audioPreview 20850 ;
+                    arcaea:audioPreviewEnd 46759 ;
+                    arcaea:bg arcaea:single_light;
+                    arcaea:bg_inverse arcaea:single_conflict;
+                    arcaea:bpm "176"@en-us;
+                    arcaea:bpm_base 176 ;
+                    arcaea:category arcaea:variety;
+                    arcaea:date 1496188804 ;
+                    arcaea:difficulties arcaea.yourvoiceso:PRS,
+                                        arcaea.yourvoiceso:PST,
+                                        arcaea.yourvoiceso:FTR;
+                    arcaea:id "yourvoiceso"@en-us;
+                    arcaea:idx 31 ;
+                    arcaea:purchase "yourvoiceso"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "さいき"@ja,
+                                        "さっち"@ja,
+                                        "사이키"@ko,
+                                        "ゆあぼいすそー"@ja,
+                                        "유어 보이스 이즈 소"@ko;
+                    arcaea:set "single"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Your voice so... feat. Such"@en;
+                    arcaea:version "1.1"@en-us.
+arcaea.yourvoiceso:FTR arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.yourvoiceso:PRS arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.yourvoiceso:PST arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

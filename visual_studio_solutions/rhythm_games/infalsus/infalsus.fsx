@@ -3,10 +3,9 @@
 #r "nuget: Terminal.Gui"
 #r "nuget: Iride"
 #r @"..\..\ResourceDescriptionFramework\bin\Debug\net10.0\ResourceDescriptionFramework.dll"
+#r @"C:\Repositories\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
 // #load "Tui.fsx"
 
-#load @"..\..\shared_kernel\Sanitation.fsx"
-#load @"..\..\shared_kernel\InvalidFileNameCharacter.fsx"
 
 open System.Text
 open FSharp.Data
@@ -19,7 +18,7 @@ open System.Threading
 open System.Net
 open FSharp.Data.UnitSystems
 
-open Sanitation
+open SharedKernel
 open Program
 open Ergonomics
 open Shorthand

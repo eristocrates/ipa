@@ -1,0 +1,45 @@
+@prefix arcaea.fallensquare: <https://arcaea.lowiro.com/#fallensquare#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.fallensquare:.
+arcaea.fallensquare: arcaea:artist arcaea:Silentroom;
+                     arcaea:audioPreview 36188 ;
+                     arcaea:audioPreviewEnd 63759 ;
+                     arcaea:bg arcaea:mirai_conflict;
+                     arcaea:bg_inverse arcaea:mirai_light;
+                     arcaea:bpm "99"@en-us;
+                     arcaea:bpm_base 180 ;
+                     arcaea:category arcaea:original;
+                     arcaea:date 1533859202 ;
+                     arcaea:difficulties arcaea.fallensquare:PRS,
+                                         arcaea.fallensquare:PST,
+                                         arcaea.fallensquare:FTR;
+                     arcaea:id "fallensquare"@en-us;
+                     arcaea:idx 92 ;
+                     arcaea:purchase "fallensquare"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "さいれんとるーむ"@ja,
+                                         "사일런트 룸"@ko,
+                                         "ふぉーるんすくえあ"@ja,
+                                         "폴른스퀘어"@ko;
+                     arcaea:set "single"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Fallensquare"@en;
+                     arcaea:version "1.7"@en-us.
+arcaea.fallensquare:FTR arcaea:chartDesigner arcaea:Haruba;
+                        arcaea:jacketDesigner "unKn"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.fallensquare:PRS arcaea:chartDesigner arcaea:Haruba;
+                        arcaea:jacketDesigner "unKn"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.fallensquare:PST arcaea:chartDesigner arcaea:Haruba;
+                        arcaea:jacketDesigner "unKn"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

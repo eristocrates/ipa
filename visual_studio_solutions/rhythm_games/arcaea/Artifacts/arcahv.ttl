@@ -1,0 +1,53 @@
+@prefix arcaea.arcahv: <https://arcaea.lowiro.com/#arcahv#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.arcahv:.
+arcaea.arcahv: arcaea:artist arcaea:Feryquitous;
+               arcaea:audioPreview 1256 ;
+               arcaea:audioPreviewEnd 31413 ;
+               arcaea:bg arcaea:arcahv;
+               arcaea:bpm "191"@en-us;
+               arcaea:bpm_base 191 ;
+               arcaea:date 1590537606 ;
+               arcaea:difficulties arcaea.arcahv:PRS,
+                                   arcaea.arcahv:PST,
+                                   arcaea.arcahv:FTR;
+               arcaea:id "arcahv"@en-us;
+               arcaea:idx 161 ;
+               arcaea:purchase "vs"@en-us;
+               arcaea:remote_dl false;
+               arcaea:search_title "ふぇりきたす"@ja,
+                                   "페리퀴터스"@ko,
+                                   "페리퀴타스"@ko,
+                                   "페리퀴토스"@ko,
+                                   "あーかゔ"@ja,
+                                   "아카브"@ko;
+               arcaea:set "vs"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "Arcahv"@en;
+               arcaea:version "3.0"@en-us;
+               arcaea:world_unlock true.
+arcaea.arcahv:FTR arcaea:chartDesigner arcaea:%E2%88%85;
+                  arcaea:hidden_until "difficulty"@en-us;
+                  arcaea:hidden_until_unlocked true;
+                  arcaea:jacketDesigner "シエラ"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.arcahv:PRS arcaea:chartDesigner arcaea:%E2%88%85;
+                  arcaea:hidden_until "difficulty"@en-us;
+                  arcaea:hidden_until_unlocked true;
+                  arcaea:jacketDesigner "シエラ"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 ;
+                  arcaea:ratingPlus true.
+arcaea.arcahv:PST arcaea:chartDesigner arcaea:%E2%88%85;
+                  arcaea:hidden_until "difficulty"@en-us;
+                  arcaea:hidden_until_unlocked true;
+                  arcaea:jacketDesigner "シエラ"@en-us;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

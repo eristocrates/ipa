@@ -1,0 +1,46 @@
+@prefix arcaea.alicessuitcase: <https://arcaea.lowiro.com/#alicessuitcase#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.alicessuitcase:.
+arcaea.alicessuitcase: arcaea:artist <https://arcaea.lowiro.com/#Endorfin.>;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:alice_light;
+                       arcaea:bg_inverse arcaea:alice_conflict;
+                       arcaea:bpm "190"@en-us;
+                       arcaea:bpm_base 190 ;
+                       arcaea:date 1606953602 ;
+                       arcaea:difficulties arcaea.alicessuitcase:PRS,
+                                           arcaea.alicessuitcase:PST,
+                                           arcaea.alicessuitcase:FTR;
+                       arcaea:id "alicessuitcase"@en-us;
+                       arcaea:idx 185 ;
+                       arcaea:purchase "alice"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "えんどるふぃん"@ja,
+                                           "엔돌핀"@ko,
+                                           "엔도르핀"@ko,
+                                           "ありすずすーつけーす"@ja,
+                                           "앨리스즈 수트케이스"@ko,
+                                           "앨리스 수트케이스"@ko;
+                       arcaea:set "alice"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Alice's Suitcase"@en;
+                       arcaea:version "3.3"@en-us;
+                       arcaea:world_unlock false.
+arcaea.alicessuitcase:FTR arcaea:chartDesigner arcaea:Kurorak;
+                          arcaea:jacketDesigner "にんにくましまし"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.alicessuitcase:PRS arcaea:chartDesigner arcaea:Kurorak;
+                          arcaea:jacketDesigner "にんにくましまし"@en-us;
+                          arcaea:rating 6 ;
+                          arcaea:ratingClass 1 .
+arcaea.alicessuitcase:PST arcaea:chartDesigner arcaea:Kurorak;
+                          arcaea:jacketDesigner "にんにくましまし"@en-us;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

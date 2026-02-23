@@ -1,0 +1,51 @@
+@prefix arcaea.teriqma: <https://arcaea.lowiro.com/#teriqma#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.teriqma:.
+arcaea.teriqma: arcaea:artist arcaea:owl%EF%BC%8Atree;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:chuni-ikazuchi;
+                arcaea:bpm "128"@en-us;
+                arcaea:bpm_base 128 ;
+                arcaea:category arcaea:musicgames;
+                arcaea:date 1594857600 ;
+                arcaea:difficulties arcaea.teriqma:FTR,
+                                    arcaea.teriqma:PRS,
+                                    arcaea.teriqma:PST,
+                                    arcaea.teriqma:BYD;
+                arcaea:id "teriqma"@en-us;
+                arcaea:idx 171 ;
+                arcaea:no_stream true;
+                arcaea:purchase "teriqma"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "おうるつりー"@ja,
+                                    "아울 트리"@ko,
+                                    "てりくま"@ja,
+                                    "테리크마"@ko;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:source_copyright "©SEGA"@en-us;
+                arcaea:title_localized "Teriqma"@en,
+                                       "CHUNITHM"@en;
+                arcaea:version "3.0"@en-us;
+                arcaea:world_unlock false.
+arcaea.teriqma:BYD arcaea:chartDesigner arcaea:%C3%A9n%20200716;
+                   arcaea:date 1679529600 ;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 3 ;
+                   arcaea:ratingPlus true;
+                   arcaea:version "4.4"@en-us.
+arcaea.teriqma:FTR arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.teriqma:PRS arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.teriqma:PST arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

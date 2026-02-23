@@ -1,0 +1,49 @@
+@prefix arcaea.solitarydream: <https://arcaea.lowiro.com/#solitarydream#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.solitarydream:.
+arcaea:jacket_localized arcaea:ja true.
+arcaea.solitarydream: arcaea:artist <https://arcaea.lowiro.com/#ak+q%20feat.%20Sennzai>;
+                      arcaea:audioPreview 49629 ;
+                      arcaea:audioPreviewEnd 68148 ;
+                      arcaea:bg arcaea:solitarydream;
+                      arcaea:bpm "162"@en-us;
+                      arcaea:bpm_base 162 ;
+                      arcaea:date 1552089600 ;
+                      arcaea:difficulties arcaea.solitarydream:FTR,
+                                          arcaea.solitarydream:PRS,
+                                          arcaea.solitarydream:PST;
+                      arcaea:id "solitarydream"@en-us;
+                      arcaea:idx 112 ;
+                      arcaea:jacket_localized arcaea.solitarydream:jacket_localized;
+                      arcaea:purchase "core"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "せんざい"@ja,
+                                          "えーけーぷらすきゅー"@ja,
+                                          "에이케이 플러스 큐"@ko,
+                                          "센자이"@ko,
+                                          "こくうのゆめ"@ja,
+                                          "솔리타리 드림"@ko,
+                                          "솔리터리 드림"@ko,
+                                          "코쿠우노 유메"@ko,
+                                          "공허의 꿈"@ko;
+                      arcaea:set "core"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "虚空の夢"@ja,
+                                             "Solitary Dream"@en;
+                      arcaea:version "1.9"@en-us;
+                      arcaea:world_unlock true.
+arcaea.solitarydream:FTR arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.solitarydream:PRS arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 .
+arcaea.solitarydream:PST arcaea:jacketDesigner "シエラ"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

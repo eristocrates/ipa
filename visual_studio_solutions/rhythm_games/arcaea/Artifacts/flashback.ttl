@@ -1,0 +1,43 @@
+@prefix arcaea.flashback: <https://arcaea.lowiro.com/#flashback#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.flashback:.
+arcaea.flashback: arcaea:artist arcaea:ARForest;
+                  arcaea:audioPreview 88967 ;
+                  arcaea:audioPreviewEnd 108967 ;
+                  arcaea:bg arcaea:shiawase;
+                  arcaea:bpm "195"@en-us;
+                  arcaea:bpm_base 195 ;
+                  arcaea:date 1494547202 ;
+                  arcaea:difficulties arcaea.flashback:PRS,
+                                      arcaea.flashback:PST,
+                                      arcaea.flashback:FTR;
+                  arcaea:id "flashback"@en-us;
+                  arcaea:idx 24 ;
+                  arcaea:purchase "shiawase"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "えーあーるふぉれすと"@ja,
+                                      "에이알 포레스트"@ko,
+                                      "ふらっしゅばっく"@ja,
+                                      "플래시백"@ko;
+                  arcaea:set "shiawase"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Flashback"@en;
+                  arcaea:version "1.0"@en-us.
+arcaea.flashback:FTR arcaea:chartDesigner arcaea:Nitro;
+                     arcaea:jacketDesigner "yoshimo"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.flashback:PRS arcaea:chartDesigner arcaea:Nitro;
+                     arcaea:jacketDesigner "yoshimo"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 1 .
+arcaea.flashback:PST arcaea:chartDesigner arcaea:Nitro;
+                     arcaea:jacketDesigner "yoshimo"@en-us;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

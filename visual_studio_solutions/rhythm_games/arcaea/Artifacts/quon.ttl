@@ -1,0 +1,45 @@
+@prefix arcaea.quon: <https://arcaea.lowiro.com/#quon#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.quon:.
+arcaea.quon: arcaea:artist arcaea:Feryquitous;
+             arcaea:audioPreview 86520 ;
+             arcaea:audioPreviewEnd 111917 ;
+             arcaea:bg arcaea:quon;
+             arcaea:bpm "189"@en-us;
+             arcaea:bpm_base 189 ;
+             arcaea:date 1517443203 ;
+             arcaea:difficulties arcaea.quon:PRS,
+                                 arcaea.quon:PST,
+                                 arcaea.quon:FTR;
+             arcaea:id "quon"@en-us;
+             arcaea:idx 66 ;
+             arcaea:no_stream true;
+             arcaea:purchase "lanota"@en-us;
+             arcaea:remote_dl true;
+             arcaea:search_title "ふぇりきたす"@ja,
+                                 "페리퀴토스"@ko,
+                                 "페리퀴타스"@ko,
+                                 "페리퀴터스"@ko,
+                                 "くおん"@ja,
+                                 "쿠온"@ko;
+             arcaea:set "lanota"@en-us;
+             arcaea:side arcaea:light_side;
+             arcaea:title_localized "Quon"@en;
+             arcaea:version "1.5"@en-us.
+arcaea.quon:FTR arcaea:chartDesigner arcaea:Nitro;
+                arcaea:jacketDesigner "シエラ"@en-us;
+                arcaea:rating 9 ;
+                arcaea:ratingClass 2 .
+arcaea.quon:PRS arcaea:chartDesigner arcaea:Nitro;
+                arcaea:jacketDesigner "シエラ"@en-us;
+                arcaea:rating 6 ;
+                arcaea:ratingClass 1 .
+arcaea.quon:PST arcaea:chartDesigner arcaea:Nitro;
+                arcaea:jacketDesigner "シエラ"@en-us;
+                arcaea:rating 4 ;
+                arcaea:ratingClass 0 .

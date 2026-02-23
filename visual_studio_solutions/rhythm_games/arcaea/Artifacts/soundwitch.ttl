@@ -1,0 +1,44 @@
+@prefix arcaea.soundwitch: <https://arcaea.lowiro.com/#soundwitch#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.soundwitch:.
+arcaea.soundwitch: arcaea:artist arcaea:HATE;
+                   arcaea:audioPreview 52941 ;
+                   arcaea:audioPreviewEnd 79764 ;
+                   arcaea:bg arcaea:yugamu;
+                   arcaea:bg_inverse arcaea:rei;
+                   arcaea:bpm "170"@en-us;
+                   arcaea:bpm_base 170 ;
+                   arcaea:date 1509667204 ;
+                   arcaea:difficulties arcaea.soundwitch:PRS,
+                                       arcaea.soundwitch:PST,
+                                       arcaea.soundwitch:FTR;
+                   arcaea:id "soundwitch"@en-us;
+                   arcaea:idx 51 ;
+                   arcaea:purchase "yugamu"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "へいと"@ja,
+                                       "헤이트"@ko,
+                                       "さうんどうぃっち"@ja,
+                                       "사운드위치"@ko;
+                   arcaea:set "yugamu"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "SOUNDWiTCH"@en;
+                   arcaea:version "1.5"@en-us.
+arcaea.soundwitch:FTR arcaea:chartDesigner arcaea:NiTRO;
+                      arcaea:jacketDesigner "スズカミ"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.soundwitch:PRS arcaea:chartDesigner arcaea:NiTRO;
+                      arcaea:jacketDesigner "スズカミ"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.soundwitch:PST arcaea:chartDesigner arcaea:NiTRO;
+                      arcaea:jacketDesigner "スズカミ"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

@@ -1,0 +1,50 @@
+@prefix arcaea.awakeninruins: <https://arcaea.lowiro.com/#awakeninruins#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.awakeninruins:.
+arcaea.awakeninruins: arcaea:artist arcaea:Supa7onyz;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:prelude_conflict;
+                      arcaea:bg_inverse arcaea:prelude_light;
+                      arcaea:bpm "125"@en-us;
+                      arcaea:bpm_base 125 ;
+                      arcaea:date 1711324802 ;
+                      arcaea:difficulties arcaea.awakeninruins:FTR,
+                                          arcaea.awakeninruins:PRS,
+                                          arcaea.awakeninruins:PST;
+                      arcaea:id "awakeninruins"@en-us;
+                      arcaea:idx 380 ;
+                      arcaea:purchase "extend_3"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "すーぱーとにーず"@ja,
+                                          "스파 토니즈"@ko,
+                                          "수파 토니즈"@ko,
+                                          "수퍼 토니즈"@ko,
+                                          "슈퍼 토니즈"@ko,
+                                          "あうぇーくんいんるいんず"@ja,
+                                          "어웨이큰 인 루인즈"@ko;
+                      arcaea:set "extend_3"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:source_copyright "© TunerGames"@en-us;
+                      arcaea:title_localized "Awaken In Ruins"@en,
+                                             "Paradigm: Reboot"@en;
+                      arcaea:version "5.5"@en-us;
+                      arcaea:world_unlock true.
+arcaea.awakeninruins:FTR arcaea:chartDesigner arcaea:antymis;
+                         arcaea:jacketDesigner "人間蛋"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.awakeninruins:PRS arcaea:chartDesigner arcaea:antymis;
+                         arcaea:jacketDesigner "人間蛋"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 .
+arcaea.awakeninruins:PST arcaea:chartDesigner arcaea:antymis;
+                         arcaea:jacketDesigner "人間蛋"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

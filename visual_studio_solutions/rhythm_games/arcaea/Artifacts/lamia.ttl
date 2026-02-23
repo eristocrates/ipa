@@ -1,0 +1,45 @@
+@prefix arcaea.lamia: <https://arcaea.lowiro.com/#lamia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lamia:.
+arcaea.lamia: arcaea:artist arcaea:BlackY;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:lamia;
+              arcaea:bpm "199"@en-us;
+              arcaea:bpm_base 199 ;
+              arcaea:date 1664409604 ;
+              arcaea:difficulties arcaea.lamia:FTR,
+                                  arcaea.lamia:PRS,
+                                  arcaea.lamia:PST;
+              arcaea:id "lamia"@en-us;
+              arcaea:idx 289 ;
+              arcaea:no_stream true;
+              arcaea:purchase "ongeki_append_1"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "ぶらっきー"@ja,
+                                  "블래키"@ko,
+                                  "블랙키"@ko,
+                                  "らみあ"@ja,
+                                  "라미아"@ko;
+              arcaea:set "ongeki_append_1"@en-us;
+              arcaea:side arcaea:conflict_side;
+              arcaea:source_copyright "©SEGA"@en-us;
+              arcaea:title_localized "LAMIA"@en,
+                                     "O.N.G.E.K.I."@en;
+              arcaea:version "4.1"@en-us;
+              arcaea:world_unlock false.
+arcaea.lamia:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#[漆黒の執行者]%20夜浪>;
+                 arcaea:legacy11 false;
+                 arcaea:rating 11 ;
+                 arcaea:ratingClass 2 .
+arcaea.lamia:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%8C%E3%83%8E%E3%83%96%E3%83%AC%E3%82%B9%E3%83%BB%E3%82%AA%E3%83%96%E3%83%AA%E3%83%BC%E3%82%B8%E3%83%A5%E3%80%8D;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 1 .
+arcaea.lamia:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                 arcaea:rating 5 ;
+                 arcaea:ratingClass 0 .

@@ -1,0 +1,53 @@
+@prefix arcaea.lilly: <https://arcaea.lowiro.com/#lilly#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lilly:.
+arcaea.lilly: arcaea:artist <https://arcaea.lowiro.com/#Juggernaut.>;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:anima_light;
+              arcaea:bg_inverse arcaea:anima_conflict;
+              arcaea:bpm "235"@en-us;
+              arcaea:bpm_base 235 ;
+              arcaea:date 1753315204 ;
+              arcaea:difficulties arcaea.lilly:FTR,
+                                  arcaea.lilly:PRS,
+                                  arcaea.lilly:PST,
+                                  arcaea.lilly:ETR;
+              arcaea:id "lilly"@en-us;
+              arcaea:idx 476 ;
+              arcaea:purchase "anima"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "じゃがーのーと"@ja,
+                                  "저거넛"@ko,
+                                  "저거노트"@ko,
+                                  "りりぃ"@ja,
+                                  "りりい"@ja,
+                                  "릴리"@ko;
+              arcaea:set "anima"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:title_localized "Lilly"@en;
+              arcaea:version "6.7"@en-us;
+              arcaea:world_unlock false.
+arcaea.lilly:ETR arcaea:chartDesigner arcaea:%E7%91%9E%E7%8D%A3%E3%80%90%E5%BF%9C%E9%BE%8D%E3%80%91;
+                 arcaea:jacketDesigner "イシダタツキ"@en-us;
+                 arcaea:rating 10 ;
+                 arcaea:ratingClass 4 ;
+                 arcaea:ratingPlus true.
+arcaea.lilly:FTR arcaea:chartDesigner arcaea:%E5%8F%8D%E6%B0%B4%E3%80%90%E5%A4%A9%E9%BE%8D%E3%80%91;
+                 arcaea:jacketDesigner "イシダタツキ"@en-us;
+                 arcaea:rating 9 ;
+                 arcaea:ratingClass 2 ;
+                 arcaea:ratingPlus true.
+arcaea.lilly:PRS arcaea:chartDesigner arcaea:%E5%8F%8D%E6%B0%B4%E3%80%90%E5%A4%A9%E9%BE%8D%E3%80%91;
+                 arcaea:jacketDesigner "イシダタツキ"@en-us;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 1 .
+arcaea.lilly:PST arcaea:chartDesigner arcaea:%E5%8F%8D%E6%B0%B4%E3%80%90%E5%A4%A9%E9%BE%8D%E3%80%91;
+                 arcaea:jacketDesigner "イシダタツキ"@en-us;
+                 arcaea:rating 5 ;
+                 arcaea:ratingClass 0 .

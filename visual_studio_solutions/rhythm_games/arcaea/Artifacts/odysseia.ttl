@@ -1,0 +1,47 @@
+@prefix arcaea.odysseia: <https://arcaea.lowiro.com/#odysseia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.odysseia:.
+arcaea.odysseia: arcaea:artist arcaea:Sober%20Bear;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:observer_conflict;
+                 arcaea:bg_inverse arcaea:observer_light;
+                 arcaea:bpm "174"@en-us;
+                 arcaea:bpm_base 174 ;
+                 arcaea:date 1620691206 ;
+                 arcaea:difficulties arcaea.odysseia:PRS,
+                                     arcaea.odysseia:PST,
+                                     arcaea.odysseia:FTR;
+                 arcaea:id "odysseia"@en-us;
+                 arcaea:idx 215 ;
+                 arcaea:purchase "observer_append_1"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "そばべあ"@ja,
+                                     "소버 베어"@ko,
+                                     "おでゅっせいあ"@ja,
+                                     "오딧세이아"@ko,
+                                     "오디세이아"@ko,
+                                     "odysseia"@en;
+                 arcaea:set "observer_append_1"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "ΟΔΥΣΣΕΙΑ"@en;
+                 arcaea:version "3.6"@en-us;
+                 arcaea:world_unlock false.
+arcaea.odysseia:FTR arcaea:chartDesigner arcaea:%CE%A4%CE%9F%CE%91%CE%A3%CE%A4%CE%95%CE%A1;
+                    arcaea:jacketDesigner "SHIROTA."@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.odysseia:PRS arcaea:chartDesigner arcaea:%CE%A4%CE%9F%CE%91%CE%A3%CE%A4%CE%95%CE%A1;
+                    arcaea:jacketDesigner "SHIROTA."@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 ;
+                    arcaea:ratingPlus true.
+arcaea.odysseia:PST arcaea:chartDesigner arcaea:%CE%A4%CE%9F%CE%91%CE%A3%CE%A4%CE%95%CE%A1;
+                    arcaea:jacketDesigner "SHIROTA."@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

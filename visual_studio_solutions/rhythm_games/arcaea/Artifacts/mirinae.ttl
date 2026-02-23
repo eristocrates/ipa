@@ -1,0 +1,49 @@
+@prefix arcaea.mirinae: <https://arcaea.lowiro.com/#mirinae#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mirinae:.
+arcaea.mirinae: arcaea:artist arcaea:TAK%20%C3%97%20Zekk;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:nijuusei2_light;
+                arcaea:bg_inverse arcaea:nijuusei2_conflict;
+                arcaea:bpm "180"@en-us;
+                arcaea:bpm_base 180 ;
+                arcaea:category arcaea:original;
+                arcaea:date 1711324805 ;
+                arcaea:difficulties arcaea.mirinae:FTR,
+                                    arcaea.mirinae:PRS,
+                                    arcaea.mirinae:PST;
+                arcaea:id "mirinae"@en-us;
+                arcaea:idx 383 ;
+                arcaea:purchase "mirinae"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "たっく"@ja,
+                                    "ぜっく"@ja,
+                                    "탁"@ko,
+                                    "젝"@ko,
+                                    "제크"@ko,
+                                    "みりね"@ja,
+                                    "みりねー"@ja,
+                                    "미리내"@ko;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "MIRINAE"@en;
+                arcaea:version "5.5"@en-us;
+                arcaea:world_unlock false.
+arcaea.mirinae:FTR arcaea:chartDesigner arcaea:N%E2%86%91TRO;
+                   arcaea:jacketDesigner "すずなし"@en-us;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 2 .
+arcaea.mirinae:PRS arcaea:chartDesigner arcaea:N%E2%86%91TRO;
+                   arcaea:jacketDesigner "すずなし"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 1 .
+arcaea.mirinae:PST arcaea:chartDesigner arcaea:N%E2%86%91TRO;
+                   arcaea:jacketDesigner "すずなし"@en-us;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

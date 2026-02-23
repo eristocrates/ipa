@@ -1,0 +1,47 @@
+@prefix arcaea.freemyself: <https://arcaea.lowiro.com/#freemyself#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.freemyself:.
+arcaea.freemyself: arcaea:artist arcaea:lapix%20feat.%20mami;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:single2_light;
+                   arcaea:bg_inverse arcaea:single2_conflict;
+                   arcaea:bpm "153"@en-us;
+                   arcaea:bpm_base 153 ;
+                   arcaea:category arcaea:partner;
+                   arcaea:date 1668038400 ;
+                   arcaea:difficulties arcaea.freemyself:PRS,
+                                       arcaea.freemyself:PST,
+                                       arcaea.freemyself:FTR;
+                   arcaea:id "freemyself"@en-us;
+                   arcaea:idx 290 ;
+                   arcaea:purchase "freemyself"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "らぴす"@ja,
+                                       "まみ"@ja,
+                                       "라피스"@ko,
+                                       "마미"@ko,
+                                       "ふりーまいせるふ"@ja,
+                                       "프리 마이셀프"@ko;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "Free Myself"@en;
+                   arcaea:version "4.1"@en-us;
+                   arcaea:world_unlock false.
+arcaea.freemyself:FTR arcaea:chartDesigner arcaea:Exschwasion%20-unbound-;
+                      arcaea:jacketDesigner "裕"@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 2 .
+arcaea.freemyself:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "裕"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 .
+arcaea.freemyself:PST arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "裕"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

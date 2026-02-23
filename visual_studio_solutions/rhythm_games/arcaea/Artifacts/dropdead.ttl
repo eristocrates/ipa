@@ -1,0 +1,61 @@
+@prefix arcaea.dropdead: <https://arcaea.lowiro.com/#dropdead#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dropdead:.
+arcaea.dropdead: arcaea:artist arcaea:Frums;
+                 arcaea:audioPreview 36188 ;
+                 arcaea:audioPreviewEnd 63759 ;
+                 arcaea:bg arcaea:base_conflict;
+                 arcaea:bg_inverse arcaea:base_light;
+                 arcaea:bpm "50"@en-us;
+                 arcaea:bpm_base 200 ;
+                 arcaea:category arcaea:original;
+                 arcaea:date 1533859201 ;
+                 arcaea:difficulties arcaea.dropdead:BYD,
+                                     arcaea.dropdead:FTR,
+                                     arcaea.dropdead:PRS,
+                                     arcaea.dropdead:PST;
+                 arcaea:id "dropdead"@en-us;
+                 arcaea:idx 91 ;
+                 arcaea:purchase "dropdead"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ふらむす"@ja,
+                                     "프럼스"@ko,
+                                     "どろっぷでっど"@ja,
+                                     "おーばーでっど"@ja,
+                                     "드롭데드"@ko,
+                                     "드랍데드"@ko;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "dropdead"@en;
+                 arcaea:version "1.7"@en-us.
+arcaea.dropdead:BYD arcaea:artist arcaea:fn;
+                    arcaea:audioOverride true;
+                    arcaea:bg arcaea:byd_conflict;
+                    arcaea:bg_inverse arcaea:byd_light;
+                    arcaea:bpm "500"@en-us;
+                    arcaea:bpm_base 500 ;
+                    arcaea:chartDesigner <https://arcaea.lowiro.com/#絶滅%20over%20夜浪.>;
+                    arcaea:date 1646784003 ;
+                    arcaea:jacketDesigner "Hanamori Hiro + yusi."@en-us;
+                    arcaea:jacketOverride true;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 3 ;
+                    arcaea:version "3.12"@en-us.
+arcaea.dropdead:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#-chartaesthesia-%0ALIMITER:25%25%20(OVERDRIVE:+100%25)>;
+                    arcaea:jacketDesigner "Hanamori Hiro"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.dropdead:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#-chartaesthesia-%0ALIMITER:100%25>;
+                    arcaea:jacketDesigner "Hanamori Hiro"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 1 .
+arcaea.dropdead:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#-chartaesthesia-%0ALIMITER:10%25>;
+                    arcaea:jacketDesigner "Hanamori Hiro"@en-us;
+                    arcaea:rating 1 ;
+                    arcaea:ratingClass 0 .

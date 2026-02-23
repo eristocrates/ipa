@@ -1,0 +1,47 @@
+@prefix arcaea.izana: <https://arcaea.lowiro.com/#izana#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.izana:.
+arcaea.izana: arcaea:artist <https://arcaea.lowiro.com/#t+pazolite%20vs%20P*Light>;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:tanoc_light;
+              arcaea:bg_inverse arcaea:tanoc_conflict;
+              arcaea:bpm "222"@en-us;
+              arcaea:bpm_base 222 ;
+              arcaea:category arcaea:original;
+              arcaea:date 1579478402 ;
+              arcaea:difficulties arcaea.izana:PRS,
+                                  arcaea.izana:PST,
+                                  arcaea.izana:FTR;
+              arcaea:id "izana"@en-us;
+              arcaea:idx 148 ;
+              arcaea:purchase "izana"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "とぱぞらいと"@ja,
+                                  "ぴーらいと"@ja,
+                                  "토파졸라이트"@ko,
+                                  "피 라이트"@ko,
+                                  "いざな"@ja,
+                                  "이자나"@ko;
+              arcaea:set "single"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:title_localized "IZANA"@en;
+              arcaea:version "2.5"@en-us;
+              arcaea:world_unlock false.
+arcaea.izana:FTR arcaea:chartDesigner arcaea:NITRO;
+                 arcaea:jacketDesigner "Nagu"@en-us;
+                 arcaea:rating 10 ;
+                 arcaea:ratingClass 2 .
+arcaea.izana:PRS arcaea:chartDesigner arcaea:NITRO;
+                 arcaea:jacketDesigner "Nagu"@en-us;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 1 .
+arcaea.izana:PST arcaea:chartDesigner arcaea:NITRO;
+                 arcaea:jacketDesigner "Nagu"@en-us;
+                 arcaea:rating 5 ;
+                 arcaea:ratingClass 0 .

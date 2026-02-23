@@ -1,0 +1,50 @@
+@prefix arcaea.mask: <https://arcaea.lowiro.com/#mask#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mask:.
+arcaea.mask: arcaea:artist <https://arcaea.lowiro.com/#AQUASINE%20~%20MEMODEMO%20+%20METAROOM>;
+             arcaea:audioPreview 0 ;
+             arcaea:audioPreviewEnd 0 ;
+             arcaea:bg arcaea:nijuusei2_light;
+             arcaea:bg_inverse arcaea:nijuusei2_conflict;
+             arcaea:bpm "213.5"@en-us;
+             arcaea:bpm_base 213.5;
+             arcaea:date 1766534401 ;
+             arcaea:difficulties arcaea.mask:FTR,
+                                 arcaea.mask:PRS,
+                                 arcaea.mask:PST;
+             arcaea:id "mask"@en-us;
+             arcaea:idx 509 ;
+             arcaea:purchase "extend_4"@en-us;
+             arcaea:remote_dl true;
+             arcaea:search_title "あくあさいん"@ja,
+                                 "めもでも"@ja,
+                                 "めたるーむ"@ja,
+                                 "아쿠아사인"@ko,
+                                 "메모데모"@ko,
+                                 "메타룸"@ko,
+                                 "ますく"@ja,
+                                 "마스크"@ko,
+                                 "mask"@en;
+             arcaea:set "extend_4"@en-us;
+             arcaea:side arcaea:light_side;
+             arcaea:title_localized "~_+"@en;
+             arcaea:version "6.11"@en-us;
+             arcaea:world_unlock true.
+arcaea.mask:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#KARA+_~1.TMP>;
+                arcaea:jacketDesigner "なのに！ + Vormis."@en-us;
+                arcaea:rating 9 ;
+                arcaea:ratingClass 2 ;
+                arcaea:ratingPlus true.
+arcaea.mask:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#KARA+_~1.TMP>;
+                arcaea:jacketDesigner "なのに！ + Vormis."@en-us;
+                arcaea:rating 8 ;
+                arcaea:ratingClass 1 .
+arcaea.mask:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#KARA+_~1.TMP>;
+                arcaea:jacketDesigner "なのに！ + Vormis."@en-us;
+                arcaea:rating 4 ;
+                arcaea:ratingClass 0 .

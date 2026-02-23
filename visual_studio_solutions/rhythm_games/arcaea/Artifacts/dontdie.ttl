@@ -1,0 +1,48 @@
+@prefix arcaea.dontdie: <https://arcaea.lowiro.com/#dontdie#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dontdie:.
+arcaea.dontdie: arcaea:artist arcaea:Paul%20Bazooka;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:djmax_conflict;
+                arcaea:bg_inverse arcaea:djmax_light;
+                arcaea:bpm "175"@en-us;
+                arcaea:bpm_base 175 ;
+                arcaea:category arcaea:musicgames;
+                arcaea:date 1747872001 ;
+                arcaea:difficulties arcaea.dontdie:FTR,
+                                    arcaea.dontdie:PRS,
+                                    arcaea.dontdie:PST,
+                                    arcaea.dontdie:ETR;
+                arcaea:id "dontdie"@en-us;
+                arcaea:idx 457 ;
+                arcaea:purchase "dontdie"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "ぽーるばずーか"@ja,
+                                    "폴 바주카"@ko,
+                                    "どんとだい"@ja,
+                                    "돈 다이"@ko;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:source_copyright "© NEOWIZ"@en-us;
+                arcaea:title_localized "Don't Die"@en,
+                                       "DJMAX"@en;
+                arcaea:version "6.5"@en-us;
+                arcaea:world_unlock false.
+arcaea.dontdie:ETR arcaea:chartDesigner arcaea:nora::neko;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 4 .
+arcaea.dontdie:FTR arcaea:chartDesigner arcaea:nora::neko;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.dontdie:PRS arcaea:chartDesigner arcaea:nora::neko;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.dontdie:PST arcaea:chartDesigner arcaea:nora::neko;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

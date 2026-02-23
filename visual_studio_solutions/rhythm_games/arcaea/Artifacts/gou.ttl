@@ -1,0 +1,52 @@
+@prefix arcaea.gou: <https://arcaea.lowiro.com/#gou#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.gou:.
+arcaea.gou: arcaea:artist arcaea:%E5%85%89%E5%90%89%E7%8C%9B%E4%BF%AE%20VS%20%E7%A9%B4%E5%B1%B1%E5%A4%A7%E8%BC%94;
+            arcaea:audioPreview 0 ;
+            arcaea:audioPreviewEnd 0 ;
+            arcaea:bg arcaea:gou;
+            arcaea:bpm "190"@en-us;
+            arcaea:bpm_base 190 ;
+            arcaea:date 1611187202 ;
+            arcaea:difficulties arcaea.gou:FTR,
+                                arcaea.gou:PRS,
+                                arcaea.gou:PST;
+            arcaea:id "gou"@en-us;
+            arcaea:idx 201 ;
+            arcaea:no_stream true;
+            arcaea:purchase "chunithm_append_1"@en-us;
+            arcaea:remote_dl true;
+            arcaea:search_title "아나야마 다이스케"@ko,
+                                "타케노부 미츠요시"@ko,
+                                "あなやまだいすけ"@ja,
+                                "みつよしたけのぶ"@ja,
+                                "takenobu mitsuyoshi"@en,
+                                "anayama daisuke"@en,
+                                "ごうぜんなるかみとこのよのあくについて"@ja,
+                                "미스디드 라 봉뜨 드 듀 엣 로히진 듀 마"@ko,
+                                "고우젠나루 카미토 코노요노 아쿠니 츠이테"@ko,
+                                "업 선한 신과 이 세상의 악에 관하여"@ko;
+            arcaea:set "chunithm_append_1"@en-us;
+            arcaea:side arcaea:light_side;
+            arcaea:source_copyright "©SEGA"@en-us;
+            arcaea:title_localized "業 -善なる神とこの世の悪について-"@ja,
+                                   "Misdeed -la bonte de Dieu et l'origine du mal-"@ko,
+                                   "Misdeed -la bonté de Dieu et l'origine du mal-"@en,
+                                   "CHUNITHM"@en;
+            arcaea:version "3.5"@en-us;
+            arcaea:world_unlock false.
+arcaea.gou:FTR arcaea:chartDesigner arcaea:%E7%A5%9E%E3%81%AE%E5%95%93%E7%A4%BA%E3%80%8C%E4%BA%BA%E9%A1%9E%E3%81%AE%E6%9C%AA%E6%9D%A5%E3%80%8D;
+               arcaea:rating 10 ;
+               arcaea:ratingClass 2 ;
+               arcaea:ratingPlus true.
+arcaea.gou:PRS arcaea:chartDesigner arcaea:%E7%A5%9E%E3%81%AE%E5%95%93%E7%A4%BA%E3%80%8C%E4%BA%BA%E9%A1%9E%E3%81%AE%E5%B8%8C%E6%9C%9B%E3%80%8D;
+               arcaea:rating 8 ;
+               arcaea:ratingClass 1 .
+arcaea.gou:PST arcaea:chartDesigner arcaea:%E7%A5%9E%E3%81%AE%E5%95%93%E7%A4%BA%E3%80%8C%E4%BA%BA%E9%A1%9E%E3%81%AE%E9%99%90%E7%95%8C%E3%80%8D;
+               arcaea:rating 5 ;
+               arcaea:ratingClass 0 .

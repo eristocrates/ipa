@@ -1,0 +1,43 @@
+@prefix arcaea.diode: <https://arcaea.lowiro.com/#diode#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.diode:.
+arcaea.diode: arcaea:artist arcaea:Kolaa;
+              arcaea:audioPreview 30000 ;
+              arcaea:audioPreviewEnd 52727 ;
+              arcaea:bg arcaea:shiawase;
+              arcaea:bpm "132"@en-us;
+              arcaea:bpm_base 132 ;
+              arcaea:date 1570492800 ;
+              arcaea:difficulties arcaea.diode:PRS,
+                                  arcaea.diode:PST,
+                                  arcaea.diode:FTR;
+              arcaea:id "diode"@en-us;
+              arcaea:idx 137 ;
+              arcaea:remote_dl true;
+              arcaea:search_title "こーらあ"@ja,
+                                  "こーらー"@ja,
+                                  "콜라"@ko,
+                                  "だいおーど"@ja,
+                                  "다이오드"@ko;
+              arcaea:set "base"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:title_localized "Diode"@en;
+              arcaea:version "2.4"@en-us;
+              arcaea:world_unlock true.
+arcaea.diode:FTR arcaea:chartDesigner arcaea:Kurorak;
+                 arcaea:jacketDesigner "キッカイキ"@en-us;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 2 .
+arcaea.diode:PRS arcaea:chartDesigner arcaea:Kurorak;
+                 arcaea:jacketDesigner "キッカイキ"@en-us;
+                 arcaea:rating 5 ;
+                 arcaea:ratingClass 1 .
+arcaea.diode:PST arcaea:chartDesigner arcaea:Kurorak;
+                 arcaea:jacketDesigner "キッカイキ"@en-us;
+                 arcaea:rating 2 ;
+                 arcaea:ratingClass 0 .

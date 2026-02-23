@@ -1,0 +1,53 @@
+@prefix arcaea.rainofconflict: <https://arcaea.lowiro.com/#rainofconflict#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.rainofconflict:.
+arcaea.rainofconflict: arcaea:artist <https://arcaea.lowiro.com/#ak+q>;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:finale_conflict;
+                       arcaea:bg_inverse arcaea:finale_light;
+                       arcaea:bpm "195"@en-us;
+                       arcaea:bpm_base 195 ;
+                       arcaea:category arcaea:original;
+                       arcaea:date 1726099200 ;
+                       arcaea:difficulties arcaea.rainofconflict:FTR,
+                                           arcaea.rainofconflict:PRS,
+                                           arcaea.rainofconflict:PST,
+                                           arcaea.rainofconflict:ETR;
+                       arcaea:id "rainofconflict"@en-us;
+                       arcaea:idx 413 ;
+                       arcaea:purchase "rainofconflict"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "えーけーぷらすきゅー"@ja,
+                                           "에이케이 플러스 큐"@ko,
+                                           "れいんおぶこんふりくといんあれでぃあんとあびす"@ja,
+                                           "れいんおぶこんふりくといんあらじあんとあびす"@ja,
+                                           "れいんおぶこんふりくといんあらでぃあんとあびす"@ja,
+                                           "레인 오브 컨플릭트 인 어 래디언트 어비스"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "Rain of Conflict in a Radiant Abyss"@en;
+                       arcaea:version "5.10"@en-us;
+                       arcaea:world_unlock false.
+arcaea.rainofconflict:ETR arcaea:chartDesigner arcaea:Nitro%20meets%20Toaster%20%E2%80%9Cv20170309%E2%80%9D;
+                          arcaea:jacketDesigner "辷"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 4 .
+arcaea.rainofconflict:FTR arcaea:chartDesigner arcaea:Nitro%20%E2%80%9Cv20170309%E2%80%9D;
+                          arcaea:jacketDesigner "辷"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.rainofconflict:PRS arcaea:chartDesigner arcaea:Nitro%20%E2%80%9Cv20170309%E2%80%9D;
+                          arcaea:jacketDesigner "辷"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 ;
+                          arcaea:ratingPlus true.
+arcaea.rainofconflict:PST arcaea:chartDesigner arcaea:Nitro%20%E2%80%9Cv20170309%E2%80%9D;
+                          arcaea:jacketDesigner "辷"@en-us;
+                          arcaea:rating 5 ;
+                          arcaea:ratingClass 0 .

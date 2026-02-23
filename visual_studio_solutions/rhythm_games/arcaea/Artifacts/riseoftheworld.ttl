@@ -1,0 +1,49 @@
+@prefix arcaea.riseoftheworld: <https://arcaea.lowiro.com/#riseoftheworld#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.riseoftheworld:.
+arcaea.riseoftheworld: arcaea:artist arcaea:cosMo%EF%BC%A0%E6%9A%B4%E8%B5%B0P;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:eden_light;
+                       arcaea:bg_inverse arcaea:eden_conflict;
+                       arcaea:bpm "182-212"@en-us;
+                       arcaea:bpm_base 212 ;
+                       arcaea:date 1692230404 ;
+                       arcaea:difficulties arcaea.riseoftheworld:FTR,
+                                           arcaea.riseoftheworld:PRS,
+                                           arcaea.riseoftheworld:PST;
+                       arcaea:id "riseoftheworld"@en-us;
+                       arcaea:idx 339 ;
+                       arcaea:purchase "eden"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "こすもぼうそうぴー"@ja,
+                                           "こすもあっとぼうそうぴー"@ja,
+                                           "코스모폭주피"@ko,
+                                           "코스모앳폭주피"@ko,
+                                           "코스모폭주P"@ko,
+                                           "코스모앳폭주P"@ko,
+                                           "bousou"@en,
+                                           "らいずおぶざわーるど"@ja,
+                                           "라이즈 오브 더 월드"@ko;
+                       arcaea:set "eden"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Rise of the World"@en;
+                       arcaea:version "4.7"@en-us;
+                       arcaea:world_unlock false.
+arcaea.riseoftheworld:FTR arcaea:chartDesigner arcaea:N%E2%87%91TRO;
+                          arcaea:jacketDesigner "Asgard"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 .
+arcaea.riseoftheworld:PRS arcaea:chartDesigner arcaea:N%E2%87%91TRO;
+                          arcaea:jacketDesigner "Asgard"@en-us;
+                          arcaea:rating 8 ;
+                          arcaea:ratingClass 1 .
+arcaea.riseoftheworld:PST arcaea:chartDesigner arcaea:N%E2%87%91TRO;
+                          arcaea:jacketDesigner "Asgard"@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

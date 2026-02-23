@@ -1,0 +1,57 @@
+@prefix arcaea.megalovaniarmx: <https://arcaea.lowiro.com/#megalovaniarmx#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.megalovaniarmx:.
+arcaea.megalovaniarmx: arcaea:artist arcaea:Camellia;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:megalovaniarmx;
+                       arcaea:bg_inverse arcaea:megalovaniarmx;
+                       arcaea:bpm "242"@en-us;
+                       arcaea:bpm_base 242 ;
+                       arcaea:category arcaea:poprec;
+                       arcaea:date 1741478405 ;
+                       arcaea:difficulties arcaea.megalovaniarmx:FTR,
+                                           arcaea.megalovaniarmx:PRS,
+                                           arcaea.megalovaniarmx:PST,
+                                           arcaea.megalovaniarmx:ETR;
+                       arcaea:id "megalovaniarmx"@en-us;
+                       arcaea:idx 449 ;
+                       arcaea:limitedSaleEndTime 1804550400 ;
+                       arcaea:no_stream true;
+                       arcaea:purchase "megalovaniarmx"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "かめりあ"@ja,
+                                           "카멜리아"@ko,
+                                           "めがろゔぁにあかめりありみっくす"@ja,
+                                           "めがろばにあかめりありみっくす"@ja,
+                                           "메갈로바니아 카멜리아 리믹스"@ko,
+                                           "메갈로베니아 카멜리아 리믹스"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "MEGALOVANIA (Camellia Remix)"@en,
+                                              "UNDERTALE®"@en;
+                       arcaea:version "6.3"@en-us;
+                       arcaea:world_unlock false.
+arcaea.megalovaniarmx:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#*%20do%20you%20wanna%20have%20a%20bad%20time?>;
+                          arcaea:jacketDesigner "夏生"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 4 ;
+                          arcaea:ratingPlus true.
+arcaea.megalovaniarmx:FTR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                          arcaea:jacketDesigner "夏生"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.megalovaniarmx:PRS arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                          arcaea:jacketDesigner "夏生"@en-us;
+                          arcaea:rating 8 ;
+                          arcaea:ratingClass 1 .
+arcaea.megalovaniarmx:PST arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                          arcaea:jacketDesigner "夏生"@en-us;
+                          arcaea:rating 5 ;
+                          arcaea:ratingClass 0 .

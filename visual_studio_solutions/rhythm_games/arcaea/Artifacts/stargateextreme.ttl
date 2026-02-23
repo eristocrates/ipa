@@ -1,0 +1,54 @@
+@prefix arcaea.stargateextreme: <https://arcaea.lowiro.com/#stargateextreme#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.stargateextreme:.
+arcaea.stargateextreme: arcaea:artist arcaea:KARUT;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:nijuusei2_conflict;
+                        arcaea:bg_inverse arcaea:nijuusei2_light;
+                        arcaea:bpm "150"@en-us;
+                        arcaea:bpm_base 150 ;
+                        arcaea:category arcaea:musicgames;
+                        arcaea:date 1719446400 ;
+                        arcaea:difficulties arcaea.stargateextreme:FTR,
+                                            arcaea.stargateextreme:PRS,
+                                            arcaea.stargateextreme:PST,
+                                            arcaea.stargateextreme:ETR;
+                        arcaea:id "stargateextreme"@en-us;
+                        arcaea:idx 395 ;
+                        arcaea:purchase "stargateextreme"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "かると"@ja,
+                                            "카루트"@ko,
+                                            "카룻"@ko,
+                                            "すたーげーとえくすとりーむ"@ja,
+                                            "스트레인지 익스트림"@ko;
+                        arcaea:set "single"@en-us;
+                        arcaea:side arcaea:conflict_side;
+                        arcaea:source_copyright "© Starlike"@en-us;
+                        arcaea:title_localized "STARGATE EXTREME"@en,
+                                               "Sixtar Gate: STARTRAIL"@en;
+                        arcaea:version "5.8"@en-us;
+                        arcaea:world_unlock false.
+arcaea.stargateextreme:ETR arcaea:chartDesigner arcaea:ei%C3%A9n;
+                           arcaea:jacketDesigner "SARYN"@en-us;
+                           arcaea:rating 9 ;
+                           arcaea:ratingClass 4 ;
+                           arcaea:ratingPlus true.
+arcaea.stargateextreme:FTR arcaea:chartDesigner arcaea:%C3%A9n;
+                           arcaea:jacketDesigner "SARYN"@en-us;
+                           arcaea:rating 9 ;
+                           arcaea:ratingClass 2 .
+arcaea.stargateextreme:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                           arcaea:jacketDesigner "SARYN"@en-us;
+                           arcaea:rating 6 ;
+                           arcaea:ratingClass 1 .
+arcaea.stargateextreme:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                           arcaea:jacketDesigner "SARYN"@en-us;
+                           arcaea:rating 4 ;
+                           arcaea:ratingClass 0 .

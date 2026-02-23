@@ -1,0 +1,54 @@
+@prefix arcaea.arghena: <https://arcaea.lowiro.com/#arghena#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.arghena:.
+arcaea:additional_files arcaea:file_name "video_1080.mp4"@en-us,
+                                         "video_720.mp4"@en-us;
+                        arcaea:requirement "hi_res"@en-us,
+                                           "low_res"@en-us.
+arcaea.arghena: arcaea:additional_files arcaea.arghena:additional_files;
+                arcaea:artist arcaea:Feryquitous%20vs%20Laur;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:arghena;
+                arcaea:bg_inverse arcaea:arghena;
+                arcaea:bpm "185"@en-us;
+                arcaea:bpm_base 185 ;
+                arcaea:date 1695772808 ;
+                arcaea:difficulties arcaea.arghena:FTR,
+                                    arcaea.arghena:PRS,
+                                    arcaea.arghena:PST;
+                arcaea:id "arghena"@en-us;
+                arcaea:idx 352 ;
+                arcaea:purchase "eden_append_1"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "ふぇりきたす"@ja,
+                                    "らうる"@ja,
+                                    "페리퀴토스"@ko,
+                                    "라우르"@ko,
+                                    "あーげな"@ja,
+                                    "あげな"@ja,
+                                    "아르게나"@ko,
+                                    "아게나"@ko;
+                arcaea:set "eden_append_1"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Arghena"@en;
+                arcaea:version "5.0"@en-us;
+                arcaea:world_unlock false.
+arcaea.arghena:FTR arcaea:chartDesigner arcaea:%E7%AC%AC%E4%B8%89%E8%AD%98%20%22Pluriversality%22;
+                   arcaea:jacketDesigner "すずなし"@en-us;
+                   arcaea:legacy11 true;
+                   arcaea:rating 11 ;
+                   arcaea:ratingClass 2 .
+arcaea.arghena:PRS arcaea:chartDesigner arcaea:%E7%AC%AC%E4%BA%8C%E8%AD%98%20%22Causality%22;
+                   arcaea:jacketDesigner "すずなし"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 1 .
+arcaea.arghena:PST arcaea:chartDesigner arcaea:%E7%AC%AC%E4%B8%80%E8%AD%98%20%22Reality%22;
+                   arcaea:jacketDesigner "すずなし"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 0 .

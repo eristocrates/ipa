@@ -1,0 +1,50 @@
+@prefix arcaea.edenwacca: <https://arcaea.lowiro.com/#edenwacca#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.edenwacca:.
+arcaea.edenwacca: arcaea:artist arcaea:%22%E6%BC%86%E9%BB%92%22%E3%81%AE%E5%A0%95%E5%A4%A9%E4%BD%BF%E3%80%8AGram%E3%80%8B%E2%80%A0Versus%E2%80%A0%22%E8%81%96%E5%88%BB%22%E3%81%AE%E7%86%BE%E5%A4%A9%E4%BD%BF%E3%80%8AGram%E3%80%8B;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:wacca_conflict;
+                  arcaea:bg_inverse arcaea:wacca_light;
+                  arcaea:bpm "246"@en-us;
+                  arcaea:bpm_base 246 ;
+                  arcaea:date 1701302403 ;
+                  arcaea:difficulties arcaea.edenwacca:FTR,
+                                      arcaea.edenwacca:PRS,
+                                      arcaea.edenwacca:PST;
+                  arcaea:id "edenwacca"@en-us;
+                  arcaea:idx 360 ;
+                  arcaea:purchase "wacca_append_1"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "싯코쿠노 다텐시 그라무"@ko,
+                                      "せいこくのしてんしぐらむ"@ja,
+                                      "しっこくのだてんしぐらむ"@ja,
+                                      "세이코쿠노 시텐시 그라무"@ko,
+                                      "칠흑의 타천사 그람"@ko,
+                                      "성각의 치천사 그람"@ko,
+                                      "칠흑의 타천사 그램"@ko,
+                                      "성각의 치천사 그램"@ko,
+                                      "shikkoku no datenshi"@en,
+                                      "seikoku no shitenshi"@en,
+                                      "えでん"@ja,
+                                      "에덴"@ko;
+                  arcaea:set "wacca_append_1"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "©Marvelous Inc. / Supported by HARDCORE TANO*C"@en-us;
+                  arcaea:title_localized "eden"@en;
+                  arcaea:version "5.2"@en-us;
+                  arcaea:world_unlock false.
+arcaea.edenwacca:FTR arcaea:chartDesigner arcaea:%E5%8F%8D%E6%B0%B4;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.edenwacca:PRS arcaea:chartDesigner arcaea:%E5%8F%8D%E6%B0%B4;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 .
+arcaea.edenwacca:PST arcaea:chartDesigner arcaea:%E5%8F%8D%E6%B0%B4;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,50 @@
+@prefix arcaea.virtus: <https://arcaea.lowiro.com/#virtus#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.virtus:.
+arcaea.virtus: arcaea:artist arcaea:Hiro;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:virtus;
+               arcaea:bg_inverse arcaea:virtus;
+               arcaea:bpm "225"@en-us;
+               arcaea:bpm_base 225 ;
+               arcaea:date 1737417602 ;
+               arcaea:difficulties arcaea.virtus:ETR,
+                                   arcaea.virtus:FTR,
+                                   arcaea.virtus:PRS,
+                                   arcaea.virtus:PST;
+               arcaea:id "virtus"@en-us;
+               arcaea:idx 441 ;
+               arcaea:purchase "maimai_append_2"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "ひろ"@ja,
+                                   "히로"@ko,
+                                   "うぃるとす"@ja,
+                                   "버투스"@ko,
+                                   "비르투스"@ko;
+               arcaea:set "maimai_append_2"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:source_copyright "©SEGA"@en-us;
+               arcaea:title_localized "ViRTUS"@en,
+                                      "maimai"@en;
+               arcaea:version "6.2"@en-us;
+               arcaea:world_unlock false.
+arcaea.virtus:ETR arcaea:chartDesigner arcaea:NiTRO;
+                  arcaea:rating 10 ;
+                  arcaea:ratingClass 4 ;
+                  arcaea:ratingPlus true.
+arcaea.virtus:FTR arcaea:chartDesigner arcaea:NiTRO;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.virtus:PRS arcaea:chartDesigner arcaea:NiTRO;
+                  arcaea:rating 8 ;
+                  arcaea:ratingClass 1 .
+arcaea.virtus:PST arcaea:chartDesigner arcaea:NiTRO;
+                  arcaea:rating 5 ;
+                  arcaea:ratingClass 0 .

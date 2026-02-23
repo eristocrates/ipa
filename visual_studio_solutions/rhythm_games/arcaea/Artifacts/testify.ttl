@@ -1,0 +1,66 @@
+@prefix arcaea.testify: <https://arcaea.lowiro.com/#testify#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.testify:.
+arcaea:additional_files arcaea:file_name "video_audio.ogg"@en-us,
+                                         "video.mp4"@en-us;
+                        arcaea:requirement "required"@en-us.
+arcaea.testify: arcaea:additional_files arcaea.testify:additional_files;
+                arcaea:artist <https://arcaea.lowiro.com/#void%20(Mournfinale)%20feat.%20星熊南巫>;
+                arcaea:audioPreview 66067 ;
+                arcaea:audioPreviewEnd 86629 ;
+                arcaea:bg arcaea:testify;
+                arcaea:bpm "178"@en-us;
+                arcaea:bpm_base 178 ;
+                arcaea:byd_local_unlock true;
+                arcaea:date 1657152009 ;
+                arcaea:difficulties arcaea.testify:FTR,
+                                    arcaea.testify:PRS,
+                                    arcaea.testify:PST,
+                                    arcaea.testify:BYD;
+                arcaea:id "testify"@en-us;
+                arcaea:idx 280 ;
+                arcaea:purchase "finale"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "ぼいど"@ja,
+                                    "ゔぉいど"@ja,
+                                    "ほしくまみなみ"@ja,
+                                    "보이드"@ko,
+                                    "호시쿠마 미나미"@ko,
+                                    "hoshikuma minami"@en,
+                                    "てすてぃふぁい"@ja,
+                                    "테스티파이"@ko;
+                arcaea:set "finale"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:songlist_hidden true;
+                arcaea:title_localized "Testify"@en;
+                arcaea:version "4.0"@en-us;
+                arcaea:world_unlock false.
+arcaea.testify:BYD arcaea:chartDesigner arcaea:Silent%C2%A6END;
+                   arcaea:hidden_until "song"@en-us;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:legacy11 true;
+                   arcaea:rating 12 ;
+                   arcaea:ratingClass 3 ;
+                   arcaea:world_unlock false.
+arcaea.testify:FTR arcaea:chartDesigner arcaea:Black%C2%A6FUTURE;
+                   arcaea:hidden_until "song"@en-us;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.testify:PRS arcaea:chartDesigner arcaea:Adverse%C2%A6PRESENT;
+                   arcaea:hidden_until "song"@en-us;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 1 .
+arcaea.testify:PST arcaea:chartDesigner arcaea:Eternal%C2%A6PAST;
+                   arcaea:hidden_until "song"@en-us;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 0 ;
+                   arcaea:ratingPlus true.

@@ -1,0 +1,48 @@
+@prefix arcaea.aloneandlorn: <https://arcaea.lowiro.com/#aloneandlorn#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.aloneandlorn:.
+arcaea.aloneandlorn: arcaea:artist arcaea:Ponchi%E2%99%AA%20feat.%E3%81%AF%E3%81%81%E3%81%A1;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:eden_light;
+                     arcaea:bg_inverse arcaea:eden_conflict;
+                     arcaea:bpm "100"@en-us;
+                     arcaea:bpm_base 200 ;
+                     arcaea:date 1701302405 ;
+                     arcaea:difficulties arcaea.aloneandlorn:FTR,
+                                         arcaea.aloneandlorn:PRS,
+                                         arcaea.aloneandlorn:PST;
+                     arcaea:id "aloneandlorn"@en-us;
+                     arcaea:idx 362 ;
+                     arcaea:purchase "extend_2"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "ぽんち"@ja,
+                                         "폰치"@ko,
+                                         "하아치"@ko,
+                                         "haachi"@en,
+                                         "haxchi"@en,
+                                         "얼론 앤 론"@ko,
+                                         "얼론 앤드 론"@ko;
+                     arcaea:set "extend_2"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "アローンアンドローン"@ja,
+                                            "Alone & Lorn"@en;
+                     arcaea:version "5.2"@en-us;
+                     arcaea:world_unlock true.
+arcaea.aloneandlorn:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#én%20&%20KLMNOP>;
+                        arcaea:jacketDesigner "のり恋"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.aloneandlorn:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:jacketDesigner "のり恋"@en-us;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.aloneandlorn:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                        arcaea:jacketDesigner "のり恋"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

@@ -1,0 +1,50 @@
+@prefix arcaea.omakeno: <https://arcaea.lowiro.com/#omakeno#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.omakeno:.
+arcaea.omakeno: arcaea:artist <https://arcaea.lowiro.com/#t+pazolite>;
+                arcaea:audioPreview 2701 ;
+                arcaea:audioPreviewEnd 17701 ;
+                arcaea:bg arcaea:gc_conflict;
+                arcaea:bg_inverse arcaea:gc_light;
+                arcaea:bpm "240"@en-us;
+                arcaea:bpm_base 240 ;
+                arcaea:date 1546992002 ;
+                arcaea:difficulties arcaea.omakeno:FTR,
+                                    arcaea.omakeno:PRS,
+                                    arcaea.omakeno:PST,
+                                    arcaea.omakeno:BYD;
+                arcaea:id "omakeno"@en-us;
+                arcaea:idx 108 ;
+                arcaea:no_stream true;
+                arcaea:purchase "groovecoaster"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "とぱぞらいと"@ja,
+                                    "토파졸라이트"@ko,
+                                    "おまけのすとろーく"@ja,
+                                    "오마케노 스트로크"@ko;
+                arcaea:set "groovecoaster"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:source_copyright "© TAITO CORP. 1978, 2019"@en-us;
+                arcaea:title_localized "OMAKENO Stroke"@en,
+                                       "Groove Coaster"@en;
+                arcaea:version "1.9"@en-us;
+                arcaea:world_unlock false.
+arcaea.omakeno:BYD arcaea:chartDesigner arcaea:NITRO;
+                   arcaea:date 1647993601 ;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 3 ;
+                   arcaea:version "3.12"@en-us.
+arcaea.omakeno:FTR arcaea:chartDesigner arcaea:Kurorak;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.omakeno:PRS arcaea:chartDesigner arcaea:Kurorak;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.omakeno:PST arcaea:chartDesigner arcaea:Kurorak;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

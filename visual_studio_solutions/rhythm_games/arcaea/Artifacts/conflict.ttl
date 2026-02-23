@@ -1,0 +1,45 @@
+@prefix arcaea.conflict: <https://arcaea.lowiro.com/#conflict#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.conflict:.
+arcaea.conflict: arcaea:artist <https://arcaea.lowiro.com/#siromaru%20+%20cranky>;
+                 arcaea:audioPreview 12750 ;
+                 arcaea:audioPreviewEnd 37500 ;
+                 arcaea:bg arcaea:yugamu;
+                 arcaea:bg_inverse arcaea:rei;
+                 arcaea:bpm "160"@en-us;
+                 arcaea:bpm_base 160 ;
+                 arcaea:date 1509667206 ;
+                 arcaea:difficulties arcaea.conflict:PRS,
+                                     arcaea.conflict:PST,
+                                     arcaea.conflict:FTR;
+                 arcaea:id "conflict"@en-us;
+                 arcaea:idx 54 ;
+                 arcaea:purchase "yugamu"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "しろまる"@ja,
+                                     "くらんきー"@ja,
+                                     "시로마루"@ko,
+                                     "크랭키"@ko,
+                                     "こんふりくと"@ja,
+                                     "컨플릭트"@ko;
+                 arcaea:set "yugamu"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "conflict"@en;
+                 arcaea:version "1.5"@en-us.
+arcaea.conflict:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#toaster%20+%20nitro>;
+                    arcaea:jacketDesigner "horte"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.conflict:PRS arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "horte"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.conflict:PST arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:jacketDesigner "horte"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

@@ -1,0 +1,53 @@
+@prefix arcaea.moonheart: <https://arcaea.lowiro.com/#moonheart#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.moonheart:.
+arcaea.moonheart: arcaea:artist arcaea:%E7%BF%A1%E4%B9%83%E3%82%A4%E3%82%B9%E3%82%AB;
+                  arcaea:audioPreview 66000 ;
+                  arcaea:audioPreviewEnd 85333 ;
+                  arcaea:bg arcaea:mirai_light;
+                  arcaea:bg_inverse arcaea:mirai_conflict;
+                  arcaea:bpm "180"@en-us;
+                  arcaea:bpm_base 180 ;
+                  arcaea:date 1502323203 ;
+                  arcaea:difficulties arcaea.moonheart:FTR,
+                                      arcaea.moonheart:PRS,
+                                      arcaea.moonheart:PST,
+                                      arcaea.moonheart:BYD;
+                  arcaea:id "moonheart"@en-us;
+                  arcaea:idx 45 ;
+                  arcaea:purchase "mirai"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ひのいすか"@ja,
+                                      "히노 이스카"@ko,
+                                      "hino isuka"@en,
+                                      "むーんはーと"@ja,
+                                      "문하트"@ko;
+                  arcaea:set "mirai"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Moonheart"@en;
+                  arcaea:version "1.1"@en-us.
+arcaea.moonheart:BYD arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:date 1610064000 ;
+                     arcaea:jacketDesigner "VMWT + ljc"@en-us;
+                     arcaea:jacketOverride true;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 3 ;
+                     arcaea:ratingPlus true;
+                     arcaea:version "3.4"@en-us.
+arcaea.moonheart:FTR arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "VMWT"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 .
+arcaea.moonheart:PRS arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "VMWT"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 1 .
+arcaea.moonheart:PST arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "VMWT"@en-us;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

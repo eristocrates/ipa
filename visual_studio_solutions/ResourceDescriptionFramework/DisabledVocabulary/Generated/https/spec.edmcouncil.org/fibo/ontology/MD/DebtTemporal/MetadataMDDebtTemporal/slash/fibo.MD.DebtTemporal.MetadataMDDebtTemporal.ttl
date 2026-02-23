@@ -1,0 +1,33 @@
+@prefix fibo.MD.DebtTemporal.MetadataMDDebtTemporal: <https://spec.edmcouncil.org/fibo/ontology/MD/DebtTemporal/MetadataMDDebtTemporal/> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/>.
+@prefix fibo-md-dbtx-mod: <https://spec.edmcouncil.org/fibo/ontology/MD/DebtTemporal/MetadataMDDebtTemporal/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+fibo-md-dbtx-mod: dcterms:abstract "This module covers time-dependent concepts related to debt instruments, such as pricing, yields and analytics.";
+                  dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime;
+                  dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI;
+                  dcterms:modified "2023-03-31T18:00:00"^^xsd:dateTime;
+                  a owl:Ontology;
+                  rdfs:label "Metadata for the EDMC-FIBO Market Data (MD) DebtTemporal Module";
+                  owl:imports <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Utilities/AnnotationVocabulary/>,
+                              cmns-av:;
+                  owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/latest/MD/DebtTemporal/MetadataMDDebtTemporal/>;
+                  cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc.".
+fibo-md-dbtx-mod:DebtTemporalModule dcterms:abstract "This module covers time-dependent concepts related to debt instruments, such as pricing, yields and analytics.";
+                                    dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/MD/DebtTemporal/DebtAnalytics/>;
+                                    dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI;
+                                    dcterms:title "FIBO MD Debt Temporal Module",
+                                                  "Financial Industry Business Ontology (FIBO) Market Data (MD) Debt Temporal Module";
+                                    a owl:NamedIndividual,
+                                      fibo-fnd-utl-av:Module;
+                                    rdfs:isDefinedBy fibo-md-dbtx-mod:;
+                                    rdfs:label "debt temporal module";
+                                    rdfs:seeAlso <https://spec.edmcouncil.org/fibo/>;
+                                    cmns-av:copyright "Copyright (c) 2018-2023 EDM Council, Inc.".

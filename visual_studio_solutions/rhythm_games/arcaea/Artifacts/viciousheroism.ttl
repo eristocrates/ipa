@@ -1,0 +1,62 @@
+@prefix arcaea.viciousheroism: <https://arcaea.lowiro.com/#viciousheroism#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.viciousheroism:.
+arcaea.viciousheroism: arcaea:artist arcaea:Kobaryo;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:zettai;
+                       arcaea:bg_inverse arcaea:zettai_light;
+                       arcaea:bpm "256"@en-us;
+                       arcaea:bpm_base 256 ;
+                       arcaea:date 1553126405 ;
+                       arcaea:difficulties arcaea.viciousheroism:BYD,
+                                           arcaea.viciousheroism:FTR,
+                                           arcaea.viciousheroism:PRS,
+                                           arcaea.viciousheroism:PST;
+                       arcaea:id "viciousheroism"@en-us;
+                       arcaea:idx 116 ;
+                       arcaea:purchase "zettai"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "こばりょー"@ja,
+                                           "코바료"@ko,
+                                           "ゔぃしゃすひろいずむ"@ja,
+                                           "びしゃすひろいずむ"@ja,
+                                           "ゔぃしゃすあんちひろいずむ"@ja,
+                                           "びしゃすあんちひろいずむ"@ja,
+                                           "비셔스 히로이즘"@ko;
+                       arcaea:set "zettai"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "Vicious Heroism"@en;
+                       arcaea:version "2.0"@en-us;
+                       arcaea:world_unlock false.
+arcaea.viciousheroism:BYD arcaea:artist arcaea:Kobaryo;
+                          arcaea:audioOverride true;
+                          arcaea:bg arcaea:viciousheroism3;
+                          arcaea:bpm "271"@en-us;
+                          arcaea:bpm_base 271 ;
+                          arcaea:chartDesigner <https://arcaea.lowiro.com/#[FUTiLE]%20Defiance>;
+                          arcaea:date 1706140806 ;
+                          arcaea:hidden_until "difficulty"@en-us;
+                          arcaea:jacketDesigner "陽葉ヨウ"@en-us;
+                          arcaea:jacketOverride true;
+                          arcaea:legacy11 true;
+                          arcaea:rating 11 ;
+                          arcaea:ratingClass 3 ;
+                          arcaea:version "5.3"@en-us.
+arcaea.viciousheroism:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20vanquish%20Toaster.>;
+                          arcaea:jacketDesigner "吠L"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 .
+arcaea.viciousheroism:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20vanquish%20Toaster.>;
+                          arcaea:jacketDesigner "吠L"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.viciousheroism:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20vanquish%20Toaster.>;
+                          arcaea:jacketDesigner "吠L"@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

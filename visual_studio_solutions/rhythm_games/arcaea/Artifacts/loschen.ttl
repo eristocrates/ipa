@@ -1,0 +1,52 @@
+@prefix arcaea.loschen: <https://arcaea.lowiro.com/#loschen#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.loschen:.
+arcaea.loschen: arcaea:artist arcaea:BlackY%20feat.%20Risa%20Yuzuki;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:observer_conflict;
+                arcaea:bg_inverse arcaea:observer_light;
+                arcaea:bpm "181"@en-us;
+                arcaea:bpm_base 181 ;
+                arcaea:date 1620691203 ;
+                arcaea:difficulties arcaea.loschen:FTR,
+                                    arcaea.loschen:PRS,
+                                    arcaea.loschen:PST;
+                arcaea:id "loschen"@en-us;
+                arcaea:idx 212 ;
+                arcaea:purchase "observer"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "ぶらっきー"@ja,
+                                    "りさゆずき"@ja,
+                                    "블랙키"@ko,
+                                    "리사 유즈키"@ko,
+                                    "블래키"@ko,
+                                    "れっしぇん"@ja,
+                                    "뢰셴"@ko,
+                                    "뢰센"@ko,
+                                    "레셴"@ko,
+                                    "레센"@ko,
+                                    "loschen"@en;
+                arcaea:set "observer"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Loschen"@ko,
+                                       "Löschen"@en;
+                arcaea:version "3.6"@en-us;
+                arcaea:world_unlock false.
+arcaea.loschen:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                   arcaea:jacketDesigner "LOWRISE"@en-us;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 2 .
+arcaea.loschen:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                   arcaea:jacketDesigner "LOWRISE"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.loschen:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                   arcaea:jacketDesigner "LOWRISE"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

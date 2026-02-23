@@ -1,0 +1,44 @@
+@prefix arcaea.memoryforest: <https://arcaea.lowiro.com/#memoryforest#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.memoryforest:.
+arcaea.memoryforest: arcaea:artist <https://arcaea.lowiro.com/#ETIA.>;
+                     arcaea:audioPreview 21584 ;
+                     arcaea:audioPreviewEnd 53944 ;
+                     arcaea:bg arcaea:nijuusei-light-b;
+                     arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+                     arcaea:bpm "178"@en-us;
+                     arcaea:bpm_base 178 ;
+                     arcaea:date 1521763203 ;
+                     arcaea:difficulties arcaea.memoryforest:PRS,
+                                         arcaea.memoryforest:PST,
+                                         arcaea.memoryforest:FTR;
+                     arcaea:id "memoryforest"@en-us;
+                     arcaea:idx 71 ;
+                     arcaea:purchase "nijuusei"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "えちあ"@ja,
+                                         "에치아"@ko,
+                                         "めもりーふぉれすと"@ja,
+                                         "메모리 포레스트"@ko;
+                     arcaea:set "nijuusei"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "Memory Forest"@en;
+                     arcaea:version "1.6"@en-us.
+arcaea.memoryforest:FTR arcaea:chartDesigner arcaea:Kurorak;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.memoryforest:PRS arcaea:chartDesigner arcaea:Kurorak;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.memoryforest:PST arcaea:chartDesigner arcaea:Kurorak;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

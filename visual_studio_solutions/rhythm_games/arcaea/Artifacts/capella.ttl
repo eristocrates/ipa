@@ -1,0 +1,46 @@
+@prefix arcaea.capella: <https://arcaea.lowiro.com/#capella#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.capella:.
+arcaea.capella: arcaea:artist arcaea:ARForest;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:hime_light;
+                arcaea:bg_inverse arcaea:hime_conflict;
+                arcaea:bpm "210"@en-us;
+                arcaea:bpm_base 210 ;
+                arcaea:category arcaea:partner;
+                arcaea:date 1671667200 ;
+                arcaea:difficulties arcaea.capella:PRS,
+                                    arcaea.capella:PST,
+                                    arcaea.capella:FTR;
+                arcaea:id "capella"@en-us;
+                arcaea:idx 292 ;
+                arcaea:purchase "capella"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "えーあーるふぉれすと"@ja,
+                                    "에이알 포레스트"@ko,
+                                    "かぺら"@ja,
+                                    "카펠라"@ko;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "Capella"@en;
+                arcaea:version "4.1"@en-us;
+                arcaea:world_unlock false.
+arcaea.capella:FTR arcaea:chartDesigner arcaea:0%C2%B0Nitro;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 2 .
+arcaea.capella:PRS arcaea:chartDesigner arcaea:0%C2%B0Nitro;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 ;
+                   arcaea:ratingPlus true.
+arcaea.capella:PST arcaea:chartDesigner arcaea:0%C2%B0Nitro;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

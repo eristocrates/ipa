@@ -1,0 +1,48 @@
+@prefix arcaea.tsukinimurakumo: <https://arcaea.lowiro.com/#tsukinimurakumo#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.tsukinimurakumo:.
+arcaea.tsukinimurakumo: arcaea:artist arcaea:%E5%B9%BD%E9%96%89%E3%82%B5%E3%83%86%E3%83%A9%E3%82%A4%E3%83%88;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:touhou_conflict;
+                        arcaea:bg_inverse arcaea:touhou_light;
+                        arcaea:bpm "160"@en-us;
+                        arcaea:bpm_base 160 ;
+                        arcaea:date 1674691200 ;
+                        arcaea:difficulties arcaea.tsukinimurakumo:FTR,
+                                            arcaea.tsukinimurakumo:PRS,
+                                            arcaea.tsukinimurakumo:PST;
+                        arcaea:id "tsukinimurakumo"@en-us;
+                        arcaea:idx 294 ;
+                        arcaea:purchase "extend_2"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "ゆうへいさてらいと"@ja,
+                                            "유우헤이 사테라이토"@ko,
+                                            "유우헤이 새틀라이트"@ko,
+                                            "yuuhei sateraito"@en,
+                                            "yuuhei satellite"@en,
+                                            "つきにむらくもはなにかぜ"@ja,
+                                            "츠키니 무라쿠모 하나니 카제"@ko,
+                                            "달에 구름 꽃에 바람"@ko;
+                        arcaea:set "extend_2"@en-us;
+                        arcaea:side arcaea:conflict_side;
+                        arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                        arcaea:title_localized "月に叢雲華に風"@ja,
+                                               "Tsuki ni Murakumo, Hana ni Kaze"@en;
+                        arcaea:version "4.2"@en-us;
+                        arcaea:world_unlock true.
+arcaea.tsukinimurakumo:FTR arcaea:chartDesigner arcaea:Lovely%20Visitor%E3%80%8CToaster%E3%80%8D;
+                           arcaea:rating 8 ;
+                           arcaea:ratingClass 2 ;
+                           arcaea:ratingPlus true.
+arcaea.tsukinimurakumo:PRS arcaea:chartDesigner arcaea:Lovely%20Visitor%E3%80%8CToaster%E3%80%8D;
+                           arcaea:rating 6 ;
+                           arcaea:ratingClass 1 .
+arcaea.tsukinimurakumo:PST arcaea:chartDesigner arcaea:Lovely%20Visitor%E3%80%8CToaster%E3%80%8D;
+                           arcaea:rating 3 ;
+                           arcaea:ratingClass 0 .

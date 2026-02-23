@@ -1,0 +1,55 @@
+@prefix arcaea.antithese: <https://arcaea.lowiro.com/#antithese#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.antithese:.
+arcaea.antithese: arcaea:artist arcaea:Blacklolita;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:zettai;
+                  arcaea:bg_inverse arcaea:zettai_light;
+                  arcaea:bpm "172"@en-us;
+                  arcaea:bpm_base 172 ;
+                  arcaea:date 1553126402 ;
+                  arcaea:difficulties arcaea.antithese:FTR,
+                                      arcaea.antithese:PRS,
+                                      arcaea.antithese:PST,
+                                      arcaea.antithese:BYD;
+                  arcaea:id "antithese"@en-us;
+                  arcaea:idx 113 ;
+                  arcaea:purchase "zettai"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ぶらっくろりーた"@ja,
+                                      "블랙로리타"@ko,
+                                      "블랙롤리타"@ko,
+                                      "あんちてーぜ"@ja,
+                                      "안티테제"@ko;
+                  arcaea:set "zettai"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Antithese"@en;
+                  arcaea:version "2.0"@en-us;
+                  arcaea:world_unlock false.
+arcaea.antithese:BYD arcaea:chartDesigner arcaea:%E7%9F%B3%E6%A8%82;
+                     arcaea:date 1639008002 ;
+                     arcaea:hidden_until "difficulty"@en-us;
+                     arcaea:jacketDesigner "釜飯轟々丸 + jht"@en-us;
+                     arcaea:jacketOverride true;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 3 ;
+                     arcaea:version "3.10"@en-us.
+arcaea.antithese:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#chaos//engine>;
+                     arcaea:jacketDesigner "釜飯轟々丸 + Khronetic"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.antithese:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#chaos//engine>;
+                     arcaea:jacketDesigner "釜飯轟々丸 + Khronetic"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 1 .
+arcaea.antithese:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#chaos//engine>;
+                     arcaea:jacketDesigner "釜飯轟々丸 + Khronetic"@en-us;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

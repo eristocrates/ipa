@@ -1,0 +1,51 @@
+@prefix arcaea.morningloom: <https://arcaea.lowiro.com/#morningloom#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.morningloom:.
+arcaea.morningloom: arcaea:artist arcaea:saaa;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:rei;
+                    arcaea:bg_inverse arcaea:yugamu;
+                    arcaea:bpm "102"@en-us;
+                    arcaea:bpm_base 204 ;
+                    arcaea:date 1711324803 ;
+                    arcaea:difficulties arcaea.morningloom:FTR,
+                                        arcaea.morningloom:PRS,
+                                        arcaea.morningloom:PST,
+                                        arcaea.morningloom:ETR;
+                    arcaea:id "morningloom"@en-us;
+                    arcaea:idx 381 ;
+                    arcaea:purchase "extend_3"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "さえさん"@ja,
+                                        "사아아아"@ko,
+                                        "もーにんぐるーむ"@ja,
+                                        "모닝글룸"@ko;
+                    arcaea:set "extend_3"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "MORNINGLOOM"@en;
+                    arcaea:version "5.5"@en-us;
+                    arcaea:world_unlock true.
+arcaea.morningloom:ETR arcaea:chartDesigner arcaea:Exschwasion%20%E2%80%A2%208:46;
+                       arcaea:jacketDesigner "すずあ"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 4 ;
+                       arcaea:ratingPlus true.
+arcaea.morningloom:FTR arcaea:chartDesigner arcaea:Exschwasion%20%E2%80%A2%208:45;
+                       arcaea:jacketDesigner "すずあ"@en-us;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.morningloom:PRS arcaea:chartDesigner arcaea:Exschwasion%20%E2%80%A2%208:21;
+                       arcaea:jacketDesigner "すずあ"@en-us;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.morningloom:PST arcaea:chartDesigner arcaea:Exschwasion%20%E2%80%A2%208:00;
+                       arcaea:jacketDesigner "すずあ"@en-us;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

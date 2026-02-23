@@ -1,0 +1,44 @@
+@prefix arcaea.lapis: <https://arcaea.lowiro.com/#lapis#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lapis:.
+arcaea.lapis: arcaea:artist arcaea:SHIKI;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:nijuusei-light-b;
+              arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+              arcaea:bpm "146"@en-us;
+              arcaea:bpm_base 146 ;
+              arcaea:date 1604016000 ;
+              arcaea:difficulties arcaea.lapis:PRS,
+                                  arcaea.lapis:PST,
+                                  arcaea.lapis:FTR;
+              arcaea:id "lapis"@en-us;
+              arcaea:idx 180 ;
+              arcaea:purchase "extend"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "しき"@ja,
+                                  "시키"@ko,
+                                  "らぴす"@ja,
+                                  "라피스"@ko;
+              arcaea:set "extend"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:title_localized "Lapis"@en;
+              arcaea:version "3.2"@en-us;
+              arcaea:world_unlock true.
+arcaea.lapis:FTR arcaea:chartDesigner arcaea:CERiNG;
+                 arcaea:jacketDesigner "Khronetic"@en-us;
+                 arcaea:rating 9 ;
+                 arcaea:ratingClass 2 .
+arcaea.lapis:PRS arcaea:chartDesigner arcaea:CERiNG;
+                 arcaea:jacketDesigner "Khronetic"@en-us;
+                 arcaea:rating 6 ;
+                 arcaea:ratingClass 1 .
+arcaea.lapis:PST arcaea:chartDesigner arcaea:CERiNG;
+                 arcaea:jacketDesigner "Khronetic"@en-us;
+                 arcaea:rating 2 ;
+                 arcaea:ratingClass 0 .

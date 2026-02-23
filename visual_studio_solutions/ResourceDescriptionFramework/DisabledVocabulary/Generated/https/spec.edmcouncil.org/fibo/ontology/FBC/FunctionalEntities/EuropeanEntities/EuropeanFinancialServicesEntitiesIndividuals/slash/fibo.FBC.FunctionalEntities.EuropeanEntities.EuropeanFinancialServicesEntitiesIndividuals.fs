@@ -1,0 +1,47 @@
+﻿namespace Fibo.FBC.FunctionalEntities.EuropeanEntities.EuropeanFinancialServicesEntitiesIndividuals.Namespace
+module EuropeanFinancialServicesEntitiesIndividuals =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FunctionalEntities/EuropeanEntities/EuropeanFinancialServicesEntitiesIndividuals.rdf") (Some @"fibo.FBC.FunctionalEntities.EuropeanEntities.EuropeanFinancialServicesEntitiesIndividuals") None
+    let BusinessEntityData = {_prefixID with _localName = "BusinessEntityData"}
+    let ``BusinessEntityData-NL`` = {_prefixID with _localName = "BusinessEntityData-NL"}
+    let BusinessEntityDataHeadquartersAddress = {_prefixID with _localName = "BusinessEntityDataHeadquartersAddress"}
+    let BusinessEntityDataLegalAddress = {_prefixID with _localName = "BusinessEntityDataLegalAddress"}
+    let BusinessEntityDataLegalEntityIdentifierRegistryEntry = {_prefixID with _localName = "BusinessEntityDataLegalEntityIdentifierRegistryEntry"}
+    let Clearstream = {_prefixID with _localName = "Clearstream"}
+    let ClearstreamBankingHeadquartersAddress = {_prefixID with _localName = "ClearstreamBankingHeadquartersAddress"}
+    let ClearstreamBankingLegalAddress = {_prefixID with _localName = "ClearstreamBankingLegalAddress"}
+    let ClearstreamBankingLegalEntityIdentifierRegistryEntry = {_prefixID with _localName = "ClearstreamBankingLegalEntityIdentifierRegistryEntry"}
+    let ClearstreamBankingSA = {_prefixID with _localName = "ClearstreamBankingSA"}
+    let Euroclear = {_prefixID with _localName = "Euroclear"}
+    let EuroclearHeadquartersAddress = {_prefixID with _localName = "EuroclearHeadquartersAddress"}
+    let EuroclearLegalAddress = {_prefixID with _localName = "EuroclearLegalAddress"}
+    let EuroclearLegalEntityIdentifierRegistryEntry = {_prefixID with _localName = "EuroclearLegalEntityIdentifierRegistryEntry"}
+    let EuroclearSANV = {_prefixID with _localName = "EuroclearSANV"}
+    let EuropeanBankingFederation = {_prefixID with _localName = "EuropeanBankingFederation"}
+    let EuropeanMoneyMarketsInstitute = {_prefixID with _localName = "EuropeanMoneyMarketsInstitute"}
+    let ``HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmann`` = {_prefixID with _localName = "HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmann"}
+    let ``HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmannGmbHAndCoKG-DE`` = {_prefixID with _localName = "HerausgebergemeinschaftWertpapier-MitteilungenKepplerLehmannGmbHAndCoKG-DE"}
+    let LondonStockExchange = {_prefixID with _localName = "LondonStockExchange"}
+    let LondonStockExchangeAsLocalOperatingUnit = {_prefixID with _localName = "LondonStockExchangeAsLocalOperatingUnit"}
+    let LondonStockExchangeHeadquartersAddress = {_prefixID with _localName = "LondonStockExchangeHeadquartersAddress"}
+    let LondonStockExchangeLegalAddress = {_prefixID with _localName = "LondonStockExchangeLegalAddress"}
+    let LondonStockExchangeLegalEntityIdentifierRegistryEntry = {_prefixID with _localName = "LondonStockExchangeLegalEntityIdentifierRegistryEntry"}
+    let LondonStockExchangePlc = {_prefixID with _localName = "LondonStockExchangePlc"}
+    let LondonStockExchangeUnaVistaRegistry = {_prefixID with _localName = "LondonStockExchangeUnaVistaRegistry"}
+    let LuxCSD = {_prefixID with _localName = "LuxCSD"}
+    let LuxCSDAsLocalOperatingUnit = {_prefixID with _localName = "LuxCSDAsLocalOperatingUnit"}
+    let LuxCSDLEIRegistry = {_prefixID with _localName = "LuxCSDLEIRegistry"}
+    let LuxCSDLegalEntityIdentifierRegistryEntry = {_prefixID with _localName = "LuxCSDLegalEntityIdentifierRegistryEntry"}
+    let LuxCSDSA = {_prefixID with _localName = "LuxCSDSA"}
+    let NasdaqOMXGroup = {_prefixID with _localName = "NasdaqOMXGroup"}
+    let SIXFinancialInformation = {_prefixID with _localName = "SIXFinancialInformation"}
+    let SIXFinancialInformationAG = {_prefixID with _localName = "SIXFinancialInformationAG"}
+    let SIXFinancialInformationAGLegalEntityIdentifierRegistryEntry = {_prefixID with _localName = "SIXFinancialInformationAGLegalEntityIdentifierRegistryEntry"}
+    let SIXFinancialInformationAsLocalOperatingUnit = {_prefixID with _localName = "SIXFinancialInformationAsLocalOperatingUnit"}
+    let SIXGroup = {_prefixID with _localName = "SIXGroup"}
+    let SIXGroupAG = {_prefixID with _localName = "SIXGroupAG"}
+    let SIXGroupAGHeadquartersAddress = {_prefixID with _localName = "SIXGroupAGHeadquartersAddress"}
+    let SIXGroupAGLegalEntityIdentifierRegistryEntry = {_prefixID with _localName = "SIXGroupAGLegalEntityIdentifierRegistryEntry"}
+    let SwedishBankersAssociation = {_prefixID with _localName = "SwedishBankersAssociation"}
+    let WMDatenserviceEntityIdentifierRegistry = {_prefixID with _localName = "WMDatenserviceEntityIdentifierRegistry"}
+    let WMGruppeHeadquartersAndLegalAddress = {_prefixID with _localName = "WMGruppeHeadquartersAndLegalAddress"}
+    let WMGruppeLegalEntityIdentifierRegistryEntry = {_prefixID with _localName = "WMGruppeLegalEntityIdentifierRegistryEntry"}

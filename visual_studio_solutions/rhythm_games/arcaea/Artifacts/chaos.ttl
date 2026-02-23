@@ -1,0 +1,49 @@
+@prefix arcaea.chaos: <https://arcaea.lowiro.com/#chaos#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.chaos:.
+arcaea.chaos: arcaea:artist arcaea:%C3%86sir;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:cytus_boss;
+              arcaea:bpm "150"@en-us;
+              arcaea:bpm_base 150 ;
+              arcaea:date 1687910404 ;
+              arcaea:difficulties arcaea.chaos:FTR,
+                                  arcaea.chaos:PRS,
+                                  arcaea.chaos:PST;
+              arcaea:id "chaos"@en-us;
+              arcaea:idx 327 ;
+              arcaea:purchase "cytusii"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "えーしる"@ja,
+                                  "あしーる"@ja,
+                                  "あーしる"@ja,
+                                  "えしーる"@ja,
+                                  "에시르"@ko,
+                                  "애시르"@ko,
+                                  "aesir"@en,
+                                  "かおす"@ja,
+                                  "けいおす"@ja,
+                                  "카오스"@ko;
+              arcaea:set "cytusii"@en-us;
+              arcaea:side arcaea:conflict_side;
+              arcaea:source_copyright "© Rayark Inc."@en-us;
+              arcaea:title_localized "CHAOS"@en,
+                                     "CYTUS II®"@en;
+              arcaea:version "4.5"@en-us;
+              arcaea:world_unlock false.
+arcaea.chaos:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                 arcaea:rating 10 ;
+                 arcaea:ratingClass 2 ;
+                 arcaea:ratingPlus true.
+arcaea.chaos:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                 arcaea:rating 7 ;
+                 arcaea:ratingClass 1 .
+arcaea.chaos:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                 arcaea:rating 5 ;
+                 arcaea:ratingClass 0 .

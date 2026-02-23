@@ -1,0 +1,50 @@
+@prefix arcaea.inkarusi: <https://arcaea.lowiro.com/#inkarusi#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.inkarusi:.
+arcaea.inkarusi: arcaea:artist arcaea:DIA;
+                 arcaea:audioPreview 58235 ;
+                 arcaea:audioPreviewEnd 87058 ;
+                 arcaea:bg arcaea:base_light;
+                 arcaea:bg_inverse arcaea:base_conflict;
+                 arcaea:bpm "102"@en-us;
+                 arcaea:bpm_base 102 ;
+                 arcaea:date 1529539200 ;
+                 arcaea:difficulties arcaea.inkarusi:FTR,
+                                     arcaea.inkarusi:PRS,
+                                     arcaea.inkarusi:PST,
+                                     arcaea.inkarusi:BYD;
+                 arcaea:id "inkarusi"@en-us;
+                 arcaea:idx 81 ;
+                 arcaea:search_title "ぢあ"@ja,
+                                     "디아"@ko,
+                                     "いんかるし"@ja,
+                                     "인카루시"@ko;
+                 arcaea:set "base"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "inkar-usi"@en;
+                 arcaea:version "1.6"@en-us.
+arcaea.inkarusi:BYD arcaea:chartDesigner arcaea:CERiNG;
+                    arcaea:date 1706140800 ;
+                    arcaea:jacketDesigner "Ancy"@en-us;
+                    arcaea:jacketOverride true;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 3 ;
+                    arcaea:version "5.3"@en-us.
+arcaea.inkarusi:FTR arcaea:chartDesigner arcaea:Kurorak;
+                    arcaea:jacketDesigner "Ancy"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.inkarusi:PRS arcaea:chartDesigner arcaea:Kurorak;
+                    arcaea:jacketDesigner "Ancy"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 1 .
+arcaea.inkarusi:PST arcaea:chartDesigner arcaea:Kurorak;
+                    arcaea:jacketDesigner "Ancy"@en-us;
+                    arcaea:rating 2 ;
+                    arcaea:ratingClass 0 .

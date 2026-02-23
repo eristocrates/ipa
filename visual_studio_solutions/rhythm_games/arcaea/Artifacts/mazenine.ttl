@@ -1,0 +1,50 @@
+@prefix arcaea.mazenine: <https://arcaea.lowiro.com/#mazenine#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mazenine:.
+arcaea.mazenine: arcaea:artist arcaea:%E3%82%A2%E3%83%AA%E3%82%B9%E3%82%B7%E3%83%A3%E3%83%83%E3%83%8F%E3%81%A8%E9%AD%94%E6%B3%95%E3%81%AE%E6%A5%BD%E5%9B%A3;
+                 arcaea:audioPreview 47171 ;
+                 arcaea:audioPreviewEnd 74341 ;
+                 arcaea:bg arcaea:rei;
+                 arcaea:bg_inverse arcaea:yugamu;
+                 arcaea:bpm "159"@en-us;
+                 arcaea:bpm_base 159 ;
+                 arcaea:date 1531699203 ;
+                 arcaea:difficulties arcaea.mazenine:FTR,
+                                     arcaea.mazenine:PRS,
+                                     arcaea.mazenine:PST;
+                 arcaea:id "mazenine"@en-us;
+                 arcaea:idx 82 ;
+                 arcaea:purchase "rei"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ありすしゃっはとまほうのがくだん"@ja,
+                                     "아리스샤하토 마호노 가쿠단"@ko,
+                                     "앨리스 샤하와 마법의 오케스트라"@ko,
+                                     "arisushahha to mahou no gakudan"@en,
+                                     "alice schach and the magic orchestra"@en,
+                                     "きゅうばんめのめいろ"@ja,
+                                     "메이즈 넘버 나인"@ko,
+                                     "큐반메노 메이로"@ko,
+                                     "아홉번째 미로"@ko;
+                 arcaea:set "rei"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "九番目の迷路"@ja,
+                                        "Maze No.9"@en;
+                 arcaea:version "1.7"@en-us.
+arcaea.mazenine:FTR arcaea:chartDesigner arcaea:%E5%B0%8F%E6%9D%B1%E6%98%9F;
+                    arcaea:jacketDesigner "アリスシャッハと魔法の楽団"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.mazenine:PRS arcaea:chartDesigner arcaea:%E5%B0%8F%E6%9D%B1%E6%98%9F;
+                    arcaea:jacketDesigner "アリスシャッハと魔法の楽団"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 1 .
+arcaea.mazenine:PST arcaea:chartDesigner arcaea:%E5%B0%8F%E6%9D%B1%E6%98%9F;
+                    arcaea:jacketDesigner "アリスシャッハと魔法の楽団"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

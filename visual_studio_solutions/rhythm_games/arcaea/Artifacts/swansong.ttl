@@ -1,0 +1,46 @@
+@prefix arcaea.swansong: <https://arcaea.lowiro.com/#swansong#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.swansong:.
+arcaea.swansong: arcaea:artist <https://arcaea.lowiro.com/#void%20(Mournfinale)>;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:lephon;
+                 arcaea:bg_inverse arcaea:lephon;
+                 arcaea:bpm "148"@en-us;
+                 arcaea:bpm_base 148 ;
+                 arcaea:date 1732147205 ;
+                 arcaea:difficulties arcaea.swansong:PRS,
+                                     arcaea.swansong:PST,
+                                     arcaea.swansong:FTR;
+                 arcaea:id "swansong"@en-us;
+                 arcaea:idx 428 ;
+                 arcaea:purchase "lephon"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ぼいど"@ja,
+                                     "ゔぉいど"@ja,
+                                     "보이드"@ko,
+                                     "すわんそんぐ"@ja,
+                                     "스완 송"@ko;
+                 arcaea:set "lephon"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "Swan Song"@en;
+                 arcaea:version "6.0"@en-us;
+                 arcaea:world_unlock false.
+arcaea.swansong:FTR arcaea:chartDesigner arcaea:%E5%B0%8F%E7%B5%82%E7%82%B9;
+                    arcaea:jacketDesigner "Noyu"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.swansong:PRS arcaea:chartDesigner arcaea:%E5%B0%8F%E7%B5%82%E7%82%B9;
+                    arcaea:jacketDesigner "Noyu"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.swansong:PST arcaea:chartDesigner arcaea:%E5%B0%8F%E7%B5%82%E7%82%B9;
+                    arcaea:jacketDesigner "Noyu"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

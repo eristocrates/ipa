@@ -1,0 +1,45 @@
+@prefix arcaea.maxrage: <https://arcaea.lowiro.com/#maxrage#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.maxrage:.
+arcaea.maxrage: arcaea:artist arcaea:EBIMAYO;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:maimai_conflict;
+                arcaea:bg_inverse arcaea:maimai_light;
+                arcaea:bpm "222"@en-us;
+                arcaea:bpm_base 222 ;
+                arcaea:date 1677715205 ;
+                arcaea:difficulties arcaea.maxrage:FTR,
+                                    arcaea.maxrage:PRS,
+                                    arcaea.maxrage:PST;
+                arcaea:id "maxrage"@en-us;
+                arcaea:idx 305 ;
+                arcaea:purchase "maimai_append_1"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "えびまよ"@ja,
+                                    "에비마요"@ko,
+                                    "まっくすれいじ"@ja,
+                                    "まっくすれーじ"@ja,
+                                    "맥스레이지"@ko;
+                arcaea:set "maimai_append_1"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:source_copyright "©SEGA"@en-us;
+                arcaea:title_localized "MAXRAGE"@en,
+                                       "maimai"@en;
+                arcaea:version "4.3"@en-us;
+                arcaea:world_unlock false.
+arcaea.maxrage:FTR arcaea:chartDesigner arcaea:EXSCHWASION;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.maxrage:PRS arcaea:chartDesigner arcaea:EXSCHWASION;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.maxrage:PST arcaea:chartDesigner arcaea:EXSCHWASION;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

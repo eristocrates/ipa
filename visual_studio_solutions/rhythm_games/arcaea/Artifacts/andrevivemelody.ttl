@@ -1,0 +1,46 @@
+@prefix arcaea.andrevivemelody: <https://arcaea.lowiro.com/#andrevivemelody#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.andrevivemelody:.
+arcaea.andrevivemelody: arcaea:artist arcaea:%E9%BB%92%E9%AD%94;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:lamia;
+                        arcaea:bpm "210-220"@en-us;
+                        arcaea:bpm_base 220 ;
+                        arcaea:date 1732147204 ;
+                        arcaea:difficulties arcaea.andrevivemelody:FTR,
+                                            arcaea.andrevivemelody:PRS,
+                                            arcaea.andrevivemelody:PST;
+                        arcaea:id "andrevivemelody"@en-us;
+                        arcaea:idx 427 ;
+                        arcaea:purchase "ongeki_append_2"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "くろま"@ja,
+                                            "쿠로마"@ko,
+                                            "크로마"@ko,
+                                            "kuroma"@en,
+                                            "chroma"@en,
+                                            "あんどりばいぶざめろでぃ"@ja,
+                                            "앤 리바이브 더 멜로디"@ko;
+                        arcaea:set "ongeki_append_2"@en-us;
+                        arcaea:side arcaea:conflict_side;
+                        arcaea:source_copyright "©SEGA"@en-us;
+                        arcaea:title_localized "And Revive The Melody"@en,
+                                               "O.N.G.E.K.I."@en;
+                        arcaea:version "6.0"@en-us;
+                        arcaea:world_unlock false.
+arcaea.andrevivemelody:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#夜浪%20(FIRE)%20Lv.75>;
+                           arcaea:rating 10 ;
+                           arcaea:ratingClass 2 ;
+                           arcaea:ratingPlus true.
+arcaea.andrevivemelody:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#夜浪%20(FIRE)%20Lv.75>;
+                           arcaea:rating 8 ;
+                           arcaea:ratingClass 1 .
+arcaea.andrevivemelody:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#夜浪%20(FIRE)%20Lv.75>;
+                           arcaea:rating 5 ;
+                           arcaea:ratingClass 0 .

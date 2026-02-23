@@ -1,0 +1,51 @@
+@prefix arcaea.yourbestnightmare: <https://arcaea.lowiro.com/#yourbestnightmare#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.yourbestnightmare:.
+arcaea.yourbestnightmare: arcaea:artist arcaea:Toby%20Fox;
+                          arcaea:audioPreview 0 ;
+                          arcaea:audioPreviewEnd 0 ;
+                          arcaea:bg arcaea:undertale_conflict;
+                          arcaea:bg_inverse arcaea:undertale_light;
+                          arcaea:bpm "190"@en-us;
+                          arcaea:bpm_base 190 ;
+                          arcaea:byd_local_unlock true;
+                          arcaea:date 1741478402 ;
+                          arcaea:difficulties arcaea.yourbestnightmare:BYD,
+                                              arcaea.yourbestnightmare:FTR,
+                                              arcaea.yourbestnightmare:PRS,
+                                              arcaea.yourbestnightmare:PST;
+                          arcaea:id "yourbestnightmare"@en-us;
+                          arcaea:idx 446 ;
+                          arcaea:purchase "undertale"@en-us;
+                          arcaea:remote_dl true;
+                          arcaea:search_title "とびーふぉっくす"@ja,
+                                              "토비 폭스"@ko,
+                                              "ゆあべすとないとめあ"@ja,
+                                              "さいこうのあくむ"@ja,
+                                              "유어 베스트 나이트메어"@ko;
+                          arcaea:set "undertale"@en-us;
+                          arcaea:side arcaea:conflict_side;
+                          arcaea:title_localized "最高の悪夢"@ja,
+                                                 "Your Best Nightmare"@en,
+                                                 "UNDERTALE®"@en;
+                          arcaea:version "6.3"@en-us;
+                          arcaea:world_unlock false.
+arcaea.yourbestnightmare:BYD arcaea:chartDesigner arcaea:Arcaea%20Charting%20Team%E3%80%90The%20Six%20Souls%E3%80%91;
+                             arcaea:hidden_until "none"@en-us;
+                             arcaea:rating 10 ;
+                             arcaea:ratingClass 3 .
+arcaea.yourbestnightmare:FTR arcaea:chartDesigner arcaea:Arcaea%20Charting%20Team%E3%80%90The%20Six%20Souls%E3%80%91;
+                             arcaea:rating 8 ;
+                             arcaea:ratingClass 2 ;
+                             arcaea:ratingPlus true.
+arcaea.yourbestnightmare:PRS arcaea:chartDesigner arcaea:Nitro;
+                             arcaea:rating 6 ;
+                             arcaea:ratingClass 1 .
+arcaea.yourbestnightmare:PST arcaea:chartDesigner arcaea:Nitro;
+                             arcaea:rating 3 ;
+                             arcaea:ratingClass 0 .

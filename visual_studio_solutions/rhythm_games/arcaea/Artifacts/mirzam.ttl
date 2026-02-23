@@ -1,0 +1,48 @@
+@prefix arcaea.mirzam: <https://arcaea.lowiro.com/#mirzam#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mirzam:.
+arcaea.mirzam: arcaea:artist arcaea:Aoi%20vs.%20siqlo;
+               arcaea:audioPreview 118208 ;
+               arcaea:audioPreviewEnd 137313 ;
+               arcaea:bg arcaea:zettai;
+               arcaea:bg_inverse arcaea:zettai_light;
+               arcaea:bpm "201"@en-us;
+               arcaea:bpm_base 201 ;
+               arcaea:category arcaea:original;
+               arcaea:date 1568246400 ;
+               arcaea:difficulties arcaea.mirzam:PRS,
+                                   arcaea.mirzam:PST,
+                                   arcaea.mirzam:FTR;
+               arcaea:id "mirzam"@en-us;
+               arcaea:idx 136 ;
+               arcaea:purchase "mirzam"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "あおい"@ja,
+                                   "さいくろ"@ja,
+                                   "아오이"@ko,
+                                   "사이클로"@ko,
+                                   "みるざむ"@ja,
+                                   "미르잠"@ko;
+               arcaea:set "single"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "Mirzam"@en;
+               arcaea:version "2.3"@en-us;
+               arcaea:world_unlock false.
+arcaea.mirzam:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E3%81%8A%E3%81%8A%E3%81%84%E3%81%AC%E5%BA%A7%CE%B2%E6%98%9F;
+                  arcaea:jacketDesigner "すずなし"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.mirzam:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E3%81%8A%E3%81%8A%E3%81%84%E3%81%AC%E5%BA%A7%CE%B2%E6%98%9F;
+                  arcaea:jacketDesigner "すずなし"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.mirzam:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E3%81%8A%E3%81%8A%E3%81%84%E3%81%AC%E5%BA%A7%CE%B2%E6%98%9F;
+                  arcaea:jacketDesigner "すずなし"@en-us;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

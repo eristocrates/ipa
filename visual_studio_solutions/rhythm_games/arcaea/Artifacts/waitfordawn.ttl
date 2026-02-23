@@ -1,0 +1,51 @@
+@prefix arcaea.waitfordawn: <https://arcaea.lowiro.com/#waitfordawn#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.waitfordawn:.
+arcaea.waitfordawn: arcaea:artist arcaea:U-ske%20feat.%20%E6%A3%97%E3%81%84%E3%81%A4%E3%81%8D;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:eden_light;
+                    arcaea:bg_inverse arcaea:eden_conflict;
+                    arcaea:bpm "188"@en-us;
+                    arcaea:bpm_base 188 ;
+                    arcaea:date 1692230402 ;
+                    arcaea:difficulties arcaea.waitfordawn:FTR,
+                                        arcaea.waitfordawn:PRS,
+                                        arcaea.waitfordawn:PST;
+                    arcaea:id "waitfordawn"@en-us;
+                    arcaea:idx 337 ;
+                    arcaea:purchase "eden"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "ゆーすけ"@ja,
+                                        "ゆうすけ"@ja,
+                                        "なつめいつき"@ja,
+                                        "유스케"@ko,
+                                        "나츠메 이츠키"@ko,
+                                        "natsume itsuki"@en,
+                                        "うぇいとふぉーどーん"@ja,
+                                        "웨잇 포 던"@ko,
+                                        "웨잇 폴 던"@ko;
+                    arcaea:set "eden"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "WAIT FOR DAWN"@en;
+                    arcaea:version "4.7"@en-us;
+                    arcaea:world_unlock false.
+arcaea.waitfordawn:FTR arcaea:chartDesigner arcaea:%C3%A9n;
+                       arcaea:jacketDesigner "子期安NANA_ANN"@en-us;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.waitfordawn:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                       arcaea:jacketDesigner "子期安NANA_ANN"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 ;
+                       arcaea:ratingPlus true.
+arcaea.waitfordawn:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                       arcaea:jacketDesigner "子期安NANA_ANN"@en-us;
+                       arcaea:rating 2 ;
+                       arcaea:ratingClass 0 .

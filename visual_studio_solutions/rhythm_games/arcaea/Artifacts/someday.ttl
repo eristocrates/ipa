@@ -1,0 +1,44 @@
+@prefix arcaea.someday: <https://arcaea.lowiro.com/#someday#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.someday:.
+arcaea.someday: arcaea:artist arcaea:NieN;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:djmax_light;
+                arcaea:bg_inverse arcaea:djmax_conflict;
+                arcaea:bpm "136"@en-us;
+                arcaea:bpm_base 136 ;
+                arcaea:date 1750896001 ;
+                arcaea:difficulties arcaea.someday:FTR,
+                                    arcaea.someday:PRS,
+                                    arcaea.someday:PST;
+                arcaea:id "someday"@en-us;
+                arcaea:idx 465 ;
+                arcaea:purchase "extend_3"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "にえん"@ja,
+                                    "니엔"@ko,
+                                    "さむでい"@ja,
+                                    "さむでー"@ja,
+                                    "섬데이"@ko;
+                arcaea:set "extend_3"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:source_copyright "© Neowiz. All Rights Reserved."@en-us;
+                arcaea:title_localized "Someday"@en,
+                                       "DJMAX"@en;
+                arcaea:version "6.6"@en-us;
+                arcaea:world_unlock true.
+arcaea.someday:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#sidewaves%20+%20Exschwasion>;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.someday:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#sidewaves%20+%20Nitro>;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.someday:PST arcaea:chartDesigner arcaea:sidewaves;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

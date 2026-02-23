@@ -1,0 +1,53 @@
+@prefix arcaea.mylifeismine: <https://arcaea.lowiro.com/#mylifeismine#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mylifeismine:.
+arcaea.mylifeismine: arcaea:artist arcaea:Mylta%20feat.%20%E3%81%AD%E3%82%93%E3%81%AD;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:megarex_light;
+                     arcaea:bg_inverse arcaea:megarex_conflict;
+                     arcaea:bpm "144-168"@en-us;
+                     arcaea:bpm_base 144 ;
+                     arcaea:date 1769644803 ;
+                     arcaea:difficulties arcaea.mylifeismine:FTR,
+                                         arcaea.mylifeismine:PRS,
+                                         arcaea.mylifeismine:PST,
+                                         arcaea.mylifeismine:ETR;
+                     arcaea:id "mylifeismine"@en-us;
+                     arcaea:idx 516 ;
+                     arcaea:purchase "megarex"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "みるた"@ja,
+                                         "밀타"@ko,
+                                         "미르타"@ko,
+                                         "넨네"@ko,
+                                         "nenne"@en,
+                                         "まいらいふいずまいんあろーん"@ja,
+                                         "마이 라이프 이즈 마인 얼론"@ko;
+                     arcaea:set "megarex"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "My life is mine alone!"@en;
+                     arcaea:version "6.12"@en-us;
+                     arcaea:world_unlock false.
+arcaea.mylifeismine:ETR arcaea:chartDesigner arcaea:antymis;
+                        arcaea:jacketDesigner "Poyoshi"@en-us;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 4 .
+arcaea.mylifeismine:FTR arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:jacketDesigner "Poyoshi"@en-us;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.mylifeismine:PRS arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:jacketDesigner "Poyoshi"@en-us;
+                        arcaea:rating 5 ;
+                        arcaea:ratingClass 1 .
+arcaea.mylifeismine:PST arcaea:chartDesigner arcaea:Nitro;
+                        arcaea:jacketDesigner "Poyoshi"@en-us;
+                        arcaea:rating 2 ;
+                        arcaea:ratingClass 0 .

@@ -1,0 +1,44 @@
+@prefix arcaea.strongholds: <https://arcaea.lowiro.com/#strongholds#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.strongholds:.
+arcaea.strongholds: arcaea:artist arcaea:Yooh;
+                    arcaea:audioPreview 38851 ;
+                    arcaea:audioPreviewEnd 66280 ;
+                    arcaea:bg arcaea:nijuusei-conflict-b;
+                    arcaea:bg_inverse arcaea:nijuusei-light-b;
+                    arcaea:bpm "105"@en-us;
+                    arcaea:bpm_base 210 ;
+                    arcaea:date 1521763202 ;
+                    arcaea:difficulties arcaea.strongholds:PRS,
+                                        arcaea.strongholds:PST,
+                                        arcaea.strongholds:FTR;
+                    arcaea:id "strongholds"@en-us;
+                    arcaea:idx 72 ;
+                    arcaea:purchase "nijuusei"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "ゆー"@ja,
+                                        "유"@ko,
+                                        "すとろんぐほーるず"@ja,
+                                        "스트롱홀드"@ko,
+                                        "스트롱홀즈"@ko;
+                    arcaea:set "nijuusei"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "Strongholds"@en;
+                    arcaea:version "1.6"@en-us.
+arcaea.strongholds:FTR arcaea:chartDesigner arcaea:T%CE%94roNuke;
+                       arcaea:jacketDesigner "八葉"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.strongholds:PRS arcaea:chartDesigner arcaea:TaroNuke%CE%94;
+                       arcaea:jacketDesigner "八葉"@en-us;
+                       arcaea:rating 5 ;
+                       arcaea:ratingClass 1 .
+arcaea.strongholds:PST arcaea:chartDesigner arcaea:TaroNuke;
+                       arcaea:jacketDesigner "八葉"@en-us;
+                       arcaea:rating 2 ;
+                       arcaea:ratingClass 0 .

@@ -1,0 +1,49 @@
+@prefix arcaea.furetemitai: <https://arcaea.lowiro.com/#furetemitai#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.furetemitai:.
+arcaea.furetemitai: arcaea:artist arcaea:%E3%81%BF%E3%81%8D%E3%81%A8P;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:hime_light;
+                    arcaea:bg_inverse arcaea:hime_conflict;
+                    arcaea:bpm "155"@en-us;
+                    arcaea:bpm_base 155 ;
+                    arcaea:date 1727308802 ;
+                    arcaea:difficulties arcaea.furetemitai:ETR,
+                                        arcaea.furetemitai:FTR,
+                                        arcaea.furetemitai:PRS,
+                                        arcaea.furetemitai:PST;
+                    arcaea:id "furetemitai"@en-us;
+                    arcaea:idx 416 ;
+                    arcaea:purchase "extend_3"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "みきとぴー"@ja,
+                                        "미키토피"@ko,
+                                        "mikitop"@en,
+                                        "닿고싶어"@ko,
+                                        "furetemitai"@en;
+                    arcaea:set "extend_3"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:source_copyright "© TAITO CORPORATION"@en-us;
+                    arcaea:title_localized "フレテミタイ"@ja,
+                                           "FURETE-MITAI"@en,
+                                           "TETOTE CONNECT"@en;
+                    arcaea:version "5.10"@en-us;
+                    arcaea:world_unlock true.
+arcaea.furetemitai:ETR arcaea:chartDesigner arcaea:nora::neko;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 4 .
+arcaea.furetemitai:FTR arcaea:chartDesigner arcaea:nora::neko;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 2 .
+arcaea.furetemitai:PRS arcaea:chartDesigner arcaea:nora::neko;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.furetemitai:PST arcaea:chartDesigner arcaea:nora::neko;
+                       arcaea:rating 2 ;
+                       arcaea:ratingClass 0 .

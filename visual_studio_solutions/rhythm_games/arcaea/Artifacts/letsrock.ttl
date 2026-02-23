@@ -1,0 +1,47 @@
+@prefix arcaea.letsrock: <https://arcaea.lowiro.com/#letsrock#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.letsrock:.
+arcaea.letsrock: arcaea:artist arcaea:ikaruga_nex%20vs%20FALCHiON;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:zettai;
+                 arcaea:bg_inverse arcaea:zettai_light;
+                 arcaea:bpm "210"@en-us;
+                 arcaea:bpm_base 210 ;
+                 arcaea:date 1677715203 ;
+                 arcaea:difficulties arcaea.letsrock:FTR,
+                                     arcaea.letsrock:PRS,
+                                     arcaea.letsrock:PST;
+                 arcaea:id "letsrock"@en-us;
+                 arcaea:idx 303 ;
+                 arcaea:purchase "extend_2"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "いかるがねっくす"@ja,
+                                     "ふぁるしおん"@ja,
+                                     "이카구라 넥스"@ko,
+                                     "팔시온"@ko,
+                                     "れっつろっく"@ja,
+                                     "렛츠 락"@ko;
+                 arcaea:set "extend_2"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "Let's Rock (Arcaea mix)"@en;
+                 arcaea:version "4.3"@en-us;
+                 arcaea:world_unlock true.
+arcaea.letsrock:FTR arcaea:chartDesigner arcaea:Luxance;
+                    arcaea:jacketDesigner "虎硬 + 無想りんね"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.letsrock:PRS arcaea:chartDesigner arcaea:Luxance;
+                    arcaea:jacketDesigner "虎硬 + 無想りんね"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.letsrock:PST arcaea:chartDesigner arcaea:Luxance;
+                    arcaea:jacketDesigner "虎硬 + 無想りんね"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

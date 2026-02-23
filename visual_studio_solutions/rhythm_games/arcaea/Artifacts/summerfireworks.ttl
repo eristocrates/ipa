@@ -1,0 +1,64 @@
+@prefix arcaea.summerfireworks: <https://arcaea.lowiro.com/#summerfireworks#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.summerfireworks:.
+arcaea:bg_daynight arcaea:day arcaea:omatsuri_light;
+                   arcaea:night arcaea:omatsuri_conflict.
+arcaea.summerfireworks: arcaea:artist arcaea:karatoP%CE%B1nchii%20feat.%E3%81%AF%E3%82%8B%E3%81%AE;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:omatsuri_light;
+                        arcaea:bg_daynight arcaea.summerfireworks:bg_daynight;
+                        arcaea:bg_inverse arcaea:omatsuri_conflict;
+                        arcaea:bpm "160"@en-us;
+                        arcaea:bpm_base 160 ;
+                        arcaea:category arcaea:original;
+                        arcaea:date 1636588803 ;
+                        arcaea:difficulties arcaea.summerfireworks:FTR,
+                                            arcaea.summerfireworks:PRS,
+                                            arcaea.summerfireworks:PST;
+                        arcaea:id "summerfireworks"@en-us;
+                        arcaea:idx 243 ;
+                        arcaea:purchase "summerfireworks"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "판"@ko,
+                                            "카라토"@ko,
+                                            "からとぱんちー"@ja,
+                                            "はるの"@ja,
+                                            "かぷちー"@ja,
+                                            "ぱん"@ja,
+                                            "からと"@ja,
+                                            "카푸치"@ko,
+                                            "하루노"@ko,
+                                            "카라토판치"@ko,
+                                            "haruno"@en,
+                                            "いろどるなつのこいはなび"@ja,
+                                            "서머 파이어웍스 오브 러브"@ko,
+                                            "섬머 파이어웍스 오브 러브"@ko,
+                                            "섬머 파이어워크스 오브 러브"@ko,
+                                            "서머 파이어워크스 오브 러브"@ko,
+                                            "이로도루 나츠노 코이하나비"@ko,
+                                            "수놓아지는 여름의 사랑 불꽃놀이"@ko;
+                        arcaea:set "single"@en-us;
+                        arcaea:side arcaea:light_side;
+                        arcaea:title_localized "彩る夏の恋花火"@ja,
+                                               "Summer Fireworks of Love"@en;
+                        arcaea:version "3.9"@en-us;
+                        arcaea:world_unlock false.
+arcaea.summerfireworks:FTR arcaea:chartDesigner arcaea:%E5%A4%8F%E3%81%AENitro;
+                           arcaea:jacketDesigner "シエラ"@en-us;
+                           arcaea:rating 9 ;
+                           arcaea:ratingClass 2 ;
+                           arcaea:ratingPlus true.
+arcaea.summerfireworks:PRS arcaea:chartDesigner arcaea:%E5%A4%8F%E3%81%AENitro;
+                           arcaea:jacketDesigner "シエラ"@en-us;
+                           arcaea:rating 6 ;
+                           arcaea:ratingClass 1 .
+arcaea.summerfireworks:PST arcaea:chartDesigner arcaea:%E5%A4%8F%E3%81%AENitro;
+                           arcaea:jacketDesigner "シエラ"@en-us;
+                           arcaea:rating 3 ;
+                           arcaea:ratingClass 0 .

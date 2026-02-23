@@ -1,0 +1,47 @@
+@prefix arcaea.undefined: <https://arcaea.lowiro.com/#undefined#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.undefined:.
+arcaea.undefined: arcaea:artist <https://arcaea.lowiro.com/#planless%20&%20乃花こより>;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:single2_conflict;
+                  arcaea:bg_inverse arcaea:single2_light;
+                  arcaea:bpm "110"@en-us;
+                  arcaea:bpm_base 110 ;
+                  arcaea:date 1766534400 ;
+                  arcaea:difficulties arcaea.undefined:FTR,
+                                      arcaea.undefined:PRS,
+                                      arcaea.undefined:PST;
+                  arcaea:id "undefined"@en-us;
+                  arcaea:idx 508 ;
+                  arcaea:purchase "extend_4"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ぷらんれす"@ja,
+                                      "のはなこより"@ja,
+                                      "플랜리스"@ko,
+                                      "노하나 코요리"@ko,
+                                      "nohana koyori"@en,
+                                      "あんでふぁいんど"@ja,
+                                      "언디파인드"@ko;
+                  arcaea:set "extend_4"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "undefined"@en;
+                  arcaea:version "6.11"@en-us;
+                  arcaea:world_unlock true.
+arcaea.undefined:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#sidewaves%20+%20Nitro>;
+                     arcaea:jacketDesigner "るあえる"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.undefined:PRS arcaea:chartDesigner arcaea:sidewaves;
+                     arcaea:jacketDesigner "るあえる"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.undefined:PST arcaea:chartDesigner arcaea:sidewaves;
+                     arcaea:jacketDesigner "るあえる"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

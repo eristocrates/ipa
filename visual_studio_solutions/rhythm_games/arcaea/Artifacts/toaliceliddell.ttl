@@ -1,0 +1,47 @@
+@prefix arcaea.toaliceliddell: <https://arcaea.lowiro.com/#toaliceliddell#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.toaliceliddell:.
+arcaea.toaliceliddell: arcaea:artist arcaea:%E3%83%A2%E3%83%AA%E3%83%A2%E3%83%AA%E3%81%82%E3%81%A4%E3%81%97;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:alice_conflict;
+                       arcaea:bg_inverse arcaea:alice_light;
+                       arcaea:bpm "222"@en-us;
+                       arcaea:bpm_base 222 ;
+                       arcaea:date 1607558402 ;
+                       arcaea:difficulties arcaea.toaliceliddell:FTR,
+                                           arcaea.toaliceliddell:PRS,
+                                           arcaea.toaliceliddell:PST;
+                       arcaea:id "toaliceliddell"@en-us;
+                       arcaea:idx 190 ;
+                       arcaea:purchase "alice_append_1"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "모리모리 아츠시"@ko,
+                                           "morimori atsushi"@en,
+                                           "ありすりでるにささぐ"@ja,
+                                           "투 엘리스 리들"@ko,
+                                           "아리스리데루니 사사구"@ko,
+                                           "앨리스 리들에게 바침"@ko;
+                       arcaea:set "alice_append_1"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "アリス・リデルに捧ぐ"@ja,
+                                              "To: Alice Liddell"@en;
+                       arcaea:version "3.3"@en-us;
+                       arcaea:world_unlock false.
+arcaea.toaliceliddell:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Yours%20Sincerely,%20夜浪>;
+                          arcaea:jacketDesigner "みきさい + Khronetic"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 .
+arcaea.toaliceliddell:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Yours%20Sincerely,%20夜浪>;
+                          arcaea:jacketDesigner "みきさい + Khronetic"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.toaliceliddell:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Yours%20Sincerely,%20夜浪>;
+                          arcaea:jacketDesigner "みきさい + Khronetic"@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

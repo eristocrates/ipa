@@ -1,0 +1,56 @@
+@prefix arcaea.heavensdoor: <https://arcaea.lowiro.com/#heavensdoor#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.heavensdoor:.
+arcaea.heavensdoor: arcaea:artist arcaea:LeaF;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:prelude_conflict;
+                    arcaea:bg_inverse arcaea:prelude_light;
+                    arcaea:bpm "240"@en-us;
+                    arcaea:bpm_base 240 ;
+                    arcaea:date 1563408003 ;
+                    arcaea:difficulties arcaea.heavensdoor:FTR,
+                                        arcaea.heavensdoor:PRS,
+                                        arcaea.heavensdoor:PST,
+                                        arcaea.heavensdoor:BYD;
+                    arcaea:id "heavensdoor"@en-us;
+                    arcaea:idx 129 ;
+                    arcaea:purchase "prelude"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "りーふ"@ja,
+                                        "리프"@ko,
+                                        "へぶんずどあー"@ja,
+                                        "へゔんずどあー"@ja,
+                                        "헤븐즈도어"@ko;
+                    arcaea:set "prelude"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "Heavensdoor"@en;
+                    arcaea:version "2.2"@en-us;
+                    arcaea:world_unlock false.
+arcaea.heavensdoor:BYD arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E5%A4%A9%E3%81%AE%E9%96%80;
+                       arcaea:date 1639008003 ;
+                       arcaea:hidden_until "difficulty"@en-us;
+                       arcaea:jacketDesigner "nonokuro"@en-us;
+                       arcaea:jacketOverride true;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 3 ;
+                       arcaea:ratingPlus true;
+                       arcaea:version "3.10"@en-us.
+arcaea.heavensdoor:FTR arcaea:chartDesigner arcaea:Black%20Tea;
+                       arcaea:jacketDesigner "yusi. + Khronetic"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.heavensdoor:PRS arcaea:chartDesigner arcaea:Kurorak;
+                       arcaea:jacketDesigner "yusi. + Khronetic"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 .
+arcaea.heavensdoor:PST arcaea:chartDesigner arcaea:Kurorak;
+                       arcaea:jacketDesigner "yusi. + Khronetic"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

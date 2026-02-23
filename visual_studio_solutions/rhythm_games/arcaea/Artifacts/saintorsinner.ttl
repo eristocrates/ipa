@@ -1,0 +1,45 @@
+@prefix arcaea.saintorsinner: <https://arcaea.lowiro.com/#saintorsinner#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.saintorsinner:.
+arcaea.saintorsinner: arcaea:artist arcaea:crayvxn;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:prelude_conflict;
+                      arcaea:bg_inverse arcaea:prelude_light;
+                      arcaea:bpm "164"@en-us;
+                      arcaea:bpm_base 164 ;
+                      arcaea:date 1727308800 ;
+                      arcaea:difficulties arcaea.saintorsinner:PRS,
+                                          arcaea.saintorsinner:PST,
+                                          arcaea.saintorsinner:FTR;
+                      arcaea:id "saintorsinner"@en-us;
+                      arcaea:idx 414 ;
+                      arcaea:purchase "prelude"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "くれいぶん"@ja,
+                                          "크레이븐"@ko,
+                                          "せいんとおあしんなー"@ja,
+                                          "세인트 오어 시너"@ko;
+                      arcaea:set "prelude"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Saint or Sinner"@en;
+                      arcaea:version "5.10"@en-us;
+                      arcaea:world_unlock false.
+arcaea.saintorsinner:FTR arcaea:chartDesigner arcaea:%E5%B0%8F%E7%B5%82%E7%82%B9;
+                         arcaea:jacketDesigner "yawa"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.saintorsinner:PRS arcaea:chartDesigner arcaea:%E5%B0%8F%E7%B5%82%E7%82%B9;
+                         arcaea:jacketDesigner "yawa"@en-us;
+                         arcaea:rating 6 ;
+                         arcaea:ratingClass 1 .
+arcaea.saintorsinner:PST arcaea:chartDesigner arcaea:%E5%B0%8F%E7%B5%82%E7%82%B9;
+                         arcaea:jacketDesigner "yawa"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

@@ -1,0 +1,47 @@
+@prefix arcaea.mantis: <https://arcaea.lowiro.com/#mantis#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mantis:.
+arcaea.mantis: arcaea:artist arcaea:Akira%20Complex%20feat.%20kiraku;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:prelude_conflict;
+               arcaea:bg_inverse arcaea:prelude_light;
+               arcaea:bpm "135"@en-us;
+               arcaea:bpm_base 135 ;
+               arcaea:date 1674691201 ;
+               arcaea:difficulties arcaea.mantis:FTR,
+                                   arcaea.mantis:PRS,
+                                   arcaea.mantis:PST;
+               arcaea:id "mantis"@en-us;
+               arcaea:idx 295 ;
+               arcaea:purchase "extend_2"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "あきらこんぷれっくす"@ja,
+                                   "きらく"@ja,
+                                   "아키라 컴플렉스"@ko,
+                                   "키라쿠"@ko,
+                                   "まんてぃす"@ja,
+                                   "맨티스"@ko,
+                                   "만티스"@ko;
+               arcaea:set "extend_2"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "MANTIS (Arcaea Ultra-Bloodrush VIP)"@en;
+               arcaea:version "4.2"@en-us;
+               arcaea:world_unlock true.
+arcaea.mantis:FTR arcaea:chartDesigner arcaea:ANTyMIS;
+                  arcaea:jacketDesigner "N²/ANTIREAL"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.mantis:PRS arcaea:chartDesigner arcaea:ANTyMIS;
+                  arcaea:jacketDesigner "N²/ANTIREAL"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.mantis:PST arcaea:chartDesigner arcaea:ANTyMIS;
+                  arcaea:jacketDesigner "N²/ANTIREAL"@en-us;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

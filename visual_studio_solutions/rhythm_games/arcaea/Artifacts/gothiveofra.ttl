@@ -1,0 +1,49 @@
+@prefix arcaea.gothiveofra: <https://arcaea.lowiro.com/#gothiveofra#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.gothiveofra:.
+arcaea.gothiveofra: arcaea:artist <https://arcaea.lowiro.com/#E.G.G.>;
+                    arcaea:audioPreview 60000 ;
+                    arcaea:audioPreviewEnd 70000 ;
+                    arcaea:bg arcaea:gc_light;
+                    arcaea:bg_inverse arcaea:gc_conflict;
+                    arcaea:bpm "268"@en-us;
+                    arcaea:bpm_base 268 ;
+                    arcaea:date 1600214400 ;
+                    arcaea:difficulties arcaea.gothiveofra:FTR,
+                                        arcaea.gothiveofra:PRS,
+                                        arcaea.gothiveofra:PST;
+                    arcaea:id "gothiveofra"@en-us;
+                    arcaea:idx 175 ;
+                    arcaea:no_stream true;
+                    arcaea:purchase "groovecoaster"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "えっぐ"@ja,
+                                        "えぶりしんぐげっとぐるーゔ"@ja,
+                                        "에그"@ko,
+                                        "에브리씽 겟 그루브"@ko,
+                                        "에브리띵 겟 그루브"@ko,
+                                        "ごっとはいぶおぶらー"@ja,
+                                        "ごっとはいゔおぶらー"@ja,
+                                        "갓 하이브 오브 라"@ko;
+                    arcaea:set "groovecoaster"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:source_copyright "© TAITO CORP. 1978, 2020"@en-us;
+                    arcaea:title_localized "Got hive of Ra"@en,
+                                           "Groove Coaster"@en;
+                    arcaea:version "3.2"@en-us;
+                    arcaea:world_unlock false.
+arcaea.gothiveofra:FTR arcaea:chartDesigner arcaea:Groove%20Nitro;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.gothiveofra:PRS arcaea:chartDesigner arcaea:Groove%20Nitro;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.gothiveofra:PST arcaea:chartDesigner arcaea:Groove%20Nitro;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

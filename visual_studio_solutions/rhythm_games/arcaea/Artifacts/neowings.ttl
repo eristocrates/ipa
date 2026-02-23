@@ -1,0 +1,49 @@
+@prefix arcaea.neowings: <https://arcaea.lowiro.com/#neowings#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.neowings:.
+arcaea.neowings: arcaea:artist arcaea:SOUND%20HOLIC%20feat.%20Nana%20Takahashi;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:single2_conflict;
+                 arcaea:bg_inverse arcaea:single2_light;
+                 arcaea:bpm "168"@en-us;
+                 arcaea:bpm_base 168 ;
+                 arcaea:category arcaea:partner;
+                 arcaea:date 1645056006 ;
+                 arcaea:difficulties arcaea.neowings:FTR,
+                                     arcaea.neowings:PRS,
+                                     arcaea.neowings:PST;
+                 arcaea:id "neowings"@en-us;
+                 arcaea:idx 258 ;
+                 arcaea:purchase "neowings"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "さうんどほりっく"@ja,
+                                     "ななたかはし"@ja,
+                                     "사운드 홀릭"@ko,
+                                     "나나 타카하시"@ko,
+                                     "ねおうぃんぐす"@ja,
+                                     "ねおういんぐす"@ja,
+                                     "네오 윙즈"@ko,
+                                     "네오 윙스"@ko;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "NEO WINGS"@en;
+                 arcaea:version "3.12"@en-us;
+                 arcaea:world_unlock false.
+arcaea.neowings:FTR arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:jacketDesigner "シエラ"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.neowings:PRS arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:jacketDesigner "シエラ"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.neowings:PST arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:jacketDesigner "シエラ"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

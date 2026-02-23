@@ -1,0 +1,56 @@
+@prefix arcaea.kanagawa: <https://arcaea.lowiro.com/#kanagawa#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.kanagawa:.
+arcaea.kanagawa: arcaea:artist arcaea:%E5%8D%97%E3%82%86%E3%81%AB;
+                 arcaea:audioPreview 67000 ;
+                 arcaea:audioPreviewEnd 101667 ;
+                 arcaea:bg arcaea:base_light;
+                 arcaea:bg_inverse arcaea:base_conflict;
+                 arcaea:bpm "180"@en-us;
+                 arcaea:bpm_base 180 ;
+                 arcaea:date 1496188801 ;
+                 arcaea:difficulties arcaea.kanagawa:BYD,
+                                     arcaea.kanagawa:FTR,
+                                     arcaea.kanagawa:PRS,
+                                     arcaea.kanagawa:PST;
+                 arcaea:id "kanagawa"@en-us;
+                 arcaea:idx 33 ;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "みなみゆに"@ja,
+                                     "미나미유니"@ko,
+                                     "minami yuni"@en,
+                                     "かながわでんのうあんきょ"@ja,
+                                     "카나가와 사이버 커버트"@ko,
+                                     "카나가와 덴노우 안쿄"@ko,
+                                     "카나가와 전뇌 암거"@ko;
+                 arcaea:set "base"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "神奈川電脳暗渠"@ja,
+                                        "Kanagawa Cyber Culvert"@en;
+                 arcaea:version "1.1"@en-us;
+                 arcaea:world_unlock true.
+arcaea.kanagawa:BYD arcaea:chartDesigner arcaea:Exschwas%E2%86%93on;
+                    arcaea:date 1639008000 ;
+                    arcaea:jacketDesigner "白鳥怜 + Khronetic"@en-us;
+                    arcaea:jacketOverride true;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 3 ;
+                    arcaea:ratingPlus true;
+                    arcaea:version "3.10"@en-us.
+arcaea.kanagawa:FTR arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "白鳥怜"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.kanagawa:PRS arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "白鳥怜"@en-us;
+                    arcaea:rating 5 ;
+                    arcaea:ratingClass 1 .
+arcaea.kanagawa:PST arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "白鳥怜"@en-us;
+                    arcaea:rating 1 ;
+                    arcaea:ratingClass 0 .

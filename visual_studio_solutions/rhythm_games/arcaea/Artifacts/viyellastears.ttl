@@ -1,0 +1,48 @@
+@prefix arcaea.viyellastears: <https://arcaea.lowiro.com/#viyellastears#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.viyellastears:.
+arcaea.viyellastears: arcaea:artist arcaea:Laur;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:ongeki_conflict;
+                      arcaea:bg_inverse arcaea:ongeki_light;
+                      arcaea:bpm "218"@en-us;
+                      arcaea:bpm_base 218 ;
+                      arcaea:date 1608163202 ;
+                      arcaea:difficulties arcaea.viyellastears:FTR,
+                                          arcaea.viyellastears:PRS,
+                                          arcaea.viyellastears:PST;
+                      arcaea:id "viyellastears"@en-us;
+                      arcaea:idx 193 ;
+                      arcaea:no_stream true;
+                      arcaea:purchase "ongeki"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "らうる"@ja,
+                                          "라우르"@ko,
+                                          "ゔぃえらずてぃあーず"@ja,
+                                          "비엘라스 티어스"@ko,
+                                          "비엘라즈 티어스"@ko,
+                                          "비엘라스 티어즈"@ko,
+                                          "비엘라즈 티어즈"@ko;
+                      arcaea:set "ongeki"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:source_copyright "©SEGA"@en-us;
+                      arcaea:title_localized "Viyella's Tears"@en,
+                                             "O.N.G.E.K.I."@en;
+                      arcaea:version "3.4"@en-us;
+                      arcaea:world_unlock false.
+arcaea.viyellastears:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E3%81%AE%E6%B6%99;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 .
+arcaea.viyellastears:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E3%81%AE%E6%B6%99;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.viyellastears:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E3%81%AE%E6%B6%99;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

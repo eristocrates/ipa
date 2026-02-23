@@ -1,0 +1,46 @@
+@prefix arcaea.astrawalkthrough: <https://arcaea.lowiro.com/#astrawalkthrough#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.astrawalkthrough:.
+arcaea.astrawalkthrough: arcaea:artist arcaea:paraoka;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:nijuusei2_conflict;
+                         arcaea:bg_inverse arcaea:nijuusei2_light;
+                         arcaea:bpm "225"@en-us;
+                         arcaea:bpm_base 225 ;
+                         arcaea:date 1674691203 ;
+                         arcaea:difficulties arcaea.astrawalkthrough:PRS,
+                                             arcaea.astrawalkthrough:PST,
+                                             arcaea.astrawalkthrough:FTR;
+                         arcaea:id "astrawalkthrough"@en-us;
+                         arcaea:idx 297 ;
+                         arcaea:purchase "extend_2"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "ぱらおか"@ja,
+                                             "파라오카"@ko,
+                                             "あすとらうぉーくするー"@ja,
+                                             "아스트라 워크스루"@ko;
+                         arcaea:set "extend_2"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "Astra walkthrough"@en;
+                         arcaea:version "4.2"@en-us;
+                         arcaea:world_unlock true.
+arcaea.astrawalkthrough:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Aster%20join%20Toaster.>;
+                            arcaea:jacketDesigner "八重幸"@en-us;
+                            arcaea:rating 9 ;
+                            arcaea:ratingClass 2 ;
+                            arcaea:ratingPlus true.
+arcaea.astrawalkthrough:PRS arcaea:chartDesigner arcaea:Aster;
+                            arcaea:jacketDesigner "八重幸"@en-us;
+                            arcaea:rating 7 ;
+                            arcaea:ratingClass 1 ;
+                            arcaea:ratingPlus true.
+arcaea.astrawalkthrough:PST arcaea:chartDesigner arcaea:Aster;
+                            arcaea:jacketDesigner "八重幸"@en-us;
+                            arcaea:rating 4 ;
+                            arcaea:ratingClass 0 .

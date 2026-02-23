@@ -1,0 +1,54 @@
+@prefix arcaea.nhelv: <https://arcaea.lowiro.com/#nhelv#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.nhelv:.
+arcaea.nhelv: arcaea:artist arcaea:Silentroom;
+              arcaea:audioPreview 67360 ;
+              arcaea:audioPreviewEnd 96600 ;
+              arcaea:bg arcaea:lethaeus;
+              arcaea:bpm "174.59"@en-us;
+              arcaea:bpm_base 174.59;
+              arcaea:date 1533859200 ;
+              arcaea:difficulties arcaea.nhelv:BYD,
+                                  arcaea.nhelv:FTR,
+                                  arcaea.nhelv:PRS,
+                                  arcaea.nhelv:PST;
+              arcaea:id "nhelv"@en-us;
+              arcaea:idx 93 ;
+              arcaea:remote_dl true;
+              arcaea:search_title "さいれんとるーむ"@ja,
+                                  "사일런트 룸"@ko,
+                                  "ねるふ"@ja,
+                                  "네르프"@ko;
+              arcaea:set "base"@en-us;
+              arcaea:side arcaea:conflict_side;
+              arcaea:title_localized "Nhelv"@en;
+              arcaea:version "1.7"@en-us;
+              arcaea:world_unlock true.
+arcaea.nhelv:BYD arcaea:bg arcaea:eden_conflict;
+                 arcaea:chartDesigner arcaea:%E9%9B%B6%E4%B8%8B%20-descent-;
+                 arcaea:date 1745452804 ;
+                 arcaea:hidden_until "difficulty"@en-us;
+                 arcaea:jacketDesigner "shun yamaguchi"@en-us;
+                 arcaea:jacketOverride true;
+                 arcaea:rating 10 ;
+                 arcaea:ratingClass 3 ;
+                 arcaea:ratingPlus true;
+                 arcaea:version "6.4"@en-us.
+arcaea.nhelv:FTR arcaea:chartDesigner arcaea:Nitro%E3%80%8CKatastrophe%E3%80%8D;
+                 arcaea:jacketDesigner "駿"@en-us;
+                 arcaea:rating 9 ;
+                 arcaea:ratingClass 2 ;
+                 arcaea:ratingPlus true.
+arcaea.nhelv:PRS arcaea:chartDesigner arcaea:Nitro%E3%80%8CKatastrophe%E3%80%8D;
+                 arcaea:jacketDesigner "駿"@en-us;
+                 arcaea:rating 6 ;
+                 arcaea:ratingClass 1 .
+arcaea.nhelv:PST arcaea:chartDesigner arcaea:Nitro%E3%80%8CKatastrophe%E3%80%8D;
+                 arcaea:jacketDesigner "駿"@en-us;
+                 arcaea:rating 3 ;
+                 arcaea:ratingClass 0 .

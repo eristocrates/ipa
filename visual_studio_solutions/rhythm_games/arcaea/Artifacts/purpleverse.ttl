@@ -1,0 +1,55 @@
+@prefix arcaea.purpleverse: <https://arcaea.lowiro.com/#purpleverse#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.purpleverse:.
+arcaea.purpleverse: arcaea:artist arcaea:Hommarju;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:prelude_conflict;
+                    arcaea:bg_inverse arcaea:prelude_light;
+                    arcaea:bpm "170"@en-us;
+                    arcaea:bpm_base 170 ;
+                    arcaea:date 1606953605 ;
+                    arcaea:difficulties arcaea.purpleverse:FTR,
+                                        arcaea.purpleverse:PRS,
+                                        arcaea.purpleverse:PST,
+                                        arcaea.purpleverse:BYD;
+                    arcaea:id "purpleverse"@en-us;
+                    arcaea:idx 182 ;
+                    arcaea:purchase "extend"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "おまーじゅ"@ja,
+                                        "오마쥬"@ko,
+                                        "오마주"@ko,
+                                        "ぱーぷるばーす"@ja,
+                                        "ぱーぷるゔぁーす"@ja,
+                                        "퍼플 버스"@ko;
+                    arcaea:set "extend"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "Purple Verse"@en;
+                    arcaea:version "3.3"@en-us;
+                    arcaea:world_unlock true.
+arcaea.purpleverse:BYD arcaea:chartDesigner <https://arcaea.lowiro.com/#/ERROR/%20絶滅>;
+                       arcaea:date 1706140804 ;
+                       arcaea:hidden_until "difficulty"@en-us;
+                       arcaea:jacketDesigner "HakureiNeko"@en-us;
+                       arcaea:jacketOverride true;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 3 ;
+                       arcaea:version "5.3"@en-us.
+arcaea.purpleverse:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                       arcaea:jacketDesigner "HakureiNeko"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 .
+arcaea.purpleverse:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                       arcaea:jacketDesigner "HakureiNeko"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 .
+arcaea.purpleverse:PST arcaea:chartDesigner arcaea:Exschwasion;
+                       arcaea:jacketDesigner "HakureiNeko"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

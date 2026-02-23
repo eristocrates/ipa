@@ -18,7 +18,10 @@ module Shorthand =
     module LangTag = 
         let inhabitant (langTag:string) = CultureInfo.GetCultureInfo langTag
         let en = inhabitant "en"
-        let us = inhabitant "en-us"
+        let en_us = inhabitant "en-us"
+        let ja = inhabitant "ja"
+        let zh_Hant = inhabitant "zh-Hant"
+        let zh_Hans = inhabitant "zh-Hans"
 
 
     // A "draft" statement: syntactic construction first, materialization later.

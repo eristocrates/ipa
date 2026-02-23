@@ -1,0 +1,56 @@
+@prefix arcaea.epicurus: <https://arcaea.lowiro.com/#epicurus#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.epicurus:.
+arcaea.epicurus: arcaea:artist <https://arcaea.lowiro.com/#SYNC.ART'S%20feat.Misato>;
+                 arcaea:audioPreview 91354 ;
+                 arcaea:audioPreviewEnd 126967 ;
+                 arcaea:bg arcaea:touhou_light;
+                 arcaea:bg_inverse arcaea:touhou_conflict;
+                 arcaea:bpm "155"@en-us;
+                 arcaea:bpm_base 155 ;
+                 arcaea:date 1717027200 ;
+                 arcaea:difficulties arcaea.epicurus:ETR,
+                                     arcaea.epicurus:FTR,
+                                     arcaea.epicurus:PRS,
+                                     arcaea.epicurus:PST;
+                 arcaea:id "epicurus"@en-us;
+                 arcaea:idx 390 ;
+                 arcaea:remote_dl false;
+                 arcaea:search_title "しんくあーつ"@ja,
+                                     "みさと"@ja,
+                                     "싱크아츠"@ko,
+                                     "미사토"@ko,
+                                     "えぴくろすのにじはもうみえない"@ja,
+                                     "히든 레인보우즈 오브 에피쿠로스"@ko,
+                                     "히든 레인보우 오브 에피쿠로스"@ko,
+                                     "에피쿠로스의 무지개는 이제 보이지 않아"@ko,
+                                     "에피쿠로스노 니지와 모 미에나이"@ko;
+                 arcaea:set "base"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                 arcaea:title_localized "エピクロスの虹はもう見えない"@ja,
+                                        "Hidden Rainbows of Epicurus"@en;
+                 arcaea:version "5.7"@en-us;
+                 arcaea:world_unlock false.
+arcaea.epicurus:ETR arcaea:chartDesigner arcaea:Dec18;
+                    arcaea:jacketDesigner "ののこ"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 4 ;
+                    arcaea:ratingPlus true.
+arcaea.epicurus:FTR arcaea:chartDesigner arcaea:Dec18;
+                    arcaea:jacketDesigner "ののこ"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 2 .
+arcaea.epicurus:PRS arcaea:chartDesigner arcaea:Dec18;
+                    arcaea:jacketDesigner "ののこ"@en-us;
+                    arcaea:rating 5 ;
+                    arcaea:ratingClass 1 .
+arcaea.epicurus:PST arcaea:chartDesigner arcaea:Dec18;
+                    arcaea:jacketDesigner "ののこ"@en-us;
+                    arcaea:rating 2 ;
+                    arcaea:ratingClass 0 .

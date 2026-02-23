@@ -1,0 +1,48 @@
+@prefix arcaea.metamysteria: <https://arcaea.lowiro.com/#metamysteria#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.metamysteria:.
+arcaea.metamysteria: arcaea:artist arcaea:DJ%20Noriken;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:meta_mysteria;
+                     arcaea:bg_inverse arcaea:meta_mysteria;
+                     arcaea:bpm "205"@en-us;
+                     arcaea:bpm_base 205 ;
+                     arcaea:date 1701302404 ;
+                     arcaea:difficulties arcaea.metamysteria:PRS,
+                                         arcaea.metamysteria:PST,
+                                         arcaea.metamysteria:FTR;
+                     arcaea:id "metamysteria"@en-us;
+                     arcaea:idx 361 ;
+                     arcaea:purchase "wacca_append_1"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "でぃーじぇーのりけん"@ja,
+                                         "でぃーじぇいのりけん"@ja,
+                                         "디제이 노리켄"@ko,
+                                         "めたみすてりあ"@ja,
+                                         "메타 미스테리아"@ko;
+                     arcaea:set "wacca_append_1"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:source_copyright "©Marvelous Inc. / Supported by HARDCORE TANO*C"@en-us;
+                     arcaea:title_localized "Meta-Mysteria"@en;
+                     arcaea:version "5.2"@en-us;
+                     arcaea:world_unlock false.
+arcaea.metamysteria:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#VII:%20THE%20CHARIOT/夜浪>;
+                        arcaea:jacketDesigner "Taiyo Yamamoto"@en-us;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.metamysteria:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                        arcaea:jacketDesigner "Taiyo Yamamoto"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 ;
+                        arcaea:ratingPlus true.
+arcaea.metamysteria:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                        arcaea:jacketDesigner "Taiyo Yamamoto"@en-us;
+                        arcaea:rating 5 ;
+                        arcaea:ratingClass 0 .

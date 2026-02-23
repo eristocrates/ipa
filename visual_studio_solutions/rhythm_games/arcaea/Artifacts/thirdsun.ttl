@@ -1,0 +1,53 @@
+@prefix arcaea.thirdsun: <https://arcaea.lowiro.com/#thirdsun#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.thirdsun:.
+arcaea.thirdsun: arcaea:artist arcaea:Ash%20Astral;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:nijuusei-conflict-b;
+                 arcaea:bg_inverse arcaea:nijuusei-light-b;
+                 arcaea:bpm "75-225"@en-us;
+                 arcaea:bpm_base 150 ;
+                 arcaea:category arcaea:musicgames;
+                 arcaea:date 1729728002 ;
+                 arcaea:difficulties arcaea.thirdsun:FTR,
+                                     arcaea.thirdsun:PRS,
+                                     arcaea.thirdsun:PST,
+                                     arcaea.thirdsun:ETR;
+                 arcaea:id "thirdsun"@en-us;
+                 arcaea:idx 420 ;
+                 arcaea:purchase "thirdsun"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "あっしゅあすとらる"@ja,
+                                     "애쉬 아스트랄"@ko,
+                                     "さーどさん"@ja,
+                                     "서드 선"@ko,
+                                     "써드 선"@ko;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:source_copyright "© 7th Beat Games"@en-us;
+                 arcaea:title_localized "Third Sun"@en,
+                                        "A Dance of Fire and Ice"@en;
+                 arcaea:version "5.10"@en-us;
+                 arcaea:world_unlock false.
+arcaea.thirdsun:ETR arcaea:chartDesigner arcaea:NEO%20NITRO;
+                    arcaea:jacketDesigner "Ash Astral"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 4 .
+arcaea.thirdsun:FTR arcaea:chartDesigner arcaea:NEO%20NITRO;
+                    arcaea:jacketDesigner "Ash Astral"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.thirdsun:PRS arcaea:chartDesigner arcaea:NEO%20NITRO;
+                    arcaea:jacketDesigner "Ash Astral"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.thirdsun:PST arcaea:chartDesigner arcaea:NEO%20NITRO;
+                    arcaea:jacketDesigner "Ash Astral"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

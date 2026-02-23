@@ -1,0 +1,43 @@
+@prefix arcaea.scarletlance: <https://arcaea.lowiro.com/#scarletlance#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.scarletlance:.
+arcaea.scarletlance: arcaea:artist <https://arcaea.lowiro.com/#MASAKI%20(ZUNTATA)>;
+                     arcaea:audioPreview 9081 ;
+                     arcaea:audioPreviewEnd 35027 ;
+                     arcaea:bg arcaea:gc_lance;
+                     arcaea:bpm "185"@en-us;
+                     arcaea:bpm_base 185 ;
+                     arcaea:date 1546992003 ;
+                     arcaea:difficulties arcaea.scarletlance:PRS,
+                                         arcaea.scarletlance:PST,
+                                         arcaea.scarletlance:FTR;
+                     arcaea:id "scarletlance"@en-us;
+                     arcaea:idx 109 ;
+                     arcaea:no_stream true;
+                     arcaea:purchase "groovecoaster"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "まさき"@ja,
+                                         "마사키"@ko,
+                                         "すかーれっとらんす"@ja,
+                                         "스칼렛 랜스"@ko;
+                     arcaea:set "groovecoaster"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:source_copyright "© TAITO CORP. 1978, 2019"@en-us;
+                     arcaea:title_localized "Scarlet Lance"@en,
+                                            "Groove Coaster"@en;
+                     arcaea:version "1.9"@en-us;
+                     arcaea:world_unlock false.
+arcaea.scarletlance:FTR arcaea:chartDesigner arcaea:%E9%97%87%E9%81%8B;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 2 .
+arcaea.scarletlance:PRS arcaea:chartDesigner arcaea:%E9%97%87%E9%81%8B;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.scarletlance:PST arcaea:chartDesigner arcaea:%E9%97%87%E9%81%8B;
+                        arcaea:rating 4 ;
+                        arcaea:ratingClass 0 .

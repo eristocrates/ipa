@@ -1,0 +1,43 @@
+@prefix arcaea.mukishitsu: <https://arcaea.lowiro.com/#mukishitsu#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mukishitsu:.
+arcaea.mukishitsu: arcaea:artist arcaea:MisomyL;
+                   arcaea:audioPreview 50709 ;
+                   arcaea:audioPreviewEnd 75870 ;
+                   arcaea:bg arcaea:prelude_light;
+                   arcaea:bg_inverse arcaea:prelude_conflict;
+                   arcaea:bpm "155"@en-us;
+                   arcaea:bpm_base 155 ;
+                   arcaea:date 1657152001 ;
+                   arcaea:difficulties arcaea.mukishitsu:FTR,
+                                       arcaea.mukishitsu:PRS,
+                                       arcaea.mukishitsu:PST;
+                   arcaea:id "mukishitsu"@en-us;
+                   arcaea:idx 272 ;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "みそみぃる"@ja,
+                                       "미소미엘"@ko,
+                                       "むきしつせかいにいろどりを"@ja,
+                                       "리드로우 더 컬러리스 월드"@ko,
+                                       "무키시츠세카이니 이로오"@ko,
+                                       "무기질 세계에 색채를"@ko;
+                   arcaea:set "base"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "無機質世界に彩を"@ja,
+                                          "Redraw the Colorless World"@en;
+                   arcaea:version "4.0"@en-us;
+                   arcaea:world_unlock true.
+arcaea.mukishitsu:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#antymis%20~虹色~>;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.mukishitsu:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#antymis%20~彩色~>;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.mukishitsu:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#antymis%20~無色~>;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

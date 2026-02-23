@@ -1,0 +1,40 @@
+@prefix arcaea.halcyon: <https://arcaea.lowiro.com/#halcyon#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.halcyon:.
+arcaea.halcyon: arcaea:artist arcaea:xi;
+                arcaea:audioPreview 27629 ;
+                arcaea:audioPreviewEnd 53388 ;
+                arcaea:bg arcaea:rei;
+                arcaea:bg_inverse arcaea:yugamu;
+                arcaea:bpm "191"@en-us;
+                arcaea:bpm_base 191 ;
+                arcaea:date 1531699206 ;
+                arcaea:difficulties arcaea.halcyon:PRS,
+                                    arcaea.halcyon:PST,
+                                    arcaea.halcyon:FTR;
+                arcaea:id "halcyon"@en-us;
+                arcaea:idx 85 ;
+                arcaea:purchase "rei"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "さい"@ja,
+                                    "사이"@ko,
+                                    "はるしおん"@ja,
+                                    "할시온"@ko;
+                arcaea:set "rei"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "Halcyon"@en;
+                arcaea:version "1.7"@en-us.
+arcaea.halcyon:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E5%A4%AA%E9%99%BD;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 2 .
+arcaea.halcyon:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E5%A4%AA%E9%99%BD;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 1 .
+arcaea.halcyon:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E5%A4%AA%E9%99%BD;
+                   arcaea:rating 5 ;
+                   arcaea:ratingClass 0 .

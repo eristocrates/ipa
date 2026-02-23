@@ -1,0 +1,50 @@
+@prefix arcaea.primevaltexture: <https://arcaea.lowiro.com/#primevaltexture#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.primevaltexture:.
+arcaea.primevaltexture: arcaea:artist arcaea:%E3%81%8F%E3%82%8B%E3%81%B6%E3%81%A3%E3%81%93%E3%81%A1%E3%82%83%E3%82%93;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:eden_append_light;
+                        arcaea:bg_inverse arcaea:eden_append_conflict;
+                        arcaea:bpm "120"@en-us;
+                        arcaea:bpm_base 120 ;
+                        arcaea:date 1695772804 ;
+                        arcaea:difficulties arcaea.primevaltexture:FTR,
+                                            arcaea.primevaltexture:PRS,
+                                            arcaea.primevaltexture:PST;
+                        arcaea:id "primevaltexture"@en-us;
+                        arcaea:idx 348 ;
+                        arcaea:purchase "eden_append_1"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "쿠루봇코쨩"@ko,
+                                            "쿠루보코쨩"@ko,
+                                            "쿠루봇코짱"@ko,
+                                            "쿠루보코짱"@ko,
+                                            "kurubukkochan"@en,
+                                            "ぷらいみーばるてくすちゃ"@ja,
+                                            "ぷらいみーゔぁるてくすちゃ"@ja,
+                                            "ぷらいみばるてくすちゃ"@ja,
+                                            "ぷらいみゔぁるてくすちゃ"@ja,
+                                            "프라이미벌 텍스쳐"@ko;
+                        arcaea:set "eden_append_1"@en-us;
+                        arcaea:side arcaea:light_side;
+                        arcaea:title_localized "Primeval Texture"@en;
+                        arcaea:version "5.0"@en-us;
+                        arcaea:world_unlock false.
+arcaea.primevaltexture:FTR arcaea:chartDesigner arcaea:CERiNG;
+                           arcaea:jacketDesigner "LOWRISE"@en-us;
+                           arcaea:rating 9 ;
+                           arcaea:ratingClass 2 .
+arcaea.primevaltexture:PRS arcaea:chartDesigner arcaea:CERiNG;
+                           arcaea:jacketDesigner "LOWRISE"@en-us;
+                           arcaea:rating 7 ;
+                           arcaea:ratingClass 1 .
+arcaea.primevaltexture:PST arcaea:chartDesigner arcaea:CERiNG;
+                           arcaea:jacketDesigner "LOWRISE"@en-us;
+                           arcaea:rating 3 ;
+                           arcaea:ratingClass 0 .

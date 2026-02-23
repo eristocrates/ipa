@@ -1,0 +1,45 @@
+@prefix arcaea.fractureray: <https://arcaea.lowiro.com/#fractureray#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.fractureray:.
+arcaea.fractureray: arcaea:artist arcaea:Sakuzyo;
+                    arcaea:audioPreview 5948 ;
+                    arcaea:audioPreviewEnd 33804 ;
+                    arcaea:bg arcaea:fractureray;
+                    arcaea:bpm "200"@en-us;
+                    arcaea:bpm_base 200 ;
+                    arcaea:date 1531699208 ;
+                    arcaea:difficulties arcaea.fractureray:PRS,
+                                        arcaea.fractureray:PST,
+                                        arcaea.fractureray:FTR;
+                    arcaea:id "fractureray"@en-us;
+                    arcaea:idx 87 ;
+                    arcaea:purchase "rei"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "さくじょ"@ja,
+                                        "사쿠죠"@ko,
+                                        "ふらくちゃーれい"@ja,
+                                        "프랙쳐 레이"@ko;
+                    arcaea:set "rei"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "Fracture Ray"@en;
+                    arcaea:version "1.7"@en-us.
+arcaea.fractureray:FTR arcaea:chartDesigner arcaea:Paradox%20Zero;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:legacy11 true;
+                       arcaea:plusFingers true;
+                       arcaea:rating 11 ;
+                       arcaea:ratingClass 2 .
+arcaea.fractureray:PRS arcaea:chartDesigner arcaea:Absolute%20Paradox;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:plusFingers true;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 1 .
+arcaea.fractureray:PST arcaea:chartDesigner arcaea:Volatile%20Paradox;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 0 .

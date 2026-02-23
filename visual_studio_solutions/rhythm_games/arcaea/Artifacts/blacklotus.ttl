@@ -1,0 +1,45 @@
+@prefix arcaea.blacklotus: <https://arcaea.lowiro.com/#blacklotus#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.blacklotus:.
+arcaea.blacklotus: arcaea:artist <https://arcaea.lowiro.com/#wa.>;
+                   arcaea:audioPreview 60000 ;
+                   arcaea:audioPreviewEnd 70000 ;
+                   arcaea:bg arcaea:zettai;
+                   arcaea:bg_inverse arcaea:zettai_light;
+                   arcaea:bpm "200"@en-us;
+                   arcaea:bpm_base 200 ;
+                   arcaea:date 1590537611 ;
+                   arcaea:difficulties arcaea.blacklotus:PRS,
+                                       arcaea.blacklotus:PST,
+                                       arcaea.blacklotus:FTR;
+                   arcaea:id "blacklotus"@en-us;
+                   arcaea:idx 164 ;
+                   arcaea:purchase "extend"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "わ"@ja,
+                                       "와"@ko,
+                                       "ぶらっくろーたす"@ja,
+                                       "블랙 로터스"@ko;
+                   arcaea:set "extend"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Black Lotus"@en;
+                   arcaea:version "3.0"@en-us;
+                   arcaea:world_unlock true.
+arcaea.blacklotus:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "百舌谷"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.blacklotus:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "百舌谷"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.blacklotus:PST arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "百舌谷"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

@@ -1,0 +1,45 @@
+@prefix arcaea.senkyou: <https://arcaea.lowiro.com/#senkyou#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.senkyou:.
+arcaea.senkyou: arcaea:artist arcaea:MYTK;
+                arcaea:audioPreview 100000 ;
+                arcaea:audioPreviewEnd 121333 ;
+                arcaea:bg arcaea:omatsuri_light;
+                arcaea:bg_inverse arcaea:omatsuri_conflict;
+                arcaea:bpm "90"@en-us;
+                arcaea:bpm_base 180 ;
+                arcaea:date 1574121600 ;
+                arcaea:difficulties arcaea.senkyou:FTR,
+                                    arcaea.senkyou:PRS,
+                                    arcaea.senkyou:PST;
+                arcaea:id "senkyou"@en-us;
+                arcaea:idx 142 ;
+                arcaea:remote_dl false;
+                arcaea:search_title "まいたけ"@ja,
+                                    "마이타케"@ko,
+                                    "せんきょう"@ja,
+                                    "센큐"@ko,
+                                    "센큐우"@ko;
+                arcaea:set "base"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "Senkyou"@en;
+                arcaea:version "2.4"@en-us;
+                arcaea:world_unlock false.
+arcaea.senkyou:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                   arcaea:jacketDesigner "未早"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.senkyou:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                   arcaea:jacketDesigner "未早"@en-us;
+                   arcaea:rating 5 ;
+                   arcaea:ratingClass 1 .
+arcaea.senkyou:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal>;
+                   arcaea:jacketDesigner "未早"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

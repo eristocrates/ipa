@@ -1,0 +1,52 @@
+@prefix arcaea.prayer: <https://arcaea.lowiro.com/#prayer#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.prayer:.
+arcaea.prayer: arcaea:artist <https://arcaea.lowiro.com/#qfeileadh&レゾナンスもえこ>;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:nijuusei2_light;
+               arcaea:bg_inverse arcaea:nijuusei2_conflict;
+               arcaea:bpm "132"@en-us;
+               arcaea:bpm_base 132 ;
+               arcaea:date 1729728000 ;
+               arcaea:difficulties arcaea.prayer:FTR,
+                                   arcaea.prayer:PRS,
+                                   arcaea.prayer:PST,
+                                   arcaea.prayer:ETR;
+               arcaea:id "prayer"@en-us;
+               arcaea:idx 418 ;
+               arcaea:purchase "extend_3"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "ふぇいりあ"@ja,
+                                   "레조넌스 모에코"@ko,
+                                   "rezonansumoeko"@en,
+                                   "resonance moeko"@en,
+                                   "프레이어"@ko,
+                                   "pureya"@en;
+               arcaea:set "extend_3"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "プレヤ"@ja,
+                                      "Prayer"@en;
+               arcaea:version "5.10"@en-us;
+               arcaea:world_unlock true.
+arcaea.prayer:ETR arcaea:chartDesigner arcaea:nora::neko;
+                  arcaea:jacketDesigner "自動車 原付&なぎのにちこ"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 4 .
+arcaea.prayer:FTR arcaea:chartDesigner arcaea:nora::neko;
+                  arcaea:jacketDesigner "自動車 原付&なぎのにちこ"@en-us;
+                  arcaea:rating 8 ;
+                  arcaea:ratingClass 2 .
+arcaea.prayer:PRS arcaea:chartDesigner arcaea:nora::neko;
+                  arcaea:jacketDesigner "自動車 原付&なぎのにちこ"@en-us;
+                  arcaea:rating 5 ;
+                  arcaea:ratingClass 1 .
+arcaea.prayer:PST arcaea:chartDesigner arcaea:nora::neko;
+                  arcaea:jacketDesigner "自動車 原付&なぎのにちこ"@en-us;
+                  arcaea:rating 2 ;
+                  arcaea:ratingClass 0 .

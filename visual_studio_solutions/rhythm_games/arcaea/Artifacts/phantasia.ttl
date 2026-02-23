@@ -1,0 +1,45 @@
+@prefix arcaea.phantasia: <https://arcaea.lowiro.com/#phantasia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.phantasia:.
+arcaea.phantasia: arcaea:artist arcaea:Yunosuke;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 30000 ;
+                  arcaea:bg arcaea:rei;
+                  arcaea:bg_inverse arcaea:yugamu;
+                  arcaea:bpm "153"@en-us;
+                  arcaea:bpm_base 153 ;
+                  arcaea:category arcaea:partner;
+                  arcaea:date 1543449600 ;
+                  arcaea:difficulties arcaea.phantasia:PRS,
+                                      arcaea.phantasia:PST,
+                                      arcaea.phantasia:FTR;
+                  arcaea:id "phantasia"@en-us;
+                  arcaea:idx 104 ;
+                  arcaea:purchase "phantasia"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ゆうのすけ"@ja,
+                                      "유노스케"@ko,
+                                      "ふぁんたじあ"@ja,
+                                      "판타지아"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Phantasia"@en;
+                  arcaea:version "1.8"@en-us;
+                  arcaea:world_unlock false.
+arcaea.phantasia:FTR arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "そゐち"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.phantasia:PRS arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "そゐち"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 1 .
+arcaea.phantasia:PST arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:jacketDesigner "そゐち"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

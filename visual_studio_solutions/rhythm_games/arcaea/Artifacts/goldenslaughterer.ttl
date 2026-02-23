@@ -1,0 +1,44 @@
+@prefix arcaea.goldenslaughterer: <https://arcaea.lowiro.com/#goldenslaughterer#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.goldenslaughterer:.
+arcaea.goldenslaughterer: arcaea:artist arcaea:zts;
+                          arcaea:audioPreview 0 ;
+                          arcaea:audioPreviewEnd 0 ;
+                          arcaea:bg arcaea:zettai;
+                          arcaea:bg_inverse arcaea:zettai_light;
+                          arcaea:bpm "133"@en-us;
+                          arcaea:bpm_base 133 ;
+                          arcaea:category arcaea:poprec;
+                          arcaea:date 1632873601 ;
+                          arcaea:difficulties arcaea.goldenslaughterer:FTR,
+                                              arcaea.goldenslaughterer:PRS,
+                                              arcaea.goldenslaughterer:PST;
+                          arcaea:id "goldenslaughterer"@en-us;
+                          arcaea:idx 237 ;
+                          arcaea:purchase "goldenslaughterer"@en-us;
+                          arcaea:remote_dl true;
+                          arcaea:search_title "ぜっとてぃーえす"@ja,
+                                              "ぜっつ"@ja,
+                                              "지티에스"@ko,
+                                              "ごーるでんすろーたらー"@ja,
+                                              "골든슬러터러"@ko;
+                          arcaea:set "single"@en-us;
+                          arcaea:side arcaea:conflict_side;
+                          arcaea:title_localized "goldenslaughterer"@en;
+                          arcaea:version "3.8"@en-us;
+                          arcaea:world_unlock false.
+arcaea.goldenslaughterer:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                             arcaea:rating 9 ;
+                             arcaea:ratingClass 2 ;
+                             arcaea:ratingPlus true.
+arcaea.goldenslaughterer:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                             arcaea:rating 6 ;
+                             arcaea:ratingClass 1 .
+arcaea.goldenslaughterer:PST arcaea:chartDesigner arcaea:Exschwasion;
+                             arcaea:rating 4 ;
+                             arcaea:ratingClass 0 .

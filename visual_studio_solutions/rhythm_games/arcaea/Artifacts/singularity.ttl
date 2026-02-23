@@ -1,0 +1,56 @@
+@prefix arcaea.singularity: <https://arcaea.lowiro.com/#singularity#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.singularity:.
+arcaea.singularity: arcaea:artist <https://arcaea.lowiro.com/#ETIA.>;
+                    arcaea:audioPreview 12342 ;
+                    arcaea:audioPreviewEnd 38400 ;
+                    arcaea:bg arcaea:nijuusei-conflict-b;
+                    arcaea:bg_inverse arcaea:nijuusei-light-b;
+                    arcaea:bpm "175"@en-us;
+                    arcaea:bpm_base 175 ;
+                    arcaea:date 1521763204 ;
+                    arcaea:difficulties arcaea.singularity:BYD,
+                                        arcaea.singularity:FTR,
+                                        arcaea.singularity:PRS,
+                                        arcaea.singularity:PST;
+                    arcaea:id "singularity"@en-us;
+                    arcaea:idx 70 ;
+                    arcaea:purchase "nijuusei"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "えちあ"@ja,
+                                        "에치아"@ko,
+                                        "しんぎゅらりてぃ"@ja,
+                                        "싱귤래리티"@ko;
+                    arcaea:set "nijuusei"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "Singularity"@en;
+                    arcaea:version "1.6"@en-us.
+arcaea.singularity:BYD arcaea:artist <https://arcaea.lowiro.com/#Arcaea%20Sound%20Team%20against.%20ETIA.>;
+                       arcaea:audioOverride true;
+                       arcaea:bg arcaea:byd_conflict;
+                       arcaea:bg_inverse arcaea:byd_light;
+                       arcaea:chartDesigner arcaea:Exschwasion%20against.%20%E7%B5%B6%E6%BB%85;
+                       arcaea:date 1646784002 ;
+                       arcaea:jacketDesigner "yusi."@en-us;
+                       arcaea:jacketOverride true;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 3 ;
+                       arcaea:version "3.12"@en-us.
+arcaea.singularity:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%E2%80%BB%E3%82%B3%E3%83%A9%E3%83%97%E3%82%B5%E3%83%BC;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 2 .
+arcaea.singularity:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 ;
+                       arcaea:ratingPlus true.
+arcaea.singularity:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

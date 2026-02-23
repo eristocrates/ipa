@@ -1,0 +1,44 @@
+@prefix arcaea.sanskia: <https://arcaea.lowiro.com/#sanskia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.sanskia:.
+arcaea.sanskia: arcaea:artist arcaea:%E3%83%A6%E3%82%A2%E3%83%9F%E3%83%88%E3%82%B9;
+                arcaea:audioPreview 48705 ;
+                arcaea:audioPreviewEnd 70235 ;
+                arcaea:bg arcaea:alice_light;
+                arcaea:bg_inverse arcaea:alice_conflict;
+                arcaea:bpm "170"@en-us;
+                arcaea:bpm_base 170 ;
+                arcaea:date 1653436802 ;
+                arcaea:difficulties arcaea.sanskia:PRS,
+                                    arcaea.sanskia:PST,
+                                    arcaea.sanskia:FTR;
+                arcaea:id "sanskia"@en-us;
+                arcaea:idx 270 ;
+                arcaea:remote_dl true;
+                arcaea:search_title "유아미토스"@ko,
+                                    "yuamitosu"@en,
+                                    "yourmythos"@en,
+                                    "さんすきあ"@ja,
+                                    "산 스키아"@ko;
+                arcaea:set "base"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "san skia"@en;
+                arcaea:version "3.12"@en-us;
+                arcaea:world_unlock true.
+arcaea.sanskia:FTR arcaea:chartDesigner arcaea:CERiNG;
+                   arcaea:jacketDesigner "Ancy"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 .
+arcaea.sanskia:PRS arcaea:chartDesigner arcaea:CERiNG;
+                   arcaea:jacketDesigner "Ancy"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.sanskia:PST arcaea:chartDesigner arcaea:CERiNG;
+                   arcaea:jacketDesigner "Ancy"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

@@ -1,0 +1,44 @@
+@prefix arcaea.blossoms: <https://arcaea.lowiro.com/#blossoms#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.blossoms:.
+arcaea.blossoms: arcaea:artist arcaea:T2Kazuya;
+                 arcaea:audioPreview 70430 ;
+                 arcaea:audioPreviewEnd 98256 ;
+                 arcaea:bg arcaea:mirai_light;
+                 arcaea:bg_inverse arcaea:mirai_conflict;
+                 arcaea:bpm "138"@en-us;
+                 arcaea:bpm_base 138 ;
+                 arcaea:date 1502323201 ;
+                 arcaea:difficulties arcaea.blossoms:PRS,
+                                     arcaea.blossoms:PST,
+                                     arcaea.blossoms:FTR;
+                 arcaea:id "blossoms"@en-us;
+                 arcaea:idx 44 ;
+                 arcaea:purchase "mirai"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "てぃーつーかずや"@ja,
+                                     "티투케이 카즈야"@ko,
+                                     "ぶろっさむず"@ja,
+                                     "ぶらっさむず"@ja,
+                                     "블로섬"@ko;
+                 arcaea:set "mirai"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "Blossoms"@en;
+                 arcaea:version "1.1"@en-us.
+arcaea.blossoms:FTR arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "T2Kazuya"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 2 .
+arcaea.blossoms:PRS arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "T2Kazuya"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 1 .
+arcaea.blossoms:PST arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "T2Kazuya"@en-us;
+                    arcaea:rating 1 ;
+                    arcaea:ratingClass 0 .

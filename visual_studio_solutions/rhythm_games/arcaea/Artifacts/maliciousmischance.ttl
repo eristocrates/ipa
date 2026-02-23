@@ -1,0 +1,47 @@
+@prefix arcaea.maliciousmischance: <https://arcaea.lowiro.com/#maliciousmischance#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.maliciousmischance:.
+arcaea.maliciousmischance: arcaea:artist arcaea:s-don;
+                           arcaea:audioPreview 0 ;
+                           arcaea:audioPreviewEnd 0 ;
+                           arcaea:bg arcaea:vs_conflict;
+                           arcaea:bg_inverse arcaea:vs_light;
+                           arcaea:bpm "155"@en-us;
+                           arcaea:bpm_base 155 ;
+                           arcaea:category arcaea:partner;
+                           arcaea:date 1599177600 ;
+                           arcaea:difficulties arcaea.maliciousmischance:PRS,
+                                               arcaea.maliciousmischance:PST,
+                                               arcaea.maliciousmischance:FTR;
+                           arcaea:id "maliciousmischance"@en-us;
+                           arcaea:idx 174 ;
+                           arcaea:purchase "maliciousmischance"@en-us;
+                           arcaea:remote_dl true;
+                           arcaea:search_title "すうどん"@ja,
+                                               "에스돈"@ko,
+                                               "まりしゃすみすちゃんす"@ja,
+                                               "말리셔스 미스챈스"@ko,
+                                               "말리셔스 미스찬스"@ko;
+                           arcaea:set "single"@en-us;
+                           arcaea:side arcaea:conflict_side;
+                           arcaea:title_localized "Malicious Mischance"@en;
+                           arcaea:version "3.1"@en-us;
+                           arcaea:world_unlock false.
+arcaea.maliciousmischance:FTR arcaea:chartDesigner arcaea:%C3%97NITRO%C3%97;
+                              arcaea:jacketDesigner "nonokuro"@en-us;
+                              arcaea:rating 10 ;
+                              arcaea:ratingClass 2 .
+arcaea.maliciousmischance:PRS arcaea:chartDesigner arcaea:%C3%97NITRO%C3%97;
+                              arcaea:jacketDesigner "nonokuro"@en-us;
+                              arcaea:rating 7 ;
+                              arcaea:ratingClass 1 ;
+                              arcaea:ratingPlus true.
+arcaea.maliciousmischance:PST arcaea:chartDesigner arcaea:%C3%97NITRO%C3%97;
+                              arcaea:jacketDesigner "nonokuro"@en-us;
+                              arcaea:rating 4 ;
+                              arcaea:ratingClass 0 .

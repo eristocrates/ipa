@@ -1,0 +1,46 @@
+@prefix arcaea.scarletcage: <https://arcaea.lowiro.com/#scarletcage#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.scarletcage:.
+arcaea.scarletcage: arcaea:artist arcaea:Daisuke%20Kurosawa;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:yugamu;
+                    arcaea:bg_inverse arcaea:rei;
+                    arcaea:bpm "166"@en-us;
+                    arcaea:bpm_base 166 ;
+                    arcaea:category arcaea:partner;
+                    arcaea:date 1594166402 ;
+                    arcaea:difficulties arcaea.scarletcage:PRS,
+                                        arcaea.scarletcage:PST,
+                                        arcaea.scarletcage:FTR;
+                    arcaea:id "scarletcage"@en-us;
+                    arcaea:idx 168 ;
+                    arcaea:purchase "scarletcage"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "だいすけくろさわ"@ja,
+                                        "다이스카 쿠로사와"@ko,
+                                        "すかーれっとけーじ"@ja,
+                                        "스칼렛 케이지"@ko;
+                    arcaea:set "single"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "Scarlet Cage"@en;
+                    arcaea:version "3.0"@en-us;
+                    arcaea:world_unlock false.
+arcaea.scarletcage:FTR arcaea:chartDesigner arcaea:%E8%B5%A4Nitro;
+                       arcaea:jacketDesigner "未早"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.scarletcage:PRS arcaea:chartDesigner arcaea:%E8%B5%A4Nitro;
+                       arcaea:jacketDesigner "未早"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 .
+arcaea.scarletcage:PST arcaea:chartDesigner arcaea:%E8%B5%A4Nitro;
+                       arcaea:jacketDesigner "未早"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

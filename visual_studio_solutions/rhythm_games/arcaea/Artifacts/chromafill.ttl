@@ -1,0 +1,46 @@
+@prefix arcaea.chromafill: <https://arcaea.lowiro.com/#chromafill#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.chromafill:.
+arcaea.chromafill: arcaea:artist arcaea:%E3%81%A6%E3%81%84%E3%81%AC;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:observer_light;
+                   arcaea:bg_inverse arcaea:observer_conflict;
+                   arcaea:bpm "179"@en-us;
+                   arcaea:bpm_base 179 ;
+                   arcaea:category arcaea:partner;
+                   arcaea:date 1714003203 ;
+                   arcaea:difficulties arcaea.chromafill:PRS,
+                                       arcaea.chromafill:PST,
+                                       arcaea.chromafill:FTR;
+                   arcaea:id "chromafill"@en-us;
+                   arcaea:idx 388 ;
+                   arcaea:purchase "chromafill"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "테이누"@ko,
+                                       "teinu"@en,
+                                       "くろまふぃる"@ja,
+                                       "くろーまふぃる"@ja,
+                                       "크로마필"@ko;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "Chromafill"@en;
+                   arcaea:version "5.6"@en-us;
+                   arcaea:world_unlock false.
+arcaea.chromafill:FTR arcaea:chartDesigner arcaea:exschwasion%20-%E5%BD%A9%E8%89%B2-;
+                      arcaea:jacketDesigner "イチゼンリュウ"@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 2 .
+arcaea.chromafill:PRS arcaea:chartDesigner arcaea:exschwasion%20-%E5%BD%A9%E8%89%B2-;
+                      arcaea:jacketDesigner "イチゼンリュウ"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 .
+arcaea.chromafill:PST arcaea:chartDesigner arcaea:exschwasion%20-%E5%BD%A9%E8%89%B2-;
+                      arcaea:jacketDesigner "イチゼンリュウ"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

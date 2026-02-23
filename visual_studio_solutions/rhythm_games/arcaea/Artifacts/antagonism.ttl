@@ -1,0 +1,48 @@
+@prefix arcaea.antagonism: <https://arcaea.lowiro.com/#antagonism#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.antagonism:.
+arcaea.antagonism: arcaea:artist arcaea:Yooh%20vs.%20siromaru;
+                   arcaea:audioPreview 60000 ;
+                   arcaea:audioPreviewEnd 70000 ;
+                   arcaea:bg arcaea:vs_conflict;
+                   arcaea:bg_inverse arcaea:vs_light;
+                   arcaea:bpm "160"@en-us;
+                   arcaea:bpm_base 160 ;
+                   arcaea:date 1590537601 ;
+                   arcaea:difficulties arcaea.antagonism:FTR,
+                                       arcaea.antagonism:PRS,
+                                       arcaea.antagonism:PST;
+                   arcaea:id "antagonism"@en-us;
+                   arcaea:idx 156 ;
+                   arcaea:purchase "vs"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "ゆー"@ja,
+                                       "しろまる"@ja,
+                                       "유"@ko,
+                                       "시로마루"@ko,
+                                       "あんたごにずむ"@ja,
+                                       "안타고니즘"@ko;
+                   arcaea:set "vs"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Antagonism"@en;
+                   arcaea:version "3.0"@en-us;
+                   arcaea:world_unlock false.
+arcaea.antagonism:FTR arcaea:chartDesigner arcaea:Toaster;
+                      arcaea:jacketDesigner "リウイチ"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.antagonism:PRS arcaea:chartDesigner arcaea:Toaster;
+                      arcaea:jacketDesigner "リウイチ"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 ;
+                      arcaea:ratingPlus true.
+arcaea.antagonism:PST arcaea:chartDesigner arcaea:Toaster;
+                      arcaea:jacketDesigner "リウイチ"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

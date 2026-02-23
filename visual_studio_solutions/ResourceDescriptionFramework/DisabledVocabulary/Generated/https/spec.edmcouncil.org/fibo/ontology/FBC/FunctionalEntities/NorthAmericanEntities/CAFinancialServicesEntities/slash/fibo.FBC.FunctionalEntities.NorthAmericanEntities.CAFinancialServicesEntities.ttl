@@ -1,0 +1,60 @@
+@prefix fibo.FBC.FunctionalEntities.NorthAmericanEntities.CAFinancialServicesEntities: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities/> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/>.
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix fibo-be-fct-fct: <https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/>.
+@prefix fibo-be-le-cb: <https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/>.
+@prefix fibo-fbc-fct-cafse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities/>.
+@prefix fibo-fbc-fct-fse: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/>.
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+
+_:autos1503 rdf:first fibo-be-fct-fct:Association;
+            rdf:rest _:autos1504.
+_:autos1504 rdf:first fibo-be-le-cb:NotForProfitCorporation;
+            rdf:rest rdf:nil.
+fibo-fbc-fct-cafse: dcterms:abstract "This ontology extends the primary financial services entities ontology in FBC with additional kinds of entities that are specific to Canada.";
+                    dcterms:license """Copyright (c) 2016-2025 EDM Council, Inc.
+Copyright (c) 2016-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""";
+                    a owl:Ontology;
+                    rdfs:label "Canadian Financial Services Entities Ontology";
+                    owl:imports <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/FunctionalEntities/FunctionalEntities/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/LegalEntities/CorporateBodies/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FunctionalEntities/FinancialServicesEntities/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Utilities/AnnotationVocabulary/>,
+                                cmns-av:,
+                                cmns-rlcmp:;
+                    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities/>;
+                    skos:changeNote "The https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG's Specification Metadata vocabulary.",
+                                    "The https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities.rdf version of this ontology was modified to eliminate deprecated elements.",
+                                    "The https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CAFinancialServicesEntities.rdf version of this ontology was modified to generalize the definition of credit union.",
+                                    "The https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/NorthAmericanEntities/CARegulatoryAgencies.rdf version of the ontology was modified to eliminate unused references and include missing semantics(SEC-205).";
+                    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Release;
+                    cmns-av:copyright "Copyright (c) 2016-2025 EDM Council, Inc.",
+                                      "Copyright (c) 2016-2025 Object Management Group, Inc.".
+fibo-fbc-fct-cafse:CanadianCreditUnion a owl:Class;
+                                       rdfs:isDefinedBy fibo-fbc-fct-cafse:;
+                                       rdfs:label "Canadian credit union";
+                                       rdfs:seeAlso <http://www.investopedia.com/terms/c/creditunion.asp>;
+                                       rdfs:subClassOf fibo-fbc-fct-fse:CreditUnion,
+                                                       [a owl:Restriction ; 
+                                                        owl:onProperty cmns-rlcmp:isPlayedBy ; 
+                                                        owl:onClass fibo-be-fct-fct:Association ; 
+                                                        owl:onClass [a owl:Class ; 
+                                                                     owl:unionOf _:autos1503] ; 
+                                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger];
+                                       skos:definition "not-for-profit financial institution, typically formed by the employees of a company, labor union, or religious group, operated as a cooperative association organized for the purpose of promoting thrift among its members and creating a source of credit for provident or productive purposes".

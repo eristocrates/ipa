@@ -1,0 +1,49 @@
+@prefix arcaea.iwantyou: <https://arcaea.lowiro.com/#iwantyou#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.iwantyou:.
+arcaea.iwantyou: arcaea:artist arcaea:Lin-G;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:djmax_light;
+                 arcaea:bg_inverse arcaea:djmax_conflict;
+                 arcaea:bpm "140"@en-us;
+                 arcaea:bpm_base 140 ;
+                 arcaea:date 1750896003 ;
+                 arcaea:difficulties arcaea.iwantyou:ETR,
+                                     arcaea.iwantyou:FTR,
+                                     arcaea.iwantyou:PRS,
+                                     arcaea.iwantyou:PST;
+                 arcaea:id "iwantyou"@en-us;
+                 arcaea:idx 467 ;
+                 arcaea:purchase "djmax_append_1"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "りんじー"@ja,
+                                     "린지"@ko,
+                                     "あいうぉんとゆー"@ja,
+                                     "あいうぉんちゅー"@ja,
+                                     "아이 완트 유"@ko,
+                                     "아이 원 츄"@ko;
+                 arcaea:set "djmax_append_1"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:source_copyright "© Neowiz. All Rights Reserved."@en-us;
+                 arcaea:title_localized "I want You"@en,
+                                        "DJMAX"@en;
+                 arcaea:version "6.6"@en-us;
+                 arcaea:world_unlock false.
+arcaea.iwantyou:ETR arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 4 .
+arcaea.iwantyou:FTR arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 2 .
+arcaea.iwantyou:PRS arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:rating 5 ;
+                    arcaea:ratingClass 1 .
+arcaea.iwantyou:PST arcaea:chartDesigner arcaea:Toaster;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

@@ -1,0 +1,45 @@
+@prefix arcaea.hivemind: <https://arcaea.lowiro.com/#hivemind#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.hivemind:.
+arcaea.hivemind: arcaea:artist arcaea:%E3%81%8B%E3%81%9F%E3%81%8E%E3%82%8A;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:observer_conflict;
+                 arcaea:bg_inverse arcaea:observer_light;
+                 arcaea:bpm "252"@en-us;
+                 arcaea:bpm_base 252 ;
+                 arcaea:date 1626825605 ;
+                 arcaea:difficulties arcaea.hivemind:PRS,
+                                     arcaea.hivemind:PST,
+                                     arcaea.hivemind:FTR;
+                 arcaea:id "hivemind"@en-us;
+                 arcaea:idx 222 ;
+                 arcaea:purchase "extend"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "카타기리"@ko,
+                                     "katagiri"@en,
+                                     "はいぶまいんど"@ja,
+                                     "はいゔまいんど"@ja,
+                                     "하이브마인드"@ko;
+                 arcaea:set "extend"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "HIVEMIND"@en;
+                 arcaea:version "3.7"@en-us;
+                 arcaea:world_unlock true.
+arcaea.hivemind:FTR arcaea:chartDesigner arcaea:NITRO%20-unconnected-;
+                    arcaea:jacketDesigner "fixro2n"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.hivemind:PRS arcaea:chartDesigner arcaea:NITRO%20-unconnected-;
+                    arcaea:jacketDesigner "fixro2n"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 1 .
+arcaea.hivemind:PST arcaea:chartDesigner arcaea:NITRO%20-unconnected-;
+                    arcaea:jacketDesigner "fixro2n"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

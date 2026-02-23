@@ -1,0 +1,54 @@
+@prefix arcaea.farawaylight: <https://arcaea.lowiro.com/#farawaylight#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.farawaylight:.
+arcaea.farawaylight: arcaea:artist <https://arcaea.lowiro.com/#technoplanet%20feat.%20はるの%20&%20黒沢ダイスケ>;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:observer_light;
+                     arcaea:bg_inverse arcaea:observer_conflict;
+                     arcaea:bpm "180-216"@en-us;
+                     arcaea:bpm_base 216 ;
+                     arcaea:date 1620691202 ;
+                     arcaea:difficulties arcaea.farawaylight:FTR,
+                                         arcaea.farawaylight:PRS,
+                                         arcaea.farawaylight:PST;
+                     arcaea:id "farawaylight"@en-us;
+                     arcaea:idx 211 ;
+                     arcaea:purchase "observer"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "てくのぷらねっと"@ja,
+                                         "はるの"@ja,
+                                         "くろさわだいすけ"@ja,
+                                         "테크노플래닛"@ko,
+                                         "하루노"@ko,
+                                         "쿠로사와 다이스케"@ko,
+                                         "haruno"@en,
+                                         "kurosawa daisuke"@en,
+                                         "ふぁーあうぇいらいと"@ja,
+                                         "ふぁーらうぇいらいと"@ja,
+                                         "파 어웨이 라이트"@ko,
+                                         "파 어웨이 라잇"@ko;
+                     arcaea:set "observer"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "Far Away Light"@en;
+                     arcaea:version "3.6"@en-us;
+                     arcaea:world_unlock false.
+arcaea.farawaylight:FTR arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "梅まろ"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.farawaylight:PRS arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "梅まろ"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 ;
+                        arcaea:ratingPlus true.
+arcaea.farawaylight:PST arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "梅まろ"@en-us;
+                        arcaea:rating 4 ;
+                        arcaea:ratingClass 0 .

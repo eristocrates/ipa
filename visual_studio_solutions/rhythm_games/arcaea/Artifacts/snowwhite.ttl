@@ -1,0 +1,49 @@
+@prefix arcaea.snowwhite: <https://arcaea.lowiro.com/#snowwhite#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.snowwhite:.
+arcaea.snowwhite: arcaea:artist arcaea:Puru;
+                  arcaea:audioPreview 24400 ;
+                  arcaea:audioPreviewEnd 57600 ;
+                  arcaea:bg arcaea:base_light;
+                  arcaea:bg_inverse arcaea:base_conflict;
+                  arcaea:bpm "150"@en-us;
+                  arcaea:bpm_base 150 ;
+                  arcaea:date 1487980805 ;
+                  arcaea:difficulties arcaea.snowwhite:BYD,
+                                      arcaea.snowwhite:FTR,
+                                      arcaea.snowwhite:PRS,
+                                      arcaea.snowwhite:PST;
+                  arcaea:id "snowwhite"@en-us;
+                  arcaea:idx 10 ;
+                  arcaea:search_title "ぷる"@ja,
+                                      "푸루"@ko,
+                                      "すのーほわいと"@ja,
+                                      "すのうほわいと"@ja,
+                                      "스노우 화이트"@ko;
+                  arcaea:set "base"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Snow White"@en;
+                  arcaea:version "1.0"@en-us.
+arcaea.snowwhite:BYD arcaea:bg arcaea:nijuusei2_light;
+                     arcaea:bg_inverse arcaea:nijuusei2_conflict;
+                     arcaea:chartDesigner <https://arcaea.lowiro.com/#én%20+%20Nitro>;
+                     arcaea:date 1745452800 ;
+                     arcaea:hidden_until "difficulty"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 3 ;
+                     arcaea:ratingPlus true;
+                     arcaea:version "6.4"@en-us.
+arcaea.snowwhite:FTR arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 .
+arcaea.snowwhite:PRS arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 1 .
+arcaea.snowwhite:PST arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

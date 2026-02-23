@@ -1,0 +1,58 @@
+@prefix arcaea.alterego: <https://arcaea.lowiro.com/#alterego#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.alterego:.
+arcaea:additional_files arcaea:file_name "video_1080.mp4"@en-us,
+                                         "video_720.mp4"@en-us;
+                        arcaea:requirement "hi_res"@en-us,
+                                           "low_res"@en-us.
+arcaea.alterego: arcaea:additional_files arcaea.alterego:additional_files;
+                 arcaea:artist arcaea:Yuta%20Imai%20vs%20Qlarabelle;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:alterego;
+                 arcaea:bg_inverse arcaea:alterego;
+                 arcaea:bpm "195"@en-us;
+                 arcaea:bpm_base 195 ;
+                 arcaea:date 1722297606 ;
+                 arcaea:difficulties arcaea.alterego:FTR,
+                                     arcaea.alterego:PRS,
+                                     arcaea.alterego:PST,
+                                     arcaea.alterego:ETR;
+                 arcaea:id "alterego"@en-us;
+                 arcaea:idx 400 ;
+                 arcaea:purchase "nihil"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ゆうたいまい"@ja,
+                                     "くららべる"@ja,
+                                     "유타 이마이"@ko,
+                                     "클라라벨"@ko,
+                                     "おるたーえご"@ja,
+                                     "얼터 에고"@ko,
+                                     "알터 에고"@ko;
+                 arcaea:set "nihil"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "ALTER EGO"@en;
+                 arcaea:version "5.9"@en-us;
+                 arcaea:world_unlock false.
+arcaea.alterego:ETR arcaea:chartDesigner arcaea:Article%200x8%E3%80%8AEnmity%E3%80%8B;
+                    arcaea:jacketDesigner "すずなし"@en-us;
+                    arcaea:legacy11 true;
+                    arcaea:rating 11 ;
+                    arcaea:ratingClass 4 .
+arcaea.alterego:FTR arcaea:chartDesigner arcaea:Article%20VII%E3%80%8AAnalysis%E3%80%8B;
+                    arcaea:jacketDesigner "すずなし"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.alterego:PRS arcaea:chartDesigner arcaea:Article%20VI%E3%80%8AHypothesis%E3%80%8B;
+                    arcaea:jacketDesigner "すずなし"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 1 .
+arcaea.alterego:PST arcaea:chartDesigner arcaea:Article%20V%E3%80%8AObservation%E3%80%8B;
+                    arcaea:jacketDesigner "すずなし"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 0 .

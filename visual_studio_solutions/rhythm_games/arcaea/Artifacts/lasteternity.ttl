@@ -1,0 +1,53 @@
+@prefix arcaea.lasteternity: <https://arcaea.lowiro.com/#lasteternity#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lasteternity:.
+arcaea.lasteternity: arcaea:artist arcaea:onoken;
+                     arcaea:audioPreview 11657 ;
+                     arcaea:audioPreviewEnd 32914 ;
+                     arcaea:bg arcaea:epilogue;
+                     arcaea:bpm "175"@en-us;
+                     arcaea:bpm_base 175 ;
+                     arcaea:byd_local_unlock true;
+                     arcaea:date 1657756802 ;
+                     arcaea:difficulties arcaea.lasteternity:BYD,
+                                         arcaea.lasteternity:FTR,
+                                         arcaea.lasteternity:PRS,
+                                         arcaea.lasteternity:PST;
+                     arcaea:id "lasteternity"@en-us;
+                     arcaea:idx 283 ;
+                     arcaea:purchase "finale"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "おのけん"@ja,
+                                         "오노켄"@ko,
+                                         "らすとえたにてぃー"@ja,
+                                         "라스트 이터니티"@ko;
+                     arcaea:set "epilogue"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Last | Eternity"@en;
+                     arcaea:version "4.0"@en-us;
+                     arcaea:world_unlock false.
+arcaea.lasteternity:BYD arcaea:chartDesigner arcaea:Arcaea;
+                        arcaea:hidden_until "difficulty"@en-us;
+                        arcaea:hidden_until_unlocked true;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 3 ;
+                        arcaea:ratingPlus true;
+                        arcaea:world_unlock false.
+arcaea.lasteternity:FTR arcaea:hidden_until "always"@en-us;
+                        arcaea:hidden_until_unlocked true;
+                        arcaea:rating 0 ;
+                        arcaea:ratingClass 2 .
+arcaea.lasteternity:PRS arcaea:hidden_until "always"@en-us;
+                        arcaea:hidden_until_unlocked true;
+                        arcaea:rating 0 ;
+                        arcaea:ratingClass 1 .
+arcaea.lasteternity:PST arcaea:hidden_until "always"@en-us;
+                        arcaea:hidden_until_unlocked true;
+                        arcaea:rating 0 ;
+                        arcaea:ratingClass 0 .

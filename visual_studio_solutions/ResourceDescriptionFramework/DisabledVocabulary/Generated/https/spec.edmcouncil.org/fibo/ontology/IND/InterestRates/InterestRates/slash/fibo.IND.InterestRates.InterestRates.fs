@@ -1,0 +1,41 @@
+﻿namespace Fibo.IND.InterestRates.InterestRates.Namespace
+module InterestRates =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/IND/InterestRates/InterestRates/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/IND/InterestRates/InterestRates.rdf") (Some @"fibo.IND.InterestRates.InterestRates") None
+    let BaseRate = {_prefixID with _localName = "BaseRate"}
+    let EighteenMonths = {_prefixID with _localName = "EighteenMonths"}
+    let FifteenYears = {_prefixID with _localName = "FifteenYears"}
+    let FiveYears = {_prefixID with _localName = "FiveYears"}
+    let FortyEightMonths = {_prefixID with _localName = "FortyEightMonths"}
+    let FourYears = {_prefixID with _localName = "FourYears"}
+    let InterbankBidRate = {_prefixID with _localName = "InterbankBidRate"}
+    let InterbankMidRate = {_prefixID with _localName = "InterbankMidRate"}
+    let InterbankOfferedRate = {_prefixID with _localName = "InterbankOfferedRate"}
+    let InterbankRate = {_prefixID with _localName = "InterbankRate"}
+    let InterestRateAuthority = {_prefixID with _localName = "InterestRateAuthority"}
+    let InterestRateBenchmark = {_prefixID with _localName = "InterestRateBenchmark"}
+    let InterestRateBenchmarkClassificationScheme = {_prefixID with _localName = "InterestRateBenchmarkClassificationScheme"}
+    let NineMonths = {_prefixID with _localName = "NineMonths"}
+    let OneDay = {_prefixID with _localName = "OneDay"}
+    let OneHundredEightyMonths = {_prefixID with _localName = "OneHundredEightyMonths"}
+    let OneMonth = {_prefixID with _localName = "OneMonth"}
+    let OneWeek = {_prefixID with _localName = "OneWeek"}
+    let OneYear = {_prefixID with _localName = "OneYear"}
+    let OvernightRate = {_prefixID with _localName = "OvernightRate"}
+    let ReferenceInterestRate = {_prefixID with _localName = "ReferenceInterestRate"}
+    let SixMonths = {_prefixID with _localName = "SixMonths"}
+    let SixtyMonths = {_prefixID with _localName = "SixtyMonths"}
+    let SpecificProviderInterestRateBenchmark = {_prefixID with _localName = "SpecificProviderInterestRateBenchmark"}
+    let TenYears = {_prefixID with _localName = "TenYears"}
+    let ThirtySixMonths = {_prefixID with _localName = "ThirtySixMonths"}
+    let ThirtyYears = {_prefixID with _localName = "ThirtyYears"}
+    let ThreeHundredSixtyMonths = {_prefixID with _localName = "ThreeHundredSixtyMonths"}
+    let ThreeMonths = {_prefixID with _localName = "ThreeMonths"}
+    let ThreeYears = {_prefixID with _localName = "ThreeYears"}
+    let TwelveMonths = {_prefixID with _localName = "TwelveMonths"}
+    let TwentyFourMonths = {_prefixID with _localName = "TwentyFourMonths"}
+    let TwentyYears = {_prefixID with _localName = "TwentyYears"}
+    let TwoMonths = {_prefixID with _localName = "TwoMonths"}
+    let TwoYears = {_prefixID with _localName = "TwoYears"}
+    let hasRateResetTimeOfDay = {_prefixID with _localName = "hasRateResetTimeOfDay"}
+    let hasReferenceCurrency = {_prefixID with _localName = "hasReferenceCurrency"}
+    let hasTenor = {_prefixID with _localName = "hasTenor"}

@@ -1,0 +1,47 @@
+@prefix arcaea.genesischunithm: <https://arcaea.lowiro.com/#genesischunithm#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.genesischunithm:.
+arcaea.genesischunithm: arcaea:artist arcaea:Morrigan%20feat.Lily;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:chunithmnew_conflict;
+                        arcaea:bg_inverse arcaea:chunithmnew_light;
+                        arcaea:bpm "150"@en-us;
+                        arcaea:bpm_base 150 ;
+                        arcaea:date 1679529602 ;
+                        arcaea:difficulties arcaea.genesischunithm:FTR,
+                                            arcaea.genesischunithm:PRS,
+                                            arcaea.genesischunithm:PST;
+                        arcaea:id "genesischunithm"@en-us;
+                        arcaea:idx 311 ;
+                        arcaea:purchase "chunithm_append_2"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "もりがん"@ja,
+                                            "りりー"@ja,
+                                            "りりぃ"@ja,
+                                            "모리건"@ko,
+                                            "릴리"@ko,
+                                            "じぇねしす"@ja,
+                                            "제네시스"@ko;
+                        arcaea:set "chunithm_append_2"@en-us;
+                        arcaea:side arcaea:conflict_side;
+                        arcaea:source_copyright "©SEGA"@en-us;
+                        arcaea:title_localized "Genesis"@en,
+                                               "CHUNITHM"@en;
+                        arcaea:version "4.4"@en-us;
+                        arcaea:world_unlock false.
+arcaea.genesischunithm:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                           arcaea:rating 9 ;
+                           arcaea:ratingClass 2 ;
+                           arcaea:ratingPlus true.
+arcaea.genesischunithm:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                           arcaea:rating 7 ;
+                           arcaea:ratingClass 1 .
+arcaea.genesischunithm:PST arcaea:chartDesigner arcaea:Exschwasion;
+                           arcaea:rating 4 ;
+                           arcaea:ratingClass 0 .

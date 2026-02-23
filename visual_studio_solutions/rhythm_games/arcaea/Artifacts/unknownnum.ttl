@@ -1,0 +1,54 @@
+@prefix arcaea.unknownnum: <https://arcaea.lowiro.com/#unknownnum#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.unknownnum:.
+arcaea.unknownnum: arcaea:artist <https://arcaea.lowiro.com/#MEMODEMO%20×%20AQUASINE%20%5E%20(hackerling)>;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:single2_conflict;
+                   arcaea:bg_inverse arcaea:single2_light;
+                   arcaea:bpm "145"@en-us;
+                   arcaea:bpm_base 145 ;
+                   arcaea:category arcaea:variety;
+                   arcaea:date 1771459202 ;
+                   arcaea:difficulties arcaea.unknownnum:FTR,
+                                       arcaea.unknownnum:PRS,
+                                       arcaea.unknownnum:PST;
+                   arcaea:id "unknownnum"@en-us;
+                   arcaea:idx 521 ;
+                   arcaea:purchase "unknownnum"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "めもでも"@ja,
+                                       "あくあさいん"@ja,
+                                       "はっかりんぐ"@ja,
+                                       "はっかーりんぐ"@ja,
+                                       "메모데모"@ko,
+                                       "아쿠아사인"@ko,
+                                       "해컬링"@ko,
+                                       "해커링"@ko,
+                                       "あんのうんなんばー"@ja,
+                                       "あんのーんなんばー"@ja,
+                                       "언노운 넘버"@ko,
+                                       "unknown number"@en;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "+1(UNKNOWN)-NUMBER"@en;
+                   arcaea:version "6.12"@en-us;
+                   arcaea:world_unlock false.
+arcaea.unknownnum:FTR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_GSM;
+                      arcaea:jacketDesigner "AQUASINE"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.unknownnum:PRS arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_GSM;
+                      arcaea:jacketDesigner "AQUASINE"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 .
+arcaea.unknownnum:PST arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_GSM;
+                      arcaea:jacketDesigner "AQUASINE"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

@@ -1,0 +1,47 @@
+@prefix arcaea.hypervision: <https://arcaea.lowiro.com/#hypervision#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.hypervision:.
+arcaea.hypervision: arcaea:artist arcaea:VOLTA;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:single2_conflict;
+                    arcaea:bg_inverse arcaea:single2_light;
+                    arcaea:bpm "155"@en-us;
+                    arcaea:bpm_base 155 ;
+                    arcaea:category arcaea:original;
+                    arcaea:date 1719446404 ;
+                    arcaea:difficulties arcaea.hypervision:PRS,
+                                        arcaea.hypervision:PST,
+                                        arcaea.hypervision:FTR;
+                    arcaea:id "hypervision"@en-us;
+                    arcaea:idx 399 ;
+                    arcaea:purchase "hypervision"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "ぼるた"@ja,
+                                        "볼타"@ko,
+                                        "はいぱーびじょん"@ja,
+                                        "はいぱーゔぃじょん"@ja,
+                                        "하이퍼 비전"@ko;
+                    arcaea:set "single"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "HYPER VISION"@en;
+                    arcaea:version "5.8"@en-us;
+                    arcaea:world_unlock false.
+arcaea.hypervision:FTR arcaea:chartDesigner arcaea:NITRO;
+                       arcaea:jacketDesigner "洗濯メン"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.hypervision:PRS arcaea:chartDesigner arcaea:NITRO;
+                       arcaea:jacketDesigner "洗濯メン"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 .
+arcaea.hypervision:PST arcaea:chartDesigner arcaea:NITRO;
+                       arcaea:jacketDesigner "洗濯メン"@en-us;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

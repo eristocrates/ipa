@@ -1,0 +1,52 @@
+@prefix arcaea.scarletlunar: <https://arcaea.lowiro.com/#scarletlunar#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.scarletlunar:.
+arcaea.scarletlunar: arcaea:artist arcaea:technoplanet%20feat.%20%E5%A4%95%E6%9C%88%E3%83%86%E3%82%A3%E3%82%A2;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:anima_light;
+                     arcaea:bg_inverse arcaea:anima_conflict;
+                     arcaea:bpm "108-184"@en-us;
+                     arcaea:bpm_base 184 ;
+                     arcaea:date 1753315202 ;
+                     arcaea:difficulties arcaea.scarletlunar:FTR,
+                                         arcaea.scarletlunar:PRS,
+                                         arcaea.scarletlunar:PST;
+                     arcaea:id "scarletlunar"@en-us;
+                     arcaea:idx 474 ;
+                     arcaea:purchase "anima"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "てくのぷらねっと"@ja,
+                                         "ゆうづつてぃあ"@ja,
+                                         "테크노플래닛"@ko,
+                                         "유우다츠 티어"@ko,
+                                         "yuudutsu tear"@en,
+                                         "あかつきのひめ"@ja,
+                                         "스칼렛 루나 엠프레스"@ko,
+                                         "아카츠키노 히메"@ko,
+                                         "붉은 달의 공주"@ko,
+                                         "akatsuki no hime"@en;
+                     arcaea:set "anima"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "朱月ノ姫"@ja,
+                                            "Scarlet Lunar Empress"@en;
+                     arcaea:version "6.7"@en-us;
+                     arcaea:world_unlock false.
+arcaea.scarletlunar:FTR arcaea:chartDesigner arcaea:%E9%9D%92%E6%9C%88sidewaves;
+                        arcaea:jacketDesigner "祝く月"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.scarletlunar:PRS arcaea:chartDesigner arcaea:%E9%9D%92%E6%9C%88sidewaves;
+                        arcaea:jacketDesigner "祝く月"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.scarletlunar:PST arcaea:chartDesigner arcaea:%E9%9D%92%E6%9C%88sidewaves;
+                        arcaea:jacketDesigner "祝く月"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

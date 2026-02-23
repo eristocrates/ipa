@@ -1,0 +1,46 @@
+@prefix arcaea.init: <https://arcaea.lowiro.com/#init#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.init:.
+arcaea.init: arcaea:artist arcaea:kamome%20sano;
+             arcaea:audioPreview 0 ;
+             arcaea:audioPreviewEnd 0 ;
+             arcaea:bg arcaea:prelude_conflict;
+             arcaea:bg_inverse arcaea:prelude_light;
+             arcaea:bpm "180"@en-us;
+             arcaea:bpm_base 180 ;
+             arcaea:category arcaea:partner;
+             arcaea:date 1642636800 ;
+             arcaea:difficulties arcaea.init:PRS,
+                                 arcaea.init:PST,
+                                 arcaea.init:FTR;
+             arcaea:id "init"@en-us;
+             arcaea:idx 253 ;
+             arcaea:purchase "init"@en-us;
+             arcaea:remote_dl true;
+             arcaea:search_title "かもめさの"@ja,
+                                 "카모메 사노"@ko,
+                                 "いにっと"@ja,
+                                 "이닛"@ko;
+             arcaea:set "single"@en-us;
+             arcaea:side arcaea:conflict_side;
+             arcaea:title_localized "init()"@en;
+             arcaea:version "3.11"@en-us;
+             arcaea:world_unlock false.
+arcaea.init:FTR arcaea:chartDesigner arcaea:Toaster;
+                arcaea:jacketDesigner "そゐち"@en-us;
+                arcaea:rating 9 ;
+                arcaea:ratingClass 2 ;
+                arcaea:ratingPlus true.
+arcaea.init:PRS arcaea:chartDesigner arcaea:Toaster;
+                arcaea:jacketDesigner "そゐち"@en-us;
+                arcaea:rating 7 ;
+                arcaea:ratingClass 1 .
+arcaea.init:PST arcaea:chartDesigner arcaea:Toaster;
+                arcaea:jacketDesigner "そゐち"@en-us;
+                arcaea:rating 4 ;
+                arcaea:ratingClass 0 .

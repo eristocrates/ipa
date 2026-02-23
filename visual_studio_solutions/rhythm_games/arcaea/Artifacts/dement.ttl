@@ -1,0 +1,47 @@
+@prefix arcaea.dement: <https://arcaea.lowiro.com/#dement#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dement:.
+arcaea.dement: arcaea:artist arcaea:Cosmograph;
+               arcaea:audioPreview 24401 ;
+               arcaea:audioPreviewEnd 56401 ;
+               arcaea:bg arcaea:base_conflict;
+               arcaea:bg_inverse arcaea:base_light;
+               arcaea:bpm "210"@en-us;
+               arcaea:bpm_base 210 ;
+               arcaea:date 1489968000 ;
+               arcaea:difficulties arcaea.dement:BYD,
+                                   arcaea.dement:FTR,
+                                   arcaea.dement:PRS,
+                                   arcaea.dement:PST;
+               arcaea:id "dement"@en-us;
+               arcaea:idx 19 ;
+               arcaea:search_title "こすもぐらふ"@ja,
+                                   "코스모그래프"@ko,
+                                   "でめんとあふたーれじぇんど"@ja,
+                                   "디멘트 애프터 레전드"@ko;
+               arcaea:set "base"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "Dement ~after legend~"@en;
+               arcaea:version "1.0"@en-us.
+arcaea.dement:BYD arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20~ABYSS~>;
+                  arcaea:date 1597968001 ;
+                  arcaea:jacketOverride true;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 3 ;
+                  arcaea:ratingPlus true;
+                  arcaea:version "3.1"@en-us.
+arcaea.dement:FTR arcaea:chartDesigner arcaea:Toaster;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.dement:PRS arcaea:chartDesigner arcaea:Toaster;
+                  arcaea:rating 6 ;
+                  arcaea:ratingClass 1 .
+arcaea.dement:PST arcaea:chartDesigner arcaea:Toaster;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

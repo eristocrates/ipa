@@ -1,0 +1,48 @@
+@prefix arcaea.backtobasics: <https://arcaea.lowiro.com/#backtobasics#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.backtobasics:.
+arcaea.backtobasics: arcaea:artist arcaea:m1dy;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:single2_conflict;
+                     arcaea:bg_inverse arcaea:single2_light;
+                     arcaea:bpm "420"@en-us;
+                     arcaea:bpm_base 420 ;
+                     arcaea:category arcaea:original;
+                     arcaea:date 1717027204 ;
+                     arcaea:difficulties arcaea.backtobasics:PRS,
+                                         arcaea.backtobasics:PST,
+                                         arcaea.backtobasics:FTR;
+                     arcaea:id "backtobasics"@en-us;
+                     arcaea:idx 394 ;
+                     arcaea:purchase "backtobasics"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "みでぃ"@ja,
+                                         "미디"@ko,
+                                         "ばっくとぅべーしっくす"@ja,
+                                         "ばっくとぅーべーしっくす"@ja,
+                                         "백 투 베이직"@ko,
+                                         "백 투 베이직스"@ko;
+                     arcaea:set "single"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Back to Basics"@en;
+                     arcaea:version "5.7"@en-us;
+                     arcaea:world_unlock false.
+arcaea.backtobasics:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20THE%20FUMEn%20ANARCHIST;
+                        arcaea:jacketDesigner "TKKsn."@en-us;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 2 .
+arcaea.backtobasics:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20THE%20FUMEn%20ANARCHIST;
+                        arcaea:jacketDesigner "TKKsn."@en-us;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 1 ;
+                        arcaea:ratingPlus true.
+arcaea.backtobasics:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20THE%20FUMEn%20ANARCHIST;
+                        arcaea:jacketDesigner "TKKsn."@en-us;
+                        arcaea:rating 5 ;
+                        arcaea:ratingClass 0 .

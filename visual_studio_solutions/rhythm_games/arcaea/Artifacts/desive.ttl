@@ -1,0 +1,53 @@
+@prefix arcaea.desive: <https://arcaea.lowiro.com/#desive#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.desive:.
+arcaea.desive: arcaea:artist arcaea:MisomyL;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:rei;
+               arcaea:bg_inverse arcaea:yugamu;
+               arcaea:bpm "180-230"@en-us;
+               arcaea:bpm_base 230 ;
+               arcaea:category arcaea:partner;
+               arcaea:date 1714003204 ;
+               arcaea:difficulties arcaea.desive:FTR,
+                                   arcaea.desive:PRS,
+                                   arcaea.desive:PST,
+                                   arcaea.desive:ETR;
+               arcaea:id "desive"@en-us;
+               arcaea:idx 389 ;
+               arcaea:remote_dl true;
+               arcaea:search_title "みそみぃる"@ja,
+                                   "미소밀"@ko,
+                                   "でぃざいゔ"@ja,
+                                   "디자이브"@ko,
+                                   "desive"@en;
+               arcaea:set "single"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "Desive"@ko,
+                                      "Désive"@en;
+               arcaea:version "5.6"@en-us;
+               arcaea:world_unlock true.
+arcaea.desive:ETR arcaea:chartDesigner arcaea:Yearning%20Call;
+                  arcaea:jacketDesigner "そゐち"@en-us;
+                  arcaea:rating 10 ;
+                  arcaea:ratingClass 4 ;
+                  arcaea:ratingPlus true.
+arcaea.desive:FTR arcaea:chartDesigner arcaea:Yearning%20Call;
+                  arcaea:jacketDesigner "そゐち"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.desive:PRS arcaea:chartDesigner arcaea:Yearning%20Call;
+                  arcaea:jacketDesigner "そゐち"@en-us;
+                  arcaea:rating 8 ;
+                  arcaea:ratingClass 1 .
+arcaea.desive:PST arcaea:chartDesigner arcaea:Yearning%20Call;
+                  arcaea:jacketDesigner "そゐち"@en-us;
+                  arcaea:rating 5 ;
+                  arcaea:ratingClass 0 .

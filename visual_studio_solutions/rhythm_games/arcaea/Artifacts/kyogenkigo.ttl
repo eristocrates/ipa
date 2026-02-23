@@ -1,0 +1,50 @@
+@prefix arcaea.kyogenkigo: <https://arcaea.lowiro.com/#kyogenkigo#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.kyogenkigo:.
+arcaea.kyogenkigo: arcaea:artist <https://arcaea.lowiro.com/#影虎。%20&%20ikaruga_nex>;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:nijuusei-conflict-b;
+                   arcaea:bg_inverse arcaea:nijuusei-light-b;
+                   arcaea:bpm "155"@en-us;
+                   arcaea:bpm_base 155 ;
+                   arcaea:date 1626825604 ;
+                   arcaea:difficulties arcaea.kyogenkigo:FTR,
+                                       arcaea.kyogenkigo:PRS,
+                                       arcaea.kyogenkigo:PST;
+                   arcaea:id "kyogenkigo"@en-us;
+                   arcaea:idx 221 ;
+                   arcaea:purchase "extend"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "かげとら"@ja,
+                                       "いかるがねっくす"@ja,
+                                       "카게토라"@ko,
+                                       "이카구라 넥스"@ko,
+                                       "kagetora"@en,
+                                       "きょうげんきご"@ja,
+                                       "폴스 임벨리시먼트"@ko,
+                                       "쿄겐키고"@ko,
+                                       "광언기어"@ko;
+                   arcaea:set "extend"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "狂言綺語"@ja,
+                                          "False Embellishment"@en;
+                   arcaea:version "3.7"@en-us;
+                   arcaea:world_unlock true.
+arcaea.kyogenkigo:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "あすだ"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.kyogenkigo:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "あすだ"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.kyogenkigo:PST arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "あすだ"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

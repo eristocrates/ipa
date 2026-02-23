@@ -1,0 +1,46 @@
+@prefix arcaea.astraltale: <https://arcaea.lowiro.com/#astraltale#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.astraltale:.
+arcaea.astraltale: arcaea:artist arcaea:Noah;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:nijuusei-conflict-b;
+                   arcaea:bg_inverse arcaea:nijuusei-light-b;
+                   arcaea:bpm "134"@en-us;
+                   arcaea:bpm_base 134 ;
+                   arcaea:category arcaea:original;
+                   arcaea:date 1541635201 ;
+                   arcaea:difficulties arcaea.astraltale:PRS,
+                                       arcaea.astraltale:PST,
+                                       arcaea.astraltale:FTR;
+                   arcaea:id "astraltale"@en-us;
+                   arcaea:idx 103 ;
+                   arcaea:purchase "astraltale"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "のあ"@ja,
+                                       "노아"@ko,
+                                       "あすとらるてーる"@ja,
+                                       "あすとらるている"@ja,
+                                       "아스트랄 테일"@ko;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Astral tale"@en;
+                   arcaea:version "1.8"@en-us;
+                   arcaea:world_unlock false.
+arcaea.astraltale:FTR arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "岩十"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.astraltale:PRS arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "岩十"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 .
+arcaea.astraltale:PST arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "岩十"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

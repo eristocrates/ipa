@@ -1,0 +1,57 @@
+@prefix arcaea.akinokagerou: <https://arcaea.lowiro.com/#akinokagerou#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.akinokagerou:.
+arcaea.akinokagerou: arcaea:artist arcaea:karatoP%CE%B1nchii%20feat.%E3%81%AF%E3%82%8B%E3%81%AE;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:musedash_light;
+                     arcaea:bg_inverse arcaea:musedash_conflict;
+                     arcaea:bpm "180"@en-us;
+                     arcaea:bpm_base 180 ;
+                     arcaea:date 1640304000 ;
+                     arcaea:difficulties arcaea.akinokagerou:FTR,
+                                         arcaea.akinokagerou:PRS,
+                                         arcaea.akinokagerou:PST;
+                     arcaea:id "akinokagerou"@en-us;
+                     arcaea:idx 251 ;
+                     arcaea:purchase "musedash"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "からとぱんちー"@ja,
+                                         "はるの"@ja,
+                                         "かぷちー"@ja,
+                                         "ぱん"@ja,
+                                         "からと"@ja,
+                                         "카라토"@ko,
+                                         "판"@ko,
+                                         "카푸치"@ko,
+                                         "하루노"@ko,
+                                         "카라토판치"@ko,
+                                         "haruno"@en,
+                                         "あきのかげろう"@ja,
+                                         "헤이즈 오브 어텀"@ko,
+                                         "아키노 카게로우"@ko,
+                                         "가을의 아지랑이"@ko;
+                     arcaea:set "musedash"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "秋の陽炎"@ja,
+                                            "Haze of Autumn"@en;
+                     arcaea:version "3.11"@en-us;
+                     arcaea:world_unlock false.
+arcaea.akinokagerou:FTR arcaea:chartDesigner arcaea:%E7%A7%8B%E3%81%AE%C3%A9n;
+                        arcaea:jacketDesigner "MiyU"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.akinokagerou:PRS arcaea:chartDesigner arcaea:%E7%A7%8B%E3%81%AE%C3%A9n;
+                        arcaea:jacketDesigner "MiyU"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.akinokagerou:PST arcaea:chartDesigner arcaea:%E7%A7%8B%E3%81%AE%C3%A9n;
+                        arcaea:jacketDesigner "MiyU"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

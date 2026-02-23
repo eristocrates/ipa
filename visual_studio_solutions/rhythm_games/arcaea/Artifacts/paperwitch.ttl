@@ -1,0 +1,46 @@
+@prefix arcaea.paperwitch: <https://arcaea.lowiro.com/#paperwitch#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.paperwitch:.
+arcaea.paperwitch: arcaea:artist arcaea:Yu-dachi;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:observer_light;
+                   arcaea:bg_inverse arcaea:observer_conflict;
+                   arcaea:bpm "130"@en-us;
+                   arcaea:bpm_base 130 ;
+                   arcaea:date 1620691200 ;
+                   arcaea:difficulties arcaea.paperwitch:PRS,
+                                       arcaea.paperwitch:PST,
+                                       arcaea.paperwitch:FTR;
+                   arcaea:id "paperwitch"@en-us;
+                   arcaea:idx 209 ;
+                   arcaea:purchase "observer"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "ゆうだち"@ja,
+                                       "유다치"@ko,
+                                       "ぺーぱーうぃっち"@ja,
+                                       "페이퍼 윗치"@ko,
+                                       "페이퍼 위치"@ko;
+                   arcaea:set "observer"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "Paper Witch"@en;
+                   arcaea:version "3.6"@en-us;
+                   arcaea:world_unlock false.
+arcaea.paperwitch:FTR arcaea:chartDesigner arcaea:CERiNG;
+                      arcaea:jacketDesigner "桶乃かもく"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.paperwitch:PRS arcaea:chartDesigner arcaea:CERiNG;
+                      arcaea:jacketDesigner "桶乃かもく"@en-us;
+                      arcaea:rating 5 ;
+                      arcaea:ratingClass 1 .
+arcaea.paperwitch:PST arcaea:chartDesigner arcaea:CERiNG;
+                      arcaea:jacketDesigner "桶乃かもく"@en-us;
+                      arcaea:rating 2 ;
+                      arcaea:ratingClass 0 .

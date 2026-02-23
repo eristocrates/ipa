@@ -1,0 +1,51 @@
+@prefix arcaea.ii: <https://arcaea.lowiro.com/#ii#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ii:.
+arcaea.ii: arcaea:artist arcaea:Cytus;
+           arcaea:audioPreview 0 ;
+           arcaea:audioPreviewEnd 0 ;
+           arcaea:bg arcaea:cytus_boss;
+           arcaea:bpm "130-150"@en-us;
+           arcaea:bpm_base 150 ;
+           arcaea:date 1689724804 ;
+           arcaea:difficulties arcaea.ii:FTR,
+                               arcaea.ii:PRS,
+                               arcaea.ii:PST;
+           arcaea:id "ii"@en-us;
+           arcaea:idx 333 ;
+           arcaea:purchase "cytusii_append_1"@en-us;
+           arcaea:remote_dl true;
+           arcaea:search_title "さいたす"@ja,
+                               "사이터스"@ko,
+                               "つー"@ja,
+                               "とぅー"@ja,
+                               "투"@ko,
+                               "ii"@en;
+           arcaea:set "cytusii_append_1"@en-us;
+           arcaea:side arcaea:conflict_side;
+           arcaea:source_copyright "© Rayark Inc."@en-us;
+           arcaea:title_localized "II"@ko,
+                                  "II"@zh-hans,
+                                  "II"@zh-hant,
+                                  " ͟͝͞Ⅱ́̕ "@en,
+                                  "CYTUS II®"@en;
+           arcaea:version "4.6"@en-us;
+           arcaea:world_unlock false.
+arcaea.ii:FTR arcaea:chartDesigner arcaea:Cam_Library_702_12_29;
+              arcaea:rating 10 ;
+              arcaea:ratingClass 2 ;
+              arcaea:ratingPlus true.
+arcaea.ii:PRS arcaea:chartDesigner arcaea:Main_Log_702_10_25;
+              arcaea:jacketOverride true;
+              arcaea:rating 8 ;
+              arcaea:ratingClass 1 ;
+              arcaea:ratingPlus true.
+arcaea.ii:PST arcaea:chartDesigner arcaea:Corrupted%20data%0ARecovery%20progress......100%25;
+              arcaea:jacketOverride true;
+              arcaea:rating 5 ;
+              arcaea:ratingClass 0 .

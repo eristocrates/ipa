@@ -1,0 +1,45 @@
+@prefix arcaea.silentrush: <https://arcaea.lowiro.com/#silentrush#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.silentrush:.
+arcaea.silentrush: arcaea:artist arcaea:Soleily;
+                   arcaea:audioPreview 24446 ;
+                   arcaea:audioPreviewEnd 48750 ;
+                   arcaea:bg arcaea:nijuusei-conflict-b;
+                   arcaea:bg_inverse arcaea:nijuusei-light-b;
+                   arcaea:bpm "158"@en-us;
+                   arcaea:bpm_base 158 ;
+                   arcaea:date 1521763201 ;
+                   arcaea:difficulties arcaea.silentrush:PRS,
+                                       arcaea.silentrush:PST,
+                                       arcaea.silentrush:FTR;
+                   arcaea:id "silentrush"@en-us;
+                   arcaea:idx 69 ;
+                   arcaea:purchase "nijuusei"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "それいりー"@ja,
+                                       "솔레일리"@ko,
+                                       "솔라일리"@ko,
+                                       "さいれんとらっしゅ"@ja,
+                                       "사일런트 러시"@ko,
+                                       "사일런트 러쉬"@ko;
+                   arcaea:set "nijuusei"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Silent Rush"@en;
+                   arcaea:version "1.6"@en-us.
+arcaea.silentrush:FTR arcaea:chartDesigner arcaea:TaroNuke;
+                      arcaea:jacketDesigner "CinEraLiA"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 2 .
+arcaea.silentrush:PRS arcaea:chartDesigner arcaea:TaroNuke;
+                      arcaea:jacketDesigner "CinEraLiA"@en-us;
+                      arcaea:rating 5 ;
+                      arcaea:ratingClass 1 .
+arcaea.silentrush:PST arcaea:chartDesigner arcaea:TaroNuke;
+                      arcaea:jacketDesigner "CinEraLiA"@en-us;
+                      arcaea:rating 2 ;
+                      arcaea:ratingClass 0 .

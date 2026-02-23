@@ -1,0 +1,47 @@
+@prefix arcaea.unknownlevels: <https://arcaea.lowiro.com/#unknownlevels#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.unknownlevels:.
+arcaea.unknownlevels: arcaea:artist arcaea:Yuta%20Imai;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:eden_conflict;
+                      arcaea:bg_inverse arcaea:eden_light;
+                      arcaea:bpm "110-165"@en-us;
+                      arcaea:bpm_base 165 ;
+                      arcaea:date 1692230405 ;
+                      arcaea:difficulties arcaea.unknownlevels:FTR,
+                                          arcaea.unknownlevels:PRS,
+                                          arcaea.unknownlevels:PST;
+                      arcaea:id "unknownlevels"@en-us;
+                      arcaea:idx 340 ;
+                      arcaea:purchase "eden"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "ゆうたいまい"@ja,
+                                          "유타 이마이"@ko,
+                                          "유우타 이마이"@ko,
+                                          "あんのうんれべるす"@ja,
+                                          "あんのうんれべるず"@ja,
+                                          "언노운 레벨즈"@ko,
+                                          "언노운 레벨스"@ko;
+                      arcaea:set "eden"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "UNKNOWN LEVELS"@en;
+                      arcaea:version "4.7"@en-us;
+                      arcaea:world_unlock false.
+arcaea.unknownlevels:FTR arcaea:chartDesigner arcaea:%E2%87%93%20%E6%9D%B1%E6%98%9F%20vs%20Toaster%20%E2%87%93;
+                         arcaea:jacketDesigner "ひと和"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 .
+arcaea.unknownlevels:PRS arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:jacketDesigner "ひと和"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 1 .
+arcaea.unknownlevels:PST arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:jacketDesigner "ひと和"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

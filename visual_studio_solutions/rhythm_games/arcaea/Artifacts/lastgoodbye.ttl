@@ -1,0 +1,50 @@
+@prefix arcaea.lastgoodbye: <https://arcaea.lowiro.com/#lastgoodbye#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lastgoodbye:.
+arcaea.lastgoodbye: arcaea:artist arcaea:Toby%20Fox;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:undertale_light;
+                    arcaea:bg_inverse arcaea:undertale_conflict;
+                    arcaea:bpm "180"@en-us;
+                    arcaea:bpm_base 180 ;
+                    arcaea:date 1741478403 ;
+                    arcaea:difficulties arcaea.lastgoodbye:ETR,
+                                        arcaea.lastgoodbye:FTR,
+                                        arcaea.lastgoodbye:PRS,
+                                        arcaea.lastgoodbye:PST;
+                    arcaea:id "lastgoodbye"@en-us;
+                    arcaea:idx 447 ;
+                    arcaea:purchase "undertale"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "とびーふぉっくす"@ja,
+                                        "토비 폭스"@ko,
+                                        "らすとぐっばい"@ja,
+                                        "らすとぐっどばい"@ja,
+                                        "これでほんとにさよなら"@ja,
+                                        "라스트 굿바이"@ko;
+                    arcaea:set "undertale"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:title_localized "これでホントにサヨナラ"@ja,
+                                           "Last Goodbye"@en,
+                                           "UNDERTALE®"@en;
+                    arcaea:version "6.3"@en-us;
+                    arcaea:world_unlock false.
+arcaea.lastgoodbye:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#Good%20night.>;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 4 ;
+                       arcaea:ratingPlus true.
+arcaea.lastgoodbye:FTR arcaea:chartDesigner arcaea:Luxance;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 2 .
+arcaea.lastgoodbye:PRS arcaea:chartDesigner arcaea:Luxance;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.lastgoodbye:PST arcaea:chartDesigner arcaea:Luxance;
+                       arcaea:rating 2 ;
+                       arcaea:ratingClass 0 .

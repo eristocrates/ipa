@@ -1,0 +1,63 @@
+@prefix arcaea.worldender: <https://arcaea.lowiro.com/#worldender#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.worldender:.
+arcaea:additional_files arcaea:file_name "video_audio.ogg"@en-us,
+                                         "video.mp4"@en-us;
+                        arcaea:requirement "required"@en-us.
+arcaea.worldender: arcaea:additional_files arcaea.worldender:additional_files;
+                   arcaea:artist arcaea:sasakure.UK%20%C3%97%20TJ.hangneil;
+                   arcaea:audioPreview 642 ;
+                   arcaea:audioPreviewEnd 33000 ;
+                   arcaea:bg arcaea:finale_light;
+                   arcaea:bg_inverse arcaea:finale_conflict;
+                   arcaea:bpm "190-280"@en-us;
+                   arcaea:bpm_base 280 ;
+                   arcaea:byd_local_unlock true;
+                   arcaea:date 1657152006 ;
+                   arcaea:difficulties arcaea.worldender:BYD,
+                                       arcaea.worldender:FTR,
+                                       arcaea.worldender:PRS,
+                                       arcaea.worldender:PST;
+                   arcaea:id "worldender"@en-us;
+                   arcaea:idx 277 ;
+                   arcaea:purchase "finale"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "ささくれゆーけー"@ja,
+                                       "てぃーじぇーはんぐねいる"@ja,
+                                       "사사쿠레 유케이"@ko,
+                                       "티제이 행네일"@ko,
+                                       "まおう"@ja,
+                                       "월드 엔더"@ko,
+                                       "마오"@ko,
+                                       "마왕"@ko;
+                   arcaea:set "finale"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "魔王"@ja,
+                                          "World Ender"@en;
+                   arcaea:version "4.0"@en-us;
+                   arcaea:world_unlock false.
+arcaea.worldender:BYD arcaea:chartDesigner arcaea:Imaginary%20Sky;
+                      arcaea:hidden_until "none"@en-us;
+                      arcaea:jacketDesigner "米室"@en-us;
+                      arcaea:legacy11 true;
+                      arcaea:rating 11 ;
+                      arcaea:ratingClass 3 ;
+                      arcaea:world_unlock false.
+arcaea.worldender:FTR arcaea:chartDesigner arcaea:Imaginary%20Sky;
+                      arcaea:jacketDesigner "米室"@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 2 .
+arcaea.worldender:PRS arcaea:chartDesigner arcaea:Imaginary%20Sky;
+                      arcaea:jacketDesigner "米室"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 ;
+                      arcaea:ratingPlus true.
+arcaea.worldender:PST arcaea:chartDesigner arcaea:Imaginary%20Sky;
+                      arcaea:jacketDesigner "米室"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

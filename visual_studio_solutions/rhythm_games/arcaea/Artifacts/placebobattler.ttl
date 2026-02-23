@@ -1,0 +1,46 @@
+@prefix arcaea.placebobattler: <https://arcaea.lowiro.com/#placebobattler#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.placebobattler:.
+arcaea.placebobattler: arcaea:artist arcaea:OSTER%20project;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:vs_light;
+                       arcaea:bg_inverse arcaea:vs_conflict;
+                       arcaea:bpm "270"@en-us;
+                       arcaea:bpm_base 270 ;
+                       arcaea:category arcaea:original;
+                       arcaea:date 1741478406 ;
+                       arcaea:difficulties arcaea.placebobattler:PRS,
+                                           arcaea.placebobattler:PST,
+                                           arcaea.placebobattler:FTR;
+                       arcaea:id "placebobattler"@en-us;
+                       arcaea:idx 450 ;
+                       arcaea:purchase "placebobattler"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "おすたーぷろじぇくと"@ja,
+                                           "오스터 프로젝트"@ko,
+                                           "플라시보 배틀러"@ko,
+                                           "purashiibo batora"@en;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "プラシイボ♥バトラー"@ja,
+                                              "Placebo♥Battler"@en;
+                       arcaea:version "6.3"@en-us;
+                       arcaea:world_unlock false.
+arcaea.placebobattler:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85%E3%80%90%E5%86%8D%E6%A7%8B%E7%AF%89%E3%80%91;
+                          arcaea:jacketDesigner "cyawa"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 .
+arcaea.placebobattler:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85%E3%80%90%E5%86%8D%E6%A7%8B%E7%AF%89%E3%80%91;
+                          arcaea:jacketDesigner "cyawa"@en-us;
+                          arcaea:rating 8 ;
+                          arcaea:ratingClass 1 .
+arcaea.placebobattler:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85%E3%80%90%E5%86%8D%E6%A7%8B%E7%AF%89%E3%80%91;
+                          arcaea:jacketDesigner "cyawa"@en-us;
+                          arcaea:rating 5 ;
+                          arcaea:ratingClass 0 .

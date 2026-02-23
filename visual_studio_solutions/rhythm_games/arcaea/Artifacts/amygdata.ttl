@@ -1,0 +1,48 @@
+@prefix arcaea.amygdata: <https://arcaea.lowiro.com/#amygdata#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.amygdata:.
+arcaea.amygdata: arcaea:artist arcaea:nitro;
+                 arcaea:audioPreview 60000 ;
+                 arcaea:audioPreviewEnd 70000 ;
+                 arcaea:bg arcaea:prelude_conflict;
+                 arcaea:bg_inverse arcaea:prelude_light;
+                 arcaea:bpm "154"@en-us;
+                 arcaea:bpm_base 154 ;
+                 arcaea:category arcaea:original;
+                 arcaea:date 1585094401 ;
+                 arcaea:difficulties arcaea.amygdata:PRS,
+                                     arcaea.amygdata:PST,
+                                     arcaea.amygdata:FTR;
+                 arcaea:id "amygdata"@en-us;
+                 arcaea:idx 153 ;
+                 arcaea:purchase "amygdata"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ないとろ"@ja,
+                                     "にとろ"@ja,
+                                     "니트로"@ko,
+                                     "あみぐでーた"@ja,
+                                     "아미그다타"@ko,
+                                     "아미그데이타"@ko;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "amygdata"@en;
+                 arcaea:version "2.6"@en-us;
+                 arcaea:world_unlock false.
+arcaea.amygdata:FTR arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "久賀フーナ"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.amygdata:PRS arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "久賀フーナ"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.amygdata:PST arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "久賀フーナ"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

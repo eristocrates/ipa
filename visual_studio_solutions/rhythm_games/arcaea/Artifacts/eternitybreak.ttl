@@ -1,0 +1,51 @@
+@prefix arcaea.eternitybreak: <https://arcaea.lowiro.com/#eternitybreak#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.eternitybreak:.
+arcaea.eternitybreak: arcaea:artist arcaea:Puru;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:single2_conflict;
+                      arcaea:bg_inverse arcaea:single2_light;
+                      arcaea:bpm "170"@en-us;
+                      arcaea:bpm_base 170 ;
+                      arcaea:category arcaea:original;
+                      arcaea:date 1758758400 ;
+                      arcaea:difficulties arcaea.eternitybreak:FTR,
+                                          arcaea.eternitybreak:PRS,
+                                          arcaea.eternitybreak:PST,
+                                          arcaea.eternitybreak:ETR;
+                      arcaea:id "eternitybreak"@en-us;
+                      arcaea:idx 485 ;
+                      arcaea:purchase "eternitybreak"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "ぷる"@ja,
+                                          "푸루"@ko,
+                                          "えたにてぃぶれいく"@ja,
+                                          "えたにてぃーぶれいく"@ja,
+                                          "이터니티 브레이크"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Eternity Break"@en;
+                      arcaea:version "6.8"@en-us;
+                      arcaea:world_unlock false.
+arcaea.eternitybreak:ETR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_halt;
+                         arcaea:jacketDesigner "Khronetic -玄廻-"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 4 .
+arcaea.eternitybreak:FTR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_halt;
+                         arcaea:jacketDesigner "Khronetic -玄廻-"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 .
+arcaea.eternitybreak:PRS arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_halt;
+                         arcaea:jacketDesigner "Khronetic -玄廻-"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 .
+arcaea.eternitybreak:PST arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_halt;
+                         arcaea:jacketDesigner "Khronetic -玄廻-"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

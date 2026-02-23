@@ -1,0 +1,48 @@
+@prefix arcaea.egoeimi: <https://arcaea.lowiro.com/#egoeimi#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.egoeimi:.
+arcaea.egoeimi: arcaea:artist arcaea:BlackY%20feat.%20Risa%20Yuzuki;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:eden_append_conflict;
+                arcaea:bg_inverse arcaea:eden_append_light;
+                arcaea:bpm "178"@en-us;
+                arcaea:bpm_base 178 ;
+                arcaea:date 1695772807 ;
+                arcaea:difficulties arcaea.egoeimi:FTR,
+                                    arcaea.egoeimi:PRS,
+                                    arcaea.egoeimi:PST;
+                arcaea:id "egoeimi"@en-us;
+                arcaea:idx 351 ;
+                arcaea:purchase "eden_append_1"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "ぶらっきー"@ja,
+                                    "りさゆずき"@ja,
+                                    "블래키"@ko,
+                                    "블랙키"@ko,
+                                    "리사 유즈키"@ko,
+                                    "えごえいみ"@ja,
+                                    "えごーえいみ"@ja,
+                                    "에고 에이미"@ko;
+                arcaea:set "eden_append_1"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Ego Eimi"@en;
+                arcaea:version "5.0"@en-us;
+                arcaea:world_unlock false.
+arcaea.egoeimi:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                   arcaea:jacketDesigner "Khronetic - At the Horizon"@en-us;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 2 .
+arcaea.egoeimi:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                   arcaea:jacketDesigner "Khronetic - At the Horizon"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 1 .
+arcaea.egoeimi:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F;
+                   arcaea:jacketDesigner "Khronetic - At the Horizon"@en-us;
+                   arcaea:rating 5 ;
+                   arcaea:ratingClass 0 .

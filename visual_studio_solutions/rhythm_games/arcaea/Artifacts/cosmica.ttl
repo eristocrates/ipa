@@ -1,0 +1,47 @@
+@prefix arcaea.cosmica: <https://arcaea.lowiro.com/#cosmica#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.cosmica:.
+arcaea.cosmica: arcaea:artist arcaea:Nhato;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:nijuusei2_conflict;
+                arcaea:bg_inverse arcaea:nijuusei2_light;
+                arcaea:bpm "110"@en-us;
+                arcaea:bpm_base 110 ;
+                arcaea:date 1636588800 ;
+                arcaea:difficulties arcaea.cosmica:FTR,
+                                    arcaea.cosmica:PRS,
+                                    arcaea.cosmica:PST;
+                arcaea:id "cosmica"@en-us;
+                arcaea:idx 240 ;
+                arcaea:purchase "nijuusei_append_1"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "なはと"@ja,
+                                    "나하토"@ko,
+                                    "こすみか"@ja,
+                                    "こずみか"@ja,
+                                    "코스미카"@ko,
+                                    "코즈미카"@ko;
+                arcaea:set "nijuusei_append_1"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Cosmica"@en;
+                arcaea:version "3.9"@en-us;
+                arcaea:world_unlock false.
+arcaea.cosmica:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20missing%20Toaster.>;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.cosmica:PRS arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 5 ;
+                   arcaea:ratingClass 1 .
+arcaea.cosmica:PST arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 2 ;
+                   arcaea:ratingClass 0 .

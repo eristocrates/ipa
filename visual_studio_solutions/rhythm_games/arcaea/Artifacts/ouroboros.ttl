@@ -1,0 +1,46 @@
+@prefix arcaea.ouroboros: <https://arcaea.lowiro.com/#ouroboros#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ouroboros:.
+arcaea.ouroboros: arcaea:artist arcaea:Cranky%20VS%20MASAKI;
+                  arcaea:audioPreview 79389 ;
+                  arcaea:audioPreviewEnd 110028 ;
+                  arcaea:bg arcaea:gc_ouroboros;
+                  arcaea:bpm "188"@en-us;
+                  arcaea:bpm_base 188 ;
+                  arcaea:date 1546992004 ;
+                  arcaea:difficulties arcaea.ouroboros:FTR,
+                                      arcaea.ouroboros:PRS,
+                                      arcaea.ouroboros:PST;
+                  arcaea:id "ouroboros"@en-us;
+                  arcaea:idx 110 ;
+                  arcaea:no_stream true;
+                  arcaea:purchase "groovecoaster"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "くらんきー"@ja,
+                                      "まさき"@ja,
+                                      "크랭키"@ko,
+                                      "마사키"@ko,
+                                      "うろぼろすついんすとろーくおぶじえんど"@ja,
+                                      "우로보로스 트윈 스트로크 오브 디 엔드"@ko;
+                  arcaea:set "groovecoaster"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "© TAITO CORP. 1978, 2019"@en-us;
+                  arcaea:title_localized "ouroboros -twin stroke of the end-"@en,
+                                         "Groove Coaster"@en;
+                  arcaea:version "1.9"@en-us;
+                  arcaea:world_unlock false.
+arcaea.ouroboros:FTR arcaea:chartDesigner arcaea:Groove%20%E6%9D%B1%E6%98%9F;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.ouroboros:PRS arcaea:chartDesigner arcaea:Groove%20%E6%9D%B1%E6%98%9F;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.ouroboros:PST arcaea:chartDesigner arcaea:Groove%20%E6%9D%B1%E6%98%9F;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

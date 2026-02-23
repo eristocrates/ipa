@@ -1,0 +1,45 @@
+@prefix arcaea.turbocharger: <https://arcaea.lowiro.com/#turbocharger#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.turbocharger:.
+arcaea.turbocharger: arcaea:artist <https://arcaea.lowiro.com/#A/I>;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:nijuusei-light-b;
+                     arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+                     arcaea:bpm "128-170"@en-us;
+                     arcaea:bpm_base 170 ;
+                     arcaea:date 1623283200 ;
+                     arcaea:difficulties arcaea.turbocharger:PRS,
+                                         arcaea.turbocharger:PST,
+                                         arcaea.turbocharger:FTR;
+                     arcaea:id "turbocharger"@en-us;
+                     arcaea:idx 218 ;
+                     arcaea:purchase "extend"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "えーあい"@ja,
+                                         "에이아이"@ko,
+                                         "たーぼちゃーじゃー"@ja,
+                                         "터보차저"@ko,
+                                         "터보챠저"@ko;
+                     arcaea:set "extend"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "Turbocharger"@en;
+                     arcaea:version "3.6"@en-us;
+                     arcaea:world_unlock true.
+arcaea.turbocharger:FTR arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "志月"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.turbocharger:PRS arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "志月"@en-us;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.turbocharger:PST arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "志月"@en-us;
+                        arcaea:rating 2 ;
+                        arcaea:ratingClass 0 .

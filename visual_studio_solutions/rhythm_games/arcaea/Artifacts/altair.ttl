@@ -1,0 +1,48 @@
+@prefix arcaea.altair: <https://arcaea.lowiro.com/#altair#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.altair:.
+arcaea.altair: arcaea:artist <https://arcaea.lowiro.com/#kamome%20sano%20&%20you>;
+               arcaea:audioPreview 103764 ;
+               arcaea:audioPreviewEnd 128470 ;
+               arcaea:bg arcaea:nijuusei2_light;
+               arcaea:bg_inverse arcaea:nijuusei2_conflict;
+               arcaea:bpm "170"@en-us;
+               arcaea:bpm_base 170 ;
+               arcaea:date 1657152000 ;
+               arcaea:difficulties arcaea.altair:FTR,
+                                   arcaea.altair:PRS,
+                                   arcaea.altair:PST;
+               arcaea:id "altair"@en-us;
+               arcaea:idx 271 ;
+               arcaea:remote_dl true;
+               arcaea:search_title "かもめさの"@ja,
+                                   "ゆー"@ja,
+                                   "すぴら"@ja,
+                                   "카모메 사노"@ko,
+                                   "유"@ko,
+                                   "스피라"@ko,
+                                   "あるたいる"@ja,
+                                   "알타이르"@ko,
+                                   "알테어"@ko;
+               arcaea:set "base"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "Altair (feat. *spiLa*)"@en;
+               arcaea:version "4.0"@en-us;
+               arcaea:world_unlock true.
+arcaea.altair:FTR arcaea:chartDesigner arcaea:antymis;
+                  arcaea:jacketDesigner "minamo + レク"@en-us;
+                  arcaea:rating 8 ;
+                  arcaea:ratingClass 2 .
+arcaea.altair:PRS arcaea:chartDesigner arcaea:antymis;
+                  arcaea:jacketDesigner "minamo + レク"@en-us;
+                  arcaea:rating 6 ;
+                  arcaea:ratingClass 1 .
+arcaea.altair:PST arcaea:chartDesigner arcaea:antymis;
+                  arcaea:jacketDesigner "minamo + レク"@en-us;
+                  arcaea:rating 2 ;
+                  arcaea:ratingClass 0 .

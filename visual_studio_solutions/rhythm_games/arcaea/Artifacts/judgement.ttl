@@ -1,0 +1,45 @@
+@prefix arcaea.judgement: <https://arcaea.lowiro.com/#judgement#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.judgement:.
+arcaea.judgement: arcaea:artist arcaea:Tatsunoshin;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:nihil;
+                  arcaea:bg_inverse arcaea:nihil;
+                  arcaea:bpm "200"@en-us;
+                  arcaea:bpm_base 200 ;
+                  arcaea:date 1722297605 ;
+                  arcaea:difficulties arcaea.judgement:PRS,
+                                      arcaea.judgement:PST,
+                                      arcaea.judgement:FTR;
+                  arcaea:id "judgement"@en-us;
+                  arcaea:idx 406 ;
+                  arcaea:purchase "nihil"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "たつのしん"@ja,
+                                      "타츠노신"@ko,
+                                      "じゃっじめんと"@ja,
+                                      "저지멘트"@ko,
+                                      "저지먼트"@ko;
+                  arcaea:set "nihil"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Judgement"@en;
+                  arcaea:version "5.9"@en-us;
+                  arcaea:world_unlock false.
+arcaea.judgement:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85%20%C2%BB%20collapse;
+                     arcaea:jacketDesigner "辷"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.judgement:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85%20%C2%BB%20collapse;
+                     arcaea:jacketDesigner "辷"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 .
+arcaea.judgement:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85%20%C2%BB%20collapse;
+                     arcaea:jacketDesigner "辷"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 0 .

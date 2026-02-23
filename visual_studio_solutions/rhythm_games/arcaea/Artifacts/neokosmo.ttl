@@ -1,0 +1,54 @@
+@prefix arcaea.neokosmo: <https://arcaea.lowiro.com/#neokosmo#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.neokosmo:.
+arcaea.neokosmo: arcaea:artist <https://arcaea.lowiro.com/#ak+q%20×%20Street>;
+                 arcaea:audioPreview 41684 ;
+                 arcaea:audioPreviewEnd 65684 ;
+                 arcaea:bg arcaea:hime_conflict;
+                 arcaea:bg_inverse arcaea:hime_light;
+                 arcaea:bpm "190"@en-us;
+                 arcaea:bpm_base 190 ;
+                 arcaea:date 1639008003 ;
+                 arcaea:difficulties arcaea.neokosmo:FTR,
+                                     arcaea.neokosmo:PRS,
+                                     arcaea.neokosmo:PST;
+                 arcaea:id "neokosmo"@en-us;
+                 arcaea:idx 247 ;
+                 arcaea:purchase "dividedheart"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "えーけーぷらすきゅー"@ja,
+                                     "すとりーと"@ja,
+                                     "에이케이 플러스 큐"@ko,
+                                     "스트리트"@ko,
+                                     "스트릿"@ko,
+                                     "ねおこすも"@ja,
+                                     "네오 코스모"@ko,
+                                     "네오 코즈모"@ko,
+                                     "neo kosmo"@en;
+                 arcaea:set "dividedheart"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "neo kosmo"@ko,
+                                        "neo kosmo"@zh-hans,
+                                        "neo kosmo"@zh-hant,
+                                        "nέο κόsmo"@en;
+                 arcaea:version "3.10"@en-us;
+                 arcaea:world_unlock false.
+arcaea.neokosmo:FTR arcaea:chartDesigner arcaea:Nitro%20%C3%97%20Toaster;
+                    arcaea:jacketDesigner "久坂んむり"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.neokosmo:PRS arcaea:chartDesigner arcaea:Nitro%20%C3%97%20Toaster;
+                    arcaea:jacketDesigner "久坂んむり"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 ;
+                    arcaea:ratingPlus true.
+arcaea.neokosmo:PST arcaea:chartDesigner arcaea:Nitro%20%C3%97%20Toaster;
+                    arcaea:jacketDesigner "久坂んむり"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

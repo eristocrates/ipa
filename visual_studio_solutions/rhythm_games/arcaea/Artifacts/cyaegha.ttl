@@ -1,0 +1,45 @@
+@prefix arcaea.cyaegha: <https://arcaea.lowiro.com/#cyaegha#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.cyaegha:.
+arcaea.cyaegha: arcaea:artist arcaea:USAO;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:cyaegha;
+                arcaea:bpm "200"@en-us;
+                arcaea:bpm_base 200 ;
+                arcaea:date 1553126406 ;
+                arcaea:difficulties arcaea.cyaegha:PRS,
+                                    arcaea.cyaegha:PST,
+                                    arcaea.cyaegha:FTR;
+                arcaea:id "cyaegha"@en-us;
+                arcaea:idx 117 ;
+                arcaea:purchase "zettai"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "うさお"@ja,
+                                    "우사오"@ko,
+                                    "しあえが"@ja,
+                                    "시아이가"@ko,
+                                    "시에가"@ko;
+                arcaea:set "zettai"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Cyaegha"@en;
+                arcaea:version "2.0"@en-us;
+                arcaea:world_unlock false.
+arcaea.cyaegha:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%81%E6%97%A7%E6%94%AF%E9%85%8D%E8%80%85;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.cyaegha:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%81%E6%97%A7%E6%94%AF%E9%85%8D%E8%80%85;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 1 .
+arcaea.cyaegha:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%81%E6%97%A7%E6%94%AF%E9%85%8D%E8%80%85;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 5 ;
+                   arcaea:ratingClass 0 .

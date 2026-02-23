@@ -1,0 +1,53 @@
+@prefix arcaea.tictactoe: <https://arcaea.lowiro.com/#tictactoe#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.tictactoe:.
+arcaea.tictactoe: arcaea:artist arcaea:TAK%20x%20Corbin;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:djmax_light;
+                  arcaea:bg_inverse arcaea:djmax_conflict;
+                  arcaea:bpm "126"@en-us;
+                  arcaea:bpm_base 126 ;
+                  arcaea:category arcaea:musicgames;
+                  arcaea:date 1747872007 ;
+                  arcaea:difficulties arcaea.tictactoe:ETR,
+                                      arcaea.tictactoe:FTR,
+                                      arcaea.tictactoe:PRS,
+                                      arcaea.tictactoe:PST;
+                  arcaea:id "tictactoe"@en-us;
+                  arcaea:idx 463 ;
+                  arcaea:purchase "tictactoe"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "たく"@ja,
+                                      "탁"@ko,
+                                      "코르빈"@ko,
+                                      "콜빈"@ko,
+                                      "てぃっくたっくとー"@ja,
+                                      "ちっくたっくとー"@ja,
+                                      "틱택토"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:source_copyright "© NEOWIZ"@en-us;
+                  arcaea:title_localized "Tic! Tac! Toe!"@en,
+                                         "DJMAX"@en;
+                  arcaea:version "6.5"@en-us;
+                  arcaea:world_unlock false.
+arcaea.tictactoe:ETR arcaea:chartDesigner arcaea:moonquay%20c.FAIL;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 4 ;
+                     arcaea:ratingPlus true.
+arcaea.tictactoe:FTR arcaea:chartDesigner arcaea:moonquay%20c.CLEAR;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.tictactoe:PRS arcaea:chartDesigner arcaea:moonquay;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.tictactoe:PST arcaea:chartDesigner arcaea:moonquay;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,48 @@
+@prefix arcaea.lostdesire: <https://arcaea.lowiro.com/#lostdesire#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lostdesire:.
+arcaea.lostdesire: arcaea:artist arcaea:Powerless%20feat.%20Sennzai;
+                   arcaea:audioPreview 60000 ;
+                   arcaea:audioPreviewEnd 70000 ;
+                   arcaea:bg arcaea:vs_conflict;
+                   arcaea:bg_inverse arcaea:vs_light;
+                   arcaea:bpm "170"@en-us;
+                   arcaea:bpm_base 170 ;
+                   arcaea:date 1590537602 ;
+                   arcaea:difficulties arcaea.lostdesire:FTR,
+                                       arcaea.lostdesire:PRS,
+                                       arcaea.lostdesire:PST;
+                   arcaea:id "lostdesire"@en-us;
+                   arcaea:idx 157 ;
+                   arcaea:purchase "vs"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "ぱわーれす"@ja,
+                                       "せんざい"@ja,
+                                       "파워리스"@ko,
+                                       "센자이"@ko,
+                                       "ろすとでざいあ"@ja,
+                                       "로스트 디자이어"@ko;
+                   arcaea:set "vs"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Lost Desire"@en;
+                   arcaea:version "3.0"@en-us;
+                   arcaea:world_unlock false.
+arcaea.lostdesire:FTR arcaea:chartDesigner arcaea:Darkest%20Dream;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.lostdesire:PRS arcaea:chartDesigner arcaea:Darkest%20Dream;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 ;
+                      arcaea:ratingPlus true.
+arcaea.lostdesire:PST arcaea:chartDesigner arcaea:Darkest%20Dream;
+                      arcaea:jacketDesigner "シエラ"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

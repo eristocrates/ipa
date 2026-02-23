@@ -1,0 +1,50 @@
+@prefix arcaea.alterale: <https://arcaea.lowiro.com/#alterale#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.alterale:.
+arcaea.alterale: arcaea:artist <https://arcaea.lowiro.com/#Arik%20Kau%20Delay%20(アラ＆かゆき＆でり）>;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:observer_light;
+                 arcaea:bg_inverse arcaea:observer_conflict;
+                 arcaea:bpm "220-245"@en-us;
+                 arcaea:bpm_base 245 ;
+                 arcaea:date 1626825601 ;
+                 arcaea:difficulties arcaea.alterale:FTR,
+                                     arcaea.alterale:PRS,
+                                     arcaea.alterale:PST;
+                 arcaea:id "alterale"@en-us;
+                 arcaea:idx 225 ;
+                 arcaea:purchase "observer_append_2"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "아라"@ko,
+                                     "카유키"@ko,
+                                     "데리"@ko,
+                                     "ara"@en,
+                                     "kayuki"@en,
+                                     "deli"@en,
+                                     "あるたーえーる"@ja,
+                                     "알터에일"@ko,
+                                     "얼터에일"@ko;
+                 arcaea:set "observer_append_2"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "AlterAle"@en;
+                 arcaea:version "3.7"@en-us;
+                 arcaea:world_unlock false.
+arcaea.alterale:FTR arcaea:chartDesigner arcaea:CERiNG;
+                    arcaea:jacketDesigner "ちょこ庵"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.alterale:PRS arcaea:chartDesigner arcaea:CERiNG;
+                    arcaea:jacketDesigner "ちょこ庵"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.alterale:PST arcaea:chartDesigner arcaea:CERiNG;
+                    arcaea:jacketDesigner "ちょこ庵"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

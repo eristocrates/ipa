@@ -1,0 +1,49 @@
+@prefix arcaea.aterlbus: <https://arcaea.lowiro.com/#aterlbus#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.aterlbus:.
+arcaea.aterlbus: arcaea:artist arcaea:Aoi;
+                 arcaea:audioPreview 29102 ;
+                 arcaea:audioPreviewEnd 59405 ;
+                 arcaea:bg arcaea:dynamix_conflict;
+                 arcaea:bg_inverse arcaea:dynamix_light;
+                 arcaea:bpm "202"@en-us;
+                 arcaea:bpm_base 202 ;
+                 arcaea:date 1498176005 ;
+                 arcaea:difficulties arcaea.aterlbus:FTR,
+                                     arcaea.aterlbus:PRS,
+                                     arcaea.aterlbus:PST;
+                 arcaea:id "aterlbus"@en-us;
+                 arcaea:idx 38 ;
+                 arcaea:no_stream true;
+                 arcaea:purchase "dynamix"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "あーてるばす"@ja,
+                                     "아오이"@ko,
+                                     "あおい"@ja,
+                                     "아텔버스"@ko,
+                                     "아텔부스"@ko,
+                                     "아테르버스"@ko,
+                                     "아테르부스"@ko,
+                                     "aterlbus"@en;
+                 arcaea:set "dynamix"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "aterlbus"@zh-hans,
+                                        "aterlbus"@zh-hant,
+                                        "αterlβus"@en,
+                                        "Dynamix"@en;
+                 arcaea:version "1.1"@en-us.
+arcaea.aterlbus:FTR arcaea:bg arcaea:aterlbus;
+                    arcaea:chartDesigner arcaea:%CF%84oast%CE%B5r;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.aterlbus:PRS arcaea:chartDesigner arcaea:%CF%84oast%CE%B5r;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.aterlbus:PST arcaea:chartDesigner arcaea:%CF%84oast%CE%B5r;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

@@ -1,0 +1,47 @@
+@prefix arcaea.ashenboundary: <https://arcaea.lowiro.com/#ashenboundary#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ashenboundary:.
+arcaea.ashenboundary: arcaea:artist arcaea:YUKIYANAGI;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:nihil;
+                      arcaea:bg_inverse arcaea:nihil;
+                      arcaea:bpm "172"@en-us;
+                      arcaea:bpm_base 172 ;
+                      arcaea:date 1722297604 ;
+                      arcaea:difficulties arcaea.ashenboundary:PRS,
+                                          arcaea.ashenboundary:PST,
+                                          arcaea.ashenboundary:FTR;
+                      arcaea:id "ashenboundary"@en-us;
+                      arcaea:idx 405 ;
+                      arcaea:purchase "nihil"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "ゆきやなぎ"@ja,
+                                          "유키야나기"@ko,
+                                          "あっしぇんばうんだりー"@ja,
+                                          "애쉰 바운더리"@ko,
+                                          "ashen boundary"@en;
+                      arcaea:set "nihil"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Ashen 6oundary"@en;
+                      arcaea:version "5.9"@en-us;
+                      arcaea:world_unlock false.
+arcaea.ashenboundary:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#[NITRO]>;
+                         arcaea:jacketDesigner "AT基調"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.ashenboundary:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#[NITRO]>;
+                         arcaea:jacketDesigner "AT基調"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.ashenboundary:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#[NITRO]>;
+                         arcaea:jacketDesigner "AT基調"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

@@ -1,0 +1,53 @@
+@prefix arcaea.take: <https://arcaea.lowiro.com/#take#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.take:.
+arcaea.take: arcaea:artist arcaea:%E7%AB%8B%E7%A7%8B%20feat.%E3%81%A1%E3%82%87%E3%81%93;
+             arcaea:audioPreview 0 ;
+             arcaea:audioPreviewEnd 0 ;
+             arcaea:bg arcaea:nijuusei-light-b;
+             arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+             arcaea:bpm "5-315"@en-us;
+             arcaea:bpm_base 219 ;
+             arcaea:date 1613001601 ;
+             arcaea:difficulties arcaea.take:FTR,
+                                 arcaea.take:PRS,
+                                 arcaea.take:PST;
+             arcaea:id "take"@en-us;
+             arcaea:idx 205 ;
+             arcaea:purchase "extend"@en-us;
+             arcaea:remote_dl true;
+             arcaea:search_title "릿슈"@ko,
+                                 "りっしゅう"@ja,
+                                 "쵸코"@ko,
+                                 "초코"@ko,
+                                 "rissyuu"@en,
+                                 "choco"@en,
+                                 "rish"@en,
+                                 "たけ"@ja,
+                                 "뱀부"@ko,
+                                 "밤부"@ko,
+                                 "타케"@ko,
+                                 "대나무"@ko;
+             arcaea:set "extend"@en-us;
+             arcaea:side arcaea:light_side;
+             arcaea:title_localized "竹"@ja,
+                                    "Bamboo"@en;
+             arcaea:version "3.5"@en-us;
+             arcaea:world_unlock true.
+arcaea.take:FTR arcaea:chartDesigner arcaea:%E7%AB%B9%E3%81%AE%E5%AD%90;
+                arcaea:jacketDesigner "石王マサト"@en-us;
+                arcaea:rating 10 ;
+                arcaea:ratingClass 2 .
+arcaea.take:PRS arcaea:chartDesigner arcaea:%E7%AB%B9%E3%81%AE%E5%AD%90;
+                arcaea:jacketDesigner "石王マサト"@en-us;
+                arcaea:rating 6 ;
+                arcaea:ratingClass 1 .
+arcaea.take:PST arcaea:chartDesigner arcaea:%E7%AB%B9%E3%81%AE%E5%AD%90;
+                arcaea:jacketDesigner "石王マサト"@en-us;
+                arcaea:rating 3 ;
+                arcaea:ratingClass 0 .

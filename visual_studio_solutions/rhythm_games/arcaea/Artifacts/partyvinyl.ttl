@@ -1,0 +1,53 @@
+@prefix arcaea.partyvinyl: <https://arcaea.lowiro.com/#partyvinyl#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.partyvinyl:.
+arcaea.partyvinyl: arcaea:artist arcaea:%E3%83%A2%E3%83%AA%E3%83%A2%E3%83%AA%E3%81%82%E3%81%A4%E3%81%97;
+                   arcaea:audioPreview 22727 ;
+                   arcaea:audioPreviewEnd 51818 ;
+                   arcaea:bg arcaea:shiawase;
+                   arcaea:bpm "132"@en-us;
+                   arcaea:bpm_base 132 ;
+                   arcaea:date 1494547204 ;
+                   arcaea:difficulties arcaea.partyvinyl:FTR,
+                                       arcaea.partyvinyl:PRS,
+                                       arcaea.partyvinyl:PST,
+                                       arcaea.partyvinyl:BYD;
+                   arcaea:id "partyvinyl"@en-us;
+                   arcaea:idx 23 ;
+                   arcaea:purchase "shiawase"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "모리모리 아츠시"@ko,
+                                       "morimori atsushi"@en,
+                                       "ぱーてぃゔぁいなる"@ja,
+                                       "ぱーてぃーゔぁいなる"@ja,
+                                       "파티 비닐"@ko,
+                                       "파티 바이닐"@ko;
+                   arcaea:set "shiawase"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "Party Vinyl"@en;
+                   arcaea:version "1.0"@en-us.
+arcaea.partyvinyl:BYD arcaea:chartDesigner arcaea:Party%20Exschwasion;
+                      arcaea:date 1671667202 ;
+                      arcaea:jacketDesigner "アサヤ"@en-us;
+                      arcaea:jacketOverride true;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 3 ;
+                      arcaea:version "4.1"@en-us.
+arcaea.partyvinyl:FTR arcaea:chartDesigner arcaea:Party%20Toaster;
+                      arcaea:jacketDesigner "アサヤ"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.partyvinyl:PRS arcaea:chartDesigner arcaea:Party%20Toaster;
+                      arcaea:jacketDesigner "アサヤ"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 ;
+                      arcaea:ratingPlus true.
+arcaea.partyvinyl:PST arcaea:chartDesigner arcaea:Party%20Toaster;
+                      arcaea:jacketDesigner "アサヤ"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

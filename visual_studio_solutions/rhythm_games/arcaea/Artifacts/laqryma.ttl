@@ -1,0 +1,54 @@
+@prefix arcaea.laqryma: <https://arcaea.lowiro.com/#laqryma#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.laqryma:.
+arcaea.laqryma: arcaea:artist arcaea:DJ%20Noriken;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:tanoc_conflict;
+                arcaea:bg_inverse arcaea:tanoc_light;
+                arcaea:bpm "168"@en-us;
+                arcaea:bpm_base 168 ;
+                arcaea:category arcaea:original;
+                arcaea:date 1579478400 ;
+                arcaea:difficulties arcaea.laqryma:FTR,
+                                    arcaea.laqryma:PRS,
+                                    arcaea.laqryma:PST,
+                                    arcaea.laqryma:BYD;
+                arcaea:id "laqryma"@en-us;
+                arcaea:idx 146 ;
+                arcaea:purchase "laqryma"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "でぃーじぇーのりけん"@ja,
+                                    "でぃーじぇいのりけん"@ja,
+                                    "디제이 노리켄"@ko,
+                                    "らくりまおぶじうぇいすとらんど"@ja,
+                                    "라크리마 오브 더 웨이스트랜드"@ko;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "La'qryma of the Wasteland"@en;
+                arcaea:version "2.5"@en-us;
+                arcaea:world_unlock false.
+arcaea.laqryma:BYD arcaea:chartDesigner arcaea:Nitro%20%E3%80%8CThe%20Forsaken%E3%80%8D;
+                   arcaea:date 1625011200 ;
+                   arcaea:jacketDesigner "和音ハカ"@en-us;
+                   arcaea:jacketOverride true;
+                   arcaea:rating 10 ;
+                   arcaea:ratingClass 3 ;
+                   arcaea:version "3.6"@en-us.
+arcaea.laqryma:FTR arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "和音ハカ"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.laqryma:PRS arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "和音ハカ"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.laqryma:PST arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "和音ハカ"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

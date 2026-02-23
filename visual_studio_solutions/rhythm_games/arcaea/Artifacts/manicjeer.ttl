@@ -1,0 +1,47 @@
+@prefix arcaea.manicjeer: <https://arcaea.lowiro.com/#manicjeer#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.manicjeer:.
+arcaea.manicjeer: arcaea:artist arcaea:%E3%83%AB%E3%82%BC;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:yugamu;
+                  arcaea:bg_inverse arcaea:rei;
+                  arcaea:bpm "195"@en-us;
+                  arcaea:bpm_base 195 ;
+                  arcaea:category arcaea:original;
+                  arcaea:date 1677715201 ;
+                  arcaea:difficulties arcaea.manicjeer:PRS,
+                                      arcaea.manicjeer:PST,
+                                      arcaea.manicjeer:FTR;
+                  arcaea:id "manicjeer"@en-us;
+                  arcaea:idx 301 ;
+                  arcaea:purchase "manicjeer"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "루제"@ko,
+                                      "luze"@en,
+                                      "まにっくじあー"@ja,
+                                      "매닉 지어"@ko,
+                                      "마닉 지어"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Manic Jeer"@en;
+                  arcaea:version "4.3"@en-us;
+                  arcaea:world_unlock false.
+arcaea.manicjeer:FTR arcaea:chartDesigner arcaea:NITR%3CO%3E;
+                     arcaea:jacketDesigner "トロ３"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.manicjeer:PRS arcaea:chartDesigner arcaea:NITR%3CO%3E;
+                     arcaea:jacketDesigner "トロ３"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 ;
+                     arcaea:ratingPlus true.
+arcaea.manicjeer:PST arcaea:chartDesigner arcaea:NITR%3CO%3E;
+                     arcaea:jacketDesigner "トロ３"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

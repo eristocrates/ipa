@@ -1,0 +1,45 @@
+@prefix arcaea.rostpagegene: <https://arcaea.lowiro.com/#rostpagegene#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.rostpagegene:.
+arcaea.rostpagegene: arcaea:artist <https://arcaea.lowiro.com/#MYUKKE.>;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:omatsuri_light;
+                     arcaea:bg_inverse arcaea:omatsuri_conflict;
+                     arcaea:bpm "135"@en-us;
+                     arcaea:bpm_base 135 ;
+                     arcaea:date 1759363200 ;
+                     arcaea:difficulties arcaea.rostpagegene:PRS,
+                                         arcaea.rostpagegene:PST,
+                                         arcaea.rostpagegene:FTR;
+                     arcaea:id "rostpagegene"@en-us;
+                     arcaea:idx 486 ;
+                     arcaea:purchase "extend_3"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "みゅっけ"@ja,
+                                         "뮷케"@ko,
+                                         "뮤케"@ko,
+                                         "ろすとぺーじじーん"@ja,
+                                         "로스트 페이지 진"@ko;
+                     arcaea:set "extend_3"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "ROST PAGE GENE"@en;
+                     arcaea:version "6.9"@en-us;
+                     arcaea:world_unlock true.
+arcaea.rostpagegene:FTR arcaea:chartDesigner arcaea:NEON:ROAD:OKAY;
+                        arcaea:jacketDesigner "sashimi"@en-us;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 2 .
+arcaea.rostpagegene:PRS arcaea:chartDesigner arcaea:NEON:ROAD:OKAY;
+                        arcaea:jacketDesigner "sashimi"@en-us;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 1 .
+arcaea.rostpagegene:PST arcaea:chartDesigner arcaea:NEON:ROAD:OKAY;
+                        arcaea:jacketDesigner "sashimi"@en-us;
+                        arcaea:rating 5 ;
+                        arcaea:ratingClass 0 .

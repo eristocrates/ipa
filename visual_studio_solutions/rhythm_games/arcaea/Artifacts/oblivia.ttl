@@ -1,0 +1,53 @@
+@prefix arcaea.oblivia: <https://arcaea.lowiro.com/#oblivia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.oblivia:.
+arcaea.oblivia: arcaea:artist arcaea:Saiph;
+                arcaea:audioPreview 100000 ;
+                arcaea:audioPreviewEnd 132000 ;
+                arcaea:bg arcaea:mirai_light;
+                arcaea:bg_inverse arcaea:mirai_conflict;
+                arcaea:bpm "180"@en-us;
+                arcaea:bpm_base 180 ;
+                arcaea:date 1585094400 ;
+                arcaea:difficulties arcaea.oblivia:BYD,
+                                    arcaea.oblivia:FTR,
+                                    arcaea.oblivia:PRS,
+                                    arcaea.oblivia:PST;
+                arcaea:id "oblivia"@en-us;
+                arcaea:idx 152 ;
+                arcaea:remote_dl false;
+                arcaea:search_title "さいふ"@ja,
+                                    "사이프"@ko,
+                                    "おぶりびあ"@ja,
+                                    "おぶりゔぃあ"@ja,
+                                    "오블리비아"@ko;
+                arcaea:set "base"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "Oblivia"@en;
+                arcaea:version "2.6"@en-us;
+                arcaea:world_unlock false.
+arcaea.oblivia:BYD arcaea:chartDesigner arcaea:Nitro%20%E3%80%8CThe%20Forgotten%E3%80%8D;
+                   arcaea:date 1706140802 ;
+                   arcaea:jacketDesigner "クルエルGZ"@en-us;
+                   arcaea:jacketOverride true;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 3 ;
+                   arcaea:ratingPlus true;
+                   arcaea:version "5.3"@en-us.
+arcaea.oblivia:FTR arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "クルエルGZ"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 .
+arcaea.oblivia:PRS arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "クルエルGZ"@en-us;
+                   arcaea:rating 5 ;
+                   arcaea:ratingClass 1 .
+arcaea.oblivia:PST arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "クルエルGZ"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

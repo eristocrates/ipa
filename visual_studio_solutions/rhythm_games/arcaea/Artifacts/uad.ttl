@@ -1,0 +1,49 @@
+@prefix arcaea.uad: <https://arcaea.lowiro.com/#uad#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.uad:.
+arcaea.uad: arcaea:artist arcaea:HAYAKO;
+            arcaea:audioPreview 0 ;
+            arcaea:audioPreviewEnd 0 ;
+            arcaea:bg arcaea:djmax_light;
+            arcaea:bg_inverse arcaea:djmax_conflict;
+            arcaea:bpm "129"@en-us;
+            arcaea:bpm_base 129 ;
+            arcaea:date 1747872004 ;
+            arcaea:difficulties arcaea.uad:FTR,
+                                arcaea.uad:PRS,
+                                arcaea.uad:PST,
+                                arcaea.uad:ETR;
+            arcaea:id "uad"@en-us;
+            arcaea:idx 460 ;
+            arcaea:purchase "djmax"@en-us;
+            arcaea:remote_dl true;
+            arcaea:search_title "はやこ"@ja,
+                                "하야코"@ko,
+                                "ゆーえーでぃー"@ja,
+                                "유에이디"@ko;
+            arcaea:set "djmax"@en-us;
+            arcaea:side arcaea:light_side;
+            arcaea:source_copyright "© NEOWIZ"@en-us;
+            arcaea:title_localized "U.A.D"@en,
+                                   "DJMAX"@en;
+            arcaea:version "6.5"@en-us;
+            arcaea:world_unlock false.
+arcaea.uad:ETR arcaea:chartDesigner arcaea:Exschwas%E2%87%85on;
+               arcaea:rating 9 ;
+               arcaea:ratingClass 4 ;
+               arcaea:ratingPlus true.
+arcaea.uad:FTR arcaea:chartDesigner arcaea:Exschwas%E2%87%85on;
+               arcaea:rating 8 ;
+               arcaea:ratingClass 2 ;
+               arcaea:ratingPlus true.
+arcaea.uad:PRS arcaea:chartDesigner arcaea:Exschwas%E2%87%85on;
+               arcaea:rating 6 ;
+               arcaea:ratingClass 1 .
+arcaea.uad:PST arcaea:chartDesigner arcaea:Exschwas%E2%87%85on;
+               arcaea:rating 3 ;
+               arcaea:ratingClass 0 .

@@ -1,0 +1,41 @@
+﻿namespace Fibo.BP.SecuritiesIssuance.EquitiesIPOIssuance.Namespace
+module EquitiesIPOIssuance =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/EquitiesIPOIssuance/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/BP/SecuritiesIssuance/EquitiesIPOIssuance.rdf") (Some @"fibo.BP.SecuritiesIssuance.EquitiesIPOIssuance") None
+    let AgreeBasisForAllocation = {_prefixID with _localName = "AgreeBasisForAllocation"}
+    let Allocation = {_prefixID with _localName = "Allocation"}
+    let AllocationBasisDetails = {_prefixID with _localName = "AllocationBasisDetails"}
+    let AllocationDetails = {_prefixID with _localName = "AllocationDetails"}
+    let AnnounceEquityIssue = {_prefixID with _localName = "AnnounceEquityIssue"}
+    let ApplicationForShares = {_prefixID with _localName = "ApplicationForShares"}
+    let AppointAdvisors = {_prefixID with _localName = "AppointAdvisors"}
+    let ApproveForFlotation = {_prefixID with _localName = "ApproveForFlotation"}
+    let CorporateBroker = {_prefixID with _localName = "CorporateBroker"}
+    let EquityAnnouncement = {_prefixID with _localName = "EquityAnnouncement"}
+    let FilingDetails = {_prefixID with _localName = "FilingDetails"}
+    let FormalApprovalForListingAndTrading = {_prefixID with _localName = "FormalApprovalForListingAndTrading"}
+    let IPOFullProspectus = {_prefixID with _localName = "IPOFullProspectus"}
+    let IPOPreliminaryProspectus = {_prefixID with _localName = "IPOPreliminaryProspectus"}
+    let IPOProcess = {_prefixID with _localName = "IPOProcess"}
+    let IPOSettlementDetails = {_prefixID with _localName = "IPOSettlementDetails"}
+    let IndicationOfInterest = {_prefixID with _localName = "IndicationOfInterest"}
+    let InitialPublicOfferingProcessStep = {_prefixID with _localName = "InitialPublicOfferingProcessStep"}
+    let MarketingOfShareIssue = {_prefixID with _localName = "MarketingOfShareIssue"}
+    let NoticeOfAllocation = {_prefixID with _localName = "NoticeOfAllocation"}
+    let PotentialShareUnderwriter = {_prefixID with _localName = "PotentialShareUnderwriter"}
+    let PublishInitialProspectus = {_prefixID with _localName = "PublishInitialProspectus"}
+    let PurchasePrice = {_prefixID with _localName = "PurchasePrice"}
+    let PurchaseUnallocatedStock = {_prefixID with _localName = "PurchaseUnallocatedStock"}
+    let ReceiveApplications = {_prefixID with _localName = "ReceiveApplications"}
+    let RegisterWithRegulatoryAuthority = {_prefixID with _localName = "RegisterWithRegulatoryAuthority"}
+    let RegistrationStatementDocument = {_prefixID with _localName = "RegistrationStatementDocument"}
+    let ReportingAccountant = {_prefixID with _localName = "ReportingAccountant"}
+    let SetPrice = {_prefixID with _localName = "SetPrice"}
+    let SettlementOfAllocatedShares = {_prefixID with _localName = "SettlementOfAllocatedShares"}
+    let ShareRegister = {_prefixID with _localName = "ShareRegister"}
+    let Sponsor = {_prefixID with _localName = "Sponsor"}
+    let SyndicateMember = {_prefixID with _localName = "SyndicateMember"}
+    let Underwriting = {_prefixID with _localName = "Underwriting"}
+    let lead = {_prefixID with _localName = "lead"}
+    let mayBe = {_prefixID with _localName = "mayBe"}
+    let shareUnderwriter = {_prefixID with _localName = "shareUnderwriter"}
+    let syndicateMember = {_prefixID with _localName = "syndicateMember"}

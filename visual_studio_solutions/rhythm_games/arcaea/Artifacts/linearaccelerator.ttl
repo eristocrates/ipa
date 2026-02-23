@@ -1,0 +1,45 @@
+@prefix arcaea.linearaccelerator: <https://arcaea.lowiro.com/#linearaccelerator#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.linearaccelerator:.
+arcaea.linearaccelerator: arcaea:artist arcaea:THE%20SHAFT;
+                          arcaea:audioPreview 41979 ;
+                          arcaea:audioPreviewEnd 76279 ;
+                          arcaea:bg arcaea:tonesphere-solarsphere;
+                          arcaea:bg_inverse arcaea:tonesphere-darksphere;
+                          arcaea:bpm "200 - 211.9"@en-us;
+                          arcaea:bpm_base 200 ;
+                          arcaea:date 1538870403 ;
+                          arcaea:difficulties arcaea.linearaccelerator:FTR,
+                                              arcaea.linearaccelerator:PRS,
+                                              arcaea.linearaccelerator:PST;
+                          arcaea:id "linearaccelerator"@en-us;
+                          arcaea:idx 99 ;
+                          arcaea:no_stream true;
+                          arcaea:purchase "tonesphere"@en-us;
+                          arcaea:remote_dl true;
+                          arcaea:search_title "ざしゃふと"@ja,
+                                              "더 섀프트"@ko,
+                                              "더 셰프트"@ko,
+                                              "りにああくせれれーたー"@ja,
+                                              "りにあーあくせれれーたー"@ja,
+                                              "리니어 엑셀러레이터"@ko;
+                          arcaea:set "tonesphere"@en-us;
+                          arcaea:side arcaea:light_side;
+                          arcaea:title_localized "Linear Accelerator"@en,
+                                                 "Tone Sphere"@en;
+                          arcaea:version "1.8"@en-us.
+arcaea.linearaccelerator:FTR arcaea:chartDesigner arcaea:THE%20TOAST;
+                             arcaea:rating 9 ;
+                             arcaea:ratingClass 2 ;
+                             arcaea:ratingPlus true.
+arcaea.linearaccelerator:PRS arcaea:chartDesigner arcaea:THE%20TOAST;
+                             arcaea:rating 6 ;
+                             arcaea:ratingClass 1 .
+arcaea.linearaccelerator:PST arcaea:chartDesigner arcaea:THE%20TOAST;
+                             arcaea:rating 2 ;
+                             arcaea:ratingClass 0 .

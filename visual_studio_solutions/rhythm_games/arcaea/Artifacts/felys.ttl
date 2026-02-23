@@ -1,0 +1,44 @@
+@prefix arcaea.felys: <https://arcaea.lowiro.com/#felys#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.felys:.
+arcaea.felys: arcaea:artist arcaea:onoken;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:prelude_conflict;
+              arcaea:bg_inverse arcaea:prelude_light;
+              arcaea:bpm "180"@en-us;
+              arcaea:bpm_base 180 ;
+              arcaea:date 1703116801 ;
+              arcaea:difficulties arcaea.felys:PRS,
+                                  arcaea.felys:PST,
+                                  arcaea.felys:FTR;
+              arcaea:id "felys"@en-us;
+              arcaea:idx 365 ;
+              arcaea:purchase "extend_2"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "おのけん"@ja,
+                                  "오노켄"@ko,
+                                  "ふぇりすふぁいなるりみっくす"@ja,
+                                  "펠리스 파이널 리믹스"@ko;
+              arcaea:set "extend_2"@en-us;
+              arcaea:side arcaea:conflict_side;
+              arcaea:title_localized "felys final remix"@en;
+              arcaea:version "5.2"@en-us;
+              arcaea:world_unlock true.
+arcaea.felys:FTR arcaea:chartDesigner arcaea:Dec18;
+                 arcaea:jacketDesigner "Ta-k"@en-us;
+                 arcaea:rating 9 ;
+                 arcaea:ratingClass 2 .
+arcaea.felys:PRS arcaea:chartDesigner arcaea:Dec18;
+                 arcaea:jacketDesigner "Ta-k"@en-us;
+                 arcaea:rating 6 ;
+                 arcaea:ratingClass 1 .
+arcaea.felys:PST arcaea:chartDesigner arcaea:Dec18;
+                 arcaea:jacketDesigner "Ta-k"@en-us;
+                 arcaea:rating 3 ;
+                 arcaea:ratingClass 0 .

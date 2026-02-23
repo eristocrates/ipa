@@ -1,0 +1,47 @@
+@prefix arcaea.oldschoolsalvage: <https://arcaea.lowiro.com/#oldschoolsalvage#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.oldschoolsalvage:.
+arcaea.oldschoolsalvage: arcaea:artist arcaea:DJ%20SHARPNEL;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:prelude_conflict;
+                         arcaea:bg_inverse arcaea:prelude_light;
+                         arcaea:bpm "205"@en-us;
+                         arcaea:bpm_base 205 ;
+                         arcaea:date 1717027202 ;
+                         arcaea:difficulties arcaea.oldschoolsalvage:PRS,
+                                             arcaea.oldschoolsalvage:PST,
+                                             arcaea.oldschoolsalvage:FTR;
+                         arcaea:id "oldschoolsalvage"@en-us;
+                         arcaea:idx 392 ;
+                         arcaea:purchase "extend_3"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "でぃーじぇいしゃーぷねる"@ja,
+                                             "디제이 샤프넬"@ko,
+                                             "디제이 슈라프넬"@ko,
+                                             "おーるどすくーるさるべーじ"@ja,
+                                             "올드 스쿨 샐비지"@ko;
+                         arcaea:set "extend_3"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "Old School Salvage"@en;
+                         arcaea:version "5.7"@en-us;
+                         arcaea:world_unlock true.
+arcaea.oldschoolsalvage:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#antymis%20+%20Nitro>;
+                            arcaea:jacketDesigner "tvchany"@en-us;
+                            arcaea:rating 9 ;
+                            arcaea:ratingClass 2 ;
+                            arcaea:ratingPlus true.
+arcaea.oldschoolsalvage:PRS arcaea:chartDesigner arcaea:antymis;
+                            arcaea:jacketDesigner "tvchany"@en-us;
+                            arcaea:rating 7 ;
+                            arcaea:ratingClass 1 ;
+                            arcaea:ratingPlus true.
+arcaea.oldschoolsalvage:PST arcaea:chartDesigner arcaea:antymis;
+                            arcaea:jacketDesigner "tvchany"@en-us;
+                            arcaea:rating 4 ;
+                            arcaea:ratingClass 0 .

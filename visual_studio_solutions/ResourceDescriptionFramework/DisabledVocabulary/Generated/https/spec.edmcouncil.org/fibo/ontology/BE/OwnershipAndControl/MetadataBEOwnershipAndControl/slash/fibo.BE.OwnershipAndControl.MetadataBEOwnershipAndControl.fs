@@ -1,0 +1,4 @@
+﻿namespace Fibo.BE.OwnershipAndControl.MetadataBEOwnershipAndControl.Namespace
+module MetadataBEOwnershipAndControl =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/MetadataBEOwnershipAndControl/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/OwnershipAndControl/MetadataBEOwnershipAndControl.rdf") (Some @"fibo.BE.OwnershipAndControl.MetadataBEOwnershipAndControl") None
+    let OwnershipAndControlModule = {_prefixID with _localName = "OwnershipAndControlModule"}

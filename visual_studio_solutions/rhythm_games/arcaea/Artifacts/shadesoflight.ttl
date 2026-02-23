@@ -1,0 +1,53 @@
+@prefix arcaea.shadesoflight: <https://arcaea.lowiro.com/#shadesoflight#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.shadesoflight:.
+arcaea.shadesoflight: arcaea:artist <https://arcaea.lowiro.com/#ak+q>;
+                      arcaea:audioPreview 33882 ;
+                      arcaea:audioPreviewEnd 68470 ;
+                      arcaea:bg arcaea:base_light;
+                      arcaea:bg_inverse arcaea:base_conflict;
+                      arcaea:bpm "170"@en-us;
+                      arcaea:bpm_base 170 ;
+                      arcaea:date 1487980806 ;
+                      arcaea:difficulties arcaea.shadesoflight:BYD,
+                                          arcaea.shadesoflight:FTR,
+                                          arcaea.shadesoflight:PRS,
+                                          arcaea.shadesoflight:PST;
+                      arcaea:id "shadesoflight"@en-us;
+                      arcaea:idx 12 ;
+                      arcaea:remote_dl false;
+                      arcaea:search_title "えーけーぷらすきゅー"@ja,
+                                          "에이케이 플러스 큐"@ko,
+                                          "しぇーずおぶらいといんあとらんせんだんとれるむ"@ja,
+                                          "しぇいずおぶらいといんあとらんせんだんとれるむ"@ja,
+                                          "셰이드 오브 라이트 인 어 트랜센던트 렐름"@ko,
+                                          "셰이즈 오브 라이트 인 어 트랜센던트 렐름"@ko;
+                      arcaea:set "base"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "Shades of Light in a Transcendent Realm"@en;
+                      arcaea:version "1.0"@en-us;
+                      arcaea:world_unlock false.
+arcaea.shadesoflight:BYD arcaea:chartDesigner arcaea:N%E2%86%91TRO;
+                         arcaea:date 1678320000 ;
+                         arcaea:jacketDesigner "RiceGnat"@en-us;
+                         arcaea:jacketOverride true;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 3 ;
+                         arcaea:version "4.3"@en-us.
+arcaea.shadesoflight:FTR arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "RiceGnat"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 2 .
+arcaea.shadesoflight:PRS arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "RiceGnat"@en-us;
+                         arcaea:rating 6 ;
+                         arcaea:ratingClass 1 .
+arcaea.shadesoflight:PST arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "RiceGnat"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

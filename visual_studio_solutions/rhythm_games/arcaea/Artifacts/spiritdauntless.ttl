@@ -1,0 +1,48 @@
+@prefix arcaea.spiritdauntless: <https://arcaea.lowiro.com/#spiritdauntless#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.spiritdauntless:.
+arcaea.spiritdauntless: arcaea:artist <https://arcaea.lowiro.com/#KO3%20&%20Relect>;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:zettai;
+                        arcaea:bg_inverse arcaea:zettai_light;
+                        arcaea:bpm "180"@en-us;
+                        arcaea:bpm_base 180 ;
+                        arcaea:category arcaea:original;
+                        arcaea:date 1729728003 ;
+                        arcaea:difficulties arcaea.spiritdauntless:PRS,
+                                            arcaea.spiritdauntless:PST,
+                                            arcaea.spiritdauntless:FTR;
+                        arcaea:id "spiritdauntless"@en-us;
+                        arcaea:idx 421 ;
+                        arcaea:purchase "spiritdauntless"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "こみ"@ja,
+                                            "りれくと"@ja,
+                                            "코미"@ko,
+                                            "릴렉트"@ko,
+                                            "すぴりっとおぶざどーんとれす"@ja,
+                                            "스피릿 오브 더 던틀리스"@ko;
+                        arcaea:set "single"@en-us;
+                        arcaea:side arcaea:conflict_side;
+                        arcaea:title_localized "Spirit of the Dauntless"@en;
+                        arcaea:version "5.10"@en-us;
+                        arcaea:world_unlock false.
+arcaea.spiritdauntless:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                           arcaea:jacketDesigner "てるオ実"@en-us;
+                           arcaea:rating 10 ;
+                           arcaea:ratingClass 2 .
+arcaea.spiritdauntless:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                           arcaea:jacketDesigner "てるオ実"@en-us;
+                           arcaea:rating 7 ;
+                           arcaea:ratingClass 1 ;
+                           arcaea:ratingPlus true.
+arcaea.spiritdauntless:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                           arcaea:jacketDesigner "てるオ実"@en-us;
+                           arcaea:rating 4 ;
+                           arcaea:ratingClass 0 .

@@ -1,0 +1,46 @@
+@prefix arcaea.protoflicker: <https://arcaea.lowiro.com/#protoflicker#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.protoflicker:.
+arcaea.protoflicker: arcaea:artist arcaea:Silentroom;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:lanota-conflict;
+                     arcaea:bg_inverse arcaea:lanota-light;
+                     arcaea:bpm "140"@en-us;
+                     arcaea:bpm_base 140 ;
+                     arcaea:date 1651104001 ;
+                     arcaea:difficulties arcaea.protoflicker:FTR,
+                                         arcaea.protoflicker:PRS,
+                                         arcaea.protoflicker:PST;
+                     arcaea:id "protoflicker"@en-us;
+                     arcaea:idx 265 ;
+                     arcaea:no_stream true;
+                     arcaea:purchase "lanota_append_1"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "さいれんとるーむ"@ja,
+                                         "사일런트 룸"@ko,
+                                         "ぷろとふりっかー"@ja,
+                                         "프로토플리커"@ko;
+                     arcaea:set "lanota_append_1"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Protoflicker"@en,
+                                            "Lanota"@en;
+                     arcaea:version "3.12"@en-us;
+                     arcaea:world_unlock false.
+arcaea.protoflicker:FTR arcaea:chartDesigner arcaea:antymis%20%3Cprototype%3E;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.protoflicker:PRS arcaea:chartDesigner arcaea:antymis%20%3Cprototype%3E;
+                        arcaea:jacketOverride true;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.protoflicker:PST arcaea:chartDesigner arcaea:antymis%20%3Cprototype%3E;
+                        arcaea:jacketOverride true;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

@@ -1,0 +1,44 @@
+@prefix arcaea.syriana: <https://arcaea.lowiro.com/#syriana#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.syriana:.
+arcaea.syriana: arcaea:artist arcaea:BEXTER;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:djmax_conflict;
+                arcaea:bg_inverse arcaea:djmax_light;
+                arcaea:bpm "135"@en-us;
+                arcaea:bpm_base 135 ;
+                arcaea:date 1750896004 ;
+                arcaea:difficulties arcaea.syriana:FTR,
+                                    arcaea.syriana:PRS,
+                                    arcaea.syriana:PST;
+                arcaea:id "syriana"@en-us;
+                arcaea:idx 468 ;
+                arcaea:purchase "djmax_append_1"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "べくすたー"@ja,
+                                    "벡스터"@ko,
+                                    "しりあな"@ja,
+                                    "시리아나"@ko;
+                arcaea:set "djmax_append_1"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:source_copyright "© Neowiz. All Rights Reserved."@en-us;
+                arcaea:title_localized "Syriana"@en,
+                                       "DJMAX"@en;
+                arcaea:version "6.6"@en-us;
+                arcaea:world_unlock false.
+arcaea.syriana:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#RAYCAST%20[MX]>;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.syriana:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#RAYCAST%20[HD]>;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.syriana:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#RAYCAST%20[NM]>;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

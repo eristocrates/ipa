@@ -1,0 +1,47 @@
+@prefix arcaea.lastendconductor: <https://arcaea.lowiro.com/#lastendconductor#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lastendconductor:.
+arcaea.lastendconductor: arcaea:artist arcaea:zts;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:zettai;
+                         arcaea:bg_inverse arcaea:zettai_light;
+                         arcaea:bpm "139"@en-us;
+                         arcaea:bpm_base 139 ;
+                         arcaea:category arcaea:poprec;
+                         arcaea:date 1632873602 ;
+                         arcaea:difficulties arcaea.lastendconductor:FTR,
+                                             arcaea.lastendconductor:PRS,
+                                             arcaea.lastendconductor:PST,
+                                             arcaea.lastendconductor:BYD;
+                         arcaea:id "lastendconductor"@en-us;
+                         arcaea:idx 238 ;
+                         arcaea:purchase "lastendconductor"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "ぜっとてぃーえす"@ja,
+                                             "ぜっつ"@ja,
+                                             "지티에스"@ko,
+                                             "らすとえんどこんだくたー"@ja,
+                                             "라스트엔드컨덕터"@ko;
+                         arcaea:set "single"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "lastendconductor"@en;
+                         arcaea:version "3.8"@en-us;
+                         arcaea:world_unlock false.
+arcaea.lastendconductor:BYD arcaea:chartDesigner arcaea:Toaster;
+                            arcaea:rating 10 ;
+                            arcaea:ratingClass 3 .
+arcaea.lastendconductor:FTR arcaea:chartDesigner arcaea:Nitro;
+                            arcaea:rating 9 ;
+                            arcaea:ratingClass 2 .
+arcaea.lastendconductor:PRS arcaea:chartDesigner arcaea:Nitro;
+                            arcaea:rating 7 ;
+                            arcaea:ratingClass 1 .
+arcaea.lastendconductor:PST arcaea:chartDesigner arcaea:Nitro;
+                            arcaea:rating 3 ;
+                            arcaea:ratingClass 0 .

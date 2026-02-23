@@ -1,0 +1,55 @@
+@prefix arcaea.callimakarma: <https://arcaea.lowiro.com/#callimakarma#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.callimakarma:.
+arcaea.callimakarma: arcaea:artist <https://arcaea.lowiro.com/#t+pazolite%20vs%20Feryquitous>;
+                     arcaea:audioPreview 20210 ;
+                     arcaea:audioPreviewEnd 39157 ;
+                     arcaea:bg arcaea:epilogue;
+                     arcaea:bpm "95"@en-us;
+                     arcaea:bpm_base 190 ;
+                     arcaea:date 1657756803 ;
+                     arcaea:difficulties arcaea.callimakarma:FTR,
+                                         arcaea.callimakarma:PRS,
+                                         arcaea.callimakarma:PST;
+                     arcaea:id "callimakarma"@en-us;
+                     arcaea:idx 284 ;
+                     arcaea:purchase "finale"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "とぱぞらいと"@ja,
+                                         "ふぇりきたす"@ja,
+                                         "토파졸라이트"@ko,
+                                         "페리퀴터스"@ko,
+                                         "페리퀴타스"@ko,
+                                         "페리퀴토스"@ko,
+                                         "かりまかるま"@ja,
+                                         "かりーまかるま"@ja,
+                                         "칼리마 카르마"@ko;
+                     arcaea:set "epilogue"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Callima Karma"@en;
+                     arcaea:version "4.0"@en-us;
+                     arcaea:world_unlock false.
+arcaea.callimakarma:FTR arcaea:chartDesigner arcaea:Forlorn%20Dream;
+                        arcaea:hidden_until "song"@en-us;
+                        arcaea:hidden_until_unlocked true;
+                        arcaea:jacketDesigner "がわこ"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 ;
+                        arcaea:ratingPlus true.
+arcaea.callimakarma:PRS arcaea:chartDesigner arcaea:Forlorn%20Dream;
+                        arcaea:hidden_until "song"@en-us;
+                        arcaea:hidden_until_unlocked true;
+                        arcaea:jacketDesigner "がわこ"@en-us;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.callimakarma:PST arcaea:chartDesigner arcaea:Forlorn%20Dream;
+                        arcaea:hidden_until "song"@en-us;
+                        arcaea:hidden_until_unlocked true;
+                        arcaea:jacketDesigner "がわこ"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

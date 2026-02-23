@@ -1,0 +1,46 @@
+@prefix arcaea.alicealamode: <https://arcaea.lowiro.com/#alicealamode#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.alicealamode:.
+arcaea.alicealamode: arcaea:artist arcaea:Masanori%20Akita;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:alice_light;
+                     arcaea:bg_inverse arcaea:alice_conflict;
+                     arcaea:bpm "80-134"@en-us;
+                     arcaea:bpm_base 134 ;
+                     arcaea:date 1606953600 ;
+                     arcaea:difficulties arcaea.alicealamode:PRS,
+                                         arcaea.alicealamode:PST,
+                                         arcaea.alicealamode:FTR;
+                     arcaea:id "alicealamode"@en-us;
+                     arcaea:idx 183 ;
+                     arcaea:purchase "alice"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "まさのりあきた"@ja,
+                                         "마사노리 아키타"@ko,
+                                         "ありすあらもーど"@ja,
+                                         "앨리스 아 라 모드"@ko,
+                                         "alice a la mode"@en;
+                     arcaea:set "alice"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "Alice a la mode"@ko,
+                                            "Alice à la mode"@en;
+                     arcaea:version "3.3"@en-us;
+                     arcaea:world_unlock false.
+arcaea.alicealamode:FTR arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.alicealamode:PRS arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.alicealamode:PST arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "シエラ"@en-us;
+                        arcaea:rating 2 ;
+                        arcaea:ratingClass 0 .

@@ -1,0 +1,49 @@
+@prefix arcaea.lunarossa: <https://arcaea.lowiro.com/#lunarossa#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lunarossa:.
+arcaea.lunarossa: arcaea:artist arcaea:r0y;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:yugamu;
+                  arcaea:bg_inverse arcaea:rei;
+                  arcaea:bpm "174"@en-us;
+                  arcaea:bpm_base 174 ;
+                  arcaea:category arcaea:musicgames;
+                  arcaea:date 1706140808 ;
+                  arcaea:difficulties arcaea.lunarossa:PRS,
+                                      arcaea.lunarossa:PST,
+                                      arcaea.lunarossa:FTR;
+                  arcaea:id "lunarossa"@en-us;
+                  arcaea:idx 370 ;
+                  arcaea:purchase "lunarossa"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ろい"@ja,
+                                      "로이"@ko,
+                                      "るなろっさ"@ja,
+                                      "루나 로사"@ko,
+                                      "루나 롯사"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "©Drossel/Studio"@en-us;
+                  arcaea:title_localized "Luna Rossa"@en,
+                                         "Shinobi Slash"@en;
+                  arcaea:version "5.3"@en-us;
+                  arcaea:world_unlock false.
+arcaea.lunarossa:FTR arcaea:chartDesigner arcaea:Luxance;
+                     arcaea:jacketDesigner "未早"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.lunarossa:PRS arcaea:chartDesigner arcaea:Luxance;
+                     arcaea:jacketDesigner "未早"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.lunarossa:PST arcaea:chartDesigner arcaea:Luxance;
+                     arcaea:jacketDesigner "未早"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

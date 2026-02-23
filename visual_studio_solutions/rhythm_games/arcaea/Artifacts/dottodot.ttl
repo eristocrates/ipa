@@ -1,0 +1,47 @@
+@prefix arcaea.dottodot: <https://arcaea.lowiro.com/#dottodot#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dottodot:.
+arcaea.dottodot: arcaea:artist arcaea:Mameyudoufu;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:mirai_light;
+                 arcaea:bg_inverse arcaea:mirai_conflict;
+                 arcaea:bpm "174"@en-us;
+                 arcaea:bpm_base 174 ;
+                 arcaea:category arcaea:variety;
+                 arcaea:date 1556755202 ;
+                 arcaea:difficulties arcaea.dottodot:PRS,
+                                     arcaea.dottodot:PST,
+                                     arcaea.dottodot:FTR;
+                 arcaea:id "dottodot"@en-us;
+                 arcaea:idx 122 ;
+                 arcaea:purchase "dottodot"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "まめゆどうふ"@ja,
+                                     "しゅりー"@ja,
+                                     "마메유도우후"@ko,
+                                     "どっととぅーどっと"@ja,
+                                     "닷 투 닷"@ko,
+                                     "도트 투 도트"@ko;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "Dot to Dot feat. shully"@en;
+                 arcaea:version "2.0"@en-us;
+                 arcaea:world_unlock false.
+arcaea.dottodot:FTR arcaea:chartDesigner arcaea:%E2%80%A2Nitro%E2%80%A2;
+                    arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 2 .
+arcaea.dottodot:PRS arcaea:chartDesigner arcaea:%E2%80%A2Nitro%E2%80%A2;
+                    arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.dottodot:PST arcaea:chartDesigner arcaea:%E2%80%A2Nitro%E2%80%A2;
+                    arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

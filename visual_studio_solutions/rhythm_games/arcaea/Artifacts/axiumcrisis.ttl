@@ -1,0 +1,45 @@
+@prefix arcaea.axiumcrisis: <https://arcaea.lowiro.com/#axiumcrisis#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.axiumcrisis:.
+arcaea.axiumcrisis: arcaea:artist <https://arcaea.lowiro.com/#ak+q>;
+                    arcaea:audioPreview 51291 ;
+                    arcaea:audioPreviewEnd 78820 ;
+                    arcaea:bg arcaea:axiumcrisis;
+                    arcaea:bpm "170"@en-us;
+                    arcaea:bpm_base 170 ;
+                    arcaea:date 1509667207 ;
+                    arcaea:difficulties arcaea.axiumcrisis:PRS,
+                                        arcaea.axiumcrisis:PST,
+                                        arcaea.axiumcrisis:FTR;
+                    arcaea:id "axiumcrisis"@en-us;
+                    arcaea:idx 55 ;
+                    arcaea:purchase "yugamu"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "えーけーぷらすきゅー"@ja,
+                                        "에이케이 플러스 큐"@ko,
+                                        "あくしうむくらいしす"@ja,
+                                        "억시움 크라이시스"@ko,
+                                        "악시움 크라이시스"@ko,
+                                        "액시움 크라이시스"@ko;
+                    arcaea:set "yugamu"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "Axium Crisis"@en;
+                    arcaea:version "1.5"@en-us;
+                    arcaea:world_unlock false.
+arcaea.axiumcrisis:FTR arcaea:chartDesigner arcaea:The%20Monolith;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 2 .
+arcaea.axiumcrisis:PRS arcaea:chartDesigner arcaea:The%20Monolith;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 1 .
+arcaea.axiumcrisis:PST arcaea:chartDesigner arcaea:The%20Monolith;
+                       arcaea:jacketDesigner "シエラ"@en-us;
+                       arcaea:rating 5 ;
+                       arcaea:ratingClass 0 .

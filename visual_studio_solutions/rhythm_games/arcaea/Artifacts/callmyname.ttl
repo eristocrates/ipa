@@ -1,0 +1,45 @@
+@prefix arcaea.callmyname: <https://arcaea.lowiro.com/#callmyname#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.callmyname:.
+arcaea.callmyname: arcaea:artist arcaea:Mameyudoufu;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:shiawase;
+                   arcaea:bpm "175"@en-us;
+                   arcaea:bpm_base 175 ;
+                   arcaea:category arcaea:variety;
+                   arcaea:date 1529539201 ;
+                   arcaea:difficulties arcaea.callmyname:PRS,
+                                       arcaea.callmyname:PST,
+                                       arcaea.callmyname:FTR;
+                   arcaea:id "callmyname"@en-us;
+                   arcaea:idx 80 ;
+                   arcaea:purchase "callmyname"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "まめゆどうふ"@ja,
+                                       "ゆかっこ"@ja,
+                                       "마메유도우후"@ko,
+                                       "こーるまいねーむ"@ja,
+                                       "콜 마이 네임"@ko;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "Call My Name feat. Yukacco"@en;
+                   arcaea:version "1.6"@en-us.
+arcaea.callmyname:FTR arcaea:chartDesigner arcaea:Kuro%20my%20Nitro;
+                      arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.callmyname:PRS arcaea:chartDesigner arcaea:Kurorak;
+                      arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.callmyname:PST arcaea:chartDesigner arcaea:Kurorak;
+                      arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

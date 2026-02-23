@@ -1,0 +1,54 @@
+@prefix arcaea.eveninginscarlet: <https://arcaea.lowiro.com/#eveninginscarlet#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.eveninginscarlet:.
+arcaea:bg_daynight arcaea:day arcaea:omatsuri_light;
+                   arcaea:night arcaea:omatsuri_conflict.
+arcaea.eveninginscarlet: arcaea:artist arcaea:Freezer%20feat.%E5%A6%83%E8%8B%BA;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:omatsuri_conflict;
+                         arcaea:bg_daynight arcaea.eveninginscarlet:bg_daynight;
+                         arcaea:bg_inverse arcaea:omatsuri_light;
+                         arcaea:bpm "170"@en-us;
+                         arcaea:bpm_base 170 ;
+                         arcaea:category arcaea:partner;
+                         arcaea:date 1629849600 ;
+                         arcaea:difficulties arcaea.eveninginscarlet:FTR,
+                                             arcaea.eveninginscarlet:PRS,
+                                             arcaea.eveninginscarlet:PST;
+                         arcaea:id "eveninginscarlet"@en-us;
+                         arcaea:idx 233 ;
+                         arcaea:purchase "eveninginscarlet"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "ふりーざー"@ja,
+                                             "きいちご"@ja,
+                                             "프리저"@ko,
+                                             "키이치고"@ko,
+                                             "kiichigo"@en,
+                                             "ひまといのよい"@ja,
+                                             "이브닝 인 스칼렛"@ko,
+                                             "히마토이노 요이"@ko,
+                                             "주홍을 두른 밤"@ko;
+                         arcaea:set "single"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "緋纏いの宵"@ja,
+                                                "Evening in Scarlet"@en;
+                         arcaea:version "3.8"@en-us;
+                         arcaea:world_unlock false.
+arcaea.eveninginscarlet:FTR arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                            arcaea:jacketDesigner "シエラ + yusi."@en-us;
+                            arcaea:rating 9 ;
+                            arcaea:ratingClass 2 .
+arcaea.eveninginscarlet:PRS arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                            arcaea:jacketDesigner "シエラ + yusi."@en-us;
+                            arcaea:rating 7 ;
+                            arcaea:ratingClass 1 .
+arcaea.eveninginscarlet:PST arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                            arcaea:jacketDesigner "シエラ + yusi."@en-us;
+                            arcaea:rating 4 ;
+                            arcaea:ratingClass 0 .

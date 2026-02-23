@@ -1,0 +1,44 @@
+@prefix arcaea.viyella: <https://arcaea.lowiro.com/#viyella#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.viyella:.
+arcaea.viyella: arcaea:artist arcaea:Laur;
+                arcaea:audioPreview 71551 ;
+                arcaea:audioPreviewEnd 103551 ;
+                arcaea:bg arcaea:base_conflict;
+                arcaea:bg_inverse arcaea:base_light;
+                arcaea:bpm "75 - 180"@en-us;
+                arcaea:bpm_base 180 ;
+                arcaea:date 1487980811 ;
+                arcaea:difficulties arcaea.viyella:PRS,
+                                    arcaea.viyella:PST,
+                                    arcaea.viyella:FTR;
+                arcaea:id "viyella"@en-us;
+                arcaea:idx 3 ;
+                arcaea:purchase "core"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "らうる"@ja,
+                                    "라우르"@ko,
+                                    "くらいおぶゔぃえら"@ja,
+                                    "크라이 오브 비엘라"@ko;
+                arcaea:set "core"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "cry of viyella"@en;
+                arcaea:version "1.0"@en-us.
+arcaea.viyella:FTR arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "Khronetic"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.viyella:PRS arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "Khronetic"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.viyella:PST arcaea:chartDesigner arcaea:Toaster;
+                   arcaea:jacketDesigner "Khronetic"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

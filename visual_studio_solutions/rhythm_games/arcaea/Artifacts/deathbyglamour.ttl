@@ -1,0 +1,44 @@
+@prefix arcaea.deathbyglamour: <https://arcaea.lowiro.com/#deathbyglamour#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.deathbyglamour:.
+arcaea.deathbyglamour: arcaea:artist arcaea:Toby%20Fox;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:undertale_light;
+                       arcaea:bg_inverse arcaea:undertale_conflict;
+                       arcaea:bpm "148"@en-us;
+                       arcaea:bpm_base 148 ;
+                       arcaea:date 1741478401 ;
+                       arcaea:difficulties arcaea.deathbyglamour:FTR,
+                                           arcaea.deathbyglamour:PRS,
+                                           arcaea.deathbyglamour:PST,
+                                           arcaea.deathbyglamour:ETR;
+                       arcaea:id "deathbyglamour"@en-us;
+                       arcaea:idx 445 ;
+                       arcaea:purchase "undertale"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:set "undertale"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "華麗なる死闘"@ja,
+                                              "Death By Glamour"@en,
+                                              "UNDERTALE®"@en;
+                       arcaea:version "6.3"@en-us;
+                       arcaea:world_unlock false.
+arcaea.deathbyglamour:ETR arcaea:chartDesigner arcaea:RYCT%20THE%20MUSICAL;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 4 .
+arcaea.deathbyglamour:FTR arcaea:chartDesigner arcaea:RYCT%20NEWS;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.deathbyglamour:PRS arcaea:chartDesigner arcaea:RYCT%20COOKING;
+                          arcaea:rating 5 ;
+                          arcaea:ratingClass 1 .
+arcaea.deathbyglamour:PST arcaea:chartDesigner arcaea:RYCT%20QUIZ%20SHOW;
+                          arcaea:rating 2 ;
+                          arcaea:ratingClass 0 .

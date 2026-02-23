@@ -1,0 +1,46 @@
+@prefix arcaea.trapcrow: <https://arcaea.lowiro.com/#trapcrow#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.trapcrow:.
+arcaea.trapcrow: arcaea:artist arcaea:Puru;
+                 arcaea:audioPreview 61125 ;
+                 arcaea:audioPreviewEnd 85125 ;
+                 arcaea:bg arcaea:prelude_conflict;
+                 arcaea:bg_inverse arcaea:prelude_light;
+                 arcaea:bpm "80"@en-us;
+                 arcaea:bpm_base 160 ;
+                 arcaea:date 1657152002 ;
+                 arcaea:difficulties arcaea.trapcrow:FTR,
+                                     arcaea.trapcrow:PRS,
+                                     arcaea.trapcrow:PST;
+                 arcaea:id "trapcrow"@en-us;
+                 arcaea:idx 273 ;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ぷる"@ja,
+                                     "푸루"@ko,
+                                     "とらっぷくろー"@ja,
+                                     "とらっぷくろう"@ja,
+                                     "트랩 크로우"@ko;
+                 arcaea:set "base"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "Trap Crow"@en;
+                 arcaea:version "4.0"@en-us;
+                 arcaea:world_unlock true.
+arcaea.trapcrow:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#CERiNG%20+%20Nitro>;
+                    arcaea:jacketDesigner "Khronetic"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.trapcrow:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#CERiNG%20+%20Nitro>;
+                    arcaea:jacketDesigner "Khronetic"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 ;
+                    arcaea:ratingPlus true.
+arcaea.trapcrow:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#CERiNG%20+%20Nitro>;
+                    arcaea:jacketDesigner "Khronetic"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

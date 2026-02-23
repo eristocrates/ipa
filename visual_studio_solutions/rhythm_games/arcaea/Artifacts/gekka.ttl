@@ -1,0 +1,45 @@
+@prefix arcaea.gekka: <https://arcaea.lowiro.com/#gekka#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.gekka:.
+arcaea.gekka: arcaea:artist arcaea:Nhato;
+              arcaea:audioPreview 60000 ;
+              arcaea:audioPreviewEnd 70000 ;
+              arcaea:bg arcaea:nijuusei-light-b;
+              arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+              arcaea:bpm "132"@en-us;
+              arcaea:bpm_base 132 ;
+              arcaea:date 1590537609 ;
+              arcaea:difficulties arcaea.gekka:PRS,
+                                  arcaea.gekka:PST,
+                                  arcaea.gekka:FTR;
+              arcaea:id "gekka"@en-us;
+              arcaea:idx 165 ;
+              arcaea:purchase "extend"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "なはと"@ja,
+                                  "나토"@ko,
+                                  "げっか"@ja,
+                                  "겍카"@ko,
+                                  "겟카"@ko;
+              arcaea:set "extend"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:title_localized "Gekka (Short Version)"@en;
+              arcaea:version "3.0"@en-us;
+              arcaea:world_unlock true.
+arcaea.gekka:FTR arcaea:chartDesigner arcaea:Nitro;
+                 arcaea:jacketDesigner "SoU"@en-us;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 2 .
+arcaea.gekka:PRS arcaea:chartDesigner arcaea:Nitro;
+                 arcaea:jacketDesigner "SoU"@en-us;
+                 arcaea:rating 6 ;
+                 arcaea:ratingClass 1 .
+arcaea.gekka:PST arcaea:chartDesigner arcaea:Nitro;
+                 arcaea:jacketDesigner "SoU"@en-us;
+                 arcaea:rating 4 ;
+                 arcaea:ratingClass 0 .

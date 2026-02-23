@@ -1,0 +1,51 @@
+@prefix arcaea.theultimacy: <https://arcaea.lowiro.com/#theultimacy#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.theultimacy:.
+arcaea.theultimacy: arcaea:artist arcaea:aran%20vs%20Massive%20New%20Krew;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:tanoc_conflict;
+                    arcaea:bg_inverse arcaea:tanoc_light;
+                    arcaea:bpm "200"@en-us;
+                    arcaea:bpm_base 200 ;
+                    arcaea:category arcaea:original;
+                    arcaea:date 1625011200 ;
+                    arcaea:difficulties arcaea.theultimacy:FTR,
+                                        arcaea.theultimacy:PRS,
+                                        arcaea.theultimacy:PST;
+                    arcaea:id "theultimacy"@en-us;
+                    arcaea:idx 219 ;
+                    arcaea:purchase "theultimacy"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "あらん"@ja,
+                                        "まっしぶにゅーくるー"@ja,
+                                        "아란"@ko,
+                                        "매시브 뉴 크루"@ko,
+                                        "매시브 뉴 크류"@ko,
+                                        "じうるてぃましー"@ja,
+                                        "じあるてぃましー"@ja,
+                                        "더 울티머시"@ko,
+                                        "더 울티마시"@ko;
+                    arcaea:set "single"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "THE ULTIMACY"@en;
+                    arcaea:version "3.6"@en-us;
+                    arcaea:world_unlock false.
+arcaea.theultimacy:FTR arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%20vs%20Toaster;
+                       arcaea:jacketDesigner "fixro2n"@en-us;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.theultimacy:PRS arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%20vs%20Toaster;
+                       arcaea:jacketDesigner "fixro2n"@en-us;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 .
+arcaea.theultimacy:PST arcaea:chartDesigner arcaea:%E6%9D%B1%E6%98%9F%20vs%20Toaster;
+                       arcaea:jacketDesigner "fixro2n"@en-us;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

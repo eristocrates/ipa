@@ -1,0 +1,44 @@
+@prefix arcaea.bbkkbkk: <https://arcaea.lowiro.com/#bbkkbkk#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.bbkkbkk:.
+arcaea.bbkkbkk: arcaea:artist arcaea:nora2r;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:single2_conflict;
+                arcaea:bg_inverse arcaea:single2_light;
+                arcaea:bpm "170"@en-us;
+                arcaea:bpm_base 170 ;
+                arcaea:category arcaea:variety;
+                arcaea:date 1695772803 ;
+                arcaea:difficulties arcaea.bbkkbkk:FTR,
+                                    arcaea.bbkkbkk:PRS,
+                                    arcaea.bbkkbkk:PST;
+                arcaea:id "bbkkbkk"@en-us;
+                arcaea:idx 347 ;
+                arcaea:purchase "bbkkbkk"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "のらつーあーる"@ja,
+                                    "노라 투 알"@ko,
+                                    "びーびーけーけーびーけーけー"@ja,
+                                    "비비케이케이비비케이케이"@ko,
+                                    "bbkkbkk"@en;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "B.B.K.K.B.K.K."@en;
+                arcaea:version "5.0"@en-us;
+                arcaea:world_unlock false.
+arcaea.bbkkbkk:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#E.E.X.X.E.X.X.>;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.bbkkbkk:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#E.E.X.X.E.X.X.>;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.bbkkbkk:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#E.E.X.X.E.X.X.>;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

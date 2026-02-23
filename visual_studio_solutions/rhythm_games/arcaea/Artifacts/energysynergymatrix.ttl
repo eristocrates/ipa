@@ -1,0 +1,55 @@
+@prefix arcaea.energysynergymatrix: <https://arcaea.lowiro.com/#energysynergymatrix#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.energysynergymatrix:.
+arcaea.energysynergymatrix: arcaea:artist arcaea:Tanchiky;
+                            arcaea:audioPreview 0 ;
+                            arcaea:audioPreviewEnd 0 ;
+                            arcaea:bg arcaea:nijuusei-conflict-b;
+                            arcaea:bg_inverse arcaea:nijuusei-light-b;
+                            arcaea:bpm "160"@en-us;
+                            arcaea:bpm_base 160 ;
+                            arcaea:date 1631059200 ;
+                            arcaea:difficulties arcaea.energysynergymatrix:FTR,
+                                                arcaea.energysynergymatrix:PRS,
+                                                arcaea.energysynergymatrix:PST,
+                                                arcaea.energysynergymatrix:BYD;
+                            arcaea:id "energysynergymatrix"@en-us;
+                            arcaea:idx 235 ;
+                            arcaea:purchase "extend"@en-us;
+                            arcaea:remote_dl true;
+                            arcaea:search_title "たんちきー"@ja,
+                                                "타친키"@ko,
+                                                "えなじーしなじーまとりくす"@ja,
+                                                "えなじーしなじーまとりっくす"@ja,
+                                                "에너지 시너지 매트릭스"@ko;
+                            arcaea:set "extend"@en-us;
+                            arcaea:side arcaea:conflict_side;
+                            arcaea:title_localized "ENERGY SYNERGY MATRIX"@en;
+                            arcaea:version "3.8"@en-us;
+                            arcaea:world_unlock true.
+arcaea.energysynergymatrix:BYD arcaea:bg arcaea:nijuusei2_conflict;
+                               arcaea:bg_inverse arcaea:nijuusei2_light;
+                               arcaea:chartDesigner arcaea:%E7%99%BD%E4%BA%9C%E7%B4%80%E3%81%A8%E5%8F%A4%E7%AC%AC%E4%B8%89%E7%B4%80%E3%81%AE%E9%96%93%E3%81%AE%E5%A4%A7%E9%87%8F%E7%B5%B6%E6%BB%85;
+                               arcaea:date 1745452803 ;
+                               arcaea:hidden_until "difficulty"@en-us;
+                               arcaea:jacketDesigner "からめる"@en-us;
+                               arcaea:rating 10 ;
+                               arcaea:ratingClass 3 ;
+                               arcaea:version "6.4"@en-us.
+arcaea.energysynergymatrix:FTR arcaea:chartDesigner arcaea:POWER%20NITRO;
+                               arcaea:jacketDesigner "からめる"@en-us;
+                               arcaea:rating 9 ;
+                               arcaea:ratingClass 2 .
+arcaea.energysynergymatrix:PRS arcaea:chartDesigner arcaea:POWER%20NITRO;
+                               arcaea:jacketDesigner "からめる"@en-us;
+                               arcaea:rating 7 ;
+                               arcaea:ratingClass 1 .
+arcaea.energysynergymatrix:PST arcaea:chartDesigner arcaea:POWER%20NITRO;
+                               arcaea:jacketDesigner "からめる"@en-us;
+                               arcaea:rating 3 ;
+                               arcaea:ratingClass 0 .

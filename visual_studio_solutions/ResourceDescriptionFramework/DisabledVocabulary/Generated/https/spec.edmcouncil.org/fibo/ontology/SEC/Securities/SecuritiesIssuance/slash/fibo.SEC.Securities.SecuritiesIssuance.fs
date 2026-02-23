@@ -1,0 +1,43 @@
+﻿namespace Fibo.SEC.Securities.SecuritiesIssuance.Namespace
+module SecuritiesIssuance =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/SEC/Securities/SecuritiesIssuance.rdf") (Some @"fibo.SEC.Securities.SecuritiesIssuance") None
+    let BearerAndRegisteredForm = {_prefixID with _localName = "BearerAndRegisteredForm"}
+    let BearerForm = {_prefixID with _localName = "BearerForm"}
+    let BestEffortsOffering = {_prefixID with _localName = "BestEffortsOffering"}
+    let BookEntryForm = {_prefixID with _localName = "BookEntryForm"}
+    let ConversionTerms = {_prefixID with _localName = "ConversionTerms"}
+    let ConvertibleSecurity = {_prefixID with _localName = "ConvertibleSecurity"}
+    let ExemptIssuer = {_prefixID with _localName = "ExemptIssuer"}
+    let ExemptOffering = {_prefixID with _localName = "ExemptOffering"}
+    let ExemptTransaction = {_prefixID with _localName = "ExemptTransaction"}
+    let FinancialInstrumentShortName = {_prefixID with _localName = "FinancialInstrumentShortName"}
+    let FirmCommitmentOffering = {_prefixID with _localName = "FirmCommitmentOffering"}
+    let MiscellaneousForm = {_prefixID with _localName = "MiscellaneousForm"}
+    let OfferingDocument = {_prefixID with _localName = "OfferingDocument"}
+    let OfferingStatement = {_prefixID with _localName = "OfferingStatement"}
+    let PrivateOffering = {_prefixID with _localName = "PrivateOffering"}
+    let PrivatePlacementMemorandum = {_prefixID with _localName = "PrivatePlacementMemorandum"}
+    let Prospectus = {_prefixID with _localName = "Prospectus"}
+    let PublicOffering = {_prefixID with _localName = "PublicOffering"}
+    let RegisteredForm = {_prefixID with _localName = "RegisteredForm"}
+    let SecuritiesOffering = {_prefixID with _localName = "SecuritiesOffering"}
+    let SecurityForm = {_prefixID with _localName = "SecurityForm"}
+    let SecurityOfferingDistributionType = {_prefixID with _localName = "SecurityOfferingDistributionType"}
+    let SecurityUnderwriter = {_prefixID with _localName = "SecurityUnderwriter"}
+    let SecurityUnderwritingArrangement = {_prefixID with _localName = "SecurityUnderwritingArrangement"}
+    let hasActualClosingDate = {_prefixID with _localName = "hasActualClosingDate"}
+    let hasAnnouncementDate = {_prefixID with _localName = "hasAnnouncementDate"}
+    let hasFinancialInstrumentShortName = {_prefixID with _localName = "hasFinancialInstrumentShortName"}
+    let hasFirstTradeDate = {_prefixID with _localName = "hasFirstTradeDate"}
+    let hasFirstTradeSettlementDate = {_prefixID with _localName = "hasFirstTradeSettlementDate"}
+    let hasInstrumentDescription = {_prefixID with _localName = "hasInstrumentDescription"}
+    let hasIssuerShortName = {_prefixID with _localName = "hasIssuerShortName"}
+    let hasSeries = {_prefixID with _localName = "hasSeries"}
+    let hasSubscriptionAmount = {_prefixID with _localName = "hasSubscriptionAmount"}
+    let hasSubscriptionPeriod = {_prefixID with _localName = "hasSubscriptionPeriod"}
+    let isIssuedInForm = {_prefixID with _localName = "isIssuedInForm"}
+    let isOverAllotted = {_prefixID with _localName = "isOverAllotted"}
+    let isRegisteredWith = {_prefixID with _localName = "isRegisteredWith"}
+    let isUnderwrittenBy = {_prefixID with _localName = "isUnderwrittenBy"}
+    let specifiesConversionInto = {_prefixID with _localName = "specifiesConversionInto"}
+    let underwrites = {_prefixID with _localName = "underwrites"}

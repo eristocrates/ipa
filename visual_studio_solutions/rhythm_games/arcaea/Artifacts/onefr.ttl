@@ -1,0 +1,45 @@
+@prefix arcaea.onefr: <https://arcaea.lowiro.com/#onefr#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.onefr:.
+arcaea.onefr: arcaea:artist arcaea:WHITEFISTS;
+              arcaea:audioPreview 74769 ;
+              arcaea:audioPreviewEnd 97346 ;
+              arcaea:bg arcaea:mirai_light;
+              arcaea:bg_inverse arcaea:mirai_conflict;
+              arcaea:bpm "130"@en-us;
+              arcaea:bpm_base 130 ;
+              arcaea:date 1590537608 ;
+              arcaea:difficulties arcaea.onefr:PRS,
+                                  arcaea.onefr:PST,
+                                  arcaea.onefr:FTR;
+              arcaea:id "onefr"@en-us;
+              arcaea:idx 167 ;
+              arcaea:purchase "extend"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "ほわいとふぃすつ"@ja,
+                                  "화이트피스트"@ko,
+                                  "화이트피스츠"@ko,
+                                  "いふるーと"@ja,
+                                  "이프 루트"@ko;
+              arcaea:set "extend"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:title_localized "1F√"@en;
+              arcaea:version "3.0"@en-us;
+              arcaea:world_unlock true.
+arcaea.onefr:FTR arcaea:chartDesigner arcaea:Nitro;
+                 arcaea:jacketDesigner "terry & nakanome"@en-us;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 2 .
+arcaea.onefr:PRS arcaea:chartDesigner arcaea:Nitro;
+                 arcaea:jacketDesigner "terry & nakanome"@en-us;
+                 arcaea:rating 6 ;
+                 arcaea:ratingClass 1 .
+arcaea.onefr:PST arcaea:chartDesigner arcaea:Nitro;
+                 arcaea:jacketDesigner "terry & nakanome"@en-us;
+                 arcaea:rating 2 ;
+                 arcaea:ratingClass 0 .

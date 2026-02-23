@@ -1,0 +1,44 @@
+@prefix arcaea.blaster: <https://arcaea.lowiro.com/#blaster#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.blaster:.
+arcaea.blaster: arcaea:artist arcaea:Massive%20New%20Krew;
+                arcaea:audioPreview 23999 ;
+                arcaea:audioPreviewEnd 55999 ;
+                arcaea:bg arcaea:yugamu;
+                arcaea:bg_inverse arcaea:rei;
+                arcaea:bpm "180"@en-us;
+                arcaea:bpm_base 180 ;
+                arcaea:date 1520553600 ;
+                arcaea:difficulties arcaea.blaster:PRS,
+                                    arcaea.blaster:PST,
+                                    arcaea.blaster:FTR;
+                arcaea:id "blaster"@en-us;
+                arcaea:idx 75 ;
+                arcaea:remote_dl true;
+                arcaea:search_title "まっしぶにゅーくるー"@ja,
+                                    "매시브 뉴 크루"@ko,
+                                    "매시브 뉴 크류"@ko,
+                                    "ぶらすたー"@ja,
+                                    "블라스터"@ko;
+                arcaea:set "base"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Blaster"@en;
+                arcaea:version "1.5"@en-us;
+                arcaea:world_unlock true.
+arcaea.blaster:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//urorak>;
+                   arcaea:jacketDesigner "LAM"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.blaster:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#k//urorak>;
+                   arcaea:jacketDesigner "LAM"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.blaster:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#k//urorak>;
+                   arcaea:jacketDesigner "LAM"@en-us;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

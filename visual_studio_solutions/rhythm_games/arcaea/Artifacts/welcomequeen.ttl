@@ -1,0 +1,53 @@
+@prefix arcaea.welcomequeen: <https://arcaea.lowiro.com/#welcomequeen#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.welcomequeen:.
+arcaea.welcomequeen: arcaea:artist arcaea:%E6%89%93%E6%89%93%E3%81%A0%E3%81%84%E3%81%9A;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:anima_conflict;
+                     arcaea:bg_inverse arcaea:anima_light;
+                     arcaea:bpm "110-305"@en-us;
+                     arcaea:bpm_base 300 ;
+                     arcaea:date 1755734404 ;
+                     arcaea:difficulties arcaea.welcomequeen:FTR,
+                                         arcaea.welcomequeen:PRS,
+                                         arcaea.welcomequeen:PST,
+                                         arcaea.welcomequeen:ETR;
+                     arcaea:id "welcomequeen"@en-us;
+                     arcaea:idx 482 ;
+                     arcaea:purchase "anima_append_1"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "だだだいず"@ja,
+                                         "다다다이즈"@ko,
+                                         "dadadaizu"@en,
+                                         "dddice"@en,
+                                         "うぇるかむくいーんおぶふぃくしょん"@ja,
+                                         "웰컴 퀸 오브 픽션"@ko;
+                     arcaea:set "anima_append_1"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "Welcome, Queen of Fiction."@en;
+                     arcaea:version "6.8"@en-us;
+                     arcaea:world_unlock false.
+arcaea.welcomequeen:ETR arcaea:chartDesigner arcaea:%E8%99%9A%E5%81%BD%E3%81%AE%E7%8E%89%E5%BA%A7%E3%80%90%E5%A4%9C%E6%B5%AA%E3%80%91;
+                        arcaea:hidden_until "unlockconditions"@en-us;
+                        arcaea:jacketDesigner "あらへなす"@en-us;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 4 ;
+                        arcaea:ratingPlus true.
+arcaea.welcomequeen:FTR arcaea:chartDesigner arcaea:%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%E3%80%81%E7%91%9E%E7%8D%A3%E3%80%82;
+                        arcaea:jacketDesigner "あらへなす"@en-us;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 2 .
+arcaea.welcomequeen:PRS arcaea:chartDesigner arcaea:%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%E3%80%81%E7%91%9E%E7%8D%A3%E3%80%82;
+                        arcaea:jacketDesigner "あらへなす"@en-us;
+                        arcaea:rating 8 ;
+                        arcaea:ratingClass 1 .
+arcaea.welcomequeen:PST arcaea:chartDesigner arcaea:%E3%82%88%E3%81%86%E3%81%93%E3%81%9D%E3%80%81%E7%91%9E%E7%8D%A3%E3%80%82;
+                        arcaea:jacketDesigner "あらへなす"@en-us;
+                        arcaea:rating 5 ;
+                        arcaea:ratingClass 0 .

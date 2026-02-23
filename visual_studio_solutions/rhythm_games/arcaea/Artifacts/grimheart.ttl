@@ -1,0 +1,41 @@
+@prefix arcaea.grimheart: <https://arcaea.lowiro.com/#grimheart#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.grimheart:.
+arcaea.grimheart: arcaea:artist arcaea:Puru;
+                  arcaea:audioPreview 103761 ;
+                  arcaea:audioPreviewEnd 127055 ;
+                  arcaea:bg arcaea:rei;
+                  arcaea:bg_inverse arcaea:yugamu;
+                  arcaea:bpm "170"@en-us;
+                  arcaea:bpm_base 170 ;
+                  arcaea:date 1553126400 ;
+                  arcaea:difficulties arcaea.grimheart:FTR,
+                                      arcaea.grimheart:PRS,
+                                      arcaea.grimheart:PST;
+                  arcaea:id "grimheart"@en-us;
+                  arcaea:idx 119 ;
+                  arcaea:remote_dl false;
+                  arcaea:search_title "ぷる"@ja,
+                                      "푸루"@ko,
+                                      "ぐりむはーと"@ja,
+                                      "그림하트"@ko;
+                  arcaea:set "base"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Grimheart"@en;
+                  arcaea:version "2.0"@en-us;
+                  arcaea:world_unlock false.
+arcaea.grimheart:FTR arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.grimheart:PRS arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 1 .
+arcaea.grimheart:PST arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,43 @@
+@prefix arcaea.blackmind: <https://arcaea.lowiro.com/#blackmind#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.blackmind:.
+arcaea.blackmind: arcaea:artist arcaea:COSIO;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:gc_ouroboros;
+                  arcaea:bpm "192"@en-us;
+                  arcaea:bpm_base 192 ;
+                  arcaea:date 1719446403 ;
+                  arcaea:difficulties arcaea.blackmind:FTR,
+                                      arcaea.blackmind:PRS,
+                                      arcaea.blackmind:PST;
+                  arcaea:id "blackmind"@en-us;
+                  arcaea:idx 398 ;
+                  arcaea:purchase "groovecoaster_append_1"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "こしお"@ja,
+                                      "코시오"@ko,
+                                      "ぶらっくまいんど"@ja,
+                                      "블랙 마인드"@ko;
+                  arcaea:set "groovecoaster_append_1"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "© TAITO CORPORATION"@en-us;
+                  arcaea:title_localized "Black MInD"@en,
+                                         "Groove Coaster"@en;
+                  arcaea:version "5.8"@en-us;
+                  arcaea:world_unlock false.
+arcaea.blackmind:FTR arcaea:chartDesigner arcaea:%E8%81%96%E8%BC%AA;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.blackmind:PRS arcaea:chartDesigner arcaea:%E8%81%96%E8%BC%AA;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 .
+arcaea.blackmind:PST arcaea:chartDesigner arcaea:%E8%81%96%E8%BC%AA;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 0 .

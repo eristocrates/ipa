@@ -1,0 +1,50 @@
+@prefix arcaea.guardina: <https://arcaea.lowiro.com/#guardina#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.guardina:.
+arcaea.guardina: arcaea:artist arcaea:Aoi;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:nijuusei-light-b;
+                 arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+                 arcaea:bpm "202"@en-us;
+                 arcaea:bpm_base 202 ;
+                 arcaea:category arcaea:original;
+                 arcaea:date 1525305600 ;
+                 arcaea:difficulties arcaea.guardina:FTR,
+                                     arcaea.guardina:PRS,
+                                     arcaea.guardina:PST;
+                 arcaea:id "guardina"@en-us;
+                 arcaea:idx 76 ;
+                 arcaea:purchase "dynamix"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "あおい"@ja,
+                                     "아오이"@ko,
+                                     "がーでぃな"@ja,
+                                     "가디나"@ko,
+                                     "가르디나"@ko,
+                                     "guardina"@en;
+                 arcaea:set "single"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "guardina"@ko,
+                                        "guardina"@zh-hans,
+                                        "guardina"@zh-hant,
+                                        "γuarδina"@en;
+                 arcaea:version "1.6"@en-us;
+                 arcaea:world_unlock true.
+arcaea.guardina:FTR arcaea:chartDesigner arcaea:%CF%84oast%CE%B5r;
+                    arcaea:jacketDesigner "姐川 + Khronetic"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 .
+arcaea.guardina:PRS arcaea:chartDesigner arcaea:%CF%84oast%CE%B5r;
+                    arcaea:jacketDesigner "姐川 + Khronetic"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 1 .
+arcaea.guardina:PST arcaea:chartDesigner arcaea:%CF%84oast%CE%B5r;
+                    arcaea:jacketDesigner "姐川 + Khronetic"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

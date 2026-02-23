@@ -1,0 +1,61 @@
+@prefix arcaea.last: <https://arcaea.lowiro.com/#last#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.last:.
+arcaea.last: arcaea:artist arcaea:onoken;
+             arcaea:audioPreview 11657 ;
+             arcaea:audioPreviewEnd 32914 ;
+             arcaea:bg arcaea:epilogue;
+             arcaea:bpm "175"@en-us;
+             arcaea:bpm_base 175 ;
+             arcaea:byd_local_unlock true;
+             arcaea:date 1657756801 ;
+             arcaea:difficulties arcaea.last:FTR,
+                                 arcaea.last:PRS,
+                                 arcaea.last:PST,
+                                 arcaea.last:BYD;
+             arcaea:id "last"@en-us;
+             arcaea:idx 282 ;
+             arcaea:purchase "finale"@en-us;
+             arcaea:remote_dl true;
+             arcaea:search_title "おのけん"@ja,
+                                 "오노켄"@ko,
+                                 "らすと"@ja,
+                                 "らすともーめんと"@ja,
+                                 "라스트"@ko;
+             arcaea:set "epilogue"@en-us;
+             arcaea:side arcaea:conflict_side;
+             arcaea:title_localized "Last"@en;
+             arcaea:version "4.0"@en-us;
+             arcaea:world_unlock false.
+arcaea.last:BYD arcaea:audioOverride true;
+                arcaea:chartDesigner arcaea:Arcaea;
+                arcaea:hidden_until "difficulty"@en-us;
+                arcaea:hidden_until_unlocked true;
+                arcaea:jacketDesigner "シエラ"@en-us;
+                arcaea:jacketOverride true;
+                arcaea:rating 9 ;
+                arcaea:ratingClass 3 ;
+                arcaea:world_unlock false.
+arcaea.last:FTR arcaea:chartDesigner arcaea:Arcaea;
+                arcaea:hidden_until "song"@en-us;
+                arcaea:hidden_until_unlocked true;
+                arcaea:jacketDesigner "シエラ"@en-us;
+                arcaea:rating 9 ;
+                arcaea:ratingClass 2 .
+arcaea.last:PRS arcaea:chartDesigner arcaea:Arcaea;
+                arcaea:hidden_until "song"@en-us;
+                arcaea:hidden_until_unlocked true;
+                arcaea:jacketDesigner "シエラ"@en-us;
+                arcaea:rating 7 ;
+                arcaea:ratingClass 1 .
+arcaea.last:PST arcaea:chartDesigner arcaea:Arcaea;
+                arcaea:hidden_until "song"@en-us;
+                arcaea:hidden_until_unlocked true;
+                arcaea:jacketDesigner "シエラ"@en-us;
+                arcaea:rating 4 ;
+                arcaea:ratingClass 0 .

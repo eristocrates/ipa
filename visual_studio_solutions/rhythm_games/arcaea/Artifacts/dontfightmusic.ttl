@@ -1,0 +1,53 @@
+@prefix arcaea.dontfightmusic: <https://arcaea.lowiro.com/#dontfightmusic#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dontfightmusic:.
+arcaea.dontfightmusic: arcaea:artist arcaea:%E9%BB%92%E9%AD%94;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:ongeki_conflict;
+                       arcaea:bg_inverse arcaea:ongeki_light;
+                       arcaea:bpm "190-200"@en-us;
+                       arcaea:bpm_base 200 ;
+                       arcaea:date 1732147203 ;
+                       arcaea:difficulties arcaea.dontfightmusic:ETR,
+                                           arcaea.dontfightmusic:FTR,
+                                           arcaea.dontfightmusic:PRS,
+                                           arcaea.dontfightmusic:PST;
+                       arcaea:id "dontfightmusic"@en-us;
+                       arcaea:idx 426 ;
+                       arcaea:purchase "ongeki_append_2"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "くろま"@ja,
+                                           "쿠로마"@ko,
+                                           "크로마"@ko,
+                                           "kuroma"@en,
+                                           "chroma"@en,
+                                           "どんとふぁいとざみゅーじっく"@ja,
+                                           "돈 파이트 더 뮤직"@ko,
+                                           "돈 파잇 더 뮤직"@ko;
+                       arcaea:set "ongeki_append_2"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:source_copyright "©SEGA"@en-us;
+                       arcaea:title_localized "Don't Fight The Music"@en,
+                                              "O.N.G.E.K.I."@en;
+                       arcaea:version "6.0"@en-us;
+                       arcaea:world_unlock false.
+arcaea.dontfightmusic:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#絶滅%20(AQUA)%20Lv.70>;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 4 ;
+                          arcaea:ratingPlus true.
+arcaea.dontfightmusic:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#絶滅%20(AQUA)%20Lv.70>;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.dontfightmusic:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#絶滅%20(AQUA)%20Lv.70>;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 ;
+                          arcaea:ratingPlus true.
+arcaea.dontfightmusic:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#絶滅%20(AQUA)%20Lv.70>;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

@@ -1,0 +1,48 @@
+@prefix arcaea.prism: <https://arcaea.lowiro.com/#prism#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.prism:.
+arcaea.prism: arcaea:artist arcaea:bermei.inazawa%20ft.%20Chata;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:lanota-light;
+              arcaea:bg_inverse arcaea:lanota-conflict;
+              arcaea:bpm "107-109"@en-us;
+              arcaea:bpm_base 109 ;
+              arcaea:date 1651104000 ;
+              arcaea:difficulties arcaea.prism:FTR,
+                                  arcaea.prism:PRS,
+                                  arcaea.prism:PST;
+              arcaea:id "prism"@en-us;
+              arcaea:idx 264 ;
+              arcaea:no_stream true;
+              arcaea:purchase "lanota_append_1"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "べるめいいなざわ"@ja,
+                                  "ちゃた"@ja,
+                                  "벨메이 이나자와"@ko,
+                                  "베르메이 이나자와"@ko,
+                                  "챠타"@ko,
+                                  "ぷりずむ"@ja,
+                                  "프리즘"@ko;
+              arcaea:set "lanota_append_1"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:title_localized "Prism"@en,
+                                     "Lanota"@en;
+              arcaea:version "3.12"@en-us;
+              arcaea:world_unlock false.
+arcaea.prism:FTR arcaea:chartDesigner arcaea:CERiNG;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 2 .
+arcaea.prism:PRS arcaea:chartDesigner arcaea:CERiNG;
+                 arcaea:jacketOverride true;
+                 arcaea:rating 5 ;
+                 arcaea:ratingClass 1 .
+arcaea.prism:PST arcaea:chartDesigner arcaea:CERiNG;
+                 arcaea:jacketOverride true;
+                 arcaea:rating 2 ;
+                 arcaea:ratingClass 0 .

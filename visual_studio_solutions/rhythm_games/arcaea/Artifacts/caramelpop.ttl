@@ -1,0 +1,57 @@
+@prefix arcaea.caramelpop: <https://arcaea.lowiro.com/#caramelpop#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.caramelpop:.
+arcaea.caramelpop: arcaea:artist arcaea:%E3%83%A4%E3%83%9F%E3%83%8A%E3%83%99%E3%83%AC%E3%82%B3%E3%83%BC%E3%82%BA%20feat.%20%E7%B9%AD%E7%B3%B8;
+                   arcaea:audioPreview 43241 ;
+                   arcaea:audioPreviewEnd 60574 ;
+                   arcaea:bg arcaea:hime_light;
+                   arcaea:bg_inverse arcaea:hime_conflict;
+                   arcaea:bpm "180"@en-us;
+                   arcaea:bpm_base 180 ;
+                   arcaea:date 1771459200 ;
+                   arcaea:difficulties arcaea.caramelpop:ETR,
+                                       arcaea.caramelpop:FTR,
+                                       arcaea.caramelpop:PRS,
+                                       arcaea.caramelpop:PST;
+                   arcaea:id "caramelpop"@en-us;
+                   arcaea:idx 519 ;
+                   arcaea:remote_dl false;
+                   arcaea:search_title "まゆい"@ja,
+                                       "야미나베레코즈"@ko,
+                                       "마유이"@ko,
+                                       "yaminaberekozu"@en,
+                                       "yaminabe records"@en,
+                                       "mayui"@en,
+                                       "김미 카라멜 팝콘"@ko,
+                                       "김미 캬라멜 팝콘"@ko,
+                                       "캬라메루 폽푸콘타베타이요"@ko,
+                                       "카라멜 팝콘 먹고싶어"@ko,
+                                       "캬라멜 팝콘 먹고싶어"@ko,
+                                       "kyarameru poppukon tabetaiyo"@en;
+                   arcaea:set "base"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "キャラメルポップコーンたべたいよ〜"@ja,
+                                          "Gimme Caramel Popcorn!"@en;
+                   arcaea:version "6.12"@en-us;
+                   arcaea:world_unlock false.
+arcaea.caramelpop:ETR arcaea:chartDesigner arcaea:Interator;
+                      arcaea:jacketDesigner "さじ"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 4 .
+arcaea.caramelpop:FTR arcaea:chartDesigner arcaea:Interator;
+                      arcaea:jacketDesigner "さじ"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 2 .
+arcaea.caramelpop:PRS arcaea:chartDesigner arcaea:Interator;
+                      arcaea:jacketDesigner "さじ"@en-us;
+                      arcaea:rating 5 ;
+                      arcaea:ratingClass 1 .
+arcaea.caramelpop:PST arcaea:chartDesigner arcaea:Interator;
+                      arcaea:jacketDesigner "さじ"@en-us;
+                      arcaea:rating 2 ;
+                      arcaea:ratingClass 0 .

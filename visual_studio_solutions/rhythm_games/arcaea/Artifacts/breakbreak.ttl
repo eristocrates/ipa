@@ -1,0 +1,50 @@
+@prefix arcaea.breakbreak: <https://arcaea.lowiro.com/#breakbreak#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.breakbreak:.
+arcaea.breakbreak: arcaea:artist arcaea:HiTECH%20NINJA%20vs%20Cranky;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:maimai_conflict;
+                   arcaea:bg_inverse arcaea:maimai_light;
+                   arcaea:bpm "165"@en-us;
+                   arcaea:bpm_base 165 ;
+                   arcaea:date 1737417600 ;
+                   arcaea:difficulties arcaea.breakbreak:ETR,
+                                       arcaea.breakbreak:FTR,
+                                       arcaea.breakbreak:PRS,
+                                       arcaea.breakbreak:PST;
+                   arcaea:id "breakbreak"@en-us;
+                   arcaea:idx 439 ;
+                   arcaea:purchase "maimai_append_2"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "はいてっくにんじゃ"@ja,
+                                       "くらんきー"@ja,
+                                       "하이테크 닌자"@ko,
+                                       "크랭키"@ko,
+                                       "ぶれいくぶれいくぶれいく"@ja,
+                                       "브레이크 브레이크 브레이크"@ko;
+                   arcaea:set "maimai_append_2"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:source_copyright "©SEGA"@en-us;
+                   arcaea:title_localized "BREaK! BREaK! BREaK!"@en,
+                                          "maimai"@en;
+                   arcaea:version "6.2"@en-us;
+                   arcaea:world_unlock false.
+arcaea.breakbreak:ETR arcaea:chartDesigner arcaea:EXSCHWASiON%20vs%20%E7%B5%B6%E6%BB%85;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 4 .
+arcaea.breakbreak:FTR arcaea:chartDesigner arcaea:%C3%A9cologie;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.breakbreak:PRS arcaea:chartDesigner arcaea:%C3%A9cologie;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.breakbreak:PST arcaea:chartDesigner arcaea:%C3%A9cologie;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

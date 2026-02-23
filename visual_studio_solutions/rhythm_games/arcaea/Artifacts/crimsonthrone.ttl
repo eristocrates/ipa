@@ -1,0 +1,46 @@
+@prefix arcaea.crimsonthrone: <https://arcaea.lowiro.com/#crimsonthrone#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.crimsonthrone:.
+arcaea.crimsonthrone: arcaea:artist arcaea:Dimier%E2%88%9ALisb;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:observer_conflict;
+                      arcaea:bg_inverse arcaea:observer_light;
+                      arcaea:bpm "210"@en-us;
+                      arcaea:bpm_base 210 ;
+                      arcaea:category arcaea:partner;
+                      arcaea:date 1677715200 ;
+                      arcaea:difficulties arcaea.crimsonthrone:PRS,
+                                          arcaea.crimsonthrone:PST,
+                                          arcaea.crimsonthrone:FTR;
+                      arcaea:id "crimsonthrone"@en-us;
+                      arcaea:idx 300 ;
+                      arcaea:purchase "crimsonthrone"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "でぃみあるーとりしぶ"@ja,
+                                          "디미에르 루트 리시브"@ko,
+                                          "くりむぞんすろーん"@ja,
+                                          "크림슨 스론"@ko,
+                                          "크림슨 쓰론"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Crimson Throne"@en;
+                      arcaea:version "4.3"@en-us;
+                      arcaea:world_unlock false.
+arcaea.crimsonthrone:FTR arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:jacketDesigner "nonokuro"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 .
+arcaea.crimsonthrone:PRS arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:jacketDesigner "nonokuro"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 1 .
+arcaea.crimsonthrone:PST arcaea:chartDesigner arcaea:Toaster;
+                         arcaea:jacketDesigner "nonokuro"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

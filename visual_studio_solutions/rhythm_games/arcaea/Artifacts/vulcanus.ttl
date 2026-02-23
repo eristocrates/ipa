@@ -1,0 +1,49 @@
+@prefix arcaea.vulcanus: <https://arcaea.lowiro.com/#vulcanus#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.vulcanus:.
+arcaea.vulcanus: arcaea:artist arcaea:Team%20Grimoire%20vs%20Aoi;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:vulcanus;
+                 arcaea:bpm "212"@en-us;
+                 arcaea:bpm_base 212 ;
+                 arcaea:date 1724889605 ;
+                 arcaea:difficulties arcaea.vulcanus:FTR,
+                                     arcaea.vulcanus:PRS,
+                                     arcaea.vulcanus:PST;
+                 arcaea:id "vulcanus"@en-us;
+                 arcaea:idx 412 ;
+                 arcaea:purchase "rotaeno"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ちーむぐりもあ"@ja,
+                                     "ちーむぐりもわーる"@ja,
+                                     "あおい"@ja,
+                                     "팀 그리모어"@ko,
+                                     "아오이"@ko,
+                                     "うるかぬす"@ja,
+                                     "うるかーぬす"@ja,
+                                     "불카누스"@ko;
+                 arcaea:set "rotaeno"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "Vulcanus"@ko,
+                                        "Vulcānus"@en;
+                 arcaea:version "5.10"@en-us;
+                 arcaea:world_unlock false.
+arcaea.vulcanus:FTR arcaea:chartDesigner arcaea:Volution%20IV;
+                    arcaea:jacketDesigner "月裏"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.vulcanus:PRS arcaea:chartDesigner arcaea:Volution%20CCCLX;
+                    arcaea:jacketDesigner "月裏"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 1 .
+arcaea.vulcanus:PST arcaea:chartDesigner arcaea:Volution;
+                    arcaea:jacketDesigner "月裏"@en-us;
+                    arcaea:rating 5 ;
+                    arcaea:ratingClass 0 .

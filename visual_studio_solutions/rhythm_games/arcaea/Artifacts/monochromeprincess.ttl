@@ -1,0 +1,45 @@
+@prefix arcaea.monochromeprincess: <https://arcaea.lowiro.com/#monochromeprincess#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.monochromeprincess:.
+arcaea.monochromeprincess: arcaea:artist arcaea:polysha;
+                           arcaea:audioPreview 37500 ;
+                           arcaea:audioPreviewEnd 61500 ;
+                           arcaea:bg arcaea:omatsuri_conflict;
+                           arcaea:bg_inverse arcaea:omatsuri_light;
+                           arcaea:bpm "160"@en-us;
+                           arcaea:bpm_base 160 ;
+                           arcaea:date 1572048000 ;
+                           arcaea:difficulties arcaea.monochromeprincess:PRS,
+                                               arcaea.monochromeprincess:PST,
+                                               arcaea.monochromeprincess:FTR;
+                           arcaea:id "monochromeprincess"@en-us;
+                           arcaea:idx 140 ;
+                           arcaea:remote_dl true;
+                           arcaea:search_title "ぽりしゃ"@ja,
+                                               "폴리샤"@ko,
+                                               "ものくろーむぷりんせす"@ja,
+                                               "모노크롬 프린세스"@ko;
+                           arcaea:set "base"@en-us;
+                           arcaea:side arcaea:conflict_side;
+                           arcaea:title_localized "Monochrome Princess"@en;
+                           arcaea:version "2.4"@en-us;
+                           arcaea:world_unlock true.
+arcaea.monochromeprincess:FTR arcaea:chartDesigner arcaea:N%E2%86%95TRO;
+                              arcaea:jacketDesigner "GreeN"@en-us;
+                              arcaea:rating 9 ;
+                              arcaea:ratingClass 2 ;
+                              arcaea:ratingPlus true.
+arcaea.monochromeprincess:PRS arcaea:chartDesigner arcaea:N%E2%86%95TRO;
+                              arcaea:jacketDesigner "GreeN"@en-us;
+                              arcaea:rating 7 ;
+                              arcaea:ratingClass 1 ;
+                              arcaea:ratingPlus true.
+arcaea.monochromeprincess:PST arcaea:chartDesigner arcaea:N%E2%86%95TRO;
+                              arcaea:jacketDesigner "GreeN"@en-us;
+                              arcaea:rating 4 ;
+                              arcaea:ratingClass 0 .

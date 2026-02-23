@@ -1,0 +1,54 @@
+@prefix arcaea.dualdoom: <https://arcaea.lowiro.com/#dualdoom#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dualdoom:.
+arcaea.dualdoom: arcaea:artist arcaea:Kobaryo%20vs%20HyuN;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:rotaeno_conflict;
+                 arcaea:bg_inverse arcaea:rotaeno_light;
+                 arcaea:bpm "222"@en-us;
+                 arcaea:bpm_base 222 ;
+                 arcaea:date 1724889602 ;
+                 arcaea:difficulties arcaea.dualdoom:FTR,
+                                     arcaea.dualdoom:PRS,
+                                     arcaea.dualdoom:PST,
+                                     arcaea.dualdoom:ETR;
+                 arcaea:id "dualdoom"@en-us;
+                 arcaea:idx 409 ;
+                 arcaea:purchase "rotaeno"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "こばりょー"@ja,
+                                     "ひゅん"@ja,
+                                     "코바료"@ko,
+                                     "현"@ko,
+                                     "でゅあるどぅーむですまっち"@ja,
+                                     "듀얼 룸 데스매치"@ko;
+                 arcaea:set "rotaeno"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:source_copyright "© Dream Engine Games"@en-us;
+                 arcaea:title_localized "Dual Doom Deathmatch"@en,
+                                        "Rotaeno"@en;
+                 arcaea:version "5.10"@en-us;
+                 arcaea:world_unlock false.
+arcaea.dualdoom:ETR arcaea:chartDesigner arcaea:NITRO;
+                    arcaea:jacketDesigner "炎獵"@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 4 .
+arcaea.dualdoom:FTR arcaea:chartDesigner arcaea:NITRO;
+                    arcaea:jacketDesigner "炎獵"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.dualdoom:PRS arcaea:chartDesigner arcaea:NITRO;
+                    arcaea:jacketDesigner "炎獵"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.dualdoom:PST arcaea:chartDesigner arcaea:NITRO;
+                    arcaea:jacketDesigner "炎獵"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

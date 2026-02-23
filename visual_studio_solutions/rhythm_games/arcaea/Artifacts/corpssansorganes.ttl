@@ -1,0 +1,45 @@
+@prefix arcaea.corpssansorganes: <https://arcaea.lowiro.com/#corpssansorganes#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.corpssansorganes:.
+arcaea.corpssansorganes: arcaea:artist arcaea:cybermiso;
+                         arcaea:audioPreview 60000 ;
+                         arcaea:audioPreviewEnd 70000 ;
+                         arcaea:bg arcaea:mirai_awakened;
+                         arcaea:bpm "105"@en-us;
+                         arcaea:bpm_base 105 ;
+                         arcaea:date 1585094402 ;
+                         arcaea:difficulties arcaea.corpssansorganes:PRS,
+                                             arcaea.corpssansorganes:PST,
+                                             arcaea.corpssansorganes:FTR;
+                         arcaea:id "corpssansorganes"@en-us;
+                         arcaea:idx 154 ;
+                         arcaea:purchase "mirai"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "さいばーみそ"@ja,
+                                             "사이버미소"@ko,
+                                             "こーぷすさんずおーぎゃんず"@ja,
+                                             "콥스 샌즈 오르가네스"@ko,
+                                             "코프스 샌즈 오르가네스"@ko;
+                         arcaea:set "mirai"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "corps-sans-organes"@en;
+                         arcaea:version "2.6"@en-us;
+                         arcaea:world_unlock true.
+arcaea.corpssansorganes:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%8C%E6%9C%88%E9%A3%9F%E3%80%8D;
+                            arcaea:jacketDesigner "softmode"@en-us;
+                            arcaea:rating 10 ;
+                            arcaea:ratingClass 2 .
+arcaea.corpssansorganes:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%8C%E6%9C%88%E9%A3%9F%E3%80%8D;
+                            arcaea:jacketDesigner "softmode"@en-us;
+                            arcaea:rating 7 ;
+                            arcaea:ratingClass 1 ;
+                            arcaea:ratingPlus true.
+arcaea.corpssansorganes:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%E3%80%8C%E6%9C%88%E9%A3%9F%E3%80%8D;
+                            arcaea:jacketDesigner "softmode"@en-us;
+                            arcaea:rating 4 ;
+                            arcaea:ratingClass 0 .

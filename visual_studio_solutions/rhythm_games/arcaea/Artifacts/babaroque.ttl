@@ -1,0 +1,40 @@
+@prefix arcaea.babaroque: <https://arcaea.lowiro.com/#babaroque#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.babaroque:.
+arcaea.babaroque: arcaea:artist arcaea:cYsmix;
+                  arcaea:audioPreview 64411 ;
+                  arcaea:audioPreviewEnd 92647 ;
+                  arcaea:bg arcaea:base_light;
+                  arcaea:bg_inverse arcaea:base_conflict;
+                  arcaea:bpm "136"@en-us;
+                  arcaea:bpm_base 136 ;
+                  arcaea:date 1487980807 ;
+                  arcaea:difficulties arcaea.babaroque:FTR,
+                                      arcaea.babaroque:PRS,
+                                      arcaea.babaroque:PST;
+                  arcaea:id "babaroque"@en-us;
+                  arcaea:idx 8 ;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "しすみっくす"@ja,
+                                      "시스믹스"@ko,
+                                      "ばばろっく"@ja,
+                                      "바바로크"@ko;
+                  arcaea:set "base"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Babaroque"@en;
+                  arcaea:version "1.0"@en-us;
+                  arcaea:world_unlock true.
+arcaea.babaroque:FTR arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 .
+arcaea.babaroque:PRS arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.babaroque:PST arcaea:chartDesigner arcaea:Toaster;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,52 @@
+@prefix arcaea.goodtek: <https://arcaea.lowiro.com/#goodtek#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.goodtek:.
+arcaea.goodtek: arcaea:artist arcaea:EBIMAYO;
+                arcaea:audioPreview 80842 ;
+                arcaea:audioPreviewEnd 111157 ;
+                arcaea:bg arcaea:base_light;
+                arcaea:bg_inverse arcaea:base_conflict;
+                arcaea:bpm "190"@en-us;
+                arcaea:bpm_base 190 ;
+                arcaea:date 1487980809 ;
+                arcaea:difficulties arcaea.goodtek:FTR,
+                                    arcaea.goodtek:PRS,
+                                    arcaea.goodtek:PST,
+                                    arcaea.goodtek:BYD;
+                arcaea:id "goodtek"@en-us;
+                arcaea:idx 2 ;
+                arcaea:remote_dl true;
+                arcaea:search_title "えびまよ"@ja,
+                                    "에비마요"@ko,
+                                    "ぐっどてっく"@ja,
+                                    "굿텍"@ko;
+                arcaea:set "base"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "GOODTEK (Arcaea Edit)"@en;
+                arcaea:version "1.0"@en-us;
+                arcaea:world_unlock true.
+arcaea.goodtek:BYD arcaea:chartDesigner arcaea:GOODTOAST;
+                   arcaea:date 1590537603 ;
+                   arcaea:jacketDesigner "出前"@en-us;
+                   arcaea:jacketOverride true;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 3 ;
+                   arcaea:ratingPlus true;
+                   arcaea:version "3.0"@en-us.
+arcaea.goodtek:FTR arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:jacketDesigner "Koyama Mai"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.goodtek:PRS arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:jacketDesigner "Koyama Mai"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.goodtek:PST arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:jacketDesigner "Koyama Mai"@en-us;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

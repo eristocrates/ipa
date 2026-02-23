@@ -1,0 +1,4 @@
+﻿namespace Fibo.IND.EconomicIndicators.MetadataINDEconomicIndicators.Namespace
+module MetadataINDEconomicIndicators =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/IND/EconomicIndicators/MetadataINDEconomicIndicators/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/IND/EconomicIndicators/MetadataINDEconomicIndicators.rdf") (Some @"fibo.IND.EconomicIndicators.MetadataINDEconomicIndicators") None
+    let EconomicIndicatorsModule = {_prefixID with _localName = "EconomicIndicatorsModule"}

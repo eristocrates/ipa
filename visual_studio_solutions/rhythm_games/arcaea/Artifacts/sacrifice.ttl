@@ -1,0 +1,48 @@
+@prefix arcaea.sacrifice: <https://arcaea.lowiro.com/#sacrifice#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.sacrifice:.
+arcaea.sacrifice: arcaea:artist <https://arcaea.lowiro.com/#Masayoshi%20Minoshima(ALR)>;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:touhou_conflict;
+                  arcaea:bg_inverse arcaea:touhou_light;
+                  arcaea:bpm "180"@en-us;
+                  arcaea:bpm_base 180 ;
+                  arcaea:category arcaea:poprec;
+                  arcaea:date 1692230400 ;
+                  arcaea:difficulties arcaea.sacrifice:PRS,
+                                      arcaea.sacrifice:PST,
+                                      arcaea.sacrifice:FTR;
+                  arcaea:id "sacrifice"@en-us;
+                  arcaea:idx 335 ;
+                  arcaea:purchase "sacrifice"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "まさよしみのしま"@ja,
+                                      "あやめ"@ja,
+                                      "마사요시 미노시마"@ko,
+                                      "さくりふぁいす"@ja,
+                                      "새크리파이스"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                  arcaea:title_localized "SACRIFICE feat. ayame"@en;
+                  arcaea:version "4.7"@en-us;
+                  arcaea:world_unlock false.
+arcaea.sacrifice:FTR arcaea:chartDesigner arcaea:Luxance;
+                     arcaea:jacketDesigner "宵野コタロー + SoU(wavforme)"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.sacrifice:PRS arcaea:chartDesigner arcaea:Luxance;
+                     arcaea:jacketDesigner "宵野コタロー + SoU(wavforme)"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.sacrifice:PST arcaea:chartDesigner arcaea:Luxance;
+                     arcaea:jacketDesigner "宵野コタロー + SoU(wavforme)"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

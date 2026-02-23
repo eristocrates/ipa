@@ -1,0 +1,53 @@
+@prefix arcaea.freefall: <https://arcaea.lowiro.com/#freefall#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.freefall:.
+arcaea.freefall: arcaea:artist arcaea:YUKIYANAGI;
+                 arcaea:audioPreview 103058 ;
+                 arcaea:audioPreviewEnd 131294 ;
+                 arcaea:bg arcaea:omatsuri_conflict;
+                 arcaea:bg_inverse arcaea:omatsuri_light;
+                 arcaea:bpm "170"@en-us;
+                 arcaea:bpm_base 170 ;
+                 arcaea:date 1570492801 ;
+                 arcaea:difficulties arcaea.freefall:BYD,
+                                     arcaea.freefall:FTR,
+                                     arcaea.freefall:PRS,
+                                     arcaea.freefall:PST;
+                 arcaea:id "freefall"@en-us;
+                 arcaea:idx 138 ;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ゆきやなぎ"@ja,
+                                     "유키야나기"@ko,
+                                     "ふりーふぉーる"@ja,
+                                     "프리폴"@ko,
+                                     "freefall"@en;
+                 arcaea:set "base"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "FREEF4LL"@en;
+                 arcaea:version "2.4"@en-us;
+                 arcaea:world_unlock true.
+arcaea.freefall:BYD arcaea:chartDesigner arcaea:TO4STER;
+                    arcaea:date 1668038400 ;
+                    arcaea:jacketDesigner "きらばがに"@en-us;
+                    arcaea:jacketOverride true;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 3 ;
+                    arcaea:ratingPlus true;
+                    arcaea:version "4.1"@en-us.
+arcaea.freefall:FTR arcaea:chartDesigner arcaea:N%E2%86%93TRO;
+                    arcaea:jacketDesigner "きらばがに"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 2 .
+arcaea.freefall:PRS arcaea:chartDesigner arcaea:N%E2%86%93TRO;
+                    arcaea:jacketDesigner "きらばがに"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 .
+arcaea.freefall:PST arcaea:chartDesigner arcaea:N%E2%86%93TRO;
+                    arcaea:jacketDesigner "きらばがに"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

@@ -1,0 +1,228 @@
+@prefix fibo.LOAN.LoansSpecific.LoanProducts: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/LoanProducts/> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/>.
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>.
+@prefix cmns-col: <https://www.omg.org/spec/Commons/Collections/>.
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/>.
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/>.
+@prefix cmns-qtu: <https://www.omg.org/spec/Commons/QuantitiesAndUnits/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix fibo-fbc-dae-dbt: <https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/Debt/>.
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/>.
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/>.
+@prefix fibo-fnd-agr-ctr: <https://spec.edmcouncil.org/fibo/ontology/FND/Agreements/Contracts/>.
+@prefix fibo-fnd-arr-cls: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/>.
+@prefix fibo-fnd-gao-obj: <https://spec.edmcouncil.org/fibo/ontology/FND/GoalsAndObjectives/Objectives/>.
+@prefix fibo-fnd-pas-pas: <https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/>.
+@prefix fibo-fnd-rel-rel: <https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/>.
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/>.
+@prefix fibo-loan-ln-ln: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/>.
+@prefix fibo-loan-ln-reg: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoansRegulatory/>.
+@prefix fibo-loan-reln-mtg: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/>.
+@prefix fibo-loan-reln-org: <https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/MortgageOrigination/>.
+@prefix fibo-loan-spc-prod: <https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/LoanProducts/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+
+_:autos2951 rdf:first fibo-fnd-pas-pas:Product;
+            rdf:rest _:autos2952.
+_:autos2952 rdf:first fibo-loan-reln-org:ChargeCategory;
+            rdf:rest rdf:nil.
+fibo-loan-ln-ln:Loan a owl:Class;
+                     rdfs:subClassOf [a owl:Restriction ; 
+                                      owl:onProperty cmns-cls:isClassifiedBy ; 
+                                      owl:someValuesFrom fibo-loan-spc-prod:LoanMarketCategory].
+fibo-loan-ln-reg:LoanProductRepresentations a owl:Class;
+                                            rdfs:subClassOf [a owl:Restriction ; 
+                                                             owl:onProperty cmns-doc:isAbout ; 
+                                                             owl:someValuesFrom fibo-loan-spc-prod:LoanProduct].
+fibo-loan-spc-prod: dcterms:abstract "This ontology describes loan and mortgage loan products. A product as defined here is something marketed and offered for sale, in this case a loan, such that when a customer takes on the product, they become signatories to a corresponding loan contract. A loan product in this sense is a contractual, off-the-shelf product with terms corresponding to those in the actual contract when it is signed.";
+                    dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI;
+                    a owl:Ontology;
+                    rdfs:label "Loan Products Ontology"@en;
+                    owl:imports <https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/DebtAndEquities/Debt/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/ProductsAndServices/FinancialProductsAndServices/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Accounting/CurrencyAmount/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Agreements/Contracts/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Arrangements/ClassificationSchemes/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/GoalsAndObjectives/Objectives/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/ProductsAndServices/ProductsAndServices/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Relations/Relations/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Utilities/AnnotationVocabulary/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansGeneral/Loans/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansGeneral/LoansRegulatory/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/RealEstateLoans/MortgageOrigination/>,
+                                <https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/RealEstateLoans/Mortgages/>,
+                                cmns-av:,
+                                cmns-cls:,
+                                cmns-col:,
+                                cmns-cxtdsg:,
+                                cmns-doc:,
+                                cmns-qtu:;
+                    owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/LoanProducts/>;
+                    fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional;
+                    cmns-av:copyright "Copyright (c) 2016-2024 EDM Council, Inc.".
+fibo-loan-spc-prod:AutoLoanPurpose a owl:Class;
+                                   rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                   rdfs:label "auto loan purpose"@en;
+                                   rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:BridgingLoanPurpose a owl:Class;
+                                       rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                       rdfs:label "bridging loan purpose"@en;
+                                       rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:ConstructionLoanPurpose a owl:Class;
+                                           rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                           rdfs:label "construction loan purpose"@en;
+                                           rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:CreditCardReceivablePurpose a owl:Class;
+                                               rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                               rdfs:label "credit card receivable purpose"@en;
+                                               rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:HomeEquityLoanPurpose a owl:Class;
+                                         rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                         rdfs:label "home equity loan purpose"@en;
+                                         rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:LineItem a owl:Class;
+                            rdfs:isDefinedBy fibo-loan-spc-prod:;
+                            rdfs:label "line item";
+                            rdfs:subClassOf cmns-col:Constituent,
+                                            [a owl:Restriction ; 
+                                             owl:onProperty fibo-loan-spc-prod:hasUnitCost ; 
+                                             owl:onClass fibo-fnd-acc-cur:MonetaryAmount ; 
+                                             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger],
+                                            [a owl:Restriction ; 
+                                             owl:onProperty cmns-qtu:hasNumericValue ; 
+                                             owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ; 
+                                             owl:onDataRange xsd:decimal],
+                                            [a owl:Restriction ; 
+                                             owl:onProperty fibo-loan-ln-ln:hasCost ; 
+                                             owl:someValuesFrom fibo-fnd-acc-cur:MonetaryAmount],
+                                            [a owl:Restriction ; 
+                                             owl:onProperty cmns-doc:refersTo ; 
+                                             owl:someValuesFrom [a owl:Class ; 
+                                                                 owl:unionOf _:autos2951]];
+                            skos:definition "description of a product or service including its unit cost, number of units and total cost";
+                            skos:editorialNote "Future consideration: move this to ProductsAndServices ontology (fibo-fnd-pas-pas).".
+fibo-loan-spc-prod:LoanMarketCategory a owl:Class;
+                                      rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                      rdfs:label "loan market category";
+                                      rdfs:subClassOf fibo-fnd-arr-cls:IndustrySectorClassifier;
+                                      skos:definition "category indicating the market domain in which the loan product is offered".
+fibo-loan-spc-prod:LoanMarketCategory-Automobile a owl:NamedIndividual,
+                                                   fibo-loan-spc-prod:LoanMarketCategory;
+                                                 rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                                 rdfs:label "auto loan".
+fibo-loan-spc-prod:LoanMarketCategory-Commercial a owl:NamedIndividual,
+                                                   fibo-loan-spc-prod:LoanMarketCategory;
+                                                 rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                                 rdfs:label "commercial loan".
+fibo-loan-spc-prod:LoanMarketCategory-Construction a owl:NamedIndividual,
+                                                     fibo-loan-spc-prod:LoanMarketCategory;
+                                                   rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                                   rdfs:label "construction loan".
+fibo-loan-spc-prod:LoanMarketCategory-Education a owl:NamedIndividual,
+                                                  fibo-loan-spc-prod:LoanMarketCategory;
+                                                rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                                rdfs:label "education loan".
+fibo-loan-spc-prod:LoanMarketCategory-Mortgage a owl:NamedIndividual,
+                                                 fibo-loan-spc-prod:LoanMarketCategory;
+                                               rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                               rdfs:label "mortgage loan".
+fibo-loan-spc-prod:LoanMarketCategory-Personal a owl:NamedIndividual,
+                                                 fibo-loan-spc-prod:LoanMarketCategory;
+                                               rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                               rdfs:label "personal loan".
+fibo-loan-spc-prod:LoanMarketCategory-SmallBusiness a owl:NamedIndividual,
+                                                      fibo-loan-spc-prod:LoanMarketCategory;
+                                                    rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                                    rdfs:label "small business loan";
+                                                    cmns-av:explanatoryNote "This is related to the mortgage loan purpose: 'business or commercial'.".
+fibo-loan-spc-prod:LoanProduct a owl:Class;
+                               rdfs:isDefinedBy fibo-loan-spc-prod:;
+                               rdfs:label "loan product";
+                               rdfs:subClassOf fibo-fbc-dae-dbt:CreditFacility,
+                                               fibo-fbc-pas-fpas:FinancialProduct,
+                                               [a owl:Restriction ; 
+                                                owl:onProperty cmns-doc:refersTo ; 
+                                                owl:onClass fibo-fbc-dae-dbt:Collateral ; 
+                                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger],
+                                               [a owl:Restriction ; 
+                                                owl:onProperty fibo-loan-spc-prod:hasPreconditions ; 
+                                                owl:onClass fibo-fnd-agr-ctr:ConditionPrecedent ; 
+                                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger],
+                                               [a owl:Restriction ; 
+                                                owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ; 
+                                                owl:onClass fibo-loan-ln-ln:Loan ; 
+                                                owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger];
+                               skos:definition "financial product that is realized as a loan that a party may acquire from a lending institution with specific characteristics and terms".
+fibo-loan-spc-prod:LoanProductDisclosureRight a owl:Class;
+                                              rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                              rdfs:label "loan product disclosure right"@en;
+                                              rdfs:subClassOf fibo-loan-ln-reg:ProductDisclosureRight;
+                                              skos:definition "Right to fair representation of the facts about Loan products before entrering into agreements for same."@en.
+fibo-loan-spc-prod:LoanProductOffering a owl:Class;
+                                       rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                       rdfs:label "loan offering";
+                                       rdfs:subClassOf fibo-fbc-pas-fpas:Offering,
+                                                       [a owl:Restriction ; 
+                                                        owl:onProperty cmns-col:hasMember ; 
+                                                        owl:onClass fibo-loan-spc-prod:LineItem ; 
+                                                        owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger],
+                                                       [a owl:Restriction ; 
+                                                        owl:onProperty cmns-cxtdsg:appliesTo ; 
+                                                        owl:someValuesFrom fibo-loan-spc-prod:LoanProduct];
+                                       skos:definition "offering related to a loan product that may be a tailored to particular circumstances, aimed at a group of borrowers or individual borrower".
+fibo-loan-spc-prod:LoanPurpose a owl:Class;
+                               rdfs:isDefinedBy fibo-loan-spc-prod:;
+                               rdfs:label "loan purpose"@en;
+                               rdfs:subClassOf fibo-fnd-gao-obj:Objective;
+                               skos:definition "A selection of different types of loan purpose, being the purpose for which and manner in which loan (credit) draw-down amounts are to be used. This shows the purpose for which credit is to be used, and implies certain kinds of fact that relate to that specific type of loan e.g. mortgages. These are also identified as tranche types in tranches of a credit facility."@en.
+fibo-loan-spc-prod:MortgageProduct a owl:Class;
+                                   rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                   rdfs:label "mortgage product"@en;
+                                   rdfs:subClassOf fibo-loan-spc-prod:LoanProduct,
+                                                   [a owl:Restriction ; 
+                                                    owl:onProperty fibo-fnd-rel-rel:isExemplifiedBy ; 
+                                                    owl:onClass fibo-loan-reln-mtg:LoanSecuredByRealEstate ; 
+                                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger].
+fibo-loan-spc-prod:MotorhomeLoanPurpose a owl:Class;
+                                        rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                        rdfs:label "motorhome loan purpose"@en;
+                                        rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:OrdinaryLoanPurpose a owl:Class;
+                                       rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                       rdfs:label "ordinary loan purpose"@en;
+                                       rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:OverdraftFacilityPurpose a owl:Class;
+                                            rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                            rdfs:label "overdraft facility purpose"@en;
+                                            rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:ResidentialHouseboatLoanPurpose a owl:Class;
+                                                   rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                                   rdfs:label "residential houseboat loan purpose"@en;
+                                                   rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:StudentLoanPurpose a owl:Class;
+                                      rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                      rdfs:label "student loan purpose"@en;
+                                      rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:WorkingCapitalPurpose a owl:Class;
+                                         rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                         rdfs:label "working capital purpose"@en;
+                                         rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.
+fibo-loan-spc-prod:hasPreconditions a owl:ObjectProperty;
+                                    rdfs:domain fibo-loan-spc-prod:LoanProduct;
+                                    rdfs:isDefinedBy fibo-loan-spc-prod:;
+                                    rdfs:label "has preconditions"@en;
+                                    rdfs:range fibo-fnd-agr-ctr:ConditionPrecedent.
+fibo-loan-spc-prod:hasUnitCost a owl:ObjectProperty;
+                               rdfs:isDefinedBy fibo-loan-spc-prod:;
+                               rdfs:label "has unit cost";
+                               rdfs:subPropertyOf fibo-loan-ln-ln:hasCost;
+                               skos:definition "relates an item to its unit cost";
+                               skos:editorialNote "Future consideration: move this property to ProductsAndServices ontology (fibo-fnd-pas-pas).".
+fibo-loan-reln-org:MortgageLoanPurpose a owl:Class;
+                                       rdfs:subClassOf fibo-loan-spc-prod:LoanPurpose.

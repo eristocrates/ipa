@@ -1,0 +1,65 @@
+@prefix fibo.BE.AllBE-Europe: <https://spec.edmcouncil.org/fibo/ontology/BE/AllBE-Europe/> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix fibo-beeu-all: <https://spec.edmcouncil.org/fibo/ontology/BE/AllBE-Europe/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+fibo-beeu-all: dcterms:abstract """This ontology provides metadata about the FIBO Business Entities (BE) Domain, which covers defines business concepts that are used for data governance, interoperability, and in regulatory reporting about business entities.
+
+The business scope of the BE ontologies covers a range of business and legal entities that are considered by financial industry firms, regulators and other industry participants to be of relevance in the financial services domain, including:
+ - Legal entities generally
+ - Corporate structure, ownership and control, including primary executive roles for businesses,
+ - Functional entities such as governments and government entities, non-governmental organizations, international organizations, not-for-profit organization, etc.
+ - Concepts specific to corporations, partnerships, private limited companies, sole proprietorships, and trusts.""";
+               dcterms:contributor "Adaptive, Inc.",
+                                   "Bloomberg LP",
+                                   "Citigroup",
+                                   "Credit Suisse",
+                                   "Deutsche Bank",
+                                   "EDM Council, Inc.",
+                                   "Exprentis",
+                                   "Federated Knowledge LLC",
+                                   "Hypercube Ltd.",
+                                   "John F. Gemski",
+                                   "Nordea Bank AB",
+                                   "Office of Financial Research (US Dept of the Treasury)",
+                                   "Pinnacle Bank (Morgan Hill, California)",
+                                   "State Street Bank and Trust",
+                                   "Statistics Canada",
+                                   "Tahoe Blue Ltd",
+                                   "Thematix Partners LLC",
+                                   "Wells Fargo",
+                                   "Working Ontologist",
+                                   "agnos.ai UK Ltd.";
+               dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime;
+               dcterms:license """Copyright (c) 2018-2025 EDM Council, Inc.
+Copyright (c) 2018-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""";
+               dcterms:modified "2025-05-27T18:00:00"^^xsd:dateTime;
+               dcterms:title "EDMC Financial Industry Business Ontology (FIBO) Business Entities (BE) Domain, European Extension";
+               a owl:Ontology;
+               rdfs:label "Business Entities Domain, European Extension";
+               rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI;
+               owl:imports <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/AllBE/>,
+                           <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/>,
+                           <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/GovernmentEntities/EuropeanJurisdiction/EasternEuropeGovernmentEntitiesAndJurisdictions/>,
+                           <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/GovernmentEntities/EuropeanJurisdiction/NorthernEuropeGovernmentEntitiesAndJurisdictions/>,
+                           <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/GovernmentEntities/EuropeanJurisdiction/SouthernEuropeGovernmentEntitiesAndJurisdictions/>,
+                           <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/GovernmentEntities/EuropeanJurisdiction/UKGovernmentEntitiesAndJurisdictions/>,
+                           <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/GovernmentEntities/EuropeanJurisdiction/WesternEuropeGovernmentEntitiesAndJurisdictions/>;
+               owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/AllBE-Europe/>;
+               cmns-av:copyright "Copyright (c) 2018-2025 EDM Council, Inc.",
+                                 "Copyright (c) 2018-2025 Object Management Group, Inc.";
+               cmns-av:explanatoryNote "The 'all' ontology for BE (European Extension) is provided for convenience for FIBO users.  This ontology does not add new assertions, but imports most of the Production (Released) ontologies that comprise the FIBO Business Entities (BE) domain, including all individuals for European governments and jurisdictions, and the related LCC region-specific ontologies. Note that the 45 ISO 3166-2 subdivision ontologies included are those defined as being part of Europe in the U.N. M49 Codes.".

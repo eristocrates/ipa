@@ -1,0 +1,49 @@
+@prefix arcaea.masqueradelegion: <https://arcaea.lowiro.com/#masqueradelegion#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.masqueradelegion:.
+arcaea.masqueradelegion: arcaea:artist <https://arcaea.lowiro.com/#Srav3R%20&%20DJ%20Noriken>;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:tanoc_conflict;
+                         arcaea:bg_inverse arcaea:tanoc_light;
+                         arcaea:bpm "175"@en-us;
+                         arcaea:bpm_base 175 ;
+                         arcaea:category arcaea:original;
+                         arcaea:date 1709856007 ;
+                         arcaea:difficulties arcaea.masqueradelegion:FTR,
+                                             arcaea.masqueradelegion:PRS,
+                                             arcaea.masqueradelegion:PST;
+                         arcaea:id "masqueradelegion"@en-us;
+                         arcaea:idx 375 ;
+                         arcaea:purchase "masqueradelegion"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "すれいばー"@ja,
+                                             "でぃーじぇーのりけん"@ja,
+                                             "でぃーじぇいのりけん"@ja,
+                                             "슬레이버"@ko,
+                                             "디제이 노리켄"@ko,
+                                             "ますかれーどれぎおん"@ja,
+                                             "마스커레이드 리전"@ko,
+                                             "마스커레이드 레기온"@ko;
+                         arcaea:set "single"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "Masquerade Legion"@en;
+                         arcaea:version "5.4"@en-us;
+                         arcaea:world_unlock false.
+arcaea.masqueradelegion:FTR arcaea:chartDesigner arcaea:Nitro%20%E3%80%8CThe%20Veiled%E3%80%8D;
+                            arcaea:jacketDesigner "KEI"@en-us;
+                            arcaea:rating 10 ;
+                            arcaea:ratingClass 2 .
+arcaea.masqueradelegion:PRS arcaea:chartDesigner arcaea:Nitro%20%E3%80%8CThe%20Veiled%E3%80%8D;
+                            arcaea:jacketDesigner "KEI"@en-us;
+                            arcaea:rating 6 ;
+                            arcaea:ratingClass 1 .
+arcaea.masqueradelegion:PST arcaea:chartDesigner arcaea:Nitro%20%E3%80%8CThe%20Veiled%E3%80%8D;
+                            arcaea:jacketDesigner "KEI"@en-us;
+                            arcaea:rating 3 ;
+                            arcaea:ratingClass 0 .

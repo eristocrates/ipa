@@ -1,0 +1,50 @@
+@prefix arcaea.dualdependency: <https://arcaea.lowiro.com/#dualdependency#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dualdependency:.
+arcaea.dualdependency: arcaea:artist arcaea:seatrus;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:anima_light;
+                       arcaea:bg_inverse arcaea:anima_conflict;
+                       arcaea:bpm "155"@en-us;
+                       arcaea:bpm_base 155 ;
+                       arcaea:date 1753315203 ;
+                       arcaea:difficulties arcaea.dualdependency:FTR,
+                                           arcaea.dualdependency:PRS,
+                                           arcaea.dualdependency:PST,
+                                           arcaea.dualdependency:ETR;
+                       arcaea:id "dualdependency"@en-us;
+                       arcaea:idx 475 ;
+                       arcaea:purchase "anima"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "しーとらす"@ja,
+                                           "시트러스"@ko,
+                                           "でゅあるでぃぺんでんしー"@ja,
+                                           "듀얼 디펜던시"@ko;
+                       arcaea:set "anima"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Dual Dependency"@en;
+                       arcaea:version "6.7"@en-us;
+                       arcaea:world_unlock false.
+arcaea.dualdependency:ETR arcaea:chartDesigner arcaea:%E7%B5%B6%E2%88%A5%E6%BB%85;
+                          arcaea:jacketDesigner "U0"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 4 .
+arcaea.dualdependency:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E2%88%A5%E6%BB%85;
+                          arcaea:jacketDesigner "U0"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.dualdependency:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E2%88%A5%E6%BB%85;
+                          arcaea:jacketDesigner "U0"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 ;
+                          arcaea:ratingPlus true.
+arcaea.dualdependency:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E2%88%A5%E6%BB%85;
+                          arcaea:jacketDesigner "U0"@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

@@ -1,0 +1,53 @@
+@prefix arcaea.astralquant: <https://arcaea.lowiro.com/#astralquant#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.astralquant:.
+arcaea.astralquant: arcaea:artist arcaea:Dj%20Grimoire;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:lephon;
+                    arcaea:bg_inverse arcaea:lephon;
+                    arcaea:bpm "185"@en-us;
+                    arcaea:bpm_base 185 ;
+                    arcaea:date 1732147211 ;
+                    arcaea:difficulties arcaea.astralquant:PRS,
+                                        arcaea.astralquant:PST,
+                                        arcaea.astralquant:FTR;
+                    arcaea:id "astralquant"@en-us;
+                    arcaea:idx 434 ;
+                    arcaea:purchase "lephon"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "でぃーじぇーぐりもあ"@ja,
+                                        "でぃーじぇいぐりもあ"@ja,
+                                        "でぃーじぇーぐりもわーる"@ja,
+                                        "でぃーじぇいぐりもわーる"@ja,
+                                        "디제이 그리모어"@ko,
+                                        "あすとらるくおんたいぜーしょん"@ja,
+                                        "아스트랄 퀀티제이션"@ko;
+                    arcaea:set "lephon"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "Astral Quantization"@en;
+                    arcaea:version "6.0"@en-us;
+                    arcaea:world_unlock false.
+arcaea.astralquant:FTR arcaea:chartDesigner arcaea:%CE%A8;
+                       arcaea:hidden_until "song"@en-us;
+                       arcaea:hidden_until_unlocked true;
+                       arcaea:jacketDesigner "Enji"@en-us;
+                       arcaea:rating 10 ;
+                       arcaea:ratingClass 2 .
+arcaea.astralquant:PRS arcaea:chartDesigner arcaea:%CE%A8;
+                       arcaea:hidden_until "song"@en-us;
+                       arcaea:hidden_until_unlocked true;
+                       arcaea:jacketDesigner "Enji"@en-us;
+                       arcaea:rating 8 ;
+                       arcaea:ratingClass 1 .
+arcaea.astralquant:PST arcaea:chartDesigner arcaea:%CE%A8;
+                       arcaea:hidden_until "song"@en-us;
+                       arcaea:hidden_until_unlocked true;
+                       arcaea:jacketDesigner "Enji"@en-us;
+                       arcaea:rating 5 ;
+                       arcaea:ratingClass 0 .

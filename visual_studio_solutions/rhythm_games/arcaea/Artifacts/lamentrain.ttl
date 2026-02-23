@@ -1,0 +1,58 @@
+@prefix arcaea.lamentrain: <https://arcaea.lowiro.com/#lamentrain#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lamentrain:.
+arcaea.lamentrain: arcaea:artist arcaea:Ashrount%20vs.%20%E6%89%93%E6%89%93%E3%81%A0%E3%81%84%E3%81%9A;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:lamentrain;
+                   arcaea:bg_inverse arcaea:lamentrain;
+                   arcaea:bpm "200"@en-us;
+                   arcaea:bpm_base 200 ;
+                   arcaea:byd_local_unlock true;
+                   arcaea:date 1732147209 ;
+                   arcaea:difficulties arcaea.lamentrain:BYD,
+                                       arcaea.lamentrain:FTR,
+                                       arcaea.lamentrain:PRS,
+                                       arcaea.lamentrain:PST;
+                   arcaea:id "lamentrain"@en-us;
+                   arcaea:idx 432 ;
+                   arcaea:purchase "lephon"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "あしゅらうんと"@ja,
+                                       "だだだいず"@ja,
+                                       "애쉬라운트"@ko,
+                                       "애쉬런트"@ko,
+                                       "다다다이즈"@ko,
+                                       "dadadaizu"@en,
+                                       "dddice"@en,
+                                       "らめんとれいん"@ja,
+                                       "라멘트 레인"@ko;
+                   arcaea:set "lephon"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Lament Rain"@en;
+                   arcaea:version "6.0"@en-us;
+                   arcaea:world_unlock false.
+arcaea.lamentrain:BYD arcaea:chartDesigner arcaea:%E2%87%86%20Projection;
+                      arcaea:hidden_until "none"@en-us;
+                      arcaea:jacketDesigner "ああもんど"@en-us;
+                      arcaea:legacy11 true;
+                      arcaea:rating 11 ;
+                      arcaea:ratingClass 3 .
+arcaea.lamentrain:FTR arcaea:chartDesigner arcaea:%E2%87%86%20Separation;
+                      arcaea:jacketDesigner "ああもんど"@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 2 .
+arcaea.lamentrain:PRS arcaea:chartDesigner arcaea:%E2%87%86%20Sublimation;
+                      arcaea:jacketDesigner "ああもんど"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 1 ;
+                      arcaea:ratingPlus true.
+arcaea.lamentrain:PST arcaea:chartDesigner arcaea:%E2%87%86%20Fixation;
+                      arcaea:jacketDesigner "ああもんど"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 0 .

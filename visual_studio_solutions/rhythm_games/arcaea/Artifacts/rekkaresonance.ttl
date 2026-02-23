@@ -1,0 +1,51 @@
+@prefix arcaea.rekkaresonance: <https://arcaea.lowiro.com/#rekkaresonance#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.rekkaresonance:.
+arcaea.rekkaresonance: arcaea:artist arcaea:REDALiCE%20vs%20Kobaryo;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:tanoc_red;
+                       arcaea:bpm "240"@en-us;
+                       arcaea:bpm_base 240 ;
+                       arcaea:category arcaea:partner;
+                       arcaea:date 1625011201 ;
+                       arcaea:difficulties arcaea.rekkaresonance:FTR,
+                                           arcaea.rekkaresonance:PRS,
+                                           arcaea.rekkaresonance:PST;
+                       arcaea:id "rekkaresonance"@en-us;
+                       arcaea:idx 220 ;
+                       arcaea:purchase "rekkaresonance"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "れっどありす"@ja,
+                                           "こばりょー"@ja,
+                                           "레드앨리스"@ko,
+                                           "코바료"@ko,
+                                           "れっかれぞなんす"@ja,
+                                           "렉카 레조넌스"@ko,
+                                           "렛카 레조넌스"@ko,
+                                           "열화 레조넌스"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "烈華RESONANCE"@ja,
+                                              "REKKA RESONANCE"@en;
+                       arcaea:version "3.6"@en-us;
+                       arcaea:world_unlock false.
+arcaea.rekkaresonance:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20vs%20Nitro;
+                          arcaea:jacketDesigner "Nagu + yusi."@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.rekkaresonance:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20vs%20Nitro;
+                          arcaea:jacketDesigner "Nagu + yusi."@en-us;
+                          arcaea:rating 8 ;
+                          arcaea:ratingClass 1 ;
+                          arcaea:ratingPlus true.
+arcaea.rekkaresonance:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA%20vs%20Nitro;
+                          arcaea:jacketDesigner "Nagu + yusi."@en-us;
+                          arcaea:rating 5 ;
+                          arcaea:ratingClass 0 .

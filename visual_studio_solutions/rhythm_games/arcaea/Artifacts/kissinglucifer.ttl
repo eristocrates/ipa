@@ -1,0 +1,46 @@
+@prefix arcaea.kissinglucifer: <https://arcaea.lowiro.com/#kissinglucifer#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.kissinglucifer:.
+arcaea.kissinglucifer: arcaea:artist <https://arcaea.lowiro.com/#ETIA.>;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:single2_conflict;
+                       arcaea:bg_inverse arcaea:single2_light;
+                       arcaea:bpm "170"@en-us;
+                       arcaea:bpm_base 170 ;
+                       arcaea:category arcaea:original;
+                       arcaea:date 1645056005 ;
+                       arcaea:difficulties arcaea.kissinglucifer:PRS,
+                                           arcaea.kissinglucifer:PST,
+                                           arcaea.kissinglucifer:FTR;
+                       arcaea:id "kissinglucifer"@en-us;
+                       arcaea:idx 259 ;
+                       arcaea:purchase "kissinglucifer"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "えちあ"@ja,
+                                           "에치아"@ko,
+                                           "きっしんぐるしふぁー"@ja,
+                                           "키싱 루시퍼"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "Kissing Lucifer"@en;
+                       arcaea:version "3.12"@en-us;
+                       arcaea:world_unlock false.
+arcaea.kissinglucifer:FTR arcaea:chartDesigner arcaea:NITRO;
+                          arcaea:jacketDesigner "Siino"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 .
+arcaea.kissinglucifer:PRS arcaea:chartDesigner arcaea:NITRO;
+                          arcaea:jacketDesigner "Siino"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 ;
+                          arcaea:ratingPlus true.
+arcaea.kissinglucifer:PST arcaea:chartDesigner arcaea:NITRO;
+                          arcaea:jacketDesigner "Siino"@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

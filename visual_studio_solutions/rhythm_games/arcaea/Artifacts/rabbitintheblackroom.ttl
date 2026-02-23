@@ -1,0 +1,43 @@
+@prefix arcaea.rabbitintheblackroom: <https://arcaea.lowiro.com/#rabbitintheblackroom#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.rabbitintheblackroom:.
+arcaea.rabbitintheblackroom: arcaea:artist arcaea:Rabbit%20House;
+                             arcaea:audioPreview 14665 ;
+                             arcaea:audioPreviewEnd 43110 ;
+                             arcaea:bg arcaea:base_conflict;
+                             arcaea:bg_inverse arcaea:base_light;
+                             arcaea:bpm "270"@en-us;
+                             arcaea:bpm_base 270 ;
+                             arcaea:date 1505520000 ;
+                             arcaea:difficulties arcaea.rabbitintheblackroom:PRS,
+                                                 arcaea.rabbitintheblackroom:PST,
+                                                 arcaea.rabbitintheblackroom:FTR;
+                             arcaea:id "rabbitintheblackroom"@en-us;
+                             arcaea:idx 49 ;
+                             arcaea:remote_dl true;
+                             arcaea:search_title "らびっとはうす"@ja,
+                                                 "래빗 하우스"@ko,
+                                                 "らびっといんざぶらっくるーむ"@ja,
+                                                 "래빗 인 더 블랙 룸"@ko;
+                             arcaea:set "base"@en-us;
+                             arcaea:side arcaea:conflict_side;
+                             arcaea:title_localized "Rabbit In The Black Room"@en;
+                             arcaea:version "1.1"@en-us;
+                             arcaea:world_unlock true.
+arcaea.rabbitintheblackroom:FTR arcaea:chartDesigner arcaea:Toaster;
+                                arcaea:jacketDesigner "YEONIE"@en-us;
+                                arcaea:rating 8 ;
+                                arcaea:ratingClass 2 .
+arcaea.rabbitintheblackroom:PRS arcaea:chartDesigner arcaea:Toaster;
+                                arcaea:jacketDesigner "YEONIE"@en-us;
+                                arcaea:rating 5 ;
+                                arcaea:ratingClass 1 .
+arcaea.rabbitintheblackroom:PST arcaea:chartDesigner arcaea:Toaster;
+                                arcaea:jacketDesigner "YEONIE"@en-us;
+                                arcaea:rating 2 ;
+                                arcaea:ratingClass 0 .

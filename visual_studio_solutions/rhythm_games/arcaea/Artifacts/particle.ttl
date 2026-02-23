@@ -1,0 +1,52 @@
+@prefix arcaea.particle: <https://arcaea.lowiro.com/#particle#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.particle:.
+arcaea.particle: arcaea:artist <https://arcaea.lowiro.com/#Lime%20/%20Kankitsu>;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:nijuusei2_conflict;
+                 arcaea:bg_inverse arcaea:nijuusei2_light;
+                 arcaea:bpm "142"@en-us;
+                 arcaea:bpm_base 142 ;
+                 arcaea:date 1761782402 ;
+                 arcaea:difficulties arcaea.particle:FTR,
+                                     arcaea.particle:PRS,
+                                     arcaea.particle:PST,
+                                     arcaea.particle:ETR;
+                 arcaea:id "particle"@en-us;
+                 arcaea:idx 495 ;
+                 arcaea:purchase "extend_4"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "らいむ"@ja,
+                                     "かんきつ"@ja,
+                                     "라임"@ko,
+                                     "칸키츠"@ko,
+                                     "ぱーてぃくる"@ja,
+                                     "파티클"@ko;
+                 arcaea:set "extend_4"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "Particle"@en;
+                 arcaea:version "6.10"@en-us;
+                 arcaea:world_unlock true.
+arcaea.particle:ETR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_strangeq;
+                    arcaea:jacketDesigner "Lime"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 4 ;
+                    arcaea:ratingPlus true.
+arcaea.particle:FTR arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96_charmq;
+                    arcaea:jacketDesigner "Lime"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.particle:PRS arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                    arcaea:jacketDesigner "Lime"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.particle:PST arcaea:chartDesigner arcaea:M%E7%90%86%E8%AB%96;
+                    arcaea:jacketDesigner "Lime"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

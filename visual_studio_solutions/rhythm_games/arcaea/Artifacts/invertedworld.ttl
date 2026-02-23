@@ -1,0 +1,53 @@
+@prefix arcaea.invertedworld: <https://arcaea.lowiro.com/#invertedworld#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.invertedworld:.
+arcaea.invertedworld: arcaea:artist arcaea:ARForest;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:rotaeno_light;
+                      arcaea:bg_inverse arcaea:rotaeno_conflict;
+                      arcaea:bpm "180"@en-us;
+                      arcaea:bpm_base 180 ;
+                      arcaea:date 1724889603 ;
+                      arcaea:difficulties arcaea.invertedworld:FTR,
+                                          arcaea.invertedworld:PRS,
+                                          arcaea.invertedworld:PST,
+                                          arcaea.invertedworld:ETR;
+                      arcaea:id "invertedworld"@en-us;
+                      arcaea:idx 410 ;
+                      arcaea:purchase "rotaeno"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "えーあーるふぉれすと"@ja,
+                                          "에이알 포레스트"@ko,
+                                          "いんばーてっどわーるど"@ja,
+                                          "いんゔぁーてっどわーるど"@ja,
+                                          "인버티드 월드"@ko;
+                      arcaea:set "rotaeno"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:source_copyright "© Dream Engine Games"@en-us;
+                      arcaea:title_localized "Inverted World"@en,
+                                             "Rotaeno"@en;
+                      arcaea:version "5.10"@en-us;
+                      arcaea:world_unlock false.
+arcaea.invertedworld:ETR arcaea:chartDesigner arcaea:%E8%81%96%E8%BC%AA%E2%86%93%E2%86%91%E5%A4%9C%E6%B5%AA;
+                         arcaea:jacketDesigner "Mechari"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 4 ;
+                         arcaea:ratingPlus true.
+arcaea.invertedworld:FTR arcaea:chartDesigner arcaea:%E2%86%91%C3%A9n%E2%86%93;
+                         arcaea:jacketDesigner "Mechari"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 .
+arcaea.invertedworld:PRS arcaea:chartDesigner arcaea:%E2%86%91%C3%A9n%E2%86%93;
+                         arcaea:jacketDesigner "Mechari"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 .
+arcaea.invertedworld:PST arcaea:chartDesigner arcaea:%E2%86%91%C3%A9n%E2%86%93;
+                         arcaea:jacketDesigner "Mechari"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

@@ -1,0 +1,57 @@
+@prefix arcaea.trappola: <https://arcaea.lowiro.com/#trappola#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.trappola:.
+arcaea.trappola: arcaea:artist <https://arcaea.lowiro.com/#gmtn.>;
+                 arcaea:audioPreview 36680 ;
+                 arcaea:audioPreviewEnd 66996 ;
+                 arcaea:bg arcaea:yugamu;
+                 arcaea:bg_inverse arcaea:rei;
+                 arcaea:bpm "190"@en-us;
+                 arcaea:bpm_base 190 ;
+                 arcaea:date 1509667205 ;
+                 arcaea:difficulties arcaea.trappola:BYD,
+                                     arcaea.trappola:FTR,
+                                     arcaea.trappola:PRS,
+                                     arcaea.trappola:PST;
+                 arcaea:id "trappola"@en-us;
+                 arcaea:idx 52 ;
+                 arcaea:purchase "yugamu"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "がむつん"@ja,
+                                     "가무츤"@ko,
+                                     "ようえんまじょとらっぽらびーうぃっちんぐ"@ja,
+                                     "트래폴라 비윗칭"@ko,
+                                     "트라폴라 비윗칭"@ko,
+                                     "요엔마죠 토랏포라 비윗칭구"@ko,
+                                     "요염마녀 트래폴라 비윗칭"@ko,
+                                     "요염마녀 트라폴라 비윗칭"@ko;
+                 arcaea:set "yugamu"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "妖艶魔女 -trappola bewitching-"@ja,
+                                        "trappola bewitching"@en;
+                 arcaea:version "1.5"@en-us.
+arcaea.trappola:BYD arcaea:chartDesigner arcaea:NITRO%20-mesmerize-;
+                    arcaea:date 1677715200 ;
+                    arcaea:jacketDesigner "Shionty"@en-us;
+                    arcaea:jacketOverride true;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 3 ;
+                    arcaea:version "4.3"@en-us.
+arcaea.trappola:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//urorak>;
+                    arcaea:jacketDesigner "Shionty"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.trappola:PRS arcaea:chartDesigner arcaea:Kurorak;
+                    arcaea:jacketDesigner "Shionty"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.trappola:PST arcaea:chartDesigner arcaea:Kurorak;
+                    arcaea:jacketDesigner "Shionty"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

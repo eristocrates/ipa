@@ -1,0 +1,43 @@
+@prefix arcaea.lethaeus: <https://arcaea.lowiro.com/#lethaeus#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lethaeus:.
+arcaea.lethaeus: arcaea:artist arcaea:Silentroom;
+                 arcaea:audioPreview 89806 ;
+                 arcaea:audioPreviewEnd 114580 ;
+                 arcaea:bg arcaea:lethaeus;
+                 arcaea:bpm "155"@en-us;
+                 arcaea:bpm_base 155 ;
+                 arcaea:date 1502323205 ;
+                 arcaea:difficulties arcaea.lethaeus:PRS,
+                                     arcaea.lethaeus:PST,
+                                     arcaea.lethaeus:FTR;
+                 arcaea:id "lethaeus"@en-us;
+                 arcaea:idx 42 ;
+                 arcaea:purchase "mirai"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "さいれんとるーむ"@ja,
+                                     "사일런트 룸"@ko,
+                                     "れーてうす"@ja,
+                                     "레테우스"@ko;
+                 arcaea:set "mirai"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "Lethaeus"@en;
+                 arcaea:version "1.1"@en-us.
+arcaea.lethaeus:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                    arcaea:jacketDesigner "softmode"@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.lethaeus:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                    arcaea:jacketDesigner "softmode"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.lethaeus:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                    arcaea:jacketDesigner "softmode"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

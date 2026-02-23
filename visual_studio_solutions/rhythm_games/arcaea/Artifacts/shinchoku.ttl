@@ -1,0 +1,58 @@
+@prefix arcaea.shinchoku: <https://arcaea.lowiro.com/#shinchoku#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.shinchoku:.
+arcaea.shinchoku: arcaea:artist arcaea:sumijun%20feat.%20%E3%81%AA%E3%81%AA%E3%81%B2%E3%82%89;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:touhou_light;
+                  arcaea:bg_inverse arcaea:touhou_conflict;
+                  arcaea:bpm "199"@en-us;
+                  arcaea:bpm_base 199 ;
+                  arcaea:category arcaea:poprec;
+                  arcaea:date 1743033601 ;
+                  arcaea:difficulties arcaea.shinchoku:FTR,
+                                      arcaea.shinchoku:PRS,
+                                      arcaea.shinchoku:PST,
+                                      arcaea.shinchoku:ETR;
+                  arcaea:id "shinchoku"@en-us;
+                  arcaea:idx 452 ;
+                  arcaea:purchase "shinchoku"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "すみじゅん"@ja,
+                                      "ななひら"@ja,
+                                      "스미쥰"@ko,
+                                      "나나히라"@ko,
+                                      "しんちょくどうですか"@ja,
+                                      "신쵸쿠 도데스카"@ko,
+                                      "얼마나 진행하셨나요"@ko,
+                                      "진행 어떻습니까"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                  arcaea:title_localized "進捗どうですか?"@ja,
+                                         "Shinchoku Doudesuka?"@en;
+                  arcaea:version "6.3"@en-us;
+                  arcaea:world_unlock false.
+arcaea.shinchoku:ETR arcaea:chartDesigner arcaea:%E9%80%B2%E6%8D%97%E3%83%80%E3%83%A1%E3%81%A7%E3%81%99;
+                     arcaea:jacketDesigner "とろ美"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 4 ;
+                     arcaea:ratingPlus true.
+arcaea.shinchoku:FTR arcaea:chartDesigner arcaea:%E3%82%82%E3%81%86%E5%B0%91%E3%81%97%E5%BE%85%E3%81%A3%E3%81%A6%E3%81%A6%E3%81%AD;
+                     arcaea:jacketDesigner "とろ美"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.shinchoku:PRS arcaea:chartDesigner arcaea:%E4%BB%8A%E3%81%8B%E3%82%89%E3%82%84%E3%82%8A%E3%81%BE%E3%81%99;
+                     arcaea:jacketDesigner "とろ美"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.shinchoku:PST arcaea:chartDesigner arcaea:%E6%98%8E%E6%97%A5%E3%81%8B%E3%82%89%E9%A0%91%E5%BC%B5%E3%82%8B;
+                     arcaea:jacketDesigner "とろ美"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

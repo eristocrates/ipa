@@ -1,0 +1,47 @@
+@prefix arcaea.empireofwinter: <https://arcaea.lowiro.com/#empireofwinter#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.empireofwinter:.
+arcaea.empireofwinter: arcaea:artist arcaea:Street;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:nijuusei-light-b;
+                       arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+                       arcaea:bpm "175"@en-us;
+                       arcaea:bpm_base 175 ;
+                       arcaea:category arcaea:partner;
+                       arcaea:date 1545523200 ;
+                       arcaea:difficulties arcaea.empireofwinter:PRS,
+                                           arcaea.empireofwinter:PST,
+                                           arcaea.empireofwinter:FTR;
+                       arcaea:id "empireofwinter"@en-us;
+                       arcaea:idx 105 ;
+                       arcaea:purchase "empireofwinter"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "すとりーと"@ja,
+                                           "스트릿"@ko,
+                                           "스트리트"@ko,
+                                           "えんぱいあおぶうぃんたー"@ja,
+                                           "えんぱいあーおぶうぃんたー"@ja,
+                                           "엠파이어 오브 윈터"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "Empire of Winter"@en;
+                       arcaea:version "1.8"@en-us;
+                       arcaea:world_unlock false.
+arcaea.empireofwinter:FTR arcaea:chartDesigner arcaea:0%C2%B0Nitro;
+                          arcaea:jacketDesigner "シエラ + Khronetic"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.empireofwinter:PRS arcaea:chartDesigner arcaea:0%C2%B0Nitro;
+                          arcaea:jacketDesigner "シエラ + Khronetic"@en-us;
+                          arcaea:rating 6 ;
+                          arcaea:ratingClass 1 .
+arcaea.empireofwinter:PST arcaea:chartDesigner arcaea:0%C2%B0Nitro;
+                          arcaea:jacketDesigner "シエラ + Khronetic"@en-us;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

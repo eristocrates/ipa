@@ -1,0 +1,41 @@
+﻿namespace Fibo.FND.Law.LegalCapacity.Namespace
+module LegalCapacity =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Law/LegalCapacity.rdf") (Some @"fibo.FND.Law.LegalCapacity") None
+    let Claim = {_prefixID with _localName = "Claim"}
+    let ContingentObligation = {_prefixID with _localName = "ContingentObligation"}
+    let ContingentRight = {_prefixID with _localName = "ContingentRight"}
+    let ContractualCapability = {_prefixID with _localName = "ContractualCapability"}
+    let ContractualInterest = {_prefixID with _localName = "ContractualInterest"}
+    let ContractualObligation = {_prefixID with _localName = "ContractualObligation"}
+    let ContractualOption = {_prefixID with _localName = "ContractualOption"}
+    let ContractualRight = {_prefixID with _localName = "ContractualRight"}
+    let DelegatedLegalAuthority = {_prefixID with _localName = "DelegatedLegalAuthority"}
+    let DeliveryObligation = {_prefixID with _localName = "DeliveryObligation"}
+    let Duty = {_prefixID with _localName = "Duty"}
+    let LegalCapacity = {_prefixID with _localName = "LegalCapacity"}
+    let LegalConstruct = {_prefixID with _localName = "LegalConstruct"}
+    let LegalObligation = {_prefixID with _localName = "LegalObligation"}
+    let LegalRight = {_prefixID with _localName = "LegalRight"}
+    let LiabilityCapacity = {_prefixID with _localName = "LiabilityCapacity"}
+    let License = {_prefixID with _localName = "License"}
+    let LicenseIdentifier = {_prefixID with _localName = "LicenseIdentifier"}
+    let Licensee = {_prefixID with _localName = "Licensee"}
+    let Licensor = {_prefixID with _localName = "Licensor"}
+    let LitigationCapacity = {_prefixID with _localName = "LitigationCapacity"}
+    let NotificationObligation = {_prefixID with _localName = "NotificationObligation"}
+    let Policy = {_prefixID with _localName = "Policy"}
+    let Regulation = {_prefixID with _localName = "Regulation"}
+    let ReportingPolicy = {_prefixID with _localName = "ReportingPolicy"}
+    let Right = {_prefixID with _localName = "Right"}
+    let SignatoryCapacity = {_prefixID with _localName = "SignatoryCapacity"}
+    let hasCapacity = {_prefixID with _localName = "hasCapacity"}
+    let hasFractionalInterest = {_prefixID with _localName = "hasFractionalInterest"}
+    let implements = {_prefixID with _localName = "implements"}
+    let implies = {_prefixID with _localName = "implies"}
+    let isCapacityOf = {_prefixID with _localName = "isCapacityOf"}
+    let isConferredOn = {_prefixID with _localName = "isConferredOn"}
+    let isImplementedBy = {_prefixID with _localName = "isImplementedBy"}
+    let isImpliedBy = {_prefixID with _localName = "isImpliedBy"}
+    let isLicensedBy = {_prefixID with _localName = "isLicensedBy"}
+    let isPredicatedOn = {_prefixID with _localName = "isPredicatedOn"}
+    let licenses = {_prefixID with _localName = "licenses"}

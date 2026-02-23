@@ -1,0 +1,45 @@
+@prefix arcaea.cocorocosmetic: <https://arcaea.lowiro.com/#cocorocosmetic#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.cocorocosmetic:.
+arcaea.cocorocosmetic: arcaea:artist arcaea:KOTONOHOUSE;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:single2_light;
+                       arcaea:bg_inverse arcaea:single2_conflict;
+                       arcaea:bpm "144"@en-us;
+                       arcaea:bpm_base 144 ;
+                       arcaea:category arcaea:original;
+                       arcaea:date 1668038400 ;
+                       arcaea:difficulties arcaea.cocorocosmetic:PRS,
+                                           arcaea.cocorocosmetic:PST,
+                                           arcaea.cocorocosmetic:FTR;
+                       arcaea:id "cocorocosmetic"@en-us;
+                       arcaea:idx 291 ;
+                       arcaea:purchase "cocorocosmetic"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "ことのはうす"@ja,
+                                           "코토노하우스"@ko,
+                                           "こころこすめてぃっく"@ja,
+                                           "코코로 코스메틱"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:light_side;
+                       arcaea:title_localized "cocoro*cosmetic"@en;
+                       arcaea:version "4.1"@en-us;
+                       arcaea:world_unlock false.
+arcaea.cocorocosmetic:FTR arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:jacketDesigner "wacca"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 .
+arcaea.cocorocosmetic:PRS arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:jacketDesigner "wacca"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.cocorocosmetic:PST arcaea:chartDesigner arcaea:Nitro;
+                          arcaea:jacketDesigner "wacca"@en-us;
+                          arcaea:rating 3 ;
+                          arcaea:ratingClass 0 .

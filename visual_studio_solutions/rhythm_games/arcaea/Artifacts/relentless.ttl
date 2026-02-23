@@ -1,0 +1,43 @@
+@prefix arcaea.relentless: <https://arcaea.lowiro.com/#relentless#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.relentless:.
+arcaea.relentless: arcaea:artist arcaea:Akira%20Complex;
+                   arcaea:audioPreview 44137 ;
+                   arcaea:audioPreviewEnd 77241 ;
+                   arcaea:bg arcaea:base_conflict;
+                   arcaea:bg_inverse arcaea:base_light;
+                   arcaea:bpm "174"@en-us;
+                   arcaea:bpm_base 174 ;
+                   arcaea:date 1487980814 ;
+                   arcaea:difficulties arcaea.relentless:PRS,
+                                       arcaea.relentless:PST,
+                                       arcaea.relentless:FTR;
+                   arcaea:id "relentless"@en-us;
+                   arcaea:idx 11 ;
+                   arcaea:purchase "core"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "あきらこんぷれっくす"@ja,
+                                       "아키라 컴플렉스"@ko,
+                                       "りれんとれす"@ja,
+                                       "릴렌트리스"@ko;
+                   arcaea:set "core"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Relentless"@en;
+                   arcaea:version "1.0"@en-us.
+arcaea.relentless:FTR arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "SERXPHIS"@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 2 .
+arcaea.relentless:PRS arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "SERXPHIS"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.relentless:PST arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "SERXPHIS"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

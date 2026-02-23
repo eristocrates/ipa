@@ -1,0 +1,43 @@
+@prefix arcaea.temptation: <https://arcaea.lowiro.com/#temptation#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.temptation:.
+arcaea.temptation: arcaea:artist arcaea:%E3%81%8B%E3%81%AD%E3%81%93%E3%81%A1%E3%81%AF%E3%82%8B;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:temptation;
+                   arcaea:bpm "160"@en-us;
+                   arcaea:bpm_base 160 ;
+                   arcaea:date 1677715207 ;
+                   arcaea:difficulties arcaea.temptation:FTR,
+                                       arcaea.temptation:PRS,
+                                       arcaea.temptation:PST;
+                   arcaea:id "temptation"@en-us;
+                   arcaea:idx 307 ;
+                   arcaea:purchase "maimai_append_1"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "카네코치하루"@ko,
+                                       "kaneko chiharu"@en,
+                                       "てんぷてーしょん"@ja,
+                                       "템테이션"@ko;
+                   arcaea:set "maimai_append_1"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:source_copyright "©SEGA"@en-us;
+                   arcaea:title_localized "TEmPTaTiON"@en,
+                                          "maimai"@en;
+                   arcaea:version "4.3"@en-us;
+                   arcaea:world_unlock false.
+arcaea.temptation:FTR arcaea:chartDesigner arcaea:EXtINcTiON;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.temptation:PRS arcaea:chartDesigner arcaea:EXtINcTiON;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 1 .
+arcaea.temptation:PST arcaea:chartDesigner arcaea:EXtINcTiON;
+                      arcaea:rating 5 ;
+                      arcaea:ratingClass 0 .

@@ -1,0 +1,43 @@
+@prefix arcaea.journey: <https://arcaea.lowiro.com/#journey#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.journey:.
+arcaea.journey: arcaea:artist arcaea:ARForest;
+                arcaea:audioPreview 76800 ;
+                arcaea:audioPreviewEnd 96000 ;
+                arcaea:bg arcaea:lanota-light;
+                arcaea:bg_inverse arcaea:lanota-conflict;
+                arcaea:bpm "200"@en-us;
+                arcaea:bpm_base 200 ;
+                arcaea:date 1517443202 ;
+                arcaea:difficulties arcaea.journey:FTR,
+                                    arcaea.journey:PRS,
+                                    arcaea.journey:PST;
+                arcaea:id "journey"@en-us;
+                arcaea:idx 64 ;
+                arcaea:no_stream true;
+                arcaea:purchase "lanota"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "えーあーるふぉれすと"@ja,
+                                    "에이알 포레스트"@ko,
+                                    "じゃーにー"@ja,
+                                    "저니"@ko,
+                                    "져니"@ko;
+                arcaea:set "lanota"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "Journey"@en,
+                                       "Lanota"@en;
+                arcaea:version "1.5"@en-us.
+arcaea.journey:FTR arcaea:chartDesigner arcaea:Kurorak;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.journey:PRS arcaea:chartDesigner arcaea:Kurorak;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.journey:PST arcaea:chartDesigner arcaea:Kurorak;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

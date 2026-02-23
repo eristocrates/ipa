@@ -1,0 +1,45 @@
+﻿namespace Fibo.BE.GovernmentEntities.NorthAmericanJurisdiction.CAGovernmentEntitiesAndJurisdictions.Namespace
+module CAGovernmentEntitiesAndJurisdictions =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/GovernmentEntities/NorthAmericanJurisdiction/CAGovernmentEntitiesAndJurisdictions.rdf") (Some @"fibo.BE.GovernmentEntities.NorthAmericanJurisdiction.CAGovernmentEntitiesAndJurisdictions") None
+    let CanadianEntity = {_prefixID with _localName = "CanadianEntity"}
+    let CanadianJurisdiction = {_prefixID with _localName = "CanadianJurisdiction"}
+    let GovernmentOfAlberta = {_prefixID with _localName = "GovernmentOfAlberta"}
+    let GovernmentOfBritishColumbia = {_prefixID with _localName = "GovernmentOfBritishColumbia"}
+    let GovernmentOfCanada = {_prefixID with _localName = "GovernmentOfCanada"}
+    let GovernmentOfManitoba = {_prefixID with _localName = "GovernmentOfManitoba"}
+    let GovernmentOfNewBrunswick = {_prefixID with _localName = "GovernmentOfNewBrunswick"}
+    let GovernmentOfNewfoundlandAndLabrador = {_prefixID with _localName = "GovernmentOfNewfoundlandAndLabrador"}
+    let GovernmentOfNorthwestTerritories = {_prefixID with _localName = "GovernmentOfNorthwestTerritories"}
+    let GovernmentOfNovaScotia = {_prefixID with _localName = "GovernmentOfNovaScotia"}
+    let GovernmentOfNunavut = {_prefixID with _localName = "GovernmentOfNunavut"}
+    let GovernmentOfOntario = {_prefixID with _localName = "GovernmentOfOntario"}
+    let GovernmentOfPrinceEdwardIsland = {_prefixID with _localName = "GovernmentOfPrinceEdwardIsland"}
+    let GovernmentOfQuebec = {_prefixID with _localName = "GovernmentOfQuebec"}
+    let GovernmentOfSaskatchewan = {_prefixID with _localName = "GovernmentOfSaskatchewan"}
+    let GovernmentOfYukon = {_prefixID with _localName = "GovernmentOfYukon"}
+    let NorthwestTerritoriesEntity = {_prefixID with _localName = "NorthwestTerritoriesEntity"}
+    let NorthwestTerritoriesJurisdiction = {_prefixID with _localName = "NorthwestTerritoriesJurisdiction"}
+    let NunavutEntity = {_prefixID with _localName = "NunavutEntity"}
+    let NunavutJurisdiction = {_prefixID with _localName = "NunavutJurisdiction"}
+    let ProvinceOfAlbertaEntity = {_prefixID with _localName = "ProvinceOfAlbertaEntity"}
+    let ProvinceOfAlbertaJurisdiction = {_prefixID with _localName = "ProvinceOfAlbertaJurisdiction"}
+    let ProvinceOfBritishColumbiaEntity = {_prefixID with _localName = "ProvinceOfBritishColumbiaEntity"}
+    let ProvinceOfBritishColumbiaJurisdiction = {_prefixID with _localName = "ProvinceOfBritishColumbiaJurisdiction"}
+    let ProvinceOfManitobaEntity = {_prefixID with _localName = "ProvinceOfManitobaEntity"}
+    let ProvinceOfManitobaJurisdiction = {_prefixID with _localName = "ProvinceOfManitobaJurisdiction"}
+    let ProvinceOfNewBrunswickEntity = {_prefixID with _localName = "ProvinceOfNewBrunswickEntity"}
+    let ProvinceOfNewBrunswickJurisdiction = {_prefixID with _localName = "ProvinceOfNewBrunswickJurisdiction"}
+    let ProvinceOfNewfoundlandAndLabradorEntity = {_prefixID with _localName = "ProvinceOfNewfoundlandAndLabradorEntity"}
+    let ProvinceOfNewfoundlandAndLabradorJurisdiction = {_prefixID with _localName = "ProvinceOfNewfoundlandAndLabradorJurisdiction"}
+    let ProvinceOfNovaScotiaEntity = {_prefixID with _localName = "ProvinceOfNovaScotiaEntity"}
+    let ProvinceOfNovaScotiaJurisdiction = {_prefixID with _localName = "ProvinceOfNovaScotiaJurisdiction"}
+    let ProvinceOfOntarioEntity = {_prefixID with _localName = "ProvinceOfOntarioEntity"}
+    let ProvinceOfOntarioJurisdiction = {_prefixID with _localName = "ProvinceOfOntarioJurisdiction"}
+    let ProvinceOfPrinceEdwardIslandEntity = {_prefixID with _localName = "ProvinceOfPrinceEdwardIslandEntity"}
+    let ProvinceOfPrinceEdwardIslandJurisdiction = {_prefixID with _localName = "ProvinceOfPrinceEdwardIslandJurisdiction"}
+    let ProvinceOfQuebecEntity = {_prefixID with _localName = "ProvinceOfQuebecEntity"}
+    let ProvinceOfQuebecJurisdiction = {_prefixID with _localName = "ProvinceOfQuebecJurisdiction"}
+    let ProvinceOfSaskatchewanEntity = {_prefixID with _localName = "ProvinceOfSaskatchewanEntity"}
+    let ProvinceOfSaskatchewanJurisdiction = {_prefixID with _localName = "ProvinceOfSaskatchewanJurisdiction"}
+    let YukonEntity = {_prefixID with _localName = "YukonEntity"}
+    let YukonJurisdiction = {_prefixID with _localName = "YukonJurisdiction"}

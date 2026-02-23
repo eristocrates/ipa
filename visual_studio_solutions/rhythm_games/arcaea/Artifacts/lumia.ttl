@@ -1,0 +1,51 @@
+@prefix arcaea.lumia: <https://arcaea.lowiro.com/#lumia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lumia:.
+arcaea.lumia: arcaea:artist arcaea:sky_delta;
+              arcaea:audioPreview 69600 ;
+              arcaea:audioPreviewEnd 100000 ;
+              arcaea:bg arcaea:base_light;
+              arcaea:bg_inverse arcaea:base_conflict;
+              arcaea:bpm "180"@en-us;
+              arcaea:bpm_base 180 ;
+              arcaea:date 1487980815 ;
+              arcaea:difficulties arcaea.lumia:FTR,
+                                  arcaea.lumia:PRS,
+                                  arcaea.lumia:PST,
+                                  arcaea.lumia:BYD;
+              arcaea:id "lumia"@en-us;
+              arcaea:idx 18 ;
+              arcaea:purchase "core"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "すかいでるた"@ja,
+                                  "스카이 델타"@ko,
+                                  "るみあ"@ja,
+                                  "루미아"@ko;
+              arcaea:set "core"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:title_localized "Lumia"@en;
+              arcaea:version "1.0"@en-us.
+arcaea.lumia:BYD arcaea:chartDesigner <https://arcaea.lowiro.com/#Toaster.>;
+                 arcaea:date 1604880000 ;
+                 arcaea:jacketDesigner "mins"@en-us;
+                 arcaea:jacketOverride true;
+                 arcaea:rating 9 ;
+                 arcaea:ratingClass 3 ;
+                 arcaea:version "3.2"@en-us.
+arcaea.lumia:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Toaster%20missing%20Nitro.>;
+                 arcaea:jacketDesigner "mins"@en-us;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 2 .
+arcaea.lumia:PRS arcaea:chartDesigner arcaea:Nitro;
+                 arcaea:jacketDesigner "mins"@en-us;
+                 arcaea:rating 5 ;
+                 arcaea:ratingClass 1 .
+arcaea.lumia:PST arcaea:chartDesigner arcaea:Nitro;
+                 arcaea:jacketDesigner "mins"@en-us;
+                 arcaea:rating 2 ;
+                 arcaea:ratingClass 0 .

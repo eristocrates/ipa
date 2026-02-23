@@ -1,0 +1,61 @@
+@prefix arcaea.einherjar: <https://arcaea.lowiro.com/#einherjar#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.einherjar:.
+arcaea.einherjar: arcaea:artist arcaea:DJ%20Genki%20vs%20Gram;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:tanoc_conflict;
+                  arcaea:bg_inverse arcaea:tanoc_light;
+                  arcaea:bpm "222"@en-us;
+                  arcaea:bpm_base 222 ;
+                  arcaea:category arcaea:original;
+                  arcaea:date 1579478401 ;
+                  arcaea:difficulties arcaea.einherjar:BYD,
+                                      arcaea.einherjar:FTR,
+                                      arcaea.einherjar:PRS,
+                                      arcaea.einherjar:PST;
+                  arcaea:id "einherjar"@en-us;
+                  arcaea:idx 147 ;
+                  arcaea:purchase "einherjar"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "でぃーじぇーげんき"@ja,
+                                      "でぃーじぇいげんき"@ja,
+                                      "ぐらむ"@ja,
+                                      "디제이 겐키"@ko,
+                                      "그람"@ko,
+                                      "그램"@ko,
+                                      "えいんへりやるじょーかー"@ja,
+                                      "えいんへりゃるじょーかー"@ja,
+                                      "에인헤야르 조커"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Einherjar Joker"@en;
+                  arcaea:version "2.5"@en-us;
+                  arcaea:world_unlock false.
+arcaea.einherjar:BYD arcaea:chartDesigner <https://arcaea.lowiro.com/#~REQUIEM~%20夜浪>;
+                     arcaea:date 1706140805 ;
+                     arcaea:hidden_until "difficulty"@en-us;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:jacketOverride true;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 3 ;
+                     arcaea:ratingPlus true;
+                     arcaea:version "5.3"@en-us.
+arcaea.einherjar:FTR arcaea:chartDesigner arcaea:Requiem%20TaroNuke;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.einherjar:PRS arcaea:chartDesigner arcaea:Requiem%20TaroNuke;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.einherjar:PST arcaea:chartDesigner arcaea:Requiem%20TaroNuke;
+                     arcaea:jacketDesigner "すずなし"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

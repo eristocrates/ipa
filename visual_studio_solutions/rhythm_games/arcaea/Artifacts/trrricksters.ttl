@@ -1,0 +1,47 @@
+@prefix arcaea.trrricksters: <https://arcaea.lowiro.com/#trrricksters#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.trrricksters:.
+arcaea.trrricksters: arcaea:artist arcaea:s-don%20vs.%20%E7%BF%A1%E4%B9%83%E3%82%A4%E3%82%B9%E3%82%AB;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:chunithmnew_conflict;
+                     arcaea:bg_inverse arcaea:chunithmnew_light;
+                     arcaea:bpm "155"@en-us;
+                     arcaea:bpm_base 155 ;
+                     arcaea:date 1679529603 ;
+                     arcaea:difficulties arcaea.trrricksters:FTR,
+                                         arcaea.trrricksters:PRS,
+                                         arcaea.trrricksters:PST;
+                     arcaea:id "trrricksters"@en-us;
+                     arcaea:idx 312 ;
+                     arcaea:purchase "chunithm_append_2"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "すうどん"@ja,
+                                         "ひのいすか"@ja,
+                                         "에스돈"@ko,
+                                         "히노스이카"@ko,
+                                         "hino isuka"@en,
+                                         "とりっくすたーず"@ja,
+                                         "트릭스터즈"@ko,
+                                         "트릭스터스"@ko;
+                     arcaea:set "chunithm_append_2"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:source_copyright "©SEGA"@en-us;
+                     arcaea:title_localized "Trrricksters!!"@en,
+                                            "CHUNITHM"@en;
+                     arcaea:version "4.4"@en-us;
+                     arcaea:world_unlock false.
+arcaea.trrricksters:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                        arcaea:rating 10 ;
+                        arcaea:ratingClass 2 .
+arcaea.trrricksters:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                        arcaea:rating 7 ;
+                        arcaea:ratingClass 1 .
+arcaea.trrricksters:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                        arcaea:rating 4 ;
+                        arcaea:ratingClass 0 .

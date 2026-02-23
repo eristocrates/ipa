@@ -1,0 +1,57 @@
+@prefix arcaea.nexttoyou: <https://arcaea.lowiro.com/#nexttoyou#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.nexttoyou:.
+arcaea.nexttoyou: arcaea:artist arcaea:uma%20feat.%20%E6%A9%98%E8%8A%B1%E9%9F%B3;
+                  arcaea:audioPreview 51636 ;
+                  arcaea:audioPreviewEnd 78545 ;
+                  arcaea:bg arcaea:nijuusei-light-b;
+                  arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+                  arcaea:bpm "165"@en-us;
+                  arcaea:bpm_base 165 ;
+                  arcaea:date 1521763200 ;
+                  arcaea:difficulties arcaea.nexttoyou:BYD,
+                                      arcaea.nexttoyou:FTR,
+                                      arcaea.nexttoyou:PRS,
+                                      arcaea.nexttoyou:PST;
+                  arcaea:id "nexttoyou"@en-us;
+                  arcaea:idx 73 ;
+                  arcaea:purchase "nijuusei"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ゆーま"@ja,
+                                      "ゆうま"@ja,
+                                      "たちばなかのん"@ja,
+                                      "우마"@ko,
+                                      "타치바나 카논"@ko,
+                                      "uma"@en,
+                                      "tachibana kanon"@en,
+                                      "ねくすととぅーゆー"@ja,
+                                      "넥스트 투 유"@ko;
+                  arcaea:set "nijuusei"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "next to you"@en;
+                  arcaea:version "1.6"@en-us.
+arcaea.nexttoyou:BYD arcaea:chartDesigner arcaea:Toastie;
+                     arcaea:date 1620691200 ;
+                     arcaea:jacketDesigner "mins"@en-us;
+                     arcaea:jacketOverride true;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 3 ;
+                     arcaea:version "3.6"@en-us.
+arcaea.nexttoyou:FTR arcaea:chartDesigner arcaea:Nitro;
+                     arcaea:jacketDesigner "mins"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.nexttoyou:PRS arcaea:chartDesigner arcaea:Nitro;
+                     arcaea:jacketDesigner "mins"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.nexttoyou:PST arcaea:chartDesigner arcaea:Nitro;
+                     arcaea:jacketDesigner "mins"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

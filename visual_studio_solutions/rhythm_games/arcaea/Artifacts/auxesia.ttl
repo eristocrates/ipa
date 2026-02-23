@@ -1,0 +1,50 @@
+@prefix arcaea.auxesia: <https://arcaea.lowiro.com/#auxesia#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.auxesia:.
+arcaea.auxesia: arcaea:artist arcaea:ginkiha;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:auxesia;
+                arcaea:bpm "183"@en-us;
+                arcaea:bpm_base 183 ;
+                arcaea:category arcaea:partner;
+                arcaea:date 1502323206 ;
+                arcaea:difficulties arcaea.auxesia:FTR,
+                                    arcaea.auxesia:PRS,
+                                    arcaea.auxesia:PST;
+                arcaea:id "auxesia"@en-us;
+                arcaea:idx 48 ;
+                arcaea:purchase "auxesia"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "ぎんきは"@ja,
+                                    "긴키하"@ko,
+                                    "あうくせしあ"@ja,
+                                    "억세시아"@ko,
+                                    "악세시아"@ko,
+                                    "아크세시아"@ko,
+                                    "어크세시아"@ko,
+                                    "억제지아"@ko,
+                                    "악제지아"@ko,
+                                    "아크제지아"@ko,
+                                    "어크제지아"@ko;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "Auxesia"@en;
+                arcaea:version "1.1"@en-us.
+arcaea.auxesia:FTR arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.auxesia:PRS arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.auxesia:PST arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81%EF%BC%81;
+                   arcaea:jacketDesigner "シエラ"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

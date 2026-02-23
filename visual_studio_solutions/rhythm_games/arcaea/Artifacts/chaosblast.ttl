@@ -1,0 +1,56 @@
+@prefix arcaea.chaosblast: <https://arcaea.lowiro.com/#chaosblast#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.chaosblast:.
+arcaea.chaosblast: arcaea:artist <https://arcaea.lowiro.com/#QURELESS%20+%20柚子花>;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:anima_conflict;
+                   arcaea:bg_inverse arcaea:anima_light;
+                   arcaea:bpm "480"@en-us;
+                   arcaea:bpm_base 240 ;
+                   arcaea:date 1755734403 ;
+                   arcaea:difficulties arcaea.chaosblast:ETR,
+                                       arcaea.chaosblast:FTR,
+                                       arcaea.chaosblast:PRS,
+                                       arcaea.chaosblast:PST;
+                   arcaea:id "chaosblast"@en-us;
+                   arcaea:idx 481 ;
+                   arcaea:purchase "anima_append_1"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "きゅあれす"@ja,
+                                       "ゆずは"@ja,
+                                       "큐어레스"@ko,
+                                       "큐어리스"@ko,
+                                       "유즈하"@ko,
+                                       "yuzuha"@en,
+                                       "かおすぶらすと"@ja,
+                                       "けいおすぶらすと"@ja,
+                                       "카오스블라스트"@ko,
+                                       "카오스블래스트"@ko;
+                   arcaea:set "anima_append_1"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "CHAOSBLAST"@en;
+                   arcaea:version "6.8"@en-us;
+                   arcaea:world_unlock false.
+arcaea.chaosblast:ETR arcaea:chartDesigner arcaea:NITRO%E3%80%8CTHE%20ANARQISM%E3%80%8D;
+                      arcaea:jacketDesigner "梅まろ + Vormis."@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 4 .
+arcaea.chaosblast:FTR arcaea:chartDesigner arcaea:NITRO%E3%80%8CTHE%20ANARQISM%E3%80%8D;
+                      arcaea:jacketDesigner "梅まろ + Vormis."@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.chaosblast:PRS arcaea:chartDesigner arcaea:NITRO%E3%80%8CTHE%20ANARQISM%E3%80%8D;
+                      arcaea:jacketDesigner "梅まろ + Vormis."@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 ;
+                      arcaea:ratingPlus true.
+arcaea.chaosblast:PST arcaea:chartDesigner arcaea:NITRO%E3%80%8CTHE%20ANARQISM%E3%80%8D;
+                      arcaea:jacketDesigner "梅まろ + Vormis."@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

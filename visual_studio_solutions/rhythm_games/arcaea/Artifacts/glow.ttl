@@ -1,0 +1,45 @@
+@prefix arcaea.glow: <https://arcaea.lowiro.com/#glow#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.glow:.
+arcaea.glow: arcaea:artist arcaea:SPACELECTRO;
+             arcaea:audioPreview 0 ;
+             arcaea:audioPreviewEnd 0 ;
+             arcaea:bg arcaea:prelude_conflict;
+             arcaea:bg_inverse arcaea:prelude_light;
+             arcaea:bpm "165"@en-us;
+             arcaea:bpm_base 165 ;
+             arcaea:date 1611187204 ;
+             arcaea:difficulties arcaea.glow:PRS,
+                                 arcaea.glow:PST,
+                                 arcaea.glow:FTR;
+             arcaea:id "glow"@en-us;
+             arcaea:idx 202 ;
+             arcaea:purchase "extend"@en-us;
+             arcaea:remote_dl true;
+             arcaea:search_title "すぺーすれくとろ"@ja,
+                                 "스페이슬렉트로"@ko,
+                                 "ぐろー"@ja,
+                                 "ぐろう"@ja,
+                                 "글로우"@ko;
+             arcaea:set "extend"@en-us;
+             arcaea:side arcaea:conflict_side;
+             arcaea:title_localized "Glow"@en;
+             arcaea:version "3.5"@en-us;
+             arcaea:world_unlock true.
+arcaea.glow:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                arcaea:jacketDesigner "Taiyo Yamamoto"@en-us;
+                arcaea:rating 9 ;
+                arcaea:ratingClass 2 .
+arcaea.glow:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                arcaea:jacketDesigner "Taiyo Yamamoto"@en-us;
+                arcaea:rating 7 ;
+                arcaea:ratingClass 1 .
+arcaea.glow:PST arcaea:chartDesigner arcaea:Exschwasion;
+                arcaea:jacketDesigner "Taiyo Yamamoto"@en-us;
+                arcaea:rating 4 ;
+                arcaea:ratingClass 0 .

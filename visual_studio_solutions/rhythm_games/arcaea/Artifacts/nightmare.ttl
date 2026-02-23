@@ -1,0 +1,48 @@
+@prefix arcaea.nightmare: <https://arcaea.lowiro.com/#nightmare#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.nightmare:.
+arcaea.nightmare: arcaea:artist arcaea:M2U;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:djmax_nightmare;
+                  arcaea:bpm "190"@en-us;
+                  arcaea:bpm_base 190 ;
+                  arcaea:date 1747872006 ;
+                  arcaea:difficulties arcaea.nightmare:FTR,
+                                      arcaea.nightmare:PRS,
+                                      arcaea.nightmare:PST,
+                                      arcaea.nightmare:ETR;
+                  arcaea:id "nightmare"@en-us;
+                  arcaea:idx 462 ;
+                  arcaea:purchase "djmax"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "えむつーゆー"@ja,
+                                      "엠투유"@ko,
+                                      "ないとめあ"@ja,
+                                      "나이트메어"@ko;
+                  arcaea:set "djmax"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "© NEOWIZ"@en-us;
+                  arcaea:title_localized "Nightmare"@en,
+                                         "DJMAX"@en;
+                  arcaea:version "6.5"@en-us;
+                  arcaea:world_unlock false.
+arcaea.nightmare:ETR arcaea:chartDesigner arcaea:%E9%9B%B6%E4%B8%8B;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 4 ;
+                     arcaea:ratingPlus true.
+arcaea.nightmare:FTR arcaea:chartDesigner arcaea:%E9%9B%B6%E4%B8%8B;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.nightmare:PRS arcaea:chartDesigner arcaea:%E9%9B%B6%E4%B8%8B;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.nightmare:PST arcaea:chartDesigner arcaea:%E9%9B%B6%E4%B8%8B;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

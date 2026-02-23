@@ -1,0 +1,46 @@
+@prefix arcaea.carminescythe: <https://arcaea.lowiro.com/#carminescythe#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.carminescythe:.
+arcaea.carminescythe: arcaea:artist arcaea:%E3%81%8B%E3%82%86%E3%81%8D;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:yugamu;
+                      arcaea:bg_inverse arcaea:rei;
+                      arcaea:bpm "165"@en-us;
+                      arcaea:bpm_base 165 ;
+                      arcaea:category arcaea:partner;
+                      arcaea:date 1523516400 ;
+                      arcaea:difficulties arcaea.carminescythe:PRS,
+                                          arcaea.carminescythe:PST,
+                                          arcaea.carminescythe:FTR;
+                      arcaea:id "carminescythe"@en-us;
+                      arcaea:idx 77 ;
+                      arcaea:purchase "carminescythe"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "카유키"@ko,
+                                          "kayuki"@en,
+                                          "かーまいんさいず"@ja,
+                                          "카마인 사이즈"@ko,
+                                          "카마인 사이스"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "carmine:scythe"@en;
+                      arcaea:version "1.6"@en-us.
+arcaea.carminescythe:FTR arcaea:chartDesigner arcaea:%E9%80%B1%E5%88%8AToaster;
+                         arcaea:jacketDesigner "未早"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 .
+arcaea.carminescythe:PRS arcaea:chartDesigner arcaea:%E9%80%B1%E5%88%8AToaster;
+                         arcaea:jacketDesigner "未早"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.carminescythe:PST arcaea:chartDesigner arcaea:%E9%80%B1%E5%88%8AToaster;
+                         arcaea:jacketDesigner "未早"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

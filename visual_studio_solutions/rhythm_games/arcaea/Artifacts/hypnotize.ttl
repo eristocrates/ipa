@@ -1,0 +1,51 @@
+@prefix arcaea.hypnotize: <https://arcaea.lowiro.com/#hypnotize#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.hypnotize:.
+arcaea.hypnotize: arcaea:artist arcaea:rejection;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:nihil;
+                  arcaea:bg_inverse arcaea:nihil;
+                  arcaea:bpm "160"@en-us;
+                  arcaea:bpm_base 160 ;
+                  arcaea:date 1722297603 ;
+                  arcaea:difficulties arcaea.hypnotize:FTR,
+                                      arcaea.hypnotize:PRS,
+                                      arcaea.hypnotize:PST,
+                                      arcaea.hypnotize:ETR;
+                  arcaea:id "hypnotize"@en-us;
+                  arcaea:idx 404 ;
+                  arcaea:purchase "nihil"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "りじぇくしょん"@ja,
+                                      "리젝션"@ko,
+                                      "ひぷのたいず"@ja,
+                                      "히프노타이즈"@ko;
+                  arcaea:set "nihil"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Hypnotize"@en;
+                  arcaea:version "5.9"@en-us;
+                  arcaea:world_unlock false.
+arcaea.hypnotize:ETR arcaea:chartDesigner arcaea:%C3%A9n%20%C3%97%20nitro%E3%80%8CThe%20Radical%E3%80%8D;
+                     arcaea:jacketDesigner "つくだ煮"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 4 ;
+                     arcaea:ratingPlus true.
+arcaea.hypnotize:FTR arcaea:chartDesigner arcaea:%C3%A9n;
+                     arcaea:jacketDesigner "つくだ煮"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.hypnotize:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                     arcaea:jacketDesigner "つくだ煮"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.hypnotize:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                     arcaea:jacketDesigner "つくだ煮"@en-us;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

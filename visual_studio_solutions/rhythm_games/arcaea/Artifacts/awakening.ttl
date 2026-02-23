@@ -1,0 +1,55 @@
+@prefix arcaea.awakening: <https://arcaea.lowiro.com/#awakening#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.awakening:.
+arcaea.awakening: arcaea:artist arcaea:%E6%9C%89%E6%9D%91%E4%BA%AC%E6%82%9F%20feat.July;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:prelude_light;
+                  arcaea:bg_inverse arcaea:prelude_conflict;
+                  arcaea:bpm "128"@en-us;
+                  arcaea:bpm_base 128 ;
+                  arcaea:date 1761782400 ;
+                  arcaea:difficulties arcaea.awakening:ETR,
+                                      arcaea.awakening:FTR,
+                                      arcaea.awakening:PRS,
+                                      arcaea.awakening:PST;
+                  arcaea:id "awakening"@en-us;
+                  arcaea:idx 493 ;
+                  arcaea:purchase "extend_4"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "ありむらきょうご"@ja,
+                                      "じゅらい"@ja,
+                                      "아리무라 쿄고"@ko,
+                                      "arimura kyogo"@en,
+                                      "はじまりのうた"@ja,
+                                      "어웨이크닝"@ko,
+                                      "시작의 노래"@ko,
+                                      "hajimari no uta"@en;
+                  arcaea:set "extend_4"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "始マリノ詩"@ja,
+                                         "Wake in Hour"@en;
+                  arcaea:version "6.10"@en-us;
+                  arcaea:world_unlock true.
+arcaea.awakening:ETR arcaea:chartDesigner arcaea:Luxance;
+                     arcaea:jacketDesigner "しきみ"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 4 ;
+                     arcaea:ratingPlus true.
+arcaea.awakening:FTR arcaea:chartDesigner arcaea:Luxance;
+                     arcaea:jacketDesigner "しきみ"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 2 .
+arcaea.awakening:PRS arcaea:chartDesigner arcaea:Luxance;
+                     arcaea:jacketDesigner "しきみ"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 1 .
+arcaea.awakening:PST arcaea:chartDesigner arcaea:Luxance;
+                     arcaea:jacketDesigner "しきみ"@en-us;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

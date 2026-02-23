@@ -1,0 +1,49 @@
+@prefix arcaea.aurgelmir: <https://arcaea.lowiro.com/#aurgelmir#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.aurgelmir:.
+arcaea.aurgelmir: arcaea:artist arcaea:%E6%BA%9D%E5%8F%A3%E3%82%86%E3%81%86%E3%81%BE%20feat.%20%E5%A4%A7%E7%80%AC%E8%89%AF%E3%81%82%E3%81%84;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:gc_ouroboros;
+                  arcaea:bpm "122-230"@en-us;
+                  arcaea:bpm_base 180 ;
+                  arcaea:category arcaea:musicgames;
+                  arcaea:date 1647993600 ;
+                  arcaea:difficulties arcaea.aurgelmir:FTR,
+                                      arcaea.aurgelmir:PRS,
+                                      arcaea.aurgelmir:PST;
+                  arcaea:id "aurgelmir"@en-us;
+                  arcaea:idx 261 ;
+                  arcaea:purchase "aurgelmir"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "みぞのくちゆうま"@ja,
+                                      "おおせらあい"@ja,
+                                      "미조노쿠치 유우마"@ko,
+                                      "오오세라 아이"@ko,
+                                      "mizonokuchi yuuma"@en,
+                                      "oosera ai"@en,
+                                      "あうるげるみる"@ja,
+                                      "아울겔미르"@ko,
+                                      "아우겔미르"@ko,
+                                      "아우르겔미르"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:source_copyright "© TAITO CORP. 1978, 2022"@en-us;
+                  arcaea:title_localized "Aurgelmir"@en,
+                                         "Groove Coaster"@en;
+                  arcaea:version "3.12"@en-us;
+                  arcaea:world_unlock false.
+arcaea.aurgelmir:FTR arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.aurgelmir:PRS arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 .
+arcaea.aurgelmir:PST arcaea:chartDesigner arcaea:%E5%A4%9C%E6%B5%AA;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

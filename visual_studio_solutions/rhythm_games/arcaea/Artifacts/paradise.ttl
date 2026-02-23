@@ -1,0 +1,43 @@
+@prefix arcaea.paradise: <https://arcaea.lowiro.com/#paradise#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.paradise:.
+arcaea.paradise: arcaea:artist arcaea:Sound%20Souler;
+                 arcaea:audioPreview 78095 ;
+                 arcaea:audioPreviewEnd 108571 ;
+                 arcaea:bg arcaea:shiawase;
+                 arcaea:bpm "126"@en-us;
+                 arcaea:bpm_base 126 ;
+                 arcaea:date 1494547201 ;
+                 arcaea:difficulties arcaea.paradise:PRS,
+                                     arcaea.paradise:PST,
+                                     arcaea.paradise:FTR;
+                 arcaea:id "paradise"@en-us;
+                 arcaea:idx 27 ;
+                 arcaea:purchase "shiawase"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "さうんどそうらー"@ja,
+                                     "사운드 소울러"@ko,
+                                     "ぱらだいす"@ja,
+                                     "파라다이스"@ko;
+                 arcaea:set "shiawase"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "Paradise"@en;
+                 arcaea:version "1.0"@en-us.
+arcaea.paradise:FTR arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "ましろみ のあ"@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.paradise:PRS arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "ましろみ のあ"@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 1 .
+arcaea.paradise:PST arcaea:chartDesigner arcaea:Nitro;
+                    arcaea:jacketDesigner "ましろみ のあ"@en-us;
+                    arcaea:rating 1 ;
+                    arcaea:ratingClass 0 .

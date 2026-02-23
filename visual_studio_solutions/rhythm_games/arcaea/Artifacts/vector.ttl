@@ -1,0 +1,46 @@
+@prefix arcaea.vector: <https://arcaea.lowiro.com/#vector#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.vector:.
+arcaea.vector: arcaea:artist arcaea:WHITEFISTS;
+               arcaea:audioPreview 97200 ;
+               arcaea:audioPreviewEnd 120000 ;
+               arcaea:bg arcaea:mirai_conflict;
+               arcaea:bg_inverse arcaea:mirai_light;
+               arcaea:bpm "200"@en-us;
+               arcaea:bpm_base 200 ;
+               arcaea:date 1556755200 ;
+               arcaea:difficulties arcaea.vector:FTR,
+                                   arcaea.vector:PRS,
+                                   arcaea.vector:PST;
+               arcaea:id "vector"@en-us;
+               arcaea:idx 120 ;
+               arcaea:remote_dl true;
+               arcaea:search_title "ほわいとふぃすつ"@ja,
+                                   "화이트피스트"@ko,
+                                   "화이트피스츠"@ko,
+                                   "べくたー"@ja,
+                                   "ゔぇくたー"@ja,
+                                   "벡터"@ko,
+                                   "vector"@en;
+               arcaea:set "base"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "VECTOЯ"@en;
+               arcaea:version "2.0"@en-us;
+               arcaea:world_unlock true.
+arcaea.vector:FTR arcaea:chartDesigner arcaea:Nitro;
+                  arcaea:jacketDesigner "ふぇいフリック"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.vector:PRS arcaea:chartDesigner arcaea:Nitro;
+                  arcaea:jacketDesigner "ふぇいフリック"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.vector:PST arcaea:chartDesigner arcaea:Nitro;
+                  arcaea:jacketDesigner "ふぇいフリック"@en-us;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

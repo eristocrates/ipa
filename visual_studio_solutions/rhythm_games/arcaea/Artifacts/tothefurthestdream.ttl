@@ -1,0 +1,50 @@
+@prefix arcaea.tothefurthestdream: <https://arcaea.lowiro.com/#tothefurthestdream#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.tothefurthestdream:.
+arcaea.tothefurthestdream: arcaea:artist <https://arcaea.lowiro.com/#ii/night%20feat.%20綺良雪>;
+                           arcaea:audioPreview 0 ;
+                           arcaea:audioPreviewEnd 0 ;
+                           arcaea:bg arcaea:epilogue;
+                           arcaea:bpm "183"@en-us;
+                           arcaea:bpm_base 183 ;
+                           arcaea:category arcaea:original;
+                           arcaea:date 1694664001 ;
+                           arcaea:difficulties arcaea.tothefurthestdream:FTR,
+                                               arcaea.tothefurthestdream:PRS,
+                                               arcaea.tothefurthestdream:PST;
+                           arcaea:id "tothefurthestdream"@en-us;
+                           arcaea:idx 343 ;
+                           arcaea:purchase "tothefurthestdream"@en-us;
+                           arcaea:remote_dl true;
+                           arcaea:search_title "とぅないと"@ja,
+                                               "きらゆき"@ja,
+                                               "투나잇"@ko,
+                                               "투나이트"@ko,
+                                               "키라 유키"@ko,
+                                               "yuki kira"@en,
+                                               "かなたのゆめへと"@ja,
+                                               "저 편의 꿈으로"@ko,
+                                               "투 더 퍼디스트 드림"@ko;
+                           arcaea:set "single"@en-us;
+                           arcaea:side arcaea:conflict_side;
+                           arcaea:title_localized "彼方の夢へと"@ja,
+                                                  "To the Furthest Dream"@en;
+                           arcaea:version "4.7"@en-us;
+                           arcaea:world_unlock false.
+arcaea.tothefurthestdream:FTR arcaea:jacketDesigner "Bison"@en-us;
+                              arcaea:rating 9 ;
+                              arcaea:ratingClass 2 ;
+                              arcaea:ratingPlus true.
+arcaea.tothefurthestdream:PRS arcaea:jacketDesigner "Bison"@en-us;
+                              arcaea:jacketOverride true;
+                              arcaea:rating 8 ;
+                              arcaea:ratingClass 1 .
+arcaea.tothefurthestdream:PST arcaea:jacketDesigner "Bison"@en-us;
+                              arcaea:jacketOverride true;
+                              arcaea:rating 4 ;
+                              arcaea:ratingClass 0 .

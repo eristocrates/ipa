@@ -1,0 +1,48 @@
+@prefix arcaea.chelsea: <https://arcaea.lowiro.com/#chelsea#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.chelsea:.
+arcaea:bg_daynight arcaea:day arcaea:omatsuri_light;
+                   arcaea:night arcaea:omatsuri_conflict.
+arcaea.chelsea: arcaea:artist arcaea:7mai;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:omatsuri_light;
+                arcaea:bg_daynight arcaea.chelsea:bg_daynight;
+                arcaea:bg_inverse arcaea:omatsuri_conflict;
+                arcaea:bpm "174"@en-us;
+                arcaea:bpm_base 174 ;
+                arcaea:date 1566432000 ;
+                arcaea:difficulties arcaea.chelsea:PRS,
+                                    arcaea.chelsea:PST,
+                                    arcaea.chelsea:FTR;
+                arcaea:id "chelsea"@en-us;
+                arcaea:idx 131 ;
+                arcaea:purchase "omatsuri"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "ななまい"@ja,
+                                    "나나마이"@ko,
+                                    "ちぇるしー"@ja,
+                                    "첼시"@ko;
+                arcaea:set "omatsuri"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "Chelsea"@en;
+                arcaea:version "2.3"@en-us;
+                arcaea:world_unlock false.
+arcaea.chelsea:FTR arcaea:chartDesigner arcaea:TaroNuke;
+                   arcaea:jacketDesigner "Refla"@en-us;
+                   arcaea:rating 8 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.chelsea:PRS arcaea:chartDesigner arcaea:TaroNuke;
+                   arcaea:jacketDesigner "Refla"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.chelsea:PST arcaea:chartDesigner arcaea:TaroNuke;
+                   arcaea:jacketDesigner "Refla"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

@@ -1,0 +1,52 @@
+@prefix arcaea.xxium: <https://arcaea.lowiro.com/#xxium#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.xxium:.
+arcaea.xxium: arcaea:artist arcaea:D.watt;
+              arcaea:audioPreview 0 ;
+              arcaea:audioPreviewEnd 0 ;
+              arcaea:bg arcaea:touhou_conflict;
+              arcaea:bg_inverse arcaea:touhou_light;
+              arcaea:bpm "165"@en-us;
+              arcaea:bpm_base 165 ;
+              arcaea:date 1761782404 ;
+              arcaea:difficulties arcaea.xxium:FTR,
+                                  arcaea.xxium:PRS,
+                                  arcaea.xxium:PST,
+                                  arcaea.xxium:ETR;
+              arcaea:id "xxium"@en-us;
+              arcaea:idx 497 ;
+              arcaea:purchase "extend_4"@en-us;
+              arcaea:remote_dl true;
+              arcaea:search_title "でぃーわっと"@ja,
+                                  "디 와트"@ko,
+                                  "あんどぱーぷるへいず"@ja,
+                                  "앤 퍼플 해이즈"@ko;
+              arcaea:set "extend_4"@en-us;
+              arcaea:side arcaea:conflict_side;
+              arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+              arcaea:title_localized "Xxium and Purple haze"@en;
+              arcaea:version "6.10"@en-us;
+              arcaea:world_unlock true.
+arcaea.xxium:ETR arcaea:chartDesigner arcaea:%E1%BA%8Bx;
+                 arcaea:jacketDesigner "D.watt"@en-us;
+                 arcaea:rating 10 ;
+                 arcaea:ratingClass 4 .
+arcaea.xxium:FTR arcaea:chartDesigner arcaea:%E1%BA%8Bx;
+                 arcaea:jacketDesigner "D.watt"@en-us;
+                 arcaea:rating 9 ;
+                 arcaea:ratingClass 2 ;
+                 arcaea:ratingPlus true.
+arcaea.xxium:PRS arcaea:chartDesigner arcaea:%E1%BA%8Bx;
+                 arcaea:jacketDesigner "D.watt"@en-us;
+                 arcaea:rating 7 ;
+                 arcaea:ratingClass 1 ;
+                 arcaea:ratingPlus true.
+arcaea.xxium:PST arcaea:chartDesigner arcaea:%E1%BA%8Bx;
+                 arcaea:jacketDesigner "D.watt"@en-us;
+                 arcaea:rating 2 ;
+                 arcaea:ratingClass 0 .

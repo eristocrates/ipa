@@ -1,0 +1,47 @@
+@prefix arcaea.usedtobe: <https://arcaea.lowiro.com/#usedtobe#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.usedtobe:.
+arcaea.usedtobe: arcaea:artist arcaea:KIV%CE%9B;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:cytus_light;
+                 arcaea:bg_inverse arcaea:cytus_conflict;
+                 arcaea:bpm "140"@en-us;
+                 arcaea:bpm_base 140 ;
+                 arcaea:date 1687910405 ;
+                 arcaea:difficulties arcaea.usedtobe:FTR,
+                                     arcaea.usedtobe:PRS,
+                                     arcaea.usedtobe:PST;
+                 arcaea:id "usedtobe"@en-us;
+                 arcaea:idx 328 ;
+                 arcaea:purchase "cytusii"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "きば"@ja,
+                                     "きゔぁ"@ja,
+                                     "키바"@ko,
+                                     "kiva"@en,
+                                     "ゆーすどとぅーびー"@ja,
+                                     "ゆーすどとぅびー"@ja,
+                                     "유즈 투 비"@ko,
+                                     "유즈드 투 비"@ko;
+                 arcaea:set "cytusii"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:source_copyright "© Rayark Inc."@en-us;
+                 arcaea:title_localized "Used to be"@en,
+                                        "CYTUS II®"@en;
+                 arcaea:version "4.5"@en-us;
+                 arcaea:world_unlock false.
+arcaea.usedtobe:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Luxance%20+%20Nitro>;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 .
+arcaea.usedtobe:PRS arcaea:chartDesigner arcaea:Luxance;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.usedtobe:PST arcaea:chartDesigner arcaea:Luxance;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

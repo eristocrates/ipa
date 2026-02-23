@@ -1,0 +1,45 @@
+@prefix arcaea.dullblade: <https://arcaea.lowiro.com/#dullblade#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dullblade:.
+arcaea.dullblade: arcaea:artist arcaea:stuv;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:hime_conflict;
+                  arcaea:bg_inverse arcaea:hime_light;
+                  arcaea:bpm "128-160"@en-us;
+                  arcaea:bpm_base 160 ;
+                  arcaea:category arcaea:variety;
+                  arcaea:date 1745452801 ;
+                  arcaea:difficulties arcaea.dullblade:PRS,
+                                      arcaea.dullblade:PST,
+                                      arcaea.dullblade:FTR;
+                  arcaea:id "dullblade"@en-us;
+                  arcaea:idx 455 ;
+                  arcaea:purchase "dullblade"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "すたぶ"@ja,
+                                      "스터브"@ko,
+                                      "だるぶれーど"@ja,
+                                      "덜 블레이드"@ko;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:conflict_side;
+                  arcaea:title_localized "Dull Blade"@en;
+                  arcaea:version "6.4"@en-us;
+                  arcaea:world_unlock false.
+arcaea.dullblade:FTR arcaea:chartDesigner arcaea:NITRO;
+                     arcaea:jacketDesigner "kazari"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.dullblade:PRS arcaea:chartDesigner arcaea:NITRO;
+                     arcaea:jacketDesigner "kazari"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 .
+arcaea.dullblade:PST arcaea:chartDesigner arcaea:NITRO;
+                     arcaea:jacketDesigner "kazari"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

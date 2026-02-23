@@ -1,0 +1,48 @@
+@prefix arcaea.tothemilkyway: <https://arcaea.lowiro.com/#tothemilkyway#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.tothemilkyway:.
+arcaea.tothemilkyway: arcaea:artist arcaea:%E9%BB%92%E9%AD%94;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:nijuusei2_light;
+                      arcaea:bg_inverse arcaea:nijuusei2_conflict;
+                      arcaea:bpm "186"@en-us;
+                      arcaea:bpm_base 186 ;
+                      arcaea:category arcaea:partner;
+                      arcaea:date 1684972804 ;
+                      arcaea:difficulties arcaea.tothemilkyway:PRS,
+                                          arcaea.tothemilkyway:PST,
+                                          arcaea.tothemilkyway:FTR;
+                      arcaea:id "tothemilkyway"@en-us;
+                      arcaea:idx 322 ;
+                      arcaea:purchase "tothemilkyway"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "くろま"@ja,
+                                          "쿠로마"@ko,
+                                          "kuroma"@en,
+                                          "chroma"@en,
+                                          "とぅーざみるきーうぇい"@ja,
+                                          "투 더 밀키 웨이"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "To the Milky Way"@en;
+                      arcaea:version "4.4"@en-us;
+                      arcaea:world_unlock false.
+arcaea.tothemilkyway:FTR arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                         arcaea:jacketDesigner "Bison"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 .
+arcaea.tothemilkyway:PRS arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                         arcaea:jacketDesigner "Bison"@en-us;
+                         arcaea:rating 8 ;
+                         arcaea:ratingClass 1 ;
+                         arcaea:ratingPlus true.
+arcaea.tothemilkyway:PST arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                         arcaea:jacketDesigner "Bison"@en-us;
+                         arcaea:rating 5 ;
+                         arcaea:ratingClass 0 .

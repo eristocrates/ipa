@@ -1,0 +1,45 @@
+@prefix arcaea.grandspell: <https://arcaea.lowiro.com/#grandspell#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.grandspell:.
+arcaea.grandspell: arcaea:artist arcaea:Hylen;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:single2_conflict;
+                   arcaea:bg_inverse arcaea:single2_light;
+                   arcaea:bpm "168"@en-us;
+                   arcaea:bpm_base 168 ;
+                   arcaea:category arcaea:original;
+                   arcaea:date 1764201601 ;
+                   arcaea:difficulties arcaea.grandspell:PRS,
+                                       arcaea.grandspell:PST,
+                                       arcaea.grandspell:FTR;
+                   arcaea:id "grandspell"@en-us;
+                   arcaea:idx 507 ;
+                   arcaea:purchase "grandspell"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "はいれん"@ja,
+                                       "하일렌"@ko,
+                                       "ぐらんどすぺる"@ja,
+                                       "그랜드스펠"@ko;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:title_localized "Grandspell"@en;
+                   arcaea:version "6.11"@en-us;
+                   arcaea:world_unlock false.
+arcaea.grandspell:FTR arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "KUREHA + Vormis."@en-us;
+                      arcaea:rating 10 ;
+                      arcaea:ratingClass 2 .
+arcaea.grandspell:PRS arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "KUREHA + Vormis."@en-us;
+                      arcaea:rating 8 ;
+                      arcaea:ratingClass 1 .
+arcaea.grandspell:PST arcaea:chartDesigner arcaea:Exschwasion;
+                      arcaea:jacketDesigner "KUREHA + Vormis."@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .

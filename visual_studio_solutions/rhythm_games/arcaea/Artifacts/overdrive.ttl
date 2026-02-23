@@ -1,0 +1,56 @@
+@prefix arcaea.overdrive: <https://arcaea.lowiro.com/#overdrive#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.overdrive:.
+arcaea.overdrive: arcaea:artist <https://arcaea.lowiro.com/#ARM＋夕野ヨシミ%20(IOSYS)%20feat.%20miko>;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:touhou_light;
+                  arcaea:bg_inverse arcaea:touhou_conflict;
+                  arcaea:bpm "200"@en-us;
+                  arcaea:bpm_base 200 ;
+                  arcaea:category arcaea:poprec;
+                  arcaea:date 1703116800 ;
+                  arcaea:difficulties arcaea.overdrive:FTR,
+                                      arcaea.overdrive:PRS,
+                                      arcaea.overdrive:PST;
+                  arcaea:id "overdrive"@en-us;
+                  arcaea:idx 364 ;
+                  arcaea:purchase "overdrive"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "あーむ"@ja,
+                                      "ゆうのよしみ"@ja,
+                                      "みこ"@ja,
+                                      "いおしす"@ja,
+                                      "이오시스"@ko,
+                                      "암"@ko,
+                                      "미코"@ko,
+                                      "유우노 요시미"@ko,
+                                      "yuuno yoshimi"@en,
+                                      "かんぶでとまってすぐとけるきょうきのうどんげいん"@ja,
+                                      "칸부데 토맛테 스구 토케루 쿄우키노 우동게인"@ko,
+                                      "환부에서 멈춰서 바로 녹는다 광기의 우동게인"@ko,
+                                      "kyouki no udongein"@en;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:source_copyright "©上海アリス幻樂団"@en-us;
+                  arcaea:title_localized "患部で止まってすぐ溶ける　〜 狂気の優曇華院"@ja,
+                                         "Kanbu de Tomatte Sugu Tokeru"@en;
+                  arcaea:version "5.2"@en-us;
+                  arcaea:world_unlock false.
+arcaea.overdrive:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#C7H11NO配合!!!!!!>;
+                     arcaea:jacketDesigner "モタ"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 .
+arcaea.overdrive:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#C7H11NO配合!!!!!!>;
+                     arcaea:jacketDesigner "モタ"@en-us;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 .
+arcaea.overdrive:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#C7H11NO配合!!!!!!>;
+                     arcaea:jacketDesigner "モタ"@en-us;
+                     arcaea:rating 4 ;
+                     arcaea:ratingClass 0 .

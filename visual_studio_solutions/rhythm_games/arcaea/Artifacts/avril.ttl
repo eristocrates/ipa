@@ -1,0 +1,49 @@
+@prefix arcaea.avril: <https://arcaea.lowiro.com/#avril#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.avril:.
+arcaea.avril: arcaea:artist arcaea:Rig%C3%ABl%20Theatre;
+              arcaea:audioPreview 28047 ;
+              arcaea:audioPreviewEnd 65986 ;
+              arcaea:bg arcaea:alice_light;
+              arcaea:bg_inverse arcaea:alice_conflict;
+              arcaea:bpm "130"@en-us;
+              arcaea:bpm_base 130 ;
+              arcaea:date 1645056000 ;
+              arcaea:difficulties arcaea.avril:FTR,
+                                  arcaea.avril:PRS,
+                                  arcaea.avril:PST;
+              arcaea:id "avril"@en-us;
+              arcaea:idx 260 ;
+              arcaea:remote_dl true;
+              arcaea:search_title "らいじぇるしあたー"@ja,
+                                  "리젤 시어터"@ko,
+                                  "アエヴリルフリッカイクランス"@ja,
+                                  "アヴリルフリッカイクランス"@ja,
+                                  "아에브릴 플릭카 이 크란스"@ko,
+                                  "아브릴 플릭카 이 크란스"@ko,
+                                  "avril"@en;
+              arcaea:set "base"@en-us;
+              arcaea:side arcaea:light_side;
+              arcaea:title_localized "Avril -Flicka i krans-"@ko,
+                                     "Ävril -Flicka i krans-"@en;
+              arcaea:version "3.12"@en-us;
+              arcaea:world_unlock true.
+arcaea.avril:FTR arcaea:chartDesigner arcaea:Aster%20-F%C3%A5r%20i%20Vaaris-;
+                 arcaea:jacketDesigner "しいたけ"@en-us;
+                 arcaea:rating 8 ;
+                 arcaea:ratingClass 2 .
+arcaea.avril:PRS arcaea:chartDesigner arcaea:Aster%20-F%C3%A5r%20i%20Vaaris-;
+                 arcaea:jacketDesigner "しいたけ"@en-us;
+                 arcaea:jacketOverride true;
+                 arcaea:rating 6 ;
+                 arcaea:ratingClass 1 .
+arcaea.avril:PST arcaea:chartDesigner arcaea:Aster%20-F%C3%A5r%20i%20Vaaris-;
+                 arcaea:jacketDesigner "しいたけ"@en-us;
+                 arcaea:jacketOverride true;
+                 arcaea:rating 3 ;
+                 arcaea:ratingClass 0 .

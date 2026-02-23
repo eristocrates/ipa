@@ -1,0 +1,40 @@
+@prefix arcaea.nulctrl: <https://arcaea.lowiro.com/#nulctrl#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.nulctrl:.
+arcaea.nulctrl: arcaea:artist arcaea:Silentroom;
+                arcaea:audioPreview 40800 ;
+                arcaea:audioPreviewEnd 79200 ;
+                arcaea:bg arcaea:prelude_conflict;
+                arcaea:bg_inverse arcaea:prelude_light;
+                arcaea:bpm "100"@en-us;
+                arcaea:bpm_base 100 ;
+                arcaea:date 1645056002 ;
+                arcaea:difficulties arcaea.nulctrl:FTR,
+                                    arcaea.nulctrl:PRS,
+                                    arcaea.nulctrl:PST;
+                arcaea:id "nulctrl"@en-us;
+                arcaea:idx 256 ;
+                arcaea:remote_dl true;
+                arcaea:search_title "さいれんとるーむ"@ja,
+                                    "사일런트 룸"@ko,
+                                    "ぬるこんとろーる"@ja,
+                                    "널컨트롤"@ko;
+                arcaea:set "base"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "NULCTRL"@en;
+                arcaea:version "3.12"@en-us;
+                arcaea:world_unlock true.
+arcaea.nulctrl:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#moonquay%20[NUL]>;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.nulctrl:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#moonquay%20[AUX]>;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.nulctrl:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#moonquay%20[CON]>;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

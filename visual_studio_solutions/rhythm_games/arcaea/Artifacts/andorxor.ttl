@@ -1,0 +1,54 @@
+@prefix arcaea.andorxor: <https://arcaea.lowiro.com/#andorxor#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.andorxor:.
+arcaea.andorxor: arcaea:artist arcaea:Sobrem;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:eclipse_conflict;
+                 arcaea:bg_inverse arcaea:eclipse_light;
+                 arcaea:bpm "148"@en-us;
+                 arcaea:bpm_base 148 ;
+                 arcaea:date 1759363204 ;
+                 arcaea:difficulties arcaea.andorxor:FTR,
+                                     arcaea.andorxor:PRS,
+                                     arcaea.andorxor:PST,
+                                     arcaea.andorxor:ETR;
+                 arcaea:id "andorxor"@en-us;
+                 arcaea:idx 490 ;
+                 arcaea:purchase "eclipse"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "そぶれむ"@ja,
+                                     "소브렘"@ko,
+                                     "えんどーさー"@ja,
+                                     "앤도서"@ko,
+                                     "엔도서"@ko,
+                                     "인도서"@ko;
+                 arcaea:set "eclipse"@en-us;
+                 arcaea:side arcaea:conflict_side;
+                 arcaea:title_localized "ANDORXOR"@en;
+                 arcaea:version "6.9"@en-us;
+                 arcaea:world_unlock false.
+arcaea.andorxor:ETR arcaea:chartDesigner arcaea:%E5%8F%8D%E2%88%A7%E6%B0%B4;
+                    arcaea:jacketDesigner "南条まや + Vormis."@en-us;
+                    arcaea:rating 10 ;
+                    arcaea:ratingClass 4 ;
+                    arcaea:ratingPlus true.
+arcaea.andorxor:FTR arcaea:chartDesigner arcaea:%E5%8F%8D%E2%88%A7%E6%B0%B4;
+                    arcaea:jacketDesigner "南条まや + Vormis."@en-us;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.andorxor:PRS arcaea:chartDesigner arcaea:%E5%8F%8D%E2%88%A7%E6%B0%B4;
+                    arcaea:jacketDesigner "南条まや + Vormis."@en-us;
+                    arcaea:rating 7 ;
+                    arcaea:ratingClass 1 ;
+                    arcaea:ratingPlus true.
+arcaea.andorxor:PST arcaea:chartDesigner arcaea:%E5%8F%8D%E2%88%A7%E6%B0%B4;
+                    arcaea:jacketDesigner "南条まや + Vormis."@en-us;
+                    arcaea:rating 4 ;
+                    arcaea:ratingClass 0 .

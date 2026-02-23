@@ -1,0 +1,47 @@
+@prefix arcaea.ignition: <https://arcaea.lowiro.com/#ignition#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.ignition:.
+arcaea.ignition: arcaea:artist arcaea:%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3%E9%9F%B3%E6%A5%BD%E3%82%AF%E3%83%A9%E3%83%96;
+                 arcaea:audioPreview 0 ;
+                 arcaea:audioPreviewEnd 0 ;
+                 arcaea:bg arcaea:chunithmnew_light;
+                 arcaea:bg_inverse arcaea:chunithmnew_conflict;
+                 arcaea:bpm "160"@en-us;
+                 arcaea:bpm_base 160 ;
+                 arcaea:date 1734566400 ;
+                 arcaea:difficulties arcaea.ignition:FTR,
+                                     arcaea.ignition:PRS,
+                                     arcaea.ignition:PST;
+                 arcaea:id "ignition"@en-us;
+                 arcaea:idx 435 ;
+                 arcaea:purchase "chunithm_append_3"@en-us;
+                 arcaea:remote_dl true;
+                 arcaea:search_title "ぱそこんおんがくくらぶ"@ja,
+                                     "파소콘 온가쿠 쿠라부"@ko,
+                                     "pasocom ongaku kurabu"@en,
+                                     "pasocon ongaku kurabu"@en,
+                                     "pasocom music club"@en,
+                                     "いぐにしょん"@ja,
+                                     "이그니션"@ko;
+                 arcaea:set "chunithm_append_3"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:source_copyright "©SEGA"@en-us;
+                 arcaea:title_localized "Ignition"@en,
+                                        "CHUNITHM"@en;
+                 arcaea:version "6.1"@en-us;
+                 arcaea:world_unlock false.
+arcaea.ignition:FTR arcaea:chartDesigner arcaea:%E3%82%8B%E3%81%8F%E3%81%82%E3%82%93%E3%81%99;
+                    arcaea:rating 9 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.ignition:PRS arcaea:chartDesigner arcaea:%E3%82%8B%E3%81%8F%E3%81%82%E3%82%93%E3%81%99;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.ignition:PST arcaea:chartDesigner arcaea:%E3%82%8B%E3%81%8F%E3%81%82%E3%82%93%E3%81%99;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

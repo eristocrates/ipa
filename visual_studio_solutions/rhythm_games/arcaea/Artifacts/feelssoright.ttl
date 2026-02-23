@@ -1,0 +1,46 @@
+@prefix arcaea.feelssoright: <https://arcaea.lowiro.com/#feelssoright#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.feelssoright:.
+arcaea.feelssoright: arcaea:artist arcaea:Mysteka;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:nijuusei-light-b;
+                     arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+                     arcaea:bpm "180"@en-us;
+                     arcaea:bpm_base 180 ;
+                     arcaea:category arcaea:variety;
+                     arcaea:date 1594166401 ;
+                     arcaea:difficulties arcaea.feelssoright:PRS,
+                                         arcaea.feelssoright:PST,
+                                         arcaea.feelssoright:FTR;
+                     arcaea:id "feelssoright"@en-us;
+                     arcaea:idx 170 ;
+                     arcaea:purchase "feelssoright"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "みすてか"@ja,
+                                         "れんこ"@ja,
+                                         "미스테카"@ko,
+                                         "ふぃーるずそーらいと"@ja,
+                                         "필즈 소 라잇"@ko;
+                     arcaea:set "single"@en-us;
+                     arcaea:side arcaea:light_side;
+                     arcaea:title_localized "Feels So Right feat. Renko"@en;
+                     arcaea:version "3.0"@en-us;
+                     arcaea:world_unlock false.
+arcaea.feelssoright:FTR arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.feelssoright:PRS arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.feelssoright:PST arcaea:chartDesigner arcaea:Toaster;
+                        arcaea:jacketDesigner "DJ Poyoshi"@en-us;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

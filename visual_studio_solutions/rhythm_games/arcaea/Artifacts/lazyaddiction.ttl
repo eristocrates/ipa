@@ -1,0 +1,45 @@
+@prefix arcaea.lazyaddiction: <https://arcaea.lowiro.com/#lazyaddiction#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lazyaddiction:.
+arcaea.lazyaddiction: arcaea:artist arcaea:sky_delta;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:ongeki_light;
+                      arcaea:bg_inverse arcaea:ongeki_conflict;
+                      arcaea:bpm "185"@en-us;
+                      arcaea:bpm_base 185 ;
+                      arcaea:date 1608163200 ;
+                      arcaea:difficulties arcaea.lazyaddiction:FTR,
+                                          arcaea.lazyaddiction:PRS,
+                                          arcaea.lazyaddiction:PST;
+                      arcaea:id "lazyaddiction"@en-us;
+                      arcaea:idx 191 ;
+                      arcaea:no_stream true;
+                      arcaea:purchase "ongeki"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "すかいでるた"@ja,
+                                          "스카이 델타"@ko,
+                                          "れいじーあでぃくしょん"@ja,
+                                          "레이지 애딕션"@ko,
+                                          "레이지 에딕션"@ko;
+                      arcaea:set "ongeki"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:source_copyright "©SEGA"@en-us;
+                      arcaea:title_localized "Lazy Addiction"@en,
+                                             "O.N.G.E.K.I."@en;
+                      arcaea:version "3.4"@en-us;
+                      arcaea:world_unlock false.
+arcaea.lazyaddiction:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20without%20Toaster.>;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 .
+arcaea.lazyaddiction:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20without%20Toaster.>;
+                         arcaea:rating 6 ;
+                         arcaea:ratingClass 1 .
+arcaea.lazyaddiction:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20without%20Toaster.>;
+                         arcaea:rating 2 ;
+                         arcaea:ratingClass 0 .

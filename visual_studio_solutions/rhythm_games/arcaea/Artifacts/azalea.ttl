@@ -1,0 +1,51 @@
+@prefix arcaea.azalea: <https://arcaea.lowiro.com/#azalea#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.azalea:.
+arcaea.azalea: arcaea:artist <https://arcaea.lowiro.com/#ak+q%20×%20onoken>;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:azalea;
+               arcaea:bpm "180"@en-us;
+               arcaea:bpm_base 180 ;
+               arcaea:date 1763769605 ;
+               arcaea:difficulties arcaea.azalea:FTR,
+                                   arcaea.azalea:PRS,
+                                   arcaea.azalea:PST,
+                                   arcaea.azalea:ETR;
+               arcaea:id "azalea"@en-us;
+               arcaea:idx 505 ;
+               arcaea:purchase "nextstage"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "えーけーぷらすきゅー"@ja,
+                                   "おのけん"@ja,
+                                   "에이케이 플러스 큐"@ko,
+                                   "오노켄"@ko,
+                                   "あざれあ"@ja,
+                                   "아잘레아"@ko,
+                                   "azalea"@en;
+               arcaea:set "nextstage"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "ΛZΛLEΛ"@en;
+               arcaea:version "6.10"@en-us;
+               arcaea:world_unlock false.
+arcaea.azalea:ETR arcaea:chartDesigner arcaea:NOR%CE%9B::NEKO%20%C3%97%20K%CE%9BR%CE%9BT;
+                  arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                  arcaea:rating 10 ;
+                  arcaea:ratingClass 4 .
+arcaea.azalea:FTR arcaea:chartDesigner arcaea:Nitro%E3%80%8CThe%20Ephemeral%E3%80%8D;
+                  arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.azalea:PRS arcaea:chartDesigner arcaea:Nitro%E3%80%8CThe%20Ephemeral%E3%80%8D;
+                  arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.azalea:PST arcaea:chartDesigner arcaea:Nitro%E3%80%8CThe%20Ephemeral%E3%80%8D;
+                  arcaea:jacketDesigner "辷 + Vormis."@en-us;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

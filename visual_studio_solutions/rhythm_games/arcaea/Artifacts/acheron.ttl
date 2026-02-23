@@ -1,0 +1,51 @@
+@prefix arcaea.acheron: <https://arcaea.lowiro.com/#acheron#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.acheron:.
+arcaea.acheron: arcaea:artist arcaea:KARUT;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:single2_conflict;
+                arcaea:bg_inverse arcaea:single2_light;
+                arcaea:bpm "175-145"@en-us;
+                arcaea:bpm_base 145 ;
+                arcaea:category arcaea:original;
+                arcaea:date 1756944000 ;
+                arcaea:difficulties arcaea.acheron:PRS,
+                                    arcaea.acheron:PST,
+                                    arcaea.acheron:FTR;
+                arcaea:id "acheron"@en-us;
+                arcaea:idx 484 ;
+                arcaea:remote_dl true;
+                arcaea:search_title "かると"@ja,
+                                    "카루트"@ko,
+                                    "あけろん"@ja,
+                                    "아케론"@ko;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:conflict_side;
+                arcaea:title_localized "Acheron"@en;
+                arcaea:version "6.8"@en-us;
+                arcaea:world_unlock true.
+arcaea.acheron:FTR arcaea:chartDesigner arcaea:karat;
+                   arcaea:hidden_until "difficulty"@en-us;
+                   arcaea:hidden_until_unlocked true;
+                   arcaea:jacketDesigner "こもり"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 ;
+                   arcaea:ratingPlus true.
+arcaea.acheron:PRS arcaea:chartDesigner arcaea:karat;
+                   arcaea:hidden_until "difficulty"@en-us;
+                   arcaea:hidden_until_unlocked true;
+                   arcaea:jacketDesigner "こもり"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.acheron:PST arcaea:chartDesigner arcaea:karat;
+                   arcaea:hidden_until "difficulty"@en-us;
+                   arcaea:hidden_until_unlocked true;
+                   arcaea:jacketDesigner "こもり"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

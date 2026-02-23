@@ -1,0 +1,51 @@
+@prefix arcaea.newyorkbackraise: <https://arcaea.lowiro.com/#newyorkbackraise#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.newyorkbackraise:.
+arcaea.newyorkbackraise: arcaea:artist <https://arcaea.lowiro.com/#saaa%20+%20kei_iwata%20+%20stuv%20+%20わかどり>;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:single2_conflict;
+                         arcaea:bg_inverse arcaea:single2_light;
+                         arcaea:bpm "160"@en-us;
+                         arcaea:bpm_base 160 ;
+                         arcaea:category arcaea:variety;
+                         arcaea:date 1682553603 ;
+                         arcaea:difficulties arcaea.newyorkbackraise:FTR,
+                                             arcaea.newyorkbackraise:PRS,
+                                             arcaea.newyorkbackraise:PST;
+                         arcaea:id "newyorkbackraise"@en-us;
+                         arcaea:idx 317 ;
+                         arcaea:purchase "newyorkbackraise"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "さえさん"@ja,
+                                             "けいいわた"@ja,
+                                             "사에산"@ko,
+                                             "케이 이와타"@ko,
+                                             "스터브"@ko,
+                                             "와카도리"@ko,
+                                             "wakadori"@en,
+                                             "にゅーよーくばっくれいず"@ja,
+                                             "뉴욕 백 레이즈"@ko;
+                         arcaea:set "single"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "New York Back Raise"@en;
+                         arcaea:version "4.4"@en-us;
+                         arcaea:world_unlock false.
+arcaea.newyorkbackraise:FTR arcaea:chartDesigner arcaea:Exschwasion%20%E3%80%8CALL%20IN%E3%80%8D;
+                            arcaea:jacketDesigner "すずあ"@en-us;
+                            arcaea:rating 9 ;
+                            arcaea:ratingClass 2 ;
+                            arcaea:ratingPlus true.
+arcaea.newyorkbackraise:PRS arcaea:chartDesigner arcaea:Exschwasion%20%E3%80%8CRAISE%E3%80%8D;
+                            arcaea:jacketDesigner "すずあ"@en-us;
+                            arcaea:rating 7 ;
+                            arcaea:ratingClass 1 .
+arcaea.newyorkbackraise:PST arcaea:chartDesigner arcaea:Exschwasion%20%E3%80%8CCHECK%E3%80%8D;
+                            arcaea:jacketDesigner "すずあ"@en-us;
+                            arcaea:rating 4 ;
+                            arcaea:ratingClass 0 .

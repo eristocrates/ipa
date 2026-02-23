@@ -1,0 +1,47 @@
+@prefix arcaea.badtek: <https://arcaea.lowiro.com/#badtek#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.badtek:.
+arcaea.badtek: arcaea:artist arcaea:EBIMAYO;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:zettai;
+               arcaea:bg_inverse arcaea:zettai_light;
+               arcaea:bpm "190"@en-us;
+               arcaea:bpm_base 190 ;
+               arcaea:category arcaea:original;
+               arcaea:date 1597968000 ;
+               arcaea:difficulties arcaea.badtek:PRS,
+                                   arcaea.badtek:PST,
+                                   arcaea.badtek:FTR;
+               arcaea:id "badtek"@en-us;
+               arcaea:idx 173 ;
+               arcaea:purchase "badtek"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "えびまよ"@ja,
+                                   "에비마요"@ko,
+                                   "ばっどてっく"@ja,
+                                   "배드텍"@ko,
+                                   "배드테크"@ko;
+               arcaea:set "single"@en-us;
+               arcaea:side arcaea:conflict_side;
+               arcaea:title_localized "BADTEK"@en;
+               arcaea:version "3.1"@en-us;
+               arcaea:world_unlock false.
+arcaea.badtek:FTR arcaea:chartDesigner arcaea:BADTOAST%20ft.%20Kurorak;
+                  arcaea:jacketDesigner "トロ３"@en-us;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.badtek:PRS arcaea:chartDesigner arcaea:Toaster;
+                  arcaea:jacketDesigner "トロ３"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.badtek:PST arcaea:chartDesigner arcaea:Toaster;
+                  arcaea:jacketDesigner "トロ３"@en-us;
+                  arcaea:rating 4 ;
+                  arcaea:ratingClass 0 .

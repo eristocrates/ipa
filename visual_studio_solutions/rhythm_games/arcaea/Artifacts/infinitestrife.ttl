@@ -1,0 +1,61 @@
+@prefix arcaea.infinitestrife: <https://arcaea.lowiro.com/#infinitestrife#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.infinitestrife:.
+arcaea:additional_files arcaea:file_name "video_audio.ogg"@en-us,
+                                         "video.mp4"@en-us;
+                        arcaea:requirement "required"@en-us.
+arcaea.infinitestrife: arcaea:additional_files arcaea.infinitestrife:additional_files;
+                       arcaea:artist arcaea:BlackYooh%20vs.%20siromaru;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:finale_conflict;
+                       arcaea:bg_inverse arcaea:finale_light;
+                       arcaea:bpm "198"@en-us;
+                       arcaea:bpm_base 198 ;
+                       arcaea:byd_local_unlock true;
+                       arcaea:date 1657152005 ;
+                       arcaea:difficulties arcaea.infinitestrife:BYD,
+                                           arcaea.infinitestrife:FTR,
+                                           arcaea.infinitestrife:PRS,
+                                           arcaea.infinitestrife:PST;
+                       arcaea:id "infinitestrife"@en-us;
+                       arcaea:idx 276 ;
+                       arcaea:purchase "finale"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "ぶらっきー"@ja,
+                                           "ゆー"@ja,
+                                           "しろまる"@ja,
+                                           "블랙유"@ko,
+                                           "시로마루"@ko,
+                                           "いんふぃにっとすとらいふ"@ja,
+                                           "인피니트 스트라이프"@ko;
+                       arcaea:set "finale"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "Infinite Strife,"@en;
+                       arcaea:version "4.0"@en-us;
+                       arcaea:world_unlock false.
+arcaea.infinitestrife:BYD arcaea:chartDesigner arcaea:Inner%20Labyrinth;
+                          arcaea:hidden_until "none"@en-us;
+                          arcaea:jacketDesigner "Enji"@en-us;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 3 ;
+                          arcaea:ratingPlus true;
+                          arcaea:world_unlock false.
+arcaea.infinitestrife:FTR arcaea:chartDesigner arcaea:Inner%20Labyrinth;
+                          arcaea:jacketDesigner "Enji"@en-us;
+                          arcaea:rating 9 ;
+                          arcaea:ratingClass 2 ;
+                          arcaea:ratingPlus true.
+arcaea.infinitestrife:PRS arcaea:chartDesigner arcaea:Inner%20Labyrinth;
+                          arcaea:jacketDesigner "Enji"@en-us;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 .
+arcaea.infinitestrife:PST arcaea:chartDesigner arcaea:Inner%20Labyrinth;
+                          arcaea:jacketDesigner "Enji"@en-us;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

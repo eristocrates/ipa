@@ -1,0 +1,45 @@
+@prefix arcaea.faintlight: <https://arcaea.lowiro.com/#faintlight#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.faintlight:.
+arcaea.faintlight: arcaea:artist arcaea:Taishi;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:nijuusei-light-b;
+                   arcaea:bg_inverse arcaea:nijuusei-conflict-b;
+                   arcaea:bpm "133"@en-us;
+                   arcaea:bpm_base 133 ;
+                   arcaea:date 1594166400 ;
+                   arcaea:difficulties arcaea.faintlight:PRS,
+                                       arcaea.faintlight:PST,
+                                       arcaea.faintlight:FTR;
+                   arcaea:id "faintlight"@en-us;
+                   arcaea:idx 169 ;
+                   arcaea:purchase "extend"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "たいし"@ja,
+                                       "타이시"@ko,
+                                       "ふぇいんとらいと"@ja,
+                                       "페인트 라이트"@ko,
+                                       "페인트 라잇"@ko;
+                   arcaea:set "extend"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "Faint Light (Arcaea Edit)"@en;
+                   arcaea:version "3.0"@en-us;
+                   arcaea:world_unlock true.
+arcaea.faintlight:FTR arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "SoU"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.faintlight:PRS arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "SoU"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.faintlight:PST arcaea:chartDesigner arcaea:Nitro;
+                      arcaea:jacketDesigner "SoU"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

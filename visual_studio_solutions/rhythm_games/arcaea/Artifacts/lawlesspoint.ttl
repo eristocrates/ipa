@@ -1,0 +1,44 @@
+@prefix arcaea.lawlesspoint: <https://arcaea.lowiro.com/#lawlesspoint#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lawlesspoint:.
+arcaea.lawlesspoint: arcaea:artist arcaea:La%20pri%C3%A8re;
+                     arcaea:audioPreview 0 ;
+                     arcaea:audioPreviewEnd 0 ;
+                     arcaea:bg arcaea:single2_conflict;
+                     arcaea:bg_inverse arcaea:single2_light;
+                     arcaea:bpm "148"@en-us;
+                     arcaea:bpm_base 148 ;
+                     arcaea:date 1684972801 ;
+                     arcaea:difficulties arcaea.lawlesspoint:FTR,
+                                         arcaea.lawlesspoint:PRS,
+                                         arcaea.lawlesspoint:PST;
+                     arcaea:id "lawlesspoint"@en-us;
+                     arcaea:idx 319 ;
+                     arcaea:purchase "extend_2"@en-us;
+                     arcaea:remote_dl true;
+                     arcaea:search_title "らぷりえーる"@ja,
+                                         "라 피에르"@ko,
+                                         "la priere"@en,
+                                         "むほうちてん"@ja,
+                                         "로우리스 포인트"@ko,
+                                         "로리스 포인트"@ko;
+                     arcaea:set "extend_2"@en-us;
+                     arcaea:side arcaea:conflict_side;
+                     arcaea:title_localized "無法地点"@ja,
+                                            "Lawless Point"@en;
+                     arcaea:version "4.4"@en-us;
+                     arcaea:world_unlock true.
+arcaea.lawlesspoint:FTR arcaea:chartDesigner arcaea:Luxance;
+                        arcaea:rating 9 ;
+                        arcaea:ratingClass 2 .
+arcaea.lawlesspoint:PRS arcaea:chartDesigner arcaea:Luxance;
+                        arcaea:rating 6 ;
+                        arcaea:ratingClass 1 .
+arcaea.lawlesspoint:PST arcaea:chartDesigner arcaea:Luxance;
+                        arcaea:rating 3 ;
+                        arcaea:ratingClass 0 .

@@ -1,0 +1,48 @@
+@prefix arcaea.dreadnought: <https://arcaea.lowiro.com/#dreadnought#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dreadnought:.
+arcaea.dreadnought: arcaea:artist <https://arcaea.lowiro.com/#Mastermind%20(xi%20+%20nora2r)>;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:nijuusei-conflict-b;
+                    arcaea:bg_inverse arcaea:nijuusei-light-b;
+                    arcaea:bpm "96-384"@en-us;
+                    arcaea:bpm_base 192 ;
+                    arcaea:category arcaea:variety;
+                    arcaea:date 1563408000 ;
+                    arcaea:difficulties arcaea.dreadnought:FTR,
+                                        arcaea.dreadnought:PRS,
+                                        arcaea.dreadnought:PST;
+                    arcaea:id "dreadnought"@en-us;
+                    arcaea:idx 126 ;
+                    arcaea:purchase "dreadnought"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "ますたーまいんど"@ja,
+                                        "さい"@ja,
+                                        "のらつーあーる"@ja,
+                                        "마스터마인드"@ko,
+                                        "사이"@ko,
+                                        "노라 투 알"@ko,
+                                        "どれっどのーと"@ja,
+                                        "드레드노트"@ko,
+                                        "드레드넛"@ko;
+                    arcaea:set "single"@en-us;
+                    arcaea:side arcaea:conflict_side;
+                    arcaea:title_localized "Dreadnought"@en;
+                    arcaea:version "2.2"@en-us;
+                    arcaea:world_unlock false.
+arcaea.dreadnought:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Astronomer%20(Toaster%20+%20東星)>;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.dreadnought:PRS arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:rating 7 ;
+                       arcaea:ratingClass 1 .
+arcaea.dreadnought:PST arcaea:chartDesigner arcaea:Nitro;
+                       arcaea:rating 4 ;
+                       arcaea:ratingClass 0 .

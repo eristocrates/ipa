@@ -1,0 +1,54 @@
+@prefix arcaea.clotho: <https://arcaea.lowiro.com/#clotho#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.clotho:.
+arcaea.clotho: arcaea:artist arcaea:%E3%81%97%E3%83%BC%E3%81%91%E3%83%BC;
+               arcaea:audioPreview 38399 ;
+               arcaea:audioPreviewEnd 63443 ;
+               arcaea:bg arcaea:shiawase;
+               arcaea:bpm "230"@en-us;
+               arcaea:bpm_base 230 ;
+               arcaea:date 1498176000 ;
+               arcaea:difficulties arcaea.clotho:ETR,
+                                   arcaea.clotho:FTR,
+                                   arcaea.clotho:PRS,
+                                   arcaea.clotho:PST;
+               arcaea:id "clotho"@en-us;
+               arcaea:idx 39 ;
+               arcaea:search_title "시케이"@ko,
+                                   "shiikei"@en,
+                                   "ck"@en,
+                                   "くろーとーとほしのかんそくしゃ"@ja,
+                                   "클로토 앤 더 스타게이저"@ko,
+                                   "클로쏘 앤 더 스타게이저"@ko,
+                                   "크로토토 호시노 칸소쿠샤"@ko,
+                                   "클로트와 별 관측자"@ko;
+               arcaea:set "base"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:title_localized "クロートーと星の観測者"@ja,
+                                      "Clotho and the stargazer"@en;
+               arcaea:version "1.1"@en-us.
+arcaea.clotho:ETR arcaea:chartDesigner arcaea:ei%C3%A9n;
+                  arcaea:date 1709856001 ;
+                  arcaea:jacketDesigner "yoshimo"@en-us;
+                  arcaea:rating 8 ;
+                  arcaea:ratingClass 4 ;
+                  arcaea:ratingPlus true;
+                  arcaea:version "5.4"@en-us.
+arcaea.clotho:FTR arcaea:chartDesigner arcaea:%E5%B0%8F%E6%9D%B1%E6%98%9F;
+                  arcaea:jacketDesigner "yoshimo"@en-us;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.clotho:PRS arcaea:chartDesigner arcaea:%E5%B0%8F%E6%9D%B1%E6%98%9F;
+                  arcaea:jacketDesigner "yoshimo"@en-us;
+                  arcaea:rating 5 ;
+                  arcaea:ratingClass 1 .
+arcaea.clotho:PST arcaea:chartDesigner arcaea:%E5%B0%8F%E6%9D%B1%E6%98%9F;
+                  arcaea:jacketDesigner "yoshimo"@en-us;
+                  arcaea:rating 2 ;
+                  arcaea:ratingClass 0 .

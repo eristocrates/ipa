@@ -1,0 +1,44 @@
+@prefix arcaea.bethere: <https://arcaea.lowiro.com/#bethere#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.bethere:.
+arcaea.bethere: arcaea:artist arcaea:PSYQUI;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:base_light;
+                arcaea:bg_inverse arcaea:base_conflict;
+                arcaea:bpm "164"@en-us;
+                arcaea:bpm_base 164 ;
+                arcaea:category arcaea:original;
+                arcaea:date 1527811201 ;
+                arcaea:difficulties arcaea.bethere:PRS,
+                                    arcaea.bethere:PST,
+                                    arcaea.bethere:FTR;
+                arcaea:id "bethere"@en-us;
+                arcaea:idx 78 ;
+                arcaea:purchase "bethere"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "さいき"@ja,
+                                    "사이키"@ko,
+                                    "びーぜあ"@ja,
+                                    "비 데어"@ko;
+                arcaea:set "single"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "Be There"@en;
+                arcaea:version "1.6"@en-us.
+arcaea.bethere:FTR arcaea:chartDesigner arcaea:Be%20Nitro;
+                   arcaea:jacketDesigner "hie"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.bethere:PRS arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:jacketDesigner "hie"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.bethere:PST arcaea:chartDesigner arcaea:Nitro;
+                   arcaea:jacketDesigner "hie"@en-us;
+                   arcaea:rating 4 ;
+                   arcaea:ratingClass 0 .

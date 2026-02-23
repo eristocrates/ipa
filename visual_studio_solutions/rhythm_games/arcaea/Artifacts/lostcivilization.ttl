@@ -1,0 +1,50 @@
+@prefix arcaea.lostcivilization: <https://arcaea.lowiro.com/#lostcivilization#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lostcivilization:.
+arcaea.lostcivilization: arcaea:artist arcaea:Laur%20vs%20CK;
+                         arcaea:audioPreview 81142 ;
+                         arcaea:audioPreviewEnd 110285 ;
+                         arcaea:bg arcaea:base_conflict;
+                         arcaea:bg_inverse arcaea:base_light;
+                         arcaea:bpm "75 - 210"@en-us;
+                         arcaea:bpm_base 210 ;
+                         arcaea:date 1487980808 ;
+                         arcaea:difficulties arcaea.lostcivilization:BYD,
+                                             arcaea.lostcivilization:FTR,
+                                             arcaea.lostcivilization:PRS,
+                                             arcaea.lostcivilization:PST;
+                         arcaea:id "lostcivilization"@en-us;
+                         arcaea:idx 1 ;
+                         arcaea:search_title "らうる"@ja,
+                                             "しーけー"@ja,
+                                             "라우르"@ko,
+                                             "시케이"@ko,
+                                             "ろすとしびらいぜーしょん"@ja,
+                                             "ろすとしゔぃらいぜーしょん"@ja,
+                                             "로스트 시빌리제이션"@ko;
+                         arcaea:set "base"@en-us;
+                         arcaea:side arcaea:conflict_side;
+                         arcaea:title_localized "Lost Civilization"@en;
+                         arcaea:version "1.0"@en-us.
+arcaea.lostcivilization:BYD arcaea:chartDesigner arcaea:Nitro%20affected%20by%20Nitro;
+                            arcaea:date 1620691201 ;
+                            arcaea:jacketDesigner "みしゃも + yoshimo"@en-us;
+                            arcaea:jacketOverride true;
+                            arcaea:rating 9 ;
+                            arcaea:ratingClass 3 ;
+                            arcaea:ratingPlus true;
+                            arcaea:version "3.6"@en-us.
+arcaea.lostcivilization:FTR arcaea:chartDesigner arcaea:Toaster;
+                            arcaea:rating 9 ;
+                            arcaea:ratingClass 2 .
+arcaea.lostcivilization:PRS arcaea:chartDesigner arcaea:Toaster;
+                            arcaea:rating 7 ;
+                            arcaea:ratingClass 1 .
+arcaea.lostcivilization:PST arcaea:chartDesigner arcaea:Toaster;
+                            arcaea:rating 4 ;
+                            arcaea:ratingClass 0 .

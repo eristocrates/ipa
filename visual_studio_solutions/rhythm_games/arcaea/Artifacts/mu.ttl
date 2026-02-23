@@ -1,0 +1,47 @@
+@prefix arcaea.mu: <https://arcaea.lowiro.com/#mu#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.mu:.
+arcaea.mu: arcaea:artist arcaea:Frums;
+           arcaea:audioPreview 0 ;
+           arcaea:audioPreviewEnd 0 ;
+           arcaea:bg arcaea:single2_light;
+           arcaea:bg_inverse arcaea:single2_conflict;
+           arcaea:bpm "140-190"@en-us;
+           arcaea:bpm_base 190 ;
+           arcaea:category arcaea:original;
+           arcaea:date 1653436801 ;
+           arcaea:difficulties arcaea.mu:PRS,
+                               arcaea.mu:PST,
+                               arcaea.mu:FTR;
+           arcaea:id "mu"@en-us;
+           arcaea:idx 269 ;
+           arcaea:purchase "mu"@en-us;
+           arcaea:remote_dl true;
+           arcaea:search_title "ふらむす"@ja,
+                               "프럼스"@ko,
+                               "みゅー"@ja,
+                               "뮤"@ko,
+                               "mu"@en;
+           arcaea:set "single"@en-us;
+           arcaea:side arcaea:light_side;
+           arcaea:title_localized "μ"@en;
+           arcaea:version "3.12"@en-us;
+           arcaea:world_unlock false.
+arcaea.mu:FTR arcaea:chartDesigner arcaea:N%E2%86%95TRO%20v1.0.5;
+              arcaea:jacketDesigner "Frums"@en-us;
+              arcaea:rating 9 ;
+              arcaea:ratingClass 2 ;
+              arcaea:ratingPlus true.
+arcaea.mu:PRS arcaea:chartDesigner arcaea:N%E2%86%95TRO%20v1.0.5;
+              arcaea:jacketDesigner "Frums"@en-us;
+              arcaea:rating 7 ;
+              arcaea:ratingClass 1 .
+arcaea.mu:PST arcaea:chartDesigner arcaea:N%E2%86%95TRO%20v1.0.5;
+              arcaea:jacketDesigner "Frums"@en-us;
+              arcaea:rating 3 ;
+              arcaea:ratingClass 0 .

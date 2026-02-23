@@ -1,0 +1,49 @@
+@prefix arcaea.shrink: <https://arcaea.lowiro.com/#shrink#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.shrink:.
+arcaea.shrink: arcaea:artist <https://arcaea.lowiro.com/#Shohei%20Tsuchiya(ZUNTATA)>;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:single2_light;
+               arcaea:bg_inverse arcaea:single2_conflict;
+               arcaea:bpm "180"@en-us;
+               arcaea:bpm_base 180 ;
+               arcaea:category arcaea:musicgames;
+               arcaea:date 1722297601 ;
+               arcaea:difficulties arcaea.shrink:FTR,
+                                   arcaea.shrink:PRS,
+                                   arcaea.shrink:PST;
+               arcaea:id "shrink"@en-us;
+               arcaea:idx 402 ;
+               arcaea:purchase "shrink"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "しょうへいつちや"@ja,
+                                   "つちやしょうへい"@ja,
+                                   "쇼헤이 츠치야"@ko,
+                                   "츠치야 쇼헤이"@ko,
+                                   "즌타타"@ko,
+                                   "しゅりんく"@ja,
+                                   "슈링크"@ko,
+                                   "쉬링크"@ko;
+               arcaea:set "single"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:source_copyright "© TAITO CORPORATION"@en-us;
+               arcaea:title_localized "shrink"@en,
+                                      "MUSIC DIVER"@en;
+               arcaea:version "5.9"@en-us;
+               arcaea:world_unlock false.
+arcaea.shrink:FTR arcaea:chartDesigner arcaea:Dec18;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 ;
+                  arcaea:ratingPlus true.
+arcaea.shrink:PRS arcaea:chartDesigner arcaea:Dec18;
+                  arcaea:rating 7 ;
+                  arcaea:ratingClass 1 .
+arcaea.shrink:PST arcaea:chartDesigner arcaea:Dec18;
+                  arcaea:rating 3 ;
+                  arcaea:ratingClass 0 .

@@ -1,0 +1,4 @@
+﻿namespace Fibo.FBC.FunctionalEntities.MetadataFBCFunctionalEntities.Namespace
+module MetadataFBCFunctionalEntities =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/MetadataFBCFunctionalEntities/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FunctionalEntities/MetadataFBCFunctionalEntities.rdf") (Some @"fibo.FBC.FunctionalEntities.MetadataFBCFunctionalEntities") None
+    let FunctionalEntitiesModule = {_prefixID with _localName = "FunctionalEntitiesModule"}

@@ -1,0 +1,46 @@
+@prefix arcaea.jump: <https://arcaea.lowiro.com/#jump#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.jump:.
+arcaea.jump: arcaea:artist arcaea:Rasmus%20Faber;
+             arcaea:audioPreview 0 ;
+             arcaea:audioPreviewEnd 0 ;
+             arcaea:bg arcaea:alice_light;
+             arcaea:bg_inverse arcaea:alice_conflict;
+             arcaea:bpm "133"@en-us;
+             arcaea:bpm_base 133 ;
+             arcaea:date 1606953603 ;
+             arcaea:difficulties arcaea.jump:PRS,
+                                 arcaea.jump:PST,
+                                 arcaea.jump:FTR;
+             arcaea:id "jump"@en-us;
+             arcaea:idx 186 ;
+             arcaea:purchase "alice"@en-us;
+             arcaea:remote_dl true;
+             arcaea:search_title "らすますふぇいばー"@ja,
+                                 "라스무스 페이버"@ko,
+                                 "라스머스 페이버"@ko,
+                                 "라스마스 페이버"@ko,
+                                 "じゃんぷ"@ja,
+                                 "점프"@ko;
+             arcaea:set "alice"@en-us;
+             arcaea:side arcaea:light_side;
+             arcaea:title_localized "Jump"@en;
+             arcaea:version "3.3"@en-us;
+             arcaea:world_unlock false.
+arcaea.jump:FTR arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                arcaea:jacketDesigner "あるみっく"@en-us;
+                arcaea:rating 9 ;
+                arcaea:ratingClass 2 .
+arcaea.jump:PRS arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                arcaea:jacketDesigner "あるみっく"@en-us;
+                arcaea:rating 6 ;
+                arcaea:ratingClass 1 .
+arcaea.jump:PST arcaea:chartDesigner arcaea:Nitro%E3%81%A0%E3%83%BC%EF%BC%81;
+                arcaea:jacketDesigner "あるみっく"@en-us;
+                arcaea:rating 4 ;
+                arcaea:ratingClass 0 .

@@ -1,0 +1,50 @@
+@prefix arcaea.shinoukyoseki: <https://arcaea.lowiro.com/#shinoukyoseki#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.shinoukyoseki:.
+arcaea.shinoukyoseki: arcaea:artist arcaea:ShiBa;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:prelude_light;
+                      arcaea:bg_inverse arcaea:prelude_conflict;
+                      arcaea:bpm "192"@en-us;
+                      arcaea:bpm_base 192 ;
+                      arcaea:date 1771459201 ;
+                      arcaea:difficulties arcaea.shinoukyoseki:FTR,
+                                          arcaea.shinoukyoseki:PRS,
+                                          arcaea.shinoukyoseki:PST;
+                      arcaea:id "shinoukyoseki"@en-us;
+                      arcaea:idx 520 ;
+                      arcaea:purchase "extend_4"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "しば"@ja,
+                                          "시바"@ko,
+                                          "しんおうきょせき"@ja,
+                                          "더 포가튼 포레스트 헤이븐"@ko,
+                                          "삼오허적"@ko,
+                                          "신노쿄세키"@ko,
+                                          "신노우쿄우세키"@ko,
+                                          "shinnoukyoseki"@en;
+                      arcaea:set "extend_4"@en-us;
+                      arcaea:side arcaea:light_side;
+                      arcaea:title_localized "森奥虚跡"@ja,
+                                             "The Forgotten Forest Haven"@en;
+                      arcaea:version "6.12"@en-us;
+                      arcaea:world_unlock true.
+arcaea.shinoukyoseki:FTR arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "しんおうきょせき"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.shinoukyoseki:PRS arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "しんおうきょせき"@en-us;
+                         arcaea:rating 6 ;
+                         arcaea:ratingClass 1 .
+arcaea.shinoukyoseki:PST arcaea:chartDesigner arcaea:Nitro;
+                         arcaea:jacketDesigner "しんおうきょせき"@en-us;
+                         arcaea:rating 3 ;
+                         arcaea:ratingClass 0 .

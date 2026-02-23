@@ -1,0 +1,46 @@
+@prefix arcaea.liar: <https://arcaea.lowiro.com/#liar#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.liar:.
+arcaea.liar: arcaea:artist arcaea:zts;
+             arcaea:audioPreview 0 ;
+             arcaea:audioPreviewEnd 0 ;
+             arcaea:bg arcaea:djmax_conflict;
+             arcaea:bg_inverse arcaea:djmax_light;
+             arcaea:bpm "140"@en-us;
+             arcaea:bpm_base 140 ;
+             arcaea:date 1750896005 ;
+             arcaea:difficulties arcaea.liar:FTR,
+                                 arcaea.liar:PRS,
+                                 arcaea.liar:PST;
+             arcaea:id "liar"@en-us;
+             arcaea:idx 469 ;
+             arcaea:purchase "djmax_append_1"@en-us;
+             arcaea:remote_dl true;
+             arcaea:search_title "ぜっとてぃーえす"@ja,
+                                 "ぜっつ"@ja,
+                                 "지티에스"@ko,
+                                 "젯츠"@ko,
+                                 "らいあー"@ja,
+                                 "라이어"@ko;
+             arcaea:set "djmax_append_1"@en-us;
+             arcaea:side arcaea:conflict_side;
+             arcaea:source_copyright "© Neowiz. All Rights Reserved."@en-us;
+             arcaea:title_localized "Liar"@en,
+                                    "DJMAX"@en;
+             arcaea:version "6.6"@en-us;
+             arcaea:world_unlock false.
+arcaea.liar:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#KLMNOP%20+%20Nitro>;
+                arcaea:rating 10 ;
+                arcaea:ratingClass 2 .
+arcaea.liar:PRS arcaea:chartDesigner arcaea:Nitro;
+                arcaea:rating 7 ;
+                arcaea:ratingClass 1 ;
+                arcaea:ratingPlus true.
+arcaea.liar:PST arcaea:chartDesigner arcaea:Nitro;
+                arcaea:rating 4 ;
+                arcaea:ratingClass 0 .

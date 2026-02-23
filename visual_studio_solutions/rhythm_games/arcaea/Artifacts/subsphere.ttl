@@ -1,0 +1,55 @@
+@prefix arcaea.subsphere: <https://arcaea.lowiro.com/#subsphere#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.subsphere:.
+arcaea.subsphere: arcaea:artist arcaea:%E7%AA%93%E8%BE%BA%E3%83%AA%E3%82%AB;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:observer_light;
+                  arcaea:bg_inverse arcaea:observer_conflict;
+                  arcaea:bpm "120"@en-us;
+                  arcaea:bpm_base 240 ;
+                  arcaea:category arcaea:partner;
+                  arcaea:date 1767139200 ;
+                  arcaea:difficulties arcaea.subsphere:FTR,
+                                      arcaea.subsphere:PRS,
+                                      arcaea.subsphere:PST,
+                                      arcaea.subsphere:ETR;
+                  arcaea:id "subsphere"@en-us;
+                  arcaea:idx 511 ;
+                  arcaea:purchase "subsphere"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "まどべりか"@ja,
+                                      "마도베 리카"@ko,
+                                      "madobe rika"@en,
+                                      "うかするあきゅうたい"@ja,
+                                      "어브스피어 인 이클로전"@ko,
+                                      "우카스루 아큐우타이"@ko,
+                                      "우화하는 아구체"@ko,
+                                      "uka suru akyuutai"@en;
+                  arcaea:set "single"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "羽化する亜球体"@ja,
+                                         "Subsphere in Eclosion"@en;
+                  arcaea:version "6.11"@en-us;
+                  arcaea:world_unlock false.
+arcaea.subsphere:ETR arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20v.○/●/○>;
+                     arcaea:jacketDesigner "scocasr"@en-us;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 4 .
+arcaea.subsphere:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20v.○/●/○>;
+                     arcaea:jacketDesigner "scocasr"@en-us;
+                     arcaea:rating 9 ;
+                     arcaea:ratingClass 2 .
+arcaea.subsphere:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20v.○/●/○>;
+                     arcaea:jacketDesigner "scocasr"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 1 .
+arcaea.subsphere:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#Nitro%20v.○/●/○>;
+                     arcaea:jacketDesigner "scocasr"@en-us;
+                     arcaea:rating 5 ;
+                     arcaea:ratingClass 0 .

@@ -1,0 +1,50 @@
+@prefix arcaea.kokoro: <https://arcaea.lowiro.com/#kokoro#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.kokoro:.
+arcaea.kokoro: arcaea:artist <https://arcaea.lowiro.com/#削除%20(Violin%20:%20Katali)>;
+               arcaea:audioPreview 0 ;
+               arcaea:audioPreviewEnd 0 ;
+               arcaea:bg arcaea:ongeki_light;
+               arcaea:bg_inverse arcaea:ongeki_conflict;
+               arcaea:bpm "80"@en-us;
+               arcaea:bpm_base 160 ;
+               arcaea:date 1664409600 ;
+               arcaea:difficulties arcaea.kokoro:FTR,
+                                   arcaea.kokoro:PRS,
+                                   arcaea.kokoro:PST;
+               arcaea:id "kokoro"@en-us;
+               arcaea:idx 285 ;
+               arcaea:no_stream true;
+               arcaea:purchase "ongeki_append_1"@en-us;
+               arcaea:remote_dl true;
+               arcaea:search_title "かたり"@ja,
+                                   "さくじょ"@ja,
+                                   "사쿠죠"@ko,
+                                   "카탈리"@ko,
+                                   "sakuzyo"@en,
+                                   "こころ"@ja,
+                                   "하트"@ko,
+                                   "코코로"@ko,
+                                   "마음"@ko;
+               arcaea:set "ongeki_append_1"@en-us;
+               arcaea:side arcaea:light_side;
+               arcaea:source_copyright "©SEGA"@en-us;
+               arcaea:title_localized "心"@ja,
+                                      "Heart"@en,
+                                      "O.N.G.E.K.I."@en;
+               arcaea:version "4.1"@en-us;
+               arcaea:world_unlock false.
+arcaea.kokoro:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#écologie%20(from%20SEGA)>;
+                  arcaea:rating 9 ;
+                  arcaea:ratingClass 2 .
+arcaea.kokoro:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#écologie%20(from%20SEGA)>;
+                  arcaea:rating 5 ;
+                  arcaea:ratingClass 1 .
+arcaea.kokoro:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#écologie%20(from%20SEGA)>;
+                  arcaea:rating 1 ;
+                  arcaea:ratingClass 0 .

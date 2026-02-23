@@ -1,0 +1,46 @@
+@prefix arcaea.redolentshape: <https://arcaea.lowiro.com/#redolentshape#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.redolentshape:.
+arcaea.redolentshape: arcaea:artist arcaea:Sanaas;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:nijuusei2_conflict;
+                      arcaea:bg_inverse arcaea:nijuusei2_light;
+                      arcaea:bpm "150"@en-us;
+                      arcaea:bpm_base 150 ;
+                      arcaea:category arcaea:original;
+                      arcaea:date 1634774400 ;
+                      arcaea:difficulties arcaea.redolentshape:PRS,
+                                          arcaea.redolentshape:PST,
+                                          arcaea.redolentshape:FTR;
+                      arcaea:id "redolentshape"@en-us;
+                      arcaea:idx 239 ;
+                      arcaea:purchase "redolentshape"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "さなあず"@ja,
+                                          "사나즈"@ko,
+                                          "れどれんとしぇいぷ"@ja,
+                                          "레돌렌트 셰이프"@ko,
+                                          "레돌렌트 쉐이프"@ko;
+                      arcaea:set "single"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Redolent Shape"@en;
+                      arcaea:version "3.8"@en-us;
+                      arcaea:world_unlock false.
+arcaea.redolentshape:FTR arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                         arcaea:jacketDesigner "ＫＴ。"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 2 .
+arcaea.redolentshape:PRS arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                         arcaea:jacketDesigner "ＫＴ。"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 .
+arcaea.redolentshape:PST arcaea:chartDesigner arcaea:%E7%B5%B6%E6%BB%85;
+                         arcaea:jacketDesigner "ＫＴ。"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

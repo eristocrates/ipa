@@ -1,0 +1,53 @@
+@prefix arcaea.omegafour: <https://arcaea.lowiro.com/#omegafour#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.omegafour:.
+arcaea.omegafour: arcaea:artist arcaea:%E7%A9%B4%E5%B1%B1%E5%A4%A7%E8%BC%94%20VS%20%E5%85%89%E5%90%89%E7%8C%9B%E4%BF%AE%20VS%20Kai;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:omegafour;
+                  arcaea:bpm "71-192"@en-us;
+                  arcaea:bpm_base 192 ;
+                  arcaea:date 1608163203 ;
+                  arcaea:difficulties arcaea.omegafour:FTR,
+                                      arcaea.omegafour:PRS,
+                                      arcaea.omegafour:PST;
+                  arcaea:id "omegafour"@en-us;
+                  arcaea:idx 194 ;
+                  arcaea:no_stream true;
+                  arcaea:purchase "ongeki"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "아나야마 다이스케"@ko,
+                                      "かい"@ja,
+                                      "みつよしたけのぶ"@ja,
+                                      "あなやまだいすけ"@ja,
+                                      "미츠요시 타케노부"@ko,
+                                      "카이"@ko,
+                                      "おめがふぉー"@ja,
+                                      "오메가 포"@ko,
+                                      "omega four"@en,
+                                      "omega4"@en;
+                  arcaea:set "ongeki"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:source_copyright "©SEGA"@en-us;
+                  arcaea:title_localized "w4"@zh-hans,
+                                         "w4"@zh-hant,
+                                         "ω4"@en,
+                                         "O.N.G.E.K.I."@en;
+                  arcaea:version "3.4"@en-us;
+                  arcaea:world_unlock false.
+arcaea.omegafour:FTR arcaea:chartDesigner arcaea:%CF%840;
+                     arcaea:rating 10 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.omegafour:PRS arcaea:chartDesigner arcaea:%CF%840;
+                     arcaea:rating 7 ;
+                     arcaea:ratingClass 1 ;
+                     arcaea:ratingPlus true.
+arcaea.omegafour:PST arcaea:chartDesigner arcaea:%CF%840;
+                     arcaea:rating 3 ;
+                     arcaea:ratingClass 0 .

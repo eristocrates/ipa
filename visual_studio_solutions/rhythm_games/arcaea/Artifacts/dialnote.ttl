@@ -1,0 +1,47 @@
+@prefix arcaea.dialnote: <https://arcaea.lowiro.com/#dialnote#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.dialnote:.
+arcaea.dialnote: arcaea:artist arcaea:%E4%B8%83%E8%8D%89%E3%81%8F%E3%82%8A%E3%82%80;
+                 arcaea:audioPreview 16153 ;
+                 arcaea:audioPreviewEnd 31384 ;
+                 arcaea:bg arcaea:nijuusei2_light;
+                 arcaea:bg_inverse arcaea:nijuusei2_conflict;
+                 arcaea:bpm "130"@en-us;
+                 arcaea:bpm_base 130 ;
+                 arcaea:date 1671667201 ;
+                 arcaea:difficulties arcaea.dialnote:FTR,
+                                     arcaea.dialnote:PRS,
+                                     arcaea.dialnote:PST;
+                 arcaea:id "dialnote"@en-us;
+                 arcaea:idx 293 ;
+                 arcaea:remote_dl false;
+                 arcaea:search_title "ななくさくりむ"@ja,
+                                     "나나쿠사 쿠리무"@ko,
+                                     "nanakusa kurimu"@en,
+                                     "nanakusa crim"@en,
+                                     "다이얼노트"@ko,
+                                     "다이아루노토"@ko;
+                 arcaea:set "base"@en-us;
+                 arcaea:side arcaea:light_side;
+                 arcaea:title_localized "だいあるのーと"@ja,
+                                        "Dialnote"@en;
+                 arcaea:version "4.1"@en-us;
+                 arcaea:world_unlock false.
+arcaea.dialnote:FTR arcaea:chartDesigner arcaea:Nitro%E3%81%A7%E3%81%99%E3%80%82;
+                    arcaea:jacketDesigner "七草くりむ"@en-us;
+                    arcaea:rating 8 ;
+                    arcaea:ratingClass 2 ;
+                    arcaea:ratingPlus true.
+arcaea.dialnote:PRS arcaea:chartDesigner arcaea:Nitro%E3%81%A7%E3%81%99%E3%80%82;
+                    arcaea:jacketDesigner "七草くりむ"@en-us;
+                    arcaea:rating 6 ;
+                    arcaea:ratingClass 1 .
+arcaea.dialnote:PST arcaea:chartDesigner arcaea:Nitro%E3%81%A7%E3%81%99%E3%80%82;
+                    arcaea:jacketDesigner "七草くりむ"@en-us;
+                    arcaea:rating 3 ;
+                    arcaea:ratingClass 0 .

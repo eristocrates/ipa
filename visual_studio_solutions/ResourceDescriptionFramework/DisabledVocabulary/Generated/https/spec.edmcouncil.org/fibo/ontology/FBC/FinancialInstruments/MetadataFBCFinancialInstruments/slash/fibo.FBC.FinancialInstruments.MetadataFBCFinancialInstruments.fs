@@ -1,0 +1,4 @@
+﻿namespace Fibo.FBC.FinancialInstruments.MetadataFBCFinancialInstruments.Namespace
+module MetadataFBCFinancialInstruments =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/MetadataFBCFinancialInstruments/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FinancialInstruments/MetadataFBCFinancialInstruments.rdf") (Some @"fibo.FBC.FinancialInstruments.MetadataFBCFinancialInstruments") None
+    let FinancialInstrumentsModule = {_prefixID with _localName = "FinancialInstrumentsModule"}

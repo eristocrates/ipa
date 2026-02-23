@@ -1,0 +1,49 @@
+@prefix arcaea.internetyamero: <https://arcaea.lowiro.com/#internetyamero#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.internetyamero:.
+arcaea.internetyamero: arcaea:artist arcaea:Aiobahn%20feat.%20KOTOKO;
+                       arcaea:audioPreview 0 ;
+                       arcaea:audioPreviewEnd 0 ;
+                       arcaea:bg arcaea:single2_conflict;
+                       arcaea:bg_inverse arcaea:single2_light;
+                       arcaea:bpm "185"@en-us;
+                       arcaea:bpm_base 185 ;
+                       arcaea:category arcaea:poprec;
+                       arcaea:date 1687910400 ;
+                       arcaea:difficulties arcaea.internetyamero:FTR,
+                                           arcaea.internetyamero:PRS,
+                                           arcaea.internetyamero:PST;
+                       arcaea:id "internetyamero"@en-us;
+                       arcaea:idx 323 ;
+                       arcaea:purchase "internetyamero"@en-us;
+                       arcaea:remote_dl true;
+                       arcaea:search_title "あいおばん"@ja,
+                                           "ことこ"@ja,
+                                           "아이오반"@ko,
+                                           "코토코"@ko,
+                                           "いんたーねっとやめろ"@ja,
+                                           "인터넷 야메로"@ko,
+                                           "인터넷 그만둬"@ko,
+                                           "인터넷 그만해"@ko,
+                                           "인터넷 하지마"@ko,
+                                           "인타넷또 야메로"@ko;
+                       arcaea:set "single"@en-us;
+                       arcaea:side arcaea:conflict_side;
+                       arcaea:title_localized "INTERNET YAMERO"@en;
+                       arcaea:version "4.5"@en-us;
+                       arcaea:world_unlock false.
+arcaea.internetyamero:FTR arcaea:chartDesigner arcaea:%E8%A9%B2%E5%BD%93%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%81%8C%E5%81%9C%E6%AD%A2%E3%81%95%E3%82%8C%E3%81%9F%E3%81%9F%E3%82%81%E3%80%81%0A%E3%81%93%E3%81%AE%E8%AD%9C%E9%9D%A2%E3%81%AF%E5%86%8D%E7%94%9F%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82;
+                          arcaea:rating 10 ;
+                          arcaea:ratingClass 2 .
+arcaea.internetyamero:PRS arcaea:chartDesigner arcaea:%E8%A9%B2%E5%BD%93%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%81%8C%E5%81%9C%E6%AD%A2%E3%81%95%E3%82%8C%E3%81%9F%E3%81%9F%E3%82%81%E3%80%81%0A%E3%81%93%E3%81%AE%E8%AD%9C%E9%9D%A2%E3%81%AF%E5%86%8D%E7%94%9F%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82;
+                          arcaea:rating 7 ;
+                          arcaea:ratingClass 1 ;
+                          arcaea:ratingPlus true.
+arcaea.internetyamero:PST arcaea:chartDesigner arcaea:%E8%A9%B2%E5%BD%93%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%81%8C%E5%81%9C%E6%AD%A2%E3%81%95%E3%82%8C%E3%81%9F%E3%81%9F%E3%82%81%E3%80%81%0A%E3%81%93%E3%81%AE%E8%AD%9C%E9%9D%A2%E3%81%AF%E5%86%8D%E7%94%9F%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82;
+                          arcaea:rating 4 ;
+                          arcaea:ratingClass 0 .

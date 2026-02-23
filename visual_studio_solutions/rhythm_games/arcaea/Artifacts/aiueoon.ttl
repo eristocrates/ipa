@@ -1,0 +1,47 @@
+@prefix arcaea.aiueoon: <https://arcaea.lowiro.com/#aiueoon#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.aiueoon:.
+arcaea.aiueoon: arcaea:artist <https://arcaea.lowiro.com/#MYUKKE.>;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:omatsuri_light;
+                arcaea:bg_daynight arcaea.aiueoon:bg_daynight;
+                arcaea:bg_inverse arcaea:omatsuri_conflict;
+                arcaea:bpm "145"@en-us;
+                arcaea:bpm_base 145 ;
+                arcaea:date 1566432001 ;
+                arcaea:difficulties arcaea.aiueoon:PRS,
+                                    arcaea.aiueoon:PST,
+                                    arcaea.aiueoon:FTR;
+                arcaea:id "aiueoon"@en-us;
+                arcaea:idx 132 ;
+                arcaea:purchase "omatsuri"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "みゅっけ"@ja,
+                                    "뮤케"@ko,
+                                    "あいうえおーん"@ja,
+                                    "아이우에온"@ko;
+                arcaea:set "omatsuri"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "AI[UE]OON"@en;
+                arcaea:version "2.3"@en-us;
+                arcaea:world_unlock false.
+arcaea.aiueoon:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#N[I]TRO>;
+                   arcaea:jacketDesigner "SiNoe"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.aiueoon:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#N[I]TRO>;
+                   arcaea:jacketDesigner "SiNoe"@en-us;
+                   arcaea:rating 6 ;
+                   arcaea:ratingClass 1 .
+arcaea.aiueoon:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#N[I]TRO>;
+                   arcaea:jacketDesigner "SiNoe"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .
+arcaea:bg_daynight arcaea:day arcaea:omatsuri_light;
+                   arcaea:night arcaea:omatsuri_conflict.

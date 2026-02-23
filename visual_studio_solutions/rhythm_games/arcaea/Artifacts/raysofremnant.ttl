@@ -1,0 +1,54 @@
+@prefix arcaea.raysofremnant: <https://arcaea.lowiro.com/#raysofremnant#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.raysofremnant:.
+arcaea.raysofremnant: arcaea:artist arcaea:May%20%C3%97%20Felysrator;
+                      arcaea:audioPreview 0 ;
+                      arcaea:audioPreviewEnd 0 ;
+                      arcaea:bg arcaea:lephon;
+                      arcaea:bg_inverse arcaea:lephon;
+                      arcaea:bpm "200"@en-us;
+                      arcaea:bpm_base 200 ;
+                      arcaea:byd_local_unlock true;
+                      arcaea:date 1732147207 ;
+                      arcaea:difficulties arcaea.raysofremnant:FTR,
+                                          arcaea.raysofremnant:PRS,
+                                          arcaea.raysofremnant:PST,
+                                          arcaea.raysofremnant:BYD;
+                      arcaea:id "raysofremnant"@en-us;
+                      arcaea:idx 430 ;
+                      arcaea:purchase "lephon"@en-us;
+                      arcaea:remote_dl true;
+                      arcaea:search_title "めい"@ja,
+                                          "ふぇりすらとーる"@ja,
+                                          "메이"@ko,
+                                          "펠리스레이터"@ko,
+                                          "れいずおぶれむなんと"@ja,
+                                          "레이즈 오브 렘넌트"@ko;
+                      arcaea:set "lephon"@en-us;
+                      arcaea:side arcaea:conflict_side;
+                      arcaea:title_localized "Rays of Remnant"@en;
+                      arcaea:version "6.0"@en-us;
+                      arcaea:world_unlock false.
+arcaea.raysofremnant:BYD arcaea:chartDesigner arcaea:nora::nue;
+                         arcaea:hidden_until "none"@en-us;
+                         arcaea:jacketDesigner "はむメロン"@en-us;
+                         arcaea:rating 10 ;
+                         arcaea:ratingClass 3 .
+arcaea.raysofremnant:FTR arcaea:chartDesigner arcaea:nora::nue;
+                         arcaea:jacketDesigner "はむメロン"@en-us;
+                         arcaea:rating 9 ;
+                         arcaea:ratingClass 2 ;
+                         arcaea:ratingPlus true.
+arcaea.raysofremnant:PRS arcaea:chartDesigner arcaea:nora::nue;
+                         arcaea:jacketDesigner "はむメロン"@en-us;
+                         arcaea:rating 7 ;
+                         arcaea:ratingClass 1 .
+arcaea.raysofremnant:PST arcaea:chartDesigner arcaea:nora::nue;
+                         arcaea:jacketDesigner "はむメロン"@en-us;
+                         arcaea:rating 4 ;
+                         arcaea:ratingClass 0 .

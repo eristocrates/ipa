@@ -1,0 +1,46 @@
+@prefix arcaea.fluffyflash: <https://arcaea.lowiro.com/#fluffyflash#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.fluffyflash:.
+arcaea.fluffyflash: arcaea:artist arcaea:Kobaryo;
+                    arcaea:audioPreview 0 ;
+                    arcaea:audioPreviewEnd 0 ;
+                    arcaea:bg arcaea:ongeki_light;
+                    arcaea:bg_inverse arcaea:ongeki_conflict;
+                    arcaea:bpm "252"@en-us;
+                    arcaea:bpm_base 252 ;
+                    arcaea:date 1664409602 ;
+                    arcaea:difficulties arcaea.fluffyflash:FTR,
+                                        arcaea.fluffyflash:PRS,
+                                        arcaea.fluffyflash:PST;
+                    arcaea:id "fluffyflash"@en-us;
+                    arcaea:idx 287 ;
+                    arcaea:no_stream true;
+                    arcaea:purchase "ongeki_append_1"@en-us;
+                    arcaea:remote_dl true;
+                    arcaea:search_title "こばりょー"@ja,
+                                        "코바료"@ko,
+                                        "ふらっふぃーふらっしゅ"@ja,
+                                        "플러피 플래시"@ko,
+                                        "플러피 플래쉬"@ko;
+                    arcaea:set "ongeki_append_1"@en-us;
+                    arcaea:side arcaea:light_side;
+                    arcaea:source_copyright "©SEGA"@en-us;
+                    arcaea:title_localized "FLUFFY FLASH"@en,
+                                           "O.N.G.E.K.I."@en;
+                    arcaea:version "4.1"@en-us;
+                    arcaea:world_unlock false.
+arcaea.fluffyflash:FTR arcaea:chartDesigner arcaea:Toaster;
+                       arcaea:rating 9 ;
+                       arcaea:ratingClass 2 ;
+                       arcaea:ratingPlus true.
+arcaea.fluffyflash:PRS arcaea:chartDesigner arcaea:Toaster;
+                       arcaea:rating 6 ;
+                       arcaea:ratingClass 1 .
+arcaea.fluffyflash:PST arcaea:chartDesigner arcaea:Toaster;
+                       arcaea:rating 3 ;
+                       arcaea:ratingClass 0 .

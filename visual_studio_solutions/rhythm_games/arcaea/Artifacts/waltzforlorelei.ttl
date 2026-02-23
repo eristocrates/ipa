@@ -1,0 +1,56 @@
+@prefix arcaea.waltzforlorelei: <https://arcaea.lowiro.com/#waltzforlorelei#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.waltzforlorelei:.
+arcaea.waltzforlorelei: arcaea:artist <https://arcaea.lowiro.com/#Sobrem%20&%20庭師>;
+                        arcaea:audioPreview 0 ;
+                        arcaea:audioPreviewEnd 0 ;
+                        arcaea:bg arcaea:rotaeno_light;
+                        arcaea:bg_inverse arcaea:rotaeno_conflict;
+                        arcaea:bpm "220"@en-us;
+                        arcaea:bpm_base 220 ;
+                        arcaea:date 1724889601 ;
+                        arcaea:difficulties arcaea.waltzforlorelei:FTR,
+                                            arcaea.waltzforlorelei:PRS,
+                                            arcaea.waltzforlorelei:PST,
+                                            arcaea.waltzforlorelei:ETR;
+                        arcaea:id "waltzforlorelei"@en-us;
+                        arcaea:idx 408 ;
+                        arcaea:purchase "rotaeno"@en-us;
+                        arcaea:remote_dl true;
+                        arcaea:search_title "そぶれむ"@ja,
+                                            "にわし"@ja,
+                                            "소브렘"@ko,
+                                            "니와시"@ko,
+                                            "niwashi"@en,
+                                            "わるつふぉーろーれらい"@ja,
+                                            "왈츠 포 로렐라이"@ko;
+                        arcaea:set "rotaeno"@en-us;
+                        arcaea:side arcaea:light_side;
+                        arcaea:source_copyright "© Dream Engine Games"@en-us;
+                        arcaea:title_localized "Waltz for Lorelei"@en,
+                                               "Rotaeno"@en;
+                        arcaea:version "5.10"@en-us;
+                        arcaea:world_unlock false.
+arcaea.waltzforlorelei:ETR arcaea:chartDesigner arcaea:antymis;
+                           arcaea:jacketDesigner "夕西"@en-us;
+                           arcaea:rating 9 ;
+                           arcaea:ratingClass 4 ;
+                           arcaea:ratingPlus true.
+arcaea.waltzforlorelei:FTR arcaea:chartDesigner arcaea:antymis;
+                           arcaea:jacketDesigner "夕西"@en-us;
+                           arcaea:rating 8 ;
+                           arcaea:ratingClass 2 ;
+                           arcaea:ratingPlus true.
+arcaea.waltzforlorelei:PRS arcaea:chartDesigner arcaea:antymis;
+                           arcaea:jacketDesigner "夕西"@en-us;
+                           arcaea:rating 5 ;
+                           arcaea:ratingClass 1 .
+arcaea.waltzforlorelei:PST arcaea:chartDesigner arcaea:antymis;
+                           arcaea:jacketDesigner "夕西"@en-us;
+                           arcaea:rating 2 ;
+                           arcaea:ratingClass 0 .

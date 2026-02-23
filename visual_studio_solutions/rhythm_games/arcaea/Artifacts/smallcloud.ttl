@@ -1,0 +1,49 @@
+@prefix arcaea.smallcloud: <https://arcaea.lowiro.com/#smallcloud#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.smallcloud:.
+arcaea.smallcloud: arcaea:artist arcaea:%E3%83%86%E3%83%85%E3%82%AB%20x%20Aoi%20feat.%E6%A1%83%E9%9B%9B%E3%81%AA%E3%81%AE;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:observer_light;
+                   arcaea:bg_inverse arcaea:observer_conflict;
+                   arcaea:bpm "220"@en-us;
+                   arcaea:bpm_base 220 ;
+                   arcaea:date 1626825600 ;
+                   arcaea:difficulties arcaea.smallcloud:FTR,
+                                       arcaea.smallcloud:PRS,
+                                       arcaea.smallcloud:PST;
+                   arcaea:id "smallcloud"@en-us;
+                   arcaea:idx 224 ;
+                   arcaea:purchase "observer_append_2"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "あおい"@ja,
+                                       "ももひななの"@ja,
+                                       "테즈카"@ko,
+                                       "아오이"@ko,
+                                       "모모히나 나노"@ko,
+                                       "tezuka"@en,
+                                       "momohina nano"@en,
+                                       "すもーるくらうどしゅがーきゃんでぃ"@ja,
+                                       "스몰 클라우드 슈가 캔디"@ko;
+                   arcaea:set "observer_append_2"@en-us;
+                   arcaea:side arcaea:light_side;
+                   arcaea:title_localized "Small Cloud Sugar Candy"@en;
+                   arcaea:version "3.7"@en-us;
+                   arcaea:world_unlock false.
+arcaea.smallcloud:FTR arcaea:chartDesigner arcaea:%C3%A9n;
+                      arcaea:jacketDesigner "のう"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 .
+arcaea.smallcloud:PRS arcaea:chartDesigner arcaea:%C3%A9n;
+                      arcaea:jacketDesigner "のう"@en-us;
+                      arcaea:rating 6 ;
+                      arcaea:ratingClass 1 .
+arcaea.smallcloud:PST arcaea:chartDesigner arcaea:%C3%A9n;
+                      arcaea:jacketDesigner "のう"@en-us;
+                      arcaea:rating 3 ;
+                      arcaea:ratingClass 0 .

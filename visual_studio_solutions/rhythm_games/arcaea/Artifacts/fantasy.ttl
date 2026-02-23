@@ -1,0 +1,47 @@
+@prefix arcaea.fantasy: <https://arcaea.lowiro.com/#fantasy#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.fantasy:.
+arcaea.fantasy: arcaea:artist <https://arcaea.lowiro.com/#Moon%20Jelly%20&%20YUKIYANAGI>;
+                arcaea:audioPreview 0 ;
+                arcaea:audioPreviewEnd 0 ;
+                arcaea:bg arcaea:hime_light;
+                arcaea:bg_inverse arcaea:hime_conflict;
+                arcaea:bpm "170"@en-us;
+                arcaea:bpm_base 170 ;
+                arcaea:date 1698278400 ;
+                arcaea:difficulties arcaea.fantasy:FTR,
+                                    arcaea.fantasy:PRS,
+                                    arcaea.fantasy:PST;
+                arcaea:id "fantasy"@en-us;
+                arcaea:idx 353 ;
+                arcaea:purchase "extend_2"@en-us;
+                arcaea:remote_dl true;
+                arcaea:search_title "むーんじぇりー"@ja,
+                                    "ゆきやなぎ"@ja,
+                                    "문 젤리"@ko,
+                                    "유키야나기"@ko,
+                                    "ふぁんたじー"@ja,
+                                    "판타지"@ko,
+                                    "fantasy"@en;
+                arcaea:set "extend_2"@en-us;
+                arcaea:side arcaea:light_side;
+                arcaea:title_localized "FANTA5Y"@en;
+                arcaea:version "5.1"@en-us;
+                arcaea:world_unlock true.
+arcaea.fantasy:FTR arcaea:chartDesigner arcaea:TOA5TIE;
+                   arcaea:jacketDesigner "nep"@en-us;
+                   arcaea:rating 9 ;
+                   arcaea:ratingClass 2 .
+arcaea.fantasy:PRS arcaea:chartDesigner arcaea:TOA5TIE;
+                   arcaea:jacketDesigner "nep"@en-us;
+                   arcaea:rating 7 ;
+                   arcaea:ratingClass 1 .
+arcaea.fantasy:PST arcaea:chartDesigner arcaea:TOA5TIE;
+                   arcaea:jacketDesigner "nep"@en-us;
+                   arcaea:rating 3 ;
+                   arcaea:ratingClass 0 .

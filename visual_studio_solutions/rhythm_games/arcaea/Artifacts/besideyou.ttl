@@ -1,0 +1,47 @@
+@prefix arcaea.besideyou: <https://arcaea.lowiro.com/#besideyou#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.besideyou:.
+arcaea.besideyou: arcaea:artist arcaea:%E6%B1%9F%E5%8F%A3%E5%AD%9D%E5%AE%8F;
+                  arcaea:audioPreview 0 ;
+                  arcaea:audioPreviewEnd 0 ;
+                  arcaea:bg arcaea:alice_light;
+                  arcaea:bg_inverse arcaea:alice_conflict;
+                  arcaea:bpm "181"@en-us;
+                  arcaea:bpm_base 181 ;
+                  arcaea:date 1607558400 ;
+                  arcaea:difficulties arcaea.besideyou:FTR,
+                                      arcaea.besideyou:PRS,
+                                      arcaea.besideyou:PST;
+                  arcaea:id "besideyou"@en-us;
+                  arcaea:idx 188 ;
+                  arcaea:purchase "alice_append_1"@en-us;
+                  arcaea:remote_dl true;
+                  arcaea:search_title "えぐちたかひろ"@ja,
+                                      "타카히로 에구치"@ko,
+                                      "takahiro eguchi"@en,
+                                      "びさいどゆー"@ja,
+                                      "びさいじゅー"@ja,
+                                      "비사이드 유"@ko;
+                  arcaea:set "alice_append_1"@en-us;
+                  arcaea:side arcaea:light_side;
+                  arcaea:title_localized "Beside You"@en;
+                  arcaea:version "3.3"@en-us;
+                  arcaea:world_unlock false.
+arcaea.besideyou:FTR arcaea:chartDesigner arcaea:CERiNG;
+                     arcaea:jacketDesigner "にもし"@en-us;
+                     arcaea:rating 8 ;
+                     arcaea:ratingClass 2 ;
+                     arcaea:ratingPlus true.
+arcaea.besideyou:PRS arcaea:chartDesigner arcaea:CERiNG;
+                     arcaea:jacketDesigner "にもし"@en-us;
+                     arcaea:rating 6 ;
+                     arcaea:ratingClass 1 .
+arcaea.besideyou:PST arcaea:chartDesigner arcaea:CERiNG;
+                     arcaea:jacketDesigner "にもし"@en-us;
+                     arcaea:rating 2 ;
+                     arcaea:ratingClass 0 .

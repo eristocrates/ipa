@@ -1,0 +1,47 @@
+@prefix arcaea.beautifuldreamer: <https://arcaea.lowiro.com/#beautifuldreamer#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.beautifuldreamer:.
+arcaea.beautifuldreamer: arcaea:artist arcaea:M-Project;
+                         arcaea:audioPreview 0 ;
+                         arcaea:audioPreviewEnd 0 ;
+                         arcaea:bg arcaea:single2_light;
+                         arcaea:bg_inverse arcaea:single2_conflict;
+                         arcaea:bpm "188"@en-us;
+                         arcaea:bpm_base 188 ;
+                         arcaea:category arcaea:original;
+                         arcaea:date 1717027203 ;
+                         arcaea:difficulties arcaea.beautifuldreamer:PRS,
+                                             arcaea.beautifuldreamer:PST,
+                                             arcaea.beautifuldreamer:FTR;
+                         arcaea:id "beautifuldreamer"@en-us;
+                         arcaea:idx 393 ;
+                         arcaea:purchase "beautifuldreamer"@en-us;
+                         arcaea:remote_dl true;
+                         arcaea:search_title "えむぷろじぇくと"@ja,
+                                             "엠 프로젝트"@ko,
+                                             "びゅーてぃふるどりーまー"@ja,
+                                             "뷰티풀 드리머"@ko;
+                         arcaea:set "single"@en-us;
+                         arcaea:side arcaea:light_side;
+                         arcaea:title_localized "Beautiful Dreamer"@en;
+                         arcaea:version "5.7"@en-us;
+                         arcaea:world_unlock false.
+arcaea.beautifuldreamer:FTR arcaea:chartDesigner arcaea:CERiNG;
+                            arcaea:jacketDesigner "さんぱち"@en-us;
+                            arcaea:rating 9 ;
+                            arcaea:ratingClass 2 ;
+                            arcaea:ratingPlus true.
+arcaea.beautifuldreamer:PRS arcaea:chartDesigner arcaea:CERiNG;
+                            arcaea:jacketDesigner "さんぱち"@en-us;
+                            arcaea:rating 7 ;
+                            arcaea:ratingClass 1 ;
+                            arcaea:ratingPlus true.
+arcaea.beautifuldreamer:PST arcaea:chartDesigner arcaea:CERiNG;
+                            arcaea:jacketDesigner "さんぱち"@en-us;
+                            arcaea:rating 4 ;
+                            arcaea:ratingClass 0 .

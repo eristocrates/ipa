@@ -1,0 +1,55 @@
+@prefix arcaea.lightmyway: <https://arcaea.lowiro.com/#lightmyway#> .
+
+@prefix arcaea: <https://arcaea.lowiro.com/#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+arcaea: arcaea:song arcaea.lightmyway:.
+arcaea.lightmyway: arcaea:artist arcaea:%E3%81%8B%E3%82%81%E3%82%8A%E3%81%82%20feat.%20ST%CE%94RLIVHT;
+                   arcaea:audioPreview 0 ;
+                   arcaea:audioPreviewEnd 0 ;
+                   arcaea:bg arcaea:single2_conflict;
+                   arcaea:bg_inverse arcaea:single2_light;
+                   arcaea:bpm "190"@en-us;
+                   arcaea:bpm_base 190 ;
+                   arcaea:category arcaea:musicgames;
+                   arcaea:date 1703116802 ;
+                   arcaea:difficulties arcaea.lightmyway:FTR,
+                                       arcaea.lightmyway:PRS,
+                                       arcaea.lightmyway:PST;
+                   arcaea:id "lightmyway"@en-us;
+                   arcaea:idx 367 ;
+                   arcaea:purchase "lightmyway"@en-us;
+                   arcaea:remote_dl true;
+                   arcaea:search_title "すたーらいと"@ja,
+                                       "카메리아"@ko,
+                                       "카멜리아"@ko,
+                                       "스타라이트"@ko,
+                                       "kameria"@en,
+                                       "camellia"@en,
+                                       "starlight"@en,
+                                       "らいとまいうぇい"@ja,
+                                       "라이트 마이 웨이"@ko,
+                                       "라잇 마이 웨이"@ko,
+                                       "light my way"@en;
+                   arcaea:set "single"@en-us;
+                   arcaea:side arcaea:conflict_side;
+                   arcaea:source_copyright "©Anarch Ent. 2022"@en-us;
+                   arcaea:title_localized "LIVHT MY WΔY"@en,
+                                          "NOISZ STARLIVHT"@en;
+                   arcaea:version "5.2"@en-us;
+                   arcaea:world_unlock false.
+arcaea.lightmyway:FTR arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal%20+%20nitro%0A%22convergent%20future%22>;
+                      arcaea:jacketDesigner "fruitsrabbit"@en-us;
+                      arcaea:rating 9 ;
+                      arcaea:ratingClass 2 ;
+                      arcaea:ratingPlus true.
+arcaea.lightmyway:PRS arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal%20+%20nitro%0A%22recursive%20present%22>;
+                      arcaea:jacketDesigner "fruitsrabbit"@en-us;
+                      arcaea:rating 7 ;
+                      arcaea:ratingClass 1 .
+arcaea.lightmyway:PST arcaea:chartDesigner <https://arcaea.lowiro.com/#k//eternal%20+%20nitro%0A%22ephemeral%20past%22>;
+                      arcaea:jacketDesigner "fruitsrabbit"@en-us;
+                      arcaea:rating 4 ;
+                      arcaea:ratingClass 0 .
