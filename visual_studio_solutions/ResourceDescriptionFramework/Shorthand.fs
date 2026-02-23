@@ -259,6 +259,7 @@ module Shorthand =
             // UriNode(Uri) implements IUriNode -> IRefNode.
             UriNode(graphIri._uri) :> IRefNode
 
+        let NamedGraphs = ResizeArray<NamedGraph.Type>()
         let ensureNamedGraph
             (namedGraph: NamedGraph.Type)
             : IGraph =
@@ -268,6 +269,7 @@ module Shorthand =
                 foundGraph
             else
                 inMemoryDataset.AddGraph(namedGraph.graph) |> ignore
+                NamedGraphs.Add namedGraph 
                 namedGraph.graph
             
         
@@ -412,14 +414,16 @@ module Shorthand =
                         printfn "File saved successfully: %s" filePath
         
                     with
-                    | :? UnauthorizedAccessException ->
-                        printfn "Error: Access denied to '%s'." filePath
-                    | :? DirectoryNotFoundException ->
-                        printfn "Error: Directory not found for '%s'." filePath
-                    | :? IOException as ex ->
-                        printfn "I/O Error: %s" ex.Message
-                    | ex ->
-                        printfn "Unexpected error: %s" ex.Message                
+                    | :? UnauthorizedAccessException -> printfn "Error: Access denied to '%s'." filePath
+                    | :? DirectoryNotFoundException -> printfn "Error: Directory not found for '%s'." filePath
+                    | :? IOException as ex -> printfn "I/O Error: %s" ex.Message
+                    | ex -> printfn "Unexpected error: %s" ex.Message
+
+                let saveAll = 
+                    NamedGraphs |> Seq.iter (fun namedGraph -> 
+                         save  namedGraph
+                    )
+
     /// Convenience: add the triple to a graph.
     let assertIntoGraph (g: RDF.IGraph) (draft: StatementDraft) : bool =
             ensureNamespacesForDraft g draft

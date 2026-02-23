@@ -371,8 +371,18 @@ module PrefixID =
 let client =
     Communication.Internet.ProtocolSuite.Layer.Application.Protocol.Transfer.Text.Hyper.Client.inhabitant
 
-let result (job: Task<'Type>) = job.GetAwaiter().GetResult()
+let resultWithTimeout (timeout: TimeSpan) (label: string) (job: Task<'T>) : 'T =
+    // If it completes, return it; if not, raise with a useful message.
+    let completed = Task.WhenAny(job, Task.Delay(timeout)).GetAwaiter().GetResult()
+    if Object.ReferenceEquals(completed, (job :> Task)) then
+        job.GetAwaiter().GetResult()
+    else
+        raise (TimeoutException($"TIMEOUT after {timeout.TotalSeconds}s in {label}"))
 
+let result (job: Task<'T>) : 'T =
+    // Pick a default you can tolerate interactively.
+    resultWithTimeout (TimeSpan.FromSeconds 30.0) "result" job
+    
 type Probe =
     { requestedUrl: string
       dereferencedUrl: string
@@ -1249,6 +1259,10 @@ let private isBlockedHost (uri: Uri) =
     || uri.Host.Equals("www.w3.org", StringComparison.OrdinalIgnoreCase)
     || uri.Host.Equals("gitlab.gnome.org", StringComparison.OrdinalIgnoreCase)
     || uri.Host.Equals("semiceu.github.io", StringComparison.OrdinalIgnoreCase)
+    || uri.Host.Equals("ns.ottr.xyz", StringComparison.OrdinalIgnoreCase)
+    || uri.Host.Equals("spec.ottr.xyz", StringComparison.OrdinalIgnoreCase)
+    || uri.Host.Equals("rdfs.org", StringComparison.OrdinalIgnoreCase)
+    
 
 // ------------------------------------------------------------
 // attemptsFor: inject ONE auto fetch+parse attempt for blocked hosts
@@ -1426,6 +1440,7 @@ let codegenFromNamespaceIris
             IriPathing.iriToRelativePath namespaceIri._namespaceUri.OriginalString
 
         let moduleBasename =  namespaceIri._namespacePrefix.Value
+        Console.WriteLine moduleBasename
         //let moduleFilePath = Path.Combine(Artifact.Vocabulary.directory, relativeModulePath)
         let moduleParentDirectory = Ensure.path ( Path.Combine(Artifact.Vocabulary.Generated.directory, relativePath))
         let moduleFilePath = Path.Combine(moduleParentDirectory, $"{moduleBasename}.fs")
@@ -1448,7 +1463,10 @@ let codegenFromNamespaceIris
             match loadGraphFromUriWithFallback namespaceIri._namespaceUri.OriginalString distributionGraphUri with
             | Error f -> Error { f with stage = "codegenFromNamespaceIris:loadGraphFromUriWithFallback" }
 
-            | Ok distributionGraph ->
+            | Ok unnamedDistributionGraph ->
+
+                let distributionGraph = new ThreadSafeGraph(namespaceIri._node)
+                distributionGraph.Merge unnamedDistributionGraph
                 let graphParentDirectory =  Ensure.path (Path.Combine(Artifact.Vocabulary.Generated.directory,relativePath ))
                 let graphFilePath = Path.Combine(graphParentDirectory, moduleBasename)
                 distributionGraph.NamespaceMap.AddNamespace(namespaceIri._namespacePrefix.Value, namespaceIri._namespaceUri)
