@@ -1,16 +1,34 @@
-﻿open System
+﻿// For more information see https://aka.ms/fsharp-console-apps
+// printfn "Hello from F#"
+
+
+open AngleSharp
+open FParsec
+open FSharp.Core
+open Iride
+open Microsoft.Identity.Client
+open Microsoft.Playwright
+open MigraDoc
+open Newtonsoft.Json
+open PdfSharp
+open System
 open System.Collections.Generic
+open System.Globalization
 open System.IO
+open System.Net
+open System.Net.Http
+open System.Reflection
 open System.Text
 open System.Text.RegularExpressions
 open System.Threading.Tasks
-
-open FParsec
-open FSharp.Core
+open System.Xml.Linq
+open System.Xml.XPath
+open UglyToad
 open VDS
 open VDS.RDF
+open VDS.RDF.Nodes
 open VDS.RDF.Parsing
-
+open VDS.RDF.Writing
 open SharedKernel
 open Ergonomics.Shorthand
 
@@ -121,7 +139,24 @@ module Artifact =
     module LovFailures =
         let txt = "LovFailures.txt"
 
+    module PrefixDeclaration =
+        let fsx = "PrefixDeclaration.fsx"
+        let fs = "PrefixDeclaration.fs"
 
+    module Infor =
+        let Hansen8Directory =
+            $"""{surfaceDirectory}\Leon_County\OIT\MIS\Infor\Servers\InforProd\D\www\production\operations"""
+
+        module Monikers_debug =
+            let basename = "Monikers_debug"
+            let config = $"""{Hansen8Directory}\Config\Monikers\Monikers_debug.config"""
+            let ttl = "Artifact/Monikers_debug.ttl"
+            let syntax'ttl = "Artifact/Monikers_debug.syntax.ttl"
+            let xmlDocument = XDocument.Load(config)
+            let xpathNavigator = xmlDocument.Root.CreateNavigator()
+
+    module Stormwater =
+        let ttl = "Artifact/Stormwater.ttl"
 
 module Fsharp =
     module Identifier =
@@ -299,7 +334,6 @@ module Fsharp =
 let namespaceIris =
     [
             
-        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://termlex.oeg.fi.upm.es/termlex#" (Some @"https://termlex.oeg.fi.upm.es/static/termlex.rdf") (Some "ontolex.termlex") None
 
         
     

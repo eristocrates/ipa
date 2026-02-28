@@ -2,15 +2,13 @@ namespace Ergonomics
 
 open FSharp.Core
 open System
-open System.IO
 open System.Text
-open VDS.RDF
-open VDS.RDF.Writing.Formatting
+open System.IO
 open VDS
+open VDS.RDF
 open VDS.RDF.Query.Datasets
 open VDS.RDF.Writing
 open System.Globalization
-open VDS.RDF.Parsing
 
 
 module Shorthand =
@@ -19,9 +17,6 @@ module Shorthand =
         let inhabitant (langTag:string) = CultureInfo.GetCultureInfo langTag
         let en = inhabitant "en"
         let en_us = inhabitant "en-us"
-        let ja = inhabitant "ja"
-        let zh_Hant = inhabitant "zh-Hant"
-        let zh_Hans = inhabitant "zh-Hans"
 
 
     // A "draft" statement: syntactic construction first, materialization later.
@@ -168,7 +163,7 @@ module Shorthand =
                 if existing <> nsUri then
                     invalidArg
                         "q"
-                        $"Namespace prefix collision: prefix '{prefix}' is already mapped to '{existing.OriginalString}', but attempted to map it to '{nsUri.OriginalString}'."
+                        $"Namespace prefix collision: prefix '{prefix}' is already mapped to '{existing.AbsoluteUri}', but attempted to map it to '{nsUri.AbsoluteUri}'."
 
     let ensureNamespacesForDraft (g: RDF.IGraph) (draft: StatementDraft) : unit =
         ensureNamespaceForQuirie g draft.subject
@@ -271,239 +266,71 @@ module Shorthand =
                 inMemoryDataset.AddGraph(namedGraph.graph) |> ignore
                 NamedGraphs.Add namedGraph 
                 namedGraph.graph
+        
             
-        module Serialization =
+        module Serialization = 
 
-            open System
-            open System.IO
-            open System.Text
-            open VDS.RDF
-            open VDS.RDF.Parsing
-            open VDS.RDF.Writing.Formatting
 
-            // ----------------------------
-            // QName / prefixed-name policy
-            // ----------------------------
+            let private isDottedPrefix (p: string) =
+                // Your concrete problem: '.' in prefix labels
+                p.Contains(".")
 
-            /// dotNetRDF's TurtleSpecsHelper.IsValidQName rejects dotted prefixes (even though Turtle 1.1 allows dots in PN_PREFIX).
-            /// We relax that: any QName containing '.' in the prefix portion is accepted.
-            ///
-            /// This function is used BOTH:
-            ///   1) by our formatter override (so dotNetRDF doesn't discard dotted prefixes internally),
-            ///   2) as the validation function passed to QNameOutputMapper.ReduceToQName.
-            let private isValidPrefixedNameRelaxed (s: string) =
-                if s.Contains(".") then true
-                else if s.Contains(":") then true
-                else TurtleSpecsHelper.IsValidQName(s)
-
-            // ----------------------------
-            // IRIREF fallback policy
-            // ----------------------------
-
-            /// Percent-encode UTF-8 bytes for a single char.
-            /// NOTE: this is correct for BMP chars. If you expect astral code points (emoji, etc.),
-            /// you should iterate Unicode scalars instead of chars. (Ask and I'll give the scalar-safe version.)
-            let private percentEncodeCharUtf8 (ch: char) =
-                Encoding.UTF8.GetBytes([| ch |])
-                |> Seq.map (fun b -> "%" + b.ToString("X2"))
-                |> String.concat ""
-
-            /// Turtle IRIREF disallows: < > " { } | ^ ` \ plus control chars.
-            /// We also treat space and ASCII controls as forbidden, per Turtle grammar expectations.
-            let private isForbiddenInTurtleIriRef (ch: char) =
-                // Turtle IRIREF exclusions + controls/space.
-                // Controls: U+0000..U+0020 and U+007F.
-                let code = int ch
-                code <= 0x20
-                || code = 0x7F
-                || ch = '<' || ch = '>' || ch = '"' || ch = '{' || ch = '}' || ch = '|'
-                || ch = '^' || ch = '`' || ch = '\\'
-
-            /// Keep Unicode as-is wherever permissible; percent-encode only forbidden IRIREF characters.
-            let private escapeIriRefByPercentEncoding (iri: string) =
-                let sb = StringBuilder(iri.Length)
-                for ch in iri do
-                    if isForbiddenInTurtleIriRef ch then
-                        sb.Append(percentEncodeCharUtf8 ch) |> ignore
-                    else
-                        sb.Append(ch) |> ignore
-                sb.ToString()
-
-            let private formatIriRefFromOriginalString (uri: Uri) =
-                "<" + escapeIriRefByPercentEncoding uri.OriginalString + ">"
-
-            // ----------------------------
-            // Formatter: Unicode-preferring QNames
-            // ----------------------------
-
-            // Validate PN_LOCAL without being tripped by dotted prefixes.
-            // We validate local by using a dummy prefix "p:" and TurtleSpecsHelper.IsValidQName.
-            // Also explicitly reject solidus to prevent `prefix:foo/bar`.
-            let private isAsciiSafeLocal (local: string) =
-                // Conservative acceptance: avoids '/', whitespace, and other punctuation that tends to break PN_LOCAL.
-                // Allows digit-leading locals like "100".
-                if String.IsNullOrEmpty(local) then false
-                else
-                    let isStartOk (ch: char) =
-                        Char.IsLetterOrDigit(ch) || ch = '_'  // allow digit-leading
-                    let isRestOk (ch: char) =
-                        Char.IsLetterOrDigit(ch) || ch = '_' || ch = '-' || ch = '.'
-            
-                    isStartOk local.[0]
-                    && local |> Seq.forall (fun ch -> isRestOk ch)
-            
-            let private isValidLocalName (local: string) =
-                if String.IsNullOrEmpty(local) then false
-                elif local.Contains("/") then false
-                elif local.Contains(":") then false
-                else
-                    // Prefer dotNetRDF's own grammar check when it succeeds.
-                    TurtleSpecsHelper.IsValidQName("p:" + local)
-                    // But if dotNetRDF is overly strict, accept a conservative ASCII subset
-                    // that includes digit-leading locals (e.g., "100").
-                    || isAsciiSafeLocal local
-
-            let private tryReduceToPrefixOnly (nsMap: INamespaceMapper) (uriOriginal: string) : string option =
-                nsMap.Prefixes
-                |> Seq.tryPick (fun (p: string) ->
-                    let nsUri = nsMap.GetNamespaceUri(p)
-                    if isNull (box nsUri) then None
-                    else
-                        let ns = nsUri.OriginalString
-                        if uriOriginal.Equals(ns, StringComparison.Ordinal) then
-                            // This is the exact case you asked for:
-                            // URI == namespace IRI -> emit prefix with empty local part.
-                            Some (p + ":")
-                        else None
-                )
-
-                    
-            /// Reduce URI to prefixed name by choosing the LONGEST matching namespace IRI.
-            /// This fixes "substring namespace" issues like:
-            ///   esri: <http://www.esri.com/>
-            ///   esri.FieldType: <http://www.esri.com/fieldType/>
-            /// and a URI like http://www.esri.com/fieldType/String
-            /// which should reduce to esri.FieldType:String, not esri:fieldType/String.
-            let private tryReduceToPrefixedNameLongest (nsMap: INamespaceMapper) (uriOriginal: string) : string option =
-                let candidates : (string * string) list =
-                    nsMap.Prefixes
-                    |> Seq.choose (fun (p: string) ->
-                        let nsUri = nsMap.GetNamespaceUri(p)
-                        if isNull (box nsUri) then None
-                        else Some (p, nsUri.OriginalString)
-                    )
-                    |> Seq.filter (fun (_pfx: string, ns: string) ->
-                        uriOriginal.StartsWith(ns, StringComparison.Ordinal)
-                    )
-                    |> Seq.sortByDescending (fun (_pfx: string, ns: string) -> ns.Length)
+            let private writeDottedPrefixPrologue (tw: TextWriter) (g: IGraph) =
+                // g.NamespaceMap.Prefixes : seq<string>
+                // g.NamespaceMap.GetNamespaceUri(prefix) : Uri
+                let dotted =
+                    g.NamespaceMap.Prefixes
+                    |> Seq.filter isDottedPrefix
+                    |> Seq.sort
                     |> Seq.toList
 
-                let rec pick (xs: (string * string) list) : string option =
-                    match xs with
-                    | [] -> None
-                    | (pfx: string, ns: string) :: rest ->
-                        let local = uriOriginal.Substring(ns.Length)
-                        if isValidLocalName local then
-                            Some (pfx + ":" + local)
-                        else
-                            pick rest
+                for p in dotted do
+                    let nsUri = g.NamespaceMap.GetNamespaceUri(p).AbsoluteUri
+                    // Turtle allows dots in PN_PREFIX, so this is legal Turtle.
+                    tw.WriteLine($"@prefix {p}: <{nsUri}> .")
 
-                pick candidates
-                
-            let private tryReduceToPrefixedName (nsMap: INamespaceMapper) (uriOriginal: string) : string option =
-                match tryReduceToPrefixOnly nsMap uriOriginal with
-                | Some pfxOnly -> Some pfxOnly
-                | None ->
-                    tryReduceToPrefixedNameLongest nsMap uriOriginal
-            type UnicodePrefixedNameTurtleW3CFormatter(g: IGraph) =
-                inherit TurtleW3CFormatter(g)
-            
-                // Keep dotted prefixes from being discarded by dotNetRDF internals.
-                override _.IsValidQName(value: string) =
-                    isValidPrefixedNameRelaxed value
-            
-                override _.FormatUriNode(u: IUriNode, segment: Nullable<TripleSegment>) =
-                    let uri = u.Uri
-            
-                    // Preserve dotNetRDF 'a' abbreviation for rdf:type predicate.
-                    if segment.HasValue
-                       && segment.Value = TripleSegment.Predicate
-                       && uri.AbsoluteUri.Equals(RdfSpecsHelper.RdfType, StringComparison.Ordinal) then
-                        "a"
-                    else
-                        let source = uri.OriginalString
-            
-                        match tryReduceToPrefixedName  g.NamespaceMap source with
-                        | Some prefixedName ->
-                            // Also guard the final QName validity with relaxed prefix-dot rule.
-                            // (Local validity already enforced by isValidLocalName.)
-                            if isValidPrefixedNameRelaxed prefixedName then prefixedName
-                            else formatIriRefFromOriginalString uri
-                        | None ->
-                            // Fallback: IRIREF from OriginalString; percent-encode only forbidden chars.
-                            formatIriRefFromOriginalString uri
-            // ----------------------------
-            // Prefix emission
-            // ----------------------------
+                if not dotted.IsEmpty then
+                    tw.WriteLine() // blank line between our prologue and dotNetRDF output
 
-            let private writeAllPrefixes (tw: TextWriter) (g: IGraph) =
-                // Emit all prefixes explicitly, including dotted ones.
-                // Use OriginalString to preserve the IRI spelling you originally constructed.
-                if not (g.NamespaceMap.HasNamespace "xsd") 
-                    then
-                        let xsd = UriFactory.Create("http://www.w3.org/2001/XMLSchema#")
-                        g.NamespaceMap.AddNamespace("xsd", xsd)
-                g.NamespaceMap.Prefixes
-                |> Seq.sort
-                |> Seq.iter (fun p ->
-                    let ns = g.NamespaceMap.GetNamespaceUri(p)
-                    // Use OriginalString for stable spelling in the file.
-                    tw.Write("@prefix ")
-                    tw.Write(p)
-                    tw.Write(": <")
-                    tw.Write(ns.OriginalString)
-                    tw.WriteLine("> .")
-                )
-                tw.WriteLine()
-
-            // ----------------------------
-            // Public save API (matches your signature)
-            // ----------------------------
 
             module Turtle =
-                
                 let save (namedGraph: NamedGraph.Type) =
                     let g = ensureNamedGraph namedGraph
                     let filePath = namedGraph.filePath + ".ttl"
-        
                     try
-                        // Use explicit UTF-8 (no BOM)
+                        // Ensure the directory exists
+                        let dir = Path.GetDirectoryName(filePath)
+        
+                        if
+                            not (String.IsNullOrWhiteSpace(dir))
+                            && not (Directory.Exists(dir))
+                        then
+                            Directory.CreateDirectory(dir) |> ignore
+        
+                        // Use explicit UTF-8 (no BOM is typically fine; pick what you prefer)
                         use fs = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.Read)
                         use tw = new StreamWriter(fs, new UTF8Encoding(encoderShouldEmitUTF8Identifier = false))
 
-                        // 1) Emit prefixes (including dotted). This replaces the previous "dotted-only" prologue approach.
-                        writeAllPrefixes tw g
+                        // 1) Emit ONLY the prefixes dotNetRDF would “miss”
+                        writeDottedPrefixPrologue tw g
 
-                        // 2) Serialize triples using our formatter
-                        let formatter = UnicodePrefixedNameTurtleW3CFormatter(g) :> ITripleFormatter
+                        // 2) Append normal dotNetRDF output
+                        let w = new CompressingTurtleWriter(10, VDS.RDF.Parsing.TurtleSyntax.W3C)
+                        w.HighSpeedModePermitted <- false
+                        w.Save(g, tw)
 
-                        // If you truly want *all* triples in the graph, use g.Triples (not just Asserted).
-                        // Your snippet used g.Triples.Asserted; keep that if you only want asserted triples.
-                        for triple in g.Triples do
-                            tw.WriteLine(formatter.Format(triple))
-
-                        tw.Flush()
                         printfn "File saved successfully: %s" filePath
-        
                     with
-                    | :? UnauthorizedAccessException ->
-                        printfn "Error: Access denied to '%s'." filePath
-                    | :? DirectoryNotFoundException ->
-                        printfn "Error: Directory not found for '%s'." filePath
-                    | :? IOException as ex ->
-                        printfn "I/O Error: %s" ex.Message
-                    | ex ->
-                        printfn "Unexpected error: %s" ex.Message
+                    | :? UnauthorizedAccessException -> printfn "Error: Access denied to '%s'." filePath
+                    | :? DirectoryNotFoundException -> printfn "Error: Directory not found for '%s'." filePath
+                    | :? IOException as ex -> printfn "I/O Error: %s" ex.Message
+                    | ex -> printfn "Unexpected error: %s" ex.Message
+
+                let saveAll = 
+                    NamedGraphs |> Seq.iter (fun namedGraph -> 
+                         save  namedGraph
+                    )
+
     /// Convenience: add the triple to a graph.
     let assertIntoGraph (g: RDF.IGraph) (draft: StatementDraft) : bool =
             ensureNamespacesForDraft g draft
@@ -518,7 +345,7 @@ module Shorthand =
     let isDefaultGraphToken
         (namedGraph: NamedGraph.Type)
         : bool =
-        namedGraph.iri._namespaceUri.OriginalString = defaultGraphUriString
+        namedGraph.iri._namespaceUri.AbsoluteUri = defaultGraphUriString
         && namedGraph.iri._localName = ""
 
     // ---------------------------------------

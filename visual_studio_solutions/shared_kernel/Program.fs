@@ -8,6 +8,10 @@ open System
 open System.IO
 open System.Text
 open FsHttp
+open System.Text.Json.Nodes
+open Newtonsoft.Json
+open Newtonsoft.Json.Linq
+
 
 module Ensure =
 
@@ -161,12 +165,7 @@ module Ensure =
 
 module Internet =
 
-    let download
-        (uriString: string)
-        (outputRootDirectory: string)
-        (outputPath: string)
-        (queryStringKeyValues: Option<List<string * string>>)
-        =
+    let request (uriString: string) (queryStringKeyValues: Option<List<string * string>>) =
         let queryString = defaultArg queryStringKeyValues [ (String.Empty, String.Empty) ]
 
         http {
@@ -174,4 +173,49 @@ module Internet =
             query queryString
         }
         |> Request.send
+
+    let download
+        (uriString: string)
+        (outputRootDirectory: string)
+        (outputPath: string)
+        (queryStringKeyValues: Option<List<string * string>>)
+        =
+        request uriString queryStringKeyValues
         |> Response.saveFile (Ensure.path $"{outputRootDirectory}/{outputPath}")
+
+    let jsonObject (uriString: string) (queryStringKeyValues: Option<List<string * string>>) =
+        let response =
+            request uriString queryStringKeyValues
+            |> Response.toJson
+
+        JObject.Parse(response.GetRawText())
+
+module Affix =
+
+    /// If `input` starts with `prefix` and ends with `suffix`, returns the substring between them.
+    /// Otherwise returns `input` unchanged. Preserves null.
+    let getInfix (prefix: string) (input: string) (suffix: string) : string =
+        match input with
+        | null -> null
+        | inputString ->
+            // Treat null prefix/suffix as programmer error; if you want different semantics, change here.
+            if isNull prefix then
+                invalidArg "prefix" "prefix cannot be null"
+
+            if isNull suffix then
+                invalidArg "suffix" "suffix cannot be null"
+
+            if
+                inputString.StartsWith(prefix)
+                && inputString.EndsWith(suffix)
+            then
+                let startIndex = prefix.Length
+                let innerLength = inputString.Length - prefix.Length - suffix.Length
+
+                if innerLength >= 0 then
+                    inputString.Substring(startIndex, innerLength)
+                else
+                    // This can only happen if prefix+suffix is longer than s; in that case, return unchanged.
+                    inputString
+            else
+                inputString
