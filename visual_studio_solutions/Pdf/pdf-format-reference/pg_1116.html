@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1116.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="APPENDIX H 1116 Compatibility and Implementation Notes 99. In PDF 1.2, additional-actions dictionaries were inheritable; beginning with PDF 1.3, they are not inheritable. 100. In Acrobat 3.0, the O and C events in a page object’s additional-actions dictionary are ignored if the document is not being displayed in a pageoriented layout mode. Beginning with Acrobat 4.0, the actions associated with these events are executed if the document is in a page-oriented or single-column layout and are ignored if the document is in a multiple-column layout. 8.5.3, “Action Types” (Launch Actions) 101. The Acrobat viewer for the Windows platform uses the Windows function ShellExecute to launch an application. The Win dictionary entries correspond to the parameters of ShellExecute. 8.5.3, “Action Types” (URI Actions) 102. URI actions are resolved by the Acrobat WebLink plug-in extension. 103. If the appropriate plug-in extension (WebLink) is not present, Acrobat viewers report the following error when a link annotation that uses a URI action is activated: “The plug-in required by this URI action is not available.” 8.5.3, “Action Types” (Sound Actions) 104. In PDF 1.2, the value of the Sound entry was allowed to be a file specification. Beginning with PDF 1.3, this is not supported, but the same effect can be achieved by using an external stream. 105. Acrobat viewers mute the sound if the value of Volume is negative; otherwise, this entry is ignored. 106. Acrobat 6.0 does not support the Synchronous entry. 107. Acrobat 5.0 and earlier viewers do not support the Mix entry. 8.5.3, “Action Types” (Movie Actions) 108. Acrobat viewers earlier than version 3.0 report an error when they encounter an action of type Movie.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1116.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">APPENDIX H</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1116</span></div>
+<div class="pos" id="*49:384" style="top:49;left:384"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Compatibility and Implementation Notes</span></div>
+<div class="pos" id="*99:144" style="top:99;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">99. In PDF 1.2, additional-actions dictionaries were inheritable; beginning</span></div>
+<div class="pos" id="*117:174" style="top:117;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">with PDF 1.3, they are not inheritable.</span></div>
+<div class="pos" id="*143:137" style="top:143;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">100. In Acrobat 3.0, the</span></div>
+<div class="pos" id="*144:293" style="top:144;left:293"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">O</span></div>
+<div class="pos" id="*143:308" style="top:143;left:308"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*144:335" style="top:144;left:335"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*143:348" style="top:143;left:348"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">events in a page object’s additional-actions</span></div>
+<div class="pos" id="*161:174" style="top:161;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary are ignored if the document is not being displayed in a page-</span></div>
+<div class="pos" id="*179:174" style="top:179;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">oriented layout mode. Beginning with Acrobat 4.0, the actions associated</span></div>
+<div class="pos" id="*197:174" style="top:197;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">with these events are executed if the document is in a page-oriented or</span></div>
+<div class="pos" id="*215:174" style="top:215;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">single-column layout and are ignored if the document is in a multiple-col-</span></div>
+<div class="pos" id="*233:174" style="top:233;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">umn layout.</span></div>
+<div class="pos" id="*276:133" style="top:276;left:133"><a href="pg_0652.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.5.3, “Action Types” (Launch Actions)</span></a></div>
+<div class="pos" id="*305:137" style="top:305;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">101. The Acrobat viewer for the Windows platform uses the Windows function</span></div>
+<div class="pos" id="*324:174" style="top:324;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ShellExecute</span></div>
+<div class="pos" id="*323:251" style="top:323;left:251"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to launch an application. The</span></div>
+<div class="pos" id="*324:431" style="top:324;left:431"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Win</span></div>
+<div class="pos" id="*323:459" style="top:323;left:459"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary entries corre-</span></div>
+<div class="pos" id="*341:174" style="top:341;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">spond to the parameters of</span></div>
+<div class="pos" id="*342:334" style="top:342;left:334"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ShellExecute</span></div>
+<div class="pos" id="*341:405" style="top:341;left:405"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*384:133" style="top:384;left:133"><a href="pg_0652.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.5.3, “Action Types” (URI Actions)</span></a></div>
+<div class="pos" id="*413:137" style="top:413;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">102. URI actions are resolved by the Acrobat WebLink plug-in extension.</span></div>
+<div class="pos" id="*439:137" style="top:439;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">103. If the appropriate plug-in extension (WebLink) is not present, Acrobat</span></div>
+<div class="pos" id="*457:174" style="top:457;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">viewers report the following error when a link annotation that uses a URI</span></div>
+<div class="pos" id="*475:174" style="top:475;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">action is activated: “The plug-in required by this URI action is not avail-</span></div>
+<div class="pos" id="*493:174" style="top:493;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">able.”</span></div>
+<div class="pos" id="*536:133" style="top:536;left:133"><a href="pg_0652.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.5.3, “Action Types” (Sound Actions)</span></a></div>
+<div class="pos" id="*565:137" style="top:565;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">104. In PDF 1.2, the value of the</span></div>
+<div class="pos" id="*565:336" style="top:565;left:336"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Sound</span></div>
+<div class="pos" id="*565:377" style="top:565;left:377"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry was allowed to be a file specifica-</span></div>
+<div class="pos" id="*583:174" style="top:583;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion. Beginning with PDF 1.3, this is not supported, but the same effect</span></div>
+<div class="pos" id="*601:174" style="top:601;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">can be achieved by using an external stream.</span></div>
+<div class="pos" id="*627:137" style="top:627;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">105. Acrobat viewers mute the sound if the value of</span></div>
+<div class="pos" id="*628:451" style="top:628;left:451"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Volume</span></div>
+<div class="pos" id="*627:499" style="top:627;left:499"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is negative; other-</span></div>
+<div class="pos" id="*645:174" style="top:645;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">wise, this entry is ignored.</span></div>
+<div class="pos" id="*672:137" style="top:672;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">106. Acrobat 6.0 does not support the</span></div>
+<div class="pos" id="*672:368" style="top:672;left:368"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Synchronous</span></div>
+<div class="pos" id="*672:448" style="top:672;left:448"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry.</span></div>
+<div class="pos" id="*698:137" style="top:698;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">107. Acrobat 5.0 and earlier viewers do not support the</span></div>
+<div class="pos" id="*699:469" style="top:699;left:469"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Mix</span></div>
+<div class="pos" id="*698:494" style="top:698;left:494"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry.</span></div>
+<div class="pos" id="*741:133" style="top:741;left:133"><a href="pg_0652.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.5.3, “Action Types” (Movie Actions)</span></a></div>
+<div class="pos" id="*770:137" style="top:770;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">108. Acrobat viewers earlier than version 3.0 report an error when they en-</span></div>
+<div class="pos" id="*788:174" style="top:788;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">counter an action of type</span></div>
+<div class="pos" id="*788:323" style="top:788;left:323"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Movie</span></div>
+<div class="pos" id="*788:359" style="top:788;left:359"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1115.htm" title="Go to previous page">Previous</a> <a href="pg_1117.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1116);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

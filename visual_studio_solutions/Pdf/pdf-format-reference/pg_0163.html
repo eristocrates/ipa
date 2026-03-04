@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0163.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 3.8 163 Common Data Structures appear before longer ones beginning with the same byte sequence. The encoding of the keys is immaterial as long as it is self-consistent; keys are compared for equality on a simple byte-by-byte basis. The keys contained within the various nodes’ Names entries do not overlap; each Names entry contains a single contiguous range of all the keys in the tree. In a leaf node, the Limits entry specifies the least and greatest keys contained within the node’s Names entry. In an intermediate node, it specifies the least and greatest keys contained within the Names entries of any of that node’s descendants. The value associated with a given key can thus be found by walking the tree in order, searching for the leaf node whose Names entry contains that key. Example 3.17 is an abbreviated outline, showing object numbers and nodes, of a name tree that maps the names of all the chemical elements, from actinium to zirconium, to their atomic numbers. Example 3.18 shows the representation of this tree in a PDF file. Example 3.17 Example of a name tree 1: Root node 2: Intermediate node: Actinium to Gold 5: Leaf node: Actinium = 25, … , Astatine = 31 25: Integer: 89 … 31: Integer: 85 … 11: Leaf node: Gadolinium = 56, … , Gold = 59 56: Integer: 64 … 59: Integer: 79 3: Intermediate node: Hafnium to Protactinium 12: Leaf node: Hafnium = 60, … , Hydrogen = 65 60: Integer: 72 … 65: Integer: 1 … 19: Leaf node: Palladium = 92, … , Protactinium = 100 92: Integer: 46 … 100:Integer: 91 4: Intermediate node: Radium to Zirconium 20: Leaf node: Radium = 101, … , Ruthenium = 107 101:Integer: 89  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0163.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 3.8</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">163</span></div>
+<div class="pos" id="*49:467" style="top:49;left:467"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Common Data Structures</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">appear before longer ones beginning with the same byte sequence. The encoding</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of the keys is immaterial as long as it is self-consistent; keys are compared for</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">equality on a simple byte-by-byte basis.</span></div>
+<div class="pos" id="*170:133" style="top:170;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The keys contained within the various nodes’</span></div>
+<div class="pos" id="*170:400" style="top:170;left:400"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Names</span></div>
+<div class="pos" id="*170:443" style="top:170;left:443"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entries do not overlap; each</span></div>
+<div class="pos" id="*188:133" style="top:188;left:133"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Names</span></div>
+<div class="pos" id="*188:176" style="top:188;left:176"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry contains a single contiguous range of all the keys in the tree. In a leaf</span></div>
+<div class="pos" id="*206:133" style="top:206;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">node, the</span></div>
+<div class="pos" id="*206:193" style="top:206;left:193"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Limits</span></div>
+<div class="pos" id="*206:233" style="top:206;left:233"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry specifies the least and greatest keys contained within the</span></div>
+<div class="pos" id="*224:133" style="top:224;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">node’s</span></div>
+<div class="pos" id="*224:174" style="top:224;left:174"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Names</span></div>
+<div class="pos" id="*224:219" style="top:224;left:219"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry. In an intermediate node, it specifies the least and greatest</span></div>
+<div class="pos" id="*242:133" style="top:242;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">keys contained within the</span></div>
+<div class="pos" id="*242:290" style="top:242;left:290"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Names</span></div>
+<div class="pos" id="*242:334" style="top:242;left:334"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entries of any of that node’s descendants. The</span></div>
+<div class="pos" id="*260:133" style="top:260;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value associated with a given key can thus be found by walking the tree in order,</span></div>
+<div class="pos" id="*278:133" style="top:278;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">searching for the leaf node whose</span></div>
+<div class="pos" id="*279:331" style="top:279;left:331"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Names</span></div>
+<div class="pos" id="*278:374" style="top:278;left:374"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry contains that key.</span></div>
+<div class="pos" id="*313:133" style="top:313;left:133"><a href="pg_0163.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Example 3.17 is an abbreviated outline, showing object numbers and nodes, of a</span></a></div>
+<div class="pos" id="*331:133" style="top:331;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name tree that maps the names of all the chemical elements, from actinium to</span></div>
+<div class="pos" id="*349:133" style="top:349;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">zirconium, to their atomic numbers. Example 3.18 shows the representation of</span></div>
+<div class="pos" id="*367:133" style="top:367;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">this tree in a PDF file.</span></div>
+<div class="pos" id="*402:133" style="top:402;left:133"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">Example 3.17 Example of a name tree</span></div>
+<div class="pos" id="*427:166" style="top:427;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1: Root node</span></div>
+<div class="pos" id="*443:199" style="top:443;left:199"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2: Intermediate node: Actinium to Gold</span></div>
+<div class="pos" id="*460:233" style="top:460;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5: Leaf node: Actinium</span></div>
+<div class="pos" id="*457:353" style="top:457;left:353"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*460:363" style="top:460;left:363"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">25, … , Astatine</span></div>
+<div class="pos" id="*457:442" style="top:457;left:442"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*460:452" style="top:460;left:452"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">31</span></div>
+<div class="pos" id="*477:266" style="top:477;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">25: Integer: 89</span></div>
+<div class="pos" id="*493:266" style="top:493;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*510:266" style="top:510;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">31: Integer: 85</span></div>
+<div class="pos" id="*527:233" style="top:527;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*543:233" style="top:543;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11: Leaf node: Gadolinium</span></div>
+<div class="pos" id="*540:367" style="top:540;left:367"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*543:376" style="top:543;left:376"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">56, … , Gold</span></div>
+<div class="pos" id="*540:438" style="top:540;left:438"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*543:448" style="top:543;left:448"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">59</span></div>
+<div class="pos" id="*560:266" style="top:560;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">56: Integer: 64</span></div>
+<div class="pos" id="*577:266" style="top:577;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*593:266" style="top:593;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">59: Integer: 79</span></div>
+<div class="pos" id="*610:199" style="top:610;left:199"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3: Intermediate node: Hafnium to Protactinium</span></div>
+<div class="pos" id="*627:233" style="top:627;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12: Leaf node: Hafnium</span></div>
+<div class="pos" id="*624:351" style="top:624;left:351"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*627:360" style="top:627;left:360"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">60, … , Hydrogen</span></div>
+<div class="pos" id="*624:449" style="top:624;left:449"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*627:458" style="top:627;left:458"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">65</span></div>
+<div class="pos" id="*643:266" style="top:643;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">60: Integer: 72</span></div>
+<div class="pos" id="*660:266" style="top:660;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*677:266" style="top:677;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">65: Integer: 1</span></div>
+<div class="pos" id="*693:233" style="top:693;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*710:233" style="top:710;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">19: Leaf node: Palladium</span></div>
+<div class="pos" id="*707:357" style="top:707;left:357"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*710:366" style="top:710;left:366"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">92, … , Protactinium</span></div>
+<div class="pos" id="*707:470" style="top:707;left:470"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*710:480" style="top:710;left:480"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">100</span></div>
+<div class="pos" id="*727:266" style="top:727;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">92: Integer: 46</span></div>
+<div class="pos" id="*743:266" style="top:743;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*760:266" style="top:760;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">100:Integer: 91</span></div>
+<div class="pos" id="*777:199" style="top:777;left:199"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4: Intermediate node: Radium to Zirconium</span></div>
+<div class="pos" id="*793:233" style="top:793;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">20: Leaf node: Radium</span></div>
+<div class="pos" id="*790:346" style="top:790;left:346"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*793:355" style="top:793;left:355"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">101, … , Ruthenium</span></div>
+<div class="pos" id="*790:456" style="top:790;left:456"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*793:466" style="top:793;left:466"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">107</span></div>
+<div class="pos" id="*810:266" style="top:810;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">101:Integer: 89</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0162.htm" title="Go to previous page">Previous</a> <a href="pg_0164.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(163);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

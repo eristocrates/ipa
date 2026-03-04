@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1115.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="S E C T I O N H .3 1115 Implementation Notes 8.4.5, “Annotation Types” (Polygon and Polyline Annotations) 91. The PDF Reference fifth edition (PDF 1.6) erroneously omitted the IT entry from the additional entries specific to a polygon or polyline annotation. This entry specifies the intent of the annotation. (see Table 8.29). 8.4.5, “Annotation Types” (Text Markup Annotations) 92. In Acrobat 4.0 and later versions, the text is oriented with respect to the vertex with the smallest y value (or the leftmost of those, if there are two such vertices) and the next vertex in a counterclockwise direction, regardless of whether these are the first two points in the QuadPoints array. 8.4.5, “Annotation Types” (Ink Annotations) 93. Acrobat viewers always use straight lines to connect the points along each path. 8.4.5, “Annotation Types” (File Attachment Annotations) 94. Acrobat 7.0 and earlier viewers only support file attachment annotations whose referenced file is embedded in the PDF document. 95. Acrobat 7.0 does not include a Desc entry in file specifications for file attachment annotations and ignores them if they are present. 96. PDF 1.7 added the ability to apply markup annotations to 3D views. Although Acrobat 7.0 officially supports PDF 1.6, Acrobat 7.0.7 also supports this feature. 8.4.5, “Annotation Types” (Watermark Annotations) 97. Watermark annotations are handled correctly only when Acrobat n-up printing is selected. Selecting n-up from within the printer driver does not produce correct results. 8.5.2, “Trigger Events” 98. In PDF 1.2, the additional-actions dictionary could contain entries named NP (next page), PP (previous page), FP (first page), and LP (last page). The actions associated with these entries were never implemented; beginning with PDF 1.3, these entries are obsolete and should be ignored.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1115.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">S E C T I O N H .3</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1115</span></div>
+<div class="pos" id="*49:486" style="top:49;left:486"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Implementation Notes</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><a href="pg_0615.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.4.5, “Annotation Types” (Polygon and Polyline Annotations)</span></a></div>
+<div class="pos" id="*127:144" style="top:127;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">91. The PDF Reference fifth edition (PDF 1.6) erroneously omitted the</span></div>
+<div class="pos" id="*128:570" style="top:128;left:570"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">IT</span></div>
+<div class="pos" id="*127:584" style="top:127;left:584"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">en-</span></div>
+<div class="pos" id="*145:174" style="top:145;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">try from the additional entries specific to a polygon or polyline annota-</span></div>
+<div class="pos" id="*163:174" style="top:163;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion. This entry specifies the intent of the annotation. (see Table 8.29).</span></div>
+<div class="pos" id="*206:133" style="top:206;left:133"><a href="pg_0615.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.4.5, “Annotation Types” (Text Markup Annotations)</span></a></div>
+<div class="pos" id="*235:144" style="top:235;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">92. In Acrobat 4.0 and later versions, the text is oriented with respect to the</span></div>
+<div class="pos" id="*253:174" style="top:253;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">vertex with the smallest</span></div>
+<div class="pos" id="*253:318" style="top:253;left:318"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*253:329" style="top:253;left:329"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value (or the leftmost of those, if there are two</span></div>
+<div class="pos" id="*271:174" style="top:271;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">such vertices) and the next vertex in a counterclockwise direction, regard-</span></div>
+<div class="pos" id="*289:174" style="top:289;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">less of whether these are the first two points in the</span></div>
+<div class="pos" id="*290:469" style="top:290;left:469"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">QuadPoints</span></div>
+<div class="pos" id="*289:541" style="top:289;left:541"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array.</span></div>
+<div class="pos" id="*332:133" style="top:332;left:133"><a href="pg_0615.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.4.5, “Annotation Types” (Ink Annotations)</span></a></div>
+<div class="pos" id="*360:144" style="top:360;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">93. Acrobat viewers always use straight lines to connect the points along each</span></div>
+<div class="pos" id="*379:174" style="top:379;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">path.</span></div>
+<div class="pos" id="*422:133" style="top:422;left:133"><a href="pg_0615.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.4.5, “Annotation Types” (File Attachment Annotations)</span></a></div>
+<div class="pos" id="*450:144" style="top:450;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">94. Acrobat 7.0 and earlier viewers only support file attachment annotations</span></div>
+<div class="pos" id="*468:174" style="top:468;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">whose referenced file is embedded in the PDF document.</span></div>
+<div class="pos" id="*495:144" style="top:495;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">95. Acrobat 7.0 does not include a</span></div>
+<div class="pos" id="*495:358" style="top:495;left:358"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Desc</span></div>
+<div class="pos" id="*495:389" style="top:495;left:389"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in file specifications for file at-</span></div>
+<div class="pos" id="*513:174" style="top:513;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tachment annotations and ignores them if they are present.</span></div>
+<div class="pos" id="*539:144" style="top:539;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">96. PDF 1.7 added the ability to apply markup annotations to 3D views. Al-</span></div>
+<div class="pos" id="*557:174" style="top:557;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">though Acrobat 7.0 officially supports PDF 1.6, Acrobat 7.0.7 also sup-</span></div>
+<div class="pos" id="*575:174" style="top:575;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ports this feature.</span></div>
+<div class="pos" id="*618:133" style="top:618;left:133"><a href="pg_0615.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.4.5, “Annotation Types” (Watermark Annotations)</span></a></div>
+<div class="pos" id="*647:144" style="top:647;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">97. Watermark annotations are handled correctly only when Acrobat</span></div>
+<div class="pos" id="*647:576" style="top:647;left:576"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">n-up</span></div>
+<div class="pos" id="*665:174" style="top:665;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">printing is selected. Selecting</span></div>
+<div class="pos" id="*665:346" style="top:665;left:346"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">n-up</span></div>
+<div class="pos" id="*665:377" style="top:665;left:377"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">from within the printer driver does not</span></div>
+<div class="pos" id="*683:174" style="top:683;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">produce correct results.</span></div>
+<div class="pos" id="*726:133" style="top:726;left:133"><a href="pg_0648.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.5.2, “Trigger Events”</span></a></div>
+<div class="pos" id="*754:144" style="top:754;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">98. In PDF 1.2, the additional-actions dictionary could contain entries named</span></div>
+<div class="pos" id="*773:174" style="top:773;left:174"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">NP</span></div>
+<div class="pos" id="*772:195" style="top:772;left:195"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(next page),</span></div>
+<div class="pos" id="*773:267" style="top:773;left:267"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">PP</span></div>
+<div class="pos" id="*772:286" style="top:772;left:286"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(previous page),</span></div>
+<div class="pos" id="*773:383" style="top:773;left:383"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">FP</span></div>
+<div class="pos" id="*772:400" style="top:772;left:400"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(first page), and</span></div>
+<div class="pos" id="*773:496" style="top:773;left:496"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">LP</span></div>
+<div class="pos" id="*772:514" style="top:772;left:514"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(last page). The</span></div>
+<div class="pos" id="*790:174" style="top:790;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">actions associated with these entries were never implemented; beginning</span></div>
+<div class="pos" id="*808:174" style="top:808;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">with PDF 1.3, these entries are obsolete and should be ignored.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1114.htm" title="Go to previous page">Previous</a> <a href="pg_1116.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1115);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

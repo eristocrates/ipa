@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0990.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="APPENDIX B 990 Operators in Type 4 Functions B.2 Relational, Boolean, and Bitwise Operators any1 any2 any1 any2 num1 num2 num1 num2 num1 num2 num1 num2 bool1 | int1 bool2 | int2 bool1 | int1 bool2 | int2 bool1 | int1 bool2 | int2 bool1 | int1 int1 shift – – eq bool ne bool gt bool ge bool lt bool le bool and bool3 | int3 or bool3 | int3 xor bool3 | int3 not bool2 | int2 bitshift int2 true true false false Test equal Test not equal Test greater than Test greater than or equal Test less than Test less than or equal Perform logical | bitwise and Perform logical | bitwise inclusive or Perform logical | bitwise exclusive or Perform logical | bitwise not Perform bitwise shift of int1 (positive is left) Return boolean value true Return boolean value false B.3 Conditional Operators bool { expr } if – bool { expr1 } { expr2 } ifelse – Execute expr if bool is true Execute expr1 if bool is true, expr2 if false B.4 Stack Operators any any1 any2 any any1 … anyn n anyn … any0 n anyn−1 … any0 n j pop – exch any2 any1 dup any any copy any1 … anyn any1 … anyn index anyn … any0 anyn roll any( j−1) mod n … any0 anyn−1 Discard top element Exchange top two elements Duplicate top element Duplicate top n elements Duplicate arbitrary element … anyj mod n Roll n elements up j times  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0990.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">APPENDIX B</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">990</span></div>
+<div class="pos" id="*49:441" style="top:49;left:441"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Operators in Type 4 Functions</span></div>
+<div class="pos" id="*98:97" style="top:98;left:97"><span id="*16" style="font-style:normal;font-weight:700;font-size:16px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">B.2 Relational, Boolean, and Bitwise Operators</span></div>
+<div class="pos" id="*139:175" style="top:139;left:175"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*145:193" style="top:145;left:193"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*139:204" style="top:139;left:204"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*145:222" style="top:145;left:222"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*157:175" style="top:157;left:175"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*163:193" style="top:163;left:193"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*157:204" style="top:157;left:204"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*163:222" style="top:163;left:222"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*175:166" style="top:175;left:166"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">num</span></div>
+<div class="pos" id="*181:189" style="top:181;left:189"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*175:200" style="top:175;left:200"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">num</span></div>
+<div class="pos" id="*181:222" style="top:181;left:222"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*193:166" style="top:193;left:166"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">num</span></div>
+<div class="pos" id="*199:189" style="top:199;left:189"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*193:200" style="top:193;left:200"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">num</span></div>
+<div class="pos" id="*199:222" style="top:199;left:222"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*212:166" style="top:212;left:166"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">num</span></div>
+<div class="pos" id="*217:189" style="top:217;left:189"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*212:200" style="top:212;left:200"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">num</span></div>
+<div class="pos" id="*217:222" style="top:217;left:222"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*230:166" style="top:230;left:166"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">num</span></div>
+<div class="pos" id="*235:189" style="top:235;left:189"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*230:200" style="top:230;left:200"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">num</span></div>
+<div class="pos" id="*235:222" style="top:235;left:222"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*248:119" style="top:248;left:119"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*253:141" style="top:253;left:141"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*246:147" style="top:246;left:147"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*248:152" style="top:248;left:152"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*253:165" style="top:253;left:165"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*248:176" style="top:248;left:176"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*253:198" style="top:253;left:198"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*246:204" style="top:246;left:204"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*248:209" style="top:248;left:209"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*253:222" style="top:253;left:222"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*266:118" style="top:266;left:118"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*272:140" style="top:272;left:140"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*264:146" style="top:264;left:146"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*266:151" style="top:266;left:151"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*272:164" style="top:272;left:164"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*266:176" style="top:266;left:176"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*272:198" style="top:272;left:198"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*264:204" style="top:264;left:204"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*266:209" style="top:266;left:209"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*272:222" style="top:272;left:222"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*284:118" style="top:284;left:118"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*290:140" style="top:290;left:140"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*282:146" style="top:282;left:146"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*284:151" style="top:284;left:151"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*290:164" style="top:290;left:164"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*284:176" style="top:284;left:176"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*290:198" style="top:290;left:198"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*282:204" style="top:282;left:204"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*284:209" style="top:284;left:209"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*290:222" style="top:290;left:222"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*302:176" style="top:302;left:176"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*308:198" style="top:308;left:198"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*300:204" style="top:300;left:204"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*302:209" style="top:302;left:209"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*308:222" style="top:308;left:222"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*320:181" style="top:320;left:181"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*326:194" style="top:326;left:194"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*320:206" style="top:320;left:206"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">shift</span></div>
+<div class="pos" id="*338:221" style="top:338;left:221"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">–</span></div>
+<div class="pos" id="*356:221" style="top:356;left:221"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">–</span></div>
+<div class="pos" id="*139:238" style="top:139;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">eq</span></div>
+<div class="pos" id="*139:264" style="top:139;left:264"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*157:238" style="top:157;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ne</span></div>
+<div class="pos" id="*157:264" style="top:157;left:264"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*175:238" style="top:175;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">gt</span></div>
+<div class="pos" id="*175:262" style="top:175;left:262"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*193:238" style="top:193;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ge</span></div>
+<div class="pos" id="*193:264" style="top:193;left:264"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*212:238" style="top:212;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">lt</span></div>
+<div class="pos" id="*212:258" style="top:212;left:258"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*230:238" style="top:230;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">le</span></div>
+<div class="pos" id="*230:260" style="top:230;left:260"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*248:238" style="top:248;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*248:271" style="top:248;left:271"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*253:293" style="top:253;left:293"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*246:299" style="top:246;left:299"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*248:304" style="top:248;left:304"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*253:317" style="top:253;left:317"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*266:238" style="top:266;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*266:262" style="top:266;left:262"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*272:284" style="top:272;left:284"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*264:290" style="top:264;left:290"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*266:295" style="top:266;left:295"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*272:308" style="top:272;left:308"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*284:238" style="top:284;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">xor</span></div>
+<div class="pos" id="*284:267" style="top:284;left:267"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*290:289" style="top:290;left:289"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*282:296" style="top:282;left:296"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*284:301" style="top:284;left:301"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*290:314" style="top:290;left:314"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*302:238" style="top:302;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">not</span></div>
+<div class="pos" id="*302:269" style="top:302;left:269"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*308:290" style="top:308;left:290"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*300:297" style="top:300;left:297"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">|</span></div>
+<div class="pos" id="*302:302" style="top:302;left:302"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*308:315" style="top:308;left:315"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*320:238" style="top:320;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">bitshift</span></div>
+<div class="pos" id="*320:288" style="top:320;left:288"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*326:301" style="top:326;left:301"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*338:238" style="top:338;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*338:272" style="top:338;left:272"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*356:238" style="top:356;left:238"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">false</span></div>
+<div class="pos" id="*356:275" style="top:356;left:275"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">false</span></div>
+<div class="pos" id="*139:427" style="top:139;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Test equal</span></div>
+<div class="pos" id="*157:427" style="top:157;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Test not equal</span></div>
+<div class="pos" id="*175:427" style="top:175;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Test greater than</span></div>
+<div class="pos" id="*193:427" style="top:193;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Test greater than or equal</span></div>
+<div class="pos" id="*211:427" style="top:211;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Test less than</span></div>
+<div class="pos" id="*229:427" style="top:229;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Test less than or equal</span></div>
+<div class="pos" id="*247:427" style="top:247;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Perform logical | bitwise and</span></div>
+<div class="pos" id="*265:427" style="top:265;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Perform logical | bitwise inclusive or</span></div>
+<div class="pos" id="*283:427" style="top:283;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Perform logical | bitwise exclusive or</span></div>
+<div class="pos" id="*301:427" style="top:301;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Perform logical | bitwise not</span></div>
+<div class="pos" id="*319:427" style="top:319;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Perform bitwise shift of</span></div>
+<div class="pos" id="*320:554" style="top:320;left:554"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">int</span></div>
+<div class="pos" id="*326:567" style="top:326;left:567"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*319:575" style="top:319;left:575"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(positive is left)</span></div>
+<div class="pos" id="*337:427" style="top:337;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Return boolean value</span></div>
+<div class="pos" id="*337:543" style="top:337;left:543"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*355:427" style="top:355;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Return boolean value</span></div>
+<div class="pos" id="*355:543" style="top:355;left:543"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">false</span></div>
+<div class="pos" id="*397:97" style="top:397;left:97"><span id="*16" style="font-style:normal;font-weight:700;font-size:16px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">B.3 Conditional Operators</span></div>
+<div class="pos" id="*438:182" style="top:438;left:182"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*438:211" style="top:438;left:211"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">{</span></div>
+<div class="pos" id="*438:215" style="top:438;left:215"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">expr</span></div>
+<div class="pos" id="*438:238" style="top:438;left:238"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">}</span></div>
+<div class="pos" id="*438:252" style="top:438;left:252"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">if</span></div>
+<div class="pos" id="*438:271" style="top:438;left:271"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">–</span></div>
+<div class="pos" id="*456:135" style="top:456;left:135"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*456:164" style="top:456;left:164"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">{</span></div>
+<div class="pos" id="*456:168" style="top:456;left:168"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">expr</span></div>
+<div class="pos" id="*462:190" style="top:462;left:190"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*456:196" style="top:456;left:196"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">} {</span></div>
+<div class="pos" id="*456:210" style="top:456;left:210"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">expr</span></div>
+<div class="pos" id="*462:231" style="top:462;left:231"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*456:237" style="top:456;left:237"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">}</span></div>
+<div class="pos" id="*456:252" style="top:456;left:252"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ifelse</span></div>
+<div class="pos" id="*456:292" style="top:456;left:292"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">–</span></div>
+<div class="pos" id="*437:427" style="top:437;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Execute</span></div>
+<div class="pos" id="*438:472" style="top:438;left:472"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">expr</span></div>
+<div class="pos" id="*437:496" style="top:437;left:496"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">if</span></div>
+<div class="pos" id="*438:506" style="top:438;left:506"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*437:531" style="top:437;left:531"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is</span></div>
+<div class="pos" id="*437:542" style="top:437;left:542"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*455:427" style="top:455;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Execute</span></div>
+<div class="pos" id="*456:472" style="top:456;left:472"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">expr</span></div>
+<div class="pos" id="*462:493" style="top:462;left:493"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*455:501" style="top:455;left:501"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">if</span></div>
+<div class="pos" id="*456:511" style="top:456;left:511"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bool</span></div>
+<div class="pos" id="*455:536" style="top:455;left:536"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is</span></div>
+<div class="pos" id="*455:547" style="top:455;left:547"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">true,</span></div>
+<div class="pos" id="*456:574" style="top:456;left:574"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">expr</span></div>
+<div class="pos" id="*462:596" style="top:462;left:596"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*455:603" style="top:455;left:603"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">if</span></div>
+<div class="pos" id="*455:614" style="top:455;left:614"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">false</span></div>
+<div class="pos" id="*497:97" style="top:497;left:97"><span id="*16" style="font-style:normal;font-weight:700;font-size:16px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">B.4 Stack Operators</span></div>
+<div class="pos" id="*538:165" style="top:538;left:165"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*556:130" style="top:556;left:130"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*562:148" style="top:562;left:148"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*556:160" style="top:556;left:160"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*562:178" style="top:562;left:178"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*574:165" style="top:574;left:165"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*592:95" style="top:592;left:95"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*598:113" style="top:598;left:113"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*590:125" style="top:590;left:125"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*592:146" style="top:592;left:146"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*598:164" style="top:598;left:164"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*592:176" style="top:592;left:176"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*610:95" style="top:610;left:95"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*616:113" style="top:616;left:113"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*608:125" style="top:608;left:125"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*610:146" style="top:610;left:146"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*616:164" style="top:616;left:164"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*610:176" style="top:610;left:176"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*628:81" style="top:628;left:81"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*634:99" style="top:634;left:99"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*631:104" style="top:631;left:104"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:Symbol;color:#000000;">−</span></div>
+<div class="pos" id="*634:111" style="top:634;left:111"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*626:119" style="top:626;left:119"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*628:137" style="top:628;left:137"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*634:155" style="top:634;left:155"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*628:167" style="top:628;left:167"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n j</span></div>
+<div class="pos" id="*538:191" style="top:538;left:191"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">pop</span></div>
+<div class="pos" id="*538:224" style="top:538;left:224"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">–</span></div>
+<div class="pos" id="*556:191" style="top:556;left:191"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">exch</span></div>
+<div class="pos" id="*556:228" style="top:556;left:228"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*562:246" style="top:562;left:246"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*556:258" style="top:556;left:258"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*562:276" style="top:562;left:276"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*574:191" style="top:574;left:191"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">dup</span></div>
+<div class="pos" id="*574:224" style="top:574;left:224"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any any</span></div>
+<div class="pos" id="*592:191" style="top:592;left:191"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">copy</span></div>
+<div class="pos" id="*592:228" style="top:592;left:228"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*598:246" style="top:598;left:246"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*590:258" style="top:590;left:258"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*592:280" style="top:592;left:280"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*598:298" style="top:598;left:298"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*592:310" style="top:592;left:310"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*598:328" style="top:598;left:328"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*590:340" style="top:590;left:340"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*592:361" style="top:592;left:361"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*598:379" style="top:598;left:379"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*610:191" style="top:610;left:191"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">index</span></div>
+<div class="pos" id="*610:232" style="top:610;left:232"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*616:251" style="top:616;left:251"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*608:261" style="top:608;left:261"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*610:282" style="top:610;left:282"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*616:301" style="top:616;left:301"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*610:313" style="top:610;left:313"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*616:331" style="top:616;left:331"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*628:191" style="top:628;left:191"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">roll</span></div>
+<div class="pos" id="*628:221" style="top:628;left:221"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*633:239" style="top:633;left:239"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(</span></div>
+<div class="pos" id="*634:243" style="top:634;left:243"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*631:245" style="top:631;left:245"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:Symbol;color:#000000;">−</span></div>
+<div class="pos" id="*634:252" style="top:634;left:252"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*633:257" style="top:633;left:257"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) mod</span></div>
+<div class="pos" id="*634:288" style="top:634;left:288"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*626:300" style="top:626;left:300"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*628:322" style="top:628;left:322"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*634:340" style="top:634;left:340"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*628:352" style="top:628;left:352"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*634:370" style="top:634;left:370"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*631:375" style="top:631;left:375"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:Symbol;color:#000000;">−</span></div>
+<div class="pos" id="*634:382" style="top:634;left:382"><span id="*8" style="font-style:normal;font-weight:normal;font-size:8px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*537:427" style="top:537;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Discard top element</span></div>
+<div class="pos" id="*555:427" style="top:555;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Exchange top two elements</span></div>
+<div class="pos" id="*573:427" style="top:573;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Duplicate top element</span></div>
+<div class="pos" id="*591:427" style="top:591;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Duplicate top</span></div>
+<div class="pos" id="*592:502" style="top:592;left:502"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*591:512" style="top:591;left:512"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">elements</span></div>
+<div class="pos" id="*609:427" style="top:609;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Duplicate arbitrary element</span></div>
+<div class="pos" id="*626:394" style="top:626;left:394"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*628:415" style="top:628;left:415"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">any</span></div>
+<div class="pos" id="*634:433" style="top:634;left:433"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*633:438" style="top:633;left:438"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">mod</span></div>
+<div class="pos" id="*634:462" style="top:634;left:462"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*646:427" style="top:646;left:427"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Roll</span></div>
+<div class="pos" id="*646:452" style="top:646;left:452"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*646:462" style="top:646;left:462"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">elements up</span></div>
+<div class="pos" id="*646:528" style="top:646;left:528"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*646:534" style="top:646;left:534"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">times</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0989.htm" title="Go to previous page">Previous</a> <a href="pg_0991.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(990);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

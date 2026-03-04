@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0246.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 4 246 Graphics Decode A Decode LMN L A Matrix A M N Matrix LMN X Y Z FIGURE 4.15 Component transformations in a CIE-based A color space A CalGray color space is a CIE-based A color space with only one transformation stage instead of two. In this type of space, A represents the gray component of a calibrated gray space. This component must be in the range 0.0 to 1.0. The decoding function (denoted by “Decode A” in Figure 4.15) is a gamma function whose coefficient is specified by the Gamma entry in the color space dictionary (see Table 4.13). The transformation matrix denoted by “Matrix A” in the figure is derived from the dictionary’s WhitePoint entry, as described below. Since there is no second transformation stage, “Decode LMN” and “Matrix LMN” are implicitly taken to be identity transformations. TABLE 4.13 Entries in a CalGray color space dictionary KEY TYPE VALUE WhitePoint array (Required) An array of three numbers [ XW YW ZW ] specifying the tristimulus value, in the CIE 1931 XYZ space, of the diffuse white point; see “CalRGB Color Spaces,” below, for further discussion. The numbers XW and ZW must be positive, and YW must be equal to 1.0. (Optional) An array of three numbers [ XB YB ZB ] specifying the tristimulus value, in the CIE 1931 XYZ space, of the diffuse black point; see “CalRGB Color Spaces,” below, for further discussion. All three of these numbers must be non-negative. Default value: [ 0.0 0.0 0.0 ]. (Optional) A number G defining the gamma for the gray (A) component. G must be positive and is generally greater than or equal to 1. Default value: 1. BlackPoint array Gamma number  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0246.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 4</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">246</span></div>
+<div class="pos" id="*49:556" style="top:49;left:556"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Graphics</span></div>
+<div class="pos" id="*126:205" style="top:126;left:205"><span id="*9" style="font-style:normal;font-weight:700;font-size:9px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Decode</span></div>
+<div class="pos" id="*126:242" style="top:126;left:242"><span id="*9" style="font-style:italic;font-weight:700;font-size:9px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*126:377" style="top:126;left:377"><span id="*9" style="font-style:normal;font-weight:700;font-size:9px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Decode</span></div>
+<div class="pos" id="*126:414" style="top:126;left:414"><span id="*9" style="font-style:italic;font-weight:700;font-size:9px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">LMN</span></div>
+<div class="pos" id="*165:364" style="top:165;left:364"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">L</span></div>
+<div class="pos" id="*190:185" style="top:190;left:185"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*186:281" style="top:186;left:281"><span id="*9" style="font-style:normal;font-weight:700;font-size:9px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Matrix</span></div>
+<div class="pos" id="*186:313" style="top:186;left:313"><span id="*9" style="font-style:italic;font-weight:700;font-size:9px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*190:362" style="top:190;left:362"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">M</span></div>
+<div class="pos" id="*215:363" style="top:215;left:363"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">N</span></div>
+<div class="pos" id="*186:455" style="top:186;left:455"><span id="*9" style="font-style:normal;font-weight:700;font-size:9px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Matrix</span></div>
+<div class="pos" id="*186:487" style="top:186;left:487"><span id="*9" style="font-style:italic;font-weight:700;font-size:9px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">LMN</span></div>
+<div class="pos" id="*165:545" style="top:165;left:545"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*190:545" style="top:190;left:545"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*215:545" style="top:215;left:545"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*285:184" style="top:285;left:184"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">FIGURE 4.15</span></div>
+<div class="pos" id="*284:258" style="top:284;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Component transformations in a CIE-based</span></div>
+<div class="pos" id="*284:485" style="top:284;left:485"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*284:498" style="top:284;left:498"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">color space</span></div>
+<div class="pos" id="*326:133" style="top:326;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*327:146" style="top:327;left:146"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CalGray</span></div>
+<div class="pos" id="*326:195" style="top:326;left:195"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space is a CIE-based</span></div>
+<div class="pos" id="*326:351" style="top:326;left:351"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*326:364" style="top:326;left:364"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space with only one transformation</span></div>
+<div class="pos" id="*344:133" style="top:344;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stage instead of two. In this type of space,</span></div>
+<div class="pos" id="*344:382" style="top:344;left:382"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*344:396" style="top:344;left:396"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">represents the gray component of a</span></div>
+<div class="pos" id="*362:133" style="top:362;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">calibrated gray space. This component must be in the range 0.0 to 1.0. The decod-</span></div>
+<div class="pos" id="*380:133" style="top:380;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ing function (denoted by “Decode</span></div>
+<div class="pos" id="*380:336" style="top:380;left:336"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A”</span></div>
+<div class="pos" id="*380:353" style="top:380;left:353"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in Figure 4.15) is a gamma function whose</span></div>
+<div class="pos" id="*398:133" style="top:398;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">coefficient is specified by the</span></div>
+<div class="pos" id="*399:305" style="top:399;left:305"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Gamma</span></div>
+<div class="pos" id="*398:354" style="top:398;left:354"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the color space dictionary (see Ta-</span></div>
+<div class="pos" id="*416:133" style="top:416;left:133"><a href="pg_0246.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ble 4.13). The transformation matrix denoted by “Matrix</span></a></div>
+<div class="pos" id="*416:475" style="top:416;left:475"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A”</span></div>
+<div class="pos" id="*416:493" style="top:416;left:493"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the figure is de-</span></div>
+<div class="pos" id="*434:133" style="top:434;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rived from the dictionary’s</span></div>
+<div class="pos" id="*435:290" style="top:435;left:290"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">WhitePoint</span></div>
+<div class="pos" id="*434:358" style="top:434;left:358"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry, as described below. Since there is no</span></div>
+<div class="pos" id="*452:133" style="top:452;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">second transformation stage, “Decode</span></div>
+<div class="pos" id="*452:365" style="top:452;left:365"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">LMN”</span></div>
+<div class="pos" id="*452:406" style="top:452;left:406"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and “Matrix</span></div>
+<div class="pos" id="*452:484" style="top:452;left:484"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">LMN”</span></div>
+<div class="pos" id="*452:525" style="top:452;left:525"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are implicitly</span></div>
+<div class="pos" id="*470:133" style="top:470;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">taken to be identity transformations.</span></div>
+<div class="pos" id="*514:222" style="top:514;left:222"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 4.13 Entries in a CalGray color space dictionary</span></div>
+<div class="pos" id="*534:74" style="top:534;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*534:174" style="top:534;left:174"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*534:258" style="top:534;left:258"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*561:74" style="top:561;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">WhitePoint</span></div>
+<div class="pos" id="*560:174" style="top:560;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+<div class="pos" id="*560:258" style="top:560;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*560:320" style="top:560;left:320"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An array of three numbers [</span></div>
+<div class="pos" id="*560:488" style="top:560;left:488"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*567:496" style="top:567;left:496"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*560:509" style="top:560;left:509"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*567:517" style="top:567;left:517"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*560:530" style="top:560;left:530"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*567:538" style="top:567;left:538"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*560:549" style="top:560;left:549"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">] specifying the tri-</span></div>
+<div class="pos" id="*577:258" style="top:577;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stimulus value, in the CIE 1931</span></div>
+<div class="pos" id="*577:435" style="top:577;left:435"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">XYZ</span></div>
+<div class="pos" id="*577:463" style="top:577;left:463"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space, of the diffuse white point; see</span></div>
+<div class="pos" id="*594:258" style="top:594;left:258"><a href="pg_0247.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">“CalRGB Color Spaces,” below, for further discussion. The numbers</span></a></div>
+<div class="pos" id="*594:621" style="top:594;left:621"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*600:629" style="top:600;left:629"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*594:642" style="top:594;left:642"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*610:258" style="top:610;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*617:266" style="top:617;left:266"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*610:279" style="top:610;left:279"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">must be positive, and</span></div>
+<div class="pos" id="*610:393" style="top:610;left:393"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*617:401" style="top:617;left:401"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*610:414" style="top:610;left:414"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">must be equal to 1.0.</span></div>
+<div class="pos" id="*639:258" style="top:639;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*639:316" style="top:639;left:316"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An array of three numbers</span></div>
+<div class="pos" id="*640:464" style="top:640;left:464"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[</span></div>
+<div class="pos" id="*639:469" style="top:639;left:469"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*645:477" style="top:645;left:477"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*639:487" style="top:639;left:487"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*645:494" style="top:645;left:494"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*639:504" style="top:639;left:504"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*645:511" style="top:645;left:511"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*640:519" style="top:640;left:519"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*639:526" style="top:639;left:526"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specifying the tristimulus</span></div>
+<div class="pos" id="*656:258" style="top:656;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value, in the CIE 1931</span></div>
+<div class="pos" id="*656:384" style="top:656;left:384"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">XYZ</span></div>
+<div class="pos" id="*656:412" style="top:656;left:412"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space, of the diffuse black point; see “CalRGB</span></div>
+<div class="pos" id="*672:258" style="top:672;left:258"><a href="pg_0247.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Color Spaces,” below, for further discussion. All three of these numbers must</span></a></div>
+<div class="pos" id="*689:258" style="top:689;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">be non-negative. Default value:</span></div>
+<div class="pos" id="*690:424" style="top:690;left:424"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ 0.0 0.0 0.0 ]</span></div>
+<div class="pos" id="*689:490" style="top:689;left:490"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*717:258" style="top:717;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*717:316" style="top:717;left:316"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A number</span></div>
+<div class="pos" id="*717:375" style="top:717;left:375"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*717:388" style="top:717;left:388"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">defining the gamma for the gray</span></div>
+<div class="pos" id="*717:565" style="top:717;left:565"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(A)</span></div>
+<div class="pos" id="*717:586" style="top:717;left:586"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">component.</span></div>
+<div class="pos" id="*717:653" style="top:717;left:653"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*734:258" style="top:734;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">must be positive and is generally greater than or equal to 1. Default value: 1.</span></div>
+<div class="pos" id="*639:74" style="top:639;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BlackPoint</span></div>
+<div class="pos" id="*639:174" style="top:639;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+<div class="pos" id="*717:74" style="top:717;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Gamma</span></div>
+<div class="pos" id="*717:174" style="top:717;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">number</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0245.htm" title="Go to previous page">Previous</a> <a href="pg_0247.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(246);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

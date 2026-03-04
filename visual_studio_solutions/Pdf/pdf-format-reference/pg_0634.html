@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0634.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 8 634 Interactive Features TABLE 8.30 Additional entries specific to text markup annotations KEY TYPE VALUE Subtype name (Required) The type of annotation that this dictionary describes; must be Highlight, Underline, Squiggly, or StrikeOut for a highlight, underline, squiggly-underline, or strikeout annotation, respectively. (Required) An array of 8 × n numbers specifying the coordinates of n quadrilaterals in default user space. Each quadrilateral encompasses a word or group of contiguous words in the text underlying the annotation. The coordinates for each quadrilateral are given in the order x1 y1 x2 y2 x3 y3 x4 y4 specifying the quadrilateral’s four vertices in counterclockwise order (see Figure 8.9). The text is oriented with respect to the edge connecting points (x1 , y1) and (x2 , y2). (See implementation note 92 in Appendix H.) Note: The annotation dictionary’s AP entry, if present, takes precedence over QuadPoints; see Table 8.15 and Section 8.4.4, “Appearance Streams.” QuadPoints array (x4 , y4 ) er it up J (x1 , y1 ) (x3 , y3 ) (x2 , y2 ) FIGURE 8.9 QuadPoints specification Caret Annotations A caret annotation (PDF 1.5) is a visual symbol that indicates the presence of text edits. Table 8.31 lists the entries specific to caret annotations.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0634.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 8</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">634</span></div>
+<div class="pos" id="*49:497" style="top:49;left:497"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Interactive Features</span></div>
+<div class="pos" id="*113:189" style="top:113;left:189"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 8.30 Additional entries specific to text markup annotations</span></div>
+<div class="pos" id="*133:74" style="top:133;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*133:174" style="top:133;left:174"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*133:258" style="top:133;left:258"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*160:74" style="top:160;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Subtype</span></div>
+<div class="pos" id="*160:174" style="top:160;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name</span></div>
+<div class="pos" id="*160:258" style="top:160;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*160:318" style="top:160;left:318"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The type of annotation that this dictionary describes; must be</span></div>
+<div class="pos" id="*177:258" style="top:177;left:258"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Highlight</span></div>
+<div class="pos" id="*176:307" style="top:176;left:307"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*177:318" style="top:177;left:318"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Underline</span></div>
+<div class="pos" id="*176:370" style="top:176;left:370"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*177:381" style="top:177;left:381"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Squiggly</span></div>
+<div class="pos" id="*176:426" style="top:176;left:426"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, or</span></div>
+<div class="pos" id="*177:456" style="top:177;left:456"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">StrikeOut</span></div>
+<div class="pos" id="*176:513" style="top:176;left:513"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for a highlight, underline,</span></div>
+<div class="pos" id="*193:258" style="top:193;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">squiggly-underline, or strikeout annotation, respectively.</span></div>
+<div class="pos" id="*221:258" style="top:221;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*221:316" style="top:221;left:316"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An array of 8</span></div>
+<div class="pos" id="*218:388" style="top:218;left:388"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*221:398" style="top:221;left:398"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*221:408" style="top:221;left:408"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">numbers specifying the coordinates of</span></div>
+<div class="pos" id="*221:612" style="top:221;left:612"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*221:622" style="top:221;left:622"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">quadri-</span></div>
+<div class="pos" id="*238:258" style="top:238;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">laterals in default user space. Each quadrilateral encompasses a word or</span></div>
+<div class="pos" id="*255:258" style="top:255;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">group of contiguous words in the text underlying the annotation. The coordi-</span></div>
+<div class="pos" id="*271:258" style="top:271;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nates for each quadrilateral are given in the order</span></div>
+<div class="pos" id="*296:274" style="top:296;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*303:281" style="top:303;left:281"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*296:292" style="top:296;left:292"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*303:298" style="top:303;left:298"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*296:309" style="top:296;left:309"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*303:316" style="top:303;left:316"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*296:327" style="top:296;left:327"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*303:333" style="top:303;left:333"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*296:344" style="top:296;left:344"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*303:350" style="top:303;left:350"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*296:362" style="top:296;left:362"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*303:368" style="top:303;left:368"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*296:379" style="top:296;left:379"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*303:385" style="top:303;left:385"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*296:397" style="top:296;left:397"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*303:402" style="top:303;left:402"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*321:258" style="top:321;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specifying the quadrilateral’s four vertices in counterclockwise order (see</span></div>
+<div class="pos" id="*338:258" style="top:338;left:258"><a href="pg_0634.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Figure 8.9). The text is oriented with respect to the edge connecting points</span></a></div>
+<div class="pos" id="*355:258" style="top:355;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*361:269" style="top:361;left:269"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*355:275" style="top:355;left:275"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*355:281" style="top:355;left:281"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*361:287" style="top:361;left:287"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*355:292" style="top:355;left:292"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) and (x</span></div>
+<div class="pos" id="*361:333" style="top:361;left:333"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*355:339" style="top:355;left:339"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*355:345" style="top:355;left:345"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*361:351" style="top:361;left:351"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*355:356" style="top:355;left:356"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">). (See implementation note 92 in Appendix H.)</span></div>
+<div class="pos" id="*379:258" style="top:379;left:258"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*379:291" style="top:379;left:291"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">The annotation dictionary’s</span></div>
+<div class="pos" id="*380:440" style="top:380;left:440"><span id="*11" style="font-style:italic;font-weight:700;font-size:11px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">AP</span></div>
+<div class="pos" id="*379:459" style="top:379;left:459"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">entry, if present, takes precedence over</span></div>
+<div class="pos" id="*396:258" style="top:396;left:258"><span id="*11" style="font-style:italic;font-weight:700;font-size:11px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">QuadPoints</span></div>
+<div class="pos" id="*396:317" style="top:396;left:317"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">; see Table 8.15 and Section 8.4.4, “Appearance Streams.”</span></div>
+<div class="pos" id="*221:74" style="top:221;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">QuadPoints</span></div>
+<div class="pos" id="*221:174" style="top:221;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+<div class="pos" id="*558:275" style="top:558;left:275"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*563:283" style="top:563;left:283"><span id="*5" style="font-style:normal;font-weight:normal;font-size:5px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*558:287" style="top:558;left:287"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*558:292" style="top:558;left:292"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*563:296" style="top:563;left:296"><span id="*5" style="font-style:normal;font-weight:normal;font-size:5px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*558:301" style="top:558;left:301"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">)</span></div>
+<div class="pos" id="*482:391" style="top:482;left:391"><span id="*40" style="font-style:normal;font-weight:normal;font-size:40px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#231F1F;">er</span></div>
+<div class="pos" id="*501:373" style="top:501;left:373"><span id="*40" style="font-style:normal;font-weight:normal;font-size:40px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#231F1F;">it</span></div>
+<div class="pos" id="*522:341" style="top:522;left:341"><span id="*40" style="font-style:normal;font-weight:normal;font-size:40px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#231F1F;">up</span></div>
+<div class="pos" id="*543:331" style="top:543;left:331"><span id="*40" style="font-style:normal;font-weight:normal;font-size:40px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#231F1F;">J</span></div>
+<div class="pos" id="*597:324" style="top:597;left:324"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*603:332" style="top:603;left:332"><span id="*5" style="font-style:normal;font-weight:normal;font-size:5px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*597:336" style="top:597;left:336"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*597:340" style="top:597;left:340"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*603:345" style="top:603;left:345"><span id="*5" style="font-style:normal;font-weight:normal;font-size:5px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*597:349" style="top:597;left:349"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">)</span></div>
+<div class="pos" id="*471:387" style="top:471;left:387"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*476:395" style="top:476;left:395"><span id="*5" style="font-style:normal;font-weight:normal;font-size:5px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*471:399" style="top:471;left:399"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*471:403" style="top:471;left:403"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*476:408" style="top:476;left:408"><span id="*5" style="font-style:normal;font-weight:normal;font-size:5px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*471:412" style="top:471;left:412"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">)</span></div>
+<div class="pos" id="*509:431" style="top:509;left:431"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*514:439" style="top:514;left:439"><span id="*5" style="font-style:normal;font-weight:normal;font-size:5px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*509:443" style="top:509;left:443"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*509:447" style="top:509;left:447"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*514:452" style="top:514;left:452"><span id="*5" style="font-style:normal;font-weight:normal;font-size:5px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*509:456" style="top:509;left:456"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">)</span></div>
+<div class="pos" id="*651:271" style="top:651;left:271"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">FIGURE 8.9</span></div>
+<div class="pos" id="*650:338" style="top:650;left:338"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">QuadPoints specification</span></div>
+<div class="pos" id="*692:133" style="top:692;left:133"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Caret Annotations</span></div>
+<div class="pos" id="*729:133" style="top:729;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A caret annotation</span></div>
+<div class="pos" id="*729:245" style="top:729;left:245"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.5)</span></div>
+<div class="pos" id="*729:304" style="top:729;left:304"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is a visual symbol that indicates the presence of text</span></div>
+<div class="pos" id="*747:133" style="top:747;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">edits. Table 8.31 lists the entries specific to caret annotations.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0633.htm" title="Go to previous page">Previous</a> <a href="pg_0635.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(634);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

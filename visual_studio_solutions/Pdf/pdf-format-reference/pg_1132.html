@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1132.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="APPENDIX I 1132 Computation of Object Digests When it encounters an object that has already been visited, it adds the type identifier followed by a 4-byte value for the number -1 (0xFFFFFFFF). TABLE I.1 Data added to object digest for basic object types OBJECT TYPE TYPE IDENTIFIER REMAINING VALUES ADDED TO DIGEST Null Integer Real Boolean Name 0 1 2 3 4 Nothing. The unsigned 4-byte value of this integer (most significant byte first). The 4-byte integer corresponding to the integral part of the rounded value of the object. 0x01 for true; 0x00 for false. An unsigned 4-byte integer (most significant byte first) representing the length of the name, followed by byte array containing the string representing the name (following expansion of any escape characters, and excluding the leading “/” character). An unsigned 4-byte integer (most significant byte first) representing the length of the string, followed by the sequence of bytes corresponding to the string. An unsigned 4-byte value (most significant byte first) specifying the number of entries in the dictionary, followed by the key-value pairs of the dictionary, sorted by lexicographic order of the keys (for comparison purposes, the key names are treated as binary byte sequences). The values may involve recursion; see above. Special treatment is given to certain dictionaries when the transform method is anything but Identity (see Section 8.7.1, “Transform Methods”). For these dictionaries (which include catalog, page, named page, form field, annotation, action and additional-actions dictionaries), all key-value pairs are not digested. Instead, only the values of specified entries are digested; see Section I.2, “Selective Computation,” for details. String Dictionary 5 6 Array 7 An unsigned 4-byte value (most significant byte first) specifying the number of entries in the array, followed by the individual entries, in order. Individual entries may involve recursion. Specific entries may be excluded when dictated by the transform method and parameters (for example, annotation dictionaries in a page’s Annots array).  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1132.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">APPENDIX I</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1132</span></div>
+<div class="pos" id="*49:439" style="top:49;left:439"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Computation of Object Digests</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">When it encounters an object that has already been visited, it adds the type iden-</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tifier followed by a 4-byte value for the number -1 (0xFFFFFFFF).</span></div>
+<div class="pos" id="*160:206" style="top:160;left:206"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE I.1 Data added to object digest for basic object types</span></div>
+<div class="pos" id="*180:74" style="top:180;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">OBJECT TYPE TYPE IDENTIFIER REMAINING VALUES ADDED TO DIGEST</span></div>
+<div class="pos" id="*207:74" style="top:207;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Null</span></div>
+<div class="pos" id="*235:74" style="top:235;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Integer</span></div>
+<div class="pos" id="*264:74" style="top:264;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Real</span></div>
+<div class="pos" id="*309:74" style="top:309;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Boolean</span></div>
+<div class="pos" id="*337:74" style="top:337;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Name</span></div>
+<div class="pos" id="*207:150" style="top:207;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*235:150" style="top:235;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*264:150" style="top:264;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*309:150" style="top:309;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*337:150" style="top:337;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*207:240" style="top:207;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Nothing.</span></div>
+<div class="pos" id="*235:240" style="top:235;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The unsigned 4-byte value of this integer (most significant byte first).</span></div>
+<div class="pos" id="*264:240" style="top:264;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The 4-byte integer corresponding to the integral part of the rounded value of the</span></div>
+<div class="pos" id="*280:240" style="top:280;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">object.</span></div>
+<div class="pos" id="*309:240" style="top:309;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0x01 for</span></div>
+<div class="pos" id="*310:287" style="top:310;left:287"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*309:308" style="top:309;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">; 0x00 for</span></div>
+<div class="pos" id="*310:361" style="top:310;left:361"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">false</span></div>
+<div class="pos" id="*309:385" style="top:309;left:385"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*337:240" style="top:337;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An unsigned 4-byte integer (most significant byte first) representing the length of</span></div>
+<div class="pos" id="*354:240" style="top:354;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the name, followed by byte array containing the string representing the name</span></div>
+<div class="pos" id="*371:240" style="top:371;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(following expansion of any escape characters, and excluding the leading “</span></div>
+<div class="pos" id="*371:655" style="top:371;left:655"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/</span></div>
+<div class="pos" id="*371:660" style="top:371;left:660"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">”</span></div>
+<div class="pos" id="*387:240" style="top:387;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">character).</span></div>
+<div class="pos" id="*416:240" style="top:416;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An unsigned 4-byte integer (most significant byte first) representing the length of</span></div>
+<div class="pos" id="*432:240" style="top:432;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the string, followed by the sequence of bytes corresponding to the string.</span></div>
+<div class="pos" id="*461:240" style="top:461;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An unsigned 4-byte value (most significant byte first) specifying the number of</span></div>
+<div class="pos" id="*478:240" style="top:478;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entries in the dictionary, followed by the key-value pairs of the dictionary, sorted</span></div>
+<div class="pos" id="*494:240" style="top:494;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">by lexicographic order of the keys (for comparison purposes, the key names are</span></div>
+<div class="pos" id="*511:240" style="top:511;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">treated as binary byte sequences). The values may involve recursion; see above.</span></div>
+<div class="pos" id="*536:240" style="top:536;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Special treatment is given to certain dictionaries when the transform method is</span></div>
+<div class="pos" id="*553:240" style="top:553;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">anything but</span></div>
+<div class="pos" id="*553:310" style="top:553;left:310"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Identity</span></div>
+<div class="pos" id="*553:354" style="top:553;left:354"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see Section 8.7.1, “Transform Methods”). For these dictio-</span></div>
+<div class="pos" id="*569:240" style="top:569;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">naries (which include catalog, page, named page, form field, annotation, action</span></div>
+<div class="pos" id="*586:240" style="top:586;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and additional-actions dictionaries), all key-value pairs are not digested. Instead,</span></div>
+<div class="pos" id="*603:240" style="top:603;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">only the values of specified entries are digested; see Section I.2, “Selective Com-</span></div>
+<div class="pos" id="*619:240" style="top:619;left:240"><a href="pg_1133.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">putation,” for details.</span></a></div>
+<div class="pos" id="*416:74" style="top:416;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">String</span></div>
+<div class="pos" id="*461:74" style="top:461;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Dictionary</span></div>
+<div class="pos" id="*416:150" style="top:416;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*461:150" style="top:461;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*648:74" style="top:648;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Array</span></div>
+<div class="pos" id="*648:150" style="top:648;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*648:240" style="top:648;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An unsigned 4-byte value (most significant byte first) specifying the number of</span></div>
+<div class="pos" id="*664:240" style="top:664;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entries in the array, followed by the individual entries, in order. Individual entries</span></div>
+<div class="pos" id="*681:240" style="top:681;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">may involve recursion. Specific entries may be excluded when dictated by the</span></div>
+<div class="pos" id="*698:240" style="top:698;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">transform method and parameters (for example, annotation dictionaries in a</span></div>
+<div class="pos" id="*714:240" style="top:714;left:240"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">page’s</span></div>
+<div class="pos" id="*715:273" style="top:715;left:273"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Annots</span></div>
+<div class="pos" id="*714:314" style="top:714;left:314"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array).</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1131.htm" title="Go to previous page">Previous</a> <a href="pg_1133.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1132);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>
