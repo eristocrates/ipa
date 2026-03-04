@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1117.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="S E C T I O N H .3 1117 Implementation Notes 8.5.3, “Action Types” (Hide Actions) 109. Acrobat viewers earlier than version 3.0 report the following error when encountering an action of type Hide: “The plug-in needed for this Hide action is not available.” 110. In Acrobat viewers, the change in an annotation’s Hidden flag as a result of a hide action is temporary in that the user can subsequently close the document without being prompted to save changes and the effect of the hide action is lost. However, if the user explicitly saves the document before closing, such changes are saved and thus become permanent. 8.5.3, “Action Types” (Named Actions) 111. Acrobat viewers earlier than version 3.0 report the following error when encountering an action of type Named: “The plug-in needed for this Named action is not available.” 112. Acrobat viewers extend the list of named actions in Table 8.61 to include most of the menu item names available in the viewer. 8.6.1, “Interactive Form Dictionary” 113. Acrobat viewers may insert additional entries in the DR resource dictionary, such as Encoding, as a convenience for keeping track of objects being used to construct form fields. Such objects are not actually resources and are not referenced from the appearance stream. 114. In Acrobat, markup annotations can also make use of the resources in the DR dictionary. 115. Acrobat 6.0 recognizes only the stream value of the XFA entry; Acrobat 6.02 and later recognize both stream and array values. 8.6.2, “Field Dictionaries” (Field Names) 116. Beginning in Acrobat 3.0, partial field names cannot contain a period. 117. Acrobat 6.0 and later support Unicode encoding of field names. Versions earlier than Acrobat 6.0 do not support Unicode encoding of field names.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1117.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">S E C T I O N H .3</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1117</span></div>
+<div class="pos" id="*49:486" style="top:49;left:486"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Implementation Notes</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><a href="pg_0652.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.5.3, “Action Types” (Hide Actions)</span></a></div>
+<div class="pos" id="*127:137" style="top:127;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">109. Acrobat viewers earlier than version 3.0 report the following error when</span></div>
+<div class="pos" id="*145:174" style="top:145;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">encountering an action of type</span></div>
+<div class="pos" id="*146:354" style="top:146;left:354"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Hide</span></div>
+<div class="pos" id="*145:382" style="top:145;left:382"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">: “The plug-in needed for this</span></div>
+<div class="pos" id="*146:555" style="top:146;left:555"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Hide</span></div>
+<div class="pos" id="*145:586" style="top:145;left:586"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ac-</span></div>
+<div class="pos" id="*163:174" style="top:163;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion is not available.”</span></div>
+<div class="pos" id="*190:137" style="top:190;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">110. In Acrobat viewers, the change in an annotation’s Hidden flag as a result of</span></div>
+<div class="pos" id="*208:174" style="top:208;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">a hide action is temporary in that the user can subsequently close the doc-</span></div>
+<div class="pos" id="*226:174" style="top:226;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ument without being prompted to save changes and the effect of the hide</span></div>
+<div class="pos" id="*244:174" style="top:244;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">action is lost. However, if the user explicitly saves the document before</span></div>
+<div class="pos" id="*262:174" style="top:262;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">closing, such changes</span></div>
+<div class="pos" id="*262:302" style="top:262;left:302"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">are</span></div>
+<div class="pos" id="*262:323" style="top:262;left:323"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">saved and thus become permanent.</span></div>
+<div class="pos" id="*305:133" style="top:305;left:133"><a href="pg_0652.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.5.3, “Action Types” (Named Actions)</span></a></div>
+<div class="pos" id="*333:137" style="top:333;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">111. Acrobat viewers earlier than version 3.0 report the following error when</span></div>
+<div class="pos" id="*351:174" style="top:351;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">encountering an action of type</span></div>
+<div class="pos" id="*352:373" style="top:352;left:373"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Named</span></div>
+<div class="pos" id="*351:415" style="top:351;left:415"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">: “The plug-in needed for this</span></div>
+<div class="pos" id="*370:174" style="top:370;left:174"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Named</span></div>
+<div class="pos" id="*370:220" style="top:370;left:220"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">action is not available.”</span></div>
+<div class="pos" id="*396:137" style="top:396;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">112. Acrobat viewers extend the list of named actions in Table 8.61 to include</span></div>
+<div class="pos" id="*414:174" style="top:414;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">most of the menu item names available in the viewer.</span></div>
+<div class="pos" id="*457:133" style="top:457;left:133"><a href="pg_0672.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.6.1, “Interactive Form Dictionary”</span></a></div>
+<div class="pos" id="*485:137" style="top:485;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">113. Acrobat viewers may insert additional entries in the</span></div>
+<div class="pos" id="*486:489" style="top:486;left:489"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DR</span></div>
+<div class="pos" id="*485:511" style="top:485;left:511"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">resource dictio-</span></div>
+<div class="pos" id="*504:174" style="top:504;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nary, such as</span></div>
+<div class="pos" id="*504:251" style="top:504;left:251"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Encoding</span></div>
+<div class="pos" id="*504:306" style="top:504;left:306"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, as a convenience for keeping track of objects being</span></div>
+<div class="pos" id="*522:174" style="top:522;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">used to construct form fields. Such objects are not actually resources and</span></div>
+<div class="pos" id="*540:174" style="top:540;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are not referenced from the appearance stream.</span></div>
+<div class="pos" id="*566:137" style="top:566;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">114. In Acrobat, markup annotations can also make use of the resources in the</span></div>
+<div class="pos" id="*585:174" style="top:585;left:174"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DR</span></div>
+<div class="pos" id="*584:195" style="top:584;left:195"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary.</span></div>
+<div class="pos" id="*610:137" style="top:610;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">115. Acrobat 6.0 recognizes only the stream value of the</span></div>
+<div class="pos" id="*611:490" style="top:611;left:490"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">XFA</span></div>
+<div class="pos" id="*610:517" style="top:610;left:517"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry; Acrobat</span></div>
+<div class="pos" id="*629:174" style="top:629;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6.02 and later recognize both stream and array values.</span></div>
+<div class="pos" id="*672:133" style="top:672;left:133"><a href="pg_0674.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.6.2, “Field Dictionaries” (Field Names)</span></a></div>
+<div class="pos" id="*700:137" style="top:700;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">116. Beginning in Acrobat 3.0, partial field names cannot contain a period.</span></div>
+<div class="pos" id="*726:137" style="top:726;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">117. Acrobat 6.0 and later support Unicode encoding of field names. Versions</span></div>
+<div class="pos" id="*745:174" style="top:745;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">earlier than Acrobat 6.0 do not support Unicode encoding of field names.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1116.htm" title="Go to previous page">Previous</a> <a href="pg_1118.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1117);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

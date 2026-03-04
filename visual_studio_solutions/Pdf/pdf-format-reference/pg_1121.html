@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1121.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="S E C T I O N H .3 1121 Implementation Notes 136. When scaling a button’s appearance to the bounds of an annotation, versions of Acrobat earlier than 6.0 always took into account the line width used to draw the border, even when no border was being drawn. Beginning with Acrobat 6.0, the FB entry in the icon fit dictionary (see Table 8.97 on page 719) allows the option of ignoring the line width. 8.6.6, “Forms Data Format” (FDF Pages) 137. Acrobat renames fields by prepending a page number, a template name, and an ordinal number to the field name. The ordinal number corresponds to the order in which the template is applied to a page, with 0 being the first template specified for the page. For example, if the first template used on the fifth page has the name Template and has the Rename flag set to true, fields defined in that template are renamed by prepending the character string P5 . Template_0 . to their field names. 138. Adobe Extreme® printing systems require that the Rename flag be true. 8.7, “Digital Signatures” 139. Acrobat 6.0 computes a byte range digest only when the signature dictionary is referenced from a signature field. There is no byte range signature (that is, there is only an object signature) for FDF file signatures and usage rights signatures referenced from the UR entry of a permissions dictionary. In Acrobat 7.0, byte range digests are also computed for usage rights signatures referenced from the UR3 entry of a permissions dictionary. 140. Acrobat 6.0 and later do not provide the Changes entry. 8.7.1, “Transform Methods” 141. Acrobat 6.0 and 7.0 always generate DigestValue when creating MDP signatures. Acrobat 6.0 requires the presence of DigestValue in order to validate MDP signatures. Acrobat 7.0 does not use DigestValue but compares the current and signed versions of the document. 142. Acrobat 6.0 requires a usage rights signature dictionary that is referenced from the UR entry of the permissions dictionary in order to validate the usage rights. Acrobat 7.0 supports both UR and UR3; it uses the UR3 dictionary if both are present. Adobe PDF generating applications that support PDF 1.6 and greater generate UR only for backwards compatibility with Acrobat Reader 6.0.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1121.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">S E C T I O N H .3</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1121</span></div>
+<div class="pos" id="*49:486" style="top:49;left:486"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Implementation Notes</span></div>
+<div class="pos" id="*99:137" style="top:99;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">136. When scaling a button’s appearance to the bounds of an annotation, ver-</span></div>
+<div class="pos" id="*117:174" style="top:117;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sions of Acrobat earlier than 6.0 always took into account the line width</span></div>
+<div class="pos" id="*135:174" style="top:135;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">used to draw the border, even when no border was being drawn. Begin-</span></div>
+<div class="pos" id="*153:174" style="top:153;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ning with Acrobat 6.0, the</span></div>
+<div class="pos" id="*154:337" style="top:154;left:337"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">FB</span></div>
+<div class="pos" id="*153:356" style="top:153;left:356"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the icon fit dictionary (see Table</span></div>
+<div class="pos" id="*171:174" style="top:171;left:174"><a href="pg_0719.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8.97 on page 719) allows the option of ignoring the line width.</span></a></div>
+<div class="pos" id="*214:133" style="top:214;left:133"><a href="pg_0710.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.6.6, “Forms Data Format” (FDF Pages)</span></a></div>
+<div class="pos" id="*242:137" style="top:242;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">137. Acrobat renames fields by prepending a page number, a template name,</span></div>
+<div class="pos" id="*260:174" style="top:260;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and an ordinal number to the field name. The ordinal number cor-</span></div>
+<div class="pos" id="*279:174" style="top:279;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">responds to the order in which the template is applied to a page, with 0</span></div>
+<div class="pos" id="*297:174" style="top:297;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">being the first template specified for the page. For example, if the first</span></div>
+<div class="pos" id="*315:174" style="top:315;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">template used on the fifth page has the name</span></div>
+<div class="pos" id="*315:471" style="top:315;left:471"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Template</span></div>
+<div class="pos" id="*315:530" style="top:315;left:530"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and has the</span></div>
+<div class="pos" id="*333:174" style="top:333;left:174"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Rename</span></div>
+<div class="pos" id="*333:227" style="top:333;left:227"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">flag set to</span></div>
+<div class="pos" id="*333:292" style="top:333;left:292"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*333:316" style="top:333;left:316"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, fields defined in that template are renamed by</span></div>
+<div class="pos" id="*351:174" style="top:351;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">prepending the character string</span></div>
+<div class="pos" id="*352:361" style="top:352;left:361"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">P5 . Template_0 .</span></div>
+<div class="pos" id="*351:454" style="top:351;left:454"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to their field names.</span></div>
+<div class="pos" id="*377:137" style="top:377;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">138. Adobe Extreme® printing systems require that the</span></div>
+<div class="pos" id="*378:466" style="top:378;left:466"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Rename</span></div>
+<div class="pos" id="*377:517" style="top:377;left:517"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">flag be</span></div>
+<div class="pos" id="*378:559" style="top:378;left:559"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*377:583" style="top:377;left:583"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*420:133" style="top:420;left:133"><a href="pg_0725.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.7, “Digital Signatures”</span></a></div>
+<div class="pos" id="*449:137" style="top:449;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">139. Acrobat 6.0 computes a byte range digest only when the signature dictio-</span></div>
+<div class="pos" id="*467:174" style="top:467;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nary is referenced from a signature field. There is no byte range signature</span></div>
+<div class="pos" id="*485:174" style="top:485;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(that is, there is only an object signature) for FDF file signatures and usage</span></div>
+<div class="pos" id="*503:174" style="top:503;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rights signatures referenced from the</span></div>
+<div class="pos" id="*504:402" style="top:504;left:402"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UR</span></div>
+<div class="pos" id="*503:424" style="top:503;left:424"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry of a permissions dictio-</span></div>
+<div class="pos" id="*521:174" style="top:521;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nary. In Acrobat 7.0, byte range digests are also computed for usage rights</span></div>
+<div class="pos" id="*539:174" style="top:539;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">signatures referenced from the</span></div>
+<div class="pos" id="*540:355" style="top:540;left:355"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UR3</span></div>
+<div class="pos" id="*539:382" style="top:539;left:382"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry of a permissions dictionary.</span></div>
+<div class="pos" id="*565:137" style="top:565;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">140. Acrobat 6.0 and later do not provide the</span></div>
+<div class="pos" id="*566:410" style="top:566;left:410"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Changes</span></div>
+<div class="pos" id="*565:464" style="top:565;left:464"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry.</span></div>
+<div class="pos" id="*608:133" style="top:608;left:133"><a href="pg_0731.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.7.1, “Transform Methods”</span></a></div>
+<div class="pos" id="*637:137" style="top:637;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">141. Acrobat 6.0 and 7.0 always generate</span></div>
+<div class="pos" id="*638:387" style="top:638;left:387"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DigestValue</span></div>
+<div class="pos" id="*637:461" style="top:637;left:461"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">when creating MDP sig-</span></div>
+<div class="pos" id="*655:174" style="top:655;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">natures. Acrobat 6.0 requires the presence of</span></div>
+<div class="pos" id="*656:438" style="top:656;left:438"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DigestValue</span></div>
+<div class="pos" id="*655:511" style="top:655;left:511"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in order to vali-</span></div>
+<div class="pos" id="*673:174" style="top:673;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">date MDP signatures. Acrobat 7.0 does not use</span></div>
+<div class="pos" id="*674:451" style="top:674;left:451"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DigestValue</span></div>
+<div class="pos" id="*673:525" style="top:673;left:525"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">but compares</span></div>
+<div class="pos" id="*691:174" style="top:691;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the current and signed versions of the document.</span></div>
+<div class="pos" id="*717:137" style="top:717;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">142. Acrobat 6.0 requires a usage rights signature dictionary that is referenced</span></div>
+<div class="pos" id="*735:174" style="top:735;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">from the</span></div>
+<div class="pos" id="*736:231" style="top:736;left:231"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UR</span></div>
+<div class="pos" id="*735:252" style="top:735;left:252"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry of the permissions dictionary in order to validate the</span></div>
+<div class="pos" id="*754:174" style="top:754;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">usage rights. Acrobat 7.0 supports both</span></div>
+<div class="pos" id="*754:410" style="top:754;left:410"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UR</span></div>
+<div class="pos" id="*754:431" style="top:754;left:431"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*754:457" style="top:754;left:457"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UR3</span></div>
+<div class="pos" id="*754:481" style="top:754;left:481"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">; it uses the</span></div>
+<div class="pos" id="*754:553" style="top:754;left:553"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UR3</span></div>
+<div class="pos" id="*754:581" style="top:754;left:581"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dic-</span></div>
+<div class="pos" id="*772:174" style="top:772;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tionary if both are present. Adobe PDF generating applications that sup-</span></div>
+<div class="pos" id="*790:174" style="top:790;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">port PDF 1.6 and greater generate</span></div>
+<div class="pos" id="*790:385" style="top:790;left:385"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UR</span></div>
+<div class="pos" id="*790:407" style="top:790;left:407"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">only for backwards compatibility</span></div>
+<div class="pos" id="*808:174" style="top:808;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">with Acrobat Reader 6.0.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1120.htm" title="Go to previous page">Previous</a> <a href="pg_1122.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1121);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>
