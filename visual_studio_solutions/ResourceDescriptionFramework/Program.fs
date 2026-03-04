@@ -299,7 +299,7 @@ module Fsharp =
 let namespaceIris =
     [
             
-        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://termlex.oeg.fi.upm.es/termlex#" (Some @"https://termlex.oeg.fi.upm.es/static/termlex.rdf") (Some "ontolex.termlex") None
+        // Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.org/vocab/relationship/" (Some @"https://vocab.org/relationship/rel-vocab-20100607.rdf") (Some "relationship") None
 
         
     

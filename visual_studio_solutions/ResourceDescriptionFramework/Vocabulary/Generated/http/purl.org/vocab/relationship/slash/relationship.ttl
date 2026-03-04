@@ -1,0 +1,586 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ov: <http://open.vocab.org/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix relationship: <http://purl.org/vocab/relationship/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix wot: <http://xmlns.com/wot/0.1/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+relationship: a owl:Ontology .
+<http://iandavis.com/id/me> a foaf:Person .
+<http://iandavis.com/id/me> foaf:name "Ian Davis" .
+relationship: dc:creator <http://iandavis.com/id/me> .
+_:autos1 a foaf:Person .
+_:autos1 foaf:name "Eric Vitiello Jr" .
+relationship: dc:creator _:autos1 .
+relationship: dc:title "RELATIONSHIP: A vocabulary for describing relationships between people" .
+relationship: dc:description "A vocabulary for describing relationships between people" .
+relationship: dc:identifier "http://purl.org/vocab/relationship/rel-vocab-20050810" .
+relationship: dct:isVersionOf relationship: .
+relationship: dct:replaces relationship:rel-vocab-20090515 .
+relationship: vann:preferredNamespaceUri "http://purl.org/vocab/relationship" .
+relationship: vann:preferredNamespacePrefix "rel" .
+relationship: vann:example <http://purl.org/vocab/relationship/examples/1> .
+relationship: vann:example <http://purl.org/vocab/relationship/examples/2> .
+relationship: dct:issued "2004-02-11" .
+relationship: skos:changeNote _:autos2 .
+_:autos2 rdf:value "Added isDefinedBy properties and updated documentation" .
+_:autos2 dc:date "2005-08-10" .
+_:autos2 dc:creator "Ian Davis" .
+relationship: skos:historyNote _:autos3 .
+_:autos3 rdf:value "Typed vocabulary as owl:Ontology" .
+_:autos3 dc:date "2009-05-15" .
+_:autos3 dc:creator "Ian Davis" .
+relationship: skos:historyNote _:autos4 .
+_:autos4 rdf:value "Incorporated changes suggested by Henry Story on foaf-dev list" .
+_:autos4 dc:date "2010-02-09" .
+_:autos4 dc:creator "Ian Davis" .
+relationship: skos:historyNote _:autos5 .
+_:autos5 rdf:value "Asserted that foaf:knows is rdfs:subPropertyOf rel:knowsOf" .
+_:autos5 dc:date "2010-02-09" .
+_:autos5 dc:creator "Ian Davis" .
+relationship: skos:changeNote _:autos6 .
+_:autos6 rdf:value "Inlined the examples that had been orphaned by publishing software changes" .
+_:autos6 dc:date "2010-04-19" .
+_:autos6 dc:creator "Ian Davis" .
+relationship: ov:discussionList <http://lists.foaf-project.org/mailman/listinfo/foaf-dev> .
+<http://lists.foaf-project.org/mailman/listinfo/foaf-dev> rdfs:label "FOAF-DEV mailing list" .
+foaf:knows rdfs:subPropertyOf relationship:knowsOf .
+relationship:friendOf a owl:SymmetricProperty .
+relationship:friendOf owl:equivalentClass <http://www.perceive.net/schemas/relationship/friendOf> .
+relationship:friendOf rdfs:subPropertyOf foaf:knows .
+relationship:friendOf rdfs:label "Friend Of"@en .
+relationship:friendOf skos:definition "A person who shares mutual friendship with this person."@en .
+relationship:friendOf rdfs:domain foaf:Person .
+relationship:friendOf rdfs:range foaf:Person .
+relationship:friendOf rdfs:isDefinedBy relationship: .
+relationship:friendOf rdfs:subPropertyOf owl:differentFrom .
+relationship:friendOf skos:historyNote _:autos7 .
+_:autos7 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos7 dc:date "2010-02-09" .
+_:autos7 dc:creator "Ian Davis" .
+relationship:acquaintanceOf a owl:SymmetricProperty .
+relationship:acquaintanceOf owl:equivalentClass <http://www.perceive.net/schemas/relationship/acquaintanceOf> .
+relationship:acquaintanceOf rdfs:subPropertyOf foaf:knows .
+relationship:acquaintanceOf rdfs:label "Acquaintance Of"@en .
+relationship:acquaintanceOf skos:definition "A person having more than slight or superficial knowledge of this person but short of friendship."@en .
+relationship:acquaintanceOf rdfs:domain foaf:Person .
+relationship:acquaintanceOf rdfs:range foaf:Person .
+relationship:acquaintanceOf rdfs:isDefinedBy relationship: .
+relationship:acquaintanceOf rdfs:subPropertyOf owl:differentFrom .
+relationship:acquaintanceOf skos:historyNote _:autos8 .
+_:autos8 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos8 dc:date "2010-02-09" .
+_:autos8 dc:creator "Ian Davis" .
+relationship:parentOf a rdf:Property .
+relationship:parentOf owl:equivalentClass <http://www.perceive.net/schemas/relationship/parentOf> .
+relationship:parentOf owl:inverseOf relationship:childOf .
+relationship:parentOf rdfs:subPropertyOf foaf:knows .
+relationship:parentOf rdfs:label "Parent Of"@en .
+relationship:parentOf skos:definition "A person who has given birth to or nurtured and raised this person."@en .
+relationship:parentOf rdfs:domain foaf:Person .
+relationship:parentOf rdfs:range foaf:Person .
+relationship:parentOf rdfs:isDefinedBy relationship: .
+relationship:parentOf rdfs:subPropertyOf owl:differentFrom .
+relationship:parentOf skos:historyNote _:autos9 .
+_:autos9 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos9 dc:date "2010-02-09" .
+_:autos9 dc:creator "Ian Davis" .
+relationship:siblingOf a owl:SymmetricProperty .
+relationship:siblingOf owl:equivalentClass <http://www.perceive.net/schemas/relationship/siblingOf> .
+relationship:siblingOf rdfs:subPropertyOf foaf:knows .
+relationship:siblingOf rdfs:label "Sibling Of"@en .
+relationship:siblingOf skos:definition "A person having one or both parents in common with this person."@en .
+relationship:siblingOf rdfs:domain foaf:Person .
+relationship:siblingOf rdfs:range foaf:Person .
+relationship:siblingOf rdfs:isDefinedBy relationship: .
+relationship:siblingOf rdfs:subPropertyOf owl:differentFrom .
+relationship:siblingOf skos:historyNote _:autos10 .
+_:autos10 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos10 dc:date "2010-02-09" .
+_:autos10 dc:creator "Ian Davis" .
+relationship:childOf a rdf:Property .
+relationship:childOf owl:equivalentClass <http://www.perceive.net/schemas/relationship/childOf> .
+relationship:childOf owl:inverseOf relationship:parentOf .
+relationship:childOf rdfs:subPropertyOf foaf:knows .
+relationship:childOf rdfs:label "Child Of"@en .
+relationship:childOf skos:definition "A person who was given birth to or nurtured and raised by this person."@en .
+relationship:childOf rdfs:domain foaf:Person .
+relationship:childOf rdfs:range foaf:Person .
+relationship:childOf rdfs:isDefinedBy relationship: .
+relationship:childOf rdfs:subPropertyOf owl:differentFrom .
+relationship:childOf skos:historyNote _:autos11 .
+_:autos11 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos11 dc:date "2010-02-09" .
+_:autos11 dc:creator "Ian Davis" .
+relationship:grandchildOf a rdf:Property .
+relationship:grandchildOf owl:equivalentClass <http://www.perceive.net/schemas/relationship/grandchildOf> .
+relationship:grandchildOf owl:inverseOf relationship:grandparentOf .
+relationship:grandchildOf rdfs:subPropertyOf foaf:knows .
+relationship:grandchildOf rdfs:label "Grandchild Of"@en .
+relationship:grandchildOf skos:definition "A person who is a child of any of this person's children."@en .
+relationship:grandchildOf rdfs:domain foaf:Person .
+relationship:grandchildOf rdfs:range foaf:Person .
+relationship:grandchildOf rdfs:isDefinedBy relationship: .
+relationship:grandchildOf rdfs:subPropertyOf owl:differentFrom .
+relationship:grandchildOf skos:historyNote _:autos12 .
+_:autos12 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos12 dc:date "2010-02-09" .
+_:autos12 dc:creator "Ian Davis" .
+relationship:spouseOf a owl:SymmetricProperty .
+relationship:spouseOf owl:equivalentClass <http://www.perceive.net/schemas/relationship/spouseOf> .
+relationship:spouseOf rdfs:subPropertyOf foaf:knows .
+relationship:spouseOf rdfs:label "Spouse Of"@en .
+relationship:spouseOf skos:definition "A person who is married to this person"@en .
+relationship:spouseOf rdfs:range foaf:Person .
+relationship:spouseOf rdfs:isDefinedBy relationship: .
+relationship:spouseOf rdfs:subPropertyOf owl:differentFrom .
+relationship:spouseOf skos:historyNote _:autos13 .
+_:autos13 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos13 dc:date "2010-02-09" .
+_:autos13 dc:creator "Ian Davis" .
+relationship:enemyOf a rdf:Property .
+relationship:enemyOf owl:equivalentClass <http://www.perceive.net/schemas/relationship/enemyOf> .
+relationship:enemyOf rdfs:subPropertyOf foaf:knows .
+relationship:enemyOf rdfs:label "Enemy Of"@en .
+relationship:enemyOf skos:definition "A person towards whom this person feels hatred, intends injury to, or opposes the interests of."@en .
+relationship:enemyOf rdfs:domain foaf:Person .
+relationship:enemyOf rdfs:range foaf:Person .
+relationship:enemyOf rdfs:isDefinedBy relationship: .
+relationship:enemyOf rdfs:subPropertyOf owl:differentFrom .
+relationship:enemyOf skos:historyNote _:autos14 .
+_:autos14 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos14 dc:date "2010-02-09" .
+_:autos14 dc:creator "Ian Davis" .
+relationship:antagonistOf a rdf:Property .
+relationship:antagonistOf owl:equivalentClass <http://www.perceive.net/schemas/relationship/antagonistOf> .
+relationship:antagonistOf rdfs:subPropertyOf foaf:knows .
+relationship:antagonistOf rdfs:label "Antagonist Of"@en .
+relationship:antagonistOf skos:definition "A person who opposes and contends against this person."@en .
+relationship:antagonistOf rdfs:domain foaf:Person .
+relationship:antagonistOf rdfs:range foaf:Person .
+relationship:antagonistOf rdfs:isDefinedBy relationship: .
+relationship:antagonistOf rdfs:subPropertyOf owl:differentFrom .
+relationship:antagonistOf skos:historyNote _:autos15 .
+_:autos15 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos15 dc:date "2010-02-09" .
+_:autos15 dc:creator "Ian Davis" .
+relationship:ambivalentOf a rdf:Property .
+relationship:ambivalentOf owl:equivalentClass <http://www.perceive.net/schemas/relationship/ambivalentOf> .
+relationship:ambivalentOf rdfs:label "Ambivalent Of"@en .
+relationship:ambivalentOf skos:definition "A person towards whom this person has mixed feelings or emotions."@en .
+relationship:ambivalentOf rdfs:domain foaf:Person .
+relationship:ambivalentOf rdfs:range foaf:Person .
+relationship:ambivalentOf rdfs:isDefinedBy relationship: .
+relationship:ambivalentOf skos:historyNote _:autos16 .
+_:autos16 rdf:value "Removed assertion that this property is a sub-property of foaf:knows due to reciprocity requirements. It is possible for one to be ambivalent of another without that person knowing the first." .
+_:autos16 dc:date "2010-02-09" .
+_:autos16 dc:creator "Ian Davis" .
+relationship:ambivalentOf rdfs:subPropertyOf owl:differentFrom .
+relationship:ambivalentOf skos:historyNote _:autos17 .
+_:autos17 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos17 dc:date "2010-02-09" .
+_:autos17 dc:creator "Ian Davis" .
+relationship:lostContactWith a owl:SymmetricProperty .
+relationship:lostContactWith rdfs:subPropertyOf foaf:knows .
+relationship:lostContactWith rdfs:label "Lost Contact With"@en .
+relationship:lostContactWith skos:definition "A person who was once known by this person but has subsequently become uncontactable."@en .
+relationship:lostContactWith rdfs:domain foaf:Person .
+relationship:lostContactWith rdfs:range foaf:Person .
+relationship:lostContactWith rdfs:isDefinedBy relationship: .
+relationship:lostContactWith rdfs:subPropertyOf owl:differentFrom .
+relationship:lostContactWith skos:historyNote _:autos18 .
+_:autos18 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos18 dc:date "2010-02-09" .
+_:autos18 dc:creator "Ian Davis" .
+relationship:knowsOf a rdf:Property .
+relationship:knowsOf rdfs:label "Knows Of"@en .
+relationship:knowsOf skos:definition "A person who has come to be known to this person through their actions or position."@en .
+relationship:knowsOf rdfs:domain foaf:Person .
+relationship:knowsOf rdfs:range foaf:Person .
+relationship:knowsOf rdfs:isDefinedBy relationship: .
+relationship:knowsOf skos:historyNote _:autos19 .
+_:autos19 rdf:value "Removed assertion that this property is a sub-property of foaf:knows due to reciprocity requirements. It is possible for one to know of another without that person knowing the first." .
+_:autos19 dc:date "2010-02-09" .
+_:autos19 dc:creator "Ian Davis" .
+relationship:knowsOf skos:historyNote _:autos20 .
+_:autos20 rdf:value "Assert that foaf:knows is rdfs:subPropertyOf rel:knowsOf" .
+_:autos20 dc:date "2010-02-09" .
+_:autos20 dc:creator "Ian Davis" .
+relationship:knowsOf rdfs:subPropertyOf owl:differentFrom .
+relationship:knowsOf skos:historyNote _:autos21 .
+_:autos21 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos21 dc:date "2010-02-09" .
+_:autos21 dc:creator "Ian Davis" .
+relationship:wouldLikeToKnow a rdf:Property .
+relationship:wouldLikeToKnow rdfs:label "Would Like To Know"@en .
+relationship:wouldLikeToKnow skos:definition "A person whom this person would desire to know more closely."@en .
+relationship:wouldLikeToKnow rdfs:domain foaf:Person .
+relationship:wouldLikeToKnow rdfs:range foaf:Person .
+relationship:wouldLikeToKnow rdfs:isDefinedBy relationship: .
+relationship:wouldLikeToKnow skos:historyNote _:autos22 .
+_:autos22 rdf:value "Removed assertion that this property is a sub-property of foaf:knows which would imply that the two people already know one another." .
+_:autos22 dc:date "2010-02-09" .
+_:autos22 dc:creator "Ian Davis" .
+relationship:wouldLikeToKnow rdfs:subPropertyOf owl:differentFrom .
+relationship:wouldLikeToKnow skos:historyNote _:autos23 .
+_:autos23 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos23 dc:date "2010-02-09" .
+_:autos23 dc:creator "Ian Davis" .
+relationship:knowsInPassing a rdf:Property .
+relationship:knowsInPassing rdfs:subPropertyOf foaf:knows .
+relationship:knowsInPassing rdfs:label "Knows In Passing"@en .
+relationship:knowsInPassing skos:definition "A person whom this person has slight or superficial knowledge of."@en .
+relationship:knowsInPassing rdfs:domain foaf:Person .
+relationship:knowsInPassing rdfs:range foaf:Person .
+relationship:knowsInPassing rdfs:isDefinedBy relationship: .
+relationship:knowsInPassing rdfs:subPropertyOf owl:differentFrom .
+relationship:knowsInPassing skos:historyNote _:autos24 .
+_:autos24 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos24 dc:date "2010-02-09" .
+_:autos24 dc:creator "Ian Davis" .
+relationship:knowsByReputation a rdf:Property .
+relationship:knowsByReputation rdfs:label "Knows By Reputation"@en .
+relationship:knowsByReputation skos:definition "A person known by this person primarily for a particular action, position or field of endeavour."@en .
+relationship:knowsByReputation rdfs:domain foaf:Person .
+relationship:knowsByReputation rdfs:range foaf:Person .
+relationship:knowsByReputation rdfs:isDefinedBy relationship: .
+relationship:knowsByReputation skos:historyNote _:autos25 .
+_:autos25 rdf:value "Removed assertion that this property is a sub-property of foaf:knows due to reciprocity requirements. It is possible for one to know of another by reputation without that person knowing the first." .
+_:autos25 dc:date "2010-02-09" .
+_:autos25 dc:creator "Ian Davis" .
+relationship:knowsByReputation rdfs:subPropertyOf owl:differentFrom .
+relationship:knowsByReputation skos:historyNote _:autos26 .
+_:autos26 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos26 dc:date "2010-02-09" .
+_:autos26 dc:creator "Ian Davis" .
+relationship:closeFriendOf a owl:SymmetricProperty .
+relationship:closeFriendOf rdfs:subPropertyOf foaf:knows .
+relationship:closeFriendOf rdfs:label "Close Friend Of"@en .
+relationship:closeFriendOf skos:definition "A person who shares a close mutual friendship with this person."@en .
+relationship:closeFriendOf rdfs:domain foaf:Person .
+relationship:closeFriendOf rdfs:range foaf:Person .
+relationship:closeFriendOf rdfs:isDefinedBy relationship: .
+relationship:closeFriendOf rdfs:subPropertyOf owl:differentFrom .
+relationship:closeFriendOf skos:historyNote _:autos27 .
+_:autos27 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos27 dc:date "2010-02-09" .
+_:autos27 dc:creator "Ian Davis" .
+relationship:hasMet a owl:SymmetricProperty .
+relationship:hasMet rdfs:subPropertyOf foaf:knows .
+relationship:hasMet rdfs:label "Has Met"@en .
+relationship:hasMet skos:definition "A person who has met this person whether in passing or longer."@en .
+relationship:hasMet rdfs:domain foaf:Person .
+relationship:hasMet rdfs:range foaf:Person .
+relationship:hasMet rdfs:isDefinedBy relationship: .
+relationship:hasMet rdfs:subPropertyOf owl:differentFrom .
+relationship:hasMet skos:historyNote _:autos28 .
+_:autos28 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos28 dc:date "2010-02-09" .
+_:autos28 dc:creator "Ian Davis" .
+relationship:worksWith a owl:SymmetricProperty .
+relationship:worksWith rdfs:subPropertyOf foaf:knows .
+relationship:worksWith rdfs:label "Works With"@en .
+relationship:worksWith skos:definition "A person who works for the same employer as this person."@en .
+relationship:worksWith rdfs:domain foaf:Person .
+relationship:worksWith rdfs:range foaf:Person .
+relationship:worksWith rdfs:isDefinedBy relationship: .
+relationship:worksWith skos:historyNote _:autos29 .
+_:autos29 rdf:value "Removed assertion that this property is transitive." .
+_:autos29 dc:date "2010-02-09" .
+_:autos29 dc:creator "Ian Davis" .
+relationship:worksWith rdfs:subPropertyOf owl:differentFrom .
+relationship:worksWith skos:historyNote _:autos30 .
+_:autos30 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos30 dc:date "2010-02-09" .
+_:autos30 dc:creator "Ian Davis" .
+relationship:colleagueOf a owl:SymmetricProperty .
+relationship:colleagueOf rdfs:subPropertyOf foaf:knows .
+relationship:colleagueOf rdfs:label "Colleague Of"@en .
+relationship:colleagueOf skos:definition "A person who is a member of the same profession as this person."@en .
+relationship:colleagueOf rdfs:domain foaf:Person .
+relationship:colleagueOf rdfs:range foaf:Person .
+relationship:colleagueOf rdfs:isDefinedBy relationship: .
+relationship:colleagueOf rdfs:subPropertyOf owl:differentFrom .
+relationship:colleagueOf skos:historyNote _:autos31 .
+_:autos31 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos31 dc:date "2010-02-09" .
+_:autos31 dc:creator "Ian Davis" .
+relationship:collaboratesWith a owl:SymmetricProperty .
+relationship:collaboratesWith rdfs:subPropertyOf foaf:knows .
+relationship:collaboratesWith rdfs:label "Collaborates With"@en .
+relationship:collaboratesWith skos:definition "A person who works towards a common goal with this person."@en .
+relationship:collaboratesWith rdfs:domain foaf:Person .
+relationship:collaboratesWith rdfs:range foaf:Person .
+relationship:collaboratesWith rdfs:isDefinedBy relationship: .
+relationship:collaboratesWith rdfs:subPropertyOf owl:differentFrom .
+relationship:collaboratesWith skos:historyNote _:autos32 .
+_:autos32 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos32 dc:date "2010-02-09" .
+_:autos32 dc:creator "Ian Davis" .
+relationship:employerOf a rdf:Property .
+relationship:employerOf owl:inverseOf relationship:employedBy .
+relationship:employerOf rdfs:subPropertyOf foaf:knows .
+relationship:employerOf rdfs:label "Employer Of"@en .
+relationship:employerOf skos:definition "A person who engages the services of this person."@en .
+relationship:employerOf rdfs:domain foaf:Person .
+relationship:employerOf rdfs:range foaf:Person .
+relationship:employerOf rdfs:isDefinedBy relationship: .
+relationship:employerOf rdfs:subPropertyOf owl:differentFrom .
+relationship:employerOf skos:historyNote _:autos33 .
+_:autos33 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos33 dc:date "2010-02-09" .
+_:autos33 dc:creator "Ian Davis" .
+relationship:employedBy a rdf:Property .
+relationship:employedBy owl:inverseOf relationship:employerOf .
+relationship:employedBy rdfs:subPropertyOf foaf:knows .
+relationship:employedBy rdfs:label "Employed By"@en .
+relationship:employedBy skos:definition "A person for whom this person's services have been engaged."@en .
+relationship:employedBy rdfs:domain foaf:Person .
+relationship:employedBy rdfs:range foaf:Person .
+relationship:employedBy rdfs:isDefinedBy relationship: .
+relationship:employedBy rdfs:subPropertyOf owl:differentFrom .
+relationship:employedBy skos:historyNote _:autos34 .
+_:autos34 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos34 dc:date "2010-02-09" .
+_:autos34 dc:creator "Ian Davis" .
+relationship:mentorOf a rdf:Property .
+relationship:mentorOf owl:inverseOf relationship:apprenticeTo .
+relationship:mentorOf rdfs:subPropertyOf foaf:knows .
+relationship:mentorOf rdfs:label "Mentor Of"@en .
+relationship:mentorOf skos:definition "A person who serves as a trusted counselor or teacher to this person."@en .
+relationship:mentorOf rdfs:domain foaf:Person .
+relationship:mentorOf rdfs:range foaf:Person .
+relationship:mentorOf rdfs:isDefinedBy relationship: .
+relationship:mentorOf rdfs:subPropertyOf owl:differentFrom .
+relationship:mentorOf skos:historyNote _:autos35 .
+_:autos35 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos35 dc:date "2010-02-09" .
+_:autos35 dc:creator "Ian Davis" .
+relationship:apprenticeTo a rdf:Property .
+relationship:apprenticeTo owl:inverseOf relationship:mentorOf .
+relationship:apprenticeTo rdfs:subPropertyOf foaf:knows .
+relationship:apprenticeTo rdfs:label "Apprentice To"@en .
+relationship:apprenticeTo skos:definition "A person to whom this person serves as a trusted counselor or teacher."@en .
+relationship:apprenticeTo rdfs:domain foaf:Person .
+relationship:apprenticeTo rdfs:range foaf:Person .
+relationship:apprenticeTo rdfs:isDefinedBy relationship: .
+relationship:apprenticeTo rdfs:subPropertyOf owl:differentFrom .
+relationship:apprenticeTo skos:historyNote _:autos36 .
+_:autos36 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos36 dc:date "2010-02-09" .
+_:autos36 dc:creator "Ian Davis" .
+relationship:livesWith a owl:SymmetricProperty .
+relationship:livesWith rdfs:isDefinedBy relationship: .
+relationship:livesWith a owl:TransitiveProperty .
+relationship:livesWith rdfs:subPropertyOf foaf:knows .
+relationship:livesWith rdfs:label "Lives With"@en .
+relationship:livesWith skos:definition "A person who shares a residence with this person."@en .
+relationship:livesWith rdfs:domain foaf:Person .
+relationship:livesWith rdfs:range foaf:Person .
+relationship:livesWith rdfs:subPropertyOf owl:differentFrom .
+relationship:livesWith skos:historyNote _:autos37 .
+_:autos37 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos37 dc:date "2010-02-09" .
+_:autos37 dc:creator "Ian Davis" .
+relationship:neighborOf a owl:SymmetricProperty .
+relationship:neighborOf rdfs:subPropertyOf foaf:knows .
+relationship:neighborOf rdfs:label "Neighbor Of"@en .
+relationship:neighborOf skos:definition "A person who lives in the same locality as this person."@en .
+relationship:neighborOf rdfs:domain foaf:Person .
+relationship:neighborOf rdfs:range foaf:Person .
+relationship:neighborOf rdfs:isDefinedBy relationship: .
+relationship:neighborOf rdfs:subPropertyOf owl:differentFrom .
+relationship:neighborOf skos:historyNote _:autos38 .
+_:autos38 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos38 dc:date "2010-02-09" .
+_:autos38 dc:creator "Ian Davis" .
+relationship:neighborOf skos:historyNote _:autos39 .
+_:autos39 rdf:value "Removed assertion that this property is transitive." .
+_:autos39 dc:date "2010-02-09" .
+_:autos39 dc:creator "Ian Davis" .
+relationship:grandparentOf a rdf:Property .
+relationship:grandparentOf owl:inverseOf relationship:grandchildOf .
+relationship:grandchildOf rdfs:label "Grandchild Of" .
+relationship:grandparentOf rdfs:subPropertyOf foaf:knows .
+relationship:grandparentOf rdfs:label "Grandparent Of"@en .
+relationship:grandparentOf skos:definition "A person who is the parent of any of this person's parents."@en .
+relationship:grandparentOf rdfs:domain foaf:Person .
+relationship:grandparentOf rdfs:range foaf:Person .
+relationship:grandparentOf rdfs:isDefinedBy relationship: .
+relationship:grandparentOf rdfs:subPropertyOf owl:differentFrom .
+relationship:grandparentOf skos:historyNote _:autos40 .
+_:autos40 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos40 dc:date "2010-02-09" .
+_:autos40 dc:creator "Ian Davis" .
+relationship:lifePartnerOf a owl:SymmetricProperty .
+relationship:lifePartnerOf rdfs:subPropertyOf foaf:knows .
+relationship:lifePartnerOf rdfs:label "Life Partner of"@en .
+relationship:lifePartnerOf skos:definition "A person who has made a long-term commitment to this person's."@en .
+relationship:lifePartnerOf rdfs:domain foaf:Person .
+relationship:lifePartnerOf rdfs:range foaf:Person .
+relationship:lifePartnerOf rdfs:isDefinedBy relationship: .
+relationship:lifePartnerOf rdfs:subPropertyOf owl:differentFrom .
+relationship:lifePartnerOf skos:historyNote _:autos41 .
+_:autos41 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos41 dc:date "2010-02-09" .
+_:autos41 dc:creator "Ian Davis" .
+relationship:engagedTo a owl:SymmetricProperty .
+relationship:engagedTo rdfs:subPropertyOf foaf:knows .
+relationship:engagedTo rdfs:label "Engaged To"@en .
+relationship:engagedTo skos:definition "A person to whom this person is betrothed."@en .
+relationship:engagedTo rdfs:domain foaf:Person .
+relationship:engagedTo rdfs:range foaf:Person .
+relationship:engagedTo rdfs:isDefinedBy relationship: .
+relationship:engagedTo rdfs:subPropertyOf owl:differentFrom .
+relationship:engagedTo skos:historyNote _:autos42 .
+_:autos42 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos42 dc:date "2010-02-09" .
+_:autos42 dc:creator "Ian Davis" .
+relationship:ancestorOf a owl:TransitiveProperty .
+relationship:ancestorOf owl:inverseOf relationship:descendantOf .
+relationship:descendantOf rdfs:label "Descendant Of" .
+relationship:ancestorOf rdfs:label "Ancestor Of"@en .
+relationship:ancestorOf skos:definition "A person who is a descendant of this person."@en .
+relationship:ancestorOf rdfs:domain foaf:Person .
+relationship:ancestorOf rdfs:range foaf:Person .
+relationship:ancestorOf rdfs:isDefinedBy relationship: .
+relationship:ancestorOf skos:historyNote _:autos43 .
+_:autos43 rdf:value "Removed assertion that this property is a sub-property of foaf:knows. foaf:knows requires a reciprocation that may not be possible for distant ancestors." .
+_:autos43 dc:date "2010-02-09" .
+_:autos43 dc:creator "Ian Davis" .
+relationship:ancestorOf rdfs:subPropertyOf owl:differentFrom .
+relationship:ancestorOf skos:historyNote _:autos44 .
+_:autos44 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos44 dc:date "2010-02-09" .
+_:autos44 dc:creator "Ian Davis" .
+relationship:descendantOf a owl:TransitiveProperty .
+relationship:descendantOf owl:inverseOf relationship:ancestorOf .
+relationship:descendantOf rdfs:label "Descendant Of"@en .
+relationship:descendantOf skos:definition "A person from whom this person is descended."@en .
+relationship:descendantOf rdfs:domain foaf:Person .
+relationship:descendantOf rdfs:range foaf:Person .
+relationship:descendantOf rdfs:isDefinedBy relationship: .
+relationship:descendantOf skos:historyNote _:autos45 .
+_:autos45 rdf:value "Removed assertion that this property is a sub-property of foaf:knows. foaf:knows requires a reciprocation that may not be possible for distant descendants." .
+_:autos45 dc:date "2010-02-09" .
+_:autos45 dc:creator "Ian Davis" .
+relationship:descendantOf rdfs:subPropertyOf owl:differentFrom .
+relationship:descendantOf skos:historyNote _:autos46 .
+_:autos46 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos46 dc:date "2010-02-09" .
+_:autos46 dc:creator "Ian Davis" .
+relationship:Relationship a rdfs:Class .
+relationship:Relationship rdfs:label "Relationship"@en .
+relationship:Relationship skos:definition "A particular type of connection existing between people related to or having dealings with each other."@en .
+relationship:Relationship rdfs:isDefinedBy relationship: .
+relationship:participantIn a rdf:Property .
+relationship:participantIn rdfs:label "Participant In"@en .
+relationship:participantIn rdfs:domain foaf:Person .
+relationship:participantIn rdfs:range relationship:Relationship .
+relationship:participantIn rdfs:isDefinedBy relationship: .
+relationship:participantIn skos:historyNote _:autos47 .
+_:autos47 rdf:value "Removed assertion that this property is a sub-property of foaf:knows." .
+_:autos47 dc:date "2010-02-09" .
+_:autos47 dc:creator "Ian Davis" .
+relationship:participant a rdf:Property .
+relationship:participant rdfs:label "Participant"@en .
+relationship:participant rdfs:domain relationship:Relationship .
+relationship:participant rdfs:range foaf:Person .
+relationship:participant rdfs:isDefinedBy relationship: .
+relationship:participant skos:historyNote _:autos48 .
+_:autos48 rdf:value "Removed assertion that this property is a sub-property of foaf:knows." .
+_:autos48 dc:date "2010-02-09" .
+_:autos48 dc:creator "Ian Davis" .
+relationship:influencedBy a rdf:Property .
+relationship:influencedBy rdfs:label "Influenced By"@en .
+relationship:influencedBy skos:definition "a person who has influenced this person."@en .
+relationship:influencedBy rdfs:domain foaf:Person .
+relationship:influencedBy rdfs:range foaf:Person .
+relationship:influencedBy rdfs:isDefinedBy relationship: .
+relationship:influencedBy skos:historyNote _:autos49 .
+_:autos49 rdf:value "Removed assertion that this property is a sub-property of foaf:knows due to reciprocity requirements. It is possible for one to be influenced by another by reputation without that person knowing the first." .
+_:autos49 dc:date "2010-02-09" .
+_:autos49 dc:creator "Ian Davis" .
+relationship:influencedBy rdfs:subPropertyOf owl:differentFrom .
+relationship:influencedBy skos:historyNote _:autos50 .
+_:autos50 rdf:value "Asserted that this property is a sub-property of owl:differentFrom, indicating that this is a relationship between different individuals" .
+_:autos50 dc:date "2010-02-09" .
+_:autos50 dc:creator "Ian Davis" .
+<http://purl.org/vocab/relationship/examples/1> a ov:SchemaExample .
+<http://purl.org/vocab/relationship/examples/1> rdfs:label "Using With FOAF" .
+<http://purl.org/vocab/relationship/examples/1> rdfs:comment """<p>The RELATIONSHIP vocabulary can be used without modification with <a href=\"http://xmlns.com/foaf/0.1/\">FOAF</a> documents. Simply replace <code>foaf:knows</code> properties with a more specific property from this vocabulary. For backwards compatibility with older, non-RDF aware,  tools, you may want to keep the <code>foaf:knows</code> property as well.</p><pre><code class=\"xml\">
+&lt;rdf:RDF
+      xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"
+      xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"
+      xmlns:foaf=\"http://xmlns.com/foaf/0.1/\"
+      xmlns:rel=\"http://purl.org/vocab/relationship/\"
+      &gt;
+
+  &lt;foaf:Person rdf:nodeID=\"ian\"&gt;
+    &lt;foaf:name&gt;Ian Davis&lt;/foaf:name&gt;
+    &lt;foaf:title&gt;Mr&lt;/foaf:title&gt;
+    &lt;foaf:firstName&gt;Ian&lt;/foaf:firstName&gt;
+    &lt;foaf:surname&gt;Davis&lt;/foaf:surname&gt;
+
+    &lt;rel:hasMet&gt;
+      &lt;foaf:Person&gt;
+        &lt;foaf:name&gt;William Tell&lt;/foaf:name&gt;
+      &lt;/foaf:Person&gt;
+    &lt;/rel:hasMet&gt;
+
+    &lt;rel:collaboratesWith rdf:nodeID=\"eric\"/&gt;
+  &lt;/foaf:Person&gt;
+
+  &lt;foaf:Person rdf:nodeID=\"eric\"&gt;
+    &lt;foaf:nick&gt;pixel&lt;/foaf:nick&gt;
+  &lt;/foaf:Person&gt;
+
+
+
+&lt;/rdf:RDF&gt;
+</code></pre>"""^^rdf:XMLLiteral .
+<http://purl.org/vocab/relationship/examples/2> a ov:SchemaExample .
+<http://purl.org/vocab/relationship/examples/2> rdfs:label "Using With HTML and XHTML" .
+<http://purl.org/vocab/relationship/examples/2> rdfs:comment """<p>
+
+      The relationship vocabulary can be used to describe relationships with the people linked from a web page. This is particularly useful for blogrolls or contact lists but can be used with any type of link. The HTML <code>a</code> element provides two attributes, <a href=\"http://www.w3.org/TR/html401/struct/links.html#adef-rel\">rel and rev</a>, that can be used to specify the relationship. Both <code>rel</code> and <code>rev</code> take a space separated list of keywords as their value. To use a term from the relationship vocabulary just drop the <code>http://purl.org/vocab/relationship/</code> namespace to leave the property name, e.g. <code>http://purl.org/vocab/relationship/worksWith</code> would become <code>worksWith</code> which can be added as the value of <code>rel</code> or <code>rev</code>.
+    </p><dl><dt><code>rel</code></dt><dd><p>
+          The <code>rel</code> attribute specifies a relationship that the author of the <em>linked</em> page has with the author of the <em>linking</em> page.
+          For example:
+        </p><pre><code><span class=\"elem\">&lt;a</span><span class=\"attr\">href</span>=\"<span class=\"attrVal\">http://example.com/boats</span>\" <span class=\"attr highlight\">rel</span>=\"<span class=\"attrVal\">childOf</span>\"<span class=\"elem\">&gt;</span><span class=\"text\">The boat we restored</span><span class=\"elem\">\"&lt;/a&gt;</span></code></pre><p>This link states that the author of <code>http://example.com/boats</code> is a child of the author of the html above. </p></dd><dt><code>rev</code></dt><dd><p>
+          The <code>rev</code> attribute specifies a relationship that the author of the <em>linking</em> page has with the author of the   <em>linked</em> page. The example here is:
+        </p><pre><code><span class=\"elem\">&lt;a</span><span class=\"attr\">href</span>=\"<span class=\"attrVal\">http://example.com/boats</span>\" <span class=\"attr highlight\">rev</span>=\"<span class=\"attrVal\">childOf</span>\"<span class=\"elem\">&gt;</span><span class=\"text\">The boat we restored</span><span class=\"elem\">\"&lt;/a&gt;</span></code></pre><p>In this case the meaning of the link is reversed: the author of the html above is a child of the author of <code>http://example.com/boats</code>.</p></dd></dl><p>The HTML and XHTML recommendations require an HTML document to declare a custom profile if it uses any non-standard <code>rel</code> or <code>rev</code> types. This is done by adding a <code>profile</code> attribute with a value of <code>http://purl.org/vocab/relationship/</code> to the document's <code>head</code> element. </p><pre><code>  &lt;head profile=\"http://purl.org/vocab/relationship/\"&gt;
+    &lt;title&gt;People I Know&lt;/title&gt;
+  &lt;/head&gt;</code></pre><h3>Complete Example</h3><pre><code>  &lt;html profile=\"http://purl.org/vocab/relationship/\"&gt;
+    &lt;head&gt;
+      &lt;title&gt;People I Know&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;p&gt;Here are the people I know:&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=\"http://example.com/~freddy\" rel=\"closeFriendOf\"&gt;Freddy (he's cool!)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=\"http://frooble.com/\" rel=\"mentorOf\"&gt;Jimbo&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=\"http://mmmm.com/klm\" rel=\"friendOf\"&gt;Katie&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=\"http://example.com/~omah\" rel=\"worksWith\"&gt;Omah (does the coding)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=\"http://example.com/~jason\" rev=\"closeFriendOf employedBy\"&gt;Jason, my henchman&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre><h3>RDF Interpretation</h3><p>Custom parsers that extract RDF from (X)HTML can use the relationships expressed in the links to infer the
+  equivilent RDF triples. It should be remembered that the relationship is between the authors of the pages not between
+  the pages themselves. Given the following link on a document at <code>http://example.com/mypage.html</code>:
+  </p><pre><code><span class=\"elem\">&lt;a</span><span class=\"attr\">href</span>=\"<span class=\"attrVal\">http://example.com/boats</span>\" <span class=\"attr highlight\">rel</span>=\"<span class=\"attrVal\">childOf</span>\"<span class=\"elem\">&gt;</span><span class=\"text\">The boat we restored</span><span class=\"elem\">\"&lt;/a&gt;</span></code></pre><p>a suggested RDF extraction is:</p><pre><code>  &lt;foaf:Person&gt;
+    &lt;foaf:maker rdf:resource=\"http://example.com/boats\"/&gt;
+    &lt;rel:childOf&gt;
+      &lt;foaf:Person&gt;
+        &lt;foaf:maker rdf:resource=\"http://example.com/mypage.html\"/&gt;
+      &lt;/foaf:Person&gt;
+    &lt;/rel:childOf&gt;
+  &lt;/foaf:Person&gt;</code></pre>"""^^rdf:XMLLiteral .

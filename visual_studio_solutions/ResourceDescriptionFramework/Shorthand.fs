@@ -199,7 +199,7 @@ module Shorthand =
                     member this._nodeFromGraph(g: IGraph) = this.iri._nodeFromGraph g
                     member this._namespaceNode = this.iri._namespaceNode
                     member this._node = this.iri._node
-                    member this._prefix(localName: string) = this.iri._prefix localName
+                    member this._prefix(localName: string) = this.iri._prefix (localName.Replace(" ", "_"))
         let inhabitant(iri:Communication.Internet.Standard.Resource.Identifier.Internationalized.Type)(filePath : string) = 
             
             let dir = Path.GetDirectoryName(filePath)
