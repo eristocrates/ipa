@@ -18,6 +18,8 @@
 		<PackageReference Include="Catalyst" Version="1.0.63843" />
 		<PackageReference Include="Catalyst.Models.English" Version="1.0.30952" />
 		<PackageReference Include="ClosedXML" Version="0.105.0" />
+		<PackageReference Include="Fabulous.AST" Version="1.10.0" />
+		<PackageReference Include="Fabulous.AST.Json" Version="2.0.0-pre06" />
 		<PackageReference Include="FParsec" Version="1.1.1" />
 		<PackageReference Include="FSharp.Data" Version="6.6.0" />
 		<PackageReference Include="FSharp.Data.SqlClient" Version="2.1.3" />
