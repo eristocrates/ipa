@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <input type="file" id="pdfInput" multiple accept=".pdf">
+  <button onclick="processPDFs()">Extract Text</button>
+  <div id="results"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+
+    async function processPDFs() {
+      const files = document.getElementById('pdfInput').files;
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+      
+      for (let file of files) {
+        try {
+          const reader = new FileReader();
+          reader.onload = async function(e) {
+            const typedArray = new Uint8Array(e.target.result);
+            const pdf = await pdfjsLib.getDocument(typedArray).promise;
+            let text = '';
+            
+            for (let i = 1; i <= pdf.numPages; i++) {
+              const page = await pdf.getPage(i);
+              const content = await page.getTextContent();
+              text += content.items.map(item => item.str).join(' ') + '\n';
+            }
+            
+            const blob = new Blob([text], {type: 'text/plain'});
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = file.name.replace('.pdf', '.txt');
+            link.click();
+            
+            resultsDiv.innerHTML += `<p>Processed: ${file.name}</p>`;
+          };
+          reader.readAsArrayBuffer(file);
+        } catch (err) {
+          resultsDiv.innerHTML += `<p style="color:red">Error with ${file.name}: ${err}</p>`;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

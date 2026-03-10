@@ -1,3 +1,4 @@
+#r @"C:\Repositories\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
 #r "nuget: dotNetRdf"
 #r "nuget: Iride"
 #r "nuget: Fantomas.Core"
@@ -140,12 +141,6 @@ File.WriteAllLines(Path.Combine(outputDirectory, "unmatchedTokens.txt"), unmatch
 File.WriteAllLines(Path.Combine(outputDirectory, "fullUris.txt"), (fullUriStrings |> Seq.distinct))
 // File.WriteAllLines(Path.Combine(outputDirectory, "prefixedNames.txt"), (prefixedNames |> Seq.distinct))
 
-let code =
-    Oak() { AnonymousModule() { Value("x", Int(42)) } }
-    |> Gen.mkOak
-    |> Gen.run
-
-File.WriteAllText(Path.Combine(outputDirectory, "codegen.txt"), code)
 
 let prefixIdFromPrefixLabel: Map<string, PrefixID> =
     prefixIds
@@ -172,27 +167,69 @@ let localNamesFromPrefixLabel: Map<string, Set<string>> =
     |> Map.ofSeq
 
 
-fullUriStrings
+let sanatizeIdentifier (rawIdentifier: string) =
+    if SharedKernel.InvalidFSharpIdentifier.reservedKeywordSet.Contains rawIdentifier then
+        let backtickableName =
+            rawIdentifier
+                // .Replace('.', '_')
+                .Replace('+', '_')
+                .Replace('$', '_')
+                .Replace('&', '_')
+                .Replace('[', '_')
+                .Replace(']', '_')
+                .Replace('/', '_')
+                .Replace('\\', '_')
+                .Replace('*', '_')
+                .Replace('\"', '_')
+                .Replace('`', '_')
 
-prefixIds
+        $"``{backtickableName}``"
+    else
+        rawIdentifier
 
-prefixedNames[0].prefixIdLabel
-prefixIdFromPrefixLabel.TryFind prefixedNames[0].prefixIdLabel
+module identifier =
+    let prefixIdLabel = "prefixIdLabel"
+    let prefixIriReference = "prefixIriReference"
+    let localName = "localName"
 
-// TODO test emitting a file per label
-let codeGenLines =
-    localNamesFromPrefixLabel
-    |> Map.map (fun prefixIdLabel localNames ->
+localNamesFromPrefixLabel
+|> Map.iter (fun prefixIdLabel localNames ->
+    let content =
         Oak() {
-            Namespace("ResourceDescriptionFramework.Vocabulary") {
-                Module(prefixIdLabel) {
 
-                    // Emit one Value per localName into the module body
+            Namespace($"ResourceDescriptionFramework.{prefixIdLabel}.Namespace") {
+                TypeDefn((sanatizeIdentifier prefixIdLabel)) {
+                    let iriReference =
+                        match prefixIdFromPrefixLabel.TryFind prefixIdLabel with
+                        | prefixId when prefixId.IsSome -> prefixId.Value.uriString
+
+                    Member("_namespaceUriString", String(iriReference))
+                        .toStatic ()
+
+                    Member("_remoteFileUriString", String("http://www.w3.org/1999/02/22-rdf-syntax-ns#"))
+                        .toStatic ()
+
+                    Member("_namespacePrefixLabel", String(prefixIdLabel))
+                        .toStatic ()
+
+                    Member("_localFileUriString", String("http://www.w3.org/1999/02/22-rdf-syntax-ns#"))
+                        .toStatic ()
+
+
+
                     for localName in localNames do
-                        Value(localName, String($"{prefixIdLabel}:{localName}"))
 
+
+                        Member((sanatizeIdentifier localName), String localName)
+                            .toStatic ()
                 }
             }
         }
         |> Gen.mkOak
-        |> Gen.run)
+        |> Gen.run
+
+    File.WriteAllText(Path.Combine(outputDirectory, $"{prefixIdLabel}.fs"), content)
+
+)
+
+prefixIds
