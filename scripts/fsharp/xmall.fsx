@@ -4,6 +4,7 @@ open ProcessExecution
 open System
 open System.IO
 
+
 module java =
     let filePath = @"C:\shim\java.bat"
 
@@ -55,7 +56,7 @@ module dtdanalyzer =
         let inputFileName = Path.GetFileName inputFilePath
         let outputFilePath = Path.Combine(outputDirectoryPath, $"{inputFileName}.xml")
 
-        executeProcess filePath $"""{inputFilePath} {outputFilePath}"""
+        executeProcess filePath $""" "{inputFilePath}" "{outputFilePath}" """
         |> ignore
 (*
     Usage:  dtdschematron {[-s] <system-id> | -d <xml-file> | -p <public-id>} [-f]
@@ -108,7 +109,7 @@ module dtdschematron =
         let outputFilePath = Path.Combine(outputDirectoryPath, $"{inputFileName}.sch")
 
 
-        executeProcess filePath $"""-f {inputFilePath} {outputFilePath}"""
+        executeProcess filePath $"""-f "{inputFilePath}" "{outputFilePath}" """
         |> ignore
 
 
@@ -152,8 +153,8 @@ module trang =
 
         executeProcess
             java.filePath
-            $"""-jar {filePath} -{InputModule.flag} {inputFileExtension.ToString()} -{OutputModule.flag} {outputFileExtension.ToString()} {inputFilePath} {outputFilePath}"""
-        |> ignore
+            $"""-jar {filePath} -{InputModule.flag} {inputFileExtension.ToString()} -{OutputModule.flag} {outputFileExtension.ToString()} "{inputFilePath}" "{outputFilePath}" """
+        |> Console.WriteLine
 
         if outputFileExtension = OutputModule.dtd then
             dtdanalyzer.command outputFilePath outputDirectoryPath
@@ -161,15 +162,7 @@ module trang =
 
 
 
-let anchorDirectory =
-    @"D:\Surface\United_States_Government\County\Leon\Management_Information_Systems\Infor\Documentation\IPS_Reference_Guide_2025_04_01"
 
-
-let testInput =
-    @"D:\Surface\United_States_Government\County\Leon\Management_Information_Systems\Infor\Servers\InforProd\D\www\production\operations\Config\Monikers\Monikers_debug.config"
-
-let testOutputDirectory =
-    $"""D:\Artifact\Infor\Public_Sector\2025_04_01\Business_Layer"""
 
 let xmall (inputFilePath: string) (outputDirectory: string) =
     let fileExtension =
@@ -180,51 +173,88 @@ let xmall (inputFilePath: string) (outputDirectory: string) =
         | "rnc" -> trang.InputModule.rnc
         | "dtd" -> trang.InputModule.dtd
         | "xml"
+        | "Xml"
         | "config"
         | "wsdl"
         | "asmx"
+        | "aspx"
 
          -> trang.InputModule.xml
         | _ -> failwith $"{inputExtension} is not a known fileExtension"
 
     trang.OutputModule.all
     |> Array.Parallel.iter (fun outputFileExtension ->
-        trang.command fileExtension outputFileExtension testInput outputDirectory
+        trang.command fileExtension outputFileExtension inputFilePath outputDirectory
         |> ignore
 
     )
 
-xmall testInput testOutputDirectory
-
-let chmFilePaths =
-    Directory.EnumerateFiles(anchorDirectory, "*.chm", SearchOption.AllDirectories)
 
 
+module IPS_2025_04_01 =
+    let inputRootDirectoryPath =
+        @"D:\Surface\United_States_Government\County\Leon\Management_Information_Systems\Infor\Servers\InforProd\D\Downloads\IPS_2025_04_01"
 
-chmFilePaths
-|> Seq.iter (fun chmFilePath ->
+    let outputRootDirectoryPath =
+        $"""D:\Artifact\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\Files\IPS_2025_04_01"""
 
-    printfn "Opening: %s" chmFilePath
+    let xmlFilePaths =
+        Directory.EnumerateFiles(inputRootDirectoryPath, "*.xml", SearchOption.AllDirectories)
+        |> List.ofSeq
+
+    let configFilePaths =
+        Directory.EnumerateFiles(inputRootDirectoryPath, "*.config", SearchOption.AllDirectories)
+        |> List.ofSeq
+
+    let aspxFilePaths =
+        Directory.EnumerateFiles(inputRootDirectoryPath, "*.aspx", SearchOption.AllDirectories)
+        |> List.ofSeq
+
+    let inputFilePaths =
+        xmlFilePaths @ configFilePaths @ aspxFilePaths
+        |> Array.ofList
+
+    inputFilePaths
+    |> Array.Parallel.iter (fun inputFilePath ->
+
+        let outputDirectoryPath =
+            inputFilePath.Replace(inputRootDirectoryPath, outputRootDirectoryPath)
+
+        xmall inputFilePath outputDirectoryPath
+
+    )
 
 
+module IPS_Web_Services_2025_04_01 =
+    let inputRootDirectoryPath =
+        @"D:\Surface\United_States_Government\County\Leon\Management_Information_Systems\Infor\Servers\InforProd\D\Downloads\IPS_Web_Services_2025_04_01"
 
-    let chmDirectoryPath = (Directory.GetParent chmFilePath).FullName
-    let chmFileStem = Path.GetFileNameWithoutExtension chmFilePath
-    let outputDirectoryPath = Path.Combine(chmDirectoryPath, chmFileStem)
+    let outputRootDirectoryPath =
+        $"""D:\Artifact\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\Files\IPS_Web_Services_2025_04_01"""
+
+    let xmlFilePaths =
+        Directory.EnumerateFiles(inputRootDirectoryPath, "*.xml", SearchOption.AllDirectories)
+        |> List.ofSeq
+
+    let configFilePaths =
+        Directory.EnumerateFiles(inputRootDirectoryPath, "*.config", SearchOption.AllDirectories)
+        |> List.ofSeq
+
+    let wsdlFilePaths =
+        Directory.EnumerateFiles(inputRootDirectoryPath, "*.wsdl", SearchOption.AllDirectories)
+        |> List.ofSeq
 
 
+    let inputFilePaths =
+        xmlFilePaths @ configFilePaths @ wsdlFilePaths
+        |> Array.ofList
 
-    if not (Directory.Exists outputDirectoryPath) then
-        Directory.CreateDirectory(outputDirectoryPath)
-        |> ignore
+    inputFilePaths
+    |> Array.Parallel.iter (fun inputFilePath ->
 
+        let outputDirectoryPath =
+            inputFilePath.Replace(inputRootDirectoryPath, outputRootDirectoryPath)
 
+        xmall inputFilePath outputDirectoryPath
 
-    // Example usage:
-    executeProcess "hh" $"-decompile {outputDirectoryPath} {chmFilePath}"
-    |> ignore
-
-
-)
-// TODO rename files based on contents (.hhc), index (.hhk), topic (.html)
-// https://learn.microsoft.com/en-us/previous-versions/windows/desktop/htmlhelp/about-the-html-help-compiler
+    )

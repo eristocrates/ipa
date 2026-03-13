@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Solution>
+    <Project Path="Core_Rules/Core_Rules.fsproj"></Project>
+    <Project Path="ABNF/ABNF.fsproj"></Project>
+</Solution>

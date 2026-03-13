@@ -6,6 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Include="test.fsx" />
 		<None Include="TypeProviderTest.fsx" />
 		<Compile Include="Communication.fs" />
 		<Compile Include="Vocabulary/**/*.fs" />

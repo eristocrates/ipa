@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Actor_Ramshackle.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetConfig" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="10.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Parser_Combinator\Initialization\Initialization.fsproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,8 +1,5 @@
 <Solution>
-  <Project Path="visual_studio_solutions/control/Management/Management.fsproj" Id="2afbe69d-e3a2-4950-9b47-b49d89bea234" />
-  <Project Path="visual_studio_solutions/Pdf/Pdf.fsproj" Id="4ea7535c-b580-4378-8ace-da9081f907bf" />
-  <Project Path="visual_studio_solutions/ResourceDescriptionFramework/ResourceDescriptionFramework.fsproj" />
-  <Project Path="visual_studio_solutions/rhythm_games/arcaea/arcaea.fsproj" Id="a2f706d2-cd74-4734-9f41-9486237164e2" />
-  <Project Path="visual_studio_solutions/rhythm_games/infalsus/infalsus.fsproj" Id="883f39d7-2e18-4a28-b692-a7ee96f2d507" />
-  <Project Path="visual_studio_solutions/shared_kernel/shared_kernel.fsproj" />
+  <Project Path="MSBuild/Project/Actor_Ramshackle/Actor_Ramshackle.fsproj" Id="d67d32c0-9ef8-4e50-9cff-c744ad8b8852" />
+  <Project Path="MSBuild/Project/Computer_Storage/Computer_Storage.fsproj" />
+  <Project Path="MSBuild/Project/Parser_Combinator/Initialization/Initialization.fsproj" />
 </Solution>
