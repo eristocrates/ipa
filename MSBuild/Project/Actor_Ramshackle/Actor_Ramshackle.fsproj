@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Parser_Combinator\Initialization\Initialization.fsproj" />
+    <ProjectReference Include="..\Parser_Combinator\Parser_Combinator.fsproj" />
   </ItemGroup>
 
 </Project>

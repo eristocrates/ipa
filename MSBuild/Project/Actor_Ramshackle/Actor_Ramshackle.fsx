@@ -1,11 +1,14 @@
-﻿
+﻿#r "nuget: Microsoft.Extensions.FileSystemGlobbing"
+#r "nuget: FParsec"
+#r "nuget: DotNetConfig"
+#load @"C:\Repositories\eristocrates\ipa\MSBuild\Project\Parser_Combinator\Initialization\Initialization.fsx"
+
 open System
 open System.IO
 open Computer_Storage
 open Initialization
 
 // https://www.mythicsoft.com/agentransack/
-
 
 
 [<RequireQualifiedAccess>]
@@ -37,7 +40,6 @@ let config_file_stream = Parser_Combinator.Input_Stream.file config_file
 let result = Parser_Combinator.apply_parser Ini.parser config_file_stream ()
 let term = result.output.Value[2]
 
-
 let parser_outcomes =
     config_files
     |> Array.Parallel.map (fun config_file ->
@@ -47,25 +49,23 @@ let parser_outcomes =
 
     )
 
-let terms = 
+let terms =
     parser_outcomes
-    |> Array.Parallel.filter (fun parser_outcome -> parser_outcome.output.IsSome )
-    |> Array.Parallel.collect(fun parser_outcome -> parser_outcome.output.Value |> Array.ofList)
+    |> Array.Parallel.filter (fun parser_outcome -> parser_outcome.output.IsSome)
+    |> Array.Parallel.collect (fun parser_outcome -> parser_outcome.output.Value |> Array.ofList)
 
-let keys = 
+let keys =
     terms
     |> Array.Parallel.filter (fun term -> term.IsKey)
-    |> Array.Parallel.map (fun term -> 
-                match term with
-                | Ini.Term.Key key -> key
-                | _ -> failwith "Nonkey term encountered after filter"
+    |> Array.Parallel.map (fun term ->
+        match term with
+        | Ini.Term.Key key -> key
+        | _ -> failwith "Nonkey term encountered after filter"
 
-    
+
     )
 
-let urls = 
+let urls =
     keys
     |> Array.Parallel.filter (fun key -> key.name = "url")
     |> Array.Parallel.map (fun key -> key.value)
-
-

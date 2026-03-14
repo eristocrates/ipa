@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="ini.fs" />
+    <Compile Include="Initialization.fs" />
   </ItemGroup>
 
   <ItemGroup>
