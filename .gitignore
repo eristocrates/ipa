@@ -6,6 +6,17 @@ secret/
 
 # ------------------------------------------------------------
 # GENERATED: ignores files >= 100 MiB
-# root: C:\Repositories\ipa
+# root: C:\Repositories\eristocrates\ipa
 # ------------------------------------------------------------
-# (no files met or exceeded the threshold)
+Application/VSCodium/VSCodium-win32-x64-1.112.01855-insider/VSCodium - Insiders.exe
+Language/Java/jdk-15/lib/modules
+Language/Java/jdk-17.0.2/lib/modules
+Language/Java/shj/lib/modules
+Language/Rdf/Owl/owlapi/.git/objects/pack/pack-f625ab40efa82cf5d2cc863eae8247ca82248dc3.pack
+Language/Rdf/Rml/RMLStreamer-v2.5.0-standalone.jar
+Language/Rdf/Rml/rmlmapper-8.1.0-r380-all.jar
+Language/Rdf/Sparql/sparql-anything-server-v1.1.0-geosparql.jar
+Language/Rdf/Sparql/sparql-anything-server-v1.1.0.jar
+Language/Rdf/Sparql/sparql-anything-v1.1.0-geosparql.jar
+Language/Rdf/Sparql/sparql-anything-v1.1.0.jar
+Language/Xml/basex/Basex122/data/LCPW_OverlayStormwaterInfrastructure_D_WM.merged/tbl.basex
