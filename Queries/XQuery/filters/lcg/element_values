@@ -1,0 +1,109 @@
+WorkspaceType | esriLocalDatabaseWorkspace
+DomainName | dDomainMaterial | dDomainBoolean | dDomainPRResolution
+FieldType | esriFieldTypeString | esriFieldTypeSmallInteger
+MergePolicy | esriMPTDefaultValue
+SplitPolicy | esriSPTDuplicate | esriSPTDefaultValue
+Name | Junction_fixed | OBJECTID | Sidebank
+Code | Removed | TancigM | Concrete Box Culvert
+Description | Structure Type | Outfall Type
+CatalogPath | /FD=DrainageNonNetwork/FC=PollutionControlBox | /FD=DrainageNonNetwork/FC=Outfall_DrainageArea_MS4 | /FD=DrainageNetwork/FC=EndPoint
+itemName | Outfall_DrainageArea | LCPW.Outfall_DrainageArea_MOF | CulvertCrossDrain
+itemType | Relationship | Feature Class
+linkage | file://\\P-GIS-71483\D\AGS_Support\LocalData\LCG_Stormwater_Inventory.gdb | file://\\NAS1\ServerData\Active Projects\5750-001.02 Leon County Storm Water GIS Project\Submittal\Survey\OSM_Pond_Submittal_02\Leon_Ponds_Deliverable.gdb | Server=cotgeo.gis.local; Service=5156; User=pwoper; Version=PWOPER.Geoconnect_Production
+protocol | ArcSDE Connection | Local Area Network
+type | Projected
+geogcsn | GCS_North_American_1983_HARN
+csUnits | Linear Unit: Foot_US (0.304801)
+projcsn | NAD_1983_HARN_StatePlane_Florida_North_FIPS_0903_Feet
+envirDesc | Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; Esri ArcGIS 10.2.2.3552 | Microsoft Windows 10 Version 10.0 (Build 18363) ; Esri ArcGIS 12.7.0.26828 | Version 6.2 (Build 9200) ; Esri ArcGIS 10.5.0.6491
+resTitle | Connectivity | DebrisTrap | LCPW.LCPW_MediaPointsMissingPhotos
+formatName | File Geodatabase Feature Class | File Geodatabase Feature Dataset | Enterprise Geodatabase Feature Class
+mdHrLvName | dataset
+idCodeSpace | EPSG
+idVersion | 8.9.3(9.0.0) | 6.3(9.0.0)
+efeatyp | Simple
+title | PWOPER.Outfall | Interference | PWOPER.Ditch
+geoform | vector digital data
+pubplace | City of Tallahassee
+publish | Underground Utilities Water Resources Engineering Stormwater Management Division
+onlink | http://www.esri.com/metadata/esriprof80.html | Server=cotgeo; Service=5156; User=pwoper; Version=SDE.DEFAULT | Server=cotgeo.gis.local; Service=5156; User=pwoper; Version=PWOPER.Geoconnect_Production
+ftname | StormwaterPondDischarge | PWOPER.Outfall | DebrisTrap
+abstract | A cylindrical or cube-shaped structure located below the surface grade. Serves as a connector for merging laterals, inlets, and endpoints from different directions and elevations. Most often accessed through a manhole. | Filtration device that separates debris from stormwater. This is usually an asset related to the closed system and is pre-fabricated in nature. | A small open channel, trench, or structure designed to collect and carry stormwater runoff.
+purpose | Defines feature to the existing City of Tallahassee Stormwater system for mapping and analysis purposes.
+langdata | en
+current | Data is current as of the last update.
+progress | Complete
+update | As needed
+themekey | Stormwater Ditch | Ditch Point | Stormwater Pond Discharge Structure
+placekey | City of Tallahassee, Florida
+cntorg | Underground Utilities Water Resources Engineering Stormwater Management Division
+addrtype | mailing address
+address | 300 S. Adams Street, | Box B-35 | 300 S. Adams Street
+city | Tallahassee
+state | Florida
+cntvoice | (850) 891- 6860 | (850) 891- 6860.
+hours | 8:00 to 5:00 M-F Eastern Standard Time
+native | Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.4000 | Microsoft Windows Vista Version 6.1 (Build 7601) Service Pack 1; ESRI ArcCatalog 9.3.1.4089 | Microsoft Windows Vista Version 6.1 (Build 7600) ; ESRI ArcCatalog 9.3.1.3500
+natvform | File Geodatabase Feature Class | SDE Feature Class
+procdesc | Dataset copied. | Metadata imported.
+srcused | \\edbwin\edb\cotiss\Elizabeth\COT Storm\COT_Storm_New.mdb | \\edbwin\edb\CityStorm\Data\NEW\STORM.gdb | C:\Projects\Tallahassee\FINAL\WAccessManhole.xml
+direct | Vector
+plance | coordinate pair
+plandu | survey feet
+horizdn | D_North_American_1983_HARN
+ellips | Geodetic Reference System 80
+altenc | Explicit elevation coordinate included with horizontal coordinates
+enttypl | LCPW.MediaPoints | Outfall_DrainageArea | Ditch_Has_Interference
+enttypt | Feature Class | Relationship
+attrlabl | InventoryDate | Raw_Name | Source
+attrdef | Length of feature in internal units. | Area of feature in internal units squared. | Internal feature number.
+attrdefs | Esri | ESRI
+udom | Positive real numbers that are automatically generated. | Coordinates defining the features. | Sequential unique whole numbers that are automatically generated.
+attalias | InventoryType | ACREAGE | WBID
+attrtype | GlobalID | Double | Date
+stname | Endpoint_Not Assessed | UndergroundConnetion | MiterEnd
+stfldnm | OWNER | MATERIAL | FILTERLOCATION
+domname | dDomainPipeShape | dDomainSource | dDomainBoolean
+domtype | Coded Value
+mrgtype | Default value
+splttype | Default value | Duplicate
+domfldtp | SmallInteger | String
+stflddv | SR | RND | Yes
+resdesc | Downloadable Data
+cntper | City of Tallahassee
+metstdn | FGDC Content Standards for Digital Geospatial Metadata
+metstdv | FGDC-STD-001-1998
+mettc | local time
+metprof | ESRI Metadata Profile
+langmeta | en
+ArcGISstyle | North American Profile of ISO19115 2003
+mdStanName | ISO 19115 Geographic Information - Metadata
+mdStanVer | DIS_ESRI1.0
+identCode | NAD_1983_HARN_StatePlane_Florida_North_FIPS_0903_Feet
+CarteAssociation | cart10g_-111438643
+Version | PWOPER.Geoconnect_Production
+DatasetType | esriDTRelationshipClass | esriDTFeatureDataset | esriDTFeatureClass
+OIDFieldName | OBJECTID
+Type | esriFieldTypeString | esriFieldTypeSmallInteger | esriFieldTypeGlobalID
+AliasName | ACTIVITY | Easting | Enabled
+ModelName | Filter | UPSTREAM_ELEV | DRAINAGE_AREA
+GeometryType | esriGeometryPolyline | esriGeometryPoint | esriGeometryPolygon
+CLSID | {52353152-891A-11D0-BEC6-00805F7C4268}
+GlobalIDFieldName | GLOBALID
+SubtypeFieldName | SubtypeField | SUBTYPEFIELD
+SubtypeName | Outfall | Grate | FlowLine
+FieldName | NEEDSATTENTION | LIFECYCLE | FIELDCOMPLETE
+FeatureType | esriFTSimple
+ShapeType | esriGeometryPoint | esriGeometryPolygon | esriGeometryPolyline
+ShapeFieldName | SHAPE
+DefaultValue | NA | RND | COT
+LengthFieldName | SHAPE_Length
+Cardinality | esriRelCardinalityOneToMany
+Notification | esriRelNotificationNone
+KeyType | esriRelKeyTypeSingle
+ClassKey | esriRelClassKeyUndefined
+ForwardPathLabel | LCPW.MediaPoints
+BackwardPathLabel | LCPW.StormwaterPond
+ObjectKeyName | FACILITYID | HYD_ID
+KeyRole | esriRelKeyRoleOriginForeign | esriRelKeyRoleOriginPrimary
+AreaFieldName | SHAPE_Area

@@ -1,0 +1,13 @@
+  and not(matches($val, '^-?(\p{Nd}|[\.])+$'))
+  and not(matches($val, '^[\d\.]+e-\d{2}$'))
+  and not(matches($val, '^(true|false|nan)$', 'i'))
+  and not(contains($val, 'REQUIRED'))
+
+  and not(lower-case(local-name($t/..)) = ('pexml'
+  , 'useconst'
+  , 'wkt'
+  , 'layerfile'
+  , 'layerdefinitions'
+  , 'process'
+  , 'accconst'
+  ))

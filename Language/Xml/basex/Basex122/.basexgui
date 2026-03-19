@@ -1,0 +1,190 @@
+# Version
+UPDATEVERSION = 12.2
+CHECKUPDATES = false
+
+# Paths
+INPUTPATH = D:/Surface/Government/United_States/State/Florida/County/Leon/Geographic_Information_Systems/SDE_Schema_(X-Ray)/LCG_Stormwater_Inventory_updated/LCG_Stormwater_Inventory_Formatted.xml
+DATAPATH = C:/Repositories/eristocrates/ipa/Language/Xml/basex/Basex122/
+WORKPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/
+PROJECTPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/
+
+# Layout
+FONT = SansSerif
+MONOFONT = Consolas
+FONTSIZE = 15
+LISTMONO = true
+ANTIALIAS = System
+COLORRED = 0
+COLORGREEN = 17
+COLORBLUE = 17
+
+# Windows
+VIEWS = V H V H editor text - tree - folder plot - H map info table explore - - 
+GUISIZE0 = 1573
+GUISIZE1 = 909
+GUILOC0 = 10
+GUILOC1 = 10
+MAXSTATE = true
+SHOWBUTTONS = true
+SHOWINPUT = true
+SHOWSTATUS = true
+SHOWINFO = false
+SHOWMAP = false
+SHOWTABLE = false
+SHOWTEXT = true
+SHOWFOLDER = true
+SHOWEXPLORE = false
+SHOWPLOT = false
+SHOWEDITOR = true
+SHOWTREE = false
+SHOWPROJECT = true
+INDENTRESULT = true
+PREFTAB = 3
+LOOKANDFEEL = 
+LABELS = name,label,id
+SCROLLTABS = true
+MOUSEFOCUS = true
+XMLSUFFIXES = xml,xsd,svg,rdf,rss,rng,sch,xhtml
+ASCSORT = true
+CASESORT = true
+MERGEDUPL = false
+COLUMN = 1
+UNICODE = true
+SHOWMARGIN = true
+MARGIN = 80
+TABSPACES = true
+INDENT = 2
+SHOWINVISIBLE = true
+SHOWNL = false
+SHOWLINES = true
+MARKLINE = true
+SAVERUN = false
+PARSEPROJ = true
+AUTO = false
+FILES = *.xml, *.xq*, *.xlst,*.wsdl
+SHOWHIDDEN = false
+SEARCHMODE = 1
+FILTERRT = false
+EXECRT = false
+DBNAME = LCG_Stormwater_Inventory_Formatted
+LASTINSERT = 1
+
+# Visualizations
+MAPATTS = true
+MAPOFFSETS = 2
+MAPALGO = 4
+MAPWEIGHT = 0
+TREESLIM = true
+TREEATTS = true
+PLOTDOTS = 0
+PLOTXLOG = false
+PLOTYLOG = false
+MAXTEXT = 8388608
+MAXRESULTS = 500000
+
+# Search
+SEARCHED = 20
+SEARCHED1 = type
+SEARCHED2 = true
+SEARCHED3 = "'"
+SEARCHED4 = flapgate
+SEARCHED5 = LegacyID
+SEARCHED6 = test
+SEARCHED7 = Some
+SEARCHED8 = required = true
+SEARCHED9 = required = fa
+SEARCHED10 = inlet
+SEARCHED11 = N_A
+SEARCHED12 = inacces
+SEARCHED13 = FilterType
+SEARCHED14 = enabled
+SEARCHED15 = boolean
+SEARCHED16 = &lt;
+SEARCHED17 = peXml
+SEARCHED18 = &lt;/metadata&
+SEARCHED19 = Process ToolSource="c:\program files\arcgis\pro\Resources\ArcToolbox\Toolboxes\Data Management Tools.tbx\UpdateSchema"
+SEARCHED20 = <pexml
+REPLACED = 0
+
+# History
+COMMANDS = 0
+SEARCH = 17
+SEARCH1 = //Field/
+SEARCH2 = //Field
+SEARCH3 = //FieldInfos
+SEARCH4 = //DomainName[text() = "dDomainInventoryType"]
+SEARCH5 = //DomainName[text() = "
+SEARCH6 = //DomainName[
+SEARCH7 = //XmlDoc
+SEARCH8 = //
+SEARCH9 = esri:Workspace/WorkspaceDefinition/Domains
+SEARCH10 = //XmlDoc[1]
+SEARCH11 = //XmlDoc[1][1]
+SEARCH12 = //XmlDoc[0]/text()
+SEARCH13 = //XmlDoc[0]
+SEARCH14 = //layers/_/name/text()
+SEARCH15 = //layers/_/name/text
+SEARCH16 = //layers
+SEARCH17 = //count
+XQUERY = 11
+XQUERY1 = //systemLicense[1]/@name/
+XQUERY2 = fn:local-name(//systemLicense[1]/@name)
+XQUERY3 = name(//systemLicense[1]/@name)
+XQUERY4 = //systemLicense[1]/@name
+XQUERY5 = name(//systemLicense[1]/@name/)
+XQUERY6 = //systemLicense[1]/@name/type
+XQUERY7 = //systemLicense[1]/@name/type()
+XQUERY8 = type(//systemLicense[1]/@name)
+XQUERY9 = //systemLicense[1]
+XQUERY10 = //systemLicense
+XQUERY11 = //syste
+
+# Files
+EDITOR = 18
+EDITOR1 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/productFamily.xq
+EDITOR2 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/domainColumn.xq
+EDITOR3 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/systemLicense.xq
+EDITOR4 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/boolean-attributes.xq
+EDITOR5 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/types.xq
+EDITOR6 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/attribute_sample.xquery
+EDITOR7 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/attribute_top3.xquery
+EDITOR8 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/AssetTables-to-fsx.xq
+EDITOR9 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Datasets-to-fsx.xq
+EDITOR10 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Datasets-to-fsi.xq
+EDITOR11 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/FeatureClass-to-fsi.xq
+EDITOR12 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Fsharp-types.xq
+EDITOR13 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Fields.xq
+EDITOR14 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Layers.xq
+EDITOR15 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Domains.xq
+EDITOR16 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/asset-table-columns-by-product-family.xq
+EDITOR17 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/process-embedded-xml.xq
+EDITOR18 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/process-embedded-xml.xq
+INPUTS = 4
+INPUTS1 = D:/Surface/Government/United_States/State/Florida/County/Leon/Geographic_Information_Systems/SDE_Schema_(X-Ray)/LCG_Stormwater_Inventory_updated/LCG_Stormwater_Inventory_Formatted.xml
+INPUTS2 = D:\Surface\Government\United_States\State\Florida\County\Leon\Geographic_Information_Systems\SDE_Schema_(X-Ray)\LCG_Stormwater_Inventory_updated\LCG_Stormwater_Inventory.xml
+INPUTS3 = D:\Artifact\LCPW_OverlayStormwaterInfrastructure_D_WM.merged.json
+INPUTS4 = D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_2025_04_01\Deployment Files\MetaData\MetaData.xml
+OPEN = 16
+OPEN1 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Domains.xq
+OPEN2 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/asset-table-columns-by-product-family.xq
+OPEN3 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Layers.xq
+OPEN4 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Fields.xq
+OPEN5 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Fsharp-types.xq
+OPEN6 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Datasets-to-fsi.xq
+OPEN7 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/FeatureClass-to-fsi.xq
+OPEN8 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Datasets-to-fsx.xq
+OPEN9 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/AssetTables-to-fsx.xq
+OPEN10 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/productFamily.xq
+OPEN11 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/attribute_top3.xquery
+OPEN12 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/attribute_sample.xquery
+OPEN13 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/types.xq
+OPEN14 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/systemLicense.xq
+OPEN15 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/domainColumn.xq
+OPEN16 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/boolean-attributes.xq
+PROJECTS = 2
+PROJECTS1 = C:/Repositories/eristocrates/ipa/Queries/XQuery/
+PROJECTS2 = C:/Program Files/Microsoft Visual Studio/18/Professional/
+PROJFILES = 0
+PROJCONTS = 0
+
+# Local Options
