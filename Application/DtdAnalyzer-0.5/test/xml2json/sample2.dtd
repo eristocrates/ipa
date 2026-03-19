@@ -1,0 +1,129 @@
+<!--    
+  This is an example/test DTD for the XML-to-JSON features of the DtdAnalyzer.
+  This DTD tests some of the more complex features.
+-->
+<!-- ================================================================= -->
+
+<!--~~ !dtd
+~~json 
+  <json type='sample2' version='0.3'>
+    <config lcnames='true' />
+  </json>
+~~-->
+
+<!--~~ <Result>
+This is the root element for a response.  The following annotation
+changes the name of the main body portion of the returned JSON from 
+"result" to "response".
+~~ tags root
+~~ json <object key='response'/>
+~~-->
+
+<!ELEMENT Result ( 
+                   ( 
+                     ( ProblemFound,
+                       Count,
+                       ( IdList,
+                         TranslationSet,
+                         TranslationStack?
+                       )?
+                     ) 
+                     | ERROR
+                   ),
+                   ErrorList?
+                 )>
+
+<!--~~ <ProblemFound>
+This will be converted into a JSON boolean.
+~~json <boolean/>
+~~-->
+<!ELEMENT ProblemFound (#PCDATA)>
+
+<!--~~ <Count>
+This will be converted into a JSON number.
+~~json <number/>
+~~-->
+<!ELEMENT Count (#PCDATA)>
+
+<!-- Here we'll rely on the default behavior, which will turn
+  this into a JSON array. -->
+<!ELEMENT IdList (Id*)>
+
+<!--~~ <Id>
+An Id is a number.  These are put into JSON without quotes.
+~~json <number/>
+~~-->
+<!ELEMENT Id (#PCDATA)>
+
+<!-- Again, here we'll rely on the default behavior, which will 
+  turn this into a JSON array. -->
+<!ELEMENT TranslationSet (Translation*)>
+
+<!-- The default behavior for this turns it into a JSON object.  -->
+<!ELEMENT Translation (From, To)>
+
+<!-- Default here turns this into a JSON string.  -->
+<!ELEMENT From (#PCDATA)>
+
+<!-- Ditto. -->
+<!ELEMENT To (#PCDATA)>	
+
+<!--~~ <TranslationStack>
+This one is special because it can take any number of TermSet and/or 
+OP children, in any order.  So it doesn't fit cleanly into either a 
+JSON array or object.  Therefore, we have to provide annotation to tell
+the converter what to do.  Since we know that TermSet's will get 
+converted to objects, and OP's will get converted to strings, we can 
+turn this into an array, and the elements of the array will be 
+distinguishable by their types, so they won't be ambiguous.
+~~json <array/>
+~~-->
+<!ELEMENT TranslationStack ((TermSet|OP)*)>
+
+<!-- Rely on default behavior:  JSON object.  -->
+<!ELEMENT TermSet (Term, Explode)>
+
+<!-- Rely on default behavior:  JSON string.  -->
+<!ELEMENT Term (#PCDATA)>	
+
+<!--~~ <Explode>
+In XML, this takes a value of "Y" or "N".  We'll turn this into a
+JSON boolean.  The library is smart enough to know that "Y" means "true"
+and "N" means "false".
+~~json <boolean/>
+~~-->
+<!ELEMENT Explode (#PCDATA)>
+
+<!-- Rely on default behavior:  JSON string.  -->
+<!ELEMENT OP (#PCDATA)>
+
+<!--~~ <ERROR>
+This element (tested in sample2a.xml) becomes a key-value pair, and the 
+key is specified here.  By default, the key would 
+be "error", but we want to preserve the all-uppercase "ERROR". 
+~~json <json key='ERROR'/>
+~~-->
+<!ELEMENT ERROR (#PCDATA)>	
+
+<!--~~ <ErrorList>
+Like TranslationStack, above, this one is special because it can take 
+any number of PhraseNotFound and/or FieldNotFound children, so it 
+doesn't fit cleanly into either a JSON array or object.
+In this case, we will construct a JSON object that has three members.  
+~~json
+  <object>
+    <number key='count' select='count(*)'/>
+    <array key='phrasesnotfound' select='PhraseNotFound'/>
+    <array key='fieldsnotfound' select='FieldNotFound'/>
+  </object>
+~~-->
+<!ELEMENT ErrorList (PhraseNotFound*, FieldNotFound*)>
+
+<!-- Rely on default behavior:  JSON string.  -->
+<!ELEMENT FieldNotFound (#PCDATA)>	
+
+<!-- Rely on default behavior:  JSON string.  -->
+<!ELEMENT PhraseNotFound (#PCDATA)>
+
+
+

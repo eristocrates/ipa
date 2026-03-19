@@ -1,0 +1,37 @@
+{
+    "header": {
+        "type": "sample2",
+        "version": "0.3"
+    },
+    "response": {
+        "problemfound": false,
+        "count": 5163,
+        "idlist": [
+            101595451,
+            101594756,
+            101592162
+        ],
+        "translationset": [
+            {
+                "from": "obstetrics[MeSH Terms]",
+                "to": "\"obstetrics\"[MeSH Terms]"
+            }
+        ],
+        "translationstack": [
+            {
+                "term": "\"obstetrics\"[MeSH Terms]",
+                "explode": true
+            },
+            "GROUP"
+        ],
+        "errorlist": {
+            "count": 2,
+            "phrasesnotfound": [
+                "fleegle[MeSH Terms]",
+                "bingo[MeSH Terms]"
+            ],
+            "fieldsnotfound": [
+            ]
+        }
+    }
+}

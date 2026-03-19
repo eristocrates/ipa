@@ -1,0 +1,339 @@
+{
+    "currentVersion": 10.81,
+    "id": 24,
+    "name": "Media Points Without Photos",
+    "type": "Feature Layer",
+    "description": "",
+    "geometryType": "esriGeometryPoint",
+    "sourceSpatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+    },
+    "copyrightText": "",
+    "parentLayer": {
+        "id": 23,
+        "name": "Non-Drainage Network"
+    },
+    "subLayers": [
+    ],
+    "minScale": 577790.554289,
+    "maxScale": 0,
+    "drawingInfo": {
+        "renderer": {
+            "type": "simple",
+            "symbol": {
+                "type": "esriSMS",
+                "style": "esriSMSCircle",
+                "color": [
+                    156,
+                    8,
+                    0,
+                    255
+                ],
+                "size": 4,
+                "angle": 0,
+                "xoffset": 0,
+                "yoffset": 0,
+                "outline": {
+                    "color": [
+                        0,
+                        0,
+                        0,
+                        255
+                    ],
+                    "width": 1
+                }
+            },
+            "label": "",
+            "description": ""
+        },
+        "transparency": 0,
+        "labelingInfo": null
+    },
+    "defaultVisibility": false,
+    "extent": {
+        "xmin": -9428087.0393,
+        "ymin": 3545322.4149999991,
+        "xmax": -9349913.8648,
+        "ymax": 3590546.8071999997,
+        "spatialReference": {
+            "wkid": 102100,
+            "latestWkid": 3857
+        }
+    },
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "displayField": "RAW_NAME",
+    "typeIdField": null,
+    "subtypeFieldName": null,
+    "subtypeField": null,
+    "defaultSubtypeCode": null,
+    "fields": [
+        {
+            "name": "OBJECTID",
+            "type": "esriFieldTypeOID",
+            "alias": "OBJECTID",
+            "domain": null
+        },
+        {
+            "name": "HYD_ID",
+            "type": "esriFieldTypeString",
+            "alias": "Pond Number",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "NOTES",
+            "type": "esriFieldTypeString",
+            "alias": "Notes",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "FOLDER",
+            "type": "esriFieldTypeString",
+            "alias": "Folder",
+            "length": 40,
+            "domain": null
+        },
+        {
+            "name": "RAW_NAME",
+            "type": "esriFieldTypeString",
+            "alias": "Raw Name",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "FINAL_NAME",
+            "type": "esriFieldTypeString",
+            "alias": "Final Name",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "MEDIA_CODE",
+            "type": "esriFieldTypeString",
+            "alias": "Media_Code",
+            "length": 20,
+            "domain": null
+        },
+        {
+            "name": "VIEW_",
+            "type": "esriFieldTypeString",
+            "alias": "View",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "LOC_DESC",
+            "type": "esriFieldTypeString",
+            "alias": "Location",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "ELEMENTX",
+            "type": "esriFieldTypeDouble",
+            "alias": "ELEMENTX",
+            "domain": null
+        },
+        {
+            "name": "ELEMENTY",
+            "type": "esriFieldTypeDouble",
+            "alias": "ELEMENTY",
+            "domain": null
+        },
+        {
+            "name": "DATE_",
+            "type": "esriFieldTypeDate",
+            "alias": "Date",
+            "length": 8,
+            "domain": null
+        },
+        {
+            "name": "STORAGE_PATH_ADDR",
+            "type": "esriFieldTypeString",
+            "alias": "Storage Path Address",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "FILE_NAME",
+            "type": "esriFieldTypeString",
+            "alias": "Filename",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "STORAGE_FULL_PATH_ADDR",
+            "type": "esriFieldTypeString",
+            "alias": "STORAGE_FULL_PATH_ADDR",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "STORAGE_STATIC_PATH_ADDR",
+            "type": "esriFieldTypeString",
+            "alias": "STORAGE_STATIC_PATH_ADDR",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "PHOTOID",
+            "type": "esriFieldTypeString",
+            "alias": "PhotoID",
+            "length": 30,
+            "domain": null
+        },
+        {
+            "name": "FIELDCREW",
+            "type": "esriFieldTypeString",
+            "alias": "Company",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "CREATIONDATE",
+            "type": "esriFieldTypeDate",
+            "alias": "CreationDate",
+            "length": 8,
+            "domain": null
+        },
+        {
+            "name": "CREATOR",
+            "type": "esriFieldTypeString",
+            "alias": "Creator",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "EDITDATE",
+            "type": "esriFieldTypeDate",
+            "alias": "EditDate",
+            "length": 8,
+            "domain": null
+        },
+        {
+            "name": "EDITOR",
+            "type": "esriFieldTypeString",
+            "alias": "Editor",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "STRUCTURE_ID",
+            "type": "esriFieldTypeString",
+            "alias": "Struct ID",
+            "length": 20,
+            "domain": null
+        },
+        {
+            "name": "ROTATION_AZ",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "Rotation_Az",
+            "domain": null
+        },
+        {
+            "name": "PHOTO_NUM",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "PhotoNum",
+            "domain": null
+        },
+        {
+            "name": "HYPERLINK",
+            "type": "esriFieldTypeString",
+            "alias": "Hyperlink",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "HOTLINK",
+            "type": "esriFieldTypeString",
+            "alias": "Hotlink",
+            "length": 250,
+            "domain": null
+        },
+        {
+            "name": "GLOBALID",
+            "type": "esriFieldTypeGlobalID",
+            "alias": "GlobalID",
+            "length": 38,
+            "domain": null
+        },
+        {
+            "name": "FILE_NAME_1",
+            "type": "esriFieldTypeString",
+            "alias": "File_Name",
+            "length": 1073741822,
+            "domain": null
+        },
+        {
+            "name": "Shape",
+            "type": "esriFieldTypeGeometry",
+            "alias": "Shape",
+            "domain": null
+        }
+    ],
+    "geometryField": {
+        "name": "Shape",
+        "type": "esriFieldTypeGeometry",
+        "alias": "Shape"
+    },
+    "indexes": [
+        {
+            "name": "FDO_OBJECTID",
+            "fields": "OBJECTID",
+            "isAscending": true,
+            "isUnique": true,
+            "description": ""
+        },
+        {
+            "name": "FDO_Shape",
+            "fields": "Shape",
+            "isAscending": true,
+            "isUnique": false,
+            "description": ""
+        },
+        {
+            "name": "FDO_GLOBALID",
+            "fields": "GLOBALID",
+            "isAscending": true,
+            "isUnique": false,
+            "description": ""
+        }
+    ],
+    "subtypes": [
+    ],
+    "relationships": [
+    ],
+    "canModifyLayer": true,
+    "canScaleSymbols": false,
+    "hasLabels": false,
+    "capabilities": "Map,Query,Data",
+    "maxRecordCount": 3000,
+    "supportsStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportedQueryFormats": "JSON, geoJSON",
+    "isDataVersioned": false,
+    "ownershipBasedAccessControlForFeatures": {
+        "allowOthersToQuery": true
+    },
+    "useStandardizedQueries": true,
+    "advancedQueryCapabilities": {
+        "useStandardizedQueries": true,
+        "supportsStatistics": true,
+        "supportsHavingClause": true,
+        "supportsCountDistinct": true,
+        "supportsOrderBy": true,
+        "supportsDistinct": true,
+        "supportsPagination": true,
+        "supportsTrueCurve": true,
+        "supportsReturningQueryExtent": true,
+        "supportsQueryWithDistance": true,
+        "supportsSqlExpression": true
+    },
+    "supportsDatumTransformation": true,
+    "dateFieldsTimeReference": null,
+    "supportsCoordinatesQuantization": true,
+    "count": 694
+}

@@ -1,0 +1,11 @@
+{
+    "error": {
+        "code": "BadRequest",
+        "message": "Batch Uri format should follow format /beta/$batch",
+        "innerError": {
+            "date": "2026-03-12T22:28:50",
+            "request-id": "002e77df-3180-4dde-ba8f-9966623050d5",
+            "client-request-id": "002e77df-3180-4dde-ba8f-9966623050d5"
+        }
+    }
+}

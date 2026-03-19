@@ -23,7 +23,7 @@ let pages =
                 |> Request.send
                 |> Response.toText
 
-            { filePath = $"""C:\Repositories\ipa\visual_studio_solutions\Pdf\pdf-format-reference\{stem}.html"""
+            { filePath = $"""C:\Repositories\eristocrates\ipa\visual_studio_solutions\Pdf\pdf-format-reference\{stem}.html"""
               fileContent = content }
     }
 

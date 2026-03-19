@@ -1,0 +1,183 @@
+{
+    "displayFieldName": "FACILITYID",
+    "fieldAliases": {
+        "OBJECTID": "OBJECTID",
+        "FACILITYID": "FACILITYID",
+        "ATTACHEDTOID": "ATTACHEDTOID",
+        "NOTES": "NOTES",
+        "ACRES": "ACRES",
+        "GLOBALID": "GLOBALID",
+        "Shape_Length": "Shape_Length",
+        "Shape_Area": "Shape_Area"
+    },
+    "geometryType": "esriGeometryPolygon",
+    "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+    },
+    "fields": [
+        {
+            "name": "OBJECTID",
+            "type": "esriFieldTypeOID",
+            "alias": "OBJECTID"
+        },
+        {
+            "name": "FACILITYID",
+            "type": "esriFieldTypeString",
+            "alias": "FACILITYID",
+            "length": 20
+        },
+        {
+            "name": "ATTACHEDTOID",
+            "type": "esriFieldTypeString",
+            "alias": "ATTACHEDTOID",
+            "length": 15
+        },
+        {
+            "name": "NOTES",
+            "type": "esriFieldTypeString",
+            "alias": "NOTES",
+            "length": 255
+        },
+        {
+            "name": "ACRES",
+            "type": "esriFieldTypeDouble",
+            "alias": "ACRES"
+        },
+        {
+            "name": "GLOBALID",
+            "type": "esriFieldTypeGlobalID",
+            "alias": "GLOBALID",
+            "length": 38
+        },
+        {
+            "name": "Shape_Length",
+            "type": "esriFieldTypeDouble",
+            "alias": "Shape_Length"
+        },
+        {
+            "name": "Shape_Area",
+            "type": "esriFieldTypeDouble",
+            "alias": "Shape_Area"
+        }
+    ],
+    "features": [
+        {
+            "OBJECTID": 1,
+            "FACILITYID": "Hawks Landing MS4",
+            "NOTES": "Same drainage area as P0145",
+            "ACRES": 153.59,
+            "GLOBALID": "{A4A2DBDE-A6CA-42CD-9A60-FED044495D3B}",
+            "Shape_Length": 5729.1243356822342,
+            "Shape_Area": 840019.342973999,
+            "name": "Outfall_Drainage_Area_MS4.0651edc2ce8336d6397c6f1c251db1728a43aa79c54a831c6c4cb269c2d97c19"
+        },
+        {
+            "OBJECTID": 2,
+            "FACILITYID": "Alhambra MS4",
+            "NOTES": "Same drainage area as MOF133",
+            "ACRES": 214.25,
+            "GLOBALID": "{814CEB65-5021-480C-9CEA-078CE60AC067}",
+            "Shape_Length": 7074.4152109384922,
+            "Shape_Area": 1170966.530969694,
+            "name": "Outfall_Drainage_Area_MS4.6088bcd08f4dfbced7f12e4702e411df5ef425aa606715209815f3050e51c73f"
+        },
+        {
+            "OBJECTID": 3,
+            "FACILITYID": "Blount Creek MS4",
+            "ACRES": 123.10261856,
+            "GLOBALID": "{4E4E3582-CEC2-4986-80D5-15E207AE07B3}",
+            "Shape_Length": 6566.994640886699,
+            "Shape_Area": 671835.12148350687,
+            "name": "Outfall_Drainage_Area_MS4.5c4eab2f712457b0492a23333dd16dc2fc9884017fddc6a81d9953c2ffb612f3"
+        },
+        {
+            "OBJECTID": 4,
+            "FACILITYID": "Yorktown MS4",
+            "NOTES": "Same drainage area as MOF25 & P0199.",
+            "ACRES": 103.93,
+            "GLOBALID": "{EAF56983-4282-4542-B05D-11DAA9745602}",
+            "Shape_Length": 5756.7572045756287,
+            "Shape_Area": 568344.29359473579,
+            "name": "Outfall_Drainage_Area_MS4.9d8ed8268552a9182c40308a691d49a4da39458ab13e553603e47a5991fc2790"
+        },
+        {
+            "OBJECTID": 5,
+            "FACILITYID": "Gum Swamp MS4",
+            "NOTES": "Contains P0041, P0310 & P0218. MOF29 & MOF36 are part of this drainage area.",
+            "ACRES": 1087.57,
+            "GLOBALID": "{E303795F-DD85-412B-9E65-179F9A8706B8}",
+            "Shape_Length": 23166.466466271631,
+            "Shape_Area": 5943731.4921821225,
+            "name": "Outfall_Drainage_Area_MS4.787be2fcb89d3a807a9a9b3369a331ecae9dfd92cbde0afdc102d828c2ef0319"
+        },
+        {
+            "OBJECTID": 6,
+            "FACILITYID": "Queenswood MS4",
+            "NOTES": "At termination of Conveyance C00635",
+            "ACRES": 335.12,
+            "GLOBALID": "{7898D5DF-802E-4FA3-B51F-F89F856772E7}",
+            "Shape_Length": 11916.202877367654,
+            "Shape_Area": 1833274.2684102908,
+            "name": "Outfall_Drainage_Area_MS4.7f3272984b8db764e40d5248cb97dce7b9c9c0d949b5a56b214bea203b6b1c65"
+        },
+        {
+            "OBJECTID": 7,
+            "FACILITYID": "Harpers Ferry MS4",
+            "NOTES": "Same drainage area as MOF18 and P0128.",
+            "ACRES": 70.62213167,
+            "GLOBALID": "{FB31F397-E9A4-4709-89A5-698A629B2D52}",
+            "Shape_Length": 3688.5961573395748,
+            "Shape_Area": 386218.81505856483,
+            "name": "Outfall_Drainage_Area_MS4.d3c7d75baae124895bb8a563d98097baed80cb627d643da23c7c123d8af49425"
+        },
+        {
+            "OBJECTID": 8,
+            "FACILITYID": "Russells Pond MS4",
+            "NOTES": "Same drainage area as MOF134",
+            "ACRES": 69.93,
+            "GLOBALID": "{D59552D3-0C8F-4C96-BA42-48C2026A277D}",
+            "Shape_Length": 4966.4020362344618,
+            "Shape_Area": 382784.22884243482,
+            "name": "Outfall_Drainage_Area_MS4.14272d47945b43734d07d24cb3f512ab7129104da77a972c8f388d3235c5e9ab"
+        },
+        {
+            "OBJECTID": 9,
+            "FACILITYID": "NW Passage MS4",
+            "NOTES": "MOF32 + MOF84 make up this drainage area. P0183 & P0257 are parts of this drainage area.",
+            "ACRES": 228.77,
+            "GLOBALID": "{208AE547-95E5-470C-BCB7-040F93A003B0}",
+            "Shape_Length": 8104.5529644227472,
+            "Shape_Area": 1250600.506890568,
+            "name": "Outfall_Drainage_Area_MS4.6e66f7fab161fd1047713be7c53bfaaddf6d94f96f24cdea0042dcf8571bb537"
+        },
+        {
+            "OBJECTID": 10,
+            "FACILITYID": "Lakeshore MS4",
+            "NOTES": "Same drainage area as P0008 & MOF76.",
+            "ACRES": 53.83,
+            "GLOBALID": "{BDDD5B53-6786-4E4C-91FB-9E62E2701954}",
+            "Shape_Length": 4408.0747004683344,
+            "Shape_Area": 294345.71505485603,
+            "name": "Outfall_Drainage_Area_MS4.628d0eb25cbb3e7074ef17adba4ee1c86fead070a568fffd6994b0b8fb2e8c3d"
+        },
+        {
+            "OBJECTID": 11,
+            "FACILITYID": "Lake Heritage MS4",
+            "NOTES": "Same drainage area as MOF31. Includes drainage from P0024 and P0236",
+            "ACRES": 174.70000000000002,
+            "GLOBALID": "{CDA32160-2A80-4FB8-927C-F10AF4F5D9BA}",
+            "Shape_Length": 5819.2329492145809,
+            "Shape_Area": 953876.07000237261,
+            "name": "Outfall_Drainage_Area_MS4.5f25f999d442f1da32f0ca25d6965365b59bdd724dfd2c42c85441d3c9249b34"
+        }
+    ],
+    "name": "Outfall_Drainage_Area_MS4",
+    "id": "18",
+    "type": "Feature Layer",
+    "subtypes": [
+    ],
+    "typeIdField": null,
+    "subtypeFieldName": null,
+    "subtypeField": null
+}

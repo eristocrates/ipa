@@ -75,7 +75,7 @@ module Artifact =
         AppContext.BaseDirectory
         |> fun path -> Path.GetFullPath(path)
 
-    let rootDirectory = $"""C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework"""
+    let rootDirectory = $"""C:\Repositories\eristocrates\ipa\visual_studio_solutions\ResourceDescriptionFramework"""
     let surfaceDirectory = $"""C:\Surfaces"""
 
     /// Saves text to a file, creating directories if needed

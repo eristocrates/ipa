@@ -1,4 +1,4 @@
-#r @"C:\Repositories\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
+#r @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
 #r "nuget: dotNetRdf"
 #r "nuget: Iride"
 #r "nuget: Fantomas.Core"
@@ -27,7 +27,7 @@ let classTestContent =
     |> Seq.map (fun ontologyClass -> ontologyClass.Resource.ToString())
 
 let testInputFilePath =
-    @"C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework\test.ttl"
+    @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\ResourceDescriptionFramework\test.ttl"
 
 let textReader =
     ParsingTextReader.Create(File.Open(testInputFilePath, FileMode.Open))
@@ -50,13 +50,13 @@ tokenQueue.InitialiseBuffer()
 let outputDirectory = "Artifact"
 
 let testOutputFilePath =
-    @"C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework\test.txt"
+    @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\ResourceDescriptionFramework\test.txt"
 
 let tokenTestOutputFilePath =
-    @"C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework\tokenTest.txt"
+    @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\ResourceDescriptionFramework\tokenTest.txt"
 
 let codeGenFilePath =
-    @"C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework\codegen.txt"
+    @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\ResourceDescriptionFramework\codegen.txt"
 
 let tokenList = tokenQueue.Tokens |> List.ofSeq
 

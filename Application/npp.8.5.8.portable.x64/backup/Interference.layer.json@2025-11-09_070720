@@ -1,0 +1,861 @@
+{
+    "currentVersion": 10.81,
+    "id": 25,
+    "name": "Interference",
+    "type": "Feature Layer",
+    "description": "",
+    "geometryType": "esriGeometryPoint",
+    "sourceSpatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+    },
+    "copyrightText": "",
+    "parentLayer": {
+        "id": 23,
+        "name": "Non-Drainage Network"
+    },
+    "subLayers": [
+    ],
+    "minScale": 577790.554289,
+    "maxScale": 0,
+    "drawingInfo": {
+        "renderer": {
+            "type": "simple",
+            "symbol": {
+                "type": "esriSMS",
+                "style": "esriSMSCircle",
+                "color": [
+                    0,
+                    44,
+                    138,
+                    255
+                ],
+                "size": 4,
+                "angle": 0,
+                "xoffset": 0,
+                "yoffset": 0,
+                "outline": {
+                    "color": [
+                        0,
+                        0,
+                        0,
+                        255
+                    ],
+                    "width": 1
+                }
+            },
+            "label": "",
+            "description": ""
+        },
+        "transparency": 0,
+        "labelingInfo": null
+    },
+    "defaultVisibility": true,
+    "extent": {
+        "xmin": -20037507.842788246,
+        "ymin": -30240971.458386149,
+        "xmax": 20037507.842788246,
+        "ymax": 30240971.458386149,
+        "spatialReference": {
+            "wkid": 102100,
+            "latestWkid": 3857
+        }
+    },
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "displayField": "LIFECYCLE",
+    "typeIdField": null,
+    "subtypeFieldName": null,
+    "subtypeField": null,
+    "defaultSubtypeCode": null,
+    "fields": [
+        {
+            "name": "OBJECTID",
+            "type": "esriFieldTypeOID",
+            "alias": "OBJECTID",
+            "domain": null
+        },
+        {
+            "name": "LIFECYCLE",
+            "type": "esriFieldTypeString",
+            "alias": "Lifecycle",
+            "length": 50,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainLifeCycle_1",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Active",
+                        "code": "Active"
+                    },
+                    {
+                        "name": "Proposed",
+                        "code": "Proposed"
+                    },
+                    {
+                        "name": "Removed",
+                        "code": "Removed"
+                    },
+                    {
+                        "name": "Abandoned",
+                        "code": "Abandoned"
+                    },
+                    {
+                        "name": "N/A",
+                        "code": "N/A"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "PARENTID",
+            "type": "esriFieldTypeString",
+            "alias": "PARENTID",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "OWNER",
+            "type": "esriFieldTypeString",
+            "alias": "Owner",
+            "length": 50,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainOwner",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "COT",
+                        "code": "COT"
+                    },
+                    {
+                        "name": "Private",
+                        "code": "PVT"
+                    },
+                    {
+                        "name": "Florida DOT",
+                        "code": "DOT"
+                    },
+                    {
+                        "name": "Unknown",
+                        "code": "UNKN"
+                    },
+                    {
+                        "name": "Leon County",
+                        "code": "CNTY"
+                    },
+                    {
+                        "name": "State of Florida",
+                        "code": "STATE"
+                    },
+                    {
+                        "name": "Abandoned",
+                        "code": "ABND"
+                    },
+                    {
+                        "name": "Leon County",
+                        "code": "Leon County"
+                    },
+                    {
+                        "name": "N/A",
+                        "code": "N/A"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "MAINTBY",
+            "type": "esriFieldTypeString",
+            "alias": "MaintBy",
+            "length": 50,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainMaintBy",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Public Works Operations",
+                        "code": "PWOPR"
+                    },
+                    {
+                        "name": "Private",
+                        "code": "PVT"
+                    },
+                    {
+                        "name": "Unknown",
+                        "code": "UNKN"
+                    },
+                    {
+                        "name": "Florida DOT",
+                        "code": "DOT"
+                    },
+                    {
+                        "name": "Leon County",
+                        "code": "CNTY"
+                    },
+                    {
+                        "name": "State of Florida",
+                        "code": "STATE"
+                    },
+                    {
+                        "name": "Abandonded",
+                        "code": "ABND"
+                    },
+                    {
+                        "name": "COT",
+                        "code": "COT"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "SOURCE",
+            "type": "esriFieldTypeString",
+            "alias": "Source",
+            "length": 50,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainSource",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "AsBuilt29",
+                        "code": "AB29"
+                    },
+                    {
+                        "name": "AsBuilt88",
+                        "code": "AB88"
+                    },
+                    {
+                        "name": "CAD",
+                        "code": "CAD"
+                    },
+                    {
+                        "name": "Composite",
+                        "code": "COM"
+                    },
+                    {
+                        "name": "Digital",
+                        "code": "DIG"
+                    },
+                    {
+                        "name": "Field Measurements",
+                        "code": "FM"
+                    },
+                    {
+                        "name": "GPS",
+                        "code": "GPS"
+                    },
+                    {
+                        "name": "N/A",
+                        "code": "N/A"
+                    },
+                    {
+                        "name": "Processed in Office",
+                        "code": "PIO"
+                    },
+                    {
+                        "name": "Street Level Imagery",
+                        "code": "SI"
+                    },
+                    {
+                        "name": "Site Plan",
+                        "code": "SP"
+                    },
+                    {
+                        "name": "Survey",
+                        "code": "SVY"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "FACILITYID",
+            "type": "esriFieldTypeString",
+            "alias": "FACILITYID",
+            "length": 20,
+            "domain": null
+        },
+        {
+            "name": "LEGACYID",
+            "type": "esriFieldTypeString",
+            "alias": "LEGACYID",
+            "length": 20,
+            "domain": null
+        },
+        {
+            "name": "ATTACHEDTOID",
+            "type": "esriFieldTypeString",
+            "alias": "ATTACHEDTOID",
+            "length": 15,
+            "domain": null
+        },
+        {
+            "name": "NEEDSATTENTION",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "NeedsAttention",
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainBoolean",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Yes",
+                        "code": 1
+                    },
+                    {
+                        "name": "No",
+                        "code": 0
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "LOCATION",
+            "type": "esriFieldTypeString",
+            "alias": "LOCATION",
+            "length": 100,
+            "domain": null
+        },
+        {
+            "name": "INVENTORYDATE",
+            "type": "esriFieldTypeDate",
+            "alias": "INVENTORYDATE",
+            "length": 8,
+            "domain": null
+        },
+        {
+            "name": "INVENTORYTYPE",
+            "type": "esriFieldTypeString",
+            "alias": "InventoryType",
+            "length": 20,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainInventoryType",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "RTK",
+                        "code": "RTK"
+                    },
+                    {
+                        "name": "RTD",
+                        "code": "RTD"
+                    },
+                    {
+                        "name": "Obscured",
+                        "code": "OBS"
+                    },
+                    {
+                        "name": "Not Found",
+                        "code": "NFD"
+                    },
+                    {
+                        "name": "Inaccessible-Denied access by owner",
+                        "code": "INB1"
+                    },
+                    {
+                        "name": "Inaccessible-Dog",
+                        "code": "INB2"
+                    },
+                    {
+                        "name": "Inaccessible-Fence",
+                        "code": "INB3"
+                    },
+                    {
+                        "name": "Inaccessible-Gate Locked",
+                        "code": "INB4"
+                    },
+                    {
+                        "name": "Inaccessible-Heavy Traffic",
+                        "code": "INB5"
+                    },
+                    {
+                        "name": "Inaccessible-Immovable object on structure",
+                        "code": "INB6"
+                    },
+                    {
+                        "name": "Inaccessible-Overgrown",
+                        "code": "INB7"
+                    },
+                    {
+                        "name": "Inaccessible-Submerged in water",
+                        "code": "INB8"
+                    },
+                    {
+                        "name": "Inaccessible-See notes",
+                        "code": "INB9"
+                    },
+                    {
+                        "name": "Conventional",
+                        "code": "CNV"
+                    },
+                    {
+                        "name": "Approx",
+                        "code": "APP"
+                    },
+                    {
+                        "name": "GPS",
+                        "code": "GPS"
+                    },
+                    {
+                        "name": "Aerial Imagery",
+                        "code": "AI"
+                    },
+                    {
+                        "name": "Unknown",
+                        "code": "UNK"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDuplicate"
+            }
+        },
+        {
+            "name": "EASTING",
+            "type": "esriFieldTypeDouble",
+            "alias": "EASTING",
+            "domain": null
+        },
+        {
+            "name": "NORTHING",
+            "type": "esriFieldTypeDouble",
+            "alias": "NORTHING",
+            "domain": null
+        },
+        {
+            "name": "ZVALUE",
+            "type": "esriFieldTypeDouble",
+            "alias": "ZVALUE",
+            "domain": null
+        },
+        {
+            "name": "Z29",
+            "type": "esriFieldTypeDouble",
+            "alias": "Z29",
+            "domain": null
+        },
+        {
+            "name": "DIGITALPICTUREID",
+            "type": "esriFieldTypeString",
+            "alias": "DIGITALPICTUREID",
+            "length": 30,
+            "domain": null
+        },
+        {
+            "name": "FIELDCOMPLETE",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "FieldComplete",
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainBoolean",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Yes",
+                        "code": 1
+                    },
+                    {
+                        "name": "No",
+                        "code": 0
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "ATTRIBUTECOMPLETE",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "AttributeComplete",
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainBoolean",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Yes",
+                        "code": 1
+                    },
+                    {
+                        "name": "No",
+                        "code": 0
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "NOTES",
+            "type": "esriFieldTypeString",
+            "alias": "NOTES",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "PRFRESOLUTION",
+            "type": "esriFieldTypeString",
+            "alias": "PRFResolution",
+            "length": 60,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainPRResolution",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "No",
+                        "code": "No"
+                    },
+                    {
+                        "name": "Yes",
+                        "code": "Yes"
+                    },
+                    {
+                        "name": "Resolved",
+                        "code": "Resolved"
+                    },
+                    {
+                        "name": "Unresolved\\Response time expired",
+                        "code": "UR1"
+                    },
+                    {
+                        "name": "Unresolved\\Feature In Question",
+                        "code": "UR2"
+                    },
+                    {
+                        "name": "Unresolved\\See Notes",
+                        "code": "UR4"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDuplicate"
+            }
+        },
+        {
+            "name": "DRAWINGID",
+            "type": "esriFieldTypeString",
+            "alias": "DRAWINGID",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "ORIGINALSOURCE",
+            "type": "esriFieldTypeString",
+            "alias": "ORIGINALSOURCE",
+            "length": 75,
+            "domain": null
+        },
+        {
+            "name": "DATECREATED",
+            "type": "esriFieldTypeDate",
+            "alias": "DATECREATED",
+            "length": 8,
+            "domain": null
+        },
+        {
+            "name": "WHOCREATED",
+            "type": "esriFieldTypeString",
+            "alias": "WhoCreated",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "UPDATESOURCE",
+            "type": "esriFieldTypeString",
+            "alias": "UPDATESOURCE",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "DATEMODIFIED",
+            "type": "esriFieldTypeDate",
+            "alias": "DATEMODIFIED",
+            "length": 8,
+            "domain": null
+        },
+        {
+            "name": "WHOMODIFIED",
+            "type": "esriFieldTypeString",
+            "alias": "WHOMODIFIED",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "ACCURACYCODE",
+            "type": "esriFieldTypeString",
+            "alias": "AccuracyCode",
+            "length": 40,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainAccuracyCode",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "GPS",
+                        "code": "GPS"
+                    },
+                    {
+                        "name": "Not Available",
+                        "code": "NA"
+                    },
+                    {
+                        "name": "TLCGIS",
+                        "code": "TLCGIS"
+                    },
+                    {
+                        "name": "Survey",
+                        "code": "SUR"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "HYPERLINK_AR",
+            "type": "esriFieldTypeString",
+            "alias": "HYPERLINK_AR",
+            "length": 100,
+            "domain": null
+        },
+        {
+            "name": "FIELDCOMMENTS",
+            "type": "esriFieldTypeString",
+            "alias": "FIELDCOMMENTS",
+            "length": 60,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainFieldComment",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Abandonded",
+                        "code": "1"
+                    },
+                    {
+                        "name": "Bolted/Sealed shut",
+                        "code": "2"
+                    },
+                    {
+                        "name": "Buried",
+                        "code": "3"
+                    },
+                    {
+                        "name": "Clogged",
+                        "code": "4"
+                    },
+                    {
+                        "name": "Filled with Sediment or Debris",
+                        "code": "5"
+                    },
+                    {
+                        "name": "Filled with Water",
+                        "code": "6"
+                    },
+                    {
+                        "name": "Not Found- Downstream",
+                        "code": "7"
+                    },
+                    {
+                        "name": "Not Found- Upstream",
+                        "code": "8"
+                    },
+                    {
+                        "name": "No MH",
+                        "code": "9"
+                    },
+                    {
+                        "name": "No MH lid",
+                        "code": "10"
+                    },
+                    {
+                        "name": "No Manhole Lid- Concrete Slab",
+                        "code": "11"
+                    },
+                    {
+                        "name": "Other- See Notes",
+                        "code": "12"
+                    },
+                    {
+                        "name": "Out of City",
+                        "code": "13"
+                    },
+                    {
+                        "name": "SS Cross pipe in structure",
+                        "code": "14"
+                    },
+                    {
+                        "name": "Too Heavy to Open",
+                        "code": "15"
+                    },
+                    {
+                        "name": "Under Construction",
+                        "code": "16"
+                    },
+                    {
+                        "name": "Unknown Connection",
+                        "code": "17"
+                    },
+                    {
+                        "name": "None",
+                        "code": "18"
+                    },
+                    {
+                        "name": "Underground Connection",
+                        "code": "19"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDuplicate"
+            }
+        },
+        {
+            "name": "SOURCEYEAR",
+            "type": "esriFieldTypeString",
+            "alias": "SOURCEYEAR",
+            "length": 4,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainSourceYear",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "1996",
+                        "code": "1996"
+                    },
+                    {
+                        "name": "2001",
+                        "code": "2001"
+                    },
+                    {
+                        "name": "2005",
+                        "code": "2005"
+                    },
+                    {
+                        "name": "2007",
+                        "code": "2007"
+                    },
+                    {
+                        "name": "2008",
+                        "code": "2008"
+                    },
+                    {
+                        "name": "2009",
+                        "code": "2009"
+                    },
+                    {
+                        "name": "2012",
+                        "code": "2012"
+                    },
+                    {
+                        "name": "2014",
+                        "code": "2014"
+                    },
+                    {
+                        "name": "2015",
+                        "code": "2015"
+                    },
+                    {
+                        "name": "2016",
+                        "code": "2016"
+                    },
+                    {
+                        "name": "2017",
+                        "code": "2017"
+                    },
+                    {
+                        "name": "2018",
+                        "code": "2018"
+                    },
+                    {
+                        "name": "2019",
+                        "code": "2019"
+                    },
+                    {
+                        "name": "2020",
+                        "code": "2020"
+                    },
+                    {
+                        "name": "2121",
+                        "code": "2021"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "SHAPE",
+            "type": "esriFieldTypeGeometry",
+            "alias": "Shape",
+            "domain": null
+        }
+    ],
+    "geometryField": {
+        "name": "SHAPE",
+        "type": "esriFieldTypeGeometry",
+        "alias": "Shape"
+    },
+    "indexes": [
+        {
+            "name": "FDO_OBJECTID",
+            "fields": "OBJECTID",
+            "isAscending": true,
+            "isUnique": true,
+            "description": ""
+        },
+        {
+            "name": "FDO_SHAPE",
+            "fields": "SHAPE",
+            "isAscending": true,
+            "isUnique": false,
+            "description": ""
+        }
+    ],
+    "subtypes": [
+    ],
+    "relationships": [
+    ],
+    "canModifyLayer": true,
+    "canScaleSymbols": false,
+    "hasLabels": false,
+    "capabilities": "Map,Query,Data",
+    "maxRecordCount": 3000,
+    "supportsStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportedQueryFormats": "JSON, geoJSON",
+    "isDataVersioned": false,
+    "ownershipBasedAccessControlForFeatures": {
+        "allowOthersToQuery": true
+    },
+    "useStandardizedQueries": true,
+    "advancedQueryCapabilities": {
+        "useStandardizedQueries": true,
+        "supportsStatistics": true,
+        "supportsHavingClause": true,
+        "supportsCountDistinct": true,
+        "supportsOrderBy": true,
+        "supportsDistinct": true,
+        "supportsPagination": true,
+        "supportsTrueCurve": true,
+        "supportsReturningQueryExtent": true,
+        "supportsQueryWithDistance": true,
+        "supportsSqlExpression": true
+    },
+    "supportsDatumTransformation": true,
+    "dateFieldsTimeReference": null,
+    "supportsCoordinatesQuantization": true,
+    "count": 0
+}

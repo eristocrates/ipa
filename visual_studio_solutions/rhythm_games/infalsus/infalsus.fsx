@@ -3,7 +3,7 @@
 #r "nuget: Terminal.Gui"
 #r "nuget: Iride"
 #r @"..\..\ResourceDescriptionFramework\bin\Debug\net10.0\ResourceDescriptionFramework.dll"
-#r @"C:\Repositories\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
+#r @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
 // #load "Tui.fsx"
 
 
@@ -30,7 +30,7 @@ open Xsd.Namespace
 module SongDatabase =
     [<Literal>]
     let uri =
-        @"C:\Repositories\ipa\visual_studio_solutions\rhythm_games\infalsus\SongDatabase.json"
+        @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\rhythm_games\infalsus\SongDatabase.json"
 
     type provider = JsonProvider<uri>
     let json = provider.Load(uri)
@@ -38,7 +38,7 @@ module SongDatabase =
 module SongList =
     [<Literal>]
     let uri =
-        @"C:\Repositories\ipa\visual_studio_solutions\rhythm_games\infalsus\SongList.json"
+        @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\rhythm_games\infalsus\SongList.json"
 
     type provider = JsonProvider<uri>
     let json = provider.Load(uri)

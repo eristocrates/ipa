@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Result SYSTEM "sample2.dtd">
+<Result>
+  <ProblemFound>false</ProblemFound>
+  <Count>5163</Count>
+  <IdList>
+    <Id>0101595451</Id>
+    <Id>101594756</Id>
+    <Id>101592162</Id>
+  </IdList>
+  <TranslationSet>
+    <Translation>
+      <From>obstetrics[MeSH Terms]</From>
+      <To>"obstetrics"[MeSH Terms]</To>
+    </Translation>
+  </TranslationSet>
+  <TranslationStack>
+    <TermSet>
+      <Term>"obstetrics"[MeSH Terms]</Term>
+      <Explode>Y</Explode>
+    </TermSet>
+    <OP>GROUP</OP>
+  </TranslationStack>
+  <ErrorList>
+    <PhraseNotFound>fleegle[MeSH Terms]</PhraseNotFound>
+    <PhraseNotFound>bingo[MeSH Terms]</PhraseNotFound>
+  </ErrorList>
+</Result>

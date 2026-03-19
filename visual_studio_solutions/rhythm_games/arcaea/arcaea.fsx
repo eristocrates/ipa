@@ -1,5 +1,5 @@
-#r @"C:\Repositories\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
-#r @"C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework\bin\Debug\net10.0\ResourceDescriptionFramework.dll"
+#r @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
+#r @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\ResourceDescriptionFramework\bin\Debug\net10.0\ResourceDescriptionFramework.dll"
 
 
 #r "nuget: Iride"
@@ -36,7 +36,7 @@ let logLines = ResizeArray<string>()
 module songlist =
     [<Literal>]
     let filePath =
-        @"C:\Repositories\ipa\visual_studio_solutions\rhythm_games\arcaea\secret\moe.low.arc\files\cb\active\songs\songlist"
+        @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\rhythm_games\arcaea\secret\moe.low.arc\files\cb\active\songs\songlist"
 
     type Provider = JsonProvider<filePath>
     let json = Provider.Load(filePath)

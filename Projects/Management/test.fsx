@@ -4,8 +4,8 @@
 #r "nuget: Newtonsoft.Json"
 #r "nuget: Iride"
 #r "nuget: FsHttp"
-#r @"C:\Repositories\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
-#r @"C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework\bin\Debug\net10.0\ResourceDescriptionFramework.dll"
+#r @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
+#r @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\ResourceDescriptionFramework\bin\Debug\net10.0\ResourceDescriptionFramework.dll"
 #endif
 
 open System
@@ -79,7 +79,7 @@ module bfo =
 let graph =
   NamedGraph.inhabitant
       (mint.prefixID "urn:adhoc:graph" "graph")
-      @"C:\Repositories\ipa\visual_studio_solutions\control\Management\graph"
+      @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\control\Management\graph"
 
 // part._prefix "of" --- owl.sameAs --> bfo.part_of >-: graph
 

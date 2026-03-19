@@ -1,0 +1,1266 @@
+{
+    "displayFieldName": "FACILITYID",
+    "fieldAliases": {
+        "OBJECTID": "OBJECTID",
+        "FACILITYID": "FACILITYID",
+        "ATTACHEDTOID": "ATTACHEDTOID",
+        "NOTES": "NOTES",
+        "ACRES": "ACRES",
+        "GLOBALID": "GLOBALID",
+        "Shape_Length": "Shape_Length",
+        "Shape_Area": "Shape_Area"
+    },
+    "geometryType": "esriGeometryPolygon",
+    "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+    },
+    "fields": [
+        {
+            "name": "OBJECTID",
+            "type": "esriFieldTypeOID",
+            "alias": "OBJECTID"
+        },
+        {
+            "name": "FACILITYID",
+            "type": "esriFieldTypeString",
+            "alias": "FACILITYID",
+            "length": 20
+        },
+        {
+            "name": "ATTACHEDTOID",
+            "type": "esriFieldTypeString",
+            "alias": "ATTACHEDTOID",
+            "length": 15
+        },
+        {
+            "name": "NOTES",
+            "type": "esriFieldTypeString",
+            "alias": "NOTES",
+            "length": 255
+        },
+        {
+            "name": "ACRES",
+            "type": "esriFieldTypeDouble",
+            "alias": "ACRES"
+        },
+        {
+            "name": "GLOBALID",
+            "type": "esriFieldTypeGlobalID",
+            "alias": "GLOBALID",
+            "length": 38
+        },
+        {
+            "name": "Shape_Length",
+            "type": "esriFieldTypeDouble",
+            "alias": "Shape_Length"
+        },
+        {
+            "name": "Shape_Area",
+            "type": "esriFieldTypeDouble",
+            "alias": "Shape_Area"
+        }
+    ],
+    "features": [
+        {
+            "OBJECTID": 1,
+            "FACILITYID": "MOF32",
+            "NOTES": "Includes drainage area from P0183. MOF84 outfalls to MOF32",
+            "ACRES": 162.4,
+            "GLOBALID": "{35784759-8313-482A-857C-65EB751D799B}",
+            "Shape_Length": 7298.9380727194048,
+            "Shape_Area": 887752.07736105029,
+            "name": "Outfall_Drainage_Area_MOF.0c1f3cc8974c30601ef8067caa59ae3a018dde622f68bd721cfd5299b2d72ff0"
+        },
+        {
+            "OBJECTID": 2,
+            "FACILITYID": "MOF25",
+            "NOTES": "Same drainage area as P0199. MS4 weir also present.",
+            "ACRES": 103.93,
+            "GLOBALID": "{A34AAF7E-F331-42CF-8215-7487C38294A4}",
+            "Shape_Length": 5756.7572045756287,
+            "Shape_Area": 568344.29359473579,
+            "name": "Outfall_Drainage_Area_MOF.ca4836f41fcaa9aa9c8988b171a541ac2ac58ea2f4e570c7a453c0021bf6dde9"
+        },
+        {
+            "OBJECTID": 3,
+            "FACILITYID": "MOF14",
+            "NOTES": "Includes P0108 drainage area.",
+            "ACRES": 224.20000000000002,
+            "GLOBALID": "{7DAD23E6-094D-4F84-B2CF-77B0055DBB75}",
+            "Shape_Length": 6956.34865827487,
+            "Shape_Area": 1225955.1948176776,
+            "name": "Outfall_Drainage_Area_MOF.59f941b523e24ce286d08c6e42a874316d6c5282b6ba2fdedf86a17cf8ede6f1"
+        },
+        {
+            "OBJECTID": 4,
+            "FACILITYID": "MOF26",
+            "NOTES": "MOF14 outfalls to MOF26",
+            "ACRES": 102.3,
+            "GLOBALID": "{A3D0D1CA-D190-441E-809E-C120DB7F7C49}",
+            "Shape_Length": 6137.8055542961056,
+            "Shape_Area": 559476.57367396145,
+            "name": "Outfall_Drainage_Area_MOF.8fa8383f52435de3a7dafb953bb9b10d96c48c12c0f9341065a39ade8b449f99"
+        },
+        {
+            "OBJECTID": 5,
+            "FACILITYID": "MOF23",
+            "NOTES": "Same drainage area as P0174",
+            "ACRES": 62.24001029,
+            "GLOBALID": "{4411AB48-BB7A-4D65-8385-52DC1596F4C3}",
+            "Shape_Length": 6135.9345913250891,
+            "Shape_Area": 339962.42262901238,
+            "name": "Outfall_Drainage_Area_MOF.c931cae425eb2b1c7e8e292af7387c25b9a6064397b2d8fc43ec07493d1777f5"
+        },
+        {
+            "OBJECTID": 6,
+            "FACILITYID": "MOF2",
+            "NOTES": "Same drainage area as P0005",
+            "ACRES": 306.24,
+            "GLOBALID": "{5C967C14-481E-4728-8A21-4EB5EABADBAD}",
+            "Shape_Length": 12713.518790798444,
+            "Shape_Area": 1673620.9297309786,
+            "name": "Outfall_Drainage_Area_MOF.09973bf4d94dd95028ab0e8ff684cdb25f590b72882bdb725299cdbf3794a93a"
+        },
+        {
+            "OBJECTID": 7,
+            "FACILITYID": "MOF33",
+            "ACRES": 279.15000000000003,
+            "GLOBALID": "{A8EAB25C-357D-4F63-96DA-00F54C8F9E74}",
+            "Shape_Length": 9159.8282148306353,
+            "Shape_Area": 1525583.9151123727,
+            "name": "Outfall_Drainage_Area_MOF.bad60ea2d55b9d56b9e7ab2e52f8a6def6c987cc3de4d032dd252dd4b735328a"
+        },
+        {
+            "OBJECTID": 8,
+            "FACILITYID": "MOF12",
+            "ACRES": 1072.72,
+            "GLOBALID": "{60013B23-8BAA-49AB-865A-82C8A9ED4AD8}",
+            "Shape_Length": 20794.838023032913,
+            "Shape_Area": 5864074.3187825689,
+            "name": "Outfall_Drainage_Area_MOF.01efe45536b6dba603693b1adf8f3c2b006420c7b6d9100b5f1c4907f3c3b9c8"
+        },
+        {
+            "OBJECTID": 9,
+            "FACILITYID": "MOF120",
+            "NOTES": "Contains drainage area from P0322",
+            "ACRES": 67.6,
+            "GLOBALID": "{39DB0921-DABA-4E81-AE87-1B60E677D0E6}",
+            "Shape_Length": 4436.989032052039,
+            "Shape_Area": 369962.24132779351,
+            "name": "Outfall_Drainage_Area_MOF.4be54841aecdb2c56f11be9ae97a84b46c4b9011df2ec5cf889d2db6809cd3ed"
+        },
+        {
+            "OBJECTID": 10,
+            "FACILITYID": "MOF21",
+            "NOTES": "Contains drainage area for P0135.",
+            "ACRES": 47.77,
+            "GLOBALID": "{0DC78031-9BA0-479E-A0CC-2AED1577A634}",
+            "Shape_Length": 4175.6195527620421,
+            "Shape_Area": 261467.12053380182,
+            "name": "Outfall_Drainage_Area_MOF.fe6b11a99ecc69755ffbf4268792f0287ef150ff777d272aebccfd5aaa132924"
+        },
+        {
+            "OBJECTID": 11,
+            "FACILITYID": "MOF102",
+            "NOTES": "MOF21 and MOF120 outfall to MOF102.",
+            "ACRES": 3.72,
+            "GLOBALID": "{80A5C276-DBC2-4035-9FD9-7597A6694F37}",
+            "Shape_Length": 889.297703205724,
+            "Shape_Area": 20396.273397797748,
+            "name": "Outfall_Drainage_Area_MOF.22817d135701e78cedfebf8f7cfb203425af1b662bd1ffe5dd66cf9d11373e00"
+        },
+        {
+            "OBJECTID": 12,
+            "FACILITYID": "MOF135",
+            "NOTES": "MOF134 & MOF102 outfall to MOF20. Contains drainage area for P0101.",
+            "ACRES": 73.61,
+            "GLOBALID": "{7A2852C5-0AC7-4B64-9EC2-DE18F170D330}",
+            "Shape_Length": 4256.9435802998714,
+            "Shape_Area": 402872.3720692746,
+            "name": "Outfall_Drainage_Area_MOF.95aa3752760dc09117e55babaf4dfb3f7f75d24edb1d864b78ea2617147bae33"
+        },
+        {
+            "OBJECTID": 13,
+            "FACILITYID": "MOF20",
+            "NOTES": "MS4 weir present",
+            "ACRES": 69.93,
+            "GLOBALID": "{280B1F54-C415-4315-BBEE-47F8C7F256D3}",
+            "Shape_Length": 4966.4020362344618,
+            "Shape_Area": 382784.22884243482,
+            "name": "Outfall_Drainage_Area_MOF.748c05a06ec10cd4fd963c939aee3a2990a7347007304365bdfcd6d811a5ef82"
+        },
+        {
+            "OBJECTID": 14,
+            "FACILITYID": "MOF1",
+            "NOTES": "MOF133 outfalls to MOF1. Missing drainage area at point of discharge of ditch.",
+            "ACRES": 132.24,
+            "GLOBALID": "{29AF9193-08D5-4B69-835C-0D5165B345DF}",
+            "Shape_Length": 5839.2655530156362,
+            "Shape_Area": 722777.81675816025,
+            "name": "Outfall_Drainage_Area_MOF.9206eaab6aa4cb8dda3dc6dd2dcabb10cc01902051ba9c9d9a95c19c17f98567"
+        },
+        {
+            "OBJECTID": 15,
+            "FACILITYID": "MOF72",
+            "ACRES": 147.42000000000002,
+            "GLOBALID": "{2061F4A9-9DFB-4E57-BB40-16AEA486D085}",
+            "Shape_Length": 5477.0454678797178,
+            "Shape_Area": 805757.1810713,
+            "name": "Outfall_Drainage_Area_MOF.407f3fdb4425566b99998c7a95ecc243fba0e0f0482ba4ae79b50f3f6f968fb3"
+        },
+        {
+            "OBJECTID": 16,
+            "FACILITYID": "MOF133",
+            "NOTES": "MS4 weir.",
+            "ACRES": 214.25,
+            "GLOBALID": "{772E6770-42B3-4E67-B713-BE80AEF2EBE1}",
+            "Shape_Length": 7074.4152109384922,
+            "Shape_Area": 1170966.530969694,
+            "name": "Outfall_Drainage_Area_MOF.7690f9920198b952bb3f48c22d203c4e57dba6754748ccc11538b22b49ddd466"
+        },
+        {
+            "OBJECTID": 17,
+            "FACILITYID": "MOF4",
+            "NOTES": "Same drainage area as P0036",
+            "ACRES": 87.45,
+            "GLOBALID": "{7DBDF169-3B03-44F8-B4B7-5BF0B294BEED}",
+            "Shape_Length": 4930.8896681306223,
+            "Shape_Area": 477865.1829395016,
+            "name": "Outfall_Drainage_Area_MOF.4f4ba562096a496948acf15a787a794195f9c3cbe37dcafec154ae836997e266"
+        },
+        {
+            "OBJECTID": 18,
+            "FACILITYID": "MOF19",
+            "NOTES": "MOF4 outfalls to to MOF19. Includes drainage from P0129.",
+            "ACRES": 10.07,
+            "GLOBALID": "{117FDD7F-A935-4FE3-A52A-0CD6C7AC8CC6}",
+            "Shape_Length": 1668.746272631324,
+            "Shape_Area": 55072.614777260089,
+            "name": "Outfall_Drainage_Area_MOF.8a21a4e9c40826bc9ab3efbd9112e29928fa651f1cae9f19352b58d626e8ae88"
+        },
+        {
+            "OBJECTID": 19,
+            "FACILITYID": "MOF101",
+            "ACRES": 132.68,
+            "GLOBALID": "{2951D32E-3F95-42AB-AF57-F364154551FA}",
+            "Shape_Length": 5170.5966729376969,
+            "Shape_Area": 726083.61105848779,
+            "name": "Outfall_Drainage_Area_MOF.262bad671037a9af91e765ad7c7089f352e133bb5a77830f1400fb3c5bcffb67"
+        },
+        {
+            "OBJECTID": 20,
+            "FACILITYID": "MOF95",
+            "ACRES": 1367.44,
+            "GLOBALID": "{9640273B-B608-493A-B50D-0EC37E772125}",
+            "Shape_Length": 23964.913910546155,
+            "Shape_Area": 7484056.8626346411,
+            "name": "Outfall_Drainage_Area_MOF.fda36b8d30e92bb571024a862e165d210363b2e09e2ea66b7e9e8e3fca6f9193"
+        },
+        {
+            "OBJECTID": 21,
+            "FACILITYID": "MOF68",
+            "NOTES": "Same drainage area as P0147",
+            "ACRES": 63.11753838,
+            "GLOBALID": "{DC9E83B9-9B2F-4870-BF3C-A1BD3C0F664D}",
+            "Shape_Length": 3570.8869136115113,
+            "Shape_Area": 345019.39959730092,
+            "name": "Outfall_Drainage_Area_MOF.4a179afa81840444d1eb51059765ad47dc15e91837bee6e318b1ae129056eb40"
+        },
+        {
+            "OBJECTID": 22,
+            "FACILITYID": "MOF123",
+            "NOTES": "P0194 & P0195 drainage areas contribute to MOF123",
+            "ACRES": 26.27,
+            "GLOBALID": "{E1F97D30-B788-4601-82CB-F8FF532E211D}",
+            "Shape_Length": 3270.2397692216987,
+            "Shape_Area": 143711.36102497843,
+            "name": "Outfall_Drainage_Area_MOF.f5490571e01da893c3a03f4b79b90634b8223b8ce989dbe79570fbcb03ad6e5a"
+        },
+        {
+            "OBJECTID": 23,
+            "FACILITYID": "MOF126",
+            "ACRES": 118.42,
+            "GLOBALID": "{6A110F92-6028-48E5-B3AB-0DB9CCE7D3D6}",
+            "Shape_Length": 5414.6581631501376,
+            "Shape_Area": 647756.68898821564,
+            "name": "Outfall_Drainage_Area_MOF.9154b128af6e176b3d6194f2031ad4c35dbbb0a87f51d0c002686e86a410a0ed"
+        },
+        {
+            "OBJECTID": 24,
+            "FACILITYID": "MOF38",
+            "NOTES": "Includes P0196 & P0334",
+            "ACRES": 582.82,
+            "GLOBALID": "{DACDF9AE-D000-4A15-A7C0-4A81659DB4AF}",
+            "Shape_Length": 15761.337289116043,
+            "Shape_Area": 3187425.12493131,
+            "name": "Outfall_Drainage_Area_MOF.952f48e6cb0f0320bbc1bc0f4cdb1a68907d2ba4e6958eb5fd3d397a0dc9b5bb"
+        },
+        {
+            "OBJECTID": 25,
+            "FACILITYID": "MOF87",
+            "NOTES": "Inlcudes drainage area for P0193",
+            "ACRES": 226.88,
+            "GLOBALID": "{ADEDFAA3-A9C5-451D-93AC-5914F7937BA8}",
+            "Shape_Length": 8127.9052277390947,
+            "Shape_Area": 1240752.5904110454,
+            "name": "Outfall_Drainage_Area_MOF.1d91f1690e4080f5aed76093931f754fd4d64645a824badefa55d390eb1c018d"
+        },
+        {
+            "OBJECTID": 26,
+            "FACILITYID": "MOF77",
+            "ACRES": 72.320000000000007,
+            "GLOBALID": "{C2A6EA11-CCA7-4492-86B4-4D98E35282A4}",
+            "Shape_Length": 5126.864579286952,
+            "Shape_Area": 395574.06877202983,
+            "name": "Outfall_Drainage_Area_MOF.c344d508a06c1ed8650a74f58ad66f6085b1d722b2f064ae963eab0c2cc1062c"
+        },
+        {
+            "OBJECTID": 27,
+            "FACILITYID": "MOF124",
+            "NOTES": "MOF126, MOF38, MOF123, MOF87 & MOF77 outfall to MOF124. Includes drainage from P0189, P0202 and P0192.",
+            "ACRES": 119.83,
+            "GLOBALID": "{E105DD3F-FDCD-40EC-BC03-B9C67FACBD55}",
+            "Shape_Length": 5133.5746308473326,
+            "Shape_Area": 655443.99434190081,
+            "name": "Outfall_Drainage_Area_MOF.242c77a97cb6b1ae5bc3734ee510e325c9d2f58ca620be63b6899fb345e67c91"
+        },
+        {
+            "OBJECTID": 28,
+            "FACILITYID": "MOF117",
+            "NOTES": "MOF101 & MOF95 outfall to MOF117. Includes drainage from P0089.",
+            "ACRES": 643.39,
+            "GLOBALID": "{C855BC32-84AC-408E-8C8F-20AA89873AA9}",
+            "Shape_Length": 11322.826430629782,
+            "Shape_Area": 3519970.0513792415,
+            "name": "Outfall_Drainage_Area_MOF.0a184688364282575cc5aa3ca50e192a15f1a178fddd6f9d8fb698afa91737a3"
+        },
+        {
+            "OBJECTID": 29,
+            "FACILITYID": "MOF99",
+            "NOTES": "Does not include drainage all the way to termination of County Drainage Easement.",
+            "ACRES": 38.80739054,
+            "GLOBALID": "{547EC355-32DF-4907-BE4B-26D92E2946B3}",
+            "Shape_Length": 3792.1484910953586,
+            "Shape_Area": 265317.01066439849,
+            "name": "Outfall_Drainage_Area_MOF.dad9b0c33732e390ee122a109679f35bec09496782322a347fb08a2b778a897b"
+        },
+        {
+            "OBJECTID": 30,
+            "FACILITYID": "MOF97",
+            "NOTES": "No drainage area for ditch associated with LC drainage easement. Some missing drainage from Derbyshire.",
+            "ACRES": 169.23,
+            "GLOBALID": "{542D943C-F355-4196-B10D-576B52C0728D}",
+            "Shape_Length": 6640.8292211008666,
+            "Shape_Area": 925583.65454263124,
+            "name": "Outfall_Drainage_Area_MOF.a5cf28f6ad1e83e03b9e8f728d63a08eae90de4b4dca0b3f6d5c48f3d03364a2"
+        },
+        {
+            "OBJECTID": 31,
+            "FACILITYID": "MOF41",
+            "NOTES": "Missing drainage for ditch associated with LC drainage easement. Small area of false additional drainage from Derbyshire.",
+            "ACRES": 78.42,
+            "GLOBALID": "{735587A9-DBAD-4501-AB30-A93C77B9F101}",
+            "Shape_Length": 4859.889320647394,
+            "Shape_Area": 428876.0171327556,
+            "name": "Outfall_Drainage_Area_MOF.053e6a677885cefa9902b9b045d5302b423a7cb33dd3e9127039e092a75e73d5"
+        },
+        {
+            "OBJECTID": 32,
+            "FACILITYID": "MOF130",
+            "NOTES": "Includes many FDOT and COT SWMAs. Inlcudes P0006",
+            "ACRES": 2193.82,
+            "GLOBALID": "{3D366AB4-2F13-4CBE-9BD4-DF0AD93CD3A8}",
+            "Shape_Length": 32305.27036088665,
+            "Shape_Area": 11993095.420842558,
+            "name": "Outfall_Drainage_Area_MOF.94de6da1bde2b7b19631e88f997f98ab642b41e846b572d0b4f5ac02bef0d7a5"
+        },
+        {
+            "OBJECTID": 33,
+            "FACILITYID": "MOF67",
+            "NOTES": "Same drainage area as P0008. MS4 weir present.",
+            "ACRES": 53.83,
+            "GLOBALID": "{94CEA851-254B-4917-9A34-385C5D2F45CC}",
+            "Shape_Length": 4408.0747004683344,
+            "Shape_Area": 294345.71505485603,
+            "name": "Outfall_Drainage_Area_MOF.f0e3b692b78ba96ef40c075380d3234cd7e6cf56f769a69c0fd68390d89d03a2"
+        },
+        {
+            "OBJECTID": 34,
+            "FACILITYID": "MOF114",
+            "ACRES": 54.45,
+            "GLOBALID": "{FDA41F4B-AB75-4E16-8E17-4BE7EE310CA2}",
+            "Shape_Length": 5121.9520599298785,
+            "Shape_Area": 297874.1393245596,
+            "name": "Outfall_Drainage_Area_MOF.281c0dc45188142fa6b43b6040f1ba921b5c6ce9abe7ac2931ff426481d95631"
+        },
+        {
+            "OBJECTID": 35,
+            "FACILITYID": "MOF76",
+            "ACRES": 64.58,
+            "GLOBALID": "{7685ADC4-5B93-459A-84AC-3BD7FBBAB0EB}",
+            "Shape_Length": 4539.6417722407759,
+            "Shape_Area": 353316.15867259458,
+            "name": "Outfall_Drainage_Area_MOF.47b4c572cddad8d733e1436785415fed2a087f00a35c200285eea7d5ccd49e28"
+        },
+        {
+            "OBJECTID": 36,
+            "FACILITYID": "MOF59",
+            "NOTES": "MOF76 outfalls to MOF59. Includes drainage from P0203 & P0002",
+            "ACRES": 222.61,
+            "GLOBALID": "{C095BA33-0FC8-412B-92A5-74637B2B4BC0}",
+            "Shape_Length": 9187.6487446159845,
+            "Shape_Area": 1212190.803112183,
+            "name": "Outfall_Drainage_Area_MOF.286855b11eb7c506d8c668008ed311304b7ff08fe97a113390f220670b48062a"
+        },
+        {
+            "OBJECTID": 37,
+            "FACILITYID": "MOF52",
+            "NOTES": "MOF59 outfalls to MOF52. Includes drainage from P0003.",
+            "ACRES": 31.68,
+            "GLOBALID": "{55F5911D-EA17-400A-9F94-8A7EF645A3C3}",
+            "Shape_Length": 3450.7961623313545,
+            "Shape_Area": 173005.46556234825,
+            "name": "Outfall_Drainage_Area_MOF.2ea06cb34017b53c4bd0e239018deeb85b19fd2a9d77f3dcafad68fb4ceb7719"
+        },
+        {
+            "OBJECTID": 38,
+            "FACILITYID": "MOF78",
+            "ACRES": 370.95,
+            "GLOBALID": "{59D83EDE-46EA-426E-A0BA-F4DB31770AFD}",
+            "Shape_Length": 10936.356686531146,
+            "Shape_Area": 2029223.3303282654,
+            "name": "Outfall_Drainage_Area_MOF.1b6de0c8706d520b303cbb8e809e97642e6bc16e1cafc4a2776df066e8758308"
+        },
+        {
+            "OBJECTID": 39,
+            "FACILITYID": "MOF64",
+            "ACRES": 55.44,
+            "GLOBALID": "{AA2356BF-DC21-4580-BB31-69AEBE14FA23}",
+            "Shape_Length": 3909.5673230597558,
+            "Shape_Area": 303264.9900908955,
+            "name": "Outfall_Drainage_Area_MOF.986ec0a746b84e1d18ca6aa0aa9cfee8172e53c172d9d4331c9ac630158236bd"
+        },
+        {
+            "OBJECTID": 40,
+            "FACILITYID": "MOF119",
+            "NOTES": "Same drainage as P0211. Includes drainage from P0091",
+            "ACRES": 1469.38,
+            "GLOBALID": "{5DF43C11-D0DA-4386-80BE-7307E58ECFF0}",
+            "Shape_Length": 21572.355525519994,
+            "Shape_Area": 8023793.9381685052,
+            "name": "Outfall_Drainage_Area_MOF.044a0ba657912190f439d83bf2678dcbb013281ee847046899946e8252bb56ab"
+        },
+        {
+            "OBJECTID": 41,
+            "FACILITYID": "MOF48",
+            "NOTES": "Includes drainage from P0180",
+            "ACRES": 34.910000000000004,
+            "GLOBALID": "{BF2751D7-AB05-4166-B7E5-4DC08E107D5A}",
+            "Shape_Length": 10520.275026320738,
+            "Shape_Area": 190606.02534577734,
+            "name": "Outfall_Drainage_Area_MOF.5e44d217f54c4d2cc421a5e0439bc154231644d71a0dfe0dfd83e64a16bdc488"
+        },
+        {
+            "OBJECTID": 42,
+            "FACILITYID": "MOF103",
+            "ACRES": 190.21,
+            "GLOBALID": "{1E76227A-8E42-4B20-91AE-A15C795E7382}",
+            "Shape_Length": 7461.7793452983733,
+            "Shape_Area": 1042183.8839359387,
+            "name": "Outfall_Drainage_Area_MOF.d084ffd162aa9576dd0fa1e101a27e0b2ecbdaca64cb4c15ede296195e06d855"
+        },
+        {
+            "OBJECTID": 43,
+            "FACILITYID": "MOF107",
+            "NOTES": "Contains drainage from Maylor Rd Pond, P0103, P0098, LCSB Ponds, City Ponds and private SWMA in Westminister Oaks.",
+            "ACRES": 309,
+            "GLOBALID": "{DB442EE3-391A-4DD4-AC36-91A604EAD3CE}",
+            "Shape_Length": 10054.879492247559,
+            "Shape_Area": 1689102.6024595171,
+            "name": "Outfall_Drainage_Area_MOF.1c193290bfd2837083090d9ddad443ca8bc97e0b77fca7bf6f966c3206ceb5cd"
+        },
+        {
+            "OBJECTID": 44,
+            "FACILITYID": "MOF49",
+            "ACRES": 407.71000000000004,
+            "GLOBALID": "{77ADDF58-8B0E-429E-BA9B-5905ED77038D}",
+            "Shape_Length": 13489.301463620588,
+            "Shape_Area": 2227655.3187662386,
+            "name": "Outfall_Drainage_Area_MOF.ff958ff4ae0a45e1734f7255c5ab5f869d3c8a4206e3b10724c411a70d623bfe"
+        },
+        {
+            "OBJECTID": 45,
+            "FACILITYID": "MOF112",
+            "ACRES": 90.43,
+            "GLOBALID": "{F2F59C76-FBCC-42C8-8DFA-98B2C12ED7E9}",
+            "Shape_Length": 4219.098605337892,
+            "Shape_Area": 494154.48684520827,
+            "name": "Outfall_Drainage_Area_MOF.dd33ac27b810a6c1a078781b52d71901c7d07ef41703599201d07c0eb563b1aa"
+        },
+        {
+            "OBJECTID": 46,
+            "FACILITYID": "MOF85",
+            "NOTES": "Contains drainage area for P0042",
+            "ACRES": 148.70000000000002,
+            "GLOBALID": "{6E97CF26-66DC-4625-83CA-123EE6CA3F60}",
+            "Shape_Length": 7759.0644598548233,
+            "Shape_Area": 812438.05868899147,
+            "name": "Outfall_Drainage_Area_MOF.f944a624c6b78b10a2c7bf944f66549c401a2131c662f76cece13354b999b594"
+        },
+        {
+            "OBJECTID": 47,
+            "FACILITYID": "MOF40",
+            "ACRES": 288.04,
+            "GLOBALID": "{3721DBFC-884B-4823-B7AA-297AD9910468}",
+            "Shape_Length": 9822.0004490916326,
+            "Shape_Area": 1573528.0995398348,
+            "name": "Outfall_Drainage_Area_MOF.65e3d18cace459d8bed6e823be754cdd77f0d73ad05838b204012c3c0072853a"
+        },
+        {
+            "OBJECTID": 48,
+            "FACILITYID": "MOF35",
+            "NOTES": "Includes P0307 and various private & LCSB SWMAs. Missing some inlets drainage towards outfall.",
+            "ACRES": 142.86,
+            "GLOBALID": "{229D7F3B-F6CD-4AAE-9AC8-47C20AAF1BD8}",
+            "Shape_Length": 8939.8776046967487,
+            "Shape_Area": 780342.96224147291,
+            "name": "Outfall_Drainage_Area_MOF.9eb97f16dc5ebdc0cd3896dda007b615b89a67489eeca5d348dfc87a4cc9ba6d"
+        },
+        {
+            "OBJECTID": 49,
+            "FACILITYID": "MOF62",
+            "ACRES": 27.11,
+            "GLOBALID": "{FDC0E75C-816D-4E04-B74F-F05CC04CC9D6}",
+            "Shape_Length": 3380.6292370546548,
+            "Shape_Area": 148403.54635339166,
+            "name": "Outfall_Drainage_Area_MOF.d0856a60f595ca6aac538780b97f122fe39afe83d32017b7eb946a18935f4d53"
+        },
+        {
+            "OBJECTID": 50,
+            "FACILITYID": "MOF22",
+            "ACRES": 63.79,
+            "GLOBALID": "{D3581A13-6EF6-4399-B375-202A0D80F108}",
+            "Shape_Length": 4427.613023131511,
+            "Shape_Area": 349093.00054481649,
+            "name": "Outfall_Drainage_Area_MOF.b1579aeb2d08b960becce02eff424e72e4733eb19c83e3454718857cbeb3477e"
+        },
+        {
+            "OBJECTID": 51,
+            "FACILITYID": "MOF75",
+            "ACRES": 56.050000000000004,
+            "GLOBALID": "{4FF98BA3-B20B-440C-AA85-1A5E959B8D36}",
+            "Shape_Length": 3812.4216060677868,
+            "Shape_Area": 306366.35266164882,
+            "name": "Outfall_Drainage_Area_MOF.62609eca330497223692864225dba47221372f2ce9c9ea85f49769a7c6043184"
+        },
+        {
+            "OBJECTID": 52,
+            "FACILITYID": "MOF36",
+            "NOTES": "MOF29 outfalls to MOF36. Contains P0310 & various upstream private SWMAs. MS4 weir present.",
+            "ACRES": 1077.16,
+            "GLOBALID": "{0905B5D3-A06F-4165-9220-950EAC78711E}",
+            "Shape_Length": 25234.446738014009,
+            "Shape_Area": 6621235.9590270733,
+            "name": "Outfall_Drainage_Area_MOF.5807db4fac64802b33ca793e76b9722471a6a6db99013fab6b833e17275c2800"
+        },
+        {
+            "OBJECTID": 53,
+            "FACILITYID": "MOF57",
+            "ACRES": 357.94,
+            "GLOBALID": "{EE58C546-17B7-431E-8DC0-DD7A4123F90E}",
+            "Shape_Length": 9901.6540254359334,
+            "Shape_Area": 1956108.2047632006,
+            "name": "Outfall_Drainage_Area_MOF.1ba8e4773de037aa4ace9b7df5e8cd7219d1e5013e7b5d0300bf8404ee0a74e4"
+        },
+        {
+            "OBJECTID": 54,
+            "FACILITYID": "MOF90",
+            "ACRES": 84.39220317,
+            "GLOBALID": "{588ED66A-77D3-41AB-846B-6CA1E074050B}",
+            "Shape_Length": 6368.0177483375828,
+            "Shape_Area": 461086.16467673657,
+            "name": "Outfall_Drainage_Area_MOF.7f0c16be2056ef4c0d91e40ee92b230ba99eaf6e51214f03ec7591233172f23e"
+        },
+        {
+            "OBJECTID": 55,
+            "FACILITYID": "MOF58",
+            "NOTES": "Same drainage area as P0169",
+            "ACRES": 50.73117422,
+            "GLOBALID": "{E90F5F4C-77DB-40D9-905B-857B46B7B138}",
+            "Shape_Length": 4965.2705229622406,
+            "Shape_Area": 277115.51097371953,
+            "name": "Outfall_Drainage_Area_MOF.2f051e898fd82a6eaee04a477cfc05258b06cffec35751166a0080d586d0118e"
+        },
+        {
+            "OBJECTID": 56,
+            "FACILITYID": "MOF110",
+            "ACRES": 347.94,
+            "GLOBALID": "{82C7ED30-64A8-4FE1-B89E-E0D7AE30EB13}",
+            "Shape_Length": 10054.047893785179,
+            "Shape_Area": 1900617.82126759,
+            "name": "Outfall_Drainage_Area_MOF.f65b38f35914c3f60c6940084a52ef4dd7a2d991876fd04a6096b42d71bb5464"
+        },
+        {
+            "OBJECTID": 57,
+            "FACILITYID": "MOF83",
+            "ACRES": 2686.16,
+            "GLOBALID": "{798B8993-8713-48E0-9130-59611006E8F6}",
+            "Shape_Length": 32014.315449777274,
+            "Shape_Area": 14670111.309125246,
+            "name": "Outfall_Drainage_Area_MOF.b40660c8b4fa69a7de2bf297e2c23d83cbda4eaee11f17222ebf752cdcda929f"
+        },
+        {
+            "OBJECTID": 58,
+            "FACILITYID": "MOF60",
+            "ACRES": 336.56,
+            "GLOBALID": "{93112ECB-8EE5-447C-BC3A-F46738DB3A1D}",
+            "Shape_Length": 10232.304258527287,
+            "Shape_Area": 1843271.28951332,
+            "name": "Outfall_Drainage_Area_MOF.3187467309d65ec38f8e728c75aabde0c7114685fd5ad84128c3837343e5c670"
+        },
+        {
+            "OBJECTID": 59,
+            "FACILITYID": "MOF53",
+            "ACRES": 360.17,
+            "GLOBALID": "{8601C892-4D3A-471D-A8CC-D27A17A6A237}",
+            "Shape_Length": 10591.881993363111,
+            "Shape_Area": 1972017.702475427,
+            "name": "Outfall_Drainage_Area_MOF.a1e41c73c4601704862c0a8c53882d666c9f9979036146dba85582485bcd509e"
+        },
+        {
+            "OBJECTID": 60,
+            "FACILITYID": "MOF113",
+            "ACRES": 474.05,
+            "GLOBALID": "{36BD8DD0-B5B6-4E94-B2B4-FB1255FC9112}",
+            "Shape_Length": 13345.029124646268,
+            "Shape_Area": 2594983.4596259459,
+            "name": "Outfall_Drainage_Area_MOF.5fbdc7faa1573849db824d8721d391a9fa5f7c56e1653238596eb900408af0c8"
+        },
+        {
+            "OBJECTID": 61,
+            "FACILITYID": "MOF108",
+            "NOTES": "MOF113 outfalls to MOF108",
+            "ACRES": 19.81520226,
+            "GLOBALID": "{2AF19613-843A-43BC-9A3A-10722F753582}",
+            "Shape_Length": 2350.0305645791045,
+            "Shape_Area": 108450.29984727374,
+            "name": "Outfall_Drainage_Area_MOF.c23465a5ec6302a65b4c6c41036420db23b9a0176b3d22e38a4a6791103bd0ab"
+        },
+        {
+            "OBJECTID": 62,
+            "FACILITYID": "MOF128",
+            "ACRES": 162.77,
+            "GLOBALID": "{9CE8D9DA-250A-497B-A320-E4A49EC62E44}",
+            "Shape_Length": 7344.7104073397059,
+            "Shape_Area": 891692.21324735251,
+            "name": "Outfall_Drainage_Area_MOF.126dad8b836e46decb651f78dbe9d43226082ebbc1c9b00594063e0b824c1c67"
+        },
+        {
+            "OBJECTID": 63,
+            "FACILITYID": "MOF65",
+            "ACRES": 79.47,
+            "GLOBALID": "{48621D69-4458-454D-B222-92CBBA5C9988}",
+            "Shape_Length": 4677.2984591478607,
+            "Shape_Area": 435320.97627964272,
+            "name": "Outfall_Drainage_Area_MOF.51efcd578889b9b00abe137faa2c656a8b56600d7ac1ad1afcbbf77f252cadfd"
+        },
+        {
+            "OBJECTID": 64,
+            "FACILITYID": "MOF47",
+            "ACRES": 58.980000000000004,
+            "GLOBALID": "{60CDBFA9-1755-4FFC-856C-DF68FB30D695}",
+            "Shape_Length": 5896.1292934214207,
+            "Shape_Area": 321823.35075169889,
+            "name": "Outfall_Drainage_Area_MOF.abedcbed6b531b0d858126ae69869d86f19baaea79c9ef158f4b62426fbf3e27"
+        },
+        {
+            "OBJECTID": 65,
+            "FACILITYID": "MOF96",
+            "NOTES": "Contains drainage area for P0156 & P0154",
+            "ACRES": 60.6,
+            "GLOBALID": "{A61F345D-11C0-4AD0-A512-685B97B4009D}",
+            "Shape_Length": 4123.3480456230291,
+            "Shape_Area": 330972.40663881565,
+            "name": "Outfall_Drainage_Area_MOF.144fc967b26a0f30327e5662aad8ed2460c5ee0a312e1eceeb547fb2879089e8"
+        },
+        {
+            "OBJECTID": 66,
+            "FACILITYID": "MOF55",
+            "ACRES": 221.51,
+            "GLOBALID": "{97547A27-F4E4-4C96-B43C-0EDA9A2A6A90}",
+            "Shape_Length": 8262.5018134420043,
+            "Shape_Area": 1213678.1166490177,
+            "name": "Outfall_Drainage_Area_MOF.c51e502ef66031b4395fdbfe57552befb94d5fb21d967765d6fb43559fe364c5"
+        },
+        {
+            "OBJECTID": 67,
+            "FACILITYID": "MOF74",
+            "ACRES": 929.33,
+            "GLOBALID": "{6C0741B6-EFD1-4910-8F98-E92DA5EE3B70}",
+            "Shape_Length": 16966.821142756795,
+            "Shape_Area": 5082609.7000641832,
+            "name": "Outfall_Drainage_Area_MOF.3145d0c1f12ebdd3bbd0eb304453f64a08b3a9df8f4122578cb9679a4e57605a"
+        },
+        {
+            "OBJECTID": 68,
+            "FACILITYID": "MOF7",
+            "NOTES": "Same drainage area as P0051",
+            "ACRES": 79.55922916,
+            "GLOBALID": "{CB076E48-81B5-47C7-933F-7F4D302A28D5}",
+            "Shape_Length": 5170.6884572464824,
+            "Shape_Area": 435778.48855579522,
+            "name": "Outfall_Drainage_Area_MOF.7c919e3a02c3cc37f4f71e90c5b087939ea79a8ca50472731f83a33bb41de3e3"
+        },
+        {
+            "OBJECTID": 69,
+            "FACILITYID": "MOF8",
+            "NOTES": "Same drainage area as P0055",
+            "ACRES": 53.44065659,
+            "GLOBALID": "{EF2E924E-5458-4017-A3BE-F44CD0964359}",
+            "Shape_Length": 3649.7186677212358,
+            "Shape_Area": 292721.08506807085,
+            "name": "Outfall_Drainage_Area_MOF.1b51024429d72fed70dbf7f623341748145c64407aa383db683eb30a383571bc"
+        },
+        {
+            "OBJECTID": 70,
+            "FACILITYID": "MOF10",
+            "NOTES": "Same drainage as P0061",
+            "ACRES": 103.29,
+            "GLOBALID": "{FEA2CF93-DB83-4FB3-93A8-80DE1B769602}",
+            "Shape_Length": 4638.05062166436,
+            "Shape_Area": 565805.87241987267,
+            "name": "Outfall_Drainage_Area_MOF.29fedbe8bb8db5ab01de6482ee54c856804a6168bae3702cbb7f59d7143d2ab1"
+        },
+        {
+            "OBJECTID": 71,
+            "FACILITYID": "MOF121",
+            "NOTES": "Contained within: P0052, P0053 & P0057. Also P0051/MOF7 drains to this MOF. Small acreage missing from this overall drainage area at Old Chemonie & Wintercreek crossdrain.",
+            "ACRES": 126.38000000000001,
+            "GLOBALID": "{0FD52257-4760-4C4E-A341-08070358FC69}",
+            "Shape_Length": 5525.2212649049961,
+            "Shape_Area": 692185.86864376941,
+            "name": "Outfall_Drainage_Area_MOF.7e5fccb481e2addbd708c6a9451d821bdf0d34ddb085c76ad3e9332bd507c58a"
+        },
+        {
+            "OBJECTID": 72,
+            "FACILITYID": "MOF9",
+            "NOTES": "Same drainage area as P0059",
+            "ACRES": 54.46395531,
+            "GLOBALID": "{A3363682-0BB2-4ABC-9D10-EADA64E924F5}",
+            "Shape_Length": 4017.4436629941979,
+            "Shape_Area": 298270.32850956713,
+            "name": "Outfall_Drainage_Area_MOF.b97f839108c11510ff33a90ac7670f48cd2514c14faf19df2b56e83e98450629"
+        },
+        {
+            "OBJECTID": 73,
+            "FACILITYID": "MOF6",
+            "NOTES": "MOF5 drains to MOF6. Contains P0039 and P0223. MOF5 outfalls to MOF6",
+            "ACRES": 1289.51,
+            "GLOBALID": "{73DA1BB7-41F7-41EB-9170-AE9E65F53176}",
+            "Shape_Length": 26842.249096166619,
+            "Shape_Area": 7062906.4853212107,
+            "name": "Outfall_Drainage_Area_MOF.d436b21ff6233446739c9079a9e77e949be981b978f4cd94189ee6a9b2b08349"
+        },
+        {
+            "OBJECTID": 74,
+            "FACILITYID": "MOF5",
+            "NOTES": "Drains to MOF6. Contains P0224, P0225, P0037 and many private SWMAs",
+            "ACRES": 1645.92,
+            "GLOBALID": "{A67060CF-E607-43C3-9B11-91EAB797451F}",
+            "Shape_Length": 24861.438011261824,
+            "Shape_Area": 9035461.7116727345,
+            "name": "Outfall_Drainage_Area_MOF.b7800ed680a6f35aed7ecbb1d80e654835b35028e6257cf1fe40db5a767d8bba"
+        },
+        {
+            "OBJECTID": 75,
+            "FACILITYID": "MOF66",
+            "ACRES": 89.26366017,
+            "GLOBALID": "{B7294F4A-A6B7-4390-AABD-A769C980FB54}",
+            "Shape_Length": 4706.3914728070222,
+            "Shape_Area": 488899.48008709191,
+            "name": "Outfall_Drainage_Area_MOF.60b9191488074cdcbc2a5514f9ccee9c8bed97f25bbde60f184b516244dbfc49"
+        },
+        {
+            "OBJECTID": 76,
+            "FACILITYID": "MOF17",
+            "NOTES": "Same drainage area as P0127",
+            "ACRES": 182.22,
+            "GLOBALID": "{C9173292-78F8-4291-8593-E2A623DCC204}",
+            "Shape_Length": 11094.882613504587,
+            "Shape_Area": 998063.81713930739,
+            "name": "Outfall_Drainage_Area_MOF.407eb9f3cf268cb01d8c47adecdb54a9f210d0d4af609cf30145e4d0d1a748e3"
+        },
+        {
+            "OBJECTID": 77,
+            "FACILITYID": "MOF54",
+            "NOTES": "Includes drainage from P0210",
+            "ACRES": 3.24552392,
+            "GLOBALID": "{EDC0F7D7-A162-45E2-A355-B4452205AD57}",
+            "Shape_Length": 5627.5000014064626,
+            "Shape_Area": 571125.42045755847,
+            "name": "Outfall_Drainage_Area_MOF.2ceeecd7b49c1b3afff134a3f8616403310117fb7020e5a9b63539348e6709ea"
+        },
+        {
+            "OBJECTID": 78,
+            "FACILITYID": "MOF109",
+            "NOTES": "Includes drainage from P0319 and P0320. MOF37 is included in this overall drainage area.",
+            "ACRES": 208.98000000000002,
+            "GLOBALID": "{8B7C4211-E7FC-47F0-BD3E-6C24135F4BC6}",
+            "Shape_Length": 7318.961665820505,
+            "Shape_Area": 1145083.6874261124,
+            "name": "Outfall_Drainage_Area_MOF.aba2218d1b270ffc67d58f425aad4d960727d0f8e74b3e10fcc8ac21976b9405"
+        },
+        {
+            "OBJECTID": 79,
+            "FACILITYID": "MOF73",
+            "NOTES": "Includes drainage from P0179 and P0134",
+            "ACRES": 707.31000000000006,
+            "GLOBALID": "{8F317C9F-DD8F-4C35-933E-4B9256DD2C7A}",
+            "Shape_Length": 15366.679599697702,
+            "Shape_Area": 3876716.4835843155,
+            "name": "Outfall_Drainage_Area_MOF.1c0df1228e728b4b7df59bcb53414f7a5ccd1f9d3d06404be7a373f7abcf480f"
+        },
+        {
+            "OBJECTID": 80,
+            "FACILITYID": "MOF61",
+            "NOTES": "Same drainage as P0173",
+            "ACRES": 145.58,
+            "GLOBALID": "{EB99C39A-ABA4-4320-BE1C-179F1ADA2810}",
+            "Shape_Length": 6059.7434893459113,
+            "Shape_Area": 798086.48475423071,
+            "name": "Outfall_Drainage_Area_MOF.3c6dac1dd16660dbf1604f599940d901d80643257c459f84aaf402d17620808b"
+        },
+        {
+            "OBJECTID": 81,
+            "FACILITYID": "MOF88",
+            "ACRES": 895.97,
+            "GLOBALID": "{71EDA3F8-BA9C-40AD-9F8E-4A0BABC045A3}",
+            "Shape_Length": 16448.334986138729,
+            "Shape_Area": 4910461.7706051115,
+            "name": "Outfall_Drainage_Area_MOF.4fd8343aaca99f86ca1d52ef0c732f4595c1085f0defd6b32054dc1a265878e6"
+        },
+        {
+            "OBJECTID": 82,
+            "FACILITYID": "MOF92",
+            "ACRES": 297.83115433,
+            "GLOBALID": "{52302A0A-9973-4ADC-A041-40EBA1D0EC39}",
+            "Shape_Length": 9296.36007849271,
+            "Shape_Area": 1634650.4872905617,
+            "name": "Outfall_Drainage_Area_MOF.60d3058ae0f317c2a947d0fe4810b629383e83832846d5da7423af9c03e51883"
+        },
+        {
+            "OBJECTID": 83,
+            "FACILITYID": "MOF127",
+            "NOTES": "Includes drainage from P0133",
+            "ACRES": 66.12,
+            "GLOBALID": "{412956BB-204B-4C1A-8188-F3642DC82BC7}",
+            "Shape_Length": 5808.0259649731452,
+            "Shape_Area": 362070.288880795,
+            "name": "Outfall_Drainage_Area_MOF.6a1aa65b5d282d75bde356101337ef9e5b34934b2fb388dcdb1ae8ca64b8f9b6"
+        },
+        {
+            "OBJECTID": 84,
+            "FACILITYID": "MOF45",
+            "NOTES": "Includes drainage for Lake Charles. Inlcudes drainage from P0109 and P0080.",
+            "ACRES": 238.34,
+            "GLOBALID": "{0B65AD4F-29D3-4EB3-A9B5-1D29AD2971CE}",
+            "Shape_Length": 10872.63382867033,
+            "Shape_Area": 1304941.9505045107,
+            "name": "Outfall_Drainage_Area_MOF.047c93c3ec31709f68d1b8f0e33c5adb4f52c567865b9b73c490dfcfd8097af5"
+        },
+        {
+            "OBJECTID": 85,
+            "FACILITYID": "MOF27",
+            "NOTES": "Includes drainage from P0213",
+            "ACRES": 1744.1200000000001,
+            "GLOBALID": "{27343CDD-8E5C-4484-BA05-49605D609194}",
+            "Shape_Length": 27126.482297748651,
+            "Shape_Area": 9548945.762326356,
+            "name": "Outfall_Drainage_Area_MOF.c4a6796c3b7fed400b41b6d1c2e6e4ce274de4fbae789f2a3db5f801b39975d2"
+        },
+        {
+            "OBJECTID": 86,
+            "FACILITYID": "MOF69",
+            "ACRES": 25.14634968,
+            "GLOBALID": "{31E7AC99-6F96-482A-823B-83CB18F8F225}",
+            "Shape_Length": 1989.0573955188283,
+            "Shape_Area": 137633.467605477,
+            "name": "Outfall_Drainage_Area_MOF.571b653644f814254283797218ab52056a076746546b78cc2e282a1bcee942b3"
+        },
+        {
+            "OBJECTID": 87,
+            "FACILITYID": "MOF122",
+            "ACRES": 229.03,
+            "GLOBALID": "{FDE765DF-3F63-497B-B2D8-6D46D4DDF8C3}",
+            "Shape_Length": 8464.9025452600981,
+            "Shape_Area": 1253640.0976587269,
+            "name": "Outfall_Drainage_Area_MOF.45bf122ddc82d8280dcc090b04cdb2c3443444b3ed06beb5ccc1e8fa3c0cc35c"
+        },
+        {
+            "OBJECTID": 88,
+            "FACILITYID": "MOF16",
+            "NOTES": "Same drainage area as P0119",
+            "ACRES": 47.92068005,
+            "GLOBALID": "{480DBA65-B51A-42B1-9F7A-7A387DD115EE}",
+            "Shape_Length": 3857.6040700646945,
+            "Shape_Area": 262212.78779028193,
+            "name": "Outfall_Drainage_Area_MOF.4226d2d0a8f43fc2a7983d4fa4cb86ae84a4856ee0e4f60996e4b1186989f03e"
+        },
+        {
+            "OBJECTID": 89,
+            "FACILITYID": "MOF15",
+            "NOTES": "Same drainage area as P0117",
+            "ACRES": 24.98794709,
+            "GLOBALID": "{C6EA14F5-44E8-45E4-ADCE-CAC7BCA9A96E}",
+            "Shape_Length": 3105.6000662340207,
+            "Shape_Area": 136740.65973290554,
+            "name": "Outfall_Drainage_Area_MOF.947105040c2b3174e61f28abf77b8adb2e8889af27b83b16155463da7fe702ab"
+        },
+        {
+            "OBJECTID": 90,
+            "FACILITYID": "MOF13",
+            "NOTES": "Same drainage area as P0095",
+            "ACRES": 47.25,
+            "GLOBALID": "{F49A9646-A33D-4E45-AAB2-22303A30488E}",
+            "Shape_Length": 3838.6788505012769,
+            "Shape_Area": 258012.2093552736,
+            "name": "Outfall_Drainage_Area_MOF.9e8facd315c9536db9423d474f431adbe3bee286bd113b72554ddb34459ae1c2"
+        },
+        {
+            "OBJECTID": 91,
+            "FACILITYID": "MOF136",
+            "NOTES": "Same drainage area as MS4 weir. Includes drainage from P0024 and P0236",
+            "ACRES": 174.70000000000002,
+            "GLOBALID": "{A7334EB0-4E06-4488-B5DC-D4A0E335653A}",
+            "Shape_Length": 5819.2329492145809,
+            "Shape_Area": 953876.07000237261,
+            "name": "Outfall_Drainage_Area_MOF.0d6dc4a5f3bc7ce0d5621282d288bfa53bdddc7bd7ab7ec442ad85c18d61d201"
+        },
+        {
+            "OBJECTID": 92,
+            "FACILITYID": "MOF28",
+            "ACRES": 355.81,
+            "GLOBALID": "{C05FB33A-5538-4DED-B9AC-38F1530B3BA2}",
+            "Shape_Length": 11090.341466386279,
+            "Shape_Area": 2005457.0832830856,
+            "name": "Outfall_Drainage_Area_MOF.7b0a713f958074b9496717040ecc15d4eec16c9b3e0b28b607b0d8d89233fb81"
+        },
+        {
+            "OBJECTID": 93,
+            "FACILITYID": "MOF3",
+            "NOTES": "Same drainage as P0023. One ditch inlet drainage included in error.",
+            "ACRES": 52.67,
+            "GLOBALID": "{D60E6BE1-4882-46AC-9322-0E4B17F4A228}",
+            "Shape_Length": 3753.982740202373,
+            "Shape_Area": 287540.92559368414,
+            "name": "Outfall_Drainage_Area_MOF.941a215b093c14c87c3fba541cb0494a70e2cdb24ee498cbb038b85275fe2831"
+        },
+        {
+            "OBJECTID": 94,
+            "FACILITYID": "MOF131",
+            "NOTES": "MOF13 outfalls to this area.",
+            "ACRES": 154.38992354,
+            "GLOBALID": "{2DBF2228-3BC4-428A-BDCE-9D1C65C9AF6B}",
+            "Shape_Length": 18987.58450491447,
+            "Shape_Area": 5806724.6439626785,
+            "name": "Outfall_Drainage_Area_MOF.c23b7979c8c9e1b13576ab2237a107643fc9ce33ca55999327ce8056015baf9a"
+        },
+        {
+            "OBJECTID": 95,
+            "FACILITYID": "MOF134",
+            "NOTES": "Includes drainage from P0025 and P0026. MOF3 outfalls to this area.",
+            "ACRES": 157.83,
+            "GLOBALID": "{BB9D8E2E-26D9-455B-8A61-8387EAE33FA1}",
+            "Shape_Length": 8151.2397514962631,
+            "Shape_Area": 861676.68770842033,
+            "name": "Outfall_Drainage_Area_MOF.17a870884fbfedb0955d561c90041138e4ffe52aa6c2a054f70f1595a784b655"
+        },
+        {
+            "OBJECTID": 96,
+            "FACILITYID": "MOF118",
+            "NOTES": "MOF131 outfalls to this area. P0092, P0093, P0094 and various COT & Private ponds drainage areas contribute to this MOF.",
+            "ACRES": 851.75,
+            "GLOBALID": "{420893D3-00CB-48C8-B6EB-96AF6DC7A47A}",
+            "Shape_Length": 17358.401476500356,
+            "Shape_Area": 4651107.5257863058,
+            "name": "Outfall_Drainage_Area_MOF.63cb4c84d949d2e93595f1d59af0498325f45b35d0ac61007be918a610cba415"
+        },
+        {
+            "OBJECTID": 97,
+            "FACILITYID": "MOF81",
+            "ACRES": 420.7,
+            "GLOBALID": "{7189F210-6EE4-4AB5-8406-AF7AB869E991}",
+            "Shape_Length": 10201.330538359261,
+            "Shape_Area": 2297406.5289286948,
+            "name": "Outfall_Drainage_Area_MOF.92f33bdfb927080601c6f4e5f4791adb1b8cfe67e24b9fe22cb0c49036f5149a"
+        },
+        {
+            "OBJECTID": 98,
+            "FACILITYID": "MOF84",
+            "ACRES": 66.37,
+            "GLOBALID": "{919000BC-492D-4F42-8674-34E695AD7CF0}",
+            "Shape_Length": 5307.0717783922692,
+            "Shape_Area": 362848.42952951766,
+            "name": "Outfall_Drainage_Area_MOF.4b819e6759f27d22ef961ec8a432478add0e960b6a449ca105b79e9504339f59"
+        },
+        {
+            "OBJECTID": 99,
+            "FACILITYID": "MOF42",
+            "ACRES": 365.62156415,
+            "GLOBALID": "{7210C353-D678-41F3-96E9-FA0C38327E90}",
+            "Shape_Length": 12413.083424894094,
+            "Shape_Area": 1999841.9161615521,
+            "name": "Outfall_Drainage_Area_MOF.2425b08a5108f962161c991f3b1aca884076579c1d8030d92ea9e94ab6299daf"
+        },
+        {
+            "OBJECTID": 100,
+            "FACILITYID": "MOF129",
+            "ACRES": 61.26,
+            "GLOBALID": "{E894938C-9C25-405F-B80B-71D81A3D9C71}",
+            "Shape_Length": 3802.3112192895592,
+            "Shape_Area": 335083.39044693357,
+            "name": "Outfall_Drainage_Area_MOF.362f6d397f4962fe15ee1182cc772f16165bce26f398898898ee46666f096278"
+        },
+        {
+            "OBJECTID": 101,
+            "FACILITYID": "MOF105",
+            "ACRES": 3338.66,
+            "GLOBALID": "{4F75159A-3B0D-42A3-B8FC-0BEFB0BAC0D4}",
+            "Shape_Length": 36808.216159770083,
+            "Shape_Area": 18258861.854618959,
+            "name": "Outfall_Drainage_Area_MOF.8b5e4931e6aa17b4aec459caadea100b509e4d9b21f60d9d3a243defee371b5d"
+        },
+        {
+            "OBJECTID": 102,
+            "FACILITYID": "MOF46",
+            "ACRES": 57.980000000000004,
+            "GLOBALID": "{2C5E1DA9-D8ED-4D39-89BA-6F8E0E34D6E2}",
+            "Shape_Length": 3966.1391283968983,
+            "Shape_Area": 317261.47938100994,
+            "name": "Outfall_Drainage_Area_MOF.7dd1d2b78e702b54fe9ab171f6198fa2cbbc83d069e1a6c39199e9d61c62dab3"
+        },
+        {
+            "OBJECTID": 103,
+            "FACILITYID": "MOF34",
+            "NOTES": "MOF46 outfalls to MOF34. Drainage area of P0142 is part of this MOF.",
+            "ACRES": 201.62,
+            "GLOBALID": "{F9E9828F-E817-45C3-87F4-01C21B98F38C}",
+            "Shape_Length": 7959.3922955119087,
+            "Shape_Area": 1103108.0302338244,
+            "name": "Outfall_Drainage_Area_MOF.deaded28838db9eb5c8e9c17532975cc3f8d7ba25e1fb112964c90f0b4626acd"
+        },
+        {
+            "OBJECTID": 104,
+            "FACILITYID": "MOF39",
+            "ACRES": 150.14000000000001,
+            "GLOBALID": "{914F5C5C-9C51-4805-A853-3943FB9C0CA5}",
+            "Shape_Length": 5927.9579676854482,
+            "Shape_Area": 821053.9962658959,
+            "name": "Outfall_Drainage_Area_MOF.d8f18ce9658af128a243350c8d1b2dac23df87539cf71d57332a33e15c4a6240"
+        },
+        {
+            "OBJECTID": 105,
+            "FACILITYID": "MOF50",
+            "ACRES": 36.99,
+            "GLOBALID": "{414D18B0-D5A0-4609-97C9-27B1768589A3}",
+            "Shape_Length": 2579.8279254700715,
+            "Shape_Area": 202708.63953189398,
+            "name": "Outfall_Drainage_Area_MOF.8502487b8a0ca7ce56d7a9dd48f4c31a5bfbd64b3921e75966a12ef23f27425e"
+        },
+        {
+            "OBJECTID": 106,
+            "FACILITYID": "MOF115",
+            "ACRES": 373.58,
+            "GLOBALID": "{F1452B1A-915D-4CD5-A412-3857D5665AA9}",
+            "Shape_Length": 10780.849591649929,
+            "Shape_Area": 2042150.2738883514,
+            "name": "Outfall_Drainage_Area_MOF.088a78b83686320ab08fbf059cf6f4407a6045bb0e24fa3646e3a4c0a024f674"
+        },
+        {
+            "OBJECTID": 107,
+            "FACILITYID": "MOF111",
+            "ACRES": 83.11,
+            "GLOBALID": "{2A1A3833-4CA4-4C25-97C3-7539D9777E00}",
+            "Shape_Length": 4829.9847290027419,
+            "Shape_Area": 453557.51041787467,
+            "name": "Outfall_Drainage_Area_MOF.f0a90fa1f44617a0357b38a87d515839ad42c26b848f38fcd7467b207ea62cc8"
+        },
+        {
+            "OBJECTID": 108,
+            "FACILITYID": "MOF56",
+            "NOTES": "MOF68 outfalls to MOF56. Contains P0145 & P0146",
+            "ACRES": 2484.3,
+            "GLOBALID": "{A55153FB-01A3-4221-B16E-766F194459F0}",
+            "Shape_Length": 30928.409538563668,
+            "Shape_Area": 13582647.505787827,
+            "name": "Outfall_Drainage_Area_MOF.85c5e3bd1d13ecb88463ccbc484016a4cda41f6adea3a92bba22cf403fcb599e"
+        },
+        {
+            "OBJECTID": 109,
+            "FACILITYID": "MOF100",
+            "ACRES": 508.94,
+            "GLOBALID": "{FD6BDD7C-F6DA-4137-943C-0C51B5317CFA}",
+            "Shape_Length": 12450.066253636634,
+            "Shape_Area": 2780477.2198579418,
+            "name": "Outfall_Drainage_Area_MOF.09417e105b32bf272cdb3b367b5f9e368bc25473d41f8a10e4fc43d598a34cc9"
+        },
+        {
+            "OBJECTID": 110,
+            "FACILITYID": "MOF11",
+            "NOTES": "Same drainage area as P0085",
+            "ACRES": 126.95,
+            "GLOBALID": "{A2FC3E38-DC89-409A-A7F3-6FA15C51435B}",
+            "Shape_Length": 5512.2362523033726,
+            "Shape_Area": 694095.2843659122,
+            "name": "Outfall_Drainage_Area_MOF.fb799a31afbbd39fab8845a2f0ac3509bc7c5abb0a4b7b834bc8b7dbb939dad5"
+        },
+        {
+            "OBJECTID": 111,
+            "FACILITYID": "MOF80",
+            "ACRES": 16.46464768,
+            "GLOBALID": "{6A2DA405-21C9-482E-985D-32A667A5DDAF}",
+            "Shape_Length": 1957.3229965288331,
+            "Shape_Area": 89869.112769672676,
+            "name": "Outfall_Drainage_Area_MOF.74f748ad0dbe843c35b566849df21983991fb4acc292ad7b74de8b0928ad3a69"
+        },
+        {
+            "OBJECTID": 112,
+            "FACILITYID": "MOF29",
+            "NOTES": "Contains P0041 & P0218",
+            "ACRES": 10.4,
+            "GLOBALID": "{88DBE91C-E8DD-4E49-834F-2C43B84CB05D}",
+            "Shape_Length": 1593.0136589382989,
+            "Shape_Area": 56846.216646018358,
+            "name": "Outfall_Drainage_Area_MOF.d1d8f29298a85e5715a5cef57ffd8e5fe93bf7a9a6a9b7c3c63eb4fb4ea41b0a"
+        },
+        {
+            "OBJECTID": 113,
+            "FACILITYID": "MOF104",
+            "ACRES": 1.52720449,
+            "GLOBALID": "{1CD5365F-A256-41FC-9B61-11FACA1EB674}",
+            "Shape_Length": 474.44515800227475,
+            "Shape_Area": 8343.3333126427333,
+            "name": "Outfall_Drainage_Area_MOF.e3906c720f1caabfa903216c195aaacf568a59b607757ca424f2c6d2dce37b6d"
+        },
+        {
+            "OBJECTID": 114,
+            "FACILITYID": "MOF132",
+            "ACRES": 8.08,
+            "GLOBALID": "{53B743A9-D57B-41C1-BB20-906DA0496CF1}",
+            "Shape_Length": 1616.8127657600289,
+            "Shape_Area": 44171.629629883551,
+            "name": "Outfall_Drainage_Area_MOF.df82530fa95087c23a605a6d293f3c2661178a0ef84c361db9f3fc4f4d11b26e"
+        },
+        {
+            "OBJECTID": 115,
+            "FACILITYID": "MOF70",
+            "ACRES": 82.36,
+            "GLOBALID": "{BB32ECC5-D668-4CA4-BE03-9CB709EE4429}",
+            "Shape_Length": 6157.939047466306,
+            "Shape_Area": 449706.16622537572,
+            "name": "Outfall_Drainage_Area_MOF.3947d12de25f1af506a797a307a0c6147fbf34d740830df687ea35050790e39f"
+        },
+        {
+            "OBJECTID": 116,
+            "FACILITYID": "MOF44",
+            "ACRES": 60.980000000000004,
+            "GLOBALID": "{AC6B7440-4C7B-4FD0-BB52-82F5B7B129E7}",
+            "Shape_Length": 3713.7090498516768,
+            "Shape_Area": 334095.35240377922,
+            "name": "Outfall_Drainage_Area_MOF.807b6808645582c5ec3b8cce69ad71e275de43a60474277f8d958f8cb4fa340b"
+        },
+        {
+            "OBJECTID": 117,
+            "FACILITYID": "MOF71",
+            "NOTES": "MOF18 outfalls to MOF71",
+            "ACRES": 145.67000000000002,
+            "GLOBALID": "{BE610857-9181-450D-BC63-80A10C383A7E}",
+            "Shape_Length": 6258.9159764030728,
+            "Shape_Area": 796666.96383946238,
+            "name": "Outfall_Drainage_Area_MOF.d863ca14f7045dd4a79e7f1683e53e2e16e2ee0abddb6bd4a3d2e109937b9ee7"
+        },
+        {
+            "OBJECTID": 118,
+            "FACILITYID": "MOF18",
+            "NOTES": "Same drainage area as P0128. MS4 weir present.",
+            "ACRES": 70.62213167,
+            "GLOBALID": "{416933F0-52F3-4281-AB8E-02398E0285E8}",
+            "Shape_Length": 3688.5961573395748,
+            "Shape_Area": 386218.81505856483,
+            "name": "Outfall_Drainage_Area_MOF.776fe15e5406cfff754cc8fcb49a32f2998153a383e0d2764d599939fa2345c8"
+        },
+        {
+            "OBJECTID": 119,
+            "FACILITYID": "MOF125",
+            "ACRES": 98.38,
+            "GLOBALID": "{B56339E7-0633-4094-B6A2-6069E6D88455}",
+            "Shape_Length": 4991.53563120101,
+            "Shape_Area": 537838.47669542278,
+            "name": "Outfall_Drainage_Area_MOF.0a3ca2985321c7002b2311167a538abe72f0abcf691737bb30982cdc1c13e47e"
+        },
+        {
+            "OBJECTID": 120,
+            "FACILITYID": "MOF91",
+            "ACRES": 948.79,
+            "GLOBALID": "{42CEF129-2163-4539-AEA9-5CE5596262DB}",
+            "Shape_Length": 16036.711852753755,
+            "Shape_Area": 5187765.384805561,
+            "name": "Outfall_Drainage_Area_MOF.676ae55121748f18156c5f3a2b9d6d9de8c5244a076721d1ff4b995aad649cb0"
+        },
+        {
+            "OBJECTID": 121,
+            "FACILITYID": "MOF106",
+            "ACRES": 842.67000000000007,
+            "GLOBALID": "{AD2D183F-EBA9-4CF9-9CAE-9E9AB9346B8F}",
+            "Shape_Length": 21286.511934997514,
+            "Shape_Area": 4615834.615702007,
+            "name": "Outfall_Drainage_Area_MOF.689cbee800144f303c35afa0814c9a48addd951c9bbea44de17f94bd142de02a"
+        },
+        {
+            "OBJECTID": 122,
+            "FACILITYID": "MOF98",
+            "ACRES": 230.57,
+            "GLOBALID": "{A768A63B-91B0-4063-A1F0-6C56751D0F85}",
+            "Shape_Length": 7783.9046777984486,
+            "Shape_Area": 1263241.0883158089,
+            "name": "Outfall_Drainage_Area_MOF.2773cc740aa14dd90e2fa3337cf860bdb45644f0e94eed56d9b48edde620abdf"
+        },
+        {
+            "OBJECTID": 123,
+            "FACILITYID": "MOF30",
+            "ACRES": 150.70000000000002,
+            "GLOBALID": "{2A3E9B3B-3852-45F1-AA63-033547F4A3F5}",
+            "Shape_Length": 6654.5948408849845,
+            "Shape_Area": 822954.56930060743,
+            "name": "Outfall_Drainage_Area_MOF.50f24a7759024f35ec1b09326ba8eca51d0a60f48801df29e569d1a684cfb277"
+        },
+        {
+            "OBJECTID": 124,
+            "FACILITYID": "MOF94",
+            "NOTES": "No drainage area for point of termination to lake as defined by LC drainage easement.",
+            "ACRES": 73.62,
+            "GLOBALID": "{81B6A2C1-8080-4C33-B29D-4138A9EF7E0C}",
+            "Shape_Length": 6953.0514491861195,
+            "Shape_Area": 402828.52879199694,
+            "name": "Outfall_Drainage_Area_MOF.f5c0cce1fe798de94645811ffa7ceb66c89273510b226c56848a56f49a28fc1d"
+        },
+        {
+            "OBJECTID": 125,
+            "FACILITYID": "MOF137",
+            "ACRES": 91.67,
+            "GLOBALID": "{21677F16-3BA8-4827-98E4-3524120045C3}",
+            "Shape_Length": 5009.767117186756,
+            "Shape_Area": 502230.62685337791,
+            "name": "Outfall_Drainage_Area_MOF.0944ff33b72e0a5278e604377c365c41ca048f109e130d4e292449405902fd38"
+        }
+    ],
+    "name": "Outfall_Drainage_Area_MOF",
+    "id": "20",
+    "type": "Feature Layer",
+    "subtypes": [
+    ],
+    "typeIdField": null,
+    "subtypeFieldName": null,
+    "subtypeField": null
+}

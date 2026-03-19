@@ -1,0 +1,10 @@
+PrefixID.inhabitant "([^"]+)" "([^"]+)".*
+
+
+"([^"]+)": "([^"]+)",?
+
+\s+Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant\s+"([^"]+)"\s+\(Some "([^"]+)"\)\s+\(Some "([^"]+)"\)\s+None
+Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "$2" \(Some "$2"\) \(Some "$1"\) None
+
+FAIL \(codegenFromNamespaceIris\)\s+namespaceUri: (.*)\s+namespacePrefix: (\w+)\s+distributionUri: (.*)\r\n
+

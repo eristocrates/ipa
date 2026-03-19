@@ -1,6 +1,7 @@
 <Solution>
-  <Project Path="MSBuild/Project/Actor_Ramshackle/Actor_Ramshackle.fsproj" Id="d67d32c0-9ef8-4e50-9cff-c744ad8b8852" />
-  <Project Path="MSBuild/Project/Computer_Storage/Computer_Storage.fsproj" />
-  <Project Path="MSBuild/Project/Parser_Combinator/Initialization/Initialization.fsproj" />
-  <Project Path="MSBuild/Project/Parser_Combinator/Parser_Combinator.fsproj" />
+  <Project Path="../../../../../../../../Repositories/eristocrates/ipa/MSBuild/Project/Actor_Ramshackle/Actor_Ramshackle.fsproj" Id="d67d32c0-9ef8-4e50-9cff-c744ad8b8852" />
+  <Project Path="../../../../../../../../Repositories/eristocrates/ipa/MSBuild/Project/Computer_Storage/Computer_Storage.fsproj" />
+  <Project Path="../../../../../../../../Repositories/eristocrates/ipa/MSBuild/Project/Parser_Combinator/Initialization/Initialization.fsproj" />
+  <Project Path="../../../../../../../../Repositories/eristocrates/ipa/MSBuild/Project/Parser_Combinator/Parser_Combinator.fsproj" />
+  <Project Path="../../../../../../../../Repositories/eristocrates/ipa/visual_studio_solutions/ResourceDescriptionFramework/ResourceDescriptionFramework.fsproj" />
 </Solution>

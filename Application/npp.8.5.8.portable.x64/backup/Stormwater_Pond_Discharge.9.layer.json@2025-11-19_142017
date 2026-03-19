@@ -1,0 +1,1765 @@
+{
+    "currentVersion": 10.81,
+    "id": 9,
+    "name": "Stormwater Pond Discharge",
+    "type": "Feature Layer",
+    "description": "",
+    "geometryType": "esriGeometryPoint",
+    "sourceSpatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+    },
+    "copyrightText": "",
+    "parentLayer": {
+        "id": 0,
+        "name": "Drainage Network"
+    },
+    "subLayers": [
+    ],
+    "minScale": 577790.554289,
+    "maxScale": 0,
+    "drawingInfo": {
+        "renderer": {
+            "type": "uniqueValue",
+            "field1": "MAINTBY",
+            "field2": null,
+            "field3": null,
+            "defaultSymbol": {
+                "type": "esriPMS",
+                "url": "2a4ae1f1fc80f37664f7ee8800400ae4",
+                "imageData": "iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJZJREFUGJWNjqENwzAQRZ+qU1UZRo5a6glMjApMMkBwxsgqWSHUK7g7eAmDIpsWFVRqpUpO8uDp/X9f+HBjn6cAhBAexphLyyqlMAzDXQD6vu+01teWLCIvADnw/hf6P9RaiTHivUdrvS2nlJjnmWVZGMdxW3bOsa4r1tr9GUopvPfHNm8hADnns0g7V0o5feVpmrojzW/CySDfLCgQ0QAAAABJRU5ErkJggg==",
+                "contentType": "image/png",
+                "width": 8,
+                "height": 8,
+                "angle": 0,
+                "xoffset": 0,
+                "yoffset": 0
+            },
+            "defaultLabel": "<all other values>",
+            "uniqueValueInfos": [
+                {
+                    "symbol": {
+                        "type": "esriPMS",
+                        "url": "f0f85bbaf269cc429c7f77a6b697c4f5",
+                        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJ9JREFUGJVjYYAACQbC4BULAwMDQ1j7oX3CMuocuFR9//SGYUG2thULAwMDA7ewpBC3gJg4LsWMjMy/GBgYGFiIsB4OMBR/+/ye4e7prQxKRq4M3ALi+BW/vHWGYWd/LINnyXIGbfsI/IoltSwZght2MYirmxB2BgcnD4OisStxbsYHWBgYGBg+vXjExsTEjFPRj0/vmeCK19Y5CxFjMgAGWCBucH+sBAAAAABJRU5ErkJggg==",
+                        "contentType": "image/png",
+                        "width": 8,
+                        "height": 8,
+                        "angle": 0,
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "value": "COT",
+                    "label": "COT",
+                    "description": ""
+                },
+                {
+                    "symbol": {
+                        "type": "esriPMS",
+                        "url": "26ffbb5d51734f88349eba67484c92f7",
+                        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJlJREFUGJVjYYAACQbC4BULAwMDw6EGhn3qUgwcuFS9+czAoF3MYMXCwMDAICnIICTGzyCOSzEzE8MvBgYGBhYirIcDDMXvvzIwbD3DwOBqwMAgzk9A8Zm7DAyx0xgYlucwMETYElBsqc7AsKuagcFEmQhn8LAzMLjqEelmfICFgYGB4dFrBjZmJtyK3n9hYIIrdm5hECLGZAApHBbybRMvSAAAAABJRU5ErkJggg==",
+                        "contentType": "image/png",
+                        "width": 8,
+                        "height": 8,
+                        "angle": 0,
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "value": "DOT",
+                    "label": "Florida DOT",
+                    "description": ""
+                },
+                {
+                    "symbol": {
+                        "type": "esriPMS",
+                        "url": "44da276da5c3b6d57db1fc654fe46236",
+                        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIxJREFUGJVjYYAACQbC4BULAwMDA8O0Q/sY5NQ5cCr7+IaBIVrbCqJYSFKIQVBMHKdiJuZfDAwMDCxEWA8HmIo/v2dgOLqVgcHclYFBUJyA4mtnGBiaYxkY6pczMLhFEFCsZ8nA0LeLgUHLhAhncPJAnECUm/EAiOIXj9gYWJhxq/r0ngmhuMBZiBiTATu4FwzB7W4LAAAAAElFTkSuQmCC",
+                        "contentType": "image/png",
+                        "width": 8,
+                        "height": 8,
+                        "angle": 0,
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "value": "CNTY",
+                    "label": "Leon County",
+                    "description": ""
+                },
+                {
+                    "symbol": {
+                        "type": "esriPMS",
+                        "url": "5cd3abb5ac008de6acc2ee63e30bf5ff",
+                        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJ9JREFUGJVjYYAACQbC4BULAwMDw5wG730KUgIcuFR9+PyDIaR4rRULAwMDg4ggt5AQP7c4LsVMTEy/GBgYGFiIsB4OMBR//PqT4fCZhwyWBrIMwvyc+BVfu/uKoW7aAYa2HAcGD1s1/IoN1MUZplZ7MmgrixF2Bic7G4OlnixxbsYHWBgYGBiev/7MxsLEhFPRxy/fmeCKM1u2CxFjMgCeoiAus1H18gAAAABJRU5ErkJggg==",
+                        "contentType": "image/png",
+                        "width": 8,
+                        "height": 8,
+                        "angle": 0,
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "value": "PVT",
+                    "label": "Private",
+                    "description": ""
+                },
+                {
+                    "symbol": {
+                        "type": "esriPMS",
+                        "url": "44da276da5c3b6d57db1fc654fe46236",
+                        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAIxJREFUGJVjYYAACQbC4BULAwMDA8O0Q/sY5NQ5cCr7+IaBIVrbCqJYSFKIQVBMHKdiJuZfDAwMDCxEWA8HmIo/v2dgOLqVgcHclYFBUJyA4mtnGBiaYxkY6pczMLhFEFCsZ8nA0LeLgUHLhAhncPJAnECUm/EAiOIXj9gYWJhxq/r0ngmhuMBZiBiTATu4FwzB7W4LAAAAAElFTkSuQmCC",
+                        "contentType": "image/png",
+                        "width": 8,
+                        "height": 8,
+                        "angle": 0,
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "value": "PWOPR",
+                    "label": "Public Works Operations",
+                    "description": ""
+                },
+                {
+                    "symbol": {
+                        "type": "esriPMS",
+                        "url": "936e6b5ee4f81f824fc59c8eb4a6b6c1",
+                        "imageData": "iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJ9JREFUGJVjYYAACQbC4BULAwMDg/ecpn0CClIcuFT9+PCJYW1IkRULAwMDA7eIgBC3EL84LsVMTEy/GBgYGFiIsB4OMBT//PiV4eHh0wyyloYMnML8+BW/unaH4UDdVAaHtjwGNQ9b/IrFDdQZPKfWMIhpqxB2BhsnB4OspT5xbsYHWBgYGBg+P3/NxsTCjFPR94+fmeCKt2c2CxFjMgCfdiAwozTSeQAAAABJRU5ErkJggg==",
+                        "contentType": "image/png",
+                        "width": 8,
+                        "height": 8,
+                        "angle": 0,
+                        "xoffset": 0,
+                        "yoffset": 0
+                    },
+                    "value": "STATE",
+                    "label": "State of Florida",
+                    "description": ""
+                }
+            ],
+            "fieldDelimiter": ","
+        },
+        "transparency": 0,
+        "labelingInfo": null
+    },
+    "defaultVisibility": true,
+    "extent": {
+        "xmin": -9420823.8951,
+        "ymin": 3539343.7703000009,
+        "xmax": -9349771.4549,
+        "ymax": 3590963.2920000032,
+        "spatialReference": {
+            "wkid": 102100,
+            "latestWkid": 3857
+        }
+    },
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "displayField": "LIFECYCLE",
+    "typeIdField": "SUBTYPEFIELD",
+    "subtypeFieldName": "SUBTYPEFIELD",
+    "subtypeField": "SUBTYPEFIELD",
+    "defaultSubtypeCode": 1,
+    "fields": [
+        {
+            "name": "OBJECTID",
+            "type": "esriFieldTypeOID",
+            "alias": "OBJECTID",
+            "domain": null
+        },
+        {
+            "name": "ANCILLARYROLE",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "AncillaryRole",
+            "domain": {
+                "type": "codedValue",
+                "name": "AncillaryRoleDomain",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "None",
+                        "code": 0
+                    },
+                    {
+                        "name": "Source",
+                        "code": 1
+                    },
+                    {
+                        "name": "Sink",
+                        "code": 2
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "ENABLED",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "Enabled",
+            "domain": {
+                "type": "codedValue",
+                "name": "EnabledDomain",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "False",
+                        "code": 0
+                    },
+                    {
+                        "name": "True",
+                        "code": 1
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "LIFECYCLE",
+            "type": "esriFieldTypeString",
+            "alias": "Lifecycle",
+            "length": 50,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainLifeCycle",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Active",
+                        "code": "Active"
+                    },
+                    {
+                        "name": "Proposed",
+                        "code": "Proposed"
+                    },
+                    {
+                        "name": "Removed",
+                        "code": "Removed"
+                    },
+                    {
+                        "name": "Abandoned",
+                        "code": "Abandoned"
+                    },
+                    {
+                        "name": "N/A",
+                        "code": "N/A"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "PARENTID",
+            "type": "esriFieldTypeString",
+            "alias": "PARENTID",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "OWNER",
+            "type": "esriFieldTypeString",
+            "alias": "Owner",
+            "length": 50,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainOwner_1",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "COT",
+                        "code": "COT"
+                    },
+                    {
+                        "name": "Private",
+                        "code": "PVT"
+                    },
+                    {
+                        "name": "Florida DOT",
+                        "code": "DOT"
+                    },
+                    {
+                        "name": "Unknown",
+                        "code": "UNKN"
+                    },
+                    {
+                        "name": "Leon County",
+                        "code": "CNTY"
+                    },
+                    {
+                        "name": "State of Florida",
+                        "code": "STATE"
+                    },
+                    {
+                        "name": "Abandoned",
+                        "code": "ABND"
+                    },
+                    {
+                        "name": "Leon County",
+                        "code": "Leon County"
+                    },
+                    {
+                        "name": "N/A",
+                        "code": "N/A"
+                    },
+                    {
+                        "name": "Blueprint",
+                        "code": "BLUE"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "MAINTBY",
+            "type": "esriFieldTypeString",
+            "alias": "MaintBy",
+            "length": 50,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainMaintBy",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Public Works Operations",
+                        "code": "PWOPR"
+                    },
+                    {
+                        "name": "Private",
+                        "code": "PVT"
+                    },
+                    {
+                        "name": "Unknown",
+                        "code": "UNKN"
+                    },
+                    {
+                        "name": "Florida DOT",
+                        "code": "DOT"
+                    },
+                    {
+                        "name": "Leon County",
+                        "code": "CNTY"
+                    },
+                    {
+                        "name": "State of Florida",
+                        "code": "STATE"
+                    },
+                    {
+                        "name": "Abandonded",
+                        "code": "ABND"
+                    },
+                    {
+                        "name": "COT",
+                        "code": "COT"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "SOURCE",
+            "type": "esriFieldTypeString",
+            "alias": "Source",
+            "length": 50,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainSource",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "AsBuilt29",
+                        "code": "AB29"
+                    },
+                    {
+                        "name": "AsBuilt88",
+                        "code": "AB88"
+                    },
+                    {
+                        "name": "CAD",
+                        "code": "CAD"
+                    },
+                    {
+                        "name": "Composite",
+                        "code": "COM"
+                    },
+                    {
+                        "name": "Digital",
+                        "code": "DIG"
+                    },
+                    {
+                        "name": "Field Measurements",
+                        "code": "FM"
+                    },
+                    {
+                        "name": "GPS",
+                        "code": "GPS"
+                    },
+                    {
+                        "name": "N/A",
+                        "code": "N/A"
+                    },
+                    {
+                        "name": "Processed in Office",
+                        "code": "PIO"
+                    },
+                    {
+                        "name": "Street Level Imagery",
+                        "code": "SI"
+                    },
+                    {
+                        "name": "Site Plan",
+                        "code": "SP"
+                    },
+                    {
+                        "name": "Survey",
+                        "code": "SVY"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "FACILITYID",
+            "type": "esriFieldTypeString",
+            "alias": "FACILITYID",
+            "length": 20,
+            "domain": null
+        },
+        {
+            "name": "LEGACYID",
+            "type": "esriFieldTypeString",
+            "alias": "LEGACYID",
+            "length": 20,
+            "domain": null
+        },
+        {
+            "name": "NEEDSATTENTION",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "NeedsAttention",
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainBoolean",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Yes",
+                        "code": 1
+                    },
+                    {
+                        "name": "No",
+                        "code": 0
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "LOCATION",
+            "type": "esriFieldTypeString",
+            "alias": "LOCATION",
+            "length": 100,
+            "domain": null
+        },
+        {
+            "name": "INVENTORYDATE",
+            "type": "esriFieldTypeDate",
+            "alias": "INVENTORYDATE",
+            "length": 8,
+            "domain": null
+        },
+        {
+            "name": "INVENTORYTYPE",
+            "type": "esriFieldTypeString",
+            "alias": "InventoryType",
+            "length": 100,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainInventoryType",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "RTK",
+                        "code": "RTK"
+                    },
+                    {
+                        "name": "RTD",
+                        "code": "RTD"
+                    },
+                    {
+                        "name": "Obscured",
+                        "code": "OBS"
+                    },
+                    {
+                        "name": "Not Found",
+                        "code": "NFD"
+                    },
+                    {
+                        "name": "Inaccessible-Denied access by owner",
+                        "code": "INB1"
+                    },
+                    {
+                        "name": "Inaccessible-Dog",
+                        "code": "INB2"
+                    },
+                    {
+                        "name": "Inaccessible-Fence",
+                        "code": "INB3"
+                    },
+                    {
+                        "name": "Inaccessible-Gate Locked",
+                        "code": "INB4"
+                    },
+                    {
+                        "name": "Inaccessible-Heavy Traffic",
+                        "code": "INB5"
+                    },
+                    {
+                        "name": "Inaccessible-Immovable object on structure",
+                        "code": "INB6"
+                    },
+                    {
+                        "name": "Inaccessible-Overgrown",
+                        "code": "INB7"
+                    },
+                    {
+                        "name": "Inaccessible-Submerged in water",
+                        "code": "INB8"
+                    },
+                    {
+                        "name": "Inaccessible-See notes",
+                        "code": "INB9"
+                    },
+                    {
+                        "name": "Conventional",
+                        "code": "CNV"
+                    },
+                    {
+                        "name": "Approx",
+                        "code": "APP"
+                    },
+                    {
+                        "name": "GPS",
+                        "code": "GPS"
+                    },
+                    {
+                        "name": "Aerial Imagery",
+                        "code": "AI"
+                    },
+                    {
+                        "name": "Unknown",
+                        "code": "UNK"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDuplicate"
+            }
+        },
+        {
+            "name": "EASTING",
+            "type": "esriFieldTypeDouble",
+            "alias": "EASTING",
+            "domain": null
+        },
+        {
+            "name": "NORTHING",
+            "type": "esriFieldTypeDouble",
+            "alias": "NORTHING",
+            "domain": null
+        },
+        {
+            "name": "Z29",
+            "type": "esriFieldTypeDouble",
+            "alias": "Z29",
+            "domain": null
+        },
+        {
+            "name": "INFILTRATION",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "Inflow\\Infiltration",
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainBoolean",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Yes",
+                        "code": 1
+                    },
+                    {
+                        "name": "No",
+                        "code": 0
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "DIGITALPICTUREID",
+            "type": "esriFieldTypeString",
+            "alias": "DIGITALPICTUREID",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "FIELDCOMPLETE",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "FieldComplete",
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainBoolean",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Yes",
+                        "code": 1
+                    },
+                    {
+                        "name": "No",
+                        "code": 0
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "ATTRIBUTECOMPLETE",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "AttributeComplete",
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainBoolean",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Yes",
+                        "code": 1
+                    },
+                    {
+                        "name": "No",
+                        "code": 0
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "NOTES",
+            "type": "esriFieldTypeString",
+            "alias": "NOTES",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "DRAWINGID",
+            "type": "esriFieldTypeString",
+            "alias": "Drawing ID",
+            "length": 255,
+            "domain": null
+        },
+        {
+            "name": "ORIGINALSOURCE",
+            "type": "esriFieldTypeString",
+            "alias": "ORIGINALSOURCE",
+            "length": 75,
+            "domain": null
+        },
+        {
+            "name": "DATECREATED",
+            "type": "esriFieldTypeDate",
+            "alias": "DATECREATED",
+            "length": 8,
+            "domain": null
+        },
+        {
+            "name": "WHOCREATED",
+            "type": "esriFieldTypeString",
+            "alias": "WhoCreated",
+            "length": 50,
+            "domain": {
+                "type": "codedValue",
+                "name": "WhoCreatOrModified_1",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Jason",
+                        "code": "Jason"
+                    },
+                    {
+                        "name": "JASON",
+                        "code": "JASON"
+                    },
+                    {
+                        "name": "TancigM",
+                        "code": "TancigM"
+                    },
+                    {
+                        "name": "Intern",
+                        "code": "Intern"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "UPDATESOURCE",
+            "type": "esriFieldTypeString",
+            "alias": "UPDATESOURCE",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "DATEMODIFIED",
+            "type": "esriFieldTypeDate",
+            "alias": "DATEMODIFIED",
+            "length": 8,
+            "domain": null
+        },
+        {
+            "name": "WHOMODIFIED",
+            "type": "esriFieldTypeString",
+            "alias": "WHOMODIFIED",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "ACCURACYCODE",
+            "type": "esriFieldTypeString",
+            "alias": "AccuracyCode",
+            "length": 40,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainAccuracyCode",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "GPS",
+                        "code": "GPS"
+                    },
+                    {
+                        "name": "Not Available",
+                        "code": "NA"
+                    },
+                    {
+                        "name": "TLCGIS",
+                        "code": "TLCGIS"
+                    },
+                    {
+                        "name": "Survey",
+                        "code": "SUR"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "HYPERLINK_AR",
+            "type": "esriFieldTypeString",
+            "alias": "HYPERLINK_AR",
+            "length": 100,
+            "domain": null
+        },
+        {
+            "name": "DIGITALPICTUREID_S",
+            "type": "esriFieldTypeString",
+            "alias": "DIGITALPICTUREID_2",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "DIGITALPICTUREID_E",
+            "type": "esriFieldTypeString",
+            "alias": "DIGITALPICTUREID_3",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "DIGITALPICTUREID_W",
+            "type": "esriFieldTypeString",
+            "alias": "DIGITALPICTUREID_4",
+            "length": 50,
+            "domain": null
+        },
+        {
+            "name": "SUBTYPEFIELD",
+            "type": "esriFieldTypeInteger",
+            "alias": "SUBTYPEFIELD",
+            "domain": null
+        },
+        {
+            "name": "FIELDCOMMENTS",
+            "type": "esriFieldTypeString",
+            "alias": "FIELDCOMMENTS",
+            "length": 50,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainFieldComment",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "Abandonded",
+                        "code": "1"
+                    },
+                    {
+                        "name": "Bolted/Sealed shut",
+                        "code": "2"
+                    },
+                    {
+                        "name": "Buried",
+                        "code": "3"
+                    },
+                    {
+                        "name": "Clogged",
+                        "code": "4"
+                    },
+                    {
+                        "name": "Filled with Sediment or Debris",
+                        "code": "5"
+                    },
+                    {
+                        "name": "Filled with Water",
+                        "code": "6"
+                    },
+                    {
+                        "name": "Not Found- Downstream",
+                        "code": "7"
+                    },
+                    {
+                        "name": "Not Found- Upstream",
+                        "code": "8"
+                    },
+                    {
+                        "name": "No MH",
+                        "code": "9"
+                    },
+                    {
+                        "name": "No MH lid",
+                        "code": "10"
+                    },
+                    {
+                        "name": "No Manhole Lid- Concrete Slab",
+                        "code": "11"
+                    },
+                    {
+                        "name": "Other- See Notes",
+                        "code": "12"
+                    },
+                    {
+                        "name": "Out of City",
+                        "code": "13"
+                    },
+                    {
+                        "name": "SS Cross pipe in structure",
+                        "code": "14"
+                    },
+                    {
+                        "name": "Too Heavy to Open",
+                        "code": "15"
+                    },
+                    {
+                        "name": "Under Construction",
+                        "code": "16"
+                    },
+                    {
+                        "name": "Unknown Connection",
+                        "code": "17"
+                    },
+                    {
+                        "name": "None",
+                        "code": "18"
+                    },
+                    {
+                        "name": "Underground Connection",
+                        "code": "19"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDuplicate"
+            }
+        },
+        {
+            "name": "ZVALUE",
+            "type": "esriFieldTypeDouble",
+            "alias": "ZVALUE",
+            "domain": null
+        },
+        {
+            "name": "PRFRESOLUTION",
+            "type": "esriFieldTypeString",
+            "alias": "PRFRESOLUTION",
+            "length": 60,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainPRResolution",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "No",
+                        "code": "No"
+                    },
+                    {
+                        "name": "Yes",
+                        "code": "Yes"
+                    },
+                    {
+                        "name": "Resolved",
+                        "code": "Resolved"
+                    },
+                    {
+                        "name": "Unresolved\\Response time expired",
+                        "code": "UR1"
+                    },
+                    {
+                        "name": "Unresolved\\Feature In Question",
+                        "code": "UR2"
+                    },
+                    {
+                        "name": "Unresolved\\See Notes",
+                        "code": "UR4"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDuplicate"
+            }
+        },
+        {
+            "name": "IMAGERYYEAR",
+            "type": "esriFieldTypeString",
+            "alias": "IMAGERYYEAR",
+            "length": 4,
+            "domain": {
+                "type": "codedValue",
+                "name": "dDomainSourceYear_1",
+                "description": "",
+                "codedValues": [
+                    {
+                        "name": "1996",
+                        "code": "1996"
+                    },
+                    {
+                        "name": "2001",
+                        "code": "2001"
+                    },
+                    {
+                        "name": "2005",
+                        "code": "2005"
+                    },
+                    {
+                        "name": "2007",
+                        "code": "2007"
+                    },
+                    {
+                        "name": "2008",
+                        "code": "2008"
+                    },
+                    {
+                        "name": "2009",
+                        "code": "2009"
+                    },
+                    {
+                        "name": "2012",
+                        "code": "2012"
+                    },
+                    {
+                        "name": "2014",
+                        "code": "2014"
+                    },
+                    {
+                        "name": "2015",
+                        "code": "2015"
+                    },
+                    {
+                        "name": "2016",
+                        "code": "2016"
+                    },
+                    {
+                        "name": "2017",
+                        "code": "2017"
+                    },
+                    {
+                        "name": "2018",
+                        "code": "2018"
+                    },
+                    {
+                        "name": "2019",
+                        "code": "2019"
+                    },
+                    {
+                        "name": "2020",
+                        "code": "2020"
+                    },
+                    {
+                        "name": "2121",
+                        "code": "2021"
+                    },
+                    {
+                        "name": "2022",
+                        "code": "2022"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        },
+        {
+            "name": "Shape",
+            "type": "esriFieldTypeGeometry",
+            "alias": "Shape",
+            "domain": null
+        },
+        {
+            "name": "GLOBALID",
+            "type": "esriFieldTypeGlobalID",
+            "alias": "GLOBALID",
+            "length": 38,
+            "domain": null
+        },
+        {
+            "name": "STRUCTUREID",
+            "type": "esriFieldTypeString",
+            "alias": "STRUCTUREID",
+            "length": 15,
+            "domain": null
+        },
+        {
+            "name": "OUTFALLID",
+            "type": "esriFieldTypeString",
+            "alias": "OUTFALLID",
+            "length": 6,
+            "domain": null
+        },
+        {
+            "name": "STRUCTURETYPE",
+            "type": "esriFieldTypeString",
+            "alias": "STRUCTURETYPE",
+            "length": 25,
+            "domain": {
+                "type": "codedValue",
+                "name": "StructureTypePondDischarge",
+                "description": "Structure Types for Pond Discharge",
+                "codedValues": [
+                    {
+                        "name": "Weir Spillway",
+                        "code": " Weir Spillway"
+                    },
+                    {
+                        "name": "Outfall Structure",
+                        "code": "Outfall Structure"
+                    },
+                    {
+                        "name": "NPDES MS4 Weir",
+                        "code": "NPDES MS4 Weir"
+                    },
+                    {
+                        "name": "Ditch Block",
+                        "code": "Ditch Block"
+                    }
+                ],
+                "mergePolicy": "esriMPTDefaultValue",
+                "splitPolicy": "esriSPTDefaultValue"
+            }
+        }
+    ],
+    "geometryField": {
+        "name": "Shape",
+        "type": "esriFieldTypeGeometry",
+        "alias": "Shape"
+    },
+    "indexes": [
+        {
+            "name": "FDO_OBJECTID",
+            "fields": "OBJECTID",
+            "isAscending": true,
+            "isUnique": true,
+            "description": ""
+        },
+        {
+            "name": "FDO_Shape",
+            "fields": "Shape",
+            "isAscending": true,
+            "isUnique": false,
+            "description": ""
+        },
+        {
+            "name": "FDO_GLOBALID",
+            "fields": "GLOBALID",
+            "isAscending": true,
+            "isUnique": false,
+            "description": ""
+        }
+    ],
+    "types": [
+        {
+            "domains": {
+                "ANCILLARYROLE": {
+                    "type": "inherited"
+                },
+                "ENABLED": {
+                    "type": "inherited"
+                },
+                "LIFECYCLE": {
+                    "type": "inherited"
+                },
+                "OWNER": {
+                    "type": "inherited"
+                },
+                "MAINTBY": {
+                    "type": "inherited"
+                },
+                "SOURCE": {
+                    "type": "inherited"
+                },
+                "NEEDSATTENTION": {
+                    "type": "inherited"
+                },
+                "INVENTORYTYPE": {
+                    "type": "inherited"
+                },
+                "INFILTRATION": {
+                    "type": "inherited"
+                },
+                "FIELDCOMPLETE": {
+                    "type": "inherited"
+                },
+                "ATTRIBUTECOMPLETE": {
+                    "type": "inherited"
+                },
+                "WHOCREATED": {
+                    "type": "inherited"
+                },
+                "ACCURACYCODE": {
+                    "type": "inherited"
+                },
+                "FIELDCOMMENTS": {
+                    "type": "inherited"
+                },
+                "PRFRESOLUTION": {
+                    "type": "inherited"
+                },
+                "IMAGERYYEAR": {
+                    "type": "inherited"
+                },
+                "STRUCTURETYPE": {
+                    "type": "inherited"
+                }
+            },
+            "id": 1,
+            "name": "WeirSpillway"
+        },
+        {
+            "domains": {
+                "ANCILLARYROLE": {
+                    "type": "inherited"
+                },
+                "ENABLED": {
+                    "type": "inherited"
+                },
+                "LIFECYCLE": {
+                    "type": "inherited"
+                },
+                "OWNER": {
+                    "type": "inherited"
+                },
+                "MAINTBY": {
+                    "type": "inherited"
+                },
+                "SOURCE": {
+                    "type": "inherited"
+                },
+                "NEEDSATTENTION": {
+                    "type": "inherited"
+                },
+                "INVENTORYTYPE": {
+                    "type": "inherited"
+                },
+                "INFILTRATION": {
+                    "type": "inherited"
+                },
+                "FIELDCOMPLETE": {
+                    "type": "inherited"
+                },
+                "ATTRIBUTECOMPLETE": {
+                    "type": "inherited"
+                },
+                "WHOCREATED": {
+                    "type": "inherited"
+                },
+                "ACCURACYCODE": {
+                    "type": "inherited"
+                },
+                "FIELDCOMMENTS": {
+                    "type": "inherited"
+                },
+                "PRFRESOLUTION": {
+                    "type": "inherited"
+                },
+                "IMAGERYYEAR": {
+                    "type": "inherited"
+                },
+                "STRUCTURETYPE": {
+                    "type": "inherited"
+                }
+            },
+            "id": 2,
+            "name": "OutfallStructure"
+        },
+        {
+            "domains": {
+                "ANCILLARYROLE": {
+                    "type": "inherited"
+                },
+                "ENABLED": {
+                    "type": "inherited"
+                },
+                "LIFECYCLE": {
+                    "type": "inherited"
+                },
+                "OWNER": {
+                    "type": "inherited"
+                },
+                "MAINTBY": {
+                    "type": "inherited"
+                },
+                "SOURCE": {
+                    "type": "inherited"
+                },
+                "NEEDSATTENTION": {
+                    "type": "inherited"
+                },
+                "INVENTORYTYPE": {
+                    "type": "inherited"
+                },
+                "INFILTRATION": {
+                    "type": "inherited"
+                },
+                "FIELDCOMPLETE": {
+                    "type": "inherited"
+                },
+                "ATTRIBUTECOMPLETE": {
+                    "type": "inherited"
+                },
+                "WHOCREATED": {
+                    "type": "inherited"
+                },
+                "ACCURACYCODE": {
+                    "type": "inherited"
+                },
+                "FIELDCOMMENTS": {
+                    "type": "inherited"
+                },
+                "PRFRESOLUTION": {
+                    "type": "inherited"
+                },
+                "IMAGERYYEAR": {
+                    "type": "inherited"
+                },
+                "STRUCTURETYPE": {
+                    "type": "inherited"
+                }
+            },
+            "id": 3,
+            "name": "NPDES MS4 Weir"
+        },
+        {
+            "domains": {
+                "ANCILLARYROLE": {
+                    "type": "inherited"
+                },
+                "ENABLED": {
+                    "type": "inherited"
+                },
+                "LIFECYCLE": {
+                    "type": "inherited"
+                },
+                "OWNER": {
+                    "type": "inherited"
+                },
+                "MAINTBY": {
+                    "type": "inherited"
+                },
+                "SOURCE": {
+                    "type": "inherited"
+                },
+                "NEEDSATTENTION": {
+                    "type": "inherited"
+                },
+                "INVENTORYTYPE": {
+                    "type": "inherited"
+                },
+                "INFILTRATION": {
+                    "type": "inherited"
+                },
+                "FIELDCOMPLETE": {
+                    "type": "inherited"
+                },
+                "ATTRIBUTECOMPLETE": {
+                    "type": "inherited"
+                },
+                "WHOCREATED": {
+                    "type": "inherited"
+                },
+                "ACCURACYCODE": {
+                    "type": "inherited"
+                },
+                "FIELDCOMMENTS": {
+                    "type": "inherited"
+                },
+                "PRFRESOLUTION": {
+                    "type": "inherited"
+                },
+                "IMAGERYYEAR": {
+                    "type": "inherited"
+                },
+                "STRUCTURETYPE": {
+                    "type": "inherited"
+                }
+            },
+            "id": 4,
+            "name": "DitchBlock"
+        }
+    ],
+    "subtypes": [
+        {
+            "domains": {
+                "ANCILLARYROLE": {
+                    "type": "inherited"
+                },
+                "ENABLED": {
+                    "type": "inherited"
+                },
+                "LIFECYCLE": {
+                    "type": "inherited"
+                },
+                "OWNER": {
+                    "type": "inherited"
+                },
+                "MAINTBY": {
+                    "type": "inherited"
+                },
+                "SOURCE": {
+                    "type": "inherited"
+                },
+                "NEEDSATTENTION": {
+                    "type": "inherited"
+                },
+                "INVENTORYTYPE": {
+                    "type": "inherited"
+                },
+                "INFILTRATION": {
+                    "type": "inherited"
+                },
+                "FIELDCOMPLETE": {
+                    "type": "inherited"
+                },
+                "ATTRIBUTECOMPLETE": {
+                    "type": "inherited"
+                },
+                "WHOCREATED": {
+                    "type": "inherited"
+                },
+                "ACCURACYCODE": {
+                    "type": "inherited"
+                },
+                "FIELDCOMMENTS": {
+                    "type": "inherited"
+                },
+                "PRFRESOLUTION": {
+                    "type": "inherited"
+                },
+                "IMAGERYYEAR": {
+                    "type": "inherited"
+                },
+                "STRUCTURETYPE": {
+                    "type": "inherited"
+                }
+            },
+            "defaultValues": {
+                "ANCILLARYROLE": 0,
+                "ENABLED": 1,
+                "LIFECYCLE": null,
+                "PARENTID": null,
+                "OWNER": null,
+                "MAINTBY": null,
+                "SOURCE": null,
+                "FACILITYID": null,
+                "LEGACYID": null,
+                "NEEDSATTENTION": null,
+                "LOCATION": null,
+                "INVENTORYDATE": null,
+                "INVENTORYTYPE": null,
+                "EASTING": null,
+                "NORTHING": null,
+                "Z29": null,
+                "INFILTRATION": null,
+                "DIGITALPICTUREID": null,
+                "FIELDCOMPLETE": null,
+                "ATTRIBUTECOMPLETE": null,
+                "NOTES": null,
+                "DRAWINGID": null,
+                "ORIGINALSOURCE": null,
+                "DATECREATED": null,
+                "WHOCREATED": null,
+                "UPDATESOURCE": null,
+                "DATEMODIFIED": null,
+                "WHOMODIFIED": null,
+                "ACCURACYCODE": null,
+                "HYPERLINK_AR": null,
+                "DIGITALPICTUREID_S": null,
+                "DIGITALPICTUREID_E": null,
+                "DIGITALPICTUREID_W": null,
+                "SUBTYPEFIELD": null,
+                "FIELDCOMMENTS": null,
+                "ZVALUE": null,
+                "PRFRESOLUTION": null,
+                "IMAGERYYEAR": null,
+                "GLOBALID": null,
+                "STRUCTUREID": null,
+                "OUTFALLID": null,
+                "STRUCTURETYPE": " Weir Spillway"
+            },
+            "code": 1,
+            "name": "WeirSpillway"
+        },
+        {
+            "domains": {
+                "ANCILLARYROLE": {
+                    "type": "inherited"
+                },
+                "ENABLED": {
+                    "type": "inherited"
+                },
+                "LIFECYCLE": {
+                    "type": "inherited"
+                },
+                "OWNER": {
+                    "type": "inherited"
+                },
+                "MAINTBY": {
+                    "type": "inherited"
+                },
+                "SOURCE": {
+                    "type": "inherited"
+                },
+                "NEEDSATTENTION": {
+                    "type": "inherited"
+                },
+                "INVENTORYTYPE": {
+                    "type": "inherited"
+                },
+                "INFILTRATION": {
+                    "type": "inherited"
+                },
+                "FIELDCOMPLETE": {
+                    "type": "inherited"
+                },
+                "ATTRIBUTECOMPLETE": {
+                    "type": "inherited"
+                },
+                "WHOCREATED": {
+                    "type": "inherited"
+                },
+                "ACCURACYCODE": {
+                    "type": "inherited"
+                },
+                "FIELDCOMMENTS": {
+                    "type": "inherited"
+                },
+                "PRFRESOLUTION": {
+                    "type": "inherited"
+                },
+                "IMAGERYYEAR": {
+                    "type": "inherited"
+                },
+                "STRUCTURETYPE": {
+                    "type": "inherited"
+                }
+            },
+            "defaultValues": {
+                "ANCILLARYROLE": 0,
+                "ENABLED": 1,
+                "LIFECYCLE": null,
+                "PARENTID": null,
+                "OWNER": null,
+                "MAINTBY": null,
+                "SOURCE": null,
+                "FACILITYID": null,
+                "LEGACYID": null,
+                "NEEDSATTENTION": null,
+                "LOCATION": null,
+                "INVENTORYDATE": null,
+                "INVENTORYTYPE": null,
+                "EASTING": null,
+                "NORTHING": null,
+                "Z29": null,
+                "INFILTRATION": null,
+                "DIGITALPICTUREID": null,
+                "FIELDCOMPLETE": null,
+                "ATTRIBUTECOMPLETE": null,
+                "NOTES": null,
+                "DRAWINGID": null,
+                "ORIGINALSOURCE": null,
+                "DATECREATED": null,
+                "WHOCREATED": null,
+                "UPDATESOURCE": null,
+                "DATEMODIFIED": null,
+                "WHOMODIFIED": null,
+                "ACCURACYCODE": null,
+                "HYPERLINK_AR": null,
+                "DIGITALPICTUREID_S": null,
+                "DIGITALPICTUREID_E": null,
+                "DIGITALPICTUREID_W": null,
+                "SUBTYPEFIELD": null,
+                "FIELDCOMMENTS": null,
+                "ZVALUE": null,
+                "PRFRESOLUTION": null,
+                "IMAGERYYEAR": null,
+                "GLOBALID": null,
+                "STRUCTUREID": null,
+                "OUTFALLID": null,
+                "STRUCTURETYPE": "Outfall Structure"
+            },
+            "code": 2,
+            "name": "OutfallStructure"
+        },
+        {
+            "domains": {
+                "ANCILLARYROLE": {
+                    "type": "inherited"
+                },
+                "ENABLED": {
+                    "type": "inherited"
+                },
+                "LIFECYCLE": {
+                    "type": "inherited"
+                },
+                "OWNER": {
+                    "type": "inherited"
+                },
+                "MAINTBY": {
+                    "type": "inherited"
+                },
+                "SOURCE": {
+                    "type": "inherited"
+                },
+                "NEEDSATTENTION": {
+                    "type": "inherited"
+                },
+                "INVENTORYTYPE": {
+                    "type": "inherited"
+                },
+                "INFILTRATION": {
+                    "type": "inherited"
+                },
+                "FIELDCOMPLETE": {
+                    "type": "inherited"
+                },
+                "ATTRIBUTECOMPLETE": {
+                    "type": "inherited"
+                },
+                "WHOCREATED": {
+                    "type": "inherited"
+                },
+                "ACCURACYCODE": {
+                    "type": "inherited"
+                },
+                "FIELDCOMMENTS": {
+                    "type": "inherited"
+                },
+                "PRFRESOLUTION": {
+                    "type": "inherited"
+                },
+                "IMAGERYYEAR": {
+                    "type": "inherited"
+                },
+                "STRUCTURETYPE": {
+                    "type": "inherited"
+                }
+            },
+            "defaultValues": {
+                "ANCILLARYROLE": 0,
+                "ENABLED": 1,
+                "LIFECYCLE": null,
+                "PARENTID": null,
+                "OWNER": null,
+                "MAINTBY": null,
+                "SOURCE": null,
+                "FACILITYID": null,
+                "LEGACYID": null,
+                "NEEDSATTENTION": null,
+                "LOCATION": null,
+                "INVENTORYDATE": null,
+                "INVENTORYTYPE": null,
+                "EASTING": null,
+                "NORTHING": null,
+                "Z29": null,
+                "INFILTRATION": null,
+                "DIGITALPICTUREID": null,
+                "FIELDCOMPLETE": null,
+                "ATTRIBUTECOMPLETE": null,
+                "NOTES": null,
+                "DRAWINGID": null,
+                "ORIGINALSOURCE": null,
+                "DATECREATED": null,
+                "WHOCREATED": null,
+                "UPDATESOURCE": null,
+                "DATEMODIFIED": null,
+                "WHOMODIFIED": null,
+                "ACCURACYCODE": null,
+                "HYPERLINK_AR": null,
+                "DIGITALPICTUREID_S": null,
+                "DIGITALPICTUREID_E": null,
+                "DIGITALPICTUREID_W": null,
+                "SUBTYPEFIELD": null,
+                "FIELDCOMMENTS": null,
+                "ZVALUE": null,
+                "PRFRESOLUTION": null,
+                "IMAGERYYEAR": null,
+                "GLOBALID": null,
+                "STRUCTUREID": null,
+                "OUTFALLID": null,
+                "STRUCTURETYPE": "NPDES MS4 Weir"
+            },
+            "code": 3,
+            "name": "NPDES MS4 Weir"
+        },
+        {
+            "domains": {
+                "ANCILLARYROLE": {
+                    "type": "inherited"
+                },
+                "ENABLED": {
+                    "type": "inherited"
+                },
+                "LIFECYCLE": {
+                    "type": "inherited"
+                },
+                "OWNER": {
+                    "type": "inherited"
+                },
+                "MAINTBY": {
+                    "type": "inherited"
+                },
+                "SOURCE": {
+                    "type": "inherited"
+                },
+                "NEEDSATTENTION": {
+                    "type": "inherited"
+                },
+                "INVENTORYTYPE": {
+                    "type": "inherited"
+                },
+                "INFILTRATION": {
+                    "type": "inherited"
+                },
+                "FIELDCOMPLETE": {
+                    "type": "inherited"
+                },
+                "ATTRIBUTECOMPLETE": {
+                    "type": "inherited"
+                },
+                "WHOCREATED": {
+                    "type": "inherited"
+                },
+                "ACCURACYCODE": {
+                    "type": "inherited"
+                },
+                "FIELDCOMMENTS": {
+                    "type": "inherited"
+                },
+                "PRFRESOLUTION": {
+                    "type": "inherited"
+                },
+                "IMAGERYYEAR": {
+                    "type": "inherited"
+                },
+                "STRUCTURETYPE": {
+                    "type": "inherited"
+                }
+            },
+            "defaultValues": {
+                "ANCILLARYROLE": 0,
+                "ENABLED": 1,
+                "LIFECYCLE": null,
+                "PARENTID": null,
+                "OWNER": null,
+                "MAINTBY": null,
+                "SOURCE": null,
+                "FACILITYID": null,
+                "LEGACYID": null,
+                "NEEDSATTENTION": null,
+                "LOCATION": null,
+                "INVENTORYDATE": null,
+                "INVENTORYTYPE": null,
+                "EASTING": null,
+                "NORTHING": null,
+                "Z29": null,
+                "INFILTRATION": null,
+                "DIGITALPICTUREID": null,
+                "FIELDCOMPLETE": null,
+                "ATTRIBUTECOMPLETE": null,
+                "NOTES": null,
+                "DRAWINGID": null,
+                "ORIGINALSOURCE": null,
+                "DATECREATED": null,
+                "WHOCREATED": null,
+                "UPDATESOURCE": null,
+                "DATEMODIFIED": null,
+                "WHOMODIFIED": null,
+                "ACCURACYCODE": null,
+                "HYPERLINK_AR": null,
+                "DIGITALPICTUREID_S": null,
+                "DIGITALPICTUREID_E": null,
+                "DIGITALPICTUREID_W": null,
+                "SUBTYPEFIELD": null,
+                "FIELDCOMMENTS": null,
+                "ZVALUE": null,
+                "PRFRESOLUTION": null,
+                "IMAGERYYEAR": null,
+                "GLOBALID": null,
+                "STRUCTUREID": null,
+                "OUTFALLID": null,
+                "STRUCTURETYPE": "Ditch Block"
+            },
+            "code": 4,
+            "name": "DitchBlock"
+        }
+    ],
+    "relationships": [
+    ],
+    "canModifyLayer": true,
+    "canScaleSymbols": false,
+    "hasLabels": false,
+    "capabilities": "Map,Query,Data",
+    "maxRecordCount": 3000,
+    "supportsStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportedQueryFormats": "JSON, geoJSON",
+    "isDataVersioned": false,
+    "ownershipBasedAccessControlForFeatures": {
+        "allowOthersToQuery": true
+    },
+    "useStandardizedQueries": true,
+    "advancedQueryCapabilities": {
+        "useStandardizedQueries": true,
+        "supportsStatistics": true,
+        "supportsHavingClause": true,
+        "supportsCountDistinct": true,
+        "supportsOrderBy": true,
+        "supportsDistinct": true,
+        "supportsPagination": true,
+        "supportsTrueCurve": true,
+        "supportsReturningQueryExtent": true,
+        "supportsQueryWithDistance": true,
+        "supportsSqlExpression": true
+    },
+    "supportsDatumTransformation": true,
+    "dateFieldsTimeReference": null,
+    "supportsCoordinatesQuantization": true,
+    "count": 1111
+}

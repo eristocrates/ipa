@@ -1,4 +1,4 @@
-#r @"C:\Repositories\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
+#r @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\shared_kernel\bin\Debug\net10.0\shared_kernel.dll"
 #r "nuget: dotNetRdf"
 #r "nuget: FsHttp"
 #load "IriPathing.fsx"
@@ -12,7 +12,7 @@ open VDS.RDF
 open VDS.RDF.Parsing
 
 open SharedKernel
-let generatedOutputDirectoryPath = @"C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework\Vocabulary\Generated"
+let generatedOutputDirectoryPath = @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\ResourceDescriptionFramework\Vocabulary\Generated"
 type VocabularyNamespace =
   {
 
@@ -394,6 +394,6 @@ if not failures.IsEmpty then
         |> String.concat "\n"
 
     File.WriteAllText(
-        @"C:\Repositories\ipa\visual_studio_solutions\ResourceDescriptionFramework\Artifact\CodegenFailures.txt",
+        @"C:\Repositories\eristocrates\ipa\visual_studio_solutions\ResourceDescriptionFramework\Artifact\CodegenFailures.txt",
         report
     )

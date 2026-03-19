@@ -1,0 +1,86 @@
+= let
+    // 1. Get all tables in the workbook
+    Source = Excel.CurrentWorkbook(),
+
+    // 2. Safely rename "Name" columns if they exist
+    SafeRename = Table.TransformColumns(
+        Source,
+        {
+            "Content", 
+            each if Table.HasColumns(_, "Name") and not Table.HasColumns(_, "OriginalName") then 
+                Table.RenameColumns(_, {{"Name", "OriginalName"}})
+            else _
+        }
+    ),
+
+    // 3. Add SourceTable column only if needed
+    AddSourceColumn = if Table.HasColumns(SafeRename, "SourceTable") then
+        SafeRename
+    else
+        Table.AddColumn(SafeRename, "SourceTable", each [Name]),
+
+    // 4. Expand tables without renaming (we'll handle conflicts later)
+    ColumnsToExpand = Table.ColumnNames(AddSourceColumn[Content]{0}),
+    ExpandedTables = Table.ExpandTableColumn(
+        AddSourceColumn,
+        "Content",
+        ColumnsToExpand
+    ),
+
+    // 5. Clean intermediate columns
+    CleanOutput = Table.RemoveColumns(ExpandedTables, {"Name"}),
+    
+    // 6. Filter to only rows with Common ID
+    FilteredRows = Table.SelectRows(CleanOutput, each ([Common ID] <> null)),
+
+    // 7. Check if SourceTables already exists in the final output structure
+    OutputColumns = Table.ColumnNames(FilteredRows),
+    SourceTablesExists = List.Contains(OutputColumns, "SourceTables"),
+
+    // 8. Get columns for aggregation (excluding technical columns)
+    BaseColumns = List.RemoveItems(
+        OutputColumns,
+        {"Common ID", "SourceTable", "OriginalName", "SourceTables"}
+    ),
+
+    // 9. Create aggregation rules for regular columns
+    ColumnAggregations = List.Transform(
+        BaseColumns,
+        (col) => {
+            col, 
+            each Text.Combine(
+                List.Distinct(
+                    List.RemoveItems(
+                        List.Transform(
+                            Table.Column(_, col),
+                            (x) => if x = null or x = "" then null else Text.Trim(Text.From(x))
+                        ),
+                        {null, ""}
+                    )
+                ),
+                ", "
+            ),
+            type text
+        }
+    ),
+
+    // 10. Only add SourceTables aggregation if it doesn't exist
+    FinalAggregations = if SourceTablesExists then
+        ColumnAggregations
+    else
+        ColumnAggregations & {
+            {
+                "SourceTables", 
+                each Text.Combine(List.Distinct([SourceTable]), ", "), 
+                type text
+            }
+        },
+
+    // 11. Apply grouping
+    GroupedData = Table.Group(
+        FilteredRows,
+        {"Common ID"},
+        FinalAggregations
+    )
+in
+    GroupedData

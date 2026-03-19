@@ -1,0 +1,1427 @@
+/<?xml version='1.0' encoding='utf-8'?>
+<definitions xmlns:http='http://schemas.xmlsoap.org/wsdl/http/'
+             xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+             xmlns:s='http://www.w3.org/2001/XMLSchema'
+             xmlns:hns='http://hansen.com/'
+             xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/'
+             xmlns:tm='http://microsoft.com/wsdl/mime/textMatching/'
+             xmlns:mime='http://schemas.xmlsoap.org/wsdl/mime/'
+             targetNamespace='http://hansen.com/'
+             xmlns:soap12='http://schemas.xmlsoap.org/wsdl/soap12/'
+             xmlns='http://schemas.xmlsoap.org/wsdl/'>
+	<types>
+		<s:schema elementFormDefault='qualified'
+		          targetNamespace='http://hansen.com/'>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_Update1'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='ticket'
+						           type='s:string'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_Update1Response'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='Hansen.AssetManagement.Storm.StormInlet_Update1Result'
+						           type='hns:Hansen.Core.WebServiceUtilities.WebServiceResult'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAA'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='ticket'
+						           type='s:string'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAAResponse'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAAResult'
+						           type='hns:Hansen.Core.WebServiceUtilities.WebServiceResult'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAA'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='ticket'
+						           type='s:string'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAAResponse'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAAResult'
+						           type='hns:Hansen.Core.WebServiceUtilities.WebServiceResult'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAA'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='ticket'
+						           type='s:string'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='IndexName'
+						           type='s:string'/>
+						<s:element minOccurs='1'
+						           maxOccurs='1'
+						           name='CalcDate'
+						           type='s:dateTime'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAAResponse'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAAResult'
+						           type='hns:Hansen.Core.WebServiceUtilities.WebServiceResult'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+						<s:element minOccurs='1'
+						           maxOccurs='1'
+						           name='IndexValue'
+						           type='s:double'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAA'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='ticket'
+						           type='s:string'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='IndexName'
+						           type='s:string'/>
+						<s:element minOccurs='1'
+						           maxOccurs='1'
+						           name='CalcDate'
+						           type='s:dateTime'/>
+						<s:element minOccurs='1'
+						           maxOccurs='1'
+						           name='fromFt'
+						           type='s:double'/>
+						<s:element minOccurs='1'
+						           maxOccurs='1'
+						           name='toFt'
+						           type='s:double'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAAResponse'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAAResult'
+						           type='hns:Hansen.Core.WebServiceUtilities.WebServiceResult'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+						<s:element minOccurs='1'
+						           maxOccurs='1'
+						           name='IndexValue'
+						           type='s:double'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_All'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='ticket'
+						           type='s:string'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllResponse'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllResult'
+						           type='hns:Hansen.Core.WebServiceUtilities.WebServiceResult'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponents'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='ticket'
+						           type='s:string'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+						<s:element minOccurs='1'
+						           maxOccurs='1'
+						           name='properties'
+						           type='hns:ArrayOfString'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='genericComponents'
+						           type='hns:Hansen.Core.WebServiceUtilities.GenericComponentCollection'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsResponse'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsResult'
+						           type='hns:Hansen.Core.WebServiceUtilities.WebServiceResult'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='genericComponents'
+						           type='hns:Hansen.Core.WebServiceUtilities.GenericComponentCollection'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_All'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='ticket'
+						           type='s:string'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllResponse'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllResult'
+						           type='hns:Hansen.Core.WebServiceUtilities.WebServiceResult'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponents'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='ticket'
+						           type='s:string'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+						<s:element minOccurs='1'
+						           maxOccurs='1'
+						           name='properties'
+						           type='hns:ArrayOfString'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='genericComponents'
+						           type='hns:Hansen.Core.WebServiceUtilities.GenericComponentCollection'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsResponse'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsResult'
+						           type='hns:Hansen.Core.WebServiceUtilities.WebServiceResult'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='oBusinessObject'
+						           type='hns:Hansen.AssetManagement.Storm.StormInlet'/>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='genericComponents'
+						           type='hns:Hansen.Core.WebServiceUtilities.GenericComponentCollection'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='GetLastResult'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='ticket'
+						           type='s:string'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name='GetLastResultResponse'>
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs='0'
+						           maxOccurs='1'
+						           name='GetLastResultResult'
+						           type='hns:Hansen.Core.WebServiceUtilities.WebServiceResult'/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name='Hansen.AssetManagement.Storm.StormInlet'>
+				<s:annotation>
+					<s:appinfo>d:/hansenci/code/trunk/source/hansen8/inetpub/wwwroot/nextgen/Components/bin/storm.dll</s:appinfo>
+					<s:appinfo>Hansen.AssetManagement.Storm.StormInlet</s:appinfo>
+					<s:documentation>Hansen.AssetManagement.Storm</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='BuildingFloor'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Building.BuildingFloor"/> for field <see cref="Hansen.AssetManagement.Building.BuildingFloor.FloorDetailKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='District'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormDistrict"/> for field <see cref="Hansen.AssetManagement.Storm.StormDistrict.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='GPSXCoordinate'
+					           type='s:double'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='UnitIDType'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.AssetType"/> for field <see cref="Hansen.AssetManagement.AssetType.AssetType"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='Length'
+					           type='s:double'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='IsLoaded'
+					           type='s:boolean'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='AssetType'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.AssetType"/> for field <see cref="Hansen.AssetManagement.AssetType.AssetType"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='UnitIDAsset'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='OutletDepthUOM'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Location'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormLocation"/> for field <see cref="Hansen.AssetManagement.Storm.StormLocation.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='AddedDateTime'
+					           type='s:dateTime'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='Position'
+					           type='s:int'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='AssociatedRoadway'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Roadway.RoadwayAsset"/> for field <see cref="Hansen.AssetManagement.Roadway.RoadwayAsset.AttachedAssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='MainLine'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='DownstreamInvertElevationUOM'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='GISStaticIdentifier'
+					           type='s:int'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='LocatingProperties'
+					           type='hns:ArrayOfString'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ServiceStatus'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormServiceStatus"/> for field <see cref="Hansen.AssetManagement.Storm.StormServiceStatus.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='ConnectionPipeLength'
+					           type='s:double'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='AddressQualifier'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Parcel'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.Property.Parcel"/> for field <see cref="Hansen.Property.Parcel.ParcelKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='GrateType'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormGrateType"/> for field <see cref="Hansen.AssetManagement.Storm.StormGrateType.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='MapNumber'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='RailSegment'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='SpecialInstructions'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='DownstreamConnectionDirection'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormDirection"/> for field <see cref="Hansen.AssetManagement.Storm.StormDirection.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Asset'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='DepthUOM'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Area'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormArea"/> for field <see cref="Hansen.AssetManagement.Storm.StormArea.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='DownstreamStormInlet'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='WidthUOM'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='RailCrossing'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='AddedBy'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='InstalledDate'
+					           type='s:dateTime'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='ExpireDate'
+					           type='s:dateTime'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='DownstreamDistance'
+					           type='s:double'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='UnitDesc'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Address'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.Property.Address"/> for field <see cref="Hansen.Property.Address.AddressKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='DownstreamDistanceFromNode'
+					           type='hns:Hansen.AssetManagement.Storm.StreamDirection'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='UpstreamInvertElevation'
+					           type='s:double'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='IsEffective'
+					           type='s:boolean'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Site'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ID'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='AsBuilt'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='ConnectionPipeSize'
+					           type='s:double'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='AssetKey'
+					           type='s:int'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='IsEquipmentAsset'
+					           type='s:boolean'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='UnitID2Asset'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='GPSFromDistance'
+					           type='s:double'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ElementTypeName'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='YCoordinate'
+					           type='s:double'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='GPSYCoordinate'
+					           type='s:double'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='IsReadOnly'
+					           type='s:boolean'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Complex'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ServiceLine'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ID2'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='UsageArea'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='LastModifiedBy'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='BudgetNumber'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='DownstreamDistanceUOM'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Material'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormConstructMaterial"/> for field <see cref="Hansen.AssetManagement.Storm.StormConstructMaterial.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='UnitID2Type'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.AssetType"/> for field <see cref="Hansen.AssetManagement.AssetType.AssetType"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ParallelLineNumber'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='Depth'
+					           type='s:double'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='LastModifiedDateTime'
+					           type='s:dateTime'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='Width'
+					           type='s:double'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Budget'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.Resources.BudgetNumber"/> for field <see cref="Hansen.Resources.BudgetNumber.BudgetNumberKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ProviderName'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='DownstreamConnectionType'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormConnectionType"/> for field <see cref="Hansen.AssetManagement.Storm.StormConnectionType.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Ownership'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormOwnership"/> for field <see cref="Hansen.AssetManagement.Storm.StormOwnership.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='GPSOffset'
+					           type='s:double'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='OutletDepth'
+					           type='s:double'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='LocateProperty'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Intersection'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='StreetSegment'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Asset"/> for field <see cref="Hansen.AssetManagement.Asset.AssetKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ConnectionPipeSzeUOM'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='DownstreamInvertElevation'
+					           type='s:double'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ConnectionPipeType'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormPipeType"/> for field <see cref="Hansen.AssetManagement.Storm.StormPipeType.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='XCoordinate'
+					           type='s:double'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='LengthUOM'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ConnectionPipeLengthUOM'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='ZCoordinate'
+					           type='s:double'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='BuildingRoom'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Building.BuildingRoom"/> for field <see cref="Hansen.AssetManagement.Building.BuildingRoom.RoomDetailKey"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='SubArea'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormSubArea"/> for field <see cref="Hansen.AssetManagement.Storm.StormSubArea.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='UnitType'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.StormInletType"/> for field <see cref="Hansen.AssetManagement.Storm.StormInletType.Code"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='GPSZCoordinate'
+					           type='s:double'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='UpstreamInvertElevationUOM'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ServiceInspections'
+					           type='s:int'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.AssetManagement.Storm.STINServiceInspectionCollection"/> for field <see cref="Hansen.AssetManagement.Storm.STINServiceInspectionCollection.InspectionNumber"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='ExpiredBy'
+					           type='s:string'>
+						<s:annotation>
+							<s:documentation>
+								<summary>
+Primary key for <see cref="Hansen.Resources.Employee"/> for field <see cref="Hansen.Resources.Employee.EmployeeID"/>
+								</summary>
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='GPSToDistance'
+					           type='s:double'/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name='ArrayOfString'>
+				<s:sequence>
+					<s:element minOccurs='0'
+					           maxOccurs='unbounded'
+					           name='string'
+					           nillable='true'
+					           type='s:string'/>
+				</s:sequence>
+			</s:complexType>
+			<s:simpleType name='Hansen.AssetManagement.Storm.StreamDirection'>
+				<s:annotation>
+					<s:appinfo>D:/HansenCI/Code/Trunk/Source/InternalUtilities/CodeGen2007/bin/Debug/Core.DLL</s:appinfo>
+					<s:appinfo>Hansen.AssetManagement.Storm.StreamDirection</s:appinfo>
+					<s:documentation>Hansen.AssetManagement.Storm</s:documentation>
+				</s:annotation>
+				<s:restriction base='s:string'>
+					<s:enumeration value='Downstream'/>
+					<s:enumeration value='Upstream'/>
+					<s:enumeration value='None'/>
+				</s:restriction>
+			</s:simpleType>
+			<s:complexType name='Hansen.Core.WebServiceUtilities.WebServiceResult'>
+				<s:annotation>
+					<s:appinfo>D:/HansenCI/Code/Trunk/Source/InternalUtilities/CodeGen2007/bin/Debug/Hansen.Core.WebServiceUtilities.DLL</s:appinfo>
+					<s:appinfo>Hansen.Core.WebServiceUtilities.WebServiceResult</s:appinfo>
+					<s:documentation>Hansen.Core.WebServiceUtilities</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='Code'
+					           type='s:long'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Message'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='Severity'
+					           type='hns:Hansen.Core.ResultSeverity'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Stack'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='Date'
+					           type='s:dateTime'/>
+					<s:element minOccurs='0'
+					           maxOccurs='1'
+					           name='Reference'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='IsNoDataFound'
+					           type='s:boolean'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='HasFailed'
+					           type='s:boolean'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='IsSuccess'
+					           type='s:boolean'/>
+				</s:sequence>
+			</s:complexType>
+			<s:simpleType name='Hansen.Core.ResultSeverity'>
+				<s:annotation>
+					<s:appinfo>D:/HansenCI/Code/Trunk/Source/InternalUtilities/CodeGen2007/bin/Debug/Core.DLL</s:appinfo>
+					<s:appinfo>Hansen.Core.ResultSeverity</s:appinfo>
+					<s:documentation>Hansen.Core</s:documentation>
+				</s:annotation>
+				<s:restriction base='s:string'>
+					<s:enumeration value='Success'/>
+					<s:enumeration value='Info'/>
+					<s:enumeration value='Warning'/>
+					<s:enumeration value='UserWarning'/>
+					<s:enumeration value='Error'/>
+					<s:enumeration value='Fault'/>
+					<s:enumeration value='UserError'/>
+					<s:enumeration value='Debug'/>
+				</s:restriction>
+			</s:simpleType>
+			<s:complexType name='Hansen.Core.WebServiceUtilities.GenericComponentProperty'>
+				<s:annotation>
+					<s:appinfo>D:/HansenCI/Code/Trunk/Source/InternalUtilities/CodeGen2007/bin/Debug/Hansen.Core.WebServiceUtilities.DLL</s:appinfo>
+					<s:appinfo>Hansen.Core.WebServiceUtilities.GenericComponentProperty</s:appinfo>
+					<s:documentation>Hansen.Core.WebServiceUtilities</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='key'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='value'
+					           type='s:string'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='DataType'
+					           type='s:string'/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name='Hansen.Core.WebServiceUtilities.GenericComponent'>
+				<s:annotation>
+					<s:appinfo>D:/HansenCI/Code/Trunk/Source/InternalUtilities/CodeGen2007/bin/Debug/Hansen.Core.WebServiceUtilities.DLL</s:appinfo>
+					<s:appinfo>Hansen.Core.WebServiceUtilities.Hansen.Core.WebServiceUtilities.GenericComponent</s:appinfo>
+					<s:documentation>Hansen.Core.WebServiceUtilities</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='Count'
+					           type='s:int'/>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='Moniker'
+					           type='s:string'/>
+					<s:element minOccurs='0'
+					           maxOccurs='unbounded'
+					           name='Properties'
+					           type='hns:Hansen.Core.WebServiceUtilities.GenericComponentProperty'/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name='Hansen.Core.WebServiceUtilities.GenericComponentCollection'>
+				<s:annotation>
+					<s:appinfo>D:/HansenCI/Code/Trunk/Source/InternalUtilities/CodeGen2007/bin/Debug/Hansen.Core.WebServiceUtilities.DLL</s:appinfo>
+					<s:appinfo>Hansen.Core.WebServiceUtilities.GenericComponentCollection</s:appinfo>
+					<s:documentation>Hansen.Core.WebServiceUtilities</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element minOccurs='1'
+					           maxOccurs='1'
+					           name='Count'
+					           type='s:int'/>
+					<s:element minOccurs='0'
+					           maxOccurs='unbounded'
+					           name='Components'
+					           type='hns:Hansen.Core.WebServiceUtilities.GenericComponent'/>
+				</s:sequence>
+			</s:complexType>
+		</s:schema>
+	</types>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_Update1SoapIn'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_Update1'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_Update1SoapOut'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_Update1Response'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAASoapIn'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAA'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAASoapOut'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAAResponse'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAASoapIn'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAA'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAASoapOut'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAAResponse'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAASoapIn'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAA'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAASoapOut'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAAResponse'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAASoapIn'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAA'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAASoapOut'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAAResponse'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllSoapIn'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByID_All'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllSoapOut'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllResponse'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsSoapIn'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponents'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsSoapOut'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsResponse'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllSoapIn'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByKey_All'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllSoapOut'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllResponse'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsSoapIn'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponents'/>
+	</message>
+	<message name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsSoapOut'>
+		<part name='parameters'
+		      element='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsResponse'/>
+	</message>
+	<message name='GetLastResultSoapIn'>
+		<part name='parameters'
+		      element='hns:GetLastResult'/>
+	</message>
+	<message name='GetLastResultSoapOut'>
+		<part name='parameters'
+		      element='hns:GetLastResultResponse'/>
+	</message>
+	<portType name='StormInletSoap'>
+		<operation name='Update'>
+			<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>Updates the current StormInlet asset using the given StormInlet object</documentation>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_Update1SoapIn'
+			       message='hns:Hansen.AssetManagement.Storm.StormInlet_Update1SoapIn'/>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_Update1SoapOut'
+			        message='hns:Hansen.AssetManagement.Storm.StormInlet_Update1SoapOut'/>
+		</operation>
+		<operation name='Add'>
+			<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>
+				<summary>Adds a new record using the given parameters</summary>
+				<returns>
+					<see cref="T:Hansen.Core.Result"/>
+				</returns>
+				<remarks>Generated from Metadata</remarks>
+			</documentation>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAASoapIn'
+			       message='hns:Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAASoapIn'/>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAASoapOut'
+			        message='hns:Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAASoapOut'/>
+		</operation>
+		<operation name='Delete'>
+			<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>
+				<summary>Deletes the current record in the database</summary>
+				<returns>
+					<see cref="T:Hansen.Core.Result"/>
+				</returns>
+				<remarks>Generated from Metadata</remarks>
+			</documentation>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAASoapIn'
+			       message='hns:Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAASoapIn'/>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAASoapOut'
+			        message='hns:Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAASoapOut'/>
+		</operation>
+		<operation name='GetIndexValue'>
+			<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAASoapIn'
+			       message='hns:Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAASoapIn'/>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAASoapOut'
+			        message='hns:Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAASoapOut'/>
+		</operation>
+		<operation name='GetIndexValue'>
+			<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAASoapIn'
+			       message='hns:Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAASoapIn'/>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAASoapOut'
+			        message='hns:Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAASoapOut'/>
+		</operation>
+		<operation name='LoadByID'>
+			<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>Loads a complete record by filtering on ID field values</documentation>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllSoapIn'
+			       message='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllSoapIn'/>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllSoapOut'
+			        message='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllSoapOut'/>
+		</operation>
+		<operation name='LoadByID'>
+			<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>Loads a complete record by filtering on ID field values and returns the properties specified in properties</documentation>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsSoapIn'
+			       message='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsSoapIn'/>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsSoapOut'
+			        message='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsSoapOut'/>
+		</operation>
+		<operation name='LoadByKey'>
+			<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>Loads a complete record by filtering on key field values</documentation>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllSoapIn'
+			       message='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllSoapIn'/>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllSoapOut'
+			        message='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllSoapOut'/>
+		</operation>
+		<operation name='LoadByKey'>
+			<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>Loads a complete record by filtering on ID field values and returns the properties specified in properties</documentation>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsSoapIn'
+			       message='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsSoapIn'/>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsSoapOut'
+			        message='hns:Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsSoapOut'/>
+		</operation>
+		<operation name='GetLastResult'>
+			<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>Returns the result of the last method called</documentation>
+			<input name='GetLastResultSoapIn'
+			       message='hns:GetLastResultSoapIn'/>
+			<output name='GetLastResultSoapOut'
+			        message='hns:GetLastResultSoapOut'/>
+		</operation>
+	</portType>
+	<binding name='StormInletSoap'
+	         type='hns:StormInletSoap'>
+		<soap12:binding transport='http://schemas.xmlsoap.org/soap/http'
+		                style='document'/>
+		<operation name='Update'>
+			<soap12:operation soapAction='http://hansen.com/Hansen.AssetManagement.Storm.StormInlet_Update1'
+			                  style='document'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_Update1SoapIn'>
+				<soap12:body use='literal'/>
+			</input>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_Update1SoapOut'>
+				<soap12:body use='literal'/>
+			</output>
+		</operation>
+		<operation name='Add'>
+			<soap12:operation soapAction='http://hansen.com/Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAA'
+			                  style='document'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAASoapIn'>
+				<soap12:body use='literal'/>
+			</input>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_Add_1B2M2Y8AsgTpgAmY7PhCfgAASoapOut'>
+				<soap12:body use='literal'/>
+			</output>
+		</operation>
+		<operation name='Delete'>
+			<soap12:operation soapAction='http://hansen.com/Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAA'
+			                  style='document'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAASoapIn'>
+				<soap12:body use='literal'/>
+			</input>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_Delete_1B2M2Y8AsgTpgAmY7PhCfgAASoapOut'>
+				<soap12:body use='literal'/>
+			</output>
+		</operation>
+		<operation name='GetIndexValue'>
+			<soap12:operation soapAction='http://hansen.com/Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAA'
+			                  style='document'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAASoapIn'>
+				<soap12:body use='literal'/>
+			</input>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_D8cobdFvr7mBJG1u7lQhEgAASoapOut'>
+				<soap12:body use='literal'/>
+			</output>
+		</operation>
+		<operation name='GetIndexValue'>
+			<soap12:operation soapAction='http://hansen.com/Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAA'
+			                  style='document'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAASoapIn'>
+				<soap12:body use='literal'/>
+			</input>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_GetIndexValue_mcGtOmsvirZ5qPFmdsquwAAASoapOut'>
+				<soap12:body use='literal'/>
+			</output>
+		</operation>
+		<operation name='LoadByID'>
+			<soap12:operation soapAction='http://hansen.com/Hansen.AssetManagement.Storm.StormInlet_LoadByID_All'
+			                  style='document'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllSoapIn'>
+				<soap12:body use='literal'/>
+			</input>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_AllSoapOut'>
+				<soap12:body use='literal'/>
+			</output>
+		</operation>
+		<operation name='LoadByID'>
+			<soap12:operation soapAction='http://hansen.com/Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponents'
+			                  style='document'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsSoapIn'>
+				<soap12:body use='literal'/>
+			</input>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_LoadByID_GenericComponentsSoapOut'>
+				<soap12:body use='literal'/>
+			</output>
+		</operation>
+		<operation name='LoadByKey'>
+			<soap12:operation soapAction='http://hansen.com/Hansen.AssetManagement.Storm.StormInlet_LoadByKey_All'
+			                  style='document'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllSoapIn'>
+				<soap12:body use='literal'/>
+			</input>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_AllSoapOut'>
+				<soap12:body use='literal'/>
+			</output>
+		</operation>
+		<operation name='LoadByKey'>
+			<soap12:operation soapAction='http://hansen.com/Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponents'
+			                  style='document'/>
+			<input name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsSoapIn'>
+				<soap12:body use='literal'/>
+			</input>
+			<output name='Hansen.AssetManagement.Storm.StormInlet_LoadByKey_GenericComponentsSoapOut'>
+				<soap12:body use='literal'/>
+			</output>
+		</operation>
+		<operation name='GetLastResult'>
+			<soap12:operation soapAction='http://hansen.com/GetLastResult'
+			                  style='document'/>
+			<input name='GetLastResultSoapIn'>
+				<soap12:body use='literal'/>
+			</input>
+			<output name='GetLastResultSoapOut'>
+				<soap12:body use='literal'/>
+			</output>
+		</operation>
+	</binding>
+	<service name='StormInletService'>
+		<documentation xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'>
+			<summary>Storm InletStorm Inlet</summary>
+		</documentation>
+		<port name='StormInletSoap'
+		      binding='hns:StormInletSoap'>
+			<s:annotation>
+				<s:appinfo>D:/HansenCI/Code/Trunk/source/SOA/WebServices/Bin/Hansen.AssetManagement.Storm.WebServices.dll</s:appinfo>
+				<s:appinfo>Hansen.AssetManagement.Storm.WebServices.StormInlet</s:appinfo>
+				<s:documentation>Hansen.AssetManagement.Storm.WebServices</s:documentation>
+			</s:annotation>
+			<soap12:address location='http://localhost/Trunk_WS/AssetManagement/Storm/Hansen.AssetManagement.Storm.StormInlet.asmx'/>
+		</port>
+	</service>
+</definitions>

@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<ERROR date="5/29/2024 3:26:13 PM" title="Error Result" ver="8.3.0.1309" user="medlockl" provider="Hansen8" server="HANSENWEB2K8" ident="">
+	<DESC>Agency-defined method (Add MOS Address from MOS SR HOTFIX reside in LeonCounty_WorkManagement.WorkOrder001.dll, inside class WorkOrder in namespace WorkManagement.) threw this exception: Exception has been thrown by the target of an invocation.(System.InvalidCastException: Conversion from type &amp;apos;Direction&amp;apos; to type &amp;apos;String&amp;apos; is not valid.&amp;#xa;&amp;#xd;   at Microsoft.VisualBasic.CompilerServices.Conversions.ToString(Object Value)&amp;#xa;&amp;#xd;   at WorkManagement.WorkOrder.BU1000056(IWorkOrder oWorkOrder)). Please fix and rebuild your source code. : Exception has been thrown by the target of an invocation.</DESC>
+	<CLIENT>&lt;REQUEST&gt;&lt;EVENTS&gt;&lt;DATA&gt;&lt;ITEM name='gridActivitiesAndAssets_pages' val='1' type='System.Int32' /&gt;&lt;PAGEPROP name="ViewWidth" value="1916" /&gt;&lt;PAGEPROP name="ViewHeight" value="949" /&gt;&lt;PAGEPROP name="WindowWidth" value="1916" /&gt;&lt;PAGEPROP name="WindowHeight" value="1013" /&gt;&lt;PAGEPROP name="IsClean" value="false" /&gt;&lt;PAGEPROP name="IsPageStateValidated" value="true" /&gt;&lt;COMP id='GroupWorkOrders' apid='Hansen.WorkManagement.GroupProjectCreatorApplet:2502' moniker='Hansen.WorkManagement.WorkOrderCollection' &gt;&lt;GRID name='gridActivitiesAndAssets' add='true' aiv='undefined' cap='false' canpg='true' del='true' did='Hansen.WorkManagement.GroupProjectCreatorApplet:2502-_-GRID_gridActivitiesAndAssets(1172)' edt='false' msv='undefined' pct='1' srt='true' fks='' fkd='' odc='undefined' mlt='true' psz='30' gsession='Hansen.WorkManagement.GroupProjectCreatorApplet:2502-_-GRID_gridActivitiesAndAssets(1172)' scl='gridColumn1' sas='true' cpg='0' apid='Hansen.WorkManagement.GroupProjectCreatorApplet:2502' monk='Hansen.WorkManagement.GroupProjectCreatorApplet' countSource='Data' maxselect='50000'&gt;&lt;COLS&gt;&lt;COL id='gcAssetKey' fmt='Integer' title='Asset Key' type='System.Int32' hide='true' bind='Asset.AssetKey' monk='Hansen.WorkManagement.WorkOrder' width='81' /&gt;&lt;COL id='gridColumn2' title='ActivityKey' hide='true' bind='Activity.ActivityDefinitionKey' monk='Hansen.WorkManagement.WorkOrder' width='99' /&gt;&lt;COL id='gcCompositeID' title='Asset' bind='Asset.ID' monk='Hansen.WorkManagement.WorkOrder' width='150' /&gt;&lt;COL id='gcAssetType' title='Asset Type' bind='Asset.AssetType.Description' monk='Hansen.WorkManagement.WorkOrder' width='90' /&gt;&lt;COL id='gcUnitType' title='Unit Type' bind='Asset.UnitType' monk='Hansen.WorkManagement.WorkOrder' width='81' /&gt;&lt;COL id='gcDescription' title='Description' bind='Asset.UnitDesc' monk='Hansen.WorkManagement.WorkOrder' width='99' /&gt;&lt;COL id='gridColumn1' title='Activity Code' bind='Activity.ActivityCode' monk='Hansen.WorkManagement.WorkOrder' width='117' /&gt;&lt;COL id='gcKey' fmt='Integer' title='ActAndAssetKey' type='System.Int32' primary='true' unique='true' hide='true' bind='WorkOrder.GroupProject.GroupProjectKey' monk='Hansen.WorkManagement.WorkOrder' width='126' /&gt;&lt;/COLS&gt;&lt;STYS&gt;&lt;/STYS&gt;&lt;/GRID&gt;&lt;/COMP&gt;&lt;COMP id='GroupProject' apid='Hansen.WorkManagement.GroupProjectCreatorApplet:2502' moniker='Hansen.WorkManagement.GroupProject' &gt;&lt;ITEM name='ebProjectDescription' val='OPS-395 Calvin 5/29/24' dest='ProjectDescription' monk='Hansen.WorkManagement.GroupProject' /&gt;&lt;ITEM name='HTMLComments1' val='' dest='Comments' /&gt;&lt;/COMP&gt;&lt;/DATA&gt;&lt;BASES&gt;&lt;NODE id='CreateGP' apid='Hansen.WorkManagement.GroupProjectCreatorApplet:2502' monk='Hansen.WorkManagement.GroupProjectCreatorApplet'/&gt;&lt;/BASES&gt;&lt;EVENT applet='Hansen.WorkManagement.GroupProjectCreatorApplet:2502' moniker='Hansen.WorkManagement.GroupProjectCreatorApplet' fn='OnSaveButton' src='ViewBar' vid='VID_76' page='CreateGroupProject.aspx' /&gt;&lt;/EVENTS&gt;&lt;/REQUEST&gt;</CLIENT>
+	<RESULT code="11005" date="5/29/2024 3:26:13 PM" severity="Error" desc="Agency-defined method (Add MOS Address from MOS SR HOTFIX reside in LeonCounty_WorkManagement.WorkOrder001.dll, inside class WorkOrder in namespace WorkManagement.) threw this exception: Exception has been thrown by the target of an invocation.(System.InvalidCastException: Conversion from type &amp;apos;Direction&amp;apos; to type &amp;apos;String&amp;apos; is not valid.&amp;#xa;&amp;#xd;   at Microsoft.VisualBasic.CompilerServices.Conversions.ToString(Object Value)&amp;#xa;&amp;#xd;   at WorkManagement.WorkOrder.BU1000056(IWorkOrder oWorkOrder)). Please fix and rebuild your source code. : Exception has been thrown by the target of an invocation.">
+		<EXCEPTION type="System.Reflection.TargetInvocationException" source="mscorlib" message="Exception has been thrown by the target of an invocation." stack="   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&amp;#xa;&amp;#xd;   at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&amp;#xa;&amp;#xd;   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&amp;#xa;&amp;#xd;   at Hansen.Core.AgencyEventExtensionHandlers.LoadAndRunHandler(AgencyRuleHandler handler, Object&amp;amp; returnVal, Object[] oParameters)">
+			<EXCEPTION type="System.InvalidCastException" source="Microsoft.VisualBasic" message="Conversion from type &amp;apos;Direction&amp;apos; to type &amp;apos;String&amp;apos; is not valid." stack="   at Microsoft.VisualBasic.CompilerServices.Conversions.ToString(Object Value)&amp;#xa;&amp;#xd;   at WorkManagement.WorkOrder.BU1000056(IWorkOrder oWorkOrder)" /></EXCEPTION>
+		<RESULT code="11005" date="5/29/2024 3:26:13 PM" severity="Error" desc="Agency-defined method (Add MOS Address from MOS SR HOTFIX reside in LeonCounty_WorkManagement.WorkOrder001.dll, inside class WorkOrder in namespace WorkManagement.) threw this exception: Exception has been thrown by the target of an invocation.(System.InvalidCastException: Conversion from type &amp;apos;Direction&amp;apos; to type &amp;apos;String&amp;apos; is not valid.&amp;#xa;&amp;#xd;   at Microsoft.VisualBasic.CompilerServices.Conversions.ToString(Object Value)&amp;#xa;&amp;#xd;   at WorkManagement.WorkOrder.BU1000056(IWorkOrder oWorkOrder)). Please fix and rebuild your source code. : Exception has been thrown by the target of an invocation.">
+			<EXCEPTION type="System.Reflection.TargetInvocationException" source="mscorlib" message="Exception has been thrown by the target of an invocation." stack="   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&amp;#xa;&amp;#xd;   at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&amp;#xa;&amp;#xd;   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&amp;#xa;&amp;#xd;   at Hansen.Core.AgencyEventExtensionHandlers.LoadAndRunHandler(AgencyRuleHandler handler, Object&amp;amp; returnVal, Object[] oParameters)">
+				<EXCEPTION type="System.InvalidCastException" source="Microsoft.VisualBasic" message="Conversion from type &amp;apos;Direction&amp;apos; to type &amp;apos;String&amp;apos; is not valid." stack="   at Microsoft.VisualBasic.CompilerServices.Conversions.ToString(Object Value)&amp;#xa;&amp;#xd;   at WorkManagement.WorkOrder.BU1000056(IWorkOrder oWorkOrder)" /></EXCEPTION>
+		</RESULT>
+	</RESULT>
+	<SESSION>
+		<ITEM name="VIEW_ID_NUMBER" type="System.Int32" value="80" />
+		<ITEM name="APP_BASE_PATH" type="System.String" value="/IPS/client/" />
+		<ITEM name="LastRequestWindowID" type="System.String" value="Hansen.WorkManagement.GroupProjectCreatorApplet:2502" />
+		<ITEM name="LastRequestDateTime" type="System.DateTime" value="5/29/2024 3:26:13 PM" />
+		<ITEM name="HITS_CURRENT_USER" type="Hansen.Core.AccessControl.AccessUser" value="medlockl" />
+		<ITEM name="Hansen.Home.HomePageApplet:2201|-_-|_COMPLIST" type="ComponentList" />
+		<ITEM name="Hansen.Home.HomePageApplet:2201|-_-|_VIEW_REF_COUNT" type="System.Int16" value="1" />
+		<ITEM name="Hansen.Home.HomePageApplet:2201|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.Home.HomePageApplet:2201|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.MyHansen.MyHansenApplet:2203|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="UserInfo" />
+		</ITEM>
+		<ITEM name="Hansen.MyHansen.MyHansenApplet:2203|-_-|_VIEW_REF_COUNT" type="System.Int16" value="1" />
+		<ITEM name="Hansen.MyHansen.MyHansenApplet:2203|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.MyHansen.MyHansenApplet:2203|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.MyHansen.MyHansenApplet:2203|-_-|_CURRENTVIEWURL" type="System.String" value="/IPS/Core/MyHansenApplet/MyHansenPage.aspx" />
+		<ITEM name="Redirect-page" type="System.String" value="/IPS/Core/Search/CustomSearch.aspx?Path=/IPS/WorkManagement/WorkManagementApplet/WorkOrderLookup.ascx&amp;amp;Title=Work Order Search" />
+		<ITEM name="ImageMapManager" type="Hansen.UI.Web.Controls.ImageMapManager" value="Hansen.UI.Web.Controls.ImageMapManager" />
+		<ITEM name="ServerSession" type="Hansen.ServerControls.Ajax.ServerSession" value="Hansen.ServerControls.Ajax.ServerSession" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2362|-_-|mWorkOrders" value="NULL" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2362|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.WorkManagement.WorkOrder:WorkOrder" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2362|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2362|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2362|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.Resources.BudgetNumber:Budget" />
+		</ITEM>
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|_CONTAINTED_DECORATOR" type="System.String" value="_ctl1_uccSourceBudgetNum_Content_" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|m_bBindWasInt" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|m_bIsInfoViewer" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|m_bIsRequired" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|m_bCallChildHappened" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|m_strMoniker" type="System.String" value="Hansen.WorkManagement.WorkOrder" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|m_strQualNamePrefix" type="System.String" value="WorkOrder.Budget.BudgetNumberKey" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|_PARENTAPID" type="System.String" value="Hansen.WorkManagement.WOCompletionPopupApplet:2362" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|_PARENTMONK" type="System.String" value="Hansen.WorkManagement.WOCompletionPopupApplet" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|_PARENTMETH" type="System.String" value="ChildClosed" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2363|-_-|_CVA_PRIMKEY" type="System.Int32" value="1" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2362|-_-|_CHILDLIST" type="VisualDelegateCollection">
+			<DELEGATE type="VisualDelegate" apid="Hansen.Resources.BudgetNumberControlApplet:2363" bind="WorkOrder.Budget.BudgetNumberKey" method="" moniker="Hansen.Resources.BudgetNumberControlApplet" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|includeExpired" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|expiredColumn" value="NULL" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|expiredFamily" value="NULL" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|family" type="System.String" value="WorkManagement" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|applet" type="System.String" value="GroupProjectLookupApplet" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|page" type="System.String" value="DeleteConfirm.aspx" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.WorkManagement.GroupProject:GroupProject" />
+			<ATOM key="Hansen.WorkManagement.GroupProjectCollection:GroupProjectColl" />
+			<ATOM key="Hansen.WorkManagement.WorkOrder:WorkOrder" />
+			<ATOM key="Hansen.WorkManagement.WorkOrderCollection:WorkOrderColl" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|_VIEW_REF_COUNT" type="System.Int16" value="1" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|_SESSION_DATA_LIST" type="StringCollection">
+			<ATOM value="Hansen.WorkManagement.GroupProjectLookupApplet:2383-_-GRID_Grid1(1119)" />
+			<ATOM value="Hansen.WorkManagement.GroupProjectLookupApplet:2383-_-GRID_Grid1(1119)PREFERENCE" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|_PAGEVALIDATIONMODE" type="Hansen.UI.Web.PageValidationMode" value="Disabled" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|CurrentPage" type="System.String" value="DeleteConfirm.aspx" />
+		<ITEM name="Modal_Hansen.WorkManagement.GroupProjectLookupApplet:2383" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.WorkManagement.WorkOrder:WorkOrder" />
+		</ITEM>
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_CONTAINTED_DECORATOR" type="System.String" value="_ctl0_acAsset_UCC_Content_" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_theUCCID" type="System.String" value="acAsset" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_Required" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_DisableCanEdit" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_BldgFloorBind" type="System.String" value="[Hansen.WorkManagement.GroupProjectLookupApplet:2383,Hansen.WorkManagement.GroupProjectLookupApplet]WorkOrder.BuildingFloor.FloorID" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_BldgRoomBind" type="System.String" value="[Hansen.WorkManagement.GroupProjectLookupApplet:2383,Hansen.WorkManagement.GroupProjectLookupApplet]WorkOrder.BuildingRoom.RoomID" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_HasBuilding" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_ManualSearch" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_DefaultUnitTypes" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_RWFromFtBind" type="System.String" value="[Hansen.WorkManagement.GroupProjectLookupApplet:2383,Hansen.WorkManagement.GroupProjectLookupApplet]WorkOrder.LinearFromFeet" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_RWFromMBind" type="System.String" value="[Hansen.WorkManagement.GroupProjectLookupApplet:2383,Hansen.WorkManagement.GroupProjectLookupApplet]WorkOrder.LinearFromMeters" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_RWToFtBind" type="System.String" value="[Hansen.WorkManagement.GroupProjectLookupApplet:2383,Hansen.WorkManagement.GroupProjectLookupApplet]WorkOrder.LinearToFeet" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_RWToMBind" type="System.String" value="[Hansen.WorkManagement.GroupProjectLookupApplet:2383,Hansen.WorkManagement.GroupProjectLookupApplet]WorkOrder.LinearToMeters" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_HasRoadway" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_CurrentFromUom" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_CurrentToUom" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_RecentFromValue" type="System.Double" value="0" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_RecentToValue" type="System.Double" value="0" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_HasLinearDist" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_HasDescDisp" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_HasFeatsIfRW" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_ddbItems" type="Hashtable" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_RWfeatkeybind" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_RWfeattypebind" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_OnReturnFromPopupRule" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_OnTextChangedRule" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_AssetControlEnabled" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_AssetType" type="System.Int32" value="1" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_HoldAsset" type="Hansen.AssetManagement.Asset" value="Hansen.AssetManagement.Asset" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|AssetKey" type="System.Int32" value="1" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_Moniker" type="System.String" value="Hansen.WorkManagement.WorkOrder" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_Bind" type="System.String" value="WorkOrder.Asset.AssetKey" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_AssetTypeCode" type="System.Int32" value="1" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_CompListID" type="System.String" value="WorkOrder" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_AssetTypeBind" type="System.String" value="WorkOrder.GroupProject.WorkOrders.AssetType.AssetType" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_EBbinds" type="Hashtable" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_EBhaspop" type="Hashtable" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_EBhasmulti" type="Hashtable" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_PARENTAPID" type="System.String" value="Hansen.WorkManagement.GroupProjectLookupApplet:2383" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_PARENTMONK" type="System.String" value="Hansen.WorkManagement.GroupProjectLookupApplet" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_PARENTMETH" type="System.String" value="ChildClosed" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2384|-_-|_CVA_PRIMKEY" type="System.Int32" value="1" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|_CHILDLIST" type="VisualDelegateCollection">
+			<DELEGATE type="VisualDelegate" apid="Hansen.AssetManagement.AssetControl_NULLApplet:2384" bind="WorkOrder.Asset.AssetKey" method="" moniker="Hansen.AssetManagement.AssetControl_NULLApplet" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383-_-GRID_Grid1(1119)PREFERENCE" type="System.Collections.Generic.List`1[[Hansen.UI.Web.Controls.GridPreferences, ServerControls, Version=8.3.0.1309, Culture=neutral, PublicKeyToken=null]]">
+			<ATOM type="Hansen.UI.Web.Controls.GridPreferences" value="Hansen.UI.Web.Controls.GridPreferences" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383-_-GRID_Grid1(1119)" type="Hansen.UI.Web.Controls.GridState" value="Hansen.UI.Web.Controls.GridState" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|_HasUsage" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|_GroupKeys" type="System.Collections.Generic.List`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+			<ATOM type="System.Int32" value="44254" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectLookupApplet:2383|-_-|_CURRENTVIEWURL" type="System.String" value="/IPS/WorkManagement/WorkManagementApplet/GroupProject/DeleteConfirm.aspx" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2408|-_-|mWorkOrders" value="NULL" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2408|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.WorkManagement.WorkOrder:WorkOrder" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2408|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2408|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2408|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.Resources.BudgetNumber:Budget" />
+		</ITEM>
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|_CONTAINTED_DECORATOR" type="System.String" value="_ctl1_uccSourceBudgetNum_Content_" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|m_bBindWasInt" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|m_bIsInfoViewer" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|m_bIsRequired" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|m_bCallChildHappened" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|m_strMoniker" type="System.String" value="Hansen.WorkManagement.WorkOrder" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|m_strQualNamePrefix" type="System.String" value="WorkOrder.Budget.BudgetNumberKey" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|_PARENTAPID" type="System.String" value="Hansen.WorkManagement.WOCompletionPopupApplet:2408" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|_PARENTMONK" type="System.String" value="Hansen.WorkManagement.WOCompletionPopupApplet" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|_PARENTMETH" type="System.String" value="ChildClosed" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2409|-_-|_CVA_PRIMKEY" type="System.Int32" value="1" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2408|-_-|_CHILDLIST" type="VisualDelegateCollection">
+			<DELEGATE type="VisualDelegate" apid="Hansen.Resources.BudgetNumberControlApplet:2409" bind="WorkOrder.Budget.BudgetNumberKey" method="" moniker="Hansen.Resources.BudgetNumberControlApplet" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2437|-_-|mWorkOrders" value="NULL" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2437|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.WorkManagement.WorkOrder:WorkOrder" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2437|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2437|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2437|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.Resources.BudgetNumber:Budget" />
+		</ITEM>
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|_CONTAINTED_DECORATOR" type="System.String" value="_ctl1_uccSourceBudgetNum_Content_" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|m_bBindWasInt" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|m_bIsInfoViewer" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|m_bIsRequired" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|m_bCallChildHappened" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|m_strMoniker" type="System.String" value="Hansen.WorkManagement.WorkOrder" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|m_strQualNamePrefix" type="System.String" value="WorkOrder.Budget.BudgetNumberKey" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|_PARENTAPID" type="System.String" value="Hansen.WorkManagement.WOCompletionPopupApplet:2437" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|_PARENTMONK" type="System.String" value="Hansen.WorkManagement.WOCompletionPopupApplet" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|_PARENTMETH" type="System.String" value="ChildClosed" />
+		<ITEM name="Hansen.Resources.BudgetNumberControlApplet:2438|-_-|_CVA_PRIMKEY" type="System.Int32" value="1" />
+		<ITEM name="Hansen.WorkManagement.WOCompletionPopupApplet:2437|-_-|_CHILDLIST" type="VisualDelegateCollection">
+			<DELEGATE type="VisualDelegate" apid="Hansen.Resources.BudgetNumberControlApplet:2438" bind="WorkOrder.Budget.BudgetNumberKey" method="" moniker="Hansen.Resources.BudgetNumberControlApplet" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|includeExpired" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|expiredColumn" value="NULL" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|expiredFamily" value="NULL" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|family" type="System.String" value="WorkManagement" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|applet" type="System.String" value="WorkOrderLookupApplet" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|page" type="System.String" value="WorkOrderLookup.ascx" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.Property.Address:Address" />
+			<ATOM key="Hansen.WorkManagement.WorkOrderCollection:WorkOrderCol" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|_VIEW_REF_COUNT" type="System.Int16" value="1" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|_APPLETSTATE" type="System.String" value="0" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|_PAGEVALIDATIONMODE" type="Hansen.UI.Web.PageValidationMode" value="Disabled" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|CurrentPage" type="System.String" value="WorkOrderLookup.ascx" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|SV_MODAL" type="System.Boolean" value="False" />
+		<ITEM name="Modal_Hansen.WorkManagement.WorkOrderLookupApplet:2451" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|_COMPLIST" type="ComponentList" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|_SESSION_DATA_LIST" type="StringCollection">
+			<ATOM value="Hansen.GIS.GridMapCoordinatorApplet:2452-_-GRID_gdSearch(1147)" />
+			<ATOM value="Hansen.GIS.GridMapCoordinatorApplet:2452-_-GRID_gdSearch(1147)PREFERENCE" />
+		</ITEM>
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|_CONTAINTED_DECORATOR" value="NULL" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|GRIDID" type="System.String" value="gdSearch" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|MAPID" type="System.String" value="gdSearchMap" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|SYNCMAPTOGRID" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|TABSFOLLOWBOTTOMEDGE" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|PREVIOUSMAPPEDLIST" type="System.Collections.ArrayList" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|_PARENTAPID" type="System.String" value="Hansen.WorkManagement.WorkOrderLookupApplet:2451" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|_PARENTMONK" type="System.String" value="Hansen.WorkManagement.WorkOrderLookupApplet" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452|-_-|_PARENTMETH" type="System.String" value="ChildClosed" />
+		<ITEM name="Hansen.WorkManagement.WorkOrderLookupApplet:2451|-_-|_CHILDLIST" type="VisualDelegateCollection">
+			<DELEGATE type="VisualDelegate" apid="Hansen.GIS.GridMapCoordinatorApplet:2452" bind="" method="" moniker="Hansen.GIS.GridMapCoordinatorApplet" />
+			<DELEGATE type="VisualDelegate" apid="Hansen.Property.AddressSearchApplet:2453" bind="WorkOrder.Address" method="" moniker="Hansen.Property.AddressSearchApplet" />
+			<DELEGATE type="VisualDelegate" apid="Hansen.AssetManagement.AssetControl_NULLApplet:2454" bind="WorkOrder.Asset.AssetKey" method="" moniker="Hansen.AssetManagement.AssetControl_NULLApplet" />
+		</ITEM>
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.Property.Address:Address" />
+			<ATOM key="Hansen.WorkManagement.WorkOrder:WorkOrder" />
+		</ITEM>
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|_CONTAINTED_DECORATOR" type="System.String" value="_ctl0_UserControlContainer1_Content_" />
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|m_strMoniker" type="System.String" value="Hansen.WorkManagement.WorkOrder" />
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|m_strQualNamePrefix" type="System.String" value="WorkOrder.Address" />
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|m_isSearchManual" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|_PARENTAPID" type="System.String" value="Hansen.WorkManagement.WorkOrderLookupApplet:2451" />
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|_PARENTMONK" type="System.String" value="Hansen.WorkManagement.WorkOrderLookupApplet" />
+		<ITEM name="Hansen.Property.AddressSearchApplet:2453|-_-|_PARENTMETH" type="System.String" value="ChildClosed" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.WorkManagement.WorkOrder:WorkOrder" />
+		</ITEM>
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_CONTAINTED_DECORATOR" type="System.String" value="_ctl0_AssetControl1_UCC_Content_" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_theUCCID" type="System.String" value="AssetControl1" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_Required" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_DisableCanEdit" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_BldgFloorBind" type="System.String" value="[Hansen.WorkManagement.WorkOrderLookupApplet:2451,Hansen.WorkManagement.WorkOrderLookupApplet]WorkOrder.BuildingFloor.FloorID" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_BldgRoomBind" type="System.String" value="[Hansen.WorkManagement.WorkOrderLookupApplet:2451,Hansen.WorkManagement.WorkOrderLookupApplet]WorkOrder.BuildingRoom.RoomID" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_HasBuilding" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_ManualSearch" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_DefaultUnitTypes" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_RWFromFtBind" type="System.String" value="[Hansen.WorkManagement.WorkOrderLookupApplet:2451,Hansen.WorkManagement.WorkOrderLookupApplet]WorkOrder.LinearFromFeet" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_RWFromMBind" type="System.String" value="[Hansen.WorkManagement.WorkOrderLookupApplet:2451,Hansen.WorkManagement.WorkOrderLookupApplet]WorkOrder.LinearFromMeters" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_RWToFtBind" type="System.String" value="[Hansen.WorkManagement.WorkOrderLookupApplet:2451,Hansen.WorkManagement.WorkOrderLookupApplet]WorkOrder.LinearToFeet" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_RWToMBind" type="System.String" value="[Hansen.WorkManagement.WorkOrderLookupApplet:2451,Hansen.WorkManagement.WorkOrderLookupApplet]WorkOrder.LinearToMeters" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_HasRoadway" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_CurrentFromUom" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_CurrentToUom" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_RecentFromValue" type="System.Double" value="0" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_RecentToValue" type="System.Double" value="0" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_HasLinearDist" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_HasDescDisp" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_HasFeatsIfRW" type="System.Boolean" value="False" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_ddbItems" type="Hashtable" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_RWfeatkeybind" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_RWfeattypebind" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_OnReturnFromPopupRule" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_OnTextChangedRule" type="System.String" value="" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_AssetControlEnabled" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_AssetType" type="System.Int32" value="1" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_HoldAsset" type="Hansen.AssetManagement.Asset" value="Hansen.AssetManagement.Asset" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|AssetKey" type="System.Int32" value="1" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_Moniker" type="System.String" value="Hansen.WorkManagement.WorkOrder" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_Bind" type="System.String" value="WorkOrder.Asset.AssetKey" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_AssetTypeCode" type="System.Int32" value="1" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_CompListID" type="System.String" value="WorkOrder" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_AssetTypeBind" type="System.String" value="WorkOrder.AssetType.AssetType" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_EBbinds" type="Hashtable" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_EBhaspop" type="Hashtable" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_EBhasmulti" type="Hashtable" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_PARENTAPID" type="System.String" value="Hansen.WorkManagement.WorkOrderLookupApplet:2451" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_PARENTMONK" type="System.String" value="Hansen.WorkManagement.WorkOrderLookupApplet" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_PARENTMETH" type="System.String" value="ChildClosed" />
+		<ITEM name="Hansen.AssetManagement.AssetControl_NULLApplet:2454|-_-|_CVA_PRIMKEY" type="System.Int32" value="1" />
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452-_-GRID_gdSearch(1147)PREFERENCE" type="System.Collections.Generic.List`1[[Hansen.UI.Web.Controls.GridPreferences, ServerControls, Version=8.3.0.1309, Culture=neutral, PublicKeyToken=null]]">
+			<ATOM type="Hansen.UI.Web.Controls.GridPreferences" value="Hansen.UI.Web.Controls.GridPreferences" />
+		</ITEM>
+		<ITEM name="Hansen.GIS.GridMapCoordinatorApplet:2452-_-GRID_gdSearch(1147)" type="Hansen.UI.Web.Controls.GridState" value="Hansen.UI.Web.Controls.GridState" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|_COMPLIST" type="ComponentList" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|_VIEW_REF_COUNT" type="System.Int16" value="1" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|_PAGEVALIDATIONMODE" type="Hansen.UI.Web.PageValidationMode" value="Disabled" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|MAPDRAWERID" type="System.String" value="WorkManagement.WorkOrderLookupApplet:WorkOrderLookupForm" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|MAPDRAWERITEMID" type="System.String" value="ShowSelected" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|INITCOMPS" type="System.Collections.Generic.List`1[[Hansen.Core.Business.IComponent, Core, Version=8.3.0.1309, Culture=neutral, PublicKeyToken=null]]">
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+			<ATOM type="Hansen.WorkManagement.WorkOrder" value="Hansen.WorkManagement.WorkOrder" />
+		</ITEM>
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|MAPPARENTAPPLET" type="Hansen.WorkManagement.WorkOrderLookupApplet" value="Hansen.WorkManagement.WorkOrderLookupApplet" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|_CURRENTVIEWURL" type="System.String" value="/IPS/Core/MapDrawerApplet/MainMap.aspx" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|_PARENTAPID" type="System.String" value="Hansen.WorkManagement.WorkOrderLookupApplet:2451" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|_PARENTMONK" type="System.String" value="Hansen.WorkManagement.WorkOrderLookupApplet" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|_PARENTMETH" type="System.String" value="MapDelegate" />
+		<ITEM name="Hansen.GIS.AddressCriteriaApplet:2474|-_-|_COMPLIST" type="ComponentList" />
+		<ITEM name="Hansen.GIS.AddressCriteriaApplet:2474|-_-|_VIEW_REF_COUNT" type="System.Int16" value="0" />
+		<ITEM name="Hansen.GIS.AddressCriteriaApplet:2474|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.GIS.AddressCriteriaApplet:2474|-_-|_SESSION_DATA_LIST" type="StringCollection" />
+		<ITEM name="Hansen.GIS.AddressCriteriaApplet:2474|-_-|_CONTAINTED_DECORATOR" type="System.String" value="uccWorkOrderAddressControl_Content_" />
+		<ITEM name="Hansen.GIS.AddressCriteriaApplet:2474|-_-|_PARENTAPID" type="System.String" value="Hansen.GIS.MainMapApplet:2473" />
+		<ITEM name="Hansen.GIS.AddressCriteriaApplet:2474|-_-|_PARENTMONK" type="System.String" value="Hansen.GIS.MainMapApplet" />
+		<ITEM name="Hansen.GIS.AddressCriteriaApplet:2474|-_-|_PARENTMETH" type="System.String" value="ChildClosed" />
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|_CHILDLIST" type="VisualDelegateCollection">
+			<DELEGATE type="VisualDelegate" apid="Hansen.GIS.AddressCriteriaApplet:2474" bind="WorkOrder.Address" method="" moniker="Hansen.GIS.AddressCriteriaApplet" />
+		</ITEM>
+		<ITEM name="Hansen.GIS.MainMapApplet:2473|-_-|MAPQUICKSEARCHCONTROLS" type="System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+			<ATOM type="System.String" value="SearchEdit_ebQuickSearchWorkOrder" />
+			<ATOM type="System.String" value="SearchEdit_ebActivity" />
+			<ATOM type="System.String" value="SearchEdit_ebMaintType" />
+			<ATOM type="System.String" value="SearchEdit_ebProblem" />
+			<ATOM type="System.String" value="SearchEdit_ebMilestone" />
+			<ATOM type="System.String" value="SearchEdit_ebPriority" />
+			<ATOM type="System.String" value="SearchCheck_cbQuickSearchOpenRecordCheck" />
+			<ATOM type="System.String" value="uccWorkOrderAddressControl_Content_SearchEdit_ebQuickSearchStNumber" />
+			<ATOM type="System.String" value="uccWorkOrderAddressControl_Content_SearchEdit_ebQuickSearchPreDir" />
+			<ATOM type="System.String" value="uccWorkOrderAddressControl_Content_SearchEdit_ebQuickSearchStName" />
+			<ATOM type="System.String" value="uccWorkOrderAddressControl_Content_SearchEdit_ebQuickSearchSuffix" />
+			<ATOM type="System.String" value="uccWorkOrderAddressControl_Content_SearchEdit_ebQuickSearchPostDir" />
+			<ATOM type="System.String" value="uccWorkOrderAddressControl_Content_SearchEdit_ebQuickSearchStSub" />
+			<ATOM type="System.String" value="uccWorkOrderAddressControl_Content_SearchEdit_ebQuickSearchCity" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.AssetManagement.AssetGroup:AssetGroup" />
+			<ATOM key="Hansen.AssetManagement.AssetGroupItemCollection:InvalidAssets" />
+			<ATOM key="Hansen.AssetManagement.AssetGroupItemCollection:SelectedAssets" />
+			<ATOM key="Hansen.AssetManagement.AssetGroupItemCollection:ValidAssets" />
+			<ATOM key="Hansen.WorkManagement.ActivityDefinition:ActivityDefinition" />
+			<ATOM key="Hansen.WorkManagement.GroupProject:GroupProject" />
+			<ATOM key="Hansen.WorkManagement.TaskDefinitionCollection:TaskDefinitions" />
+			<ATOM key="Hansen.WorkManagement.WorkOrder:WorkOrder" />
+			<ATOM key="Hansen.WorkManagement.WorkOrderCollection:ExistingWorkOrders" />
+			<ATOM key="Hansen.WorkManagement.WorkOrderCollection:GroupWorkOrders" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|_VIEW_REF_COUNT" type="System.Int16" value="1" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|_APPLETSTATE" type="System.String" value="1" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|_SESSION_DATA_LIST" type="StringCollection">
+			<ATOM value="Hansen.WorkManagement.GroupProjectCreatorApplet:2495-_-GRID_gridActivitiesAndAssets(1166)" />
+			<ATOM value="Hansen.WorkManagement.GroupProjectCreatorApplet:2495-_-GRID_gridActivitiesAndAssets(1166)PREFERENCE" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|_OpenNewWindow" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|CurrentPage" type="System.String" value="CreateGroupProject.aspx" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|_CURRENTVIEWURL" type="System.String" value="/IPS/WorkManagement/WorkManagementApplet/GroupProject/CreateGroupProject.aspx" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|_PARENTAPID" type="System.String" value="Hansen.GIS.MainMapApplet:2473" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|_PARENTMONK" type="System.String" value="Hansen.GIS.MainMapApplet" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|_PARENTMETH" type="System.String" value="dummyMapEvent" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495|-_-|_PAGEVALIDATIONMODE" type="Hansen.UI.Web.PageValidationMode" value="Page" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495-_-GRID_gridActivitiesAndAssets(1166)PREFERENCE" value="NULL" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2495-_-GRID_gridActivitiesAndAssets(1166)" type="Hansen.UI.Web.Controls.GridState" value="Hansen.UI.Web.Controls.GridState" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|_COMPLIST" type="ComponentList">
+			<ATOM key="Hansen.AssetManagement.AssetGroup:AssetGroup" />
+			<ATOM key="Hansen.AssetManagement.AssetGroupItemCollection:InvalidAssets" />
+			<ATOM key="Hansen.AssetManagement.AssetGroupItemCollection:SelectedAssets" />
+			<ATOM key="Hansen.AssetManagement.AssetGroupItemCollection:ValidAssets" />
+			<ATOM key="Hansen.WorkManagement.ActivityDefinition:ActivityDefinition" />
+			<ATOM key="Hansen.WorkManagement.GroupProject:GroupProject" />
+			<ATOM key="Hansen.WorkManagement.TaskDefinitionCollection:TaskDefinitions" />
+			<ATOM key="Hansen.WorkManagement.WorkOrder:WorkOrder" />
+			<ATOM key="Hansen.WorkManagement.WorkOrderCollection:ExistingWorkOrders" />
+			<ATOM key="Hansen.WorkManagement.WorkOrderCollection:GroupWorkOrders" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|_VIEW_REF_COUNT" type="System.Int16" value="1" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|_APPLETSTATE" type="System.String" value="0" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|_SESSION_DATA_LIST" type="StringCollection">
+			<ATOM value="Hansen.WorkManagement.GroupProjectCreatorApplet:2502-_-GRID_gridActivitiesAndAssets(1172)" />
+			<ATOM value="Hansen.WorkManagement.GroupProjectCreatorApplet:2502-_-GRID_gridActivitiesAndAssets(1172)PREFERENCE" />
+		</ITEM>
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|_OpenNewWindow" type="System.Boolean" value="True" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|CurrentPage" type="System.String" value="CreateGroupProject.aspx" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|_CURRENTVIEWURL" type="System.String" value="/IPS/WorkManagement/WorkManagementApplet/GroupProject/CreateGroupProject.aspx" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|_PARENTAPID" type="System.String" value="Hansen.GIS.MainMapApplet:2473" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|_PARENTMONK" type="System.String" value="Hansen.GIS.MainMapApplet" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|_PARENTMETH" type="System.String" value="dummyMapEvent" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502|-_-|_PAGEVALIDATIONMODE" type="Hansen.UI.Web.PageValidationMode" value="Page" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502-_-GRID_gridActivitiesAndAssets(1172)PREFERENCE" value="NULL" />
+		<ITEM name="Hansen.WorkManagement.GroupProjectCreatorApplet:2502-_-GRID_gridActivitiesAndAssets(1172)" type="Hansen.UI.Web.Controls.GridState" value="Hansen.UI.Web.Controls.GridState" />
+		<ITEM name="LastPingWindowID" type="System.String" value="Hansen.WorkManagement.WorkOrderLookupApplet:2451" />
+	</SESSION>
+</ERROR>
