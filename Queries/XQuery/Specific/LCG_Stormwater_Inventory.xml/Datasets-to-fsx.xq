@@ -21,10 +21,10 @@ let $FieldBinding :=
           
           group by $name, $alias, $isNullable, $length, $required, $defaultValue
 
-        
+
         
 return ``[
-      "`{$name}`" = {
+      `{$name}` = {
           name = "`{$name}`"
           alias = `{$alias}`
           isNullable = `{$isNullable}`
@@ -37,7 +37,7 @@ return ``[
 
 
 return ``[
-    "`{$FeatureClass/Name/text()}`" = {
+    `{$FeatureClass/Name/text()}` = {
       `{$FieldBinding}`
     }
   

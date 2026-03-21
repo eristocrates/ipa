@@ -1,6 +1,6 @@
 declare function local:attributeValue($attribute as attribute()) {
   switch (fn:local-name($attribute))
-    case "effectiveDateTime" return `DateTime.Parse("{$attribute}")`
+    case "effectiveDateTime" return if ($attribute) then `Some(DateTime.Parse("{$attribute}"))` else "None"
     case "length" return `{$attribute}`
     case "dataScale" return `{$attribute}`
     case "dataPrecision" return `{$attribute}`
@@ -19,9 +19,10 @@ declare function local:attributeValue($attribute as attribute()) {
     case "hasNullRecord" return `{$attribute}`
     case "isLicensed" return `{$attribute}`
     case "isUnique" return `{$attribute}`
-
-    default return `"{$attribute}"`
+    case "description" return `"""{$attribute}"""`
+    default return `"{fn:normalize-space($attribute)}"`
 };
+
 declare function local:Capitalize($input as xs:string) {
     concat(
         fn:upper-case(fn:substring($input, 1, 1)),

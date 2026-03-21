@@ -1,0 +1,171 @@
+{
+  "data": {
+    "subscription": {
+      "subscribes_to_you": false
+    },
+    "parody": true,
+    "receives_your_dm": true,
+    "is_identity_verified": false,
+    "verified_type": "none",
+    "username": "TRAYFEY2",
+    "verified": false,
+    "profile_image_url": "https://pbs.twimg.com/profile_images/2034751964202840064/8wjI3rcE_normal.jpg",
+    "location": "A Bubble",
+    "most_recent_tweet_id": "2035358542593438097",
+    "public_metrics": {
+      "followers_count": 468,
+      "following_count": 990,
+      "tweet_count": 21354,
+      "listed_count": 6,
+      "like_count": 73504,
+      "media_count": 2354
+    },
+    "subscription_type": "None",
+    "created_at": "2023-10-24T22:00:55.000Z",
+    "description": "! 03-27-26 her album will change history",
+    "id": "1716937759674576896",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/1716937759674576896/1773957693",
+    "name": "~ тяαу ~ \uD83D\uDD70️",
+    "protected": false
+  },
+  "includes": {
+    "tweets": [
+      {
+        "entities": {
+          "mentions": [
+            {
+              "start": 0,
+              "end": 8,
+              "username": "PopBase",
+              "id": "1138458175663988738"
+            },
+            {
+              "start": 9,
+              "end": 17,
+              "username": "BTS_twt",
+              "id": "335141638"
+            }
+          ]
+        },
+        "display_text_range": [
+          18,
+          22
+        ],
+        "possibly_sensitive": false,
+        "in_reply_to_user_id": "1138458175663988738",
+        "public_metrics": {
+          "retweet_count": 0,
+          "reply_count": 0,
+          "like_count": 1,
+          "quote_count": 0,
+          "bookmark_count": 0,
+          "impression_count": 42
+        },
+        "conversation_id": "2035354138758762762",
+        "edit_history_tweet_ids": [
+          "2035358542593438097"
+        ],
+        "edit_controls": {
+          "edits_remaining": 5,
+          "is_edit_eligible": false,
+          "editable_until": "2026-03-21T15:11:06.000Z"
+        },
+        "created_at": "2026-03-21T14:11:06.000Z",
+        "lang": "en",
+        "id": "2035358542593438097",
+        "author_id": "1716937759674576896",
+        "context_annotations": [
+          {
+            "domain": {
+              "id": "10",
+              "name": "Person",
+              "description": "Named people in the world like Nelson Mandela"
+            },
+            "entity": {
+              "id": "844438182523383808",
+              "name": "BTS"
+            }
+          },
+          {
+            "domain": {
+              "id": "46",
+              "name": "Business Taxonomy",
+              "description": "Categories within Brand Verticals that narrow down the scope of Brands"
+            },
+            "entity": {
+              "id": "1557696802391859201",
+              "name": "Entertainment & Leisure Business",
+              "description": "Brands, companies, advertisers and every non-person handle with the profit intent related to movies, music, television, franchises, venues, theme parks, toys, tourism, hotels"
+            }
+          },
+          {
+            "domain": {
+              "id": "54",
+              "name": "Musician",
+              "description": "A musician in the world, like Adele or Bob Dylan"
+            },
+            "entity": {
+              "id": "844438182523383808",
+              "name": "BTS"
+            }
+          },
+          {
+            "domain": {
+              "id": "55",
+              "name": "Music Genre",
+              "description": "A category for a musical style, like Pop, Rock, or Rap"
+            },
+            "entity": {
+              "id": "888105153038958593",
+              "name": "K-pop",
+              "description": "K-Pop"
+            }
+          },
+          {
+            "domain": {
+              "id": "131",
+              "name": "Unified Twitter Taxonomy",
+              "description": "A taxonomy of user interests. "
+            },
+            "entity": {
+              "id": "844438182523383808",
+              "name": "BTS"
+            }
+          },
+          {
+            "domain": {
+              "id": "131",
+              "name": "Unified Twitter Taxonomy",
+              "description": "A taxonomy of user interests. "
+            },
+            "entity": {
+              "id": "847524658970636288",
+              "name": "Music",
+              "description": "Music and radio"
+            }
+          },
+          {
+            "domain": {
+              "id": "131",
+              "name": "Unified Twitter Taxonomy",
+              "description": "A taxonomy of user interests. "
+            },
+            "entity": {
+              "id": "888105153038958593",
+              "name": "K-pop",
+              "description": "K-Pop"
+            }
+          }
+        ],
+        "reply_settings": "everyone",
+        "text": "@PopBase @BTS_twt Flop",
+        "referenced_tweets": [
+          {
+            "type": "replied_to",
+            "id": "2035354138758762762"
+          }
+        ]
+      }
+    ]
+  }
+}
