@@ -36,6 +36,12 @@ type Logical_File =
       volume: Logical_Volume
 
      }
+    member this.branch_extension(new_extension: string) =
+        Path.ChangeExtension(this.absolute_path, new_extension)
+
+    member this.directory = Path.GetDirectoryName this.absolute_path
+    member this.stem = Path.GetFileNameWithoutExtension this.absolute_path
+    member this.file_extension = (Path.GetExtension this.absolute_path)[1..]
     member this.id_byte_array() = this.id.ToArray()
 
     member this.id_hex() =
@@ -84,3 +90,12 @@ type File_System_Component =
     | Volume of Logical_Volume
     | Directory of Logical_Directory
     | File of (string -> Logical_File)
+
+
+
+
+
+module java =
+    let cmd =
+        Logical_File.inhabitant
+            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Shell\Powershell\java.cmd"
