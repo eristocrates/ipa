@@ -3,11 +3,17 @@
 **.vs/
 .fake
 secret/
+Application/Microsoft/Edge/data_dir/
 
 # ------------------------------------------------------------
 # GENERATED: ignores files >= 100 MiB
 # root: C:\Repositories\eristocrates\ipa
 # ------------------------------------------------------------
+.git/objects/pack/pack-4ca8f6f503d35cf26bd35c427df3def21281de31.pack
+.git/objects/pack/pack-b370e7e8a677e7e84be9d88b4fbe413092aa2bb7.pack
+Application/MMT/content/MMT/LATIN2/.git/objects/pack/pack-43b870377222ffe65ac4f272dcb155d5f932a01c.pack
+Application/Microsoft/Edge/data_dir/ProvenanceData/2025.10.7.5/vti-b-p32-visual.quant.ort
+Application/Microsoft/Edge/data_dir/component_crx_cache/f081de18a604e95a175eaf4dd91b35b7f17ad4de24ee2f20eeb034c979bbcccb
 Application/VSCodium/VSCodium-win32-x64-1.112.01855-insider/VSCodium - Insiders.exe
 Language/Java/jdk-15/lib/modules
 Language/Java/jdk-17.0.2/lib/modules
