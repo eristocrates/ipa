@@ -7,6 +7,19 @@ open UglyToad.PdfPig.Content
 open UglyToad.PdfPig.Util
 open UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor
 
+
+
+
+let pdfRootDirectoryPath =
+    @"D:\Surface\Government\United_States\State\Florida\County\Leon\Geographic_Information_Systems"
+
+
+
+
+
+
+
+
 type ExtractedWord =
     { Text: string
       BoundingBoxLeft: float
@@ -232,13 +245,14 @@ let extractPdfTextToFile (pdfPath: string) (outputTextPath: string) =
 
     File.WriteAllText(outputTextPath, allText)
 
-let pdfRootDirectoryPath =
-    @"D:\Surface\Company\Environmental_Systems_Research_Institute\Reference"
 
 let pdfFilePaths =
     Directory.EnumerateFiles(pdfRootDirectoryPath, "*.pdf", SearchOption.AllDirectories)
 
 pdfFilePaths
+|> Seq.filter (fun pdfFilePath ->
+    pdfFilePath
+    <> @" D:\Surface\Government\United_States\State\Florida\County\Leon\Geographic_Information_Systems\LCSW_Inventory\Completed\Private Commercial_Religious_COT\Popeyes Final As-builtN_Monroe.pdf")
 |> Seq.iter (fun pdfFilePath ->
 
     printfn "Opening: %s" pdfFilePath
@@ -247,7 +261,9 @@ pdfFilePaths
     let pdfFileStem = Path.GetFileNameWithoutExtension pdfFilePath
     let tsvFilePath = Path.Combine(pdfDirectoryPath, $"{pdfFileStem}.txt")
 
-
-    extractPdfTextToFile pdfFilePath tsvFilePath
+    try
+        extractPdfTextToFile pdfFilePath tsvFilePath
+    with
+    | ex -> Console.WriteLine ex
 
 )

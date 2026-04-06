@@ -1,2 +1,2 @@
 @echo off
-powershell -NoLogo -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command "python -m xq" %* 
+powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "python -m xq" %* 

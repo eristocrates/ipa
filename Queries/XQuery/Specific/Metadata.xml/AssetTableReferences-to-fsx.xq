@@ -139,16 +139,4 @@ let $columnBlock :=
   )
 where $tokens[2] != "Storm"
 
-return ``[
-module `{ $table/@databaseName }` =
-  let `{ $table/@name }` = `{ $case }` {
-      name = "`{ $table/@name }`"
-      databaseName = "`{ $table/@databaseName }`"
-      hasNullRecord = `{ $table/@hasNullRecord }`
-      isLicensed = `{ $table/@isLicensed }`
-      tableType = "`{ $table/@type }`"
-      productFamily = "`{ $productFamily/@name }`"
-      owner = "`{ $owner }`"
-    }
-  `{$columnBlock}`
-]``
+return distinct-values($foreignColumnReferenceNames)

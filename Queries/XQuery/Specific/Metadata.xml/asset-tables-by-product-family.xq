@@ -4,4 +4,4 @@ where
   $table/parent::element()/@name = "AssetManagement.Storm"
   and
   fn:starts-with($table/@databaseName, "COMP")
-return `{$tableName},`
+return `"{$tableName}",`

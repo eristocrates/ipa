@@ -50,7 +50,7 @@ let $DomainBlock :=
         for $CodedValue in $Domain/CodedValues/CodedValue
         let $rawName := string($CodedValue/Name)
         let $code := string($CodedValue/Code)
-        let $name := replace(replace($rawName,"[\s-]","_"), "[\\/]","_")
+        let $name := replace(replace($rawName,"[\s-]","_"), "[/]","_")
 
         group by $rawName, $name, $code
         let $name := $name[1]

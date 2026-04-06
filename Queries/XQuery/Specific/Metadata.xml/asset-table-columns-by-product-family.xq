@@ -1,3 +1,4 @@
+
 for $column in //column
   let $columnName := string($column/@name)
   let $table := $column/parent::element()

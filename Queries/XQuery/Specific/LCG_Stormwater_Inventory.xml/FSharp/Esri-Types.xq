@@ -31,7 +31,7 @@ let $FeatureDatasetBinding:=
     let $FeatureClassBinding:=
     string-join(
       for $FeatureClass in $FeatureDataset/Children/DataElement
-      
+        where $FeatureClass/Name/text() != "StormwaterPond_MediaPoints"
       
 let $FieldBinding :=
       string-join(
@@ -62,7 +62,7 @@ return ``[
 
 
 return ``[
-      `{$FeatureClass/Name/text()}`: `{$FeatureClass/Name/text()}`FeatureClass]``,$newline)
+      `{$FeatureClass/Name/text()}`: FeatureClass]``,$newline)
 
 
 

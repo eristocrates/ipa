@@ -1,6 +1,6 @@
 declare function local:attributeValue($attribute as attribute()) {
   switch (fn:local-name($attribute))
-    case "effectiveDateTime" return if ($attribute) then `Some(DateTime.Parse("{$attribute}"))` else "None"
+    case "effectiveDateTime" return if ($attribute != "") then `Some(DateTime.Parse("{$attribute}"))` else "None"
     case "length" return `{$attribute}`
     case "dataScale" return `{$attribute}`
     case "dataPrecision" return `{$attribute}`

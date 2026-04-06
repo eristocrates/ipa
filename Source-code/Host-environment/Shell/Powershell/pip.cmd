@@ -1,2 +1,2 @@
 @echo off
-powershell -NoLogo -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -Command "python -m pip" %*
+powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "python -m pip" %*

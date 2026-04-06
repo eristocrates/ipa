@@ -7,7 +7,7 @@ type ProcessResult =
       StdErr: string }
 
 let executeProcess (processName: string) (processArgs: string) =
-    let psi = new ProcessStartInfo(processName, processArgs)
+    let psi = new ProcessStartInfo(processName, $"\"{processArgs}\"")
     psi.UseShellExecute <- false // Required to redirect I/O
     psi.RedirectStandardOutput <- true
     psi.RedirectStandardError <- true

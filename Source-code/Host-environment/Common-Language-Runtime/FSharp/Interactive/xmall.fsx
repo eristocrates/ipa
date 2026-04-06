@@ -51,7 +51,8 @@ This utility analyzes a DTD and writes an XML output file.
 -q,--debug                   Turns on debugging messages.
     *)
 module dtdanalyzer =
-    let filePath = @"C:\shim\DtdAnalyzer-0.5\dtdanalyzer.bat"
+    let filePath =
+        @"C:\Repositories\eristocrates\ipa\Language\Xml\DtdAnalyzer-0.5\dtdanalyzer.bat"
 
     let command (inputFilePath: string) (outputDirectoryPath: string) =
         let inputFileName = Path.GetFileName inputFilePath
@@ -103,7 +104,8 @@ This generates a schematron file from a DTD.
              can use multiple instances of this option.
 *)
 module dtdschematron =
-    let filePath = @"C:\shim\DtdAnalyzer-0.5\dtdschematron.bat"
+    let filePath =
+        @"C:\Repositories\eristocrates\ipa\Language\Xml\DtdAnalyzer-0.5\dtdschematron.bat"
 
     let command (inputFilePath: string) (outputDirectoryPath: string) =
         let inputFileName = Path.GetFileName inputFilePath

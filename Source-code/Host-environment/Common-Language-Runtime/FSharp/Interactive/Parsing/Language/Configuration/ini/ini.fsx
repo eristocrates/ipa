@@ -167,38 +167,38 @@ module ini =
     let ini =
         Ini_File'Type.inhabitant
             @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Language\Configuration\ini\ini.ini"
+    module modular = 
 
-    let fsx =
-        Oak() {
-            AnonymousModule() {
-                Module(ini.logical_file.file_extension) {
-                  for section in ini.ast.sections do
-                    Module(section.section_name){
+        let fsx =
+            Oak() {
+                AnonymousModule() {
+                    Module(ini.logical_file.file_extension) {
+                      for section in ini.ast.sections do
+                        Module(section.section_name){
 
-                    for key in section.keys do
-                      let  value = 
-                          match key.value with
-                          | Integer_String integer_string-> integer_string
-                          | quoted_value when quoted_value.Contains('"') -> quoted_value
-                          | _ -> "\"" + key.value.TrimEnd() + "\""
+                        for key in section.keys do
+                          let  value = 
+                              match key.value with
+                              | Integer_String integer_string-> integer_string
+                              | quoted_value when quoted_value.Contains('"') -> quoted_value
+                              | _ -> "\"" + key.value.TrimEnd() + "\""
                         
 
-                      Value(key.name, value)
-                    } |> _.triviaBefore(section.comments
-                    |> Seq.map (fun comment -> SingleLine(comment) )
+                          Value(key.name, value)
+                        } |> _.triviaBefore(section.comments
+                        |> Seq.map (fun comment -> SingleLine(comment) )
+                        )
+                    }
+                    |> _.triviaBefore(
+                        ini.ast.comments_before_first_section
+                        |> Seq.map (fun comment -> SingleLine(comment)) 
                     )
                 }
-                |> _.triviaBefore(
-                    ini.ast.comments_before_first_section
-                    |> Seq.map (fun comment -> SingleLine(comment)) 
-                )
             }
-        }
-        |> Gen.mkOak
-        |> Gen.run
+            |> Gen.mkOak
+            |> Gen.run
 
 
-File.WriteAllText( ini.ini.logical_file.branch_extension("generated.fsx"),ini.fsx)
+File.WriteAllText( ini.ini.logical_file.branch_extension("generated.fsx"),ini.modular.fsx)
 
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Language\Configuration\ini\ini.generated.fsx"
-Ini.generated.ini.database.port
+ini.ini.ast

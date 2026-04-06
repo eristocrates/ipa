@@ -42,10 +42,45 @@ return ``[
 
 
     return ``[
-type `{$FeatureDataset/Name/text()}`FeatureDataset =
+and `{$FeatureDataset/Name/text()}`FeatureDataset =
     {
       `{$FeatureClassBinding}`
     }
 ]``,$newline)
-return $FeatureDatasetBinding
+return `
+type EsriField =
+    {{ name: string
+      alias: string option
+      isNullable: bool
+      length: int
+      required: bool
+      defaultValue: string option }}
+
+type FeatureClass =
+    | EndPointFeatureClass of EndPointFeatureClass
+    | BridgePointFeatureClass of BridgePointFeatureClass
+    | InletFeatureClass of InletFeatureClass
+    | ConduitFeatureClass of ConduitFeatureClass
+    | DitchFeatureClass of DitchFeatureClass
+    | ConnectivityFeatureClass of ConnectivityFeatureClass
+    | Junction_fixedFeatureClass of Junction_fixedFeatureClass
+    | StormwaterPondFeatureClass of StormwaterPondFeatureClass
+    | BridgeFeatureClass of BridgeFeatureClass
+    | DitchPointFeatureClass of DitchPointFeatureClass
+    | GenericStormAssetFeatureClass of GenericStormAssetFeatureClass
+    | StormwaterPondDischargeFeatureClass of StormwaterPondDischargeFeatureClass
+    | CulvertCrossDrainFeatureClass of CulvertCrossDrainFeatureClass
+    | PrivatePointFeatureClass of PrivatePointFeatureClass
+    | MediaPointsFeatureClass of MediaPointsFeatureClass
+    | DamageFeatureClass of DamageFeatureClass
+    | DebrisTrapFeatureClass of DebrisTrapFeatureClass
+    | InterferenceFeatureClass of InterferenceFeatureClass
+    | MediaPointsWithoutPhotosFeatureClass of MediaPointsWithoutPhotosFeatureClass
+    | OutfallFeatureClass of OutfallFeatureClass
+    | Outfall_DrainageAreaFeatureClass of Outfall_DrainageAreaFeatureClass
+    | Outfall_DrainageArea_MOFFeatureClass of Outfall_DrainageArea_MOFFeatureClass
+    | Outfall_DrainageArea_MS4FeatureClass of Outfall_DrainageArea_MS4FeatureClass
+    | PollutionControlBoxFeatureClass of PollutionControlBoxFeatureClass
+    | StormwaterPondTopOfBankFeatureClass of StormwaterPondTopOfBankFeatureClass
+{$FeatureDatasetBinding}`
 

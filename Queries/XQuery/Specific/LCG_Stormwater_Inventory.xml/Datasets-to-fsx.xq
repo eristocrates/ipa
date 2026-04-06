@@ -37,7 +37,7 @@ return ``[
 
 
 return ``[
-    `{$FeatureClass/Name/text()}` = {
+    `{$FeatureClass/Name/text()}` = `{$FeatureClass/Name/text()}`FeatureClass {
       `{$FieldBinding}`
     }
   

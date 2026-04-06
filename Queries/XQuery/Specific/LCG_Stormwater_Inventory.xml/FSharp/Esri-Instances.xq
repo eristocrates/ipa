@@ -6,6 +6,7 @@ let $FeatureDatasetBinding:=
     let $FeatureClassBinding:=
     string-join(
       for $FeatureClass in $FeatureDataset/Children/DataElement
+        where $FeatureClass/Name/text() != "StormwaterPond_MediaPoints"
       
       
 let $FieldBinding :=
