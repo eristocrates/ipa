@@ -1,7 +1,62 @@
 // https://fsharp.github.io/fslang-spec
 open System
 
+open System.Reflection
 
+let getAllInterfacePropertiesOrdered (interfaceType: Type) =
+    if not interfaceType.IsInterface then
+        invalidArg (nameof interfaceType) "Expected an interface type."
+
+    seq {
+        yield interfaceType
+        yield! interfaceType.GetInterfaces()
+    }
+    |> Seq.collect (fun currentInterfaceType ->
+        currentInterfaceType.GetProperties(BindingFlags.Instance ||| BindingFlags.Public))
+    |> Seq.distinctBy (fun property ->
+        property.Name, property.PropertyType, property.GetIndexParameters() |> Array.length)
+    |> Seq.sortBy (fun property -> property.Name)
+    |> Seq.toArray
+
+
+
+
+
+
+
+
+
+
+let getAllInterfaceProperties (interfaceType: Type) =
+    if not interfaceType.IsInterface then
+        invalidArg (nameof interfaceType) "Expected an interface type."
+
+    seq {
+        yield interfaceType
+        yield! interfaceType.GetInterfaces()
+    }
+    |> Seq.collect (fun currentInterfaceType ->
+        currentInterfaceType.GetProperties(BindingFlags.Instance ||| BindingFlags.Public))
+    |> Seq.distinctBy (fun property ->
+        property.Name, property.PropertyType, property.GetIndexParameters() |> Array.length)
+    |> Seq.toArray
+
+let inspectObjectExpression objectExpression =
+    let objectExpressionInterface =
+        objectExpression.GetType().GetInterfaces()
+        |> Array.head
+
+    getAllInterfacePropertiesOrdered objectExpressionInterface
+    |> Array.iter (fun property ->
+        let value =
+            try
+                property.GetValue(objectExpression, null)
+            with
+            | ex -> $"<error: {ex.Message}>"
+
+        printfn "%s = %A" property.Name value)
+
+    Console.WriteLine "\n"
 // https://fsharp.github.io/fslang-spec/type-definitions/#84-record-type-definitions
 type RecordField =
     {

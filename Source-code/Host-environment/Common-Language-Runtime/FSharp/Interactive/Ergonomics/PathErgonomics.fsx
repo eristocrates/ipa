@@ -1,5 +1,4 @@
 open System
-open System.Reflection
 open System.IO
 open System.Text
 
@@ -197,223 +196,6 @@ module Ensure =
 
 
 
-let pathSegments (segments: string array) =
-    segments
-    |> Array.filter (fun segment -> segment <> "/")
-    |> Array.map (fun segment ->
-
-        let trimmedSegment = segment.TrimEnd('/')
-        let decodedSegment = WebUtility.UrlDecode(trimmedSegment)
-        decodedSegment
-
-    )
-
-type LocalPathIntroduction =
-    {
-
-      absolutePath: string
-
-     }
-
-
-type LocalPath =
-    {
-
-      Name: System.String
-      Drive: DriveInfo option
-      ExistsAsDirectory: bool
-      ExistsAsFile: bool
-      ParentDirectory: System.IO.DirectoryInfo
-      Root: System.IO.DirectoryInfo
-      Length: System.Int64
-      DirectoryName: System.String
-      Directory: System.IO.DirectoryInfo
-      IsReadOnly: System.Boolean
-      FullName: System.String
-      Extension: System.String
-      CreationTime: System.DateTime
-      CreationTimeUtc: System.DateTime
-      LastAccessTime: System.DateTime
-      LastAccessTimeUtc: System.DateTime
-      LastWriteTime: System.DateTime
-      LastWriteTimeUtc: System.DateTime
-      LinkTarget: System.String option
-      UnixFileMode: System.IO.UnixFileMode
-      Attributes: System.IO.FileAttributes
-
-      AbsolutePath: System.String
-      AbsoluteUri: System.String
-      LocalPath: System.String
-      Authority: System.String option
-      HostNameType: System.UriHostNameType
-      IsDefaultPort: System.Boolean
-      IsFileScheme: System.Boolean
-      IsLoopback: System.Boolean
-      PathAndQuery: System.String
-      PathSegments: System.String []
-      NameSegments: string array
-      IsUnc: System.Boolean
-      Host: System.String option
-      Port: System.Int32
-      Query: System.String option
-      Fragment: System.String option
-      Scheme: System.String
-      OriginalString: System.String
-      DnsSafeHost: System.String option
-      IdnHost: System.String option
-      IsAbsoluteUri: System.Boolean
-      UserEscaped: System.Boolean
-      UserInfo: System.String option
-
-     }
-    member this.SegmentTokensFromRootDirectory(rootPathString: string) =
-        let rootUri = new Uri(rootPathString)
-
-
-        let secondToLastIndex = this.PathSegments.Length - 2
-
-        let relativeStartIndex = rootUri.Segments.Length - 1
-
-        let relativeSegments =
-            this.PathSegments[relativeStartIndex..secondToLastIndex]
-            |> Array.toList
-
-        let pathSegmentList =
-            relativeSegments
-            @ Array.toList (this.NameSegments)
-
-        pathSegmentList |> List.toArray
-
-    static member inhabitant(introduction: LocalPathIntroduction) =
-        let clrUri = new Uri(introduction.absolutePath)
-
-        let clrDriveInfo =
-            try
-                Some(new DriveInfo(introduction.absolutePath))
-            with
-            | _ -> None
-
-        let clrFileInfo = new FileInfo(introduction.absolutePath)
-        let clrDirectoryInfo = new DirectoryInfo(introduction.absolutePath)
-        let clrUri = new Uri(introduction.absolutePath)
-
-        let nameSegments = clrFileInfo.Name.Split(".")
-
-
-
-
-
-        {
-
-
-          Name = clrDirectoryInfo.Name
-          Drive = clrDriveInfo
-          ExistsAsDirectory = clrDirectoryInfo.Exists
-          ExistsAsFile = clrFileInfo.Exists
-          ParentDirectory = clrDirectoryInfo.Parent
-          Root = clrDirectoryInfo.Root
-          Length =
-            if clrFileInfo.Exists then
-                clrFileInfo.Length
-            else
-                0
-          DirectoryName = clrFileInfo.DirectoryName
-          Directory = clrFileInfo.Directory
-          IsReadOnly = clrFileInfo.IsReadOnly
-          FullName = clrDirectoryInfo.FullName
-          Extension = clrDirectoryInfo.Extension
-          CreationTime = clrDirectoryInfo.CreationTime
-          CreationTimeUtc = clrDirectoryInfo.CreationTimeUtc
-          LastAccessTime = clrDirectoryInfo.LastAccessTime
-          LastAccessTimeUtc = clrDirectoryInfo.LastAccessTimeUtc
-          LastWriteTime = clrDirectoryInfo.LastWriteTime
-          LastWriteTimeUtc = clrDirectoryInfo.LastWriteTimeUtc
-          LinkTarget =
-            if clrDirectoryInfo.LinkTarget = null then
-                None
-            else
-                Some(clrDirectoryInfo.LinkTarget)
-          UnixFileMode = clrDirectoryInfo.UnixFileMode
-          Attributes = clrDirectoryInfo.Attributes
-          AbsolutePath = clrUri.AbsolutePath
-          AbsoluteUri = clrUri.AbsoluteUri
-          LocalPath = clrUri.LocalPath
-          Authority = nonEmptyString clrUri.Authority
-          HostNameType = clrUri.HostNameType
-          IsDefaultPort = clrUri.IsDefaultPort
-          IsFileScheme = clrUri.IsFile
-          IsLoopback = clrUri.IsLoopback
-          PathAndQuery = clrUri.PathAndQuery
-          PathSegments = pathSegments clrUri.Segments
-          NameSegments = nameSegments
-          IsUnc = clrUri.IsUnc
-          Host = nonEmptyString clrUri.Host
-          Port = clrUri.Port
-          Query = nonEmptyString clrUri.Query
-          Fragment = nonEmptyString clrUri.Fragment
-          Scheme = clrUri.Scheme
-          OriginalString = clrUri.OriginalString
-          DnsSafeHost = nonEmptyString clrUri.DnsSafeHost
-          IdnHost = nonEmptyString clrUri.IdnHost
-          IsAbsoluteUri = clrUri.IsAbsoluteUri
-          UserEscaped = clrUri.UserEscaped
-          UserInfo = nonEmptyString clrUri.UserInfo
-        // ChildTracePath = childTracePath
-
-
-        }
-
-
-    member this.AncestorDirectories (rootAncestorPathString: string) (directoryTrace: LocalPath List) : LocalPath List =
-
-
-
-
-        if this.ParentDirectory.FullName
-           <> rootAncestorPathString then
-            let parentPath =
-                LocalPath.inhabitant { absolutePath = this.ParentDirectory.FullName }
-
-            parentPath.AncestorDirectories rootAncestorPathString (parentPath :: directoryTrace)
-        else
-            // let rootPath = LocalPathInfo.inhabitant this.ParentDirectory.FullName (Some(this))
-            // rootPath :: directoryTrace
-            directoryTrace
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 type UnixFileSystemPermission =
     | No_permission
@@ -527,44 +309,6 @@ type FileSystemEntryAttribute =
 
 
 
-let getAllInterfacePropertiesOrdered (interfaceType: Type) =
-    if not interfaceType.IsInterface then
-        invalidArg (nameof interfaceType) "Expected an interface type."
-
-    seq {
-        yield interfaceType
-        yield! interfaceType.GetInterfaces()
-    }
-    |> Seq.collect (fun currentInterfaceType ->
-        currentInterfaceType.GetProperties(BindingFlags.Instance ||| BindingFlags.Public))
-    |> Seq.distinctBy (fun property ->
-        property.Name, property.PropertyType, property.GetIndexParameters() |> Array.length)
-    |> Seq.sortBy (fun property -> property.Name)
-    |> Seq.toArray
-
-
-
-
-
-
-
-
-
-
-let getAllInterfaceProperties (interfaceType: Type) =
-    if not interfaceType.IsInterface then
-        invalidArg (nameof interfaceType) "Expected an interface type."
-
-    seq {
-        yield interfaceType
-        yield! interfaceType.GetInterfaces()
-    }
-    |> Seq.collect (fun currentInterfaceType ->
-        currentInterfaceType.GetProperties(BindingFlags.Instance ||| BindingFlags.Public))
-    |> Seq.distinctBy (fun property ->
-        property.Name, property.PropertyType, property.GetIndexParameters() |> Array.length)
-    |> Seq.toArray
-
 
 
 
@@ -588,20 +332,26 @@ type FileSystemEntryPath =
     abstract member exists: bool
     abstract member lastAccessTimeUtc: System.DateTime
     abstract member lastWriteTimeUtc: System.DateTime
+    abstract member absoluteUriString: string
+    abstract member parentDirectoryPathTokens: string array
 
 
 type DirectoryPath =
     inherit FileSystemEntryPath
     abstract member directoryName: string
-    abstract member absoluteDirectoryPathString: string
+    abstract member directoryNameTokens: string array
+    abstract member parentDirectoryPathString: string
+    abstract member childDirectoryPathStrings: string array
+    abstract member originalDirectoryPathString: string
 
 type FilePath =
     inherit FileSystemEntryPath
     abstract member fileName: string
+    abstract member fileNameTokens: string array
     abstract member extension: string
     abstract member stem: string
-    abstract member directoryPath: DirectoryPath
-    abstract member absoluteFilePathString: string
+    abstract member directoryPathString: string
+    abstract member originalFilePathString: string
 
 
 type ParentDirectoryPath =
@@ -615,80 +365,23 @@ and ChildDirectoryPath =
 
 
 
-let inspect<'InterfaceType> (interfaceObject: 'InterfaceType) =
-    let interfaceType = typeof<'InterfaceType>
-
-    getAllInterfacePropertiesOrdered interfaceType
-    |> Array.iter (fun property ->
-        let value =
-            try
-                property.GetValue(interfaceObject, null)
-            with
-            | ex -> $"<error: {ex.Message}>"
-
-        printfn "%s = %A" property.Name value)
 
 
+let directoryPathTokens_from_uriSegments (segments: string array) =
+    segments
+    |> Array.filter (fun segment -> segment <> "/")
+    |> Array.filter (fun segment -> segment <> (segments |> Array.last))
+    |> Array.map (fun segment ->
 
+        let trimmedSegment = segment.TrimEnd('/')
+        let decodedSegment = WebUtility.UrlDecode(trimmedSegment)
+        decodedSegment
 
-let DirectoryPath_from_string (directoryPathString: string) =
+    )
 
-    let directoryInfo = new DirectoryInfo(directoryPathString)
-
-    { new DirectoryPath with
-        member this.driveVolumeName = directoryInfo.Root.Name
-        member this.creationTimeUtc = directoryInfo.CreationTimeUtc
-
-        member this.fileSystemEntryAttribute =
-            FileSystemEntryAttribute.fromFileAttributes directoryInfo.Attributes
-
-        member this.unixFileSystemPermission =
-            UnixFileSystemPermission.fromUnixFileMode directoryInfo.UnixFileMode
-
-        member this.exists = directoryInfo.Exists
-        member this.lastAccessTimeUtc = directoryInfo.LastAccessTimeUtc
-        member this.lastWriteTimeUtc = directoryInfo.LastWriteTimeUtc
-        member this.directoryName = directoryInfo.Name
-        member this.absoluteDirectoryPathString = directoryInfo.FullName }
-
-
-
-let ChildDirectory_from_DirectoryPath (directoryPath: DirectoryPath) =
-    let parentDirectoryInfo =
-        Directory.GetParent(directoryPath.absoluteDirectoryPathString)
-
-
-    { new ChildDirectoryPath with
-        member this.driveVolumeName = directoryPath.driveVolumeName
-        member this.creationTimeUtc = directoryPath.creationTimeUtc
-
-        member this.fileSystemEntryAttribute = directoryPath.fileSystemEntryAttribute
-        member this.unixFileSystemPermission = directoryPath.unixFileSystemPermission
-        member this.exists = directoryPath.exists
-        member this.lastAccessTimeUtc = directoryPath.lastAccessTimeUtc
-        member this.lastWriteTimeUtc = directoryPath.lastWriteTimeUtc
-        member this.directoryName = directoryPath.directoryName
-        member this.absoluteDirectoryPathString = directoryPath.absoluteDirectoryPathString
-
-        member this.parentDirectoryPath =
-            DirectoryPath_from_string parentDirectoryInfo.FullName }
-
-
-(*
-let ParentChildDirectoryPaths_from_DirectoryPath(directoryPath:DirectoryPath) =
-
-    let parentDirectoryPathString = Directory.GetParent(directoryPath.asString)
-    let directoryInfo = new DirectoryInfo(parentDirectoryPathString)
-
-    let parentDirectoryPathString =
-        if directoryInfo.Parent = null then
-            directoryPathString
-        else
-            directoryInfo.Parent.FullName
-
-*)
 let FilePath_from_string (filePathString: string) =
     let fileInfo = new FileInfo(filePathString)
+    let fileUri = new Uri(filePathString)
 
     { new FilePath with
         member this.driveVolumeName = fileInfo.Directory.Root.Name
@@ -706,45 +399,144 @@ let FilePath_from_string (filePathString: string) =
 
         member this.extension = fileInfo.Extension.TrimStart('.')
         member this.stem = Path.GetFileNameWithoutExtension(filePathString)
-        member this.directoryPath = DirectoryPath_from_string fileInfo.DirectoryName
+        member this.directoryPathString = fileInfo.DirectoryName
+        member this.absoluteUriString = fileUri.AbsoluteUri
+
+        member this.parentDirectoryPathTokens =
+            directoryPathTokens_from_uriSegments fileUri.Segments
+
         member this.fileName = fileInfo.Name
-        member this.absoluteFilePathString = fileInfo.FullName }
+        member this.fileNameTokens = fileInfo.Name.Split(".")
+        member this.originalFilePathString = fileInfo.FullName }
 
-let testFilePathString =
-    @"D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_2025_04_01\Deployment Files\MetaData\MetaData.xml"
+let DirectoryPath_from_string (directoryPathString: string) =
 
-let testFilePathString'FileInfo = new FileInfo(testFilePathString)
-new DriveInfo(testFilePathString)
-let testFilePathString'DirectoryInfo = new DirectoryInfo(testFilePathString)
-let testFilePathString'Uri = new Uri(testFilePathString)
-// if testFilePathString'FileInfo.Exists && not testFilePathString'DirectoryInfo.Exists then
+    let directoryInfo = new DirectoryInfo(directoryPathString)
+    let directoryUri = new Uri(directoryPathString)
 
-let testFilePathString'FilePath = FilePath_from_string testFilePathString
+    let parentDirectoryPathString =
+        if directoryInfo.Parent = null then
+            directoryInfo.Root.Name
+        else
+            directoryInfo.Parent.FullName
+
+    let childDirectoryPathStrings = Directory.GetDirectories(directoryPathString)
+
+    { new DirectoryPath with
+        member this.driveVolumeName = directoryInfo.Root.Name
+        member this.creationTimeUtc = directoryInfo.CreationTimeUtc
+
+        member this.fileSystemEntryAttribute =
+            FileSystemEntryAttribute.fromFileAttributes directoryInfo.Attributes
+
+        member this.unixFileSystemPermission =
+            UnixFileSystemPermission.fromUnixFileMode directoryInfo.UnixFileMode
+
+        member this.exists = directoryInfo.Exists
+        member this.lastAccessTimeUtc = directoryInfo.LastAccessTimeUtc
+        member this.lastWriteTimeUtc = directoryInfo.LastWriteTimeUtc
+        member this.parentDirectoryPathString = parentDirectoryPathString
+        member this.childDirectoryPathStrings = childDirectoryPathStrings
+        member this.directoryName = directoryInfo.Name
+        member this.directoryNameTokens = directoryInfo.Name.Split(".")
+        member this.absoluteUriString = directoryUri.AbsoluteUri
+
+        member this.parentDirectoryPathTokens =
+            directoryPathTokens_from_uriSegments directoryUri.Segments
+
+        member this.originalDirectoryPathString = directoryInfo.FullName }
 
 
-let testDirectoryPathString =
-    @"D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_2025_04_01\Deployment Files\MetaData"
 
-let testDirectoryPathString'FileInfo = new FileInfo(testDirectoryPathString)
+let ChildDirectoryPath_from_DirectoryPath (pendingChildDirectoryPath: DirectoryPath) =
+    let parentDirectoryInfo =
+        Directory.GetParent(pendingChildDirectoryPath.originalDirectoryPathString)
+
+    let parentUri = new Uri(pendingChildDirectoryPath.originalDirectoryPathString)
+
+    { new ChildDirectoryPath with
+        member this.driveVolumeName = pendingChildDirectoryPath.driveVolumeName
+        member this.creationTimeUtc = pendingChildDirectoryPath.creationTimeUtc
+
+        member this.fileSystemEntryAttribute =
+            pendingChildDirectoryPath.fileSystemEntryAttribute
+
+        member this.unixFileSystemPermission =
+            pendingChildDirectoryPath.unixFileSystemPermission
+
+        member this.exists = pendingChildDirectoryPath.exists
+        member this.lastAccessTimeUtc = pendingChildDirectoryPath.lastAccessTimeUtc
+        member this.lastWriteTimeUtc = pendingChildDirectoryPath.lastWriteTimeUtc
+        member this.directoryName = pendingChildDirectoryPath.directoryName
+        member this.directoryNameTokens = pendingChildDirectoryPath.directoryName.Split(".")
+
+        member this.originalDirectoryPathString =
+            pendingChildDirectoryPath.originalDirectoryPathString
+
+        member this.parentDirectoryPathString =
+            pendingChildDirectoryPath.parentDirectoryPathString
+
+        member this.childDirectoryPathStrings =
+            pendingChildDirectoryPath.childDirectoryPathStrings
 
 
-let testDirectoryPathString'DirectoryInfo =
-    new DirectoryInfo(testDirectoryPathString)
-
-testDirectoryPathString'DirectoryInfo.Name
-
-let testDirectoryPathString'Uri = new Uri(testDirectoryPathString)
-// if testDirectoryPathString'FileInfo.Exists && not testDirectoryPathString'DirectoryInfo.Exists then
-let testDirectoryPathString'FilePath =
-    DirectoryPath_from_string testDirectoryPathString
+        member this.absoluteUriString = parentUri.AbsoluteUri
 
 
-inspect<FilePath> testFilePathString'FilePath
-let testFilePathString'DirectoryPath = ChildDirectory_from_DirectoryPath testFilePathString'FilePath.directoryPath
-inspect<ChildDirectoryPath> testFilePathString'DirectoryPath
+        member this.parentDirectoryPathTokens =
+            directoryPathTokens_from_uriSegments parentUri.Segments
 
-testFilePathString'DirectoryPath.GetType().GetInterfaces()
-|> Array.map (fun interfaceType -> interfaceType.Name)
+        member this.parentDirectoryPath =
+            DirectoryPath_from_string parentDirectoryInfo.FullName }
+
+let ParentDirectoryPath_from_DirectoryPath (pendingParentDirectoryPath: DirectoryPath) =
+    let childDirectoryPaths =
+        pendingParentDirectoryPath.childDirectoryPathStrings
+        |> Array.Parallel.choose (fun childDirectoryPathString ->
+            try
+                childDirectoryPathString
+                |> DirectoryPath_from_string
+                |> ChildDirectoryPath_from_DirectoryPath
+                |> Some
+            with
+            | :? UnauthorizedAccessException -> None
+            | :? Security.SecurityException -> None
+            | :? IOException -> None
 
 
-inspect<DirectoryPath> testDirectoryPathString'FilePath
+
+        )
+
+    let parentUri = new Uri(pendingParentDirectoryPath.originalDirectoryPathString)
+
+    { new ParentDirectoryPath with
+        member this.driveVolumeName = pendingParentDirectoryPath.driveVolumeName
+        member this.creationTimeUtc = pendingParentDirectoryPath.creationTimeUtc
+
+        member this.fileSystemEntryAttribute =
+            pendingParentDirectoryPath.fileSystemEntryAttribute
+
+        member this.unixFileSystemPermission =
+            pendingParentDirectoryPath.unixFileSystemPermission
+
+        member this.exists = pendingParentDirectoryPath.exists
+        member this.lastAccessTimeUtc = pendingParentDirectoryPath.lastAccessTimeUtc
+        member this.lastWriteTimeUtc = pendingParentDirectoryPath.lastWriteTimeUtc
+        member this.directoryName = pendingParentDirectoryPath.directoryName
+        member this.directoryNameTokens = pendingParentDirectoryPath.directoryName.Split(".")
+
+        member this.originalDirectoryPathString =
+            pendingParentDirectoryPath.originalDirectoryPathString
+
+        member this.parentDirectoryPathString =
+            pendingParentDirectoryPath.parentDirectoryPathString
+
+        member this.childDirectoryPathStrings =
+            pendingParentDirectoryPath.childDirectoryPathStrings
+
+        member this.absoluteUriString = parentUri.AbsoluteUri
+
+        member this.parentDirectoryPathTokens =
+            directoryPathTokens_from_uriSegments parentUri.Segments
+
+        member this.childDirectoryPaths = childDirectoryPaths }
