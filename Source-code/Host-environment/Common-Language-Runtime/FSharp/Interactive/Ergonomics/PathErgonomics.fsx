@@ -313,7 +313,6 @@ type FileSystemEntryAttribute =
 
 
 
-
 type DriveVolume =
     abstract member fileSystemName: String
     abstract member volumeName: String
@@ -324,7 +323,15 @@ type DriveVolume =
     abstract member driveType: DriveType
     abstract member isReady: Boolean
 
-type FileSystemEntryPath =
+
+type HierarchicalPath =
+    abstract member rootSegment: string
+    abstract member branchSegments: string seq
+    abstract member leafSegment: string
+    abstract member pathSegments: string seq
+    abstract member asString: string
+
+type FileSystemPath =
     abstract member driveVolumeName: string
     abstract member creationTimeUtc: DateTime
     abstract member fileSystemEntryAttribute: FileSystemEntryAttribute
@@ -337,7 +344,7 @@ type FileSystemEntryPath =
 
 
 type DirectoryPath =
-    inherit FileSystemEntryPath
+    inherit FileSystemPath
     abstract member directoryName: string
     abstract member directoryNameTokens: string array
     abstract member parentDirectoryPathString: string
@@ -345,7 +352,7 @@ type DirectoryPath =
     abstract member originalDirectoryPathString: string
 
 type FilePath =
-    inherit FileSystemEntryPath
+    inherit FileSystemPath
     abstract member fileName: string
     abstract member fileNameTokens: string array
     abstract member extension: string

@@ -3,7 +3,7 @@ UPDATEVERSION = 12.2
 CHECKUPDATES = false
 
 # Paths
-INPUTPATH = D:\Surface\Standards\Unicode\ucd.all.grouped.xml
+INPUTPATH = C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\WorldWideWeb\uri-schemes.xml
 DATAPATH = C:/Repositories/eristocrates/ipa/Language/Xml/basex/Basex122/
 WORKPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/
 PROJECTPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/
@@ -66,7 +66,7 @@ SHOWHIDDEN = false
 SEARCHMODE = 2
 FILTERRT = false
 EXECRT = false
-DBNAME = ucd.all.grouped
+DBNAME = uri-schemes
 LASTINSERT = 1
 
 # Visualizations
@@ -84,7 +84,7 @@ MAXRESULTS = 2147483647
 
 # Search
 SEARCHED = 20
-SEARCHED1 = alien 
+SEARCHED1 = alien
 SEARCHED2 = al
 SEARCHED3 = type
 SEARCHED4 = "stin
@@ -180,24 +180,25 @@ EDITOR16 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml
 EDITOR17 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Datasets-to-fsx.xq
 EDITOR18 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Fsharp-types.xq
 EDITOR19 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Domains.xq
-INPUTS = 17
-INPUTS1 = D:\Surface\Standards\Unicode\ucd.all.grouped.xml
-INPUTS2 = D:\Surface\Standards\Unicode\ucd.nounihan.grouped.xml
-INPUTS3 = D:\Artifact\Esri\LCPW_OverlayStormwaterInfrastructure_D_WM\LCPW_OverlayStormwaterInfrastructure_D_WM.merged.json
-INPUTS4 = D:/Surface/Company/Environmental_Systems_Research_Institute/ArcGIS/Pro/bin/ArcGIS.Core.XML
-INPUTS5 = D:/Surface/Company/Infor/Download_Center/Product/Operations_and_Regulations/Release/Infor_Public_Sector_2025_04_01/IPS_2025_04_01/Deployment Files/MetaData/MetaData.xml
-INPUTS6 = D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\LCG_Stormwater_Inventory_updated\LCG_Stormwater_Inventory_Formatted.xml
-INPUTS7 = SDE_Schema_XRay
-INPUTS8 = D:\Surface\Company\Microsoft\Graph\$metadata.xml
-INPUTS9 = C:\rdfsharp\surfaces\microsoft\$metadata.xml
-INPUTS10 = D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_2025_04_01\ApplicationFiles\Application\production\operations\BusinessObjectKeywordRules.xml
-INPUTS11 = D:\Surface\Company\Environmental_Systems_Research_Institute\ArcGIS\Pro\bin\ArcGIS.Core.XML
-INPUTS12 = D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_2025_04_01\Deployment Files\MetaData\DefaultImportData.xml
-INPUTS13 = =
-INPUTS14 = D:/Surface/Government/United_States/State/Florida/County/Leon/Geographic_Information_Systems/SDE_Schema_(X-Ray)/LCG_Stormwater_Inventory_updated/LCG_Stormwater_Inventory_Formatted.xml
-INPUTS15 = D:\Surface\Government\United_States\State\Florida\County\Leon\Geographic_Information_Systems\SDE_Schema_(X-Ray)\LCG_Stormwater_Inventory_updated\LCG_Stormwater_Inventory.xml
-INPUTS16 = D:\Artifact\LCPW_OverlayStormwaterInfrastructure_D_WM.merged.json
-INPUTS17 = D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_2025_04_01\Deployment Files\MetaData\MetaData.xml
+INPUTS = 18
+INPUTS1 = C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\WorldWideWeb\uri-schemes.xml
+INPUTS2 = D:\Surface\Standards\Unicode\ucd.all.grouped.xml
+INPUTS3 = D:\Surface\Standards\Unicode\ucd.nounihan.grouped.xml
+INPUTS4 = D:\Artifact\Esri\LCPW_OverlayStormwaterInfrastructure_D_WM\LCPW_OverlayStormwaterInfrastructure_D_WM.merged.json
+INPUTS5 = D:/Surface/Company/Environmental_Systems_Research_Institute/ArcGIS/Pro/bin/ArcGIS.Core.XML
+INPUTS6 = D:/Surface/Company/Infor/Download_Center/Product/Operations_and_Regulations/Release/Infor_Public_Sector_2025_04_01/IPS_2025_04_01/Deployment Files/MetaData/MetaData.xml
+INPUTS7 = D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\LCG_Stormwater_Inventory_updated\LCG_Stormwater_Inventory_Formatted.xml
+INPUTS8 = SDE_Schema_XRay
+INPUTS9 = D:\Surface\Company\Microsoft\Graph\$metadata.xml
+INPUTS10 = C:\rdfsharp\surfaces\microsoft\$metadata.xml
+INPUTS11 = D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_2025_04_01\ApplicationFiles\Application\production\operations\BusinessObjectKeywordRules.xml
+INPUTS12 = D:\Surface\Company\Environmental_Systems_Research_Institute\ArcGIS\Pro\bin\ArcGIS.Core.XML
+INPUTS13 = D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_2025_04_01\Deployment Files\MetaData\DefaultImportData.xml
+INPUTS14 = =
+INPUTS15 = D:/Surface/Government/United_States/State/Florida/County/Leon/Geographic_Information_Systems/SDE_Schema_(X-Ray)/LCG_Stormwater_Inventory_updated/LCG_Stormwater_Inventory_Formatted.xml
+INPUTS16 = D:\Surface\Government\United_States\State\Florida\County\Leon\Geographic_Information_Systems\SDE_Schema_(X-Ray)\LCG_Stormwater_Inventory_updated\LCG_Stormwater_Inventory.xml
+INPUTS17 = D:\Artifact\LCPW_OverlayStormwaterInfrastructure_D_WM.merged.json
+INPUTS18 = D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_2025_04_01\Deployment Files\MetaData\MetaData.xml
 OPEN = 2
 OPEN1 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/process-embedded-xml.xq
 OPEN2 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/attribute-with-embedded-xml.xq
