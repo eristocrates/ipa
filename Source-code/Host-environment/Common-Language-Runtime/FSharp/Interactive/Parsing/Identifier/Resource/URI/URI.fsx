@@ -12,24 +12,35 @@ open System.Text.RegularExpressions
 #r "nuget: FParsec-Pipes"
 #r "nuget: Fabulous.AST"
 
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Language\Metalanguage\Augmented_Backus_Naur_Form\Augmented_Backus_Naur_Form.fsx"
 
 open FParsec
 open FParsec.Pipes
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Language\Metalanguage\Augmented_Backus_Naur_Form\Augmented_Backus_Naur_Form.fsx"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\WorldWideWeb\URISchemes.fsx"
+
 
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\ParsingErgonomics.fsx"
 
 open ParsingErgonomics
 
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\WorldWideWeb\URISchemes.fsx"
 
 
 // https://www.rfc-editor.org/rfc/rfc3986#section-2.2
 
 /// sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
 ///             / "*" / "+" / "," / ";" / "="
-let sub_delims = anyOf "!$&'()*+,;="
+let sub_delims: Parser<char, unit> =
+    parser'withArgument'expecting
+        anyOf
+        "!$&'()*+,;="
+        """
+    sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
+                / "*" / "+" / "," / ";" / "="
+    """
+
+runParser sub_delims OnString "abc"
 
 /// gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@"
 let gen_delims = anyOf "!$&'()*+,;="

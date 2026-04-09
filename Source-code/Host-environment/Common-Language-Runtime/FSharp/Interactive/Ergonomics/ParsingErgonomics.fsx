@@ -10,7 +10,7 @@ open FParsec.Pipes
 
 
 
-let parser_expecting parser (expecting: string) = parser <??> expecting
+let parser'withArgument'expecting parser argument (expectingMessage: string) = parser argument <??> expectingMessage
 
 
 
