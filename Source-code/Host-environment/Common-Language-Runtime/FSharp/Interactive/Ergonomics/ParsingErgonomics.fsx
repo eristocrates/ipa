@@ -8,12 +8,20 @@ open System.Linq
 open FParsec
 open FParsec.Pipes
 
+let communication_at: Parser<char, unit> = pchar '@'
+
+type Adposition =
+    | OnString
+    | OnFilePath
+    | OnFileContent
+    | WithArgument
+
+let parser_withArgument_expecting parser argument (expecting: string) = parser argument <??> expecting
+let parser_expecting parser (expecting: string) = parser <??> expecting
 
 
-let parser'withArgument'expecting parser argument (expectingMessage: string) = parser argument <??> expectingMessage
-
-
-
+let provisional parser = opt (attempt parser)
+let succeededBy parser = followedBy parser .>> parser
 
 let string_from_charList (charList: char list) = new String(charList.ToArray())
 
@@ -44,10 +52,6 @@ let int_from_doubleDigit (leftDigit: char) (rightDigit: char) =
 let int_from_tripleDigit (leftDigit: char) (centerDigit: char) (rightDigit: char) =
     int_from_stringNumeral $"{leftDigit}{centerDigit}{rightDigit}"
 
-type Adposition =
-    | OnString
-    | OnFilePath
-    | OnFileContent
 
 let runParser parser (adposition: Adposition) (inputString: string) =
     match adposition with

@@ -34,5 +34,3 @@ module rfc3986 =
 
 
     let html = HtmlProvider<filePath>.Load filePath
-
-rfc3986.html.Html
