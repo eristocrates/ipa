@@ -138,4 +138,4 @@ Core_Rules.runTest "test"
 
 let metaTest = @"ALPHA          =  %x41-5A / %x61-7A   ; A-Z / a-z"
 
-let ALPHA = asciiLetter // %x41-5A / %x61-7A   ; A-Z / a-z
+// let ALPHA = asciiLetter // %x41-5A / %x61-7A   ; A-Z / a-z
