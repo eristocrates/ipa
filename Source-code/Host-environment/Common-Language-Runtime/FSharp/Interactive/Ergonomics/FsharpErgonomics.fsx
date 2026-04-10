@@ -11,121 +11,17 @@ open FParsec
 open Microsoft.FSharp.Collections
 open System
 open System.Reflection
-(*
-
-let getAllInterfaceTypes (rootInterfaceType: Type) =
-    if not rootInterfaceType.IsInterface then
-        [||]
-    else
-        seq {
-            yield rootInterfaceType
-            yield! rootInterfaceType.GetInterfaces()
-        }
-        |> Seq.distinct
-        |> Seq.toArray
-
-let getAllInterfaceProperties (rootInterfaceType: Type) =
-    getAllInterfaceTypes rootInterfaceType
-    |> Seq.collect (fun interfaceType -> interfaceType.GetProperties(BindingFlags.Instance ||| BindingFlags.Public))
-    |> Seq.distinctBy (fun property ->
-        property.Name, property.PropertyType.FullName, property.GetIndexParameters() |> Array.length)
-    |> Seq.sortBy (fun property -> property.Name)
-    |> Seq.toArray
-
-let isScalarDisplayType (type_: Type) =
-    type_.IsPrimitive
-    || type_ = typeof<string>
-    || type_ = typeof<char>
-    || type_ = typeof<bool>
-    || type_ = typeof<int>
-    || type_ = typeof<int64>
-    || type_ = typeof<uint32>
-    || type_ = typeof<uint64>
-    || type_ = typeof<float>
-    || type_ = typeof<decimal>
-    || type_ = typeof<DateTime>
-    || type_ = typeof<Guid>
-
-let tryGetRelevantInterfaceType (value: obj) =
-    let runtimeType = value.GetType()
-
-    runtimeType.GetInterfaces()
-    |> Array.filter (fun interfaceType ->
-        interfaceType
-        <> typeof<System.Collections.IEnumerable>)
-    |> Array.sortByDescending (fun interfaceType ->
-        getAllInterfaceProperties interfaceType
-        |> Array.length)
-    |> Array.tryHead
-
-let rec formatValue (depth: int) (value: obj) =
-    if depth > 6 then
-        "<max-depth>"
-    else
-        match value with
-        | null -> "null"
-        | _ ->
-            let valueType = value.GetType()
-
-            if isScalarDisplayType valueType then
-                sprintf "%A" value
-
-            elif valueType.IsArray then
-                let elements =
-                    value :?> Array
-                    |> Seq.cast<obj>
-                    |> Seq.truncate 12
-                    |> Seq.map (formatValue (depth + 1))
-                    |> String.concat "; "
-
-                $"[| {elements} |]"
-
-            elif valueType <> typeof<string>
-                 && typeof<System.Collections.IEnumerable>.IsAssignableFrom valueType then
-                let elements =
-                    value :?> System.Collections.IEnumerable
-                    |> Seq.cast<obj>
-                    |> Seq.truncate 12
-                    |> Seq.map (formatValue (depth + 1))
-                    |> String.concat "; "
-
-                $"seq [ {elements} ]"
-
-            else
-                match tryGetRelevantInterfaceType value with
-                | Some interfaceType -> formatInterfaceObject depth interfaceType value
-                | None -> sprintf "%A" value
-
-and formatInterfaceObject (depth: int) (interfaceType: Type) (value: obj) =
-    let indent = String.replicate (depth * 2) " "
-    let childIndent = String.replicate ((depth + 1) * 2) " "
-
-    let formattedProperties =
-        getAllInterfaceProperties interfaceType
-        |> Array.map (fun property ->
-            let formattedValue =
-                try
-                    property.GetValue(value, null)
-                    |> formatValue (depth + 1)
-                with
-                | ex -> $"<error: {ex.GetType().Name}: {ex.Message}>"
-
-            $"{childIndent}{property.Name} = {formattedValue}")
-        |> String.concat Environment.NewLine
-
-    $"{interfaceType.Name} {{{Environment.NewLine}{formattedProperties}{Environment.NewLine}{indent}}}"
-
-let addInterfacePrinter<'InterfaceType> () =
-    fsi.AddPrinter<'InterfaceType>(fun value -> formatInterfaceObject 0 typeof<'InterfaceType> (box value))
-
-
-
-*)
 
 
 
 open System
 open System.Reflection
+open Microsoft.FSharp.Reflection
+
+
+
+
+
 
 let getAllInterfaceTypes (rootInterfaceType: Type) =
     if not rootInterfaceType.IsInterface then
@@ -164,6 +60,19 @@ let isOptionType (type_: Type) =
     type_.IsGenericType
     && type_.GetGenericTypeDefinition() = typedefof<option<_>>
 
+let isInspectableUnionType (type_: Type) =
+    FSharpType.IsUnion(type_, true)
+    && not (isOptionType type_)
+
+let isListType (type_: Type) =
+    type_.IsGenericType
+    && type_.GetGenericTypeDefinition() = typedefof<list<_>>
+
+let isInspectableRuntimeUnionType (type_: Type) =
+    FSharpType.IsUnion(type_, true)
+    && not (isOptionType type_)
+    && not (isListType type_)
+
 let tryGetRelevantInterfaceType (value: obj) =
     let runtimeType = value.GetType()
 
@@ -187,6 +96,9 @@ let rec formatValue (depth: int) (value: obj) =
 
             if isScalarDisplayType valueType then
                 sprintf "%A" value
+
+            elif isInspectableRuntimeUnionType valueType then
+                formatUnionValue depth valueType value
 
             elif valueType.IsArray then
                 let elements =
@@ -214,17 +126,38 @@ let rec formatValue (depth: int) (value: obj) =
                 | Some interfaceType -> formatInterfaceObject depth interfaceType value
                 | None -> sprintf "%A" value
 
+and formatUnionValue (depth: int) (unionType: Type) (unionValue: obj) =
+    let unionCaseInfo, unionFields =
+        FSharpValue.GetUnionFields(unionValue, unionType, true)
+
+    match unionFields with
+    | [||] -> unionCaseInfo.Name
+    | [| singleField |] -> $"{unionCaseInfo.Name} ({formatValue (depth + 1) singleField})"
+    | multipleFields ->
+        let formattedFields =
+            multipleFields
+            |> Array.map (formatValue (depth + 1))
+            |> String.concat ", "
+
+        $"{unionCaseInfo.Name} ({formattedFields})"
+
 and formatPropertyValue (depth: int) (propertyType: Type) (propertyValue: obj) =
     if isOptionType propertyType then
         if isNull propertyValue then
             "None"
         else
-            let _, unionFields =
-                Microsoft.FSharp.Reflection.FSharpValue.GetUnionFields(propertyValue, propertyType)
+            let _, unionFields = FSharpValue.GetUnionFields(propertyValue, propertyType, true)
 
             match unionFields with
             | [| innerValue |] -> $"Some ({formatValue (depth + 1) innerValue})"
             | _ -> "None"
+
+    elif isInspectableUnionType propertyType then
+        if isNull propertyValue then
+            "null"
+        else
+            formatUnionValue depth propertyType propertyValue
+
     else
         formatValue depth propertyValue
 
@@ -249,15 +182,6 @@ and formatInterfaceObject (depth: int) (interfaceType: Type) (value: obj) =
 
 let addInterfacePrinter<'InterfaceType> () =
     fsi.AddPrinter<'InterfaceType>(fun value -> formatInterfaceObject 0 typeof<'InterfaceType> (box value))
-
-
-
-
-
-
-
-
-
 
 
 

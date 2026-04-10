@@ -59,23 +59,17 @@ type Character =
 type QueryFragment_Character =
     inherit Character
 
-type PathSegment_Character =
-    inherit Character
 
-type Registered_Name_Character =
-    inherit Character
 
 type Unreserved_Character =
-    inherit PathSegment_Character
-    inherit Registered_Name_Character
+    inherit Character
+
 
 type Reserved_Character =
     inherit Character
 
 type Subcomponent_Delimiter_Character =
     inherit Reserved_Character
-    inherit PathSegment_Character
-    inherit Registered_Name_Character
 
 type General_Component_Delimiter_Character =
     inherit Reserved_Character
@@ -85,12 +79,36 @@ type Path_Delimiter_Character =
 
 
 type Percent_Encoded_Character =
-    inherit PathSegment_Character
-    inherit Registered_Name_Character
+    inherit Character
     abstract member left_digit: char
     abstract member right_digit: char
     abstract member as_literal: string
 
+[<RequireQualifiedAccess>]
+type Registered_Name_Character =
+    | From_Unreserved_Character of Unreserved_Character
+    | From_Subcomponent_Delimiter_Character of Subcomponent_Delimiter_Character
+    | From_Percent_Encoded_Character of Percent_Encoded_Character
+    member this.as_char =
+        match this with
+        | From_Unreserved_Character unreserved_character -> unreserved_character.as_char
+        | From_Subcomponent_Delimiter_Character subcomponent_delimiter_character ->
+            subcomponent_delimiter_character.as_char
+        | From_Percent_Encoded_Character percent_encoded_character -> percent_encoded_character.as_char
+
+
+[<RequireQualifiedAccess>]
+type PathSegment_Character =
+    | From_Character of Character
+    | From_Percent_Encoded_Character of Percent_Encoded_Character
+    | From_Subcomponent_Delimiter_Character of Subcomponent_Delimiter_Character
+    | From_Unreserved_Character of Unreserved_Character
+    member this.as_char =
+        match this with
+        | From_Percent_Encoded_Character percent_encoded_character -> percent_encoded_character.as_char
+        | From_Subcomponent_Delimiter_Character subcomponent_delimiter_character ->
+            subcomponent_delimiter_character.as_char
+        | From_Unreserved_Character unreserved_character -> unreserved_character.as_char
 // TODO consider typing head vs tail?
 type Scheme_Character =
     inherit Character
@@ -133,21 +151,26 @@ type NonZero_Segment =
 type NonZero_NonColon_Segment =
     inherit NonZero_Segment
 
-type Host =
-    inherit Component
 
 type Registered_Name =
-    inherit Host
+    inherit Component
     abstract member registered_name_character_sequence: Registered_Name_Character seq
 
 type IPv4address =
-    inherit Host
+    inherit Component
     abstract member outer_left_octet: Decimal_Octet
     abstract member inner_left_octet: Decimal_Octet
     abstract member inner_right_octet: Decimal_Octet
     abstract member outer_right_octet: Decimal_Octet
 
-
+[<RequireQualifiedAccess>]
+type Host =
+    | From_Registered_Name of Registered_Name
+    | From_IPv4address of IPv4address
+    member this.as_string =
+        match this with
+        | From_Registered_Name registered_name -> registered_name.as_string
+        | From_IPv4address ipv4address -> ipv4address.as_string
 
 
 type UserInfo =
@@ -165,11 +188,7 @@ type Scheme =
     abstract member scheme_character_sequence: Scheme_Character seq
 
 
-type Hierarchical_Part =
-    inherit Component
 
-type Relative_Part =
-    inherit Component
 
 type Path_ =
     inherit Component
@@ -178,8 +197,7 @@ type Path_ =
 
 type Empty_Path =
     inherit Path_
-    inherit Hierarchical_Part
-    inherit Relative_Part
+    inherit Component
 
 
 type Abempty_Path =
@@ -195,25 +213,52 @@ type NonZero_Path =
 
 type NoScheme_Path =
     inherit Tailed_Path
-    inherit Relative_Part
+    inherit Component
     abstract member head_segment: NonZero_NonColon_Segment
 
 type Rootless_Path =
     inherit Tailed_Path
-    inherit Hierarchical_Part
     abstract member head_segment: NonZero_Segment
 
 type Absolute_Path =
     inherit Path_
-    inherit Hierarchical_Part
-    inherit Relative_Part
+    inherit Component
     abstract member nonzero_path: NonZero_Path option
 
 type Network_Path =
-    inherit Hierarchical_Part
-    inherit Relative_Part
+    inherit Component
     abstract member network_authority: Authority
     abstract member abempty_path: Abempty_Path option
+
+
+[<RequireQualifiedAccess>]
+type Relative_Part =
+    | From_Empty_Path of Empty_Path
+    | From_NoScheme_Path of NoScheme_Path
+    | From_Absolute_Path of Absolute_Path
+    | From_Network_Path of Network_Path
+    member this.as_string =
+        match this with
+        | From_Empty_Path empty_path -> empty_path.as_string
+        | From_NoScheme_Path noscheme_path -> noscheme_path.as_string
+        | From_Absolute_Path absolute_path -> absolute_path.as_string
+        | From_Network_Path network_path -> network_path.as_string
+
+[<RequireQualifiedAccess>]
+type Hierarchical_Part =
+    | From_Empty_Path of Empty_Path
+    | From_Rootless_Path of Rootless_Path
+    | From_Absolute_Path of Absolute_Path
+    | From_Network_Path of Network_Path
+    member this.as_string =
+        match this with
+        | From_Empty_Path empty_path -> empty_path.as_string
+        | From_Rootless_Path rootless_path -> rootless_path.as_string
+        | From_Absolute_Path absolute_path -> absolute_path.as_string
+        | From_Network_Path network_path -> network_path.as_string
+
+
+
 
 type URI_Reference =
     inherit Component
@@ -404,20 +449,19 @@ module Percent_Encoded_Character =
 module PathSegment_Character =
 
     let from_char (char_: char) =
-        { new PathSegment_Character with
-            member this.as_char = char_ }
+        PathSegment_Character.From_Character(Character.from_char char_)
+
 
     /// pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
     let parser: Parser<PathSegment_Character, unit> =
         parser_expecting
             (choice [ anyOf ":@" |>> from_char
                       Unreserved_Character.parser
-                      |>> fun unreserved_character -> unreserved_character :> PathSegment_Character
+                      |>> PathSegment_Character.From_Unreserved_Character
                       Percent_Encoded_Character.parser
-                      |>> fun percent_encoded_character -> percent_encoded_character :> PathSegment_Character
+                      |>> PathSegment_Character.From_Percent_Encoded_Character
                       Subcomponent_Delimiter_Character.parser
-                      |>> fun subcomponent_delimiter_character ->
-                              subcomponent_delimiter_character :> PathSegment_Character
+                      |>> PathSegment_Character.From_Subcomponent_Delimiter_Character
 
 
                        ])
@@ -843,12 +887,11 @@ module Registered_Name =
                 choice [
 
                          Unreserved_Character.parser
-                         |>> fun unreserved_character -> unreserved_character :> Registered_Name_Character
+                         |>> Registered_Name_Character.From_Unreserved_Character
                          Percent_Encoded_Character.parser
-                         |>> fun percent_encoded_character -> percent_encoded_character :> Registered_Name_Character
+                         |>> Registered_Name_Character.From_Percent_Encoded_Character
                          Subcomponent_Delimiter_Character.parser
-                         |>> fun subcomponent_delimiter_character ->
-                                 subcomponent_delimiter_character :> Registered_Name_Character
+                         |>> Registered_Name_Character.From_Subcomponent_Delimiter_Character
 
                           ]
              )
@@ -877,10 +920,9 @@ module Host =
     /// host          =  IPv4address / reg-name
     let parser =
         parser_expecting
-            (choice [ IPv4address.parser
-                      |>> fun ipv4address -> ipv4address :> Host
+            (choice [ IPv4address.parser |>> Host.From_IPv4address
                       Registered_Name.parser
-                      |>> fun registered_name -> registered_name :> Host
+                      |>> Host.From_Registered_Name
 
                        ])
             """
@@ -895,12 +937,11 @@ module UserInfo =
                 choice [
 
                          Unreserved_Character.parser
-                         |>> fun unreserved_character -> unreserved_character :> PathSegment_Character
+                         |>> PathSegment_Character.From_Unreserved_Character
                          Percent_Encoded_Character.parser
-                         |>> fun percent_encoded_character -> percent_encoded_character :> PathSegment_Character
+                         |>> PathSegment_Character.From_Percent_Encoded_Character
                          Subcomponent_Delimiter_Character.parser
-                         |>> fun subcomponent_delimiter_character ->
-                                 subcomponent_delimiter_character :> PathSegment_Character
+                         |>> PathSegment_Character.From_Subcomponent_Delimiter_Character
                          pchar ':' |>> PathSegment_Character.from_char
 
                           ]
@@ -1175,15 +1216,15 @@ module Relative_Part =
 
 
                          Network_Path.parser
-                         |>> fun network_path -> network_path :> Relative_Part
+                         |>> Relative_Part.From_Network_Path
                          Absolute_Path.parser
-                         |>> fun absolute_path -> absolute_path :> Relative_Part
+                         |>> Relative_Part.From_Absolute_Path
                          NoScheme_Path.parser
-                         |>> fun noscheme_path -> noscheme_path :> Relative_Part
+                         |>> Relative_Part.From_NoScheme_Path
 
                           ]
              )
-             |>> fun relative_path_option -> defaultArg relative_path_option (empty_path :> Relative_Part))
+             |>> fun relative_path_option -> defaultArg relative_path_option (Relative_Part.From_Empty_Path empty_path))
             """
     relative-part = "//" authority path-abempty
                  / path-absolute
@@ -1226,15 +1267,16 @@ module Hierarchical_Part =
 
 
                          Network_Path.parser
-                         |>> fun network_path -> network_path :> Hierarchical_Part
+                         |>> Hierarchical_Part.From_Network_Path
                          Absolute_Path.parser
-                         |>> fun absolute_path -> absolute_path :> Hierarchical_Part
+                         |>> Hierarchical_Part.From_Absolute_Path
                          Rootless_Path.parser
-                         |>> fun rootless_path -> rootless_path :> Hierarchical_Part
+                         |>> Hierarchical_Part.From_Rootless_Path
 
                           ]
              )
-             |>> fun relative_path_option -> defaultArg relative_path_option (empty_path :> Hierarchical_Part))
+             |>> fun relative_path_option ->
+                     defaultArg relative_path_option (Hierarchical_Part.From_Empty_Path empty_path))
             """
     hier-part     = "//" authority path-abempty
                  / path-absolute
@@ -1296,16 +1338,15 @@ module URI =
 
 
 
-let testUriString = "http://localhost/"
-let test = parse_input URI.parser testUriString
-test.as_string
+// let testUriString = "http://localhost/"
+// let test = parse_input URI.parser testUriString
 
 let uriStrings =
     [|
 
        "ftp://ftp.is.co.za/rfc/rfc1808.txt "
        "http://www.ietf.org/rfc/rfc2396.txt "
-       "ldap://[2001:db8::7]/c=GB?objectClass?one "
+       // "ldap://[2001:db8::7]/c=GB?objectClass?one "
        "mailto:John.Doe@example.com "
        "news:comp.infosystems.www.servers.unix "
        "tel:+1-816-555-1212 "
@@ -1314,5 +1355,9 @@ let uriStrings =
 
        |]
 
-uriStrings
-|> Array.map (fun uriString -> parse_input URI.parser uriString)
+// uriStrings
+// |> Array.map (fun uriString -> parse_input URI.parser uriString)
+
+let testUri = parse_input URI.parser uriStrings[0]
+
+testUri.hierarchical_part
