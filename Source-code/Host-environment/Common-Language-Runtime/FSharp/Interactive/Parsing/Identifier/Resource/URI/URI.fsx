@@ -25,366 +25,769 @@ open FParsec.Pipes
 
 open ParsingErgonomics
 
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\FsharpErgonomics.fsx"
+open FsharpErgonomics
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+type Character =
+    abstract member as_char: char
+
+type QueryFragment_Character =
+    inherit Character
+
+type PathSegment_Character =
+    inherit Character
+
+type Registered_Name_Character =
+    inherit Character
+
+type Unreserved_Character =
+    inherit PathSegment_Character
+    inherit Registered_Name_Character
+
+type Reserved_Character =
+    inherit Character
+
+type Subcomponent_Delimiter_Character =
+    inherit Reserved_Character
+    inherit PathSegment_Character
+    inherit Registered_Name_Character
+
+type General_Component_Delimiter_Character =
+    inherit Reserved_Character
+
+type Path_Delimiter_Character =
+    inherit General_Component_Delimiter_Character
+
+
+type Percent_Encoded_Character =
+    inherit PathSegment_Character
+    inherit Registered_Name_Character
+    abstract member left_digit: char
+    abstract member right_digit: char
+    abstract member as_literal: string
+
+// TODO consider typing head vs tail?
+type Scheme_Character =
+    inherit Character
+
+
+type Decimal_Numeral =
+    abstract member as_int: int
+
+type Decimal_Octet =
+    inherit Decimal_Numeral
+
+type Port =
+    inherit Decimal_Numeral
+
+
+type Component =
+    abstract member as_string: string
 
 // https://www.rfc-editor.org/rfc/rfc3986#section-2.2
-/// sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
-///             / "*" / "+" / "," / ";" / "="
-let sub_delims: Parser<char, unit> =
-    parser_withArgument_expecting
-        anyOf
-        "!$&'()*+,;="
-        """
-sub-delims    = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "="
-        """
+
+type Fragment =
+    inherit Component
+    abstract member fragment_sequence: QueryFragment_Character seq
+
+// TODO handle key value query strings
+type Query =
+    inherit Component
+    abstract member query_sequence: QueryFragment_Character seq
+// abstract member mapping: Map<string,string>
+// abstract member keys: string set
+// abstract member values: string set
+
+type Segment =
+    inherit Component
+    abstract member segment_character_sequence: PathSegment_Character seq
+
+type NonZero_Segment =
+    inherit Segment
+
+type NonZero_NonColon_Segment =
+    inherit NonZero_Segment
+
+type Host =
+    inherit Component
+
+type Registered_Name =
+    inherit Host
+    abstract member registered_name_character_sequence: Registered_Name_Character seq
+
+type IPv4address =
+    inherit Host
+    abstract member outer_left_octet: Decimal_Octet
+    abstract member inner_left_octet: Decimal_Octet
+    abstract member inner_right_octet: Decimal_Octet
+    abstract member outer_right_octet: Decimal_Octet
 
 
-/// gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@"
-let gen_delims =
-    parser_withArgument_expecting anyOf ":/?#[]@" """ gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@" """
 
 
-/// reserved      = gen-delims / sub-delims
-let reserved = gen_delims <|> sub_delims
+type UserInfo =
+    inherit Component
+    abstract member userinfo_character_sequence: PathSegment_Character seq
+
+type Authority =
+    inherit Component
+    abstract member userinfo: UserInfo option
+    abstract member host: Host
+    abstract member port: Port option
+
+type Scheme =
+    inherit Component
+    abstract member scheme_character_sequence: Scheme_Character seq
 
 
-/// unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
-let unreserved =
-    parser_expecting
-        (choice [
+type Hierarchical_Part =
+    inherit Component
 
-                  Augmented_Backus_Naur_Form.Core_Rules.ALPHA
-                  Augmented_Backus_Naur_Form.Core_Rules.DIGIT
-                  anyOf "-._~"
+type Relative_Part =
+    inherit Component
 
-                   ])
-        """
-unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
+type Path_ =
+    inherit Component
+    abstract member segment_sequence: Segment seq
+
+
+type Empty_Path =
+    inherit Path_
+    inherit Hierarchical_Part
+    inherit Relative_Part
+
+
+type Abempty_Path =
+    inherit Path_
+
+type Tailed_Path =
+    inherit Path_
+    abstract member tail_segment_sequence: Segment seq
+
+type NonZero_Path =
+    inherit Tailed_Path
+    abstract member head_segment: NonZero_Segment
+
+type NoScheme_Path =
+    inherit Tailed_Path
+    inherit Relative_Part
+    abstract member head_segment: NonZero_NonColon_Segment
+
+type Rootless_Path =
+    inherit Tailed_Path
+    inherit Hierarchical_Part
+    abstract member head_segment: NonZero_Segment
+
+type Absolute_Path =
+    inherit Path_
+    inherit Hierarchical_Part
+    inherit Relative_Part
+    abstract member nonzero_path: NonZero_Path option
+
+type Network_Path =
+    inherit Hierarchical_Part
+    inherit Relative_Part
+    abstract member network_authority: Authority
+    abstract member abempty_path: Abempty_Path option
+
+type URI_Reference =
+    inherit Component
+
+type Relative_Reference =
+    inherit URI_Reference
+    abstract member relative_part: Relative_Part
+    abstract member query: Query option
+    abstract member fragment: Fragment option
+
+type Absolute_URI =
+    inherit Component
+    abstract member scheme: Scheme
+    abstract hierarchical_part: Hierarchical_Part
+    abstract member query: Query option
+
+type URI =
+    inherit Absolute_URI
+    inherit URI_Reference
+    abstract member fragment: Fragment option
+
+
+
+
+
+
+
+addInterfacePrinter<Character> ()
+addInterfacePrinter<QueryFragment_Character> ()
+addInterfacePrinter<PathSegment_Character> ()
+addInterfacePrinter<Registered_Name_Character> ()
+addInterfacePrinter<Unreserved_Character> ()
+addInterfacePrinter<Reserved_Character> ()
+addInterfacePrinter<Subcomponent_Delimiter_Character> ()
+addInterfacePrinter<General_Component_Delimiter_Character> ()
+addInterfacePrinter<Path_Delimiter_Character> ()
+addInterfacePrinter<Percent_Encoded_Character> ()
+addInterfacePrinter<Scheme_Character> ()
+
+addInterfacePrinter<Decimal_Numeral> ()
+addInterfacePrinter<Decimal_Octet> ()
+addInterfacePrinter<Port> ()
+
+addInterfacePrinter<Component> ()
+addInterfacePrinter<Fragment> ()
+addInterfacePrinter<Query> ()
+addInterfacePrinter<Segment> ()
+addInterfacePrinter<NonZero_Segment> ()
+addInterfacePrinter<NonZero_NonColon_Segment> ()
+
+addInterfacePrinter<Host> ()
+addInterfacePrinter<Registered_Name> ()
+addInterfacePrinter<IPv4address> ()
+
+addInterfacePrinter<UserInfo> ()
+addInterfacePrinter<Authority> ()
+addInterfacePrinter<Scheme> ()
+
+addInterfacePrinter<Hierarchical_Part> ()
+addInterfacePrinter<Relative_Part> ()
+addInterfacePrinter<Path_> ()
+addInterfacePrinter<Empty_Path> ()
+addInterfacePrinter<Abempty_Path> ()
+addInterfacePrinter<Tailed_Path> ()
+addInterfacePrinter<NonZero_Path> ()
+addInterfacePrinter<NoScheme_Path> ()
+addInterfacePrinter<Rootless_Path> ()
+addInterfacePrinter<Absolute_Path> ()
+addInterfacePrinter<Network_Path> ()
+
+addInterfacePrinter<URI_Reference> ()
+addInterfacePrinter<Relative_Reference> ()
+addInterfacePrinter<Absolute_URI> ()
+addInterfacePrinter<URI> ()
+
+
+
+
+
+
+
+
+
+module Character =
+    let from_char (char_: char) =
+        { new Character with
+            member this.as_char = char_ }
+
+
+module Subcomponent_Delimiter_Character =
+    /// sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
+    ///             / "*" / "+" / "," / ";" / "="
+    let parser: Parser<Subcomponent_Delimiter_Character, unit> =
+        parser_expecting
+            (anyOf "!$&'()*+,;="
+             |>> (fun char_ ->
+                 { new Subcomponent_Delimiter_Character with
+                     member this.as_char = char_ }))
+            """
+    sub-delims    = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "="
             """
 
 
 
+module General_Component_Delimiter_Character =
 
 
-/// pct-encoded   = "%" HEXDIG HEXDIG
-let pct_encoded =
-    parser_expecting
-        (%% +.(pchar '%')
-         -- +.Augmented_Backus_Naur_Form.Core_Rules.HEXDIG
-         -- +.Augmented_Backus_Naur_Form.Core_Rules.HEXDIG
-         -%> (fun percent leftHexDigit rightHexDigit ->
-             let encodedLitral = $"{percent}{leftHexDigit}{rightHexDigit}"
-             char (HttpUtility.UrlDecode encodedLitral)
+    /// gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@"
+    let parser: Parser<General_Component_Delimiter_Character, unit> =
+        parser_expecting
+            (anyOf ":/?#[]@"
+             |>> (fun char_ ->
+                 { new General_Component_Delimiter_Character with
+                     member this.as_char = char_ }))
+            """
+gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@"
+"""
 
-             ))
-        """
-pct-encoded   = "%" HEXDIG HEXDIG
-        """
+    let from_input (input: string) =
+        let output_result = apply_parser parser (Input_Stream.string input) ()
+
+        match output_result.output with
+        | Some output -> output
+        | _ -> failwith (output_result.parser_error.Value.ToString())
 
 
-/// pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
+// reserved      = gen-delims / sub-delims
+// let reserved = gen_delims <|> sub_delims
 
-let path_char =
-    parser_expecting
-        (choice [
+module Unreserved_Character =
+    /// unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
+    let parser =
+        parser_expecting
+            (choice [
 
-                  unreserved
-                  pct_encoded
-                  sub_delims
-                  anyOf ":@"
+                      Augmented_Backus_Naur_Form.Core_Rules.ALPHA
+                      Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+                      anyOf "-._~"
 
-                   ])
-        """
-pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
+                       ]
+             |>> (fun char_ ->
+                 { new Unreserved_Character with
+                     member this.as_char = char_ })
+
+            )
+            """
+    unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
+                """
+
+    let from_input (input: string) =
+        let output_result = apply_parser parser (Input_Stream.string input) ()
+
+        match output_result.output with
+        | Some output -> output
+        | _ -> failwith (output_result.parser_error.Value.ToString())
+
+
+
+module Percent_Encoded_Character =
+
+    /// pct-encoded   = "%" HEXDIG HEXDIG
+    let parser =
+        parser_expecting
+            (%%pchar '%'
+             -- +.Augmented_Backus_Naur_Form.Core_Rules.HEXDIG
+             -- +.Augmented_Backus_Naur_Form.Core_Rules.HEXDIG
+             -%> (fun leftHexDigit rightHexDigit ->
+                 let encodedLiteral = $"%%{leftHexDigit}{rightHexDigit}"
+
+                 { new Percent_Encoded_Character with
+                     member this.as_char = char (HttpUtility.UrlDecode encodedLiteral)
+                     member this.left_digit = leftHexDigit
+                     member this.right_digit = rightHexDigit
+                     member this.as_literal = encodedLiteral }
+
+                 ))
+            """
+    pct-encoded   = "%" HEXDIG HEXDIG
             """
 
+    let from_input (input: string) =
+        let output_result = apply_parser parser (Input_Stream.string input) ()
 
-let query'fragment =
-    choice [
+        match output_result.output with
+        | Some output -> output
+        | _ -> failwith (output_result.parser_error.Value.ToString())
 
-             path_char
-             anyOf "/?"
+module PathSegment_Character =
 
-              ]
+    let from_char (char_: char) =
+        { new PathSegment_Character with
+            member this.as_char = char_ }
 
-/// fragment      = *( pchar / "/" / "?" )
-let fragment: Parser<string, unit> =
-    parser_expecting
-        (zero_or_more query'fragment)
+    /// pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
+    let parser: Parser<PathSegment_Character, unit> =
+        parser_expecting
+            (choice [ anyOf ":@" |>> from_char
+                      Unreserved_Character.parser
+                      |>> fun unreserved_character -> unreserved_character :> PathSegment_Character
+                      Percent_Encoded_Character.parser
+                      |>> fun percent_encoded_character -> percent_encoded_character :> PathSegment_Character
+                      Subcomponent_Delimiter_Character.parser
+                      |>> fun subcomponent_delimiter_character ->
+                              subcomponent_delimiter_character :> PathSegment_Character
+
+
+                       ])
+            """
+    pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
+                """
+
+    let from_input (input: string) =
+        let output_result = apply_parser parser (Input_Stream.string input) ()
+
+        match output_result.output with
+        | Some output -> output
+        | _ -> failwith (output_result.parser_error.Value.ToString())
+
+/// ( pchar / "/" / "?" )
+module QueryFragment_Character =
+    let from_char (char_: char) =
+        { new QueryFragment_Character with
+            member this.as_char = char_ }
+
+    let parser: Parser<QueryFragment_Character, unit> =
+        choice [
+
+                 PathSegment_Character.parser
+                 |>> fun pathSegment_character -> from_char pathSegment_character.as_char
+                 anyOf "/?" |>> from_char
+
+                  ]
+
+    let from_input (input: string) =
+        let output_result = apply_parser parser (Input_Stream.string input) ()
+
+        match output_result.output with
+        | Some output -> output
+        | _ -> failwith (output_result.parser_error.Value.ToString())
+
+module Fragment =
+    let string_from_option (fragment_option: Fragment option) =
+        match fragment_option with
+        | Some fragment -> $"#{fragment.as_string}"
+        | _ -> String.Empty
+
+    /// fragment      = *( pchar / "/" / "?" )
+    let parser =
+        parser_expecting
+            (zero_or_more QueryFragment_Character.parser
+             |>> (fun queryFragmentList ->
+                 let queryFragmentString =
+                     queryFragmentList
+                     |> List.map (fun queryFragment_character -> queryFragment_character
+
+
+                     )
+
+                 { new Fragment with
+                     member this.as_string =
+                         queryFragmentList
+                         |> List.map (fun queryFragmentCharacter -> queryFragmentCharacter.as_char)
+                         |> List.toArray
+                         |> String
+
+                     member this.fragment_sequence = queryFragmentList |> List.toSeq }
+
+                 ))
+            """
+    fragment      = *( pchar / "/" / "?" )
         """
-fragment      = *( pchar / "/" / "?" )
-    """
-    |>> string_from_charList
 
-let hash_fragment =
-    parser_expecting (pchar '#' >>. fragment) """ [ "#" fragment ] """
+    module hash_prefixed =
+        let parser = parser_expecting (pchar '#' >>. parser) """ [ "#" fragment ] """
 
 
 
+module Query =
 
-/// query         = *( pchar / "/" / "?" )
+    let string_from_option (query_option: Query option) =
+        match query_option with
+        | Some query -> $"#{query.as_string}"
+        | _ -> String.Empty
 
-let query'URI: Parser<string, unit> =
-    parser_expecting
-        (zero_or_more query'fragment)
+    /// query         = *( pchar / "/" / "?" )
+    let parser =
+        parser_expecting
+            (zero_or_more QueryFragment_Character.parser
+             |>> (fun queryFragmentList ->
+                 { new Query with
+                     member this.as_string =
+                         queryFragmentList
+                         |> List.map (fun queryFragmentCharacter -> queryFragmentCharacter.as_char)
+                         |> List.toArray
+                         |> String
+
+                     member this.query_sequence = queryFragmentList |> List.toSeq }
+
+
+                 ))
+            """
+    query         = *( pchar / "/" / "?" )
         """
-query         = *( pchar / "/" / "?" )
-    """
-    |>> string_from_charList
 
-let question_query =
-    parser_expecting (pchar '?' >>. query'URI) """ [ "?" query ] """
+    module questionmark_prefixed =
+        let parser = parser_expecting (pchar '?' >>. parser) """ [ "?" query ] """
 
+
+// TODO account for other delimiters, ? #, :, maybe substringsx
+module Path_Delimiter_Character =
+    /// a "set" of delimiter characters as a string
+    let setstring = "/"
+
+    let parser =
+        anyOf setstring
+        |>> (fun delimiter ->
+            { new Path_Delimiter_Character with
+                member this.as_char = delimiter })
+
+
+    let variable_parser (variablestring: string) =
+        anyOf variablestring
+        |>> (fun delimiter ->
+            { new Path_Delimiter_Character with
+                member this.as_char = delimiter })
+
+    let solidus = "/"
 
 /// segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" )
 ///             ; non-zero-length segment without any colon ":"
+module Segment =
 
-let segment_nz_nc =
+    let string_from_sequence (segment_sequence: Segment seq) =
+        segment_sequence
+        |> Seq.map (fun segment -> segment.as_string)
+        |> String.concat Path_Delimiter_Character.solidus
 
-    parser_expecting
-        (contiguous (
-            choice [
+    module NonZero_NonColon_Segment =
 
-                     unreserved
-                     pct_encoded
-                     sub_delims
-                     pchar '@'
+        let parser =
 
-                      ]
-         )
-         |>> string_from_charList)
+            parser_expecting
+                (contiguous (
+                    choice [
+
+                             Unreserved_Character.parser
+                             |>> fun unreserved_character ->
+                                     PathSegment_Character.from_char unreserved_character.as_char
+                             Percent_Encoded_Character.parser
+                             |>> fun percent_encoded_character ->
+                                     PathSegment_Character.from_char percent_encoded_character.as_char
+                             Subcomponent_Delimiter_Character.parser
+                             |>> fun subcomponent_delimiter_character ->
+                                     PathSegment_Character.from_char subcomponent_delimiter_character.as_char
+                             pchar '@' |>> PathSegment_Character.from_char
+
+                              ]
+                 )
+                 |>> List.toSeq
+                 |>> (fun pathSegment_character_sequence ->
+
+                     { new NonZero_NonColon_Segment with
+
+                         member this.as_string =
+                             pathSegment_character_sequence
+                             |> Seq.map (fun segment_character ->
+
+                                 segment_character.as_char
+
+                             )
+                             |> Seq.toArray
+                             |> String
+
+                         member this.segment_character_sequence = pathSegment_character_sequence }
+
+
+                     ))
+                """
+        segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" )
+                    ; non-zero-length segment without any colon ":"
         """
-segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" )
-            ; non-zero-length segment without any colon ":"
-"""
 
-/// segment-nz    = 1*pchar
-let segment_nz =
-    parser_expecting
-        (one_or_more path_char |>> string_from_charList)
+    module NonZero_Segment =
+        /// segment-nz    = 1*pchar
+        let parser: Parser<NonZero_Segment, unit> =
+            parser_expecting
+                (one_or_more PathSegment_Character.parser
+
+                 |>> (fun pathSegmentCharacterList ->
+                     pathSegmentCharacterList
+                     |> List.toSeq
+                     |> (fun pathSegment_character_sequence ->
+
+                         { new NonZero_Segment with
+
+
+                             member this.as_string =
+                                 pathSegment_character_sequence
+                                 |> Seq.map (fun segment_character ->
+
+                                     segment_character.as_char
+
+                                 )
+                                 |> Seq.toArray
+                                 |> String
+
+                             member this.segment_character_sequence = pathSegment_character_sequence }
+
+                         )
+
+                     ))
+                """
+        segment-nz    = 1*pchar
         """
-segment-nz    = 1*pchar
-"""
 
-/// segment       = *pchar
-let segment =
-    parser_expecting
-        (zero_or_more path_char |>> string_from_charList)
-        """
-segment       = *pchar
-"""
 
-let path_delimiter = pstring "/"
-/// path-abempty  = *( "/" segment )
-let path_ab = parser_expecting (path_delimiter >>. segment) """ ( "/" segment ) """
+    /// segment       = *pchar
+    let parser =
+        parser_expecting
+            (zero_or_more PathSegment_Character.parser
+             |>> (fun pathSegmentCharacterList ->
+                 pathSegmentCharacterList
+                 |> List.toSeq
+                 |> (fun pathSegment_character_sequence ->
+
+                     { new Segment with
+
+
+                         member this.as_string =
+                             pathSegment_character_sequence
+                             |> Seq.map (fun segment_character ->
+
+                                 segment_character.as_char
+
+                             )
+                             |> Seq.toArray
+                             |> String
+
+                         member this.segment_character_sequence = pathSegment_character_sequence }
+
+                     )
+
+                 )
+
+            )
+            """
+    segment       = *pchar
+    """
+
 
 /// path-empty    = 0<pchar> ; zero characters
-let path_empty: string list = [ "" ]
+let empty_path =
+    { new Empty_Path with
 
-/// path-abempty  = *( "/" segment ) ; begins with "/" or is empty
-let path_abempty =
-    parser_expecting
-        (zero_or_more path_ab)
-        """
-path-abempty  = *( "/" segment ) ; begins with "/" or is empty
-"""
-
-let segment_nz_segment =
-    parser_expecting
-        (%% +.segment_nz -- +.path_abempty -%> prepend)
-        """
-[ segment-nz *( "/" segment ) ]
-"""
-
-/// path-absolute = "/" [ segment-nz *( "/" segment ) ] ; begins with "/" but not "//"
-let path_absolute =
-    parser_expecting
-        (%%path_delimiter
-         -- notFollowedBy path_delimiter
-         -- +.(opt segment_nz_segment)
-         -%> fun output -> defaultArg output [])
-        """
-path-absolute = "/" [ segment-nz *( "/" segment ) ] ; begins with "/" but not "//"
-"""
-
-/// path-noscheme = segment-nz-nc *( "/" segment ) ; begins with a non-colon segment
-let path_noscheme =
-    parser_expecting
-        (%% +.segment_nz_nc -- +.path_abempty -%> prepend)
-        """
-path-noscheme = segment-nz-nc *( "/" segment ) ; begins with a non-colon segment
-"""
-
-/// path-rootless = segment-nz *( "/" segment ) ; begins with a segment
-let path_rootless =
-    parser_expecting
-        (%% +.segment_nz -- +.path_abempty -%> prepend)
-        """
-path-rootless = segment-nz *( "/" segment ) ; begins with a segment
- """
+        member this.as_string = String.Empty
+        member this.segment_sequence = seq {  } }
 
 
-/// path          = path-abempty    ; begins with "/" or is empty
-///              / path-absolute   ; begins with "/" but not "//"
-///              / path-noscheme   ; begins with a non-colon segment
-///              / path-rootless   ; begins with a segment
-///              / path-empty      ; zero characters
-let path =
-    parser_expecting
-        (choice [
+module Decimal_Octet =
+    let from_int (int_: int) =
+        { new Decimal_Octet with
+            member this.as_int = int_ }
 
-                  path_abempty
-                  path_absolute
-                  path_noscheme
-                  path_rootless
+    /// dec-octet     = DIGIT                 ; 0-9
+    let dec_octet'0_9 =
+        parser_expecting
+            (Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+             .>> notFollowedBy Augmented_Backus_Naur_Form.Core_Rules.DIGIT
 
-                   ])
-        """
-path          = path-abempty    ; begins with "/" or is empty
-             / path-absolute   ; begins with "/" but not "//"
-             / path-noscheme   ; begins with a non-colon segment
-             / path-rootless   ; begins with a segment
-             / path-empty      ; zero characters
-"""
+             |>> int_from_singleDigit)
+            """
+    DIGIT                 ; 0-9
+    """
 
+    ///              / %x31-39 DIGIT         ; 10-99
+    let dec_octet'10_99 =
+        parser_expecting
+            (%% +.anyOf "123456789"
+             -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+             -- notFollowedBy Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+             -%> int_from_doubleDigit)
+            """
+    %x31-39 DIGIT         ; 10-99
+    """
 
-/// reg-name      = *( unreserved / pct-encoded / sub-delims )
-let reg_name =
-    parser_expecting
-        (zero_or_more (
-            choice [
+    ///              / "1" 2DIGIT            ; 100-199
+    let dec_octet'100_199 =
+        parser_expecting
+            (%% +.pchar '1'
+             -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+             -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+             -%> int_from_tripleDigit)
+            """
+    "1" 2DIGIT            ; 100-199
+    """
 
-                     unreserved
-                     pct_encoded
-                     sub_delims
+    ///              / "2" %x30-34 DIGIT     ; 200-249
+    let dec_octet'200_249 =
+        parser_expecting
+            (%% +.pchar '2'
+             -- +.anyOf "01234"
+             -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+             -%> int_from_tripleDigit)
+            """
+    "2" %x30-34 DIGIT     ; 200-249
+    """
 
-                      ]
-         )
-         |>> string_from_charList)
-        """
-reg-name      = *( unreserved / pct-encoded / sub-delims )
-"""
-
-
-
-let dec_octet'1: Parser<char, unit> =
-    (satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValue "%x31") "1")
-
-let dec_octet'2: Parser<char, unit> =
-    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValue "%x32") "2"
-
-let dec_octet'5: Parser<char, unit> =
-    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValue "%x35") "5"
-
-let dec_octet'3_9: Parser<char, unit> =
-    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValueRange "%x33-39") "3-9"
-
-let dec_octet'0_4: Parser<char, unit> =
-    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValueRange "%x30-34") "0-4"
-
-let dec_octet'0_5: Parser<char, unit> =
-    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValueRange "%x30-35") "0-5"
-
-let dec_octet'1_9: Parser<char, unit> =
-    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValueRange "%x31-39") "1-9"
-
-/// dec-octet     = DIGIT                 ; 0-9
-let dec_octet'0_9 =
-    parser_expecting
-        (Augmented_Backus_Naur_Form.Core_Rules.DIGIT
-         .>> notFollowedBy Augmented_Backus_Naur_Form.Core_Rules.DIGIT
-
-         |>> int_from_singleDigit)
-        """
-DIGIT                 ; 0-9
-"""
-
-///              / %x31-39 DIGIT         ; 10-99
-let dec_octet'10_99 =
-    parser_expecting
-        (%% +.dec_octet'1_9
-         -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
-         -- notFollowedBy Augmented_Backus_Naur_Form.Core_Rules.DIGIT
-         -%> int_from_doubleDigit)
-        """
-%x31-39 DIGIT         ; 10-99
-"""
-
-///              / "1" 2DIGIT            ; 100-199
-let dec_octet'100_199 =
-    parser_expecting
-        (%% +.dec_octet'1
-         -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
-         -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
-         -%> int_from_tripleDigit)
-        """
-"1" 2DIGIT            ; 100-199
-"""
-
-///              / "2" %x30-34 DIGIT     ; 200-249
-let dec_octet'200_249 =
-    parser_expecting
-        (%% +.dec_octet'2
-         -- +.dec_octet'0_4
-         -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
-         -%> int_from_tripleDigit)
-        """
-"2" %x30-34 DIGIT     ; 200-249
-"""
-
-///              / "25" %x30-35          ; 250-255
-let dec_octet'250_255: Parser<int, unit> =
-    parser_expecting
-        (%% +.dec_octet'2
-         -- +.dec_octet'5
-         -- +.dec_octet'0_5
-         -%> int_from_tripleDigit)
-        """
-"25" %x30-35          ; 250-255
-"""
+    ///              / "25" %x30-35          ; 250-255
+    let dec_octet'250_255: Parser<int, unit> =
+        parser_expecting
+            (%% +.pchar '2' -- +.pchar '5' -- +.anyOf "012345"
+             -%> int_from_tripleDigit)
+            """
+    "25" %x30-35          ; 250-255
+    """
 
 
-/// dec-octet     = DIGIT                 ; 0-9
-///              / %x31-39 DIGIT         ; 10-99
-///              / "1" 2DIGIT            ; 100-199
-///              / "2" %x30-34 DIGIT     ; 200-249
-///              / "25" %x30-35          ; 250-255
-let dec_octet =
-    parser_expecting
-        (choice [
+    /// dec-octet     = DIGIT                 ; 0-9
+    ///              / %x31-39 DIGIT         ; 10-99
+    ///              / "1" 2DIGIT            ; 100-199
+    ///              / "2" %x30-34 DIGIT     ; 200-249
+    ///              / "25" %x30-35          ; 250-255
+    let parser =
+        parser_expecting
+            (choice [
 
-                  attempt dec_octet'250_255
-                  attempt dec_octet'200_249
-                  attempt dec_octet'100_199
-                  attempt dec_octet'10_99
-                  dec_octet'0_9
+                      attempt dec_octet'250_255
+                      attempt dec_octet'200_249
+                      attempt dec_octet'100_199
+                      attempt dec_octet'10_99
+                      dec_octet'0_9
 
 
-                   ])
-        """
-dec-octet     = DIGIT                 ; 0-9
-             / %x31-39 DIGIT         ; 10-99
-             / "1" 2DIGIT            ; 100-199
-             / "2" %x30-34 DIGIT     ; 200-249
-             / "25" %x30-35          ; 250-255
-"""
+                       ]
+             |>> from_int
+
+            )
+            """
+    dec-octet     = DIGIT                 ; 0-9
+                 / %x31-39 DIGIT         ; 10-99
+                 / "1" 2DIGIT            ; 100-199
+                 / "2" %x30-34 DIGIT     ; 200-249
+                 / "25" %x30-35          ; 250-255
+    """
 
 
 
+module IPv4address =
+    /// IPv4address   = dec-octet "." dec-octet "." dec-octet "." dec-octet
+    let parser =
+        parser_expecting
+            (%% +.Decimal_Octet.parser
+             -- pchar '.'
+             -- +.Decimal_Octet.parser
+             -- pchar '.'
+             -- +.Decimal_Octet.parser
+             -- pchar '.'
+             -- +.Decimal_Octet.parser
+             -%> fun outer_left inner_left inner_right outer_right ->
 
-/// IPv4address   = dec-octet "." dec-octet "." dec-octet "." dec-octet
-let IPv4address =
-    parser_expecting
-        (%% +.dec_octet
-         -- pchar '.'
-         -- +.dec_octet
-         -- pchar '.'
-         -- +.dec_octet
-         -- pchar '.'
-         -- +.dec_octet
-         -%> fun first second third fourth -> $"{first}.{second}.{third}.{fourth}")
-        """
-/// IPv4address   = dec-octet "." dec-octet "." dec-octet "." dec-octet
-"""
+                     { new IPv4address with
+                         member this.as_string =
+                             $"{outer_left.as_int}.{inner_left.as_int}.{inner_right.as_int}.{outer_right.as_int}"
+
+                         member this.outer_left_octet = outer_left
+                         member this.inner_left_octet = inner_left
+                         member this.inner_right_octet = inner_right
+                         member this.outer_right_octet = outer_right }
+
+
+            )
+            """
+    /// IPv4address   = dec-octet "." dec-octet "." dec-octet "." dec-octet
+    """
 
 
 
@@ -407,230 +810,497 @@ let IPv4address =
 // ls32          = ( h16 ":" h16 ) / IPv4address
 
 
+module Port =
+    /// port          = *DIGIT
+    let parser =
+        parser_expecting
+            (zero_or_more Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+             |>> fun charList ->
+                     let stringNumeral = string_from_charList charList
 
-/// port          = *DIGIT
-let port =
-    parser_expecting
-        (zero_or_more Augmented_Backus_Naur_Form.Core_Rules.DIGIT
-         |>> fun charList ->
-                 let stringNumeral = string_from_charList charList
-                 int_from_stringNumeral stringNumeral)
-        """
-port          = *DIGIT
-"""
+                     { new Port with
+                         member this.as_int = int_from_stringNumeral stringNumeral }
 
-/// [ ":" port ]
-let colon_port =
-    parser_expecting
-        (opt (pchar ':' >>. port))
-        """
-[ ":" port ]
-"""
+            )
+            """
+    port          = *DIGIT
+    """
 
+    /// [ ":" port ]
+    let colon_parser =
+        parser_expecting
+            (opt (pchar ':' >>. parser))
+            """
+    [ ":" port ]
+    """
+
+
+module Registered_Name =
+    /// reg-name      = *( unreserved / pct-encoded / sub-delims )
+    let parser =
+        parser_expecting
+            (zero_or_more (
+                choice [
+
+                         Unreserved_Character.parser
+                         |>> fun unreserved_character -> unreserved_character :> Registered_Name_Character
+                         Percent_Encoded_Character.parser
+                         |>> fun percent_encoded_character -> percent_encoded_character :> Registered_Name_Character
+                         Subcomponent_Delimiter_Character.parser
+                         |>> fun subcomponent_delimiter_character ->
+                                 subcomponent_delimiter_character :> Registered_Name_Character
+
+                          ]
+             )
+             |>> List.toSeq
+             |>> (fun character_sequence ->
+
+                 { new Registered_Name with
+                     member this.as_string =
+                         character_sequence
+                         |> Seq.map (fun character -> character.as_char)
+                         |> Seq.toArray
+                         |> String
+
+                     member this.registered_name_character_sequence = character_sequence }
+
+
+                 )
+
+            )
+            """
+    reg-name      = *( unreserved / pct-encoded / sub-delims )
+    """
 // TODO IP-literal
 // host          = IP-literal / IPv4address / reg-name
-/// host          =  IPv4address / reg-name
-let host =
-    parser_expecting
-        (IPv4address <|> reg_name)
-        """
-/// host          =  IPv4address / reg-name
-"""
+module Host =
+    /// host          =  IPv4address / reg-name
+    let parser =
+        parser_expecting
+            (choice [ IPv4address.parser
+                      |>> fun ipv4address -> ipv4address :> Host
+                      Registered_Name.parser
+                      |>> fun registered_name -> registered_name :> Host
 
-/// userinfo      = *( unreserved / pct-encoded / sub-delims / ":" )
-let userinfo =
-    parser_expecting
-        (zero_or_more (
-            choice [
+                       ])
+            """
+    /// host          =  IPv4address / reg-name
+    """
 
-                     unreserved
-                     pct_encoded
-                     sub_delims
-                     pchar ':'
+module UserInfo =
+    /// userinfo      = *( unreserved / pct-encoded / sub-delims / ":" )
+    let parser =
+        parser_expecting
+            (zero_or_more (
+                choice [
 
-                      ]
-         )
-         |>> string_from_charList)
-        """
-/// userinfo      = *( unreserved / pct-encoded / sub-delims / ":" )
-"""
+                         Unreserved_Character.parser
+                         |>> fun unreserved_character -> unreserved_character :> PathSegment_Character
+                         Percent_Encoded_Character.parser
+                         |>> fun percent_encoded_character -> percent_encoded_character :> PathSegment_Character
+                         Subcomponent_Delimiter_Character.parser
+                         |>> fun subcomponent_delimiter_character ->
+                                 subcomponent_delimiter_character :> PathSegment_Character
+                         pchar ':' |>> PathSegment_Character.from_char
 
-/// [ userinfo "@" ]
-let userinfo_at =
-    parser_expecting
-        (
+                          ]
+             )
+             |>> List.toSeq
+             |>> (fun character_sequence ->
 
-        provisional (userinfo .>> succeededBy communication_at)
+                 { new UserInfo with
+                     member this.as_string =
+                         character_sequence
+                         |> Seq.map (fun character -> character.as_char)
+                         |> Seq.toArray
+                         |> String
 
-        )
-        """
-[ userinfo "@" ]
-"""
+                     member this.userinfo_character_sequence = character_sequence }
 
-/// authority     = [ userinfo "@" ] host [ ":" port ]
-let authority =
-    parser_expecting
-        (%% +.userinfo_at -- +.host -- +.colon_port
-         -%> (fun userinfoOption hostname portOption ->
 
-             let userinfoComponent =
-                 match userinfoOption with
-                 | Some userinfo -> $"{userinfo}@"
-                 | _ -> String.Empty
+                 ))
+            """
+    /// userinfo      = *( unreserved / pct-encoded / sub-delims / ":" )
+    """
 
-             let portComponent =
-                 match portOption with
-                 | Some port -> $":{string port}"
-                 | _ -> String.Empty
+    /// [ userinfo "@" ]
+    let at_parser =
+        parser_expecting
+            (
 
-             $"{userinfoComponent}{hostname}{portComponent}"
+            provisional (parser .>> succeededBy communication_at)
 
-             ))
-        """
-authority     = [ userinfo "@" ] host [ ":" port ]
-"""
+            )
+            """
+    [ userinfo "@" ]
+    """
 
-/// ALPHA
-let schemeHead =
-    Augmented_Backus_Naur_Form.Core_Rules.ALPHA
-    |>> string
+module Authority =
+    /// authority     = [ userinfo "@" ] host [ ":" port ]
+    let parser =
+        parser_expecting
+            (%% +.UserInfo.at_parser
+             -- +.Host.parser
+             -- +.Port.colon_parser
+             -%> (fun userinfoOption host portOption ->
 
-///  *( ALPHA / DIGIT / "+" / "-" / "." )
-let schemeTail =
-    choice [
+                 { new Authority with
 
-             Augmented_Backus_Naur_Form.Core_Rules.ALPHA
-             Augmented_Backus_Naur_Form.Core_Rules.DIGIT
-             anyOf "+-."
+                     member this.as_string =
 
-              ]
+                         let userinfoString =
+                             match userinfoOption with
+                             | Some userinfo -> $"{userinfo}@"
+                             | _ -> String.Empty
 
-/// scheme        = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
-let scheme =
-    parser_expecting
-        (%% +.schemeHead -- +.(zero_or_more schemeTail)
-         -%> fun head tail -> $"{head}{string_from_charList tail}")
-        """
-scheme        = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
-"""
+                         let portString =
+                             match portOption with
+                             | Some port -> $":{string port}"
+                             | _ -> String.Empty
 
-/// relative-part = "//" authority path-abempty
-///              / path-absolute
-///              / path-noscheme
-///              / path-empty
-let authority_abempty =
-    %% +.authority -- +.(provisional path_abempty)
-    -%> (fun authorityString abemptyListOption ->
-        let abemptyList = defaultArg abemptyListOption []
-        authorityString :: abemptyList
+                         $"{userinfoString}{host.as_string}{portString}"
 
-        )
+                     member this.userinfo = userinfoOption
+                     member this.host = host
+                     member this.port = portOption }
 
 
 
-/// relative-part = "//" authority path-abempty
-///              / path-absolute
-///              / path-noscheme
-///              / path-empty
-let relative_part =
-    parser_expecting
-        (opt (
-            choice [
 
-                     % "//" >>. authority_abempty
-                     path_absolute
-                     path_noscheme
+                 ))
+            """
+    authority     = [ userinfo "@" ] host [ ":" port ]
+    """
 
-                      ]
-         )
-         |>> fun relative_partOption -> defaultArg relative_partOption path_empty)
-        """
-relative-part = "//" authority path-abempty
-             / path-absolute
-             / path-noscheme
-             / path-empty
-"""
+module Abempty_Path =
+
+    /// path-abempty  = *( "/" segment ) ; begins with "/" or is empty
+    let parser =
+        parser_expecting
+            (zero_or_more (Path_Delimiter_Character.parser >>. Segment.parser)
+             |>> fun segmentList ->
+                     let segment_sequence = segmentList |> List.toSeq
+
+                     { new Abempty_Path with
+                         member this.as_string = segment_sequence |> Segment.string_from_sequence
+                         member this.segment_sequence = segment_sequence }
+
+            )
+            """
+    path-abempty  = *( "/" segment ) ; begins with "/" or is empty
+    """
+
+module NonZero_Path =
+    let parser =
+        parser_expecting
+            (%% +.Segment.NonZero_Segment.parser
+             -- +.Abempty_Path.parser
+             -%> (fun head_segment tail_path ->
+                 let head_sequence = seq { head_segment :> Segment }
+                 let tail_sequence = tail_path.segment_sequence
+                 let segment_sequence = Seq.append head_sequence tail_sequence
+                 let segment_sequence_string = segment_sequence |> Segment.string_from_sequence
+
+                 { new NonZero_Path with
+                     member this.as_string = segment_sequence_string
+                     member this.segment_sequence = segment_sequence
+                     member this.head_segment = head_segment
+                     member this.tail_segment_sequence = tail_sequence }
+
+                 ))
+            """
+segment-nz *( "/" segment )
+    """
+
+module Absolute_Path =
 
 
-/// relative-ref  = relative-part [ "?" query ] [ "#" fragment ]
-let relative_ref =
-    parser_expecting
-        (%% +.relative_part
-         -- +.(opt question_query)
-         -- +.(opt hash_fragment)
-         -%> auto)
-        """
-relative-ref  = relative-part [ "?" query ] [ "#" fragment ]
-"""
+    /// path-absolute = "/" [ segment-nz *( "/" segment ) ] ; begins with "/" but not "//"
+    let parser =
+        parser_expecting
+            (%%Path_Delimiter_Character.parser
+             -- notFollowedBy Path_Delimiter_Character.parser
+             -- +.(opt NonZero_Path.parser)
+             -%> (fun nonzero_path_option ->
 
-/// hier-part     = "//" authority path-abempty
-///              / path-absolute
-///              / path-rootless
-///              / path-empty
-let hier_part =
-    parser_expecting
-        (opt (
-            choice [
+                 { new Absolute_Path with
 
-                     % "//" >>. authority_abempty
-                     path_absolute
-                     path_rootless
+                     member this.as_string =
+                         match nonzero_path_option with
+                         | Some nonzero_path -> nonzero_path.as_string
+                         | _ -> "/"
 
-                      ]
-         )
-         |>> fun hier_partOption -> defaultArg hier_partOption path_empty)
-        """
-hier-part     = "//" authority path-abempty
-             / path-absolute
-             / path-rootless
-             / path-empty
-"""
+                     member this.segment_sequence =
+                         match nonzero_path_option with
+                         | Some nonzero_path -> nonzero_path.segment_sequence
+                         | _ -> empty_path.segment_sequence
 
-/// absolute-URI  = scheme ":" hier-part [ "?" query ]
-let absolute_URI =
-    parser_expecting
-        (%% +.scheme
-         -- pchar ':'
-         -- +.hier_part
-         -- +.(opt question_query)
-         -%> auto)
-        """
-/// absolute-URI  = scheme ":" hier-part [ "?" query ]
-"""
+                     member this.nonzero_path = nonzero_path_option }
 
-/// URI           = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
-let URI =
+                 ))
+            """
+    path-absolute = "/" [ segment-nz *( "/" segment ) ] ; begins with "/" but not "//"
+    """
 
-    parser_expecting
-        (%% +.scheme
-         -- pchar ':'
-         -- +.hier_part
-         -- +.(opt question_query)
-         -- +.(opt hash_fragment)
-         -%> auto)
-        """
-URI           = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
-"""
+module NoScheme_Path =
+    /// path-noscheme = segment-nz-nc *( "/" segment ) ; begins with a non-colon segment
+    let parser =
+        parser_expecting
+            (%% +.Segment.NonZero_NonColon_Segment.parser
+             -- +.Abempty_Path.parser
+             -%> (fun head_segment tail_path ->
+                 let head_sequence = seq { head_segment :> Segment }
+                 let tail_sequence = tail_path.segment_sequence
+                 let segment_sequence = Seq.append head_sequence tail_sequence
+                 let segment_sequence_string = segment_sequence |> Segment.string_from_sequence
 
-let testURI = "http://localhost/"
-let communication_at: Parser<char, unit> = pchar '@'
+                 { new NoScheme_Path with
+                     member this.as_string = segment_sequence_string
+                     member this.segment_sequence = segment_sequence
+                     member this.head_segment = head_segment
+                     member this.tail_segment_sequence = tail_sequence }
 
-let testParser =
-    opt (
+                 ))
+            """
+    path-noscheme = segment-nz-nc *( "/" segment ) ; begins with a non-colon segment
+    """
+
+module Rootless_Path =
+    /// path-rootless = segment-nz *( "/" segment ) ; begins with a segment
+    let parser =
+        parser_expecting
+            (%% +.Segment.NonZero_Segment.parser
+             -- +.Abempty_Path.parser
+             -%> (fun head_segment tail_path ->
+                 let head_sequence = seq { head_segment :> Segment }
+                 let tail_sequence = tail_path.segment_sequence
+                 let segment_sequence = Seq.append head_sequence tail_sequence
+                 let segment_sequence_string = segment_sequence |> Segment.string_from_sequence
+
+                 { new Rootless_Path with
+                     member this.as_string = segment_sequence_string
+                     member this.segment_sequence = segment_sequence
+                     member this.head_segment = head_segment
+                     member this.tail_segment_sequence = tail_sequence }
+
+                 ))
+            """
+    path-rootless = segment-nz *( "/" segment ) ; begins with a segment
+     """
+
+module Network_Path =
+    /// "//" authority path-abempty
+    let parser =
+        parser_expecting
+            (%% +.Authority.parser
+             -- +.(provisional Abempty_Path.parser)
+             -%> (fun authority abempty_path_option ->
+                 let segment_sequence_string =
+                     match abempty_path_option with
+                     | Some abempty_path -> abempty_path.as_string
+                     | _ -> String.Empty
+
+
+                 { new Network_Path with
+                     member this.as_string = $"{authority.as_string}/{segment_sequence_string}"
+                     member this.network_authority = authority
+                     member this.abempty_path = abempty_path_option }
+
+                 ))
+            """
+    "//" authority path-abempty
+    """
+
+module Scheme =
+    let from_char (char_: char) =
+        { new Scheme_Character with
+            member this.as_char = char_ }
+
+    /// ALPHA
+    let head_parser =
+        Augmented_Backus_Naur_Form.Core_Rules.ALPHA
+        |>> from_char
+
+    ///  *( ALPHA / DIGIT / "+" / "-" / "." )
+    let tail_parser =
         choice [
 
-                 % "//" >>. authority_abempty
-                 path_absolute
-                 path_rootless
+                 Augmented_Backus_Naur_Form.Core_Rules.ALPHA
+                 Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+                 anyOf "+-."
 
                   ]
-    )
-    |>> fun hier_partOption -> defaultArg hier_partOption path_empty
+        |>> from_char
 
-runParser hier_part OnString "localhost/"
+    /// scheme        = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
+    let parser =
+        parser_expecting
+            (%% +.head_parser -- +.(zero_or_more tail_parser)
+             -%> fun head tail ->
+                     { new Scheme with
+
+                         member this.as_string =
+                             let headString = string head.as_char
+
+                             let tailString =
+                                 tail
+                                 |> List.map (fun character -> character.as_char)
+                                 |> List.toArray
+                                 |> String
+
+                             $"{headString}{tailString}"
+
+                         member this.scheme_character_sequence = head :: tail |> List.toSeq }
 
 
-let uris =
+
+
+
+            )
+            """
+    scheme        = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
+    """
+
+
+
+module Relative_Part =
+    /// relative-part = "//" authority path-abempty
+    ///              / path-absolute
+    ///              / path-noscheme
+    ///              / path-empty
+    let parser =
+        parser_expecting
+            (opt (
+                choice [
+
+
+                         Network_Path.parser
+                         |>> fun network_path -> network_path :> Relative_Part
+                         Absolute_Path.parser
+                         |>> fun absolute_path -> absolute_path :> Relative_Part
+                         NoScheme_Path.parser
+                         |>> fun noscheme_path -> noscheme_path :> Relative_Part
+
+                          ]
+             )
+             |>> fun relative_path_option -> defaultArg relative_path_option (empty_path :> Relative_Part))
+            """
+    relative-part = "//" authority path-abempty
+                 / path-absolute
+                 / path-noscheme
+                 / path-empty
+    """
+
+module Relative_Reference =
+    /// relative-ref  = relative-part [ "?" query ] [ "#" fragment ]
+    let parser =
+        parser_expecting
+            (%% +.Relative_Part.parser
+             -- +.(opt Query.questionmark_prefixed.parser)
+             -- +.(opt Fragment.hash_prefixed.parser)
+             -%> (fun relative_part query_option fragment_option ->
+
+                 { new Relative_Reference with
+
+                     member this.as_string =
+                         $"{relative_part.as_string}{Query.string_from_option query_option}{Fragment.string_from_option fragment_option}"
+
+                     member this.relative_part = relative_part
+                     member this.query = query_option
+                     member this.fragment = fragment_option }
+
+                 ))
+            """
+    relative-ref  = relative-part [ "?" query ] [ "#" fragment ]
+    """
+
+module Hierarchical_Part =
+    /// hier-part     = "//" authority path-abempty
+    ///              / path-absolute
+    ///              / path-rootless
+    ///              / path-empty
+    let parser =
+        parser_expecting
+            (opt (
+                choice [
+
+
+                         Network_Path.parser
+                         |>> fun network_path -> network_path :> Hierarchical_Part
+                         Absolute_Path.parser
+                         |>> fun absolute_path -> absolute_path :> Hierarchical_Part
+                         Rootless_Path.parser
+                         |>> fun rootless_path -> rootless_path :> Hierarchical_Part
+
+                          ]
+             )
+             |>> fun relative_path_option -> defaultArg relative_path_option (empty_path :> Hierarchical_Part))
+            """
+    hier-part     = "//" authority path-abempty
+                 / path-absolute
+                 / path-rootless
+                 / path-empty
+    """
+
+module Absolute_URI =
+    /// absolute-URI  = scheme ":" hier-part [ "?" query ]
+    let parser =
+        parser_expecting
+            (%% +.Scheme.parser
+             -- pchar ':'
+             -- +.Hierarchical_Part.parser
+             -- +.(opt Query.questionmark_prefixed.parser)
+             -%> (
+
+             fun scheme hierarchical_part query_option ->
+
+                 { new Absolute_URI with
+
+                     member this.as_string =
+                         $"{scheme.as_string}:{hierarchical_part.as_string}{Query.string_from_option query_option}"
+
+                     member this.scheme = scheme
+                     member this.hierarchical_part = hierarchical_part
+                     member this.query = query_option }
+
+
+                 ))
+            """
+    /// absolute-URI  = scheme ":" hier-part [ "?" query ]
+    """
+
+module URI =
+    /// URI           = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
+    let parser =
+
+        parser_expecting
+            (%% +.Absolute_URI.parser
+             -- +.(opt Fragment.hash_prefixed.parser)
+             -%> (fun absolute_uri fragment_option ->
+
+                 { new URI with
+
+                     member this.as_string =
+                         $"{absolute_uri.as_string}{Fragment.string_from_option fragment_option}"
+
+                     member this.scheme = absolute_uri.scheme
+                     member this.hierarchical_part = absolute_uri.hierarchical_part
+                     member this.query = absolute_uri.query
+                     member this.fragment = fragment_option }
+
+
+                 ))
+            """
+    URI           = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
+    """
+
+
+
+let testUriString = "http://localhost/"
+let test = parse_input URI.parser testUriString
+test.as_string
+
+let uriStrings =
     [|
 
        "ftp://ftp.is.co.za/rfc/rfc1808.txt "
@@ -644,5 +1314,5 @@ let uris =
 
        |]
 
-uris
-|> Array.map (fun uri -> runParser URI OnString uri)
+uriStrings
+|> Array.map (fun uriString -> parse_input URI.parser uriString)

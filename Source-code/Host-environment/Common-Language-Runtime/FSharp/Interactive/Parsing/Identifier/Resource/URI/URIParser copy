@@ -1,0 +1,646 @@
+open System
+open System.Web
+
+
+open System.Linq
+
+open System.IO
+open System.Globalization
+open System.Text.RegularExpressions
+
+#r "nuget: FParsec"
+#r "nuget: FParsec-Pipes"
+#r "nuget: Fabulous.AST"
+
+
+open FParsec
+open FParsec.Pipes
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Language\Metalanguage\Augmented_Backus_Naur_Form\Augmented_Backus_Naur_Form.fsx"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\WorldWideWeb\URISchemes.fsx"
+
+
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\ParsingErgonomics.fsx"
+
+open ParsingErgonomics
+// https://www.rfc-editor.org/rfc/rfc3986#section-2.2
+/// sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
+///             / "*" / "+" / "," / ";" / "="
+let sub_delims: Parser<char, unit> =
+    parser_withArgument_expecting
+        anyOf
+        "!$&'()*+,;="
+        """
+sub-delims    = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "="
+        """
+
+
+/// gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@"
+let gen_delims =
+    parser_withArgument_expecting anyOf ":/?#[]@" """ gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@" """
+
+
+/// reserved      = gen-delims / sub-delims
+let reserved = gen_delims <|> sub_delims
+
+
+/// unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
+let unreserved =
+    parser_expecting
+        (choice [
+
+                  Augmented_Backus_Naur_Form.Core_Rules.ALPHA
+                  Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+                  anyOf "-._~"
+
+                   ])
+        """
+unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
+            """
+
+
+
+
+
+/// pct-encoded   = "%" HEXDIG HEXDIG
+let pct_encoded =
+    parser_expecting
+        (%% +.(pchar '%')
+         -- +.Augmented_Backus_Naur_Form.Core_Rules.HEXDIG
+         -- +.Augmented_Backus_Naur_Form.Core_Rules.HEXDIG
+         -%> (fun percent leftHexDigit rightHexDigit ->
+             let encodedLitral = $"{percent}{leftHexDigit}{rightHexDigit}"
+             char (HttpUtility.UrlDecode encodedLitral)
+
+             ))
+        """
+pct-encoded   = "%" HEXDIG HEXDIG
+        """
+
+
+/// pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
+
+let path_char =
+    parser_expecting
+        (choice [
+
+                  unreserved
+                  pct_encoded
+                  sub_delims
+                  anyOf ":@"
+
+                   ])
+        """
+pchar         = unreserved / pct-encoded / sub-delims / ":" / "@"
+            """
+
+
+let query'fragment =
+    choice [
+
+             path_char
+             anyOf "/?"
+
+              ]
+
+/// fragment      = *( pchar / "/" / "?" )
+let fragment: Parser<string, unit> =
+    parser_expecting
+        (zero_or_more query'fragment)
+        """
+fragment      = *( pchar / "/" / "?" )
+    """
+    |>> string_from_charList
+
+let hash_fragment =
+    parser_expecting (pchar '#' >>. fragment) """ [ "#" fragment ] """
+
+
+
+
+/// query         = *( pchar / "/" / "?" )
+
+let query'URI: Parser<string, unit> =
+    parser_expecting
+        (zero_or_more query'fragment)
+        """
+query         = *( pchar / "/" / "?" )
+    """
+    |>> string_from_charList
+
+let question_query =
+    parser_expecting (pchar '?' >>. query'URI) """ [ "?" query ] """
+
+
+/// segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" )
+///             ; non-zero-length segment without any colon ":"
+
+let segment_nz_nc =
+
+    parser_expecting
+        (contiguous (
+            choice [
+
+                     unreserved
+                     pct_encoded
+                     sub_delims
+                     pchar '@'
+
+                      ]
+         )
+         |>> string_from_charList)
+        """
+segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" )
+            ; non-zero-length segment without any colon ":"
+"""
+
+/// segment-nz    = 1*pchar
+let segment_nz =
+    parser_expecting
+        (one_or_more path_char |>> string_from_charList)
+        """
+segment-nz    = 1*pchar
+"""
+
+/// segment       = *pchar
+let segment =
+    parser_expecting
+        (zero_or_more path_char |>> string_from_charList)
+        """
+segment       = *pchar
+"""
+
+let path_delimiter = pstring "/"
+/// path-abempty  = *( "/" segment )
+let path_ab = parser_expecting (path_delimiter >>. segment) """ ( "/" segment ) """
+
+/// path-empty    = 0<pchar> ; zero characters
+let path_empty: string list = [ "" ]
+
+/// path-abempty  = *( "/" segment ) ; begins with "/" or is empty
+let path_abempty =
+    parser_expecting
+        (zero_or_more path_ab)
+        """
+path-abempty  = *( "/" segment ) ; begins with "/" or is empty
+"""
+
+let segment_nz_segment =
+    parser_expecting
+        (%% +.segment_nz -- +.path_abempty -%> prepend)
+        """
+[ segment-nz *( "/" segment ) ]
+"""
+
+/// path-absolute = "/" [ segment-nz *( "/" segment ) ] ; begins with "/" but not "//"
+let path_absolute =
+    parser_expecting
+        (%%path_delimiter
+         -- notFollowedBy path_delimiter
+         -- +.(opt segment_nz_segment)
+         -%> fun output -> defaultArg output [])
+        """
+path-absolute = "/" [ segment-nz *( "/" segment ) ] ; begins with "/" but not "//"
+"""
+
+/// path-noscheme = segment-nz-nc *( "/" segment ) ; begins with a non-colon segment
+let path_noscheme =
+    parser_expecting
+        (%% +.segment_nz_nc -- +.path_abempty -%> prepend)
+        """
+path-noscheme = segment-nz-nc *( "/" segment ) ; begins with a non-colon segment
+"""
+
+/// path-rootless = segment-nz *( "/" segment ) ; begins with a segment
+let path_rootless =
+    parser_expecting
+        (%% +.segment_nz -- +.path_abempty -%> prepend)
+        """
+path-rootless = segment-nz *( "/" segment ) ; begins with a segment
+ """
+
+
+/// path          = path-abempty    ; begins with "/" or is empty
+///              / path-absolute   ; begins with "/" but not "//"
+///              / path-noscheme   ; begins with a non-colon segment
+///              / path-rootless   ; begins with a segment
+///              / path-empty      ; zero characters
+let path =
+    parser_expecting
+        (choice [
+
+                  path_abempty
+                  path_absolute
+                  path_noscheme
+                  path_rootless
+
+                   ])
+        """
+path          = path-abempty    ; begins with "/" or is empty
+             / path-absolute   ; begins with "/" but not "//"
+             / path-noscheme   ; begins with a non-colon segment
+             / path-rootless   ; begins with a segment
+             / path-empty      ; zero characters
+"""
+
+
+/// reg-name      = *( unreserved / pct-encoded / sub-delims )
+let reg_name =
+    parser_expecting
+        (zero_or_more (
+            choice [
+
+                     unreserved
+                     pct_encoded
+                     sub_delims
+
+                      ]
+         )
+         |>> string_from_charList)
+        """
+reg-name      = *( unreserved / pct-encoded / sub-delims )
+"""
+
+
+
+let dec_octet'1: Parser<char, unit> =
+    (satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValue "%x31") "1")
+
+let dec_octet'2: Parser<char, unit> =
+    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValue "%x32") "2"
+
+let dec_octet'5: Parser<char, unit> =
+    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValue "%x35") "5"
+
+let dec_octet'3_9: Parser<char, unit> =
+    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValueRange "%x33-39") "3-9"
+
+let dec_octet'0_4: Parser<char, unit> =
+    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValueRange "%x30-34") "0-4"
+
+let dec_octet'0_5: Parser<char, unit> =
+    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValueRange "%x30-35") "0-5"
+
+let dec_octet'1_9: Parser<char, unit> =
+    satisfyL (Augmented_Backus_Naur_Form.Core_Rules.terminalCharValueRange "%x31-39") "1-9"
+
+/// dec-octet     = DIGIT                 ; 0-9
+let dec_octet'0_9 =
+    parser_expecting
+        (Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+         .>> notFollowedBy Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+
+         |>> int_from_singleDigit)
+        """
+DIGIT                 ; 0-9
+"""
+
+///              / %x31-39 DIGIT         ; 10-99
+let dec_octet'10_99 =
+    parser_expecting
+        (%% +.dec_octet'1_9
+         -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+         -- notFollowedBy Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+         -%> int_from_doubleDigit)
+        """
+%x31-39 DIGIT         ; 10-99
+"""
+
+///              / "1" 2DIGIT            ; 100-199
+let dec_octet'100_199 =
+    parser_expecting
+        (%% +.dec_octet'1
+         -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+         -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+         -%> int_from_tripleDigit)
+        """
+"1" 2DIGIT            ; 100-199
+"""
+
+///              / "2" %x30-34 DIGIT     ; 200-249
+let dec_octet'200_249 =
+    parser_expecting
+        (%% +.dec_octet'2
+         -- +.dec_octet'0_4
+         -- +.Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+         -%> int_from_tripleDigit)
+        """
+"2" %x30-34 DIGIT     ; 200-249
+"""
+
+///              / "25" %x30-35          ; 250-255
+let dec_octet'250_255: Parser<int, unit> =
+    parser_expecting
+        (%% +.dec_octet'2
+         -- +.dec_octet'5
+         -- +.dec_octet'0_5
+         -%> int_from_tripleDigit)
+        """
+"25" %x30-35          ; 250-255
+"""
+
+
+/// dec-octet     = DIGIT                 ; 0-9
+///              / %x31-39 DIGIT         ; 10-99
+///              / "1" 2DIGIT            ; 100-199
+///              / "2" %x30-34 DIGIT     ; 200-249
+///              / "25" %x30-35          ; 250-255
+let dec_octet =
+    parser_expecting
+        (choice [
+
+                  attempt dec_octet'250_255
+                  attempt dec_octet'200_249
+                  attempt dec_octet'100_199
+                  attempt dec_octet'10_99
+                  dec_octet'0_9
+
+
+                   ])
+        """
+dec-octet     = DIGIT                 ; 0-9
+             / %x31-39 DIGIT         ; 10-99
+             / "1" 2DIGIT            ; 100-199
+             / "2" %x30-34 DIGIT     ; 200-249
+             / "25" %x30-35          ; 250-255
+"""
+
+
+
+
+/// IPv4address   = dec-octet "." dec-octet "." dec-octet "." dec-octet
+let IPv4address =
+    parser_expecting
+        (%% +.dec_octet
+         -- pchar '.'
+         -- +.dec_octet
+         -- pchar '.'
+         -- +.dec_octet
+         -- pchar '.'
+         -- +.dec_octet
+         -%> fun first second third fourth -> $"{first}.{second}.{third}.{fourth}")
+        """
+/// IPv4address   = dec-octet "." dec-octet "." dec-octet "." dec-octet
+"""
+
+
+
+// TODO maybe one day
+// IP-literal    = "[" ( IPv6address / IPvFuture  ) "]"
+//
+// IPvFuture     = "v" 1*HEXDIG "." 1*( unreserved / sub-delims / ":" )
+//
+// IPv6address   =                            6( h16 ":" ) ls32
+//              /                       "::" 5( h16 ":" ) ls32
+//              / [               h16 ] "::" 4( h16 ":" ) ls32
+//              / [ *1( h16 ":" ) h16 ] "::" 3( h16 ":" ) ls32
+//              / [ *2( h16 ":" ) h16 ] "::" 2( h16 ":" ) ls32
+//              / [ *3( h16 ":" ) h16 ] "::"    h16 ":"   ls32
+//              / [ *4( h16 ":" ) h16 ] "::"              ls32
+//              / [ *5( h16 ":" ) h16 ] "::"              h16
+//              / [ *6( h16 ":" ) h16 ] "::"
+//
+// h16           = 1*4HEXDIG
+// ls32          = ( h16 ":" h16 ) / IPv4address
+
+
+
+/// port          = *DIGIT
+let port =
+    parser_expecting
+        (zero_or_more Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+         |>> fun charList ->
+                 let stringNumeral = string_from_charList charList
+                 int_from_stringNumeral stringNumeral)
+        """
+port          = *DIGIT
+"""
+
+/// [ ":" port ]
+let colon_port =
+    parser_expecting
+        (opt (pchar ':' >>. port))
+        """
+[ ":" port ]
+"""
+
+// TODO IP-literal
+// host          = IP-literal / IPv4address / reg-name
+/// host          =  IPv4address / reg-name
+let host =
+    parser_expecting
+        (IPv4address <|> reg_name)
+        """
+/// host          =  IPv4address / reg-name
+"""
+
+/// userinfo      = *( unreserved / pct-encoded / sub-delims / ":" )
+let userinfo =
+    parser_expecting
+        (zero_or_more (
+            choice [
+
+                     unreserved
+                     pct_encoded
+                     sub_delims
+                     pchar ':'
+
+                      ]
+         )
+         |>> string_from_charList)
+        """
+/// userinfo      = *( unreserved / pct-encoded / sub-delims / ":" )
+"""
+
+/// [ userinfo "@" ]
+let userinfo_at =
+    parser_expecting
+        (
+
+        provisional (userinfo .>> succeededBy communication_at)
+
+        )
+        """
+[ userinfo "@" ]
+"""
+
+/// authority     = [ userinfo "@" ] host [ ":" port ]
+let authority =
+    parser_expecting
+        (%% +.userinfo_at -- +.host -- +.colon_port
+         -%> (fun userinfoOption hostname portOption ->
+
+             let userinfoComponent =
+                 match userinfoOption with
+                 | Some userinfo -> $"{userinfo}@"
+                 | _ -> String.Empty
+
+             let portComponent =
+                 match portOption with
+                 | Some port -> $":{string port}"
+                 | _ -> String.Empty
+
+             $"{userinfoComponent}{hostname}{portComponent}"
+
+             ))
+        """
+authority     = [ userinfo "@" ] host [ ":" port ]
+"""
+
+/// ALPHA
+let schemeHead =
+    Augmented_Backus_Naur_Form.Core_Rules.ALPHA
+    |>> string
+
+///  *( ALPHA / DIGIT / "+" / "-" / "." )
+let schemeTail =
+    choice [
+
+             Augmented_Backus_Naur_Form.Core_Rules.ALPHA
+             Augmented_Backus_Naur_Form.Core_Rules.DIGIT
+             anyOf "+-."
+
+              ]
+
+/// scheme        = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
+let scheme =
+    parser_expecting
+        (%% +.schemeHead -- +.(zero_or_more schemeTail)
+         -%> fun head tail -> $"{head}{string_from_charList tail}")
+        """
+scheme        = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
+"""
+
+/// relative-part = "//" authority path-abempty
+///              / path-absolute
+///              / path-noscheme
+///              / path-empty
+let authority_abempty =
+    %% +.authority -- +.(provisional path_abempty)
+    -%> (fun authorityString abemptyListOption ->
+        let abemptyList = defaultArg abemptyListOption []
+        authorityString :: abemptyList
+
+        )
+
+
+
+/// relative-part = "//" authority path-abempty
+///              / path-absolute
+///              / path-noscheme
+///              / path-empty
+let relative_part =
+    parser_expecting
+        (opt (
+            choice [
+
+                     % "//" >>. authority_abempty
+                     path_absolute
+                     path_noscheme
+
+                      ]
+         )
+         |>> fun relative_partOption -> defaultArg relative_partOption path_empty)
+        """
+relative-part = "//" authority path-abempty
+             / path-absolute
+             / path-noscheme
+             / path-empty
+"""
+
+
+/// relative-ref  = relative-part [ "?" query ] [ "#" fragment ]
+let relative_ref =
+    parser_expecting
+        (%% +.relative_part
+         -- +.(opt question_query)
+         -- +.(opt hash_fragment)
+         -%> auto)
+        """
+relative-ref  = relative-part [ "?" query ] [ "#" fragment ]
+"""
+
+/// hier-part     = "//" authority path-abempty
+///              / path-absolute
+///              / path-rootless
+///              / path-empty
+let hier_part =
+    parser_expecting
+        (opt (
+            choice [
+
+                     % "//" >>. authority_abempty
+                     path_absolute
+                     path_rootless
+
+                      ]
+         )
+         |>> fun hier_partOption -> defaultArg hier_partOption path_empty)
+        """
+hier-part     = "//" authority path-abempty
+             / path-absolute
+             / path-rootless
+             / path-empty
+"""
+
+/// absolute-URI  = scheme ":" hier-part [ "?" query ]
+let absolute_URI =
+    parser_expecting
+        (%% +.scheme
+         -- pchar ':'
+         -- +.hier_part
+         -- +.(opt question_query)
+         -%> auto)
+        """
+/// absolute-URI  = scheme ":" hier-part [ "?" query ]
+"""
+
+/// URI           = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
+let URI =
+
+    parser_expecting
+        (%% +.scheme
+         -- pchar ':'
+         -- +.hier_part
+         -- +.(opt question_query)
+         -- +.(opt hash_fragment)
+         -%> auto)
+        """
+URI           = scheme ":" hier-part [ "?" query ] [ "#" fragment ]
+"""
+
+let testURI = "http://localhost/"
+let communication_at: Parser<char, unit> = pchar '@'
+
+let testParser =
+    opt (
+        choice [
+
+                 % "//" >>. authority_abempty
+                 path_absolute
+                 path_rootless
+
+                  ]
+    )
+    |>> fun hier_partOption -> defaultArg hier_partOption path_empty
+
+runParser hier_part OnString "localhost/"
+
+
+let uris =
+    [|
+
+       "ftp://ftp.is.co.za/rfc/rfc1808.txt "
+       "http://www.ietf.org/rfc/rfc2396.txt "
+       "ldap://[2001:db8::7]/c=GB?objectClass?one "
+       "mailto:John.Doe@example.com "
+       "news:comp.infosystems.www.servers.unix "
+       "tel:+1-816-555-1212 "
+       "telnet://192.0.2.16:80/ "
+       "urn:oasis:names:specification:docbook:dtd:xml:4.1.2 "
+
+       |]
+
+uris
+|> Array.map (fun uri -> runParser URI OnString uri)
