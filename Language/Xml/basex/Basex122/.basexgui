@@ -5,7 +5,7 @@ CHECKUPDATES = false
 # Paths
 INPUTPATH = C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\WorldWideWeb\uri-schemes.xml
 DATAPATH = C:/Repositories/eristocrates/ipa/Language/Xml/basex/Basex122/
-WORKPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/
+WORKPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/
 PROJECTPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/
 
 # Layout
@@ -163,25 +163,25 @@ XQUERY20 = //table/foreignKeyConstraint[@name = "
 
 # Files
 EDITOR = 19
-EDITOR1 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/attribute-with-embedded-xml.xq
-EDITOR2 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/process-embedded-xml.xq
-EDITOR3 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/productFamily.xq
-EDITOR4 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Datasets-to-fsi.xq
-EDITOR5 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/column-substring.xq
-EDITOR6 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/properties.xq
-EDITOR7 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/property-tags.xq
-EDITOR8 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/child-tags.xq
-EDITOR9 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/asset-tables-by-product-family.xq
-EDITOR10 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/asset-table-columns-by-product-family.xq
-EDITOR11 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ArcGIS.Core.XML/member-starts-with.xq
-EDITOR12 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/FSharp/Esri-Instances.xq
-EDITOR13 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/FSharp/Esri-Types.xq
-EDITOR14 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/FSharp/Field.xq
-EDITOR15 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/AssetTableReferences-to-fsx.xq
-EDITOR16 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/systemLicense.xq
-EDITOR17 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Datasets-to-fsx.xq
-EDITOR18 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Fsharp-types.xq
-EDITOR19 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Domains.xq
+EDITOR1 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/anyOf.xq
+EDITOR2 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/attribute-with-embedded-xml.xq
+EDITOR3 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/process-embedded-xml.xq
+EDITOR4 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/productFamily.xq
+EDITOR5 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Datasets-to-fsi.xq
+EDITOR6 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/column-substring.xq
+EDITOR7 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/properties.xq
+EDITOR8 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/property-tags.xq
+EDITOR9 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/child-tags.xq
+EDITOR10 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/asset-tables-by-product-family.xq
+EDITOR11 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/asset-table-columns-by-product-family.xq
+EDITOR12 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ArcGIS.Core.XML/member-starts-with.xq
+EDITOR13 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/FSharp/Esri-Instances.xq
+EDITOR14 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/FSharp/Esri-Types.xq
+EDITOR15 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/FSharp/Field.xq
+EDITOR16 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/AssetTableReferences-to-fsx.xq
+EDITOR17 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/FSharp/systemLicense.xq
+EDITOR18 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Datasets-to-fsx.xq
+EDITOR19 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/LCG_Stormwater_Inventory.xml/Fsharp-types.xq
 INPUTS = 18
 INPUTS1 = C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\WorldWideWeb\uri-schemes.xml
 INPUTS2 = D:\Surface\Standards\Unicode\ucd.all.grouped.xml
@@ -201,9 +201,10 @@ INPUTS15 = D:/Surface/Government/United_States/State/Florida/County/Leon/Geograp
 INPUTS16 = D:\Surface\Government\United_States\State\Florida\County\Leon\Geographic_Information_Systems\SDE_Schema_(X-Ray)\LCG_Stormwater_Inventory_updated\LCG_Stormwater_Inventory.xml
 INPUTS17 = D:\Artifact\LCPW_OverlayStormwaterInfrastructure_D_WM.merged.json
 INPUTS18 = D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_2025_04_01\Deployment Files\MetaData\MetaData.xml
-OPEN = 2
+OPEN = 3
 OPEN1 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/process-embedded-xml.xq
 OPEN2 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/attribute-with-embedded-xml.xq
+OPEN3 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/anyOf.xq
 PROJECTS = 2
 PROJECTS1 = C:/Repositories/eristocrates/ipa/Queries/XQuery/
 PROJECTS2 = C:/Program Files/Microsoft Visual Studio/18/Professional/
