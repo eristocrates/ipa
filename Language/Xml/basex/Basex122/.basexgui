@@ -107,18 +107,20 @@ SEARCHED20 = downstreamel
 REPLACED = 0
 
 # History
-COMMANDS = 11
-COMMANDS1 = repo list
-COMMANDS2 = repo delete net.codepoints.index
-COMMANDS3 = repo install http://modules.basex.org/base64/base64.xqm
-COMMANDS4 = repo install http://modules.basex.org/diff/diff.xqm
-COMMANDS5 = repo install http://modules.basex.org/map-extras/map-extras.xqm
-COMMANDS6 = repo install http://modules.basex.org/utf8/utf8.xqm
-COMMANDS7 = repo install http://modules.basex.org/utf8/
-COMMANDS8 = REPO INSTALL http://modules.basex.org/Hello/HelloWorld.xqm
-COMMANDS9 = repo install C:\Repositories\eristocrates\ipa\Queries\XQuery\Modules\codepoints.xqm
-COMMANDS10 = repo install C:\Repositories\eristocrates\ipa\Queries\XQuery\Modules\HelloWorld.xqm
-COMMANDS11 = repo
+COMMANDS = 13
+COMMANDS1 = //*[@na = "Exclamation Mark"]
+COMMANDS2 = //*[@na = "Ess
+COMMANDS3 = repo list
+COMMANDS4 = repo delete net.codepoints.index
+COMMANDS5 = repo install http://modules.basex.org/base64/base64.xqm
+COMMANDS6 = repo install http://modules.basex.org/diff/diff.xqm
+COMMANDS7 = repo install http://modules.basex.org/map-extras/map-extras.xqm
+COMMANDS8 = repo install http://modules.basex.org/utf8/utf8.xqm
+COMMANDS9 = repo install http://modules.basex.org/utf8/
+COMMANDS10 = REPO INSTALL http://modules.basex.org/Hello/HelloWorld.xqm
+COMMANDS11 = repo install C:\Repositories\eristocrates\ipa\Queries\XQuery\Modules\codepoints.xqm
+COMMANDS12 = repo install C:\Repositories\eristocrates\ipa\Queries\XQuery\Modules\HelloWorld.xqm
+COMMANDS13 = repo
 SEARCH = 17
 SEARCH1 = //Field/
 SEARCH2 = //Field
