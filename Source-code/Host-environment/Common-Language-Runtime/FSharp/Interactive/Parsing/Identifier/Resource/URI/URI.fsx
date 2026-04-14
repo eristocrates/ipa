@@ -234,14 +234,15 @@ type Registered_Name_Character =
                        ])
             """  unreserved / pct-encoded / sub-delims  """
 
+[<RequireQualifiedAccess>]
 type NonColon_Path_Character =
     | FromRegisteredNameCharacter of Registered_Name_Character
-    | FromAmpersand of Ampersand
+    | FromCommercialAt of Commercial_At
 
     member this.as_rune =
         match this with
         | FromRegisteredNameCharacter registered_name_character -> registered_name_character.as_rune
-        | FromAmpersand ampersand -> ampersand.as_rune
+        | FromCommercialAt ampersand -> ampersand.as_rune
 
     static member parse: Parser<NonColon_Path_Character, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
@@ -249,7 +250,7 @@ type NonColon_Path_Character =
 
                       Registered_Name_Character.parse
                       |>> FromRegisteredNameCharacter
-                      Ampersand.parse |>> FromAmpersand
+                      Commercial_At.parse |>> FromCommercialAt
 
                        ])
             """  unreserved / pct-encoded / sub-delims / "@"  """
@@ -299,23 +300,34 @@ type QueryOrFragment_Character =
             """  pchar / "/" / "?"  """
 
 type NonColon_NonEmpty_Segment =
-    { as_characters: ImmutableArray<NonColon_Path_Character> }
-    member this.as_string = string_from_characters this.as_characters
+    {
+
+      as_characters: ImmutableArray<NonColon_Path_Character>
+      as_string: string
+
+     }
 
     static member parse: Parser<NonColon_NonEmpty_Segment, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
             (many1 NonColon_Path_Character.parse
-             |>> fun characters -> { as_characters = characters })
+             |>> fun characters ->
+                     {
+
+                       as_characters = characters
+                       as_string = string_from_characters characters
+
+                     })
             """ segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" ) ; non-zero-length segment without any colon ":" """
 
 type NonEmpty_Segment =
-    { as_characters: ImmutableArray<Path_Character> }
-    member this.as_string = string_from_characters this.as_characters
+    { nonempty_segment: ImmutableArray<Path_Character> }
+    member this.as_string = string_from_characters this.nonempty_segment
+    member this.as_characters = this.nonempty_segment
 
     static member parse: Parser<NonEmpty_Segment, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
             (many1 Path_Character.parse
-             |>> fun characters -> { as_characters = characters })
+             |>> fun characters -> { nonempty_segment = characters })
             """ segment-nz    = 1*pchar """
 
 type Empty_Segment =
@@ -323,15 +335,18 @@ type Empty_Segment =
     static member as_characters: ImmutableArray<Path_Character> = ImmutableArray.Empty
     static member as_string = String.Empty
 
+// TODO character dependent delimiters like . for "subsegments"?
 type Segment =
-    { as_characters: ImmutableArray<Path_Character> }
-    member this.as_string = string_from_characters this.as_characters
+    { segment: ImmutableArray<Path_Character> }
+
+    member this.as_characters = this.segment
+    member this.as_string = string_from_characters this.segment
     static member Empty = Empty_Segment()
 
     static member parse: Parser<Segment, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
             (many Path_Character.parse
-             |>> fun characters -> { as_characters = characters })
+             |>> fun characters -> { segment = characters })
             """ segment       = *pchar """
 
 
@@ -340,6 +355,7 @@ type Empty_Path =
     static member as_string = String.Empty
     static member head = Segment.Empty
     static member tail: ImmutableArray<Segment> = ImmutableArray.Empty
+    static member tail_string = String.Empty
 
 
 type Rootless_Path =
@@ -349,7 +365,13 @@ type Rootless_Path =
       tail: ImmutableArray<Segment>
 
      }
-    member this.as_string = $"{this.head.as_string}{string_from_segments this.tail}"
+
+    member this.tail_string_segments =
+        this.tail
+        |> Seq.map (fun segment -> segment.as_string)
+
+    member this.tail_string = string_from_segments this.tail
+    member this.as_string = $"{this.head.as_string}{this.tail_string}"
 
     static member parse: Parser<Rootless_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
@@ -368,7 +390,13 @@ type NoScheme_Path =
 
      }
 
-    member this.as_string = $"{this.head.as_string}{string_from_segments this.tail}"
+
+    member this.tail_string_segments =
+        this.tail
+        |> Seq.map (fun segment -> segment.as_string)
+
+    member this.tail_string = string_from_segments this.tail
+    member this.as_string = $"{this.head.as_string}{this.tail_string}"
 
     static member parse: Parser<NoScheme_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
@@ -386,7 +414,12 @@ type Absolute_Path =
      }
 
 
-    member this.as_string = $"/{this.head.as_string}{string_from_segments this.tail}"
+    member this.tail_string_segments =
+        this.tail
+        |> Seq.map (fun segment -> segment.as_string)
+
+    member this.tail_string = string_from_segments this.tail
+    member this.as_string = $"/{this.head.as_string}{this.tail_string}"
 
     static member parse: Parser<Absolute_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
@@ -395,8 +428,8 @@ type Absolute_Path =
              |>> fun rootless_path_option ->
                      let head =
                          match rootless_path_option with
-                         | ValueSome rootless_path -> { as_characters = rootless_path.head.as_characters }
-                         | ValueNone -> { as_characters = ImmutableArray.Empty }
+                         | ValueSome rootless_path -> { segment = rootless_path.head.nonempty_segment }
+                         | ValueNone -> { segment = ImmutableArray.Empty }
 
                      let tail =
                          match rootless_path_option with
@@ -421,7 +454,8 @@ type Abempty_Path =
 
      }
 
-    member this.as_string = "/" + string_from_segments this.segments
+    // member this.as_string = "/" + string_from_segments this.segments
+    member this.as_string = string_from_segments this.segments
 
 
     static member parse: Parser<Abempty_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
@@ -476,14 +510,16 @@ path          = path-abempty    ; begins with "/" or is empty
 
 
 type Registered_Name =
-    { as_characters: ImmutableArray<Registered_Name_Character> }
-    member this.as_string = string_from_characters this.as_characters
+    { registered_name: ImmutableArray<Registered_Name_Character> }
+
+    member this.as_characters = this.registered_name
+    member this.as_string = string_from_characters this.registered_name
     static member Empty = Empty_Segment()
 
     static member parse: Parser<Registered_Name, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
             (many Registered_Name_Character.parse
-             |>> fun characters -> { as_characters = characters })
+             |>> fun characters -> { registered_name = characters })
             """ reg-name      = *( unreserved / pct-encoded / sub-delims ) """
 
 type Decimal_Octet =
@@ -634,12 +670,9 @@ type Port =
       as_characters: ImmutableArray<ABNF.DIGIT> }
     static member parse: Parser<Port, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
-            (skip_rune ':' >>. (many (ABNF.DIGIT.parse))
+            (skip_rune ':' >>. (many1 (ABNF.DIGIT.parse))
              |>> fun digits ->
-                     let stringNumeral =
-                         digits
-                         |> Seq.map (fun digit -> digit.as_rune)
-                         |> string
+                     let stringNumeral = string_from_characters digits
 
                      {
 
@@ -654,19 +687,19 @@ type Port =
 [<RequireQualifiedAccess>]
 type Host =
     | FromIPv4address of IPv4address
-    | FromRegistered_Name of Registered_Name
+    | FromRegisteredName of Registered_Name
 
     member this.as_string =
         match this with
         | FromIPv4address ipv4address -> ipv4address.as_string
-        | FromRegistered_Name registered_name -> registered_name.as_string
+        | FromRegisteredName registered_name -> registered_name.as_string
 
     static member parse: Parser<Host, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
             (choice [
 
                       IPv4address.parse |>> FromIPv4address
-                      Registered_Name.parse |>> FromRegistered_Name
+                      Registered_Name.parse |>> FromRegisteredName
 
 
                        ])
@@ -694,19 +727,22 @@ type Userinfo_Character =
             """  unreserved / pct-encoded / sub-delims / ":"  """
 
 type Userinfo =
-    { as_characters: ImmutableArray<Userinfo_Character>
+    {
+
+      userinfo: ImmutableArray<Userinfo_Character>
 
      }
-    member this.as_string = string_from_characters this.as_characters
+    member this.as_string = string_from_characters this.userinfo
+    member this.as_characters = this.userinfo
 
     static member parse: Parser<Userinfo, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
             (
 
             many Userinfo_Character.parse
-            .>> followedBy Ampersand.parse
-            .>> Ampersand.parse
-            |>> fun characters -> { as_characters = characters }
+            .>> followedBy Commercial_At.parse
+            .>> Commercial_At.parse
+            |>> fun characters -> { userinfo = characters }
 
             )
             """ userinfo      = *( unreserved / pct-encoded / sub-delims / ":" ) """
@@ -780,6 +816,7 @@ type Scheme_Character =
             """  ALPHA / DIGIT / "+" / "-" / "."  """
 
 
+// TODO scheme dependent segment delimiters like colon in urn?
 type Scheme =
     { head: ABNF.ALPHA
       tail: ImmutableArray<Scheme_Character> }
@@ -792,6 +829,9 @@ type Scheme =
     static member parse: Parser<Scheme, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
             (ABNF.ALPHA.parse .>>. many Scheme_Character.parse
+             // .>> skip_rune ':'
+             // .>> skip_rune '/'
+             // .>> skip_rune '/'
              |>> fun struct (head, tail) ->
 
                      { head = head; tail = tail }
@@ -802,7 +842,7 @@ type Scheme =
 
 
 
-type Network_Path =
+type Authority_Path =
     {
 
       head: Authority
@@ -813,7 +853,12 @@ type Network_Path =
 
     member this.as_string = $"//{this.head.as_string}{this.tail.as_string}"
 
-    static member parse: Parser<Network_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    member this.tail_string_segments =
+        this.tail.segments
+        |> Seq.map (fun segment -> segment.as_string)
+
+
+    static member parse: Parser<Authority_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
             (parser {
                 let! _ = Solidus.parse
@@ -839,14 +884,14 @@ type Network_Path =
 
 [<RequireQualifiedAccess>]
 type Relative_Path =
-    | FromNetworkPath of Network_Path
+    | FromAuthorityPath of Authority_Path
     | FromAbsolutePath of Absolute_Path
     | FromNoSchemePath of NoScheme_Path
     | FromEmptyPath of Empty_Path
 
     member this.as_string =
         match this with
-        | FromNetworkPath network_path -> network_path.as_string
+        | FromAuthorityPath authority_path -> authority_path.as_string
         | FromNoSchemePath noscheme_path -> noscheme_path.as_string
         | FromAbsolutePath absolute_path -> absolute_path.as_string
         | FromEmptyPath empty_path -> String.Empty
@@ -857,7 +902,7 @@ type Relative_Path =
             (opt (
                 choice [
 
-                         Network_Path.parse |>> FromNetworkPath
+                         Authority_Path.parse |>> FromAuthorityPath
                          Absolute_Path.parse |>> FromAbsolutePath
                          NoScheme_Path.parse |>> FromNoSchemePath
 
@@ -873,8 +918,9 @@ relative-part = "//" authority path-abempty
             """
 // TODO handle key value paired query strings
 type Query =
-    { as_characters: ImmutableArray<QueryOrFragment_Character> }
-    member this.as_string = string_from_characters this.as_characters
+    { query_: ImmutableArray<QueryOrFragment_Character> }
+    member this.as_characters = this.query_
+    member this.as_string = string_from_characters this.query_
 
     static member string_from_option(query_option: Query ValueOption) =
         match query_option with
@@ -886,12 +932,13 @@ type Query =
         parse_expecting
             (Question_Mark.parse
              >>. many QueryOrFragment_Character.parse
-             |>> fun characters -> { as_characters = characters })
+             |>> fun characters -> { query_ = characters })
             """query         = *( pchar / "/" / "?" ) """
 
 type Fragment =
-    { as_characters: ImmutableArray<QueryOrFragment_Character> }
-    member this.as_string = string_from_characters this.as_characters
+    { fragment: ImmutableArray<QueryOrFragment_Character> }
+    member this.as_characters = this.fragment
+    member this.as_string = string_from_characters this.fragment
 
     static member string_from_option(fragment_option: Fragment ValueOption) =
         match fragment_option with
@@ -902,7 +949,7 @@ type Fragment =
         parse_expecting
             (Number_Sign.parse
              >>. many QueryOrFragment_Character.parse
-             |>> fun characters -> { as_characters = characters })
+             |>> fun characters -> { fragment = characters })
             """ fragment      = *( pchar / "/" / "?" ) """
 
 type Relative_Reference =
@@ -943,14 +990,14 @@ type Relative_Reference =
 
 [<RequireQualifiedAccess>]
 type Hierarchical_Path =
-    | FromNetworkPath of Network_Path
+    | FromAuthorityPath of Authority_Path
     | FromAbsolutePath of Absolute_Path
     | FromRootlessPath of Rootless_Path
     | FromEmptyPath of Empty_Path
 
     member this.as_string =
         match this with
-        | FromNetworkPath network_path -> network_path.as_string
+        | FromAuthorityPath authority_path -> authority_path.as_string
         | FromAbsolutePath absolute_path -> absolute_path.as_string
         | FromRootlessPath rootless_path -> rootless_path.as_string
         | FromEmptyPath _ -> String.Empty
@@ -961,7 +1008,7 @@ type Hierarchical_Path =
             (opt (
                 choice [
 
-                         Network_Path.parse |>> FromNetworkPath
+                         Authority_Path.parse |>> FromAuthorityPath
                          Absolute_Path.parse |>> FromAbsolutePath
                          Rootless_Path.parse |>> FromRootlessPath
 
@@ -992,6 +1039,7 @@ type Absolute_URI =
             (parser {
 
                 let! scheme = Scheme.parse
+                do! skip_rune ':'
                 let! hierarchical_path = Hierarchical_Path.parse
                 let! query = opt Query.parse
                 return (scheme, hierarchical_path, query)
@@ -1009,7 +1057,7 @@ type Absolute_URI =
 
 
             )
-            """     /// absolute-URI  = scheme ":" hier-part [ "?" query ] """
+            """ absolute-URI  = scheme ":" hier-part [ "?" query ] """
 
 type URI =
     {
@@ -1021,7 +1069,14 @@ type URI =
 
      }
     member this.as_string =
-        $"{this.scheme.as_string}{this.hierarchical_path.as_string}{Query.string_from_option this.query}{Fragment.string_from_option this.fragment}"
+        $"{this.scheme.as_string}:{this.hierarchical_path.as_string}{Query.string_from_option this.query}{Fragment.string_from_option this.fragment}"
+
+    member this.absolute_uri: Absolute_URI =
+        {
+
+          scheme = this.scheme
+          hierarchical_path = this.hierarchical_path
+          query = this.query }
 
     static member parse: Parser<URI, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
@@ -1045,7 +1100,7 @@ type URI =
 
 
             )
-            """     /// absolute-URI  = scheme ":" hier-part [ "?" query ] """
+            """ URI           = scheme ":" hier-part [ "?" query ] [ "#" fragment ] """
 
 [<RequireQualifiedAccess>]
 type URI_Reference =
@@ -1067,12 +1122,29 @@ type URI_Reference =
                        ])
             """  URI-reference = URI / relative-ref """
 
+let fileURIString_from_filePath (filePath: string) =
+    let solidusPath = filePath.Replace("\\", "/")
+    $"file:///{solidusPath}"
 
-let result =
-    match run_parse URI.parse OnInput "http://www.ietf.org/rfc/rfc2396.txt" with
+let windowsPath = @"D:\Surface\Standards\Unicode"
+let URIString = "urn:oasis:names:specification:docbook:dtd:xml:4.1.2" //fileURIString_from_filePath windowsPath
+
+run_parse URI.parse OnInput URIString
+run_parse Port.parse OnInput ":80/"
+
+let uri =
+    match run_parse URI.parse OnInput URIString with
     | Ok result -> result
 
-result.as_string
+// uri.absolute_uri.as_string = (new Uri(windowsPath)).AbsoluteUri
+
+uri.scheme.as_string
+uri.hierarchical_path.as_string
+
+let (Hierarchical_Path.FromRootlessPath result_path) = uri.hierarchical_path
+result_path.head.as_string
+result_path.tail_string_segments
+result_path.as_string
 
 let uriStrings =
     [|
@@ -1091,11 +1163,13 @@ let uriStrings =
 uriStrings
 |> Array.map (fun uriString ->
 
-
+    (*
+    run_parse URI.parse OnInput uriString
+    *)
     let result =
         match run_parse URI.parse OnInput uriString with
         | Ok result -> result
 
-    result
+    result.as_string
 
 )
