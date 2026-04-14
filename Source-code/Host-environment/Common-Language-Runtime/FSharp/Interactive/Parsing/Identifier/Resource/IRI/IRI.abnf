@@ -38,12 +38,10 @@
 
    isegment       = *ipchar
    isegment-nz    = 1*ipchar
-   isegment-nz-nc = 1*( iunreserved / pct-encoded / sub-delims
-                        / "@" )
+   isegment-nz-nc = 1*( iunreserved / pct-encoded / sub-delims / "@" )
                   ; non-zero-length segment without any colon ":"
 
-   ipchar         = iunreserved / pct-encoded / sub-delims / ":"
-                  / "@"
+   ipchar         = iunreserved / pct-encoded / sub-delims / ":" / "@"
 
    iquery         = *( ipchar / iprivate / "/" / "?" )
 

@@ -25,6 +25,11 @@ open System.Collections.Immutable
 
 
 
+let fileURIString_from_filePath (filePath: string) =
+    let solidusPath = filePath.Replace("\\", "/")
+    $"file:///{solidusPath}"
+
+
 [<RequireQualifiedAccess>]
 type Subcomponent_Delimiter_Character =
     | FromExclamationMark of Exclamation_Mark
@@ -303,9 +308,10 @@ type NonColon_NonEmpty_Segment =
     {
 
       as_characters: ImmutableArray<NonColon_Path_Character>
-      as_string: string
 
      }
+
+    member this.as_string = string_from_characters this.as_characters
 
     static member parse: Parser<NonColon_NonEmpty_Segment, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
@@ -314,7 +320,6 @@ type NonColon_NonEmpty_Segment =
                      {
 
                        as_characters = characters
-                       as_string = string_from_characters characters
 
                      })
             """ segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" ) ; non-zero-length segment without any colon ":" """
@@ -483,6 +488,7 @@ type URI_Path =
         | FromNoSchemePath noscheme_path -> noscheme_path.as_string
         | FromAbsolutePath absolute_path -> absolute_path.as_string
         | FromAbemptyPath abempty_path -> abempty_path.as_string
+        | FromEmptyPath _ -> String.Empty
 
     static member Empty = Empty_Path()
 
@@ -491,10 +497,10 @@ type URI_Path =
             (opt (
                 choice [
 
-                         Abempty_Path.parse |>> FromAbemptyPath
                          Absolute_Path.parse |>> FromAbsolutePath
-                         NoScheme_Path.parse |>> FromNoSchemePath
                          Rootless_Path.parse |>> FromRootlessPath
+                         NoScheme_Path.parse |>> FromNoSchemePath
+                         Abempty_Path.parse |>> FromAbemptyPath
 
                           ]
              )
@@ -514,7 +520,6 @@ type Registered_Name =
 
     member this.as_characters = this.registered_name
     member this.as_string = string_from_characters this.registered_name
-    static member Empty = Empty_Segment()
 
     static member parse: Parser<Registered_Name, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
@@ -740,7 +745,6 @@ type Userinfo =
             (
 
             many Userinfo_Character.parse
-            .>> followedBy Commercial_At.parse
             .>> Commercial_At.parse
             |>> fun characters -> { userinfo = characters }
 
@@ -1121,55 +1125,3 @@ type URI_Reference =
 
                        ])
             """  URI-reference = URI / relative-ref """
-
-let fileURIString_from_filePath (filePath: string) =
-    let solidusPath = filePath.Replace("\\", "/")
-    $"file:///{solidusPath}"
-
-let windowsPath = @"D:\Surface\Standards\Unicode"
-let URIString = "urn:oasis:names:specification:docbook:dtd:xml:4.1.2" //fileURIString_from_filePath windowsPath
-
-run_parse URI.parse OnInput URIString
-run_parse Port.parse OnInput ":80/"
-
-let uri =
-    match run_parse URI.parse OnInput URIString with
-    | Ok result -> result
-
-// uri.absolute_uri.as_string = (new Uri(windowsPath)).AbsoluteUri
-
-uri.scheme.as_string
-uri.hierarchical_path.as_string
-
-let (Hierarchical_Path.FromRootlessPath result_path) = uri.hierarchical_path
-result_path.head.as_string
-result_path.tail_string_segments
-result_path.as_string
-
-let uriStrings =
-    [|
-
-       "ftp://ftp.is.co.za/rfc/rfc1808.txt"
-       "http://www.ietf.org/rfc/rfc2396.txt"
-       // "ldap://[2001:db8::7]/c=GB?objectClass?one"
-       "mailto:John.Doe@example.com"
-       "news:comp.infosystems.www.servers.unix"
-       "tel:+1-816-555-1212"
-       "telnet://192.0.2.16:80/"
-       "urn:oasis:names:specification:docbook:dtd:xml:4.1.2"
-
-       |]
-
-uriStrings
-|> Array.map (fun uriString ->
-
-    (*
-    run_parse URI.parse OnInput uriString
-    *)
-    let result =
-        match run_parse URI.parse OnInput uriString with
-        | Ok result -> result
-
-    result.as_string
-
-)

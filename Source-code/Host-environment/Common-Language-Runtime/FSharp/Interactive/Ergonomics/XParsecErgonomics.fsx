@@ -21,7 +21,7 @@ let anyRune (string_chars: string) =
     string_chars.ToCharArray()
     |> Array.map (fun char_ -> Rune char_)
     |> anyOf
-    
+
 let inline string_from_characters<^CharacterType when ^CharacterType: (member as_rune: Rune)>(elements: seq<^CharacterType>) =
         elements
         |> Seq.toArray
@@ -47,10 +47,15 @@ let parse_expecting parse (expecting: string) = parse <??> expecting
 
 type Adposition = | OnInput
 
-let run_parse parse (adposition: Adposition) (input: string) =
+let run_partial_parse parse (adposition: Adposition) (input: string) =
     let runes = input |> runes_from_string
     let text = Reader.ofArray runes ()
     parse text
+
+let run_full_parse parse (adposition: Adposition) (input: string) =
+    let runes = input |> runes_from_string
+    let text = Reader.ofArray runes ()
+    (parse .>> eof) text
 
 let int_from_stringNumeral(stringNumeral: string) =
         match System.Int32.TryParse(stringNumeral) with
