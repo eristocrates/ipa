@@ -8,18 +8,75 @@ open Yog.Builder.Labeled
 open Yog.IO
 open Yog.Pathfinding.Dijkstra
 
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XParsecErgonomics.fsx"
+open XParsecErgonomics
+
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Identifier\Resource\RDF\Turtle.fsx"
 
-open IRI
+
 open Turtle
 
-let dotFilePath = Path.Combine(__SOURCE_DIRECTORY__, "graph.dot")
 
 
-let subject_predicate_object subject predicate object = addEdge subject object predicate
+let label_from_iri (iri: Turtle_IRI) = iri.as_string
+let nodeLabel_from_iri id (iri: Turtle_IRI) = label_from_iri iri
 
+let graphvizOptions: Dot.Options<Turtle_IRI, Turtle_IRI> =
+    {
+
+
+      NodeLabel = nodeLabel_from_iri
+      EdgeLabel = label_from_iri
+      HighlightedNodes = Set.empty
+      HighlightedEdges = Set.empty
+      NodeShape = "ellipse"
+      HighlightColor = "red"
+
+    }
+
+let mermaidOptions: Mermaid.Options<Turtle_IRI, Turtle_IRI> =
+    {
+
+      NodeLabel = nodeLabel_from_iri
+      EdgeLabel = label_from_iri
+      HighlightedNodes = Set.empty
+      HighlightedEdges = Set.empty
+
+    }
+
+let graph_from_context graph (parent_directory: string) (stem: string) =
+    let stemPath = Path.Combine(parent_directory, $"{stem}.stem")
+
+    let dotFilePath = Path.ChangeExtension(stemPath, "dot")
+    Dot.writeFile dotFilePath graphvizOptions graph
+
+
+    let jsonFilePath = Path.ChangeExtension(stemPath, "json")
+    Json.writeFile jsonFilePath graph
+
+
+    let mermaidFilePath = Path.ChangeExtension(stemPath, "mmd")
+    Mermaid.writeFile mermaidFilePath mermaidOptions graph
+
+
+// let contextmlFilePath = Path.ChangeExtension(stemPath, "contextml")
+// GraphML.writeFile contextmlFilePath context
+
+let subject_predicate_object_context subject predicate object context =
+    addEdge subject object predicate context
+
+let subjects_predicate_object_context subjects predicate object context =
+    List.fold
+        (fun current_context subject -> subject_predicate_object_context subject predicate object current_context)
+        context
+        subjects
+
+// TODO figure out how to generate this
 type example =
     static member _prefix_id = https.www.example.com.prefix_id
+
+    static member knows =
+        Turtle_IRI.FromPrefixedName(Prefixed_Name.from_prefix_id example._prefix_id "knows")
 
     static member Alice =
         Turtle_IRI.FromPrefixedName(Prefixed_Name.from_prefix_id example._prefix_id "Alice")
@@ -27,24 +84,18 @@ type example =
     static member Bob =
         Turtle_IRI.FromPrefixedName(Prefixed_Name.from_prefix_id example._prefix_id "Bob")
 
-    static member knows =
-        Turtle_IRI.FromPrefixedName(Prefixed_Name.from_prefix_id example._prefix_id "knows")
+    static member Charlie =
+        Turtle_IRI.FromPrefixedName(Prefixed_Name.from_prefix_id example._prefix_id "Charlie")
 
-// Create a directed graph
-let default_graph =
+
+// Create a directed context
+let default_context =
     directed<Turtle_IRI, Turtle_IRI> ()
-    |> addNode example.Alice
-    |> addNode example.Bob
-    |> subject_predicate_object example.Alice example.knows example.Bob
-    // |> addSVO "Bob" "knows" "Charlie"
-    // |> addSVO "Alice" "knows" "Charlie"
-    |> toGraph
+    |> subject_predicate_object_context example.Alice example.knows example.Bob
+    |> subjects_predicate_object_context [ example.Alice; example.Bob ] example.knows example.Charlie
+
+let default_graph = default_context |> toGraph
 
 
-let graphvizOptions: Dot.Options<Turtle_IRI, Turtle_IRI> =
-    { Dot.defaultOptions with
-        NodeLabel = fun _ node -> node.as_string
-        EdgeLabel = fun iri -> iri.as_string }
 
-
-Dot.writeFile dotFilePath graphvizOptions default_graph
+graph_from_context default_graph __SOURCE_DIRECTORY__ "graph"

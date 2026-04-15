@@ -1,0 +1,34 @@
+{
+  "kind": "Directed",
+  "nodes": [
+    {
+      "id": 0,
+      "data": "FromPrefixedName\n  { turtle_prefix =\n     { as_name =\n        ValueSome\n          { head = { as_rune = e }\n            tail =\n             ValueSome\n               { body =\n                  seq\n                    [FromPrefixedNameCharacter { as_rune = x };\n                     FromPrefixedNameCharacter { as_rune = a };\n                     FromPrefixedNameCharacter { as_rune = m };\n                     FromPrefixedNameCharacter { as_rune = p }; ...]\n                 tip = { as_rune = e } } } }\n    local_part =\n     { as_name =\n        { head = FromPrefixedNameBaseCharacter { as_rune = A }\n          tail =\n           ValueSome\n             { body =\n                seq\n                  [FromPrefixedNameCharacter { as_rune = l };\n                   FromPrefixedNameCharacter { as_rune = i };\n                   FromPrefixedNameCharacter { as_rune = c }]\n               tip = FromPrefixedNameCharacter { as_rune = e } } } } }"
+    },
+    {
+      "id": 1,
+      "data": "FromPrefixedName\n  { turtle_prefix =\n     { as_name =\n        ValueSome\n          { head = { as_rune = e }\n            tail =\n             ValueSome\n               { body =\n                  seq\n                    [FromPrefixedNameCharacter { as_rune = x };\n                     FromPrefixedNameCharacter { as_rune = a };\n                     FromPrefixedNameCharacter { as_rune = m };\n                     FromPrefixedNameCharacter { as_rune = p }; ...]\n                 tip = { as_rune = e } } } }\n    local_part =\n     { as_name =\n        { head = FromPrefixedNameBaseCharacter { as_rune = B }\n          tail =\n           ValueSome { body = seq [FromPrefixedNameCharacter { as_rune = o }]\n                       tip = FromPrefixedNameCharacter { as_rune = b } } } } }"
+    },
+    {
+      "id": 2,
+      "data": "FromPrefixedName\n  { turtle_prefix =\n     { as_name =\n        ValueSome\n          { head = { as_rune = e }\n            tail =\n             ValueSome\n               { body =\n                  seq\n                    [FromPrefixedNameCharacter { as_rune = x };\n                     FromPrefixedNameCharacter { as_rune = a };\n                     FromPrefixedNameCharacter { as_rune = m };\n                     FromPrefixedNameCharacter { as_rune = p }; ...]\n                 tip = { as_rune = e } } } }\n    local_part =\n     { as_name =\n        { head = FromPrefixedNameBaseCharacter { as_rune = C }\n          tail =\n           ValueSome\n             { body =\n                seq\n                  [FromPrefixedNameCharacter { as_rune = h };\n                   FromPrefixedNameCharacter { as_rune = a };\n                   FromPrefixedNameCharacter { as_rune = r };\n                   FromPrefixedNameCharacter { as_rune = l }; ...]\n               tip = FromPrefixedNameCharacter { as_rune = e } } } } }"
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 1,
+      "weight": "FromPrefixedName\n  { turtle_prefix =\n     { as_name =\n        ValueSome\n          { head = { as_rune = e }\n            tail =\n             ValueSome\n               { body =\n                  seq\n                    [FromPrefixedNameCharacter { as_rune = x };\n                     FromPrefixedNameCharacter { as_rune = a };\n                     FromPrefixedNameCharacter { as_rune = m };\n                     FromPrefixedNameCharacter { as_rune = p }; ...]\n                 tip = { as_rune = e } } } }\n    local_part =\n     { as_name =\n        { head = FromPrefixedNameBaseCharacter { as_rune = k }\n          tail =\n           ValueSome\n             { body =\n                seq\n                  [FromPrefixedNameCharacter { as_rune = n };\n                   FromPrefixedNameCharacter { as_rune = o };\n                   FromPrefixedNameCharacter { as_rune = w }]\n               tip = FromPrefixedNameCharacter { as_rune = s } } } } }"
+    },
+    {
+      "source": 0,
+      "target": 2,
+      "weight": "FromPrefixedName\n  { turtle_prefix =\n     { as_name =\n        ValueSome\n          { head = { as_rune = e }\n            tail =\n             ValueSome\n               { body =\n                  seq\n                    [FromPrefixedNameCharacter { as_rune = x };\n                     FromPrefixedNameCharacter { as_rune = a };\n                     FromPrefixedNameCharacter { as_rune = m };\n                     FromPrefixedNameCharacter { as_rune = p }; ...]\n                 tip = { as_rune = e } } } }\n    local_part =\n     { as_name =\n        { head = FromPrefixedNameBaseCharacter { as_rune = k }\n          tail =\n           ValueSome\n             { body =\n                seq\n                  [FromPrefixedNameCharacter { as_rune = n };\n                   FromPrefixedNameCharacter { as_rune = o };\n                   FromPrefixedNameCharacter { as_rune = w }]\n               tip = FromPrefixedNameCharacter { as_rune = s } } } } }"
+    },
+    {
+      "source": 1,
+      "target": 2,
+      "weight": "FromPrefixedName\n  { turtle_prefix =\n     { as_name =\n        ValueSome\n          { head = { as_rune = e }\n            tail =\n             ValueSome\n               { body =\n                  seq\n                    [FromPrefixedNameCharacter { as_rune = x };\n                     FromPrefixedNameCharacter { as_rune = a };\n                     FromPrefixedNameCharacter { as_rune = m };\n                     FromPrefixedNameCharacter { as_rune = p }; ...]\n                 tip = { as_rune = e } } } }\n    local_part =\n     { as_name =\n        { head = FromPrefixedNameBaseCharacter { as_rune = k }\n          tail =\n           ValueSome\n             { body =\n                seq\n                  [FromPrefixedNameCharacter { as_rune = n };\n                   FromPrefixedNameCharacter { as_rune = o };\n                   FromPrefixedNameCharacter { as_rune = w }]\n               tip = FromPrefixedNameCharacter { as_rune = s } } } } }"
+    }
+  ]
+}
