@@ -834,6 +834,38 @@ type IRI_Reference =
     | FromIRI of IRI
     | FromRelativeReference of International_Relative_Reference
 
+    member this.path =
+        match this with
+        | FromIRI iri ->
+            match iri.hierarchical_path with
+            | International_Hierarchical_Path.FromInternationalAuthorityPath authority_path ->
+                IRI_Path.FromInternationalAbemptyPath authority_path.tail
+            | International_Hierarchical_Path.FromInternationalAbsolutePath absolute_path ->
+                IRI_Path.FromInternationalAbsolutePath absolute_path
+            | International_Hierarchical_Path.FromInternationalRootlessPath rootless_path ->
+                IRI_Path.FromInternationalRootlessPath rootless_path
+            | International_Hierarchical_Path.FromEmptyPath empty_path -> IRI_Path.FromEmptyPath empty_path
+
+        | FromRelativeReference relative_reference ->
+            match relative_reference.relative_path with
+            | International_Relative_Path.FromInternationalAuthorityPath authority_path ->
+                IRI_Path.FromInternationalAbemptyPath authority_path.tail
+            | International_Relative_Path.FromInternationalAbsolutePath absolute_path ->
+                IRI_Path.FromInternationalAbsolutePath absolute_path
+            | International_Relative_Path.FromInternationalNoSchemePath noscheme_path ->
+                IRI_Path.FromInternationalNoSchemePath noscheme_path
+            | International_Relative_Path.FromEmptyPath empty_path -> IRI_Path.FromEmptyPath empty_path
+
+    member this.query =
+        match this with
+        | FromIRI iri -> iri.query
+        | FromRelativeReference relative_reference -> relative_reference.query
+
+    member this.fragment =
+        match this with
+        | FromIRI iri -> iri.fragment
+        | FromRelativeReference relative_reference -> relative_reference.fragment
+
     member this.as_string =
         match this with
         | FromIRI iri -> iri.as_string
@@ -849,101 +881,3 @@ type IRI_Reference =
 
                        ])
             """  IRI-reference = IRI / relative-ref """
-
-
-
-(*
-let windowsPath = @"D:\Surface\Standards\Unicode"
-//fileIRIString_from_filePath windowsPath
-let IRIString = "https://example.org/has space"
-
-
-run_full_parse IRI_Reference.parse OnInput IRIString
-
-let iri =
-    match run_partial_parse IRI_Reference.parse OnInput IRIString with
-    | Ok result -> result
-
-iri.as_string
-
-
-
-// iri.absolute_iri.as_string = (new Uri(windowsPath)).AbsoluteUri
-
-
-let (Hierarchical_Path.FromRootlessPath result_path) = iri.hierarchical_path
-result_path.head.as_string
-result_path.tail_string_segments
-result_path.as_string
-
-
-let iriStrings =
-    [|
-
-        "ftp://ftp.is.co.za/rfc/rfc1808.txt"
-        "http://www.ietf.org/rfc/rfc2396.txt"
-        // "ldap://[2001:db8::7]/c=GB?objectClass?one"
-        "mailto:John.Doe@example.com"
-        "news:comp.infosystems.www.servers.unix"
-        "tel:+1-816-555-1212"
-        "telnet://192.0.2.16:80/"
-        "urn:oasis:names:specification:docbook:dtd:xml:4.1.2"
-        "http://例え.テスト/"
-        "https://δοκιμή.gr/σελίδα"
-        "https://مثال.إختبار/مسار"
-        "https://실례.테스트/경로"
-        "https://例子.测试/路径?键=值#片段"
-        "ftp://ユーザー名@例え.テスト/資料"
-        "file:///C:/Users/名前/Documents"
-        "mailto:ユーザー@example.org"
-        "urn:example:書籍:123"
-        "https://example.org/café"
-        "https://example.org/mañana"
-        "https://example.org/straße"
-        "https://example.org/π/λ/ω"
-        "https://example.org/路径/更多路径"
-        "https://example.org/🙂"
-        "https://example.org/δοκιμή?α=β&γ=δ"
-        "https://example.org/#片段"
-        "https://例え.テスト/"
-        "https://例え.テスト/パス/次"
-        "https://ユーザー名@例え.テスト:8080/道"
-
-
-        "foo:/α/β"
-        "foo:/路径"
-        "foo:/café"
-        "urn:example:こんにちは"
-        "foo:bar"
-        "foo:δοκιμή/次"
-        "https://example.org/?q=猫"
-        "https://example.org/?q=δοκιμή&lang=ελληνικά"
-        "https://example.org/#セクション"
-        "https://example.org/路?q=値#片段"
-        "https://example.org/caf%C3%A9"
-        "https://example.org/éclair/%E6%97%A5%E6%9C%AC"
-        "https://example.org/%CF%80/λ"
-
-       "/こんにちは"
-       "//例え.テスト/道"
-       "../café"
-       "δοκιμή/次"
-       "?q=猫"
-       "#片段"
-
-
-       |]
-
-let results =
-    iriStrings
-    |> Array.map (fun iriString ->
-
-        run_full_parse IRI_Reference.parse OnInput iriString
-        let result =
-            match run_parse IRI.parse OnInput iriString with
-            | Ok result -> result
-
-        result.as_string
-
-    )
-*)

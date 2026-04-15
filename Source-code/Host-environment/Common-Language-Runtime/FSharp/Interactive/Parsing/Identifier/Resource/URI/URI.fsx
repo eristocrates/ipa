@@ -833,9 +833,6 @@ type Scheme =
     static member parse: Parser<Scheme, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
         parse_expecting
             (ABNF.ALPHA.parse .>>. many Scheme_Character.parse
-             // .>> skip_rune ':'
-             // .>> skip_rune '/'
-             // .>> skip_rune '/'
              |>> fun struct (head, tail) ->
 
                      { head = head; tail = tail }
@@ -1110,6 +1107,32 @@ type URI =
 type URI_Reference =
     | FromURI of URI
     | FromRelativeReference of Relative_Reference
+    member this.path =
+        match this with
+        | FromURI uri ->
+            match uri.hierarchical_path with
+            | Hierarchical_Path.FromAuthorityPath authority_path -> URI_Path.FromAbemptyPath authority_path.tail
+            | Hierarchical_Path.FromAbsolutePath absolute_path -> URI_Path.FromAbsolutePath absolute_path
+            | Hierarchical_Path.FromRootlessPath rootless_path -> URI_Path.FromRootlessPath rootless_path
+            | Hierarchical_Path.FromEmptyPath empty_path -> URI_Path.FromEmptyPath empty_path
+
+        | FromRelativeReference relative_reference ->
+            match relative_reference.relative_path with
+            | Relative_Path.FromAuthorityPath authority_path -> URI_Path.FromAbemptyPath authority_path.tail
+            | Relative_Path.FromAbsolutePath absolute_path -> URI_Path.FromAbsolutePath absolute_path
+            | Relative_Path.FromNoSchemePath noscheme_path -> URI_Path.FromNoSchemePath noscheme_path
+            | Relative_Path.FromEmptyPath empty_path -> URI_Path.FromEmptyPath empty_path
+
+
+    member this.query =
+        match this with
+        | FromURI uri -> uri.query
+        | FromRelativeReference relative_reference -> relative_reference.query
+
+    member this.fragment =
+        match this with
+        | FromURI uri -> uri.fragment
+        | FromRelativeReference relative_reference -> relative_reference.fragment
 
     member this.as_string =
         match this with

@@ -56,6 +56,17 @@ let run_full_parse parse (adposition: Adposition) (input: string) =
     let runes = input |> runes_from_string
     let text = Reader.ofArray runes ()
     (parse .>> eof) text
+let result_from_parse parse (adposition: Adposition) (input: string) =
+    let runes = input |> runes_from_string
+    let text = Reader.ofArray runes ()
+    let (Result.Ok result) = (parse .>> eof) text
+    result
+let error_from_parse parse (adposition: Adposition) (input: string) =
+    let runes = input |> runes_from_string
+    let text = Reader.ofArray runes ()
+    let (Result.Error result) = (parse .>> eof) text
+    result
+     
 
 let int_from_stringNumeral(stringNumeral: string) =
         match System.Int32.TryParse(stringNumeral) with
