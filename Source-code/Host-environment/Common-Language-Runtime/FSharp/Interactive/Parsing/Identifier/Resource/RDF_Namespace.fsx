@@ -1,17 +1,43 @@
 open System
+
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XParsecErgonomics.fsx"
 open XParsecErgonomics
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Identifier\Resource\IRI\IRI.fsx"
 
 open IRI
-open URI
 
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Identifier\Resource\RDF\Turtle.fsx"
+
+open Turtle
+
+// TODO codegen these modules from list of iris
+module https =
+    module www =
+        module example =
+            module com =
+                let prefix_id = Prefix_ID.from_namespace "https://www.example.com/" "example"
+
+
+
+
+
+let prefix_ids =
+    Set.ofArray [|
+
+                   https.www.example.com.prefix_id
+
+                    |]
+
+
+
+
+
+(*
 let input = "http://www.example.org/wine"
 let (Result.Error failure) = run_full_parse URI.parse OnInput input
 let (Result.Ok result) = run_full_parse URI.parse OnInput input
 
 result.as_string
-(*
 let windowsPath = @"D:\Surface\Standards\Unicode"
 //fileIRIString_from_filePath windowsPath
 let IRIString = "https://example.org/has space"

@@ -829,6 +829,9 @@ type IRI =
             )
             """ IRI           = scheme ":" hier-part [ "?" query ] [ "#" fragment ] """
 
+    static member from_string(input: string) =
+        result_from_parse IRI.parse OnInput input
+
 [<RequireQualifiedAccess>]
 type IRI_Reference =
     | FromIRI of IRI

@@ -370,12 +370,9 @@ type Local_Tail_Tip_Character =
     """
 
 type Local_Tail =
-    {
+    { body: ImmutableArray<Local_Tail_Body_Character>
+      tip: Local_Tail_Tip_Character }
 
-      body: ImmutableArray<Local_Tail_Body_Character>
-      tip: Local_Tail_Tip_Character
-
-     }
     member this.as_characters =
         Seq.concat [
 
@@ -386,11 +383,60 @@ type Local_Tail =
                       ]
 
     static member parse: Parser<Local_Tail, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+        let split_tail (characters: ImmutableArray<Local_Tail_Body_Character>) =
+            if characters.IsEmpty then
+                failwith "Local_Tail requires at least one tail character"
+            else
+                let last_index = characters.Length - 1
+                let last_character = characters.[last_index]
+
+                match last_character with
+                | Local_Tail_Body_Character.FromFullStop _ -> failwith "PN_LOCAL tail must not end with '.'"
+
+                | Local_Tail_Body_Character.FromPrefixedNameCharacter prefixed_name_character ->
+                    let body =
+                        if last_index = 0 then
+                            ImmutableArray.Empty
+                        else
+                            characters.RemoveAt(last_index)
+
+                    { body = body
+                      tip = Local_Tail_Tip_Character.FromPrefixedNameCharacter prefixed_name_character }
+
+                | Local_Tail_Body_Character.FromColon colon ->
+                    let body =
+                        if last_index = 0 then
+                            ImmutableArray.Empty
+                        else
+                            characters.RemoveAt(last_index)
+
+                    { body = body
+                      tip = Local_Tail_Tip_Character.FromColon colon }
+
+                | Local_Tail_Body_Character.FromPercentEncodedCharacter percent_encoded_character ->
+                    let body =
+                        if last_index = 0 then
+                            ImmutableArray.Empty
+                        else
+                            characters.RemoveAt(last_index)
+
+                    { body = body
+                      tip = Local_Tail_Tip_Character.FromPercentEncodedCharacter percent_encoded_character }
+
+                | Local_Tail_Body_Character.FromLocalEscapedCharacter local_escaped_character ->
+                    let body =
+                        if last_index = 0 then
+                            ImmutableArray.Empty
+                        else
+                            characters.RemoveAt(last_index)
+
+                    { body = body
+                      tip = Local_Tail_Tip_Character.FromLocalEscapedCharacter local_escaped_character }
+
         parse_expecting
-            (many Local_Tail_Body_Character.parse
-             .>>. Local_Tail_Tip_Character.parse
-             |>> fun struct (body, tip) -> { body = body; tip = tip })
-            """ ( PN_CHARS | '.' | ':' | PLX )*  ( PN_CHARS | ':' | PLX ) """
+            (many1 Local_Tail_Body_Character.parse
+             |>> split_tail)
+            """ ( PN_CHARS | '.' | ':' | PLX )* ( PN_CHARS | ':' | PLX ) """
 
 type Turtle_Local_Name =
     {
@@ -442,22 +488,83 @@ type Turtle_Prefix =
         | "" -> { as_name = ValueNone }
         | _ -> { as_name = ValueSome(result_from_parse Turtle_Prefix_Name.parse OnInput input) }
 
+(*
+// TODO maybe discover this during parsing?
+[<RequireQualifiedAccess>]
+type Reference_Delimiter =
+    | solidus
+    | number_sign
+    | low_line
+    | other
+*)
+
+// TODO handle multiplicity of possible prefixes. declared preferred by creators, my fully qualified preferences, etc
 type Prefix_ID =
     {
 
-      namespace_prefix: Turtle_Prefix
       namespace_reference: IRI_Reference
+      content_reference: IRI_Reference voption
+      turtle_prefix: Turtle_Prefix
 
      }
 
-    static member binding (prefix_input: string) (namespace_input: string) =
+    static member from_namespace (namespace_input: string) (prefix_input: string) =
 
         {
 
-          namespace_prefix = Turtle_Prefix.from_string prefix_input
           namespace_reference = result_from_parse IRI_Reference.parse OnInput namespace_input
+          content_reference = ValueNone
+          turtle_prefix = Turtle_Prefix.from_string prefix_input
 
         }
+
+    static member from_namespace_content
+        (namespace_input: string)
+
+        (content_input: string)
+        (prefix_input: string)
+        =
+
+        {
+
+          namespace_reference = result_from_parse IRI_Reference.parse OnInput namespace_input
+          content_reference = ValueSome(result_from_parse IRI_Reference.parse OnInput content_input)
+          turtle_prefix = Turtle_Prefix.from_string prefix_input
+
+        }
+
+
+module https =
+    module www =
+        module example =
+            module com =
+                let prefix_id = Prefix_ID.from_namespace "https://www.example.com/" "example"
+
+
+
+
+
+let prefix_ids =
+    seq {
+
+        https.www.example.com.prefix_id
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 type Turtle_Local_Part =
     { as_name: Turtle_Local_Name }
@@ -468,10 +575,19 @@ type Turtle_Local_Part =
     static member from_string(local_input: string) =
         { as_name = result_from_parse Turtle_Local_Name.parse OnInput local_input }
 
-type Turtle_Prefixed_Name =
+
+
+
+
+
+
+
+
+
+type Prefixed_Name =
     {
 
-      namespace_binding: Prefix_ID
+      turtle_prefix: Turtle_Prefix
       local_part: Turtle_Local_Part
 
      }
@@ -479,27 +595,34 @@ type Turtle_Prefixed_Name =
     member this.as_characters =
         Seq.concat [
 
-                     this.namespace_binding.namespace_prefix.as_characters
+                     this.turtle_prefix.as_characters
                      seq { { as_rune = Rune ':' } }
                      this.local_part.as_characters
 
                       ]
 
-    member this.as_string =
-        $"{this.namespace_binding.namespace_prefix.as_string}:{this.local_part.as_string}"
+    member this.as_string = $"{this.turtle_prefix.as_string}:{this.local_part.as_string}"
 
-    static member from_strings (prefix_input: string) (reference_input: string) (local_input: string) =
+    member this.expanded =
+        let prefix_id =
+            prefix_ids
+            |> Seq.find (fun prefix_id -> prefix_id.turtle_prefix = this.turtle_prefix)
+
+
+        $"{prefix_id.namespace_reference.as_string}{this.local_part}"
+
+    static member from_strings (prefix_input: string) (local_input: string) =
         {
 
-          namespace_binding = Prefix_ID.binding prefix_input reference_input
+          turtle_prefix = Turtle_Prefix.from_string prefix_input
           local_part = Turtle_Local_Part.from_string local_input
 
         }
 
-    static member from_binding (binding_input: Prefix_ID) (local_input: string) =
+    static member from_prefix_id (prefix_id: Prefix_ID) (local_input: string) =
         {
 
-          namespace_binding = binding_input
+          turtle_prefix = prefix_id.turtle_prefix
           local_part = Turtle_Local_Part.from_string local_input
 
         }
@@ -513,21 +636,10 @@ type IRIREF =
         { as_name = result_from_parse IRI_Reference.parse OnInput input }
 
 type Turtle_IRI =
-    | FromTurtlePrefixedName of Turtle_Prefixed_Name
+    | FromPrefixedName of Prefixed_Name
     | FromIRIREF of IRIREF
 
     member this.as_string =
         match this with
-        | FromTurtlePrefixedName prefixed_name -> prefixed_name.as_string
+        | FromPrefixedName prefixed_name -> prefixed_name.as_string
         | FromIRIREF iriref -> iriref.as_string
-
-
-
-Turtle_Prefix.from_string ""
-Turtle_Prefix.from_string "ex"
-Turtle_Prefix.from_string "éx"
-Turtle_Prefix.from_string "ex1"
-Turtle_Prefix.from_string "ex-foo"
-Turtle_Prefix.from_string "ex.foo"
-Turtle_Prefix.from_string "αβγ"
-Turtle_Prefix.from_string "e..f"
