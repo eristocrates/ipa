@@ -70,7 +70,7 @@ let subjects_predicate_object_context subjects predicate object context =
         (fun current_context subject -> subject_predicate_object_context subject predicate object current_context)
         context
         subjects
-
+(*
 // TODO figure out how to generate this
 type example =
     static member _prefix_id = https.www.example.com.prefix_id
@@ -99,3 +99,5 @@ let default_graph = default_context |> toGraph
 
 
 graph_from_context default_graph __SOURCE_DIRECTORY__ "graph"
+
+*)

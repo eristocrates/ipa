@@ -1,3 +1,5 @@
+module ParserCombinator.Turtle
+
 open System
 open System.Web
 open System.Text
@@ -5,30 +7,20 @@ open System.IO
 open System.Globalization
 
 
-
-
-#r "nuget: XParsec"
-
 open XParsec
 open XParsec.Parsers
 
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Language\Metalanguage\ABNF\ABNF.fsx"
 
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XParsecErgonomics.fsx"
+open Ergonomics.XParsecErgonomics
 
-open XParsecErgonomics
-
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Language\Codepoints\Punctuation.fsx"
-
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Identifier\Resource\URI\URI.fsx"
 
 open URI
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Identifier\Resource\IRI\IRI.fsx"
+
 
 open IRI
 
 
-open Punctuation
+open Unicodepoint.Punctuation
 open System.Collections.Immutable
 
 
@@ -134,49 +126,6 @@ type Prefixed_Name_Tail =
              |>> fun struct (body, tip) -> { body = body; tip = tip })
             """ ( PN_CHARS | '.' )* PN_CHARS """
 
-type Turtle_Prefix_Name =
-    { head: Prefixed_Name_Base_Character
-      tail: Prefixed_Name_Tail voption }
-
-    member this.as_characters =
-        let tail_characters =
-            match this.tail with
-            | ValueSome tail -> tail.as_characters
-            | ValueNone -> seq {  }
-
-        Seq.concat [ seq { { as_rune = this.head.as_rune } }
-                     tail_characters ]
-
-    member this.as_string = string_from_characters this.as_characters
-
-    static member parse: Parser<Turtle_Prefix_Name, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        let split_tail (characters: ImmutableArray<Prefixed_Name_Tail_Body_Character>) =
-            if characters.IsEmpty then
-                Ok ValueNone
-            else
-                let last_index = characters.Length - 1
-                let last_character = characters.[last_index]
-
-                match last_character with
-                | Prefixed_Name_Tail_Body_Character.FromFullStop _ -> Error "PN_PREFIX must not end with '.'"
-
-                | Prefixed_Name_Tail_Body_Character.FromPrefixedNameCharacter tip ->
-                    let body =
-                        if last_index = 0 then
-                            ImmutableArray.Empty
-                        else
-                            characters.RemoveAt(last_index)
-
-                    Ok(ValueSome { body = body; tip = tip })
-
-        parse_expecting
-            (Prefixed_Name_Base_Character.parse
-             .>>. many Prefixed_Name_Tail_Body_Character.parse
-             |>> fun struct (head, tail_characters) ->
-                     match split_tail tail_characters with
-                     | Ok tail -> { head = head; tail = tail }
-                     | Error message -> failwith message)
-            """ PN_PREFIX ::= PN_CHARS_BASE ( ( PN_CHARS | '.' )* PN_CHARS )? """
 
 [<RequireQualifiedAccess>]
 type Local_Character_Needing_Escape =
@@ -438,6 +387,10 @@ type Local_Tail =
              |>> split_tail)
             """ ( PN_CHARS | '.' | ':' | PLX )* ( PN_CHARS | ':' | PLX ) """
 
+
+
+
+
 type Turtle_Local_Name =
     {
 
@@ -468,192 +421,54 @@ type Turtle_Local_Name =
              |>> fun struct (head, tail) -> { head = head; tail = tail })
             """ PN_LOCAL          ::= ( PN_CHARS_U | ':' | [0-9] | PLX ) ( ( PN_CHARS | '.' | ':' | PLX )*  ( PN_CHARS | ':' | PLX ) ) ? """
 
-
-type Turtle_Prefix =
-    { as_name: Turtle_Prefix_Name voption }
-
-    member this.as_characters =
-        match this.as_name with
-        | ValueSome name -> name.as_characters
-        | ValueNone -> seq {  }
-
-    member this.as_string =
-
-        match this.as_name with
-        | ValueSome name -> name.as_string
-        | ValueNone -> String.Empty
-
-    static member from_string(input: string) =
-        match input with
-        | "" -> { as_name = ValueNone }
-        | _ -> { as_name = ValueSome(result_from_parse Turtle_Prefix_Name.parse OnInput input) }
-
-(*
-// TODO maybe discover this during parsing?
-[<RequireQualifiedAccess>]
-type Reference_Delimiter =
-    | solidus
-    | number_sign
-    | low_line
-    | other
-*)
-
-// TODO handle multiplicity of possible prefixes. declared preferred by creators, my fully qualified preferences, etc
-type Prefix_ID =
-    {
-
-      namespace_reference: IRI
-      content_reference: IRI voption
-      turtle_prefix: Turtle_Prefix
-
-     }
-
-    static member from_namespace (namespace_input: string) (prefix_input: string) =
-
-        {
-
-          namespace_reference = result_from_parse IRI.parse OnInput namespace_input
-          content_reference = ValueNone
-          turtle_prefix = Turtle_Prefix.from_string prefix_input
-
-        }
-
-    static member from_namespace_content
-        (namespace_input: string)
-
-        (content_input: string)
-        (prefix_input: string)
-        =
-
-        {
-
-          namespace_reference = result_from_parse IRI.parse OnInput namespace_input
-          content_reference = ValueSome(result_from_parse IRI.parse OnInput content_input)
-          turtle_prefix = Turtle_Prefix.from_string prefix_input
-
-        }
-
-
-let file_scheme (filePath: string) =
-    let solidusPath = filePath.Replace("\\", "/")
-    $"file:///{solidusPath}"
-
-
-module https =
-    module www =
-        module example =
-            module com =
-                let prefix_id = Prefix_ID.from_namespace "https://www.example.com/" "example"
-
-
-
-
-
-
-module Surface =
-    let prefix_id = Prefix_ID.from_namespace (file_scheme @"D:\Surface\") "Surface"
-
-module Artifact =
-    let prefix_id = Prefix_ID.from_namespace (file_scheme @"D:\Artifact\") "Artifact"
-
-let prefix_ids =
-    seq {
-
-        https.www.example.com.prefix_id
-        Surface.prefix_id
-        Artifact.prefix_id
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-type Turtle_Local_Part =
-    { as_name: Turtle_Local_Name }
-
-    member this.as_characters = this.as_name.as_characters
-    member this.as_string = this.as_name.as_string
-
     static member from_string(local_input: string) =
-        { as_name = result_from_parse Turtle_Local_Name.parse OnInput local_input }
+        result_from_parse Turtle_Local_Name.parse OnInput local_input
 
-
-
-
-
-
-
-
-
-
-type Prefixed_Name =
-    {
-
-      turtle_prefix: Turtle_Prefix
-      local_part: Turtle_Local_Part
-
-     }
+type Turtle_Prefix_Name =
+    { head: Prefixed_Name_Base_Character
+      tail: Prefixed_Name_Tail voption }
 
     member this.as_characters =
-        Seq.concat [
+        let tail_characters =
+            match this.tail with
+            | ValueSome tail -> tail.as_characters
+            | ValueNone -> seq {  }
 
-                     this.turtle_prefix.as_characters
-                     seq { { as_rune = Rune ':' } }
-                     this.local_part.as_characters
+        Seq.concat [ seq { { as_rune = this.head.as_rune } }
+                     tail_characters ]
 
-                      ]
+    member this.as_string = string_from_characters this.as_characters
 
-    member this.as_string = $"{this.turtle_prefix.as_string}:{this.local_part.as_string}"
+    static member parse: Parser<Turtle_Prefix_Name, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+        let split_tail (characters: ImmutableArray<Prefixed_Name_Tail_Body_Character>) =
+            if characters.IsEmpty then
+                Ok ValueNone
+            else
+                let last_index = characters.Length - 1
+                let last_character = characters.[last_index]
 
-    member this.expanded =
-        let prefix_id =
-            prefix_ids
-            |> Seq.find (fun prefix_id -> prefix_id.turtle_prefix = this.turtle_prefix)
+                match last_character with
+                | Prefixed_Name_Tail_Body_Character.FromFullStop _ -> Error "PN_PREFIX must not end with '.'"
 
+                | Prefixed_Name_Tail_Body_Character.FromPrefixedNameCharacter tip ->
+                    let body =
+                        if last_index = 0 then
+                            ImmutableArray.Empty
+                        else
+                            characters.RemoveAt(last_index)
 
-        $"{prefix_id.namespace_reference.as_string}{this.local_part}"
+                    let tail: Prefixed_Name_Tail = { body = body; tip = tip }
+                    Ok(ValueSome tail)
 
-    static member from_strings (prefix_input: string) (local_input: string) =
-        {
+        parse_expecting
+            (Prefixed_Name_Base_Character.parse
+             .>>. many Prefixed_Name_Tail_Body_Character.parse
+             |>> fun struct (head, tail_characters) ->
+                     match split_tail tail_characters with
+                     | Ok tail -> { head = head; tail = tail }
+                     | Error message -> failwith message)
+            """ PN_PREFIX ::= PN_CHARS_BASE ( ( PN_CHARS | '.' )* PN_CHARS )? """
 
-          turtle_prefix = Turtle_Prefix.from_string prefix_input
-          local_part = Turtle_Local_Part.from_string local_input
-
-        }
-
-    static member from_prefix_id (prefix_id: Prefix_ID) (local_input: string) =
-        {
-
-          turtle_prefix = prefix_id.turtle_prefix
-          local_part = Turtle_Local_Part.from_string local_input
-
-        }
-
-type IRIREF =
-    { as_name: IRI_Reference }
-
-    member this.as_string = $"<{this.as_name.as_string}>"
 
     static member from_string(input: string) =
-        { as_name = result_from_parse IRI_Reference.parse OnInput input }
-
-type Turtle_IRI =
-    | FromPrefixedName of Prefixed_Name
-    | FromIRIREF of IRIREF
-
-    member this.as_string =
-        match this with
-        | FromPrefixedName prefixed_name -> prefixed_name.as_string
-        | FromIRIREF iriref -> iriref.as_string
+        result_from_parse Turtle_Prefix_Name.parse OnInput input
