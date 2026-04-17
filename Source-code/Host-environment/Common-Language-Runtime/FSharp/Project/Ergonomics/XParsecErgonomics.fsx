@@ -11,15 +11,32 @@ open System.Collections.Immutable
 
 
 
-
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\UnicodeStandard\UnicodeStandard.fsx"
 open UnicodeStandard
 
+let unicodepoint_from
+    (partition: Unicode_Partition)
+    : Parser<Unicodepoint, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    satisfy (fun unicodepoint -> unicodepoint.is'member_of partition.unicodepoint_set)
+
+let parse_unicodepoint (input: char) = pitem (Unicodepoint.from'char input)
+
+let skip_unicodepoint (input: char) = skipItem (Unicodepoint.from'char input)
 
 type Adposition = | OnInput
 
+let run'partial_parse parse (adposition: Adposition) (raw_string: string) =
+    let codepoint_array = Unicodepoint.array'from'string raw_string
+    let codepoints = Reader.ofArray codepoint_array ()
+    parse codepoints
+
+
+let parse_expecting parse (expecting: string) = parse <??> expecting
+
+(*
+
 let any_unicodepoint (input: string) =
-    unicodepoints'from'string input |> anyOf
+    'from'string input |> anyOf
 
 let parse_unicodepoint (input: string) =
     unicodepoints'from'string input
@@ -30,7 +47,6 @@ let skip_unicodepoint (input: string) =
     |> Array.map (fun unicodepoint -> skipItem unicodepoint)
 
 
-let parse_expecting parse (expecting: string) = parse <??> expecting
 
 
 
@@ -74,3 +90,4 @@ let int_from_doubleDigit (leftDigit: Rune) (rightDigit: Rune) =
 
 let int_from_tripleDigit (leftDigit: Rune) (centerDigit: Rune) (rightDigit: Rune) =
     int_from_stringNumeral $"{leftDigit}{centerDigit}{rightDigit}"
+*)
