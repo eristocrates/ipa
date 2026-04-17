@@ -9,6 +9,7 @@ Application/Microsoft/Edge/data_dir/
 # GENERATED: ignores files >= 100 MiB
 # root: C:\Repositories\eristocrates\ipa
 # ------------------------------------------------------------
+.git/objects/pack/pack-0d83bb37c96e0ef395afc97f6230e4f7c0aa43f1.pack
 .git/objects/pack/pack-4ca8f6f503d35cf26bd35c427df3def21281de31.pack
 .git/objects/pack/pack-ab8fea6e60d80b8382b9690ba20a1064ac7f249b.pack
 .git/objects/pack/pack-b370e7e8a677e7e84be9d88b4fbe413092aa2bb7.pack
@@ -28,3 +29,4 @@ Language/Rdf/Sparql/sparql-anything-server-v1.1.0.jar
 Language/Rdf/Sparql/sparql-anything-v1.1.0-geosparql.jar
 Language/Rdf/Sparql/sparql-anything-v1.1.0.jar
 Language/Xml/basex/Basex122/data/LCPW_OverlayStormwaterInfrastructure_D_WM.merged/tbl.basex
+Language/Xml/basex/Basex122/data/ucd.all.flat/tbl.basex
