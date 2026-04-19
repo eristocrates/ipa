@@ -9,8 +9,8 @@ open System.Xml.Linq
 open FSharp.Data
 
 
-
 module ucd =
+    (*
     module flat =
         [<Literal>]
         let flatFilePath =
@@ -25,6 +25,7 @@ module ucd =
 
         let xml = XmlProvider<groupedFilePath>.Load groupedFilePath
 
+*)
     module cp =
         let as_int (cp: string) = int $"0x{cp}"
 
@@ -39,6 +40,7 @@ type Unicode_Alias_Type =
     | correction of string
     | alternate of string
     | unknown of string
+
     static member from_string(alias_type: string) =
         match alias_type with
         | "abbreviation" -> abbreviation alias_type
@@ -56,7 +58,7 @@ type Unicode_Alias =
       alias: string
       alias_type: Unicode_Alias_Type
 
-     }
+    }
 
 
 [<Struct>]
@@ -67,7 +69,7 @@ type Unicode_Name =
       version1: string option
       aliases: Unicode_Alias array
 
-     }
+    }
 
 
 
@@ -78,30 +80,23 @@ type Unicodepoint =
       as'string: string
       as'int: int
 
-     }
+    }
+
+
     static member from'int(input: int) =
         {
 
           as'string =
-              try
-                  Rune(input).ToString()
-              with
-              | _ -> String.Empty
+            try
+                Rune(input).ToString()
+            with _ ->
+                String.Empty
           as'int = input
 
         }
 
-    static member from'char(input: char) =
-        {
-
-          as'string =
-              try
-                  string input
-              with
-              | _ -> String.Empty
-          as'int = (Rune input).Value
-
-        }
+    static member from'hexadecimal_digit_string(hexdig_string: string) =
+        Unicodepoint.from'int (int $"0x{hexdig_string}")
 
     static member array'from'string(input: string) =
         input.EnumerateRunes()
@@ -121,7 +116,7 @@ type Unicodepoint =
         unicodepoints
         |> Seq.map (fun unicodepoint -> unicodepoint.as'string)
         |> String.concat ""
-
+    (*
     member this.name =
         let unicodepoint_value = this.as'int
 
@@ -149,10 +144,8 @@ type Unicodepoint =
             ucd.grouped.xml.Blocks
             |> Array.find (fun unicode_block ->
 
-                ucd.cp.as_int unicode_block.FirstCp.Value
-                <= unicodepoint_value
-                && unicodepoint_value
-                   <= ucd.cp.as_int unicode_block.LastCp
+                ucd.cp.as_int unicode_block.FirstCp.Value <= unicodepoint_value
+                && unicodepoint_value <= ucd.cp.as_int unicode_block.LastCp
 
             )
 
@@ -177,13 +170,13 @@ type Unicodepoint =
         }
 
 
+*)
     member this.is'in_range(unicodepoint_range: Unicodepoint_Range) =
         let codepoint = this.as'int
         let first_codepoint = unicodepoint_range.from'codepoint.as'int
         let last_codepoint = unicodepoint_range.to'codepoint.as'int
 
-        first_codepoint <= codepoint
-        && codepoint <= last_codepoint
+        first_codepoint <= codepoint && codepoint <= last_codepoint
 
     member this.is'on_roster(unicodepoint_roster: Unicodepoint_Roster) =
         unicodepoint_roster.unicodepoint_roster_set.Contains this
@@ -200,9 +193,7 @@ type Unicodepoint =
             unicodepoint_set.unicodepoint_ranges
             |> Array.map (fun range -> is_in_range range)
 
-        let check_result =
-            Array.concat [| roster_check
-                            range_check |]
+        let check_result = Array.concat [| roster_check; range_check |]
 
         check_result.Contains true
 
@@ -215,7 +206,7 @@ and [<Struct>] Unicodepoint_Range =
       from'codepoint: Unicodepoint
       to'codepoint: Unicodepoint
 
-     }
+    }
 
     static member from'ints (first_int: int) (last_int: int) =
         {
@@ -231,7 +222,7 @@ and [<Struct>] Unicode_Block =
       block_name: string
       unicodepoint_range: Unicodepoint_Range
 
-     }
+    }
 
 and [<Struct>] Unicodepoint_Roster =
     {
@@ -239,15 +230,14 @@ and [<Struct>] Unicodepoint_Roster =
       string_set: string
       unicodepoint_roster_set: Set<Unicodepoint>
 
-     }
+    }
+
     static member from'string(input: string) =
 
         {
 
           string_set = input
-          unicodepoint_roster_set =
-            Unicodepoint.array'from'string input
-            |> Set.ofArray
+          unicodepoint_roster_set = Unicodepoint.array'from'string input |> Set.ofArray
 
         }
 
@@ -308,15 +298,41 @@ and [<Struct>] Unicodepoint_Set =
       unicodepoint_rosters: Unicodepoint_Roster array
       unicodepoint_ranges: Unicodepoint_Range array
 
-     }
+    }
+
+    static member from'rosters(unicodepoint_rosters: Unicodepoint_Roster array) =
+        {
+
+          unicodepoint_rosters = unicodepoint_rosters
+          unicodepoint_ranges = [||]
+
+        }
+
+    static member from'ranges(unicodepoint_ranges: Unicodepoint_Range array) =
+        {
+
+          unicodepoint_rosters = [||]
+          unicodepoint_ranges = unicodepoint_ranges
+
+        }
+
+    static member from'rosters_and_ranges
+        (unicodepoint_rosters: Unicodepoint_Roster array)
+        (unicodepoint_ranges: Unicodepoint_Range array)
+        =
+        {
+
+          unicodepoint_rosters = unicodepoint_rosters
+          unicodepoint_ranges = unicodepoint_ranges
+
+        }
+
     static member from'union(unicodepoint_sets: Unicodepoint_Set array) =
         let unicodepoint_rosters =
-            unicodepoint_sets
-            |> Array.collect (fun set -> set.unicodepoint_rosters)
+            unicodepoint_sets |> Array.collect (fun set -> set.unicodepoint_rosters)
 
         let unicodepoint_ranges =
-            unicodepoint_sets
-            |> Array.collect (fun set -> set.unicodepoint_ranges)
+            unicodepoint_sets |> Array.collect (fun set -> set.unicodepoint_ranges)
 
         {
 
@@ -331,7 +347,7 @@ and [<Struct>] Unicode_Partition =
       partition_name: string
       unicodepoint_set: Unicodepoint_Set
 
-     }
+    }
 
 /// https://www.unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries
 [<Struct>]
@@ -341,7 +357,8 @@ type Grapheme_Cluster =
       as'string: string
       as'codepoints: Unicodepoint array
 
-     }
+    }
+
     static member array'from'string(input: string) =
 
         seq {
@@ -373,11 +390,11 @@ type Unicode_Named_Sequence =
       sequence_name: string
       codepoints: Unicodepoint array
 
-     }
+    }
 
 
 
-
+(*
 module Unicode_Named_Sequences =
     let involving'unicodepoint (unicodepoint: Unicodepoint) =
 
@@ -385,9 +402,7 @@ module Unicode_Named_Sequences =
         let named_sequences =
             ucd.grouped.xml.NamedSequences
             |> Array.choose (fun sequence ->
-                let cps =
-                    sequence.Cps.Split(" ")
-                    |> Array.map (fun cp -> ucd.cp.as_int cp)
+                let cps = sequence.Cps.Split(" ") |> Array.map (fun cp -> ucd.cp.as_int cp)
 
 
 
@@ -417,6 +432,7 @@ module Unicode_Named_Sequences =
         named_sequences
 
 
+*)
 
 
 let Unicode_Space = Unicodepoint_Range.from'ints 0x0000 0x10FFFF
@@ -430,7 +446,7 @@ type Unicode_Plane =
       as'int: int
       unicodepoint_range: Unicodepoint_Range
 
-     }
+    }
 
 
 
@@ -474,46 +490,103 @@ module Basic_Multilingual_Plane =
             }
 
         module ASCII =
-            let punctuation_and_symbols =
-                {
-
-                  partition_name = "ASCII punctuation and symbols"
-                  unicodepoint_set =
+            module punctuation_and_symbols =
+                let partition =
                     {
 
-                      unicodepoint_ranges =
-                          [|
+                      partition_name = "ASCII punctuation and symbols"
+                      unicodepoint_set =
+                        {
 
-                             Unicodepoint_Range.from'ints 0x0020 0x002F
-                             Unicodepoint_Range.from'ints 0x003A 0x0040
-                             Unicodepoint_Range.from'ints 0x005B 0x0060
-                             Unicodepoint_Range.from'ints 0x007B 0x007E
+                          unicodepoint_ranges =
+                            [|
 
-                             |]
-                      unicodepoint_rosters = [||]
+                               Unicodepoint_Range.from'ints 0x0020 0x002F
+                               Unicodepoint_Range.from'ints 0x003A 0x0040
+                               Unicodepoint_Range.from'ints 0x005B 0x0060
+                               Unicodepoint_Range.from'ints 0x007B 0x007E
+
+                               |]
+                          unicodepoint_rosters = [||]
+
+                        }
 
                     }
 
-                }
+                let commercial_at =
+                    Unicodepoint_Set.from'rosters [| Unicodepoint_Roster.from'string "@" |]
 
-            let digits =
-                {
+                let colon = Unicodepoint_Set.from'rosters [| Unicodepoint_Roster.from'string ":" |]
 
-                  partition_name = "ASCII digits"
-                  unicodepoint_set =
+                let solidus =
+                    Unicodepoint_Set.from'rosters [| Unicodepoint_Roster.from'string "/" |]
+
+                let question_mark =
+                    Unicodepoint_Set.from'rosters [| Unicodepoint_Roster.from'string "?" |]
+
+                let plus_sign =
+                    Unicodepoint_Set.from'rosters [| Unicodepoint_Roster.from'string "+" |]
+
+                let hyphen_minus =
+                    Unicodepoint_Set.from'rosters [| Unicodepoint_Roster.from'string "-" |]
+
+                let full_stop =
+                    Unicodepoint_Set.from'rosters [| Unicodepoint_Roster.from'string "." |]
+
+                let tilde = Unicodepoint_Set.from'rosters [| Unicodepoint_Roster.from'string "~" |]
+
+                let low_line =
+                    Unicodepoint_Set.from'rosters [| Unicodepoint_Roster.from'string "_" |]
+
+            module digits =
+                let partition =
                     {
 
-                      unicodepoint_ranges =
-                          [|
+                      partition_name = "ASCII digits"
+                      unicodepoint_set =
+                        {
 
-                             Unicodepoint_Range.from'ints 0x0030 0x0039
+                          unicodepoint_ranges =
+                            [|
 
-                             |]
-                      unicodepoint_rosters = [||]
+                               Unicodepoint_Range.from'ints 0x0030 0x0039
+
+                               |]
+                          unicodepoint_rosters = [||]
+
+                        }
 
                     }
 
-                }
+
+                let zero'to'four =
+                    {
+
+                      partition_name = "0-4"
+                      unicodepoint_set =
+
+                        {
+
+                          unicodepoint_ranges = [||]
+                          unicodepoint_rosters = [| Unicodepoint_Roster.from'string "01234" |]
+
+                        }
+
+                    }
+
+                let zero'to'five =
+                    {
+
+                      partition_name = "0-5"
+                      unicodepoint_set =
+                        {
+
+                          unicodepoint_ranges = [||]
+                          unicodepoint_rosters = [| Unicodepoint_Roster.from'string "012345" |]
+
+                        }
+
+                    }
 
         module Latin_Alphabet =
             let majuscule =
@@ -524,11 +597,11 @@ module Basic_Multilingual_Plane =
                     {
 
                       unicodepoint_ranges =
-                          [|
+                        [|
 
-                             Unicodepoint_Range.from'ints 0x0041 0x005A
+                           Unicodepoint_Range.from'ints 0x0041 0x005A
 
-                             |]
+                           |]
                       unicodepoint_rosters = [||]
 
                     }
@@ -543,11 +616,11 @@ module Basic_Multilingual_Plane =
                     {
 
                       unicodepoint_ranges =
-                          [|
+                        [|
 
-                             Unicodepoint_Range.from'ints 0x0061 0x007A
+                           Unicodepoint_Range.from'ints 0x0061 0x007A
 
-                             |]
+                           |]
                       unicodepoint_rosters = [||]
 
                     }
@@ -560,12 +633,13 @@ module Basic_Multilingual_Plane =
 
                   partition_name = "Latin alphabet"
                   unicodepoint_set =
-                    Unicodepoint_Set.from'union [|
+                    Unicodepoint_Set.from'union
+                        [|
 
-                                                   majuscule.unicodepoint_set
-                                                   minuscule.unicodepoint_set
+                           majuscule.unicodepoint_set
+                           minuscule.unicodepoint_set
 
-                                                    |]
+                           |]
 
                 }
 
@@ -579,11 +653,11 @@ module Basic_Multilingual_Plane =
                         {
 
                           unicodepoint_ranges =
-                              [|
+                            [|
 
-                                 Unicodepoint_Range.from'ints 0x0041 0x0046
+                               Unicodepoint_Range.from'ints 0x0041 0x0046
 
-                                 |]
+                               |]
                           unicodepoint_rosters = [||]
 
                         }
@@ -598,11 +672,11 @@ module Basic_Multilingual_Plane =
                         {
 
                           unicodepoint_ranges =
-                              [|
+                            [|
 
-                                 Unicodepoint_Range.from'ints 0x0061 0x0066
+                               Unicodepoint_Range.from'ints 0x0061 0x0066
 
-                                 |]
+                               |]
                           unicodepoint_rosters = [||]
 
                         }
@@ -615,12 +689,13 @@ module Basic_Multilingual_Plane =
 
                       partition_name = "Hexidecimal digits"
                       unicodepoint_set =
-                        Unicodepoint_Set.from'union [|
+                        Unicodepoint_Set.from'union
+                            [|
 
-                                                       majuscule.unicodepoint_set
-                                                       minuscule.unicodepoint_set
+                               majuscule.unicodepoint_set
+                               minuscule.unicodepoint_set
 
-                                                        |]
+                               |]
 
                     }
 

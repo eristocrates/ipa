@@ -6,13 +6,12 @@ open System.Globalization
 open System.Collections.Immutable
 
 #r "nuget: FSharp.Data"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\Ergonomics\XParsecErgonomics.fsx"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\ParserCombinator\Language\Meta\Bacus_Naur_Form\Augmented\Augmented_Bacus_Naur_Form.fsx"
 
 open XParsec
-open XParsec.Parsers
-open XParsecErgonomics
-
 open FSharp.Data
+
+open XParsecErgonomics
 open UnicodeStandard
 
 
@@ -57,7 +56,7 @@ let gen_delims =
         {
 
           unicodepoint_ranges = [||]
-          unicodepoint_rosters = [| Unicodepoint_Roster.from'string ":/;?#[]@" |]
+          unicodepoint_rosters = [| Unicodepoint_Roster.from'string ":/?#[]@" |]
 
         }
 
@@ -70,28 +69,13 @@ let reserved =
 
       partition_name = "reserved"
       unicodepoint_set =
-        Unicodepoint_Set.from'union [|
+        Unicodepoint_Set.from'union
+            [|
 
-                                       gen_delims.unicodepoint_set
-                                       sub_delims.unicodepoint_set
+               gen_delims.unicodepoint_set
+               sub_delims.unicodepoint_set
 
-                                        |]
-
-    }
-
-let ALPHA =
-    {
-
-      partition_name = "ALPHA"
-      unicodepoint_set = Basic_Multilingual_Plane.Basic_Latin_Block.Latin_Alphabet.letters.unicodepoint_set
-
-    }
-
-let DIGIT =
-    {
-
-      partition_name = "DIGIT"
-      unicodepoint_set = Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.digits.unicodepoint_set
+               |]
 
     }
 
@@ -102,23 +86,13 @@ let unreserved =
 
       partition_name = "unreserved"
       unicodepoint_set =
-        {
-
-          unicodepoint_ranges =
-              Array.concat [|
-
-                              ALPHA.unicodepoint_set.unicodepoint_ranges
-                              DIGIT.unicodepoint_set.unicodepoint_ranges
-
-                               |]
-          unicodepoint_rosters =
-            [|
-
-               Unicodepoint_Roster.from'string "-._~"
-
-               |]
-
-        }
+        Unicodepoint_Set.from'union
+            [| Augmented_Bacus_Naur_Form.alpha.unicodepoint_set
+               Augmented_Bacus_Naur_Form.digit.unicodepoint_set
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.hyphen_minus
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.full_stop
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.low_line
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.tilde |]
 
     }
 
@@ -138,12 +112,29 @@ let reg_name =
 
       partition_name = "reg-name"
       unicodepoint_set =
-        Unicodepoint_Set.from'union [|
+        Unicodepoint_Set.from'union
+            [|
 
-                                       unreserved.unicodepoint_set
-                                       sub_delims.unicodepoint_set
+               unreserved.unicodepoint_set
+               sub_delims.unicodepoint_set
 
-                                        |]
+               |]
+
+    }
+
+let userinfo =
+
+    {
+
+      partition_name = "userinfo"
+      unicodepoint_set =
+        Unicodepoint_Set.from'union
+            [|
+
+               reg_name.unicodepoint_set
+               Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.colon
+
+               |]
 
     }
 
@@ -153,43 +144,42 @@ let segment_nz_nc =
 
       partition_name = "segment-nz-nc"
       unicodepoint_set =
-        {
 
-          unicodepoint_ranges = Array.concat [||]
-          unicodepoint_rosters =
-            reg_name.unicodepoint_set.unicodepoint_rosters
-            |> Array.append [| Unicodepoint_Roster.from'string "@" |]
+        Unicodepoint_Set.from'union
+            [| reg_name.unicodepoint_set
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.commercial_at |]
 
-        } }
+    }
 
 
-let unencoded_character =
+let pchar_ =
     {
 
       partition_name = "pchar"
       unicodepoint_set =
-        {
 
-          unicodepoint_ranges = Array.concat [||]
-          unicodepoint_rosters =
-            segment_nz_nc.unicodepoint_set.unicodepoint_rosters
-            |> Array.append [| Unicodepoint_Roster.from'string ":" |]
+        Unicodepoint_Set.from'union
+            [| segment_nz_nc.unicodepoint_set
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.colon |]
 
-        } }
+    }
 
 let fragment =
     {
 
       partition_name = "fragment"
       unicodepoint_set =
-        {
 
-          unicodepoint_ranges = Array.concat [||]
-          unicodepoint_rosters =
-            unencoded_character.unicodepoint_set.unicodepoint_rosters
-            |> Array.append [| Unicodepoint_Roster.from'string "/?" |]
+        Unicodepoint_Set.from'union
+            [|
 
-        } }
+               pchar_.unicodepoint_set
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.solidus
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.question_mark
+
+               |]
+
+    }
 
 let query_ =
     {
@@ -203,7 +193,7 @@ let segment_nz =
     {
 
       partition_name = "segment-nz"
-      unicodepoint_set = unencoded_character.unicodepoint_set
+      unicodepoint_set = pchar_.unicodepoint_set
 
     }
 
@@ -211,7 +201,7 @@ let segment =
     {
 
       partition_name = "segment"
-      unicodepoint_set = unencoded_character.unicodepoint_set
+      unicodepoint_set = pchar_.unicodepoint_set
 
     }
 
@@ -220,14 +210,46 @@ let abempty =
 
       partition_name = "path-abempty"
       unicodepoint_set =
-        {
+        Unicodepoint_Set.from'union
+            [|
 
-          unicodepoint_ranges = Array.concat [||]
-          unicodepoint_rosters =
-            segment.unicodepoint_set.unicodepoint_rosters
-            |> Array.append [| Unicodepoint_Roster.from'string "/" |]
+               segment.unicodepoint_set
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.solidus
 
-        } }
+               |]
+
+    }
+
+
+let scheme =
+
+    {
+
+      partition_name = "scheme"
+      unicodepoint_set =
+        Unicodepoint_Set.from'union
+            [|
+
+               Augmented_Bacus_Naur_Form.alpha.unicodepoint_set
+               Augmented_Bacus_Naur_Form.digit.unicodepoint_set
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.plus_sign
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.hyphen_minus
+               UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.punctuation_and_symbols.full_stop
+
+               |]
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -238,18 +260,25 @@ type Subcomponent_Delimiter_Character =
       as'string: string
       as'int: int
 
-     }
+    }
 
-    static member parse: Parser<Subcomponent_Delimiter_Character, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    static member parse
+        : Parser<
+              Subcomponent_Delimiter_Character,
+              Unicodepoint,
+              unit,
+              ReadableArray<Unicodepoint>,
+              ReadableArraySlice<Unicodepoint>
+           > =
         parse_expecting
             (unicodepoint_from sub_delims
              |>> fun unicodepoint ->
-                     {
+                 {
 
-                       as'string = unicodepoint.as'string
-                       as'int = unicodepoint.as'int
+                   as'string = unicodepoint.as'string
+                   as'int = unicodepoint.as'int
 
-                     })
+                 })
             """ sub-delims    = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "=" """
 
 [<Struct>]
@@ -259,18 +288,25 @@ type General_Component_Delimiter_Character =
       as'string: string
       as'int: int
 
-     }
+    }
 
-    static member parse: Parser<General_Component_Delimiter_Character, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    static member parse
+        : Parser<
+              General_Component_Delimiter_Character,
+              Unicodepoint,
+              unit,
+              ReadableArray<Unicodepoint>,
+              ReadableArraySlice<Unicodepoint>
+           > =
         parse_expecting
             (unicodepoint_from gen_delims
              |>> fun unicodepoint ->
-                     {
+                 {
 
-                       as'string = unicodepoint.as'string
-                       as'int = unicodepoint.as'int
+                   as'string = unicodepoint.as'string
+                   as'int = unicodepoint.as'int
 
-                     })
+                 })
             """ gen-delims  = ":" / "/" / "?" / "#" / "[" / "]" / "@" """
 
 [<Struct>]
@@ -280,18 +316,19 @@ type Unreserved_Character =
       as'string: string
       as'int: int
 
-     }
+    }
 
-    static member parse: Parser<General_Component_Delimiter_Character, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    static member parse
+        : Parser<Unreserved_Character, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (unicodepoint_from unreserved
              |>> fun unicodepoint ->
-                     {
+                 {
 
-                       as'string = unicodepoint.as'string
-                       as'int = unicodepoint.as'int
+                   as'string = unicodepoint.as'string
+                   as'int = unicodepoint.as'int
 
-                     })
+                 })
             """ unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~" """
 
 [<Struct>]
@@ -301,18 +338,19 @@ type Reserved_Character =
       as'string: string
       as'int: int
 
-     }
+    }
 
-    static member parse: Parser<General_Component_Delimiter_Character, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    static member parse
+        : Parser<Reserved_Character, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (unicodepoint_from reserved
              |>> fun unicodepoint ->
-                     {
+                 {
 
-                       as'string = unicodepoint.as'string
-                       as'int = unicodepoint.as'int
+                   as'string = unicodepoint.as'string
+                   as'int = unicodepoint.as'int
 
-                     })
+                 })
             """ reserved      = gen-delims / sub-delims """
 
 [<Struct>]
@@ -324,8 +362,16 @@ type Percent_Encoded_Character =
       as'literal: string
       as'unicodepoint: Unicodepoint
 
-     }
-    static member parse: Parser<Percent_Encoded_Character, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    }
+
+    static member parse
+        : Parser<
+              Percent_Encoded_Character,
+              Unicodepoint,
+              unit,
+              ReadableArray<Unicodepoint>,
+              ReadableArraySlice<Unicodepoint>
+           > =
         parse_expecting
             (parser {
 
@@ -337,38 +383,39 @@ type Percent_Encoded_Character =
 
              }
              |>> fun (left_hex_digit, right_hex_digit) ->
-                     let encoded_literal = $"%%{left_hex_digit.as'string}{right_hex_digit.as'string}"
+                 let encoded_literal = $"%%{left_hex_digit.as'string}{right_hex_digit.as'string}"
 
-                     let unicodepoint =
-                         Unicodepoint.from'char (char (HttpUtility.UrlDecode encoded_literal))
+                 let unicodepoint =
+                     Unicodepoint.from'hexadecimal_digit_string $"{left_hex_digit.as'string}{right_hex_digit.as'string}"
 
-                     {
+                 {
 
-                       left_digit = left_hex_digit
-                       right_digit = right_hex_digit
-                       as'literal = encoded_literal
-                       as'unicodepoint = unicodepoint
+                   left_digit = left_hex_digit
+                   right_digit = right_hex_digit
+                   as'literal = encoded_literal
+                   as'unicodepoint = unicodepoint
 
-                     }
+                 }
 
             )
 
             """pct-encoded   = "%" HEXDIG HEXDIG"""
 
     static member or'unicodepoint_from(partition: Unicode_Partition) =
-        choice [
+        choice
+            [
 
-                 unicodepoint_from partition
-                 Percent_Encoded_Character.parse
-                 |>> fun percent_encoded_character ->
-                         {
+              unicodepoint_from partition
+              Percent_Encoded_Character.parse
+              |>> fun percent_encoded_character ->
+                  {
 
-                           as'string = percent_encoded_character.as'unicodepoint.as'string
-                           as'int = percent_encoded_character.as'unicodepoint.as'int
+                    as'string = percent_encoded_character.as'unicodepoint.as'string
+                    as'int = percent_encoded_character.as'unicodepoint.as'int
 
-                         }
+                  }
 
-                  ]
+              ]
 
 [<Struct>]
 type PCharacter =
@@ -377,18 +424,19 @@ type PCharacter =
       as'string: string
       as'int: int
 
-     }
+    }
 
-    static member parse: Parser<PCharacter, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    static member parse
+        : Parser<PCharacter, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
-            (Percent_Encoded_Character.or'unicodepoint_from unencoded_character
+            (Percent_Encoded_Character.or'unicodepoint_from pchar_
              |>> fun unicodepoint ->
-                     {
+                 {
 
-                       as'string = unicodepoint.as'string
-                       as'int = unicodepoint.as'int
+                   as'string = unicodepoint.as'string
+                   as'int = unicodepoint.as'int
 
-                     }
+                 }
 
 
             )
@@ -399,11 +447,12 @@ type Fragment =
     {
 
       as'string: string
-      as'unicodepoints: ImmutableArray<Unicodepoint>
+      as'unicodepoints: Unicodepoint array
 
-     }
+    }
 
-    static member parse: Parser<Fragment, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    static member parse
+        : Parser<Fragment, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (
 
@@ -411,21 +460,15 @@ type Fragment =
             >>. many (Percent_Encoded_Character.or'unicodepoint_from fragment)
             |>> fun unicodepoints ->
 
-                    {
+                {
 
-                      as'string = unicodepoints |> Unicodepoint.sequence'to'string
-                      as'unicodepoints = unicodepoints
+                  as'string = unicodepoints |> Unicodepoint.sequence'to'string
+                  as'unicodepoints = unicodepoints |> Seq.toArray
 
-                    }
+                }
 
             )
             """ fragment      = *( pchar / "/" / "?" ) """
-
-    static member as'string_component(fragment: Fragment) =
-        if String.IsNullOrEmpty fragment.as'string then
-            String.Empty
-        else
-            $"#{fragment.as'string}"
 
 
 
@@ -434,11 +477,12 @@ type Query =
     {
 
       as'string: string
-      as'unicodepoints: ImmutableArray<Unicodepoint>
+      as'unicodepoints: Unicodepoint array
 
-     }
+    }
 
-    static member parse: Parser<Query, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    static member parse
+        : Parser<Query, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (
 
@@ -446,21 +490,16 @@ type Query =
             >>. many (Percent_Encoded_Character.or'unicodepoint_from query_)
             |>> fun unicodepoints ->
 
-                    {
+                {
 
-                      as'string = unicodepoints |> Unicodepoint.sequence'to'string
-                      as'unicodepoints = unicodepoints
+                  as'string = unicodepoints |> Unicodepoint.sequence'to'string
+                  as'unicodepoints = unicodepoints |> Seq.toArray
 
-                    }
+                }
 
             )
             """ query      = *( pchar / "/" / "?" ) """
 
-    static member as'string_component(query_: Query) =
-        if String.IsNullOrEmpty query_.as'string then
-            String.Empty
-        else
-            $"?{query_.as'string}"
 
 
 [<Struct>]
@@ -468,582 +507,221 @@ type Segment =
     {
 
       as'string: string
-      as'unicodepoints: ImmutableArray<Unicodepoint>
+      as'unicodepoints: Unicodepoint array
       guaranteed'nonzero_length: bool
       excludes'colon: bool
 
-     }
+    }
 
-    static member parse'nonzero_noncolon: Parser<Segment, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    static member parse'nonzero_noncolon
+        : Parser<Segment, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (
 
-            skip_unicodepoint '?'
-            >>. many1 (Percent_Encoded_Character.or'unicodepoint_from segment_nz_nc)
+            many1 (Percent_Encoded_Character.or'unicodepoint_from segment_nz_nc)
             |>> fun unicodepoints ->
 
-                    {
+                {
 
-                      as'string = unicodepoints |> Unicodepoint.sequence'to'string
-                      as'unicodepoints = unicodepoints
-                      guaranteed'nonzero_length = true
-                      excludes'colon = true
+                  as'string = unicodepoints |> Unicodepoint.sequence'to'string
+                  as'unicodepoints = unicodepoints |> Seq.toArray
+                  guaranteed'nonzero_length = true
+                  excludes'colon = true
 
-                    }
+                }
 
             )
             """ segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" ) ; non-zero-length segment without any colon ":" """
 
-    static member parse'nonzero: Parser<Segment, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    static member parse'nonzero
+        : Parser<Segment, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (
 
-            skip_unicodepoint '?'
-            >>. many1 (Percent_Encoded_Character.or'unicodepoint_from unencoded_character)
+            many1 (Percent_Encoded_Character.or'unicodepoint_from pchar_)
             |>> fun unicodepoints ->
 
-                    {
+                {
 
-                      as'string = unicodepoints |> Unicodepoint.sequence'to'string
-                      as'unicodepoints = unicodepoints
-                      guaranteed'nonzero_length = true
-                      excludes'colon = false
+                  as'string = unicodepoints |> Unicodepoint.sequence'to'string
+                  as'unicodepoints = unicodepoints |> Seq.toArray
+                  guaranteed'nonzero_length = true
+                  excludes'colon = false
 
-                    }
+                }
 
             )
             """ segment-nz    = 1*pchar """
 
-    static member parse: Parser<Segment, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+    static member parse
+        : Parser<Segment, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (
 
-            skip_unicodepoint '?'
-            >>. many (Percent_Encoded_Character.or'unicodepoint_from unencoded_character)
+            many (Percent_Encoded_Character.or'unicodepoint_from pchar_)
             |>> fun unicodepoints ->
 
-                    {
+                {
 
-                      as'string = unicodepoints |> Unicodepoint.sequence'to'string
-                      as'unicodepoints = unicodepoints
-                      guaranteed'nonzero_length = false
-                      excludes'colon = false
+                  as'string = unicodepoints |> Unicodepoint.sequence'to'string
+                  as'unicodepoints = unicodepoints |> Seq.toArray
+                  guaranteed'nonzero_length = false
+                  excludes'colon = false
 
-                    }
+                }
 
             )
             """ segment       = *pchar """
 
 [<Struct>]
-[<RequireQualifiedAccess>]
-type Path_Kind =
-    /// begins with "/" or is empty
-    | abempty
-    /// begins with "/" but not "//"
-    | absolute
-    /// begins with a non-colon segment
-    | noscheme
-    /// begins with a segment
-    | rootless
-    /// zero characters
-    | empty
-
-[<Struct>]
-type URI_Path =
-    {
-
-      as'segments: Segment array
-      kind: Path_Kind
-
-     }
-    static member as'string_component(uri_path: URI_Path) =
-
-        uri_path.as'segments
-        |> Array.map (fun segment -> segment.as'string)
-        |> String.concat "/"
-
-    static member parse'rootless: Parser<URI_Path, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
-        parse_expecting
-            (Segment.parse'nonzero
-             .>>. many (skip_unicodepoint '/' >>. Segment.parse)
-             |>> fun struct (head, tail) ->
-                     let segments = Seq.insertAt 0 head tail |> Seq.toArray
-
-                     {
-
-                       as'segments = segments
-                       kind = Path_Kind.rootless
-
-                     })
-            """ path-rootless = segment-nz *( "/" segment ) """
-
-    static member parse'noscheme: Parser<URI_Path, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
-        parse_expecting
-            (Segment.parse'nonzero_noncolon
-             .>>. many (skip_unicodepoint '/' >>. Segment.parse)
-             |>> fun struct (head, tail) ->
-                     let segments = Seq.insertAt 0 head tail |> Seq.toArray
-
-                     {
-
-                       as'segments = segments
-                       kind = Path_Kind.noscheme
-
-                     })
-            """ path-noscheme = segment-nz-nc *( "/" segment ) """
-
-    static member parse'absolute: Parser<URI_Path, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
-        parse_expecting
-            (skip_unicodepoint '/'
-             >>. opt URI_Path.parse'absolute
-             |>> fun path_absolute_option ->
-                     match path_absolute_option with
-                     | ValueSome path_absolute ->
-
-                         {
-
-                           as'segments = path_absolute.as'segments
-                           kind = Path_Kind.absolute
-
-                         }
-                     | _ ->
-                         {
-
-                           as'segments = [||]
-                           kind = Path_Kind.empty
-
-                         }
-
-
-
-            )
-            """ path-absolute = "/" [ segment-nz *( "/" segment ) ] """
-
-    static member parse'abempty: Parser<URI_Path, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
-        parse_expecting
-            (many (skip_unicodepoint '/' >>. Segment.parse)
-             |>> fun segments ->
-                     {
-
-                       as'segments = segments |> Seq.toArray
-                       kind = Path_Kind.abempty
-
-                     }
-
-
-            )
-            """ path-absolute = "/" [ segment-nz *( "/" segment ) ] """
-
-
-
-// TODO Registered Name
-
-let test = run'partial_parse General_Component_Delimiter_Character.parse OnInput "@"
-
-(*
-
-
-
-
-
-[<RequireQualifiedAccess>]
-type Registered_Name_Character =
-    | FromUnreservedCharacter of Unreserved_Character
-    | FromPercentEncodedCharacter of Percent_Encoded_Character
-    | FromSubcomponentDelimiterCharacter of Subcomponent_Delimiter_Character
-
-    member this.as_rune =
-        match this with
-        | FromUnreservedCharacter unreserved_character -> unreserved_character.as_rune
-        | FromPercentEncodedCharacter percent_encoded_character -> percent_encoded_character.as_rune
-        | FromSubcomponentDelimiterCharacter subcomponent_delimiter_character ->
-            subcomponent_delimiter_character.as_rune
-
-    static member parse: Parser<Registered_Name_Character, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-
-        parse_expecting
-            (choice [
-
-                      Unreserved_Character.parse
-                      |>> FromUnreservedCharacter
-                      Percent_Encoded_Character.parse
-                      |>> FromPercentEncodedCharacter
-                      Subcomponent_Delimiter_Character.parse
-                      |>> FromSubcomponentDelimiterCharacter
-
-                       ])
-            """  unreserved / pct-encoded / sub-delims  """
-
-[<RequireQualifiedAccess>]
-type NonColon_Path_Character =
-    | FromRegisteredNameCharacter of Registered_Name_Character
-    | FromCommercialAt of Commercial_At
-
-    member this.as_rune =
-        match this with
-        | FromRegisteredNameCharacter registered_name_character -> registered_name_character.as_rune
-        | FromCommercialAt ampersand -> ampersand.as_rune
-
-    static member parse: Parser<NonColon_Path_Character, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (choice [
-
-                      Registered_Name_Character.parse
-                      |>> FromRegisteredNameCharacter
-                      Commercial_At.parse |>> FromCommercialAt
-
-                       ])
-            """  unreserved / pct-encoded / sub-delims / "@"  """
-
-[<RequireQualifiedAccess>]
-type Path_Character =
-    | FromNonColonPathCharacter of NonColon_Path_Character
-    | FromColon of Colon
-
-    member this.as_rune =
-        match this with
-        | FromNonColonPathCharacter noncolon_path_character -> noncolon_path_character.as_rune
-        | FromColon colon -> colon.as_rune
-
-    static member parse: Parser<Path_Character, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (choice [
-
-                      NonColon_Path_Character.parse
-                      |>> FromNonColonPathCharacter
-                      Colon.parse |>> FromColon
-
-                       ])
-            """ pchar         = unreserved / pct-encoded / sub-delims / ":" / "@" """
-
-[<RequireQualifiedAccess>]
-type QueryOrFragment_Character =
-    | FromPathCharacter of Path_Character
-    | FromSolidus of Solidus
-    | FromQuestionMark of Question_Mark
-
-    member this.as_rune =
-        match this with
-        | FromPathCharacter path_character -> path_character.as_rune
-        | FromSolidus solidus -> solidus.as_rune
-        | FromQuestionMark question_mark -> question_mark.as_rune
-
-    static member parse: Parser<QueryOrFragment_Character, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (choice [
-
-                      Path_Character.parse |>> FromPathCharacter
-                      Solidus.parse |>> FromSolidus
-                      Question_Mark.parse |>> FromQuestionMark
-
-                       ])
-            """  pchar / "/" / "?"  """
-
-type NonColon_NonEmpty_Segment =
-    {
-
-      as_characters: ImmutableArray<NonColon_Path_Character>
-
-     }
-
-    member this.as_string = string_from_characters this.as_characters
-
-    static member parse: Parser<NonColon_NonEmpty_Segment, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (many1 NonColon_Path_Character.parse
-             |>> fun characters ->
-                     {
-
-                       as_characters = characters
-
-                     })
-            """ segment-nz-nc = 1*( unreserved / pct-encoded / sub-delims / "@" ) ; non-zero-length segment without any colon ":" """
-
-type NonEmpty_Segment =
-    { nonempty_segment: ImmutableArray<Path_Character> }
-    member this.as_string = string_from_characters this.nonempty_segment
-    member this.as_characters = this.nonempty_segment
-
-    static member parse: Parser<NonEmpty_Segment, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (many1 Path_Character.parse
-             |>> fun characters -> { nonempty_segment = characters })
-            """ segment-nz    = 1*pchar """
-
-type Empty_Segment =
-    | Empty_Segment of unit
-    static member as_characters: ImmutableArray<Path_Character> = ImmutableArray.Empty
-    static member as_string = String.Empty
-
-// TODO character dependent delimiters like . for "subsegments"?
-type Segment =
-    { segment: ImmutableArray<Path_Character> }
-
-    member this.as_characters = this.segment
-    member this.as_string = string_from_characters this.segment
-    static member Empty = Empty_Segment()
-
-    static member parse: Parser<Segment, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (many Path_Character.parse
-             |>> fun characters -> { segment = characters })
-            """ segment       = *pchar """
-
-
-type Empty_Path =
-    | Empty_Path of unit
-    static member as_string = String.Empty
-    static member head = Segment.Empty
-    static member tail: ImmutableArray<Segment> = ImmutableArray.Empty
-    static member tail_string = String.Empty
-
-
-type Rootless_Path =
-    {
-
-      head: NonEmpty_Segment
-      tail: ImmutableArray<Segment>
-
-     }
-
-    member this.tail_string_segments =
-        this.tail
-        |> Seq.map (fun segment -> segment.as_string)
-
-    member this.tail_string = string_from_segments this.tail
-    member this.as_string = $"{this.head.as_string}{this.tail_string}"
-
-    static member parse: Parser<Rootless_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (NonEmpty_Segment.parse
-             .>>. many (Solidus.parse >>. Segment.parse)
-             |>> fun struct (head, tail) -> { head = head; tail = tail })
-            """ path-rootless = segment-nz *( "/" segment ) """
-
-
-
-type NoScheme_Path =
-    {
-
-      head: NonColon_NonEmpty_Segment
-      tail: ImmutableArray<Segment>
-
-     }
-
-
-    member this.tail_string_segments =
-        this.tail
-        |> Seq.map (fun segment -> segment.as_string)
-
-    member this.tail_string = string_from_segments this.tail
-    member this.as_string = $"{this.head.as_string}{this.tail_string}"
-
-    static member parse: Parser<NoScheme_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (NonColon_NonEmpty_Segment.parse
-             .>>. many (Solidus.parse >>. Segment.parse)
-             |>> fun struct (head, tail) -> { head = head; tail = tail })
-            """ path-noscheme = segment-nz-nc *( "/" segment ) """
-
-type Absolute_Path =
-    {
-
-      head: Segment
-      tail: ImmutableArray<Segment>
-
-     }
-
-
-    member this.tail_string_segments =
-        this.tail
-        |> Seq.map (fun segment -> segment.as_string)
-
-    member this.tail_string = string_from_segments this.tail
-    member this.as_string = $"/{this.head.as_string}{this.tail_string}"
-
-    static member parse: Parser<Absolute_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (Solidus.parse >>. opt (Rootless_Path.parse)
-
-             |>> fun rootless_path_option ->
-                     let head =
-                         match rootless_path_option with
-                         | ValueSome rootless_path -> { segment = rootless_path.head.nonempty_segment }
-                         | ValueNone -> { segment = ImmutableArray.Empty }
-
-                     let tail =
-                         match rootless_path_option with
-                         | ValueSome rootless_path -> rootless_path.tail
-                         | ValueNone -> ImmutableArray.Empty
-
-                     {
-
-                       head = head
-                       tail = tail
-
-                     }
-
-            )
-
-            """ path-absolute = "/" [ segment-nz *( "/" segment ) ] """
-
-type Abempty_Path =
-    {
-
-      segments: ImmutableArray<Segment>
-
-     }
-
-    // member this.as_string = "/" + string_from_segments this.segments
-    member this.as_string = string_from_segments this.segments
-
-
-    static member parse: Parser<Abempty_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (many (Solidus.parse >>. Segment.parse)
-
-             |>> fun segments -> { segments = segments }
-
-            )
-
-            """ path-abempty  = *( "/" segment ) """
-
-[<RequireQualifiedAccess>]
-type URI_Path =
-    | FromAbemptyPath of Abempty_Path
-    | FromAbsolutePath of Absolute_Path
-    | FromNoSchemePath of NoScheme_Path
-    | FromRootlessPath of Rootless_Path
-    | FromEmptyPath of Empty_Path
-
-
-    member this.as_string =
-        match this with
-        | FromRootlessPath rootless_path -> rootless_path.as_string
-        | FromNoSchemePath noscheme_path -> noscheme_path.as_string
-        | FromAbsolutePath absolute_path -> absolute_path.as_string
-        | FromAbemptyPath abempty_path -> abempty_path.as_string
-        | FromEmptyPath _ -> String.Empty
-
-    static member Empty = Empty_Path()
-
-    static member parse: Parser<URI_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (opt (
-                choice [
-
-                         Absolute_Path.parse |>> FromAbsolutePath
-                         Rootless_Path.parse |>> FromRootlessPath
-                         NoScheme_Path.parse |>> FromNoSchemePath
-                         Abempty_Path.parse |>> FromAbemptyPath
-
-                          ]
-             )
-             |>> fun hierarchical_path_option -> defaultValueArg hierarchical_path_option (FromEmptyPath(Empty_Path())))
-
-            """
-path          = path-abempty    ; begins with "/" or is empty
-             / path-absolute   ; begins with "/" but not "//"
-             / path-noscheme   ; begins with a non-colon segment
-             / path-rootless   ; begins with a segment
-             / path-empty      ; zero characters
-            """
-
-
 type Registered_Name =
-    { registered_name: ImmutableArray<Registered_Name_Character> }
+    {
 
-    member this.as_characters = this.registered_name
-    member this.as_string = string_from_characters this.registered_name
+      as'string: string
+      as'unicodepoints: Unicodepoint array
 
-    static member parse: Parser<Registered_Name, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    }
+
+    static member parse
+        : Parser<Registered_Name, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
-            (many Registered_Name_Character.parse
-             |>> fun characters -> { registered_name = characters })
+            (many (Percent_Encoded_Character.or'unicodepoint_from reg_name)
+             |>> fun unicodepoints ->
+
+                 {
+
+                   as'string = unicodepoints |> Unicodepoint.sequence'to'string
+                   as'unicodepoints = unicodepoints |> Seq.toArray
+
+                 }
+
+            )
             """ reg-name      = *( unreserved / pct-encoded / sub-delims ) """
+
 
 type Decimal_Octet =
     {
 
-      as_int: int
+      as'string: string
+      as'int: int
 
-     }
-    static member from_int(int_: int) = { as_int = int_ }
+    }
 
 
-
-    static member parse'0_9: Parser<Decimal_Octet, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse'0_9
+        : Parser<Decimal_Octet, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
-            (anyRune "0123456789"
-             .>> notFollowedBy (anyRune "0123456789")
-             |>> fun singleDigit -> { as_int = int_from_singleDigit singleDigit })
+            (unicodepoint_from Augmented_Bacus_Naur_Form.digit
+             .>> notFollowedBy (unicodepoint_from Augmented_Bacus_Naur_Form.digit)
+             |>> fun single_digit ->
+                 {
+
+                   as'int = single_digit.as'int
+                   as'string = single_digit.as'string
+
+                 })
             """     DIGIT                 ; 0-9 """
 
-    static member parse'10_99: Parser<Decimal_Octet, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse'10_99
+        : Parser<Decimal_Octet, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (parser {
 
-                let! leftDigit = parse_rune '1'
-                let! rightDigit = anyRune "0123456789"
+                let! leftDigit = parse_unicodepoint '1'
+                let! rightDigit = unicodepoint_from Augmented_Bacus_Naur_Form.digit
                 return (leftDigit, rightDigit)
 
              }
-             |>> fun (leftDigit, rightDigit) -> { as_int = int_from_doubleDigit leftDigit rightDigit })
+             |>> fun (leftDigit, rightDigit) ->
+                 {
+
+                   as'int = leftDigit.as'int * 10 + rightDigit.as'int
+                   as'string = $"{leftDigit.as'string}{rightDigit.as'string}"
+
+                 })
             """    %x31-39 DIGIT         ; 10-99 """
 
-    static member parse'100_199: Parser<Decimal_Octet, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse'100_199
+        : Parser<Decimal_Octet, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (parser {
 
-                let! leftDigit = parse_rune '1'
-                let! centerDigit = anyRune "0123456789"
-                let! rightDigit = anyRune "0123456789"
+                let! leftDigit = parse_unicodepoint '1'
+                let! centerDigit = unicodepoint_from Augmented_Bacus_Naur_Form.digit
+                let! rightDigit = unicodepoint_from Augmented_Bacus_Naur_Form.digit
                 return (leftDigit, centerDigit, rightDigit)
 
              }
              |>> fun (leftDigit, centerDigit, rightDigit) ->
-                     { as_int = int_from_tripleDigit leftDigit centerDigit rightDigit })
+                 {
+
+                   as'int = leftDigit.as'int * 100 + centerDigit.as'int * 10 + rightDigit.as'int
+                   as'string = $"{leftDigit.as'string}{centerDigit.as'string}{rightDigit.as'string}"
+
+                 })
             """    "1" 2DIGIT            ; 100-199 """
 
-    static member parse'200_249: Parser<Decimal_Octet, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse'200_249
+        : Parser<Decimal_Octet, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (parser {
 
-                let! leftDigit = parse_rune '2'
-                let! centerDigit = anyRune "01234"
-                let! rightDigit = anyRune "0123456789"
+                let! leftDigit = parse_unicodepoint '2'
+
+                let! centerDigit =
+                    unicodepoint_from
+                        UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.digits.zero'to'four
+
+                let! rightDigit = unicodepoint_from Augmented_Bacus_Naur_Form.digit
                 return (leftDigit, centerDigit, rightDigit)
 
              }
              |>> fun (leftDigit, centerDigit, rightDigit) ->
-                     { as_int = int_from_tripleDigit leftDigit centerDigit rightDigit })
+                 {
+
+                   as'int = leftDigit.as'int * 100 + centerDigit.as'int * 10 + rightDigit.as'int
+                   as'string = $"{leftDigit.as'string}{centerDigit.as'string}{rightDigit.as'string}"
+
+                 })
             """    "2" %x30-34 DIGIT     ; 200-249 """
 
-    static member parse'250_255: Parser<Decimal_Octet, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse'250_255
+        : Parser<Decimal_Octet, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (parser {
 
-                let! leftDigit = parse_rune '2'
-                let! centerDigit = parse_rune '5'
-                let! rightDigit = anyRune "012345"
+                let! leftDigit = parse_unicodepoint '2'
+                let! centerDigit = parse_unicodepoint '5'
+
+                let! rightDigit =
+                    unicodepoint_from
+                        UnicodeStandard.Basic_Multilingual_Plane.Basic_Latin_Block.ASCII.digits.zero'to'five
+
                 return (leftDigit, centerDigit, rightDigit)
 
              }
              |>> fun (leftDigit, centerDigit, rightDigit) ->
-                     { as_int = int_from_tripleDigit leftDigit centerDigit rightDigit })
-            """    "2" %x30-34 DIGIT     ; 200-249 """
+                 {
 
-    static member parse: Parser<Decimal_Octet, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+                   as'int = leftDigit.as'int * 100 + centerDigit.as'int * 10 + rightDigit.as'int
+                   as'string = $"{leftDigit.as'string}{centerDigit.as'string}{rightDigit.as'string}"
+
+                 })
+            """  "25" %x30-35          ; 250-255 """
+
+    static member parse
+        : Parser<Decimal_Octet, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
-            (choice [
+            (choice
+                [
 
-                      Decimal_Octet.parse'250_255
-                      Decimal_Octet.parse'200_249
-                      Decimal_Octet.parse'100_199
-                      Decimal_Octet.parse'10_99
-                      Decimal_Octet.parse'0_9
+                  Decimal_Octet.parse'250_255
+                  Decimal_Octet.parse'200_249
+                  Decimal_Octet.parse'100_199
+                  Decimal_Octet.parse'10_99
+                  Decimal_Octet.parse'0_9
 
-                       ])
+                  ])
             """
     dec-octet     = DIGIT                 ; 0-9
                  / %x31-39 DIGIT         ; 10-99
@@ -1052,41 +730,64 @@ type Decimal_Octet =
                  / "25" %x30-35          ; 250-255
     """
 
+[<Struct>]
 type IPv4address =
-    { outer_left_octet: Decimal_Octet
+    {
+
+      outer_left_octet: Decimal_Octet
       inner_left_octet: Decimal_Octet
       inner_right_octet: Decimal_Octet
       outer_right_octet: Decimal_Octet
+      as'unicodepoints: Unicodepoint array
+      as'string: string
 
-     }
+    }
 
-    member this.as_string =
-        $"{this.outer_left_octet.as_int}.{this.inner_left_octet.as_int}.{this.inner_right_octet.as_int}.{this.outer_right_octet.as_int}"
 
-    static member parse: Parser<IPv4address, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse
+        : Parser<IPv4address, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (parser {
 
                 let! outer_left = Decimal_Octet.parse
-                do! skip_rune '.'
+                do! skip_unicodepoint '.'
                 let! inner_left = Decimal_Octet.parse
-                do! skip_rune '.'
+                do! skip_unicodepoint '.'
                 let! inner_right = Decimal_Octet.parse
-                do! skip_rune '.'
+                do! skip_unicodepoint '.'
                 let! outer_right = Decimal_Octet.parse
                 return (outer_left, inner_left, inner_right, outer_right)
 
 
              }
              |>> fun (outer_left, inner_left, inner_right, outer_right) ->
-                     { outer_left_octet = outer_left
-                       inner_left_octet = inner_left
-                       inner_right_octet = inner_right
-                       outer_right_octet = outer_right }
+                 {
+
+                   outer_left_octet = outer_left
+                   inner_left_octet = inner_left
+                   inner_right_octet = inner_right
+                   outer_right_octet = outer_right
+                   as'unicodepoints =
+                     [|
+
+                        { as'string = outer_left.as'string
+                          as'int = outer_left.as'int }
+                        { as'string = inner_left.as'string
+                          as'int = inner_left.as'int }
+                        { as'string = inner_right.as'string
+                          as'int = inner_right.as'int }
+                        { as'string = outer_right.as'string
+                          as'int = outer_right.as'int }
+
+                        |]
+                   as'string =
+                     $"{outer_left.as'string}.{inner_left.as'string}.{inner_right.as'string}.{outer_right.as'string}"
+
+                 }
 
 
             )
-            """ /// IPv4address   = dec-octet "." dec-octet "." dec-octet "." dec-octet """
+            """    IPv4address   = dec-octet "." dec-octet "." dec-octet "." dec-octet """
 
 // TODO maybe one day
 // IP-literal    = "[" ( IPv6address / IPvFuture  ) "]"
@@ -1105,109 +806,125 @@ type IPv4address =
 //
 // h16           = 1*4HEXDIG
 // ls32          = ( h16 ":" h16 ) / IPv4address
+
+[<Struct>]
 type Port =
-    { as_int: int
-      as_characters: ImmutableArray<ABNF.DIGIT> }
-    static member parse: Parser<Port, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    {
+
+      as'int: int
+      as'unicodepoints: Unicodepoint array
+
+    }
+
+    static member parse: Parser<Port, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
-            (skip_rune ':' >>. (many1 (ABNF.DIGIT.parse))
-             |>> fun digits ->
-                     let stringNumeral = string_from_characters digits
+            (skip_unicodepoint ':'
+             >>. many1 (unicodepoint_from Augmented_Bacus_Naur_Form.digit)
+             |>> fun unicodepoints ->
 
-                     {
+                 {
 
-                       as_int = int_from_stringNumeral stringNumeral
-                       as_characters = digits
+                   as'int =
+                     unicodepoints
+                     |> Seq.map (fun unicodepoint -> string unicodepoint.as'string)
+                     |> String.concat ""
+                     |> int
+                   as'unicodepoints = unicodepoints |> Seq.toArray
 
-                     }
+                 }
 
             )
             """ port          = *DIGIT """
 
+[<Struct>]
 [<RequireQualifiedAccess>]
+type Host_Kind =
+    | IPv4address
+    | Registered_Name
+    | International_Registered_Name
+
+[<Struct>]
 type Host =
-    | FromIPv4address of IPv4address
-    | FromRegisteredName of Registered_Name
+    {
 
-    member this.as_string =
-        match this with
-        | FromIPv4address ipv4address -> ipv4address.as_string
-        | FromRegisteredName registered_name -> registered_name.as_string
+      as_string: string
+      as'unicodepoints: Unicodepoint array
+      path_kind: Host_Kind
 
-    static member parse: Parser<Host, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    }
+
+    static member parse: Parser<Host, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
-            (choice [
+            (choice
+                [
 
-                      IPv4address.parse |>> FromIPv4address
-                      Registered_Name.parse |>> FromRegisteredName
+                  IPv4address.parse
+                  |>> fun ipv4address ->
+                      {
+
+                        as_string = ipv4address.as'string
+                        as'unicodepoints = ipv4address.as'unicodepoints
+                        path_kind = Host_Kind.IPv4address
+
+                      }
+                  Registered_Name.parse
+                  |>> fun registered_name ->
+                      {
+
+                        as_string = registered_name.as'string
+                        as'unicodepoints = registered_name.as'unicodepoints
+                        path_kind = Host_Kind.Registered_Name
+
+                      }
 
 
-                       ])
+                  ])
             """ host          =  IPv4address / reg-name """
 
-[<RequireQualifiedAccess>]
-type Userinfo_Character =
-    | FromRegisteredNameCharacter of Registered_Name_Character
-    | FromColon of Colon
 
-    member this.as_rune =
-        match this with
-        | FromRegisteredNameCharacter registered_name_character -> registered_name_character.as_rune
-        | FromColon colon -> colon.as_rune
-
-    static member parse: Parser<Userinfo_Character, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (choice [
-
-                      Registered_Name_Character.parse
-                      |>> FromRegisteredNameCharacter
-                      Colon.parse |>> FromColon
-
-                       ])
-            """  unreserved / pct-encoded / sub-delims / ":"  """
-
+[<Struct>]
 type Userinfo =
     {
 
-      userinfo: ImmutableArray<Userinfo_Character>
+      as'string: string
+      as'unicodepoints: Unicodepoint array
 
-     }
-    member this.as_string = string_from_characters this.userinfo
-    member this.as_characters = this.userinfo
+    }
 
-    static member parse: Parser<Userinfo, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse
+        : Parser<Userinfo, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (
 
-            many Userinfo_Character.parse
-            .>> Commercial_At.parse
-            |>> fun characters -> { userinfo = characters }
+            many (Percent_Encoded_Character.or'unicodepoint_from userinfo)
+            .>> skip_unicodepoint '@'
+            |>> fun unicodepoints ->
+                {
+
+                  as'string = unicodepoints |> Unicodepoint.sequence'to'string
+                  as'unicodepoints = unicodepoints |> Seq.toArray
+
+                }
 
             )
             """ userinfo      = *( unreserved / pct-encoded / sub-delims / ":" ) """
 
-
+[<Struct>]
 type Authority =
-    { userinfo: Userinfo ValueOption
+    {
+
+      as'string: string
+      as'unicodepoints: Unicodepoint array
+      userinfo: Userinfo ValueOption
       host: Host
-      port: Port ValueOption }
+      port: Port ValueOption
+
+    }
 
 
-    member this.as_string =
 
-        let userinfoString =
-            match this.userinfo with
-            | ValueSome userinfo -> $"{userinfo.as_string}@"
-            | _ -> String.Empty
-
-        let portString =
-            match this.port with
-            | ValueSome port -> $":{string port.as_int}"
-            | _ -> String.Empty
-
-        $"{userinfoString}{this.host.as_string}{portString}"
-
-    static member parse: Parser<Authority, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse
+        : Parser<Authority, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (parser {
                 let! userinfo = opt Userinfo.parse
@@ -1217,370 +934,528 @@ type Authority =
              }
              |>> fun (userinfo_option, host, port_option) ->
 
-                     {
+                 let authority_string =
+                     let userinfoString =
+                         match userinfo_option with
+                         | ValueSome userinfo -> $"{userinfo.as'string}@"
+                         | _ -> String.Empty
 
-                       userinfo = userinfo_option
-                       host = host
-                       port = port_option
+                     let portString =
+                         match port_option with
+                         | ValueSome port -> $":{string port.as'int}"
+                         | _ -> String.Empty
 
-                     })
+                     $"{userinfoString}{host.as_string}{portString}"
+
+                 let unicodepoints =
+
+                     let userinfoUnicodepoints =
+                         match userinfo_option with
+                         | ValueSome userinfo -> userinfo.as'unicodepoints
+                         | _ -> [||]
+
+                     let portUnicodepoints =
+                         match port_option with
+                         | ValueSome port -> [| Unicodepoint.from'int port.as'int |]
+                         | _ -> [||]
+
+                     Seq.concat [ userinfoUnicodepoints; host.as'unicodepoints; portUnicodepoints ]
+                     |> Seq.toArray
+
+                 {
+
+                   as'string = authority_string
+                   as'unicodepoints = unicodepoints
+                   userinfo = userinfo_option
+                   host = host
+                   port = port_option
+
+                 })
             """  authority     = [ userinfo "@" ] host [ ":" port ] """
 
-type Scheme_Character =
-    | FromALPHA of ABNF.ALPHA
-    | FromDIGIT of ABNF.DIGIT
-    | FromPlusSign of Plus_Sign
-    | FromHyphenMinus of Hyphen_Minus
-    | FromFullStop of Full_Stop
+[<Struct>]
+[<RequireQualifiedAccess>]
+type Path_Kind =
+    | authority_abempty
+    /// begins with "/" or is empty
+    | abempty
+    /// begins with "/" but not "//"
+    | absolute
+    /// begins with a non-colon segment
+    | noscheme
+    /// begins with a segment
+    | rootless
+    /// zero characters
+    | empty
 
-    member this.as_rune =
-        match this with
-        | FromALPHA alpha -> alpha.as_rune
-        | FromDIGIT digit -> digit.as_rune
-        | FromPlusSign plus_sign -> plus_sign.as_rune
-        | FromHyphenMinus hyphen_minus -> hyphen_minus.as_rune
-        | FromFullStop full_stop -> full_stop.as_rune
+[<Struct>]
+type URI_Path =
+    {
 
-    static member parse: Parser<Scheme_Character, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+      as'string: string
+      as'segments: Segment array
+      path_segments: string array
+      path_kind: Path_Kind
+
+    }
+
+    static member Empty =
+        {
+
+          as'string = String.Empty
+          as'segments = [||]
+          path_segments = [||]
+          path_kind = Path_Kind.empty
+
+        }
+
+    static member parse'rootless
+        : Parser<URI_Path, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
-            (choice [
-
-                      ABNF.ALPHA.parse |>> FromALPHA
-                      ABNF.DIGIT.parse |>> FromDIGIT
-                      Plus_Sign.parse |>> FromPlusSign
-                      Hyphen_Minus.parse |>> FromHyphenMinus
-                      Full_Stop.parse |>> FromFullStop
-
-                       ])
-            """  ALPHA / DIGIT / "+" / "-" / "."  """
-
-
-// TODO scheme dependent segment delimiters like colon in urn?
-type Scheme =
-    { head: ABNF.ALPHA
-      tail: ImmutableArray<Scheme_Character> }
-
-    member this.as_characters =
-        Seq.append (seq { Scheme_Character.FromALPHA this.head }) this.tail
-
-    member this.as_string = string_from_characters this.as_characters
-
-    static member parse: Parser<Scheme, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (ABNF.ALPHA.parse .>>. many Scheme_Character.parse
+            (Segment.parse'nonzero .>>. many (skip_unicodepoint '/' >>. Segment.parse)
              |>> fun struct (head, tail) ->
+                 let segments = Seq.insertAt 0 head tail |> Seq.toArray
+                 let path_segments = segments |> Array.map (fun segment -> segment.as'string)
 
-                     { head = head; tail = tail }
+                 {
+
+                   path_segments = path_segments
+                   as'string = segments |> Seq.map (fun segment -> segment.as'string) |> String.concat "/"
+                   as'segments = segments
+                   path_kind = Path_Kind.rootless
+
+                 })
+            """ path-rootless = segment-nz *( "/" segment ) """
+
+    static member parse'noscheme
+        : Parser<URI_Path, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+        parse_expecting
+            (Segment.parse'nonzero_noncolon
+             .>>. many (skip_unicodepoint '/' >>. Segment.parse)
+             |>> fun struct (head, tail) ->
+                 let segments = Seq.insertAt 0 head tail |> Seq.toArray
+                 let path_segments = segments |> Array.map (fun segment -> segment.as'string)
+
+                 {
+
+                   path_segments = path_segments
+
+                   as'string = segments |> Seq.map (fun segment -> segment.as'string) |> String.concat "/"
+                   as'segments = segments
+                   path_kind = Path_Kind.noscheme
+
+                 })
+            """ path-noscheme = segment-nz-nc *( "/" segment ) """
+
+    static member parse'absolute
+        : Parser<URI_Path, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+        parse_expecting
+            (skip_unicodepoint '/' >>. opt (URI_Path.parse'rootless)
+             |>> fun path_absolute_option ->
+                 match path_absolute_option with
+                 | ValueSome rootless_path ->
+                     let path_segments =
+                         rootless_path.as'segments |> Array.map (fun segment -> segment.as'string)
+
+                     {
+
+                       path_segments = path_segments
+
+                       as'string = "/" + (rootless_path.as'string)
+                       as'segments = rootless_path.as'segments
+                       path_kind = Path_Kind.absolute
+
+                     }
+                 | _ ->
+                     { as'string = "/"
+                       path_segments = [||]
+                       as'segments = [||]
+                       path_kind = Path_Kind.absolute
+
+                     }
+
+
+
+            )
+            """ path-absolute = "/" [ segment-nz *( "/" segment ) ] """
+
+
+    static member parse'abempty
+        : Parser<URI_Path, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+        parse_expecting
+            (many (skip_unicodepoint '/' >>. Segment.parse)
+             |>> fun segments ->
+                 if segments.Length > 0 then
+                     let path_segments =
+                         segments |> Seq.toArray |> Array.map (fun segment -> segment.as'string)
+
+                     {
+
+                       path_segments = path_segments
+
+                       as'segments = segments |> Seq.toArray
+                       path_kind = Path_Kind.abempty
+                       as'string =
+                         "/"
+                         + (segments |> Seq.map (fun segment -> segment.as'string) |> String.concat "/")
+
+                     }
+
+                 else
+                     URI_Path.Empty
+
+
+            )
+            """ path-abempty  = *( "/" segment ) """
+
+
+
+
+[<Struct>]
+type Scheme =
+    {
+
+      as'string: string
+      as'unicodepoints: Unicodepoint array
+
+    }
+
+
+    static member parse
+        : Parser<Scheme, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
+        parse_expecting
+            (unicodepoint_from Augmented_Bacus_Naur_Form.alpha
+             .>>. many (unicodepoint_from scheme)
+             |>> fun struct (head, tail) ->
+                 let unicodepoints = Seq.insertAt 0 head tail |> Seq.toArray
+
+                 {
+
+                   as'string = unicodepoints |> Unicodepoint.sequence'to'string
+                   as'unicodepoints = unicodepoints
+
+                 }
 
             )
             """ scheme        = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." ) """
 
-
-
-
-type Authority_Path =
+[<Struct>]
+type URI_Part =
     {
 
-      head: Authority
-      tail: Abempty_Path
+      as'string: string
+      authority: Authority voption
+      uri_path: URI_Path
+      path_kind: Path_Kind
 
-     }
+    }
 
-
-    member this.as_string = $"//{this.head.as_string}{this.tail.as_string}"
-
-    member this.tail_string_segments =
-        this.tail.segments
-        |> Seq.map (fun segment -> segment.as_string)
-
-
-    static member parse: Parser<Authority_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse
+        : Parser<URI_Part, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
-            (parser {
-                let! _ = Solidus.parse
-                let! _ = Solidus.parse
-                let! head = Authority.parse
-                let! tail = Abempty_Path.parse
-                return (head, tail)
-             }
+            (opt (
+                choice
+                    [ parser {
+                          do! skip_unicodepoint '/'
+                          do! skip_unicodepoint '/'
+                          let! authority = Authority.parse
+                          let! path_abempty = URI_Path.parse'abempty
+                          return (authority, path_abempty)
+                      }
+                      |>> fun (authority, path_abempty) ->
+                          {
 
-             |>> fun (head, tail) ->
+                            as'string = $"//{authority.as'string}{path_abempty.as'string}"
+                            authority = ValueSome authority
+                            uri_path = path_abempty
+                            path_kind = Path_Kind.authority_abempty
 
+                          }
+
+                      URI_Path.parse'absolute
+                      |>> fun absolute_path ->
+                          {
+
+                            as'string = absolute_path.as'string
+                            authority = ValueNone
+                            uri_path = absolute_path
+                            path_kind = absolute_path.path_kind
+
+                          }
+
+                      ]
+             )
+             |>> fun relative_part_option ->
+                 defaultValueArg
+                     relative_part_option
                      {
 
-                       head = head
-                       tail = tail
+                       as'string = String.Empty
+                       authority = ValueNone
+                       uri_path = URI_Path.Empty
+                       path_kind = Path_Kind.empty
 
                      }
 
             )
-
-            """ path-absolute = "/" [ segment-nz *( "/" segment ) ] """
-
-
-[<RequireQualifiedAccess>]
-type Relative_Path =
-    | FromAuthorityPath of Authority_Path
-    | FromAbsolutePath of Absolute_Path
-    | FromNoSchemePath of NoScheme_Path
-    | FromEmptyPath of Empty_Path
-
-    member this.as_string =
-        match this with
-        | FromAuthorityPath authority_path -> authority_path.as_string
-        | FromNoSchemePath noscheme_path -> noscheme_path.as_string
-        | FromAbsolutePath absolute_path -> absolute_path.as_string
-        | FromEmptyPath empty_path -> String.Empty
+            """
+             "//" authority path-abempty
+             / path-absolute
+             
+"""
 
 
-    static member parse: Parser<Relative_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+
+
+[<Struct>]
+type Relative_Part =
+    {
+
+      as'string: string
+      authority: Authority voption
+      uri_path: URI_Path
+      path_kind: Path_Kind
+
+    }
+
+    static member Empty =
+        {
+
+          as'string = String.Empty
+          authority = ValueNone
+          uri_path = URI_Path.Empty
+          path_kind = Path_Kind.empty
+
+        }
+
+    static member parse
+        : Parser<Relative_Part, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (opt (
-                choice [
+                choice
+                    [ URI_Part.parse
+                      |>> fun uri_part ->
+                          {
 
-                         Authority_Path.parse |>> FromAuthorityPath
-                         Absolute_Path.parse |>> FromAbsolutePath
-                         NoScheme_Path.parse |>> FromNoSchemePath
+                            as'string = uri_part.as'string
+                            authority = uri_part.authority
+                            uri_path = uri_part.uri_path
+                            path_kind = uri_part.path_kind
 
+                          }
 
-                          ]
+                      URI_Path.parse'noscheme
+                      |>> fun noscheme_path ->
+                          {
+
+                            as'string = noscheme_path.as'string
+                            authority = ValueNone
+                            uri_path = noscheme_path
+                            path_kind = noscheme_path.path_kind
+
+                          }
+
+                      ]
              )
-             |>> fun hierarchical_path_option -> defaultValueArg hierarchical_path_option (FromEmptyPath(Empty_Path())))
+             |>> fun relative_part_option -> defaultValueArg relative_part_option Relative_Part.Empty
+
+            )
             """
 relative-part = "//" authority path-abempty
              / path-absolute
              / path-noscheme
              / path-empty
-            """
-// TODO handle key value paired query strings
-type Query =
-    { query_: ImmutableArray<QueryOrFragment_Character> }
-    member this.as_characters = this.query_
-    member this.as_string = string_from_characters this.query_
+"""
 
-    static member string_from_option(query_option: Query ValueOption) =
-        match query_option with
-        | ValueSome query -> $"?{query.as_string}"
-        | _ -> String.Empty
-
-
-    static member parse: Parser<Query, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (Question_Mark.parse
-             >>. many QueryOrFragment_Character.parse
-             |>> fun characters -> { query_ = characters })
-            """query         = *( pchar / "/" / "?" ) """
-
-type Fragment =
-    { fragment: ImmutableArray<QueryOrFragment_Character> }
-    member this.as_characters = this.fragment
-    member this.as_string = string_from_characters this.fragment
-
-    static member string_from_option(fragment_option: Fragment ValueOption) =
-        match fragment_option with
-        | ValueSome fragment -> $"#{fragment.as_string}"
-        | _ -> String.Empty
-
-    static member parse: Parser<Fragment, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (Number_Sign.parse
-             >>. many QueryOrFragment_Character.parse
-             |>> fun characters -> { fragment = characters })
-            """ fragment      = *( pchar / "/" / "?" ) """
-
+[<Struct>]
 type Relative_Reference =
     {
 
-      relative_path: Relative_Path
-      query: Query ValueOption
-      fragment: Fragment ValueOption
+      as'string: string
+      relative_part: Relative_Part
+      query: Query voption
+      fragment: Fragment voption }
 
-     }
-    member this.as_string =
-        $"{this.relative_path.as_string}{Query.string_from_option this.query}{Fragment.string_from_option this.fragment}"
-
-    static member parse: Parser<Relative_Reference, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse
+        : Parser<Relative_Reference, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (parser {
 
-                let! relative_path = Relative_Path.parse
+                let! relative_part = Relative_Part.parse
                 let! query = opt Query.parse
                 let! fragment = opt Fragment.parse
-                return (relative_path, query, fragment)
-
+                return (relative_part, query, fragment)
              }
-             |>> fun (relative_path, query, fragment) ->
+             |>> fun (relative_part, query_option, fragment_option) ->
 
-                     {
+                 let queryString =
+                     match query_option with
+                     | ValueSome query -> $"?{query.as'string}"
+                     | _ -> String.Empty
 
-                       relative_path = relative_path
-                       query = query
-                       fragment = fragment
+                 let fragmentString =
+                     match fragment_option with
+                     | ValueSome fragment -> $"#{fragment.as'string}"
+                     | _ -> String.Empty
 
-                     }
+                 {
 
+                   as'string = $"{relative_part.as'string}{queryString}{fragmentString}"
+                   relative_part = relative_part
+                   query = query_option
+                   fragment = fragment_option
+
+                 }
 
             )
             """ relative-ref  = relative-part [ "?" query ] [ "#" fragment ] """
 
+[<Struct>]
+type Hierarchical_Part =
+    {
 
-[<RequireQualifiedAccess>]
-type Hierarchical_Path =
-    | FromAuthorityPath of Authority_Path
-    | FromAbsolutePath of Absolute_Path
-    | FromRootlessPath of Rootless_Path
-    | FromEmptyPath of Empty_Path
+      as'string: string
+      authority: Authority voption
+      uri_path: URI_Path
+      path_kind: Path_Kind
 
-    member this.as_string =
-        match this with
-        | FromAuthorityPath authority_path -> authority_path.as_string
-        | FromAbsolutePath absolute_path -> absolute_path.as_string
-        | FromRootlessPath rootless_path -> rootless_path.as_string
-        | FromEmptyPath _ -> String.Empty
+    }
 
+    static member Empty =
+        {
 
-    static member parse: Parser<Hierarchical_Path, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+          as'string = String.Empty
+          authority = ValueNone
+          uri_path = URI_Path.Empty
+          path_kind = Path_Kind.empty
+
+        }
+
+    static member parse
+        : Parser<Hierarchical_Part, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (opt (
-                choice [
+                choice
+                    [
 
-                         Authority_Path.parse |>> FromAuthorityPath
-                         Absolute_Path.parse |>> FromAbsolutePath
-                         Rootless_Path.parse |>> FromRootlessPath
+                      URI_Part.parse
+                      |>> fun uri_part ->
+                          {
 
+                            as'string = uri_part.as'string
+                            authority = uri_part.authority
+                            uri_path = uri_part.uri_path
+                            path_kind = uri_part.path_kind
 
-                          ]
+                          }
+                      URI_Path.parse'rootless
+                      |>> fun rootless_path ->
+                          {
+
+                            as'string = rootless_path.as'string
+                            authority = ValueNone
+                            uri_path = rootless_path
+                            path_kind = rootless_path.path_kind
+
+                          }
+
+                      ]
              )
-             |>> fun hierarchical_path_option -> defaultValueArg hierarchical_path_option (FromEmptyPath(Empty_Path())))
+             |>> fun hierarchical_part_option -> defaultValueArg hierarchical_part_option Hierarchical_Part.Empty)
             """
 hier-part     = "//" authority path-abempty
              / path-absolute
              / path-rootless
              / path-empty
-            """
+"""
 
-type Absolute_URI =
+[<Struct>]
+type URI =
     {
 
+      as'string: string
       scheme: Scheme
-      hierarchical_path: Hierarchical_Path
-      query: Query ValueOption
+      hierarchical_part: Hierarchical_Part
+      query: Query voption
+      fragment: Fragment voption
 
-     }
-    member this.as_string =
-        $"{this.scheme.as_string}:{this.hierarchical_path.as_string}{Query.string_from_option this.query}"
+    }
 
-    static member parse: Parser<Absolute_URI, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse: Parser<URI, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
             (parser {
 
                 let! scheme = Scheme.parse
-                do! skip_rune ':'
-                let! hierarchical_path = Hierarchical_Path.parse
+                do! skip_unicodepoint ':'
+                let! hierarchical_part = Hierarchical_Part.parse
                 let! query = opt Query.parse
-                return (scheme, hierarchical_path, query)
-
+                let! fragment = opt Fragment.parse
+                return (scheme, hierarchical_part, query, fragment)
              }
-             |>> fun (scheme, hierarchical_path, query) ->
+             |>> fun (scheme, hierarchical_part, query_option, fragment_option) ->
 
-                     {
+                 let queryString =
+                     match query_option with
+                     | ValueSome query -> $"?{query.as'string}"
+                     | _ -> String.Empty
 
-                       scheme = scheme
-                       hierarchical_path = hierarchical_path
-                       query = query
+                 let fragmentString =
+                     match fragment_option with
+                     | ValueSome fragment -> $"#{fragment.as'string}"
+                     | _ -> String.Empty
 
-                     }
+                 {
 
+                   as'string = $"{scheme.as'string}:{hierarchical_part.as'string}{queryString}{fragmentString}"
+                   scheme = scheme
+                   hierarchical_part = hierarchical_part
+                   query = query_option
+                   fragment = fragment_option
+
+                 }
 
             )
-            """ absolute-URI  = scheme ":" hier-part [ "?" query ] """
+            """ URI         = scheme ":" hier-part [ "?" query ] [ "#" fragment ] """
 
-type URI =
+[<Struct>]
+type URI_Reference =
     {
 
-      scheme: Scheme
-      hierarchical_path: Hierarchical_Path
-      query: Query ValueOption
-      fragment: Fragment ValueOption
+      as'string: string
+      uri: URI voption
+      relative_reference: Relative_Reference voption
+      is'relative: bool
 
-     }
-    member this.as_string =
-        $"{this.scheme.as_string}:{this.hierarchical_path.as_string}{Query.string_from_option this.query}{Fragment.string_from_option this.fragment}"
+    }
 
-    member this.absolute_uri: Absolute_URI =
-        {
-
-          scheme = this.scheme
-          hierarchical_path = this.hierarchical_path
-          query = this.query }
-
-    static member parse: Parser<URI, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
+    static member parse
+        : Parser<URI_Reference, Unicodepoint, unit, ReadableArray<Unicodepoint>, ReadableArraySlice<Unicodepoint>> =
         parse_expecting
-            (parser {
+            (choice
+                [
 
-                let! absolute_uri = Absolute_URI.parse
-                let! fragment = opt Fragment.parse
-                return (absolute_uri, fragment)
+                  URI.parse
+                  |>> fun uri ->
+                      {
 
-             }
-             |>> fun (absolute_uri, fragment) ->
+                        as'string = uri.as'string
+                        uri = ValueSome uri
+                        relative_reference = ValueNone
+                        is'relative = false
 
-                     {
+                      }
+                  Relative_Reference.parse
+                  |>> fun relative_reference ->
+                      {
 
-                       scheme = absolute_uri.scheme
-                       hierarchical_path = absolute_uri.hierarchical_path
-                       query = absolute_uri.query
-                       fragment = fragment
+                        as'string = relative_reference.as'string
+                        uri = ValueNone
+                        relative_reference = ValueSome relative_reference
+                        is'relative = true
 
-                     }
+                      }
 
+                  ])
+            """ URI-reference = URI / relative-ref """
 
-            )
-            """ URI           = scheme ":" hier-part [ "?" query ] [ "#" fragment ] """
-
-[<RequireQualifiedAccess>]
-type URI_Reference =
-    | FromURI of URI
-    | FromRelativeReference of Relative_Reference
-    member this.path =
-        match this with
-        | FromURI uri ->
-            match uri.hierarchical_path with
-            | Hierarchical_Path.FromAuthorityPath authority_path -> URI_Path.FromAbemptyPath authority_path.tail
-            | Hierarchical_Path.FromAbsolutePath absolute_path -> URI_Path.FromAbsolutePath absolute_path
-            | Hierarchical_Path.FromRootlessPath rootless_path -> URI_Path.FromRootlessPath rootless_path
-            | Hierarchical_Path.FromEmptyPath empty_path -> URI_Path.FromEmptyPath empty_path
-
-        | FromRelativeReference relative_reference ->
-            match relative_reference.relative_path with
-            | Relative_Path.FromAuthorityPath authority_path -> URI_Path.FromAbemptyPath authority_path.tail
-            | Relative_Path.FromAbsolutePath absolute_path -> URI_Path.FromAbsolutePath absolute_path
-            | Relative_Path.FromNoSchemePath noscheme_path -> URI_Path.FromNoSchemePath noscheme_path
-            | Relative_Path.FromEmptyPath empty_path -> URI_Path.FromEmptyPath empty_path
-
-
-    member this.query =
-        match this with
-        | FromURI uri -> uri.query
-        | FromRelativeReference relative_reference -> relative_reference.query
-
-    member this.fragment =
-        match this with
-        | FromURI uri -> uri.fragment
-        | FromRelativeReference relative_reference -> relative_reference.fragment
-
-    member this.as_string =
-        match this with
-        | FromURI uri -> uri.as_string
-        | FromRelativeReference relative_reference -> relative_reference.as_string
-
-    static member parse: Parser<URI_Reference, Rune, unit, ReadableArray<Rune>, ReadableArraySlice<Rune>> =
-        parse_expecting
-            (choice [
-
-                      URI.parse |>> FromURI
-                      Relative_Reference.parse |>> FromRelativeReference
-
-                       ])
-            """  URI-reference = URI / relative-ref """
-*)
+// let test = result'from_parse URI.parse OnInput "https://aaronandclaire.com/the-easiest-chicken-katsu-recipe/"

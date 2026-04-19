@@ -1,0 +1,60 @@
+[ {
+   "description": "",
+   "devtoolsFrontendUrl": "https://aka.ms/docs-landing-page/serve_rev/@4ea561665942d77ab9418b65918fd837650cfaff/inspector.html?ws=localhost:9222/devtools/page/7E86D28FD977DEBADFF4133119DC45E6",
+   "faviconUrl": "https://abs.twimg.com/favicons/twitter.3.ico",
+   "id": "7E86D28FD977DEBADFF4133119DC45E6",
+   "title": "X",
+   "type": "page",
+   "url": "https://x.com/home",
+   "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/7E86D28FD977DEBADFF4133119DC45E6"
+}, {
+   "description": "",
+   "devtoolsFrontendUrl": "https://aka.ms/docs-landing-page/serve_rev/@4ea561665942d77ab9418b65918fd837650cfaff/inspector.html?ws=localhost:9222/devtools/page/C1BA019C0AA61C729E9A204A5887A8F6",
+   "faviconUrl": "https://assets.msn.com/statics/icons/favicon_newtabpage.png",
+   "id": "C1BA019C0AA61C729E9A204A5887A8F6",
+   "title": "New tab",
+   "type": "page",
+   "url": "https://ntp.msn.com/edge/ntp?locale=en-US&title=New%20tab&dsp=1&sp=Bing&feed_dis=always&en_widget_reg=false&PC=U531",
+   "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/C1BA019C0AA61C729E9A204A5887A8F6"
+}, {
+   "description": "",
+   "devtoolsFrontendUrl": "https://aka.ms/docs-landing-page/serve_rev/@4ea561665942d77ab9418b65918fd837650cfaff/inspector.html?ws=localhost:9222/devtools/page/6D9248BC745DE115EF24004CC710E4CF",
+   "faviconUrl": "https://assets.msn.com/statics/icons/favicon_newtabpage.png",
+   "id": "6D9248BC745DE115EF24004CC710E4CF",
+   "title": "New tab",
+   "type": "other",
+   "url": "edge://newtab/",
+   "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/6D9248BC745DE115EF24004CC710E4CF"
+}, {
+   "description": "",
+   "devtoolsFrontendUrl": "https://aka.ms/docs-landing-page/serve_rev/@4ea561665942d77ab9418b65918fd837650cfaff/inspector.html?ws=localhost:9222/devtools/page/982DCD26D2E4EF2488EE6E46B4117A00",
+   "id": "982DCD26D2E4EF2488EE6E46B4117A00",
+   "title": "Dark Reader",
+   "type": "background_page",
+   "url": "chrome-extension://ifoakfbpdcdoeenechcleahebpibofpc/background/index.html",
+   "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/982DCD26D2E4EF2488EE6E46B4117A00"
+}, {
+   "description": "",
+   "devtoolsFrontendUrl": "https://aka.ms/docs-landing-page/serve_rev/@4ea561665942d77ab9418b65918fd837650cfaff/worker_app.html?ws=localhost:9222/devtools/page/42587AF0972094AF13E4696CB9D8CF9A",
+   "id": "42587AF0972094AF13E4696CB9D8CF9A",
+   "title": "",
+   "type": "shared_worker",
+   "url": "blob:https://x.com/1012053e-2ed8-432f-983c-86b040eb1979",
+   "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/42587AF0972094AF13E4696CB9D8CF9A"
+}, {
+   "description": "",
+   "devtoolsFrontendUrl": "https://aka.ms/docs-landing-page/serve_rev/@4ea561665942d77ab9418b65918fd837650cfaff/worker_app.html?ws=localhost:9222/devtools/page/C677604D3AEE4C43A2347ECDAE40AD5B",
+   "id": "C677604D3AEE4C43A2347ECDAE40AD5B",
+   "title": "Service Worker https://ntp.msn.com/edge/ntp/service-worker.js?bundlevariant=ruby&amp;bundles=latest&amp;riverAgeMinutes=2880&amp;navAgeMinutes=2880&amp;networkTimeoutSeconds=5&amp;bgTaskNetworkTimeoutSeconds=8&amp;enableNetworkFirst=true&amp;enableEmptySectionRoute=true&amp;enableNavPreload=true&amp;enableStaticAdsRouting=true",
+   "type": "service_worker",
+   "url": "https://ntp.msn.com/edge/ntp/service-worker.js?bundlevariant=ruby&bundles=latest&riverAgeMinutes=2880&navAgeMinutes=2880&networkTimeoutSeconds=5&bgTaskNetworkTimeoutSeconds=8&enableNetworkFirst=true&enableEmptySectionRoute=true&enableNavPreload=true&enableStaticAdsRouting=true",
+   "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/C677604D3AEE4C43A2347ECDAE40AD5B"
+}, {
+   "description": "",
+   "devtoolsFrontendUrl": "https://aka.ms/docs-landing-page/serve_rev/@4ea561665942d77ab9418b65918fd837650cfaff/worker_app.html?ws=localhost:9222/devtools/page/1F62B547CBEE8B9BCF20793756884C6F",
+   "id": "1F62B547CBEE8B9BCF20793756884C6F",
+   "title": "Service Worker https://x.com/sw.js",
+   "type": "service_worker",
+   "url": "https://x.com/sw.js",
+   "webSocketDebuggerUrl": "ws://localhost:9222/devtools/page/1F62B547CBEE8B9BCF20793756884C6F"
+} ]
