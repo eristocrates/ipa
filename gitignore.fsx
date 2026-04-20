@@ -66,6 +66,7 @@ let gitignoreLines =
         yield @"**.vs/"
         yield @".fake"
         yield @"secret/"
+        yield @".git/objects/pack/"
         yield @"Application/Microsoft/Edge/data_dir/"
         yield ""
         yield "# ------------------------------------------------------------"
