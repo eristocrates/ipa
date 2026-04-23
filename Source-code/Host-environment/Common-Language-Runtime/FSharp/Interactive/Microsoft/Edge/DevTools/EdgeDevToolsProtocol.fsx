@@ -11,7 +11,7 @@ open FsHttp
 open FSharp.Data
 
 #r "nuget: XParsec"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\ParserCombinator\Identifier\Resource\International\International_Resource_Identifier.fsx"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\Identifier\Resource\International\International_Resource_Identifier.fsx"
 
 open XParsecErgonomics
 open International_Resource_Identifier
@@ -44,14 +44,17 @@ let runtimeDirectory =
 module version =
     let endpoint = json_endpoint "version"
 
-    let response = http { GET endpoint.as'string } |> Request.send |> Response.toText
+    let response =
+        http { GET endpoint.as'string }
+        |> Request.send
+        |> Response.toText
 
 
     [<Literal>]
     let sampleFilePath =
         @"D:\Surface\Company\Microsoft\Edge\ChromeDevTools\version.json"
 
-    let json = JsonProvider<sampleFilePath>.Parse(response)
+    let json = JsonProvider<sampleFilePath>.Parse (response)
 
 (*
     let fsi =
@@ -101,7 +104,10 @@ module list =
     let url = endpoint.as'string
 
     let response () =
-        let text = http { GET url } |> Request.send |> Response.toText
+        let text =
+            http { GET url }
+            |> Request.send
+            |> Response.toText
 
         File.WriteAllText(Path.Combine(runtimeDirectoryPath, "list.json"), text)
         text
@@ -110,7 +116,7 @@ module list =
     let sampleFilePath = @"D:\Surface\Company\Microsoft\Edge\ChromeDevTools\list.json"
 
     let json () =
-        JsonProvider<sampleFilePath>.Parse(response ())
+        JsonProvider<sampleFilePath>.Parse (response ())
 (*
     let fsi =
         Oak() {

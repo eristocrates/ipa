@@ -1,2 +1,2 @@
 @echo off
-powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "python -m mailparser" %* 
+powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "py -m mailparser" %* 

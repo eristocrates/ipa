@@ -11,7 +11,7 @@
     
     <Compile Include="Language\Meta\Bacus_Naur_Form\Augmented\ABNF.fs" />
 	  <Compile Include="Identifier\Resource\Uniform\URI.fs" />
-	<Compile Include="Identifier\Resource\International\IRI.fs" />
+	<Compile Include="Identifier\Resource\Internationalized\IRI.fs" />
 	  <Compile Include="Language\Markup\Extensible\XML.fs" />
 	  <Compile Include="Model\Resource_Description_Framework\Notation3_Lineage\Turtle\Turtle.fs" />
   </ItemGroup>

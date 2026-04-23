@@ -41,7 +41,7 @@ open System.Threading.Tasks
 
 
 #r "nuget: XParsec"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\ParserCombinator\Identifier\Resource\International\International_Resource_Identifier.fsx"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\Identifier\Resource\International\International_Resource_Identifier.fsx"
 
 open XParsec
 open XParsecErgonomics

@@ -1,7 +1,7 @@
 @echo off
 setlocal
 rem === configure your portable interpreter ===
-set "PY=C:\Repositories\eristocrates\ipa\Language\Python\python-full-3.13.4-windows-x86_64\bin\python.exe"
+set "PY=C:\Users\CollierB\AppData\Roaming\uv\python\cpython-3.14.3-windows-x86_64-none\uvpython.exe"
 
 rem === discover the user-site directory for this interpreter ===
 for /f "usebackq delims=" %%S in (`"%PY%" -m site --user-site`) do set "US=%%S"

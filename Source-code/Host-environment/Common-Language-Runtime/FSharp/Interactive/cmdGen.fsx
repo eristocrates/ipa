@@ -74,7 +74,7 @@ stems
         trimmedString
             $"""
 @echo off
-powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "python -m {stem}" {percent}*
+powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "py -m {stem}" {percent}*
 
                     """
 

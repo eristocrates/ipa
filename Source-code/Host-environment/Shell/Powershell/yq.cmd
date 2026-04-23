@@ -1,2 +1,2 @@
 @echo off
-powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "python -m yq" %* 
+powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "py -m yq" %* 

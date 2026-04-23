@@ -1,2 +1,2 @@
 @echo off
-powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "python -m ttx" %*
+powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -Command "py -m ttx" %*
