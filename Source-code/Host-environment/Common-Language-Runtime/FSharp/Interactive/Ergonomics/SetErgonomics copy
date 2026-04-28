@@ -1,0 +1,288 @@
+#r "nuget: Unquote"
+
+open Swensen.Unquote.Assertions
+
+/// https://ncatlab.org/nlab/show/material+set+theory
+[<RequireQualifiedAccess>]
+type Material_Set<'ElementType when 'ElementType: comparison> =
+    {
+
+      set_definition_components: Set_Definition_Component<'ElementType> array
+
+     }
+    member this.contains(element: 'ElementType) =
+        let exists_in_excluded =
+            this.set_definition_components
+            |> Array.filter (fun set_definition_component -> set_definition_component.IsFromExcludedInterval)
+            |> Array.exists (fun set_definition_component -> set_definition_component.contains element)
+
+        let exists_in_components =
+            this.set_definition_components
+            |> Array.filter (fun set_definition_component -> not set_definition_component.IsFromExcludedInterval)
+            |> Array.exists (fun set_definition_component -> set_definition_component.contains element)
+
+        exists_in_components && (not exists_in_excluded)
+
+and [<RequireQualifiedAccess>] Set_Definition_Component<'ElementType when 'ElementType: comparison> =
+    | FromIncludedRoster of Included_Roster<'ElementType>
+    | FromIncludedInterval of Included_Interval<'ElementType>
+    | FromExcludedRoster of Excluded_Roster<'ElementType>
+    | FromExcludedInterval of Excluded_Interval<'ElementType>
+
+    member this.contains(element: 'ElementType) : bool =
+        match this with
+        | FromIncludedRoster Included_Roster -> Included_Roster.contains element
+        | FromIncludedInterval Included_Interval -> Included_Interval.contains element
+        | FromExcludedInterval excluded_interval -> excluded_interval.contains element
+
+and Included_Roster<'ElementType when 'ElementType: comparison> =
+    {
+
+      extensional_set: Set<'ElementType>
+
+     }
+
+and Excluded_Roster<'ElementType when 'ElementType: comparison> =
+    {
+
+      extensional_set: Set<'ElementType>
+
+     }
+    member this.contains(element: 'ElementType) : bool = this.extensional_set.Contains(element)
+
+
+and Included_Interval<'ElementType when 'ElementType: comparison> =
+    {
+
+      first_element: 'ElementType
+      last_element: 'ElementType
+
+     }
+    member this.contains(element: 'ElementType) =
+        this.first_element <= element
+        && element <= this.last_element
+
+and Excluded_Interval<'ElementType when 'ElementType: comparison> =
+    {
+
+      first_element: 'ElementType
+      last_element: 'ElementType
+
+     }
+    member this.contains(element: 'ElementType) =
+        this.first_element <= element
+        && element <= this.last_element
+
+
+module Set_Definition_Component =
+    let FromElementSequence<'ElementType when 'ElementType: comparison> (elements: seq<'ElementType>) =
+        let element_set = Set.ofSeq elements
+        let element_roster = { extensional_set = element_set }
+        Set_Definition_Component.FromIncludedRoster element_roster
+
+    let FromIncludedInterval<'ElementType when 'ElementType: comparison>
+        (first_element: 'ElementType)
+        (last_element: 'ElementType)
+        =
+        test <@ first_element <= last_element @>
+
+        Set_Definition_Component.FromIncludedInterval
+            { first_element = first_element
+              last_element = last_element }
+
+    let FromExcludedInterval<'ElementType when 'ElementType: comparison>
+        (first_element: 'ElementType)
+        (last_element: 'ElementType)
+        =
+        test <@ first_element <= last_element @>
+
+        Set_Definition_Component.FromExcludedInterval
+            { first_element = first_element
+              last_element = last_element }
+
+module Material_Set =
+    let FromSetDefinitionComponent<'ElementType when 'ElementType: comparison>
+        (set_definition_component: Set_Definition_Component<'ElementType>)
+        : Material_Set<'ElementType> =
+        {
+
+          set_definition_components = [| set_definition_component |]
+
+        }
+
+    let FromSetDefinitionComponents<'ElementType when 'ElementType: comparison>
+        (set_definition_components: Set_Definition_Component<'ElementType> array)
+        : Material_Set<'ElementType> =
+        {
+
+          set_definition_components = set_definition_components
+
+        }
+
+    let FromIncludedInterval<'ElementType when 'ElementType: comparison>
+        (first_element: 'ElementType)
+        (last_element: 'ElementType)
+
+        : Material_Set<'ElementType> =
+        FromSetDefinitionComponent(Set_Definition_Component.FromIncludedInterval first_element last_element)
+
+
+    let FromIncludedRoster<'ElementType when 'ElementType: comparison>
+        (elements: 'ElementType array)
+
+        : Material_Set<'ElementType> =
+        FromSetDefinitionComponent(Set_Definition_Component.FromElementSequence elements)
+
+    let FromSingleton<'ElementType when 'ElementType: comparison>
+        (element: 'ElementType)
+
+        : Material_Set<'ElementType> =
+        FromIncludedRoster [| element |]
+
+    let FromString
+        (element_string: string)
+
+        : Material_Set<int> =
+        let code_point_array =
+            seq { for rune in element_string.EnumerateRunes() -> rune.Value }
+            |> Seq.toArray
+
+        FromIncludedRoster(code_point_array)
+
+    let FromUnion<'ElementType when 'ElementType: comparison>
+        (material_sets: Material_Set<'ElementType> array)
+        : Material_Set<'ElementType> =
+        let interval_components =
+            material_sets
+            |> Array.collect (fun material_set ->
+
+                material_set.set_definition_components
+                |> Array.filter (fun set_definition_component ->
+                    set_definition_component.IsFromIncludedInterval
+                    || set_definition_component.IsFromExcludedInterval))
+
+        let roster_set_union =
+            material_sets
+            |> Array.collect (fun material_set ->
+
+                material_set.set_definition_components
+                |> Array.filter (fun set_definition_component -> set_definition_component.IsFromIncludedRoster)
+                |> Array.map (fun set_definition_component ->
+                    let (Set_Definition_Component.FromIncludedRoster Included_Roster) =
+                        set_definition_component
+
+                    Included_Roster.extensional_set
+
+                )
+
+            )
+            |> Set.unionMany
+
+        let roster_union_component =
+            if roster_set_union.Count > 0 then
+                [| Set_Definition_Component.FromIncludedRoster { extensional_set = roster_set_union } |]
+            else
+                [||]
+
+        FromSetDefinitionComponents(
+            Array.concat [| interval_components
+                            roster_union_component |]
+        )
+
+    let FromDifference<'ElementType when 'ElementType: comparison>
+        (elements_to_exclude_set: Material_Set<'ElementType>)
+        (elements_to_keep_set: Material_Set<'ElementType>)
+        : Material_Set<'ElementType> =
+        let ranges_to_keep =
+            elements_to_keep_set.set_definition_components
+            |> Array.filter (fun set_definition_component ->
+                set_definition_component.IsFromIncludedInterval
+                || set_definition_component.IsFromExcludedInterval)
+
+        let new_ranges_to_include =
+            elements_to_exclude_set.set_definition_components
+            |> Array.filter (fun set_definition_component -> set_definition_component.IsFromExcludedInterval)
+            |> Array.map (fun set_definition_component_to_include ->
+
+                let (Set_Definition_Component.FromExcludedInterval excluded_interval_to_include) =
+                    set_definition_component_to_include
+
+                Set_Definition_Component.FromIncludedInterval
+                    excluded_interval_to_include.first_element
+                    excluded_interval_to_include.last_element
+
+            )
+
+        let new_ranges_to_exclude =
+            elements_to_exclude_set.set_definition_components
+            |> Array.filter (fun set_definition_component -> set_definition_component.IsFromIncludedInterval)
+            |> Array.map (fun set_definition_component_to_exclude ->
+
+                let (Set_Definition_Component.FromIncludedInterval Included_Interval_to_exclude) =
+                    set_definition_component_to_exclude
+
+                Set_Definition_Component.FromExcludedInterval
+                    Included_Interval_to_exclude.first_element
+                    Included_Interval_to_exclude.last_element
+
+            )
+
+        let roster_to_exclude =
+
+            elements_to_exclude_set.set_definition_components
+            |> Array.filter (fun set_definition_component -> set_definition_component.IsFromIncludedRoster)
+            |> Array.map (fun set_definition_component ->
+                let (Set_Definition_Component.FromIncludedRoster Included_Roster) =
+                    set_definition_component
+
+                Included_Roster.extensional_set
+
+            )
+
+        let roster_to_keep =
+
+            elements_to_keep_set.set_definition_components
+            |> Array.filter (fun set_definition_component -> set_definition_component.IsFromIncludedRoster)
+            |> Array.map (fun set_definition_component ->
+                let (Set_Definition_Component.FromIncludedRoster Included_Roster) =
+                    set_definition_component
+
+                Included_Roster.extensional_set
+
+            )
+
+        // unquote test for single element
+        let new_roster_set =
+            if roster_to_exclude.Length > 0
+               && roster_to_keep.Length > 0 then
+                test <@ roster_to_exclude.Length = 1 @>
+                test <@ roster_to_keep.Length = 1 @>
+
+                [| Set_Definition_Component.FromIncludedRoster
+                       { extensional_set = Set.difference roster_to_keep[0] roster_to_exclude[0] } |]
+            else
+                [||]
+
+
+        FromSetDefinitionComponents(
+            Array.concat [|
+
+                            ranges_to_keep
+                            new_ranges_to_include
+                            new_ranges_to_exclude
+                            new_roster_set
+
+                             |]
+        )
+
+    let ExcludeInterval<'ElementType when 'ElementType: comparison>
+
+        (first_element: 'ElementType)
+        (last_element: 'ElementType)
+        (material_set: Material_Set<'ElementType>)
+
+        : Material_Set<'ElementType> =
+        FromUnion [| material_set
+                     FromSetDefinitionComponent(
+                         Set_Definition_Component.FromExcludedInterval first_element last_element
+                     ) |]

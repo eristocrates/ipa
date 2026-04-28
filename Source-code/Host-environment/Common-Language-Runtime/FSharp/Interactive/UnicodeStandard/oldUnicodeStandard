@@ -5,7 +5,7 @@ open System.Text.Unicode
 open System.Globalization
 open System.Xml.Linq
 
-
+type Unicode_Scalar_Value = Unicode_Scalar_Value of int
 
 [<Struct>]
 [<RequireQualifiedAccess>]
