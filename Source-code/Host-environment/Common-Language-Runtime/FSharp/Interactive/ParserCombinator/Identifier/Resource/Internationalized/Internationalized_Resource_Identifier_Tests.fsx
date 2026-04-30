@@ -3,13 +3,13 @@ open System.Text
 open System.IO
 open System.Globalization
 
+#r "nuget: Unquote"
 #r "nuget: XParsec"
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\Identifier\Resource\Internationalized\Internationalized_Resource_Identifier.fsx"
 
 open Resource_Identifier
 open Internationalized_Resource_Identifier
 
-#r "nuget: Unquote"
 
 open Unicode_Standard
 
@@ -118,3 +118,8 @@ let iri_accepts_uri_examples () =
     |> Array.iter (parse_succeeds IRI.parse)
 
 iri_accepts_uri_examples ()
+
+
+
+
+parse_result IRI.parse "HTTP://User@EXAMPLE.COM:80/%7Euser/a/../b?q=%31#frag"

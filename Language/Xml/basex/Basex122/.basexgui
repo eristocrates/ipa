@@ -5,7 +5,7 @@ CHECKUPDATES = false
 # Paths
 INPUTPATH = D:\Surface\Standards\Unicode\UCD\17.0.0\ucdxml\ucd.all.flat.xml
 DATAPATH = C:/Repositories/eristocrates/ipa/Language/Xml/basex/Basex122/
-WORKPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/
+WORKPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/codegen/
 PROJECTPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/
 
 # Layout
@@ -32,7 +32,7 @@ SHOWINFO = false
 SHOWMAP = false
 SHOWTABLE = false
 SHOWTEXT = true
-SHOWFOLDER = true
+SHOWFOLDER = false
 SHOWEXPLORE = false
 SHOWPLOT = false
 SHOWEDITOR = true
@@ -163,8 +163,8 @@ XQUERY20 = //table/foreignKeyConstraint[@name = "
 
 # Files
 EDITOR = 20
-EDITOR1 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/chars_by_attribute_value.xq
-EDITOR2 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/codegen/attribute_bindings.xq
+EDITOR1 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/codegen/attribute_bindings.xq
+EDITOR2 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/chars_by_attribute_value.xq
 EDITOR3 = C:/Repositories/eristocrates/ipa/Queries/XQuery/General/attribute-local-names.xq
 EDITOR4 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/anyOf.xq
 EDITOR5 = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/ucd/named-sequence.xq
