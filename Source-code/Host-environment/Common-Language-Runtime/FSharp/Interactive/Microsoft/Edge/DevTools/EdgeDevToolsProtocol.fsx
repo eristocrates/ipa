@@ -1,31 +1,19 @@
 open System
 open System.IO
-open System.Text
-open System.Text.Unicode
-open System.Linq
-open System.Globalization
 
 #r "nuget: FsHttp"
 open FsHttp
 #r "nuget: FSharp.Data"
 open FSharp.Data
 
-#r "nuget: XParsec"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\Identifier\Resource\International\International_Resource_Identifier.fsx"
-
-open XParsecErgonomics
-open International_Resource_Identifier
-
 
 let scheme_string = "http"
 let host_string = "localhost"
 let port_string = "9222"
 
-let startpoint =
-    result'from_parse IRI.parse OnInput $"{scheme_string}://{host_string}:{port_string}"
+let startpoint = new Uri($"{scheme_string}://{host_string}:{port_string}")
 
-let json_endpoint (endpoint: string) =
-    result'from_parse IRI.parse OnInput $"{startpoint.as'string}/json/{endpoint}"
+let json_endpoint (endpoint: string) = new Uri($"{startpoint}json/{endpoint}")
 
 let runtimeDirectoryPath = Path.Combine(__SOURCE_DIRECTORY__, "runtime")
 
@@ -37,24 +25,23 @@ let runtimeDirectoryUriString =
     file_scheme_string'from'windows_path runtimeDirectoryPath
 
 
-let runtimeDirectory =
-    result'from_parse IRI_Reference.parse OnInput runtimeDirectoryUriString
+let runtimeDirectory = new Uri(runtimeDirectoryUriString)
 
+
+let text_from_http (uri: Uri) =
+    http { GET uri.OriginalString } |> Request.send |> Response.toText
 
 module version =
     let endpoint = json_endpoint "version"
 
-    let response =
-        http { GET endpoint.as'string }
-        |> Request.send
-        |> Response.toText
+    let json_text = text_from_http endpoint
 
 
     [<Literal>]
     let sampleFilePath =
         @"D:\Surface\Company\Microsoft\Edge\ChromeDevTools\version.json"
 
-    let json = JsonProvider<sampleFilePath>.Parse (response)
+    let json = JsonProvider<sampleFilePath>.Parse(json_text)
 
 (*
     let fsi =
@@ -72,18 +59,24 @@ module version =
 
 
 
-(*
 module protocol =
     let endpoint = json_endpoint "protocol"
 
-    let response = http { GET endpoint.as'string } |> Request.send |> Response.toText
+    let json_text = text_from_http endpoint
 
     [<Literal>]
     let sampleFilePath =
         @"D:\Surface\Company\Microsoft\Edge\ChromeDevTools\protocol.json"
 
-    let json = JsonProvider<sampleFilePath>.Parse(response)
-*)
+    let json = JsonProvider<sampleFilePath>.Parse(json_text)
+
+    [<Literal>]
+    let schemaFilePath =
+        @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Microsoft\Edge\TypeProviderSamples\MicrosoftEdgeDevTools\protocol.schema.json"
+
+    let jsonschema = JsonProvider<schemaFilePath>.Load(schemaFilePath)
+
+
 (*
     let fsi =
         Oak() {
@@ -101,13 +94,9 @@ module protocol =
 
 module list =
     let endpoint = json_endpoint "list"
-    let url = endpoint.as'string
 
-    let response () =
-        let text =
-            http { GET url }
-            |> Request.send
-            |> Response.toText
+    let get_json_text () =
+        let text = text_from_http endpoint
 
         File.WriteAllText(Path.Combine(runtimeDirectoryPath, "list.json"), text)
         text
@@ -116,7 +105,7 @@ module list =
     let sampleFilePath = @"D:\Surface\Company\Microsoft\Edge\ChromeDevTools\list.json"
 
     let json () =
-        JsonProvider<sampleFilePath>.Parse (response ())
+        JsonProvider<sampleFilePath>.Parse(get_json_text ())
 (*
     let fsi =
         Oak() {
