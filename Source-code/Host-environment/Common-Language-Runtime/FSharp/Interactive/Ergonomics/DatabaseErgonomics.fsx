@@ -13,7 +13,6 @@ open MessagePack
 open UUIDNext.Tools
 open UUIDNext
 
-open FSharp.UMX
 
 #r "nuget: ObjectLayoutInspector"
 open ObjectLayoutInspector
@@ -32,7 +31,7 @@ type Transaction_Context =
       environment: LightningEnvironment
       database_configuration: DatabaseConfiguration
 
-     }
+    }
 
 let encode_component<'ComponentType> (runtime_component: 'ComponentType) =
     MessagePackSerializer.Serialize(runtime_component)
@@ -93,31 +92,23 @@ module LMDB =
 
 
         let use_reverse_string_keys (database_configuration: DatabaseConfiguration) =
-            database_configuration.Flags <-
-                (database_configuration.Flags
-                 ||| DatabaseOpenFlags.ReverseKey)
+            database_configuration.Flags <- (database_configuration.Flags ||| DatabaseOpenFlags.ReverseKey)
 
             database_configuration
 
         let use_sorted_duplicates (database_configuration: DatabaseConfiguration) =
-            database_configuration.Flags <-
-                (database_configuration.Flags
-                 ||| DatabaseOpenFlags.DuplicatesSort)
+            database_configuration.Flags <- (database_configuration.Flags ||| DatabaseOpenFlags.DuplicatesSort)
 
             database_configuration
 
         let use_numeric_keys_in_native_byte_order (database_configuration: DatabaseConfiguration) =
-            database_configuration.Flags <-
-                (database_configuration.Flags
-                 ||| DatabaseOpenFlags.IntegerKey)
+            database_configuration.Flags <- (database_configuration.Flags ||| DatabaseOpenFlags.IntegerKey)
 
             database_configuration
 
         let use_sorted_duplicates_with_fixed_size (database_configuration: DatabaseConfiguration) =
 
-            database_configuration.Flags <-
-                (database_configuration.Flags
-                 ||| DatabaseOpenFlags.DuplicatesFixed)
+            database_configuration.Flags <- (database_configuration.Flags ||| DatabaseOpenFlags.DuplicatesFixed)
 
             database_configuration |> use_sorted_duplicates
 
@@ -125,40 +116,31 @@ module LMDB =
             (database_configuration: DatabaseConfiguration)
             =
 
-            database_configuration.Flags <-
-                (database_configuration.Flags
-                 ||| DatabaseOpenFlags.IntegerDuplicates)
+            database_configuration.Flags <- (database_configuration.Flags ||| DatabaseOpenFlags.IntegerDuplicates)
 
             database_configuration |> use_sorted_duplicates
 
         let use_sorted_duplicates_with_reverse_string_keys (database_configuration: DatabaseConfiguration) =
 
-            database_configuration.Flags <-
-                (database_configuration.Flags
-                 ||| DatabaseOpenFlags.ReverseDuplicates)
+            database_configuration.Flags <- (database_configuration.Flags ||| DatabaseOpenFlags.ReverseDuplicates)
 
             database_configuration |> use_sorted_duplicates
 
         let create_DB_if_not_already_existing (database_configuration: DatabaseConfiguration) =
-            database_configuration.Flags <-
-                (database_configuration.Flags
-                 ||| DatabaseOpenFlags.Create)
+            database_configuration.Flags <- (database_configuration.Flags ||| DatabaseOpenFlags.Create)
 
             database_configuration
 
         let duplicate_key_environment () =
             let database_open_config = DatabaseConfiguration()
 
-            database_open_config.Flags <-
-                (DatabaseOpenFlags.Create
-                 ||| DatabaseOpenFlags.DuplicatesSort)
+            database_open_config.Flags <- (DatabaseOpenFlags.Create ||| DatabaseOpenFlags.DuplicatesSort)
 
             database_open_config
 
     module env =
         let create_gigabytes_at_path (gigabites: int) (directory_path: string) =
-            System.IO.Directory.CreateDirectory(directory_path)
-            |> ignore
+            System.IO.Directory.CreateDirectory(directory_path) |> ignore
 
             let environment = new LightningEnvironment(directory_path)
             environment.MapSize <- int64 gigabites * GiB
@@ -171,11 +153,10 @@ module Encoded =
           component_type: string
 
           [<Key(1)>]
-          component_bytes: byte [] }
+          component_bytes: byte[] }
 
     type Entity'Component =
-        { Entity: string
-          Component: Component }
+        { Entity: string; Component: Component }
 
 
 
@@ -196,9 +177,7 @@ module Bytes =
 
 module MDBValue =
     let decode<'ComponentType> (value: MDBValue) =
-        value.AsSpan().ToArray()
-        |> ReadOnlyMemory
-        |> Decoded.from_bytes<'ComponentType>
+        value.AsSpan().ToArray() |> ReadOnlyMemory |> Decoded.from_bytes<'ComponentType>
 
 module MDBResultCode =
 
@@ -236,8 +215,7 @@ module Write =
 
                     let encoded_component_bytes = Bytes.from_runtime encoded_component
 
-                    transaction.Put(database, entity_bytes, encoded_component_bytes)
-                    |> ignore
+                    transaction.Put(database, entity_bytes, encoded_component_bytes) |> ignore
 
                 entity'component_batch.Length)
             |> ignore
@@ -368,7 +346,8 @@ module Read =
 
                     Some(
                         { Entity = Entity
-                          Component = Component }: Decoded.Entity'Component<'ComponentType>
+                          Component = Component }
+                        : Decoded.Entity'Component<'ComponentType>
                     )
                 else
                     None)
@@ -391,7 +370,7 @@ module Migrate =
 
             let new_entity_bytes = Encoding.UTF8.GetBytes(new_entity)
 
-            let component_bytes = ResizeArray<byte []>()
+            let component_bytes = ResizeArray<byte[]>()
 
             match cursor.Set(old_entity_bytes), cursor.GetCurrent() with
             | MDBResultCode.Success, struct (MDBResultCode.Success, actual_entity_value, first_component_value) ->
@@ -415,11 +394,9 @@ module Migrate =
             | _ -> failwith $"No components found for old entity key: {old_entity}"
 
             for Component in component_bytes do
-                transaction.Put(database, new_entity_bytes, Component)
-                |> ignore
+                transaction.Put(database, new_entity_bytes, Component) |> ignore
 
-            transaction.Delete(database, old_entity_bytes)
-            |> ignore
+            transaction.Delete(database, old_entity_bytes) |> ignore
 
             component_bytes.Count)
         |> ignore
@@ -463,78 +440,73 @@ module Update =
         (update_entity'component: Decoded.Entity'Component<'ComponentType> -> Decoded.Entity'Component<'ComponentType>)
         =
 
-        LMDB.Transaction.write
-            $"update entities with {component_type}"
-            transaction_context
-            (fun transaction database ->
+        LMDB.Transaction.write $"update entities with {component_type}" transaction_context (fun transaction database ->
 
-                use cursor = transaction.CreateCursor(database)
+            use cursor = transaction.CreateCursor(database)
 
-                let encoded_entity'components: Encoded.Entity'Component array =
-                    cursor.AsEnumerable()
-                    |> Seq.map (fun struct (entity_value, component_value) ->
+            let encoded_entity'components: Encoded.Entity'Component array =
+                cursor.AsEnumerable()
+                |> Seq.map (fun struct (entity_value, component_value) ->
 
-                        let entity = Encoding.UTF8.GetString(entity_value.AsSpan())
+                    let entity = Encoding.UTF8.GetString(entity_value.AsSpan())
 
-                        let encoded_component = MDBValue.decode<Encoded.Component> component_value
+                    let encoded_component = MDBValue.decode<Encoded.Component> component_value
 
-                        let entity'component: Encoded.Entity'Component =
-                            { Entity = entity
-                              Component = encoded_component }
+                    let entity'component: Encoded.Entity'Component =
+                        { Entity = entity
+                          Component = encoded_component }
 
-                        entity'component)
-                    |> Seq.toArray
+                    entity'component)
+                |> Seq.toArray
 
-                let updated_entity'components: Encoded.Entity'Component array =
-                    encoded_entity'components
-                    |> Array.map (fun encoded_entity'component ->
+            let updated_entity'components: Encoded.Entity'Component array =
+                encoded_entity'components
+                |> Array.map (fun encoded_entity'component ->
 
-                        if encoded_entity'component.Component.component_type = component_type then
-                            let decoded_component =
-                                encoded_entity'component.Component.component_bytes
-                                |> ReadOnlyMemory
-                                |> Decoded.from_bytes<'ComponentType>
+                    if encoded_entity'component.Component.component_type = component_type then
+                        let decoded_component =
+                            encoded_entity'component.Component.component_bytes
+                            |> ReadOnlyMemory
+                            |> Decoded.from_bytes<'ComponentType>
 
-                            let decoded_entity'component: Decoded.Entity'Component<'ComponentType> =
-                                { Entity = encoded_entity'component.Entity
-                                  Component = decoded_component }
+                        let decoded_entity'component: Decoded.Entity'Component<'ComponentType> =
+                            { Entity = encoded_entity'component.Entity
+                              Component = decoded_component }
 
-                            let updated_decoded_entity'component =
-                                update_entity'component decoded_entity'component
+                        let updated_decoded_entity'component =
+                            update_entity'component decoded_entity'component
 
-                            let updated_encoded_component: Encoded.Component =
-                                { component_type = component_type
-                                  component_bytes = Bytes.from_runtime updated_decoded_entity'component.Component }
+                        let updated_encoded_component: Encoded.Component =
+                            { component_type = component_type
+                              component_bytes = Bytes.from_runtime updated_decoded_entity'component.Component }
 
-                            let updated_encoded_entity'component: Encoded.Entity'Component =
-                                { Entity = updated_decoded_entity'component.Entity
-                                  Component = updated_encoded_component }
+                        let updated_encoded_entity'component: Encoded.Entity'Component =
+                            { Entity = updated_decoded_entity'component.Entity
+                              Component = updated_encoded_component }
 
-                            updated_encoded_entity'component
+                        updated_encoded_entity'component
 
-                        else
-                            encoded_entity'component)
+                    else
+                        encoded_entity'component)
 
-                let entities_to_delete =
-                    encoded_entity'components
-                    |> Array.map (fun entity'component -> entity'component.Entity)
-                    |> Array.distinct
+            let entities_to_delete =
+                encoded_entity'components
+                |> Array.map (fun entity'component -> entity'component.Entity)
+                |> Array.distinct
 
-                for entity in entities_to_delete do
-                    let entity_bytes = Encoding.UTF8.GetBytes(entity)
+            for entity in entities_to_delete do
+                let entity_bytes = Encoding.UTF8.GetBytes(entity)
 
-                    transaction.Delete(database, entity_bytes)
-                    |> ignore
+                transaction.Delete(database, entity_bytes) |> ignore
 
-                for entity'component in updated_entity'components do
-                    let entity_bytes = Encoding.UTF8.GetBytes(entity'component.Entity)
+            for entity'component in updated_entity'components do
+                let entity_bytes = Encoding.UTF8.GetBytes(entity'component.Entity)
 
-                    let component_bytes = Bytes.from_runtime entity'component.Component
+                let component_bytes = Bytes.from_runtime entity'component.Component
 
-                    transaction.Put(database, entity_bytes, component_bytes)
-                    |> ignore
+                transaction.Put(database, entity_bytes, component_bytes) |> ignore
 
-                updated_entity'components.Length)
+            updated_entity'components.Length)
         |> ignore
 
 
@@ -573,8 +545,7 @@ module Update =
 
                         | _ -> keep_reading <- false
 
-                    transaction.Delete(database, entity_bytes)
-                    |> ignore
+                    transaction.Delete(database, entity_bytes) |> ignore
 
                     for encoded_component in encoded_components do
                         let component_to_write =
@@ -586,14 +557,14 @@ module Update =
 
                                 let updated_component = update_component decoded_component
 
-                                { encoded_component with component_bytes = Bytes.from_runtime updated_component }
+                                { encoded_component with
+                                    component_bytes = Bytes.from_runtime updated_component }
                             else
                                 encoded_component
 
                         let component_bytes = Bytes.from_runtime component_to_write
 
-                        transaction.Put(database, entity_bytes, component_bytes)
-                        |> ignore
+                        transaction.Put(database, entity_bytes, component_bytes) |> ignore
 
                     encoded_components.Count
 

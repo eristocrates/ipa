@@ -1,3 +1,7 @@
+// TODO study https://www.w3.org/TR/Pointers-in-RDF10/#startEndPointerClass
+// TODO consider https://www.w3.org/TR/HTTP-in-RDF10/#RequestClass/
+// TODO study https://datatracker.ietf.org/doc/html/rfc2397
+// TODO study https://jwosty.github.io/FSharp.Logf/
 // TODO study https://j-alexander.github.io/entry/2016/12/23/jsonpath-queries-using-fsharpdata
 open System
 
@@ -14,8 +18,10 @@ open FSharp.Data
 #r "nuget: dotNetRdf"
 
 open VDS.RDF
+open VDS.RDF.Storage
 open VDS.RDF.Parsing
 open VDS.RDF.Writing
+open VDS.RDF.Query.Datasets
 
 
 #r "nuget: ChromeProtocol.Core"
@@ -25,9 +31,14 @@ open VDS.RDF.Writing
 open ChromeProtocol
 open ChromeProtocol.Runtime.Messaging.WebSockets
 
+#r "nuget: Unquote"
+open Swensen.Unquote.Assertions
+
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Microsoft\Edge\DevTools\EdgeDevToolsProtocol.fsx"
 
 #load @"C:\Secret\TwitterSecrets.fsx"
+
+open System.Threading
 
 
 
@@ -192,87 +203,191 @@ let configureIriSupport () =
 configureIriSupport ()
 
 *)
-module Store =
-    let compressingturtlewriter = CompressingTurtleWriter(TurtleSyntax.W3C)
+module Persistence =
+    let compressingturtlewriter =
+        let writer = new CompressingTurtleWriter(TurtleSyntax.W3C)
+        writer.HighSpeedModePermitted <- false
+        writer.PrettyPrintMode <- true
+        writer
+
+
 
     let default_graph = new ThreadSafeGraph()
+    let triplestore = new ThreadSafeTripleStore()
+    let dataset = new InMemoryDataset(triplestore, true)
+
+    let segment_to_stem_path (last_segment: string) =
+        $@"D:\Persistence\Twitter\{last_segment}"
+
+    let uri_to_last_segment (uri: Uri) =
+        (uri.Segments |> Array.last).TrimEnd('/')
+
+    let string_to_uri (uri_string: string) =
+        triplestore.UriFactory.Create(uri_string)
+
+    let uri_to_base_uri (uri: Uri) =
+        uri |> uri_to_last_segment |> segment_to_stem_path |> string_to_uri
+
+    let string_to_base_uri (uri_string: string) =
+        uri_string |> string_to_uri |> uri_to_base_uri
+
+    let uri_to_iri (uri: Uri) = new UriNode(uri)
+    let string_to_iri (name: string) = name |> string_to_uri |> uri_to_iri
+
+
+    let vocabulary_graph =
+        let graph_name = "https://eristocrates.dev/ontology/vocabulary/" |> string_to_iri
+        let named_graph = new ThreadSafeGraph(graph_name)
+        named_graph.BaseUri <- triplestore.UriFactory.Create(@"D:\Persistence\vocabulary")
+        named_graph.UriFactory <- triplestore.UriFactory
+        test <@ triplestore.Add(named_graph, true) @>
+        // test <@ dataset.AddGraph(named_graph) @>
+        named_graph
+
+    let string_to_named_graph (graph_name_string: string) =
+        let graph_name = graph_name_string |> string_to_iri
+
+        if triplestore.HasGraph(graph_name) then
+            triplestore[graph_name]
+        else
+            let named_graph = new ThreadSafeGraph(graph_name)
+            named_graph.BaseUri <- graph_name_string |> string_to_base_uri
+            named_graph.UriFactory <- triplestore.UriFactory
+            named_graph.NamespaceMap.Import(vocabulary_graph.NamespaceMap)
+            test <@ triplestore.Add(named_graph, true) @>
+            // test <@ dataset.AddGraph(named_graph) @>
+            named_graph
+
+    let graphs () =
+        dataset.GraphNames |> Seq.map (fun graph_name -> dataset[graph_name])
+
+
+    let named_graph (graph_name_string: string) (base_uri_string: string) =
+        let graph_name = string_to_iri graph_name_string
+
+        if triplestore.HasGraph(graph_name) then
+            triplestore[graph_name]
+        else
+            let named_graph = new ThreadSafeGraph(graph_name)
+            named_graph.BaseUri <- triplestore.UriFactory.Create(base_uri_string)
+            named_graph.UriFactory <- triplestore.UriFactory
+            named_graph.NamespaceMap.Import(vocabulary_graph.NamespaceMap)
+            test <@ triplestore.Add(named_graph, true) @>
+            // test <@ dataset.AddGraph(named_graph) @>
+            named_graph
+
+
+    let document_graph (document_iri: IUriNode) (document_base_uri_path: string) =
+        if triplestore.HasGraph document_iri then
+            triplestore.Item document_iri
+        else
+            named_graph document_iri.Uri.OriginalString document_base_uri_path
+
+
+
+    let union_graph () =
+        let union_graph = new ThreadSafeGraph()
+        let triples = graphs () |> Seq.collect (fun graph -> graph.Triples)
+        test <@ union_graph.Assert(triples) @>
+        union_graph
+
+
+
+
+
 
     module Assert =
-        let triples (triplesToAssert: Triple array) =
+        let triples (graph: IGraph) (triplesToAssert: Triple array) =
 
             Console.WriteLine($"triples generated = {triplesToAssert.Length}")
-            triplesToAssert |> Array.iter (fun t -> Console.WriteLine(t.ToString()))
 
-            let changed = default_graph.Assert(triplesToAssert)
+            triplesToAssert
+            |> Array.iter (fun triple -> Console.WriteLine(triple.ToString()))
+
+            let changed = graph.Assert(triplesToAssert)
 
             Console.WriteLine($"assert changed = {changed}")
-            Console.WriteLine($"graph count after = {default_graph.Triples.Count}")
+            Console.WriteLine($"{graph.Name} count after = {graph.Triples.Count}")
 
     module Save =
-        let ttl (path: string) (graph: IGraph) =
-
-            compressingturtlewriter.HighSpeedModePermitted <- false
-            compressingturtlewriter.PrettyPrintMode <- true
-
-            compressingturtlewriter.Save(graph, path)
+        let ttl () =
+            graphs ()
+            |> Seq.filter (fun graph -> graph.BaseUri <> null)
+            |> Seq.iter (fun graph -> compressingturtlewriter.Save(graph, $"{graph.BaseUri.OriginalString}.ttl"))
 
 let namespace_maps =
     Map.ofArray
         [|
 
-           "as", "https://www.w3.org/ns/activitystreams#"
-           "csvw", "http://www.w3.org/ns/csvw#"
-           "dcat", "http://www.w3.org/ns/dcat#"
-           "dqv", "http://www.w3.org/ns/dqv#"
-           "duv", "https://www.w3.org/ns/duv#"
-           "grddl", "http://www.w3.org/2003/g/data-view#"
-           "jsonld", "http://www.w3.org/ns/json-ld#"
-           "ldp", "http://www.w3.org/ns/ldp#"
-           "ma", "http://www.w3.org/ns/ma-ont#"
-           "oa", "http://www.w3.org/ns/oa#"
-           "odrl", "http://www.w3.org/ns/odrl/2/"
-           "org", "http://www.w3.org/ns/org#"
-           "owl", "http://www.w3.org/2002/07/owl#"
-           "prov", "http://www.w3.org/ns/prov#"
-           "qb", "http://purl.org/linked-data/cube#"
-           "rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-           "rdfa", "http://www.w3.org/ns/rdfa#"
-           "rdfs", "http://www.w3.org/2000/01/rdf-schema#"
-           "rif", "http://www.w3.org/2007/rif#"
-           "rr", "http://www.w3.org/ns/r2rml#"
-           "sd", "http://www.w3.org/ns/sparql-service-description#"
-           "skos", "http://www.w3.org/2004/02/skos/core#"
-           "skosxl", "http://www.w3.org/2008/05/skos-xl#"
-           "ssn", "http://www.w3.org/ns/ssn/"
-           "sosa", "http://www.w3.org/ns/sosa/"
-           "time", "http://www.w3.org/2006/time#"
-           "void", "http://rdfs.org/ns/void#"
-           "wdr", "http://www.w3.org/2007/05/powder#"
-           "wdrs", "http://www.w3.org/2007/05/powder-s#"
-           "xhv", "http://www.w3.org/1999/xhtml/vocab#"
-           "xml", "http://www.w3.org/XML/1998/namespace"
-           "xsd", "http://www.w3.org/2001/XMLSchema#"
-           "", "http://www.example.org/"
-           "twitterApi", "https://x.com/i/api#"
-           "twitter", "https://x.com/"
-           "cdp", "http://chromedevtools.github.io/devtools-protocol#"
-           "cdpNetwork", "https://chromedevtools.github.io/devtools-protocol/tot/Network/#"
-           "cdpPage", "https://chromedevtools.github.io/devtools-protocol/tot/Page/#"
-           "mime_application", "https://w3id.org/uri4uri/mime/application/"
-           "foaf", "http://xmlns.com/foaf/0.1/"
-           "sioc", "http://rdfs.org/sioc/ns#"
-           "sioc_types", "http://rdfs.org/sioc/types#"
-           "sioc_services", "http://rdfs.org/sioc/services#"
-           "sioc_actions", "http://rdfs.org/sioc/actions#"
+
+           "http://chromedevtools.github.io/devtools-protocol#", "cdp"
+           "http://purl.org/dc/terms/", "dct"
+           "http://purl.org/linked-data/cube#", "qb"
+           "http://rdfs.org/ns/void#", "void"
+           "http://rdfs.org/sioc/actions#", "sioc_actions"
+           "http://rdfs.org/sioc/ns#", "sioc"
+           "http://rdfs.org/sioc/services#", "sioc_services"
+           "http://rdfs.org/sioc/types#", "sioc_types"
+           "http://usefulinc.com/ns/doap#", "doap"
+           "http://www.example.org/", ""
+           "http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf"
+           "http://www.w3.org/1999/xhtml/vocab#", "xhv"
+           "http://www.w3.org/2000/01/rdf-schema#", "rdfs"
+           "http://www.w3.org/2001/XMLSchema#", "xsd"
+           "http://www.w3.org/2002/07/owl#", "owl"
+           "http://www.w3.org/2003/g/data-view#", "grddl"
+           "http://www.w3.org/2004/02/skos/core#", "skos"
+           "http://www.w3.org/2006/time#", "time"
+           "http://www.w3.org/2007/05/powder-s#", "wdrs"
+           "http://www.w3.org/2007/05/powder#", "wdr"
+           "http://www.w3.org/2007/rif#", "rif"
+           "http://www.w3.org/2008/05/skos-xl#", "skosxl"
+           "http://www.w3.org/2009/pointers#", "ptr"
+           "http://www.w3.org/2011/content#", "cnt"
+           "http://www.w3.org/2011/http-headers#", "http-headers"
+           "http://www.w3.org/2011/http-methods#", "http-methods"
+           "http://www.w3.org/2011/http-statusCodes#", "http-statusCodes"
+           "http://www.w3.org/2011/http#", "http"
+           "http://www.w3.org/ns/csvw#", "csvw"
+           "http://www.w3.org/ns/dcat#", "dcat"
+           "http://www.w3.org/ns/dqv#", "dqv"
+           "http://www.w3.org/ns/earl#", "earl"
+           "http://www.w3.org/ns/json-ld#", "jsonld"
+           "http://www.w3.org/ns/ldp#", "ldp"
+           "http://www.w3.org/ns/ma-ont#", "ma"
+           "http://www.w3.org/ns/oa#", "oa"
+           "http://www.w3.org/ns/odrl/2/", "odrl"
+           "http://www.w3.org/ns/org#", "org"
+           "http://www.w3.org/ns/prov#", "prov"
+           "http://www.w3.org/ns/r2rml#", "rr"
+           "http://www.w3.org/ns/rdfa#", "rdfa"
+           "http://www.w3.org/ns/sosa/", "sosa"
+           "http://www.w3.org/ns/sparql-service-description#", "sd"
+           "http://www.w3.org/ns/ssn/", "ssn"
+           "http://www.w3.org/XML/1998/namespace", "xml"
+           "http://xmlns.com/foaf/0.1/", "foaf"
+           "http://xmlns.com/foaf/spec/#", "foaf"
+           "https://chromedevtools.github.io/devtools-protocol/tot/Network/#", "cdpNetwork"
+           "https://chromedevtools.github.io/devtools-protocol/tot/Page/#", "cdpPage"
+           "https://eristocrates.dev/ontology/vocabulary/", "vocabulary"
+           "https://x.com/i/communities/", "community"
+           "https://w3id.org/uri4uri/mime/application/", "mime_application"
+           "https://www.w3.org/ns/activitystreams#", "as"
+           "https://www.w3.org/ns/duv#", "duv"
+           "https://x.com/", "twitter"
+           "https://x.com/i/api#", "twitterApi"
+
+
 
            |]
 
 namespace_maps
-|> Map.iter (fun prefix uri -> Store.default_graph.NamespaceMap.AddNamespace(prefix, UriFactory.Create(uri)))
+|> Map.iter (fun uri prefix ->
+    Persistence.vocabulary_graph.NamespaceMap.AddNamespace(prefix, Persistence.triplestore.UriFactory.Create(uri)))
 
 let prefixed_name (namespace_prefix: string) (local_name: string) =
     let low_lined_name = local_name.Replace(" ", "_")
-    Store.default_graph.CreateUriNode($"{namespace_prefix}:{low_lined_name}")
+    Persistence.vocabulary_graph.CreateUriNode($"{namespace_prefix}:{low_lined_name}")
 
 
 module rdf =
@@ -292,6 +407,7 @@ module twitter =
     let Community = prefix "Community"
     let User = prefix "User"
     let name = prefix "name"
+    let screen_name = prefix "screen_name"
     let description = prefix "description"
     let avatar_image_url = prefix "avatar_image_url"
 
@@ -386,7 +502,7 @@ type Subject =
 
     member this.predicate(predicate: INode) = Predicate(predicate)
 
-let test_blank = Store.default_graph.CreateBlankNode()
+let test_blank = Persistence.vocabulary_graph.CreateBlankNode()
 
 let triples (subject: Subject) (predicate_object_lists: PredicateObjectList list) =
     let subject_node =
@@ -419,7 +535,7 @@ let result = triples cursubject [ predicate_object_list ]
 
 
 let lit (value: obj) =
-    Store.default_graph.CreateLiteralNode(string value)
+    Persistence.vocabulary_graph.CreateLiteralNode(string value)
 
 let typedLit (value: obj) (datatypePrefix: string) (datatypeLocal: string) =
     let string_value =
@@ -427,7 +543,7 @@ let typedLit (value: obj) (datatypePrefix: string) (datatypeLocal: string) =
         | "boolean" -> (string value).ToLower()
         | _ -> string value
 
-    Store.default_graph.CreateLiteralNode(string_value, (prefixed_name datatypePrefix datatypeLocal).Uri)
+    Persistence.vocabulary_graph.CreateLiteralNode(string_value, (prefixed_name datatypePrefix datatypeLocal).Uri)
 
 
 let xsd_true = typedLit "true" "xsd" "boolean" :> INode
@@ -436,14 +552,14 @@ let xsd_false = typedLit "false" "xsd" "boolean" :> INode
 
 let optLit (value: 'a option) =
     match value with
-    | Some v -> Store.default_graph.CreateLiteralNode(string v) :> INode
-    | None -> Store.default_graph.CreateLiteralNode("") :> INode
+    | Some v -> Persistence.vocabulary_graph.CreateLiteralNode(string v) :> INode
+    | None -> Persistence.vocabulary_graph.CreateLiteralNode("") :> INode
 
 let nullableLit (value: Nullable<'a>) =
     if value.HasValue then
-        Store.default_graph.CreateLiteralNode(string value.Value) :> INode
+        Persistence.vocabulary_graph.CreateLiteralNode(string value.Value) :> INode
     else
-        Store.default_graph.CreateLiteralNode("") :> INode
+        Persistence.vocabulary_graph.CreateLiteralNode("") :> INode
 
 
 let resync_task (task: Task<_>) =
@@ -512,7 +628,11 @@ type DevTool =
         let page =
             {
 
-              client = new DefaultProtocolClient(new Uri(page_debugging_endpoint), new ConsoleLogger())
+              client =
+                new DefaultProtocolClient(
+                    Persistence.triplestore.UriFactory.Create(page_debugging_endpoint),
+                    new ConsoleLogger()
+                )
               kind = DevToolKind.page
               targetId = page_id
 
@@ -677,17 +797,23 @@ module Browser =
 
 module Page =
     let navigate (uri: Uri) (devtool: DevTool) =
-        let iri = Store.default_graph.CreateUriNode(uri)
-        let url = typedLit uri.OriginalString "xsd" "anyURI"
+        let last_segment = (uri.Segments |> Array.last).TrimEnd('/')
+        let document_base_uri = Persistence.segment_to_stem_path last_segment
 
-        Store.default_graph.Assert(
+        let document_iri = Persistence.vocabulary_graph.CreateUriNode(uri)
+
+        let document_graph =
+            Persistence.named_graph document_iri.Uri.OriginalString document_base_uri
+
+        let document_anyURI = typedLit uri.OriginalString "xsd" "anyURI"
+
+        Persistence.Assert.triples
+            document_graph
             [|
 
-               triple iri cdp.DocumentURL url
+               triple document_iri cdp.DocumentURL document_anyURI
 
                |]
-        )
-        |> ignore
 
         devtool.client.SendCommandAsync(Domains.Page.Navigate(uri.OriginalString))
         |> resync_task
@@ -695,7 +821,7 @@ module Page =
 module Network =
 
     let RequestIds () =
-        Store.default_graph.GetTriplesWithPredicate(cdp.RequestId)
+        Persistence.dataset.GetTriplesWithPredicate(cdp.RequestId)
         |> Seq.map (fun triple ->
 
             let request_id_literal = triple.Object :?> LiteralNode
@@ -704,7 +830,7 @@ module Network =
         )
 
     let Documents () =
-        Store.default_graph.GetTriplesWithPredicate(cdp.DocumentURL)
+        Persistence.dataset.GetTriplesWithPredicate(cdp.DocumentURL)
         |> Seq.map (fun triple ->
 
             let url_literal = triple.Object :?> LiteralNode
@@ -732,7 +858,7 @@ module Network =
     let is_graphql (url: string) =
         match url with
         | _ when url.Contains("graphql") ->
-            let uri = new Uri(url)
+            let uri = Persistence.triplestore.UriFactory.Create(url)
             let lastSegment = (uri.Segments |> Array.last).TrimEnd('/')
 
             match lastSegment with
@@ -744,23 +870,13 @@ module Network =
 
     let safeUriNodeFromString (s: string) =
         try
-            Store.default_graph.CreateUriNode(UriFactory.Create(s)) :> INode
+            Persistence.vocabulary_graph.CreateUriNode(UriFactory.Create(s)) :> INode
         with ex ->
             Console.Error.WriteLine($"Could not create URI node from: {s}")
             Console.Error.WriteLine(ex.ToString())
-            Store.default_graph.CreateUriNode(UriFactory.Create(escape s)) :> INode
+            Persistence.vocabulary_graph.CreateUriNode(UriFactory.Create(escape s)) :> INode
 
 
-
-
-    let responseReceivedSubject (requestId: string) =
-        Store.default_graph.CreateUriNode(UriFactory.Create($"urn:cdp:network:responseReceived:{escape requestId}"))
-
-    let responseSubject (requestId: string) =
-        Store.default_graph.CreateUriNode(UriFactory.Create($"urn:cdp:network:response:{escape requestId}"))
-
-    let requestSubject (requestId: string) =
-        Store.default_graph.CreateUriNode(UriFactory.Create($"urn:cdp:network:request:{escape requestId}"))
 
 
     let subscribe_refresh (devtool: DevTool) =
@@ -771,15 +887,24 @@ module Network =
                 task {
                     try
 
-                        if
-                            (requestWillBeSent.Request.Url |> is_document)
-                            |> xor (requestWillBeSent.Request.Url |> is_graphql)
-                        then
+                        if (requestWillBeSent.Request.Url |> is_document) then
+                            let document_uri =
+                                Persistence.triplestore.UriFactory.Create(requestWillBeSent.Request.Url)
+
+                            let document_iri = Persistence.vocabulary_graph.CreateUriNode(document_uri)
+                            let last_segment = (document_uri.Segments |> Array.last).TrimEnd('/')
+                            let base_uri_path = Persistence.segment_to_stem_path last_segment
+
+                            let document_graph = Persistence.document_graph document_iri base_uri_path
+
 
 
                             Console.WriteLine("\n\n\n---- Network.RequestWillBeSent ----")
-                            Console.WriteLine($"{requestWillBeSent.RequestId}: {requestWillBeSent.DocumentURL}")
-                            Console.WriteLine($"graph count before = {Store.default_graph.Triples.Count}")
+                            Console.WriteLine($"{requestWillBeSent.DocumentURL}: {requestWillBeSent.RequestId}")
+
+                            Console.WriteLine(
+                                $"{requestWillBeSent.DocumentURL} count before = {document_graph.Triples.Count}"
+                            )
 
                             let frame = cdp.Frame_from_value requestWillBeSent.FrameId.Value
                             let frame_id = typedLit requestWillBeSent.FrameId.Value "xsd" "string"
@@ -793,43 +918,91 @@ module Network =
                             let request_id = typedLit requestWillBeSent.RequestId.Value "xsd" "string"
                             let request_url = typedLit requestWillBeSent.Request.Url "xsd" "anyURI"
 
-                            let graphql_iri =
-
-                                let uri = new Uri(requestWillBeSent.Request.Url)
-
-                                let lastSegment = (uri.Segments |> Array.last).TrimEnd('/')
-                                twitterApi.prefix lastSegment
-
-                            let document_iri =
-                                Store.default_graph.CreateUriNode(UriFactory.Create requestWillBeSent.Request.Url)
+                            let graphql_iri = twitterApi.prefix last_segment
 
 
                             let timestamp = typedLit requestWillBeSent.Timestamp.Value "xsd" "float"
                             let resource_type = cdp.ResourceType_from_value requestWillBeSent.Type.Value
-                            let request_will_be_sent = Store.default_graph.CreateBlankNode()
+                            let request_will_be_sent = document_graph.CreateBlankNode()
 
 
 
                             let triplesToAssert =
-                                if requestWillBeSent.Request.Url.Contains "graphql" then
-                                    [|
+                                [|
 
-                                       // triple loader a cdpNetwork.type_.Loader
-                                       triple loader cdp.Request request
-                                       triple request a graphql_iri
-                                       triple request cdp.RequestId request_id
+                                   triple document_iri a cdp.Document
+                                   triple document_iri cdp.Loader loader
+                                   // triple loader a cdpNetwork.type_.Loader
 
-                                       |]
-                                else
-                                    [|
+                                   |]
 
-                                       triple document_iri a cdp.Document
-                                       triple document_iri cdp.Loader loader
-                                       // triple loader a cdpNetwork.type_.Loader
+                            triplesToAssert |> Persistence.Assert.triples document_graph
 
-                                       |]
 
-                            triplesToAssert |> Store.Assert.triples
+
+
+
+                        if (requestWillBeSent.Request.Url |> is_graphql) then
+                            let document_uri =
+                                Persistence.triplestore.UriFactory.Create(requestWillBeSent.DocumentURL)
+
+                            let request_uri =
+                                Persistence.triplestore.UriFactory.Create(requestWillBeSent.Request.Url)
+
+                            let request_iri = Persistence.vocabulary_graph.CreateUriNode(request_uri)
+
+                            let document_iri = Persistence.vocabulary_graph.CreateUriNode(document_uri)
+                            let last_document_segment = (document_uri.Segments |> Array.last).TrimEnd('/')
+                            let last_request_segment = (request_uri.Segments |> Array.last).TrimEnd('/')
+                            let base_uri_path = Persistence.segment_to_stem_path last_document_segment
+
+                            let document_graph = Persistence.document_graph document_iri base_uri_path
+
+
+
+                            Console.WriteLine("\n\n\n---- Network.RequestWillBeSent ----")
+                            Console.WriteLine($"{last_document_segment}: {requestWillBeSent.RequestId}")
+
+                            Console.WriteLine(
+                                $"{requestWillBeSent.DocumentURL} count before = {document_graph.Triples.Count}"
+                            )
+
+                            let frame = cdp.Frame_from_value requestWillBeSent.FrameId.Value
+                            let frame_id = typedLit requestWillBeSent.FrameId.Value "xsd" "string"
+
+                            let has_user_gesture =
+                                typedLit requestWillBeSent.HasUserGesture "xsd" "boolean" :> INode
+
+                            let loader = cdp.Loader_from_value requestWillBeSent.LoaderId.Value
+                            let loader_id = typedLit requestWillBeSent.LoaderId.Value "xsd" "string"
+                            let request = cdp.Request_from_value requestWillBeSent.RequestId.Value
+                            let request_id = typedLit requestWillBeSent.RequestId.Value "xsd" "string"
+                            let request_url = typedLit requestWillBeSent.Request.Url "xsd" "anyURI"
+
+                            let graphql_iri = twitterApi.prefix last_request_segment
+
+
+                            let timestamp = typedLit requestWillBeSent.Timestamp.Value "xsd" "float"
+                            let resource_type = cdp.ResourceType_from_value requestWillBeSent.Type.Value
+                            let request_will_be_sent = document_graph.CreateBlankNode()
+                            let document_anyURI = typedLit requestWillBeSent.DocumentURL "xsd" "anyURI"
+
+
+
+                            let triplesToAssert =
+                                [|
+
+                                   // triple loader a cdpNetwork.type_.Loader
+                                   triple document_iri cdp.Loader loader
+                                   triple document_iri a cdp.Document
+                                   triple document_iri cdp.DocumentURL document_anyURI
+                                   triple loader cdp.Request request
+                                   triple request a graphql_iri
+                                   triple request cdp.RequestId request_id
+
+                                   |]
+
+                            triplesToAssert |> Persistence.Assert.triples document_graph
 
 
                     with ex ->
@@ -845,7 +1018,7 @@ module Network =
             devtool.client.SubscribeAsync<Domains.Network.ResponseReceived>(fun responseReceived ->
                 task {
                     try
-                        let uri = new Uri(responseReceived.Response.Url)
+                        let uri = Persistence.triplestore.UriFactory.Create(responseReceived.Response.Url)
                         let lastSegment = (uri.Segments |> Array.last).TrimEnd('/')
 
                         match lastSegment with
@@ -978,17 +1151,23 @@ module Target =
 
     /// https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-createTarget
     let createTarget (uri: Uri) (devtool: DevTool) =
-        let iri = Store.default_graph.CreateUriNode(uri)
-        let url = typedLit uri.OriginalString "xsd" "anyURI"
+        let last_segment = (uri.Segments |> Array.last).TrimEnd('/')
+        let document_base_uri = Persistence.segment_to_stem_path last_segment
 
-        Store.default_graph.Assert(
+        let document_iri = Persistence.vocabulary_graph.CreateUriNode(uri)
+
+        let document_graph =
+            Persistence.named_graph document_iri.Uri.OriginalString document_base_uri
+
+        let document_anyURI = typedLit uri.OriginalString "xsd" "anyURI"
+
+        Persistence.Assert.triples
+            document_graph
             [|
 
-               triple iri cdp.DocumentURL url
+               triple document_iri cdp.DocumentURL document_anyURI
 
                |]
-        )
-        |> ignore
 
         let response =
             devtool.client.SendCommandAsync(Domains.Target.CreateTarget(uri.OriginalString))
@@ -1014,7 +1193,8 @@ module Target =
 
     let Open_Link_in_New_Tab (uri: Uri) (devtool: DevTool) = createTarget uri devtool
 
-let edge_endpoint = new Uri(EdgeDevToolsProtocol.version.json.WebSocketDebuggerUrl)
+let edge_endpoint =
+    Persistence.triplestore.UriFactory.Create(EdgeDevToolsProtocol.version.json.WebSocketDebuggerUrl)
 
 
 
@@ -1076,10 +1256,9 @@ let edge_endpoint = new Uri(EdgeDevToolsProtocol.version.json.WebSocketDebuggerU
 let edge = DevTool.debug_browser edge_endpoint
 
 
-let test_uri = new Uri("https://x.com/home")
+let test_uri = Persistence.triplestore.UriFactory.Create("https://x.com/home")
 
 let test_page = edge |> Target.createTarget test_uri |> Network.subscribe_refresh
-
 
 
 
@@ -1093,28 +1272,28 @@ let inputScreenNames =
 module https =
     module twitter =
         module com =
-            let uri = new Uri "https://x.com"
+            let uri = Persistence.triplestore.UriFactory.Create "https://x.com"
 
             module home =
-                let uri = new Uri $"https://x.com/home"
+                let uri = Persistence.triplestore.UriFactory.Create $"https://x.com/home"
 
             module i =
                 module communities =
-                    let uri = new Uri $"https://x.com/i/communities"
+                    let uri = Persistence.triplestore.UriFactory.Create $"https://x.com/i/communities"
 
                     let community (community_id: string) =
-                        new Uri $"https://x.com/i/communities/{community_id}"
+                        Persistence.triplestore.UriFactory.Create $"https://x.com/i/communities/{community_id}"
 
                 module flow =
                     module login =
-                        let uri = new Uri "https://x.com/i/flow/login"
+                        let uri = Persistence.triplestore.UriFactory.Create "https://x.com/i/flow/login"
 
-            let profile_from_screen_name (screen_name: string) = new Uri $"https://x.com/{screen_name}"
+            let profile_from_screen_name (screen_name: string) =
+                Persistence.triplestore.UriFactory.Create $"https://x.com/{screen_name}"
 
 
-let response =
-    test_page
-    |> Page.navigate (https.twitter.com.profile_from_screen_name "AngelEyes11357")
+test_page
+|> Page.navigate (https.twitter.com.profile_from_screen_name "vlucasrocha")
 
 type TwitterUser =
     {
@@ -1219,10 +1398,9 @@ module ProfileSpotlightsQuery =
 
 
 
-
-Store.default_graph.GetTriplesWithObject(twitterApi.UserByScreenName)
+Persistence.union_graph().GetTriplesWithObject(twitterApi.UserByScreenName)
 |> Seq.map (fun triple -> triple.Subject)
-|> Seq.collect (fun request -> Store.default_graph.GetTriplesWithSubjectPredicate(request, cdp.RequestId))
+|> Seq.collect (fun request -> Persistence.union_graph().GetTriplesWithSubjectPredicate(request, cdp.RequestId))
 |> Seq.map (fun triple ->
 
     let request_id_literal = triple.Object :?> LiteralNode
@@ -1239,7 +1417,13 @@ Store.default_graph.GetTriplesWithObject(twitterApi.UserByScreenName)
 
     let userByScreenName = (UserByScreenName.json json_response.Body).Data.User.Result
     let screen_name = userByScreenName.Core.ScreenName
+
+    let screen_name_xsd_string =
+        typedLit userByScreenName.Core.ScreenName "xsd" "string"
+
     let profile_iri = twitter.profile screen_name
+    let profile_base_uri_path = Persistence.segment_to_stem_path screen_name
+    let profile_graph = Persistence.document_graph profile_iri profile_base_uri_path
 
     let name = typedLit userByScreenName.Core.Name "xsd" "string"
     let description = typedLit userByScreenName.Legacy.Description "xsd" "string"
@@ -1248,21 +1432,24 @@ Store.default_graph.GetTriplesWithObject(twitterApi.UserByScreenName)
     let avatar_image_url = typedLit userByScreenName.Avatar.ImageUrl "xsd" "anyURI"
     // let is_blue_verified = userByScreenName.IsBlueVerified
 
-    Store.Assert.triples
+    let triplesToAssert =
         [|
 
            triple profile_iri a twitter.User
            triple profile_iri twitter.name name
+           triple profile_iri twitter.screen_name screen_name_xsd_string
            triple profile_iri twitter.description description
            triple profile_iri twitter.rest_id rest_id
            triple profile_iri twitter.avatar_image_url avatar_image_url
 
            |]
 
+    triplesToAssert |> Persistence.Assert.triples profile_graph
 
-    Store.default_graph.GetTriplesWithObject(twitterApi.UserTweets)
+
+    Persistence.union_graph().GetTriplesWithObject(twitterApi.UserTweets)
     |> Seq.map (fun triple -> triple.Subject)
-    |> Seq.collect (fun request -> Store.default_graph.GetTriplesWithSubjectPredicate(request, cdp.RequestId))
+    |> Seq.collect (fun request -> Persistence.union_graph().GetTriplesWithSubjectPredicate(request, cdp.RequestId))
     |> Seq.map (fun triple ->
 
         let request_id_literal = triple.Object :?> LiteralNode
@@ -1280,45 +1467,194 @@ Store.default_graph.GetTriplesWithObject(twitterApi.UserByScreenName)
     |> Seq.map (fun json_response ->
 
         let user_tweets = UserTweets.json json_response.Body
+        // data.user.result.timeline.timeline.instructions[1].entries[0].content.itemContent.tweet_results.result.core.user_results.result.core.screen_name
 
-        user_tweets.Data.User.Result.Timeline.Timeline.Instructions
-        |> Array.Parallel.collect (fun instruction ->
-            instruction.Entries
-            |> Array.Parallel.choose (fun entry -> entry.Content.ItemContent
+        let item_contents =
+            user_tweets.Data.User.Result.Timeline.Timeline.Instructions
+            |> Array.Parallel.collect (fun instruction ->
+                instruction.Entries
+                |> Array.Parallel.choose (fun entry -> entry.Content.ItemContent
 
-            )
-            |> Array.Parallel.filter (fun itemContent ->
-                itemContent.TweetResults.Result.Core.UserResults.Result.Core.ScreenName = screen_name)
-            |> Array.Parallel.choose (fun itemContent -> itemContent.SocialContext)
-            |> Array.Parallel.filter (fun socialContext -> socialContext.ContextType = "Community")
-            |> Array.Parallel.map (fun socialContext -> socialContext.LandingUrl.Url)
-            |> Array.distinct
-            |> Array.map (fun community_url ->
+                )
+                |> Array.Parallel.filter (fun itemContent ->
+                    itemContent.TweetResults.Result.Core.UserResults.Result.Core.ScreenName = screen_name))
 
-                let community_uri = new Uri(community_url)
-                let community_iri = Store.default_graph.CreateUriNode community_uri
-                let community_anyURI = typedLit community_url "xsd" "anyURI"
+        let screen_name =
+            let random_item_content = item_contents |> Array.head
+            random_item_content.TweetResults.Result.Core.UserResults.Result.Core.ScreenName
 
-                Store.Assert.triples
-                    [|
+        let profile_iri = twitter.prefix screen_name
+        let profile_base_uri_path = Persistence.segment_to_stem_path screen_name
+        let profile_graph = Persistence.document_graph profile_iri profile_base_uri_path
 
-                       triple community_iri a twitter.Community
-                       triple community_iri cdp.DocumentURL community_anyURI
-                       triple community_iri twitter.community_member profile_iri
+        item_contents
+        |> Array.Parallel.choose (fun itemContent -> itemContent.SocialContext)
+        |> Array.Parallel.filter (fun socialContext -> socialContext.ContextType = "Community")
+        |> Array.Parallel.map (fun socialContext -> socialContext.LandingUrl.Url)
+        |> Array.distinct
+        |> Array.map (fun community_url ->
 
-                       |])
+            let community_uri = community_url |> Persistence.string_to_uri
+            let community_iri = community_uri |> Persistence.uri_to_iri
+            let community_graph = community_url |> Persistence.string_to_named_graph
+            let community_anyURI = typedLit community_url "xsd" "anyURI"
+
+            let triplesToAssert =
+                [|
+
+                   triple community_iri a twitter.Community
+                   triple community_iri cdp.DocumentURL community_anyURI
+                   triple community_iri twitter.community_member profile_iri
+
+                   |]
+
+            triplesToAssert |> Persistence.Assert.triples profile_graph
+            triplesToAssert |> Persistence.Assert.triples community_graph
+
 
         )))
 
 
 
+(*
+
+let test_url = "https://eristocrates.dev/ontology/test/"
+let test_uri = Persistence.triplestore.UriFactory.Create(test_url)
+let test_iri = Persistence.triplestore.UriFactory.CreateNode(test_uri)
+let test_graph = new ThreadSafeGraph(test_iri)
+test_graph.BaseUri <- Persistence.triplestore.UriFactory.Create(@"D:\Persistence\test")
+test_graph.Assert(triple colon.this_ a colon.example)
+test_graph.AllNodes
+let test_dataset = new InMemoryDataset(true)
+
+test_dataset.Graphs
+|> Seq.filter (fun graph -> graph.BaseUri <> null)
+|> Seq.map (fun graph -> graph.BaseUri)
+
+test_dataset.AddGraph test_graph
+
+test_dataset.Add
+
+Store.disk_demand
+let memory_manager = new InMemoryManager(Store.disk_demand)
+memory_manager.ListGraphNames()
+let memory_dataset = new InMemoryDataset(Store.disk_demand, true)
+memory_dataset.AddGraph
 
 
 
-Store.default_graph
-|> Store.Save.ttl
-    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Google\Chromium\DevTools\ChromeDevToolsProtocol.ttl"
+Store.disk_demand.Add
+Store.disk_demand.Graphs
+
+*)
+
+let community_urls =
+    Persistence.union_graph().GetTriples(twitter.Community)
+    |> Seq.collect (fun community'iri_a_twitter'Community ->
+
+        Persistence
+            .union_graph()
+            .GetTriplesWithSubjectPredicate(community'iri_a_twitter'Community.Subject, cdp.DocumentURL)
+        |> Seq.map (fun community'iri_cdp'DocumentURL_community_url ->
+
+            let community_url_literal =
+                community'iri_cdp'DocumentURL_community_url.Object :?> ILiteralNode
+
+            community_url_literal.Value
+
+        )
+
+
+    )
+
+
+community_urls
+|> Seq.map (fun community_url ->
+    let community_uri = Persistence.triplestore.UriFactory.Create(community_url)
+    test_page |> Page.navigate community_uri
+
+)
+
+
+(*
+
+let there_were_new_requests (current: int) (last: int) =
+    if current > last then
+        printfn "New membersSliceTimeline_Query request detected. Total count: %d" current
+        true
+    else
+        printfn "No new membersSliceTimeline_Query request detected. Total count remains: %d" last
+        false
+
+let countRequests_from_communityMembersPageUriString (substring_to_check: string) =
+    membersSliceTimeline_QueryRequests
+    |> Seq.filter (fun network -> network.Request.Url.Contains(substring_to_check))
+    |> Seq.length
+
+let rec scroll (substring_to_check: string) =
+
+    let lastCount = countRequests_from_communityMembersPageUriString substring_to_check
+
+    Thread.Sleep(1500)
+
+    test_page.client.SendCommandAsync(
+        Domains.Runtime.Evaluate(
+            """
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: "smooth",
+    });
+                """
+                .TrimStart()
+                .TrimEnd()
+        )
+    )
+    |> Async.AwaitTask
+    |> Async.RunSynchronously
+    |> ignore
+
+    Thread.Sleep(1500)
+
+    let currentCount =
+        countRequests_from_communityMembersPageUriString substring_to_check
+
+    if there_were_new_requests currentCount lastCount then
+        scroll (substring_to_check)
+    else
+        printfn "Finished scrolling. Total membersSliceTimeline_Query request count: %d" currentCount
+
+        membersSliceTimeline_QueryRequests
+        |> Seq.filter (fun network -> network.Request.Url.Contains(substring_to_check))
+        |> Seq.toArray
+        |> Array.Parallel.collect (fun membersSliceTimeline_QueryRequest ->
+
+            let membersSliceTimeline_QueryRequestResponse =
+                test_page.client.SendCommandAsync(
+                    Domains.Network.GetResponseBody(membersSliceTimeline_QueryRequest.RequestId)
+                )
+                |> Async.AwaitTask
+                |> Async.RunSynchronously
+
+            let membersSlice =
+                (membersSliceTimeline_Query.json membersSliceTimeline_QueryRequestResponse.Body) // Data.CommunityMembersSliceTimeline.CommunityMembersSliceTimeline
+
+            membersSlice.Data.CommunityResults.Result.MembersSlice.ItemsResults
+            |> Array.Parallel.map (fun itemResult ->
+
+                itemResult.Result.Core.ScreenName
+
+
+            )
+
+        )
 
 
 
-// test_page |> Page.navigate (https.twitter.com.profile_from_screen_name "ClandestineMaga")
+*)
+
+Persistence.Save.ttl ()
+
+
+test_page
+|> Page.navigate (https.twitter.com.profile_from_screen_name "ClandestineMaga")
