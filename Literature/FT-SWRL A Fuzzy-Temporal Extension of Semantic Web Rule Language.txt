@@ -1,0 +1,1181 @@
+FT-SWRL: A Fuzzy-Temporal Extension of Semantic
+Web Rule Language
+Abba Lawana, Abdur Rakibb
+aCrops For the Future Research Centre (CFFRC), Malaysia
+bDepartment of Computer Science and Creative Technologies
+University of the West of England, Bristol
+Abstract
+We present, FT-SWRL, a fuzzy temporal extension to the Semantic Web
+Rule Language (SWRL), which combines fuzzy theories based on the valid-
+time temporal model to provide a standard approach for modeling imprecise
+temporal domain knowledge in OWL ontologies. The proposal introduces a
+fuzzy temporal model for the semantic web, which is syntactically deﬁned
+as a fuzzy temporal SWRL ontology (SWRL-FTO) with a new set of fuzzy
+temporal SWRL built-ins for deﬁning their semantics. The SWRL-FTO hier-
+archically deﬁnes the necessary linguistic terminologies and variables for the
+fuzzy temporal model. An example model demonstrating the usefulness of
+the fuzzy temporal SWRL built-ins to model imprecise temporal information
+is also represented. Fuzziﬁcation process of interval-based temporal logic is
+further discussed as a reasoning paradigm for our FT-SWRL rules, with the
+aim of achieving a complete OWL-based fuzzy temporal reasoning. Com-
+parative review on fuzzy temporal representation approaches, both within
+and without the use of ontologies, shows that the FT-SWRL model can thus
+serve as a formal speciﬁcation for handling imprecise temporal expressions
+in domain knowledge modeling.
+Keywords: Valid Time Model, Fuzzy Temporal Logic, Ontology, Language
+Extensions, SWRL Built-ins.
+Email addresses: khyx3alw@nottingham.edu.my (Abba Lawan),
+Rakib.Abdur@uwe.ac.uk (Abdur Rakib)
+Preprint submitted to *** December 2, 2019
+arXiv:1911.12399v1 
+[cs.AI]  27 Nov 2019
+
+1. Introduction
+Conceptual domain modeling in the ﬁeld of the Semantic Web is often
+achieved through Description Logic (DL)-based ontology languages such as
+OWL and is typically guided based on the normal set theory. Modeling im-
+precise temporal expressions (ITEs) that depend on unstructured vague time
+data is still a challenge and due to their limited syntax and semantics, current
+domain modeling languages require that temporal information is asserted as
+deﬁnite time-points. However, such limitations may lead to unfounded ap-
+proximations and quickly translate to a loss of information in modeling the
+real-world, especially in application ontologies. Hence, there is a need for a
+comprehensive ontology language for handling temporal uncertainties (vague
+expressions of time) commonly found in the real-world narration of domain
+facts.
+As the use of ontologies in enterprise applications is becoming pervasive,
+eﬀective representation and communicating of fuzzy domain facts cannot be
+overestimated. As such, various language extensions have been inspired by
+the fuzzy set theory to enable representing non-crisp or vague facts into on-
+tology models. These extensions were mainly rooted in the fuzzy extension of
+the underlying description logic, leading to the evolution of both OWL and
+SWRL language extensions, including the Fuzzy-OWL[1], Fuzzy-SWRL [2],
+SWRL-Fuzzy [3], and Vague-SWRL [4]. Similarly, though with a much lesser
+magnitude, temporal ontologies and language extensions have been proposed
+for handling time-related information in the semantic web. Available ontolo-
+gies include the OWL Time ontology [5], which basically describes the general
+concepts of time as entities. This is due to the logic-based function-free ap-
+proach of OWL – meaning that temporal arguments cannot be added to
+the supported binary relationships. Whereas, available temporal language
+extensions include the Temporal SWRL among others, which aim to pro-
+vide basic constructs to describe temporal facts in a knowledge domain with
+some degree of consistency [6]. The SWRL-Temporal model provides a stan-
+dard mechanism for representing and managing temporal information based
+on the Valid-time temporal model commonly used to represent temporal
+information in knowledge-based systems [7].
+However, there still exists a wide research gap in achieving consistent
+representation formalisms for managing temporal uncertainties in domain
+ontologies. Modeling imprecise temporal expressions that depend on un-
+structured vague time data is still a challenge in the ﬁeld of semantic web.
+2
+
+Moreover, considering the diverse nature of information on the web (and by
+extension, the semantic web) — which to some considerable proportion in-
+volves experts as well as novice’s narratives of events, the advancement of
+the semantic web no doubt requires an even more expressive modeling for-
+malisms. The purpose of this research, therefore, is to bridge this gap by
+introducing a consistent fuzzy-temporal extension that can be used to repre-
+sent and reason over uncertain-temporal domain knowledge in the semantic
+web. The main objective of the paper is to propose an extension of SWRL,
+the standard semantic web rule language in order to deal with imprecise
+temporal expressions. The paper proposes to represent imprecise temporal
+expressions as fuzzy intervals.
+As described in [8], there are two types of temporal uncertainties — the
+imprecise dating of events and the fuzzy description of temporal data. The
+FT-SWRL model thus aims to provide a new formalism for representing
+the latter in ontologies (i.e. modeling fuzzy temporal data) using SWRL
+rules. The new extension is deﬁned as a new fragment of the existing SWRL
+Temporal formalism, where a fuzzy temporal ontology has been developed to
+extend the temporal ontology and new set of built-ins deﬁned to represent the
+semantics of the imprecise temporal expressions for the reasoning purposes.
+By deﬁning the fuzzy temporal SWRL ontology (SWRL-FTO) as a refer-
+ence model and designing relevant built-in operators, the FT-SWRL exten-
+sion will surely improve the usability of the existing SWRL temporal formal-
+ism. While the basic temporal SWRL rules can represent interval operators
+such as those described as Allens temporal operators [9], utilizing such oper-
+ators will be incomplete without some degree of fuzziness in the knowledge
+base. Moreover, fuzziﬁcation of imprecise temporal expressions from a single
+time stamp or interval to a more realistic set of possible time intervals, usu-
+ally results in a wider range of temporal operations, such as overlaps, meets,
+and contains. Regardless of the overheads, such modeling scenario conﬁrms
+the assertion that FT-SWRL does not only help to represent fuzzy temporal
+information in OWL ontologies but can also help to improve the utilization
+of its existing temporal model operators.
+1.1. Motivation
+As stated earlier, the aim of this research is to provide a consistent rep-
+resentation model for modeling both the temporal data and the temporal
+uncertainties commonly found in domain facts. This is achieved by extend-
+ing the formalisms of the Semantic Web Rule Language with fuzzy tempo-
+3
+
+ral constructs, syntactically deﬁned as in a fuzzy temporal SWRL ontology
+model and built-ins. As such, FT-SWRL enabled ontologies are expected to
+consistently model such dynamic and uncertain phenomena that are other-
+wise diﬃcult to manage using the basic OWL/SWRL constructs or temporal
+models. For instance, in the current OWL/SWRL deﬁnitions, expressions in-
+volving approximate temporal assertions such as around 4pm, about 4 hours,
+few weeks ago, etc. cannot be easily represented nor eﬃciently extracted
+from OWL ontologies.
+In essence, the FT-SWRL extension is aimed at providing such syntactical
+and semantic extensions in the existing SWRL formalism for handling impre-
+cise temporal information by providing fuzzy-grounded classes and property
+constructs, built-ins, and annotation properties to encode fuzzy-temporal in-
+formation in the SWRL formalism. We extend the SWRL-Temporal model
+with such commonly utilized Imprecise Temporal Expressions (ITEs) found
+in descriptions of domain facts. This is particularly important where the
+knowledge to be represented is in the form of expert opinions or natural lan-
+guage narratives of experts, with no prior knowledge of ontological domain
+modeling. As in the motivational case study [10], where we use SWRL-
+enabled ontologies to model the farming practices of underutilized crops — a
+ﬁeld that signiﬁcantly relies on local farmers expertise alongside the scientiﬁc
+knowledge. Consider the representation of following facts on underutilized
+crops (Bambaranut) domain:
+• Bambara groundnut requires a growth period of about 110 to 150 days
+for the crop to be developed.
+• Bambara beans take around 7 to 15 days to germinate. Seed stored
+for about 12 months germinate well, but longer storage results in loss
+of viability.
+• Flowering starts 30 to 35 days after sowing and may continue until the
+end of the plants life.
+• Pod and seed development take place approximately 30 to 40 days after
+fertilization. This takes up to 30 days after fertilization. The seed
+develops during a further 10 days. [11]
+While handling time-related data alone or managing uncertainties in a
+domain knowledge are in themselves diﬃcult tasks. Nonetheless, there is a
+4
+
+need to model such real-world issues that require a representation of time
+changes and the uncertainties brought about by these changes or tempo-
+ral relations between events. For example, a given class (GrowthStage) in
+our Underutilized-Crops ontology[10] can have diﬀerent individual instances
+asserted depending on the planting date of a crop (represented as hasDate-
+OfSowing datatype property). However, temporal measurements and time
+itself are not ﬁxed or deﬁnite data and therefore the time inputs are merely
+estimates. As such the use of descriptors, such as about, approximately,
+around followed by a time value merely conﬁrms that such information is
+imprecise — and hence the need to be modeled as such. Other common ap-
+plication areas of fuzzy-temporal modeling for handling imprecise temporal
+expressions include the medical domain, multimedia, market trends analysis,
+and natural language applications in virtual assistants (e.g., Siri in Apple,
+Cortana by Microsoft and Google-Now), among others.
+1.2. Scope
+Since it is such an enormous task to generalize all fuzzy set theories into an
+ontologyrulelanguageextension, weadoptthebottom-upapproachwherewe
+begin with introducing fuzziness from the peripherals of SWRL by extending
+existing temporal model. This has the advantage of working with existing
+tools during implementation and without introducing inconsistencies to main
+ontologies. As such, our proposal does not focus on modeling rudimentary
+time concepts and terminologies but relies mainly on existing standards that
+are already compatible with SWRL, such as the OWL time ontology and
+XML schema temporal data types — the xsd:(date, dateTime, and duration),
+among others. Moreover, the SWRL temporal model, presented in [6], serves
+as the basis for the adopted crisp valid-temporal model. In essence, our
+primary focus is providing an extended abstract syntax and semantics for
+fuzzy temporal representation in the SWRL language. This allows modeling
+imprecise temporal facts using fuzzy temporal modiﬁers (a collection of fuzzy
+terms and variables) deﬁned as constructs. We focused on the Semantic
+Web Rule Language (SWRL) and its fuzzy temporal extension largely due
+to its semantic integration with OWL and the ability of SWRL to assert
+domain knowledge into ontologies, as well as extract them using its query
+functionality available as an SQWRL (SWRL query language) [12].
+In what follows, we presented the preliminaries in Section 2 to serve as in-
+troductory notes for those new to SWRL, fuzzy logics, and temporal models.
+In Section 3, we describe a complete fuzziﬁcation process by ﬁrst deﬁning the
+5
+
+SWRL-FTO ontology and a new set of SWRL built-ins to formally specify
+the linguistic terminologies and variables of the FT-SWRL model. This is
+followed by a discussion of the reasoning paradigm for the new formalism in
+Section 4. For completeness, we discuss the relevant works in fuzzy temporal
+representation and reasoning in Section 5 and conclude in Section 6.
+2. Preliminaries
+2.1. Valid-Time Temporal Model
+A valid time temporal model [7] helps to provide a simple and consistent
+approach for modeling temporal information (called facts or propositions).
+In this model, a temporal proposition is either true or valid as speciﬁed in
+its associated timestamp — called the valid time. Such timestamps can be
+either speciﬁc time instants or intervals (time period between time instants).
+A special time-interval called Duration is characterized by two arguments:
+the Granularity — which is a unit measure for temporal data e.g,. days,
+hours, seconds, etc. and the Duration count — usually an integer. However,
+Duration can also be speciﬁed using two ’time instants’ (with xsd:dateTime
+as arguments).
+From the literature, basic temporal objects have been commonly classiﬁed
+into three distinctive references as follows: (i) Points in time which deﬁnes
+a single temporal point on the timeline. Example: 13:00, now, date, etc.
+(ii) Time Intervals deﬁning the temporal relationship between two time–
+points. Example: 13:00 14:00, 23 December, etc. (iii) Duration or relative
+expression of intervals. Example: 2 weeks, 6 years, many hours, etc. usually
+represented as counts of a time granularity.
+Based on the valid-time temporal model, the Fuzzy Temporal SWRL
+model was proposed in [6] by deﬁning two important entities: the SWRL
+Temporal Ontology and the SWRL Temporal Built-ins. We brieﬂy discuss
+them below.
+2.2. SWRL Temporal Ontology
+The SWRL temporal ontology1 deﬁnes the OWL constructs that can be
+used to represent the valid-time temporal model. It hierarchically deﬁned the
+collection of entities that allow modeling interval-based temporal information
+1http://swrl.stanford.edu/ontologies/built-ins/3.3/temporal.owl
+6
+
+in OWL ontologies. It has the default preﬁx: temporal and in its complete
+form, the ontology also deﬁnes the built-ins (SWRL temporal built-ins) for
+processing and reasoning about the SWRL valid-time temporal model. In the
+ontology (see fragment view in Fig. 1), a temporal fact is represented as an
+’Extended Proposition’ to separate the temporal ontology from the domain
+ontology. This helps to maintain consistency and allows easy manipulation of
+the temporal fragment of the ontology without aﬀecting the main ontology.
+Figure 1: SWRL Temporal Ontology showing ValidTime class hierarchy
+The ontology further deﬁnes individuals for the granularity class to in-
+clude (Years, months, days, hours, minutes, seconds and milliseconds) and a
+set of built-ins that can be used in the SWRL rules to perform temporal rea-
+soning in OWL ontologies. Built-ins deﬁned in the ontology can be classiﬁed
+into three categories: (i) The duration operators — for reasoning about time
+durations, with constructs: duration, durationLessThan, durationEqualTo,
+durationGreaterThan and their inverses), (ii) the standard Allen tempo-
+ral operators — for reasoning about qualitative temporal information using
+the calculus of binary relations on intervals. The built-in implementation
+has constructs, such as equals, before, after, meets, metBy, overlaps, over-
+lappedBy, contains, during, starts, startedBy, ﬁnishes, ﬁnishedBy, and their
+inverses, and (iii) the add operator — implemented to achieve addition and
+subtraction comparison of time intervals. The construct is written as tempo-
+ral:add. It should be noted here that, in the standard interval calculus, all
+intervals are assumed to have proper and distinct time, with clear-cut begin-
+nings and ends. This limitation forms the basis of our study, as temporal
+events and time-related processes in the real-world are usually non-crisp and
+7
+
+inexact. And representing them as exact facts will no doubt result in logically
+ineﬃcient models and knowledge-based systems relying on such information
+can never be suﬃciently intelligent.
+2.3. SWRL Temporal Built-ins
+A powerful feature of the SWRL formalism, is the ability to extend its
+deﬁnition with user-deﬁned methods for writing application-speciﬁc rules.
+Similar to functions used in rule engines, the SWRL built-ins are predicates
+that accepts one or more arguments and operate on them during rule exe-
+cution. Due to the limited temporal support in both OWL and SWRL, the
+SWRL Temporal Built-in Library is added as an expressiveness extension to
+the original SWRL deﬁnition. Deﬁned as part of the SWRL-API’s built-in li-
+braries, the temporal built-ins are hierarchically deﬁned as part of the SWRL
+temporal ontology. The temporal built-ins provide a rich set of temporal op-
+erators designed to allow temporal operations on information described using
+the temporal ontology. Thus, the built-ins allow temporal reasoning about
+OWL ontologies using SWRL rules.
+Syntax and Semantics: In the basic mode, SWRL temporal built-ins op-
+erates on arguments supplied by the XML Schemas ’date’ and ’dateTime’
+data types provided as xsd:String with values, such as second, hour, day,
+time, week, month, and year. These were also deﬁned in the basic OWL tem-
+poral ontology (OWL Time)2. Whereas, in the advanced mode, the SWRL
+temporal built-ins work on time information that is completely encoded using
+the valid-time temporal model. As an example, a rule that asserts a ’Fellow’
+membership rank to existing work-group members, with registration dates
+before the year 2000, can be written as:
+Workgroupmember(?m), hasRegDate(?m, ?rgd), temporal:before(?rgd, ’2000’)
+−→ FellowMembers(?m).
+2.4. Fuzzy Sets and Membership Functions
+In contrast to probability theory, the Fuzzy theory is a generalization
+that studies and facilitates analysis of uncertainties in systems where such
+uncertainties are born due to vagueness (fuzziness) in the available domain
+knowledge — rather than due to randomness (probability) alone [13, 14].
+2https://www.w3.org/TR/2016/WD-owl-time-20160712/
+8
+
+The logic being that assertion of ’truth’ or otherwise of a given fact can be
+represented by a varying degree on the closed interval [0, 1] — denoting the
+classical false and true values. A pool of real numbers denoted by (0, 1)
+in-between the interval represents the varying degrees of truth (w). Conse-
+quently, Fuzzy Sets [14] have been widely used for modeling uncertainties,
+where knowledge of a domain is incomplete or marred with vagueness. In
+contrast to crisp set theory, where an object simply belonged to a given set
+or otherwise, in fuzzy set theory, membership to a set is subjected to the
+given weight or degrees of truth (w). In fuzzy conceptualization, objects can
+belong (or otherwise) to a given class with some degree of certainty. We
+brieﬂy highlight the formal deﬁnitions of fuzzy sets as follows:
+Deﬁnition 1: In a classical set theory, the membership function (µ or
+MF) of an element (x) belonging to a given set (A) is represented thus:
+µA(x) = 1 ⇐⇒ X ∈ A,0 ⇐⇒ X /∈ A. (1)
+However, in a fuzzy set theory, there is more to this crisp representation,
+where an additional information is provided to denote the degree of certainty
+that the element (x) belonged or otherwise to the given set (A). In such cases,
+the fuzzy membership function is written as:
+µA(x) = 1 ⇐⇒ X ∈ A, 0 ⇐⇒ X /∈ A, w if X partially belongs to A.
+(2)
+Where w is a weighted degree function such that 0 < w < 1.
+In essence, the membership function µA(x) is continuous in a fuzzy set
+theory with a range of [0, 1] = w called the degree of truth for the membership.
+An arbitrary curve is usually designed to represent the input space, also called
+the universe of discourse and the mapping of the membership value on this
+input space is the membership function (µ). The following also hold true in
+a fuzzy set theory:
+µ−
+A(x) = 1 − µ−
+A(x). (3)
+µA∩B(x) = min(µA(x),µB(x)). (4)
+µA∪B(x) = max(µA(x),µB(x)). (5)
+We deﬁne a Fuzzy Temporal extension of SWRL as a fusion of these basic
+concepts with the aim of introducing a fuzzy representation and reasoning
+model for temporal information using the SWRL rules. Our work focused
+9
+
+on the complete stages of the fuzziﬁcation process, as deﬁned in [15], where
+we ﬁrst deﬁne the linguistic terminologies and variables in the SWRL-FT
+ontology and new set of fuzzy temporal Built-ins presented in Section 3. We
+chose suitable membership functions for some selected imprecise temporal
+expressions and demonstrate how we can generate their corresponding fuzzy
+values based on the membership functions as presented in Section 4.
+3. The Fuzzy Temporal Extension of SWRL (FT-SWRL Model)
+While fuzzy temporal knowledge modeling has been around since the
+early days of AI, the semantic web domain has seen fewer advancements in
+the temporal uncertainty modeling. Relevant research eﬀorts have focused
+mostly on the uncertainty management or the representation of the temporal
+data as a domain. In FT-SWRL extension, we go beyond the simple struc-
+tured time data in ontologies to provide additional syntax and semantics that
+enable the representation of vague temporal facts in the semantic web. The
+new semantic web rule language extension can handle the modeling of uncer-
+tainties that exist in the time domain, deﬁned in the SWRL-FTO ontology
+and with the possibility of reasoning and inference through the SWRL fuzzy
+temporal built-ins. Both presented in this section and followed with example
+FT-SWRL rules.
+3.1. The SWRL Fuzzy Temporal Ontology
+The fuzzy-temporal extension of the SWRL language is designed to sup-
+port modeling and reasoning with imprecise temporal expressions (ITEs) in
+OWL ontologies. To this end, a fuzzy temporal ontology has been developed
+to deﬁne a consistent model that can be used to represent all fuzzy-temporal
+facts. The ontology also includes the deﬁnition of relevant SWRL built-ins,
+which extends the existing SWRL built-in library, to allow reasoning oper-
+ations about the modeled fuzzy-temporal information. As explained earlier,
+the original SWRL temporal model follows the valid-time temporal model
+— where temporal facts are modeled as intervals of time-points. Hence, as
+the name implies, the FT-SWRL extension basically extends the syntax and
+semantics of the SWRL temporal model (more speciﬁcally the ’Advanced
+SWRL Temporal model’) with appropriate fuzzy syntax and semantics.
+While classical SWRL temporal ontology serves as a reference standard
+for modeling crisp temporal information, the SWRL-FTO ontology is its
+10
+
+carefully extended version with the ability to handle imprecise temporal ex-
+pressions in domain knowledge representation. The ontology has a default
+preﬁx: fuzzytemporal, and the hierarchical representation of the ontology is
+presented in Listing 1 below:
+Listing 1: The SWRL Fuzzy-Temporal Ontology (SWRL-FTO)
+owl:Thing
+owl:Entity
+owl:Proposition
+temporal:ExtendedProposition \equiv TemporalProposition (Time
+related event class)
+temporal:hasValidTime //object property
+temporal:hasDuration //object property
+temporal:ValidTime (Valid Crisp times of events: instants or
+period)
+temporal:hasDuration //object property
+temporal:hasGranularity //object property
+temporal:ValidInstants (event occurs at a single instant)
+temporal:hasTime(xml:dateTime) //Datatype property
+temporal:ValidPeriod (event occurs over an interval of time)
+temporal:hasStart(xml:dateTime) //Datatype property
+temporal:hasFinish(xml:dateTime) //Datatype property
+temporal:Duration (Temporal Expressions denoting interval -
+based temporal information)
+temporal:hasCount (xml:Integer)
+temporal:hasGranularity
+temporal:Granularity (years, months, days, hours, minutes, secs,
+milliseconds)
+(Temporal)
+___________________________________________________________________________
+(Fuzzy temporal)
+fuzzytemporal:FuzzyTemporalProposition (Vague temporal fact)
+fuzzytemporal:hasFuzzyTime //object property
+fuzzytemporal:hasFuzzyModifier //object property
+fuzzytemporal:hasFuzzyDuration //object property
+fuzzytemporal:FuzzyTime (Vaguely known time data)
+fuzzytemporal:hasFuzzyDuration //object property
+fuzzytemporal:FuzzyTimeInstant \equiv FuzzyTimePoint
+fuzzytemporal:FuzzyTimePeriod
+fuzzytemporal:minFuzzyTime
+fuzzytemporal:maxFuzzyTime
+fuzzytemporal:FuzzyDuration (Vague interval -based temporal
+information)
+fuzzytemporal:hasFuzzyCount //object property
+fuzzytemporal:hasFuzzyGranularity //object property
+fuzzytemporal:FuzzyCount (cycles, times, twice, several, many
+, long-time, this, next, last, etc.)
+temporal:hasCount (XML:Integer) //Datatype property
+temporal:hasGranularity (temporal:Granularity) //Datatype
+property
+fuzzytemporal:FuzzyGranularity (weeks, weekend, fortnight , quarter,
+noon, etc.)
+11
+
+fuzzytemporal:SetGranularity (Yearly, Monthly, Weekly,
+daily, hourly, perMinute ,
+perSeconds , perHour, perWeek, perYear)
+fuzzytemporal:DateGranularity (past, present, currently ,
+recently , nowadays , ago, since, lately, earlier, etc.)
+fuzzytemporal:FuzzyModifiers (Imprecise Temporal Expressions -
+ITEs e.g. about, around, approx, within, a few, several, many,
+until, always, very).
+fuzzytemporal:hasWeightedValue \equiv hasWeightDegree)[0,1]
+// Functional datatype prop.
+fuzzytemporal:hasMembershipFunction (args: weighted sum)
+//datatype prop.
+fuzzytemporal:WeightValues (0 < w < 1) // Possible
+Weight Intervals
+fuzzytemporal:MembershipFunction
+fuzzytemporal:mfName (gaussmf, sigmoidmf , gbellmf, etc.)
+fuzzytemporal:mfCurve (plots of membership functions)
+The Listing 1 above deﬁnes the OWL entities as a reference model for
+representing fuzzy temporal domain knowledge in OWL ontologies. It also
+shows the hierarchical layout of the OWL entities with the type of relation-
+ships that exists between them. For obvious reasons, it began with the orig-
+inal temporal entities deﬁned in the SWRL temporal model followed by the
+extended fuzzy-temporal ones deﬁned as the SWRL fuzzy-temporal model.
+These include the fuzzy temporal proposition, the fuzzy modiﬁers and their
+membership function, fuzzy granularity, fuzzy counts, fuzzy time instants
+and fuzzy durations. In what follows, we brieﬂy highlight these entities and
+the intuitions behind them.
+Representing Fuzzy-temporal Facts:. In order to preserve the modular fea-
+ture of the original temporal model, the SWRL Fuzzy-temporal ontology
+(SWRL-FTO) begins with the FuzzyTemporalProposition class, which is the
+class for all fuzzy-timed events i.e., events associated with imprecise temporal
+expressions. This is deﬁned as a sibling of the temporal:ExtendedProposition
+class — designed to represent entities or propositions that extend over time
+and with the beneﬁt of separating the temporal ontology from the main on-
+tology for consistency. Similarly, the FuzzyTemporalProposition class will
+allow introducing consistent fuzzy model without interfering with either the
+main or temporal ontology. Hence it serves as the range of all the fuzzy
+temporal built-in expressions deﬁned in the ontology. The FuzzyTemporal-
+Propositionclass has three object properties: hasFuzzyTime — with a range
+over the FuzzyTime class, the hasFuzzyDuration — with a range over the
+FuzzyDuration class and the hasModiﬁer property — with a range over the
+FuzzyModiﬁer class.
+12
+
+The FuzzyTime class represents the fuzzy time values of the fuzzy tem-
+poral propositions based on the evaluated fuzzy modiﬁers or ITEs. A Fuzzy-
+Time can be either a FuzzyTimeInstant or a FuzzyTimePeriod — with a
+range over the xsd:dateTime class. The two describe instantaneous as well
+as period-based events. Where the time of occurrence of an instantaneous or
+single timed event is imprecise, then we use the FuzzyTimeInstant (sameAs:
+FuzzyTimePoint) and FuzzyTimePeriod is used where the event happens
+over two imprecisely-timed points (period). FuzzyDuration class helps to
+represent such ITEs containing durations not deﬁned as dateTime data, e.g.
+’this weekend’, ’within 3 weeks’, ’after several hours’ etc. As such, it has two
+subclasses as FuzzyCounts and FuzzyGranularity. Those granularities that
+collate their corresponding:
+FuzzyTemporalPropositions as sets of temporal facts are categorized as
+SetGranularities (e.g. weekly, perHour, daily, etc.) — a subclass of the
+FuzzyGranularity class. Whereas, those that basically compare the object
+propositions with a current date (e.g. past 3 weeks, since last year, 2 weeks
+ago, etc.) are sub-classed as DateGranularities.
+TheFuzzyModiﬁer class represents the fuzziness of speciﬁc fuzzy tempo-
+ral information or ITEs contained in the fuzzy temporal propositions. It
+has two object properties: hasWeightedValue and hasMembershipFunction
+which range over the WeightValues class and MembershipFunction class re-
+spectively. Corresponding values of the membership function and weight
+values are assigned to each ITE as functional datatype properties. It repre-
+sents fuzzy functions for such ITEs as about, around, approx, within, a few,
+several, many, until, always, very, etc. — and are deﬁned as a set of SWRL
+built-ins that can be used for temporal operations on the entities deﬁned by
+the fuzzy temporal ontology. We brieﬂy discuss these built-ins in the pre-
+ceding section. A summary of the fuzzy temporal entities is presented in
+Table 1: Fuzzy Temporal Classiﬁcation with their properties, and in Table
+2: Fuzzy Temporal Relations highlighting their types, domain, and range.
+Note that, even though the essence of the FT-SWRL extension is to han-
+dle imprecise temporal extensions found in domain language narratives, we
+still introduce some added concepts (e.g. week, quarter, and fortnight) to
+the original SWRL temporal ontology. Moreover, to accommodate our new
+constructs, new container classes need to be added leading to the design of
+a new fuzzy-temporal ontology from scratch. Hence the above description
+is that of the fuzzy temporal ontology containing an extended temporal on-
+13
+
+Fuzzy Temporal Class Sub-classes Properties
+FuzzyTemporal-
+Proposition
+hasFuzzyTime
+hasFuzzyModiﬁer
+hasFuzzyDuration
+FuzzyTime FuzzyTimeInstant
+FuzzyTimePeriod
+hasFuzzyDuration
+FuzzyTimePeriod minFuzzyTime
+maxFuzzyTime
+FuzzyDuration hasFuzzyCount has-
+FuzzyGranularity
+FuzzyCount hasCount hasGranu-
+larity
+FuzzyGranularity SetGranularity Date-
+Granularity
+FuzzyModiﬁers hasWeightedValue
+hasMembershipFunc-
+tion
+WeightValues
+MembershipFunction mfName
+mfCurve
+Table 1: Summary of SWRL Fuzzy Temporal Entities
+14
+
+tology that is set towards modeling natural language description of domain
+knowledge in OWL ontologies. This approach, will no doubt allow ﬂexible
+modeling of time-related events.
+Fuzzy Temporal
+Relation
+Role Type Domain Range
+hasFuzzyTime Object property FuzzyTemporal-
+Proposition
+FuzzyTime
+hasFuzzyModiﬁer Object property FuzzyTemporal-
+Proposition
+FuzzyModiﬁers
+hasFuzzyDuration Object property FuzzyTemporal-
+Proposition
+FuzzyTime
+FuzzyDuration
+hasFuzzyCount Object property FuzzyDuration
+FuzzyCount
+hasFuzzyGranu-
+larity
+Object property FuzzyDuration FuzzyGranularity
+hasWeightedValue Datatype prop.
+(Functional)
+FuzzyModiﬁers WeightValue
+(xml:Decimal)
+hasMembership-
+Function
+Datatype prop. FuzzyModiﬁers MembershipFunction
+hasCount Datatype prop. FuzzyCount xml:Integer
+hasGranularity Datatype prop. FuzzyCount temporal:Granularity
+Table 2: SWRL Fuzzy Temporal Relations summary showing Domain and Range
+3.2. SWRL-FT Built-ins: Semantics Deﬁnition
+The SWRL fuzzy temporal built-ins are deﬁned to allow temporal opera-
+tions on imprecise temporal information during domain knowledge modeling.
+15
+
+By deﬁning selected ITEs as part of the SWRL built-in sets, FT-SWRL ex-
+tends SWRL formalism, and equally the OWL language, with constructs to
+implement fuzzy temporal semantics within ontologies. This will allow the
+combination OWL/SWRL to handle fuzzy temporal knowledge for the ﬁrst-
+time, without relying on external frameworks for reasoning over imprecise
+temporal data. Using the FT-SWRL built-ins, imprecise temporal data can
+be encoded following the SWRL-FTO ontology model and processed based
+on the valid-time temporal model for eﬃcient knowledge representation and
+retrieval. Following the fuzzy temporal entities classiﬁcation in Section 3.1,
+we deﬁne the following keywords as the ﬁrst set of the SWRL fuzzy-temporal
+built-in library. Nevertheless, these can be further expanded with more pred-
+icates as far as the tractability and semantics of the language can allow.
+3.2.1. Fuzzy Duration Built-ins
+The Fuzzy Duration built-ins were deﬁned to operate on imprecise tem-
+poral durations. In this context, FuzzyDuration is considered as a temporal
+expression containing fuzzy Count at a speciﬁed base granularity. Unlike the
+fuzzytemporal:FuzzyTimePeriod which can be speciﬁed by two fuzzy times
+instants (fuzzytemporal:FuzzyTimeInstants), the fuzzy duration involves ex-
+pressions, including ‘few weeks’ and ‘several hours’ where the ﬁrst part (few,
+several) are the fuzzy counts and the latter (weeks, hours) are the base gran-
+ularity of the receiving proposition. As such, the FuzzyDuration built-in
+method requires a FuzzyCount and FuzzyGranularity as its arguments.
+Other operators associated with the FuzzyDuration include the fuzzy-
+DurationLessThan, fuzzyDurationEqualsTo, and fuzzyDurationGreaterThan
+built-ins: As a sub-built-in of the temporal:Duration predicate, the Fuzzy-
+Duration built-ins inherently includes these operators for comparable infer-
+ence among consistent FuzzyDuration instants having bounded arguments.
+Moreover, inverses of these built-ins may well be considered for completeness.
+3.2.2. Fuzzy Count Built-ins
+These built-ins are designed to implement the imprecise counts on tempo-
+ral data. Example cases include ‘several’, ‘many’, ‘long-time’, ‘this’, ‘next’,
+‘last’, ‘cycles’, ‘times’, and ‘twice’. In their basic form, usage of these built-ins
+requires that they take the FuzzyGranularity as argument and after applying
+the relevant fuzzy operations deﬁned by their semantics, returns a multiplier
+or comparison count of the granularity.
+16
+
+3.2.3. Fuzzy Granularity Built-ins
+These built-ins are designed to implement the imprecise granularities for
+an xsd:dateTime class. Example cases include ‘weeks’, ‘weekend’, ‘fortnight’,
+‘quarter’, and ‘noon’. They extend the original SWRL Date, Time and Du-
+ration built-ins.3
+3.2.4. Fuzzy Set Granularity Built-ins
+These built-ins are designed to implement the imprecise set granularities
+for the xsd:dateTime class. They extend the FuzzyGranularity Built-ins to
+denote set-wise granularities for recurring events. Example cases include,
+‘Yearly’, ‘Monthly’, ‘Weekly’, ‘daily’, ‘hourly’, ‘perMinute’, ‘perSeconds’,
+‘perHour’, ‘perWeek’, and ‘perYear”.
+3.2.5. Fuzzy Date Granularity Built-ins
+These built-ins are designed to implement the imprecise date granular-
+ities for annotating the xsd:dateTime class. They extend the FuzzyGranu-
+larity Built-ins for comparison operations between the current time and the
+transaction time (temporal proposition object). Example cases include, ‘the
+past’, ‘present’, ‘currently’, ‘recently’, ‘nowadays’, ‘ago’, ‘since’, ‘lately’, and
+‘earlier”. Hence it requires two optional arguments; the event time and the
+current time — in xsd:dateTime instant or duration.
+3.2.6. Imprecise Temporal Approximation Built-ins
+As their name implies, these built-ins are designed to implement the vague
+temporal approximations. Example cases include, ‘about’, ‘around’, ‘ap-
+prox’, ‘within’, ‘a few’, ‘until’, ‘before’, ‘very’, and ‘after’. The built-ins take
+argument representing the FuzzyTime of the temporal fact to apply the rel-
+evant fuzzy temporal operations on them. The operation also requires two
+more arguments representing the Count and FuzzyGranularity as follows:
+fuzzytemporal:about(?FuzzyTime, ?Count, ?fuzzyGranularity).
+However, where the Count or Granularity arguments are missing, the de-
+fault count value is 1 and a base granularity of the temporal fact will be used.
+Similarly, inverses of these built-ins (where applicable) can be considered as
+future extensions.
+3http://www.daml.org/2004/04/swrl/builtins.html#8.5
+17
+
+3.3. FT-SWRL Rules Usability and Examples
+As described in [16], user-deﬁned SWRL built-ins can be used directly in
+SWRL rules. However, in order to use them and/or their extensions, such
+as the SWRL-FT built-ins, they need to ﬁrst be imported into the main
+ontology by importing their deﬁnition — in this case, the SWRL-FT ontol-
+ogy. Final implementation of the SWRL-FTO ontology requires deﬁning the
+fuzzy temporal built-ins as instances of the original swrl:Builtin class. This
+is followed by their corresponding Java implementations through the SWRL-
+BuiltInBbridge 4. The SWRLBuiltInBridge is a component of the SWRLTab
+(available in the Prot´eg´e ontology editor) that allows the manipulation of
+SWRL built-ins using Java. Relevant built-ins are usually grouped together
+in a single OWL ﬁle — which can then be imported into any domain ontology
+for utilization.
+Detailed discussion on the fuzziﬁcation of the fuzzy temporal built-ins
+is presented in Section 4. However, in what follows we give some example
+FT-SWRL rules by modeling some facts about the Bambara groundnut crop
+— to highlight possible usability of the built-ins library.
+1. ”Bambara beans take around 1 to 2 weeks to germinate”
+BambaraBeans (?bb), hasGerminationTime(?bb, ?gt), fuzzytemporal:
+around(?gt, ’2’, temporal:weeks) −→ GermintionPeriod(?bb, True).
+2. ”Bambara beans germinate within 15 days from the date of sowing”
+BambaraBeans (?bb), hasDateOfSowing(?bb, ?dos), fuzzytemporal:within
+(?dos, ’15’, temporal:days) −→ GerminationPeriod(?bb, True)
+3. ”Bambara beans will germinate in few weeks if moderate rainfall con-
+tinues”
+BambaraBeans (?bb), hasModerateRainfall(?bb, ?mdR), hasGermina-
+tionTime(?bb, ?gt), fuzzytemporal:few(?gt, temporal:weeks) −→ Ger-
+minationPeriod(?bb, True)
+4. ”Seeds stored for about12 months germinate well, but longer storage
+results in loss of viability”
+Seed (?s), hasStorageTime(?s, ?st), fuzzytemporal:before(?st, 12, tem-
+poral:months) −→ GerminationPeriod(?bb, True).
+4http://protege.cim3.net/cgi-bin/wiki.pl?SWRLBuiltInBridge#nid88T
+18
+
+Seed (?s), hasStorageTime(?s, ?st), fuzzytemporal:after(?st, 12, tem-
+poral:months) −→ GerminationPeriod(?bb, False)
+4. Reasoning Paradigm for FT-SWRL Rules
+The original SWRL temporal extension basically deﬁnes temporal interval
+operations as built-ins and neither contain inference rules for time expressions
+nor translation rules from natural language expression to times. However,
+the FT-SWRL proposal can lead the way in providing a consistent model
+for deﬁning fuzzy temporal inference rules for (some of) the commonly en-
+countered imprecise temporal expressions (ITEs). To this end, we propose
+the fuzziﬁcation of the interval-based temporal logic in order to achieve a
+complete OWL-based reasoning for the fuzzy temporal built-ins. This is par-
+ticularly important as it can enable the OWL/SWRL combination to enforce
+temporal semantics as well as handling vague temporal knowledge. Moreover,
+with the SWRL Query language (SQWRL) able to handle such temporal rea-
+soning, querying temporal information from OWL ontologies will be highly
+improved.
+For eﬃcient representation and reasoning about the fuzzy temporal in-
+formation encoded in FT-SWRL rules, we deﬁne the fuzzy times of the ITEs
+using carefully selected membership functions superimposed on their interval-
+based temporal deﬁnitions. The fuzzy membership functions were selected
+based on their correspondences to the imprecise temporal expressions us-
+ing the weighted value (w) as the gauge of the temporal information as it
+approached the true value (T). However, we give some formularized restric-
+tions to these weighted values within which the statements are found to be a
+close-enough representation of the temporal information. We focused on the
+frequently used ITEs found in the crops domain knowledge narratives — as
+earlier presented in Section 1.1.
+4.1. SWRL-FT Built-ins Fuzziﬁcation
+FollowingthelinguisticterminologiesandvariablesdeﬁnitionintheSWRL-
+FTO ontology and Built-ins, we describe the Fuzziﬁcation [15, 17] of the FT-
+SWRL built-ins that will serve as translation rules during fuzzy temporal
+reasoning. In what follows, we chose suitable membership functions for some
+selected imprecise temporal expressions and demonstrate how we can gener-
+ate their corresponding fuzzy values based on the membership functions.
+19
+
+Fuzzy temporal term ’about’ (T), where: T = fuzzy duration
+interval.
+sameAs Around (T), approximately (T), nearly
+(T).
+Super Class FuzzyModiﬁer (annotation: Approxima-
+tionITEs)
+Properties hasWeightDegree, hasFuzzyTime, hasMod-
+iﬁerFunction
+Required arguments WeightDegree, FuzzyTime
+Fuzzy MF Gaussian (Gaussmf)
+Table 3: Fuzzy temporal term about
+As shown in Figure 2: Membership Function for ’about (T)’ Fuzzy Tem-
+poral Expression, we use the Gaussian membership function (gaussmf) to
+deﬁne the fuzziness as a set over the about temporal expression as the uni-
+versal set of discourse. Based on the semantic deﬁnition of the ’temporal
+approximation’ keywords, such as ‘about’, and ‘around’, the use of such im-
+precise times is usually where the narrator refers to time units that are close
+to the exact time (of an event or process) and when such assumed times are
+up to a complete granularity. For example, the statement ”Bambara beans
+germination time is around/about/approximately 1 to 2 weeks”. Here, the
+granularity (of weeks) is used to show that an event — the germination of
+Bambara beans, may happen either in the ﬁrst or the second week. This can
+basically be represented by the Gaussian MF (gaussmf), with the temporal
+value T = 7 days or 1st week as the peak-value (weight degree w = 1). The
+peak time can then be approached from either direction with increasing cer-
+tainty (as ’w’ tends to 1) until the actual time (truthTime T) of the event is
+reached. As such, the required information needed to model the approxima-
+tion keyword will simply be ’the weighted degree of truth’ of the information
+source.
+The fuzzy time (fT) for each ITE can then be calculated based on the as-
+signed membership distribution function and weighted value. For the approx-
+imation ITEs, we calculate the minimum fuzzy time (minfT) and maximum
+fuzzy times (maxfT) as the border-points for the resulting fuzzy temporal
+membership function as follows:
+minfT = [T − (1 − w) ∗ T/2] (6)
+20
+
+Figure 2: Membership Function for ’about (T)’ Fuzzy Temporal Expression
+maxfT = [T + (1 − w) ∗ T/2] (7)
+minfT < fT < maxfT (8)
+Where:
+• T is the valid time unit in the temporal expression;
+• w is the weighted truth degree of the expression (or information source);
+• (1−w)∗T/2 is the distribution function for determining the fuzzy time
+based on the ’w’ values;
+• fT is the fuzzy time based on the weightedValue(w);
+• minfT is the lower-bound fuzzy time for the about (T) expression;
+• maxfT is the upper-bound fuzzy time for the about (T) expression.
+Note that, the intuition in the distribution function is that the higher the
+degree of certainty (w), the closer the fuzzy times (fT−−) / fT++)) becomes
+to the actual valid time (T) on both sides.
+With the above equations (6 - 8), we simpliﬁed the fuzziﬁcation of the
+ITE by calculating the possible minimum and maximum valid times for the
+expression. We use T/2 as a simpliﬁed distribution of the fuzzy variable (w)
+for the ’about (T)’ expression, which implies that the fuzzy time can take
+values from T −T/2 for the possible times before T, to the T +T/2 possible
+21
+
+timestamps after T. This is found to be consistent with our explanation
+that the about/around/approximately ITEs are commonly used to describe
+imprecise times (or events) that are within 1 or 2 granularities to the expected
+or precise time.
+Example: Consider the expression; ”Flowering time of Bambara nut is
+around 30 days from the date after sowing” Therefore, the parameters are:
+T = 30 days, suggested values from the ’about MF’ for w = (0.3 0.7). Now
+assuming w = 0.4, then:
+minfT = [30 − (1 − 0.4) ∗ 30/2] = 21 days] ⇒ very early (9)
+and
+maxfT = [30 + (1 − 0.4) ∗ 30/2] = 39 days] ⇒ very late (10)
+The resulting parameters can be easily interpreted thus: ”The ﬂowering
+is early if it occurs before 30 days and after 21 days. It is late if it occurs after
+30 days but before the 39th day — thereby enabling the assertions of fuzzy
+terms late and early in to the knowledge base. Moreover, as the keywords,
+’before’ and ’after’ are already deﬁned as part of Allen’s interval algebra [9],
+therefore reasoning operations with other relevant data (e.g. other ﬂower-
+ing times) can easily generate a consistent temporal network that can infer
+additional knowledge. Moreover, this approach, as explained earlier, can be
+easily applied on existing temporal ontologies by introducing the temporal
+fuzziﬁcation (through the ITE built-ins from FT-SWRL rules) to generate
+the available fuzzy times (fT). Such modeling scenario help to conﬁrm the
+earlier assertion that FT-SWRL will not only allow managing fuzzy temporal
+information in OWL ontologies but also help to improve the utilization of
+existing temporal operators.
+Using similar approach, we fuzzify other relevant ITEs such as ’few (T)’,
+’within (T)’, ’before (T)’, and ’after (T)’ as shown below. These ITEs were
+selected as the ﬁrst set of SWRL fuzzy temporal built-ins as they are the most
+frequent expressions (based on surveys presented in [18]) found in domain
+knowledge descriptions and natural language processors.
+The ’within (T)’ Built-in:. From the previous example, if the statement
+reads: ”Bambara beans germinate within 2 weeks from the date of sow-
+ing” it can be seen that the ’within’ keyword is usually employed to express
+the maximum possible times that an event happens. Here we may use the
+’2 weeks’ as the peak value. We use the Trapezoidal membership function
+22
+
+Fuzzy temporal term ’Within’ (T), where: T = fuzzy duration
+interval or granularity (e.g. done within a
+week).
+sameAs in less than (T), in under (T), at most (T),
+in no more than (T), etc.
+Super Class FuzzyModiﬁer (annotation: Time closure
+operator)
+Properties hasWeightDegree, hasFuzzyTime, hasMod-
+iﬁerFunction
+Required arguments WeightDegree, FuzzyTime
+Fuzzy MF Trapezoidal (trapmf)
+Table 4: Fuzzy temporal term within
+(trapmf see Fig. 3) to represent the progression of the fuzzy time as the
+weight-value (w) increases until the ﬂat top — where the valid-time (T) may
+be reached (i.e. w = 1). However, the sharp drop of the trapezoidal space
+function at the right-hand side corresponds to the small possible increment
+above the valid time (T++). This follows the semantics of the ’within’ opera-
+tor where a small addition to a transaction time will still be valid e.g. ’15 to
+17 days’ may still be referred as within 2 weeks in a fuzziﬁed knowledge base
+(FKB). Note, however, a triangular membership function (trimf) can also be
+used, for simplicity, to represent the fuzzy space of the ’within’ operation or
+where the valid time is a fuzzy instant time.
+Figure 3: Membership Function for ’within (T)’ Fuzzy Temporal Expression
+For the ’within’ built-in, we calculate the minimum fuzzy time (minfT),
+23
+
+the left-hand side of the trapezoid and the maximum fuzzy times (maxfT)
+at the right, as the border points for the resulting fuzzy temporal value as
+follows:
+minfT = [T − (1 − w) ∗ T] (11)
+maxfT = [T + (1 − w) ∗ T] (12)
+minfT < fT < maxfT (13)
+Where: (1−w)∗T is the distribution function for determining the fuzzy
+times based on the ’w’ values. Note: the intuition in the distribution function
+isthatthehigherthedegreeofcertainty(w), thecloserthefuzzytimes(fT−−)
+/ fT++)) becomes to the actual valid time (T) on both sides.
+Fuzzy temporal term ’Few (T)’,, where: T = granularity (e.g.
+completed in ’a few’ days).
+sameAs a few (T), a little (T), more or less (T), etc.
+Super Class FuzzyModiﬁer
+Properties hasWeightDegree, hasFuzzyTime, hasMod-
+iﬁerFunction
+Required arguments FuzzyTime, WeightDegree
+Fuzzy MF Bell membership function (gbellmf)
+Table 5: Fuzzy temporal term few
+The ’few (T)’ Built-in:. Fromthepreviousexample, ifthestatementreads:”The
+Bambara beans will germinate in few weeks if moderate rainfall continues”,
+shows the use of the ’few’ operator to express a ﬂexible time increment with-
+out any speciﬁed amount or granularity. However, it usually represents small
+changes in time, which can sometimes be negligible. As discussed in [18], the
+use of this ITE is common in natural language narratives when the imprecise
+time referred to is very close to the actual time. We use the Gaussian bell
+membership function (gbellmf see Fig. 4) — which has gentle curves near
+the peak value, to represent the small progression of the fuzzy time as the
+weight value inchess towards the ﬂat top (w = 1).
+For the few (T) built-in, we calculate the minimum fuzzy time (minfT),
+the left-hand side of the bell and the maximum fuzzy times (maxfT) at the
+right, as border points for the resulting fuzzy temporal value as follows:
+24
+
+Figure 4: Membership Function for ’a-few (T)’ Fuzzy Temporal Expression
+minfT = [T − (1 − w) ∗ 0.75T] (14)
+maxfT = [T + (1 − w) ∗ 0.75T] (15)
+Where: (1−w)∗0.75T the distribution function for determining the fuzzy
+times based on the w values. Similarly, as the degree of certainty (w) tends
+to 1, the fuzzy times (fT−−) / fT++)) tends to the actual valid time (T) from
+both sides.
+Fuzzy temporal term ’before (T)’,, where: T = date, time or
+granularity (e.g. happens before 3pm/7
+days).
+sameAs until, earlier than, previously, prior to, at
+most, etc.
+Super Class FuzzyModiﬁer
+Properties hasWeightDegree, hasFuzzyTime, hasMod-
+iﬁerFunction
+Required arguments FuzzyTime, WeightDegree (w = 0.6 1 )
+Fuzzy MF S-membership function (smf)
+Table 6: Fuzzy temporal term before
+The ’before (T)’ Built-in:. Consider the statement: ”Bambara beans usually
+germinate before 30 from the date of sowing. This shows the use of ’before’
+ITE to express that germination do or will take place before 30 days (the
+25
+
+peak period) after planting. However, it is not clear how close or far away
+the germination will be from the speciﬁed time. We use the S-membership
+function (smf — see Fig. 5) to represent the progression of the fuzzy time
+with the increasing degree of truth from the bottom to the top of the S-
+function — where the fuzzy time may be equal to the valid time (T) i.e. w
+= 1. The continuous ﬂat after the curve shows that we are not interested in
+times after the actual valid time (T++). Hence the fuzziness is only on the
+left-hand side of the valid time to express (with some certainty) how close
+or far away the calculated fuzzy time is from the valid time. Which follows
+the semantics of the ’before’ keyword — used to safely express possible times
+prior to a known valid time. For example, 29, 20 or even 2 days may still be
+referred as ’before a month’ in a fuzzy knowledge base based on the degree
+of certainty (w).
+Figure 5: Membership Function for ’before (T)’ Fuzzy Temporal Expression
+Similarly, we calculate the (minfT) and (maxfT) as border points for the
+resulting fuzzy temporal value as follows:
+minfT = [T − (1 − w) ∗ T/2] (16)
+maxfT = T (17)
+Note that as the S-function is designed here as the left-half of the Gaussian
+function, the minimum fuzzy times and calculated parameters are the same
+as the ’about’ built-in. The exception being that ’before’ built-in has a
+maximum fuzzy time of T as the degree of certainty (w) tends to 1. Hence,
+the consistency is preserved as fT 6 T.
+26
+
+Fuzzy temporal term ’after (T)’,, where: T = date, time or
+granularity (e.g. arrive shortly ’after’ 13:00
+hours).
+sameAs Later than (T), afterwards (T), subsequent
+to (T), etc.
+Super Class FuzzyModiﬁer
+Properties hasWeightDegree, hasFuzzyTime, hasMod-
+iﬁerFunction
+Required arguments FuzzyTime, WeightDegree (w = 0.6 1 )
+Fuzzy MF Z-membership function (zmf)
+Table 7: Fuzzy temporal term after
+The ’after (T)’ Built-in:. Consider the statement: ”Bambara bean plant
+begins ﬂowering after 30 days from the date of sowing” shows the use of
+the ’after’ as ITE to express that ﬂowering happens after a month (the peak
+period). However, itcannotbeascertainedhowcloseorfarawaytheﬂowering
+may start from the ’30 days’ after planting. In this case, we use the z-
+membership function (zmf see Fig. 6) to represent the regression of the
+fuzzy time with the decreasing degree of truth from the top of the curve —
+where the suggested valid time is known (w = 1). The continuous ﬂat line
+before the curve shows that we are not interested in the time before the actual
+valid time. Hence the fuzziness is only on the right-hand side of the valid
+time (T++). This also follows the natural semantics of the ’after’ temporal
+expression, where it used to safely express possible transaction times that
+follows a known valid time. For example, 31, 32 or even 1000 days may still
+be referred to as ’after a month’ in a fuzzy knowledge base. However, the
+built-in uses the weight value (w) as determining factor to safely express the
+possible times.
+Hence, for the ’after’ built-in operator, which is basically the opposite
+of ’before’, we represent the (minfT) and (maxfT) as border points for the
+resulting fuzzy temporal value as follows:
+minfT = T (18)
+maxfT = [T − (1 − w) ∗ T/2] (19)
+Similarly, the maximum fuzzy time and other parameters are the same as
+the right-hand-side of the ’about’ built-in with a mainimum fuzzy valid-time
+27
+
+Figure 6: Membership Function for ’after (T)’ Fuzzy Temporal Expression
+of fT > T as the degree of certainty (w) tends to 1.
+5. Relevant Works
+We review relevant research approaches that handle representation and
+reasoning about fuzzy-temporal expressions, as well as language extensions
+that have been proposed to manage temporal expressions with uncertainties
+in the semantic web community.
+5.1. Fuzzy Temporal Representation and Reasoning (FTRR)
+On the issue of modeling temporal uncertainties, there are two types of
+temporal uncertainties to be modeled: the imprecise dating of events and
+vague descriptions of time data [8]. As a domain modeling knowledge, the
+fuzzy temporal extension of SWRL aims to manage the latter by providing a
+formalism for representing imprecise time expressions. Even though there is
+yet a formally accepted and standardized fuzzy-temporal reasoning system
+for the ontological knowledge bases, other logically validated fuzzy temporal
+reasoning systems have been proposed and developed over time. The follow-
+ing works on fuzzy temporal representation and reasoning oﬀer an extensive
+literature and guide to developing new formalisms such as FT-SWRL.
+A fuzzy temporal constraint satisfaction problem is deﬁned in [19] as a
+new formalism for modeling ﬂexibility and managing uncertainty into the
+interval-based temporal logic originally deﬁned by J. Allen in [9]. The au-
+thors describe a reasoner based on Interval Constraint Network (ICN), which
+they claimed, can manage both the crisp and fuzzy temporal information con-
+taining uncertainties. Basic reasoning tasks described in this work involves
+28
+
+the temporal consistency management and temporal query answering. The
+issue of consistency, as mentioned elsewhere, is important in all logical net-
+works to achieve inference and this includes the fuzzy temporal networks.
+A similar approach was presented in [20], where the authors proposed
+a modeling and reasoning system for managing fuzzy temporal information
+commonly found in medical records. Here, an existing temporal reasoning
+system called ’TimeText’, which allow representation of temporal informa-
+tion in clinical texts or narratives was extended to allow uncertain temporal
+data. The extension also proposed the use of fuzzy temporal constraint net-
+work (FTCN) with a proposed solution involving the three-state, staircase
+possibility distribution function. By exploring the complexity of possibility
+distributions in solving fuzzy temporal reasoning problems, the work relies
+heavily on the advances of [21] — where the authors deﬁned a propositional
+temporal language based on the fuzzy temporal constraints (FTCs). The
+proposal in [21] describes formal syntax and semantics based on possibilis-
+tic models and an inference mechanism based on FTC inference rules, with
+cited use cases in the medical domain. For more on FTRR systems, we refer
+interested readers to [22, 23, 24, 17] among others.
+5.2. Fuzzy Temporal Representation in Ontologies
+Relevant works on temporal reasoning in the semantic web have focused
+more on the representation and reasoning of deﬁnite temporal information.
+Basic temporal ontologies are representations of time-stamps to allow mod-
+eling time-speciﬁc domain information. Most common temporal ontologies
+represent the basic metadata about time information; speciﬁcally, the ’points
+in time’ data and others are simply domain-speciﬁc models for modeling
+crisp temporal data. Though, fewer eﬀorts have aimed at providing consis-
+tent standards for reasoning on the temporal data. Notable eﬀorts in this
+category includes: the SWRL Temporal [6], temporal OWL (tOWL) [25],
+the OWL Time Ontology [5] and its extensions such as in [26, 27, 28]. Oth-
+ers include: the Clinical Narratives Temporal Ontology (CNTRO) [29] and
+CHRONOS [30] — which, as the authors claimed, handles both qualitative as
+well as quantitate temporal facts. These works (and numerous others) have
+extensively discusses temporal modeling on the semantic web. However, real-
+life temporal information (including expert narratives) are usually inundated
+with non-crisp temporal description of events, procedures, etc. Nevertheless,
+the basic temporal models have provided groundworks for deﬁning much of
+29
+
+the fuzzy temporal representation models.
+A notable fuzzy model for representing temporal uncertainties in ontologies
+is presented in [31] — which basically discusses the application of fuzzy tem-
+poral reasoning over historic data. Following a modular semantic approach,
+fuzzy set operations were employed to achieve the fuzziﬁcation of basic Allen
+intervals [9] into fuzzy temporal intervals. However, due to its added ﬂexi-
+bilities of second-order theory, KAON2 5 is selected as the target framework
+for the extension and not OWL directly. Moreover, to eﬃciently model tem-
+poral speciﬁcations using the model, an in-depth expertise in fuzzy interval
+logic is necessary. A factor we try to avoid by introducing the fuzzy tem-
+poral built-ins in our FT-SWRL speciﬁcation. Thus giving users the simple
+natural language terminologies for modeling imprecise temporal information
+while hiding the technical implementation details. Moreover, importing the
+SWRL-FT ontology helps to achieve modeling consistency in the use of the
+fuzzy temporal SWRL rules.
+6. Conclusions and Future Work
+For the successful transformation of the current web of documents to the
+semantic web of interlinked data, there is the need for the domain modeling
+language of the semantic web to be able to represent all sorts of knowledge
+types. One of such important category is the uncertain-temporal data usu-
+ally associated with human practices. With existing temporal ontology frag-
+ments, information can only be stored by associating each piece of knowledge
+with a ﬁxed time stamp. However, when capturing domain expert’s narra-
+tives involving imprecise temporal expressions, it becomes imperative to as-
+sociate some sense of vagueness to the captured temporal facts for accurate
+representation of the domain knowledge. In this work, we presented a fuzzy
+temporal extension to the Semantic Web Rule Language (SWRL) called the
+Fuzzy Temporal SWRL (FT-SWRL), which combines fuzzy and temporal
+logics based on the valid-time temporal model [7]. The main contribution
+of the paper is twofold. The ﬁrst contribution, described in section 3, is the
+introduction of a new set of ontological concepts and properties that allow to
+represent in RDF standard temporal propositions, which temporal speciﬁca-
+tion is imprecise. The core set of these primitives are those used to express
+5http://kaon2.semanticweb.org/
+30
+
+imprecise temporal expressions (ITEs). The second contribution, described
+in seciton 4, is constituted by a mathematical modelling, based on fuzzy set
+(fuzzy membership functions) for the ITEs. For each ITE, a speciﬁc member-
+ship function is proposed. In essence, the FT-SWRL provides a syntactical
+as well as semantic extension to the existing SWRL formalism for modeling
+imprecise temporal expressions (ITEs). The extension provides a consistent
+fuzzy-temporal model for managing imprecise temporal data in OWL on-
+tologies using SWRL rules. It consists of two components: a fuzzy temporal
+SWRL ontology (SWRL-FTO) and a set of fuzzy temporal SWRL Built-ins.
+The ontology deﬁnes the language terminologies and variables to serves as
+reference standard for re-usability. While the built-ins allow for processing
+and reasoning about the imprecise temporal information modeled using the
+SWRL fuzzy temporal ontology. The paper also discussed the fuzziﬁcation
+process (with examples) of some of the newly deﬁned built-ins to support
+the semantic evaluation using carefully designed membership functions and
+inference rules. Example FT-SWRL rules were also presented to show the
+usability of the proposed fuzzy temporal extension model.
+In the future, we would like to incorporate more temporal vagueness into
+the FT-SWRL model and implement the complete reasoning system for the
+FT-SWRL rules. This can be achieved by modifying the existing SWRL-API
+Temporal model to support our newly-deﬁned fuzzy-temporal operators. By
+leveraging the existing implementation mechanism for SWRL extensions, as
+described in [32], the FT-SWRL model can be easily comprehended to allow
+modeling fuzzy temporal domain knowledge. A fuzzy temporal semantic web
+query language (FT-SQWRL) extension may also be considered.
+However, if a separate FT-SWRL reasoner is decided, reasoning can thus
+be achieved by linking the OWL ontologies holding the temporal propositions
+and their corresponding time-stamps, with the FT-SWRL model to generate
+fuzzy temporal constraint network (FTCN). As discussed in [19] the fuzziﬁed
+temporal expressions can then be solved as constraints satisfaction problems
+(CSPs) — satisﬁed to a degree of truth based on their corresponding mem-
+bership functions.
+References
+References
+[1] G. Stoilos, G. Stamou, V. Tzouvaras, J. Z. Pan, I. Horrocks, Fuzzy
+OWL: Uncertainty and the Semantic Web, CEUR Workshop Proceed-
+31
+
+ings 188. doi:10.1.1.157.7704.
+[2] J. Pan, G. Stoilos, G. Stamou, f-SWRL: A fuzzy extension of SWRL,
+Journal on Data ... (Icann) (2006) 1–12.
+URL http://link.springer.com/chapter/10.1007/11803034{_}2
+[3] T. W. Wlodarczyk, M. O’connor, C. Rong, M. Musen, SWRL-F - A
+fuzzy logic extension of the semantic web rule language, CEUR Work-
+shop Proceedings 654 (2010) 97–100. doi:10.1145/1988688.1988735.
+URL http://dl.acm.org/citation.cfm?id=1988735
+[4] X. Wang, Z. Ma, L. Yan, X. Meng, Vague-SWRL: a fuzzy extension of
+SWRL, Web Reasoning and Rule Systems (2008) 232–233.
+[5] An Ontology of Time for the Semantic Web, ACM Transactions on Asian
+Language Information Processing 3 (1) (2004) 66–85.
+[6] M. J. O. Connor, A Method for Representing and Querying Tempo-
+ral Information in OWL, Communications in Computer and Informa-
+tion Science 127 CCIS, (January 2011) (2011) 97–110. doi:10.1007/
+978-3-642-18472-7.
+[7] R. T. Snodgrass, M. H. B¨ohlen, C. S. Jensen, A. Steiner, Adding valid
+time to sql/temporal, ANSI X3H2-96-501r2, ISO/IEC JTC 1.
+[8] C. Ziqiang, Uncertain temporal knowledge management, in: Proceed-
+ings Fourth International Conference on Software Engineering and
+Knowledge Engineering, 1992, pp. 94–100. doi:10.1109/SEKE.1992.
+227942.
+[9] J. Allen, Maintaining knowledge about temporal intervals., Communi-
+cations of ACM 26 (11) (1983) 832–843.
+[10] A. Lawan, A. Rakib, N. Alechina, A. Karunaratne, Advancing under-
+utilized crops knowledge using SWRL-enabled ontologies - A survey and
+early experiment, in: CEUR Workshop Proceedings, Vol. 1312, Chiang
+Mai, 2014, pp. 69–84.
+URL http://ceur-ws.org/Vol-1312/ldop2014{_}paper2.pdf
+[11] C. J. Swanevelder, Bambara food for Africa, National Department of
+Agriculture ARC - Grain Crops Institute (1998) 5–16.
+URL http://www.nda.agric.za/docs/brochures/bambara.pdf
+32
+
+[12] M. O’Connor, A. Das, SQWRL: A query language for OWL, in: CEUR
+Workshop Proceedings, Vol. 529, 2009.
+URLhttp://ceur-ws.org/Vol-529/owled2009{_}submission{_}42.
+pdf
+[13] W. KARWOWSKI, R. W. EVANS, Fuzzy concepts in production man-
+agement research: a review, International Journal of Production Re-
+search 24 (1) (1986) 129–147. doi:10.1080/00207548608919718.
+[14] L. A. Zadeh, Fuzzy Sets∗, in Information and Control Vol. 8(3) (1965)
+338–353.
+[15] J. Miliauskaite, The membership function construction in view-based
+framework, in: 11th International Baltic Conference on Database and
+Information Systems (Baltic DB&IS 2014), Tallinn University of Tech-
+nology Press, Tallinn:, 2014, pp. 125–132.
+[16] M. OConnor, A. Das, A mechanism to deﬁne and execute swrl built-
+ins in protege-owl, in: 9th International Protege Conference, Stanford,
+California, 2006.
+[17] N. A. A. Manaf, M. R. Beikzadeh, Representation and reasoning of fuzzy
+temporal knowledge, in: 2006 IEEE Conference on Cybernetics and
+Intelligent Systems, 2006, pp. 1–6. doi:10.1109/ICCIS.2006.252252.
+[18] X. Rong, A. Fourney, R. N. Brewer, M. R. Morris, P. N. Bennett,
+Managing uncertainty in time expressions for virtual assistants (2017).
+doi:10.1145/3025453.3025674.
+[19] L. Deng, Y. Cai, C. Wang, Y. Jiang, Fuzzy temporal logic on fuzzy
+temporal constraint networks, in: Proceedings of the 6th International
+Conference on Fuzzy Systems and Knowledge Discovery - Volume 6,
+FSKD’09, IEEE Press, Piscataway, NJ, USA, 2009, pp. 272–276.
+URL http://dl.acm.org/citation.cfm?id=1802007.1802063
+[20] A. M. Lai, S. Parsons, G. Hripcsak, Fuzzy temporal constraint networks
+for clinical information., in: AMIA Annual Symposium proceedings.
+AMIA Symposium (2008), 2008, pp. 374–378.
+33
+
+[21] L. Godo, L. Vila, Possibilistic temporal reasoning based on fuzzy tempo-
+ral constraints, in: Proceedings of the 14th International Joint Confer-
+ence on Artiﬁcial Intelligence - Volume 2, IJCAI’95, Morgan Kaufmann
+Publishers Inc., San Francisco, CA, USA, 1995, pp. 1916–1922.
+URL http://dl.acm.org/citation.cfm?id=1643031.1643146
+[22] S. Schockaert, M. D. Cock, E. E. Kerre, Fuzzifying allen’s temporal
+interval relations, IEEE Transactions on Fuzzy Systems 16 (2) (2008)
+517–533. doi:10.1109/TFUZZ.2007.895960.
+[23] S. Schockaert, M. De Cock, Temporal reasoning about fuzzy inter-
+vals, Artif. Intell. 172 (8-9) (2008) 1158–1193. doi:10.1016/j.artint.
+2008.01.001.
+URL http://dx.doi.org/10.1016/j.artint.2008.01.001
+[24] D. Dubois, A. HadjAli, H. Prade, Fuzziness and uncertainty in temporal
+reasoning, J. UCS 9 (9) (2003) 1168.
+[25] V. Milea, F. Frasincar, U. Kaymak, towl: A temporal web ontology
+language, Trans. Sys. Man Cyber. Part B 42 (1) (2012) 268–281. doi:
+10.1109/TSMCB.2011.2162582.
+URL http://dx.doi.org/10.1109/TSMCB.2011.2162582
+[26] Q. Zhou, R. Fikes, A reusable time ontology, in: Proceeding of the AAAI
+Workshop on Ontologies for the Semantic Web, 2002.
+[27] S. J. Cox, Time ontology extended for non-Gregorian calendar applica-
+tions, Semantic Web 7 (2) (2016) 201–209. doi:10.3233/SW-150187.
+[28] F. Pan, A temporal aggregates ontology in owl for the semantic web, in:
+Proceedings of the AAAI fall symposium on agents and the semantic
+web, 2005, pp. 30–37.
+[29] C. Tao, W. Wei, G. Savova, C. Chute, A semantic web ontology for
+temporal relation inferencing in clinical narratives, in: Proceedings of
+the American Medical Informatics Association (AMIA) 2010 Annual
+Symposium. Washington DC, 2010.
+[30] E. Anagnostopoulos, E. G. M. Petrakis, S. Batsakis, Chronos: Improv-
+ing the performance of qualitative temporal reasoning in owl, in: 2014
+34
+
+IEEE 26th International Conference on Tools with Artiﬁcial Intelligence,
+2014, pp. 309–315. doi:10.1109/ICTAI.2014.54.
+[31] G. Nagyp´al, B. Motik, A fuzzy model for representing uncertain , sub-
+jective and vague temporal knowledge in ontologies, The Move to Mean-
+ingful Internet Systems 2003: CoopIS, DOA, and ODBASE (2003) 2888
+(2003) 906–923. doi:10.1007/978-3-540-39964-3\_57.
+[32] M. J. O’Connor, A. Das, Acquiring OWL ontologies from XML docu-
+ments, Proceedings of the sixth international conference on Knowledge
+capture - K-CAP ’11 (2011) 17doi:10.1145/1999676.1999681.
+35
