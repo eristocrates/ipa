@@ -1,459 +1,163 @@
 open System
+open System.Xml
+open System.Text
 open System.IO
+open System.Globalization
+
+#r "nuget: Unquote"
+#r "nuget: XParsec"
 
-#r "nuget: FSharp.UMX"
-open FSharp.UMX
+#r "nuget: Hedgehog"
 
+#r "nuget: NeatIntervals"
 
-#r "nuget: dotNetRdf"
-open VDS.RDF
 
+open Swensen.Unquote.Assertions
 
+#r "nuget: FsCheck"
 
+open FsCheck
 
+#r "nuget: MessagePack"
+#r "nuget: MessagePack.FSharpExtensions"
 
-let default_graph = new ThreadSafeGraph()
-let __SOURCE_FILE_PATH__ = Path.Combine(__SOURCE_DIRECTORY__, __SOURCE_FILE__)
+open MessagePack
+open MessagePack.Resolvers
+open MessagePack.FSharp
 
-let BASE (uri_string: string) =
-    let baseURI = UriFactory.Create(uri_string)
-    default_graph.BaseUri <- baseURI
-    baseURI
+// #r "nuget: ObjectLayoutInspector"
+// open ObjectLayoutInspector
 
-let baseURI = BASE __SOURCE_FILE_PATH__
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\Identifier\Resource\Internationalized\Internationalized_Resource_Identifier.fsx"
 
-[<Measure>]
-type resolved_iri
+open StringExtensions
 
-[<Measure>]
-type relative_iri
-
-[<Measure>]
-type prefix
-
-[<Measure>]
-type local_name
-
-[<Measure>]
-type blank_node_identifier
-
-let factory_uri (uri_string: string<resolved_iri>) = UriFactory.Create(UMX.untag uri_string)
-
-let resolve_relative_iri (base_iri_string: string) (relative_iri_string: string<relative_iri>) : string<resolved_iri> =
-    % $"{base_iri_string}{UMX.untag relative_iri_string}"
-
-
-
-
-// [4] 	prefixID 	::= 	'@prefix' PNAME_NS IRIREF '.'
-type PrefixID = PrefixID of (string -> string -> (string -> IUriNode))
-
-type BaseDirective = (string -> Uri)
-// [5] 	versionSpecifier 	::= 	STRING_LITERAL_QUOTE
-type VersionSpecifier = VersionSpecifier of string
-// [4] 	versionDirective 	::= 	'VERSION' versionSpecifier
-type VersionDirective = VERSION of VersionSpecifier
-type Directive =
-    | FromPrefixID of PrefixID
-    | FromBaseDirective of BaseDirective
-    | FromVersionDirective of VersionDirective
-// [2] 	statement 	::= 	directive | triple
-type Statement =
-    | FromDirective of Directive
-    | FromTriple of Triple
-// [1] 	ntriplesDoc 	::= 	statement? (EOL statement)* EOL?
-type RDF_Document = NTriplesDoc of Statement array
-// [3] 	directive 	::= 	versionDirective
-// [3] 	directive 	::= 	prefixID | base | version | sparqlPrefix | sparqlBase | sparqlVersion
-
-type PrefixedName =
-    {
-
-      prefix: string
-      local_name: string
-
-     }
-    member this.iri_string: string<resolved_iri> =
-        % $"{namespaces.Item this.prefix}{this.local_name}"
-// [25] 	iri 	::= 	IRIREF | PrefixedName
-
-[<RequireQualifiedAccess>]
-type RDF_Iri =
-    | FromResolvedIri of string<resolved_iri>
-    | FromRelativeIri of string<relative_iri>
-    | FromPrefixedName of PrefixedName
-//     [6] 	triple 	::= 	subject predicate object '.'
-type RDF_Blank_Node = 
-  {
-    blank_node_identifier: string<blank_node_identifier>
-  }
-type RDF_Triple =
-
-    { curSubject: RDF_Subject
-      curPredicate: RDF_Predicate
-      curObject: RDF_Object }
-// [7] 	subject 	::= 	IRIREF | BLANK_NODE_LABEL
-// [15] 	subject 	::= 	iri | BlankNode | collection
-
-
-and [<RequireQualifiedAccess>] RDF_Subject =
-    | FromRDFIri of RDF_Iri
-    | FromBlankNode of RDF_Blank_Node
-
-// [8] 	predicate 	::= 	IRIREF
-
-and [<RequireQualifiedAccess>] RDF_Predicate =
-    | FromRDFIri of RDF_Iri
-    member this.iri_string =
-        match this with
-        | FromRDFIri rdf_iri -> rdf_iri.iri_string
-
-// [9] 	object 	::= 	IRIREF | BLANK_NODE_LABEL | literal | tripleTerm
-// [17] 	object 	::= 	iri | BlankNode | collection | blankNodePropertyList | literal | tripleTerm | reifiedTriple
-and RDF_Object =
-    | FromRDFIri of RDF_Iri
-    | FromBlankNode of RDF_Blank_Node
-    | FromRdfLiteral of RDF_Literal
-    | FromTripleTerm of RDF_Triple_Term
-// [11] 	triples 	::= 	(subject predicateObjectList) | (blankNodePropertyList predicateObjectList?) | (reifiedTriple predicateObjectList?)
-type RDF_Triples =
-
-    { curSubject: RDF_Subject
-      predicateObjectList: PredicateObjectList }
-// [12] 	predicateObjectList 	::= 	verb objectList (';' (verb objectList)?)*
-type PredicateObjectList =
-    { verb: RDF_Verb
-      object_list: ObjectList }
-// [19] 	blankNodePropertyList 	::= 	'[' predicateObjectList ']'
-type BlankNodePropertyList = BlankNodePropertyList of PredicateObjectList
-// [13] 	objectList 	::= 	object annotation (',' object annotation)*
-type ObjectList =
-    { curObject: RDF_Object
-      annotation: RDF_Annotation option }
-// [20] 	collection 	::= 	'(' object* ')'
-type RDF_Collection = RDF_Collection of RDF_Object array
-// [35] 	annotation 	::= 	(reifier | annotationBlock)*
-// [36] 	annotationBlock 	::= 	'{|' predicateObjectList '|}'
-type RDF_Annotation =
-    | FromReifier of RDF_Reifier
-    | FromAnnotationBlock of PredicateObjectList
-// [28] 	reifier 	::= 	'~' (iri | BlankNode)?
-type RDF_Reifier =
-    | FromRDFIri of RDF_Iri
-    | FromRDFBlankNode of RDF_Blank_Node
-// [14] 	verb 	::= 	predicate | 'a'
-[<RequireQualifiedAccess>]
-type RDF_Verb =
-    | FromRDFPredicate of RDF_Predicate
-    member this.iri_string =
-        match this with
-        | FromRDFPredicate rdf_predicate -> rdf_predicate.iri_string
-
-// todo actually parse this
-type IRIREF =
-    | Resolved_Iri of string<resolved_iri>
-    | Relative_Iri of string<relative_iri>
-
-
-type Relative_Iri =
-    | Relative_Iri of string
-    member this.iri_string =
-        match this with
-        | Relative_Iri iri_string -> iri_string
-
-type RDF_Blank_Node =
-    {
-
-      identifier: Blank_Node_Identifier
-
-     }
-// https://www.w3.org/TR/rdf12-n-triples/#BNodes
-type Blank_Node_Identifier = Blank_Node_Identifier of string
-
-// [10] 	literal 	::= 	STRING_LITERAL_QUOTE (('^^' IRIREF) | LANG_DIR)?
-type RDF_Literal =
-    | FromSimpleRDFLiteral of Simple_RDF_Literal
-    | FromDatatypedRDFLiteral of Datatyped_RDF_Literal
-    | FromLanguageTaggedRDFLiteral of Language_Tagged_RDF_Literal
-    | FromNumericLiteral of Numeric_RDF_Literal
-
-type Simple_RDF_Literal =
-    | Simple_RDF_Literal of string
-    | FromNumericRDFLiteral of Numeric_RDF_Literal
-    | FromBooleanRDFLiteral of Boolean_RDF_Literal
-// [23] 	BooleanLiteral 	::= 	'true' | 'false'
-type Boolean_RDF_Literal = Boolean_RDF_Literal of bool
-
-// [21] 	NumericLiteral 	::= 	INTEGER | DECIMAL | DOUBLE
-type Numeric_RDF_Literal =
-    | FromINTEGER of int
-    | FromDECIMAL of decimal
-    | FromDOUBLE of double
-
-type Datatyped_RDF_Literal =
-    {
-
-      lexical_form: RDF_String
-      datatype_iri: Datatype_Iri
-
-     }
-
-type Language_Tagged_RDF_Literal =
-    | FromLanguageTaggedString of Language_Tagged_RDF_String
-    | FromDirectionalLanguageTaggedString of Directional_Language_Tagged_RDF_String
-
-type Language_Tagged_RDF_String =
-    {
-
-      lexical_form: RDF_String
-      datatype_iri: Datatype_Iri
-      language_tag: BCP47_Tag
-
-
-     }
-
-type Directional_Language_Tagged_RDF_String =
-    {
-
-      lexical_form: RDF_String
-      datatype_iri: Datatype_Iri
-      language_tag: BCP47_Tag option
-      base_direction: Base_Direction
-
-
-     }
-
-[<RequireQualifiedAccess>]
-type Base_Direction =
-    | ltr
-    | rtl
-// TODO add parsing type subtyping
-// https://www.rfc-editor.org/rfc/rfc5646#section-2.1
-type BCP47_Tag = BCP47_Tag of string
-
-    // TODO figure out if i can actually untag
-    member this.iri_string =
-        match this with
-        | FromResolvedIri resolved_iri_string -> resolved_iri_string
-        | FromRelativeIri relative_iri_string -> resolve_relative_iri baseURI.OriginalString relative_iri_string
-        | FromPrefixedName prefixed_name -> prefixed_name.iri_string
-
-
-
-type Datatype_Iri = Datatype_Iri of string
-
-type Resolved_Iri =
-    | Resolved_Iri of string
-    member this.iri_string =
-        match this with
-        | Resolved_Iri iri_string -> iri_string
-
-type RDF_String = RDF_String of Unicode_Scalar_Value array
-type Unicode_Scalar_Value = Unicode_Scalar_Value of int
-// [11] 	tripleTerm 	::= 	'<<(' subject predicate object ')>>'
-type RDF_Triple_Term =
-    {
-
-      ttSubject: RDF_Subject
-      ttPredicate: RDF_Predicate
-      ttObject: RDF_Object
-
-     }
-// [29] 	reifiedTriple 	::= 	'<<' rtSubject verb rtObject reifier? '>>'
-type RDF_Reified_Triple =
-    {
-
-      rtSubject: RTSubject
-      verb: RDF_Verb
-      rtObject: RTObject
-      reifier: RDF_Reifier option
-
-     }
-// [30] 	rtSubject 	::= 	iri | BlankNode | reifiedTriple
-type RTSubject =
-    | FromRDF_Iri of RDF_Iri
-    | FromRDFBlankNode of RDF_Blank_Node
-    | FromRDFReifiedTriple of RDF_Reified_Triple
-// [31] 	rtObject 	::= 	iri | BlankNode | literal | tripleTerm | reifiedTriple
-type RTObject =
-
-    | FromRDFIri of RDF_Iri
-    | FromBlankNode of RDF_Blank_Node
-    | FromRdfLiteral of RDF_Literal
-    | FromTripleTerm of RDF_Triple_Term
-    | FromRDFReifiedTriple of RDF_Reified_Triple
-
-let bnodeLabels: Map<string, RDF_Blank_Node> = Map.empty
-
-
-let prefixed_name (prefix: string) (local_name: string) =
-    {
-
-      prefix = prefix
-      local_name = local_name
-
-    }
-
-
-
-let PREFIX (prefix: string) (uri_string: string) =
-    let resolved_uri_string: string<resolved_iri> = %uri_string
-    default_graph.NamespaceMap.AddNamespace(prefix, factory_uri resolved_uri_string)
-    prefixed_name prefix
-
-namespaces
-|> Map.toArray
-|> Array.iter (fun (prefix, uri) -> default_graph.NamespaceMap.AddNamespace(prefix, UriFactory.Create(uri)))
-
-type ucd =
-    static member prefixID = PREFIX "ucd" "http://www.unicode.org/ns/2003/ucd/1.0/"
-
-    static member na = ucd.prefixID "na"
-
-type rdf =
-    static member prefixID = PREFIX "rdf" (namespaces.Item "rdf")
-
-let a =
-    rdf.prefixID "type"
-    |> RDF_Iri.FromPrefixedName
-    |> RDF_Predicate.FromRDFIri
-// |> RDF_Verb.FromRDFPredicate
-
-let a_test = rdf.prefixID "type"
-default_graph.NamespaceMap.GetNamespaceUri a_test.prefix
-namespaces.Item a_test.prefix
-a_test.iri_string
-
-type colon =
-    static member prefixID = PREFIX "" (namespaces.Item "")
-    static member this_ = colon.prefixID "this"
-    static member example = colon.prefixID "example"
-
-colon.this_
-a
-colon.example
-
-type bob =
-    static member prefixID = PREFIX "bob" "http://example.org/bob#"
-    static member me = bob.prefixID "me"
-
-type alice =
-    static member prefixID = PREFIX "alice" "http://example.org/alice#"
-    static member me = alice.prefixID "me"
-
-type foaf =
-    static member prefixID = PREFIX "foaf" "http://xmlns.com/foaf/0.1/"
-    static member person = foaf.prefixID "person"
-    static member topic_interest = foaf.prefixID "topic_interest"
-
-type schema =
-    static member prefixID = PREFIX "schema" "http://schema.org/"
-    static member birthDate = schema.prefixID "birthDate"
-
-type xsd =
-    static member prefixID = PREFIX "xsd" "http://www.w3.org/2001/XMLSchema#"
-    static member date = xsd.prefixID "date"
-
-type dcterms =
-    static member prefixID = PREFIX "dcterms" "http://purl.org/dc/terms/title"
-    static member title = xsd.prefixID "title"
-    static member creator = xsd.prefixID "creator"
-    static member subject = xsd.prefixID "subject"
-
-module dbpedia =
-    type resource =
-        static member prefixID = PREFIX "dbr" "http://dbpedia.org/resource/"
-        static member Leonardo_da_Vinci = xsd.prefixID "Leonardo_da_Vinci"
-
-module http =
-    module data =
-        module europeana =
-            module eu =
-                let item (relative_path: string) =
-                    $"http://data.europeana.eu/item/{relative_path}"
-
-        module www =
-            module wikidata =
-                module org =
-                    module entitiy =
-                        [<RequireQualifiedAccessAttribute>]
-                        type ID_Prefix =
-                            | Q
-                            | P
-                            | L
-
-                        let entity_id (id_prefix: ID_Prefix) (number: int) =
-                            $"http://www.wikidata.org/entity/{id_prefix.ToString()}{string number}"
-
-
-module UriNode =
-    let FromPrefixedName (prefixed_name: PrefixedName) =
-        default_graph.CreateUriNode($"{prefixed_name.prefix}:{prefixed_name.local_name}")
-
-    let inline FromRDFTerm<'RDF_Term when 'RDF_Term: (member iri_string: string<resolved_iri>)> (rdf_term: 'RDF_Term) =
-        default_graph.CreateUriNode(factory_uri rdf_term.iri_string)
-
-
-let test: string<resolved_iri> = % "http://www.wikidata.org/entity/Q12418"
-
-let dotnetRdf_Triple =
-    Triple(colon.this_ |> UriNode.FromRDFTerm, a |> UriNode.FromRDFTerm, colon.example |> UriNode.FromRDFTerm)
-
-
-(*
-
-type Triple
-Description
-
-Class for representing RDF Triples in memory.
-
-Implemented Interfaces
-IComparable<Triple>
-Constructors
-new: subj: INode * pred: INode * obj: INode -> Triple
-new: subj: INode * pred: INode * obj: INode * g: IGraph -> Triple
-new: subj: INode * pred: INode * obj: INode * context: ITripleContext -> Triple
-Functions
-property Context:  ITripleContext
-property IsGroundTriple:  bool
-property Nodes:  seq<INode>
-property Object:  INode
-property Predicate:  INode
-property Subject:  INode
-member Context:  ITripleContext
-member IsGroundTriple:  bool
-member Nodes:  seq<INode>
-member Object:  INode
-member Predicate:  INode
-member Subject:  INode
-member HasObject: n: INode -> bool
-member HasPredicate: n: INode -> bool
-member HasSubject: n: INode -> bool
-member Involves: n: INode -> bool
-member Involves: uri: Uri -> bool
-member Context: value: ITripleContext -> unit
-member ToString: compress: bool -> string
-member ToString: formatter: ITripleFormatter -> string
-abstract member ToString:  string
-abstract member CompareTo: other: Triple -> int
-abstract member Equals: obj: obj -> bool
-abstract member GetHashCode:  int
-*)
-
-
-let rdf_triple =
-    {
-
-      curSubject =
-          RDF_Subject.FromRDFIri
-          <| RDF_Iri.FromPrefixedName colon.this_
-      curPredicate = a
-      curObject =
-        RDF_Object.FromRDFIri
-        <| RDF_Iri.FromPrefixedName colon.example
-
-
-    }
-
-type RDF_Graph = RDF_Graph of Set<RDF_Triple>
-// TODO figure out how to go from RDF_Triple to dotNetRdf Triple
+open Resource_Identifier
+open XParsecErgonomics
+open Unicode_Standard
+open XParsec
+open Internationalized_Resource_Identifier
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\LMDB\LMDB.fsx"
+open LMDB
+
+let personal_domain_base = "https://eristocrates.dev/ontology"
+
+let endogenous =
+    [|
+
+       "", $"{personal_domain_base}/adhoc/"
+       "unicode", $"{personal_domain_base}/unicode/"
+       "vocabulary", $"{personal_domain_base}/vocabulary/"
+       "mime_application", "https://w3id.org/uri4uri/mime/application/"
+       "example", "http://www.example.org/"
+       "rdfx", $"{personal_domain_base}/resource_description_framework/"
+       "op", $"{personal_domain_base}/operator/" // "Functions defined with the op prefix are described here to underpin the definitions of the operators in [XML Path Language (XPath) 3.1], [XQuery 3.1: An XML Query Language] and [XSL Transformations (XSLT) Version 3.0]. These functions are not available directly to users, and there is no requirement that implementations should actually provide these functions. For this reason, no namespace is associated with the op prefix. For example, multiplication is generally associated with the * operator, but it is described as a function in this document:
+
+
+       |]
+
+let webpage_prefixes =
+    [|
+
+       "http", "http://www.w3.org/2011/http#"
+       "http-headers", "http://www.w3.org/2011/http-headers#"
+       "http-methods", "http://www.w3.org/2011/http-methods#"
+       "http-statusCodes", "http://www.w3.org/2011/http-statusCodes#"
+       "twitter", "https://x.com/"
+       "twitterApi", "https://x.com/i/api#"
+       "community", "https://x.com/i/communities/"
+       "cdpNetwork", "https://chromedevtools.github.io/devtools-protocol/tot/Network/#"
+       "cdpPage", "https://chromedevtools.github.io/devtools-protocol/tot/Page/#"
+       "cdp", "http://chromedevtools.github.io/devtools-protocol#"
+       "bcp47", "https://www.rfc-editor.org/info/bcp47#"
+
+       |]
+
+
+let exogenous =
+    [|
+
+       "dct", "http://purl.org/dc/terms/"
+       "doap", "http://usefulinc.com/ns/doap#"
+       "earl", "http://www.w3.org/ns/earl#"
+       "foaf", "http://xmlns.com/foaf/0.1/"
+       "jsonld", "http://www.w3.org/ns/json-ld#"
+       "ptr", "http://www.w3.org/2009/pointers#"
+       "sioc", "http://rdfs.org/sioc/ns#"
+       "sioc_actions", "http://rdfs.org/sioc/actions#"
+       "sioc_services", "http://rdfs.org/sioc/services#"
+       "sioc_types", "http://rdfs.org/sioc/types#"
+       "xdt", "https://www.w3.org/2003/05/xpath-datatypes#"
+       "xqt_output", "https://www.w3.org/2010/xslt-xquery-serialization" // [Definition: the Output declaration namespace, ]; associated with output. There are no functions in this namespace: it is used for serialization parameters, as described in [XSLT and XQuery Serialization 3.1]
+       "xhtml", "https://www.w3.org/1999/xhtml" // [Definition: the XHTML namespace namespace, ];
+       "svg", "https://www.w3.org/2000/svg" // [Definition: the SVG namespace, ]; and
+       "mathml", "https://www.w3.org/1998/Math/MathML" // [Definition: the MathML namespace namespace, ]
+       "xs", "http://www.w3.org/2001/XMLSchema"
+       "xfn", "http://www.w3.org/2005/xpath-functions" // for functions — associated with fn. The namespace prefix used in this document for most functions that are available to users is fn.
+       "xfn_math", "http://www.w3.org/2005/xpath-functions/math" // for functions — associated with . This namespace is used for some mathematical functions. The namespace prefix used in this document for these functions is math. These functions are available to users in exactly the same way as those in the fn namespace.
+       "xfn_map", "http://www.w3.org/2005/xpath-functions/map" // for functions — associated with . This namespace is used for some functions that manipulate maps (see 17.1 Functions that Operate on Maps). The namespace prefix used in this document for these functions is map. These functions are available to users in exactly the same way as those in the fn namespace.
+       "xfn_array", "http://www.w3.org/2005/xpath-functions/array" // for functions — associated with . This namespace is used for some functions that manipulate maps (see 17.3 Functions that Operate on Arrays). The namespace prefix used in this document for these functions is array. These functions are available to users in exactly the same way as those in the fn namespace.
+       "xqt_err", "http://www.w3.org/2005/xqt-errors" // — associated with . There are no functions in this namespace; it is used for error codes. This document uses the prefix err to represent the namespace URI http://www.w3.org/2005/xqt-errors, which is the namespace for all XPath and XQuery error codes and messages. This namespace prefix is not predeclared and its use in this document is not normative.
+       "owl_time", "http://www.w3.org/2006/time#"
+       "geol", "http://example.org/geologic/"
+       "greg", "http://www.w3.org/ns/time/gregorian#"
+       "prov", "http://www.w3.org/ns/prov#"
+       "xsi", "http://www.w3.org/2001/XMLSchema-instance#"
+
+
+
+
+       |]
+
+let RDFa_Core_Initial_Context =
+    [|
+
+
+
+       "as", "https://www.w3.org/ns/activitystreams#" // "Activity Vocabulary","Activity Vocabulary","W3C Recommendation"
+       "csvw", "http://www.w3.org/ns/csvw#" // "Metadata for Tabular Data","Metadata Vocabulary for Tabular Data","W3C Recommendation"
+       "dcat", "http://www.w3.org/ns/dcat#" // "Data Catalog Vocabulary","Data Catalog Vocabulary (DCAT)","W3C Recommendation"
+       "dqv", "http://www.w3.org/ns/dqv#" // "Data Quality Vocabulary","Data               on the Web Best Practices: Data Quality Vocabulary","W3C WG Note"
+       "duv", "https://www.w3.org/ns/duv#" // "Dataset Usage Vocabulary","Dataset Usage Vocabulary","W3C WG Note"
+       "grddl", "http://www.w3.org/2003/g/data-view#" // GRDDL,"Gleaning Resource Descriptions from Dialects of Languages (GRDDL)","W3C Recommendation"
+       "jsonld", "http://www.w3.org/ns/json-ld#" // "JSON-LD","JSON-LD 1.1, A JSON-based Serialization for Linked Data","W3C Recommendation"
+       "ldp", "http://www.w3.org/ns/ldp#" // "Linked Data Platform Vocabulary","Linked Data Platform 1.0","W3C Recommendation"
+       "ma", "http://www.w3.org/ns/ma-ont#" // "Ontology for Media Resources","Ontology for Media Resources 1.0","W3C Recommendation"
+       "oa", "http://www.w3.org/ns/oa#" // "Web Annotation Vocabulary","Web Annotation Vocabulary","W3C Recommendation"
+       "odrl", "http://www.w3.org/ns/odrl/2/" // "ODRL Vocabulary & Expression 2.2","ODRL Vocabulary & Expression 2.2","W3C Recommendation"
+       "org", "http://www.w3.org/ns/org#" // Organizations,"The Organization Ontology","W3C Recommendation"
+       "owl", "http://www.w3.org/2002/07/owl#" // OWL,"OWL Overview","W3C Recommendation"
+       "prov", "http://www.w3.org/ns/prov#" // "Provenance Vocabulary","Provenance Ontology","W3C Recommendation"
+       "qb", "http://purl.org/linked-data/cube#" // "Data Cubes","The RDF Data Cube Vocabulary","W3C Recommendation"
+       "rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#" // RDF,"RDF Semantics","W3C Recommendation"
+       "rdfa", "http://www.w3.org/ns/rdfa#" // "RDFa Vocabulary","RDFa Core 1.1","W3C Recommendation"
+       "rdfs", "http://www.w3.org/2000/01/rdf-schema#" // "RDF Schema","RDF Semantics","W3C Recommendation"
+       "rif", "http://www.w3.org/2007/rif#" // RIF,"RIF Overview","W3C Recommendation"
+       "rr", "http://www.w3.org/ns/r2rml#" // R2RML,"R2RML: RDB to RDF Mapping Language","W3C Recommendation"
+       "sd", "http://www.w3.org/ns/sparql-service-description#" // "SPARQL 1.1 Service Description","SPARQL 1.1 Service Description","W3C Recommendation"
+       "skos", "http://www.w3.org/2004/02/skos/core#" // "SKOS Core","SKOS Simple Knowledge Organization System Reference","W3C Recommendation"
+       "skosxl", "http://www.w3.org/2008/05/skos-xl#" // "SKOS eXtension for Labels","SKOS Simple Knowledge Organization System Reference","W3C Recommendation"
+       "sosa", "http://www.w3.org/ns/sosa/" // "Sensor, Observation, Sample, and Actuator Ontology","Semantic Sensor Network Ontology","W3C Recommendation"
+       "ssn", "http://www.w3.org/ns/ssn/" // "Semantic Sensor Network Ontology","Semantic Sensor Network Ontology","W3C Recommendation"
+       "time", "http://www.w3.org/2006/time#" // "Time Ontology","Time Ontology in OWL","W3C Recommendation"
+       "void", "http://rdfs.org/ns/void#" // VoID,"Describing Linked Datasets with the VoID Vocabulary","W3C Interest Group Note"
+       "wdr", "http://www.w3.org/2007/05/powder#" // POWDER,"Protocol for Web Description Resources (POWDER): Formal Semantics","W3C Recommendation"
+       "wdrs", "http://www.w3.org/2007/05/powder-s#" // "POWDER-S","Protocol for Web Description Resources (POWDER): Formal Semantics","W3C Recommendation"
+       "xhv", "http://www.w3.org/1999/xhtml/vocab#" // "RDFa Default Prefix","RDFa Core 1.1","W3C Recommendation"
+       "xml", "http://www.w3.org/XML/1998/namespace" // "XML Reserved Prefix","Namespaces in XML 1.0","W3C Recommendation"
+       "xsd", "http://www.w3.org/2001/XMLSchema#" // "XML Schema Datatypes","XML Schema Part 2: Datatypes Second Edition","W3C Recommendation"
+
+
+       |]
+
+let prefix_map =
+    Map.ofArray
+    <| Array.concat [|
+
+                       RDFa_Core_Initial_Context
+                       endogenous
+                       webpage_prefixes
+                       exogenous
+
+                        |]

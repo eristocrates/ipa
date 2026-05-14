@@ -1,0 +1,700 @@
+open System
+open System.Diagnostics
+open System.IO
+open System.Linq
+open System.Text
+open System.Text.Json
+open System.Xml
+open System.Xml.Linq
+open System.Xml.XPath
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\UnicodeStandard\PropertyAliases.fsx"
+#r "nuget: FSharp.UMX"
+#r "nuget: LightningDB"
+#r "nuget: MessagePack"
+#r "nuget: Unquote"
+#r "nuget: XParsec"
+
+open FSharp.UMX
+open LightningDB
+open MessagePack
+open PropertyAliases
+open Swensen.Unquote.Assertions
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\DatabaseErgonomics.fsx"
+open DatabaseErgonomics
+
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XmlErgonomics.fsx"
+
+open XmlErgonomics
+
+// open Unicode_Standard
+open StringExtensions
+// Configure DB for duplicate keys
+
+
+open RdfErgonomics
+open Unicode_Standard
+
+open DiagnosticsErgonomics
+
+let write_singleton_key_config =
+    DatabaseConfiguration()
+    |> LMDB.DatabaseConfiguration.create_DB_if_not_already_existing
+
+let write_duplicate_key_config =
+    DatabaseConfiguration()
+    |> LMDB.DatabaseConfiguration.create_DB_if_not_already_existing
+    |> LMDB.DatabaseConfiguration.use_sorted_duplicates
+
+let read_duplicate_key_config =
+    DatabaseConfiguration()
+    |> LMDB.DatabaseConfiguration.use_sorted_duplicates
+
+let LMDB_path = @"D:\Persistence\LMDB"
+
+let LMDB_environment = LMDB.env.create_gigabytes_at_path 100 LMDB_path
+LMDB_environment.MaxDatabases <- 4
+
+
+LMDB_environment.Open()
+
+let LMDB_context =
+    { environment = LMDB_environment
+      databases = open_databases LMDB_environment }
+
+
+let test_int = RDF_Literal.autotyped 9001
+let test_string = RDF_Literal.simple "test"
+let test_time = RDF_Literal.autotyped DateTime.Now
+
+let test_statement = Assert.spo adhoc.this_ a test_time
+
+
+let quad_components (quad: RDF_Quad) =
+    let subject_entity = quad.triple.curSubject.representation.as_string
+    let predicate_entity = quad.triple.curPredicate.representation.as_string
+    let object_entity = quad.triple.curObject.representation.as_string
+    let context_entity = quad.context.representation.as_string
+
+
+    [|
+
+       {
+
+         Entity = subject_entity
+         Component = Component.attribute_value rdfx.subject_of quad
+
+       }
+       {
+
+         Entity = predicate_entity
+         Component = Component.attribute_value rdfx.predicate_of quad
+
+       }
+       {
+
+         Entity = object_entity
+         Component = Component.attribute_value rdfx.object_of quad
+
+       }
+       {
+
+         Entity = context_entity
+         Component = Component.attribute_value rdfx.context_of quad
+
+       }
+
+
+       |]
+
+
+
+let componenents = quad_components test_statement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module ucd =
+
+    [<Literal>]
+    let file_path = @"D:\Surface\Standards\Unicode\UCD\17.0.0\ucdxml\ucd.all.flat.xml"
+
+    let xml = XPathNavigator.Load(file_path)
+
+let namespace_manager = new XmlNamespaceManager(ucd.xml.NameTable)
+
+let ucd_namespace =
+    ucd.xml
+    |> XPathNavigator.xmlns namespace_manager "ucd" "http://www.unicode.org/ns/2003/ucd/1.0"
+
+
+
+
+let xpath (expression: string) (xpath_navigator: XPathNavigator) =
+    let xpath_expression = XPathExpression.Compile(expression)
+    xpath_expression.SetContext(namespace_manager)
+
+    xpath_navigator
+        .Select(
+            xpath_expression
+        )
+        .toElementArray
+
+let char_elements =
+    time_operation "char_elements" (fun () ->
+        ucd.xml
+        |> xpath $"//ucd:char"
+        |> Array.Parallel.filter (fun char_element ->
+
+            String.IsNullOrWhiteSpace(char_element.GetAttribute("first-cp", ""))
+
+        )
+
+    )
+
+let char_attributes =
+    time_operation "char_attributes" (fun () ->
+        char_elements
+        |> Array.Parallel.collect (fun element ->
+            element.MoveToFirstAttribute() |> ignore
+            element.Attributes
+
+        )
+        |> Array.Parallel.filter (fun char_attribute -> not (String.IsNullOrEmpty char_attribute.Value))
+
+    )
+
+
+
+let code_point_from_attribute (char_attribute: XPathNavigator) =
+    let char_attribute_element = char_attribute.Parent
+    let hexdigit_string = char_attribute_element.Attribute "cp"
+    // test <@ hexdigit_string.Length > 0 @>
+    hexdigit_string
+
+
+
+
+let character_properties =
+
+    time_operation "character_properties" (fun () ->
+        char_attributes
+        |> Array.Parallel.map (fun char_attribute ->
+            let code_point = code_point_from_attribute char_attribute
+
+            (code_point, char_attribute.LocalName, char_attribute.Value)
+
+        ))
+
+
+
+
+
+
+
+
+
+
+let name_aliases =
+    time_operation "name_aliases" (fun () ->
+        ucd.xml
+        |> xpath $"//ucd:name-alias"
+        |> Array.Parallel.map (fun name_alias_element ->
+
+            let alias_attribute = name_alias_element.Attribute "alias"
+            let type_attribute = name_alias_element.Attribute "type"
+            let char_element_with_name_alias = name_alias_element.Parent
+            let code_point = char_element_with_name_alias.Attribute "cp"
+            (code_point, alias_attribute, type_attribute)
+
+        )
+
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let property_iri_cache =
+    character_properties
+    |> Array.map (fun (_, property_short_name, _) -> property_short_name)
+    |> Array.distinct
+    |> Array.map (fun property_short_name -> property_short_name, (unicode.prefix property_short_name))
+    |> Map.ofArray
+
+
+
+
+let property_literal_cache =
+    character_properties
+    |> Array.map (fun (_, _, property_value) -> property_value)
+    |> Array.distinct
+    |> Array.map (fun property_value -> property_value, RDF_Literal.simple property_value)
+    |> Map.ofArray
+
+
+
+let alias_iri_cache =
+    name_aliases
+    |> Array.map (fun (_, alias_attribute, _) -> alias_attribute)
+    |> Array.distinct
+    |> Array.map (fun alias_attribute -> alias_attribute, unicode.prefix alias_attribute)
+    |> Map.ofArray
+
+let alias_literal_cache =
+    name_aliases
+    |> Array.map (fun (_, alias_attribute, _) -> alias_attribute)
+    |> Array.distinct
+    |> Array.map (fun alias_attribute -> alias_attribute, RDF_Literal.simple alias_attribute)
+    |> Map.ofArray
+
+
+
+let alias_type_cache =
+    name_aliases
+    |> Array.map (fun (_, _, type_attribute) -> type_attribute)
+    |> Array.distinct
+    |> Array.map (fun type_attribute -> type_attribute, unicode.prefix type_attribute)
+    |> Map.ofArray
+
+
+
+
+
+(*
+
+
+let code_point'character_property: Entity'Component array =
+    character_properties
+
+    |> Array.Parallel.collect (fun (code_point, property_short_name, property_value) ->
+        let code_point_iri = unicode.prefix code_point
+        let property_iri = property_iri_cache[property_short_name]
+        let property_literal = property_literal_cache[property_value]
+
+        let code_point'property'value =
+            Statement.spo code_point_iri property_iri property_literal
+
+        statement_components code_point'property'value
+
+
+    )
+
+
+let code_point'name_alias: Entity'Component array =
+    name_aliases
+    |> Array.Parallel.collect (fun (code_point, alias_attribute, type_attribute) ->
+        let code_point_iri = unicode.prefix code_point
+        let alias_iri = alias_iri_cache[alias_attribute]
+        let alias_literal = alias_literal_cache[alias_attribute]
+        let type_iri = alias_type_cache[type_attribute]
+
+        let code_point'name_alias'alias_iri =
+            Statement.spo code_point_iri unicode.name_alias alias_iri
+
+        let alias_iri'a'Name_Alias = Statement.spo alias_iri a unicode.Name_Alias
+
+        let alias_iri'alias_type'type_iri =
+            Statement.spo alias_iri unicode.alias_type type_iri
+
+        let alias_iri'value'alias_literal = Statement.spo alias_iri rdf.value alias_literal
+
+
+
+
+        Array.concat [|
+
+                        statement_components code_point'name_alias'alias_iri
+                        statement_components alias_iri'a'Name_Alias
+                        statement_components alias_iri'alias_type'type_iri
+                        statement_components alias_iri'value'alias_literal
+
+                         |]
+
+    )
+
+let entity'components =
+    Array.concat [| code_point'character_property
+                    code_point'name_alias |]
+
+
+Write.Entity'Components entity'components write_transaction_context
+*)
+
+
+
+character_properties.Length / batch_size
+
+let mutable total_stopwatch = Stopwatch.StartNew()
+
+let mutable total_components_written = 0
+
+character_properties
+|> Array.chunkBySize batch_size
+|> Array.iteri (fun batch_index character_property_batch ->
+
+    let batch_stopwatch = Stopwatch.StartNew()
+
+    let entity'components =
+        character_property_batch
+        |> Array.collect (fun (code_point, property_short_name, property_value) ->
+            let code_point_iri = unicode.prefix code_point
+
+            let property_iri = property_iri_cache[property_short_name]
+
+            let property_literal = property_literal_cache[property_value]
+
+            let code_point'property'value =
+                Assert.spo code_point_iri property_iri property_literal
+
+            quad_components code_point'property'value)
+
+    let expansion_elapsed = batch_stopwatch.Elapsed
+
+    Write.Entity'Components entity'components LMDB_context
+
+    batch_stopwatch.Stop()
+
+    total_components_written <-
+        total_components_written
+        + entity'components.Length
+
+    let total_rate =
+        float total_components_written
+        / total_stopwatch.Elapsed.TotalSeconds
+
+    let batch_rate =
+        float entity'components.Length
+        / batch_stopwatch.Elapsed.TotalSeconds
+
+    printfn
+        "batch=%i rows=%i components=%i expansion=%O batch_elapsed=%O batch_rate=%.0f components/sec total=%i total_elapsed=%O total_rate=%.0f components/sec"
+        batch_index
+        character_property_batch.Length
+        entity'components.Length
+        expansion_elapsed
+        batch_stopwatch.Elapsed
+        batch_rate
+        total_components_written
+        total_stopwatch.Elapsed
+        total_rate)
+
+total_stopwatch.Stop()
+
+printfn
+    "done total_components=%i elapsed=%O average_rate=%.0f components/sec"
+    total_components_written
+    total_stopwatch.Elapsed
+    (float total_components_written
+     / total_stopwatch.Elapsed.TotalSeconds)
+
+
+(*
+
+name_aliases
+|> Array.chunkBySize batch_size
+|> Array.iteri (fun batch_index character_property_batch ->
+
+    let entity'components =
+        character_property_batch
+        |> Array.collect (fun (code_point, alias_attribute, type_attribute) ->
+            let code_point_iri = unicode.prefix code_point
+            let alias_iri = alias_iri_cache[alias_attribute]
+            let alias_literal = alias_literal_cache[alias_attribute]
+            let type_iri = alias_type_cache[type_attribute]
+
+            let code_point'name_alias'alias_iri =
+                Assert.spo code_point_iri unicode.name_alias alias_iri
+
+            let alias_iri'a'Name_Alias = Assert.spo alias_iri a unicode.Name_Alias
+
+            let alias_iri'alias_type'type_iri = Assert.spo alias_iri unicode.alias_type type_iri
+
+            let alias_iri'value'alias_literal = Assert.spo alias_iri rdf.value alias_literal
+
+
+
+
+            Array.concat [|
+
+                            quad_components code_point'name_alias'alias_iri
+                            quad_components alias_iri'a'Name_Alias
+                            quad_components alias_iri'alias_type'type_iri
+                            quad_components alias_iri'value'alias_literal
+
+                             |]
+
+        )
+
+    printfn "writing expanded batch %i components=%i" batch_index entity'components.Length
+
+    Write.Entity'Components entity'components LMDB_context)
+
+
+
+*)
+
+
+
+
+
+total_stopwatch <- Stopwatch.StartNew()
+
+total_components_written <- 0
+
+name_aliases
+|> Array.chunkBySize batch_size
+|> Array.iteri (fun batch_index name_alias_batch ->
+
+    let batch_stopwatch = Stopwatch.StartNew()
+
+    let entity'components =
+        name_alias_batch
+        |> Array.collect (fun (code_point, alias_attribute, type_attribute) ->
+            let code_point_iri = unicode.prefix code_point
+            let alias_iri = alias_iri_cache[alias_attribute]
+            let alias_literal = alias_literal_cache[alias_attribute]
+            let type_iri = alias_type_cache[type_attribute]
+
+            let code_point'name_alias'alias_iri =
+                Assert.spo code_point_iri unicode.name_alias alias_iri
+
+            let alias_iri'a'Name_Alias = Assert.spo alias_iri a unicode.Name_Alias
+
+            let alias_iri'alias_type'type_iri = Assert.spo alias_iri unicode.alias_type type_iri
+
+            let alias_iri'value'alias_literal = Assert.spo alias_iri rdf.value alias_literal
+
+            Array.concat [| quad_components code_point'name_alias'alias_iri
+                            quad_components alias_iri'a'Name_Alias
+                            quad_components alias_iri'alias_type'type_iri
+                            quad_components alias_iri'value'alias_literal |])
+
+    let expansion_elapsed = batch_stopwatch.Elapsed
+
+    Write.Entity'Components entity'components LMDB_context
+
+    batch_stopwatch.Stop()
+
+    total_components_written <-
+        total_components_written
+        + entity'components.Length
+
+    let batch_rate =
+        float entity'components.Length
+        / batch_stopwatch.Elapsed.TotalSeconds
+
+    let total_rate =
+        float total_components_written
+        / total_stopwatch.Elapsed.TotalSeconds
+
+    printfn
+        "name_aliases batch=%i rows=%i components=%i expansion=%O batch_elapsed=%O batch_rate=%.0f components/sec total=%i total_elapsed=%O total_rate=%.0f components/sec"
+        batch_index
+        name_alias_batch.Length
+        entity'components.Length
+        expansion_elapsed
+        batch_stopwatch.Elapsed
+        batch_rate
+        total_components_written
+        total_stopwatch.Elapsed
+        total_rate)
+
+total_stopwatch.Stop()
+
+printfn
+    "name_aliases done total_components=%i elapsed=%O average_rate=%.0f components/sec"
+    total_components_written
+    total_stopwatch.Elapsed
+    (float total_components_written
+     / total_stopwatch.Elapsed.TotalSeconds)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let test_entity = unicode.prefix "030F"
+
+let test_read = Read.Entity'Components LMDB_context
+LMDB_environment.EnvironmentStats
+
+
+
+
+// Write.Entity'Components code_point'character_property write_transaction_context
+
+
+(*
+let entities_with_name_alias =
+    Read.Entities_with_Component<Unicode_Name_Alias> unicode_name_alias_iri read_transaction_context
+
+let random_entity'component = entities_with_name_alias |> Array.randomChoice
+
+let components_from_random_entity'component =
+    Read.Components_for_Entity random_entity'component.Entity read_transaction_context
+
+components_from_random_entity'component
+|> Array.map (fun entity'component -> entity'component.component_type)
+|> Array.distinct
+//
+let random_entity'name_aliases =
+    Read.Components_for_Entity_with_type<Unicode_Name_Alias>
+        "https://eristocrates.dev/ontology/unicode/component/Unicode_Name_Alias"
+        random_entity'component.Entity
+        read_transaction_context
+
+let random_entity'character_properties =
+    Read.Components_for_Entity_with_type<Unicode_Character_Property>
+        "https://eristocrates.dev/ontology/unicode/component/Unicode_Character_Property"
+        random_entity'component.Entity
+        read_transaction_context
+
+
+
+
+let test_entity = "5758"
+let test_entity_iri = unicode_iri test_entity
+let test_property_iri = unicode_iri "test"
+
+
+let test_entity'component =
+    {
+
+      Entity = test_entity_iri
+      Component =
+        {
+
+          property_short_name = test_property_iri
+          property_value = "unchanged"
+
+        }
+
+    }
+
+
+
+Update.Entities_with_Component<Unicode_Name_Alias>
+    unicode_name_alias_iri
+    read_transaction_context
+    (fun entity'name_alias ->
+
+        { entity'name_alias with
+            Component =
+                { alias_name = entity'name_alias.Component.alias_name
+                  alias_type = entity'name_alias.Component.alias_type } })
+let test_component =
+    read_Components_for_Entity<Unicode_Character_Property> test_entity_iri read_transaction_context
+
+*)
+
+// write_Entity'Components [| test_entity'component |] write_transaction_context
+
+// migrate_Entity write_transaction_context test_entity test_entity_iri
+
+
+
+//
+// printfn "%A" values

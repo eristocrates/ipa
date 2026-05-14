@@ -31,9 +31,8 @@ let search_file_paths (search_filter: Filter'Type) =
 let filter =
     {
 
-      root_directory_path =
-          @"D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_Web_Services_2025_04_01"
-      file_name_expression = "SMDiagnostics*"
+      root_directory_path = @"C:\Windows\Microsoft.NET\assembly\GAC_MSIL"
+      file_name_expression = "System.Security*dll"
       contains_text = ""
       criteria = Criteria'Type.Search SearchOption.AllDirectories
 

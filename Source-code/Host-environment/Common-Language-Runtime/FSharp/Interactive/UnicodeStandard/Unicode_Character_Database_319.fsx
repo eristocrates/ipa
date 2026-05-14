@@ -1,5 +1,4 @@
 open System
-open System.Collections.Generic
 open System.Globalization
 open System.Text
 open System.Diagnostics
@@ -24,11 +23,9 @@ open MessagePack
 open PropertyAliases
 open Swensen.Unquote.Assertions
 
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\RDFErgonomics.fsx"
-
-open RDFErgonomics
-
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\LMDB\LMDB.fsx"
 open LMDB
+
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XmlErgonomics.fsx"
 
@@ -43,44 +40,6 @@ open XmlErgonomics
 // open Unicode_Standard
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\DiagnosticsErgonomics.fsx"
 open DiagnosticsErgonomics
-
-
-
-
-
-
-
-let context_iri = iri $"https://eristocrates.dev/ontology/unicode/"
-
-(*
-
-
-let code_point_form = iri "https://eristocrates.dev/ontology/unicode/3184F"
-let na_attribute_iri = iri $"https://eristocrates.dev/ontology/unicode/na"
-// let results = Query.sp_c random_code_point_iri na_iri context_iri
-
-
-
-
-
-*)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module ucd =
@@ -208,63 +167,6 @@ let name_aliases =
 
 
 
-let code_point_iri =
-
-    let local_name =
-        character_properties
-        |> Array.map (fun (code_point, _, _) -> code_point)
-        |> Array.randomChoice
-
-    iri $"https://eristocrates.dev/ontology/unicode/{local_name}"
-
-let attribute_iri =
-
-    let local_name =
-        character_properties
-        |> Array.map (fun (_, attribute, _) -> attribute)
-        |> Array.randomChoice
-
-    iri $"https://eristocrates.dev/ontology/unicode/{local_name}"
-
-let literal =
-    character_properties
-    |> Array.map (fun (_, _, attribute_value) -> attribute_value)
-    |> Array.randomChoice
-    |> simple_literal
-
-
-Query.s__c code_point_iri context_iri
-|> Array.iter (fun (p, o) ->
-    printfn
-        "<%s> <%s> \"%s\" <%s> ."
-        (Transient_Term.lexical_form_string code_point_iri)
-        (Transient_Term.lexical_form_string p)
-        (Transient_Term.lexical_form_string o)
-        (Transient_Term.lexical_form_string context_iri))
-
-Query.s___ code_point_iri
-|> Array.iter (fun (p, o, _) ->
-    printfn
-        "%s %s %s"
-        (Transient_Term.lexical_form_string code_point_iri)
-        (Transient_Term.lexical_form_string p)
-        (Transient_Term.lexical_form_string o))
-
-Query.s___ code_point_iri
-|> Array.iter (fun (p, o, _) ->
-    printfn
-        "%s %s %s"
-        (Transient_Term.lexical_form_string code_point_iri)
-        (Transient_Term.lexical_form_string p)
-        (Transient_Term.lexical_form_string o))
-
-let na_iri = iri $"https://eristocrates.dev/ontology/unicode/na"
-let kIRG_UKSource = iri $"https://eristocrates.dev/ontology/unicode/kIRG_UKSource"
-let UK_10329 = simple_literal "UK-10329"
-
-Query._poc kIRG_UKSource UK_10329 context_iri
-Query.sp_c code_point_iri na_iri context_iri
-Query._p__ na_iri
 
 
 
@@ -286,33 +188,126 @@ Query._p__ na_iri
 
 
 
+let personal_domain_base = "https://eristocrates.dev/ontology"
+
+let endogenous =
+    [|
+
+       "", $"{personal_domain_base}/adhoc/"
+       "unicode", $"{personal_domain_base}/unicode/"
+       "vocabulary", $"{personal_domain_base}/vocabulary/"
+       "mime_application", "https://w3id.org/uri4uri/mime/application/"
+       "example", "http://www.example.org/"
+       "rdfx", $"{personal_domain_base}/resource_description_framework/"
+       "op", $"{personal_domain_base}/operator/" // "Functions defined with the op prefix are described here to underpin the definitions of the operators in [XML Path Language (XPath) 3.1], [XQuery 3.1: An XML Query Language] and [XSL Transformations (XSLT) Version 3.0]. These functions are not available directly to users, and there is no requirement that implementations should actually provide these functions. For this reason, no namespace is associated with the op prefix. For example, multiplication is generally associated with the * operator, but it is described as a function in this document:
+
+
+       |]
+
+let webpage_prefixes =
+    [|
+
+       "http", "http://www.w3.org/2011/http#"
+       "http-headers", "http://www.w3.org/2011/http-headers#"
+       "http-methods", "http://www.w3.org/2011/http-methods#"
+       "http-statusCodes", "http://www.w3.org/2011/http-statusCodes#"
+       "twitter", "https://x.com/"
+       "twitterApi", "https://x.com/i/api#"
+       "community", "https://x.com/i/communities/"
+       "cdpNetwork", "https://chromedevtools.github.io/devtools-protocol/tot/Network/#"
+       "cdpPage", "https://chromedevtools.github.io/devtools-protocol/tot/Page/#"
+       "cdp", "http://chromedevtools.github.io/devtools-protocol#"
+       "bcp47", "https://www.rfc-editor.org/info/bcp47#"
+
+       |]
+
+
+let exogenous =
+    [|
+
+       "dct", "http://purl.org/dc/terms/"
+       "doap", "http://usefulinc.com/ns/doap#"
+       "earl", "http://www.w3.org/ns/earl#"
+       "foaf", "http://xmlns.com/foaf/0.1/"
+       "jsonld", "http://www.w3.org/ns/json-ld#"
+       "ptr", "http://www.w3.org/2009/pointers#"
+       "sioc", "http://rdfs.org/sioc/ns#"
+       "sioc_actions", "http://rdfs.org/sioc/actions#"
+       "sioc_services", "http://rdfs.org/sioc/services#"
+       "sioc_types", "http://rdfs.org/sioc/types#"
+       "xdt", "https://www.w3.org/2003/05/xpath-datatypes#"
+       "xqt_output", "https://www.w3.org/2010/xslt-xquery-serialization" // [Definition: the Output declaration namespace, ]; associated with output. There are no functions in this namespace: it is used for serialization parameters, as described in [XSLT and XQuery Serialization 3.1]
+       "xhtml", "https://www.w3.org/1999/xhtml" // [Definition: the XHTML namespace namespace, ];
+       "svg", "https://www.w3.org/2000/svg" // [Definition: the SVG namespace, ]; and
+       "mathml", "https://www.w3.org/1998/Math/MathML" // [Definition: the MathML namespace namespace, ]
+       "xs", "http://www.w3.org/2001/XMLSchema"
+       "xfn", "http://www.w3.org/2005/xpath-functions" // for functions — associated with fn. The namespace prefix used in this document for most functions that are available to users is fn.
+       "xfn_math", "http://www.w3.org/2005/xpath-functions/math" // for functions — associated with . This namespace is used for some mathematical functions. The namespace prefix used in this document for these functions is math. These functions are available to users in exactly the same way as those in the fn namespace.
+       "xfn_map", "http://www.w3.org/2005/xpath-functions/map" // for functions — associated with . This namespace is used for some functions that manipulate maps (see 17.1 Functions that Operate on Maps). The namespace prefix used in this document for these functions is map. These functions are available to users in exactly the same way as those in the fn namespace.
+       "xfn_array", "http://www.w3.org/2005/xpath-functions/array" // for functions — associated with . This namespace is used for some functions that manipulate maps (see 17.3 Functions that Operate on Arrays). The namespace prefix used in this document for these functions is array. These functions are available to users in exactly the same way as those in the fn namespace.
+       "xqt_err", "http://www.w3.org/2005/xqt-errors" // — associated with . There are no functions in this namespace; it is used for error codes. This document uses the prefix err to represent the namespace URI http://www.w3.org/2005/xqt-errors, which is the namespace for all XPath and XQuery error codes and messages. This namespace prefix is not predeclared and its use in this document is not normative.
+       "owl_time", "http://www.w3.org/2006/time#"
+       "geol", "http://example.org/geologic/"
+       "greg", "http://www.w3.org/ns/time/gregorian#"
+       "prov", "http://www.w3.org/ns/prov#"
+       "xsi", "http://www.w3.org/2001/XMLSchema-instance#"
 
 
 
 
+       |]
+
+let RDFa_Core_Initial_Context =
+    [|
 
 
 
+       "as", "https://www.w3.org/ns/activitystreams#" // "Activity Vocabulary","Activity Vocabulary","W3C Recommendation"
+       "csvw", "http://www.w3.org/ns/csvw#" // "Metadata for Tabular Data","Metadata Vocabulary for Tabular Data","W3C Recommendation"
+       "dcat", "http://www.w3.org/ns/dcat#" // "Data Catalog Vocabulary","Data Catalog Vocabulary (DCAT)","W3C Recommendation"
+       "dqv", "http://www.w3.org/ns/dqv#" // "Data Quality Vocabulary","Data               on the Web Best Practices: Data Quality Vocabulary","W3C WG Note"
+       "duv", "https://www.w3.org/ns/duv#" // "Dataset Usage Vocabulary","Dataset Usage Vocabulary","W3C WG Note"
+       "grddl", "http://www.w3.org/2003/g/data-view#" // GRDDL,"Gleaning Resource Descriptions from Dialects of Languages (GRDDL)","W3C Recommendation"
+       "jsonld", "http://www.w3.org/ns/json-ld#" // "JSON-LD","JSON-LD 1.1, A JSON-based Serialization for Linked Data","W3C Recommendation"
+       "ldp", "http://www.w3.org/ns/ldp#" // "Linked Data Platform Vocabulary","Linked Data Platform 1.0","W3C Recommendation"
+       "ma", "http://www.w3.org/ns/ma-ont#" // "Ontology for Media Resources","Ontology for Media Resources 1.0","W3C Recommendation"
+       "oa", "http://www.w3.org/ns/oa#" // "Web Annotation Vocabulary","Web Annotation Vocabulary","W3C Recommendation"
+       "odrl", "http://www.w3.org/ns/odrl/2/" // "ODRL Vocabulary & Expression 2.2","ODRL Vocabulary & Expression 2.2","W3C Recommendation"
+       "org", "http://www.w3.org/ns/org#" // Organizations,"The Organization Ontology","W3C Recommendation"
+       "owl", "http://www.w3.org/2002/07/owl#" // OWL,"OWL Overview","W3C Recommendation"
+       "prov", "http://www.w3.org/ns/prov#" // "Provenance Vocabulary","Provenance Ontology","W3C Recommendation"
+       "qb", "http://purl.org/linked-data/cube#" // "Data Cubes","The RDF Data Cube Vocabulary","W3C Recommendation"
+       "rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#" // RDF,"RDF Semantics","W3C Recommendation"
+       "rdfa", "http://www.w3.org/ns/rdfa#" // "RDFa Vocabulary","RDFa Core 1.1","W3C Recommendation"
+       "rdfs", "http://www.w3.org/2000/01/rdf-schema#" // "RDF Schema","RDF Semantics","W3C Recommendation"
+       "rif", "http://www.w3.org/2007/rif#" // RIF,"RIF Overview","W3C Recommendation"
+       "rr", "http://www.w3.org/ns/r2rml#" // R2RML,"R2RML: RDB to RDF Mapping Language","W3C Recommendation"
+       "sd", "http://www.w3.org/ns/sparql-service-description#" // "SPARQL 1.1 Service Description","SPARQL 1.1 Service Description","W3C Recommendation"
+       "skos", "http://www.w3.org/2004/02/skos/core#" // "SKOS Core","SKOS Simple Knowledge Organization System Reference","W3C Recommendation"
+       "skosxl", "http://www.w3.org/2008/05/skos-xl#" // "SKOS eXtension for Labels","SKOS Simple Knowledge Organization System Reference","W3C Recommendation"
+       "sosa", "http://www.w3.org/ns/sosa/" // "Sensor, Observation, Sample, and Actuator Ontology","Semantic Sensor Network Ontology","W3C Recommendation"
+       "ssn", "http://www.w3.org/ns/ssn/" // "Semantic Sensor Network Ontology","Semantic Sensor Network Ontology","W3C Recommendation"
+       "time", "http://www.w3.org/2006/time#" // "Time Ontology","Time Ontology in OWL","W3C Recommendation"
+       "void", "http://rdfs.org/ns/void#" // VoID,"Describing Linked Datasets with the VoID Vocabulary","W3C Interest Group Note"
+       "wdr", "http://www.w3.org/2007/05/powder#" // POWDER,"Protocol for Web Description Resources (POWDER): Formal Semantics","W3C Recommendation"
+       "wdrs", "http://www.w3.org/2007/05/powder-s#" // "POWDER-S","Protocol for Web Description Resources (POWDER): Formal Semantics","W3C Recommendation"
+       "xhv", "http://www.w3.org/1999/xhtml/vocab#" // "RDFa Default Prefix","RDFa Core 1.1","W3C Recommendation"
+       "xml", "http://www.w3.org/XML/1998/namespace" // "XML Reserved Prefix","Namespaces in XML 1.0","W3C Recommendation"
+       "xsd", "http://www.w3.org/2001/XMLSchema#" // "XML Schema Datatypes","XML Schema Part 2: Datatypes Second Edition","W3C Recommendation"
 
 
+       |]
 
+let prefix_map =
+    Map.ofArray
+    <| Array.concat [|
 
+                       RDFa_Core_Initial_Context
+                       endogenous
+                       webpage_prefixes
+                       exogenous
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        |]
 
 
 
@@ -429,14 +424,6 @@ type RDF_Prefix with
 
 
 
-
-
-
-
-
-
-
-
 let prefix_label (prefix_label: string) (raw_local_name: string) =
 
     {
@@ -497,6 +484,7 @@ module rdf =
     /// 	rdfs:comment "The base direction component of a CompoundLiteral." ;
     let direction = prefix "direction"
 
+let a = rdf.``type``
 
 module owl =
     module time =
@@ -579,67 +567,6 @@ module xsd =
     let unsignedLong = prefix "unsignedLong"
     let unsignedShort = prefix "unsignedShort"
     let yearMonthDuration = prefix "yearMonthDuration"
-
-
-
-
-module unicode =
-
-    let prefix = prefix_label "unicode"
-
-    let Unicode_Character_Property = prefix "Unicode_Character_Property"
-    let Unicode_Name_Alias = prefix "Unicode_Name_Alias"
-    let name_alias = prefix "name_alias"
-    let Name_Alias = prefix "Name_Alias"
-    let alias_type = prefix "alias_type"
-    let Code_Point = prefix "Code_Point"
-
-
-
-module rdfx =
-    let prefix = prefix_label "rdfx"
-    let subject_of = prefix "subject_of"
-    let predicate_of = prefix "predicate_of"
-    let object_of = prefix "object_of"
-    let context_of = prefix "context_of"
-    let Resolved_IRI = prefix "Resolved_IRI"
-    let RDF_Literal = prefix "RDF_Literal"
-    let Blank_Node = prefix "Blank_Node"
-    let Dollar_Variable = prefix "Dollar_Variable"
-    let Question_Variable = prefix "Question_Variable"
-    let Triple = prefix "Triple"
-    let IRIREF = prefix "IRIREF"
-    let Relative_IRI = prefix "Relative_IRI"
-    let Skolem_IRI = prefix "Skolem_IRI"
-    let RDF_String = prefix "RDF_String"
-    let CURIE = prefix "CURIE"
-    let RDF_Prefix = prefix "RDF_Prefix"
-    let RDF_Variable = prefix "RDF_Variable"
-    let RDF_Subject = prefix "RDF_Subject"
-    let TTSubject = prefix "TTSubject"
-    let RTSubject = prefix "RTSubject"
-    let RDF_Predicate = prefix "RDF_Predicate"
-    let RDF_Object = prefix "RDF_Object"
-    let TTObject = prefix "TTObject"
-    let RTObject = prefix "RTObject"
-    let RDF_Collection = prefix "RDF_Collection"
-    let RDF_Triple = prefix "RDF_Triple"
-    let Triple_Term = prefix "Triple_Term"
-    let Reified_Triple = prefix "Reified_Triple"
-    let RDF_Quad = prefix "RDF_Quad"
-    let RDF_Context = prefix "RDF_Context"
-    let RDF_Formula = prefix "RDF_Formula"
-    let Unnamed_Graph = prefix "Unnamed_Graph"
-    let Named_Graph = prefix "Named_Graph"
-    let RDF_Graph = prefix "RDF_Graph"
-    let RDF_Dataset = prefix "RDF_Dataset"
-    let Default_Context = prefix "Default_Context"
-
-
-
-
-
-
 
 
 
@@ -965,14 +892,40 @@ module Representation =
     module IRIREF =
 
         let resolved_iri (iriref: string) =
-            { lexical_form = iriref } |> ResolvedIRI
+            { lexical_form = iriref[1 .. iriref.Length - 2] }
+            |> ResolvedIRI
 
-        let relative_iri (iriref: string) =
-            { lexical_form = iriref } |> RelativeIRI
+        let relative_iri_iri (iriref: string) =
+            { lexical_form = iriref[1 .. iriref.Length - 2] }
+            |> RelativeIRI
 
     module Literal =
-        let simple (literal: string) = RDF_Literal.simple literal
+        let simple (literal: string) =
+            RDF_Literal.simple literal[1 .. literal.Length - 2]
 // TODO figure out how to handle other representations
+
+
+
+
+
+
+module unicode =
+
+    let prefix = prefix_label "unicode"
+
+    let Unicode_Character_Property = prefix "Unicode_Character_Property"
+    let Unicode_Name_Alias = prefix "Unicode_Name_Alias"
+    let name_alias = prefix "name_alias"
+    let Name_Alias = prefix "Name_Alias"
+    let alias_type = prefix "alias_type"
+    let Code_Point = prefix "Code_Point"
+
+
+
+
+
+
+
 
 
 
@@ -1053,22 +1006,15 @@ module Set =
 
 
 
-
-let code_point_iri_lexical_forms =
+let code_point_iri_local_names =
     character_properties
     |> Array.map (fun (code_point, _, _) -> code_point)
     |> Array.distinct
-    |> Array.map (fun local_name -> $"https://eristocrates.dev/ontology/unicode/{local_name}"
 
-    )
-
-let attribute_iri_lexical_forms =
+let attribute_iri_local_names =
     character_properties
     |> Array.map (fun (_, char_attribute_LocalName, _) -> char_attribute_LocalName)
     |> Array.distinct
-    |> Array.map (fun local_name -> $"https://eristocrates.dev/ontology/unicode/{local_name}"
-
-    )
 
 let attribute_literal_lexical_forms =
     character_properties
@@ -1076,433 +1022,122 @@ let attribute_literal_lexical_forms =
     |> Array.distinct
 
 
-let alias_literal_lexical_forms =
-    name_aliases
-    |> Array.map (fun (_, alias_attribute, _) -> alias_attribute)
-    |> Array.distinct
 
-let alias_iri_lexical_forms =
-    alias_literal_lexical_forms
-    |> Array.map (fun local_name -> $"https://eristocrates.dev/ontology/unicode/{local_name}"
-
-    )
-
-let alias_type_iri_lexical_forms =
-    name_aliases
-    |> Array.map (fun (_, _, type_attribute) -> type_attribute)
-    |> Array.distinct
-    |> Array.map (fun local_name -> $"https://eristocrates.dev/ontology/unicode/{local_name}"
+let code_point_iri_representations =
+    code_point_iri_local_names
+    |> Array.map (fun code_point_local_name ->
+        let code_point_iri = unicode.prefix code_point_local_name
+        code_point_iri.representation
 
     )
 
 
-let iri_forms =
-    Array.concat [|
+// TODO consider canonicalization/normalization from source text
+(*
+let local_names_needing_escape =
+    attribute_iri_local_names
+    |> Array.filter (fun local_name -> turtle_escape_set |> Set.ContainsAny local_name)
 
-                    code_point_iri_lexical_forms
-                    attribute_iri_lexical_forms
-                    alias_iri_lexical_forms
-                    alias_type_iri_lexical_forms
+*)
+let attribute_iri_representations =
+    attribute_iri_local_names
+    |> Array.map (fun attribute_local_name ->
+        let attribute_iri = unicode.prefix attribute_local_name
+        attribute_iri.representation
 
-                     |]
+    )
 
-let literal_forms =
-    Array.concat [|
+let attribute_literal_representations =
+    attribute_literal_lexical_forms
+    |> Array.map (fun attribute_lexical_form ->
+        let attribute_literal = RDF_Literal.simple attribute_lexical_form
+        attribute_literal.representation
 
-                    attribute_literal_lexical_forms
-                    alias_literal_lexical_forms
+    )
 
-                     |]
 
+let code_point_iri_entity'components =
+    code_point_iri_representations
+    |> Array.map Entity'Component.from_string
+// Database.Put.Entity'Components code_point_entity'components
 
-let iri_terms =
-    Database.Get.Lexical_Forms_from_Strings iri_forms
-    |> iri_terms_from_lexical_forms
-    |> Database.Get.Transient_Terms_From_Persistent_Terms
+let attribute_iri_entity'components =
+    attribute_iri_representations
+    |> Array.map Entity'Component.from_string
 
-let literal_terms =
-    Database.Get.Lexical_Forms_from_Strings literal_forms
-    |> simple_literal_terms_from_lexical_forms
-    |> Database.Get.Transient_Terms_From_Persistent_Terms
+// Database.Put.Entity'Components attribute_iri_entity'components
 
 
+let attribute_literal_entity'components =
+    attribute_literal_representations
+    |> Array.map Entity'Component.from_string
 
+// Database.Put.Entity'Components attribute_literal_entity'components
 
 
-let a = iri "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-let value_iri = iri "http://www.w3.org/1999/02/22-rdf-syntax-ns#value"
-let Code_Point_iri = iri unicode.Code_Point.expand.lexical_form
-let Name_Alias_iri = iri unicode.Name_Alias.expand.lexical_form
+let random_entity () =
+    Database.Get.All_Entities() |> Array.randomChoice
 
-let Unicode_Character_Property_iri =
-    iri unicode.Unicode_Character_Property.expand.lexical_form
+let random_id =
+    Database.Get.ID_by_Entity(random_entity ())
+    |> Option.get
 
-let name_alias_iri = iri unicode.name_alias.expand.lexical_form
-let alias_type_iri = iri unicode.alias_type.expand.lexical_form
 
+let random_representation =
+    Database.Get.Component_by_Entity(random_entity ())
+    |> Option.get
+    |> Component.to_string
 
+(*
 
+Database.Put.Entity'Components [|
 
+                                  Entity'Component.from_string xsd.boolean.expand.lexical_form
 
+                                   |]
 
+let xsd_string_id =
+    Database.Get.ID_by_Entity
+        (Entity'Component.from_string xsd.string.expand.lexical_form)
+            .Entity
+    |> Option.get
 
+let true_id =
+    Database.Get.ID_by_Entity (Entity'Component.from_string "true").Entity
+    |> Option.get
 
+let xsd_boolean_id =
+    Database.Get.ID_by_Entity
+        (Entity'Component.from_string xsd.boolean.expand.lexical_form)
+            .Entity
+    |> Option.get
 
 
 
+let xsd_string_signature: Resolved_IRI_Signature =
+    { Lexical_form_id = xsd_string_id }
 
+let xsd_boolean_signature: Resolved_IRI_Signature =
+    { Lexical_form_id = xsd_boolean_id }
 
+let true_signature: String_Literal_Quote_Signature = { Lexical_form_id = true_id }
 
-let transient_term_lexical_form_string (term: Transient_Term) =
-    term.persistent_term
-    |> Persistent_Term.lexical_form_id
-    |> Lexical_Form.string_from_form_id
+let true_string: Simple_Literal_Signature =
+    { Lexical_form_id = true_signature.Lexical_form_id
+      datatype_id = xsd_string_signature.Lexical_form_id }
 
-let terms_by_lexical_form_string (terms: Transient_Term array) =
-    let dictionary = Dictionary<string, Transient_Term>()
+let true_boolean: Simple_Literal_Signature =
+    { Lexical_form_id = true_signature.Lexical_form_id
+      datatype_id = xsd_boolean_signature.Lexical_form_id }
 
-    for term in terms do
-        let key = transient_term_lexical_form_string term
 
-        if not (dictionary.ContainsKey key) then
-            dictionary.Add(key, term)
 
-    dictionary
-
-let iri_term_by_string_lookup = terms_by_lexical_form_string iri_terms
-
-let literal_term_by_string_lookup = terms_by_lexical_form_string literal_terms
-
-let iri_lookup string_value = iri_term_by_string_lookup[string_value]
-
-let simple_literal_lookup string_value =
-    literal_term_by_string_lookup[string_value]
-
-
-
-
-
-
-
-
-
-
-
-character_properties
-|> Array.distinctBy (fun (_, char_attribute, _) -> char_attribute)
-|> Array.map (fun (_, char_attribute, _) ->
-    let char_attribute_iri =
-        iri_lookup $"https://eristocrates.dev/ontology/unicode/{char_attribute}"
-
-    Quad.spoc char_attribute_iri a Unicode_Character_Property_iri context_iri
-
-)
-|> Assert.Quads
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let mutable total_stopwatch = Stopwatch.StartNew()
-
-let mutable total_quads_written = 0
-
-
-let code_point_elements =
-    character_properties
-    |> Array.distinctBy (fun (code_point, _, _) -> code_point)
-
-let code_point_elements_batch_cardinality = code_point_elements.Length / batch_size
-
-code_point_elements
-|> Array.chunkBySize batch_size
-|> Array.iteri (fun batch_index code_point_batch ->
-
-    let batch_stopwatch = Stopwatch.StartNew()
-
-    let quads =
-        code_point_batch
-        |> Array.map (fun (code_point, _, _) ->
-            let code_point_iri =
-                iri_lookup $"https://eristocrates.dev/ontology/unicode/{code_point}"
-
-            Quad.spoc code_point_iri a Code_Point_iri context_iri
-
-        )
-
-
-    Assert.Quads quads
-
-    batch_stopwatch.Stop()
-
-
-    total_quads_written <- total_quads_written + quads.Length
-
-    let total_rate =
-        float total_quads_written
-        / total_stopwatch.Elapsed.TotalSeconds
-
-    let batch_rate =
-        float quads.Length
-        / batch_stopwatch.Elapsed.TotalSeconds
-
-    printfn
-        "batch=%i/%d  batch_rate=%.0f quads/sec total=%i total_elapsed=%O total_rate=%.0f quads/sec"
-        batch_index
-        code_point_elements_batch_cardinality
-        batch_rate
-        total_quads_written
-        total_stopwatch.Elapsed
-        total_rate)
-
-total_stopwatch.Stop()
-
-printfn
-    "done total_quads=%i elapsed=%O average_rate=%.0f quads/sec"
-    total_quads_written
-    total_stopwatch.Elapsed
-    (float total_quads_written
-     / total_stopwatch.Elapsed.TotalSeconds)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-total_stopwatch = Stopwatch.StartNew()
-
-total_quads_written = 0
-
-let character_property_batch_cardinality = character_properties.Length / batch_size
-
-character_properties
-|> Array.chunkBySize batch_size
-|> Array.iteri (fun batch_index character_property_batch ->
-
-    let batch_stopwatch = Stopwatch.StartNew()
-
-    let quads =
-        character_property_batch
-        |> Array.map (fun (code_point, char_attribute, char_attribute_value) ->
-
-            let code_point_iri =
-                iri_lookup $"https://eristocrates.dev/ontology/unicode/{code_point}"
-
-            let char_attribute_iri =
-                iri_lookup $"https://eristocrates.dev/ontology/unicode/{char_attribute}"
-
-            let attribute_literal = simple_literal_lookup char_attribute_value
-
-            Quad.spoc code_point_iri char_attribute_iri attribute_literal context_iri
-
-        )
-
-
-    Assert.Quads quads
-
-    batch_stopwatch.Stop()
-
-
-    total_quads_written <- total_quads_written + quads.Length
-
-    let total_rate =
-        float total_quads_written
-        / total_stopwatch.Elapsed.TotalSeconds
-
-    let batch_rate =
-        float quads.Length
-        / batch_stopwatch.Elapsed.TotalSeconds
-
-    printfn
-        "batch=%i/%d  batch_rate=%.0f quads/sec total=%i total_elapsed=%O total_rate=%.0f quads/sec"
-        batch_index
-        character_property_batch_cardinality
-        batch_rate
-        total_quads_written
-        total_stopwatch.Elapsed
-        total_rate)
-
-total_stopwatch.Stop()
-
-printfn
-    "done total_quads=%i elapsed=%O average_rate=%.0f quads/sec"
-    total_quads_written
-    total_stopwatch.Elapsed
-    (float total_quads_written
-     / total_stopwatch.Elapsed.TotalSeconds)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-total_stopwatch <- Stopwatch.StartNew()
-
-total_quads_written <- 0
-
-let name_aliases_batch_cardinality = name_aliases.Length / batch_size
-
-name_aliases
-|> Array.chunkBySize batch_size
-|> Array.iteri (fun batch_index name_alias_batch ->
-
-    let batch_stopwatch = Stopwatch.StartNew()
-
-    let quads =
-        name_alias_batch
-        |> Array.collect (fun (code_point, alias_attribute, type_attribute) ->
-
-            let code_point_iri =
-                iri_lookup $"https://eristocrates.dev/ontology/unicode/{code_point}"
-
-            let alias_iri =
-                iri_lookup $"https://eristocrates.dev/ontology/unicode/{alias_attribute}"
-
-            let alias_literal = simple_literal_lookup alias_attribute
-
-            let type_iri =
-                iri_lookup $"https://eristocrates.dev/ontology/unicode/{type_attribute}"
-
-            [|
-
-               Quad.spoc code_point_iri name_alias_iri alias_iri context_iri
-               Quad.spoc alias_iri a Name_Alias_iri context_iri
-               Quad.spoc alias_iri alias_type_iri type_iri context_iri
-               Quad.spoc alias_iri value_iri alias_literal context_iri
-
-               |]
-
-        )
-
-
-    Assert.Quads quads
-
-    batch_stopwatch.Stop()
-
-    total_quads_written <- total_quads_written + quads.Length
-
-    let total_rate =
-        float total_quads_written
-        / total_stopwatch.Elapsed.TotalSeconds
-
-    let batch_rate =
-        float quads.Length
-        / batch_stopwatch.Elapsed.TotalSeconds
-
-    printfn
-        "batch=%i/%d rows  batch_rate=%.0f quads/sec total=%i total_elapsed=%O total_rate=%.0f quads/sec"
-        batch_index
-        name_aliases_batch_cardinality
-        batch_rate
-        total_quads_written
-        total_stopwatch.Elapsed
-        total_rate)
-
-total_stopwatch.Stop()
-
-printfn
-    "done total_quads=%i elapsed=%O average_rate=%.0f quads/sec"
-    total_quads_written
-    total_stopwatch.Elapsed
-    (float total_quads_written
-     / total_stopwatch.Elapsed.TotalSeconds)
-
-
-
-
-
-
-
-
-
-
-
-// print_environment_stats()
-
-//
+true_string = true_boolean
+true_string.Lexical_form_id = true_boolean.Lexical_form_id
+
+
+Database.Get.Component_by_ID xsd_string_signature.Lexical_form_id
+|> Option.get
+|> Component.to_string
+|> Representation.IRIREF.resolved_iri
+*)

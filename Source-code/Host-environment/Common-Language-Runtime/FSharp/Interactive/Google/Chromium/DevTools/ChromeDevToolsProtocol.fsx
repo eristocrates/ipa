@@ -6,7 +6,6 @@
 open System
 
 open System.Threading.Tasks
-open Microsoft.FSharp.Reflection
 
 #r "nuget: Microsoft.Extensions.Logging"
 open Microsoft.Extensions.Logging
@@ -43,143 +42,6 @@ open System.Threading
 
 
 let inline xor a b = (a || b) && not (a && b)
-
-module JsonValue =
-    let rec PropertyKeys (jsonValue: JsonValue) =
-        match jsonValue with
-        | JsonValue.Record properties -> properties |> Array.map fst
-        | JsonValue.Array elements -> elements |> Array.collect PropertyKeys |> Array.distinct
-        | _ -> [||]
-
-    let rec PropertyValues (jsonValue: JsonValue) =
-        match jsonValue with
-        | JsonValue.Record properties -> properties |> Array.map snd
-        | JsonValue.Array elements -> elements |> Array.collect PropertyValues
-        | _ -> [||]
-
-    let rec GrandPropertyKeys (jsonValue: JsonValue) =
-        match jsonValue with
-        | JsonValue.Record properties -> properties |> Array.map snd |> Array.collect PropertyKeys |> Array.distinct
-        | JsonValue.Array elements -> elements |> Array.collect GrandPropertyKeys |> Array.distinct
-        | _ -> [||]
-
-    let Kind (jsonValue: JsonValue) =
-        let (caseInfo, _) = FSharpValue.GetUnionFields(jsonValue, typeof<JsonValue>)
-        caseInfo.Name
-
-    let rec PropertyArray propertyName jsonValue =
-        match jsonValue with
-        | JsonValue.Record properties ->
-            properties
-            |> Array.choose (fun (key, value) -> if key = propertyName then Some value else None)
-        | JsonValue.Array elements -> elements |> Array.collect (PropertyArray propertyName)
-        | _ -> [||]
-
-    let PropertiesArray propertyName jsonValues =
-        jsonValues |> Array.collect (PropertyArray propertyName)
-
-
-type JsonValue with
-    member this.PropertyKeys = this |> JsonValue.PropertyKeys
-
-    member this.PropertyValues = this |> JsonValue.PropertyValues
-
-    member this.GrandPropertyKeys = this |> JsonValue.GrandPropertyKeys
-
-    member this.Kind = this |> JsonValue.Kind
-
-    member this.AsArray =
-        match this with
-        | JsonValue.Array values -> values
-        | _ -> [||]
-
-    member this.AsRecord =
-        match this with
-        | JsonValue.Record properties -> properties
-        | _ -> [||]
-
-    member this.Properties = this.AsRecord
-
-    member this.PropertyArray(propertyName: string) =
-        JsonValue.PropertyArray propertyName this
-
-
-
-
-
-type 'T ``[]`` with
-
-    member this.PropertyKeys =
-        match box this with
-        | :? (JsonValue array) as values -> values |> Array.collect JsonValue.PropertyKeys |> Array.distinct
-        | _ -> [||]
-
-    member this.PropertyValues =
-        match box this with
-        | :? (JsonValue array) as values -> values |> Array.collect JsonValue.PropertyValues
-        | _ -> [||]
-
-    member this.GrandPropertyKeys =
-        match box this with
-        | :? (JsonValue array) as values -> values |> Array.collect JsonValue.GrandPropertyKeys |> Array.distinct
-        | _ -> [||]
-
-    member this.Kinds =
-        match box this with
-        | :? (JsonValue array) as values -> values |> Array.map JsonValue.Kind |> Array.distinct
-        | _ -> [||]
-
-
-
-
-let (?>) (jsonObjects: JsonValue array) (propertyName: string) =
-    JsonValue.PropertiesArray propertyName jsonObjects
-(*
-
-EdgeDevToolsProtocol.protocol.jsonschema.JsonValue.Kind
-
-EdgeDevToolsProtocol.protocol.jsonschema.JsonValue.PropertyKeys
-EdgeDevToolsProtocol.protocol.jsonschema.JsonValue?properties?domains.PropertyKeys
-EdgeDevToolsProtocol.protocol.jsonschema.JsonValue?properties?domains?items?properties.PropertyKeys
-
-
-EdgeDevToolsProtocol.protocol.json.JsonValue?domains.PropertyKeys
-EdgeDevToolsProtocol.protocol.json.JsonValue?domains.Kind
-
-
-let types = EdgeDevToolsProtocol.protocol.json.JsonValue?domains.AsArray ?> "types" 
-
-
-
-types
-|> Array.collect JsonValue.PropertyKeys |> Array.distinct
-
-
-
-EdgeDevToolsProtocol.protocol.json.JsonValue |> JsonPath.find "$.domains[].types[0].properties[8].name"
-EdgeDevToolsProtocol.protocol.jsonschema.JsonValue?properties?domains.AsArray.Keys
-
-
-
-
-EdgeDevToolsProtocol.protocol.json.JsonValue?domains.Keys ?> domain
-
-let domain_items = EdgeDevToolsProtocol.protocol.json.JsonValue?domains.Keys
-
-let domain_items =
-    EdgeDevToolsProtocol.protocol.json.JsonValue?domains.JsonValues.Keys
-
-domain_items |> Array.map (fun domain_item -> domain_item.Kind)
-
-// |> Array.filter (fun domain_item -> domain_item.IsRecord)
-
-
-
-*)
-
-
-
-
 
 
 
@@ -226,7 +88,10 @@ module Persistence =
         triplestore.UriFactory.Create(uri_string)
 
     let uri_to_base_uri (uri: Uri) =
-        uri |> uri_to_last_segment |> segment_to_stem_path |> string_to_uri
+        uri
+        |> uri_to_last_segment
+        |> segment_to_stem_path
+        |> string_to_uri
 
     let string_to_base_uri (uri_string: string) =
         uri_string |> string_to_uri |> uri_to_base_uri
@@ -236,7 +101,10 @@ module Persistence =
 
 
     let vocabulary_graph =
-        let graph_name = "https://eristocrates.dev/ontology/vocabulary/" |> string_to_iri
+        let graph_name =
+            "https://eristocrates.dev/ontology/vocabulary/"
+            |> string_to_iri
+
         let named_graph = new ThreadSafeGraph(graph_name)
         named_graph.BaseUri <- triplestore.UriFactory.Create(@"D:\Persistence\vocabulary")
         named_graph.UriFactory <- triplestore.UriFactory
@@ -259,7 +127,8 @@ module Persistence =
             named_graph
 
     let graphs () =
-        dataset.GraphNames |> Seq.map (fun graph_name -> dataset[graph_name])
+        dataset.GraphNames
+        |> Seq.map (fun graph_name -> dataset[graph_name])
 
 
     let named_graph (graph_name_string: string) (base_uri_string: string) =
@@ -287,7 +156,11 @@ module Persistence =
 
     let union_graph () =
         let union_graph = new ThreadSafeGraph()
-        let triples = graphs () |> Seq.collect (fun graph -> graph.Triples)
+
+        let triples =
+            graphs ()
+            |> Seq.collect (fun graph -> graph.Triples)
+
         test <@ union_graph.Assert(triples) @>
         union_graph
 
@@ -316,70 +189,69 @@ module Persistence =
             |> Seq.iter (fun graph -> compressingturtlewriter.Save(graph, $"{graph.BaseUri.OriginalString}.ttl"))
 
 let namespace_maps =
-    Map.ofArray
-        [|
+    Map.ofArray [|
 
 
-           "http://chromedevtools.github.io/devtools-protocol#", "cdp"
-           "http://purl.org/dc/terms/", "dct"
-           "http://purl.org/linked-data/cube#", "qb"
-           "http://rdfs.org/ns/void#", "void"
-           "http://rdfs.org/sioc/actions#", "sioc_actions"
-           "http://rdfs.org/sioc/ns#", "sioc"
-           "http://rdfs.org/sioc/services#", "sioc_services"
-           "http://rdfs.org/sioc/types#", "sioc_types"
-           "http://usefulinc.com/ns/doap#", "doap"
-           "http://www.example.org/", ""
-           "http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf"
-           "http://www.w3.org/1999/xhtml/vocab#", "xhv"
-           "http://www.w3.org/2000/01/rdf-schema#", "rdfs"
-           "http://www.w3.org/2001/XMLSchema#", "xsd"
-           "http://www.w3.org/2002/07/owl#", "owl"
-           "http://www.w3.org/2003/g/data-view#", "grddl"
-           "http://www.w3.org/2004/02/skos/core#", "skos"
-           "http://www.w3.org/2006/time#", "time"
-           "http://www.w3.org/2007/05/powder-s#", "wdrs"
-           "http://www.w3.org/2007/05/powder#", "wdr"
-           "http://www.w3.org/2007/rif#", "rif"
-           "http://www.w3.org/2008/05/skos-xl#", "skosxl"
-           "http://www.w3.org/2009/pointers#", "ptr"
-           "http://www.w3.org/2011/content#", "cnt"
-           "http://www.w3.org/2011/http-headers#", "http-headers"
-           "http://www.w3.org/2011/http-methods#", "http-methods"
-           "http://www.w3.org/2011/http-statusCodes#", "http-statusCodes"
-           "http://www.w3.org/2011/http#", "http"
-           "http://www.w3.org/ns/csvw#", "csvw"
-           "http://www.w3.org/ns/dcat#", "dcat"
-           "http://www.w3.org/ns/dqv#", "dqv"
-           "http://www.w3.org/ns/earl#", "earl"
-           "http://www.w3.org/ns/json-ld#", "jsonld"
-           "http://www.w3.org/ns/ldp#", "ldp"
-           "http://www.w3.org/ns/ma-ont#", "ma"
-           "http://www.w3.org/ns/oa#", "oa"
-           "http://www.w3.org/ns/odrl/2/", "odrl"
-           "http://www.w3.org/ns/org#", "org"
-           "http://www.w3.org/ns/prov#", "prov"
-           "http://www.w3.org/ns/r2rml#", "rr"
-           "http://www.w3.org/ns/rdfa#", "rdfa"
-           "http://www.w3.org/ns/sosa/", "sosa"
-           "http://www.w3.org/ns/sparql-service-description#", "sd"
-           "http://www.w3.org/ns/ssn/", "ssn"
-           "http://www.w3.org/XML/1998/namespace", "xml"
-           "http://xmlns.com/foaf/0.1/", "foaf"
-           "http://xmlns.com/foaf/spec/#", "foaf"
-           "https://chromedevtools.github.io/devtools-protocol/tot/Network/#", "cdpNetwork"
-           "https://chromedevtools.github.io/devtools-protocol/tot/Page/#", "cdpPage"
-           "https://eristocrates.dev/ontology/vocabulary/", "vocabulary"
-           "https://x.com/i/communities/", "community"
-           "https://w3id.org/uri4uri/mime/application/", "mime_application"
-           "https://www.w3.org/ns/activitystreams#", "as"
-           "https://www.w3.org/ns/duv#", "duv"
-           "https://x.com/", "twitter"
-           "https://x.com/i/api#", "twitterApi"
+                   "http://chromedevtools.github.io/devtools-protocol#", "cdp"
+                   "http://purl.org/dc/terms/", "dct"
+                   "http://purl.org/linked-data/cube#", "qb"
+                   "http://rdfs.org/ns/void#", "void"
+                   "http://rdfs.org/sioc/actions#", "sioc_actions"
+                   "http://rdfs.org/sioc/ns#", "sioc"
+                   "http://rdfs.org/sioc/services#", "sioc_services"
+                   "http://rdfs.org/sioc/types#", "sioc_types"
+                   "http://usefulinc.com/ns/doap#", "doap"
+                   "http://www.example.org/", ""
+                   "http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf"
+                   "http://www.w3.org/1999/xhtml/vocab#", "xhv"
+                   "http://www.w3.org/2000/01/rdf-schema#", "rdfs"
+                   "http://www.w3.org/2001/XMLSchema#", "xsd"
+                   "http://www.w3.org/2002/07/owl#", "owl"
+                   "http://www.w3.org/2003/g/data-view#", "grddl"
+                   "http://www.w3.org/2004/02/skos/core#", "skos"
+                   "http://www.w3.org/2006/time#", "time"
+                   "http://www.w3.org/2007/05/powder-s#", "wdrs"
+                   "http://www.w3.org/2007/05/powder#", "wdr"
+                   "http://www.w3.org/2007/rif#", "rif"
+                   "http://www.w3.org/2008/05/skos-xl#", "skosxl"
+                   "http://www.w3.org/2009/pointers#", "ptr"
+                   "http://www.w3.org/2011/content#", "cnt"
+                   "http://www.w3.org/2011/http-headers#", "http-headers"
+                   "http://www.w3.org/2011/http-methods#", "http-methods"
+                   "http://www.w3.org/2011/http-statusCodes#", "http-statusCodes"
+                   "http://www.w3.org/2011/http#", "http"
+                   "http://www.w3.org/ns/csvw#", "csvw"
+                   "http://www.w3.org/ns/dcat#", "dcat"
+                   "http://www.w3.org/ns/dqv#", "dqv"
+                   "http://www.w3.org/ns/earl#", "earl"
+                   "http://www.w3.org/ns/json-ld#", "jsonld"
+                   "http://www.w3.org/ns/ldp#", "ldp"
+                   "http://www.w3.org/ns/ma-ont#", "ma"
+                   "http://www.w3.org/ns/oa#", "oa"
+                   "http://www.w3.org/ns/odrl/2/", "odrl"
+                   "http://www.w3.org/ns/org#", "org"
+                   "http://www.w3.org/ns/prov#", "prov"
+                   "http://www.w3.org/ns/r2rml#", "rr"
+                   "http://www.w3.org/ns/rdfa#", "rdfa"
+                   "http://www.w3.org/ns/sosa/", "sosa"
+                   "http://www.w3.org/ns/sparql-service-description#", "sd"
+                   "http://www.w3.org/ns/ssn/", "ssn"
+                   "http://www.w3.org/XML/1998/namespace", "xml"
+                   "http://xmlns.com/foaf/0.1/", "foaf"
+                   "http://xmlns.com/foaf/spec/#", "foaf"
+                   "https://chromedevtools.github.io/devtools-protocol/tot/Network/#", "cdpNetwork"
+                   "https://chromedevtools.github.io/devtools-protocol/tot/Page/#", "cdpPage"
+                   "https://eristocrates.dev/ontology/vocabulary/", "vocabulary"
+                   "https://x.com/i/communities/", "community"
+                   "https://w3id.org/uri4uri/mime/application/", "mime_application"
+                   "https://www.w3.org/ns/activitystreams#", "as"
+                   "https://www.w3.org/ns/duv#", "duv"
+                   "https://x.com/", "twitter"
+                   "https://x.com/i/api#", "twitterApi"
 
 
 
-           |]
+                    |]
 
 namespace_maps
 |> Map.iter (fun uri prefix ->
@@ -485,6 +357,7 @@ module cdpNetwork =
         let ResourceType = prefix "type-ResourceType"
 
 type ObjectList = ObjectList of INode list
+
 type PredicateObjectList = PredicateObjectList of Predicate * ObjectList
 
 and Predicate =
@@ -511,8 +384,9 @@ let triples (subject: Subject) (predicate_object_lists: PredicateObjectList list
         | BlankSubject blankNode -> blankNode :> INode
 
     predicate_object_lists
-    |> List.collect (fun (PredicateObjectList(Predicate predicate, ObjectList objects)) ->
-        objects |> List.map (fun obj -> new Triple(subject_node, predicate, obj)))
+    |> List.collect (fun (PredicateObjectList (Predicate predicate, ObjectList objects)) ->
+        objects
+        |> List.map (fun obj -> new Triple(subject_node, predicate, obj)))
 
 
 
@@ -601,7 +475,7 @@ type DevTool =
       kind: DevToolKind
       targetId: string
 
-    }
+     }
 
 
     static member debug_browser(browser_debugging_endpoint: Uri) =
@@ -615,7 +489,10 @@ type DevTool =
 
             }
 
-        browser.client.ConnectAsync() |> Async.AwaitTask |> Async.RunSynchronously
+        browser.client.ConnectAsync()
+        |> Async.AwaitTask
+        |> Async.RunSynchronously
+
         browser
 
     static member debug_page(page_id: string) =
@@ -629,28 +506,34 @@ type DevTool =
             {
 
               client =
-                new DefaultProtocolClient(
-                    Persistence.triplestore.UriFactory.Create(page_debugging_endpoint),
-                    new ConsoleLogger()
-                )
+                  new DefaultProtocolClient(
+                      Persistence.triplestore.UriFactory.Create(page_debugging_endpoint),
+                      new ConsoleLogger()
+                  )
               kind = DevToolKind.page
               targetId = page_id
 
             }
 
-        page.client.ConnectAsync() |> Async.AwaitTask |> Async.RunSynchronously
+        page.client.ConnectAsync()
+        |> Async.AwaitTask
+        |> Async.RunSynchronously
 
         let PageEnableResponse =
-            page.client.SendCommandAsync(Domains.Page.Enable()) |> resync_task
+            page.client.SendCommandAsync(Domains.Page.Enable())
+            |> resync_task
 
         let NetworkEnableResponse =
-            page.client.SendCommandAsync(Domains.Network.Enable()) |> resync_task
+            page.client.SendCommandAsync(Domains.Network.Enable())
+            |> resync_task
 
         let DOMEnableResponse =
-            page.client.SendCommandAsync(Domains.DOM.Enable()) |> resync_task
+            page.client.SendCommandAsync(Domains.DOM.Enable())
+            |> resync_task
 
         let RuntimeEnableResponse =
-            page.client.SendCommandAsync(Domains.Runtime.Enable()) |> resync_task
+            page.client.SendCommandAsync(Domains.Runtime.Enable())
+            |> resync_task
 
 
         page
@@ -758,7 +641,7 @@ type TargetId_PropertyKey =
       target_id: string
       property_key: PropertyKey
 
-    }
+     }
 
 (*
 let update_list_collection () =
@@ -792,7 +675,8 @@ module Browser =
     /// https://chromedevtools.github.io/devtools-protocol/tot/Browser/#method-getVersion
     let getVersion (devtool: DevTool) =
 
-        devtool.client.SendCommandAsync(Domains.Browser.GetVersion()) |> resync_task
+        devtool.client.SendCommandAsync(Domains.Browser.GetVersion())
+        |> resync_task
 
 
 module Page =
@@ -839,7 +723,8 @@ module Network =
         )
 
     let is_document (url: string) =
-        Documents() |> Seq.exists (fun document_url -> url = document_url)
+        Documents()
+        |> Seq.exists (fun document_url -> url = document_url)
 
     let is_twitter_endpoint (endpoint: string) =
         match endpoint with
@@ -871,7 +756,8 @@ module Network =
     let safeUriNodeFromString (s: string) =
         try
             Persistence.vocabulary_graph.CreateUriNode(UriFactory.Create(s)) :> INode
-        with ex ->
+        with
+        | ex ->
             Console.Error.WriteLine($"Could not create URI node from: {s}")
             Console.Error.WriteLine(ex.ToString())
             Persistence.vocabulary_graph.CreateUriNode(UriFactory.Create(escape s)) :> INode
@@ -882,7 +768,7 @@ module Network =
     let subscribe_refresh (devtool: DevTool) =
 
         let request_will_be_sent =
-            devtool.client.SubscribeAsync<Domains.Network.RequestWillBeSent>(fun requestWillBeSent ->
+            devtool.client.SubscribeAsync<Domains.Network.RequestWillBeSent> (fun requestWillBeSent ->
 
                 task {
                     try
@@ -936,7 +822,8 @@ module Network =
 
                                    |]
 
-                            triplesToAssert |> Persistence.Assert.triples document_graph
+                            triplesToAssert
+                            |> Persistence.Assert.triples document_graph
 
 
 
@@ -1002,10 +889,12 @@ module Network =
 
                                    |]
 
-                            triplesToAssert |> Persistence.Assert.triples document_graph
+                            triplesToAssert
+                            |> Persistence.Assert.triples document_graph
 
 
-                    with ex ->
+                    with
+                    | ex ->
                         Console.Error.WriteLine("FAILED inside Network.requestWillBeSent subscription")
                         Console.Error.WriteLine(ex.ToString())
 
@@ -1133,7 +1022,8 @@ module Network =
 
 
         let reload_request_result =
-            devtool.client.SendCommandAsync(Domains.Page.Reload()) |> resync_task
+            devtool.client.SendCommandAsync(Domains.Page.Reload())
+            |> resync_task
 
         devtool
 
@@ -1145,7 +1035,8 @@ module Target =
     /// https://chromedevtools.github.io/devtools-protocol/tot/Target/#method-getTargets
     let getTargets (devtool: DevTool) =
         let result =
-            devtool.client.SendCommandAsync(Domains.Target.GetTargets()) |> resync_task
+            devtool.client.SendCommandAsync(Domains.Target.GetTargets())
+            |> resync_task
 
         result.TargetInfos
 
@@ -1258,7 +1149,10 @@ let edge = DevTool.debug_browser edge_endpoint
 
 let test_uri = Persistence.triplestore.UriFactory.Create("https://x.com/home")
 
-let test_page = edge |> Target.createTarget test_uri |> Network.subscribe_refresh
+let test_page =
+    edge
+    |> Target.createTarget test_uri
+    |> Network.subscribe_refresh
 
 
 
@@ -1307,7 +1201,7 @@ type TwitterUser =
       is_blue_verified: bool
       community_uri_strings: string array
 
-    }
+     }
 
 type MassBlockTwitterUser =
     {
@@ -1318,7 +1212,7 @@ type MassBlockTwitterUser =
       description: string
       profile_image_url: string
 
-    }
+     }
 
 
 
@@ -1326,61 +1220,61 @@ module HomeTimeline =
     [<Literal>]
     let filePath = @"D:\Surface\Company\Twitter\HomeTimeline.json"
 
-    let json (text: string) = JsonProvider<filePath>.Parse(text)
+    let json (text: string) = JsonProvider<filePath>.Parse (text)
 
 module CommunityQuery =
     [<Literal>]
     let filePath = @"D:\Surface\Company\Twitter\CommunityQuery.json"
 
-    let json (text: string) = JsonProvider<filePath>.Parse(text)
+    let json (text: string) = JsonProvider<filePath>.Parse (text)
 
 module CommunitiesFetchOneQuery =
     [<Literal>]
     let filePath = @"D:\Surface\Company\Twitter\CommunitiesFetchOneQuery.json"
 
-    let json (text: string) = JsonProvider<filePath>.Parse(text)
+    let json (text: string) = JsonProvider<filePath>.Parse (text)
 
 module CommunitiesRankedTimeline =
     [<Literal>]
     let filePath = @"D:\Surface\Company\Twitter\CommunitiesRankedTimeline.json"
 
-    let json (text: string) = JsonProvider<filePath>.Parse(text)
+    let json (text: string) = JsonProvider<filePath>.Parse (text)
 
 module CommunitiesExploreTimeline =
     [<Literal>]
     let filePath = @"D:\Surface\Company\Twitter\CommunitiesExploreTimeline.json"
 
-    let json (text: string) = JsonProvider<filePath>.Parse(text)
+    let json (text: string) = JsonProvider<filePath>.Parse (text)
 
 module CommunityTweetsTimeline =
     [<Literal>]
     let filePath = @"D:\Surface\Company\Twitter\CommunityTweetsTimeline.json"
 
-    let json (text: string) = JsonProvider<filePath>.Parse(text)
+    let json (text: string) = JsonProvider<filePath>.Parse (text)
 
 module membersSliceTimeline_Query =
     [<Literal>]
     let filePath = @"D:\Surface\Company\Twitter\membersSliceTimeline_Query.json"
 
-    let json (text: string) = JsonProvider<filePath>.Parse(text)
+    let json (text: string) = JsonProvider<filePath>.Parse (text)
 
 module UserByScreenName =
     [<Literal>]
     let filePath = @"D:\Surface\Company\Twitter\UserByScreenName.json"
 
-    let json (text: string) = JsonProvider<filePath>.Parse(text)
+    let json (text: string) = JsonProvider<filePath>.Parse (text)
 
 module UserTweets =
     [<Literal>]
     let filePath = @"D:\Surface\Company\Twitter\UserTweets.json"
 
-    let json (text: string) = JsonProvider<filePath>.Parse(text)
+    let json (text: string) = JsonProvider<filePath>.Parse (text)
 
 module ProfileSpotlightsQuery =
     [<Literal>]
     let filePath = @"D:\Surface\Company\Twitter\ProfileSpotlightsQuery.json"
 
-    let json (text: string) = JsonProvider<filePath>.Parse(text)
+    let json (text: string) = JsonProvider<filePath>.Parse (text)
 
 
 
@@ -1398,9 +1292,14 @@ module ProfileSpotlightsQuery =
 
 
 
-Persistence.union_graph().GetTriplesWithObject(twitterApi.UserByScreenName)
+Persistence
+    .union_graph()
+    .GetTriplesWithObject(twitterApi.UserByScreenName)
 |> Seq.map (fun triple -> triple.Subject)
-|> Seq.collect (fun request -> Persistence.union_graph().GetTriplesWithSubjectPredicate(request, cdp.RequestId))
+|> Seq.collect (fun request ->
+    Persistence
+        .union_graph()
+        .GetTriplesWithSubjectPredicate(request, cdp.RequestId))
 |> Seq.map (fun triple ->
 
     let request_id_literal = triple.Object :?> LiteralNode
@@ -1415,7 +1314,12 @@ Persistence.union_graph().GetTriplesWithObject(twitterApi.UserByScreenName)
 )
 |> Seq.map (fun json_response ->
 
-    let userByScreenName = (UserByScreenName.json json_response.Body).Data.User.Result
+    let userByScreenName =
+        (UserByScreenName.json json_response.Body)
+            .Data
+            .User
+            .Result
+
     let screen_name = userByScreenName.Core.ScreenName
 
     let screen_name_xsd_string =
@@ -1444,12 +1348,18 @@ Persistence.union_graph().GetTriplesWithObject(twitterApi.UserByScreenName)
 
            |]
 
-    triplesToAssert |> Persistence.Assert.triples profile_graph
+    triplesToAssert
+    |> Persistence.Assert.triples profile_graph
 
 
-    Persistence.union_graph().GetTriplesWithObject(twitterApi.UserTweets)
+    Persistence
+        .union_graph()
+        .GetTriplesWithObject(twitterApi.UserTweets)
     |> Seq.map (fun triple -> triple.Subject)
-    |> Seq.collect (fun request -> Persistence.union_graph().GetTriplesWithSubjectPredicate(request, cdp.RequestId))
+    |> Seq.collect (fun request ->
+        Persistence
+            .union_graph()
+            .GetTriplesWithSubjectPredicate(request, cdp.RequestId))
     |> Seq.map (fun triple ->
 
         let request_id_literal = triple.Object :?> LiteralNode
@@ -1508,8 +1418,11 @@ Persistence.union_graph().GetTriplesWithObject(twitterApi.UserByScreenName)
 
                    |]
 
-            triplesToAssert |> Persistence.Assert.triples profile_graph
-            triplesToAssert |> Persistence.Assert.triples community_graph
+            triplesToAssert
+            |> Persistence.Assert.triples profile_graph
+
+            triplesToAssert
+            |> Persistence.Assert.triples community_graph
 
 
         )))
@@ -1549,7 +1462,9 @@ Store.disk_demand.Graphs
 *)
 
 let community_urls =
-    Persistence.union_graph().GetTriples(twitter.Community)
+    Persistence
+        .union_graph()
+        .GetTriples(twitter.Community)
     |> Seq.collect (fun community'iri_a_twitter'Community ->
 
         Persistence

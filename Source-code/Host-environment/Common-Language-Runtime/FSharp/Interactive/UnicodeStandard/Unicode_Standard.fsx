@@ -1,181 +1,298 @@
 ﻿open System
-open System.Linq
+open System.Numerics
+open System.Collections.Immutable
+open System.Globalization
+open System.IO
 open System.Text
 open System.Text.Unicode
-open System.Globalization
-open System.Xml.Linq
 
+
+#r "nuget: Hedgehog"
+
+open Hedgehog
+open Hedgehog.FSharp
+
+#r "nuget: NeatIntervals"
+open NeatIntervals
 #r "nuget: Unquote"
 open Swensen.Unquote.Assertions
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\SetErgonomics.fsx"
-open SetErgonomics
-
-#r "nuget: FSharp.UMX"
-
-open FSharp.UMX
-
-let int_from_hexadecimal_digit_string (hexdig_string: string) = Convert.ToInt32(hexdig_string, 16)
 
 
-let Codespace = Set_Definition.FromIncludedInterval 0x0000 0x10FFFF
+#r "nuget: XParsec"
 
-
-[<Measure>]
-type code_point
-
-type Code_Point =
-    static member parse(raw_int: int) : int<code_point> =
-        test <@ Codespace.Contains raw_int @>
-        %raw_int
-
-
-[<Measure>]
-type high_surrogate_code_point
-
-let High_Surrogate_Code_Point_Set =
-    Set_Definition.FromIncludedInterval 0xD800 0xDBFF
-
-[<Measure>]
-type low_surrogate_code_point
-
-let Low_Surrogate_Code_Point_Set = Set_Definition.FromIncludedInterval 0xDC00 0xDFFF
-
-let Surrogate_Code_Point_Set =
-    Set_Definition.FromOverlay [| High_Surrogate_Code_Point_Set
-                                  Low_Surrogate_Code_Point_Set |]
-
-let Unicode_Scalar_Value_Set =
-    Codespace
-    |> Set_Definition.FromExclusion Surrogate_Code_Point_Set
-
-
-
-[<Measure>]
-type unicode_scalar_value
-
-type Unicode_Scalar_Value =
-    static member parse(raw_int: int) : int<unicode_scalar_value> =
-        test <@ Unicode_Scalar_Value_Set.Contains raw_int @>
-        %raw_int
-
-
-[<Struct>]
-type Unicode_Plane =
-    {
-
-      plane_name: string
-      abbreviation: string
-      as'int: int
-      material_set: Set_Definition<int>
-
-     }
+open XParsec
+open XParsec.Parsers
 
 
 
 
-[<Struct>]
-type Unicode_Block =
-    {
-
-      block_name: string
-      material_set: Set_Definition<int>
-
-     }
-
-
-[<Struct>]
-type Unicode_Partition =
-    {
-
-      partition_name: string
-      material_set: Set_Definition<int>
-
-     }
+let RNG =
+    let rng = System.Random()
+    fun min max -> rng.Next(min, max + 1)
 
 
 
-let Basic_Multilingual_Plane = Set_Definition.FromIncludedInterval 0x0000 0xFFFF
 
-let Basic_Latin_Block = Set_Definition.FromIncludedInterval 0x0000 0x007F
 
-let C0_controls = Set_Definition.FromIncludedInterval 0x0000 0x001F
+
+type Interval_Range = private IntervalRange of Interval<int, string>
+
+type Interval_Range with
+    static member from_limits (interval_start: int) (interval_end: int) =
+
+        IntervalRange(Interval<int, string>(interval_start, interval_end, ""))
+
+    static member from_labelled_limits (label: string) (interval_start: int) (interval_end: int) =
+
+        IntervalRange(Interval<int, string>(interval_start, interval_end, label))
+
+    static member from_int(value: int) = Interval_Range.from_limits value value
+
+type Code_Subspace = private CodeSubspace of IntervalSet<int, string>
+
+module Code_Subspace =
+    let map piped_function (CodeSubspace code_subspace) = code_subspace |> Seq.map piped_function
+
+
+    let head_interval (CodeSubspace code_subspace) = code_subspace |> Seq.head
+
+    let subtract_interval
+        (source: Interval<int, string>)
+        (excluded: Interval<int, string>)
+        : seq<Interval<int, string>> =
+
+        seq {
+            if excluded.End < source.Start
+               || source.End < excluded.Start then
+                yield source
+            else
+                if source.Start < excluded.Start then
+                    yield Interval<int, string>(source.Start, excluded.Start - 1, source.Value)
+
+                if excluded.End < source.End then
+                    yield Interval<int, string>(excluded.End + 1, source.End, source.Value)
+        }
+
+
+
+
+// TODO change the string generator to a sequence
+// deal with string checking ensureing all codepoints are present
+type Code_Subspace with
+    static member from_interval_range(IntervalRange interval_range) =
+        let interval_set = IntervalSet<int, string>()
+        interval_set.Add(interval_range) |> ignore
+        CodeSubspace interval_set
+
+    static member from_limits (interval_start: int) (interval_end: int) =
+        let interval_range = Interval_Range.from_limits interval_start interval_end
+
+        Code_Subspace.from_interval_range interval_range
+
+    static member from_string(value: string) =
+        let interval_set = IntervalSet<int, string>()
+
+        let intervals =
+            value.EnumerateRunes()
+            |> Seq.map (fun rune -> Interval_Range.from_int rune.Value)
+
+        intervals
+        |> Seq.iter (fun (IntervalRange singleton) -> interval_set.Add(singleton) |> ignore)
+
+        CodeSubspace interval_set
+
+    static member from_int(value: int) =
+        Code_Subspace.from_interval_range (Interval_Range.from_limits value value)
+
+
+
+
+
+    member this.HasIntersection(CodeSubspace interval_set) =
+        let (CodeSubspace subspace) = this
+        subspace.HasIntersection interval_set
+
+    member this.Union(CodeSubspace interval_set) =
+        let (CodeSubspace subspace) = this
+        CodeSubspace(subspace.Union interval_set)
+
+    static member from_union(code_subspaces: Code_Subspace seq) =
+        let interval_set = IntervalSet<int, string>()
+
+        let unioned_interval_set =
+            code_subspaces
+            |> Seq.fold
+                (fun (accumulated_interval_set: IntervalSet<int, string>) (CodeSubspace next_interval_set) ->
+                    accumulated_interval_set.Union next_interval_set)
+                interval_set
+
+        CodeSubspace unioned_interval_set
+
+    member this.Contains(value: int) =
+        let (CodeSubspace subspace) = this
+        let (IntervalRange interval) = Interval_Range.from_int value
+
+        subspace.HasIntersection [ interval ]
+
+    member this.Contains(value: string) =
+        let (CodeSubspace subspace) = this
+
+        let (CodeSubspace string_space) = Code_Subspace.from_string value
+
+        subspace.IsSupersetOf string_space
+
+    member this.Except(CodeSubspace excluded_interval_set) =
+        let (CodeSubspace source_interval_set) = this
+
+        let remaining_intervals =
+            excluded_interval_set
+            |> Seq.fold
+                (fun current_intervals excluded_interval ->
+                    current_intervals
+                    |> Seq.collect (fun source_interval ->
+                        Code_Subspace.subtract_interval source_interval excluded_interval)
+                    |> Seq.toList)
+                (source_interval_set |> Seq.toList)
+
+        let result_interval_set = IntervalSet<int, string>()
+
+        remaining_intervals
+        |> Seq.iter (fun interval -> result_interval_set.Add interval |> ignore)
+
+        CodeSubspace result_interval_set
+
+    member this.test_generator =
+        let (CodeSubspace code_subspace) = this
+
+        code_subspace
+        |> Seq.map (fun interval -> Gen.int32 (Range.constant interval.Start interval.End))
+        |> Gen.choice
+
+    member this.random_generator() =
+        let (CodeSubspace code_subspace) = this
+
+        code_subspace
+        |> Seq.map (fun interval -> RNG interval.Start interval.End)
+        |> Seq.randomChoice
+
+    member this.parser_combinator: Parser<int array, int, unit, ReadableArray<int>> =
+        let (CodeSubspace code_subspace) = this
+
+        code_subspace
+        |> Seq.map (fun interval -> anyInRange interval.Start interval.End)
+        |> choice
+        |>> fun result -> [| result |]
+
+
+
+
+
+let Codespace = Code_Subspace.from_limits 0x0000 0x10FFFF
+
+
+
+let High_Surrogate = Code_Subspace.from_limits 0xD800 0xDBFF
+let Low_Surrogate = Code_Subspace.from_limits 0xDC00 0xDFFF
+
+let Surrogate = High_Surrogate.Union Low_Surrogate
+
+
+let Unicode_Scalar_Value = Codespace.Except Surrogate
+
+
+
+
+let Basic_Multilingual_Plane = Code_Subspace.from_limits 0x0000 0xFFFF
+
+let Basic_Latin_Block = Code_Subspace.from_limits 0x0000 0x007F
+
+let C0_controls = Code_Subspace.from_limits 0x0000 0x001F
 
 
 
 let ASCII_punctuation_and_symbols =
 
-    Set_Definition.FromOverlay [|
+    Code_Subspace.from_union [|
 
-                                  Set_Definition.FromIncludedInterval 0x0020 0x002F
-                                  Set_Definition.FromIncludedInterval 0x003A 0x0040
-                                  Set_Definition.FromIncludedInterval 0x005B 0x0060
-                                  Set_Definition.FromIncludedInterval 0x007B 0x007E
+                                Code_Subspace.from_limits 0x0020 0x002F
+                                Code_Subspace.from_limits 0x003A 0x0040
+                                Code_Subspace.from_limits 0x005B 0x0060
+                                Code_Subspace.from_limits 0x007B 0x007E
 
-                                   |]
+                                 |]
 
-let commercial_at = Set_Definition.FromString "@"
+let commercial_at = Code_Subspace.from_string "@"
+let left_square_bracket = Code_Subspace.from_string "["
+let right_square_bracket = Code_Subspace.from_string "]"
+let number_sign = Code_Subspace.from_string "#"
+let question_mark = Code_Subspace.from_string "?"
 
-let colon = Set_Definition.FromString ":"
-
-let solidus = Set_Definition.FromString "/"
-
-let question_mark = Set_Definition.FromString "?"
-
-let plus_sign = Set_Definition.FromString "+"
-
-let hyphen_minus = Set_Definition.FromString "-"
-
-let full_stop = Set_Definition.FromString "."
-
-let tilde = Set_Definition.FromString "~"
-
-let low_line = Set_Definition.FromString "_"
-
-let ASCII_digits = Set_Definition.FromIncludedInterval 0x0030 0x0039
+let colon = Code_Subspace.from_string ":"
 
 
-
-let one_to_nine = Set_Definition.FromIncludedInterval 0x0031 0x0039
-let zero_to_four = Set_Definition.FromIncludedInterval 0x0030 0x0034
+let solidus = Code_Subspace.from_string "/"
 
 
-let zero_to_five = Set_Definition.FromIncludedInterval 0x0030 0x0035
+let plus_sign = Code_Subspace.from_string "+"
+
+let hyphen_minus = Code_Subspace.from_string "-"
+
+let full_stop = Code_Subspace.from_string "."
+
+let tilde = Code_Subspace.from_string "~"
+
+let low_line = Code_Subspace.from_string "_"
+let percent = Code_Subspace.from_string "%"
+
+let ASCII_digits = Code_Subspace.from_limits 0x0030 0x0039
 
 
-let Latin_Alphabet_Majuscule = Set_Definition.FromIncludedInterval 0x0041 0x005A
+
+let one = Code_Subspace.from_string "1"
+let two = Code_Subspace.from_string "2"
+let five = Code_Subspace.from_string "5"
+let one_to_nine = Code_Subspace.from_limits 0x0031 0x0039
+let zero_to_four = Code_Subspace.from_limits 0x0030 0x0034
 
 
-let Latin_Alphabet_Minuscule = Set_Definition.FromIncludedInterval 0x0061 0x007A
+let zero_to_five = Code_Subspace.from_limits 0x0030 0x0035
+
+
+let Latin_Alphabet_Majuscule = Code_Subspace.from_limits 0x0041 0x005A
+
+
+let Latin_Alphabet_Minuscule = Code_Subspace.from_limits 0x0061 0x007A
 
 
 let Latin_Alphabet =
-    Set_Definition.FromOverlay [|
+    Code_Subspace.from_union [|
 
-                                  Latin_Alphabet_Majuscule
-                                  Latin_Alphabet_Minuscule
+                                Latin_Alphabet_Majuscule
+                                Latin_Alphabet_Minuscule
 
-                                   |]
-
-
-let A_to_F = Set_Definition.FromIncludedInterval 0x0041 0x0046
+                                 |]
 
 
-let a_to_f = Set_Definition.FromIncludedInterval 0x0061 0x0066
+let A_to_F = Code_Subspace.from_limits 0x0041 0x0046
 
 
-let Hexidecimal_digits =
-    Set_Definition.FromOverlay [|
+let a_to_f = Code_Subspace.from_limits 0x0061 0x0066
 
-                                  A_to_F
-                                  a_to_f
-                                  ASCII_digits
+let vV = Code_Subspace.from_string "vV"
 
-                                   |]
+let Hexadecimal_digits =
+    Code_Subspace.from_union [|
+
+                                A_to_F
+                                a_to_f
+                                ASCII_digits
+
+                                 |]
 
 let control_codes =
-    Set_Definition.FromOverlay [|
+    Code_Subspace.from_union [|
 
-                                  Set_Definition.FromSingleton 0x007F
-                                  C0_controls
+                                Code_Subspace.from_int 0x007F
+                                C0_controls
 
-                                   |]
+                                 |]

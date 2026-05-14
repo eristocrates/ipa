@@ -6,20 +6,13 @@ open System.Globalization
 open System.Collections.Immutable
 
 #r "nuget: Unquote"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\Language\Meta\Bacus_Naur_Form\Augmented\Augmented_Bacus_Naur_Form.fsx"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XParsecErgonomics.fsx"
 
-open SetErgonomics
-
-open XParsec
-
+open StringExtensions
 open XParsecErgonomics
 open Unicode_Standard
 
-
-
-#r "nuget: FSharp.UMX"
-
-open FSharp.UMX
+open XParsec
 
 
 
@@ -35,106 +28,136 @@ open FSharp.UMX
 
 
 
+let alpha = Latin_Alphabet
 
-let sub_delims = Set_Definition.FromString "!$&'()*+,;="
+
+let digit = ASCII_digits
 
 
-let gen_delims = Set_Definition.FromString ":/?#[]@"
+
+
+let sub_delims = Code_Subspace.from_string "!$&'()*+,;="
+
+
+let gen_delims = Code_Subspace.from_string ":/?#[]@"
 
 
 
 let reserved =
-    Set_Definition.FromOverlay [|
+    Code_Subspace.from_union [|
 
-                                  gen_delims
-                                  sub_delims
+                                gen_delims
+                                sub_delims
 
-                                   |]
+                                 |]
 
 
 let unreserved =
 
 
-    Set_Definition.FromOverlay [| Augmented_Bacus_Naur_Form.alpha
-                                  Augmented_Bacus_Naur_Form.digit
-                                  hyphen_minus
-                                  full_stop
-                                  low_line
-                                  tilde |]
+    Code_Subspace.from_union [| alpha
+                                digit
+                                hyphen_minus
+                                full_stop
+                                low_line
+                                tilde |]
+
+
+
+let pchar_unencoded =
+
+    Code_Subspace.from_union [| unreserved
+                                sub_delims
+                                colon
+                                commercial_at |]
+
+
+
+let query_fragment_unencoded =
+
+    Code_Subspace.from_union [|
+
+                                pchar_unencoded
+                                solidus
+                                question_mark
+
+                                 |]
+
+
+let segment_nz_nc_unencoded =
+    Code_Subspace.from_union [| unreserved
+                                sub_delims
+                                commercial_at |]
+
+let segment_nz_unencoded = pchar_unencoded
+let segment_unencoded = pchar_unencoded
+
+let abempty_unencoded =
+    Code_Subspace.from_union [|
+
+                                segment_unencoded
+                                solidus
+
+                                 |]
+
+let rootless_unencoded =
+    Code_Subspace.from_union [|
+
+                                segment_nz_unencoded
+                                abempty_unencoded
+
+                                 |]
+
+let noscheme_unencoded =
+    Code_Subspace.from_union [|
+
+                                segment_nz_nc_unencoded
+                                abempty_unencoded
+
+                                 |]
+
+let absolute_unencoded = rootless_unencoded
+
+
+let reg_name_unencoded =
+    Code_Subspace.from_union [|
+
+                                unreserved
+                                sub_delims
+
+                                 |]
+
+
+
+let userinfo_unencoded =
+    Code_Subspace.from_union [|
+
+                                reg_name_unencoded
+                                colon
+
+                                 |]
 
 
 
 
-let reg_name =
-    Set_Definition.FromOverlay [|
-
-                                  unreserved
-                                  sub_delims
-
-                                   |]
 
 
 
-let userinfo =
-    Set_Definition.FromOverlay [|
 
-                                  reg_name
-                                  colon
-
-                                   |]
-
-let segment_nz_nc =
-
-    Set_Definition.FromOverlay [| reg_name
-                                  commercial_at |]
-
-
-
-let pchar_ =
-
-    Set_Definition.FromOverlay [| segment_nz_nc
-                                  colon |]
-
-let fragment =
-
-    Set_Definition.FromOverlay [|
-
-                                  pchar_
-                                  solidus
-                                  question_mark
-
-                                   |]
-
-let query_ = fragment
-
-
-let segment_nz = pchar_
-
-
-let segment = pchar_
-
-
-let abempty =
-    Set_Definition.FromOverlay [|
-
-                                  segment
-                                  solidus
-
-                                   |]
 
 
 
 let scheme =
 
-    Set_Definition.FromOverlay [|
+    Code_Subspace.from_union [|
 
-                                  Augmented_Bacus_Naur_Form.alpha
-                                  Augmented_Bacus_Naur_Form.digit
-                                  plus_sign
-                                  hyphen_minus
-                                  full_stop
+                                alpha
+                                digit
+                                plus_sign
+                                hyphen_minus
+                                full_stop
 
-                                   |]
+                                 |]
 
 
 
@@ -143,86 +166,92 @@ let scheme =
 
 
 let iprivate =
-    Set_Definition.FromOverlay [| Set_Definition.FromIncludedInterval 0xE000 0xF8FF
-                                  Set_Definition.FromIncludedInterval 0xF0000 0xFFFFD
-                                  Set_Definition.FromIncludedInterval 0x100000 0x10FFFD |]
+    Code_Subspace.from_union [| Code_Subspace.from_limits 0xE000 0xF8FF
+                                Code_Subspace.from_limits 0xF0000 0xFFFFD
+                                Code_Subspace.from_limits 0x100000 0x10FFFD |]
 
 
 
 let ucschar =
-    Set_Definition.FromOverlay [| Set_Definition.FromIncludedInterval 0xA0 0xD7FF
-                                  Set_Definition.FromIncludedInterval 0xF900 0xFDCF
-                                  Set_Definition.FromIncludedInterval 0xFDF0 0xFFEF
-                                  Set_Definition.FromIncludedInterval 0x10000 0x1FFFD
-                                  Set_Definition.FromIncludedInterval 0x20000 0x2FFFD
-                                  Set_Definition.FromIncludedInterval 0x30000 0x3FFFD
-                                  Set_Definition.FromIncludedInterval 0x40000 0x4FFFD
-                                  Set_Definition.FromIncludedInterval 0x50000 0x5FFFD
-                                  Set_Definition.FromIncludedInterval 0x60000 0x6FFFD
-                                  Set_Definition.FromIncludedInterval 0x70000 0x7FFFD
-                                  Set_Definition.FromIncludedInterval 0x80000 0x8FFFD
-                                  Set_Definition.FromIncludedInterval 0x90000 0x9FFFD
-                                  Set_Definition.FromIncludedInterval 0xA0000 0xAFFFD
-                                  Set_Definition.FromIncludedInterval 0xB0000 0xBFFFD
-                                  Set_Definition.FromIncludedInterval 0xC0000 0xCFFFD
-                                  Set_Definition.FromIncludedInterval 0xD0000 0xDFFFD
-                                  Set_Definition.FromIncludedInterval 0xE1000 0xEFFFD |]
-
-let ireserved =
-    Set_Definition.FromOverlay [| reserved
-                                  ucschar |]
-
+    Code_Subspace.from_union [| Code_Subspace.from_limits 0xA0 0xD7FF
+                                Code_Subspace.from_limits 0xF900 0xFDCF
+                                Code_Subspace.from_limits 0xFDF0 0xFFEF
+                                Code_Subspace.from_limits 0x10000 0x1FFFD
+                                Code_Subspace.from_limits 0x20000 0x2FFFD
+                                Code_Subspace.from_limits 0x30000 0x3FFFD
+                                Code_Subspace.from_limits 0x40000 0x4FFFD
+                                Code_Subspace.from_limits 0x50000 0x5FFFD
+                                Code_Subspace.from_limits 0x60000 0x6FFFD
+                                Code_Subspace.from_limits 0x70000 0x7FFFD
+                                Code_Subspace.from_limits 0x80000 0x8FFFD
+                                Code_Subspace.from_limits 0x90000 0x9FFFD
+                                Code_Subspace.from_limits 0xA0000 0xAFFFD
+                                Code_Subspace.from_limits 0xB0000 0xBFFFD
+                                Code_Subspace.from_limits 0xC0000 0xCFFFD
+                                Code_Subspace.from_limits 0xD0000 0xDFFFD
+                                Code_Subspace.from_limits 0xE1000 0xEFFFD |]
 
 let iunreserved =
-    Set_Definition.FromOverlay [| unreserved
-                                  ucschar |]
+    Code_Subspace.from_union [| unreserved
+                                ucschar |]
 
+let ifragment_unencoded =
+    Code_Subspace.from_union [| query_fragment_unencoded
+                                ucschar |]
 
-let ireg_name =
-    Set_Definition.FromOverlay [| reg_name
-                                  ucschar |]
+let iquery_unencoded =
+    Code_Subspace.from_union [| query_fragment_unencoded
+                                iprivate
+                                ucschar |]
 
-let iuserinfo =
-    Set_Definition.FromOverlay [| userinfo
-                                  ucschar |]
+let ipchar_unencoded =
+    Code_Subspace.from_union [| pchar_unencoded
+                                ucschar |]
 
-let isegment_nz_nc =
-    Set_Definition.FromOverlay [| segment_nz_nc
-                                  ucschar |]
+let isegment_nz_nc_unencoded =
+    Code_Subspace.from_union [| segment_nz_nc_unencoded
+                                ucschar |]
 
 
-let ipchar =
-    Set_Definition.FromOverlay [| pchar_
-                                  ucschar |]
+let isegment_nz_unencoded =
+    Code_Subspace.from_union [| segment_nz_unencoded
+                                ucschar |]
 
-let ifragment =
-    Set_Definition.FromOverlay [| fragment
-                                  ucschar |]
+let isegment_unencoded =
+    Code_Subspace.from_union [| segment_unencoded
+                                ucschar |]
 
-let iquery =
-    Set_Definition.FromOverlay [| query_
-                                  iprivate
-                                  ucschar |]
+let iabempty_unencoded =
+    Code_Subspace.from_union [| abempty_unencoded
+                                ucschar |]
 
-let isegment_nz =
-    Set_Definition.FromOverlay [| segment_nz
-                                  ucschar |]
 
-let isegment =
-    Set_Definition.FromOverlay [| segment
-                                  ucschar |]
+let irootless_unencoded =
+    Code_Subspace.from_union [|
 
-let iabempty =
-    Set_Definition.FromOverlay [| abempty
-                                  ucschar |]
+                                rootless_unencoded
+                                ucschar
 
+                                 |]
 
+let inoscheme_unencoded =
+    Code_Subspace.from_union [|
 
+                                noscheme_unencoded
+                                ucschar
 
+                                 |]
 
+let iabsolute_unencoded = irootless_unencoded
 
 
+let ireg_name_unencoded =
+    Code_Subspace.from_union [| reg_name_unencoded
+                                ucschar |]
 
+let iuserinfo_unencoded =
+    Code_Subspace.from_union [| userinfo_unencoded
+                                ucschar |]
 
 
 
@@ -243,742 +272,535 @@ let iabempty =
 
 
 
+module Kleene =
+    let star parser_combinator =
+        many parser_combinator |>> ImmutableArray.toArray
 
+    let plus parser_combinator =
+        many1 parser_combinator |>> ImmutableArray.toArray
 
 
-[<Measure>]
-type Subcomponent_Delimiter_Character
 
-let parse_Subcomponent_Delimiter_Character =
-    parse_code_point_expecting<Subcomponent_Delimiter_Character>
-        sub_delims
-        """ sub-delims    = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "=" """
+module Subcomponent_Delimiter_Character =
+    let parser_combinator =
+        sub_delims.parser_combinator
+        |> expecting """ sub-delims    = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "=" """
 
+module General_Component_Delimiter_Character =
+    let parser_combinator =
+        gen_delims.parser_combinator
+        |> expecting """ sub-delims    = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "=" """
 
-[<Measure>]
-type General_Component_Delimiter_Character
+module Reserved_Character =
+    let parser_combinator =
+        reserved.parser_combinator
+        |> expecting """ sub-delims    = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "=" """
 
-let parse_General_Component_Delimiter_Character =
-    parse_code_point_expecting<General_Component_Delimiter_Character>
-        gen_delims
-        """ gen-delims  = ":" / "/" / "?" / "#" / "[" / "]" / "@" """
 
+module Percent_Encoded_Character =
+    let parser_combinator: Parser<int array, int, unit, ReadableArray<int>> =
+        parser {
 
 
-[<Measure>]
-type Reserved_Character
+            let! sigil = percent.parser_combinator
+            let! left_hex_digit = Hexadecimal_digits.parser_combinator
+            let! right_hex_digit = Hexadecimal_digits.parser_combinator
 
+            return
+                Array.concat [ sigil
+                               left_hex_digit
+                               right_hex_digit ]
 
-let parse_Reserved_Character =
-    parse_code_point_expecting<Reserved_Character> reserved """ reserved      = gen-delims / sub-delims """
-
-let parse_Percent_Encoded_Character: Parser<string, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parse_expecting
-        (parser {
-
-            do! skipcode_point '%'
-            let! left_hex_digit = material_element_of Hexidecimal_digits
-            let! right_hex_digit = material_element_of Hexidecimal_digits
-
-            return (left_hex_digit, right_hex_digit)
-
-         }
-         |>> fun (left_hex_digit, right_hex_digit) -> $"%%{char left_hex_digit}{char right_hex_digit}"
-
-
-
-        )
-
-        """pct-encoded   = "%" HEXDIG HEXDIG"""
-
-let parse_code_point_or_Percent_Encoded_Character_expecting<[<Measure>] 'OutputType>
-    (material_set: Set_Definition<int>)
-    (expecting: string)
-    : Parser<string<'OutputType>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    choice [
-
-             parse_code_point_expecting<'OutputType> material_set expecting
-             parse_Percent_Encoded_Character
-             |>> fun character -> %character
-
-              ]
-
-
-
-
-[<Measure>]
-type Decimal_Octet
+        }
+        |> expecting """pct-encoded   = "%" HEXDIG HEXDIG"""
 
 
 module Decimal_Octet =
 
-    let parse_0_9: Parser<string<Decimal_Octet>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-        parse_expecting
-            (material_element_of Augmented_Bacus_Naur_Form.digit
-             .>> notFollowedBy (material_element_of Augmented_Bacus_Naur_Form.digit)
-             |>> fun single_digit -> %(Rune(single_digit).ToString()))
-            """     DIGIT                 ; 0-9 """
+    let private parse_0_9: Parser<int array, int, unit, ReadableArray<int>> =
+        (digit.parser_combinator
+         .>> notFollowedBy digit.parser_combinator)
+        |> expecting """     DIGIT                 ; 0-9 """
 
-    let parse_10_99: Parser<string<Decimal_Octet>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-        parse_expecting
-            (parser {
+    let private parse_10_99: Parser<int array, int, unit, ReadableArray<int>> =
+        parser {
 
-                let! leftDigit = material_element_of one_to_nine
-                let! rightDigit = material_element_of Augmented_Bacus_Naur_Form.digit
-                return % $"{char leftDigit}{char rightDigit}"
+            let! leftDigit = one_to_nine.parser_combinator
+            let! rightDigit = digit.parser_combinator
+            return Array.concat [| leftDigit; rightDigit |]
 
-            })
-            """    %x31-39 DIGIT         ; 10-99 """
+        }
+        |> expecting """    %x31-39 DIGIT         ; 10-99 """
 
-    let parse_100_199: Parser<string<Decimal_Octet>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-        parse_expecting
-            (parser {
+    let private parse_100_199: Parser<int array, int, unit, ReadableArray<int>> =
 
-                let! leftDigit = pcode_point '1'
-                let! centerDigit = material_element_of Augmented_Bacus_Naur_Form.digit
-                let! rightDigit = material_element_of Augmented_Bacus_Naur_Form.digit
-                return % $"{char leftDigit}{char centerDigit}{char rightDigit}"
+        parser {
 
-            }
-
-            )
-            """    "1" 2DIGIT            ; 100-199 """
-
-    let parse_200_249: Parser<string<Decimal_Octet>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-        parse_expecting
-            (parser {
-
-                let! leftDigit = pcode_point '2'
-
-                let! centerDigit = material_element_of zero_to_four
-
-                let! rightDigit = material_element_of Augmented_Bacus_Naur_Form.digit
-                return % $"{char leftDigit}{char centerDigit}{char rightDigit}"
-
-            })
-            """    "2" %x30-34 DIGIT     ; 200-249 """
-
-    let parse_250_255: Parser<string<Decimal_Octet>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-        parse_expecting
-            (parser {
-
-                let! leftDigit = pcode_point '2'
-                let! centerDigit = pcode_point '5'
-
-                let! rightDigit = material_element_of zero_to_five
-
-                return % $"{char leftDigit}{char centerDigit}{char rightDigit}"
-
-            })
-            """  "25" %x30-35          ; 250-255 """
-
-let parse_Decimal_Octet: Parser<string<Decimal_Octet>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parse_expecting
-        (choice [
-
-                  Decimal_Octet.parse_250_255
-                  Decimal_Octet.parse_200_249
-                  Decimal_Octet.parse_100_199
-                  Decimal_Octet.parse_10_99
-                  Decimal_Octet.parse_0_9
-
-                   ])
-        """
-dec-octet     = DIGIT                 ; 0-9
-             / %x31-39 DIGIT         ; 10-99
-             / "1" 2DIGIT            ; 100-199
-             / "2" %x30-34 DIGIT     ; 200-249
-             / "25" %x30-35          ; 250-255
-"""
-
-[<Measure>]
-type ipv4address
-
-[<Struct>]
-type IPv4address =
-    {
-
-      outer_left_octet: string<Decimal_Octet>
-      inner_left_octet: string<Decimal_Octet>
-      inner_right_octet: string<Decimal_Octet>
-      outer_right_octet: string<Decimal_Octet>
-      as_string: string<ipv4address>
-
-     }
-
-
-    static member parse: Parser<IPv4address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-        parse_expecting
-            (parser {
-
-                let! outer_left = parse_Decimal_Octet
-                do! skipcode_point '.'
-                let! inner_left = parse_Decimal_Octet
-                do! skipcode_point '.'
-                let! inner_right = parse_Decimal_Octet
-                do! skipcode_point '.'
-                let! outer_right = parse_Decimal_Octet
-                return (outer_left, inner_left, inner_right, outer_right)
-
-
-             }
-             |>> fun (outer_left, inner_left, inner_right, outer_right) ->
-                     {
-
-                       outer_left_octet = outer_left
-                       inner_left_octet = inner_left
-                       inner_right_octet = inner_right
-                       outer_right_octet = outer_right
-                       as_string = % $"{outer_left}.{inner_left}.{inner_right}.{outer_right}"
-
-                     }
-
-
-            )
-            """    IPv4address   = dec-octet "." dec-octet "." dec-octet "." dec-octet """
-
-[<Measure>]
-type h16
-
-
-
-
-let parse_h16: Parser<string<h16>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parse_expecting
-        (choice [ parray 4 (material_element_of Hexidecimal_digits)
-                  parray 3 (material_element_of Hexidecimal_digits)
-                  parray 2 (material_element_of Hexidecimal_digits)
-                  parray 1 (material_element_of Hexidecimal_digits) ]
-         |>> fun hexadecimal_digits ->
-                 hexadecimal_digits
-                 |> string_from_code_points
-                 |> UMX.tag<h16>)
-        """
-h16           = 1*4HEXDIG
-              ; 16 bits of address represented in hexadecimal
-
-
-"""
-
-type H16_Pair =
-
-    { left_h16: string<h16>
-      right_h16: string<h16> }
-    member this.as_string = % $"{this.left_h16}:{this.right_h16}"
-
-[<Measure>]
-type ls32
-
-
-type LS32 =
-    | FromH16Pair of H16_Pair
-    | FromIPv4address of IPv4address
-    member this.as_string =
-        match this with
-        | FromH16Pair h16_pair -> h16_pair.as_string
-        | FromIPv4address ipv4 -> ipv4.as_string
-
-    static member parse: Parser<LS32, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-        parse_expecting
-            (choice [
-
-                      parser {
-                          let! left_h16 = parse_h16
-                          do! skipcode_point ':'
-                          let! right_h16 = parse_h16
-
-                          return
-                              FromH16Pair
-                                  { left_h16 = left_h16
-                                    right_h16 = right_h16 }
-
-                      }
-
-                      IPv4address.parse |>> FromIPv4address
-
-                       ])
-            """
-ls32          = ( h16 ":" h16 ) / IPv4address
-              ; least-significant 32 bits of address
-"""
-
-[<Measure>]
-type IPvFuture_Version_Flag
-
-
-[<Measure>]
-type IPvFuture_Address
-
-
-
-type IPvFuture =
-
-    { version_flag: string<IPvFuture_Version_Flag>
-      address: string<IPvFuture_Address> }
-
-    member this.as_string = % $"v{this.version_flag}.{this.address}"
-
-    static member parse: Parser<IPvFuture, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-        parse_expecting
-            (parser {
-                do!
-                    choice [ skipcode_point 'v'
-                             skipcode_point 'V' ]
-
-                let! hexadecimal_digits = many1 (material_element_of Hexidecimal_digits)
-
-                do! skipcode_point '.'
-
-                let ipvfuture_address_character_set =
-                    Set_Definition.FromOverlay [| unreserved
-                                                  sub_delims
-                                                  colon |]
-
-                let! address_part_characters = many1 (material_element_of ipvfuture_address_character_set)
-
-                return
-                    {
-
-                      version_flag = %(hexadecimal_digits |> string_from_code_points)
-                      address = %(address_part_characters |> string_from_code_points)
-
-                    }
-            })
-            """
-IPvFuture     = "v" 1*HEXDIG "." 1*( unreserved / sub-delims / ":" )
-"""
-
-[<Measure>]
-type ipv6address
-
-
-type IPv6address =
-    | FromSixH16ColonThenLS32 of string<ipv6address>
-    | FromDoubleColonThenFiveH16ColonThenLS32 of string<ipv6address>
-    | FromOptionalOneH16ThenDoubleColonThenFourH16ColonThenLS32 of string<ipv6address>
-    | FromOptionalTwoH16ThenDoubleColonThenThreeH16ColonThenLS32 of string<ipv6address>
-    | FromOptionalThreeH16ThenDoubleColonThenTwoH16ColonThenLS32 of string<ipv6address>
-    | FromOptionalFourH16ThenDoubleColonThenOneH16ColonThenLS32 of string<ipv6address>
-    | FromOptionalFiveH16ThenDoubleColonThenLS32 of string<ipv6address>
-    | FromOptionalSixH16ThenDoubleColonThenH16 of string<ipv6address>
-    | FromOptionalSevenH16ThenDoubleColon of string<ipv6address>
-
-    member this.as_string =
-        match this with
-        | FromSixH16ColonThenLS32 value -> value
-        | FromDoubleColonThenFiveH16ColonThenLS32 value -> value
-        | FromOptionalOneH16ThenDoubleColonThenFourH16ColonThenLS32 value -> value
-        | FromOptionalTwoH16ThenDoubleColonThenThreeH16ColonThenLS32 value -> value
-        | FromOptionalThreeH16ThenDoubleColonThenTwoH16ColonThenLS32 value -> value
-        | FromOptionalFourH16ThenDoubleColonThenOneH16ColonThenLS32 value -> value
-        | FromOptionalFiveH16ThenDoubleColonThenLS32 value -> value
-        | FromOptionalSixH16ThenDoubleColonThenH16 value -> value
-        | FromOptionalSevenH16ThenDoubleColon value -> value
-
-
-let parse_double_colon: Parser<unit, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parser {
-        do! skipcode_point ':'
-        do! skipcode_point ':'
-    }
-
-
-let parse_h16_colon_as_string: Parser<string, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parser {
-        let! h16 = parse_h16
-        do! skipcode_point ':'
-
-        return $"{h16}:"
-    }
-
-
-let parse_h16_as_string: Parser<string, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parse_h16 |>> fun h16 -> $"{h16}"
-
-
-let parse_h16_colon_sequence_exactly
-    (count: int)
-
-    : Parser<string, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parser {
-        let! h16_colons = parray count parse_h16_colon_as_string
-
-        return h16_colons |> Seq.toArray |> String.concat ""
-    }
-
-
-let parse_h16_sequence_exactly
-    (count: int)
-
-    : Parser<string, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parser {
-        if count = 0 then
-            return ""
-        else
-            let! first_h16 = parse_h16_as_string
-
-            let! remaining_h16s =
-                parray
-                    (count - 1)
-                    (parser {
-                        do! skipcode_point ':'
-                        let! h16 = parse_h16_as_string
-
-                        return $":{h16}"
-                    })
+            let! leftDigit = one.parser_combinator
+            let! centerDigit = digit.parser_combinator
+            let! rightDigit = digit.parser_combinator
 
             return
-                seq {
-                    yield first_h16
-                    yield! remaining_h16s
-                }
-                |> String.concat ""
-    }
+                Array.concat [| leftDigit
+                                centerDigit
+                                rightDigit |]
 
+        }
+        |> expecting """    "1" 2DIGIT            ; 100-199 """
 
-let parse_optional_h16_sequence_up_to
-    (maximum_count: int)
+    let private parse_200_249: Parser<int array, int, unit, ReadableArray<int>> =
+        parser {
 
-    : Parser<string, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
+            let! leftDigit = two.parser_combinator
 
-    choice [ for count in [ maximum_count .. -1 .. 1 ] do
-                 parse_h16_sequence_exactly count
+            let! centerDigit = zero_to_four.parser_combinator
 
-             parser { return "" } ]
+            let! rightDigit = digit.parser_combinator
 
+            return
+                Array.concat [| leftDigit
+                                centerDigit
+                                rightDigit |]
 
-let parse_ipv6address_alternative_1: Parser<IPv6address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
+        }
+        |> expecting """    "2" %x30-34 DIGIT     ; 200-249 """
 
-    parser {
-        let! h16_colons = parse_h16_colon_sequence_exactly 6
-        let! ls32 = LS32.parse
+    let private parse_250_255: Parser<int array, int, unit, ReadableArray<int>> =
+        parser {
 
-        return FromSixH16ColonThenLS32(% $"{h16_colons}{ls32.as_string}")
-    }
+            let! leftDigit = two.parser_combinator
+            let! centerDigit = five.parser_combinator
+            let! rightDigit = zero_to_five.parser_combinator
 
+            return
+                Array.concat [| leftDigit
+                                centerDigit
+                                rightDigit |]
 
-let parse_ipv6address_alternative_2: Parser<IPv6address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
+        }
+        |> expecting """  "25" %x30-35          ; 250-255 """
 
-    parser {
-        do! parse_double_colon
+    let parser_combinator: Parser<int array, int, unit, ReadableArray<int>> =
+        choice [
 
-        let! h16_colons = parse_h16_colon_sequence_exactly 5
-        let! ls32 = LS32.parse
+                 parse_250_255
+                 parse_200_249
+                 parse_100_199
+                 parse_10_99
+                 parse_0_9
 
-        return FromDoubleColonThenFiveH16ColonThenLS32(% $"::{h16_colons}{ls32.as_string}")
-    }
-
-
-let parse_ipv6address_alternative_3: Parser<IPv6address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parser {
-        let! prefix = parse_optional_h16_sequence_up_to 1
-
-        do! parse_double_colon
-
-        let! h16_colons = parse_h16_colon_sequence_exactly 4
-        let! ls32 = LS32.parse
-
-        return FromOptionalOneH16ThenDoubleColonThenFourH16ColonThenLS32(% $"{prefix}::{h16_colons}{ls32.as_string}")
-    }
-
-
-let parse_ipv6address_alternative_4: Parser<IPv6address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parser {
-        let! prefix = parse_optional_h16_sequence_up_to 2
-
-        do! parse_double_colon
-
-        let! h16_colons = parse_h16_colon_sequence_exactly 3
-        let! ls32 = LS32.parse
-
-        return FromOptionalTwoH16ThenDoubleColonThenThreeH16ColonThenLS32(% $"{prefix}::{h16_colons}{ls32.as_string}")
-    }
-
-
-let parse_ipv6address_alternative_5: Parser<IPv6address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parser {
-        let! prefix = parse_optional_h16_sequence_up_to 3
-
-        do! parse_double_colon
-
-        let! h16_colons = parse_h16_colon_sequence_exactly 2
-        let! ls32 = LS32.parse
-
-        return FromOptionalThreeH16ThenDoubleColonThenTwoH16ColonThenLS32(% $"{prefix}::{h16_colons}{ls32.as_string}")
-    }
-
-
-let parse_ipv6address_alternative_6: Parser<IPv6address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parser {
-        let! prefix = parse_optional_h16_sequence_up_to 4
-
-        do! parse_double_colon
-
-        let! h16_colon = parse_h16_colon_as_string
-        let! ls32 = LS32.parse
-
-        return FromOptionalFourH16ThenDoubleColonThenOneH16ColonThenLS32(% $"{prefix}::{h16_colon}{ls32.as_string}")
-    }
-
-
-let parse_ipv6address_alternative_7: Parser<IPv6address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parser {
-        let! prefix = parse_optional_h16_sequence_up_to 5
-
-        do! parse_double_colon
-
-        let! ls32 = LS32.parse
-
-        return FromOptionalFiveH16ThenDoubleColonThenLS32(% $"{prefix}::{ls32.as_string}")
-    }
-
-
-let parse_ipv6address_alternative_8: Parser<IPv6address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parser {
-        let! prefix = parse_optional_h16_sequence_up_to 6
-
-        do! parse_double_colon
-
-        let! h16 = parse_h16
-
-        return FromOptionalSixH16ThenDoubleColonThenH16(% $"{prefix}::{h16}")
-    }
-
-
-let parse_ipv6address_alternative_9: Parser<IPv6address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parser {
-        let! prefix = parse_optional_h16_sequence_up_to 7
-
-        do! parse_double_colon
-
-        return FromOptionalSevenH16ThenDoubleColon(% $"{prefix}::")
-    }
-
-
-let parse_IPv6address: Parser<IPv6address, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-
-    parse_expecting
-        (choice [ parse_ipv6address_alternative_1
-                  parse_ipv6address_alternative_2
-                  parse_ipv6address_alternative_3
-                  parse_ipv6address_alternative_4
-                  parse_ipv6address_alternative_5
-                  parse_ipv6address_alternative_6
-                  parse_ipv6address_alternative_7
-                  parse_ipv6address_alternative_8
-                  parse_ipv6address_alternative_9 ])
-        """
-IPv6address   =                            6( h16 ":" ) ls32
-              /                       "::" 5( h16 ":" ) ls32
-              / [               h16 ] "::" 4( h16 ":" ) ls32
-              / [ *1( h16 ":" ) h16 ] "::" 3( h16 ":" ) ls32
-              / [ *2( h16 ":" ) h16 ] "::" 2( h16 ":" ) ls32
-              / [ *3( h16 ":" ) h16 ] "::"    h16 ":"   ls32
-              / [ *4( h16 ":" ) h16 ] "::"              ls32
-              / [ *5( h16 ":" ) h16 ] "::"              h16
-              / [ *6( h16 ":" ) h16 ] "::"
-"""
-
-[<Measure>]
-type ip_literal
-
-type IP_Literal =
-    | FromIPv6address of IPv6address
-    | FromIPvFuture of IPvFuture
-
-    member this.as_string: string<ip_literal> =
-        match this with
-        | FromIPv6address ipv6address -> % $"[{ipv6address.as_string}]"
-        | FromIPvFuture ipvfuture -> % $"[{ipvfuture.as_string}]"
-
-    static member parse: Parser<IP_Literal, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-        parse_expecting
-            (parser {
-                do! skipcode_point '['
-
-                let! ip_literal =
-                    choice [ parse_IPv6address |>> FromIPv6address
-                             IPvFuture.parse |>> FromIPvFuture ]
-
-                do! skipcode_point ']'
-
-                return ip_literal
-            })
+                  ]
+        |> expecting
             """
-IP-literal    = "[" ( IPv6address / IPvFuture  ) "]"
-"""
+    dec-octet     = DIGIT                 ; 0-9
+                 / %x31-39 DIGIT         ; 10-99
+                 / "1" 2DIGIT            ; 100-199
+                 / "2" %x30-34 DIGIT     ; 200-249
+                 / "25" %x30-35          ; 250-255
+    """
 
-[<Measure>]
-type Port
+module IP =
+    module v4 =
+        module address =
+            let parser_combinator: Parser<int array, int, unit, ReadableArray<int>> =
+                parser {
+
+                    let! outer_left = Decimal_Octet.parser_combinator
+                    let! left_dot = full_stop.parser_combinator
+                    let! inner_left = Decimal_Octet.parser_combinator
+                    let! center_dot = full_stop.parser_combinator
+                    let! inner_right = Decimal_Octet.parser_combinator
+                    let! right_dot = full_stop.parser_combinator
+                    let! outer_right = Decimal_Octet.parser_combinator
+
+                    return
+                        Array.concat [| outer_left
+                                        left_dot
+                                        inner_left
+                                        center_dot
+                                        inner_right
+                                        right_dot
+                                        outer_right |]
+                }
+                |> expecting """    IPv4address   = dec-octet "." dec-octet "." dec-octet "." dec-octet """
+
+    module v6 =
 
 
-let parse_Port: Parser<string<Port>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parse_expecting
-        (skipcode_point ':'
-         >>. many1 (material_element_of Augmented_Bacus_Naur_Form.digit)
-         |>> fun digits ->
-                 digits
-                 |> Seq.map char
-                 |> Seq.toArray
-                 |> String
-                 |> UMX.tag<Port>
+        module h16 =
+            let parser_combinator: Parser<int array, int, unit, ReadableArray<int>> =
+                choice [ parray 4 (Hexadecimal_digits.parser_combinator)
+                         parray 3 (Hexadecimal_digits.parser_combinator)
+                         parray 2 (Hexadecimal_digits.parser_combinator)
+                         parray 1 (Hexadecimal_digits.parser_combinator) ]
+                |>> ImmutableArray.toArray
+                |> expecting """ h16           = 1*4HEXDIG ; 16 bits of address represented in hexadecimal """
+
+            module pair =
+                let parser_combinator =
+                    parser {
+                        let! left_h16 = parser_combinator
+                        let! delimiter = colon.parser_combinator
+                        let! right_h16 = parser_combinator
+
+                        return
+                            Array.concat [| left_h16
+                                            delimiter
+                                            right_h16 |]
+
+                    }
+                    |> expecting """( h16 ":" h16 )"""
 
 
-        )
-        """ port          = *DIGIT 
+        module ls32 =
+
+            let parser_combinator: Parser<int array, int, unit, ReadableArray<int>> =
+                choice [
+
+                         h16.pair.parser_combinator
+                         v4.address.parser_combinator
+
+                          ]
+                |> expecting
+                    """ ls32          = ( h16 ":" h16 ) / IPv4address ; least-significant 32 bits of address """
+
+
+
+
+
+        let double_colon: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! left_colon = colon.parser_combinator
+                let! right_colon = colon.parser_combinator
+
+                return
+                    Array.concat [| left_colon
+                                    right_colon |]
+            }
+            |> expecting """::"""
+
+
+        let h16_colon: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! h16 = h16.parser_combinator
+                let! delimiter = colon.parser_combinator
+
+                return Array.concat [| h16; delimiter |]
+            }
+            |> expecting """ h16 ":" """
+
+
+        let colon_h16: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! delimiter = colon.parser_combinator
+                let! h16 = h16.parser_combinator
+
+                return Array.concat [| delimiter; h16 |]
+            }
+            |> expecting """ ":" h16 """
+
+
+        let h16_colon_sequence_exactly (count: int) : Parser<int array, int, unit, ReadableArray<int>> =
+
+            if count = 0 then
+                parser { return [||] }
+            else
+                parray count h16_colon |>> ImmutableArray.toArray
+
+
+        let h16_sequence_exactly (count: int) : Parser<int array, int, unit, ReadableArray<int>> =
+
+            if count = 0 then
+                parser { return [||] }
+
+            elif count = 1 then
+                h16.parser_combinator
+
+            else
+                parser {
+                    let! first_h16 = h16.parser_combinator
+
+                    let! remaining_h16s =
+                        parray (count - 1) colon_h16
+                        |>> ImmutableArray.toArray
+
+                    return
+                        Array.concat [| first_h16
+                                        remaining_h16s |]
+                }
+
+
+        let optional_h16_sequence_up_to (maximum_count: int) : Parser<int array, int, unit, ReadableArray<int>> =
+
+            let alternatives =
+                [ maximum_count .. -1 .. 1 ]
+                |> List.map h16_sequence_exactly
+
+            choice (alternatives @ [ parser { return [||] } ])
+
+
+        let alternative_1: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! h16_colons = h16_colon_sequence_exactly 6
+                let! ls32 = ls32.parser_combinator
+
+                return Array.concat [| h16_colons; ls32 |]
+            }
+            |> expecting """                            6( h16 ":" ) ls32 """
+
+
+        let alternative_2: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! double_colon = double_colon
+                let! h16_colons = h16_colon_sequence_exactly 5
+                let! ls32 = ls32.parser_combinator
+
+                return
+                    Array.concat [| double_colon
+                                    h16_colons
+                                    ls32 |]
+            }
+            |> expecting """                       "::" 5( h16 ":" ) ls32 """
+
+
+        let alternative_3: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! prefix = optional_h16_sequence_up_to 1
+                let! double_colon = double_colon
+                let! h16_colons = h16_colon_sequence_exactly 4
+                let! ls32 = ls32.parser_combinator
+
+                return
+                    Array.concat [| prefix
+                                    double_colon
+                                    h16_colons
+                                    ls32 |]
+            }
+            |> expecting """ [               h16 ] "::" 4( h16 ":" ) ls32 """
+
+
+        let alternative_4: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! prefix = optional_h16_sequence_up_to 2
+                let! double_colon = double_colon
+                let! h16_colons = h16_colon_sequence_exactly 3
+                let! ls32 = ls32.parser_combinator
+
+                return
+                    Array.concat [| prefix
+                                    double_colon
+                                    h16_colons
+                                    ls32 |]
+            }
+            |> expecting """ [ *1( h16 ":" ) h16 ] "::" 3( h16 ":" ) ls32 """
+
+
+        let alternative_5: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! prefix = optional_h16_sequence_up_to 3
+                let! double_colon = double_colon
+                let! h16_colons = h16_colon_sequence_exactly 2
+                let! ls32 = ls32.parser_combinator
+
+                return
+                    Array.concat [| prefix
+                                    double_colon
+                                    h16_colons
+                                    ls32 |]
+            }
+            |> expecting """ [ *2( h16 ":" ) h16 ] "::" 2( h16 ":" ) ls32 """
+
+
+        let alternative_6: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! prefix = optional_h16_sequence_up_to 4
+                let! double_colon = double_colon
+                let! h16_colon = h16_colon
+                let! ls32 = ls32.parser_combinator
+
+                return
+                    Array.concat [| prefix
+                                    double_colon
+                                    h16_colon
+                                    ls32 |]
+            }
+            |> expecting """ [ *3( h16 ":" ) h16 ] "::"    h16 ":"   ls32 """
+
+
+        let alternative_7: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! prefix = optional_h16_sequence_up_to 5
+                let! double_colon = double_colon
+                let! ls32 = ls32.parser_combinator
+
+                return
+                    Array.concat [| prefix
+                                    double_colon
+                                    ls32 |]
+            }
+            |> expecting """ [ *4( h16 ":" ) h16 ] "::"              ls32 """
+
+
+        let alternative_8: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! prefix = optional_h16_sequence_up_to 6
+                let! double_colon = double_colon
+                let! h16 = h16.parser_combinator
+
+                return
+                    Array.concat [| prefix
+                                    double_colon
+                                    h16 |]
+            }
+            |> expecting """ [ *5( h16 ":" ) h16 ] "::"              h16 """
+
+
+        let alternative_9: Parser<int array, int, unit, ReadableArray<int>> =
+            parser {
+                let! prefix = optional_h16_sequence_up_to 7
+                let! double_colon = double_colon
+
+                return Array.concat [| prefix; double_colon |]
+            }
+            |> expecting """ [ *6( h16 ":" ) h16 ] "::" """
+
+
+        module address =
+            let parser_combinator: Parser<int array, int, unit, ReadableArray<int>> =
+                choice [ alternative_1
+                         alternative_2
+                         alternative_3
+                         alternative_4
+                         alternative_5
+                         alternative_6
+                         alternative_7
+                         alternative_8
+                         alternative_9 ]
+                |> expecting
+                    """
+        IPv6address   =                            6( h16 ":" ) ls32
+                     /                       "::" 5( h16 ":" ) ls32
+                     / [               h16 ] "::" 4( h16 ":" ) ls32
+                     / [ *1( h16 ":" ) h16 ] "::" 3( h16 ":" ) ls32
+                     / [ *2( h16 ":" ) h16 ] "::" 2( h16 ":" ) ls32
+                     / [ *3( h16 ":" ) h16 ] "::"    h16 ":"   ls32
+                     / [ *4( h16 ":" ) h16 ] "::"              ls32
+                     / [ *5( h16 ":" ) h16 ] "::"              h16
+                     / [ *6( h16 ":" ) h16 ] "::"
+        """
+
+
+
+
+
+
+
+    module vFuture =
+
+        module version_flag =
+            let parser_combinator =
+                parser {
+                    let! sigil = vV.parser_combinator
+
+                    let! hexadecimal_digits =
+                        many1 Hexadecimal_digits.parser_combinator
+                        |>> ImmutableArray.toArray
+
+                    return
+                        Array.concat [| sigil
+                                        hexadecimal_digits |]
+                }
+                |> expecting """ "v" 1*HEXDIG """
+
+        let address =
+            Code_Subspace.from_union [| unreserved
+                                        sub_delims
+                                        colon |]
+
+        let parser_combinator =
+            parser {
+                let! version_flag = version_flag.parser_combinator
+                let! delimiter = full_stop.parser_combinator
+
+                let! address =
+                    many1 address.parser_combinator
+                    |>> ImmutableArray.toArray
+
+                return
+                    Array.concat [| version_flag
+                                    delimiter
+                                    address |]
+            }
+            |> expecting """ IPvFuture     = "v" 1*HEXDIG "." 1*( unreserved / sub-delims / ":" ) """
+
+
+
+
+
+
+
+
+
+
+
+    module Literal =
+        let parser_combinator =
+            parser {
+                let! initial = left_square_bracket.parser_combinator
+
+                let! literal =
+                    choice [ v6.address.parser_combinator
+                             vFuture.parser_combinator ]
+
+                let! terminal = right_square_bracket.parser_combinator
+
+                return
+                    Array.concat [| initial
+                                    literal
+                                    terminal |]
+            }
+            |> expecting
+                """
+    IP-literal    = "[" ( IPv6address / IPvFuture  ) "]"
+    """
+
+module Port =
+    let parser_combinator: Parser<int array, int, unit, ReadableArray<int>> =
+        parser {
+            let! delimiter = colon.parser_combinator
+
+            let! digits =
+                many1 digit.parser_combinator
+                |>> ImmutableArray.toArray
+
+            return Array.concat [| delimiter; digits |]
+        }
+        |> expecting
+            """ port          = *DIGIT 
         empty port delimiter rejected as per rfc3986 section 3.2 Authority
-        producers and normalizers should omit the ":" delimiter that separates host from port if the port component is empty"""
+        producers and normalizers should omit the ":" delimiter that separates host from port if the port component is empty
+        """
 
 
 
 
+module Scheme =
 
-[<Measure>]
-type resource_scheme
 
+    let parser_combinator =
+        parser {
+            let! head = alpha.parser_combinator
 
+            let! tail =
+                many scheme.parser_combinator
+                |>> ImmutableArray.toArray
 
-let parse_resource_scheme: Parser<string<resource_scheme>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parse_expecting
-        (material_element_of Augmented_Bacus_Naur_Form.alpha
-         .>>. many (material_element_of scheme)
-         |>> fun struct (head, tail) ->
-                 let chars =
-                     Seq.insertAt 0 head tail
-                     |> Seq.map char
-                     |> Seq.toArray
+            return Array.concat [| head; tail |]
+        }
+        |> expecting """ scheme        = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." ) """
 
-                 % String(chars)
 
 
-        )
-        """ scheme        = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." ) """
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let parse_percent_encoded_many_skip_sigil_prefix<[<Measure>] 'MeasureType>
-    (sigil: char)
-    (material_set: Set_Definition<int>)
-    (expecting: string)
-    : Parser<string<'MeasureType>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parser {
-
-        do! skipcode_point sigil
-
-        let! immutable_array =
-            many (parse_code_point_or_Percent_Encoded_Character_expecting<'MeasureType> material_set expecting)
-
-        return
-            immutable_array
-            |> ImmutableArray.of_strings_to_measured_string<'MeasureType>
-    }
-
-let parse_percent_encoded_many_skip_sigil_postfix<[<Measure>] 'MeasureType>
-    (material_set: Set_Definition<int>)
-    (sigil: char)
-    (expecting: string)
-    : Parser<string<'MeasureType>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parser {
-
-
-        let! immutable_array =
-            many (parse_code_point_or_Percent_Encoded_Character_expecting<'MeasureType> material_set expecting)
-
-        do! skipcode_point sigil
-
-        return
-            immutable_array
-            |> ImmutableArray.of_strings_to_measured_string<'MeasureType>
-    }
-
-
-
-
-let parse_percent_encoded_many1<[<Measure>] 'MeasureType>
-    (material_set: Set_Definition<int>)
-    (expecting: string)
-    : Parser<string<'MeasureType>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parser {
-
-
-        let! immutable_array =
-            many1 (parse_code_point_or_Percent_Encoded_Character_expecting<'MeasureType> material_set expecting)
-
-        return
-            immutable_array
-            |> ImmutableArray.of_strings_to_measured_string<'MeasureType>
-
-    }
-
-let parse_percent_encoded_many<[<Measure>] 'MeasureType>
-    (material_set: Set_Definition<int>)
-    (expecting: string)
-    : Parser<string<'MeasureType>, int, unit, ReadableArray<int>, ReadableArraySlice<int>> =
-    parser {
-
-
-        let! immutable_array =
-            many (parse_code_point_or_Percent_Encoded_Character_expecting<'MeasureType> material_set expecting)
-
-        return
-            immutable_array
-            |> ImmutableArray.of_strings_to_measured_string<'MeasureType>
-
-    }
 
 
 
@@ -999,3 +821,88 @@ type Path_Kind =
     | rootless
     /// zero characters
     | empty
+
+
+let percent_encodable (subspace: Code_Subspace) =
+    choice [
+
+             subspace.parser_combinator
+             Percent_Encoded_Character.parser_combinator
+
+              ]
+
+
+
+let pchar = percent_encodable pchar_unencoded
+let query_fragment = percent_encodable query_fragment_unencoded
+let segment_nz_nc = percent_encodable segment_nz_nc_unencoded
+let segment_nz = percent_encodable segment_nz_unencoded
+let segment = percent_encodable segment_unencoded
+let abempty = percent_encodable abempty_unencoded
+let rootless = percent_encodable rootless_unencoded
+let noscheme = percent_encodable noscheme_unencoded
+let absolute = percent_encodable absolute_unencoded
+let reg_name = percent_encodable reg_name_unencoded
+let userinfo = percent_encodable userinfo_unencoded
+let ifragment = percent_encodable ifragment_unencoded
+let iquery = percent_encodable iquery_unencoded
+let ipchar = percent_encodable ipchar_unencoded
+let isegment_nz_nc = percent_encodable isegment_nz_nc_unencoded
+let isegment_nz = percent_encodable isegment_nz_unencoded
+let isegment = percent_encodable isegment_unencoded
+let iabempty = percent_encodable iabempty_unencoded
+let irootless = percent_encodable irootless_unencoded
+let inoscheme = percent_encodable inoscheme_unencoded
+let iabsolute = percent_encodable iabsolute_unencoded
+let ireg_name = percent_encodable ireg_name_unencoded
+let iuserinfo = percent_encodable iuserinfo_unencoded
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let prefix_delimited_Kleene_star (prefix: Code_Subspace) parser_combinator =
+    parser {
+        let! delimiter = prefix.parser_combinator
+        let! characters = Kleene.star <| parser_combinator
+        return Array.concat [| delimiter; characters |]
+    }
+
+let prefixed_Kleene_star prefix_combinator parser_combinator =
+    parser {
+        let! prefix = prefix_combinator
+        let! characters = Kleene.star <| parser_combinator
+        return Array.concat [| prefix; characters |]
+    }
+
+let postfix_delimited_characters (postfix: Code_Subspace) parser_combinator =
+    parser {
+        let! characters = Kleene.star <| parser_combinator
+        let! delimiter = postfix.parser_combinator
+        return Array.concat [| characters; delimiter |]
+    }
+
+let prefixed_percent_encodable_characters
+    (prefix: Code_Subspace)
+    (subspace_unencoded: Code_Subspace)
+    (message: string)
+    =
+    let encodable_subspace = percent_encodable subspace_unencoded
+
+    prefix_delimited_Kleene_star prefix encodable_subspace
+    |> expecting message

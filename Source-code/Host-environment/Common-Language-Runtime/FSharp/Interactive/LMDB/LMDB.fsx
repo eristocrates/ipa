@@ -24,7 +24,8 @@ let message_pack_options =
 
 
 let GiB = 1024L * 1024L * 1024L
-let map_size = int64 2 * GiB
+let bytes_to_gib (bytes: int64) = float bytes / 1024.0 / 1024.0 / 1024.0
+let map_size = int64 40 * GiB
 let environment_directory_path = @"D:\Persistence\LMDB"
 
 System.IO.Directory.CreateDirectory(environment_directory_path)
@@ -39,6 +40,35 @@ environment.MaxDatabases <- 30
 
 
 environment.Open()
+
+
+
+let print_environment_stats () =
+
+    let info = environment.Info
+    let stat = environment.EnvironmentStats
+
+    let page_size = int64 stat.PageSize
+
+    let used_bytes = (int64 info.LastPageNumber + 1L) * page_size
+
+    let map_size = info.MapSize
+
+    let remaining_bytes = map_size - used_bytes
+
+    let used_percent = (float used_bytes / float map_size) * 100.0
+
+    printfn ""
+    printfn "LMDB Environment"
+    printfn "----------------"
+    printfn "Page Size:        %i bytes" page_size
+    printfn "Last Page Number: %i" info.LastPageNumber
+    printfn "Map Size:         %.2f GiB" (bytes_to_gib map_size)
+    printfn "Used:             %.2f GiB" (bytes_to_gib used_bytes)
+    printfn "Remaining:        %.2f GiB" (bytes_to_gib remaining_bytes)
+    printfn "Usage:            %.2f%%" used_percent
+    printfn ""
+
 
 module MDBResultCode =
 
@@ -192,6 +222,7 @@ module ID =
 
         | _ -> initial.to_encoding
 
+type Form_ID = private FormID of byte array
 
 
 type Lexical_Form =
@@ -207,17 +238,17 @@ type Lexical_Form =
 
 [<MessagePackObject>]
 type Persistent_Term =
-    | ResolvedIRI of id: byte array
-    | RelativeIRI of id: byte array
-    | SkolemIRI of id: byte array
-    | Variable of id: byte array
-    | SimpleLiteral of id: byte array
-    | DatatypedLiteral of id: byte array * datatype_id: byte array
-    | LanguageString of id: byte array * language_id: byte array
-    | LanguageRegionString of id: byte array * language_id: byte array * region_id: byte array
-    | DirectedLanguageString of id: byte array * language_id: byte array * direction: byte array
+    | ResolvedIRI of form_id: byte array
+    | RelativeIRI of form_id: byte array
+    | SkolemIRI of form_id: byte array
+    | Variable of form_id: byte array
+    | SimpleLiteral of form_id: byte array
+    | DatatypedLiteral of form_id: byte array * datatype_id: byte array
+    | LanguageString of form_id: byte array * language_id: byte array
+    | LanguageRegionString of form_id: byte array * language_id: byte array * region_id: byte array
+    | DirectedLanguageString of form_id: byte array * language_id: byte array * direction: byte array
     | DirectedLanguageRegionString of
-        id: byte array *
+        form_id: byte array *
         language_id: byte array *
         region: byte array *
         direction: byte array
@@ -228,6 +259,22 @@ module Persistent_Term =
 
     let from_encoding (term_encoding: byte array) =
         MessagePackSerializer.Deserialize<Persistent_Term>(term_encoding, message_pack_options)
+
+    let lexical_form_id persistent_term =
+        match persistent_term with
+        | ResolvedIRI form_id -> form_id
+        | RelativeIRI form_id -> form_id
+        | SkolemIRI form_id -> form_id
+        | Variable form_id -> form_id
+        | SimpleLiteral form_id -> form_id
+        | DatatypedLiteral (form_id, _) -> form_id
+        | LanguageString (form_id, _) -> form_id
+        | LanguageRegionString (form_id, _, _) -> form_id
+        | DirectedLanguageString (form_id, _, _) -> form_id
+        | DirectedLanguageRegionString (form_id, _, _, _) -> form_id
+
+
+
 
 type Transient_Term =
     {
@@ -346,31 +393,47 @@ module Quad_Permutation =
         { permutation_map = Persistent_Map.COPS
           order = [| C; O; P; S |] }
 
-    let all =
-        [| spoc
-           spco
-           sopc
-           socp
-           scpo
-           scop
-           psoc
-           psco
-           posc
-           pocs
-           pcso
-           pcos
-           ospc
-           oscp
-           opsc
-           opcs
-           ocsp
-           ocps
-           cspo
-           csop
-           cpso
-           cpos
-           cosp
-           cops |]
+    module Profile =
+
+        let minimal = [| spoc |]
+
+        let rdf_triple_core = [| spoc; posc; ospc |]
+
+        let rdf_triple_full = [| spoc; sopc; psoc; posc; ospc; opsc |]
+
+        let context_core = [| cspo; cpos; cosp |]
+
+        let rdf_quad_practical = [| spoc; posc; ospc; cspo; cpos; cosp |]
+
+        let rdf_quad_subject_context = [| spoc; spco; scpo; scop; cspo; csop |]
+
+        let rdf_quad_full =
+            [| spoc
+               spco
+               sopc
+               socp
+               scpo
+               scop
+               psoc
+               psco
+               posc
+               pocs
+               pcso
+               pcos
+               ospc
+               oscp
+               opsc
+               opcs
+               ocsp
+               ocps
+               cspo
+               csop
+               cpso
+               cpos
+               cosp
+               cops |]
+
+    let permutation_profile = Profile.rdf_quad_practical
 
 [<MessagePackObject>]
 type Quad =
@@ -388,11 +451,35 @@ type Quad =
      }
 
 module Quad =
+    let spoc
+        (curSubject: Transient_Term)
+        (curPredicate: Transient_Term)
+        (curObject: Transient_Term)
+        (curContext: Transient_Term)
+        =
+
+        {
+
+          subject_id = curSubject.term_id
+          predicate_id = curPredicate.term_id
+          object_id = curObject.term_id
+          context_id = curContext.term_id
+
+        }
+
+
     let to_encoding (quad: Quad) =
         MessagePackSerializer.Serialize(quad, message_pack_options)
 
     let from_encoding (quad_encoding: byte array) =
         MessagePackSerializer.Deserialize<Quad>(quad_encoding, message_pack_options)
+
+    let slot_value slot quad =
+        match slot with
+        | S -> quad.subject_id
+        | P -> quad.predicate_id
+        | O -> quad.object_id
+        | C -> quad.context_id
 
 module Permutation_Key =
 
@@ -447,25 +534,6 @@ module Permutation_Key =
 
 
 
-type Quad_Pattern =
-    { ground_subject: byte array option
-      ground_predicate: byte array option
-      ground_object: byte array option
-      ground_context: byte array option }
-
-module Quad_Pattern =
-    let bound_slot pattern slot =
-        match slot with
-        | S -> pattern.ground_subject
-        | P -> pattern.ground_predicate
-        | O -> pattern.ground_object
-        | C -> pattern.ground_context
-
-    let permutation_prefix pattern permutation =
-        permutation.order
-        |> Array.takeWhile (fun slot -> bound_slot pattern slot |> Option.isSome)
-        |> Array.map (fun slot -> bound_slot pattern slot |> Option.get)
-        |> Array.collect id
 
 
 
@@ -507,11 +575,11 @@ module Database =
             use transaction = environment.BeginTransaction()
 
             for quad in quads do
-                for permutation in Quad_Permutation.all do
+                for permutation in Quad_Permutation.permutation_profile do
                     let permutation_key = Permutation_Key.from_quad permutation quad
 
                     transaction.Put(permutation.permutation_map.handle, permutation_key, [||])
-                    |> ignore
+                    |> MDBResultCode.fail_if_not_success $"Put quad permutation {permutation.permutation_map.name}"
 
                 written <- written + 24
 
@@ -525,95 +593,195 @@ module Database =
             printfn "quads=%i index_entries=%i elapsed=%O" quads.Length written stopwatch.Elapsed
 
             stopwatch.Stop()
-    (*
-        let Quads (quads: Quad array) =
 
-            let stopwatch = Stopwatch.StartNew()
-            let mutable written = 0
+    module Delete =
+
+        let Quad (quad: Quad) =
             use transaction = environment.BeginTransaction()
 
-            for quad in quads do
-                let quad_bytes = MessagePackSerializer.Serialize(quad, message_pack_options)
+            for permutation in Quad_Permutation.permutation_profile do
+                let permutation_key = Permutation_Key.from_quad permutation quad
 
-                let S_quad =
-                    Attribute_Value.to_encoding
-                        { attribute = S
-                          value_bytes = quad_bytes }
-
-                let P_quad =
-                    Attribute_Value.to_encoding
-                        { attribute = P
-                          value_bytes = quad_bytes }
-
-                let O_quad =
-                    Attribute_Value.to_encoding
-                        { attribute = O
-                          value_bytes = quad_bytes }
-
-                let C_quad =
-                    Attribute_Value.to_encoding
-                        { attribute = C
-                          value_bytes = quad_bytes }
-
-                let quad_S =
-                    Attribute_Value.to_encoding
-                        { attribute = S
-                          value_bytes = quad.subject_id }
-
-                let quad_P =
-                    Attribute_Value.to_encoding
-                        { attribute = P
-                          value_bytes = quad.predicate_id }
-
-                let quad_O =
-                    Attribute_Value.to_encoding
-                        { attribute = O
-                          value_bytes = quad.object_id }
-
-                let quad_C =
-                    Attribute_Value.to_encoding
-                        { attribute = C
-                          value_bytes = quad.context_id }
-
-
-                transaction.Put(Persistent_Map.Term_ID_to_Attribute_Values.handle, quad.subject_id, S_quad)
-                |> MDBResultCode.fail_if_not_success "Put Term ID -> attribute value"
-
-                transaction.Put(Persistent_Map.Term_ID_to_Attribute_Values.handle, quad.predicate_id, P_quad)
-                |> MDBResultCode.fail_if_not_success "Put Term ID -> attribute value"
-
-                transaction.Put(Persistent_Map.Term_ID_to_Attribute_Values.handle, quad.object_id, O_quad)
-                |> MDBResultCode.fail_if_not_success "Put Term ID -> attribute value"
-
-                transaction.Put(Persistent_Map.Term_ID_to_Attribute_Values.handle, quad.context_id, C_quad)
-                |> MDBResultCode.fail_if_not_success "Put Term ID -> attribute value"
-
-                transaction.Put(Persistent_Map.Quads_to_Attribute_Values.handle, quad_bytes, quad_S)
-                |> MDBResultCode.fail_if_not_success "Put Quad -> attribute value"
-
-                transaction.Put(Persistent_Map.Quads_to_Attribute_Values.handle, quad_bytes, quad_P)
-                |> MDBResultCode.fail_if_not_success "Put Quad -> attribute value"
-
-                transaction.Put(Persistent_Map.Quads_to_Attribute_Values.handle, quad_bytes, quad_O)
-                |> MDBResultCode.fail_if_not_success "Put Quad -> attribute value"
-
-                transaction.Put(Persistent_Map.Quads_to_Attribute_Values.handle, quad_bytes, quad_C)
-                |> MDBResultCode.fail_if_not_success "Put Quad -> attribute value"
-
-                written <- written + 8
-
-
-
-
+                transaction.Delete(permutation.permutation_map.handle, permutation_key)
+                |> MDBResultCode.fail_if_not_success $"Delete quad permutation {permutation.permutation_map}"
 
             transaction.Commit() |> ignore
 
+        let Quads (quads: Quad array) =
+            use transaction = environment.BeginTransaction()
 
-            printfn "written=%i/%i elapsed=%O" written quads.Length stopwatch.Elapsed
+            for quad in quads do
+                for permutation in Quad_Permutation.permutation_profile do
+                    let permutation_key = Permutation_Key.from_quad permutation quad
+
+                    transaction.Delete(permutation.permutation_map.handle, permutation_key)
+                    |> MDBResultCode.fail_if_not_success $"Delete quad permutation {permutation.permutation_map}"
+
+            transaction.Commit() |> ignore
+
+    module Count =
+
+
+        let Keys (persistent_map: Persistent_Map) =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            use cursor = transaction.CreateCursor(persistent_map.handle)
+
+            let mutable count = 0L
+
+            let struct (first_result, _, _) = cursor.First()
+
+            let mutable keep_reading = first_result = MDBResultCode.Success
+
+            while keep_reading do
+                count <- count + 1L
+
+                let struct (next_result, _, _) = cursor.Next()
+
+                keep_reading <- next_result = MDBResultCode.Success
+
+            count
+
+    module Backfill =
+
+        let private permutation_has_any_keys (permutation: Quad_Permutation) =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            use cursor = transaction.CreateCursor(permutation.permutation_map.handle)
+
+            let struct (result, _, _) = cursor.First()
+
+            result = MDBResultCode.Success
+
+
+        let private backfill_permutation_from_spoc (target_permutation: Quad_Permutation) =
+            let stopwatch = Stopwatch.StartNew()
+            let presence_value = [| 1uy |]
+            let mutable read_count = 0L
+            let mutable written_count = 0L
+
+            let source_count = Count.Keys Quad_Permutation.spoc.permutation_map
+
+            let progress_interval = 100_000L
+
+            printfn "backfill start target=%A source_count=%i" target_permutation.permutation_map source_count
+
+            Console.Out.Flush()
+
+            use transaction = environment.BeginTransaction()
+
+            use cursor = transaction.CreateCursor(Quad_Permutation.spoc.permutation_map.handle)
+
+            let struct (first_result, _, _) = cursor.First()
+
+            let mutable keep_reading = first_result = MDBResultCode.Success
+
+            while keep_reading do
+                let struct (current_result, source_key, _) = cursor.GetCurrent()
+
+                if current_result = MDBResultCode.Success then
+                    let source_key_bytes = source_key.CopyToNewArray()
+
+                    let quad = Permutation_Key.to_quad Quad_Permutation.spoc source_key_bytes
+
+                    let target_key = Permutation_Key.from_quad target_permutation quad
+
+                    transaction.Put(target_permutation.permutation_map.handle, target_key, presence_value)
+                    |> MDBResultCode.fail_if_not_success $"Backfill {target_permutation.permutation_map}"
+
+                    read_count <- read_count + 1L
+                    written_count <- written_count + 1L
+
+                    if read_count % progress_interval = 0L then
+                        let elapsed = stopwatch.Elapsed
+
+                        let rate = float read_count / elapsed.TotalSeconds
+
+                        let percent =
+                            if source_count = 0L then
+                                100.0
+                            else
+                                (float read_count / float source_count) * 100.0
+
+                        printfn
+                            "backfill progress target=%A read=%i/%i written=%i elapsed=%O rate=%.0f keys/sec %.2f%%"
+                            target_permutation.permutation_map
+                            read_count
+                            source_count
+                            written_count
+                            elapsed
+                            rate
+                            percent
+
+                        Console.Out.Flush()
+
+                    let struct (next_result, _, _) = cursor.Next()
+
+                    keep_reading <- next_result = MDBResultCode.Success
+                else
+                    keep_reading <- false
+
+            transaction.Commit()
+            |> MDBResultCode.fail_if_not_success $"Commit backfill {target_permutation.permutation_map}"
 
             stopwatch.Stop()
 
-        *)
+            printfn
+                "backfill complete target=%A read=%i written=%i elapsed=%O"
+                target_permutation.permutation_map
+                read_count
+                written_count
+                stopwatch.Elapsed
+
+            Console.Out.Flush()
+
+        let Profile () =
+            for permutation in Quad_Permutation.permutation_profile do
+
+                if permutation.permutation_map
+                   <> Quad_Permutation.spoc.permutation_map then
+
+                    let has_any_keys = permutation_has_any_keys permutation
+
+                    if not has_any_keys then
+                        printfn "permutation %A is empty; backfilling from SPOC" permutation.permutation_map
+
+                        backfill_permutation_from_spoc permutation
+                    else
+                        printfn "permutation %A already has keys; skipping backfill" permutation.permutation_map
+
+        let DeepProfile () =
+            let source_count = Count.Keys Quad_Permutation.spoc.permutation_map
+
+            printfn "canonical SPOC count=%i" source_count
+            Console.Out.Flush()
+
+            for permutation in Quad_Permutation.permutation_profile do
+
+                if permutation.permutation_map
+                   <> Quad_Permutation.spoc.permutation_map then
+
+                    let target_count = Count.Keys permutation.permutation_map
+
+                    if target_count = source_count then
+                        printfn "permutation %A complete count=%i; skipping" permutation.permutation_map target_count
+
+                        Console.Out.Flush()
+
+                    elif target_count = 0L then
+                        printfn "permutation %A empty; backfilling from SPOC" permutation.permutation_map
+
+                        Console.Out.Flush()
+
+                        backfill_permutation_from_spoc permutation
+
+                    else
+                        failwithf
+                            "permutation %A is partially populated: target_count=%i source_count=%i. Clear/rebuild this permutation before continuing."
+                            permutation.permutation_map
+                            target_count
+                            source_count
+
     module Get =
 
         let Keys_by_Persistent_Map_Prefix (persistent_map: Persistent_Map) (prefix: byte array) =
@@ -810,13 +978,66 @@ module Database =
         let Form_ID_by_String (string_value: string) =
             Value_by_Persistent_Map Persistent_Map.Digest_to_Form_ID string_value.to_digest
 
+    module Exists =
+
+        let Quad (quad: Quad) =
+            let key = Permutation_Key.from_quad Quad_Permutation.spoc quad
+
+            Get.Value_by_Persistent_Map Persistent_Map.SPOC key
+            |> Option.isSome
+
+
+    module Validate =
+
+        let Quad_Permutation_Presence (quad: Quad) =
+            Quad_Permutation.permutation_profile
+            |> Array.map (fun permutation ->
+                let key = Permutation_Key.from_quad permutation quad
+
+                let exists =
+                    Get.Value_by_Persistent_Map permutation.permutation_map key
+                    |> Option.isSome
+
+                permutation.permutation_map, exists)
 
 
 
 
+module Lexical_Form =
+
+    let string_from_form_id form_id =
+        Database.Get.Value_by_Persistent_Map Persistent_Map.Form_ID_to_Encoding form_id
+        |> Option.get
+        |> String.from_encoding
 
 
 
+
+module Transient_Term =
+    let from_id (term_id: byte array) =
+        { persistent_term =
+            Database.Get.Value_by_Persistent_Map Persistent_Map.Term_ID_to_Term term_id
+            |> Option.get
+            |> Persistent_Term.from_encoding
+          term_id = term_id }
+
+    let lexical_form_string transient_term =
+        transient_term.persistent_term
+        |> Persistent_Term.lexical_form_id
+        |> Lexical_Form.string_from_form_id
+
+    let lexical_form_string_from_id term_id =
+        Database.Get.Value_by_Persistent_Map Persistent_Map.Term_ID_to_Term term_id
+        |> Option.get
+        |> Persistent_Term.from_encoding
+        |> Persistent_Term.lexical_form_id
+        |> Lexical_Form.string_from_form_id
+
+    let print (transient_term: Transient_Term) =
+        sprintf "%s" (lexical_form_string transient_term)
+
+
+fsi.AddPrinter<Transient_Term>(fun transient_term -> sprintf "%s" (Transient_Term.lexical_form_string transient_term))
 
 
 
@@ -887,18 +1108,8 @@ let iri (iri_form: string) =
     |> Database.Get.Transient_Terms_From_Persistent_Terms
     |> iri_term_by_string iri_form
 
-let string_from_iri_term_id (iri_term_id: byte array) =
-    let (ResolvedIRI form_id) =
-        Database.Get.Value_by_Persistent_Map Persistent_Map.Term_ID_to_Term iri_term_id
-        |> Option.get
-        |> Persistent_Term.from_encoding
-
-    Database.Get.Value_by_Persistent_Map Persistent_Map.Form_ID_to_Encoding form_id
-    |> Option.get
-    |> String.from_encoding
 
 
-let Charlie = iri "https://www.example.com/Charlie"
 
 let simple_literal_terms_from_lexical_forms (lexical_forms: Lexical_Form array) =
     lexical_forms
@@ -910,11 +1121,321 @@ let simple_literal (literal_form: string) =
     |> Database.Get.Transient_Terms_From_Persistent_Terms
     |> simple_literal_term_by_string literal_form
 
+
+module Assert =
+    let spoc
+        (curSubject: Transient_Term)
+        (curPredicate: Transient_Term)
+        (curObject: Transient_Term)
+        (curContext: Transient_Term)
+        =
+
+        Database.Put.Quads [| Quad.spoc curSubject curPredicate curObject curContext |]
+
+    let Quads quads = Database.Put.Quads quads
+
+type Quad_Pattern =
+    { ground_subject: byte array option
+      ground_predicate: byte array option
+      ground_object: byte array option
+      ground_context: byte array option }
+
+
+module Quad_Pattern =
+    let print (quad_pattern: Quad_Pattern) =
+        let s =
+            match quad_pattern.ground_subject with
+            | Some _ -> "s"
+            | None -> "_"
+
+        let p =
+            match quad_pattern.ground_predicate with
+            | Some _ -> "p"
+            | None -> "_"
+
+        let o =
+            match quad_pattern.ground_object with
+            | Some _ -> "o"
+            | None -> "_"
+
+        let c =
+            match quad_pattern.ground_context with
+            | Some _ -> "c"
+            | None -> "_"
+
+        $"{s}{p}{o}{c}"
+
+
+    let bound_slot pattern slot =
+        match slot with
+        | S -> pattern.ground_subject
+        | P -> pattern.ground_predicate
+        | O -> pattern.ground_object
+        | C -> pattern.ground_context
+
+    let grounded_slots_in_canonical_order pattern =
+        [| S; P; O; C |]
+        |> Array.filter (fun slot -> bound_slot pattern slot |> Option.isSome)
+
+    (*
+    let permutation_covers_pattern pattern permutation =
+        let grounded = grounded_slots_in_canonical_order pattern
+
+        let prefix = permutation.order |> Array.take grounded.Length
+
+        prefix = grounded
+    let choose_permutation pattern =
+        Quad_Permutation.permutation_profile
+        |> Array.find (fun permutation -> permutation_covers_pattern pattern permutation)
+*)
+    let permutation_covers_pattern pattern permutation =
+        let grounded = grounded_slots_in_canonical_order pattern
+
+        let candidate_prefix = permutation.order |> Array.take grounded.Length
+
+        grounded
+        |> Array.forall (fun grounded_slot -> candidate_prefix |> Array.contains grounded_slot)
+
+    let choose_permutation pattern =
+        Quad_Permutation.permutation_profile
+        |> Array.tryFind (fun permutation -> permutation_covers_pattern pattern permutation)
+
+    let permutation_prefix pattern permutation =
+        permutation.order
+        |> Array.takeWhile (fun slot -> bound_slot pattern slot |> Option.isSome)
+        |> Array.map (fun slot -> bound_slot pattern slot |> Option.get)
+        |> Array.collect id
+
+module Query =
+
+    let quads_by_pattern pattern =
+        let permutation =
+            match Quad_Pattern.choose_permutation pattern with
+            | Some permutation -> permutation
+            | _ -> failwith $"No permutation in active profile covers pattern {Quad_Pattern.print pattern}."
+
+        let prefix = Quad_Pattern.permutation_prefix pattern permutation
+
+        Database.Get.Keys_by_Persistent_Map_Prefix permutation.permutation_map prefix
+        |> Array.map (fun permutation_key -> Permutation_Key.to_quad permutation permutation_key)
+
+    let terms_for_slot slot pattern =
+        quads_by_pattern pattern
+        |> Array.map (fun quad ->
+            Quad.slot_value slot quad
+            |> Transient_Term.from_id)
+
+    // ------------------------------------------------------------
+    // 0 FREE VARIABLES
+    // ------------------------------------------------------------
+
+    let spoc subject predicate object context =
+        { ground_subject = Some subject.term_id
+          ground_predicate = Some predicate.term_id
+          ground_object = Some object.term_id
+          ground_context = Some context.term_id }
+        |> quads_by_pattern
+
+
+    // ------------------------------------------------------------
+    // 1 FREE VARIABLE
+    // ------------------------------------------------------------
+
+    let _poc predicate object context =
+        { ground_subject = None
+          ground_predicate = Some predicate.term_id
+          ground_object = Some object.term_id
+          ground_context = Some context.term_id }
+        |> terms_for_slot S
+
+    let s_oc subject object context =
+        { ground_subject = Some subject.term_id
+          ground_predicate = None
+          ground_object = Some object.term_id
+          ground_context = Some context.term_id }
+        |> terms_for_slot P
+
+    let sp_c subject predicate context =
+        { ground_subject = Some subject.term_id
+          ground_predicate = Some predicate.term_id
+          ground_object = None
+          ground_context = Some context.term_id }
+        |> terms_for_slot O
+
+    let spo_ subject predicate object =
+        { ground_subject = Some subject.term_id
+          ground_predicate = Some predicate.term_id
+          ground_object = Some object.term_id
+          ground_context = None }
+        |> terms_for_slot C
+
+
+    // ------------------------------------------------------------
+    // 2 FREE VARIABLES
+    // ------------------------------------------------------------
+
+    let __oc object context =
+        { ground_subject = None
+          ground_predicate = None
+          ground_object = Some object.term_id
+          ground_context = Some context.term_id }
+        |> quads_by_pattern
+        |> Array.map (fun quad -> Transient_Term.from_id quad.subject_id, Transient_Term.from_id quad.predicate_id)
+
+    let _p_c predicate context =
+        { ground_subject = None
+          ground_predicate = Some predicate.term_id
+          ground_object = None
+          ground_context = Some context.term_id }
+        |> quads_by_pattern
+        |> Array.map (fun quad -> Transient_Term.from_id quad.subject_id, Transient_Term.from_id quad.object_id)
+
+    let _po_ predicate object =
+        { ground_subject = None
+          ground_predicate = Some predicate.term_id
+          ground_object = Some object.term_id
+          ground_context = None }
+        |> quads_by_pattern
+        |> Array.map (fun quad -> Transient_Term.from_id quad.subject_id, Transient_Term.from_id quad.context_id)
+
+    let s__c subject context =
+        { ground_subject = Some subject.term_id
+          ground_predicate = None
+          ground_object = None
+          ground_context = Some context.term_id }
+        |> quads_by_pattern
+        |> Array.map (fun quad -> Transient_Term.from_id quad.predicate_id, Transient_Term.from_id quad.object_id)
+
+    let s_o_ subject object =
+        { ground_subject = Some subject.term_id
+          ground_predicate = None
+          ground_object = Some object.term_id
+          ground_context = None }
+        |> quads_by_pattern
+        |> Array.map (fun quad -> Transient_Term.from_id quad.predicate_id, Transient_Term.from_id quad.context_id)
+
+    let sp__ subject predicate =
+        { ground_subject = Some subject.term_id
+          ground_predicate = Some predicate.term_id
+          ground_object = None
+          ground_context = None }
+        |> quads_by_pattern
+        |> Array.map (fun quad -> Transient_Term.from_id quad.object_id, Transient_Term.from_id quad.context_id)
+
+
+    // ------------------------------------------------------------
+    // 3 FREE VARIABLES
+    // ------------------------------------------------------------
+
+    let ___c context =
+        { ground_subject = None
+          ground_predicate = None
+          ground_object = None
+          ground_context = Some context.term_id }
+        |> quads_by_pattern
+        |> Array.map (fun quad ->
+            Transient_Term.from_id quad.subject_id,
+            Transient_Term.from_id quad.predicate_id,
+            Transient_Term.from_id quad.object_id)
+
+    let __o_ object =
+        { ground_subject = None
+          ground_predicate = None
+          ground_object = Some object.term_id
+          ground_context = None }
+        |> quads_by_pattern
+        |> Array.map (fun quad ->
+            Transient_Term.from_id quad.subject_id,
+            Transient_Term.from_id quad.predicate_id,
+            Transient_Term.from_id quad.context_id)
+
+    let _p__ predicate =
+        { ground_subject = None
+          ground_predicate = Some predicate.term_id
+          ground_object = None
+          ground_context = None }
+        |> quads_by_pattern
+        |> Array.map (fun quad ->
+            Transient_Term.from_id quad.subject_id,
+            Transient_Term.from_id quad.object_id,
+            Transient_Term.from_id quad.context_id)
+
+    let s___ subject =
+        { ground_subject = Some subject.term_id
+          ground_predicate = None
+          ground_object = None
+          ground_context = None }
+        |> quads_by_pattern
+        |> Array.map (fun quad ->
+            Transient_Term.from_id quad.predicate_id,
+            Transient_Term.from_id quad.object_id,
+            Transient_Term.from_id quad.context_id)
+
+
+    // ------------------------------------------------------------
+    // 4 FREE VARIABLES
+    // ------------------------------------------------------------
+
+    let ____ () =
+        { ground_subject = None
+          ground_predicate = None
+          ground_object = None
+          ground_context = None }
+        |> quads_by_pattern
+
+(*
+
+let Alice = iri "https://www.example.com/Alice"
+let knows = iri "https://www.example.com/knows"
+let Bob = iri "https://www.example.com/Bob"
+let example = iri "https://www.example.com/"
+let Charlie = iri "https://www.example.com/Charlie"
+let name = iri "https://www.example.com/name"
+let Alice_literal = simple_literal "Alice"
+
+Assert.spoc Alice knows Bob example
+Assert.spoc Bob knows Charlie example
+Assert.spoc Alice name Alice_literal example
+
+Query.sp_c Alice knows example
+|> Array.map Transient_Term.lexical_form_string
+
+let results = Query._p__ name
+
+results
+|> Array.map (fun (s, o, c) ->
+    sprintf
+        "%s %s %s %s"
+        (Transient_Term.lexical_form_string s)
+        (Transient_Term.lexical_form_string name)
+        (Transient_Term.lexical_form_string o)
+        (Transient_Term.lexical_form_string c))
+
+
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 (*
 
 
 
-let Alice_form = "https://www.example.com/Alice"
+let Alice_form = "httpCharlies://www.example.com/Alice"
 let knows_form = "https://www.example.com/knows"
 let Bob_form = "https://www.example.com/Bob"
 let example_form = "https://www.example.com"

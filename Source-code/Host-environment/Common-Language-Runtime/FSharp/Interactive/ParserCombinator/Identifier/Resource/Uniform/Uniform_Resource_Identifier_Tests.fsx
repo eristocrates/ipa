@@ -61,7 +61,7 @@ let inline as_string_of (parsed: ^Parsed) : ^MeasuredString =
 
 
 let inline parse_succeeds_with_as_string
-    (parser: Parser< ^Parsed, int, unit, ReadableArray<int>, ReadableArraySlice<int> >)
+    (parser: Parser< ^Parsed, int, unit, ReadableArray<int> >)
     (input: string)
     (expected_string: ^MeasuredString)
     =
@@ -76,7 +76,7 @@ let inline parse_succeeds_with_as_string
 
     | Result.Error error -> test <@ false @>
 
-let parse_succeeds (parser: Parser<'Parsed, int, unit, ReadableArray<int>, ReadableArraySlice<int>>) (input: string) =
+let parse_succeeds (parser: Parser<'Parsed, int, unit, ReadableArray<int>>) (input: string) =
 
     let result = complete_parse parser input
 
@@ -86,7 +86,7 @@ let parse_succeeds (parser: Parser<'Parsed, int, unit, ReadableArray<int>, Reada
            | Result.Error _ -> false @>
 
 
-let parse_fails (parser: Parser<'Parsed, int, unit, ReadableArray<int>, ReadableArraySlice<int>>) (input: string) =
+let parse_fails (parser: Parser<'Parsed, int, unit, ReadableArray<int>>) (input: string) =
 
     let result = complete_parse parser input
 

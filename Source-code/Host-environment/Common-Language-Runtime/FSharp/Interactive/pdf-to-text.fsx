@@ -10,8 +10,7 @@ open UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor
 
 
 
-let pdfRootDirectoryPath =
-    @"D:\Surface\Government\United_States\State\Florida\County\Leon\Geographic_Information_Systems"
+let pdfRootDirectoryPath = @"C:\Repositories\eristocrates\ipa\Literature"
 
 
 

@@ -1,14 +1,184 @@
 open System
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\UnicodeStandard\Unicode_Standard.fsx"
 
+#r "nuget: XParsec"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\UnicodeStandard\Unicode_Standard.fsx"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Extensions\StringExtensions.fsx"
+
+open StringExtensions
 open Unicode_Standard
 
 open SetErgonomics
 
 open Swensen.Unquote.Assertions
 
-#r "nuget: FsCheck"
-open FsCheck
+
+#r "nuget: Hedgehog"
+
+open Hedgehog
+open Hedgehog.FSharp
+
+
+
+let codespace_cardinality =
+    PropertyConfig.defaults
+    |> PropertyConfig.withTests 0x10FFFF<tests>
+
+let propReverse =
+    property {
+        let! xs = Gen.list (Range.linear 0 100) Gen.alpha
+        return List.rev (List.rev xs) = xs
+    }
+
+// Run it
+Property.checkBool propReverse
+
+property {
+    let! xs = Gen.list (Range.linear 0 100) Gen.alpha
+    return List.rev (List.rev xs) = xs
+}
+|> Property.checkBool
+
+// Buggy function - fails for numbers > 100
+let tryAdd a b = if a > 100 then None else Some(a + b)
+
+let propAdd =
+    property {
+        let! a = Gen.int32 (Range.constantBounded ())
+        let! b = Gen.int32 (Range.constantBounded ())
+        return test <@ tryAdd a b = Some(a + b) @>
+    }
+
+// Property.check propAdd
+
+
+
+
+
+
+
+
+
+
+
+
+module Range =
+    let FromIncludedRange (included_interval: Included_Interval<int>) =
+        Gen.int32 (Range.constant included_interval.first_element included_interval.last_element)
+
+    let FromSetDefinition (set_definition: Set_Definition<int>) =
+        let ranges =
+            set_definition.included_intervals
+            |> Array.map FromIncludedRange
+
+        Gen.choice ranges
+
+let Gen_Codespace = Range.FromSetDefinition Codespace
+
+let Gen_Unicode_Scalar_Value =
+    Gen.choice [| Gen.int32 (Range.constant 0xD800 0xDBFF)
+                  Gen.int32 (Range.constant 0xDC00 0xDFFF) |]
+
+let Gen_Surrogate_Code_Point = Range.FromSetDefinition Surrogate_Code_Point_Set
+
+
+
+
+
+let code_point_from_codespace_int_preserves_hex_projection =
+    property {
+        let! raw_int = Gen_Codespace
+
+        let code_point = Code_Point.op_Explicit raw_int
+
+        test <@ Code_Point.as_hex_literal code_point = sprintf "%04X" raw_int @>
+    }
+
+Property.report code_point_from_codespace_int_preserves_hex_projection
+
+
+let code_point_constructor_accepts_generated_codespace_values =
+    property {
+        let! raw_int = Gen_Codespace
+
+        let succeeds =
+            try
+                Code_Point.op_Explicit raw_int |> ignore
+                true
+            with
+            | :? Swensen.Unquote.AssertionFailedException -> false
+
+        test <@ succeeds @>
+    }
+
+Property.report code_point_constructor_accepts_generated_codespace_values
+
+
+
+let unicode_scalar_value_constructor_accepts_generated_scalar_values =
+    property {
+        let! raw_int = Gen_Unicode_Scalar_Value
+
+        let succeeds =
+            try
+                Unicode_Scalar_Value.op_Explicit raw_int |> ignore
+                true
+            with
+            | :? Swensen.Unquote.AssertionFailedException -> false
+
+        test <@ succeeds @>
+    }
+
+Property.check unicode_scalar_value_constructor_accepts_generated_scalar_values
+
+
+
+let code_point_round_trips_through_rune =
+    property {
+        let! raw_int = Gen_Unicode_Scalar_Value
+
+        let code_point = Code_Point.op_Explicit raw_int
+
+        let rune = Code_Point.as_rune code_point
+
+        let reconstructed = Code_Point.op_Explicit rune
+
+        test <@ reconstructed = code_point @>
+    }
+
+Property.check code_point_round_trips_through_rune
+
+
+
+let unicode_scalar_value_constructor_rejects_generated_surrogates =
+    property {
+        let! raw_int = Gen_Surrogate_Code_Point
+
+        raises<Swensen.Unquote.AssertionFailedException> <@ Unicode_Scalar_Value.op_Explicit raw_int |> ignore @>
+    }
+
+Property.check unicode_scalar_value_constructor_rejects_generated_surrogates
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -36,6 +206,9 @@ let unicode_scalar_value_excludes_surrogates () =
     test <@ not (Unicode_Scalar_Value_Set.Contains 0xDFFF) @>
     test <@ Unicode_Scalar_Value_Set.Contains 0xE000 @>
     test <@ Unicode_Scalar_Value_Set.Contains 0x10FFFF @>
+
+
+(*
 
 let unicode_scalar_value_parse_accepts_exactly_unicode_scalar_values (raw_int: int) =
     if Unicode_Scalar_Value_Set.Contains raw_int then
@@ -167,3 +340,4 @@ let hex_conversion_round_trip (NonNegativeInt raw_int) =
     test <@ int_from_hexadecimal_digit_string hex_string = raw_int @>
 
 Check.Quick hex_conversion_round_trip
+*)

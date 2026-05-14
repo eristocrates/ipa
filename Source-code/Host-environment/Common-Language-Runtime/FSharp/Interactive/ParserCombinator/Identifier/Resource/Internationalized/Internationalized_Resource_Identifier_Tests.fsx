@@ -5,29 +5,39 @@ open System.Globalization
 
 #r "nuget: Unquote"
 #r "nuget: XParsec"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\Identifier\Resource\Internationalized\Internationalized_Resource_Identifier.fsx"
-
-open Resource_Identifier
-open Internationalized_Resource_Identifier
 
 
-open Unicode_Standard
 
-open SetErgonomics
 
 open Swensen.Unquote.Assertions
 
 #r "nuget: FsCheck"
 
 open FsCheck
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\Identifier\Resource\Internationalized\Internationalized_Resource_Identifier.fsx"
+
+open StringExtensions
+open Resource_Identifier
 open XParsecErgonomics
+open Unicode_Standard
 open XParsec
+open Resource_Identifier
+open Internationalized_Resource_Identifier
 
+let rdf_string =
+    parse
+        partial_parser
+        Authority.path_abempty.parser_combinator
+        from_input_string
+        "http://eristocrates.dev/ontology/unicode/0041"
+        expecting
+        ""
+        return_code_point_array
+    |> RDF_String
 
-#r "nuget: FSharp.UMX"
-
-open FSharp.UMX
-
+rdf_string.as_string
+(*
 
 
 
@@ -61,7 +71,7 @@ let inline as_string_of (parsed: ^Parsed) : ^MeasuredString =
 
 
 let inline parse_succeeds_with_as_string
-    (parser: Parser< ^Parsed, int, unit, ReadableArray<int>, ReadableArraySlice<int> >)
+    (parser: Parser< ^Parsed, int, unit, ReadableArray<int> >)
     (input: string)
     (expected_string: ^MeasuredString)
     =
@@ -76,7 +86,7 @@ let inline parse_succeeds_with_as_string
 
     | Result.Error error -> test <@ false @>
 
-let parse_succeeds (parser: Parser<'Parsed, int, unit, ReadableArray<int>, ReadableArraySlice<int>>) (input: string) =
+let parse_succeeds (parser: Parser<'Parsed, int, unit, ReadableArray<int>>) (input: string) =
 
     let result = complete_parse parser input
 
@@ -86,7 +96,7 @@ let parse_succeeds (parser: Parser<'Parsed, int, unit, ReadableArray<int>, Reada
            | Result.Error _ -> false @>
 
 
-let parse_fails (parser: Parser<'Parsed, int, unit, ReadableArray<int>, ReadableArraySlice<int>>) (input: string) =
+let parse_fails (parser: Parser<'Parsed, int, unit, ReadableArray<int>>) (input: string) =
 
     let result = complete_parse parser input
 
@@ -123,3 +133,5 @@ iri_accepts_uri_examples ()
 
 
 parse_result IRI.parse "HTTP://User@EXAMPLE.COM:80/%7Euser/a/../b?q=%31#frag"
+
+*)
