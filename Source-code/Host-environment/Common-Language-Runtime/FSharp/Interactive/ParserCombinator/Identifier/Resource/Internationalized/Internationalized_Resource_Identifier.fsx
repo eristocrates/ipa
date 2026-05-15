@@ -6,10 +6,6 @@ open System.Globalization
 open System.Collections.Immutable
 
 
-#r "nuget: UUIDNext"
-
-open UUIDNext.Tools
-open UUIDNext
 
 #r "nuget: Unquote"
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\Identifier\Resource\Resource_Identifier.fsx"

@@ -119,7 +119,7 @@ let RDFa_Core_Initial_Context =
        "csvw", "http://www.w3.org/ns/csvw#" // "Metadata for Tabular Data","Metadata Vocabulary for Tabular Data","W3C Recommendation"
        "dcat", "http://www.w3.org/ns/dcat#" // "Data Catalog Vocabulary","Data Catalog Vocabulary (DCAT)","W3C Recommendation"
        "dqv", "http://www.w3.org/ns/dqv#" // "Data Quality Vocabulary","Data               on the Web Best Practices: Data Quality Vocabulary","W3C WG Note"
-       "duv", "https://www.w3.org/ns/duv#" // "Dataet Usage Vocabulary","Dataet Usage Vocabulary","W3C WG Note"
+       "duv", "https://www.w3.org/ns/duv#" // "Dataset Usage Vocabulary","Dataset Usage Vocabulary","W3C WG Note"
        "grddl", "http://www.w3.org/2003/g/data-view#" // GRDDL,"Gleaning Resource Descriptions from Dialects of Languages (GRDDL)","W3C Recommendation"
        "jsonld", "http://www.w3.org/ns/json-ld#" // "JSON-LD","JSON-LD 1.1, A JSON-based Serialization for Linked Data","W3C Recommendation"
        "ldp", "http://www.w3.org/ns/ldp#" // "Linked Data Platform Vocabulary","Linked Data Platform 1.0","W3C Recommendation"
@@ -141,7 +141,7 @@ let RDFa_Core_Initial_Context =
        "sosa", "http://www.w3.org/ns/sosa/" // "Sensor, Observation, Sample, and Actuator Ontology","Semantic Sensor Network Ontology","W3C Recommendation"
        "ssn", "http://www.w3.org/ns/ssn/" // "Semantic Sensor Network Ontology","Semantic Sensor Network Ontology","W3C Recommendation"
        "time", "http://www.w3.org/2006/time#" // "Time Ontology","Time Ontology in OWL","W3C Recommendation"
-       "void", "http://rdfs.org/ns/void#" // VoID,"Describing Linked Dataets with the VoID Vocabulary","W3C Interest Group Note"
+       "void", "http://rdfs.org/ns/void#" // VoID,"Describing Linked Datasets with the VoID Vocabulary","W3C Interest Group Note"
        "wdr", "http://www.w3.org/2007/05/powder#" // POWDER,"Protocol for Web Description Resources (POWDER): Formal Semantics","W3C Recommendation"
        "wdrs", "http://www.w3.org/2007/05/powder-s#" // "POWDER-S","Protocol for Web Description Resources (POWDER): Formal Semantics","W3C Recommendation"
        "xhv", "http://www.w3.org/1999/xhtml/vocab#" // "RDFa Default Prefix","RDFa Core 1.1","W3C Recommendation"
@@ -177,9 +177,9 @@ module Resolved_IRI =
     let from_trusted_string (raw_string: string) =
         Database.Get.Lexical_Forms_from_Strings [| raw_string |]
         |> from_lexical_forms
-        |> Database.Get.RDF_Terms_From_RDF_Term_Data
-        |> Array.filter (fun term -> term.rdf_term_data.IsResolvedIRI)
-        |> Array.find (fun term -> RDF_Term.to_string term = raw_string)
+        |> Database.Get.Transient_Terms_From_Persistent_Terms
+        |> Array.filter (fun term -> term.persistent_term.IsResolvedIRI)
+        |> Array.find (fun term -> Transient_Term.to_string term = raw_string)
 
 
 
@@ -195,9 +195,9 @@ module Relative_IRI =
     let from_trusted_string (raw_string: string) =
         Database.Get.Lexical_Forms_from_Strings [| raw_string |]
         |> from_lexical_forms
-        |> Database.Get.RDF_Terms_From_RDF_Term_Data
-        |> Array.filter (fun term -> term.rdf_term_data.IsRelativeIRI)
-        |> Array.find (fun term -> RDF_Term.to_string term = raw_string)
+        |> Database.Get.Transient_Terms_From_Persistent_Terms
+        |> Array.filter (fun term -> term.persistent_term.IsRelativeIRI)
+        |> Array.find (fun term -> Transient_Term.to_string term = raw_string)
 
     let low_lined (raw_string: string) =
         from_trusted_string (raw_string.Replace(" ", "_"))
@@ -233,7 +233,7 @@ type RDF_Prefix with
 type CURIE with
 
     member this.expand =
-        Resolved_IRI.from_trusted_string $"{RDF_Term.to_string this.prefix.namespace_name}{this.reference}"
+        Resolved_IRI.from_trusted_string $"{Transient_Term.to_string this.prefix.namespace_name}{this.reference}"
 
     member this.representation = $"{this.prefix.representation}{this.reference}"
 
@@ -262,7 +262,7 @@ let prefix_label (prefix_label: string) (raw_local_name: string) =
     let prefix = RDF_Prefix.from_string prefix_label
     let local_name = raw_local_name.Replace(" ", "_")
 
-    Resolved_IRI.from_trusted_string $"{RDF_Term.to_string prefix.namespace_name}{local_name}"
+    Resolved_IRI.from_trusted_string $"{Transient_Term.to_string prefix.namespace_name}{local_name}"
 
 
 
@@ -470,7 +470,7 @@ module rdfx =
     let Unnamed_Graph = prefix "Unnamed_Graph"
     let Named_Graph = prefix "Named_Graph"
     let RDF_Graph = prefix "RDF_Graph"
-    let RDF_Dataet = prefix "RDF_Dataet"
+    let RDF_Dataset = prefix "RDF_Dataset"
     let Default_Context = prefix "Default_Context"
 
 type Language_Tag = private LanguageTag of Lexical_Form
@@ -561,18 +561,18 @@ module RDF_Literal =
     let simple (raw_string: string) =
         Database.Get.Lexical_Forms_from_Strings [| raw_string |]
         |> from_lexical_forms_as_simple
-        |> Database.Get.RDF_Terms_From_RDF_Term_Data
-        |> Array.filter (fun term -> term.rdf_term_data.IsSimpleLiteral)
-        |> Array.find (fun term -> RDF_Term.to_string term = raw_string)
+        |> Database.Get.Transient_Terms_From_Persistent_Terms
+        |> Array.filter (fun term -> term.persistent_term.IsSimpleLiteral)
+        |> Array.find (fun term -> Transient_Term.to_string term = raw_string)
 
 
     let language (raw_string: string) (language_tag: Language_Tag) =
 
         Database.Get.Lexical_Forms_from_Strings [| raw_string |]
         |> from_lexical_forms_as_language language_tag
-        |> Database.Get.RDF_Terms_From_RDF_Term_Data
-        |> Array.filter (fun term -> term.rdf_term_data.IsLanguageString)
-        |> Array.find (fun term -> RDF_Term.to_string term = raw_string)
+        |> Database.Get.Transient_Terms_From_Persistent_Terms
+        |> Array.filter (fun term -> term.persistent_term.IsLanguageString)
+        |> Array.find (fun term -> Transient_Term.to_string term = raw_string)
 
     let english (raw_string: string) = language raw_string Language_Tag.en
 
@@ -580,9 +580,9 @@ module RDF_Literal =
 
         Database.Get.Lexical_Forms_from_Strings [| raw_string |]
         |> from_lexical_forms_as_region language_tag region_subtag
-        |> Database.Get.RDF_Terms_From_RDF_Term_Data
-        |> Array.filter (fun term -> term.rdf_term_data.IsLanguageRegionString)
-        |> Array.find (fun term -> RDF_Term.to_string term = raw_string)
+        |> Database.Get.Transient_Terms_From_Persistent_Terms
+        |> Array.filter (fun term -> term.persistent_term.IsLanguageRegionString)
+        |> Array.find (fun term -> Transient_Term.to_string term = raw_string)
 
     let america (raw_string: string) =
         region raw_string Language_Tag.en Region_Subtag.US
@@ -591,9 +591,9 @@ module RDF_Literal =
 
         Database.Get.Lexical_Forms_from_Strings [| raw_string |]
         |> from_lexical_forms_as_language_with_direction language_tag direction
-        |> Database.Get.RDF_Terms_From_RDF_Term_Data
-        |> Array.filter (fun term -> term.rdf_term_data.IsDirectedLanguageString)
-        |> Array.find (fun term -> RDF_Term.to_string term = raw_string)
+        |> Database.Get.Transient_Terms_From_Persistent_Terms
+        |> Array.filter (fun term -> term.persistent_term.IsDirectedLanguageString)
+        |> Array.find (fun term -> Transient_Term.to_string term = raw_string)
 
     let directed_region
         (raw_string: string)
@@ -604,17 +604,17 @@ module RDF_Literal =
 
         Database.Get.Lexical_Forms_from_Strings [| raw_string |]
         |> from_lexical_forms_as_region_with_direction language_tag region_subtag direction
-        |> Database.Get.RDF_Terms_From_RDF_Term_Data
-        |> Array.filter (fun term -> term.rdf_term_data.IsDirectedLanguageString)
-        |> Array.find (fun term -> RDF_Term.to_string term = raw_string)
+        |> Database.Get.Transient_Terms_From_Persistent_Terms
+        |> Array.filter (fun term -> term.persistent_term.IsDirectedLanguageString)
+        |> Array.find (fun term -> Transient_Term.to_string term = raw_string)
 
-    let datatyped (raw_string: string) (datatype_iri: RDF_Term) =
+    let datatyped (raw_string: string) (datatype_iri: Transient_Term) =
 
         Database.Get.Lexical_Forms_from_Strings [| raw_string |]
-        |> from_lexical_forms_as_type datatype_iri.rdf_term_data
-        |> Database.Get.RDF_Terms_From_RDF_Term_Data
-        |> Array.filter (fun term -> term.rdf_term_data.IsDatatypedLiteral)
-        |> Array.find (fun term -> RDF_Term.to_string term = raw_string)
+        |> from_lexical_forms_as_type datatype_iri.persistent_term
+        |> Database.Get.Transient_Terms_From_Persistent_Terms
+        |> Array.filter (fun term -> term.persistent_term.IsDatatypedLiteral)
+        |> Array.find (fun term -> Transient_Term.to_string term = raw_string)
 
     let autotyped<'ValueType> (value: 'ValueType) =
         let value_string, datatype_iri =
