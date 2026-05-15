@@ -26,7 +26,7 @@ let message_pack_options =
 
 let GiB = 1024L * 1024L * 1024L
 let bytes_to_gib (bytes: int64) = float bytes / 1024.0 / 1024.0 / 1024.0
-let map_size = int64 20 * GiB
+let map_size = int64 40 * GiB
 let environment_directory_path = @"D:\Persistence\LMDB"
 
 System.IO.Directory.CreateDirectory(environment_directory_path)
@@ -174,20 +174,6 @@ module Persistent_Map =
     let POS = lightning_database "POS" DatabaseOpenFlags.Create
     let OSP = lightning_database "OSP" DatabaseOpenFlags.Create
     let OPS = lightning_database "OPS" DatabaseOpenFlags.Create
-
-    let Outgoing_Edges =
-        lightning_database
-            "Outgoing_Edges"
-            (DatabaseOpenFlags.Create
-             ||| DatabaseOpenFlags.DuplicatesSort
-             ||| DatabaseOpenFlags.DuplicatesFixed)
-
-    let Incoming_Edges =
-        lightning_database
-            "Incoming_Edges"
-            (DatabaseOpenFlags.Create
-             ||| DatabaseOpenFlags.DuplicatesSort
-             ||| DatabaseOpenFlags.DuplicatesFixed)
 
 
 
@@ -348,8 +334,6 @@ type RDF_Term_Data =
         language_id: byte array *
         region: byte array *
         direction: byte array
-    | TripleTerm of triple_id: byte array
-    | ReifiedTriple of triple_id: byte array
 
 module RDF_Term_Data =
     let to_encoding (rdf_term_data: RDF_Term_Data) =
@@ -357,6 +341,20 @@ module RDF_Term_Data =
 
     let from_encoding (term_encoding: byte array) =
         MessagePackSerializer.Deserialize<RDF_Term_Data>(term_encoding, message_pack_options)
+
+    let lexical_form_id rdf_term_data =
+        match rdf_term_data with
+        | ResolvedIRI form_id -> Form_ID.from_encoding form_id
+        | RelativeIRI form_id -> Form_ID.from_encoding form_id
+        | SkolemIRI form_id -> Form_ID.from_encoding form_id
+        | QuestionVariable form_id -> Form_ID.from_encoding form_id
+        | DollarVariable form_id -> Form_ID.from_encoding form_id
+        | SimpleLiteral form_id -> Form_ID.from_encoding form_id
+        | DatatypedLiteral (form_id, _) -> Form_ID.from_encoding form_id
+        | LanguageString (form_id, _) -> Form_ID.from_encoding form_id
+        | LanguageRegionString (form_id, _, _) -> Form_ID.from_encoding form_id
+        | DirectedLanguageString (form_id, _, _) -> Form_ID.from_encoding form_id
+        | DirectedLanguageRegionString (form_id, _, _, _) -> Form_ID.from_encoding form_id
 
 
 type RDF_Term_ID = private TermID of byte array
@@ -493,17 +491,18 @@ type Context_ID with
 
 
 
-type Quad_Context =
-    | NamedGraph of term_id: byte array
-    | ParallelEdge of term_id: byte array
+[<MessagePackObject>]
+type Persistent_Context =
+    | NamedGraph of term_id: RDF_Term_ID
+    | ParallelEdge of term_id: RDF_Term_ID
 
-module Quad_Context =
+module Persistent_Context =
 
-    let to_encoding (context: Quad_Context) =
-        match context with
-        | NamedGraph term_id -> term_id
-        | ParallelEdge term_id -> term_id
+    let to_encoding (context: Persistent_Context) =
+        MessagePackSerializer.Serialize(context, message_pack_options)
 
+    let from_encoding (context_encoding: byte array) =
+        MessagePackSerializer.Deserialize<Persistent_Context>(context_encoding, message_pack_options)
 
 type Quad =
     { triple_id: Triple_ID
@@ -580,38 +579,6 @@ module Database =
 
     module Put =
 
-        let LPG_Adjacency_For_Triples (triples: Triple array) =
-
-            let stopwatch = Stopwatch.StartNew()
-            let mutable written = 0
-
-            use transaction = environment.BeginTransaction()
-
-            for triple in triples do
-                let triple_id = Triple_ID.from_triple triple
-
-                transaction.Put(
-                    Persistent_Map.Outgoing_Edges.handle,
-                    triple.subject_id.to_encoding,
-                    triple_id.to_encoding
-                )
-                |> MDBResultCode.fail_if_not_success "Put Outgoing_Edges"
-
-                transaction.Put(
-                    Persistent_Map.Incoming_Edges.handle,
-                    triple.object_id.to_encoding,
-                    triple_id.to_encoding
-                )
-                |> MDBResultCode.fail_if_not_success "Put Incoming_Edges"
-
-                written <- written + 2
-
-            transaction.Commit() |> ignore
-
-            printfn "lpg_adjacency triples=%i index_entries=%i elapsed=%O" triples.Length written stopwatch.Elapsed
-
-            stopwatch.Stop()
-
         let Triples (triples: Triple array) : Triple_ID array =
 
             let stopwatch = Stopwatch.StartNew()
@@ -638,8 +605,6 @@ module Database =
             printfn "triples=%i index_entries=%i elapsed=%O" triples.Length written stopwatch.Elapsed
 
             stopwatch.Stop()
-
-            LPG_Adjacency_For_Triples triples
 
             triple_ids
 
@@ -874,7 +839,7 @@ module Database =
             |> Seq.map (fun struct (key_bytes, _) -> key_bytes.AsSpan().ToArray())
             |> Seq.toArray
 
-        let All_Values_by_Persistent_Map (persistent_map: Persistent_Map) =
+        let Values_by_Persistent_Map (persistent_map: Persistent_Map) =
             use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
 
             use cursor = transaction.CreateCursor(persistent_map.handle)
@@ -882,37 +847,6 @@ module Database =
             cursor.AsEnumerable()
             |> Seq.map (fun struct (_, value_bytes) -> value_bytes.AsSpan().ToArray())
             |> Seq.toArray
-
-        let Values_by_Persistent_Map (persistent_map: Persistent_Map) (key: byte array) =
-            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
-
-            use cursor = transaction.CreateCursor(persistent_map.handle)
-
-            let results = ResizeArray<byte array>()
-
-            let struct (set_result, _, _) = cursor.SetKey(key)
-
-            if set_result = MDBResultCode.Success then
-                let mutable keep_reading = true
-
-                while keep_reading do
-                    let struct (current_result, current_key, current_value) = cursor.GetCurrent()
-
-                    if current_result = MDBResultCode.Success then
-                        let current_key_bytes = current_key.CopyToNewArray()
-
-                        if current_key_bytes = key then
-                            results.Add(current_value.CopyToNewArray())
-
-                            let struct (next_result, _, _) = cursor.NextDuplicate()
-
-                            keep_reading <- next_result = MDBResultCode.Success
-                        else
-                            keep_reading <- false
-                    else
-                        keep_reading <- false
-
-            results.ToArray()
 
         let Value_by_Persistent_Map (persistent_map: Persistent_Map) (key_bytes: byte array) =
             use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
@@ -931,8 +865,8 @@ module Database =
             Value_by_Persistent_Map Persistent_Map.Form_ID_to_Encoding form_id
 
 
-        let Context_ID_From_Quad_Context (quad_context: Quad_Context) =
-            let context_encoding = Quad_Context.to_encoding quad_context
+        let Context_ID_From_Persistent_Context (persistent_context: Persistent_Context) =
+            let context_encoding = Persistent_Context.to_encoding persistent_context
 
             match Value_by_Persistent_Map Persistent_Map.Context_to_Context_ID context_encoding with
             | Some context_id_encoding -> Context_ID.from_encoding context_id_encoding
@@ -999,117 +933,91 @@ module Lexical_Forms =
         |> Array.map (fun iri_form -> RelativeIRI iri_form.form_id.to_encoding)
 
 module RDF_Term =
-
-    let rec from_id (term_id: RDF_Term_ID) =
+    let from_id (term_id: RDF_Term_ID) =
         { rdf_term_data =
             Database.Get.Value_by_Persistent_Map Persistent_Map.Term_ID_to_Term term_id.to_encoding
             |> Option.get
             |> RDF_Term_Data.from_encoding
           rdf_term_id = term_id }
 
-    and private form_string form_id =
-        form_id
-        |> Form_ID.from_encoding
+    let to_string rdf_term =
+        rdf_term.rdf_term_data
+        |> RDF_Term_Data.lexical_form_id
         |> Form_ID.to_string
 
-    and to_string rdf_term =
-        match rdf_term.rdf_term_data with
-        | ResolvedIRI form_id -> form_string form_id
-        | RelativeIRI form_id -> form_string form_id
-        | SkolemIRI form_id -> form_string form_id
-        | QuestionVariable form_id -> form_string form_id
-        | DollarVariable form_id -> form_string form_id
-        | SimpleLiteral form_id -> form_string form_id
-        | DatatypedLiteral (form_id, _) -> form_string form_id
-        | LanguageString (form_id, _) -> form_string form_id
-        | LanguageRegionString (form_id, _, _) -> form_string form_id
-        | DirectedLanguageString (form_id, _, _) -> form_string form_id
-        | DirectedLanguageRegionString (form_id, _, _, _) -> form_string form_id
-
-        | TripleTerm triple_id ->
-            let triple =
-                triple_id
-                |> Permutation_Key.to_triple Triple_Permutation.spo
-
-            let s = triple.subject_id |> from_id |> to_string
-
-            let p = triple.predicate_id |> from_id |> to_string
-
-            let o = triple.object_id |> from_id |> to_string
-
-            $"{s} {p} {o}"
-
-        | ReifiedTriple triple_id ->
-            let triple =
-                triple_id
-                |> Permutation_Key.to_triple Triple_Permutation.spo
-
-            let s = triple.subject_id |> from_id |> to_string
-
-            let p = triple.predicate_id |> from_id |> to_string
-
-            let o = triple.object_id |> from_id |> to_string
-
-            $"{s} {p} {o}"
-
-    and representation rdf_term =
-        match rdf_term.rdf_term_data with
-        | ResolvedIRI form_id -> $"<{form_string form_id}>"
-        | RelativeIRI form_id -> $"<{form_string form_id}>"
-        | SkolemIRI form_id -> $"<{form_string form_id}>"
-        | QuestionVariable form_id -> $"?{form_string form_id}"
-        | DollarVariable form_id -> $"${form_string form_id}"
-        | SimpleLiteral form_id -> $"\"{form_string form_id}\""
-        | DatatypedLiteral (form_id, datatype_id) -> $"\"{form_string form_id}\"^^<{form_string datatype_id}>"
-        | LanguageString (form_id, language_id) -> $"\"{form_string form_id}\"@{form_string language_id}"
-        | LanguageRegionString (form_id, language_id, region_id) ->
-            $"\"{form_string form_id}\"@{form_string language_id}-{form_string region_id}"
-        | DirectedLanguageString (form_id, language_id, direction_id) ->
-            $"\"{form_string form_id}\"@{form_string language_id}-{form_string direction_id}"
-        | DirectedLanguageRegionString (form_id, language_id, region_id, direction_id) ->
-            $"\"{form_string form_id}\"@{form_string language_id}-{form_string region_id}-{form_string direction_id}"
-
-        | TripleTerm triple_id ->
-            let triple =
-                triple_id
-                |> Permutation_Key.to_triple Triple_Permutation.spo
-
-            let s = triple.subject_id |> from_id |> representation
-
-            let p = triple.predicate_id |> from_id |> representation
-
-            let o = triple.object_id |> from_id |> representation
-
-            $"<<{s} {p} {o}>>"
-
-        | ReifiedTriple triple_id ->
-            let triple =
-                triple_id
-                |> Permutation_Key.to_triple Triple_Permutation.spo
-
-            let s = triple.subject_id |> from_id |> representation
-
-            let p = triple.predicate_id |> from_id |> representation
-
-            let o = triple.object_id |> from_id |> representation
-
-            $"<<({s} {p} {o})>>"
-
-    and string_from_id term_id =
-        term_id
-        |> RDF_Term_ID.from_encoding
-        |> from_id
-        |> to_string
-
-    and representation_from_id term_id =
-        term_id
-        |> RDF_Term_ID.from_encoding
-        |> from_id
-        |> representation
-
+    let lexical_form_string_from_id term_id =
+        Database.Get.Value_by_Persistent_Map Persistent_Map.Term_ID_to_Term term_id
+        |> Option.get
+        |> RDF_Term_Data.from_encoding
+        |> RDF_Term_Data.lexical_form_id
+        |> Form_ID.to_string
 
     let print (rdf_term: RDF_Term) = sprintf "%s" (to_string rdf_term)
 
+    let representation rdf_term =
+        match rdf_term.rdf_term_data with
+        | ResolvedIRI form_id ->
+            $"<{form_id
+                |> Form_ID.from_encoding
+                |> Form_ID.to_string}>"
+        | RelativeIRI form_id ->
+            $"<{form_id
+                |> Form_ID.from_encoding
+                |> Form_ID.to_string}>"
+        | SkolemIRI form_id ->
+            $"<{form_id
+                |> Form_ID.from_encoding
+                |> Form_ID.to_string}>"
+        | QuestionVariable form_id ->
+            $"?{form_id
+                |> Form_ID.from_encoding
+                |> Form_ID.to_string}"
+        | DollarVariable form_id ->
+            $"${form_id
+                |> Form_ID.from_encoding
+                |> Form_ID.to_string}"
+        | SimpleLiteral form_id ->
+            $"\"{form_id
+                 |> Form_ID.from_encoding
+                 |> Form_ID.to_string}\""
+        | DatatypedLiteral (form_id, datatype_id) ->
+            $"\"{form_id
+                 |> Form_ID.from_encoding
+                 |> Form_ID.to_string}\"^^<{datatype_id
+                                            |> Form_ID.from_encoding
+                                            |> Form_ID.to_string}>"
+        | LanguageString (form_id, language_id) ->
+            $"\"{form_id
+                 |> Form_ID.from_encoding
+                 |> Form_ID.to_string}\"@{language_id
+                                          |> Form_ID.from_encoding
+                                          |> Form_ID.to_string}"
+        | LanguageRegionString (form_id, language_id, region_id) ->
+            $"\"{form_id
+                 |> Form_ID.from_encoding
+                 |> Form_ID.to_string}\"@{language_id
+                                          |> Form_ID.from_encoding
+                                          |> Form_ID.to_string}-{region_id
+                                                                 |> Form_ID.from_encoding
+                                                                 |> Form_ID.to_string}"
+        | DirectedLanguageString (form_id, language_id, direction_id) ->
+            $"\"{form_id
+                 |> Form_ID.from_encoding
+                 |> Form_ID.to_string}\"@{language_id
+                                          |> Form_ID.from_encoding
+                                          |> Form_ID.to_string}-{direction_id
+                                                                 |> Form_ID.from_encoding
+                                                                 |> Form_ID.to_string}"
+        | DirectedLanguageRegionString (form_id, language_id, region_id, direction_id) ->
+            $"\"{form_id
+                 |> Form_ID.from_encoding
+                 |> Form_ID.to_string}\"@{language_id
+                                          |> Form_ID.from_encoding
+                                          |> Form_ID.to_string}-{region_id
+                                                                 |> Form_ID.from_encoding
+                                                                 |> Form_ID.to_string}-{direction_id
+                                                                                        |> Form_ID.from_encoding
+                                                                                        |> Form_ID.to_string}"
 
     let to_transient_map (terms: RDF_Term array) =
         let dictionary = Dictionary<string, RDF_Term>()
@@ -1124,18 +1032,6 @@ module RDF_Term =
 
 fsi.AddPrinter<RDF_Term>(fun rdf_term -> sprintf "%s" (RDF_Term.representation rdf_term))
 
-fsi.AddPrinter<Triple> (fun triple ->
-    sprintf
-        "%s %s %s"
-        (triple.subject_id
-         |> RDF_Term.from_id
-         |> RDF_Term.representation)
-        (triple.predicate_id
-         |> RDF_Term.from_id
-         |> RDF_Term.representation)
-        (triple.object_id
-         |> RDF_Term.from_id
-         |> RDF_Term.representation))
 
 
 
@@ -1149,28 +1045,29 @@ module Assert =
 
     let Triples triples = Database.Put.Triples triples
 
-    let spoc (curSubject: RDF_Term) (curPredicate: RDF_Term) (curObject: RDF_Term) (context: Quad_Context) =
+    let spoc (curSubject: RDF_Term) (curPredicate: RDF_Term) (curObject: RDF_Term) (context_id: Context_ID) =
         let triple = Triple.spo curSubject curPredicate curObject
 
-        let triple_id = Database.Put.Triples [| triple |] |> Array.head
-
-        let context_id = Database.Get.Context_ID_From_Quad_Context context
-
-        Database.Put.Quads [| { triple_id = triple_id
-                                context_id = context_id } |]
-
-    let Triples_In_Context (context: Quad_Context) (triples: Triple array) =
-        let triple_ids = Database.Put.Triples triples
-
-        let context_id = Database.Get.Context_ID_From_Quad_Context context
 
         let quads =
-            triple_ids
-            |> Array.map (fun triple_id ->
-                { triple_id = triple_id
+            [| triple |]
+            |> Array.map (fun triple ->
+                { triple_id = Triple_ID.from_triple triple
                   context_id = context_id })
 
         Database.Put.Quads quads
+
+    let Triples_In_Context (context_id: Context_ID) (triples: Triple array) =
+        Triples triples
+
+        let quads =
+            triples
+            |> Array.map (fun triple ->
+                { triple_id = Triple_ID.from_triple triple
+                  context_id = context_id })
+
+        Database.Put.Quads quads
+
 
 type Triple_Pattern =
     { ground_subject: RDF_Term_ID option
@@ -1233,62 +1130,6 @@ module Triple_Pattern =
 
 module Query =
 
-    module Edge =
-
-        let from_id (triple_id: Triple_ID) =
-            triple_id.to_encoding
-            |> Permutation_Key.to_triple Triple_Permutation.spo
-
-        let label edge = edge.predicate_id
-        let source edge = edge.subject_id
-        let target edge = edge.object_id
-
-    let private outgoing_edge_ids_from_id (node_id: RDF_Term_ID) =
-        Database.Get.Values_by_Persistent_Map Persistent_Map.Outgoing_Edges node_id.to_encoding
-        |> Array.map Triple_ID.from_encoding
-
-    let private incoming_edge_ids_from_id (node_id: RDF_Term_ID) =
-        Database.Get.Values_by_Persistent_Map Persistent_Map.Incoming_Edges node_id.to_encoding
-        |> Array.map Triple_ID.from_encoding
-
-    let private outgoing_edges_from_id node_id =
-        outgoing_edge_ids_from_id node_id
-        |> Array.map Edge.from_id
-
-    let private incoming_edges_from_id node_id =
-        incoming_edge_ids_from_id node_id
-        |> Array.map Edge.from_id
-
-    let outgoing_edges (node: RDF_Term) = outgoing_edges_from_id node.rdf_term_id
-
-    let incoming_edges (node: RDF_Term) = incoming_edges_from_id node.rdf_term_id
-
-    let out_all (node: RDF_Term) =
-        outgoing_edges node
-        |> Array.map (fun edge -> RDF_Term.from_id edge.object_id)
-
-    let in_all (node: RDF_Term) =
-        incoming_edges node
-        |> Array.map (fun edge -> RDF_Term.from_id edge.subject_id)
-
-    let out (label: RDF_Term) (node: RDF_Term) =
-        outgoing_edges node
-        |> Array.filter (fun edge -> edge.predicate_id = label.rdf_term_id)
-        |> Array.map (fun edge -> RDF_Term.from_id edge.object_id)
-
-    let in_ (label: RDF_Term) (node: RDF_Term) =
-        incoming_edges node
-        |> Array.filter (fun edge -> edge.predicate_id = label.rdf_term_id)
-        |> Array.map (fun edge -> RDF_Term.from_id edge.subject_id)
-
-    let outE (label: RDF_Term) (node: RDF_Term) =
-        outgoing_edges node
-        |> Array.filter (fun edge -> edge.predicate_id = label.rdf_term_id)
-
-    let inE (label: RDF_Term) (node: RDF_Term) =
-        incoming_edges node
-        |> Array.filter (fun edge -> edge.predicate_id = label.rdf_term_id)
-
     let triples_by_pattern pattern =
         let permutation =
             match Triple_Pattern.choose_permutation pattern with
@@ -1325,19 +1166,19 @@ module Query =
         { ground_subject = None
           ground_predicate = Some predicate.rdf_term_id
           ground_object = Some object.rdf_term_id }
-        |> triples_by_pattern
+        |> terms_for_slot S
 
     let s_o subject object =
         { ground_subject = Some subject.rdf_term_id
           ground_predicate = None
           ground_object = Some object.rdf_term_id }
-        |> triples_by_pattern
+        |> terms_for_slot P
 
     let sp_ subject predicate =
         { ground_subject = Some subject.rdf_term_id
           ground_predicate = Some predicate.rdf_term_id
           ground_object = None }
-        |> triples_by_pattern
+        |> terms_for_slot O
 
 
 
@@ -1351,12 +1192,14 @@ module Query =
           ground_predicate = None
           ground_object = None }
         |> triples_by_pattern
+        |> Array.map (fun triple -> RDF_Term.from_id triple.predicate_id, RDF_Term.from_id triple.object_id)
 
     let _p_ predicate =
         { ground_subject = None
           ground_predicate = Some predicate.rdf_term_id
           ground_object = None }
         |> triples_by_pattern
+        |> Array.map (fun triple -> RDF_Term.from_id triple.subject_id, RDF_Term.from_id triple.object_id)
 
 
     let __o object =
@@ -1364,6 +1207,7 @@ module Query =
           ground_predicate = None
           ground_object = Some object.rdf_term_id }
         |> triples_by_pattern
+        |> Array.map (fun triple -> RDF_Term.from_id triple.subject_id, RDF_Term.from_id triple.predicate_id)
 
 
     // ------------------------------------------------------------

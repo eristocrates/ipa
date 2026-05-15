@@ -52,10 +52,8 @@ open DiagnosticsErgonomics
 
 
 
-let unicode_iri =
+let context_iri =
     Resolved_IRI.from_trusted_string $"https://eristocrates.dev/ontology/unicode/"
-
-let unicode_context = unicode_iri.rdf_term_id.to_encoding |> NamedGraph
 
 (*
 
@@ -211,13 +209,17 @@ let name_aliases =
 
 
 
+
+
+
 let code_point_iri =
+
     let local_name =
         character_properties
         |> Array.map (fun (code_point, _, _) -> code_point)
         |> Array.randomChoice
 
-    Resolved_IRI.from_trusted_string $"https://eristocrates.dev/ontology/unicode/{local_name}"
+    iri $"https://eristocrates.dev/ontology/unicode/{local_name}"
 
 let attribute_iri =
 
@@ -226,39 +228,53 @@ let attribute_iri =
         |> Array.map (fun (_, attribute, _) -> attribute)
         |> Array.randomChoice
 
-    Resolved_IRI.from_trusted_string $"https://eristocrates.dev/ontology/unicode/{local_name}"
+    iri $"https://eristocrates.dev/ontology/unicode/{local_name}"
 
 let literal =
     character_properties
     |> Array.map (fun (_, _, attribute_value) -> attribute_value)
     |> Array.randomChoice
-    |> RDF_Literal.simple
+    |> simple_literal
 
 
-Query.s__ code_point_iri
-Query.sp_ code_point_iri unicode.name_alias
-Query.__o literal
+Query.s__c code_point_iri context_iri
+|> Array.iter (fun (p, o) ->
+    printfn
+        "<%s> <%s> \"%s\" <%s> ."
+        (Transient_Term.to_string code_point_iri)
+        (Transient_Term.to_string p)
+        (Transient_Term.to_string o)
+        (Transient_Term.to_string context_iri))
 
+Query.s___ code_point_iri
+|> Array.iter (fun (p, o, _) ->
+    printfn
+        "%s %s %s"
+        (Transient_Term.to_string code_point_iri)
+        (Transient_Term.to_string p)
+        (Transient_Term.to_string o))
 
-let result = Query._p_ unicode.name_alias |> Array.randomChoice
+Query.s___ code_point_iri
+|> Array.iter (fun (p, o, _) ->
+    printfn
+        "%s %s %s"
+        (Transient_Term.to_string code_point_iri)
+        (Transient_Term.to_string p)
+        (Transient_Term.to_string o))
 
-RDF_Term.from_id result.subject_id
-|> Query.outgoing_edges
+let na_iri = iri $"https://eristocrates.dev/ontology/unicode/na"
+let kIRG_UKSource = iri $"https://eristocrates.dev/ontology/unicode/kIRG_UKSource"
+let UK_10329 = simple_literal "UK-10329"
 
-
-Query.out attribute_iri code_point_iri
-
-Query.in_all literal
-
-Query.outgoing_edges code_point_iri
-Query.out attribute_iri code_point_iri
-Query.in_all literal
-Query.in_ attribute_iri literal
-Query.outE attribute_iri code_point_iri
-Query.inE attribute_iri literal
-
+Query._poc kIRG_UKSource UK_10329 context_iri
+Query.sp_c code_point_iri na_iri context_iri
+Query._p__ na_iri
 
 *)
+
+
+
+
 
 
 
@@ -353,9 +369,7 @@ let alias_literal_strings =
 
 let alias_iri_strings =
     alias_literal_strings
-    |> Array.map (fun raw_local_name ->
-        let local_name = raw_local_name.Replace(" ", "_")
-        $"https://eristocrates.dev/ontology/unicode/{local_name}"
+    |> Array.map (fun local_name -> $"https://eristocrates.dev/ontology/unicode/{local_name}"
 
     )
 
@@ -390,12 +404,12 @@ let literal_strings =
 let iri_terms =
     Database.Get.Lexical_Forms_from_Strings iri_strings
     |> Resolved_IRI.from_lexical_forms
-    |> Database.Get.RDF_Terms_From_RDF_Term_Data
+    |> Database.Get.Transient_Terms_From_Persistent_Terms
 
 let literal_terms =
     Database.Get.Lexical_Forms_from_Strings literal_strings
     |> RDF_Literal.from_lexical_forms_as_simple
-    |> Database.Get.RDF_Terms_From_RDF_Term_Data
+    |> Database.Get.Transient_Terms_From_Persistent_Terms
 
 
 
@@ -417,9 +431,9 @@ let literal_terms =
 
 
 
-let iri_term_by_string_lookup = RDF_Term.to_transient_map iri_terms
+let iri_term_by_string_lookup = Transient_Term.to_transient_map iri_terms
 
-let literal_term_by_string_lookup = RDF_Term.to_transient_map literal_terms
+let literal_term_by_string_lookup = Transient_Term.to_transient_map literal_terms
 
 let iri_lookup string_value = iri_term_by_string_lookup[string_value]
 
@@ -464,10 +478,10 @@ character_properties
     let char_attribute_iri =
         iri_lookup $"https://eristocrates.dev/ontology/unicode/{char_attribute}"
 
-    Triple.spo char_attribute_iri a unicode.Unicode_Character_Property
+    Quad.spoc char_attribute_iri a unicode.Unicode_Character_Property context_iri
 
 )
-|> Assert.Triples_In_Context unicode_context
+|> Assert.Quads
 
 
 
@@ -508,30 +522,30 @@ code_point_elements
 
     let batch_stopwatch = Stopwatch.StartNew()
 
-    let triples =
+    let quads =
         code_point_batch
         |> Array.map (fun (code_point, _, _) ->
             let code_point_iri =
                 iri_lookup $"https://eristocrates.dev/ontology/unicode/{code_point}"
 
-            Triple.spo code_point_iri a unicode.Code_Point
+            Quad.spoc code_point_iri a unicode.Code_Point context_iri
 
         )
 
 
-    Assert.Triples_In_Context unicode_context triples
+    Assert.Quads quads
 
     batch_stopwatch.Stop()
 
 
-    total_quads_written <- total_quads_written + triples.Length
+    total_quads_written <- total_quads_written + quads.Length
 
     let total_rate =
         float total_quads_written
         / total_stopwatch.Elapsed.TotalSeconds
 
     let batch_rate =
-        float triples.Length
+        float quads.Length
         / batch_stopwatch.Elapsed.TotalSeconds
 
     printfn
@@ -581,7 +595,7 @@ character_properties
 
     let batch_stopwatch = Stopwatch.StartNew()
 
-    let triples =
+    let quads =
         character_property_batch
         |> Array.map (fun (code_point, char_attribute, char_attribute_value) ->
 
@@ -593,24 +607,24 @@ character_properties
 
             let attribute_literal = simple_literal_lookup char_attribute_value
 
-            Triple.spo code_point_iri char_attribute_iri attribute_literal
+            Quad.spoc code_point_iri char_attribute_iri attribute_literal context_iri
 
         )
 
 
-    Assert.Triples_In_Context unicode_context triples
+    Assert.Quads quads
 
     batch_stopwatch.Stop()
 
 
-    total_quads_written <- total_quads_written + triples.Length
+    total_quads_written <- total_quads_written + quads.Length
 
     let total_rate =
         float total_quads_written
         / total_stopwatch.Elapsed.TotalSeconds
 
     let batch_rate =
-        float triples.Length
+        float quads.Length
         / batch_stopwatch.Elapsed.TotalSeconds
 
     printfn
@@ -704,7 +718,7 @@ name_aliases
 
     let batch_stopwatch = Stopwatch.StartNew()
 
-    let triples =
+    let quads =
         name_alias_batch
         |> Array.collect (fun (code_point, alias_attribute, type_attribute) ->
 
@@ -721,28 +735,28 @@ name_aliases
 
             [|
 
-               Triple.spo code_point_iri unicode.name_alias alias_iri
-               Triple.spo alias_iri a unicode.Name_Alias
-               Triple.spo alias_iri unicode.alias_type type_iri
-               Triple.spo alias_iri rdf.value alias_literal
+               Quad.spoc code_point_iri unicode.name_alias alias_iri context_iri
+               Quad.spoc alias_iri a unicode.Name_Alias context_iri
+               Quad.spoc alias_iri unicode.alias_type type_iri context_iri
+               Quad.spoc alias_iri rdf.value alias_literal context_iri
 
                |]
 
         )
 
 
-    Assert.Triples_In_Context unicode_context triples
+    Assert.Quads quads
 
     batch_stopwatch.Stop()
 
-    total_quads_written <- total_quads_written + triples.Length
+    total_quads_written <- total_quads_written + quads.Length
 
     let total_rate =
         float total_quads_written
         / total_stopwatch.Elapsed.TotalSeconds
 
     let batch_rate =
-        float triples.Length
+        float quads.Length
         / batch_stopwatch.Elapsed.TotalSeconds
 
     printfn

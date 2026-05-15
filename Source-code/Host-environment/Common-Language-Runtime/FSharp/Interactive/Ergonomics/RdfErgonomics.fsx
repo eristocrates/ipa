@@ -262,6 +262,7 @@ let prefix_label (prefix_label: string) (raw_local_name: string) =
     let prefix = RDF_Prefix.from_string prefix_label
     let local_name = raw_local_name.Replace(" ", "_")
 
+
     Resolved_IRI.from_trusted_string $"{RDF_Term.to_string prefix.namespace_name}{local_name}"
 
 
