@@ -258,11 +258,13 @@ pdfFilePaths
 
     let pdfDirectoryPath = (Directory.GetParent pdfFilePath).FullName
     let pdfFileStem = Path.GetFileNameWithoutExtension pdfFilePath
-    let tsvFilePath = Path.Combine(pdfDirectoryPath, $"{pdfFileStem}.txt")
+    let txtFilePath = Path.Combine(pdfDirectoryPath, $"{pdfFileStem}.txt")
 
-    try
-        extractPdfTextToFile pdfFilePath tsvFilePath
-    with
-    | ex -> Console.WriteLine ex
+    if not (File.Exists(txtFilePath)) then
+
+        try
+            extractPdfTextToFile pdfFilePath txtFilePath
+        with
+        | ex -> Console.WriteLine ex
 
 )

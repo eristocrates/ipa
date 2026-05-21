@@ -11,7 +11,7 @@ open FSharp.Data
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\StringErgonomics.fsx"
 
 open StringErgonomics
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Parsing\Language\Programming\FSharpLanguage\FSharpLanguage.fsx"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParsingOLD\Language\Programming\FSharp\FSLang.fsx"
 
 
 
@@ -87,7 +87,7 @@ let schemeRecords =
                 | _ -> "None"
             | _ -> "None"
 
-        let letMeta = FSharpLanguage.Ensure.letBinding lexicalFormMeta
+        let letMeta = FSLang.Ensure.letBinding lexicalFormMeta
 
         let schemeRecord =
             trimmedString
@@ -115,7 +115,7 @@ let schemeBindings =
     schemes
     |> Array.Parallel.map (fun scheme ->
 
-        FSharpLanguage.Ensure.letBinding scheme.Value.Value.XElement.Value
+        FSLang.Ensure.letBinding scheme.Value.Value.XElement.Value
 
     )
     |> String.concat " ; "

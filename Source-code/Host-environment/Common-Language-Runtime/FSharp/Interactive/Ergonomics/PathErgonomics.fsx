@@ -7,13 +7,13 @@ open System.Net
 open System.IO
 
 
-#r "nuget: Fabulous.AST.Json, 2.0.0-pre06"
+// #r "nuget: Fabulous.AST.Json, 2.0.0-pre06"
 
-open Fabulous.AST
-open Fabulous.AST.Json
+// open Fabulous.AST
+// open Fabulous.AST.Json
 
-open type Fabulous.AST.Ast
-open Fantomas.FCS.Text
+//open type Fabulous.AST.Ast
+// open Fantomas.FCS.Text
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\InvalidFileNameCharacter.fsx"
 
@@ -195,6 +195,7 @@ module Ensure =
 
 
 
+(*
 
 
 type UnixFileSystemPermission =
@@ -547,3 +548,4 @@ let ParentDirectoryPath_from_DirectoryPath (pendingParentDirectoryPath: Director
             directoryPathTokens_from_uriSegments parentUri.Segments
 
         member this.childDirectoryPaths = childDirectoryPaths }
+*)

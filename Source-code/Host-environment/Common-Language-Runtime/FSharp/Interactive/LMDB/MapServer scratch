@@ -1,0 +1,754 @@
+
+(*
+let Unitids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature -> feature.Attributes.Unitid.IsSome)
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value
+
+        )
+
+    )
+    |> Array.distinct
+
+
+
+let Attachedtoids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Attachedtoid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Attachedtoid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Attachedtoid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+
+let Damageids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Damageid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Damageid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Damageid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+
+let Facilityids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Facilityid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Facilityid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Facilityid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+
+let HydIds =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.HydId.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.HydId.Value))
+            && feature.Attributes.HydId.Value <> "<Null>")
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.HydId.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+
+
+
+
+let Outfallids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Outfallid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Outfallid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Outfallid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+
+
+
+
+
+
+
+let Parentids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Parentid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Parentid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Parentid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+
+
+let StructureIds =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.StructureId.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.StructureId.Value))
+            && feature.Attributes.StructureId.Value <> "<Null>"
+
+        )
+        |> Array.Parallel.collect (fun feature ->
+            let id = feature.Attributes.StructureId.Value
+            // TODO be vigilant with how fragile this is!
+            match id with
+            | "P0068N1,2,3" -> [| "P0068N1"; "P0068N2"; "P0068N3" |]
+            | "P0068N4,5,6" -> [| "P0068N4"; "P0068N5"; "P0068N6" |]
+            | "P0095S1,S2,S3" -> [| "P0095S1"; "P0095S2"; "P0095S3" |]
+            | _ when id.Contains "," -> id.Split([| "," |], StringSplitOptions.TrimEntries)
+            | _ when id.Contains " " -> id.Split([| " " |], StringSplitOptions.TrimEntries)
+            | _ when id.Contains "N/A" -> [| id.Replace("N/A", "") |]
+            | _ -> [| id |]
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Array.filter (fun id ->
+        id <> "&"
+        && id <> "-"
+        && not (String.IsNullOrWhiteSpace(id))
+
+    )
+
+
+
+let Upstreamstuctureids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Upstreamstuctureid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Upstreamstuctureid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Upstreamstuctureid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+
+
+
+
+
+let PondIds =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature -> feature.Attributes.PondId.IsSome)
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.PondId.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let Globalids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature -> feature.Attributes.Globalid.IsSome)
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Globalid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+
+
+let Drawingids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            (feature.Attributes.Drawingid.Number.IsSome
+             || feature.Attributes.Drawingid.String.IsSome)
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Drawingid.String.Value))
+            && feature.Attributes.Drawingid.String.Value
+               <> "None")
+        |> Array.Parallel.map (fun feature ->
+            try
+                feature.Attributes.Drawingid.Number.Value.ToString()
+            with
+            | _ -> feature.Attributes.Drawingid.String.Value
+
+
+        )
+
+
+    )
+    |> Array.distinct
+
+let Parcelids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            (feature.Attributes.Parcelid.Number.IsSome
+             || feature.Attributes.Parcelid.String.IsSome)
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Parcelid.String.Value))
+            && feature.Attributes.Parcelid.String.Value <> "None")
+        |> Array.Parallel.map (fun feature ->
+            try
+                feature.Attributes.Parcelid.Number.Value.ToString()
+            with
+            | _ -> feature.Attributes.Parcelid.String.Value
+
+
+        )
+
+
+    )
+    |> Array.distinct
+
+let Pondids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            (feature.Attributes.Pondid.Number.IsSome
+             || feature.Attributes.Pondid.String.IsSome)
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Pondid.String.Value))
+            && feature.Attributes.Pondid.String.Value <> "None")
+        |> Array.Parallel.map (fun feature ->
+            try
+                feature.Attributes.Pondid.Number.Value.ToString()
+            with
+            | _ -> feature.Attributes.Pondid.String.Value
+
+
+        )
+
+
+    )
+    |> Array.distinct
+
+let Structureids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            (feature.Attributes.Structureid.Number.IsSome
+             || feature.Attributes.Structureid.String.IsSome)
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Structureid.String.Value))
+            && feature.Attributes.Structureid.String.Value
+               <> "None")
+        |> Array.Parallel.map (fun feature ->
+            try
+                feature.Attributes.Structureid.Number.Value.ToString()
+            with
+            | _ -> feature.Attributes.Structureid.String.Value
+
+
+        )
+
+
+    )
+    |> Array.distinct
+
+let Legacyids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Legacyid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Legacyid.Value))
+            && feature.Attributes.Legacyid.Value <> "None"
+            && feature.Attributes.Legacyid.Value <> "NONE"
+            && feature.Attributes.Legacyid.Value <> "N/A")
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Legacyid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let Unitid_to_Attachedtoid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Attachedtoid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Attachedtoid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.Attachedtoid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+let Unitid_to_Damageid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Damageid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Damageid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.Damageid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+
+let Unitid_to_Facilityid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Facilityid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Facilityid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.Facilityid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+
+
+let Unitid_to_HydId =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.HydId.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.HydId.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.HydId.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+
+
+let Unitid_to_Outfallid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Outfallid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Outfallid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.Outfallid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+let Unitid_to_Parentid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Parentid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Parentid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.Parentid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+
+
+
+let Unitid_to_StructureId =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.StructureId.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.StructureId.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.StructureId.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+
+
+let Unitid_to_Upstreamstuctureid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Upstreamstuctureid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Upstreamstuctureid.Value)))
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.Upstreamstuctureid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+
+let Unitid_to_PondId =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature -> feature.Attributes.PondId.IsSome)
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.PondId.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+
+let Unitid_to_Globalid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature -> feature.Attributes.Globalid.IsSome)
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.Globalid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+
+
+let Unitid_to_Drawingid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            (feature.Attributes.Drawingid.Number.IsSome
+             || feature.Attributes.Drawingid.String.IsSome)
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Drawingid.String.Value))
+            && feature.Attributes.Drawingid.String.Value
+               <> "None")
+        |> Array.Parallel.map (fun feature ->
+
+            try
+                feature.Attributes.Unitid.Value, feature.Attributes.Drawingid.Number.Value.ToString()
+            with
+            | _ -> feature.Attributes.Unitid.Value, feature.Attributes.Drawingid.String.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+let Unitid_to_Parcelid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            (feature.Attributes.Parcelid.Number.IsSome
+             || feature.Attributes.Parcelid.String.IsSome)
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Parcelid.String.Value))
+            && feature.Attributes.Parcelid.String.Value <> "None")
+        |> Array.Parallel.map (fun feature ->
+
+            try
+                feature.Attributes.Unitid.Value, feature.Attributes.Parcelid.Number.Value.ToString()
+            with
+            | _ -> feature.Attributes.Unitid.Value, feature.Attributes.Parcelid.String.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+let Unitid_to_Pondid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            (feature.Attributes.Pondid.Number.IsSome
+             || feature.Attributes.Pondid.String.IsSome)
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Pondid.String.Value))
+            && feature.Attributes.Pondid.String.Value <> "None")
+        |> Array.Parallel.map (fun feature ->
+
+            try
+                feature.Attributes.Unitid.Value, feature.Attributes.Pondid.Number.Value.ToString()
+            with
+            | _ -> feature.Attributes.Unitid.Value, feature.Attributes.Pondid.String.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+let Unitid_to_Structureid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            (feature.Attributes.Structureid.Number.IsSome
+             || feature.Attributes.Structureid.String.IsSome)
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Structureid.String.Value))
+            && feature.Attributes.Structureid.String.Value
+               <> "None")
+        |> Array.Parallel.map (fun feature ->
+
+            try
+                feature.Attributes.Unitid.Value, feature.Attributes.Structureid.Number.Value.ToString()
+            with
+            | _ -> feature.Attributes.Unitid.Value, feature.Attributes.Structureid.String.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+
+
+let Unitid_to_Legacyid =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+        layer.Features
+        |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
+        |> Array.Parallel.filter (fun feature ->
+            feature.Attributes.Legacyid.IsSome
+            && not (String.IsNullOrWhiteSpace(feature.Attributes.Legacyid.Value))
+            && feature.Attributes.Legacyid.Value <> "None"
+            && feature.Attributes.Legacyid.Value <> "NONE"
+            && feature.Attributes.Legacyid.Value <> "N/A")
+        |> Array.Parallel.map (fun feature ->
+
+            feature.Attributes.Unitid.Value, feature.Attributes.Legacyid.Value
+
+        )
+
+
+    )
+    |> Array.distinct
+    |> Map.ofArray
+
+
+
+
+*)

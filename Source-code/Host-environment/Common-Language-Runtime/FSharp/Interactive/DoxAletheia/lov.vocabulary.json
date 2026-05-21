@@ -612,6 +612,18 @@
     ]
   },
   {
+    "uri": "https://w3id.org/fossr/ontology/bdi/",
+    "nsp": "https://w3id.org/fossr/ontology/bdi/",
+    "prefix": "bdi",
+    "titles": [
+      {
+        "value": "Belief-Desire-Intention Ontology",
+        "lang": "en",
+        "_id": "69e5e3d8a4d4bde62f60ad25"
+      }
+    ]
+  },
+  {
     "nsp": "http://contextus.net/ontology/ontomedia/ext/common/being#",
     "prefix": "being",
     "uri": "http://contextus.net/ontology/ontomedia/ext/common/being#",
@@ -2980,12 +2992,12 @@
       {
         "value": "EKC Data Model Vocabulary: Ontology Design for the Encyclopedic Archives of Korean Culture (ekc)",
         "lang": "en",
-        "_id": "69ba89e9be550ff070d120fb"
+        "_id": "69e08a1fa4d4bde62f5fded6"
       },
       {
         "value": "EKC 데이터 모델: 한국문화 엔사이브 온톨로지",
         "lang": "ko",
-        "_id": "69ba89e9be550ff070d120fa"
+        "_id": "69e08a1fa4d4bde62f5fded5"
       }
     ]
   },
@@ -6802,6 +6814,30 @@
         "value": "OSLO Exchange Standard",
         "lang": "en",
         "_id": "55e062ffa71142386b77622d"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.w3.org/ns/prov-o",
+    "nsp": "https://w3id.org/earthsemantics/OSO#",
+    "prefix": "oso",
+    "titles": [
+      {
+        "value": "Observatories of the Seas Ontology (OSO)",
+        "lang": "en",
+        "_id": "69fc42c31b5ced8e24bd297d"
+      }
+    ]
+  },
+  {
+    "uri": "http://www.w3.org/ns/prov-o",
+    "nsp": "https://w3id.org/earthsemantics/OSO#",
+    "prefix": "oso",
+    "titles": [
+      {
+        "value": "Observatories of the Seas Ontology (OSO)",
+        "lang": "en",
+        "_id": "69fc42cac1cc1ae64c66748b"
       }
     ]
   },

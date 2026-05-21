@@ -26,7 +26,7 @@ open PropertyAliases
 open Swensen.Unquote.Assertions
 
 #r "nuget: Blake3"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\RDFErgonomics.fsx"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\RDFErgonomics.fsx"
 
 open RDFErgonomics
 

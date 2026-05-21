@@ -13,11 +13,6 @@ open FParsec
 open FParsec.Pipes
 
 
-open Fabulous.AST
-open Fantomas.Core.SyntaxOak
-
-open type Fabulous.AST.Ast
-
 
 let handleBackickExclusions (inputString : string) =
   inputString

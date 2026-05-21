@@ -7,7 +7,6 @@ open System.IO
 open System.Text
 open System.Text.Unicode
 
-
 #r "nuget: Hedgehog"
 
 open Hedgehog
@@ -164,6 +163,69 @@ type String with
     member this.ScalarValues =
         this.CodePoints
         |> Array.map (fun (CodePoint code_point) -> code_point)
+
+    member this.Trimmed = this.TrimStart().TrimEnd()
+
+    member this.Capitalized =
+
+        if String.IsNullOrEmpty(this) then
+            this
+        else
+            this
+            |> Seq.mapi (fun characterIndex character ->
+                match characterIndex with
+                | 0 -> Char.ToUpperInvariant(character)
+                | _ -> character)
+            |> String.Concat
+
+
+    member this.rev = this |> Seq.rev |> Seq.toArray |> String
+
+    member this.to_empty_option =
+
+        try
+            if not (String.IsNullOrWhiteSpace this) then
+                Some(this)
+            else
+                None
+        with
+        | _ -> None
+
+    member this.substring_between (prefix: string) (suffix: string) =
+        let prefixIndex = this.IndexOf(prefix) + 1
+        let suffixIndex = this.LastIndexOf(suffix) - 1
+
+        match prefixIndex, suffixIndex with
+        | from_prefix, to_suffix when prefixIndex <> -1 && suffixIndex <> -1 -> Some(this[from_prefix..to_suffix])
+        | _ -> None
+
+    member this.LastDelimitedSegment(delimiter: string) =
+
+        let index = this.LastIndexOf(delimiter)
+
+        if index = -1 then
+            this // return the whole string if the delimiter is not found
+        else
+            this.Substring(index + 1)
+
+    member this.first_substring_before_delimiter(delimiter: string) =
+        let delimiterIndex = this.IndexOf delimiter
+
+        if delimiterIndex > -1 then
+            let to_delimiter = delimiterIndex - 1
+            let substring = this.[0..to_delimiter]
+            Some(substring)
+        else
+            None
+
+    member this.until_char(delimiterCharacter: char) =
+        this.ToCharArray()
+        |> Array.takeWhile (fun character -> character <> delimiterCharacter)
+        |> String
+
+
+/// just a crumb of humor to lighten the day
+let gnirts (forwards: string) = forwards.rev
 
 
 type Int32 with

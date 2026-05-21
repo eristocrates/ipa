@@ -190,6 +190,7 @@ module Persistent_Map =
              ||| DatabaseOpenFlags.DuplicatesFixed)
 
 
+    let Quad_Presence = lightning_database "Quad_Presence" DatabaseOpenFlags.Create
 
 
 
@@ -413,9 +414,8 @@ module Triple_Permutation =
         { permutation_map = Persistent_Map.OPS
           order = [| O; P; S |] }
 
-    let all =
-        [| spo
-           sop
+    let profile =
+        [| sop
            pso
            pos
            osp
@@ -472,11 +472,11 @@ module Triple =
     let from_encoding (triple_encoding: byte array) =
         MessagePackSerializer.Deserialize<Triple>(triple_encoding, message_pack_options)
 
-    let slot_value slot quad =
+    let slot_value slot triple =
         match slot with
-        | S -> quad.subject_id
-        | P -> quad.predicate_id
-        | O -> quad.object_id
+        | S -> triple.subject_id
+        | P -> triple.predicate_id
+        | O -> triple.object_id
 
 
 type Context_ID = private ContextID of byte array
@@ -575,6 +575,20 @@ module Byte_Map =
         { key_bytes = string_value.to_digest
           value_bytes = string_value.encoding }
 
+type Presence_Kind =
+    | Missing
+    | Active
+    | Deleted
+
+module Presence =
+
+    let active = [| 1uy |]
+
+    let deleted = [| 0uy |]
+
+    let is_active (bytes: byte array) = bytes.Length = 1 && bytes[0] = 1uy
+
+
 
 module Database =
 
@@ -612,26 +626,72 @@ module Database =
 
             stopwatch.Stop()
 
+
+        let private Triple_Presence_State_In_Transaction (transaction: LightningTransaction) (triple_id: Triple_ID) =
+            let struct (result, _, value) =
+                transaction.Get(Triple_Permutation.spo.permutation_map.handle, triple_id.to_encoding)
+
+            if result = MDBResultCode.Success then
+                let span = value.AsSpan()
+
+                if span.Length = 1 && span[0] = 1uy then
+                    Active
+                elif span.Length = 1 && span[0] = 0uy then
+                    Deleted
+                else
+                    failwith "Invalid triple presence value."
+            else
+                Missing
+
         let Triples (triples: Triple array) : Triple_ID array =
 
             let stopwatch = Stopwatch.StartNew()
             let mutable written = 0
             use transaction = environment.BeginTransaction()
 
-            let triple_ids =
+            let triple_results =
                 triples
                 |> Array.map (fun triple ->
 
-                    for permutation in Triple_Permutation.all do
-                        let permutation_key = Permutation_Key.from_triple permutation triple
+                    let triple_id = Triple_ID.from_triple triple
 
-                        transaction.Put(permutation.permutation_map.handle, permutation_key, [||])
+                    match Triple_Presence_State_In_Transaction transaction triple_id with
+                    | Active -> triple_id, false
+
+                    | Missing
+                    | Deleted ->
+                        transaction.Put(
+                            Triple_Permutation.spo.permutation_map.handle,
+                            triple_id.to_encoding,
+                            Presence.active
+                        )
                         |> MDBResultCode.fail_if_not_success
-                            $"Put triple permutation {permutation.permutation_map.name}"
+                            $"Put triple permutation {Triple_Permutation.spo.permutation_map.name}"
+
+                        for permutation in Triple_Permutation.profile do
+                            let permutation_key = Permutation_Key.from_triple permutation triple
+
+                            transaction.Put(permutation.permutation_map.handle, permutation_key, [||])
+                            |> MDBResultCode.fail_if_not_success
+                                $"Put triple permutation {permutation.permutation_map.name}"
 
                         written <- written + 1
 
-                    Triple_ID.from_triple triple)
+                        triple_id, true
+
+                )
+
+            let triple_ids = triple_results |> Array.map fst
+
+            let adjacency_triples =
+                triples
+                |> Array.zip triple_results
+                |> Array.choose (fun ((_, should_write_adjacency), triple) ->
+
+                    if should_write_adjacency then
+                        Some triple
+                    else
+                        None)
 
             transaction.Commit() |> ignore
 
@@ -639,7 +699,8 @@ module Database =
 
             stopwatch.Stop()
 
-            LPG_Adjacency_For_Triples triples
+            if adjacency_triples.Length > 0 then
+                LPG_Adjacency_For_Triples adjacency_triples
 
             triple_ids
 
@@ -664,14 +725,21 @@ module Database =
                 )
                 |> MDBResultCode.fail_if_not_success "Put Context_ID_to_Triple_IDs"
 
-                written <- written + 2
+                transaction.Put(
+                    Persistent_Map.Quad_Presence.handle,
+                    Array.concat [| quad.triple_id.to_encoding
+                                    quad.context_id.to_encoding |],
+                    [| 1uy |]
+                )
+                |> MDBResultCode.fail_if_not_success "Put Quad_Presence"
+
+                written <- written + 3
 
             transaction.Commit() |> ignore
 
             printfn "quads=%i index_entries=%i elapsed=%O" quads.Length written stopwatch.Elapsed
 
             stopwatch.Stop()
-
 
 
 
@@ -785,6 +853,7 @@ module Database =
 
                        written <- written + byte_map_batch.Length
 
+                       // TODO figure out how to prevent this from being printed unless the string is newly interned
                        printfn "written=%i/%i elapsed=%O" written byte_maps.Length stopwatch.Elapsed
                        yield form_ids
 
@@ -956,7 +1025,11 @@ module Database =
 
     module Exists =
 
-        let Triple (triple: Triple) =
+        let Active_Triple (triple_id: Triple_ID) =
+            Get.Value_by_Persistent_Map Triple_Permutation.spo.permutation_map triple_id.to_encoding
+            |> Option.exists Presence.is_active
+
+        let Stated_Triple (triple: Triple) =
             let key = Permutation_Key.from_triple Triple_Permutation.spo triple
 
             Get.Value_by_Persistent_Map Persistent_Map.SPO key
@@ -964,23 +1037,65 @@ module Database =
 
 
 
-    module Validate =
+    module Mark =
 
-        let Triple_Permutation_Presence (triple: Triple) =
-            Triple_Permutation.all
-            |> Array.map (fun permutation ->
-                let key = Permutation_Key.from_triple permutation triple
+        let Triples_Deleted (triples: Triple array) =
+            use transaction = environment.BeginTransaction()
 
-                let exists =
-                    Get.Value_by_Persistent_Map permutation.permutation_map key
-                    |> Option.isSome
+            for triple in triples do
+                let triple_id = Triple_ID.from_triple triple
 
-                permutation.permutation_map, exists)
+                transaction.Put(Triple_Permutation.spo.permutation_map.handle, triple_id.to_encoding, Presence.deleted)
+                |> MDBResultCode.fail_if_not_success "Mark triple deleted"
 
+            transaction.Commit() |> ignore
 
+        let Triples_Active (triples: Triple array) =
+            use transaction = environment.BeginTransaction()
 
+            for triple in triples do
+                let triple_id = Triple_ID.from_triple triple
 
+                transaction.Put(Triple_Permutation.spo.permutation_map.handle, triple_id.to_encoding, Presence.active)
+                |> MDBResultCode.fail_if_not_success "Mark triple active"
 
+            transaction.Commit() |> ignore
+
+        let Quads_Deleted (quads: Quad array) =
+            use transaction = environment.BeginTransaction()
+
+            for quad in quads do
+                transaction.Put(
+                    Persistent_Map.Quad_Presence.handle,
+                    Array.concat [| quad.triple_id.to_encoding
+                                    quad.context_id.to_encoding |],
+                    Presence.deleted
+                )
+                |> MDBResultCode.fail_if_not_success "Mark quad deleted"
+
+            transaction.Commit() |> ignore
+
+        let Quads_Active (quads: Quad array) =
+            use transaction = environment.BeginTransaction()
+
+            for quad in quads do
+                transaction.Put(
+                    Persistent_Map.Quad_Presence.handle,
+                    Array.concat [| quad.triple_id.to_encoding
+                                    quad.context_id.to_encoding |],
+                    Presence.active
+                )
+                |> MDBResultCode.fail_if_not_success "Mark quad active"
+
+            transaction.Commit() |> ignore
+
+        let One_Triple_Deleted triple = Triples_Deleted [| triple |]
+
+        let One_Triple_Active triple = Triples_Active [| triple |]
+
+        let One_Quad_Deleted quad = Quads_Deleted [| quad |]
+
+        let One_Quad_Active quad = Quads_Active [| quad |]
 
 module Form_ID =
 
@@ -1126,7 +1241,7 @@ fsi.AddPrinter<RDF_Term>(fun rdf_term -> sprintf "%s" (RDF_Term.representation r
 
 fsi.AddPrinter<Triple> (fun triple ->
     sprintf
-        "%s %s %s"
+        "%s %s %s ."
         (triple.subject_id
          |> RDF_Term.from_id
          |> RDF_Term.representation)
@@ -1139,6 +1254,8 @@ fsi.AddPrinter<Triple> (fun triple ->
 
 
 
+fsi.AddPrintTransformer<Triple_ID> (fun triple_id ->
+    Permutation_Key.to_triple Triple_Permutation.spo triple_id.to_encoding)
 
 
 
@@ -1171,6 +1288,40 @@ module Assert =
                   context_id = context_id })
 
         Database.Put.Quads quads
+
+module Retract =
+
+    let spo (curSubject: RDF_Term) (curPredicate: RDF_Term) (curObject: RDF_Term) =
+        let triple = Triple.spo curSubject curPredicate curObject
+
+        Database.Mark.Triples_Deleted [| triple |]
+
+
+    let Triples (triples: Triple array) = Database.Mark.Triples_Deleted triples
+
+    let spoc (curSubject: RDF_Term) (curPredicate: RDF_Term) (curObject: RDF_Term) (context: Quad_Context) =
+        let triple = Triple.spo curSubject curPredicate curObject
+
+        let triple_id = Triple_ID.from_triple triple
+
+        let context_id = Database.Get.Context_ID_From_Quad_Context context
+
+        Database.Mark.Quads_Deleted [| { triple_id = triple_id
+                                         context_id = context_id } |]
+
+
+    let Quads (quads: Quad array) =
+
+        Database.Mark.Quads_Deleted quads
+
+    let Triples_From_Context (context: Quad_Context) (triples: Triple array) =
+        let context_id = Database.Get.Context_ID_From_Quad_Context context
+
+        triples
+        |> Array.map (fun triple ->
+            { triple_id = Triple_ID.from_triple triple
+              context_id = context_id })
+        |> Quads
 
 type Triple_Pattern =
     { ground_subject: RDF_Term_ID option
@@ -1218,7 +1369,7 @@ module Triple_Pattern =
         |> Array.forall (fun grounded_slot -> candidate_prefix |> Array.contains grounded_slot)
 
     let choose_permutation pattern =
-        Triple_Permutation.all
+        Triple_Permutation.profile
         |> Array.tryFind (fun permutation -> permutation_covers_pattern pattern permutation)
 
     let permutation_prefix pattern (permutation: Triple_Permutation) =
@@ -1243,13 +1394,19 @@ module Query =
         let source edge = edge.subject_id
         let target edge = edge.object_id
 
+    let private active_edge_ids edge_ids =
+        edge_ids
+        |> Array.filter Database.Exists.Active_Triple
+
     let private outgoing_edge_ids_from_id (node_id: RDF_Term_ID) =
         Database.Get.Values_by_Persistent_Map Persistent_Map.Outgoing_Edges node_id.to_encoding
         |> Array.map Triple_ID.from_encoding
+        |> active_edge_ids
 
     let private incoming_edge_ids_from_id (node_id: RDF_Term_ID) =
         Database.Get.Values_by_Persistent_Map Persistent_Map.Incoming_Edges node_id.to_encoding
         |> Array.map Triple_ID.from_encoding
+        |> active_edge_ids
 
     let private outgoing_edges_from_id node_id =
         outgoing_edge_ids_from_id node_id
@@ -1299,6 +1456,10 @@ module Query =
 
         Database.Get.Keys_by_Persistent_Map_Prefix permutation.permutation_map prefix
         |> Array.map (fun permutation_key -> Permutation_Key.to_triple permutation permutation_key)
+        |> Array.filter (fun triple ->
+            triple
+            |> Triple_ID.from_triple
+            |> Database.Exists.Active_Triple)
 
     let terms_for_slot slot pattern =
         triples_by_pattern pattern

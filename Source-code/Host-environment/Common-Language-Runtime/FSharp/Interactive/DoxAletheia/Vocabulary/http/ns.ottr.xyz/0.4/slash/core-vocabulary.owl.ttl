@@ -1,0 +1,128 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix o-wottr: <http://spec.ottr.xyz/wOTTR/0.4.4/tpl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix o-bottr: <http://spec.ottr.xyz/bOTTR/0.1.2/tpl/> .
+@prefix ex: <http://example.net/ns#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ottr: <http://ns.ottr.xyz/0.4/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+ottr:StringSource  skos:definition  "" ;
+        rdfs:subClassOf  ottr:Source .
+
+ottr:source  rdfs:range  ottr:Source ;
+        skos:definition  "" ;
+        rdf:type         owl:ObjectProperty ;
+        rdfs:domain      ottr:InstanceMap .
+
+ottr:RDFFileSource  skos:definition  "" ;
+        rdfs:subClassOf  ottr:RDFSource .
+
+ottr:listStart  rdfs:range  xsd:string ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:ArgumentMap .
+
+ottr:languageTag  rdfs:range  xsd:string ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:ArgumentMap .
+
+ottr:sourceURL  rdfs:range  xsd:string ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:Source .
+
+ottr:type  rdfs:range    ottr:Type ;
+        skos:definition  "" ;
+        rdf:type         owl:ObjectProperty ;
+        rdfs:domain      ottr:ArgumentMap .
+
+ottr:listEnd  rdfs:range  xsd:string ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:ArgumentMap .
+
+ottr:InstanceMap  skos:definition  "" .
+
+ottr:password  rdfs:range  xsd:string ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:JDBCSource .
+
+ottr:SPARQLEndpointSource
+        skos:definition  "" ;
+        rdfs:subClassOf  ottr:RDFSource .
+
+ottr:JDBCSource  skos:definition  "" ;
+        rdfs:subClassOf  ottr:StringSource .
+
+ottr:Source  skos:definition  "" .
+
+ottr:jdbcDriver  rdfs:range  xsd:string ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:JDBCSource .
+
+ottr:ArgumentMap  skos:definition  "" .
+
+ottr:nullValue  skos:definition  "" ;
+        rdf:type         owl:AnnotationProperty ;
+        rdfs:domain      ottr:ArgumentMap .
+
+ottr:template  skos:definition  "" ;
+        rdf:type         owl:ObjectProperty ;
+        rdfs:domain      ottr:InstanceMap .
+
+ottr:username  rdfs:range  xsd:string ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:JDBCSource .
+
+ottr:fetchSize  rdfs:range  xsd:integer ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:JDBCSource .
+
+ottr:H2Source  skos:definition  "" ;
+        rdfs:subClassOf  ottr:StringSource .
+
+ottr:labelledBlankPrefix
+        rdfs:range       xsd:string ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:ArgumentMap .
+
+ottr:listSep  rdfs:range  xsd:string ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:ArgumentMap .
+
+ottr:RDFSource  skos:definition  "" ;
+        rdfs:subClassOf  ottr:Source .
+
+ottr:query  rdfs:range   xsd:string ;
+        skos:definition  "" ;
+        rdf:type         owl:DatatypeProperty ;
+        rdfs:domain      ottr:InstanceMap .
+
+ottr:argumentMaps  skos:definition  "" ;
+        rdf:type         owl:ObjectProperty ;
+        rdfs:domain      ottr:InstanceMap .
+
+<http://spec.ottr.xyz/bOTTR/0.1.2/core-vocabulary>
+        rdf:type         owl:Ontology ;
+        owl:versionInfo  "0.1.2" ;
+        dc:creator       <http://folk.uio.no/martige/foaf#me> ;
+        dc:date          "2019-10-08" ;
+        cc:licence       <https://creativecommons.org/licenses/by/4.0/> ;
+        foaf:logo        "https://ottr.xyz/logo/bOTTR.jpg" ;
+        rdfs:seeAlso     <http://spec.ottr.xyz/bOTTR/0.1.2/> .

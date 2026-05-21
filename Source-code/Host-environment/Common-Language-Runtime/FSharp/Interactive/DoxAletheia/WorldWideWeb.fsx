@@ -1,67 +1,22 @@
 open System
 open System.Linq
 
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\WorldWideWeb\URISchemes.fsx"
 // #r "nuget: CaseConverter"
 // open CaseConverter
-
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\StringErgonomics.fsx"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\PathErgonomics.fsx"
-
-open StringErgonomics
-open PathErgonomics
 
 
 module MediaType =
     module text =
         [<Literal>]
-        let turtle = "text/turtle"
+        let turtle = "text/turtle;q=0.8"
 
-        let plain = "text/plain"
+        let plain = "text/plain;q=0.1"
 
     module application =
 
-        let ntriples = "application/n-triples"
-        let rdfxml = "application/rdf+xml"
-        let trig = "application/trig"
-        let nquads = "application/n-quads"
-        let ldjson = "application/ld+json"
-
-
-
-
-type Scheme =
-
-    /// Specifies the characters that separate the communication protocol  scheme from the address portion of the IRI.
-    static member Delimiter = Uri.SchemeDelimiter
-    /// Specifies that the IRI is a pointer to a file.
-    static member File = Uri.UriSchemeFile
-    /// Specifies that the IRI is accessed through the File Transfer Protocol (FTP).
-    static member Ftp = Uri.UriSchemeFtp
-    /// Specifies that the IRI is accessed through the File Transfer Protocol Secure (FTPS).
-    static member Ftps = Uri.UriSchemeFtps
-    /// Specifies that the IRI is accessed through the Gopher protocol.
-    static member Gopher = Uri.UriSchemeGopher
-    /// Specifies that the IRI is accessed through the Hypertext Transfer Protocol (HTTP).
-    static member Http = Uri.UriSchemeHttp
-    /// Specifies that the IRI is accessed through the Secure Hypertext Transfer Protocol (HTTPS).
-    static member Https = Uri.UriSchemeHttps
-    /// Specifies that the IRI is an email address and is accessed through  the Simple Mail Transport Protocol (SMTP).
-    static member Mailto = Uri.UriSchemeMailto
-    /// Specifies that the IRI is accessed through the NetPipe scheme used  by Windows Communication Foundation (WCF).
-    static member NetPipe = Uri.UriSchemeNetPipe
-    /// Specifies that the IRI is accessed through the NetTcp scheme used  by Windows Communication Foundation (WCF).
-    static member NetTcp = Uri.UriSchemeNetTcp
-    /// Specifies that the IRI is an Internet news group and is accessed  through the Network News Transport Protocol (NNTP). This field is  read-only.
-    static member News = Uri.UriSchemeNews
-    /// Specifies that the IRI is an Internet news group and is accessed  through the Network News Transport Protocol (NNTP). This field is  read-only.
-    static member Nntp = Uri.UriSchemeNntp
-    /// Specifies that the IRI is accessed through the SSH File Transfer Protocol (SFTP).
-    static member Sftp = Uri.UriSchemeSftp
-    /// Specifies that the IRI is accessed through the Secure Socket Shell protocol (SSH).
-    static member Ssh = Uri.UriSchemeSsh
-    /// Specifies that the IRI is accessed through the Telnet protocol.
-    static member Telnet = Uri.UriSchemeTelnet
-    /// Specifies that the IRI is accessed through the WebSocket protocol (WS).
-    static member Ws = Uri.UriSchemeWs
-    /// Specifies that the IRI is accessed through the WebSocket Secure protocol (WSS).
-    static member Wss = Uri.UriSchemeWss
+        let ntriples = "application/n-triples;q=0.7"
+        let rdfxml = "application/rdf+xml;q=0.6"
+        let trig = "application/trig;q=1"
+        let nquads = "application/n-quads;q=0.9"
+        let ldjson = "application/ld+json;q=0.5"

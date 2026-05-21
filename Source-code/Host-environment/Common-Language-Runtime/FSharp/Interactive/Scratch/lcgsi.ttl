@@ -1,0 +1,6 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.org/> .
+
+ex:spiderman a foaf:Person ;
+  foaf:name "Spiderman" ;
+  foaf:age 25 .
