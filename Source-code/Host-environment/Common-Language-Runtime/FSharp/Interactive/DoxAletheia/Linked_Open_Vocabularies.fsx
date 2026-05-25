@@ -1797,6 +1797,7 @@ let retrieved_lexicons =
 
 retrieved_lexicons.Length
 
+// TODO sort this
 let retrieved_lexicon =
     retrieved_lexicons
     |> Array.collect (fun retrieved_lexicon ->

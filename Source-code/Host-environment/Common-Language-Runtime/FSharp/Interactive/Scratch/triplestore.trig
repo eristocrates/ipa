@@ -1,0 +1,14 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+{
+    # Written using High Speed Mode
+    <https://eristocrates.dev/ontology/adhoc/Marko> <https://eristocrates.dev/ontology/adhoc/name> "marko".
+    <https://eristocrates.dev/ontology/adhoc/Lop> <https://eristocrates.dev/ontology/adhoc/name> "lop".
+    <https://eristocrates.dev/ontology/adhoc/Josh> <https://eristocrates.dev/ontology/adhoc/name> "josh".
+    <https://eristocrates.dev/ontology/adhoc/Vadas> <https://eristocrates.dev/ontology/adhoc/name> "vadas".
+    <https://eristocrates.dev/ontology/adhoc/Peter> <https://eristocrates.dev/ontology/adhoc/name> "peter".
+    <https://eristocrates.dev/ontology/adhoc/Ripple> <https://eristocrates.dev/ontology/adhoc/name> "ripple".
+}
+

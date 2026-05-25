@@ -1,4 +1,4 @@
-        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant " https://termlex.oeg.fi.upm.es/termlex#" (Some @"https://termlex.oeg.fi.upm.es/static/termlex.rdf") (Some "ontolex.termlex") None
+        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://termlex.oeg.fi.upm.es/termlex#" (Some @"https://termlex.oeg.fi.upm.es/static/termlex.rdf") (Some "ontolex.termlex") None
         Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://aims.fao.org/aos/agrontology#" (Some "http://aims.fao.org/aos/agrontology") (Some "agrontology") None
         Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://data.europa.eu/m8g/" (Some "https://github.com/SEMICeu/CCCEV/raw/refs/heads/master/releases/2.1.0/voc/cccev.ttl") (Some "semic.criterion_evidence") None
         Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://data.europa.eu/m8g/" (Some "https://github.com/SEMICeu/Core-Business-Vocabulary/raw/refs/heads/master/releases/2.2.0/voc/core-business-ap.ttl") (Some "semic.business") None
@@ -252,3 +252,4 @@
         Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://www.commoncoreontologies.org/" (Some @"https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-modules/UnitsOfMeasureOntology.ttl") (Some "cco.UnitsOfMeasure" ) None
         Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://www.commoncoreontologies.org/mro/" (Some @"https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-extensions/ModalRelationOntology.ttl") (Some "cco.mro" ) None
         Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://www.ica.org/standards/RiC/ontology#" (Some "https://www.ica.org/standards/RiC/RiC-O_1-1.rdf") (Some "rico") None
+        

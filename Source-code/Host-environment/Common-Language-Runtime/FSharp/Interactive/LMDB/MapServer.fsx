@@ -121,6 +121,22 @@ module gpservices =
 
 // TODO look for ANY data about the specific relationships above
 
+
+// | "Culvert Cross Drain" -> "StormServiceLine"
+// | "Debris Trap" -> "StormValve"
+// | "End Point" -> "StormNode"
+// | "Inlet" -> "StormInlet"
+// | "Junction Fixed" -> "StormManhole"
+// | "Outfall" -> "StormStorageBasin"
+// | "Stormwater Pond Discharge" -> "StormLevee"
+// | "Stormwater Pond" -> "StormMiscellaneous"
+// TODO identify endpoints to resolve these failing mapping
+// | "Conduit" -> "StormMain"
+// | "Ditch" -> "StormChannel"
+
+
+
+
 let SW_Prefixes =
     Map.ofArray [|
 
@@ -280,9 +296,6 @@ module intraraster =
     let Pond = _prefix "Pond"
     let parent = _prefix "parent"
 
-// TODO identify endpoints to resolve this mapping
-//    | "Conduit" -> "StormMain"
-//    | "Ditch" -> "StormChannel"
 
 Assert.spoc intraraster.Feature a owl.Class swin._context
 
