@@ -1,0 +1,11 @@
+distinct-values(
+for $column in //column
+  let $columnName := string($column/@name)
+  let $table := $column/parent::element()
+  let $productFamily := $table/parent::element()
+
+  where
+    $productFamily/@name = "AssetManagement.Storm"
+
+   return $column/@name)
+   
