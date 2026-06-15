@@ -1,5 +1,4 @@
-fsi.PrintDepth <- 5
-fsi.PrintLength <- 5
+fsi.ShowDeclarationValues <- false
 
 open System
 open System.IO
@@ -220,25 +219,6 @@ let download_vocabulary_distribution (vocabulary_namespace: string) (distributio
 
 
 
-let local_name_override_set: Set<string> =
-    set [
-
-
-          "http://purl.obolibrary.org/obo/BFO_"
-          "http://purl.obolibrary.org/obo/FOODON_"
-          "http://purl.obolibrary.org/obo/IAO_"
-          "http://purl.obolibrary.org/obo/NCIT_"
-          "http://purl.obolibrary.org/obo/OBI_"
-          "http://purl.obolibrary.org/obo/OMRSE_"
-          "http://purl.obolibrary.org/obo/PATO_"
-          "https://www.commoncoreontologies.org/mro/"
-          "http://purl.obolibrary.org/obo/RO_"
-          "http://semanticscience.org/resource/SIO_"
-          "http://www.ebi.ac.uk/swo/SWO_"
-          "https://www.commoncoreontologies.org/"
-
-
-           ]
 
 
 
@@ -410,6 +390,7 @@ module api =
              $"{v2Base}/agent/info"
 
       *)
+
 module dump =
 
     [<Literal>]
@@ -428,7 +409,7 @@ module dump =
 
     [<Literal>]
     let nqgz_path =
-        @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\lov.nq"
+        @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\lov.nq.gz"
 
     let nqgz () =
         http {
@@ -441,6 +422,9 @@ module dump =
 
 
 
+let nq_path = dump.nqgz_path.Replace(".gz", "")
+let n3_path = dump.n3gz_path.Replace(".gz", "")
+
 
 type Lov_Meta = { last_meta: DateTimeOffset }
 
@@ -451,7 +435,9 @@ module Lov_Meta =
 
     let refresh () =
         dump.n3gz ()
+        decompress_gzip_file dump.n3gz_path n3_path
         dump.nqgz ()
+        decompress_gzip_file dump.nqgz_path nq_path
         let last_meta = { last_meta = DateTimeOffset.Now }
         let meta_file_content = Json.serialize last_meta
         File.WriteAllText(meta_file_path, meta_file_content)
@@ -462,6 +448,7 @@ module Lov_Meta =
     if json.LastMeta.Date < DateTime.Now.Date then
         refresh ()
 
+// Lov_Meta.refresh ()
 let graph = new ThreadSafeGraph()
 FileLoader.Load(graph, dump.n3gz_path)
 
@@ -620,10 +607,29 @@ type Lov_Vocabulary =
         sprintf
             """
 module %s =
-    let _prefix = prefix_label "%s"
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string "%s" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name = Lexical_Form.from_string local_name_string.low_lined transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string (local_name_string.Replace(" ", "_"))
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
           """
             this.preferred_prefix.Value
-            this.preferred_prefix.Value
+            this.preferred_namespace_iri.Value
 
 module Lov_Vocabulary =
     let from_manual_addition
@@ -659,7 +665,198 @@ let dataset_vocabularies =
 
 
 
+let label_override_set: Set<string> =
+    set [
 
+
+          "http://purl.obolibrary.org/obo/BFO_"
+          "http://purl.obolibrary.org/obo/FOODON_"
+          "http://purl.obolibrary.org/obo/IAO_"
+          "http://purl.obolibrary.org/obo/NCIT_"
+          "http://purl.obolibrary.org/obo/OBI_"
+          "http://purl.obolibrary.org/obo/OMRSE_"
+          "http://purl.obolibrary.org/obo/PATO_"
+          "https://www.commoncoreontologies.org/mro/"
+          "http://purl.obolibrary.org/obo/RO_"
+          "http://semanticscience.org/resource/SIO_"
+          "http://www.ebi.ac.uk/swo/SWO_"
+          "https://www.commoncoreontologies.org/"
+
+
+           ]
+
+open System
+open System.Collections.Generic
+open System.Text
+
+module FSharpIdentifier =
+
+    let private reservedWords =
+        HashSet<string>(
+            [
+              // F# keywords
+              "abstract"
+              "and"
+              "as"
+              "assert"
+              "base"
+              "begin"
+              "class"
+              "default"
+              "delegate"
+              "do"
+              "done"
+              "downcast"
+              "downto"
+              "elif"
+              "else"
+              "end"
+              "exception"
+              "extern"
+              "false"
+              "finally"
+              "fixed"
+              "for"
+              "fun"
+              "function"
+              "global"
+              "if"
+              "in"
+              "inherit"
+              "inline"
+              "interface"
+              "internal"
+              "lazy"
+              "let"
+              "let!"
+              "match"
+              "match!"
+              "member"
+              "module"
+              "mutable"
+              "namespace"
+              "new"
+              "null"
+              "of"
+              "open"
+              "or"
+              "override"
+              "private"
+              "public"
+              "rec"
+              "return"
+              "return!"
+              "static"
+              "struct"
+              "then"
+              "to"
+              "true"
+              "try"
+              "type"
+              "upcast"
+              "use"
+              "use!"
+              "val"
+              "void"
+              "when"
+              "while"
+              "with"
+              "yield"
+              "yield!"
+
+              // OCaml-compatibility reserved tokens
+              "asr"
+              "land"
+              "lor"
+              "lsl"
+              "lsr"
+              "lxor"
+              "mod"
+              "sig"
+
+              // Reserved for future expansion
+              "break"
+              "checked"
+              "component"
+              "const"
+              "constraint"
+              "continue"
+              "event"
+              "external"
+              "include"
+              "mixin"
+              "parallel"
+              "process"
+              "protected"
+              "pure"
+              "sealed"
+              "tailcall"
+              "trait"
+              "virtual" ],
+            StringComparer.Ordinal
+        )
+
+    let private isIdentifierStartCharacter (character: char) =
+        character = '_' || Char.IsLetter character
+
+    let private isIdentifierPartCharacter (character: char) =
+        character = '_'
+        || character = '\''
+        || Char.IsLetterOrDigit character
+
+    let private appendUnderscoreIfNeeded (builder: StringBuilder) =
+        if builder.Length = 0
+           || builder[builder.Length - 1] <> '_' then
+            builder.Append '_' |> ignore
+
+    let normalizeToPlainIdentifier (rawName: string) =
+        let rawName =
+            if String.IsNullOrWhiteSpace rawName then
+                "value"
+            else
+                rawName.Trim()
+
+        let builder = StringBuilder(rawName.Length)
+
+        for character in rawName do
+            if isIdentifierPartCharacter character then
+                builder.Append character |> ignore
+            elif Char.IsWhiteSpace character
+                 || Char.IsPunctuation character
+                 || Char.IsSymbol character then
+                appendUnderscoreIfNeeded builder
+            else
+                appendUnderscoreIfNeeded builder
+
+        let normalized = builder.ToString().Trim('_')
+
+        let normalized =
+            if String.IsNullOrWhiteSpace normalized then
+                "value"
+            else
+                normalized
+
+        let normalized =
+            if isIdentifierStartCharacter normalized[0] then
+                normalized
+            else
+                "_" + normalized
+
+        if normalized = "_" then
+            "value"
+        else
+            normalized
+
+    let quoteIfReservedWord (identifier: string) =
+        if reservedWords.Contains identifier then
+            $"``{identifier}``"
+        else
+            identifier
+
+    let toLetBindingIdentifier (rawName: string) =
+        rawName
+        |> normalizeToPlainIdentifier
+        |> quoteIfReservedWord
 
 
 type Lov_Term =
@@ -676,15 +873,16 @@ type Lov_Term =
         let local_name_index = this.vocabulary.preferred_namespace_iri.Value.Length
         this.term_iri.Uri.OriginalString[local_name_index..]
 
-    // TODO sanatize this
     member this.fsx_binding =
-        if local_name_override_set.Contains(this.vocabulary.vocabulary_iri.Uri.OriginalString) then
-            match this.term_label with
-            | Some label -> label.Value
-            | _ -> this.local_name
-        else
-            this.local_name.Replace("-", "_")
+        let rawIdentifier =
+            if label_override_set.Contains(this.vocabulary.vocabulary_iri.Uri.OriginalString) then
+                match this.term_label with
+                | Some label -> label.Value
+                | None -> this.local_name
+            else
+                this.local_name
 
+        FSharpIdentifier.toLetBindingIdentifier rawIdentifier
 
     member this.fsx_comment =
         match this.term_comment with
@@ -699,8 +897,7 @@ type Lov_Term =
         sprintf
             """
     %s
-    let %s = _prefix "%s"
-          """
+    let %s = _vocab "%s" """
             this.fsx_comment
             this.fsx_binding
             this.local_name
@@ -708,7 +905,6 @@ type Lov_Term =
 type Vocabulary_Lexicon =
     { vocabulary: Lov_Vocabulary
       terms: Lov_Term array }
-    member this.module_binding = this.vocabulary.module_string
 
     member this.let_bindings =
         this.terms
@@ -717,8 +913,9 @@ type Vocabulary_Lexicon =
         |> Array.map (fun term -> term.let_string)
         |> String.concat "\n"
 
+    member this.module_binding = $"{this.vocabulary.module_string}\n{this.let_bindings}"
 
-let nq_path = dump.nqgz_path.Replace(".gz", "")
+
 let normalized_nq_path = Path.ChangeExtension(nq_path, ".normalized.nq")
 
 normalize_nquads_file nq_path normalized_nq_path
@@ -740,7 +937,7 @@ write_valid_nquads_only normalized_nq_path cleaned_nq_path
 let dataset = new DatasetFileManager(cleaned_nq_path, false)
 
 
-dataset.ListGraphNames()
+// dataset.ListGraphNames()
 
 module Vocabulary_Lexicon =
     let process_vocabulary_graph (vocabulary: Lov_Vocabulary) (graph: ThreadSafeGraph) =
@@ -849,11 +1046,22 @@ let dataset_lexicons =
     |> Array.Parallel.map Vocabulary_Lexicon.from_lov_vocabulary
 
 
+let skos_vocabulary'preferredNamespaceUri =
+    graph.GetTriplesWithPredicateObject(rdf_type, voaf_vocabulary)
+    |> Seq.toArray
+    |> Array.Parallel.map (fun vocabulary_triple -> vocabulary_triple.Subject :?> UriNode)
 
+    |> Array.Parallel.collect (fun vocabulary ->
+        graph.GetTriplesWithSubjectPredicate(vocabulary, vann_preferredNamespaceUri)
+        |> Seq.toArray
+        |> Array.Parallel.map (fun preferred_uri_triple -> preferred_uri_triple.Object :?> LiteralNode)
+        |> Array.Parallel.filter (fun preferred_namespace ->
+            preferred_namespace.Value = "http://www.w3.org/2004/02/skos/core#")
+        |> Array.Parallel.map (fun preferred_namespace -> (vocabulary, preferred_namespace)
 
+        )
 
-
-
+    )
 
 
 
@@ -866,6 +1074,10 @@ let dataset_lexicons =
 let manual_vocabulary_tuples =
     [|
 
+       ("https://schema.org",
+        "https://schema.org/",
+        "schemorg",
+        "https://schema.org/version/latest/schemaorg-all-https.ttl")
        ("https://termlex.oeg.fi.upm.es/termlex",
         "https://termlex.oeg.fi.upm.es/termlex#",
         "termlex",
@@ -1781,40 +1993,198 @@ let all_lexicons =
     Array.concat [| dataset_lexicons
                     manual_lexicons |]
 
-let search_lexicons (target: string) (lexicons: Vocabulary_Lexicon array) =
-    lexicons
-    |> Array.choose (fun lexicon ->
-        if lexicon.vocabulary.preferred_namespace_iri.Value.StartsWith target then
-            Some(lexicon)
-        else
-            None)
+let singular_lexicons =
+    all_lexicons
+    |> Array.Parallel.groupBy (fun lexicon -> lexicon.vocabulary.preferred_namespace_iri.Value)
+    |> Array.Parallel.filter (fun (namespace_name, lexicon_group) -> lexicon_group.Length = 1)
+    |> Array.Parallel.map (fun (namespace_name, lexicon_group) -> lexicon_group[0])
 
-// namespace_directory_path (new Uri "https://w3id.org/linkml/") |> clip
+let modular_lexicons =
+    all_lexicons
+    |> Array.Parallel.groupBy (fun lexicon -> lexicon.vocabulary.preferred_namespace_iri.Value)
+    |> Array.Parallel.filter (fun (namespace_name, lexicon_group) -> lexicon_group.Length > 1)
+    |> Array.Parallel.collect (fun (namespace_name, lexicon_group) ->
+        lexicon_group
+        |> Array.Parallel.choose (fun lexicon ->
+            let last_segment =
+                lexicon.vocabulary.distribution_iri.Uri.Segments
+                |> Array.last
+
+            let file_name = Path.GetFileNameWithoutExtension(last_segment)
+
+            try
+                let distribution_date = DateTime.Parse(file_name)
+                None
+            with
+            | _ -> Some(lexicon)
+
+
+        )
+
+    )
+
+let versioned_lexicons =
+    all_lexicons
+    |> Array.Parallel.groupBy (fun lexicon -> lexicon.vocabulary.preferred_namespace_iri.Value)
+    |> Array.Parallel.filter (fun (namespace_name, lexicon_group) -> lexicon_group.Length > 1)
+    |> Array.Parallel.collect (fun (namespace_name, lexicon_group) ->
+        lexicon_group
+        |> Array.Parallel.choose (fun lexicon ->
+            let last_segment =
+                lexicon.vocabulary.distribution_iri.Uri.Segments
+                |> Array.last
+
+            let file_name = Path.GetFileNameWithoutExtension(last_segment)
+
+            try
+                let distribution_date = DateTime.Parse(file_name)
+                Some(lexicon)
+            with
+            | _ -> None
+
+
+        )
+        |> Array.Parallel.sortBy (fun lexicon ->
+            let last_segment =
+                lexicon.vocabulary.distribution_iri.Uri.Segments
+                |> Array.last
+
+            let file_name = Path.GetFileNameWithoutExtension(last_segment)
+            DateTime.Parse(file_name)
+
+        )
+
+    )
+
+
+all_lexicons.Length
+singular_lexicons.Length
+modular_lexicons.Length
+versioned_lexicons.Length
+
+
+module Lexicon_Search =
+    let namespace_starts_with (target: string) (lexicons: Vocabulary_Lexicon array) =
+        lexicons
+        |> Array.choose (fun lexicon ->
+            if lexicon.vocabulary.preferred_namespace_iri.Value.StartsWith target then
+                Some(lexicon)
+            else
+                None)
+
+    let namespace_exact (target: string) (lexicons: Vocabulary_Lexicon array) =
+        lexicons
+        |> Array.choose (fun lexicon ->
+            if lexicon.vocabulary.preferred_namespace_iri.Value = target then
+                Some(lexicon)
+            else
+                None)
+
+    let is_versioned (target_namespace: string) =
+        versioned_lexicons
+        |> Array.exists (fun lexicon -> lexicon.vocabulary.preferred_namespace_iri.Value = target_namespace)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let retrieved_lexicons =
     all_lexicons
-    |> search_lexicons "http://schema.org/"
+    |> Lexicon_Search.namespace_starts_with "http://schema.org"
+
 
 retrieved_lexicons.Length
 
-// TODO sort this
-let retrieved_lexicon =
-    retrieved_lexicons
-    |> Array.collect (fun retrieved_lexicon ->
-        retrieved_lexicon.terms
-        |> Array.map (fun term -> term.let_string)
 
-    )
-    |> Array.sortBy (fun term -> term)
-    |> Array.distinct
-    |> String.concat "\n"
-    |> clip
+retrieved_lexicons
+|> Array.iter (fun retrieved_lexicon -> printfn "%s" retrieved_lexicon.vocabulary.distribution_iri.Uri.OriginalString)
 
-// retrieved_lexicon.let_bindings |> clip
+
+
+retrieved_lexicons
+|> Array.map (fun retrieved_lexicon -> retrieved_lexicon.module_binding
+
+)
+|> Array.distinct
+|> String.concat "\n"
+|> clip
+
+
+
+
+let retrieved_lexicon = retrieved_lexicons |> Array.last
+retrieved_lexicon.module_binding |> clip
 
 // TODO handle prefixes somehow
-all_lexicons
-|> Array.countBy (fun lexicon -> lexicon.vocabulary.preferred_prefix.Value)
+// all_lexicons |> Array.countBy (fun lexicon -> lexicon.vocabulary.preferred_prefix.Value)
 
 // download_vocabulary_distribution target_namespace target_distribution
 

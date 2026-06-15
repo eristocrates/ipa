@@ -1,7 +1,19 @@
 (*
 
 fsi.ShowDeclarationValues <- false
+
+
+
+
+
+
 //fsi.ShowDeclarationValues <- true
+
+
+
+
+
+
 
 
 #r "nuget: Fabulous.AST.Json, 2.0.0-pre06"

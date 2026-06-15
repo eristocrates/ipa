@@ -1,0 +1,39 @@
+	DataQualityInformation =  __	
+	0{AttributeAccuracy}1 +  _	
+	LogicalConsistencyReport +  __	
+	CompletenessReport +  _	
+	0{PositionalAccuracy}1 +  _	
+	Lineage +	
+	(CloudCover)  _	
+		
+	AttributeAccuracy =  _	
+	AttributeAccuracyReport +  __	
+	(1{QuantitativeAttributeAccuracyAssessment}n)  ___	
+		
+	QuantitativeAttributeAccuracyAssessment =  ___	
+	AttributeAccuracyValue +  __	
+	AttributeAccuracyExplanation  __	
+		
+	PositionalAccuracy =  _	
+	0{HorizontalPositionalAccuracy}1 +  __	
+	0{VerticalPositionalAccuracy}1  __	
+		
+	HorizontalPositionalAccuracy =  __	
+	HorizontalPositionalAccuracyReport +  ___	
+	(1{QuantitativeHorizontalPositionalAccuracyAssessment}n)  ____	
+		
+	QuantitativeHorizontalPositionalAccuracyAssessment =  ____	
+	HorizontalPositionalAccuracyValue +  ___	
+	HorizontalPositionalAccuracyExplanation  ___	
+		
+	VerticalPositionalAccuracy =  __	
+	VerticalPositionalAccuracyReport +  ___	
+	(1{QuantitativeVerticalPositionalAccuracyAssessment}n)  ____	
+		
+	QuantitativeVerticalPositionalAccuracyAssessment =  ____	
+	VerticalPositionalAccuracyValue +  ___	
+	VerticalPositionalAccuracyExplanation  ___	
+		
+	Lineage =	
+	0{SourceInformation}n +  _	
+	1{ProcessStep}n  _	

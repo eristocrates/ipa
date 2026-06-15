@@ -19,7 +19,71 @@ open Fabulous.AST.Json
 open type Fabulous.AST.Ast
 open Fantomas.FCS.Text
 
+
+
+
+
 module JsonValue =
+
+    let IsScalar (jsonValue: JsonValue) =
+        match jsonValue with
+        | JsonValue.String _
+        | JsonValue.Number _
+        | JsonValue.Float _
+        | JsonValue.Boolean _ -> true
+        | _ -> false
+
+    let rec ScalarKeys (jsonValue: JsonValue) =
+        match jsonValue with
+        | JsonValue.Record properties ->
+            properties
+            |> Array.choose (fun (key, value) ->
+                if IsScalar value then
+                    Some key
+                else
+                    None)
+
+        | JsonValue.Array elements ->
+            elements
+            |> Array.collect ScalarKeys
+            |> Array.distinct
+
+        | _ -> [||]
+
+    let rec ScalarValues (jsonValue: JsonValue) =
+        match jsonValue with
+        | JsonValue.Record properties ->
+            properties
+            |> Array.choose (fun (key, value) ->
+                if IsScalar value then
+                    Some value
+                else
+                    None)
+
+        | JsonValue.Array elements ->
+            elements
+            |> Array.collect ScalarValues
+            |> Array.distinct
+
+        | _ -> [||]
+
+    let rec ScalarKeyValues (jsonValue: JsonValue) =
+        match jsonValue with
+        | JsonValue.Record properties ->
+            properties
+            |> Array.choose (fun (key, value) ->
+                if IsScalar value then
+                    Some(key, value)
+                else
+                    None)
+
+        | JsonValue.Array elements ->
+            elements
+            |> Array.collect ScalarKeyValues
+            |> Array.distinct
+
+        | _ -> [||]
+
     let rec PropertyKeys (jsonValue: JsonValue) =
         match jsonValue with
         | JsonValue.Record properties -> properties |> Array.map fst
@@ -72,6 +136,10 @@ module JsonValue =
 
 
 type JsonValue with
+
+    member this.ScalarKeys = this |> JsonValue.ScalarKeys
+    member this.ScalarValues = this |> JsonValue.ScalarValues
+    member this.ScalarKeyValues = this |> JsonValue.ScalarKeyValues
     member this.PropertyKeys = this |> JsonValue.PropertyKeys
 
     member this.PropertyValues = this |> JsonValue.PropertyValues
@@ -97,14 +165,68 @@ type JsonValue with
 
 
 
-
-
-
-
-
-
 let (?>) (jsonObjects: JsonValue array) (propertyName: string) =
     JsonValue.PropertiesArray propertyName jsonObjects
+
+
+type 'T ``[]`` with
+
+    member this.ScalarKeys =
+        match box this with
+        | :? (JsonValue array) as values ->
+            values
+            |> Array.collect JsonValue.ScalarKeys
+            |> Array.distinct
+        | _ -> [||]
+
+    member this.ScalarValues =
+        match box this with
+        | :? (JsonValue array) as values ->
+            values
+            |> Array.collect JsonValue.ScalarValues
+            |> Array.distinct
+        | _ -> [||]
+
+    member this.ScalarKeyValues =
+        match box this with
+        | :? (JsonValue array) as values ->
+            values
+            |> Array.collect JsonValue.ScalarKeyValues
+            |> Array.distinct
+        | _ -> [||]
+
+    member this.PropertyKeys =
+        match box this with
+        | :? (JsonValue array) as values ->
+            values
+            |> Array.collect JsonValue.PropertyKeys
+            |> Array.distinct
+        | _ -> [||]
+
+    member this.PropertyValues =
+        match box this with
+        | :? (JsonValue array) as values -> values |> Array.collect JsonValue.PropertyValues
+        | _ -> [||]
+
+    member this.GrandPropertyKeys =
+        match box this with
+        | :? (JsonValue array) as values ->
+            values
+            |> Array.collect JsonValue.GrandPropertyKeys
+            |> Array.distinct
+        | _ -> [||]
+
+    member this.Kinds =
+        match box this with
+        | :? (JsonValue array) as values ->
+            values
+            |> Array.map JsonValue.Kind
+            |> Array.distinct
+        | _ -> [||]
+
+
+
+
 (*
 
 EdgeDevToolsProtocol.protocol.jsonschema.JsonValue.Kind
@@ -147,38 +269,3 @@ domain_items |> Array.map (fun domain_item -> domain_item.Kind)
 
 
 *)
-
-
-
-
-
-type 'T ``[]`` with
-
-    member this.PropertyKeys =
-        match box this with
-        | :? (JsonValue array) as values ->
-            values
-            |> Array.collect JsonValue.PropertyKeys
-            |> Array.distinct
-        | _ -> [||]
-
-    member this.PropertyValues =
-        match box this with
-        | :? (JsonValue array) as values -> values |> Array.collect JsonValue.PropertyValues
-        | _ -> [||]
-
-    member this.GrandPropertyKeys =
-        match box this with
-        | :? (JsonValue array) as values ->
-            values
-            |> Array.collect JsonValue.GrandPropertyKeys
-            |> Array.distinct
-        | _ -> [||]
-
-    member this.Kinds =
-        match box this with
-        | :? (JsonValue array) as values ->
-            values
-            |> Array.map JsonValue.Kind
-            |> Array.distinct
-        | _ -> [||]

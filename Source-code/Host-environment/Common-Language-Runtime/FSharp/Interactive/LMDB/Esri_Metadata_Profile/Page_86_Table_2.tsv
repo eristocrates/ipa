@@ -1,0 +1,42 @@
+ARC Coordinate System	arcsys			
+ARC System Zone Identifier	arczone		Y	Q,E,C,F
+Equirectangular	equirect			
+See Equirectangular above.			Y	Q,E,C,F
+Azimuthal Equidistant	azimequi			
+See Azimuthal Equidistant above.			Y	Q,E,C,F
+Other Grid System Definition	othergrd		Y	Q,E,C,F
+Local Planar	localp			G
+Local Planar Description	localpd		Y	Q,E,C,F
+Local Planar Georeference Information	localpgi		Y	Q,E,C,F
+Planar Coordinate Information	planci			
+Planar Coordinate Encoding Method	plance	S	Y	Q,E,C,F
+Coordinate Representation	coordrep			
+Abscissa Resolution	absres	S	Y	Q,E,C,F
+Ordinate Resolution	orders	S	Y	Q,E,C,F
+Distance and Bearing Representation	distbear			
+Distance Resolution	distress		Y	Q,E,C,F
+Bearing Resolution	bearers		Y	Q,E,C,F
+Bearing Units	bearunit		Y	Q,E,C,F
+Bearing Reference Direction	bearrefd		Y	Q,E,C,F
+Bearing Reference Meridian	bearrefm		Y	Q,E,C,F
+Planar Distance Units	plandu	S	Y	Q,E,C,F
+Local	local			G
+Local Description	localdes		Y	Q,E,C,F
+Local Georeference Information	localgeo		Y	Q,E,C,F
+Geodetic Model	geodetic			
+Horizontal Datum Name	horizdn	S	Y	Q,E,C,F
+Ellipsoid Name	ellips	S	Y	Q,E,C,F
+Semi-Major Axis	semiaxis	S	Y	Q,E,C,F
+Denominator of Flattening Ratio	denflat	S	Y	Q,E,C,F
+Vertical Coordinate System Definition	vertdef			
+Altitude System Definition	altsys			
+Altitude Datum Name	altdatum		Y	Q,E,C,F
+Altitude Resolution	alters	S	Y	Q,E,C,F
+Altitude Distance Units	altunits		Y	Q,E,C,F
+Altitude Encoding Method	altenc	S	Y	Q,E,C,F
+Depth System Definition	depthsys			
+Depth Datum Name	depthdn		Y	Q,E,C,F
+Depth Resolution	depthres		Y	Q,E,C,F
+Depth Distance Units	depthdu		Y	Q,E,C,F
+Depth Encoding Method	depthen		Y	Q,E,C,F
+				

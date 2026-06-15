@@ -1,0 +1,10 @@
+	BinaryEnclosures =  _	
+	(Thumbnail) +	
+	(1{Enclosure}n)	
+		
+	Thumbnail =	
+	Data	
+		
+	Enclosure =	
+	DescriptionofEnclosure +  __	
+	Data	

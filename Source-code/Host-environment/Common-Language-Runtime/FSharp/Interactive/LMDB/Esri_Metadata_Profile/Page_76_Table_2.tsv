@@ -1,0 +1,44 @@
+Identification Information	idinfo			
+Citation	citation			
+Citation Information	citeinfo			
+See Citation Information below.		S	Y	G,Q,E,C,F
+Description	descript			
+Abstract	abstract	H	Y	G,Q,E,C,F
+Purpose	purpose	H	Y	G,Q,E,C,F
+Supplemental Information	supplinf		Y	G,Q,E,C,F
+Language of Dataset	langdata	S	Y	F
+Time Period of Content	timeperd			
+Time Period Information	timeinfo			
+See Time Period Information below.		H1	Y	G,E,C,F
+Currentness Reference	current	H	Y	Q,E,C,F
+Status	status			
+Progress	progress	H	Y	G,E,C,F
+Maintenance and Update Frequency	update	H	Y	G,E,C,F
+Spatial Domain	spdom			
+Bounding Coordinates	bounding			
+West Bounding Coordinate	westbc	S2	Y	G,Q,E,C,F
+East Bounding Coordinate	eastbc	S2	Y	G,Q,E,C,F
+North Bounding Coordinate	northbc	S2	Y	G,Q,E,C,F
+South Bounding Coordinate	southbc	S2	Y	G,Q,E,C,F
+Local Bounding Coordinates	lboundng			
+Top Bounding Coordinate	topbc	S		E,F
+Bottom Bounding Coordinate	bottombc	S		E,F
+Left Bounding Coordinate	leftbc	S		E,F
+Right Bounding Coordinate	rightbc	S		E,F
+Minimum Altitude	minalti	S	Y	E,F
+Maximum Altitude	maxalti	S	Y	E,F
+Altitude Units	altunits		Y	F
+Dataset G-Polygon	dsgpoly			
+Dataset G-Polygon Outer G-Ring	dsgpolyo			
+G-Ring	gring			C,F
+G-Ring Point	grngpoin			
+G-Ring Latitude	gringlat		Y	C,F
+G-Ring Longitude	gringlon		Y	C,F
+Dataset G-Polygon Exclusion G-Ring	dsgpolyx			
+G-Ring	gring			C,F
+G-Ring Point	grngpoin			
+G-Ring Latitude	gringlat		Y	C,F
+G-Ring Longitude	gringlon		Y	C,F
+Data Frames	eframes			
+Data Frame Count	framect		Y	F
+Data Frame Name	framenam		Y	F

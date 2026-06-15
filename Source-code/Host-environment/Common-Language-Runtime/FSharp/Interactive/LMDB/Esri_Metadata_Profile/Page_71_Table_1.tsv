@@ -1,0 +1,46 @@
+	If MapProjectionName = "FlatPolarQuartic"  ____	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "Gall Stereographic"  __	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "HammerAitoff"  ___	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "Krovak"  __	
+	MapProjectionParameters =  __	
+	StandardParallel +  _	
+	ScaleFactoratCenterLine +  ____	
+	ObliqueLineAzimuth +  __	
+	LatitudeofProjectionCenter +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "Loximuthal"  __	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	LatitudeofProjectionOrigin +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "Mollweide"  __	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "NewZealandMapGrid"  _____	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	LatitudeofProjectionOrigin +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	

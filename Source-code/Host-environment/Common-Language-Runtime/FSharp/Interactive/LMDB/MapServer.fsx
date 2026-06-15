@@ -1,4 +1,10 @@
+fsi.ShowDeclarationValues <- false
+
 open System
+open System.Reflection
+open System.Reflection.Emit
+open Microsoft.FSharp.Reflection
+open System.Diagnostics
 open System.Collections.Generic
 open System.Globalization
 open System.Text
@@ -10,9 +16,11 @@ open System.Text.Json
 open System.Xml
 open System.Xml.Linq
 open System.Xml.XPath
+open System.Text.RegularExpressions
+
 
 #r "nuget: Fabulous.AST.Json, 2.0.0-pre06"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\UnicodeStandard\PropertyAliases.fsx"
+
 #r "nuget: LightningDB"
 #r "nuget: MessagePack"
 #r "nuget: MessagePack.FSharpExtensions"
@@ -27,31 +35,115 @@ open System.Xml.XPath
 
 open LightningDB
 open MessagePack
-open PropertyAliases
 open Swensen.Unquote.Assertions
 
 #r "nuget: Blake3"
-#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\RDFErgonomics.fsx"
 
-open RDFErgonomics
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\LMDB\LMDB.fsx"
 
 open LMDB
 
 #r "nuget: FSharp.Data"
+open FSharp.Data
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Extensions\JavascriptObjectNotationExtensions.fsx"
 
-open FSharp.Data
 open JavascriptObjectNotationExtensions
 
 open FSharp.Data.JsonExtensions
 
+open Fabulous.AST
+open Fabulous.AST.Json
+
+open type Fabulous.AST.Ast
+open Fantomas.FCS.Text
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\XmlErgonomics.fsx"
 
 open XmlErgonomics
+open type Xml
+
+
+
+
+#r "nuget: dotNetRdf"
+
+open VDS.RDF.Parsing
+open VDS.RDF.Parsing.Tokens
+open VDS.RDF.Storage
+open VDS.RDF.Writing
+open VDS.RDF.Query.Datasets
+
+
+#r "nuget: ExcelProvider"
+open FSharp.Interop.Excel
+
+
+
+#r "nuget: SQLProvider.MsSql, 1.5.18"
+
+#load @"C:\Secret\InforSecrets.fsx"
+
+open InforSecrets
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\PowershellErgonomics.fsx"
 
 open PowershellErgonomics
+
+open FSharp.Data.Sql
+open FSharp.Data.Sql.MsSql
+
+#r @"C:\Repositories\appsdb\IPS_Sites\integration\Mappings.xml\System.Web.Services.dll"
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\processExecution.fsx"
+
+open ProcessExecution
+
+
+#r "nuget: ClosedXML"
+open ClosedXML.Excel
+
+
+
+
+#r "nuget: FSharp.ViewEngine"
+open FSharp.ViewEngine
+open type Html
+
+
+
+let should_triplify = true
+
+type InforProdSql = SqlDataProvider<ConnectionString=Prod.connection_string, IndividualsAmount=10000, UseOptionTypes=Common.NullableColumnType.OPTION>
+
+
+module InforProdSql =
+
+    let operations = InforProdSql.GetDataContext()
+
+[<Literal>]
+let mapping_directory =
+    @"D:\www\update\Integration\Interraster\LCPW_OverlayStormwaterInfrastructure_D_WM"
+
+
+
+
+
+
+
+
+let is_nullish (string_value: string) =
+    (String.IsNullOrWhiteSpace(string_value))
+    || string_value = "N/A"
+    || string_value = "<Null>"
+    || string_value = "None"
+    || string_value = "null"
+
+let is_not_nullish (string_value: string) = not (is_nullish string_value)
+
+
+
+
+
+
+
 
 module LCPW_OverlayStormwaterInfrastructure_D_WM =
 
@@ -61,23 +153,224 @@ module LCPW_OverlayStormwaterInfrastructure_D_WM =
 
     let json = JsonProvider<file_path>.Load file_path
 
-module LCG_Stormwater_Inventory =
 
-    [<Literal>]
-    let file_path =
-        @"D:/Surface/Company/Environmental_Systems_Research_Institute/SDE_Schema_XRay/LCG_Stormwater_Inventory_updated/LCG_Stormwater_Inventory_Formatted.xml"
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string "http://intraraster.leoncountyfl.gov/intraraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/MapServer/" }
 
-    let xml = XPathNavigator.Load(file_path)
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
 
-let xpath (expression: string) (xpath_navigator: XPathNavigator) =
-    let xpath_expression = XPathExpression.Compile(expression)
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
 
-    xpath_navigator
-        .Select(
-            xpath_expression
-        )
-        .toElementArray
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
 
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let MapServer = _vocab "MapServer"
+
+    let initialExtent = _vocab "initialExtent"
+    let fullExtent = _vocab "fullExtent"
+
+    module _literal =
+
+        module value =
+
+            let currentVersion =
+                lmdb_read_write { return! RDF_Literal.autotyped json.CurrentVersion }
+
+            let serviceDescription =
+                lmdb_read_write { return! RDF_Literal.US json.ServiceDescription }
+
+            let mapName = lmdb_read_write { return! RDF_Literal.US json.MapName }
+            // let description = lmdb_read_write { return! RDF_Literal.autotyped json.Description }
+
+            // let copyrightText = lmdb_read_write { return! RDF_Literal.autotyped json.CopyrightText }
+
+            let supportsDynamicLayers =
+                lmdb_read_write { return! RDF_Literal.autotyped json.SupportsDynamicLayers }
+
+
+            let spatialReference =
+                lmdb_read_write { return! RDF_Literal.simple json.SpatialReference }
+
+            let singleFusedMapCache =
+                lmdb_read_write { return! RDF_Literal.autotyped json.SingleFusedMapCache }
+
+            let minScale = lmdb_read_write { return! RDF_Literal.autotyped json.MinScale }
+
+            let maxScale = lmdb_read_write { return! RDF_Literal.autotyped json.MaxScale }
+
+            let units = lmdb_read_write { return! RDF_Literal.simple json.Units }
+
+            let supportedImageFormatTypes =
+                lmdb_read_write { return! RDF_Literal.simple json.SupportedImageFormatTypes }
+
+            module supportedImageFormatType =
+                let PNG32 = lmdb_read_write { return! RDF_Literal.simple "PNG32" }
+                let PNG24 = lmdb_read_write { return! RDF_Literal.simple "PNG24" }
+                let PNG = lmdb_read_write { return! RDF_Literal.simple "PNG" }
+                let JPG = lmdb_read_write { return! RDF_Literal.simple "JPG" }
+                let DIB = lmdb_read_write { return! RDF_Literal.simple "DIB" }
+                let TIFF = lmdb_read_write { return! RDF_Literal.simple "TIFF" }
+                let EMF = lmdb_read_write { return! RDF_Literal.simple "EMF" }
+                let PS = lmdb_read_write { return! RDF_Literal.simple "PS" }
+                let PDF = lmdb_read_write { return! RDF_Literal.simple "PDF" }
+                let GIF = lmdb_read_write { return! RDF_Literal.simple "GIF" }
+                let SVG = lmdb_read_write { return! RDF_Literal.simple "SVG" }
+                let SVGZ = lmdb_read_write { return! RDF_Literal.simple "SVGZ" }
+                let BMP = lmdb_read_write { return! RDF_Literal.simple "BMP" }
+
+
+            let Keywords =
+                lmdb_read_write { return! RDF_Literal.autotyped json.DocumentInfo.Keywords }
+
+            module Keyword =
+                let stormwater = lmdb_read_write { return! RDF_Literal.simple "stormwater" }
+                let swmf = lmdb_read_write { return! RDF_Literal.simple "swmf" }
+                let drainage = lmdb_read_write { return! RDF_Literal.simple "drainage" }
+                let leon_county = lmdb_read_write { return! RDF_Literal.simple "leon county" }
+                let public_works = lmdb_read_write { return! RDF_Literal.simple "public works" }
+                let lcpw = lmdb_read_write { return! RDF_Literal.simple "lcpw" }
+                let tallahassee = lmdb_read_write { return! RDF_Literal.simple "tallahassee" }
+                let florida = lmdb_read_write { return! RDF_Literal.simple "florida" }
+
+            let capabilities =
+                lmdb_read_write { return! RDF_Literal.autotyped json.Capabilities }
+
+            module capability =
+
+                let Map = lmdb_read_write { return! RDF_Literal.simple "Map" }
+                let Query = lmdb_read_write { return! RDF_Literal.simple "Query" }
+                let Data = lmdb_read_write { return! RDF_Literal.simple "Data" }
+
+            let supportedQueryFormats =
+                lmdb_read_write { return! RDF_Literal.autotyped json.SupportedQueryFormats }
+
+            module supportedQueryFormat =
+                let JSON = lmdb_read_write { return! RDF_Literal.simple "JSON" }
+                let geoJSON = lmdb_read_write { return! RDF_Literal.simple "geoJSON" }
+
+
+            let exportTilesAllowed =
+                lmdb_read_write { return! RDF_Literal.autotyped json.ExportTilesAllowed }
+
+            // let referenceScale = lmdb_read_write { return! RDF_Literal.autotyped json.ReferenceScale }
+
+            let supportsDatumTransformation =
+                lmdb_read_write { return! RDF_Literal.autotyped json.SupportsDatumTransformation }
+
+            let maxRecordCount =
+                lmdb_read_write { return! RDF_Literal.autotyped json.MaxRecordCount }
+
+            let maxImageHeight =
+                lmdb_read_write { return! RDF_Literal.autotyped json.MaxImageHeight }
+
+            let maxImageWidth =
+                lmdb_read_write { return! RDF_Literal.autotyped json.MaxImageWidth }
+
+            // let supportedExtensions = lmdb_read_write { return! RDF_Literal.autotyped json.SupportedExtensions }
+
+            let culture = lmdb_read_write { return! RDF_Literal.autotyped json.Culture }
+            let name = lmdb_read_write { return! RDF_Literal.autotyped json.Name }
+            let guid = lmdb_read_write { return! RDF_Literal.autotyped json.Guid }
+            let catalogPath = lmdb_read_write { return! RDF_Literal.autotyped json.CatalogPath }
+            // let snippet = lmdb_read_write { return! RDF_Literal.autotyped json.Snippet }
+            let summary = lmdb_read_write { return! RDF_Literal.autotyped json.Summary }
+            let title = lmdb_read_write { return! RDF_Literal.autotyped json.Title }
+            // let tags = lmdb_read_write { return! RDF_Literal.autotyped json.Tags }
+            let ``type`` = lmdb_read_write { return! RDF_Literal.autotyped json.Type }
+
+// let typeKeywords = lmdb_read_write { return! RDF_Literal.autotyped json.TypeKeywords }
+// let thumbnail = lmdb_read_write { return! RDF_Literal.autotyped json.Thumbnail }
+// let url = lmdb_read_write { return! RDF_Literal.autotyped json.Url }
+// let extent = lmdb_read_write { return! RDF_Literal.autotyped json.Extent }
+// let accessInformation = lmdb_read_write { return! RDF_Literal.autotyped json.AccessInformation }
+// let licenseInfo = lmdb_read_write { return! RDF_Literal.autotyped json.LicenseInfo }
+
+module XRay =
+    module LCG_Stormwater_Inventory =
+
+        [<Literal>]
+        let file_path =
+            @"D:/Surface/Company/Environmental_Systems_Research_Institute/SDE_Schema_XRay/LCG_Stormwater_Inventory_updated/LCG_Stormwater_Inventory_Formatted.xml"
+
+        let navigator = XPathNavigator.Load(file_path)
+        let xml = XmlProvider<file_path>.Load file_path
+
+
+    module DatasetDescriptions =
+        [<Literal>]
+        let file_path =
+            @"D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\XRay\DatasetDescriptions.xlsx"
+
+        type Xlsx = ExcelFile<file_path>
+        let xlsx = new Xlsx()
+
+    module DomainCodedValues =
+        [<Literal>]
+        let file_path =
+            @"D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\XRay\DomainCodedValues.xlsx"
+
+        type Xlsx = ExcelFile<file_path>
+        let xlsx = new Xlsx()
+
+    module DomainDescriptions =
+        [<Literal>]
+        let file_path =
+            @"D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\XRay\DomainDescriptions.xlsx"
+
+        type Xlsx = ExcelFile<file_path>
+        let xlsx = new Xlsx()
+
+    module FieldDescriptions =
+        [<Literal>]
+        let file_path =
+            @"D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\XRay\FieldDescriptions.xlsx"
+
+        type Xlsx = ExcelFile<file_path>
+        let xlsx = new Xlsx()
+
+    module GISDatasets =
+        [<Literal>]
+        let file_path =
+            @"D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\XRay\GISDatasets.xlsx"
+
+        type Xlsx = ExcelFile<file_path>
+        let xlsx = new Xlsx()
+
+    module GISDomains =
+        [<Literal>]
+        let file_path =
+            @"D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\XRay\GISDomains.xlsx"
+
+        type Xlsx = ExcelFile<file_path>
+        let xlsx = new Xlsx()
+
+    module LCPW =
+        [<Literal>]
+        let file_path =
+            @"D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\XRay\LCPW.Htm"
+
+        let htm = HtmlDocument.Load file_path
+
+    module WorkspaceDescriptions =
+        [<Literal>]
+        let file_path =
+            @"D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\XRay\WorkspaceDescriptions.xlsx"
+
+        type Xlsx = ExcelFile<file_path>
+        let xlsx = new Xlsx()
 
 
 module gpservices =
@@ -87,6 +380,340 @@ module gpservices =
 
     module schema =
         let json = JsonProvider<file_path>.Load file_path
+
+    module DataTypes =
+        let directory_path =
+            @"D:\Surface\Company\Environmental_Systems_Research_Institute\ArcGIS\Pro\Resources\Help\gp\DataTypes"
+
+module MetaData =
+    [<Literal>]
+    let file_path =
+        @"D:/Surface/Company/Infor/Download_Center/Product/Operations_and_Regulations/Release/Infor_Public_Sector_2025_04_01/IPS_2025_04_01/Deployment Files/MetaData/MetaData.xml"
+
+    let xml = XmlProvider<file_path>.Load file_path
+    let navigator = XPathNavigator.Load(file_path)
+
+module Hansen8ClientProxies =
+    [<Literal>]
+    let file_path =
+        @"D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_2025_04_01\IPS_Web_Services_2025_04_01\ApplicationFiles\ClientProxies\Hansen8ClientProxies.dll"
+
+    let dll = Assembly.LoadFile file_path
+
+
+(*
+
+
+XRay.DatasetDescriptions.xlsx.Data
+|> Seq.toArray
+|> Array.map (fun data_row -> data_row.``DataElement Name``)
+
+Directory.EnumerateFiles(@"D:\Surface\Company\Environmental_Systems_Research_Institute\SDE_Schema_XRay\XRay")
+|> String.concat "\n"
+|> clip
+
+let namespace_manager =
+    new XmlNamespaceManager(XRay.LCG_Stormwater_Inventory.navigator.NameTable)
+
+let xsi_namespace =
+    XRay.LCG_Stormwater_Inventory.navigator
+    |> XPathNavigator.xmlns namespace_manager "xsi" "http://www.w3.org/2001/XMLSchema-instance"
+*)
+
+let xpath (expression: string) (xpath_navigator: XPathNavigator) =
+    let xpath_expression = XPathExpression.Compile(expression)
+    // xpath_expression.SetContext(namespace_manager)
+
+    xpath_navigator
+        .Select(
+            xpath_expression
+        )
+        .toElementArray
+
+
+
+
+let layer_name_by_FeatureClass'Name =
+    Map.ofArray [|
+
+
+                   "Bridge", "Bridge"
+                   "BridgePoint", "Bridge Point"
+                   "Conduit", "Conduit"
+                   "Connectivity", "Connectivity"
+                   "CulvertCrossDrain", "Culvert Cross Drain"
+                   "Damage", "Damage"
+                   "DebrisTrap", "Debris Trap"
+                   "Ditch", "Ditch"
+                   "DitchPoint", "Ditch Point"
+                   "EndPoint", "End Point"
+                   "GenericStormAsset", "Generic Storm Asset"
+                   "Inlet", "Inlet"
+                   "Interference", "Interference"
+                   "Junction_fixed", "Junction Fixed"
+                   "MediaPoints", "Media Points"
+                   "MediaPointsWithoutPhotos", "Media Points Without Photos"
+                   "Outfall", "Outfall"
+                   "Outfall_DrainageArea", "Outfall Drainage Area"
+                   "Outfall_DrainageArea_MOF", "Outfall Drainage Area MOF"
+                   "Outfall_DrainageArea_MS4", "Outfall Drainage Area MS4"
+                   "PollutionControlBox", "Pollution Control Box"
+                   "PrivatePoint", "Private Point"
+                   "StormwaterPond", "Stormwater Pond"
+                   "StormwaterPond_MediaPoints", "Stormwater Pond Media Points"
+                   "StormwaterPondDischarge", "Stormwater Pond Discharge"
+                   "StormwaterPondTopOfBank", "Stormwater Pond - Top of Bank"
+
+                    |]
+
+let layer_names_with_unit_ids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.choose (fun Layer ->
+        let fields =
+            Layer.Fields
+            |> Array.Parallel.map (fun Field -> Field.Name)
+            |> Set.ofArray
+        if fields.Contains("UNITID") then
+            Some(Layer.Name)
+        else
+            None)
+    |> Set.ofArray
+
+let layer_names_without_unit_ids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.choose (fun Layer ->
+        let fields =
+            Layer.Fields
+            |> Array.Parallel.map (fun Field -> Field.Name)
+            |> Set.ofArray
+        if fields.Contains("UNITID") then
+            None
+        else
+            Some(Layer.Name))
+    |> Set.ofArray
+
+let layer_names_with_global_ids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.choose (fun Layer ->
+        let fields =
+            Layer.Fields
+            |> Array.Parallel.map (fun Field -> Field.Name)
+            |> Set.ofArray
+        if fields.Contains("GLOBALID") then
+            Some(Layer.Name)
+        else
+            None)
+    |> Set.ofArray
+
+let layer_names_with_globalids_without_unit_ids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.choose (fun Layer ->
+        let fields =
+            Layer.Fields
+            |> Array.Parallel.map (fun Field -> Field.Name)
+            |> Set.ofArray
+        if
+            fields.Contains("GLOBALID")
+            && not (fields.Contains("UNITID"))
+        then
+            Some(Layer.Name)
+        else
+            None)
+    |> Set.ofArray
+
+let layer_names_with_global_id_and_unit_ids =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.choose (fun Layer ->
+        let fields =
+            Layer.Fields
+            |> Array.Parallel.map (fun Field -> Field.Name)
+            |> Set.ofArray
+        if
+            fields.Contains("GLOBALID")
+            && fields.Contains("UNITID")
+        then
+            Some(Layer.Name)
+        else
+            None)
+    |> Set.ofArray
+
+let relevent_ids =
+    set [
+
+
+          "ATTACHEDTOID"
+          "FACILITYID"
+          "GLOBALID"
+          "HYD_ID"
+          "OUTFALLID"
+          "PARENTID"
+          "STRUCTUREID"
+          "UPSTREAMSTUCTUREID"
+
+           ]
+
+let relevent_domain_attributes =
+    set [
+
+
+          "DIAMETER"
+          "FILTERLOCATION"
+          "MAINTBY"
+          "MATERIAL"
+          "OWNER"
+          "PIPESHAPE"
+          "PONDTYPE"
+
+           ]
+
+let relevent_attributes =
+    set [
+
+
+
+          "DESCRIPTION"
+          "DOWNSTREAM_DEPTH"
+          "DOWNSTREAM_ELEV"
+          "DOWNSTREAMDEPTH"
+          "DOWNSTREAMELEVATION"
+          "DRAINAGEBASIN"
+          "FILTERTYPE"
+          "HEIGHT"
+          "INVERT_ELEV"
+          "INVERTELEV"
+          "LFEET"
+          "LOC_DESC"
+          "LOCATION"
+          "NOTES"
+          "OUTFALLTYPE"
+          "PONDYR"
+          "RELATEDFEATURE"
+          "SLOT_ELEV"
+          "STRCT_DEPTH"
+          "STRUCTURETYPE"
+          "SUBTYPEFIELD"
+          "SURFACETYPE"
+          "UPSTREAM_DEPTH"
+          "UPSTREAM_ELEV"
+          "UPSTREAMDEPTH"
+          "UPSTREAMELEVATION"
+          "WATERBODYNAME"
+          "WIDTH"
+          "ZVALUE"
+
+
+           ]
+
+let table_databaseName_from_name =
+
+    MetaData.navigator
+    |> xpath "//table"
+    |> Array.Parallel.map (fun table -> table.Attribute "name", table.Attribute "databaseName")
+    |> Map.ofArray
+
+(*
+    [|
+
+       "StormBackflowPreventer", "COMPSTBF"
+       "StormChannel", "COMPSTCH"
+       "StormChannelDrainageConnection", "COMPDRCN"
+       "StormInlet", "COMPSTIN"
+       "StormLevee", "COMPSTLV"
+       "StormLiftStation", "COMPSTLS"
+       "StormMain", "COMPSTMN"
+       "StormManhole", "COMPSTMH"
+       "StormMeter", "COMPSTMT"
+       "StormMeterComponent", "COMPSTMC"
+       "StormMeterRegister", "COMPSTMR"
+       "StormMiscellaneous", "COMPSTMS"
+       "StormNode", "COMPSTND"
+       "StormPump", "COMPSTP"
+       "StormServiceLine", "COMPSTSL"
+       "StormStorageBasin", "COMPSTSB"
+       "StormValve", "COMPSTV"
+       "Complex", "COMPCPLX"
+
+
+       |]
+
+    *)
+
+let table_key_from_name (table_name: string) =
+
+    let result =
+        query {
+            for Dbtable in InforProdSql.operations.MetaData.Dbtable do
+                where (Dbtable.Commonid.Value = table_name)
+                select Dbtable.Tablekey
+        }
+        |> Seq.toArray
+    if result.Length < 1 then
+        None
+    else
+        Some(result[0])
+
+module Normalize =
+    let field (field_name: string) =
+        match field_name with
+        | "INVERT_ELEV" -> "INVERTELEV"
+        | "DOWNSTREAM_DEPTH" -> "DOWNSTREAMDEPTH"
+        | "DOWNSTREAM_ELEV" -> "DOWNSTREAMELEVATION"
+        | "FIELD_COMMENTS_" -> "FIELD_COMMENTS"
+        | "LOC_DESC" -> "LOCATION"
+        | "UPSTREAM_ELEV" -> "UPSTREAMELEVATION"
+        | "UPSTREAM_DEPTH" -> "UPSTREAMDEPTH"
+
+        | _ -> field_name
+
+    let maint_by (code: string) =
+
+        match code with
+
+        | "Public Works Operations" -> "PWOPR"
+        | "Private" -> "PVT"
+        | "Unknown" -> "UNKN"
+        | "Florida DOT" -> "DOT"
+        | "FDOT" -> "DOT" // TODO report to GIS malformed coded value
+        | "Leon County" -> "CNTY"
+        | "State of Florida" -> "STATE"
+        | "Abandonded" -> "ABND"
+        | _ -> code
+
+    // TODO report to GIS that dDomainEndPointMaterial strings for name and code are swapped
+    let material (code: string) =
+
+        match code with
+        | "CONCRETE" -> "CON"
+        | "BRICK" -> "BRK"
+        | "RUBBLE ROCK" -> "RR"
+        | "CEMENT BAGS" // TODO report misnamed coded value to GIS
+        | "SAND CEMENT BAG" -> "SCB"
+        | "DIRT" -> "DRT"
+        | "OTHER" -> "OTH"
+        | "NOT ASSESSED" -> "NA"
+        | "UNKNOWN" -> "UNK"
+        | _ -> code
+
+    let owner (code: string) =
+        match code with
+
+        | "FDOT" -> "DOT" // TODO report to GIS malformed coded value
+        | "Private" -> "PVT" // TODO report to GIS malformed coded value
+        | _ -> code
+
+    let pipe_shape (code: string) =
+
+        match code with
+        // TODO report to GIS malformed domain value
+        | "ROUND" -> "RND"
+        | _ -> code
+
+    let surface_type (code: string) =
+        match code with
+        // TODO report to GIS malformed domain value
+        | "Dirt" -> "DIRT"
+        | "Grass" -> "GRASS"
+        | _ -> code
 
 
 
@@ -121,7 +748,6 @@ module gpservices =
 
 // TODO look for ANY data about the specific relationships above
 
-
 // | "Culvert Cross Drain" -> "StormServiceLine"
 // | "Debris Trap" -> "StormValve"
 // | "End Point" -> "StormNode"
@@ -133,11 +759,51 @@ module gpservices =
 // TODO identify endpoints to resolve these failing mapping
 // | "Conduit" -> "StormMain"
 // | "Ditch" -> "StormChannel"
+(*
+Infor Storm Asset Tables by Table Type
+
+
+SimpleAsset
+  StormBackflowPreventer
+  StormInlet
+  StormLevee
+  StormManhole
+  StormNode
+  StormServiceLine
+  StormStorageBasin
 
 
 
+MainlineAsset
+  StormChannel
+  StormMain
 
-let SW_Prefixes =
+
+
+Table
+  StormChannelDrainageConnection
+
+
+
+CompoundAsset
+  StormLiftStation
+  StormMiscellaneous
+
+
+
+EquipmentAsset
+  StormMeter
+  StormMeterComponent
+  StormMeterRegister
+  StormPump
+  StormValve
+
+*)
+
+
+
+(*
+let unitid_prefix_by_Layer'Name =
     Map.ofArray [|
 
                    "Conduit", "PI"
@@ -148,496 +814,4681 @@ let SW_Prefixes =
                    "Inlet", "IN"
                    "Junction Fixed", "JN"
                    "Outfall", "OF"
+                   "Stormwater Pond", "SP"
                    "Stormwater Pond Discharge", "SD"
 
                     |]
 
 
-(*
 
 let feature_layer_names =
     LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
     |> Array.Parallel.map (fun layer -> layer.Name)
     |> Array.distinct
 
+
+
+LCPW_OverlayStormwaterInfrastructure_D_WM.json.JsonValue.PropertyKeys
+
+let Map_Server_Keys =
+    [|
+
+       "currentVersion"
+       "serviceDescription"
+       "mapName"
+       "description"
+       "copyrightText"
+       "supportsDynamicLayers"
+       "layers"
+       "tables"
+       "spatialReference"
+       "singleFusedMapCache"
+       "initialExtent"
+       "fullExtent"
+       "minScale"
+       "maxScale"
+       "units"
+       "supportedImageFormatTypes"
+       "documentInfo"
+       "capabilities"
+       "supportedQueryFormats"
+       "exportTilesAllowed"
+       "referenceScale"
+       "supportsDatumTransformation"
+       "maxRecordCount"
+       "maxImageHeight"
+       "maxImageWidth"
+       "supportedExtensions"
+       "culture"
+       "name"
+       "guid"
+       "catalogPath"
+       "snippet"
+       "summary"
+       "title"
+       "tags"
+       "type"
+       "typeKeywords"
+       "thumbnail"
+       "url"
+       "extent"
+       "accessInformation"
+       "licenseInfo"
+
+       |]
+// definitions.ILayerDefinition
+gpservices.schema.json.Definitions.ILayerDefinition.Properties.JsonValue?capabilities?description
+
+
+
+
+
+
+
+LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+|> Array.Parallel.collect (fun Layer -> Layer.JsonValue.ScalarKeyValues)
+|> Array.Parallel.choose (fun (key, value) ->
+    match value with
+
+    | JsonValue.String string_value when String.IsNullOrWhiteSpace(string_value) -> None
+    | JsonValue.Number number_value when number_value = 0M -> None
+    | JsonValue.Float float_value when float_value <> 0 -> None
+    | _ -> Some(key))
+|> Array.distinct
+
+LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers[0]
+
 *)
-let GPFeatureLayer_names =
+let Layer_Keys =
     [|
 
-       "Bridge Point"
-       "Bridge"
-       "Conduit"
-       "Connectivity"
-       "Culvert Cross Drain"
-       "Damage"
-       "Debris Trap"
-       "Ditch Point"
-       "Ditch"
-       "Drainage Network"
-       "End Point"
-       "Generic Storm Asset"
-       "Inlet"
-       "Interference"
-       "Junction Fixed"
-       "Media Points Without Photos"
-       "Media Points"
-       "Non-Drainage Network"
-       "Outfall Drainage Area MOF"
-       "Outfall Drainage Area MS4"
-       "Outfall Drainage Area"
-       "Outfall"
-       "Pollution Control Box"
-       "Private Point"
-       "Stormwater Pond - Top of Bank"
-       "Stormwater Pond Discharge"
-       "Stormwater Pond"
-
-       |]
-
-
-let DEFeatureClass_names =
-    [|
-
-       "Bridge"
-       "BridgePoin_names"
-       "Conduit"
-       "Connectivity"
-       "CulvertCrossDrain"
-       "Damage"
-       "DebrisTrap"
-       "Ditch"
-       "DitchPoint"
-       "EndPoint"
-       "GenericStormAsset"
-       "Inlet"
-       "Interference"
-       "Junction_fixed"
-       "MediaPoints"
-       "MediaPointsWithoutPhotos"
-       "Outfall"
-       "Outfall_DrainageArea"
-       "Outfall_DrainageArea_MOF"
-       "Outfall_DrainageArea_MS4"
-       "PollutionControlBox"
-       "PrivatePoint"
-       "StormwaterPond"
-       "StormwaterPondDischarge"
-       "StormwaterPondTopOfBank"
+       "name"
+       "parentLayerId"
+       "defaultVisibility"
+       "type"
+       "currentVersion"
+       "hasAttachments"
+       "htmlPopupType"
+       "canModifyLayer"
+       "canScaleSymbols"
+       "hasLabels"
+       "capabilities"
+       "supportsStatistics"
+       "supportsAdvancedQueries"
+       "supportedQueryFormats"
+       "isDataVersioned"
+       "useStandardizedQueries"
+       "supportsCoordinatesQuantization"
+       "id"
+       "minScale"
+       "geometryType"
+       "displayField"
+       "maxRecordCount"
+       "supportsDatumTransformation"
+       "count"
+       "displayFieldName"
+       "exceededTransferLimit"
+       "hasZ"
 
        |]
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module www2k =
+
+
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"http://www.w3.org/2000/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let xmlns = _vocab "xmlns"
+
+
+
+
+/// https://www.rfc-editor.org/info/rfc2397/
+module data =
+    let url (mediatype: string) (charset: string) (data_string: string) (transaction: LightningTransaction) =
+        let lexical_form =
+            Lexical_Form.from_string $"data:{mediatype};charset={charset};{Uri.EscapeDataString(data_string)}" transaction
+        RDF_Term.from_atomic_iri { lexical_form_id = lexical_form.lexical_form_id } transaction
+
+    module text =
+        let plain (text: string) = url "text/plain" "UTF-8" text
+
+
+module concept =
+
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/concept/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _gis (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            let low_lined = local_name_string.Replace("\\", "-").low_lined
+            Lexical_Form.from_string $"gis.{low_lined}" transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+
+    let _woedms (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            let low_lined = local_name_string.Replace("\\", "-").low_lined
+            Lexical_Form.from_string $"woedms.{low_lined}" transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    module gis =
+        let _vocab (local_name_string: string) =
+            lmdb_read_write {
+                let! local_name = Lexical_Form.from_string $"gis.{local_name_string.low_lined}"
+
+                return!
+                    RDF_Term.from_namespaced_iri
+                        { namespace_name_id = _namespace_name.lexical_form_id
+                          local_name_id = local_name.lexical_form_id }
+            }
+
+        let feature = _vocab "feature"
+
+    module woedms =
+
+        let _vocab (local_name_string: string) =
+            lmdb_read_write {
+                let! local_name = Lexical_Form.from_string $"woedms.{local_name_string.low_lined}"
+
+                return!
+                    RDF_Term.from_namespaced_iri
+                        { namespace_name_id = _namespace_name.lexical_form_id
+                          local_name_id = local_name.lexical_form_id }
+            }
+
+        let asset = _vocab "asset"
+
+
+
+
+
+
+/// http://www.esri.com/metadata/esriprof80.html
 module esri =
-    let _prefix = prefix_label "esri"
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"http://www.esri.com/schemas/ArcGIS/3.3.0/" }
 
-    let _prefixes = prefix_labels "esri"
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
 
-    let Workspace = _prefix "Workspace"
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
 
-    /// Feature Class
-    /// A collection of spatial data with the same shape type: point, multipoint, polyline, and polygon.
-    let DEFeatureClass = _prefix "DEFeatureClass"
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
 
-    /// Feature Dataset
-    /// A collection of feature classes that share a common geographic area and the same spatial reference system.
-    let DEFeatureDataset = _prefix "DEFeatureDataset"
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
 
-module swin =
-    let _prefix = prefix_label "swin"
-    let _prefixes = prefix_labels "swin"
+    let DataElement = _vocab "DataElement"
+    let DEDataset = _vocab "DEDataset"
+    let DETable = _vocab "DETable"
+    let DEGeoDataset = _vocab "DEGeoDataset"
+    let DEFeatureClass = _vocab "DEFeatureClass"
+    let Name = _vocab "Name"
+    let Code = _vocab "Code"
 
-    let _context =
-        let term = _prefix ""
-        Quad_Context.NamedGraph term.rdf_term_id.to_encoding
 
-module intraraster =
-    let _prefix = prefix_label "intraraster"
-    let _prefixes = prefix_labels "intraraster"
-    let _context = _prefix ""
-    let _Feature name = _prefix ($"{name}_Feature")
+    let ArcGISMapServiceLayer = _vocab "ArcGISMapServiceLayer"
+    let Workspace = _vocab "Workspace"
+    let MapService = _vocab "MapService"
+    let WorkspaceDefinition = _vocab "WorkspaceDefinition"
+    let WorkspaceType = _vocab "WorkspaceType"
+    let esriLocalDatabaseWorkspace = _vocab "esriLocalDatabaseWorkspace"
 
-    let Bridge_Point_Feature = _Feature "Bridge Point"
+    /// Creation Date
+    let CreaDate = _vocab "CreaDate"
+    /// Creation Time
+    let CreaTime = _vocab "CreaTime"
+    /// Synchronize Once
+    let SyncOnce = _vocab "SyncOnce"
+    /// Synchronization Date
+    let SyncDate = _vocab "SyncDate"
+    /// Synchronization Time
+    let SyncTime = _vocab "SyncTime"
+    /// Modification Date
+    let ModDate = _vocab "ModDate"
+    /// Modification Time
+    let ModTime = _vocab "ModTime"
+    /// Data Properties
+    let DataProperties = _vocab "DataProperties"
+    /// Subtype Code
+    let stcode = _vocab "stcode"
+    /// Subtype Name
+    let stname = _vocab "stname"
+    /// Identification Information
+    let idinfo = _vocab "idinfo"
+    /// Citation
+    let citation = _vocab "citation"
+    /// Citation Information
+    let citeinfo = _vocab "citeinfo"
+    /// Description
+    let descript = _vocab "descript"
+    /// Abstract
+    let ``abstract`` = _vocab "abstract"
+    /// Purpose
+    let purpose = _vocab "purpose"
+    /// Language of Dataset
+    let langdata = _vocab "langdata"
+    /// Time Period of Content
+    let timeperd = _vocab "timeperd"
+    /// Time Period Information
+    let timeinfo = _vocab "timeinfo"
+    /// Currentness Reference
+    let current = _vocab "current"
+    /// Status
+    let status = _vocab "status"
+    /// Progress
+    let progress = _vocab "progress"
+    /// Maintenance and Update Frequency
+    let update = _vocab "update"
+    /// Spatial Domain
+    let spdom = _vocab "spdom"
+    /// Bounding Coordinates
+    let bounding = _vocab "bounding"
+    /// West Bounding Coordinate
+    let westbc = _vocab "westbc"
+    /// East Bounding Coordinate
+    let eastbc = _vocab "eastbc"
+    /// North Bounding Coordinate
+    let northbc = _vocab "northbc"
+    /// South Bounding Coordinate
+    let southbc = _vocab "southbc"
+    /// Local Bounding Coordinates
+    let lboundng = _vocab "lboundng"
+    /// Top Bounding Coordinate
+    let topbc = _vocab "topbc"
+    /// Bottom Bounding Coordinate
+    let bottombc = _vocab "bottombc"
+    /// Left Bounding Coordinate
+    let leftbc = _vocab "leftbc"
+    /// Right Bounding Coordinate
+    let rightbc = _vocab "rightbc"
+    /// Keywords
+    let keywords = _vocab "keywords"
+    /// Theme
+    let theme = _vocab "theme"
+    /// Theme Keyword Thesaurus
+    let themekt = _vocab "themekt"
+    /// Theme Keyword
+    let themekey = _vocab "themekey"
+    /// Place
+    let place = _vocab "place"
+    /// Place Keyword
+    let placekey = _vocab "placekey"
+    /// Access Constraints
+    let accconst = _vocab "accconst"
+    /// Use Constraints
+    let useconst = _vocab "useconst"
+    /// Point of Contact
+    let ptcontac = _vocab "ptcontac"
+    /// Contact Information
+    let cntinfo = _vocab "cntinfo"
+    /// Native Dataset Environment
+    let native = _vocab "native"
+    /// Native Dataset Format
+    let natvform = _vocab "natvform"
+    /// Data Quality Information
+    let dataqual = _vocab "dataqual"
+    /// Attribute Accuracy
+    let attracc = _vocab "attracc"
+    /// Lineage
+    let lineage = _vocab "lineage"
+    /// Process Step
+    let procstep = _vocab "procstep"
+    /// Process Description
+    let procdesc = _vocab "procdesc"
+    /// Source Used Citation Abbreviation
+    let srcused = _vocab "srcused"
+    /// Process Date
+    let procdate = _vocab "procdate"
+    /// Process Time
+    let proctime = _vocab "proctime"
+    /// Spatial Data Organization Information
+    let spdoinfo = _vocab "spdoinfo"
+    /// Direct Spatial Reference Method
+    let direct = _vocab "direct"
+    /// Point and Vector Object Information
+    let ptvctinf = _vocab "ptvctinf"
+    /// ESRI Terms Description
+    let esriterm = _vocab "esriterm"
+    /// ESRI Feature Type
+    let efeatyp = _vocab "efeatyp"
+    /// ESRI Feature Geometry
+    let efeageom = _vocab "efeageom"
+    /// ESRI Topology
+    let esritopo = _vocab "esritopo"
+    /// ESRI Feature Count
+    let efeacnt = _vocab "efeacnt"
+    /// Spatial Index
+    let spindex = _vocab "spindex"
+    /// Linear Referencing
+    let linrefer = _vocab "linrefer"
+    /// Spatial Reference Information
+    let spref = _vocab "spref"
+    /// Horizontal Coordinate System Definition
+    let horizsys = _vocab "horizsys"
+    /// Coordinate System Name
+    let cordsysn = _vocab "cordsysn"
+    /// Projected Coordinate System Name
+    let projcsn = _vocab "projcsn"
+    /// Geographic Coordinate System Name
+    let geogcsn = _vocab "geogcsn"
+    /// Planar
+    let planar = _vocab "planar"
+    /// Planar Coordinate Information
+    let planci = _vocab "planci"
+    /// Planar Coordinate Encoding Method
+    let plance = _vocab "plance"
+    /// Coordinate Representation
+    let coordrep = _vocab "coordrep"
+    /// Abscissa Resolution
+    let absres = _vocab "absres"
+    /// Planar Distance Units
+    let plandu = _vocab "plandu"
+    /// Geodetic Model
+    let geodetic = _vocab "geodetic"
+    /// Horizontal Datum Name
+    let horizdn = _vocab "horizdn"
+    /// Ellipsoid Name
+    let ellips = _vocab "ellips"
+    /// Semi-Major Axis
+    let semiaxis = _vocab "semiaxis"
+    /// Denominator of Flattening Ratio
+    let denflat = _vocab "denflat"
+    /// Vertical Coordinate System Definition
+    let vertdef = _vocab "vertdef"
+    /// Altitude System Definition
+    let altsys = _vocab "altsys"
+    /// Altitude Encoding Method
+    let altenc = _vocab "altenc"
+    /// Entity and Attribute Information
+    let eainfo = _vocab "eainfo"
+    /// Entity Type
+    let enttyp = _vocab "enttyp"
+    /// Entity Type Label
+    let enttypl = _vocab "enttypl"
+    /// Entity Type Type
+    let enttypt = _vocab "enttypt"
+    /// Entity Type Count
+    let enttypc = _vocab "enttypc"
+    /// Attribute
+    let attr = _vocab "attr"
+    /// Attribute Label
+    let attrlabl = _vocab "attrlabl"
+    /// Attribute Alias
+    let attalias = _vocab "attalias"
+    /// Attribute Definition
+    let attrdef = _vocab "attrdef"
+    /// Attribute Definition Source
+    let attrdefs = _vocab "attrdefs"
+    /// Attribute Type
+    let attrtype = _vocab "attrtype"
+    /// Attribute Width
+    let attwidth = _vocab "attwidth"
+    /// Attribute Precision
+    let atprecis = _vocab "atprecis"
+    /// Attribute Scale
+    let attscale = _vocab "attscale"
+    /// Attribute Domain Values
+    let attrdomv = _vocab "attrdomv"
+    /// Unrepresentable Domain
+    let udom = _vocab "udom"
+    /// Subtype Information
+    let subtype = _vocab "subtype"
+    /// Subtype Attribute
+    let stfield = _vocab "stfield"
+    /// Subtype Attribute Name
+    let stfldnm = _vocab "stfldnm"
+    /// Subtype Default Value
+    let stflddv = _vocab "stflddv"
+    /// Attribute Defined Domain
+    let stflddd = _vocab "stflddd"
+    /// Domain Name
+    let domname = _vocab "domname"
+    /// Domain Description
+    let domdesc = _vocab "domdesc"
+    /// Domain Owner
+    let domowner = _vocab "domowner"
+    /// Domain Attribute Type
+    let domfldtp = _vocab "domfldtp"
+    /// Domain Type
+    let domtype = _vocab "domtype"
+    /// Split Rule
+    let splttype = _vocab "splttype"
+    /// Distribution Information
+    let distinfo = _vocab "distinfo"
+    /// Resource Description
+    let resdesc = _vocab "resdesc"
+    /// Metadata Reference Information
+    let metainfo = _vocab "metainfo"
+    /// Metadata Date
+    let metd = _vocab "metd"
+    /// Language of Metadata
+    let langmeta = _vocab "langmeta"
+    /// Metadata Contact
+    let metc = _vocab "metc"
+    /// Metadata Standard Name
+    let metstdn = _vocab "metstdn"
+    /// Metadata Standard Version
+    let metstdv = _vocab "metstdv"
+    /// Metadata Time Convention
+    let mettc = _vocab "mettc"
+    /// Metadata Extensions
+    let metextns = _vocab "metextns"
+    /// Online Linkage
+    let onlink = _vocab "onlink"
+    /// Profile Name
+    let metprof = _vocab "metprof"
+    /// Originator
+    let origin = _vocab "origin"
+    /// Publication Date
+    let pubdate = _vocab "pubdate"
+    /// Title
+    let title = _vocab "title"
+    /// File or Table Name
+    let ftname = _vocab "ftname"
+    /// Geospatial Data Presentation Form
+    let geoform = _vocab "geoform"
+    /// Publication Information
+    let pubinfo = _vocab "pubinfo"
+    /// Publication Place
+    let pubplace = _vocab "pubplace"
+    /// Publisher
+    let publish = _vocab "publish"
+    /// Single Date/Time
+    let sngdate = _vocab "sngdate"
+    /// Calendar Date
+    let caldate = _vocab "caldate"
+    /// Contact Person
+    let cntper = _vocab "cntper"
+    /// Contact Organization
+    let cntorg = _vocab "cntorg"
+    /// Contact Organization Primary
+    let cntorgp = _vocab "cntorgp"
+    /// Contact Address
+    let cntaddr = _vocab "cntaddr"
+    /// Address Type
+    let addrtype = _vocab "addrtype"
+    /// Address
+    let address = _vocab "address"
+    /// City
+    let city = _vocab "city"
+    /// State or Province
+    let state = _vocab "state"
+    /// Postal Code
+    let postal = _vocab "postal"
+    /// Contact Voice Telephone
+    let cntvoice = _vocab "cntvoice"
+    /// Hours of Service
+    let hours = _vocab "hours"
+    let CodedValueDomain = _vocab "CodedValueDomain"
+    let CodedValue = _vocab "CodedValue"
+    let FieldType = _vocab "FieldType"
+    let DEFeatureDataset = _vocab "DEFeatureDataset"
+    let DatasetType = _vocab "DatasetType"
+    let esriDTFeatureDataset = _vocab "esriDTFeatureDataset"
+    ///   <Description>A reference to a feature class, including symbology and rendering properties.</Description>
+    let GPFeatureLayer = _vocab "GPFeatureLayer"
+    let DisplayName = _vocab "DisplayName"
+    let Description = _vocab "Description"
+    let Field = _vocab "Field"
+
+
+
+    let coded_value = _vocab "coded_value"
+    let code = _vocab "code"
+    let value = _vocab "value"
+    let field_type = _vocab "field_type"
+
+    module _literal =
+        module label =
+            let CreaDate = RDF_Literal.simple "Creation Date"
+            let CreaTime = RDF_Literal.simple "Creation Time"
+            let SyncOnce = RDF_Literal.simple "Synchronize Once"
+            let SyncDate = RDF_Literal.simple "Synchronization Date"
+            let SyncTime = RDF_Literal.simple "Synchronization Time"
+            let ModDate = RDF_Literal.simple "Modification Date"
+            let ModTime = RDF_Literal.simple "Modification Time"
+            let DataProperties = RDF_Literal.simple "Data Properties"
+            let stcode = RDF_Literal.simple "Subtype Code"
+            let stname = RDF_Literal.simple "Subtype Name"
+            let idinfo = RDF_Literal.simple "Identification Information"
+            let citation = RDF_Literal.simple "Citation"
+            let citeinfo = RDF_Literal.simple "Citation Information"
+            let descript = RDF_Literal.simple "Description"
+            let ``abstract`` = RDF_Literal.simple "Abstract"
+            let purpose = RDF_Literal.simple "Purpose"
+            let langdata = RDF_Literal.simple "Language of Dataset"
+            let timeperd = RDF_Literal.simple "Time Period of Content"
+            let timeinfo = RDF_Literal.simple "Time Period Information"
+            let current = RDF_Literal.simple "Currentness Reference"
+            let status = RDF_Literal.simple "Status"
+            let progress = RDF_Literal.simple "Progress"
+            let update = RDF_Literal.simple "Maintenance and Update Frequency"
+            let spdom = RDF_Literal.simple "Spatial Domain"
+            let bounding = RDF_Literal.simple "Bounding Coordinates"
+            let westbc = RDF_Literal.simple "West Bounding Coordinate"
+            let eastbc = RDF_Literal.simple "East Bounding Coordinate"
+            let northbc = RDF_Literal.simple "North Bounding Coordinate"
+            let southbc = RDF_Literal.simple "South Bounding Coordinate"
+            let lboundng = RDF_Literal.simple "Local Bounding Coordinates"
+            let topbc = RDF_Literal.simple "Top Bounding Coordinate"
+            let bottombc = RDF_Literal.simple "Bottom Bounding Coordinate"
+            let leftbc = RDF_Literal.simple "Left Bounding Coordinate"
+            let rightbc = RDF_Literal.simple "Right Bounding Coordinate"
+            let keywords = RDF_Literal.simple "Keywords"
+            let theme = RDF_Literal.simple "Theme"
+            let themekt = RDF_Literal.simple "Theme Keyword Thesaurus"
+            let themekey = RDF_Literal.simple "Theme Keyword"
+            let place = RDF_Literal.simple "Place"
+            let placekey = RDF_Literal.simple "Place Keyword"
+            let accconst = RDF_Literal.simple "Access Constraints"
+            let useconst = RDF_Literal.simple "Use Constraints"
+            let ptcontac = RDF_Literal.simple "Point of Contact"
+            let cntinfo = RDF_Literal.simple "Contact Information"
+            let native = RDF_Literal.simple "Native Dataset Environment"
+            let natvform = RDF_Literal.simple "Native Dataset Format"
+            let dataqual = RDF_Literal.simple "Data Quality Information"
+            let attracc = RDF_Literal.simple "Attribute Accuracy"
+            let lineage = RDF_Literal.simple "Lineage"
+            let procstep = RDF_Literal.simple "Process Step"
+            let procdesc = RDF_Literal.simple "Process Description"
+            let srcused = RDF_Literal.simple "Source Used Citation Abbreviation"
+            let procdate = RDF_Literal.simple "Process Date"
+            let proctime = RDF_Literal.simple "Process Time"
+            let spdoinfo = RDF_Literal.simple "Spatial Data Organization Information"
+            let direct = RDF_Literal.simple "Direct Spatial Reference Method"
+            let ptvctinf = RDF_Literal.simple "Point and Vector Object Information"
+            let esriterm = RDF_Literal.simple "ESRI Terms Description"
+            let efeatyp = RDF_Literal.simple "ESRI Feature Type"
+            let efeageom = RDF_Literal.simple "ESRI Feature Geometry"
+            let esritopo = RDF_Literal.simple "ESRI Topology"
+            let efeacnt = RDF_Literal.simple "ESRI Feature Count"
+            let spindex = RDF_Literal.simple "Spatial Index"
+            let linrefer = RDF_Literal.simple "Linear Referencing"
+            let spref = RDF_Literal.simple "Spatial Reference Information"
+            let horizsys = RDF_Literal.simple "Horizontal Coordinate System Definition"
+            let cordsysn = RDF_Literal.simple "Coordinate System Name"
+            let projcsn = RDF_Literal.simple "Projected Coordinate System Name"
+            let geogcsn = RDF_Literal.simple "Geographic Coordinate System Name"
+            let planar = RDF_Literal.simple "Planar"
+            let planci = RDF_Literal.simple "Planar Coordinate Information"
+            let plance = RDF_Literal.simple "Planar Coordinate Encoding Method"
+            let coordrep = RDF_Literal.simple "Coordinate Representation"
+            let absres = RDF_Literal.simple "Abscissa Resolution"
+            let plandu = RDF_Literal.simple "Planar Distance Units"
+            let geodetic = RDF_Literal.simple "Geodetic Model"
+            let horizdn = RDF_Literal.simple "Horizontal Datum Name"
+            let ellips = RDF_Literal.simple "Ellipsoid Name"
+            let semiaxis = RDF_Literal.simple "Semi-Major Axis"
+            let denflat = RDF_Literal.simple "Denominator of Flattening Ratio"
+            let vertdef = RDF_Literal.simple "Vertical Coordinate System Definition"
+            let altsys = RDF_Literal.simple "Altitude System Definition"
+            let altenc = RDF_Literal.simple "Altitude Encoding Method"
+            let eainfo = RDF_Literal.simple "Entity and Attribute Information"
+            let enttyp = RDF_Literal.simple "Entity Type"
+            let enttypl = RDF_Literal.simple "Entity Type Label"
+            let enttypt = RDF_Literal.simple "Entity Type Type"
+            let enttypc = RDF_Literal.simple "Entity Type Count"
+            let attr = RDF_Literal.simple "Attribute"
+            let attrlabl = RDF_Literal.simple "Attribute Label"
+            let attalias = RDF_Literal.simple "Attribute Alias"
+            let attrdef = RDF_Literal.simple "Attribute Definition"
+            let attrdefs = RDF_Literal.simple "Attribute Definition Source"
+            let attrtype = RDF_Literal.simple "Attribute Type"
+            let attwidth = RDF_Literal.simple "Attribute Width"
+            let atprecis = RDF_Literal.simple "Attribute Precision"
+            let attscale = RDF_Literal.simple "Attribute Scale"
+            let attrdomv = RDF_Literal.simple "Attribute Domain Values"
+            let udom = RDF_Literal.simple "Unrepresentable Domain"
+            let subtype = RDF_Literal.simple "Subtype Information"
+            let stfield = RDF_Literal.simple "Subtype Attribute"
+            let stfldnm = RDF_Literal.simple "Subtype Attribute Name"
+            let stflddv = RDF_Literal.simple "Subtype Default Value"
+            let stflddd = RDF_Literal.simple "Attribute Defined Domain"
+            let domname = RDF_Literal.simple "Domain Name"
+            let domdesc = RDF_Literal.simple "Domain Description"
+            let domowner = RDF_Literal.simple "Domain Owner"
+            let domfldtp = RDF_Literal.simple "Domain Attribute Type"
+            let domtype = RDF_Literal.simple "Domain Type"
+            let splttype = RDF_Literal.simple "Split Rule"
+            let distinfo = RDF_Literal.simple "Distribution Information"
+            let resdesc = RDF_Literal.simple "Resource Description"
+            let metainfo = RDF_Literal.simple "Metadata Reference Information"
+            let metd = RDF_Literal.simple "Metadata Date"
+            let langmeta = RDF_Literal.simple "Language of Metadata"
+            let metc = RDF_Literal.simple "Metadata Contact"
+            let metstdn = RDF_Literal.simple "Metadata Standard Name"
+            let metstdv = RDF_Literal.simple "Metadata Standard Version"
+            let mettc = RDF_Literal.simple "Metadata Time Convention"
+            let metextns = RDF_Literal.simple "Metadata Extensions"
+            let onlink = RDF_Literal.simple "Online Linkage"
+            let metprof = RDF_Literal.simple "Profile Name"
+            let origin = RDF_Literal.simple "Originator"
+            let pubdate = RDF_Literal.simple "Publication Date"
+            let title = RDF_Literal.simple "Title"
+            let ftname = RDF_Literal.simple "File or Table Name"
+            let geoform = RDF_Literal.simple "Geospatial Data Presentation Form"
+            let pubinfo = RDF_Literal.simple "Publication Information"
+            let pubplace = RDF_Literal.simple "Publication Place"
+            let publish = RDF_Literal.simple "Publisher"
+            let sngdate = RDF_Literal.simple "Single Date/Time"
+            let caldate = RDF_Literal.simple "Calendar Date"
+            let cntper = RDF_Literal.simple "Contact Person"
+            let cntorg = RDF_Literal.simple "Contact Organization"
+            let cntorgp = RDF_Literal.simple "Contact Organization Primary"
+            let addrtype = RDF_Literal.simple "Address Type"
+            let address = RDF_Literal.simple "Address"
+            let city = RDF_Literal.simple "City"
+            let state = RDF_Literal.simple "State or Province"
+            let postal = RDF_Literal.simple "Postal Code"
+            let cntvoice = RDF_Literal.simple "Contact Voice Telephone"
+            let hours = RDF_Literal.simple "Hours of Service"
+
+module infor =
+
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"http://schema.infor.com/InforOAGIS/2/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let CodeTable = _vocab "CodeTable"
+    let Table = _vocab "Table"
+    let LinkTable = _vocab "LinkTable"
+    let AttachementLinkTable = _vocab "AttachementLinkTable"
+    let LinearAsset = _vocab "LinearAsset"
+    let MainlineAsset = _vocab "MainlineAsset"
+    let SegmentAsset = _vocab "SegmentAsset"
+    let EquipmentAsset = _vocab "EquipmentAsset"
+    let CompoundAsset = _vocab "CompoundAsset"
+    let SimpleAsset = _vocab "SimpleAsset"
+    let View = _vocab "View"
+    let TransactionCore = _vocab "TransactionCore"
+
+    let System_License = _vocab "System_License"
+    let Column = _vocab "Column"
+    let Domain_Column = _vocab "Domain_Column"
+    let Unique_Column = _vocab "Unique_Column"
+    let Product_Family = _vocab "Product_Family"
+
+    let Enumeration = _vocab "Enumeration"
+
+    // distinct infor element names
+    let column = _vocab "column"
+    let customCreateStatement = _vocab "customCreateStatement"
+    let domainColumn = _vocab "domainColumn"
+    let domainColumnReference = _vocab "domainColumnReference"
+    let enumeration = _vocab "enumeration"
+    let enumerationCheckConstraint = _vocab "enumerationCheckConstraint"
+    let enumerationValue = _vocab "enumerationValue"
+    let foreignColumnReference = _vocab "foreignColumnReference"
+    let foreignKeyConstraint = _vocab "foreignKeyConstraint"
+    let hansenDataDistribution = _vocab "hansenDataDistribution"
+    let hansenMetadata = _vocab "hansenMetadata"
+    let index = _vocab "index"
+    let localColumnReference = _vocab "localColumnReference"
+    let primaryKeyConstraint = _vocab "primaryKeyConstraint"
+    let productFamily = _vocab "productFamily"
+    let referencingConstraint = _vocab "referencingConstraint"
+    let requiredSystemLicense = _vocab "requiredSystemLicense"
+    let systemLicense = _vocab "systemLicense"
+    let table = _vocab "table"
+    let tableCheckConstraint = _vocab "tableCheckConstraint"
+    let text = _vocab "text"
+    let uniqueConstraint = _vocab "uniqueConstraint"
+    // distinct infor attribute names
+    let cardinalityChild = _vocab "cardinalityChild"
+    let cardinalityParent = _vocab "cardinalityParent"
+    let cardinalityUsedByApplication = _vocab "cardinalityUsedByApplication"
+    let commonId = _vocab "commonId"
+    let dataPrecision = _vocab "dataPrecision"
+    let dataScale = _vocab "dataScale"
+    let databaseName = _vocab "databaseName"
+    let defaultValue = _vocab "defaultValue"
+    let deleteRule = _vocab "deleteRule"
+    let deploymentStatus = _vocab "deploymentStatus"
+    let description = _vocab "description"
+    let direction = _vocab "direction"
+    let displayDescription = _vocab "displayDescription"
+    let displayName = _vocab "displayName"
+    let displayTitle = _vocab "displayTitle"
+    let displayTitleLong = _vocab "displayTitleLong"
+    let effectiveDateTime = _vocab "effectiveDateTime"
+    let enumerationName = _vocab "enumerationName"
+    let expiredDateTime = _vocab "expiredDateTime"
+    let hasNullRecord = _vocab "hasNullRecord"
+    let identitySeed = _vocab "identitySeed"
+    let identityStep = _vocab "identityStep"
+    let isAgencyEnhancable = _vocab "isAgencyEnhancable"
+    let isHansen = _vocab "isHansen"
+    let isLicensed = _vocab "isLicensed"
+    let isNullable = _vocab "isNullable"
+    let isRequired = _vocab "isRequired"
+    let isUnique = _vocab "isUnique"
+    let length = _vocab "length"
+    let locale = _vocab "locale"
+    let name = _vocab "name"
+    let oracleStatement = _vocab "oracleStatement"
+    let order = _vocab "order"
+    let owner = _vocab "owner"
+    let platform = _vocab "platform"
+    let remarks = _vocab "remarks"
+    let showSearchOrder = _vocab "showSearchOrder"
+    let statement = _vocab "statement"
+    let ``type`` = _vocab "type"
+    let useSearchOrder = _vocab "useSearchOrder"
+    let value = _vocab "value"
+    // distinct column names
+    let Code = _vocab "Code"
+    let Description = _vocab "Description"
+    let BackgroundColor = _vocab "BackgroundColor"
+    let IsException = _vocab "IsException"
+    let TextColor = _vocab "TextColor"
+    let BillableUsage = _vocab "BillableUsage"
+    let BillableUsageInCubicFeet = _vocab "BillableUsageInCubicFeet"
+    let FieldNotes = _vocab "FieldNotes"
+    let Inspection = _vocab "Inspection"
+    let IsCorrected = _vocab "IsCorrected"
+    let IsCycle = _vocab "IsCycle"
+    let IsEstimate = _vocab "IsEstimate"
+    let IsFinal = _vocab "IsFinal"
+    let IsInitial = _vocab "IsInitial"
+    let IsReadyToBill = _vocab "IsReadyToBill"
+    let ReadBy = _vocab "ReadBy"
+    let ReaderCode = _vocab "ReaderCode"
+    let Reading = _vocab "Reading"
+    let ReadingDateTime = _vocab "ReadingDateTime"
+    let ReadingKey = _vocab "ReadingKey"
+    let Reason = _vocab "Reason"
+    let Source = _vocab "Source"
+    let StormMeter = _vocab "StormMeter"
+    let Usage = _vocab "Usage"
+    let WorkOrder = _vocab "WorkOrder"
+    let GroupProject = _vocab "GroupProject"
+    let ServiceRequest = _vocab "ServiceRequest"
+    let Asset = _vocab "Asset"
+    let Index = _vocab "Index"
+    let IndexHistoryKey = _vocab "IndexHistoryKey"
+    let IndexValue = _vocab "IndexValue"
+    let InspectionCategory = _vocab "InspectionCategory"
+    let InspectionDate = _vocab "InspectionDate"
+    let Comments = _vocab "Comments"
+    let Attachment = _vocab "Attachment"
+    let IsDefault = _vocab "IsDefault"
+    let Observation = _vocab "Observation"
+    let AreaFeet = _vocab "AreaFeet"
+    let AreaMeters = _vocab "AreaMeters"
+    let InspectionKey = _vocab "InspectionKey"
+    let InspectionSampleUnitKey = _vocab "InspectionSampleUnitKey"
+    let LengthFeet = _vocab "LengthFeet"
+    let LengthMeters = _vocab "LengthMeters"
+    let SampleDescription = _vocab "SampleDescription"
+    let SampleUnitNumber = _vocab "SampleUnitNumber"
+    let WidthFeet = _vocab "WidthFeet"
+    let WidthMeters = _vocab "WidthMeters"
+    let ComponentType = _vocab "ComponentType"
+    let AssetLength = _vocab "AssetLength"
+    let AssetLengthUOM = _vocab "AssetLengthUOM"
+    let AssetWidth = _vocab "AssetWidth"
+    let AssetWidthUOM = _vocab "AssetWidthUOM"
+    let AssignedTo = _vocab "AssignedTo"
+    let CancelInspection = _vocab "CancelInspection"
+    let CompletedBy = _vocab "CompletedBy"
+    let CompletedDateTime = _vocab "CompletedDateTime"
+    let GroupInspection = _vocab "GroupInspection"
+    let GroupInspectionSchedule = _vocab "GroupInspectionSchedule"
+    let InspectionNumber = _vocab "InspectionNumber"
+    let InspectionSchedule = _vocab "InspectionSchedule"
+    let InspectionType = _vocab "InspectionType"
+    let PlanKey = _vocab "PlanKey"
+    let Responsibility = _vocab "Responsibility"
+    let ScheduledDateTime = _vocab "ScheduledDateTime"
+    let StartDateTime = _vocab "StartDateTime"
+    let Project = _vocab "Project"
+    let Priority = _vocab "Priority"
+    let Problem = _vocab "Problem"
+    let InspectionSource = _vocab "InspectionSource"
+    let InitiatedBy = _vocab "InitiatedBy"
+    let InitiatedDateTime = _vocab "InitiatedDateTime"
+    let ReferenceNumber = _vocab "ReferenceNumber"
+    let BudgetNumber = _vocab "BudgetNumber"
+    let ClassDescription = _vocab "ClassDescription"
+    let ClassName = _vocab "ClassName"
+    let DisplayOrder = _vocab "DisplayOrder"
+    let EffectiveDate = _vocab "EffectiveDate"
+    let ExpireDate = _vocab "ExpireDate"
+    let ServiceInspDetailKey = _vocab "ServiceInspDetailKey"
+    let Title = _vocab "Title"
+    let AddOnConditionFormula = _vocab "AddOnConditionFormula"
+    let DistanceTo = _vocab "DistanceTo"
+    let IsResolved = _vocab "IsResolved"
+    let MeasuredFrom = _vocab "MeasuredFrom"
+    let Measurement = _vocab "Measurement"
+    let ObservationDefinition = _vocab "ObservationDefinition"
+    let ObservationKey = _vocab "ObservationKey"
+    let ObservationSeverity = _vocab "ObservationSeverity"
+    let Offset = _vocab "Offset"
+    let OffsetUOM = _vocab "OffsetUOM"
+    let Rating = _vocab "Rating"
+    let RelativeDistanceFrom = _vocab "RelativeDistanceFrom"
+    let RelativeDistanceTo = _vocab "RelativeDistanceTo"
+    let ResolvedDate = _vocab "ResolvedDate"
+    let SampleUnit = _vocab "SampleUnit"
+    let StartDistance = _vocab "StartDistance"
+    let Width = _vocab "Width"
+    let WidthUOM = _vocab "WidthUOM"
+    let InspectionTypeKey = _vocab "InspectionTypeKey"
+    let StandardOperatingProcedure = _vocab "StandardOperatingProcedure"
+    let UnitOfWork = _vocab "UnitOfWork"
+    let InspTypeKey = _vocab "InspTypeKey"
+    let ObsDetailPageName = _vocab "ObsDetailPageName"
+    let ObservationCode = _vocab "ObservationCode"
+    let ObservationDefinitionKey = _vocab "ObservationDefinitionKey"
+    let ObservationDescription = _vocab "ObservationDescription"
+    let UnitOfMeasure = _vocab "UnitOfMeasure"
+    let WeightingFactor = _vocab "WeightingFactor"
+    let ObservationGroup = _vocab "ObservationGroup"
+    let ObservationSeverityDescription = _vocab "ObservationSeverityDescription"
+    let ObservationSeverityKey = _vocab "ObservationSeverityKey"
+    let UsageReading = _vocab "UsageReading"
+    let Weather = _vocab "Weather"
+    let PreCleaning = _vocab "PreCleaning"
+    let MediaNumber = _vocab "MediaNumber"
+    let SurveyedDepth = _vocab "SurveyedDepth"
+    let SurveyedDepthUOM = _vocab "SurveyedDepthUOM"
+    let SurveyedDiameter = _vocab "SurveyedDiameter"
+    let SurveyedDiameterUOM = _vocab "SurveyedDiameterUOM"
+    let IsGrouted = _vocab "IsGrouted"
+    let VTRIndex = _vocab "VTRIndex"
+    let PositionFrom = _vocab "PositionFrom"
+    let PositionTo = _vocab "PositionTo"
+    let SurveyedHeight = _vocab "SurveyedHeight"
+    let SurveyedHeightUOM = _vocab "SurveyedHeightUOM"
+    let Address = _vocab "Address"
+    let AddressQualifier = _vocab "AddressQualifier"
+    let Area = _vocab "Area"
+    let AsBuilt = _vocab "AsBuilt"
+    let AssetKey = _vocab "AssetKey"
+    let Complex = _vocab "Complex"
+    let District = _vocab "District"
+    let ExpiredBy = _vocab "ExpiredBy"
+    let GISStaticIdentifier = _vocab "GISStaticIdentifier"
+    let ID = _vocab "ID"
+    let InstalledDate = _vocab "InstalledDate"
+    let Location = _vocab "Location"
+    let MainLine = _vocab "MainLine"
+    let Manufacturer = _vocab "Manufacturer"
+    let MapNumber = _vocab "MapNumber"
+    let ModelNumber = _vocab "ModelNumber"
+    let Ownership = _vocab "Ownership"
+    let Parcel = _vocab "Parcel"
+    let SerialNumber = _vocab "SerialNumber"
+    let ServiceLine = _vocab "ServiceLine"
+    let ServiceStatus = _vocab "ServiceStatus"
+    let Site = _vocab "Site"
+    let Size = _vocab "Size"
+    let SizeUOM = _vocab "SizeUOM"
+    let SpecialInstructions = _vocab "SpecialInstructions"
+    let StreetSegment = _vocab "StreetSegment"
+    let SubArea = _vocab "SubArea"
+    let UnitDesc = _vocab "UnitDesc"
+    let UnitType = _vocab "UnitType"
+    let UsageArea = _vocab "UsageArea"
+    let XCoordinate = _vocab "XCoordinate"
+    let YCoordinate = _vocab "YCoordinate"
+    let ZCoordinate = _vocab "ZCoordinate"
+    let Organization = _vocab "Organization"
+    let AccessRoad = _vocab "AccessRoad"
+    let AccessRoadUnitOfMeasure = _vocab "AccessRoadUnitOfMeasure"
+    let BaseWidth = _vocab "BaseWidth"
+    let BaseWidthUOM = _vocab "BaseWidthUOM"
+    let ChannelWidth = _vocab "ChannelWidth"
+    let ChannelWidthUOM = _vocab "ChannelWidthUOM"
+    let ConstructionMaterial = _vocab "ConstructionMaterial"
+    let DesignCapacity = _vocab "DesignCapacity"
+    let DesignCapacityUOM = _vocab "DesignCapacityUOM"
+    let DesignFlow = _vocab "DesignFlow"
+    let DownstreamDepth = _vocab "DownstreamDepth"
+    let DownstreamDepthUOM = _vocab "DownstreamDepthUOM"
+    let DownstreamElevationUOM = _vocab "DownstreamElevationUOM"
+    let DownstreamInvertElevation = _vocab "DownstreamInvertElevation"
+    let EasementWidth = _vocab "EasementWidth"
+    let EasementWidthUOM = _vocab "EasementWidthUOM"
+    let GateLocation = _vocab "GateLocation"
+    let ID2 = _vocab "ID2"
+    let LeftBankHeight = _vocab "LeftBankHeight"
+    let LeftBankHeightUOM = _vocab "LeftBankHeightUOM"
+    let LeftBankMaterial = _vocab "LeftBankMaterial"
+    let LeftBankSlope = _vocab "LeftBankSlope"
+    let LeftBankSlopeUOM = _vocab "LeftBankSlopeUOM"
+    let LeftFenceType = _vocab "LeftFenceType"
+    let LeftLandUse = _vocab "LeftLandUse"
+    let Length = _vocab "Length"
+    let LengthUOM = _vocab "LengthUOM"
+    let LockDetails = _vocab "LockDetails"
+    let ParallelLineNumber = _vocab "ParallelLineNumber"
+    let RampLocation = _vocab "RampLocation"
+    let RightBankHeight = _vocab "RightBankHeight"
+    let RightBankHeightUOM = _vocab "RightBankHeightUOM"
+    let RightBankMaterial = _vocab "RightBankMaterial"
+    let RightBankSlope = _vocab "RightBankSlope"
+    let RightBankSlopeUOM = _vocab "RightBankSlopeUOM"
+    let RightFenceType = _vocab "RightFenceType"
+    let RightLandUse = _vocab "RightLandUse"
+    let Segment = _vocab "Segment"
+    let Shape = _vocab "Shape"
+    let Slope = _vocab "Slope"
+    let SlopeUOM = _vocab "SlopeUOM"
+    let UnitID2Asset = _vocab "UnitID2Asset"
+    let UnitID2Type = _vocab "UnitID2Type"
+    let UnitIDAsset = _vocab "UnitIDAsset"
+    let UnitIDType = _vocab "UnitIDType"
+    let UpstreamDepth = _vocab "UpstreamDepth"
+    let UpstreamDepthUOM = _vocab "UpstreamDepthUOM"
+    let UpstreamElevation = _vocab "UpstreamElevation"
+    let UpstreamElevationUOM = _vocab "UpstreamElevationUOM"
+    let Vegetation = _vocab "Vegetation"
+    let BottomWidth = _vocab "BottomWidth"
+    let Diameter = _vocab "Diameter"
+    let Distance = _vocab "Distance"
+    let DrainageKey = _vocab "DrainageKey"
+    let DrainType = _vocab "DrainType"
+    let FlapGate = _vocab "FlapGate"
+    let Side = _vocab "Side"
+    let SideSlope = _vocab "SideSlope"
+    let StormChannelDrainageConnectionKey = _vocab "StormChannelDrainageConnectionKey"
+    let WeightFactor = _vocab "WeightFactor"
+    let Failure = _vocab "Failure"
+    let FailureDefinitionKey = _vocab "FailureDefinitionKey"
+    let IsCompleted = _vocab "IsCompleted"
+    let Image = _vocab "Image"
+    let ConnectionPipeLength = _vocab "ConnectionPipeLength"
+    let ConnectionPipeLengthUOM = _vocab "ConnectionPipeLengthUOM"
+    let ConnectionPipeSize = _vocab "ConnectionPipeSize"
+    let ConnectionPipeSzeUOM = _vocab "ConnectionPipeSzeUOM"
+    let ConnectionPipeType = _vocab "ConnectionPipeType"
+    let Depth = _vocab "Depth"
+    let DepthUOM = _vocab "DepthUOM"
+    let DownstreamConnectionDirection = _vocab "DownstreamConnectionDirection"
+    let DownstreamConnectionType = _vocab "DownstreamConnectionType"
+    let DownstreamDistance = _vocab "DownstreamDistance"
+    let DownstreamDistanceFromNode = _vocab "DownstreamDistanceFromNode"
+    let DownstreamDistanceUOM = _vocab "DownstreamDistanceUOM"
+    let DownstreamInvertElevationUOM = _vocab "DownstreamInvertElevationUOM"
+    let DownstreamStormInlet = _vocab "DownstreamStormInlet"
+    let GrateType = _vocab "GrateType"
+    let Intersection = _vocab "Intersection"
+    let Material = _vocab "Material"
+    let OutletDepth = _vocab "OutletDepth"
+    let OutletDepthUOM = _vocab "OutletDepthUOM"
+    let UpstreamInvertElevation = _vocab "UpstreamInvertElevation"
+    let UpstreamInvertElevationUOM = _vocab "UpstreamInvertElevationUOM"
+    let Volume = _vocab "Volume"
+    let CrestCamber = _vocab "CrestCamber"
+    let DownstreamFilterLayer = _vocab "DownstreamFilterLayer"
+    let DownstreamSlope = _vocab "DownstreamSlope"
+    let DownstreamSlopeUOM = _vocab "DownstreamSlopeUOM"
+    let Foundation = _vocab "Foundation"
+    let FreeboardNormal = _vocab "FreeboardNormal"
+    let FreeboardNormalUOM = _vocab "FreeboardNormalUOM"
+    let FreeboardWithWaveWall = _vocab "FreeboardWithWaveWall"
+    let FreeboardWithWaveWallUOM = _vocab "FreeboardWithWaveWallUOM"
+    let Height = _vocab "Height"
+    let HeightUOM = _vocab "HeightUOM"
+    let IsUpstreamFilterLayer = _vocab "IsUpstreamFilterLayer"
+    let SeismicResistance = _vocab "SeismicResistance"
+    let TopLevel = _vocab "TopLevel"
+    let TopLevelUOM = _vocab "TopLevelUOM"
+    let UpstreamSlope = _vocab "UpstreamSlope"
+    let UpstreamSlopeUOM = _vocab "UpstreamSlopeUOM"
+    let WaveWallHeight = _vocab "WaveWallHeight"
+    let WaveWallHeightUOM = _vocab "WaveWallHeightUOM"
+    let WaveWallThickness = _vocab "WaveWallThickness"
+    let WaveWallThicknessUOM = _vocab "WaveWallThicknessUOM"
+    let DischargePipeSize = _vocab "DischargePipeSize"
+    let DischargePipeSizeUOM = _vocab "DischargePipeSizeUOM"
+    let NumberOfPumps = _vocab "NumberOfPumps"
+    let OverflowElevation = _vocab "OverflowElevation"
+    let OverflowElevationUOM = _vocab "OverflowElevationUOM"
+    let PumpingCapacity = _vocab "PumpingCapacity"
+    let PumpingCapacityUOM = _vocab "PumpingCapacityUOM"
+    let WetWellElevation = _vocab "WetWellElevation"
+    let WetWellElevationUOM = _vocab "WetWellElevationUOM"
+    let WetWellVolume = _vocab "WetWellVolume"
+    let WetWellVolumeUOM = _vocab "WetWellVolumeUOM"
+    let CriticalRating = _vocab "CriticalRating"
+    let DirectionFromDownstream = _vocab "DirectionFromDownstream"
+    let DirectionFromUpstream = _vocab "DirectionFromUpstream"
+    let DownstreamElevation = _vocab "DownstreamElevation"
+    let FrictionFactor = _vocab "FrictionFactor"
+    let GroundWaterLevel = _vocab "GroundWaterLevel"
+    let GroundWaterLevelUOM = _vocab "GroundWaterLevelUOM"
+    let JointLength = _vocab "JointLength"
+    let JointLengthUOM = _vocab "JointLengthUOM"
+    let JointType = _vocab "JointType"
+    let PipeDiameter = _vocab "PipeDiameter"
+    let PipeDiameterUOM = _vocab "PipeDiameterUOM"
+    let PipeHeight = _vocab "PipeHeight"
+    let PipeHeightUOM = _vocab "PipeHeightUOM"
+    let PipeLength = _vocab "PipeLength"
+    let PipeLengthUOM = _vocab "PipeLengthUOM"
+    let PipeMaterial = _vocab "PipeMaterial"
+    let PipeShape = _vocab "PipeShape"
+    let SurfaceCover = _vocab "SurfaceCover"
+    let BarrelDiameter = _vocab "BarrelDiameter"
+    let BarrelDiameterUOM = _vocab "BarrelDiameterUOM"
+    let BaseType = _vocab "BaseType"
+    let BenchType = _vocab "BenchType"
+    let ChannelType = _vocab "ChannelType"
+    let ConeType = _vocab "ConeType"
+    let CoverDiameter = _vocab "CoverDiameter"
+    let CoverDiameterUOM = _vocab "CoverDiameterUOM"
+    let CoverType = _vocab "CoverType"
+    let DistanceToHydrant = _vocab "DistanceToHydrant"
+    let DistanceToHydrantUOM = _vocab "DistanceToHydrantUOM"
+    let FrameType = _vocab "FrameType"
+    let IsDropManhole = _vocab "IsDropManhole"
+    let IsMetered = _vocab "IsMetered"
+    let RingsMaterial = _vocab "RingsMaterial"
+    let StepsMaterial = _vocab "StepsMaterial"
+    let WallMaterial = _vocab "WallMaterial"
+    let AccountNumber = _vocab "AccountNumber"
+    let AverageMonthlyUsage = _vocab "AverageMonthlyUsage"
+    let AverageMonthlyUsageUOM = _vocab "AverageMonthlyUsageUOM"
+    let Elevation = _vocab "Elevation"
+    let ElevationUOM = _vocab "ElevationUOM"
+    let HasBypass = _vocab "HasBypass"
+    let HighRegister = _vocab "HighRegister"
+    let LowRegister = _vocab "LowRegister"
+    let ManufacturedDate = _vocab "ManufacturedDate"
+    let MeterComponent = _vocab "MeterComponent"
+    let PipeGrade = _vocab "PipeGrade"
+    let PipeSize = _vocab "PipeSize"
+    let PipeSizeUOM = _vocab "PipeSizeUOM"
+    let Purchased = _vocab "Purchased"
+    let ServiceType = _vocab "ServiceType"
+    let TotalUsage = _vocab "TotalUsage"
+    let TotalUsageUOM = _vocab "TotalUsageUOM"
+    let UsageDate = _vocab "UsageDate"
+    let WetWellOverflow = _vocab "WetWellOverflow"
+    let WetWellOverflowUOM = _vocab "WetWellOverflowUOM"
+    let MasterComponent = _vocab "MasterComponent"
+    let NumberOfDials = _vocab "NumberOfDials"
+    let Configuration = _vocab "Configuration"
+    let HighRegisterMultiplier = _vocab "HighRegisterMultiplier"
+    let HighRegisterNumberOfDecimals = _vocab "HighRegisterNumberOfDecimals"
+    let HighRegisterNumberOfDials = _vocab "HighRegisterNumberOfDials"
+    let LowRegisterMultiplier = _vocab "LowRegisterMultiplier"
+    let LowRegisterNumberOfDecimals = _vocab "LowRegisterNumberOfDecimals"
+    let LowRegisterNumberOfDials = _vocab "LowRegisterNumberOfDials"
+    let Color = _vocab "Color"
+    let Condition = _vocab "Condition"
+    let DiameterUOM = _vocab "DiameterUOM"
+    let Weight = _vocab "Weight"
+    let WeightUOM = _vocab "WeightUOM"
+    let DistanceFromEndpoint = _vocab "DistanceFromEndpoint"
+    let DistanceFromEndpointUOM = _vocab "DistanceFromEndpointUOM"
+    let FromEndpoint = _vocab "FromEndpoint"
+    let ExpectedLife = _vocab "ExpectedLife"
+    let ExpectedLifeUOM = _vocab "ExpectedLifeUOM"
+    let Flow = _vocab "Flow"
+    let FlowUOM = _vocab "FlowUOM"
+    let MeanTimeBetweenFailures = _vocab "MeanTimeBetweenFailures"
+    let MeanTimeBetweenFailuresUOM = _vocab "MeanTimeBetweenFailuresUOM"
+    let MotorSerialNumber = _vocab "MotorSerialNumber"
+    let RevolutionsPerMinute = _vocab "RevolutionsPerMinute"
+    let TotalDynamicHead = _vocab "TotalDynamicHead"
+    let Trim = _vocab "Trim"
+    let Building = _vocab "Building"
+    let CleanoutLocation = _vocab "CleanoutLocation"
+    let DepthAtPropertyLine = _vocab "DepthAtPropertyLine"
+    let DepthAtPropertyLineUOM = _vocab "DepthAtPropertyLineUOM"
+    let DunAndBradstreetNumber = _vocab "DunAndBradstreetNumber"
+    let EnvironmentalProtectAgencyID = _vocab "EnvironmentalProtectAgencyID"
+    let MunicipalityCondition = _vocab "MunicipalityCondition"
+    let NPDESID = _vocab "NPDESID"
+    let NumberOfTaps = _vocab "NumberOfTaps"
+    let OwnerCondition = _vocab "OwnerCondition"
+    let SIC = _vocab "SIC"
+    let TapAddress = _vocab "TapAddress"
+    let TapDistance = _vocab "TapDistance"
+    let TapDistanceUOM = _vocab "TapDistanceUOM"
+    let TapFrom = _vocab "TapFrom"
+    let TapLocation = _vocab "TapLocation"
+    let UICID = _vocab "UICID"
+    let CAS = _vocab "CAS"
+    let GenericClass = _vocab "GenericClass"
+    let IsInService = _vocab "IsInService"
+    let DeadStorageCapacity = _vocab "DeadStorageCapacity"
+    let DeadStorageCapacityUOM = _vocab "DeadStorageCapacityUOM"
+    let FullSupplyLevelGauge = _vocab "FullSupplyLevelGauge"
+    let FullSupplyLevelGaugeUOM = _vocab "FullSupplyLevelGaugeUOM"
+    let FullSupplyLevelRL = _vocab "FullSupplyLevelRL"
+    let FullSupplyLevelRLUOM = _vocab "FullSupplyLevelRLUOM"
+    let LiveStorageCapacity = _vocab "LiveStorageCapacity"
+    let LiveStorageCapacityUOM = _vocab "LiveStorageCapacityUOM"
+    let MinimumOperatingLevelGauge = _vocab "MinimumOperatingLevelGauge"
+    let MinimumOperatingLevelRL = _vocab "MinimumOperatingLevelRL"
+    let MinOperatingLevelGaugeUOM = _vocab "MinOperatingLevelGaugeUOM"
+    let MinOperatingLevelRLUOM = _vocab "MinOperatingLevelRLUOM"
+    let SurfaceArea = _vocab "SurfaceArea"
+    let SurfaceAreaUOM = _vocab "SurfaceAreaUOM"
+    let TotalCapacity = _vocab "TotalCapacity"
+    let TotalCapacityUOM = _vocab "TotalCapacityUOM"
+    let CapacityAtDepth = _vocab "CapacityAtDepth"
+    let DepthCapacityKey = _vocab "DepthCapacityKey"
+    let DrainageCapacity = _vocab "DrainageCapacity"
+    let DrainageSystem = _vocab "DrainageSystem"
+    let DrainKey = _vocab "DrainKey"
+    let FloodLevel = _vocab "FloodLevel"
+    let FloodLevelEvent = _vocab "FloodLevelEvent"
+    let FloodLevelKey = _vocab "FloodLevelKey"
+    let TypeKey = _vocab "TypeKey"
+    let DirectionToOpen = _vocab "DirectionToOpen"
+    let InvertElevation = _vocab "InvertElevation"
+    let InvertElevationUOM = _vocab "InvertElevationUOM"
+    let NumberOfTurnsToOpen = _vocab "NumberOfTurnsToOpen"
+    let Obstruction = _vocab "Obstruction"
+    let OperatorDepth = _vocab "OperatorDepth"
+    let OperatorDepthUOM = _vocab "OperatorDepthUOM"
+    let RimElevation = _vocab "RimElevation"
+    let RimElevationUOM = _vocab "RimElevationUOM"
+    let ValveStatus = _vocab "ValveStatus"
+
+    module Hansen =
+        module AssetManagement =
+            module UsageArea =
+
+                let productFamily = _vocab "Hansen.AssetManagement.UsageArea"
+
+                module Complex =
+                    let table = _vocab "Hansen.AssetManagement.UsageArea.Complex"
+                    let Address = _vocab "Hansen.AssetManagement.UsageArea.Complex.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.UsageArea.Complex.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.UsageArea.Complex.Area"
+                    let AreaSize = _vocab "Hansen.AssetManagement.UsageArea.Complex.AreaSize"
+
+                    let AreaSizeUnitOfMeasure =
+                        _vocab "Hansen.AssetManagement.UsageArea.Complex.AreaSizeUnitOfMeasure"
+
+                    let AsBuilt = _vocab "Hansen.AssetManagement.UsageArea.Complex.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.UsageArea.Complex.AssetKey"
+                    let BudgetNumber = _vocab "Hansen.AssetManagement.UsageArea.Complex.BudgetNumber"
+                    let Complex = _vocab "Hansen.AssetManagement.UsageArea.Complex.Complex"
+                    let District = _vocab "Hansen.AssetManagement.UsageArea.Complex.District"
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.UsageArea.Complex.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.UsageArea.Complex.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.UsageArea.Complex.ID"
+                    let InstalledDate = _vocab "Hansen.AssetManagement.UsageArea.Complex.InstalledDate"
+                    let Location = _vocab "Hansen.AssetManagement.UsageArea.Complex.Location"
+                    let MapNumber = _vocab "Hansen.AssetManagement.UsageArea.Complex.MapNumber"
+                    let Organization = _vocab "Hansen.AssetManagement.UsageArea.Complex.Organization"
+                    let Ownership = _vocab "Hansen.AssetManagement.UsageArea.Complex.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.UsageArea.Complex.Parcel"
+                    let ServiceStatus = _vocab "Hansen.AssetManagement.UsageArea.Complex.ServiceStatus"
+                    let Site = _vocab "Hansen.AssetManagement.UsageArea.Complex.Site"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.UsageArea.Complex.SpecialInstructions"
+
+                    let StreetSegment = _vocab "Hansen.AssetManagement.UsageArea.Complex.StreetSegment"
+                    let SubArea = _vocab "Hansen.AssetManagement.UsageArea.Complex.SubArea"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.UsageArea.Complex.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.UsageArea.Complex.UnitType"
+                    let UsageArea = _vocab "Hansen.AssetManagement.UsageArea.Complex.UsageArea"
+                    let XCoordinate = _vocab "Hansen.AssetManagement.UsageArea.Complex.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.UsageArea.Complex.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.UsageArea.Complex.ZCoordinate"
+
+            module Storm =
+                let productFamily = _vocab "Hansen.AssetManagement.Storm"
+
+                module StormBackflowPreventer =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.AssetKey"
+
+                    let BudgetNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.BudgetNumber"
+
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Complex"
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.District"
+
+                    let ExpiredBy =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.ID"
+
+                    let InstalledDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.InstalledDate"
+
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Location"
+                    let MainLine = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.MainLine"
+
+                    let Manufacturer =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Manufacturer"
+
+                    let MapNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.MapNumber"
+
+                    let ModelNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.ModelNumber"
+
+                    let Organization =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Organization"
+
+                    let Ownership =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Ownership"
+
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Parcel"
+
+                    let Responsibility =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Responsibility"
+
+                    let SerialNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.SerialNumber"
+
+                    let ServiceLine =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.ServiceLine"
+
+                    let ServiceStatus =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.ServiceStatus"
+
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Site"
+                    let Size = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.Size"
+                    let SizeUOM = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.SizeUOM"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.SpecialInstructions"
+
+                    let StreetSegment =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.StreetSegment"
+
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.SubArea"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.UnitType"
+
+                    let UsageArea =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.UsageArea"
+
+                    let XCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.XCoordinate"
+
+                    let YCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.YCoordinate"
+
+                    let ZCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormBackflowPreventer.ZCoordinate"
+
+                module StormChannel =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormChannel"
+                    let AccessRoad = _vocab "Hansen.AssetManagement.Storm.StormChannel.AccessRoad"
+
+                    let AccessRoadUnitOfMeasure =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.AccessRoadUnitOfMeasure"
+
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormChannel.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormChannel.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormChannel.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormChannel.AssetKey"
+                    let BaseWidth = _vocab "Hansen.AssetManagement.Storm.StormChannel.BaseWidth"
+                    let BaseWidthUOM = _vocab "Hansen.AssetManagement.Storm.StormChannel.BaseWidthUOM"
+                    let BudgetNumber = _vocab "Hansen.AssetManagement.Storm.StormChannel.BudgetNumber"
+                    let ChannelWidth = _vocab "Hansen.AssetManagement.Storm.StormChannel.ChannelWidth"
+
+                    let ChannelWidthUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.ChannelWidthUOM"
+
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormChannel.Complex"
+
+                    let ConstructionMaterial =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.ConstructionMaterial"
+
+                    let DesignCapacity =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.DesignCapacity"
+
+                    let DesignCapacityUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.DesignCapacityUOM"
+
+                    let DesignFlow = _vocab "Hansen.AssetManagement.Storm.StormChannel.DesignFlow"
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormChannel.District"
+
+                    let DownstreamDepth =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.DownstreamDepth"
+
+                    let DownstreamDepthUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.DownstreamDepthUOM"
+
+                    let DownstreamElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.DownstreamElevationUOM"
+
+                    let DownstreamInvertElevation =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.DownstreamInvertElevation"
+
+                    let EasementWidth = _vocab "Hansen.AssetManagement.Storm.StormChannel.EasementWidth"
+
+                    let EasementWidthUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.EasementWidthUOM"
+
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormChannel.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.GISStaticIdentifier"
+
+                    let GateLocation = _vocab "Hansen.AssetManagement.Storm.StormChannel.GateLocation"
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormChannel.ID"
+                    let ID2 = _vocab "Hansen.AssetManagement.Storm.StormChannel.ID2"
+                    let InstalledDate = _vocab "Hansen.AssetManagement.Storm.StormChannel.InstalledDate"
+
+                    let LeftBankHeight =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.LeftBankHeight"
+
+                    let LeftBankHeightUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.LeftBankHeightUOM"
+
+                    let LeftBankMaterial =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.LeftBankMaterial"
+
+                    let LeftBankSlope = _vocab "Hansen.AssetManagement.Storm.StormChannel.LeftBankSlope"
+
+                    let LeftBankSlopeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.LeftBankSlopeUOM"
+
+                    let LeftFenceType = _vocab "Hansen.AssetManagement.Storm.StormChannel.LeftFenceType"
+                    let LeftLandUse = _vocab "Hansen.AssetManagement.Storm.StormChannel.LeftLandUse"
+                    let Length = _vocab "Hansen.AssetManagement.Storm.StormChannel.Length"
+                    let LengthUOM = _vocab "Hansen.AssetManagement.Storm.StormChannel.LengthUOM"
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormChannel.Location"
+                    let LockDetails = _vocab "Hansen.AssetManagement.Storm.StormChannel.LockDetails"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormChannel.MapNumber"
+                    let Organization = _vocab "Hansen.AssetManagement.Storm.StormChannel.Organization"
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormChannel.Ownership"
+
+                    let ParallelLineNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.ParallelLineNumber"
+
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormChannel.Parcel"
+                    let RampLocation = _vocab "Hansen.AssetManagement.Storm.StormChannel.RampLocation"
+
+                    let RightBankHeight =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.RightBankHeight"
+
+                    let RightBankHeightUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.RightBankHeightUOM"
+
+                    let RightBankMaterial =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.RightBankMaterial"
+
+                    let RightBankSlope =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.RightBankSlope"
+
+                    let RightBankSlopeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.RightBankSlopeUOM"
+
+                    let RightFenceType =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.RightFenceType"
+
+                    let RightLandUse = _vocab "Hansen.AssetManagement.Storm.StormChannel.RightLandUse"
+                    let Segment = _vocab "Hansen.AssetManagement.Storm.StormChannel.Segment"
+                    let ServiceStatus = _vocab "Hansen.AssetManagement.Storm.StormChannel.ServiceStatus"
+                    let Shape = _vocab "Hansen.AssetManagement.Storm.StormChannel.Shape"
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormChannel.Site"
+                    let Slope = _vocab "Hansen.AssetManagement.Storm.StormChannel.Slope"
+                    let SlopeUOM = _vocab "Hansen.AssetManagement.Storm.StormChannel.SlopeUOM"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.SpecialInstructions"
+
+                    let StreetSegment = _vocab "Hansen.AssetManagement.Storm.StormChannel.StreetSegment"
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormChannel.SubArea"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormChannel.UnitDesc"
+                    let UnitID2Asset = _vocab "Hansen.AssetManagement.Storm.StormChannel.UnitID2Asset"
+                    let UnitID2Type = _vocab "Hansen.AssetManagement.Storm.StormChannel.UnitID2Type"
+                    let UnitIDAsset = _vocab "Hansen.AssetManagement.Storm.StormChannel.UnitIDAsset"
+                    let UnitIDType = _vocab "Hansen.AssetManagement.Storm.StormChannel.UnitIDType"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormChannel.UnitType"
+                    let UpstreamDepth = _vocab "Hansen.AssetManagement.Storm.StormChannel.UpstreamDepth"
+
+                    let UpstreamDepthUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.UpstreamDepthUOM"
+
+                    let UpstreamElevation =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.UpstreamElevation"
+
+                    let UpstreamElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannel.UpstreamElevationUOM"
+
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormChannel.UsageArea"
+                    let Vegetation = _vocab "Hansen.AssetManagement.Storm.StormChannel.Vegetation"
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormChannel.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormChannel.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormChannel.ZCoordinate"
+
+                module StormChannelDrainageConnection =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection"
+
+                    let BottomWidth =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection.BottomWidth"
+
+                    let ConstructionMaterial =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection.ConstructionMaterial"
+
+                    let Diameter =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection.Diameter"
+
+                    let Distance =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection.Distance"
+
+                    let DrainType =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection.DrainType"
+
+                    let DrainageKey =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection.DrainageKey"
+
+                    let FlapGate =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection.FlapGate"
+
+                    let Side = _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection.Side"
+
+                    let SideSlope =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection.SideSlope"
+
+                    let StormChannelDrainageConnectionKey =
+                        _vocab "Hansen.AssetManagement.Storm.StormChannelDrainageConnection.StormChannelDrainageConnectionKey"
+
+                module StormInlet =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormInlet"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormInlet.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormInlet.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormInlet.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormInlet.AssetKey"
+                    let BudgetNumber = _vocab "Hansen.AssetManagement.Storm.StormInlet.BudgetNumber"
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormInlet.Complex"
+
+                    let ConnectionPipeLength =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.ConnectionPipeLength"
+
+                    let ConnectionPipeLengthUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.ConnectionPipeLengthUOM"
+
+                    let ConnectionPipeSize =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.ConnectionPipeSize"
+
+                    let ConnectionPipeSzeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.ConnectionPipeSzeUOM"
+
+                    let ConnectionPipeType =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.ConnectionPipeType"
+
+                    let Depth = _vocab "Hansen.AssetManagement.Storm.StormInlet.Depth"
+                    let DepthUOM = _vocab "Hansen.AssetManagement.Storm.StormInlet.DepthUOM"
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormInlet.District"
+
+                    let DownstreamConnectionDirection =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.DownstreamConnectionDirection"
+
+                    let DownstreamConnectionType =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.DownstreamConnectionType"
+
+                    let DownstreamDistance =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.DownstreamDistance"
+
+                    let DownstreamDistanceFromNode =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.DownstreamDistanceFromNode"
+
+                    let DownstreamDistanceUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.DownstreamDistanceUOM"
+
+                    let DownstreamInvertElevation =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.DownstreamInvertElevation"
+
+                    let DownstreamInvertElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.DownstreamInvertElevationUOM"
+
+                    let DownstreamStormInlet =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.DownstreamStormInlet"
+
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormInlet.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.GISStaticIdentifier"
+
+                    let GrateType = _vocab "Hansen.AssetManagement.Storm.StormInlet.GrateType"
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormInlet.ID"
+                    let InstalledDate = _vocab "Hansen.AssetManagement.Storm.StormInlet.InstalledDate"
+                    let Intersection = _vocab "Hansen.AssetManagement.Storm.StormInlet.Intersection"
+                    let Length = _vocab "Hansen.AssetManagement.Storm.StormInlet.Length"
+                    let LengthUOM = _vocab "Hansen.AssetManagement.Storm.StormInlet.LengthUOM"
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormInlet.Location"
+                    let MainLine = _vocab "Hansen.AssetManagement.Storm.StormInlet.MainLine"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormInlet.MapNumber"
+                    let Material = _vocab "Hansen.AssetManagement.Storm.StormInlet.Material"
+                    let Organization = _vocab "Hansen.AssetManagement.Storm.StormInlet.Organization"
+                    let OutletDepth = _vocab "Hansen.AssetManagement.Storm.StormInlet.OutletDepth"
+                    let OutletDepthUOM = _vocab "Hansen.AssetManagement.Storm.StormInlet.OutletDepthUOM"
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormInlet.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormInlet.Parcel"
+                    let ServiceStatus = _vocab "Hansen.AssetManagement.Storm.StormInlet.ServiceStatus"
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormInlet.Site"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.SpecialInstructions"
+
+                    let StreetSegment = _vocab "Hansen.AssetManagement.Storm.StormInlet.StreetSegment"
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormInlet.SubArea"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormInlet.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormInlet.UnitType"
+
+                    let UpstreamInvertElevation =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.UpstreamInvertElevation"
+
+                    let UpstreamInvertElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormInlet.UpstreamInvertElevationUOM"
+
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormInlet.UsageArea"
+                    let Width = _vocab "Hansen.AssetManagement.Storm.StormInlet.Width"
+                    let WidthUOM = _vocab "Hansen.AssetManagement.Storm.StormInlet.WidthUOM"
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormInlet.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormInlet.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormInlet.ZCoordinate"
+
+                module StormLevee =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormLevee"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormLevee.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormLevee.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormLevee.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormLevee.AssetKey"
+                    let BudgetNumber = _vocab "Hansen.AssetManagement.Storm.StormLevee.BudgetNumber"
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormLevee.Complex"
+                    let CrestCamber = _vocab "Hansen.AssetManagement.Storm.StormLevee.CrestCamber"
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormLevee.District"
+
+                    let DownstreamFilterLayer =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.DownstreamFilterLayer"
+
+                    let DownstreamSlope =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.DownstreamSlope"
+
+                    let DownstreamSlopeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.DownstreamSlopeUOM"
+
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormLevee.ExpiredBy"
+                    let Foundation = _vocab "Hansen.AssetManagement.Storm.StormLevee.Foundation"
+
+                    let FreeboardNormal =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.FreeboardNormal"
+
+                    let FreeboardNormalUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.FreeboardNormalUOM"
+
+                    let FreeboardWithWaveWall =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.FreeboardWithWaveWall"
+
+                    let FreeboardWithWaveWallUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.FreeboardWithWaveWallUOM"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.GISStaticIdentifier"
+
+                    let Height = _vocab "Hansen.AssetManagement.Storm.StormLevee.Height"
+                    let HeightUOM = _vocab "Hansen.AssetManagement.Storm.StormLevee.HeightUOM"
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormLevee.ID"
+                    let InstalledDate = _vocab "Hansen.AssetManagement.Storm.StormLevee.InstalledDate"
+
+                    let IsUpstreamFilterLayer =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.IsUpstreamFilterLayer"
+
+                    let Length = _vocab "Hansen.AssetManagement.Storm.StormLevee.Length"
+                    let LengthUOM = _vocab "Hansen.AssetManagement.Storm.StormLevee.LengthUOM"
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormLevee.Location"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormLevee.MapNumber"
+                    let Organization = _vocab "Hansen.AssetManagement.Storm.StormLevee.Organization"
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormLevee.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormLevee.Parcel"
+
+                    let SeismicResistance =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.SeismicResistance"
+
+                    let ServiceStatus = _vocab "Hansen.AssetManagement.Storm.StormLevee.ServiceStatus"
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormLevee.Site"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.SpecialInstructions"
+
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormLevee.SubArea"
+                    let TopLevel = _vocab "Hansen.AssetManagement.Storm.StormLevee.TopLevel"
+                    let TopLevelUOM = _vocab "Hansen.AssetManagement.Storm.StormLevee.TopLevelUOM"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormLevee.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormLevee.UnitType"
+                    let UpstreamSlope = _vocab "Hansen.AssetManagement.Storm.StormLevee.UpstreamSlope"
+
+                    let UpstreamSlopeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.UpstreamSlopeUOM"
+
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormLevee.UsageArea"
+                    let WaveWallHeight = _vocab "Hansen.AssetManagement.Storm.StormLevee.WaveWallHeight"
+
+                    let WaveWallHeightUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.WaveWallHeightUOM"
+
+                    let WaveWallThickness =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.WaveWallThickness"
+
+                    let WaveWallThicknessUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLevee.WaveWallThicknessUOM"
+
+                    let Width = _vocab "Hansen.AssetManagement.Storm.StormLevee.Width"
+                    let WidthUOM = _vocab "Hansen.AssetManagement.Storm.StormLevee.WidthUOM"
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormLevee.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormLevee.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormLevee.ZCoordinate"
+
+                module StormLiftStation =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormLiftStation"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.AssetKey"
+
+                    let BudgetNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.BudgetNumber"
+
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.Complex"
+                    let Description = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.Description"
+
+                    let DischargePipeSize =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.DischargePipeSize"
+
+                    let DischargePipeSizeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.DischargePipeSizeUOM"
+
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.District"
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.ID"
+
+                    let InstalledDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.InstalledDate"
+
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.Location"
+                    let MainLine = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.MainLine"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.MapNumber"
+                    let ModelNumber = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.ModelNumber"
+
+                    let NumberOfPumps =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.NumberOfPumps"
+
+                    let Organization =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.Organization"
+
+                    let OverflowElevation =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.OverflowElevation"
+
+                    let OverflowElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.OverflowElevationUOM"
+
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.Parcel"
+
+                    let PumpingCapacity =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.PumpingCapacity"
+
+                    let PumpingCapacityUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.PumpingCapacityUOM"
+
+                    let SerialNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.SerialNumber"
+
+                    let ServiceStatus =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.ServiceStatus"
+
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.Site"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.SpecialInstructions"
+
+                    let StreetSegment =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.StreetSegment"
+
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.SubArea"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.UnitType"
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.UsageArea"
+
+                    let WetWellElevation =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.WetWellElevation"
+
+                    let WetWellElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.WetWellElevationUOM"
+
+                    let WetWellVolume =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.WetWellVolume"
+
+                    let WetWellVolumeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormLiftStation.WetWellVolumeUOM"
+
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormLiftStation.ZCoordinate"
+
+                module StormMain =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormMain"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormMain.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormMain.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormMain.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormMain.AssetKey"
+                    let BudgetNumber = _vocab "Hansen.AssetManagement.Storm.StormMain.BudgetNumber"
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormMain.Complex"
+                    let CriticalRating = _vocab "Hansen.AssetManagement.Storm.StormMain.CriticalRating"
+                    let DesignFlow = _vocab "Hansen.AssetManagement.Storm.StormMain.DesignFlow"
+
+                    let DirectionFromDownstream =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.DirectionFromDownstream"
+
+                    let DirectionFromUpstream =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.DirectionFromUpstream"
+
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormMain.District"
+
+                    let DownstreamDepth =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.DownstreamDepth"
+
+                    let DownstreamDepthUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.DownstreamDepthUOM"
+
+                    let DownstreamElevation =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.DownstreamElevation"
+
+                    let DownstreamElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.DownstreamElevationUOM"
+
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormMain.ExpiredBy"
+                    let FrictionFactor = _vocab "Hansen.AssetManagement.Storm.StormMain.FrictionFactor"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.GISStaticIdentifier"
+
+                    let GroundWaterLevel =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.GroundWaterLevel"
+
+                    let GroundWaterLevelUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.GroundWaterLevelUOM"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormMain.ID"
+                    let ID2 = _vocab "Hansen.AssetManagement.Storm.StormMain.ID2"
+                    let InstalledDate = _vocab "Hansen.AssetManagement.Storm.StormMain.InstalledDate"
+                    let JointLength = _vocab "Hansen.AssetManagement.Storm.StormMain.JointLength"
+                    let JointLengthUOM = _vocab "Hansen.AssetManagement.Storm.StormMain.JointLengthUOM"
+                    let JointType = _vocab "Hansen.AssetManagement.Storm.StormMain.JointType"
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormMain.Location"
+                    let Manufacturer = _vocab "Hansen.AssetManagement.Storm.StormMain.Manufacturer"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormMain.MapNumber"
+                    let Organization = _vocab "Hansen.AssetManagement.Storm.StormMain.Organization"
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormMain.Ownership"
+
+                    let ParallelLineNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.ParallelLineNumber"
+
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormMain.Parcel"
+                    let PipeDiameter = _vocab "Hansen.AssetManagement.Storm.StormMain.PipeDiameter"
+
+                    let PipeDiameterUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.PipeDiameterUOM"
+
+                    let PipeHeight = _vocab "Hansen.AssetManagement.Storm.StormMain.PipeHeight"
+                    let PipeHeightUOM = _vocab "Hansen.AssetManagement.Storm.StormMain.PipeHeightUOM"
+                    let PipeLength = _vocab "Hansen.AssetManagement.Storm.StormMain.PipeLength"
+                    let PipeLengthUOM = _vocab "Hansen.AssetManagement.Storm.StormMain.PipeLengthUOM"
+                    let PipeMaterial = _vocab "Hansen.AssetManagement.Storm.StormMain.PipeMaterial"
+                    let PipeShape = _vocab "Hansen.AssetManagement.Storm.StormMain.PipeShape"
+                    let Segment = _vocab "Hansen.AssetManagement.Storm.StormMain.Segment"
+                    let ServiceStatus = _vocab "Hansen.AssetManagement.Storm.StormMain.ServiceStatus"
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormMain.Site"
+                    let Slope = _vocab "Hansen.AssetManagement.Storm.StormMain.Slope"
+                    let SlopeUOM = _vocab "Hansen.AssetManagement.Storm.StormMain.SlopeUOM"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.SpecialInstructions"
+
+                    let StreetSegment = _vocab "Hansen.AssetManagement.Storm.StormMain.StreetSegment"
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormMain.SubArea"
+                    let SurfaceCover = _vocab "Hansen.AssetManagement.Storm.StormMain.SurfaceCover"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormMain.UnitDesc"
+                    let UnitID2Asset = _vocab "Hansen.AssetManagement.Storm.StormMain.UnitID2Asset"
+                    let UnitID2Type = _vocab "Hansen.AssetManagement.Storm.StormMain.UnitID2Type"
+                    let UnitIDAsset = _vocab "Hansen.AssetManagement.Storm.StormMain.UnitIDAsset"
+                    let UnitIDType = _vocab "Hansen.AssetManagement.Storm.StormMain.UnitIDType"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormMain.UnitType"
+                    let UpstreamDepth = _vocab "Hansen.AssetManagement.Storm.StormMain.UpstreamDepth"
+
+                    let UpstreamDepthUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.UpstreamDepthUOM"
+
+                    let UpstreamElevation =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.UpstreamElevation"
+
+                    let UpstreamElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMain.UpstreamElevationUOM"
+
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormMain.UsageArea"
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormMain.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormMain.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormMain.ZCoordinate"
+
+                module StormManhole =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormManhole"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormManhole.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormManhole.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormManhole.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormManhole.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormManhole.AssetKey"
+
+                    let BarrelDiameter =
+                        _vocab "Hansen.AssetManagement.Storm.StormManhole.BarrelDiameter"
+
+                    let BarrelDiameterUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormManhole.BarrelDiameterUOM"
+
+                    let BaseType = _vocab "Hansen.AssetManagement.Storm.StormManhole.BaseType"
+                    let BenchType = _vocab "Hansen.AssetManagement.Storm.StormManhole.BenchType"
+                    let BudgetNumber = _vocab "Hansen.AssetManagement.Storm.StormManhole.BudgetNumber"
+                    let ChannelType = _vocab "Hansen.AssetManagement.Storm.StormManhole.ChannelType"
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormManhole.Complex"
+                    let ConeType = _vocab "Hansen.AssetManagement.Storm.StormManhole.ConeType"
+                    let CoverDiameter = _vocab "Hansen.AssetManagement.Storm.StormManhole.CoverDiameter"
+
+                    let CoverDiameterUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormManhole.CoverDiameterUOM"
+
+                    let CoverType = _vocab "Hansen.AssetManagement.Storm.StormManhole.CoverType"
+                    let Depth = _vocab "Hansen.AssetManagement.Storm.StormManhole.Depth"
+                    let DepthUOM = _vocab "Hansen.AssetManagement.Storm.StormManhole.DepthUOM"
+
+                    let DistanceToHydrant =
+                        _vocab "Hansen.AssetManagement.Storm.StormManhole.DistanceToHydrant"
+
+                    let DistanceToHydrantUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormManhole.DistanceToHydrantUOM"
+
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormManhole.District"
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormManhole.ExpiredBy"
+                    let FrameType = _vocab "Hansen.AssetManagement.Storm.StormManhole.FrameType"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormManhole.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormManhole.ID"
+                    let InstalledDate = _vocab "Hansen.AssetManagement.Storm.StormManhole.InstalledDate"
+                    let Intersection = _vocab "Hansen.AssetManagement.Storm.StormManhole.Intersection"
+                    let IsDropManhole = _vocab "Hansen.AssetManagement.Storm.StormManhole.IsDropManhole"
+                    let IsMetered = _vocab "Hansen.AssetManagement.Storm.StormManhole.IsMetered"
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormManhole.Location"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormManhole.MapNumber"
+                    let Organization = _vocab "Hansen.AssetManagement.Storm.StormManhole.Organization"
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormManhole.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormManhole.Parcel"
+                    let RingsMaterial = _vocab "Hansen.AssetManagement.Storm.StormManhole.RingsMaterial"
+                    let ServiceStatus = _vocab "Hansen.AssetManagement.Storm.StormManhole.ServiceStatus"
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormManhole.Site"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormManhole.SpecialInstructions"
+
+                    let StepsMaterial = _vocab "Hansen.AssetManagement.Storm.StormManhole.StepsMaterial"
+                    let StreetSegment = _vocab "Hansen.AssetManagement.Storm.StormManhole.StreetSegment"
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormManhole.SubArea"
+                    let SurfaceCover = _vocab "Hansen.AssetManagement.Storm.StormManhole.SurfaceCover"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormManhole.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormManhole.UnitType"
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormManhole.UsageArea"
+                    let WallMaterial = _vocab "Hansen.AssetManagement.Storm.StormManhole.WallMaterial"
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormManhole.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormManhole.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormManhole.ZCoordinate"
+
+                module StormMeter =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormMeter"
+                    let AccountNumber = _vocab "Hansen.AssetManagement.Storm.StormMeter.AccountNumber"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormMeter.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeter.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormMeter.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormMeter.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormMeter.AssetKey"
+
+                    let AverageMonthlyUsage =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeter.AverageMonthlyUsage"
+
+                    let AverageMonthlyUsageUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeter.AverageMonthlyUsageUOM"
+
+                    let BudgetNumber = _vocab "Hansen.AssetManagement.Storm.StormMeter.BudgetNumber"
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormMeter.Complex"
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormMeter.District"
+                    let Elevation = _vocab "Hansen.AssetManagement.Storm.StormMeter.Elevation"
+                    let ElevationUOM = _vocab "Hansen.AssetManagement.Storm.StormMeter.ElevationUOM"
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormMeter.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeter.GISStaticIdentifier"
+
+                    let HasBypass = _vocab "Hansen.AssetManagement.Storm.StormMeter.HasBypass"
+                    let HighRegister = _vocab "Hansen.AssetManagement.Storm.StormMeter.HighRegister"
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormMeter.ID"
+                    let InstalledDate = _vocab "Hansen.AssetManagement.Storm.StormMeter.InstalledDate"
+                    let Intersection = _vocab "Hansen.AssetManagement.Storm.StormMeter.Intersection"
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormMeter.Location"
+                    let LowRegister = _vocab "Hansen.AssetManagement.Storm.StormMeter.LowRegister"
+                    let MainLine = _vocab "Hansen.AssetManagement.Storm.StormMeter.MainLine"
+
+                    let ManufacturedDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeter.ManufacturedDate"
+
+                    let Manufacturer = _vocab "Hansen.AssetManagement.Storm.StormMeter.Manufacturer"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormMeter.MapNumber"
+                    let MeterComponent = _vocab "Hansen.AssetManagement.Storm.StormMeter.MeterComponent"
+                    let ModelNumber = _vocab "Hansen.AssetManagement.Storm.StormMeter.ModelNumber"
+                    let Organization = _vocab "Hansen.AssetManagement.Storm.StormMeter.Organization"
+
+                    let OverflowElevation =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeter.OverflowElevation"
+
+                    let OverflowElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeter.OverflowElevationUOM"
+
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormMeter.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormMeter.Parcel"
+                    let PipeGrade = _vocab "Hansen.AssetManagement.Storm.StormMeter.PipeGrade"
+                    let PipeMaterial = _vocab "Hansen.AssetManagement.Storm.StormMeter.PipeMaterial"
+                    let PipeSize = _vocab "Hansen.AssetManagement.Storm.StormMeter.PipeSize"
+                    let PipeSizeUOM = _vocab "Hansen.AssetManagement.Storm.StormMeter.PipeSizeUOM"
+                    let Purchased = _vocab "Hansen.AssetManagement.Storm.StormMeter.Purchased"
+                    let SerialNumber = _vocab "Hansen.AssetManagement.Storm.StormMeter.SerialNumber"
+                    let ServiceLine = _vocab "Hansen.AssetManagement.Storm.StormMeter.ServiceLine"
+                    let ServiceStatus = _vocab "Hansen.AssetManagement.Storm.StormMeter.ServiceStatus"
+                    let ServiceType = _vocab "Hansen.AssetManagement.Storm.StormMeter.ServiceType"
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormMeter.Site"
+                    let Size = _vocab "Hansen.AssetManagement.Storm.StormMeter.Size"
+                    let SizeUOM = _vocab "Hansen.AssetManagement.Storm.StormMeter.SizeUOM"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeter.SpecialInstructions"
+
+                    let StreetSegment = _vocab "Hansen.AssetManagement.Storm.StormMeter.StreetSegment"
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormMeter.SubArea"
+                    let TotalUsage = _vocab "Hansen.AssetManagement.Storm.StormMeter.TotalUsage"
+                    let TotalUsageUOM = _vocab "Hansen.AssetManagement.Storm.StormMeter.TotalUsageUOM"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormMeter.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormMeter.UnitType"
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormMeter.UsageArea"
+                    let UsageDate = _vocab "Hansen.AssetManagement.Storm.StormMeter.UsageDate"
+
+                    let WetWellOverflow =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeter.WetWellOverflow"
+
+                    let WetWellOverflowUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeter.WetWellOverflowUOM"
+
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormMeter.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormMeter.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormMeter.ZCoordinate"
+
+                module StormMeterComponent =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.AssetKey"
+
+                    let BudgetNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.BudgetNumber"
+
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.District"
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.ID"
+
+                    let InstalledDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.InstalledDate"
+
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.Location"
+
+                    let ManufacturedDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.ManufacturedDate"
+
+                    let Manufacturer =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.Manufacturer"
+
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.MapNumber"
+
+                    let MasterComponent =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.MasterComponent"
+
+                    let ModelNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.ModelNumber"
+
+                    let Organization =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.Organization"
+
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.Parcel"
+                    let Purchased = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.Purchased"
+
+                    let SerialNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.SerialNumber"
+
+                    let ServiceStatus =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.ServiceStatus"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.SpecialInstructions"
+
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.SubArea"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.UnitType"
+
+                    let XCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.XCoordinate"
+
+                    let YCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.YCoordinate"
+
+                    let ZCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterComponent.ZCoordinate"
+
+                module StormMeterRegister =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.AssetKey"
+
+                    let BudgetNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.BudgetNumber"
+
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.District"
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.ID"
+
+                    let InstalledDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.InstalledDate"
+
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.Location"
+
+                    let ManufacturedDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.ManufacturedDate"
+
+                    let Manufacturer =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.Manufacturer"
+
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.MapNumber"
+
+                    let ModelNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.ModelNumber"
+
+                    let NumberOfDials =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.NumberOfDials"
+
+                    let Organization =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.Organization"
+
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.Parcel"
+                    let Purchased = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.Purchased"
+
+                    let SerialNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.SerialNumber"
+
+                    let ServiceStatus =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.ServiceStatus"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.SpecialInstructions"
+
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.SubArea"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.UnitType"
+
+                    let XCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.XCoordinate"
+
+                    let YCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.YCoordinate"
+
+                    let ZCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMeterRegister.ZCoordinate"
+
+                module StormMiscellaneous =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.AssetKey"
+
+                    let AverageMonthlyUsage =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.AverageMonthlyUsage"
+
+                    let AverageMonthlyUsageUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.AverageMonthlyUsageUOM"
+
+                    let BudgetNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.BudgetNumber"
+
+                    let Color = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Color"
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Complex"
+                    let Condition = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Condition"
+                    let Depth = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Depth"
+                    let DepthUOM = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.DepthUOM"
+
+                    let Description =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Description"
+
+                    let Diameter = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Diameter"
+
+                    let DiameterUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.DiameterUOM"
+
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.District"
+                    let Elevation = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Elevation"
+
+                    let ElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.ElevationUOM"
+
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.GISStaticIdentifier"
+
+                    let Height = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Height"
+                    let HeightUOM = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.HeightUOM"
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.ID"
+
+                    let InstalledDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.InstalledDate"
+
+                    let Intersection =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Intersection"
+
+                    let Length = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Length"
+                    let LengthUOM = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.LengthUOM"
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Location"
+                    let MainLine = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.MainLine"
+
+                    let Manufacturer =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Manufacturer"
+
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.MapNumber"
+                    let Material = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Material"
+
+                    let ModelNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.ModelNumber"
+
+                    let Organization =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Organization"
+
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Parcel"
+
+                    let SerialNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.SerialNumber"
+
+                    let ServiceLine =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.ServiceLine"
+
+                    let ServiceStatus =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.ServiceStatus"
+
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Site"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.SpecialInstructions"
+
+                    let StreetSegment =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.StreetSegment"
+
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.SubArea"
+
+                    let SurfaceCover =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.SurfaceCover"
+
+                    let TotalUsage = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.TotalUsage"
+
+                    let TotalUsageUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.TotalUsageUOM"
+
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.UnitType"
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.UsageArea"
+                    let UsageDate = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.UsageDate"
+                    let Weight = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Weight"
+                    let WeightUOM = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.WeightUOM"
+                    let Width = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.Width"
+                    let WidthUOM = _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.WidthUOM"
+
+                    let XCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.XCoordinate"
+
+                    let YCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.YCoordinate"
+
+                    let ZCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormMiscellaneous.ZCoordinate"
+
+                module StormNode =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormNode"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormNode.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormNode.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormNode.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormNode.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormNode.AssetKey"
+                    let BudgetNumber = _vocab "Hansen.AssetManagement.Storm.StormNode.BudgetNumber"
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormNode.Complex"
+
+                    let DistanceFromEndpoint =
+                        _vocab "Hansen.AssetManagement.Storm.StormNode.DistanceFromEndpoint"
+
+                    let DistanceFromEndpointUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormNode.DistanceFromEndpointUOM"
+
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormNode.District"
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormNode.ExpiredBy"
+                    let FromEndpoint = _vocab "Hansen.AssetManagement.Storm.StormNode.FromEndpoint"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormNode.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormNode.ID"
+                    let InstalledDate = _vocab "Hansen.AssetManagement.Storm.StormNode.InstalledDate"
+                    let Intersection = _vocab "Hansen.AssetManagement.Storm.StormNode.Intersection"
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormNode.Location"
+                    let MainLine = _vocab "Hansen.AssetManagement.Storm.StormNode.MainLine"
+                    let Manufacturer = _vocab "Hansen.AssetManagement.Storm.StormNode.Manufacturer"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormNode.MapNumber"
+                    let ModelNumber = _vocab "Hansen.AssetManagement.Storm.StormNode.ModelNumber"
+                    let Organization = _vocab "Hansen.AssetManagement.Storm.StormNode.Organization"
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormNode.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormNode.Parcel"
+                    let SerialNumber = _vocab "Hansen.AssetManagement.Storm.StormNode.SerialNumber"
+                    let ServiceStatus = _vocab "Hansen.AssetManagement.Storm.StormNode.ServiceStatus"
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormNode.Site"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormNode.SpecialInstructions"
+
+                    let StreetSegment = _vocab "Hansen.AssetManagement.Storm.StormNode.StreetSegment"
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormNode.SubArea"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormNode.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormNode.UnitType"
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormNode.UsageArea"
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormNode.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormNode.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormNode.ZCoordinate"
+
+                module StormPump =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormPump"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormPump.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormPump.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormPump.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormPump.AssetKey"
+
+                    let AverageMonthlyUsage =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.AverageMonthlyUsage"
+
+                    let AverageMonthlyUsageUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.AverageMonthlyUsageUOM"
+
+                    let BudgetNumber = _vocab "Hansen.AssetManagement.Storm.StormPump.BudgetNumber"
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormPump.Complex"
+
+                    let DischargePipeSize =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.DischargePipeSize"
+
+                    let DischargePipeSizeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.DischargePipeSizeUOM"
+
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormPump.District"
+                    let ExpectedLife = _vocab "Hansen.AssetManagement.Storm.StormPump.ExpectedLife"
+
+                    let ExpectedLifeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.ExpectedLifeUOM"
+
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormPump.ExpiredBy"
+                    let Flow = _vocab "Hansen.AssetManagement.Storm.StormPump.Flow"
+                    let FlowUOM = _vocab "Hansen.AssetManagement.Storm.StormPump.FlowUOM"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormPump.ID"
+                    let InstalledDate = _vocab "Hansen.AssetManagement.Storm.StormPump.InstalledDate"
+                    let Intersection = _vocab "Hansen.AssetManagement.Storm.StormPump.Intersection"
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormPump.Location"
+                    let MainLine = _vocab "Hansen.AssetManagement.Storm.StormPump.MainLine"
+
+                    let ManufacturedDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.ManufacturedDate"
+
+                    let Manufacturer = _vocab "Hansen.AssetManagement.Storm.StormPump.Manufacturer"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormPump.MapNumber"
+
+                    let MeanTimeBetweenFailures =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.MeanTimeBetweenFailures"
+
+                    let MeanTimeBetweenFailuresUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.MeanTimeBetweenFailuresUOM"
+
+                    let ModelNumber = _vocab "Hansen.AssetManagement.Storm.StormPump.ModelNumber"
+
+                    let MotorSerialNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.MotorSerialNumber"
+
+                    let Organization = _vocab "Hansen.AssetManagement.Storm.StormPump.Organization"
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormPump.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormPump.Parcel"
+                    let Purchased = _vocab "Hansen.AssetManagement.Storm.StormPump.Purchased"
+
+                    let RevolutionsPerMinute =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.RevolutionsPerMinute"
+
+                    let SerialNumber = _vocab "Hansen.AssetManagement.Storm.StormPump.SerialNumber"
+                    let ServiceStatus = _vocab "Hansen.AssetManagement.Storm.StormPump.ServiceStatus"
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormPump.Site"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.SpecialInstructions"
+
+                    let StreetSegment = _vocab "Hansen.AssetManagement.Storm.StormPump.StreetSegment"
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormPump.SubArea"
+
+                    let TotalDynamicHead =
+                        _vocab "Hansen.AssetManagement.Storm.StormPump.TotalDynamicHead"
+
+                    let TotalUsage = _vocab "Hansen.AssetManagement.Storm.StormPump.TotalUsage"
+                    let TotalUsageUOM = _vocab "Hansen.AssetManagement.Storm.StormPump.TotalUsageUOM"
+                    let Trim = _vocab "Hansen.AssetManagement.Storm.StormPump.Trim"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormPump.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormPump.UnitType"
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormPump.UsageArea"
+                    let UsageDate = _vocab "Hansen.AssetManagement.Storm.StormPump.UsageDate"
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormPump.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormPump.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormPump.ZCoordinate"
+
+                module StormServiceLine =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormServiceLine"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.AssetKey"
+
+                    let BudgetNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.BudgetNumber"
+
+                    let Building = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Building"
+
+                    let CleanoutLocation =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.CleanoutLocation"
+
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Complex"
+
+                    let DepthAtPropertyLine =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.DepthAtPropertyLine"
+
+                    let DepthAtPropertyLineUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.DepthAtPropertyLineUOM"
+
+                    let Diameter = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Diameter"
+                    let DiameterUOM = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.DiameterUOM"
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.District"
+
+                    let DunAndBradstreetNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.DunAndBradstreetNumber"
+
+                    let EnvironmentalProtectAgencyID =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.EnvironmentalProtectAgencyID"
+
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.ID"
+
+                    let InstalledDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.InstalledDate"
+
+                    let Length = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Length"
+                    let LengthUOM = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.LengthUOM"
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Location"
+                    let MainLine = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.MainLine"
+
+                    let Manufacturer =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Manufacturer"
+
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.MapNumber"
+
+                    let MunicipalityCondition =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.MunicipalityCondition"
+
+                    let NPDESID = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.NPDESID"
+
+                    let NumberOfTaps =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.NumberOfTaps"
+
+                    let Organization =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Organization"
+
+                    let OwnerCondition =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.OwnerCondition"
+
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Parcel"
+
+                    let PipeMaterial =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.PipeMaterial"
+
+                    let SIC = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.SIC"
+
+                    let ServiceStatus =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.ServiceStatus"
+
+                    let ServiceType = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.ServiceType"
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.Site"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.SpecialInstructions"
+
+                    let StreetSegment =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.StreetSegment"
+
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.SubArea"
+
+                    let SurfaceCover =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.SurfaceCover"
+
+                    let TapAddress = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.TapAddress"
+                    let TapDistance = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.TapDistance"
+
+                    let TapDistanceUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormServiceLine.TapDistanceUOM"
+
+                    let TapFrom = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.TapFrom"
+                    let TapLocation = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.TapLocation"
+                    let UICID = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.UICID"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.UnitType"
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.UsageArea"
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormServiceLine.ZCoordinate"
+
+                module StormStorageBasin =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.AssetKey"
+
+                    let BudgetNumber =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.BudgetNumber"
+
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.Complex"
+
+                    let DeadStorageCapacity =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.DeadStorageCapacity"
+
+                    let DeadStorageCapacityUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.DeadStorageCapacityUOM"
+
+                    let Description =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.Description"
+
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.District"
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.ExpiredBy"
+
+                    let FullSupplyLevelGauge =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.FullSupplyLevelGauge"
+
+                    let FullSupplyLevelGaugeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.FullSupplyLevelGaugeUOM"
+
+                    let FullSupplyLevelRL =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.FullSupplyLevelRL"
+
+                    let FullSupplyLevelRLUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.FullSupplyLevelRLUOM"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.ID"
+
+                    let InstalledDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.InstalledDate"
+
+                    let LiveStorageCapacity =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.LiveStorageCapacity"
+
+                    let LiveStorageCapacityUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.LiveStorageCapacityUOM"
+
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.Location"
+                    let MainLine = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.MainLine"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.MapNumber"
+
+                    let MinOperatingLevelGaugeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.MinOperatingLevelGaugeUOM"
+
+                    let MinOperatingLevelRLUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.MinOperatingLevelRLUOM"
+
+                    let MinimumOperatingLevelGauge =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.MinimumOperatingLevelGauge"
+
+                    let MinimumOperatingLevelRL =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.MinimumOperatingLevelRL"
+
+                    let Organization =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.Organization"
+
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.Parcel"
+
+                    let ServiceStatus =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.ServiceStatus"
+
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.Site"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.SpecialInstructions"
+
+                    let StreetSegment =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.StreetSegment"
+
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.SubArea"
+
+                    let SurfaceArea =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.SurfaceArea"
+
+                    let SurfaceAreaUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.SurfaceAreaUOM"
+
+                    let TotalCapacity =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.TotalCapacity"
+
+                    let TotalCapacityUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.TotalCapacityUOM"
+
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.UnitType"
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.UsageArea"
+
+                    let XCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.XCoordinate"
+
+                    let YCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.YCoordinate"
+
+                    let ZCoordinate =
+                        _vocab "Hansen.AssetManagement.Storm.StormStorageBasin.ZCoordinate"
+
+                module StormValve =
+                    let table = _vocab "Hansen.AssetManagement.Storm.StormValve"
+                    let Address = _vocab "Hansen.AssetManagement.Storm.StormValve.Address"
+
+                    let AddressQualifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.AddressQualifier"
+
+                    let Area = _vocab "Hansen.AssetManagement.Storm.StormValve.Area"
+                    let AsBuilt = _vocab "Hansen.AssetManagement.Storm.StormValve.AsBuilt"
+                    let AssetKey = _vocab "Hansen.AssetManagement.Storm.StormValve.AssetKey"
+                    let BudgetNumber = _vocab "Hansen.AssetManagement.Storm.StormValve.BudgetNumber"
+                    let Complex = _vocab "Hansen.AssetManagement.Storm.StormValve.Complex"
+
+                    let DirectionToOpen =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.DirectionToOpen"
+
+                    let District = _vocab "Hansen.AssetManagement.Storm.StormValve.District"
+                    let ExpectedLife = _vocab "Hansen.AssetManagement.Storm.StormValve.ExpectedLife"
+
+                    let ExpectedLifeUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.ExpectedLifeUOM"
+
+                    let ExpiredBy = _vocab "Hansen.AssetManagement.Storm.StormValve.ExpiredBy"
+
+                    let GISStaticIdentifier =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.GISStaticIdentifier"
+
+                    let ID = _vocab "Hansen.AssetManagement.Storm.StormValve.ID"
+                    let InstalledDate = _vocab "Hansen.AssetManagement.Storm.StormValve.InstalledDate"
+                    let Intersection = _vocab "Hansen.AssetManagement.Storm.StormValve.Intersection"
+
+                    let InvertElevation =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.InvertElevation"
+
+                    let InvertElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.InvertElevationUOM"
+
+                    let Location = _vocab "Hansen.AssetManagement.Storm.StormValve.Location"
+                    let MainLine = _vocab "Hansen.AssetManagement.Storm.StormValve.MainLine"
+
+                    let ManufacturedDate =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.ManufacturedDate"
+
+                    let Manufacturer = _vocab "Hansen.AssetManagement.Storm.StormValve.Manufacturer"
+                    let MapNumber = _vocab "Hansen.AssetManagement.Storm.StormValve.MapNumber"
+
+                    let MeanTimeBetweenFailures =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.MeanTimeBetweenFailures"
+
+                    let MeanTimeBetweenFailuresUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.MeanTimeBetweenFailuresUOM"
+
+                    let ModelNumber = _vocab "Hansen.AssetManagement.Storm.StormValve.ModelNumber"
+
+                    let NumberOfTurnsToOpen =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.NumberOfTurnsToOpen"
+
+                    let Obstruction = _vocab "Hansen.AssetManagement.Storm.StormValve.Obstruction"
+                    let OperatorDepth = _vocab "Hansen.AssetManagement.Storm.StormValve.OperatorDepth"
+
+                    let OperatorDepthUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.OperatorDepthUOM"
+
+                    let Organization = _vocab "Hansen.AssetManagement.Storm.StormValve.Organization"
+                    let Ownership = _vocab "Hansen.AssetManagement.Storm.StormValve.Ownership"
+                    let Parcel = _vocab "Hansen.AssetManagement.Storm.StormValve.Parcel"
+                    let Purchased = _vocab "Hansen.AssetManagement.Storm.StormValve.Purchased"
+                    let RimElevation = _vocab "Hansen.AssetManagement.Storm.StormValve.RimElevation"
+
+                    let RimElevationUOM =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.RimElevationUOM"
+
+                    let SerialNumber = _vocab "Hansen.AssetManagement.Storm.StormValve.SerialNumber"
+                    let ServiceLine = _vocab "Hansen.AssetManagement.Storm.StormValve.ServiceLine"
+                    let ServiceStatus = _vocab "Hansen.AssetManagement.Storm.StormValve.ServiceStatus"
+                    let Site = _vocab "Hansen.AssetManagement.Storm.StormValve.Site"
+                    let Size = _vocab "Hansen.AssetManagement.Storm.StormValve.Size"
+                    let SizeUOM = _vocab "Hansen.AssetManagement.Storm.StormValve.SizeUOM"
+
+                    let SpecialInstructions =
+                        _vocab "Hansen.AssetManagement.Storm.StormValve.SpecialInstructions"
+
+                    let StreetSegment = _vocab "Hansen.AssetManagement.Storm.StormValve.StreetSegment"
+                    let SubArea = _vocab "Hansen.AssetManagement.Storm.StormValve.SubArea"
+                    let TotalUsage = _vocab "Hansen.AssetManagement.Storm.StormValve.TotalUsage"
+                    let TotalUsageUOM = _vocab "Hansen.AssetManagement.Storm.StormValve.TotalUsageUOM"
+                    let UnitDesc = _vocab "Hansen.AssetManagement.Storm.StormValve.UnitDesc"
+                    let UnitType = _vocab "Hansen.AssetManagement.Storm.StormValve.UnitType"
+                    let UsageArea = _vocab "Hansen.AssetManagement.Storm.StormValve.UsageArea"
+                    let ValveStatus = _vocab "Hansen.AssetManagement.Storm.StormValve.ValveStatus"
+                    let XCoordinate = _vocab "Hansen.AssetManagement.Storm.StormValve.XCoordinate"
+                    let YCoordinate = _vocab "Hansen.AssetManagement.Storm.StormValve.YCoordinate"
+                    let ZCoordinate = _vocab "Hansen.AssetManagement.Storm.StormValve.ZCoordinate"
+
+module leonad =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/leonad/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let collierb = _vocab "collierb"
+
+    module _literal =
+        let LEONAD (user_principal: string) (transaction: LightningTransaction) =
+            RDF_Literal.simple $"""LEONAD\{user_principal}""" transaction
+
+module lcg =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/lcg/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let _graph = _vocab ""
+    let Stormwater_Inventory = _vocab "Stormwater_Inventory"
+
+
+module oit =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/oit/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let _graph = _vocab ""
+
+module woedms =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/woedms/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let created_by = _vocab "created_by"
+    let from_layer = _vocab "from_layer"
+    let from_field = _vocab "from_field"
+
+    let to_table = _vocab "to_table"
+    let to_column = _vocab "to_column"
+    let map = _vocab "map"
+    let Logical_Mapping = _vocab "Logical_Mapping"
+    let Conceptual_Mapping = _vocab "Conceptual_Mapping"
+    let map_column = _vocab "map_column"
+    let values_depend_on_column = _vocab "values_depend_on_column"
+    let dependent_column = _vocab "dependent_column"
+    let Primary_Key_Column = _vocab "Primary_Key_Column"
+    let primary_key_column = _vocab "primary_key_column"
+
+    let BackflowPreventer_Asset = _vocab "BackflowPreventer_Asset"
+    let Channel_Asset = _vocab "Channel_Asset"
+    let ChannelDrainageConnection_Asset = _vocab "ChannelDrainageConnection_Asset"
+    let Inlet_Asset = _vocab "Inlet_Asset"
+    let Levee_Asset = _vocab "Levee_Asset"
+    let LiftStation_Asset = _vocab "LiftStation_Asset"
+    let Main_Asset = _vocab "Main_Asset"
+    let Manhole_Asset = _vocab "Manhole_Asset"
+    let Meter_Asset = _vocab "Meter_Asset"
+    let MeterComponent_Asset = _vocab "MeterComponent_Asset"
+    let MeterRegister_Asset = _vocab "MeterRegister_Asset"
+    let Miscellaneous_Asset = _vocab "Miscellaneous_Asset"
+    let Node_Asset = _vocab "Node_Asset"
+    let Pump_Asset = _vocab "Pump_Asset"
+    let ServiceLine_Asset = _vocab "ServiceLine_Asset"
+    let StorageBasin_Asset = _vocab "StorageBasin_Asset"
+    let Valve_Asset = _vocab "Valve_Asset"
+
+module LCG_Stormwater_Inventory =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/LCG_Stormwater_Inventory/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let workspace = _vocab "workspace"
+
+module gis =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/gis/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let _Feature (local_name_string: string) = _vocab $"{local_name_string}_Feature"
+
+    let _Feature_Class (local_name_string: string) =
+        _vocab $"{local_name_string}_Feature_Class"
+
+    let _Feature_Layer (local_name_string: string) =
+        _vocab $"{local_name_string}_Feature_Layer"
+
+    let _feature_attribute (layer_name: string) (ATTRIBUTE: string) (transaction: LightningTransaction) =
+        _prefix $"{layer_name}.{ATTRIBUTE}" transaction
+
+    let maintainer = _vocab "maintainer"
+    let material = _vocab "material"
+    let pond_type = _vocab "pond_type"
+    let surface_type = _vocab "surface_type"
+    let pipe_shape = _vocab "pipe_shape"
+
+    module Conduit =
+        let ACCEPT_DATE = _vocab "Conduit.ACCEPT_DATE"
+        let ACCURACYCODE = _vocab "Conduit.ACCURACYCODE"
+        let ATTRIBUTECOMPLETE = _vocab "Conduit.ATTRIBUTECOMPLETE"
+        let DATECREATED = _vocab "Conduit.DATECREATED"
+        let DATEMODIFIED = _vocab "Conduit.DATEMODIFIED"
+        let DIAMETER = _vocab "Conduit.DIAMETER"
+        let DIGITALPICTUREID = _vocab "Conduit.DIGITALPICTUREID"
+        let DOWNSTREAMDEPTH = _vocab "Conduit.DOWNSTREAMDEPTH"
+        let DOWNSTREAMELEVATION = _vocab "Conduit.DOWNSTREAMELEVATION"
+        let DRAWINGID = _vocab "Conduit.DRAWINGID"
+        let ENABLED = _vocab "Conduit.ENABLED"
+        let FACILITYID = _vocab "Conduit.FACILITYID"
+        let FIELD_COMMENTS_ = _vocab "Conduit.FIELD_COMMENTS_"
+        let FIELDCOMPLETE = _vocab "Conduit.FIELDCOMPLETE"
+        let GLOBALID = _vocab "Conduit.GLOBALID"
+        let HEIGHT = _vocab "Conduit.HEIGHT"
+        let IMAGERYYEAR = _vocab "Conduit.IMAGERYYEAR"
+        let INVENTORYDATE = _vocab "Conduit.INVENTORYDATE"
+        let LEGACYID = _vocab "Conduit.LEGACYID"
+        let LFEET = _vocab "Conduit.LFEET"
+        let LIFECYCLE = _vocab "Conduit.LIFECYCLE"
+        let MAINTBY = _vocab "Conduit.MAINTBY"
+        let MATERIAL = _vocab "Conduit.MATERIAL"
+        let NEEDSATTENTION = _vocab "Conduit.NEEDSATTENTION"
+        let NOTES = _vocab "Conduit.NOTES"
+        let OBJECTID = _vocab "Conduit.OBJECTID"
+        let ORIGINALSOURCE = _vocab "Conduit.ORIGINALSOURCE"
+        let OUTFALLID = _vocab "Conduit.OUTFALLID"
+        let OWNER = _vocab "Conduit.OWNER"
+        let PARENTID = _vocab "Conduit.PARENTID"
+        let PERCT_GRD = _vocab "Conduit.PERCT_GRD"
+        let PIPESHAPE = _vocab "Conduit.PIPESHAPE"
+        let SHAPE = _vocab "Conduit.SHAPE"
+        let SHAPE_Length = _vocab "Conduit.SHAPE_Length"
+        let SOURCE = _vocab "Conduit.SOURCE"
+        let SUBTYPEFIELD = _vocab "Conduit.SUBTYPEFIELD"
+        let UNITID = _vocab "Conduit.UNITID"
+        let UPDATESOURCE = _vocab "Conduit.UPDATESOURCE"
+        let UPSTREAMDEPTH = _vocab "Conduit.UPSTREAMDEPTH"
+        let UPSTREAMELEVATION = _vocab "Conduit.UPSTREAMELEVATION"
+        let WHOCREATED = _vocab "Conduit.WHOCREATED"
+        let WHOMODIFIED = _vocab "Conduit.WHOMODIFIED"
+        let WIDTH = _vocab "Conduit.WIDTH"
+
+    module Culvert_Cross_Drain =
+        let ACCEPT_DATE = _vocab "Culvert_Cross_Drain.ACCEPT_DATE"
+        let ACCURACYCODE = _vocab "Culvert_Cross_Drain.ACCURACYCODE"
+        let ATTRIBUTECOMPLETE = _vocab "Culvert_Cross_Drain.ATTRIBUTECOMPLETE"
+        let DATECREATED = _vocab "Culvert_Cross_Drain.DATECREATED"
+        let DATEMODIFIED = _vocab "Culvert_Cross_Drain.DATEMODIFIED"
+        let DIAMETER = _vocab "Culvert_Cross_Drain.DIAMETER"
+        let DIGITALPICTUREID = _vocab "Culvert_Cross_Drain.DIGITALPICTUREID"
+        let DOWNSTREAM_DEPTH = _vocab "Culvert_Cross_Drain.DOWNSTREAM_DEPTH"
+        let DOWNSTREAM_ELEV = _vocab "Culvert_Cross_Drain.DOWNSTREAM_ELEV"
+        let DRAWINGID = _vocab "Culvert_Cross_Drain.DRAWINGID"
+        let ENABLED = _vocab "Culvert_Cross_Drain.ENABLED"
+        let FACILITYID = _vocab "Culvert_Cross_Drain.FACILITYID"
+        let FIELD_COMMENTS_ = _vocab "Culvert_Cross_Drain.FIELD_COMMENTS_"
+        let FIELDCOMPLETE = _vocab "Culvert_Cross_Drain.FIELDCOMPLETE"
+        let GLOBALID = _vocab "Culvert_Cross_Drain.GLOBALID"
+        let HEIGHT = _vocab "Culvert_Cross_Drain.HEIGHT"
+        let IMAGERYYEAR = _vocab "Culvert_Cross_Drain.IMAGERYYEAR"
+        let INVENTORYDATE = _vocab "Culvert_Cross_Drain.INVENTORYDATE"
+        let LEGACYID = _vocab "Culvert_Cross_Drain.LEGACYID"
+        let LFEET = _vocab "Culvert_Cross_Drain.LFEET"
+        let LIFECYCLE = _vocab "Culvert_Cross_Drain.LIFECYCLE"
+        let MAINTBY = _vocab "Culvert_Cross_Drain.MAINTBY"
+        let MATERIAL = _vocab "Culvert_Cross_Drain.MATERIAL"
+        let NEEDSATTENTION = _vocab "Culvert_Cross_Drain.NEEDSATTENTION"
+        let NOTES = _vocab "Culvert_Cross_Drain.NOTES"
+        let NUM_BARRELS = _vocab "Culvert_Cross_Drain.NUM_BARRELS"
+        let OBJECTID = _vocab "Culvert_Cross_Drain.OBJECTID"
+        let ORIGINALSOURCE = _vocab "Culvert_Cross_Drain.ORIGINALSOURCE"
+        let OUTFALLID = _vocab "Culvert_Cross_Drain.OUTFALLID"
+        let OWNER = _vocab "Culvert_Cross_Drain.OWNER"
+        let PARENTID = _vocab "Culvert_Cross_Drain.PARENTID"
+        let PERCT_GRD = _vocab "Culvert_Cross_Drain.PERCT_GRD"
+        let PIPESHAPE = _vocab "Culvert_Cross_Drain.PIPESHAPE"
+        let SHAPE = _vocab "Culvert_Cross_Drain.SHAPE"
+        let SHAPE_Length = _vocab "Culvert_Cross_Drain.SHAPE_Length"
+        let SOURCE = _vocab "Culvert_Cross_Drain.SOURCE"
+        let SUBTYPEFIELD = _vocab "Culvert_Cross_Drain.SUBTYPEFIELD"
+        let UNITID = _vocab "Culvert_Cross_Drain.UNITID"
+        let UPDATESOURCE = _vocab "Culvert_Cross_Drain.UPDATESOURCE"
+        let UPSTREAM_DEPTH = _vocab "Culvert_Cross_Drain.UPSTREAM_DEPTH"
+        let UPSTREAM_ELEV = _vocab "Culvert_Cross_Drain.UPSTREAM_ELEV"
+        let WHOCREATED = _vocab "Culvert_Cross_Drain.WHOCREATED"
+        let WHOMODIFIED = _vocab "Culvert_Cross_Drain.WHOMODIFIED"
+        let WIDTH = _vocab "Cuvert_Cross_Drain.WIDTH"
+
+    module Debris_Trap =
+        let ACCURACYCODE = _vocab "Debris_Trap.ACCURACYCODE"
+        let ATTACHEDTOID = _vocab "Debris_Trap.ATTACHEDTOID"
+        let ATTRIBUTECOMPLETE = _vocab "Debris_Trap.ATTRIBUTECOMPLETE"
+        let DATECREATED = _vocab "Debris_Trap.DATECREATED"
+        let DATEMODIFIED = _vocab "Debris_Trap.DATEMODIFIED"
+        let DIGITALPICTUREID = _vocab "Debris_Trap.DIGITALPICTUREID"
+        let EASTING = _vocab "Debris_Trap.EASTING"
+        let FACILITYID = _vocab "Debris_Trap.FACILITYID"
+        let FIELDCOMMENTS = _vocab "Debris_Trap.FIELDCOMMENTS"
+        let FIELDCOMPLETE = _vocab "Debris_Trap.FIELDCOMPLETE"
+        let GLOBALID = _vocab "Debris_Trap.GLOBALID"
+        let HYPERLINK_AR = _vocab "Debris_Trap.HYPERLINK_AR"
+        let IMAGERYYEAR = _vocab "Debris_Trap.IMAGERYYEAR"
+        let INVENTORYDATE = _vocab "Debris_Trap.INVENTORYDATE"
+        let INVENTORYTYPE = _vocab "Debris_Trap.INVENTORYTYPE"
+        let LEGACYID = _vocab "Debris_Trap.LEGACYID"
+        let LIFECYCLE = _vocab "Debris_Trap.LIFECYCLE"
+        let LOCATION = _vocab "Debris_Trap.LOCATION"
+        let MAINTBY = _vocab "Debris_Trap.MAINTBY"
+        let NEEDSATTENTION = _vocab "Debris_Trap.NEEDSATTENTION"
+        let NORTHING = _vocab "Debris_Trap.NORTHING"
+        let NOTES = _vocab "Debris_Trap.NOTES"
+        let OBJECTID = _vocab "Debris_Trap.OBJECTID"
+        let ORIGINALSOURCE = _vocab "Debris_Trap.ORIGINALSOURCE"
+        let OUTFALLID = _vocab "Debris_Trap.OUTFALLID"
+        let OWNER = _vocab "Debris_Trap.OWNER"
+        let PARENTID = _vocab "Debris_Trap.PARENTID"
+        let PRFRESOLUTION = _vocab "Debris_Trap.PRFRESOLUTION"
+        let SHAPE = _vocab "Debris_Trap.SHAPE"
+        let SOURCE = _vocab "Debris_Trap.SOURCE"
+        let UNITID = _vocab "Debris_Trap.UNITID"
+        let UPDATESOURCE = _vocab "Debris_Trap.UPDATESOURCE"
+        let WHOCREATED = _vocab "Debris_Trap.WHOCREATED"
+        let WHOMODIFIED = _vocab "Debris_Trap.WHOMODIFIED"
+        let Z29 = _vocab "Debris_Trap.Z29"
+        let ZVALUE = _vocab "Debris_Trap.ZVALUE"
+
+    module Ditch =
+        let ACCURACYCODE = _vocab "Ditch.ACCURACYCODE"
+        let ATTRIBUTECOMPLETE = _vocab "Ditch.ATTRIBUTECOMPLETE"
+        let DATECREATED = _vocab "Ditch.DATECREATED"
+        let DATEMODIFIED = _vocab "Ditch.DATEMODIFIED"
+        let DIGITALPICTUREID = _vocab "Ditch.DIGITALPICTUREID"
+        let DRAWINGID = _vocab "Ditch.DRAWINGID"
+        let ENABLED = _vocab "Ditch.ENABLED"
+        let FACILITYID = _vocab "Ditch.FACILITYID"
+        let FIELDCOMMENTS = _vocab "Ditch.FIELDCOMMENTS"
+        let FIELDCOMPLETE = _vocab "Ditch.FIELDCOMPLETE"
+        let GLOBALID = _vocab "Ditch.GLOBALID"
+        let IMAGERYYEAR = _vocab "Ditch.IMAGERYYEAR"
+        let INVENTORYDATE = _vocab "Ditch.INVENTORYDATE"
+        let LEGACYID = _vocab "Ditch.LEGACYID"
+        let LIFECYCLE = _vocab "Ditch.LIFECYCLE"
+        let MAINTBY = _vocab "Ditch.MAINTBY"
+        let MILES = _vocab "Ditch.MILES"
+        let NOTES = _vocab "Ditch.NOTES"
+        let OBJECTID = _vocab "Ditch.OBJECTID"
+        let ORIGINALSOURCE = _vocab "Ditch.ORIGINALSOURCE"
+        let OUTFALLID = _vocab "Ditch.OUTFALLID"
+        let OWNER = _vocab "Ditch.OWNER"
+        let PARENTID = _vocab "Ditch.PARENTID"
+        let RELATEDFEATURE = _vocab "Ditch.RELATEDFEATURE"
+        let SHAPE = _vocab "Ditch.SHAPE"
+        let SHAPE_Length = _vocab "Ditch.SHAPE_Length"
+        let SOURCE = _vocab "Ditch.SOURCE"
+        let SUBTYPEFIELD = _vocab "Ditch.SUBTYPEFIELD"
+        let SURFACETYPE = _vocab "Ditch.SURFACETYPE"
+        let UNITID = _vocab "Ditch.UNITID"
+        let WHOCREATED = _vocab "Ditch.WHOCREATED"
+        let WHOMODIFIED = _vocab "Ditch.WHOMODIFIED"
+
+    module End_Point =
+        let End_Point_ACCURACYCODE = _vocab "End Point.ACCURACYCODE"
+        let ANCILLARYROLE = _vocab "End Point.ANCILLARYROLE"
+        let ATTRIBUTECOMPLETE = _vocab "End Point.ATTRIBUTECOMPLETE"
+        let CREW = _vocab "End Point.CREW"
+        let DATECREATED = _vocab "End Point.DATECREATED"
+        let DATEMODIFIED = _vocab "End Point.DATEMODIFIED"
+        let DIGITALPICTUREID = _vocab "End Point.DIGITALPICTUREID"
+        let DRAWINGID = _vocab "End Point.DRAWINGID"
+        let EASTING = _vocab "End Point.EASTING"
+        let ENABLED = _vocab "End Point.ENABLED"
+        let FACILITYID = _vocab "End Point.FACILITYID"
+        let FIELDCOMMENTS = _vocab "End Point.FIELDCOMMENTS"
+        let FIELDCOMPLETE = _vocab "End Point.FIELDCOMPLETE"
+        let GLOBALID = _vocab "End Point.GLOBALID"
+        let HYPERLINK_AR = _vocab "End Point.HYPERLINK_AR"
+        let IMAGERYYEAR = _vocab "End Point.IMAGERYYEAR"
+        let INFILTRATION = _vocab "End Point.INFILTRATION"
+        let INVENTORYDATE = _vocab "End Point.INVENTORYDATE"
+        let INVENTORYTYPE = _vocab "End Point.INVENTORYTYPE"
+        let ISINFALL = _vocab "End Point.ISINFALL"
+        let LEGACYID = _vocab "End Point.LEGACYID"
+        let LIFECYCLE = _vocab "End Point.LIFECYCLE"
+        let LOCATION = _vocab "End Point.LOCATION"
+        let MAINTBY = _vocab "End Point.MAINTBY"
+        let MATERIAL = _vocab "End Point.MATERIAL"
+        let NEEDSATTENTION = _vocab "End Point.NEEDSATTENTION"
+        let NORTHING = _vocab "End Point.NORTHING"
+        let NOTES = _vocab "End Point.NOTES"
+        let OBJECTID = _vocab "End Point.OBJECTID"
+        let OBSTRUCTION = _vocab "End Point.OBSTRUCTION"
+        let ORIGINALSOURCE = _vocab "End Point.ORIGINALSOURCE"
+        let OUTFALLID = _vocab "End Point.OUTFALLID"
+        let OWNER = _vocab "End Point.OWNER"
+        let PARENTID = _vocab "End Point.PARENTID"
+        let PRFRESOLUTION = _vocab "End Point.PRFRESOLUTION"
+        let RELATEDFEATURE = _vocab "End Point.RELATEDFEATURE"
+        let SHAPE = _vocab "End Point.SHAPE"
+        let SOURCE = _vocab "End Point.SOURCE"
+        let STRUCTUREID = _vocab "End Point.STRUCTUREID"
+        let SUBTYPEFIELD = _vocab "End Point.SUBTYPEFIELD"
+        let UNITID = _vocab "End Point.UNITID"
+        let UPDATESOURCE = _vocab "End Point.UPDATESOURCE"
+        let WHOCREATED = _vocab "End Point.WHOCREATED"
+        let WHOMODIFIED = _vocab "End Point.WHOMODIFIED"
+        let ZVALUE = _vocab "End Point.ZVALUE"
+
+    module Inlet =
+        let ACCURACYCODE = _vocab "Inlet.ACCURACYCODE"
+        let ANCILLARYROLE = _vocab "Inlet.ANCILLARYROLE"
+        let ATTRIBUTECOMPLETE = _vocab "Inlet.ATTRIBUTECOMPLETE"
+        let CREW = _vocab "Inlet.CREW"
+        let DATECREATED = _vocab "Inlet.DATECREATED"
+        let DATEMODIFIED = _vocab "Inlet.DATEMODIFIED"
+        let DIGITALPICTUREID = _vocab "Inlet.DIGITALPICTUREID"
+        let DRAWINGID = _vocab "Inlet.DRAWINGID"
+        let EASTING = _vocab "Inlet.EASTING"
+        let ENABLED = _vocab "Inlet.ENABLED"
+        let FACILITYID = _vocab "Inlet.FACILITYID"
+        let FIELDCOMMENTS = _vocab "Inlet.FIELDCOMMENTS"
+        let FIELDCOMPLETE = _vocab "Inlet.FIELDCOMPLETE"
+        let GLOBALID = _vocab "Inlet.GLOBALID"
+        let HYPERLINK_AR = _vocab "Inlet.HYPERLINK_AR"
+        let IMAGERYYEAR = _vocab "Inlet.IMAGERYYEAR"
+        let INFILTRATION = _vocab "Inlet.INFILTRATION"
+        let INVENTORYDATE = _vocab "Inlet.INVENTORYDATE"
+        let INVENTORYTYPE = _vocab "Inlet.INVENTORYTYPE"
+        let INVERT_ELEV29 = _vocab "Inlet.INVERT_ELEV29"
+        let INVERTELEV = _vocab "Inlet.INVERTELEV"
+        let ISINFALL = _vocab "Inlet.ISINFALL"
+        let LEGACYID = _vocab "Inlet.LEGACYID"
+        let LIFECYCLE = _vocab "Inlet.LIFECYCLE"
+        let LOCATION = _vocab "Inlet.LOCATION"
+        let MAINTBY = _vocab "Inlet.MAINTBY"
+        let MATERIAL = _vocab "Inlet.MATERIAL"
+        let NEEDSATTENTION = _vocab "Inlet.NEEDSATTENTION"
+        let NORTHING = _vocab "Inlet.NORTHING"
+        let NOTES = _vocab "Inlet.NOTES"
+        let OBJECTID = _vocab "Inlet.OBJECTID"
+        let OBSTRUCTION = _vocab "Inlet.OBSTRUCTION"
+        let ORIGINALSOURCE = _vocab "Inlet.ORIGINALSOURCE"
+        let OUTFALLID = _vocab "Inlet.OUTFALLID"
+        let OWNER = _vocab "Inlet.OWNER"
+        let PARENTID = _vocab "Inlet.PARENTID"
+        let PID_1 = _vocab "Inlet.PID_1"
+        let PLACE = _vocab "Inlet.PLACE"
+        let PRFRESOLUTION = _vocab "Inlet.PRFRESOLUTION"
+        let RELATEDFEATURE = _vocab "Inlet.RELATEDFEATURE"
+        let SHAPE = _vocab "Inlet.SHAPE"
+        let SLOT_ELEV = _vocab "Inlet.SLOT_ELEV"
+        let SOURCE = _vocab "Inlet.SOURCE"
+        let STRCT_DEPTH = _vocab "Inlet.STRCT_DEPTH"
+        let STRUCTUREID = _vocab "Inlet.STRUCTUREID"
+        let SUBTYPEFIELD = _vocab "Inlet.SUBTYPEFIELD"
+        let UNDERDRAINS = _vocab "Inlet.UNDERDRAINS"
+        let UNITID = _vocab "Inlet.UNITID"
+        let UPDATESOURCE = _vocab "Inlet.UPDATESOURCE"
+        let WHOCREATED = _vocab "Inlet.WHOCREATED"
+        let WHOMODIFIED = _vocab "Inlet.WHOMODIFIED"
+        let ZVALUE = _vocab "Inlet.ZVALUE"
+
+    module Junction_Fixed =
+        let ACCURACYCODE = _vocab "Junction Fixed.ACCURACYCODE"
+        let ANCILLARYROLE = _vocab "Junction Fixed.ANCILLARYROLE"
+        let ATTRIBUTECOMPLETE = _vocab "Junction Fixed.ATTRIBUTECOMPLETE"
+        let CREW = _vocab "Junction Fixed.CREW"
+        let DATECREATED = _vocab "Junction Fixed.DATECREATED"
+        let DATEMODIFIED = _vocab "Junction Fixed.DATEMODIFIED"
+        let DIGITALPICTUREID = _vocab "Junction Fixed.DIGITALPICTUREID"
+        let DRAWINGID = _vocab "Junction Fixed.DRAWINGID"
+        let EASTING = _vocab "Junction Fixed.EASTING"
+        let ENABLED = _vocab "Junction Fixed.ENABLED"
+        let FACILITYID = _vocab "Junction Fixed.FACILITYID"
+        let FIELDCOMMENTS = _vocab "Junction Fixed.FIELDCOMMENTS"
+        let FIELDCOMPLETE = _vocab "Junction Fixed.FIELDCOMPLETE"
+        let GLOBALID = _vocab "Junction Fixed.GLOBALID"
+        let HYPERLINK_AR = _vocab "Junction Fixed.HYPERLINK_AR"
+        let IMAGERYYEAR = _vocab "Junction Fixed.IMAGERYYEAR"
+        let INFILTRATION = _vocab "Junction Fixed.INFILTRATION"
+        let INVENTORYDATE = _vocab "Junction Fixed.INVENTORYDATE"
+        let INVENTORYTYPE = _vocab "Junction Fixed.INVENTORYTYPE"
+        let INVERT_ELEV = _vocab "Junction Fixed.INVERT_ELEV"
+        let ISINFALL = _vocab "Junction Fixed.ISINFALL"
+        let LEGACY_ID = _vocab "Junction Fixed.LEGACY_ID"
+        let LIFECYCLE = _vocab "Junction Fixed.LIFECYCLE"
+        let LOCATION = _vocab "Junction Fixed.LOCATION"
+        let MAINTBY = _vocab "Junction Fixed.MAINTBY"
+        let MATERIAL = _vocab "Junction Fixed.MATERIAL"
+        let NEEDSATTENTION = _vocab "Junction Fixed.NEEDSATTENTION"
+        let NORTHING = _vocab "Junction Fixed.NORTHING"
+        let NOTES = _vocab "Junction Fixed.NOTES"
+        let OBJECTID = _vocab "Junction Fixed.OBJECTID"
+        let OBSTRUCTION = _vocab "Junction Fixed.OBSTRUCTION"
+        let ORIGINALSOURCE = _vocab "Junction Fixed.ORIGINALSOURCE"
+        let OUTFALLID = _vocab "Junction Fixed.OUTFALLID"
+        let OWNER = _vocab "Junction Fixed.OWNER"
+        let PARENTID = _vocab "Junction Fixed.PARENTID"
+        let PRFRESOLUTION = _vocab "Junction Fixed.PRFRESOLUTION"
+        let RELATEDFEATURE = _vocab "Junction Fixed.RELATEDFEATURE"
+        let SHAPE = _vocab "Junction Fixed.SHAPE"
+        let SOURCE = _vocab "Junction Fixed.SOURCE"
+        let STRCT_DEPTH = _vocab "Junction Fixed.STRCT_DEPTH"
+        let STRUCTUREID = _vocab "Junction Fixed.STRUCTUREID"
+        let SUBTYPEFIELD = _vocab "Junction Fixed.SUBTYPEFIELD"
+        let UNITID = _vocab "Junction Fixed.UNITID"
+        let UPDATESOURCE = _vocab "Junction Fixed.UPDATESOURCE"
+        let WHOCREATED = _vocab "Junction Fixed.WHOCREATED"
+        let WHOMODIFIED = _vocab "Junction Fixed.WHOMODIFIED"
+        let ZVALUE = _vocab "Junction Fixed.ZVALUE"
+
+    module Outfall =
+        let ATTACHEDTOID = _vocab "Outfall.ATTACHEDTOID"
+        let DRAINAGEBASIN = _vocab "Outfall.DRAINAGEBASIN"
+        let FACILITYID = _vocab "Outfall.FACILITYID"
+        let GLOBALID = _vocab "Outfall.GLOBALID"
+        let NOTES = _vocab "Outfall.NOTES"
+        let OBJECTID = _vocab "Outfall.OBJECTID"
+        let OUTFALLID = _vocab "Outfall.OUTFALLID"
+        let OUTFALLTYPE = _vocab "Outfall.OUTFALLTYPE"
+        let SHAPE = _vocab "Outfall.SHAPE"
+        let STRUCTURETYPE = _vocab "Outfall.STRUCTURETYPE"
+        let UNITID = _vocab "Outfall.UNITID"
+        let UPSTREAMSTUCTUREID = _vocab "Outfall.UPSTREAMSTUCTUREID"
+        let WATERBODYNAME = _vocab "Outfall.WATERBODYNAME"
+        let WBID = _vocab "Outfall.WBID"
+
+    module Stormwater_Pond_Discharge =
+
+        let ACCURACYCODE = _vocab "Stormwater Pond Discharge.ACCURACYCODE"
+
+        let ANCILLARYROLE = _vocab "Stormwater Pond Discharge.ANCILLARYROLE"
+
+        let ATTRIBUTECOMPLETE = _vocab "Stormwater Pond Discharge.ATTRIBUTECOMPLETE"
+
+        let DATECREATED = _vocab "Stormwater Pond Discharge.DATECREATED"
+
+        let DATEMODIFIED = _vocab "Stormwater Pond Discharge.DATEMODIFIED"
+
+        let DIGITALPICTUREID = _vocab "Stormwater Pond Discharge.DIGITALPICTUREID"
+
+        let DIGITALPICTUREID_E = _vocab "Stormwater Pond Discharge.DIGITALPICTUREID_E"
+
+        let DIGITALPICTUREID_S = _vocab "Stormwater Pond Discharge.DIGITALPICTUREID_S"
+
+        let DIGITALPICTUREID_W = _vocab "Stormwater Pond Discharge.DIGITALPICTUREID_W"
+
+        let DRAWINGID = _vocab "Stormwater Pond Discharge.DRAWINGID"
+
+        let EASTING = _vocab "Stormwater Pond Discharge.EASTING"
+        let ENABLED = _vocab "Stormwater Pond Discharge.ENABLED"
+
+        let FACILITYID = _vocab "Stormwater Pond Discharge.FACILITYID"
+
+        let FIELDCOMMENTS = _vocab "Stormwater Pond Discharge.FIELDCOMMENTS"
+
+        let FIELDCOMPLETE = _vocab "Stormwater Pond Discharge.FIELDCOMPLETE"
+
+        let GLOBALID = _vocab "Stormwater Pond Discharge.GLOBALID"
+
+        let HYPERLINK_AR = _vocab "Stormwater Pond Discharge.HYPERLINK_AR"
+
+        let IMAGERYYEAR = _vocab "Stormwater Pond Discharge.IMAGERYYEAR"
+
+        let INFILTRATION = _vocab "Stormwater Pond Discharge.INFILTRATION"
+
+        let INVENTORYDATE = _vocab "Stormwater Pond Discharge.INVENTORYDATE"
+
+        let INVENTORYTYPE = _vocab "Stormwater Pond Discharge.INVENTORYTYPE"
+
+        let LEGACYID = _vocab "Stormwater Pond Discharge.LEGACYID"
+
+        let LIFECYCLE = _vocab "Stormwater Pond Discharge.LIFECYCLE"
+
+        let LOCATION = _vocab "Stormwater Pond Discharge.LOCATION"
+        let MAINTBY = _vocab "Stormwater Pond Discharge.MAINTBY"
+
+        let NEEDSATTENTION = _vocab "Stormwater Pond Discharge.NEEDSATTENTION"
+
+        let NORTHING = _vocab "Stormwater Pond Discharge.NORTHING"
+        let NOTES = _vocab "Stormwater Pond Discharge.NOTES"
+        let OBJECTID = _vocab "Stormwater Pond Discharge.OBJECTID"
+
+        let ORIGINALSOURCE = _vocab "Stormwater Pond Discharge.ORIGINALSOURCE"
+
+        let OUTFALLID = _vocab "Stormwater Pond Discharge.OUTFALLID"
+
+        let OWNER = _vocab "Stormwater Pond Discharge.OWNER"
+        let PARENTID = _vocab "Stormwater Pond Discharge.PARENTID"
+
+        let PRFRESOLUTION = _vocab "Stormwater Pond Discharge.PRFRESOLUTION"
+
+        let SHAPE = _vocab "Stormwater Pond Discharge.SHAPE"
+        let SOURCE = _vocab "Stormwater Pond Discharge.SOURCE"
+
+        let STRUCTUREID = _vocab "Stormwater Pond Discharge.STRUCTUREID"
+
+        let STRUCTURETYPE = _vocab "Stormwater Pond Discharge.STRUCTURETYPE"
+
+        let SUBTYPEFIELD = _vocab "Stormwater Pond Discharge.SUBTYPEFIELD"
+
+        let UNITID = _vocab "Stormwater Pond Discharge.UNITID"
+
+        let UPDATESOURCE = _vocab "Stormwater Pond Discharge.UPDATESOURCE"
+
+        let WHOCREATED = _vocab "Stormwater Pond Discharge.WHOCREATED"
+
+        let WHOMODIFIED = _vocab "Stormwater Pond Discharge.WHOMODIFIED"
+
+        let Z29 = _vocab "Stormwater Pond Discharge.Z29"
+        let ZVALUE = _vocab "Stormwater Pond Discharge.ZVALUE"
+
+    module Stormwater_Pond =
+
+        let ACCURACYCODE = _vocab "Stormwater Pond.ACCURACYCODE"
+        let ACREAGE = _vocab "Stormwater Pond.ACREAGE"
+        let ACTIVITY = _vocab "Stormwater Pond.ACTIVITY"
+        let ANCILLARYROLE = _vocab "Stormwater Pond.ANCILLARYROLE"
+        let CAPACITY = _vocab "Stormwater Pond.CAPACITY"
+        let DATECREATED = _vocab "Stormwater Pond.DATECREATED"
+        let DATEMODIFIED = _vocab "Stormwater Pond.DATEMODIFIED"
+        let DRAINAGE_AREA = _vocab "Stormwater Pond.DRAINAGE_AREA"
+        let EASTING = _vocab "Stormwater Pond.EASTING"
+        let ENABLED = _vocab "Stormwater Pond.ENABLED"
+        let FACILITYID = _vocab "Stormwater Pond.FACILITYID"
+        let FILTER = _vocab "Stormwater Pond.FILTER"
+        let FILTERLOCATION = _vocab "Stormwater Pond.FILTERLOCATION"
+        let FILTERTYPE = _vocab "Stormwater Pond.FILTERTYPE"
+        let GLOBALID = _vocab "Stormwater Pond.GLOBALID"
+        let IMAGERYYEAR = _vocab "Stormwater Pond.IMAGERYYEAR"
+        let LEGACYID = _vocab "Stormwater Pond.LEGACYID"
+        let LIFECYCLE = _vocab "Stormwater Pond.LIFECYCLE"
+        let LOCATION = _vocab "Stormwater Pond.LOCATION"
+        let MAINTBY = _vocab "Stormwater Pond.MAINTBY"
+        let NORTHING = _vocab "Stormwater Pond.NORTHING"
+        let NOTES = _vocab "Stormwater Pond.NOTES"
+        let OBJECTID = _vocab "Stormwater Pond.OBJECTID"
+        let ORIGINALSOURCE = _vocab "Stormwater Pond.ORIGINALSOURCE"
+        let OWNER = _vocab "Stormwater Pond.OWNER"
+        let PARCELID = _vocab "Stormwater Pond.PARCELID"
+        let PARENTID = _vocab "Stormwater Pond.PARENTID"
+        let PONDID = _vocab "Stormwater Pond.PONDID"
+        let PONDTYPE = _vocab "Stormwater Pond.PONDTYPE"
+        let SOURCE = _vocab "Stormwater Pond.SOURCE"
+        let SUBTYPEFIELD = _vocab "Stormwater Pond.SUBTYPEFIELD"
+        let Shape = _vocab "Stormwater Pond.Shape"
+        let UNITDESC = _vocab "Stormwater Pond.UNITDESC"
+        let UPDATESOURCE = _vocab "Stormwater Pond.UPDATESOURCE"
+        let WHOCREATED = _vocab "Stormwater Pond.WHOCREATED"
+        let WHOMODIFIED = _vocab "Stormwater Pond.WHOMODIFIED"
+        let Z29 = _vocab "Stormwater Pond.Z29"
+        let ZVALUE = _vocab "Stormwater Pond.ZVALUE"
+
+    let owner = _vocab "owner"
+    let Owner = _vocab "Owner"
+    let filter_location = _vocab "filter_location"
+    let Filter_Location = _vocab "Filter_Location"
+
+    let LCPW_OverlayStormwaterInfrastructure_D_WM =
+        _vocab "LCPW_OverlayStormwaterInfrastructure_D_WM"
+
+    let x_coordinate = _vocab "x_coordinate"
+    let y_coordinate = _vocab "y_coordinate"
+    let z_coordinate = _vocab "z_coordinate"
+    let hyd = _vocab "hyd"
+    let Hyd = _vocab "Hyd"
+
+    let drainage_basin = _vocab "drainage_basin"
+    let Drainage_Basin = _vocab "Drainage_Basin"
+    let attached_to = _vocab "attached_to"
+    let facility = _vocab "facility"
+    let feature_class = _vocab "feature_class"
+    let Feature_Class = _vocab "Feature_Class"
+    let layer = _vocab "layer"
+    let Layer = _vocab "Layer"
+    let feature_layer = _vocab "feature_layer"
+    let Feature_Layer = _vocab "Feature_Layer"
+    let group_layer = _vocab "group_layer"
+    let Group_Layer = _vocab "Group_Layer"
+    let parent_layer = _vocab "parent_layer"
+    let child_layer = _vocab "child_layer"
+    let coded_value_domain = _vocab "coded_value_domain"
+    let coded_value = _vocab "coded_value"
+    let data_element = _vocab "data_element"
+    let feature_dataset = _vocab "feature_dataset"
+
+    let DrainageNetwork_Feature_Dataset = _vocab "DrainageNetwork_Feature_Dataset"
+    let DrainageNonNetwork_Feature_Dataset = _vocab "DrainageNonNetwork_Feature_Dataset"
+
+    let Bridge_Feature_Class = _Feature_Class "Bridge"
+    let BridgePoint_Feature_Class = _Feature_Class "BridgePoint"
+    let Conduit_Feature_Class = _Feature_Class "Conduit"
+    let Connectivity_Feature_Class = _Feature_Class "Connectivity"
+    let CulvertCrossDrain_Feature_Class = _Feature_Class "CulvertCrossDrain"
+    let Damage_Feature_Class = _Feature_Class "Damage"
+    let DebrisTrap_Feature_Class = _Feature_Class "DebrisTrap"
+    let Ditch_Feature_Class = _Feature_Class "Ditch"
+    let DitchPoint_Feature_Class = _Feature_Class "DitchPoint"
+    let EndPoint_Feature_Class = _Feature_Class "EndPoint"
+    let GenericStormAsset_Feature_Class = _Feature_Class "GenericStormAsset"
+    let Inlet_Feature_Class = _Feature_Class "Inlet"
+    let Interference_Feature_Class = _Feature_Class "Interference"
+    let Junction_fixed_Feature_Class = _Feature_Class "Junction_fixed"
+    let MediaPoints_Feature_Class = _Feature_Class "MediaPoints"
+
+    let MediaPointsWithoutPhotos_Feature_Class =
+        _Feature_Class "MediaPointsWithoutPhotos"
+
+    let Outfall_Feature_Class = _Feature_Class "Outfall"
+    let Outfall_DrainageArea_Feature_Class = _Feature_Class "Outfall_DrainageArea"
+
+    let Outfall_DrainageArea_MOF_Feature_Class =
+        _Feature_Class "Outfall_DrainageArea_MOF"
+
+    let Outfall_DrainageArea_MS4_Feature_Class =
+        _Feature_Class "Outfall_DrainageArea_MS4"
+
+    let PollutionControlBox_Feature_Class = _Feature_Class "PollutionControlBox"
+    let PrivatePoint_Feature_Class = _Feature_Class "PrivatePoint"
+    let StormwaterPond_Feature_Class = _Feature_Class "StormwaterPond"
+
+    let StormwaterPond_MediaPoints_Feature_Class =
+        _Feature_Class "StormwaterPond_MediaPoints"
+
+    let StormwaterPondDischarge_Feature_Class = _Feature_Class "StormwaterPondDischarge"
+    let StormwaterPondTopOfBank_Feature_Class = _Feature_Class "StormwaterPondTopOfBank"
+    let Drainage_Network_Group_Layer = _vocab "Drainage_Network_Group_Layer"
+    let Non_Drainage_Network_Group_Layer = _vocab "Non-Drainage_Network_Group_Layer"
+    let Bridge_Feature_Layer = _Feature_Layer "Bridge"
+    let Bridge_Point_Feature_Layer = _Feature_Layer "Bridge Point"
+    let Conduit_Feature_Layer = _Feature_Layer "Conduit"
+    let Connectivity_Feature_Layer = _Feature_Layer "Connectivity"
+    let Culvert_Cross_Drain_Feature_Layer = _Feature_Layer "Culvert Cross Drain"
+    let Damage_Feature_Layer = _Feature_Layer "Damage"
+    let Debris_Trap_Feature_Layer = _Feature_Layer "Debris Trap"
+    let Ditch_Feature_Layer = _Feature_Layer "Ditch"
+    let Ditch_Point_Feature_Layer = _Feature_Layer "Ditch Point"
+    let End_Point_Feature_Layer = _Feature_Layer "End Point"
+    let Generic_Storm_Asset_Feature_Layer = _Feature_Layer "Generic Storm Asset"
+    let Inlet_Feature_Layer = _Feature_Layer "Inlet"
+    let Interference_Feature_Layer = _Feature_Layer "Interference"
+    let Junction_Fixed_Feature_Layer = _Feature_Layer "Junction Fixed"
+    let Media_Points_Feature_Layer = _Feature_Layer "Media Points"
+
+    let Media_Points_Without_Photos_Feature_Layer =
+        _Feature_Layer "Media Points Without Photos"
+
+    let Outfall_Feature_Layer = _Feature_Layer "Outfall"
+    let Outfall_Drainage_Area_Feature_Layer = _Feature_Layer "Outfall Drainage Area"
+
+    let Outfall_Drainage_Area_MOF_Feature_Layer =
+        _Feature_Layer "Outfall Drainage Area MOF"
+
+    let Outfall_Drainage_Area_MS4_Feature_Layer =
+        _Feature_Layer "Outfall Drainage Area MS4"
+
+    let Pollution_Control_Box_Feature_Layer = _Feature_Layer "Pollution Control Box"
+    let Private_Point_Feature_Layer = _Feature_Layer "Private Point"
+    let Stormwater_Pond_Feature_Layer = _Feature_Layer "Stormwater Pond"
+
+    let Stormwater_Pond_Media_Points_Feature_Layer =
+        _Feature_Layer "Stormwater Pond Media Points"
+
+    let Stormwater_Pond_Discharge_Feature_Layer =
+        _Feature_Layer "Stormwater Pond Discharge"
+
+    let Stormwater_Pond_Top_of_Bank_Feature_Layer =
+        _Feature_Layer "Stormwater Pond - Top of Bank"
+
     let Bridge_Feature = _Feature "Bridge"
+    let Bridge_Point_Feature = _Feature "Bridge Point"
     let Conduit_Feature = _Feature "Conduit"
     let Connectivity_Feature = _Feature "Connectivity"
     let Culvert_Cross_Drain_Feature = _Feature "Culvert Cross Drain"
     let Damage_Feature = _Feature "Damage"
     let Debris_Trap_Feature = _Feature "Debris Trap"
-    let Ditch_Point_Feature = _Feature "Ditch Point"
     let Ditch_Feature = _Feature "Ditch"
-    let Drainage_Network_Feature = _Feature "Drainage Network"
+    let Ditch_Point_Feature = _Feature "Ditch Point"
     let End_Point_Feature = _Feature "End Point"
     let Generic_Storm_Asset_Feature = _Feature "Generic Storm Asset"
     let Inlet_Feature = _Feature "Inlet"
     let Interference_Feature = _Feature "Interference"
     let Junction_Fixed_Feature = _Feature "Junction Fixed"
-    let Media_Points_Without_Photos_Feature = _Feature "Media Points Without Photos"
     let Media_Points_Feature = _Feature "Media Points"
-    let Non_Drainage_Network_Feature = _Feature "Non-Drainage Network"
+    let Media_Points_Without_Photos_Feature = _Feature "Media Points Without Photos"
+    let Outfall_Feature = _Feature "Outfall"
+    let Outfall_Drainage_Area_Feature = _Feature "Outfall Drainage Area"
     let Outfall_Drainage_Area_MOF_Feature = _Feature "Outfall Drainage Area MOF"
     let Outfall_Drainage_Area_MS4_Feature = _Feature "Outfall Drainage Area MS4"
-    let Outfall_Drainage_Area_Feature = _Feature "Outfall Drainage Area"
-    let Outfall_Feature = _Feature "Outfall"
     let Pollution_Control_Box_Feature = _Feature "Pollution Control Box"
     let Private_Point_Feature = _Feature "Private Point"
-    let Stormwater_Pond___Top_of_Bank_Feature = _Feature "Stormwater Pond - Top of Bank"
-    let Stormwater_Pond_Discharge_Feature = _Feature "Stormwater Pond Discharge"
     let Stormwater_Pond_Feature = _Feature "Stormwater Pond"
-    let Feature = _prefix "Feature"
-    let attached_to = _prefix "attached_to"
-    let unit_id = _prefix "unit_id"
-    let Facility = _prefix "Facility"
-    let facility = _prefix "facility"
-    let Outfall_Area = _prefix "Outfall_Area"
-    let outfall_area = _prefix "outfall_area"
-    let Structure = _prefix "Structure"
-    let upstream_structure = _prefix "upstream_structure"
-    let Pond = _prefix "Pond"
-    let parent = _prefix "parent"
+    let Stormwater_Pond_Media_Points_Feature = _Feature "Stormwater Pond Media Points"
+    let Stormwater_Pond_Discharge_Feature = _Feature "Stormwater Pond Discharge"
+    let Stormwater_Pond_Top_of_Bank_Feature = _Feature "Stormwater Pond - Top of Bank"
+
+
+    let ACCEPT_DATE = _vocab "ACCEPT_DATE"
+    let ACCURACYCODE = _vocab "ACCURACYCODE"
+    let ACREAGE = _vocab "ACREAGE"
+    let ACRES = _vocab "ACRES"
+    let ACTIVITY = _vocab "ACTIVITY"
+    let ANCILLARYROLE = _vocab "ANCILLARYROLE"
+    let ATTACHEDTOID = _vocab "ATTACHEDTOID"
+    let ATTRIBUTECOMPLETE = _vocab "ATTRIBUTECOMPLETE"
+    let CAPACITY = _vocab "CAPACITY"
+    let CREATIONDATE = _vocab "CREATIONDATE"
+    let CREATOR = _vocab "CREATOR"
+    let CREW = _vocab "CREW"
+    let DAMAGEID = _vocab "DAMAGEID"
+    let DAMAGETYPE = _vocab "DAMAGETYPE"
+    let DATAFILE = _vocab "DATAFILE"
+    let DATE_ = _vocab "DATE_"
+    let DATECREATED = _vocab "DATECREATED"
+    let DATEMODIFIED = _vocab "DATEMODIFIED"
+    let DESCRIPTION = _vocab "DESCRIPTION"
+    let DIAMETER = _vocab "DIAMETER"
+    let DIGITALPICTUREID = _vocab "DIGITALPICTUREID"
+    let DIGITALPICTUREID_E = _vocab "DIGITALPICTUREID_E"
+    let DIGITALPICTUREID_S = _vocab "DIGITALPICTUREID_S"
+    let DIGITALPICTUREID_W = _vocab "DIGITALPICTUREID_W"
+    let DOWNSTREAM_DEPTH = _vocab "DOWNSTREAM_DEPTH"
+    let DOWNSTREAM_ELEV = _vocab "DOWNSTREAM_ELEV"
+    let DOWNSTREAMDEPTH = _vocab "DOWNSTREAMDEPTH"
+    let DOWNSTREAMELEVATION = _vocab "DOWNSTREAMELEVATION"
+    let DRAINAGE_AREA = _vocab "DRAINAGE_AREA"
+    let DRAINAGEAREA = _vocab "DRAINAGEAREA"
+    let DRAINAGEBASIN = _vocab "DRAINAGEBASIN"
+    let DRAWINGID = _vocab "DRAWINGID"
+    let EASTING = _vocab "EASTING"
+    let EDITDATE = _vocab "EDITDATE"
+    let EDITOR = _vocab "EDITOR"
+    let ELEMENTX = _vocab "ELEMENTX"
+    let ELEMENTY = _vocab "ELEMENTY"
+    let ENABLED = _vocab "ENABLED"
+    let FACILITYID = _vocab "FACILITYID"
+    let FIELD_COMMENTS_ = _vocab "FIELD_COMMENTS_"
+    let FIELDCOMMENTS = _vocab "FIELDCOMMENTS"
+    let FIELDCOMPLETE = _vocab "FIELDCOMPLETE"
+    let FIELDCREW = _vocab "FIELDCREW"
+    let FILE_NAME = _vocab "FILE_NAME"
+    let FILE_NAME_1 = _vocab "FILE_NAME_1"
+    let FILTER = _vocab "FILTER"
+    let FILTERLOCATION = _vocab "FILTERLOCATION"
+    let FILTERTYPE = _vocab "FILTERTYPE"
+    let FINAL_NAME = _vocab "FINAL_NAME"
+    let FOLDER = _vocab "FOLDER"
+    let GLOBALID = _vocab "GLOBALID"
+    let HEIGHT = _vocab "HEIGHT"
+    let HOTLINK = _vocab "HOTLINK"
+    let HYD_ID = _vocab "HYD_ID"
+    let HYPERLINK = _vocab "HYPERLINK"
+    let HYPERLINK_AR = _vocab "HYPERLINK_AR"
+    let IMAGERYYEAR = _vocab "IMAGERYYEAR"
+    let INFILTRATION = _vocab "INFILTRATION"
+    let INSPDATE = _vocab "INSPDATE"
+    let INVENTORIED_BY = _vocab "INVENTORIED_BY"
+    let INVENTORYDATE = _vocab "INVENTORYDATE"
+    let INVENTORYTYPE = _vocab "INVENTORYTYPE"
+    let INVERT_ELEV = _vocab "INVERT_ELEV"
+    let INVERT_ELEV29 = _vocab "INVERT_ELEV29"
+    let INVERTELEV = _vocab "INVERTELEV"
+    let ISINFALL = _vocab "ISINFALL"
+    let LEGACY_ID = _vocab "LEGACY_ID"
+    let LEGACYID = _vocab "LEGACYID"
+    let LFEET = _vocab "LFEET"
+    let LIFECYCLE = _vocab "LIFECYCLE"
+    let LOC_DESC = _vocab "LOC_DESC"
+    let LOCATION = _vocab "LOCATION"
+    let MAINTBY = _vocab "MAINTBY"
+    let MATERIAL = _vocab "MATERIAL"
+    let MEDIA_CODE = _vocab "MEDIA_CODE"
+    let MILES = _vocab "MILES"
+    let NEEDSATTENTION = _vocab "NEEDSATTENTION"
+    let NORTHING = _vocab "NORTHING"
+    let NOTES = _vocab "NOTES"
+    let NUM_BARRELS = _vocab "NUM_BARRELS"
+    let OBJECTID = _vocab "OBJECTID"
+    let OBSTRUCTION = _vocab "OBSTRUCTION"
+    let ORIGINALSOURCE = _vocab "ORIGINALSOURCE"
+    let OUTFALLID = _vocab "OUTFALLID"
+    let OUTFALLTYPE = _vocab "OUTFALLTYPE"
+    let OWNER = _vocab "OWNER"
+    let PARCELID = _vocab "PARCELID"
+    let PARENTID = _vocab "PARENTID"
+    let PERCT_GRD = _vocab "PERCT_GRD"
+    let PHOTO_FOLDER = _vocab "PHOTO_FOLDER"
+    let PHOTO_NUM = _vocab "PHOTO_NUM"
+    let PHOTOID = _vocab "PHOTOID"
+    let PID_1 = _vocab "PID_1"
+    let PIPESHAPE = _vocab "PIPESHAPE"
+    let PLACE = _vocab "PLACE"
+    let POND_ID = _vocab "POND_ID"
+    let PONDID = _vocab "PONDID"
+    let PONDTYPE = _vocab "PONDTYPE"
+    let PONDYR = _vocab "PONDYR"
+    let PRFRESOLUTION = _vocab "PRFRESOLUTION"
+    let RAW_NAME = _vocab "RAW_NAME"
+    let RELATEDFEATURE = _vocab "RELATEDFEATURE"
+    let ROTATION_AZ = _vocab "ROTATION_AZ"
+    let SHAPE = _vocab "SHAPE"
+    let SHAPE_Area = _vocab "SHAPE_Area"
+    let SHAPE_Length = _vocab "SHAPE_Length"
+    let SLOT_ELEV = _vocab "SLOT_ELEV"
+    let SOURCE = _vocab "SOURCE"
+    let SOURCEYEAR = _vocab "SOURCEYEAR"
+    let STORAGE_FULL_PATH_ADDR = _vocab "STORAGE_FULL_PATH_ADDR"
+    let STORAGE_PATH_ADDR = _vocab "STORAGE_PATH_ADDR"
+    let STORAGE_STATIC_PATH_ADDR = _vocab "STORAGE_STATIC_PATH_ADDR"
+    let STRCT_DEPTH = _vocab "STRCT_DEPTH"
+    let STRUCTURE_ID = _vocab "STRUCTURE_ID"
+    let STRUCTUREID = _vocab "STRUCTUREID"
+    let STRUCTURETYPE = _vocab "STRUCTURETYPE"
+    let SUBTYPEFIELD = _vocab "SUBTYPEFIELD"
+    let SURFACETYPE = _vocab "SURFACETYPE"
+    let UNDERDRAINS = _vocab "UNDERDRAINS"
+    let UNITDESC = _vocab "UNITDESC"
+    let UPDATESOURCE = _vocab "UPDATESOURCE"
+    let UPSTREAM_DEPTH = _vocab "UPSTREAM_DEPTH"
+    let UPSTREAM_ELEV = _vocab "UPSTREAM_ELEV"
+    let UPSTREAMDEPTH = _vocab "UPSTREAMDEPTH"
+    let UPSTREAMELEVATION = _vocab "UPSTREAMELEVATION"
+    let UPSTREAMSTUCTUREID = _vocab "UPSTREAMSTUCTUREID"
+    let VIEW_ = _vocab "VIEW_"
+    let WATERBODYNAME = _vocab "WATERBODYNAME"
+    let WBID = _vocab "WBID"
+    let WHOCREATED = _vocab "WHOCREATED"
+    let WHOMODIFIED = _vocab "WHOMODIFIED"
+    let WIDTH = _vocab "WIDTH"
+    let Z29 = _vocab "Z29"
+    let ZVALUE = _vocab "ZVALUE"
+    let UNITID = _vocab "UNITID"
+    let Feature = _vocab "Feature"
+    let Facility = _vocab "Facility"
+    let Outfall = _vocab "Outfall"
+    let Upstream_Structure = _vocab "Upstream_Structure"
+    let Downstream_Structure = _vocab "Downstream_Structure"
+    let Structure = _vocab "Structure"
+    let Pond = _vocab "Pond"
+    let parent = _vocab "parent"
+    let subLayer = _vocab "subLayer"
+    let outfall = _vocab "outfall"
+    let upstream_structure = _vocab "upstream_structure"
+    let structure = _vocab "structure"
+    let downstream_structure = _vocab "downstream_structure"
+    let currentVersion = _vocab "currentVersion"
+    let serviceDescription = _vocab "serviceDescription"
+    let mapName = _vocab "mapName"
+    let description = _vocab "description"
+    let copyrightText = _vocab "copyrightText"
+    let supportsDynamicLayers = _vocab "supportsDynamicLayers"
+    let layers = _vocab "layers"
+    let tables = _vocab "tables"
+    let table = _vocab "table"
+    let spatialReference = _vocab "spatialReference"
+    let singleFusedMapCache = _vocab "singleFusedMapCache"
+    let initialExtent = _vocab "initialExtent"
+    let fullExtent = _vocab "fullExtent"
+    let minScale = _vocab "minScale"
+    let maxScale = _vocab "maxScale"
+    let units = _vocab "units"
+    let supportedImageFormatTypes = _vocab "supportedImageFormatTypes"
+    let supportedImageFormatType = _vocab "supportedImageFormatType"
+    let documentInfo = _vocab "documentInfo"
+    let capabilities = _vocab "capabilities"
+    let supportedQueryFormats = _vocab "supportedQueryFormats"
+    let exportTilesAllowed = _vocab "exportTilesAllowed"
+    let referenceScale = _vocab "referenceScale"
+    let supportsDatumTransformation = _vocab "supportsDatumTransformation"
+    let maxRecordCount = _vocab "maxRecordCount"
+    let maxImageHeight = _vocab "maxImageHeight"
+    let maxImageWidth = _vocab "maxImageWidth"
+    let supportedExtensions = _vocab "supportedExtensions"
+    let culture = _vocab "culture"
+    let name = _vocab "name"
+    let guid = _vocab "guid"
+    let catalogPath = _vocab "catalogPath"
+    let snippet = _vocab "snippet"
+    let summary = _vocab "summary"
+    let title = _vocab "title"
+    let tags = _vocab "tags"
+    let ``type`` = _vocab "type"
+    let typeKeywords = _vocab "typeKeywords"
+    let thumbnail = _vocab "thumbnail"
+    let url = _vocab "url"
+    let extent = _vocab "extent"
+    let accessInformation = _vocab "accessInformation"
+    let licenseInfo = _vocab "licenseInfo"
+    let Keyword = _vocab "Keyword"
+    let Keywords = _vocab "Keywords"
+    let capability = _vocab "capability"
+    let supportedQueryFormat = _vocab "supportedQueryFormat"
+    let Map_Service = _vocab "Map_Service"
+    let parentLayerId = _vocab "parentLayerId"
+    let defaultVisibility = _vocab "defaultVisibility"
+    let hasAttachments = _vocab "hasAttachments"
+    let htmlPopupType = _vocab "htmlPopupType"
+    let canModifyLayer = _vocab "canModifyLayer"
+    let canScaleSymbols = _vocab "canScaleSymbols"
+    let hasLabels = _vocab "hasLabels"
+    let supportsStatistics = _vocab "supportsStatistics"
+    let supportsAdvancedQueries = _vocab "supportsAdvancedQueries"
+    let isDataVersioned = _vocab "isDataVersioned"
+    let useStandardizedQueries = _vocab "useStandardizedQueries"
+    let supportsCoordinatesQuantization = _vocab "supportsCoordinatesQuantization"
+    let id = _vocab "id"
+    let geometryType = _vocab "geometryType"
+    let displayField = _vocab "displayField"
+    let count = _vocab "count"
+    let displayFieldName = _vocab "displayFieldName"
+    let exceededTransferLimit = _vocab "exceededTransferLimit"
+    let hasZ = _vocab "hasZ"
+    let field = _vocab "field"
+    let domain = _vocab "domain"
+    let feature = _vocab "feature"
+    let x = _vocab "x"
+    let y = _vocab "y"
+
+    module _literal =
+        let DrainageNetwork = RDF_Literal.simple "DrainageNetwork"
+        let DrainageNonNetwork = RDF_Literal.simple "DrainageNonNetwork"
+
+        module description =
+            let Bridge =
+                lmdb_read_write { return! RDF_Literal.US "A short stretch of closed conduit, used where a ditch or canal crosses under a roadway. " }
+
+            let BridgePoint =
+                lmdb_read_write { return! RDF_Literal.US "A vertex point for a ditch line or a point to represent the location of a specific attribute." }
+
+            let Conduit =
+                lmdb_read_write { return! RDF_Literal.US "A stormwater pipe feature making up a closed system. " }
+
+            let Connectivity =
+                lmdb_read_write { return! RDF_Literal.US "A line that represents the flow of stormwater that is not represented by any other drain line feature. " }
+
+            let CulvertCrossDrain =
+                lmdb_read_write { return! RDF_Literal.US "A short stretch of closed conduit, used where a ditch or canal crosses under a roadway. " }
+
+            let DebrisTrap =
+                lmdb_read_write { return! RDF_Literal.US "Are assets related to an open system and are designed and build to specifications." }
+
+            let Ditch =
+                lmdb_read_write { return! RDF_Literal.US "A small open channel, trench, or structure designed to collect and carry stormwater runoff." }
+
+            let DitchPoint =
+                lmdb_read_write { return! RDF_Literal.US "A vertex point for a ditch line or a point to represent the location of a specific attribute." }
+
+            let EndPoint =
+                lmdb_read_write { return! RDF_Literal.US "The point at which an open system meets a closed system. " }
+
+            let GenericStormAsset =
+                lmdb_read_write { return! RDF_Literal.US "Unspecified stormwater system feature that is used to represent a missing feature at the end of a conduit/culvert." }
+
+            let Inlet =
+                lmdb_read_write { return! RDF_Literal.US "A feature at the beginning of a closed drainage system where water is able to enter the conveyance system." }
+
+            let Interference =
+                lmdb_read_write { return! RDF_Literal.US "Identifies if there is interference within or crossing the ditch. Example would be a sewer or water pipe from ditch bank to ditch bank." }
+
+            let Junction_fixed =
+                lmdb_read_write { return! RDF_Literal.US "A cylindrical or cube-shaped structure located below the surface grade. Serves as a connector for merging laterals, inlets, and endpoints from different directions and elevations. Most often accessed through a manhole." }
+
+            let PollutionControlBox =
+                lmdb_read_write { return! RDF_Literal.US "Filtration device that separates debris from stormwater. This is usually an asset related to the closed system and is pre-fabricated in nature." }
+
+            let PrivatePoint =
+                lmdb_read_write { return! RDF_Literal.US "The point at which a city maintained  stormwater conduit is stopped to show that the flow is originating  from a private source" }
+
+            let StormwaterPondDischarge =
+                lmdb_read_write { return! RDF_Literal.US "A control device acting as a barricade, allowing water to flow once it reaches a certain level." }
+
+module dotnet =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"https://learn.microsoft.com/en-us/dotnet/api/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+module h8importtool =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"http://www.infor.com/Hansen8/2011/08/Maps.xsd#" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let Maps = _vocab "Maps"
+    let Map = _vocab "Map"
+    let Key = _vocab "Key"
+    let IsDefault = _vocab "IsDefault"
+    let Name = _vocab "Name"
+    let SourceFilePath = _vocab "SourceFilePath"
+    let SheetName = _vocab "SheetName"
+    let ConnectionString = _vocab "ConnectionString"
+    let ProviderName = _vocab "ProviderName"
+    let UploadOption = _vocab "UploadOption"
+    let IsFirstRowHeader = _vocab "IsFirstRowHeader"
+    let CreatedDate = _vocab "CreatedDate"
+    let CreatedBy = _vocab "CreatedBy"
+    let MapColumn = _vocab "MapColumn"
+    let MapKey = _vocab "MapKey"
+    let SourceColumnName = _vocab "SourceColumnName"
+    let TargetColumnCommonId = _vocab "TargetColumnCommonId"
+    let TargetColumnType = _vocab "TargetColumnType"
+    let MapTableInformation = _vocab "MapTableInformation"
+    let ProductFamilyOwner = _vocab "ProductFamilyOwner"
+    let ProductFamilyName = _vocab "ProductFamilyName"
+    let TableName = _vocab "TableName"
+    let TableCommonId = _vocab "TableCommonId"
+    let TableKey = _vocab "TableKey"
+    let System'Data'OleDb = _vocab "System'Data'OleDb"
+    let Conduit_to_StormLiftStation = _vocab "Conduit_to_StormLiftStation"
+
+    let CulvertCrossDrain_to_StormServiceLine =
+        _vocab "CulvertCrossDrain_to_StormServiceLine"
+
+    let DebrisTrap_to_StormValve = _vocab "DebrisTrap_to_StormValve"
+    let Ditch_to_StormBackflowPreventer = _vocab "Ditch_to_StormBackflowPreventer"
+    let EndPoint_to_StormNode = _vocab "EndPoint_to_StormNode"
+    let Inlet_to_StormInlet = _vocab "Inlet_to_StormInlet"
+    let Junction_fixed_to_StormManhole = _vocab "Junction_fixed_to_StormManhole"
+    let Outfall_to_StormStorageBasin = _vocab "Outfall_to_StormStorageBasin"
+
+    let StormwaterPond_to_StormMiscellaneous =
+        _vocab "StormwaterPond_to_StormMiscellaneous"
+
+    let StormwaterPondDischarge_to_StormLevee =
+        _vocab "StormwaterPondDischarge_to_StormLevee"
+
+    module _string =
+        let file_path (layer_name: string) =
+            Path.Combine(mapping_directory, $"{layer_name}.xlsx")
+
+        let connection_string (layer_name: string) =
+            let Data_Source = file_path layer_name
+            $"""Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Data_Source};Extended Properties="Excel 12.0;HDR=Yes;IMEX=1";"""
+
+    module _literal =
+        let source_file_path (layer_name: string) (transaction: LightningTransaction) =
+            let file_path = _string.file_path layer_name
+            RDF_Literal.simple file_path transaction
+
+        let connection_string (layer_name: string) (transaction: LightningTransaction) =
+            let connection_string = _string.connection_string layer_name
+            RDF_Literal.simple connection_string transaction
+
+        let System'Data'OleDb =
+            lmdb_read_write { return! RDF_Literal.simple "System.Data.OleDb" }
+
+
+module swin =
+
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/swin/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+
+    let _graph = _vocab ""
+    let LCG_Stormwater_Inventory = _vocab "LCG_Stormwater_Inventory"
+    let coded_value_domain = _vocab "coded_value_domain"
+    let coded_value = _vocab "coded_value"
+    let data_element = _vocab "data_element"
+    let code = _vocab "code"
+
+    let x_coordinate = _vocab "x_coordinate"
+    let y_coordinate = _vocab "y_coordinate"
+    let z_coordinate = _vocab "z_coordinate"
+    let attached_to = _vocab "attached_to"
+    let facility = _vocab "facility"
+    // TODO update hyd to pond
+    let hyd = _vocab "hyd"
+    let Hyd = _vocab "Hyd"
+    let Outfall = _vocab "Outfall"
+    let outfall = _vocab "outfall"
+    let parent = _vocab "parent"
+    let Structure = _vocab "Structure"
+    let Upstream_Structure = _vocab "Upstream_Structure"
+    let Downstream_Structure = _vocab "Downstream_Structure"
+    let structure = _vocab "structure"
+    let upstream_structure = _vocab "upstream_structure"
+    let downstream_structure = _vocab "downstream_structure"
+    let drainage_basin = _vocab "drainage_basin"
+    let Drainage_Basin = _vocab "Drainage_Basin"
+
+
+
+
+module intraraster =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string "http://intraraster.leoncountyfl.gov/intraraster/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _Feature (name: string) (transaction: LightningTransaction) =
+        _prefix ($"{name.low_lined}_Feature") transaction
+
+    let _Feature_Layer (name: string) (transaction: LightningTransaction) =
+        _prefix ($"{name.low_lined}_Feature_Layer") transaction
+
+    let _Feature_Layer_Schema (name: string) (transaction: LightningTransaction) =
+        _prefix ($"{name.low_lined}_Feature_Layer_Schema") transaction
+
+    let _Feature_Layer_Data (name: string) (transaction: LightningTransaction) =
+        _prefix ($"{name.low_lined}_Feature_Layer_Data") transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let ACCEPT_DATE = _vocab "ACCEPT_DATE"
+    let ACCURACYCODE = _vocab "ACCURACYCODE"
+    let ACREAGE = _vocab "ACREAGE"
+    let ACRES = _vocab "ACRES"
+    let ACTIVITY = _vocab "ACTIVITY"
+    let ANCILLARYROLE = _vocab "ANCILLARYROLE"
+    let ATTACHEDTOID = _vocab "ATTACHEDTOID"
+    let ATTRIBUTECOMPLETE = _vocab "ATTRIBUTECOMPLETE"
+    let CAPACITY = _vocab "CAPACITY"
+    let CREATIONDATE = _vocab "CREATIONDATE"
+    let CREATOR = _vocab "CREATOR"
+    let CREW = _vocab "CREW"
+    let DAMAGEID = _vocab "DAMAGEID"
+    let DAMAGETYPE = _vocab "DAMAGETYPE"
+    let DATAFILE = _vocab "DATAFILE"
+    let DATE_ = _vocab "DATE_"
+    let DATECREATED = _vocab "DATECREATED"
+    let DATEMODIFIED = _vocab "DATEMODIFIED"
+    let DESCRIPTION = _vocab "DESCRIPTION"
+    let DIAMETER = _vocab "DIAMETER"
+    let DIGITALPICTUREID = _vocab "DIGITALPICTUREID"
+    let DIGITALPICTUREID_E = _vocab "DIGITALPICTUREID_E"
+    let DIGITALPICTUREID_S = _vocab "DIGITALPICTUREID_S"
+    let DIGITALPICTUREID_W = _vocab "DIGITALPICTUREID_W"
+    let DOWNSTREAM_DEPTH = _vocab "DOWNSTREAM_DEPTH"
+    let DOWNSTREAM_ELEV = _vocab "DOWNSTREAM_ELEV"
+    let DOWNSTREAMDEPTH = _vocab "DOWNSTREAMDEPTH"
+    let DOWNSTREAMELEVATION = _vocab "DOWNSTREAMELEVATION"
+    let DRAINAGE_AREA = _vocab "DRAINAGE_AREA"
+    let DRAINAGEAREA = _vocab "DRAINAGEAREA"
+    let DRAINAGEBASIN = _vocab "DRAINAGEBASIN"
+    let DRAWINGID = _vocab "DRAWINGID"
+    let EASTING = _vocab "EASTING"
+    let EDITDATE = _vocab "EDITDATE"
+    let EDITOR = _vocab "EDITOR"
+    let ELEMENTX = _vocab "ELEMENTX"
+    let ELEMENTY = _vocab "ELEMENTY"
+    let ENABLED = _vocab "ENABLED"
+    let FACILITYID = _vocab "FACILITYID"
+    let FIELD_COMMENTS_ = _vocab "FIELD_COMMENTS_"
+    let FIELDCOMMENTS = _vocab "FIELDCOMMENTS"
+    let FIELDCOMPLETE = _vocab "FIELDCOMPLETE"
+    let FIELDCREW = _vocab "FIELDCREW"
+    let FILE_NAME = _vocab "FILE_NAME"
+    let FILE_NAME_1 = _vocab "FILE_NAME_1"
+    let FILTER = _vocab "FILTER"
+    let FILTERLOCATION = _vocab "FILTERLOCATION"
+    let FILTERTYPE = _vocab "FILTERTYPE"
+    let FINAL_NAME = _vocab "FINAL_NAME"
+    let FOLDER = _vocab "FOLDER"
+    let GLOBALID = _vocab "GLOBALID"
+    let HEIGHT = _vocab "HEIGHT"
+    let HOTLINK = _vocab "HOTLINK"
+    let HYD_ID = _vocab "HYD_ID"
+    let HYPERLINK = _vocab "HYPERLINK"
+    let HYPERLINK_AR = _vocab "HYPERLINK_AR"
+    let IMAGERYYEAR = _vocab "IMAGERYYEAR"
+    let INFILTRATION = _vocab "INFILTRATION"
+    let INSPDATE = _vocab "INSPDATE"
+    let INVENTORIED_BY = _vocab "INVENTORIED_BY"
+    let INVENTORYDATE = _vocab "INVENTORYDATE"
+    let INVENTORYTYPE = _vocab "INVENTORYTYPE"
+    let INVERT_ELEV = _vocab "INVERT_ELEV"
+    let INVERT_ELEV29 = _vocab "INVERT_ELEV29"
+    let INVERTELEV = _vocab "INVERTELEV"
+    let ISINFALL = _vocab "ISINFALL"
+    let LEGACY_ID = _vocab "LEGACY_ID"
+    let LEGACYID = _vocab "LEGACYID"
+    let LFEET = _vocab "LFEET"
+    let LIFECYCLE = _vocab "LIFECYCLE"
+    let LOC_DESC = _vocab "LOC_DESC"
+    let LOCATION = _vocab "LOCATION"
+    let MAINTBY = _vocab "MAINTBY"
+    let MATERIAL = _vocab "MATERIAL"
+    let MEDIA_CODE = _vocab "MEDIA_CODE"
+    let MILES = _vocab "MILES"
+    let NEEDSATTENTION = _vocab "NEEDSATTENTION"
+    let NORTHING = _vocab "NORTHING"
+    let NOTES = _vocab "NOTES"
+    let NUM_BARRELS = _vocab "NUM_BARRELS"
+    let OBJECTID = _vocab "OBJECTID"
+    let OBSTRUCTION = _vocab "OBSTRUCTION"
+    let ORIGINALSOURCE = _vocab "ORIGINALSOURCE"
+    let OUTFALLID = _vocab "OUTFALLID"
+    let OUTFALLTYPE = _vocab "OUTFALLTYPE"
+    let OWNER = _vocab "OWNER"
+    let PARCELID = _vocab "PARCELID"
+    let PARENTID = _vocab "PARENTID"
+    let PERCT_GRD = _vocab "PERCT_GRD"
+    let PHOTO_FOLDER = _vocab "PHOTO_FOLDER"
+    let PHOTO_NUM = _vocab "PHOTO_NUM"
+    let PHOTOID = _vocab "PHOTOID"
+    let PID_1 = _vocab "PID_1"
+    let PIPESHAPE = _vocab "PIPESHAPE"
+    let PLACE = _vocab "PLACE"
+    let POND_ID = _vocab "POND_ID"
+    let PONDID = _vocab "PONDID"
+    let PONDTYPE = _vocab "PONDTYPE"
+    let PONDYR = _vocab "PONDYR"
+    let PRFRESOLUTION = _vocab "PRFRESOLUTION"
+    let RAW_NAME = _vocab "RAW_NAME"
+    let RELATEDFEATURE = _vocab "RELATEDFEATURE"
+    let ROTATION_AZ = _vocab "ROTATION_AZ"
+    let SHAPE = _vocab "SHAPE"
+    let SHAPE_Area = _vocab "SHAPE_Area"
+    let SHAPE_Length = _vocab "SHAPE_Length"
+    let SLOT_ELEV = _vocab "SLOT_ELEV"
+    let SOURCE = _vocab "SOURCE"
+    let SOURCEYEAR = _vocab "SOURCEYEAR"
+    let STORAGE_FULL_PATH_ADDR = _vocab "STORAGE_FULL_PATH_ADDR"
+    let STORAGE_PATH_ADDR = _vocab "STORAGE_PATH_ADDR"
+    let STORAGE_STATIC_PATH_ADDR = _vocab "STORAGE_STATIC_PATH_ADDR"
+    let STRCT_DEPTH = _vocab "STRCT_DEPTH"
+    let STRUCTURE_ID = _vocab "STRUCTURE_ID"
+    let STRUCTUREID = _vocab "STRUCTUREID"
+    let STRUCTURETYPE = _vocab "STRUCTURETYPE"
+    let SUBTYPEFIELD = _vocab "SUBTYPEFIELD"
+    let SURFACETYPE = _vocab "SURFACETYPE"
+    let UNDERDRAINS = _vocab "UNDERDRAINS"
+    let UNITDESC = _vocab "UNITDESC"
+    let UPDATESOURCE = _vocab "UPDATESOURCE"
+    let UPSTREAM_DEPTH = _vocab "UPSTREAM_DEPTH"
+    let UPSTREAM_ELEV = _vocab "UPSTREAM_ELEV"
+    let UPSTREAMDEPTH = _vocab "UPSTREAMDEPTH"
+    let UPSTREAMELEVATION = _vocab "UPSTREAMELEVATION"
+    let UPSTREAMSTUCTUREID = _vocab "UPSTREAMSTUCTUREID"
+    let VIEW_ = _vocab "VIEW_"
+    let WATERBODYNAME = _vocab "WATERBODYNAME"
+    let WBID = _vocab "WBID"
+    let WHOCREATED = _vocab "WHOCREATED"
+    let WHOMODIFIED = _vocab "WHOMODIFIED"
+    let WIDTH = _vocab "WIDTH"
+    let Z29 = _vocab "Z29"
+    let ZVALUE = _vocab "ZVALUE"
+    let UNITID = _vocab "UNITID"
+    let Feature = _vocab "Feature"
+    let Facility = _vocab "Facility"
+    let Outfall = _vocab "Outfall"
+    let Upstream_Structure = _vocab "Upstream_Structure"
+    let Downstream_Structure = _vocab "Downstream_Structure"
+    let Structure = _vocab "Structure"
+    let Pond = _vocab "Pond"
+    let Feature_Layer = _vocab "Feature_Layer"
+    let Feature_Class = _vocab "Feature_Class"
+    let parent = _vocab "parent"
+    let subLayer = _vocab "subLayer"
+    let outfall = _vocab "outfall"
+    let upstream_structure = _vocab "upstream_structure"
+    let structure = _vocab "structure"
+    let downstream_structure = _vocab "downstream_structure"
+    let currentVersion = _vocab "currentVersion"
+    let serviceDescription = _vocab "serviceDescription"
+    let mapName = _vocab "mapName"
+    let description = _vocab "description"
+    let copyrightText = _vocab "copyrightText"
+    let supportsDynamicLayers = _vocab "supportsDynamicLayers"
+    let layers = _vocab "layers"
+    let layer = _vocab "layer"
+    let tables = _vocab "tables"
+    let table = _vocab "table"
+    let spatialReference = _vocab "spatialReference"
+    let singleFusedMapCache = _vocab "singleFusedMapCache"
+    let initialExtent = _vocab "initialExtent"
+    let fullExtent = _vocab "fullExtent"
+    let minScale = _vocab "minScale"
+    let maxScale = _vocab "maxScale"
+    let units = _vocab "units"
+    let supportedImageFormatTypes = _vocab "supportedImageFormatTypes"
+    let supportedImageFormatType = _vocab "supportedImageFormatType"
+    let documentInfo = _vocab "documentInfo"
+    let capabilities = _vocab "capabilities"
+    let supportedQueryFormats = _vocab "supportedQueryFormats"
+    let exportTilesAllowed = _vocab "exportTilesAllowed"
+    let referenceScale = _vocab "referenceScale"
+    let supportsDatumTransformation = _vocab "supportsDatumTransformation"
+    let maxRecordCount = _vocab "maxRecordCount"
+    let maxImageHeight = _vocab "maxImageHeight"
+    let maxImageWidth = _vocab "maxImageWidth"
+    let supportedExtensions = _vocab "supportedExtensions"
+    let culture = _vocab "culture"
+    let name = _vocab "name"
+    let guid = _vocab "guid"
+    let catalogPath = _vocab "catalogPath"
+    let snippet = _vocab "snippet"
+    let summary = _vocab "summary"
+    let title = _vocab "title"
+    let tags = _vocab "tags"
+    let ``type`` = _vocab "type"
+    let typeKeywords = _vocab "typeKeywords"
+    let thumbnail = _vocab "thumbnail"
+    let url = _vocab "url"
+    let extent = _vocab "extent"
+    let accessInformation = _vocab "accessInformation"
+    let licenseInfo = _vocab "licenseInfo"
+    let Keyword = _vocab "Keyword"
+    let Keywords = _vocab "Keywords"
+    let capability = _vocab "capability"
+    let supportedQueryFormat = _vocab "supportedQueryFormat"
+    let Map_Service = _vocab "Map_Service"
+    let parentLayerId = _vocab "parentLayerId"
+    let defaultVisibility = _vocab "defaultVisibility"
+    let hasAttachments = _vocab "hasAttachments"
+    let htmlPopupType = _vocab "htmlPopupType"
+    let canModifyLayer = _vocab "canModifyLayer"
+    let canScaleSymbols = _vocab "canScaleSymbols"
+    let hasLabels = _vocab "hasLabels"
+    let supportsStatistics = _vocab "supportsStatistics"
+    let supportsAdvancedQueries = _vocab "supportsAdvancedQueries"
+    let isDataVersioned = _vocab "isDataVersioned"
+    let useStandardizedQueries = _vocab "useStandardizedQueries"
+    let supportsCoordinatesQuantization = _vocab "supportsCoordinatesQuantization"
+    let id = _vocab "id"
+    let geometryType = _vocab "geometryType"
+    let displayField = _vocab "displayField"
+    let count = _vocab "count"
+    let displayFieldName = _vocab "displayFieldName"
+    let exceededTransferLimit = _vocab "exceededTransferLimit"
+    let hasZ = _vocab "hasZ"
+    let field = _vocab "field"
+    let domain = _vocab "domain"
+    let feature = _vocab "feature"
+    let x = _vocab "x"
+    let y = _vocab "y"
+
+
+
+
+module dbug =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Commonplace.ontology_base}/dbug/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+
+    let _graph = _vocab ""
 
 
-Assert.spoc intraraster.Feature a owl.Class swin._context
 
 
 
 
-GPFeatureLayer_names
-|> Array.Parallel.collect (fun GPFeatureLayer_name ->
-    let feature_owl_class = intraraster._Feature GPFeatureLayer_name
-    let name = RDF_Literal.simple GPFeatureLayer_name
 
 
-    [|
 
-       Triple.spo feature_owl_class a owl.Class
-       Triple.spo feature_owl_class rdfs.label name
-       Triple.spo feature_owl_class rdfs.subClassOf intraraster.Feature
 
-       |]
 
-)
-|> Assert.Triples_In_Context swin._context
 
 
-LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
-|> Array.Parallel.collect (fun layer ->
-    layer.Features
-    |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
-    |> Array.Parallel.collect (fun feature_json ->
 
-        let feature = intraraster._prefix feature_json.Attributes.Unitid.Value
-        let unit_id = RDF_Literal.simple feature_json.Attributes.Unitid.Value
-        let feature_owl_class = intraraster._Feature layer.Name
 
-        [|
 
-           Triple.spo feature a feature_owl_class
-           Triple.spo feature intraraster.unit_id unit_id
-           Triple.spo feature a owl.NamedIndividual
 
-           |]
 
-    )
 
-)
-|> Assert.Triples_In_Context swin._context
 
 
-
-
-LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
-|> Array.Parallel.collect (fun layer ->
-    layer.Features
-    |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
-    |> Array.Parallel.filter (fun feature ->
-        feature.Attributes.Attachedtoid.IsSome
-        && not (String.IsNullOrWhiteSpace(feature.Attributes.Attachedtoid.Value)))
-    |> Array.Parallel.map (fun feature_json ->
-
-        let feature = intraraster._prefix feature_json.Attributes.Unitid.Value
-        let Attachedto = intraraster._prefix feature_json.Attributes.Attachedtoid.Value
-        Triple.spo feature intraraster.attached_to Attachedto
-
-    )
-
-
-)
-|> Array.distinct
-|> Assert.Triples_In_Context swin._context
-
-
-
-LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
-|> Array.Parallel.collect (fun layer ->
-    layer.Features
-    |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
-    |> Array.Parallel.filter (fun feature ->
-        feature.Attributes.Facilityid.IsSome
-        && not (String.IsNullOrWhiteSpace(feature.Attributes.Facilityid.Value))
-        && feature.Attributes.Facilityid.Value <> "N/A"
-        && feature.Attributes.Facilityid.Value <> "<Null>"
-
-    )
-    |> Array.Parallel.collect (fun feature_json ->
-
-        let feature = intraraster._prefix feature_json.Attributes.Unitid.Value
-        let Facility = intraraster._prefix feature_json.Attributes.Facilityid.Value
-        let facility_id = RDF_Literal.simple feature_json.Attributes.Facilityid.Value
-
-        [|
-
-           Triple.spo Facility a intraraster.Facility
-           Triple.spo Facility rdfs.``member`` feature
-           Triple.spo feature intraraster.facility Facility
-           Triple.spo Facility rdfs.label facility_id
-
-           |]
-
-    )
-
-
-)
-|> Array.distinct
-|> Assert.Triples_In_Context swin._context
-
-
-LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
-|> Array.Parallel.collect (fun layer ->
-    layer.Features
-    |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
-    |> Array.Parallel.filter (fun feature ->
-        feature.Attributes.Outfallid.IsSome
-        && not (String.IsNullOrWhiteSpace(feature.Attributes.Outfallid.Value))
-        && feature.Attributes.Outfallid.Value <> "N/A"
-        && feature.Attributes.Outfallid.Value <> "<Null>"
-
-    )
-    |> Array.Parallel.collect (fun feature_json ->
-
-        let feature = intraraster._prefix feature_json.Attributes.Unitid.Value
-        let Outfall = intraraster._prefix feature_json.Attributes.Outfallid.Value
-        let outfall_id = RDF_Literal.simple feature_json.Attributes.Outfallid.Value
-
-        [|
-
-           Triple.spo Outfall a intraraster.Outfall_Area
-           Triple.spo feature intraraster.outfall_area Outfall
-           Triple.spo Outfall rdfs.``member`` feature
-           Triple.spo Outfall rdfs.label outfall_id
-
-           |]
-
-    )
-
-
-)
-|> Array.distinct
-|> Assert.Triples_In_Context swin._context
-
-
-
-
-
-LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
-|> Array.Parallel.collect (fun layer ->
-    layer.Features
-    |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
-    |> Array.Parallel.filter (fun feature ->
-        feature.Attributes.Parentid.IsSome
-        && not (String.IsNullOrWhiteSpace(feature.Attributes.Parentid.Value))
-        && feature.Attributes.Parentid.Value <> "N/A"
-        && feature.Attributes.Parentid.Value <> "<Null>")
-    |> Array.Parallel.collect (fun feature_json ->
-
-        let feature = intraraster._prefix feature_json.Attributes.Unitid.Value
-        let Parent = intraraster._prefix feature_json.Attributes.Parentid.Value
-
-        [|
-
-           Triple.spo Parent rdfs.``member`` feature
-           Triple.spo feature intraraster.parent Parent
-
-           |]
-
-    )
-
-
-)
-|> Array.distinct
-|> Assert.Triples_In_Context swin._context
-
-
-
-LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
-|> Array.Parallel.collect (fun layer ->
-    layer.Features
-    |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
-    |> Array.Parallel.filter (fun feature ->
-        feature.Attributes.Upstreamstuctureid.IsSome
-        && not (String.IsNullOrWhiteSpace(feature.Attributes.Upstreamstuctureid.Value)))
-    |> Array.Parallel.collect (fun feature_json ->
-
-        let feature = intraraster._prefix feature_json.Attributes.Unitid.Value
-
-        let Upstreamstructure =
-            intraraster._prefix feature_json.Attributes.Upstreamstuctureid.Value
-
-        let upstream_structure_id =
-            RDF_Literal.simple feature_json.Attributes.Upstreamstuctureid.Value
-
-        [|
-
-           Triple.spo feature intraraster.upstream_structure Upstreamstructure
-           Triple.spo Upstreamstructure a intraraster.Structure
-           Triple.spo Upstreamstructure rdfs.label upstream_structure_id
-
-           |]
-
-    )
-
-
-)
-|> Array.distinct
-|> Assert.Triples_In_Context swin._context
-
-
-
-
-LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
-|> Array.Parallel.collect (fun layer ->
-    layer.Features
-    |> Array.Parallel.filter (fun feature_json -> feature_json.Attributes.Unitid.IsSome)
-    |> Array.Parallel.filter (fun feature ->
-        (feature.Attributes.Structureid.Number.IsSome
-         || feature.Attributes.Structureid.String.IsSome)
-        && not (String.IsNullOrWhiteSpace(feature.Attributes.Structureid.String.Value))
-        && feature.Attributes.Structureid.String.Value
-           <> "None"
-        && feature.Attributes.Structureid.String.Value
-           <> "N/A"
-        && feature.Attributes.Structureid.String.Value
-           <> "<Null>"
-
-    )
-    |> Array.Parallel.collect (fun feature_json ->
-        let feature = intraraster._prefix feature_json.Attributes.Unitid.Value
-
-        try
-
-            let Structure =
-                intraraster._prefix (string feature_json.Attributes.Structureid.Number.Value)
-
-            let Structure_id =
-                RDF_Literal.simple (string feature_json.Attributes.Structureid.Number.Value)
-
-            [|
-
-               Triple.spo Structure rdfs.``member`` feature
-               Triple.spo Structure a intraraster.Structure
-               Triple.spo Structure rdfs.label Structure_id
-
-               |]
-
-        with
-        | _ ->
-
-            let Structure = intraraster._prefix feature_json.Attributes.Structureid.String.Value
-
-            let Structure_id =
-                RDF_Literal.simple feature_json.Attributes.Structureid.String.Value
-
-            [|
-
-               Triple.spo Structure rdfs.``member`` feature
-               Triple.spo Structure a intraraster.Structure
-               Triple.spo Structure rdfs.label Structure_id
-
-               |]
-
-    )
-
-
-)
-|> Array.distinct
-|> Assert.Triples_In_Context swin._context
-
-// TODO continue triplifying fields
 
 (*
-ACCURACYCODE
-ACREAGE
-ACRES
-CAPACITY
-DESCRIPTION
-DIAMETER
-DOWNSTREAM_DEPTH
-DOWNSTREAM_ELEV
-DOWNSTREAMDEPTH
-DOWNSTREAMELEVATION
-DRAINAGE_AREA
-DRAINAGEAREA
-DRAINAGEBASIN
-EASTING
-FIELD_COMMENTS_
-FIELDCOMMENTS
-FIELDCREW
-FILTER
-FILTERLOCATION
-FILTERTYPE
-HEIGHT
-IMAGERYYEAR
-INFILTRATION
-INSPDATE
-INVENTORIED_BY
-INVENTORYDATE
-INVENTORYTYPE
-INVERT_ELEV
-INVERT_ELEV29
-INVERTELEV
-ISINFALL
-LFEET
-LOC_DESC
-LOCATION
-MAINTBY
-MATERIAL
-MILES
-NORTHING
-NOTES
-NUM_BARRELS
-OBSTRUCTION
-ORIGINALSOURCE
-OUTFALLTYPE
-OWNER
-PIPESHAPE
-PONDTYPE
-PONDYR
-RELATEDFEATURE
-ROTATION_AZ
-SHAPE
-SHAPE_Area
-SHAPE_Length
-SLOT_ELEV
-SOURCE
-SOURCEYEAR
-STRCT_DEPTH
-STRUCTURETYPE
-SUBTYPEFIELD
-SURFACETYPE
-UNDERDRAINS
-UNITDESC
-UPDATESOURCE
-UPSTREAM_DEPTH
-UPSTREAM_ELEV
-UPSTREAMDEPTH
-UPSTREAMELEVATION
-UPSTREAMSTUCTUREID
-VIEW_
-WATERBODYNAME
-WBID
-WIDTH
-Z29
-ZVALUE
+Oak() {
+AnonymousModule() {
+
+    Json(LCPW_OverlayStormwaterInfrastructure_D_WM.json.JsonValue.ToString())
+}
+}
+|> Gen.mkOak
+|> Gen.run
+|> printfn "%s"
+
+*)
+(*
+type ParentLayer = { id: int; name: string }
+type SubLayersItem = { id: int; name: string }
+type SpatialReference = { wkid: int; latestWkid: int }
+
+type Extent =
+{ xmin: float
+  ymin: float
+  xmax: float
+  ymax: float
+  spatialReference: SpatialReference }
+
+type FieldsItem =
+{ name: string
+  ``type``: string
+  alias: string
+  domain: obj option
+  length: int option }
+
+type GeometryField = { }
+type OwnershipBasedAccessControlForFeatures = { allowOthersToQuery: bool }
+
+type AdvancedQueryCapabilities =
+{ useStandardizedQueries: bool
+  supportsStatistics: bool
+  supportsHavingClause: bool
+  supportsCountDistinct: bool
+  supportsOrderBy: bool
+  supportsDistinct: bool
+  supportsPagination: bool
+  supportsTrueCurve: bool
+  supportsReturningQueryExtent: bool
+  supportsQueryWithDistance: bool
+  supportsSqlExpression: bool }
+
+type SourceSpatialReference = { wkid: int; latestWkid: int }
+
+type Symbol =
+{ ``type``: string
+  url: string
+  imageData: string
+  contentType: string
+  width: int
+  height: int
+  angle: int
+  xoffset: int
+  yoffset: int }
+
+type UniqueValueInfosItem =
+{ symbol: Symbol
+  value: string
+  label: string
+  description: string }
+
+type Renderer =
+{ ``type``: string
+  field1: string
+  field2: obj
+  field3: obj
+  defaultSymbol: obj
+  defaultLabel: obj
+  uniqueValueInfos: UniqueValueInfosItem list
+  fieldDelimiter: string }
+
+type DrawingInfo =
+{ renderer: Renderer
+  transparency: int
+  labelingInfo: obj }
+
+type FieldAliases =
+{ OBJECTID: string
+  FACILITYID: string
+  ATTACHEDTOID: string
+  UPSTREAMSTUCTUREID: string
+  OUTFALLTYPE: string
+  WATERBODYNAME: string
+  WBID: string
+  DRAINAGEBASIN: string
+  NOTES: string
+  GLOBALID: string
+  STRUCTURETYPE: string
+  OUTFALLID: string
+  UNITID: string }
+
+type Attributes =
+{ OBJECTID: int
+  FACILITYID: string
+  ATTACHEDTOID: string
+  UPSTREAMSTUCTUREID: string
+  OUTFALLTYPE: string
+  WATERBODYNAME: string
+  WBID: obj
+  DRAINAGEBASIN: string
+  NOTES: string
+  GLOBALID: string
+  STRUCTURETYPE: string
+  OUTFALLID: string
+  UNITID: string }
+
+type Geometry = { x: float; y: float }
+
+type FeaturesItem =
+{ attributes: Attributes
+  geometry: Geometry }
+
+type LayersItem =
+{ id: int
+  name: string
+  parentLayerId: int
+  defaultVisibility: bool
+  subLayerIds: int list option
+  minScale: int
+  maxScale: int
+  ``type``: string
+  currentVersion: float
+  description: string
+  geometryType: string option
+  copyrightText: string
+  parentLayer: ParentLayer option
+  subLayers: SubLayersItem list
+  extent: Extent
+  hasAttachments: bool
+  htmlPopupType: string
+  displayField: string
+  typeIdField: obj option
+  subtypeFieldName: obj option
+  subtypeField: obj option
+  defaultSubtypeCode: obj option
+  fields: FieldsItem list option
+  geometryField: GeometryField
+  indexes: obj list
+  subtypes: obj list
+  relationships: obj list
+  canModifyLayer: bool
+  canScaleSymbols: bool
+  hasLabels: bool
+  capabilities: string
+  supportsStatistics: bool
+  supportsAdvancedQueries: bool
+  supportedQueryFormats: string
+  isDataVersioned: bool
+  ownershipBasedAccessControlForFeatures: OwnershipBasedAccessControlForFeatures
+  useStandardizedQueries: bool
+  advancedQueryCapabilities: AdvancedQueryCapabilities
+  supportsCoordinatesQuantization: bool
+  sourceSpatialReference: SourceSpatialReference option
+  drawingInfo: DrawingInfo option
+  maxRecordCount: int option
+  supportsDatumTransformation: bool option
+  count: int option
+  displayFieldName: string option
+  fieldAliases: FieldAliases option
+  spatialReference: SpatialReference option
+  features: FeaturesItem list option
+  dateFieldsTimeReference: obj option
+  exceededTransferLimit: bool option
+  hasZ: bool option }
+
+type InitialExtent =
+{ xmin: float
+  ymin: float
+  xmax: float
+  ymax: float
+  spatialReference: SpatialReference }
+
+type FullExtent =
+{ xmin: float
+  ymin: float
+  xmax: float
+  ymax: float
+  spatialReference: SpatialReference }
+
+type DocumentInfo =
+{ Title: string
+  Author: string
+  Comments: string
+  Subject: string
+  Category: string
+  AntialiasingMode: string
+  TextAntialiasingMode: string
+  Keywords: string }
+
+type Root =
+{ currentVersion: float
+  serviceDescription: string
+  mapName: string
+  description: string
+  copyrightText: string
+  supportsDynamicLayers: bool
+  layers: LayersItem list
+  tables: obj list
+  spatialReference: string
+  singleFusedMapCache: bool
+  initialExtent: InitialExtent
+  fullExtent: FullExtent
+  minScale: float
+  maxScale: int
+  units: string
+  supportedImageFormatTypes: string
+  documentInfo: DocumentInfo
+  capabilities: string
+  supportedQueryFormats: string
+  exportTilesAllowed: bool
+  referenceScale: int
+  supportsDatumTransformation: bool
+  maxRecordCount: int
+  maxImageHeight: int
+  maxImageWidth: int
+  supportedExtensions: string
+  culture: string
+  name: string
+  guid: string
+  catalogPath: string
+  snippet: string
+  summary: string
+  title: string
+  tags: string list
+  ``type``: string
+  typeKeywords: string list
+  thumbnail: string
+  url: string
+  extent: float list list
+  accessInformation: string
+  licenseInfo: string }
+
 
 *)
 
@@ -686,24 +5537,5763 @@ ZVALUE
 
 
 
-let super'member'sub_triples = Query._p_ rdfs.``member``
 
-super'member'sub_triples
-|> Array.Parallel.collect (fun super'member'sub ->
-    Query.sp_ (RDF_Term.from_id (Triple.slot_value Triple_Slot.S super'member'sub)) a)
 
-let feature'a'ditch_feature =
-    Query._po a intraraster.Ditch_Feature
-    |> Array.randomChoice
 
-let ditch = RDF_Term.from_id (Triple.slot_value S feature'a'ditch_feature)
-let container'member'ditch = Query.incoming_edges ditch
 
-container'member'ditch
-|> Array.map (fun triple -> Query.outgoing_edges (RDF_Term.from_id (Triple.slot_value Triple_Slot.S triple))
+
+
+
+
+
+
+
+
+
+
+
+let DomainNames =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun Layer ->
+
+        Layer.Fields
+        |> Array.Parallel.choose (fun Field -> Field.Domain)
+        |> Array.Parallel.map (fun Domain -> Domain.Name)
+
+    )
+    // TODO ask GIS what happend to domain data from the feature layer
+    |> Array.append [|
+
+                       "dDomainInletMaterial"
+                       "dDomainEndPointMaterial"
+                       "dDomainJunctionMaterial"
+                       "dDomainDitchSurfType"
+
+                        |]
+    |> Array.distinct
+
+
+
+let FieldName'DomainNames =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun Layer ->
+
+        Layer.Fields
+        |> Array.Parallel.filter (fun Field -> Field.Domain.IsSome)
+        |> Array.Parallel.map (fun Field -> Normalize.field Field.Name, Field.Domain.Value.Name)
+
+    )
+    |> Array.distinct
+
+
+
+
+
+module Coded_Value_Domain =
+    module Literal =
+        let domain_name =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for DomainName in DomainNames do
+                           (DomainName, RDF_Literal.simple DomainName current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+    module Iri =
+        let individual_domain =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for DomainName in DomainNames do
+                           (DomainName, gis._prefix DomainName current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+
+
+let FieldName'DomainName'CodedValueName'CodedValueCodes =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun Layer ->
+
+        Layer.Fields
+        |> Array.Parallel.filter (fun Field -> Field.Domain.IsSome)
+        |> Array.Parallel.collect (fun Field ->
+            let Domain = Field.Domain.Value
+            Domain.CodedValues
+            |> Array.Parallel.map (fun CodedValue -> (Normalize.field Field.Name, Domain.Name, CodedValue.Name.JsonValue.AsString(), CodedValue.Code.JsonValue.AsString()))
+
+        )
+
+    )
+    // TODO ask GIS what happend to domain data from the feature layer
+    |> Array.append [|
+
+                       "MATERIAL", "dDomainInletMaterial", "Brick", "BRK"
+                       "MATERIAL", "dDomainInletMaterial", "Concrete", "CON"
+                       "MATERIAL", "dDomainInletMaterial", "Other", "OTH"
+                       "MATERIAL", "dDomainInletMaterial", "Not Assessed", "NA"
+                       "MATERIAL", "dDomainInletMaterial", "Unknown", "UNK"
+                       "MATERIAL", "dDomainInletMaterial", "SCB", "SCB"
+
+                       "MATERIAL", "dDomainEndPointMaterial", "CONCRETE", "CON"
+                       "MATERIAL", "dDomainEndPointMaterial", "BRICK", "BRK"
+                       "MATERIAL", "dDomainEndPointMaterial", "RUBBLE ROCK", "RR"
+                       "MATERIAL", "dDomainEndPointMaterial", "SAND CEMENT BAG", "SCB"
+                       "MATERIAL", "dDomainEndPointMaterial", "DIRT", "DRT"
+                       "MATERIAL", "dDomainEndPointMaterial", "OTHER", "OTH"
+                       "MATERIAL", "dDomainEndPointMaterial", "NOT ASSESSED", "NA"
+                       "MATERIAL", "dDomainEndPointMaterial", "UNKNOWN", "UNK"
+
+                       "MATERIAL", "dDomainJunctionMaterial", "Brick", "BRK"
+                       "MATERIAL", "dDomainJunctionMaterial", "PreCast", "PRE"
+                       "MATERIAL", "dDomainJunctionMaterial", "Other", "OTH"
+                       "MATERIAL", "dDomainJunctionMaterial", "Unknown", "UNK"
+                       "MATERIAL", "dDomainJunctionMaterial", "NotAssessed", "NA"
+                       "MATERIAL", "dDomainJunctionMaterial", "Concrete", "CON"
+
+
+                       "SURFACETYPE", "dDomainDitchSurfType", "Rubble Rock", "ROCK"
+                       "SURFACETYPE", "dDomainDitchSurfType", "Grass", "GRASS"
+                       "SURFACETYPE", "dDomainDitchSurfType", "Dirt", "DIRT"
+                       "SURFACETYPE", "dDomainDitchSurfType", "Sand Cement Bags", "SAND"
+                       "SURFACETYPE", "dDomainDitchSurfType", "Fabri Form", "FABRI"
+                       "SURFACETYPE", "dDomainDitchSurfType", "Gabion", "GAB"
+                       "SURFACETYPE", "dDomainDitchSurfType", "Concrete", "CON"
+                       "SURFACETYPE", "dDomainDitchSurfType", "Other", "OTH"
+                       "SURFACETYPE", "dDomainDitchSurfType", "Unknown", "UNK"
+                       "SURFACETYPE", "dDomainDitchSurfType", "Not Assessed", "NA"
+
+                        |]
+    |> Array.distinct
+
+
+
+
+(*
+
+
+FieldName'DomainName'CodedValueName'CodedValueCodes
+|> Array.Parallel.filter (fun (FieldName, DomainName, CodedValueName, CodedValueCode) -> DomainName = "dDomainMaintBy")
+
+LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+|> Array.Parallel.collect (fun Layer ->
+
+    Layer.Features
+    |> Array.Parallel.map (fun Feature -> Feature.Attributes.Filterlocation.JsonValue.AsString())
+    |> Array.filter is_not_nullish
+
+)
+|> Array.distinct
+*)
+
+module Coded_Value =
+
+    module Iri =
+        let individual_coded_value_by_DomainName'CodedValueName =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for FieldName, DomainName, CodedValueName, CodedValueCode in FieldName'DomainName'CodedValueName'CodedValueCodes do
+                           ((DomainName, CodedValueName), gis._prefix $"{DomainName}.{CodedValueName}" current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let individual_coded_value_by_FieldName'CodedValueCode =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for FieldName, DomainName, CodedValueName, CodedValueCode in FieldName'DomainName'CodedValueName'CodedValueCodes do
+                           ((FieldName, CodedValueCode), gis._prefix $"{DomainName}.{CodedValueName}" current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+    module Literal =
+
+        let name =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for FieldName, DomainName, CodedValueName, CodedValueCode in FieldName'DomainName'CodedValueName'CodedValueCodes do
+                           (CodedValueName, RDF_Literal.simple CodedValueName current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let code =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for FieldName, DomainName, CodedValueName, CodedValueCode in FieldName'DomainName'CodedValueName'CodedValueCodes do
+                           (CodedValueCode, RDF_Literal.simple CodedValueCode current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+
+
+
+
+
+
+
+let FeatureLayer_Name'Abstract =
+    XRay.LCG_Stormwater_Inventory.xml.WorkspaceDefinition.DatasetDefinitions.DataElements
+    |> Array.Parallel.collect (fun FeatureDataset ->
+
+        FeatureDataset.Children.DataElements
+        |> Array.Parallel.choose (fun FeatureClass ->
+
+            match FeatureClass.Metadata.XmlDoc.Metadata.Idinfo with
+            | Some idinfo ->
+                match idinfo.Descript with
+                | Some descript when descript.Abstract.IsSome ->
+                    let feature_layer_name = layer_name_by_FeatureClass'Name[FeatureClass.Name]
+                    Some(feature_layer_name, descript.Abstract.Value)
+                | _ -> None
+            | None -> None
+
+        )
+
+    )
+    |> Array.distinct
+
+
+let ChildLayerName'ParentLayerName'ParentLayerId =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.choose (fun Layer ->
+
+        if Layer.ParentLayer.IsSome then
+            Some(Layer.Name, Layer.ParentLayer.Value.Name, Layer.ParentLayer.Value.Id)
+        else
+            None
+
+    )
+    |> Array.distinct
+
+
+module Feature_Layer =
+    let Ids =
+        LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+        |> Array.Parallel.map (fun Layer -> Layer.Id)
+        |> Array.distinct
+
+    let Names =
+        LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+        |> Array.Parallel.map (fun Layer -> Layer.Name)
+        |> Array.distinct
+
+    let Types =
+        LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+        |> Array.Parallel.map (fun Layer -> Layer.Type)
+        |> Array.distinct
+
+    let GeometryTypes =
+        LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+        |> Array.Parallel.choose (fun Layer -> Layer.GeometryType)
+        |> Array.distinct
+
+    let CurrentVersions =
+        LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+        |> Array.Parallel.map (fun Layer -> Layer.CurrentVersion)
+        |> Array.distinct
+
+    let Counts =
+        LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+        |> Array.Parallel.choose (fun Layer -> Layer.Count)
+        |> Array.distinct
+
+    module Literal =
+        let id =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Id in Ids do
+                           (Id, RDF_Literal.datatyped $"{Id}" xsd.int current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let name =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Name in Names do
+                           (Name, RDF_Literal.simple Name current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let current_version =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for CurrentVersion in CurrentVersions do
+                           (CurrentVersion, RDF_Literal.autotyped CurrentVersion current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let count =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Count in Counts do
+                           (Count, RDF_Literal.autotyped Count current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let abstract_description =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Name, Abstract in FeatureLayer_Name'Abstract do
+                           (Name, RDF_Literal.US Abstract current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+    module Iri =
+        let feature_layer_by_Name =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Layer in LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers do
+                           (Layer.Name, gis._prefix $"{Layer.Name}_Feature_Layer" current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let layer_owl_class =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Layer in LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers do
+                           (Layer.Name, gis._prefix $"{Layer.Name}_Feature" current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let layer_type =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Type in Types do
+                           (Type, gis._prefix Type current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let geometry_type =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for GeometryType in GeometryTypes do
+                           (GeometryType, gis._prefix GeometryType current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+
+
+
+// TODO consider ontolex concept mapping
+// TODO let GIS know subtypes are missing from intraraster feature layers
+(*
+let LayerName'Stcode'Stname =
+XRay.LCG_Stormwater_Inventory.xml.WorkspaceDefinition.DatasetDefinitions.DataElements
+|> Array.Parallel.collect (fun FeatureDataset ->
+
+    FeatureDataset.Children.DataElements
+    |> Array.Parallel.choose (fun FeatureClass ->
+
+        match FeatureClass.Metadata.XmlDoc.Metadata.Eainfo with
+        | Some idinfo ->
+            let Details =
+                idinfo.Detaileds
+                |> Array.Parallel.collect (fun Detailed ->
+                    Detailed.Subtypes
+                    |> Array.Parallel.map (fun Subtype ->
+                        let layer_name = layer_name_by_FeatureClass'Name[FeatureClass.Name]
+
+                        (layer_name, Subtype.Stcode.Value, Subtype.Stname.Value))
+
+                )
+
+            if Details.Length > 0 then
+                Some(Details)
+            else
+                None
+
+        | None -> None
+
+    )
+    |> Array.Parallel.collect (fun Detail -> Detail)
+
+)
+|> Array.distinct
+
+module Subtype =
+module Literal =
+    let subtype_name =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for Layer'Name, Stcode, Stname in LayerName'Stcode'Stname do
+                       let! subtype_name = RDF_Literal.simple Stname current_transaction
+                       ($"{Layer'Name}.{Stcode}", subtype_name)
+
+                   |]
+                |> Map.ofArray
+
+        }
+
+module Iri =
+    let individual_subtype_by_Layer'Stcode =
+
+
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for Layer'Name, Stcode, Stname in LayerName'Stcode'Stname do
+                       let! subtype = intraraster._prefix $"{Layer'Name}.{Stname}" current_transaction
+                       ($"{Layer'Name}.{Stcode}", subtype)
+
+                   |]
+                |> Map.ofArray
+
+        }
+
+    let subtype_owl_class_by_Layer'Stcode =
+
+
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for Layer'Name, Stcode, Stname in LayerName'Stcode'Stname do
+                       let! subtype = intraraster._Feature $"{Layer'Name}.{Stname}" current_transaction
+                       ($"{Layer'Name}.{Stcode}", subtype)
+
+                   |]
+                |> Map.ofArray
+
+        }
+
+*)
+
+
+let FieldName'FieldDomain =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun Layer ->
+
+        Layer.Fields
+        |> Array.Parallel.choose (fun Field ->
+            if Field.Domain.IsSome then
+                Some(Normalize.field Field.Name, Field.Domain.Value.Name)
+            else
+                None
+
+        )
+
+    )
+    |> Array.distinct
+
+
+
+module Layer_Field =
+    let FieldNames =
+        LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+        |> Array.Parallel.collect (fun Layer ->
+            Layer.Fields
+            |> Array.map (fun Field -> Normalize.field Field.Name))
+        |> Array.distinct
+        |> Array.append [| "x"; "y" |]
+
+    let FieldMonikers =
+        LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+        |> Array.Parallel.collect (fun Layer ->
+            Layer.Fields
+            |> Array.map (fun Field -> Layer.Name, Normalize.field Field.Name)
+            |> Array.append [| Layer.Name, "x"
+                               Layer.Name, "y" |])
+        |> Array.distinct
+
+    let FieldTypes =
+        LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+        |> Array.Parallel.collect (fun Layer ->
+
+            Layer.Fields
+            |> Array.map (fun Field -> Field.Type))
+        |> Array.distinct
+
+    module Iri =
+        let super_field =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for FieldName in FieldNames do
+                           (FieldName, gis._prefix FieldName current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let layer_field =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for LayerName, FieldName in FieldMonikers do
+                           let moniker = $"{LayerName}.{FieldName}"
+                           (moniker, gis._prefix moniker current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let field_type =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for FieldType in FieldTypes do
+                           (FieldType, gis._prefix FieldType current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+    module Literal =
+        let name =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for FieldName in FieldNames do
+                           (FieldName, RDF_Literal.simple FieldName current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+
+
+
+
+let FieldName'FieldAlias =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+
+        layer.Fields
+        |> Array.Parallel.filter (fun field -> Normalize.field field.Name <> field.Alias)
+        |> Array.map (fun field -> Normalize.field field.Name, field.Alias))
+    |> Array.distinct
+
+
+let FieldName'DomainName =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun layer ->
+
+        layer.Fields
+        |> Array.Parallel.choose (fun field ->
+            if field.Domain.IsSome then
+                Some(field)
+            else
+                None
+
+        )
+        |> Array.map (fun field -> Normalize.field field.Name, field.Domain.Value.Name))
+    |> Array.distinct
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[<Struct>]
+type Esri_Feature =
+    { LayerName: string
+
+      Unitid: Option<string>
+      Globalid: Option<Guid>
+
+
+      Attachedtoid: Option<string>
+      Facilityid: Option<string>
+      HydId: Option<string>
+      Outfallid: Option<string>
+      Parentid: Option<string>
+      StructureId: Option<string>
+      Upstreamstuctureid: Option<string>
+
+      Description: Option<string>
+      Diameter: Option<int>
+      DownstreamDepth: Option<decimal>
+      DownstreamElevation: Option<decimal>
+      Drainagebasin: Option<string>
+      Filterlocation: Option<string>
+      Filtertype: Option<string>
+      Height: Option<decimal>
+      InvertElevation: Option<decimal>
+      Lfeet: Option<decimal>
+      LocationDescription: Option<string>
+      Maintby: Option<string>
+      Material: Option<string>
+      Notes: Option<string>
+      NumBarrels: Option<int>
+      Outfalltype: Option<string>
+      Owner: Option<string>
+      Pipeshape: Option<string>
+      Pondtype: Option<string>
+      Pondyr: Option<int>
+      Relatedfeature: Option<string>
+      SlotElev: Option<decimal>
+      StrctDepth: Option<decimal>
+      Structuretype: Option<string>
+      Subtypefield: Option<int>
+      Surfacetype: Option<string>
+      UpstreamDepth: Option<decimal>
+      UpstreamElevation: Option<decimal>
+      Waterbodyname: Option<string>
+      Width: Option<decimal>
+      X: Option<float>
+      Y: Option<float>
+      Zvalue: Option<decimal>
+
+     }
+
+let Features =
+    LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+    |> Array.Parallel.collect (fun Layer ->
+        Layer.Features
+        |> Array.Parallel.map (fun Feature ->
+            let StructureId =
+
+                try
+                    match Feature.Attributes.Structureid.Number with
+                    | Some structure_id when string structure_id |> is_not_nullish -> Some(string structure_id)
+                    | _ -> None
+
+                with
+                | _ ->
+                    match Feature.Attributes.Structureid.String with
+                    | Some structure_id when structure_id |> is_not_nullish -> Some(structure_id)
+                    | _ -> None
+
+            let Filterlocation =
+
+                try
+                    Feature.Attributes.Filterlocation.String
+                with
+                | _ -> None
+
+            let Notes =
+
+                try
+                    if Feature.Attributes.Notes.Number.IsSome then
+                        Some(string Feature.Attributes.Notes.Number.Value)
+                    else
+                        Feature.Attributes.Notes.String
+
+
+                with
+                | _ -> Feature.Attributes.Notes.String
+
+            let Pondyr =
+
+                try
+                    if Feature.Attributes.Pondyr.Number.IsSome then
+                        Feature.Attributes.Pondyr.Number
+                    else
+                        None
+
+
+                with
+                | _ -> None
+
+            let Relatedfeature =
+
+                try
+                    Feature.Attributes.Relatedfeature.String
+
+                with
+                | _ -> None
+
+            let DownstreamDepth =
+                if Feature.Attributes.DownstreamDepth.IsSome then
+                    Feature.Attributes.DownstreamDepth
+                else
+                    Feature.Attributes.Downstreamdepth
+
+            let DownstreamElevation =
+                if Feature.Attributes.Downstreamelevation.IsSome then
+                    Feature.Attributes.Downstreamelevation
+                else
+                    Feature.Attributes.DownstreamElev
+
+            let InvertElevation =
+                if Feature.Attributes.InvertElev.IsSome then
+                    Feature.Attributes.InvertElev
+                else
+                    Feature.Attributes.Invertelev
+
+            let LocationDescription =
+                if Feature.Attributes.LocDesc.IsSome then
+                    Feature.Attributes.LocDesc
+                else
+                    Feature.Attributes.Location
+
+            let UpstreamElevation =
+                if Feature.Attributes.Upstreamelevation.IsSome then
+                    Feature.Attributes.Upstreamelevation
+                else
+                    Feature.Attributes.UpstreamElev
+
+            let Facilityid =
+                match Feature.Attributes.Facilityid with
+                | Some facility_id when facility_id |> is_not_nullish -> Some(facility_id)
+                | _ -> None
+
+            let Attachedtoid =
+                match Feature.Attributes.Attachedtoid with
+                | Some attachedto_id when attachedto_id |> is_not_nullish -> Some(attachedto_id)
+                | _ -> None
+
+            let Outfallid =
+                match Feature.Attributes.Outfallid with
+                | Some outfall_id when outfall_id |> is_not_nullish -> Some(outfall_id)
+                | _ -> None
+
+            let Parentid =
+                match Feature.Attributes.Parentid with
+                | Some parent_id when parent_id |> is_not_nullish -> Some(parent_id)
+                | _ -> None
+
+            let Upstreamstuctureid =
+                match Feature.Attributes.Upstreamstuctureid with
+                | Some upstreamstucture_id when upstreamstucture_id |> is_not_nullish -> Some(upstreamstucture_id)
+                | _ -> None
+
+            let Diameter =
+                match Feature.Attributes.Diameter with
+                | Some diameter when diameter <> 0 -> Some(diameter)
+                | _ -> None
+
+            {
+
+              LayerName = Layer.Name
+              Attachedtoid = Attachedtoid
+              Description = Feature.Attributes.Description
+              Diameter = Diameter
+              DownstreamDepth = DownstreamDepth
+              DownstreamElevation = DownstreamElevation
+              Drainagebasin = Feature.Attributes.Drainagebasin
+              Facilityid = Facilityid
+              Filterlocation = Filterlocation
+              Filtertype = Feature.Attributes.Filtertype
+              Globalid = Feature.Attributes.Globalid
+              Height = Feature.Attributes.Height
+              HydId = Feature.Attributes.HydId
+              InvertElevation = InvertElevation
+              Lfeet = Feature.Attributes.Lfeet
+              LocationDescription = LocationDescription
+              Maintby = Feature.Attributes.Maintby
+              Material = Feature.Attributes.Material
+              Notes = Notes
+              NumBarrels = Feature.Attributes.NumBarrels
+              Outfallid = Outfallid
+              Outfalltype = Feature.Attributes.Outfalltype
+              Owner = Feature.Attributes.Owner
+              Parentid = Parentid
+              Pipeshape = Feature.Attributes.Pipeshape
+              Pondtype = Feature.Attributes.Pondtype
+              Pondyr = Pondyr
+              Relatedfeature = Relatedfeature
+              SlotElev = Feature.Attributes.SlotElev
+              StrctDepth = Feature.Attributes.StrctDepth
+              StructureId = StructureId
+              Structuretype = Feature.Attributes.Structuretype
+              Subtypefield = Feature.Attributes.Subtypefield
+              Surfacetype = Feature.Attributes.Surfacetype
+              Unitid = Feature.Attributes.Unitid
+              UpstreamDepth = Feature.Attributes.UpstreamDepth
+              UpstreamElevation = UpstreamElevation
+              Upstreamstuctureid = Upstreamstuctureid
+              Waterbodyname = Feature.Attributes.Waterbodyname
+              Width = Feature.Attributes.Width
+              X = Feature.Geometry.X
+              Y = Feature.Geometry.Y
+              Zvalue = Feature.Attributes.Zvalue
+
+
+            }
+
+        ))
+    |> Array.distinct
+
+let Features_with_Unitid =
+
+    Features
+    |> Array.Parallel.choose (fun Feature ->
+        if Feature.Unitid.IsSome then
+            Some(Feature)
+        else
+            None)
+    |> Array.distinct
+
+
+let Features_with_Globalid =
+
+    Features
+    |> Array.Parallel.choose (fun Feature ->
+        if Feature.Globalid.IsSome then
+            Some(Feature)
+        else
+            None)
+    |> Array.distinct
+
+
+
+let Features_with_Unitid_and_Globalid =
+
+    Features
+    |> Array.Parallel.choose (fun Feature ->
+        if Feature.Unitid.IsSome && Feature.Globalid.IsSome then
+            Some(Feature)
+        else
+            None)
+    |> Array.distinct
+
+
+
+
+module Id =
+    let Unitids =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Unitid)
+        |> Array.distinct
+
+    let Globalids =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Globalid)
+        |> Array.distinct
+
+    let Facilityids =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Facilityid)
+        |> Array.distinct
+
+    let Attachedtoids =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Attachedtoid)
+        |> Array.distinct
+
+    let Outfallids =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Outfallid)
+        |> Array.distinct
+
+    let HydIds =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.HydId)
+        |> Array.distinct
+
+    let Parentids =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Parentid)
+        |> Array.distinct
+
+    let Structureids =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.StructureId)
+        |> Array.distinct
+
+    let Upstreamstuctureids =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Upstreamstuctureid)
+        |> Array.distinct
+
+    module Literal =
+        let unit_id =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Unitid in Unitids do
+                           (Unitid, RDF_Literal.simple Unitid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let global_id =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Globalid in Globalids do
+                           let GLOBALID = Globalid.ToString().ToUpper()
+                           (Globalid, RDF_Literal.datatyped GLOBALID xsd.ID current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let facility_id =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Facilityid in Facilityids do
+                           (Facilityid, RDF_Literal.autotyped Facilityid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let outfall_id =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Outfallid in Outfallids do
+                           (Outfallid, RDF_Literal.simple Outfallid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let hyd_id =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for HydId in HydIds do
+                           (HydId, RDF_Literal.simple HydId current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let structure_id =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Structureid in Structureids do
+                           (Structureid, RDF_Literal.simple Structureid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let upstream_structure_id =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Upstreamstuctureid in Upstreamstuctureids do
+                           (Upstreamstuctureid, RDF_Literal.simple Upstreamstuctureid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+    module Iri =
+        let individual_feature_by_Unitid =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Unitid in Unitids do
+                           (Unitid, gis._prefix Unitid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let individual_feature_by_Globalid =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Globalid in Globalids do
+                           (Globalid, gis._prefix $"{Globalid.ToString().ToUpper()}" current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let individual_facility =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Facilityid in Facilityids do
+                           (Facilityid, gis._prefix Facilityid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let individual_feature_by_Attachedtoid =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Attachedtoid in Attachedtoids do
+                           (Attachedtoid, gis._prefix $"{Attachedtoid}" current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let individual_outfall =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Outfallid in Outfallids do
+                           (Outfallid, gis._prefix Outfallid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let individual_hyd =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for HydId in HydIds do
+                           (HydId, gis._prefix HydId current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let individual_parent =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Parentid in Parentids do
+                           (Parentid, gis._prefix Parentid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let individual_structure =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Structureid in Structureids do
+                           (Structureid, gis._prefix Structureid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let individual_upstream_structure =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Upstreamstuctureid in Upstreamstuctureids do
+                           (Upstreamstuctureid, gis._prefix Upstreamstuctureid current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+
+
+module Coordinate =
+
+    let Xs =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.X)
+        |> Array.distinct
+
+    let Ys =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Y)
+        |> Array.distinct
+
+    let Zs =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Zvalue)
+        |> Array.distinct
+
+    module Literal =
+        let x =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for X in Xs do
+                           (X, RDF_Literal.autotyped X current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let y =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Y in Ys do
+                           (Y, RDF_Literal.autotyped Y current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let z =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Z in Zs do
+                           (Z, RDF_Literal.autotyped Z current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+module Attribute =
+    let Descriptions =
+
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Description)
+        |> Array.Parallel.filter is_not_nullish
+        |> Array.distinct
+
+    let Diameters =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Diameter)
+        |> Array.distinct
+
+    let DownstreamDepths =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.DownstreamDepth)
+        |> Array.distinct
+
+    let DownstreamElevations =
+
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.DownstreamElevation)
+        |> Array.distinct
+
+    let DrainageBasins =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Drainagebasin)
+        |> Array.distinct
+
+    let Filterlocations =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Filterlocation)
+        |> Array.distinct
+
+    let Filtertypes =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Filtertype)
+        |> Array.distinct
+
+    let Heights =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Height)
+        |> Array.distinct
+
+    let InvertElevations =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.InvertElevation)
+        |> Array.distinct
+
+    let Lfeets =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Lfeet)
+        |> Array.distinct
+
+    let LocationDescriptions =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.LocationDescription)
+        |> Array.distinct
+
+    let Maintbys =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Maintby)
+        |> Array.distinct
+        |> Array.map Normalize.maint_by
+
+    let Materials =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Material)
+        |> Array.distinct
+        |> Array.map Normalize.material
+
+    let Notes =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Notes)
+        |> Array.distinct
+
+    let NumBarrels =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.NumBarrels)
+        |> Array.distinct
+
+    let Outfalltypes =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Outfalltype)
+        |> Array.distinct
+
+    let Owners =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Owner)
+        |> Array.distinct
+        |> Array.map Normalize.owner
+
+    let Pipeshapes =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Pipeshape)
+        |> Array.distinct
+        |> Array.map Normalize.pipe_shape
+
+    let Pondtypes =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Pondtype)
+        |> Array.distinct
+
+    let Pondyrs =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Pondyr)
+        |> Array.distinct
+
+    let Relatedfeatures =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Relatedfeature)
+        |> Array.distinct
+
+    let SlotElevs =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.SlotElev)
+        |> Array.distinct
+
+    let StrctDepths =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.StrctDepth)
+        |> Array.distinct
+
+    let Structuretypes =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Structuretype)
+        |> Array.distinct
+
+    let Subtypefields =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Subtypefield)
+        |> Array.distinct
+
+    let Surfacetypes =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Surfacetype)
+        |> Array.distinct
+        |> Array.map Normalize.surface_type
+
+    let UpstreamDepths =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.UpstreamDepth)
+        |> Array.distinct
+
+    let UpstreamElevations =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.UpstreamElevation)
+        |> Array.distinct
+
+    let Waterbodynames =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Waterbodyname)
+        |> Array.distinct
+
+    let Widths =
+        Features
+        |> Array.Parallel.choose (fun Feature -> Feature.Width)
+        |> Array.distinct
+
+    module Iri =
+        let individual_drainage_basin =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for DrainageBasin in DrainageBasins do
+                           (DrainageBasin, gis._prefix DrainageBasin current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let outfall_type =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Outfalltype in Outfalltypes do
+                           (Outfalltype, gis._prefix $"{Outfalltype} Outfall" current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let structure_type =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Structuretype in Structuretypes do
+                           let local_name =
+                               if Structuretype
+                                   .ToLowerInvariant()
+                                      .Contains("structure") then
+                                   Structuretype
+                               else
+                                   $"{Structuretype} Structure"
+
+
+
+
+                           (Structuretype, gis._prefix local_name current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+
+    module Literal =
+        let description =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Description in Descriptions do
+                           (Description, RDF_Literal.US Description current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let diameter =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Diameter in Diameters do
+                           (Diameter, RDF_Literal.autotyped Diameter current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let downstream_depth =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for DownstreamDepth in DownstreamDepths do
+                           (DownstreamDepth, RDF_Literal.autotyped DownstreamDepth current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let downstream_elevation =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for DownstreamElevation in DownstreamElevations do
+                           (DownstreamElevation, RDF_Literal.autotyped DownstreamElevation current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let drainage_basin =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for DrainageBasin in DrainageBasins do
+                           (DrainageBasin, RDF_Literal.autotyped DrainageBasin current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let filter_location =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Filterlocation in Filterlocations do
+                           (Filterlocation, RDF_Literal.autotyped Filterlocation current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let filter_type =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Filtertype in Filtertypes do
+                           (Filtertype, RDF_Literal.autotyped Filtertype current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let height =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Height in Heights do
+                           (Height, RDF_Literal.autotyped Height current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let invert_elevation =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for InvertElevation in InvertElevations do
+                           (InvertElevation, RDF_Literal.autotyped InvertElevation current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let l_feet =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Lfeet in Lfeets do
+                           (Lfeet, RDF_Literal.autotyped Lfeet current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let location_description =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for LocationDescription in LocationDescriptions do
+                           (LocationDescription, RDF_Literal.autotyped LocationDescription current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let maint_by =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Maintby in Maintbys do
+                           (Maintby, RDF_Literal.autotyped Maintby current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let material =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Material in Materials do
+                           (Material, RDF_Literal.autotyped Material current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let notes =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Notes in Notes do
+                           (Notes, RDF_Literal.autotyped Notes current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let num_barrels =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for NumBarrels in NumBarrels do
+                           (NumBarrels, RDF_Literal.autotyped NumBarrels current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let outfall_type =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Outfalltype in Outfalltypes do
+                           (Outfalltype, RDF_Literal.autotyped Outfalltype current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let owner =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Owner in Owners do
+                           (Owner, RDF_Literal.autotyped Owner current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let pipe_shape =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Pipeshape in Pipeshapes do
+                           (Pipeshape, RDF_Literal.autotyped Pipeshape current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let pond_type =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Pondtype in Pondtypes do
+                           (Pondtype, RDF_Literal.autotyped Pondtype current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let pond_yr =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Pondyr in Pondyrs do
+                           (Pondyr, RDF_Literal.autotyped Pondyr current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let related_feature =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Relatedfeature in Relatedfeatures do
+                           (Relatedfeature, RDF_Literal.autotyped Relatedfeature current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let slot_elev =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for SlotElev in SlotElevs do
+                           (SlotElev, RDF_Literal.autotyped SlotElev current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let strct_depth =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for StrctDepth in StrctDepths do
+                           (StrctDepth, RDF_Literal.autotyped StrctDepth current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let structure_type =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Structuretype in Structuretypes do
+                           (Structuretype, RDF_Literal.autotyped Structuretype current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let subtype_field =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Subtypefield in Subtypefields do
+                           (Subtypefield, RDF_Literal.autotyped Subtypefield current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let surface_type =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Surfacetype in Surfacetypes do
+                           (Surfacetype, RDF_Literal.autotyped Surfacetype current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let upstream_depth =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for UpstreamDepth in UpstreamDepths do
+                           (UpstreamDepth, RDF_Literal.autotyped UpstreamDepth current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let upstream_elevation =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for UpstreamElevation in UpstreamElevations do
+                           (UpstreamElevation, RDF_Literal.autotyped UpstreamElevation current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let water_body_name =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Waterbodyname in Waterbodynames do
+                           (Waterbodyname, RDF_Literal.autotyped Waterbodyname current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+        let width =
+
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for Width in Widths do
+                           (Width, RDF_Literal.autotyped Width current_transaction)
+
+                       |]
+                    |> Map.ofArray
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(*
+let LayerName_Stcode'Stname =
+
+XRay.LCG_Stormwater_Inventory.xml.WorkspaceDefinition.DatasetDefinitions.DataElements
+|> Array.Parallel.collect (fun FeatureDataset ->
+
+    FeatureDataset.Children.DataElements
+    |> Array.Parallel.choose (fun FeatureClass ->
+
+        match FeatureClass.Metadata.XmlDoc.Metadata.Eainfo with
+        | Some idinfo ->
+            let Details =
+                idinfo.Detaileds
+                |> Array.Parallel.collect (fun Detailed ->
+                    Detailed.Subtypes
+                    |> Array.Parallel.map (fun Subtype ->
+                        let layer_name = layer_name_by_FeatureClass'Name[FeatureClass.Name]
+
+                        ((layer_name, Subtype.Stcode.Value), Subtype.Stname.Value))
+
+                )
+
+            if Details.Length > 0 then
+                Some(Details)
+            else
+                None
+
+        | None -> None
+
+    )
+    |> Array.Parallel.collect (fun Detail -> Detail)
+
+)
+|> Array.distinct
+|> Array.append [| ("End Point",6), "Bubble_Up_Structure"|]
+|> Map.ofArray
+
+let LayerName_Stcode =
+LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+|> Array.Parallel.collect (fun Layer ->
+    Layer.Features
+    |> Array.Parallel.filter (fun Feature -> Feature.Attributes.Subtypefield.IsSome)
+    |> Array.Parallel.map (fun Feature -> Layer.Name, Feature.Attributes.Subtypefield.Value)
+
+)
+|> Array.distinct
+|> Array.sort
+
+let results =
+LayerName_Stcode
+|> Array.map (fun tuple_key ->
+    try
+        LayerName_Stcode'Stname[tuple_key]
+    with
+    | err -> failwith $"{tuple_key} failed with error {err.Message}"
 
 )
 
+let FeatureClass_Elements =
+XRay.LCPW.htm.Elements "a"
+|> Seq.toArray
+|> Array.Parallel.choose (fun anchor ->
+    match anchor.TryGetAttribute "name" with
+    | Some name when name.Value().StartsWith("FeatureClass") -> Some(anchor)
+    | _ -> None
 
-let mof = Query.in_all ditch |> Array.randomChoice
-Query.outgoing_edges mof
+    )
+
+
+
+let random_FeatureClass_Element = FeatureClass_Elements |> Array.randomChoice
+
+*)
+
+let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_Term) (transaction: LightningTransaction) =
+
+    let layer_owl_class = Feature_Layer.Iri.layer_owl_class[Feature.LayerName]
+    Assert.spog individual_feature is_a layer_owl_class oit._graph transaction
+    Assert.spog individual_feature is_a gis.Feature oit._graph transaction
+    Assert.spog individual_feature is_a owl.NamedIndividual oit._graph transaction
+    // TODO update once subtypes are present in feature layers again
+    (*
+
+if Feature.Subtypefield.IsSome then
+
+    let subtype_owl_class = Subtype.Iri.subtype_owl_class_by_Layer'Stcode[$"{Feature.LayerName}.{Feature.Subtypefield.Value}"]
+
+    Assert.spog individual_feature is_a subtype_owl_class oit._graph transaction
+*)
+
+    //try
+
+    if Feature.Attachedtoid.IsSome then
+        Assert.spog individual_feature gis.attached_to Id.Iri.individual_feature_by_Attachedtoid[Feature.Attachedtoid.Value] oit._graph transaction
+
+    if Feature.Facilityid.IsSome then
+
+        let individual_facility = Id.Iri.individual_facility[Feature.Facilityid.Value]
+
+        Assert.spog individual_feature gis.facility individual_facility oit._graph transaction
+        Assert.spog individual_facility is_a gis.Facility oit._graph transaction
+        Assert.spog individual_facility is_a owl.NamedIndividual oit._graph transaction
+
+        Assert.spog individual_facility Layer_Field.Iri.layer_field[$"{Feature.LayerName}.FACILITYID"] Id.Literal.facility_id[Feature.Facilityid.Value] oit._graph transaction
+
+    if Feature.HydId.IsSome then
+
+        let individual_hyd = Id.Iri.individual_hyd[Feature.HydId.Value]
+
+        Assert.spog individual_feature gis.hyd individual_hyd oit._graph transaction
+        Assert.spog individual_hyd is_a gis.Hyd oit._graph transaction
+        Assert.spog individual_hyd is_a owl.NamedIndividual oit._graph transaction
+        Assert.spog individual_hyd Layer_Field.Iri.layer_field[$"{Feature.LayerName}.HYD_ID"] Id.Literal.hyd_id[Feature.HydId.Value] oit._graph transaction
+
+    if Feature.Outfallid.IsSome then
+
+        let individual_outfall = Id.Iri.individual_outfall[Feature.Outfallid.Value]
+
+        Assert.spog individual_feature gis.outfall individual_outfall oit._graph transaction
+        Assert.spog individual_outfall is_a gis.Outfall oit._graph transaction
+        Assert.spog individual_outfall is_a owl.NamedIndividual oit._graph transaction
+
+        Assert.spog individual_outfall Layer_Field.Iri.layer_field[$"{Feature.LayerName}.OUTFALLID"] Id.Literal.outfall_id[Feature.Outfallid.Value] oit._graph transaction
+
+    if Feature.Parentid.IsSome then
+
+        let individual_parent = Id.Iri.individual_parent[Feature.Parentid.Value]
+        Assert.spog individual_feature gis.parent individual_parent oit._graph transaction
+
+    if Feature.StructureId.IsSome then
+
+        let individual_structure = Id.Iri.individual_structure[Feature.StructureId.Value]
+
+        Assert.spog individual_feature gis.structure individual_structure oit._graph transaction
+        Assert.spog individual_structure is_a gis.Structure oit._graph transaction
+        Assert.spog individual_structure is_a owl.NamedIndividual oit._graph transaction
+
+        Assert.spog individual_structure Layer_Field.Iri.layer_field[$"{Feature.LayerName}.STRUCTUREID"] Id.Literal.structure_id[Feature.StructureId.Value] oit._graph transaction
+
+
+    if Feature.Upstreamstuctureid.IsSome then
+
+        let individual_upstream_structure =
+            Id.Iri.individual_upstream_structure[Feature.Upstreamstuctureid.Value]
+
+
+
+        Assert.spog individual_feature gis.upstream_structure individual_upstream_structure oit._graph transaction
+        Assert.spog individual_upstream_structure is_a gis.Upstream_Structure oit._graph transaction
+        Assert.spog individual_upstream_structure is_a owl.NamedIndividual oit._graph transaction
+
+        Assert.spog individual_upstream_structure Layer_Field.Iri.layer_field[$"{Feature.LayerName}.UPSTREAMSTUCTUREID"] Id.Literal.upstream_structure_id[Feature.Upstreamstuctureid.Value] oit._graph transaction
+
+
+
+
+    if Feature.Description.IsSome
+       && Feature.Description.Value |> is_not_nullish then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.DESCRIPTION"] Attribute.Literal.description[Feature.Description.Value] oit._graph transaction
+
+    if Feature.Diameter.IsSome
+       && Feature.Diameter.Value <> 0 then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.DIAMETER"] Attribute.Literal.diameter[Feature.Diameter.Value] oit._graph transaction
+
+    if Feature.DownstreamDepth.IsSome
+       && Feature.DownstreamDepth.Value <> 0M then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.DOWNSTREAMDEPTH"] Attribute.Literal.downstream_depth[Feature.DownstreamDepth.Value] oit._graph transaction
+
+    if Feature.DownstreamElevation.IsSome
+       && Feature.DownstreamElevation.Value <> 0M then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.DOWNSTREAMELEVATION"] Attribute.Literal.downstream_elevation[Feature.DownstreamElevation.Value] oit._graph transaction
+
+    if Feature.Drainagebasin.IsSome
+       && Feature.Drainagebasin.Value |> is_not_nullish then
+        let individual_drainage_basin =
+            Attribute.Iri.individual_drainage_basin[Feature.Drainagebasin.Value]
+
+        let drainage_basin_label =
+            Attribute.Literal.drainage_basin[Feature.Drainagebasin.Value]
+
+        Assert.spog individual_feature gis.drainage_basin individual_drainage_basin oit._graph transaction
+        Assert.spog individual_drainage_basin is_a gis.Drainage_Basin oit._graph transaction
+        Assert.spog individual_drainage_basin rdfs.label drainage_basin_label oit._graph transaction
+
+    if Feature.Filterlocation.IsSome
+       && Feature.Filterlocation.Value |> is_not_nullish then
+        try
+            let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.FILTERLOCATION"]
+
+            Assert.spog individual_feature layer_field Attribute.Literal.filter_location[Feature.Filterlocation.Value] oit._graph transaction
+            Assert.spog individual_feature gis.filter_location Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("FILTERLOCATION", Feature.Filterlocation.Value)] oit._graph transaction
+            Assert.spog gis.filter_location gis.field layer_field oit._graph transaction
+        with
+        | err -> failwith $"(FILTERLOCATION, {Feature.Filterlocation.Value}) failed with message {err.Message}"
+
+    if Feature.Filtertype.IsSome
+       && Feature.Filtertype.Value |> is_not_nullish then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.FILTERTYPE"] Attribute.Literal.filter_type[Feature.Filtertype.Value] oit._graph transaction
+
+    if Feature.Height.IsSome
+       && Feature.Height.Value <> 0M then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.HEIGHT"] Attribute.Literal.height[Feature.Height.Value] oit._graph transaction
+
+    if Feature.InvertElevation.IsSome
+       && Feature.InvertElevation.Value <> 0M then
+        try
+            Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.INVERTELEV"] Attribute.Literal.invert_elevation[Feature.InvertElevation.Value] oit._graph transaction
+        with
+        | err -> failwith $"({Feature.LayerName}.INVERTELEV, {Feature.InvertElevation.Value}) failed with message {err.Message}"
+    if Feature.Lfeet.IsSome && Feature.Lfeet.Value <> 0M then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.LFEET"] Attribute.Literal.l_feet[Feature.Lfeet.Value] oit._graph transaction
+
+    if Feature.LocationDescription.IsSome
+       && Feature.LocationDescription.Value
+          |> is_not_nullish then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.LOCATION"] Attribute.Literal.location_description[Feature.LocationDescription.Value] oit._graph transaction
+
+    if Feature.Maintby.IsSome
+       && Feature.Maintby.Value |> is_not_nullish then
+        try
+            let code = Normalize.maint_by Feature.Maintby.Value
+            let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.MAINTBY"]
+
+            Assert.spog individual_feature layer_field Attribute.Literal.maint_by[code] oit._graph transaction
+            Assert.spog individual_feature gis.maintainer Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("MAINTBY", code)] oit._graph transaction
+            Assert.spog gis.maintainer gis.field layer_field oit._graph transaction
+
+        with
+        | err -> failwith $"(MAINTBY, {Feature.Maintby.Value}) failed with message {err.Message}"
+    if Feature.Material.IsSome
+       && Feature.Material.Value |> is_not_nullish then
+        try
+            let code = Normalize.material Feature.Material.Value
+            let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.MATERIAL"]
+
+
+            Assert.spog individual_feature layer_field Attribute.Literal.material[code] oit._graph transaction
+            Assert.spog individual_feature gis.material Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("MATERIAL", code)] oit._graph transaction
+            Assert.spog gis.material gis.field layer_field oit._graph transaction
+        with
+        | err -> failwith $"(MATERIAL, {Feature.Material.Value}) failed with message {err.Message}"
+    if Feature.Notes.IsSome
+       && Feature.Notes.Value |> is_not_nullish then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.NOTES"] Attribute.Literal.notes[Feature.Notes.Value] oit._graph transaction
+
+    if Feature.NumBarrels.IsSome
+       && Feature.NumBarrels.Value <> 0 then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.NUM_BARRELS"] Attribute.Literal.num_barrels[Feature.NumBarrels.Value] oit._graph transaction
+
+    if Feature.Outfalltype.IsSome
+       && Feature.Outfalltype.Value |> is_not_nullish then
+        let outfall_type = Attribute.Iri.outfall_type[Feature.Outfalltype.Value]
+        Assert.spog individual_feature is_a outfall_type oit._graph transaction
+
+        Assert.spog outfall_type rdfs.label Attribute.Literal.outfall_type[Feature.Outfalltype.Value] oit._graph transaction
+    if Feature.Owner.IsSome
+       && Feature.Owner.Value |> is_not_nullish then
+        try
+            let code = Normalize.owner Feature.Owner.Value
+            let owner =
+                Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("OWNER", code)]
+            let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.OWNER"]
+            Assert.spog individual_feature layer_field Attribute.Literal.owner[code] oit._graph transaction
+            Assert.spog individual_feature gis.owner owner oit._graph transaction
+            Assert.spog gis.owner gis.field layer_field oit._graph transaction
+            Assert.spog owner is_a gis.Owner oit._graph transaction
+        with
+        | err -> failwith $"(OWNER, {Feature.Owner.Value}) failed with message {err.Message}"
+    if Feature.Pipeshape.IsSome
+       && Feature.Pipeshape.Value |> is_not_nullish then
+        try
+            let code = Normalize.pipe_shape Feature.Pipeshape.Value
+            let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.PIPESHAPE"]
+
+            Assert.spog individual_feature layer_field Attribute.Literal.pipe_shape[code] oit._graph transaction
+            Assert.spog individual_feature gis.pipe_shape Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("PIPESHAPE", code)] oit._graph transaction
+            Assert.spog gis.pipe_shape gis.field layer_field oit._graph transaction
+
+        with
+        | err -> failwith $"(PIPESHAPE, {Feature.Pipeshape.Value}) failed with message {err.Message}"
+    if Feature.Pondtype.IsSome
+       && Feature.Pondtype.Value |> is_not_nullish then
+
+        let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.PONDTYPE"]
+        Assert.spog individual_feature layer_field Attribute.Literal.pond_type[Feature.Pondtype.Value] oit._graph transaction
+        Assert.spog individual_feature gis.pond_type Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("PONDTYPE", Feature.Pondtype.Value)] oit._graph transaction
+        Assert.spog gis.pond_type gis.field layer_field oit._graph transaction
+
+    if Feature.Pondyr.IsSome && Feature.Pondyr.Value <> 0 then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.PONDYR"] Attribute.Literal.pond_yr[Feature.Pondyr.Value] oit._graph transaction
+
+    if Feature.Relatedfeature.IsSome
+       && Feature.Relatedfeature.Value |> is_not_nullish then
+
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.RELATEDFEATURE"] Attribute.Literal.related_feature[Feature.Relatedfeature.Value] oit._graph transaction
+
+    if Feature.SlotElev.IsSome
+       && Feature.SlotElev.Value <> 0M then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.SLOT_ELEV"] Attribute.Literal.slot_elev[Feature.SlotElev.Value] oit._graph transaction
+
+    if Feature.StrctDepth.IsSome
+       && Feature.StrctDepth.Value <> 0M then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.STRCT_DEPTH"] Attribute.Literal.strct_depth[Feature.StrctDepth.Value] oit._graph transaction
+
+    if Feature.Structuretype.IsSome
+       && Feature.Structuretype.Value |> is_not_nullish then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.STRUCTURETYPE"] Attribute.Literal.structure_type[Feature.Structuretype.Value] oit._graph transaction
+        Assert.spog individual_feature is_a Attribute.Iri.structure_type[Feature.Structuretype.Value] oit._graph transaction
+
+
+    if Feature.Subtypefield.IsSome then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.SUBTYPEFIELD"] Attribute.Literal.subtype_field[Feature.Subtypefield.Value] oit._graph transaction
+
+    if Feature.Surfacetype.IsSome
+       && Feature.Surfacetype.Value |> is_not_nullish then
+        try
+            let code = Normalize.surface_type Feature.Surfacetype.Value
+            let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.SURFACETYPE"]
+            Assert.spog individual_feature layer_field Attribute.Literal.surface_type[code] oit._graph transaction
+            Assert.spog individual_feature gis.surface_type Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("SURFACETYPE", code)] oit._graph transaction
+            Assert.spog gis.surface_type gis.field layer_field oit._graph transaction
+        with
+        | err -> failwith $"(SURFACETYPE, {Feature.Surfacetype.Value}) failed with message {err.Message}"
+
+    if Feature.UpstreamDepth.IsSome
+       && Feature.UpstreamDepth.Value <> 0M then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.UPSTREAMDEPTH"] Attribute.Literal.upstream_depth[Feature.UpstreamDepth.Value] oit._graph transaction
+
+    if Feature.UpstreamElevation.IsSome
+       && Feature.UpstreamElevation.Value <> 0M then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.UPSTREAMELEVATION"] Attribute.Literal.upstream_elevation[Feature.UpstreamElevation.Value] oit._graph transaction
+
+    if Feature.Waterbodyname.IsSome
+       && Feature.Waterbodyname.Value |> is_not_nullish then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.WATERBODYNAME"] Attribute.Literal.water_body_name[Feature.Waterbodyname.Value] oit._graph transaction
+
+    if Feature.Width.IsSome && Feature.Width.Value <> 0M then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.WIDTH"] Attribute.Literal.width[Feature.Width.Value] oit._graph transaction
+
+    if Feature.X.IsSome && Feature.X.Value <> 0 then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.x"] Coordinate.Literal.x[Feature.X.Value] oit._graph transaction
+
+    if Feature.Y.IsSome && Feature.Y.Value <> 0 then
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.y"] Coordinate.Literal.y[Feature.Y.Value] oit._graph transaction
+
+    if Feature.Zvalue.IsSome
+       && Feature.Zvalue.Value <> 0M then
+        Assert.spog individual_feature gis.z_coordinate Coordinate.Literal.z[Feature.Zvalue.Value] oit._graph transaction
+// with | err -> printf "Feature %A failed with error: %s" Feature err.Message
+
+
+
+
+
+
+
+
+
+
+
+module hansenDataDistribution =
+    module xml =
+
+        let cardinalityChilds =
+            MetaData.navigator
+            |> xpath "//@cardinalityChild"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let cardinalityParents =
+            MetaData.navigator
+            |> xpath "//@cardinalityParent"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let cardinalityUsedByApplications =
+            MetaData.navigator
+            |> xpath "//@cardinalityUsedByApplication"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let commonIds =
+            MetaData.navigator
+            |> xpath "//@commonId"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let dataPrecisions =
+            MetaData.navigator
+            |> xpath "//@dataPrecision"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let dataScales =
+            MetaData.navigator
+            |> xpath "//@dataScale"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let databaseNames =
+            MetaData.navigator
+            |> xpath "//@databaseName"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let defaultValues =
+            MetaData.navigator
+            |> xpath "//@defaultValue"
+            |> Array.Parallel.map (fun attribute -> attribute.Value.Replace("'", ""))
+            |> Array.Parallel.filter is_not_nullish
+            |> Array.Parallel.filter (fun defaultValue -> not (String.IsNullOrWhiteSpace(defaultValue)))
+
+        let deleteRules =
+            MetaData.navigator
+            |> xpath "//@deleteRule"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let deploymentStatuss =
+            MetaData.navigator
+            |> xpath "//@deploymentStatus"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let descriptions =
+            MetaData.navigator
+            |> xpath "//@description"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let directions =
+            MetaData.navigator
+            |> xpath "//@direction"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let displayDescriptions =
+            MetaData.navigator
+            |> xpath "//@displayDescription"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let displayNames =
+            MetaData.navigator
+            |> xpath "//@displayName"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let displayTitles =
+            MetaData.navigator
+            |> xpath "//@displayTitle"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let displayTitleLongs =
+            MetaData.navigator
+            |> xpath "//@displayTitleLong"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let effectiveDateTimes =
+            MetaData.navigator
+            |> xpath "//@effectiveDateTime"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+            |> Array.Parallel.map (fun value -> DateTime.Parse(value))
+
+
+        let enumerationNames =
+            MetaData.navigator
+            |> xpath "//@enumerationName"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let expiredDateTimes =
+            MetaData.navigator
+            |> xpath "//@expiredDateTime"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+            |> Array.Parallel.map (fun value -> DateTime.Parse(value))
+
+        let hasNullRecords =
+            MetaData.navigator
+            |> xpath "//@hasNullRecord"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let identitySeeds =
+            MetaData.navigator
+            |> xpath "//@identitySeed"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let identitySteps =
+            MetaData.navigator
+            |> xpath "//@identityStep"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let isAgencyEnhancables =
+            MetaData.navigator
+            |> xpath "//@isAgencyEnhancable"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+            |> Array.Parallel.map (fun value -> Boolean.Parse value)
+
+        let isHansens =
+            MetaData.navigator
+            |> xpath "//@isHansen"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+            |> Array.Parallel.map (fun value -> Boolean.Parse value)
+
+        let isLicenseds =
+            MetaData.navigator
+            |> xpath "//@isLicensed"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+            |> Array.Parallel.map (fun value -> Boolean.Parse value)
+
+        let isNullables =
+            MetaData.navigator
+            |> xpath "//@isNullable"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+            |> Array.Parallel.map (fun value -> Boolean.Parse value)
+
+        let isRequireds =
+            MetaData.navigator
+            |> xpath "//@isRequired"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+            |> Array.Parallel.map (fun value -> Boolean.Parse value)
+
+        let isUniques =
+            MetaData.navigator
+            |> xpath "//@isUnique"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+            |> Array.Parallel.map (fun value -> Boolean.Parse value)
+
+        let lengths =
+            MetaData.navigator
+            |> xpath "//@length"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+            |> Array.Parallel.map (fun value -> int value)
+
+        let locales =
+            MetaData.navigator
+            |> xpath "//@locale"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let names =
+            MetaData.navigator
+            |> xpath "//@name"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let oracleStatements =
+            MetaData.navigator
+            |> xpath "//@oracleStatement"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let orders =
+            MetaData.navigator
+            |> xpath "//@order"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let owners =
+            MetaData.navigator
+            |> xpath "//@owner"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let platforms =
+            MetaData.navigator
+            |> xpath "//@platform"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let remarkss =
+            MetaData.navigator
+            |> xpath "//@remarks"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let showSearchOrders =
+            MetaData.navigator
+            |> xpath "//@showSearchOrder"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let statements =
+            MetaData.navigator
+            |> xpath "//@statement"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let types =
+            MetaData.navigator
+            |> xpath "//@type"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let useSearchOrders =
+            MetaData.navigator
+            |> xpath "//@useSearchOrder"
+            |> Array.Parallel.map (fun attribute -> attribute.Value)
+            |> Array.Parallel.filter is_not_nullish
+
+        let values =
+            MetaData.navigator
+            |> xpath "//@value"
+            |> Array.Parallel.map (fun attribute -> attribute.Value.Replace("'", ""))
+            |> Array.Parallel.filter is_not_nullish
+
+
+    module Literal =
+
+        let cardinalityChild =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for cardinalityChild in xml.cardinalityChilds do
+                           (cardinalityChild, RDF_Literal.datatyped cardinalityChild xsd.int current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let cardinalityParent =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for cardinalityParent in xml.cardinalityParents do
+                           (cardinalityParent, RDF_Literal.datatyped cardinalityParent xsd.int current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+        // TODO normalize pseudo boolean Y or N values
+        let cardinalityUsedByApplication =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for cardinalityUsedByApplication in xml.cardinalityUsedByApplications do
+                           (cardinalityUsedByApplication, RDF_Literal.datatyped cardinalityUsedByApplication xsd.token current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let commonId =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for commonId in xml.commonIds do
+                           (commonId, RDF_Literal.simple commonId current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let dataPrecision =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for dataPrecision in xml.dataPrecisions do
+                           (dataPrecision, RDF_Literal.datatyped dataPrecision xsd.int current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let dataScale =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for dataScale in xml.dataScales do
+                           (dataScale, RDF_Literal.datatyped dataScale xsd.int current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let databaseName =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for databaseName in xml.databaseNames do
+                           (databaseName, RDF_Literal.simple databaseName current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let defaultValue =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for defaultValue in xml.defaultValues do
+                           match Int32.TryParse(defaultValue) with
+                           | true, int_value -> (defaultValue, RDF_Literal.datatyped defaultValue xsd.int current_transaction)
+                           | false, _ -> (defaultValue, RDF_Literal.simple defaultValue current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let deleteRule =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for deleteRule in xml.deleteRules do
+                           (deleteRule, RDF_Literal.datatyped deleteRule xsd.token current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let deploymentStatus =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for deploymentStatus in xml.deploymentStatuss do
+                           (deploymentStatus, RDF_Literal.simple deploymentStatus current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let description =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for description in xml.descriptions do
+                           (description, RDF_Literal.US description current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let direction =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for direction in xml.directions do
+                           (direction, RDF_Literal.simple direction current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let displayDescription =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for displayDescription in xml.displayDescriptions do
+                           (displayDescription, RDF_Literal.US displayDescription current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let displayName =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for displayName in xml.displayNames do
+                           (displayName, RDF_Literal.simple displayName current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let displayTitle =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for displayTitle in xml.displayTitles do
+                           (displayTitle, RDF_Literal.US displayTitle current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let displayTitleLong =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for displayTitleLong in xml.displayTitleLongs do
+                           (displayTitleLong, RDF_Literal.US displayTitleLong current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let effectiveDateTime =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for effectiveDateTime in xml.effectiveDateTimes do
+                           (effectiveDateTime, RDF_Literal.Temporal.date.time effectiveDateTime current_transaction) |]
+                    |> Map.ofArray
+            }
+
+        let enumerationName =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for enumerationName in xml.enumerationNames do
+                           (enumerationName, RDF_Literal.simple enumerationName current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let expiredDateTime =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for expiredDateTime in xml.expiredDateTimes do
+                           (expiredDateTime, RDF_Literal.Temporal.date.time expiredDateTime current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let hasNullRecord =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for hasNullRecord in xml.hasNullRecords do
+                           (hasNullRecord, RDF_Literal.datatyped hasNullRecord xsd.boolean current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let identitySeed =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for identitySeed in xml.identitySeeds do
+                           (identitySeed, RDF_Literal.datatyped identitySeed xsd.int current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let identityStep =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for identityStep in xml.identitySteps do
+                           (identityStep, RDF_Literal.datatyped identityStep xsd.boolean current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let isAgencyEnhancable =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for isAgencyEnhancable in xml.isAgencyEnhancables do
+                           (isAgencyEnhancable, RDF_Literal.autotyped isAgencyEnhancable current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let isHansen =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for isHansen in xml.isHansens do
+                           (isHansen, RDF_Literal.autotyped isHansen current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let isLicensed =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for isLicensed in xml.isLicenseds do
+                           (isLicensed, RDF_Literal.autotyped isLicensed current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let isNullable =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for isNullable in xml.isNullables do
+                           (isNullable, RDF_Literal.autotyped isNullable current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let isRequired =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for isRequired in xml.isRequireds do
+                           (isRequired, RDF_Literal.autotyped isRequired current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let isUnique =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for isUnique in xml.isUniques do
+                           (isUnique, RDF_Literal.autotyped isUnique current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let length =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for length in xml.lengths do
+                           (length, RDF_Literal.autotyped length current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let locale =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for locale in xml.locales do
+                           (locale, RDF_Literal.simple locale current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let name =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for name in xml.names do
+                           (name, RDF_Literal.simple name current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let oracleStatement =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for oracleStatement in xml.oracleStatements do
+                           (oracleStatement, RDF_Literal.simple oracleStatement current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let order =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for order in xml.orders do
+                           (order, RDF_Literal.datatyped order xsd.int current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let owner =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for owner in xml.owners do
+                           (owner, RDF_Literal.simple owner current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let platform =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for platform in xml.platforms do
+                           (platform, RDF_Literal.simple platform current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let remarks =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for remarks in xml.remarkss do
+                           (remarks, RDF_Literal.US remarks current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let showSearchOrder =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for showSearchOrder in xml.showSearchOrders do
+                           (showSearchOrder, RDF_Literal.datatyped showSearchOrder xsd.int current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let statement =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for statement in xml.statements do
+                           (statement, RDF_Literal.simple statement current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let ``type`` =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for ``type`` in xml.types do
+                           (``type``, RDF_Literal.simple ``type`` current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let useSearchOrder =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for useSearchOrder in xml.useSearchOrders do
+                           (useSearchOrder, RDF_Literal.datatyped useSearchOrder xsd.int current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+        let value =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+
+                return
+                    [|
+
+                       for value in xml.values do
+                           match Int32.TryParse(value) with
+                           | true, int_value -> (value, RDF_Literal.datatyped value xsd.int current_transaction)
+                           | false, _ -> (value, RDF_Literal.simple value current_transaction)
+
+                       |]
+                    |> Map.ofArray
+            }
+
+
+
+
+module systemLicense =
+    let names =
+        MetaData.xml.HansenMetadata.SystemLicenses
+        |> Array.Parallel.map (fun SystemLicense -> SystemLicense.Name)
+
+    let iri =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for name in names do
+                       (name, infor._prefix name current_transaction)
+
+                   |]
+                |> Map.ofArray
+        }
+
+module domainColumn =
+    let names =
+        MetaData.xml.HansenMetadata.DomainColumns
+        |> Array.Parallel.map (fun DomainColumn -> DomainColumn.Name)
+
+    let types =
+        MetaData.xml.HansenMetadata.DomainColumns
+        |> Array.Parallel.map (fun DomainColumn -> DomainColumn.Type)
+
+    let iri =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for name in names do
+                       (name, infor._prefix name current_transaction)
+
+                   |]
+                |> Map.ofArray
+        }
+
+    let type_iri =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for ``type`` in types do
+                       (``type``, infor._prefix ``type`` current_transaction)
+
+                   |]
+                |> Map.ofArray
+        }
+
+
+module productFamily =
+    let names =
+        MetaData.xml.HansenMetadata.ProductFamilies
+        |> Array.Parallel.map (fun ProductFamily -> ProductFamily.Name)
+
+
+    let iri =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for name in names do
+                       (name, infor._prefix $"Hansen.{name}" current_transaction)
+
+                   |]
+                |> Map.ofArray
+        }
+
+
+
+
+module table =
+
+
+    let monikers =
+        MetaData.xml.HansenMetadata.ProductFamilies
+        |> Array.Parallel.collect (fun ProductFamily ->
+            ProductFamily.Tables
+            |> Array.Parallel.map (fun Table -> ProductFamily.Name, Table.Name))
+
+    let names =
+        MetaData.xml.HansenMetadata.ProductFamilies
+        |> Array.Parallel.collect (fun ProductFamily ->
+            ProductFamily.Tables
+            |> Array.Parallel.map (fun Table -> Table.Name))
+
+    let types =
+        MetaData.xml.HansenMetadata.ProductFamilies
+        |> Array.Parallel.collect (fun ProductFamily ->
+            ProductFamily.Tables
+            |> Array.Parallel.map (fun Table -> Table.Type))
+
+    let iri =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for productFamily, table in monikers do
+                       ($"{productFamily}.{table}", infor._prefix $"Hansen.{productFamily}.{table}" current_transaction)
+
+                   |]
+                |> Map.ofArray
+        }
+
+    let type_iri =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for ``type`` in types do
+                       (``type``, infor._prefix ``type`` current_transaction)
+
+                   |]
+                |> Map.ofArray
+        }
+
+
+module column =
+
+
+    let monikers =
+        MetaData.xml.HansenMetadata.ProductFamilies
+        |> Array.Parallel.collect (fun ProductFamily ->
+            ProductFamily.Tables
+            |> Array.Parallel.collect (fun Table ->
+                Array.concat [|
+
+
+                                Table.Columns
+                                |> Array.Parallel.map (fun Column -> ProductFamily.Name, Table.Name, Column.Name)
+                                Table.DomainColumnReferences
+                                |> Array.Parallel.map (fun Column -> ProductFamily.Name, Table.Name, Column.Name)
+
+
+                                 |]))
+
+    let names =
+        MetaData.xml.HansenMetadata.ProductFamilies
+        |> Array.Parallel.collect (fun ProductFamily ->
+            ProductFamily.Tables
+            |> Array.Parallel.collect (fun Table ->
+                Array.concat [|
+
+
+                                Table.Columns
+                                |> Array.Parallel.map (fun Column -> Column.Name)
+                                Table.DomainColumnReferences
+                                |> Array.Parallel.map (fun Column -> Column.Name)
+
+
+                                 |]))
+
+
+    let types =
+        MetaData.xml.HansenMetadata.ProductFamilies
+        |> Array.Parallel.collect (fun ProductFamily ->
+            ProductFamily.Tables
+            |> Array.Parallel.collect (fun Table ->
+                Table.Columns
+                |> Array.Parallel.map (fun Column -> Column.Type)))
+
+    let iri =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for productFamily, table, column in monikers do
+                       ($"{productFamily}.{table}.{column}", infor._prefix $"Hansen.{productFamily}.{table}.{column}" current_transaction)
+
+                   |]
+                |> Map.ofArray
+        }
+
+    let type_iri =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for ``type`` in types do
+                       (``type``, infor._prefix ``type`` current_transaction)
+
+                   |]
+                |> Map.ofArray
+        }
+
+    let super_column =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for name in names do
+                       (name, infor._prefix name current_transaction)
+
+                   |]
+                |> Map.ofArray
+        }
+
+module enumeration =
+
+    let names =
+        MetaData.xml.HansenMetadata.Enumerations
+        |> Array.Parallel.map (fun Enumeration -> Enumeration.Name)
+
+
+    let iri =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for name in names do
+                       (name, infor._prefix $"{name}" current_transaction)
+
+                   |]
+                |> Map.ofArray
+        }
+
+
+
+
+module Map =
+    let layer'table_names =
+        [| "Inlet", "AssetManagement.Storm.StormInlet"
+           "Conduit", "AssetManagement.Storm.StormLiftStation"
+           "Culvert Cross Drain", "AssetManagement.Storm.StormServiceLine"
+           "Debris Trap", "AssetManagement.Storm.StormValve"
+           "Ditch", "AssetManagement.Storm.StormBackflowPreventer"
+           "End Point", "AssetManagement.Storm.StormNode"
+           "Junction Fixed", "AssetManagement.Storm.StormManhole"
+           "Outfall", "AssetManagement.UsageArea.Complex"
+           "Stormwater Pond", "AssetManagement.Storm.StormMiscellaneous"
+           "Stormwater Pond Discharge", "AssetManagement.Storm.StormLevee"
+
+           |]
+
+    let esri_to_infor_name (esri'infor_name: string * string) =
+        let esri_name, infor_name = esri'infor_name
+        $"{esri_name.low_lined}_to_Hansen.{infor_name}"
+
+    let layer_to_table_names = layer'table_names |> Array.map esri_to_infor_name
+
+    let iri =
+
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for name in layer_to_table_names do
+                       (name, h8importtool._prefix name current_transaction)
+
+                   |]
+                |> Map.ofArray
+
+        }
+
+    let name =
+        lmdb_read_write {
+            let! current_transaction = lmdb_read_write.Current_Transaction
+
+            return
+                [|
+
+                   for name in layer_to_table_names do
+                       (name, RDF_Literal.simple name current_transaction)
+
+                   |]
+                |> Map.ofArray
+
+        }
+
+
+
+    let moniker_to_target_column_type (productFamily_name: string) (table_name: string) (column_name: string) =
+        let clrTable =
+            Hansen8ClientProxies.dll.DefinedTypes
+            |> Seq.tryFind (fun moniker -> moniker.FullName = $"Hansen.{productFamily_name}.{table_name}")
+            |> Option.get
+
+        let clrColumn =
+            clrTable.DeclaredFields
+            |> Seq.tryFind (fun declared_field -> declared_field.Name = column_name)
+            |> Option.get
+
+        clrColumn.FieldType.FullName
+
+    let layer_field_to_table_column<'ValueType> (layer_name: string) (field_name: string) (productFamily_name: string) (table_name: string) (column_name: string) (transaction: LightningTransaction) =
+
+        let mapping_name =
+            esri_to_infor_name (layer_name, $"{productFamily_name}.{table_name}")
+        let map_column_name =
+            esri_to_infor_name ($"{layer_name}.{field_name}", $"{productFamily_name}.{table_name}.{column_name}")
+
+        let mapping = iri[mapping_name]
+        let map_column = h8importtool._prefix map_column_name transaction
+        try
+            let source_field = Layer_Field.Iri.layer_field[$"{layer_name}.{field_name}"]
+            ()
+        with
+        | err ->
+            failwith
+                $"""layer_name:{layer_name}
+    field_name:{field_name}
+    productFamily_name:{productFamily_name}
+    table_name:{table_name}
+    column_name:{column_name}
+ failed with error {err.Message}"""
+        let source_field = Layer_Field.Iri.layer_field[$"{layer_name}.{field_name}"]
+        let target_column = column.iri[$"{productFamily_name}.{table_name}.{column_name}"]
+        let target_column_type =
+            RDF_Literal.simple (moniker_to_target_column_type productFamily_name table_name column_name) transaction
+        match table_key_from_name table_name with
+        | Some key -> Assert.spog mapping h8importtool.TableKey (RDF_Literal.autotyped key transaction) oit._graph transaction
+        | None -> ()
+
+        Assert.spog map_column is_a h8importtool.MapColumn oit._graph transaction
+        Assert.spog mapping woedms.map_column map_column oit._graph transaction
+        Assert.spog map_column woedms.from_field source_field oit._graph transaction
+        Assert.spog map_column woedms.to_column target_column oit._graph transaction
+        Assert.spog map_column h8importtool.TargetColumnType target_column_type oit._graph transaction
+
+        Assert.spog mapping h8importtool.ProductFamilyName (RDF_Literal.simple productFamily_name transaction) oit._graph transaction
+        Assert.spog mapping h8importtool.TableName (RDF_Literal.simple table_databaseName_from_name[table_name] transaction) oit._graph transaction
+        Assert.spog mapping h8importtool.TableCommonId (RDF_Literal.simple table_name transaction) oit._graph transaction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(*
+
+let multiconstraints =
+    MetaData.xml.HansenMetadata.ProductFamilies
+    |> Array.Parallel.collect (fun ProductFamily ->
+    ProductFamily.Tables
+    |> Array.Parallel.collect (fun Table ->
+    Table.ReferencingConstraints
+    |> Array.Parallel.filter (fun ReferencingConstraint ->
+    ReferencingConstraint.LocalColumnReferences.Length > 1
+    && ReferencingConstraint.ForeignColumnReferences.Length > 1
+    // && ReferencingConstraint.ForeignColumnReferences.Length <> ReferencingConstraint.LocalColumnReferences.Length
+
+    )
+
+    )
+
+    )
+
+enumeration.iri["YesNo"]
+*)
+
+
+
+
+let stopwatch = Stopwatch.StartNew()
+
+if should_triplify then
+
+
+
+    lmdb_read_write {
+        let! current_transaction = lmdb_read_write.Current_Transaction
+        // owl classes
+
+        do! Assert.spog esri.Workspace is_a owl.Class oit._graph
+        do! Assert.spog esri.esriLocalDatabaseWorkspace is_a owl.Class oit._graph
+        do! Assert.spog esri.CodedValueDomain is_a owl.Class oit._graph
+        do! Assert.spog esri.CodedValue is_a owl.Class oit._graph
+        do! Assert.spog esri.DataElement is_a owl.Class oit._graph
+        do! Assert.spog esri.DEDataset is_a owl.Class oit._graph
+        do! Assert.spog esri.DEGeoDataset is_a owl.Class oit._graph
+        do! Assert.spog esri.DETable is_a owl.Class oit._graph
+        do! Assert.spog esri.DEFeatureDataset is_a owl.Class oit._graph
+        do! Assert.spog esri.DEFeatureClass is_a owl.Class oit._graph
+        do! Assert.spog esri.GPFeatureLayer is_a owl.Class oit._graph
+        do! Assert.spog esri.MapService is_a owl.Class oit._graph
+
+        do! Assert.spog gis.Feature_Class is_a owl.Class oit._graph
+        do! Assert.spog gis.Layer is_a owl.Class oit._graph
+        do! Assert.spog gis.Feature_Layer is_a owl.Class oit._graph
+        do! Assert.spog gis.Group_Layer is_a owl.Class oit._graph
+        do! Assert.spog gis.Feature is_a owl.Class oit._graph
+        do! Assert.spog gis.Facility is_a owl.Class oit._graph
+        do! Assert.spog gis.Outfall is_a owl.Class oit._graph
+        do! Assert.spog gis.Structure is_a owl.Class oit._graph
+        do! Assert.spog gis.Upstream_Structure is_a owl.Class oit._graph
+
+        // rdfs subclasses
+        do! Assert.spog esri.esriLocalDatabaseWorkspace rdfs.subClassOf esri.Workspace oit._graph
+        do! Assert.spog esri.DEDataset rdfs.subClassOf esri.DataElement oit._graph
+        do! Assert.spog esri.DEGeoDataset rdfs.subClassOf esri.DEDataset oit._graph
+        do! Assert.spog esri.DETable rdfs.subClassOf esri.DEDataset oit._graph
+        do! Assert.spog esri.DEFeatureDataset rdfs.subClassOf esri.DEGeoDataset oit._graph
+        do! Assert.spog esri.DEFeatureClass rdfs.subClassOf esri.DETable oit._graph
+        do! Assert.spog gis.Feature_Layer rdfs.subClassOf gis.Layer oit._graph
+        do! Assert.spog gis.Group_Layer rdfs.subClassOf gis.Layer oit._graph
+        do! Assert.spog gis.Upstream_Structure rdfs.subClassOf gis.Structure oit._graph
+        do! Assert.spog gis.Downstream_Structure rdfs.subClassOf gis.Structure oit._graph
+
+        // owl object properties
+
+        do! Assert.spog gis.data_element is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.feature_dataset is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.layer is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.feature_layer is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.group_layer is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.parent_layer is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.child_layer is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.attached_to is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.facility is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.outfall is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.upstream_structure is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.structure is_a owl.ObjectProperty oit._graph
+        do! Assert.spog gis.downstream_structure is_a owl.ObjectProperty oit._graph
+
+        // rdfs subproperties
+        do! Assert.spog gis.feature_dataset rdfs.subPropertyOf gis.data_element oit._graph
+        do! Assert.spog gis.feature_layer rdfs.subPropertyOf gis.layer oit._graph
+        do! Assert.spog gis.group_layer rdfs.subPropertyOf gis.layer oit._graph
+        do! Assert.spog gis.parent_layer rdfs.subPropertyOf gis.layer oit._graph
+        do! Assert.spog gis.child_layer rdfs.subPropertyOf gis.layer oit._graph
+        do! Assert.spog gis.upstream_structure rdfs.subPropertyOf gis.structure oit._graph
+        do! Assert.spog gis.downstream_structure rdfs.subPropertyOf gis.structure oit._graph
+
+
+        do! Assert.spog gis.description rdfs.subPropertyOf dcterms.description oit._graph
+        do! Assert.spog gis.serviceDescription rdfs.subPropertyOf dcterms.description oit._graph
+        do! Assert.spog esri.Description rdfs.subPropertyOf dcterms.description oit._graph
+
+        do! Assert.spog gis.title rdfs.subPropertyOf dcterms.title oit._graph
+
+        do! Assert.spog gis.summary rdfs.subPropertyOf dcterms.``abstract`` oit._graph
+        do! Assert.spog esri.``abstract`` rdfs.subPropertyOf dcterms.``abstract`` oit._graph
+
+        do! Assert.spog gis.name rdfs.subPropertyOf rdfs.label oit._graph
+        do! Assert.spog esri.DisplayName rdfs.subPropertyOf rdfs.label oit._graph
+
+
+        // owl inverse properties
+
+        do! Assert.spog intraraster.upstream_structure owl.inverseOf intraraster.downstream_structure oit._graph
+        do! Assert.spog intraraster.upstream_structure owl.inverseOf intraraster.downstream_structure oit._graph
+        do! Assert.spog intraraster.parent owl.inverseOf intraraster.subLayer oit._graph
+
+        // owl equivalent properties
+        do! Assert.spog intraraster.Keywords owl.equivalentProperty intraraster.tags oit._graph
+
+
+        do! Assert.spog esri.GPFeatureLayer esri.Description (RDF_Literal.US "A reference to is_a feature class, including symbology and rendering properties." current_transaction) oit._graph
+        do! Assert.spog esri.DEFeatureDataset esri.Description (RDF_Literal.US "A collection of feature classes that share is_a common geographic area and the same spatial reference system." current_transaction) oit._graph
+        do!
+            Assert.spog
+                esri.MapService
+                esri.Description
+                (RDF_Literal.US
+                    """A persistent software process that provides access to map images for display in is_a client application.
+                The images can be rendered dynamically for is_a specific extent or prerendered and cached in is_a tile grid as static images.
+                A map service can also provide access to the underlying feature layer data used to create the map images.
+                Map services offer access to map and layer content. Map services can
+       either be cached or dynamic. A map service that fulfills requests with
+       pre-created tiles from is_a cache instead of dynamically rendering part of
+       the map is called is_a cached map service. A dynamic map service requires
+       the server to render the map each time is_a request comes in. Map services
+       using is_a tile cache can significantly improve performance while
+       delivering maps, while dynamic map services offer more flexibility."""
+                    current_transaction)
+                oit._graph
+
+
+
+
+        do! Assert.spog lcg.Stormwater_Inventory is_a esri.esriLocalDatabaseWorkspace oit._graph
+
+        for DomainName in DomainNames do
+            let individual_domain = Coded_Value_Domain.Iri.individual_domain[DomainName]
+            do! Assert.spog lcg.Stormwater_Inventory gis.coded_value_domain individual_domain oit._graph
+            do! Assert.spog individual_domain is_a esri.CodedValueDomain oit._graph
+
+        for FieldName, DomainName, CodedValueName, CodedValueCode in FieldName'DomainName'CodedValueName'CodedValueCodes do
+            let super_field = Layer_Field.Iri.super_field[FieldName]
+            let individual_domain = Coded_Value_Domain.Iri.individual_domain[DomainName]
+            let individual_coded_value =
+                Coded_Value.Iri.individual_coded_value_by_DomainName'CodedValueName[(DomainName, CodedValueName)]
+
+            do! Assert.spog super_field gis.coded_value_domain individual_domain oit._graph
+            do! Assert.spog individual_domain gis.coded_value individual_coded_value oit._graph
+            do! Assert.spog individual_coded_value is_a esri.CodedValue oit._graph
+            do! Assert.spog individual_coded_value esri.Name Coded_Value.Literal.name[CodedValueName] oit._graph
+            do! Assert.spog individual_coded_value esri.Code Coded_Value.Literal.code[CodedValueCode] oit._graph
+
+
+        do! Assert.spog lcg.Stormwater_Inventory gis.feature_dataset gis.DrainageNetwork_Feature_Dataset oit._graph
+        do! Assert.spog lcg.Stormwater_Inventory gis.feature_dataset gis.DrainageNonNetwork_Feature_Dataset oit._graph
+
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset is_a esri.DEFeatureDataset oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset is_a esri.DEFeatureDataset oit._graph
+
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.group_layer gis.Drainage_Network_Group_Layer oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset is_a gis.Non_Drainage_Network_Group_Layer oit._graph
+
+
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.EndPoint_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.BridgePoint_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.Inlet_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.Conduit_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.Ditch_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.Connectivity_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.Junction_fixed_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.StormwaterPond_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.Bridge_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.DitchPoint_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.GenericStormAsset_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.StormwaterPondDischarge_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.CulvertCrossDrain_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.PrivatePoint_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNetwork_Feature_Dataset gis.feature_class gis.StormwaterPond_MediaPoints_Feature_Class oit._graph
+
+
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.MediaPoints_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.Damage_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.DebrisTrap_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.Interference_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.MediaPointsWithoutPhotos_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.Outfall_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.Outfall_DrainageArea_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.Outfall_DrainageArea_MOF_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.Outfall_DrainageArea_MS4_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.PollutionControlBox_Feature_Class oit._graph
+        do! Assert.spog gis.DrainageNonNetwork_Feature_Dataset gis.feature_class gis.StormwaterPondTopOfBank_Feature_Class oit._graph
+
+
+        do! Assert.spog gis.Bridge_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.BridgePoint_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Conduit_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Connectivity_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.CulvertCrossDrain_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Damage_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.DebrisTrap_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Ditch_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.DitchPoint_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.EndPoint_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.GenericStormAsset_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Inlet_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Interference_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Junction_fixed_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.MediaPoints_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.MediaPointsWithoutPhotos_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Outfall_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Outfall_DrainageArea_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Outfall_DrainageArea_MOF_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.Outfall_DrainageArea_MS4_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.PollutionControlBox_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.PrivatePoint_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.StormwaterPond_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.StormwaterPond_MediaPoints_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.StormwaterPondDischarge_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog gis.StormwaterPondTopOfBank_Feature_Class is_a esri.DEFeatureClass oit._graph
+
+
+        do! Assert.spog gis.Bridge_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.BridgePoint_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Conduit_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Connectivity_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.CulvertCrossDrain_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Damage_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.DebrisTrap_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Ditch_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.DitchPoint_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.EndPoint_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.GenericStormAsset_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Inlet_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Interference_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Junction_fixed_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.MediaPoints_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.MediaPointsWithoutPhotos_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Outfall_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Outfall_DrainageArea_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Outfall_DrainageArea_MOF_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.Outfall_DrainageArea_MS4_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.PollutionControlBox_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.PrivatePoint_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.StormwaterPond_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.StormwaterPond_MediaPoints_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.StormwaterPondDischarge_Feature_Class is_a gis.Feature_Class oit._graph
+        do! Assert.spog gis.StormwaterPondTopOfBank_Feature_Class is_a gis.Feature_Class oit._graph
+
+
+        do! Assert.spog gis.Bridge_Feature_Class esri.Description gis._literal.description.Bridge oit._graph
+        do! Assert.spog gis.BridgePoint_Feature_Class esri.Description gis._literal.description.BridgePoint oit._graph
+        do! Assert.spog gis.Conduit_Feature_Class esri.Description gis._literal.description.Conduit oit._graph
+        do! Assert.spog gis.Connectivity_Feature_Class esri.Description gis._literal.description.Connectivity oit._graph
+        do! Assert.spog gis.CulvertCrossDrain_Feature_Class esri.Description gis._literal.description.CulvertCrossDrain oit._graph
+        do! Assert.spog gis.DebrisTrap_Feature_Class esri.Description gis._literal.description.DebrisTrap oit._graph
+        do! Assert.spog gis.Ditch_Feature_Class esri.Description gis._literal.description.Ditch oit._graph
+        do! Assert.spog gis.DitchPoint_Feature_Class esri.Description gis._literal.description.DitchPoint oit._graph
+        do! Assert.spog gis.EndPoint_Feature_Class esri.Description gis._literal.description.EndPoint oit._graph
+        do! Assert.spog gis.GenericStormAsset_Feature_Class esri.Description gis._literal.description.GenericStormAsset oit._graph
+        do! Assert.spog gis.Inlet_Feature_Class esri.Description gis._literal.description.Inlet oit._graph
+        do! Assert.spog gis.Interference_Feature_Class esri.Description gis._literal.description.Interference oit._graph
+        do! Assert.spog gis.Junction_fixed_Feature_Class esri.Description gis._literal.description.Junction_fixed oit._graph
+        do! Assert.spog gis.PollutionControlBox_Feature_Class esri.Description gis._literal.description.PollutionControlBox oit._graph
+        do! Assert.spog gis.PrivatePoint_Feature_Class esri.Description gis._literal.description.PrivatePoint oit._graph
+        do! Assert.spog gis.StormwaterPondDischarge_Feature_Class esri.Description gis._literal.description.StormwaterPondDischarge oit._graph
+
+
+        do! Assert.spog gis.Bridge_Feature_Class gis.feature_layer gis.Bridge_Feature_Layer oit._graph
+        do! Assert.spog gis.BridgePoint_Feature_Class gis.feature_layer gis.Bridge_Point_Feature_Layer oit._graph
+        do! Assert.spog gis.Conduit_Feature_Class gis.feature_layer gis.Conduit_Feature_Layer oit._graph
+        do! Assert.spog gis.Connectivity_Feature_Class gis.feature_layer gis.Connectivity_Feature_Layer oit._graph
+        do! Assert.spog gis.CulvertCrossDrain_Feature_Class gis.feature_layer gis.Culvert_Cross_Drain_Feature_Layer oit._graph
+        do! Assert.spog gis.Damage_Feature_Class gis.feature_layer gis.Damage_Feature_Layer oit._graph
+        do! Assert.spog gis.DebrisTrap_Feature_Class gis.feature_layer gis.Debris_Trap_Feature_Layer oit._graph
+        do! Assert.spog gis.Ditch_Feature_Class gis.feature_layer gis.Ditch_Feature_Layer oit._graph
+        do! Assert.spog gis.DitchPoint_Feature_Class gis.feature_layer gis.Ditch_Point_Feature_Layer oit._graph
+        do! Assert.spog gis.EndPoint_Feature_Class gis.feature_layer gis.End_Point_Feature_Layer oit._graph
+        do! Assert.spog gis.GenericStormAsset_Feature_Class gis.feature_layer gis.Generic_Storm_Asset_Feature_Layer oit._graph
+        do! Assert.spog gis.Inlet_Feature_Class gis.feature_layer gis.Inlet_Feature_Layer oit._graph
+        do! Assert.spog gis.Interference_Feature_Class gis.feature_layer gis.Interference_Feature_Layer oit._graph
+        do! Assert.spog gis.Junction_fixed_Feature_Class gis.feature_layer gis.Junction_Fixed_Feature_Layer oit._graph
+        do! Assert.spog gis.MediaPoints_Feature_Class gis.feature_layer gis.Media_Points_Feature_Layer oit._graph
+        do! Assert.spog gis.MediaPointsWithoutPhotos_Feature_Class gis.feature_layer gis.Media_Points_Without_Photos_Feature_Layer oit._graph
+        do! Assert.spog gis.Outfall_Feature_Class gis.feature_layer gis.Outfall_Feature_Layer oit._graph
+        do! Assert.spog gis.Outfall_DrainageArea_Feature_Class gis.feature_layer gis.Outfall_Drainage_Area_Feature_Layer oit._graph
+        do! Assert.spog gis.Outfall_DrainageArea_MOF_Feature_Class gis.feature_layer gis.Outfall_Drainage_Area_MOF_Feature_Layer oit._graph
+        do! Assert.spog gis.Outfall_DrainageArea_MS4_Feature_Class gis.feature_layer gis.Outfall_Drainage_Area_MS4_Feature_Layer oit._graph
+        do! Assert.spog gis.PollutionControlBox_Feature_Class gis.feature_layer gis.Pollution_Control_Box_Feature_Layer oit._graph
+        do! Assert.spog gis.PrivatePoint_Feature_Class gis.feature_layer gis.Private_Point_Feature_Layer oit._graph
+        do! Assert.spog gis.StormwaterPond_Feature_Class gis.feature_layer gis.Stormwater_Pond_Feature_Layer oit._graph
+        do! Assert.spog gis.StormwaterPond_MediaPoints_Feature_Class gis.feature_layer gis.Stormwater_Pond_Media_Points_Feature_Layer oit._graph
+        do! Assert.spog gis.StormwaterPondDischarge_Feature_Class gis.feature_layer gis.Stormwater_Pond_Discharge_Feature_Layer oit._graph
+        do! Assert.spog gis.StormwaterPondTopOfBank_Feature_Class gis.feature_layer gis.Stormwater_Pond_Top_of_Bank_Feature_Layer oit._graph
+
+
+        do! Assert.spog gis.Bridge_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Bridge_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Conduit_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Connectivity_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Culvert_Cross_Drain_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Damage_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Debris_Trap_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Ditch_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Ditch_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.End_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Generic_Storm_Asset_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Inlet_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Interference_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Junction_Fixed_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Media_Points_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Media_Points_Without_Photos_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Outfall_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Outfall_Drainage_Area_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Outfall_Drainage_Area_MOF_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Outfall_Drainage_Area_MS4_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Pollution_Control_Box_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Private_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Stormwater_Pond_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Stormwater_Pond_Media_Points_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Stormwater_Pond_Discharge_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog gis.Stormwater_Pond_Top_of_Bank_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+
+
+        do! Assert.spog gis.Bridge_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Bridge_Point_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Conduit_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Connectivity_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Culvert_Cross_Drain_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Damage_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Debris_Trap_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Ditch_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Ditch_Point_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.End_Point_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Generic_Storm_Asset_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Inlet_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Interference_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Junction_Fixed_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Media_Points_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Media_Points_Without_Photos_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Outfall_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Outfall_Drainage_Area_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Outfall_Drainage_Area_MOF_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Outfall_Drainage_Area_MS4_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Pollution_Control_Box_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Private_Point_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Stormwater_Pond_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Stormwater_Pond_Media_Points_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Stormwater_Pond_Discharge_Feature_Layer is_a gis.Feature_Layer oit._graph
+        do! Assert.spog gis.Stormwater_Pond_Top_of_Bank_Feature_Layer is_a gis.Feature_Layer oit._graph
+
+
+
+
+
+
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM is_a esri.MapService oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.currentVersion LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.currentVersion oit._graph // "currentVersion"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.serviceDescription LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.serviceDescription oit._graph // "serviceDescription"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.mapName LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.mapName oit._graph // "mapName"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportsDynamicLayers LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportsDynamicLayers oit._graph // "supportsDynamicLayers"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.spatialReference LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.spatialReference oit._graph // "spatialReference"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.singleFusedMapCache LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.singleFusedMapCache oit._graph // "singleFusedMapCache"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.minScale LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.minScale oit._graph // "minScale"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.maxScale LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxScale oit._graph // "maxScale"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.units LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.units oit._graph // "units"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatTypes LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatTypes oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PNG32 oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PNG24 oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PNG oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.JPG oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.DIB oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.TIFF oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.EMF oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PS oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PDF oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.GIF oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.SVG oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.SVGZ oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.BMP oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.Keywords LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keywords oit._graph // "Keywords"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.stormwater oit._graph // "Keywords"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.swmf oit._graph // "Keywords"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.drainage oit._graph // "Keywords"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.leon_county oit._graph // "Keywords"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.public_works oit._graph // "Keywords"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.lcpw oit._graph // "Keywords"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.tallahassee oit._graph // "Keywords"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.florida oit._graph // "Keywords"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.capabilities LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capabilities oit._graph // "capabilities"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.capability LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capability.Data oit._graph // "capabilities"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.capability LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capability.Query oit._graph // "capabilities"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.capability LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capability.Map oit._graph // "capabilities"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedQueryFormats LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedQueryFormats oit._graph // "supportedQueryFormats"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedQueryFormat LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedQueryFormat.JSON oit._graph // "supportedQueryFormats"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedQueryFormat LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedQueryFormat.geoJSON oit._graph // "supportedQueryFormats"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.exportTilesAllowed LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.exportTilesAllowed oit._graph // "exportTilesAllowed"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportsDatumTransformation LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportsDatumTransformation oit._graph // "supportsDatumTransformation"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.maxRecordCount LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxRecordCount oit._graph // "maxRecordCount"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.maxImageHeight LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxImageHeight oit._graph // "maxImageHeight"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.maxImageWidth LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxImageWidth oit._graph // "maxImageWidth"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.culture LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.culture oit._graph // "culture"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.name LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.name oit._graph // "name"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.guid LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.guid oit._graph // "guid"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.catalogPath LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.catalogPath oit._graph // "catalogPath"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.summary LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.summary oit._graph // "summary"
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.title LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.title oit._graph // "title"
+
+        (*
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.tags LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.tags oit._graph // "tags"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.supportedExtensions LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedExtensions oit._graph // "supportedExtensions"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.snippet LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.snippet oit._graph // "snippet"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.referenceScale LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.referenceScale oit._graph // "referenceScale"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.typeKeywords LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.typeKeywords oit._graph // "typeKeywords"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.thumbnail LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.thumbnail oit._graph // "thumbnail"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.url LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.url oit._graph // "url"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.extent LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.extent oit._graph // "extent"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.accessInformation LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.accessInformation oit._graph // "accessInformation"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.licenseInfo LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.licenseInfo oit._graph // "licenseInfo"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.description LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.description oit._graph // "description"
+    do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.copyrightText LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.copyrightText oit._graph // "copyrightText"
+    *)
+
+
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Drainage_Network_Group_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Non_Drainage_Network_Group_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Bridge_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Bridge_Point_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Conduit_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Connectivity_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Culvert_Cross_Drain_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Damage_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Debris_Trap_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Ditch_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Ditch_Point_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.End_Point_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Generic_Storm_Asset_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Inlet_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Interference_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Junction_Fixed_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Media_Points_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Media_Points_Without_Photos_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Outfall_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Outfall_Drainage_Area_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Outfall_Drainage_Area_MOF_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Outfall_Drainage_Area_MS4_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Pollution_Control_Box_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Private_Point_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Stormwater_Pond_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Stormwater_Pond_Media_Points_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Stormwater_Pond_Discharge_Feature_Layer oit._graph
+        do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.layer gis.Stormwater_Pond_Top_of_Bank_Feature_Layer oit._graph
+
+
+
+
+
+
+        // layer hierarchy
+        for ChildLayerName, ParentLayerName, ParentLayerId in ChildLayerName'ParentLayerName'ParentLayerId do
+            let child_layer = Feature_Layer.Iri.feature_layer_by_Name[ChildLayerName]
+            let parent_layer = Feature_Layer.Iri.feature_layer_by_Name[ParentLayerName]
+            do! Assert.spog child_layer gis.parent_layer parent_layer oit._graph
+            do! Assert.spog parent_layer gis.child_layer child_layer oit._graph
+        // TODO update when feature layer gets subtypes back
+        (*
+    // Subtypes
+    for Layer'Name, Stcode, Stname in LayerName'Stcode'Stname do
+
+    let individual_layer = Feature_Layer.Iri.feature_layer_by_Name[Layer'Name]
+
+    let individual_subtype =
+        Subtype.Iri.individual_subtype_by_Layer'Stcode[$"{Layer'Name}.{Stcode}"]
+
+    let subtype_owl_class =
+        Subtype.Iri.subtype_owl_class_by_Layer'Stcode[$"{Layer'Name}.{Stcode}"]
+
+    let layer_owl_class = Feature_Layer.Iri.layer_owl_class[Layer'Name]
+
+    do! Assert.spog individual_layer esri.subtype individual_subtype oit._graph
+    do! Assert.spog subtype_owl_class is_a owl.Class oit._graph
+    do! Assert.spog subtype_owl_class rdfs.subClassOf layer_owl_class oit._graph
+    *)
+
+        // Field Aliases
+        for Field'Name, Field'Alias in FieldName'FieldAlias do
+            let super_field = Layer_Field.Iri.super_field[Field'Name]
+            let! field_alias = gis._prefix Field'Alias
+            let! alias = RDF_Literal.simple Field'Alias
+            do! Assert.spog super_field owl.sameAs field_alias oit._graph
+            do! Assert.spog field_alias gis.name alias oit._graph
+
+        // Layers
+        for Layer in LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers do
+            let feature_layer = Feature_Layer.Iri.feature_layer_by_Name[Layer.Name]
+            let layer_type = Feature_Layer.Iri.layer_type[Layer.Type]
+            let layer_name = Feature_Layer.Literal.name[Layer.Name]
+            let layer_owl_class = Feature_Layer.Iri.layer_owl_class[Layer.Name]
+
+            do! Assert.spog layer_owl_class is_a owl.Class oit._graph
+            do! Assert.spog layer_owl_class rdfs.label layer_name oit._graph
+            do! Assert.spog layer_owl_class rdfs.subClassOf gis.Feature oit._graph
+
+            do! Assert.spog feature_layer is_a layer_type oit._graph
+            do! Assert.spog layer_type rdfs.subClassOf esri.GPFeatureLayer oit._graph
+
+            try
+                let layer_abstract = Feature_Layer.Literal.abstract_description[Layer.Name]
+                do! Assert.spog feature_layer gis.name layer_name oit._graph
+                do! Assert.spog feature_layer esri.``abstract`` layer_abstract oit._graph
+            with
+            | _ -> ()
+
+
+            do! Assert.spog feature_layer gis.currentVersion Feature_Layer.Literal.current_version[Layer.CurrentVersion] oit._graph
+
+            if Layer.GeometryType.IsSome then
+                do! Assert.spog feature_layer gis.geometryType Feature_Layer.Iri.geometry_type[Layer.GeometryType.Value] oit._graph
+
+            if Layer.Count.IsSome then
+                do! Assert.spog feature_layer gis.count Feature_Layer.Literal.count[Layer.Count.Value] oit._graph
+
+
+            for Field in Layer.Fields do
+                let FieldName = Normalize.field Field.Name
+                let layer_field = Layer_Field.Iri.layer_field[$"{Layer.Name}.{FieldName}"]
+                let super_field = Layer_Field.Iri.super_field[FieldName]
+                let field_type = Layer_Field.Iri.field_type[Field.Type]
+
+                do! Assert.spog layer_field rdfs.subPropertyOf super_field oit._graph
+                do! Assert.spog layer_field is_a esri.Field oit._graph
+                do! Assert.spog layer_field is_a field_type oit._graph
+                do! Assert.spog field_type rdfs.subClassOf esri.Field oit._graph
+                do! Assert.spog layer_field gis.name Layer_Field.Literal.name[FieldName] oit._graph
+                do! Assert.spog feature_layer gis.field layer_field oit._graph
+
+
+                if Field.Domain.IsSome then
+                    let Domain = Field.Domain.Value
+
+                    let domain = Coded_Value_Domain.Iri.individual_domain[Domain.Name]
+                    do! Assert.spog domain is_a esri.CodedValueDomain oit._graph
+
+
+        // TODO figure out how to handle coded values
+        (*
+            for CodedValue in Domain.CodedValues do
+                let Name = CodedValue.Name.JsonValue.AsString()
+                let Code = CodedValue.Code.JsonValue.AsString()
+
+                let coded_value =
+                    Coded_Value.Iri.individual_coded_value_by_DomainName'Code[$"{Domain.Name}.{Code}"]
+
+                let code = Coded_Value.Literal.code[Code]
+
+                do! Assert.spog coded_value is_a esri.CodedValue oit._graph
+                do! Assert.spog coded_value esri.code code oit._graph
+
+
+
+                match Domain.Name with
+                | "dDomainSourceYear" ->
+                    let! value = RDF_Literal.datatyped Name xsd.gYear
+                    do! Assert.spog coded_value esri.value value oit._graph
+
+                | "dDomainFieldComment" ->
+                    let! value = RDF_Literal.datatyped Name xsd.positiveInteger
+                    do! Assert.spog coded_value esri.value value oit._graph
+
+                | "EnabledDomain" ->
+                    let! value = RDF_Literal.datatyped Name xsd.boolean
+                    do! Assert.spog coded_value esri.value value oit._graph
+
+                | "dDomainBoolean" ->
+                    let! value = RDF_Literal.simple Name
+                    let! bool_value = RDF_Literal.datatyped Code xsd.boolean
+                    do! Assert.spog coded_value esri.value value oit._graph
+                    do! Assert.spog coded_value rdf.value bool_value oit._graph
+
+                | "dDomainLifeCycle"
+                | "dDomainPRResolution"
+                | "dDomainAccuracyCode"
+                | "WhoCreatOrModified"
+                | "MediaCode"
+                | "AncillaryRoleDomain"
+                | "InventoriedBy" ->
+                    let! value = RDF_Literal.simple Name
+                    do! Assert.spog coded_value esri.value value oit._graph
+
+                | "dDomainPondType"
+                | "dDomainEndPointMaterial"
+                | "dDomainPipeShape"
+                | "dDomainSource"
+                | "dDomainDitchSurfType"
+                | "DamageType"
+                | "dDomainJunctionMaterial"
+                | "Outfall Type"
+                | "StructureType"
+                | "dDomainInletMaterial"
+                | "FilterType"
+                | "dDomainFilterLocation"
+                | "dDomainNonNetwork"
+                | "dDomainMaintBy"
+                | "dDomainOwner"
+                | "dDomainMaterial"
+                | "dDomainInventoryType" ->
+                    let! value = RDF_Literal.simple Name
+                    let! domain_owl_class = intraraster._prefix $"{Domain.Name}.{Code}"
+
+                    do! Assert.spog coded_value esri.value value oit._graph
+                    do! Assert.spog domain_owl_class is_a owl.Class oit._graph
+
+                | "CompanyDomain"
+                | "Crew"
+                | "dDomainPipeDia"
+                | _ -> ()
+
+            *)
+        // Features
+        for Feature in Features do
+            let feature_layer = Feature_Layer.Iri.feature_layer_by_Name[Feature.LayerName]
+
+            if layer_names_with_unit_ids.Contains(Feature.LayerName) then
+                let Unitid = Feature.Unitid.Value
+                let individual_feature = Id.Iri.individual_feature_by_Unitid[Unitid]
+                let unit_id = Id.Literal.unit_id[Unitid]
+
+                do! Assert.spog feature_layer gis.feature individual_feature oit._graph
+                do! Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.UNITID"] unit_id oit._graph
+
+
+                do! shared_feature_assertions Feature individual_feature
+
+            // TODO consider treating inspectable entities themselves as separate from data entries in the different databases
+
+
+            if layer_names_with_globalids_without_unit_ids.Contains(Feature.LayerName) then
+                let Globalid = Feature.Globalid.Value
+                let individual_feature = Id.Iri.individual_feature_by_Globalid[Globalid]
+                let global_id = Id.Literal.global_id[Globalid]
+                do! Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.GLOBALID"] global_id oit._graph
+                do! shared_feature_assertions Feature individual_feature
+        (*
+            if layer_names_with_global_id_and_unit_ids.Contains(Feature.LayerName) then
+                let Unitid = Feature.Unitid.Value
+                let Globalid = Feature.Globalid.Value
+                let individual_feature_from_unit_id = Id.Iri.individual_feature_by_Unitid[Unitid]
+
+                let individual_feature_from_global_id =
+                    Id.Iri.individual_feature_by_Globalid[Globalid]
+
+                do! Assert.spog individual_feature_from_unit_id owl.sameAs individual_feature_from_global_id oit._graph
+    *)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        do! Assert.spog infor.System_License is_a owl.Class oit._graph
+        do! Assert.spog infor.Column is_a owl.Class oit._graph
+        do! Assert.spog infor.Domain_Column is_a owl.Class oit._graph
+        do! Assert.spog infor.Unique_Column is_a owl.Class oit._graph
+        do! Assert.spog woedms.Primary_Key_Column is_a owl.Class oit._graph
+
+        do! Assert.spog infor.Domain_Column rdfs.subClassOf infor.Column oit._graph
+        do! Assert.spog woedms.Primary_Key_Column rdfs.subClassOf infor.Column oit._graph
+
+
+        do! Assert.spog woedms.values_depend_on_column is_a owl.ObjectProperty oit._graph
+        do! Assert.spog woedms.dependent_column is_a owl.ObjectProperty oit._graph
+
+        do! Assert.spog woedms.values_depend_on_column owl.inverseOf woedms.values_depend_on_column oit._graph
+
+        do! Assert.spog infor.description rdfs.subPropertyOf dcterms.description oit._graph
+
+
+        for SystemLicense in MetaData.xml.HansenMetadata.SystemLicenses do
+            let individual_system_license = systemLicense.iri[SystemLicense.Name]
+
+            do! Assert.spog individual_system_license is_a infor.System_License oit._graph
+            do! Assert.spog individual_system_license infor.name hansenDataDistribution.Literal.name[SystemLicense.Name] oit._graph
+            if SystemLicense.Description.IsSome
+               && SystemLicense.Description.Value
+                  <> SystemLicense.Name
+               && SystemLicense.Description.Value |> is_not_nullish then
+                do! Assert.spog individual_system_license infor.description hansenDataDistribution.Literal.description[SystemLicense.Description.Value] oit._graph
+            if SystemLicense.EffectiveDateTime.IsSome then
+                do! Assert.spog individual_system_license infor.effectiveDateTime hansenDataDistribution.Literal.effectiveDateTime[SystemLicense.EffectiveDateTime.Value] oit._graph
+
+
+        for DomainColumn in MetaData.xml.HansenMetadata.DomainColumns do
+            let individual_domain_column = domainColumn.iri[DomainColumn.Name]
+            let domain_column_type = domainColumn.type_iri[DomainColumn.Type]
+            do! Assert.spog individual_domain_column is_a infor.Domain_Column oit._graph
+            do! Assert.spog individual_domain_column infor.``type`` domain_column_type oit._graph
+            do! Assert.spog individual_domain_column infor.name hansenDataDistribution.Literal.name[DomainColumn.Name] oit._graph
+            do! Assert.spog individual_domain_column infor.databaseName hansenDataDistribution.Literal.databaseName[DomainColumn.DatabaseName] oit._graph
+            do! Assert.spog individual_domain_column infor.isRequired hansenDataDistribution.Literal.isRequired[DomainColumn.IsRequired] oit._graph
+            do! Assert.spog individual_domain_column infor.description hansenDataDistribution.Literal.description[DomainColumn.Text.Description] oit._graph
+
+            if DomainColumn.Text.Remarks.IsSome
+               && DomainColumn.Text.Remarks.Value |> is_not_nullish then
+                do! Assert.spog individual_domain_column infor.remarks hansenDataDistribution.Literal.remarks[DomainColumn.Text.Remarks.Value] oit._graph
+            if DomainColumn.Text.DisplayDescription.IsSome
+               && DomainColumn.Text.DisplayDescription.Value
+                  |> is_not_nullish
+               && DomainColumn.Text.DisplayDescription.Value
+                  <> DomainColumn.Text.Description then
+                do! Assert.spog individual_domain_column infor.displayDescription hansenDataDistribution.Literal.displayDescription[DomainColumn.Text.DisplayDescription.Value] oit._graph
+            if DomainColumn.Text.DisplayTitle.IsSome
+               && DomainColumn.Text.DisplayTitle.Value
+                  |> is_not_nullish then
+                do! Assert.spog individual_domain_column infor.displayTitle hansenDataDistribution.Literal.displayTitle[DomainColumn.Text.DisplayTitle.Value] oit._graph
+            if DomainColumn.Text.DisplayTitleLong.IsSome
+               && DomainColumn.Text.DisplayTitleLong.Value
+                  |> is_not_nullish then
+                if DomainColumn.Text.DisplayTitle.IsNone then
+                    do! Assert.spog individual_domain_column infor.displayTitleLong hansenDataDistribution.Literal.displayTitleLong[DomainColumn.Text.DisplayTitleLong.Value] oit._graph
+                else if DomainColumn.Text.DisplayTitle.IsSome
+                        && DomainColumn.Text.DisplayTitle.Value
+                           |> is_not_nullish
+                        && (DomainColumn.Text.DisplayTitleLong.Value
+                            <> DomainColumn.Text.DisplayTitle.Value) then
+                    do! Assert.spog individual_domain_column infor.displayTitleLong hansenDataDistribution.Literal.displayTitleLong[DomainColumn.Text.DisplayTitleLong.Value] oit._graph
+
+        for table_type in table.types do
+            match table_type with
+            | "Table" -> do! Assert.spog infor.Table is_a owl.Class oit._graph
+            | _ ->
+                let individual_type = table.type_iri[table_type]
+                do! Assert.spog individual_type is_a owl.Class oit._graph
+                do! Assert.spog individual_type rdfs.subClassOf infor.Table oit._graph
+
+        for ProductFamily in MetaData.xml.HansenMetadata.ProductFamilies do
+
+            let individual_product_family = productFamily.iri[ProductFamily.Name]
+            do! Assert.spog individual_product_family is_a infor.Product_Family oit._graph
+            do! Assert.spog individual_product_family infor.name hansenDataDistribution.Literal.name[ProductFamily.Name] oit._graph
+            if ProductFamily.RequiredSystemLicense.IsSome then
+                do! Assert.spog individual_product_family infor.requiredSystemLicense systemLicense.iri[ProductFamily.RequiredSystemLicense.Value.Name] oit._graph
+            for Table in ProductFamily.Tables do
+                let individual_table = table.iri[$"{ProductFamily.Name}.{Table.Name}"]
+                do! Assert.spog individual_table infor.productFamily individual_product_family oit._graph
+                do! Assert.spog individual_product_family infor.table individual_table oit._graph
+
+                do! Assert.spog individual_table is_a table.type_iri[Table.Type] oit._graph
+                do! Assert.spog individual_table infor.name hansenDataDistribution.Literal.name[Table.Name] oit._graph
+                do! Assert.spog individual_table infor.databaseName hansenDataDistribution.Literal.databaseName[Table.DatabaseName] oit._graph
+                match table_key_from_name Table.Name with
+                | Some key ->
+                    let! table_key = RDF_Literal.autotyped key
+                    do! Assert.spog individual_table h8importtool.TableKey table_key oit._graph
+                | None -> ()
+
+                if Table.Text.Description.IsSome
+                   && Table.Text.Description.Value |> is_not_nullish then
+                    do! Assert.spog individual_table infor.description hansenDataDistribution.Literal.description[Table.Text.Description.Value] oit._graph
+                if Table.Text.Remarks.IsSome
+                   && Table.Text.Remarks.Value |> is_not_nullish then
+                    do! Assert.spog individual_table infor.remarks hansenDataDistribution.Literal.remarks[Table.Text.Remarks.Value] oit._graph
+
+                for DomainColumnReference in Table.DomainColumnReferences do
+                    let individual_column =
+                        column.iri[$"{ProductFamily.Name}.{Table.Name}.{DomainColumnReference.Name}"]
+                    do! Assert.spog individual_table infor.column individual_column oit._graph
+                    do! Assert.spog individual_column infor.table individual_table oit._graph
+                    do! Assert.spog individual_column is_a infor.Column oit._graph
+                    do! Assert.spog individual_column infor.name hansenDataDistribution.Literal.name[DomainColumnReference.Name] oit._graph
+                    do! Assert.spog individual_column infor.domainColumnReference domainColumn.iri[DomainColumnReference.Name] oit._graph
+
+
+                for Column in Table.Columns do
+                    let individual_column =
+                        column.iri[$"{ProductFamily.Name}.{Table.Name}.{Column.Name}"]
+                    let super_column = column.super_column[Column.Name]
+
+                    do! Assert.spog individual_table infor.column individual_column oit._graph
+                    do! Assert.spog individual_column infor.table individual_table oit._graph
+
+                    do! Assert.spog individual_column is_a infor.Column oit._graph
+                    do! Assert.spog individual_column rdfs.subPropertyOf super_column oit._graph
+                    do! Assert.spog individual_column infor.``type`` column.type_iri[Column.Type] oit._graph
+                    do! Assert.spog individual_column infor.name hansenDataDistribution.Literal.name[Column.Name] oit._graph
+                    do! Assert.spog individual_column infor.databaseName hansenDataDistribution.Literal.databaseName[Column.DatabaseName] oit._graph
+                    do! Assert.spog individual_column infor.length hansenDataDistribution.Literal.length[Column.Length] oit._graph
+
+                    if Column.Text.Remarks.IsSome
+                       && Column.Text.Remarks.Value |> is_not_nullish then
+                        do! Assert.spog individual_column infor.remarks hansenDataDistribution.Literal.remarks[Column.Text.Remarks.Value] oit._graph
+                    if Column.Text.Description.IsSome
+                       && Column.Text.Description.Value |> is_not_nullish then
+                        do! Assert.spog individual_column infor.description hansenDataDistribution.Literal.description[Column.Text.Description.Value] oit._graph
+                    if Column.Text.DisplayDescription.IsSome
+                       && Column.Text.DisplayDescription.Value
+                          |> is_not_nullish then
+                        if Column.Text.Description.IsNone then
+                            do! Assert.spog individual_column infor.displayDescription hansenDataDistribution.Literal.displayDescription[Column.Text.DisplayDescription.Value] oit._graph
+                        else if Column.Text.Description.IsSome
+                                && Column.Text.Description.Value |> is_not_nullish
+                                && (Column.Text.DisplayDescription.Value
+                                    <> Column.Text.Description.Value) then
+                            do! Assert.spog individual_column infor.displayDescription hansenDataDistribution.Literal.displayDescription[Column.Text.DisplayDescription.Value] oit._graph
+                    if Column.Text.DisplayTitle.IsSome
+                       && Column.Text.DisplayTitle.Value |> is_not_nullish then
+                        do! Assert.spog individual_column infor.displayTitle hansenDataDistribution.Literal.displayTitle[Column.Text.DisplayTitle.Value] oit._graph
+                    if Column.Text.DisplayTitleLong.IsSome
+                       && Column.Text.DisplayTitleLong.Value
+                          |> is_not_nullish then
+                        if Column.Text.DisplayTitle.IsNone then
+                            do! Assert.spog individual_column infor.displayTitleLong hansenDataDistribution.Literal.displayTitleLong[Column.Text.DisplayTitleLong.Value] oit._graph
+                        else if Column.Text.DisplayTitle.IsSome
+                                && Column.Text.DisplayTitle.Value |> is_not_nullish
+                                && (Column.Text.DisplayTitleLong.Value
+                                    <> Column.Text.DisplayTitle.Value) then
+                            do! Assert.spog individual_column infor.displayTitleLong hansenDataDistribution.Literal.displayTitleLong[Column.Text.DisplayTitleLong.Value] oit._graph
+
+
+                if Table.PrimaryKeyConstraint.IsSome then
+                    for LocalColumnReference in Table.PrimaryKeyConstraint.Value.LocalColumnReferences do
+                        let individual_column = column.iri[LocalColumnReference.Name]
+                        do! Assert.spog individual_column is_a woedms.Primary_Key_Column oit._graph
+                        do! Assert.spog individual_table woedms.primary_key_column individual_column oit._graph
+
+                for ReferencingConstraint in Table.ReferencingConstraints do
+                    for index = 0 to ReferencingConstraint.ForeignColumnReferences.Length
+                                     - 1 do
+                        let local_reference =
+                            ReferencingConstraint.LocalColumnReferences[index]
+                                .Name
+                        let foreign_reference =
+                            ReferencingConstraint.ForeignColumnReferences[index]
+                                .Name
+                        try
+                            let local_column = column.iri[local_reference]
+                            let foreign_column = column.iri[foreign_reference]
+
+                            do! Assert.spog foreign_column woedms.values_depend_on_column local_column oit._graph
+                            do! Assert.spog local_column woedms.dependent_column foreign_column oit._graph
+                        with
+                        | err -> failwith $"{ProductFamily.Name}.{Table.Name}.{ReferencingConstraint.CommonId} failed with error {err.Message}"
+
+                for ForeignKeyConstraint in Table.ForeignKeyConstraints do
+                    for index = 0 to ForeignKeyConstraint.ForeignColumnReferences.Length
+                                     - 1 do
+                        let local_reference =
+                            ForeignKeyConstraint.LocalColumnReferences[index]
+                                .Name
+                        let foreign_reference =
+                            ForeignKeyConstraint.ForeignColumnReferences[index]
+                                .Name
+                        try
+                            let local_column = column.iri[local_reference]
+                            let foreign_column = column.iri[foreign_reference]
+
+                            do! Assert.spog foreign_column woedms.dependent_column local_column oit._graph
+                            do! Assert.spog local_column woedms.values_depend_on_column foreign_column oit._graph
+                        with
+                        | err -> failwith $"{ProductFamily.Name}.{Table.Name}.{ForeignKeyConstraint.CommonId} failed with error {err.Message}"
+
+                for EnumerationCheckConstraint in Table.EnumerationCheckConstraints do
+                    try
+                        do! Assert.spog column.iri[EnumerationCheckConstraint.LocalColumnReference.Name] infor.enumeration enumeration.iri[EnumerationCheckConstraint.EnumerationName] oit._graph
+                    with
+                    | err -> failwith $"{ProductFamily.Name}.{Table.Name}.{EnumerationCheckConstraint.CommonId} failed with error {err.Message}"
+                for UniqueConstraint in Table.UniqueConstraints do
+                    for LocalColumnReference in UniqueConstraint.LocalColumnReferences do
+
+                        do! Assert.spog column.iri[LocalColumnReference.Name] is_a infor.Unique_Column oit._graph
+
+        do! Assert.spog woedms.Logical_Mapping is_a owl.Class oit._graph
+        do! Assert.spog h8importtool.ProductFamilyOwner rdfs.subPropertyOf h8importtool.MapTableInformation oit._graph
+        do! Assert.spog h8importtool.ProductFamilyName rdfs.subPropertyOf h8importtool.MapTableInformation oit._graph
+        do! Assert.spog h8importtool.TableName rdfs.subPropertyOf h8importtool.MapTableInformation oit._graph
+        do! Assert.spog h8importtool.TableCommonId rdfs.subPropertyOf h8importtool.MapTableInformation oit._graph
+        do! Assert.spog h8importtool.TableKey rdfs.subPropertyOf h8importtool.MapTableInformation oit._graph
+
+        do! Assert.spog h8importtool.Maps is_a woedms.Logical_Mapping oit._graph
+        do! Assert.spog h8importtool.Maps www2k.xmlns (RDF_Literal.simple "http://www.infor.com/Hansen8/2011/08/Maps.xsd" current_transaction) oit._graph
+        for layer_name, table_name in Map.layer'table_names do
+            let map_name = Map.esri_to_infor_name (layer_name, table_name)
+            let map = Map.iri[map_name]
+            do! Assert.spog map is_a h8importtool.Map oit._graph
+            do! Assert.spog h8importtool.Maps woedms.map map oit._graph
+
+            do! Assert.spog map woedms.from_layer Feature_Layer.Iri.feature_layer_by_Name[layer_name] oit._graph
+            do! Assert.spog map woedms.to_table table.iri[table_name] oit._graph
+            // TODO change if ever used on agency defined product family
+            do! Assert.spog map h8importtool.ProductFamilyOwner (RDF_Literal.simple "Hansen" current_transaction) oit._graph
+            do! Assert.spog map h8importtool.IsDefault RDF_false oit._graph
+            do! Assert.spog map h8importtool.Name Map.name[map_name] oit._graph
+            do! Assert.spog map h8importtool.SheetName (RDF_Literal.simple layer_name current_transaction) oit._graph
+            do! Assert.spog map h8importtool.ConnectionString (h8importtool._literal.connection_string layer_name current_transaction) oit._graph
+            do! Assert.spog map h8importtool.ProviderName h8importtool._literal.System'Data'OleDb oit._graph
+            do! Assert.spog map h8importtool.UploadOption (RDF_Literal.autotyped 6 current_transaction) oit._graph
+            do! Assert.spog map h8importtool.IsFirstRowHeader RDF_true oit._graph
+            do! Assert.spog map h8importtool.CreatedDate (RDF_Literal.autotyped DateTime.Now current_transaction) oit._graph
+            do! Assert.spog map woedms.created_by leonad.collierb oit._graph
+            do! Assert.spog map h8importtool.CreatedBy (RDF_Literal.simple @"LEONAD\collierb" current_transaction) oit._graph
+
+        do! Map.layer_field_to_table_column "Conduit" "UNITID" "AssetManagement.Storm" "StormLiftStation" "ID"
+        do! Map.layer_field_to_table_column "Conduit" "NOTES" "AssetManagement.Storm" "StormLiftStation" "UnitDesc"
+        do! Map.layer_field_to_table_column "Culvert Cross Drain" "UNITID" "AssetManagement.Storm" "StormServiceLine" "ID"
+        do! Map.layer_field_to_table_column "Culvert Cross Drain" "NOTES" "AssetManagement.Storm" "StormServiceLine" "UnitDesc"
+        do! Map.layer_field_to_table_column "Debris Trap" "UNITID" "AssetManagement.Storm" "StormValve" "ID"
+        do! Map.layer_field_to_table_column "Debris Trap" "NOTES" "AssetManagement.Storm" "StormValve" "UnitDesc"
+        do! Map.layer_field_to_table_column "Debris Trap" "LOCATION" "AssetManagement.Storm" "StormValve" "AddressQualifier"
+        do! Map.layer_field_to_table_column "Debris Trap" "x" "AssetManagement.Storm" "StormValve" "XCoordinate"
+        do! Map.layer_field_to_table_column "Debris Trap" "y" "AssetManagement.Storm" "StormValve" "YCoordinate"
+        do! Map.layer_field_to_table_column "Ditch" "UNITID" "AssetManagement.Storm" "StormBackflowPreventer" "ID"
+        do! Map.layer_field_to_table_column "Ditch" "NOTES" "AssetManagement.Storm" "StormBackflowPreventer" "UnitDesc"
+        do! Map.layer_field_to_table_column "End Point" "UNITID" "AssetManagement.Storm" "StormNode" "ID"
+        do! Map.layer_field_to_table_column "End Point" "NOTES" "AssetManagement.Storm" "StormNode" "UnitDesc"
+        do! Map.layer_field_to_table_column "End Point" "LOCATION" "AssetManagement.Storm" "StormNode" "AddressQualifier"
+        do! Map.layer_field_to_table_column "End Point" "x" "AssetManagement.Storm" "StormNode" "XCoordinate"
+        do! Map.layer_field_to_table_column "End Point" "y" "AssetManagement.Storm" "StormNode" "YCoordinate"
+        do! Map.layer_field_to_table_column "End Point" "ZVALUE" "AssetManagement.Storm" "StormNode" "ZCoordinate"
+        do! Map.layer_field_to_table_column "Inlet" "UNITID" "AssetManagement.Storm" "StormInlet" "ID"
+        do! Map.layer_field_to_table_column "Inlet" "NOTES" "AssetManagement.Storm" "StormInlet" "UnitDesc"
+        do! Map.layer_field_to_table_column "Inlet" "LOCATION" "AssetManagement.Storm" "StormInlet" "AddressQualifier"
+        do! Map.layer_field_to_table_column "Inlet" "x" "AssetManagement.Storm" "StormInlet" "XCoordinate"
+        do! Map.layer_field_to_table_column "Inlet" "y" "AssetManagement.Storm" "StormInlet" "YCoordinate"
+        do! Map.layer_field_to_table_column "Inlet" "ZVALUE" "AssetManagement.Storm" "StormInlet" "ZCoordinate"
+        do! Map.layer_field_to_table_column "Junction Fixed" "UNITID" "AssetManagement.Storm" "StormManhole" "ID"
+        do! Map.layer_field_to_table_column "Junction Fixed" "NOTES" "AssetManagement.Storm" "StormManhole" "UnitDesc"
+        do! Map.layer_field_to_table_column "Junction Fixed" "LOCATION" "AssetManagement.Storm" "StormManhole" "AddressQualifier"
+        do! Map.layer_field_to_table_column "Junction Fixed" "x" "AssetManagement.Storm" "StormManhole" "XCoordinate"
+        do! Map.layer_field_to_table_column "Junction Fixed" "y" "AssetManagement.Storm" "StormManhole" "YCoordinate"
+        do! Map.layer_field_to_table_column "Junction Fixed" "ZVALUE" "AssetManagement.Storm" "StormManhole" "ZCoordinate"
+        do! Map.layer_field_to_table_column "Outfall" "UNITID" "AssetManagement.UsageArea" "Complex" "ID"
+        do! Map.layer_field_to_table_column "Outfall" "NOTES" "AssetManagement.UsageArea" "Complex" "UnitDesc"
+        do! Map.layer_field_to_table_column "Outfall" "x" "AssetManagement.UsageArea" "Complex" "XCoordinate"
+        do! Map.layer_field_to_table_column "Outfall" "y" "AssetManagement.UsageArea" "Complex" "YCoordinate"
+        do! Map.layer_field_to_table_column "Stormwater Pond" "UNITID" "AssetManagement.Storm" "StormMiscellaneous" "ID"
+        do! Map.layer_field_to_table_column "Stormwater Pond" "NOTES" "AssetManagement.Storm" "StormMiscellaneous" "UnitDesc"
+        do! Map.layer_field_to_table_column "Stormwater Pond" "LOCATION" "AssetManagement.Storm" "StormMiscellaneous" "AddressQualifier"
+        do! Map.layer_field_to_table_column "Stormwater Pond" "x" "AssetManagement.Storm" "StormMiscellaneous" "XCoordinate"
+        do! Map.layer_field_to_table_column "Stormwater Pond" "y" "AssetManagement.Storm" "StormMiscellaneous" "YCoordinate"
+        do! Map.layer_field_to_table_column "Stormwater Pond" "ZVALUE" "AssetManagement.Storm" "StormMiscellaneous" "ZCoordinate"
+        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "UNITID" "AssetManagement.Storm" "StormLevee" "ID"
+        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "NOTES" "AssetManagement.Storm" "StormLevee" "UnitDesc"
+        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "LOCATION" "AssetManagement.Storm" "StormLevee" "AddressQualifier"
+        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "x" "AssetManagement.Storm" "StormLevee" "XCoordinate"
+        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "y" "AssetManagement.Storm" "StormLevee" "YCoordinate"
+        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "ZVALUE" "AssetManagement.Storm" "StormLevee" "ZCoordinate"
+
+    }
+
+// TODO sort out concept mapping vs entity mapping (changes these to skos:Concepts)
+(*
+
+        do! Assert.spog gis.UNITID h8importtool.MapColumn infor.ID oit._graph
+
+        do! Assert.spog gis.DESCRIPTION h8importtool.MapColumn infor.UnitDesc oit._graph
+        do! Assert.spog gis.DIAMETER h8importtool.MapColumn infor.Diameter oit._graph
+
+        do! Assert.spog gis.DOWNSTREAMDEPTH h8importtool.MapColumn infor.DownstreamDepth oit._graph
+        do! Assert.spog gis.DOWNSTREAMELEVATION h8importtool.MapColumn infor.DownstreamElevation oit._graph
+        do! Assert.spog gis.DOWNSTREAMELEVATION h8importtool.MapColumn infor.DownstreamInvertElevation oit._graph
+        do! Assert.spog gis.INVERTELEV h8importtool.MapColumn infor.InvertElevation oit._graph
+        do! Assert.spog gis.UPSTREAMELEVATION h8importtool.MapColumn infor.UpstreamElevation oit._graph
+        do! Assert.spog gis.UPSTREAMELEVATION h8importtool.MapColumn infor.UpstreamInvertElevation oit._graph
+        do! Assert.spog gis.UPSTREAMDEPTH h8importtool.MapColumn infor.UpstreamDepth oit._graph
+
+        do! Assert.spog gis.LFEET h8importtool.MapColumn infor.Length oit._graph
+        do! Assert.spog gis.LFEET h8importtool.MapColumn infor.ConnectionPipeLength oit._graph
+        do! Assert.spog gis.LFEET h8importtool.MapColumn infor.JointLength oit._graph
+        do! Assert.spog gis.LFEET h8importtool.MapColumn infor.PipeLength oit._graph
+
+        do! Assert.spog gis.MAINTBY h8importtool.MapColumn infor.Responsibility oit._graph
+        do! Assert.spog gis.OWNER h8importtool.MapColumn infor.Ownership oit._graph
+
+        do! Assert.spog gis.MATERIAL h8importtool.MapColumn infor.ConstructionMaterial oit._graph
+        do! Assert.spog gis.MATERIAL h8importtool.MapColumn infor.Material oit._graph
+        do! Assert.spog gis.MATERIAL h8importtool.MapColumn infor.PipeMaterial oit._graph
+        do! Assert.spog gis.MATERIAL h8importtool.MapColumn infor.RingsMaterial oit._graph
+        do! Assert.spog gis.MATERIAL h8importtool.MapColumn infor.StepsMaterial oit._graph
+        do! Assert.spog gis.MATERIAL h8importtool.MapColumn infor.WallMaterial oit._graph
+
+        do! Assert.spog gis.NOTES h8importtool.MapColumn infor.UnitDesc oit._graph
+        do! Assert.spog gis.PIPESHAPE h8importtool.MapColumn infor.PipeShape oit._graph
+        do! Assert.spog gis.WIDTH h8importtool.MapColumn infor.Width oit._graph
+
+        do! Assert.spog gis.x_coordinate h8importtool.MapColumn infor.XCoordinate oit._graph
+        do! Assert.spog gis.y_coordinate h8importtool.MapColumn infor.YCoordinate oit._graph
+        do! Assert.spog gis.z_coordinate h8importtool.MapColumn infor.ZCoordinate oit._graph
+
+        do! Assert.spog gis.LOCATION h8importtool.MapColumn infor.AddressQualifier oit._graph
+
+
+    *)
+stopwatch.Stop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module Tabular =
+    module Hypertext =
+
+        let table_from_rows (rows: string array array) =
+            table {
+                if rows.Length > 0 then
+                    thead {
+                        tr {
+                            for header in rows[0] do
+                                th { header }
+                        }
+                    }
+
+                    tbody {
+                        for row in rows[1..] do
+                            tr {
+                                for cell in row do
+                                    td { cell }
+                            }
+                    }
+            }
+
+        let document_from_layers (stem: string) (tabular_content_by_layer: (string * string array array) array) =
+            html {
+                _lang "en"
+                style {
+                    _type "text/css"
+                    """
+                body {
+                    font-family: Tahoma
+                }
+
+                table {
+                    font-size: 90%;
+                    vertical-align: top;
+                    border-style: solid;
+                    border-width: 0px;
+                    border-color: gray;
+                    border-collapse: collapse;
+                    border-spacing: 1pt;
+                    background-color: white
+                }
+
+                th {
+                    text-align: left;
+                    font-family: Verdana;
+                    vertical-align: bottom
+                }
+
+                tr {
+                    vertical-align: top
+                }
+
+                a {}
+
+                td {
+                    border-width: 1px;
+                    border-color: black;
+                    padding: 2px;
+                    border-style: solid;
+                    border-collapse: collapse;
+                    border-spacing: 1pt;
+                    background-color: white
+                }
+
+                hr {
+                    color: #3333FF;
+                }
+                """
+                }
+                head {
+                    meta { _charset "utf-8" }
+                    title stem
+                }
+
+                body {
+                    for layer_name, rows_in_layer in tabular_content_by_layer do
+                        h2 { layer_name }
+                        table_from_rows rows_in_layer
+                }
+            }
+
+        let render_document (stem: string) tabular_content_by_layer =
+            tabular_content_by_layer
+            |> document_from_layers stem
+            |> Render.toHtmlDocString
+
+        let render_table rows =
+            rows |> table_from_rows |> Render.toString
+
+    module Csv =
+
+        let escape (value: string) =
+            let requires_quotes =
+                value.Contains(",")
+                || value.Contains("\"")
+                || value.Contains("\n")
+                || value.Contains("\r")
+
+            let escaped = value.Replace("\"", "\"\"")
+
+            if requires_quotes then
+                $"\"{escaped}\""
+            else
+                escaped
+
+        let row (cells: string array) =
+            cells |> Array.map escape |> String.concat ","
+
+        let save (file_content: string) (stem: string) =
+            let file_path = Path.Combine(csv_directory_path, $"{stem}.csv")
+            File.WriteAllText(file_path, file_content)
+
+
+    module Xlsx =
+
+
+        let private sanitize_sheet_name (sheet_name: string) =
+            let invalid_characters = Regex(@"[\[\]\*\?/\\:]")
+
+            let sanitized = invalid_characters.Replace(sheet_name, "_").Trim()
+
+            let non_empty =
+                if System.String.IsNullOrWhiteSpace(sanitized) then
+                    "Sheet"
+                else
+                    sanitized
+
+            if non_empty.Length > 31 then
+                non_empty.Substring(0, 31)
+            else
+                non_empty
+
+        let private unique_sheet_name (existing_names: Set<string>) (base_name: string) =
+            let candidate = sanitize_sheet_name base_name
+
+            if not (existing_names.Contains candidate) then
+                candidate
+            else
+                let rec loop index =
+                    let suffix = $"_{index}"
+
+                    let max_base_length = 31 - suffix.Length
+
+                    let truncated_base =
+                        if candidate.Length > max_base_length then
+                            candidate.Substring(0, max_base_length)
+                        else
+                            candidate
+
+                    let next_candidate = $"{truncated_base}{suffix}"
+
+                    if existing_names.Contains next_candidate then
+                        loop (index + 1)
+                    else
+                        next_candidate
+
+                loop 2
+
+        let workbook_from_layers (tabular_content_by_layer: (string * string array array) array) (workbook: XLWorkbook) =
+
+            let mutable sheet_names = Set.empty
+
+            for layer_name, rows_in_layer in tabular_content_by_layer do
+                let sheet_name = unique_sheet_name sheet_names layer_name
+
+                sheet_names <- sheet_names.Add sheet_name
+
+                let worksheet = workbook.Worksheets.Add sheet_name
+
+                for row_index = 0 to rows_in_layer.Length - 1 do
+                    let row = rows_in_layer[row_index]
+
+                    for column_index = 0 to row.Length - 1 do
+                        worksheet.Cell(row_index + 1, column_index + 1).Value <- row[column_index]
+
+                if rows_in_layer.Length > 0 then
+                    let header_range = worksheet.Range(1, 1, 1, rows_in_layer[0].Length)
+
+                    header_range.Style.Font.Bold <- true
+                    header_range.Style.Alignment.Horizontal <- XLAlignmentHorizontalValues.Center
+
+                    worksheet.SheetView.FreezeRows(1)
+
+                worksheet.Columns().AdjustToContents() |> ignore
+
+            workbook
+
+        let save (workbook: XLWorkbook) (stem: string) (tabular_content_by_layer: (string * string array array) array) =
+            use workbook = workbook_from_layers tabular_content_by_layer workbook
+            let file_path = Path.Combine(xlsx_directory_path, $"{stem}.xlsx")
+
+
+            workbook.SaveAs(file_path)
+
+
+
+module NetRdf =
+    let PREFIX (prefix_label: string) (namespace_name: Lexical_Form) (graph: VDS.RDF.IGraph) =
+
+        graph.NamespaceMap.AddNamespace(prefix_label, new Uri(namespace_name.string_value))
+
+    let triplestore = new VDS.RDF.ThreadSafeTripleStore()
+
+    module NQuads =
+        let parser = NQuadsParser()
+
+        let parse (quads: Quad array) (triplestore: VDS.RDF.ITripleStore) (transaction: LightningTransaction) =
+
+            let text =
+                quads
+                |> Array.map (fun quad -> Quad.nq quad transaction)
+                |> String.concat "\n"
+
+            use reader = new StringReader(text)
+            parser.Load(triplestore, reader)
+
+    module NTriples =
+        let parser = NTriplesParser()
+
+        let parse_quads (quads: Quad array) (graph: VDS.RDF.IGraph) (transaction: LightningTransaction) =
+
+            let text =
+                quads
+                |> Array.map Quad.to_Triple
+                |> Array.map (fun triple -> Triple.nt triple transaction)
+                |> String.concat "\n"
+            try
+                use reader = new StringReader(text)
+                parser.Load(graph, reader)
+            with
+            | err ->
+                clip text
+                failwith err.Message
+
+
+
+        let parse_triples (triples: Triple array) (graph: VDS.RDF.IGraph) (transaction: LightningTransaction) =
+
+            let text =
+                triples
+                |> Array.map (fun triple -> Triple.nt triple transaction)
+                |> String.concat "\n"
+
+            use reader = new StringReader(text)
+            parser.Load(graph, reader)
+
+    module Turtle =
+
+
+        let writer =
+            let writer = new CompressingTurtleWriter(TurtleSyntax.Rdf11Star)
+            writer.HighSpeedModePermitted <- false
+            writer.PrettyPrintMode <- true
+            writer
+
+        let write (file_path: string) (graph: VDS.RDF.IGraph) = writer.Save(graph, file_path)
+
+    module Trig =
+        let writer =
+            let writer = new TriGWriter()
+            writer.HighSpeedModePermitted <- false
+            writer.PrettyPrintMode <- true
+            writer
+
+        let write (file_path: string) (triplestore: VDS.RDF.ITripleStore) = writer.Save(triplestore, file_path)
+
+
+
+
+let serialize_ttl (graph: VDS.RDF.IGraph) (quads: Quad array) (stem: string) =
+
+    lmdb_read_only { do! NetRdf.NTriples.parse_quads quads graph }
+
+    graph |> NetRdf.PREFIX "owl" owl._namespace_name
+
+    graph
+    |> NetRdf.PREFIX "dcterms" dcterms._namespace_name
+
+    graph
+    |> NetRdf.PREFIX "LCPW_OverlayStormwaterInfrastructure_D_WM" LCPW_OverlayStormwaterInfrastructure_D_WM._namespace_name
+
+    graph |> NetRdf.PREFIX "esri" esri._namespace_name
+
+    graph |> NetRdf.PREFIX "lcg" lcg._namespace_name
+
+    graph |> NetRdf.PREFIX "oit" oit._namespace_name
+
+    graph
+    |> NetRdf.PREFIX "woedms" woedms._namespace_name
+
+    graph |> NetRdf.PREFIX "gis" gis._namespace_name
+
+    graph
+    |> NetRdf.PREFIX "LCG_Stormwater_Inventory" LCG_Stormwater_Inventory._namespace_name
+
+    graph
+    |> NetRdf.PREFIX "infor" infor._namespace_name
+
+    graph
+    |> NetRdf.PREFIX "h8importtool" h8importtool._namespace_name
+    graph
+    |> NetRdf.PREFIX "leonad" leonad._namespace_name
+
+    let file_path = Path.Combine(rdf_directory_path, $"{stem}.ttl")
+    graph |> NetRdf.Turtle.write file_path
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TODO serialize mapping to h8importtool xml!!!
+// TODO serialize to documentation!
+
+// TODO inspect properties sharing subjects and objects for any redundancies
+// TODO separate querying into separate file/instantiation
+let mappings =
+
+    lmdb_read_only {
+        let! map_quads =
+            Graph_Pattern._pog is_a h8importtool.Map oit._graph
+            |> Quad_Query.quads_by_pattern
+        return!
+            Graph_Traversal.traversal_with_graph oit._graph
+            |> Graph_Traversal.V [| for quad in map_quads -> quad.subject |> RDF_Subject.term |]
+            |> Graph_Traversal.bothE
+            |> Graph_Traversal.to_quads
+
+
+    }
+
+let map_columns =
+
+    lmdb_read_only {
+        let! map_column_quads =
+            Graph_Pattern._pog is_a h8importtool.MapColumn oit._graph
+            |> Quad_Query.quads_by_pattern
+        return!
+            Graph_Traversal.traversal_with_graph oit._graph
+            |> Graph_Traversal.V [| for quad in map_column_quads -> quad.subject |> RDF_Subject.term |]
+            |> Graph_Traversal.bothE
+            |> Graph_Traversal.to_quads
+
+
+    }
+
+
+let source_field_quads =
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        let! source_field_quads =
+            Graph_Pattern._p_g woedms.from_field oit._graph
+            |> Quad_Query.quads_by_pattern
+        let distinct_terms =
+            [| for quad in source_field_quads do
+                   quad.object |> RDF_Object.term |]
+            |> Array.distinctBy (fun term -> RDF_Term.term_id term)
+        return!
+            Graph_Traversal.traversal_with_graph oit._graph
+            |> Graph_Traversal.V distinct_terms
+            |> Graph_Traversal.bothE
+            |> Graph_Traversal.to_quads
+    }
+
+let target_column_quads =
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        let! target_column_quads =
+            Graph_Pattern._p_g woedms.to_column oit._graph
+            |> Quad_Query.quads_by_pattern
+        let distinct_terms =
+            [| for quad in target_column_quads do
+                   quad.object |> RDF_Object.term |]
+            |> Array.distinctBy (fun term -> RDF_Term.term_id term)
+        return!
+            Graph_Traversal.traversal_with_graph oit._graph
+            |> Graph_Traversal.V distinct_terms
+            |> Graph_Traversal.bothE
+            |> Graph_Traversal.to_quads
+    }
+
+let source_field_terms =
+    source_field_quads
+    |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
+    |> Array.distinctBy (fun term -> RDF_Term.term_id term)
+
+let layer'unitid_terms =
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        return
+            source_field_terms
+            |> Array.choose (fun term ->
+                let (RDF_Term.FromNamespacedIRI (term_id, term_iri)) = term
+                let local_name =
+                    Get.String_by_Lexical_Form_ID term_iri.local_name_id current_transaction
+                if
+                    local_name.Contains("UNITID")
+                    && not (local_name.Contains("Hansen"))
+                then
+                    let to_period = local_name.IndexOf(".") - 1
+                    let layer_name = local_name[..to_period]
+                    Some(layer_name, term)
+                else
+                    None
+
+            )
+
+    }
+    |> Array.distinct
+
+let target_sample_size = 3
+
+let sample_quads_by_layer =
+
+    lmdb_read_only {
+
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        return
+            layer'unitid_terms
+            |> Array.choose (fun (layer_name, unitid_term) ->
+
+                let unitid_quads =
+                    Quad_Query.quads_by_pattern (Graph_Pattern._p_g unitid_term oit._graph) current_transaction
+
+                if unitid_quads.Length > 0 then
+                    Some(layer_name, unitid_quads)
+                else
+                    None)
+            |> Array.map (fun (layer_name, unitid_quads) ->
+                let sample_size =
+                    if unitid_quads.Length < target_sample_size then
+                        unitid_quads.Length
+                    else
+                        target_sample_size
+
+                let sample_features =
+                    unitid_quads
+                    |> Array.randomSample sample_size
+                    |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
+
+
+                let sample_quads =
+                    Graph_Traversal.traversal_with_graph oit._graph
+                    |> Graph_Traversal.V sample_features
+                    |> Graph_Traversal.bothE
+                    |> Graph_Traversal.to_quads
+                    <| current_transaction
+                layer_name, sample_quads
+
+            )
+
+    }
+
+
+// TODO move to string extension
+let contains_substring_from (substrings: string array) (value: string) =
+    substrings
+    |> Array.exists (fun substring -> value.Contains substring)
+
+
+
+
+
+
+let sample_quads =
+    sample_quads_by_layer
+    |> Array.collect (fun (layer_name, sample_quads_in_layer) -> sample_quads_in_layer)
+
+
+let sample_features =
+    sample_quads
+    |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
+    |> Array.distinctBy (fun term -> RDF_Term.term_id term)
+
+let sample_layers =
+    sample_quads
+    |> Array.Parallel.filter (fun quad -> RDF_Predicate.term quad.predicate = gis.feature)
+    |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
+    |> Array.distinctBy (fun term -> RDF_Term.term_id term)
+
+let sample_layer_quads =
+    lmdb_read_only {
+        return!
+            Graph_Traversal.traversal_with_graph oit._graph
+            |> Graph_Traversal.V sample_layers
+            |> Graph_Traversal.inE gis.layer
+            |> Graph_Traversal.to_quads
+
+    }
+
+let metadata_quads =
+    Array.concat [|
+
+                    mappings
+                    map_columns
+                    source_field_quads
+                    target_column_quads
+
+                     |]
+
+
+// TODO next output full xlsx
+
+let columns_by_layer quads_by_layer =
+
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        return
+            quads_by_layer
+            |> Array.map (fun (layer_name, sample_quads_in_layer) ->
+                let columns_in_layer =
+                    sample_quads_in_layer
+                    |> Array.filter (fun quad -> RDF_Predicate.term quad.predicate = gis.feature)
+                    |> Array.collect (fun quad ->
+                        let layer_term = RDF_Subject.term quad.subject
+                        Quad_Query.quads_by_pattern (Graph_Pattern.sp_g layer_term gis.field oit._graph) current_transaction)
+                    |> Array.map (fun quad ->
+
+                        match RDF_Object.term quad.object with
+                        | RDF_Term.FromNamespacedIRI (term_id, term) -> Get.String_by_Lexical_Form_ID term.local_name_id current_transaction
+                        | RDF_Term.FromSimpleLiteral (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
+                        | RDF_Term.FromDatatypedLiteral (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
+                        | RDF_Term.FromRegionString (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
+
+                    )
+                (layer_name, columns_in_layer)
+
+            )
+
+    }
+
+let column_cells_by_layer_feature quads_by_layer =
+
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        return
+            quads_by_layer
+            |> Array.map (fun (layer_name, sample_quads_in_layer) ->
+                let column_cells_in_layer =
+                    sample_quads_in_layer
+                    |> Array.filter (fun quad -> RDF_Predicate.term quad.predicate <> gis.feature)
+                    |> Array.groupBy (fun quad -> RDF_Subject.term quad.subject)
+                    |> Array.map (fun (feature, feature_quads) ->
+                        feature_quads
+                        |> Array.map (fun quad ->
+                            let column =
+                                match RDF_Predicate.term quad.predicate with
+                                | RDF_Term.FromNamespacedIRI (term_id, term) ->
+                                    let local_name =
+                                        Get.String_by_Lexical_Form_ID term.local_name_id current_transaction
+                                    match local_name with
+                                    // TODO consider any column name overrides
+                                    | _ -> local_name
+                            let cell =
+                                match RDF_Object.term quad.object with
+                                | RDF_Term.FromNamespacedIRI (term_id, term) -> Get.String_by_Lexical_Form_ID term.local_name_id current_transaction
+                                | RDF_Term.FromSimpleLiteral (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
+                                | RDF_Term.FromDatatypedLiteral (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
+                                | RDF_Term.FromRegionString (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
+                            column, cell)
+                        |> Array.filter (fun (column, cell) -> column <> "type")
+                        |> Array.sortBy (fun (column, cell) -> column))
+                (layer_name, column_cells_in_layer)
+
+            )
+
+    }
+
+
+let tabular_content_by_layer quads_by_layer =
+    column_cells_by_layer_feature quads_by_layer
+    |> Array.map (fun (layer_name, column_cells_in_layer) ->
+
+        let header_row =
+            column_cells_in_layer
+            |> Array.collect (fun column_cells_for_feature -> column_cells_for_feature |> Array.map fst)
+            |> Array.distinct
+            |> Array.sort
+
+
+        let feature_rows =
+            column_cells_in_layer
+            |> Array.map (fun column_cells_for_feature ->
+
+                let cell_by_column = column_cells_for_feature |> Map.ofArray
+
+                header_row
+                |> Array.map (fun column ->
+                    cell_by_column
+                    |> Map.tryFind column
+                    |> Option.defaultValue ""))
+
+        let rows_in_layer = feature_rows |> Array.insertAt 0 header_row
+        (layer_name, rows_in_layer))
+
+let csv_content_by_layer quads_by_layer =
+    tabular_content_by_layer quads_by_layer
+    |> Array.map (fun (layer_name, rows_in_layer) ->
+        let csv_content =
+            rows_in_layer
+            |> Array.map Tabular.Csv.row
+            |> String.concat "\n"
+        (layer_name, csv_content)
+
+    )
+
+csv_content_by_layer sample_quads_by_layer
+|> Array.iter (fun (layer_name, csv_content) -> Tabular.Csv.save csv_content $"{layer_name}_Sample")
+
+
+let html_content_by_layer quads_by_layer =
+    tabular_content_by_layer quads_by_layer
+    |> Array.map (fun (layer_name, rows_in_layer) ->
+        let html_content =
+            Tabular.Hypertext.table_from_rows rows_in_layer
+            |> Render.toString
+        (layer_name, html_content)
+
+    )
+
+let html_document_content =
+    tabular_content_by_layer sample_quads_by_layer
+    |> Tabular.Hypertext.render_document "Sample Data"
+
+let html_document_path = Path.Combine(html_directory_path, "sample_data.html")
+
+File.WriteAllText(html_document_path, html_document_content)
+
+
+let metadata_workbook = new XLWorkbook()
+let sample_data_workbook = new XLWorkbook()
+
+
+tabular_content_by_layer sample_quads_by_layer
+|> Tabular.Xlsx.save sample_data_workbook "sample_data"
+
+
+
+
+
+
+
+let metadata_graph = new VDS.RDF.ThreadSafeGraph()
+serialize_ttl metadata_graph metadata_quads "metadata"
+
+
+
+
+
+let sample_data_graph = new VDS.RDF.ThreadSafeGraph()
+
+let sample_data_quads =
+
+    let excluded_predicate_terms =
+        set [ gis.owner
+              gis.z_coordinate
+              gis.maintainer
+              gis.material
+              gis.surface_type
+              gis.pipe_shape
+
+               ]
+    let excluded_predicate_substrings =
+        [|
+
+           ".x"
+           ".y"
+           "SUBTYPEFIELD"
+           "OWNER"
+           "MAINTBY"
+           "RELATEDFEATURE"
+           "UNITID"
+           "STRCT_DEPTH"
+           "INVERTELEV"
+           "SLOT_ELEV"
+           "UPSTREAMELEVATION"
+           "DOWNSTREAMELEVATION"
+           "HEIGHT"
+           "LFEET"
+           "DIAMETER"
+           "PIPESHAPE"
+           "MATERIAL"
+           "NUM_BARRELS"
+           "DOWNSTREAMDEPTH"
+           "UPSTREAMDEPTH"
+           "WIDTH"
+           "STRUCTURETYPE"
+           "SURFACETYPE"
+           "PONDTYPE"
+           "FILTERLOCATION"
+
+           |]
+
+    let excluded_object_terms =
+        set [
+
+              owl.NamedIndividual
+              gis.Feature
+              esri.GPFeatureLayer
+
+               ]
+
+
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        return
+
+            Array.concat [|
+
+                            sample_quads
+                            sample_layer_quads
+
+                             |]
+            |> Array.Parallel.filter (fun quad -> not (excluded_object_terms.Contains(RDF_Object.term quad.object)))
+            |> Array.Parallel.filter (fun quad -> not (excluded_predicate_terms.Contains(RDF_Predicate.term quad.predicate)))
+            (*
+            |> Array.choose (fun quad ->
+                if quad.subject.IsFromNamespacedIRI then
+
+                    let (RDF_Term.FromNamespacedIRI (term_id, term)) = RDF_Subject.term quad.subject
+                    let local_name =
+                        Get.String_by_Lexical_Form_ID term.local_name_id current_transaction
+                    if local_name.Contains("_Feature") then
+                        None
+                    else
+                        Some(quad)
+                else
+                    Some(quad)
+
+
+            )
+                        *)
+
+            |> Array.choose (fun quad ->
+
+                let (RDF_Term.FromNamespacedIRI (term_id, term)) = RDF_Predicate.term quad.predicate
+                let local_name =
+                    Get.String_by_Lexical_Form_ID term.local_name_id current_transaction
+                if local_name
+                   |> contains_substring_from excluded_predicate_substrings then
+                    None
+                else
+                    Some(quad)
+
+            )
+            |> Array.choose (fun quad ->
+                if quad.object.IsFromNamespacedIRI then
+
+                    let (RDF_Term.FromNamespacedIRI (term_id, term)) = RDF_Object.term quad.object
+                    let local_name =
+                        Get.String_by_Lexical_Form_ID term.local_name_id current_transaction
+                    if local_name.EndsWith("_Feature") then
+                        None
+                    else
+                        Some(quad)
+                else
+                    Some(quad)
+
+
+            )
+
+    }
+
+serialize_ttl sample_data_graph sample_data_quads "sample_data"
+
+
+
+
+let map_terms =
+
+    lmdb_read_only {
+        let! quads =
+            Graph_Pattern._p_g woedms.map oit._graph
+            |> Quad_Query.quads_by_pattern
+
+        return
+            quads
+            |> Array.map (fun quad -> RDF_Object.term quad.object)
+
+    }
+
+let Maps =
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        return
+            [|
+
+               for index = 0 to map_terms.Length - 1 do
+                   let MapKey = index + 1
+                   $"""
+    <Map>
+        <Key>{MapKey}</Key>
+    </Map>
+            """
+                       .TrimStart()
+                       .TrimEnd()
+
+               |]
+            |> String.concat "\n"
+
+    // let (RDF_Term.FromNamespacedIRI (term_id, term_iri)) = RDF_Object.term maps[index].object
+    // let map = Namespaced_IRI.nq term_iri current_transaction
+    // Console.WriteLine $"{index}: {map}"
+    }
+
+let h8import_xml_path =
+    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\LMDB\h8import.xml"
+
+let h8import_xml_content =
+    let Maps = Xml.element "Maps"
+    let Map = Xml.element "Map"
+    let Key = Xml.element "Key"
+    let IsDefault = Xml.element "IsDefault"
+    let Name = Xml.element "Name"
+    let SourceFilePath = Xml.element "SourceFilePath"
+    let SheetName = Xml.element "SheetName"
+    let ConnectionString = Xml.element "ConnectionString"
+    let ProviderName = Xml.element "ProviderName"
+    let UploadOption = Xml.element "UploadOption"
+    let IsFirstRowHeader = Xml.element "IsFirstRowHeader"
+    let CreatedDate = Xml.element "CreatedDate"
+    let CreatedBy = Xml.element "CreatedBy"
+    let MapColumn = Xml.element "MapColumn"
+    let MapKey = Xml.element "MapKey"
+    let SourceColumnName = Xml.element "SourceColumnName"
+    let TargetColumnCommonId = Xml.element "TargetColumnCommonId"
+    let TargetColumnType = Xml.element "TargetColumnType"
+    let MapTableInformation = Xml.element "MapTableInformation"
+    let ProductFamilyOwner = Xml.element "ProductFamilyOwner"
+    let ProductFamilyName = Xml.element "ProductFamilyName"
+    let TableName = Xml.element "TableName"
+    let TableCommonId = Xml.element "TableCommonId"
+    let TableKey = Xml.element "TableKey"
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        let source_file_path =
+            Path.Combine(xlsx_directory_path, $"LCPW_OverlayStormwaterInfrastructure_D_WM.xlsx")
+        return
+            Maps {
+
+                for index = 0 to map_terms.Length - 1 do
+                    let key = string (index + 1)
+                    let map_term = map_terms[index]
+                    let map_columns =
+                        Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term woedms.map_column oit._graph) current_transaction
+                        |> Array.map (fun quad -> RDF_Object.term quad.object)
+
+                    Map {
+                        Key { key }
+                        IsDefault {
+
+                            Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.IsDefault oit._graph) current_transaction
+                            |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                            |> Array.head
+
+                        }
+                        Name {
+
+                            Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.Name oit._graph) current_transaction
+                            |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                            |> Array.head
+
+                        }
+                        SourceFilePath { source_file_path }
+                        SheetName {
+
+                            Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.SheetName oit._graph) current_transaction
+                            |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                            |> Array.head
+
+                        }
+                        ConnectionString {
+                            Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.ConnectionString oit._graph) current_transaction
+                            |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                            |> Array.head
+
+                        }
+                        ProviderName {
+                            Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.ProviderName oit._graph) current_transaction
+                            |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                            |> Array.head
+                        }
+                        UploadOption {
+                            Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.UploadOption oit._graph) current_transaction
+                            |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                            |> Array.head
+                        }
+                        IsFirstRowHeader {
+                            Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.IsFirstRowHeader oit._graph) current_transaction
+                            |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                            |> Array.head
+                        }
+                        CreatedDate {
+                            Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.CreatedDate oit._graph) current_transaction
+                            |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                            |> Array.head
+                        }
+                        CreatedBy {
+                            Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.CreatedBy oit._graph) current_transaction
+                            |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                            |> Array.head
+                        }
+                        for map_column in map_columns do
+                            let target_column =
+                                Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_column woedms.to_column oit._graph) current_transaction
+                                |> Array.map (fun quad -> RDF_Object.term quad.object)
+                                |> Array.head
+
+                            MapColumn {
+                                MapKey { key }
+                                SourceColumnName {
+                                    Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_column woedms.from_field oit._graph) current_transaction
+                                    |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                                    |> Array.head
+                                }
+                                TargetColumnCommonId {
+
+                                    Quad_Query.quads_by_pattern (Graph_Pattern.sp_g target_column infor.name oit._graph) current_transaction
+                                    |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                                    |> Array.head
+                                }
+                                TargetColumnType {
+                                    Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_column h8importtool.TargetColumnType oit._graph) current_transaction
+                                    |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                                    |> Array.head
+                                }
+                            }
+                        MapTableInformation {
+                            MapKey { key }
+                            ProductFamilyOwner {
+                                Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.ProductFamilyOwner oit._graph) current_transaction
+                                |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                                |> Array.head
+                            }
+                            ProductFamilyName {
+                                Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.ProductFamilyName oit._graph) current_transaction
+                                |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                                |> Array.head
+                            }
+                            TableName {
+                                Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.TableName oit._graph) current_transaction
+                                |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                                |> Array.head
+                            }
+                            TableCommonId {
+                                Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.TableCommonId oit._graph) current_transaction
+                                |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                                |> Array.head
+                            }
+                            TableKey {
+                                Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_term h8importtool.TableKey oit._graph) current_transaction
+                                |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
+                                |> Array.head
+                            }
+
+                        }
+
+                    }
+            }
+
+    }
+
+let h8import_xml_document =
+    h8import_xml_content
+    |> Render.toXDocument "1.0" "utf-8" (Some "yes")
+
+h8import_xml_document.Save(h8import_xml_path)
+
+
+// File.WriteAllText(h8import_xml_path, h8import_xml_document)
+
+(*
+let h8import_xml_document = XDocument(
+        XDeclaration("1.0", "utf-8", "yes"),
+        [| XElement(XName.Get("Maps")) :> obj |]
+    )
+    $"""
+
+<?xml version="1.0" standalone="yes"?>
+<Maps xmlns="http://www.infor.com/Hansen8/2011/08/Maps.xsd">
+    {Maps}
+</Maps>
+
+    """ .TrimStart() .TrimEnd()
+
+
+
+
+        return!
+            Graph_Traversal.traversal_with_graph oit._graph
+            |> Graph_Traversal.V [| for quad in map_column_quads -> quad.object |> RDF_Object.term |]
+            |> Graph_Traversal.bothE
+            |> Graph_Traversal.to_quads
+*)
+
+let h8import = new VDS.RDF.ThreadSafeGraph()
+
+// fsi.ShowDeclarationValues <- true
+// fsi.ShowDeclarationValues <- false
+
+
+LCG.print_stats ()
+printfn "%s elapsed=%O" "transaction stopwatch:" stopwatch.Elapsed

@@ -1,0 +1,40 @@
+Format Version Date	formverd		Y	C,F
+Format Specification	formspec		Y	Q,C,F
+Format Information Content	formcont		Y	Q,C,F
+File Decompression Technique	filedec	S3	Y	E,C,F
+Transfer Size	transize	S	Y	Q,E,C,F
+Dataset Size	dssize	S	Y	E,F
+Digital Transfer Option	digtopt			
+Online Option	onlinopt			
+Computer Contact Information	computer			
+Network Address	networka			
+Network Resource Name	networkr	S3	Y	Q,E,C,F
+Dialup Instructions	dialinst			
+Lowest BPS	lowbps		Y	C,F
+Highest BPS	highbps		Y	C,F
+Number DataBits	numdata		Y	C,F
+Number StopBits	numstop		Y	C,F
+Parity	parity		Y	C,F
+Compression Support	compress		Y	C,F
+Dialup Telephone	dialtel		Y	E,C,F
+Dialup Filename	dialfile		Y	E,C,F
+SDE Connection Information	sdeconn			
+*       Server Name	server	S3		E,F
+*       Instance Name	instance	S3		E,F
+*       Database Name	database	S3		E,F
+*       User Name	user	S3		E,F
+*       Version Name	version	S3		E,F
+Access Instructions	accinstr	S3	Y	E,C,F
+Online Computer and Operating  System	oncomp		Y	C,F
+Offline Option	offoptn			
+Offline Media	offmedia		Y	Q,E,C,F
+Recording Capacity	recap			
+Recording Density	recden		Y	Q,C,F
+Recording Density Units	recdenu		Y	Q,C,F
+Recording Format	recfmt		Y	Q,C,F
+Compatibility Information	compat		Y	Q,C,F
+Fees	fees		Y	Q,C,F
+Ordering Instructions	ordering		Y	Q,C,F
+Turnaround	turnarnd		Y	Q,C,F
+Custom Order Process	custom		Y	Q,C,F
+Technical Prerequisites	techpreq		Y	Q,C,F

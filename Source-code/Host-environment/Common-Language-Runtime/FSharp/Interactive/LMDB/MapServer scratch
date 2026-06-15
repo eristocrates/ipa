@@ -1,4 +1,1272 @@
 
+
+(*
+
+
+
+let all_quads =
+    lmdb_read_only {
+        return!
+            Graph_Pattern.____ ()
+
+            |> Quad_Query.quads_by_pattern
+    }
+
+
+let duplicate_propeties =
+    lmdb_read_only {
+        return!
+            Graph_Pattern.___g oit._graph
+            |> Quad_Query.quads_by_pattern
+    }
+    |> Array.Parallel.groupBy (fun quad -> RDF_Subject.term_id quad.subject, RDF_Object.term_id quad.object, quad.graph_name)
+    |> Array.Parallel.choose (fun ((_subject_id, _object_id, _graph_name), quads) ->
+        let distinct_predicates =
+            quads
+            |> Array.Parallel.map (fun quad -> RDF_Predicate.term_id quad.predicate)
+            |> Array.distinct
+
+        if distinct_predicates.Length > 1 then
+            Some quads
+        else
+            None)
+    |> Array.concat
+
+all_quads.Length
+
+
+
+
+
+
+fsi.ShowDeclarationValues <- true
+
+
+let domain_quads =
+    lmdb_read_only {
+        let! domains =
+            Graph_Pattern._pog a esri.CodedValueDomain oit._graph
+            |> Quad_Query.quads_by_pattern
+        let vertices =
+            [| for quad in domains do
+                   quad.subject |> RDF_Subject.term |]
+        return!
+            Graph_Traversal.traversal_with_graph oit._graph
+            |> Graph_Traversal.V vertices
+            |> Graph_Traversal.bothE
+            |> Graph_Traversal.to_quads
+    }
+
+let mof7_quads =
+    lmdb_read_only {
+        let! test_mof = gis._prefix "MOF7"
+        let! s'outfall'mof7 =
+            Graph_Pattern._pog gis.outfall test_mof oit._graph
+
+            |> Quad_Query.quads_by_pattern
+        let vertices =
+            [| for quad in s'outfall'mof7 do
+                   quad.subject |> RDF_Subject.term |]
+            |> Array.insertAt 0 test_mof
+        return!
+            Graph_Traversal.traversal_with_graph oit._graph
+            |> Graph_Traversal.V vertices
+            |> Graph_Traversal.bothE
+            |> Graph_Traversal.to_quads
+
+    }
+    |> Array.Parallel.filter (fun quad ->
+        quad.predicate |> RDF_Predicate.term
+        <> gis.SUBTYPEFIELD
+
+    )
+    |> Array.Parallel.filter (fun quad ->
+        if (quad.object.IsFromDatatypedLiteral
+            || quad.object.IsFromDirectedLanguageString
+            || quad.object.IsFromDirectedRegionString
+            || quad.object.IsFromLanguageString
+            || quad.object.IsFromRegionString
+            || quad.object.IsFromSimpleLiteral) then
+            false
+        else
+            true)
+
+    |> Array.append domain_quads
+
+
+let stormwater_quads =
+
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+
+        let! storm_table_quads =
+            Graph_Pattern._pog infor.productFamily infor.Hansen.AssetManagement.Storm.productFamily oit._graph
+            |> Quad_Query.quads_by_pattern
+        let storm_tables =
+            [| for quad in storm_table_quads do
+                   quad.subject |> RDF_Subject.term |]
+        let! table'a'type =
+            Graph_Traversal.traversal_with_graph oit._graph
+            |> Graph_Traversal.V storm_tables
+            |> Graph_Traversal.outE a
+            |> Graph_Traversal.to_quads
+        let table'a'asset_type =
+            table'a'type
+            |> Array.filter (fun quad ->
+                let (RDF_Term.FromNamespacedIRI (term_id, type_iri)) = RDF_Object.term quad.object
+                let type_local_name =
+                    Get.String_by_Lexical_Form_ID type_iri.local_name_id current_transaction
+                type_local_name.Contains("Asset")
+
+            )
+        return table'a'asset_type
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lmdb_read_only {
+    do!
+        NetRdf.triplestore
+        |> NetRdf.NQuads.parse mof7_quads
+}
+
+let trig_path = Path.Combine(rdf_directory_path, "triplestore.trig")
+
+NetRdf.triplestore.Graphs
+|> Seq.iter (fun graph ->
+
+    graph |> NetRdf.PREFIX "owl" owl._namespace_name
+    graph
+    |> NetRdf.PREFIX "dcterms" dcterms._namespace_name
+    graph
+    |> NetRdf.PREFIX "LCPW_OverlayStormwaterInfrastructure_D_WM" LCPW_OverlayStormwaterInfrastructure_D_WM._namespace_name
+    graph |> NetRdf.PREFIX "esri" esri._namespace_name
+    graph |> NetRdf.PREFIX "lcg" lcg._namespace_name
+    graph |> NetRdf.PREFIX "oit" oit._namespace_name
+    graph
+    |> NetRdf.PREFIX "woedms" woedms._namespace_name
+    graph |> NetRdf.PREFIX "gis" gis._namespace_name
+    graph
+    |> NetRdf.PREFIX "LCG_Stormwater_Inventory" LCG_Stormwater_Inventory._namespace_name
+    graph |> NetRdf.PREFIX "dbug" dbug._namespace_name
+
+
+    let file_stem =
+        match graph.Name with
+        | null -> "default_graph"
+        | _ ->
+            let uri_node = graph.Name :?> VDS.RDF.UriNode
+
+            let last_segment = (uri_node.Uri.Segments |> Array.last).TrimEnd('/')
+
+            $"{last_segment}"
+
+    let ttl_path = Path.Combine(rdf_directory_path, $"{file_stem}.ttl")
+
+    graph |> NetRdf.Turtle.write ttl_path
+
+)
+
+NetRdf.triplestore |> NetRdf.Trig.write trig_path
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let super'member'sub_triples = Query._p_ rdfs.``member``
+
+super'member'sub_triples
+|> Array.Parallel.collect (fun super'member'sub ->
+Query.sp_ (RDF_Term.from_id (Triple.slot_value Triple_Slot.S super'member'sub)) a)
+
+let feature'a'ditch_feature =
+Query._po a intraraster.Ditch_Feature
+|> Array.randomChoice
+
+let ditch = RDF_Term.from_id (Triple.slot_value S feature'a'ditch_feature)
+let container'member'ditch = Query.incoming_edges ditch
+
+container'member'ditch
+|> Array.map (fun triple -> Query.outgoing_edges (RDF_Term.from_id (Triple.slot_value Triple_Slot.S triple))
+
+)
+
+
+let mof = Query.in_all ditch |> Array.randomChoice
+Query.outgoing_edges mof
+*)
+
+
+
+(*
+
+let Metadata_Content =
+    [|
+
+        "MetaID", "Metadata ID"
+        "CreaDate", "Creation Date"
+        "CreaTime", "Creation Time"
+        "SyncOnce", "Synchronize Once"
+        "SyncDate", "Synchronization Date"
+        "SyncTime", "Synchronization Time"
+        "ModDate", "Modification Date"
+        "ModTime", "Modification Time"
+        "PublishedDocID", "Published Document ID"
+        "PublishStatus", "Publish Status"
+        "Server", "ArcIMS Server"
+        "Service", "ArcIMS Service"
+        "ServiceType", "ArcIMS Service Type"
+        "ServiceFCType", "ArcIMS Feature Class Type"
+        "ServiceFCName", "ArcIMS Feature Class Name"
+        "DataProperties", "Data Properties"
+        "topoinfo", "Topology Information"
+        "topoProps", "Topology Properties"
+        "topoName", "Topology Name"
+        "clusterTol", "Cluster Tolerance"
+        "maxErrors", "Maximum Error Count"
+        "topoRule", "Topology Rule"
+        "topoRuleID", "Topology Rule ID"
+        "topoRuleName", "Topology Rule Name"
+        "topoRuleType", "Topology Rule Type"
+        "ruleHelp", "RuleHelp"
+        "topoRuleOrigin", "Topology Rule Origin"
+        "fcname", "Feature Class Name"
+        "stcode", "Subtype Code"
+        "stname", "Subtype Name"
+        "allOriginSubtypes", "All Origin Subtypes"
+        "topoRuleDest", "Topology Rule Destination"
+        "fcname", "Feature Class Name"
+        "stcode", "Subtype Code"
+        "stname", "Subtype Name"
+        "allDestSubtypes", "All Destination Subtypes"
+        "Sync", "Synchronize Automatically"
+        "RematchLocator", "Geocoding Information"
+        "idinfo", "Identification Information"
+        "citation", "Citation"
+        "citeinfo", "Citation Information"
+        "descript", "Description"
+        "abstract", "Abstract"
+        "purpose", "Purpose"
+        "supplinf", "Supplemental Information"
+        "langdata", "Language of Dataset"
+        "timeperd", "Time Period of Content"
+        "timeinfo", "Time Period Information"
+        "current", "Currentness Reference"
+        "status", "Status"
+        "progress", "Progress"
+        "update", "Maintenance and Update Frequency"
+        "spdom", "Spatial Domain"
+        "bounding", "Bounding Coordinates"
+        "westbc", "West Bounding Coordinate"
+        "eastbc", "East Bounding Coordinate"
+        "northbc", "North Bounding Coordinate"
+        "southbc", "South Bounding Coordinate"
+        "lboundng", "Local Bounding Coordinates"
+        "topbc", "Top Bounding Coordinate"
+        "bottombc", "Bottom Bounding Coordinate"
+        "leftbc", "Left Bounding Coordinate"
+        "rightbc", "Right Bounding Coordinate"
+        "minalti", "Minimum Altitude"
+        "maxalti", "Maximum Altitude"
+        "altunits", "Altitude Units"
+        "dsgpoly", "Dataset G-Polygon"
+        "dsgpolyo", "Dataset G-Polygon Outer G-Ring"
+        "gring", "G-Ring"
+        "grngpoin", "G-Ring Point"
+        "gringlat", "G-Ring Latitude"
+        "gringlon", "G-Ring Longitude"
+        "dsgpolyx", "Dataset G-Polygon Exclusion G-Ring"
+        "gring", "G-Ring"
+        "grngpoin", "G-Ring Point"
+        "gringlat", "G-Ring Latitude"
+        "gringlon", "G-Ring Longitude"
+        "eframes", "Data Frames"
+        "framect", "Data Frame Count"
+        "framenam", "Data Frame Name"
+        "keywords", "Keywords"
+        "theme", "Theme"
+        "themekt", "Theme Keyword Thesaurus"
+        "themekey", "Theme Keyword"
+        "place", "Place"
+        "placekt", "Place Keyword Thesaurus"
+        "placekey", "Place Keyword"
+        "stratum", "Stratum"
+        "stratkt", "Stratum Keyword Thesaurus"
+        "stratkey", "Stratum Keyword"
+        "temporal", "Temporal"
+        "tempkt", "Temporal Keyword Thesaurus"
+        "tempkey", "Temporal Keyword"
+        "accconst", "Access Constraints"
+        "useconst", "Use Constraints"
+        "ptcontac", "Point of Contact"
+        "cntinfo", "Contact Information"
+        "browse", "Browse Graphic"
+        "browseem", "Browse Graphic Embedded"
+        "browsen", "Browse Graphic File Name"
+        "browsed", "Browse Graphic File Description"
+        "browset", "Browse Graphic File Type"
+        "datacred", "Dataset Credit"
+        "secinfo", "Security Information"
+        "secsys", "Security Classification System"
+        "secclass", "Security Classification"
+        "sechandle", "Security Handling Description"
+        "native", "Native Dataset Environment"
+        "natvform", "Native Dataset Format"
+        "crossref", "Cross Reference"
+        "citeinfo", "Citation Information"
+        "assndesc", "Description of Association"
+        "dataqual", "Data Quality Information"
+        "attracc", "Attribute Accuracy"
+        "attraccr", "Attribute Accuracy Report"
+        "qattracc", "Quantitative Attribute Accuracy Assessment"
+        "attraccv", "Attribute Accuracy Value"
+        "attracce", "Attribute Accuracy Explanation"
+        "logic", "Logical Consistency Report"
+        "complete", "Completeness Report"
+        "posacc", "Positional Accuracy"
+        "horizpa", "Horizontal Positional Accuracy"
+        "horizpar", "Horizontal Positional Accuracy Report"
+        "qhorizpa", "Quantitative Horizontal Positional Accuracy  Assessment"
+        "horizpav", "Horizontal Positional Accuracy Value"
+        "horizpae", "Horizontal Positional Accuracy Explanation"
+        "vertacc", "Vertical Positional Accuracy"
+        "vertaccr", "Vertical Positional Accuracy Report"
+        "qvertpa", "Quantitative Vertical Positional Accuracy  Assessment"
+        "vertaccv", "Vertical Positional Accuracy Value"
+        "vertacce", "Vertical Positional Accuracy Explanation"
+        "lineage", "Lineage"
+        "srcinfo", "Source Information"
+        "srccite", "Source Citation"
+        "citeinfo", "Citation Information"
+        "srcscale", "Source Scale Denominator"
+        "typesrc", "Type of Source Media"
+        "srctime", "Source Time Period of Content"
+        "timeinfo", "Time Period Information"
+        "srccurr", "Source Currentness Reference"
+        "srccitea", "Source Citation Abbreviation"
+        "srccontr", "Source Contribution"
+        "procstep", "Process Step"
+        "procdesc", "Process Description"
+        "procsv", "Process Software and Version"
+        "srcused", "Source Used Citation Abbreviation"
+        "procdate", "Process Date"
+        "proctime", "Process Time"
+        "srcprod", "Source Produced Citation Abbreviation"
+        "proccont", "Process Contact Information"
+        "cntinfo", "Contact Information"
+        "cloud", "Cloud Cover"
+        "spdoinfo", "Spatial Data Organization Information"
+        "indsprdf", "Indirect Spatial Reference"
+        "direct", "Direct Spatial Reference Method"
+        "ptvctinf", "Point and Vector Object Information"
+        "esriterm", "ESRI Terms Description"
+        "efeatyp", "ESRI Feature Type"
+        "efeageom", "ESRI Feature Geometry"
+        "esritopo", "ESRI Topology"
+        "efeacnt", "ESRI Feature Count"
+        "spindex", "Spatial Index"
+        "linrefer", "Linear Referencing"
+        "netwrole", "Network Role"
+        "XYRank", "XY Rank"
+        "ZRank", "Z Rank"
+        "topoWeight", "Topology Weight"
+        "validateEvents", "Events on Validation"
+        "partTopoRules", "Participates in Topology Rules"
+        "topoRuleID", "Topology Rule ID"
+        "featdesc", "Feature Description"
+        "sdtsterm", "SDTS Terms Description"
+        "sdtstype", "SDTS Point and Vector Object Type"
+        "ptvctcnt", "Point and Vector Object Type Count"
+        "vpfterm", "VPF Terms Description"
+        "vpflevel", "VPF Topology Level"
+        "vpfinfo", "VPF Point and Vector Object Information"
+        "vpftype", "VPF Point and Vector Object Type"
+        "ptvctcnt", "Point and Vector Object Type Count"
+        "rastinfo", "Raster Object Information"
+        "rastifor", "Image Format"
+        "rasttype", "Raster Object Type"
+        "rastityp", "Image Type"
+        "rastband", "Number of Bands"
+        "rowcount", "Row Count"
+        "colcount", "Column Count"
+        "vrtcount", "Vertical Count"
+        "rastxsz", "Cell Size X Direction"
+        "rastxu", "Cell Size X Units"
+        "rastysz", "Cell Size Y Direction"
+        "rastyu", "Cell Size Y Units"
+        "rastbpp", "Bits Per Pixel"
+        "rastnodt", "Background Nodata Value"
+        "rastplyr", "Pyramid Layers"
+        "rastcmap", "Image Colormap"
+        "rastcomp", "Compression Type"
+        "rastdtyp", "Raster Display Type"
+        "rastorig", "Raster Origin"
+        "netinfo", "Geometric Network Information"
+        "nettype", "Network Type"
+        "connrule", "Connectivity Rule"
+        "ruletype", "Rule Type"
+        "rulecat", "Rule Category"
+        "rulehelp", "Rule Help"
+        "rulefeid", "From Edge Feature Class"
+        "rulefest", "From Edge Subtype"
+        "ruleteid", "To Edge Feature Class"
+        "ruletest", "To Edge Subtype"
+        "ruledjid", "Default Junction Feature Class"
+        "ruledjst", "Default Junction Subtype"
+        "rulejunc", "Available Junction"
+        "junctid", "Available Junction Feature Class"
+        "junctst", "Available Junction Subtype"
+        "ruleeid", "Edge Feature Class"
+        "ruleest", "Edge Subtype"
+        "ruleemnc", "Edge Minimum Cardinality"
+        "ruleemxc", "Edge Maximum Cardinality"
+        "rulejid", "Junction Feature Class"
+        "rulejst", "Junction Subtype"
+        "rulejmnc", "Junction Minimum Cardinality"
+        "rulejmxc", "Junction Maximum Cardinality"
+        "elemcls", "Network Element"
+        "roletype", "Ancillary Role"
+        "rolefld", "Ancillary Role Attribute"
+        "enabfld", "Enabled Attribute"
+        "spref", "Spatial Reference Information"
+        "horizsys", "Horizontal Coordinate System Definition"
+        "cordsysn", "Coordinate System Name"
+        "projcsn", "Projected Coordinate System Name"
+        "geogcsn", "Geographic Coordinate System Name"
+        "geograph", "Geographic"
+        "latres", "Latitude Resolution"
+        "longres", "Longitude Resolution"
+        "geogunit", "Geographic Coordinate Units"
+        "planar", "Planar"
+        "mapproj", "Map Projection"
+        "mapprojn", "Map Projection Name"
+        "albers", "Albers Conical Equal Area"
+        "stdparll", "Standard Parallel"
+        "longcm", "Longitude of Central Meridian"
+        "latprjo", "Latitude of Projection Origin"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "azimequi", "Azimuthal Equidistant"
+        "longcm", "Longitude of Central Meridian"
+        "latprjo", "Latitude of Projection Origin"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "equicon", "Equidistant Conic"
+        "stdparll", "Standard Parallel"
+        "longcm", "Longitude of Central Meridian"
+        "latprjo", "Latitude of Projection Origin"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "equirect", "Equirectangular"
+        "stdparll", "Standard Parallel"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "gvnsp", "General Vertical Near-Sided Perspective"
+        "heightpt", "Height of Perspective Point Above  Surface"
+        "longpc", "Longitude of Projection Center"
+        "latprjc", "Latitude of Projection Center"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "gnomonic", "Gnomonic"
+        "longpc", "Longitude of Projection Center"
+        "latprjc", "Latitude of Projection Center"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "lamberta", "Lambert Azimuthal Equal Area"
+        "longpc", "Longitude of Projection Center"
+        "latprjc", "Latitude of Projection Center"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "lambertc", "Lambert Conformal Conic"
+        "stdparll", "Standard Parallel"
+        "longcm", "Longitude of Central Meridian"
+        "latprjo", "Latitude of Projection Origin"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "mercator", "Mercator"
+        "stdparll", "Standard Parallel"
+        "sfequat", "Scale Factor at Equator"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "modsak", "Modified Stereographic for Alaska"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "miller", "Miller Cylindrical"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "obqmerc", "Oblique Mercator"
+        "sfctrlin", "Scale Factor at Center Line"
+        "obqlazim", "Oblique Line Azimuth"
+        "azimangl", "Azimuthal Angle"
+        "azimptl", "Azimuth Measure Point Longitude"
+        "obqlpt", "Oblique Line Point"
+        "obqllat", "Oblique Line Latitude"
+        "obqllong", "Oblique Line Longitude"
+        "obqllat", "Oblique Line Latitude"
+        "obqllong", "Oblique Line Longitude"
+        "latprjo", "Latitude of Projection Origin"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "orthogr", "Orthographic"
+        "longpc", "Longitude of Projection Center"
+        "latprjc", "Latitude of Projection Center"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "polarst", "Polar Stereographic"
+        "svlong", "Straight Vertical Longitude from Pole"
+        "stdparll", "Standard Parallel"
+        "sfprjorg", "Scale Factor at Projection Origin"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "polycon", "Polyconic"
+        "longcm", "Longitude of Central Meridian"
+        "latprjo", "Latitude of Projection Origin"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "robinson", "Robinson"
+        "longpc", "Longitude of Projection Center"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "sinusoid", "Sinusoidal"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "spaceobq", "Space Oblique Mercator (Landsat)"
+        "landsat", "Landsat Number"
+        "pathnum", "Path Number"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "stereo", "Stereographic"
+        "longpc", "Longitude of Projection Center"
+        "latprjc", "Latitude of Projection Center"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "transmer", "Transverse Mercator"
+        "sfctrmer", "Scale Factor at Central Meridian"
+        "longcm", "Longitude of Central Meridian"
+        "latprjo", "Latitude of Projection Origin"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "vdgrin", "van der Grinten"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "behrmann", "Behrmann"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "bonne", "Bonne"
+        "stdparll", "Standard Parallel"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "cassini", "Cassini"
+        "sfctrmer", "Scale Factor at Central Meridian"
+        "longcm", "Longitude of Central Meridian"
+        "latprjo", "Latitude of Projection Origin"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "eckert1", "Eckert I"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "eckert2", "Eckert II"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "eckert3", "Eckert III"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "eckert4", "Eckert IV"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "eckert5", "Eckert V"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "eckert6", "Eckert VI"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "gallster", "Gall Stereographic"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "loxmuth", "Loximuthal"
+        "longcm", "Longitude of Central Meridian"
+        "latprjo", "Latitude of Projection Origin"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "mollweid", "Mollweide"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "quartic", "Quartic Authalic"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "winkel1", "Winkel I"
+        "stdparll", "Standard Parallel"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "winkel", "Winkel II"
+        "stdparll", "Standard Parallel"
+        "longcm", "Longitude of Central Meridian"
+        "feast", "False Easting"
+        "fnorth", "False Northing"
+        "otherprj", "Other Projection Definition"
+        "mapprojp", "Map Projection Parameters"
+        "gridsys", "Grid Coordinate System"
+        "gridsysn", "Grid Coordinate System Name"
+        "utm", "Universal Transverse Mercator (UTM)"
+        "utmzone", "UTM Zone Number"
+        "transmerc", "Transverse Mercator"
+        "ups", "Universal Polar Stereographic (UPS)"
+        "upszone", "UPS Zone Identifier"
+        "polarst", "Polar Stereographic"
+        "spcs", "State Plane Coordinate System (SPCS)"
+        "spcszone", "SPCS Zone Identifier"
+        "lambertc", "Lambert Conformal Conic"
+        "transmer", "Transverse Mercator"
+        "obqmerc", "Oblique Mercator"
+        "polycon", "Polyconic"
+        "arcsys", "ARC Coordinate System"
+        "arczone", "ARC System Zone Identifier"
+        "equirect", "Equirectangular"
+        "azimequi", "Azimuthal Equidistant"
+        "othergrd", "Other Grid System Definition"
+        "localp", "Local Planar"
+        "localpd", "Local Planar Description"
+        "localpgi", "Local Planar Georeference Information"
+        "planci", "Planar Coordinate Information"
+        "plance", "Planar Coordinate Encoding Method"
+        "coordrep", "Coordinate Representation"
+        "absres", "Abscissa Resolution"
+        "orders", "Ordinate Resolution"
+        "distbear", "Distance and Bearing Representation"
+        "distress", "Distance Resolution"
+        "bearers", "Bearing Resolution"
+        "bearunit", "Bearing Units"
+        "bearrefd", "Bearing Reference Direction"
+        "bearrefm", "Bearing Reference Meridian"
+        "plandu", "Planar Distance Units"
+        "local", "Local"
+        "localdes", "Local Description"
+        "localgeo", "Local Georeference Information"
+        "geodetic", "Geodetic Model"
+        "horizdn", "Horizontal Datum Name"
+        "ellips", "Ellipsoid Name"
+        "semiaxis", "Semi-Major Axis"
+        "denflat", "Denominator of Flattening Ratio"
+        "vertdef", "Vertical Coordinate System Definition"
+        "altsys", "Altitude System Definition"
+        "altdatum", "Altitude Datum Name"
+        "alters", "Altitude Resolution"
+        "altunits", "Altitude Distance Units"
+        "altenc", "Altitude Encoding Method"
+        "depthsys", "Depth System Definition"
+        "depthdn", "Depth Datum Name"
+        "depthres", "Depth Resolution"
+        "depthdu", "Depth Distance Units"
+        "depthen", "Depth Encoding Method"
+        "eainfo", "Entity and Attribute Information"
+        "detail", "Detailed Description"
+        "enttyp", "Entity Type"
+        "enttypl", "Entity Type Label"
+        "enttypt", "Entity Type Type"
+        "enttypc", "Entity Type Count"
+        "enttypd", "Entity Type Definition"
+        "enttypds", "Entity Type Definition Source"
+        "attr", "Attribute"
+        "attrlabl", "Attribute Label"
+        "attalias", "Attribute Alias"
+        "attrdef", "Attribute Definition"
+        "attrdefs", "Attribute Definition Source"
+        "attrtype", "Attribute Type"
+        "attwidth", "Attribute Width"
+        "atprecis", "Attribute Precision"
+        "attscale", "Attribute Scale"
+        "atoutwid", "Attribute Output Width"
+        "atnumdec", "Attribute Number of Decimals"
+        "atindex", "Attribute Indexed"
+        "attrdomv", "Attribute Domain Values"
+        "edom", "Enumerated Domain"
+        "edomv", "Enumerated Domain Value"
+        "edomvd", "Enumerated Domain Value Definition"
+        "edomvds", "Enumerated Domain Value Definition  Source"
+        "rdom", "Range Domain"
+        "rdommin", "Range Domain Minimum"
+        "rdommax", "Range Domain Maximum"
+        "rdommean", "Range Domain Mean"
+        "rdomstdv", "Range Domain Standard Deviation"
+        "attrunit", "Attribute Units of Measure"
+        "attrmres", "Attribute Measurement Resolution"
+        "codesetd", "Codeset Domain"
+        "codesetn", "Codeset Domain Name"
+        "codesets", "Codeset Domain Source"
+        "udom", "Unrepresentable Domain"
+        "begdatea", "Beginning Date of Attribute Values"
+        "enddatea", "Ending Date of Attribute Values"
+        "attrvai", "Attribute Value Accuracy Information"
+        "attrva", "Attribute Value Accuracy"
+        "attrvae", "Attribute Value Accuracy Explanation"
+        "attrmfrq", "Attribute Value Measurement Frequency"
+        "subtype", "Subtype Information"
+        "stname", "Subtype Name"
+        "stcode", "Subtype Code"
+        "stfield", "Subtype Attribute"
+        "stfldnm", "Subtype Attribute Name"
+        "stflddv", "Subtype Default Value"
+        "stflddd", "Attribute Defined Domain"
+        "domname", "Domain Name"
+        "domdesc", "Domain Description"
+        "domowner", "Domain Owner"
+        "domfldtp", "Domain Attribute Type"
+        "domtype", "Domain Type"
+        "mfgtype", "Merge Rule"
+        "splttype", "Split Rule"
+        "relinfo", "Relationship Information"
+        "reldesc", "Description of Relationship"
+        "relcard", "Relationship Cardinality"
+        "relattr", "Attributed Relationship"
+        "relcomp", "Composite Relationship"
+        "relnodir", "Notification Direction"
+        "otfcname", "Origin Name"
+        "otfcpkey", "Origin Primary Key"
+        "otfcfkey", "Origin Foreign Key"
+        "dtfcname", "Destination Name"
+        "dtfcpkey", "Destination Primary Key"
+        "dtfcfkey", "Destination Foreign Key"
+        "relflab", "Relationship Forward Label"
+        "relblab", "Relationship Backward Label"
+        "overview", "Overview Description"
+        "eaover", "Entity and Attribute Overview"
+        "eadetcit", "Entity and Attribute Detail Citation"
+        "distinfo", "Distribution Information"
+        "distrib", "Distributor"
+        "cntinfo", "Contact Information"
+        "resdesc", "Resource Description"
+        "distliab", "Distribution Liability"
+        "stdorder", "Standard Order Process"
+        "nondig", "Non-Digital Form"
+        "digform", "Digital Form"
+        "digtinfo", "Digital Transfer Information"
+        "formname", "Format Name"
+        "formvern", "Format Version Number"
+        "formverd", "Format Version Date"
+        "formspec", "Format Specification"
+        "formcont", "Format Information Content"
+        "filedec", "File Decompression Technique"
+        "transize", "Transfer Size"
+        "dssize", "Dataset Size"
+        "digtopt", "Digital Transfer Option"
+        "onlinopt", "Online Option"
+        "computer", "Computer Contact Information"
+        "networka", "Network Address"
+        "networkr", "Network Resource Name"
+        "dialinst", "Dialup Instructions"
+        "lowbps", "Lowest BPS"
+        "highbps", "Highest BPS"
+        "numdata", "Number DataBits"
+        "numstop", "Number StopBits"
+        "parity", "Parity"
+        "compress", "Compression Support"
+        "dialtel", "Dialup Telephone"
+        "dialfile", "Dialup Filename"
+        "sdeconn", "SDE Connection Information"
+        "server", "Server Name"
+        "instance", "Instance Name"
+        "database", "Database Name"
+        "user", "User Name"
+        "version", "Version Name"
+        "accinstr", "Access Instructions"
+        "oncomp", "Online Computer and Operating  System"
+        "offoptn", "Offline Option"
+        "offmedia", "Offline Media"
+        "recap", "Recording Capacity"
+        "recden", "Recording Density"
+        "recdenu", "Recording Density Units"
+        "recfmt", "Recording Format"
+        "compat", "Compatibility Information"
+        "fees", "Fees"
+        "ordering", "Ordering Instructions"
+        "turnarnd", "Turnaround"
+        "custom", "Custom Order Process"
+        "techpreq", "Technical Prerequisites"
+        "availabl", "Available Time Period"
+        "timeinfo", "Time Period Information"
+        "metainfo", "Metadata Reference Information"
+        "metd", "Metadata Date"
+        "metrd", "Metadata Review Date"
+        "metfrd", "Metadata Future Review Date"
+        "langmeta", "Language of Metadata"
+        "metc", "Metadata Contact"
+        "cntinfo", "Contact Information"
+        "metstdn", "Metadata Standard Name"
+        "metstdv", "Metadata Standard Version"
+        "mettc", "Metadata Time Convention"
+        "metac", "Metadata Access Constraints"
+        "metuc", "Metadata Use Constraints"
+        "metsi", "Metadata Security Information"
+        "metscs", "Metadata Security Classification System"
+        "metsc", "Metadata Security Classification"
+        "metshd", "Metadata Security Handling Description"
+        "metextns", "Metadata Extensions"
+        "onlink", "Online Linkage"
+        "metprof", "Profile Name"
+        "Binary", "Binary Enclosures"
+        "Thumbnail", "Thumbnail"
+        "Data", "Data"
+        "Enclosure", "Enclosure"
+        "Descript", "Description"
+        "Data", "Data"
+        "citeinfo", "Citation Information"
+        "origin", "Originator"
+        "pubdate", "Publication Date"
+        "pubtime", "Publication Time"
+        "title", "Title"
+        "ftname", "File or Table Name"
+        "edition", "Edition"
+        "geoform", "Geospatial Data Presentation Form"
+        "serinfo", "Series Information"
+        "sername", "Series Name"
+        "issue", "Issue Identification"
+        "pubinfo", "Publication Information"
+        "pubplace", "Publication Place"
+        "publish", "Publisher"
+        "othercit", "Other Citation Details"
+        "onlink", "Online Linkage"
+        "lworkcit", "Larger Work Citation"
+        "citeinfo", "Citation Information"
+        "timeinfo", "Time Period Information"
+        "sngdate", "Single Date/Time"
+        "caldate", "Calendar Date"
+        "time", "Time of Day"
+        "mdattim", "Multiple Dates/Times"
+        "sngdate", "Single Date/Time"
+        "caldate", "Calendar Date"
+        "time", "Time of Day"
+        "sngdate", "Single Date/Time"
+        "caldate", "Calendar Date"
+        "time", "Time of Day"
+        "rngdates", "Range of Dates/Times"
+        "begdate", "Beginning Date"
+        "begtime", "Beginning Time"
+        "enddate", "End Date"
+        "endtime", "End Time"
+        "cntinfo", "Contact Information"
+        "cntperp", "Contact Person Primary"
+        "cntper", "Contact Person"
+        "cntorg", "Contact Organization"
+        "cntorgp", "Contact Organization Primary"
+        "cntper", "Contact Organization"
+        "cntorg", "Contact Person"
+        "cntpos", "Contact Position"
+        "cntaddr", "Contact Address"
+        "addrtype", "Address Type"
+        "address", "Address"
+        "city", "City"
+        "state", "State or Province"
+        "postal", "Postal Code"
+        "country", "Country"
+        "cntvoice", "Contact Voice Telephone"
+        "cnttdd", "Contact TDD/TTY Telephone"
+        "cntfax", "Contact Facsimile Telephone"
+        "cntemail", "Contact Electronic Mail Address"
+        "hours", "Hours of Service"
+        "cntinst", "Contact Instructions"
+
+    |]
+
+let metadata =
+    [|
+
+            "metadata"
+            "Esri"
+            "CreaDate"
+            "CreaTime"
+            "ArcGISFormat"
+            "SyncOnce"
+            "DataProperties"
+            "itemProps"
+            "itemName"
+            "imsContentType"
+            "nativeExtBox"
+            "westBL"
+            "eastBL"
+            "southBL"
+            "northBL"
+            "exTypeCode"
+            "relatedItems"
+            "item"
+            "itemType"
+            "objCount"
+            "itemLocation"
+            "linkage"
+            "protocol"
+            "coordRef"
+            "type"
+            "geogcsn"
+            "csUnits"
+            "projcsn"
+            "peXml"
+            "ProjectedCoordinateSystem"
+            "WKT"
+            "XOrigin"
+            "YOrigin"
+            "XYScale"
+            "ZOrigin"
+            "ZScale"
+            "MOrigin"
+            "MScale"
+            "XYTolerance"
+            "ZTolerance"
+            "MTolerance"
+            "HighPrecision"
+            "WKID"
+            "LatestWKID"
+            "VCSWKID"
+            "LatestVCSWKID"
+            "lineage"
+            "Process"
+            "CIMFeatureDatasetDataConnection"
+            "FeatureDataset"
+            "WorkspaceConnectionString"
+            "WorkspaceFactory"
+            "Dataset"
+            "DatasetType"
+            "operationSequence"
+            "workflow"
+            "AddGlobalIDs"
+            "DisableEditorTracking"
+            "creator"
+            "creation_date"
+            "last_editor"
+            "last_edit_date"
+            "RegisterAsVersioned"
+            "edit_to_base"
+            "SyncDate"
+            "SyncTime"
+            "ModDate"
+            "ModTime"
+            "dataIdInfo"
+            "envirDesc"
+            "dataLang"
+            "languageCode"
+            "countryCode"
+            "idCitation"
+            "resTitle"
+            "presForm"
+            "PresFormCd"
+            "spatRpType"
+            "SpatRepTypCd"
+            "dataExt"
+            "geoEle"
+            "GeoBndBox"
+            "mdLang"
+            "mdChar"
+            "CharSetCd"
+            "distInfo"
+            "distFormat"
+            "formatName"
+            "mdHrLv"
+            "ScopeCd"
+            "mdHrLvName"
+            "refSysInfo"
+            "RefSystem"
+            "refSysID"
+            "identCode"
+            "idCodeSpace"
+            "idVersion"
+            "spatRepInfo"
+            "VectSpatRep"
+            "geometObjs"
+            "geoObjTyp"
+            "GeoObjTypCd"
+            "geoObjCnt"
+            "topLvl"
+            "TopoLevCd"
+            "spdoinfo"
+            "ptvctinf"
+            "esriterm"
+            "efeatyp"
+            "efeageom"
+            "esritopo"
+            "efeacnt"
+            "spindex"
+            "linrefer"
+            "mdDateSt"
+            "idinfo"
+            "citation"
+            "citeinfo"
+            "pubdate"
+            "title"
+            "geoform"
+            "pubinfo"
+            "pubplace"
+            "publish"
+            "onlink"
+            "origin"
+            "ftname"
+            "descript"
+            "abstract"
+            "purpose"
+            "langdata"
+            "timeperd"
+            "timeinfo"
+            "sngdate"
+            "caldate"
+            "current"
+            "status"
+            "progress"
+            "update"
+            "spdom"
+            "bounding"
+            "westbc"
+            "eastbc"
+            "northbc"
+            "southbc"
+            "lboundng"
+            "leftbc"
+            "rightbc"
+            "bottombc"
+            "topbc"
+            "keywords"
+            "theme"
+            "themekt"
+            "themekey"
+            "place"
+            "placekey"
+            "accconst"
+            "useconst"
+            "ptcontac"
+            "cntinfo"
+            "cntorgp"
+            "cntorg"
+            "cntaddr"
+            "addrtype"
+            "address"
+            "city"
+            "state"
+            "postal"
+            "cntvoice"
+            "hours"
+            "native"
+            "natvform"
+            "dataqual"
+            "attracc"
+            "procstep"
+            "procdesc"
+            "srcused"
+            "procdate"
+            "proctime"
+            "direct"
+            "spref"
+            "horizsys"
+            "planar"
+            "planci"
+            "plance"
+            "coordrep"
+            "absres"
+            "ordres"
+            "plandu"
+            "geodetic"
+            "horizdn"
+            "ellips"
+            "semiaxis"
+            "denflat"
+            "cordsysn"
+            "vertdef"
+            "altsys"
+            "altres"
+            "altenc"
+            "eainfo"
+            "detailed"
+            "enttyp"
+            "enttypl"
+            "enttypt"
+            "enttypc"
+            "attr"
+            "attrlabl"
+            "attrdef"
+            "attrdefs"
+            "attrdomv"
+            "udom"
+            "attalias"
+            "attrtype"
+            "attwidth"
+            "atprecis"
+            "attscale"
+            "subtype"
+            "stname"
+            "stcode"
+            "stfield"
+            "stfldnm"
+            "stflddv"
+            "stflddd"
+            "domname"
+            "domdesc"
+            "domtype"
+            "mrgtype"
+            "splttype"
+            "domowner"
+            "domfldtp"
+            "distinfo"
+            "resdesc"
+            "metainfo"
+            "metd"
+            "metc"
+            "cntper"
+            "metstdn"
+            "metstdv"
+            "mettc"
+            "metextns"
+            "metprof"
+            "langmeta"
+            "AddField"
+            "field_name"
+            "field_type"
+            "field_length"
+            "field_alias"
+            "field_is_nullable"
+            "field_is_required"
+            "field_domain"
+            "AlterField"
+            "new_field_name"
+            "clear_field_alias"
+            "AssignDomainToField"
+            "domain_name"
+            "subtype_code"
+            "EnableEditorTracking"
+            "last_editor_field"
+            "last_edit_date_field"
+            "add_fields"
+            "record_dates_in"
+            "RemoveDomainFromField"
+            "field_precision"
+            "ArcGISstyle"
+            "geoBox"
+            "mdStanName"
+            "mdStanVer"
+            "distributor"
+            "distorTran"
+            "onLineSrc"
+            "orDesc"
+            "distorFormat"
+            "CarteAssociation"
+            "Version"
+            "geodatabaseDesigner"
+            "creationDate"
+            "geodatabase"
+            "connectionProperty"
+            "objectClass"
+            "field"
+            "geometryDef"
+            "grid"
+            "index"
+            "LayerFile"
+            "creator_field"
+            "creation_date_field"
+            "AddSubtype"
+            "subtype_description"
+            "DeleteCodedValueFromDomain"
+            "code"
+            "AddCodedValueToDomain"
+            "coded_values"
+            "coded_value"
+            "code_description"
+            "AssignDefaultToField"
+            "clear_value"
+            "CIMStandardDataConnection"
+            "DeleteField"
+
+    |]
+
+
+
+
+
+
+let relevant_metadata =
+    Metadata_Content
+    |> Array.Parallel.filter(fun (attribute, _) -> metadata |> Array.exists (fun element -> element = attribute))
+
+relevant_metadata
+|> Array.map (fun (short_name, long_name) -> sprintf "\"%s\", \"%s\"" short_name long_name)
+|> String.concat "\n"
+|> clip
+*)
+
 (*
 let Unitids =
     LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers

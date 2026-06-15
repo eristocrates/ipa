@@ -1,0 +1,44 @@
+Subtype Information	subtype			
+Subtype Name	stname	S		E,F
+Subtype Code	stcode	S		E,F
+Subtype Attribute	stfield	S		
+Subtype Attribute Name	stfldnm	S		E,F
+Subtype Default Value	stflddv	S		E,F
+Attribute Defined Domain	stflddd			
+Domain Name	domname	S		E,F
+Domain Description	domdesc	S		E,F
+Domain Owner	domowner	S		E,F
+Domain Attribute Type	domfldtp	S		E,F
+Domain Type	domtype	S		E,F
+Merge Rule	mfgtype	S		E,F
+Split Rule	splttype	S		E,F
+Relationship Information	relinfo			
+Description of Relationship	reldesc	S		F
+Relationship Cardinality	relcard	S		E,F
+Attributed Relationship	relattr	S		E,F
+Composite Relationship	relcomp	S		E,F
+Notification Direction	relnodir	S		E,F
+Origin Name	otfcname	S		E,F
+Origin Primary Key	otfcpkey	S		E,F
+Origin Foreign Key	otfcfkey	S		E,F
+Destination Name	dtfcname	S		E,F
+Destination Primary Key	dtfcpkey	S		E,F
+Destination Foreign Key	dtfcfkey	S		E,F
+Relationship Forward Label	relflab	S		E,F
+Relationship Backward Label	relblab	S		E,F
+Overview Description	overview			
+Entity and Attribute Overview	eaover		Y	Q,E,C,F
+Entity and Attribute Detail Citation	eadetcit		Y	Q,E,C,F
+				
+Distribution Information	distinfo			
+Distributor	distrib			
+Contact Information	cntinfo			
+See Contact Information below.			Y	Q,C,F
+Resource Description	resdesc		Y	Q,C,F
+Distribution Liability	distliab		Y	Q,C,F
+Standard Order Process	stdorder			
+Non-Digital Form	nondig		Y	Q,C,F
+Digital Form	digform			
+Digital Transfer Information	digtinfo			
+Format Name	formname	S3	Y	Q,E,C,F
+Format Version Number	formvern		Y	Q,C,F

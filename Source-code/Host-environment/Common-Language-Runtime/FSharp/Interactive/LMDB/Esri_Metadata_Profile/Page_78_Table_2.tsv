@@ -1,0 +1,39 @@
+Positional Accuracy	posacc			
+Horizontal Positional Accuracy	horizpa			
+Horizontal Positional Accuracy Report	horizpar		Y	Q,E,C,F
+Quantitative Horizontal Positional Accuracy  Assessment	qhorizpa			
+Horizontal Positional Accuracy Value	horizpav		Y	E,C,F
+Horizontal Positional Accuracy Explanation	horizpae		Y	E,C,F
+Vertical Positional Accuracy	vertacc			
+Vertical Positional Accuracy Report	vertaccr		Y	Q,E,C,F
+Quantitative Vertical Positional Accuracy  Assessment	qvertpa			
+Vertical Positional Accuracy Value	vertaccv		Y	E,C,F
+Vertical Positional Accuracy Explanation	vertacce		Y	E,C,F
+Lineage	lineage			
+Source Information	srcinfo			
+Source Citation	srccite			
+Citation Information	citeinfo			
+See Citation Information below.			Y	Q,C,F
+Source Scale Denominator	srcscale		Y	G,Q,C,F
+Type of Source Media	typesrc		Y	Q,C,F
+Source Time Period of Content	srctime			
+Time Period Information	timeinfo			
+See Time Period Information below.			Y	C,F
+Source Currentness Reference	srccurr		Y	C,F
+Source Citation Abbreviation	srccitea		Y	C,F
+Source Contribution	srccontr		Y	Q,C,F
+Process Step	procstep			
+Process Description	procdesc		Y	Q,C,F
+Process Software and Version	procsv		Y	F
+Source Used Citation Abbreviation	srcused		Y	Q,C,F
+Process Date	procdate		Y	Q,C,F
+Process Time	proctime		Y	C,F
+Source Produced Citation Abbreviation	srcprod		Y	Q,C,F
+Process Contact Information	proccont			
+Contact Information	cntinfo			
+See Contact Information below.			Y	Q,C,F
+Cloud Cover	cloud		Y	C,F
+				
+Spatial Data Organization Information	spdoinfo			
+Indirect Spatial Reference	indsprdf		Y	Q,C,F
+Direct Spatial Reference Method	direct	S	Y	Q,E,C,F

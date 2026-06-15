@@ -1,0 +1,43 @@
+Lambert Conformal Conic	lambertc	S		F
+Standard Parallel	stdparll	S	Y	Q,E,C,F
+Longitude of Central Meridian	longcm	S	Y	Q,E,C,F
+Latitude of Projection Origin	latprjo	S	Y	Q,E,C,F
+False Easting	feast	S	Y	Q,E,C,F
+False Northing	fnorth	S	Y	Q,E,C,F
+Mercator	mercator	S		F
+Standard Parallel	stdparll	S	Y	Q,E,C,F
+Scale Factor at Equator	sfequat		Y	Q,E,C,F
+Longitude of Central Meridian	longcm	S	Y	Q,E,C,F
+False Easting	feast	S	Y	Q,E,C,F
+False Northing	fnorth	S	Y	Q,E,C,F
+Modified Stereographic for Alaska	modsak			F
+False Easting	feast		Y	Q,E,C,F
+False Northing	fnorth		Y	Q,E,C,F
+Miller Cylindrical	miller	S		F
+Longitude of Central Meridian	longcm	S	Y	Q,E,C,F
+False Easting	feast	S	Y	Q,E,C,F
+False Northing	fnorth	S	Y	Q,E,C,F
+Oblique Mercator	obqmerc	S		F
+Scale Factor at Center Line	sfctrlin	S	Y	Q,E,C,F
+Oblique Line Azimuth	obqlazim			
+Azimuthal Angle	azimangl	S	Y	Q,E,C,F
+Azimuth Measure Point Longitude	azimptl	S	Y	Q,E,C,F
+Oblique Line Point	obqlpt			
+Oblique Line Latitude	obqllat	S	Y	Q,E,C,F
+Oblique Line Longitude	obqllong	S	Y	Q,E,C,F
+Oblique Line Latitude	obqllat	S	Y	Q,E,C,F
+Oblique Line Longitude	obqllong	S	Y	Q,E,C,F
+Latitude of Projection Origin	latprjo	S	Y	Q,E,C,F
+False Easting	feast	S	Y	Q,E,C,F
+False Northing	fnorth	S	Y	Q,E,C,F
+Orthographic	orthogr			F
+Longitude of Projection Center	longpc	S4	Y	Q,E,C,F
+Latitude of Projection Center	latprjc	S4	Y	Q,E,C,F
+False Easting	feast	S4	Y	Q,E,C,F
+False Northing	fnorth	S4	Y	Q,E,C,F
+Polar Stereographic	polarst			F
+Straight Vertical Longitude from Pole	svlong		Y	Q,E,C,F
+Standard Parallel	stdparll		Y	Q,E,C,F
+Scale Factor at Projection Origin	sfprjorg		Y	Q,E,C,F
+False Easting	feast		Y	Q,E,C,F
+False Northing	fnorth		Y	Q,E,C,F

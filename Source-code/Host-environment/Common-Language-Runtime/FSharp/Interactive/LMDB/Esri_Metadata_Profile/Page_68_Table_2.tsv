@@ -1,0 +1,14 @@
+	If MapProjectionName = "CylindricalEqualArea"  ____	
+	OtherESRIProjection =  __	
+	StandardParallel +  _	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "DoubleStereographic"  ___	
+	OtherESRIProjection =  __	
+	ScaleFactoratProjectionOrigin +  ____	
+	LongitudeofCentralMeridian +  ___	
+	LatitudeofProjectionOrigin +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	

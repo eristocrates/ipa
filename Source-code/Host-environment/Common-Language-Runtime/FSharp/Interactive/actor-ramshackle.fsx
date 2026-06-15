@@ -31,8 +31,8 @@ let search_file_paths (search_filter: Filter'Type) =
 let filter =
     {
 
-      root_directory_path = @"C:\Windows\Microsoft.NET\assembly\GAC_MSIL"
-      file_name_expression = "System.Security*dll"
+      root_directory_path = @"D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release"
+      file_name_expression = "*xsd"
       contains_text = ""
       criteria = Criteria'Type.Search SearchOption.AllDirectories
 
@@ -40,9 +40,8 @@ let filter =
 
 let search_results = search_file_paths filter
 
-let filteredResults =
-    search_results
-    |> Array.Parallel.map (fun path -> $"""#r @"{path}" """)
+let filteredResults = search_results
+//    |> Array.Parallel.map (fun path -> $"""#r @"{path}" """)
 // |> Array.Parallel.map (fun path -> Path.GetFileNameWithoutExtension(path))
 (*
     |> Array.Parallel.map (fun path ->

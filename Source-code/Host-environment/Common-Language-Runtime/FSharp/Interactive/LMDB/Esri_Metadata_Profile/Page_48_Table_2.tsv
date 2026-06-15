@@ -1,0 +1,27 @@
+	AttributeDefinedDomain =  __	
+	DomainName +  _	
+	(DomainDescription) +  _	
+	(DomainOwner) +  _	
+	DomainAttributeType +  __	
+	DomainType +  _	
+	MergeRule +  _	
+	SplitRule  _	
+		
+	RelationshipInformation =  _	
+	(DescriptionofRelationship) +  __	
+	RelationshipCardinality +  _	
+	AttributedRelationship +  _	
+	CompositeRelationship +  _	
+	NotificationDirection +  _	
+	OriginName +  _	
+	OriginPrimaryKey +  __	
+	OriginForeignKey +  __	
+	DestinationName +  _	
+	DestinationPrimaryKey +  __	
+	DestinationForeignKey +  __	
+	RelationshipForwardLabel +  __	
+	RelationshipBackwardLabel  __	
+		
+	OverviewDescription =  _	
+	EntityandAttributeOverview +  ___	
+	1{EntityandAttributeDetailCitation}n  ____	

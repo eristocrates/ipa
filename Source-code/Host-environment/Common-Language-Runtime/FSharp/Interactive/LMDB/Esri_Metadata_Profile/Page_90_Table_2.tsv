@@ -1,0 +1,33 @@
+Available Time Period	availabl 
+Time Period Information	timeinfo 
+See Time Period Information below.			Y	C,F 
+					
+					
+Metadata Reference Information	metainfo 
+Metadata Date	metd	S	Y	Q,E,C,F 
+Metadata Review Date	metrd		Y	Q,E,C,F 
+Metadata Future Review Date	metfrd		Y	Q,E,C,F 
+Language of Metadata	langmeta	S	Y	F 
+Metadata Contact	metc 
+Contact Information	cntinfo 
+See Contact Information below.		H1	Y	Q,E,C,F 
+Metadata Standard Name	metstdn	S	Y	Q,E,C,F 
+Metadata Standard Version	metstdv	S	Y	Q,E,C,F 
+Metadata Time Convention	mettc	S	Y	E,C,F 
+Metadata Access Constraints	metac		Y	C,F 
+Metadata Use Constraints	metuc		Y	C,F 
+Metadata Security Information	metsi 
+Metadata Security Classification System	metscs		Y	C,F 
+Metadata Security Classification	metsc		Y	C,F 
+Metadata Security Handling Description	metshd		Y	C,F 
+Metadata Extensions	metextns 
+Online Linkage	onlink	S	Y	Q,E,C,F 
+Profile Name	metprof	S	Y	E,C,F 
+					
+					
+Binary Enclosures	Binary 
+Thumbnail	Thumbnail 
+Data	Data			E,F 
+Enclosure	Enclosure 
+Description	Descript		P	E,F 
+Data	Data		P	Ea,F 
