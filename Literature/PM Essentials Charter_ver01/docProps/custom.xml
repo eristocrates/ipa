@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
+            xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+    <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
+              pid="2"
+              name="ContentTypeId">
+        <vt:lpwstr>0x01010067BAF888A194F34B912F5B8A9C9BA528</vt:lpwstr>
+    </property>
+    <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
+              pid="3"
+              name="WorkflowChangePath">
+        <vt:lpwstr>4e7f0d7b-af58-4d14-a711-25a4e8942f2a,4;4e7f0d7b-af58-4d14-a711-25a4e8942f2a,4;4e7f0d7b-af58-4d14-a711-25a4e8942f2a,4;4e7f0d7b-af58-4d14-a711-25a4e8942f2a,4;4e7f0d7b-af58-4d14-a711-25a4e8942f2a,4;4e7f0d7b-af58-4d14-a711-25a4e8942f2a,4;4e7f0d7b-af58-4d14-a7</vt:lpwstr>
+    </property>
+    <property fmtid="{D5CDD505-2E9C-101B-9397-08002B2CF9AE}"
+              pid="4"
+              name="TaxKeyword">
+        <vt:lpwstr>319;#PM Lite|b7e132d0-70ec-4911-8ebc-7672018bee62</vt:lpwstr>
+    </property>
+</Properties>
