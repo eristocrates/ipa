@@ -1536,7 +1536,17 @@ module rdf =
     let _namespace_name =
         lmdb_read_write { return! Lexical_Form.from_string "http://www.w3.org/1999/02/22-rdf-syntax-ns#" }
 
-    let _prefix (local_name_string: string) =
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
         lmdb_read_write {
             let! local_name = Lexical_Form.from_string (local_name_string.Replace(" ", "_"))
 
@@ -1547,91 +1557,91 @@ module rdf =
         }
 
     /// The class of containers of alternatives.
-    let Alt = _prefix "Alt"
+    let Alt = _vocab "Alt"
 
 
     /// The class of unordered containers.
-    let Bag = _prefix "Bag"
+    let Bag = _vocab "Bag"
 
 
     /// A class representing a compound literal.
-    let CompoundLiteral = _prefix "CompoundLiteral"
+    let CompoundLiteral = _vocab "CompoundLiteral"
 
 
     /// The datatype of RDF literals storing fragments of HTML content
-    let HTML = _prefix "HTML"
+    let HTML = _vocab "HTML"
 
 
     /// The datatype of RDF literals storing JSON content.
-    let JSON = _prefix "JSON"
+    let JSON = _vocab "JSON"
 
 
     /// The class of RDF Lists.
-    let List = _prefix "List"
+    let List = _vocab "List"
 
 
     /// The class of plain (i.e. untyped) literal values, as used in RIF and OWL 2
-    let PlainLiteral = _prefix "PlainLiteral"
+    let PlainLiteral = _vocab "PlainLiteral"
 
 
     /// The class of RDF properties.
-    let Property = _prefix "Property"
+    let Property = _vocab "Property"
 
 
     /// The class of ordered containers.
-    let Seq = _prefix "Seq"
+    let Seq = _vocab "Seq"
 
 
     /// The class of RDF statements.
-    let Statement = _prefix "Statement"
+    let Statement = _vocab "Statement"
 
 
     /// The datatype of XML literal values.
-    let XMLLiteral = _prefix "XMLLiteral"
+    let XMLLiteral = _vocab "XMLLiteral"
 
 
     /// The base direction component of a CompoundLiteral.
-    let direction = _prefix "direction"
+    let direction = _vocab "direction"
 
 
     /// The first item in the subject RDF list.
-    let first = _prefix "first"
+    let first = _vocab "first"
 
 
     /// The datatype of language-tagged string values
-    let langString = _prefix "langString"
+    let langString = _vocab "langString"
 
 
     /// The language component of a CompoundLiteral.
-    let language = _prefix "language"
+    let language = _vocab "language"
 
 
     /// The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it.
-    let nil = _prefix "nil"
+    let nil = _vocab "nil"
 
 
     /// The object of the subject RDF statement.
-    let object = _prefix "object"
+    let object = _vocab "object"
 
 
     /// The predicate of the subject RDF statement.
-    let predicate = _prefix "predicate"
+    let predicate = _vocab "predicate"
 
 
     /// The rest of the subject RDF list after the first item.
-    let rest = _prefix "rest"
+    let rest = _vocab "rest"
 
 
     /// The subject of the subject RDF statement.
-    let subject = _prefix "subject"
+    let subject = _vocab "subject"
 
 
     /// The subject is an instance of a class.
-    let ``type`` = _prefix "type"
+    let ``type`` = _vocab "type"
 
 
     /// Idiomatic property used for structured values.
-    let value = _prefix "value"
+    let value = _vocab "value"
 
 let is_a = rdf.``type``
 
@@ -2582,136 +2592,136 @@ module skos =
                       local_name_id = local_name.lexical_form_id }
         }
 
-    let Collection = _prefix "Collection"
+    let Collection = _vocab "Collection"
 
 
 
-    let Concept = _prefix "Concept"
+    let Concept = _vocab "Concept"
 
 
 
-    let ConceptScheme = _prefix "ConceptScheme"
+    let ConceptScheme = _vocab "ConceptScheme"
 
 
 
-    let OrderedCollection = _prefix "OrderedCollection"
+    let OrderedCollection = _vocab "OrderedCollection"
 
 
 
-    let broadMatch = _prefix "broadMatch"
+    let broadMatch = _vocab "broadMatch"
 
 
 
-    let broaderTransitive = _prefix "broaderTransitive"
+    let broaderTransitive = _vocab "broaderTransitive"
 
 
 
-    let changeNote = _prefix "changeNote"
+    let changeNote = _vocab "changeNote"
 
 
 
-    let closeMatch = _prefix "closeMatch"
+    let closeMatch = _vocab "closeMatch"
 
 
 
-    let definition = _prefix "definition"
+    let definition = _vocab "definition"
 
 
 
-    let editorialNote = _prefix "editorialNote"
+    let editorialNote = _vocab "editorialNote"
 
 
 
-    let example = _prefix "example"
+    let example = _vocab "example"
 
 
 
-    let hasTopConcept = _prefix "hasTopConcept"
+    let hasTopConcept = _vocab "hasTopConcept"
 
 
 
-    let historyNote = _prefix "historyNote"
+    let historyNote = _vocab "historyNote"
 
 
 
-    let inScheme = _prefix "inScheme"
+    let inScheme = _vocab "inScheme"
 
 
 
-    let ``member`` = _prefix "member"
+    let ``member`` = _vocab "member"
 
 
 
-    let narrowMatch = _prefix "narrowMatch"
+    let narrowMatch = _vocab "narrowMatch"
 
 
 
-    let narrowerTransitive = _prefix "narrowerTransitive"
+    let narrowerTransitive = _vocab "narrowerTransitive"
 
 
 
-    let notation = _prefix "notation"
+    let notation = _vocab "notation"
 
 
 
-    let note = _prefix "note"
+    let note = _vocab "note"
 
 
 
-    let relatedMatch = _prefix "relatedMatch"
+    let relatedMatch = _vocab "relatedMatch"
 
 
 
-    let scopeNote = _prefix "scopeNote"
+    let scopeNote = _vocab "scopeNote"
 
 
 
-    let semanticRelation = _prefix "semanticRelation"
+    let semanticRelation = _vocab "semanticRelation"
 
 
 
-    let topConceptOf = _prefix "topConceptOf"
+    let topConceptOf = _vocab "topConceptOf"
 
 
     /// A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag.
-    let prefLabel = _prefix "prefLabel"
+    let prefLabel = _vocab "prefLabel"
 
 
     /// Broader concepts are typically rendered as parents in a concept hierarchy (tree).
-    let broader = _prefix "broader"
+    let broader = _vocab "broader"
 
 
     /// For any resource, every item in the list given as the value of the
     ///       skos:memberList property is also a value of the skos:member property.
-    let memberList = _prefix "memberList"
+    let memberList = _vocab "memberList"
 
 
     /// Narrower concepts are typically rendered as children in a concept hierarchy (tree).
-    let narrower = _prefix "narrower"
+    let narrower = _vocab "narrower"
 
 
     /// The range of skos:altLabel is the class of RDF plain literals.
-    let altLabel = _prefix "altLabel"
+    let altLabel = _vocab "altLabel"
 
 
     /// The range of skos:hiddenLabel is the class of RDF plain literals.
-    let hiddenLabel = _prefix "hiddenLabel"
+    let hiddenLabel = _vocab "hiddenLabel"
 
 
 
 
     /// These concept mapping relations mirror semantic relations, and the data model defined below is similar (with the exception of skos:exactMatch) to the data model defined for semantic relations. A distinct vocabulary is provided for concept mapping relations, to provide a convenient way to differentiate links within a concept scheme from links between concept schemes. However, this pattern of usage is not a formal requirement of the SKOS data model, and relies on informal definitions of best practice.
-    let mappingRelation = _prefix "mappingRelation"
+    let mappingRelation = _vocab "mappingRelation"
 
 
     /// skos:exactMatch is disjoint with each of the properties skos:broadMatch and skos:relatedMatch.
-    let exactMatch = _prefix "exactMatch"
+    let exactMatch = _vocab "exactMatch"
 
 
 
 
     /// skos:related is disjoint with skos:broaderTransitive
-    let related = _prefix "related"
+    let related = _vocab "related"
 
 module skosxl =
     let _namespace_name =
@@ -2753,6 +2763,43 @@ module skosxl =
 
     /// If C skosxl:prefLabel L and L skosxl:literalForm V, then X skos:prefLabel V.
     let prefLabel = _vocab "prefLabel"
+
+module dc =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string "http://purl.org/dc/elements/1.1/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name = Lexical_Form.from_string local_name_string.low_lined transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string (local_name_string.Replace(" ", "_"))
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let coverage = _vocab "coverage"
+    let creator = _vocab "creator"
+    let date = _vocab "date"
+    let description = _vocab "description"
+    let format = _vocab "format"
+    let identifier = _vocab "identifier"
+    let language = _vocab "language"
+    let publisher = _vocab "publisher"
+    let relation = _vocab "relation"
+    let rights = _vocab "rights"
+    let source = _vocab "source"
+    let subject = _vocab "subject"
+    let title = _vocab "title"
+    let ``type`` = _vocab "type"
 
 module dcterms =
     let _namespace_name =
@@ -3251,7 +3298,7 @@ module lime =
     /// The 'resource type' property indicates the type of ontological entity of a lexicalization set or lexical linkset.
     let resourceType = _vocab "resourceType"
 
-module lexdcp =
+module decomp =
     let _namespace_name =
         lmdb_read_write { return! Lexical_Form.from_string "http://www.w3.org/ns/lemon/decomp#" }
 

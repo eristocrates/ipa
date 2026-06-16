@@ -109,6 +109,38 @@ open type Html
 
 
 
+#r "nuget: Catalyst.Models.English"
+
+open Catalyst
+open Catalyst.Models
+open Mosaik.Core
+
+
+English.Register()
+Storage.Current <- DiskStorage("catalyst-models")
+
+module nlp =
+    let pipeline = Pipeline.For(Language.English)
+
+    let recognizer =
+        AveragePerceptronEntityRecognizer.FromStoreAsync(Language.English, Version.Latest, "WikiNER")
+        |> Async.AwaitTask
+        |> Async.RunSynchronously
+
+    pipeline.Add(recognizer) |> ignore
+
+    let process_single (input: string) =
+        let document = Document(input, Language.English)
+        pipeline.ProcessSingle(document)
+
+    let process_multiple (inputs: string array) =
+        let documents =
+            inputs
+            |> Array.map (fun input -> Document(input, Language.English) :> IDocument)
+            |> Array.toSeq
+        pipeline.Process documents
+
+
 let should_triplify = true
 
 type InforProdSql = SqlDataProvider<ConnectionString=Prod.connection_string, IndividualsAmount=10000, UseOptionTypes=Common.NullableColumnType.OPTION>
@@ -117,6 +149,8 @@ type InforProdSql = SqlDataProvider<ConnectionString=Prod.connection_string, Ind
 module InforProdSql =
 
     let operations = InforProdSql.GetDataContext()
+
+
 
 [<Literal>]
 let mapping_directory =
@@ -139,6 +173,14 @@ let is_nullish (string_value: string) =
 let is_not_nullish (string_value: string) = not (is_nullish string_value)
 
 
+let xpath (expression: string) (xpath_navigator: XPathNavigator) =
+    let xpath_expression = XPathExpression.Compile(expression)
+
+    xpath_navigator
+        .Select(
+            xpath_expression
+        )
+        .toElementArray
 
 
 
@@ -385,6 +427,23 @@ module gpservices =
         let directory_path =
             @"D:\Surface\Company\Environmental_Systems_Research_Institute\ArcGIS\Pro\Resources\Help\gp\DataTypes"
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module MetaData =
     [<Literal>]
     let file_path =
@@ -420,15 +479,6 @@ let xsi_namespace =
     |> XPathNavigator.xmlns namespace_manager "xsi" "http://www.w3.org/2001/XMLSchema-instance"
 *)
 
-let xpath (expression: string) (xpath_navigator: XPathNavigator) =
-    let xpath_expression = XPathExpression.Compile(expression)
-    // xpath_expression.SetContext(namespace_manager)
-
-    xpath_navigator
-        .Select(
-            xpath_expression
-        )
-        .toElementArray
 
 
 
@@ -986,7 +1036,252 @@ module www2k =
 
     let xmlns = _vocab "xmlns"
 
+/// https://schema.org/docs/about.html
+module schemorg =
 
+
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"https://schema.org/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let Book = _vocab "Book"
+    let isbn = _vocab "isbn"
+    let eisbn = _vocab "eisbn"
+    let accessMode = _vocab "accessMode"
+    let accessModeSufficient = _vocab "accessModeSufficient"
+    let accessibilityHazard = _vocab "accessibilityHazard"
+    let accessibilityFeature = _vocab "accessibilityFeature"
+    let accessibilitySummary = _vocab "accessibilitySummary"
+
+/// https://www.w3.org/TR/epub-ssv-11/#dictionaries
+module epub_ssv =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"https://www.w3.org/TR/epub-ssv-11/#" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    /// A group of terms, each having an opposite or nearly opposite meaning from a headword or idiom.
+    let antonym_group = _vocab "antonym-group"
+    /// A condensed dictionary entry designed for constrained lookup viewports.
+    let condensed_entry = _vocab "condensed-entry"
+    /// The definition of a particular meaning of a headword or idiom.
+    let def = _vocab "def"
+    /// A dictionary entry.
+    let dictentry = _vocab "dictentry"
+    /// A collection of dictionary entries.
+    let dictionary = _vocab "dictionary"
+    /// An explanation of the historical origin of a headword.
+    let etymology = _vocab "etymology"
+    /// An illustration of the usage of a defined term or phrase.
+    let example = _vocab "example"
+    /// Supplemental grammatical information related to the headword and modifying a part of speech or a particular meaning.
+    let gram_info = _vocab "gram-info"
+    /// A defining instance of a phrase.
+    let idiom = _vocab "idiom"
+    /// The grammatical function of a headword.
+    let part_of_speech = _vocab "part-of-speech"
+    /// A list of part of speech groups in a dictionary entry.
+    let part_of_speech_list = _vocab "part-of-speech-list"
+    /// A unit that associates a part of speech with its related sense and phrase groups.
+    let part_of_speech_group = _vocab "part-of-speech-group"
+    /// A phonetic transcription of the pronunciation of a headword or other component of a dictionary entry.
+    let phonetic_transcription = _vocab "phonetic-transcription"
+    /// A list of phrase groups in a dictionary entry.
+    let phrase_list = _vocab "phrase-list"
+    /// A unit for organizing information pertaining to an idiom or example.
+    let phrase_group = _vocab "phrase-group"
+    /// A list of sense groups in a dictionary entry.
+    let sense_list = _vocab "sense-list"
+    /// A unit for organizing information pertaining to a particular meaning of a headword or idiom.
+    let sense_group = _vocab "sense-group"
+    /// A group of terms, each having identical or similar meaning to a headword or idiom.
+    let synonym_group = _vocab "synonym-group"
+    /// The translation of a particular meaning of a source language headword, idiom, or example into a target language.
+    let tran = _vocab "tran"
+    /// Grammatical or usage information related to a translation.
+    let tran_info = _vocab "tran-info"
+
+module esri_press =
+
+
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"https://www.esri.com/en-us/esri-press/browse/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let a_to_z_gis =
+        _vocab "a-to-z-gis-an-illustrated-dictionary-of-geographic-information-systems-third-edition"
+
+module opf =
+
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"http://www.idpf.org/2007/opf#" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+module lexeme =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/lexicon/lexeme/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+module concept =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/lexicon/concept/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+module constituent =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/lexicon/constituent/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+module A_to_Z_GIS =
+    /// https://www.iana.org/assignments/urn-formal/isbn
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string $"urn:isbn:9781589488113:" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name =
+            Lexical_Form.from_string (local_name_string.Replace("\\", "-").low_lined) transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string local_name_string.low_lined
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+    let _graph = _vocab ""
 
 
 /// https://www.rfc-editor.org/info/rfc2397/
@@ -1000,10 +1295,10 @@ module data =
         let plain (text: string) = url "text/plain" "UTF-8" text
 
 
-module concept =
+module sense =
 
     let _namespace_name =
-        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/concept/" }
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/lexicon/sense/" }
 
     let _prefix (local_name_string: string) (transaction: LightningTransaction) =
         let local_name =
@@ -3783,6 +4078,7 @@ module oit =
         }
 
     let _graph = _vocab ""
+    let lexicon = _vocab "lexicon"
 
 module woedms =
     let _namespace_name =
@@ -7986,6 +8282,388 @@ if Feature.Subtypefield.IsSome then
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module AZ =
+    let xpath (file_path: string) (expression: string) =
+
+        let xhtml = XPathNavigator.Load(file_path)
+        let namespace_manager = new XmlNamespaceManager(xhtml.NameTable)
+        xhtml
+        |> XPathNavigator.xmlns namespace_manager "xhtml" "http://www.w3.org/1999/xhtml"
+        |> ignore
+        xhtml
+        |> XPathNavigator.xmlns namespace_manager "epub" "http://www.idpf.org/2007/ops"
+        |> ignore
+        let xpath_expression = XPathExpression.Compile(expression)
+
+        xpath_expression.SetContext(namespace_manager)
+        xhtml.Select(xpath_expression).toElementArray
+
+    let directory_path =
+        @"D:\Surface\Company\Environmental_Systems_Research_Institute\Esri_Reference\A_to_Z_GIS\OEBPS\"
+
+
+    let ids =
+        Directory.GetFiles(directory_path, "AZ_*.xhtml")
+        |> Array.Parallel.collect (fun file_path -> xpath file_path "//xhtml:article/@id")
+        |> Array.Parallel.map (fun element -> element.Value)
+
+    let lexical_entries =
+        let ids_lower = ids |> Array.map (fun id -> id.ToLowerInvariant())
+        nlp.process_multiple ids_lower
+        |> Seq.toArray
+        |> Array.collect (fun doc ->
+            let token_list = doc.ToTokenList()
+            let tokens =
+                token_list
+                |> Seq.toArray
+                |> Array.filter (fun token -> token.Value <> "_")
+                |> Array.map (fun token -> token.Value.ToLowerInvariant())
+            tokens
+
+        )
+        |> Array.append ids_lower
+        |> Array.distinct
+
+    let constituents =
+        ids
+        |> Array.choose (fun id ->
+            let id_lower = id.ToLowerInvariant()
+            let doc = nlp.process_single id_lower
+            let token_list = doc.ToTokenList()
+            let tokens =
+                token_list
+                |> Seq.toArray
+                |> Array.filter (fun token -> token.Value <> "_")
+                |> Array.map (fun token -> token.Value.ToLowerInvariant())
+            if tokens.Length > 1 then
+                let components =
+                    tokens
+                    |> Array.map (fun token -> $"{id_lower}.{token}")
+                Some(components)
+            else
+                None)
+        |> Array.collect (fun nested_array -> nested_array)
+
+
+
+
+    let definiendums =
+        ids
+        |> Array.Parallel.collect (fun id ->
+            Directory.GetFiles(directory_path, "AZ_*.xhtml")
+            |> Array.Parallel.collect (fun file_path ->
+                xpath file_path $"""//xhtml:article[@id="{id}"]/xhtml:p/xhtml:dfn"""
+                |> Array.Parallel.map (fun element -> id, element.Value)))
+
+
+    let definientia =
+        ids
+        |> Array.Parallel.collect (fun id ->
+            Directory.GetFiles(directory_path, "AZ_*.xhtml")
+            |> Array.Parallel.collect (fun file_path ->
+                xpath file_path $"""//xhtml:article[@id="{id}"]/xhtml:p/xhtml:span[@epub:type = "def"]"""
+                |> Array.Parallel.map (fun element -> id, element.Value)))
+
+
+
+    let subject_areas =
+        ids
+        |> Array.Parallel.collect (fun id ->
+            Directory.GetFiles(directory_path, "AZ_*.xhtml")
+            |> Array.Parallel.choose (fun file_path ->
+                let areas =
+                    xpath file_path $"""//xhtml:article[@id="{id}"]/xhtml:p/xhtml:span[@class = "field"]"""
+                    |> Array.map (fun element -> element.Value.TrimStart('[').TrimEnd(']'))
+                if areas.Length > 0 then
+                    Some(id, areas)
+                else
+                    None)
+
+        )
+
+    let images =
+        ids
+        |> Array.Parallel.collect (fun id ->
+            Directory.GetFiles(directory_path, "AZ_*.xhtml")
+            |> Array.Parallel.choose (fun file_path ->
+                let images =
+                    xpath file_path $"""//xhtml:article[@id="{id}"]/xhtml:figure/xhtml:img/@src"""
+                    |> Array.map (fun element ->
+                        let file_path = Path.Combine(directory_path, element.Value)
+                        let file_uri = new Uri(file_path)
+                        file_uri.AbsoluteUri
+
+                    )
+                if images.Length > 0 then
+                    Some(id, images)
+                else
+                    None)
+
+        )
+
+
+
+    let see_also =
+        ids
+        |> Array.Parallel.collect (fun id ->
+            Directory.GetFiles(directory_path, "AZ_*.xhtml")
+            |> Array.Parallel.choose (fun file_path ->
+                let links =
+                    xpath file_path $"""//xhtml:article[@id="{id}"]/xhtml:p/xhtml:a"""
+                    |> Array.Parallel.map (fun element -> element.Value)
+                if links.Length > 0 then
+                    Some(id, links)
+                else
+                    None))
+
+    module Iri =
+        let lexicographic_entry =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    ids
+                    |> Array.map (fun id -> (id, A_to_Z_GIS._prefix id current_transaction))
+                    |> Map.ofArray
+            }
+
+        let lexicographic_usage =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    ids
+                    |> Array.map (fun id -> (id, A_to_Z_GIS._prefix $"{id}_Usage" current_transaction))
+                    |> Map.ofArray
+            }
+
+        let lexical_entry =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    lexical_entries
+                    |> Array.map (fun lexical_entry -> (lexical_entry, lexeme._prefix lexical_entry current_transaction))
+                    |> Map.ofArray
+            }
+
+        let lexical_form =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    lexical_entries
+                    |> Array.map (fun lexical_entry -> (lexical_entry, data.text.plain lexical_entry current_transaction))
+                    |> Map.ofArray
+            }
+
+        let lexical_sense =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    lexical_entries
+                    |> Array.map (fun lexical_entry -> (lexical_entry, sense._prefix $"gis.{lexical_entry}" current_transaction))
+                    |> Map.ofArray
+            }
+
+        let lexical_concept =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    lexical_entries
+                    |> Array.map (fun lexical_entry -> (lexical_entry, concept._prefix $"gis.{lexical_entry}" current_transaction))
+                    |> Map.ofArray
+            }
+
+        let lexical_component =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    constituents
+                    |> Array.map (fun lexical_component -> (lexical_component, constituent._prefix lexical_component current_transaction))
+                    |> Map.ofArray
+            }
+
+        let subject_area =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    subject_areas
+                    |> Array.collect (fun (id, subject_area) -> subject_area)
+                    |> Array.distinct
+                    |> Array.map (fun subject_area ->
+
+                        (subject_area, A_to_Z_GIS._prefix subject_area current_transaction)
+
+                    )
+                    |> Map.ofArray
+            }
+
+        let image =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    images
+                    |> Array.collect (fun (id, image) -> image)
+                    |> Array.distinct
+                    |> Array.map (fun image ->
+                        let iri_form = Lexical_Form.from_string image current_transaction
+                        let iriref =
+                            RDF_Term.from_atomic_iri { lexical_form_id = iri_form.lexical_form_id } current_transaction
+
+                        (subject_area, iriref)
+
+                    )
+                    |> Map.ofArray
+            }
+
+    module Literal =
+        let written_representation =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    lexical_entries
+                    |> Array.map (fun lexical_entry -> (lexical_entry, RDF_Literal.US lexical_entry current_transaction))
+                    |> Map.ofArray
+            }
+
+        let definiendum =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    definiendums
+                    |> Array.map (fun (id, definiendum) ->
+
+                        (definiendum, RDF_Literal.US definiendum current_transaction)
+
+                    )
+                    |> Map.ofArray
+            }
+
+        let definiens =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    definientia
+                    |> Array.map (fun (id, definiens) ->
+
+                        (definiens, RDF_Literal.US definiens current_transaction)
+
+                    )
+                    |> Map.ofArray
+            }
+
+        let subject_areas =
+            lmdb_read_write {
+                let! current_transaction = lmdb_read_write.Current_Transaction
+                return
+                    subject_areas
+                    |> Array.collect (fun (id, subject_area) -> subject_area)
+                    |> Array.distinct
+                    |> Array.map (fun subject_area ->
+
+                        (subject_area, RDF_Literal.US subject_area current_transaction)
+
+                    )
+                    |> Map.ofArray
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+AZ.ids |> String.concat "\n" |> clip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module hansenDataDistribution =
     module xml =
 
@@ -9167,7 +9845,9 @@ module Map =
         Assert.spog map_column is_a h8importtool.MapColumn oit._graph transaction
         Assert.spog mapping woedms.map_column map_column oit._graph transaction
         Assert.spog map_column woedms.from_field source_field oit._graph transaction
+        Assert.spog map_column h8importtool.SourceColumnName (RDF_Literal.simple $"{layer_name}.{field_name}" transaction) oit._graph transaction
         Assert.spog map_column woedms.to_column target_column oit._graph transaction
+        Assert.spog map_column h8importtool.TargetColumnCommonId (RDF_Literal.simple column_name transaction) oit._graph transaction
         Assert.spog map_column h8importtool.TargetColumnType target_column_type oit._graph transaction
 
         Assert.spog mapping h8importtool.ProductFamilyName (RDF_Literal.simple productFamily_name transaction) oit._graph transaction
@@ -10167,6 +10847,122 @@ if should_triplify then
         do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "y" "AssetManagement.Storm" "StormLevee" "YCoordinate"
         do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "ZVALUE" "AssetManagement.Storm" "StormLevee" "ZCoordinate"
 
+
+        do! Assert.spog esri_press.a_to_z_gis is_a schemorg.Book oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis dc.title (RDF_Literal.simple "A to Z GIS" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis dc.date (RDF_Literal.autotyped (DateTime.Parse "2024-11-22T19:05:23Z") current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis dc.language (RDF_Literal.simple "en-US" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis dc.``type`` (RDF_Literal.US "dictionary" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis dc.creator (RDF_Literal.simple "Kelly Brownlee" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis dc.publisher (RDF_Literal.simple "ESRI, Incorporated" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis dc.rights (RDF_Literal.US "Copyright Esri 2025. All rights reserved." current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis dc.subject (RDF_Literal.US "Dictionaries" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis dc.subject (RDF_Literal.US "Cartography" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis dc.subject (RDF_Literal.US "Geographic Information Systems" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.isbn (RDF_Literal.simple "9781589488113" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.eisbn (RDF_Literal.simple "9781589488120" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.accessMode (RDF_Literal.US "textual" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.accessMode (RDF_Literal.US "visual" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.accessModeSufficient (RDF_Literal.US "textual,visual" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.accessModeSufficient (RDF_Literal.US "textual" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.accessibilityHazard (RDF_Literal.US "none" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.accessibilityFeature (RDF_Literal.US "readingOrder" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.accessibilityFeature (RDF_Literal.US "structuralNavigation" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.accessibilityFeature (RDF_Literal.US "displayTransformability" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.accessibilityFeature (RDF_Literal.US "tableOfContents" current_transaction) oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis schemorg.accessibilityFeature (RDF_Literal.US "pageBreakMarkers" current_transaction) oit.lexicon
+        do!
+            Assert.spog
+                esri_press.a_to_z_gis
+                schemorg.accessibilitySummary
+                (RDF_Literal.US "The EPUB version of this publication strives to meet WCAG 2.2 Level AA. Alt text is not provided for images illustrating terms, as the term’s definition is presumed to serve this purpose." current_transaction)
+                oit.lexicon
+        do! Assert.spog esri_press.a_to_z_gis is_a lexicog.LexicographicResource oit.lexicon
+        do! Assert.spog oit.lexicon is_a lime.Lexicon oit.lexicon
+        do! Assert.spog oit.lexicon dc.language (RDF_Literal.simple "en" current_transaction) oit.lexicon
+
+        for id in AZ.ids do
+            let id_lower = id.ToLowerInvariant()
+            let lexicographic_entry = AZ.Iri.lexicographic_entry[id]
+            let lexicographic_usage = AZ.Iri.lexicographic_usage[id]
+            let lexical_entry = AZ.Iri.lexical_entry[id_lower]
+            let lexical_concept = AZ.Iri.lexical_concept[id_lower]
+            let lexical_form = AZ.Iri.lexical_form[id_lower]
+            let lexical_sense = AZ.Iri.lexical_sense[id_lower]
+
+            do! Assert.spog esri_press.a_to_z_gis lexicog.entry lexicographic_entry oit.lexicon
+            do! Assert.spog oit.lexicon lime.entry lexical_entry oit.lexicon
+            do! Assert.spog lexical_entry ontolex.lexicalForm lexical_form oit.lexicon
+            do! Assert.spog lexical_entry ontolex.evokes lexical_concept oit.lexicon
+            do! Assert.spog lexical_concept ontolex.isEvokedBy lexical_entry oit.lexicon
+            do! Assert.spog lexical_entry ontolex.sense lexical_sense oit.lexicon
+            do! Assert.spog lexical_sense ontolex.isSenseOf lexical_entry oit.lexicon
+            do! Assert.spog lexical_concept ontolex.lexicalizedSense lexical_sense oit.lexicon
+            do! Assert.spog lexical_sense ontolex.isLexicalizedSenseOf lexical_concept oit.lexicon
+
+            do! Assert.spog lexicographic_entry lexicog.describes lexical_sense oit.lexicon
+            do! Assert.spog lexical_sense ontolex.usage lexicographic_usage oit.lexicon
+
+            let tokens =
+                let doc = nlp.process_single id
+                let token_list = doc.ToTokenList()
+                token_list
+                |> Seq.toArray
+                |> Array.filter (fun token -> token.Value <> "_")
+                |> Array.map (fun token -> token.Value.ToLowerInvariant())
+            if tokens.Length > 1 then
+                do! Assert.spog lexical_entry is_a ontolex.MultiWordExpression oit.lexicon
+                for index = 0 to tokens.Length - 1 do
+                    let token = tokens[index]
+                    let! order = rdf._prefix $"_{index + 1}"
+                    let lexical_component = AZ.Iri.lexical_component[$"{id_lower}.{token}"]
+                    let lexical_token_entry = AZ.Iri.lexical_entry[token]
+                    do! Assert.spog lexical_component is_a decomp.Component oit.lexicon
+                    do! Assert.spog lexical_entry decomp.constituent lexical_component oit.lexicon
+                    do! Assert.spog lexical_entry order lexical_component oit.lexicon
+                    do! Assert.spog lexical_component decomp.correspondsTo lexical_token_entry oit.lexicon
+
+            else
+                do! Assert.spog lexical_entry is_a ontolex.Word oit.lexicon
+
+
+
+        for id, definiendum in AZ.definiendums do
+            let id_lower = id.ToLowerInvariant()
+            let lexical_form = AZ.Iri.lexical_form[id_lower]
+            let canonical_form = AZ.Literal.definiendum[definiendum]
+            do! Assert.spog lexical_form ontolex.canonicalForm canonical_form oit.lexicon
+
+        for id, definiens in AZ.definientia do
+            let id_lower = id.ToLowerInvariant()
+            let lexical_concept = AZ.Iri.lexical_concept[id_lower]
+            let lexicographic_usage = AZ.Iri.lexicographic_usage[id]
+            let definition = AZ.Literal.definiens[definiens]
+
+            do! Assert.spog lexical_concept skos.definition definition oit.lexicon
+            do! Assert.spog lexicographic_usage rdf.value definition oit.lexicon
+
+        for id, subject_areas in AZ.subject_areas do
+            let id_lower = id.ToLowerInvariant()
+            let lexical_entry = AZ.Iri.lexical_entry[id_lower]
+            let lexical_concept = AZ.Iri.lexical_concept[id_lower]
+            let lexical_sense = AZ.Iri.lexical_sense[id_lower]
+
+            for subject_area in subject_areas do
+                let broader_concept = AZ.Iri.subject_area[subject_area]
+                do! Assert.spog broader_concept is_a skos.Concept oit.lexicon
+                do! Assert.spog lexical_concept skos.broader broader_concept oit.lexicon
+                do! Assert.spog lexical_sense dcterms.subject broader_concept oit.lexicon
+
+
+    // TODO add infor nlp
+    // TODO add TerminologicalRelations between woedms and and gis entries
+
+
+
+
+
+
     }
 
 // TODO sort out concept mapping vs entity mapping (changes these to skos:Concepts)
@@ -10704,9 +11500,9 @@ let layer'unitid_terms =
     }
     |> Array.distinct
 
-let target_sample_size = 3
+let target_sample_size = 1
 
-let sample_quads_by_layer =
+let sample_features_by_layer =
 
     lmdb_read_only {
 
@@ -10747,6 +11543,41 @@ let sample_quads_by_layer =
 
     }
 
+let features_by_layer =
+
+    lmdb_read_only {
+
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        return
+            layer'unitid_terms
+            |> Array.choose (fun (layer_name, unitid_term) ->
+
+                let unitid_quads =
+                    Quad_Query.quads_by_pattern (Graph_Pattern._p_g unitid_term oit._graph) current_transaction
+
+                if unitid_quads.Length > 0 then
+                    Some(layer_name, unitid_quads)
+                else
+                    None)
+            |> Array.map (fun (layer_name, unitid_quads) ->
+
+                let features =
+                    unitid_quads
+                    |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
+
+
+                let feature_quads =
+                    Graph_Traversal.traversal_with_graph oit._graph
+                    |> Graph_Traversal.V features
+                    |> Graph_Traversal.bothE
+                    |> Graph_Traversal.to_quads
+                    <| current_transaction
+                layer_name, feature_quads
+
+            )
+
+    }
+
 
 // TODO move to string extension
 let contains_substring_from (substrings: string array) (value: string) =
@@ -10759,7 +11590,7 @@ let contains_substring_from (substrings: string array) (value: string) =
 
 
 let sample_quads =
-    sample_quads_by_layer
+    sample_features_by_layer
     |> Array.collect (fun (layer_name, sample_quads_in_layer) -> sample_quads_in_layer)
 
 
@@ -10900,7 +11731,7 @@ let csv_content_by_layer quads_by_layer =
 
     )
 
-csv_content_by_layer sample_quads_by_layer
+csv_content_by_layer sample_features_by_layer
 |> Array.iter (fun (layer_name, csv_content) -> Tabular.Csv.save csv_content $"{layer_name}_Sample")
 
 
@@ -10915,7 +11746,7 @@ let html_content_by_layer quads_by_layer =
     )
 
 let html_document_content =
-    tabular_content_by_layer sample_quads_by_layer
+    tabular_content_by_layer sample_features_by_layer
     |> Tabular.Hypertext.render_document "Sample Data"
 
 let html_document_path = Path.Combine(html_directory_path, "sample_data.html")
@@ -10925,10 +11756,15 @@ File.WriteAllText(html_document_path, html_document_content)
 
 let metadata_workbook = new XLWorkbook()
 let sample_data_workbook = new XLWorkbook()
+let data_workbook = new XLWorkbook()
 
-
-tabular_content_by_layer sample_quads_by_layer
+tabular_content_by_layer sample_features_by_layer
 |> Tabular.Xlsx.save sample_data_workbook "sample_data"
+
+let source_file_stem = "LCPW_OverlayStormwaterInfrastructure_D_WM"
+
+tabular_content_by_layer features_by_layer
+|> Tabular.Xlsx.save data_workbook source_file_stem
 
 
 
@@ -11007,6 +11843,7 @@ let sample_data_quads =
                             sample_layer_quads
 
                              |]
+    (*
             |> Array.Parallel.filter (fun quad -> not (excluded_object_terms.Contains(RDF_Object.term quad.object)))
             |> Array.Parallel.filter (fun quad -> not (excluded_predicate_terms.Contains(RDF_Predicate.term quad.predicate)))
             (*
@@ -11054,6 +11891,7 @@ let sample_data_quads =
 
 
             )
+            *)
 
     }
 
@@ -11129,8 +11967,7 @@ let h8import_xml_content =
     let TableKey = Xml.element "TableKey"
     lmdb_read_only {
         let! current_transaction = lmdb_read_only.Current_Transaction
-        let source_file_path =
-            Path.Combine(xlsx_directory_path, $"LCPW_OverlayStormwaterInfrastructure_D_WM.xlsx")
+        let source_file_path = Path.Combine(xlsx_directory_path, $"{source_file_stem}.xlsx")
         return
             Maps {
 
@@ -11205,13 +12042,13 @@ let h8import_xml_content =
                             MapColumn {
                                 MapKey { key }
                                 SourceColumnName {
-                                    Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_column woedms.from_field oit._graph) current_transaction
+                                    Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_column h8importtool.SourceColumnName oit._graph) current_transaction
                                     |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
                                     |> Array.head
                                 }
                                 TargetColumnCommonId {
 
-                                    Quad_Query.quads_by_pattern (Graph_Pattern.sp_g target_column infor.name oit._graph) current_transaction
+                                    Quad_Query.quads_by_pattern (Graph_Pattern.sp_g map_column h8importtool.TargetColumnCommonId oit._graph) current_transaction
                                     |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)
                                     |> Array.head
                                 }

@@ -2158,7 +2158,7 @@ module Lexicon_Search =
 
 let retrieved_lexicons =
     all_lexicons
-    |> Lexicon_Search.namespace_starts_with "http://schema.org"
+    |> Lexicon_Search.namespace_starts_with "http://purl.org/dc/elements/1.1/"
 
 
 retrieved_lexicons.Length
