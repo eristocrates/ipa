@@ -1,0 +1,444 @@
+BASE   <http://example.org/ontology/discord-server-ontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ont: <http://example.org/ontology/discord-server-ontology/>
+
+ont:    rdf:type      owl:Ontology;
+        rdfs:label    "Discord Server Ontology";
+        rdfs:comment  "An ontology representing the Fabric Community Discord. " .
+
+ont:New-entity-11  rdf:type  owl:Class;
+        rdfs:label    "Reaction";
+        rdfs:comment  "An emoji response attached to a message";
+        ont:icon      "🎯";
+        ont:color     "#D83B01" .
+
+ont:New-entity-10  rdf:type  owl:Class;
+        rdfs:label    "Thread";
+        rdfs:comment  "A scoped sub-conversation within a channel";
+        ont:icon      "📁";
+        ont:color     "#107C10" .
+
+ont:New-entity-9  rdf:type  owl:Class;
+        rdfs:label    "Moderation_Action";
+        rdfs:comment  "A logged enforcement action (warn, mute, ban, kick)";
+        ont:icon      "🌐";
+        ont:color     "#0078D4" .
+
+ont:New-entity-8  rdf:type  owl:Class;
+        rdfs:label    "Event";
+        rdfs:comment  "A scheduled community activity (voice hangout, Q&A, etc.)";
+        ont:icon      "🔧";
+        ont:color     "#008272" .
+
+ont:New-entity-7  rdf:type  owl:Class;
+        rdfs:label    "Bot";
+        rdfs:comment  "An automated agent operating in the server";
+        ont:icon      "👤";
+        ont:color     "#E81123" .
+
+ont:New-entity-6  rdf:type  owl:Class;
+        rdfs:label    "Message";
+        rdfs:comment  "A unit of communication posted in a channel";
+        ont:icon      "📋";
+        ont:color     "#FFB900" .
+
+ont:New-entity-5  rdf:type  owl:Class;
+        rdfs:label    "Role";
+        rdfs:comment  "A permission set + identity label assigned to members";
+        ont:icon      "💳";
+        ont:color     "#00A9E0" .
+
+ont:New-entity-4  rdf:type  owl:Class;
+        rdfs:label    "Member";
+        rdfs:comment  "A person who has joined the server";
+        ont:icon      "👤";
+        ont:color     "#5C2D91" .
+
+ont:New-entity-3  rdf:type  owl:Class;
+        rdfs:label    "Category";
+        rdfs:comment  "A grouping of channels";
+        ont:icon      "🏢";
+        ont:color     "#D83B01" .
+
+ont:New-entity-2  rdf:type  owl:Class;
+        rdfs:label    "Channel";
+        rdfs:comment  "A space for communication (text, voice, forum, announcement)";
+        ont:icon      "🏢";
+        ont:color     "#107C10" .
+
+ont:New-entity-1  rdf:type  owl:Class;
+        rdfs:label    "Guild";
+        rdfs:comment  "Top level entity for a Discord Server";
+        ont:icon      "🌐";
+        ont:color     "#0078D4" .
+
+ont:new-entity-11_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-11;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-11_emote
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "emote";
+        rdfs:domain       ont:New-entity-11;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:new-entity-10_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-10;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-9_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-9;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-9_action
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "action";
+        rdfs:domain       ont:New-entity-9;
+        rdfs:range        xsd:string;
+        ont:propertyType  "enum" .
+
+ont:new-entity-9_reason
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "reason";
+        rdfs:domain       ont:New-entity-9;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:new-entity-9_timestamp
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "timestamp";
+        rdfs:domain       ont:New-entity-9;
+        rdfs:range        xsd:dateTime;
+        ont:propertyType  "datetime" .
+
+ont:new-entity-9_duration
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "duration";
+        rdfs:domain       ont:New-entity-9;
+        rdfs:range        xsd:decimal;
+        ont:propertyType  "decimal" .
+
+ont:new-entity-8_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-8;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-8_name
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "name";
+        rdfs:domain       ont:New-entity-8;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:new-entity-8_starttime
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "starttime";
+        rdfs:domain       ont:New-entity-8;
+        rdfs:range        xsd:dateTime;
+        ont:propertyType  "datetime" .
+
+ont:new-entity-7_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-7;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-7_name
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "name";
+        rdfs:domain       ont:New-entity-7;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:new-entity-6_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-6;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-5_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-5;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-5_colour
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "colour";
+        rdfs:domain       ont:New-entity-5;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:new-entity-5_is_mentionable
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "is_mentionable";
+        rdfs:domain       ont:New-entity-5;
+        rdfs:range        xsd:boolean;
+        ont:propertyType  "boolean" .
+
+ont:new-entity-5_permissions
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "permissions";
+        rdfs:domain       ont:New-entity-5;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:new-entity-5_name
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "name";
+        rdfs:domain       ont:New-entity-5;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:new-entity-4_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-4;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-4_join_date
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "join_date";
+        rdfs:domain       ont:New-entity-4;
+        rdfs:range        xsd:dateTime;
+        ont:propertyType  "datetime" .
+
+ont:new-entity-4_message_count
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "message_count";
+        rdfs:domain       ont:New-entity-4;
+        rdfs:range        xsd:integer;
+        ont:propertyType  "integer" .
+
+ont:new-entity-4_last_active
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "last_active";
+        rdfs:domain       ont:New-entity-4;
+        rdfs:range        xsd:dateTime;
+        ont:propertyType  "datetime" .
+
+ont:new-entity-3_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-3;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-3_name
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "name";
+        rdfs:domain       ont:New-entity-3;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:new-entity-2_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-2;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-2_type
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "type";
+        rdfs:domain       ont:New-entity-2;
+        rdfs:range        xsd:string;
+        ont:propertyType  "enum" .
+
+ont:new-entity-2_description
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "description";
+        rdfs:domain       ont:New-entity-2;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:new-entity-2_name
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "name";
+        rdfs:domain       ont:New-entity-2;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:new-entity-1_id  rdf:type  owl:DatatypeProperty;
+        rdfs:label        "id";
+        rdfs:domain       ont:New-entity-1;
+        rdfs:range        xsd:string;
+        ont:isIdentifier  true;
+        ont:propertyType  "string" .
+
+ont:new-entity-1_name
+        rdf:type          owl:DatatypeProperty;
+        rdfs:label        "name";
+        rdfs:domain       ont:New-entity-1;
+        rdfs:range        xsd:string;
+        ont:propertyType  "string" .
+
+ont:rel-relates-to-16
+        rdf:type          owl:ObjectProperty;
+        rdfs:label        "hosted in";
+        rdfs:domain       ont:New-entity-8;
+        rdfs:range        ont:New-entity-2;
+        rdfs:comment      "Many events can be hosted in a channel over time; each event instance is hosted in one channel";
+        ont:cardinality   "many-to-one";
+        ont:fromEntityId  "new-entity-8";
+        ont:toEntityId    "new-entity-2" .
+
+ont:rel-relates-to-15
+        rdf:type          owl:ObjectProperty;
+        rdfs:label        "attends";
+        rdfs:domain       ont:New-entity-4;
+        rdfs:range        ont:New-entity-8;
+        rdfs:comment      "A member can attend many events; an event can have many attendees";
+        ont:cardinality   "many-to-many";
+        ont:fromEntityId  "new-entity-4";
+        ont:toEntityId    "new-entity-8" .
+
+ont:rel-relates-to-14
+        rdf:type          owl:ObjectProperty;
+        rdfs:label        "targets";
+        rdfs:domain       ont:New-entity-9;
+        rdfs:range        ont:New-entity-4;
+        rdfs:comment      "A member can receive many moderation actions over time; each action targets one member";
+        ont:cardinality   "many-to-one";
+        ont:fromEntityId  "new-entity-9";
+        ont:toEntityId    "new-entity-4" .
+
+ont:rel-relates-to-13
+        rdf:type          owl:ObjectProperty;
+        rdfs:label        "assigns";
+        rdfs:domain       ont:New-entity-7;
+        rdfs:range        ont:New-entity-5;
+        rdfs:comment      "A bot can assign many roles; a role can be assigned by many bots";
+        ont:cardinality   "many-to-many";
+        ont:fromEntityId  "new-entity-7";
+        ont:toEntityId    "new-entity-5" .
+
+ont:rel-relates-to-12
+        rdf:type          owl:ObjectProperty;
+        rdfs:label        "enforces";
+        rdfs:domain       ont:New-entity-7;
+        rdfs:range        ont:New-entity-9;
+        rdfs:comment      "One bot issues many moderation actions, but each action is issued by one source (bot or member)";
+        ont:cardinality   "one-to-many";
+        ont:fromEntityId  "new-entity-7";
+        ont:toEntityId    "new-entity-9" .
+
+ont:rel-relates-to-11
+        rdf:type          owl:ObjectProperty;
+        rdfs:label        "monitors";
+        rdfs:domain       ont:New-entity-7;
+        rdfs:range        ont:New-entity-2;
+        rdfs:comment      "A bot can monitor many channels; a channel can be monitored by many bots";
+        ont:cardinality   "one-to-many";
+        ont:fromEntityId  "new-entity-7";
+        ont:toEntityId    "new-entity-2" .
+
+ont:rel-relates-to-10
+        rdf:type          owl:ObjectProperty;
+        rdfs:label        "spawns";
+        rdfs:domain       ont:New-entity-6;
+        rdfs:range        ont:New-entity-10;
+        rdfs:comment      "One message can spawn one thread, each thread originates from one message";
+        ont:cardinality   "one-to-one";
+        ont:fromEntityId  "new-entity-6";
+        ont:toEntityId    "new-entity-10" .
+
+ont:rel-relates-to-9  rdf:type  owl:ObjectProperty;
+        rdfs:label        "receives";
+        rdfs:domain       ont:New-entity-6;
+        rdfs:range        ont:New-entity-11;
+        rdfs:comment      "One message can have many reactions, each reaction belongs to one message";
+        ont:cardinality   "one-to-many";
+        ont:fromEntityId  "new-entity-6";
+        ont:toEntityId    "new-entity-11" .
+
+ont:rel-relates-to-8  rdf:type  owl:ObjectProperty;
+        rdfs:label        "appears in";
+        rdfs:domain       ont:New-entity-6;
+        rdfs:range        ont:New-entity-2;
+        rdfs:comment      "Many messages live in a channel, each message belongs to one channel";
+        ont:cardinality   "many-to-one";
+        ont:fromEntityId  "new-entity-6";
+        ont:toEntityId    "new-entity-2" .
+
+ont:rel-relates-to-7  rdf:type  owl:ObjectProperty;
+        rdfs:label        "posts";
+        rdfs:domain       ont:New-entity-4;
+        rdfs:range        ont:New-entity-6;
+        rdfs:comment      "One member authors many messages, but each message has one author";
+        ont:cardinality   "one-to-many";
+        ont:fromEntityId  "new-entity-4";
+        ont:toEntityId    "new-entity-6" .
+
+ont:rel-relates-to-6  rdf:type  owl:ObjectProperty;
+        rdfs:label        "grants access to";
+        rdfs:domain       ont:New-entity-5;
+        rdfs:range        ont:New-entity-2;
+        rdfs:comment      "A role can unlock many channels; a channel can be accessible by many roles";
+        ont:cardinality   "many-to-many";
+        ont:fromEntityId  "new-entity-5";
+        ont:toEntityId    "new-entity-2" .
+
+ont:rel-relates-to-5  rdf:type  owl:ObjectProperty;
+        rdfs:label        "holds";
+        rdfs:domain       ont:New-entity-4;
+        rdfs:range        ont:New-entity-5;
+        rdfs:comment      "A member can hold multiple roles; a role can be held by many members";
+        ont:cardinality   "many-to-many";
+        ont:fromEntityId  "new-entity-4";
+        ont:toEntityId    "new-entity-5" .
+
+ont:rel-relates-to-4  rdf:type  owl:ObjectProperty;
+        rdfs:label        "belongs to";
+        rdfs:domain       ont:New-entity-4;
+        rdfs:range        ont:New-entity-1;
+        rdfs:comment      "A member can be in multiple servers; a server has many members";
+        ont:cardinality   "many-to-many";
+        ont:fromEntityId  "new-entity-4";
+        ont:toEntityId    "new-entity-1" .
+
+ont:rel-relates-to-3  rdf:type  owl:ObjectProperty;
+        rdfs:label        "groups";
+        rdfs:domain       ont:New-entity-3;
+        rdfs:range        ont:New-entity-2;
+        rdfs:comment      "One category holds many channels, but a channel belongs to one category (or none)";
+        ont:cardinality   "one-to-many";
+        ont:fromEntityId  "new-entity-3";
+        ont:toEntityId    "new-entity-2" .
+
+ont:rel-relates-to-2  rdf:type  owl:ObjectProperty;
+        rdfs:label        "contains";
+        rdfs:domain       ont:New-entity-1;
+        rdfs:range        ont:New-entity-2;
+        rdfs:comment      "One server has many channels, each channel belongs to one server";
+        ont:cardinality   "one-to-many";
+        ont:fromEntityId  "new-entity-1";
+        ont:toEntityId    "new-entity-2" .
+
+ont:rel-relates-to-1  rdf:type  owl:ObjectProperty;
+        rdfs:label        "contains";
+        rdfs:domain       ont:New-entity-1;
+        rdfs:range        ont:New-entity-3;
+        rdfs:comment      "One server has many categories, each category belongs to one server";
+        ont:cardinality   "one-to-many";
+        ont:fromEntityId  "new-entity-1";
+        ont:toEntityId    "new-entity-3" .
