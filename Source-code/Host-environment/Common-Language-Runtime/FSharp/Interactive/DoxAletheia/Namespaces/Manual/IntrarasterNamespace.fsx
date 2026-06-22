@@ -1,9 +1,9 @@
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\RDFErgonomics.fsx"
 open RDFErgonomics
 
-module intraraster =
+module interraster =
 
-    let _prefix = prefix_label "intraraster"
+    let _prefix = prefix_label "interraster"
 
 
     let ACCEPT_DATE = _prefix "ACCEPT_DATE"

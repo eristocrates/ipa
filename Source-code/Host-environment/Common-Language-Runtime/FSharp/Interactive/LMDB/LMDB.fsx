@@ -645,8 +645,11 @@ module ID =
 
             | struct (result_code, _, _) -> failwith $"Get next ID failed: {result_code}"
 
+        let key_text = Encoding.UTF8.GetString key
+
+        let next_bytes = (current + 1UL).to_byte_array
         transaction.Put(Lightning_Memory_Map.ID_Kind'Next_ID.handle, key, (current + 1UL).to_byte_array)
-        |> MDBResultCode.fail_if_not_success "Put next ID"
+        |> MDBResultCode.fail_if_not_success $"Put next ID with key '{key_text}' ; current '{current}' next '{BitConverter.ToString(next_bytes)}' ; id '{id}'"
 
         current
 
@@ -1063,6 +1066,13 @@ module Atomic_IRI =
             Get.String_by_Lexical_Form_ID atomic_iri.lexical_form_id transaction
 
         $"<{lexical_form}>"
+
+    let from_string (iri_string: string) (transaction: LightningTransaction) : Atomic_IRI =
+        let form = Lexical_Form.from_string iri_string transaction
+        { lexical_form_id = form.lexical_form_id }
+
+    let term_from_string (iri_string: string) (transaction: LightningTransaction) : RDF_Term =
+        RDF_Term.from_atomic_iri (from_string iri_string transaction) transaction
 
 module Escaped =
 
@@ -2764,7 +2774,8 @@ module skosxl =
     /// If C skosxl:prefLabel L and L skosxl:literalForm V, then X skos:prefLabel V.
     let prefLabel = _vocab "prefLabel"
 
-module dc =
+
+module dce =
     let _namespace_name =
         lmdb_read_write { return! Lexical_Form.from_string "http://purl.org/dc/elements/1.1/" }
 
@@ -2786,19 +2797,53 @@ module dc =
                       local_name_id = local_name.lexical_form_id }
         }
 
+
+
+    let value = _vocab ""
+
+    /// An entity responsible for making contributions to the resource.
+    let contributor = _vocab "contributor"
+
+    /// The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant.
     let coverage = _vocab "coverage"
+
+    /// An entity primarily responsible for making the resource.
     let creator = _vocab "creator"
+
+    /// A point or period of time associated with an event in the lifecycle of the resource.
     let date = _vocab "date"
+
+    /// An account of the resource.
     let description = _vocab "description"
+
+    /// The file format, physical medium, or dimensions of the resource.
     let format = _vocab "format"
+
+    /// An unambiguous reference to the resource within a given context.
     let identifier = _vocab "identifier"
+
+    /// A language of the resource.
     let language = _vocab "language"
+
+    /// An entity responsible for making the resource available.
     let publisher = _vocab "publisher"
+
+    /// A related resource.
     let relation = _vocab "relation"
+
+    /// Information about rights held in and over the resource.
     let rights = _vocab "rights"
+
+    /// A related resource from which the described resource is derived.
     let source = _vocab "source"
+
+    /// The topic of the resource.
     let subject = _vocab "subject"
+
+    /// A name given to the resource.
     let title = _vocab "title"
+
+    /// The nature or genre of the resource.
     let ``type`` = _vocab "type"
 
 module dcterms =
@@ -6048,18 +6093,2016 @@ module termlex =
 
 
 
+module prov =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string "http://www.w3.org/ns/prov#" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name = Lexical_Form.from_string local_name_string.low_lined transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string (local_name_string.Replace(" ", "_"))
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+
+    /// This document is published by the Provenance Working Group (http://www.w3.org/2011/prov/wiki/Main_Page).
+    ///
+    /// If you wish to make comments regarding this document, please send them to public-prov-comments@w3.org (subscribe public-prov-comments-request@w3.org, archives http://lists.w3.org/
+    /// Archives/Public/public-prov-comments/). All feedback is welcome.
+    let value = _vocab ""
+
+
+    let Accept = _vocab "Accept"
+
+
+    let Activity = _vocab "Activity"
+
+    /// It is not recommended that the type ActivityInfluence be asserted without also asserting one of its more specific subclasses.
+    let ActivityInfluence = _vocab "ActivityInfluence"
+
+
+    let Agent = _vocab "Agent"
+
+    /// AgentInfluence provides additional descriptions of an Agent's binary influence upon any other kind of resource. Instances of AgentInfluence use the prov:agent property to cite the influencing Agent.
+    let AgentInfluence = _vocab "AgentInfluence"
+
+    /// An instance of prov:Association provides additional descriptions about the binary prov:wasAssociatedWith relation from an prov:Activity to some prov:Agent that had some responsiblity for it. For example, :baking prov:wasAssociatedWith :baker; prov:qualifiedAssociation [ a prov:Association; prov:agent :baker; :foo :bar ].
+    let Association = _vocab "Association"
+
+    /// An instance of prov:Attribution provides additional descriptions about the binary prov:wasAttributedTo relation from an prov:Entity to some prov:Agent that had some responsible for it. For example, :cake prov:wasAttributedTo :baker; prov:qualifiedAttribution [ a prov:Attribution; prov:entity :baker; :foo :bar ].
+    let Attribution = _vocab "Attribution"
+
+    /// Note that there are kinds of bundles (e.g. handwritten letters, audio recordings, etc.) that are not expressed in PROV-O, but can be still be described by PROV-O.
+    let Bundle = _vocab "Bundle"
+
+
+    let Collection = _vocab "Collection"
+
+    /// An instance of prov:Communication provides additional descriptions about the binary prov:wasInformedBy relation from an informed prov:Activity to the prov:Activity that informed it. For example, :you_jumping_off_bridge prov:wasInformedBy :everyone_else_jumping_off_bridge; prov:qualifiedCommunication [ a prov:Communication; prov:activity :everyone_else_jumping_off_bridge; :foo :bar ].
+    let Communication = _vocab "Communication"
+
+
+    let Contribute = _vocab "Contribute"
+
+
+    let Contributor = _vocab "Contributor"
+
+
+    let Copyright = _vocab "Copyright"
+
+
+    let Create = _vocab "Create"
+
+
+    let Creator = _vocab "Creator"
+
+    /// An instance of prov:Delegation provides additional descriptions about the binary prov:actedOnBehalfOf relation from a performing prov:Agent to some prov:Agent for whom it was performed. For example, :mixing prov:wasAssociatedWith :toddler . :toddler prov:actedOnBehalfOf :mother; prov:qualifiedDelegation [ a prov:Delegation; prov:entity :mother; :foo :bar ].
+    let Delegation = _vocab "Delegation"
+
+    /// An instance of prov:Derivation provides additional descriptions about the binary prov:wasDerivedFrom relation from some derived prov:Entity to another prov:Entity from which it was derived. For example, :chewed_bubble_gum prov:wasDerivedFrom :unwrapped_bubble_gum; prov:qualifiedDerivation [ a prov:Derivation; prov:entity :unwrapped_bubble_gum; :foo :bar ].
+    let Derivation = _vocab "Derivation"
+
+    /// This concept allows for the provenance of the dictionary, but also of its constituents to be expressed. Such a notion of dictionary corresponds to a wide variety of concrete data structures, such as a maps or associative arrays.
+    let Dictionary = _vocab "Dictionary"
+
+    /// Type for a generic provenance query service. Mainly for use in RDF provenance query service descriptions, to facilitate discovery in linked data environments.
+    let DirectQueryService = _vocab "DirectQueryService"
+
+
+    let EmptyCollection = _vocab "EmptyCollection"
+
+
+    let EmptyDictionary = _vocab "EmptyDictionary"
+
+    /// An instance of prov:End provides additional descriptions about the binary prov:wasEndedBy relation from some ended prov:Activity to an prov:Entity that ended it. For example, :ball_game prov:wasEndedBy :buzzer; prov:qualifiedEnd [ a prov:End; prov:entity :buzzer; :foo :bar; prov:atTime '2012-03-09T08:05:08-05:00'^^xsd:dateTime ].
+    let End = _vocab "End"
+
+
+    let Entity = _vocab "Entity"
+
+    /// EntityInfluence provides additional descriptions of an Entity's binary influence upon any other kind of resource. Instances of EntityInfluence use the prov:entity property to cite the influencing Entity.
+    let EntityInfluence = _vocab "EntityInfluence"
+
+    /// An instance of prov:Generation provides additional descriptions about the binary prov:wasGeneratedBy relation from a generated prov:Entity to the prov:Activity that generated it. For example, :cake prov:wasGeneratedBy :baking; prov:qualifiedGeneration [ a prov:Generation; prov:activity :baking; :foo :bar ].
+    let Generation = _vocab "Generation"
+
+    /// An instance of prov:Influence provides additional descriptions about the binary prov:wasInfluencedBy relation from some influenced Activity, Entity, or Agent to the influencing Activity, Entity, or Agent. For example, :stomach_ache prov:wasInfluencedBy :spoon; prov:qualifiedInfluence [ a prov:Influence; prov:entity :spoon; :foo :bar ] . Because prov:Influence is a broad relation, the more specific relations (Communication, Delegation, End, etc.) should be used when applicable.
+    let Influence = _vocab "Influence"
+
+
+    let Insertion = _vocab "Insertion"
+
+    /// An instantaneous event, or event for short, happens in the world and marks a change in the world, in its activities and in its entities. The term 'event' is commonly used in process algebra with a similar meaning. Events represent communications or interactions; they are assumed to be atomic and instantaneous.
+    let InstantaneousEvent = _vocab "InstantaneousEvent"
+
+    /// An instance of prov:Invalidation provides additional descriptions about the binary prov:wasInvalidatedBy relation from an invalidated prov:Entity to the prov:Activity that invalidated it. For example, :uncracked_egg prov:wasInvalidatedBy :baking; prov:qualifiedInvalidation [ a prov:Invalidation; prov:activity :baking; :foo :bar ].
+    let Invalidation = _vocab "Invalidation"
+
+
+    let KeyEntityPair = _vocab "KeyEntityPair"
+
+
+    let Location = _vocab "Location"
+
+
+    let Modify = _vocab "Modify"
+
+
+    let Organization = _vocab "Organization"
+
+
+    let Person = _vocab "Person"
+
+    /// There exist no prescriptive requirement on the nature of plans, their representation, the actions or steps they consist of, or their intended goals. Since plans may evolve over time, it may become necessary to track their provenance, so plans themselves are entities. Representing the plan explicitly in the provenance can be useful for various tasks: for example, to validate the execution as represented in the provenance record, to manage expectation failures, or to provide explanations.
+    let Plan = _vocab "Plan"
+
+    /// An instance of prov:PrimarySource provides additional descriptions about the binary prov:hadPrimarySource relation from some secondary prov:Entity to an earlier, primary prov:Entity. For example, :blog prov:hadPrimarySource :newsArticle; prov:qualifiedPrimarySource [ a prov:PrimarySource; prov:entity :newsArticle; :foo :bar ] .
+    let PrimarySource = _vocab "PrimarySource"
+
+
+    let Publish = _vocab "Publish"
+
+
+    let Publisher = _vocab "Publisher"
+
+    /// An instance of prov:Quotation provides additional descriptions about the binary prov:wasQuotedFrom relation from some taken prov:Entity from an earlier, larger prov:Entity. For example, :here_is_looking_at_you_kid prov:wasQuotedFrom :casablanca_script; prov:qualifiedQuotation [ a prov:Quotation; prov:entity :casablanca_script; :foo :bar ].
+    let Quotation = _vocab "Quotation"
+
+
+    let Removal = _vocab "Removal"
+
+
+    let Replace = _vocab "Replace"
+
+    /// An instance of prov:Revision provides additional descriptions about the binary prov:wasRevisionOf relation from some newer prov:Entity to an earlier prov:Entity. For example, :draft_2 prov:wasRevisionOf :draft_1; prov:qualifiedRevision [ a prov:Revision; prov:entity :draft_1; :foo :bar ].
+    let Revision = _vocab "Revision"
+
+
+    let RightsAssignment = _vocab "RightsAssignment"
+
+
+    let RightsHolder = _vocab "RightsHolder"
+
+
+    let Role = _vocab "Role"
+
+    /// Type for a generic provenance query service. Mainly for use in RDF provenance query service descriptions, to facilitate discovery in linked data environments.
+    let ServiceDescription = _vocab "ServiceDescription"
+
+
+    let SoftwareAgent = _vocab "SoftwareAgent"
+
+    /// An instance of prov:Start provides additional descriptions about the binary prov:wasStartedBy relation from some started prov:Activity to an prov:Entity that started it. For example, :foot_race prov:wasStartedBy :bang; prov:qualifiedStart [ a prov:Start; prov:entity :bang; :foo :bar; prov:atTime '2012-03-09T08:05:08-05:00'^^xsd:dateTime ] .
+    let Start = _vocab "Start"
+
+
+    let Submit = _vocab "Submit"
+
+    /// An instance of prov:Usage provides additional descriptions about the binary prov:used relation from some prov:Activity to an prov:Entity that it used. For example, :keynote prov:used :podium; prov:qualifiedUsage [ a prov:Usage; prov:entity :podium; :foo :bar ].
+    let Usage = _vocab "Usage"
+
+    /// An object property to express the accountability of an agent towards another agent. The subordinate agent acted on behalf of the responsible agent in an actual activity.
+    let actedOnBehalfOf = _vocab "actedOnBehalfOf"
+
+
+    let activity = _vocab "activity"
+
+
+    let activityOfInfluence = _vocab "activityOfInfluence"
+
+
+    let agent = _vocab "agent"
+
+
+    let agentOfInfluence = _vocab "agentOfInfluence"
+
+
+    let alternateOf = _vocab "alternateOf"
+
+
+    let aq = _vocab "aq"
+
+    /// prov:asInBundle is used to specify which bundle the general entity of a prov:mentionOf property is described.
+    ///
+    /// When :x prov:mentionOf :y and :y is described in Bundle :b, the triple :x prov:asInBundle :b is also asserted to cite the Bundle in which :y was described.
+    let asInBundle = _vocab "asInBundle"
+
+    /// The Location of any resource.
+    let atLocation = _vocab "atLocation"
+
+    /// The time at which an InstantaneousEvent occurred, in the form of xsd:dateTime.
+    let atTime = _vocab "atTime"
+
+    /// Classify prov-o terms into three categories, including 'starting-point', 'qualifed', and 'extended'. This classification is used by the prov-o html document to gently introduce prov-o terms to its users.
+    let category = _vocab "category"
+
+    /// Classify prov-o terms into six components according to prov-dm, including 'agents-responsibility', 'alternate', 'annotations', 'collections', 'derivations', and 'entities-activities'. This classification is used so that readers of prov-o specification can find its correspondence with the prov-dm specification.
+    let component = _vocab "component"
+
+    /// A reference to the principal section of the PROV-CONSTRAINTS document that describes this concept.
+    let constraints = _vocab "constraints"
+
+
+    let contributed = _vocab "contributed"
+
+    /// A definition quoted from PROV-DM or PROV-CONSTRAINTS that describes the concept expressed with this OWL term.
+    let definition = _vocab "definition"
+
+
+    let derivedByInsertionFrom = _vocab "derivedByInsertionFrom"
+
+
+    let derivedByRemovalFrom = _vocab "derivedByRemovalFrom"
+
+    /// relates a generic provenance query service resource (type prov:ServiceDescription) to a specific query service description (e.g. a prov:DirectQueryService or a sd:Service).
+    let describesService = _vocab "describesService"
+
+
+    let dictionary = _vocab "dictionary"
+
+    /// A reference to the principal section of the PROV-DM document that describes this concept.
+    let dm = _vocab "dm"
+
+    /// A note by the OWL development team about how this term expresses the PROV-DM concept, or how it should be used in context of semantic web or linked data.
+    let editorialNote = _vocab "editorialNote"
+
+    /// When the prov-o term does not have a definition drawn from prov-dm, and the prov-o editor provides one.
+    let editorsDefinition = _vocab "editorsDefinition"
+
+
+    let ended = _vocab "ended"
+
+    /// The time at which an activity ended. See also prov:startedAtTime.
+    let endedAtTime = _vocab "endedAtTime"
+
+
+    let entity = _vocab "entity"
+
+
+    let entityOfInfluence = _vocab "entityOfInfluence"
+
+
+    let generalizationOf = _vocab "generalizationOf"
+
+
+    let generated = _vocab "generated"
+
+
+    let generatedAsDerivation = _vocab "generatedAsDerivation"
+
+    /// The time at which an entity was completely created and is available for use.
+    let generatedAtTime = _vocab "generatedAtTime"
+
+    /// The _optional_ Activity of an Influence, which used, generated, invalidated, or was the responsibility of some Entity. This property is _not_ used by ActivityInfluence (use prov:activity instead).
+    let hadActivity = _vocab "hadActivity"
+
+
+    let hadDelegate = _vocab "hadDelegate"
+
+
+    let hadDerivation = _vocab "hadDerivation"
+
+
+    let hadDictionaryMember = _vocab "hadDictionaryMember"
+
+    /// The _optional_ Generation involved in an Entity's Derivation.
+    let hadGeneration = _vocab "hadGeneration"
+
+
+    let hadInfluence = _vocab "hadInfluence"
+
+
+    let hadMember = _vocab "hadMember"
+
+    /// The _optional_ Plan adopted by an Agent in Association with some Activity. Plan specifications are out of the scope of this specification.
+    let hadPlan = _vocab "hadPlan"
+
+
+    let hadPrimarySource = _vocab "hadPrimarySource"
+
+
+    let hadRevision = _vocab "hadRevision"
+
+    /// The _optional_ Role that an Entity assumed in the context of an Activity. For example, :baking prov:used :spoon; prov:qualified [ a prov:Usage; prov:entity :spoon; prov:hadRole roles:mixing_implement ].
+    let hadRole = _vocab "hadRole"
+
+    /// The _optional_ Usage involved in an Entity's Derivation.
+    let hadUsage = _vocab "hadUsage"
+
+    /// Indicates anchor URI for a potentially dynamic resource instance.
+    let has_anchor = _vocab "has_anchor"
+
+    /// Indicates a provenance-URI for a resource; the resource identified by this property presents a provenance record about its subject or anchor resource.
+    let has_provenance = _vocab "has_provenance"
+
+    /// Indicates a provenance query service that can access provenance related to its subject or anchor resource.
+    let has_query_service = _vocab "has_query_service"
+
+
+    let influenced = _vocab "influenced"
+
+    /// Subproperties of prov:influencer are used to cite the object of an unqualified PROV-O triple whose predicate is a subproperty of prov:wasInfluencedBy (e.g. prov:used, prov:wasGeneratedBy). prov:influencer is used much like rdf:object is used.
+    let influencer = _vocab "influencer"
+
+
+    let informed = _vocab "informed"
+
+
+    let insertedKeyEntityPair = _vocab "insertedKeyEntityPair"
+
+
+    let invalidated = _vocab "invalidated"
+
+    /// The time at which an entity was invalidated (i.e., no longer usable).
+    let invalidatedAtTime = _vocab "invalidatedAtTime"
+
+    /// PROV-O does not define all property inverses. The directionalities defined in PROV-O should be given preference over those not defined. However, if users wish to name the inverse of a PROV-O property, the local name given by prov:inverse should be used.
+    let inverse = _vocab "inverse"
+
+
+    let locationOf = _vocab "locationOf"
+
+    /// prov:mentionOf is used to specialize an entity as described in another bundle. It is to be used in conjuction with prov:asInBundle.
+    ///
+    /// prov:asInBundle is used to cite the Bundle in which the generalization was mentioned.
+    let mentionOf = _vocab "mentionOf"
+
+    /// A reference to the principal section of the PROV-DM document that describes this concept.
+    let n = _vocab "n"
+
+    /// The position that this OWL term should be listed within documentation. The scope of the documentation (e.g., among all terms, among terms within a prov:category, among properties applying to a particular class, etc.) is unspecified.
+    let order = _vocab "order"
+
+
+    let pairEntity = _vocab "pairEntity"
+
+
+    let pairKey = _vocab "pairKey"
+
+    /// Relates a resource to a provenance pingback service that may receive additional provenance links about the resource.
+    let pingback = _vocab "pingback"
+
+    /// Relates a provenance service to a URI template string for constructing provenance-URIs.
+    let provenanceUriTemplate = _vocab "provenanceUriTemplate"
+
+    /// If this Activity prov:wasAssociatedWith Agent :ag, then it can qualify the Association using prov:qualifiedAssociation [ a prov:Association;  prov:agent :ag; :foo :bar ].
+    let qualifiedAssociation = _vocab "qualifiedAssociation"
+
+
+    let qualifiedAssociationOf = _vocab "qualifiedAssociationOf"
+
+    /// If this Entity prov:wasAttributedTo Agent :ag, then it can qualify how it was influenced using prov:qualifiedAttribution [ a prov:Attribution;  prov:agent :ag; :foo :bar ].
+    let qualifiedAttribution = _vocab "qualifiedAttribution"
+
+
+    let qualifiedAttributionOf = _vocab "qualifiedAttributionOf"
+
+    /// If this Activity prov:wasInformedBy Activity :a, then it can qualify how it was influenced using prov:qualifiedCommunication [ a prov:Communication;  prov:activity :a; :foo :bar ].
+    let qualifiedCommunication = _vocab "qualifiedCommunication"
+
+
+    let qualifiedCommunicationOf = _vocab "qualifiedCommunicationOf"
+
+    /// If this Agent prov:actedOnBehalfOf Agent :ag, then it can qualify how with prov:qualifiedResponsibility [ a prov:Responsibility;  prov:agent :ag; :foo :bar ].
+    let qualifiedDelegation = _vocab "qualifiedDelegation"
+
+
+    let qualifiedDelegationOf = _vocab "qualifiedDelegationOf"
+
+    /// If this Entity prov:wasDerivedFrom Entity :e, then it can qualify how it was derived using prov:qualifiedDerivation [ a prov:Derivation;  prov:entity :e; :foo :bar ].
+    let qualifiedDerivation = _vocab "qualifiedDerivation"
+
+
+    let qualifiedDerivationOf = _vocab "qualifiedDerivationOf"
+
+    /// If this Activity prov:wasEndedBy Entity :e1, then it can qualify how it was ended using prov:qualifiedEnd [ a prov:End;  prov:entity :e1; :foo :bar ].
+    let qualifiedEnd = _vocab "qualifiedEnd"
+
+
+    let qualifiedEndOf = _vocab "qualifiedEndOf"
+
+    /// This annotation property links a subproperty of prov:wasInfluencedBy with the subclass of prov:Influence and the qualifying property that are used to qualify it.
+    ///
+    /// Example annotation:
+    ///
+    ///     prov:wasGeneratedBy prov:qualifiedForm prov:qualifiedGeneration, prov:Generation .
+    ///
+    /// Then this unqualified assertion:
+    ///
+    ///     :entity1 prov:wasGeneratedBy :activity1 .
+    ///
+    /// can be qualified by adding:
+    ///
+    ///    :entity1 prov:qualifiedGeneration :entity1Gen .
+    ///    :entity1Gen
+    ///        a prov:Generation, prov:Influence;
+    ///        prov:activity :activity1;
+    ///        :customValue 1337 .
+    ///
+    /// Note how the value of the unqualified influence (prov:wasGeneratedBy :activity1) is mirrored as the value of the prov:activity (or prov:entity, or prov:agent) property on the influence class.
+    let qualifiedForm = _vocab "qualifiedForm"
+
+    /// If this Activity prov:generated Entity :e, then it can qualify how it performed the Generation using prov:qualifiedGeneration [ a prov:Generation;  prov:entity :e; :foo :bar ].
+    let qualifiedGeneration = _vocab "qualifiedGeneration"
+
+
+    let qualifiedGenerationOf = _vocab "qualifiedGenerationOf"
+
+    /// Because prov:qualifiedInfluence is a broad relation, the more specific relations (qualifiedCommunication, qualifiedDelegation, qualifiedEnd, etc.) should be used when applicable.
+    let qualifiedInfluence = _vocab "qualifiedInfluence"
+
+
+    let qualifiedInfluenceOf = _vocab "qualifiedInfluenceOf"
+
+
+    let qualifiedInsertion = _vocab "qualifiedInsertion"
+
+    /// If this Entity prov:wasInvalidatedBy Activity :a, then it can qualify how it was invalidated using prov:qualifiedInvalidation [ a prov:Invalidation;  prov:activity :a; :foo :bar ].
+    let qualifiedInvalidation = _vocab "qualifiedInvalidation"
+
+
+    let qualifiedInvalidationOf = _vocab "qualifiedInvalidationOf"
+
+    /// If this Entity prov:hadPrimarySource Entity :e, then it can qualify how using prov:qualifiedPrimarySource [ a prov:PrimarySource; prov:entity :e; :foo :bar ].
+    let qualifiedPrimarySource = _vocab "qualifiedPrimarySource"
+
+    /// If this Entity prov:wasQuotedFrom Entity :e, then it can qualify how using prov:qualifiedQuotation [ a prov:Quotation;  prov:entity :e; :foo :bar ].
+    let qualifiedQuotation = _vocab "qualifiedQuotation"
+
+
+    let qualifiedQuotationOf = _vocab "qualifiedQuotationOf"
+
+
+    let qualifiedRemoval = _vocab "qualifiedRemoval"
+
+    /// If this Entity prov:wasRevisionOf Entity :e, then it can qualify how it was revised using prov:qualifiedRevision [ a prov:Revision;  prov:entity :e; :foo :bar ].
+    let qualifiedRevision = _vocab "qualifiedRevision"
+
+
+    let qualifiedSourceOf = _vocab "qualifiedSourceOf"
+
+    /// If this Activity prov:wasStartedBy Entity :e1, then it can qualify how it was started using prov:qualifiedStart [ a prov:Start;  prov:entity :e1; :foo :bar ].
+    let qualifiedStart = _vocab "qualifiedStart"
+
+
+    let qualifiedStartOf = _vocab "qualifiedStartOf"
+
+    /// If this Activity prov:used Entity :e, then it can qualify how it used it using prov:qualifiedUsage [ a prov:Usage; prov:entity :e; :foo :bar ].
+    let qualifiedUsage = _vocab "qualifiedUsage"
+
+
+    let qualifiedUsingActivity = _vocab "qualifiedUsingActivity"
+
+
+    let quotedAs = _vocab "quotedAs"
+
+
+    let removedKey = _vocab "removedKey"
+
+
+    let revisedEntity = _vocab "revisedEntity"
+
+
+    let sharesDefinitionWith = _vocab "sharesDefinitionWith"
+
+
+    let specializationOf = _vocab "specializationOf"
+
+
+    let started = _vocab "started"
+
+    /// The time at which an activity started. See also prov:endedAtTime.
+    let startedAtTime = _vocab "startedAtTime"
+
+
+    let todo = _vocab "todo"
+
+    /// Classes and properties used to qualify relationships are annotated with prov:unqualifiedForm to indicate the property used to assert an unqualified provenance relation.
+    let unqualifiedForm = _vocab "unqualifiedForm"
+
+    /// A prov:Entity that was used by this prov:Activity. For example, :baking prov:used :spoon, :egg, :oven .
+    let used = _vocab "used"
+
+
+    let wasActivityOfInfluence = _vocab "wasActivityOfInfluence"
+
+
+    let wasAssociateFor = _vocab "wasAssociateFor"
+
+    /// An prov:Agent that had some (unspecified) responsibility for the occurrence of this prov:Activity.
+    let wasAssociatedWith = _vocab "wasAssociatedWith"
+
+    /// Attribution is the ascribing of an entity to an agent.
+    let wasAttributedTo = _vocab "wasAttributedTo"
+
+    /// The more specific subproperties of prov:wasDerivedFrom (i.e., prov:wasQuotedFrom, prov:wasRevisionOf, prov:hadPrimarySource) should be used when applicable.
+    let wasDerivedFrom = _vocab "wasDerivedFrom"
+
+    /// End is when an activity is deemed to have ended. An end may refer to an entity, known as trigger, that terminated the activity.
+    let wasEndedBy = _vocab "wasEndedBy"
+
+
+    let wasGeneratedBy = _vocab "wasGeneratedBy"
+
+    /// This property has multiple RDFS domains to suit multiple OWL Profiles. See <a href="#owl-profile">PROV-O OWL Profile</a>.
+    let wasInfluencedBy = _vocab "wasInfluencedBy"
+
+    /// An activity a2 is dependent on or informed by another activity a1, by way of some unspecified entity that is generated by a1 and used by a2.
+    let wasInformedBy = _vocab "wasInformedBy"
+
+
+    let wasInvalidatedBy = _vocab "wasInvalidatedBy"
+
+
+    let wasMemberOf = _vocab "wasMemberOf"
+
+
+    let wasPlanOf = _vocab "wasPlanOf"
+
+
+    let wasPrimarySourceOf = _vocab "wasPrimarySourceOf"
+
+    /// An entity is derived from an original entity by copying, or 'quoting', some or all of it.
+    let wasQuotedFrom = _vocab "wasQuotedFrom"
+
+    /// A revision is a derivation that revises an entity into a revised version.
+    let wasRevisionOf = _vocab "wasRevisionOf"
+
+
+    let wasRoleIn = _vocab "wasRoleIn"
+
+    /// Start is when an activity is deemed to have started. A start may refer to an entity, known as trigger, that initiated the activity.
+    let wasStartedBy = _vocab "wasStartedBy"
+
+
+    let wasUsedBy = _vocab "wasUsedBy"
+
+
+    let wasUsedInDerivation = _vocab "wasUsedInDerivation"
 
 
 
 
 
+module foaf =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string "http://xmlns.com/foaf/0.1/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name = Lexical_Form.from_string local_name_string.low_lined transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string (local_name_string.Replace(" ", "_"))
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
 
 
 
+    let value = _vocab ""
+
+    /// An agent (eg. person, group, software or physical artifact).
+    let Agent = _vocab "Agent"
+
+    /// A document.
+    let Document = _vocab "Document"
+
+    /// A class of Agents.
+    let Group = _vocab "Group"
+
+    /// An image.
+    let Image = _vocab "Image"
+
+    /// A foaf:LabelProperty is any RDF property with texual values that serve as labels.
+    let LabelProperty = _vocab "LabelProperty"
+
+    /// An online account.
+    let OnlineAccount = _vocab "OnlineAccount"
+
+    /// An online chat account.
+    let OnlineChatAccount = _vocab "OnlineChatAccount"
+
+    /// An online e-commerce account.
+    let OnlineEcommerceAccount = _vocab "OnlineEcommerceAccount"
+
+    /// An online gaming account.
+    let OnlineGamingAccount = _vocab "OnlineGamingAccount"
+
+    /// An organization.
+    let Organization = _vocab "Organization"
+
+    /// A person.
+    let Person = _vocab "Person"
+
+    /// A personal profile RDF document.
+    let PersonalProfileDocument = _vocab "PersonalProfileDocument"
+
+    /// A project (a collective endeavour of some kind).
+    let Project = _vocab "Project"
+
+    /// Indicates an account held by this agent.
+    let account = _vocab "account"
+
+    /// Indicates the name (identifier) associated with this online account.
+    let accountName = _vocab "accountName"
+
+    /// Indicates a homepage of the service provide for this online account.
+    let accountServiceHomepage = _vocab "accountServiceHomepage"
+
+    /// The age in years of some agent.
+    let age = _vocab "age"
+
+    /// An AIM chat ID
+    let aimChatID = _vocab "aimChatID"
+
+    /// A location that something is based near, for some broadly human notion of near.
+    let based_near = _vocab "based_near"
+
+    /// The birthday of this Agent, represented in mm-dd string form, eg. '12-31'.
+    let birthday = _vocab "birthday"
+
+    /// A current project this person works on.
+    let currentProject = _vocab "currentProject"
+
+    /// A depiction of some thing.
+    let depiction = _vocab "depiction"
+
+    /// A thing depicted in this representation.
+    let depicts = _vocab "depicts"
+
+    /// A checksum for the DNA of some thing. Joke.
+    let dnaChecksum = _vocab "dnaChecksum"
+
+    /// The family name of some person.
+    let familyName = _vocab "familyName"
+
+    /// The family name of some person.
+    let family_name = _vocab "family_name"
+
+    /// The first name of a person.
+    let firstName = _vocab "firstName"
+
+    /// The underlying or 'focal' entity associated with some SKOS-described concept.
+    let focus = _vocab "focus"
+
+    /// An organization funding a project or person.
+    let fundedBy = _vocab "fundedBy"
+
+    /// A textual geekcode for this person, see http://www.geekcode.com/geek.html
+    let geekcode = _vocab "geekcode"
+
+    /// The gender of this Agent (typically but not necessarily 'male' or 'female').
+    let gender = _vocab "gender"
+
+    /// The given name of some person.
+    let givenName = _vocab "givenName"
+
+    /// The given name of some person.
+    let givenname = _vocab "givenname"
+
+    /// Indicates an account held by this agent.
+    let holdsAccount = _vocab "holdsAccount"
+
+    /// A homepage for some thing.
+    let homepage = _vocab "homepage"
+
+    /// An ICQ chat ID
+    let icqChatID = _vocab "icqChatID"
+
+    /// An image that can be used to represent some thing (ie. those depictions which are particularly representative of something, eg. one's photo on a homepage).
+    let img = _vocab "img"
+
+    /// A page about a topic of interest to this person.
+    let interest = _vocab "interest"
+
+    /// A document that this thing is the primary topic of.
+    let isPrimaryTopicOf = _vocab "isPrimaryTopicOf"
+
+    /// A jabber ID for something.
+    let jabberID = _vocab "jabberID"
+
+    /// A person known by this person (indicating some level of reciprocated interaction between the parties).
+    let knows = _vocab "knows"
+
+    /// The last name of a person.
+    let lastName = _vocab "lastName"
+
+    /// A logo representing some thing.
+    let logo = _vocab "logo"
+
+    /// Something that was made by this agent.
+    let made = _vocab "made"
+
+    /// An agent that  made this thing.
+    let maker = _vocab "maker"
+
+    /// A  personal mailbox, ie. an Internet mailbox associated with exactly one owner, the first owner of this mailbox. This is a 'static inverse functional property', in that  there is (across time and change) at most one individual that ever has any particular value for foaf:mbox.
+    let mbox = _vocab "mbox"
+
+    /// The sha1sum of the URI of an Internet mailbox associated with exactly one owner, the  first owner of the mailbox.
+    let mbox_sha1sum = _vocab "mbox_sha1sum"
+
+    /// Indicates a member of a Group
+    let ``member`` = _vocab "member"
+
+    /// Indicates the class of individuals that are a member of a Group
+    let membershipClass = _vocab "membershipClass"
+
+    /// An MSN chat ID
+    let msnChatID = _vocab "msnChatID"
+
+    /// A Myers Briggs (MBTI) personality classification.
+    let myersBriggs = _vocab "myersBriggs"
+
+    /// A name for some thing.
+    let name = _vocab "name"
+
+    /// A short informal nickname characterising an agent (includes login identifiers, IRC and other chat nicknames).
+    let nick = _vocab "nick"
+
+    /// An OpenID for an Agent.
+    let openid = _vocab "openid"
+
+    /// A page or document about this thing.
+    let page = _vocab "page"
+
+    /// A project this person has previously worked on.
+    let pastProject = _vocab "pastProject"
+
+    /// A phone,  specified using fully qualified tel: URI scheme (refs: http://www.w3.org/Addressing/schemes.html#tel).
+    let phone = _vocab "phone"
+
+    /// A .plan comment, in the tradition of finger and '.plan' files.
+    let plan = _vocab "plan"
+
+    /// The primary topic of some page or document.
+    let primaryTopic = _vocab "primaryTopic"
+
+    /// A link to the publications of this person.
+    let publications = _vocab "publications"
+
+    /// A homepage of a school attended by the person.
+    let schoolHomepage = _vocab "schoolHomepage"
+
+    /// A sha1sum hash, in hex.
+    let sha1 = _vocab "sha1"
+
+    /// A Skype ID
+    let skypeID = _vocab "skypeID"
+
+    /// A string expressing what the user is happy for the general public (normally) to know about their current activity.
+    let status = _vocab "status"
+
+    /// The surname of some person.
+    let surname = _vocab "surname"
+
+    /// A theme.
+    let theme = _vocab "theme"
+
+    /// A derived thumbnail image.
+    let thumbnail = _vocab "thumbnail"
+
+    /// A tipjar document for this agent, describing means for payment and reward.
+    let tipjar = _vocab "tipjar"
+
+    /// Title (Mr, Mrs, Ms, Dr. etc)
+    let title = _vocab "title"
+
+    /// A topic of some page or document.
+    let topic = _vocab "topic"
+
+    /// A thing of interest to this person.
+    let topic_interest = _vocab "topic_interest"
+
+    /// A weblog of some thing (whether person, group, company etc.).
+    let weblog = _vocab "weblog"
+
+    /// A work info homepage of some person; a page about their work for some organization.
+    let workInfoHomepage = _vocab "workInfoHomepage"
+
+    /// A workplace homepage of some person; the homepage of an organization they work for.
+    let workplaceHomepage = _vocab "workplaceHomepage"
+
+    /// A Yahoo chat ID
+    let yahooChatID = _vocab "yahooChatID"
 
 
 
+module dcat =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string "http://www.w3.org/ns/dcat#" }
 
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name = Lexical_Form.from_string local_name_string.low_lined transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string (local_name_string.Replace(" ", "_"))
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+
+
+    let Catalog = _vocab "Catalog"
+
+
+    let DataService = _vocab "DataService"
+
+
+    let Dataset = _vocab "Dataset"
+
+
+    let Distribution = _vocab "Distribution"
+
+
+    let accessService = _vocab "accessService"
+
+
+    let accessURL = _vocab "accessURL"
+
+
+    let catalog = _vocab "catalog"
+
+
+    let dataset = _vocab "dataset"
+
+
+    let distribution = _vocab "distribution"
+
+
+    let endpointURL = _vocab "endpointURL"
+
+
+    let keyword = _vocab "keyword"
+
+
+    let mediaType = _vocab "mediaType"
+
+
+    let servesDataset = _vocab "servesDataset"
+
+
+    let service = _vocab "service"
+
+
+    let theme = _vocab "theme"
+
+
+    let themeTaxonomy = _vocab "themeTaxonomy"
+
+
+module rr =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string "http://www.w3.org/ns/r2rml#" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name = Lexical_Form.from_string local_name_string.low_lined transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string (local_name_string.Replace(" ", "_"))
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+
+
+    let value = _vocab "value"
+
+    let BaseTableOrView = _vocab "BaseTableOrView"
+
+    /// Denotes a blank node, used with termType
+    let BlankNode = _vocab "BlankNode"
+
+    /// Represents a graph map.
+    let GraphMap = _vocab "GraphMap"
+
+    /// Denotes an IRI, used with termpType.
+    let IRI = _vocab "IRI"
+
+    /// Represents a join condition.
+    let Join = _vocab "Join"
+
+    /// Denotes a Literal, used with termType.
+    let Literal = _vocab "Literal"
+
+    /// Represents a logical table.
+    let LogicalTable = _vocab "LogicalTable"
+
+    /// Represents an object map.
+    let ObjectMap = _vocab "ObjectMap"
+
+    /// Represents a predicate map.
+    let PredicateMap = _vocab "PredicateMap"
+
+    /// Represents a predicate-object map.
+    let PredicateObjectMap = _vocab "PredicateObjectMap"
+
+    let R2RMLView = _vocab "R2RMLView"
+
+    /// Denotes a reference to an object map.
+    let RefObjectMap = _vocab "RefObjectMap"
+
+    /// Core SQL 2008
+    let SQL2008 = _vocab "SQL2008"
+
+    /// Represents a subject map.
+    let SubjectMap = _vocab "SubjectMap"
+
+    /// A function that generates an RDF term from a logical table row.
+    let TermMap = _vocab "TermMap"
+
+    /// Represents a triples map.
+    let TriplesMap = _vocab "TriplesMap"
+
+    /// Names a column in the child table of a join.
+    let child = _vocab "child"
+
+    /// The subject value generated for a logical table row will be asserted as an instance of this RDFS class.
+    let ``class`` = _vocab "class"
+
+    /// Name of a column in the logical table. When generating RDF triples from a logical table row, value from the specified column is used as the subject, predicate, or object (based upon the specific domain).
+    let column = _vocab "column"
+
+    let constant = _vocab "constant"
+
+    /// Specifies the datatype of the object component for the generated triple from a logical table row.
+    let datatype = _vocab "datatype"
+
+    /// Denotes a default graph
+    let defaultGraph = _vocab "defaultGraph"
+
+    /// An IRI reference for use as the graph name of all triples generated with the GraphMap.
+    let graph = _vocab "graph"
+
+    /// Specifies a GraphMap. When used with a SubjectMap element, all the RDF triples generated from a logical row will be stored in the specified named graph. Otherwise, the RDF triple generated using the (predicate, object) pair will be stored in the specified named graph.
+    let graphMap = _vocab "graphMap"
+
+    /// An expression that allows, at query processing time, use of index-based access to the the (underlying) relational tables, instead of simply retrieving the table rows first and then applying a filter. This property is useful for retrieval based on conditions involving subject, predicate, or object generated from logical table column(s) and involves some transformation.
+    let inverseExpression = _vocab "inverseExpression"
+
+    /// Specifies the join condition for joining the child logical table with the parent logical table of the foreign key constraint.
+    let joinCondition = _vocab "joinCondition"
+
+    /// Specified the language for the object component for the generated triple from a logical table row.
+    let language = _vocab "language"
+
+    /// Definition of logical table to be mapped.
+    let logicalTable = _vocab "logicalTable"
+
+    /// Specifies the object for the generated triple from the logical table row.
+    let object = _vocab "object"
+
+    /// An ObjectMap element to generate the object component of the (predicate, object) pair from a logical table row.
+    let objectMap = _vocab "objectMap"
+
+    /// Names a column in the parent table of a join.
+    let parent = _vocab "parent"
+
+    /// Specifies the TriplesMap element corresponding to the parent logical table of the foreign key constraint.
+    let parentTriplesMap = _vocab "parentTriplesMap"
+
+    /// Specifies the predicate for the generated triple from the logical table row.
+    let predicate = _vocab "predicate"
+
+    /// A PredicateMap element to generate the predicate component of the (predicate, object) pair from a logical table row.
+    let predicateMap = _vocab "predicateMap"
+
+    /// A PredicateObjectMap element to generate (predicate, object) pair from a logical table row.
+    let predicateObjectMap = _vocab "predicateObjectMap"
+
+    /// A valid SQL query.
+    let sqlQuery = _vocab "sqlQuery"
+
+    /// An identifier for a SQL version.
+    let sqlVersion = _vocab "sqlVersion"
+
+    /// An IRI reference for use as subject for all the RDF triples generated from a logical table row.
+    let subject = _vocab "subject"
+
+    /// A SubjectMap element to generate a subject from a logical table row.
+    let subjectMap = _vocab "subjectMap"
+
+    /// Schema-qualified name of a table or view.
+    let tableName = _vocab "tableName"
+
+    /// A template (format string) to specify how to generate a value for a subject, predicate, or object, using one or more columns from a logical table row.
+    let template = _vocab "template"
+
+    /// A string indicating whether subject or object generated using the value from column name specified for rr:column should be an IRI reference, blank node, or a literal.
+    let termType = _vocab "termType"
+
+
+module om =
+    let _namespace_name =
+        lmdb_read_write { return! Lexical_Form.from_string "https://open-metadata.org/ontology/" }
+
+    let _prefix (local_name_string: string) (transaction: LightningTransaction) =
+        let local_name = Lexical_Form.from_string local_name_string.low_lined transaction
+
+        RDF_Term.from_namespaced_iri
+            { namespace_name_id = _namespace_name.lexical_form_id
+              local_name_id = local_name.lexical_form_id }
+            transaction
+
+    let _vocab (local_name_string: string) =
+        lmdb_read_write {
+            let! local_name = Lexical_Form.from_string (local_name_string.Replace(" ", "_"))
+
+            return!
+                RDF_Term.from_namespaced_iri
+                    { namespace_name_id = _namespace_name.lexical_form_id
+                      local_name_id = local_name.lexical_form_id }
+        }
+
+
+
+    let value = _vocab ""
+
+    /// AI system such as a chatbot, agent, copilot, RAG application or multi-agent pipeline that may use multiple LLM models and tools
+    let AIApplication = _vocab "AIApplication"
+
+    /// Policy rules for AI/LLM usage, compliance, and risk management (model approval, data access, bias thresholds, cost controls, etc.)
+    let AIGovernancePolicy = _vocab "AIGovernancePolicy"
+
+    /// Collection of API endpoints
+    let APICollection = _vocab "APICollection"
+
+    /// Documentation for API endpoints
+    let APIDocumentation = _vocab "APIDocumentation"
+
+    /// API endpoint providing data access service
+    let APIEndpoint = _vocab "APIEndpoint"
+
+
+    let APIService = _vocab "APIService"
+
+    /// Single execution run of an AI agent, tracking inputs, outputs, lineage, metrics and errors for observability and governance
+    let AgentExecution = _vocab "AgentExecution"
+
+    /// Certification status of an asset
+    let AssetCertification = _vocab "AssetCertification"
+
+
+    let Bot = _vocab "Bot"
+
+    /// Curated collection of metadata about resources
+    let Catalog = _vocab "Catalog"
+
+    /// Metadata about when/how an entity was cataloged
+    let CatalogRecord = _vocab "CatalogRecord"
+
+    /// Description of changes that led to a version of an entity
+    let ChangeDescription = _vocab "ChangeDescription"
+
+
+    let Chart = _vocab "Chart"
+
+    /// Tag Category
+    let Classification = _vocab "Classification"
+
+    /// Column in a table
+    let Column = _vocab "Column"
+
+    /// Storage container organizing multiple datasets
+    let Container = _vocab "Container"
+
+    /// Dashboard for data visualization
+    let Dashboard = _vocab "Dashboard"
+
+    /// Dashboard Data Model entity to capture the data models used by dashboards
+    let DashboardDataModel = _vocab "DashboardDataModel"
+
+    /// Dashboard data model column context type used to attach custom properties to columns of a DashboardDataModel
+    let DashboardDataModelColumn = _vocab "DashboardDataModelColumn"
+
+
+    let DashboardService = _vocab "DashboardService"
+
+    /// Base class for all data assets
+    let DataAsset = _vocab "DataAsset"
+
+
+    let DataContract = _vocab "DataContract"
+
+
+    let DataProduct = _vocab "DataProduct"
+
+    /// Service Level Agreement for a data product
+    let DataProductSLA = _vocab "DataProductSLA"
+
+    /// Service that provides access to data
+    let DataService = _vocab "DataService"
+
+
+    let Database = _vocab "Database"
+
+
+    let DatabaseSchema = _vocab "DatabaseSchema"
+
+
+    let DatabaseService = _vocab "DatabaseService"
+
+    /// Collection of related datasets, e.g., time series or versions
+    let DatasetSeries = _vocab "DatasetSeries"
+
+    /// File system directory
+    let Directory = _vocab "Directory"
+
+    /// Specific representation of a dataset
+    let Distribution = _vocab "Distribution"
+
+
+    let Domain = _vocab "Domain"
+
+    /// File and document storage service
+    let DriveService = _vocab "DriveService"
+
+    /// Base class for all OpenMetadata entities
+    let Entity = _vocab "Entity"
+
+    /// Current status of an entity (Active, Deleted, Draft)
+    let EntityStatus = _vocab "EntityStatus"
+
+    /// Individual file
+    let File = _vocab "File"
+
+    /// Update frequency specification
+    let Frequency = _vocab "Frequency"
+
+
+    let Glossary = _vocab "Glossary"
+
+
+    let GlossaryTerm = _vocab "GlossaryTerm"
+
+    /// Input port of a data product for consuming data
+    let InputPort = _vocab "InputPort"
+
+    /// Registered Large Language Model deployment, fine-tune, or base model referenced by AI applications and agents
+    let LLMModel = _vocab "LLMModel"
+
+    /// Service managing Large Language Model providers (OpenAI, Anthropic, Bedrock, VertexAI, Ollama, etc.)
+    let LLMService = _vocab "LLMService"
+
+    /// Learning resource such as an in-product tutorial, Storylane walkthrough, video or article contextualized for product surfaces
+    let LearningResource = _vocab "LearningResource"
+
+    /// Legal document giving permissions
+    let LicenseDocument = _vocab "LicenseDocument"
+
+    /// Life cycle properties of an entity including created, updated, accessed timestamps
+    let LifeCycle = _vocab "LifeCycle"
+
+    /// Spatial region or location
+    let Location = _vocab "Location"
+
+    /// Single execution session of an MCP server, tracking tool calls, resource accesses, prompt uses and data lineage for audit and compliance
+    let MCPExecution = _vocab "MCPExecution"
+
+    /// Model Context Protocol server deployment that exposes tools, resources and prompts to AI applications
+    let MCPServer = _vocab "MCPServer"
+
+    /// Service for discovering and managing MCP (Model Context Protocol) servers
+    let MCPService = _vocab "MCPService"
+
+    /// Machine learning model providing inference service
+    let MLModel = _vocab "MLModel"
+
+
+    let MLModelService = _vocab "MLModelService"
+
+    /// Media type or format
+    let MediaType = _vocab "MediaType"
+
+
+    let MessagingService = _vocab "MessagingService"
+
+
+    let MetadataService = _vocab "MetadataService"
+
+
+    let Metric = _vocab "Metric"
+
+
+    let ObservabilityService = _vocab "ObservabilityService"
+
+    /// Organization entity
+    let Organization = _vocab "Organization"
+
+    /// Output port of a data product for exposing data
+    let OutputPort = _vocab "OutputPort"
+
+    /// Time period specification
+    let PeriodOfTime = _vocab "PeriodOfTime"
+
+
+    let Pipeline = _vocab "Pipeline"
+
+    /// ETL Service
+    let PipelineService = _vocab "PipelineService"
+
+    /// Status of a pipeline execution
+    let PipelineStatus = _vocab "PipelineStatus"
+
+
+    let Policy = _vocab "Policy"
+
+
+    let Post = _vocab "Post"
+
+    /// Configuration for table profiling
+    let ProfilerConfig = _vocab "ProfilerConfig"
+
+    /// Reusable prompt template with variables, system prompts and examples for consistent AI behavior
+    let PromptTemplate = _vocab "PromptTemplate"
+
+    /// Relationship with additional context like role, time, etc.
+    let QualifiedRelationship = _vocab "QualifiedRelationship"
+
+
+    let QualityService = _vocab "QualityService"
+
+
+    let Query = _vocab "Query"
+
+    /// Report as a specific representation of data
+    let Report = _vocab "Report"
+
+
+    let ReportingService = _vocab "ReportingService"
+
+    /// Any resource cataloged in OpenMetadata
+    let Resource = _vocab "Resource"
+
+    /// Statement about intellectual property rights
+    let RightsStatement = _vocab "RightsStatement"
+
+
+    let Role = _vocab "Role"
+
+
+    let SearchIndex = _vocab "SearchIndex"
+
+
+    let SearchService = _vocab "SearchService"
+
+    /// Base class for all services
+    let Service = _vocab "Service"
+
+    /// Spreadsheet document
+    let Spreadsheet = _vocab "Spreadsheet"
+
+    /// Technical standard or specification
+    let Standard = _vocab "Standard"
+
+
+    let StorageService = _vocab "StorageService"
+
+
+    let StoredProcedure = _vocab "StoredProcedure"
+
+
+    let Table = _vocab "Table"
+
+    /// Table column context type used to attach custom properties to columns of a Table
+    let TableColumn = _vocab "TableColumn"
+
+    /// Profile data for a table including statistics
+    let TableProfile = _vocab "TableProfile"
+
+
+    let Tag = _vocab "Tag"
+
+
+    let Task = _vocab "Task"
+
+
+    let Team = _vocab "Team"
+
+
+    let TestCase = _vocab "TestCase"
+
+    /// Parameter definition for a test case
+    let TestCaseParameter = _vocab "TestCaseParameter"
+
+
+    let TestDefinition = _vocab "TestDefinition"
+
+
+    let TestSuite = _vocab "TestSuite"
+
+
+    let Thread = _vocab "Thread"
+
+    /// Message topic providing streaming data access
+    let Topic = _vocab "Topic"
+
+
+    let User = _vocab "User"
+
+    /// Votes on an entity (upvotes and downvotes)
+    let Votes = _vocab "Votes"
+
+    /// Worksheet within a spreadsheet
+    let Worksheet = _vocab "Worksheet"
+
+    /// Information about access restrictions
+    let accessRights = _vocab "accessRights"
+
+    /// URL to access the distribution
+    let accessURL = _vocab "accessURL"
+
+    /// Frequency of dataset updates
+    let accrualPeriodicity = _vocab "accrualPeriodicity"
+
+    /// Degree of data accuracy
+    let accuracy = _vocab "accuracy"
+
+
+    let addressedTo = _vocab "addressedTo"
+
+    /// Link to API documentation
+    let apiDocumentation = _vocab "apiDocumentation"
+
+    /// Type of AI application (Chatbot, Agent, Copilot, Assistant, RAG, CodeGenerator, DataAnalyst, AutomationBot, MultiAgent, Custom)
+    let applicationType = _vocab "applicationType"
+
+    /// Tag or classification applied to entity
+    let appliedTo = _vocab "appliedTo"
+
+    /// Base model this model was trained or fine-tuned from
+    let baseModel = _vocab "baseModel"
+
+    /// Geographic bounding box
+    let bbox = _vocab "bbox"
+
+
+    let belongsToDatabase = _vocab "belongsToDatabase"
+
+
+    let belongsToSchema = _vocab "belongsToSchema"
+
+
+    let belongsToService = _vocab "belongsToService"
+
+    /// Size in bytes
+    let byteSize = _vocab "byteSize"
+
+    /// Sub-catalog
+    let catalog = _vocab "catalog"
+
+    /// Date when entity was added to catalog
+    let cataloged = _vocab "cataloged"
+
+    /// Geographic center point
+    let centroid = _vocab "centroid"
+
+    /// Tag label for the certification
+    let certificationTagLabel = _vocab "certificationTagLabel"
+
+    /// Checksum for data integrity verification
+    let checksum = _vocab "checksum"
+
+    /// Number of columns in the table
+    let columnCount = _vocab "columnCount"
+
+    /// Data type of the column
+    let columnDataType = _vocab "columnDataType"
+
+    /// Description of what the column contains
+    let columnDescription = _vocab "columnDescription"
+
+    /// Degree of data completeness
+    let completeness = _vocab "completeness"
+
+    /// Compression format of the distribution
+    let compressFormat = _vocab "compressFormat"
+
+    /// Concurrency level of the pipeline
+    let concurrency = _vocab "concurrency"
+
+    /// Standard or schema that the resource conforms to
+    let conformsTo = _vocab "conformsTo"
+
+    /// Standard the dataset conforms to
+    let conformsToStandard = _vocab "conformsToStandard"
+
+    /// Degree of data consistency
+    let consistency = _vocab "consistency"
+
+    /// Data products that this product consumes data from
+    let consumesFrom = _vocab "consumesFrom"
+
+    /// Contact information for the dataset
+    let contactPoint = _vocab "contactPoint"
+
+    /// Hierarchical containment relationship
+    let contains = _vocab "contains"
+
+
+    let containsPosts = _vocab "containsPosts"
+
+    /// Entity responsible for contributions to the dataset
+    let contributor = _vocab "contributor"
+
+
+    let created = _vocab "created"
+
+
+    let createdBy = _vocab "createdBy"
+
+
+    let creates = _vocab "creates"
+
+    /// Entity primarily responsible for creating the dataset
+    let creator = _vocab "creator"
+
+    /// Type of data model (TableauDataModel, SupersetDataModel, MetabaseDataModel, LookMlView, LookMlExplore, PowerBIDataModel, QlikDataModel)
+    let dataModelType = _vocab "dataModelType"
+
+    /// Assets that are part of this data product
+    let dataProductAssets = _vocab "dataProductAssets"
+
+    /// Domain this data product belongs to
+    let dataProductDomain = _vocab "dataProductDomain"
+
+    /// Expert for this data product
+    let dataProductExpert = _vocab "dataProductExpert"
+
+    /// Owner of the data product
+    let dataProductOwner = _vocab "dataProductOwner"
+
+    /// Data quality dimension (Completeness, Accuracy, Consistency, Validity, Uniqueness, Integrity, SQL)
+    let dataQualityDimension = _vocab "dataQualityDimension"
+
+    /// Dataset that is part of the catalog
+    let dataset = _vocab "dataset"
+
+    /// Default value relationship
+    let defaultsTo = _vocab "defaultsTo"
+
+    /// Whether the entity has been soft deleted
+    let deleted = _vocab "deleted"
+
+
+    let description = _vocab "description"
+
+
+    let developmentStage = _vocab "developmentStage"
+
+    /// Dimension represented in the dataset
+    let dimension = _vocab "dimension"
+
+    /// Available distribution of the dataset
+    let distribution = _vocab "distribution"
+
+    /// Number of down votes
+    let downVotes = _vocab "downVotes"
+
+    /// Direct download URL
+    let downloadURL = _vocab "downloadURL"
+
+    /// Data lineage downstream relationship
+    let downstream = _vocab "downstream"
+
+
+    let editedBy = _vocab "editedBy"
+
+    /// End of the temporal period
+    let endDate = _vocab "endDate"
+
+
+    let endpointDescription = _vocab "endpointDescription"
+
+
+    let endpointURL = _vocab "endpointURL"
+
+    /// Agent execution was an execution of this AI application
+    let executedAgent = _vocab "executedAgent"
+
+    /// MCP execution was an execution of this MCP server
+    let executedMCPServer = _vocab "executedMCPServer"
+
+    /// Status of an agent or MCP execution (Running, Success, Failed, Timeout, Cancelled, PartialSuccess)
+    let executionStatus = _vocab "executionStatus"
+
+    /// User is expert on entity
+    let expert = _vocab "expert"
+
+    /// First dataset in a series
+    let first = _vocab "first"
+
+
+    let follows = _vocab "follows"
+
+    /// File format of the distribution
+    let format = _vocab "format"
+
+    /// Source column used in transformation
+    let fromColumn = _vocab "fromColumn"
+
+    /// Unique identifier for the entity within OpenMetadata
+    let fullyQualifiedName = _vocab "fullyQualifiedName"
+
+    /// Geometry of the spatial area
+    let geometry = _vocab "geometry"
+
+    /// AI application, LLM model or MCP server is governed by an AI governance policy
+    let governedBy = _vocab "governedBy"
+
+    /// Role in a qualified relationship
+    let hadRole = _vocab "hadRole"
+
+    /// General possession relationship
+    let has = _vocab "has"
+
+    /// Beginning instant of the temporal period
+    let hasBeginning = _vocab "hasBeginning"
+
+    /// Certification status of the asset
+    let hasCertification = _vocab "hasCertification"
+
+    /// Change that led to this version of the entity
+    let hasChangeDescription = _vocab "hasChangeDescription"
+
+
+    let hasColumn = _vocab "hasColumn"
+
+    /// Data products this entity is part of
+    let hasDataProducts = _vocab "hasDataProducts"
+
+    /// Domains the entity belongs to
+    let hasDomains = _vocab "hasDomains"
+
+    /// Ending instant of the temporal period
+    let hasEnd = _vocab "hasEnd"
+
+    /// Current status of the entity
+    let hasEntityStatus = _vocab "hasEntityStatus"
+
+    /// Users who follow this entity
+    let hasFollowers = _vocab "hasFollowers"
+
+    /// Incremental change that led to this version
+    let hasIncrementalChangeDescription = _vocab "hasIncrementalChangeDescription"
+
+    /// Input port of the data product
+    let hasInputPort = _vocab "hasInputPort"
+
+    /// Life cycle properties of the entity
+    let hasLifeCycle = _vocab "hasLifeCycle"
+
+    /// Output port of the data product
+    let hasOutputPort = _vocab "hasOutputPort"
+
+    /// Agent responsible for the entity
+    let hasOwner = _vocab "hasOwner"
+
+    /// Owners of this entity (plural)
+    let hasOwners = _vocab "hasOwners"
+
+    /// Parameter definitions for a test
+    let hasParameterDefinition = _vocab "hasParameterDefinition"
+
+    /// Latest status of the pipeline
+    let hasPipelineStatus = _vocab "hasPipelineStatus"
+
+    /// ODRL policy associated with the dataset
+    let hasPolicy = _vocab "hasPolicy"
+
+    /// Latest profile data for the table
+    let hasProfile = _vocab "hasProfile"
+
+    /// Profiler configuration for the table
+    let hasProfilerConfig = _vocab "hasProfilerConfig"
+
+    /// Quality annotation for the dataset
+    let hasQualityAnnotation = _vocab "hasQualityAnnotation"
+
+    /// Quality measurement for the dataset
+    let hasQualityMeasurement = _vocab "hasQualityMeasurement"
+
+    /// Service Level Agreement for the data product
+    let hasSLA = _vocab "hasSLA"
+
+
+    let hasTag = _vocab "hasTag"
+
+
+    let hasVersion = _vocab "hasVersion"
+
+    /// Votes on the entity
+    let hasVotes = _vocab "hasVotes"
+
+    /// Homepage of the catalog
+    let homepage = _vocab "homepage"
+
+    /// Unique identifier of the dataset
+    let identifier = _vocab "identifier"
+
+    /// Bot user that performed the action on behalf of the actual user
+    let impersonatedBy = _vocab "impersonatedBy"
+
+    /// Links a dataset to its series
+    let inSeries = _vocab "inSeries"
+
+    /// Thread or post is about an entity
+    let isAbout = _vocab "isAbout"
+
+    /// Whether this column can contain null values
+    let isNullable = _vocab "isNullable"
+
+    /// Whether this column is a primary key
+    let isPrimaryKey = _vocab "isPrimaryKey"
+
+    /// Related resource that references this dataset
+    let isReferencedBy = _vocab "isReferencedBy"
+
+    /// Links to the non-versioned or abstract dataset
+    let isVersionOf = _vocab "isVersionOf"
+
+    /// Date of formal issuance
+    let issued = _vocab "issued"
+
+    /// Join relationship between tables
+    let joinedWith = _vocab "joinedWith"
+
+    /// Keywords describing the dataset
+    let keyword = _vocab "keyword"
+
+    /// Web page providing access and information
+    let landingPage = _vocab "landingPage"
+
+    /// Language of the dataset
+    let language = _vocab "language"
+
+    /// Last dataset in a series
+    let last = _vocab "last"
+
+    /// License under which the dataset is available
+    let license = _vocab "license"
+
+    /// Access details when entity was last accessed
+    let lifeCycleAccessed = _vocab "lifeCycleAccessed"
+
+    /// Access details when entity was created
+    let lifeCycleCreated = _vocab "lifeCycleCreated"
+
+    /// Access details when entity was last updated
+    let lifeCycleUpdated = _vocab "lifeCycleUpdated"
+
+    /// Current lifecycle stage (IDEATION, DESIGN, DEVELOPMENT, TESTING, PRODUCTION, DEPRECATED, RETIRED)
+    let lifecycleStage = _vocab "lifecycleStage"
+
+    /// When the lineage was created
+    let lineageCreatedAt = _vocab "lineageCreatedAt"
+
+    /// User who created the lineage
+    let lineageCreatedBy = _vocab "lineageCreatedBy"
+
+    /// How the lineage was created (Manual, Pipeline, Query, etc.)
+    let lineageSource = _vocab "lineageSource"
+
+    /// Measure represented in the dataset
+    let measure = _vocab "measure"
+
+    /// Media type of the distribution
+    let mediaType = _vocab "mediaType"
+
+
+    let memberOf = _vocab "memberOf"
+
+    /// Entity is mentioned in a post or thread
+    let mentionedIn = _vocab "mentionedIn"
+
+    /// Capability exposed by the LLM model (TextGeneration, CodeGeneration, Embeddings, Chat, Vision, Audio, FunctionCalling, ToolUse)
+    let modelCapability = _vocab "modelCapability"
+
+    /// Type of LLM model (BaseModel, FineTuned, Quantized, Distilled, Adapter, Custom)
+    let modelType = _vocab "modelType"
+
+
+    let modified = _vocab "modified"
+
+    /// Next dataset in a series
+    let next = _vocab "next"
+
+    /// Number of columns in the dataset
+    let numberOfColumns = _vocab "numberOfColumns"
+
+    /// Number of records in the dataset
+    let numberOfRecords = _vocab "numberOfRecords"
+
+
+    let owns = _vocab "owns"
+
+    /// Package format of the distribution
+    let packageFormat = _vocab "packageFormat"
+
+    /// Hierarchical parent relationship
+    let parentOf = _vocab "parentOf"
+
+    /// Pipeline that processes the data
+    let pipeline = _vocab "pipeline"
+
+    /// Pipeline code location
+    let pipelineLocation = _vocab "pipelineLocation"
+
+    /// Type of AI governance policy (ModelApproval, DataAccess, BiasThreshold, ComplianceCheck, CostControl, PerformanceStandard, SecurityControl)
+    let policyType = _vocab "policyType"
+
+    /// Data asset exposed through this port
+    let portDataAsset = _vocab "portDataAsset"
+
+    /// Endpoint URL or connection string for the port
+    let portEndpoint = _vocab "portEndpoint"
+
+    /// Data format supported by the port (JSON, CSV, PARQUET, etc.)
+    let portFormat = _vocab "portFormat"
+
+    /// Name of the port
+    let portName = _vocab "portName"
+
+    /// Protocol used by the port (REST, GRPC, KAFKA, etc.)
+    let portProtocol = _vocab "portProtocol"
+
+    /// Previous dataset in a series
+    let prev = _vocab "prev"
+
+    /// Link to previous version
+    let previousVersion = _vocab "previousVersion"
+
+    /// Main entity described by this record
+    let primaryTopic = _vocab "primaryTopic"
+
+    /// Whether lineage has been processed for this entity
+    let processedLineage = _vocab "processedLineage"
+
+    /// Provenance statement
+    let provenance = _vocab "provenance"
+
+    /// Data products that consume data from this product
+    let providesTo = _vocab "providesTo"
+
+    /// Entity responsible for making the dataset available
+    let publisher = _vocab "publisher"
+
+    /// Qualified access information including authentication and authorization
+    let qualifiedAccess = _vocab "qualifiedAccess"
+
+    /// Detailed attribution with roles
+    let qualifiedAttribution = _vocab "qualifiedAttribution"
+
+    /// Detailed derivation with transformation info
+    let qualifiedDerivation = _vocab "qualifiedDerivation"
+
+    /// Link to a qualified relationship
+    let qualifiedRelation = _vocab "qualifiedRelation"
+
+
+    let reactedTo = _vocab "reactedTo"
+
+    /// Links catalog to its records
+    let record = _vocab "record"
+
+    /// General relationship between entities
+    let relatedTo = _vocab "relatedTo"
+
+    /// Alternative spelling of relatedTo
+    let relatesTo = _vocab "relatesTo"
+
+    /// Related resource
+    let relation = _vocab "relation"
+
+
+    let repliedTo = _vocab "repliedTo"
+
+    /// Primary topic grouping (Discovery, Administration, DataGovernance, DataQuality, Observability, AI)
+    let resourceCategory = _vocab "resourceCategory"
+
+    /// Suggested proficiency tier (Intro, Intermediate, Advanced)
+    let resourceDifficulty = _vocab "resourceDifficulty"
+
+    /// Kind of learning asset (Storylane, Video, Article)
+    let resourceType = _vocab "resourceType"
+
+    /// Retention period of the data in ISO 8601 duration format
+    let retentionPeriod = _vocab "retentionPeriod"
+
+
+    let reviews = _vocab "reviews"
+
+    /// Rights statement for the dataset
+    let rights = _vocab "rights"
+
+    /// Number of rows in the table
+    let rowCount = _vocab "rowCount"
+
+    /// Sample data from the table
+    let sampleData = _vocab "sampleData"
+
+    /// Scheduler interval in cron format
+    let scheduleInterval = _vocab "scheduleInterval"
+
+    /// DDL schema definition for the table
+    let schemaDefinition = _vocab "schemaDefinition"
+
+    /// Type of MCP server (DataAccess, FileSystem, WebAPI, Database, Cloud, Security, Development, Communication, Custom)
+    let serverType = _vocab "serverType"
+
+    /// Links a data service to datasets it serves
+    let servesDataset = _vocab "servesDataset"
+
+    /// Service that is part of the catalog
+    let service = _vocab "service"
+
+    /// Endpoint for accessing the service
+    let serviceEndpoint = _vocab "serviceEndpoint"
+
+    /// Service level agreement details
+    let serviceLevel = _vocab "serviceLevel"
+
+    /// Operational status of the service
+    let serviceStatus = _vocab "serviceStatus"
+
+
+    let serviceType = _vocab "serviceType"
+
+    /// Expected availability percentage
+    let slaAvailability = _vocab "slaAvailability"
+
+    /// Maximum data staleness in minutes
+    let slaDataFreshness = _vocab "slaDataFreshness"
+
+    /// Minimum data quality score
+    let slaDataQuality = _vocab "slaDataQuality"
+
+    /// Expected response time in milliseconds
+    let slaResponseTime = _vocab "slaResponseTime"
+
+    /// SLA tier level (GOLD, SILVER, BRONZE)
+    let slaTier = _vocab "slaTier"
+
+    /// Source of the dataset
+    let source = _vocab "source"
+
+    /// Source hash of the entity for change detection
+    let sourceHash = _vocab "sourceHash"
+
+    /// URL to visit/manage the entity in the source system
+    let sourceUrl = _vocab "sourceUrl"
+
+    /// Spatial area covered by the dataset
+    let spatial = _vocab "spatial"
+
+    /// Minimum spatial separation resolvable in the dataset
+    let spatialResolution = _vocab "spatialResolution"
+
+    /// SQL query used in transformation
+    let sqlQuery = _vocab "sqlQuery"
+
+    /// Start of the temporal period
+    let startDate = _vocab "startDate"
+
+    /// Unit of observation in the dataset
+    let statisticalUnit = _vocab "statisticalUnit"
+
+    /// Data types supported by this test definition
+    let supportedDataTypes = _vocab "supportedDataTypes"
+
+    /// Whether the test case supports dynamic assertions
+    let supportsDynamicAssertion = _vocab "supportsDynamicAssertion"
+
+    /// Whether the test case supports row level passed/failed
+    let supportsRowLevelPassedFailed = _vocab "supportsRowLevelPassedFailed"
+
+    /// Type of table (Regular, External, View, MaterializedView, etc.)
+    let tableType = _vocab "tableType"
+
+
+    let templateVariable = _vocab "templateVariable"
+
+    /// Temporal period covered by the dataset
+    let temporal = _vocab "temporal"
+
+    /// Minimum time period resolvable in the dataset
+    let temporalResolution = _vocab "temporalResolution"
+
+    /// Platform where tests are defined (OpenMetadata, GreatExpectations, dbt, Deequ, Soda, Other)
+    let testPlatform = _vocab "testPlatform"
+
+
+    let testedBy = _vocab "testedBy"
+
+    /// Main category of the dataset
+    let theme = _vocab "theme"
+
+    /// Knowledge organization system for categorizing datasets
+    let themeTaxonomy = _vocab "themeTaxonomy"
+
+    /// How current the data is
+    let timeliness = _vocab "timeliness"
+
+    /// Title of the dataset
+    let title = _vocab "title"
+
+    /// Target column created by transformation
+    let toColumn = _vocab "toColumn"
+
+    /// Function applied to transform data
+    let transformationFunction = _vocab "transformationFunction"
+
+    /// Transport protocol used by the MCP server
+    let transportType = _vocab "transportType"
+
+    /// Nature or genre of the dataset
+    let ``type`` = _vocab "type"
+
+    /// Degree of uniqueness in the data
+    let uniqueness = _vocab "uniqueness"
+
+    /// Number of up votes
+    let upVotes = _vocab "upVotes"
+
+    /// Last update time in Unix epoch milliseconds
+    let updatedAt = _vocab "updatedAt"
+
+    /// User who made the update
+    let updatedBy = _vocab "updatedBy"
+
+    /// Data lineage upstream relationship
+    let upstream = _vocab "upstream"
+
+    /// Latest usage information for the entity
+    let usageSummary = _vocab "usageSummary"
+
+
+    let uses = _vocab "uses"
+
+    /// AI application uses an MCP server for tools, resources or prompts
+    let usesMCPServer = _vocab "usesMCPServer"
+
+    /// AI application or agent execution uses an LLM model
+    let usesModel = _vocab "usesModel"
+
+
+    let usesPromptTemplate = _vocab "usesPromptTemplate"
+
+    /// Degree to which data conforms to defined rules
+    let validity = _vocab "validity"
+
+    /// Version identifier
+    let version = _vocab "version"
+
+    /// Notes about this version
+    let versionNotes = _vocab "versionNotes"
+
+
+    let voted = _vocab "voted"
+
+    /// Source dataset this was derived from
+    let wasDerivedFrom = _vocab "wasDerivedFrom"
+
+    /// Activity that generated the dataset
+    let wasGeneratedBy = _vocab "wasGeneratedBy"
 
 
 

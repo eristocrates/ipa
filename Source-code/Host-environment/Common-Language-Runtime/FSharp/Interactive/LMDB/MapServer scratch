@@ -1,4 +1,243 @@
 
+(*
+    lmdb_read_write {
+        let! current_transaction = lmdb_read_write.Current_Transaction
+
+        do! Assert.spog hansen.asset_management is_a skos.Concept oit._graph
+        do! Assert.spog hansen.basics is_a skos.Concept oit._graph
+        do! Assert.spog hansen.budgeting is_a skos.Concept oit._graph
+        do! Assert.spog hansen.cashiering is_a skos.Concept oit._graph
+        do! Assert.spog hansen.community_development_and_regulation is_a skos.Concept oit._graph
+        do! Assert.spog hansen.code_enforcement is_a skos.Concept oit._graph
+        do! Assert.spog hansen.core is_a skos.Concept oit._graph
+        do! Assert.spog hansen.customer_service_management is_a skos.Concept oit._graph
+        do! Assert.spog hansen.inventory is_a skos.Concept oit._graph
+        do! Assert.spog hansen.personalization is_a skos.Concept oit._graph
+        do! Assert.spog hansen.resources is_a skos.Concept oit._graph
+        do! Assert.spog hansen.service_and_constituent is_a skos.Concept oit._graph
+        do! Assert.spog hansen.system is_a skos.Concept oit._graph
+        do! Assert.spog hansen.work_management is_a skos.Concept oit._graph
+
+
+        for id in H8Help_gloss.ids do
+            let lexicographic_entry = H8Help_gloss.Iri.lexicographic_entry[id]
+            let lexical_entry = H8Help_gloss.Iri.lexical_entry[id]
+            let lexical_concept = H8Help_gloss.Iri.lexical_concept[id]
+            let infor_concept = H8Help_gloss.Iri.infor_concept[id]
+            let lexical_form = H8Help_gloss.Iri.lexical_form[id]
+            let lexical_sense = H8Help_gloss.Iri.infor_sense[id]
+
+            do! Assert.spog lexical_entry ontolex.evokes lexical_concept oit._graph
+            do! Assert.spog lexical_concept ontolex.isEvokedBy lexical_entry oit._graph
+            do! Assert.spog lexical_entry ontolex.sense lexical_sense oit._graph
+            do! Assert.spog lexical_sense ontolex.isSenseOf lexical_entry oit._graph
+            do! Assert.spog lexical_sense ontolex.isLexicalizedSenseOf infor_concept oit._graph
+            do! Assert.spog infor_concept ontolex.lexicalizedSense lexical_sense oit._graph
+            do! Assert.spog infor_concept is_a skos.Concept oit._graph
+            do! Assert.spog infor_concept skos.inScheme oit.WOEDMS_Concept_Scheme oit._graph
+            do! Assert.spog infor_concept skos.broader lexical_concept oit._graph
+            do! Assert.spog lexical_concept is_a ontolex.LexicalConcept oit._graph
+            do! Assert.spog lexical_concept skos.narrower infor_concept oit._graph
+            do! Assert.spog lexicographic_entry lexicog.describes lexical_sense oit._graph
+            do! Assert.spog lexicographic_entry lexicog.describes lexical_entry oit._graph
+
+            match id with
+            | "asset" ->
+                do! Assert.spog infor.Asset ontolex.concept infor_concept oit._graph
+                do! Assert.spog infor_concept ontolex.isConceptOf infor.Asset oit._graph
+                do! Assert.spog infor.Asset ontolex.isDenotedBy lexical_entry oit._graph
+                do! Assert.spog lexical_entry ontolex.denotes infor.Asset oit._graph
+                do! Assert.spog infor.Asset ontolex.isReferenceOf lexical_sense oit._graph
+                do! Assert.spog lexical_sense ontolex.reference infor.Asset oit._graph
+            | "table definition" ->
+                do! Assert.spog infor.Table ontolex.concept infor_concept oit._graph
+                do! Assert.spog infor_concept ontolex.isConceptOf infor.Table oit._graph
+                do! Assert.spog infor.Table ontolex.isDenotedBy lexical_entry oit._graph
+                do! Assert.spog lexical_entry ontolex.denotes infor.Table oit._graph
+                do! Assert.spog infor.Table ontolex.isReferenceOf lexical_sense oit._graph
+                do! Assert.spog lexical_sense ontolex.reference infor.Table oit._graph
+            | "column" ->
+                do! Assert.spog infor.Column ontolex.concept infor_concept oit._graph
+                do! Assert.spog infor_concept ontolex.isConceptOf infor.Column oit._graph
+                do! Assert.spog infor.Column ontolex.isDenotedBy lexical_entry oit._graph
+                do! Assert.spog lexical_entry ontolex.denotes infor.Column oit._graph
+                do! Assert.spog infor.Column ontolex.isReferenceOf lexical_sense oit._graph
+                do! Assert.spog lexical_sense ontolex.reference infor.Column oit._graph
+
+            | _ -> ()
+
+            let tokens =
+                let doc = nlp.process_single id
+                let token_list = doc.ToTokenList()
+                token_list
+                |> Seq.toArray
+                |> Array.filter (fun token -> token.Value <> "_")
+                |> Array.map (fun token -> token.Value)
+            if tokens.Length > 1 then
+                do! Assert.spog lexical_entry is_a ontolex.MultiWordExpression oit._graph
+                for index = 0 to tokens.Length - 1 do
+                    try
+                        let token = tokens[index]
+                        let! rdf_ordinal = rdf._prefix $"_{index + 1}"
+                        let lexical_constituent = H8Help_gloss.Iri.lexical_constituent[$"{id}.{token}"]
+                        let lexical_token = H8Help_gloss.Iri.lexical_token[token]
+                        do! Assert.spog lexical_constituent is_a decomp.Component oit._graph
+                        do! Assert.spog lexical_entry decomp.constituent lexical_constituent oit._graph
+                        do! Assert.spog lexical_entry rdf_ordinal lexical_constituent oit._graph
+                        do! Assert.spog lexical_constituent decomp.correspondsTo lexical_token oit._graph
+                    with
+                    | err -> failwith $"id: {id} token: {tokens[index]} failed with error {err.Message}"
+
+            else
+                do! Assert.spog lexical_entry is_a ontolex.Word oit._graph
+
+        // TODO consider skos:related for concepts of see also entries
+
+        for id, definiendum in H8Help_gloss.definiendums do
+            let lexical_form = H8Help_gloss.Iri.lexical_form[id]
+            let canonical_form = H8Help_gloss.Literal.definiendum[definiendum]
+            do! Assert.spog lexical_form ontolex.canonicalForm canonical_form oit._graph
+
+        for id, definiens in H8Help_gloss.definientia do
+            let infor_concept = H8Help_gloss.Iri.infor_concept[id]
+            let definition = H8Help_gloss.Literal.definiens[definiens]
+
+            do! Assert.spog infor_concept skos.definition definition oit._graph
+        for term in H8Help_gloss.xml.Terms do
+            match term.Family with
+            | "am"
+            | "assetmanagement" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.asset_management oit._graph
+            | "Basics" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.basics oit._graph
+            | "BGT" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.budgeting oit._graph
+            | "Cashiering" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.cashiering oit._graph
+            | "CDR"
+            | "cdr" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.community_development_and_regulation oit._graph
+            | "ce" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.code_enforcement oit._graph
+            | "core"
+            | "Core" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.core oit._graph
+            | "CSM"
+            | "csm" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.customer_service_management oit._graph
+            | "inventory" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.inventory oit._graph
+            | "pers"
+            | "personalization" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.personalization oit._graph
+            | "resource"
+            | "Resources" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.resources oit._graph
+            | "SC" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.service_and_constituent oit._graph
+            | "sys"
+            | "System" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.system oit._graph
+            | "wm" -> do! Assert.spog H8Help_gloss.Iri.infor_sense[term.Word] dcterms.subject hansen.work_management oit._graph
+            | _ -> ()
+
+    }
+
+
+
+
+*)
+
+
+        (*
+        for id in AZ.article_ids do
+            let lexicographic_entry = AZ.Iri.lexicographic_entry[id]
+            let lexical_entry = AZ.Iri.lexical_entry[id]
+            let lexical_concept = AZ.Iri.lexical_concept[id]
+            let gis_concept = AZ.Iri.gis_concept[id]
+            let lexical_form = AZ.Iri.lexical_form[id]
+            let lexical_sense = AZ.Iri.gis_sense[id]
+
+            do! Assert.spog lexical_entry ontolex.evokes lexical_concept oit._graph
+            do! Assert.spog lexical_concept ontolex.isEvokedBy lexical_entry oit._graph
+            do! Assert.spog lexical_entry ontolex.sense lexical_sense oit._graph
+            do! Assert.spog lexical_sense ontolex.isSenseOf lexical_entry oit._graph
+            do! Assert.spog lexical_sense ontolex.isLexicalizedSenseOf gis_concept oit._graph
+            do! Assert.spog gis_concept ontolex.lexicalizedSense lexical_sense oit._graph
+            do! Assert.spog gis_concept is_a skos.Concept oit._graph
+            do! Assert.spog gis_concept skos.inScheme oit.GIS_Concept_Scheme oit._graph
+            do! Assert.spog gis_concept skos.broader lexical_concept oit._graph
+            do! Assert.spog lexical_concept is_a ontolex.LexicalConcept oit._graph
+            do! Assert.spog lexical_concept skos.narrower gis_concept oit._graph
+            do! Assert.spog lexicographic_entry lexicog.describes lexical_sense oit._graph
+            do! Assert.spog lexicographic_entry lexicog.describes lexical_entry oit._graph
+
+            match id with
+            | "feature" ->
+                do! Assert.spog lcgis.Feature ontolex.concept gis_concept oit._graph
+                do! Assert.spog gis_concept ontolex.isConceptOf lcgis.Feature oit._graph
+                do! Assert.spog lcgis.Feature ontolex.isDenotedBy lexical_entry oit._graph
+                do! Assert.spog lexical_entry ontolex.denotes lcgis.Feature oit._graph
+                do! Assert.spog lcgis.Feature ontolex.isReferenceOf lexical_sense oit._graph
+                do! Assert.spog lexical_sense ontolex.reference lcgis.Feature oit._graph
+            | "feature_layer" ->
+                do! Assert.spog lcgis.Feature_Layer ontolex.concept gis_concept oit._graph
+                do! Assert.spog gis_concept ontolex.isConceptOf lcgis.Feature_Layer oit._graph
+                do! Assert.spog lcgis.Feature_Layer ontolex.isDenotedBy lexical_entry oit._graph
+                do! Assert.spog lexical_entry ontolex.denotes lcgis.Feature_Layer oit._graph
+                do! Assert.spog lcgis.Feature_Layer ontolex.isReferenceOf lexical_sense oit._graph
+                do! Assert.spog lexical_sense ontolex.reference lcgis.Feature_Layer oit._graph
+            | "feature_class" ->
+                do! Assert.spog lcgis.Feature_Class ontolex.concept gis_concept oit._graph
+                do! Assert.spog gis_concept ontolex.isConceptOf lcgis.Feature_Class oit._graph
+                do! Assert.spog lcgis.Feature_Class ontolex.isDenotedBy lexical_entry oit._graph
+                do! Assert.spog lexical_entry ontolex.denotes lcgis.Feature_Class oit._graph
+                do! Assert.spog lcgis.Feature_Class ontolex.isReferenceOf lexical_sense oit._graph
+                do! Assert.spog lexical_sense ontolex.reference lcgis.Feature_Class oit._graph
+
+            | _ -> ()
+
+            let tokens =
+                let doc = nlp.process_single id
+                let token_list = doc.ToTokenList()
+                token_list
+                |> Seq.toArray
+                |> Array.filter (fun token -> token.Value <> "_")
+                |> Array.map (fun token -> token.Value)
+            if tokens.Length > 1 then
+                do! Assert.spog lexical_entry is_a ontolex.MultiWordExpression oit._graph
+                for index = 0 to tokens.Length - 1 do
+                    try
+                        let token = tokens[index]
+                        let! rdf_ordinal = rdf._prefix $"_{index + 1}"
+                        let lexical_constituent = AZ.Iri.lexical_constituent[$"{id}.{token}"]
+                        let lexical_token = AZ.Iri.lexical_token[token]
+                        do! Assert.spog lexical_constituent is_a decomp.Component oit._graph
+                        do! Assert.spog lexical_entry decomp.constituent lexical_constituent oit._graph
+                        do! Assert.spog lexical_entry rdf_ordinal lexical_constituent oit._graph
+                        do! Assert.spog lexical_constituent decomp.correspondsTo lexical_token oit._graph
+                    with
+                    | err -> failwith $"id: {id} token: {tokens[index]} failed with error {err.Message}"
+
+            else
+                do! Assert.spog lexical_entry is_a ontolex.Word oit._graph
+
+        // TODO consider skos:related for concepts of see also entries
+
+        for id, definiendum in AZ.definiendums do
+            let lexical_form = AZ.Iri.lexical_form[id]
+            let canonical_form = AZ.Literal.definiendum[definiendum]
+            do! Assert.spog lexical_form ontolex.canonicalForm canonical_form oit._graph
+
+        for id, definiens in AZ.definientia do
+            let gis_concept = AZ.Iri.gis_concept[id]
+            let definition = AZ.Literal.definiens[definiens]
+
+            do! Assert.spog gis_concept skos.definition definition oit._graph
+
+        for id, subject_areas in AZ.subject_areas do
+            let lexical_entry = AZ.Iri.lexical_entry[id]
+            let lexical_concept = AZ.Iri.lexical_concept[id]
+            let lexical_sense = AZ.Iri.gis_sense[id]
+
+            for subject_area in subject_areas do
+                let subject_concept = AZ.Iri.subject_area[subject_area]
+                do! Assert.spog subject_concept is_a skos.Concept oit._graph
+                do! Assert.spog lexical_sense dcterms.subject subject_concept oit._graph
+        for id, also_list in AZ.see_alsos do
+            for see_also in also_list do
+                let lexical_entry = AZ.Iri.lexical_entry[id]
+                let also = AZ.Iri.see_also[see_also]
+                do! Assert.spog lexical_entry rdfs.seeAlso also oit._graph
+
+        *)
 
 (*
 

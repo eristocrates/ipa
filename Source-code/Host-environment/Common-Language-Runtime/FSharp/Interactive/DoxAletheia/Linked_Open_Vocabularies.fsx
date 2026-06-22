@@ -435,7 +435,7 @@ module Lov_Meta =
 
     let refresh () =
         dump.n3gz ()
-        decompress_gzip_file dump.n3gz_path n3_path
+        // decompress_gzip_file dump.n3gz_path n3_path
         dump.nqgz ()
         decompress_gzip_file dump.nqgz_path nq_path
         let last_meta = { last_meta = DateTimeOffset.Now }
@@ -938,6 +938,7 @@ let dataset = new DatasetFileManager(cleaned_nq_path, false)
 
 
 // dataset.ListGraphNames()
+// let om_vocabulary = Lov_Vocabulary.from_manual_addition
 
 module Vocabulary_Lexicon =
     let process_vocabulary_graph (vocabulary: Lov_Vocabulary) (graph: ThreadSafeGraph) =
@@ -1072,8 +1073,10 @@ let skos_vocabulary'preferredNamespaceUri =
 // distribution
 
 let manual_vocabulary_tuples =
-    [|
-
+    [| ("https://open-metadata.org/ontology",
+        "https://open-metadata.org/ontology/",
+        "om",
+        "https://raw.githubusercontent.com/open-metadata/OpenMetadataStandards/refs/heads/main/rdf/ontology/openmetadata.ttl")
        ("https://schema.org",
         "https://schema.org/",
         "schemorg",
@@ -2158,7 +2161,8 @@ module Lexicon_Search =
 
 let retrieved_lexicons =
     all_lexicons
-    |> Lexicon_Search.namespace_starts_with "http://purl.org/dc/elements/1.1/"
+    |> Lexicon_Search.namespace_starts_with "https://open-metadata.org/ontology/"
+    |> Array.sortBy (fun lexicon -> lexicon.vocabulary.distribution_iri.Uri.OriginalString)
 
 
 retrieved_lexicons.Length
