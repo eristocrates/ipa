@@ -1,9 +1,6 @@
 open System
 open System.IO
 
-// -----------------------------
-// Edit these two variables
-// -----------------------------
 let rootDirectory = @"C:\Repositories\eristocrates\ipa"
 let gitignoreFilepath = $"""{rootDirectory}\.gitignore"""
 // -----------------------------
