@@ -65,6 +65,10 @@ let gitignoreLines =
         yield @"secret/"
         yield @".git/objects/pack/"
         yield @"Application/Microsoft/Edge/data_dir/"
+
+        yield
+            @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\packages\"
+
         yield ""
         yield "# ------------------------------------------------------------"
         yield "# GENERATED: ignores files >= 100 MiB"
