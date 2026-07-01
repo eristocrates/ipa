@@ -1,0 +1,15 @@
+D: /package
+D: /package/services
+D: /package/services/metadata
+D: /package/services/metadata/core-properties
+F: /package/services/metadata/core-properties/c0af18d423ec4c7e99c6e1e6b0a8b3a2.psmdcp
+D: /_rels
+F: /_rels/.rels
+F: /.signature.p7s
+F: /Icon.png
+F: /LICENSE.TXT
+F: /microsoft.netcore.dotnethostpolicy.8.0.28.nupkg
+F: /Microsoft.NETCore.DotNetHostPolicy.nuspec
+F: /runtime.json
+F: /THIRD-PARTY-NOTICES.TXT
+F: /[Content_Types].xml

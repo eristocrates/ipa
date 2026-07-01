@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata minClientVersion="2.12">
+    <id>Microsoft.NETCore.DotNetHostPolicy</id>
+    <version>8.0.28</version>
+    <title>Microsoft.NETCore.DotNetHostPolicy</title>
+    <authors>Microsoft</authors>
+    <owners>microsoft,dotnetframework</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>Icon.png</icon>
+    <projectUrl>https://dot.net/</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288859</iconUrl>
+    <description>Provides a CoreCLR hosting policy implementation -- configuration settings, assembly paths and assembly servicing</description>
+    <releaseNotes>https://go.microsoft.com/fwlink/?LinkID=799421</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <serviceable>true</serviceable>
+    <repository type="git" url="https://github.com/dotnet/runtime" commit="46295af5828b062bbbf93a9cef50fd8cb9fbcb09" />
+    <dependencies>
+      <dependency id="Microsoft.NETCore.DotNetHostResolver" version="8.0.28" />
+    </dependencies>
+  </metadata>
+</package>

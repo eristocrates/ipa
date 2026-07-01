@@ -1,0 +1,107 @@
+@prefix : <https://eristocrates.dev/ontology/commonplace/> .
+@prefix xhtml: <http://www.w3.org/1999/xhtml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix governmentjobs: <https://www.governmentjobs.com/careers/leoncountyfl/classspecs#> .
+@prefix neogov: <https://unified.neogov.com#> .
+@prefix oit: <https://cms.leoncountyfl.gov/Government/Departments/Information-and-Technology/Office-of-Information-Technology#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix tmo: <http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+governmentjobs:Applications_Systems_Analyst_I
+  governmentjobs:GENERAL_DESCRIPTION_OF_DUTIES """The is a professional and technical position that requires a high degree of technical experience in the analysis, development and integration of software applications in support of the Work Order Management and Electronic Document Management System areas.  This position involves developing, enhancing, testing and maintaining various applications implemented in client/server, web-browser or enterprise infrastructures, applications development, database management, systems support and integration with other systems are included to support the Leon County Government departments and agencies. Employees in this position will be responsible for administering a wide range of policies, rules, and regulations as they apply to application development and systems integration."""@en-US ;
+  governmentjobs:ESSENTIAL_DUTIES
+    """Perform strategy and planning in a variety of complex environments that support multiple functions and multiple users. Collaborate in conceptualizing and developing new software applications or integration with other applications. Analyze and assess existing business systems and procedures under direction of team leader(s) or supervisor. Assist in the definition, development, and documentation of software's business requirements, objectives, deliverables, and specifications on a project-by-project basis in collaboration with internal users and departments. Assist in defining software development project plans, including scoping, scheduling, and implementation.
+Research, identify, analyze, and fulfill requirements of all internal and external program users under direction of team leader(s) and/or supervisor."""@en-US ,
+    """Perform acquisition and deployment in a variety of complex environments that support multiple functions and multiple users. Under direction of team leader(s) and/or supervisor, conduct research on emerging application development software products, languages, and standards in support of procurement, development and integration efforts; collaborate with vendors for efficient implementation of new software products or systems and for resolution of any adaptation issues; recommend, schedule, and perform software improvements and upgrades. Attend professional meetings, workshops and seminars related to MIS, and training classes and conferences that aid in the enhancement of MIS application development and maintenance."""@en-US ,
+    """Provide operational management in a variety of complex environments that support multiple functions and multiple users. Collaborate with network administrators, systems analysts, and software engineers to assist in resolving problems with software products or company software systems.  Consistently write, translate, and code software programs, applications, and web pages according to specifications.  Write/script code, configurations, reports and/or web pages to enhance functionality and/or performance of County applications as necessary.  Design, run, and monitor software performance tests on new and existing programs for the purposes of correcting errors, isolating areas for improvement, and general debugging.  Administer complex critical analysis of test results and deliver solutions to problem areas.  Generate statistics, log project status, and/or write reports for management and/or team members on the status of the assignments. Develop and maintain user manuals and guidelines.  Install software products for end users as directed by supervisor and in collaboration with the infrastructure team."""@en-US ;
+  governmentjobs:OTHER_IMPORTANT_OR_MARGINAL_DUTIES """Respond with course of action and estimated time of completion for additional assignments. Develop test cases and test plans. Provide disaster support as required according to Leon County policies and procedures."""@en-US ;
+  governmentjobs:DIFFICULTY """Judgment must be applied to resolve a wide range of technical issues."""@en-US ;
+  governmentjobs:Supervision_Received """Supervision is received for direction of job assignments, prioritization of work, and for management of projects for achievement of desired results and conformance to departmental and industry standards.  Direct assistance in the accomplishment of goals may be provided, as required.  Technical supervision is required and expected."""@en-US ;
+  governmentjobs:Supervision_of_Others "None"@en-US ;
+  governmentjobs:INTERNAL_AND_EXTERNAL_CUSTOMER_CONTACT """Considerable internal customer contact that involves restoring operations and access to computer systems or files."""@en-US ;
+  governmentjobs:EQUIPMENT_AND_TOOLS_USED """Personal computer, word processing software, spreadsheet software, database software; and specialized software such as C#, VBScript, Visual Studio, VB.Net, ASP.Net, HTML, XML, Oracle Forms/Reports, JAVA, SQL, and Crystal Reports are examples of equipment and tools used."""@en-US ;
+  governmentjobs:WORK_ENVIRONMENT_AND_PHYSICAL_DEMANDS """Work is mainly performed indoors. Physical demands include, but are not limited to, standing, walking, and sitting."""@en-US ;
+
+  governmentjobs:KNOWLEDGE_SKILLS_AND_ABILITIES
+    """Proficiency in a variety of programming and scripting languages such as C#,  VBScript, Visual Studio, VB.Net, ASP.Net, HTML, XML, Oracle Forms/Reports, JAVA, SQL, and Crystal Reports.  Proficiency in full systems development life cycle experience developing applications in a three-tiered environment for complex applications that are multi-customer and/or multifunction based. Ability to install and configure middle-tier software.
+    Understanding of coding methods and best practices. Strong relational database and operating systems experience with Oracle and SQL beyond simple scripting and report generation of single table databases.  Must be able to design and support multi-table database instances. Experience with mobile applications for Android and apple solutions.
+    Solid working knowledge of current internet technologies. Strong experience interviewing end-users for insight on functionality, interface, problems, and/or usability issues. Ability to conduct research into software-related issues and products. Ability to work both independently and in a team-oriented, collaborative environment. Ability to develop effective documentation. Ability to communicate orally and in writing on technical methods. Skill in PC windows and word processing software. Ability to efficiently organize, manage and prioritize work and meet production deadlines. Use logic and reasoning to assess the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems. Use of inductive and deductive reasoning to analyze data.  Exposure to project management.. Ability to develop test cases and test plans. Use of the Windows, Linux and AIX operating systems environment."""@en-US ;
+  governmentjobs:MINIMUM_QUALIFICATIONS """Requires graduation from an accredited four year college or university with a Bachelor's degree in the field of Computer Science, IT Technology, Management Information Systems, software engineering or a related field and one (1) year of related work experience; or an equivalent combination of training and experience. """@en-US ;
+
+  governmentjobs:Necessary_Special_Requirements
+  """Certifications in software development, VB. Net, ASP.Net, Oracle Forms/Reports, JAVA, SQL.  Additional related work experience and/or current technical certifications may substitute for education on a year for year basis.
+  All Leon County employees (regular full-time and part-time, OPS, and PRN) are required to work before, during and after a Declared Local State of Emergency (DLSOE). Participation is considered a condition of employment."""@en-US ;
+
+  governmentjobs:COMPETENCY_PROGRESSION_PLAN
+    """At the discretion of the Director – MIS/GIS, employees assigned to this class may progress to the Applications Systems Analyst II classification based on knowledge, skills, and abilities, acquired and utilized, performance, and length of time employed."""@en-US ;
+
+  governmentjobs:Selection_Guidelines
+  """Formal application, rating of education and experience; oral interview and reference check, and drug testing."""@en-US ;
+  governmentjobs:FLSA_STATUS """Position is an Exempt professional computer position.  This is independent technical and professional work that involves application of technical and professional skills pertaining to defining, developing, testing, analyzing, and maintaining software applications."""@en-US ;
+
+  governmentjobs:Established "2013-10-01"^^xsd:date ;
+  governmentjobs:Revised "2013-11-13"^^xsd:date, "2019-04-30"^^xsd:date ;
+
+  a org:Post .
+governmentjobs:GENERAL_DESCRIPTION_OF_DUTIES skos:note """The omission of specific statements of duties does not exclude them from the position if the work is similar, related or a logical assignment to the position.  The Job Description Questionnaire (JDQ) reflects a more detailed description of the position.  Neither the job description nor the JDQ constitutes an employment agreement.  Both are subject to change as the needs of the County and requirements of the job change."""@en-US .
+:Brandon_Collier
+  org:holds governmentjobs:Applications_Systems_Analyst_I ;
+  a foaf:Person .
+
+neogov:Annual_Evaluation
+  neogov:Product neogov:Performance ;
+  neogov:Task_Type neogov:Rating ;
+  neogov:Related_To neogov:Myself ;
+  neogov:Due_Date "2026-08-01T00:00:00"^xsd:dateTime ;
+  neogov:sections neogov:Notes_and_Attachments, neogov:Employee_Narrative,  neogov:Current_Employee_Goals, neogov:Summary ;
+  a neogov:Task .
+
+neogov:Notes_and_Attachments
+  xhtml:p """All Leon County employees are required to read and acknowledge the "Leon County Code of Ethics" Policy, "Conflict of Interest" Policy, the "Fraud Abuse Hotline", and policies regarding Social Media/Networking annually."""@en-US,
+  """Please review the acknowledgment by clicking on each link. By signing your evaluation, you hereby acknowledge that you have read, understand, and agree to be bound by the provisions of the Leon County Code of Ordinances Article XII, "Leon County Code of Ethics," Board policy No. 16-1, "Drug and Alcohol Free Workplace", Personnel Policy No. 2.10, "Conflict of Interest," the "Fraud Abuse Hotline" and policies regarding Social Media/Networking."""@en-US ;
+  neogov:Next_Section neogov:Employee_Narrative ;
+  a neogov:Section .
+
+neogov:Employee_Narrative
+  rdf:_1 neogov:Listens_to_changing_needs ;
+  rdf:_2 neogov:Engages_citizens_and_employees ;
+  rdf:_3 neogov:Aligns_key_strategic_processes ;
+  rdf:_4 neogov:Delivers_results_and_relevance ;
+  rdf:_5 neogov:Strives_for_continuous_improvement ;
+  a neogov:Section .
+
+neogov:Listens_to_changing_needs
+  xhtml:p """Embracing innovation and technology
+(Displays adaptability, flexibility to adjust to changing priorities. Ability to look at the “big picture” and consider all the elements, both short and long term impacts in the decision making process.)
+
+Describe how you promote the relevance (meaning, importance, connection) of the work performed or service provided to your customers. Also, describe how you have listened for changing needs in your area and have adjusted, refined or made improvements to meet new challenges or customer preferences. Lastly, discuss how you communicated to your customers that you listened."""@en-US ;
+  a neogov:ITEM .
+
+neogov:Engages_citizens_and_employees
+  xhtml:p """Utilize a collaborative approach of soliciting input and feedback from employees and citizens to accomplish goals where applicable.
+
+  Describe how you have strengthened or built relationships within the organization or through employees, citizens, business and community partnerships?"""@en-US ;
+  a neogov:ITEM .
+neogov:Aligns_key_strategic_processes
+  xhtml:p """Aligning the key strategic processes (vision, mission, strategic priorities, strategic initiatives, business plans, program evaluations, employee evaluations, and reporting)
+
+How have you aligned your department, division or program goals with those of the organization?"""@en-US ;
+  a neogov:ITEM .
+neogov:Delivers_results_and_relevance
+  xhtml:p """Instilling our culture throughout the organization with our core values and practices as our drivers (how we live our core values and core practices in carrying out the Board’s vision, mission and strategic priorities)
+
+Measuring results (not activity) and benchmarking performance - (Individual accountability for achieving departmental priorities and performance measures.)
+
+Describe major accomplishments, successes, contributions and improvements during the past
+
+12 months and those to be completed in the coming year and how you have reinforced our core values and core practices. Also, describe how you communicated or conveyed these results and the value derived by them to your customers."""@en-US ;
+  a neogov:ITEM .
+neogov:Strives_for_continuous_improvement
+  xhtml:p """
+  Empowering employees and encouraging a vigorous competition of ideas. Utilize strategic thinking and high level problem solving to continuously look inward and outward to better develop, define and improve processes, procedures, etc. Develop, coach and mentor direct reports. Engage in personal and professional development.
+
+Describe how you have accomplished the above. Also, include what personal and professional development you believe would be beneficial for you in the coming year."""@en-US ;
+  a neogov:ITEM .

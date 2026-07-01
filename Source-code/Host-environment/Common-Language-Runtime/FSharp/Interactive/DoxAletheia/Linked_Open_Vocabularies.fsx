@@ -9,6 +9,7 @@ open System.Text.RegularExpressions
 #r "nuget: FsHttp"
 
 open FsHttp
+
 #r "nuget: dotNetRdf"
 
 open VDS.RDF
@@ -35,8 +36,6 @@ open PowershellErgonomics
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\HttpErgonomics.fsx"
 open HttpErgonomics
-
-
 
 
 #load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\FileSystemErgonomics.fsx"
@@ -391,6 +390,8 @@ module api =
 
       *)
 
+
+
 module dump =
 
     [<Literal>]
@@ -480,6 +481,7 @@ let rdfs_label =
 
 let rdfs_comment =
     graph.CreateUriNode(UriFactory.Create("http://www.w3.org/2000/01/rdf-schema#comment"))
+
 (*
 
 let keyword_set =
@@ -493,6 +495,7 @@ let keyword_set =
 keyword_set |> Set.iter (fun keyword -> printfn "%s" keyword)
 
 *)
+
 module Lov_Keyword =
     let API = graph.CreateLiteralNode("API")
     let Academy = graph.CreateLiteralNode("Academy")
@@ -548,6 +551,7 @@ module Lov_Keyword =
 
 
 let vocabulary'preferredNamespaceUri =
+
     graph.GetTriplesWithPredicateObject(rdf_type, voaf_vocabulary)
     |> Seq.toArray
     |> Array.Parallel.map (fun vocabulary_triple -> vocabulary_triple.Subject :?> UriNode)
@@ -632,9 +636,7 @@ module %s =
             this.preferred_namespace_iri.Value
 
 module Lov_Vocabulary =
-    let from_manual_addition
-        (vocabulary'preferred_namespace'preferred_prefix'distribution: string * string * string * string)
-        =
+    let from_manual_addition (vocabulary'preferred_namespace'preferred_prefix'distribution: string * string * string * string) =
         let (vocabulary, preferred_namespace, preferred_prefix, distribution) =
             vocabulary'preferred_namespace'preferred_prefix'distribution
 
@@ -932,7 +934,9 @@ match find_first_bad_nquad_line normalized_nq_path with
 *)
 let cleaned_nq_path = Path.ChangeExtension(normalized_nq_path, ".cleaned.nq")
 
+
 write_valid_nquads_only normalized_nq_path cleaned_nq_path
+
 
 let dataset = new DatasetFileManager(cleaned_nq_path, false)
 
@@ -949,8 +953,7 @@ module Vocabulary_Lexicon =
             |> Seq.toArray
             |> Array.Parallel.filter (fun node -> node.NodeType = NodeType.Uri)
             |> Array.Parallel.map (fun node -> node :?> UriNode)
-            |> Array.Parallel.filter (fun iri ->
-                iri.Uri.OriginalString.StartsWith(vocabulary.preferred_namespace_iri.Value))
+            |> Array.Parallel.filter (fun iri -> iri.Uri.OriginalString.StartsWith(vocabulary.preferred_namespace_iri.Value))
 
 
         let vocabulary_term'label =
@@ -1023,9 +1026,7 @@ module Vocabulary_Lexicon =
         let file_path =
             distribution_file_path (new Uri(vocabulary.preferred_namespace_iri.Value)) vocabulary.distribution_iri.Uri
 
-        download_vocabulary_distribution
-            vocabulary.preferred_namespace_iri.Value
-            vocabulary.distribution_iri.Uri.OriginalString
+        download_vocabulary_distribution vocabulary.preferred_namespace_iri.Value vocabulary.distribution_iri.Uri.OriginalString
 
 
         let graph = new ThreadSafeGraph()
@@ -1056,8 +1057,7 @@ let skos_vocabulary'preferredNamespaceUri =
         graph.GetTriplesWithSubjectPredicate(vocabulary, vann_preferredNamespaceUri)
         |> Seq.toArray
         |> Array.Parallel.map (fun preferred_uri_triple -> preferred_uri_triple.Object :?> LiteralNode)
-        |> Array.Parallel.filter (fun preferred_namespace ->
-            preferred_namespace.Value = "http://www.w3.org/2004/02/skos/core#")
+        |> Array.Parallel.filter (fun preferred_namespace -> preferred_namespace.Value = "http://www.w3.org/2004/02/skos/core#")
         |> Array.Parallel.map (fun preferred_namespace -> (vocabulary, preferred_namespace)
 
         )
@@ -1076,99 +1076,30 @@ let manual_vocabulary_tuples =
     [|
 
        ("http://www.w3.org/ns/csvw", "http://www.w3.org/ns/csvw#", "csvw", "https://www.w3.org/ns/csvw.ttl")
-       ("https://open-metadata.org/ontology",
-        "https://open-metadata.org/ontology/",
-        "om",
-        "https://raw.githubusercontent.com/open-metadata/OpenMetadataStandards/refs/heads/main/rdf/ontology/openmetadata.ttl")
-       ("https://schema.org",
-        "https://schema.org/",
-        "schemorg",
-        "https://schema.org/version/latest/schemaorg-all-https.ttl")
-       ("https://termlex.oeg.fi.upm.es/termlex",
-        "https://termlex.oeg.fi.upm.es/termlex#",
-        "termlex",
-        "https://termlex.oeg.fi.upm.es/static/termlex.rdf")
+       ("https://open-metadata.org/ontology", "https://open-metadata.org/ontology/", "om", "https://raw.githubusercontent.com/open-metadata/OpenMetadataStandards/refs/heads/main/rdf/ontology/openmetadata.ttl")
+       ("https://schema.org", "https://schema.org/", "schemorg", "https://schema.org/version/latest/schemaorg-all-https.ttl")
+       ("https://termlex.oeg.fi.upm.es/termlex", "https://termlex.oeg.fi.upm.es/termlex#", "termlex", "https://termlex.oeg.fi.upm.es/static/termlex.rdf")
 
-       ("http://www.lexinfo.net/ontology/3.0/lexinfo",
-        "http://www.lexinfo.net/ontology/3.0/lexinfo#",
-        "lexinfo",
-        "http://www.lexinfo.net/ontology/3.0/lexinfo")
-       ("http://www.w3.org/ns/lemon/frac",
-        "http://www.w3.org/ns/lemon/frac#",
-        "frac",
-        "https://raw.githubusercontent.com/ontolex/frequency-attestation-corpus-information/refs/heads/master/owl/frac.ttl")
-       ("http://www.w3.org/ns/lemon/lexicog",
-        "http://www.w3.org/ns/lemon/lexicog#",
-        "lexicog",
-        "http://www.w3.org/ns/lemon/lexicog")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_meta",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/owl/meta.owl.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_annotations_model",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/annotations.model.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_annotations",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/annotations.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_datasets_model",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/datasets.model.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_datasets",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/datasets.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_extensions_model",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/extensions.model.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_extensions",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/extensions.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_mappings_model",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/mappings.model.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_mappings",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/mappings.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_meta_model",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/meta.model.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/meta.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_types_model",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/types.model.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_types",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/types.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_units_model",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/units.model.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_units",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/units.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_validation_model",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/validation.model.ttl")
-       ("https://w3id.org/linkml/",
-        "https://w3id.org/linkml/",
-        "linkml_validation",
-        "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/validation.ttl")
+       ("http://www.lexinfo.net/ontology/3.0/lexinfo", "http://www.lexinfo.net/ontology/3.0/lexinfo#", "lexinfo", "http://www.lexinfo.net/ontology/3.0/lexinfo")
+       ("http://www.w3.org/ns/lemon/frac", "http://www.w3.org/ns/lemon/frac#", "frac", "https://raw.githubusercontent.com/ontolex/frequency-attestation-corpus-information/refs/heads/master/owl/frac.ttl")
+       ("http://www.w3.org/ns/lemon/lexicog", "http://www.w3.org/ns/lemon/lexicog#", "lexicog", "http://www.w3.org/ns/lemon/lexicog")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_meta", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/owl/meta.owl.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_annotations_model", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/annotations.model.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_annotations", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/annotations.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_datasets_model", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/datasets.model.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_datasets", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/datasets.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_extensions_model", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/extensions.model.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_extensions", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/extensions.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_mappings_model", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/mappings.model.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_mappings", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/mappings.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_meta_model", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/meta.model.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/meta.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_types_model", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/types.model.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_types", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/types.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_units_model", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/units.model.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_units", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/units.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_validation_model", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/validation.model.ttl")
+       ("https://w3id.org/linkml/", "https://w3id.org/linkml/", "linkml_validation", "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/validation.ttl")
 
 
        (*
