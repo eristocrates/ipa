@@ -1,0 +1,2211 @@
+@base <http://eulersharp.sourceforge.net/2003/03swap/event>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix fos: <http://eulersharp.sourceforge.net/2003/03swap/foster#>.
+@prefix space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
+@prefix time: <http://eulersharp.sourceforge.net/2003/03swap/time#>.
+@prefix quant: <http://eulersharp.sourceforge.net/2003/03swap/quantities#>.
+@prefix agent: <http://eulersharp.sourceforge.net/2003/03swap/agent#>.
+@prefix env: <http://eulersharp.sourceforge.net/2003/03swap/environment#>.
+@prefix clisko: <http://www.agfa.com/w3c/2009/clinicalSKOSSchemes#>.
+@prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix environ: <http://eulersharp.sourceforge.net/2003/03swap/environment#>.
+@prefix events: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix agents: <http://eulersharp.sourceforge.net/2003/03swap/agent#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix swap_space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
+@prefix swap_time: <http://eulersharp.sourceforge.net/2003/03swap/time#>.
+
+<http://eulersharp.sourceforge.net/2003/03swap/event> dce:contributor "Jos De Roo, Dirk Colaert, Marc Twagirumukiza; Agfa Healthcare/Belgium. Until 2010: Pieterjan De Potter; Ghent University - IBBT/ELIS - Multimedia Lab/Belgium.";
+                                                      dce:creator "Hans Cools, MD; Agfa Healthcare/Belgium"@en;
+                                                      dce:description "Formal general description of events, actions, their time and other relations."@en;
+                                                      dce:format "OWL Full"@en;
+                                                      dce:publisher "Agfa Healthcare/Belgium"@en;
+                                                      dce:title "Event"@en;
+                                                      a owl:Ontology;
+                                                      rdfs:comment "Basic model is a space-time thing, which can be described in different levels of abstraction, mostly with input and output, with a beginning and end, wherein a thing can change, act, in a certain way."@en.
+event:AbsoluteContraindication a rdfs:Class;
+                               rdfs:isDefinedBy event:;
+                               rdfs:label "absolute contraindication"@en;
+                               rdfs:subClassOf event:Contraindication;
+                               skos:definition "Compelling reason for not performing an action."@en.
+event:AbsoluteIndication a rdfs:Class;
+                         rdfs:isDefinedBy event:;
+                         rdfs:label "absolute indication"@en;
+                         rdfs:subClassOf event:Indication;
+                         skos:definition "Compelling reason for an action."@en.
+event:Action a rdfs:Class;
+             rdfs:isDefinedBy event:;
+             rdfs:label "action"@en;
+             rdfs:subClassOf event:Process;
+             skos:definition "A process involving one or more agents in a certain role."@en.
+event:AdverseOutput a rdfs:Class;
+                    rdfs:isDefinedBy event:;
+                    rdfs:label "adverse output"@en;
+                    rdfs:subClassOf event:Output,
+                                    [a owl:Restriction ; 
+                                     owl:onProperty event:hasDemandState ; 
+                                     owl:hasValue event:Undemanded];
+                    skos:definition "Unwanted output of a process."@en.
+event:AdverseProcess a rdfs:Class;
+                     rdfs:isDefinedBy event:;
+                     rdfs:label "adverse process"@en;
+                     rdfs:subClassOf event:Process,
+                                     [a owl:Restriction ; 
+                                      owl:onProperty event:hasDemandState ; 
+                                      owl:someValuesFrom event:Undemanded];
+                     skos:definition "Unwanted process."@en.
+event:Authenticating a rdfs:Class;
+                     rdfs:isDefinedBy event:;
+                     rdfs:label "authenticating"@en;
+                     rdfs:subClassOf event:Action,
+                                     [a owl:Restriction ; 
+                                      owl:onProperty event:hasOutput ; 
+                                      owl:someValuesFrom event:Authentication];
+                     skos:definition "Making authoritative or valid."@en.
+event:Authentication a rdfs:Class;
+                     rdfs:isDefinedBy event:;
+                     rdfs:label "authentication"@en;
+                     rdfs:subClassOf event:Output;
+                     skos:definition "Proof of being authoritative or valid, as output of authenticating."@en.
+event:Availability a rdfs:Class;
+                   rdfs:isDefinedBy event:;
+                   rdfs:label "availability"@en;
+                   rdfs:subClassOf event:Event,
+                                   [a owl:Restriction ; 
+                                    owl:onProperty event:hasAvailabilityState ; 
+                                    owl:hasValue event:Available];
+                   skos:definition "Event of being available."@en.
+event:AvailabilityState a rdfs:Class;
+                        rdfs:isDefinedBy event:;
+                        rdfs:label "availability state"@en;
+                        rdfs:subClassOf event:State;
+                        owl:oneOf (event:Available
+                                   event:Unavailable);
+                        skos:definition "State of being available or not."@en.
+event:Available a rdfs:Class,
+                  event:AvailabilityState;
+                rdfs:isDefinedBy event:;
+                rdfs:label "available"@en;
+                skos:definition "Being suitable or ready for use."@en.
+event:Biphasic a rdfs:Class,
+                 event:CourseMode;
+               rdfs:isDefinedBy event:;
+               rdfs:label "biphasic"@en;
+               rdfs:subClassOf event:Phasic;
+               skos:definition "Existing in 2 phases."@en;
+               skos:exactMatch [a skos:Concept ; 
+                                skos:inScheme clisko:sct20080731 ; 
+                                skos:notation "1217004"^^clisko:sct20080731DT].
+event:Cause a rdfs:Class;
+            rdfs:isDefinedBy event:;
+            rdfs:label "cause"@en;
+            skos:definition "Source of entailment."@en.
+event:Causing a rdfs:Class;
+              rdfs:isDefinedBy event:;
+              rdfs:label "causing"@en;
+              rdfs:subClassOf [a owl:Restriction ; 
+                               owl:onProperty event:hasInput ; 
+                               owl:hasValue event:Cause],
+                              [a owl:Restriction ; 
+                               owl:onProperty event:hasOutput ; 
+                               owl:hasValue event:Effect];
+              skos:definition "Being a source of entailment."@en.
+event:Certain a rdfs:Class,
+                event:OutputLikelihood;
+              rdfs:isDefinedBy event:;
+              rdfs:label "certain"@en;
+              skos:definition "Probability of an output of a process being highest."@en.
+event:Completed a rdfs:Class,
+                  event:CompletionState;
+                rdfs:isDefinedBy event:;
+                rdfs:label "completed"@en;
+                skos:definition "State of being completed."@en.
+event:Completing a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "completing"@en;
+                 rdfs:subClassOf event:Action,
+                                 [a owl:Restriction ; 
+                                  owl:onProperty event:hasOutput ; 
+                                  owl:someValuesFrom event:Completion],
+                                 [a owl:Restriction ; 
+                                  owl:onProperty agent:hasPlayedRole ; 
+                                  owl:someValuesFrom agent:Completor];
+                 skos:definition "."@en.
+event:Completion a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "completion"@en;
+                 rdfs:subClassOf [a owl:Restriction ; 
+                                  owl:onProperty event:outputOf ; 
+                                  owl:someValuesFrom event:Completing];
+                 skos:definition "Output of completing."@en.
+event:CompletionState a rdfs:Class;
+                      rdfs:isDefinedBy event:;
+                      rdfs:label "completion state"@en;
+                      rdfs:subClassOf event:State;
+                      owl:oneOf (event:Completed
+                                 event:UnCompleted);
+                      skos:definition "State of being completed or not."@en.
+event:Condition a rdfs:Class;
+                rdfs:isDefinedBy event:;
+                rdfs:label "condition"@en;
+                skos:definition "Something that must exist if something else is to take place."@en.
+event:Contraindication a rdfs:Class;
+                       rdfs:isDefinedBy event:;
+                       rdfs:label "contraindication"@en;
+                       rdfs:subClassOf event:Reason;
+                       skos:definition "A reason for not performing an action."@en.
+event:CourseMode a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "course mode"@en;
+                 skos:definition "Mode of relating to time of something."@en.
+event:Created a rdfs:Class,
+                event:State;
+              rdfs:isDefinedBy event:;
+              rdfs:label "created"@en;
+              skos:definition "State of being brought into existance."@en.
+event:Creating a rdfs:Class;
+               rdfs:isDefinedBy event:;
+               rdfs:label "creating"@en;
+               rdfs:subClassOf event:Action,
+                               [a owl:Restriction ; 
+                                owl:onProperty event:hasOutput ; 
+                                owl:allValuesFrom event:Creation],
+                               [a owl:Restriction ; 
+                                owl:onProperty agent:hasPlayedRole ; 
+                                owl:someValuesFrom agent:Creator];
+               skos:definition "Bringing into existence."@en.
+event:Creation a rdfs:Class;
+               rdfs:isDefinedBy event:;
+               rdfs:label "creation"@en;
+               rdfs:subClassOf [a owl:Restriction ; 
+                                owl:onProperty event:outputOf ; 
+                                owl:someValuesFrom event:Creating],
+                               [a owl:Restriction ; 
+                                owl:onProperty event:hasObject ; 
+                                owl:someValuesFrom [a owl:Restriction ; 
+                                                    owl:onProperty event:hasState ; 
+                                                    owl:someValuesFrom event:Created]];
+               skos:definition "Output of creating."@en.
+event:Cyclic a rdfs:Class,
+               event:CourseMode;
+             rdfs:isDefinedBy event:;
+             rdfs:label "cyclic"@en;
+             skos:definition "Existing in a cycle."@en.
+event:Day a rdfs:Class;
+          rdfs:isDefinedBy event:;
+          rdfs:label "day"@en;
+          rdfs:subClassOf event:Event,
+                          [a owl:Restriction ; 
+                           owl:onProperty event:hasDuration ; 
+                           owl:hasValue "P1D"^^xsd:duration];
+          skos:definition "Event of 1 rotation of the Earth around its axis."@en.
+event:Delivering a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "delivering"@en;
+                 rdfs:subClassOf space:Transferring;
+                 skos:definition "Handing over to another agent."@en.
+event:Delivery a rdfs:Class;
+               rdfs:isDefinedBy event:;
+               rdfs:label "delivery"@en;
+               rdfs:subClassOf [a owl:Restriction ; 
+                                owl:onProperty event:outputOf ; 
+                                owl:someValuesFrom event:Delivering];
+               skos:definition "Handed over to another agent."@en.
+event:DemandState a rdfs:Class;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "demand state"@en;
+                  rdfs:subClassOf event:State;
+                  owl:oneOf (event:Demanded
+                             event:Undemanded);
+                  skos:definition "State of being demanded or not."@en.
+event:Demanded a rdfs:Class,
+                 event:DemandState;
+               rdfs:isDefinedBy event:;
+               rdfs:label "demanded"@en;
+               skos:definition "Being requested out of a need."@en.
+event:Diagnosing a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "diagnosing"@en;
+                 rdfs:subClassOf event:Action,
+                                 [a owl:Restriction ; 
+                                  owl:onProperty event:hasOutput ; 
+                                  owl:allValuesFrom event:Diagnosis];
+                 skos:definition "Identifying the nature of something, either by process of elimination or other analytical method, and applying logic and experience to determine cause and effect relationships."@en.
+event:Diagnosis a rdfs:Class;
+                rdfs:isDefinedBy event:;
+                rdfs:label "diagnosis"@en;
+                rdfs:subClassOf [a owl:Restriction ; 
+                                 owl:onProperty event:outputOf ; 
+                                 owl:someValuesFrom event:Diagnosing];
+                skos:definition "The result of a diagnosing procedure."@en.
+event:DiagnosisState a rdfs:Class;
+                     rdfs:isDefinedBy event:;
+                     rdfs:label "diagnosis state"@en;
+                     owl:oneOf (event:Suspected
+                                event:UnSuspected
+                                event:Verified
+                                event:UnVerified);
+                     skos:definition "State of a diagnosis of something."@en.
+event:Educating a rdfs:Class;
+                rdfs:isDefinedBy event:;
+                rdfs:label "educating"@en;
+                rdfs:subClassOf event:Procedure;
+                skos:definition "Instructing a human with the aim of changing his or her knowledge and/or behavior."@en;
+                skos:exactMatch [a skos:Concept ; 
+                                 skos:inScheme clisko:sct20080731 ; 
+                                 skos:notation "409073007"^^clisko:sct20080731DT].
+event:Education a rdfs:Class;
+                rdfs:isDefinedBy event:;
+                rdfs:label "education"@en;
+                rdfs:subClassOf [a owl:Restriction ; 
+                                 owl:onProperty event:outputOf ; 
+                                 owl:someValuesFrom event:Educating];
+                skos:definition "Change of knowledge and/or behaviour as output of educating"@en.
+event:Effect a rdfs:Class;
+             rdfs:isDefinedBy event:;
+             rdfs:label "effect"@en;
+             rdfs:subClassOf event:Output;
+             skos:definition "Output related to a cause."@en.
+event:EndingMode a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "ending mode"@en;
+                 skos:definition "Mode of going out of existence."@en.
+event:Evaluated a rdfs:Class,
+                  event:State;
+                rdfs:isDefinedBy event:;
+                rdfs:label "evaluated"@en;
+                skos:definition "State of being examined with judgement."@en.
+event:Evaluating a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "evaluating"@en;
+                 rdfs:subClassOf event:Action,
+                                 [a owl:Restriction ; 
+                                  owl:onProperty agent:hasPlayedRole ; 
+                                  owl:someValuesFrom agent:Evaluator],
+                                 [a owl:Restriction ; 
+                                  owl:onProperty event:hasOutput ; 
+                                  owl:someValuesFrom event:Evaluation];
+                 skos:definition "Examining with judging."@en.
+event:Evaluation a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "evaluation"@en;
+                 rdfs:subClassOf [a owl:Restriction ; 
+                                  owl:onProperty event:outputOf ; 
+                                  owl:someValuesFrom event:Evaluating];
+                 skos:definition "Examination with judgement of any kind, as output of evaluating."@en.
+event:Event a rdfs:Class;
+            rdfs:isDefinedBy event:;
+            rdfs:label "event"@en;
+            skos:definition "An occurrence as a space-time thing."@en.
+event:Examination a rdfs:Class;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "examination"@en;
+                  rdfs:subClassOf [a owl:Restriction ; 
+                                   owl:onProperty event:outputOf ; 
+                                   owl:someValuesFrom event:Examining];
+                  skos:definition "Examination of something, as output of examining."@en.
+event:Examined a rdfs:Class,
+                 event:State;
+               rdfs:isDefinedBy event:;
+               rdfs:label "examined"@en;
+               skos:definition "State of being examined."@en.
+event:Examining a rdfs:Class;
+                rdfs:isDefinedBy event:;
+                rdfs:label "examining"@en;
+                rdfs:subClassOf event:Action,
+                                [a owl:Restriction ; 
+                                 owl:onProperty agent:hasPlayedRole ; 
+                                 owl:someValuesFrom agent:Examinator],
+                                [a owl:Restriction ; 
+                                 owl:onProperty event:hasOutput ; 
+                                 owl:someValuesFrom event:Examination];
+                skos:definition "Collecting information about something."@en.
+event:Existence a rdfs:Class;
+                rdfs:isDefinedBy event:;
+                rdfs:label "existence"@en;
+                rdfs:subClassOf event:Event;
+                skos:definition "Event of being."@en.
+event:Experimental a rdfs:Class;
+                   rdfs:isDefinedBy event:;
+                   rdfs:label "experimental"@en;
+                   skos:definition "Being object of experimenting."@en.
+event:Fast a rdfs:Class,
+             event:CourseMode;
+           rdfs:isDefinedBy event:;
+           rdfs:label "fast"@en;
+           skos:definition "Evolve in a short period of time."@en.
+event:FinalOutput a rdfs:Class;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "final output"@en;
+                  skos:definition "Output at the end of a process."@en.
+event:Finding a rdfs:Class;
+              rdfs:isDefinedBy event:;
+              rdfs:label "finding"@en;
+              rdfs:subClassOf event:Event;
+              skos:definition "Something that is observed."@en.
+event:Friday a rdfs:Class,
+               event:Weekday;
+             rdfs:isDefinedBy event:;
+             rdfs:label "Friday"@en;
+             rdfs:subClassOf event:Day;
+             skos:definition "Fifth day of a week in the Gregorian calendar."@en.
+event:Future a rdfs:Class,
+               event:State;
+             rdfs:isDefinedBy event:;
+             rdfs:label "future"@en;
+             skos:definition "State of being in the future."@en.
+event:Gradual a rdfs:Class,
+                event:OnsetMode,
+                event:EndingMode,
+                event:CourseMode;
+              rdfs:isDefinedBy event:;
+              rdfs:label "gradual"@en;
+              skos:definition "Coming into or going out of existence, or evolve gradually."@en.
+event:Guideline a rdfs:Class;
+                rdfs:isDefinedBy event:;
+                rdfs:label "guideline"@en;
+                skos:definition "Detailed plan guiding in determining a course of action (e.g. clinical)."@en.
+event:HighPriority a rdfs:Class,
+                     event:PriorityState;
+                   rdfs:isDefinedBy event:;
+                   rdfs:label "high priority"@en;
+                   skos:definition "High precedence rank of an action to be performed."@en.
+event:Indication a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "indication"@en;
+                 rdfs:subClassOf event:Reason;
+                 skos:definition "Reason for an action."@en.
+event:Input a rdfs:Class;
+            rdfs:isDefinedBy event:;
+            rdfs:label "input"@en;
+            skos:definition "Precondition to a change in a process."@en.
+event:Intent a rdfs:Class;
+             rdfs:isDefinedBy event:;
+             rdfs:label "intent"@en;
+             skos:definition "Purpose of an action."@en.
+event:IntentionState a rdfs:Class;
+                     rdfs:isDefinedBy event:;
+                     rdfs:label "intention state"@en;
+                     owl:oneOf (event:Intentional
+                                event:Unintentional);
+                     skos:definition "State of being intentional or not."@en.
+event:Intentional a rdfs:Class,
+                    event:State;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "intentional"@en;
+                  skos:definition "State of an action being consciously and voluntary performed."@en.
+event:Interacting a rdfs:Class;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "interacting"@en;
+                  rdfs:subClassOf event:Action,
+                                  [a owl:Restriction ; 
+                                   owl:onProperty agent:hasAgent ; 
+                                   owl:minCardinality "2"^^xsd:nonNegativeInteger],
+                                  [a owl:Restriction ; 
+                                   owl:onProperty event:hasOutput ; 
+                                   owl:someValuesFrom event:Interaction];
+                  skos:definition "An action involving 2 or more agents in which an agent changes the output compared to an action without this agent."@en;
+                  skos:note "Not limited to direct interaction between agents."@en.
+event:Interaction a rdfs:Class;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "interaction"@en;
+                  rdfs:subClassOf [a owl:Restriction ; 
+                                   owl:onProperty event:outputOf ; 
+                                   owl:someValuesFrom event:Interacting];
+                  skos:definition "Outcome of interacting."@en.
+event:IntermediateOutput a rdfs:Class;
+                         rdfs:isDefinedBy event:;
+                         rdfs:label "intermediate output"@en;
+                         skos:definition "Output during a process."@en.
+event:IntermediatelySusceptible a rdfs:Class,
+                                  event:SusceptibilityState;
+                                rdfs:isDefinedBy event:;
+                                rdfs:label "intermediately susceptible"@en;
+                                skos:definition "Being susceptible to an intermediate degree."@en;
+                                skos:exactMatch [a skos:Concept ; 
+                                                 skos:inScheme clisko:sct20080731 ; 
+                                                 skos:notation "11896004"^^clisko:sct20080731DT].
+event:Intermittent a rdfs:Class,
+                     event:CourseMode;
+                   rdfs:isDefinedBy event:;
+                   rdfs:label "intermittent"@en;
+                   skos:definition "Come and go in and out of existence."@en;
+                   skos:exactMatch [a skos:Concept ; 
+                                    skos:inScheme clisko:sct20080731 ; 
+                                    skos:notation "7087005"^^clisko:sct20080731DT].
+event:Invalid a rdfs:Class,
+                event:ValidityState;
+              rdfs:isDefinedBy event:;
+              rdfs:label "invalid"@en;
+              skos:definition "State of not being valid."@en.
+event:LegalAuthenticating a rdfs:Class;
+                          rdfs:isDefinedBy event:;
+                          rdfs:label "legal authenticating"@en;
+                          rdfs:subClassOf event:Authenticating;
+                          skos:definition "Making legally authoritative or valid."@en.
+event:LegalAuthentication a rdfs:Class;
+                          rdfs:isDefinedBy event:;
+                          rdfs:label "legal authentication"@en;
+                          rdfs:subClassOf event:Authentication,
+                                          [a owl:Restriction ; 
+                                           owl:onProperty event:outputOf ; 
+                                           owl:someValuesFrom event:LegalAuthenticating];
+                          skos:definition "Proof of being legally authoritative or valid, as output of legal authenticating."@en.
+event:Likelihood a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "likelihood"@en;
+                 rdfs:subClassOf event:State;
+                 skos:definition "State of being probable."@en.
+event:Likely a rdfs:Class,
+               event:OutputLikelihood;
+             rdfs:isDefinedBy event:;
+             rdfs:label "likely"@en;
+             skos:definition "Probability of an output of a process being high."@en.
+event:LowPriority a rdfs:Class,
+                    event:PriorityState;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "low priority"@en;
+                  skos:definition "Low precedence rank of an action to be performed."@en.
+event:Method a rdfs:Class;
+             rdfs:isDefinedBy event:;
+             rdfs:label "method"@en;
+             skos:definition "Way an action can be performed."@en.
+event:Modification a rdfs:Class;
+                   rdfs:isDefinedBy event:;
+                   rdfs:label "modification"@en;
+                   rdfs:subClassOf [a owl:Restriction ; 
+                                    owl:onProperty event:outputOf ; 
+                                    owl:someValuesFrom event:Modifying],
+                                   [a owl:Restriction ; 
+                                    owl:onProperty event:hasObject ; 
+                                    owl:someValuesFrom [a owl:Restriction ; 
+                                                        owl:onProperty event:hasState ; 
+                                                        owl:someValuesFrom event:Modified]];
+                   skos:definition "Change of something."@en.
+event:Modified a rdfs:Class,
+                 event:State;
+               rdfs:isDefinedBy event:;
+               rdfs:label "modified"@en;
+               skos:definition "State of being changed."@en.
+event:Modifying a rdfs:Class;
+                rdfs:isDefinedBy event:;
+                rdfs:label "modifying"@en;
+                rdfs:subClassOf event:Action,
+                                [a owl:Restriction ; 
+                                 owl:onProperty event:hasOutput ; 
+                                 owl:allValuesFrom event:Modification],
+                                [a owl:Restriction ; 
+                                 owl:onProperty agent:hasPlayedRole ; 
+                                 owl:someValuesFrom agent:Modifier];
+                skos:definition "Changing something."@en.
+event:Monday a rdfs:Class,
+               event:Weekday;
+             rdfs:isDefinedBy event:;
+             rdfs:label "Monday"@en;
+             rdfs:subClassOf event:Day;
+             skos:definition "First day of a week in the Gregorian calendar."@en.
+event:MostLikely a rdfs:Class,
+                   event:OutputLikelihood;
+                 rdfs:comment "Near sure."@en;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "most likely"@en;
+                 skos:definition "Probability of an output of a process being very high."@en.
+event:MostUnlikely a rdfs:Class,
+                     event:OutputLikelihood;
+                   rdfs:isDefinedBy event:;
+                   rdfs:label "most unlikely"@en;
+                   skos:definition "Probability of an output of a process being lowest."@en.
+event:Observable a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "observable"@en;
+                 skos:definition "Something that can be observed, e.g. length."@en.
+event:OnsetMode a rdfs:Class;
+                rdfs:isDefinedBy event:;
+                rdfs:label "onset mode"@en;
+                skos:definition "Mode of coming into existence."@en.
+event:Order a rdfs:Class;
+            rdfs:isDefinedBy event:;
+            rdfs:label "order"@en;
+            rdfs:subClassOf [a owl:Restriction ; 
+                             owl:onProperty event:outputOf ; 
+                             owl:someValuesFrom event:Ordering];
+            skos:definition "Direction or commission to make, provide, or furnish something, as output of ordering."@en.
+event:Ordering a rdfs:Class;
+               rdfs:isDefinedBy event:;
+               rdfs:label "ordering"@en;
+               rdfs:subClassOf event:Action;
+               skos:definition "Directing or commissioning to make, provide, or furnish something"@en.
+event:Output a rdfs:Class;
+             rdfs:isDefinedBy event:;
+             rdfs:label "output"@en;
+             skos:definition "Consequence of a change in a process."@en.
+event:OutputLikelihood a rdfs:Class;
+                       rdfs:isDefinedBy event:;
+                       rdfs:label "output likelihood"@en;
+                       rdfs:subClassOf event:Likelihood;
+                       skos:definition "Likelihood of an output of a process."@en.
+event:Past a rdfs:Class,
+             event:State;
+           rdfs:comment "E.g. past 3 months: before now."@en;
+           rdfs:isDefinedBy event:;
+           rdfs:label "past"@en;
+           skos:definition "State of being in the past."@en;
+           skos:exactMatch [a skos:Concept ; 
+                            skos:inScheme clisko:sct20080731 ; 
+                            skos:notation "410513005"^^clisko:sct20080731DT].
+event:Pathway a rdfs:Class;
+              rdfs:isDefinedBy event:;
+              rdfs:label "pathway"@en;
+              skos:definition "Binding instructions for an action."@en;
+              skos:note "Organization dependent, different from guideline."@en.
+event:Persistent a rdfs:Class,
+                   event:CourseMode;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "persistent"@en;
+                 skos:definition "Staying in existence."@en;
+                 skos:exactMatch [a skos:Concept ; 
+                                  skos:inScheme clisko:sct20080731 ; 
+                                  skos:notation "263730007"^^clisko:sct20080731DT].
+event:Phasic a rdfs:Class,
+               event:CourseMode;
+             rdfs:comment "Human prenatal existence comprising embryonic and foetal phase.";
+             rdfs:isDefinedBy event:;
+             rdfs:label "phasic"@en;
+             skos:definition "Existing in phases."@en.
+event:Plan a rdfs:Class;
+           rdfs:isDefinedBy event:;
+           rdfs:label "plan"@en;
+           skos:definition "Predefined way to perform an action in order to achieve a goal."@en.
+event:Planning a rdfs:Class;
+               rdfs:isDefinedBy event:;
+               rdfs:label "planning"@en;
+               rdfs:subClassOf event:Action;
+               skos:definition "Predefining a way to perform an action in order to achieve a goal."@en.
+event:Previous a rdfs:Class,
+                 event:State;
+               rdfs:comment "E.g. previous 3 months: before current month."@en;
+               rdfs:isDefinedBy event:;
+               rdfs:label "previous"@en;
+               skos:definition "State of something being before something alike."@en.
+event:PriorityState a rdfs:Class;
+                    rdfs:isDefinedBy event:;
+                    rdfs:label "priority state"@en;
+                    rdfs:subClassOf event:State;
+                    skos:definition "State of precedence rank of an action."@en.
+event:Procedure a rdfs:Class;
+                rdfs:isDefinedBy event:;
+                rdfs:label "procedure"@en;
+                rdfs:subClassOf event:Action;
+                skos:definition "Action executed in one or more steps, in a certain manner to obtain a certain output under certain circumstances."@en.
+event:Process a rdfs:Class;
+              rdfs:isDefinedBy event:;
+              rdfs:label "process"@en;
+              rdfs:subClassOf event:Event;
+              skos:definition "An event implying change, from an input to an output, in one or more steps."@en.
+event:Reason a rdfs:Class;
+             rdfs:isDefinedBy event:;
+             rdfs:label "reason"@en;
+             skos:definition "Argument to justify an action."@en.
+event:RelativeContraindication a rdfs:Class;
+                               rdfs:isDefinedBy event:;
+                               rdfs:label "relative contraindication"@en;
+                               rdfs:subClassOf event:Contraindication;
+                               skos:definition "Possible reason for not performing an action."@en.
+event:RelativeIndication a rdfs:Class;
+                         rdfs:isDefinedBy event:;
+                         rdfs:label "relative indication"@en;
+                         rdfs:subClassOf event:Indication;
+                         skos:definition "Possible reason for an action."@en.
+event:Request a rdfs:Class;
+              rdfs:isDefinedBy event:;
+              rdfs:label "request"@en;
+              rdfs:subClassOf [a owl:Restriction ; 
+                               owl:onProperty event:outputOf ; 
+                               owl:someValuesFrom event:Requesting];
+              skos:definition "Output of requesting."@en.
+event:Requesting a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "requesting"@en;
+                 rdfs:subClassOf event:Action,
+                                 [a owl:Restriction ; 
+                                  owl:onProperty event:hasOutput ; 
+                                  owl:someValuesFrom event:Request];
+                 skos:definition "Asking for something to be done."@en.
+event:Resistant a rdfs:Class,
+                  event:SusceptibilityState;
+                rdfs:isDefinedBy event:;
+                rdfs:label "resistant"@en;
+                skos:definition "Not being susceptible."@en;
+                skos:exactMatch [a skos:Concept ; 
+                                 skos:inScheme clisko:sct20080731 ; 
+                                 skos:notation "30714006"^^clisko:sct20080731DT].
+event:Risk a rdfs:Class;
+           rdfs:isDefinedBy event:;
+           rdfs:label "risk"@en;
+           skos:definition "Probability of an adverse process or output."@en;
+           skos:note "Mapped to the range of e:conditional in rules"@en.
+event:RiskFactor a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "risk factor"@en;
+                 skos:definition "Contributing to a risk of an adverse process or output."@en.
+event:Routine a rdfs:Class,
+                event:PriorityState;
+              rdfs:isDefinedBy event:;
+              rdfs:label "routine"@en;
+              skos:definition "Lowest precedence rank of an action to be performed."@en.
+event:Saturday a rdfs:Class,
+                 event:Weekday;
+               rdfs:isDefinedBy event:;
+               rdfs:label "Saturday"@en;
+               rdfs:subClassOf event:Day;
+               skos:definition "Sixth day of a week in the Gregorian calendar."@en.
+event:Slow a rdfs:Class,
+             event:OnsetMode,
+             event:EndingMode,
+             event:CourseMode;
+           rdfs:isDefinedBy event:;
+           rdfs:label "slow"@en;
+           skos:definition "Coming into or going out of existence, or evolve in a long period of time."@en.
+event:Sponsoring a rdfs:Class;
+                 rdfs:comment "E.g. a business enterprise paying for radio or television programming in return for advertising time."@en;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "sponsoring"@en;
+                 rdfs:subClassOf event:Action,
+                                 [a owl:Restriction ; 
+                                  owl:onProperty agent:hasPlayedRole ; 
+                                  owl:someValuesFrom agent:Sponsor];
+                 skos:definition "Financing something in supporting a person or group."@en.
+event:Stage a rdfs:Class;
+            rdfs:isDefinedBy event:;
+            rdfs:label "stage"@en;
+            skos:definition "Degree of a process."@en.
+event:Staging a rdfs:Class;
+              rdfs:isDefinedBy event:;
+              rdfs:label "staging"@en;
+              rdfs:subClassOf event:Action;
+              skos:definition "Determining a degree of a process."@en.
+event:State a rdfs:Class;
+            rdfs:isDefinedBy event:;
+            rdfs:label "state"@en;
+            skos:definition "Mode of being."@en.
+event:Strategy a rdfs:Class;
+               rdfs:isDefinedBy event:;
+               rdfs:label "strategy"@en;
+               rdfs:subClassOf event:Method;
+               skos:definition "A method for obtaining a specific result."@en.
+event:Subacute a rdfs:Class,
+                 event:OnsetMode,
+                 event:EndingMode;
+               rdfs:isDefinedBy event:;
+               rdfs:label "subacute"@en;
+               skos:definition "Coming into or going out of existence in a moderate short period of time."@en.
+event:Submission a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "submission"@en;
+                 rdfs:subClassOf [a owl:Restriction ; 
+                                  owl:onProperty event:outputOf ; 
+                                  owl:someValuesFrom event:Submitting];
+                 skos:definition "Output of submitting."@en.
+event:SubmissionState a rdfs:Class;
+                      rdfs:isDefinedBy event:;
+                      rdfs:label "submission state"@en;
+                      rdfs:subClassOf event:State;
+                      owl:oneOf (event:Submitted
+                                 event:UnSubmitted);
+                      skos:definition "State of being submitted or not."@en.
+event:Submitted a rdfs:Class,
+                  event:SubmissionState;
+                rdfs:isDefinedBy event:;
+                rdfs:label "submitted"@en;
+                skos:definition "State of being submitted."@en.
+event:Submitting a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "submitting"@en;
+                 rdfs:subClassOf event:Action,
+                                 [a owl:Restriction ; 
+                                  owl:onProperty event:hasOutput ; 
+                                  owl:someValuesFrom event:Submission],
+                                 [a owl:Restriction ; 
+                                  owl:onProperty agent:hasPlayedRole ; 
+                                  owl:someValuesFrom agent:Submittor];
+                 skos:definition "."@en.
+event:Sudden a rdfs:Class,
+               event:OnsetMode,
+               event:EndingMode;
+             rdfs:isDefinedBy event:;
+             rdfs:label "sudden"@en;
+             skos:definition "Coming into or going out of existence in a very short period of time."@en;
+             skos:exactMatch [a skos:Concept ; 
+                              skos:inScheme clisko:sct20080731 ; 
+                              skos:notation "373933003"^^clisko:sct20080731DT].
+event:Sunday a rdfs:Class,
+               event:Weekday;
+             rdfs:isDefinedBy event:;
+             rdfs:label "Sunday"@en;
+             rdfs:subClassOf event:Day;
+             skos:definition "Seventh day of a week in the Gregorian calendar."@en.
+event:SusceptibilityState a rdfs:Class;
+                          rdfs:isDefinedBy event:;
+                          rdfs:label "susceptibility state"@en;
+                          rdfs:subClassOf event:State;
+                          owl:oneOf (event:Susceptible
+                                     event:IntermediatelySusceptible
+                                     event:Resistant);
+                          skos:definition "State of being susceptible to something to a degree."@en.
+event:Susceptible a rdfs:Class,
+                    event:SusceptibilityState;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "susceptible"@en;
+                  skos:definition "Prone to an effect of a cause."@en;
+                  skos:exactMatch [a skos:Concept ; 
+                                   skos:inScheme clisko:sct20080731 ; 
+                                   skos:notation "131196009"^^clisko:sct20080731DT].
+event:Suspected a rdfs:Class,
+                  event:State;
+                rdfs:isDefinedBy event:;
+                rdfs:label "suspected"@en;
+                skos:definition "State of something being probable without proof."@en;
+                skos:exactMatch [a skos:Concept ; 
+                                 skos:inScheme clisko:sct20080731 ; 
+                                 skos:notation "415684004"^^clisko:sct20080731DT].
+event:Thursday a rdfs:Class,
+                 event:Weekday;
+               rdfs:isDefinedBy event:;
+               rdfs:label "Thursday"@en;
+               rdfs:subClassOf event:Day;
+               skos:definition "Fourth day of a week in the Gregorian calendar."@en.
+event:Transfer a owl:DeprecatedClass;
+               rdfs:comment "Moved to <http://eulersharp.sourceforge.net/2003/03swap/space#>"@en;
+               rdfs:isDefinedBy event:;
+               rdfs:label "transfer"@en;
+               rdfs:subClassOf [a owl:Restriction ; 
+                                owl:onProperty event:outputOf ; 
+                                owl:allValuesFrom event:Transferring];
+               skos:definition "Something brought from one place to another."@en.
+event:Transferring a owl:DeprecatedClass;
+                   rdfs:comment "Moved to <http://eulersharp.sourceforge.net/2003/03swap/space#>"@en;
+                   rdfs:isDefinedBy event:;
+                   rdfs:label "transferring"@en;
+                   rdfs:subClassOf event:Action;
+                   skos:definition "Bringing something from one place to another."@en.
+event:Tuesday a rdfs:Class,
+                event:Weekday;
+              rdfs:isDefinedBy event:;
+              rdfs:label "Tuesday"@en;
+              rdfs:subClassOf event:Day;
+              skos:definition "Second day of a week in the Gregorian calendar."@en.
+event:UnCompleted a rdfs:Class,
+                    event:CompletionState;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "uncompleted"@en;
+                  skos:definition "State of being uncompleted."@en.
+event:UnSubmitted a rdfs:Class,
+                    event:SubmissionState;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "unsubmitted"@en;
+                  skos:definition "State of not being submitted."@en.
+event:UnSuspected a rdfs:Class,
+                    event:State;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "unsuspected"@en;
+                  skos:definition "State of something being improbable without proof."@en;
+                  skos:exactMatch [a skos:Concept ; 
+                                   skos:inScheme clisko:sct20080731 ; 
+                                   skos:notation "428263003"^^clisko:sct20080731DT].
+event:UnVerified a rdfs:Class,
+                   event:State;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "unverified"@en;
+                 skos:definition "State of being without proof."@en;
+                 skos:exactMatch [a skos:Concept ; 
+                                  skos:inScheme clisko:sct20080731 ; 
+                                  skos:notation "76104008"^^clisko:sct20080731DT].
+event:Unavailability a rdfs:Class;
+                     rdfs:isDefinedBy event:;
+                     rdfs:label "unavailability"@en;
+                     rdfs:subClassOf event:Event,
+                                     [a owl:Restriction ; 
+                                      owl:onProperty event:hasAvailabilityState ; 
+                                      owl:hasValue event:Unavailable];
+                     skos:definition "Event of being unavailable."@en.
+event:Unavailable a rdfs:Class,
+                    event:AvailabilityState;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "unavailable"@en;
+                  skos:definition "Not being suitable or ready for use."@en.
+event:Undemanded a rdfs:Class,
+                   event:DemandState;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "undemanded"@en;
+                 skos:definition "Being not requested out of a need."@en.
+event:Unintentional a rdfs:Class,
+                      event:State;
+                    rdfs:isDefinedBy event:;
+                    rdfs:label "unintentional"@en;
+                    skos:definition "State of an action being not consciously and voluntary performed."@en.
+event:Unlikely a rdfs:Class,
+                 event:OutputLikelihood;
+               rdfs:isDefinedBy event:;
+               rdfs:label "unlikely"@en;
+               skos:definition "Probability of an output of a process being low."@en.
+event:Urgent a rdfs:Class,
+               event:PriorityState;
+             rdfs:isDefinedBy event:;
+             rdfs:label "urgent"@en;
+             skos:definition "Highest precedence rank of an action to be performed."@en.
+event:Valid a rdfs:Class,
+              event:ValidityState;
+            rdfs:isDefinedBy event:;
+            rdfs:label "valid"@en;
+            skos:definition "State of being valid."@en.
+event:Validating a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "validating"@en;
+                 rdfs:subClassOf event:Action,
+                                 [a owl:Restriction ; 
+                                  owl:onProperty event:hasOutput ; 
+                                  owl:someValuesFrom event:Validation],
+                                 [a owl:Restriction ; 
+                                  owl:onProperty agent:hasPlayedRole ; 
+                                  owl:someValuesFrom agent:Validator];
+                 skos:definition "Approve something or not along a value."@en.
+event:Validation a rdfs:Class;
+                 rdfs:isDefinedBy event:;
+                 rdfs:label "validation"@en;
+                 rdfs:subClassOf [a owl:Restriction ; 
+                                  owl:onProperty event:outputOf ; 
+                                  owl:someValuesFrom event:Validating];
+                 skos:definition "Output of validating."@en.
+event:ValidityState a rdfs:Class;
+                    rdfs:isDefinedBy event:;
+                    rdfs:label "validity state"@en;
+                    rdfs:subClassOf event:State;
+                    owl:oneOf (event:Valid
+                               event:Invalid);
+                    skos:definition "State of being valid or not."@en.
+event:Verified a rdfs:Class,
+                 event:State;
+               rdfs:isDefinedBy event:;
+               rdfs:label "verified"@en;
+               skos:definition "State of being with proof."@en;
+               skos:exactMatch [a skos:Concept ; 
+                                skos:inScheme clisko:sct20080731 ; 
+                                skos:notation "59156000"^^clisko:sct20080731DT].
+event:Wednesday a rdfs:Class,
+                  event:Weekday;
+                rdfs:isDefinedBy event:;
+                rdfs:label "Wednesday"@en;
+                rdfs:subClassOf event:Day;
+                skos:definition "Third day of a week in the Gregorian calendar."@en.
+event:Week a rdfs:Class;
+           rdfs:isDefinedBy event:;
+           rdfs:label "week"@en;
+           rdfs:subClassOf event:Event,
+                           [a owl:Restriction ; 
+                            owl:onProperty event:hasDuration ; 
+                            owl:hasValue "P7D"^^xsd:duration];
+           skos:definition "Event of 7 days in the Gregorian calendar."@en.
+event:Weekday a rdfs:Class;
+              rdfs:isDefinedBy event:;
+              rdfs:label "weekday"@en;
+              rdfs:subClassOf event:Day;
+              owl:oneOf (event:Monday
+                         event:Tuesday
+                         event:Wednesday
+                         event:Thursday
+                         event:Friday
+                         event:Saturday
+                         event:Sunday);
+              skos:definition "One of the 7 days of the week in the Gregorian calendar."@en.
+event:after a owl:DeprecatedProperty,
+              owl:ObjectProperty,
+              owl:TransitiveProperty;
+            rdfs:domain event:Event;
+            rdfs:isDefinedBy event:;
+            rdfs:range event:Event;
+            rdfs:subPropertyOf event:timeRelatedTo;
+            owl:inverseOf event:before;
+            skos:definition "Linking a later to an earlier event."@en;
+            skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                      "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:basedOn a owl:ObjectProperty;
+              rdfs:comment "E.g. a diagnosis, e.g. infection, based on an evaluation, e.g. fever, in turn based on an examination, e.g. body temperature measurement."@en;
+              rdfs:domain rdfs:Resource;
+              rdfs:isDefinedBy event:;
+              rdfs:label "based on"@en;
+              rdfs:range rdfs:Resource;
+              skos:definition "Specifying something being a basis for something else."@en.
+event:basisFor a owl:ObjectProperty;
+               rdfs:comment "E.g. an examination, e.g. body temperature measurement, as basis for an evaluation, e.g. fever, in turn basis for a diagnosis, e.g. infection."@en;
+               rdfs:domain rdfs:Resource;
+               rdfs:isDefinedBy event:;
+               rdfs:range rdfs:Resource;
+               skos:definition "Specifying something based on something else."@en.
+event:before a owl:DeprecatedProperty,
+               owl:ObjectProperty,
+               owl:TransitiveProperty;
+             rdfs:domain event:Event;
+             rdfs:isDefinedBy event:;
+             rdfs:range event:Event;
+             rdfs:subPropertyOf event:timeRelatedTo;
+             skos:definition "Linking an earlier to a later event."@en;
+             skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                       "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:beginDate a owl:DeprecatedProperty,
+                  owl:DatatypeProperty,
+                  owl:FunctionalProperty;
+                rdfs:domain event:Event;
+                rdfs:isDefinedBy event:;
+                rdfs:range xsd:date;
+                skos:definition "Specifying a begin point in time of an event as date."@en;
+                skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en.
+event:begins a owl:DeprecatedProperty,
+               owl:DatatypeProperty,
+               owl:FunctionalProperty;
+             rdfs:comment "Using the Unix Epoch time."@en;
+             rdfs:domain event:Event;
+             rdfs:isDefinedBy event:;
+             rdfs:range xsd:dateTime;
+             skos:definition "Specifying a begin point in time of an event."@en;
+             skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en.
+event:beginsAfter a owl:DeprecatedProperty,
+                    owl:ObjectProperty,
+                    owl:TransitiveProperty;
+                  rdfs:domain event:Event;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range event:Event;
+                  rdfs:subPropertyOf event:timeRelatedTo;
+                  owl:inverseOf event:beginsBefore;
+                  skos:definition "Linking a later beginning to an earlier beginning event."@en;
+                  skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                            "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:beginsBefore a owl:DeprecatedProperty,
+                     owl:ObjectProperty,
+                     owl:TransitiveProperty;
+                   rdfs:domain event:Event;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range event:Event;
+                   rdfs:subPropertyOf event:timeRelatedTo;
+                   skos:definition "Linking an earlier beginning to a later beginning event."@en;
+                   skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                             "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:beginsDuring a owl:DeprecatedProperty,
+                     owl:ObjectProperty,
+                     owl:TransitiveProperty;
+                   rdfs:domain event:Event;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range event:Event;
+                   rdfs:subPropertyOf event:timeRelatedTo;
+                   skos:definition "Specifying an event during which another event begins."@en;
+                   skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en.
+event:causedBy a owl:ObjectProperty;
+               rdfs:domain event:Event;
+               rdfs:isDefinedBy event:;
+               rdfs:range event:Cause;
+               skos:definition "Specifying a cause of an event."@en.
+event:causes a owl:ObjectProperty;
+             rdfs:domain event:Cause;
+             rdfs:isDefinedBy event:;
+             rdfs:range event:Event;
+             owl:inverseOf event:causedBy;
+             skos:definition "Specifying an event having a cause."@en.
+event:compliesWith a owl:ObjectProperty;
+                   rdfs:isDefinedBy event:;
+                   rdfs:label "complies with"@en;
+                   skos:definition "Specifying something something else complies with."@en.
+event:confirmedBy a owl:ObjectProperty;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "confirmed by"@en;
+                  skos:definition "Specifying something confirming something else."@en.
+event:confirms a owl:ObjectProperty;
+               rdfs:isDefinedBy event:;
+               rdfs:label "confirms"@en;
+               skos:definition "Specifying something confirmed by something else."@en.
+event:contraindicatedBy a owl:ObjectProperty;
+                        rdfs:domain event:Action;
+                        rdfs:isDefinedBy event:;
+                        rdfs:range event:Contraindication;
+                        skos:definition "Specifying an indication for not performing an action."@en.
+event:contraindicates a owl:ObjectProperty;
+                      rdfs:domain event:Contraindication;
+                      rdfs:isDefinedBy event:;
+                      rdfs:range event:Action;
+                      owl:inverseOf event:contraindicatedBy;
+                      skos:definition "Specifying an action having a contraindication."@en.
+event:createdBy a owl:ObjectProperty;
+                rdfs:domain [a owl:Restriction ; 
+                             owl:onProperty event:hasState ; 
+                             owl:someValuesFrom event:Created];
+                rdfs:isDefinedBy event:;
+                rdfs:range [a owl:Restriction ; 
+                            owl:onProperty agent:playsRole ; 
+                            owl:someValuesFrom agent:Creator];
+                owl:inverseOf event:hasCreated;
+                owl:propertyChainAxiom (event:objectOf
+                                        agent:hasAgent);
+                skos:definition "Specifying a creator of something."@en.
+event:createdIn a owl:ObjectProperty;
+                rdfs:domain [a owl:Restriction ; 
+                             owl:onProperty event:hasState ; 
+                             owl:someValuesFrom event:Created];
+                rdfs:isDefinedBy event:;
+                rdfs:range event:Creating;
+                rdfs:subPropertyOf event:outputObjectOf;
+                owl:inverseOf event:whereinCreated;
+                skos:definition "Specifying a creating wherein something is created."@en.
+event:creationOf a owl:ObjectProperty;
+                 rdfs:domain event:Creation;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range [a owl:Restriction ; 
+                             owl:onProperty event:hasState ; 
+                             owl:someValuesFrom event:Created];
+                 rdfs:subPropertyOf event:hasObject;
+                 skos:definition "Specifying something created."@en.
+event:deliveredIn a owl:ObjectProperty;
+                  rdfs:domain rdfs:Resource;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range event:Delivering;
+                  owl:inverseOf event:whereinDelivered;
+                  skos:definition "Specifying a delivering wherein something is delivered."@en.
+event:deliveredTo a owl:ObjectProperty;
+                  rdfs:domain [a owl:Restriction ; 
+                               owl:onProperty event:objectOf ; 
+                               owl:someValuesFrom event:Delivery];
+                  rdfs:isDefinedBy event:;
+                  rdfs:range foaf:Agent;
+                  skos:definition "Specifying an agent something is delivered to."@en.
+event:deliveryOf a owl:ObjectProperty;
+                 rdfs:domain event:Delivery;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range rdfs:Resource;
+                 rdfs:subPropertyOf event:hasObject;
+                 skos:definition "Specifying something delivered."@en.
+event:diagnosedDuring a owl:DeprecatedProperty;
+                      rdfs:comment """The longer ago, the broader a timescope; e.g. diagnosed in 1986: formally stating a period from \"1985-12-31T23:00:00.000000Z\"^^xsd:dateTime to \"1986-12-31T22:59:59.999998Z\"^^xsd:dateTime for time zone offset +01:00; diagnosed in 2008 in May: stating a period from \"2008-04-30T23:00:00.000000Z\"^^xsd:dateTime to \"2008-05-31T22:59:59.999998Z\"^^xsd:dateTime; diagnosed last month the 5 th: stating a period from \"2011-12-04T23:00:00.000000Z\"^^xsd:dateTime to \"2011-12-05T22:59:59.999998Z\"^^xsd:dateTime; diagnosed Monday last week at 11AM: stating a moment \"2012-01-30T10:00:00.000000Z\"^^xsd:dateTime."""@en;
+                      rdfs:domain rdfs:Resource;
+                      rdfs:isDefinedBy event:;
+                      rdfs:label "diagnosed during"@en;
+                      rdfs:range event:Event;
+                      owl:propertyChainAxiom (event:diagnosedIn
+                                              event:during);
+                      skos:definition "Specifying a period wherein something is diagnosed."@en;
+                      skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:diagnosedIn a owl:DeprecatedProperty;
+                  rdfs:domain rdfs:Resource;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "diagnosed in"@en;
+                  rdfs:range event:Diagnosing;
+                  rdfs:subPropertyOf event:outputObjectOf;
+                  skos:definition "Specifying a diagnosing of something."@en.
+event:diagnosisOf a owl:DeprecatedProperty;
+                  rdfs:domain event:Diagnosis;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range rdfs:Resource;
+                  rdfs:subPropertyOf event:hasObject;
+                  skos:definition "Specifying something diagnosed."@en;
+                  skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:during a owl:DeprecatedProperty,
+               owl:ObjectProperty,
+               owl:TransitiveProperty;
+             rdfs:domain event:Event;
+             rdfs:isDefinedBy event:;
+             rdfs:range event:Event;
+             rdfs:subPropertyOf event:timeRelatedTo;
+             skos:definition "Specifying an event during which another event happens."@en;
+             skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                       "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:endDate a owl:DeprecatedProperty,
+                owl:DatatypeProperty,
+                owl:FunctionalProperty;
+              rdfs:domain event:Event;
+              rdfs:isDefinedBy event:;
+              rdfs:range xsd:date;
+              skos:definition "Specifying the end point in time of an event as date."@en;
+              skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en.
+event:endProcedureOf a owl:ObjectProperty;
+                     rdfs:domain event:Procedure;
+                     rdfs:isDefinedBy event:;
+                     rdfs:range event:Procedure;
+                     rdfs:subPropertyOf event:subProcedureOf;
+                     owl:inverseOf event:hasEndProcedure;
+                     skos:definition "Specifying a procedure as last subprocedure of a another procedure."@en.
+event:ends a owl:DeprecatedProperty,
+             owl:DatatypeProperty,
+             owl:FunctionalProperty;
+           rdfs:comment "Using the Unix Epoch time; related to event:hasDateTime."@en;
+           rdfs:domain event:Event;
+           rdfs:isDefinedBy event:;
+           rdfs:range xsd:dateTime;
+           skos:definition "Specifying the end point in time of an event."@en;
+           skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en.
+event:endsAfter a owl:DeprecatedProperty,
+                  owl:ObjectProperty,
+                  owl:TransitiveProperty;
+                rdfs:domain event:Event;
+                rdfs:isDefinedBy event:;
+                rdfs:range event:Event;
+                rdfs:subPropertyOf event:timeRelatedTo;
+                owl:inverseOf event:endsBefore;
+                skos:definition "Linking a later ending to an earlier ending event."@en;
+                skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                          "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:endsBefore a owl:DeprecatedProperty,
+                   owl:ObjectProperty,
+                   owl:TransitiveProperty;
+                 rdfs:domain event:Event;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range event:Event;
+                 rdfs:subPropertyOf event:timeRelatedTo;
+                 skos:definition "Linking an earlier ending to a later ending event."@en;
+                 skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                           "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:endsDuring a owl:DeprecatedProperty,
+                   owl:ObjectProperty,
+                   owl:TransitiveProperty;
+                 rdfs:domain event:Event;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range event:Event;
+                 rdfs:subPropertyOf event:timeRelatedTo;
+                 skos:definition "Specifying an event during which another event ends."@en;
+                 skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en.
+event:evaluatedBy a owl:DeprecatedProperty;
+                  rdfs:domain [a owl:Restriction ; 
+                               owl:onProperty event:objectOf ; 
+                               owl:someValuesFrom event:Evaluation];
+                  rdfs:isDefinedBy event:;
+                  rdfs:range [a owl:Restriction ; 
+                              owl:onProperty agent:playsRole ; 
+                              owl:someValuesFrom agent:Evaluator];
+                  owl:inverseOf event:hasEvaluated;
+                  skos:definition "Specifying an evaluator of something evaluated."@en;
+                  skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:evaluatedDuring a owl:DeprecatedProperty;
+                      rdfs:comment """The longer ago, the broader a timescope; e.g. evaluated in 1986: formally stating a period from \"1985-12-31T23:00:00.000000Z\"^^xsd:dateTime to \"1986-12-31T22:59:59.999998Z\"^^xsd:dateTime for time zone offset +01:00; evaluated in 2008 in May: stating a period from \"2008-04-30T23:00:00.000000Z\"^^xsd:dateTime to \"2008-05-31T22:59:59.999998Z\"^^xsd:dateTime; evaluated last month the 5 th: stating a period from \"2011-12-04T23:00:00.000000Z\"^^xsd:dateTime to \"2011-12-05T22:59:59.999998Z\"^^xsd:dateTime; evaluated Monday last week at 11AM: stating a moment \"2012-01-30T10:00:00.000000Z\"^^xsd:dateTime."""@en;
+                      rdfs:domain rdfs:Resource;
+                      rdfs:isDefinedBy event:;
+                      rdfs:label "evaluated during"@en;
+                      rdfs:range event:Event;
+                      skos:definition "Specifying a period wherein something is evaluated."@en;
+                      skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:evaluatedIn a owl:DeprecatedProperty;
+                  rdfs:domain event:Input;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range event:Evaluating;
+                  rdfs:subPropertyOf event:inputOf;
+                  skos:definition "Specifying an evaluating of something."@en.
+event:evaluationOf a owl:DeprecatedProperty;
+                   rdfs:domain event:Evaluation;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range [a owl:Restriction ; 
+                               owl:onProperty event:hasState ; 
+                               owl:someValuesFrom event:Evaluated];
+                   rdfs:subPropertyOf event:hasObject;
+                   skos:definition "Specifying something evaluated."@en;
+                   skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:examinationOf a owl:ObjectProperty;
+                    rdfs:domain event:Examination;
+                    rdfs:isDefinedBy event:;
+                    rdfs:label "examination of"@en;
+                    rdfs:range [a owl:Restriction ; 
+                                owl:onProperty event:hasState ; 
+                                owl:someValuesFrom event:Examined];
+                    rdfs:subPropertyOf event:hasObject;
+                    skos:definition "Specifying something examined."@en.
+event:examinedBy a owl:ObjectProperty;
+                 rdfs:domain [a owl:Restriction ; 
+                              owl:onProperty event:hasExamining ; 
+                              owl:someValuesFrom event:Examining];
+                 rdfs:isDefinedBy event:;
+                 rdfs:range [a owl:Restriction ; 
+                             owl:onProperty agent:playsRole ; 
+                             owl:someValuesFrom agent:Examinator];
+                 owl:inverseOf event:hasExamined;
+                 skos:definition "Specifying an examinator of something."@en.
+event:examinedDuring a owl:ObjectProperty;
+                     rdfs:comment """The longer ago, the broader a timescope; e.g. examined in 1986: formally stating a period from \"1985-12-31T23:00:00.000000Z\"^^xsd:dateTime to \"1986-12-31T22:59:59.999998Z\"^^xsd:dateTime for time zone offset +01:00; examined in 2008 in May: stating a period from \"2008-04-30T23:00:00.000000Z\"^^xsd:dateTime to \"2008-05-31T22:59:59.999998Z\"^^xsd:dateTime; examined last month the 5 th: stating a period from \"2011-12-04T23:00:00.000000Z\"^^xsd:dateTime to \"2011-12-05T22:59:59.999998Z\"^^xsd:dateTime; examined Monday last week at 11AM: stating a moment \"2012-01-30T10:00:00.000000Z\"^^xsd:dateTime."""@en;
+                     rdfs:domain rdfs:Resource;
+                     rdfs:isDefinedBy event:;
+                     rdfs:range event:Event;
+                     skos:definition "Specifying a period wherein something is examined."@en.
+event:examiningOf a owl:ObjectProperty;
+                  rdfs:domain event:Examining;
+                  rdfs:isDefinedBy event:;
+                  rdfs:label "examining of"@en;
+                  rdfs:range event:Input;
+                  rdfs:subPropertyOf event:hasInput;
+                  owl:inverseOf event:hasExamining;
+                  skos:definition "Specifying something being examined."@en.
+event:exists a owl:ObjectProperty;
+             rdfs:domain rdfs:Resource;
+             rdfs:isDefinedBy event:;
+             rdfs:range event:Existence;
+             skos:definition "Specifying an existence of something."@en.
+event:existsOn a owl:DatatypeProperty,
+                 owl:FunctionalProperty;
+               rdfs:domain rdfs:Resource;
+               rdfs:isDefinedBy event:;
+               rdfs:range xsd:dateTime;
+               skos:definition "Specifying a date time on which something exists."@en.
+event:expires a owl:DatatypeProperty,
+                owl:FunctionalProperty,
+                owl:DeprecatedProperty;
+              rdfs:domain event:Event;
+              rdfs:isDefinedBy event:;
+              rdfs:range xsd:dateTime;
+              rdfs:subPropertyOf time:ends,
+                                 event:ends;
+              skos:definition "Specifying an end of a state of something, e.g. of eadibility of food, of validity of a license."@en,
+                              "Specifying an end of a state of something, e.g. of the eadibility of food, validity of a license."@en;
+              skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en.
+event:gotDelivered a owl:ObjectProperty;
+                   rdfs:domain foaf:Agent;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range [a owl:Restriction ; 
+                               owl:onProperty event:objectOf ; 
+                               owl:someValuesFrom event:Delivery];
+                   owl:inverseOf event:deliveredTo;
+                   skos:definition "Specifying something an agent got delivered."@en.
+event:gotExamined a owl:ObjectProperty;
+                  rdfs:domain foaf:Agent;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range [a owl:Restriction ; 
+                              owl:onProperty event:objectOf ; 
+                              owl:someValuesFrom event:Examination];
+                  skos:definition "Specifying something an agent got examined."@en.
+event:gotOrdered a owl:ObjectProperty;
+                 rdfs:domain foaf:Agent;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range [a owl:Restriction ; 
+                             owl:onProperty event:objectOf ; 
+                             owl:someValuesFrom event:Order];
+                 owl:inverseOf event:orderedFor;
+                 skos:definition "Specifying something an agent got ordered."@en.
+event:hasAdverseOutput a owl:ObjectProperty;
+                       rdfs:domain event:Process;
+                       rdfs:isDefinedBy event:;
+                       rdfs:range event:AdverseOutput;
+                       rdfs:subPropertyOf event:hasOutput;
+                       skos:definition "Specifying an unwanted output of a process."@en.
+event:hasAge a owl:DeprecatedProperty,
+               owl:DatatypeProperty,
+               owl:FunctionalProperty;
+             rdfs:domain rdfs:Resource;
+             rdfs:isDefinedBy event:;
+             rdfs:range xsd:duration;
+             skos:definition "Specifying a duration of existence of something."@en.
+event:hasAvailabilityState a owl:ObjectProperty;
+                           rdfs:domain rdfs:Resource;
+                           rdfs:isDefinedBy event:;
+                           rdfs:range event:AvailabilityState;
+                           skos:definition "Specifying whether something is available or not."@en.
+event:hasCompletionDateTime a owl:DatatypeProperty,
+                              owl:FunctionalProperty;
+                            rdfs:domain [a owl:Restriction ; 
+                                         owl:onProperty event:objectOf ; 
+                                         owl:someValuesFrom event:Completion];
+                            rdfs:isDefinedBy event:;
+                            rdfs:range xsd:dateTime;
+                            skos:definition "Specifying a point in time of completion of something."@en.
+event:hasCompletionState a owl:ObjectProperty;
+                         rdfs:domain event:Completion;
+                         rdfs:isDefinedBy event:;
+                         rdfs:range event:CompletionState;
+                         skos:definition "Specifying a completion state of something."@en.
+event:hasContraindicationDateTime a owl:DatatypeProperty,
+                                    owl:FunctionalProperty;
+                                  rdfs:domain event:Action;
+                                  rdfs:isDefinedBy event:;
+                                  rdfs:range xsd:dateTime;
+                                  owl:propertyChainAxiom (event:contraindicatedBy
+                                                          event:hasDateTime);
+                                  skos:definition "Specifying a point in time on which something is contraindicated."@en.
+event:hasCourseMode a owl:ObjectProperty;
+                    rdfs:domain event:Process;
+                    rdfs:isDefinedBy event:;
+                    rdfs:range event:CourseMode;
+                    skos:definition "Specifying a way a process relates to time."@en.
+event:hasCreated a owl:ObjectProperty;
+                 rdfs:domain [a owl:Restriction ; 
+                              owl:onProperty agent:playsRole ; 
+                              owl:someValuesFrom agent:Creator];
+                 rdfs:isDefinedBy event:;
+                 rdfs:range [a owl:Restriction ; 
+                             owl:onProperty event:hasState ; 
+                             owl:someValuesFrom event:Created];
+                 rdfs:subPropertyOf dce:creator;
+                 skos:definition "Specifying something a creator has created."@en.
+event:hasCreation a owl:ObjectProperty;
+                  rdfs:domain event:Creating;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range event:Creation;
+                  rdfs:subPropertyOf event:hasOutput;
+                  skos:definition "Specifying a creation output of a creating."@en.
+event:hasCreationDate a owl:DatatypeProperty;
+                      rdfs:domain event:Creation;
+                      rdfs:isDefinedBy event:;
+                      rdfs:range xsd:date;
+                      rdfs:subPropertyOf dct:created;
+                      skos:definition "Specifying a point in time as date on which something is created."@en.
+event:hasCreationDateTime a owl:DatatypeProperty,
+                            owl:FunctionalProperty;
+                          rdfs:domain [a owl:Restriction ; 
+                                       owl:onProperty event:objectOf ; 
+                                       owl:someValuesFrom event:Creation];
+                          rdfs:isDefinedBy event:;
+                          rdfs:range xsd:dateTime;
+                          rdfs:subPropertyOf dct:created;
+                          skos:definition "Specifying a point in time on which something is created."@en.
+event:hasCreator a owl:ObjectProperty;
+                 rdfs:domain event:Creating;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range [a owl:Restriction ; 
+                             owl:onProperty agent:playsRole ; 
+                             owl:someValuesFrom agent:Creator];
+                 rdfs:subPropertyOf agent:hasAgent;
+                 skos:definition "Specifying a creator acting in creating."@en.
+event:hasDate a owl:DeprecatedProperty,
+                owl:DatatypeProperty,
+                owl:FunctionalProperty;
+              rdfs:domain rdfs:Resource;
+              rdfs:isDefinedBy event:;
+              rdfs:range xsd:date;
+              skos:definition "Specifying a date of something."@en;
+              skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en.
+event:hasDateTime a owl:DeprecatedProperty,
+                    owl:DatatypeProperty,
+                    owl:FunctionalProperty;
+                  rdfs:domain rdfs:Resource;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range xsd:dateTime;
+                  skos:definition "Specifying a date time of something."@en;
+                  skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en.
+event:hasDeliveryDateTime a owl:DatatypeProperty,
+                            owl:FunctionalProperty;
+                          rdfs:domain [a owl:Restriction ; 
+                                       owl:onProperty event:objectOf ; 
+                                       owl:someValuesFrom event:Delivery];
+                          rdfs:isDefinedBy event:;
+                          rdfs:range xsd:dateTime;
+                          skos:definition "Specifying a point in time of a delivery of something."@en.
+event:hasDeliveryDelay a owl:DatatypeProperty,
+                         owl:FunctionalProperty;
+                       rdfs:domain [a owl:Restriction ; 
+                                    owl:onProperty event:objectOf ; 
+                                    owl:someValuesFrom event:Delivery];
+                       rdfs:isDefinedBy event:;
+                       rdfs:range xsd:duration;
+                       skos:definition "Specifying a delay of a delivery of something expressed in days."@en;
+                       skos:note "Can be calculated in N3 rule."@en.
+event:hasDemandState a owl:ObjectProperty;
+                     rdfs:domain rdfs:Resource;
+                     rdfs:isDefinedBy event:;
+                     rdfs:range event:DemandState;
+                     skos:definition "Specifying whether something is demanded or not."@en.
+event:hasDiagnosis a owl:DeprecatedProperty;
+                   rdfs:domain event:Evaluation;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range event:Diagnosis;
+                   rdfs:subPropertyOf event:basisFor;
+                   skos:definition "Specifying a diagnosis based on an evaluation."@en;
+                   skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:hasDiagnosisDateTime a owl:DeprecatedProperty,
+                             owl:DatatypeProperty,
+                             owl:FunctionalProperty;
+                           rdfs:domain [a owl:Restriction ; 
+                                        owl:onProperty event:objectOf ; 
+                                        owl:someValuesFrom event:Diagnosis];
+                           rdfs:isDefinedBy event:;
+                           rdfs:range xsd:dateTime;
+                           skos:definition "Specifying a point in time of the dignosis of something."@en;
+                           skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:hasDiagnosisState a owl:DeprecatedProperty;
+                        rdfs:domain [a owl:Restriction ; 
+                                     owl:onProperty event:objectOf ; 
+                                     owl:someValuesFrom event:Diagnosis];
+                        rdfs:isDefinedBy event:;
+                        rdfs:range event:DiagnosisState;
+                        skos:definition "Specifying a diagnosis state of something having a diagnosis."@en;
+                        skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:hasDonor a owl:ObjectProperty;
+               rdfs:domain event:Delivering;
+               rdfs:isDefinedBy event:;
+               rdfs:range [a owl:Restriction ; 
+                           owl:onProperty agent:playsRole ; 
+                           owl:someValuesFrom agent:Donor];
+               rdfs:subPropertyOf agent:hasAgent;
+               skos:definition "Specifying an agent playing the role of donor in delivering something."@en.
+event:hasDuration a owl:DeprecatedProperty,
+                    owl:DatatypeProperty,
+                    owl:FunctionalProperty;
+                  rdfs:domain event:Event;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range xsd:duration;
+                  skos:definition "Specifying a duration of an event."@en;
+                  skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                            "Further formalization in a rule enabling reasoning with duration values."@en.
+event:hasEndProcedure a owl:ObjectProperty;
+                      rdfs:domain event:Procedure;
+                      rdfs:isDefinedBy event:;
+                      rdfs:range event:Procedure;
+                      rdfs:subPropertyOf event:hasSubProcedure;
+                      skos:definition "Specifying a procedure as last subprocedure of a another procedure."@en.
+event:hasEndingMode a owl:ObjectProperty;
+                    rdfs:domain event:Process;
+                    rdfs:isDefinedBy event:;
+                    rdfs:range event:EndingMode;
+                    skos:definition "Specifying a way a process goes out of existence."@en.
+event:hasEvaluated a owl:DeprecatedProperty;
+                   rdfs:domain [a owl:Restriction ; 
+                                owl:onProperty agent:playsRole ; 
+                                owl:someValuesFrom agent:Evaluator];
+                   rdfs:isDefinedBy event:;
+                   rdfs:range [a owl:Restriction ; 
+                               owl:onProperty event:objectOf ; 
+                               owl:someValuesFrom event:Evaluation];
+                   skos:definition "Specifying something evaluated by an evaluator."@en;
+                   skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:hasEvaluation a owl:DeprecatedProperty;
+                    rdfs:domain event:Examination;
+                    rdfs:isDefinedBy event:;
+                    rdfs:range event:Evaluation;
+                    skos:definition "Specifying an evaluation of an examination."@en;
+                    skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:hasEvaluationDateTime a owl:DeprecatedProperty,
+                              owl:DatatypeProperty,
+                              owl:FunctionalProperty;
+                            rdfs:domain [a owl:Restriction ; 
+                                         owl:onProperty event:objectOf ; 
+                                         owl:someValuesFrom event:Evaluation];
+                            rdfs:isDefinedBy event:;
+                            rdfs:range xsd:dateTime;
+                            rdfs:subPropertyOf time:hasDateTime;
+                            skos:definition "Specifying a point in time of an evaluation of something."@en;
+                            skos:note "Moved to <http://www.agfa.com/w3c/2009/clinicalEvaluation#>."@en.
+event:hasEvent a owl:ObjectProperty;
+               rdfs:domain rdfs:Resource;
+               rdfs:isDefinedBy event:;
+               rdfs:label "has event"@en;
+               rdfs:range event:Event;
+               skos:definition "Specifying someone or something (eg. organisation, procedure, event, activity, etc) having an event)."@en.
+event:hasExamined a owl:ObjectProperty;
+                  rdfs:domain [a owl:Restriction ; 
+                               owl:onProperty agent:playsRole ; 
+                               owl:someValuesFrom agent:Examinator];
+                  rdfs:isDefinedBy event:;
+                  rdfs:range [a owl:Restriction ; 
+                              owl:onProperty event:hasExamining ; 
+                              owl:someValuesFrom event:Examining];
+                  skos:definition "Specifying something examined by an examinator."@en.
+event:hasExamining a owl:ObjectProperty;
+                   rdfs:domain event:Input;
+                   rdfs:isDefinedBy event:;
+                   rdfs:label "has examining"@en;
+                   rdfs:range event:Examining;
+                   rdfs:subPropertyOf event:inputOf;
+                   skos:definition "Specifying an examining of something."@en.
+event:hasFindingDateTime a owl:DatatypeProperty,
+                           owl:FunctionalProperty;
+                         rdfs:domain event:Finding;
+                         rdfs:isDefinedBy event:;
+                         rdfs:range xsd:dateTime.
+event:hasIndicationDateTime a owl:DatatypeProperty,
+                              owl:FunctionalProperty;
+                            rdfs:domain event:Action;
+                            rdfs:isDefinedBy event:;
+                            rdfs:range xsd:dateTime;
+                            owl:propertyChainAxiom (event:indicatedBy
+                                                    event:hasDateTime);
+                            skos:definition "Specifying a point in time on which something is indicated."@en.
+event:hasInput a owl:ObjectProperty;
+               rdfs:domain event:Process;
+               rdfs:isDefinedBy event:;
+               rdfs:range event:Input;
+               skos:definition "Specifying an input of a process."@en.
+event:hasIntent a owl:ObjectProperty;
+                rdfs:domain event:Action;
+                rdfs:isDefinedBy event:;
+                rdfs:range event:Intent.
+event:hasIntentionState a owl:ObjectProperty;
+                        rdfs:domain event:Action;
+                        rdfs:isDefinedBy event:;
+                        rdfs:range event:IntentionState.
+event:hasLastUpdateDateTime a owl:DatatypeProperty,
+                              owl:FunctionalProperty;
+                            rdfs:domain rdfs:Resource;
+                            rdfs:isDefinedBy event:;
+                            rdfs:range xsd:dateTime;
+                            skos:definition "Specifying a point in time of the last update of something."@en.
+event:hasLatestSubmissionDateTime a owl:DatatypeProperty,
+                                    owl:FunctionalProperty;
+                                  rdfs:comment "As used in an N3 rule."@en;
+                                  rdfs:domain [a owl:Restriction ; 
+                                               owl:onProperty event:objectOf ; 
+                                               owl:someValuesFrom event:Submission];
+                                  rdfs:isDefinedBy event:;
+                                  rdfs:range xsd:dateTime;
+                                  skos:definition "Specifying a point in time of a latest submission of something."@en.
+event:hasLatestSubmissionState a owl:ObjectProperty;
+                               rdfs:comment "As used in an N3 rule."@en;
+                               rdfs:domain event:Submission;
+                               rdfs:isDefinedBy event:;
+                               rdfs:range event:SubmissionState;
+                               rdfs:subPropertyOf event:hasSubmissionState;
+                               skos:definition "Specifying a latest submission state of something."@en.
+event:hasModification a owl:ObjectProperty;
+                      rdfs:domain [a owl:Restriction ; 
+                                   owl:onProperty event:inputOf ; 
+                                   owl:someValuesFrom event:Modifying];
+                      rdfs:isDefinedBy event:;
+                      rdfs:range event:Modification;
+                      rdfs:subPropertyOf event:hasOutput;
+                      skos:definition "Specifying a modification as output of a modifying."@en.
+event:hasModificationDateTime a owl:DatatypeProperty,
+                                owl:FunctionalProperty;
+                              rdfs:domain [a owl:Restriction ; 
+                                           owl:onProperty event:outputOf ; 
+                                           owl:someValuesFrom event:Modification];
+                              rdfs:isDefinedBy event:;
+                              rdfs:range xsd:dateTime;
+                              skos:definition "Specifying a point in time on which something is modified."@en.
+event:hasModified a owl:ObjectProperty;
+                  rdfs:domain [a owl:Restriction ; 
+                               owl:onProperty agent:playsRole ; 
+                               owl:someValuesFrom agent:Modifier];
+                  rdfs:isDefinedBy event:;
+                  rdfs:range [a owl:Restriction ; 
+                              owl:onProperty event:hasState ; 
+                              owl:someValuesFrom event:Modified];
+                  skos:definition "Specifying something a modifier has modified."@en.
+event:hasModifier a owl:ObjectProperty;
+                  rdfs:domain event:Modifying;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range [a owl:Restriction ; 
+                              owl:onProperty agent:playsRole ; 
+                              owl:someValuesFrom agent:Modifier];
+                  rdfs:subPropertyOf agent:hasAgent;
+                  skos:definition "Specifying a modifier acting in modifying."@en.
+event:hasNow a owl:DeprecatedProperty,
+               owl:DatatypeProperty,
+               owl:FunctionalProperty;
+             rdfs:comment "Using the Unix Epoch time."@en;
+             rdfs:isDefinedBy event:;
+             rdfs:subPropertyOf event:hasSnapshotDateTime;
+             skos:definition "Specifying a current moment's date and time."@en.
+event:hasNowDate a owl:DeprecatedProperty,
+                   owl:DatatypeProperty,
+                   owl:FunctionalProperty;
+                 rdfs:isDefinedBy event:;
+                 rdfs:subPropertyOf event:hasSnapshotDate;
+                 skos:definition "Specifying a current moment's date."@en.
+event:hasObject a owl:ObjectProperty;
+                rdfs:comment "E.g. a clinical finding, e.g. fever, as object of a clinical evaluation of a body temperature measurement; a disease as object of a diagnosis; a drug product as object of a prescription."@en;
+                rdfs:domain rdfs:Resource;
+                rdfs:isDefinedBy event:;
+                rdfs:range rdfs:Resource;
+                skos:definition "Specifying an object of something."@en.
+event:hasOnsetMode a owl:ObjectProperty;
+                   rdfs:domain event:Process;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range event:OnsetMode;
+                   skos:definition "Specifying a way a process comes into existence."@en.
+event:hasOrderDateTime a owl:DatatypeProperty,
+                         owl:FunctionalProperty;
+                       rdfs:isDefinedBy event:;
+                       rdfs:range [a owl:Restriction ; 
+                                   owl:onProperty event:objectOf ; 
+                                   owl:someValuesFrom event:Order],
+                                  xsd:dateTime;
+                       skos:definition "Specifying date time of an order of something."@en.
+event:hasOriginationDate a owl:DatatypeProperty,
+                           owl:FunctionalProperty;
+                         rdfs:domain rdfs:Resource;
+                         rdfs:isDefinedBy event:;
+                         rdfs:range xsd:date;
+                         owl:propertyChainAxiom (event:exists
+                                                 event:beginDate);
+                         skos:definition "Specifying a snapshot event's date on which something originates."@en;
+                         skos:note "The time part is implicitly zero and when the date is converted to date time the time part will be T00:00:00Z."@en.
+event:hasOriginationDateTime a owl:DatatypeProperty,
+                               owl:FunctionalProperty;
+                             rdfs:domain rdfs:Resource;
+                             rdfs:isDefinedBy event:;
+                             rdfs:range xsd:dateTime;
+                             owl:propertyChainAxiom (event:exists
+                                                     event:begins);
+                             skos:definition "Specifying a snapshot event's date and time on which something originates."@en.
+event:hasOutput a owl:ObjectProperty;
+                rdfs:domain event:Process;
+                rdfs:isDefinedBy event:;
+                rdfs:range event:Output;
+                skos:definition "Specifying an output of a process."@en.
+event:hasOutputDateTime a owl:DatatypeProperty,
+                          owl:FunctionalProperty;
+                        rdfs:comment "Related to event:ends"@en;
+                        rdfs:domain event:Process;
+                        rdfs:isDefinedBy event:;
+                        rdfs:range xsd:dateTime;
+                        skos:definition "Specifying a date time of a process having an output."@en.
+event:hasOutputLikelihood a owl:ObjectProperty;
+                          rdfs:domain event:Output;
+                          rdfs:isDefinedBy event:;
+                          rdfs:range event:OutputLikelihood;
+                          skos:definition "Specifying a likelihood of an output of a process."@en.
+event:hasOutputObject a owl:ObjectProperty;
+                      rdfs:comment "E.g. a clinical finding, e.g. fever, as object of output of clinical evaluating of a body temperature measurement; a disease as object of a diagnosing; a drug product as object of a prescribing."@en;
+                      rdfs:domain event:Process;
+                      rdfs:isDefinedBy event:;
+                      rdfs:range rdfs:Resource;
+                      skos:definition "Specifying an object of an output of a process."@en.
+event:hasPathway a owl:ObjectProperty;
+                 rdfs:domain event:Action;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range event:Pathway.
+event:hasPriorityState a owl:ObjectProperty;
+                       rdfs:domain event:Action;
+                       rdfs:isDefinedBy event:;
+                       rdfs:range event:PriorityState;
+                       skos:definition "Specifying a priority state of an action."@en.
+event:hasReason a owl:ObjectProperty;
+                rdfs:domain event:Action;
+                rdfs:isDefinedBy event:;
+                rdfs:range event:Reason;
+                skos:definition "Specifying a reason for an action."@en.
+event:hasRecipient a owl:ObjectProperty;
+                   rdfs:domain event:Delivering;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range [a owl:Restriction ; 
+                               owl:onProperty agent:playsRole ; 
+                               owl:someValuesFrom agent:Recipient];
+                   rdfs:subPropertyOf agent:hasAgent;
+                   skos:definition "Specifying an agent playing the role of recipient in delivering something."@en.
+event:hasRiskFactor a owl:ObjectProperty;
+                    rdfs:isDefinedBy event:;
+                    rdfs:range event:RiskFactor;
+                    skos:definition "Specifying a risk factor of an adverse process or output."@en.
+event:hasSameBeginningAs a owl:DeprecatedProperty,
+                           owl:SymmetricProperty;
+                         rdfs:domain event:Event;
+                         rdfs:isDefinedBy event:;
+                         rdfs:range event:Event;
+                         rdfs:subPropertyOf event:timeRelatedTo;
+                         skos:definition "Linking 2 events beginning on the same moment."@en;
+                         skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                                   "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:hasSameDurationAs a owl:DeprecatedProperty,
+                          owl:SymmetricProperty;
+                        rdfs:domain event:Event;
+                        rdfs:isDefinedBy event:;
+                        rdfs:range event:Event;
+                        rdfs:subPropertyOf event:timeRelatedTo;
+                        skos:definition "Linking 2 events having the same duration."@en;
+                        skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                                  "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:hasSameEndAs a owl:DeprecatedProperty,
+                     owl:SymmetricProperty;
+                   rdfs:domain event:Event;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range event:Event;
+                   rdfs:subPropertyOf event:timeRelatedTo;
+                   skos:definition "Linking 2 events ending on the same moment."@en;
+                   skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                             "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:hasSameTimeAs a owl:DeprecatedProperty,
+                      owl:SymmetricProperty;
+                    rdfs:domain event:Event;
+                    rdfs:isDefinedBy event:;
+                    rdfs:range event:Event;
+                    rdfs:subPropertyOf event:timeRelatedTo;
+                    skos:definition "Linking 2 events occuring at the same time."@en;
+                    skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                              "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:hasSnapshotDate a owl:DeprecatedProperty,
+                        owl:DatatypeProperty,
+                        owl:FunctionalProperty;
+                      rdfs:comment "A snapshot is an event with coinciding beginning and end."@en;
+                      rdfs:domain event:Event;
+                      rdfs:isDefinedBy event:;
+                      rdfs:range xsd:date;
+                      skos:definition "Specifying a snapshot event's date."@en;
+                      skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                                "Used in N3 rules calculating with date and duration using Unix Epoch time."@en.
+event:hasSnapshotDateTime a owl:DeprecatedProperty,
+                            owl:DatatypeProperty,
+                            owl:FunctionalProperty;
+                          rdfs:comment "A snapshot is an event with coinciding beginning and end."@en;
+                          rdfs:domain event:Event;
+                          rdfs:isDefinedBy event:;
+                          rdfs:range xsd:dateTime;
+                          skos:definition "Specifying a snapshot event's date and time."@en;
+                          skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                                    "Used in N3 rules calculating with date time and duration using Unix Epoch time."@en.
+event:hasSponsor a owl:ObjectProperty;
+                 rdfs:domain event:Action;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range [a owl:Restriction ; 
+                             owl:onProperty agent:playsRole ; 
+                             owl:someValuesFrom agent:Sponsor];
+                 skos:definition "Specifying a sponsor of an action."@en.
+event:hasStage a owl:ObjectProperty;
+               rdfs:domain event:Process;
+               rdfs:isDefinedBy event:;
+               rdfs:range event:Stage;
+               skos:definition "Specifying a stage of a process."@en.
+event:hasStartProcedure a owl:ObjectProperty;
+                        rdfs:domain event:Procedure;
+                        rdfs:isDefinedBy event:;
+                        rdfs:range event:Procedure;
+                        rdfs:subPropertyOf event:hasSubProcedure;
+                        skos:definition "Specifying a procedure as first subprocedure of a another procedure."@en.
+event:hasState a owl:ObjectProperty;
+               rdfs:domain rdfs:Resource;
+               rdfs:isDefinedBy event:;
+               rdfs:range event:State;
+               skos:definition "Specifying a state of something."@en.
+event:hasSubAction a owl:ObjectProperty;
+                   rdfs:domain event:Action;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range event:Action;
+                   rdfs:subPropertyOf event:includes;
+                   skos:definition "Specifying an action as part of a another action."@en.
+event:hasSubOutput a owl:ObjectProperty;
+                   rdfs:domain event:Output;
+                   rdfs:isDefinedBy event:;
+                   rdfs:label "has sub output"@en;
+                   rdfs:range event:Output;
+                   skos:definition "Specifying an output as part of another output."@en.
+event:hasSubProcedure a owl:ObjectProperty;
+                      rdfs:domain event:Procedure;
+                      rdfs:isDefinedBy event:;
+                      rdfs:range event:Procedure;
+                      rdfs:subPropertyOf event:hasSubAction;
+                      skos:definition "Specifying a procedure as part of a another procedure."@en.
+event:hasSubmissionDateTime a owl:DatatypeProperty,
+                              owl:FunctionalProperty;
+                            rdfs:domain [a owl:Restriction ; 
+                                         owl:onProperty event:objectOf ; 
+                                         owl:someValuesFrom event:Submission];
+                            rdfs:isDefinedBy event:;
+                            rdfs:range xsd:dateTime;
+                            skos:definition "Specifying a point in time of submission of something."@en.
+event:hasSubmissionState a owl:ObjectProperty;
+                         rdfs:domain event:Submission;
+                         rdfs:isDefinedBy event:;
+                         rdfs:range event:SubmissionState;
+                         skos:definition "Specifying a submission state of something."@en.
+event:hasSusceptibilityState a owl:ObjectProperty;
+                             rdfs:domain rdfs:Resource;
+                             rdfs:isDefinedBy event:;
+                             rdfs:range event:SusceptibilityState;
+                             skos:definition "Specifying a susceptibility state of something."@en.
+event:hasSusceptibilityStateFor a owl:ObjectProperty;
+                                rdfs:domain rdfs:Resource;
+                                rdfs:isDefinedBy event:;
+                                rdfs:range rdfs:Resource;
+                                owl:propertyChainAxiom (event:hasSusceptibilityState
+                                                        event:susceptibilityStateFor);
+                                skos:definition "Specifying something for which something else has a susceptibility state."@en.
+event:hasValidationDateTime a owl:DatatypeProperty,
+                              owl:FunctionalProperty;
+                            rdfs:domain [a owl:Restriction ; 
+                                         owl:onProperty event:objectOf ; 
+                                         owl:someValuesFrom event:Validation];
+                            rdfs:isDefinedBy event:;
+                            rdfs:range xsd:dateTime;
+                            skos:definition "Specifying a point in time of validation of something."@en.
+event:hasValidityState a owl:ObjectProperty;
+                       rdfs:domain [a owl:Restriction ; 
+                                    owl:onProperty event:objectOf ; 
+                                    owl:someValuesFrom event:Validation];
+                       rdfs:isDefinedBy event:;
+                       rdfs:range event:ValidityState;
+                       skos:definition "Specifying a validity state of something validated."@en.
+event:hasVanishingDateTime a owl:DatatypeProperty,
+                             owl:FunctionalProperty;
+                           rdfs:domain rdfs:Resource;
+                           rdfs:isDefinedBy event:;
+                           rdfs:range xsd:dateTime;
+                           owl:propertyChainAxiom (event:exists
+                                                   event:ends);
+                           skos:definition "Specifying a snapshot event's date and time on which something stops to exist."@en.
+event:hasWarning a rdf:Property;
+                 rdfs:domain rdfs:Resource;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range rdfs:Literal;
+                 skos:definition "Specifying a warning message for something."@en.
+event:hasWeekday a owl:ObjectProperty;
+                 rdfs:domain event:Event;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range event:Weekday;
+                 skos:definition "Specifying for an event one of the 7 days of the week in the Gregorian calendar."@en.
+event:includes a owl:DeprecatedProperty,
+                 owl:ObjectProperty,
+                 owl:TransitiveProperty;
+               rdfs:domain event:Event;
+               rdfs:isDefinedBy event:;
+               rdfs:range event:Event;
+               rdfs:subPropertyOf event:timeRelatedTo;
+               owl:inverseOf event:during;
+               skos:definition "Specifying an event happening during another event."@en;
+               skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                         "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:indicatedBy a owl:ObjectProperty;
+                  rdfs:domain event:Action;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range event:Indication;
+                  skos:definition "Specifying an indication for an action."@en.
+event:indicates a owl:ObjectProperty;
+                rdfs:domain event:Indication;
+                rdfs:isDefinedBy event:;
+                rdfs:range event:Action;
+                owl:inverseOf event:indicatedBy;
+                skos:definition "Specifying an action having an indication."@en.
+event:inputOf a owl:ObjectProperty;
+              rdfs:isDefinedBy event:;
+              owl:inverseOf event:hasInput;
+              skos:definition "Specifying a process having an input."@en.
+event:intermediatelySusceptibleTo a owl:ObjectProperty;
+                                  rdfs:domain [a owl:Restriction ; 
+                                               owl:onProperty event:hasSusceptibilityState ; 
+                                               owl:someValuesFrom event:IntermediatelySusceptible];
+                                  rdfs:isDefinedBy event:;
+                                  rdfs:range [a owl:Restriction ; 
+                                              owl:onProperty event:wheretoSusceptibilityState ; 
+                                              owl:someValuesFrom event:IntermediatelySusceptible];
+                                  rdfs:subPropertyOf event:hasSusceptibilityStateFor;
+                                  skos:definition "Specifying something something else is intermediately susceptible to."@en.
+event:isAssociatedWith a owl:ObjectProperty;
+                       rdfs:domain rdfs:Resource;
+                       rdfs:isDefinedBy event:;
+                       rdfs:label "is associated with"@en;
+                       rdfs:range rdfs:Resource;
+                       skos:definition "Specifying something (eg. event, activity, etc) wich is associated with something else (eg. event, activity, etc)."@en.
+event:isReasonFor a owl:ObjectProperty;
+                  rdfs:domain event:Reason;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range event:Action;
+                  skos:definition "Specifying an action having a reason."@en.
+event:modificationOf a owl:ObjectProperty;
+                     rdfs:domain event:Modification;
+                     rdfs:isDefinedBy event:;
+                     rdfs:range [a owl:Restriction ; 
+                                 owl:onProperty event:inputOf ; 
+                                 owl:someValuesFrom event:Modifying];
+                     skos:definition "Specifying something modified."@en.
+event:modifiedBy a owl:ObjectProperty;
+                 rdfs:domain [a owl:Restriction ; 
+                              owl:onProperty event:hasState ; 
+                              owl:someValuesFrom event:Modified];
+                 rdfs:isDefinedBy event:;
+                 rdfs:range [a owl:Restriction ; 
+                             owl:onProperty agent:playsRole ; 
+                             owl:someValuesFrom agent:Modifier];
+                 skos:definition "Specifying a modifier of something modified."@en.
+event:modifiedIn a owl:ObjectProperty;
+                 rdfs:domain [a owl:Restriction ; 
+                              owl:onProperty event:hasState ; 
+                              owl:someValuesFrom event:Modified];
+                 rdfs:isDefinedBy event:;
+                 rdfs:range event:Modifying;
+                 rdfs:subPropertyOf event:outputObjectOf;
+                 owl:inverseOf event:whereinModified;
+                 skos:definition "Specifying a modifying wherein something is modified."@en.
+event:nonCompliantWith a owl:ObjectProperty;
+                       rdfs:isDefinedBy event:;
+                       rdfs:label "non-compliant with"@en;
+                       skos:definition "Specifying something something else does not comply with."@en.
+event:notPerformedDuring a owl:ObjectProperty;
+                         rdfs:domain event:Action;
+                         rdfs:isDefinedBy event:;
+                         rdfs:range event:Event;
+                         skos:definition "Specifying a period during which an action is not performed."@en.
+event:objectOf a owl:ObjectProperty;
+               rdfs:domain rdfs:Resource;
+               rdfs:isDefinedBy event:;
+               rdfs:range rdfs:Resource;
+               owl:inverseOf event:hasObject;
+               skos:definition "Specifying something having an object."@en.
+event:observedDuring a owl:ObjectProperty;
+                     rdfs:comment """The longer ago, the broader a timescope; e.g. observed in 1986: formally stating a period from \"1985-12-31T23:00:00.000000Z\"^^xsd:dateTime to \"1986-12-31T22:59:59.999998Z\"^^xsd:dateTime for time zone offset +01:00; observed in 2008 in May: stating a period from \"2008-04-30T23:00:00.000000Z\"^^xsd:dateTime to \"2008-05-31T22:59:59.999998Z\"^^xsd:dateTime; observed last month the 5 th: stating a period from \"2011-12-04T23:00:00.000000Z\"^^xsd:dateTime to \"2011-12-05T22:59:59.999998Z\"^^xsd:dateTime; observed Monday last week at 11AM: stating a moment \"2012-01-30T10:00:00.000000Z\"^^xsd:dateTime."""@en;
+                     rdfs:domain rdfs:Resource;
+                     rdfs:isDefinedBy event:;
+                     rdfs:range event:Event;
+                     skos:definition "Specifying a period during which something is observed."@en.
+event:obtainedBy a owl:ObjectProperty;
+                 rdfs:domain rdfs:Resource;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range foaf:Agent;
+                 skos:definition "Specifying an agent obtaining something."@en.
+event:obtainedDuring a owl:ObjectProperty;
+                     rdfs:comment """The longer ago, the broader a timescope; e.g. obtained in 1986: formally stating a period from \"1985-12-31T23:00:00.000000Z\"^^xsd:dateTime to \"1986-12-31T22:59:59.999998Z\"^^xsd:dateTime for time zone offset +01:00; obtained in 2008 in May: stating a period from \"2008-04-30T23:00:00.000000Z\"^^xsd:dateTime to \"2008-05-31T22:59:59.999998Z\"^^xsd:dateTime; obtained last month the 5 th: stating a period from \"2011-12-04T23:00:00.000000Z\"^^xsd:dateTime to \"2011-12-05T22:59:59.999998Z\"^^xsd:dateTime; obtained Monday last week at 11AM: stating a moment \"2012-01-30T10:00:00.000000Z\"^^xsd:dateTime."""@en;
+                     rdfs:domain rdfs:Resource;
+                     rdfs:isDefinedBy event:;
+                     rdfs:range event:Event;
+                     skos:definition "Specifying a period wherein something is obtained."@en.
+event:openFrom a owl:DatatypeProperty,
+                 owl:FunctionalProperty;
+               rdfs:domain foaf:Organization;
+               rdfs:isDefinedBy event:;
+               rdfs:range xsd:dateTime;
+               skos:definition "Specifying a point in time of ."@en.
+event:openUntil a owl:DatatypeProperty,
+                  owl:FunctionalProperty;
+                rdfs:domain foaf:Organization;
+                rdfs:isDefinedBy event:;
+                rdfs:range xsd:dateTime;
+                skos:definition "Specifying a point in time of ."@en.
+event:orderOf a owl:ObjectProperty;
+              rdfs:domain event:Order;
+              rdfs:isDefinedBy event:;
+              rdfs:range [a owl:Restriction ; 
+                          owl:onProperty event:objectOf ; 
+                          owl:someValuesFrom event:Order];
+              rdfs:subPropertyOf event:hasObject;
+              skos:definition "Specifying something ordered, i.e. the object of an order."@en.
+event:orderedFor a owl:ObjectProperty;
+                 rdfs:domain [a owl:Restriction ; 
+                              owl:onProperty event:objectOf ; 
+                              owl:someValuesFrom event:Order];
+                 rdfs:isDefinedBy event:;
+                 rdfs:range foaf:Agent;
+                 skos:definition "Specifying an agent something is ordered for."@en.
+event:orderedTo a owl:ObjectProperty;
+                rdfs:domain event:Order;
+                rdfs:isDefinedBy event:;
+                rdfs:range foaf:Agent;
+                skos:definition "Specifying an agent an order is directed to."@en.
+event:originatedIn a owl:ObjectProperty;
+                   rdfs:domain rdfs:Resource;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range env:Environment;
+                   skos:definition "Specifying an environment wherein something originated."@en.
+event:outputObjectOf a owl:ObjectProperty;
+                     rdfs:domain rdfs:Resource;
+                     rdfs:isDefinedBy event:;
+                     rdfs:range event:Process;
+                     owl:inverseOf event:hasOutputObject;
+                     skos:definition "Specifying a process having an object of its output."@en.
+event:outputOf a owl:ObjectProperty;
+               rdfs:isDefinedBy event:;
+               owl:inverseOf event:hasOutput;
+               skos:definition "Specifying a process having an output."@en.
+event:overlaps a owl:DeprecatedProperty,
+                 owl:SymmetricProperty;
+               rdfs:domain event:Event;
+               rdfs:isDefinedBy event:;
+               rdfs:range event:Event;
+               rdfs:subPropertyOf event:timeRelatedTo;
+               skos:definition "Specifying an event overlapping another event."@en;
+               skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                         "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:performedDuring a owl:ObjectProperty;
+                      rdfs:comment """The longer ago, the broader a timescope; e.g. performed in 1986: formally stating a period from \"1985-12-31T23:00:00.000000Z\"^^xsd:dateTime to \"1986-12-31T22:59:59.999998Z\"^^xsd:dateTime for time zone offset +01:00; performed in 2008 in May: stating a period from \"2008-04-30T23:00:00.000000Z\"^^xsd:dateTime to \"2008-05-31T22:59:59.999998Z\"^^xsd:dateTime; performed last month the 5 th: stating a period from \"2011-12-04T23:00:00.000000Z\"^^xsd:dateTime to \"2011-12-05T22:59:59.999998Z\"^^xsd:dateTime; performed Monday last week at 11AM: stating a moment \"2012-01-30T10:00:00.000000Z\"^^xsd:dateTime."""@en;
+                      rdfs:domain event:Action;
+                      rdfs:isDefinedBy event:;
+                      rdfs:range event:Event;
+                      skos:definition "Specifying a period during which an action is performed."@en.
+event:performedIn a owl:ObjectProperty;
+                  rdfs:domain event:Action;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range env:Environment;
+                  rdfs:subPropertyOf env:hasEnvironment;
+                  skos:definition "Specifying an environment wherein an action is performed."@en.
+event:planOf a owl:ObjectProperty;
+             rdfs:domain event:Plan;
+             rdfs:isDefinedBy event:;
+             rdfs:range event:Action;
+             owl:inverseOf event:hasObject;
+             skos:definition "Specifying an action described in a plan."@en.
+event:plannedIn a owl:ObjectProperty;
+                rdfs:domain event:Action;
+                rdfs:isDefinedBy event:;
+                rdfs:range event:Planning;
+                skos:definition "Specifying a planning of an action."@en.
+event:resistantTo a owl:ObjectProperty;
+                  rdfs:domain [a owl:Restriction ; 
+                               owl:onProperty event:hasSusceptibilityState ; 
+                               owl:someValuesFrom event:Resistant];
+                  rdfs:isDefinedBy event:;
+                  rdfs:range [a owl:Restriction ; 
+                              owl:onProperty event:wheretoSusceptibilityState ; 
+                              owl:someValuesFrom event:Resistant];
+                  rdfs:subPropertyOf event:hasSusceptibilityStateFor;
+                  skos:definition "Specifying something something else is resistant to."@en.
+event:riskFactorOf a owl:ObjectProperty;
+                   rdfs:isDefinedBy event:;
+                   owl:inverseOf event:hasRiskFactor;
+                   skos:definition "Specifying an adverse process or output having a risk factor."@en.
+event:stageOf a owl:ObjectProperty;
+              rdfs:domain event:Stage;
+              rdfs:isDefinedBy event:;
+              rdfs:range event:Process;
+              skos:definition "Specifying a process having a stage."@en.
+event:stagedDuring a owl:ObjectProperty;
+                   rdfs:comment "The longer ago, the broader a timescope; e.g. staged in 1986: formally stating a period 01/01/1986-31/12/1986; staged last year in May: stating a period 01/05/2010-31/05/2010; staged last week: stating a day 01/01/2012; staged yesterday: stating a moment 20/01/2012, 02PM."@en;
+                   rdfs:domain event:Process;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range event:Event;
+                   skos:definition "Specifying a period wherein a process is staged."@en.
+event:startProcedureOf a owl:ObjectProperty;
+                       rdfs:domain event:Procedure;
+                       rdfs:isDefinedBy event:;
+                       rdfs:range event:Procedure;
+                       rdfs:subPropertyOf event:subProcedureOf;
+                       owl:inverseOf event:hasStartProcedure;
+                       skos:definition "Specifying a procedure another procedure is the first subprocedure of."@en.
+event:stateOf a owl:ObjectProperty;
+              rdfs:domain event:State;
+              rdfs:isDefinedBy event:;
+              rdfs:range rdfs:Resource;
+              skos:definition "Specifying something having a state."@en.
+event:subActionOf a owl:ObjectProperty;
+                  rdfs:domain event:Action;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range event:Action;
+                  rdfs:subPropertyOf event:during;
+                  skos:definition "Specifying an action having another action as part."@en.
+event:subOutputOf a owl:ObjectProperty;
+                  rdfs:domain event:Output;
+                  rdfs:isDefinedBy event:;
+                  rdfs:range event:Output;
+                  owl:inverseOf event:hasSubOutput;
+                  skos:definition "Specifying an output having as part another output."@en.
+event:subProcedureOf a owl:ObjectProperty;
+                     rdfs:domain event:Procedure;
+                     rdfs:isDefinedBy event:;
+                     rdfs:range event:Procedure;
+                     rdfs:subPropertyOf event:subActionOf;
+                     owl:inverseOf event:hasSubProcedure;
+                     skos:definition "Specifying a procedure having as part another procedure."@en.
+event:susceptibilityStateFor a owl:ObjectProperty;
+                             rdfs:domain event:SusceptibilityState;
+                             rdfs:isDefinedBy event:;
+                             rdfs:range rdfs:Resource;
+                             skos:definition "Specifying something for which there is a susceptibility state."@en.
+event:susceptibleTo a owl:ObjectProperty;
+                    rdfs:domain [a owl:Restriction ; 
+                                 owl:onProperty event:hasSusceptibilityState ; 
+                                 owl:someValuesFrom event:Susceptible];
+                    rdfs:isDefinedBy event:;
+                    rdfs:range [a owl:Restriction ; 
+                                owl:onProperty event:wheretoSusceptibilityState ; 
+                                owl:someValuesFrom event:Susceptible];
+                    rdfs:subPropertyOf event:hasSusceptibilityStateFor;
+                    skos:definition "Specifying something something else is susceptible to."@en.
+event:takesLessLongThan a owl:DeprecatedProperty,
+                          owl:ObjectProperty,
+                          owl:TransitiveProperty;
+                        rdfs:domain event:Event;
+                        rdfs:isDefinedBy event:;
+                        rdfs:range event:Event;
+                        rdfs:subPropertyOf event:timeRelatedTo;
+                        owl:inverseOf event:takesLongerThan;
+                        skos:definition "Linking a shorter to a longer event."@en;
+                        skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                                  "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:takesLongerThan a owl:DeprecatedProperty,
+                        owl:ObjectProperty,
+                        owl:TransitiveProperty;
+                      rdfs:domain event:Event;
+                      rdfs:isDefinedBy event:;
+                      rdfs:range event:Event;
+                      rdfs:subPropertyOf event:timeRelatedTo;
+                      skos:definition "Linking a longer to a shorter event."@en;
+                      skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en,
+                                "Further formalized in an N3 rule by calculation in http://eulersharp.sourceforge.net/2003/03swap/eventTime_rules.n3, enabling reasoning with date/time values."@en.
+event:timeRelatedTo a owl:DeprecatedProperty,
+                      owl:ObjectProperty;
+                    rdfs:domain event:Event;
+                    rdfs:isDefinedBy event:;
+                    rdfs:range event:Event;
+                    owl:unionOf (event:before
+                                 event:after
+                                 event:beginsBefore
+                                 event:beginsAfter
+                                 event:endsBefore
+                                 event:endsAfter
+                                 event:during
+                                 event:includes
+                                 event:overlaps
+                                 event:hasSameBeginningAs
+                                 event:hasSameEndAs
+                                 event:hasSameTimeAs
+                                 event:hasSameDurationAs
+                                 event:takesLongerThan
+                                 event:takesLessLongThan);
+                    skos:definition "Relating 2 events in time."@en;
+                    skos:note "Moved to <http://eulersharp.sourceforge.net/2003/03swap/time#>."@en.
+event:transferOf a owl:DeprecatedProperty;
+                 rdfs:comment "Moved to <http://eulersharp.sourceforge.net/2003/03swap/space#>"@en;
+                 rdfs:domain event:Transfer;
+                 rdfs:isDefinedBy event:;
+                 rdfs:range rdfs:Resource;
+                 rdfs:subPropertyOf event:hasObject;
+                 skos:definition "Specifying something transferred."@en.
+event:validationOf a owl:ObjectProperty;
+                   rdfs:domain event:Validation;
+                   rdfs:isDefinedBy event:;
+                   rdfs:range [a owl:Restriction ; 
+                               owl:onProperty event:hasState ; 
+                               owl:someValuesFrom event:ValidityState];
+                   skos:definition "Specifying a validity state of something."@en.
+event:whereinCreated a owl:ObjectProperty;
+                     rdfs:domain event:Creating;
+                     rdfs:isDefinedBy event:;
+                     rdfs:range [a owl:Restriction ; 
+                                 owl:onProperty event:hasState ; 
+                                 owl:someValuesFrom event:Created];
+                     rdfs:subPropertyOf event:hasOutputObject;
+                     skos:definition "Specifying something created in a creating."@en.
+event:whereinDelivered a owl:ObjectProperty;
+                       rdfs:domain event:Delivering;
+                       rdfs:isDefinedBy event:;
+                       rdfs:range rdfs:Resource;
+                       rdfs:subPropertyOf event:hasOutputObject;
+                       skos:definition "Specifying a delivering wherein something is delivered."@en.
+event:whereinDiagnosed a owl:DeprecatedProperty;
+                       rdfs:domain event:Diagnosing;
+                       rdfs:isDefinedBy event:;
+                       rdfs:range rdfs:Resource;
+                       rdfs:subPropertyOf event:hasOutputObject;
+                       owl:inverseOf event:diagnosedIn;
+                       skos:definition "Specifying something diagnosed."@en.
+event:whereinEvaluated a owl:DeprecatedProperty;
+                       rdfs:domain event:Evaluating;
+                       rdfs:isDefinedBy event:;
+                       rdfs:range event:Input;
+                       rdfs:subPropertyOf event:hasInput;
+                       owl:inverseOf event:evaluatedIn;
+                       skos:definition "Specifying something evaluated."@en.
+event:whereinModified a owl:ObjectProperty;
+                      rdfs:domain event:Modifying;
+                      rdfs:isDefinedBy event:;
+                      rdfs:range [a owl:Restriction ; 
+                                  owl:onProperty event:hasState ; 
+                                  owl:someValuesFrom event:Modified];
+                      rdfs:subPropertyOf event:hasOutputObject;
+                      skos:definition "Specifying something modified in a modifying."@en.
+event:whereinTransferred a owl:DeprecatedProperty;
+                         rdfs:comment "Moved to <http://eulersharp.sourceforge.net/2003/03swap/space#>"@en;
+                         rdfs:domain event:Transferring;
+                         rdfs:isDefinedBy event:;
+                         rdfs:range rdfs:Resource;
+                         rdfs:subPropertyOf event:hasOutputObject;
+                         skos:definition "Specifying something transferred in a transferring."@en.
+event:wheretoSusceptibilityState a owl:ObjectProperty;
+                                 rdfs:domain rdfs:Resource;
+                                 rdfs:isDefinedBy event:;
+                                 rdfs:range event:SusceptibilityState;
+                                 owl:inverseOf event:susceptibilityStateFor;
+                                 skos:definition "Specifying a susceptibility state for something."@en.

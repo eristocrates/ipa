@@ -1,0 +1,353 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix gleif-base: <https://www.gleif.org/ontology/Base/>.
+@prefix gleif-L1: <https://www.gleif.org/ontology/L1/>.
+@prefix gleif-L2: <https://www.gleif.org/ontology/L2/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+_:B139333e9683070750e5e1da63db6c942 a owl:AllDifferent;
+                                    owl:members (gleif-L2:RegistrationStatusAnnulled
+                                                 gleif-L2:RegistrationStatusDuplicate
+                                                 gleif-L2:RegistrationStatusLapsed
+                                                 gleif-L2:RegistrationStatusPendingArchival
+                                                 gleif-L2:RegistrationStatusPendingTransfer
+                                                 gleif-L2:RegistrationStatusPublished
+                                                 gleif-L2:RegistrationStatusRetired).
+_:B1e6c6feaffc5520d2600d3107a20e6e2 a owl:AllDifferent;
+                                    owl:members (gleif-L2:AccountingStandardIFRS
+                                                 gleif-L2:AccountingStandardOtherAccountingStandard
+                                                 gleif-L2:AccountingStandardUSGAAP).
+_:B38ed2495072b2ab43279a207face5317 a owl:AllDifferent;
+                                    owl:members (gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
+                                                 gleif-L2:RelationshipValidationDocumentsKindContracts
+                                                 gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
+                                                 gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
+                                                 gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments).
+_:Bb3aad16dbe932bfae6a56d266570fc16 a owl:AllDifferent;
+                                    owl:members (gleif-L2:RelationshipStatusActive
+                                                 gleif-L2:RelationshipStatusInactive).
+gleif-base:LegalEntityRelationship a owl:Class;
+                                   rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                    owl:onProperty gleif-L2:hasRelationshipStatus ; 
+                                                    owl:onClass gleif-L2:RelationshipStatus ; 
+                                                    a owl:Restriction],
+                                                   [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                    owl:onProperty gleif-L2:hasChild ; 
+                                                    owl:onClass gleif-L1:RegisteredEntity ; 
+                                                    a owl:Restriction],
+                                                   [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                    owl:onProperty gleif-L2:hasParent ; 
+                                                    owl:onClass gleif-base:Entity ; 
+                                                    a owl:Restriction],
+                                                   [owl:onProperty gleif-L2:hasRelationshipPeriod ; 
+                                                    owl:onClass gleif-base:Period ; 
+                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                    a owl:Restriction].
+gleif-L2: dcterms:abstract "Ontology for legal entity parent relationships. It was designed for Global Legal Entity Identifier Foundation (GLEIF) Level 2 data corresponding to the Relationship Record format, version 1.1. Legal entities that have or acquire an LEI report their ‘direct accounting consolidating parent’ as well as their ‘ultimate accounting consolidating parent’, or for International Branches ‘is an International Branch of'. Otherwise they must provide a Reporting Exception."@en;
+          dcterms:contributor <http://purl.org/bryon>,
+                              <https://www.linkedin.com/in/peterivett/>,
+                              <http://www.workingontologist.com/>;
+          dcterms:creator gleif-base:GLEIF;
+          dcterms:issued "2019-02-01T00:00:00+00:00"^^xsd:dateTime;
+          dcterms:license "https://www.gleif.org/en/meta/lei-data-terms-of-use/"^^xsd:anyURI;
+          dcterms:rights "Copyright (c) 2019 Global Legal Entity Identifier Foundation (GLEIF)";
+          dcterms:rightsHolder gleif-base:GLEIF;
+          dcterms:source "https://www.gleif.org/en/about-lei/common-data-file-format/relationship-record-cdf-format"^^xsd:anyURI;
+          dcterms:title "Global Legal Entity Identifier Foundation Level 2 Ontology - Who Owns Whom"@en;
+          vann:preferredNamespacePrefix "gleif-L2";
+          vann:preferredNamespaceUri "https://www.gleif.org/ontology/L2/";
+          a owl:Ontology,
+            voaf:Vocabulary;
+          rdfs:label "GLEIF L2 Ontology";
+          owl:imports gleif-base:,
+                      gleif-L1:;
+          owl:versionIRI <https://www.gleif.org/ontology/L2-v1.0/L2/>.
+gleif-L2:AccountingConsolidation a owl:Class;
+                                 rdfs:isDefinedBy gleif-L2:;
+                                 rdfs:label "accounting consolidation";
+                                 rdfs:subClassOf gleif-base:LegalEntityRelationship,
+                                                 [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                  owl:onProperty gleif-L2:hasAccountingStandard ; 
+                                                  owl:onClass gleif-L2:AccountingStandard ; 
+                                                  a owl:Restriction];
+                                 skos:definition "Accounting consolidation holds when '[in the] financial statements of a group [...] the assets, liabilities, equity, income, expenses and cash flows of the parent and its subsidiaries are presented as those of a single economic entity'.".
+gleif-L2:AccountingStandard a owl:Class;
+                            rdfs:isDefinedBy gleif-L2:;
+                            rdfs:label "accounting standard";
+                            owl:oneOf (gleif-L2:AccountingStandardIFRS
+                                       gleif-L2:AccountingStandardOtherAccountingStandard
+                                       gleif-L2:AccountingStandardUSGAAP);
+                            skos:definition "the type of accounting standard used to source consolidation information, which is based on reported accounting roll-ups".
+gleif-L2:AccountingStandardIFRS a gleif-L2:AccountingStandard,
+                                  owl:NamedIndividual;
+                                rdfs:isDefinedBy gleif-L2:;
+                                rdfs:label "IFRS";
+                                skos:definition "International Financial Reporting Standard (developed by the International Accounting Standards Board – IASB)";
+                                gleif-base:hasTag "IFRS".
+gleif-L2:AccountingStandardOtherAccountingStandard a gleif-L2:AccountingStandard,
+                                                     owl:NamedIndividual;
+                                                   rdfs:isDefinedBy gleif-L2:;
+                                                   rdfs:label "other accounting standard";
+                                                   skos:definition "A financial reporting (accounting) standard not otherwise listed in the latest version of the relationship data file format.";
+                                                   gleif-base:hasTag "OTHER_ACCOUNTING_STANDARD".
+gleif-L2:AccountingStandardUSGAAP a gleif-L2:AccountingStandard,
+                                    owl:NamedIndividual;
+                                  rdfs:isDefinedBy gleif-L2:;
+                                  rdfs:label "US GAAP";
+                                  skos:definition "United States-Generally Accepted Accounting Principles.";
+                                  gleif-base:hasTag "US_GAAP".
+gleif-L2:DirectConsolidation a owl:Class;
+                             rdfs:isDefinedBy gleif-L2:;
+                             rdfs:label "direct consolidation";
+                             rdfs:subClassOf gleif-L2:AccountingConsolidation;
+                             skos:altLabel "is directly consolidated by";
+                             skos:definition "The 'child' entity has its accounts fully consolidated by the 'parent' entity, in the sense given by the accounting standard(s) specified; the parent entity is the closest fully consolidating parent to the child entity in any applicable hierarchical ownership structure.";
+                             skos:prefLabel "direct consolidation".
+gleif-L2:InternationalBranchRelationship a owl:Class;
+                                         rdfs:isDefinedBy gleif-L2:;
+                                         rdfs:label "international branch relationship";
+                                         rdfs:subClassOf gleif-base:LegalEntityRelationship;
+                                         skos:altLabel "is international branch of";
+                                         skos:definition "Child is a lead international branch or international branch network outside of the head office’s jurisdiction. The Parent is the Head Office and MUST have an LEI.";
+                                         skos:note "A non-incorporated establishment of a head office legal entity, when this establishment is located in a separate jurisdiction from the jurisdiction in which the head office legal entity is located, i.e., in a host jurisdiction outside of its home jurisdiction. Under this definition, an establishment may consist of a single office or other business premises, or of several offices (i.e., a branch network) in different locations of the same host jurisdiction: even in the latter case, only one LEI would be issued per host jurisdiction, essentially amounting to, “one country-one LEI.” Unlike foreign subsidiaries of a parent entity, which are separately incorporated or organised under the laws of the host jurisdictions, an international branch, as defined here, is legally dependent on the head office legal entity and cannot exist without its head office legal entity ";
+                                         skos:prefLabel "international branch relationship".
+gleif-L2:LegalEntityRelationshipRecord a owl:Class;
+                                       rdfs:isDefinedBy gleif-L2:;
+                                       rdfs:label "legal entity relationship record";
+                                       rdfs:subClassOf [owl:onProperty gleif-L2:hasValidationDocuments ; 
+                                                        owl:onClass gleif-L2:RelationshipValidationDocumentsKind ; 
+                                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                        a owl:Restriction],
+                                                       [owl:onProperty gleif-L2:hasDocumentFilingPeriod ; 
+                                                        owl:onClass gleif-base:Period ; 
+                                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                        a owl:Restriction],
+                                                       [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                        owl:onProperty gleif-base:hasInitialRegistrationDate ; 
+                                                        owl:onDataRange xsd:dateTime ; 
+                                                        a owl:Restriction],
+                                                       [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                        owl:onProperty gleif-base:hasRegistrationStatus ; 
+                                                        owl:onClass [owl:oneOf (gleif-L2:RegistrationStatusAnnulled
+                                                                                gleif-L2:RegistrationStatusDuplicate
+                                                                                gleif-L2:RegistrationStatusLapsed
+                                                                                gleif-L2:RegistrationStatusPendingArchival
+                                                                                gleif-L2:RegistrationStatusPendingTransfer
+                                                                                gleif-L2:RegistrationStatusPublished
+                                                                                gleif-L2:RegistrationStatusRetired) ; 
+                                                                     a owl:Class] ; 
+                                                        a owl:Restriction],
+                                                       gleif-base:RegistryEntry,
+                                                       [owl:onProperty gleif-base:hasNextRenewalDate ; 
+                                                        owl:onDataRange xsd:dateTime ; 
+                                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                        a owl:Restriction],
+                                                       [owl:onProperty gleif-L2:hasAccountingPeriod ; 
+                                                        owl:onClass gleif-base:Period ; 
+                                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                        a owl:Restriction],
+                                                       [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                        owl:onProperty gleif-L1:hasManagingLOU ; 
+                                                        owl:onClass gleif-L1:LocalOperatingUnit ; 
+                                                        a owl:Restriction],
+                                                       [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                        owl:onProperty gleif-base:records ; 
+                                                        owl:onClass gleif-base:LegalEntityRelationship ; 
+                                                        a owl:Restriction],
+                                                       [owl:onProperty gleif-L2:hasValidationSources ; 
+                                                        owl:onClass [owl:oneOf (gleif-L1:ValidationSourceKindEntitySuppliedOnly
+                                                                                gleif-L1:ValidationSourceKindFullyCorroborated
+                                                                                gleif-L1:ValidationSourceKindPartiallyCorroborated) ; 
+                                                                     a owl:Class] ; 
+                                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                        a owl:Restriction],
+                                                       [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                        owl:onProperty gleif-base:hasLastUpdateDate ; 
+                                                        owl:onDataRange xsd:dateTime ; 
+                                                        a owl:Restriction],
+                                                       [owl:onProperty gleif-L2:hasValidationReference ; 
+                                                        owl:minCardinality "0"^^xsd:nonNegativeInteger ; 
+                                                        a owl:Restriction];
+                                       skos:definition "The Registration container element contains information specifying the LOU's administration of the relationship record.".
+gleif-L2:RegistrationStatus a owl:Class;
+                            rdfs:isDefinedBy gleif-L2:;
+                            rdfs:label "relationship registration status";
+                            rdfs:subClassOf gleif-base:RegistrationStatus;
+                            skos:definition "The status of the legal entity's relationship record registration with the Managing LOU.".
+gleif-L2:RegistrationStatusAnnulled a gleif-L2:RegistrationStatus,
+                                      owl:NamedIndividual;
+                                    rdfs:isDefinedBy gleif-L2:;
+                                    rdfs:label "annulled";
+                                    skos:definition "A relationship data report that was marked as erroneous or invalid after it was published. The relationship report is kept in publication for historical audit trail purposes only (so that data recipients can correct their local data).";
+                                    gleif-base:hasTag "ANNULLED".
+gleif-L2:RegistrationStatusDuplicate a gleif-L2:RegistrationStatus,
+                                       owl:NamedIndividual;
+                                     rdfs:isDefinedBy gleif-L2:;
+                                     rdfs:label "duplicate";
+                                     skos:definition "A relationship data report that has been determined to be a  duplicate registration of the same relationship. In many cases this will mean more than one report with e.g. the same 2 entity IDs, the same relationship type, certain status values and the same relationship date(s), but this determination will depend on the relationship type in question.";
+                                     gleif-base:hasTag "DUPLICATE".
+gleif-L2:RegistrationStatusLapsed a gleif-L2:RegistrationStatus,
+                                    owl:NamedIndividual;
+                                  rdfs:isDefinedBy gleif-L2:;
+                                  rdfs:label "lapsed";
+                                  skos:definition "A relationship data report that has not been renewed by the NextRenewalDate";
+                                  gleif-base:hasTag "LAPSED".
+gleif-L2:RegistrationStatusPendingArchival a gleif-L2:RegistrationStatus,
+                                             owl:NamedIndividual;
+                                           rdfs:isDefinedBy gleif-L2:;
+                                           rdfs:label "pending archival";
+                                           skos:definition "An LEI registration is about to be transferred to a different LOU, after which its registration status will revert to a non-pending status.";
+                                           gleif-base:hasTag "PENDING_ARCHIVAL".
+gleif-L2:RegistrationStatusPendingTransfer a gleif-L2:RegistrationStatus,
+                                             owl:NamedIndividual;
+                                           rdfs:isDefinedBy gleif-L2:;
+                                           rdfs:label "pending transfer";
+                                           skos:definition "An LEI registration that has been requested to be transferred to another LOU. The request is being processed at the sending LOU.";
+                                           gleif-base:hasTag "PENDING_TRANSFER".
+gleif-L2:RegistrationStatusPublished a gleif-L2:RegistrationStatus,
+                                       owl:NamedIndividual;
+                                     rdfs:isDefinedBy gleif-L2:;
+                                     rdfs:label "published";
+                                     skos:definition "A relationship data report that has been validated and published, and which is reported by an entity that was an operating legal entity as of the last update.";
+                                     gleif-base:hasTag "PUBLISHED".
+gleif-L2:RegistrationStatusRetired a gleif-L2:RegistrationStatus,
+                                     owl:NamedIndividual;
+                                   rdfs:isDefinedBy gleif-L2:;
+                                   rdfs:label "retired";
+                                   skos:definition "status indicating that the registration is for an entity that has ceased operation, without having been merged into another entity";
+                                   gleif-base:hasTag "RETIRED".
+gleif-L2:RelationshipStatus a owl:Class;
+                            rdfs:isDefinedBy gleif-L2:;
+                            rdfs:label "relationship status";
+                            owl:oneOf (gleif-L2:RelationshipStatusActive
+                                       gleif-L2:RelationshipStatusInactive);
+                            skos:definition "The status of the legal entities' relationship itself: active or inactive.".
+gleif-L2:RelationshipStatusActive a gleif-L2:RelationshipStatus,
+                                    owl:NamedIndividual;
+                                  rdfs:isDefinedBy gleif-L2:;
+                                  rdfs:label "active";
+                                  skos:definition "As of the last report or update, the reporting legal entity reported that it is legally registered and/or operating, AND that the relationship detailed in this RelationshipRecord is still valid.";
+                                  gleif-base:hasTag "ACTIVE".
+gleif-L2:RelationshipStatusInactive a gleif-L2:RelationshipStatus,
+                                      owl:NamedIndividual;
+                                    rdfs:isDefinedBy gleif-L2:;
+                                    rdfs:label "inactive";
+                                    skos:definition "It has been determined that the relationship ended, e.g. because entity that reported this relationship is no longer legally registered and/or operating; or the relationship is no longer valid for other reasons";
+                                    gleif-base:hasTag "INACTIVE".
+gleif-L2:RelationshipValidationDocumentsKind a owl:Class;
+                                             rdfs:isDefinedBy gleif-L2:;
+                                             rdfs:label "relationship validation documents kind";
+                                             owl:oneOf (gleif-L2:RelationshipValidationDocumentsKindAccountsFiling
+                                                        gleif-L2:RelationshipValidationDocumentsKindContracts
+                                                        gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments
+                                                        gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling
+                                                        gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments);
+                                             skos:definition "Type of source document(s) used for validating the relationship.".
+gleif-L2:RelationshipValidationDocumentsKindAccountsFiling a gleif-L2:RelationshipValidationDocumentsKind,
+                                                             owl:NamedIndividual;
+                                                           rdfs:isDefinedBy gleif-L2:;
+                                                           rdfs:label "accounts filing";
+                                                           skos:definition "A consolidated financial (accounting) statement, prepared and submitted to the relevant authority.";
+                                                           gleif-base:hasTag "ACCOUNTS_FILING".
+gleif-L2:RelationshipValidationDocumentsKindContracts a gleif-L2:RelationshipValidationDocumentsKind,
+                                                        owl:NamedIndividual;
+                                                      rdfs:isDefinedBy gleif-L2:;
+                                                      rdfs:label "contracts";
+                                                      skos:definition "Other documents supporting the preparation of consolidated financial statements.";
+                                                      gleif-base:hasTag "CONTRACTS".
+gleif-L2:RelationshipValidationDocumentsKindOtherOfficialDocuments a gleif-L2:RelationshipValidationDocumentsKind,
+                                                                     owl:NamedIndividual;
+                                                                   rdfs:isDefinedBy gleif-L2:;
+                                                                   rdfs:label "other official documents";
+                                                                   skos:definition "Other official document(s) attesting to the validity of the relationship.";
+                                                                   gleif-base:hasTag "OTHER_OFFICIAL_DOCUMENTS".
+gleif-L2:RelationshipValidationDocumentsKindRegulatoryFiling a gleif-L2:RelationshipValidationDocumentsKind,
+                                                               owl:NamedIndividual;
+                                                             rdfs:isDefinedBy gleif-L2:;
+                                                             rdfs:label "regulatory filing";
+                                                             skos:definition "An annual regulatory filing providing public information on parent relationships";
+                                                             gleif-base:hasTag "REGULATORY_FILING".
+gleif-L2:RelationshipValidationDocumentsKindSupportingDocuments a gleif-L2:RelationshipValidationDocumentsKind,
+                                                                  owl:NamedIndividual;
+                                                                rdfs:isDefinedBy gleif-L2:;
+                                                                rdfs:label "supporting documents";
+                                                                skos:definition "Other documents supporting the preparation of consolidated financial statements.";
+                                                                gleif-base:hasTag "SUPPORTING_DOCUMENTS".
+gleif-L2:UltimateConsolidation a owl:Class;
+                               rdfs:isDefinedBy gleif-L2:;
+                               rdfs:label "ultimate consolidation";
+                               rdfs:subClassOf gleif-L2:AccountingConsolidation;
+                               skos:altLabel "is ultimately consolidated by";
+                               skos:definition "The 'child' entity has its accounts fully consolidated by the 'parent' entity, in the sense given by the accounting standard(s) specified; the child entity is the most distant fully consolidating parent from the child entity in any applicable hierarchical ownership structure.";
+                               skos:prefLabel "ultimate consolidation".
+gleif-L2:hasAccountingPeriod a owl:ObjectProperty;
+                             rdfs:domain gleif-L2:LegalEntityRelationshipRecord;
+                             rdfs:isDefinedBy gleif-L2:;
+                             rdfs:label "has accounting period";
+                             rdfs:range gleif-base:Period;
+                             skos:definition "The dates in this Period indicate the accounting period covered by the most recent validation documents for this relationship.".
+gleif-L2:hasAccountingStandard a owl:ObjectProperty;
+                               rdfs:domain gleif-L2:AccountingConsolidation;
+                               rdfs:isDefinedBy gleif-L2:;
+                               rdfs:label "has accounting standard";
+                               rdfs:range gleif-L2:AccountingStandard;
+                               rdfs:subPropertyOf gleif-base:isQualifiedBy;
+                               skos:definition "The accounting standard applied to determine the definition of e.g. ultimate or direct accounting consolidating parent for the relationship. The relevant accounting standard is that applicable to the 'parent' entity.".
+gleif-L2:hasChild a owl:ObjectProperty,
+                    owl:FunctionalProperty;
+                  rdfs:domain gleif-base:LegalEntityRelationship;
+                  rdfs:isDefinedBy gleif-L2:;
+                  rdfs:label "has child";
+                  rdfs:range gleif-base:Entity;
+                  rdfs:subPropertyOf gleif-base:hasSource;
+                  skos:definition "The entity that plays the child role.".
+gleif-L2:hasDocumentFilingPeriod a owl:ObjectProperty;
+                                 rdfs:domain gleif-L2:LegalEntityRelationshipRecord;
+                                 rdfs:isDefinedBy gleif-L2:;
+                                 rdfs:label "has document filing period";
+                                 rdfs:range gleif-base:Period;
+                                 skos:definition "The dates in this instance of Period indicate the validity period of a regulatory filing, accounting document, or other document demonstrating the relationship's validity".
+gleif-L2:hasParent a owl:ObjectProperty,
+                     owl:FunctionalProperty;
+                   rdfs:domain gleif-base:LegalEntityRelationship;
+                   rdfs:isDefinedBy gleif-L2:;
+                   rdfs:label "has parent";
+                   rdfs:range gleif-base:Entity;
+                   rdfs:subPropertyOf gleif-base:hasTarget;
+                   skos:definition "The entity that plays the parent role.".
+gleif-L2:hasRelationshipPeriod a owl:ObjectProperty;
+                               rdfs:domain gleif-base:LegalEntityRelationship;
+                               rdfs:isDefinedBy gleif-L2:;
+                               rdfs:label "has relationship period";
+                               rdfs:range gleif-base:Period;
+                               skos:definition "The dates in this instance of Period indicate the duration of validity of the relationship itself, as distinct from any administrative or reporting aspects.".
+gleif-L2:hasRelationshipStatus a owl:ObjectProperty;
+                               rdfs:domain gleif-base:LegalEntityRelationship;
+                               rdfs:isDefinedBy gleif-L2:;
+                               rdfs:label "has relationship status";
+                               rdfs:range gleif-L2:RelationshipStatus;
+                               skos:definition "Indicates the status of the relationship (i.e., active, inactive).".
+gleif-L2:hasValidationDocuments a owl:ObjectProperty;
+                                rdfs:domain gleif-L2:LegalEntityRelationshipRecord;
+                                rdfs:isDefinedBy gleif-L2:;
+                                rdfs:label "has validation documents";
+                                rdfs:range gleif-L2:RelationshipValidationDocumentsKind;
+                                skos:definition "Type of source document(s) used for validating the relationship.".
+gleif-L2:hasValidationReference a owl:DatatypeProperty;
+                                rdfs:domain gleif-L2:LegalEntityRelationshipRecord;
+                                rdfs:isDefinedBy gleif-L2:;
+                                rdfs:label "has validation reference";
+                                skos:definition "A reference to a specific document or other source used as the basis of relationship validation for this relationship record.".
+gleif-L2:hasValidationSources a owl:ObjectProperty;
+                              rdfs:domain gleif-L2:LegalEntityRelationshipRecord;
+                              rdfs:isDefinedBy gleif-L2:;
+                              rdfs:label "has validation sources";
+                              rdfs:range gleif-L1:ValidationSourceKind;
+                              skos:definition "Level of relationship validation.".

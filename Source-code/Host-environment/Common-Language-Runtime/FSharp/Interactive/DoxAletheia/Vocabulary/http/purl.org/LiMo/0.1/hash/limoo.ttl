@@ -1,0 +1,397 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wiki: <http://en.wikipedia.org/wiki/>.
+@prefix eurovoc: <http://eurovoc.europa.eu/>.
+@prefix limoo: <http://purl.org/LiMo/0.1/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+_:B124b0fa13c72e4f2eacb39e13b8cb4bc a <http://purl.org/LiMo/owl;AllDisjointClasses>,
+                                      dc11:description;
+                                    owl:members (<http://purl.org/LiMo/0.1/;Dataset>
+                                                 <http://purl.org/LiMo/0.1/;DistributionConditions>
+                                                 <http://purl.org/LiMo/0.1/;LicenseModel>
+                                                 <http://purl.org/LiMo/0.1/;Rights>
+                                                 <http://purl.org/LiMo/0.1/;UseConditions>).
+_:Bd74fbc6cbd75d5aa80ecde48e3dd3ae6 a <http://purl.org/LiMo/owl;AllDisjointClasses>,
+                                      dc11:description;
+                                    owl:members (<http://purl.org/LiMo/0.1/;Dataset>
+                                                 <http://purl.org/LiMo/0.1/;DistributionConditions>
+                                                 <http://purl.org/LiMo/0.1/;LicenseModel>
+                                                 <http://purl.org/LiMo/0.1/;Rights>
+                                                 <http://purl.org/LiMo/0.1/;UseConditions>).
+<http://purl.org/LiMo/0.1> ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
+                           dc11:creator "Andrea Raimondi",
+                                        "Silvia Mazzini",
+                                        "Chiara Veninata";
+                           dc11:description "A vocabulary to describe licenses"@en;
+                           dc11:issued "2013-05-20"^^xsd:date;
+                           dc11:modified "2013-08-02"^^xsd:date;
+                           dc11:title "License Model Ontology"@en;
+                           vann:preferredNamespacePrefix "LiMo";
+                           vann:preferredNamespaceUri "http://purl.org/LiMo/0.1/";
+                           a owl:Ontology,
+                             voaf:Vocabulary;
+                           rdfs:comment "-Version 3: extension with Named Individual and Ontology metadata description"@en;
+                           owl:versionInfo 3 .
+<http://purl.org/LiMo/0.1/;CC-BY-NC-ND> <http://purl.org/LiMo/0.1#attributionCondition> "yes";
+                                        <http://purl.org/LiMo/0.1#createCondition> "no";
+                                        <http://purl.org/LiMo/0.1#noCopyrightCondition> "no";
+                                        <http://purl.org/LiMo/0.1#nonCommercialCondition> "yes";
+                                        <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "yes";
+                                        <http://purl.org/LiMo/0.1#remixCondition> "no";
+                                        <http://purl.org/LiMo/0.1#shareAlikeCondition> "no";
+                                        <http://purl.org/LiMo/0.1#shareCondition> "yes";
+                                        dc11:creator [foaf:homepage "http://www.creativecommons.it/" ; 
+                                                      foaf:name "CC" ; 
+                                                      a foaf:organization],
+                                                     [foaf:homepage "http://www.creativecommons.it/" ; 
+                                                      foaf:name "CC" ; 
+                                                      a foaf:organization];
+                                        dc11:label "Creative Commons Attribution-NonCommercial-NoDerivs 3.0";
+                                        dcterms:isReferencedBy <http://creativecommons.org/licenses/by-nc-nd/3.0/>;
+                                        dcterms:license <http://creativecommons.org/licenses/by-nc-nd/3.0/legalcode>;
+                                        a limoo:LicenseModel,
+                                          owl:NamedIndividual;
+                                        foaf:depiction <http://commons.wikimedia.org/wiki/File:CC-BY-NC-ND.png>.
+limoo:CC-BY <http://purl.org/LiMo/0.1#attributionCondition> "yes";
+            <http://purl.org/LiMo/0.1#compatibleWith> <http://purl.org/LiMo/0.1/licenseModel/ODbL1_0>,
+                                                      <http://purl.org/LiMo/0.1/licenseModel/IODL2_0>;
+            <http://purl.org/LiMo/0.1#createCondition> "yes";
+            <http://purl.org/LiMo/0.1#noCopyrightCondition> "no";
+            <http://purl.org/LiMo/0.1#nonCommercialCondition> "no";
+            <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "no";
+            <http://purl.org/LiMo/0.1#remixCondition> "yes";
+            <http://purl.org/LiMo/0.1#shareAlikeCondition> "no";
+            <http://purl.org/LiMo/0.1#shareCondition> "yes";
+            dc11:creator [foaf:homepage "http://www.creativecommons.it/" ; 
+                          foaf:name "CC" ; 
+                          a foaf:organization],
+                         [foaf:homepage "http://www.creativecommons.it/" ; 
+                          foaf:name "CC" ; 
+                          a foaf:organization];
+            dc11:label "Creative Commons Attribution 3.0";
+            dcterms:isReferencedBy <http://creativecommons.org/licenses/by/3.0/>;
+            dcterms:license <http://creativecommons.org/licenses/by/3.0/legalcode/>;
+            a limoo:LicenseModel,
+              owl:NamedIndividual;
+            foaf:depiction <http://commons.wikimedia.org/wiki/File:CC-BY.png>.
+limoo:CC-BY-NC <http://purl.org/LiMo/0.1#attributionCondition> "no";
+               <http://purl.org/LiMo/0.1#createCondition> "yes";
+               <http://purl.org/LiMo/0.1#noCopyrightCondition> "no";
+               <http://purl.org/LiMo/0.1#nonCommercialCondition> "yes";
+               <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "no";
+               <http://purl.org/LiMo/0.1#remixCondition> "yes";
+               <http://purl.org/LiMo/0.1#shareAlikeCondition> "no";
+               <http://purl.org/LiMo/0.1#shareCondition> "yes";
+               dc11:creator [foaf:homepage "http://www.creativecommons.it/" ; 
+                             foaf:name "CC" ; 
+                             a foaf:organization],
+                            [foaf:homepage "http://www.creativecommons.it/" ; 
+                             foaf:name "CC" ; 
+                             a foaf:organization];
+               dc11:label "Creative Commons Attribution-NonCommercial 3.0";
+               dcterms:isReferencedBy <http://creativecommons.org/licenses/by-nc/3.0/>;
+               dcterms:license <http://creativecommons.org/licenses/by-nc/3.0/legalcode>;
+               a owl:NamedIndividual,
+                 limoo:LicenseModel;
+               foaf:depiction <http://commons.wikimedia.org/wiki/File:CC-BY-NC.png>.
+limoo:CC-BY-NC-SA <http://purl.org/LiMo/0.1#attributionCondition> "no";
+                  <http://purl.org/LiMo/0.1#createCondition> "yes";
+                  <http://purl.org/LiMo/0.1#noCopyrightCondition> "no";
+                  <http://purl.org/LiMo/0.1#nonCommercialCondition> "yes";
+                  <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "no";
+                  <http://purl.org/LiMo/0.1#remixCondition> "yes";
+                  <http://purl.org/LiMo/0.1#shareAlikeCondition> "yes";
+                  <http://purl.org/LiMo/0.1#shareCondition> "yes";
+                  dc11:creator [foaf:homepage "http://www.creativecommons.it/" ; 
+                                foaf:name "CC" ; 
+                                a foaf:organization],
+                               [foaf:homepage "http://www.creativecommons.it/" ; 
+                                foaf:name "CC" ; 
+                                a foaf:organization];
+                  dc11:label "Creative Commons  Attribution-NonCommercial-ShareAlike 3.0 Unported";
+                  dcterms:isReferencedBy <ttp://creativecommons.org/licenses/by-nc-sa/3.0/>;
+                  dcterms:license <http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode>;
+                  a owl:NamedIndividual,
+                    limoo:LicenseModel;
+                  foaf:depiction wiki:File:CC-BY-NC-SA.png.
+limoo:CC-BY-ND <http://purl.org/LiMo/0.1#attributionCondition> "yes";
+               <http://purl.org/LiMo/0.1#createCondition> "no";
+               <http://purl.org/LiMo/0.1#noCopyrightCondition> "no";
+               <http://purl.org/LiMo/0.1#nonCommercialCondition> "no";
+               <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "yes";
+               <http://purl.org/LiMo/0.1#remixCondition> "no";
+               <http://purl.org/LiMo/0.1#shareAlikeCondition> "no";
+               <http://purl.org/LiMo/0.1#shareCondition> "yes";
+               dc11:creator [foaf:homepage "http://www.creativecommons.it/" ; 
+                             foaf:name "CC" ; 
+                             a foaf:organization],
+                            [foaf:homepage "http://www.creativecommons.it/" ; 
+                             foaf:name "CC" ; 
+                             a foaf:organization];
+               dc11:label "Creative Commons Attribution-NoDerivativs 3.0";
+               dcterms:isReferencedBy <http://creativecommons.org/licenses/by-nd/3.0/>;
+               dcterms:license <http://creativecommons.org/licenses/by-nd/3.0/legalcode>;
+               a owl:NamedIndividual,
+                 limoo:LicenseModel;
+               foaf:depiction <http://commons.wikimedia.org/wiki/File:CC-BY-ND.png>.
+limoo:CC-BY-SA <http://purl.org/LiMo/0.1#attributionCondition> "yes";
+               <http://purl.org/LiMo/0.1#compatibleWith> <http://purl.org/LiMo/0.1/licenseModel/IODL1_0>,
+                                                         <http://purl.org/LiMo/0.1/licenseModel/ODC_BY>;
+               <http://purl.org/LiMo/0.1#createCondition> "yes";
+               <http://purl.org/LiMo/0.1#noCopyrightCondition> "no";
+               <http://purl.org/LiMo/0.1#nonCommercialCondition> "no";
+               <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "no";
+               <http://purl.org/LiMo/0.1#remixCondition> "yes";
+               <http://purl.org/LiMo/0.1#shareAlikeCondition> "yes";
+               <http://purl.org/LiMo/0.1#shareCondition> "yes";
+               dc11:creator [foaf:homepage "http://www.creativecommons.it/" ; 
+                             foaf:name "CC" ; 
+                             a foaf:organization],
+                            [foaf:homepage "http://www.creativecommons.it/" ; 
+                             foaf:name "CC" ; 
+                             a foaf:organization];
+               dc11:label "Creative Commons Attribution-ShareAlike 3.0 unported";
+               dcterms:isReferencedBy <http://creativecommons.org/licenses/by-sa/3.0/>;
+               dcterms:license <http://creativecommons.org/licenses/by-sa/3.0/legalcode>;
+               a limoo:LicenseModel,
+                 owl:NamedIndividual;
+               foaf:depiction <http://commons.wikimedia.org/wiki/File:CC-BY-SA.png>.
+limoo:CC0 <http://purl.org/LiMo/0.1#attributionCondition> "no";
+          <http://purl.org/LiMo/0.1#compatibleWith> <http://purl.org/LiMo/0.1/licenseModel/PDDL1_0>;
+          <http://purl.org/LiMo/0.1#createCondition> "yes";
+          <http://purl.org/LiMo/0.1#noCopyrightCondition> "yes";
+          <http://purl.org/LiMo/0.1#nonCommercialCondition> "no";
+          <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "no";
+          <http://purl.org/LiMo/0.1#remixCondition> "yes";
+          <http://purl.org/LiMo/0.1#shareAlikeCondition> "no";
+          <http://purl.org/LiMo/0.1#shareCondition> "yes";
+          dc11:creator [foaf:homepage "http://www.creativecommons.it/" ; 
+                        foaf:name "CC" ; 
+                        a foaf:organization],
+                       [foaf:homepage "http://www.creativecommons.it/" ; 
+                        foaf:name "CC" ; 
+                        a foaf:organization];
+          dc11:label "Creative Commons NoRightReserved";
+          dcterms:isReferencedBy <http://creativecommons.org/about/cc0>;
+          dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/legalcode>;
+          a owl:NamedIndividual,
+            limoo:LicenseModel;
+          foaf:depiction <http://commons.wikimedia.org/wiki/File:CC-0.png>.
+limoo:Dataset a owl:Class;
+              rdfs:label "Dataset"@it;
+              owl:equivalentClass void:Dataset;
+              status:term_status "stable".
+limoo:DistributionConditions a owl:Class;
+                             rdfs:label "Condizioni legali di distribuzione"@it;
+                             rdfs:subClassOf limoo:LegalTerms;
+                             status:term_status "stable".
+limoo:IODL1_0 <http://purl.org/LiMo/0.1#attributionCondition> "yes";
+              <http://purl.org/LiMo/0.1#compatibleWith> <http://purl.org/LiMo/0.1/licenseModel/CC-BY-SA>,
+                                                        <http://purl.org/LiMo/0.1/licenseModel/ODC-BY>;
+              <http://purl.org/LiMo/0.1#createCondition> "yes";
+              <http://purl.org/LiMo/0.1#noCopyrightCondition> "no";
+              <http://purl.org/LiMo/0.1#nonCommercialCondition> "no";
+              <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "no";
+              <http://purl.org/LiMo/0.1#remixCondition> "yes";
+              <http://purl.org/LiMo/0.1#shareAlikeCondition> "yes";
+              <http://purl.org/LiMo/0.1#shareCondition> "yes";
+              dc11:creator [foaf:homepage "http://www.formez.it/" ; 
+                            foaf:name "Formez" ; 
+                            a foaf:organization],
+                           [foaf:homepage "http://www.formez.it/" ; 
+                            foaf:name "Formez" ; 
+                            a foaf:organization];
+              dc11:label "Italian Open Data License 1.0";
+              dcterms:isReferencedBy <http://www.formez.it/iodl/>;
+              dcterms:license <http://www.formez.it/iodl/>;
+              a owl:NamedIndividual,
+                limoo:LicenseModel.
+limoo:IODL2_0 <http://purl.org/LiMo/0.1#attributionCondition> "yes";
+              <http://purl.org/LiMo/0.1#compatibleWith> <http://purl.org/LiMo/0.1/licenseModel/CC-BY>,
+                                                        <http://purl.org/LiMo/0.1/licenseModel/ODbL1_0>;
+              <http://purl.org/LiMo/0.1#createCondition> "yes";
+              <http://purl.org/LiMo/0.1#noCopyrightCondition> "no";
+              <http://purl.org/LiMo/0.1#nonCommercialCondition> "no";
+              <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "no";
+              <http://purl.org/LiMo/0.1#remixCondition> "yes";
+              <http://purl.org/LiMo/0.1#shareAlikeCondition> "no";
+              <http://purl.org/LiMo/0.1#shareCondition> "yes";
+              dc11:creator [foaf:homepage "http://www.formez.it/" ; 
+                            foaf:name "Formez" ; 
+                            a foaf:organization],
+                           [foaf:homepage "http://www.formez.it/" ; 
+                            foaf:name "Formez" ; 
+                            a foaf:organization];
+              dc11:label "Italian Open Data License 2.0";
+              dcterms:isReferencedBy <http://www.dati.gov.it/iodl/2.0/>;
+              dcterms:license <http://www.formez.it/iodl/2.0>;
+              a owl:NamedIndividual,
+                limoo:LicenseModel;
+              foaf:depiction <ttp://www.dati.gov.it/iodl/2.0/kit-logo-iodl.zip>.
+limoo:LegalTerms dc11:conformsTo "http://creativecommons.org/ns#";
+                 a owl:Class;
+                 rdfs:label "Termini legali di applicazione della licenza"@it;
+                 owl:equivalentClass ccrel:Jurisdiction;
+                 status:term_status "stable".
+limoo:LicenseModel dc11:conformsTo "http://opendatacommons.org/licenses";
+                   a owl:Class;
+                   rdfs:label "Modello di Licenza"@it;
+                   owl:equivalentClass dcterms:LicenseDocument,
+                                       ccrel:License;
+                   status:term_status "stable";
+                   skos:exactMatch eurovoc:259007.
+limoo:ODBL1_0 <http://purl.org/LiMo/0.1#attributionCondition> "yes";
+              <http://purl.org/LiMo/0.1#compatibleWith> <http://purl.org/LiMo/0.1/licenseModel/CC-BY>,
+                                                        <http://purl.org/LiMo/0.1/licenseModel/IODL2_0>;
+              <http://purl.org/LiMo/0.1#createCondition> "yes";
+              <http://purl.org/LiMo/0.1#noCopyrightCondition> "no";
+              <http://purl.org/LiMo/0.1#nonCommercialCondition> "no";
+              <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "no";
+              <http://purl.org/LiMo/0.1#remixCondition> "yes";
+              <http://purl.org/LiMo/0.1#shareAlikeCondition> "no";
+              <http://purl.org/LiMo/0.1#shareCondition> "yes";
+              dc11:creator [foaf:homepage "http://opendatacommons.org/" ; 
+                            foaf:name "Open Data Commons" ; 
+                            a foaf:organization],
+                           [foaf:homepage "http://opendatacommons.org/" ; 
+                            foaf:name "Open Data Commons" ; 
+                            a foaf:organization];
+              dc11:label "Open Database License";
+              dcterms:isReferencedBy <http://opendatacommons.org/licenses/odbl/summary/>;
+              dcterms:license <http://opendatacommons.org/licenses/odbl/1.0/>;
+              a owl:NamedIndividual,
+                limoo:LicenseModel;
+              rdfs:comment "Sono i tipi di licenza da utilizzare nella pubblicazione dei dataset e di database opendata".
+limoo:ODC-BY <http://purl.org/LiMo/0.1#attributionCondition> "yes";
+             <http://purl.org/LiMo/0.1#compatibleWith> <http://purl.org/LiMo/0.1/licenseModel/IODL1_0>,
+                                                       <http://purl.org/LiMo/0.1/licenseModel/CC-BY-SA>;
+             <http://purl.org/LiMo/0.1#createCondition> "yes";
+             <http://purl.org/LiMo/0.1#noCopyrightCondition> "no";
+             <http://purl.org/LiMo/0.1#nonCommercialCondition> "no";
+             <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "no";
+             <http://purl.org/LiMo/0.1#remixCondition> "yes";
+             <http://purl.org/LiMo/0.1#shareAlikeCondition> "yes";
+             <http://purl.org/LiMo/0.1#shareCondition> "yes";
+             dc11:creator [foaf:homepage "http://opendatacommons.org/" ; 
+                           foaf:name "Open Data Commons" ; 
+                           a foaf:organization],
+                          [foaf:homepage "http://opendatacommons.org/" ; 
+                           foaf:name "Open Data Commons" ; 
+                           a foaf:organization];
+             dc11:label "Open Data Commons Attribution";
+             dcterms:isReferencedBy <http://opendatacommons.org/licenses/by/summary/>;
+             dcterms:license <http://opendatacommons.org/licenses/by/1.0/>;
+             a limoo:LicenseModel,
+               owl:NamedIndividual;
+             rdfs:comment "Sono i tipi di licenza da utilizzare nella pubblicazione dei dataset e di database opendata".
+limoo:PDDL1_0 <http://purl.org/LiMo/0.1#attributionCondition> "no";
+              <http://purl.org/LiMo/0.1#compatibleWith> <http://purl.org/LiMo/0.1/licenseModel/CC0>;
+              <http://purl.org/LiMo/0.1#createCondition> "yes";
+              <http://purl.org/LiMo/0.1#noCopyrightCondition> "yes";
+              <http://purl.org/LiMo/0.1#nonCommercialCondition> "no";
+              <http://purl.org/LiMo/0.1#nonDerivativeWorksCondition> "no";
+              <http://purl.org/LiMo/0.1#remixCondition> "yes";
+              <http://purl.org/LiMo/0.1#shareAlikeCondition> "no";
+              <http://purl.org/LiMo/0.1#shareCondition> "yes";
+              dc11:creator [foaf:homepage "http://opendatacommons.org/" ; 
+                            foaf:name "Open Data Commons" ; 
+                            a foaf:organization],
+                           [foaf:homepage "http://opendatacommons.org/" ; 
+                            foaf:name "Open Data Commons" ; 
+                            a foaf:organization];
+              dc11:label "Open Data Commons Public Domain Dedication and License";
+              dcterms:isReferencedBy <http://opendatacommons.org/licenses/pddl/summary/>;
+              dcterms:license <http://opendatacommons.org/licenses/pddl/1.0/>;
+              a limoo:LicenseModel,
+                owl:NamedIndividual;
+              rdfs:comment "Questo tipo di licenza colloca il database nel pubblico dominio".
+limoo:Rights a owl:Class;
+             rdfs:label "Diritti concessi dai termini legali"@it;
+             rdfs:subClassOf limoo:LegalTerms;
+             status:term_status "stable".
+limoo:URL a owl:DatatypeProperty;
+          rdfs:domain limoo:LicenseModel;
+          rdfs:range xsd:anyURI.
+limoo:UseConditions a owl:Class;
+                    rdfs:label "Condizioni legali d'uso"@it;
+                    rdfs:subClassOf limoo:LegalTerms;
+                    status:term_status "stable".
+limoo:areDefinedBy a owl:ObjectProperty;
+                   rdfs:domain limoo:DistributionConditions;
+                   rdfs:range limoo:LicenseModel.
+limoo:areGuaranteedBy a owl:ObjectProperty;
+                      rdfs:domain limoo:Rights;
+                      rdfs:range limoo:LicenseModel.
+limoo:areImposedBy a owl:ObjectProperty;
+                   rdfs:domain limoo:UseConditions;
+                   rdfs:range limoo:LicenseModel.
+limoo:attributionCondition a owl:DatatypeProperty;
+                           rdfs:domain limoo:DistributionConditions;
+                           rdfs:range xsd:boolean.
+limoo:compatibleWith a owl:ObjectProperty;
+                     rdfs:domain limoo:licenseModel;
+                     rdfs:range limoo:licenseModel.
+limoo:coverDatasets a owl:ObjectProperty;
+                    rdfs:domain limoo:LicenseModel;
+                    rdfs:range limoo:Dataset.
+limoo:createCondition a owl:DatatypeProperty;
+                      rdfs:domain limoo:Rights;
+                      rdfs:range xsd:boolean.
+limoo:creator a owl:DatatypeProperty;
+              rdfs:domain limoo:LicenseModel;
+              rdfs:range xsd:Name.
+limoo:define a owl:ObjectProperty;
+             rdfs:domain limoo:LicenseModel;
+             rdfs:range limoo:DistributionConditions;
+             owl:inverseOf limoo:areDefinedBy.
+limoo:guarantee a owl:ObjectProperty;
+                rdfs:domain limoo:LicenseModel;
+                rdfs:range limoo:Rights;
+                owl:inverseOf limoo:areGuaranteedBy.
+limoo:hasLicenseModel a owl:ObjectProperty;
+                      rdfs:domain limoo:Dataset;
+                      rdfs:range limoo:LicenseModel;
+                      owl:inverseOf limoo:coverDatasets.
+limoo:icon a owl:DatatypeProperty;
+           rdfs:domain limoo:LicenseModel;
+           rdfs:range xsd:anyURI.
+limoo:impose a owl:ObjectProperty;
+             rdfs:domain limoo:LicenseModel;
+             rdfs:range limoo:UseConditions;
+             owl:inverseOf limoo:areImposedBy.
+limoo:noCopyrightCondition a owl:DatatypeProperty;
+                           rdfs:domain limoo:DistributionConditions;
+                           rdfs:range xsd:boolean.
+limoo:nonCommercialCondition a owl:DatatypeProperty;
+                             rdfs:domain limoo:UseConditions;
+                             rdfs:range xsd:boolean.
+limoo:nonDerivativeWorksCondition a owl:DatatypeProperty;
+                                  rdfs:domain limoo:UseConditions;
+                                  rdfs:range xsd:boolean.
+limoo:remixCondition a owl:DatatypeProperty;
+                     rdfs:domain limoo:Rights;
+                     rdfs:range xsd:boolean.
+limoo:shareAlikeCondition a owl:DatatypeProperty;
+                          rdfs:domain limoo:DistributionConditions;
+                          rdfs:range xsd:boolean.
+limoo:shareCondition a owl:DatatypeProperty;
+                     rdfs:domain limoo:Rights;
+                     rdfs:range xsd:boolean.
+dc11:creator a owl:AnnotationProperty.
+dc11:description a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:conformsTo a owl:AnnotationProperty.
+dcterms:isReferencedBy a owl:AnnotationProperty.

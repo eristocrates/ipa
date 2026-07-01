@@ -1,0 +1,138 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix is: <http://purl.org/ontology/is/core#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+is: dc11:creator <http://foaf.me/zazi#me>;
+    dc11:date "2010-07-31T19:15:52+01:00"^^xsd:dateTime;
+    dc11:description """The Information Service Ontology Specification provides basic concepts and properties 
+for describing different information services, e.g. Wikipedia, MusicBrainz, Freebase or Discogs, on/ for 
+the Semantic Web. This document contains a RDF description of the Information Service Ontology."""@en;
+    dc11:title "The Information Service Ontology"@en;
+    a owl:Ontology;
+    owl:imports <http://www.w3.org/2003/06/sw-vocab-status/ns>,
+                dcterms:,
+                dc11:;
+    owl:versionInfo 0.7.
+is:InfoService a rdfs:Class,
+                 owl:Class;
+               rdfs:comment """Extended definition:
+
+	\"An Information Service is this part of an Information System that serves data/knowledge/information to customers and collects it 
+	from its contributors, to manage and store it by optionally using administrators.\"
+
+Please refer also this article[1] about the definition of the term 'Information Service'.
+
+This concept is for linking a piece of information of a specific concept instance (or at least website links or other data representations 
+of this concept instance), e.g. a foaf:Agent, a mo:Track or a mo:MusicArtist to a related website of a specific information service (modelled 
+as individual of is:InfoService), e.g. Wikipedia, MySpace, MusicBrainz, Discogs, Last.fm, Pandora, BBC, ... . With this concept it is possible 
+to describe the underlying information services of that knowledge representation more in detail, so that the client, which consumes that 
+'linked data' could choose, which source it likes to use by evaluating the description of the information service of that website link or 
+other data representation.
+Please use for further is:InfoService instances the namespace \"http://purl.org/ontology/is/inst/\".
+
+
+[1] https://infoserviceonto.wordpress.com/2010/06/23/what-is-an-information-service/"""@en;
+               rdfs:isDefinedBy is:;
+               rdfs:label "Information Service"@en;
+               rdfs:subClassOf owl:Thing,
+                               dcterms:Agent;
+               status:term_status "unstable"@en.
+is:InfoServiceContributorType a owl:Class,
+                                rdfs:Class,
+                                dcterms:AgentClass;
+                              rdfs:comment """This concept is for describing the different contributor types of information services, e.g. expert, 
+community or mixed. Please feel free to define further information service contributor types.
+Please use therefore the namespace \"http://purl.org/ontology/is/ctypes/\"."""@en;
+                              rdfs:isDefinedBy is:;
+                              rdfs:label "Information Service Contributor Type"@en;
+                              rdfs:subClassOf owl:Thing;
+                              status:term_status "testing"@en.
+is:InfoServiceQuality a rdfs:Class,
+                        owl:Class;
+                      rdfs:comment """This concept is for describing specific quality levels or ratings, e.g. good or bad or more detailed ones, of 
+information services. Please feel free to use this concept as hook for more complex and detailed information service quality description 
+modellings in sub ontologies. Please use therefore the domain \"http://purl.org/ontology/is/quality/\". Futhermore, such information 
+service ratings could be done by different information service rating agencies, so that the customer of such ratings could select 
+its information service ratings agency of choice."""@en;
+                      rdfs:isDefinedBy is:;
+                      rdfs:label "Information Service Quality"@en;
+                      rdfs:subClassOf owl:Thing;
+                      status:term_status "testing"@en.
+is:InfoServiceType a owl:Class,
+                     rdfs:Class,
+                     dcterms:AgentClass;
+                   rdfs:comment """This concept is for describing the type of an information service, e.g. 'social network service', 
+'recommender service' or 'encyclopedia'. Please feel free to define further information service types for categorization.
+Please use therefore the namespace \"http://purl.org/ontology/is/types/\"."""@en;
+                   rdfs:isDefinedBy is:;
+                   rdfs:label "Information Service Type"@en;
+                   rdfs:subClassOf owl:Thing;
+                   status:term_status "testing"@en.
+is:info_service a rdf:Property,
+                  owl:ObjectProperty;
+                rdfs:comment "Every subject related by this property is made available by an is:InfoService individual. This property could be used to associate a semantic graph based description or especially a website link, e.g. typed as foaf:Document, to the specific is:InfoService individual. This enables the consumer of this resource to retrieve more information (descriptions, ratings) about the underlying information service of this resource."@en;
+                rdfs:isDefinedBy is:;
+                rdfs:label "has info service"@en;
+                rdfs:range is:InfoService;
+                rdfs:subPropertyOf dcterms:publisher;
+                owl:inverseOf [rdfs:label "is info service of"@en ; 
+                               a owl:ObjectProperty ; 
+                               a rdf:Property];
+                status:term_status "unstable"@en.
+is:info_service_contributor_type a owl:ObjectProperty,
+                                   rdf:Property;
+                                 rdfs:comment """With this property it is possible to associate a specific information service contributor type, e.g. expert, 
+community or mixed, to an is:InfoService instance."""@en;
+                                 rdfs:domain is:InfoService;
+                                 rdfs:isDefinedBy is:;
+                                 rdfs:label "has info service contributor type"@en;
+                                 rdfs:range is:InfoServiceContributorType;
+                                 rdfs:subPropertyOf dc11:type;
+                                 owl:inverseOf [rdfs:label "is info service contributor type of"@en ; 
+                                                a owl:ObjectProperty ; 
+                                                a rdf:Property];
+                                 status:term_status "testing"@en.
+is:info_service_quality a rdf:Property,
+                          owl:ObjectProperty;
+                        rdfs:comment """With this property it is possible to associate a specific quality level, information service quality rating
+or an extended information service quality description to an is:InfoService instance"""@en;
+                        rdfs:domain is:InfoService;
+                        rdfs:isDefinedBy is:;
+                        rdfs:label "has info service quality"@en;
+                        rdfs:range is:InfoServiceQuality;
+                        owl:inverseOf [rdfs:label "is info service quality of"@en ; 
+                                       a owl:ObjectProperty ; 
+                                       a rdf:Property];
+                        status:term_status "testing"@en.
+is:info_service_type a owl:ObjectProperty,
+                       rdf:Property;
+                     rdfs:comment """With this property it is possible to associate a specific information service type, e.g. 'social network service', 
+'recommender service' or 'encyclopedia', to an is:InfoService instance. This property could be used multiple times that means an 
+is:InfoService instance could be for example of the information service type 'social network site' and 'recommender system'."""@en;
+                     rdfs:domain is:InfoService;
+                     rdfs:isDefinedBy is:;
+                     rdfs:label "has info service type"@en;
+                     rdfs:range is:InfoServiceType;
+                     rdfs:subPropertyOf dc11:type;
+                     owl:inverseOf [rdfs:label "is info service type of"@en ; 
+                                    a owl:ObjectProperty ; 
+                                    a rdf:Property];
+                     status:term_status "testing"@en.
+is:main_subject a rdf:Property,
+                  owl:ObjectProperty;
+                rdfs:comment """This property is for defining the main subject of an is:InfoService instance that means this 
+info service address mainly this concern."""@en;
+                rdfs:domain is:InfoService;
+                rdfs:isDefinedBy is:;
+                rdfs:label "has main subject"@en;
+                rdfs:subPropertyOf dcterms:subject;
+                owl:inverseOf [rdfs:label "is main subject of"@en ; 
+                               a owl:ObjectProperty ; 
+                               a rdf:Property];
+                status:term_status "testing"@en.

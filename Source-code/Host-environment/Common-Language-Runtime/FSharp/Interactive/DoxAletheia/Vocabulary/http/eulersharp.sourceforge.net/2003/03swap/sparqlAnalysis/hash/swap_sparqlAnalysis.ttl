@@ -1,0 +1,114 @@
+@base <http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix digproc: <http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#>.
+@prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix sparql: <http://eulersharp.sourceforge.net/2003/03swap/sparql#>.
+@prefix sparante: <http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#>.
+@prefix sparan: <http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix swap_sparql: <http://eulersharp.sourceforge.net/2003/03swap/sparql#>.
+@prefix swap_sparqlAnalysis: <http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysis#>.
+@prefix swap_sparqlAnalysisTemplate: <http://eulersharp.sourceforge.net/2003/03swap/sparqlAnalysisTemplate#>.
+@prefix swap_digitalProcedure: <http://eulersharp.sourceforge.net/2003/03swap/digitalProcedure#>.
+
+sparan: dce:contributor "Kristof Depraetere, Boris De Vloed, Giovanni Mels, ir; Agfa Healthcare, Belgium"@en;
+        dce:creator "Hans Cools, MD; Agfa Healthcare, Belgium"@en;
+        dce:description "Formal description of RDF data analysis using SPARQL."@en;
+        dce:format "OWL Full"@en;
+        dce:publisher "Agfa Healthcare, Belgium"@en;
+        dce:title "SPARQL Analysis"@en;
+        a owl:Ontology.
+sparan:AnalysisQuery a rdfs:Class;
+                     rdfs:isDefinedBy sparan:;
+                     rdfs:label "analysis SPARQL query"@en;
+                     skos:definition "SPARQL query formulating what RDF data has to be analysed."@en.
+sparan:CancelledClinicalAnalysisQuery a rdfs:Class;
+                                      rdfs:isDefinedBy sparan:;
+                                      rdfs:label "cancelled clinical analysis SPARQL query"@en;
+                                      rdfs:subClassOf sparan:ClinicalAnalysisQuery;
+                                      skos:definition "SPARQL query, formulating what clinical RDF data has to be analysed, in the unsubmitted state."@en.
+sparan:ClinicalAnalysisQuery a rdfs:Class;
+                             rdfs:isDefinedBy sparan:;
+                             rdfs:label "clinical analysis SPARQL query"@en;
+                             rdfs:subClassOf sparan:AnalysisQuery,
+                                             [a owl:Restriction ; 
+                                              owl:onProperty sparql:hasTemplate ; 
+                                              owl:someValuesFrom sparante:ClinicalAnalysisQueryTemplate],
+                                             [a owl:Restriction ; 
+                                              owl:onProperty sparql:hasBinding ; 
+                                              owl:someValuesFrom sparante:ClinicalAnalysisQueryTemplateBinding],
+                                             [a owl:Restriction ; 
+                                              owl:onProperty sparan:hasDataSetQuery ; 
+                                              owl:someValuesFrom sparan:ClinicalDataSetQuery],
+                                             [a owl:Restriction ; 
+                                              owl:onProperty digproc:hasResult ; 
+                                              owl:someValuesFrom sparan:ClinicalAnalysisResult];
+                             skos:definition "SPARQL query formulating what clinical RDF data has to be analysed."@en.
+sparan:ClinicalAnalysisResult a rdfs:Class;
+                              rdfs:isDefinedBy sparan:;
+                              rdfs:label "clinical analysis result"@en;
+                              rdfs:subClassOf [a owl:Restriction ; 
+                                               owl:onProperty sparql:hasBinding ; 
+                                               owl:someValuesFrom sparante:ClinicalAnalysisResultBinding];
+                              skos:definition "SPARQL result of analysis of clinical RDF data."@en.
+sparan:ClinicalDataRepository a rdfs:Class;
+                              rdfs:subClassOf sparan:DataRepository.
+sparan:ClinicalDataSetQuery a rdfs:Class;
+                            rdfs:isDefinedBy sparan:;
+                            rdfs:label "clinical data set SPARQL query"@en;
+                            rdfs:subClassOf sparan:DataSetQuery;
+                            skos:definition "SPARQL query on a repository with clinical RDF data to be analysed."@en.
+sparan:CompletedClinicalAnalysisQuery a rdfs:Class;
+                                      rdfs:isDefinedBy sparan:;
+                                      rdfs:label "completed clinical analysis SPARQL query"@en;
+                                      rdfs:subClassOf sparan:ClinicalAnalysisQuery;
+                                      skos:definition "SPARQL query, formulating what clinical RDF data has to be analysed, in the completed state."@en.
+sparan:DataRepository a rdfs:Class.
+sparan:DataSetQuery a rdfs:Class;
+                    rdfs:isDefinedBy sparan:;
+                    rdfs:label "data set SPARQL query"@en;
+                    skos:definition "SPARQL query on a repository with RDF data to be analysed."@en.
+sparan:InvalidClinicalAnalysisResult a rdfs:Class;
+                                     rdfs:isDefinedBy sparan:;
+                                     rdfs:label "invalid clinical analysis result"@en;
+                                     rdfs:subClassOf sparan:ClinicalAnalysisResult;
+                                     skos:definition "Invalidated SPARQL result of analysis of clinical RDF data."@en.
+sparan:InvalidClinicalDataSetQuery a rdfs:Class;
+                                   rdfs:isDefinedBy sparan:;
+                                   rdfs:label "invalid clinical data set SPARQL query"@en;
+                                   rdfs:subClassOf sparan:ClinicalDataSetQuery;
+                                   skos:definition "Invalidated SPARQL query on a repository with clinical RDF data to be analysed."@en.
+sparan:SubmittedClinicalAnalysisQuery a rdfs:Class;
+                                      rdfs:isDefinedBy sparan:;
+                                      rdfs:label "submitted clinical analysis SPARQL query"@en;
+                                      rdfs:subClassOf sparan:ClinicalAnalysisQuery;
+                                      skos:definition "SPARQL query, formulating what clinical RDF data has to be analysed, in the submitted state."@en.
+sparan:dataRepositoryOf a owl:ObjectProperty;
+                        rdfs:domain sparan:DataRepository;
+                        rdfs:isDefinedBy sparan:;
+                        rdfs:range sparan:DataSetQuery;
+                        owl:inverseOf sparan:hasDataRepository;
+                        skos:definition "Specifying a data set SPARQL query to be executed on a data repository."@en.
+sparan:dataSetQueryOf a owl:ObjectProperty;
+                      rdfs:domain sparan:DataSetQuery;
+                      rdfs:isDefinedBy sparan:;
+                      rdfs:range sparan:AnalysisQuery;
+                      owl:inverseOf sparan:hasDataSetQuery;
+                      skos:definition "Specifying an analysis SPARQL query of a data set SPARQL query."@en.
+sparan:hasDataRepository a owl:ObjectProperty;
+                         rdfs:domain sparan:DataSetQuery;
+                         rdfs:isDefinedBy sparan:;
+                         rdfs:range sparan:DataRepository;
+                         skos:definition "Specifying a data repository to execute a data set SPARQL query on."@en.
+sparan:hasDataSetQuery a owl:ObjectProperty;
+                       rdfs:domain sparan:AnalysisQuery;
+                       rdfs:isDefinedBy sparan:;
+                       rdfs:range sparan:DataSetQuery;
+                       skos:definition "Specifying a data set SPARQL query of an analysis SPARQL query."@en.

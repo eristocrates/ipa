@@ -1,0 +1,137 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix trao: <http://linkeddata.finki.ukim.mk/lod/ontology/tao#>.
+@prefix place: <http://purl.org/ontology/places/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wgspos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+
+trao: ccrel:license <https://creativecommons.org/licenses/by/3.0/>;
+      dcterms:contributor <https://plus.google.com/+MilosJovanovik>;
+      dcterms:creator <http://plus.google.com/+GoranPetkovski>;
+      dcterms:description "Transport Administration Ontology (TAO) for describing data from Swedish Transport Administration Web site.";
+      dcterms:issued "2015-06-17";
+      dcterms:modified "2016-08-28";
+      dcterms:publisher <http://finki.ukim.mk/>;
+      dcterms:rights "Copyright 2014, Goran Petkovski";
+      dcterms:title "Transport Administration Ontology";
+      vann:preferredNamespacePrefix "tao";
+      vann:preferredNamespaceUri "http://linkeddata.finki.ukim.mk/lod/ontology/tao#";
+      a owl:Ontology;
+      rdfs:comment "Transport Administration Ontology (TAO) for describing data from Swedish Transport Administration Web site.";
+      rdfs:isDefinedBy trao:;
+      rdfs:label "Transport Administration Ontology";
+      owl:versionInfo "1.1".
+trao:Accident_Service a owl:Class;
+                      rdfs:comment "Class that describe emergency information on traffic accidents, fallen trees and other obstructions that affect accessibility. Includes information on location, impact, causes and possible traffic restrictions.";
+                      rdfs:label "Accident_Service";
+                      rdfs:subClassOf trao:Situation_Record.
+trao:Ferry_Service a owl:Class;
+                   rdfs:comment "Class that contains information about reports of deviations and cancellations of the SwedishTransport Administration ferry services. Contains information on ferry routes, estimated duration and possible restrictions.";
+                   rdfs:label "Ferry_Service";
+                   rdfs:subClassOf trao:Situation_Record.
+trao:Location a owl:Class;
+              rdfs:comment "Information about location where the Situation Record was generated. It contains several properties describing the Location. It contains geo:longitude and geo:latitude for creataing external links to othe datasets.";
+              rdfs:label "Location".
+trao:Place_Info a owl:Class.
+trao:Rest_Area a owl:Class;
+               rdfs:comment "Class that describe rest areas with information on location, level of equipment, service and information functions.";
+               rdfs:label "Rest_Area";
+               rdfs:subClassOf trao:Situation_Record.
+trao:Road_Condition a owl:Class;
+                    rdfs:comment "Class that describe the conditions of the road surface which may affect driving conditions. These may be related to the weather (e.g. ice, snow etc.) or to other conditions (e.g. oil, mud, leaves etc. on the road)";
+                    rdfs:label "Road_Condition";
+                    rdfs:subClassOf trao:Situation_Record.
+trao:Road_Work a owl:Class;
+               rdfs:comment "Class that describe information about ongoing, planned and completed roadworks. Includes information on location, type of road work, impact and restrictions like closures of lanes, width restrictions, rerouting and traffic and speed reductions.";
+               rdfs:label "Road_Work";
+               rdfs:subClassOf trao:Situation_Record.
+trao:Situation_Record a owl:Class;
+                      rdfs:comment "Class describing the basic information about Situation Record instances. It contains  information about time when it occured and information status.";
+                      rdfs:label "Situation_Record".
+trao:areaPlaceName a owl:DatatypeProperty;
+                   rdfs:domain trao:Rest_Area;
+                   rdfs:range rdfs:Literal.
+trao:carriageway a owl:DatatypeProperty;
+                 rdfs:domain trao:Road_Condition;
+                 rdfs:range rdfs:Literal.
+trao:cityName a owl:DatatypeProperty;
+              rdfs:domain trao:Rest_Area;
+              rdfs:range rdfs:Literal.
+trao:contributor a owl:AnnotationProperty;
+                 rdfs:subPropertyOf rdfs:isDefinedBy.
+trao:countyNumber a owl:DatatypeProperty;
+                  rdfs:domain trao:Location;
+                  rdfs:range xsd:nonNegativeInteger.
+trao:distanceNearestCity a owl:DatatypeProperty;
+                         rdfs:domain trao:Rest_Area;
+                         rdfs:range xsd:nonNegativeInteger.
+trao:ferryInfo a owl:DatatypeProperty;
+               rdfs:domain trao:Ferry_Service;
+               rdfs:range rdfs:Literal.
+trao:has_Location a owl:ObjectProperty;
+                  rdfs:domain trao:Situation_Record;
+                  rdfs:range trao:Location.
+trao:information_Status a owl:DatatypeProperty;
+                        rdfs:domain trao:Situation_Record;
+                        rdfs:range rdfs:Literal.
+trao:issued a owl:AnnotationProperty;
+            rdfs:subPropertyOf rdfs:isDefinedBy.
+trao:lane a owl:DatatypeProperty;
+          rdfs:domain trao:Road_Work;
+          rdfs:range rdfs:Literal.
+trao:lanesRestricted a owl:DatatypeProperty;
+                     rdfs:domain trao:Accident_Service;
+                     rdfs:range xsd:nonNegativeInteger.
+trao:lengthAffected a owl:DatatypeProperty;
+                    rdfs:domain trao:Accident_Service;
+                    rdfs:range xsd:nonNegativeInteger.
+trao:location_Of_Situation a owl:ObjectProperty;
+                           rdfs:domain trao:Location;
+                           rdfs:range trao:Situation_Record;
+                           owl:inverseOf trao:has_Location.
+trao:locaton_Descriptor a owl:DatatypeProperty;
+                        rdfs:domain trao:Rest_Area;
+                        rdfs:range rdfs:Literal.
+trao:offsetDistance a owl:DatatypeProperty;
+                    rdfs:domain trao:Accident_Service;
+                    rdfs:range xsd:nonNegativeInteger.
+trao:preferredNamespacePrefix a owl:AnnotationProperty;
+                              rdfs:subPropertyOf rdfs:isDefinedBy.
+trao:preferredNamespaceUri a owl:AnnotationProperty;
+                           rdfs:subPropertyOf rdfs:isDefinedBy.
+trao:severity a owl:DatatypeProperty;
+              rdfs:domain trao:Situation_Record;
+              rdfs:range rdfs:Literal.
+trao:situationRecordTime a owl:DatatypeProperty;
+                         rdfs:domain trao:Situation_Record;
+                         rdfs:range xsd:dateTime.
+trao:speedLimit a owl:DatatypeProperty;
+                rdfs:domain trao:Road_Work;
+                rdfs:range xsd:nonNegativeInteger.
+trao:textDescription a owl:DatatypeProperty;
+                     rdfs:domain trao:Road_Condition;
+                     rdfs:range rdfs:Literal.
+trao:title a owl:AnnotationProperty;
+           rdfs:subPropertyOf rdfs:isDefinedBy.
+dcterms:description a owl:DatatypeProperty;
+                    rdfs:domain trao:Situation_Record;
+                    rdfs:range rdfs:Literal.
+place:road a owl:DatatypeProperty;
+           rdfs:domain trao:Location;
+           rdfs:range rdfs:Literal.
+wgspos:latitude a owl:DatatypeProperty;
+                rdfs:domain trao:Location;
+                rdfs:range xsd:decimal.
+wgspos:longitude a owl:DatatypeProperty;
+                 rdfs:domain trao:Location;
+                 rdfs:range xsd:decimal.
+skos:related a owl:ObjectProperty;
+             rdfs:domain trao:Rest_Area;
+             rdfs:range trao:Place_Info.

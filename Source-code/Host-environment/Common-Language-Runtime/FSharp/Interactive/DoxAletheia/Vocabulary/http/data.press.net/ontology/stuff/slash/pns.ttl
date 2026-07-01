@@ -1,0 +1,172 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix pna: <http://data.press.net/ontology/asset/>.
+@prefix pni: <http://data.press.net/ontology/identifier/>.
+@prefix pns: <http://data.press.net/ontology/stuff/>.
+@prefix pnt: <http://data.press.net/ontology/tag/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wgspos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+pns: dcterms:created "2011-07-28"^^xsd:date;
+     dcterms:license <http://creativecommons.org/licenses/by-nd/3.0/>;
+     dcterms:modified "2012-06-18"^^xsd:date;
+     dcterms:title "SNaP Stuff Ontology"@en;
+     a owl:Ontology;
+     rdfs:comment "The Stuff Ontology models real world entities. There are two kinds of stuff: tangibles and intangibles. Tangible stuff includes persons, locations and organizations. Intangibles are abstract concepts such as smoking, feminism or love."@en;
+     owl:versionInfo "0.4.1";
+     foaf:maker <http://uk.linkedin.com/in/paulwilton>,
+                <http://uk.linkedin.com/in/pauliharman>,
+                <http://uk.linkedin.com/in/jarredmcginnis>.
+pns:Intangible a owl:Class;
+               rdfs:comment "A base class for all intangible stuff (eg love, conservatism, fashion)"@en;
+               rdfs:isDefinedBy pns:;
+               rdfs:label "A base class for Intangible Stuff"@en;
+               rdfs:subClassOf pns:Stuff;
+               status:term_status "testing".
+pns:Location a owl:Class;
+             rdfs:comment "A Location - a base class for Locations. Also a subclass of geo:SpatialThing"@en;
+             rdfs:isDefinedBy pns:;
+             rdfs:label "A Location - a base class for Locations"@en;
+             rdfs:subClassOf wgspos:SpatialThing,
+                             pns:Tangible;
+             status:term_status "testing".
+pns:Organization a owl:Class;
+                 rdfs:comment "An Organization - a base class for instances of organizations. Also a subclass of foaf:Organization"@en;
+                 rdfs:isDefinedBy pns:;
+                 rdfs:label "An Organization - a base class for instances of organizations"@en;
+                 rdfs:subClassOf foaf:Organization,
+                                 pns:Tangible;
+                 status:term_status "testing".
+pns:Person a owl:Class;
+           rdfs:comment "A Person - a base class for people instances. Also a subclass of foaf:Person"@en;
+           rdfs:isDefinedBy pns:;
+           rdfs:label "A Person - a base class for people instances."@en;
+           rdfs:subClassOf foaf:Person,
+                           pns:Tangible;
+           status:term_status "testing".
+pns:Stuff a owl:Class;
+          rdfs:comment "Generic Stuff Class  - a base class for all domain stuff"@en;
+          rdfs:isDefinedBy pns:;
+          rdfs:label "Generic Stuff Class"@en;
+          rdfs:subClassOf pni:Identifiable,
+                          pnt:Tag;
+          status:term_status "testing".
+pns:Tangible a owl:Class;
+             rdfs:comment "A base class for all tangible stuff (eg people, places, physical things)"@en;
+             rdfs:isDefinedBy pns:;
+             rdfs:label "A base Class for Tangible Stuff"@en;
+             rdfs:subClassOf pns:Stuff;
+             status:term_status "testing".
+pns:alias a owl:DatatypeProperty;
+          rdfs:comment "String property that indicates an alias of a Stuff instance. For example 'Television' might have an alias of 'TV'."@en;
+          rdfs:domain pns:Stuff;
+          rdfs:isDefinedBy pns:;
+          rdfs:label "An alias label of a Stuff instance"@en;
+          rdfs:range xsd:string;
+          rdfs:subPropertyOf rdfs:label;
+          status:term_status "testing".
+pns:comment a owl:DatatypeProperty;
+            rdfs:comment "String property that indicates the definitive description of a Stuff instance."@en;
+            rdfs:domain pns:Stuff;
+            rdfs:isDefinedBy pns:;
+            rdfs:label "The definitive description of a Stuff instance"@en;
+            rdfs:range xsd:string;
+            rdfs:subPropertyOf rdfs:comment;
+            status:term_status "testing".
+pns:dateOfBirth a owl:ObjectProperty;
+                rdfs:comment "Property of a Person. A person's date of birth"@en;
+                rdfs:domain pns:Person;
+                rdfs:isDefinedBy pns:;
+                rdfs:label "A person's date of birth"@en;
+                rdfs:range time:Instant;
+                status:term_status "testing".
+pns:dateOfDeath a owl:ObjectProperty;
+                rdfs:comment "Property of a Person. A person's date of death"@en;
+                rdfs:domain pns:Person;
+                rdfs:isDefinedBy pns:;
+                rdfs:label "A person's date of death"@en;
+                rdfs:range time:Instant;
+                status:term_status "testing".
+pns:hasAsset a owl:ObjectProperty;
+             rdfs:comment "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"@en;
+             rdfs:domain pns:Stuff;
+             rdfs:isDefinedBy pns:;
+             rdfs:label "Property that associates assets directly with domain entities."@en;
+             rdfs:range pna:Asset;
+             status:term_status "testing".
+pns:hasImage a owl:ObjectProperty;
+             rdfs:comment "Property that associates images with domain entities, e.g. official photograph, corporate logo"@en;
+             rdfs:domain pns:Stuff;
+             rdfs:isDefinedBy pns:;
+             rdfs:label "Property that associates images with domain entities."@en;
+             rdfs:range pna:Image;
+             rdfs:subPropertyOf pns:hasAsset;
+             status:term_status "testing".
+pns:label a owl:DatatypeProperty;
+          rdfs:comment "String property that indicates the definitive label of a Stuff instance. This might be the full name of a Person, Organization or something Intangible"@en;
+          rdfs:domain pns:Stuff;
+          rdfs:isDefinedBy pns:;
+          rdfs:label "The definitive label of a Stuff instance"@en;
+          rdfs:range xsd:string;
+          rdfs:subPropertyOf rdfs:label;
+          status:term_status "testing".
+pns:longName a owl:DatatypeProperty;
+             rdfs:comment "String property that indicates the long name of a Person or Organization via foaf:Agent. Also infers Stuff label via pns:label. For example 'Manchester United F.C.'"@en;
+             rdfs:domain foaf:Agent;
+             rdfs:isDefinedBy pns:;
+             rdfs:label "A long name of a Person or Organization"@en;
+             rdfs:range xsd:string;
+             rdfs:subPropertyOf pns:label;
+             status:term_status "testing".
+pns:name a owl:DatatypeProperty;
+         rdfs:comment "String property that indicates the definitive full name of a Person or Organization via foaf:Agent. Also infers Stuff label via pns:label"@en;
+         rdfs:domain foaf:Agent;
+         rdfs:isDefinedBy pns:;
+         rdfs:label "The definitive name of a Person or Organization"@en;
+         rdfs:range xsd:string;
+         rdfs:subPropertyOf foaf:name,
+                            pns:label;
+         status:term_status "testing".
+pns:notablyAssociatedWith a owl:ObjectProperty;
+                          rdfs:comment "Property that notably associates stuff together, for example Karl Lagerfeld is notably associated with Fashion"@en;
+                          rdfs:domain pns:Stuff;
+                          rdfs:isDefinedBy pns:;
+                          rdfs:label "Property that notably associates stuff together"@en;
+                          rdfs:range pns:Stuff;
+                          status:term_status "testing".
+pns:parentLocation a owl:TransitiveProperty;
+                   rdfs:comment "Property of a Location. References the parent location of this location"@en;
+                   rdfs:domain pns:Location;
+                   rdfs:isDefinedBy pns:;
+                   rdfs:label "A parent location"@en;
+                   rdfs:range pns:Location;
+                   status:term_status "testing".
+pns:placeOfBirth a owl:ObjectProperty;
+                 rdfs:comment "Property of a Person. A person's place of birth"@en;
+                 rdfs:domain pns:Person;
+                 rdfs:isDefinedBy pns:;
+                 rdfs:label "A person's place of birth"@en;
+                 rdfs:range pns:Location;
+                 rdfs:subPropertyOf pns:notablyAssociatedWith;
+                 status:term_status "testing".
+pns:shortName a owl:DatatypeProperty;
+              rdfs:comment "String property that indicates the short name of a Person or Organization via foaf:Agent. Also infers Stuff label via pns:label. For example 'Man Utd'"@en;
+              rdfs:domain foaf:Agent;
+              rdfs:isDefinedBy pns:;
+              rdfs:label "A short name of a Person or Organization"@en;
+              rdfs:range xsd:string;
+              rdfs:subPropertyOf pns:label;
+              status:term_status "testing".
+<http://uk.linkedin.com/in/jarredmcginnis> a foaf:Person;
+                                           foaf:name "Jarred McGinnis".
+<http://uk.linkedin.com/in/pauliharman> a foaf:Person;
+                                        foaf:name "Paul Harman".
+<http://uk.linkedin.com/in/paulwilton> a foaf:Person;
+                                       foaf:name "Paul Wilton".

@@ -1,0 +1,134 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix agr: <http://promsns.org/def/agr#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix nsprov: <http://www.w3.org/ns/prov#>.
+
+<http://promsns.org/def/agr> dcterms:created "2016-09-12"^^xsd:date;
+                             dcterms:creator <https://orcid.org/0000-0002-8742-7730>;
+                             dcterms:modified "2016-10-12"^^xsd:date;
+                             a owl:Ontology;
+                             rdfs:comment "This Agreements Ontology is designed to model 'agreements' which are social contracts that include licenses, laws, contracts, Memoranda of Understanding, standards and definitional metadata. Its purpose is to support data sharing by making explicit the relationships between agreements and data and agreements and Agents (people and organisations). Eventually it will also help with the interplay between different classes of agreements."@en;
+                             rdfs:label "Agreements ontology"@en;
+                             owl:imports <http://dublincore.org/2012/06/14/dcterms.rdf>,
+                                         <http://www.w3.org/2004/02/skos/core>,
+                                         <http://creativecommons.org/schema.rdf>,
+                                         <http://www.w3.org/ns/prov-o#>,
+                                         <http://www.w3.org/ns/org.ttl>;
+                             owl:versionInfo "v1.1".
+agr:Agreement a owl:Class;
+              rdfs:comment "A description of a set of required actions by particular agents. All the required actions are detailed in Requirements class objects that this is a Collection of so the Agreement is just a container"@en;
+              rdfs:label "Agreement"@en;
+              rdfs:subClassOf [owl:onProperty agr:requires ; 
+                               owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                               a owl:Restriction],
+                              skos:Collection,
+                              nsprov:Plan.
+agr:MAY a agr:RequirementLevel;
+        rdfs:label "MAY".
+agr:MUST a agr:RequirementLevel;
+         rdfs:label "MUST".
+agr:MUST_NOT a agr:RequirementLevel;
+             rdfs:label "MUST NOT".
+agr:OPTIONAL a agr:RequirementLevel;
+             rdfs:label "OPTIONAL".
+agr:RECOMMENDED a agr:RequirementLevel;
+                rdfs:label "RECOMMENDED".
+agr:REQUIRED a agr:RequirementLevel;
+             rdfs:label "REQUIRED".
+agr:Requirement a owl:Class;
+                rdfs:comment """This class is analagous to the Creative Commons ontology formerly available. According to CC, a Requirement is \"an action that may or may not be requested of you\". In this ontology, it is only \"an action that may be requested of you\""""@en;
+                rdfs:label "Requirement"@en;
+                rdfs:subClassOf [owl:onProperty agr:requirementLevel ; 
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 a owl:Restriction],
+                                skos:Concept,
+                                nsprov:Plan.
+agr:RequirementLevel a owl:Class;
+                     rdfs:comment "An RequirementLevel is the level at which an Agreement complels the Agents it affects to action. The initial instances of Imperative are taken from RFC2119."@en;
+                     rdfs:label "Requirement Level"@en;
+                     rdfs:subClassOf skos:Concept.
+agr:RequirementResolution a owl:Class;
+                          rdfs:comment "An action that resolves requirements"@en;
+                          rdfs:label "Requirement Resolution"@en;
+                          rdfs:subClassOf [owl:onProperty agr:satisfies ; 
+                                           owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                           a owl:Restriction],
+                                          skos:Concept,
+                                          nsprov:Activity.
+agr:SHALL a agr:RequirementLevel;
+          rdfs:label "SHALL".
+agr:SHALL_NOT a agr:RequirementLevel;
+              rdfs:label "SHALL NOT".
+agr:SHOULD a agr:RequirementLevel;
+           rdfs:label "SHOULD".
+agr:SHOULD_NOT a agr:RequirementLevel;
+               rdfs:label "SHOULD NOT".
+agr:hasScope a owl:ObjectProperty;
+             rdfs:comment "This property is the union (group) of all Agents indicated as being within the scope of an Agreement by the hasWithinScope property."@en;
+             rdfs:domain agr:Agreement;
+             rdfs:label "has scope"@en;
+             rdfs:range nsprov:Agent;
+             rdfs:subPropertyOf nsprov:influenced;
+             owl:inverseOf agr:scopeOf.
+agr:hasWithinScope a owl:ObjectProperty;
+                   rdfs:comment "This property indicates an Agent affected by an Agreement. It is likely that the Agent will be a group (foaf:Group) or an Organization (org:Organisation) rather than an individual person and certainly not a machine Agent. Individual Agents indicated as being affected by an Agreement via this property collectively make a group, formal or informal, that can be indicated as being the entire scope group of an Agreement via hasScopeOf property of it."@en;
+                   rdfs:domain agr:Agreement;
+                   rdfs:label "has within scope"@en;
+                   rdfs:range nsprov:Agent;
+                   rdfs:subPropertyOf nsprov:influenced;
+                   owl:inverseOf agr:withinScopeOf.
+agr:requirementLevel a owl:ObjectProperty;
+                     rdfs:comment "a Requirement has a requirementLevel of a RequirementLevel"@en;
+                     rdfs:domain agr:Requirement;
+                     rdfs:label "requirement level"@en;
+                     rdfs:range agr:RequirementLevel.
+agr:requirementOf a owl:InverseFunctionalProperty;
+                  rdfs:comment "A Requirement is a requirementOf an Agreement"@en;
+                  rdfs:domain agr:Requirement;
+                  rdfs:label "requirement of"@en;
+                  rdfs:range agr:Agreement;
+                  rdfs:subPropertyOf dcterms:isPartOf;
+                  owl:inverseOf agr:requires.
+agr:requires a owl:ObjectProperty;
+             rdfs:comment "An Agreement requires a Requirement"@en;
+             rdfs:domain agr:Agreement;
+             rdfs:label "requires"@en;
+             rdfs:range agr:Requirement;
+             rdfs:subPropertyOf dcterms:hasPart;
+             owl:inverseOf agr:requirementOf.
+agr:satisfiedBy a owl:InverseFunctionalProperty;
+                rdfs:comment "inverse of satisfies"@en;
+                rdfs:domain agr:Requirement;
+                rdfs:label "satisfied by"@en;
+                rdfs:range agr:RequirementResolution;
+                rdfs:subPropertyOf nsprov:influenced;
+                owl:inverseOf agr:satisfies.
+agr:satisfies a owl:ObjectProperty;
+              rdfs:comment "a Requirement Resolution satisfies a Requirement"@en;
+              rdfs:domain agr:RequirementResolution;
+              rdfs:label "satisfies"@en;
+              rdfs:range agr:Requirement;
+              rdfs:subPropertyOf nsprov:wasInfluencedBy;
+              owl:inverseOf agr:satisfiedBy.
+agr:scopeOf a owl:ObjectProperty;
+            rdfs:comment "inverse of hasScopeOf"@en;
+            rdfs:domain nsprov:Agent;
+            rdfs:label "scope of"@en;
+            rdfs:range agr:Agreement;
+            rdfs:subPropertyOf nsprov:wasInfluencedBy;
+            owl:inverseOf agr:hasScope.
+agr:withinScopeOf a owl:ObjectProperty;
+                  rdfs:comment "inverse of hasWithinScope"@en;
+                  rdfs:domain nsprov:Agent;
+                  rdfs:label "within scope"@en;
+                  rdfs:range agr:Agreement;
+                  rdfs:subPropertyOf nsprov:wasInfluencedBy;
+                  owl:inverseOf agr:hasWithinScope.
+<https://orcid.org/0000-0002-8742-7730> a dcterms:Agent;
+                                        rdfs:comment "Contact Nicholas on nicholas.car@ga.gov.au."@en;
+                                        rdfs:label "Nicholas Car"@en.

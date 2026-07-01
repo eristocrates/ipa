@@ -1,0 +1,949 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ocd: <http://dati.camera.it/ocd/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix geonames: <http://www.geonames.org/ontology#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+_:B6b9ae30a6f5b7aacac833fae33416ad9 a owl:AllDisjointClasses;
+                                    owl:members (ocd:organo
+                                                 ocd:organoGoverno
+                                                 ocd:dibattito
+                                                 ocd:discussione
+                                                 ocd:seduta
+                                                 ocd:intervento
+                                                 ocd:atto
+                                                 ocd:richiestaParere
+                                                 ocd:stralcio
+                                                 ocd:statoIter
+                                                 ocd:abbinamento
+                                                 ocd:assegnazione
+                                                 ocd:natura
+                                                 ocd:votazione
+                                                 ocd:voto
+                                                 ocd:membroGoverno
+                                                 ocd:governo
+                                                 ocd:elezione
+                                                 ocd:sistemaElettorale
+                                                 ocd:legislatura
+                                                 ocd:presidenteCamera
+                                                 ocd:presidenteConsiglioMinistri
+                                                 ocd:senatore
+                                                 ocd:mandatoCamera
+                                                 ocd:mandatoSenato
+                                                 ocd:ufficioParlamentare
+                                                 ocd:gruppoParlamentare
+                                                 ocd:componenteGruppoMisto
+                                                 ocd:incarico
+                                                 ocd:aic
+                                                 ocd:luogo).
+ocd: ccrel:licence <http://creativecommons.org/licenses/by-sa/3.0/>;
+     dc11:creator "Camera dei deputati";
+     dc11:description "L'ontologia Camera dei deputati è stata creata per descrivere tutte le risorse (persone, eventi, documenti) sia storiche che correnti, connesse alla Camera e alla sua attività"@it;
+     dc11:issued "2011-12-20";
+     dc11:publisher "Camera dei deputati";
+     dc11:rights "Camera dei deputati";
+     dc11:title "Ontologia Camera dei deputati"@it;
+     dcterms:modified "2012-04-26",
+                      "2013-05-02";
+     vann:preferredNamespacePrefix "ocd";
+     a <http://labs.mondeca.com/vocab/voaf#Vocabulary>,
+       owl:Ontology;
+     owl:imports <http://www.w3.org/2004/02/skos/core>,
+                 dc11:,
+                 dcterms:;
+     owl:versionInfo 1.2;
+     skos:historyNote [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Deprecata la classe incaricoGoverno"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la classe abbinamento"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la classe natura"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la classe assegnazione"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la proprietà rif_luogo"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la classe votazione"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la proprietà rif_membroGoverno"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la classe membroGoverno"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la classe stralcio"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Modificato il nome della proprietà ocd:rif_attocamera in ocd:rif_attoCamera"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la classe voto"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta le proprietà startDate e endDate subPropertyOf dc:date"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la classe luogo"],
+                      [dc11:creator "Camera dei deputati" ; 
+                       dc11:date "2 maggio 2013" ; 
+                       rdf:value "Aggiunta la classe richiestaParere"].
+ocd:DOC a owl:Class;
+        rdfs:comment """la classe contiene i documenti parlamentari stampati dalla Camera dei deputati, i cosiddetti \"DOC\" in numero romano: documenti e relazioni, trasmessi alla Camera dal Governo o da altri soggetti istituzionali ovvero predisposti da organi della Camera stessa"""@it;
+        rdfs:isDefinedBy <http://www.camera.it/168>;
+        rdfs:label "doc".
+ocd:abbinamento a owl:Class;
+                rdfs:comment "abbinamento di un atto camera con altri atti"@it;
+                rdfs:label "abbinamento";
+                owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:ac a owl:ObjectProperty;
+       rdfs:comment "puntamento alla URL dell'atto camera"@it;
+       rdfs:domain [owl:unionOf (ocd:atto
+                                 ocd:DOC
+                                 ocd:documentazione
+                                 ocd:dossier
+                                 ocd:dottrina
+                                 ocd:giurisprudenza
+                                 ocd:governo
+                                 ocd:normativa
+                                 ocd:note
+                                 ocd:pubblicistica) ; 
+                    a owl:Class];
+       rdfs:label "URL dell'atto camera".
+ocd:aderisce a owl:ObjectProperty;
+             rdfs:comment "adesione di un deputato ad un gruppo parlamentare"@it;
+             rdfs:domain ocd:deputato;
+             rdfs:label "aderisce";
+             rdfs:range ocd:adesioneGruppo.
+ocd:adesioneGruppo a owl:Class;
+                   rdfs:comment "questa classe è stata creata per gestire le adesioni dei deputati ai gruppi parlamentari"@it;
+                   rdfs:label "adesione del deputato al Gruppo Parlamentare";
+                   rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
+                                    owl:onProperty dc11:date ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty ocd:rif_gruppoParlamentare ; 
+                                    a owl:Restriction].
+ocd:adesioneGruppoMisto a owl:Class;
+                        rdfs:comment "questa classe è stata creata per gestire le adesioni del Gruppo Misto"@it;
+                        rdfs:label "adesione al Gruppo Misto";
+                        rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
+                                         owl:onProperty dc11:date ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ocd:rif_componente ; 
+                                         a owl:Restriction].
+ocd:aic a owl:Class;
+        rdfs:comment "è la classe che descrive le interrogazioni, domande che i parlamentari rivolgono al Governo per avere informazioni su fatti specifici e le interpellanze, domande che sollecitano chiarimenti sui motivi dell’azione politica del Governo"@it;
+        rdfs:isDefinedBy <http://www.camera.it/205>;
+        rdfs:label "atti di indirizzo e controllo";
+        rdfs:subClassOf ocd:lavori.
+ocd:allegatoDiscussione a owl:Class;
+                        rdfs:label "allegato ad una discussione";
+                        owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:altro_firmatario a owl:ObjectProperty;
+                     rdfs:comment "indica gli altri firmatari del documento"@it;
+                     rdfs:domain [owl:unionOf (ocd:atto
+                                               ocd:aic) ; 
+                                  a owl:Class];
+                     rdfs:label "altro firmatario";
+                     rdfs:range [owl:unionOf (ocd:deputato
+                                              ocd:membroGoverno) ; 
+                                 a owl:Class].
+ocd:appartenenzaOrgano a owl:Class;
+                       rdfs:comment "questa classe è stata creata per descrivere i membri di un organo"@it;
+                       rdfs:label "appertenenza di un deputato ad un organo";
+                       rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
+                                        owl:onProperty dc11:type ; 
+                                        a owl:Restriction],
+                                       [owl:someValuesFrom rdfs:Literal ; 
+                                        owl:onProperty dc11:description ; 
+                                        a owl:Restriction],
+                                       [owl:someValuesFrom rdfs:Literal ; 
+                                        owl:onProperty dc11:date ; 
+                                        a owl:Restriction],
+                                       [owl:onProperty ocd:rif_deputato ; 
+                                        a owl:Restriction],
+                                       [owl:onProperty ocd:rif_organo ; 
+                                        a owl:Restriction].
+ocd:approvato a owl:DatatypeProperty;
+              rdfs:domain ocd:votazione;
+              rdfs:label "approvato";
+              rdfs:range xsd:boolean;
+              owl:versionInfo "Questa proprietà è stata inserita nell'ultima versione del 2 maggio 2013".
+ocd:assegnazione a owl:Class;
+                 rdfs:comment "assegnazione dell'atto camera ad un organo"@it;
+                 rdfs:label "assegnazione";
+                 owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:assemblea a owl:Class;
+              rdfs:comment "la classe fa riferimento al  centro dell'attività della Camera,  dove si esercita la funzione legislativa, si concede o si revoca la fiducia al Governo, si discutono gli atti di indirizzo,  le interrogazioni e le interpellanze"@it;
+              rdfs:isDefinedBy <http://www.camera.it/734>;
+              rdfs:label "assemblea".
+ocd:astenuti a owl:DatatypeProperty;
+             rdfs:domain ocd:votazione;
+             rdfs:label "numero astenuti";
+             rdfs:range xsd:nonNegativeInteger;
+             owl:versionInfo "Questa proprietà è stata inserita nell'ultima versione del 2 maggio 2013".
+ocd:atto a owl:Class;
+         rdfs:comment "la classe contiene proposte e disegni di legge"@it;
+         rdfs:label "atto camera";
+         rdfs:subClassOf ocd:documenti.
+ocd:autore a owl:Class;
+           rdfs:comment "è la classe che identifica le persone autori di pubblicazioni presenti in BPR."@it;
+           rdfs:label "autore".
+ocd:bollettino a owl:Class;
+               rdfs:label "bollettino";
+               rdfs:subClassOf ocd:lavori.
+ocd:cambioDenominazione a owl:Class;
+                        rdfs:comment "questa classe è utilizzata per gestire i cambi di denominazione del Gruppo Parlamentare"@it;
+                        rdfs:label "cambio denominazione del Gruppo Parlamentare";
+                        rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
+                                         owl:onProperty dcterms:alternative ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom rdfs:Literal ; 
+                                         owl:onProperty dc11:title ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom rdfs:Literal ; 
+                                         owl:onProperty dc11:date ; 
+                                         a owl:Restriction].
+ocd:carica a owl:DatatypeProperty;
+           rdfs:comment "identifica la tipologia della carica all'interno dell'Ufficio parlamentare"@it;
+           rdfs:domain ocd:ufficioParlamentare;
+           rdfs:label "dicastero";
+           rdfs:range xsd:string.
+ocd:circoscrizionePlurieletto a owl:Class;
+                              rdfs:comment "questa classe è stata creata per gestire la descrizione di tutte le circoscrizione dei plurieletti"@it;
+                              rdfs:label "circoscrizioni per plurieletti";
+                              rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
+                                               owl:onProperty dc11:coverage ; 
+                                               a owl:Restriction].
+ocd:componente a owl:ObjectProperty;
+               rdfs:comment "proprietà utilizzata per descrivere l'adesione di un deputato ad una componente del gruppo misto"@it;
+               rdfs:domain ocd:adesioneGruppo;
+               rdfs:label "componente";
+               rdfs:range ocd:adesioneGruppoMisto.
+ocd:componenteGruppoMisto a owl:Class;
+                          rdfs:comment "componenteGruppoMisto è la classe che identifica le compononeti di cui si compone il Gruppo Misto"@it;
+                          rdfs:label "componente del Gruppo Misto".
+ocd:composizioneOrgano a owl:Class;
+                       rdfs:comment "questa classe è stata creata per descrivere i membri di un organo"@it;
+                       rdfs:label "composizione di un organo parlamentare";
+                       rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
+                                        owl:onProperty dc11:date ; 
+                                        a owl:Restriction],
+                                       [owl:onProperty ocd:rif_deputato ; 
+                                        a owl:Restriction].
+ocd:concluso a owl:DatatypeProperty;
+             rdfs:comment "per indicare lo status di un atto di indirizzo e controllo"@it;
+             rdfs:domain ocd:aic;
+             rdfs:label "costituzionale";
+             rdfs:range xsd:boolean.
+ocd:contrari a owl:DatatypeProperty;
+             rdfs:domain ocd:votazione;
+             rdfs:label "voti contrari";
+             rdfs:range xsd:nonNegativeInteger;
+             owl:versionInfo "Questa proprietà è stata inserita nell'ultima versione del 2 maggio 2013".
+ocd:convalida a owl:DatatypeProperty;
+              rdfs:comment "data di convalida del mandato camera"@it;
+              rdfs:domain ocd:mandatoCamera;
+              rdfs:label "data di convalida";
+              rdfs:range xsd:date.
+ocd:costituzionale a owl:DatatypeProperty;
+                   rdfs:comment "per indicare se un atto camera è costituzionale o ordinario"@it;
+                   rdfs:domain ocd:atto;
+                   rdfs:label "costituzionale";
+                   rdfs:range xsd:boolean.
+ocd:cronologia a owl:Class;
+               rdfs:label "cronologia".
+ocd:denominazione a owl:ObjectProperty;
+                  rdfs:comment "proprietà utilizzata per gestire i cambi di denominazione"@it;
+                  rdfs:domain [owl:unionOf (ocd:gruppoParlamentare
+                                            ocd:componenteGruppoMisto) ; 
+                               a owl:Class];
+                  rdfs:label "denominazione";
+                  rdfs:range ocd:cambioDenominazione.
+ocd:deputato a owl:Class;
+             rdfs:comment "La classe deputati comprende tutte le persone che hanno ricevuto un mandato parlamentare alla Camera"@it;
+             rdfs:isDefinedBy <http://www.camera.it/423?conoscerelacamera=2>;
+             rdfs:label "deputato";
+             rdfs:subClassOf ocd:persona.
+ocd:destinatario a owl:ObjectProperty;
+                 rdfs:comment "proprietà che designa l'organo di Governo destinatario"@it;
+                 rdfs:domain ocd:aic;
+                 rdfs:label "componente";
+                 rdfs:range ocd:organoGoverno.
+ocd:dibattito a owl:Class;
+              rdfs:label "dibattito";
+              rdfs:subClassOf ocd:lavori.
+ocd:dicastero a owl:DatatypeProperty;
+              rdfs:comment "booleano per indicare se si tratta di un dicastero"@it;
+              rdfs:domain ocd:organoGoverno;
+              rdfs:label "dicastero";
+              rdfs:range xsd:boolean.
+ocd:discussione a owl:Class;
+                rdfs:label "discussione";
+                rdfs:subClassOf ocd:lavori.
+ocd:diventa a owl:ObjectProperty;
+            rdfs:comment "propreità per gestire le trasformazione dei gruppi parlamentari"@it;
+            rdfs:domain [owl:unionOf (ocd:gruppoParlamentare
+                                      ocd:componenteGruppoMisto) ; 
+                         a owl:Class];
+            rdfs:label "diventa";
+            rdfs:range ocd:trasformazioneGruppo.
+ocd:doc a owl:ObjectProperty;
+        rdfs:comment "puntamento alla URL del DOC"@it;
+        rdfs:domain ocd:DOC;
+        rdfs:label "URL del DOC".
+ocd:documentazione a owl:Class;
+                   rdfs:label "documentazione";
+                   rdfs:subClassOf ocd:documenti.
+ocd:documenti a owl:Class;
+              rdfs:label "documenti".
+ocd:dossier a owl:Class;
+            rdfs:comment "la classe contiene i dossier di documentazione, analisi e materiali predisposti dai Servizi di documentazione della Camera a supporto dell'attività parlamentare"@it;
+            rdfs:label "dossier";
+            rdfs:subClassOf ocd:documenti.
+ocd:dottrina a owl:Class;
+             rdfs:label "dottrina";
+             rdfs:subClassOf ocd:documenti.
+ocd:elezione a owl:Class;
+             rdfs:comment "elezione è la classe che identifica i dati di elezione di un sinoglo deputato (collegio, voti, sistema elettorale)"@it;
+             rdfs:label "elezione".
+ocd:endDate a owl:DatatypeProperty;
+            rdfs:comment "estremo finale di un range di date"@it;
+            rdfs:label "data fine";
+            rdfs:subPropertyOf dc11:date;
+            owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:fa_parte_della a owl:ObjectProperty;
+                   rdfs:comment "proprietà che collega una risorsa deputato ad una specifica legislatura"@it;
+                   rdfs:domain ocd:deputato;
+                   rdfs:label "appartiene alla legislatura";
+                   rdfs:range ocd:legislatura.
+ocd:favorevoli a owl:DatatypeProperty;
+               rdfs:domain ocd:votazione;
+               rdfs:label "voti favorevoli";
+               rdfs:range xsd:nonNegativeInteger;
+               owl:versionInfo "Questa proprietà è stata inserita nell'ultima versione del 2 maggio 2013".
+ocd:giurisprudenza a owl:Class;
+                   rdfs:label "giurisprudenza";
+                   rdfs:subClassOf ocd:documenti.
+ocd:governo a owl:Class;
+            rdfs:comment "La classe fa riferimento all'istituzione cui è affidato dall'ordinamento giuridico l'esercizio della funzione esecutiva"@it;
+            rdfs:label "governo".
+ocd:griglia a owl:ObjectProperty;
+            rdfs:comment "riferimento ai concetti delle griglie tematiche di TheCa"@it;
+            rdfs:domain [owl:unionOf (ocd:aic
+                                      ocd:atto
+                                      ocd:DOC
+                                      ocd:documentazione
+                                      ocd:dottrina
+                                      ocd:giurisprudenza
+                                      ocd:risorsa_web
+                                      ocd:normativa
+                                      ocd:note
+                                      ocd:pubblicistica) ; 
+                         a owl:Class];
+            rdfs:label "griglia";
+            rdfs:range skos:Concept.
+ocd:gruppoParlamentare a owl:Class;
+                       rdfs:comment "La classe fa riferimento ai gruppi dei partiti o movimenti politici rappresentati alla Camera. Secondo il Regolamento della Camera ogni deputato deve necessariamente appartenere ad un gruppo"@it;
+                       rdfs:label "gruppo parlamentare".
+ocd:haMembro a owl:ObjectProperty;
+             rdfs:comment "propreità utilizzata per descrivere le composizioni degli organi parlamentari"@it;
+             rdfs:domain ocd:organo;
+             rdfs:label "ha membro";
+             rdfs:range ocd:composizioneOrgano.
+ocd:incarico a owl:Class;
+             rdfs:comment "è la classe che identifica gli incarichi all'interno dei gruppi parlamentari"@it;
+             rdfs:label "incarico".
+ocd:incaricoGovernativo a owl:DatatypeProperty;
+                        rdfs:comment "per indicare la qualifica di incarico di Governo ricporta"@it;
+                        rdfs:domain ocd:membroGoverno;
+                        rdfs:label "incarico governativo";
+                        rdfs:range xsd:string.
+ocd:incaricoGoverno a owl:Class;
+                    rdfs:comment "è la classe che identifica gli incarichi governativi assegnati ai deputati"@it;
+                    rdfs:label "incarico di Governo";
+                    owl:versionInfo "Questa classe è deprecata nell'ultima versione del 2 maggio 2013. E' stata sostituita dalla classe membroGoverno".
+ocd:iniziativa a owl:DatatypeProperty;
+               rdfs:comment "per indicare se l'atto camera è di iniziativa popolare, parlamentare o mista"@it;
+               rdfs:domain ocd:atto;
+               rdfs:label "iniziativa";
+               rdfs:range xsd:string.
+ocd:interim a owl:DatatypeProperty;
+            rdfs:comment "utilizzata per gestire le cariche ad interim"@it;
+            rdfs:domain ocd:membroGoverno;
+            rdfs:label "interim";
+            rdfs:range xsd:boolean.
+ocd:intervento a owl:Class;
+               rdfs:label "intervento in una discussione";
+               owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:lavori a owl:Class;
+           rdfs:label "lavori".
+ocd:lavoriPreparatori a owl:ObjectProperty;
+                      rdfs:domain ocd:lavoriPreparatoriLegge;
+                      rdfs:label "lavori preparatori";
+                      rdfs:range [owl:unionOf (ocd:atto
+                                               ocd:organoGoverno) ; 
+                                  a owl:Class].
+ocd:lavoriPreparatoriLegge a owl:Class;
+                           rdfs:comment "riferimento ai lavori preparatori di una legge"@it;
+                           rdfs:label "lavori preparatori".
+ocd:legge a owl:Class;
+          rdfs:label "legge".
+ocd:legislatura a owl:Class;
+                rdfs:comment "La classe fa riferimento al  periodo di durata del mandato parlamentare compreso fra le elezioni e lo scioglimento delle Camere. La legislatura si articola in sessioni e sedute"@it;
+                rdfs:label "legislatura".
+ocd:lex a owl:DatatypeProperty;
+        rdfs:comment "riferimento esterno alla norma ufficiale"@it;
+        rdfs:domain rdfs:Resource;
+        rdfs:label "legge";
+        rdfs:range xsd:anyURI.
+ocd:lista a owl:DatatypeProperty;
+          rdfs:comment "Lista di appartenenza"@it;
+          rdfs:label "lista";
+          rdfs:range xsd:string.
+ocd:luogo a owl:Class;
+          rdfs:label "luogo";
+          owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:maggioranza a owl:DatatypeProperty;
+                rdfs:domain ocd:votazione;
+                rdfs:label "numero maggioranza";
+                rdfs:range xsd:nonNegativeInteger;
+                owl:versionInfo "Questa proprietà è stata inserita nell'ultima versione del 2 maggio 2013".
+ocd:mandatoCamera a owl:Class;
+                  rdfs:comment "La classe fa riferimento allo status di deputato assunto da una persona  - candidato in elezioni politiche -  in seguito ad un voto popolare"@it;
+                  rdfs:label "mandato".
+ocd:mandatoSenato a owl:Class;
+                  rdfs:comment "La classe fa riferimento allo status di senatore assunto da una persona  - candidato in elezioni politiche -  in seguito ad un voto popolare"@it;
+                  rdfs:label "mandato".
+ocd:membro a owl:ObjectProperty;
+           rdfs:comment "proprietà che collega un deputato ad un organo"@it;
+           rdfs:domain ocd:deputato;
+           rdfs:label "membro";
+           rdfs:range ocd:appartenenzaOrgano.
+ocd:membroConsulta a owl:DatatypeProperty;
+                   rdfs:domain ocd:persona;
+                   rdfs:label "membro";
+                   rdfs:range xsd:boolean.
+ocd:membroGoverno a owl:Class;
+                  rdfs:comment "è la classe che identifica gli incarichi governativi assegnati ai deputati"@it;
+                  rdfs:label "membro di Governo";
+                  rdfs:subClassOf ocd:persona;
+                  owl:versionInfo "Questa classe è stata aggiunta nell'ultima versione del 2 maggio 2013".
+ocd:motivoTermine a owl:DatatypeProperty;
+                  rdfs:comment "motivo termine del mandato"@it;
+                  rdfs:domain [owl:unionOf (ocd:membroGoverno
+                                            ocd:mandatoCamera
+                                            ocd:mandatoSenato) ; 
+                               a owl:Class];
+                  rdfs:label "motivo termine mandato";
+                  rdfs:range xsd:string.
+ocd:name a owl:DatatypeProperty;
+         rdfs:comment "nome del luogo"@it;
+         rdfs:label "nome del luogo";
+         rdfs:range xsd:string;
+         rdfs:subPropertyOf geonames:name.
+ocd:natura a owl:Class;
+           rdfs:comment "natura dell'atto camera"@it;
+           rdfs:label "natura";
+           owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:nomina a owl:ObjectProperty;
+           rdfs:comment "descrive la relazione tra legislatura e assemblea"@it;
+           rdfs:domain ocd:legislatura;
+           rdfs:label "nomina";
+           rdfs:range ocd:assemblea.
+ocd:normativa a owl:Class;
+              rdfs:comment "la classe contiene le Gazzette ufficiale della Repubblica Italiana e dell'Unione Europea"@it;
+              rdfs:label "normativa";
+              rdfs:subClassOf ocd:documenti.
+ocd:note a owl:Class;
+         rdfs:label "note";
+         rdfs:subClassOf ocd:documenti.
+ocd:opzione a owl:DatatypeProperty;
+            rdfs:comment "data di opzione in una elezione"@it;
+            rdfs:domain ocd:elezione;
+            rdfs:label "data di opzione";
+            rdfs:range xsd:date.
+ocd:organo a owl:Class;
+           rdfs:label "organo".
+ocd:organoGoverno a owl:Class;
+                  rdfs:comment "la classe fa riferimento agli organi monocratici o collegiali, necessari e non, che costituiscono il governo: Presidente del Consiglio, singoli Ministri,,Consiglio dei Ministri, Consiglio di Gabinetto, Comitati di Ministri e Comitati interministeriali, Vice-presidenti del Consiglio, Ministri senza portafoglio, Sottosegretari di Stato, Vice-ministri e Commissari straordinari"@it;
+                  rdfs:label "organo governativo".
+ocd:parentADM1 a owl:DatatypeProperty;
+               rdfs:comment "primo livello di divisione amministrativa"@it;
+               rdfs:label "ADM1";
+               rdfs:range xsd:string;
+               rdfs:subPropertyOf geonames:parentADM1.
+ocd:parentADM2 a owl:DatatypeProperty;
+               rdfs:comment "secondo livello di divisione amministrativa"@it;
+               rdfs:label "ADM2";
+               rdfs:range xsd:string;
+               rdfs:subPropertyOf geonames:parentADM2.
+ocd:parentADM3 a owl:DatatypeProperty;
+               rdfs:comment "terzo livello di divisione amministrativa"@it;
+               rdfs:label "ADM3";
+               rdfs:range xsd:string;
+               rdfs:subPropertyOf geonames:parentADM3.
+ocd:parentCountry a owl:DatatypeProperty;
+                  rdfs:comment "nazione"@it;
+                  rdfs:label "parentCountry";
+                  rdfs:range xsd:string;
+                  rdfs:subPropertyOf geonames:parentCountry.
+ocd:persona a owl:Class;
+            rdfs:comment "è la classe che identifica la persona che ha svolto qualche ruolo all'interno della Camera dei deputati. La persona che ha un mandato parlamentare è anche un deputato. Ad una persona possono corripondere 0-n deputati."@it;
+            rdfs:label "persona";
+            owl:sameAs foaf:Person.
+ocd:plurieletto a owl:ObjectProperty;
+                rdfs:comment "proprietà utilizzata per descrivere tutte le circoscrizioni di elezione di un plurieletto"@it;
+                rdfs:domain ocd:elezione;
+                rdfs:label "plurieletto";
+                rdfs:range ocd:circoscrizionePlurieletto.
+ocd:presenti a owl:DatatypeProperty;
+             rdfs:domain ocd:votazione;
+             rdfs:label "numero presenti";
+             rdfs:range xsd:nonNegativeInteger;
+             owl:versionInfo "Questa proprietà è stata inserita nell'ultima versione del 2 maggio 2013".
+ocd:presidenteCamera a owl:Class;
+                     rdfs:label "presidente della Camera dei deputati".
+ocd:presidenteConsiglioMinistri a owl:Class;
+                                rdfs:label "presidente del Consiglio dei ministri".
+ocd:presidenteRepubblica a owl:Class;
+                         rdfs:label "presidente della Repubblica".
+ocd:primo_firmatario a owl:ObjectProperty;
+                     rdfs:comment "indica il primo firmatario del documento"@it;
+                     rdfs:domain [owl:unionOf (ocd:atto
+                                               ocd:DOC
+                                               ocd:aic) ; 
+                                  a owl:Class];
+                     rdfs:label "primo firmatario";
+                     rdfs:range [owl:unionOf (ocd:deputato
+                                              ocd:membroGoverno) ; 
+                                 a owl:Class].
+ocd:proclamazione a owl:Class;
+                  rdfs:comment "questa classe è stata creata per gestire subentri e sostituzioni nel mandato camera"@it;
+                  rdfs:label "proclamazione";
+                  rdfs:subClassOf [owl:onProperty ocd:rif_deputato ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom rdfs:Literal ; 
+                                   owl:onProperty dc11:type ; 
+                                   a owl:Restriction].
+ocd:pubblicistica a owl:Class;
+                  rdfs:label "pubblicistica";
+                  rdfs:subClassOf ocd:documenti.
+ocd:relatore a owl:Class;
+             rdfs:label "relatore di un atto camera";
+             owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:richiestaFiducia a owl:DatatypeProperty;
+                     rdfs:domain ocd:votazione;
+                     rdfs:label "richiesta della fiducia";
+                     rdfs:range xsd:boolean;
+                     owl:versionInfo "Questa proprietà è stata inserita nell'ultima versione del 2 maggio 2013".
+ocd:richiestaParere a owl:Class;
+                    rdfs:comment "richiesta del parere su un atto camera ad un organo"@it;
+                    rdfs:label "richiesta parere";
+                    owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:rif_abbinamento a owl:ObjectProperty;
+                    rdfs:domain ocd:atto;
+                    rdfs:label "riferimento all'abbinamento dell'atto camera con altri atti";
+                    rdfs:range ocd:abbinamento;
+                    owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_allegatoDiscussione a owl:ObjectProperty;
+                            rdfs:domain ocd:discussione;
+                            rdfs:label "riferimento all'allegato di una discussione";
+                            rdfs:range ocd:allegatoDiscussione;
+                            owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_assegnazione a owl:ObjectProperty;
+                     rdfs:domain ocd:atto;
+                     rdfs:label "riferimento all'assegnazione dell'atto camera";
+                     rdfs:range ocd:assegnazione;
+                     owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_attoCamera a owl:ObjectProperty;
+                   rdfs:comment "riferimento agli altri atti camera citati"@it;
+                   rdfs:domain [owl:unionOf (ocd:atto
+                                             ocd:cronologia
+                                             ocd:dibattito
+                                             ocd:documentazione
+                                             ocd:lavoriPreparatoriLegge) ; 
+                                a owl:Class];
+                   rdfs:label "riferimento all'atto camera";
+                   rdfs:range ocd:atto.
+ocd:rif_bollettino a owl:ObjectProperty;
+                   rdfs:domain ocd:seduta;
+                   rdfs:label "riferimento al bollettino";
+                   rdfs:range ocd:bollettino.
+ocd:rif_deputato a owl:ObjectProperty;
+                 rdfs:comment "proprietà generica utilizzata per puntare alla risorsa deputato in vari punti dell'ontologia"@it;
+                 rdfs:domain [owl:unionOf (ocd:persona
+                                           ocd:incarico
+                                           ocd:presidenteCamera
+                                           ocd:ufficioParlamentare
+                                           ocd:mandatoCamera
+                                           ocd:cronologia
+                                           ocd:discussione
+                                           ocd:intervento
+                                           ocd:relatore
+                                           ocd:voto) ; 
+                              a owl:Class];
+                 rdfs:label "rierimento a deputato";
+                 rdfs:range ocd:deputato.
+ocd:rif_dibattito a owl:ObjectProperty;
+                  rdfs:domain [owl:unionOf (ocd:assegnazione
+                                            ocd:richiestaParere) ; 
+                               a owl:Class];
+                  rdfs:label "riferimento al dibattito";
+                  rdfs:range ocd:dibattito;
+                  owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_discussione a owl:ObjectProperty;
+                    rdfs:comment "un dabattito può avere più discussioni"@it;
+                    rdfs:domain ocd:dibattito;
+                    rdfs:label "riferimento alla discussione";
+                    rdfs:range ocd:discussione.
+ocd:rif_doc a owl:ObjectProperty;
+            rdfs:comment "un doc può fare riferimento ad un altro DOC"@it;
+            rdfs:domain [owl:unionOf (ocd:DOC
+                                      ocd:dibattito) ; 
+                         a owl:Class];
+            rdfs:label "riferimento al doc";
+            rdfs:range ocd:DOC.
+ocd:rif_dossier a owl:ObjectProperty;
+                rdfs:comment "riferimento ad un altro dossier citato nell'atto camera"@it;
+                rdfs:domain [owl:unionOf (ocd:atto) ; 
+                             a owl:Class];
+                rdfs:label "riferimento al dossier";
+                rdfs:range ocd:dossier.
+ocd:rif_elezione a owl:ObjectProperty;
+                 rdfs:domain ocd:mandatoCamera;
+                 rdfs:label "riferimento all'elezione";
+                 rdfs:range ocd:elezione.
+ocd:rif_governo a owl:ObjectProperty;
+                rdfs:comment "riferimento al Governo"@it;
+                rdfs:domain [owl:unionOf (ocd:organoGoverno
+                                          ocd:legislatura
+                                          ocd:atto
+                                          ocd:membroGoverno
+                                          ocd:DOC
+                                          ocd:presidenteConsiglioMinistri) ; 
+                             a owl:Class];
+                rdfs:label "riferimento al governo";
+                rdfs:range ocd:governo.
+ocd:rif_gruppoParlamentare a owl:ObjectProperty;
+                           rdfs:comment "riferimento al Gruppo parlamentare"@it;
+                           rdfs:domain [owl:unionOf (ocd:componenteGruppoMisto
+                                                     ocd:incarico
+                                                     ocd:voto) ; 
+                                        a owl:Class];
+                           rdfs:label "riferimento al Gruppo parlamentare";
+                           rdfs:range ocd:gruppoParlamentare.
+ocd:rif_incarico a owl:ObjectProperty;
+                 rdfs:comment "riferimento all'incarico nel Gruppo parlamentare"@it;
+                 rdfs:domain [owl:unionOf (ocd:gruppoParlamentare
+                                           ocd:deputato) ; 
+                              a owl:Class];
+                 rdfs:label "riferimento all'incarico";
+                 rdfs:range ocd:incarico.
+ocd:rif_incaricoGoverno a owl:ObjectProperty;
+                        rdfs:domain [owl:unionOf (ocd:deputato
+                                                  ocd:governo
+                                                  ocd:organoGoverno
+                                                  ocd:persona) ; 
+                                     a owl:Class];
+                        rdfs:label "riferimento all'incarico di Governo";
+                        rdfs:range ocd:incaricoGoverno;
+                        owl:versionInfo "Questa proprietà è deprecata nell'ultima versione del 2 maggio 2013".
+ocd:rif_intervento a owl:ObjectProperty;
+                   rdfs:domain ocd:discussione;
+                   rdfs:label "riferimento all'intervento del deputato o del membro di governo in una discussione";
+                   rdfs:range ocd:intervento;
+                   owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_leg a owl:ObjectProperty;
+            rdfs:comment "proprietà generica utilizzata ovunque tra le risorse per specificare l'appartenenza ad una legislatura"@it;
+            rdfs:domain [owl:unionOf (ocd:mandatoCamera
+                                      ocd:organo
+                                      ocd:governo
+                                      ocd:assemblea
+                                      ocd:aic
+                                      ocd:atto
+                                      ocd:cronologia
+                                      ocd:dibattito
+                                      ocd:DOC
+                                      ocd:documentazione
+                                      ocd:dottrina
+                                      ocd:elezione
+                                      ocd:giurisprudenza
+                                      ocd:gruppoParlamentare
+                                      ocd:incarico
+                                      ocd:membroGoverno
+                                      ocd:legge
+                                      ocd:risorsa_web
+                                      ocd:normativa
+                                      ocd:note
+                                      ocd:presidenteCamera
+                                      ocd:pubblicistica
+                                      ocd:sistemaElettorale
+                                      ocd:seduta
+                                      ocd:ufficioParlamentare
+                                      ocd:componenteGruppoMisto) ; 
+                         a owl:Class];
+            rdfs:label "riferimento alla legislatura";
+            rdfs:range ocd:legislatura.
+ocd:rif_luogo a owl:ObjectProperty;
+              rdfs:domain ocd:persona;
+              rdfs:label "riferimento al luogo";
+              rdfs:range ocd:luogo;
+              owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_mandatoCamera a owl:ObjectProperty;
+                      rdfs:comment "serve a collegare il deputato al mandato elettorale"@it;
+                      rdfs:domain [owl:unionOf (ocd:deputato
+                                                ocd:persona) ; 
+                                   a owl:Class];
+                      rdfs:label "riferimento a mandato camera";
+                      rdfs:range ocd:mandatoCamera.
+ocd:rif_mandatoSenato a owl:ObjectProperty;
+                      rdfs:comment "serve a collegare il deputato al mandato di senatore"@it;
+                      rdfs:domain [owl:unionOf (ocd:senatore
+                                                ocd:persona) ; 
+                                   a owl:Class];
+                      rdfs:label "riferimento a mandato senato";
+                      rdfs:range ocd:mandatoSenato.
+ocd:rif_membroGoverno a owl:ObjectProperty;
+                      rdfs:domain [owl:unionOf (ocd:deputato
+                                                ocd:governo
+                                                ocd:organoGoverno
+                                                ocd:persona) ; 
+                                   a owl:Class];
+                      rdfs:label "riferimento al membro di Governo";
+                      rdfs:range ocd:membroGoverno;
+                      owl:versionInfo "Questa proprietà è stata aggiunta nell'ultima versione del 2 maggio 2013".
+ocd:rif_natura a owl:ObjectProperty;
+               rdfs:domain ocd:atto;
+               rdfs:label "riferimento alla natura dell'atto camera";
+               rdfs:range ocd:natura;
+               owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_organo a owl:ObjectProperty;
+               rdfs:comment "puntamento all'organo parlamentare citato"@it;
+               rdfs:domain [owl:unionOf (ocd:ufficioParlamentare
+                                         ocd:dibattito
+                                         ocd:DOC
+                                         ocd:seduta
+                                         ocd:assegnazione
+                                         ocd:richiestaParere) ; 
+                            a owl:Class];
+               rdfs:label "riferimento all'organo";
+               rdfs:range ocd:organo.
+ocd:rif_organoGoverno a owl:ObjectProperty;
+                      rdfs:comment "proprietà utilizzata all'interno degli incarichi di governo per puntare all'organo di governo"@it;
+                      rdfs:domain [owl:unionOf (ocd:membroGoverno
+                                                ocd:atto) ; 
+                                   a owl:Class];
+                      rdfs:label "riferimento all'organo di governo";
+                      rdfs:range ocd:organoGoverno.
+ocd:rif_persona a owl:ObjectProperty;
+                rdfs:comment "propreità generica utilizzata per puntare ad una risorsa persona"@it;
+                rdfs:domain [owl:unionOf (ocd:discussione
+                                          ocd:membroGoverno
+                                          ocd:presidenteCamera
+                                          ocd:presidenteConsiglioMinistri
+                                          ocd:cronologia) ; 
+                             a owl:Class];
+                rdfs:label "riferimento a persona";
+                rdfs:range ocd:persona.
+ocd:rif_presidenteConsiglioMinistri a owl:ObjectProperty;
+                                    rdfs:domain [owl:unionOf (ocd:governo
+                                                              ocd:persona) ; 
+                                                 a owl:Class];
+                                    rdfs:label "rierimento al Presidente del Consiglio dei ministri";
+                                    rdfs:range ocd:presidenteConsiglioMinistri.
+ocd:rif_richiestaParere a owl:ObjectProperty;
+                        rdfs:domain ocd:atto;
+                        rdfs:label "riferimento alla richesta dei pareri su un atto camera";
+                        rdfs:range ocd:richiestaParere;
+                        owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_seduta a owl:ObjectProperty;
+               rdfs:comment "in una seduta si svolgono più discussioni"@it;
+               rdfs:domain [owl:unionOf (ocd:discussione
+                                         ocd:aic
+                                         ocd:bollettino
+                                         ocd:votazione) ; 
+                            a owl:Class];
+               rdfs:label "riferimento alla seduta";
+               rdfs:range ocd:seduta.
+ocd:rif_senatore a owl:ObjectProperty;
+                 rdfs:comment "proprietà utilizzata all'interno degli incarichi di governo per puntare all'organo di governo"@it;
+                 rdfs:domain [owl:unionOf (ocd:mandatoSenato
+                                           ocd:ufficioParlamentare) ; 
+                              a owl:Class];
+                 rdfs:label "riferimento al senatore";
+                 rdfs:range ocd:senatore.
+ocd:rif_sistemaElettorale a owl:ObjectProperty;
+                          rdfs:comment "questa proprietà collega ogni legislatura ad un sistema elettorale"@it;
+                          rdfs:domain [owl:unionOf (ocd:legislatura
+                                                    ocd:elezione) ; 
+                                       a owl:Class];
+                          rdfs:label "riferimento al sistema elettorale";
+                          rdfs:range ocd:sistemaElettorale.
+ocd:rif_statoIter a owl:ObjectProperty;
+                  rdfs:domain ocd:atto;
+                  rdfs:label "riferimento allo stato iter di un atto camera";
+                  rdfs:range ocd:statoIter;
+                  owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_trasmissione a owl:ObjectProperty;
+                     rdfs:domain ocd:atto;
+                     rdfs:label "riferimento alla trasmissione di un atto camera all'altro ramo del parlamento";
+                     rdfs:range ocd:trasmissione;
+                     owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_ufficioParlamentare a owl:ObjectProperty;
+                            rdfs:comment "propreità che collega un organo agli uffici parlamentari"@it;
+                            rdfs:domain [owl:unionOf (ocd:organo
+                                                      ocd:deputato) ; 
+                                         a owl:Class];
+                            rdfs:label "riferimento ufficio parlamentare";
+                            rdfs:range ocd:ufficioParlamentare.
+ocd:rif_unitaOrganizzativa a owl:ObjectProperty;
+                           rdfs:comment "puntamento dei documenti ad una unità organizzativa all'interno della struttura camera"@it;
+                           rdfs:domain [owl:unionOf (ocd:aic
+                                                     ocd:atto
+                                                     ocd:DOC
+                                                     ocd:documentazione
+                                                     ocd:dottrina
+                                                     ocd:risorsa_web
+                                                     ocd:note) ; 
+                                        a owl:Class];
+                           rdfs:label "unità organizzativa";
+                           rdfs:range ocd:unitaOrganizzativa.
+ocd:rif_versioneTestoAtto a owl:ObjectProperty;
+                          rdfs:domain [owl:unionOf (ocd:assegnazione
+                                                    ocd:abbinamento
+                                                    ocd:richiestaParere
+                                                    ocd:atto
+                                                    ocd:stralcio
+                                                    ocd:statoIter) ; 
+                                       a owl:Class];
+                          rdfs:label "riferimento alla versione del testo dell'atto camera";
+                          rdfs:range ocd:versioneTestoAtto;
+                          owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:rif_votazione a owl:ObjectProperty;
+                  rdfs:domain ocd:voto;
+                  rdfs:label "riferimento alla votazione";
+                  rdfs:range ocd:votazione;
+                  owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:risorsa_web a owl:Class;
+                rdfs:label "risorsa_web".
+ocd:risposta a owl:ObjectProperty;
+             rdfs:domain ocd:aic;
+             rdfs:label "riferimento alla risposta scritta all'interrogazione";
+             rdfs:range ocd:rispostaAIC.
+ocd:rispostaAIC a owl:Class;
+                rdfs:comment "classe usata per individuare le risposte scritte alle interrogazioni parlamentari"@it;
+                rdfs:label "risposta scritta alle interrogazioni".
+ocd:ruolo a owl:DatatypeProperty;
+          rdfs:comment "ruolo ricoperto"@it;
+          rdfs:domain [owl:unionOf (ocd:atto
+                                    ocd:deputato
+                                    ocd:incarico
+                                    ocd:persona) ; 
+                       a owl:Class];
+          rdfs:label "ruolo";
+          rdfs:range xsd:string.
+ocd:seduta a owl:Class;
+           rdfs:label "seduta";
+           rdfs:subClassOf ocd:lavori.
+ocd:senatore a owl:Class;
+             rdfs:label "senatore";
+             rdfs:subClassOf ocd:persona.
+ocd:siComponeDi a owl:ObjectProperty;
+                rdfs:comment "proprietà utilizzata per descrivere la composizione dei deputati nell'assemblea e nei gruppi e degli orgnao nelle legislature"@it;
+                rdfs:domain [owl:unionOf (ocd:assemblea
+                                          ocd:componenteGruppoMisto
+                                          ocd:legislatura
+                                          ocd:gruppoParlamentare) ; 
+                             a owl:Class];
+                rdfs:label "si compone di";
+                rdfs:range [owl:unionOf (ocd:organo
+                                         ocd:deputato) ; 
+                            a owl:Class].
+ocd:sistemaElettorale a owl:Class;
+                      rdfs:comment """La classe contiene le normative applicate nelle consultazioni elettorali dal regno di Sardegna alla Repubblica: maggioritario uninominale (1848 - 1880); maggioritario: scrutinio di lista (1882 - 1890); maggioritario: uninominale (1892 - 1913); proporzionale (1919 - 1921); lista unica (1929 - 1934); 
+proporzionale (1946 - 1993); misto: maggioritario e proporzionale (1994-2005); proporzionale con premio di maggioranza (2006-2011)"""@it;
+                      rdfs:label "sistema elettorale".
+ocd:startDate a owl:DatatypeProperty;
+              rdfs:comment "estremo iniziale di un range di date"@it;
+              rdfs:label "data inizio";
+              rdfs:subPropertyOf dc11:date;
+              owl:versionInfo "proprietà aggiunta nella versione del 2 maggio 2013".
+ocd:statoIter a owl:Class;
+              rdfs:comment "stato dell'iter dell'atto camera"@it;
+              rdfs:label "stato iter";
+              owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:stralcio a owl:Class;
+             rdfs:comment "stralcio di un atto camera"@it;
+             rdfs:label "stralcio";
+             owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:tipoElezione a owl:DatatypeProperty;
+                 rdfs:domain ocd:elezione;
+                 rdfs:label "tipo di elezione";
+                 rdfs:range xsd:string.
+ocd:tipoProclamazione a owl:ObjectProperty;
+                      rdfs:comment "propreità utilizzata per descrivere la tipologia di proclamazione legata ad un mandato elettorale (per sostituzione, subentro, ...)"@it;
+                      rdfs:domain ocd:mandatoCamera;
+                      rdfs:label "tipologia proclamazione";
+                      rdfs:range ocd:proclamazione.
+ocd:tipologia a owl:Class;
+              rdfs:label "tipologia documentaria".
+ocd:trasformazioneGruppo a owl:Class;
+                         rdfs:comment "classe per gestire scissioni, accorpamenti, promozioni o riduzione a componente dei Gruppi Parlamentari"@it;
+                         rdfs:label "trasformazione del Gruppo Parlamentare";
+                         rdfs:subClassOf [owl:onProperty ocd:rif_gruppoParlamentare ; 
+                                          a owl:Restriction],
+                                         [owl:someValuesFrom rdfs:Literal ; 
+                                          owl:onProperty dc11:type ; 
+                                          a owl:Restriction],
+                                         [owl:someValuesFrom rdfs:Literal ; 
+                                          owl:onProperty dc11:date ; 
+                                          a owl:Restriction].
+ocd:trasmissione a owl:Class;
+                 rdfs:label "trasmissione";
+                 owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:ufficioParlamentare a owl:Class;
+                        rdfs:comment "ufficioParlamentare è la classe che identifica tutte le cariche ricoperte dai deputati negli organi parlamentari"@it;
+                        rdfs:label "ufficio Parlamentare".
+ocd:unitaOrganizzativa a owl:Class;
+                       rdfs:comment "unitaOrganizzativa è la classe che identifica i dipartimenti/uffici in cui si struttura la Camera dei Deputati"@it;
+                       rdfs:label "unità organizzativa".
+ocd:versioneTestoAtto a owl:Class;
+                      rdfs:label "versione testo atto camera";
+                      owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:votanti a owl:DatatypeProperty;
+            rdfs:domain ocd:votazione;
+            rdfs:label "numero votanti";
+            rdfs:range xsd:nonNegativeInteger;
+            owl:versionInfo "Questa proprietà è stata inserita nell'ultima versione del 2 maggio 2013".
+ocd:votazione a owl:Class;
+              rdfs:label "votazione";
+              owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".
+ocd:votazioneFinale a owl:DatatypeProperty;
+                    rdfs:domain ocd:votazione;
+                    rdfs:label "votazione finale";
+                    rdfs:range xsd:boolean;
+                    owl:versionInfo "Questa proprietà è stata inserita nell'ultima versione del 2 maggio 2013".
+ocd:votazioneSegreta a owl:DatatypeProperty;
+                     rdfs:domain ocd:votazione;
+                     rdfs:label "votazione segreta";
+                     rdfs:range xsd:boolean;
+                     owl:versionInfo "Questa proprietà è stata inserita nell'ultima versione del 2 maggio 2013".
+ocd:voto a owl:Class;
+         rdfs:label "voto del deputato in una votazione";
+         owl:versionInfo "classe aggiunta nella versione del 2 maggio 2013".

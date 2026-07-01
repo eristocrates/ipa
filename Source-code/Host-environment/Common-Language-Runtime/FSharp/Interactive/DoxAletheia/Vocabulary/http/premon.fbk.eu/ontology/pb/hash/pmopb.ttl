@@ -1,0 +1,284 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix pmo: <http://premon.fbk.eu/ontology/core#>.
+@prefix pmopb: <http://premon.fbk.eu/ontology/pb#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://premon.fbk.eu/ontology/pb> dcterms:creator "Francesco Corcoglioniti",
+                                                   "Marco Rospocher <https://dkm.fbk.eu/rospocher>";
+                                   dcterms:description <http://premon.fbk.eu/images/pb.svg>,
+                                                       """We define classes [pmopb:Roleset](http://premon.fbk.eu/ontology/pb#Roleset) and [pmopb:SemanticRole](http://premon.fbk.eu/ontology/pb#SemanticRole) as subclasses of [pmo:SemanticClass](http://premon.fbk.eu/ontology/core#SemanticClass) and [pmo:SemanticRole](http://premon.fbk.eu/ontology/core#SemanticRole), respectively.
+
+Each [pmopb:SemanticRole](http://premon.fbk.eu/ontology/pb#SemanticRole) instance is related (via property [pmopb:argument](http://premon.fbk.eu/ontology/pb#argument)) to exactly one [pmopb:Argument](http://premon.fbk.eu/ontology/pb#Argument), which is defined as the disjoint union of three subclasses: 
+
+* [pmopb:NumberedArgument](http://premon.fbk.eu/ontology/pb#NumberedArgument), containing the individuals corresponding to numbered arguments (e.g., *Arg0*, *Arg1*); 
+* [pmopb:Modifier](http://premon.fbk.eu/ontology/pb#Modifier), containing the
+individuals corresponding to modifiers (e.g., *ArgM-LOC*, *ArgM-TMP*). While PB annotation guidelines define a single modifier (*ArgM*) with multiple function tags (e.g., *LOC*, *TMP*), we opt to specialize the modifier for each function tag, similarly to the way these arguments are actually annotated by state-of-the-art SRL tools; and, 
+* [pmopb:SecondaryAgent](http://premon.fbk.eu/ontology/pb#SecondaryAgent), containing the single individual annotating secondary agents (*ArgA*). 
+
+Property [pmopb:tag](http://premon.fbk.eu/ontology/pb#tag) enables associating possible tags, either a [pmopb:Modifier](http://premon.fbk.eu/ontology/pb#Modifier) or some additional tag defined in class [pmopb:Tag](http://premon.fbk.eu/ontology/pb#Tag), to [pmopb:SemanticRole](http://premon.fbk.eu/ontology/pb#SemanticRole)s, or [nif:Annotation](http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#Annotation)s of semantic roles in examples.
+
+Additional classes (and related properties) are defined to represent inflectional information about examples: [pmopb:Inflection](http://premon.fbk.eu/ontology/pb#Inflection), [pmopb:Person](http://premon.fbk.eu/ontology/pb#Person), [pmopb:Tense](http://premon.fbk.eu/ontology/pb#Tense), [pmopb:Aspect](http://premon.fbk.eu/ontology/pb#Aspect), [pmopb:Voice](http://premon.fbk.eu/ontology/pb#Voice), and [pmopb:Form](http://premon.fbk.eu/ontology/pb#Form)."""@en;
+                                   dcterms:issued "2015-10-28"^^xsd:date;
+                                   dcterms:license <http://creativecommons.org/licenses/by-sa/4.0/>;
+                                   dcterms:modified "2017-05-01"^^xsd:date;
+                                   dcterms:publisher "DKM, Fondazione Bruno Kessler <http://dkm.fbk.eu/>";
+                                   dcterms:rights "This ontology is licensed under CC-BY-SA <http://creativecommons.org/licenses/by-sa/4.0/>"@en;
+                                   dcterms:title "Predicate Model for Ontologies (PreMOn) - PropBank ontology module"@en;
+                                   vann:preferredNamespacePrefix "pmopb";
+                                   vann:preferredNamespaceUri "http://premon.fbk.eu/ontology/pb#";
+                                   a owl:Ontology;
+                                   rdfs:comment "The PropBank module of the PreMOn ontology extends the core module for representing concepts specific to PropBank. The modelling is based on the [PropBank guidelines] (http://clear.colorado.edu/compsem/documents/propbank_guidelines.pdf)."@en;
+                                   rdfs:isDefinedBy <http://premon.fbk.eu/ontology/pb.ttl>;
+                                   owl:imports <http://premon.fbk.eu/ontology/core>,
+                                               <http://www.w3.org/ns/lemon/ontolex>;
+                                   owl:versionInfo "2017a".
+pmopb:Argument a owl:Class;
+               rdfs:label "Argument (PB)"@en;
+               rdfs:subClassOf skos:Concept;
+               owl:equivalentClass [owl:unionOf (pmopb:Modifier
+                                                 pmopb:NumberedArgument
+                                                 pmopb:SecondaryAgent) ; 
+                                    a owl:Class].
+pmopb:Aspect a owl:Class;
+             rdfs:label "Aspect"@en;
+             rdfs:subClassOf [owl:oneOf (pmopb:perfect
+                                         pmopb:progressive) ; 
+                              a owl:Class].
+pmopb:Form a owl:Class;
+           rdfs:label "Form"@en;
+           rdfs:subClassOf [owl:oneOf (pmopb:gerund
+                                       pmopb:full
+                                       pmopb:participle
+                                       pmopb:infinitive) ; 
+                            a owl:Class].
+pmopb:Inflection a owl:Class;
+                 rdfs:label "Inflection"@en.
+pmopb:Modifier a owl:Class;
+               rdfs:label "Modifier (PB)"@en;
+               rdfs:subClassOf [owl:oneOf (pmopb:argm-lvb
+                                           pmopb:argm-cau
+                                           pmopb:argm-tmp
+                                           pmopb:argm-rcl
+                                           pmopb:argm-loc
+                                           pmopb:argm-gol
+                                           pmopb:argm-mod
+                                           pmopb:argm-prd
+                                           pmopb:argm-com
+                                           pmopb:argm-dsp
+                                           pmopb:argm-ext
+                                           pmopb:argm-adj
+                                           pmopb:argm-pnc
+                                           pmopb:argm-slc
+                                           pmopb:argm-neg
+                                           pmopb:argm-rec
+                                           pmopb:argm-dis
+                                           pmopb:argm-prp
+                                           pmopb:argm-dir
+                                           pmopb:argm-adv
+                                           pmopb:argm-mnr
+                                           pmopb:argm-prn
+                                           pmopb:argm-cxn
+                                           pmopb:argm-vsp) ; 
+                                a owl:Class],
+                               pmopb:Argument;
+               owl:disjointWith pmopb:NumberedArgument,
+                                pmopb:SecondaryAgent.
+pmopb:NumberedArgument a owl:Class;
+                       rdfs:label "Numbered Argument (PB)"@en;
+                       rdfs:subClassOf [owl:oneOf (pmopb:arg4
+                                                   pmopb:arg3
+                                                   pmopb:arg2
+                                                   pmopb:arg1
+                                                   pmopb:arg0
+                                                   pmopb:arg5
+                                                   pmopb:arg6) ; 
+                                        a owl:Class],
+                                       pmopb:Argument;
+                       owl:disjointWith pmopb:SecondaryAgent.
+pmopb:Person a owl:Class;
+             rdfs:label "Person"@en;
+             rdfs:subClassOf [owl:oneOf (pmopb:other
+                                         pmopb:third) ; 
+                              a owl:Class].
+pmopb:Roleset a owl:Class;
+              rdfs:label "Roleset (PB)"@en;
+              rdfs:subClassOf [owl:onProperty pmo:semRole ; 
+                               owl:allValuesFrom pmopb:SemanticRole ; 
+                               a owl:Restriction],
+                              pmo:SemanticClass.
+pmopb:SecondaryAgent a owl:Class;
+                     rdfs:label "Secondary Agent"@en;
+                     rdfs:subClassOf pmopb:Argument.
+pmopb:SemanticRole a owl:Class;
+                   rdfs:label "Semantic Role (PB)"@en;
+                   rdfs:subClassOf [owl:someValuesFrom pmopb:Argument ; 
+                                    owl:onProperty pmopb:argument ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty [owl:inverseOf pmo:semRole] ; 
+                                    owl:allValuesFrom pmopb:Roleset ; 
+                                    a owl:Restriction],
+                                   pmo:SemanticRole.
+pmopb:Tag a owl:Class;
+          rdfs:label "Tag"@en.
+pmopb:Tense a owl:Class;
+            rdfs:label "Tense"@en;
+            rdfs:subClassOf [owl:oneOf (pmopb:future
+                                        pmopb:past
+                                        pmopb:present) ; 
+                             a owl:Class].
+pmopb:Voice a owl:Class;
+            rdfs:label "Voice"@en;
+            rdfs:subClassOf [owl:oneOf (pmopb:passive
+                                        pmopb:active) ; 
+                             a owl:Class].
+pmopb:active a owl:NamedIndividual,
+               pmopb:Voice.
+pmopb:arg0 a owl:NamedIndividual,
+             pmopb:NumberedArgument.
+pmopb:arg1 a owl:NamedIndividual,
+             pmopb:NumberedArgument.
+pmopb:arg2 a owl:NamedIndividual,
+             pmopb:NumberedArgument.
+pmopb:arg3 a owl:NamedIndividual,
+             pmopb:NumberedArgument.
+pmopb:arg4 a owl:NamedIndividual,
+             pmopb:NumberedArgument.
+pmopb:arg5 a owl:NamedIndividual,
+             pmopb:NumberedArgument.
+pmopb:arg6 a owl:NamedIndividual,
+             pmopb:NumberedArgument.
+pmopb:arga a owl:NamedIndividual,
+             pmopb:SecondaryAgent.
+pmopb:argm-adj a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-adv a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-cau a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-com a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-cxn a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-dir a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-dis a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-dsp a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-ext a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-gol a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-loc a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-lvb a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-mnr a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-mod a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-neg a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-pnc a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-prd a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-prn a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-prp a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-rcl a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-rec a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-slc a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-tmp a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argm-vsp a owl:NamedIndividual,
+                 pmopb:Modifier.
+pmopb:argument a owl:FunctionalProperty,
+                 owl:ObjectProperty;
+               rdfs:domain pmopb:SemanticRole;
+               rdfs:label "argument"@en;
+               rdfs:range pmopb:Argument.
+pmopb:aspect a owl:ObjectProperty;
+             rdfs:domain pmopb:Inflection;
+             rdfs:label "aspect"@en;
+             rdfs:range pmopb:Aspect.
+pmopb:core a owl:FunctionalProperty,
+             owl:DatatypeProperty;
+           rdfs:comment "Set to true if the semantic role explicitly occurs in a frame file"@en;
+           rdfs:domain pmo:SemanticRole;
+           rdfs:label "core"@en;
+           rdfs:range xsd:boolean.
+pmopb:form a owl:FunctionalProperty,
+             owl:ObjectProperty;
+           rdfs:domain pmopb:Inflection;
+           rdfs:label "form"@en;
+           rdfs:range pmopb:Form.
+pmopb:full a owl:NamedIndividual,
+             pmopb:Form.
+pmopb:future a owl:NamedIndividual,
+               pmopb:Tense.
+pmopb:gerund a owl:NamedIndividual,
+               pmopb:Form.
+pmopb:infinitive a owl:NamedIndividual,
+                   pmopb:Form.
+pmopb:inflection a owl:FunctionalProperty,
+                   owl:ObjectProperty;
+                 rdfs:domain pmo:Example;
+                 rdfs:label "inflection"@en;
+                 rdfs:range pmopb:Inflection.
+pmopb:other a owl:NamedIndividual,
+              pmopb:Person.
+pmopb:participle a owl:NamedIndividual,
+                   pmopb:Form.
+pmopb:passive a owl:NamedIndividual,
+                pmopb:Voice.
+pmopb:past a owl:NamedIndividual,
+             pmopb:Tense.
+pmopb:perfect a owl:NamedIndividual,
+                pmopb:Aspect.
+pmopb:person a owl:FunctionalProperty,
+               owl:ObjectProperty;
+             rdfs:domain pmopb:Inflection;
+             rdfs:label "person"@en;
+             rdfs:range pmopb:Person.
+pmopb:present a owl:NamedIndividual,
+                pmopb:Tense.
+pmopb:progressive a owl:NamedIndividual,
+                    pmopb:Aspect.
+pmopb:tag a owl:FunctionalProperty,
+            owl:ObjectProperty;
+          rdfs:label "tag"@en;
+          rdfs:range [owl:unionOf (pmopb:Modifier
+                                   pmopb:Tag
+                                   ontolex:LexicalEntry) ; 
+                      a owl:Class].
+pmopb:tag-pag a owl:NamedIndividual,
+                pmopb:Tag.
+pmopb:tag-ppt a owl:NamedIndividual,
+                pmopb:Tag.
+pmopb:tag-vsp a owl:NamedIndividual,
+                pmopb:Tag.
+pmopb:tense a owl:FunctionalProperty,
+              owl:ObjectProperty;
+            rdfs:domain pmopb:Inflection;
+            rdfs:label "tense"@en;
+            rdfs:range pmopb:Tense.
+pmopb:third a owl:NamedIndividual,
+              pmopb:Person.
+pmopb:voice a owl:FunctionalProperty,
+              owl:ObjectProperty;
+            rdfs:domain pmopb:Inflection;
+            rdfs:label "voice"@en;
+            rdfs:range pmopb:Voice.

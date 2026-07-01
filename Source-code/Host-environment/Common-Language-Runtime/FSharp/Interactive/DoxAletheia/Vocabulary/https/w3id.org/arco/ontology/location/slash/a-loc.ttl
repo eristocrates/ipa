@@ -1,0 +1,1693 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cis: <http://dati.beniculturali.it/cis/>.
+@prefix odp: <http://ontologydesignpatterns.org/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix w3id: <https://w3id.org/>.
+@prefix ctlog: <https://w3id.org/arco/ontology/catalogue/>.
+@prefix cdesc: <https://w3id.org/arco/ontology/context-description/>.
+@prefix arco: <https://w3id.org/arco/ontology/core/>.
+@prefix a-loc: <https://w3id.org/arco/ontology/location/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+cis:ClericalAdministrativeArea a owl:Class;
+                               rdfs:subClassOf [owl:someValuesFrom <https://w3id.org/italia/onto/CLV/Address> ; 
+                                                owl:onProperty a-loc:isClericalAdministrativeAreaOf ; 
+                                                a owl:Restriction],
+                                               cis:GeographicalFeature.
+cis:CulturalEntity a owl:Class.
+cis:CulturalInstituteOrSite a owl:Class.
+cis:GeographicalFeature a owl:Class;
+                        rdfs:subClassOf <https://w3id.org/italia/onto/CLV/Feature>.
+cis:GovernamentalAdministrativeArea a owl:Class;
+                                    rdfs:subClassOf [owl:someValuesFrom <https://w3id.org/italia/onto/CLV/Address> ; 
+                                                     owl:onProperty a-loc:isGovernmentalAdministrativeAreaOf ; 
+                                                     a owl:Restriction],
+                                                    cis:GeographicalFeature.
+cis:Site a owl:Class.
+dc11:description a owl:AnnotationProperty.
+dc11:language a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+xsd:date a rdfs:Datatype.
+ctlog:iccdNormTag a owl:AnnotationProperty.
+cdesc:LegalSituation a owl:Class.
+cdesc:hasLegalSituation a owl:ObjectProperty.
+arco:Concept a owl:Class.
+arco:Method a owl:Class.
+arco:Situation a owl:Class.
+arco:TimeIndexedSituation a owl:Class.
+arco:Type a owl:Class.
+arco:hasConcept a owl:ObjectProperty.
+arco:hasLocation a owl:ObjectProperty.
+arco:hasPart a owl:ObjectProperty.
+arco:hasType a owl:ObjectProperty.
+arco:isConceptOf a owl:ObjectProperty.
+arco:isLocationOf a owl:ObjectProperty.
+arco:isPartOf a owl:ObjectProperty.
+arco:isTypeOf a owl:ObjectProperty.
+<https://w3id.org/arco/ontology/location> <http://ontologydesignpatterns.org/opla/reusesPatternAsTemplate> <http://www.ontologydesignpatterns.org/cp/owl/situation.owl>,
+                                                                                                           <http://www.ontologydesignpatterns.org/cp/owl/place.owl#>,
+                                                                                                           <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl>,
+                                                                                                           <http://www.ontologydesignpatterns.org/cp/owl/classification.owl>,
+                                                                                                           <http://ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl>;
+                                          dc11:creator "Valentina Presutti (ISTC-CNR, STLab)",
+                                                       "Margherita Porena (ISTC-CNR, STLab)",
+                                                       "Valentina Carriero (ISTC-CNR, STLab)",
+                                                       "Ludovica Marinucci (ISTC-CNR, STLab)",
+                                                       "Chiara Veninata (MiBAC, ICCD)",
+                                                       "Aldo Gangemi (ISTC-CNR, STLab)",
+                                                       "Marialetizia Mancinelli (MiBAC, ICCD)",
+                                                       "Andrea Nuzzolese (ISTC-CNR, STLab)",
+                                                       "Luigi Asprino (ISTC-CNR, STLab)";
+                                          dc11:language <http://publications.europa.eu/resource/authority/language/ITA>,
+                                                        <http://publications.europa.eu/resource/authority/language/ENG>;
+                                          dc11:title "Ontologia della Localizzazione (ArCo network)"@it,
+                                                     "Location Ontology (ArCo network)"@en;
+                                          dcterms:issued "2018-03-07";
+                                          dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/>,
+                                                          <https://w3id.org/italia/controlled-vocabulary/licences/A31_CCBYSA40>;
+                                          dcterms:modified "2020-03-27";
+                                          a owl:Ontology;
+                                          rdfs:comment """The module Location models information related to the localization and georeferencing of a cultural property.
+In this module the following Ontology Design Patterns have been used:
+- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl
+- http://www.ontologydesignpatterns.org/cp/owl/classification.owl
+- http://www.ontologydesignpatterns.org/cp/owl/place.owl
+- http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl
+- http://www.ontologydesignpatterns.org/cp/owl/situation.owl"""@en,
+                                                       """Questo modulo modella le informazioni relative alle localizzazioni e alla georeferenziazione di un bene culturale.
+In questo modulo si riusano come template i seguenti Ontology Design Patterns:
+- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl
+- http://www.ontologydesignpatterns.org/cp/owl/classification.owl
+- http://www.ontologydesignpatterns.org/cp/owl/place.owl
+- http://www.ontologydesignpatterns.org/cp/owl/timeindexedsituation.owl
+- http://www.ontologydesignpatterns.org/cp/owl/situation.owl"""@it;
+                                          rdfs:label "Ontologia della Localizzazione (ArCo network)"@it,
+                                                     "Location Ontology (ArCo network)"@en;
+                                          owl:imports arco:1.2;
+                                          owl:versionIRI a-loc:1.2;
+                                          owl:versionInfo "Versione 1.2"@it,
+                                                          "Version 1.2".
+a-loc:Altitude a owl:Class;
+               rdfs:comment "Questa classe rappresenta l'altitudine, ovvero l'altezza di un oggetto rispetto al livello del mare, che può essere specificata da un'altitudine massima, minima, relativa."@it,
+                            "This class represents the altitude, that is the height of an object above the sea level, which can be specified as maximum, minimum and relative altitude."@en;
+               rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+               rdfs:label "Altitudine"@it,
+                          "Altitude"@en;
+               rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic>,
+                               [owl:someValuesFrom xsd:decimal ; 
+                                owl:onProperty a-loc:alt ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom a-loc:Coordinates ; 
+                                owl:onProperty a-loc:isAltitudeOf ; 
+                                a owl:Restriction];
+               owl:versionInfo "stable"@en,
+                               "stabile"@it;
+               ctlog:iccdNormTag "quota minima: GP/GPC/GPCI -GA/GAQ/GAQI - GL/GLQ/GLQI - MT/MTA/MTAM; quota massima: GP/GPC/GPCS - GA/GAQS - GL/GLQ/GLQS - MT/MTA/MTAX; quota relativa: MT/MTA/MTAR; coordinata z: 4.00 GE/GEC/GECZ - 3.00GP/GPC/GPCL"@it.
+a-loc:ArchivalLocation a owl:NamedIndividual,
+                         a-loc:LocationType;
+                       rdfs:comment "Questo individuo rappresenta uno specifico tipo di localizzazione, ovvero la localizzazione di archivio."@it,
+                                    "This individual represents a specific type of location, that is the archival location."@en;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                       rdfs:label "Localizzazione di archivio"@it,
+                                  "Archival location"@en;
+                       owl:versionInfo "stabile"@it,
+                                       "stable"@en;
+                       ctlog:iccdNormTag "ICCD Normativa BDM versioni precedenti alla 4.00: se TCL = 'di archivio'"@it.
+a-loc:BaseMap a owl:Class;
+              rdfs:comment "This class represents the base map possibly used for georeferencing activities."@en,
+                           "Questa classe rappresenta la base cartografica eventualmente utilizzata nelle attività di georeferenziazione."@it;
+              rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+              rdfs:label "Base cartografica"@it,
+                         "Base map"@en;
+              rdfs:subClassOf [owl:someValuesFrom <https://w3id.org/italia/onto/CLV/Geometry> ; 
+                               owl:onProperty a-loc:isBaseMapOf ; 
+                               a owl:Restriction],
+                              [owl:onProperty <https://w3id.org/italia/onto/TI/date> ; 
+                               owl:allValuesFrom xsd:dateTime ; 
+                               a owl:Restriction],
+                              <https://w3id.org/italia/onto/l0/Object>;
+              owl:versionInfo "stable"@en,
+                              "stabile"@it;
+              ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: GE/GPB; versioni precedenti: GP/GPB - GA/GAB - GL/GLB"@it.
+a-loc:BuildingAndLandCadastre a a-loc:CadastreType,
+                                owl:NamedIndividual.
+a-loc:BuildingCadastre a a-loc:CadastreType,
+                         owl:NamedIndividual.
+a-loc:CadastralEntity a owl:Class;
+                      rdfs:comment "Questa classe rappresenta un'entità catastale, intesa come un oggetto che può avere una rappresentazione spaziale, relativamente alla ripartizione catastale."@it,
+                                   "This class represents a cadastral entity, which is intended as an object that can have a spatial representation related to the cadastral allocation."@en;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                      rdfs:label "Entità catastale"@it,
+                                 "Cadastral Entity"@en;
+                      rdfs:subClassOf <https://w3id.org/italia/onto/CLV/SpatialObject>,
+                                      [owl:onProperty a-loc:isCadastralEntityOf ; 
+                                       owl:allValuesFrom a-loc:CadastralIdentity ; 
+                                       a owl:Restriction];
+                      owl:versionInfo "stabile"@it,
+                                      "stable"@en;
+                      ctlog:iccdNormTag "ICCD Normativa Traversale 4.00: CS/CTS; LS/CSS"@it.
+a-loc:CadastralFolio a owl:Class;
+                     rdfs:comment "Questa classe rappresenta un foglio di mappa catastale, in cui ricadono una o più particelle."@it,
+                                  "This class represents a folio of a cadastral map, which contains one or more cadastral parcels."@en;
+                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                     rdfs:label "Cadastral map folio"@en,
+                                "Foglio di mappa catastale"@it;
+                     rdfs:subClassOf a-loc:CadastralEntity,
+                                     [owl:onProperty <https://w3id.org/italia/onto/TI/time> ; 
+                                      owl:allValuesFrom rdfs:Literal ; 
+                                      a owl:Restriction];
+                     owl:versionInfo "stable"@en,
+                                     "stabile"@it;
+                     ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CS/CTS/CTSF ; LS/CSS/CSSF. - Normativa RA v.2: RP/LGC/LGCM+LGCA".
+a-loc:CadastralIdentity dc11:description """Un esempio d'uso della classe \"Identità catastale\" è il seguente:
+resource:CadastralIdentity/1400055239-1
+        a a-loc:CadastralIdentity ;
+        rdfs:label  \"Identità catastale 1 del bene culturale: 1400055239\"@en ;
+        a-cd:hasLegalSituation resource:LegalSituation/1400055239-cadastral-legal-situation-1 ;
+        a-loc:hasCadastralCity resource:City/s-martino-in-pensilis ;
+        a-loc:hasCadastralEntity resource:CadastralUnitCollection/1400055239-207 , resource:CadastralFolio/1400055239-8 ."""@it,
+                                         """An example of usage of the class 'Cadastral Identity' is the following:
+resource:CadastralIdentity/1400055239-1
+        a a-loc:CadastralIdentity ;
+        rdfs:label  \"Cadastral identity 1 of cultural property: 1400055239\"@en ;
+        a-cd:hasLegalSituation resource:LegalSituation/1400055239-cadastral-legal-situation-1 ;
+        a-loc:hasCadastralCity resource:City/s-martino-in-pensilis ;
+        a-loc:hasCadastralEntity resource:CadastralUnitCollection/1400055239-207 , resource:CadastralFolio/1400055239-8 ."""@en;
+                        a owl:Class;
+                        rdfs:comment "Questa classe rappresenta l'identità catastale di un'entità, intesa come l'insieme delle informazioni di localizzazione che riguardano il bene con riferimento alla ripartizione catastale nazionale. L'identità catastale di un'entità può avere un riferimento cronologico, che indica l'epoca alla quale risalgono i dati catastali."@it,
+                                     "This class represents the cadastral identity of an entity, which is intended as a set of location information concerning the property with reference to the national cadastral allocation. The cadastral identity can have a chronological reference indicating the dating of cadastral data."@en,
+                                     "ICCD Normativa Traversale 4.00: CS; LS"@it;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "Cadastral identity"@en,
+                                   "Identità catastale"@it;
+                        rdfs:subClassOf <https://w3id.org/italia/onto/l0/Object>,
+                                        [owl:onProperty <https://w3id.org/italia/onto/TI/time> ; 
+                                         owl:allValuesFrom rdfs:Literal ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom a-loc:CadastralEntity ; 
+                                         owl:onProperty a-loc:hasCadastralEntity ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom <https://w3id.org/italia/onto/CLV/City> ; 
+                                         owl:onProperty a-loc:hasCadastralCity ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom a-loc:CadastreType ; 
+                                         owl:onProperty a-loc:hasCadastreType ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom a-loc:LocationType ; 
+                                         owl:onProperty a-loc:hasLocationType ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom cis:CulturalEntity ; 
+                                         owl:onProperty a-loc:isCadastralIdentityOf ; 
+                                         a owl:Restriction];
+                        owl:versionInfo "stabile"@it,
+                                        "stable"@en;
+                        ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CS. - Normativa RA v.2: RP/LGC".
+a-loc:CadastralUnitCollection a owl:Class;
+                              rdfs:comment "This class represents one or more cadastral parcels."@en,
+                                           "Questa classe rappresenta una o più particelle catastali."@it;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                              rdfs:label "Cadastral unit collection"@en,
+                                         "Collezione di particelle catastali"@it;
+                              rdfs:subClassOf [owl:onProperty cdesc:hasLegalSituation ; 
+                                               owl:allValuesFrom cdesc:LegalSituation ; 
+                                               a owl:Restriction],
+                                              a-loc:CadastralEntity;
+                              owl:versionInfo "stabile"@it,
+                                              "stable"@en;
+                              ctlog:iccdNormTag "ICCD Normativa Traversale 4.00: CS/CTS/CTSN; LS/CSS/CSSN. - Normativa RA v.2: RP/LGC/LGCR".
+a-loc:CadastreType a owl:Class;
+                   rdfs:comment "Questa classe rappresenta il tipo di catasto (ad es. catasto terreni, catasto fabbricati, catasto misto)."@it,
+                                "This class represents the type of cadastre (e.g. land cadastre, building cadastre, mixed cadastre)."@en;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "Tipo di catasto"@it,
+                              "Cadastre type"@en;
+                   rdfs:subClassOf [owl:someValuesFrom a-loc:CadastralIdentity ; 
+                                    owl:onProperty a-loc:isCadastreTypeOf ; 
+                                    a owl:Restriction],
+                                   arco:Type;
+                   owl:versionInfo "stabile"@it,
+                                   "stable"@en;
+                   ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CS/CTS/CTST".
+a-loc:ChiefTown a a-loc:OldTownAdmistrativeType,
+                  owl:NamedIndividual;
+                rdfs:comment "Questo individuo rappresenta uno specifico tipo di riferimento amministrativo che caratterizza un centro storico, ovvero il capoluogo."@it,
+                             "This individual represents a specific type of administrative reference that characterizes an old town, that is the chief town."@en;
+                rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                rdfs:label "Chief town"@en,
+                           "Capoluogo"@it;
+                owl:versionInfo "stable"@en,
+                                "stabile"@it;
+                ctlog:iccdNormTag "ICCD Normative A e PG: LC/CST/CSTA."@it.
+a-loc:CollectingLocation a a-loc:LocationType,
+                           owl:NamedIndividual;
+                         rdfs:label "Luogo di raccolta"@it,
+                                    "Collecting location"@en;
+                         owl:versionInfo "unstable"@en,
+                                         "instabile"@it.
+a-loc:Continent a owl:Class;
+                rdfs:comment "Questa classe rappresenta un Continente."@it,
+                             "This class represents a Continent."@en;
+                rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                rdfs:label "Continente"@it,
+                           "Continent"@en;
+                rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
+                                 owl:onProperty a-loc:isContinentOf ; 
+                                 a owl:Restriction],
+                                <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>;
+                owl:versionInfo "stabile"@it,
+                                "stable"@en.
+a-loc:Coordinates a owl:Class;
+                  rdfs:comment "This class represents the set of coordinates, geographic or projected, which allows the georeferencing of an object. For the punctual georeferencing there is only a pair of coordinates. For the linear and areal georeferencing there are more pairs of coordinates identifying those points of the line or area representing the object."@en,
+                               "Questa classe rappresenta l'insieme delle coordinate, geografiche o proiettate, che permettono la georeferenziazione di un oggetto. Per la georeferenziazione puntuale sarà presente soltanto una coppia di coordinate; per la georeferenziazione lineare e areale saranno presenti più coppie di coordinate che individuano i punti che definiscono la linea o l'area che rappresenta il bene."@it;
+                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                  rdfs:label "Coordinates"@en,
+                             "Coordinate"@it;
+                  rdfs:subClassOf <https://w3id.org/italia/onto/CLV/Geometry>,
+                                  <https://w3id.org/italia/onto/l0/Collection>,
+                                  [owl:someValuesFrom <https://w3id.org/italia/onto/CLV/Geometry> ; 
+                                   owl:onProperty a-loc:areCoordinatesOf ; 
+                                   a owl:Restriction],
+                                  [owl:onProperty a-loc:hasAltitude ; 
+                                   owl:allValuesFrom a-loc:Altitude ; 
+                                   a owl:Restriction],
+                                  [owl:onProperty a-loc:long ; 
+                                   owl:allValuesFrom rdfs:Literal ; 
+                                   a owl:Restriction],
+                                  [owl:onProperty a-loc:lat ; 
+                                   owl:allValuesFrom rdfs:Literal ; 
+                                   a owl:Restriction];
+                  owl:versionInfo "stable"@en,
+                                  "stabile"@it;
+                  ctlog:iccdNormTag "ICCD Normativa Trasversale: GE/GEC - Normative precedenti: GP/GPD; GA/GAPD; GL/GLS"@it.
+a-loc:CulturalInstituteOrSiteDefinition a owl:Class;
+                                        rdfs:comment "This class represents the type definition of a cultural insititute or site."@en,
+                                                     "Questa classe rappresenta la definizione della tipologia di un contenitore giuridico."@it;
+                                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                        rdfs:label "Cultural Institute or Site Definition"@en,
+                                                   "Definizione di Contenitore Giuridico"@it;
+                                        rdfs:subClassOf <https://w3id.org/italia/onto/l0/Description>;
+                                        owl:versionInfo "instabile"@it,
+                                                        "unstable"@en;
+                                        ctlog:iccdNormTag "ICCD Normativa CG: CG/CGT"@it.
+a-loc:CulturalInstituteOrSiteSpecification a owl:Class;
+                                           rdfs:comment "Questa classe rappresenta la specificazione della tipologia di un contenitore giuridico."@it,
+                                                        "This class represents the type specification of a cultural insititute or site."@en;
+                                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                           rdfs:label "Specificazione di Contenitore Giuridico"@it,
+                                                      "Cultural Institute or Site Specification"@en;
+                                           rdfs:subClassOf <https://w3id.org/italia/onto/l0/Description>;
+                                           owl:versionInfo "instabile"@it,
+                                                           "unstable"@en;
+                                           ctlog:iccdNormTag "ICCD Normativa CG: CG/CGQ"@it.
+a-loc:CulturalInstituteOrSiteType a owl:Class;
+                                  rdfs:comment "This class represents the type of a cultural insititute or site."@en,
+                                               "Questa classe rappresenta la tipologia di un contenitore giuridico."@it;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                  rdfs:label "Tipo di Contenitore Giuridico"@it,
+                                             "Cultural Institute or Site type"@en;
+                                  rdfs:subClassOf arco:Type;
+                                  owl:versionInfo "instabile"@it,
+                                                  "unstable"@en;
+                                  ctlog:iccdNormTag "ICCD Normativa CG: CG/CGT, CG/CGQ"@it.
+a-loc:CurrentPhysicalLocation a a-loc:LocationType,
+                                owl:NamedIndividual;
+                              rdfs:comment "This individual represents a specific type of localization, that is the current physical location."@en,
+                                           "Questo individuo rappresenta uno specifico tipo di localizzazione, ovvero la localizzazione fisica attuale."@it;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                              rdfs:label "Localizzazione fisica attuale"@it,
+                                         "Current Physical Location"@en;
+                              owl:versionInfo "stable"@en,
+                                              "stabile"@it.
+a-loc:ExhibitionLocation a a-loc:LocationType,
+                           owl:NamedIndividual;
+                         rdfs:comment "This individual represents a specific type of localization, that is the exhibition location."@en,
+                                      "Questo individuo rappresenta uno specifico tipo di localizzazione, ovvero il luogo di esposizione."@it;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                         rdfs:label "Luogo di esposizione"@it,
+                                    "Exhibition Location"@en;
+                         owl:versionInfo "stable"@en,
+                                         "stabile"@it.
+a-loc:ExtraurbanContext a owl:NamedIndividual,
+                          a-loc:TypeOfContext;
+                        rdfs:comment "This individual represents a specific type of context, that is the extra-urban context where the cultural property is located."@en,
+                                     "Questo individuo rappresenta uno specifico tipo di contesto, ovvero il contesto extraurbano dove si trova il bene culturale."@it;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "Contesto extraurbano"@it,
+                                   "Extra-urban context"@en;
+                        owl:versionInfo "stabile"@it,
+                                        "ustable"@en;
+                        ctlog:iccdNormTag "ICCD Normative A e PG: LC/SET/SETT (sigla TP)"@it.
+a-loc:FindingLocation a a-loc:LocationType,
+                        owl:NamedIndividual;
+                      rdfs:comment "This individual represents a specific type of localization, that is the finding location."@en,
+                                   "Questo individuo rappresenta uno specifico tipo di localizzazione, ovvero il luogo di ritrovamento."@it;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                      rdfs:label "Luogo di reperimento"@it,
+                                 "Finding Location"@en;
+                      owl:versionInfo "stable"@en,
+                                      "stabile"@it.
+a-loc:GeometryMethod a owl:Class;
+                     rdfs:comment "This class represents the method used for the object positioning (i.e. exact, approximate, with a symbolic representation)."@en,
+                                  "Questa classe rappresenta il metodo utilizzato per il posizionamento (esatto, approssimato, con rappresentazione simbolica)."@it;
+                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                     rdfs:label "Geometry method"@en,
+                                "Metodo di posizionamento"@it;
+                     rdfs:subClassOf [owl:someValuesFrom <https://w3id.org/italia/onto/CLV/Geometry> ; 
+                                      owl:onProperty a-loc:isGeometryMethodOf ; 
+                                      a owl:Restriction],
+                                     arco:Method;
+                     owl:disjointWith a-loc:GeometryTechnique;
+                     owl:versionInfo "stable"@en,
+                                     "stabile"@it;
+                     ctlog:iccdNormTag "ICCD Normativa trasversale 4.00: GE/GPM - Normative precedenti: GP/GPM;  GA/GAM; GL/GLM"@it.
+a-loc:GeometryTechnique a owl:Class;
+                        rdfs:comment "Questa classe rappresenta la tecnica di georeferenziazione, utilizzata per l'acquisizione delle coordinate (rilievo da cartografia con sopralluogo, rilievo da cartografia senza sopralluogo, rilievo da foto aerea con sopralluogo, rilievo da foto aerea senza sopralluogo, rilievo da satellite, rilievo tradizionale, rilievo tramite GPS, rilievo tramite punti d'appoggio fiduciali o trigonometrici, stereofotogrammetria)."@it,
+                                     "This class represents the technique of georeferencing, used for the acquisition of coordinates (i.e. survey from cartography with or without inspection, survey from aerial photos with or without inspection, satellite survey, traditional survey, survey via GPS, etc.)."@en;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "Geometry technique"@en,
+                                   "Tecnica di georeferenziazione"@it;
+                        rdfs:subClassOf arco:Method,
+                                        [owl:someValuesFrom <https://w3id.org/italia/onto/CLV/Geometry> ; 
+                                         owl:onProperty a-loc:isGeometryTechniqueOf ; 
+                                         a owl:Restriction];
+                        owl:versionInfo "stable"@en,
+                                        "stabile"@it;
+                        ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: GE/GPT - Normative precedenti: GP/GPT; GA/GAT; GL/GLT"@it.
+a-loc:HistoricalLocation a a-loc:LocationType,
+                           owl:NamedIndividual;
+                         rdfs:comment "This individual represents a specific type of localization, that is the historical location."@en,
+                                      "Questo individuo rappresenta uno specifico tipo di localizzazione, ovvero la localizzazione storica."@it;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                         rdfs:label "Localizzazione storica"@it,
+                                    "Historical Location"@en;
+                         owl:versionInfo "stable"@en,
+                                         "stabile"@it.
+a-loc:IncorporatedArea a a-loc:OldTownAdmistrativeType,
+                         owl:NamedIndividual;
+                       rdfs:comment "This individual represents a specific type of administrative reference that characterizes the old town, that is the denomination of 'incorporated area'."@en,
+                                    "Questo individuo rappresenta uno specifico tipo di riferimento amministrativo che caratterizza un centro storico, ovvero la denominazione di 'centro inglobato'."@it;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                       rdfs:label "Centro inglobato"@it,
+                                  "Incorporated area"@en;
+                       owl:versionInfo "stable"@en,
+                                       "stabile"@it;
+                       ctlog:iccdNormTag "ICCD Normative A e PG: LC/CST/CSTA"@it.
+a-loc:LandCadastre a a-loc:CadastreType,
+                     owl:NamedIndividual.
+a-loc:LastLocation a owl:NamedIndividual,
+                     a-loc:LocationType;
+                   rdfs:comment "Replaced by https://w3id.org/arco/ontology/location/PreviousLocation"@en,
+                                "This individual represents a specific type of location, that is the place of origin or last location."@en,
+                                "Questo individuo rappresenta uno specifico tipo di localizzazione, ovvero il luogo di provenienza o collocazione precedente."@it;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "Luogo di provenienza / Collocazione precedente"@it,
+                              "Place of Origin / Last Location"@en;
+                   owl:deprecated true;
+                   owl:versionInfo "stable"@en,
+                                   "stabile"@it.
+a-loc:Locality a owl:NamedIndividual,
+                 a-loc:OldTownAdmistrativeType;
+               rdfs:comment "This individual represents a specific type of administrative reference that characterizes the old town, that is the locality."@en,
+                            "Questo individuo rappresenta uno specifico tipo di riferimento amministrativo che caratterizza il centro storico, ovvero la località."@it;
+               rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+               rdfs:label "Locality"@en,
+                          "Località"@it;
+               owl:versionInfo "stabile"@it,
+                               "stable"@en;
+               ctlog:iccdNormTag "ICCD Normative A e PG: LC/CST/CSTA."@it.
+a-loc:LocationType a owl:Class;
+                   rdfs:comment "This class represents the type of location of a cultural property."@en,
+                                "Questa classe rappresenta il tipo di localizzazione di un bene culturale."@it;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "Tipo di localizzazione"@it,
+                              "Location Type"@en;
+                   rdfs:subClassOf arco:Type,
+                                   [owl:someValuesFrom owl:Thing ; 
+                                    owl:onProperty a-loc:isLocationTypeOf ; 
+                                    a owl:Restriction];
+                   owl:versionInfo "stable"@en,
+                                   "stabile"@it;
+                   ctlog:iccdNormTag "ICCD Normativa Trasversale: LA/TLC; LA/TCL; LC (CurrentPhysicalLocation) - Normativa F: anche LR (ShotLocation). - CS/CTL. - GE/GEL; GP/GPL; GL/GLL; GA/GAL".
+a-loc:NeighbouringCadastralEntity a owl:Class;
+                                  rdfs:comment "This class represents spatial entities (i.e. roads, waterways, etc.) that border one or more cadastral parcels."@en,
+                                               "Questa classe rappresenta le entità spaziali (particelle, strade, corsi d'acqua, ecc.) confinanti con una o più particelle catastali."@it;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                  rdfs:label "Elemento di confine"@it,
+                                             "Neighbouring cadastral entity"@en;
+                                  rdfs:subClassOf a-loc:CadastralEntity;
+                                  owl:versionInfo "stable"@en,
+                                                  "stabile"@it;
+                                  ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CS/CTE. - CS/CTS/CTSE. - LC/CSS/CSSE".
+a-loc:ObservationLocation a a-loc:LocationType,
+                            owl:NamedIndividual;
+                          rdfs:comment "This individual represents a specific type of location, that is the location of observation."@en,
+                                       "Questo individuo rappresenta uno specifico tipo di localizzazione, ovvero il luogo di rilevamento."@it;
+                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                          rdfs:label "Observation Location"@en,
+                                     "Luogo di rilevamento"@it;
+                          owl:versionInfo "stable"@en,
+                                          "stabile"@it.
+a-loc:OldTown a owl:Class;
+              rdfs:comment "This class represents the information describing the old town where the cultural property is located."@en,
+                           "Questa classe rappresenta le informazioni che descrivono il centro storico in cui si trova il bene culturale."@it;
+              rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+              rdfs:label "Centro storico"@it,
+                         "Old town"@en;
+              rdfs:subClassOf [owl:onProperty a-loc:hasUrbanArea ; 
+                               owl:allValuesFrom a-loc:UrbanArea ; 
+                               a owl:Restriction],
+                              <https://w3id.org/italia/onto/CLV/City>,
+                              [owl:onProperty a-loc:hasOldTownAdministrativeType ; 
+                               owl:allValuesFrom a-loc:OldTownAdmistrativeType ; 
+                               a owl:Restriction];
+              owl:versionInfo "stabile"@it,
+                              "stable"@en;
+              ctlog:iccdNormTag "ICCD normative A e PG: LC/CST"@it.
+a-loc:OldTownAdmistrativeType a owl:Class;
+                              rdfs:comment "Questa classe rappresenta le informazioni che precisano il carattere amministrativo del centro storico, che può essere: un capoluogo, una frazione, un centro inglobato o una località."@it,
+                                           "This class represents the information clarifying the administrative character of the old town, which may be: a chief town, a town fraction, an incorporated area or a locality."@en;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                              rdfs:label "Old town administrative type"@en,
+                                         "Tipo di carattere amministrativo del centro storico"@it;
+                              rdfs:subClassOf [owl:someValuesFrom a-loc:OldTown ; 
+                                               owl:onProperty a-loc:isOldTownAdministrativeTypeOf ; 
+                                               a owl:Restriction],
+                                              arco:Type;
+                              owl:versionInfo "stabile"@it,
+                                              "stable"@en;
+                              ctlog:iccdNormTag "ICCD Normative A e PG: LC/CST/CSTA"@it.
+a-loc:PreviousLocation a a-loc:LocationType,
+                         owl:NamedIndividual;
+                       rdfs:comment "This individual represents a specific type of location, that is the place of origin or previous location."@en,
+                                    "Questo individuo rappresenta uno specifico tipo di localizzazione, ovvero il luogo di provenienza o collocazione precedente."@it;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                       rdfs:label "Place of Origin / Previous Location"@en,
+                                  "Luogo di provenienza / Collocazione precedente"@it;
+                       owl:versionInfo "stable"@en,
+                                       "stabile"@it.
+a-loc:ProductionRealizationLocation a a-loc:LocationType,
+                                      owl:NamedIndividual;
+                                    rdfs:comment "This individual represents a specific type of location, that is the production or realization location."@en,
+                                                 "Questo individuo rappresenta un tipo specifico di posizione, ovvero il luogo di produzione o realizzazione."@it;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                    rdfs:label "Production or Realization Location"@en,
+                                               "Luogo di produzione / realizzazione"@it;
+                                    owl:versionInfo "stable"@en,
+                                                    "stabile"@it.
+a-loc:ShootingLocation a a-loc:LocationType,
+                         owl:NamedIndividual;
+                       rdfs:comment "This individual represents a specific type of localization, that is the shooting location."@en,
+                                    "Questo individuo rappresenta un tipo specifico di posizione, ovvero il luogo della ripresa."@it;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                       rdfs:label "Shooting Location"@en,
+                                  "Luogo della ripresa"@it;
+                       owl:versionInfo "stable"@en,
+                                       "stabile"@it.
+a-loc:SiteDefinition a owl:Class;
+                     rdfs:comment "This class represents the type definition of a physical container."@en,
+                                  "Questa classe rappresenta la definizione della tipologia di un contenitore fisico."@it;
+                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                     rdfs:label "Definizione di Contenitore Fisico"@it,
+                                "Site Definition"@en;
+                     rdfs:subClassOf [owl:someValuesFrom a-loc:SiteType ; 
+                                      owl:onProperty a-loc:isSiteDefinitionOf ; 
+                                      a owl:Restriction],
+                                     <https://w3id.org/italia/onto/l0/Description>;
+                     owl:versionInfo "stabile"@it,
+                                     "stable"@en;
+                     ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/LDC/LDCT"@it.
+a-loc:SiteSpecification a owl:Class;
+                        rdfs:comment "This class represents specifications about the physical container, i.e. the adjective or the phrase that with respect to the Site Definition specifies, integrates or characterizes the physical container from the point of view of the legal-administrative or functional condition."@en,
+                                     "Questa classe rappresenta specifiche sulla qualificazione del contenitore fisico, cioè l'aggettivo o la locuzione che, rispetto alla Site Definition, precisa, integra o caratterizza il contenitore fisico dal punto di vista della condizione giuridico-amministrativa o funzionale."@it;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "Qualificazione del Contenitore Fisico"@it,
+                                   "Site Specification"@en;
+                        rdfs:subClassOf <https://w3id.org/italia/onto/l0/Description>,
+                                        [owl:someValuesFrom a-loc:SiteType ; 
+                                         owl:onProperty a-loc:isSiteSpecificationOf ; 
+                                         a owl:Restriction];
+                        owl:versionInfo "stable"@en,
+                                        "stabile"@it;
+                        ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/LDC/LDCQ"@it.
+a-loc:SiteType a owl:Class;
+               rdfs:comment "Questa classe rappresenta il tipo di contenitore fisico, cioè la tipologia del contenitore fisico ed eventuali aggettivi o locuzioni che precisano, integrano o caratterizzano il contenitore fisico dal punto di vista della condizione giuridico-amministrativa o funzionale."@it,
+                            "This class represents the type of a physical container, i.e. it contains adjectives or phrases that specify, integrate or characterize the physical container from the point of view of the legal-administrative or functional condition."@en;
+               rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+               rdfs:label "Site Type"@en,
+                          "Tipo di Contenitore Fisico"@it;
+               rdfs:subClassOf [owl:someValuesFrom cis:Site ; 
+                                owl:onProperty a-loc:isSiteTypeOf ; 
+                                a owl:Restriction],
+                               arco:Type,
+                               [owl:someValuesFrom a-loc:SiteDefinition ; 
+                                owl:onProperty a-loc:hasSiteDefinition ; 
+                                a owl:Restriction],
+                               [owl:onProperty a-loc:hasSiteSpecification ; 
+                                owl:allValuesFrom a-loc:SiteSpecification ; 
+                                a owl:Restriction];
+               owl:versionInfo "stabile"@it,
+                               "stable"@en;
+               ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/LDC/LDCT; LC/LDC/LDCQ"@it.
+a-loc:StorageLocation a a-loc:LocationType,
+                        owl:NamedIndividual;
+                      rdfs:comment "This individual represents a specific type of localization, that is the storage location."@en,
+                                   "Questo individuo rappresenta un tipo specifico di localizzazione, ovvero il luogo di deposito."@it;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                      rdfs:label "Storage Location"@en,
+                                 "Luogo di deposito"@it;
+                      owl:versionInfo "stable"@en,
+                                      "stabile"@it.
+a-loc:SubjectLocation a a-loc:LocationType,
+                        owl:NamedIndividual;
+                      rdfs:comment "This individual represents a specific type of localization, that is the subject location."@en,
+                                   "Questo individuo rappresenta un tipo specifico di localizzazione, ovvero l'area rappresentata."@it;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                      rdfs:label "Subject Location"@en,
+                                 "Area rappresentata"@it;
+                      owl:versionInfo "stable"@en,
+                                      "stabile"@it.
+a-loc:SuburbanContext a owl:NamedIndividual,
+                        a-loc:TypeOfContext;
+                      rdfs:comment "Questo individuo rappresenta uno specifico tipo di contesto geografico, ovvero un contesto suburbano che si trova nella zona intermedia tra il contesto urbano e quello extraurbano."@it,
+                                   "This individual represents a specific type of geographical context, that is a suburban context, which is located in the intermediate area between the urban and extraurban context."@en;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                      rdfs:label "Contesto suburbano"@it,
+                                 "Suburban context"@en;
+                      owl:versionInfo "stable"@en,
+                                      "stabile"@it;
+                      ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/PVZ; LA/PRZ - Normative A e PG: LC/SET/SETT (sigla SU anomalo)"@it.
+a-loc:TerritorialContext a owl:NamedIndividual,
+                           a-loc:TypeOfContext;
+                         rdfs:comment "This individual represents a specific type of context, i.e. the territorial context where the cultural property is located."@en,
+                                      "Questo individuo rappresenta uno specifico tipo di contesto, ovvero il contesto territoriale in cui si trova il bene culturale."@it;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                         rdfs:label "Territorial context"@en,
+                                    "Contesto territoriale"@it;
+                         owl:versionInfo "stabile"@it,
+                                         "stable"@en;
+                         ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/PVZ; LA/PRZ"@it.
+a-loc:TimeIndexedTypedLocation dc11:description """Un esempio d'uso della classe \"Localizzazione tipizzata nel tempo' è il seguente:
+resource:TimeIndexedTypedLocation/0800055566-alternative-1
+        a           a-loc:TimeIndexedTypedLocation ;
+        rdfs:label \"Altra localizzazione 1 del bene culturale: 0800055566\"@en ;
+       a-loc:atSite  resource:Site/7761991208459c29ef5c7cee8ff29deb ;
+        a-loc:hasLocationType a-loc:LastLocation ;
+        tiapit:atTime resource:TimeInterval/2002 ."""@it,
+                                                """An example of usage of the class 'Time Indexed Typed Location' is the following:
+resource:TimeIndexedTypedLocation/0800055566-alternative-1
+        a  a-loc:TimeIndexedTypedLocation ;
+        rdfs:label \"Alternative location 1 of cultural property: 0800055566\"@en ;  a-loc:atSite  resource:Site/7761991208459c29ef5c7cee8ff29deb ;
+        a-loc:hasLocationType a-loc:LastLocation ;
+        tiapit:atTime resource:TimeInterval/2002 ."""@en;
+                               a owl:Class;
+                               rdfs:comment "This class represents a localization of a cultural property, within a timeframe and qualified according to the role that the localization plays in relation to the cultural property."@en,
+                                            "Questa classe rappresenta una localizzazione di un bene culturale, inserita in un arco temporale e qualificata in base al ruolo che la localizzazione riveste nei confronti del bene culturale."@it;
+                               rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                               rdfs:label "Localizzazione tipizzata nel tempo"@it,
+                                          "Time Indexed Typed Location"@en;
+                               rdfs:subClassOf [owl:someValuesFrom a-loc:LocationType ; 
+                                                owl:onProperty a-loc:hasLocationType ; 
+                                                a owl:Restriction],
+                                               arco:TimeIndexedSituation,
+                                               [owl:someValuesFrom owl:Thing ; 
+                                                owl:onProperty a-loc:isTimeIndexedTypedLocationOf ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty a-loc:atLocation ; 
+                                                owl:allValuesFrom <https://w3id.org/italia/onto/CLV/Feature> ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty a-loc:atSite ; 
+                                                owl:allValuesFrom cis:Site ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty <https://w3id.org/italia/onto/TI/atTime> ; 
+                                                owl:allValuesFrom <https://w3id.org/italia/onto/TI/TimeInterval> ; 
+                                                a owl:Restriction];
+                               owl:versionInfo "stabile"@it,
+                                               "stable"@en;
+                               ctlog:iccdNormTag "ICCD Normativa Trasversale: LC; LA; per normativa F: anche LR"@it.
+a-loc:ToponymInTime a owl:Class;
+                    rdfs:comment "Questa classe rappresenta eventuali altre denominazioni del luogo, che cambiano nel tempo."@it,
+                                 "This class represents other place's designations changing over time."@en;
+                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                    rdfs:label "Toponimo nel tempo"@it,
+                               "Toponym in time"@en;
+                    rdfs:subClassOf arco:TimeIndexedSituation,
+                                    [owl:someValuesFrom <https://w3id.org/italia/onto/CLV/Feature> ; 
+                                     owl:onProperty a-loc:isToponymInTimeOf ; 
+                                     a owl:Restriction],
+                                    [owl:onProperty <https://w3id.org/italia/onto/TI/atTime> ; 
+                                     owl:allValuesFrom <https://w3id.org/italia/onto/TI/TimeInterval> ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom rdfs:Literal ; 
+                                     owl:onProperty <https://w3id.org/italia/onto/l0/name> ; 
+                                     a owl:Restriction];
+                    owl:versionInfo "stable"@en,
+                                    "stabile"@it;
+                    ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/PVL/PVLT; LA/PRL/PRLT. - Versioni precedenti: LC/PVL, LA/PRL"@it.
+a-loc:TownFraction a owl:NamedIndividual,
+                     a-loc:OldTownAdmistrativeType;
+                   rdfs:comment "Questo individuo rappresenta uno specifico tipo di riferimento amministrativo che caratterizza centro storico, ovvero la frazione cittadina."@it,
+                                "This individual represents a specific type of administrative reference that characterizes the old town, i.e. the town fraction."@en;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "Frazione del centro urbano"@it,
+                              "Town fraction"@en;
+                   owl:versionInfo "stable"@en,
+                                   "stabile"@it;
+                   ctlog:iccdNormTag "ICCD Normative A e PG: LC/CST/CSTA"@it.
+a-loc:TypeOfContext a owl:Class;
+                    rdfs:comment "Questa classe rappresenta il tipo di contesto in cui si trova un bene culturale, che può essere urbano, suburbano, extraurbano, territoriale, subacqueo."@it,
+                                 "This class represents the type of geographical context where the cultural property is located: i.e. urban, suburban, extra-urban, territorial, underwater."@en;
+                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                    rdfs:label "Type of geographic context"@en,
+                               "Tipo di contesto geografico"@it;
+                    rdfs:subClassOf arco:Concept,
+                                    [owl:someValuesFrom owl:Thing ; 
+                                     owl:onProperty a-loc:isTypeOfContextOf ; 
+                                     a owl:Restriction];
+                    owl:versionInfo "stable"@en,
+                                    "stabile"@it;
+                    ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/PVZ; LA/PRZ - Normative A e PG: LC/SET/SETT"@it.
+a-loc:UnderwaterContext a owl:NamedIndividual,
+                          a-loc:TypeOfContext;
+                        rdfs:comment "This individual represents a specific type of context, that is the underwater context where the cultural property is located."@en,
+                                     "Questo individuo rappresenta un particolare tipo di contesto, ovvero il contesto subacqueo nel quale si trova il bene culturale."@it;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "Underwater context"@en,
+                                   "Contesto subacqueo"@it;
+                        owl:versionInfo "stabile"@it,
+                                        "stable"@en;
+                        ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/PVZ; LA/PRZ"@it.
+a-loc:UrbanArea a owl:Class;
+                rdfs:comment "Questa classe rappresenta le informazioni relative alla denominazione della zona urbana che fa parte del centro storico dove si trova il bene culturale."@it,
+                             "This class represents the informations on the denomination of the urban area that is part of the old town where the cultural property is located."@en;
+                rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                rdfs:label "Urban area"@en,
+                           "Zona urbana"@it;
+                rdfs:subClassOf <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>;
+                owl:disjointWith <https://w3id.org/italia/onto/CLV/District>;
+                owl:versionInfo "stabile"@it,
+                                "stable"@en;
+                ctlog:iccdNormTag "ICCD Normative A e PG: LC/ZUR/ZURD."@it.
+a-loc:UrbanContext a a-loc:TypeOfContext,
+                     owl:NamedIndividual;
+                   rdfs:comment "Questo individuo rappresenta uno specifico tipo di contesto, ovvero il contesto urbano nel quale si trova il bene culturale."@it,
+                                "This individual represents a specific type of context, that is the urban context where the cultural asset is located."@en;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "Contesto urbano"@it,
+                              "Urban context"@en;
+                   owl:versionInfo "stabile"@it,
+                                   "stable"@en;
+                   ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/PVZ; LA/PRZ - Normative A e PG: LC/SET/SETT (sigla SU)"@it.
+a-loc:administrativeOrderNumber a owl:DatatypeProperty;
+                                rdfs:comment "This property associates the order number that identifies a location intended as an administrative unit, i.e. an old town, an urban area and a sector."@en,
+                                             "Questa proprietà associa il numero d'ordine che identifica una località intesa come unità amministrativa, ovvero un centro storico, una zona urbana e un settore."@it;
+                                rdfs:domain <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>;
+                                rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                rdfs:label "Numero d'ordine amministrativo"@it,
+                                           "Administrative order number"@en;
+                                rdfs:range rdfs:Literal;
+                                rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                                owl:versionInfo "stabile"@it,
+                                                "stable"@en;
+                                ctlog:iccdNormTag "ICCD Normative A e PG: LC/CST/CSTN; LC/ZUR/ZURN; LC/SET/SETN"@it.
+a-loc:alt a owl:DatatypeProperty;
+          rdfs:comment "Questa proprietà rappresenta la coordinata z di un oggetto, che ne definisce l'altitudine rispetto al livello del mare."@it,
+                       "This property represents the z coordinate of an object, which defines its altitude above sea level."@en;
+          rdfs:domain a-loc:Altitude;
+          rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+          rdfs:label "altitudine"@it,
+                     "altitude"@en;
+          rdfs:range xsd:decimal;
+          owl:versionInfo "stabile"@it,
+                          "stable"@en;
+          ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: GE/GEC/GECZ - Normative precedenti: GP/GPC/GPCL"@it.
+a-loc:areCoordinatesOf a owl:ObjectProperty;
+                       rdfs:comment """Questa è la proprietà inversa di \"ha coordinate\"."""@it,
+                                    """This is the inverse property of \"has coordinates\"."""@en;
+                       rdfs:domain a-loc:Coordinates;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                       rdfs:label "sono coordinate di"@it,
+                                  "are coordinates of"@en;
+                       rdfs:range <https://w3id.org/italia/onto/CLV/Geometry>;
+                       owl:inverseOf a-loc:hasCoordinates;
+                       owl:versionInfo "stable"@en,
+                                       "stabile"@it.
+a-loc:atLocation a owl:ObjectProperty;
+                 rdfs:comment "Questa proprietà collega una localizzazione tipizzata nel tempo al luogo cui si riferisce."@it,
+                              "This property links a typed location over time to its related geographical entity."@en;
+                 rdfs:domain a-loc:TimeIndexedTypedLocation;
+                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                 rdfs:label "at location"@en,
+                            "presso luogo"@it;
+                 rdfs:range <https://w3id.org/italia/onto/CLV/Feature>;
+                 owl:inverseOf a-loc:isLocationIn;
+                 owl:versionInfo "stabile"@it,
+                                 "stable"@en;
+                 ctlog:iccdNormTag "ICCD Normativa Trasversale: se LC senza sottoelemento LDC; se LA senza sottoelemento PRC."@it.
+a-loc:atSite a owl:ObjectProperty;
+             rdfs:comment "Questa proprietà collega una localizzazione tipizzata nel tempo al contenitore fisico cui si riferisce."@it,
+                          "This property links a typified location over time to its physical container (Site)."@en;
+             rdfs:domain a-loc:TimeIndexedTypedLocation;
+             rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+             rdfs:label "presso contenitore fisico"@it,
+                        "at site"@en;
+             rdfs:range cis:Site;
+             rdfs:subPropertyOf a-loc:atLocation;
+             owl:inverseOf a-loc:isSiteIn;
+             owl:versionInfo "stable"@en,
+                             "stabile"@it;
+             ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/LDC; LA/PRC"@it.
+a-loc:cadastreName a owl:DatatypeProperty,
+                     owl:FunctionalProperty;
+                   rdfs:comment "This property represents the designation of a historical cadastre."@en,
+                                "Questa proprietà rappresenta la denominazione con cui è noto un catasto storico."@it;
+                   rdfs:domain a-loc:CadastralIdentity;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "denominazione del catasto"@it,
+                              "cadastre name"@en;
+                   rdfs:range rdfs:Literal;
+                   rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/name>;
+                   owl:versionInfo "stabile"@it,
+                                   "stable"@en;
+                   ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: LS/CSS/CSSD".
+a-loc:culturalInstituteOrSiteIdentifier a owl:FunctionalProperty,
+                                          owl:DatatypeProperty;
+                                        rdfs:comment "This property allows to associate a legal container to its code assigned by the ICCD."@en,
+                                                     "Questa proprietà permette di associare un contenitore giuridico al codice assegnatogli dall'ICCD."@it;
+                                        rdfs:domain cis:CulturalInstituteOrSite;
+                                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                        rdfs:label "identificativo del contenitore giuridico"@it,
+                                                   "cultural institute or site identifier"@en;
+                                        rdfs:range rdfs:Literal;
+                                        rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                                        owl:versionInfo "stabile"@it,
+                                                        "stable"@en;
+                                        ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/LDC/LDCG; LA/PRC/PRCG"@it.
+a-loc:districtNumber a owl:DatatypeProperty;
+                     rdfs:comment "This property represents the progressive number that identifies the district where the cultural property is located."@en,
+                                  "Questa proprietà rappresenta il numero progressivo che individua il settore dove si trova il bene culturale."@it;
+                     rdfs:domain <https://w3id.org/italia/onto/CLV/District>;
+                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                     rdfs:label "District number"@en,
+                                "Numero del settore"@it;
+                     rdfs:range rdfs:Literal;
+                     rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                     owl:versionInfo "stable"@en,
+                                     "stabile"@it;
+                     ctlog:iccdNormTag "ICCD Normative A e PG: LC/SET/SETP"@it.
+a-loc:hasAltitude a owl:ObjectProperty;
+                  rdfs:comment "Questa proprietà collega le coordinate relative alla georeferenziazione di un oggetto (Geometry) alla sua altitudine."@it,
+                               "This property links the georeferencing coordinates of an object (Geometry) to its altitude."@en;
+                  rdfs:domain a-loc:Coordinates;
+                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                  rdfs:label "has altitude"@en,
+                             "ha altitudine"@it;
+                  rdfs:range a-loc:Altitude;
+                  owl:inverseOf a-loc:isAltitudeOf;
+                  owl:versionInfo "stable"@en,
+                                  "stabile"@it;
+                  ctlog:iccdNormTag "quota minima: GP/GPC/GPCI - GA/GAQ/GAQI - GL/GLQ/GLQI - MT/MTA/MTAM; quota massima: GP/GPC/GPCS - GA/GAQS - GL/GLQ/GLQS - MT/MTA/MTAX; quota relativa: MT/MTA/MTAR; coordinata z: 4.00 GE/GEC/GECZ - 3.00GP/GPC/GPCL"@it.
+a-loc:hasBaseMap a owl:ObjectProperty;
+                 rdfs:comment "Questa proprietà collega una georeferenziazione di un oggetto alla base cartografica eventualmente utilizzata."@it,
+                              "This property links an object georeferencing to the base map possibly used."@en;
+                 rdfs:domain <https://w3id.org/italia/onto/CLV/Geometry>;
+                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                 rdfs:label "ha base cartografica"@it,
+                            "has base map"@en;
+                 rdfs:range a-loc:BaseMap;
+                 owl:inverseOf a-loc:isBaseMapOf;
+                 owl:versionInfo "stabile"@it,
+                                 "stable"@en;
+                 ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: GE/GPB; versioni precedenti: GP/GPB - GA/GAB - GL/GLB"@it.
+a-loc:hasCadastralCity a owl:ObjectProperty;
+                       rdfs:comment "Questa proprietà collega un'identità catastale di un'entità al comune a cui è intestato il foglio di mappa catastale, riportato nella forma attestata nel catasto."@it,
+                                    "This property links a cadastral identity of an entity to the municipality to which the cadastral map is registered, as attested by the cadastre."@en;
+                       rdfs:domain a-loc:CadastralIdentity;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                       rdfs:label "has cadastral city"@en,
+                                  "ha città catastale"@it;
+                       rdfs:range <https://w3id.org/italia/onto/CLV/City>;
+                       rdfs:subPropertyOf a-loc:hasCadastralEntity;
+                       owl:inverseOf a-loc:isCadastralCityOf;
+                       owl:versionInfo "stabile"@it,
+                                       "stable"@en;
+                       ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CS/CTS/CTSC. - Normativa RA v.2: RP/LGC/LGCC"@it.
+a-loc:hasCadastralEntity a owl:ObjectProperty;
+                         rdfs:comment "This property links a cadastral identity of an entity to one of the cadastral entities, understood as spatial objects, that define it."@en,
+                                      "Questa proprietà collega un'identità catastale di un'entità a una delle entità catastali, intese come oggetti spaziali, che la definiscono."@it;
+                         rdfs:domain a-loc:CadastralIdentity;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                         rdfs:label "has cadastral entity"@en,
+                                    "ha entità catastale"@it;
+                         rdfs:range a-loc:CadastralEntity;
+                         owl:inverseOf a-loc:isCadastralEntityOf;
+                         owl:versionInfo "stabile"@it,
+                                         "stable"@en;
+                         ctlog:iccdNormTag "ICCD Normativa Traversale 4.00: CS/CTS, CS/CTS/CTSF, CTSN; LS/CSS. LG/LGC".
+a-loc:hasCadastralIdentity a owl:ObjectProperty;
+                           rdfs:comment "This property links a cultural property to all its cadastral information related to one of its locations: i.e. historical location, current location, finding location, etc."@en,
+                                        "Questa proprietà collega un bene culturale all'insieme delle informazioni catastali che lo riguardano, relativamente a una delle sue localizzazioni (storica, attuale, di rinvenimento, ecc.)"@it;
+                           rdfs:domain cis:CulturalEntity;
+                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                           rdfs:label "ha identità catastale"@it,
+                                      "has cadastral identity"@en;
+                           rdfs:range a-loc:CadastralIdentity;
+                           owl:inverseOf a-loc:isCadastralIdentityOf;
+                           owl:versionInfo "stable"@en,
+                                           "stabile"@it;
+                           ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CS. - Normativa RA v.2: RP/LGC".
+a-loc:hasCadastreType a owl:ObjectProperty,
+                        owl:FunctionalProperty;
+                      rdfs:comment "This property relates a cadastral identity of an entity to the type of cadastre (e.g. land cadastre, building cadastre, mixed cadastre)."@en,
+                                   "Questa proprietà collega una identità catastale relativa a un'entità al tipo di catasto (ad es. catasto terreni, catasto fabbricati, catasto misto)."@it;
+                      rdfs:domain a-loc:CadastralIdentity;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                      rdfs:label "ha tipo di catasto"@it,
+                                 "has cadastre type"@en;
+                      rdfs:range a-loc:CadastreType;
+                      rdfs:subPropertyOf arco:hasType;
+                      owl:inverseOf a-loc:isCadastreTypeOf;
+                      owl:versionInfo "stable"@en,
+                                      "stabile"@it;
+                      ctlog:iccdNormTag "CS/CTS/CTST".
+a-loc:hasClericalAdministrativeArea a owl:ObjectProperty;
+                                    rdfs:comment "Questa proprietà collega un indirizzo a un'area amministrativa ecclesiastica (ad es. una diocesi)."@it,
+                                                 "This property relates an address to a clerical administrative area (e.g. a diocese)."@en;
+                                    rdfs:domain <https://w3id.org/italia/onto/CLV/Address>;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                    rdfs:label "ha area amministrativa ecclesiastica"@it,
+                                               "has clerical administrative area"@en;
+                                    rdfs:range cis:ClericalAdministrativeArea;
+                                    rdfs:subPropertyOf <https://w3id.org/italia/onto/CLV/hasAddressComponent>;
+                                    owl:inverseOf a-loc:isClericalAdministrativeAreaOf;
+                                    owl:versionInfo "stabile"@it,
+                                                    "stable"@en;
+                                    ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: LC/PVE; LA/PRE".
+a-loc:hasContinent a owl:ObjectProperty;
+                   rdfs:comment "Questa proprietà collega la localizzazione di un'entità al continente in cui si trova."@it,
+                                "This property links the location of an entity to the continent where it is located."@en;
+                   rdfs:domain owl:Thing;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "has continent"@en,
+                              "ha continente"@it;
+                   rdfs:range a-loc:Continent;
+                   owl:inverseOf a-loc:isContinentOf;
+                   owl:versionInfo "stable"@en,
+                                   "stabile"@it;
+                   ctlog:iccdNormTag "ICCD Normativa Trasversale: LA/PRT/PRTK"@it.
+a-loc:hasCoordinates a owl:ObjectProperty;
+                     rdfs:comment "Questa proprietà collega la georeferenziazione di un oggetto (Geometry) alle coordinate (x, y, z)."@it,
+                                  "This property links the object georeferencing (Geometry) to its coordinates (x, y, z)."@en;
+                     rdfs:domain <https://w3id.org/italia/onto/CLV/Geometry>;
+                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                     rdfs:label "ha coordinate"@it,
+                                "has coordinates"@en;
+                     rdfs:range a-loc:Coordinates;
+                     owl:versionInfo "stable"@en,
+                                     "stabile"@it;
+                     ctlog:iccdNormTag "ICCD Normativa Trasversale: GE/GEC - versioni precedenti: GP/GPD; GA/GAPD; GL/GLS"@it.
+a-loc:hasCulturalInstituteOrSite a owl:ObjectProperty;
+                                 rdfs:comment "",
+                                              "This property links a cultural property to the cultural institute or site"@en,
+                                              "Questa proprietà collega un bene culturale al luogo o istituto della cultura (contenitore giuridico) in cui è contenuta"@it;
+                                 rdfs:domain owl:Thing;
+                                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                 rdfs:label "ha luogo o istituto della cultura"@it,
+                                            "has cultural institute or site"@en;
+                                 rdfs:range cis:CulturalInstituteOrSite;
+                                 owl:inverseOf a-loc:isCulturalInstituteOrSiteOf;
+                                 owl:versionInfo "unstable"@en,
+                                                 "instabile"@it.
+a-loc:hasCulturalInstituteOrSiteDefinition a owl:ObjectProperty;
+                                           rdfs:comment "Questa proprietà collega la tipologia di un contenitore giuridico a una delle sue componenti, cioè alla definizione della sua tipologia."@it,
+                                                        "This property links the type of a cultural institute or site to one of its components, that is to the definition of its type."@en;
+                                           rdfs:domain a-loc:CulturalInstituteOrSiteType;
+                                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                           rdfs:label "ha definizione del contenitore giuridico"@it,
+                                                      "has cultiral institute or site definition"@en;
+                                           rdfs:range a-loc:CulturalInstituteOrSiteDefinition;
+                                           owl:inverseOf a-loc:isCulturalInstituteOrSiteDefinitionOf;
+                                           owl:versionInfo "unstable"@en,
+                                                           "instabile"@it;
+                                           ctlog:iccdNormTag "ICCD Normativa CG: CG/CGT"@it.
+a-loc:hasCulturalInstituteOrSiteSpecification a owl:ObjectProperty;
+                                              rdfs:comment "This property links the type of a cultural institute or site to one of its components, that is to the specifications of its type."@en,
+                                                           "Questa proprietà collega la tipologia di un contenitore giuridico a una delle sue componenti, cioè alle specifiche sulla sua tipologia."@it;
+                                              rdfs:domain a-loc:CulturalInstituteOrSiteType;
+                                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                              rdfs:label "has cultural institute or site specification"@en,
+                                                         "ha qualificazione del contenitore giuridico"@it;
+                                              rdfs:range a-loc:CulturalInstituteOrSiteSpecification;
+                                              owl:inverseOf a-loc:isCulturalInstituteOrSiteSpecificationOf;
+                                              owl:versionInfo "instabile"@it,
+                                                              "unstable"@en;
+                                              ctlog:iccdNormTag "ICCD Normativa CG: CG/CGQ"@it.
+a-loc:hasCulturalInstituteOrSiteType a owl:ObjectProperty;
+                                     rdfs:comment "Questa proprietà collega un contenitore giuridico al tipo di contenitore giuridico, per permetterne la corretta e precisa individuazione."@it,
+                                                  "This property connects a Cultural institute or site to its type, to allow its correct and precise identification."@en;
+                                     rdfs:domain cis:CulturalInstituteOrSite;
+                                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                     rdfs:label "ha tipo di contenitore giuridico"@it,
+                                                "has cultural institute or site type"@en;
+                                     rdfs:range a-loc:CulturalInstituteOrSiteType;
+                                     rdfs:subPropertyOf arco:hasType;
+                                     owl:inverseOf a-loc:isCulturalInstituteOrSiteTypeof;
+                                     owl:versionInfo "instabile"@it,
+                                                     "unstable"@en;
+                                     ctlog:iccdNormTag "ICCD Normativa CG: CG/CGT; CG/CGQ"@it.
+a-loc:hasCulturalPropertyAddress a owl:ObjectProperty;
+                                 rdfs:comment "This property represents the relationship that links a cultural property to the address of its current physical location at the cataloging time. The report provides a simplified representation, with a reduced expressivity, of the current location of the cultural property, and it causes the loss of other information regarding its location (i.e. the continent, the possible physical container, the specific location in the physical container, etc.)."@en,
+                                              "Questa proprietà rappresenta la relazione che collega un bene culturale all'indirizzo della sua localizzazione fisica attuale, al momento della catalogazione. La relazione fornisce una rappresentazione semplificata, con ridotta espressività, della localizzazione attuale del bene culturale, e provoca la perdita delle altre informazioni che riguardano la collocazione del bene (continente, eventuale contenitore fisico, collocazione specifica nel contenitore fisico, ecc.)."@it;
+                                 rdfs:domain cis:CulturalEntity;
+                                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                 rdfs:label "indirizzo del bene culturale"@it,
+                                            "cultural property address"@en;
+                                 rdfs:range <https://w3id.org/italia/onto/CLV/Address>;
+                                 owl:inverseOf a-loc:isCulturalPropertyAddressOf;
+                                 owl:propertyChainAxiom (a-loc:hasTimeIndexedTypedLocation
+                                                         a-loc:atLocation
+                                                         <https://w3id.org/italia/onto/CLV/hasAddress>),
+                                                        (a-loc:hasTimeIndexedTypedLocation
+                                                         a-loc:atSite
+                                                         <https://w3id.org/italia/onto/CLV/hasAddress>);
+                                 owl:versionInfo "stable"@en,
+                                                 "stabile"@it;
+                                 ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: LC/PVC"@it.
+a-loc:hasGeometryMethod a owl:ObjectProperty;
+                        rdfs:comment "This property links a georeferencing to the method used for the object positioning."@en,
+                                     "Questa proprietà collega una georeferenziazione al metodo utilizzato per il posizionamento."@it;
+                        rdfs:domain <https://w3id.org/italia/onto/CLV/Geometry>;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "has geometry method"@en,
+                                   "ha metodo di georeferenziazione"@it;
+                        rdfs:range a-loc:GeometryMethod;
+                        owl:inverseOf a-loc:isGeometryMethodOf;
+                        owl:versionInfo "stable"@en,
+                                        "stabile"@it;
+                        ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: GE/GPM; versioni precedenti: GP/GPM - GA/GAM - GL/GLM"@it.
+a-loc:hasGeometryTechnique a owl:ObjectProperty;
+                           rdfs:comment "This property links a georeferencing to the georeferencing technique."@en,
+                                        "Questa proprietà collega una georeferenziazione alla tecnica di georeferenziazione."@it;
+                           rdfs:domain <https://w3id.org/italia/onto/CLV/Geometry>;
+                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                           rdfs:label "ha tecnica di georeferenziazione"@it,
+                                      "has geometry technique"@en;
+                           rdfs:range a-loc:GeometryTechnique;
+                           owl:inverseOf a-loc:isGeometryTechniqueOf;
+                           owl:versionInfo "stable"@en,
+                                           "stabile"@it;
+                           ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: GE/GPT; versioni precedenti: GP/GPT - GA/GAT - GL/GLT"@it.
+a-loc:hasGovernmentalAdministrativeArea a owl:ObjectProperty;
+                                        rdfs:comment "This property links an address to a governmental administrative area."@en,
+                                                     "Questa proprietà collega un indirizzo a un'area di appartenenza amministrativa."@it;
+                                        rdfs:domain <https://w3id.org/italia/onto/CLV/Address>;
+                                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                        rdfs:label "has governamental administrative area"@en,
+                                                   "ha area di appartenenza amministrativa"@it;
+                                        rdfs:range cis:GovernamentalAdministrativeArea;
+                                        rdfs:subPropertyOf <https://w3id.org/italia/onto/CLV/hasAddressComponent>;
+                                        owl:inverseOf a-loc:isGovernmentalAdministrativeAreaOf;
+                                        owl:versionInfo "stable"@en,
+                                                        "stabile"@it;
+                                        ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: LS/LCS/LCSA; LA/PRT/PRTR".
+a-loc:hasHistoricalArea a owl:ObjectProperty;
+                        rdfs:comment "Questa proprietà collega un indirizzo a un'area storico-geografica."@it,
+                                     "This property links an address to a historical-geographical area."@en;
+                        rdfs:domain <https://w3id.org/italia/onto/CLV/Address>;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "ha area storica"@it,
+                                   "has historical area"@en;
+                        rdfs:range <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>;
+                        rdfs:subPropertyOf <https://w3id.org/italia/onto/CLV/hasAddressComponent>;
+                        owl:inverseOf a-loc:isHistoricalAreaOf;
+                        owl:versionInfo "stable"@en,
+                                        "stabile"@it.
+a-loc:hasLocationType a owl:ObjectProperty;
+                      rdfs:comment "This property links an entity (e.g. a situation in which a place plays a certain role in relation to a cultural property in a time frame, or a georeferencing, or a cadastral identity) to the role of the localization referring to it (i.e current physical location, previous location, finding location, etc.)."@en,
+                                   "Questa proprietà collega un'entità, per esempio un situazione in cui un luogo riveste un certo ruolo nei confronti di un bene culturale in un intervallo di tempo, o una georeferenziazione, o un'identità catastale al ruolo della localizzazione (fisica attuale, precedente, di rinvenimento, ecc.) cui si riferisce."@it;
+                      rdfs:domain owl:Thing;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                      rdfs:label "ha tipo di localizzazione cui si riferisce"@it,
+                                 "has referred location type"@en;
+                      rdfs:range a-loc:LocationType;
+                      rdfs:subPropertyOf arco:hasType;
+                      owl:inverseOf a-loc:isLocationTypeOf;
+                      owl:versionInfo "stabile"@it,
+                                      "stable"@en;
+                      ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: GE/GEL; LA/TLC; LA/TCL; LC (CurrentPhysicalLocation) - Normativa F: anche LR (ShotLocation) - Normative di versioni precedenti: GP/GPL; GA/GAL; GL/GLL. - CS/CTL"@it.
+a-loc:hasOldTownAdministrativeType a owl:ObjectProperty;
+                                   rdfs:comment "This property connects a historical center with information related to its administrative type."@en,
+                                                "Questa proprietà collega un centro storico con le informazioni relative al tipo del suo carattere amministrativo."@it;
+                                   rdfs:domain a-loc:OldTown;
+                                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                   rdfs:label "Old town administrative type"@en,
+                                              "Tipo amministrativo del centro storico"@it;
+                                   rdfs:range a-loc:OldTownAdmistrativeType;
+                                   rdfs:subPropertyOf arco:hasType;
+                                   owl:inverseOf a-loc:isOldTownAdministrativeTypeOf;
+                                   owl:versionInfo "stable"@en,
+                                                   "stabile"@it;
+                                   ctlog:iccdNormTag "ICCD Normative A e PG: LC/CST/CSTA"@it.
+a-loc:hasSiteDefinition a owl:ObjectProperty;
+                        rdfs:comment "Questa proprietà collega la tipologia di un contenitore fisico a una delle sue componenti, cioè alla definizione della sua tipologia."@it,
+                                     "This property links the type of a physical container to one of its components, that is to the definition of its type."@en;
+                        rdfs:domain a-loc:SiteType;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "ha definizione del contenitore fisico"@it,
+                                   "has site definition"@en;
+                        rdfs:range a-loc:SiteDefinition;
+                        owl:inverseOf a-loc:isSiteDefinitionOf;
+                        owl:versionInfo "stable"@en,
+                                        "stabile"@it;
+                        ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/LDC/LDCT"@it.
+a-loc:hasSiteSpecification a owl:ObjectProperty;
+                           rdfs:comment "This property links the type of a physical container to one of its components, that is to the specifications of its type."@en,
+                                        "Questa proprietà collega la tipologia di un contenitore fisico a una delle sue componenti, cioè alle specifiche sulla sua tipologia."@it;
+                           rdfs:domain a-loc:SiteType;
+                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                           rdfs:label "ha qualificazione del contenitore fisico"@it,
+                                      "has site specification"@en;
+                           rdfs:range a-loc:SiteSpecification;
+                           owl:inverseOf a-loc:isSiteSpecificationOf;
+                           owl:versionInfo "stabile"@it,
+                                           "stable"@en;
+                           ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/LDC/LDCQ"@it.
+a-loc:hasSiteType a owl:ObjectProperty;
+                  rdfs:comment "Questa proprietà collega un contenitore fisico al tipo di contenitore fisico, per permetterne la corretta e precisa individuazione."@it,
+                               "This property connects a physical container (Site) to its type, to allow its correct and precise identification."@en;
+                  rdfs:domain cis:Site;
+                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                  rdfs:label "has site type"@en,
+                             "ha tipo di contenitore fisico"@it;
+                  rdfs:range a-loc:SiteType;
+                  rdfs:subPropertyOf arco:hasType;
+                  owl:inverseOf a-loc:isSiteTypeOf;
+                  owl:versionInfo "stabile"@it,
+                                  "stable"@en;
+                  ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/LDC/LDCT; LC/LDC/LDCQ"@it.
+a-loc:hasStratigraphicArea a owl:ObjectProperty;
+                           rdfs:comment "This property relates a stratigraphic record to the area in which it took place."@en,
+                                        "Questa proprietà collega un saggio stratigrafico all'ambiente in un il saggio è stato effettuato."@it;
+                           rdfs:domain cis:CulturalEntity;
+                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                           rdfs:label "has stratigraphic area"@en,
+                                      "ha ambiente"@it;
+                           rdfs:range <https://w3id.org/italia/onto/l0/Location>;
+                           rdfs:subPropertyOf arco:hasLocation;
+                           owl:inverseOf a-loc:isStratigraphicAreaOf;
+                           owl:versionInfo "stabile"@it,
+                                           "stable"@en;
+                           ctlog:iccdNormTag "ICCD Normativa SAS: OG/OGT/OGTX".
+a-loc:hasStratigraphicRoom a owl:ObjectProperty;
+                           rdfs:comment "This property relates a stratigraphic record to the room in which it took place."@en,
+                                        "Questa proprietà collega un saggio stratigrafico al settore in cui il saggio è stato effettuato."@it;
+                           rdfs:domain cis:CulturalEntity;
+                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                           rdfs:label "ha settore"@it,
+                                      "has stratigraphic room"@en;
+                           rdfs:range <https://w3id.org/italia/onto/l0/Location>;
+                           rdfs:subPropertyOf arco:hasLocation;
+                           owl:inverseOf a-loc:isStratigraphicRoomOf;
+                           owl:versionInfo "stabile"@it,
+                                           "stable"@en;
+                           ctlog:iccdNormTag "ICCD Normativa SAS: OG/OGT/OGTY".
+a-loc:hasStratigraphicSquare a owl:ObjectProperty;
+                             rdfs:comment "This property relates a stratigraphic record to the square in which it took place."@en,
+                                          "Questa proprietà collega un saggio stratigrafico al quadrato in un il saggio è stato effettuato."@it;
+                             rdfs:domain cis:CulturalEntity;
+                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                             rdfs:label "ha quadrato"@it,
+                                        "has stratigraphic square"@en;
+                             rdfs:range <https://w3id.org/italia/onto/l0/Location>;
+                             rdfs:subPropertyOf arco:hasLocation;
+                             owl:inverseOf a-loc:isStratigraphicSquareOf;
+                             owl:versionInfo "stabile"@it,
+                                             "stable"@en;
+                             ctlog:iccdNormTag "ICCD Normativa SAS: OG/OGT/OGTZ".
+a-loc:hasTerritorialArea a owl:ObjectProperty;
+                         rdfs:comment "This property links an address to a territorial area, which may not coincide with the administrative area, to which a cultural property belongs."@en,
+                                      "Questa proprietà collega un indirizzo a un'area di appartenenza territoriale, che può non coincidere con l'area amministrativa."@it;
+                         rdfs:domain <https://w3id.org/italia/onto/CLV/Address>;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                         rdfs:label "has territorial area"@en,
+                                    "ha area di appartenenza territoriale"@it;
+                         rdfs:range <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>;
+                         rdfs:subPropertyOf <https://w3id.org/italia/onto/CLV/hasAddressComponent>;
+                         owl:inverseOf a-loc:isTerritorialAreaOf;
+                         owl:versionInfo "stabile"@it,
+                                         "stable"@en;
+                         ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: LS/LCS/LCSR".
+a-loc:hasTerritorialDivision a owl:ObjectProperty;
+                             rdfs:comment "This property links an address to a territorial division within a territorial area."@en,
+                                          "Questa proprietà collega un indirizzo a una ripartizione territoriale interna a un'area territoriale."@it;
+                             rdfs:domain <https://w3id.org/italia/onto/CLV/Address>;
+                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                             rdfs:label "ha ripartizione territoriale"@it,
+                                        "has territorial division"@en;
+                             rdfs:range <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>;
+                             rdfs:subPropertyOf <https://w3id.org/italia/onto/CLV/hasAddressComponent>;
+                             owl:inverseOf a-loc:isTerritorialDivisionOf;
+                             owl:versionInfo "stable"@en,
+                                             "stabile"@it;
+                             ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: LS/LCS/LCST".
+a-loc:hasTimeIndexedTypedLocation a owl:ObjectProperty;
+                                  rdfs:comment "This property links an entity to its typified location over time."@en,
+                                               "Questa proprietà collega un'entità a una sua localizzazione tipizzata nel tempo."@it;
+                                  rdfs:domain owl:Thing;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                  rdfs:label "ha localizzazione tipizzata nel tempo"@it,
+                                             "has time indexed typed location"@en;
+                                  rdfs:range a-loc:TimeIndexedTypedLocation;
+                                  owl:inverseOf a-loc:isTimeIndexedTypedLocationOf;
+                                  owl:versionInfo "stable"@en,
+                                                  "stabile"@it;
+                                  ctlog:iccdNormTag "ICCD Normativa Trasversale: LC; LA; per normativa F: anche LR"@it.
+a-loc:hasToponymInTime a owl:ObjectProperty;
+                       rdfs:comment "Questa proprietà permette di collegare un luogo a una denominazione che cambia nel tempo."@it,
+                                    "This property relates a geographical entity to a toponym chianging over time."@en;
+                       rdfs:domain <https://w3id.org/italia/onto/CLV/Feature>;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                       rdfs:label "ha toponimo nel tempo"@it,
+                                  "has toponym in time"@en;
+                       rdfs:range a-loc:ToponymInTime;
+                       owl:inverseOf a-loc:isToponymInTimeOf;
+                       owl:versionInfo "stabile"@it,
+                                       "stable"@en;
+                       ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/PVL/PVLT; LA/PRL/PRLT. - Versioni precedenti: LC/PVL, LA/PRL"@it.
+a-loc:hasTypeOfContext a owl:ObjectProperty;
+                       rdfs:comment "Questa proprietà permette di collegare un'entità al tipo di contesto (urbano, suburbano, extraurbano, territoriale, subacqueo) in cui si trova."@it,
+                                    "This property relates an entity to the type of context where the cultural property is located (i.e. urban context, suburban context, extra-urban context, territorial context, underwater context)."@en;
+                       rdfs:domain owl:Thing;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                       rdfs:label "has type of geographical context"@en,
+                                  "ha tipo di contesto geografico"@it;
+                       rdfs:range a-loc:TypeOfContext;
+                       rdfs:subPropertyOf arco:hasConcept;
+                       owl:inverseOf a-loc:isTypeOfContextOf;
+                       owl:versionInfo "stable"@en,
+                                       "stabile"@it;
+                       ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/PVZ; LA/PRZ"@it.
+a-loc:hasUrbanArea a owl:ObjectProperty;
+                   rdfs:comment "This property connects the old town with the urban area that is part of it."@en,
+                                "Questa proprietà collega il centro storico con la zona urbana che ne fa parte."@it;
+                   rdfs:domain a-loc:OldTown;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "has urban area"@en,
+                              "ha zona urbana"@it;
+                   rdfs:range a-loc:UrbanArea;
+                   rdfs:subPropertyOf arco:hasPart;
+                   owl:deprecated true;
+                   owl:inverseOf a-loc:isUrbanAreaOf;
+                   owl:versionInfo "stabile"@it,
+                                   "stable"@en;
+                   ctlog:iccdNormTag "ICCD Normative A e PG: LC/ZUR/ZURD."@it.
+a-loc:isAltitudeOf a owl:ObjectProperty;
+                   rdfs:comment "Questa proprietà collega le coordinate relative alla georeferenziazione dell'altitudine a un oggetto (Geometry)."@it,
+                                "This property links the georeferencing coordinates of the altitude to an object (Geometry)."@en;
+                   rdfs:domain a-loc:Altitude;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "is altitude of"@en,
+                              "è altitudine di"@it;
+                   rdfs:range a-loc:Coordinates;
+                   owl:versionInfo "stable"@en,
+                                   "stabile"@it.
+a-loc:isBaseMapOf a owl:ObjectProperty;
+                  rdfs:comment "This property links a base map to an object georeferencing."@en,
+                               "Questa proprietà collega una base cartografica alla georeferenziazione di un oggetto."@it;
+                  rdfs:domain a-loc:BaseMap;
+                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                  rdfs:label "is base map of"@en,
+                             "è base cartografica di"@it;
+                  rdfs:range <https://w3id.org/italia/onto/CLV/Geometry>;
+                  owl:versionInfo "stable"@en,
+                                  "stabile"@it.
+a-loc:isCadastralCityOf a owl:ObjectProperty;
+                        rdfs:comment "This property links the municipality to which the cadastral map is registered, as attested by the cadastre, to a cadastral identity of an entity."@en,
+                                     "Questa proprietà collega il comune a cui è intestato il foglio di mappa catastale, riportato nella forma attestata nel catasto all'identità catastale di un'entità."@it;
+                        rdfs:domain <https://w3id.org/italia/onto/CLV/City>;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "is cadastral city of"@en,
+                                   "è città catastale di"@it;
+                        rdfs:range a-loc:CadastralIdentity;
+                        rdfs:subPropertyOf a-loc:isCadastralEntityOf;
+                        owl:versionInfo "stable"@en,
+                                        "stabile"@it.
+a-loc:isCadastralEntityOf a owl:ObjectProperty;
+                          rdfs:comment "Questa proprietà collega un'entità catastale, intesa come oggetti spaziali, a alla sua identità catastale."@it,
+                                       "This property links a cadastral entity, understood as spatial object, to its cadastral identity."@en;
+                          rdfs:domain a-loc:CadastralEntity;
+                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                          rdfs:label "is cadastral entity of"@en,
+                                     "è entità catastale di"@it;
+                          rdfs:range a-loc:CadastralIdentity;
+                          owl:versionInfo "stable"@en,
+                                          "stabile"@it.
+a-loc:isCadastralIdentityOf a owl:ObjectProperty;
+                            rdfs:comment "This property links all the cadastral information related to one of its locations: i.e. historical location, current location, finding location, etc., to a cultural property."@en,
+                                         "Questa proprietà collega l'insieme delle informazioni catastali, relative a una delle sue localizzazioni (storica, attuale, di rinvenimento, ecc.), a un bene culturale."@it;
+                            rdfs:domain a-loc:CadastralIdentity;
+                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                            rdfs:label "è identitià catastale di"@it,
+                                       "is cadastral identity of"@en;
+                            rdfs:range cis:CulturalEntity;
+                            owl:versionInfo "stabile"@it,
+                                            "stable"@en.
+a-loc:isCadastreTypeOf a owl:ObjectProperty;
+                       rdfs:comment "Questa proprietà collega un tipo di catasto (ad es. catasto terreni, catasto fabbricati, catasto misto) a una identità catastale relativa a un'entità."@it,
+                                    "This property relates the type of cadastre (e.g. land cadastre, building cadastre, mixed cadastre) to a cadastral identity of an entity."@en;
+                       rdfs:domain a-loc:CadastreType;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                       rdfs:label "is cadastre type of"@en,
+                                  "è tipo di catasto di"@it;
+                       rdfs:range a-loc:CadastralIdentity;
+                       rdfs:subPropertyOf arco:isTypeOf;
+                       owl:versionInfo "stabile"@it,
+                                       "stable"@en.
+a-loc:isClericalAdministrativeAreaOf a owl:ObjectProperty;
+                                     rdfs:comment "This property relates a clerical administrative area (e.g. a diocese) to its address."@en,
+                                                  "Questa proprietà collega un'area amministrativa ecclesiastica (ad es. una diocesi) al suo indirizzo."@it;
+                                     rdfs:domain cis:ClericalAdministrativeArea;
+                                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                     rdfs:label "is clerical administrative area of"@en,
+                                                "è area amministrativa ecclesiastica di"@it;
+                                     rdfs:range <https://w3id.org/italia/onto/CLV/Address>;
+                                     rdfs:subPropertyOf <https://w3id.org/italia/onto/CLV/isAddressComponentOf>;
+                                     owl:versionInfo "stabile"@it,
+                                                     "stable"@en.
+a-loc:isContinentOf a owl:ObjectProperty;
+                    rdfs:comment "Questa proprietà collega un continente alla localizzazione di un'entità."@it,
+                                 "This property links the continent to the location of an entity."@en;
+                    rdfs:domain a-loc:Continent;
+                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                    rdfs:label "è continente di"@it,
+                               "is continent of"@en;
+                    rdfs:range owl:Thing;
+                    owl:versionInfo "stable"@en,
+                                    "stabile"@it.
+a-loc:isCulturalInstituteOrSiteDefinitionOf a owl:ObjectProperty;
+                                            rdfs:comment "Questa proprietà collega la definizione del contenitore giuridico alla sua tipologia."@it,
+                                                         "This property links the definition of a cultural institute or site to its type."@en;
+                                            rdfs:domain a-loc:CulturalInstituteOrSiteDefinition;
+                                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                            rdfs:label "è definizione del contenitore giuridico di"@it,
+                                                       "is cultural institute or site definition of"@en;
+                                            rdfs:range a-loc:CulturalInstituteOrSiteType;
+                                            owl:versionInfo "instabile"@it,
+                                                            "unstable"@en.
+a-loc:isCulturalInstituteOrSiteOf a owl:ObjectProperty;
+                                  rdfs:comment "Questa proprietà collega un luogo o istituto della cultura (contenitore giuridico) al bene culturale"@it,
+                                               "This property links a cultural institute or site to a cultural property"@en;
+                                  rdfs:domain cis:CulturalInstituteOrSite;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                  rdfs:label "è luogo o istituto della cultura di"@it,
+                                             "is cultural institute or site of"@en;
+                                  rdfs:range owl:Thing;
+                                  owl:versionInfo "unstable"@en,
+                                                  "instabile"@it.
+a-loc:isCulturalInstituteOrSiteSpecificationOf a owl:ObjectProperty;
+                                               rdfs:comment "This property links the specification of a cultural institute or site to one of its type."@en,
+                                                            "Questa proprietà collega le specifiche sulla qualificazione del contenitore giuridico alla sua tipologia."@it;
+                                               rdfs:domain a-loc:CulturalInstituteOrSiteSpecification;
+                                               rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                               rdfs:label "è specificazione di contenitore giuridico"@it,
+                                                          "is cultural institute or site specification of"@en;
+                                               rdfs:range a-loc:CulturalInstituteOrSiteType;
+                                               owl:versionInfo "unstable"@en,
+                                                               "instabile"@it.
+a-loc:isCulturalInstituteOrSiteTypeof a owl:ObjectProperty;
+                                      rdfs:comment "This property connects the type of cultural institute or site to a cultural institute or site, to allow its correct and precise identification."@en,
+                                                   "Questa proprietà collega il tipo di contenitore giuridico a un contenitore giuridico, per permetterne la corretta e precisa individuazione."@it;
+                                      rdfs:domain a-loc:CulturalInstituteOrSiteType;
+                                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                      rdfs:label "is cultural institute or site type of"@en,
+                                                 "è tipo di contenitore giuridico di"@it;
+                                      rdfs:range cis:CulturalInstituteOrSite;
+                                      rdfs:subPropertyOf arco:isTypeOf;
+                                      owl:versionInfo "instabile"@it,
+                                                      "unstable"@en.
+a-loc:isCulturalPropertyAddressOf a owl:ObjectProperty;
+                                  rdfs:comment "Questa proprietà rappresenta la relazione che collega l'indirizzo della localizzazione fisica attuale, al momento della catalogazione, con il bene culturale catalogato."@it,
+                                               "This property represents the relationship that links the address of the current physical location at the cataloging time to the catalogued cultural property."@en;
+                                  rdfs:domain <https://w3id.org/italia/onto/CLV/Address>;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                  rdfs:label "è indirizzo del bene culturale"@it,
+                                             "is cultural property address of"@en;
+                                  rdfs:range cis:CulturalEntity;
+                                  owl:versionInfo "stabile"@it,
+                                                  "stable"@en.
+a-loc:isGeometryMethodOf a owl:ObjectProperty;
+                         rdfs:comment "Questa proprietà collega il metodo utilizzato per il posizionamento alla georeferenziazione."@it,
+                                      "This property links the method used for the object positioning to the georeferencing."@en;
+                         rdfs:domain a-loc:GeometryMethod;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                         rdfs:label "è metodo di georeferenziazione di"@it,
+                                    "is geometry method of"@en;
+                         rdfs:range <https://w3id.org/italia/onto/CLV/Geometry>;
+                         owl:versionInfo "stabile"@it,
+                                         "stable"@en.
+a-loc:isGeometryTechniqueOf a owl:ObjectProperty;
+                            rdfs:comment "Questa proprietà collega la tecnica di georeferenziazione alla georeferenziazione."@it,
+                                         "This property links the georeferencing technique to the georeferencing."@en;
+                            rdfs:domain a-loc:GeometryTechnique;
+                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                            rdfs:label "è tecnica di georeferenziazione di"@it,
+                                       "is geometry technique of"@en;
+                            rdfs:range <https://w3id.org/italia/onto/CLV/Geometry>;
+                            owl:versionInfo "stabile"@it,
+                                            "stable"@en.
+a-loc:isGovernmentalAdministrativeAreaOf a owl:ObjectProperty;
+                                         rdfs:comment "This property links a governmental administrative area to its address."@en,
+                                                      "Questa proprietà collega un'area di appartenenza amministrativa al suo indirizzo."@it;
+                                         rdfs:domain cis:GovernamentalAdministrativeArea;
+                                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                         rdfs:label "is governmental administrative area of"@en,
+                                                    "è area di appartenenza amministrativa di"@it;
+                                         rdfs:range <https://w3id.org/italia/onto/CLV/Address>;
+                                         rdfs:subPropertyOf <https://w3id.org/italia/onto/CLV/isAddressComponentOf>;
+                                         owl:versionInfo "stable"@en,
+                                                         "stabile"@it.
+a-loc:isHistoricalAreaOf a owl:ObjectProperty;
+                         rdfs:comment "This property links a historical-geographical area to its address."@en,
+                                      "Questa proprietà collega un'area storico-geografica al suo indirizzo."@it;
+                         rdfs:domain <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                         rdfs:label "è area storica di"@it,
+                                    "is historical area of"@en;
+                         rdfs:range <https://w3id.org/italia/onto/CLV/Address>;
+                         rdfs:subPropertyOf <https://w3id.org/italia/onto/CLV/isAddressComponentOf>;
+                         owl:versionInfo "stable"@en,
+                                         "stabile"@it.
+a-loc:isLocationIn a owl:ObjectProperty;
+                   rdfs:comment "Questa proprietà collega un luogo fisico a una localizzazione tipizzata nel tempo che si riferisce a quel luogo."@it,
+                                "This property relates a geographical feature to a time indexed typed location that refers to that feature."@en;
+                   rdfs:domain <https://w3id.org/italia/onto/CLV/Feature>;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "è luogo in"@it,
+                              "is location in"@en;
+                   rdfs:range a-loc:TimeIndexedTypedLocation;
+                   owl:versionInfo "stable"@en,
+                                   "stabile"@it.
+a-loc:isLocationTypeOf a owl:ObjectProperty;
+                       rdfs:comment "This property links the role of a localization (i.e current physical location, previous location, finding location, etc.) to an entity referring to it (e.g. a situation in which a place plays a certain role in relation to a cultural property in a time frame, or a georeferencing, or a cadastral identity)."@en,
+                                    "Questa proprietà collega il ruolo della localizzazione (fisica attuale, precedente, di rinvenimento, ecc.) all'entità cui si riferisce, per esempio un situazione in cui un luogo riveste un certo ruolo nei confronti di un bene culturale in un intervallo di tempo, o una georeferenziazione, o un'identità catastale."@it;
+                       rdfs:domain a-loc:LocationType;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                       rdfs:label "is referred location type of"@en,
+                                  "è tipo di localizzazione cui si riferisce"@it;
+                       rdfs:range owl:Thing;
+                       rdfs:subPropertyOf arco:isTypeOf;
+                       owl:versionInfo "stable"@en,
+                                       "stabile"@it.
+a-loc:isOldTownAdministrativeTypeOf a owl:ObjectProperty;
+                                    rdfs:comment "Questa proprietà collega il tipo di carattere amministrativo alle informazioni relative al suo centro storico."@it,
+                                                 "This property connects the administrative type with the information related to its historical center."@en;
+                                    rdfs:domain a-loc:OldTownAdmistrativeType;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                    rdfs:label "is old town administrative type of"@en,
+                                               "è tipo amministrativo del centro storico"@it;
+                                    rdfs:range a-loc:OldTown;
+                                    rdfs:subPropertyOf arco:isTypeOf;
+                                    owl:versionInfo "stable"@en,
+                                                    "stabile"@it.
+a-loc:isSiteDefinitionOf a owl:ObjectProperty;
+                         rdfs:comment "Questa proprietà collega la definizione del contenitore fisico alla sua tipologia."@it,
+                                      "This property links the definition of a physical container to of its type."@en;
+                         rdfs:domain a-loc:SiteDefinition;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                         rdfs:label "è definizione del contenitore fisico di"@it,
+                                    "is site definition of"@en;
+                         rdfs:range a-loc:SiteType;
+                         owl:versionInfo "stable"@en,
+                                         "stabile"@it.
+a-loc:isSiteIn a owl:ObjectProperty;
+               rdfs:comment "Questa proprietà collega un contenitore fisico a una localizzazione tipizzata nel tempo."@it,
+                            "This property relates a cultural site to the time indexed typed location."@en;
+               rdfs:domain cis:Site;
+               rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+               rdfs:label "is site in"@en,
+                          "è contenitore fisico in"@it;
+               rdfs:range a-loc:TimeIndexedTypedLocation;
+               rdfs:subPropertyOf a-loc:isLocationIn;
+               owl:versionInfo "stable"@en,
+                               "stabile"@it.
+a-loc:isSiteSpecificationOf a owl:ObjectProperty;
+                            rdfs:comment "This property links the specification of a physical container to one of its type."@en,
+                                         "Questa proprietà collega le specifiche sulla qualificazione del contenitore fisico alla sua tipologia."@it;
+                            rdfs:domain a-loc:SiteSpecification;
+                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                            rdfs:label "is site specification of"@en,
+                                       "è specificazione di contenitore fisico"@it;
+                            rdfs:range a-loc:SiteType;
+                            owl:versionInfo "stable"@en,
+                                            "stabile"@it.
+a-loc:isSiteTypeOf a owl:ObjectProperty;
+                   rdfs:comment "This property connects the type of physical container to a physical container (Site), to allow its correct and precise identification."@en,
+                                "Questa proprietà collega il tipo di contenitore fisico a un contenitore fisico, per permetterne la corretta e precisa individuazione."@it;
+                   rdfs:domain a-loc:SiteType;
+                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                   rdfs:label "è tipo di contenitore fisico di"@it,
+                              "is site type of"@en;
+                   rdfs:range cis:Site;
+                   rdfs:subPropertyOf arco:isTypeOf;
+                   owl:versionInfo "stable"@en,
+                                   "stabile"@it.
+a-loc:isStratigraphicAreaOf a owl:ObjectProperty;
+                            rdfs:comment """This is the inverse property of \"has stratigraphic area\"."""@en,
+                                         """Questa è la proprietà inversa di \"ha ambiente\"."""@it;
+                            rdfs:domain <https://w3id.org/italia/onto/l0/Location>;
+                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                            rdfs:label "è ambiente di"@it,
+                                       "is stratigraphic area of"@en;
+                            rdfs:range cis:CulturalEntity;
+                            rdfs:subPropertyOf arco:isLocationOf;
+                            owl:versionInfo "stabile"@it,
+                                            "stable"@en.
+a-loc:isStratigraphicRoomOf a owl:ObjectProperty;
+                            rdfs:comment """This is the inverse property of \"has stratigraphic room\"."""@en,
+                                         """Questa è la proprietà inversa di \"ha settore\"."""@it;
+                            rdfs:domain <https://w3id.org/italia/onto/l0/Location>;
+                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                            rdfs:label "is stratigraphic room of"@en,
+                                       "è settore di"@it;
+                            rdfs:range cis:CulturalEntity;
+                            rdfs:subPropertyOf arco:isLocationOf;
+                            owl:versionInfo "stabile"@it,
+                                            "stable"@en.
+a-loc:isStratigraphicSquareOf a owl:ObjectProperty;
+                              rdfs:comment """This is the inverse property of \"has stratigraphic square\"."""@en,
+                                           """Questa è la proprietà inversa di \"ha quadrato\"."""@it;
+                              rdfs:domain <https://w3id.org/italia/onto/l0/Location>;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                              rdfs:label "is stratigraphic square of"@en,
+                                         "è quadrato di"@it;
+                              rdfs:range cis:CulturalEntity;
+                              rdfs:subPropertyOf arco:isLocationOf;
+                              owl:versionInfo "stabile"@it,
+                                              "stable"@en.
+a-loc:isTerritorialAreaOf a owl:ObjectProperty;
+                          rdfs:comment "Questa proprietà collega un'area di appartenenza territoriale, che può non coincidere con l'area amministrativa, al suo indirizzo."@it,
+                                       "This property links a territorial area (which may not coincide with the administrative area) to which a cultural property belongs to its address."@en;
+                          rdfs:domain <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>;
+                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                          rdfs:label "è area di appartenenza territoriale di"@it,
+                                     "is territorial area of"@en;
+                          rdfs:range <https://w3id.org/italia/onto/CLV/Address>;
+                          rdfs:subPropertyOf <https://w3id.org/italia/onto/CLV/isAddressComponentOf>;
+                          owl:versionInfo "stabile"@it,
+                                          "stable"@en.
+a-loc:isTerritorialDivisionOf a owl:ObjectProperty;
+                              rdfs:comment "Questa proprietà collega una ripartizione territoriale interna a un'area territoriale a un indirizzo."@it,
+                                           "This property links a territorial division within a territorial area to an address."@en;
+                              rdfs:domain <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                              rdfs:label "è ripartizione territoriale di"@it,
+                                         "is territorial division of"@en;
+                              rdfs:range <https://w3id.org/italia/onto/CLV/Address>;
+                              rdfs:subPropertyOf <https://w3id.org/italia/onto/CLV/isAddressComponentOf>;
+                              owl:versionInfo "stabile"@it,
+                                              "stable"@en.
+a-loc:isTimeIndexedTypedLocationOf a owl:ObjectProperty;
+                                   rdfs:comment "This property links a typified location over time to an entity."@en,
+                                                "Questa proprietà collega una  localizzazione tipizzata nel tempo a un'entità."@it;
+                                   rdfs:domain a-loc:TimeIndexedTypedLocation;
+                                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                                   rdfs:label "è localizzazione tipizzata nel tempo"@it,
+                                              "is time indexed typed location of"@en;
+                                   rdfs:range owl:Thing;
+                                   owl:versionInfo "stable"@en,
+                                                   "stabile"@it.
+a-loc:isToponymInTimeOf a owl:ObjectProperty;
+                        rdfs:comment "Questa proprietà permette di collegare una denominazione che cambia nel tempo a un luogo."@it,
+                                     "This property relates a toponym chianging over time to a geographical entity."@en;
+                        rdfs:domain a-loc:ToponymInTime;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "is toponym in time of"@en,
+                                   "è toponimo nel tempo di"@it;
+                        rdfs:range <https://w3id.org/italia/onto/CLV/Feature>;
+                        owl:versionInfo "stable"@en,
+                                        "stabile"@it.
+a-loc:isTypeOfContextOf a owl:ObjectProperty;
+                        rdfs:comment "Questa proprietà permette di collegare tipo di contesto (urbano, suburbano, extraurbano, territoriale, subacqueo) all'entità che vi si trova."@it,
+                                     "This property relates the type of context (i.e. urban context, suburban context, extra-urban context, territorial context, underwater context) an entity where it is located."@en;
+                        rdfs:domain a-loc:TypeOfContext;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                        rdfs:label "è tipo di contesto geografico di"@it,
+                                   "is type of geographical context of"@en;
+                        rdfs:range owl:Thing;
+                        rdfs:subPropertyOf arco:isConceptOf;
+                        owl:versionInfo "stabile"@it,
+                                        "stable"@en.
+a-loc:isUrbanAreaOf a owl:ObjectProperty;
+                    rdfs:comment "This property connects the the urban area with the its old town."@en,
+                                 "Questa proprietà collega la zona urbana con il suo centro storico."@it;
+                    rdfs:domain a-loc:UrbanArea;
+                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                    rdfs:label "è area urbana di"@it,
+                               "is urban area of"@en;
+                    rdfs:range a-loc:OldTown;
+                    rdfs:subPropertyOf arco:isPartOf;
+                    owl:deprecated true;
+                    owl:versionInfo "stable"@en,
+                                    "stabile"@it.
+a-loc:lat a owl:DatatypeProperty;
+          rdfs:comment "Questa proprietà rappresenta la coordinata y, ovvero la latitudine."@it,
+                       "This property represents the y coordinate, that is the latitude."@en;
+          rdfs:domain a-loc:Coordinates;
+          rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+          rdfs:label "latitude"@en,
+                     "latitudine"@it;
+          rdfs:range rdfs:Literal;
+          owl:versionInfo "stable"@en,
+                          "stabile"@it;
+          ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: GE/GEC/GECY - Normative precedenti: GP/GPD/GPDP/GPDPY; GA/GAD/GADP/GADPY; GL/GLD/GLDP/GLDPY"@it.
+a-loc:locationDetails a owl:DatatypeProperty;
+                      rdfs:comment "Questa proprietà è utilizzata per rappresentare informazioni sui percorsi che permettono l’accesso al bene o che lo delimitano, o ulteriori specifiche per la localizzazione del bene."@it,
+                                   "This property is used to represent other paths and details about the cultural property location."@en;
+                      rdfs:domain a-loc:TimeIndexedTypedLocation;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                      rdfs:label "location details"@en,
+                                 "dettagli della localizzazione"@it;
+                      rdfs:range rdfs:Literal;
+                      owl:versionInfo "stable"@en,
+                                      "stabile"@it;
+                      ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/PVC/PVCV"@it.
+a-loc:long a owl:DatatypeProperty;
+           rdfs:comment "This property represents the x coordinate, that is the longitude."@en,
+                        "Questa proprietà rappresenta la coordinata x, ovvero la longitudine."@it;
+           rdfs:domain a-loc:Coordinates;
+           rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+           rdfs:label "longitude"@en,
+                      "longitudine"@it;
+           rdfs:range rdfs:Literal;
+           owl:versionInfo "stable"@en,
+                           "stabile"@it;
+           ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: GE/GEC/GECX - Normative precedenti: GP/GPD/GPDP/GPDPX; GA/GAD/GADP/GADPX; GL/GLD/GLDP/GLDPX"@it.
+a-loc:maxAlt a owl:DatatypeProperty;
+             rdfs:comment "Questa proprietà rappresenta l'altitudine massima assoluta rispetto al livello del mare."@it,
+                          "This property represents the absolute maximum altitude above sea level."@en;
+             rdfs:domain a-loc:Altitude;
+             rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+             rdfs:label "maximum altitude"@en,
+                        "altitudine massima"@it;
+             rdfs:range xsd:decimal;
+             rdfs:subPropertyOf a-loc:alt;
+             owl:versionInfo "stable"@en,
+                             "stabile"@it;
+             ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: MT/MTA/MTAX - Normative precedenti: GP/GPC/GPCS; GA/GAQS; GL/GLQ/GLQS"@it.
+a-loc:minAlt a owl:DatatypeProperty;
+             rdfs:comment "Questa proprietà rappresenta l'altitudine minima assoluta rispetto al livello del mare."@it,
+                          "This property represents the absolute minimum altitude above sea level."@en;
+             rdfs:domain a-loc:Altitude;
+             rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+             rdfs:label "minimum altitude"@en,
+                        "altitudine minima"@it;
+             rdfs:range xsd:decimal;
+             rdfs:subPropertyOf a-loc:alt;
+             owl:versionInfo "stable"@en,
+                             "stabile"@it;
+             ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: MT/MTA/MTAM; versioni precedenti: GP/GPC/GPCI -GA/GAQ/GAQI - GL/GLQ/GLQI"@it.
+a-loc:pointType a owl:DatatypeProperty;
+                rdfs:comment "This property represents the type of point that georeferences the catalogued cultural property. The definition of the point type is not univocal and depends on the cultural property's type and conformation as well as on the type of location."@en,
+                             "Questa proprietà rappresenta il tipo di punto che georeferenzia il bene catalogato. La definizione del tipo di punto non è univoca e dipende dalla tipologia e dalla conformazione del bene e dal tipo di localizzazione."@it;
+                rdfs:domain <https://w3id.org/italia/onto/CLV/Geometry>;
+                rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                rdfs:label "tipo di punto"@it,
+                           "point type"@en;
+                rdfs:range rdfs:Literal;
+                owl:versionInfo "stabile"@it,
+                                "stable"@en;
+                ctlog:iccdNormTag "Normative precedenti alla 4.00: GP/GPC/GPCT"@it.
+a-loc:relativeAlt a owl:DatatypeProperty;
+                  rdfs:comment "Questa proprietà rappresenta l'altezza relativa dell'oggetto rispetto a un punto, un elemento o una situazione da specificare."@it,
+                               "This property represents the object relative height by reference to a point or an element or a situation to be specified."@en;
+                  rdfs:domain a-loc:Altitude;
+                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                  rdfs:label "altitudine relativa"@it,
+                             "relative altitude"@en;
+                  rdfs:range xsd:decimal;
+                  rdfs:subPropertyOf a-loc:alt;
+                  owl:versionInfo "stabile"@it,
+                                  "stable"@en;
+                  ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: MT/MTA/MTAR".
+a-loc:siteIdentifier a owl:FunctionalProperty,
+                       owl:DatatypeProperty;
+                     rdfs:comment "This property allows to associate a physical container to its code assigned by the ICCD."@en,
+                                  "Questa proprietà permette di associare un contenitore fisico al codice assegnatogli dall'ICCD."@it;
+                     rdfs:domain cis:Site;
+                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                     rdfs:label "identificativo del contenitore fisico"@it,
+                                "site identifier"@en;
+                     rdfs:range rdfs:Literal;
+                     rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                     owl:versionInfo "stabile"@it,
+                                     "stable"@en;
+                     ctlog:iccdNormTag "ICCD Normativa Trasversale: LC/LDC/LDCK; LA/PRC/PRCK"@it.
+a-loc:spatialReferenceSystem a owl:DatatypeProperty;
+                             rdfs:comment "Questa proprietà rappresenta il sistema di riferimento utilizzato per la georeferenziazione (ad es. WGS84, WGS84 UTM32, ecc.)."@it,
+                                          "This property represents the reference system used for the object georeferencing (e.g. WGS84, WGS84 UTM32, etc.)."@en;
+                             rdfs:domain <https://w3id.org/italia/onto/CLV/Geometry>;
+                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/location>;
+                             rdfs:label "spatial reference system"@en,
+                                        "sistema di riferimento"@it;
+                             rdfs:range rdfs:Literal;
+                             owl:versionInfo "stable"@en,
+                                             "stabile"@it;
+                             ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: GE/GEP - Normative precedenti: GA/GAP; GL/GLP; GP/GPP"@it.
+<https://w3id.org/italia/onto/CLV/Address> a owl:Class;
+                                           rdfs:subClassOf <https://w3id.org/italia/onto/CLV/Feature>.
+<https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent> a owl:Class;
+                                                               rdfs:subClassOf <https://w3id.org/italia/onto/CLV/Feature>.
+<https://w3id.org/italia/onto/CLV/City> a owl:Class;
+                                        rdfs:subClassOf <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>.
+<https://w3id.org/italia/onto/CLV/District> a owl:Class;
+                                            rdfs:subClassOf [owl:someValuesFrom a-loc:TypeOfContext ; 
+                                                             owl:onProperty a-loc:hasTypeOfContext ; 
+                                                             a owl:Restriction],
+                                                            <https://w3id.org/italia/onto/CLV/AdministrativeUnitComponent>.
+<https://w3id.org/italia/onto/CLV/Feature> a owl:Class;
+                                           rdfs:subClassOf <https://w3id.org/italia/onto/CLV/SpatialObject>.
+<https://w3id.org/italia/onto/CLV/Geometry> a owl:Class;
+                                            rdfs:subClassOf <https://w3id.org/italia/onto/CLV/SpatialObject>.
+<https://w3id.org/italia/onto/CLV/SpatialObject> a owl:Class;
+                                                 rdfs:subClassOf <https://w3id.org/italia/onto/l0/Location>.
+<https://w3id.org/italia/onto/CLV/hasAddress> a owl:ObjectProperty.
+<https://w3id.org/italia/onto/CLV/hasAddressComponent> a owl:ObjectProperty.
+<https://w3id.org/italia/onto/CLV/isAddressComponentOf> a owl:ObjectProperty.
+<https://w3id.org/italia/onto/TI/TimeInterval> a owl:Class.
+<https://w3id.org/italia/onto/TI/atTime> a owl:ObjectProperty.
+<https://w3id.org/italia/onto/TI/date> a owl:DatatypeProperty.
+<https://w3id.org/italia/onto/TI/time> a owl:DatatypeProperty.
+<https://w3id.org/italia/onto/l0/Characteristic> a owl:Class.
+<https://w3id.org/italia/onto/l0/Collection> a owl:Class.
+<https://w3id.org/italia/onto/l0/Description> a owl:Class.
+<https://w3id.org/italia/onto/l0/Location> a owl:Class.
+<https://w3id.org/italia/onto/l0/Object> a owl:Class.
+<https://w3id.org/italia/onto/l0/identifier> a owl:DatatypeProperty.
+<https://w3id.org/italia/onto/l0/name> a owl:DatatypeProperty.

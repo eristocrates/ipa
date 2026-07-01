@@ -1,0 +1,162 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dvia: <http://purl.org/ontology/dvia#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix odapps: <http://semweb.mmlab.be/ns/odapps#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix frbrcore: <http://purl.org/vocab/frbr/core#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix aerdcat: <http://www.w3.org/ns/dcat#>.
+
+dvia:Application rdfs:subClassOf odapps:Application.
+dvia:VisualTool rdfs:subClassOf odapps:Tool.
+dvia:consumes rdfs:SubClassOf odapps:consumes.
+dvia:downloadUrl rdfs:subClassOf odapps:downloadUrl.
+dvia:hasLicense rdfs:subPropertyOf odapps:license.
+dvia:keyword rdfs:subPropertyOf odapps:keyword.
+dvia:url rdfs:subClassOf odapps:url.
+dvia:usesTool rdfs:subClassOf odapps:usesTool.
+<http://semweb.mmlab.be/ns/odapps> ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
+                                   dcterms:contributor [foaf:name "Ghislain Auguste Atemezing" ; 
+                                                        foaf:mbox "atemezin@eurecom.fr"],
+                                                       [foaf:name "Raphael Troncy" ; 
+                                                        foaf:mbox "rtroncy@eurecom.fr"],
+                                                       [foaf:name "Ghislain Auguste Atemezing" ; 
+                                                        foaf:mbox "atemezin@eurecom.fr"],
+                                                       [foaf:name "Raphael Troncy" ; 
+                                                        foaf:mbox "rtroncy@eurecom.fr"];
+                                   dcterms:creator [foaf:name "Pieter Colpaert" ; 
+                                                    foaf:mbox "Pieter.Colpaert@UGent.be"],
+                                                   [foaf:name "Anastasia Dimou" ; 
+                                                    foaf:mbox "Anastasia.Dimou@UGent.be"],
+                                                   [foaf:name "Pieter Colpaert" ; 
+                                                    foaf:mbox "Pieter.Colpaert@UGent.be"],
+                                                   [foaf:name "Anastasia Dimou" ; 
+                                                    foaf:mbox "Anastasia.Dimou@UGent.be"];
+                                   dcterms:issued "2013-05-10"^^xsd:date;
+                                   dcterms:modified "2014-01-14"^^xsd:date;
+                                   dcterms:title "The vocabulary for (L)OD ideas and applications"@en;
+                                   vann:preferredNamespacePrefix "odapps";
+                                   a owl:Ontology;
+                                   rdfs:comment "odapps is an RDF vocabulary defined to facilitate the description of Open-Data-based ideas and applications published on the Web."@en;
+                                   owl:versionInfo "1.1 - 2014-01-14".
+odapps:AppConcept a rdfs:Class;
+                  rdfs:comment "An App Concept describes an idea for an application (a digital work) which refers to Open Data."@en;
+                  rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+                  rdfs:label "Application Concept"@en;
+                  rdfs:subClassOf frbrcore:Work.
+odapps:Application a rdfs:Class;
+                   rdfs:comment "An App Concept implementation.";
+                   rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+                   rdfs:label "Application"@en.
+odapps:Tool a rdfs:Class;
+            rdfs:comment "The tool or library used to build the application."@en;
+            rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+            rdfs:label "Tool."@en.
+odapps:comment a owl:ObjectProperty,
+                 rdf:Property;
+               rdfs:comment "comment on the application and the Concept";
+               rdfs:domain odapps:AppConcept,
+                           odapps:Application;
+               rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+               rdfs:label "comment"@en;
+               rdfs:range odapps:Application,
+                          odapps:AppConcept.
+odapps:conceived a rdf:Property;
+                 rdfs:comment "The Agent which conceived the idea about the App Concept";
+                 rdfs:label "conceived by";
+                 rdfs:range foaf:Agent.
+odapps:consumes a owl:ObjectProperty,
+                  rdf:Property;
+                rdfs:comment "links to the dataset used to make the application, and could be of different types or formats";
+                rdfs:domain odapps:AppConcept,
+                            odapps:Application;
+                rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+                rdfs:label "consumes"@en;
+                rdfs:range xsd:string,
+                           aerdcat:Dataset.
+odapps:datasetDescription a owl:ObjectProperty,
+                            rdf:Property;
+                          rdfs:comment "Property for a given descriptive informations of the datasets used for making the application. It could be used when no more details are given on the datasets like URL, formats, etc."@en;
+                          rdfs:domain odapps:Application,
+                                      odapps:AppConcept;
+                          rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+                          rdfs:label "dataset description"@en.
+odapps:demoUri a owl:ObjectProperty,
+                 rdf:Property;
+               rdfs:comment "Property for a given demo of the application and/or the Concept."@en;
+               rdfs:domain odapps:Application,
+                           odapps:AppConcept;
+               rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+               rdfs:label "demo uri"@en.
+odapps:description a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:comment "Property for a given descriptive informations of the concept and/or the application."@en;
+                   rdfs:domain odapps:Application,
+                               odapps:AppConcept;
+                   rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+                   rdfs:label "Concept and/or Application description"@en.
+odapps:downloadUrl a rdf:Property;
+                   rdfs:comment "This property links to the application"@en;
+                   rdfs:domain odapps:Application;
+                   rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+                   rdfs:label "download url"@en;
+                   rdfs:range xsd:anyURI.
+odapps:implements a owl:ObjectProperty,
+                    rdf:Property;
+                  rdfs:comment "The App Concept that this application implements"@en;
+                  rdfs:domain odapps:Application;
+                  rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+                  rdfs:label "implements"@en;
+                  rdfs:range odapps:AppConcept.
+odapps:instigator a owl:ObjectProperty,
+                    rdf:Property;
+                  rdfs:comment "The Agent which conceived the idea about the App Concept (the instigator/initiator)."@en;
+                  rdfs:domain odapps:AppConcept;
+                  rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+                  rdfs:label "instigator"@en;
+                  rdfs:range foaf:Agent.
+odapps:keyword a owl:ObjectProperty,
+                 rdf:Property;
+               rdfs:comment "The keywords of the Application."@en;
+               rdfs:domain odapps:Application,
+                           odapps:AppConcept;
+               rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+               rdfs:label "dataset description"@en.
+odapps:license a owl:DatatypeProperty,
+                 rdf:Property;
+               rdfs:comment "This property links to the license of the application";
+               rdfs:domain odapps:Application;
+               rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+               rdfs:label "has license"@en;
+               rdfs:range xsd:anyURI.
+odapps:revised a owl:ObjectProperty,
+                 rdf:Property;
+               rdfs:comment "The Agent which revised / extended the idea about the App Concept."@en;
+               rdfs:domain odapps:AppConcept;
+               rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+               rdfs:label "revised"@en;
+               rdfs:range foaf:Agent.
+odapps:revision a rdf:Property;
+                rdfs:comment "An App concept which was revised and re-posed / extended. ";
+                rdfs:domain odapps:AppConcept;
+                rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+                rdfs:label "revision of";
+                rdfs:range odapps:AppConcept.
+odapps:url a rdf:Property;
+           rdfs:comment "This property links to the application"@en;
+           rdfs:domain odapps:Application;
+           rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+           rdfs:label "url"@en;
+           rdfs:range xsd:anyURI.
+odapps:usesTool a rdf:Property;
+                rdfs:comment "This property links to the tools or libraries used for the application"@en;
+                rdfs:domain odapps:Application;
+                rdfs:isDefinedBy <http://semweb.mmlab.be/ns/odapps>;
+                rdfs:label "usesTool"@en;
+                rdfs:range odapps:Tool.

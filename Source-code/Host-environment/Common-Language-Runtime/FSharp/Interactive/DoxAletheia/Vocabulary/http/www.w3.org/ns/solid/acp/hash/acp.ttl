@@ -1,0 +1,213 @@
+@base <http://www.w3.org/ns/solid/acp#>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix acp: <http://www.w3.org/ns/solid/acp#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix cito: <http://purl.org/spar/cito/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+acp: dc:description "The Access Control Policy Language (ACP) is a language for describing, controlling, and granting access to resources."@en;
+     dc:issued "2022-05-18"^^xsd:date;
+     cito:citesAsAuthority <https://www.w3.org/TR/rdf11-concepts/>,
+                           <https://www.rfc-editor.org/info/rfc2119>,
+                           <https://www.rfc-editor.org/info/rfc8174>,
+                           <https://www.rfc-editor.org/info/rfc8288>,
+                           <https://www.w3.org/TR/vc-data-model/>;
+     vann:preferredNamespacePrefix "acp";
+     vann:preferredNamespaceUri "http://www.w3.org/ns/solid/acp#"^^xsd:anyURI;
+     a owl:Ontology;
+     rdfs:isDefinedBy acp:;
+     rdfs:label "Access Control Policy Language (ACP)"@en;
+     rdfs:seeAlso <https://solid.github.io/authorization-panel/acp-specification/>.
+acp:AccessControl dc:description "Instances of the Access Control class connect Access Control Resources to their Policies."@en;
+                  a rdfs:Class;
+                  rdfs:comment "All Access Controls controlling member resources access via the acp:memberAccessControl property MUST be included in the set of Access Controls linked as acp:accessControl in the effective authorization graph of a resource."@en;
+                  rdfs:isDefinedBy acp:;
+                  rdfs:label "Access Control"@en.
+acp:AccessControlResource dc:description "Instances of the Access Control Resource (ACR) class connect resources to their Access Controls."@en;
+                          a rdfs:Class;
+                          rdfs:comment "Both the acp:resource property and its inverse acp:accessControlResource MUST be taken into account in determining the Access Control Resources controlling access to resources."@en;
+                          rdfs:isDefinedBy acp:;
+                          rdfs:label "Access Control Resource"@en.
+acp:AccessGrant dc:description "Instances of the Access Grant class define sets of Access Modes granted in particular Contexts."@en;
+                a rdfs:Class;
+                rdfs:isDefinedBy acp:;
+                rdfs:label "Access Grant"@en.
+acp:AccessMode dc:description "The ACP specification does not define specific Access Modes. Instead, any Access Mode granted is an instance of the Access Mode class. Access Modes and their granularity can be tailored to the needs of an application and Access Modes defined in other vocabularies can also be used (for example, instances of ACL Access)."@en;
+               a rdfs:Class;
+               rdfs:isDefinedBy acp:;
+               rdfs:label "Access Mode"@en;
+               rdfs:seeAlso acl:Access.
+acp:AlwaysSatisfiedRestriction dc:description "Defined instances of the Always Satisfied Restriction class are used in Matcher restrictions to indicate that the restriction is always satisfied. The default behaviour of a Matcher is to not be satisfied, so this is the only way to make a Matcher always satisfied."@en;
+                               a rdfs:Class;
+                               rdfs:isDefinedBy acp:;
+                               rdfs:label "Always Satisfied Restriction"@en.
+acp:AuthenticatedAgent dc:description "In a Matcher, agent attributes using the Authenticated Agent named individual MUST match Contexts that contain an agent."@en;
+                       a owl:NamedIndividual;
+                       rdfs:isDefinedBy acp:;
+                       rdfs:label "Authenticated Agent"@en.
+acp:Context dc:description "Instances of the Context class describe instances of resource access."@en;
+            a rdfs:Class;
+            rdfs:isDefinedBy acp:;
+            rdfs:label "Context"@en.
+acp:CreatorAgent dc:description "In a Matcher, agent attributes using the Creator Agent named individual MUST match Contexts where a defined creator matches the defined agent."@en;
+                 a owl:NamedIndividual;
+                 rdfs:isDefinedBy acp:;
+                 rdfs:label "Creator Agent"@en.
+acp:Matcher dc:description "Instances of the Matcher class are descriptions of matching resource access Contexts."@en;
+            a rdfs:Class;
+            rdfs:comment """A Matcher MUST be satisfied if and only if: it defines at least one attribute; and, at least one value of each defined attribute matches the Context. ACP engines MUST match the context attributes defined by this specification according to IRI equality and literal term equality.
+
+ACP implementations supporting sub-properties of acp:attribute other than the ones defined by ACP SHOULD also define and implement corresponding matching algorithms."""@en;
+            rdfs:isDefinedBy acp:;
+            rdfs:label "Matcher"@en;
+            rdfs:seeAlso <https://www.w3.org/TR/rdf11-concepts/>.
+acp:OwnerAgent dc:description "In a Matcher, agent attributes using the Owner Agent named individual MUST match Contexts where a defined owner matches the defined agent."@en;
+               a owl:NamedIndividual;
+               rdfs:isDefinedBy acp:;
+               rdfs:label "Owner Agent"@en.
+acp:Policy dc:description "Instances of the Policy class connect Access Controls to allowed and denied Access Modes as well as sets of Matchers describing instances of resource access."@en;
+           a rdfs:Class;
+           rdfs:comment """An ACP engine MUST grant exactly those Access Modes allowed by Effective Policies. Effective Policies are the Policies controlling access to a resource. A Policy MUST control access to a resource if: it is applied by an Access Control of an ACR of the resource; or, it is applied by a member Access Control of an ACR of an ancestor of the resource.
+
+An Access Mode MUST be granted if and only if in the set of Effective Policies controlling access to it: a satisfied policy allows the Access Mode; and, no satisfied policy denies it.
+
+A Policy MUST be satisfied if and only if: it references at least one Matcher via an acp:allOf or acp:anyOf property; and, all of its acp:allOf Matchers are satisfied; and, at least one of its acp:anyOf Matchers is satisfied; and, none of its acp:noneOf Matchers are satisfied."""@en;
+           rdfs:isDefinedBy acp:;
+           rdfs:label "Access Policy"@en;
+           rdfs:seeAlso <https://www.w3.org/TR/sparql11-query/#propertypaths>.
+acp:PublicAgent dc:description "In a Matcher, agent attributes using the Public Agent named individual MUST match all Contexts."@en;
+                a owl:NamedIndividual,
+                  acp:AlwaysSatisfiedRestriction;
+                rdfs:isDefinedBy acp:;
+                rdfs:label "Public Agent"@en.
+acp:PublicClient dc:description "In a Matcher, client attributes using the Public Client named individual MUST match all Contexts."@en;
+                 a owl:NamedIndividual,
+                   acp:AlwaysSatisfiedRestriction;
+                 rdfs:isDefinedBy acp:;
+                 rdfs:label "Public Client"@en.
+acp:PublicIssuer dc:description "In a Matcher, issuer attributes using the Public Issuer named individual MUST match all Contexts."@en;
+                 a owl:NamedIndividual,
+                   acp:AlwaysSatisfiedRestriction;
+                 rdfs:isDefinedBy acp:;
+                 rdfs:label "Public Issuer"@en.
+acp:accessControl dc:description "The access control property connects ACRs to Access Controls."@en;
+                  a rdf:Property;
+                  rdfs:domain acp:AccessControlResource;
+                  rdfs:isDefinedBy acp:;
+                  rdfs:label "access control"@en;
+                  rdfs:range acp:AccessControl.
+acp:accessControlResource dc:description "The access control resource property connects resources to ACRs controlling access to them. It is the inverse of acp:resource."@en;
+                          a rdf:Property;
+                          rdfs:isDefinedBy acp:;
+                          rdfs:label "access control resource"@en;
+                          rdfs:range acp:AccessControlResource;
+                          owl:inverseOf acp:resource.
+acp:agent dc:description "The agent attribute describes agents initiating requests."@en;
+          rdfs:comment "In a Matcher, agent attributes define a set of agents, at least one of which MUST match the Context for the Matcher to be satisfied."@en;
+          rdfs:isDefinedBy acp:;
+          rdfs:label "agent"@en;
+          rdfs:subPropertyOf acp:attribute.
+acp:allOf dc:description """The \"all of\" property connects Policies to a set of Matchers, all of which MUST be satisfied for the Policy to be satisfied."""@en;
+          a rdf:Property;
+          rdfs:domain acp:Policy;
+          rdfs:isDefinedBy acp:;
+          rdfs:label "all of"@en;
+          rdfs:range acp:Matcher.
+acp:allow dc:description "The allow property connects Policies to the Access Modes they allow if satisfied."@en;
+          a rdf:Property;
+          rdfs:domain acp:Policy;
+          rdfs:isDefinedBy acp:;
+          rdfs:label "allow"@en;
+          rdfs:range acp:AccessMode.
+acp:anyOf dc:description """The \"any of\" property connects Policies to a set of Matchers, at least one of which MUST be satisfied for the Policy to be satisfied."""@en;
+          a rdf:Property;
+          rdfs:domain acp:Policy;
+          rdfs:isDefinedBy acp:;
+          rdfs:label "any of"@en;
+          rdfs:range acp:Matcher.
+acp:apply dc:description "The apply property connects Access Controls to the Policies they apply to resources."@en;
+          a rdf:Property;
+          rdfs:domain acp:AccessControl;
+          rdfs:isDefinedBy acp:;
+          rdfs:label "apply"@en;
+          rdfs:range acp:Policy.
+acp:attribute dc:description "Sub-properties of ACP attribute are used to describe instances of resource access."@en;
+              a rdf:Property;
+              rdfs:comment "Sub-properties of acp:attribute can be created to fit the specific access control requirements of applications."@en;
+              rdfs:domain acp:Context;
+              rdfs:isDefinedBy acp:;
+              rdfs:label "attribute"@en.
+acp:client dc:description "The client attribute describes client applications used to request resources."@en;
+           rdfs:comment "In a Matcher, client attributes define a set of clients, at least one of which MUST match the Context for the Matcher to be satisfied. "@en;
+           rdfs:isDefinedBy acp:;
+           rdfs:label "client"@en;
+           rdfs:subPropertyOf acp:attribute.
+acp:context dc:description "The context property connects Access Grants to the Contexts in which they're given."@en;
+            rdfs:domain acp:AccessGrant;
+            rdfs:isDefinedBy acp:;
+            rdfs:label "context"@en;
+            rdfs:range acp:Context.
+acp:creator dc:description "The creator attribute describes creators of requested resources."@en;
+            rdfs:isDefinedBy acp:;
+            rdfs:label "creator"@en;
+            rdfs:subPropertyOf acp:attribute.
+acp:deny dc:description "The deny property connects Policies to the Access Modes they deny if satisfied."@en;
+         a rdf:Property;
+         rdfs:domain acp:Policy;
+         rdfs:isDefinedBy acp:;
+         rdfs:label "deny"@en;
+         rdfs:range acp:AccessMode.
+acp:grant dc:description "The grant property connects Access Grants to the Access Modes they grant."@en;
+          rdfs:domain acp:AccessGrant;
+          rdfs:isDefinedBy acp:;
+          rdfs:label "grant"@en;
+          rdfs:range acp:AccessMode.
+acp:issuer dc:description "The issuer attribute describes identity providers used to assert the identity of agents requesting resources."@en;
+           rdfs:comment "In a Matcher, issuer attributes define a set of issuers, at least one of which MUST match the Context for the Matcher to be satisfied."@en;
+           rdfs:isDefinedBy acp:;
+           rdfs:label "issuer"@en;
+           rdfs:subPropertyOf acp:attribute.
+acp:memberAccessControl dc:description "The member access control property transitively connects ACRs of member resources to Access Controls."@en;
+                        rdfs:domain acp:AccessControlResource;
+                        rdfs:isDefinedBy acp:;
+                        rdfs:label "member access control"@en;
+                        rdfs:range acp:AccessControl.
+acp:mode dc:description "The mode attribute describes requested modes of access."@en;
+         rdfs:isDefinedBy acp:;
+         rdfs:label "mode"@en;
+         rdfs:subPropertyOf acp:attribute.
+acp:noneOf dc:description """The \"none of\" property connects Policies to a set of Matchers, all of which MUST NOT be satisfied for the Policy to be satisfied."""@en;
+           a rdf:Property;
+           rdfs:domain acp:Policy;
+           rdfs:isDefinedBy acp:;
+           rdfs:label "none of"@en;
+           rdfs:range acp:Matcher.
+acp:owner dc:description "The owner attribute describes owners of requested resources."@en;
+          rdfs:isDefinedBy acp:;
+          rdfs:label "owner"@en;
+          rdfs:subPropertyOf acp:attribute.
+acp:resource dc:description "The resource property connects ACRs to resources they control. It is the inverse of acp:accessControlResource."@en;
+             a rdf:Property;
+             rdfs:domain acp:AccessControlResource;
+             rdfs:isDefinedBy acp:;
+             rdfs:label "resource"@en;
+             owl:inverseOf acp:accessControlResource.
+acp:target dc:description "The target attribute describes requested resources."@en;
+           rdfs:isDefinedBy acp:;
+           rdfs:label "target"@en;
+           rdfs:subPropertyOf acp:attribute.
+acp:vc dc:description "The vc attribute describes types of Verifiable Credentials (VC) presented as part of resource access requests."@en;
+       cito:citesAsAuthority <https://www.w3.org/TR/vc-data-model/>,
+                             <https://www.w3.org/TR/vc-data-model/#dfn-type>;
+       rdfs:comment "In a Matcher, vc attributes define a set of types of Verifiable Credentials (VC), at least one of which MUST match the Context for the Matcher to be satisfied. A VC type present in the Context MUST be a valid VC presented as part of the resource access request."@en;
+       rdfs:isDefinedBy acp:;
+       rdfs:label "vc"@en;
+       rdfs:seeAlso <https://www.w3.org/TR/vc-data-model/#validation>;
+       rdfs:subPropertyOf acp:attribute.

@@ -1,0 +1,115 @@
+@base <http://www.w3.org/2000/10/swap/pim/qif>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix : <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix doc: <http://www.w3.org/2000/10/swap/pim/doc#>.
+@prefix r: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix s: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ui: <http://www.w3.org/ns/ui#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix gso: <http://www.w3.org/2006/gen/ont#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix qif: <http://www.w3.org/2000/10/swap/pim/qif#>.
+
+<http://www.w3.org/2000/10/swap/pim/qif> dc:title "An ontology for personal finances";
+                                         rdfs:comment """An ontology for data exported, for example, by Quicken,
+	as an interchange format. Also a generally useful ontology for
+	bank tranactions.  See also the OFX ontology.""";
+                                         rdfs:seeAlso <http://www.w3.org/2000/10/swap/pim/qif2n3.py>,
+                                                      <http://dev.w3.org/cvsweb/2000/quacken/>,
+                                                      <http://dev.w3.org/cvsweb/~checkout~/2000/quacken/vocab.n3?rev=1.1>,
+                                                      <http://www.intuit.com/support/quicken/2002/win/1177.html>;
+                                         doc:version "$Id: qif.rdf,v 1.8 2013/04/16 14:07:53 timbl Exp $".
+qif:Account a rdfs:Class;
+            rdfs:label "account".
+qif:Bank a rdfs:Class.
+qif:Cat a rdfs:Class;
+        rdfs:label "category".
+qif:Classified a rdfs:Class;
+               rdfs:label "classified";
+               rdfs:subClassOf qif:Transaction.
+qif:DocumentMetadataForm dc:title "Basic document metadata";
+                         a ui:Form,
+                           ui:Group;
+                         ui:part [a ui:Heading ; 
+                                  ui:contents "Edit Metadata"@en ; 
+                                  ui:sequence 1 ],
+                                 [a ui:SingleLineTextField ; 
+                                  ui:property dc:title ; 
+                                  ui:sequence 2  ; 
+                                  ui:size 80 ],
+                                 [a ui:Comment ; 
+                                  ui:contents """The date is the date of the document, for example for an invoice or email,
+        or if none available a date of e.g. a described transaction, event etc."""@en ; 
+                                  ui:sequence 3  ; 
+                                  ui:style "background-color: #ffe;"],
+                                 [a ui:DateField ; 
+                                  ui:property dc:date ; 
+                                  ui:sequence 4 ],
+                                 [a ui:MultiLineTextField ; 
+                                  ui:property rdfs:comment ; 
+                                  ui:sequence 4 ].
+qif:Receipt a rdfs:Class;
+            rdfs:label "receipt";
+            rdfs:subClassOf qif:SupportingDocument.
+qif:SplitTransaction a rdfs:Class;
+                     rdfs:comment "A transaction which has to be split into parts for classification.";
+                     rdfs:label "split transaction";
+                     rdfs:subClassOf qif:Transaction.
+qif:SupportingDocument a rdfs:Class;
+                       rdfs:label "supporting document";
+                       rdfs:subClassOf gso:InformationResource;
+                       ui:creationForm qif:DocumentMetadataForm.
+qif:Transaction a rdfs:Class;
+                rdfs:label "transaction";
+                ui:sortBy qif:date.
+qif:Unclassified a rdfs:Class;
+                 rdfs:label "unclassified";
+                 rdfs:subClassOf qif:Transaction.
+qif:UnclassifiedIncome a rdfs:Class;
+                       rdfs:label "unclassified income";
+                       rdfs:subClassOf qif:Unclassified.
+qif:UnclassifiedOutgoing a rdfs:Class;
+                         rdfs:label "unclassified outgoing";
+                         rdfs:subClassOf qif:Unclassified.
+qif:accordingTo a rdf:Property;
+                rdfs:comment "The document which is the source of data for this transaction.";
+                rdfs:domain qif:Transaction;
+                rdfs:label "statement";
+                rdfs:range doc:Work.
+qif:amount a rdf:Property;
+           rdfs:domain qif:Transaction;
+           rdfs:label "amount".
+qif:category a rdf:Property;
+             rdfs:domain qif:Transaction;
+             rdfs:label "category".
+qif:date a rdf:Property;
+         rdfs:domain qif:Transaction;
+         rdfs:label "date".
+qif:payee a rdf:Property;
+          rdfs:domain qif:Transaction;
+          rdfs:label "payee";
+          rdfs:subPropertyOf rdfs:label.
+qif:splitPart a rdf:Property;
+              rdfs:comment """A transaction representing a part of this transaction.
+    The sum of the amounts of the parts must equal the amount of this transaction.""";
+              rdfs:domain qif:SplitTransaction,
+                          qif:Transaction;
+              rdfs:label "part";
+              rdfs:range qif:Transaction.
+qif:splitReverse a rdf:Property;
+                 rdfs:comment """A reverse transaction, putting this transaction back in the Split account, for redistribution as parts.
+    The amount of the reverse transaction must be the negation of this transaction.""";
+                 rdfs:domain qif:SplitTransaction,
+                             qif:Transaction;
+                 rdfs:label "part";
+                 rdfs:range qif:Transaction.
+qif:toAccount a rdf:Property;
+              rdfs:comment "The account to which money flows when the amount is positive.";
+              rdfs:domain qif:Transaction;
+              rdfs:label "account";
+              rdfs:range qif:Account.

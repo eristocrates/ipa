@@ -1073,7 +1073,10 @@ let skos_vocabulary'preferredNamespaceUri =
 // distribution
 
 let manual_vocabulary_tuples =
-    [| ("https://open-metadata.org/ontology",
+    [|
+
+       ("http://www.w3.org/ns/csvw", "http://www.w3.org/ns/csvw#", "csvw", "https://www.w3.org/ns/csvw.ttl")
+       ("https://open-metadata.org/ontology",
         "https://open-metadata.org/ontology/",
         "om",
         "https://raw.githubusercontent.com/open-metadata/OpenMetadataStandards/refs/heads/main/rdf/ontology/openmetadata.ttl")

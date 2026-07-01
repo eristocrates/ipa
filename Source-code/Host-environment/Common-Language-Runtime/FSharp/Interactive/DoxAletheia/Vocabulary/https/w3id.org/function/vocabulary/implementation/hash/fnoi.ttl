@@ -1,0 +1,151 @@
+@base <https://w3id.org/function/vocabulary/implementation>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix : <https://w3id.org/function/vocabulary/implementation#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix w3id: <https://w3id.org/>.
+@prefix fno: <https://w3id.org/function/ontology#>.
+
+dc11:description a owl:AnnotationProperty.
+dc11:rights a owl:AnnotationProperty.
+dc11:source a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:bibliographicCitation a owl:AnnotationProperty.
+dcterms:created a owl:AnnotationProperty.
+dcterms:creator a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+dcterms:publisher a owl:AnnotationProperty.
+bibo:doi a owl:AnnotationProperty.
+bibo:status a owl:AnnotationProperty.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+voaf:Vocabulary a owl:Class.
+schema:license a owl:AnnotationProperty.
+status:term_status a owl:AnnotationProperty.
+foaf:Person a owl:Class.
+foaf:depiction a owl:AnnotationProperty.
+foaf:logo a owl:AnnotationProperty.
+foaf:mbox a owl:AnnotationProperty.
+foaf:name a owl:AnnotationProperty.
+foaf:primaryTopic a owl:AnnotationProperty.
+<https://ben.de-meester.org/#me> a owl:NamedIndividual,
+                                   foaf:Person;
+                                 rdfs:label "Ben De Meester"@en;
+                                 foaf:mbox "mailto:Ben.DeMeester@UGent.be";
+                                 foaf:name "Ben De Meester"@en.
+fno:Implementation a owl:Class.
+<https://w3id.org/function/vocabulary/implementation> dc11:description "The Function Ontology Implementation vocabulary specifies terms relevant to structure fno:Implementations. The specification is online at https://w3id.org/function/spec"@en;
+                                                      dc11:rights "Copyright © Ghent University – imec – IDLab"@en;
+                                                      dc11:source <https://w3id.org/function/spec>;
+                                                      dc11:title "The Function Ontology - Implementation vocabulary"@en;
+                                                      dcterms:bibliographicCitation "De Meester, B.; Seymoens, T.; Dimou, A. & Verborgh, R. Implementation-independent Function Reuse. Future Generation Computer Systems, Elsevier BV, 2020, 110, 946-959 ";
+                                                      dcterms:created "2019-05-21"^^xsd:date;
+                                                      dcterms:creator <https://ben.de-meester.org/#me>;
+                                                      dcterms:issued "2019-05-21"^^xsd:date;
+                                                      dcterms:modified "2020-12-23"^^xsd:date;
+                                                      dcterms:publisher <https://ben.de-meester.org/#me>;
+                                                      bibo:doi "10.5281/zenodo.595382";
+                                                      bibo:status "testing";
+                                                      vann:preferredNamespacePrefix "fnoi";
+                                                      vann:preferredNamespaceUri "https://w3id.org/function/vocabulary/implementation#";
+                                                      schema:license <http://creativecommons.org/license/by/3.0/>;
+                                                      a owl:Ontology,
+                                                        owl:NamedIndividual,
+                                                        voaf:Vocabulary;
+                                                      rdfs:comment """- Version 0.1.1: updated metadata
+- Version 0.1.0: creation."""@en;
+                                                      rdfs:label "The Function Ontology - Implementation vocabulary"@en;
+                                                      rdfs:seeAlso <https://w3id.org/function/spec>;
+                                                      owl:backwardCompatibleWith <https://w3id.org/function/vocabulary/implementation/0.1.0>;
+                                                      owl:priorVersion <https://w3id.org/function/vocabulary/implementation/0.1.0>;
+                                                      owl:versionIRI <https://w3id.org/function/vocabulary/implementation/0.1.1>;
+                                                      owl:versionInfo "0.1.1";
+                                                      foaf:depiction <https://w3id.org/function/spec/resources/images/fno-full.png>;
+                                                      foaf:logo <https://w3id.org/function/img/fno_favicon.png>;
+                                                      foaf:primaryTopic <https://w3id.org/function/ontology>.
+:JavaClass a owl:Class;
+           rdfs:comment "A fno:Implementation, distributed as a JAVA class snippet file"@en;
+           rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+           rdfs:label "JAVA class"@en;
+           rdfs:subClassOf :JavaImplementation;
+           status:term_status "testing".
+:JavaImplementation a owl:Class;
+                    rdfs:comment "A fno:Implementation, coded in JAVA"@en;
+                    rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+                    rdfs:label "JAVA implementation"@en;
+                    rdfs:subClassOf fno:Implementation;
+                    status:term_status "testing".
+:JavaScriptFunction a owl:Class;
+                    rdfs:comment "A fno:Implementation, distributed as a JavaScript snippet"@en;
+                    rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+                    rdfs:label "JavaScript function"@en;
+                    rdfs:subClassOf :JavaScriptImplementation;
+                    status:term_status "testing".
+:JavaScriptImplementation a owl:Class;
+                          rdfs:comment "A fno:Implementation, coded in JavaScript"@en;
+                          rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+                          rdfs:label "JavaScript Function"@en;
+                          rdfs:subClassOf fno:Implementation;
+                          status:term_status "testing".
+:JsonApi a owl:Class;
+         rdfs:comment "A fno:Implementation, distributed as a JSON (Hydra) API"@en;
+         rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+         rdfs:label "JSON API"@en;
+         rdfs:subClassOf :WebApi;
+         status:term_status "testing".
+:NpmPackage a owl:Class;
+            rdfs:comment "A fno:Implementation, distributed as an NPM package"@en;
+            rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+            rdfs:label "NPM Package"@en;
+            rdfs:subClassOf :JavaScriptImplementation;
+            status:term_status "testing".
+:OpenRefineImplementation a owl:Class;
+                          rdfs:comment "A fno:Implementation, as used in OpenRefine"@en;
+                          rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+                          rdfs:label "Openrefine Function"@en;
+                          rdfs:subClassOf fno:Implementation;
+                          status:term_status "testing".
+:SPARQLImplementation a owl:Class;
+                      rdfs:comment "A fno:Implementation, as used in a SPARQL query"@en;
+                      rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+                      rdfs:label "SPARQL Function"@en;
+                      rdfs:subClassOf fno:Implementation;
+                      status:term_status "testing".
+:SQLImplementation a owl:Class;
+                   rdfs:comment "A fno:Implementation, as used in a SQL query"@en;
+                   rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+                   rdfs:label "SQL Function"@en;
+                   rdfs:subClassOf fno:Implementation;
+                   status:term_status "testing".
+:WebApi a owl:Class;
+        rdfs:comment "A fno:Implementation, distributed as a Web API"@en;
+        rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+        rdfs:label "Web API"@en;
+        rdfs:subClassOf fno:Implementation;
+        status:term_status "testing".
+:XPATHImplementation a owl:Class;
+                     rdfs:comment "A fno:Implementation, as used in an XPath expression"@en;
+                     rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+                     rdfs:label "XPath Function"@en;
+                     rdfs:subClassOf fno:Implementation;
+                     status:term_status "testing".
+:class-name a owl:DatatypeProperty;
+            rdfs:comment "Connects a class name to an implemenation description."@en;
+            rdfs:domain fno:Implementation;
+            rdfs:isDefinedBy <https://w3id.org/function/vocabulary/implementation>;
+            rdfs:label "class name"@en;
+            rdfs:range xsd:string;
+            status:term_status "testing".

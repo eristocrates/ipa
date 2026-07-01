@@ -1,0 +1,88 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix oecc: <http://www.oegov.org/core/owl/cc#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+ccrel:License a owl:Class;
+              rdfs:subClassOf [owl:maxCardinality "1"^^xsd:int ; 
+                               owl:onProperty ccrel:image ; 
+                               a owl:Restriction].
+ccrel:attributionName a owl:DatatypeProperty.
+ccrel:deprecatedOn a owl:AnnotationProperty.
+ccrel:image a owl:AnnotationProperty;
+            rdfs:range xsd:anyURI.
+ccrel:jurisdiction a owl:ObjectProperty.
+ccrel:legalcode a owl:ObjectProperty.
+ccrel:license a owl:ObjectProperty.
+ccrel:morePermissions a owl:ObjectProperty.
+ccrel:permits a owl:ObjectProperty.
+ccrel:prohibits a owl:ObjectProperty.
+ccrel:requires a owl:ObjectProperty.
+<http://www.oegov.org/core/owl/cc> ccrel:attributionURL "http://www.topquadrant.com"^^xsd:anyURI;
+                                   ccrel:license oecc:CreativeCommonsAttributionShareAlike3.0_UnitedStatesLicense;
+                                   dc11:creator "Ralph Hodgson";
+                                   dc11:date "$Date: 2009-08-20 02:39:32 +0200 (Thu, 20 Aug 2009) $";
+                                   dc11:description "Creative Commons Ontology, extending RDF file at http://creativecommons.org/schema.rdf";
+                                   dc11:rights "Creative Commons Attribution-Share Alike 3.0 United States License";
+                                   dc11:source "www.oegov.org";
+                                   dc11:title "Creative Commons Ontology";
+                                   oecc:attributedSource oecc:TopQuadrantAttribution;
+                                   oecc:revision "$Revision: 1348 $";
+                                   a owl:Ontology;
+                                   owl:imports <http://creativecommons.org/schema.rdf>,
+                                               dc11:;
+                                   owl:versionInfo "$Id: cc.n3 1348 2009-08-20 00:39:32Z RalphHodgson $".
+oecc:AttributedSource a owl:Class;
+                      rdfs:comment "The name, url and other details of an attribution.";
+                      rdfs:label "Attributed Source";
+                      rdfs:subClassOf owl:Thing,
+                                      [owl:cardinality "1"^^xsd:int ; 
+                                       owl:onProperty ccrel:attributionName ; 
+                                       a owl:Restriction],
+                                      [owl:maxCardinality "1"^^xsd:int ; 
+                                       owl:onProperty ccrel:attributionURL ; 
+                                       a owl:Restriction],
+                                      [owl:allValuesFrom xsd:string ; 
+                                       owl:onProperty oecc:pointOfContact ; 
+                                       a owl:Restriction].
+oecc:CreativeCommonsAttributionShareAlike3.0_UnitedStatesLicense ccrel:image "http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png"^^xsd:anyURI;
+                                                                 ccrel:permits ccrel:Distribution,
+                                                                               ccrel:DerivativeWorks;
+                                                                 ccrel:requires ccrel:Attribution,
+                                                                                ccrel:ShareAlike;
+                                                                 a ccrel:License;
+                                                                 rdfs:label "Creative Commons Attribution-Share Alike 3.0 United States License".
+oecc:TopQuadrantAttribution ccrel:attributionName "TopQuadrant, Inc.";
+                            ccrel:attributionURL "http://www.topquadrant.com"^^xsd:anyURI;
+                            oecc:pointOfContact "Ralph Hodgson";
+                            a oecc:AttributedSource;
+                            rdfs:label "TopQuadrant attribution".
+oecc:attributedSource a owl:ObjectProperty;
+                      rdfs:label "attributed source".
+oecc:image a owl:AnnotationProperty;
+           rdfs:range xsd:anyURI.
+oecc:licence a owl:DatatypeProperty;
+             rdfs:label "licence";
+             rdfs:range xsd:string.
+oecc:pointOfContact a owl:DatatypeProperty;
+                    rdfs:label "point of contact";
+                    rdfs:range xsd:string.
+oecc:revision a owl:AnnotationProperty;
+              rdfs:range xsd:string.
+oecc:url a owl:DatatypeProperty;
+         rdfs:label "url";
+         rdfs:range xsd:anyURI.
+owl:Ontology rdfs:subClassOf [owl:allValuesFrom ccrel:License ; 
+                              owl:onProperty ccrel:license ; 
+                              a owl:Restriction],
+                             [owl:maxCardinality "1"^^xsd:int ; 
+                              owl:onProperty ccrel:license ; 
+                              a owl:Restriction],
+                             [owl:allValuesFrom oecc:AttributedSource ; 
+                              owl:onProperty oecc:attributedSource ; 
+                              a owl:Restriction].

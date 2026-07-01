@@ -1,0 +1,901 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdaa: <http://rdaregistry.info/Elements/a/>.
+@prefix rdac: <http://rdaregistry.info/Elements/c/>.
+@prefix rdai: <http://rdaregistry.info/Elements/i/>.
+@prefix rdam: <http://rdaregistry.info/Elements/m/>.
+@prefix rdau: <http://rdaregistry.info/Elements/u/>.
+@prefix rdaw: <http://rdaregistry.info/Elements/w/>.
+@prefix rda: <http://www.rdaregistry.info/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+
+<http://metadataregistry.org/uri/RegStatus/1001> a skos:Concept;
+                                                 skos:prefLabel "Published"@en.
+<http://metadataregistry.org/uri/RegStatus/1008> a skos:Concept;
+                                                 skos:prefLabel "Deprecated"@en.
+rdai: dc11:title "RDA Item properties"@en;
+      skos:note "Properties derived from RDA elements and relationship designators with the domain of RDA Item."@en;
+      foaf:homepage <http://www.rdaregistry.info/Elements/i/>.
+rdai:P40001 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60052;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:identifierForTheItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "identifierForTheItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "2.2";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A character string associated with an item that serves to differentiate that item from other items."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "identifier for the item"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has identifier for the item"@en;
+            skos:definition "Relates an item to a character string associated with an item that serves to differentiate that item from other items."@en.
+rdai:P40002 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1008>;
+            rdfs:isDefinedBy rdai:.
+rdai:P40003 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40010,
+                                                                           rdai:P40011;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60056;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:noteOnItemSpecificCarrierCharacteristic.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "noteOnItemSpecificCarrierCharacteristic"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "3.22";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A note providing additional information about carrier characteristics that are specific to the item being described and are assumed not to apply to other items exemplifying the same manifestation."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "note on item-specific carrier characteristic"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has note on item-specific carrier characteristic"@en;
+            skos:definition "Relates an item to a note providing additional information about carrier characteristics that are specific to the item being described and are assumed not to apply to other items exemplifying the same manifestation."@en.
+rdai:P40004 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60066;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:collector.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "collector"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A curator who brings together items from various sources that are then arranged, described, and cataloged as a collection."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "collector"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has collector"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40017;
+            owl:inverseOf rdaa:P50045;
+            skos:definition "Relates an item to a curator who brings together items from various sources that are then arranged, described, and cataloged as a collection."@en.
+rdai:P40005 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60067;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:collectionRegistrar.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "collectionRegistrar"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A curator who lists or inventories the items in an aggregate work such as a collection of items or works."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "collection registrar"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has collection registrar"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40017;
+            owl:inverseOf rdaa:P50046;
+            skos:definition "Relates an item to a curator who lists or inventories the items in an aggregate work such as a collection of items or works."@en.
+rdai:P40006 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60068;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:depositor.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "depositor"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A current owner of an item who deposited the item into the custody of another person, family, or corporate body, while still retaining ownership."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "depositor"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has depositor"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40018;
+            owl:inverseOf rdaa:P50047;
+            skos:definition "Relates an item to a current owner of an item who deposited the item into the custody of another person, family, or corporate body, while still retaining ownership."@en.
+rdai:P40007 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60091;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:donor.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "donor"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A former owner of an item who donated that item to another owner."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "donor"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has donor"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40019;
+            owl:inverseOf rdaa:P50066;
+            skos:definition "Relates an item to a former owner of an item who donated that item to another owner."@en.
+rdai:P40008 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60092;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:seller.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "seller"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A former owner of an item who sold that item to another owner."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "seller"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has seller"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40019;
+            owl:inverseOf rdaa:P50067;
+            skos:definition "Relates an item to a former owner of an item who sold that item to another owner."@en.
+rdai:P40009 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60101;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:containedInItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "containedInItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A larger item of which the item is a discrete component."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "contained in (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is contained in (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40054;
+            owl:inverseOf rdai:P40034;
+            skos:definition "Relates an item to a larger item of which the item is a discrete component."@en.
+rdai:P40010 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60133;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:noteOnDimensionsOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "noteOnDimensionsOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "3.22.3";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A note providing information on the dimensions of the specific item being described that is not recorded as part of the dimensions element."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "note on dimensions of item"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has note on dimensions of item"@en;
+            rdfs:subPropertyOf rdai:P40003;
+            skos:definition "Relates an item to a note providing information on the dimensions of the specific item being described that is not recorded as part of the dimensions element."@en.
+rdai:P40011 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60134;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:noteOnExtentOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "noteOnExtentOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "3.22.2";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A note providing information on the extent of the specific item being described that is not recorded as part of the extent element."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "note on extent of item"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has note on extent of item"@en;
+            rdfs:subPropertyOf rdai:P40003;
+            skos:definition "Relates an item to a note providing information on the extent of the specific item being described that is not recorded as part of the extent element."@en.
+rdai:P40012 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60421;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:illuminator.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "illuminator"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person providing decoration to a specific item using precious metals or color, often with elaborate designs and motifs."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "illuminator"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has illuminator"@en;
+            rdfs:range rdac:C10004;
+            rdfs:subPropertyOf rdai:P40023;
+            owl:inverseOf rdaa:P50092;
+            skos:definition "Relates an item to a person providing decoration to a specific item using precious metals or color, often with elaborate designs and motifs."@en.
+rdai:P40013 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60458;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:binder.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "binder"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person who binds an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "binder"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has binder"@en;
+            rdfs:range rdac:C10004;
+            rdfs:subPropertyOf rdai:P40023;
+            owl:inverseOf rdaa:P50123;
+            skos:definition "Relates an item to a person who binds an item."@en.
+rdai:P40014 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60460;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:inscriber.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "inscriber"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person who has written a statement of dedication or gift on an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "inscriber"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has inscriber"@en;
+            rdfs:range rdac:C10004;
+            rdfs:subPropertyOf rdai:P40023;
+            owl:inverseOf rdaa:P50125;
+            skos:definition "Relates an item to a person who has written a statement of dedication or gift on an item."@en.
+rdai:P40015 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60464;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:annotator.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "annotator"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person who makes manuscript annotations on an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "annotator"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has annotator"@en;
+            rdfs:range rdac:C10004;
+            rdfs:subPropertyOf rdai:P40023;
+            owl:inverseOf rdaa:P50128;
+            skos:definition "Relates an item to a person who makes manuscript annotations on an item."@en.
+rdai:P40016 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60466;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:autographer.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "autographer"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person whose manuscript signature appears on an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "autographer"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has autographer"@en;
+            rdfs:range rdac:C10004;
+            rdfs:subPropertyOf rdai:P40023;
+            owl:inverseOf rdaa:P50129;
+            skos:definition "Relates an item to a person whose manuscript signature appears on an item."@en.
+rdai:P40017 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40004,
+                                                                           rdai:P40005;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60376;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:curator.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "curator"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person, family, or corporate body conceiving, aggregating, and/or organizing an exhibition, collection, or other item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "curator"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has curator"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40023;
+            owl:inverseOf rdaa:P50133;
+            skos:definition "Relates an item to a person, family, or corporate body conceiving, aggregating, and/or organizing an exhibition, collection, or other item."@en.
+rdai:P40018 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40006;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60400;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:currentOwner.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "currentOwner"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person, family, or corporate body currently having legal possession of an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "current owner"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has current owner"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40021;
+            owl:inverseOf rdaa:P50162;
+            skos:definition "Relates an item to a person, family, or corporate body currently having legal possession of an item."@en.
+rdai:P40019 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40007,
+                                                                           rdai:P40008;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60401;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:formerOwner.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "formerOwner"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person, family, or corporate body formerly having legal possession of an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "former owner"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has former owner"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40021;
+            owl:inverseOf rdaa:P50163;
+            skos:definition "Relates an item to a person, family, or corporate body formerly having legal possession of an item."@en.
+rdai:P40020 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60402;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:custodian.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "custodian"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "22.3";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person, family, or corporate body having legal custody of an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "custodian"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has custodian"@en;
+            rdfs:range rdac:C10002;
+            owl:inverseOf rdaa:P50164;
+            skos:definition "Relates an item to a person, family, or corporate body having legal custody of an item."@en.
+rdai:P40021 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40018,
+                                                                           rdai:P40019;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60404;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:owner.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "owner"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "22.2";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person, family, or corporate body having legal possession of an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "owner"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has owner"@en;
+            rdfs:range rdac:C10002;
+            owl:inverseOf rdaa:P50165;
+            skos:definition "Relates an item to a person, family, or corporate body having legal possession of an item."@en.
+rdai:P40022 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60406;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:honoureeOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "honoureeOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person, family, or corporate body honoured by an item, e.g., a person to whom a copy is presented."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "honouree (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has honouree (item)"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40023;
+            owl:inverseOf rdaa:P50167;
+            skos:altLabel "has honoree (item)"@en;
+            skos:definition "Relates an item to a person, family, or corporate body honoured by an item, e.g., a person to whom a copy is presented."@en.
+rdai:P40023 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40017,
+                                                                           rdai:P40014,
+                                                                           rdai:P40013,
+                                                                           rdai:P40024,
+                                                                           rdai:P40025,
+                                                                           rdai:P40012,
+                                                                           rdai:P40016,
+                                                                           rdai:P40022,
+                                                                           rdai:P40015;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60374;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:otherPFCItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "otherPFCItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "22.4";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person, family, or corporate body other than an owner or custodian associated with an item. Includes curators, binders, restorationists, etc."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "other person, family, or corporate body associated with an item"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has other person, family, or corporate body associated with an item"@en;
+            rdfs:range rdac:C10002;
+            owl:inverseOf rdaa:P50182;
+            skos:definition "Relates an item to a person, family, or corporate body other than an owner or custodian associated with an item."@en;
+            skos:scopeNote "Includes curators, binders, restorationists, etc."@en.
+rdai:P40024 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60450;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:restorationist.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "restorationist"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person, family, or corporate body responsible for the set of technical, editorial, and intellectual procedures aimed at compensating for the degradation of an item by bringing it back to a state as close as possible to its original condition."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "restorationist"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has restorationist"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40023;
+            owl:inverseOf rdaa:P50206;
+            skos:definition "Relates an item to a person, family, or corporate body responsible for the set of technical, editorial, and intellectual procedures aimed at compensating for the degradation of an item by bringing it back to a state as close as possible to its original condition."@en.
+rdai:P40025 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60455;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:dedicateeOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "dedicateeOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A person, family, or corporate body to whom an item is dedicated."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "dedicatee (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has dedicatee (item)"@en;
+            rdfs:range rdac:C10002;
+            rdfs:subPropertyOf rdai:P40023;
+            owl:inverseOf rdaa:P50210;
+            skos:definition "Relates an item to a person, family, or corporate body to whom an item is dedicated."@en.
+rdai:P40026 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60176;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:custodialHistoryOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "custodialHistoryOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "2.18";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A record of previous ownership or custodianship of an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "custodial history of item"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has custodial history of item"@en;
+            skos:definition "Relates an item to a record of previous ownership or custodianship of an item."@en.
+rdai:P40027 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60469;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:electronicReproductionOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "electronicReproductionOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item in an analog format that is transferred to a digital format."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "electronic reproduction of (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is electronic reproduction of (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40042;
+            owl:inverseOf rdai:P40057;
+            skos:definition "Relates an item to an item in an analog format that is transferred to a digital format."@en.
+rdai:P40028 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60470;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:noteOnItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "noteOnItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "2.21";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A note providing information on attributes of the item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "note on item"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has note on item"@en;
+            skos:definition "Relates an item to a note providing information on attributes of the item."@en.
+rdai:P40029 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40036,
+                                                                           rdai:P40032,
+                                                                           rdai:P40035;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60196;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:accompaniedByItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "accompaniedByItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item brought together with another item after being issued."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "accompanied by (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is accompanied by (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40051;
+            owl:inverseOf rdai:P40029;
+            skos:definition "Relates an item to an item brought together with another item after being issued."@en.
+rdai:P40030 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1008>;
+            a rdf:Property;
+            rdfs:isDefinedBy rdai:.
+rdai:P40031 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40055,
+                                                                           rdai:P40042;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60191;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:equivalentItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "equivalentItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that exemplifies a manifestation that embodies the same expression of a work."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "equivalent (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is equivalent (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40053;
+            owl:inverseOf rdai:P40031;
+            skos:definition "Relates an item to an item that exemplifies a manifestation that embodies the same expression of a work."@en.
+rdai:P40032 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60237;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:boundWith.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "boundWith"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that has been bound within the same binding as the item being described."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "bound with"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is bound with"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40029;
+            owl:inverseOf rdai:P40032;
+            skos:definition "Relates an item to an item that has been bound within the same binding as the item being described."@en.
+rdai:P40033 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1008>;
+            a rdf:Property;
+            rdfs:isDefinedBy rdai:.
+rdai:P40034 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60249;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:containerOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "containerOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that is a discrete component of a larger item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "container of (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is container of (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40054;
+            owl:inverseOf rdai:P40009;
+            skos:definition "Relates an item to an item that is a discrete component of a larger item."@en.
+rdai:P40035 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60257;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:onDiscWithItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "onDiscWithItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that is contained on the same disc with the item being described."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "on disc with (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is on disc with (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40029;
+            owl:inverseOf rdai:P40035;
+            skos:definition "Relates an item to an item that is contained on the same disc with the item being described."@en.
+rdai:P40036 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60258;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:filmedWithItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "filmedWithItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that is contained on the same microform with the item being described."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "filmed with (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is filmed with (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40029;
+            owl:inverseOf rdai:P40036;
+            skos:definition "Relates an item to an item that is contained on the same microform with the item being described."@en.
+rdai:P40037 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1008>;
+            a rdf:Property;
+            rdfs:isDefinedBy rdai:.
+rdai:P40038 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60168;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:reprintOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "reprintOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that exemplifies a printed manifestation that is used as the basis for a reissue of a manifestation."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "reprint of (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is reprint of (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40042;
+            owl:inverseOf rdai:P40060;
+            skos:definition "Relates an item to an item that exemplifies a printed manifestation that is used as the basis for a reissue of a manifestation."@en.
+rdai:P40039 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60287;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:digitalTransferOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "digitalTransferOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item in a digital format that is transferred to another digital format."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "digital transfer of (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is digital transfer of (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40042;
+            owl:inverseOf rdai:P40056;
+            skos:definition "Relates an item to an item in a digital format that is transferred to another digital format."@en.
+rdai:P40040 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1008>;
+            a rdf:Property;
+            rdfs:isDefinedBy rdai:.
+rdai:P40041 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1008>;
+            a rdf:Property;
+            rdfs:isDefinedBy rdai:.
+rdai:P40042 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40027,
+                                                                           rdai:P40039,
+                                                                           rdai:P40045,
+                                                                           rdai:P40038;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60297;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:reproductionOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "reproductionOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that is used as the basis for a reproduction."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "reproduction of (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is reproduction of (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40031;
+            owl:inverseOf rdai:P40055;
+            skos:definition "Relates an item to an item that is used as the basis for a reproduction."@en.
+rdai:P40043 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1008>;
+            a rdf:Property;
+            rdfs:isDefinedBy rdai:.
+rdai:P40044 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60299;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:preservationFacsimileOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "preservationFacsimileOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that is used as the basis for an exact reproduction on preservation-quality media, such as acid-free permanent or archival paper."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "preservation facsimile of (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is preservation facsimile of (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40045;
+            owl:inverseOf rdai:P40059;
+            skos:definition "Relates an item to an item that is used as the basis for an exact reproduction on preservation-quality media, such as acid-free permanent or archival paper."@en.
+rdai:P40045 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40044;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60301;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:facsimileOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "facsimileOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that is used as the basis for an exact reproduction."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "facsimile of (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is facsimile of (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40042;
+            owl:inverseOf rdai:P40058;
+            skos:definition "Relates an item to an item that is used as the basis for an exact reproduction."@en.
+rdai:P40046 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40051,
+                                                                           rdai:P40054,
+                                                                           rdai:P40053;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:relatedItemOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "relatedItemOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "28.1";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item, represented by an identifier or a description, that is related to the item being described (e.g., an item used as the basis for a microform reproduction)."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "related item"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has related item of item"@en;
+            rdfs:range rdac:C10003;
+            owl:inverseOf rdai:P40046;
+            skos:definition "Relates an item to an item, represented by an identifier or a description, that is related to the item being described (e.g., an item used as the basis for a microform reproduction)."@en.
+rdai:P40047 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60496;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:restrictionsOnAccessToItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "restrictionsOnAccessToItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "4.4";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "Limitations placed on access to a resource."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "restrictions on access"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has restrictions on access to item"@en;
+            skos:definition "Relates an item to limitations placed on access to an item."@en.
+rdai:P40048 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60497;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:restrictionsOnUseOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "restrictionsOnUseOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "4.5";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "Limitations placed on uses such as reproduction, publication, exhibition, etc."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "restrictions on use"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has restrictions on use of item"@en;
+            skos:definition "Relates an item to limitations placed on uses such as reproduction, publication, exhibition, etc."@en.
+rdai:P40049 <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:manifestationExemplified.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "manifestationExemplified"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "17.12";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "The manifestation exemplified by an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "manifestation exemplified"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has manifestation exemplified"@en;
+            rdfs:range rdac:C10007;
+            owl:inverseOf rdam:P30103;
+            skos:definition "Relates an item to the manifestation exemplified by an item."@en.
+rdai:P40050 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60583;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:immediateSourceOfAcquisitionOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "immediateSourceOfAcquisitionOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/instructionNumber> "2.19";
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "The source from which the agency directly acquired an item and the circumstances under which it was received."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "immediate source of acquisition of item"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has immediate source of acquisition of item"@en;
+            skos:definition "Relates an item to the source from which the agency directly acquired an item and the circumstances under which it was received."@en.
+rdai:P40051 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40029;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60709;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:accompanyingItemRelationship.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "accompanyingItemRelationship"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that accompanies or is accompanied by the item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "accompanying item relationship"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has accompanying item relationship with"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40046;
+            owl:inverseOf rdai:P40051;
+            skos:definition "Relates an item to an item that accompanies or is accompanied by the item."@en.
+rdai:P40052 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1008>;
+            a rdf:Property;
+            rdfs:isDefinedBy rdai:.
+rdai:P40053 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40031;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60712;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:equivalentItemRelationship.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "equivalentItemRelationship"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that is equivalent to the item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "equivalent item relationship"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has equivalent item relationship with"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40046;
+            owl:inverseOf rdai:P40053;
+            skos:definition "Relates an item to an item that is equivalent to the item."@en.
+rdai:P40054 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40009,
+                                                                           rdai:P40034;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60714;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:wholePartItemRelationship.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "wholePartItemRelationship"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that is contained in or contains the item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "whole-part item relationship"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "has whole-part item relationship with"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40046;
+            skos:definition "Relates an item to an item that is contained in or contains the item."@en.
+rdai:P40055 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40058,
+                                                                           rdai:P40056,
+                                                                           rdai:P40057,
+                                                                           rdai:P40060;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60272;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:reproducedAsItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "reproducedAsItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that reproduces another item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "reproduced as (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is reproduced as (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40031;
+            owl:inverseOf rdai:P40042;
+            skos:definition "Relates an item to an item that reproduces another item."@en.
+rdai:P40056 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60200;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:digitalTransferItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "digitalTransferItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item in a digital format that results from the transfer of an item in another digital format."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "digital transfer (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is digital transfer (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40055;
+            owl:inverseOf rdai:P40039;
+            skos:definition "Relates an item to an item in a digital format that results from the transfer of an item in another digital format."@en.
+rdai:P40057 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60083;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:electronicReproductionItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "electronicReproductionItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item in a digital format that is the result of the transfer of an item in analog format."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "electronic reproduction (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is electronic reproduction (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40055;
+            owl:inverseOf rdai:P40027;
+            skos:definition "Relates an item to an item in a digital format that is the result of the transfer of an item in analog format."@en.
+rdai:P40058 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40059;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60217;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:facsimileItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "facsimileItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that exactly reproduces an item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "facsimile (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is facsimile (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40055;
+            owl:inverseOf rdai:P40045;
+            skos:definition "Relates an item to an item that exactly reproduces an item."@en.
+rdai:P40059 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60179;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:preservationFacsimileItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "preservationFacsimileItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that consists of an exact reproduction on preservation-quality media, such as acid-free permanent or archival paper."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "preservation facsimile (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is preservation facsimile (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40058;
+            owl:inverseOf rdai:P40044;
+            skos:definition "Relates an item to an item that consists of an exact reproduction on preservation-quality media, such as acid-free permanent or archival paper."@en.
+rdai:P40060 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60271;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:reprintedAsItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "reprintedAsItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "An item that is a reissue of an item that exemplifies another printed manifestation."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "reprinted as (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is reprinted as (item)"@en;
+            rdfs:range rdac:C10003;
+            rdfs:subPropertyOf rdai:P40055;
+            owl:inverseOf rdai:P40038;
+            skos:definition "Relates an item to an item that is a reissue of an item that exemplifies another printed manifestation."@en.
+rdai:P40061 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40062;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60806;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:subjectOfItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "subjectOfItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A work that is about the item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "subject of (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is subject of (item)"@en;
+            rdfs:range rdac:C10001;
+            rdfs:subPropertyOf rdaw:P10283;
+            owl:inverseOf rdaw:P10260;
+            skos:definition "Relates an item to a work that is about the item."@en.
+rdai:P40062 <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdai:P40067,
+                                                                           rdai:P40065,
+                                                                           rdai:P40063,
+                                                                           rdai:P40066,
+                                                                           rdai:P40064;
+            <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60215;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:describedInItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "describedInItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A work that describes a described item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "described in (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is described in (item)"@en;
+            rdfs:range rdac:C10001;
+            rdfs:subPropertyOf rdai:P40061;
+            owl:inverseOf rdaw:P10265;
+            skos:definition "Relates an item to a work that describes a described item."@en.
+rdai:P40063 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60219;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:analysedInItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "analysedInItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A work that examines the source item to identify its components and their relations."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "analysed in (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is analysed in (item)"@en;
+            rdfs:range rdac:C10001;
+            rdfs:subPropertyOf rdai:P40062;
+            owl:inverseOf rdaw:P10266;
+            skos:definition "Relates an item to a work that examines the source item to identify its components and their relations."@en.
+rdai:P40064 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60213;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:commentaryInItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "commentaryInItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A work that contains a set of explanatory or critical notes on the described item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "commentary in (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is commentary in (item)"@en;
+            rdfs:range rdac:C10001;
+            rdfs:subPropertyOf rdai:P40062;
+            owl:inverseOf rdaw:P10270;
+            skos:definition "Relates an item to a work that contains a set of explanatory or critical notes on the described item."@en.
+rdai:P40065 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60212;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:critiquedInItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "critiquedInItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A work that contains a critical evaluation of the described item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "critiqued in (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is critiqued in (item)"@en;
+            rdfs:range rdac:C10001;
+            rdfs:subPropertyOf rdai:P40062;
+            owl:inverseOf rdaw:P10269;
+            skos:definition "Relates an item to a work that contains a critical evaluation of the described item."@en.
+rdai:P40066 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60218;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:evaluatedInItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "evaluatedInItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A work that examines or judges the described item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "evaluated in (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is evaluated in (item)"@en;
+            rdfs:range rdac:C10001;
+            rdfs:subPropertyOf rdai:P40062;
+            owl:inverseOf rdaw:P10267;
+            skos:definition "Relates an item to a work that examines or judges the described item."@en.
+rdai:P40067 <http://metadataregistry.org/uri/profile/RegAp/hasUnconstrained> rdau:P60211;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdai:reviewedInItem.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "reviewedInItem"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitDefinition> "A work that contains a brief evaluation of the described item."@en;
+            <http://metadataregistry.org/uri/profile/rdakit/toolkitLabel> "reviewed in (item)"@en;
+            a rdf:Property;
+            rdfs:domain rdac:C10003;
+            rdfs:isDefinedBy rdai:;
+            rdfs:label "is reviewed in (item)"@en;
+            rdfs:range rdac:C10001;
+            rdfs:subPropertyOf rdai:P40062;
+            owl:inverseOf rdaw:P10268;
+            skos:definition "Relates an item to a work that contains a brief evaluation of the described item."@en.

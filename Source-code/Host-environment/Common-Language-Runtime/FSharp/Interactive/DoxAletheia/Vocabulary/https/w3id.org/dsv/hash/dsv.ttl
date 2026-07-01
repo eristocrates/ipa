@@ -1,0 +1,200 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix prof: <http://www.w3.org/ns/dx/prof/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix w3id: <https://w3id.org/>.
+@prefix dsv: <https://w3id.org/dsv#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix planet: <http://dbpedia.org/>.
+@prefix resource: <http://dbpedia.org/resource/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix wikidata: <http://www.wikidata.org/entity/>.
+
+<http://dbpedia.org/resource/Faculty_of_Mathematics_and_Physics,_Charles_University> a foaf:Organization.
+wikidata:Q57232642 a foaf:Person.
+wikidata:Q57585169 a foaf:Person.
+<https://orcid.org/0000-0003-4843-2470> a foaf:Person.
+dsv: ccrel:license <http://creativecommons.org/licenses/by/4.0/>;
+     dcterms:contributor wikidata:Q57232642,
+                         <https://orcid.org/0000-0003-4843-2470>;
+     dcterms:creator wikidata:Q57585169;
+     dcterms:description "Data Specification Vocabulary (DSV) is a vocabulary for describing semantic data specifications, namely vocabularies and application profiles."@en;
+     dcterms:issued "2024-10-01"^^xsd:date;
+     dcterms:modified "2025-05-08"^^xsd:date;
+     dcterms:publisher <http://dbpedia.org/resource/Faculty_of_Mathematics_and_Physics,_Charles_University>;
+     dcterms:title "Data Specification Vocabulary"@en;
+     vann:preferredNamespacePrefix "dsv";
+     vann:preferredNamespaceUri "https://w3id.org/dsv#";
+     a prof:Profile,
+       owl:Ontology;
+     rdfs:comment "See also DSV Default Application Profile for a more complete information on how to use this vocabulary."@en;
+     owl:versionInfo 1.0;
+     status:term_status "release candidate".
+dsv:ApplicationProfile a owl:Class,
+                         rdfs:Class;
+                       rdfs:comment "Konceptuální model obsahující profily tříd a vlastností různých slovníků."@cs,
+                                    "An Application Profile identifies classes and properties from vocabularies, and class profiles and property profiles from Application profiles that are re-used in a certain usage context. It also allows specification editors to further adjust the description of re-used classes and properties for that usage context without the need to explicitly create subclasses and subproperties."@en;
+                       rdfs:isDefinedBy dsv:;
+                       rdfs:label "Konceptuální model"@cs,
+                                  "Application Profile"@en.
+dsv:ApplicationProfileSpecificationDocument a owl:Class,
+                                              rdfs:Class;
+                                            rdfs:comment "An Application Profile Specification Document contains human-readable version of an Application Profile."@en;
+                                            rdfs:isDefinedBy dsv:;
+                                            rdfs:label "Application Profile Specification Document"@en;
+                                            rdfs:subClassOf prof:ResourceDescriptor.
+dsv:ClassProfile a owl:Class,
+                   rdfs:Class;
+                 rdfs:comment "Profile of a class. Allows specification editors to specify profile specific names, definitions and usage notes."@en;
+                 rdfs:isDefinedBy dsv:;
+                 rdfs:label "Profil třídy"@cs,
+                            "Class Profile"@en;
+                 rdfs:subClassOf dsv:TermProfile.
+dsv:DatatypePropertyProfile a owl:Class,
+                              rdfs:Class;
+                            rdfs:isDefinedBy dsv:;
+                            rdfs:label "Profile atributu"@cs,
+                                       "Datatype Property Profile"@en;
+                            rdfs:subClassOf dsv:PropertyProfile.
+dsv:InvalidTermProfile a owl:Class,
+                         rdfs:Class;
+                       rdfs:comment "Neplatný profil je profil, který porušuje pravidla pro správné profilování. To může být z dobrého důvodu, jako je dočasná nekonzistence, která se má teprve projevit na profilované entitě."@cs,
+                                    "Invalid Term Profile is a profile, which breaks profile compliance rules. This may be for a good reason such as temporary, to be propagated upstream, inconsistency."@en;
+                       rdfs:isDefinedBy dsv:;
+                       rdfs:label "Nevalidní profil"@cs,
+                                  "Invalid Term Profile"@en;
+                       rdfs:subClassOf dsv:TermProfile.
+dsv:ObjectPropertyProfile a owl:Class,
+                            rdfs:Class;
+                          rdfs:isDefinedBy dsv:;
+                          rdfs:label "Profil objektové vlastnosti"@cs,
+                                     "Object Property Profile"@en;
+                          rdfs:subClassOf dsv:PropertyProfile.
+dsv:PropertyProfile a owl:Class,
+                      rdfs:Class;
+                    rdfs:comment "Profile of a property allows specification editors to specify profile specific name, definition, usage note, domain, range and cardinality."@en;
+                    rdfs:isDefinedBy dsv:;
+                    rdfs:label "Profil vlastnosti"@cs,
+                               "Property Profile"@en;
+                    rdfs:subClassOf dsv:TermProfile.
+dsv:PropertyValueReuse a owl:Class,
+                         rdfs:Class;
+                       rdfs:comment """Specifies, which values of which properties of which resources are reused for the current Profile.
+E.g. reuse of profile name, reuse of class name, reuse of profile definition, reuse of profile usage note, etc."""@en;
+                       rdfs:isDefinedBy dsv:;
+                       rdfs:label "Property Value Reuse"@en.
+dsv:TermProfile a owl:Class,
+                  rdfs:Class;
+                rdfs:comment "Profil entity. Umožňuje blíže specifikovat některé její vlastnost v kontextu aplikačního profilu."@cs,
+                             "Term profile. Allows profile editors to specify context dependent information such as label, definition, usage note, cardinalities, etc. for Class profiles and Property profiles."@en;
+                rdfs:isDefinedBy dsv:;
+                rdfs:label "Profil"@cs,
+                           "Term Profile"@en.
+dsv:VocabularySpecificationDocument a owl:Class,
+                                      rdfs:Class;
+                                    rdfs:comment "A Vocabulary Specification Document is a human-readable representation of a Vocabulary."@en;
+                                    rdfs:isDefinedBy dsv:;
+                                    rdfs:label "Vocabulary Specification Document"@en;
+                                    rdfs:subClassOf prof:ResourceDescriptor.
+dsv:cardinality a rdf:Property,
+                  owl:ObjectProperty;
+                rdfs:domain dsv:PropertyProfile;
+                rdfs:isDefinedBy dsv:;
+                rdfs:label "kardinalita"@cs,
+                           "cardinality"@en;
+                rdfs:range skos:Concept.
+dsv:class a rdf:Property,
+            owl:ObjectProperty;
+          rdfs:comment "The profiled class."@en;
+          rdfs:domain dsv:ClassProfile;
+          rdfs:isDefinedBy dsv:;
+          rdfs:label "profiled class"@en;
+          rdfs:range rdfs:Class.
+dsv:classRole a rdf:Property,
+                owl:ObjectProperty;
+              rdfs:comment "Class role, e.g. Mandatory, Supportive, etc."@en;
+              rdfs:domain dsv:ClassProfile;
+              rdfs:isDefinedBy dsv:;
+              rdfs:label "class role"@en;
+              rdfs:range skos:Concept.
+dsv:datatype a rdf:Property,
+               owl:ObjectProperty;
+             rdfs:domain dsv:DatatypePropertyProfile;
+             rdfs:isDefinedBy dsv:;
+             rdfs:label "datatype"@en;
+             rdfs:range rdfs:Datatype.
+dsv:domain a rdf:Property,
+             owl:ObjectProperty;
+           rdfs:comment "Class profile, which is the domain of the property profile."@en;
+           rdfs:domain dsv:PropertyProfile;
+           rdfs:isDefinedBy dsv:;
+           rdfs:label "domain"@en;
+           rdfs:range dsv:ClassProfile.
+dsv:externalDocumentation a rdf:Property,
+                            owl:ObjectProperty;
+                          rdfs:comment "Link to an external documentation of this resource. Profiles of this resource should preferably link to this URL for documentation."@en;
+                          rdfs:domain rdfs:Resource;
+                          rdfs:isDefinedBy dsv:;
+                          rdfs:label "external documentation"@en;
+                          rdfs:range rdfs:Resource.
+dsv:profileOf a rdf:Property,
+                owl:ObjectProperty;
+              rdfs:comment "Specifies a parent profile of the current profile."@en;
+              rdfs:domain dsv:TermProfile;
+              rdfs:isDefinedBy dsv:;
+              rdfs:label "profile of"@en;
+              rdfs:range dsv:TermProfile.
+dsv:property a rdf:Property,
+               owl:ObjectProperty;
+             rdfs:comment "The property profiled by the property profile."@en;
+             rdfs:domain dsv:PropertyProfile;
+             rdfs:isDefinedBy dsv:;
+             rdfs:label "profiled property"@en;
+             rdfs:range rdf:Property.
+dsv:range a rdf:Property,
+            owl:ObjectProperty;
+          rdfs:comment "Class profile, which is the range of the object property profile."@en;
+          rdfs:domain dsv:ObjectPropertyProfile;
+          rdfs:isDefinedBy dsv:;
+          rdfs:label "range"@en;
+          rdfs:range dsv:ClassProfile.
+dsv:requirementLevel a rdf:Property,
+                       owl:ObjectProperty;
+                     rdfs:comment "Requirement level of the property, typically mandatory, recommended or optional."@en;
+                     rdfs:domain dsv:PropertyProfile;
+                     rdfs:isDefinedBy dsv:;
+                     rdfs:label "requirement level"@en;
+                     rdfs:range skos:Concept.
+dsv:reusedFromResource a rdf:Property,
+                         owl:ObjectProperty;
+                       rdfs:comment "The Resource on which there is a property with a value for reuse."@en;
+                       rdfs:domain dsv:PropertyValueReuse;
+                       rdfs:isDefinedBy dsv:;
+                       rdfs:label "reused from resource"@en;
+                       rdfs:range rdfs:Resource.
+dsv:reusedProperty a rdf:Property,
+                     owl:ObjectProperty;
+                   rdfs:domain dsv:PropertyValueReuse;
+                   rdfs:isDefinedBy dsv:;
+                   rdfs:label "reused property"@en;
+                   rdfs:range rdf:Property.
+dsv:reusesPropertyValue a rdf:Property,
+                          owl:ObjectProperty;
+                        rdfs:comment "Points to definitions of Property value reuse for this Profile."@en;
+                        rdfs:domain dsv:TermProfile;
+                        rdfs:isDefinedBy dsv:;
+                        rdfs:label "reuses property value"@en;
+                        rdfs:range dsv:PropertyValueReuse.
+dsv:specializes a rdf:Property,
+                  owl:ObjectProperty;
+                rdfs:comment "Specifies a profile specialized by this profile."@en;
+                rdfs:domain dsv:TermProfile;
+                rdfs:isDefinedBy dsv:;
+                rdfs:label "specializes"@en;
+                rdfs:range dsv:TermProfile.

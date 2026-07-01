@@ -1,0 +1,248 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix geop: <http://aims.fao.org/aos/geopolitical.owl#>.
+@prefix elec: <http://purl.org/ctic/sector-publico/elecciones#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix open: <http://open.vocab.org/terms/>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<dctype:Event> a owl:Class.
+<event:Event> a owl:Class.
+<http://data.fundacionctic.org/vocab/sector-publico/elecciones_20130117.html> dc11:format [rdfs:label "HTML" ; 
+                                                                                           rdf:value "text/html" ; 
+                                                                                           a dcterms:IMT];
+                                                                              a dcmitype:Text.
+<http://data.fundacionctic.org/vocab/sector-publico/elecciones_20130117.rdf> dc11:format [rdfs:label "RDF" ; 
+                                                                                          rdf:value "application/rdf+xml" ; 
+                                                                                          a dcterms:IMT];
+                                                                             a dcmitype:Text.
+<http://purl.org/ctic/sector-publico/elecciones> ccrel:license <http://creativecommons.org/licenses/by-nc-sa/3.0>;
+                                                 open:image <http://purl.org/ctic/sector-publico/elecciones.png>;
+                                                 dc11:creator "CTIC CT";
+                                                 dc11:date "2012-09-14";
+                                                 dc11:identifier "http://data.fundacionctic.org/vocab/sector-publico/elecciones_20130117";
+                                                 dc11:rights "CTIC CT - Creative Commons 3.0 (BY-NC-SA)"@en,
+                                                             "CTIC CT - Creative Commons 3.0 (BY-NC-SA)"@es;
+                                                 dc11:title "Vocabulario de Resultados Electorales"@es;
+                                                 dcterms:hasFormat <http://data.fundacionctic.org/vocab/sector-publico/elecciones_20130117.html>,
+                                                                   <http://data.fundacionctic.org/vocab/sector-publico/elecciones_20130117.rdf>;
+                                                 dcterms:isVersionOf <http://purl.org/ctic/sector-publico/elecciones>;
+                                                 dcterms:issued "2012-09-14";
+                                                 dcterms:replaces <http://data.fundacionctic.org/vocab/sector-publico/elecciones_20120914>;
+                                                 vann:preferredNamespacePrefix "elec";
+                                                 vann:preferredNamespaceUri "http://purl.org/ctic/sector-publico/elecciones#";
+                                                 a owl:Ontology;
+                                                 rdfs:comment """El objetivo de este vocabulario es la creación de un esquema que permita definir los contenidos de información relacionada con procesos electorales y sus resultados. 
+			Se identifican ciertas variables en el dominio de las elecciones, que se modelan a través de ciertos tipos de datos y de propiedades relacionadas entre los recursos."""@es;
+                                                 skos:historyNote [dc11:creator "CTIC-CT" ; 
+                                                                   dc11:date "2013-01-17" ; 
+                                                                   rdf:value "Añadidas propiedades para representar porcentuales sobre los resultados y la participación."@es].
+elec:AreaElectoral dcterms:issued "2012-09-14";
+                   a owl:Class;
+                   rdfs:comment "Una región o área geográfica donde se lleva a cabo una votación"@es;
+                   rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                   rdfs:label "Área electoral"@es;
+                   rdfs:subClassOf geop:territory.
+elec:Candidato dcterms:issued "2012-09-14";
+               a owl:Class;
+               rdfs:comment "Candidato de una formación política que se presenta a una votación"@es;
+               rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+               rdfs:label "Candidato"@es;
+               rdfs:subClassOf foaf:Person;
+               skos:related <http://openelectiondata.org/0.1/Candidate>.
+elec:Candidatura dcterms:issued "2012-09-14";
+                 a owl:Class;
+                 rdfs:comment "Una candidatura para una votación correspondiente a un partido político"@es;
+                 rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                 rdfs:label "Candidatura"@es;
+                 rdfs:subClassOf event:Event,
+                                 dcmitype:Event;
+                 skos:related <http://openelectiondata.org/0.1/Candidacy>.
+elec:Partido dcterms:issued "2012-09-14";
+             a owl:Class;
+             rdfs:comment "Una formación política que se presenta a una votación"@es;
+             rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+             rdfs:label "Partido político"@es;
+             rdfs:subClassOf foaf:Organization;
+             skos:related <http://openelectiondata.org/0.1/Party>.
+elec:ProcesoElectoral dcterms:issued "2012-09-14";
+                      a owl:Class;
+                      rdfs:comment "Un proceso electoral diferenciado en un periodo de tiempo que incluye una o varias votaciones"@es;
+                      rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                      rdfs:label "Proceso electoral"@es;
+                      rdfs:subClassOf event:Event,
+                                      dcmitype:Event;
+                      skos:related <http://openelectiondata.org/0.1/Election>.
+elec:Votacion dcterms:issued "2012-09-14";
+              a owl:Class;
+              rdfs:comment "Una votación específica, dentro de un proceso electoral, para seleccionar una representación o dirimir un referendum"@es;
+              rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+              rdfs:label "Votación"@es;
+              rdfs:subClassOf event:Event,
+                              dcmitype:Event;
+              skos:related <http://openelectiondata.org/0.1/Election>.
+elec:censoElectoral dcterms:issued "2012-09-14";
+                    a owl:DatatypeProperty;
+                    rdfs:comment "Número de personas con derecho a voto en una votación"@es;
+                    rdfs:domain elec:Votacion;
+                    rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                    rdfs:label "Censo electoral"@es;
+                    rdfs:range xsd:integer;
+                    skos:related <http://openelectiondata.org/0.1/electorate>.
+elec:esCandidaturaDe dcterms:issued "2012-09-14";
+                     a owl:ObjectProperty;
+                     rdfs:comment "Una candidatura pertenece a una votación específica"@es;
+                     rdfs:domain elec:Candidatura;
+                     rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                     rdfs:label "Es candidatura de"@es;
+                     rdfs:range elec:Votacion;
+                     owl:inverseOf elec:tieneCandidatura.
+elec:esCandidaturaDelPartido dcterms:issued "2012-09-14";
+                             a owl:ObjectProperty;
+                             rdfs:comment "Una candidatura especifica es de un partido político"@es;
+                             rdfs:domain elec:Candidatura;
+                             rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                             rdfs:label "Es candidatura del partido"@es;
+                             rdfs:range elec:Partido;
+                             owl:inverseOf elec:partidoTieneCandidatura.
+elec:esSeleccionada dcterms:issued "2012-09-14";
+                    a owl:DatatypeProperty;
+                    rdfs:comment "Si la candidatura ha sido seleccionada como resultado de la votación"@es;
+                    rdfs:domain elec:Candidatura;
+                    rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                    rdfs:label "Es seleccionada"@es;
+                    rdfs:range xsd:boolean;
+                    skos:related <http://openelectiondata.org/0.1/elected>.
+elec:esVotacionDe dcterms:issued "2012-09-14";
+                  a owl:ObjectProperty;
+                  rdfs:comment "Una votación pertenece a un proceso electoral"@es;
+                  rdfs:domain elec:Votacion;
+                  rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                  rdfs:label "Es votación de"@es;
+                  rdfs:range elec:ProcesoElectoral;
+                  owl:inverseOf elec:tieneVotacion.
+elec:participacion dcterms:issued "2013-01-17";
+                   a owl:DatatypeProperty;
+                   rdfs:comment "Porcentaje de participación (votos emitidos en relación al número de electores) en una votación"@es;
+                   rdfs:domain elec:Votacion;
+                   rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                   rdfs:label "Porcentaje de participación"@es;
+                   rdfs:range xsd:decimal.
+elec:partidoTieneCandidatura dcterms:issued "2012-09-14";
+                             a owl:ObjectProperty;
+                             rdfs:comment "Un partido político puede tener varias candidaturas"@es;
+                             rdfs:domain elec:Partido;
+                             rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                             rdfs:label "Partido tiene candidatura"@es;
+                             rdfs:range elec:Candidatura;
+                             owl:inverseOf elec:esCandidaturaDelPartido.
+elec:representantesObtenidos dcterms:issued "2012-09-14";
+                             a owl:DatatypeProperty;
+                             rdfs:comment "Número de representantes obtenidos (diputados, escaños,...) que consigue una candidatura seleccionada"@es;
+                             rdfs:domain elec:Candidatura;
+                             rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                             rdfs:label "Representantes obtenidos"@es;
+                             rdfs:range xsd:integer.
+elec:tieneAreaElectoral dcterms:issued "2012-09-14";
+                        a owl:ObjectProperty;
+                        rdfs:comment "Una votación se realiza sobre un área electoral"@es;
+                        rdfs:domain elec:Votacion;
+                        rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                        rdfs:label "Tiene área electoral"@es;
+                        rdfs:range elec:AreaElectoral.
+elec:tieneCandidato dcterms:issued "2012-09-14";
+                    a owl:ObjectProperty;
+                    rdfs:comment "Una candidatura especifica es de un partido político"@es;
+                    rdfs:domain elec:Candidatura;
+                    rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                    rdfs:label "Tiene candidato"@es;
+                    rdfs:range elec:Candidato.
+elec:tieneCandidatura dcterms:issued "2012-09-14";
+                      a owl:ObjectProperty;
+                      rdfs:comment "Una votación puede tener muchas candidaturas"@es;
+                      rdfs:domain elec:Votacion;
+                      rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                      rdfs:label "Tiene candidatura"@es;
+                      rdfs:range elec:Candidatura;
+                      owl:inverseOf elec:esCandidaturaDe.
+elec:tieneVotacion dcterms:issued "2012-09-14";
+                   a owl:ObjectProperty;
+                   rdfs:comment "Un proceso electoral tiene una votación"@es;
+                   rdfs:domain elec:ProcesoElectoral;
+                   rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                   rdfs:label "Tiene votación"@es;
+                   rdfs:range elec:Votacion;
+                   owl:inverseOf elec:esVotacionDe.
+elec:votosEmitidos dcterms:issued "2012-09-14";
+                   a owl:DatatypeProperty;
+                   rdfs:comment "Número de votos emitidos en una votación"@es;
+                   rdfs:domain elec:Votacion;
+                   rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                   rdfs:label "Votos emitidos"@es;
+                   rdfs:range xsd:integer;
+                   skos:related <http://openelectiondata.org/0.1/ballotsIssued>.
+elec:votosEnBlanco dcterms:issued "2012-09-14";
+                   a owl:DatatypeProperty;
+                   rdfs:comment "Número de votos en blanco en una votación"@es;
+                   rdfs:domain elec:Votacion;
+                   rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                   rdfs:label "Votos en blanco"@es;
+                   rdfs:range xsd:integer.
+elec:votosEnBlancoPorcentaje dcterms:issued "2013-01-17";
+                             a owl:DatatypeProperty;
+                             rdfs:comment "Porcentaje de votos en blanco respecto a los votos emitidos en una votación"@es;
+                             rdfs:domain elec:Votacion;
+                             rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                             rdfs:label "Porcentaje de votos en blanco"@es;
+                             rdfs:range xsd:decimal.
+elec:votosNulos dcterms:issued "2013-01-17";
+                a owl:DatatypeProperty;
+                rdfs:comment "Número de votos nulos en una votación"@es;
+                rdfs:domain elec:Votacion;
+                rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                rdfs:label "Votos nulos"@es;
+                rdfs:range xsd:integer.
+elec:votosNulosPorcentaje dcterms:issued "2013-01-17";
+                          a owl:DatatypeProperty;
+                          rdfs:comment "Porcentaje de votos nulos respecto a los votos emitidos en una votación"@es;
+                          rdfs:domain elec:Votacion;
+                          rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                          rdfs:label "Porcentaje de votos nulos"@es;
+                          rdfs:range xsd:decimal.
+elec:votosPorcentajeSobreElectores dcterms:issued "2013-01-17";
+                                   a owl:DatatypeProperty;
+                                   rdfs:comment "Porcentaje de votos recibidos por una candidatura en una votación sobre el total de votantes"@es,
+                                                "Porcentaje de votos recibidos por una candidatura en una votación sobre el total de electores"@es;
+                                   rdfs:domain elec:Candidatura;
+                                   rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                                   rdfs:label "Porcentaje de votos recibidos sobre el total de votantes"@es,
+                                              "Porcentaje de votos recibidos sobre el total de electores"@es;
+                                   rdfs:range xsd:decimal.
+elec:votosRecibidos dcterms:issued "2012-09-14";
+                    a owl:DatatypeProperty;
+                    rdfs:comment "Número de votos recibidos por una candidatura en una votación"@es;
+                    rdfs:domain elec:Candidatura;
+                    rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                    rdfs:label "Votos recibidos"@es;
+                    rdfs:range xsd:integer;
+                    skos:related <http://openelectiondata.org/0.1/candidateVoteCount>.
+elec:votosValidos dcterms:issued "2012-09-14";
+                  a owl:DatatypeProperty;
+                  rdfs:comment "Número de votos válidos en una votación"@es;
+                  rdfs:domain elec:Votacion;
+                  rdfs:isDefinedBy <http://purl.org/ctic/sector-publico/elecciones>;
+                  rdfs:label "Votos válidos"@es;
+                  rdfs:range xsd:integer.
+rdfs:comment a owl:AnnotationProperty.
+rdfs:isDefinedBy a owl:AnnotationProperty.
+rdfs:label a owl:AnnotationProperty.

@@ -1,0 +1,88 @@
+@base <http://dublincore.org/vocabs/alignmentType.ttl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix alignment: <http://purl.org/dcx/lrmi-vocabs/alignmentType/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix w3: <http://www.w3.org/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix lrmi_alignmentType: <http://purl.org/dcx/lrmi-vocabs/alignmentType/>.
+
+alignment: dc:creator "LRMI Task Group (DCMI)"@en-us,
+                      "LRMI Task Group (DCMI)"@de;
+           dc:title "LRMI Alignment Type Vocabulary"@en-us,
+                    "LRMI Vokabular zur Art des Alignment"@de;
+           dct:created "2017-03-01"^^xsd:date;
+           dct:description "A concept scheme that defines the types of relationships between a learning resource and a node in an educational framework."@en-us,
+                           "Ein kontrolliertes Vokabular, das die Arten von Beziehungen zwischen einer Lernressource und einem Element in einem Bildungsrahmen definiert."@de;
+           dct:license <http://creativecommons.org/licenses/by/4.0/>;
+           dct:modified "2022-10-18"^^xsd:date;
+           vann:changes "https://www.dublincore.org/specifications/lrmi/concept_schemes/release-history/";
+           a skos:ConceptScheme.
+alignment:assesses dct:source "Based on Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000869#Assesses."@en-us,
+                              "Basierend auf den Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000869#Assesses"@de;
+                   a skos:Concept;
+                   skos:definition "The learning resource being described may be used to assess the competency being referenced."@en-us,
+                                   "Die beschriebene Lernressource kann verwendet werden, um die referenzierte Kompetenz zu testen."@de;
+                   skos:inScheme alignment:;
+                   skos:prefLabel "assesses"@en-us,
+                                  "testet"@de.
+alignment:complexityLevel a skos:Concept;
+                          skos:definition "The point in the framework being referenced defines a level or range that measures the difficulty or challenge presented by the learning resource being described."@en-us,
+                                          "Das Element in dem Bezugssystem, auf das verwiesen wird, definiert ein Niveau oder einen Bereich, der die Schwierigkeit oder Herausforderung der beschriebenen Lernressource misst."@de;
+                          skos:inScheme alignment:;
+                          skos:prefLabel "complexity level"@en-us,
+                                         "Komplexitätsgrad"@de;
+                          skos:scopeNote "Example frameworks include, but are not limited to, Bloom's Taxonomy, Norman Webb's Depth of Knowledge (DOK), Biggs' SOLO taxonomy, Lexile and Quantile frameworks by MetaMetrics."@en-us,
+                                         "Beispiele für Bezugssysteme sind unter anderem Bloom's Taxonomy, Norman Webb's Depth of Knowledge (DOK), Biggs' SOLO taxonomy, Lexile and Quantile Frameworks von MetaMetrics."@de.
+alignment:educationalLevel dct:source "Based on Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000869#EducationalLevel."@en-us,
+                                      "Basierend auf den Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000869#EducationalLevel"@de;
+                           a skos:Concept;
+                           skos:definition "The point in the framework being referenced defines a level or stage within an education system for which the resource being described is intended or useful."@en-us,
+                                           "Das Element in dem Bezugssystem, auf das verwiesen wird, definiert eine Ebene oder Stufe innerhalb eines Bildungssystems, für die die beschriebene Ressource bestimmt oder nützlich ist."@de;
+                           skos:inScheme alignment:;
+                           skos:prefLabel "educational level"@en-us,
+                                          "Bildungsstufe"@de.
+alignment:educationalSubject dct:source "Based on Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000869#EducationalSubject."@en-us,
+                                        "Basierend auf den Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000869#EducationalSubject"@de;
+                             a skos:Concept;
+                             skos:definition "The point in the framework being referenced defines the subject context of the learning resource being described."@en-us,
+                                             "Das Element in dem Bezugssystem, auf das verwiesen wird, definiert den fachlichen Kontext der beschriebenen Lernressource."@de;
+                             skos:inScheme alignment:;
+                             skos:prefLabel "educational subject"@en-us,
+                                            "Fach"@de;
+                             skos:scopeNote """The educational subject identifies the educational context of the resource being described such as \"math\", \"science\", \"physics\", \"algebra\", and \"English language arts\". To identify the particular topic(s), or aboutness, of the resource being described--e.g., \"Pythagorean theorem\", \"Abraham Lincoln\", \"Ayers Rock\"--use the schema.org/about property."""@en-us,
+                                            """Das Unterrichtsfach gibt den Bildungskontext der beschriebenen Ressource an, z. B. \"Mathematik\", \"Naturwissenschaften\", \"Physik\", \"Algebra\" und \"Englische Sprachwissenschaften\". Um das/die spezielle(n) Thema/Themen der beschriebenen Ressource zu identifizieren - z. B. \"Satz des Pythagoras\", \"Abraham Lincoln\", \"Ayers Rock\" - verwenden Sie die Eigenschaft schema.org/about."""@de.
+alignment:prerequisite dct:source "Based on Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000715."@en-us,
+                                  "Basierend auf den Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000715"@de;
+                       a skos:Concept;
+                       skos:definition "The competency being referenced is a learning prerequisite to the effective outcome of the learning resource being described."@en-us,
+                                       "Die Kompetenz, auf die verwiesen wird, ist eine Lernvoraussetzung für den Lernerfolg der beschriebenen Lernressource."@de;
+                       skos:inScheme alignment:;
+                       skos:prefLabel "prerequisite"@en-us,
+                                      "vorausgesetzt"@de.
+alignment:readingLevel dct:source "Based on Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000869#ReadingLevel."@en-us,
+                                  "Basierend auf den Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000869#ReadingLevel"@de;
+                       a skos:Concept;
+                       skos:definition "The point in the framework being referenced defines a level or range of reading ability expected for a person using the learning resource being described."@en-us,
+                                       "Das Element in dem Bezugssystem, auf das verwiesen wird, definiert ein Niveau oder einen Bereich der Lesefähigkeit, die von einer Person erwartet wird, welche die beschriebene Lernressource nutzt."@de;
+                       skos:inScheme alignment:;
+                       skos:prefLabel "reading level"@en-us,
+                                      "Leseniveau"@de;
+                       skos:scopeNote "Example frameworks include, but are not limited to, Lexile Framework by MetaMetrics, ATOS by Renaissance Learning, Degrees of Reading Power (DRP) by Questar Assessment, Flesch-Kincaid (public domain), Reading Maturity by Pearson Education, SourceRater by Educational Testing Service, Easability Indicator by Coh-Metrix, and the Oxford Reading Tree levels from Oxford University Press."@en-us,
+                                      "Beispiele für Bezugssysteme sind u. a. das Lexile Framework von MetaMetrics, ATOS von Renaissance Learning, Degrees of Reading Power (DRP) von Questar Assessment, Flesch-Kincaid (Public Domain), Reading Maturity von Pearson Education, SourceRater von Educational Testing Service, Easability Indicator von Coh-Metrix und die Oxford Reading Tree Levels von Oxford University Press."@de.
+alignment:teaches dct:source "Based on Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000869#Teaches."@en-us,
+                             "Basierend auf den Common Education Data Standards (CEDS): https://ceds.ed.gov/element/000869#Teaches"@de;
+                  a skos:Concept;
+                  skos:definition "The learning resource being described may be used to teach the competency being referenced."@en-us,
+                                  "Die beschriebene Lernressource kann für die Förderung der angesprochenen Kompetenz verwendet werden."@de;
+                  skos:inScheme alignment:;
+                  skos:prefLabel "teaches"@en-us,
+                                 "fördert"@de.

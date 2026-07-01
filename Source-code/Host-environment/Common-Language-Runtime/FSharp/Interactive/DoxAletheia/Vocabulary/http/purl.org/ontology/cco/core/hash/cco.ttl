@@ -1,0 +1,253 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ao: <http://purl.org/ontology/ao/core#>.
+@prefix wo: <http://purl.org/ontology/wo/core#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix toby: <http://tobyinkster.co.uk/#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix scovo: <http://purl.org/NET/scovo#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix cog: <http://purl.org/ontology/cco/core#>.
+@prefix wlo: <http://purl.org/ontology/wo/>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+cog: dc11:creator toby:i,
+                  "Yan Wang",
+                  <http://foaf.me/zazi#me>,
+                  <http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf#me>,
+                  <http://sw.deri.org/~sheila/foaf.rdf#me>,
+                  <http://www.johnbreslin.com/foaf/foaf.rdf#me>,
+                  <http://danbri.org/foaf.rdf#danbri>,
+                  "Danica Damljanovic",
+                  "Yi Zeng",
+                  "Zhisheng Huang";
+     dc11:date "2010-09-26T12:16:52+01:00"^^xsd:dateTime;
+     dc11:description "A vocabulary for describing cognitive pattern within contexts, their temporal dynamics and their origins"@en;
+     dc11:title "Cognitive Characteristics Ontology"@en;
+     vann:preferredNamespacePrefix "cco";
+     vann:preferredNamespaceUri "http://purl.org/ontology/cco/core#";
+     a owl:Ontology;
+     owl:imports <http://purl.org/NET/scovo>,
+                 wlo:core,
+                 dcterms:,
+                 dc11:,
+                 vann:,
+                 <http://www.w3.org/2006/time>,
+                 <http://purl.org/NET/c4dm/event.owl>,
+                 <http://www.w3.org/2003/06/sw-vocab-status/ns>,
+                 foaf:,
+                 <http://purl.org/ontology/ao/core>;
+     owl:versionInfo 0.2.
+cog:CharacteristicDynamics a rdfs:Class,
+                             owl:Class;
+                           rdfs:comment "An event concept for describing dynamics of characteristics, e.g. weight changes, periods of interest."@en;
+                           rdfs:isDefinedBy cog:;
+                           rdfs:label "Characteristic Dynamics"@en;
+                           rdfs:subClassOf wo:Weight;
+                           status:term_status "testing"@en.
+cog:CognitiveCharacteristic a owl:Class,
+                              rdfs:Class;
+                            rdfs:comment "A cognitive characteristic object, which also can have weightings and characteristic dynamics etc. for describing a cognitive pattern."@en;
+                            rdfs:isDefinedBy cog:;
+                            rdfs:label "Cognitive Characteristic"@en;
+                            rdfs:subClassOf scovo:Item;
+                            status:term_status "unstable"@en.
+cog:ExplicitMining dc11:description "An explicitly mined cognitive pattern"@en;
+                   dc11:title "Explicit Mining"@en;
+                   a scovo:Dimension;
+                   rdfs:isDefinedBy cog:;
+                   status:term_status "testing"@en.
+cog:ImplicitMining dc11:description "An implicitly mined cognitive pattern"@en;
+                   dc11:title "Implicit Mining"@en;
+                   a scovo:Dimension;
+                   rdfs:isDefinedBy cog:;
+                   status:term_status "testing"@en.
+cog:activity a owl:ObjectProperty,
+               rdf:Property;
+             rdfs:comment "An activity, which is related to a topic of a cognitive charateristic description, e.g. if the topic is football a related activity can be playing or watching."@en;
+             rdfs:domain cog:CognitiveCharacteristic;
+             rdfs:isDefinedBy cog:;
+             rdfs:label "has activity"@en;
+             rdfs:subPropertyOf ao:activity,
+                                event:factor;
+             status:term_status "testing"@en.
+cog:agent a rdf:Property,
+            owl:ObjectProperty;
+          rdfs:comment "A link from a mined cognitive characteristic to the related person"@en;
+          rdfs:domain cog:CognitiveCharacteristic;
+          rdfs:isDefinedBy cog:;
+          rdfs:label "has agent"@en;
+          rdfs:range foaf:Agent;
+          owl:inverseOf cog:habit;
+          status:term_status "testing"@en.
+cog:appear_time a owl:ObjectProperty,
+                  rdf:Property;
+                rdfs:comment "The time when the cognitive pattern appears in a certain kind of scenario."@en;
+                rdfs:domain [owl:unionOf (cog:CognitiveCharacteristic
+                                          cog:CharacteristicDynamics) ; 
+                             a owl:Class],
+                            [owl:unionOf (cog:CognitiveCharacteristic
+                                          cog:CharacteristicDynamics) ; 
+                             a owl:Class];
+                rdfs:isDefinedBy cog:;
+                rdfs:label "has appear time"@en;
+                rdfs:subPropertyOf event:time;
+                status:term_status "testing"@en.
+cog:attention_duration a rdf:Property,
+                         owl:ObjectProperty;
+                       rdfs:comment "An interval of attention for a cognitive pattern."@en;
+                       rdfs:domain cog:CognitiveCharacteristic;
+                       rdfs:isDefinedBy cog:;
+                       rdfs:label "has attention duration"@en;
+                       rdfs:range time:Interval;
+                       rdfs:subPropertyOf scovo:dimension,
+                                          event:time;
+                       status:term_status "testing"@en.
+cog:belief a owl:ObjectProperty,
+             rdf:Property;
+           rdfs:comment "An uncertain relation for competence representation. That means beliefs, persuasions or opinions, which can also be misconceptions."@en;
+           rdfs:isDefinedBy cog:;
+           rdfs:label "has belief"@en;
+           rdfs:subPropertyOf cog:competence;
+           status:term_status "testing"@en.
+cog:characteristic a owl:FunctionalProperty,
+                     rdf:Property;
+                   rdfs:comment "Relates to the applied cognitive characteristic (property), e.g. competence, belief, expertise, skill, interest or setting."@en;
+                   rdfs:domain cog:CognitiveCharacteristic;
+                   rdfs:isDefinedBy cog:;
+                   rdfs:label "has characteristic"@en;
+                   rdfs:range rdf:Property;
+                   status:term_status "testing"@en.
+cog:characteristic_dynamics a owl:ObjectProperty,
+                              rdf:Property;
+                            rdfs:comment "To relate a cognitive characteristic to its temporal dynamics."@en;
+                            rdfs:domain cog:CognitiveCharacteristic;
+                            rdfs:isDefinedBy cog:;
+                            rdfs:label "has characteristic dynamics"@en;
+                            rdfs:range cog:CharacteristicDynamics;
+                            rdfs:subPropertyOf event:sub_event;
+                            status:term_status "testing"@en.
+cog:cognitive_characteristic a rdf:Property,
+                               owl:ObjectProperty;
+                             rdfs:comment "This is the super property to describe cognitive characteristics of the user of the cognitive pattern dimension, e.g. interests, skills, or expertise."@en;
+                             rdfs:domain foaf:Agent;
+                             rdfs:isDefinedBy cog:;
+                             rdfs:label "has cognitive characteristic"@en;
+                             rdfs:range owl:Thing;
+                             owl:propertyChainAxiom (cog:habit
+                                                     cog:topic),
+                                                    (cog:habit
+                                                     cog:topic);
+                             status:term_status "testing"@en.
+cog:competence a owl:ObjectProperty,
+                 rdf:Property;
+               rdfs:comment "The competence to (be able to) do or know something. That means abilities, skills, knowledge, expertise, beliefs etc."@en;
+               rdfs:isDefinedBy cog:;
+               rdfs:label "has competence"@en;
+               rdfs:subPropertyOf cog:cognitive_characteristic;
+               status:term_status "testing"@en.
+cog:evidence a rdf:Property,
+               owl:ObjectProperty;
+             rdfs:comment "A link between a context and evidence supporting the interpretation of habits in a context"@en;
+             rdfs:domain [owl:unionOf (cog:CognitiveCharacteristic
+                                       cog:CharacteristicDynamics) ; 
+                          a owl:Class],
+                         [owl:unionOf (cog:CognitiveCharacteristic
+                                       cog:CharacteristicDynamics) ; 
+                          a owl:Class];
+             rdfs:isDefinedBy cog:;
+             rdfs:label "has evidence"@en;
+             rdfs:subPropertyOf event:factor;
+             status:term_status "unstable"@en.
+cog:expertise a owl:ObjectProperty,
+                rdf:Property;
+              rdfs:comment "The knowledge or expertise in a certain domain or specific topic, e.g. football, programming languages or music."@en;
+              rdfs:isDefinedBy cog:;
+              rdfs:label "has expertise"@en;
+              rdfs:subPropertyOf cog:competence;
+              status:term_status "testing"@en.
+cog:habit a owl:ObjectProperty,
+            rdf:Property;
+          rdfs:comment "A link between an agent and a cognitive characteristic description"@en;
+          rdfs:domain foaf:Agent;
+          rdfs:isDefinedBy cog:;
+          rdfs:label "has habit"@en;
+          rdfs:range cog:CognitiveCharacteristic;
+          status:term_status "unstable"@en.
+cog:interest a owl:ObjectProperty,
+               rdf:Property;
+             rdfs:comment "This property relates a certain area of interest or preference to an agent. That means this agent likes this topic somehow."@en;
+             rdfs:isDefinedBy cog:;
+             rdfs:label "has interest"@en;
+             rdfs:subPropertyOf cog:cognitive_characteristic;
+             owl:equivalentProperty foaf:topic_interest;
+             status:term_status "testing"@en.
+cog:longest_duration a owl:ObjectProperty,
+                       rdf:Property;
+                     rdfs:comment "The longest continuous interval of attention for a cognitive pattern, e.g. for an interest, if it appears in the following years: 1990, 1991, 1995, 1996, 1997, 1998, 2001, then the longest duration is 4 years."@en;
+                     rdfs:isDefinedBy cog:;
+                     rdfs:label "has longest duration"@en;
+                     rdfs:subPropertyOf cog:attention_duration;
+                     status:term_status "testing"@en.
+cog:not_interested_in a rdf:Property,
+                        owl:ObjectProperty;
+                      rdfs:comment "A link between an agent and a topic of no interest to them"@en;
+                      rdfs:domain foaf:Agent;
+                      rdfs:isDefinedBy cog:;
+                      rdfs:label "is not interested in"@en;
+                      rdfs:range owl:Thing;
+                      status:term_status "unstable"@en.
+cog:overall_weight a owl:ObjectProperty,
+                     owl:FunctionalProperty,
+                     rdf:Property;
+                   rdfs:comment "This weight reflects the overall interest in a topic and should be different from the actual weight of a cognitive characteristic."@en;
+                   rdfs:domain cog:CognitiveCharacteristic;
+                   rdfs:isDefinedBy cog:;
+                   rdfs:label "has overall weight"@en;
+                   rdfs:subPropertyOf scovo:dimension,
+                                      wo:weight;
+                   status:term_status "testing"@en.
+cog:setting a owl:ObjectProperty,
+              rdf:Property;
+            rdfs:comment "A certain setting or preference. Often re. a specific environment, e.g. an application."@en;
+            rdfs:isDefinedBy cog:;
+            rdfs:label "has setting"@en;
+            rdfs:subPropertyOf cog:cognitive_characteristic;
+            status:term_status "testing"@en.
+cog:skill a owl:ObjectProperty,
+            rdf:Property;
+          rdfs:comment "The ability or skill to (be able to) do something, e.g. to walk, to play the piano or to work in a team."@en;
+          rdfs:isDefinedBy cog:;
+          rdfs:label "has skill"@en;
+          rdfs:subPropertyOf cog:competence;
+          status:term_status "testing"@en.
+cog:statistical_item a rdf:Property,
+                       owl:ObjectProperty;
+                     rdfs:comment "A link from a cognitive characteristic to statistics about itself"@en;
+                     rdfs:domain cog:CognitiveCharacteristic;
+                     rdfs:isDefinedBy cog:;
+                     rdfs:label "has statistical item"@en;
+                     rdfs:range scovo:Item;
+                     status:term_status "testing"@en.
+cog:topic a owl:ObjectProperty,
+            rdf:Property;
+          rdfs:comment "A topic of the cognitive characteristic."@en;
+          rdfs:domain cog:CognitiveCharacteristic;
+          rdfs:isDefinedBy cog:;
+          rdfs:label "has topic"@en;
+          rdfs:range owl:Thing;
+          rdfs:subPropertyOf dcterms:subject;
+          status:term_status "unstable"@en.
+cog:ultimative_duration a rdf:Property,
+                          owl:ObjectProperty;
+                        rdfs:comment "The overall duration of attention for a cognitive pattern, e.g. for an interest, if it appears in the following years: 1990, 1991, 1995, 1996, 1997, 1998, 2001, then the longest duration is 7 years."@en;
+                        rdfs:isDefinedBy cog:;
+                        rdfs:label "has ultimative duration"@en;
+                        rdfs:subPropertyOf cog:attention_duration;
+                        status:term_status "testing"@en.

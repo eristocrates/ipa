@@ -1,0 +1,540 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix poso: <http://purl.org/poso/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix qudt: <http://qudt.org/schema/qudt/>.
+@prefix qk: <http://qudt.org/vocab/quantitykind/>.
+@prefix ogc: <http://www.opengis.net/def/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix sosa: <http://www.w3.org/ns/sosa/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix ssno: <http://www.w3.org/ns/ssn/>.
+
+dcterms:abstract a owl:AnnotationProperty.
+dcterms:bibliographicCitation a owl:AnnotationProperty.
+dcterms:contributor a owl:AnnotationProperty.
+dcterms:creator a owl:AnnotationProperty.
+dcterms:description a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+dcterms:source a owl:AnnotationProperty.
+dcterms:title a owl:AnnotationProperty.
+bibo:status a owl:AnnotationProperty.
+poso: dcterms:abstract "The positioning system ontology is a vocabulary for describing positioning systems and the techniques these systems use to determine a position. With POSO we aim to provide semantic meaning on how a positioning system is deployed and how results are calculated."@en;
+      dcterms:bibliographicCitation "Maxim Van de Wynckel and Beat Signer, POSO: A Generic Positioning System Ontology";
+      dcterms:contributor "Beat Signer"@en;
+      dcterms:creator "Maxim Van de Wynckel"@en;
+      dcterms:description "This ontology provides the terminologies used for positioning systems.";
+      dcterms:license <http://purl.org/NET/rdflicense/MIT1.0>;
+      dcterms:modified "2022-07-25T00:00:00"^^xsd:dateTime;
+      dcterms:title "Positioning System Ontology"@en;
+      bibo:status "Ontology Specification Draft";
+      vann:preferredNamespacePrefix "poso";
+      vann:preferredNamespaceUri "http://purl.org/poso/"^^xsd:anyURI;
+      schema:image "https://raw.githubusercontent.com/OpenHPS/POSO/main/docs/images/systems_and_procedures.svg";
+      a owl:Ontology;
+      owl:imports ssno:,
+                  <http://www.w3.org/ns/ssn/systems/>;
+      owl:versionIRI <http://purl.org/poso/1.0/>.
+poso:AbsolutePosition a owl:Class;
+                      rdfs:comment "An absolute position describes the position of an entity based on a fixed point in space. Usually this space is the Earth and the position is expressed in latitude and longitude."@en;
+                      rdfs:label "Absolute position"@en;
+                      rdfs:subClassOf poso:Position;
+                      owl:equivalentClass geosparql:Geometry.
+poso:Acceleration qudt:hasQuantityKind qk:Acceleration;
+                  a owl:Class;
+                  rdfs:comment "Acceleration is the (instantaneous) rate of change of velocity."@en;
+                  rdfs:label "Acceleration"@en,
+                             "Versnelling"@nl;
+                  rdfs:subClassOf sosa:ObservableProperty,
+                                  sosa:Result.
+poso:AngularAcceleration qudt:hasQuantityKind qk:AngularAcceleration;
+                         a owl:Class;
+                         rdfs:label "Angular acceleration"@en,
+                                    "Draaiversnelling"@nl;
+                         rdfs:subClassOf poso:Acceleration.
+poso:AngularMovement a owl:Class;
+                     rdfs:comment "Angular movement around a certain origin point."@en;
+                     rdfs:label "Angular movement"@en,
+                                "Draaibeweging"@nl;
+                     rdfs:subClassOf poso:Movement.
+poso:AngularVelocity qudt:hasQuantityKind qk:AngularVelocity;
+                     a owl:Class;
+                     rdfs:comment "Angular velocity is the momentum around a point of origin."@en;
+                     rdfs:label "Angular velocity"@en,
+                                "Draaisnelheid"@nl;
+                     rdfs:subClassOf poso:Velocity.
+poso:Angulation a owl:Class;
+                rdfs:comment "Angulation is a triangulation method to determine a position based on the relative angles to other objects."@en;
+                rdfs:label "Angulation"@en;
+                rdfs:subClassOf poso:Triangulation.
+poso:AuditoryLandmark a owl:Class;
+                      rdfs:comment "A spatial landmark that can be observed by sound."@en;
+                      rdfs:label "Auditory landmark"@en;
+                      rdfs:subClassOf poso:Landmark.
+poso:AxisAngleOrientation a owl:Class;
+                          rdfs:comment "The axis-angle orientation is an orientation representation where the x, y and z values are rotated with a certain angle."@en;
+                          rdfs:label "Axis-angle orientation"@en;
+                          rdfs:subClassOf [owl:onProperty poso:angle ; 
+                                           owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                           a owl:Restriction],
+                                          [owl:onProperty poso:angle ; 
+                                           owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                           a owl:Restriction],
+                                          [owl:onProperty poso:xAxisValue ; 
+                                           owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                           a owl:Restriction],
+                                          [owl:onProperty poso:yAxisValue ; 
+                                           owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                           a owl:Restriction],
+                                          [owl:onProperty poso:zAxisValue ; 
+                                           owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                           a owl:Restriction],
+                                          poso:Orientation.
+poso:CellIdentification a owl:Class;
+                        rdfs:comment "Cell identification is a positioning procedure using the position of one landmark that is within the cell."@en;
+                        rdfs:label "Cell identification"@en;
+                        rdfs:subClassOf poso:PositioningTechnique;
+                        skos:altLabel "Cell Of Origin (COO)"@en;
+                        skos:example "An example of cell identification is using the position of a Bluetooth beacon whenever this beacon has a high signal strength."@en,
+                                     "An example of cell identification is using the position of a QR-code when this code is scanned (and the user is presumably within a short distance)."@en.
+poso:DeadReckoning a owl:Class;
+                   rdfs:comment "Dead reckoning is the Procedure of calculating the current position of a moving FeatureOfInterest by using its previous position and Sensor Observation's indicating its heading and velocity."@en;
+                   rdfs:label "Dead reckoning"@en;
+                   rdfs:subClassOf poso:PositioningTechnique;
+                   skos:altLabel "Deduced reckoning"@en.
+poso:EulerOrientation a owl:Class;
+                      rdfs:label "Euler orientation"@en;
+                      rdfs:subClassOf [owl:onProperty poso:pitch ; 
+                                       owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                       a owl:Restriction],
+                                      [owl:onProperty poso:roll ; 
+                                       owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                       a owl:Restriction],
+                                      [owl:onProperty poso:yaw ; 
+                                       owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                       a owl:Restriction],
+                                      poso:Orientation.
+poso:Fingerprint a owl:Class;
+                 rdfs:comment "A fingerprint is a scene analysis at a particular absolute position."@en;
+                 rdfs:label "Fingerprint"@en;
+                 rdfs:subClassOf sosa:FeatureOfInterest,
+                                 sosa:Result;
+                 owl:equivalentClass [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                      owl:onProperty poso:hasPosition ; 
+                                      owl:onClass poso:AbsolutePosition ; 
+                                      a owl:Restriction].
+poso:Fingerprinting a owl:Class;
+                    rdfs:comment "Fingerprinting is a positioning Procedure where sensor data is collected at a specific position and orientation. During the offline-stage of a positioning system, the significant data features are extracted and stored for that position. In the online-stage, the closest match(es) of the features are determined to predict the position."@en;
+                    rdfs:label "Fingerprinting"@en;
+                    rdfs:subClassOf poso:PositioningTechnique.
+poso:HighLevelFusion a owl:Class;
+                     rdfs:comment "High level sensor fusion is about fusing both objects and their trajectories. We're not only relying on detections, but also on predictions and tracking."@en;
+                     rdfs:isDefinedBy "https://www.thinkautonomous.ai/blog/?p=9-types-of-sensor-fusion-algorithms"^^xsd:anyURI;
+                     rdfs:label "High level sensor fusion"@en;
+                     rdfs:subClassOf poso:SensorFusion;
+                     skos:altLabel "Decision level sensor fusion"@en.
+poso:IndoorDeployment a owl:Class;
+                      rdfs:comment "Describes the spatial deployment of a System in an indoor environment."@en;
+                      rdfs:label "Indoor deployment"@en;
+                      rdfs:subClassOf ssno:Deployment.
+poso:IndoorPositioningSystem a owl:Class;
+                             rdfs:comment "A positioning system that is meant to perform indoor positioning of a feature of interest."@en;
+                             rdfs:label "Indoor positioning system"@en;
+                             rdfs:subClassOf poso:PositioningSystem.
+poso:InertialPositioningSystem a owl:Class;
+                               rdfs:comment "An inertial positioning system is a positioning system employing accelerometers, gyroscopes, and computer as integral components to determine coordinates of points or objects relative to an initial known reference point"@en;
+                               rdfs:isDefinedBy "https://isotc211.geolexica.org/concepts/240/"^^xsd:anyURI;
+                               rdfs:label "Inertial positioning system"@en;
+                               rdfs:subClassOf poso:PositioningSystem.
+poso:IntegratedPositioningSystem a owl:Class;
+                                 rdfs:comment "An integrated positioning system is a positioning system that incorporates multiple positioning technologies."@en;
+                                 rdfs:isDefinedBy "https://isotc211.geolexica.org/concepts/250/"^^xsd:anyURI;
+                                 rdfs:label "Integrated positioning system"@en;
+                                 rdfs:subClassOf [owl:onProperty ssno:implements ; 
+                                                  owl:onClass poso:SensorFusion ; 
+                                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                  a owl:Restriction],
+                                                 poso:PositioningSystem;
+                                 skos:altLabel "Hybrid positioning system"@en.
+poso:Landmark a owl:Class;
+              rdfs:comment "A landmark is a feature with a known position, that can be used to identify the position of an object that has a relative position with this feature."@en;
+              rdfs:label "Landmark"@en;
+              rdfs:subClassOf geosparql:SpatialObject,
+                              sosa:FeatureOfInterest,
+                              sosa:Result.
+poso:Lateration a owl:Class;
+                rdfs:isDefinedBy "https://www.sciencedirect.com/topics/engineering/lateration"^^xsd:anyURI;
+                rdfs:label "Lateration"@en;
+                rdfs:subClassOf poso:Triangulation.
+poso:LinearAcceleration qudt:hasQuantityKind qk:LinearAcceleration;
+                        a owl:Class;
+                        rdfs:label "Linear acceleration"@en;
+                        rdfs:subClassOf poso:Acceleration.
+poso:LinearMovement a owl:Class;
+                    rdfs:comment "Linear movement along a certain axis."@en;
+                    rdfs:label "Lineaire beweging"@nl,
+                               "Linear movement"@en;
+                    rdfs:subClassOf poso:Movement.
+poso:LinearVelocity qudt:hasQuantityKind qk:LinearVelocity;
+                    a owl:Class;
+                    rdfs:comment "Linear velocity is the momentum along one ore more axis."@en;
+                    rdfs:label "Lineaire snelheid"@nl,
+                               "Linear velocity"@en;
+                    rdfs:subClassOf poso:Velocity.
+poso:LocationBasedService a owl:Class;
+                          rdfs:comment "A location based service (LBS) is a service that provides the location of a person or object. It provides this information without the required knowledge of the underlying technologies and algorithms."@en;
+                          rdfs:isDefinedBy "https://isotc211.geolexica.org/concepts/278/"^^xsd:anyURI;
+                          rdfs:label "Location based service"@en;
+                          rdfs:subClassOf ssno:System.
+poso:LowLevelFusion a owl:Class;
+                    rdfs:comment "Low Level Sensor Fusion is about fusing the raw data coming from multiple sensors. For example, we fuse point clouds coming from LiDARs and pixels coming from cameras."@en;
+                    rdfs:isDefinedBy "https://www.thinkautonomous.ai/blog/?p=9-types-of-sensor-fusion-algorithms"^^xsd:anyURI;
+                    rdfs:label "Low level sensor fusion"@en;
+                    rdfs:subClassOf poso:SensorFusion.
+poso:MagneticOdometry a owl:Class;
+                      rdfs:comment "Magnetic field odometry is the procedure of detecting movement by analyizing how the magnetic field is changing from one Observation to another."@en;
+                      rdfs:label "Magnetic odometry"@en;
+                      rdfs:subClassOf poso:Odometry.
+poso:MapOutput a owl:Class;
+               rdfs:label "Map output"@en;
+               rdfs:subClassOf ssno:Output.
+poso:MidLevelFusion a owl:Class;
+                    rdfs:comment "Mid-Level sensor fusion is about fusing the objects detected independently on sensor data."@en;
+                    rdfs:isDefinedBy "https://www.thinkautonomous.ai/blog/?p=9-types-of-sensor-fusion-algorithms"^^xsd:anyURI;
+                    rdfs:label "Mid level sensor fusion"@en;
+                    rdfs:subClassOf poso:SensorFusion.
+poso:Movement a owl:Class;
+              rdfs:comment "Movement stimulus triggering an update of a position."@en;
+              rdfs:label "Beweging"@nl,
+                         "Movement"@en;
+              rdfs:subClassOf ssno:Stimulus.
+poso:Multilateration a owl:Class;
+                     rdfs:comment "Multilateration is the procedure of determining a position using relative distances to other known positions."@en;
+                     rdfs:label "Multilateration"@en;
+                     rdfs:subClassOf poso:Lateration;
+                     skos:altLabel "Hyperbolic positioning"@en,
+                                   "Trilateration"@en.
+poso:Odometry a owl:Class;
+              rdfs:comment "Odometry is the Procedure of calculating the current position of a moving FeatureOfInterest by using its previous position and Sensor Observation's indicating its heading and velocity."@en;
+              rdfs:label "Odometry"@en;
+              rdfs:subClassOf poso:PositioningTechnique.
+poso:OpticalPositioningSystem a owl:Class;
+                              rdfs:comment "An optical positioning system is a positioning system that determines the position of an object by means of the properties of light."@en;
+                              rdfs:isDefinedBy "https://isotc211.geolexica.org/concepts/320/"^^xsd:anyURI;
+                              rdfs:label "Optical positioning system"@en;
+                              rdfs:subClassOf poso:PositioningSystem.
+poso:Orientation a owl:Class;
+                 rdfs:comment "De orientatie van een object in 2D of 3D."@nl,
+                              "The orientation of a feature of interest in 2D or 3D space."@en;
+                 rdfs:label "Orientatie"@nl,
+                            "Orientation"@en;
+                 rdfs:subClassOf sosa:ObservableProperty,
+                                 sosa:Result.
+poso:OutdoorDeployment a owl:Class;
+                       rdfs:comment "Describes the deployment of a System in an outdoor environment."@en;
+                       rdfs:label "Outdoor deployment"@en;
+                       rdfs:subClassOf ssno:Deployment.
+poso:PDR a owl:Class;
+         rdfs:comment "Pedestrian dead reckoning (PDR) is a positioning technique where the object is assumed to be a pedestrian that is walking or running. Using this knowledge, the dead reckoning involves the detection of steps and the step length to more accurately predict the movement."@en;
+         rdfs:label "Pedestrian dead reckoning"@en;
+         rdfs:subClassOf poso:DeadReckoning.
+poso:PolygonalAccuracy a owl:Class;
+                       rdfs:label "Polygonal accuracy"@en;
+                       rdfs:subClassOf <http://www.w3.org/ns/ssn/systems/Accuracy>.
+poso:Position a owl:Class;
+              rdfs:comment "A position indicates where an entity is located."@en;
+              rdfs:label "Positie"@nl,
+                         "Position"@en;
+              rdfs:subClassOf sosa:ObservableProperty,
+                              sosa:Result.
+poso:PositionOutput a owl:Class;
+                    rdfs:label "Position output"@en;
+                    rdfs:subClassOf ssno:Output.
+poso:PositioningPlatform a owl:Class;
+                         rdfs:comment "A positioning platform is a framework, architecture or platform used to develop and host a positioning system."@en;
+                         rdfs:label "Positioning platform"@en;
+                         rdfs:subClassOf sosa:Platform.
+poso:PositioningSystem a owl:Class;
+                       rdfs:comment "A positioning system is a system of instrumental and computational components for determining position."@en;
+                       rdfs:isDefinedBy "https://isotc211.geolexica.org/concepts/349/"^^xsd:anyURI;
+                       rdfs:label "Positioning system"@en;
+                       rdfs:subClassOf [owl:onProperty ssno:hasDeployment ; 
+                                        owl:onClass ssno:Deployment ; 
+                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                        a owl:Restriction],
+                                       ssno:System.
+poso:PositioningTechnique a owl:Class;
+                          rdfs:comment "A positioning technique is a procedure to sample sensor data to an output position."@en;
+                          rdfs:label "Positioning technique"@en;
+                          rdfs:subClassOf sosa:Procedure.
+poso:QuaternionOrientation a owl:Class;
+                           rdfs:label "Quaternion orientation"@en;
+                           rdfs:subClassOf [owl:onProperty poso:scalar ; 
+                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                            a owl:Restriction],
+                                           [owl:onProperty poso:xAxisValue ; 
+                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                            a owl:Restriction],
+                                           [owl:onProperty poso:yAxisValue ; 
+                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                            a owl:Restriction],
+                                           [owl:onProperty poso:zAxisValue ; 
+                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                            a owl:Restriction],
+                                           poso:Orientation.
+poso:RFLandmark a owl:Class;
+                rdfs:comment "A radio frequency landmark is a transmitting landmark that can be observed by its transmitting signals."@en;
+                rdfs:label "RF landmark"@en;
+                rdfs:subClassOf poso:Landmark;
+                skos:example "An RF landmark example is a Bluetooth beacon that sends out a signal. Receivers of this signal can use the known position of this landmark to determine their relative position."@en.
+poso:RadioPropagation a owl:Class;
+                      rdfs:comment "The radio propagation formulas cover the computation of the radio waves through a medium (e.g. air)."@en;
+                      rdfs:isDefinedBy "https://en.wikipedia.org/wiki/Radio_propagation"^^xsd:anyURI;
+                      rdfs:label "Radio propagation"@en;
+                      rdfs:subClassOf sosa:Procedure.
+poso:RelativeAngle a owl:Class;
+                   rdfs:comment "A relative angle is a quantitative angle relative to another feature of interest."@en;
+                   rdfs:label "Relatieve hoek"@nl,
+                              "Relative angle"@en;
+                   rdfs:subClassOf poso:RelativePosition;
+                   skos:example "An example of relative angle is the Angle of Arrival."@en.
+poso:RelativeDistance a owl:Class;
+                      rdfs:comment "A relative distance is a quantitative distance relative to another feature of interest."@en;
+                      rdfs:label "Relatieve afstand"@nl,
+                                 "Relative distance"@en;
+                      rdfs:subClassOf poso:RelativePosition.
+poso:RelativePosition a owl:Class;
+                      rdfs:comment "A relative position is a position of a feature of interest with respect to the positions of other objects that this position is relative to."@en,
+                                   "Een relatieve positie is een positie van een punt, met respect tot de posities van andere objecten die relatief zijn."@nl;
+                      rdfs:isDefinedBy "https://isotc211.geolexica.org/concepts/377/"^^xsd:anyURI;
+                      rdfs:label "Relatieve positie"@nl,
+                                 "Relative position"@en;
+                      rdfs:subClassOf [owl:onProperty poso:isRelativeTo ; 
+                                       owl:onClass sosa:FeatureOfInterest ; 
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                       a owl:Restriction],
+                                      poso:Position.
+poso:RelativeVelocity a owl:Class;
+                      rdfs:comment "A relative velocity is a quantitative velocity relative to another feature of interest."@en;
+                      rdfs:label "Relatieve snelheid"@nl,
+                                 "Relative velocity"@en;
+                      rdfs:subClassOf poso:RelativePosition.
+poso:SLAM a owl:Class;
+          rdfs:comment "Simultaneous localization and mapping (SLAM) is the computational problem of constructing or updating a map of an unknown environment while simultaneously keeping track of an agent's location within it."@en;
+          rdfs:isDefinedBy "https://dbpedia.org/page/Simultaneous_localization_and_mapping"^^xsd:anyURI;
+          rdfs:label "Simultaneous localisation and mapping"@en;
+          rdfs:subClassOf poso:PositioningTechnique.
+poso:SRS a owl:Class;
+         rdfs:comment "An identifiable and observable spatial reference system that represents the System's ability to operate its primary purpose in a specified reference system."@en;
+         rdfs:label "Spatial Reference System"@en;
+         rdfs:subClassOf <http://www.w3.org/ns/ssn/systems/SystemProperty>.
+poso:SatellitePositioningSystem a owl:Class;
+                                rdfs:comment """In this context, satellite positioning implies the use of radio signals transmitted from \"active\" artificial objects orbiting the Earth and received by \"passive\" instruments on or near the Earth's surface to determine position, velocity, and/or attitude of an object."""@en;
+                                rdfs:isDefinedBy "https://isotc211.geolexica.org/concepts/392/"^^xsd:anyURI;
+                                rdfs:label "Satellite positioning system"@en;
+                                rdfs:subClassOf poso:PositioningSystem.
+poso:SensorFusion a owl:Class;
+                  rdfs:comment "Sensor fusion is a procedure where multiple sensor data is combined to obtain a more reliable or accurate result."@en;
+                  rdfs:isDefinedBy "https://en.wikipedia.org/wiki/Sensor_fusion"^^xsd:anyURI;
+                  rdfs:label "Sensor fusion"@en;
+                  rdfs:subClassOf sosa:Procedure.
+poso:TrackedFeature a owl:Class;
+                    rdfs:comment "A feature of interest that is being tracked by a positioning system. This is the feature for which a position is observed."@en;
+                    rdfs:label "Tracked feature"@en;
+                    rdfs:subClassOf [owl:onProperty poso:hasPosition ; 
+                                     owl:onClass poso:Position ; 
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     a owl:Restriction],
+                                    geosparql:SpatialObject,
+                                    sosa:FeatureOfInterest;
+                    skos:example "The phone of a person that is being tracked in an indoor positioning system is the tracked feature."@en.
+poso:Triangulation a owl:Class;
+                   rdfs:comment "Triangulation is the procedure of determining a position using relative angles to a feature of interest with a known position."@en;
+                   rdfs:label "Triangulation"@en;
+                   rdfs:subClassOf poso:PositioningTechnique.
+poso:VSLAM a owl:Class;
+           rdfs:comment "Visual simultaneous localisation and mapping (VSLAM) is a positioning techniques that uses visual imagery to map an environment. Positioning works by detecting features of interest in image frames and comparing how these features move from one frame to another."@en;
+           rdfs:label "Visual simultaneous localisation and mapping"@en;
+           rdfs:subClassOf poso:SLAM.
+poso:Velocity qudt:hasQuantityKind qk:Velocity;
+              a owl:Class;
+              rdfs:comment "Linear or angular velocity of a feature."@en;
+              rdfs:label "Velocity"@en;
+              rdfs:subClassOf sosa:ObservableProperty,
+                              sosa:Result.
+poso:VisualInput a owl:Class;
+                 rdfs:label "Visual input"@en;
+                 rdfs:subClassOf ssno:Input.
+poso:VisualLandmark a owl:Class;
+                    rdfs:comment "A visual landmark is a feature of interest that visually present in the space."@en;
+                    rdfs:label "Visual landmark"@en;
+                    rdfs:subClassOf poso:Landmark.
+poso:VisualOdometry a owl:Class;
+                    rdfs:comment "Visual odometry is the procedure of detecting movement by analyzing how visual features are moving from one Observation image frame to another."@en;
+                    rdfs:label "Visual odometry"@en;
+                    rdfs:subClassOf poso:Odometry.
+poso:angle a owl:ObjectProperty,
+             owl:FunctionalProperty;
+           rdfs:comment "Quantitative anglue result value for axis-angle representation."@en;
+           rdfs:domain sosa:Result;
+           rdfs:label "angle"@en,
+                      "hoek"@nl;
+           rdfs:range rdfs:Class.
+poso:hasAcceleration a owl:ObjectProperty;
+                     rdfs:comment "Property that links a feature of interest to a unique acceleration property related to this feature."@en;
+                     rdfs:domain sosa:FeatureOfInterest;
+                     rdfs:label "has acceleration"@en,
+                                "heeft versnelling"@nl;
+                     rdfs:range poso:Acceleration;
+                     rdfs:subPropertyOf ssno:hasProperty;
+                     owl:inverseOf poso:isAccelerationOf.
+poso:hasAccuracy a owl:ObjectProperty,
+                   owl:FunctionalProperty;
+                 rdfs:comment "The accuracy of an entity."@en;
+                 rdfs:label "has accuracy"@en,
+                            "heeft accuraatheid"@nl;
+                 rdfs:subPropertyOf ssno:hasProperty.
+poso:hasCRS a owl:ObjectProperty;
+            rdfs:label "has coordinate reference system"@en,
+                       "heeft een coördinaten referentiesysteem"@nl;
+            rdfs:subPropertyOf poso:hasSRS.
+poso:hasOrientation a owl:ObjectProperty;
+                    rdfs:comment "Duid de orientatie aan van een object aan."@nl,
+                                 "Indicates the orientation of a feature of interest."@en;
+                    rdfs:domain sosa:FeatureOfInterest;
+                    rdfs:label "has orientation"@en,
+                               "heeft orientatie"@nl;
+                    rdfs:range poso:Orientation;
+                    rdfs:subPropertyOf ssno:hasProperty;
+                    owl:inverseOf poso:isOrientationOf.
+poso:hasPosition a owl:ObjectProperty;
+                 rdfs:comment "Duid de absolute of relatieve positie van een object aan."@nl,
+                              "Indicates the absolute or relative position of a feature of interest."@en;
+                 rdfs:domain sosa:FeatureOfInterest;
+                 rdfs:label "has position"@en,
+                            "heeft positie"@nl;
+                 rdfs:range poso:Position;
+                 rdfs:subPropertyOf ssno:hasProperty;
+                 owl:inverseOf poso:isPositionOf.
+poso:hasRelativePosition a owl:ObjectProperty;
+                         rdfs:label "has relative position"@en,
+                                    "heeft relatieve positie"@nl;
+                         rdfs:range poso:RelativePosition;
+                         rdfs:subPropertyOf poso:hasPosition;
+                         owl:inverseOf poso:isRelativeTo.
+poso:hasSRS qudt:example <http://www.opengis.net/def/crs/OGC/1.3/CRS84>;
+            a owl:ObjectProperty;
+            rdfs:comment "Identifies an entity that has a spatial reference system in order to interpret the result."@en;
+            rdfs:domain owl:Thing;
+            rdfs:label "has spatial reference system"@en,
+                       "heeft een ruimtelijk referentiepunt"@nl.
+poso:hasVelocity a owl:ObjectProperty;
+                 rdfs:comment "Duid de snelheid van een object aan."@nl,
+                              "Indicates the velocity of a feature of interest."@en;
+                 rdfs:domain sosa:FeatureOfInterest;
+                 rdfs:label "has velocity"@en,
+                            "heeft snelheid"@nl;
+                 rdfs:range poso:Velocity;
+                 rdfs:subPropertyOf ssno:hasProperty;
+                 owl:inverseOf poso:isVelocityOf.
+poso:inDeployment vann:preferredNamespaceUri "Identifies an absolute position within a deployment"@en;
+                  a owl:ObjectProperty;
+                  rdfs:domain poso:AbsolutePosition;
+                  rdfs:label "in deployment"@en;
+                  rdfs:range ssno:Deployment.
+poso:isAccelerationOf a owl:ObjectProperty;
+                      rdfs:label "is acceleration of"@en,
+                                 "is versnelling van"@nl;
+                      rdfs:subPropertyOf ssno:isPropertyOf.
+poso:isOrientationOf a owl:ObjectProperty;
+                     rdfs:label "is orientatie van"@nl,
+                                "is orientation of"@en;
+                     rdfs:subPropertyOf ssno:isPropertyOf.
+poso:isPositionOf a owl:ObjectProperty;
+                  rdfs:label "is positie van"@nl,
+                             "is position of"@en;
+                  rdfs:subPropertyOf ssno:isPropertyOf.
+poso:isRelativeTo a owl:ObjectProperty;
+                  rdfs:comment "Indicates a relative position to be relative to another feature of interest."@en;
+                  rdfs:domain poso:RelativePosition;
+                  rdfs:label "is relatief met"@nl,
+                             "is relative to"@en;
+                  rdfs:range sosa:FeatureOfInterest;
+                  skos:example "A person can have a relative distance to another feature of interest. When a feature is moving (i.e. when the geometry changes based on time) the distance remains relative to the feature and not the geometry at a specific point in time."@en.
+poso:isVelocityOf a owl:ObjectProperty;
+                  rdfs:label "is de snelheid van"@nl,
+                             "is velocity of"@en;
+                  rdfs:subPropertyOf ssno:isPropertyOf.
+poso:madeBySystem a owl:ObjectProperty;
+                  rdfs:comment "A relation to a re-usable system that computed the observation."@en;
+                  rdfs:domain sosa:Observation;
+                  rdfs:label "gemaakt door systeem"@nl,
+                             "made by system"@en;
+                  rdfs:range ssno:System.
+poso:observesType a owl:ObjectProperty;
+                  rdfs:comment "The relation between a system and an observable property class to identify that a system observes a specific type of property."@en;
+                  rdfs:domain ssno:System;
+                  rdfs:label "observeert type"@nl,
+                             "observes type"@en;
+                  rdfs:range rdfs:Class;
+                  rdfs:subPropertyOf ssno:forProperty.
+poso:pitch a owl:ObjectProperty,
+             owl:FunctionalProperty;
+           rdfs:comment "Pitch is the rotation around the x-axis with respect to the object the yaw applies to."@en;
+           rdfs:domain poso:EulerOrientation;
+           rdfs:label "pitch"@en;
+           rdfs:range rdfs:Class.
+poso:roll a owl:ObjectProperty,
+            owl:FunctionalProperty;
+          rdfs:comment "Roll is the rotation around the y-axis with respect to the object the roll applies to."@en;
+          rdfs:domain poso:EulerOrientation;
+          rdfs:label "roll"@en;
+          rdfs:range rdfs:Class.
+poso:scalar a owl:ObjectProperty,
+              owl:FunctionalProperty;
+            rdfs:domain sosa:Result;
+            rdfs:label "scalar"@en;
+            rdfs:range rdfs:Class;
+            skos:altLabel "w".
+poso:xAxisValue a owl:ObjectProperty,
+                  owl:FunctionalProperty;
+                rdfs:comment "Quantitative result value along the X-axis of a spatial sensor or result."@en;
+                rdfs:domain sosa:Result;
+                rdfs:label "x-axis value"@en;
+                rdfs:range rdfs:Class.
+poso:yAxisValue a owl:ObjectProperty,
+                  owl:FunctionalProperty;
+                rdfs:comment "Quantitative result value along the Y-axis of a spatial sensor or result."@en;
+                rdfs:domain sosa:Result;
+                rdfs:label "y-axis value"@en;
+                rdfs:range rdfs:Class.
+poso:yaw a owl:ObjectProperty,
+           owl:FunctionalProperty;
+         rdfs:comment "Yaw is the rotation around the z-axis with respect to the object the yaw applies to."@en;
+         rdfs:domain poso:EulerOrientation;
+         rdfs:label "yaw"@en;
+         rdfs:range rdfs:Class.
+poso:zAxisValue a owl:ObjectProperty,
+                  owl:FunctionalProperty;
+                rdfs:comment "Quantitative result value along the Z-axis of a spatial sensor."@en;
+                rdfs:domain sosa:Result;
+                rdfs:label "z-axis value"@en;
+                rdfs:range rdfs:Class.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+qudt:example a owl:AnnotationProperty.
+qudt:hasQuantityKind a owl:AnnotationProperty.
+schema:image a owl:AnnotationProperty.
+geosparql:Geometry a owl:Class.
+geosparql:SpatialObject a owl:Class.
+rdfs:Class a owl:Class.
+skos:altLabel a owl:AnnotationProperty.
+sosa:FeatureOfInterest a owl:Class.
+ssno:System a owl:Class.

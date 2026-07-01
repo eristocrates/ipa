@@ -1,0 +1,203 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix reegle: <http://reegle.info/schema#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix geonames: <http://www.geonames.org/ontology#>.
+
+<http://reegle.info/schema> ccrel:license <http://www.nationalarchives.gov.uk/doc/open-government-licence>;
+                            dcterms:description "A vocabulary describing the clean energy data published on http://data.reegle.info."@en;
+                            dcterms:issued "2011-12-20"^^xsd:date;
+                            dcterms:modified "2012-11-16"^^xsd:date;
+                            dcterms:title "Reegle RDF Schema"@en;
+                            vann:preferredNamespacePrefix "reegle";
+                            vann:preferredNamespaceUri "http://reegle.info/schema#";
+                            a voaf:Vocabulary,
+                              owl:Ontology;
+                            rdfs:comment "Version 1.1: Added vocabulary metadata and missing labels for some properties."@en;
+                            owl:versionInfo 1.1.
+reegle:CountryProfile a owl:Class;
+                      rdfs:label "country profle"@en.
+reegle:ProjectOutput a owl:Class;
+                     rdfs:comment "output summary of a renewable energy & energy efficiency project."@en;
+                     rdfs:label "project output"@en.
+reegle:Sector a owl:Class;
+              rdfs:comment "A sector in the field of renewable energy and energy efficiency."@en;
+              rdfs:label "sector"@en.
+reegle:Specialisation a owl:Class;
+                      rdfs:label "specialisation"@en.
+reegle:Technology a owl:Class;
+                  rdfs:label "technology"@en.
+reegle:activeIn a owl:ObjectProperty;
+                rdfs:comment "defines the countries an organisation is active in"@en;
+                rdfs:label "is active in"@en;
+                rdfs:range geonames:Feature.
+reegle:activities a owl:DatatypeProperty;
+                  rdfs:comment "activities of the organisation in the renewable energy & energy efficiency sector."@en;
+                  rdfs:label "activities"@en;
+                  rdfs:range rdfs:Literal.
+reegle:capacityConcerns a owl:DatatypeProperty;
+                        rdfs:domain reegle:CountryProfile;
+                        rdfs:label "capacity concerns"@en;
+                        rdfs:range rdfs:Literal.
+reegle:competition a owl:DatatypeProperty;
+                   rdfs:domain reegle:CountryProfile;
+                   rdfs:label "competition"@en;
+                   rdfs:range rdfs:Literal.
+reegle:degreeIndependence a owl:DatatypeProperty;
+                          rdfs:domain reegle:CountryProfile;
+                          rdfs:label "degree of independence"@en;
+                          rdfs:range rdfs:Literal.
+reegle:desirability a owl:DatatypeProperty;
+                    rdfs:domain reegle:ProjectOutput;
+                    rdfs:label "desirability"@en;
+                    rdfs:range rdfs:Literal.
+reegle:energyDebates a owl:DatatypeProperty;
+                     rdfs:domain reegle:CountryProfile;
+                     rdfs:label "energy debates"@en;
+                     rdfs:range rdfs:Literal.
+reegle:energyEfficiency a owl:DatatypeProperty;
+                        rdfs:domain reegle:CountryProfile;
+                        rdfs:label "energy efficiency"@en;
+                        rdfs:range rdfs:Literal.
+reegle:energyEfficiencyIndustry a owl:DatatypeProperty;
+                                rdfs:domain reegle:CountryProfile;
+                                rdfs:label "energy efficiency industry"@en;
+                                rdfs:range rdfs:Literal.
+reegle:energyEfficiencyPublic a owl:DatatypeProperty;
+                              rdfs:domain reegle:CountryProfile;
+                              rdfs:label "energy efficiency public"@en;
+                              rdfs:range rdfs:Literal.
+reegle:energyEfficiencyResidantial a owl:DatatypeProperty;
+                                   rdfs:domain reegle:CountryProfile;
+                                   rdfs:label "energy efficiency residential"@en;
+                                   rdfs:range rdfs:Literal.
+reegle:energyEfficiencyTransport a owl:DatatypeProperty;
+                                 rdfs:domain reegle:CountryProfile;
+                                 rdfs:label "energy efficiency transport"@en;
+                                 rdfs:range rdfs:Literal.
+reegle:energyEfficiencyUtilities a owl:DatatypeProperty;
+                                 rdfs:domain reegle:CountryProfile;
+                                 rdfs:label "energy efficiency utilities"@en;
+                                 rdfs:range rdfs:Literal.
+reegle:energyFramework a owl:DatatypeProperty;
+                       rdfs:domain reegle:CountryProfile;
+                       rdfs:label "energy framework"@en;
+                       rdfs:range rdfs:Literal.
+reegle:energyProcedure a owl:DatatypeProperty;
+                       rdfs:domain reegle:CountryProfile;
+                       rdfs:label "energy procedure"@en;
+                       rdfs:range rdfs:Literal.
+reegle:energyRegulationRole a owl:DatatypeProperty;
+                            rdfs:domain reegle:CountryProfile;
+                            rdfs:label "energy regulation role"@en;
+                            rdfs:range rdfs:Literal.
+reegle:energyRegulator a owl:DatatypeProperty;
+                       rdfs:domain reegle:CountryProfile;
+                       rdfs:label "energy regulator"@en;
+                       rdfs:range rdfs:Literal.
+reegle:energyStudies a owl:DatatypeProperty;
+                     rdfs:domain reegle:CountryProfile;
+                     rdfs:label "energy debates"@en;
+                     rdfs:range rdfs:Literal.
+reegle:extendNetwork a owl:DatatypeProperty;
+                     rdfs:domain reegle:CountryProfile;
+                     rdfs:label "extend network"@en;
+                     rdfs:range rdfs:Literal.
+reegle:funded a owl:DatatypeProperty;
+              rdfs:domain reegle:ProjectOutput;
+              rdfs:label "funded"@en;
+              rdfs:range rdfs:Literal.
+reegle:governmentAgencies a owl:DatatypeProperty;
+                          rdfs:domain reegle:CountryProfile;
+                          rdfs:label "government agencies"@en;
+                          rdfs:range rdfs:Literal.
+reegle:governmentRole a owl:DatatypeProperty;
+                      rdfs:domain reegle:CountryProfile;
+                      rdfs:label "role of the government"@en;
+                      rdfs:range rdfs:Literal.
+reegle:mission a owl:DatatypeProperty;
+               rdfs:comment "the declared mission of the organisation."@en;
+               rdfs:label "mission"@en;
+               rdfs:range rdfs:Literal.
+reegle:organisationType a owl:DatatypeProperty;
+                        rdfs:domain reegle:ProjectOutput;
+                        rdfs:label "organisation type"@en;
+                        rdfs:range rdfs:Literal.
+reegle:ownership a owl:DatatypeProperty;
+                 rdfs:domain reegle:CountryProfile;
+                 rdfs:label "ownership"@en;
+                 rdfs:range rdfs:Literal.
+reegle:profile a owl:ObjectProperty;
+               rdfs:label "has country profile"@en;
+               rdfs:range reegle:CountryProfile.
+reegle:projectDescription a owl:DatatypeProperty;
+                          rdfs:domain reegle:ProjectOutput;
+                          rdfs:label "project description"@en;
+                          rdfs:range rdfs:Literal.
+reegle:projectExpertise a owl:DatatypeProperty;
+                        rdfs:domain reegle:ProjectOutput;
+                        rdfs:label "project expertise"@en;
+                        rdfs:range rdfs:Literal.
+reegle:projectTitle a owl:DatatypeProperty;
+                    rdfs:domain reegle:ProjectOutput;
+                    rdfs:label "project title"@en;
+                    rdfs:range rdfs:Literal.
+reegle:referenceNumber a owl:DatatypeProperty;
+                       rdfs:domain reegle:ProjectOutput;
+                       rdfs:label """reference number\""""@en;
+                       rdfs:range <http://www.w3.org/2001/XMLSchema-datatypes#int>.
+reegle:references a owl:DatatypeProperty;
+                  rdfs:domain reegle:CountryProfile;
+                  rdfs:label """references\""""@en;
+                  rdfs:range <http://www.w3.org/2001/XMLSchema-datatypes#int>.
+reegle:regulatoryBarriers a owl:DatatypeProperty;
+                          rdfs:domain reegle:CountryProfile;
+                          rdfs:label "regulatory barriers"@en;
+                          rdfs:range rdfs:Literal.
+reegle:regulatoryFramework a owl:DatatypeProperty;
+                           rdfs:domain reegle:CountryProfile;
+                           rdfs:label "regulatory framework"@en;
+                           rdfs:range rdfs:Literal.
+reegle:regulatoryRoles a owl:DatatypeProperty;
+                       rdfs:domain reegle:CountryProfile;
+                       rdfs:label "regulatory roles"@en;
+                       rdfs:range rdfs:Literal.
+reegle:reliance a owl:DatatypeProperty;
+                rdfs:domain reegle:CountryProfile;
+                rdfs:label "reliance"@en;
+                rdfs:range rdfs:Literal.
+reegle:renewableEnergy a owl:DatatypeProperty;
+                       rdfs:domain reegle:CountryProfile;
+                       rdfs:label "renewable energy"@en;
+                       rdfs:range rdfs:Literal.
+reegle:sector a owl:DatatypeProperty,
+                owl:ObjectProperty;
+              rdfs:comment "The sector an organisation is active in."@en;
+              rdfs:domain reegle:ProjectOutput;
+              rdfs:label "sector"@en,
+                         "in sector"@en;
+              rdfs:range rdfs:Literal,
+                         reegle:Sector.
+reegle:sources a owl:DatatypeProperty;
+               rdfs:domain reegle:CountryProfile;
+               rdfs:label "energy sources"@en;
+               rdfs:range rdfs:Literal.
+reegle:specialisation a owl:ObjectProperty;
+                      rdfs:domain reegle:ProjectOutput;
+                      rdfs:label "specialisation"@en;
+                      rdfs:range reegle:Specialisation.
+reegle:targetAudience a owl:DatatypeProperty;
+                      rdfs:domain reegle:ProjectOutput;
+                      rdfs:label "target audience"@en;
+                      rdfs:range rdfs:Literal.
+reegle:technology a owl:ObjectProperty;
+                  rdfs:comment "the technologies that are related to a project"@en;
+                  rdfs:domain reegle:ProjectOutput;
+                  rdfs:label "technology"@en;
+                  rdfs:range reegle:Technology.

@@ -3,5 +3,6 @@ let $tableName := string($table/@name)
 where 
   $table/parent::element()/@name = "AssetManagement.Storm"
   and
-  fn:starts-with($table/@databaseName, "COMP")
-return  string($table/@name)
+  starts-with($table/@databaseName, "COMP")
+  and $table/column[contains(text/@description,"ilter")]
+return  $table/@name

@@ -1,0 +1,27 @@
+@base <http://eulersharp.sourceforge.net/2003/03swap/bioSKOSSchemes>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix bisko: <http://eulersharp.sourceforge.net/2003/03swap/bioSKOSSchemes#>.
+@prefix bioskos: <http://eulersharp.sourceforge.net/2003/03swap/bioSKOSSchemes#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+
+<http://eulersharp.sourceforge.net/2003/03swap/bioSKOSSchemes> dce:creator "Hans Cools, MD; Agfa Healthcare/Belgium"@en;
+                                                               dce:description "Formal description of SKOS Schemes of biological terminologies/coding systems and their datatypes."@en;
+                                                               dce:format "OWL Full"@en;
+                                                               dce:publisher "Agfa Healthcare/Belgium"@en;
+                                                               dce:title "Biological SKOS Schemes"@en;
+                                                               a owl:Ontology;
+                                                               rdfs:comment "SKOS: Simple Knowledge Organization System."@en.
+bisko:uniProtTaxonomy a skos:ConceptScheme;
+                      rdfs:comment "Taxonomy in UniProt (universal protein resource) of a consortium comprising the European Bioinformatics Institute (EBI), the Swiss Institute of Bioinformatics (SIB), and the Protein Information Resource (PIR). Formerly known as 'New EBI Web Taxonomy (NEWT)'."@en;
+                      rdfs:isDefinedBy bisko:;
+                      rdfs:label "UniProt taxonomy"@en.
+bisko:uniProtTaxonomyDT a rdfs:Datatype;
+                        rdfs:isDefinedBy bisko:;
+                        rdfs:label "UniProt taxonomy datatype"@en.

@@ -1,0 +1,329 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix edac: <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix sio: <http://semanticscience.org/resource/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix lsweb: <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+lsweb:Band a owl:Class.
+lsweb:BandIdentification a owl:Class.
+lsweb:Characteristic a owl:Class.
+lsweb:DataBand a owl:Class.
+lsweb:Entity a owl:Class.
+lsweb:RasterDataset a owl:Class.
+lsweb:WCSDataset a owl:Class.
+lsweb:WCSManifestation a owl:Class.
+lsweb:hasDataBand a owl:ObjectProperty;
+                  rdfs:label "has data band".
+lsweb:hasManifestation a owl:ObjectProperty;
+                       rdfs:label "has manifestation".
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl> ccrel:license "http://creativecommons.org/licenses/by/3.0/"^^xsd:anyURI;
+                                                               <http://protege.stanford.edu/plugins/owl/protege#defaultLanguage> "en";
+                                                               dc11:contributor """Contributors are those that engage in discussions during the development of this ontology (in alphabetical order):
+karl benedict
+luis garnica
+cj grady
+bill hudspeth
+deana pennington
+soren scott
+aimee stewart""";
+                                                               dc11:creator "Natalia Villanueva-Rosales"@en,
+                                                                            "ELSEWeb team"@en,
+                                                                            "http://cybershare.utep.edu"^^xsd:anyURI,
+                                                                            "Nicholas del Rio"@en;
+                                                               dc11:description """The ELSEWeb EDAC ontology describes datasets publised by EDAC. This project provides foundational support for the ELSEWeb project(http://elseweb.cybershare.utep.edu/).
+website: http://elseweb.cybershare.utep.edu/ontologies
+email: nvillanuevarosales@utep.edu
+"""@en;
+                                                               dc11:issued "2014-05-01"^^xsd:date;
+                                                               dc11:rights "free to use,share,modify. modify with attribution [http://creativecommons.org/licenses/by/3.0/].";
+                                                               dc11:title "ELSEWeb EDAC Ontology"@en;
+                                                               dcterms:identifier "elseweb-edac.owl";
+                                                               dcterms:modified "2015-09-24"^^xsd:date;
+                                                               vann:preferredNamespacePrefix "elseweb-edac"@en;
+                                                               vann:preferredNamespaceUri "http://ontology.cybershare.utep.edu/ELSEWeb/";
+                                                               a owl:Ontology;
+                                                               rdfs:isDefinedBy <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl>;
+                                                               owl:imports <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl>;
+                                                               owl:versionIRI <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl>;
+                                                               owl:versionInfo "1.2".
+edac:AggregateMonthly sio:comment "The process of aggregate values in a PRISM dataset over a month.";
+                      a owl:Class;
+                      rdfs:label "aggregate monthly";
+                      rdfs:subClassOf edac:PRISMDatasetProcessing.
+edac:AggregateOverThirtyYears sio:comment "The process of aggregate values in a PRISM dataset over a thirty years.";
+                              a owl:Class;
+                              rdfs:label "aggregate over thirty years";
+                              rdfs:subClassOf edac:PRISMDatasetProcessing.
+edac:AggregateYearly sio:comment "The process of aggregate values in a PRISM dataset over a year.";
+                     a owl:Class;
+                     rdfs:label "aggregate yearly";
+                     rdfs:subClassOf edac:PRISMDatasetProcessing.
+edac:Air sio:comment "Invisible gaseous substance surrounding the earth.";
+         a owl:Class;
+         rdfs:label "air";
+         rdfs:subClassOf edac:AtmosphericFeature.
+edac:Amount a owl:Class;
+            rdfs:comment "A characteristic that can be measured as a quantity.";
+            rdfs:label "amount";
+            rdfs:subClassOf lsweb:Characteristic.
+edac:AtmosphericFeature sio:comment "An entity in the atmosphere that can be observed.";
+                        a owl:Class;
+                        rdfs:label "atmospheric feature";
+                        rdfs:subClassOf lsweb:Entity.
+edac:ConvertASCIIToTIFF sio:comment "A process that involves converting an ASCII file to a TIFF file.";
+                        a owl:Class;
+                        rdfs:label "convert ASCII to TIFF";
+                        rdfs:subClassOf edac:DatasetProcessing.
+edac:ConvertedDataset sio:comment "A raster dataset that was output by a conversion processing.";
+                      a owl:Class;
+                      rdfs:label "converted dataset";
+                      rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:DataBandProcessing a owl:Class;
+                        rdfs:label "databand processing";
+                        rdfs:subClassOf edac:Processing.
+edac:DatasetManipulationSoftware sio:comment " A piece of code used to manipulate a dataset.";
+                                 a owl:Class;
+                                 rdfs:label "dataset manipulation software";
+                                 rdfs:subClassOf edac:Processor.
+edac:DatasetProcessing sio:comment "A process that involves the manipulation of a dataset.";
+                       a owl:Class;
+                       rdfs:label "dataset processing";
+                       rdfs:subClassOf edac:Processing;
+                       owl:equivalentClass [owl:intersectionOf ([owl:someValuesFrom edac:RGISPrepublishedRasterDataset ; 
+                                                                owl:onProperty edac:hadInput ; 
+                                                                a owl:Restriction]
+                                                                [owl:someValuesFrom edac:DatasetManipulationSoftware ; 
+                                                                owl:onProperty edac:wasAssociatedWith ; 
+                                                                a owl:Restriction]) ; 
+                                            a owl:Class].
+edac:DewPointTemperature sio:comment "Temperature at which the water vapor in the air becomes saturated and water droplets begin to form as defined in the Collings English Dictionary.";
+                         a owl:Class;
+                         rdfs:label "dew point temperature";
+                         rdfs:subClassOf edac:Temperature.
+edac:Download sio:comment "Retrieving a dataset from a specific location in the web.";
+              a owl:Class;
+              rdfs:label "download";
+              rdfs:subClassOf edac:DatasetProcessing.
+edac:DownloadedMODISDataset a owl:Class;
+                            rdfs:comment "A MODIS dataset that has been obtained from a URL.";
+                            rdfs:label "downloaded modis dataset";
+                            rdfs:subClassOf edac:MODISDataset.
+edac:DownloadedPRISMDataset sio:comment "A PRISM dataset that has been downloaded from a specific URL.";
+                            a owl:Class;
+                            rdfs:label "downloaded prism dataset";
+                            rdfs:subClassOf edac:PRISMDataset.
+edac:EcologicalCommunity sio:comment "A set of individual entities that can be observed as one entity.";
+                         a owl:Class;
+                         rdfs:label "ecological community";
+                         rdfs:subClassOf lsweb:Entity.
+edac:ExtractAndReproject sio:comment "A dataset process involving extracting a data band and reprojecting a dataset.";
+                         a owl:Class;
+                         rdfs:label "extract and reproject";
+                         rdfs:subClassOf edac:DatasetProcessing;
+                         owl:equivalentClass [owl:someValuesFrom lsweb:Band ; 
+                                              owl:onProperty edac:hadInputBandID ; 
+                                              a owl:Restriction].
+edac:ExtractedDataset a owl:Class;
+                      rdfs:comment "A raster dataset that was output by an extraction processing, such as a payload extraction.";
+                      rdfs:label "extracted dataset";
+                      rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:Index sio:comment "A measurement of a specific characteristic that is commonly used as an indicator.";
+           sio:example "UV index";
+           a owl:Class;
+           rdfs:label "index";
+           rdfs:subClassOf edac:Amount.
+edac:MODIS a owl:NamedIndividual,
+             edac:Sensor.
+edac:MODISDataset sio:comment "A dataset that contains measurements of a MODIS instrument.";
+                  a owl:Class;
+                  rdfs:label "modis dataset";
+                  rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:MODISMeasurement sio:comment "A measurement associated with a MODIS sensor.";
+                      a owl:Class;
+                      rdfs:label "modis measurement";
+                      rdfs:subClassOf edac:Measurement;
+                      owl:equivalentClass [owl:onProperty edac:wasAssociatedWith ; 
+                                           owl:hasValue edac:MODIS ; 
+                                           a owl:Restriction].
+edac:Measurement sio:comment "A characteristic measurement associated with a sensor.";
+                 a owl:Class;
+                 rdfs:label "measurement";
+                 rdfs:subClassOf edac:DataBandProcessing;
+                 owl:equivalentClass [owl:someValuesFrom edac:Sensor ; 
+                                      owl:onProperty edac:wasAssociatedWith ; 
+                                      a owl:Restriction].
+edac:Modelling sio:comment "Creation of a model using measurements of characteristics.";
+               a owl:Class;
+               rdfs:label "modelling";
+               rdfs:subClassOf edac:DataBandProcessing;
+               owl:equivalentClass [owl:someValuesFrom edac:ModellingAgent ; 
+                                    owl:onProperty edac:wasAssociatedWith ; 
+                                    a owl:Restriction].
+edac:ModellingAgent sio:comment "An agent that can generate a model.";
+                    a owl:Class;
+                    rdfs:label "modelling agent";
+                    rdfs:subClassOf edac:Processor.
+edac:Mosaic sio:comment "A dataset processing involving the creation of a mosaic of raster datasets.";
+            a owl:Class;
+            rdfs:label "mosaic";
+            rdfs:subClassOf edac:DatasetProcessing.
+edac:MosaicDataset sio:comment "A raster dataset that is part of a mosaic dataset.";
+                   a owl:Class;
+                   rdfs:label "mosaic dataset";
+                   rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:PRISM a owl:NamedIndividual.
+edac:PRISMDataset sio:comment "A dataset that provides estimates of three basic climate elements: precipitation, temperature (min and max) and dew point.";
+                  a owl:Class;
+                  rdfs:label "prism dataset";
+                  rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:PRISMDatasetProcessing sio:comment "The process of manipulating a PRISM dataset.";
+                            a owl:Class;
+                            rdfs:label "prism dataset processing";
+                            rdfs:subClassOf edac:DatasetProcessing.
+edac:PRISMModelling sio:comment "The process of creating a PRISM model.";
+                    a owl:Class;
+                    rdfs:label "prism modelling";
+                    rdfs:subClassOf edac:Modelling;
+                    owl:equivalentClass [owl:onProperty edac:wasAssociatedWith ; 
+                                         owl:hasValue edac:PRISM ; 
+                                         a owl:Restriction].
+edac:Precipitation sio:comment "rain, snow or hail that falls to the ground.";
+                   a owl:Class;
+                   rdfs:label "precipitation";
+                   rdfs:subClassOf edac:TerrestrialFeature.
+edac:Processing sio:comment "A set of steps to process a dataset.";
+                a owl:Class;
+                rdfs:label "processing".
+edac:Processor sio:comment "An agent that will execute some process over a dataset.";
+               a owl:Class;
+               rdfs:label "processor";
+               owl:equivalentClass [owl:someValuesFrom rdfs:Literal ; 
+                                    owl:onProperty edac:hasProcessorName ; 
+                                    a owl:Restriction].
+edac:Publish sio:comment "The process of publishing a dataset over a Web service.";
+             a owl:Class;
+             rdfs:label "publish";
+             rdfs:subClassOf edac:DatasetProcessing.
+edac:PublishedMODISDataset sio:comment "A MODIS dataset that is available for retrieval through a RGIS WCS service.";
+                           a owl:Class;
+                           rdfs:label "published modis dataset";
+                           rdfs:subClassOf edac:RGISWCSDataset.
+edac:PublishedPRISMDataset sio:comment "A PRISM dataset that is available for retrieval through a RGIS WCS service.";
+                           a owl:Class;
+                           rdfs:label "published prism dataset";
+                           rdfs:subClassOf edac:RGISWCSDataset.
+edac:RGISDataBand sio:comment "A databand that is contained in an RGIS dataset.";
+                  a owl:Class;
+                  rdfs:label "rgis data band";
+                  rdfs:subClassOf lsweb:DataBand;
+                  owl:equivalentClass [owl:unionOf ([owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                    owl:onProperty edac:wasMeasuredBy ; 
+                                                    owl:onClass edac:Measurement ; 
+                                                    a owl:Restriction]
+                                                    [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                    owl:onProperty edac:wasModelledBy ; 
+                                                    owl:onClass edac:Modelling ; 
+                                                    a owl:Restriction]) ; 
+                                       a owl:Class].
+edac:RGISPrepublishedRasterDataset sio:comment "A raster dataset that cotians an RGIS databand obtained by some dataset processing.";
+                                   a owl:Class;
+                                   rdfs:label "rgis prepublished raster dataset";
+                                   rdfs:subClassOf lsweb:RasterDataset;
+                                   owl:equivalentClass [owl:intersectionOf ([owl:someValuesFrom edac:RGISDataBand ; 
+                                                                            owl:onProperty lsweb:hasDataBand ; 
+                                                                            a owl:Restriction]
+                                                                            [owl:someValuesFrom edac:DatasetProcessing ; 
+                                                                            owl:onProperty edac:wasOutputBy ; 
+                                                                            a owl:Restriction]) ; 
+                                                        a owl:Class].
+edac:RGISWCSDataset sio:comment "A dataset that has been output from a RGIS WCS service manifestation.";
+                    a owl:Class;
+                    rdfs:label "rgis wcs dataset";
+                    rdfs:subClassOf lsweb:WCSDataset;
+                    owl:equivalentClass [owl:intersectionOf ([owl:someValuesFrom edac:RGISWCSManifestation ; 
+                                                             owl:onProperty lsweb:hasManifestation ; 
+                                                             a owl:Restriction]
+                                                             [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                             owl:onProperty edac:wasPublishedBy ; 
+                                                             owl:onClass edac:Publish ; 
+                                                             a owl:Restriction]) ; 
+                                         a owl:Class].
+edac:RGISWCSManifestation a owl:Class;
+                          rdfs:label "rgis wcs manifestation";
+                          rdfs:subClassOf lsweb:WCSManifestation;
+                          owl:equivalentClass [owl:someValuesFrom rdfs:Literal ; 
+                                               owl:onProperty edac:hasJSONCapabilitiesDigestURL ; 
+                                               a owl:Restriction].
+edac:Reproject sio:comment "The process of reprojecting over a dataset.";
+               a owl:Class;
+               rdfs:label "reproject";
+               rdfs:subClassOf edac:DatasetProcessing.
+edac:ReprojectedDataset sio:comment "A dataset that has been obtained from a reprojection processing.";
+                        a owl:Class;
+                        rdfs:label "reprojected dataset";
+                        rdfs:subClassOf edac:RGISPrepublishedRasterDataset.
+edac:Sensor sio:comment "An agent that can capture a measurement of a characteristic of an entity.";
+            sio:example "MODIS";
+            a owl:Class;
+            rdfs:label "sensor";
+            rdfs:subClassOf edac:Processor.
+edac:SurfaceLayer a owl:Class;
+                  rdfs:label "surface layer";
+                  rdfs:subClassOf edac:TerrestrialFeature.
+edac:Temperature sio:comment "A measurement of hot or cold.";
+                 a owl:Class;
+                 rdfs:label "temperature";
+                 rdfs:subClassOf lsweb:Characteristic.
+edac:TerrestrialFeature sio:comment "An entity that is situated the earth.";
+                        a owl:Class;
+                        rdfs:label "terrestrial feature";
+                        rdfs:subClassOf lsweb:Entity.
+edac:Vegetation sio:comment "Group of plants observed collectively in a particulare area or habitat.";
+                a owl:Class;
+                rdfs:label "vegetation";
+                rdfs:subClassOf edac:EcologicalCommunity.
+edac:hadInput a owl:ObjectProperty;
+              rdfs:domain edac:DatasetProcessing;
+              rdfs:label "had input";
+              rdfs:range edac:RGISPrepublishedRasterDataset.
+edac:hadInputBandID a owl:ObjectProperty;
+                    rdfs:domain edac:ExtractAndReproject;
+                    rdfs:label "had input band id";
+                    rdfs:range lsweb:BandIdentification.
+edac:hasJSONCapabilitiesDigestURL a owl:DatatypeProperty;
+                                  rdfs:domain edac:RGISWCSManifestation;
+                                  rdfs:label "has json capabilities digest url";
+                                  rdfs:range rdfs:Literal.
+edac:hasProcessorName a owl:DatatypeProperty;
+                      rdfs:domain edac:Processor;
+                      rdfs:label "has processor name";
+                      rdfs:range rdfs:Literal.
+edac:wasAssociatedWith a owl:ObjectProperty;
+                       rdfs:domain edac:Processing;
+                       rdfs:label "was associated with";
+                       rdfs:range edac:Processor.
+edac:wasMeasuredBy a owl:ObjectProperty;
+                   rdfs:domain edac:RGISDataBand;
+                   rdfs:label "was measured by";
+                   rdfs:range edac:MODISMeasurement.
+edac:wasModelledBy a owl:ObjectProperty;
+                   rdfs:domain edac:RGISDataBand;
+                   rdfs:label "was modelled by";
+                   rdfs:range edac:PRISMModelling.
+edac:wasOutputBy a owl:ObjectProperty;
+                 rdfs:domain edac:RGISPrepublishedRasterDataset;
+                 rdfs:label "was output by";
+                 rdfs:range edac:DatasetProcessing.
+edac:wasPublishedBy a owl:ObjectProperty;
+                    rdfs:domain edac:RGISWCSDataset;
+                    rdfs:label "was published by";
+                    rdfs:range edac:Publish.
+sio:comment a owl:AnnotationProperty.
+sio:example a owl:AnnotationProperty.

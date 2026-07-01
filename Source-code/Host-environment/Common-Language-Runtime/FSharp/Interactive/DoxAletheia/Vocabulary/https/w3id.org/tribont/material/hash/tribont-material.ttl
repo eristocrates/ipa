@@ -1,0 +1,1334 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix w3id: <https://w3id.org/>.
+@prefix icb: <https://w3id.org/isCharacterisedBy#>.
+@prefix tribont-material: <https://w3id.org/tribont/material#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix tribont-core: <https://w3id.org/tribont/core#>.
+
+_:B03e49f30b99211427fe4ceb03a470e66 a owl:AllDisjointClasses;
+                                    owl:members (tribont-material:Ag
+                                                 tribont-material:Al
+                                                 tribont-material:Al203
+                                                 tribont-material:AlN
+                                                 tribont-material:ArsenicOxide
+                                                 tribont-material:As
+                                                 tribont-material:Au
+                                                 tribont-material:B
+                                                 tribont-material:B203
+                                                 tribont-material:B4C
+                                                 tribont-material:BN
+                                                 tribont-material:BaO
+                                                 tribont-material:Be
+                                                 tribont-material:BeO
+                                                 tribont-material:Bi
+                                                 tribont-material:C
+                                                 tribont-material:Ca
+                                                 tribont-material:CaCO3
+                                                 tribont-material:CaO
+                                                 tribont-material:Cd
+                                                 tribont-material:CdS
+                                                 tribont-material:Ce
+                                                 tribont-material:Co
+                                                 tribont-material:Cr
+                                                 tribont-material:Cr203
+                                                 tribont-material:Cu
+                                                 tribont-material:Dy
+                                                 tribont-material:Er
+                                                 tribont-material:Eu
+                                                 tribont-material:F
+                                                 tribont-material:Fe
+                                                 tribont-material:Fe203
+                                                 tribont-material:Gd
+                                                 tribont-material:Ge
+                                                 tribont-material:H
+                                                 tribont-material:H2O
+                                                 tribont-material:Hf
+                                                 tribont-material:Hg
+                                                 tribont-material:Ho
+                                                 tribont-material:In
+                                                 tribont-material:Ir
+                                                 tribont-material:La
+                                                 tribont-material:Li
+                                                 tribont-material:Li2O
+                                                 tribont-material:Lu
+                                                 tribont-material:Mg
+                                                 tribont-material:Mn
+                                                 tribont-material:Mo
+                                                 tribont-material:N
+                                                 tribont-material:Na2O
+                                                 tribont-material:NaCl
+                                                 tribont-material:Nb
+                                                 tribont-material:Nd
+                                                 tribont-material:Ni
+                                                 tribont-material:O
+                                                 tribont-material:O2
+                                                 tribont-material:Os
+                                                 tribont-material:P
+                                                 tribont-material:Pb
+                                                 tribont-material:PbO
+                                                 tribont-material:Pd
+                                                 tribont-material:Pr
+                                                 tribont-material:Pt
+                                                 tribont-material:Re
+                                                 tribont-material:Rh
+                                                 tribont-material:Ru
+                                                 tribont-material:S
+                                                 tribont-material:Sb
+                                                 tribont-material:Sc
+                                                 tribont-material:Se
+                                                 tribont-material:Si
+                                                 tribont-material:Si3N4
+                                                 tribont-material:SiC
+                                                 tribont-material:SiO2
+                                                 tribont-material:Sm
+                                                 tribont-material:Sn
+                                                 tribont-material:Sr
+                                                 tribont-material:Ta
+                                                 tribont-material:TaC
+                                                 tribont-material:Tb
+                                                 tribont-material:Te
+                                                 tribont-material:ThO2
+                                                 tribont-material:Ti
+                                                 tribont-material:TiB2
+                                                 tribont-material:TiC
+                                                 tribont-material:TiO2
+                                                 tribont-material:Tl
+                                                 tribont-material:Tm
+                                                 tribont-material:U
+                                                 tribont-material:V
+                                                 tribont-material:W
+                                                 tribont-material:WC
+                                                 tribont-material:Y
+                                                 tribont-material:Y203
+                                                 tribont-material:Yb
+                                                 tribont-material:Zn
+                                                 tribont-material:ZnO
+                                                 tribont-material:Zr
+                                                 tribont-material:ZrO2).
+[] owl:cardinality "1"^^xsd:nonNegativeInteger.
+[] owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger.
+_:B3d81af5a30460db139412198c66cb083 a owl:AllDisjointClasses;
+                                    owl:members (icb:Property
+                                                 icb:SubjectOfInterest
+                                                 icb:Unit
+                                                 tribont-core:Company
+                                                 tribont-core:Document
+                                                 tribont-core:Role
+                                                 tribont-core:Standard
+                                                 tribont-material:MaterialApplication
+                                                 tribont-material:MaterialIdentification).
+[] owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger.
+[] owl:cardinality "1"^^xsd:nonNegativeInteger.
+[] owl:cardinality "1"^^xsd:nonNegativeInteger.
+[] owl:maxCardinality "1"^^xsd:nonNegativeInteger.
+_:B84ec810290411be195b91e18eaba5d80 a owl:AllDisjointClasses;
+                                    owl:members (tribont-core:OperationProperty
+                                                 tribont-core:SystemProperty
+                                                 tribont-core:TechnicalProperty
+                                                 tribont-material:ElementConcentration).
+[] owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger.
+[] owl:maxCardinality "1"^^xsd:nonNegativeInteger.
+[] owl:maxCardinality "1"^^xsd:nonNegativeInteger.
+[] owl:cardinality "1"^^xsd:nonNegativeInteger.
+[] owl:cardinality "1"^^xsd:nonNegativeInteger.
+<http://gbol.life/ontology/bibo#status> a owl:AnnotationProperty.
+dcterms:bibliographicCitation a owl:AnnotationProperty.
+dcterms:publisher a owl:AnnotationProperty.
+owl:cardinality a owl:AnnotationProperty.
+owl:maxCardinality a owl:AnnotationProperty.
+owl:maxQualifiedCardinality a owl:AnnotationProperty.
+owl:qualifiedCardinality a owl:AnnotationProperty.
+status:term_status a owl:AnnotationProperty.
+icb:hasUnit a owl:ObjectProperty.
+icb:isCharacterisedBy a owl:ObjectProperty.
+tribont-core:Body a owl:Class;
+                  owl:disjointWith tribont-material:Material.
+tribont-core:name a owl:DatatypeProperty.
+tribont-core:percentage a owl:NamedIndividual.
+tribont-core:shortNam a owl:DatatypeProperty.
+<https://w3id.org/tribont/material> ccrel:license <https://creativecommons.org/licenses/by-nc/4.0/>;
+                                    <http://gbol.life/ontology/bibo#status> "published";
+                                    dcterms:bibliographicCitation "Work in progress";
+                                    dcterms:contributor """Izaskun Fernandez (Tekniker) 
+Domain expert:Iban Quintana (Tekniker) 
+Domain expert:Xana Fernandez (Tekniker)"""@en;
+                                    dcterms:created "2023-06-02";
+                                    dcterms:creator "Patricia Casla (Tekniker)"@en;
+                                    dcterms:description "The goal of this module is to represent the materials  that can be involved in the tribological experiments as part of the tested samples."@en;
+                                    dcterms:publisher "Tekniker";
+                                    dcterms:title "Material module";
+                                    vann:preferredNamespacePrefix "material";
+                                    vann:preferredNamespaceUri "https://w3id.org/tribont/material";
+                                    a owl:Ontology;
+                                    owl:imports <https://w3id.org/tribont/core>;
+                                    owl:versionInfo 1.0.
+tribont-material:AISI_52100 a tribont-material:MaterialStandard,
+                              owl:NamedIndividual;
+                            rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                            rdfs:label "AISI_52100";
+                            status:term_status "Testing".
+tribont-material:ASTM_A295 a tribont-material:MaterialStandard,
+                             owl:NamedIndividual;
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "ASTM_A295";
+                           status:term_status "Testing".
+tribont-material:Ag a owl:Class;
+                    rdfs:comment "Content of Ag in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ag";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Al a owl:Class;
+                    rdfs:comment "Content of Al in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Al";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Al203 a owl:Class;
+                       rdfs:comment "Content of Al203 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Al203";
+                       rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                       status:term_status "Testing".
+tribont-material:AlN a owl:Class;
+                     rdfs:comment "Content of AlN in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "AlN";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:Alluminium-Flake a owl:Class;
+                                  rdfs:comment "Content of Alluminium-Flake in a material.";
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                  rdfs:label "Alluminium-Flake";
+                                  rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                  status:term_status "Testing".
+tribont-material:AlluminiumAlloy a owl:Class;
+                                 rdfs:comment "Alluminium alloy.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "AlluminiumAlloy";
+                                 rdfs:subClassOf tribont-material:MetallicMaterial;
+                                 status:term_status "Testing".
+tribont-material:AntifrictionLubricant a owl:Class;
+                                       rdfs:comment "Content of Anti-friction/wearLubricant in a material.";
+                                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                       rdfs:label "Anti-friction/wearLubricant";
+                                       rdfs:subClassOf tribont-material:OtherElementConcentration;
+                                       status:term_status "Testing".
+tribont-material:Antioxidant a owl:Class;
+                             rdfs:comment "Antioxidant content for something.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                             rdfs:label "Antioxidant";
+                             rdfs:subClassOf [owl:onClass tribont-core:PercentageUnit ; 
+                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                              owl:onProperty icb:hasUnit ; 
+                                              a owl:Restriction],
+                                             [owl:allValuesFrom tribont-core:PercentageUnit ; 
+                                              owl:onProperty icb:hasUnit ; 
+                                              a owl:Restriction],
+                                             tribont-material:OtherElementConcentration;
+                             status:term_status "Testing".
+tribont-material:Aramid-Fiber a owl:Class;
+                              rdfs:comment "Content of Aramid-Fiber in a material.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "Aramid-Fiber";
+                              rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                              status:term_status "Testing".
+tribont-material:ArsenicOxide a owl:Class;
+                              rdfs:comment "Content of ArsenicOxide in a material.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "ArsenicOxide";
+                              rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                              status:term_status "Testing".
+tribont-material:As a owl:Class;
+                    rdfs:comment "Content of As in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "As";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Au a owl:Class;
+                    rdfs:comment "Content of Au in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Au";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:B a owl:Class;
+                   rdfs:comment "Content of B in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "B";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:B203 a owl:Class;
+                      rdfs:comment "Content of B203 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "B203";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      status:term_status "Testing".
+tribont-material:B4C a owl:Class;
+                     rdfs:comment "Content of B4C in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "B4C";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:BN a owl:Class;
+                    rdfs:comment "Content of BN in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "BN";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:BS_970 a tribont-material:MaterialStandard,
+                          owl:NamedIndividual;
+                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                        rdfs:label "BS_970";
+                        status:term_status "Testing".
+tribont-material:BaO a owl:Class;
+                     rdfs:comment "Content of BaO in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "BaO";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:BaSO4 a owl:Class;
+                       rdfs:comment "Content of BaSO4 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "BaSO4";
+                       rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                       status:term_status "Testing".
+tribont-material:Be a owl:Class;
+                    rdfs:comment "Content of Be in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Be";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:BeO a owl:Class;
+                     rdfs:comment "Content of BeO in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "BeO";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:Bi a owl:Class;
+                    rdfs:comment "Content of Biin a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Bi";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:C a owl:Class;
+                   rdfs:comment "Content of C in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "C";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:CAS_Number a tribont-material:MaterialStandard,
+                              owl:NamedIndividual;
+                            rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                            rdfs:label "CAS_Number";
+                            status:term_status "Testing".
+tribont-material:Ca a owl:Class;
+                    rdfs:comment "Content of Ca in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ca";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:CaCO3 a owl:Class;
+                       rdfs:comment "Content of CaCO3 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "CaCO3";
+                       rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                       status:term_status "Testing".
+tribont-material:CaO a owl:Class;
+                     rdfs:comment "Content of CaO in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "CaO";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:CalciumCarbonate-Powder a owl:Class;
+                                         rdfs:comment "Content of CalciumCarbonate-Powder in a material.";
+                                         rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                         rdfs:label "CalciumCarbonate-Powder";
+                                         rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                         status:term_status "Testing".
+tribont-material:Carbon-Fiber a owl:Class;
+                              rdfs:comment "Content of Carbon-Fiber in a material.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "Carbon-Fiber";
+                              rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                              status:term_status "Testing".
+tribont-material:Carbon-Powder a owl:Class;
+                               rdfs:comment "Content of Carbon-Powder in a material.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "Carbon-Powder";
+                               rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                               status:term_status "Testing".
+tribont-material:Cd a owl:Class;
+                    rdfs:comment "Content of Cd in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Cd";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:CdS a owl:Class;
+                     rdfs:comment "Content of CdS in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "CdS";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:Ce a owl:Class;
+                    rdfs:comment "Content of Ce in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ce";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Cellulose a owl:Class;
+                           rdfs:comment "Content of Cellulose in a material.";
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "Cellulose";
+                           rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                           status:term_status "Testing".
+tribont-material:CeramicMaterial a owl:Class;
+                                 rdfs:comment "Ceramic material.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "CeramicMaterial";
+                                 rdfs:subClassOf tribont-material:SolidMaterial;
+                                 status:term_status "Testing".
+tribont-material:ChemicalElementConcentration a owl:Class;
+                                              rdfs:comment "Concentration of chemical element in a material.";
+                                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                              rdfs:label "ChemicalElementConcentration";
+                                              rdfs:subClassOf tribont-material:ElementConcentration;
+                                              status:term_status "Testing".
+tribont-material:Co a owl:Class;
+                    rdfs:comment "Content of Co in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Co";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:CompositeMaterial a owl:Class;
+                                   rdfs:comment "Composite material.";
+                                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                   rdfs:label "CompositeMaterial";
+                                   rdfs:subClassOf tribont-material:SolidMaterial;
+                                   status:term_status "Testing".
+tribont-material:Cr a owl:Class;
+                    rdfs:comment "Content of Cr in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Cr";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Cr203 a owl:Class;
+                       rdfs:comment "Content of Cr203 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Cr203";
+                       rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                       status:term_status "Testing".
+tribont-material:Cu a owl:Class;
+                    rdfs:comment "Content of Cu in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Cu";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:DIN_17230 a tribont-material:MaterialStandard,
+                             owl:NamedIndividual;
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "DIN_17230";
+                           status:term_status "Testing".
+tribont-material:Dy a owl:Class;
+                    rdfs:comment "Content of Dy in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Dy";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:ElastomerThermoplastic a owl:Class;
+                                        rdfs:comment "Elastomer thermoplastic material.";
+                                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                        rdfs:label "ElastomerThermoplastic";
+                                        rdfs:subClassOf tribont-material:PolymerMaterial;
+                                        status:term_status "Testing".
+tribont-material:ElastomerThermoset a owl:Class;
+                                    rdfs:comment "Elastomer thermoset material.";
+                                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                    rdfs:label "ElastomerThermoset";
+                                    rdfs:subClassOf tribont-material:PolymerMaterial;
+                                    status:term_status "Testing".
+tribont-material:ElementConcentration a owl:Class;
+                                      rdfs:comment "Concentration of an specific element in a material.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                      rdfs:label "ElementConcentration";
+                                      rdfs:subClassOf [owl:onClass tribont-material:ElementRole ; 
+                                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                       owl:onProperty tribont-material:hasElementRole ; 
+                                                       a owl:Restriction],
+                                                      [owl:allValuesFrom tribont-material:ElementRole ; 
+                                                       owl:onProperty tribont-material:hasElementRole ; 
+                                                       a owl:Restriction],
+                                                      icb:Property;
+                                      status:term_status "Testing".
+tribont-material:ElementRole a owl:Class;
+                             rdfs:comment "The position or purpose that an element has in a situation or relationship.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                             rdfs:label "ElementRole";
+                             rdfs:subClassOf tribont-core:Role;
+                             status:term_status "Testing".
+tribont-material:Er a owl:Class;
+                    rdfs:comment "Content of Er in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Er";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Eu a owl:Class;
+                    rdfs:comment "Content of Eu in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Eu";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:F a owl:Class;
+                   rdfs:comment "Content of F in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "F";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:Fe a owl:Class;
+                    rdfs:comment "Content of Fe in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Fe";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Fe203 a owl:Class;
+                       rdfs:comment "Content of Fe203 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Fe203";
+                       rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                       status:term_status "Testing".
+tribont-material:FlameRetardant a owl:Class;
+                                rdfs:comment "Content of FlameRetardant in a material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "FlameRetardant";
+                                rdfs:subClassOf tribont-material:OtherElementConcentration;
+                                status:term_status "Testing".
+tribont-material:FluidLubricant a owl:Class;
+                                rdfs:comment "Fluid lubricant material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "FluidLubricant";
+                                rdfs:subClassOf tribont-material:LiquidMaterial;
+                                status:term_status "Testing".
+tribont-material:Gd a owl:Class;
+                    rdfs:comment "Content of Gd in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Gd";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Ge a owl:Class;
+                    rdfs:comment "Content of Ge in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ge";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Glass a owl:Class;
+                       rdfs:comment "Glass material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Glass";
+                       rdfs:subClassOf tribont-material:CeramicMaterial;
+                       status:term_status "Testing".
+tribont-material:Glass-Fiber a owl:Class;
+                             rdfs:comment "Content of Glass-Fiber in a material.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                             rdfs:label "Glass-Fiber";
+                             rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                             status:term_status "Testing".
+tribont-material:Glass-MatFabric a owl:Class;
+                                 rdfs:comment "Content of Glass-MatFabric in a material.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "Glass-MatFabric";
+                                 rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                 status:term_status "Testing".
+tribont-material:Glycol a owl:Class;
+                        rdfs:comment "Content of glycol of something.";
+                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                        rdfs:label "Glycol";
+                        rdfs:subClassOf [owl:onClass tribont-core:ContentUnit ; 
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                         owl:onProperty icb:hasUnit ; 
+                                         a owl:Restriction],
+                                        [owl:allValuesFrom tribont-core:ContentUnit ; 
+                                         owl:onProperty icb:hasUnit ; 
+                                         a owl:Restriction],
+                                        tribont-material:OtherElementConcentration;
+                        status:term_status "Testing".
+tribont-material:Graphite-Powder a owl:Class;
+                                 rdfs:comment "Content of Graphite-Powder in a material.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "Graphite-Powder";
+                                 rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                 status:term_status "Testing".
+tribont-material:Grease a owl:Class;
+                        rdfs:comment "Grease material.";
+                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                        rdfs:label "Grease";
+                        rdfs:subClassOf tribont-material:FluidLubricant;
+                        owl:disjointWith tribont-material:Oil;
+                        status:term_status "Testing".
+tribont-material:H a owl:Class;
+                   rdfs:comment "Content of H in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "H";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:H2O a owl:Class;
+                     rdfs:comment "Content of H2O in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "H2O";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:Hf a owl:Class;
+                    rdfs:comment "Content of Hf in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Hf";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Hg a owl:Class;
+                    rdfs:comment "Content of Hg in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Hg";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:HighAlloySteel a owl:Class;
+                                rdfs:comment "High alloy steel material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "HighAlloySteel";
+                                rdfs:subClassOf tribont-material:Steel;
+                                status:term_status "Testing".
+tribont-material:Ho a owl:Class;
+                    rdfs:comment "Content of Ho in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ho";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:ImpactModifier a owl:Class;
+                                rdfs:comment "Content of ImpactModifier in a material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "ImpactModifier";
+                                rdfs:subClassOf tribont-material:PolymerElementConcentration,
+                                                tribont-material:OtherElementConcentration;
+                                status:term_status "Testing".
+tribont-material:In a owl:Class;
+                    rdfs:comment "Content of In in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "In";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Ir a owl:Class;
+                    rdfs:comment "Content of Ir in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ir";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:JIS_G4805 a tribont-material:MaterialStandard,
+                             owl:NamedIndividual;
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "JIS_G4805";
+                           status:term_status "Testing".
+tribont-material:La a owl:Class;
+                    rdfs:comment "Content of La in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "La";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Li a owl:Class;
+                    rdfs:comment "Content of Li in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Li";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Li2O a owl:Class;
+                      rdfs:comment "Content of Li2O in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "Li2O";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      status:term_status "Testing".
+tribont-material:LiquidMaterial a owl:Class;
+                                rdfs:comment "Liquid material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "LiquidMaterial";
+                                rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (tribont-core:ElectricalProperty
+                                                                                 tribont-core:LiquidPhysicalProperty
+                                                                                 tribont-core:LiquidThermalProperty
+                                                                                 tribont-material:ElementConcentration) ; 
+                                                                    a owl:Class] ; 
+                                                 owl:onProperty icb:isCharacterisedBy ; 
+                                                 a owl:Restriction],
+                                                tribont-material:Material;
+                                owl:disjointWith tribont-material:SolidMaterial;
+                                status:term_status "Testing".
+tribont-material:LowAlloySteel a owl:Class;
+                               rdfs:comment "Low alloy steel material.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "LowAlloySteel";
+                               rdfs:subClassOf tribont-material:Steel;
+                               status:term_status "Testing".
+tribont-material:Lu a owl:Class;
+                    rdfs:comment "Content of Lu in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Lu";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Material a owl:Class;
+                          rdfs:comment "The basic material from which something is made.";
+                          rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                          rdfs:label "Material";
+                          rdfs:subClassOf [owl:allValuesFrom tribont-material:MaterialApplication ; 
+                                           owl:onProperty tribont-material:hasTypicalUse ; 
+                                           a owl:Restriction],
+                                          [owl:allValuesFrom tribont-material:MaterialIdentification ; 
+                                           owl:onProperty tribont-material:hasNaming ; 
+                                           a owl:Restriction],
+                                          [owl:allValuesFrom [owl:unionOf (tribont-core:ElectricalProperty
+                                                                           tribont-core:MechanicalProperty
+                                                                           tribont-core:PhysicalProperty
+                                                                           tribont-core:ThermalProperty
+                                                                           tribont-material:ElementConcentration) ; 
+                                                              a owl:Class] ; 
+                                           owl:onProperty icb:isCharacterisedBy ; 
+                                           a owl:Restriction],
+                                          icb:SubjectOfInterest;
+                          status:term_status "Testing".
+tribont-material:MaterialApplication a owl:Class;
+                                     rdfs:comment "The possible uses of a material.";
+                                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                     rdfs:label "MaterialApplication";
+                                     status:term_status "Testing".
+tribont-material:MaterialIdentification a owl:Class;
+                                        rdfs:comment "Something that identifies a material.";
+                                        rdfs:isDefinedBy "MaterialIdentification";
+                                        rdfs:label "MaterialIdentification";
+                                        rdfs:subClassOf [owl:allValuesFrom xsd:string ; 
+                                                         owl:onProperty tribont-core:shortNam ; 
+                                                         a owl:Restriction],
+                                                        [owl:allValuesFrom xsd:string ; 
+                                                         owl:onProperty tribont-core:name ; 
+                                                         a owl:Restriction],
+                                                        [owl:allValuesFrom xsd:string ; 
+                                                         owl:onProperty tribont-core:longName ; 
+                                                         a owl:Restriction];
+                                        status:term_status "Testing".
+tribont-material:MaterialNaming a owl:Class;
+                                rdfs:comment "A unique name asssigned to a material independently of the manufacturer.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "MaterialNaming";
+                                rdfs:subClassOf [owl:onDataRange xsd:string ; 
+                                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                 owl:onProperty tribont-material:number ; 
+                                                 a owl:Restriction],
+                                                [owl:onDataRange xsd:string ; 
+                                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                 owl:onProperty tribont-core:name ; 
+                                                 a owl:Restriction],
+                                                tribont-material:MaterialIdentification;
+                                owl:disjointWith tribont-material:MaterialTradename;
+                                status:term_status "Testing".
+tribont-material:MaterialStandard a owl:Class;
+                                  rdfs:comment "A document approved by a recognized body that provides common to by fullfiled by a material.";
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                  rdfs:label "MaterialStandard";
+                                  rdfs:subClassOf tribont-core:Standard;
+                                  status:term_status "Testing".
+tribont-material:MaterialTradename a owl:Class;
+                                   rdfs:comment "Commercial name of a material defined by the manufactuer company.";
+                                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                   rdfs:label "MaterialTradename";
+                                   rdfs:subClassOf tribont-material:MaterialIdentification;
+                                   status:term_status "Testing".
+tribont-material:MetallicMaterial a owl:Class;
+                                  rdfs:comment "Metal and alloy material.";
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                  rdfs:label "MetallicMaterial";
+                                  rdfs:subClassOf tribont-material:SolidMaterial;
+                                  status:term_status "Testing".
+tribont-material:Mg a owl:Class;
+                    rdfs:comment "Content of Mg in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Mg";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Mica a owl:Class;
+                      rdfs:comment "Content of Mica in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "Mica";
+                      rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                      status:term_status "Testing".
+tribont-material:Mineral a owl:Class;
+                         rdfs:comment "Content of Mineral in a material.";
+                         rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                         rdfs:label "Mineral";
+                         rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                         status:term_status "Testing".
+tribont-material:Mn a owl:Class;
+                    rdfs:comment "Content of Mn in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Mn";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Mo a owl:Class;
+                    rdfs:comment "Content of Mo in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Mo";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:MoS2 a owl:Class;
+                      rdfs:comment "Content of MoS2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "MoS2";
+                      rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                      status:term_status "Testing".
+tribont-material:N a owl:Class;
+                   rdfs:comment "Content of N in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "N";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:Na2O a owl:Class;
+                      rdfs:comment "Content of Na2O in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "Na2O";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      status:term_status "Testing".
+tribont-material:NaCl a owl:Class;
+                      rdfs:comment "Content of NaCl in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "NaCl";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      status:term_status "Testing".
+tribont-material:Nb a owl:Class;
+                    rdfs:comment "Content of Nb in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Nb";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Nd a owl:Class;
+                    rdfs:comment "Content of Nd in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Nd";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Ni a owl:Class;
+                    rdfs:comment "Content of Ni in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ni";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:NonFerrousMetalInhibitor a owl:Class;
+                                          rdfs:comment "Any Non Ferrous Metal Inhibitors Content.";
+                                          rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                          rdfs:label "NonFerrousMetalInhibitor";
+                                          rdfs:subClassOf [owl:onClass tribont-core:PercentageUnit ; 
+                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                           owl:onProperty icb:hasUnit ; 
+                                                           a owl:Restriction],
+                                                          [owl:allValuesFrom tribont-core:PercentageUnit ; 
+                                                           owl:onProperty icb:hasUnit ; 
+                                                           a owl:Restriction],
+                                                          tribont-material:OtherElementConcentration;
+                                          status:term_status "Testing".
+tribont-material:O a owl:Class;
+                   rdfs:comment "Content of O in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "O";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:O2 a owl:Class;
+                    rdfs:comment "Content of O2 in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "O2";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Oil a owl:Class;
+                     rdfs:comment "Oil material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "Oil";
+                     rdfs:subClassOf tribont-material:FluidLubricant;
+                     status:term_status "Testing".
+tribont-material:Os a owl:Class;
+                    rdfs:comment "Content of Os in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Os";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:OtherElementConcentration a owl:Class;
+                                           rdfs:comment "Concentration  of an additive element in a material.";
+                                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                           rdfs:label "OtherElementConcentration";
+                                           rdfs:subClassOf [owl:hasValue tribont-material:additive ; 
+                                                            owl:onProperty tribont-material:hasElementRole ; 
+                                                            a owl:Restriction],
+                                                           tribont-material:ElementConcentration;
+                                           status:term_status "Testing".
+tribont-material:P a owl:Class;
+                   rdfs:comment "Content of P in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "P";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:PTFE-Lubricant a owl:Class;
+                                rdfs:comment "PTFE-Lubricant material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "PTFE-Lubricant";
+                                rdfs:subClassOf tribont-material:SolidLubricant;
+                                status:term_status "Testing".
+tribont-material:Pb a owl:Class;
+                    rdfs:comment "Content of Pb in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Pb";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:PbO a owl:Class;
+                     rdfs:comment "Content of PbO in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "PbO";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:Pd a owl:Class;
+                    rdfs:comment "Content of Pd in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Pd";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:PlasticThermoplastic a owl:Class;
+                                      rdfs:comment "Plastic thermoplastic material.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                      rdfs:label "PlasticThermoplastic";
+                                      rdfs:subClassOf tribont-material:PolymerMaterial;
+                                      status:term_status "Testing".
+tribont-material:PlasticThermoset a owl:Class;
+                                  rdfs:comment "Plastic Thermoset material.";
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                  rdfs:label "PlasticThermoset";
+                                  rdfs:subClassOf tribont-material:PolymerMaterial;
+                                  status:term_status "Testing".
+tribont-material:PlasticizerOil a owl:Class;
+                                rdfs:comment "Content of Plasticizer/Oil in a material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "Plasticizer/Oil";
+                                rdfs:subClassOf tribont-material:OtherElementConcentration;
+                                status:term_status "Testing".
+tribont-material:PolymerElementConcentration a owl:Class;
+                                             rdfs:comment "Concentration of polymer element in a material.";
+                                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                             rdfs:label "PolymerElementConcentration";
+                                             rdfs:subClassOf tribont-material:ElementConcentration;
+                                             status:term_status "Testing".
+tribont-material:PolymerMaterial a owl:Class;
+                                 rdfs:comment "Any polymer";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "PolymerMaterial";
+                                 rdfs:subClassOf tribont-material:SolidMaterial;
+                                 status:term_status "Testing".
+tribont-material:Pr a owl:Class;
+                    rdfs:comment "Content of Pr in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Pr";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Pt a owl:Class;
+                    rdfs:comment "Content of Pt in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Pt";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Rag-Cotton-Fabric a owl:Class;
+                                   rdfs:comment "Content of Rag-Cotton-Fabric in a material.";
+                                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                   rdfs:label "Rag-Cotton-Fabric";
+                                   rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                   status:term_status "Testing".
+tribont-material:Re a owl:Class;
+                    rdfs:comment "Content of Re in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Re";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Rh a owl:Class;
+                    rdfs:comment "Content of Rh in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Rh";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Ru a owl:Class;
+                    rdfs:comment "Content of Ru in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ru";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:S a owl:Class;
+                   rdfs:comment "Content of S in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "S";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:Sb a owl:Class;
+                    rdfs:comment "Content of Sb in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Sb";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Sc a owl:Class;
+                    rdfs:comment "Content of Sc in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Sc";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Se a owl:Class;
+                    rdfs:comment "Content of Se in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Se";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Si a owl:Class;
+                    rdfs:comment "Content of Si in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Si";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Si3N4 a owl:Class;
+                       rdfs:comment "Content of Si3N4 in a material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Si3N4";
+                       rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                       status:term_status "Testing".
+tribont-material:SiC a owl:Class;
+                     rdfs:comment "Content of SiC in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "SiC";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:SiO2 a owl:Class;
+                      rdfs:comment "Content of SiO2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "SiO2";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      status:term_status "Testing".
+tribont-material:Silica-Fumed a owl:Class;
+                              rdfs:comment "Content of Silica-Fumed in a material.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "Silica-Fumed";
+                              rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                              status:term_status "Testing".
+tribont-material:Silicone-Lubricant a owl:Class;
+                                    rdfs:comment "Silicone-Lubricant material.";
+                                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                    rdfs:label "Silicone-Lubricant";
+                                    rdfs:subClassOf tribont-material:SolidLubricant;
+                                    status:term_status "Testing".
+tribont-material:Sm a owl:Class;
+                    rdfs:comment "Content of Sm  in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Sm";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Sn a owl:Class;
+                    rdfs:comment "Content of Sn in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Sn";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:SolidContaminants a owl:Class;
+                                   rdfs:comment "Solid contaminants.";
+                                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                   rdfs:label "SolidContaminants";
+                                   rdfs:subClassOf [owl:hasValue tribont-core:percentage ; 
+                                                    owl:onProperty icb:hasUnit ; 
+                                                    a owl:Restriction],
+                                                   tribont-material:OtherElementConcentration;
+                                   status:term_status "Testing".
+tribont-material:SolidLubricant a owl:Class;
+                                rdfs:comment "Solid lubricant material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "SolidLubricant";
+                                rdfs:subClassOf tribont-material:SolidMaterial;
+                                status:term_status "Testing".
+tribont-material:SolidMaterial a owl:Class;
+                               rdfs:comment "Solid material.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "SolidMaterial";
+                               rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (tribont-core:ElectricalProperty
+                                                                                tribont-core:MechanicalProperty
+                                                                                tribont-core:SolidPhysicalProperty
+                                                                                tribont-core:SolidThermalProperty
+                                                                                tribont-material:ElementConcentration) ; 
+                                                                   a owl:Class] ; 
+                                                owl:onProperty icb:isCharacterisedBy ; 
+                                                a owl:Restriction],
+                                               tribont-material:Material;
+                               status:term_status "Testing".
+tribont-material:Sr a owl:Class;
+                    rdfs:comment "Content of Sr in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Sr";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:StainlessSteel a owl:Class;
+                                rdfs:comment "Stainless steel material.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "StainlessSteel";
+                                rdfs:subClassOf tribont-material:Steel;
+                                status:term_status "Testing".
+tribont-material:StainlessSteel-Fiber a owl:Class;
+                                      rdfs:comment "Content of StainlessSteel-Fiber in a material.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                      rdfs:label "StainlessSteel-Fiber";
+                                      rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                                      status:term_status "Testing".
+tribont-material:Steel a owl:Class;
+                       rdfs:comment "Steel material.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Steel";
+                       rdfs:subClassOf tribont-material:MetallicMaterial;
+                       status:term_status "Testing".
+tribont-material:SulfateAsh a owl:Class;
+                            rdfs:comment "Sulfate ash .";
+                            rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                            rdfs:label "SulfateAsh";
+                            rdfs:subClassOf [owl:hasValue tribont-core:percentage ; 
+                                             owl:onProperty icb:hasUnit ; 
+                                             a owl:Restriction],
+                                            tribont-material:OtherElementConcentration;
+                            status:term_status "Testing".
+tribont-material:Ta a owl:Class;
+                    rdfs:comment "Content of Ta in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ta";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:TaC a owl:Class;
+                     rdfs:comment "Content of TaC in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "TaC";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:Talc a owl:Class;
+                      rdfs:comment "Content of Talc in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "Talc";
+                      rdfs:subClassOf tribont-material:PolymerElementConcentration;
+                      status:term_status "Testing".
+tribont-material:Tb a owl:Class;
+                    rdfs:comment "Content of Tb in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Tb";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Te a owl:Class;
+                    rdfs:comment "Content of Te in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Te";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:ThO2 a owl:Class;
+                      rdfs:comment "Content of ThO2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "ThO2";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      status:term_status "Testing".
+tribont-material:Ti a owl:Class;
+                    rdfs:comment "Content of Ti in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Ti";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:TiB2 a owl:Class;
+                      rdfs:comment "Content of TiB2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "TiB2";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      status:term_status "Testing".
+tribont-material:TiC a owl:Class;
+                     rdfs:comment "Content of TiC in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "TiC";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:TiO2 a owl:Class;
+                      rdfs:comment "Content of TiO2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "TiO2";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      status:term_status "Testing".
+tribont-material:TitaniumAlloy a owl:Class;
+                               rdfs:comment "Titanium alloy material.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "TitaniumAlloy";
+                               rdfs:subClassOf tribont-material:MetallicMaterial;
+                               status:term_status "Testing".
+tribont-material:Tl a owl:Class;
+                    rdfs:comment "Content of Tl in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Tl";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Tm a owl:Class;
+                    rdfs:comment "Content of Tm in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Tm";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Tolyltriazole a owl:Class;
+                               rdfs:comment "Tolyltriazole concentration";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "Tolyltriazole";
+                               rdfs:subClassOf tribont-material:NonFerrousMetalInhibitor;
+                               status:term_status "Testing".
+tribont-material:ToolSteel a owl:Class;
+                           rdfs:comment "Steel used for tooling.";
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "ToolSteel";
+                           rdfs:subClassOf tribont-material:Steel;
+                           status:term_status "Testing".
+tribont-material:U a owl:Class;
+                   rdfs:comment "Content of U in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "U";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:UVStabilizer a owl:Class;
+                              rdfs:comment "Content of UVStabilizer in a material.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "UVStabilizer";
+                              rdfs:subClassOf tribont-material:OtherElementConcentration;
+                              status:term_status "Testing".
+tribont-material:V a owl:Class;
+                   rdfs:comment "Content of V in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "V";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:W a owl:Class;
+                   rdfs:comment "Content of W in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "W";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:WC a owl:Class;
+                    rdfs:comment "Content of WC in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "WC";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Water a owl:Class;
+                       rdfs:comment "Water content of something.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Water";
+                       rdfs:subClassOf [owl:allValuesFrom tribont-core:ContentUnit ; 
+                                        owl:onProperty icb:hasUnit ; 
+                                        a owl:Restriction],
+                                       tribont-material:OtherElementConcentration;
+                       status:term_status "Testing".
+tribont-material:Y a owl:Class;
+                   rdfs:comment "Content of Y in a material.";
+                   rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                   rdfs:label "Y";
+                   rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                   status:term_status "Testing".
+tribont-material:Y203 a owl:Class;
+                      rdfs:comment "Content of Y203 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "Y203";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      status:term_status "Testing".
+tribont-material:Yb a owl:Class;
+                    rdfs:comment "Content of Yb in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Yb";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:Zn a owl:Class;
+                    rdfs:comment "Content of Zn in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Zn";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:ZnO a owl:Class;
+                     rdfs:comment "Content of ZnO in a material.";
+                     rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                     rdfs:label "ZnO";
+                     rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                     status:term_status "Testing".
+tribont-material:Zr a owl:Class;
+                    rdfs:comment "Content of Zr in a material.";
+                    rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                    rdfs:label "Zr";
+                    rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                    status:term_status "Testing".
+tribont-material:ZrO2 a owl:Class;
+                      rdfs:comment "Content of ZrO2 in a material.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                      rdfs:label "ZrO2";
+                      rdfs:subClassOf tribont-material:ChemicalElementConcentration;
+                      status:term_status "Testing".
+tribont-material:additive a tribont-material:ElementRole,
+                            owl:NamedIndividual;
+                          rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                          rdfs:label "additive";
+                          status:term_status "Testing".
+tribont-material:basic a tribont-material:ElementRole,
+                         owl:NamedIndividual;
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "basic";
+                       status:term_status "Testing".
+tribont-material:filler a tribont-material:ElementRole,
+                          owl:NamedIndividual;
+                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                        rdfs:label "filler";
+                        status:term_status "Testing".
+tribont-material:hasElementRole a owl:ObjectProperty;
+                                rdfs:comment "Relationship between an element and its role,";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                rdfs:label "hasElementRole";
+                                rdfs:range tribont-material:ElementRole;
+                                owl:inverseOf tribont-material:isElementRoleFor;
+                                status:term_status "Testing".
+tribont-material:hasNaming a owl:ObjectProperty;
+                           rdfs:comment "Relationship between something and the name identifying it.";
+                           rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                           rdfs:label "hasNaming";
+                           owl:inverseOf tribont-material:isNamingFor;
+                           status:term_status "Testing".
+tribont-material:hasSupplier a owl:ObjectProperty;
+                             rdfs:comment "Relationship between a company and what it supplies..";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                             rdfs:label "hasSupplier";
+                             owl:inverseOf tribont-material:isSuppliedBy;
+                             status:term_status "Testing".
+tribont-material:hasTypicalUse a owl:ObjectProperty;
+                               rdfs:comment "Relationship between something and  its typical application.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                               rdfs:label "hasTypicalUse";
+                               owl:inverseOf tribont-material:isTypicalUseFor;
+                               status:term_status "Testing".
+tribont-material:isElementRoleFor a owl:ObjectProperty;
+                                  rdfs:comment "Relationship between a role and the  element to which it applies.";
+                                  rdfs:domain tribont-material:ElementRole;
+                                  rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                  rdfs:label "isElementRoleFor";
+                                  status:term_status "Testing".
+tribont-material:isNamingFor a owl:ObjectProperty;
+                             rdfs:comment "Relationship between a name and what it identifies..";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                             rdfs:label "isNamingFor";
+                             status:term_status "Testing".
+tribont-material:isSuppliedBy a owl:ObjectProperty;
+                              rdfs:comment "Relationship between something and the company supplying it.";
+                              rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                              rdfs:label "isSuppliedBy";
+                              status:term_status "Testing".
+tribont-material:isTypicalUseFor a owl:ObjectProperty;
+                                 rdfs:comment "Relationship between an application and what it is usually applied to,";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                                 rdfs:label "isTypicalUseFor";
+                                 status:term_status "Testing".
+tribont-material:number a owl:DatatypeProperty;
+                        rdfs:comment "Defined number for the unique designation of materials.";
+                        rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                        rdfs:label "number";
+                        status:term_status "Testing".

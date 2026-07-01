@@ -1,0 +1,215 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix viaf: <http://viaf.org/viaf/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix library: <http://purl.org/library/>.
+@prefix schema: <http://schema.org/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+dc11:creator a owl:AnnotationProperty.
+dc11:description a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+library: dc11:creator viaf:136069274;
+         dc11:description """These are \"library\" extension terms intended for use with Schema.org""";
+         dc11:title """Experimental \"library\" extension vocabulary for use with Schema.org"""@en;
+         a owl:Ontology.
+library:ArchiveMaterial a owl:Class;
+                        rdfs:isDefinedBy library:;
+                        rdfs:label "ArchiveMaterial"@en;
+                        rdfs:subClassOf schema:CreativeWork;
+                        owl:equivalentClass <http://schema.org/CreativeWork/ArchiveMaterial>;
+                        status:term_status "unstable".
+library:Audiobook a schema:BookFormatType,
+                    owl:NamedIndividual;
+                  rdfs:isDefinedBy library:;
+                  rdfs:label "Audio Book"@en;
+                  status:term_status "unstable".
+library:BlurayDisk a library:Carrier,
+                     owl:NamedIndividual;
+                   rdfs:isDefinedBy library:;
+                   rdfs:label "Bluray Disk"@en;
+                   status:term_status "unstable".
+library:BrailleBook a schema:BookFormatType,
+                      owl:NamedIndividual;
+                    rdfs:isDefinedBy library:;
+                    rdfs:label "Braille Book"@en;
+                    status:term_status "unstable".
+library:CD a library:Carrier,
+             owl:NamedIndividual;
+           rdfs:isDefinedBy library:;
+           rdfs:label "Compact Disk"@en;
+           status:term_status "unstable".
+library:Carrier a owl:Class;
+                rdfs:comment """This class contains a controlled list of \"carriers\" that can be used to contain a schema:CreativeWork."""@en;
+                rdfs:isDefinedBy library:;
+                rdfs:label "Carrier"@en;
+                status:term_status "unstable".
+library:CassetteTape a library:Carrier,
+                       owl:NamedIndividual;
+                     rdfs:isDefinedBy library:;
+                     rdfs:label "Cassette Tape"@en;
+                     status:term_status "unstable".
+library:ComputerFile a owl:Class;
+                     rdfs:isDefinedBy library:;
+                     rdfs:label "Computer File"@en;
+                     rdfs:subClassOf schema:CreativeWork;
+                     owl:equivalentClass <http://schema.org/CreativeWork/ComputerFile>;
+                     status:term_status "unstable".
+library:ContinuallyUpdatedBook a schema:BookFormatType,
+                                 owl:NamedIndividual;
+                               rdfs:isDefinedBy library:;
+                               rdfs:label "Continually Updated Book"@en;
+                               status:term_status "unstable".
+library:DVD a library:Carrier,
+              owl:NamedIndividual;
+            rdfs:isDefinedBy library:;
+            rdfs:label "DVD"@en;
+            status:term_status "unstable".
+library:FilmReel a library:Carrier,
+                   owl:NamedIndividual;
+                 rdfs:isDefinedBy library:;
+                 rdfs:label "Film Reel"@en;
+                 status:term_status "unstable".
+library:Game a owl:Class;
+             rdfs:isDefinedBy library:;
+             rdfs:label "Game"@en;
+             rdfs:subClassOf schema:CreativeWork;
+             owl:equivalentClass <http://schema.org/CreativeWork/Game>;
+             status:term_status "unstable".
+library:Image a owl:Class;
+              rdfs:isDefinedBy library:;
+              rdfs:label "Image"@en;
+              rdfs:subClassOf schema:CreativeWork;
+              owl:equivalentClass <http://schema.org/CreativeWork/Image>;
+              status:term_status "unstable".
+library:InteractiveMultimedia a owl:Class;
+                              rdfs:isDefinedBy library:;
+                              rdfs:label "Interactive Multimedia"@en;
+                              rdfs:subClassOf schema:CreativeWork;
+                              owl:equivalentClass <http://schema.org/CreativeWork/InteractiveMultimedia>;
+                              status:term_status "unstable".
+library:Kit a owl:Class;
+            rdfs:comment "a mixture of various components issued as a unit and intended primarily for instructional purposes. No one component is identifiable as the predominant component of the item. Examples are packages of assorted materials, such as a set of K-12 social studies curriculum material (books, workbooks, guides, activities, etc.), or packages of educational test materials (tests, answer sheets, scoring guides, score charts, interpretative manuals, etc.)."@en;
+            rdfs:isDefinedBy library:;
+            rdfs:label "Kit"@en;
+            rdfs:subClassOf schema:CreativeWork;
+            owl:equivalentClass <http://schema.org/CreativeWork/Kit>;
+            status:term_status "unstable".
+library:LP a library:Carrier,
+             owl:NamedIndividual;
+           rdfs:isDefinedBy library:;
+           rdfs:label "LP"@en;
+           status:term_status "unstable".
+library:LargePrintBook a schema:BookFormatType,
+                         owl:NamedIndividual;
+                       rdfs:isDefinedBy library:;
+                       rdfs:label "Large Print Book"@en;
+                       status:term_status "unstable".
+library:Microform a library:Carrier,
+                    owl:NamedIndividual;
+                  rdfs:isDefinedBy library:;
+                  rdfs:label "Microform"@en;
+                  status:term_status "unstable".
+library:MusicalScore a owl:Class;
+                     rdfs:isDefinedBy library:;
+                     rdfs:label "Musical Score"@en;
+                     rdfs:subClassOf schema:CreativeWork;
+                     owl:equivalentClass <http://schema.org/CreativeWork/MusicalScore>;
+                     status:term_status "unstable".
+library:Newspaper a owl:Class;
+                  rdfs:isDefinedBy library:;
+                  rdfs:label "Newspaper"@en;
+                  rdfs:subClassOf schema:CreativeWork;
+                  owl:equivalentClass <http://schema.org/CreativeWork/Newspaper>;
+                  status:term_status "unstable".
+library:Periodical a owl:Class;
+                   rdfs:isDefinedBy library:;
+                   rdfs:label "Periodical"@en;
+                   rdfs:subClassOf schema:CreativeWork;
+                   owl:equivalentClass <http://schema.org/CreativeWork/Periodical>;
+                   status:term_status "unstable".
+library:Thesis a owl:Class;
+               rdfs:isDefinedBy library:;
+               rdfs:label "Thesis"@en;
+               rdfs:subClassOf schema:Book;
+               owl:equivalentClass <http://schema.org/CreativeWork/Book/Thesis>;
+               status:term_status "unstable".
+library:Toy a owl:Class;
+            rdfs:isDefinedBy library:;
+            rdfs:label "Toy"@en;
+            rdfs:subClassOf schema:CreativeWork;
+            owl:equivalentClass <http://schema.org/CreativeWork/Toy>;
+            status:term_status "unstable".
+library:VHSTape a library:Carrier,
+                  owl:NamedIndividual;
+                rdfs:isDefinedBy library:;
+                rdfs:label "VHS Tape"@en;
+                status:term_status "unstable".
+library:Video a owl:Class;
+              rdfs:isDefinedBy library:;
+              rdfs:label "Video"@en;
+              rdfs:subClassOf schema:CreativeWork;
+              owl:equivalentClass <http://schema.org/CreativeWork/Video>;
+              status:term_status "unstable".
+library:VideoGame a owl:Class;
+                  rdfs:isDefinedBy library:;
+                  rdfs:label "VideoGame"@en;
+                  rdfs:subClassOf library:Game;
+                  owl:equivalentClass <http://schema.org/CreativeWork/VideoGame>;
+                  status:term_status "unstable".
+library:VisualMaterial a owl:Class;
+                       rdfs:isDefinedBy library:;
+                       rdfs:label "Visual Material"@en;
+                       rdfs:subClassOf schema:CreativeWork;
+                       owl:equivalentClass <http://schema.org/CreativeWork/VisualMaterial>;
+                       status:term_status "unstable".
+library:Volume a library:Carrier,
+                 owl:NamedIndividual;
+               rdfs:isDefinedBy library:;
+               rdfs:label "Volume"@en;
+               status:term_status "unstable".
+library:WWW a library:Carrier,
+              owl:NamedIndividual;
+            rdfs:isDefinedBy library:;
+            rdfs:label "World Wide Web"@en;
+            status:term_status "unstable".
+library:WebSite a owl:Class;
+                rdfs:isDefinedBy library:;
+                rdfs:label "Web Site"@en;
+                rdfs:subClassOf schema:CreativeWork;
+                owl:equivalentClass <http://schema.org/CreativeWork/WebSite>;
+                status:term_status "unstable".
+library:hasCarrier a owl:ObjectProperty;
+                   rdfs:domain schema:CreativeWork;
+                   rdfs:isDefinedBy library:;
+                   rdfs:label "has carrier"@en;
+                   rdfs:range library:Carrier;
+                   status:term_status "unstable".
+library:holdingsCount a owl:DatatypeProperty;
+                      rdfs:comment """This is the number of identifiable \"library\" collections that \"hold\" one or more exemplars (aka copies or \"Items\").""";
+                      rdfs:domain schema:CreativeWork;
+                      rdfs:isDefinedBy library:;
+                      rdfs:label "holdings count";
+                      rdfs:range xsd:integer;
+                      status:term_status "unstable".
+library:oclcnum a owl:DatatypeProperty;
+                rdfs:domain schema:CreativeWork;
+                rdfs:isDefinedBy library:;
+                rdfs:label "oclcnum"@en;
+                rdfs:range xsd:integer;
+                status:term_status "unstable".
+library:placeOfPublication a owl:ObjectProperty;
+                           rdfs:comment "This is the place where the schema:CreativeWork was published."@en;
+                           rdfs:domain schema:CreativeWork;
+                           rdfs:isDefinedBy library:;
+                           rdfs:label "place of publication"@en;
+                           rdfs:range schema:Place;
+                           status:term_status "unstable".
+viaf:136069274 a schema:Organization,
+                 owl:NamedIndividual;
+               rdfs:label "OCLC Research"@en.
+status:term_status a owl:AnnotationProperty.

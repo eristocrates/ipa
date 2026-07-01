@@ -5,7 +5,7 @@ CHECKUPDATES = false
 # Paths
 INPUTPATH = D:\Surface\Company\Infor\Download_Center\Product\Operations_and_Regulations\Release\Infor_Public_Sector_11_1_202210\IPS_Reference_Guide_11_1_202210\CodeSamples\Code\ExampleUsingAPI\MakeMeAServiceRequest\Config\Monikers\Monikers_debug.config
 DATAPATH = C:/Repositories/eristocrates/ipa/Language/Xml/basex/Basex122/
-WORKPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/A_to_Z_GIS_Dictionary/
+WORKPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/Specific/Metadata.xml/
 PROJECTPATH = C:/Repositories/eristocrates/ipa/Queries/XQuery/
 
 # Layout
@@ -84,26 +84,26 @@ MAXRESULTS = 1000000
 
 # Search
 SEARCHED = 20
-SEARCHED1 = af
-SEARCHED2 = ComplexAssetInfo
-SEARCHED3 = InfoViewerApplet
-SEARCHED4 = info
-SEARCHED5 = Shape
-SEARCHED6 = >id
-SEARCHED7 = id
-SEARCHED8 = asset management
-SEARCHED9 = \bor\b
-SEARCHED10 = or
-SEARCHED11 = COMPCPLX
-SEARCHED12 = XCor
-SEARCHED13 = XCo
-SEARCHED14 = organization
-SEARCHED15 = complex
-SEARCHED16 = area
-SEARCHED17 = iamete
-SEARCHED18 = assetmanagement.storms
-SEARCHED19 = identitystep
-SEARCHED20 = type"
+SEARCHED1 = AddressQualifier
+SEARCHED2 = af
+SEARCHED3 = ComplexAssetInfo
+SEARCHED4 = InfoViewerApplet
+SEARCHED5 = info
+SEARCHED6 = Shape
+SEARCHED7 = >id
+SEARCHED8 = id
+SEARCHED9 = asset management
+SEARCHED10 = \bor\b
+SEARCHED11 = or
+SEARCHED12 = COMPCPLX
+SEARCHED13 = XCor
+SEARCHED14 = XCo
+SEARCHED15 = organization
+SEARCHED16 = complex
+SEARCHED17 = area
+SEARCHED18 = iamete
+SEARCHED19 = assetmanagement.storms
+SEARCHED20 = identitystep
 REPLACED = 0
 
 # History

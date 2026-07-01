@@ -1,0 +1,180 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix swpm: <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0#>.
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0> dc11:creator swpm:ruizrube;
+                                                        dc11:description """<p>Tradicionalmente durante el modelado de los procesos software, los productos de trabajo son tratados como unidades atómicas, con nombre pero sin estructura, que se generan o modifican durante el transcurso de los proyectos. De hecho, en el lenguaje SPEM no se dispone de mecanismos para detallar la estructura de los productos de trabajo, permitiendo sólo distinguir si se trata de un artefacto (Artifact), un entregable (Deliverable) o un resultado (Outcome) del proyecto.</p>
+
+<p>Los productos de trabajo típicos en los procesos software suelen ser principalmente documentos o código fuente y suelen gestionarse desde herramientas especializadas o genéricas. Por ejemplo, las herramientas de modelado software, como Rational Rose, o los sistemas de control de versiones, como Git, son ejemplos de herramientas especializadas que ofrecen soporte a la gestión de ciertos tipos de productos de trabajo. Sin embargo, otras herramientas genéricas como los sistemas de gestión de contenidos, los sistemas de gestión documental o los sistemas de edición colaborativa o wiki también pueden utilizarse para albergar evidencias de los procesos.</p>
+
+<p>El diseño de modelos para ciertos tipos de productos de trabajo ha sido una aproximación utilizada en diversas metodologías web dirigidas por modelos. Sin embargo, es habitual la necesidad de adaptar y personalizar metodologías conocidas para su aplicación en organizaciones específicas y para situaciones concretas, lo que se conoce como process tailoring. Por ello, se propone un vocabulario que permita definir productos de trabajo flexibles en cuanto a la estructura y tipo de sus artefactos.</p>""";
+                                                        dc11:modified "2013-12-19"^^xsd:date;
+                                                        dc11:title "Software Work Product Model";
+                                                        vann:preferredNamespacePrefix "swpm";
+                                                        vann:preferredNamespaceUri "http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0#";
+                                                        a owl:Ontology;
+                                                        foaf:page <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0.html>.
+swpm:CodeWorkProduct a owl:Class,
+                       rdfs:Class;
+                     rdfs:comment """Clase que representa la base de código de un proyecto
+   software.""";
+                     rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                     rdfs:label "The CodeWorkProduct entity";
+                     rdfs:subClassOf swpm:InternalProduct.
+swpm:DeliverableProduct a owl:Class,
+                          rdfs:Class;
+                        rdfs:comment """Clase abstracta que representa un producto de trabajo
+   desarrollado durante el transcurso de un proyecto software y con
+   valor para terceros.""";
+                        rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                        rdfs:label "The DeliverableProduct entity";
+                        rdfs:subClassOf swpm:WorkProduct.
+swpm:DocumentaryWorkProduct a owl:Class,
+                              rdfs:Class;
+                            rdfs:comment "Clase que representa un documento técnico de trabajo.";
+                            rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                            rdfs:label "The DocumentaryWorkProduct entity";
+                            rdfs:subClassOf swpm:InternalProduct.
+swpm:InternalProduct a owl:Class,
+                       rdfs:Class;
+                     rdfs:comment """Clase abstracta que representa un producto interno al
+   desarrollo o mantenimiento de software. Puede ser de tipo documental
+   o de código.""";
+                     rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                     rdfs:label "The InternalProduct entity";
+                     rdfs:subClassOf swpm:WorkProduct.
+swpm:Model a owl:Class,
+             rdfs:Class;
+           rdfs:comment """Clase que representa un modelo diseñado haciendo uso un
+   lenguaje de modelado.""";
+           rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+           rdfs:label "The Model entity".
+swpm:Project a owl:Class,
+               rdfs:Class;
+             rdfs:comment """Clase contenedora de todos los productos de trabajo de
+   un proyecto.""";
+             rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+             rdfs:label "The Project entity";
+             rdfs:subClassOf doap:Project.
+swpm:Section a owl:Class,
+               rdfs:Class;
+             rdfs:comment """Clase que representa una sección dentro de un
+   determinado documento generado durante el proyecto.""";
+             rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+             rdfs:label "The Section entity".
+swpm:SourcePackage a owl:Class,
+                     rdfs:Class;
+                   rdfs:comment """Clase que representa un determinado paquete de código
+   fuente basado en algún lenguaje de programación.""";
+                   rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                   rdfs:label "The SourcePackage entity".
+swpm:Specification a owl:Class,
+                     rdfs:Class;
+                   rdfs:comment """Clase que representa una especificación textual de algún
+   aspecto del proyecto software.""";
+                   rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                   rdfs:label "The Specification entity".
+swpm:WorkProduct a owl:Class,
+                   rdfs:Class;
+                 rdfs:comment """Clase abstracta y similar al concepto de WorkProduct en
+   SPEM que representa un determinado producto generado o
+   mantenido durante el proceso software. Se distinguen entre productos
+   entregables o internos.""";
+                 rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                 rdfs:label "The WorkProduct entity".
+swpm:description a owl:DatatypeProperty,
+                   rdf:Property;
+                 rdfs:comment "Descripción de un proyecto, producto de trabajo, sección, modelo, especificación o paquete de código fuente";
+                 rdfs:domain swpm:SourcePackage,
+                             swpm:Project,
+                             swpm:WorkProduct,
+                             swpm:Model,
+                             swpm:Section,
+                             swpm:Specification;
+                 rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                 rdfs:label "The description attribute";
+                 rdfs:range xsd:string;
+                 rdfs:subPropertyOf dc11:description.
+swpm:embeddedSections a rdf:Property;
+                      rdfs:comment "Secciones incluidas dentro de una sección de un producto de trabajo documental";
+                      rdfs:domain swpm:Section;
+                      rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                      rdfs:label "The embeddedSections reference";
+                      rdfs:range swpm:Section.
+swpm:embeddedWorkproducts a rdf:Property;
+                          rdfs:comment "Productos de trabajo incluidos dentro de un producto entregable";
+                          rdfs:domain swpm:DeliverableProduct;
+                          rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                          rdfs:label "The embeddedWorkproducts reference";
+                          rdfs:range swpm:WorkProduct.
+swpm:models a rdf:Property;
+            rdfs:comment "Modelos de Ingeniería del Software incluidos dentro de una sección de un producto de trabajo documental";
+            rdfs:domain swpm:Section;
+            rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+            rdfs:label "The models reference";
+            rdfs:range swpm:Model.
+swpm:name a owl:DatatypeProperty,
+            rdf:Property;
+          rdfs:comment "Descripción de un proyecto, producto de trabajo, sección, modelo, especificación o paquete de código fuente";
+          rdfs:domain swpm:SourcePackage,
+                      swpm:Project,
+                      swpm:WorkProduct,
+                      swpm:Section,
+                      swpm:Specification,
+                      swpm:Model;
+          rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+          rdfs:label "The name attribute";
+          rdfs:range xsd:string;
+          rdfs:subPropertyOf dc11:title.
+swpm:order a owl:DatatypeProperty,
+             rdf:Property;
+           rdfs:comment "Orden de la sección dentro de un producto de trabajo de tipo documental";
+           rdfs:domain swpm:Section;
+           rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+           rdfs:label "The order attribute";
+           rdfs:range xsd:int.
+swpm:packages a rdf:Property;
+              rdfs:comment "Paquetes existentes en un producto de trabajo de código fuente";
+              rdfs:domain swpm:CodeWorkProduct;
+              rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+              rdfs:label "The packages reference";
+              rdfs:range swpm:SourcePackage.
+swpm:ruizrube a foaf:Person;
+              foaf:name "Iván Ruiz Rube".
+swpm:sections a rdf:Property;
+              rdfs:comment "Secciones dentro de un producto de trabajo documental";
+              rdfs:domain swpm:DocumentaryWorkProduct;
+              rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+              rdfs:label "The sections reference";
+              rdfs:range swpm:Section.
+swpm:specifications a rdf:Property;
+                    rdfs:comment "Especificaciones, no basadas en modelos, incluidas dentro de una sección de un producto de trabajo documental";
+                    rdfs:domain swpm:Section;
+                    rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                    rdfs:label "The specifications reference";
+                    rdfs:range swpm:Specification.
+swpm:type a rdf:Property;
+          rdfs:comment "Tipo de un modelo, especificación, producto entregable o paquete de código fuente";
+          rdfs:domain swpm:DeliverableProduct,
+                      swpm:Specification,
+                      swpm:SourcePackage,
+                      swpm:Model;
+          rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+          rdfs:label "The type attribute";
+          rdfs:range skos:Concept;
+          rdfs:subPropertyOf dc11:subject.
+swpm:workproducts a rdf:Property;
+                  rdfs:comment "Productos de trabajo asociados a un proyecto";
+                  rdfs:domain swpm:Project;
+                  rdfs:isDefinedBy <http://spi-fm.uca.es/spdef/models/deployment/swpm/1.0>;
+                  rdfs:label "The workproducts reference";
+                  rdfs:range swpm:WorkProduct.

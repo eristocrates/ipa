@@ -1,0 +1,60 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix w3id: <https://w3id.org/>.
+@prefix tddial: <https://w3id.org/todo/tododial#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+ccrel:license a owl:AnnotationProperty.
+dcterms:bibliographicCitation a owl:AnnotationProperty.
+dcterms:contributor a owl:AnnotationProperty.
+dcterms:created a owl:AnnotationProperty.
+dcterms:creator a owl:AnnotationProperty.
+dcterms:description a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+dcterms:title a owl:AnnotationProperty.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+xsd:time a rdfs:Datatype.
+owl:versionIRI a owl:AnnotationProperty.
+status:term_status a owl:AnnotationProperty.
+skos:example a owl:AnnotationProperty.
+<https://w3id.org/todo/tododial> ccrel:license "http://purl.org/NET/rdflicense/cc-by4.0";
+                                 dcterms:contributor "Izaskun Fernández (Tekniker) <mailto:izaskun.fernandez@tekniker.es>";
+                                 dcterms:created "2020-04-21T00:00:00";
+                                 dcterms:creator "Cristina Aceta (Tekniker) <mailto:cristina.aceta@tekniker.es>";
+                                 dcterms:description "Module for dialogue process and system output management.";
+                                 dcterms:issued "";
+                                 dcterms:modified "2021-09-23T10:00:00";
+                                 dcterms:title "TODODial: Dialogue Module for Task-Oriented Dialogue management Ontology (TODO)";
+                                 vann:preferredNamespacePrefix "tododial";
+                                 vann:preferredNamespaceUri "https://w3id.org/todo/tododial";
+                                 a owl:Ontology;
+                                 owl:imports <https://w3id.org/todo/tododm>,
+                                             <https://w3id.org/todo/tododt>;
+                                 owl:priorVersion "";
+                                 owl:versionInfo 2.1.
+tddial:hasDialogueProcessStep a owl:ObjectProperty;
+                              rdfs:comment "Establishes the DialogueProcessStep corresponding to a DialogueTrace.";
+                              rdfs:isDefinedBy "https://w3id.org/todo/tododial#";
+                              rdfs:label "hasDialogueProcessStep";
+                              status:term_status "stable".
+tddial:hasTrace a owl:ObjectProperty;
+                rdfs:comment "Establishes the relationship between an element and its Trace.";
+                rdfs:isDefinedBy "https://w3id.org/todo/tododial#";
+                rdfs:label "hasTrace";
+                owl:inverseOf tddial:isTraceOf;
+                status:term_status "stable".
+tddial:isTraceOf a owl:ObjectProperty;
+                 rdfs:comment "Establishes the relationship between a Trace and the element it refers to.";
+                 rdfs:isDefinedBy "https://w3id.org/todo/tododial#";
+                 rdfs:label "isTraceOf";
+                 status:term_status "stable".

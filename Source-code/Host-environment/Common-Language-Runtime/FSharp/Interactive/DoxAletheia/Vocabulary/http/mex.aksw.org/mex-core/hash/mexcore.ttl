@@ -1,0 +1,254 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix aksw: <http://aksw.org/>.
+@prefix mexcore: <http://mex.aksw.org/mex-core#>.
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+_:Bff6d67c0f075a534d9d5d7d412468c84 a owl:AllDisjointClasses;
+                                    owl:members (mexcore:Test
+                                                 mexcore:Training
+                                                 mexcore:Validation).
+<http://mex.aksw.org/mex-core> dc11:publisher "AKSW Grupo de Pesquisa - Universidade de Leipzig"@pt,
+                                              "AKSW Research Group - Leipzig University"@en;
+                               dcterms:contributor aksw:JensLehmann.html,
+                                                   aksw:DiegoMoussallem.html;
+                               dcterms:created "2014-02-02"^^xsd:date;
+                               dcterms:creator aksw:DiegoEsteves.html;
+                               dcterms:modified "2016-05-01"^^xsd:date;
+                               dcterms:title "MEX Core (mex-core) is an ontology with the goal of describing the core process for machine learning problems (MEX Platform)"@en;
+                               rdf:about "http://mex.aksw.org/mex-doc-core#";
+                               a owl:Ontology;
+                               rdfs:comment "MEX is an RDF vocabulary designed to facilitate interoperability between published machine learning experiments results on the Web. The mex-core layer represents the core information gathered from a basic machine learning experiment design."@en,
+                                            "MEX e um vocabulario modelado para facilitar a interoperabilidade entre resultados de experimentos de aprendizado de maquinas publicados na Web. A camada mex-core representa a principal informacao obtida de um experimento de aprendizado de maquina."@pt;
+                               rdfs:label "Vocabulario MEX (mex-core)"@pt,
+                                          "The MEX Vocabulary (mex-core)"@en;
+                               owl:imports rdfs:,
+                                           <http://www.w3.org/ns/prov-o#>,
+                                           doap:;
+                               owl:versionInfo "1.0.2".
+mexcore:AdaptativeWebSites a owl:Class;
+                           rdfs:subClassOf mexcore:Context.
+mexcore:AffectiveComputing a owl:Class;
+                           rdfs:subClassOf mexcore:Context.
+mexcore:ApplicationContext a owl:Class;
+                           rdfs:comment "describes the context of the experiment, such as NLP, Stock Market Forecast, BioInformatics, Text-Retrieval AND contact informations/publication"@en;
+                           rdfs:subClassOf <http://www.w3.org/ns/prov-o#Person>,
+                                           <http://www.w3.org/ns/prov-o#Organization>,
+                                           <http://www.w3.org/ns/prov-o#Agent>,
+                                           mexcore:DomainConceptSpace.
+mexcore:Bioinformatics a owl:Class;
+                       rdfs:subClassOf mexcore:Context.
+mexcore:Bootstrapping a owl:Class;
+                      rdfs:subClassOf mexcore:SamplingMethod.
+mexcore:BrainMachineInterfaces a owl:Class;
+                               rdfs:subClassOf mexcore:Context.
+mexcore:Cheminformatics a owl:Class;
+                        rdfs:subClassOf mexcore:Context.
+mexcore:ClassifyingDNAsequences a owl:Class;
+                                rdfs:subClassOf mexcore:Context.
+mexcore:ComputationalAdversiting a owl:Class;
+                                 rdfs:subClassOf mexcore:Context.
+mexcore:ComputationalFinance a owl:Class;
+                             rdfs:subClassOf mexcore:Context.
+mexcore:ComputerVision a owl:Class;
+                       rdfs:subClassOf mexcore:Context.
+mexcore:Context a owl:Class;
+                rdfs:subClassOf <http://www.w3.org/ns/prov-o#Entity>,
+                                mexcore:DomainConceptSpace.
+mexcore:CrossValidation a owl:Class;
+                        rdfs:subClassOf mexcore:SamplingMethod.
+mexcore:Dataset dc11:description "Class that provides a structured dataset"@en;
+                a owl:Class;
+                rdfs:subClassOf <http://www.w3.org/ns/prov-o#Entity>,
+                                mexcore:DomainConceptSpace.
+mexcore:DetectingCreditCardFrauds a owl:Class;
+                                  rdfs:subClassOf mexcore:Context.
+mexcore:DomainConceptSpace a owl:Class;
+                           owl:disjointWith mexcore:ValuePartition.
+mexcore:Example a owl:Class;
+                rdfs:subClassOf <http://www.w3.org/ns/prov-o#Entity>.
+mexcore:ExampleCollection a owl:Class;
+                          rdfs:subClassOf <http://www.w3.org/ns/prov-o#Collection>,
+                                          mexcore:DomainConceptSpace.
+mexcore:Execution a owl:Class;
+                  rdfs:subClassOf <http://www.w3.org/ns/prov-o#Activity>,
+                                  mexcore:DomainConceptSpace.
+mexcore:ExecutionOverall a owl:Class;
+                         rdfs:subClassOf mexcore:Execution.
+mexcore:ExecutionSingle a owl:Class;
+                        rdfs:subClassOf mexcore:Execution.
+mexcore:Experiment a owl:Class;
+                   rdfs:subClassOf <http://www.w3.org/ns/prov-o#Entity>,
+                                   mexcore:DomainConceptSpace.
+mexcore:ExperimentConfiguration a owl:Class;
+                                rdfs:subClassOf <http://www.w3.org/ns/prov-o#Activity>,
+                                                mexcore:DomainConceptSpace.
+mexcore:FactPrediction a owl:Class;
+                       rdfs:subClassOf mexcore:Context.
+mexcore:Feature a owl:Class;
+                rdfs:subClassOf <http://www.w3.org/ns/prov-o#Entity>.
+mexcore:FeatureCollection a owl:Class;
+                          rdfs:subClassOf <http://www.w3.org/ns/prov-o#Collection>.
+mexcore:GamePlaying a owl:Class;
+                    rdfs:subClassOf mexcore:Context.
+mexcore:HardwareConfiguration a owl:Class;
+                              rdfs:subClassOf <http://www.w3.org/ns/prov-o#Entity>,
+                                              doap:Version,
+                                              mexcore:DomainConceptSpace.
+mexcore:Holdout a owl:Class;
+                rdfs:subClassOf mexcore:SamplingMethod.
+mexcore:InformationRetrieval a owl:Class;
+                             rdfs:subClassOf mexcore:Context.
+mexcore:InternetFraudDetection a owl:Class;
+                               rdfs:subClassOf mexcore:Context.
+mexcore:LeaveOneOut a owl:Class;
+                    rdfs:subClassOf mexcore:SamplingMethod.
+mexcore:LinkDiscovery a owl:Class;
+                      rdfs:subClassOf mexcore:Context.
+mexcore:MachinePerception a owl:Class;
+                          rdfs:subClassOf mexcore:Context.
+mexcore:MedicalDiagnosis a owl:Class;
+                         rdfs:subClassOf mexcore:Context.
+mexcore:Metaheuristics a owl:Class;
+                       rdfs:subClassOf mexcore:Context.
+mexcore:Model a owl:Class;
+              rdfs:subClassOf <http://www.w3.org/ns/prov-o#Entity>,
+                              mexcore:DomainConceptSpace.
+mexcore:NFoldsCrossValidation a owl:Class;
+                              rdfs:subClassOf mexcore:SamplingMethod.
+mexcore:NaturalLanguageProcessing a owl:Class;
+                                  rdfs:subClassOf mexcore:Context.
+mexcore:ObjectRecognition a owl:Class;
+                          rdfs:subClassOf mexcore:Context.
+mexcore:Optimization a owl:Class;
+                     rdfs:subClassOf mexcore:Context.
+mexcore:Phase a owl:Class;
+              rdfs:subClassOf <http://www.w3.org/ns/prov-o#Entity>,
+                              mexcore:ValuePartition;
+              owl:equivalentClass [owl:unionOf (mexcore:Test
+                                                mexcore:Training
+                                                mexcore:Validation) ; 
+                                   a owl:Class].
+mexcore:RecomenderSystems a owl:Class;
+                          rdfs:subClassOf mexcore:Context.
+mexcore:Robotics a owl:Class;
+                 rdfs:subClassOf mexcore:Context.
+mexcore:SamplingMethod a owl:Class;
+                       rdfs:subClassOf <http://www.w3.org/ns/prov-o#Entity>,
+                                       mexcore:DomainConceptSpace.
+mexcore:SearchEngines a owl:Class;
+                      rdfs:subClassOf mexcore:Context.
+mexcore:SentimentAnalysis a owl:Class;
+                          rdfs:subClassOf mexcore:Context.
+mexcore:SequenceMining a owl:Class;
+                       rdfs:subClassOf mexcore:Context.
+mexcore:SlidingCrossValidation a owl:Class;
+                               rdfs:subClassOf mexcore:SamplingMethod.
+mexcore:SoftwareEngineering a owl:Class;
+                            rdfs:subClassOf mexcore:Context.
+mexcore:SpeechAndHandwritingRecognition a owl:Class;
+                                        rdfs:subClassOf mexcore:Context.
+mexcore:StockMarketAnalysis a owl:Class;
+                            rdfs:subClassOf mexcore:Context.
+mexcore:StructuralHealthMonitoring a owl:Class;
+                                   rdfs:subClassOf mexcore:Context.
+mexcore:SyntacticLanguageProcessing a owl:Class;
+                                    rdfs:subClassOf mexcore:Context.
+mexcore:Test a owl:Class;
+             rdfs:subClassOf mexcore:Phase.
+mexcore:Training a owl:Class;
+                 rdfs:subClassOf mexcore:Phase.
+mexcore:Validation a owl:Class;
+                   rdfs:subClassOf mexcore:Phase.
+mexcore:ValuePartition a owl:Class.
+mexcore:attributeSelectionDescription a owl:DatatypeProperty;
+                                      rdfs:domain mexcore:Experiment;
+                                      rdfs:range xsd:string.
+mexcore:cpu a owl:DatatypeProperty;
+            rdfs:domain mexcore:HardwareConfiguration;
+            rdfs:range xsd:string.
+mexcore:cpuCache a owl:DatatypeProperty;
+                 rdfs:domain mexcore:HardwareConfiguration;
+                 rdfs:range xsd:string.
+mexcore:dataNormalizedDescription a owl:DatatypeProperty;
+                                  rdfs:domain mexcore:Experiment;
+                                  rdfs:range xsd:string.
+mexcore:datasetColumn a owl:DatatypeProperty;
+                      rdfs:domain mexcore:Example;
+                      rdfs:range rdfs:Literal.
+mexcore:datasetRow a owl:DatatypeProperty;
+                   rdfs:domain mexcore:Example;
+                   rdfs:range rdfs:Literal.
+mexcore:endsAt a owl:DatatypeProperty,
+                 owl:ObjectProperty;
+               rdfs:domain mexcore:ExampleCollection;
+               rdfs:range rdfs:Literal.
+mexcore:endsAtPosition a owl:DatatypeProperty;
+                       rdfs:domain mexcore:Execution;
+                       rdfs:range xsd:string.
+mexcore:folds a owl:DatatypeProperty;
+              rdfs:domain mexcore:SamplingMethod;
+              rdfs:range xsd:nonNegativeInteger.
+mexcore:hasApplicationContext a owl:ObjectProperty;
+                              rdfs:range mexcore:ApplicationContext.
+mexcore:hasPhase a owl:ObjectProperty,
+                   owl:FunctionalProperty;
+                 rdfs:domain mexcore:ExampleCollection;
+                 rdfs:range mexcore:Phase.
+mexcore:hasSamplingMethod a owl:ObjectProperty,
+                            owl:FunctionalProperty;
+                          rdfs:domain mexcore:Experiment.
+mexcore:hdType a owl:DatatypeProperty;
+               rdfs:domain mexcore:HardwareConfiguration;
+               rdfs:range xsd:string.
+mexcore:memory a owl:DatatypeProperty;
+               rdfs:domain mexcore:HardwareConfiguration;
+               rdfs:range xsd:string.
+mexcore:noiseRemovedDescription a owl:DatatypeProperty;
+                                rdfs:domain mexcore:Experiment;
+                                rdfs:range xsd:string.
+mexcore:numberOfIteraction a owl:DatatypeProperty;
+                           rdfs:domain mexcore:SlidingCrossValidation;
+                           rdfs:range xsd:nonNegativeInteger.
+mexcore:outliersRemovedDescription a owl:DatatypeProperty;
+                                   rdfs:domain mexcore:Experiment;
+                                   rdfs:range xsd:string.
+mexcore:sequential a owl:DatatypeProperty;
+                   rdfs:domain mexcore:SamplingMethod;
+                   rdfs:range xsd:boolean.
+mexcore:startsAt a owl:DatatypeProperty,
+                   owl:ObjectProperty;
+                 rdfs:domain mexcore:ExampleCollection;
+                 rdfs:range rdfs:Literal.
+mexcore:startsAtPosition a owl:DatatypeProperty.
+mexcore:targetClass a owl:DatatypeProperty;
+                    rdfs:domain mexcore:Execution;
+                    rdfs:range xsd:string.
+mexcore:testSize a owl:DatatypeProperty;
+                 rdfs:domain mexcore:SamplingMethod;
+                 rdfs:range xsd:double.
+mexcore:trainSize a owl:DatatypeProperty;
+                  rdfs:domain mexcore:SamplingMethod;
+                  rdfs:range xsd:double.
+mexcore:trustyURI a owl:ObjectProperty;
+                  rdfs:domain mexcore:ApplicationContext;
+                  rdfs:range rdfs:Literal.
+mexcore:trustyURIHash a owl:FunctionalProperty,
+                        owl:DatatypeProperty;
+                      rdfs:domain mexcore:ApplicationContext;
+                      rdfs:range xsd:string.
+mexcore:videoGraphs a owl:DatatypeProperty;
+                    rdfs:domain mexcore:HardwareConfiguration;
+                    rdfs:range xsd:string.
+<http://www.w3.org/ns/prov-o#Activity> a owl:Class.
+<http://www.w3.org/ns/prov-o#Agent> a owl:Class.
+<http://www.w3.org/ns/prov-o#Collection> a owl:Class.
+<http://www.w3.org/ns/prov-o#Entity> a owl:Class.
+<http://www.w3.org/ns/prov-o#Organization> a owl:Class.
+<http://www.w3.org/ns/prov-o#Person> a owl:Class.

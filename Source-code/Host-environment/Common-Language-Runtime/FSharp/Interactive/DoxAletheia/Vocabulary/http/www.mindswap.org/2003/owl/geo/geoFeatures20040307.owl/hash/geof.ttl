@@ -1,0 +1,318 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix geof: <http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+_:B49dd03f2a35b1acfbcbdf302770f444a a owl:Class;
+                                    rdfs:label "Country";
+                                    rdfs:subClassOf geof:GeographicFeature.
+_:B95e7f3c875d05b8c9fe48cbb9a172fb4 a owl:Class;
+                                    rdfs:label "Street";
+                                    rdfs:subClassOf geof:GeographicFeature.
+_:Bba409311cf1550af66f2ca6595fd16db a owl:Class;
+                                    rdfs:label "Continent";
+                                    rdfs:subClassOf geof:GeographicFeature.
+_:Bf3fc1a39c47a0af310c0e82a1fee29b1 a owl:Class;
+                                    rdfs:label "Park";
+                                    rdfs:subClassOf geof:GeographicFeature.
+<http://www.mindswap.org/2003/owl/geo/geoFeatures20040307.owl> dc11:creator "Femke Reitsma";
+                                                               dc11:date "20th February 2004";
+                                                               a owl:Ontology;
+                                                               rdfs:comment """This ontology contains geographic feature classes and associated properties including classes
+and properties for describing the spatial location of the geographic feature.  The classes and properties have been defined based
+on an ESRI dataset.""";
+                                                               owl:versionInfo "Version 0.01".
+geof:Administrative_Region a owl:Class;
+                           rdfs:label "Administrative Region";
+                           rdfs:subClassOf geof:GeographicFeature.
+geof:Administrative_Subdivision a owl:Class;
+                                rdfs:label "Administrative Subdivision";
+                                rdfs:subClassOf geof:GeographicFeature.
+geof:Area a owl:Class;
+          rdfs:label "Area";
+          rdfs:subClassOf geof:GeographicFeature.
+geof:Autonomous_Community a owl:Class;
+                          rdfs:label "Autonomous Community";
+                          rdfs:subClassOf geof:GeographicFeature.
+geof:Autonomous_Municipality a owl:Class;
+                             rdfs:label "Autonomous Municipality";
+                             rdfs:subClassOf geof:GeographicFeature.
+geof:Autonomous_Region a owl:Class;
+                       rdfs:label "Autonomous Region";
+                       rdfs:subClassOf geof:GeographicFeature.
+geof:Building a owl:Class;
+              rdfs:subClassOf geof:GeographicFeature.
+geof:Canton a owl:Class;
+            rdfs:label "Canton";
+            rdfs:subClassOf geof:GeographicFeature.
+geof:Capital_City a owl:Class;
+                  rdfs:label "Capital City";
+                  rdfs:subClassOf geof:GeographicFeature.
+geof:Capital_Municipality a owl:Class;
+                          rdfs:label "Capital Municipality";
+                          rdfs:subClassOf geof:GeographicFeature.
+geof:Capital_Territory a owl:Class;
+                       rdfs:label "Capital Territory";
+                       rdfs:subClassOf geof:GeographicFeature.
+geof:City a owl:Class;
+          rdfs:label "City";
+          rdfs:subClassOf geof:GeographicFeature.
+geof:Constitutional_Province a owl:Class;
+                             rdfs:label "Constitutional Province";
+                             rdfs:subClassOf geof:GeographicFeature.
+geof:County a owl:Class;
+            rdfs:label "County";
+            rdfs:subClassOf geof:GeographicFeature.
+geof:Department a owl:Class;
+                rdfs:label "Department";
+                rdfs:subClassOf geof:GeographicFeature.
+geof:District a owl:Class;
+              rdfs:label "District";
+              rdfs:subClassOf geof:GeographicFeature.
+geof:Division a owl:Class;
+              rdfs:label "Division";
+              rdfs:subClassOf geof:GeographicFeature.
+geof:Economic_Prefecture a owl:Class;
+                         rdfs:label "Economic Prefecture";
+                         rdfs:subClassOf geof:GeographicFeature.
+geof:Emirate a owl:Class;
+             rdfs:label "Emirate";
+             rdfs:subClassOf geof:GeographicFeature.
+geof:Federal_Dependencies a owl:Class;
+                          rdfs:label "Federal Dependencies";
+                          rdfs:subClassOf geof:GeographicFeature.
+geof:Federal_District a owl:Class;
+                      rdfs:label "Federal District";
+                      rdfs:subClassOf geof:GeographicFeature.
+geof:Federal_Status_City a owl:Class;
+                         rdfs:label "Federal Status City";
+                         rdfs:subClassOf geof:GeographicFeature.
+geof:Federal_Territory a owl:Class;
+                       rdfs:label "Federal Territory";
+                       rdfs:subClassOf geof:GeographicFeature.
+geof:GeographicFeature a owl:Class;
+                       rdfs:comment "cities, countries, admin units, and continents are subclasses of GeographicFeature";
+                       rdfs:label "GeographicFeature";
+                       rdfs:subClassOf geof:SpatialThing.
+geof:Governorate a owl:Class;
+                 rdfs:label "Governorate";
+                 rdfs:subClassOf geof:GeographicFeature.
+geof:Independent_Town a owl:Class;
+                      rdfs:label "Independent Town";
+                      rdfs:subClassOf geof:GeographicFeature.
+geof:Intendancy a owl:Class;
+                rdfs:label "Intendancy";
+                rdfs:subClassOf geof:GeographicFeature.
+geof:Linestring a owl:Class;
+                rdfs:comment "";
+                rdfs:label "Linestring";
+                rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty geof:coordinates ; 
+                                 a owl:Restriction],
+                                geof:SpatialDescription.
+geof:MultiLinestring a owl:Class;
+                     rdfs:comment "a collection of polylines";
+                     rdfs:label "MultiLinestring";
+                     rdfs:subClassOf [owl:minCardinality "2"^^xsd:nonNegativeInteger ; 
+                                      owl:onProperty geof:coordinates ; 
+                                      a owl:Restriction],
+                                     geof:SpatialDescription.
+geof:MultiPoint a owl:Class;
+                rdfs:comment "a collection of points";
+                rdfs:label "MultiPoint";
+                rdfs:subClassOf [owl:minCardinality "2"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty geof:coordinates ; 
+                                 a owl:Restriction],
+                                geof:SpatialDescription.
+geof:MultiPolygon a owl:Class;
+                  rdfs:comment "a collection of polygons";
+                  rdfs:label "MultiPolygon";
+                  rdfs:subClassOf [owl:minCardinality "2"^^xsd:nonNegativeInteger ; 
+                                   owl:onProperty geof:coordinates ; 
+                                   a owl:Restriction],
+                                  geof:SpatialDescription.
+geof:Municipality a owl:Class;
+                  rdfs:label "Municipality";
+                  rdfs:subClassOf geof:GeographicFeature.
+geof:National_District a owl:Class;
+                       rdfs:label "National District";
+                       rdfs:subClassOf geof:GeographicFeature.
+geof:National_Territory a owl:Class;
+                        rdfs:label "National Territory";
+                        rdfs:subClassOf geof:GeographicFeature.
+geof:Pakistan-administered a owl:Class;
+                           rdfs:label "Pakistan-administered";
+                           rdfs:subClassOf geof:GeographicFeature.
+geof:Parish a owl:Class;
+            rdfs:label "Parish";
+            rdfs:subClassOf geof:GeographicFeature.
+geof:Point a owl:Class;
+           rdfs:comment "";
+           rdfs:label "Point";
+           rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty geof:coordinates ; 
+                            a owl:Restriction],
+                           geof:SpatialDescription.
+geof:Polygon a owl:Class;
+             rdfs:comment "";
+             rdfs:label "Polygon";
+             rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                              owl:onProperty geof:coordinates ; 
+                              a owl:Restriction],
+                             geof:SpatialDescription.
+geof:Prefecture a owl:Class;
+                rdfs:label "Prefecture";
+                rdfs:subClassOf geof:GeographicFeature.
+geof:Province a owl:Class;
+              rdfs:label "Province";
+              rdfs:subClassOf geof:GeographicFeature.
+geof:Region a owl:Class;
+            rdfs:label "Region";
+            rdfs:subClassOf geof:GeographicFeature.
+geof:Republic a owl:Class;
+              rdfs:label "Republic";
+              rdfs:subClassOf geof:GeographicFeature.
+geof:SpatialDescription a owl:Class;
+                        rdfs:comment """A spatial description is a class of spatial descriptors used to describe the
+	spatial shape of a SpatialThing in terms of coordinates""";
+                        rdfs:label "SpatialDescription";
+                        rdfs:subClassOf [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                         owl:onProperty geof:hasCoordinateSystem ; 
+                                         a owl:Restriction].
+geof:SpatialThing a owl:Class;
+                  rdfs:comment "A spatial thing is the simplest thing that has some spatial characteristics";
+                  rdfs:label "SpatialThing";
+                  rdfs:subClassOf owl:Thing.
+geof:Special_City a owl:Class;
+                  rdfs:label "Special City";
+                  rdfs:subClassOf geof:GeographicFeature.
+geof:Special_District a owl:Class;
+                      rdfs:label "Special District";
+                      rdfs:subClassOf geof:GeographicFeature.
+geof:Special_Municipality a owl:Class;
+                          rdfs:label "Special Municipality";
+                          rdfs:subClassOf geof:GeographicFeature.
+geof:Special_Region a owl:Class;
+                    rdfs:label "Special Region";
+                    rdfs:subClassOf geof:GeographicFeature.
+geof:State a owl:Class;
+           rdfs:label "State";
+           rdfs:subClassOf geof:GeographicFeature.
+geof:Territory a owl:Class;
+               rdfs:label "Territory";
+               rdfs:subClassOf geof:GeographicFeature.
+geof:Town a owl:Class;
+          rdfs:label "Town";
+          rdfs:subClassOf geof:GeographicFeature.
+geof:Union_Territory a owl:Class;
+                     rdfs:label "Union Territory";
+                     rdfs:subClassOf geof:GeographicFeature.
+geof:Zone a owl:Class;
+          rdfs:label "Zone";
+          rdfs:subClassOf geof:GeographicFeature.
+geof:admin_name a owl:DatatypeProperty;
+                rdfs:comment "";
+                rdfs:domain geof:City;
+                rdfs:label "admin_name".
+geof:city_name a owl:DatatypeProperty;
+               rdfs:comment "";
+               rdfs:domain geof:City;
+               rdfs:label "city_name".
+geof:cntry_name a owl:DatatypeProperty;
+                rdfs:comment "";
+                rdfs:domain geof:City;
+                rdfs:label "cntry_name".
+geof:curr_code a owl:DatatypeProperty;
+               rdfs:comment "";
+               rdfs:domain geof:Country;
+               rdfs:label "curr_code".
+geof:curr_type a owl:DatatypeProperty;
+               rdfs:comment "Type of currency in country";
+               rdfs:domain geof:Country;
+               rdfs:label "curry_type".
+geof:fips_admin a owl:DatatypeProperty;
+                rdfs:comment "";
+                rdfs:domain geof:GeographicFeature;
+                rdfs:label "fips_admin".
+geof:fips_cntry a owl:DatatypeProperty;
+                rdfs:comment "";
+                rdfs:domain geof:GeographicFeature;
+                rdfs:label "fips_cntry".
+geof:gmi_admin a owl:DatatypeProperty;
+               rdfs:comment "";
+               rdfs:domain geof:GeographicFeature;
+               rdfs:label "gmi_admin".
+geof:gmi_cntry a owl:DatatypeProperty;
+               rdfs:comment "";
+               rdfs:domain geof:GeographicFeature;
+               rdfs:label "gmi_cntry".
+geof:hasSpatialLocation a owl:ObjectProperty;
+                        rdfs:comment "hasSpatialLocation defines the qualitative location of some spatial thing";
+                        rdfs:domain owl:Thing;
+                        rdfs:label "hasSpatialLocation";
+                        rdfs:range geof:SpatialThing.
+geof:iso_2digit a owl:DatatypeProperty;
+                rdfs:comment "";
+                rdfs:domain geof:GeographicFeature;
+                rdfs:label "ISO_2DIGIT".
+geof:iso_3digit a owl:DatatypeProperty;
+                rdfs:comment "";
+                rdfs:domain geof:GeographicFeature;
+                rdfs:label "ISO_3DIGIT".
+geof:pop_admin a owl:DatatypeProperty;
+               rdfs:comment "Population of the administrative unit";
+               rdfs:domain geof:GeographicFeature;
+               rdfs:label "pop_admin".
+geof:pop_class a owl:DatatypeProperty;
+               rdfs:comment "";
+               rdfs:domain geof:City;
+               rdfs:label "pop_class".
+geof:pop_cntry a owl:DatatypeProperty;
+               rdfs:comment "Population of the country";
+               rdfs:domain geof:Country;
+               rdfs:label "pop_admin".
+geof:pop_rank a owl:DatatypeProperty;
+              rdfs:comment "";
+              rdfs:domain geof:City;
+              rdfs:label "pop_rank".
+geof:port_id a owl:DatatypeProperty;
+             rdfs:comment "";
+             rdfs:domain geof:City;
+             rdfs:label "port_id".
+geof:shape a owl:ObjectProperty;
+           rdfs:comment "The property shape associates a geographic feature with a Spatial Description defined by a blank node";
+           rdfs:domain geof:GeographicFeature;
+           rdfs:label "shape";
+           rdfs:range geof:SpatialDescription.
+geof:sovereign a owl:DatatypeProperty;
+               rdfs:comment "";
+               rdfs:domain geof:GeographicFeature;
+               rdfs:label "sovereign".
+geof:sqkm a owl:DatatypeProperty;
+          rdfs:comment "Area in square kilometers";
+          rdfs:domain geof:GeographicFeature;
+          rdfs:label "sqkm".
+geof:status a owl:DatatypeProperty;
+            rdfs:comment "";
+            rdfs:domain geof:City;
+            rdfs:label "status".
+geof:type_loc a owl:DatatypeProperty;
+              rdfs:comment "Type of administrative unit in language of country";
+              rdfs:domain geof:GeographicFeature;
+              rdfs:label "type_loc".
+geof:xyCoordinates a owl:DatatypeProperty;
+                   rdfs:comment """xyCoordinates define the x,y location of a spatial thing.  They must be ordered as \"x,y x,y x,y ...\"""";
+                   rdfs:domain geof:CoordinateOrigin,
+                               geof:SpatialDescription;
+                   rdfs:label "coordinates";
+                   rdfs:range xsd:string.
+geof:xyzCoordinates a owl:DatatypeProperty;
+                    rdfs:comment """xyCoordinates define the x,y,z location of a spatial thing.  They must be ordered as \"x,y,z x,y,z x,y,z...\"""";
+                    rdfs:domain geof:CoordinateOrigin,
+                                geof:SpatialDescription;
+                    rdfs:label "coordinates";
+                    rdfs:range xsd:string.

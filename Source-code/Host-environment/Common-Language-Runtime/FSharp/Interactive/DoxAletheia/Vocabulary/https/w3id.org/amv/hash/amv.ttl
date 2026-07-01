@@ -1,0 +1,1777 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix w3id: <https://w3id.org/>.
+@prefix amv: <https://w3id.org/amv/>.
+@prefix modp: <https://w3id.org/mod#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix aerdcat: <http://www.w3.org/ns/dcat#>.
+@prefix nsprov: <http://www.w3.org/ns/prov#>.
+@prefix wikidata: <http://www.wikidata.org/entity/>.
+@prefix schemas: <https://schema.org/>.
+
+dc11:creator a owl:AnnotationProperty.
+dc11:date a owl:AnnotationProperty.
+dc11:description a owl:AnnotationProperty.
+dc11:issued a owl:AnnotationProperty.
+dc11:modified a owl:AnnotationProperty.
+dc11:publisher a owl:AnnotationProperty.
+dc11:rights a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:LicenseDocument a owl:Class;
+                        rdfs:comment "A legal document giving official permission to do something with a Resource."@en;
+                        rdfs:label "LicenseDocument";
+                        rdfs:subClassOf dcterms:RightsStatement.
+dcterms:RightsStatement a owl:Class;
+                        rdfs:comment "A statement about the intellectual property rights (IPR) held in or over a Resource, a legal document giving official permission to do something with a resource, or a statement about access rights."@en;
+                        rdfs:label "Rights Statement".
+dcterms:accessRights a owl:ObjectProperty;
+                     rdfs:comment """Information about who access the resource or an indication of its security status. 
+Access Rights may include information regarding access or restrictions based on privacy, security, or other policies. 
+
+Examples of access rights are: Public, Internal, Department (source: https://www.dublincore.org/groups/government/accessRights/)"""@en;
+                     rdfs:domain owl:Thing;
+                     rdfs:label "access rights"@en;
+                     rdfs:range dcterms:RightsStatement;
+                     rdfs:subPropertyOf dcterms:rights;
+                     owl:inverseOf <https://w3id.org/amv#pub_accessRightsOf>.
+dcterms:available a owl:DatatypeProperty;
+                  rdfs:comment "Date (often a range) that the resource became or will become available."@en;
+                  rdfs:domain owl:Thing;
+                  rdfs:label "available"@en;
+                  rdfs:range rdfs:Literal;
+                  rdfs:subPropertyOf dcterms:date.
+dcterms:bibliographicCitation a owl:DatatypeProperty;
+                              rdfs:comment "A bibliographic reference for the resource."@en;
+                              rdfs:domain owl:Thing;
+                              rdfs:label "bibliographic citation"@en;
+                              rdfs:range rdfs:Literal.
+dcterms:contributor a owl:ObjectProperty;
+                    rdfs:comment "An agent who contributes towards the algorithm."@en;
+                    rdfs:domain owl:Thing;
+                    rdfs:label "contributor";
+                    rdfs:range foaf:Agent;
+                    owl:inverseOf <https://w3id.org/amv#pub_contributorOf>.
+dcterms:created a owl:DatatypeProperty;
+                rdfs:comment "The date of creation of the algorithm."@en;
+                rdfs:domain owl:Thing;
+                rdfs:label "created";
+                rdfs:range rdfs:Literal;
+                rdfs:subPropertyOf dcterms:date.
+dcterms:creator a owl:ObjectProperty;
+                rdfs:comment "The person who created the algorithm."@en;
+                rdfs:domain owl:Thing;
+                rdfs:label "creator";
+                rdfs:range foaf:Agent;
+                owl:inverseOf <https://w3id.org/amv#pub_creatorOf>;
+                skos:AltLabel "author"@en.
+dcterms:date a owl:DatatypeProperty;
+             rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en;
+             rdfs:domain owl:Thing;
+             rdfs:label "date";
+             rdfs:range rdfs:Literal;
+             rdfs:subPropertyOf owl:topDataProperty.
+dcterms:dateSubmitted a owl:DatatypeProperty;
+                      rdfs:comment "Date of submission of the resource."@en;
+                      rdfs:domain owl:Thing;
+                      rdfs:label "dateSubmitted";
+                      rdfs:range rdfs:Literal;
+                      rdfs:subPropertyOf dcterms:date.
+dcterms:description a owl:DatatypeProperty;
+                    rdfs:comment "An account of the resource."@en,
+                                 "A statement that represents something in words. It is the act of describing something. The description can include, for instance, the purpose of a thing, the scope, the area of applications of a thing, the history, etc."@en;
+                    rdfs:domain owl:Thing;
+                    rdfs:label "description";
+                    rdfs:range xsd:string.
+dcterms:hasPart a owl:TransitiveProperty,
+                  owl:ObjectProperty;
+                rdfs:comment "A related resource that is included either physically or logically in the described resource.(https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/isPartOf)";
+                rdfs:domain owl:Thing;
+                rdfs:label "has Part";
+                rdfs:range owl:Thing;
+                rdfs:subPropertyOf dcterms:relation;
+                owl:inverseOf dcterms:isPartOf.
+dcterms:hasVersion a owl:TransitiveProperty,
+                     owl:ObjectProperty;
+                   rdfs:comment "A related resource (e.g., algorithm, program) that is a version, edition, or adaptation of the described resource."@en;
+                   rdfs:domain owl:Thing;
+                   rdfs:label "has Version";
+                   rdfs:range owl:Thing;
+                   rdfs:subPropertyOf dcterms:relation;
+                   owl:inverseOf dcterms:isVersionOf.
+dcterms:identifier a owl:DatatypeProperty;
+                   rdfs:comment "An unambiguous reference to the resource within a given context."@en;
+                   rdfs:domain owl:Thing;
+                   rdfs:label "identifier";
+                   rdfs:range rdfs:Literal.
+dcterms:isPartOf a owl:TransitiveProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment "A related resource in which the described resource is physically or logically included.(https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/isPartOf)";
+                 rdfs:domain owl:Thing;
+                 rdfs:label "is Part Of";
+                 rdfs:range owl:Thing;
+                 rdfs:subPropertyOf dcterms:relation.
+dcterms:isVersionOf a owl:TransitiveProperty,
+                      owl:ObjectProperty;
+                    rdfs:comment "A related resource (e.g., algorithm, program) of which the described resource is a version, edition, or adaptation."@en;
+                    rdfs:domain owl:Thing;
+                    rdfs:label "is Version Of";
+                    rdfs:range owl:Thing;
+                    rdfs:subPropertyOf dcterms:relation.
+dcterms:license a owl:ObjectProperty;
+                rdfs:comment "The licence under which the algorithm is published."@en;
+                rdfs:domain owl:Thing;
+                rdfs:label "license";
+                rdfs:range dcterms:LicenseDocument;
+                rdfs:subPropertyOf dcterms:rights;
+                owl:inverseOf <https://w3id.org/amv#pub_licenseOf>.
+dcterms:modified a owl:DatatypeProperty;
+                 rdfs:comment "Date on which the resource was changed."@en;
+                 rdfs:domain owl:Thing;
+                 rdfs:label "modified";
+                 rdfs:range rdfs:Literal;
+                 rdfs:subPropertyOf dcterms:date.
+dcterms:publisher a owl:ObjectProperty;
+                  rdfs:comment "An entity responsible for making the resource available."@en;
+                  rdfs:domain [owl:unionOf (wikidata:Q8366
+                                            <https://w3id.org/amv#Implementation>
+                                            <https://w3id.org/amv#pub_InformationResource>) ; 
+                               a owl:Class];
+                  rdfs:label "publisher"@en;
+                  rdfs:range foaf:Agent;
+                  owl:inverseOf <https://w3id.org/amv#pub_publisherOf>.
+dcterms:relation a owl:SymmetricProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment """A related resource. 
+For example, a Sorting problem is related to a problem Convex Hull."""@en;
+                 rdfs:domain owl:Thing;
+                 rdfs:label "relation"@en;
+                 rdfs:range owl:Thing.
+dcterms:rights a owl:ObjectProperty;
+               rdfs:comment "Information about rights held in and over the resource."@en;
+               rdfs:domain owl:Thing;
+               rdfs:label "rights"@en;
+               rdfs:range dcterms:RightsStatement;
+               owl:inverseOf <https://w3id.org/amv#pub_rightsOf>.
+dcterms:subject a owl:ObjectProperty;
+                rdfs:comment "A topic of the resource."@en;
+                rdfs:domain owl:Thing;
+                rdfs:label "subject";
+                rdfs:range <https://w3id.org/amv#pub_Discipline>;
+                rdfs:subPropertyOf owl:topObjectProperty;
+                owl:inverseOf <https://w3id.org/amv#pub_subjectOf>.
+dcterms:title a owl:DatatypeProperty;
+              rdfs:comment "A name given to the resource (e.g., book, algorithm, research software)."@en;
+              rdfs:domain owl:Thing;
+              rdfs:label "title";
+              rdfs:range xsd:string.
+bibo:AcademicArticle a owl:Class;
+                     rdfs:comment "A scholarly academic article, typically published in a journal."@en;
+                     rdfs:label "Academic article"@en;
+                     rdfs:subClassOf bibo:Article.
+bibo:Article a owl:Class;
+             rdfs:comment "A written composition in prose, usually nonfiction, on a specific topic, forming an independent part of a book or other publication, as a newspaper or magazine."@en;
+             rdfs:label "Article"@en;
+             rdfs:subClassOf bibo:Document.
+bibo:Book a owl:Class;
+          rdfs:comment "A written or printed work of fiction or nonfiction, usually on sheets of paper fastened or bound together within covers."@en;
+          rdfs:label "Book"@en;
+          rdfs:subClassOf bibo:Document.
+bibo:BookSection a owl:Class;
+                 rdfs:comment "A section of a book."@en;
+                 rdfs:label "Book Section"@en;
+                 rdfs:subClassOf bibo:DocumentPart.
+bibo:Chapter a owl:Class;
+             rdfs:comment "A chapter of a book."@en;
+             rdfs:label "Chapter"@en;
+             rdfs:subClassOf bibo:BookSection;
+             skos:AltLabel "Book chapter"@en.
+bibo:CollectedDocument a owl:Class;
+                       rdfs:comment "A document that simultaneously contains other documents."@en;
+                       rdfs:label "Collected Document"@en;
+                       rdfs:subClassOf bibo:Document.
+bibo:Collection a owl:Class;
+                rdfs:comment "A collection of Documents or Collections."@en;
+                rdfs:label "Collection"@en;
+                rdfs:subClassOf <https://w3id.org/amv#pub_InformationResource>.
+bibo:Document a owl:Class;
+              rdfs:comment "The algorithm was published in what kind of literature.",
+                           "A document (noun) is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information."@en;
+              rdfs:label "Document"@en;
+              rdfs:subClassOf <https://w3id.org/amv#pub_InformationResource>;
+              owl:equivalentClass foaf:Document.
+bibo:DocumentPart a owl:Class;
+                  rdfs:comment "a distinct part of a larger document or collected document."@en;
+                  rdfs:label "Document Part"@en;
+                  rdfs:subClassOf bibo:Document.
+bibo:EditedBook a owl:Class;
+                rdfs:comment "An edited book."@en;
+                rdfs:label "Edited Book"@en;
+                rdfs:subClassOf bibo:CollectedDocument.
+bibo:Excerpt a owl:Class;
+             rdfs:comment "A passage selected from a larger work."@en;
+             rdfs:label "Excerpt"@en;
+             rdfs:subClassOf bibo:DocumentPart.
+bibo:Issue a owl:Class;
+           rdfs:comment "something that is printed or published and distributed, esp. a given number of a periodical."@en;
+           rdfs:label "Issue"@en;
+           rdfs:subClassOf bibo:CollectedDocument.
+bibo:Journal a owl:Class;
+             rdfs:comment """a periodical dedicated to a particular subject; \"he reads the medical journals.\""""@en,
+                          "A periodical of scholarly journal Articles."@en;
+             rdfs:label "Journal"@en;
+             rdfs:subClassOf bibo:Periodical;
+             owl:disjointWith bibo:Magazine.
+bibo:Magazine a owl:Class;
+              rdfs:comment "A periodical publication containing articles and illustrations, often on a particular subject or aimed at a particular readership."@en,
+                           "A periodical of magazine Articles. A magazine is a publication that is issued periodically, usually bound in a paper cover, and typically contains essays, stories, poems, etc., by many writers, and often photographs and drawings, frequently specializing in a particular subject or area, as hobbies, news, or sports."@en;
+              rdfs:label "Magazine"@en;
+              rdfs:subClassOf bibo:Periodical.
+bibo:Manuscript a owl:Class;
+                rdfs:comment "An unpublished Document, which may also be submitted to a publisher for publication."@en;
+                rdfs:label "Manuscript"@en;
+                rdfs:subClassOf bibo:Document.
+bibo:Patent a owl:Class;
+            rdfs:comment "A document describing the exclusive right granted by a government to an inventor to manufacture, use, or sell an invention for a certain number of years."@en;
+            rdfs:label "Patent"@en;
+            rdfs:subClassOf bibo:Document.
+bibo:Periodical a owl:Class;
+                rdfs:comment "A group of related documents issued at regular intervals."@en;
+                rdfs:label "Periodical"@en;
+                rdfs:subClassOf bibo:Collection;
+                owl:disjointWith bibo:Website,
+                                 bibo:Series.
+bibo:Proceedings a owl:Class;
+                 rdfs:comment "A compilation of documents published from an event, such as a conference."@en;
+                 rdfs:label "Proceedings"@en;
+                 rdfs:subClassOf bibo:Book.
+bibo:ReferenceSource a owl:Class;
+                     rdfs:comment "A document that presents authoritative reference information, such as a dictionary or encylopedia."@en;
+                     rdfs:label "Reference Source"@en;
+                     rdfs:subClassOf bibo:Document.
+bibo:Report a owl:Class;
+            rdfs:comment "A document describing an account or statement describing in detail an event, situation, or the like, usually as the result of observation, inquiry, etc.."@en;
+            rdfs:label "Report"@en;
+            rdfs:subClassOf bibo:Document.
+bibo:Series a owl:Class;
+            rdfs:comment "A loose, thematic, collection of Documents, often Books."@en;
+            rdfs:label "Series"@en;
+            rdfs:subClassOf bibo:Collection.
+bibo:Slide a owl:Class;
+           rdfs:comment "A slide in a slideshow."@en;
+           rdfs:label "Slide"@en;
+           rdfs:subClassOf bibo:DocumentPart.
+bibo:Thesis a owl:Class;
+            rdfs:comment "A document created to summarize research findings associated with the completion of an academic degree."@en;
+            rdfs:label "Thesis"@en;
+            rdfs:subClassOf bibo:Document.
+bibo:Webpage a owl:Class;
+             rdfs:comment "A web page is an online document available (at least initially) on the world wide web. A web page is written first and foremost to appear on the web, as distinct from other online resources such as books, manuscripts or audio documents which use the web primarily as a distribution mechanism alongside other more traditional methods such as print."@en;
+             rdfs:label "Webpage"@en;
+             rdfs:subClassOf bibo:Document.
+bibo:Website a owl:Class;
+             rdfs:comment "A group of Webpages accessible on the Web."@en;
+             rdfs:label "Website"@en;
+             rdfs:subClassOf bibo:Collection.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+schema:Comment a owl:Class;
+               rdfs:comment "A comment on an item - for example, a comment on a blog post. The comment's content is expressed via the text property, and its topic via about, properties shared with all CreativeWorks."@en;
+               rdfs:label "Comment"@en.
+schema:comment a owl:ObjectProperty;
+               rdfs:comment "Comments, typically from users."@en;
+               rdfs:domain [owl:unionOf (wikidata:Q8366
+                                         <https://w3id.org/amv#Implementation>
+                                         <https://w3id.org/amv#pub_InformationResource>) ; 
+                            a owl:Class];
+               rdfs:label "comment"@en;
+               rdfs:range schema:Comment;
+               owl:inverseOf <https://w3id.org/amv#commentOf>.
+skos:AltLabel a owl:AnnotationProperty.
+aerdcat:byteSize a owl:DatatypeProperty;
+                 rdfs:comment "The size of a distribution in bytes."@en;
+                 rdfs:domain <https://w3id.org/amv#Implementation>;
+                 rdfs:label "byte size"@en;
+                 rdfs:range xsd:decimal.
+aerdcat:landingPage a owl:DatatypeProperty;
+                    rdfs:comment "A Web page that can be navigated to in a Web browser to gain access to the catalog, a dataset, its distributions and/or additional information."@en;
+                    rdfs:domain owl:Thing;
+                    rdfs:label "landingPage";
+                    rdfs:range xsd:string;
+                    rdfs:subPropertyOf foaf:page.
+aerdcat:version a owl:DatatypeProperty;
+                rdfs:comment "The version number of a resource."@en;
+                rdfs:domain [owl:unionOf (wikidata:Q8366
+                                          <https://w3id.org/amv#Implementation>) ; 
+                             a owl:Class];
+                rdfs:label "version"@en;
+                rdfs:range rdfs:Literal.
+nsprov:generalizationOf a owl:TransitiveProperty,
+                          owl:ObjectProperty;
+                        rdfs:comment "An entity that is a generalization of another. E.g., Distribution sort algorithm is a generalization of Bucket sort."@en;
+                        rdfs:domain owl:Thing;
+                        rdfs:label "generalization of"@en;
+                        rdfs:range owl:Thing;
+                        rdfs:subPropertyOf dcterms:relation;
+                        owl:inverseOf nsprov:specializationOf.
+nsprov:hadDerivation a owl:TransitiveProperty,
+                       owl:ObjectProperty;
+                     rdfs:domain owl:Thing;
+                     rdfs:label "had derivation"@en;
+                     rdfs:range owl:Thing;
+                     owl:inverseOf nsprov:wasDerivedFrom.
+nsprov:hadPrimarySource a owl:TransitiveProperty,
+                          owl:ObjectProperty;
+                        rdfs:comment "A primary source for a topic refers to something produced by some agent with direct experience and knowledge about the topic, at the time of the topic's study, without benefit from hindsight. Because of the directness of primary sources, they 'speak for themselves' in ways that cannot be captured through the filter of secondary sources. As such, it is important for secondary sources to reference those primary sources from which they were derived, so that their reliability can be investigated. A primary source relation is a particular case of derivation of secondary materials from their primary sources. It is recognized that the determination of primary sources can be up to interpretation, and should be done according to conventions accepted within the application's domain."@en;
+                        rdfs:domain owl:Thing;
+                        rdfs:label "had primary source"@en;
+                        rdfs:range owl:Thing;
+                        rdfs:subPropertyOf nsprov:wasDerivedFrom;
+                        owl:inverseOf nsprov:wasPrimarySourceOf.
+nsprov:hadRevision a owl:TransitiveProperty,
+                     owl:ObjectProperty;
+                   rdfs:domain owl:Thing;
+                   rdfs:label "had revision"@en;
+                   rdfs:range owl:Thing;
+                   rdfs:subPropertyOf nsprov:hadDerivation;
+                   owl:inverseOf nsprov:wasRevisionOf.
+nsprov:specializationOf a owl:TransitiveProperty,
+                          owl:ObjectProperty;
+                        rdfs:comment "An entity that is specialization of (... is a kind of) another entity and shares all aspects of the later including its own specific aspects. E.g., Bucket sort algorithm is a specialization of (a kind of) Distribution sort."@en;
+                        rdfs:domain owl:Thing;
+                        rdfs:label "specialization of"@en;
+                        rdfs:range owl:Thing;
+                        rdfs:subPropertyOf dcterms:relation.
+nsprov:wasDerivedFrom a owl:TransitiveProperty,
+                        owl:ObjectProperty;
+                      rdfs:comment "A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity."@en;
+                      rdfs:domain owl:Thing;
+                      rdfs:label "was Derived From";
+                      rdfs:range owl:Thing.
+nsprov:wasPrimarySourceOf a owl:TransitiveProperty,
+                            owl:ObjectProperty;
+                          rdfs:domain owl:Thing;
+                          rdfs:label "was primary source of"@en;
+                          rdfs:range owl:Thing;
+                          rdfs:subPropertyOf nsprov:hadDerivation.
+nsprov:wasRevisionOf a owl:TransitiveProperty,
+                       owl:ObjectProperty;
+                     rdfs:comment "A revision is a derivation for which the resulting entity is a revised version of some original. The implication here is that the resulting entity contains substantial content from the original. Revision is a particular case of derivation."@en;
+                     rdfs:domain owl:Thing;
+                     rdfs:label "was revision of"@en;
+                     rdfs:range owl:Thing;
+                     rdfs:subPropertyOf nsprov:wasDerivedFrom.
+wikidata:Q11862829 a owl:Class;
+                   rdfs:comment "Academic field of study or profession."@en;
+                   rdfs:label "Academic discipline"@en;
+                   owl:equivalentClass <https://w3id.org/amv#pub_Discipline>.
+wikidata:Q8366 a owl:Class;
+               rdfs:comment "Unambiguous specification of how to solve a class of problems.(https://www.wikidata.org/wiki/Q8366)"@en;
+               rdfs:label "Algorithm"@en;
+               owl:equivalentClass <https://w3id.org/amv#Algorithm>.
+wikidata:Q9143 a owl:Class;
+               rdfs:comment "language designed to communicate instructions to a machine."@en;
+               rdfs:label "Programming language"@en;
+               owl:equivalentClass <https://w3id.org/amv#ProgrammingLanguage>;
+               skos:AltLabel "Computer language"@en.
+foaf:Agent a owl:Class;
+           rdfs:comment "A resource that acts or has the power to act. Example of Agents include person and organization."@en;
+           rdfs:label "Agent"@en.
+foaf:Document a owl:Class;
+              rdfs:comment "The Document class represents those things which are, broadly conceived, 'documents'."@en;
+              rdfs:label "Document"@en;
+              rdfs:subClassOf <https://w3id.org/amv#pub_InformationResource>.
+foaf:Image a owl:Class;
+           rdfs:comment "The class Image is a sub-class of Document corresponding to those documents which are images."@en;
+           rdfs:label "Image"@en;
+           rdfs:subClassOf foaf:Document.
+foaf:Organization a owl:Class;
+                  rdfs:comment "An agent belonging to some social institutions such as companies, associations etc, that has a collective goal."@en;
+                  rdfs:label "Organization"@en;
+                  rdfs:subClassOf foaf:Agent;
+                  owl:disjointWith foaf:Person.
+foaf:Person a owl:Class;
+            rdfs:comment "A human."@en;
+            rdfs:label "Person"@en;
+            rdfs:subClassOf foaf:Agent.
+foaf:depiction a owl:ObjectProperty;
+               rdfs:comment "A depiction of some thing."@en;
+               rdfs:domain owl:Thing;
+               rdfs:label "depiction"@en;
+               rdfs:range foaf:Image;
+               owl:inverseOf foaf:depicts.
+foaf:depicts a owl:ObjectProperty;
+             rdfs:comment "The depiction property is a relationship between a thing and an Image that depicts it. As such it is an inverse of the depicts relationship."@en;
+             rdfs:domain foaf:Image;
+             rdfs:label "depicts"@en;
+             rdfs:range owl:Thing.
+foaf:firstName a owl:DatatypeProperty;
+               rdfs:comment "The first name of a person."@en;
+               rdfs:domain foaf:Person;
+               rdfs:label "first name"@en;
+               rdfs:range xsd:string.
+foaf:homepage a owl:DatatypeProperty;
+              rdfs:comment "A homepage for some thing."@en;
+              rdfs:domain owl:Thing;
+              rdfs:label "homepage";
+              rdfs:range xsd:anyURI.
+foaf:lastName a owl:DatatypeProperty;
+              rdfs:comment "The last name of a person."@en;
+              rdfs:domain foaf:Person;
+              rdfs:label "last name"@en;
+              rdfs:range xsd:string.
+foaf:mbox a owl:DatatypeProperty;
+          rdfs:comment "A personal mailbox, ie. an Internet mailbox associated with exactly one owner, the first owner of this mailbox. This is a 'static inverse functional property', in that there is (across time and change) at most one individual that ever has any particular value for foaf:mbox."@en;
+          rdfs:domain foaf:Agent;
+          rdfs:label "personal mailbox"@en;
+          rdfs:range xsd:string.
+foaf:name a owl:DatatypeProperty;
+          rdfs:comment "The name for some thing."@en;
+          rdfs:domain owl:Thing;
+          rdfs:label "name";
+          rdfs:range xsd:string.
+foaf:page a owl:DatatypeProperty;
+          rdfs:comment "A page or document about this thing."@en;
+          rdfs:domain owl:Thing;
+          rdfs:label "page";
+          rdfs:range xsd:string.
+schemas:OperatingSystem a owl:Class;
+                        rdfs:comment "An Operating System (OS) is an interface between a computer user and computer hardware. An operating system is a software which performs all the basic tasks like file management, memory management, process management, handling input and output, and controlling peripheral devices such as disk drives and printers.";
+                        rdfs:label "Operating system"@en.
+w3id:amv dc11:creator "Jyotima Patel (https://www.linkedin.com/in/jyotima-patel-61220411b)",
+                      "Biswanath Dutta (https://sites.google.com/view/bdutta)";
+         dc11:description "AMV v1.0 was first published on June 16, 2021. This is the revised version dated on February 6, 2023."@en,
+                          "Metadata vocabularies are used in various domains of study. It provides an in-depth description of the resources. In this work, we develop Algorithm Metadata Vocabulary (AMV), a vocabulary for capturing and storing the metadata about the algorithms (a procedure or a set of rules that is followed step-by-step to solve a problem, especially by a computer). The snag faced by the researchers in the current time is the failure of getting relevant results when searching for algorithms in any search engine. AMV is represented as a semantic model and produced OWL file, which can be directly used by anyone interested to create and publish algorithm metadata as a knowledge graph, or to provide metadata service through SPARQL endpoint. To design the vocabulary, we propose a well-defined methodology, which considers real issues faced by the algorithm users and the practitioners. The evaluation shows a promising result."@en;
+         dc11:issued "2021-06-16"@en;
+         dc11:modified "2023-02-06"@en;
+         dc11:publisher "Indian Statistical Institute (https://www.isibang.ac.in/)";
+         dc11:rights "https://creativecommons.org/publicdomain/zero/1.0/"@en;
+         dc11:title "AMV:Algorithm Metadata Vocabulary"@en;
+         vann:preferredNamespacePrefix "amv";
+         vann:preferredNamespaceUri "https://w3id.org/amv";
+         a owl:Ontology;
+         owl:versionIRI amv:1.0;
+         owl:versionInfo "V1.0"@en;
+         modp:competencyQuestion """Example competency questions. 
+CQ1: What characteristics or properties are common across all algorithms?
+CQ2: List all algorithms that compute the solution to problem X along with their types and input. 
+CQ3: Retrieve an algorithm that solves problem X with its details like best case space complexity, best case time complexity, and the problems related to it. 
+CQ4: Retrieve all the algorithms X which are expressed in the form of a flowchart.
+CQ5: Which Sorting algorithms are derived from the already existing sorting algorithms?"""@en;
+         modp:vocabularyUsed "http://purl.org/ontology/bibo/"^^xsd:anyURI,
+                             "http://www.wikidata.org/entity/"^^xsd:anyURI,
+                             "http://purl.org/dc/terms/"^^xsd:anyURI,
+                             "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI,
+                             "https://schema.org/"^^xsd:anyURI,
+                             "http://www.w3.org/ns/dcat#"^^xsd:anyURI,
+                             "http://xmlns.com/foaf/0.1/"@en.
+<https://w3id.org/amv#1.0.0> a owl:NamedIndividual.
+<https://w3id.org/amv#A*Algorithm> dcterms:description "A* Algorithm is a graph traversal and path search algorithm, which is often used in many fields of computer science due to its completeness, optimality, and optimal efficiency.";
+                                   dcterms:hasVersion <https://w3id.org/amv#DijkstrasAlgorithm>;
+                                   dcterms:relation <https://w3id.org/amv#BellmanFordAlgorithm>;
+                                   dcterms:title "A* Algorithm";
+                                   a <https://w3id.org/amv#Algorithm>,
+                                     owl:NamedIndividual;
+                                   <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#ShortestPathProblem>;
+                                   <https://w3id.org/amv#dataStructureUsed> <https://w3id.org/amv#GraphDataStructure>;
+                                   <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#A*SpaceComplexity>;
+                                   <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#A*TimeComplexity>;
+                                   <https://w3id.org/amv#pub_appearedIn> <https://w3id.org/amv#AFormalBasisForTheHeuristicDeterminationOfMinimumCostPaths>.
+<https://w3id.org/amv#A*SpaceComplexity> a owl:NamedIndividual;
+                                         <https://w3id.org/amv#worstCaseSpaceComplexity> "O(|V|)".
+<https://w3id.org/amv#A*TimeComplexity> a owl:NamedIndividual;
+                                        <https://w3id.org/amv#worstCaseTimeComplexity> "O(|E|)".
+<https://w3id.org/amv#AFormalBasisForTheHeuristicDeterminationOfMinimumCostPaths> dcterms:created "01-01-1968T00:00:00";
+                                                                                  dcterms:creator <https://w3id.org/amv#PeterHart>,
+                                                                                                  <https://w3id.org/amv#NilsNilson>,
+                                                                                                  <https://w3id.org/amv#BertramRaphael>;
+                                                                                  dcterms:identifier "https://ieeexplore.ieee.org/document/4082128"^^rdfs:Literal;
+                                                                                  dcterms:title "A Formal Basis for the Heuristic Determination of Minimum Cost Paths";
+                                                                                  a owl:NamedIndividual.
+<https://w3id.org/amv#Ada> a <https://w3id.org/amv#ProgrammingLanguage>,
+                             owl:NamedIndividual.
+<https://w3id.org/amv#Algorithm> a owl:Class;
+                                 rdfs:comment "It is a finite and unambiguous sequence of computer implementable instructions to perform a certain task. This can be a simple process, such as adding two numbers together, or a complex function, such as adding effects to an image. It can be expressed within a finite amount of space and time and in a well-defined formal language."@en;
+                                 rdfs:label "Algorithm";
+                                 rdfs:subClassOf [owl:someValuesFrom xsd:nonNegativeInteger ; 
+                                                  owl:onProperty <https://w3id.org/amv#numberOfSteps> ; 
+                                                  a owl:Restriction],
+                                                 [owl:allValuesFrom xsd:string ; 
+                                                  owl:onProperty dcterms:title ; 
+                                                  a owl:Restriction],
+                                                 [owl:someValuesFrom xsd:string ; 
+                                                  owl:onProperty <https://w3id.org/amv#input> ; 
+                                                  a owl:Restriction],
+                                                 [owl:someValuesFrom <https://w3id.org/amv#Problem> ; 
+                                                  owl:onProperty <https://w3id.org/amv#computesSolutionTo> ; 
+                                                  a owl:Restriction],
+                                                 [owl:someValuesFrom xsd:string ; 
+                                                  owl:onProperty <https://w3id.org/amv#output> ; 
+                                                  a owl:Restriction],
+                                                 [owl:someValuesFrom <https://w3id.org/amv#pub_InformationResource> ; 
+                                                  owl:onProperty <https://w3id.org/amv#pub_appearedIn> ; 
+                                                  a owl:Restriction],
+                                                 [owl:onDataRange xsd:string ; 
+                                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                  owl:onProperty dcterms:title ; 
+                                                  a owl:Restriction],
+                                                 [owl:someValuesFrom <https://w3id.org/amv#AlgorithmicType> ; 
+                                                  owl:onProperty <https://w3id.org/amv#isATypeOf> ; 
+                                                  a owl:Restriction].
+<https://w3id.org/amv#Algorithm232-HeapSort> dcterms:creator <https://w3id.org/amv#JWJWilliams>;
+                                             dcterms:identifier "https://doi.org/10.1145/512274.512284"^^rdfs:Literal;
+                                             dcterms:title "Algorithm 232 - HeapSort";
+                                             a owl:NamedIndividual.
+<https://w3id.org/amv#Algorithm64:Quicksort> dcterms:created "1961-01-01T00:00:00"^^rdfs:Literal;
+                                             dcterms:creator <https://w3id.org/amv#CARHoare>;
+                                             dcterms:identifier "https://doi.org/10.1145/366622.366644"^^rdfs:Literal;
+                                             dcterms:title "Algorithm 64: Quicksort";
+                                             a owl:NamedIndividual.
+<https://w3id.org/amv#AlgorithmAnalysisFunction> a owl:Class;
+                                                 rdfs:comment "Time complexity corresponds to the amount of time required for an algorithm to run over the provided input in order to generate the required output. Analysis of this helps to predict the resources that an algorithm will take to finish execution."@en;
+                                                 rdfs:label "AlgorithmAnalysisFunction"@en.
+<https://w3id.org/amv#AlgorithmicType> a owl:Class;
+                                       rdfs:comment """The different type of algorithmic techniques that are used to solve the various existing problems in the most optimized manner.
+This classification is neither exhaustive nor disjoint."""@en;
+                                       rdfs:label "Algorithmic Type"@en.
+<https://w3id.org/amv#Apache> a dcterms:LicenseDocument,
+                                owl:NamedIndividual.
+<https://w3id.org/amv#ApproximationAlgortihm> a <https://w3id.org/amv#AlgorithmicType>,
+                                                owl:NamedIndividual.
+<https://w3id.org/amv#ArneKutzner> a owl:NamedIndividual;
+                                   foaf:name "Arne Kutzner".
+<https://w3id.org/amv#Array> a <https://w3id.org/amv#DataStructure>,
+                               owl:NamedIndividual;
+                             foaf:name "Array".
+<https://w3id.org/amv#AssignmentProblem> a <https://w3id.org/amv#PolynomialTimeProblem>,
+                                           owl:NamedIndividual.
+<https://w3id.org/amv#At&TBellLaboratories> a foaf:Organization,
+                                              owl:NamedIndividual.
+<https://w3id.org/amv#BacktrackingAlgorithm> a <https://w3id.org/amv#AlgorithmicType>,
+                                               owl:NamedIndividual;
+                                             rdfs:comment "Backtracking algorithms are based on a depth-first recursive search."@en.
+<https://w3id.org/amv#Basic> a <https://w3id.org/amv#ProgrammingLanguage>,
+                               owl:NamedIndividual.
+<https://w3id.org/amv#BeadSort> dcterms:created "2002-01-01T00:00:00"^^rdfs:Literal;
+                                dcterms:creator <https://w3id.org/amv#JoshuaJArulanandham>,
+                                                <https://w3id.org/amv#MichaelDinneen>,
+                                                <https://w3id.org/amv#CristianSCalude>;
+                                dcterms:description "A natural sorting algorithm.";
+                                dcterms:identifier "https://rosettacode.org/wiki/Sorting_algorithms/Bead_sort"^^rdfs:Literal;
+                                dcterms:title "Bead Sort";
+                                a owl:NamedIndividual,
+                                  <https://w3id.org/amv#Algorithm>;
+                                <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#Sorting>;
+                                <https://w3id.org/amv#hasImplementation> <https://w3id.org/amv#BeadSortInPython>;
+                                <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#BeadSortSpaceComplexity>;
+                                <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#BeadSortTimeComplexity>;
+                                <https://w3id.org/amv#input> "A set of positive integers.";
+                                <https://w3id.org/amv#inputImage> <https://w3id.org/amv#BeadSort-R>;
+                                <https://w3id.org/amv#outputImage> <https://w3id.org/amv#BeadSort-L>;
+                                <https://w3id.org/amv#pub_appearedIn> <https://w3id.org/amv#BeadSort:ANaturalSortingAlgorithm>.
+<https://w3id.org/amv#BeadSort-L> dcterms:identifier "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/BeadSort-Figure1.svg/220px-BeadSort-Figure1.svg.png"^^rdfs:Literal;
+                                  dcterms:title "Bead Sort-L";
+                                  a owl:NamedIndividual.
+<https://w3id.org/amv#BeadSort-R> dcterms:identifier "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/BeadSort-Figure2.svg/220px-BeadSort-Figure2.svg.png"^^rdfs:Literal;
+                                  dcterms:title "Bead Sort -R";
+                                  a owl:NamedIndividual.
+<https://w3id.org/amv#BeadSort:ANaturalSortingAlgorithm> dcterms:created "2002-01-01T00:00:00"^^rdfs:Literal;
+                                                         dcterms:creator <https://w3id.org/amv#MichaelDinneen>,
+                                                                         <https://w3id.org/amv#JoshuaJArulanandham>,
+                                                                         <https://w3id.org/amv#CristianSCalude>;
+                                                         dcterms:identifier "https://web.archive.org/web/20170809110409/https://www.cs.auckland.ac.nz/~jaru003/research/publications/journals/beadsort.pdf"^^rdfs:Literal;
+                                                         dcterms:title "Bead–Sort: A Natural Sorting Algorithm";
+                                                         a owl:NamedIndividual.
+<https://w3id.org/amv#BeadSortInPython> dcterms:identifier "https://en.wikipedia.org/wiki/Bead_sort#Implementation"^^rdfs:Literal;
+                                        dcterms:title "Bead Sort In Python";
+                                        a owl:NamedIndividual;
+                                        <https://w3id.org/amv#programmingLanguage> <https://w3id.org/amv#Python>.
+<https://w3id.org/amv#BeadSortSpaceComplexity> a owl:NamedIndividual;
+                                               <https://w3id.org/amv#worstCaseTimeComplexity> "O(n^2)".
+<https://w3id.org/amv#BeadSortTimeComplexity> a owl:NamedIndividual;
+                                              <https://w3id.org/amv#averageTimeComplexity> "O(S)";
+                                              <https://w3id.org/amv#bestCaseTimeComplexity> "O(n)";
+                                              <https://w3id.org/amv#worstCaseTimeComplexity> "O(S)".
+<https://w3id.org/amv#BellmanFordAlgorithm> dcterms:created "1958"^^rdfs:Literal;
+                                            dcterms:description "The Bellman–Ford algorithm is an algorithm that computes shortest paths from a single source vertex to all of the other vertices in a weighted digraph. It is capable of handling graphs in which some of the edge weights are negative numbers.",
+                                                                "The Bellman-Ford algorithm was first proposed by Alfonso Shimbel (1955), but is instead named after Richard Bellman and Lester Ford Jr., who published it in 1958 and 1956, respectively.";
+                                            dcterms:relation <https://w3id.org/amv#DijkstrasAlgorithm>;
+                                            dcterms:title "Bellman-Ford Algorithm";
+                                            a owl:NamedIndividual,
+                                              <https://w3id.org/amv#Algorithm>;
+                                            <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#ShortestPathProblem>;
+                                            <https://w3id.org/amv#dataStructureUsed> <https://w3id.org/amv#GraphDataStructure>;
+                                            <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#BellmanFordSpaceComplexity>;
+                                            <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#BellmanFordTimeComplexity>;
+                                            <https://w3id.org/amv#input> "Graph and a source vertex src.";
+                                            <https://w3id.org/amv#inputDescription> "Works on negative or positive vertex, in a directed weighted graph.";
+                                            <https://w3id.org/amv#isATypeOf> <https://w3id.org/amv#DynamicProgrammingAlgorithm>;
+                                            <https://w3id.org/amv#loopConstruct> <https://w3id.org/amv#For>;
+                                            <https://w3id.org/amv#output> "Shortest distance to all vertices from src. If there is a negative weight cycle, then shortest distances are not calculated, negative weight cycle is reported.";
+                                            <https://w3id.org/amv#pub_appearedIn> <https://w3id.org/amv#OnARoutingProblem>,
+                                                                                  <https://w3id.org/amv#NetworkFlowTheory>.
+<https://w3id.org/amv#BellmanFordSpaceComplexity> a <https://w3id.org/amv#SpaceComplexity>,
+                                                    owl:NamedIndividual;
+                                                  <https://w3id.org/amv#bestCaseSpaceComplexity> "O(N)";
+                                                  <https://w3id.org/amv#worstCaseSpaceComplexity> "θ(|V|)".
+<https://w3id.org/amv#BellmanFordTimeComplexity> a <https://w3id.org/amv#TimeComplexity>,
+                                                   owl:NamedIndividual;
+                                                 <https://w3id.org/amv#bestCaseTimeComplexity> "θ(|E|)";
+                                                 <https://w3id.org/amv#worstCaseTimeComplexity> "θ(|V||E|)".
+<https://w3id.org/amv#BellmanFormPerformanceMetric> a <https://w3id.org/amv#PerformanceMetric>,
+                                                      owl:NamedIndividual.
+<https://w3id.org/amv#BertramRaphael> a owl:NamedIndividual;
+                                      foaf:name "Bertram Raphael".
+<https://w3id.org/amv#BestBinFirst> dcterms:description "Best bin first is a search algorithm that is designed to efficiently find an approximate solution to the nearest neighbor search problem in very-high-dimensional spaces.";
+                                    dcterms:title "Best bin first";
+                                    a <https://w3id.org/amv#Algorithm>,
+                                      owl:NamedIndividual.
+<https://w3id.org/amv#BlockSort> dcterms:created "2008-01-01T00:00:00"^^rdfs:Literal;
+                                 dcterms:creator <https://w3id.org/amv#ArneKutzner>,
+                                                 <https://w3id.org/amv#PokSonKim>;
+                                 dcterms:description "Efficient sorting algorithm that combines insert and merge operations.";
+                                 dcterms:title "Block Sort";
+                                 a owl:NamedIndividual,
+                                   <https://w3id.org/amv#Algorithm>;
+                                 <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#Sorting>;
+                                 <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#BlockSortSpaceComplexity>;
+                                 <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#BlockSortTimeComplexity>;
+                                 <https://w3id.org/amv#pub_appearedIn> <https://w3id.org/amv#RatioBasedStableIn-placeMerging>.
+<https://w3id.org/amv#BlockSortSpaceComplexity> a owl:NamedIndividual;
+                                                <https://w3id.org/amv#worstCaseSpaceComplexity> "O(1)".
+<https://w3id.org/amv#BlockSortTimeComplexity> a owl:NamedIndividual;
+                                               <https://w3id.org/amv#averageTimeComplexity> "O(nlog n)";
+                                               <https://w3id.org/amv#bestCaseTimeComplexity> "O(n)";
+                                               <https://w3id.org/amv#worstCaseTimeComplexity> "O(nlog n)".
+<https://w3id.org/amv#BranchAndBoundAlgorithm> a <https://w3id.org/amv#AlgorithmicType>,
+                                                 owl:NamedIndividual;
+                                               rdfs:comment """Branch and bound algorithms are generally used for optimization problems. 
+As the algorithm progresses, a tree of subproblems is formed. 
+The original problem is considered the “root problem”. A method is used to construct an upper and lower bound for a given problem. At each node, apply the bounding methods."""@en.
+<https://w3id.org/amv#BruteForceAlgorithm> a <https://w3id.org/amv#AlgorithmicType>,
+                                             owl:NamedIndividual;
+                                           rdfs:comment "A brute force algorithm simply tries all possibilities until a satisfactory solution is found."@en.
+<https://w3id.org/amv#BubbleSort> dcterms:description "Simple sorting algorithm that works by repeatedly swapping the adjacent elements.";
+                                  dcterms:title "Bubble sort";
+                                  a <https://w3id.org/amv#Algorithm>,
+                                    owl:NamedIndividual;
+                                  <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#Sorting>;
+                                  <https://w3id.org/amv#dataStructureUsed> <https://w3id.org/amv#Array>;
+                                  <https://w3id.org/amv#hasImplementation> <https://w3id.org/amv#BubbleSortPseudocodeImplementation>;
+                                  <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#BubbleSortSpaceComplexity>;
+                                  <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#BubbleSortTimeComplexity>.
+<https://w3id.org/amv#BubbleSortPseudocodeImplementation> dcterms:identifier "https://en.wikipedia.org/wiki/Bubble_sort#Implementation"^^rdfs:Literal;
+                                                          dcterms:title "Bubble Sort Pseudocode Implementation";
+                                                          a owl:NamedIndividual.
+<https://w3id.org/amv#BubbleSortSpaceComplexity> a owl:NamedIndividual;
+                                                 <https://w3id.org/amv#worstCaseSpaceComplexity> "O(1)".
+<https://w3id.org/amv#BubbleSortTimeComplexity> a owl:NamedIndividual;
+                                                <https://w3id.org/amv#averageTimeComplexity> "O(n^2)";
+                                                <https://w3id.org/amv#bestCaseTimeComplexity> "O(n)";
+                                                <https://w3id.org/amv#worstCaseTimeComplexity> "O(n^2)".
+<https://w3id.org/amv#C> a <https://w3id.org/amv#ProgrammingLanguage>,
+                           owl:NamedIndividual.
+<https://w3id.org/amv#C++> a <https://w3id.org/amv#ProgrammingLanguage>,
+                             owl:NamedIndividual.
+<https://w3id.org/amv#CARHoare> a owl:NamedIndividual;
+                                foaf:name "C. A. R. Hoare".
+<https://w3id.org/amv#ChristofidesAlgorithm> a <https://w3id.org/amv#Algorithm>,
+                                               owl:NamedIndividual.
+<https://w3id.org/amv#CodeForDijkstrasAlgorithm> dcterms:identifier "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm#Pseudocode"^^rdfs:Literal;
+                                                 dcterms:title "Code for Dijkstra's algorithm";
+                                                 a owl:NamedIndividual.
+<https://w3id.org/amv#CombinatorialOptimizationProblem> a owl:Class;
+                                                        rdfs:label "Combinatorial optimization problem"@en;
+                                                        rdfs:subClassOf <https://w3id.org/amv#OptimizationProblem>.
+<https://w3id.org/amv#CombinatorialProblem> a owl:Class;
+                                            rdfs:comment "Combinatorial algorithms are computational procedures which are designed to help solve combinatorial problems. Combinatorial problems are problems involving arrangements of elements from a finite set and selections from a finite set.";
+                                            rdfs:label "Combinatorial Problem";
+                                            rdfs:subClassOf <https://w3id.org/amv#Problem>.
+<https://w3id.org/amv#ComputationalGeometryProblem> a owl:Class;
+                                                    rdfs:comment "Computational geometry is a branch of computer science devoted to the study of algorithms which can be stated in terms of geometry. Some purely geometrical problems arise out of the study of computational geometric algorithms, and such problems are also considered to be part of computational geometry.";
+                                                    rdfs:label "Computational Geometry Problem"@en;
+                                                    rdfs:subClassOf <https://w3id.org/amv#Problem>.
+<https://w3id.org/amv#ComputerProgram> a <https://w3id.org/amv#FormOfExpression>,
+                                         owl:NamedIndividual.
+<https://w3id.org/amv#ComputerScience> a <https://w3id.org/amv#pub_Discipline>,
+                                         owl:NamedIndividual.
+<https://w3id.org/amv#ConstantFunctions> a <https://w3id.org/amv#AlgorithmAnalysisFunction>,
+                                           owl:NamedIndividual.
+<https://w3id.org/amv#ControlTable> a <https://w3id.org/amv#FormOfExpression>,
+                                      owl:NamedIndividual.
+<https://w3id.org/amv#Copyleft> a dcterms:LicenseDocument,
+                                  owl:NamedIndividual.
+<https://w3id.org/amv#CreativeCommonsAttribution3.0> a dcterms:LicenseDocument,
+                                                       owl:NamedIndividual.
+<https://w3id.org/amv#CreativeCommonsAttribution4.0> a dcterms:LicenseDocument,
+                                                       owl:NamedIndividual.
+<https://w3id.org/amv#CristianSCalude> a owl:NamedIndividual;
+                                       foaf:name "Cristian S. Calude".
+<https://w3id.org/amv#CubicFunctionsAndPolynomials> a <https://w3id.org/amv#AlgorithmAnalysisFunction>,
+                                                      owl:NamedIndividual.
+<https://w3id.org/amv#DataExtractionFromSbr> dcterms:created "2022-01-01T00:00:00"^^rdfs:Literal;
+                                             dcterms:description "Extract the data of 75 algorithmic problems from Stony Brooks Algorithm Repository in tabular form.";
+                                             dcterms:identifier "https://github.com/jyotimapatel/Algorithmic_Knowledge_Graph/blob/main/scrape.py"^^rdfs:Literal;
+                                             dcterms:title "Data Extraction From Sbr";
+                                             a <https://w3id.org/amv#Algorithm>,
+                                               owl:NamedIndividual;
+                                             <https://w3id.org/amv#dataStructureUsed> <https://w3id.org/amv#List>,
+                                                                                      <https://w3id.org/amv#Dictionary>;
+                                             <https://w3id.org/amv#formOfExpression> <https://w3id.org/amv#Pseudocode>;
+                                             <https://w3id.org/amv#hasImplementation> <https://w3id.org/amv#DataExtractionImplementation>;
+                                             <https://w3id.org/amv#input> "https://algorist.com/algorist.html";
+                                             <https://w3id.org/amv#loopConstruct> <https://w3id.org/amv#For>;
+                                             <https://w3id.org/amv#numberOfSteps> "9"^^xsd:nonNegativeInteger;
+                                             <https://w3id.org/amv#output> "https://github.com/jyotimapatel/Algorithmic_Knowledge_Graph/blob/main/Problem(75).csv".
+<https://w3id.org/amv#DataExtractionImplementation> dcterms:identifier "https://github.com/jyotimapatel/Algorithmic_Knowledge_Graph/blob/main/Problem(75).csv"^^rdfs:Literal;
+                                                    dcterms:title "Data Extraction Implementation";
+                                                    a owl:NamedIndividual;
+                                                    <https://w3id.org/amv#programmingLanguage> <https://w3id.org/amv#Python>.
+<https://w3id.org/amv#DataStructure> a owl:Class;
+                                     rdfs:comment "A data structure is a named location that can be used to store and organize data."@en;
+                                     rdfs:label "Data Structure".
+<https://w3id.org/amv#DataStructuresProblem> a owl:Class;
+                                             rdfs:comment "Solving problems related to data structure i.e  a particular way of organizing data in a computer so that it can be used effectively.";
+                                             rdfs:label "Data Structures Problem"@en;
+                                             rdfs:subClassOf <https://w3id.org/amv#Problem>.
+<https://w3id.org/amv#DecodingRecurrentNeuralNetwork> a owl:NamedIndividual;
+                                                      <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#DecodingTargetLanguage>;
+                                                      <https://w3id.org/amv#pub_appearedIn> <https://w3id.org/amv#SequenceToSequenceLearningWithNeuralNetworks>.
+<https://w3id.org/amv#DecodingTargetLanguage> a owl:NamedIndividual.
+<https://w3id.org/amv#DelbertRayFulkerson> a foaf:Person,
+                                             owl:NamedIndividual.
+<https://w3id.org/amv#DerrickHenryLehmer> a foaf:Person,
+                                            owl:NamedIndividual.
+<https://w3id.org/amv#Dictionary> a <https://w3id.org/amv#DataStructure>,
+                                    owl:NamedIndividual.
+<https://w3id.org/amv#DifferentialCalculus> a <https://w3id.org/amv#MathematicalProperties>,
+                                              owl:NamedIndividual.
+<https://w3id.org/amv#DijkastrasAlgorithmTimeComplexity> a owl:NamedIndividual;
+                                                         <https://w3id.org/amv#worstCaseTimeComplexity> "O(|E|+|V| log |V|)".
+<https://w3id.org/amv#DijkstrasAlgorithm> dcterms:creator <https://w3id.org/amv#EdsgerWDijkstra>;
+                                          dcterms:description "Dijkstra's algorithm is a graph search algorithm that solves the single-source shortest path problem for a graph with non-negative edge path costs, producing a shortest path tree.",
+                                                              "An algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks.";
+                                          dcterms:relation <https://w3id.org/amv#BellmanFordAlgorithm>;
+                                          dcterms:title "Dijkstra's Algorithm";
+                                          a owl:NamedIndividual,
+                                            <https://w3id.org/amv#Algorithm>;
+                                          <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#ShortestPathProblem>;
+                                          <https://w3id.org/amv#formOfExpression> <https://w3id.org/amv#Pseudocode>;
+                                          <https://w3id.org/amv#hasImplementation> <https://w3id.org/amv#CodeForDijkstrasAlgorithm>;
+                                          <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#DijkastrasAlgorithmTimeComplexity>;
+                                          <https://w3id.org/amv#input> "a directed and weighted graph consisting of 2 or more nodes.";
+                                          <https://w3id.org/amv#inputDescription> "Works on only positive- weight edges in a directed, acyclic graph. The input generally represented by an adjacency matrix or list, and a start node.";
+                                          <https://w3id.org/amv#isATypeOf> <https://w3id.org/amv#GreedyAlgorithm>;
+                                          <https://w3id.org/amv#output> "a set of edges depicting the shortest path to each destination node.".
+<https://w3id.org/amv#DivideAndConquerAlgorithm> a <https://w3id.org/amv#AlgorithmicType>,
+                                                   owl:NamedIndividual;
+                                                 rdfs:comment "A divide and conquer algorithm consists of two parts: (i) Divide the problem into smaller subproblems of the same type, and solve these subproblems recursively; (ii) Combine the solutions to the subproblems into a solution to the original proble."@en.
+<https://w3id.org/amv#DoWhile> a <https://w3id.org/amv#LoopConstruct>,
+                                 owl:NamedIndividual.
+<https://w3id.org/amv#DonaldKnuth> a foaf:Person,
+                                     owl:NamedIndividual.
+<https://w3id.org/amv#Drakon-chart> a <https://w3id.org/amv#FormOfExpression>,
+                                      owl:NamedIndividual.
+<https://w3id.org/amv#DynamicProgrammingAlgorithm> a <https://w3id.org/amv#AlgorithmicType>,
+                                                     owl:NamedIndividual;
+                                                   rdfs:comment """A dynamic programming algorithm remembers past results and uses them to find new results. 
+Dynamic programming is generally used for optimization problems, where multiple solutions exist but need to find the “best” one."""@en.
+<https://w3id.org/amv#EdouardLucas> a foaf:Person,
+                                      owl:NamedIndividual.
+<https://w3id.org/amv#EdsgerWDijkstra> a owl:NamedIndividual;
+                                       foaf:name "Edsger W. Dijkstra".
+<https://w3id.org/amv#EdwardWForgy> a foaf:Person,
+                                      owl:NamedIndividual.
+<https://w3id.org/amv#EncoRNNTimeCom1> a <https://w3id.org/amv#TimeComplexity>,
+                                         owl:NamedIndividual;
+                                       <https://w3id.org/amv#bestCaseTimeComplexity> "O(N)".
+<https://w3id.org/amv#EncoderDecoder> a <https://w3id.org/amv#Algorithm>,
+                                        owl:NamedIndividual;
+                                      <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#NeuralMachineTranslation>;
+                                      <https://w3id.org/amv#hasSubalgorithm> <https://w3id.org/amv#EncodingRecurrentNeuralNetwork>,
+                                                                             <https://w3id.org/amv#DecodingRecurrentNeuralNetwork>;
+                                      <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#EncoderDecoderTimeComplexity>.
+<https://w3id.org/amv#EncoderDecoderTimeComplexity> a owl:NamedIndividual;
+                                                    <https://w3id.org/amv#bestCaseTimeComplexity> "O(N)".
+<https://w3id.org/amv#EncodingRecurrentNeuralNetwork> dcterms:created "2014-01-01T00:00:00"^^rdfs:Literal;
+                                                      dcterms:creator <https://w3id.org/amv#IlyaSutskever>,
+                                                                      <https://w3id.org/amv#QuocVLe>,
+                                                                      <https://w3id.org/amv#OriolVinyals>;
+                                                      dcterms:description "It uses deep neural network layers and converts the input words to corresponding hidden vectors. Each vector represents the current word and the context of the word.";
+                                                      dcterms:title "Encoding Recurrent Neural Network";
+                                                      a owl:NamedIndividual;
+                                                      <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#EncodingSourceLanguage>;
+                                                      <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#EncoRNNTimeCom1>;
+                                                      <https://w3id.org/amv#inputDescription> "Series of symbols in some language that need to be translated.";
+                                                      <https://w3id.org/amv#pub_appearedIn> <https://w3id.org/amv#SequenceToSequenceLearningWithNeuralNetworks>.
+<https://w3id.org/amv#EncodingSourceLanguage> a owl:NamedIndividual.
+<https://w3id.org/amv#ExponentialFunctions> a <https://w3id.org/amv#AlgorithmAnalysisFunction>,
+                                              owl:NamedIndividual.
+<https://w3id.org/amv#FastMultipoleMethod> dcterms:description "The fast multipole method (FMM) is a numerical technique that was developed to speed up the calculation of long-ranged forces in the n-body problem.";
+                                           dcterms:title "Fast multipole method";
+                                           a <https://w3id.org/amv#Algorithm>,
+                                             owl:NamedIndividual;
+                                           <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#n-bodyProblem>.
+<https://w3id.org/amv#FindingAMatch> a owl:NamedIndividual.
+<https://w3id.org/amv#Flowchart> a <https://w3id.org/amv#FormOfExpression>,
+                                   owl:NamedIndividual.
+<https://w3id.org/amv#For> a <https://w3id.org/amv#LoopConstruct>,
+                             owl:NamedIndividual.
+<https://w3id.org/amv#FormOfExpression> a owl:Class;
+                                        rdfs:comment "The available form of expression/ notation of an algorithm. For example, Flowcharts, pseudocode, control tables, etc. (source: https://en.wikipedia.org/wiki/Algorithm)"@en;
+                                        rdfs:label "Form of expression"@en.
+<https://w3id.org/amv#Fortran> a <https://w3id.org/amv#ProgrammingLanguage>,
+                                 owl:NamedIndividual.
+<https://w3id.org/amv#GNU> a dcterms:LicenseDocument,
+                             owl:NamedIndividual.
+<https://w3id.org/amv#GPL> a dcterms:LicenseDocument,
+                             owl:NamedIndividual.
+<https://w3id.org/amv#GaussianElimination> a <https://w3id.org/amv#MathematicalProperties>,
+                                             owl:NamedIndividual.
+<https://w3id.org/amv#GeorgeDantzig> a foaf:Person,
+                                       owl:NamedIndividual.
+<https://w3id.org/amv#Graph> a owl:NamedIndividual;
+                             rdfs:isDefinedBy "https://xlinux.nist.gov/dads/HTML/graph.html"@en;
+                             rdfs:label "Graph"@en;
+                             <https://w3id.org/amv#definition> "A set of items connected by edges. Each item is called a vertex or node. Formally, a graph is a set of vertices and a binary relation between vertices, adjacency.".
+<https://w3id.org/amv#GraphDataStructure> a <https://w3id.org/amv#DataStructure>,
+                                            owl:NamedIndividual.
+<https://w3id.org/amv#GraphProblem> a owl:Class;
+                                    rdfs:comment "A Graph is a non-linear data structure consisting of nodes and edges. The nodes are sometimes also referred to as vertices and the edges are lines or arcs that connect any two nodes in the graph.";
+                                    rdfs:label "Graph Problem"@en;
+                                    rdfs:subClassOf <https://w3id.org/amv#Problem>.
+<https://w3id.org/amv#GraphTheory> a <https://w3id.org/amv#MathematicalProperties>,
+                                     owl:NamedIndividual.
+<https://w3id.org/amv#GreedyAlgorithm> a <https://w3id.org/amv#AlgorithmicType>,
+                                         owl:NamedIndividual.
+<https://w3id.org/amv#HardProblem> a owl:Class;
+                                   rdfs:comment """Any graph problem, which is NP-hard in general graphs, becomes polynomial-time solvable when restricted to graphs in special
+classes.""";
+                                   rdfs:label "Hard Problem"@en;
+                                   rdfs:subClassOf <https://w3id.org/amv#GraphProblem>.
+<https://w3id.org/amv#HashTable> a <https://w3id.org/amv#DataStructure>,
+                                   owl:NamedIndividual.
+<https://w3id.org/amv#HeapSort> dcterms:creator <https://w3id.org/amv#JWJWilliams>;
+                                dcterms:description "Heapsort is a comparison-based sorting algorithm. Heapsort can be thought of as an improved selection sort: like selection sort, heapsort divides its input into a sorted and an unsorted region, and it iteratively shrinks the unsorted region by extracting the largest element from it and inserting it into the sorted region.";
+                                dcterms:identifier "https://rosettacode.org/wiki/Sorting_algorithms/Heapsort"^^rdfs:Literal;
+                                dcterms:title "Heap Sort";
+                                a owl:NamedIndividual,
+                                  <https://w3id.org/amv#Algorithm>;
+                                <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#Sorting>;
+                                <https://w3id.org/amv#dataStructureUsed> <https://w3id.org/amv#Array>;
+                                <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#HeapSortSpaceComplexity>;
+                                <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#HeapSortTimeComplexity>;
+                                <https://w3id.org/amv#pub_appearedIn> <https://w3id.org/amv#Algorithm232-HeapSort>.
+<https://w3id.org/amv#HeapSortSpaceComplexity> a owl:NamedIndividual;
+                                               <https://w3id.org/amv#bestCaseSpaceComplexity> "O(n)".
+<https://w3id.org/amv#HeapSortTimeComplexity> a owl:NamedIndividual;
+                                              <https://w3id.org/amv#averageTimeComplexity> "O(nlog n)";
+                                              <https://w3id.org/amv#bestCaseTimeComplexity> "O(n)";
+                                              <https://w3id.org/amv#worstCaseTimeComplexity> "O(nlog n)".
+<https://w3id.org/amv#Hypergraph> a <https://w3id.org/amv#DataStructure>,
+                                    owl:NamedIndividual;
+                                  rdfs:isDefinedBy "https://xlinux.nist.gov/dads/HTML/hypergraph.html"@en;
+                                  rdfs:label "Hypergraph"@en;
+                                  nsprov:specializationOf <https://w3id.org/amv#Graph>;
+                                  <https://w3id.org/amv#definition> "A graph whose hyperedges connect two or more vertices.";
+                                  <https://w3id.org/amv#formalDefinition> "A hypergraph G can be defined as a pair (V, E), where V is a set of vertices, and E is a set of hyperedges between the vertices. Each hyperedge is a set of vertices: E ⊆ {{u, v, …} ∈ 2V}. (Hyperedges are undirected.)".
+<https://w3id.org/amv#IlyaSutskever> a owl:NamedIndividual;
+                                     foaf:name "Ilya Sutskever".
+<https://w3id.org/amv#Implementation> a owl:Class;
+                                      rdfs:comment "A manifestation of a technical specification or algorithm as a program, software component, or other computer system through computer programming and deployment (source: https://en.wikipedia.org/wiki/Implementation)."@en;
+                                      rdfs:label "Implementation"@en;
+                                      rdfs:subClassOf [owl:someValuesFrom schemas:OperatingSystem ; 
+                                                       owl:onProperty <https://w3id.org/amv#runsOnOperatingSystem> ; 
+                                                       a owl:Restriction],
+                                                      [owl:someValuesFrom <https://w3id.org/amv#ProgrammingLanguage> ; 
+                                                       owl:onProperty <https://w3id.org/amv#programmingLanguage> ; 
+                                                       a owl:Restriction],
+                                                      [owl:someValuesFrom <https://w3id.org/amv#Algorithm> ; 
+                                                       owl:onProperty <https://w3id.org/amv#implementationOf> ; 
+                                                       a owl:Restriction].
+<https://w3id.org/amv#InsertionSort> dcterms:description "Sorting algorithm that, at each iteration, inserts the current input element into the suitable position between the already sorted elements.";
+                                     dcterms:identifier "https://rosettacode.org/wiki/Sorting_algorithms/Insertion_sort"^^rdfs:Literal;
+                                     dcterms:title "Insertion Sort";
+                                     a owl:NamedIndividual,
+                                       <https://w3id.org/amv#Algorithm>;
+                                     <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#Sorting>;
+                                     <https://w3id.org/amv#dataStructureUsed> <https://w3id.org/amv#Array>;
+                                     <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#InsertionSortSpaceComplexity>;
+                                     <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#InsertionSortTimeComplexity>;
+                                     <https://w3id.org/amv#onlineAlgorithm> false.
+<https://w3id.org/amv#InsertionSortSpaceComplexity> a owl:NamedIndividual;
+                                                    <https://w3id.org/amv#worstCaseSpaceComplexity> "O(1)".
+<https://w3id.org/amv#InsertionSortTimeComplexity> a owl:NamedIndividual;
+                                                   <https://w3id.org/amv#averageTimeComplexity> "O(n^2)";
+                                                   <https://w3id.org/amv#bestCaseTimeComplexity> "O(n)";
+                                                   <https://w3id.org/amv#worstCaseTimeComplexity> "O(n^2)".
+<https://w3id.org/amv#Internal> a dcterms:RightsStatement,
+                                  owl:NamedIndividual.
+<https://w3id.org/amv#JHHalton> a foaf:Person,
+                                  owl:NamedIndividual.
+<https://w3id.org/amv#JWJWilliams> a owl:NamedIndividual;
+                                   foaf:name "J.W.J Williams".
+<https://w3id.org/amv#JamesHMorris> a foaf:Person,
+                                      owl:NamedIndividual.
+<https://w3id.org/amv#JaromirDolecek> a owl:NamedIndividual.
+<https://w3id.org/amv#Java> a <https://w3id.org/amv#ProgrammingLanguage>,
+                              owl:NamedIndividual.
+<https://w3id.org/amv#JillianBeardwood> a foaf:Person,
+                                          owl:NamedIndividual.
+<https://w3id.org/amv#JohnHammersley> a foaf:Person,
+                                        owl:NamedIndividual.
+<https://w3id.org/amv#JohnMauchly> a foaf:Person,
+                                     owl:NamedIndividual.
+<https://w3id.org/amv#JohnVonNeumann> a owl:NamedIndividual;
+                                      foaf:name "John Von Neumann".
+<https://w3id.org/amv#JoshuaJArulanandham> a owl:NamedIndividual;
+                                           foaf:name "Joshua J. Arulanandham".
+<https://w3id.org/amv#KenThompson> a foaf:Person,
+                                     owl:NamedIndividual.
+<https://w3id.org/amv#LRFord> a owl:NamedIndividual;
+                              foaf:name "L.R Ford".
+<https://w3id.org/amv#LinearAlgebra> a <https://w3id.org/amv#pub_Discipline>,
+                                       <https://w3id.org/amv#MathematicalProperties>,
+                                       owl:NamedIndividual.
+<https://w3id.org/amv#LinearFunctions> a <https://w3id.org/amv#AlgorithmAnalysisFunction>,
+                                         owl:NamedIndividual.
+<https://w3id.org/amv#LinkedList> a <https://w3id.org/amv#DataStructure>,
+                                    owl:NamedIndividual.
+<https://w3id.org/amv#Lisp> a <https://w3id.org/amv#ProgrammingLanguage>,
+                              owl:NamedIndividual.
+<https://w3id.org/amv#List> a <https://w3id.org/amv#DataStructure>,
+                              owl:NamedIndividual.
+<https://w3id.org/amv#LlewellynThomas> a foaf:Person,
+                                         owl:NamedIndividual.
+<https://w3id.org/amv#LogarithmicFunction> a <https://w3id.org/amv#AlgorithmAnalysisFunction>,
+                                             owl:NamedIndividual.
+<https://w3id.org/amv#LoopConstruct> a owl:Class;
+                                     rdfs:comment "The type of loop best suited when an algorithm is implemented in any desired programming language. The loop types are for loop, while loop, do-while loop."@en;
+                                     rdfs:label "Loop construct"@en.
+<https://w3id.org/amv#MS-DOS> a schemas:OperatingSystem,
+                                owl:NamedIndividual.
+<https://w3id.org/amv#MatchFindingAlgorithm> a owl:NamedIndividual;
+                                             <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#FindingAMatch>.
+<https://w3id.org/amv#Mathematica> a owl:NamedIndividual.
+<https://w3id.org/amv#MathematicalProperties> a owl:Class;
+                                              rdfs:comment "The mathematical concept used in the algorithm to tackle the problem. This includes set theoty, linear algebra, graph theory etc."@en;
+                                              rdfs:label "Mathematical property"@en.
+<https://w3id.org/amv#Mathematics> a <https://w3id.org/amv#pub_Discipline>,
+                                     owl:NamedIndividual;
+                                   <https://w3id.org/amv#pub_hasBranch> <https://w3id.org/amv#LinearAlgebra>,
+                                                                        <https://w3id.org/amv#Graph>.
+<https://w3id.org/amv#Matlab> a <https://w3id.org/amv#ProgrammingLanguage>,
+                                owl:NamedIndividual.
+<https://w3id.org/amv#MergeSort> dcterms:created "1945-01-01T00:00:00"^^rdfs:Literal;
+                                 dcterms:creator <https://w3id.org/amv#JohnVonNeumann>;
+                                 dcterms:description "Merge sort is an efficient, general-purpose, and comparison-based sorting algorithm.";
+                                 dcterms:identifier "https://rosettacode.org/wiki/Sorting_algorithms/Merge_sort"^^rdfs:Literal;
+                                 dcterms:title "Merge Sort";
+                                 a <https://w3id.org/amv#Algorithm>,
+                                   owl:NamedIndividual;
+                                 <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#Sorting>;
+                                 <https://w3id.org/amv#dataStructureUsed> <https://w3id.org/amv#Array>;
+                                 <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#MergeSortSpaceComplexity>;
+                                 <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#MergeSortTimeComplexity>;
+                                 <https://w3id.org/amv#isATypeOf> <https://w3id.org/amv#DivideAndConquerAlgorithm>.
+<https://w3id.org/amv#MergeSortSpaceComplexity> a owl:NamedIndividual;
+                                                <https://w3id.org/amv#bestCaseSpaceComplexity> "O(1)";
+                                                <https://w3id.org/amv#worstCaseSpaceComplexity> "O(n)".
+<https://w3id.org/amv#MergeSortTimeComplexity> a owl:NamedIndividual;
+                                               <https://w3id.org/amv#averageTimeComplexity> "O(nlog n)";
+                                               <https://w3id.org/amv#bestCaseTimeComplexity> "O(nlog n)";
+                                               <https://w3id.org/amv#worstCaseTimeComplexity> "O(nlog n)".
+<https://w3id.org/amv#MessageComplexity> a owl:Class;
+                                         rdfs:comment "The number of messages passed. This is an important measure, primarily applicable in case of distributed algorithms."@en;
+                                         rdfs:label "Message complexity"@en;
+                                         rdfs:subClassOf <https://w3id.org/amv#Metric>.
+<https://w3id.org/amv#Metric> a owl:Class;
+                              rdfs:label "Metric"@en.
+<https://w3id.org/amv#MichaelDinneen> a owl:NamedIndividual;
+                                      foaf:name "Michael Dinneen".
+<https://w3id.org/amv#MicrosoftWindows> a schemas:OperatingSystem,
+                                          owl:NamedIndividual.
+<https://w3id.org/amv#NaturalLanguage> a <https://w3id.org/amv#FormOfExpression>,
+                                         owl:NamedIndividual.
+<https://w3id.org/amv#NetworkFlowTheory> dcterms:created "01-01-1956T00:00:00"^^rdfs:Literal;
+                                         dcterms:creator <https://w3id.org/amv#LRFord>;
+                                         dcterms:identifier "https://www.rand.org/pubs/papers/P923.html"^^rdfs:Literal,
+                                                            "https://doi.org/10.1090/qam/102435";
+                                         dcterms:title "Network Flow Theory.";
+                                         a bibo:AcademicArticle,
+                                           owl:NamedIndividual.
+<https://w3id.org/amv#NeuralMachineTranslation> a <https://w3id.org/amv#Problem>,
+                                                  owl:NamedIndividual;
+                                                <https://w3id.org/amv#hasSubproblem> <https://w3id.org/amv#EncodingSourceLanguage>,
+                                                                                     <https://w3id.org/amv#DecodingTargetLanguage>.
+<https://w3id.org/amv#NilsNilson> a owl:NamedIndividual;
+                                  foaf:name "NIls Nilson".
+<https://w3id.org/amv#NumericalProblem> a owl:Class;
+                                        rdfs:comment "Numerical algorithms are behind designing shapes (e.g. shapes for cars, planes, fonts), computing intensities for displaying graphics, animating moving objects, studying the spread of diseases, modelling the orbit of planets and satellites, supporting search engines such as google, and many more practical problems.";
+                                        rdfs:label "Numerical Problem"@en;
+                                        rdfs:subClassOf <https://w3id.org/amv#Problem>.
+<https://w3id.org/amv#OnARoutingProblem> dcterms:created "01-01-1958T00:00:00"^^rdfs:Literal;
+                                         dcterms:creator <https://w3id.org/amv#RichardEBellman>;
+                                         dcterms:identifier "https://doi.org/10.1090/qam/102435"^^rdfs:Literal;
+                                         dcterms:title "On a Routing Problem";
+                                         a bibo:AcademicArticle,
+                                           owl:NamedIndividual;
+                                         <https://w3id.org/amv#pub_publishedIn> <https://w3id.org/amv#QuartApplMath.>.
+<https://w3id.org/amv#OptimizationProblem> a owl:Class;
+                                           rdfs:comment "An optimization problem is the problem of finding the best solution from all feasible solutions."@en;
+                                           rdfs:label "Optimization problem"@en;
+                                           rdfs:subClassOf <https://w3id.org/amv#Problem>.
+<https://w3id.org/amv#OriolVinyals> a owl:NamedIndividual;
+                                    foaf:name "Oriol Vinyals".
+<https://w3id.org/amv#PHP> a <https://w3id.org/amv#ProgrammingLanguage>,
+                             owl:NamedIndividual.
+<https://w3id.org/amv#Pascal> a <https://w3id.org/amv#ProgrammingLanguage>,
+                                owl:NamedIndividual.
+<https://w3id.org/amv#PerAustrin> a foaf:Person,
+                                    owl:NamedIndividual.
+<https://w3id.org/amv#PerformanceMetric> a owl:Class;
+                                         rdfs:comment "Performance metrics (e.g., accuracy, precision, recall) are used to evaluate different algorithms."@en;
+                                         rdfs:label "Performance metric"@en;
+                                         rdfs:subClassOf <https://w3id.org/amv#Metric>.
+<https://w3id.org/amv#PeterHart> a owl:NamedIndividual;
+                                 foaf:name "Peter Hart".
+<https://w3id.org/amv#PeterMcIlroy> a foaf:Person,
+                                      owl:NamedIndividual.
+<https://w3id.org/amv#PokSonKim> a owl:NamedIndividual;
+                                 foaf:name "Pok Son Kim".
+<https://w3id.org/amv#PolynomialTimeProblem> a owl:Class;
+                                             rdfs:comment "Polynomial time problem means that an algorithm exists for its solution such that the number of steps in the algorithm is bounded by a polynomial function of n, where n corresponds to the length of the input for the problem."@en;
+                                             rdfs:label "Polynomial Time Problem"@en;
+                                             rdfs:subClassOf <https://w3id.org/amv#GraphProblem>.
+<https://w3id.org/amv#PriorityQueue> a <https://w3id.org/amv#DataStructure>,
+                                       owl:NamedIndividual.
+<https://w3id.org/amv#Problem> a owl:Class;
+                               rdfs:comment "The various problems for which an algorithm is written."@en;
+                               rdfs:label "Problem"@en.
+<https://w3id.org/amv#ProgrammingLanguage> a owl:Class;
+                                           rdfs:comment "Language designed to communicate instructions to a machine Programming languages are used in computer programming to implement algorithms.";
+                                           rdfs:label "Programming language"@en.
+<https://w3id.org/amv#Pseudocode> a <https://w3id.org/amv#FormOfExpression>,
+                                    owl:NamedIndividual.
+<https://w3id.org/amv#Public> a dcterms:RightsStatement,
+                                owl:NamedIndividual.
+<https://w3id.org/amv#Python> a <https://w3id.org/amv#ProgrammingLanguage>,
+                                owl:NamedIndividual.
+<https://w3id.org/amv#QuadriticFunction> a <https://w3id.org/amv#AlgorithmAnalysisFunction>,
+                                           owl:NamedIndividual.
+<https://w3id.org/amv#QuartApplMath.> dcterms:title "Quarterly Applied Mathematics";
+                                      a bibo:Journal,
+                                        owl:NamedIndividual.
+<https://w3id.org/amv#QueryProcessing> a owl:NamedIndividual;
+                                       <https://w3id.org/amv#hasSubproblem> <https://w3id.org/amv#FindingAMatch>.
+<https://w3id.org/amv#QueryProcessingAlgorithm> a owl:NamedIndividual;
+                                                <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#QueryProcessing>;
+                                                <https://w3id.org/amv#hasSubalgorithm> <https://w3id.org/amv#MatchFindingAlgorithm>.
+<https://w3id.org/amv#Queue> a <https://w3id.org/amv#DataStructure>,
+                               owl:NamedIndividual.
+<https://w3id.org/amv#QuickSort> dcterms:created "1961-01-01T00:00:00"^^rdfs:Literal;
+                                 dcterms:creator <https://w3id.org/amv#CARHoare>;
+                                 dcterms:description "Average-case optimal divide and conquer comparison sorting algorithm.",
+                                                     "Quicksort is a type of divide and conquer algorithm for sorting an array, based on a partitioning routine.";
+                                 dcterms:identifier "https://rosettacode.org/wiki/Sorting_algorithms/Quicksort"^^rdfs:Literal;
+                                 dcterms:title "Quick Sort";
+                                 a owl:NamedIndividual,
+                                   <https://w3id.org/amv#Algorithm>;
+                                 <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#Sorting>;
+                                 <https://w3id.org/amv#firstWrittenRecord> "1959-01-01T00:00:00"^^xsd:dateTime;
+                                 <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#QuickSortSpaceComplexity>;
+                                 <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#QuickSortTimeComplexity>;
+                                 <https://w3id.org/amv#isATypeOf> <https://w3id.org/amv#DivideAndConquerAlgorithm>;
+                                 <https://w3id.org/amv#pub_appearedIn> <https://w3id.org/amv#Algorithm64:Quicksort>.
+<https://w3id.org/amv#QuickSortSpaceComplexity> a owl:NamedIndividual;
+                                                <https://w3id.org/amv#averageSpaceComplexity> "O(log n)";
+                                                <https://w3id.org/amv#worstCaseSpaceComplexity> "O(n)".
+<https://w3id.org/amv#QuickSortTimeComplexity> a owl:NamedIndividual;
+                                               <https://w3id.org/amv#averageTimeComplexity> "O(nlog n)";
+                                               <https://w3id.org/amv#bestCaseTimeComplexity> "O(nlog n)";
+                                               <https://w3id.org/amv#worstCaseTimeComplexity> "O(n^^2)".
+<https://w3id.org/amv#QuocVLe> a owl:NamedIndividual;
+                               foaf:name "Quoc V. Le".
+<https://w3id.org/amv#R> a <https://w3id.org/amv#ProgrammingLanguage>,
+                           owl:NamedIndividual.
+<https://w3id.org/amv#RandomizedAlgorithm> a <https://w3id.org/amv#AlgorithmicType>,
+                                             owl:NamedIndividual;
+                                           rdfs:comment "A randomized algorithm uses a random number at least once during the computation to make a decision."@en.
+<https://w3id.org/amv#RatioBasedStableIn-placeMerging> dcterms:created "2008-01-01T00:00:00"^^rdfs:Literal;
+                                                       dcterms:creator <https://w3id.org/amv#PokSonKim>,
+                                                                       <https://w3id.org/amv#ArneKutzner>;
+                                                       dcterms:identifier "http://itbe.hanyang.ac.kr/ak/papers/tamc2008.pdf"^^rdfs:Literal;
+                                                       dcterms:title "Ratio based stable in-place merging";
+                                                       a owl:NamedIndividual.
+<https://w3id.org/amv#RecursiveAlgorithm> a <https://w3id.org/amv#AlgorithmicType>,
+                                            owl:NamedIndividual;
+                                          rdfs:comment """A simple recursive algorithm: (i) Solves the base cases directly; (ii) Recurs with a simpler subproblem; (iii) Does some extra work to convert the solution to the simpler subproblem into a solution to the given problem. 
+It is called “simple” because several of the other algorithm types are inherently recursive. (source: https://www.cis.upenn.edu/~matuszek/cit594-2003/Lectures/35-algorithm-types.ppt)"""@en;
+                                          rdfs:label "Recursive algorithm"@en;
+                                          skos:AltLabel "Simple recursive algorithm"@en.
+<https://w3id.org/amv#RedHatLinux> a schemas:OperatingSystem,
+                                     owl:NamedIndividual.
+<https://w3id.org/amv#RichardEBellman> a owl:NamedIndividual;
+                                       foaf:name "Richard E. Bellman".
+<https://w3id.org/amv#SelectionSort> dcterms:description "Sorting Algorithm";
+                                     dcterms:identifier "https://rosettacode.org/wiki/Sorting_algorithms/Selection_sort"^^rdfs:Literal;
+                                     dcterms:title "Selection Sort";
+                                     a <https://w3id.org/amv#Algorithm>,
+                                       owl:NamedIndividual;
+                                     <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#Sorting>;
+                                     <https://w3id.org/amv#dataStructureUsed> <https://w3id.org/amv#Array>;
+                                     <https://w3id.org/amv#hasImplementation> <https://w3id.org/amv#SelectionSortImplementationInC>;
+                                     <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#SelectionSortSpaceComplexity>;
+                                     <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#SelectionSortTimeComplexity>.
+<https://w3id.org/amv#SelectionSortImplementationInC> dcterms:identifier "https://en.wikipedia.org/wiki/Selection_sort#Implementations"^^rdfs:Literal;
+                                                      dcterms:title "Selection Sort Implementation In C";
+                                                      a owl:NamedIndividual.
+<https://w3id.org/amv#SelectionSortSpaceComplexity> a owl:NamedIndividual;
+                                                    <https://w3id.org/amv#worstCaseSpaceComplexity> "O(1)".
+<https://w3id.org/amv#SelectionSortTimeComplexity> a owl:NamedIndividual;
+                                                   <https://w3id.org/amv#averageTimeComplexity> "O(n^^2)";
+                                                   <https://w3id.org/amv#bestCaseTimeComplexity> "O(n^^2)";
+                                                   <https://w3id.org/amv#worstCaseTimeComplexity> "O(n^^2)".
+<https://w3id.org/amv#SelmerMJohnson> a foaf:Person,
+                                        owl:NamedIndividual.
+<https://w3id.org/amv#SequenceToSequenceLearningWithNeuralNetworks> a owl:NamedIndividual.
+<https://w3id.org/amv#SetProblem> a owl:Class;
+                                  rdfs:comment "Sets are collections of symbols whose order is assumed to carry no significance."@en;
+                                  rdfs:label "Set Problem"@en;
+                                  rdfs:subClassOf <https://w3id.org/amv#Problem>.
+<https://w3id.org/amv#ShortestPathProblem> dcterms:title "Shortest path problem";
+                                           a <https://w3id.org/amv#PolynomialTimeProblem>,
+                                             owl:NamedIndividual;
+                                           rdfs:label "Shortest path problem"@en.
+<https://w3id.org/amv#SmoothSort> dcterms:created "1981-01-01T00:00:00"^^rdfs:Literal;
+                                  dcterms:creator <https://w3id.org/amv#EdsgerWDijkstra>;
+                                  dcterms:description "A comparison-based sorting algorithm.";
+                                  dcterms:title "Smooth Sort";
+                                  a owl:NamedIndividual,
+                                    <https://w3id.org/amv#Algorithm>;
+                                  nsprov:wasDerivedFrom <https://w3id.org/amv#HeapSort>;
+                                  <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#Sorting>;
+                                  <https://w3id.org/amv#dataStructureUsed> <https://w3id.org/amv#Array>;
+                                  <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#SmoothSortSpaceComplexity>;
+                                  <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#SmoothSortTimeComplexity>;
+                                  <https://w3id.org/amv#pub_appearedIn> <https://w3id.org/amv#SmoothSortAlternativeForSortingInSitu>.
+<https://w3id.org/amv#SmoothSortAlternativeForSortingInSitu> dcterms:created "1981-01-01T00:00:00"^^rdfs:Literal;
+                                                             dcterms:creator <https://w3id.org/amv#EdsgerWDijkstra>;
+                                                             dcterms:identifier "https://www.cs.utexas.edu/users/EWD/ewd07xx/EWD796a.PDF"^^rdfs:Literal;
+                                                             dcterms:title "Smooth Sort: An Alternative For Sorting In Situ";
+                                                             a owl:NamedIndividual.
+<https://w3id.org/amv#SmoothSortSpaceComplexity> a owl:NamedIndividual;
+                                                 <https://w3id.org/amv#bestCaseSpaceComplexity> "O(1)";
+                                                 <https://w3id.org/amv#worstCaseSpaceComplexity> "O(n)".
+<https://w3id.org/amv#SmoothSortTimeComplexity> a owl:NamedIndividual;
+                                                <https://w3id.org/amv#averageTimeComplexity> "O(nlog n)";
+                                                <https://w3id.org/amv#bestCaseTimeComplexity> "O(n)".
+<https://w3id.org/amv#Sorting> dcterms:title "Sorting";
+                               a <https://w3id.org/amv#CombinatorialProblem>,
+                                 owl:NamedIndividual.
+<https://w3id.org/amv#SpaceComplexity> a owl:Class;
+                                       rdfs:comment "Space complexity of an algorithm quantifies the amount of space or memory taken by an algorithm to run as a function of the length of the input."@en;
+                                       rdfs:label "Space complexity"@en;
+                                       rdfs:subClassOf <https://w3id.org/amv#Metric>.
+<https://w3id.org/amv#Statistics> a <https://w3id.org/amv#pub_Discipline>,
+                                    owl:NamedIndividual.
+<https://w3id.org/amv#StringProblem> a owl:Class;
+                                     rdfs:comment "Strings are defined by the sequence or arrangement of symbols"@en;
+                                     rdfs:label "String problem"@en;
+                                     rdfs:subClassOf <https://w3id.org/amv#Problem>.
+<https://w3id.org/amv#StuartLloyd> a foaf:Person,
+                                     owl:NamedIndividual.
+<https://w3id.org/amv#TheoryOfSets> a <https://w3id.org/amv#MathematicalProperties>,
+                                      owl:NamedIndividual.
+<https://w3id.org/amv#TheoryOfStatisticsAndProbability> a <https://w3id.org/amv#MathematicalProperties>,
+                                                          owl:NamedIndividual.
+<https://w3id.org/amv#TimPeters> a owl:NamedIndividual;
+                                 foaf:name "Tim Peters".
+<https://w3id.org/amv#TimSort> dcterms:created "2002-01-01T00:00:00"^^rdfs:Literal;
+                               dcterms:creator <https://w3id.org/amv#TimPeters>;
+                               dcterms:description "Timsort is a hybrid stable sorting algorithm, derived from merge sort and insertion sort, designed to perform well on many kinds of real-world data.";
+                               dcterms:title "Tim Sort";
+                               a <https://w3id.org/amv#Algorithm>,
+                                 owl:NamedIndividual;
+                               nsprov:wasDerivedFrom <https://w3id.org/amv#InsertionSort>,
+                                                     <https://w3id.org/amv#MergeSort>;
+                               <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#Sorting>;
+                               <https://w3id.org/amv#dataStructureUsed> <https://w3id.org/amv#Array>;
+                               <https://w3id.org/amv#hasImplementation> <https://w3id.org/amv#TimSortImplementedInPython>;
+                               <https://w3id.org/amv#hasSpaceComplexity> <https://w3id.org/amv#TimSortSpaceComplexity>;
+                               <https://w3id.org/amv#hasTimeComplexity> <https://w3id.org/amv#TimSortTimeComplexity>.
+<https://w3id.org/amv#TimSortImplementedInPython> dcterms:identifier "https://gist.github.com/nandajavarma/a3a6b62f34e74ec4c31674934327bbd3"^^rdfs:Literal;
+                                                  dcterms:title "Tim Sort Implemented In Python";
+                                                  a owl:NamedIndividual;
+                                                  <https://w3id.org/amv#programmingLanguage> <https://w3id.org/amv#Python>.
+<https://w3id.org/amv#TimSortSpaceComplexity> a owl:NamedIndividual;
+                                              <https://w3id.org/amv#worstCaseSpaceComplexity> "O(n)".
+<https://w3id.org/amv#TimSortTimeComplexity> a owl:NamedIndividual;
+                                             <https://w3id.org/amv#averageTimeComplexity> "O(nlog n)";
+                                             <https://w3id.org/amv#bestCaseTimeComplexity> "O(nlog n)";
+                                             <https://w3id.org/amv#worstCaseTimeComplexity> "O(n)".
+<https://w3id.org/amv#TimeComplexity> a owl:Class;
+                                      rdfs:comment """Time complexity of an algorithm quantifies the amount of time taken by an algorithm to run as a function of the length of the input. 
+
+It measures only the executing time of the algorithm in a way that depends only on the algorithm itself and its input."""@en,
+                                                   "It represents the number of times a statement is executed."@en;
+                                      rdfs:label "Time complexity"@en;
+                                      rdfs:subClassOf <https://w3id.org/amv#Metric>.
+<https://w3id.org/amv#TobiasDantzig> a foaf:Person,
+                                       owl:NamedIndividual.
+<https://w3id.org/amv#UndirectedGraph> a <https://w3id.org/amv#DataStructure>,
+                                         owl:NamedIndividual;
+                                       nsprov:specializationOf <https://w3id.org/amv#Graph>.
+<https://w3id.org/amv#Unix> a schemas:OperatingSystem,
+                              owl:NamedIndividual.
+<https://w3id.org/amv#UserQueryProcessing> a <https://w3id.org/amv#PolynomialTimeProblem>,
+                                             owl:NamedIndividual;
+                                           <https://w3id.org/amv#hasSubproblem> <https://w3id.org/amv#QueryProcessing>.
+<https://w3id.org/amv#UserQueryProcessingAlgorithm> a <https://w3id.org/amv#Algorithm>,
+                                                      owl:NamedIndividual;
+                                                    <https://w3id.org/amv#computesSolutionTo> <https://w3id.org/amv#UserQueryProcessing>;
+                                                    <https://w3id.org/amv#hasSubalgorithm> <https://w3id.org/amv#QueryProcessingAlgorithm>.
+<https://w3id.org/amv#VaughanPratt> a foaf:Person,
+                                      owl:NamedIndividual.
+<https://w3id.org/amv#While> a <https://w3id.org/amv#LoopConstruct>,
+                               owl:NamedIndividual.
+<https://w3id.org/amv#WilliamWesleyPeterson> a foaf:Person,
+                                               owl:NamedIndividual.
+<https://w3id.org/amv#accessibility> a owl:DatatypeProperty;
+                                     rdfs:comment "The information on access (i.e modify, read, download) to the algorithm."@en;
+                                     rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                     rdfs:label "accessibility"@en;
+                                     rdfs:range xsd:string.
+<https://w3id.org/amv#accuracy> a owl:DatatypeProperty;
+                                rdfs:comment "It is the measure of the degree of closeness of a measured or calculated value to its actual value."@en,
+                                             "How close the output will be to a set point."@en;
+                                rdfs:domain <https://w3id.org/amv#PerformanceMetric>;
+                                rdfs:label "accuracy";
+                                rdfs:range xsd:decimal.
+<https://w3id.org/amv#acronym> a owl:DatatypeProperty;
+                               rdfs:domain owl:Thing;
+                               rdfs:label "acronym"@en;
+                               rdfs:range xsd:string.
+<https://w3id.org/amv#affiliationOf> a owl:ObjectProperty;
+                                     rdfs:domain foaf:Organization;
+                                     rdfs:label "affiliation of"@en;
+                                     rdfs:range foaf:Person;
+                                     owl:inverseOf <https://w3id.org/amv#affliation>.
+<https://w3id.org/amv#affliation> a owl:ObjectProperty;
+                                  rdfs:comment "An organization that the person is affiliated with. For example, a school/university.";
+                                  rdfs:domain foaf:Person;
+                                  rdfs:label "affliation";
+                                  rdfs:range foaf:Organization.
+<https://w3id.org/amv#algorithmTypeFor> a owl:ObjectProperty;
+                                        rdfs:comment "Is an algorithm type for an algorithm."@en;
+                                        rdfs:domain <https://w3id.org/amv#AlgorithmicType>;
+                                        rdfs:label "algorithm type for"@en;
+                                        rdfs:range <https://w3id.org/amv#Algorithm>;
+                                        owl:inverseOf <https://w3id.org/amv#isATypeOf>.
+<https://w3id.org/amv#alternativeTitle> a owl:DatatypeProperty;
+                                        rdfs:comment "An alternative title of a resource."@en;
+                                        rdfs:domain owl:Thing;
+                                        rdfs:label "alternative title"@en;
+                                        rdfs:range xsd:string.
+<https://w3id.org/amv#analysisFunctionType> a owl:ObjectProperty;
+                                            rdfs:comment "The various function types for analysis of algorithms like logarithmic functions, exponential functions etc."@en;
+                                            rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                            rdfs:label "analysis function type"@en;
+                                            rdfs:range <https://w3id.org/amv#AlgorithmAnalysisFunction>;
+                                            rdfs:subPropertyOf owl:topObjectProperty;
+                                            owl:inverseOf <https://w3id.org/amv#analysisFunctionTypeOf>.
+<https://w3id.org/amv#analysisFunctionTypeOf> a owl:ObjectProperty;
+                                              rdfs:domain <https://w3id.org/amv#AlgorithmAnalysisFunction>;
+                                              rdfs:label "analysis function type of"@en;
+                                              rdfs:range <https://w3id.org/amv#Algorithm>.
+<https://w3id.org/amv#availableAlgorithm> a owl:ObjectProperty;
+                                          rdfs:comment "An algorithm for a given problem."@en;
+                                          rdfs:domain <https://w3id.org/amv#Problem>;
+                                          rdfs:label "available algorithm"@en;
+                                          rdfs:range <https://w3id.org/amv#Algorithm>;
+                                          owl:inverseOf <https://w3id.org/amv#computesSolutionTo>.
+<https://w3id.org/amv#averageMessageComplexity> a owl:DatatypeProperty;
+                                                rdfs:domain <https://w3id.org/amv#MessageComplexity>;
+                                                rdfs:label "average message complexity"@en;
+                                                rdfs:range xsd:string.
+<https://w3id.org/amv#averageSpaceComplexity> a owl:DatatypeProperty;
+                                              rdfs:comment "Space complexity of an algorithm on average.(https://www.wikidata.org/wiki/Property:P3757)";
+                                              rdfs:domain <https://w3id.org/amv#SpaceComplexity>;
+                                              rdfs:isDefinedBy "http://www.wikidata.org/prop/direct/P3757"@en;
+                                              rdfs:label "average space complexity"@en;
+                                              rdfs:range xsd:string.
+<https://w3id.org/amv#averageTimeComplexity> a owl:DatatypeProperty;
+                                             rdfs:comment "Time complexity of an algorithm on average. (https://www.wikidata.org/wiki/Property:P3754)"@en;
+                                             rdfs:domain <https://w3id.org/amv#TimeComplexity>;
+                                             rdfs:isDefinedBy "http://www.wikidata.org/prop/direct/P3754"@en;
+                                             rdfs:label "average time complexity"@en;
+                                             rdfs:range xsd:string.
+<https://w3id.org/amv#bestCaseMessageComplexity> a owl:DatatypeProperty;
+                                                 rdfs:domain <https://w3id.org/amv#MessageComplexity>;
+                                                 rdfs:label "best case message complexity"@en;
+                                                 rdfs:range xsd:string.
+<https://w3id.org/amv#bestCaseSpaceComplexity> a owl:DatatypeProperty;
+                                               rdfs:comment "Space complexity of an algorithm at least.(https://www.wikidata.org/wiki/Property:P3756)";
+                                               rdfs:domain <https://w3id.org/amv#SpaceComplexity>;
+                                               rdfs:isDefinedBy "http://www.wikidata.org/prop/direct/P3756"@en;
+                                               rdfs:label "best case space complexity"@en;
+                                               rdfs:range xsd:string.
+<https://w3id.org/amv#bestCaseTimeComplexity> a owl:DatatypeProperty;
+                                              rdfs:comment "Time complexity of an algorithm at least. (https://www.wikidata.org/wiki/Property:P3753)"@en;
+                                              rdfs:domain <https://w3id.org/amv#TimeComplexity>;
+                                              rdfs:isDefinedBy "http://www.wikidata.org/prop/direct/P3753"@en;
+                                              rdfs:label "best case time complexity"@en;
+                                              rdfs:range xsd:string.
+<https://w3id.org/amv#commentOf> a owl:ObjectProperty;
+                                 rdfs:domain schema:Comment;
+                                 rdfs:label "comment of"@en;
+                                 rdfs:range [owl:unionOf (wikidata:Q8366
+                                                          <https://w3id.org/amv#Implementation>
+                                                          <https://w3id.org/amv#pub_InformationResource>) ; 
+                                             a owl:Class].
+<https://w3id.org/amv#computesSolutionTo> a owl:ObjectProperty;
+                                          rdfs:comment "The type of problem the algorithm solves."@en,
+                                                       "Problem that this algorithm or method solves.(https://www.wikidata.org/wiki/Property:P2159)";
+                                          rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                          rdfs:isDefinedBy "http://www.wikidata.org/prop/direct/P2159"@en;
+                                          rdfs:label "computes solution to"@en;
+                                          rdfs:range <https://w3id.org/amv#Problem>.
+<https://w3id.org/amv#constraint> a owl:DatatypeProperty;
+                                  rdfs:comment "Limitations that an algorithm posses."@en;
+                                  rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                  rdfs:label "constraint"@en;
+                                  rdfs:range xsd:string.
+<https://w3id.org/amv#cpuTimeLimit> a owl:DatatypeProperty;
+                                    rdfs:comment "Time taken by CPU while executing the program.(In seconds)"@en;
+                                    rdfs:domain <https://w3id.org/amv#Implementation>;
+                                    rdfs:label "cpu time limit"@en;
+                                    rdfs:range xsd:integer.
+<https://w3id.org/amv#dataStructureUsed> a owl:ObjectProperty;
+                                         rdfs:comment "The data structure used in an algorithm."@en;
+                                         rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                         rdfs:label "data Structure Used";
+                                         rdfs:range <https://w3id.org/amv#DataStructure>;
+                                         owl:inverseOf <https://w3id.org/amv#dataStructureUsedIn>.
+<https://w3id.org/amv#dataStructureUsedIn> a owl:ObjectProperty;
+                                           rdfs:domain <https://w3id.org/amv#DataStructure>;
+                                           rdfs:label "data Structure Used In";
+                                           rdfs:range <https://w3id.org/amv#Algorithm>.
+<https://w3id.org/amv#definingFormula> a owl:DatatypeProperty;
+                                       rdfs:comment """The mathematical formula used for solving the problem.	
+Mathematical formula representing a theorem or law."""@en;
+                                       rdfs:domain <https://w3id.org/amv#MathematicalProperties>;
+                                       rdfs:isDefinedBy "http://www.wikidata.org/prop/direct/p2534"@en;
+                                       rdfs:label "defining formula"@en;
+                                       rdfs:range xsd:string.
+<https://w3id.org/amv#definition> a owl:DatatypeProperty;
+                                  rdfs:domain owl:Thing;
+                                  rdfs:label "definiton"@en;
+                                  rdfs:range xsd:string.
+<https://w3id.org/amv#edgeCase> a owl:DatatypeProperty;
+                                rdfs:comment "Input values that require special handling in an algorithm. When using the algorithm at an extreme(maximum or minimum) operating parameters."@en;
+                                rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                rdfs:label "edge Case"@en;
+                                rdfs:range xsd:string.
+<https://w3id.org/amv#excerpt> a owl:DatatypeProperty;
+                               rdfs:comment "An excerpt is a contiguous or discontiguous portion, or a passage selected from a larger work or document."@en;
+                               rdfs:domain owl:Thing;
+                               rdfs:label "excerpt"@en;
+                               rdfs:range xsd:string.
+<https://w3id.org/amv#firstWrittenRecord> a owl:DatatypeProperty;
+                                          rdfs:comment "First time a subject was mentioned in writing.(https://www.wikidata.org/wiki/Property:P1249)";
+                                          rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                          rdfs:isDefinedBy "http://www.wikidata.org/prop/direct/P1249"@en;
+                                          rdfs:label "time of earliest written record"@en;
+                                          rdfs:range xsd:dateTime.
+<https://w3id.org/amv#flexible> a owl:DatatypeProperty;
+                                rdfs:comment "The algorithm written in such a way that it allows to add new features without changing the existing module."@en;
+                                rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                rdfs:label "flexible";
+                                rdfs:range xsd:boolean.
+<https://w3id.org/amv#formOfExpression> a owl:ObjectProperty;
+                                        rdfs:comment "The form of expression of an Algorithm.";
+                                        rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                        rdfs:label "form of expression"@en;
+                                        rdfs:range <https://w3id.org/amv#FormOfExpression>;
+                                        owl:inverseOf <https://w3id.org/amv#formOfExpressionOf>.
+<https://w3id.org/amv#formOfExpressionOf> a owl:ObjectProperty;
+                                          rdfs:comment "The form of expression of an Algorithm.";
+                                          rdfs:domain <https://w3id.org/amv#FormOfExpression>;
+                                          rdfs:label "form Of expression of"@en;
+                                          rdfs:range <https://w3id.org/amv#Algorithm>.
+<https://w3id.org/amv#formalDefinition> a owl:DatatypeProperty;
+                                        rdfs:domain owl:Thing;
+                                        rdfs:label "formal definition"@en;
+                                        rdfs:range xsd:string.
+<https://w3id.org/amv#hasImplementation> a owl:ObjectProperty;
+                                         rdfs:comment "The various applications of the algorithm."@en;
+                                         rdfs:domain owl:Thing;
+                                         rdfs:label "has implementation"@en;
+                                         rdfs:range <https://w3id.org/amv#Implementation>;
+                                         owl:inverseOf <https://w3id.org/amv#implementationOf>.
+<https://w3id.org/amv#hasMessageComplexity> a owl:ObjectProperty;
+                                            rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                            rdfs:label "has message complexity"@en;
+                                            rdfs:range <https://w3id.org/amv#MessageComplexity>;
+                                            rdfs:subPropertyOf <https://w3id.org/amv#hasMetric>;
+                                            owl:inverseOf <https://w3id.org/amv#messageComplexityOf>.
+<https://w3id.org/amv#hasMetric> a owl:ObjectProperty;
+                                 rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                 rdfs:label "has metric"@en;
+                                 rdfs:range <https://w3id.org/amv#Metric>;
+                                 owl:inverseOf <https://w3id.org/amv#metricOf>.
+<https://w3id.org/amv#hasPerformanceMetric> a owl:ObjectProperty;
+                                            rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                            rdfs:label "has performance metric"@en;
+                                            rdfs:range <https://w3id.org/amv#PerformanceMetric>;
+                                            rdfs:subPropertyOf <https://w3id.org/amv#hasMetric>;
+                                            owl:inverseOf <https://w3id.org/amv#performanceMetricOf>.
+<https://w3id.org/amv#hasSpaceComplexity> a owl:ObjectProperty;
+                                          rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                          rdfs:label "has space complexity"@en;
+                                          rdfs:range <https://w3id.org/amv#SpaceComplexity>;
+                                          rdfs:subPropertyOf <https://w3id.org/amv#hasMetric>;
+                                          owl:inverseOf <https://w3id.org/amv#spaceComplexityOf>.
+<https://w3id.org/amv#hasSubalgorithm> a owl:TransitiveProperty,
+                                         owl:ObjectProperty;
+                                       rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                       rdfs:label "has subalgorithm"@en;
+                                       rdfs:range <https://w3id.org/amv#Algorithm>;
+                                       rdfs:subPropertyOf dcterms:hasPart;
+                                       owl:inverseOf <https://w3id.org/amv#subalgorithmOf>.
+<https://w3id.org/amv#hasSubproblem> a owl:TransitiveProperty,
+                                       owl:ObjectProperty;
+                                     rdfs:comment "a problem that is contingent on or forms a part of another more inclusive problem."@en;
+                                     rdfs:domain <https://w3id.org/amv#Problem>;
+                                     rdfs:label "has subproblem"@en;
+                                     rdfs:range <https://w3id.org/amv#Problem>;
+                                     rdfs:subPropertyOf dcterms:hasPart;
+                                     owl:inverseOf <https://w3id.org/amv#subproblemOf>.
+<https://w3id.org/amv#hasTimeComplexity> a owl:ObjectProperty;
+                                         rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                         rdfs:label "has time complexity"@en;
+                                         rdfs:range <https://w3id.org/amv#TimeComplexity>;
+                                         rdfs:subPropertyOf <https://w3id.org/amv#hasMetric>;
+                                         owl:inverseOf <https://w3id.org/amv#timeComplexityOf>.
+<https://w3id.org/amv#implementationOf> a owl:ObjectProperty;
+                                        rdfs:comment "The various applications of the algorithm.";
+                                        rdfs:domain <https://w3id.org/amv#Implementation>;
+                                        rdfs:label "implementation of"@en;
+                                        rdfs:range owl:Thing.
+<https://w3id.org/amv#input> a owl:DatatypeProperty;
+                             rdfs:comment "Something that is operated on by any process or system. An algorithm can have zero or more inputs."@en;
+                             rdfs:domain [owl:unionOf (<https://w3id.org/amv#Algorithm>
+                                                       <https://w3id.org/amv#Implementation>) ; 
+                                          a owl:Class];
+                             rdfs:label "input"@en;
+                             rdfs:range xsd:string.
+<https://w3id.org/amv#inputDescription> a owl:DatatypeProperty;
+                                        rdfs:comment "Input description of an algorithm."@en;
+                                        rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                        rdfs:label "input description"@en;
+                                        rdfs:range xsd:string;
+                                        rdfs:subPropertyOf dcterms:description.
+<https://w3id.org/amv#inputImage> a owl:ObjectProperty;
+                                  rdfs:domain owl:Thing;
+                                  rdfs:label "output image"@en;
+                                  rdfs:range foaf:Image;
+                                  rdfs:subPropertyOf foaf:depiction;
+                                  owl:inverseOf <https://w3id.org/amv#isOutputImageOf>.
+<https://w3id.org/amv#isATypeOf> a owl:ObjectProperty;
+                                 rdfs:comment "The nature or genre of an algorithm."@en,
+                                              "The different type of algorithmic techniques that are used to solve the various existing problems in the most optimized manner.This classification is neither exhaustive nor disjoint but highlights the various ways in which a problem can be addressed."@en;
+                                 rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                 rdfs:label "is a type of"@en;
+                                 rdfs:range <https://w3id.org/amv#AlgorithmicType>.
+<https://w3id.org/amv#isInputImageOf> a owl:ObjectProperty;
+                                      rdfs:domain foaf:Image;
+                                      rdfs:label "is input image of"@en;
+                                      rdfs:range owl:Thing;
+                                      rdfs:subPropertyOf owl:topObjectProperty;
+                                      owl:inverseOf <https://w3id.org/amv#outputImage>.
+<https://w3id.org/amv#isOutputImageOf> a owl:ObjectProperty;
+                                       rdfs:domain foaf:Image;
+                                       rdfs:label "is output image of"@en;
+                                       rdfs:range owl:Thing;
+                                       rdfs:subPropertyOf owl:topObjectProperty.
+<https://w3id.org/amv#isSimilarTo> a owl:SymmetricProperty,
+                                     owl:ObjectProperty;
+                                   rdfs:comment "A pointer to another, functionally similar thing (or multiple things), for example, an algorithm is similar to another algorithm or algorithms, a problem is similar to another problem or problems, etc."@en;
+                                   rdfs:domain owl:Thing;
+                                   rdfs:label "is similar to"@en;
+                                   rdfs:range owl:Thing;
+                                   rdfs:subPropertyOf dcterms:relation.
+<https://w3id.org/amv#libraryURI> a owl:DatatypeProperty;
+                                  rdfs:comment "Unique identifier of the central place where the algorithm is stored."@en;
+                                  rdfs:domain [owl:unionOf (<https://w3id.org/amv#Algorithm>
+                                                            <https://w3id.org/amv#Implementation>) ; 
+                                               a owl:Class];
+                                  rdfs:label "library URI";
+                                  rdfs:range xsd:anyURI.
+<https://w3id.org/amv#loopConstruct> a owl:ObjectProperty;
+                                     rdfs:comment "The loop best suited for the algorithm."@en;
+                                     rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                     rdfs:label "loop construct"@en;
+                                     rdfs:range <https://w3id.org/amv#LoopConstruct>;
+                                     owl:inverseOf <https://w3id.org/amv#loopConstructOf>.
+<https://w3id.org/amv#loopConstructOf> a owl:ObjectProperty;
+                                       rdfs:domain <https://w3id.org/amv#LoopConstruct>;
+                                       rdfs:label "loop construct of"@en;
+                                       rdfs:range <https://w3id.org/amv#Algorithm>.
+<https://w3id.org/amv#mathematicalProperty> a owl:ObjectProperty;
+                                            rdfs:comment "The mathematical concept used to solve the problem."@en;
+                                            rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                            rdfs:label "mathematical property"@en;
+                                            rdfs:range <https://w3id.org/amv#MathematicalProperties>;
+                                            owl:inverseOf <https://w3id.org/amv#mathematicalPropertyUsed>.
+<https://w3id.org/amv#mathematicalPropertyUsed> a owl:ObjectProperty;
+                                                rdfs:domain <https://w3id.org/amv#MathematicalProperties>;
+                                                rdfs:label "mathematicalPropertyUsed";
+                                                rdfs:range <https://w3id.org/amv#Algorithm>.
+<https://w3id.org/amv#messageComplexityOf> a owl:ObjectProperty;
+                                           rdfs:domain <https://w3id.org/amv#MessageComplexity>;
+                                           rdfs:label "message complexity of"@en;
+                                           rdfs:range <https://w3id.org/amv#Algorithm>;
+                                           rdfs:subPropertyOf <https://w3id.org/amv#metricOf>.
+<https://w3id.org/amv#metricOf> a owl:ObjectProperty;
+                                rdfs:domain <https://w3id.org/amv#Metric>;
+                                rdfs:label "metric of"@en;
+                                rdfs:range <https://w3id.org/amv#Algorithm>.
+<https://w3id.org/amv#n-bodyProblem> a <https://w3id.org/amv#Problem>,
+                                       owl:NamedIndividual;
+                                     rdfs:comment "The n-body problem is the problem of predicting the individual motions of a group of celestial objects interacting with each other gravitationally."@en;
+                                     rdfs:label "n-body problem"@en.
+<https://w3id.org/amv#numberOfNestedLoops> a owl:DatatypeProperty;
+                                           rdfs:comment "The number of nested loops in an algorithm."@en;
+                                           rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                           rdfs:label "number Of Nested Loops";
+                                           rdfs:range xsd:nonNegativeInteger.
+<https://w3id.org/amv#numberOfSteps> a owl:DatatypeProperty;
+                                     rdfs:comment "Total number of steps that the algorithm takes to solve a certain problem."@en;
+                                     rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                     rdfs:label "number Of Steps";
+                                     rdfs:range xsd:nonNegativeInteger.
+<https://w3id.org/amv#offlineAlgorithm> a owl:DatatypeProperty;
+                                        rdfs:comment "The complete dataset is required to start processing."@en;
+                                        rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                        rdfs:label "offline algorithm"@en;
+                                        rdfs:range xsd:boolean.
+<https://w3id.org/amv#onlineAlgorithm> a owl:DatatypeProperty;
+                                       rdfs:comment "The data can be feed while processing."@en;
+                                       rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                       rdfs:label "online algorithm"@en;
+                                       rdfs:range xsd:boolean.
+<https://w3id.org/amv#operatingSystemFor> a owl:ObjectProperty;
+                                          rdfs:domain schemas:OperatingSystem;
+                                          rdfs:label "operatingSystemFor";
+                                          rdfs:range <https://w3id.org/amv#Implementation>;
+                                          owl:inverseOf <https://w3id.org/amv#runsOnOperatingSystem>.
+<https://w3id.org/amv#optimal> a owl:DatatypeProperty;
+                               rdfs:comment "An algorithm is optimal means the time complexity in the worst case is a lower bound of the function that describes the time complexity in the worst case of a problem that the algorithm in question solves."@en;
+                               rdfs:domain <https://w3id.org/amv#Algorithm>;
+                               rdfs:label "optimal"@en;
+                               rdfs:range xsd:boolean.
+<https://w3id.org/amv#output> a owl:DatatypeProperty;
+                              rdfs:comment "Output after processing the input.";
+                              rdfs:domain [owl:unionOf (<https://w3id.org/amv#Algorithm>
+                                                        <https://w3id.org/amv#Implementation>) ; 
+                                           a owl:Class];
+                              rdfs:label "output"@en;
+                              rdfs:range xsd:string.
+<https://w3id.org/amv#outputImage> a owl:ObjectProperty;
+                                   rdfs:domain owl:Thing;
+                                   rdfs:label "input image"@en;
+                                   rdfs:range foaf:Image;
+                                   rdfs:subPropertyOf foaf:depiction.
+<https://w3id.org/amv#performanceMetricOf> a owl:ObjectProperty;
+                                           rdfs:domain <https://w3id.org/amv#PerformanceMetric>;
+                                           rdfs:label "performance metric of"@en;
+                                           rdfs:range <https://w3id.org/amv#Algorithm>;
+                                           rdfs:subPropertyOf <https://w3id.org/amv#metricOf>.
+<https://w3id.org/amv#precision> a owl:DatatypeProperty;
+                                 rdfs:comment "It is a measure of quality, higher precision means algorithm returns more relevant results than irrelevant ones."@en;
+                                 rdfs:domain <https://w3id.org/amv#PerformanceMetric>;
+                                 rdfs:label "precision"@en;
+                                 rdfs:range xsd:float.
+<https://w3id.org/amv#problemDescription> a owl:DatatypeProperty;
+                                          rdfs:comment "A description providing the problem statement."@en;
+                                          rdfs:domain <https://w3id.org/amv#Problem>;
+                                          rdfs:label "problem description"@en;
+                                          rdfs:range xsd:string;
+                                          rdfs:subPropertyOf dcterms:description.
+<https://w3id.org/amv#programmingLanguage> a owl:ObjectProperty;
+                                           rdfs:comment "In which all language the implementation of the algorithm/ problem is available."@en;
+                                           rdfs:domain <https://w3id.org/amv#Implementation>;
+                                           rdfs:label "programming language"@en;
+                                           rdfs:range <https://w3id.org/amv#ProgrammingLanguage>;
+                                           owl:inverseOf <https://w3id.org/amv#usedInIm>.
+<https://w3id.org/amv#pub_Discipline> a owl:Class;
+                                      rdfs:comment "Academic field of study or profession."@en,
+                                                   "A branch of knowledge."@en;
+                                      rdfs:label "Academic discipline"@en;
+                                      skos:AltLabel "Subject area"@en,
+                                                    "Academic field"@en.
+<https://w3id.org/amv#pub_InformationResource> a owl:Class;
+                                               rdfs:comment "An information resource."@en;
+                                               rdfs:label "Information Resource"@en.
+<https://w3id.org/amv#pub_Manual> a owl:Class;
+                                  rdfs:comment "A small reference book, especially one giving instructions."@en;
+                                  rdfs:label "Manual"@en;
+                                  rdfs:subClassOf bibo:Document.
+<https://w3id.org/amv#pub_accessRightsOf> a owl:ObjectProperty;
+                                          rdfs:domain dcterms:RightsStatement;
+                                          rdfs:label "access rights of"@en;
+                                          rdfs:range owl:Thing;
+                                          rdfs:subPropertyOf <https://w3id.org/amv#pub_rightsOf>.
+<https://w3id.org/amv#pub_appearedIn> a owl:ObjectProperty;
+                                      rdfs:comment "An algorithm appeared in a publication."@en;
+                                      rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                      rdfs:label "appeared In";
+                                      rdfs:range <https://w3id.org/amv#pub_InformationResource>;
+                                      owl:inverseOf <https://w3id.org/amv#pub_contains>.
+<https://w3id.org/amv#pub_branchOf> a owl:TransitiveProperty,
+                                      owl:ObjectProperty;
+                                    rdfs:domain <https://w3id.org/amv#pub_Discipline>;
+                                    rdfs:label "branch Of"@en;
+                                    rdfs:range <https://w3id.org/amv#pub_Discipline>;
+                                    owl:inverseOf <https://w3id.org/amv#pub_hasBranch>.
+<https://w3id.org/amv#pub_contains> a owl:ObjectProperty;
+                                    rdfs:domain <https://w3id.org/amv#pub_InformationResource>;
+                                    rdfs:label "contains";
+                                    rdfs:range <https://w3id.org/amv#Algorithm>.
+<https://w3id.org/amv#pub_contributorOf> a owl:ObjectProperty;
+                                         rdfs:domain foaf:Agent;
+                                         rdfs:label "contributor of"@en;
+                                         rdfs:range owl:Thing.
+<https://w3id.org/amv#pub_creatorOf> a owl:ObjectProperty;
+                                     rdfs:domain foaf:Agent;
+                                     rdfs:label "creator of"@en;
+                                     rdfs:range owl:Thing;
+                                     skos:AltLabel "author of"@en.
+<https://w3id.org/amv#pub_downloadLink> a owl:DatatypeProperty;
+                                        rdfs:comment "URL which can be used to download a work."@en;
+                                        rdfs:domain [owl:unionOf (wikidata:Q8366
+                                                                  <https://w3id.org/amv#Implementation>) ; 
+                                                     a owl:Class];
+                                        rdfs:isDefinedBy "http://www.wikidata.org/prop/direct/p4945"@en;
+                                        rdfs:label "download link"@en;
+                                        rdfs:range xsd:anyURI.
+<https://w3id.org/amv#pub_hasArticle> a owl:ObjectProperty;
+                                      rdfs:domain bibo:Periodical;
+                                      rdfs:label "hasArticle";
+                                      rdfs:range bibo:Article;
+                                      owl:inverseOf <https://w3id.org/amv#pub_publishedIn>.
+<https://w3id.org/amv#pub_hasBranch> a owl:TransitiveProperty,
+                                       owl:ObjectProperty;
+                                     rdfs:comment "Branch of the academic discipline.";
+                                     rdfs:domain <https://w3id.org/amv#pub_Discipline>;
+                                     rdfs:label "has branch"@en;
+                                     rdfs:range <https://w3id.org/amv#pub_Discipline>.
+<https://w3id.org/amv#pub_licenseOf> a owl:ObjectProperty;
+                                     rdfs:domain dcterms:LicenseDocument;
+                                     rdfs:label "license of"@en;
+                                     rdfs:range owl:Thing;
+                                     rdfs:subPropertyOf <https://w3id.org/amv#pub_rightsOf>.
+<https://w3id.org/amv#pub_publishedIn> a owl:ObjectProperty;
+                                       rdfs:domain bibo:Article;
+                                       rdfs:label "published in"@en;
+                                       rdfs:range bibo:Periodical.
+<https://w3id.org/amv#pub_publisherOf> a owl:ObjectProperty;
+                                       rdfs:domain foaf:Agent;
+                                       rdfs:label "publisher of"@en;
+                                       rdfs:range [owl:unionOf (wikidata:Q8366
+                                                                <https://w3id.org/amv#Implementation>
+                                                                <https://w3id.org/amv#pub_InformationResource>) ; 
+                                                   a owl:Class].
+<https://w3id.org/amv#pub_rating> a owl:DatatypeProperty;
+                                  rdfs:comment "Rating given on the basis of usefulness of a thing."@en;
+                                  rdfs:domain owl:Thing;
+                                  rdfs:label "rating"@en;
+                                  rdfs:range xsd:integer.
+<https://w3id.org/amv#pub_readme> a owl:DatatypeProperty;
+                                  rdfs:comment """Provide a description or Link to algorithm, or similar resource \"Readme page\"."""@en;
+                                  rdfs:domain owl:Thing;
+                                  rdfs:label "read me"@en;
+                                  rdfs:range xsd:string.
+<https://w3id.org/amv#pub_rightsOf> a owl:ObjectProperty;
+                                    rdfs:domain dcterms:RightsStatement;
+                                    rdfs:label "rights of"@en;
+                                    rdfs:range owl:Thing.
+<https://w3id.org/amv#pub_subjectOf> a owl:ObjectProperty;
+                                     rdfs:comment "A topic of the resource for."@en;
+                                     rdfs:domain <https://w3id.org/amv#pub_Discipline>;
+                                     rdfs:label "subject of"@en;
+                                     rdfs:range owl:Thing.
+<https://w3id.org/amv#readable> a owl:DatatypeProperty;
+                                rdfs:comment "Is the algorithm readable/understandable to the user."@en;
+                                rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                rdfs:label "readable"@en;
+                                rdfs:range xsd:boolean.
+<https://w3id.org/amv#recall> a owl:DatatypeProperty;
+                              rdfs:comment "percentage of total relevent result correctly classified by the algorithm."@en;
+                              rdfs:domain <https://w3id.org/amv#PerformanceMetric>;
+                              rdfs:label "recall"@en;
+                              rdfs:range xsd:float.
+<https://w3id.org/amv#runsOnOperatingSystem> a owl:ObjectProperty;
+                                             rdfs:domain <https://w3id.org/amv#Implementation>;
+                                             rdfs:label "runs on Operating System"@en;
+                                             rdfs:range schemas:OperatingSystem.
+<https://w3id.org/amv#spaceComplexityOf> a owl:ObjectProperty;
+                                         rdfs:domain <https://w3id.org/amv#SpaceComplexity>;
+                                         rdfs:label "space complexity of"@en;
+                                         rdfs:range <https://w3id.org/amv#Algorithm>;
+                                         rdfs:subPropertyOf <https://w3id.org/amv#metricOf>.
+<https://w3id.org/amv#subalgorithmOf> a owl:TransitiveProperty,
+                                        owl:ObjectProperty;
+                                      rdfs:domain <https://w3id.org/amv#Algorithm>;
+                                      rdfs:label "subalgorithm of"@en;
+                                      rdfs:range <https://w3id.org/amv#Algorithm>;
+                                      rdfs:subPropertyOf dcterms:isPartOf.
+<https://w3id.org/amv#subproblemOf> a owl:TransitiveProperty,
+                                      owl:ObjectProperty;
+                                    rdfs:domain <https://w3id.org/amv#Problem>;
+                                    rdfs:label "subproblem of"@en;
+                                    rdfs:range <https://w3id.org/amv#Problem>;
+                                    rdfs:subPropertyOf dcterms:isPartOf.
+<https://w3id.org/amv#timeComplexityOf> a owl:ObjectProperty;
+                                        rdfs:domain <https://w3id.org/amv#TimeComplexity>;
+                                        rdfs:label "time complexity of"@en;
+                                        rdfs:range <https://w3id.org/amv#Algorithm>;
+                                        rdfs:subPropertyOf <https://w3id.org/amv#metricOf>.
+<https://w3id.org/amv#tree> a <https://w3id.org/amv#DataStructure>,
+                              owl:NamedIndividual.
+<https://w3id.org/amv#tuple> a <https://w3id.org/amv#DataStructure>,
+                               owl:NamedIndividual.
+<https://w3id.org/amv#usedInIm> a owl:ObjectProperty;
+                                rdfs:domain <https://w3id.org/amv#ProgrammingLanguage>;
+                                rdfs:label "programming language used in"@en;
+                                rdfs:range <https://w3id.org/amv#Implementation>.
+<https://w3id.org/amv#worstCaseMessageComplexity> a owl:DatatypeProperty;
+                                                  rdfs:domain <https://w3id.org/amv#MessageComplexity>;
+                                                  rdfs:label "worst case message complexity"@en;
+                                                  rdfs:range xsd:string.
+<https://w3id.org/amv#worstCaseSpaceComplexity> a owl:DatatypeProperty;
+                                                rdfs:comment "Space complexity of an algorithm at most.(https://www.wikidata.org/wiki/Property:P3755)";
+                                                rdfs:domain <https://w3id.org/amv#SpaceComplexity>;
+                                                rdfs:isDefinedBy "http://www.wikidata.org/prop/direct/P3755"@en;
+                                                rdfs:label "worst case space complexity"@en;
+                                                rdfs:range xsd:string.
+<https://w3id.org/amv#worstCaseTimeComplexity> a owl:DatatypeProperty;
+                                               rdfs:comment "Time complexity of an algorithm at most. (https://www.wikidata.org/wiki/Property:P3752)"@en;
+                                               rdfs:domain <https://w3id.org/amv#TimeComplexity>;
+                                               rdfs:isDefinedBy "http://www.wikidata.org/prop/direct/P3752"@en;
+                                               rdfs:label "worst case time complexity"@en;
+                                               rdfs:range xsd:string.
+modp:competencyQuestion a owl:AnnotationProperty.
+modp:vocabularyUsed a owl:AnnotationProperty.
+<https://www.isibang.ac.in/ns/GeneralAlgebra> a <https://w3id.org/amv#MathematicalProperties>,
+                                                owl:NamedIndividual.

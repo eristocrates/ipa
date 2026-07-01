@@ -1,0 +1,1026 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+madsrdf:Address a owl:Class;
+                rdfs:label "Address"@en.
+madsrdf:Affiliation a owl:Class;
+                    rdfs:comment """A resource that describes an individual's affiliation with an
+      organization or group, such as the nature of the affiliation and the active
+      dates."""@en;
+                    rdfs:label "Affiliation"@en.
+madsrdf:Area a owl:Class;
+             rdfs:comment """Describes a resource whose
+      label is a non-jurisdictional geographic entity.""";
+             rdfs:label "Area Type"@en;
+             rdfs:subClassOf madsrdf:Geographic.
+madsrdf:Authority a owl:Class;
+                  rdfs:comment """A concept with a controlled
+      label.""";
+                  rdfs:label "Authority"@en;
+                  rdfs:subClassOf skos:Concept,
+                                  owl:Thing;
+                  owl:disjointWith madsrdf:Variant,
+                                   madsrdf:MADSScheme,
+                                   madsrdf:MADSCollection,
+                                   madsrdf:DeprecatedAuthority.
+madsrdf:City a owl:Class;
+             rdfs:comment """Describes a resource whose
+      label is an inhabited place incorporated as a city, town, etc.""";
+             rdfs:label "City Type"@en;
+             rdfs:subClassOf madsrdf:Geographic.
+madsrdf:CitySection a owl:Class;
+                    rdfs:comment """Describes a resource whose
+      label is a smaller unit within a populated place, e.g., a neighborhood, park, or
+      street.""";
+                    rdfs:label "City Section Type"@en;
+                    rdfs:subClassOf madsrdf:Geographic.
+madsrdf:ComplexSubject a owl:Class;
+                       rdfs:comment """The label of a madsrdf:ComplexSubject is the concatenation of labels
+      from two or more madsrdf:SimpleType descriptions, except that the combination of
+      madsrdf:SimpleType labels for the madsrdf:ComplexSubject does not meet the conditions to be
+      the label of a madsrdf:NameTitle resource or madsrdf:HierarchicalGeographic
+      resource."""@en;
+                       rdfs:label "Complex Subject Type"@en;
+                       rdfs:subClassOf madsrdf:ComplexType.
+madsrdf:ComplexType a owl:Class;
+                    rdfs:comment """madsrdf:ComplexType is a resource whose label is the concatenation
+      of labels from two or more Authority descriptions or two or more Variant descriptions or some
+      combination of Authority and Variant descriptions, each of a
+      madsrdf:SimpleType."""@en;
+                    rdfs:label "Complex Type"@en;
+                    rdfs:subClassOf madsrdf:MADSType;
+                    owl:disjointUnionOf (madsrdf:HierarchicalGeographic
+                                         madsrdf:ComplexSubject
+                                         madsrdf:NameTitle);
+                    owl:disjointWith madsrdf:SimpleType;
+                    owl:equivalentClass [owl:onProperty madsrdf:componentList ; 
+                                         owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                         a owl:Restriction].
+madsrdf:ConferenceName a owl:Class;
+                       rdfs:comment """Describes a resource whose
+      label represents a conference name.""";
+                       rdfs:label "Conference Name Type"@en;
+                       rdfs:subClassOf madsrdf:Name.
+madsrdf:Continent a owl:Class;
+                  rdfs:comment """Describes a resource whose
+      label is one of seven large landmasses on Earth. These are: Asia, Africa, Europe, North
+      America, South America, Australia, and Antarctica.""";
+                  rdfs:label "Continent Type"@en;
+                  rdfs:subClassOf madsrdf:Geographic.
+madsrdf:CorporateName a owl:Class;
+                      rdfs:comment """Describes a resource whose
+      label is the name of a corporate entity, which may include political or ecclesiastical
+      entities.""";
+                      rdfs:label "Corporate Name Type"@en;
+                      rdfs:subClassOf madsrdf:Name.
+madsrdf:Country a owl:Class;
+                rdfs:comment """Describes a resource whose
+      label is a country, i.e. a political entity considered a country. """;
+                rdfs:label "Country Type"@en;
+                rdfs:subClassOf madsrdf:Geographic.
+madsrdf:County a owl:Class;
+               rdfs:comment """Describes a resource whose
+      label is the largest local administrative unit, e.g. Warwickshire, in a country, e.g.
+      England.""";
+               rdfs:label "County Type"@en;
+               rdfs:subClassOf madsrdf:Geographic.
+madsrdf:DateNameElement a owl:Class;
+                        rdfs:label """Date Name
+      Element""";
+                        rdfs:subClassOf madsrdf:NameElement.
+madsrdf:DeprecatedAuthority a owl:Class;
+                            rdfs:comment """A former
+      Authority.""";
+                            rdfs:label """Deprecated
+      Authority""";
+                            rdfs:subClassOf owl:Thing;
+                            owl:disjointWith madsrdf:MADSScheme,
+                                             madsrdf:MADSCollection,
+                                             madsrdf:Authority.
+madsrdf:Element a owl:Class;
+                rdfs:comment """madsrdf:Element types
+      describe the various parts of labels.""";
+                rdfs:label "Element"@en;
+                owl:equivalentClass [owl:onProperty madsrdf:elementValue ; 
+                                     owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                     a owl:Restriction].
+madsrdf:ExtraterrestrialArea a owl:Class;
+                             rdfs:comment """Describes a resource whose
+      label is any extraterrestrial entity or space, including a solar system, a galaxy, a star
+      system, and a planet, including a geographic feature of an individual planet.""";
+                             rdfs:label "Extraterrestrial Area Type"@en;
+                             rdfs:subClassOf madsrdf:Geographic.
+madsrdf:FamilyName a owl:Class;
+                   rdfs:comment """Describes a resource whose
+      label represents a family name.""";
+                   rdfs:label "Family Name Type"@en;
+                   rdfs:subClassOf madsrdf:Name.
+madsrdf:FamilyNameElement a owl:Class;
+                          rdfs:label """Family Name
+      Element""";
+                          rdfs:subClassOf madsrdf:NameElement.
+madsrdf:FullNameElement a owl:Class;
+                        rdfs:label "Fullname Element";
+                        rdfs:subClassOf madsrdf:NameElement.
+madsrdf:GenreForm a owl:Class;
+                  rdfs:comment """Describes a resource whose label is a genre or form term. Genre
+      terms for textual materials designate specific kinds of materials distinguished by the style
+      or technique of their intellectual contents; for example, biographies, catechisms, essays,
+      hymns, or reviews. Form terms designate historically and functionally specific kinds of
+      materials as distinguished by an examination of their physical character, characteristics of
+      their intellectual content, or the order of information within them; for example, daybooks,
+      diaries, directories, journals, memoranda, questionnaires, syllabi, or time sheets. In the
+      context of graphic materials, genre headings denote categories of material distinguished by
+      vantage point, intended purpose, characteristics of the creator, publication status, or method
+      of representation."""@en;
+                  rdfs:label "Genre/Form Type"@en;
+                  rdfs:subClassOf madsrdf:SimpleType.
+madsrdf:GenreFormElement a owl:Class;
+                         rdfs:label "Genre/Form Element"@en;
+                         rdfs:subClassOf madsrdf:Element.
+madsrdf:Geographic a owl:Class;
+                   rdfs:comment """Describes a resource whose label represents a geographic place or
+      feature, especially when a more precise geographic determination (City, Country, Region, etc.)
+      cannot be made."""@en;
+                   rdfs:label "Geographic Authority"@en;
+                   rdfs:subClassOf madsrdf:SimpleType.
+madsrdf:GeographicElement a owl:Class;
+                          rdfs:label "Geographic Element"@en;
+                          rdfs:subClassOf madsrdf:Element.
+madsrdf:GivenNameElement a owl:Class;
+                         rdfs:label """Given Name
+      Element""";
+                         rdfs:subClassOf madsrdf:NameElement.
+madsrdf:HierarchicalGeographic a owl:Class;
+                               rdfs:comment """A madsrdf:HierarchicalGeographic indicates that its label is the
+      concatenation of labels from a sequence of madsrdf:Geographic types taken from one of the
+      madsrdf:Geographic sub-classes such as madsrdf:City, madsrdf:Country, madsrdf:State,
+      madsrdf:Region, madsrdf:Area, etc. The madsrdf:Geographic resources that constitute the
+      madsrdf:HierarchicalGeographic should have a broader to narrower hierarchical relationship
+      between them."""@en;
+                               rdfs:label "Hierarchical Geographic Type"@en;
+                               rdfs:subClassOf madsrdf:ComplexType.
+madsrdf:Identifier a owl:Class;
+                   rdfs:comment """A madsrdf:Identifier
+      resource describes an identifier by associating the identifier value with its type. To be used
+      to record identifiers for a resource in the absence of URIs.""";
+                   rdfs:label "Other Identifier".
+madsrdf:Island a owl:Class;
+               rdfs:comment """Describes a resource whose
+      label is a tract of land surrounded by water and smaller than a continent but is not itself a
+      separate country. """;
+               rdfs:label "Island Type"@en;
+               rdfs:subClassOf madsrdf:Geographic.
+madsrdf:Language a owl:Class;
+                 rdfs:comment """Describes a resource whose label represents a
+      language."""@en;
+                 rdfs:label "Language Type"@en;
+                 rdfs:subClassOf madsrdf:SimpleType;
+                 owl:equivalentClass dcterms:LinguisticSystem.
+madsrdf:LanguageElement a owl:Class;
+                        rdfs:label "Language Element";
+                        rdfs:subClassOf madsrdf:Element.
+madsrdf:MADSCollection a owl:Class;
+                       rdfs:comment """A madsrdf:Collection is an
+      organizational unit, members of which will have some form of intellectually unifying theme but
+      not to the extent that it defines an independent knowledge organization system. It aggregates
+      madsrdf:Authority descriptions or other madsrdf:MADSCollection resources.""";
+                       rdfs:label "MADS Collection";
+                       rdfs:subClassOf skos:Collection;
+                       owl:disjointWith madsrdf:Variant,
+                                        madsrdf:MADSScheme,
+                                        madsrdf:Authority.
+madsrdf:MADSScheme a owl:Class;
+                   rdfs:comment """MADS Scheme is an organizational unit that describes a knowledge
+      organization system. It aggregates madsrdf:Authority descriptions and/or
+      madsrdf:MADSCollection resources included in the knowledge organization system. Including a
+      madsrdf:MADSCollection within a madsrdf:MADSScheme should be done with care; when a
+      madsrdf:MADSCollection is part of a madsrdf:MADSScheme, then any madsrdf:Authority within that
+      madsrdf:MADSCollection is effectively also in the madsrdf:MADSScheme."""@en;
+                   rdfs:label "MADS Scheme"@en;
+                   rdfs:subClassOf skos:ConceptScheme;
+                   owl:disjointWith madsrdf:Variant,
+                                    madsrdf:MADSCollection,
+                                    madsrdf:Authority.
+madsrdf:MADSType a owl:Class;
+                 rdfs:label "MADS Type";
+                 owl:disjointWith madsrdf:MADSScheme,
+                                  madsrdf:MADSCollection.
+madsrdf:MainTitleElement a owl:Class;
+                         rdfs:label """Main Title
+      Element""";
+                         rdfs:subClassOf madsrdf:TitleElement.
+madsrdf:Name a owl:Class;
+             rdfs:comment """Describes a resource whose label represents a name, especially when
+      a more precise Name type (madsrdf:ConferenceName, masdrdf:FamilyName, etc.) cannot be
+      identified."""@en;
+             rdfs:label "Name Type"@en;
+             rdfs:subClassOf madsrdf:SimpleType.
+madsrdf:NameElement a owl:Class;
+                    rdfs:label "Name Element"@en;
+                    rdfs:subClassOf madsrdf:Element.
+madsrdf:NameTitle a owl:Class;
+                  rdfs:comment """The label of a madsrdf:NameTitle resource is the concatenation of a
+      label of a madsrdf:Name description and the label of a madsrdf:Title description. Both
+      description types (madsrdf:Name and madsrdf:Title) are of madsrdf:SimpleType
+      types."""@en;
+                  rdfs:label "Name/Title Type"@en;
+                  rdfs:subClassOf madsrdf:ComplexType.
+madsrdf:NonSortElement a owl:Class;
+                       rdfs:label "Non-sort Element";
+                       rdfs:subClassOf madsrdf:TitleElement.
+madsrdf:Occupation a owl:Class;
+                   rdfs:comment """Describes a resource whose
+      label represents an occcupation.""";
+                   rdfs:label "Occupation Type"@en;
+                   rdfs:subClassOf madsrdf:SimpleType.
+madsrdf:PartNameElement a owl:Class;
+                        rdfs:label """Part Name
+      Element""";
+                        rdfs:subClassOf madsrdf:TitleElement.
+madsrdf:PartNumberElement a owl:Class;
+                          rdfs:label """Part Number
+      Element""";
+                          rdfs:subClassOf madsrdf:TitleElement.
+madsrdf:PersonalName a owl:Class;
+                     rdfs:comment """Describes a resource whose
+      label represents a personal name.""";
+                     rdfs:label "Personal Name Type"@en;
+                     rdfs:subClassOf madsrdf:Name.
+madsrdf:Province a owl:Class;
+                 rdfs:comment """Describes a resource whose
+      label is a first order political division, e.g. Ontario, within a country, e.g. Canada. """;
+                 rdfs:label "Province Type"@en;
+                 rdfs:subClassOf madsrdf:Geographic.
+madsrdf:RWO a owl:Class;
+            rdfs:comment """A madsrdf:RWO is an
+      abstract entity and identifies a Real World Object (RWO) identified by the label of a
+      madsrdf:Authority or madsrdf:DeprecatedAuthority.""";
+            rdfs:label """Real World
+      Object""";
+            rdfs:subClassOf owl:Thing.
+madsrdf:Region a owl:Class;
+               rdfs:comment """Describes a resource whose
+      label is an area that has the status of a jurisdiction, usually incorporating more than one
+      first level jurisdiction. """;
+               rdfs:label "Region Type"@en;
+               rdfs:subClassOf madsrdf:Geographic.
+madsrdf:SimpleType a owl:Class;
+                   rdfs:comment """madsrdf:SimpleType is a resource with a label constituting a single
+      word or phrase."""@en;
+                   rdfs:label "Simple Type"@en;
+                   rdfs:subClassOf madsrdf:MADSType.
+madsrdf:Source a owl:Class;
+               rdfs:comment """A resource that represents
+      the source of information about another resource. madsrdf:Source is a type of
+      citation.""";
+               rdfs:label "Source".
+madsrdf:State a owl:Class;
+              rdfs:comment """Describes a resource whose
+      label is a first order political division, e.g. Montana, within a country, e.g.
+      U.S.""";
+              rdfs:label "State Type"@en;
+              rdfs:subClassOf madsrdf:Geographic.
+madsrdf:SubTitleElement a owl:Class;
+                        rdfs:label "Subtitle Element";
+                        rdfs:subClassOf madsrdf:TitleElement.
+madsrdf:Temporal a owl:Class;
+                 rdfs:comment """Describes a resource whose
+      label represents a time-based notion.""";
+                 rdfs:label "Temporal Type"@en;
+                 rdfs:subClassOf madsrdf:SimpleType.
+madsrdf:TemporalElement a owl:Class;
+                        rdfs:label "Temporal Element";
+                        rdfs:subClassOf madsrdf:Element.
+madsrdf:TermsOfAddressNameElement a owl:Class;
+                                  rdfs:label """Terms of Address
+      Element""";
+                                  rdfs:subClassOf madsrdf:NameElement.
+madsrdf:Territory a owl:Class;
+                  rdfs:comment """Describes a resource whose
+      label is a geographical area belonging to or under the jurisdiction of a governmental
+      authority. """;
+                  rdfs:label "Territory Type"@en;
+                  rdfs:subClassOf madsrdf:Geographic.
+madsrdf:Title a owl:Class;
+              rdfs:comment """Describes a resource whose
+      label represents a title.""";
+              rdfs:label "Title Type"@en;
+              rdfs:subClassOf madsrdf:SimpleType.
+madsrdf:TitleElement a owl:Class;
+                     rdfs:label "Title Element"@en;
+                     rdfs:subClassOf madsrdf:Element.
+madsrdf:Topic a owl:Class;
+              rdfs:comment """Describes a resource whose
+      label represents a topic.""";
+              rdfs:label "Topic Type"@en;
+              rdfs:subClassOf madsrdf:SimpleType.
+madsrdf:TopicElement a owl:Class;
+                     rdfs:label "Topic Element"@en;
+                     rdfs:subClassOf madsrdf:Element.
+madsrdf:Variant a owl:Class;
+                rdfs:comment """A resource whose label is the alternate form of an Authority or
+      Deprecated Authority."""@en;
+                rdfs:label "Variant"@en;
+                rdfs:subClassOf skosxl:Label,
+                                owl:Thing;
+                owl:disjointWith madsrdf:MADSScheme,
+                                 madsrdf:MADSCollection,
+                                 madsrdf:Authority.
+madsrdf:activityEndDate a owl:DatatypeProperty,
+                          rdf:Property;
+                        rdfs:comment """Latest date in a period of activity.
+    """;
+                        rdfs:domain madsrdf:RWO;
+                        rdfs:label "Activity End".
+madsrdf:activityStartDate a owl:DatatypeProperty,
+                            rdf:Property;
+                          rdfs:comment """Earliest date in a period of activity.
+    """;
+                          rdfs:domain madsrdf:RWO;
+                          rdfs:label "Activity Start".
+madsrdf:adminMetadata a owl:ObjectProperty,
+                        rdf:Property;
+                      rdfs:comment """This relates an Authority or Variant to its administrative metadata,
+      which is, minimimally, a Class defined outside of the MADS/RDF namespace. The RecordInfo Class
+      from the RecordInfo ontology is recommended."""@en;
+                      rdfs:domain [owl:unionOf (madsrdf:Authority
+                                                madsrdf:DeprecatedAuthority
+                                                madsrdf:Variant) ; 
+                                   a owl:Class];
+                      rdfs:label "Administrative Metadata"@en.
+madsrdf:affiliationEnd a owl:DatatypeProperty,
+                         rdf:Property;
+                       rdfs:comment """The date an individual
+      ceased to be affiliated with an organization.""";
+                       rdfs:domain madsrdf:Affiliation;
+                       rdfs:label """Affiliation
+      Ended""";
+                       rdfs:range xsd:date.
+madsrdf:affiliationStart a owl:DatatypeProperty,
+                           rdf:Property;
+                         rdfs:comment """The date an individual
+      established an affiliation with an organization.""";
+                         rdfs:domain madsrdf:Affiliation;
+                         rdfs:label """Affiliation
+      Started""";
+                         rdfs:range xsd:date.
+madsrdf:associatedLanguage a owl:ObjectProperty,
+                             rdf:Property;
+                           rdfs:comment """Language that a person,
+      organization, or family uses for publication, communication, etc., or in which a work is
+      expressed. """;
+                           rdfs:domain madsrdf:RWO;
+                           rdfs:label """Associated
+      Language""";
+                           rdfs:range madsrdf:Language.
+madsrdf:associatedLocale a owl:ObjectProperty,
+                           rdf:Property;
+                         rdfs:comment """A town, city, province,
+      state, and/or country associated with persons, corporate bodies, families, works, and
+      expressions.""";
+                         rdfs:domain madsrdf:RWO;
+                         rdfs:label "Associated Locale";
+                         rdfs:range madsrdf:Geographic.
+madsrdf:authoritativeLabel a owl:AnnotationProperty,
+                             rdf:Property;
+                           rdfs:comment """A lexical string representing a controlled, curated label for the
+      Authority."""@en;
+                           rdfs:domain madsrdf:Authority;
+                           rdfs:label "Authoritative Label"@en;
+                           rdfs:subPropertyOf skos:prefLabel,
+                                              rdfs:label.
+madsrdf:birthDate a owl:DatatypeProperty,
+                    rdf:Property;
+                  rdfs:comment """The year a person was born.
+      Date of birth may also include the month and day of the person’s birth. (RDA
+      9.3.2.1)""";
+                  rdfs:domain madsrdf:RWO;
+                  rdfs:label "Birth Date".
+madsrdf:birthPlace a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:comment """The town, city, province,
+      state, and/or country in which a person was born.""";
+                   rdfs:domain madsrdf:RWO;
+                   rdfs:label "Place of Birth";
+                   rdfs:range madsrdf:Geographic.
+madsrdf:changeNote a owl:AnnotationProperty,
+                     rdf:Property;
+                   rdfs:comment """A note detailing a modification to an Authority or
+      Variant."""@en;
+                   rdfs:label "Change Note"@en;
+                   rdfs:subPropertyOf madsrdf:note;
+                   owl:equivalentProperty skos:changeNote.
+madsrdf:citationNote a owl:AnnotationProperty,
+                       rdf:Property;
+                     rdfs:comment """A note about how the madsrdf:Source relates to the resource about
+      which the madsrdf:Source is the information source."""@en;
+                     rdfs:domain madsrdf:Source;
+                     rdfs:label "Citation Note"@en.
+madsrdf:citationSource a owl:AnnotationProperty,
+                         rdf:Property;
+                       rdfs:comment "The cited resource."@en;
+                       rdfs:domain madsrdf:Source;
+                       rdfs:label "Citation Source"@en.
+madsrdf:citationStatus a owl:DatatypeProperty,
+                         rdf:Property;
+                       rdfs:comment """Should use a standard term - such as 'found' or 'not found' - to
+      indicate whether the cited resource yielded information about the resource related to the
+      madsrdf:Source."""@en;
+                       rdfs:domain madsrdf:Source;
+                       rdfs:label "Citation Status"@en;
+                       rdfs:range xsd:string.
+madsrdf:city a owl:AnnotationProperty,
+               rdf:Property;
+             rdfs:comment "The city component of an address."@en;
+             rdfs:domain madsrdf:Address;
+             rdfs:label "City"@en.
+madsrdf:classification a owl:AnnotationProperty,
+                         rdf:Property;
+                       rdfs:comment """The classification code associated with a
+      madsrdf:Authority."""@en;
+                       rdfs:domain madsrdf:Authority;
+                       rdfs:label "Classification"@en;
+                       rdfs:subPropertyOf skos:semanticRelation.
+madsrdf:code a owl:DatatypeProperty,
+               rdf:Property;
+             rdfs:comment """A code is a string of
+      characters associated with a the authoritative or deprecated label. It may record an
+      historical notation once used to uniquely identify a concept.""";
+             rdfs:domain [owl:unionOf (madsrdf:Authority
+                                       madsrdf:DeprecatedAuthority) ; 
+                          a owl:Class];
+             rdfs:label "Code";
+             rdfs:subPropertyOf skos:notation.
+madsrdf:componentList a owl:ObjectProperty,
+                        rdf:Property;
+                      rdfs:comment """madsrdf:componentList
+      organizes the madsrdf:SimpleType resources whose labels are represented in the label of the
+      associated madsrdf:ComplexType resource.""";
+                      rdfs:domain madsrdf:ComplexType;
+                      rdfs:label "Component List";
+                      rdfs:range [owl:unionOf (rdf:List
+                                               rdf:Seq) ; 
+                                  a owl:Class].
+madsrdf:country a owl:AnnotationProperty,
+                  rdf:Property;
+                rdfs:comment """Country associated with an
+      address.""";
+                rdfs:domain madsrdf:Address;
+                rdfs:label "Country".
+madsrdf:creationDateEnd a owl:DatatypeProperty,
+                          rdf:Property;
+                        rdfs:comment "Ending date of the date range for which the beginning date is recorded in madsrdf:creationDateStart.";
+                        rdfs:label "".
+madsrdf:creationDateStart a owl:DatatypeProperty,
+                            rdf:Property;
+                          rdfs:comment "For a work, earliest date (normally the year) associated with a work; that date may be the date the work was created or first published or released. For an expression, the earliest date (normally the year) associated with an expression; that date may be the date of the earliest known manifestation of that expression. In both cases the date may be the starting date of a range or a single date.";
+                          rdfs:label "Work begun".
+madsrdf:deathDate a owl:DatatypeProperty,
+                    rdf:Property;
+                  rdfs:comment """The year a person died.
+      Date of death may also include the month and day of the person’s death. (RDA
+      9.3.3.1)""";
+                  rdfs:domain madsrdf:RWO;
+                  rdfs:label "Death Date".
+madsrdf:deathPlace a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:comment """The town, city, province,
+      state, and/or country in which a person died.""";
+                   rdfs:domain madsrdf:RWO;
+                   rdfs:label "Place of Death";
+                   rdfs:range madsrdf:Geographic.
+madsrdf:definitionNote a owl:AnnotationProperty,
+                         rdf:Property;
+                       rdfs:comment """An explanation of the meaning of an Authority, DeprecatedAuthority,
+      or Variant description."""@en;
+                       rdfs:label "Definition Note"@en;
+                       rdfs:subPropertyOf madsrdf:note;
+                       owl:equivalentProperty skos:definition.
+madsrdf:deletionNote a owl:AnnotationProperty,
+                       rdf:Property;
+                     rdfs:comment """A note pertaining to the
+      deletion of a resource.""";
+                     rdfs:label "Deletion Note";
+                     rdfs:subPropertyOf madsrdf:changeNote.
+madsrdf:deprecatedLabel a owl:AnnotationProperty,
+                          rdf:Property;
+                        rdfs:comment """A label once considered
+      authoritative (controlled and curated) but which is no longer.""";
+                        rdfs:domain madsrdf:DeprecatedAuthority;
+                        rdfs:label "Deprecated Label";
+                        rdfs:subPropertyOf skos:hiddenLabel,
+                                           rdfs:label.
+madsrdf:editorialNote a owl:AnnotationProperty,
+                        rdf:Property;
+                      rdfs:comment """A note pertaining to the
+      management of the label associated with the resource.""";
+                      rdfs:label "Editorial Note";
+                      rdfs:subPropertyOf madsrdf:note;
+                      owl:equivalentProperty skos:editorialNote.
+madsrdf:elementList a owl:ObjectProperty,
+                      rdf:Property;
+                    rdfs:comment """The madsrdf:elementList property is used to organize the various
+      parts of labels."""@en;
+                    rdfs:label "Element List";
+                    rdfs:range [owl:unionOf (rdf:List
+                                             rdf:Seq) ; 
+                                a owl:Class].
+madsrdf:elementValue a owl:DatatypeProperty,
+                       rdf:Property;
+                     rdfs:domain madsrdf:Element;
+                     rdfs:label "Element Value";
+                     rdfs:range xsd:string.
+madsrdf:email a owl:DatatypeProperty,
+                rdf:Property;
+              rdfs:domain madsrdf:Affiliation;
+              rdfs:label "Email".
+madsrdf:entityDescriptor a owl:DatatypeProperty,
+                           rdf:Property;
+                         rdfs:comment """Any attribute that serves
+      to characterize a person, family or corporate body or that may be needed for differentiation
+      from other persons. families or corporate bodies and for which separate content designation is
+      not already defined.Or """;
+                         rdfs:domain madsrdf:RWO;
+                         rdfs:label """Entity
+      Descriptor""".
+madsrdf:establishDate a owl:DatatypeProperty,
+                        rdf:Property;
+                      rdfs:comment """The year a corporate body was established. Date of establishment may also include the month and day of the corporate body’s establishment.
+    """;
+                      rdfs:domain madsrdf:RWO;
+                      rdfs:label "Established".
+madsrdf:exampleNote a owl:AnnotationProperty,
+                      rdf:Property;
+                    rdfs:comment """A example of how the
+      resource might be used.""";
+                    rdfs:label "Example Note";
+                    rdfs:subPropertyOf madsrdf:note;
+                    owl:equivalentProperty skos:example.
+madsrdf:extendedAddress a owl:DatatypeProperty,
+                          rdf:Property;
+                        rdfs:comment """The second address line, if
+      needed.""";
+                        rdfs:domain madsrdf:Address;
+                        rdfs:label "Extended Address".
+madsrdf:extension a owl:ObjectProperty,
+                    rdf:Property;
+                  rdfs:label "Extension".
+madsrdf:fax a owl:DatatypeProperty,
+              rdf:Property;
+            rdfs:comment "Fax number";
+            rdfs:domain madsrdf:Affiliation;
+            rdfs:label "Fax".
+madsrdf:fieldOfActivity a owl:ObjectProperty,
+                          rdf:Property;
+                        rdfs:comment """The field of activity
+      associated with an individual.""";
+                        rdfs:domain madsrdf:RWO;
+                        rdfs:label """Field of
+      Activity""".
+madsrdf:fullerName a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:comment """Full form of name needed to
+      distinguish a person from another person with the same preferred name.""";
+                   rdfs:label "Fuller Name";
+                   rdfs:range madsrdf:PersonalName.
+madsrdf:gender a owl:DataTypeProperty,
+                 rdf:Property;
+               rdfs:comment """The gender with which a
+      person identifies. """;
+               rdfs:domain madsrdf:RWO;
+               rdfs:label "Gender".
+madsrdf:hasAbbreviationVariant a owl:ObjectProperty,
+                                 rdf:Property;
+                               rdfs:label """Has Abbreviation
+      Variant""";
+                               rdfs:subPropertyOf madsrdf:hasVariant.
+madsrdf:hasAcronymVariant a owl:ObjectProperty,
+                            rdf:Property;
+                          rdfs:label """Has Acronym
+      Variant""";
+                          rdfs:subPropertyOf madsrdf:hasVariant.
+madsrdf:hasAffiliation a owl:ObjectProperty,
+                         rdf:Property;
+                       rdfs:comment """Property to associate an
+      individual, such as a foaf:Agent, to a group or organization with which an individual is or
+      has been affiliated.""";
+                       rdfs:domain madsrdf:RWO;
+                       rdfs:label "Has Affiliation";
+                       rdfs:range madsrdf:Affiliation.
+madsrdf:hasAffiliationAddress a owl:ObjectProperty,
+                                rdf:Property;
+                              rdfs:comment """The address of the group or
+      organization with which an individual is associated.""";
+                              rdfs:domain madsrdf:Affiliation;
+                              rdfs:label """Has Affiliation
+      Address""";
+                              rdfs:range madsrdf:Address.
+madsrdf:hasBroaderAuthority a owl:ObjectProperty,
+                              rdf:Property;
+                            rdfs:label """Has Broader
+      Authority""";
+                            rdfs:subPropertyOf skos:broader,
+                                               madsrdf:hasRelatedAuthority;
+                            owl:inverseOf madsrdf:hasNarrowerAuthority.
+madsrdf:hasBroaderExternalAuthority a owl:ObjectProperty,
+                                      rdf:Property;
+                                    rdfs:comment """Creates a direct
+      relationship between an Authority and a more broadly defined Authority from a different MADS
+      Scheme.""";
+                                    rdfs:label """Has Broader External
+      Authority""";
+                                    rdfs:subPropertyOf skos:broadMatch,
+                                                       madsrdf:hasBroaderAuthority.
+madsrdf:hasChararacteristic a owl:ObjectProperty,
+                              rdf:Property;
+                            rdfs:comment """A term that specifies a characteristic that differentiates a work or expression from another one.
+    """;
+                            rdfs:label "Other characteristic".
+madsrdf:hasCloseExternalAuthority a owl:SymmetricProperty,
+                                    owl:ObjectProperty,
+                                    rdf:Property;
+                                  rdfs:comment """Records a relationship
+      between an Authority and one that is closely related from a different MADS
+      Scheme.""";
+                                  rdfs:label """Has Close External
+      Authority""";
+                                  rdfs:subPropertyOf skos:closeMatch,
+                                                     madsrdf:hasRelatedAuthority.
+madsrdf:hasCorporateParentAuthority a owl:ObjectProperty,
+                                      rdf:Property;
+                                    rdfs:comment """Establishes a relationship
+      between a CorporateName Authority and one of the same that is more broadly
+      defined.""";
+                                    rdfs:domain madsrdf:CorporateName;
+                                    rdfs:label """Has Parent
+      Organization""";
+                                    rdfs:range madsrdf:CorporateName;
+                                    rdfs:subPropertyOf madsrdf:hasRelatedAuthority.
+madsrdf:hasCorporateSubsidiaryAuthority a owl:ObjectProperty,
+                                          rdf:Property;
+                                        rdfs:comment """Establishes a relationship
+      between a CorporateName Authority and one of the same that is more narrowly
+      defined.""";
+                                        rdfs:domain madsrdf:CorporateName;
+                                        rdfs:label """Is Parent Organization
+      Of""";
+                                        rdfs:range madsrdf:CorporateName;
+                                        rdfs:subPropertyOf madsrdf:hasRelatedAuthority;
+                                        owl:inverseOf madsrdf:hasCorporateParentAuthority.
+madsrdf:hasEarlierEstablishedForm a owl:ObjectProperty,
+                                    rdf:Property;
+                                  rdfs:comment """Used to reference a resource that was an earlier form. This is
+      Related type='earlier' in MADS XML."""@en;
+                                  rdfs:label """Has Earlier Established
+      Form""";
+                                  rdfs:subPropertyOf madsrdf:see;
+                                  owl:inverseOf madsrdf:hasLaterEstablishedForm.
+madsrdf:hasExactExternalAuthority a owl:TransitiveProperty,
+                                    owl:SymmetricProperty,
+                                    owl:ObjectProperty,
+                                    rdf:Property;
+                                  rdfs:comment """Records a relationship
+      between an Authority and one to which it matches exactly but from a different MADS
+      Scheme.""";
+                                  rdfs:label """Has Exact External
+      Authority""";
+                                  rdfs:subPropertyOf skos:exactMatch,
+                                                     madsrdf:hasCloseExternalAuthority.
+madsrdf:hasExpansionVariant a owl:ObjectProperty,
+                              rdf:Property;
+                            rdfs:label """Has Expansion
+      Variant""";
+                            rdfs:subPropertyOf madsrdf:hasVariant.
+madsrdf:hasHiddenVariant a owl:ObjectProperty,
+                           rdf:Property;
+                         rdfs:comment """Use for variants that are searchable, but not necessarily for
+      display."""@en;
+                         rdfs:domain madsrdf:Authority;
+                         rdfs:label "Has Hidden Variant"@en;
+                         rdfs:range madsrdf:Variant;
+                         rdfs:subPropertyOf skosxl:hiddenLabel.
+madsrdf:hasIdentifier a owl:ObjectProperty,
+                        rdf:Property;
+                      rdfs:comment """Associates a resource with
+      a madsrdf:Identifier.""";
+                      rdfs:label "Has Identifier";
+                      rdfs:range madsrdf:Identifier.
+madsrdf:hasLaterEstablishedForm a owl:ObjectProperty,
+                                  rdf:Property;
+                                rdfs:comment """Use to reference the later form of a resource. This is Related
+      type='later' in MADS XML."""@en;
+                                rdfs:label """Has Later Established
+      Form""";
+                                rdfs:subPropertyOf madsrdf:see;
+                                owl:inverseOf madsrdf:hasEarlierEstablishedForm.
+madsrdf:hasMADSCollectionMember a owl:ObjectProperty,
+                                  rdf:Property;
+                                rdfs:comment """Associates an Authority or other Collection with a
+      madsrdf:MADSCollection."""@en;
+                                rdfs:domain madsrdf:MADSCollection;
+                                rdfs:label "Has MADSCollection Member"@en;
+                                rdfs:range [owl:unionOf (madsrdf:Authority
+                                                         madsrdf:MADSCollection) ; 
+                                            a owl:Class];
+                                rdfs:subPropertyOf skos:member;
+                                owl:inverseOf madsrdf:isMemberOfMADSCollection.
+madsrdf:hasMADSSchemeMember a owl:ObjectProperty,
+                              rdf:Property;
+                            rdfs:comment """Associates an Authority or Collection with a
+      madsrdf:MADSScheme."""@en;
+                            rdfs:domain madsrdf:MADSScheme;
+                            rdfs:label """Has MADS Scheme
+      Member""";
+                            rdfs:range [owl:unionOf (madsrdf:Authority
+                                                     madsrdf:MADSCollection) ; 
+                                        a owl:Class];
+                            owl:inverseOf madsrdf:isMemberOfMADSScheme.
+madsrdf:hasNarrowerAuthority a owl:ObjectProperty,
+                               rdf:Property;
+                             rdfs:comment """Creates a direct
+      relationship between an Authority and one that is more narrowly defined.""";
+                             rdfs:label """Has Narrower
+      Authority""";
+                             rdfs:subPropertyOf skos:narrower,
+                                                madsrdf:hasRelatedAuthority;
+                             owl:inverseOf madsrdf:hasBroaderAuthority.
+madsrdf:hasNarrowerExternalAuthority a owl:ObjectProperty,
+                                       rdf:Property;
+                                     rdfs:comment """Creates a direct
+      relationship between an Authority and a more narrowly defined Authority from a different MADS
+      Scheme.""";
+                                     rdfs:label """Has Narrower External
+      Authority""";
+                                     rdfs:subPropertyOf skos:narrowMatch,
+                                                        madsrdf:hasNarrowerAuthority.
+madsrdf:hasReciprocalAuthority a owl:SymmetricProperty,
+                                 owl:ObjectProperty,
+                                 rdf:Property;
+                               rdfs:comment """Establishes a relationship between two Authority resources. It is
+      reciprocal, so the relationship must be shared. This is Related type='equivalent' in MADS
+      XML."""@en;
+                               rdfs:label """Has Reciprocal
+      Authority""";
+                               rdfs:subPropertyOf skos:related,
+                                                  madsrdf:hasRelatedAuthority.
+madsrdf:hasReciprocalExternalAuthority a owl:SymmetricProperty,
+                                         owl:ObjectProperty,
+                                         rdf:Property;
+                                       rdfs:comment """Establishes a relationship
+      between an Authority and one from a different MADS Scheme. It is reciprocal, so the
+      relationship must be shared.""";
+                                       rdfs:label """Has Reciprocal External
+      Authority""";
+                                       rdfs:subPropertyOf skos:relatedMatch,
+                                                          madsrdf:hasReciprocalAuthority.
+madsrdf:hasRelatedAuthority a owl:ObjectProperty,
+                              rdf:Property;
+                            rdfs:comment """Unless the relationship can be more specifically identified, use
+      'hasRelatedAuthority.'"""@en;
+                            rdfs:domain madsrdf:Authority;
+                            rdfs:label "Has Related Authority"@en;
+                            rdfs:range madsrdf:Authority;
+                            rdfs:subPropertyOf skos:semanticRelation.
+madsrdf:hasSource a owl:ObjectProperty,
+                    rdf:Property;
+                  rdfs:comment "Associates a resource description with its Source."@en;
+                  rdfs:label "Has Source";
+                  rdfs:range madsrdf:Source.
+madsrdf:hasTopMemberOfMADSScheme a owl:ObjectProperty,
+                                   rdf:Property;
+                                 rdfs:comment """Identifies an Authority
+      that is at the top of the hierarchy of authorities within the MADS Scheme.""";
+                                 rdfs:domain madsrdf:MADSScheme;
+                                 rdfs:label """Has Top Member of MADS
+      Scheme""";
+                                 rdfs:range madsrdf:Authority;
+                                 rdfs:subPropertyOf skos:hasTopConcept,
+                                                    madsrdf:hasMADSSchemeMember.
+madsrdf:hasTranslationVariant a owl:ObjectProperty,
+                                rdf:Property;
+                              rdfs:comment """A Variant whose label
+      represents a translation of that of the authoritative label.""";
+                              rdfs:label """Has Translation
+      Variant""";
+                              rdfs:subPropertyOf madsrdf:hasVariant.
+madsrdf:hasVariant a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:comment """Associates a Variant with an Authority or Deprecrated Authority.
+      Unless the variant type can be more specifically identified, use 'hasVariant.'"""@en;
+                   rdfs:domain madsrdf:Authority;
+                   rdfs:label "Has Variant";
+                   rdfs:range madsrdf:Variant;
+                   rdfs:subPropertyOf skosxl:altLabel.
+madsrdf:hiddenLabel a owl:DatatypeProperty,
+                      rdf:Property;
+                    rdfs:comment """A label entered for
+      discovery purposes but not shown.""";
+                    rdfs:domain madsrdf:Variant;
+                    rdfs:label "Hidden Label";
+                    rdfs:subPropertyOf skosxl:literalForm.
+madsrdf:historyNote a owl:AnnotationProperty;
+                    rdfs:comment """A note pertaining to the
+      history of the resource.""";
+                    rdfs:label "History Note";
+                    rdfs:subPropertyOf madsrdf:note;
+                    owl:equivalentProperty skos:historyNote.
+madsrdf:honoraryTitle a owl:DatatypeProperty,
+                        rdf:Property;
+                      rdfs:comment """Designation indicative of
+      royalty, nobility, or ecclesiastical rank or office, or a term of address for a person of
+      religious vocation.""";
+                      rdfs:domain madsrdf:RWO;
+                      rdfs:label "Honorary Title".
+madsrdf:hours a owl:DatatypeProperty,
+                rdf:Property;
+              rdfs:domain madsrdf:Affiliation;
+              rdfs:label "Hours".
+madsrdf:idScheme a owl:AnnotationProperty,
+                   rdf:Property;
+                 rdfs:comment """The scheme associated with
+      the identifier. For example, \"LCCN\" would be used when the Identifier Value (madsrdf:idValue)
+      is a LC Control Number.""";
+                 rdfs:domain madsrdf:Identifier;
+                 rdfs:label """Identifier
+      Scheme""".
+madsrdf:idValue a owl:DatatypeProperty,
+                  rdf:Property;
+                rdfs:comment """The value of the identifier
+      conforming to the Identifier Scheme syntax.""";
+                rdfs:domain madsrdf:Identifier;
+                rdfs:label "Identifier Value";
+                rdfs:range xsd:string.
+madsrdf:identifiesRWO a owl:ObjectProperty,
+                        rdf:Property;
+                      rdfs:comment """Associates a
+      madsrdf:Authority with the Real World Object that is the subject of the authority's
+      label.""";
+                      rdfs:domain madsrdf:Authority;
+                      rdfs:label "Identifies RWO";
+                      rdfs:range madsrdf:RWO;
+                      rdfs:subPropertyOf foaf:focus;
+                      owl:inverseOf madsrdf:isIdentifiedByAuthority.
+madsrdf:isIdentifiedByAuthority a owl:ObjectProperty,
+                                  rdf:Property;
+                                rdfs:comment """Associates a Real World
+      Object with its Authority description.""";
+                                rdfs:domain madsrdf:RWO;
+                                rdfs:label """Is Identified By
+      Authority""";
+                                rdfs:range madsrdf:Authority;
+                                owl:inverseOf madsrdf:identifiesRWO.
+madsrdf:isMemberOfMADSCollection a owl:ObjectProperty,
+                                   rdf:Property;
+                                 rdfs:comment """Associates a Collection with a madsrdf:Authority or another
+      madsrdf:MADSCollection."""@en;
+                                 rdfs:domain [owl:unionOf (madsrdf:Authority
+                                                           madsrdf:MADSCollection) ; 
+                                              a owl:Class];
+                                 rdfs:label "Is Member Of MADSCollection"@en;
+                                 rdfs:range madsrdf:MADSCollection;
+                                 owl:inverseOf madsrdf:hasMADSCollectionMember.
+madsrdf:isMemberOfMADSScheme a owl:ObjectProperty,
+                               rdf:Property;
+                             rdfs:domain [owl:unionOf (madsrdf:Authority
+                                                       madsrdf:MADSCollection) ; 
+                                          a owl:Class];
+                             rdfs:label """Is Member of MADS
+      Scheme""";
+                             rdfs:range madsrdf:MADSScheme;
+                             rdfs:subPropertyOf skos:inScheme;
+                             owl:inverseOf madsrdf:hasMADSSchemeMember.
+madsrdf:isTopMemberOfMADSScheme a owl:ObjectProperty,
+                                  rdf:Property;
+                                rdfs:comment """Identifies a MADS Scheme in
+      which the Authority is at the top of the hierarchy.""";
+                                rdfs:domain [owl:unionOf (madsrdf:Authority
+                                                          madsrdf:MADSCollection) ; 
+                                             a owl:Class];
+                                rdfs:label """Is Top Member of MADS
+      Scheme""";
+                                rdfs:range madsrdf:MADSScheme;
+                                rdfs:subPropertyOf skos:topConceptOf,
+                                                   madsrdf:isMemberOfMADSScheme;
+                                owl:inverseOf madsrdf:hasTopMemberOfMADSScheme.
+madsrdf:natureOfAffiliation a owl:AnnotationProperty,
+                              rdf:Property;
+                            rdfs:comment """Records the individual's
+      role or position in the organization with which the individual is affiliated. A \"job title\"
+      might be appropriate.""";
+                            rdfs:domain madsrdf:Affiliation;
+                            rdfs:label """Nature of
+      Affiliation""".
+madsrdf:note a owl:AnnotationProperty,
+               rdf:Property;
+             rdfs:comment """A note about the
+      resource.""";
+             rdfs:label "Note";
+             owl:equivalentProperty skos:note.
+madsrdf:occupation a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:comment """A profession or occupation
+      in which the person works or has worked.""";
+                   rdfs:domain madsrdf:RWO;
+                   rdfs:label "Occupation";
+                   rdfs:range madsrdf:Occupation.
+madsrdf:organization a owl:AnnotationProperty,
+                       rdf:Property;
+                     rdfs:comment """The group or organization
+      with which an individual is associated.""";
+                     rdfs:domain madsrdf:Affiliation;
+                     rdfs:label """Organization or
+      Group""".
+madsrdf:phone a owl:DatatypeProperty,
+                rdf:Property;
+              rdfs:domain madsrdf:Affiliation;
+              rdfs:label "Phone".
+madsrdf:postcode a owl:DatatypeProperty,
+                   rdf:Property;
+                 rdfs:domain madsrdf:Address;
+                 rdfs:label """Post Code / Zip
+      Code""".
+madsrdf:prominentFamilyMember a owl:DatatypeProperty,
+                                rdf:Property;
+                              rdfs:comment """A well-known individual who
+      is a member of the family.""";
+                              rdfs:domain madsrdf:RWO;
+                              rdfs:label """Prominent Family
+      Member""".
+madsrdf:scopeNote a owl:AnnotationProperty,
+                    rdf:Property;
+                  rdfs:label "Scope Note";
+                  rdfs:subPropertyOf madsrdf:note;
+                  owl:equivalentProperty skos:scopeNote.
+madsrdf:see a owl:ObjectProperty;
+            rdfs:comment """Denotes a relationship
+      between an Authority and/or DeprecatedAuthority. The relationship may or may or may not be
+      reciprocated and there is no certainty that the related resource will further illuminate the
+      original resource.""";
+            rdfs:domain [owl:unionOf (madsrdf:Authority
+                                      madsrdf:DeprecatedAuthority) ; 
+                         a owl:Class];
+            rdfs:label "See Also";
+            rdfs:range [owl:unionOf (madsrdf:Authority
+                                     madsrdf:DeprecatedAuthority) ; 
+                        a owl:Class];
+            rdfs:subPropertyOf rdfs:seeAlso.
+madsrdf:state a owl:AnnotationProperty,
+                rdf:Property;
+              rdfs:comment """The state associated with
+      an address.""";
+              rdfs:domain madsrdf:Address;
+              rdfs:label "State".
+madsrdf:streetAddress a owl:DatatypeProperty,
+                        rdf:Property;
+                      rdfs:comment """First line of address. For
+      second line, use madsrdf:extendedAddress.""";
+                      rdfs:domain madsrdf:Address;
+                      rdfs:label "Street Address".
+madsrdf:terminateDate a owl:DatatypeProperty,
+                        rdf:Property;
+                      rdfs:comment """The year a corporate body was terminated. Date of termination may also include the month and day of the corporate body’s termination. 
+    """;
+                      rdfs:domain madsrdf:RWO;
+                      rdfs:label "Terminated".
+madsrdf:useFor a owl:ObjectProperty,
+                 rdf:Property;
+               rdfs:comment """\"Use [This Resource] For.\"
+      Traditional \"USE FOR\" reference.""";
+               rdfs:label "Use For";
+               rdfs:subPropertyOf madsrdf:see;
+               owl:inverseOf madsrdf:useInstead.
+madsrdf:useInstead a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:comment """\"Use [This Other Resource]
+      Instead.\" Traditional \"USE\" reference.""";
+                   rdfs:label "Use Instead";
+                   rdfs:subPropertyOf madsrdf:see.
+madsrdf:variantLabel a owl:DatatypeProperty,
+                       rdf:Property;
+                     rdfs:comment """The lexical, variant form
+      of an authoritative label.""";
+                     rdfs:domain madsrdf:Variant;
+                     rdfs:label "Variant Label";
+                     rdfs:subPropertyOf skosxl:literalForm.
+madsrdf:workOrigin a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:comment "The country or other territorial jurisdiction from which a work originated.";
+                   rdfs:label "Work locale";
+                   rdfs:range madsrdf:Geographic.
+<http://www.loc.gov/standards/mads/rdf/v1.rdf> a owl:Ontology;
+                                               rdfs:comment """Updated: 10 May 2012 - Added Language Class; componentList and
+      elementList now has the union of rdf:List or rdf:Seq for a range."""@en.
+rdfs:comment a owl:AnnotationProperty.
+rdfs:label a owl:AnnotationProperty.
+xsd:date a rdfs:Datatype.
+owl:Thing a owl:Class.

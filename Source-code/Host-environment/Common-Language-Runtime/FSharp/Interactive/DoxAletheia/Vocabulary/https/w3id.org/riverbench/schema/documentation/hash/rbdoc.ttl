@@ -1,0 +1,184 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix spdx: <http://spdx.org/rdf/terms#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix w3id: <https://w3id.org/>.
+@prefix rbdoc: <https://w3id.org/riverbench/schema/documentation#>.
+@prefix rb: <https://w3id.org/riverbench/schema/metadata#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix aerdcat: <http://www.w3.org/ns/dcat#>.
+
+dcterms:conformsTo a owl:AnnotationProperty;
+                   rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                   rbdoc:isHiddenInDoc true.
+dcterms:creator a owl:AnnotationProperty;
+                rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                rbdoc:hasDocWeight "10"^^xsd:int.
+dcterms:description a owl:AnnotationProperty;
+                    rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                    rbdoc:hasDocWeight "1"^^xsd:int.
+dcterms:identifier a owl:AnnotationProperty;
+                   rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                   rbdoc:hasDocWeight "2"^^xsd:int.
+dcterms:issued a owl:AnnotationProperty;
+               rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+               rbdoc:hasDocWeight "20"^^xsd:int.
+dcterms:license a owl:AnnotationProperty;
+                rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                rbdoc:hasDocWeight "11"^^xsd:int.
+dcterms:modified a owl:AnnotationProperty;
+                 rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                 rbdoc:hasDocWeight "21"^^xsd:int.
+dcterms:rights a owl:AnnotationProperty;
+               rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+               rbdoc:hasDocWeight "12"^^xsd:int.
+dcterms:source a owl:AnnotationProperty;
+               rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+               rbdoc:hasDocWeight "12"^^xsd:int.
+dcterms:title a owl:AnnotationProperty;
+              rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+              rbdoc:hasDocWeight "0"^^xsd:int.
+spdx:checksum a owl:AnnotationProperty;
+              rbdoc:hasDocWeight "2020"^^xsd:int.
+rdf:type a owl:AnnotationProperty;
+         rbdoc:hasDocWeight "-1"^^xsd:int.
+aerdcat:byteSize a owl:AnnotationProperty;
+                 rbdoc:hasDocWeight "2001"^^xsd:int.
+aerdcat:compressFormat a owl:AnnotationProperty;
+                       rbdoc:hasDocWeight "2012"^^xsd:int.
+aerdcat:dataset a owl:ObjectProperty;
+                rbdoc:hasDocGroup rbdoc:groupContent;
+                rbdoc:hasDocWeight "1000"^^xsd:int;
+                rbdoc:hasLabelOverride "Has dataset"@en.
+aerdcat:distribution a owl:AnnotationProperty;
+                     rbdoc:hasDocGroup rbdoc:groupDistributions;
+                     rbdoc:hasDocWeight "6000"^^xsd:int.
+aerdcat:downloadUrl a owl:AnnotationProperty;
+                    rbdoc:hasDocWeight "2000"^^xsd:int.
+aerdcat:inCatalog a owl:ObjectProperty;
+                  rdfs:comment "Indicates the benchmark suite to which a dataset or profile belongs"@en;
+                  rdfs:label "In suite"@en;
+                  rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                  rbdoc:hasDocWeight "60"^^xsd:int.
+aerdcat:landingPage a owl:AnnotationProperty;
+                    rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                    rbdoc:hasDocWeight "30"^^xsd:int.
+aerdcat:mediaType a owl:AnnotationProperty;
+                  rbdoc:hasDocWeight "2010"^^xsd:int.
+aerdcat:packageFormat a owl:AnnotationProperty;
+                      rbdoc:hasDocWeight "2011"^^xsd:int.
+aerdcat:seriesMember rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                     rbdoc:hasDocWeight "50"^^xsd:int.
+aerdcat:temporalResolution a owl:AnnotationProperty;
+                           rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                           rbdoc:hasDocWeight "3000"^^xsd:int.
+aerdcat:theme a owl:AnnotationProperty;
+              rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+              rbdoc:hasDocWeight "4"^^xsd:int.
+aerdcat:themeTaxonomy a owl:AnnotationProperty;
+                      rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                      rbdoc:hasDocWeight "100"^^xsd:int.
+foaf:homepage a owl:AnnotationProperty;
+              rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+              rbdoc:hasDocWeight "20"^^xsd:int.
+foaf:name a owl:AnnotationProperty;
+          rbdoc:hasDocWeight "0"^^xsd:int.
+foaf:nick a owl:AnnotationProperty;
+          rbdoc:hasDocWeight "1"^^xsd:int.
+<https://w3id.org/riverbench/schema/documentation> dc11:description "Ontology with metadata needed to generate documentation of datasets, distributions, profiles, etc. in RiverBench"@en;
+                                                   dc11:title "RiverBench documentation ontology"@en;
+                                                   dcterms:created "2023-04-30T00:00:00"^^xsd:dateTime;
+                                                   dcterms:creator [foaf:nick "Ostrzyciel" ; 
+                                                                    foaf:name "Piotr Sowiński" ; 
+                                                                    foaf:homepage <https://orcid.org/0000-0002-2543-9461> ; 
+                                                                    foaf:homepage <https://github.com/Ostrzyciel>],
+                                                                   "Piotr Sowiński"@en;
+                                                   dcterms:issued "2023-05-05T00:00:00"^^xsd:dateTime;
+                                                   dcterms:license <https://spdx.org/licenses/CC-BY-4.0>;
+                                                   vann:preferredNamespacePrefix "rbdoc";
+                                                   vann:preferredNamespaceUri "https://w3id.org/riverbench/schema/documentation#";
+                                                   schema:citation "Please cite this work according to the instructions here: https://w3id.org/riverbench/documentation/licensing/"@en;
+                                                   a owl:Ontology;
+                                                   owl:imports <https://w3id.org/riverbench/schema/metadata/dev>;
+                                                   owl:versionIRI <https://w3id.org/riverbench/schema/documentation/dev>.
+rbdoc:DocGroup a owl:Class;
+               rdfs:comment "Documentation group, corresponding to a heading in the generated document."@en;
+               rdfs:label "Documentation group"@en.
+rbdoc:groupContent a rbdoc:DocGroup,
+                     owl:NamedIndividual;
+                   rdfs:label "Content"@en.
+rbdoc:groupDistributions a rbdoc:DocGroup,
+                           owl:NamedIndividual;
+                         rdfs:label "Distributions"@en.
+rbdoc:groupGeneralInfo a rbdoc:DocGroup,
+                         owl:NamedIndividual;
+                       rdfs:label "General information"@en.
+rbdoc:groupTechnicalMetadata a rbdoc:DocGroup,
+                               owl:NamedIndividual;
+                             rdfs:label "Technical metadata"@en.
+rbdoc:hasDocGroup a owl:AnnotationProperty;
+                  rdfs:comment "Indicates the documentation group (heading) of a property"@en;
+                  rdfs:label "Has documentation group"@en;
+                  rdfs:range rbdoc:DocGroup;
+                  rbdoc:isHiddenInDoc true.
+rbdoc:hasDocWeight a owl:AnnotationProperty;
+                   rdfs:comment "Weight of a given property or item when generating documentation (integer). Properties or items with lower values will be shown first in the generated docs."@en;
+                   rdfs:label "Has documentation weight"@en;
+                   rdfs:range xsd:int;
+                   rbdoc:isHiddenInDoc true.
+rbdoc:hasLabelOverride a owl:AnnotationProperty;
+                       rdfs:comment "Top-priority label to be used in documentation pages."@en;
+                       rdfs:label "Has label override"@en;
+                       rbdoc:isHiddenInDoc true.
+rbdoc:isHiddenInDoc a owl:AnnotationProperty;
+                    rdfs:comment "Whether a given property should be omitted in the generated documentation."@en;
+                    rdfs:label "Is hidden in documentation"@en;
+                    rdfs:range xsd:boolean;
+                    rbdoc:isHiddenInDoc true.
+rb:conformsToRdf11 rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                   rbdoc:hasDocWeight "1100"^^xsd:int.
+rb:conformsToRdfStarDraft_20211217 rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                                   rbdoc:hasDocWeight "1110"^^xsd:int.
+rb:hasDistributionType rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                       rbdoc:hasDocWeight "1000"^^xsd:int.
+rb:hasFileName rbdoc:hasDocWeight "12"^^xsd:int.
+rb:hasProfile rbdoc:hasDocGroup rbdoc:groupContent;
+              rbdoc:hasDocWeight "1001"^^xsd:int.
+rb:hasRestriction rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                  rbdoc:hasDocWeight "200"^^xsd:int.
+rb:hasStatistics rbdoc:hasDocWeight "2040"^^xsd:int.
+rb:hasStreamElementCount rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                         rbdoc:hasDocWeight "1001"^^xsd:int.
+rb:hasStreamElementSplit rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                         rbdoc:hasDocWeight "1002"^^xsd:int.
+rb:hasStreamElementType rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                        rbdoc:hasDocWeight "1000"^^xsd:int.
+rb:hasTemporalProperty rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                       rbdoc:hasDocWeight "1020"^^xsd:int.
+rb:hasVersion rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+              rbdoc:hasDocWeight "3"^^xsd:int.
+rb:isSubsetOfProfile rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                     rbdoc:hasDocWeight "21"^^xsd:int.
+rb:isSupersetOfProfile rbdoc:hasDocGroup rbdoc:groupGeneralInfo;
+                       rbdoc:hasDocWeight "20"^^xsd:int.
+rb:maximum rbdoc:hasDocWeight "2105"^^xsd:int.
+rb:mean rbdoc:hasDocWeight "2102"^^xsd:int.
+rb:minimum rbdoc:hasDocWeight "2104"^^xsd:int.
+rb:standardDeviation rbdoc:hasDocWeight "2103"^^xsd:int.
+rb:sum rbdoc:hasDocWeight "2100"^^xsd:int.
+rb:uniqueCount rbdoc:hasDocWeight "2101"^^xsd:int.
+rb:usesGeneralizedRdfDatasets rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                              rbdoc:hasDocWeight "1201"^^xsd:int.
+rb:usesGeneralizedTriples rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                          rbdoc:hasDocWeight "1200"^^xsd:int.
+rb:usesOntology rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+                rbdoc:hasDocWeight "1010"^^xsd:int.
+rb:usesRdfStar rbdoc:hasDocGroup rbdoc:groupTechnicalMetadata;
+               rbdoc:hasDocWeight "1210"^^xsd:int.

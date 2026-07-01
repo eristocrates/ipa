@@ -1,0 +1,61 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix oh: <http://semweb.mmlab.be/ns/oh#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://semweb.mmlab.be/ns/oh> dcterms:creator [foaf:name "Pieter Colpaert" ; 
+                                                foaf:mbox "Pieter.Colpaert@UGent.be"],
+                                               [foaf:name "Anastasia Dimou" ; 
+                                                foaf:mbox "Anastasia.Dimou@UGent.be"],
+                                               [foaf:name "Steven Verstockt" ; 
+                                                foaf:mbox "Steven.Verstockt@UGent.be"],
+                                               [foaf:name "Laurens De Vocht" ; 
+                                                foaf:mbox "Laurens.DeVocht@UGent.be"];
+                               dcterms:description "A vocabulary to describe opening hours using calendars (recommended: iCal, RDFCal or schema.org) published on the Web.";
+                               dcterms:issued "2013-12-05"^^xsd:date;
+                               dcterms:modified "2015-05-22"^^xsd:date;
+                               dcterms:title "The Opening Hours vocabulary"@en;
+                               vann:preferredNamespacePrefix "oh";
+                               vann:preferredNamespaceUri oh:;
+                               a owl:Ontology,
+                                 voaf:Vocabulary.
+oh:Calendar a owl:Class;
+            rdfs:comment "A calendar which can be used for opening hours";
+            rdfs:isDefinedBy <http://semweb.mmlab.be/ns/oh>;
+            rdfs:label "A calendar";
+            rdfs:subClassOf owl:Thing.
+oh:OpeningHours a owl:Class;
+                rdfs:comment "A class to identify opening hours";
+                rdfs:isDefinedBy <http://semweb.mmlab.be/ns/oh>;
+                rdfs:label "Opening Hours";
+                rdfs:subClassOf owl:Thing.
+oh:OpeningHoursType a owl:Class;
+                    rdfs:comment "A class to identify the type of opening hours";
+                    rdfs:isDefinedBy <http://semweb.mmlab.be/ns/oh>;
+                    rdfs:label "Opening Hours Type";
+                    rdfs:subClassOf owl:Thing.
+oh:calendar a owl:ObjectProperty;
+            rdfs:comment "A property to tell oh:OpeningHours to keep this calendar into account"@en;
+            rdfs:domain oh:Calendar;
+            rdfs:range rdf:List.
+oh:closinghours a owl:DatatypeProperty;
+                rdfs:comment "Tell whether or not this oh:Calendar specifies closing hours.";
+                rdfs:domain xsd:boolean;
+                rdfs:label "Are Closing Hours";
+                rdfs:range oh:Calendar.
+oh:hasOpeningHours a owl:DatatypeProperty;
+                   rdfs:comment "Link a certain thing to a description of opening hours";
+                   rdfs:label "Has Opening Hours";
+                   rdfs:range oh:OpeningHours.
+oh:type a owl:ObjectProperty;
+        rdfs:comment "Give a type to an oh:OpeningHours instance"@en;
+        rdfs:domain oh:Calendar;
+        rdfs:label "has Opening Hours Type";
+        rdfs:range oh:OpeningHoursType.

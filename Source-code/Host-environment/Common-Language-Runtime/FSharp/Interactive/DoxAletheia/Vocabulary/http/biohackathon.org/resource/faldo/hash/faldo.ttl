@@ -1,0 +1,199 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix faldo: <http://biohackathon.org/resource/faldo#>.
+@prefix wiki: <http://en.wikipedia.org/wiki/>.
+@prefix spin: <http://spinrdf.org/spin#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://biohackathon.org/resource/faldo> dcterms:license <http://creativecommons.org/publicdomain/zero/1.0/>;
+                                         spin:imports <http://topbraid.org/spin/owlrl-all>,
+                                                      <http://topbraid.org/spin/rdfsplus>,
+                                                      <http://topbraid.org/spin/spinowl>;
+                                         a owl:Ontology;
+                                         owl:versionInfo "Created at the Biohackathon 2012 and 2013".
+faldo:BagOfRegions a owl:Class;
+                   rdfs:comment "Used to describe a location that consists of a number of Regions but where the order is not known. e.g. the oddly named order() keyword in a INSDC file.";
+                   rdfs:label "Bag of regions";
+                   rdfs:seeAlso <http://www.insdc.org/files/feature_table.html>;
+                   rdfs:subClassOf faldo:CollectionOfRegions,
+                                   rdf:Bag.
+faldo:BothStrandsPosition a owl:Class;
+                          rdfs:comment "The 'both strands position' indicates a region that is best described as being on 'both' strands of a double-stranded sequence, rather than one or the other.";
+                          rdfs:label "Both strands position";
+                          rdfs:subClassOf faldo:StrandedPosition;
+                          owl:disjointWith faldo:ForwardStrandPosition,
+                                           faldo:ReverseStrandPosition.
+faldo:C-TerminalPosition a owl:Class;
+                         rdfs:comment "The C-terminus is the end of an amino acid chain (protein or polypeptide), terminated by a free carboxyl group (-COOH).";
+                         rdfs:label "C-Terminal position";
+                         rdfs:seeAlso wiki:C-terminus;
+                         rdfs:subClassOf faldo:ExactPosition;
+                         owl:disjointWith faldo:N-TerminalPosition.
+faldo:CollectionOfRegions a owl:Class;
+                          rdfs:comment "Sometimes a location of a feature is defined by a collection of regions e.g. join() and order() in INSDC records. One should always try to model the semantics more accurately than this, these are fallback options to encode legacy data.";
+                          rdfs:label "Collection of regions";
+                          rdfs:subClassOf [owl:onProperty rdfs:member ; 
+                                           owl:allValuesFrom [owl:unionOf (faldo:Region
+                                                                           faldo:CollectionOfRegions) ; 
+                                                              a owl:Class] ; 
+                                           a owl:Restriction],
+                                          owl:Thing.
+faldo:ExactPosition a owl:Class;
+                    rdfs:comment "A position that is exactly known.";
+                    rdfs:label "Exact position";
+                    rdfs:subClassOf [owl:onProperty faldo:position ; 
+                                     owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                     a owl:Restriction],
+                                    faldo:Position;
+                    owl:disjointWith faldo:InBetweenPosition,
+                                     faldo:InRangePosition,
+                                     faldo:OneOfPosition;
+                    owl:hasKey (faldo:position
+                                faldo:reference).
+faldo:ForwardStrandPosition a owl:Class;
+                            rdfs:comment "The position is on the forward (positive, 5' to 3') strand. Shown as a '+' in GFF3 and GTF.";
+                            rdfs:label "Forward/positive strand position";
+                            rdfs:subClassOf faldo:StrandedPosition;
+                            owl:disjointWith faldo:BothStrandsPosition,
+                                             faldo:ReverseStrandPosition.
+faldo:FuzzyPosition a owl:Class;
+                    rdfs:comment "A position that lacks exact data.";
+                    rdfs:label "Fuzzy position";
+                    rdfs:subClassOf faldo:Position.
+faldo:InBetweenPosition a owl:Class;
+                        rdfs:comment "This indicates that a feature is between two other positions that are both known exactly and that are next to each other. An example is a restriction enzyme cutting site. The cut is after one position and before the other position (hence, in between).";
+                        rdfs:label "In between positions";
+                        rdfs:subClassOf [owl:intersectionOf ([owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                             owl:onProperty faldo:before ; 
+                                                             owl:onClass faldo:ExactPosition ; 
+                                                             a owl:Restriction]
+                                                             [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                             owl:onProperty faldo:after ; 
+                                                             owl:onClass faldo:ExactPosition ; 
+                                                             a owl:Restriction]) ; 
+                                         a owl:Class],
+                                        faldo:Position;
+                        owl:disjointWith faldo:ExactPosition,
+                                         faldo:InRangePosition,
+                                         faldo:OneOfPosition.
+faldo:InRangePosition a owl:Class;
+                      rdfs:comment "Use when you have an idea of the range in which you can find the position, but you cannot be sure about the exact position.";
+                      rdfs:label "Indeterminate position within a range";
+                      rdfs:subClassOf [owl:intersectionOf ([owl:onProperty faldo:begin ; 
+                                                           owl:onClass faldo:Position ; 
+                                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                           a owl:Restriction]
+                                                           [owl:onProperty faldo:end ; 
+                                                           owl:onClass faldo:Position ; 
+                                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                           a owl:Restriction]) ; 
+                                       a owl:Class],
+                                      faldo:FuzzyPosition;
+                      owl:disjointWith faldo:ExactPosition,
+                                       faldo:InBetweenPosition,
+                                       faldo:OneOfPosition,
+                                       faldo:StrandedPosition.
+faldo:ListOfRegions a owl:Class;
+                    rdfs:comment "As an ordered list of regions (but the list might not be complete).",
+                                 "Should be used when the location of a region is defined by an ordered list of Regions. However, try to avoid using these types in favor of using more explicit semantics about why the order is important.";
+                    rdfs:label "List of regions";
+                    rdfs:seeAlso <http://www.insdc.org/files/feature_table.html>;
+                    rdfs:subClassOf faldo:CollectionOfRegions,
+                                    rdf:Seq.
+faldo:N-TerminalPosition a owl:Class;
+                         rdfs:comment "The position of the starting amino-acid a protein or polypeptide terminated by an amino acid with a free amine group (-NH2). The convention for writing peptide sequences is to put the N-terminus on the left and write the sequence from N- to C-terminus. Instances of this class are often used when the reference sequence is not complete ";
+                         rdfs:seeAlso wiki:N-terminus;
+                         rdfs:subClassOf faldo:ExactPosition;
+                         owl:disjointWith faldo:C-TerminalPosition.
+faldo:OneOfPosition a owl:Class;
+                    rdfs:comment "The position is known to be one of the more detailed positions listed by the location predicate.";
+                    rdfs:label "One of positions";
+                    rdfs:subClassOf faldo:FuzzyPosition;
+                    owl:disjointWith faldo:ExactPosition,
+                                     faldo:InBetweenPosition,
+                                     faldo:InRangePosition.
+faldo:Position a owl:Class;
+               rdfs:comment "Superclass for the general concept of a position on a sequence. The sequence is designated with the reference predicate.";
+               rdfs:label "Position";
+               rdfs:subClassOf [owl:onProperty faldo:reference ; 
+                                owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                a owl:Restriction],
+                               owl:Thing.
+faldo:Region a owl:Class;
+             rdfs:comment "A region describes a length of sequence with a start position and end position that represents a feature on a sequence, e.g. a gene.";
+             rdfs:label "Region";
+             rdfs:subClassOf [owl:intersectionOf ([owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                  owl:onProperty faldo:begin ; 
+                                                  owl:onClass faldo:Position ; 
+                                                  a owl:Restriction]
+                                                  [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                  owl:onProperty faldo:end ; 
+                                                  owl:onClass faldo:Position ; 
+                                                  a owl:Restriction]) ; 
+                              a owl:Class],
+                             owl:Thing;
+             owl:hasKey (faldo:begin
+                         faldo:end).
+faldo:ReverseStrandPosition a owl:Class;
+                            rdfs:comment "The position is on the reverse (complement, 3' to 5') strand of the sequence. Shown as '-' in GTF and GFF3.";
+                            rdfs:label "Negative/reverse strand position";
+                            rdfs:subClassOf faldo:StrandedPosition;
+                            owl:disjointWith faldo:BothStrandsPosition,
+                                             faldo:ForwardStrandPosition.
+faldo:StrandedPosition a owl:Class;
+                       rdfs:comment "Part of the coordinate system denoting on which strand the feature can be found. If you do not yet know which stand the feature is on, you should tag the position with just this class. If you know more you should use one of the subclasses. This means a region described with a '.' in GFF3. A GFF3 unstranded position does not have this type in FALDO -- those are just a 'position'.";
+                       rdfs:label "Stranded position";
+                       rdfs:subClassOf faldo:Position.
+faldo:after a owl:ObjectProperty;
+            rdfs:comment "This predicate is used when you want to describe a non-inclusive range. Only used in the InBetweenPosition to say it is after a nucleotide, but before the next one.";
+            rdfs:domain faldo:InBetweenPosition;
+            rdfs:label "after";
+            rdfs:range faldo:ExactPosition.
+faldo:before a owl:ObjectProperty;
+             rdfs:comment "This predicate is used to indicate that the feature is found before the exact position. Use to indicate, for example, a cleavage site. The cleavage happens between two amino acids before one and after the other.";
+             rdfs:domain faldo:InBetweenPosition;
+             rdfs:label "before";
+             rdfs:range faldo:ExactPosition.
+faldo:begin a owl:ObjectProperty;
+            rdfs:comment "The inclusive beginning of a position. Also known as start.";
+            rdfs:domain [owl:unionOf (faldo:Region
+                                      faldo:InRangePosition) ; 
+                         a owl:Class];
+            rdfs:label "begin";
+            rdfs:range faldo:Position;
+            owl:inverseOf faldo:beginOf.
+faldo:beginOf a owl:ObjectProperty;
+              rdfs:comment "This is the inverse of the begin:property. It is included to make it easier to write a number of OWL axioms. You should rarely use this in your raw data.";
+              rdfs:label "beginOf";
+              owl:inverseOf faldo:begin.
+faldo:end a owl:ObjectProperty;
+          rdfs:comment "The inclusive end of the position.";
+          rdfs:label "end";
+          rdfs:range faldo:Position;
+          owl:inverseOf faldo:endOf.
+faldo:endOf a owl:ObjectProperty;
+            rdfs:comment "This is the inverse of the begin:end. It is included to make it easier to write a number of OWL axioms. You should rarely use this in your raw data.";
+            rdfs:label "endOf";
+            owl:inverseOf faldo:end.
+faldo:location a owl:ObjectProperty;
+               rdfs:comment "This is the link between the concept whose location you are annotating and its range or position. For example, when annotating the region that describes an exon, the exon would be the subject and the region would be the object of the triple or: 'active site' 'location' [is] 'position 3'.";
+               rdfs:label "location";
+               rdfs:range [owl:unionOf (faldo:CollectionOfRegions
+                                        faldo:Region
+                                        faldo:Position) ; 
+                           a owl:Class].
+faldo:position a owl:DatatypeProperty;
+               rdfs:comment "Denoted in 1-based closed coordinates, i.e. the position on the first amino acid or nucleotide of a sequence has the value 1. For nucleotide sequences we count from the 5'end of the sequence, while for Aminoacid sequences we start counting from the N-Terminus.",
+                            "The position value is the offset along the reference where this position is found. Thus the only the position value in combination with the reference determines where a position is.";
+               rdfs:domain faldo:ExactPosition;
+               rdfs:label "position";
+               rdfs:range [owl:withRestrictions ([xsd:minInclusive 1 ]) ; 
+                           owl:onDatatype xsd:integer ; 
+                           a rdfs:Datatype].
+faldo:reference a owl:ObjectProperty;
+                rdfs:comment "The reference is the resource that the position value is anchored to.  For example, a contig or chromosome in a genome assembly.";
+                rdfs:label "reference".

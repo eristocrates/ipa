@@ -1,0 +1,52 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix sawsdl: <http://www.w3.org/ns/sawsdl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix wsl: <http://www.wsmo.org/ns/wsmo-lite#>.
+
+sawsdl:liftingSchemaMapping a rdf:Property.
+sawsdl:loweringSchemaMapping a rdf:Property.
+sawsdl:modelReference a rdf:Property.
+wsl: dcterms:created "2009-04-22"^^xsd:date;
+     dcterms:creator <http://vitvar.com/>,
+                     <http://jacek.cz/#me>;
+     dcterms:description "This is a lightweight ontology for semantic annotations of services, intended for use with SAWSDL and the Minimal Service Model."@en;
+     dcterms:issued "2009-04-22"^^xsd:date;
+     dcterms:modified "2013-05-30"^^xsd:date;
+     a owl:Ontology;
+     rdfs:label "WSMO-Lite"@en;
+     owl:imports <http://iserve.kmi.open.ac.uk/ns/msm>,
+                 sawsdl:;
+     owl:versionInfo "2013-05-30".
+wsl:Condition a rdfs:Class;
+              rdfs:description "preconditions of services and operations"@en;
+              rdfs:isDefinedBy wsl:;
+              rdfs:label "Condition"@en.
+wsl:Effect a rdfs:Class;
+           rdfs:description "effects (postconditions) of services and operations"@en;
+           rdfs:isDefinedBy wsl:;
+           rdfs:label "Effect"@en.
+wsl:FunctionalClassificationRoot rdfs:description "instances of this class are roots of functionality classification hierarchies"@en;
+                                 rdfs:isDefinedBy wsl:;
+                                 rdfs:label "Functional Classification Root"@en;
+                                 rdfs:subClassOf rdfs:Class.
+wsl:NonfunctionalParameter a rdfs:Class;
+                           rdfs:description "instances of this class are concrete nonfunctional properties of services"@en;
+                           rdfs:isDefinedBy wsl:;
+                           rdfs:label "Nonfunctional Parameter"@en.
+wsl:Ontology a rdfs:Class;
+             rdfs:description "information model ontology (deprecated)"@en;
+             rdfs:isDefinedBy wsl:;
+             rdfs:label "Ontology"@en;
+             rdfs:subClassOf owl:Ontology;
+             owl:deprecated true.
+wsl:usesOntology a rdfs:Property;
+                 rdfs:description "pointer from a semantic description to an ontology that it uses (deprecated)"@en;
+                 rdfs:domain wsl:Service;
+                 rdfs:isDefinedBy wsl:;
+                 rdfs:label "uses Ontology"@en;
+                 rdfs:subPropertyOf rdfs:seeAlso;
+                 owl:deprecated true.

@@ -1,0 +1,48 @@
+@base <http://eulersharp.sourceforge.net/2003/03swap/care>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix env: <http://eulersharp.sourceforge.net/2003/03swap/environment#>.
+@prefix human: <http://eulersharp.sourceforge.net/2003/03swap/human#>.
+@prefix clisko: <http://www.agfa.com/w3c/2009/clinicalSKOSSchemes#>.
+@prefix care: <http://eulersharp.sourceforge.net/2003/03swap/care#>.
+@prefix environ: <http://eulersharp.sourceforge.net/2003/03swap/environment#>.
+@prefix events: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+
+<http://eulersharp.sourceforge.net/2003/03swap/care> dce:contributor "Until 2010: Pieterjan De Potter; Ghent University - IBBT/ELIS - Multimedia Lab/Belgium"@en;
+                                                     dce:creator "Hans Cools, MD; Agfa Healthcare/Belgium"@en;
+                                                     dce:description "Formal general description of human care."@en;
+                                                     dce:format "OWL-Full"@en;
+                                                     dce:publisher "Agfa Healthcare/Belgium"@en;
+                                                     dce:title "Care"@en;
+                                                     a owl:Ontology.
+care:Caring a rdfs:Class;
+            rdfs:isDefinedBy care:;
+            rdfs:label "caring"@en;
+            rdfs:subClassOf event:Action;
+            skos:definition "Caring for a human."@en.
+care:ElderlyHome a rdfs:Class;
+                 rdfs:isDefinedBy care:;
+                 rdfs:label "home for the elderly"@en;
+                 rdfs:subClassOf care:Environment;
+                 skos:definition "Environment wherein elderly are cared for."@en;
+                 skos:exactMatch [a skos:Concept ; 
+                                  skos:inScheme clisko:sct20080731 ; 
+                                  skos:notation "257652008"^^clisko:sct20080731DT].
+care:Environment a rdfs:Class;
+                 rdfs:isDefinedBy care:;
+                 rdfs:label "care environment"@en;
+                 rdfs:subClassOf env:HumanCommunityEnvironment;
+                 skos:definition "Environment wherein a human is cared for."@en.
+care:caresFor a owl:ObjectProperty;
+              rdfs:domain human:Person;
+              rdfs:isDefinedBy care:;
+              rdfs:range human:Human;
+              skos:definition "Specifying a human a person cares for."@en.

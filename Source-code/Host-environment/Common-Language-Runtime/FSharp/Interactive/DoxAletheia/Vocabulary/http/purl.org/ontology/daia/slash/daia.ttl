@@ -1,0 +1,300 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix daia: <http://purl.org/ontology/daia/>.
+@prefix daiaserv: <http://purl.org/ontology/daia/Service/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos08: <http://www.w3.org/2008/05/skos#>.
+@prefix org: <http://www.w3.org/ns/org#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix frbrcore: <http://purl.org/vocab/frbr/core#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wgspos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+dcterms:Location a owl:Class.
+dcterms:available rdfs:type rdfs:Property;
+                  skos08:scopeNote "Date that a resource became or will become available. Applications may derive this property from daia:expected and/or daia:timestamp"@en.
+dcterms:coverage rdfs:type rdfs:Property.
+dcterms:description a owl:AnnotationProperty;
+                    rdfs:type rdfs:Property.
+dcterms:hasPart rdfs:type rdfs:Property;
+                skos08:scopeNote "This property can be inferred from a daia:narrowerExemplar or daia:broaderExemplar property."@en.
+dcterms:identifier rdfs:type rdfs:Property.
+dcterms:references rdfs:type rdfs:Property.
+dcterms:title a owl:AnnotationProperty.
+dcterms:valid rdfs:type rdfs:Property.
+bibo:Document a owl:Class;
+              rdfs:comment "A Document"@en;
+              rdfs:label "Document"@en;
+              rdfs:seeAlso foaf:primaryTopicOf,
+                           dcterms:title,
+                           dcterms:description,
+                           foaf:page;
+              owl:equivalentClass foaf:Document;
+              skos08:scopeNote "Messages can be added with dct:description."@en,
+                               "A link to a document about the document can be added with foaf:page and with foaf:primaryTopicOf."@en,
+                               "A name or title can be expressed with dct:title"@en.
+daia: dcterms:description "The Document Availability Information Ontology (DAIA) describes the current availability of documents in libraries and similar institutions. Availability can be expressed in terms of specific services."@en;
+      dcterms:title "Document Availability Information Ontology (DAIA)";
+      a owl:Ontology;
+      owl:versionInfo "Beta version 2011-12-15".
+daia:Limitation a owl:Class;
+                rdfs:comment "A Limitation is something that limits the the availability of an Item."@en;
+                rdfs:label "Limitation"@en;
+                rdfs:seeAlso dcterms:description,
+                             foaf:primaryTopicOf,
+                             foaf:page,
+                             dcterms:title;
+                skos08:scopeNote "A link to a page with more information can be added with foaf:page and with foaf:primaryTopicOf"@en,
+                                 "A description of the limitation can be added with dct:description."@en.
+daia:Response a owl:Class;
+              rdfs:comment "A Respone contains information about document availability for a specific time and institution."@en;
+              rdfs:label "Response"@en;
+              rdfs:seeAlso dcterms:description;
+              status:term_status "stable";
+              skos08:scopeNote "rdfs:seeAlso is used to link to documents and institutions."@en,
+                               "Messages can be added with dct:description."@en.
+daia:Service a owl:Class;
+             rdfs:comment "A Service is something that is provided by an Institution, typically related to an Item, for instance the service of loaning the Item."@en;
+             rdfs:label "Service"@en;
+             rdfs:seeAlso dcterms:description,
+                          dcterms:coverage;
+             rdfs:subClassOf dcmitype:Service;
+             skos08:scopeNote "Messages can be added with dct:description."@en,
+                              "Do not mix types of services (like 'loaning'), which are subclasses of Service, and specific instances of services (like loaning a particular book)!"@en,
+                              "The property dct:coverage may be used to refer to a scope of this service - but this is outside of the core purpose of DAIA"@en.
+daiaserv:Interloan a owl:Class;
+                   rdfs:comment "Use mediated by another institution."@en;
+                   rdfs:label "interloan service"@en;
+                   rdfs:subClassOf daia:Service.
+daiaserv:Loan a owl:Class;
+              rdfs:comment "Use outside of the holding institution (by lending or online access)"@en;
+              rdfs:label "loan service"@en;
+              rdfs:subClassOf daia:Service.
+daiaserv:Openaccess a owl:Class;
+                    rdfs:comment "can be accessed freely on the Web"@en;
+                    rdfs:label "open access service"@en;
+                    rdfs:subClassOf daia:Service;
+                    skos08:scopeNote "this does not imply free reuse, for instance distribution and and modification. A specific license should be used for details."@en.
+daiaserv:Presentation a owl:Class;
+                      rdfs:comment "Use within the holding institution (in their rooms, in their intranet etc.)"@en;
+                      rdfs:label "presentation service"@en;
+                      rdfs:subClassOf daia:Service.
+daia:Storage a owl:Class;
+             rdfs:comment "A place where instances of frbr:Item are stored."@en;
+             rdfs:label "Storage"@en;
+             rdfs:seeAlso wgspos:SpatialThing,
+                          foaf:page,
+                          foaf:primaryTopicOf,
+                          dcterms:title,
+                          foaf:name;
+             rdfs:subClassOf org:Site,
+                             dcterms:Location;
+             skos08:ScopeNote "Most instances of this class are also dct:Location and geo:SpatialThing";
+             skos08:scopeNote "The name or title of this location can be expressed with foaf:name and dct:title"@en,
+                              "A link to a page with more information about the storage can be added with foaf:page and foaf:primaryTopicOf. However there should be another property to express a link to a specific item at a specific storage."@en,
+                              "Physical items can be related to storages with geo:location. Most non-physical items have no locations but access services."@en.
+daia:availableFor a owl:ObjectProperty;
+                  rdfs:comment "Relates an Item to a Service which the Item is available for. This property is disjoint with the unavailable property; however an Item can be available and unavailable for two different Services of the same class at the same time."@en;
+                  rdfs:domain frbrcore:Item;
+                  rdfs:label "available for"@en;
+                  rdfs:range daia:Service;
+                  owl:propertyDisjointWith daia:unavailableFor.
+daia:availableOf a owl:ObjectProperty;
+                 rdfs:comment "Relates an available Service to the Item which this Service refers to"@en;
+                 rdfs:domain daia:Service;
+                 rdfs:label "available of"@en;
+                 rdfs:range frbrcore:Item;
+                 owl:inverseOf daia:availableFor.
+daia:broaderExemplar a owl:ObjectProperty;
+                     rdfs:comment "Relates a Document to an Item that contains an exemplar of the Document as part."@en,
+                                  "Relates an Item to a Document which is partly exemplified by the Item."@en;
+                     rdfs:domain bibo:Document,
+                                 frbrcore:Item;
+                     rdfs:label "broader exemplar of"@en,
+                                "broader exemplar"@en;
+                     rdfs:range bibo:Document,
+                                frbrcore:Item;
+                     rdfs:seeAlso dcterms:hasPart,
+                                  daia:broaderExemplarOf,
+                                  daia:broaderExemplar,
+                                  daia:exemplar,
+                                  daia:exemplarOf;
+                     owl:inverseOf daia:broaderExemplar,
+                                   daia:broaderExemplarOf;
+                     skos08:scopeNote "{ ?i daia:broaderExemplarOf ?d } => { ?i dct:hasPart [ daia:exemplarOf ?d ] }",
+                                      "{ ?d daia:broaderExemplar ?i } => { ?i dct:hasPart [ daia:exemplarOf ?d ] }".
+daia:collectedBy a owl:ObjectProperty;
+                 rdfs:comment "Relates a Document to an Institution which helds an iten of the Document."@en;
+                 rdfs:domain bibo:Document;
+                 rdfs:label "collected by"@en;
+                 rdfs:range foaf:Organization;
+                 rdfs:seeAlso dcmitype:Collection;
+                 owl:inverseOf daia:inCollection;
+                 skos08:scopeNote "This property implies the existence of a dcmitype:Collection and a cdtype:CatalogueOrIndex that need not to be modeled explicitly."@en.
+daia:delay a owl:DatatypeProperty;
+           rdfs:comment "A time period of estimated delay untill an available Service can be used. Applications should normalize all literal values not conforming to xsd:duration to 'unknown'"@en;
+           rdfs:domain daia:Service;
+           rdfs:label "delay"@en.
+daia:exemplar a owl:ObjectProperty;
+              rdfs:comment "Relates a Document to an Item that is an exemplar of the Document. This property is similar to frbr:exemplar but does not refer to the class frbr:Manifestation."@en;
+              rdfs:domain bibo:Document;
+              rdfs:label "has exemplar"@en;
+              rdfs:range frbrcore:Item;
+              rdfs:seeAlso daia:broaderExemplar,
+                           frbrcore:exemplarOf,
+                           daia:narrowerExemplar,
+                           frbrcore:embodimentOf;
+              owl:inverseOf daia:exemplarOf.
+daia:exemplarOf a owl:ObjectProperty;
+                rdfs:comment "Relates an Item to the Document that is exemplified by the Item."@en;
+                rdfs:domain frbrcore:Item;
+                rdfs:label "is examplar of"@en;
+                rdfs:range bibo:Document;
+                rdfs:seeAlso frbrcore:embodiment,
+                             daia:broaderExemplarOf,
+                             frbrcore:exemplar,
+                             daia:narrowerExemplarOf;
+                owl:inverseOf daia:exemplar.
+daia:expected a owl:DatatypeProperty;
+              rdfs:comment "If this property is given on an unavailable Service, it is assumed that the Service will be available at the specified time. Applications should normalize all literal values not conforming to xsd:date or xsd:dateTime to 'unknown'"@en;
+              rdfs:domain daia:Service;
+              rdfs:label "expected"@en;
+              rdfs:seeAlso dcterms:available.
+daia:heldBy a owl:ObjectProperty;
+            rdfs:comment "Relates an Item to an Institution that holds the Item."@en;
+            rdfs:domain frbrcore:Item;
+            rdfs:label "held by"@en;
+            rdfs:range foaf:Organization;
+            rdfs:subPropertyOf daia:collectedBy;
+            owl:inverseOf daia:holds.
+daia:holds a owl:ObjectProperty;
+           rdfs:comment "Relates an Institution to an Item which the Institution holds."@en;
+           rdfs:domain foaf:Organization;
+           rdfs:label "holds"@en;
+           rdfs:range frbrcore:Item;
+           rdfs:subPropertyOf daia:inCollection;
+           owl:inverseOf daia:heldBy.
+daia:inCollection a owl:ObjectProperty;
+                  rdfs:comment "Relates an Institution to a Document which the Institution helds an item of."@en;
+                  rdfs:domain foaf:Organization;
+                  rdfs:label "in collection"@en;
+                  rdfs:range bibo:Document;
+                  rdfs:seeAlso dcmitype:Collection;
+                  owl:inverseOf daia:collectedBy;
+                  skos08:scopeNote "This property implies the existence of a dcmitype:Collection and a cdtype:CatalogueOrIndex that need not to be modeled explicitly."@en.
+daia:label a owl:DatatypeProperty;
+           rdfs:comment "A call number, shelf mark or similar label of an item"@en;
+           rdfs:domain frbrcore:Item;
+           rdfs:label "label"@en;
+           rdfs:range rdfs:Literal;
+           rdfs:subPropertyOf dcterms:identifier.
+daia:limitedBy a owl:ObjectProperty;
+               rdfs:comment "Relates an Service to a Limitation."@en;
+               rdfs:domain daia:Service;
+               rdfs:label "limited by"@en;
+               rdfs:range daia:Limitation;
+               rdfs:seeAlso dcterms:coverage;
+               owl:inverseOf daia:limits.
+daia:limits a owl:ObjectProperty;
+            rdfs:comment "Relates a Limitation to a Service."@en;
+            rdfs:domain daia:Limitation;
+            rdfs:label "limits"@en;
+            rdfs:range daia:Service.
+daia:narrowerExemplar a owl:ObjectProperty;
+                      rdfs:comment "Relates an Item to a Document which is partly exemplified by the Item."@en,
+                                   "Relates a Document to an Item that is an exemplar of a part of the Document."@en;
+                      rdfs:domain frbrcore:Item,
+                                  bibo:Document;
+                      rdfs:label "narrower exemplar"@en,
+                                 "narrower exemplar of"@en;
+                      rdfs:range frbrcore:Item,
+                                 bibo:Document;
+                      rdfs:seeAlso daia:exemplarOf,
+                                   dcterms:hasPart,
+                                   daia:exemplar,
+                                   daia:broaderExemplarOf,
+                                   daia:broaderExemplar;
+                      owl:inverseOf daia:narrowerExemplarOf,
+                                    daia:narrowerExemplar;
+                      skos08:scopeNote "{ ?i daia:narrowerExemplarOf ?d } => { ?i daia:exemplarOf [ dct:isPartOf ?d ] }",
+                                       "{ ?d daia:narrowerExemplar ?i } => { ?d dct:hasPart [ daia:exemplar ?i ] }".
+daia:perform a owl:DatatypeProperty;
+             rdfs:comment "A link to perform, register or reserve a Service."@en;
+             rdfs:domain daia:Service;
+             rdfs:label "perform"@en;
+             rdfs:range xsd:anyURI.
+daia:providedBy a owl:ObjectProperty;
+                rdfs:comment "Relates a Service to an Institution that provides the Service."@en;
+                rdfs:domain daia:Service;
+                rdfs:label "provided by"@en;
+                rdfs:range foaf:Organization;
+                owl:inverseOf daia:provides.
+daia:provides a owl:ObjectProperty;
+              rdfs:comment "Relates an Institution to a Service that is provided by the Institution."@en;
+              rdfs:domain foaf:Organization;
+              rdfs:label "provides"@en;
+              rdfs:range daia:Service;
+              owl:inverseOf daia:providedBy.
+daia:queue a owl:DatatypeProperty;
+           rdfs:comment "The number number of waiting requests for this service. If this property is not given, the value zero may be assumed but applications may also distinguish zero and no value."@en;
+           rdfs:domain daia:Service;
+           rdfs:label "queue"@en;
+           rdfs:range xsd:nonNegativeInteger.
+daia:timestamp a owl:DatatypeProperty;
+               rdfs:comment "Date and time of a the validity of a Response"@en;
+               rdfs:domain daia:Response;
+               rdfs:label "timestamp"@en;
+               rdfs:range xsd:dateTime;
+               rdfs:seeAlso dcterms:available;
+               rdfs:subPropertyOf dcterms:valid.
+daia:unavailableFor a owl:ObjectProperty;
+                    rdfs:comment "Relates an Item to a Service which the Item is not available for. This property is disjoint with the available property; however an Item can be available and unavailable for two different Services of the same class at the same time."@en;
+                    rdfs:domain frbrcore:Item;
+                    rdfs:label "not available for"@en;
+                    rdfs:range daia:Service.
+daia:unavailableOf a owl:ObjectProperty;
+                   rdfs:comment "Relates a unavailable Service to the Item which this Service refers to"@en;
+                   rdfs:domain daia:Service;
+                   rdfs:label "available of"@en;
+                   rdfs:range frbrcore:Item;
+                   owl:inverseOf daia:availableFor.
+frbrcore:Item a owl:Class;
+              rdfs:comment "Every Item is also a document (frbr:Item rdfs:subClassOf bibo:Document."@en,
+                           "An Item is a single instance of a Document. Availability information is directly connected to single items."@en;
+              rdfs:seeAlso dcterms:description;
+              rdfs:subClassOf foaf:Document,
+                              bibo:Document;
+              skos08:scopeNote "Messages can be added with dct:description."@en.
+xsd:date a rdfs:Datatype.
+xsd:dateTime a rdfs:Datatype.
+xsd:duration a rdfs:Datatype.
+xsd:nonNegativeInteger a rdfs:Datatype.
+wgspos:SpatialThing a owl:Class.
+wgspos:location a owl:ObjectProperty;
+                rdfs:comment "The relation between something and the point, or other geometrical thing in space, where it is."@en;
+                rdfs:range wgspos:SpatialThing.
+status:moreinfo a owl:AnnotationProperty.
+status:term_status a owl:AnnotationProperty.
+skos08:changeNote a owl:AnnotationProperty.
+skos08:editorialNote a owl:AnnotationProperty.
+skos08:historyNote a owl:AnnotationProperty.
+skos08:scopeNote a owl:AnnotationProperty.
+org:Organization a owl:Class;
+                 owl:equivalentClass foaf:Organization.
+foaf:Document a owl:Class.
+foaf:Organization a owl:Class;
+                  rdfs:comment "Used for any kind of organization such as a library or a company, both Institution and Department."@en;
+                  rdfs:seeAlso foaf:primaryTopicOf,
+                               foaf:page,
+                               dcterms:title;
+                  owl:equivalentClass org:Organization;
+                  skos08:scopeNote "A link to a page with more information can be added with foaf:page and with foaf:primaryTopicOf."@en,
+                                   "A name or title can be expressed with dct:title"@en.
+foaf:page a rdfs:Property.
+foaf:primaryTopicOf a rdfs:Property.

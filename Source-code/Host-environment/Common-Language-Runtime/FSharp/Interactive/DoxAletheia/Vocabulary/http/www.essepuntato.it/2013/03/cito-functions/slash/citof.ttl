@@ -1,0 +1,227 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cito: <http://purl.org/spar/cito/>.
+@prefix citof: <http://www.essepuntato.it/2013/03/cito-functions/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+
+_:B95f17fabc36995eecdf7b37c65d78dbc a owl:AllDisjointClasses;
+                                    owl:members (citof:NegativeRhetoricalFunction
+                                                 citof:NeutralRhetoricalFunction
+                                                 citof:PositiveRhetoricalFunction).
+cito:agreesWith a citof:PositiveRhetoricalFunction,
+                  owl:NamedIndividual.
+cito:cites a citof:NeutralRhetoricalFunction,
+             owl:NamedIndividual.
+cito:citesAsAuthority a citof:RhetoricalFunction,
+                        citof:FactualFunction,
+                        owl:NamedIndividual.
+cito:citesAsDataSource a citof:FactualFunction,
+                         owl:NamedIndividual.
+cito:citesAsEvidence a citof:RhetoricalFunction,
+                       citof:FactualFunction,
+                       owl:NamedIndividual.
+cito:citesAsMetadataDocument a citof:FactualFunction,
+                               owl:NamedIndividual.
+cito:citesAsPotentialSolution a citof:PositiveRhetoricalFunction,
+                                owl:NamedIndividual.
+cito:citesAsRecommendedReading a citof:NeutralRhetoricalFunction,
+                                 owl:NamedIndividual.
+cito:citesAsRelated a citof:NeutralRhetoricalFunction,
+                      owl:NamedIndividual.
+cito:citesAsSourceDocument a citof:FactualFunction,
+                             owl:NamedIndividual.
+cito:citesForInformation a citof:FactualFunction,
+                           owl:NamedIndividual.
+cito:compiles a citof:FactualFunction,
+                owl:NamedIndividual.
+cito:confirms a citof:PositiveRhetoricalFunction,
+                owl:NamedIndividual.
+cito:containsAssertionFrom a citof:RhetoricalFunction,
+                             citof:FactualFunction,
+                             owl:NamedIndividual.
+cito:corrects a citof:NegativeRhetoricalFunction,
+                owl:NamedIndividual.
+cito:credits a citof:PositiveRhetoricalFunction,
+               owl:NamedIndividual.
+cito:critiques a citof:NegativeRhetoricalFunction,
+                 owl:NamedIndividual.
+cito:derides a citof:NegativeRhetoricalFunction,
+               owl:NamedIndividual.
+cito:describes a citof:NeutralRhetoricalFunction,
+                 owl:NamedIndividual.
+cito:disagreesWith a citof:NegativeRhetoricalFunction,
+                     owl:NamedIndividual.
+cito:discusses a citof:NeutralRhetoricalFunction,
+                 owl:NamedIndividual.
+cito:disputes a citof:NegativeRhetoricalFunction,
+                owl:NamedIndividual.
+cito:documents a citof:FactualFunction,
+                 owl:NamedIndividual.
+cito:extends a citof:NeutralRhetoricalFunction,
+               owl:NamedIndividual.
+cito:givesBackgroundTo a citof:RhetoricalFunction,
+                         citof:FactualFunction,
+                         owl:NamedIndividual.
+cito:givesSupportTo a citof:RhetoricalFunction,
+                      citof:FactualFunction,
+                      owl:NamedIndividual.
+cito:hasReplyFrom a citof:NeutralRhetoricalFunction,
+                    owl:NamedIndividual.
+cito:includesExcerptFrom a citof:FactualFunction,
+                           owl:NamedIndividual.
+cito:includesQuotationFrom a citof:FactualFunction,
+                             owl:NamedIndividual.
+cito:isAgreedWithBy a citof:PositiveRhetoricalFunction,
+                      owl:NamedIndividual.
+cito:isCitedAsAuthorityBy a citof:RhetoricalFunction,
+                            citof:FactualFunction,
+                            owl:NamedIndividual.
+cito:isCitedAsDataSourceBy a citof:FactualFunction,
+                             owl:NamedIndividual.
+cito:isCitedAsEvidenceBy a citof:RhetoricalFunction,
+                           citof:FactualFunction,
+                           owl:NamedIndividual.
+cito:isCitedAsMetadataDocumentBy a citof:FactualFunction,
+                                   owl:NamedIndividual.
+cito:isCitedAsPotentialSolution a citof:PositiveRhetoricalFunction,
+                                  owl:NamedIndividual.
+cito:isCitedAsRecommendedReading a citof:NeutralRhetoricalFunction,
+                                   owl:NamedIndividual.
+cito:isCitedAsRelatedBy a citof:NeutralRhetoricalFunction,
+                          owl:NamedIndividual.
+cito:isCitedAsSourceDocumentBy a citof:FactualFunction,
+                                 owl:NamedIndividual.
+cito:isCitedBy a citof:NeutralRhetoricalFunction,
+                 owl:NamedIndividual.
+cito:isCitedForInformationBy a citof:FactualFunction,
+                               owl:NamedIndividual.
+cito:isCompiledBy a citof:FactualFunction,
+                    owl:NamedIndividual.
+cito:isConfirmedBy a citof:PositiveRhetoricalFunction,
+                     owl:NamedIndividual.
+cito:isCorrectedBy a citof:NegativeRhetoricalFunction,
+                     owl:NamedIndividual.
+cito:isCreditedBy a citof:PositiveRhetoricalFunction,
+                    owl:NamedIndividual.
+cito:isCritiquedBy a citof:NegativeRhetoricalFunction,
+                     owl:NamedIndividual.
+cito:isDeridedBy a citof:NegativeRhetoricalFunction,
+                   owl:NamedIndividual.
+cito:isDescribedBy a citof:NeutralRhetoricalFunction,
+                     owl:NamedIndividual.
+cito:isDisagreedWithBy a citof:NegativeRhetoricalFunction,
+                         owl:NamedIndividual.
+cito:isDiscussedBy a citof:NeutralRhetoricalFunction,
+                     owl:NamedIndividual.
+cito:isDisputedBy a citof:NegativeRhetoricalFunction,
+                    owl:NamedIndividual.
+cito:isDocumentedBy a citof:FactualFunction,
+                      owl:NamedIndividual.
+cito:isExtendedBy a citof:NeutralRhetoricalFunction,
+                    owl:NamedIndividual.
+cito:isParodiedBy a citof:NegativeRhetoricalFunction,
+                    owl:NamedIndividual.
+cito:isPlagiarizedBy a citof:FactualFunction,
+                       owl:NamedIndividual.
+cito:isQualifiedBy a citof:NegativeRhetoricalFunction,
+                     owl:NamedIndividual.
+cito:isRefutedBy a citof:NegativeRhetoricalFunction,
+                   owl:NamedIndividual.
+cito:isRetractedBy a citof:NegativeRhetoricalFunction,
+                     owl:NamedIndividual.
+cito:isReviewedBy a citof:NeutralRhetoricalFunction,
+                    owl:NamedIndividual.
+cito:isRidiculedBy a citof:NegativeRhetoricalFunction,
+                     owl:NamedIndividual.
+cito:isSepculatedOnBy a citof:NeutralRhetoricalFunction,
+                        owl:NamedIndividual.
+cito:isSupportedBy a citof:PositiveRhetoricalFunction,
+                     owl:NamedIndividual.
+cito:isUpdatedBy a citof:FactualFunction,
+                   owl:NamedIndividual.
+cito:obtainsBackgroundFrom a citof:RhetoricalFunction,
+                             citof:FactualFunction,
+                             owl:NamedIndividual.
+cito:obtainsSupportFrom a citof:RhetoricalFunction,
+                          citof:FactualFunction,
+                          owl:NamedIndividual.
+cito:parodies a citof:NegativeRhetoricalFunction,
+                owl:NamedIndividual.
+cito:plagiarizes a citof:FactualFunction,
+                   owl:NamedIndividual.
+cito:providesAssertionFor a citof:RhetoricalFunction,
+                            citof:FactualFunction,
+                            owl:NamedIndividual.
+cito:providesConclusionsFor a citof:FactualFunction,
+                              owl:NamedIndividual.
+cito:providesDataFor a citof:FactualFunction,
+                       owl:NamedIndividual.
+cito:providesExcerptFor a citof:FactualFunction,
+                          owl:NamedIndividual.
+cito:providesMethodFor a citof:FactualFunction,
+                         owl:NamedIndividual.
+cito:providesQuotationFor a citof:FactualFunction,
+                            owl:NamedIndividual.
+cito:qualifies a citof:NegativeRhetoricalFunction,
+                 owl:NamedIndividual.
+cito:refutes a citof:NegativeRhetoricalFunction,
+               owl:NamedIndividual.
+cito:repliesTo a citof:NeutralRhetoricalFunction,
+                 owl:NamedIndividual.
+cito:retracts a citof:NegativeRhetoricalFunction,
+                owl:NamedIndividual.
+cito:reviews a citof:NeutralRhetoricalFunction,
+               owl:NamedIndividual.
+cito:ridicules a citof:NegativeRhetoricalFunction,
+                 owl:NamedIndividual.
+cito:speculatesOn a citof:NeutralRhetoricalFunction,
+                    owl:NamedIndividual.
+cito:supports a citof:PositiveRhetoricalFunction,
+                owl:NamedIndividual.
+cito:updates a citof:FactualFunction,
+               owl:NamedIndividual.
+cito:usesConclusionsFrom a citof:FactualFunction,
+                           owl:NamedIndividual.
+cito:usesDataFrom a citof:FactualFunction,
+                    owl:NamedIndividual.
+cito:usesMethodIn a citof:FactualFunction,
+                    owl:NamedIndividual.
+<http://www.essepuntato.it/2013/03/cito-functions> dc11:creator "Andrea Nuzzolese",
+                                                                "Angelo Di Iorio",
+                                                                "Silvio Peroni";
+                                                   dc11:date "2013-05-20";
+                                                   dc11:description """CiTOFunctions is an ontology that provides a classification for citations. In particular, it classifies CiTO properties (each defining a particular citational act) according to their factual (class functions:FactualFunction) and positive/neutral/negative rhetorical functions (classes functions:PositiveRhetoricalFunction, functions:NeuterRhetoricalFunction and functions:NegativeRhetoricalFunction), as proposed by Peroni et al. in: 
+
+Peroni, S., Shotton, D. (2012). FaBiO and CiTO: ontologies for describing bibliographic resources and citations. In Journal of Web Semantics: Science, Services and Agents on the World Wide Web, 17 (December 2012): 33-43. Amsterdam, The Netherlands: Elsevier. DOI: 10.1016/j.websem.2012.08.001"""@en;
+                                                   dc11:title "Functions of Citations";
+                                                   a owl:Ontology;
+                                                   rdfs:comment "CiTOFunctions is an ontology that classifies each CiTO property according to the factual and rhetorical citational function it refers to."@en;
+                                                   rdfs:label "CiTOFunction";
+                                                   owl:imports <http://purl.org/spar/cito>;
+                                                   owl:versionInfo "1.2 - aligned with CiTO 2.5.1"@en.
+citof:CitationFunction a owl:Class;
+                       rdfs:comment "A class defining the set of citation types having a particular function."@en;
+                       rdfs:label "citation function"@en.
+citof:FactualFunction a owl:Class;
+                      rdfs:comment "A class defining the set of citation types having a factual function."@en;
+                      rdfs:label "factual function"@en;
+                      rdfs:subClassOf citof:CitationFunction.
+citof:NegativeRhetoricalFunction a owl:Class;
+                                 rdfs:comment "A class defining the set of citation types having a negative rhetorical function."@en;
+                                 rdfs:label "negative rhetorical function"@en;
+                                 rdfs:subClassOf citof:RhetoricalFunction.
+citof:NeutralRhetoricalFunction a owl:Class;
+                                rdfs:comment "A class defining the set of citation types having a neutral rhetorical function."@en;
+                                rdfs:label "neutral rhetorical function"@en;
+                                rdfs:subClassOf citof:RhetoricalFunction.
+citof:PositiveRhetoricalFunction a owl:Class;
+                                 rdfs:comment "A class defining the set of citation types having a positive rhetorical function."@en;
+                                 rdfs:label "positive rhetorical function"@en;
+                                 rdfs:subClassOf citof:RhetoricalFunction.
+citof:RhetoricalFunction a owl:Class;
+                         rdfs:comment "A class defining the set of citation types having a particular rhetorical function."@en;
+                         rdfs:label "rhetorical function"@en;
+                         rdfs:subClassOf citof:CitationFunction.

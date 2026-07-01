@@ -1,0 +1,304 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix opus: <http://lsdis.cs.uga.edu/projects/semdis/opus#>.
+@prefix bibtex: <http://purl.org/net/nknouf/ns/bibtex#>.
+@prefix swpo: <http://sw-portal.deri.org/ontologies/swportal#>.
+@prefix swrc: <http://swrc.ontoware.org/ontology#>.
+@prefix akt: <http://www.aktors.org/ontology/portal#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://knowledgeweb.semanticweb.org/semanticportal/OWL/Documentation_Ontology.owl#Chapter> a owl:DatatypeProperty.
+opus: dc11:creator "Boanerges Aleman-Meza";
+      a owl:Ontology;
+      rdfs:comment """This file specifies in RDF Schema format the classes and properties for SwetoDblp.
+    These classes and properties are based on the internal LSDIS Library portal engine.
+    Contact Person is Boanerges Aleman-Meza (baleman at uga dot edu).
+    """;
+      rdfs:label "SwetoDblp Ontology";
+      owl:versionInfo "2007-05-01".
+opus:Article a owl:Class;
+             rdfs:comment "An article from a journal or magazine.";
+             rdfs:label "Article";
+             rdfs:subClassOf opus:Publication;
+             owl:equivalentClass <http://knowledgeweb.semanticweb.org/semanticportal/OWL/Documentation_Ontology.owl#Article_in_Journal>,
+                                 swpo:Article,
+                                 bibtex:Article.
+opus:Article_in_Proceedings a owl:Class;
+                            rdfs:comment "An article in the proceedings of a meeting, such as a conference, workhshop and symposium.";
+                            rdfs:label "Article in Proceedings";
+                            rdfs:subClassOf opus:Publication;
+                            owl:equivalentClass swpo:Inproceedings,
+                                                bibtex:Inproceedings.
+opus:Book a owl:Class;
+          rdfs:comment "A book with an explicit publisher.";
+          rdfs:label "Book";
+          rdfs:subClassOf opus:Publication;
+          owl:equivalentClass <http://www.marcont.org/ontology/marcont.owl#Book>,
+                              <http://knowledgeweb.semanticweb.org/semanticportal/OWL/Documentation_Ontology.owl#Book>,
+                              swrc:Book,
+                              akt:Book,
+                              bibtex:Book.
+opus:Book_Chapter a owl:Class;
+                  rdfs:comment "A part of a book, such as a chapter (or section/preface) and/or a range of pages.";
+                  rdfs:label "Book Chapter";
+                  rdfs:subClassOf opus:Publication;
+                  owl:equivalentClass <http://knowledgeweb.semanticweb.org/semanticportal/OWL/Documentation_Ontology.owl#Article_in_Book>,
+                                      bibtex:Inbook.
+opus:Doctoral_Dissertation a owl:Class;
+                           rdfs:comment "A dissertation written to receive a PhD.";
+                           rdfs:label "Doctoral Dissertation";
+                           rdfs:subClassOf opus:Thesis;
+                           owl:equivalentClass <http://knowledgeweb.semanticweb.org/semanticportal/OWL/Documentation_Ontology.owl#PhD_Thesis>,
+                                               swrc:PhDThesis,
+                                               swpo:PhDThesis,
+                                               bibtex:Phdthesis.
+opus:Edited_Book a owl:Class;
+                 rdfs:comment "An edited book with an explicit publisher.";
+                 rdfs:label "Edited Book";
+                 rdfs:subClassOf opus:Edited_Publication,
+                                 opus:Book;
+                 owl:equivalentClass akt:Edited-Book.
+opus:Edited_Publication a owl:Class;
+                        rdfs:comment "An edited publication, that is, it has one or more editors (edited books, etc)";
+                        rdfs:label "Edited Publication";
+                        rdfs:subClassOf opus:Publication.
+opus:Journal a owl:Class;
+             rdfs:comment "A periodical presenting articles on a particular subject.";
+             rdfs:label "Journal";
+             rdfs:subClassOf opus:Serial_Publication;
+             owl:equivalentClass akt:Journal,
+                                 swpo:Journal.
+opus:Masters_Thesis a owl:Class;
+                    rdfs:comment "A thesis written to receive a Master's degree.";
+                    rdfs:label "Masters Thesis";
+                    rdfs:subClassOf opus:Thesis;
+                    owl:equivalentClass <http://knowledgeweb.semanticweb.org/semanticportal/OWL/Documentation_Ontology.owl#Master_Thesis>,
+                                        swrc:MasterThesis,
+                                        swpo:MasterThesis,
+                                        bibtex:Mastersthesis.
+opus:Proceedings a owl:Class;
+                 rdfs:comment "A written account of what transpired at a meeting.";
+                 rdfs:label "Proceedings";
+                 rdfs:subClassOf opus:Publication;
+                 owl:equivalentClass swrc:Proceedings,
+                                     swpo:Proceedings,
+                                     bibtex:Proceedings.
+opus:Publication a owl:Class;
+                 rdfs:comment "Individual documents and collections of documents such as series, journals, etc.";
+                 rdfs:label "Publication";
+                 rdfs:subClassOf foaf:Document;
+                 owl:equivalentClass <http://knowledgeweb.semanticweb.org/semanticportal/OWL/Documentation_Ontology.owl#Publication>,
+                                     swrc:Publication,
+                                     akt:Publication,
+                                     swpo:Publication.
+opus:Publishing_Organization a owl:Class;
+                             rdfs:comment "An organization that, among other things, creates publishing periodicals, books or music.";
+                             rdfs:label "Publisher";
+                             rdfs:subClassOf foaf:Organization;
+                             owl:equivalentClass akt:Publishing-House.
+opus:School a owl:Class;
+            rdfs:comment "An organization where individuals receive education.";
+            rdfs:label "School";
+            rdfs:subClassOf foaf:Organization.
+opus:Serial_Publication a owl:Class;
+                        rdfs:comment "A periodical that appears at scheduled times.";
+                        rdfs:label "Serial Publication";
+                        rdfs:subClassOf opus:Publication.
+opus:Series a owl:Class;
+            rdfs:comment "Publication Series, such as LNCS, WEUR Workshops, etc. (at this time debatable whether this should be subclassof Publication)";
+            rdfs:label "Series".
+opus:Thesis a owl:Class;
+            rdfs:comment "A treatise advancing a new point of view resulting from research; usually a requirement for an advanced academic degree.";
+            rdfs:label "Thesis";
+            rdfs:subClassOf opus:Publication;
+            owl:equivalentClass <http://knowledgeweb.semanticweb.org/semanticportal/OWL/Documentation_Ontology.owl#Thesis>,
+                                swrc:Thesis,
+                                swpo:Thesis.
+opus:University a owl:Class;
+                rdfs:comment "An institution for higher learning with teaching and research facilities constituting a graduate school and professional schools that award master's degrees and doctorates and an undergraduate division that awards bachelor's degrees.";
+                rdfs:label "University";
+                rdfs:subClassOf opus:School;
+                owl:equivalentClass <http://knowledgeweb.semanticweb.org/semanticportal/OWL/Organization_Ontology.owl#University>,
+                                    swrc:University,
+                                    akt:University,
+                                    swpo:University.
+opus:Webpage a owl:Class;
+             rdfs:comment "A webpage, it is subclass of Document because we want to emphasize that the URL of the webpage is used the URI.";
+             rdfs:label "Webpage";
+             rdfs:subClassOf foaf:Document.
+opus:abstract a owl:DatatypeProperty;
+              rdfs:comment "The abstract of a document";
+              rdfs:domain foaf:Document;
+              rdfs:label "abstract";
+              rdfs:range xsd:string.
+opus:affiliation a owl:ObjectProperty;
+                 rdfs:comment "Indicates that a person is affiliated to a specific organization.";
+                 rdfs:domain foaf:Person;
+                 rdfs:label "Affiliation";
+                 rdfs:range foaf:Organization;
+                 owl:equivalentProperty swrc:affiliation,
+                                        akt:has-affiliation.
+opus:at_organization a owl:ObjectProperty;
+                     rdfs:comment "Indicates that a publication originates or is related to a specific Organization.";
+                     rdfs:domain opus:Publication;
+                     rdfs:label "at organization";
+                     rdfs:range foaf:Organization.
+opus:at_university a owl:ObjectProperty;
+                   rdfs:comment "Indicates that a publication originates or is related to a specific University.";
+                   rdfs:domain opus:Publication;
+                   rdfs:label "at university";
+                   rdfs:range opus:University.
+opus:author a owl:ObjectProperty;
+            rdfs:comment "Indicates that a publication is authored by a specific person(s).";
+            rdfs:domain opus:Publication;
+            rdfs:label "Author";
+            rdfs:range rdf:Seq.
+opus:book_title a owl:DatatypeProperty;
+                rdfs:comment "An alternative Book Title or the Book Title where an article appears, such as title of proceedings.";
+                rdfs:domain opus:Publication;
+                rdfs:label "book title";
+                rdfs:range xsd:string;
+                owl:equivalentProperty swrc:booktitle,
+                                       bibtex:hasBooktitle.
+opus:cdrom a owl:DatatypeProperty;
+           rdfs:comment "The CDROM location of a Publication, as used by the ACM SIGMOD Anthology.";
+           rdfs:domain opus:Publication;
+           rdfs:label "cdrom";
+           rdfs:range xsd:string.
+opus:chapter a owl:DatatypeProperty;
+             rdfs:comment "The chapter number of a publication";
+             rdfs:domain opus:Book_Chapter;
+             rdfs:label "chapter";
+             rdfs:range xsd:string;
+             owl:equivalentProperty <http://knowledgeweb.semanticweb.org/semanticportal/OWL/Documentation_Ontology.owl#Chapter>,
+                                    swrc:chapter.
+opus:chapter_of a owl:ObjectProperty;
+                rdfs:comment "Indicates that a book chapter belongs to a specific book. It is debateable whether this should be subclass of Collection.";
+                rdfs:domain opus:Book_Chapter;
+                rdfs:label "Chapter Of";
+                rdfs:range opus:Edited_Book.
+opus:cites a owl:ObjectProperty;
+           rdfs:comment "Indicates that a publication cites another publication.";
+           rdfs:domain opus:Publication;
+           rdfs:label "Cites";
+           owl:equivalentProperty swrc:cite.
+opus:coauthor a owl:ObjectProperty;
+              rdfs:comment "Indicates that a person is co-author with another person";
+              rdfs:domain foaf:Person;
+              rdfs:label "coauthor";
+              rdfs:range foaf:Person.
+opus:coeditor a owl:ObjectProperty;
+              rdfs:comment "Indicates that a person is co-editor with another person";
+              rdfs:domain foaf:Person;
+              rdfs:label "coeditor";
+              rdfs:range foaf:Person.
+opus:editor a owl:ObjectProperty;
+            rdfs:comment "Indicates that a publication has a specific editor(s).";
+            rdfs:domain opus:Edited_Publication;
+            rdfs:label "Editor";
+            rdfs:range rdf:Seq.
+opus:ee a owl:DatatypeProperty;
+        rdfs:comment "The Electronic Edition of a publication";
+        rdfs:domain opus:Publication;
+        rdfs:label "ee";
+        rdfs:range xsd:string.
+opus:eepresentation a owl:DatatypeProperty;
+                    rdfs:comment "The Electronic Edition of a Presentation of a publication";
+                    rdfs:domain opus:Publication;
+                    rdfs:label "presentation";
+                    rdfs:range xsd:string.
+opus:gMonth a owl:DatatypeProperty;
+            rdfs:comment "The month part of the date of a foaf:Document represented as xsd:gMonth value";
+            rdfs:domain foaf:Document;
+            rdfs:label "gMonth";
+            rdfs:range xsd:gMonth.
+opus:in_series a owl:ObjectProperty;
+               rdfs:comment "Indicates that a Publication is part of a Publication Series.";
+               rdfs:domain opus:Publication;
+               rdfs:label "In Series";
+               rdfs:range opus:Series.
+opus:isIncludedIn a owl:ObjectProperty;
+                  rdfs:comment "Indicates that a publication is included in a specific proceedings publication.";
+                  rdfs:domain opus:Article_in_Proceedings;
+                  rdfs:label "is Included in Proceedings";
+                  rdfs:range opus:Proceedings;
+                  owl:equivalentProperty swpo:containedInProceedings.
+opus:isbn a owl:DatatypeProperty;
+          rdfs:comment "The ISBN of a publication.";
+          rdfs:domain opus:Publication;
+          rdfs:label "isbn";
+          rdfs:range xsd:string;
+          owl:equivalentProperty swrc:isbn,
+                                 bibtex:hasISBN.
+opus:journal_name a owl:DatatypeProperty;
+                  rdfs:comment "The name of a Journal, such as where an article appears";
+                  rdfs:domain opus:Journal;
+                  rdfs:label "journal name";
+                  rdfs:range xsd:string;
+                  owl:equivalentProperty bibtex:hasJournal.
+opus:last_modified_date a owl:DatatypeProperty;
+                        rdfs:comment "The last modified date of a document.";
+                        rdfs:domain foaf:Document;
+                        rdfs:label "last modified date";
+                        rdfs:range xsd:string.
+opus:month a owl:DatatypeProperty;
+           rdfs:comment "The month part of the date of a foaf:Document.";
+           rdfs:domain foaf:Document;
+           rdfs:label "month";
+           rdfs:range xsd:string;
+           owl:equivalentProperty swrc:month,
+                                  bibtex:hasMonth.
+opus:number a owl:DatatypeProperty;
+            rdfs:comment "The Number part of citation of a publication.";
+            rdfs:domain opus:Publication;
+            rdfs:label "number";
+            rdfs:range xsd:string;
+            owl:equivalentProperty bibtex:hasNumber.
+opus:pages a owl:DatatypeProperty;
+           rdfs:comment "The Pages part of citation of a publication.";
+           rdfs:domain opus:Publication;
+           rdfs:label "pages";
+           rdfs:range xsd:string;
+           owl:equivalentProperty swrc:pages,
+                                  akt:has-page-numbers,
+                                  bibtex:hasPages.
+opus:sameAffiliation a owl:ObjectProperty;
+                     rdfs:comment "Indicates that a person has same affiliation than another person (this is not necessarily transitive)";
+                     rdfs:domain foaf:Person;
+                     rdfs:label "sameAffiliation";
+                     rdfs:range foaf:Person.
+opus:volume a owl:DatatypeProperty;
+            rdfs:comment "The Volume part of citation of a publication.";
+            rdfs:domain opus:Publication;
+            rdfs:label "volume";
+            rdfs:range xsd:string;
+            owl:equivalentProperty swrc:volume.
+opus:year a owl:DatatypeProperty;
+          rdfs:comment "The year part of the date of a foaf:Document.";
+          rdfs:domain foaf:Document;
+          rdfs:label "year";
+          rdfs:range xsd:gYear;
+          owl:equivalentProperty swrc:year.
+bibtex:hasBooktitle a owl:DatatypeProperty.
+bibtex:hasISBN a owl:DatatypeProperty.
+bibtex:hasJournal a owl:DatatypeProperty.
+bibtex:hasMonth a owl:DatatypeProperty.
+bibtex:hasNumber a owl:DatatypeProperty.
+bibtex:hasPages a owl:DatatypeProperty.
+swpo:containedInProceedings a owl:ObjectProperty.
+swrc:affiliation a owl:ObjectProperty.
+swrc:booktitle a owl:DatatypeProperty.
+swrc:chapter a owl:DatatypeProperty.
+swrc:cite a owl:ObjectProperty.
+swrc:isbn a owl:DatatypeProperty.
+swrc:month a owl:DatatypeProperty.
+swrc:pages a owl:DatatypeProperty.
+swrc:volume a owl:DatatypeProperty.
+swrc:year a owl:DatatypeProperty.
+akt:has-affiliation a owl:ObjectProperty.
+akt:has-page-numbers a owl:DatatypeProperty.

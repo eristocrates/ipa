@@ -1,0 +1,1946 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ontosec: <http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+_:B03459632c280f4ce39316e517929eb8d rdf:object ontosec:FunctionGroups;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:NetAccessFunctionGroup;
+                                    a owl:Axiom;
+                                    rdfs:comment "".
+_:B1e64e9955c245ef39b7d6caa9a3c34eb a owl:AllDifferent;
+                                    owl:distinctMembers (ontosec:Offline
+                                                         ontosec:Parallel).
+_:B224ab0790fc819730bafe531a560881b rdf:object ontosec:CertificateInstallation;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:CertificateInstallationApplication;
+                                    a owl:Axiom;
+                                    rdfs:comment "A Symbian and Nokia application that provides capabilities to install symbian certificates on some Nokia devices".
+_:B25030d42c4c5d75212e76da5cd6f94bd rdf:object ontosec:CardMemory;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:SD;
+                                    a owl:Axiom;
+                                    rdfs:comment "Secure Digital Memory Card".
+_:B44a5a71f73a0975a629cae1bd7fc33fa a owl:AllDisjointClasses;
+                                    owl:members (ontosec:Platform).
+_:B524e614e4f22dfa3577b1dde09406936 rdf:object ontosec:CertificateInstallation;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:CertificateInstallationApplication;
+                                    a owl:Axiom;
+                                    rdfs:comment "A Symbian and Nokia application that provides capabilities to install symbian certificates on some Nokia devices".
+_:B66121b1b19072469d63c68261117c565 a owl:AllDifferent;
+                                    owl:distinctMembers (ontosec:Offline
+                                                         ontosec:Parallel).
+_:B8ca5e10ff4c07b0dc5fe652c90cb6c6e rdf:object ontosec:FunctionGroups;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:NetAccessFunctionGroup;
+                                    a owl:Axiom;
+                                    rdfs:comment "".
+_:B902d8fead0a2de24ed07f1c448434945 a owl:AllDisjointClasses;
+                                    owl:members (ontosec:Platform).
+_:Bd5b01073810d7b90798e146fa17b7227 rdf:object ontosec:CardMemory;
+                                    rdf:predicate rdf:type;
+                                    rdf:subject ontosec:SD;
+                                    a owl:Axiom;
+                                    rdfs:comment "Secure Digital Memory Card".
+dc11:format a owl:AnnotationProperty.
+dc11:relation a owl:AnnotationProperty.
+<http://www.semanticweb.org/ontologies/2008/11/OntologySecurity.owl> dc11:relation "This ontology covers the domain of security in the field of mobile applications.";
+                                                                     a owl:Ontology.
+ontosec:2.5G a owl:Class;
+             rdfs:subClassOf ontosec:WANetwork.
+ontosec:2G a owl:Class;
+           rdfs:subClassOf ontosec:WANetwork.
+ontosec:3DES a owl:Class;
+             rdfs:subClassOf ontosec:BlockCipherAlgorithm.
+ontosec:3G a owl:Class;
+           rdfs:subClassOf ontosec:WANetwork.
+ontosec:3GPP a ontosec:OrganizationsAndStandards.
+ontosec:AES a owl:Class;
+            rdfs:subClassOf ontosec:BlockCipherAlgorithm.
+ontosec:AES_FIPS197 a ontosec:AES.
+ontosec:AccessControl a owl:Class;
+                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:AccessControlList a owl:Class;
+                          rdfs:comment "List of permissions attached to an object.";
+                          rdfs:subClassOf ontosec:AccessControlMethods.
+ontosec:AccessControlMethods a owl:Class;
+                             rdfs:subClassOf [owl:someValuesFrom ontosec:AccessControl ; 
+                                              owl:onProperty ontosec:Satisfice ; 
+                                              a owl:Restriction],
+                                             [owl:someValuesFrom ontosec:Integrity ; 
+                                              owl:onProperty ontosec:Satisfice ; 
+                                              a owl:Restriction],
+                                             [owl:someValuesFrom ontosec:Confidentiality ; 
+                                              owl:onProperty ontosec:Satisfice ; 
+                                              a owl:Restriction],
+                                             [owl:someValuesFrom ontosec:AccessControl ; 
+                                              owl:onProperty ontosec:Satisfice ; 
+                                              a owl:Restriction],
+                                             [owl:someValuesFrom ontosec:Integrity ; 
+                                              owl:onProperty ontosec:Satisfice ; 
+                                              a owl:Restriction],
+                                             [owl:someValuesFrom ontosec:Confidentiality ; 
+                                              owl:onProperty ontosec:Satisfice ; 
+                                              a owl:Restriction],
+                                             ontosec:CoreCounterMeasure.
+ontosec:ActiveThreat a ontosec:ThreatType.
+ontosec:Actor a owl:Class;
+              rdfs:comment "Actors participating in the realisation and implementation of security services";
+              rdfs:subClassOf owl:Thing.
+ontosec:Add-OnMemory a owl:Class;
+                     rdfs:subClassOf ontosec:Memory.
+ontosec:AdditionalTools a owl:Class;
+                        rdfs:comment "New tools that should be used for the projection or the application.";
+                        rdfs:subClassOf ontosec:Cost.
+ontosec:AdministrativeProcedure a owl:Class;
+                                rdfs:comment "Tasks to be performed and which are out of the scope of the technical field.";
+                                rdfs:subClassOf ontosec:Cost.
+ontosec:Algorithm a owl:Class;
+                  rdfs:subClassOf ontosec:Mechanism.
+ontosec:AnalysisPhase a owl:Class;
+                      rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:Android a ontosec:Platform.
+ontosec:Application a owl:Class;
+                    rdfs:subClassOf ontosec:Software.
+ontosec:ApplicationData a owl:Class;
+                        rdfs:subClassOf ontosec:Data.
+ontosec:ApplicationLifeCyclePhase a owl:Class;
+                                  rdfs:subClassOf ontosec:ValueTypes.
+ontosec:ApplicationServerSide a owl:Class;
+                              rdfs:comment "The application server side may be a web server or a data base back end that the device connects to.";
+                              rdfs:subClassOf [owl:someValuesFrom ontosec:Backup ; 
+                                               owl:onProperty ontosec:ImplementMechanism ; 
+                                               a owl:Restriction],
+                                              [owl:someValuesFrom ontosec:Journaling ; 
+                                               owl:onProperty ontosec:ImplementMechanism ; 
+                                               a owl:Restriction],
+                                              [owl:someValuesFrom ontosec:Backup ; 
+                                               owl:onProperty ontosec:ImplementMechanism ; 
+                                               a owl:Restriction],
+                                              [owl:someValuesFrom ontosec:Journaling ; 
+                                               owl:onProperty ontosec:ImplementMechanism ; 
+                                               a owl:Restriction],
+                                              ontosec:Actor.
+ontosec:AppliedTo a owl:ObjectProperty;
+                  rdfs:subPropertyOf ontosec:Relationship.
+ontosec:Asset a owl:Class;
+              rdfs:comment "The set of assets that should be protected";
+              rdfs:subClassOf [owl:someValuesFrom <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat> ; 
+                               owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#victimOf> ; 
+                               a owl:Restriction],
+                              [owl:someValuesFrom <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat> ; 
+                               owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#victimOf> ; 
+                               a owl:Restriction],
+                              owl:Thing.
+ontosec:AssociatedOriented a ontosec:NonRepudiationType.
+ontosec:AsymmetricAlgorithm a owl:Class;
+                            rdfs:subClassOf [owl:allValuesFrom [owl:intersectionOf (ontosec:PrivateKey
+                                                                                    ontosec:PublicKey) ; 
+                                                                a owl:Class] ; 
+                                             owl:onProperty ontosec:Use ; 
+                                             a owl:Restriction],
+                                            [owl:someValuesFrom ontosec:Efficiency ; 
+                                             owl:onProperty ontosec:Hurt ; 
+                                             a owl:Restriction],
+                                            [owl:allValuesFrom [owl:intersectionOf (ontosec:PrivateKey
+                                                                                    ontosec:PublicKey) ; 
+                                                                a owl:Class] ; 
+                                             owl:onProperty ontosec:Use ; 
+                                             a owl:Restriction],
+                                            [owl:someValuesFrom ontosec:Efficiency ; 
+                                             owl:onProperty ontosec:Hurt ; 
+                                             a owl:Restriction],
+                                            ontosec:Algorithm.
+ontosec:AsymmetricEncryption a owl:Class;
+                             rdfs:comment "Type of encryption in which an encryption key (the public key) is used to encrypt a message, and another encryption key (the private key) is used to decrypt the message.";
+                             rdfs:subClassOf [owl:someValuesFrom ontosec:KeyExchangeProtocol ; 
+                                              owl:onProperty ontosec:Use ; 
+                                              a owl:Restriction],
+                                             [owl:someValuesFrom ontosec:AsymmetricAlgorithm ; 
+                                              owl:onProperty ontosec:Use ; 
+                                              a owl:Restriction],
+                                             [owl:someValuesFrom ontosec:KeyExchangeProtocol ; 
+                                              owl:onProperty ontosec:Use ; 
+                                              a owl:Restriction],
+                                             [owl:someValuesFrom ontosec:AsymmetricAlgorithm ; 
+                                              owl:onProperty ontosec:Use ; 
+                                              a owl:Restriction],
+                                             ontosec:Encryption.
+ontosec:Authentication a owl:Class;
+                       rdfs:subClassOf [owl:someValuesFrom ontosec:DomainEntities ; 
+                                        owl:onProperty ontosec:AppliedTo ; 
+                                        a owl:Restriction],
+                                       [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onClass ontosec:AuthenticationLevel ; 
+                                        owl:onProperty ontosec:hasLevel ; 
+                                        a owl:Restriction],
+                                       [owl:someValuesFrom ontosec:DomainEntities ; 
+                                        owl:onProperty ontosec:AppliedTo ; 
+                                        a owl:Restriction],
+                                       [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onClass ontosec:AuthenticationLevel ; 
+                                        owl:onProperty ontosec:hasLevel ; 
+                                        a owl:Restriction],
+                                       <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:AuthenticationLevel a owl:Class;
+                            rdfs:subClassOf ontosec:ValueTypes.
+ontosec:AuthenticationProtocol a owl:Class;
+                               rdfs:subClassOf [owl:someValuesFrom ontosec:Authentication ; 
+                                                owl:onProperty ontosec:Satisfice ; 
+                                                a owl:Restriction],
+                                               [owl:someValuesFrom ontosec:AuthenticationProtocolType ; 
+                                                owl:onProperty ontosec:hasAuthenticationProtocolType ; 
+                                                a owl:Restriction],
+                                               [owl:someValuesFrom ontosec:Authentication ; 
+                                                owl:onProperty ontosec:Satisfice ; 
+                                                a owl:Restriction],
+                                               [owl:someValuesFrom ontosec:AuthenticationProtocolType ; 
+                                                owl:onProperty ontosec:hasAuthenticationProtocolType ; 
+                                                a owl:Restriction],
+                                               ontosec:IndustrialProtocol.
+ontosec:AuthenticationProtocolType a owl:Class;
+                                   rdfs:subClassOf ontosec:ValueTypes.
+ontosec:AuthenticationToken a owl:Class;
+                            rdfs:subClassOf [owl:someValuesFrom ontosec:Authentication ; 
+                                             owl:onProperty ontosec:Satisfice ; 
+                                             a owl:Restriction],
+                                            [owl:someValuesFrom ontosec:Authentication ; 
+                                             owl:onProperty ontosec:Satisfice ; 
+                                             a owl:Restriction],
+                                            ontosec:CoreCounterMeasure.
+ontosec:AuthenticationWay a owl:Class;
+                          rdfs:subClassOf ontosec:ValueTypes.
+ontosec:AutoInvocationFunctionGroup a ontosec:FunctionGroups;
+                                    rdfs:comment "Permissions related to automatically starting a MIDlet, for example by Push Registration.".
+ontosec:Availability a owl:Class;
+                     rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                      owl:onClass ontosec:Duration ; 
+                                      owl:onProperty ontosec:hasDuration ; 
+                                      a owl:Restriction],
+                                     [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                      owl:onClass ontosec:Duration ; 
+                                      owl:onProperty ontosec:hasDuration ; 
+                                      a owl:Restriction],
+                                     <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:Backup a owl:Class;
+               rdfs:subClassOf [owl:someValuesFrom ontosec:Journaling ; 
+                                owl:onProperty ontosec:Satisfice ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Availability ; 
+                                owl:onProperty ontosec:Satisfice ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Journaling ; 
+                                owl:onProperty ontosec:Satisfice ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Availability ; 
+                                owl:onProperty ontosec:Satisfice ; 
+                                a owl:Restriction],
+                               ontosec:Techniques.
+ontosec:BatteryMonitor a owl:Class;
+                       rdfs:subClassOf [owl:someValuesFrom ontosec:Integrity ; 
+                                        owl:onProperty ontosec:Satisfice ; 
+                                        a owl:Restriction],
+                                       [owl:someValuesFrom ontosec:Integrity ; 
+                                        owl:onProperty ontosec:Satisfice ; 
+                                        a owl:Restriction],
+                                       ontosec:ResourceMonitoring.
+ontosec:BestPractises a owl:Class;
+                      rdfs:subClassOf ontosec:Standards.
+ontosec:BiometricIdentifier a owl:Class;
+                            rdfs:comment "Biometric identifier is one of the most secure and more reliable ways to authenticate a person’s identity is to verify that person’s innate biological characteristics, which are referred to as biometrics. Each person’s fingerprints, DNA, iris and retinal cell patterns, facial geometry, and heat signature are near unique to that person. These biometric measures, if properly recorded, validated, and embedded in identity credentials that are logically bound to a single person’s identity, can provide the highest degree of identity authentication (From NIST information security Report)";
+                            rdfs:subClassOf [owl:someValuesFrom ontosec:Portability ; 
+                                             owl:onProperty ontosec:Hurt ; 
+                                             a owl:Restriction],
+                                            [owl:someValuesFrom ontosec:Resource ; 
+                                             owl:onProperty ontosec:Use ; 
+                                             a owl:Restriction],
+                                            [owl:someValuesFrom ontosec:Portability ; 
+                                             owl:onProperty ontosec:Hurt ; 
+                                             a owl:Restriction],
+                                            [owl:someValuesFrom ontosec:Resource ; 
+                                             owl:onProperty ontosec:Use ; 
+                                             a owl:Restriction],
+                                            ontosec:AuthenticationToken.
+ontosec:BlockCipherAlgorithm a owl:Class;
+                             rdfs:subClassOf [owl:someValuesFrom xsd:hexBinary ; 
+                                              owl:onProperty ontosec:hasPadding ; 
+                                              a owl:Restriction],
+                                             [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                              owl:onClass ontosec:ChainingMode ; 
+                                              owl:onProperty ontosec:hasChainingMode ; 
+                                              a owl:Restriction],
+                                             [owl:allValuesFrom xsd:hexBinary ; 
+                                              owl:onProperty ontosec:hasInitialisationVector ; 
+                                              a owl:Restriction],
+                                             [owl:someValuesFrom xsd:hexBinary ; 
+                                              owl:onProperty ontosec:hasPadding ; 
+                                              a owl:Restriction],
+                                             [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                              owl:onProperty ontosec:HasBlockSize ; 
+                                              a owl:Restriction],
+                                             [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                              owl:onProperty ontosec:HasBlockSize ; 
+                                              a owl:Restriction],
+                                             ontosec:SymmetricAlgorithm,
+                                             [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                              owl:onClass ontosec:ChainingMode ; 
+                                              owl:onProperty ontosec:hasChainingMode ; 
+                                              a owl:Restriction],
+                                             [owl:allValuesFrom xsd:hexBinary ; 
+                                              owl:onProperty ontosec:hasInitialisationVector ; 
+                                              a owl:Restriction].
+ontosec:Blowfish a owl:Class;
+                 rdfs:subClassOf ontosec:BlockCipherAlgorithm.
+ontosec:Bluetooth a owl:Class;
+                  rdfs:comment "Bluetooth is a Personal Area Network (PAN) standard that enables wireless connections between electronic devices in the 2.4 GHz range over short distances, as an alternative to cables. Designed to be power efficient, Bluetooth has become a common feature in cell phones. Since wireless communications are inherently insecure, a number of basic security provisions have been defined for this standard to mitigate the risks involved. NIST";
+                  rdfs:subClassOf ontosec:PANetwork.
+ontosec:Break a owl:ObjectProperty;
+              rdfs:subPropertyOf ontosec:QualitySatisfaction.
+ontosec:ByPassingTrialCounter a owl:Class;
+                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ByPassingAuthentication>.
+ontosec:CBC a owl:Class;
+            rdfs:subClassOf ontosec:ChainingMode.
+ontosec:CBC-MAC a owl:Class;
+                rdfs:comment "The simplest way to make a key-dependent one-way hash function is to encrypt a message with a block algorithm in CBC or CFB modes . The hash is the last encrypted block, encrypted once more in CBC or CFB modes.";
+                rdfs:subClassOf ontosec:MACAlgorithm.
+ontosec:CFB a owl:Class;
+            rdfs:subClassOf ontosec:ChainingMode.
+ontosec:COMSET a owl:Class;
+               rdfs:subClassOf ontosec:KeyExchangeProtocol.
+ontosec:CardMemory a owl:Class;
+                   rdfs:subClassOf ontosec:Add-OnMemory.
+ontosec:CardType a owl:Class;
+                 rdfs:subClassOf ontosec:ValueTypes.
+ontosec:Certificate dc11:format """A digital certificate is a text document that contains general information about its holder with the associated public key and general informations about the validity of the certificate. The digital certificate is signed by the certification authority that has issued it and can be verified a digital signature.
+The digital certificates, together with the identity data and public key, are stored on a USB-compatible token or a conventional smart card for use as part of strong authentication. When users try to log on to the corporate network, they connect their token with the USB slot or their smart card with the card reader.The digital certificate and public key are sent to the authentication authority via internet. To ensure that the public key sent actually belongs to the person attempting to log on to the corporate networks, the independent certification authority confirms that the public key matches the secret key it has stored""";
+                    a owl:Class;
+                    rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty ontosec:hasValidity ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty ontosec:hasValidity ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:DigitalSignatureAlgorithm ; 
+                                     owl:onProperty ontosec:hasSignatureAlgorithm ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty ontosec:hasSubjectName ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty ontosec:hasDigitalSignatureData ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:CertificateFormat ; 
+                                     owl:onProperty ontosec:hasFormat ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:CertificationAuthority ; 
+                                     owl:onProperty ontosec:hasIssuer ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:CertificateFormat ; 
+                                     owl:onProperty ontosec:hasFormat ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty ontosec:hasSubjectName ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty ontosec:hasDigitalSignatureData ; 
+                                     a owl:Restriction],
+                                    ontosec:AuthenticationToken,
+                                    [owl:someValuesFrom ontosec:CertificationAuthority ; 
+                                     owl:onProperty ontosec:hasIssuer ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:DigitalSignatureAlgorithm ; 
+                                     owl:onProperty ontosec:hasSignatureAlgorithm ; 
+                                     a owl:Restriction].
+ontosec:CertificateFormat a owl:Class;
+                          rdfs:subClassOf ontosec:ValueTypes.
+ontosec:CertificateInstallation a owl:Class;
+                                rdfs:subClassOf ontosec:DeviceCapabilities.
+ontosec:CertificationAuthority a owl:Class;
+                               rdfs:comment "The certification authority provides certificates to bind a set of informations (name, serial number, ...) to a public key.";
+                               rdfs:subClassOf ontosec:TrustedThirdParty.
+ontosec:ChainingMode a owl:Class;
+                     rdfs:subClassOf ontosec:ValueTypes.
+ontosec:ChallengeReplyPassword a owl:Class;
+                               rdfs:subClassOf ontosec:AuthenticationProtocolType.
+ontosec:Checksum a owl:Class;
+                 rdfs:subClassOf ontosec:Algorithm.
+ontosec:CodeSeparation a owl:Class;
+                       rdfs:comment "Locate and isolate critical code from from general code.";
+                       rdfs:subClassOf ontosec:BestPractises.
+ontosec:CodingStandards a owl:Class;
+                        rdfs:comment "Deploy development regimes such as coding standards and documentation methodologies to lead to best practises";
+                        rdfs:subClassOf ontosec:BestPractises.
+ontosec:CombinedDelivery-DRM a owl:Class;
+                             rdfs:subClassOf ontosec:DigitalRightsManagement.
+ontosec:CommChannel a owl:Class;
+                    rdfs:subClassOf ontosec:ValueTypes.
+ontosec:CompactFlash a ontosec:CardMemory.
+ontosec:Confidentiality a owl:Class;
+                        rdfs:comment "The confidentiality service"@en;
+                        rdfs:subClassOf [owl:someValuesFrom ontosec:ConfidentialityLevel ; 
+                                         owl:onProperty ontosec:hasLevel ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom ontosec:DomainEntities ; 
+                                         owl:onProperty ontosec:AppliedTo ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom ontosec:ConfidentialityLevel ; 
+                                         owl:onProperty ontosec:hasLevel ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom ontosec:DomainEntities ; 
+                                         owl:onProperty ontosec:AppliedTo ; 
+                                         a owl:Restriction],
+                                        <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:ConfidentialityLevel a owl:Class;
+                             rdfs:subClassOf ontosec:ValueTypes.
+ontosec:ConfigurationData a owl:Class;
+                          rdfs:comment "Several configuration data are stored in the device or sent by the mobile operator.";
+                          rdfs:subClassOf ontosec:Data.
+ontosec:Constraints a owl:Class;
+                    rdfs:comment "Technical, quality constraints and others";
+                    rdfs:subClassOf owl:Thing.
+ontosec:ContentProvider a owl:Class;
+                        rdfs:comment "The entity who is responsable of providing content like ringing tones or multimedia files or any other software.";
+                        rdfs:subClassOf [owl:someValuesFrom ontosec:Software ; 
+                                         owl:onProperty ontosec:Provide ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom ontosec:DigitalRightsManagement ; 
+                                         owl:onProperty ontosec:ImplementMechanism ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom ontosec:Software ; 
+                                         owl:onProperty ontosec:Provide ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom ontosec:DigitalRightsManagement ; 
+                                         owl:onProperty ontosec:ImplementMechanism ; 
+                                         a owl:Restriction],
+                                        ontosec:Actor.
+ontosec:CoreCounterMeasure a owl:Class;
+                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+ontosec:Correction a ontosec:MechanismType.
+ontosec:Cost a owl:Class;
+             rdfs:comment "Time, skills, additional equipments are considered as cost constraints";
+             rdfs:subClassOf ontosec:Constraints.
+ontosec:Critical a ontosec:ConfidentialityLevel.
+ontosec:CryptographicHashFunction a owl:Class;
+                                  rdfs:subClassOf [owl:someValuesFrom xsd:positiveInteger ; 
+                                                   owl:onProperty ontosec:HasOutputLength ; 
+                                                   a owl:Restriction],
+                                                  [owl:someValuesFrom xsd:positiveInteger ; 
+                                                   owl:onProperty ontosec:HasOutputLength ; 
+                                                   a owl:Restriction],
+                                                  ontosec:Checksum;
+                                  owl:equivalentClass ontosec:MessageDigest.
+ontosec:DDos a owl:Class;
+             rdfs:comment "Distributed denial of service.";
+             rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+ontosec:DES a owl:Class;
+            rdfs:subClassOf ontosec:BlockCipherAlgorithm.
+ontosec:DES_FIPS46-1-2 a ontosec:DES.
+ontosec:DIFFIE-HELLMAN a owl:Class;
+                       rdfs:subClassOf ontosec:KeyExchangeProtocol.
+ontosec:DSA a owl:Class;
+            rdfs:comment "Digital Signature Algorithm specified by FIPS 186-2";
+            rdfs:subClassOf ontosec:DigitalSignatureAlgorithm.
+ontosec:Data a owl:Class;
+             rdfs:subClassOf ontosec:Software.
+ontosec:DataRecords a owl:Class;
+                    rdfs:comment "Some applications use records files to store data.";
+                    rdfs:subClassOf ontosec:LocalFiles.
+ontosec:DeploymentPhase a owl:Class;
+                        rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:DesignPhase a owl:Class;
+                    rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:Detection a ontosec:MechanismType.
+ontosec:DevelopmentTime a owl:Class;
+                        rdfs:comment "Addiotional development time required for the application or the project.";
+                        rdfs:subClassOf ontosec:Cost.
+ontosec:Device a owl:Class;
+               rdfs:comment "Mobile terminal equiped with processing capabilities offering  connection to wireless networks.";
+               rdfs:subClassOf [owl:someValuesFrom ontosec:Memory ; 
+                                owl:onProperty ontosec:hasMemory ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Network ; 
+                                owl:onProperty ontosec:hasNetwork ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Input ; 
+                                owl:onProperty ontosec:hasInput ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:DeviceLock ; 
+                                owl:onProperty ontosec:ImplementMechanism ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:LogInSystem ; 
+                                owl:onProperty ontosec:ImplementMechanism ; 
+                                a owl:Restriction],
+                               [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                owl:onProperty ontosec:hasIMEI ; 
+                                a owl:Restriction],
+                               ontosec:Actor,
+                               [owl:someValuesFrom ontosec:Processing ; 
+                                owl:onProperty ontosec:hasProcessing ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Output ; 
+                                owl:onProperty ontosec:hasOutput ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Memory ; 
+                                owl:onProperty ontosec:hasMemory ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Network ; 
+                                owl:onProperty ontosec:hasNetwork ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Input ; 
+                                owl:onProperty ontosec:hasInput ; 
+                                a owl:Restriction],
+                               [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                owl:onProperty ontosec:hasIMEI ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Output ; 
+                                owl:onProperty ontosec:hasOutput ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:DigitalRightsManagement ; 
+                                owl:onProperty ontosec:ImplementMechanism ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:DeviceLock ; 
+                                owl:onProperty ontosec:ImplementMechanism ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:Processing ; 
+                                owl:onProperty ontosec:hasProcessing ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:DigitalRightsManagement ; 
+                                owl:onProperty ontosec:ImplementMechanism ; 
+                                a owl:Restriction],
+                               [owl:someValuesFrom ontosec:LogInSystem ; 
+                                owl:onProperty ontosec:ImplementMechanism ; 
+                                a owl:Restriction].
+ontosec:DeviceCapabilities a owl:Class;
+                           rdfs:subClassOf ontosec:ValueTypes.
+ontosec:DeviceCloning a owl:Class;
+                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareCloning>.
+ontosec:DeviceDriverUpgrade a owl:Class;
+                            rdfs:comment "One problem in this area is that drivers are typically written by third parties and drivers are upgraded at different times to the main OS. This causes problems when implementing any validation scheme, or even isolated checking of specific software updates";
+                            rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+ontosec:DeviceLock a owl:Class;
+                   rdfs:subClassOf ontosec:LockingMechanism.
+ontosec:DigitalRightsManagement a owl:Class;
+                                rdfs:comment "A general framework for downloading Rights to Devices and sharing Rights in a domain. DRM is invented by the Open Mobile Alliance whose members are mobile phone manufacturers, mobile system manufacturers, operators , and sofware editors.";
+                                rdfs:subClassOf [owl:someValuesFrom ontosec:AccessControl ; 
+                                                 owl:onProperty ontosec:Satisfice ; 
+                                                 a owl:Restriction],
+                                                [owl:someValuesFrom ontosec:AccessControl ; 
+                                                 owl:onProperty ontosec:Satisfice ; 
+                                                 a owl:Restriction],
+                                                ontosec:Techniques.
+ontosec:DigitalSignature a owl:Class;
+                         rdfs:comment """A digital signature is represented in a computer as a string of binary
+digits. A digital signature is computed using a set of rules and a set of parameters such that the identity of the signatory and integrity of the data can be verified. An algorithm provides the capability to generate and verify signatures. Signature generation makes use of a private key to generate a digital signature. Signature verification makes use of a public key which corresponds to, but is not the same as, the private key. (http://csrc.nist.gov/publications/fips/fips186-2/fips186-2-change1.pdf)""";
+                         rdfs:subClassOf [owl:someValuesFrom ontosec:NonRepudiation ; 
+                                          owl:onProperty ontosec:Satisfice ; 
+                                          a owl:Restriction],
+                                         [owl:someValuesFrom ontosec:Authentication ; 
+                                          owl:onProperty ontosec:Satisfice ; 
+                                          a owl:Restriction],
+                                         [owl:unionOf ([owl:someValuesFrom ontosec:MACAlgorithm ; 
+                                                       owl:onProperty ontosec:Use ; 
+                                                       a owl:Restriction]
+                                                       [owl:someValuesFrom [owl:intersectionOf (ontosec:CryptographicHashFunction
+                                                                                               ontosec:DigitalSignatureAlgorithm) ; 
+                                                                           a owl:Class] ; 
+                                                       owl:onProperty ontosec:Use ; 
+                                                       a owl:Restriction]) ; 
+                                          a owl:Class],
+                                         [owl:someValuesFrom ontosec:NonRepudiation ; 
+                                          owl:onProperty ontosec:Satisfice ; 
+                                          a owl:Restriction],
+                                         [owl:someValuesFrom ontosec:Authentication ; 
+                                          owl:onProperty ontosec:Satisfice ; 
+                                          a owl:Restriction],
+                                         [owl:unionOf ([owl:someValuesFrom ontosec:MACAlgorithm ; 
+                                                       owl:onProperty ontosec:Use ; 
+                                                       a owl:Restriction]
+                                                       [owl:someValuesFrom [owl:intersectionOf (ontosec:CryptographicHashFunction
+                                                                                               ontosec:DigitalSignatureAlgorithm) ; 
+                                                                           a owl:Class] ; 
+                                                       owl:onProperty ontosec:Use ; 
+                                                       a owl:Restriction]) ; 
+                                          a owl:Class],
+                                         ontosec:CoreCounterMeasure.
+ontosec:DigitalSignatureAlgorithm a owl:Class;
+                                  rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                   owl:onClass ontosec:PrivateKey ; 
+                                                   owl:onProperty ontosec:Use ; 
+                                                   a owl:Restriction],
+                                                  [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                   owl:onClass ontosec:PrivateKey ; 
+                                                   owl:onProperty ontosec:Use ; 
+                                                   a owl:Restriction],
+                                                  ontosec:Algorithm.
+ontosec:DisplayScreen a owl:Class;
+                      rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                       owl:onProperty ontosec:hasScreenSize ; 
+                                       a owl:Restriction],
+                                      [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                       owl:onProperty ontosec:hasScreenSize ; 
+                                       a owl:Restriction],
+                                      ontosec:Output.
+ontosec:DomainEntities a owl:Class;
+                       rdfs:subClassOf ontosec:ValueTypes.
+ontosec:DotNet a ontosec:Platform.
+ontosec:Duration a owl:Class;
+                 rdfs:subClassOf ontosec:ValueTypes.
+ontosec:ECB a owl:Class;
+            rdfs:comment "Electronic code book";
+            rdfs:subClassOf ontosec:ChainingMode.
+ontosec:ECDSA a owl:Class;
+              rdfs:comment "Elliptic Curve Digital Signature Algorithm (ECDSA) (ANSI X9-62)";
+              rdfs:subClassOf ontosec:DigitalSignatureAlgorithm.
+ontosec:EDGE a owl:Class;
+             rdfs:comment "Enhanced Data rates for GSM Evolution";
+             rdfs:subClassOf ontosec:2.5G.
+ontosec:EMS a owl:Class;
+            rdfs:comment "Enhanced Messaging Service - An improved message system for GSM mobile phones allowing picture, sound, animation and text elements to be conveyed through one or more concatenated SMS messages. NIST";
+            rdfs:subClassOf ontosec:Messaging.
+ontosec:Efficiency a owl:Class;
+                   rdfs:comment "Best use of the available resources.";
+                   rdfs:subClassOf ontosec:Usability.
+ontosec:ElGammelAlgorithm a owl:Class;
+                          rdfs:subClassOf ontosec:AsymmetricAlgorithm.
+ontosec:Email a owl:Class;
+              rdfs:subClassOf ontosec:Internet.
+ontosec:Encryption a owl:Class;
+                   rdfs:comment "Discipline which embodies principles, means, and methods for the transformation of data in order to hide its information content, prevent its undetected modification and/or prevent its unauthorised use. (CCITT)";
+                   rdfs:subClassOf [owl:someValuesFrom ontosec:Authentication ; 
+                                    owl:onProperty ontosec:Satisfice ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom ontosec:PRNGAlgorithm ; 
+                                    owl:onProperty ontosec:Use ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom ontosec:Authentication ; 
+                                    owl:onProperty ontosec:Satisfice ; 
+                                    a owl:Restriction],
+                                   ontosec:CoreCounterMeasure,
+                                   [owl:someValuesFrom ontosec:Integrity ; 
+                                    owl:onProperty ontosec:Satisfice ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom ontosec:Confidentiality ; 
+                                    owl:onProperty ontosec:Satisfice ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom ontosec:Confidentiality ; 
+                                    owl:onProperty ontosec:Satisfice ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom ontosec:PRNGAlgorithm ; 
+                                    owl:onProperty ontosec:Use ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom ontosec:Integrity ; 
+                                    owl:onProperty ontosec:Satisfice ; 
+                                    a owl:Restriction].
+ontosec:EncryptionKeys a owl:Class;
+                       rdfs:comment "The encryption keys are digital bitstrings that are stored in non-volatile memory, and verification of the identity proceeds by a challenge-response protocol.";
+                       rdfs:subClassOf ontosec:AuthenticationToken;
+                       owl:equivalentClass ontosec:Keys.
+ontosec:EndToEnd a ontosec:NonRepudiationType.
+ontosec:Excellent a ontosec:RNGEfficiency.
+ontosec:FTP a owl:Class;
+            rdfs:subClassOf ontosec:Internet.
+ontosec:FixedMemory a owl:Class;
+                    rdfs:subClassOf ontosec:Memory.
+ontosec:ForwardLock-DRM a owl:Class;
+                        rdfs:subClassOf ontosec:DigitalRightsManagement.
+ontosec:FullIntegrity a ontosec:IntegrityType.
+ontosec:FunctionGroups a owl:Class;
+                       rdfs:comment "A set of sensitive functions under a named group that can get authorization.";
+                       rdfs:subClassOf ontosec:AccessControlMethods.
+ontosec:GPRS a owl:Class;
+             rdfs:comment "General Packet Radio Service";
+             rdfs:subClassOf ontosec:2G.
+ontosec:GPSNetwork a owl:Class;
+                   rdfs:comment "A system for determining position by comparing radio signals from several satellites. NIST";
+                   rdfs:subClassOf ontosec:Network.
+ontosec:GPSvalues a owl:Class;
+                  rdfs:comment "Global positioning system coordinates used by some applications.";
+                  rdfs:subClassOf ontosec:LocalisationData.
+ontosec:GSM a owl:Class;
+            rdfs:comment "Global System for Mobile communications";
+            rdfs:subClassOf ontosec:2G.
+ontosec:GSMA a ontosec:OrganizationsAndStandards.
+ontosec:GSMWorld a ontosec:OrganizationsAndStandards.
+ontosec:GuessingAttack a owl:Class;
+                       rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ByPassingAuthentication>.
+ontosec:HMAC a owl:Class;
+             rdfs:subClassOf ontosec:MACAlgorithm.
+ontosec:HTTP a owl:Class;
+             rdfs:subClassOf ontosec:Internet.
+ontosec:HTTPS a owl:Class;
+              rdfs:subClassOf ontosec:SecureNetworkCommunication.
+ontosec:Hardware a owl:Class;
+                 rdfs:comment "Mainly the physical device with the embedded memory and processing units.";
+                 rdfs:subClassOf ontosec:Asset;
+                 owl:equivalentClass ontosec:Resource.
+ontosec:HardwareLocking a ontosec:AccessControlMethods.
+ontosec:HasBandwidth a owl:DatatypeProperty;
+                     rdfs:domain ontosec:Network;
+                     rdfs:range xsd:positiveInteger.
+ontosec:HasBlockSize a owl:DatatypeProperty.
+ontosec:HasIterationNumber a owl:DatatypeProperty.
+ontosec:HasKeySize a owl:DatatypeProperty;
+                   rdfs:domain ontosec:Keys;
+                   rdfs:range xsd:positiveInteger.
+ontosec:HasOutputLength a owl:DatatypeProperty;
+                        rdfs:range xsd:positiveInteger.
+ontosec:HashBasedOTP a owl:Class;
+                     rdfs:comment "A server side list of hashed tokens is stored and each consumed token is removed from the list.";
+                     rdfs:subClassOf ontosec:O.T.P.
+ontosec:Help a owl:ObjectProperty;
+             rdfs:subPropertyOf ontosec:QualitySatisfaction.
+ontosec:Hurt a owl:ObjectProperty;
+             rdfs:subPropertyOf ontosec:QualitySatisfaction.
+ontosec:IEEE a ontosec:OrganizationsAndStandards.
+ontosec:IETF a ontosec:OrganizationsAndStandards.
+ontosec:IM a owl:Class;
+           rdfs:subClassOf ontosec:Messaging.
+ontosec:IPSec a owl:Class;
+              rdfs:subClassOf ontosec:SecureNetworkCommunication.
+ontosec:ITU a ontosec:OrganizationsAndStandards.
+ontosec:Images a owl:Class;
+               rdfs:comment "All supported image files for mobile devices.";
+               rdfs:subClassOf ontosec:LocalFiles.
+ontosec:ImplementAPI a owl:ObjectProperty;
+                     rdfs:subPropertyOf ontosec:Relationship.
+ontosec:ImplementMechanism a owl:ObjectProperty.
+ontosec:ImplementationPhase a owl:Class;
+                            rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:IndustrialProtocol a owl:Class;
+                           rdfs:subClassOf ontosec:Standards.
+ontosec:Input a owl:Class;
+              rdfs:comment "Keypad or any input tool";
+              rdfs:subClassOf ontosec:Resource.
+ontosec:Integrity a owl:Class;
+                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:IntegrityType a owl:Class;
+                      rdfs:subClassOf ontosec:ValueTypes.
+ontosec:IntensifyCriticalCodeReview a owl:Class;
+                                    rdfs:subClassOf ontosec:BestPractises.
+ontosec:InteractionModes a owl:Class;
+                         rdfs:comment "User interaction to confirm the execution of some senstive actions like sending a sms or opening a network connection/";
+                         rdfs:subClassOf ontosec:AccessControlMethods.
+ontosec:Internet a owl:Class;
+                 rdfs:subClassOf ontosec:CommChannel.
+ontosec:IrDA a owl:Class;
+             rdfs:comment "A standard for line-of-sight infrared communication between devices over short distances. NIST";
+             rdfs:subClassOf ontosec:PANetwork.
+ontosec:Issue a owl:ObjectProperty;
+              rdfs:subPropertyOf ontosec:Relationship.
+ontosec:J2ME owl:sameAs ontosec:JME.
+ontosec:JME a ontosec:Platform.
+ontosec:JMEPermissionDomains a ontosec:AccessControlList.
+ontosec:JavaCard ontosec:ImplementAPI ontosec:DES_FIPS46-1-2,
+                                      ontosec:AES_FIPS197;
+                 a ontosec:SIM,
+                   ontosec:CardType.
+ontosec:JavaVerifiedSigningProcess a ontosec:SourceCodeVerification.
+ontosec:Journaling a owl:Class;
+                   rdfs:subClassOf ontosec:Techniques.
+ontosec:Kerberos a owl:Class;
+                 rdfs:comment """Kerberos is an authentication process that proceeds as follows: A client sends a request to the authentication server (AS) requesting \"credentials\" for a given server.  The AS responds with these credentials,  encrypted in the client's key.  The credentials consist of 1) a \"ticket\" for the server and 2) a temporary encryption key ( a \"session key\").  The client transmits the ticket (which contains the client's identity and a copy of the session key, all encrypted in the server's key) to the server.  The session key (now shared by the client and server) is used to authenticate the client, and may optionally be used to authenticate the server.  It may also be used to encrypt further communication between the two parties or to exchange a separate sub-session key to be used to encrypt further communication. RFC 1510""";
+                 rdfs:subClassOf ontosec:AuthenticationProtocol.
+ontosec:KeyExchange a owl:Class;
+                    rdfs:subClassOf [owl:someValuesFrom ontosec:CommChannel ; 
+                                     owl:onProperty ontosec:Use ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:KeyExchangeProtocol ; 
+                                     owl:onProperty ontosec:Use ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:CommChannel ; 
+                                     owl:onProperty ontosec:Use ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:KeyExchangeProtocol ; 
+                                     owl:onProperty ontosec:Use ; 
+                                     a owl:Restriction],
+                                    ontosec:KeyManagement.
+ontosec:KeyExchangeProtocol a owl:Class;
+                            rdfs:subClassOf ontosec:IndustrialProtocol.
+ontosec:KeyGeneration a owl:Class;
+                      rdfs:subClassOf [owl:someValuesFrom ontosec:RNGEfficiency ; 
+                                       owl:onProperty ontosec:hasRNGEfficiency ; 
+                                       a owl:Restriction],
+                                      [owl:someValuesFrom xsd:boolean ; 
+                                       owl:onProperty ontosec:hasRNGDeterminism ; 
+                                       a owl:Restriction],
+                                      [owl:someValuesFrom ontosec:RNGEfficiency ; 
+                                       owl:onProperty ontosec:hasRNGEfficiency ; 
+                                       a owl:Restriction],
+                                      [owl:someValuesFrom xsd:boolean ; 
+                                       owl:onProperty ontosec:hasRNGDeterminism ; 
+                                       a owl:Restriction],
+                                      ontosec:KeyManagement.
+ontosec:KeyManagement a owl:Class;
+                      rdfs:comment "The process and procedure for safely storing and distributing accurate cryptographic keys; the overall process of generating and distributing cryptographic key to authorized recipients in a secure manner.";
+                      rdfs:subClassOf ontosec:Mechanism.
+ontosec:KeyPad a owl:Class;
+               rdfs:subClassOf ontosec:Input.
+ontosec:KeyStore a owl:Class;
+                 rdfs:subClassOf [owl:someValuesFrom ontosec:Integrity ; 
+                                  owl:onProperty ontosec:Satisfice ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:Keys ; 
+                                  owl:onProperty ontosec:Store ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:Confidentiality ; 
+                                  owl:onProperty ontosec:Satisfice ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:Integrity ; 
+                                  owl:onProperty ontosec:Satisfice ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:Keys ; 
+                                  owl:onProperty ontosec:Store ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:Confidentiality ; 
+                                  owl:onProperty ontosec:Satisfice ; 
+                                  a owl:Restriction],
+                                 ontosec:KeyManagement.
+ontosec:Keys a owl:Class;
+             rdfs:subClassOf [owl:someValuesFrom ontosec:Duration ; 
+                              owl:onProperty ontosec:hasKeyLifeTime ; 
+                              a owl:Restriction],
+                             [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                              owl:onProperty ontosec:HasKeySize ; 
+                              a owl:Restriction],
+                             [owl:someValuesFrom ontosec:Duration ; 
+                              owl:onProperty ontosec:hasKeyLifeTime ; 
+                              a owl:Restriction],
+                             [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                              owl:onProperty ontosec:HasKeySize ; 
+                              a owl:Restriction],
+                             ontosec:Mechanism.
+ontosec:LANetwork a owl:Class;
+                  rdfs:subClassOf ontosec:Network.
+ontosec:Learnability a owl:Class;
+                     rdfs:comment "Easy to learn how to use the application.";
+                     rdfs:subClassOf ontosec:Usability.
+ontosec:LocalDataBase a owl:Class;
+                      rdfs:comment "Special database management systems for embedded applications.";
+                      rdfs:subClassOf ontosec:ApplicationData.
+ontosec:LocalDeviceLock a owl:Class;
+                        rdfs:subClassOf ontosec:DeviceLock.
+ontosec:LocalFiles a owl:Class;
+                   rdfs:subClassOf ontosec:ApplicationData.
+ontosec:LocalisationData a owl:Class;
+                         rdfs:subClassOf ontosec:ApplicationData.
+ontosec:LockingMechanism a owl:Class;
+                         rdfs:subClassOf [owl:someValuesFrom ontosec:Integrity ; 
+                                          owl:onProperty ontosec:Satisfice ; 
+                                          a owl:Restriction],
+                                         [owl:someValuesFrom ontosec:Integrity ; 
+                                          owl:onProperty ontosec:Satisfice ; 
+                                          a owl:Restriction],
+                                         ontosec:Techniques.
+ontosec:LockingScreen a owl:Class;
+                      rdfs:comment "In some situations it is useful to lock the screen display until a task is terminated. This is technique is used to avoid the screen modification until a answer is received.";
+                      rdfs:subClassOf ontosec:LockingMechanism.
+ontosec:LogInSystem a owl:Class;
+                    rdfs:subClassOf [owl:someValuesFrom ontosec:Authentication ; 
+                                     owl:onProperty ontosec:Satisfice ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:AuthenticationToken ; 
+                                     owl:onProperty ontosec:Use ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:Authentication ; 
+                                     owl:onProperty ontosec:Satisfice ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom ontosec:AuthenticationToken ; 
+                                     owl:onProperty ontosec:Use ; 
+                                     a owl:Restriction],
+                                    ontosec:Techniques.
+ontosec:MACAlgorithm a owl:Class;
+                     rdfs:comment "Message authentication code that include a key for authentication";
+                     rdfs:subClassOf [owl:someValuesFrom ontosec:CryptographicHashFunction ; 
+                                      owl:onProperty ontosec:Use ; 
+                                      a owl:Restriction],
+                                     [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                      owl:onClass ontosec:SecretKey ; 
+                                      owl:onProperty ontosec:Use ; 
+                                      a owl:Restriction],
+                                     [owl:someValuesFrom ontosec:CryptographicHashFunction ; 
+                                      owl:onProperty ontosec:Use ; 
+                                      a owl:Restriction],
+                                     [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                      owl:onClass ontosec:SecretKey ; 
+                                      owl:onProperty ontosec:Use ; 
+                                      a owl:Restriction],
+                                     ontosec:Algorithm.
+ontosec:MD2 a owl:Class;
+            rdfs:subClassOf ontosec:CryptographicHashFunction.
+ontosec:MD4 a owl:Class;
+            rdfs:subClassOf ontosec:CryptographicHashFunction.
+ontosec:MD5 a owl:Class;
+            rdfs:subClassOf ontosec:CryptographicHashFunction.
+ontosec:MMC a ontosec:CardMemory.
+ontosec:MMS a ontosec:CommChannel,
+              owl:Class;
+            rdfs:subClassOf ontosec:Messaging.
+ontosec:MULTOS a ontosec:CardType.
+ontosec:Mail a owl:Class;
+             rdfs:subClassOf ontosec:Manual.
+ontosec:MaintenancePhase a owl:Class;
+                         rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:Make a owl:ObjectProperty;
+             rdfs:subPropertyOf ontosec:QualitySatisfaction.
+ontosec:Manual a owl:Class;
+               rdfs:subClassOf ontosec:CommChannel.
+ontosec:Manufacturer a owl:Class;
+                     rdfs:comment "Mobile device manufacturer which may implement some security features in the device";
+                     rdfs:subClassOf [owl:someValuesFrom ontosec:TrustedThirdParty ; 
+                                      owl:onProperty ontosec:hasTrustIn ; 
+                                      a owl:Restriction],
+                                     [owl:allValuesFrom ontosec:ManufacturerCertificate ; 
+                                      owl:onProperty ontosec:Issue ; 
+                                      a owl:Restriction],
+                                     [owl:someValuesFrom ontosec:Device ; 
+                                      owl:onProperty ontosec:Provide ; 
+                                      a owl:Restriction],
+                                     [owl:someValuesFrom ontosec:Device ; 
+                                      owl:onProperty ontosec:Provide ; 
+                                      a owl:Restriction],
+                                     [owl:someValuesFrom ontosec:TrustedThirdParty ; 
+                                      owl:onProperty ontosec:hasTrustIn ; 
+                                      a owl:Restriction],
+                                     [owl:someValuesFrom ontosec:ManufacturerCertificate ; 
+                                      owl:onProperty ontosec:Issue ; 
+                                      a owl:Restriction],
+                                     [owl:someValuesFrom ontosec:SourceCodeVerification ; 
+                                      owl:onProperty ontosec:Provide ; 
+                                      a owl:Restriction],
+                                     ontosec:Actor,
+                                     [owl:allValuesFrom ontosec:ManufacturerCertificate ; 
+                                      owl:onProperty ontosec:Issue ; 
+                                      a owl:Restriction],
+                                     [owl:someValuesFrom ontosec:ManufacturerCertificate ; 
+                                      owl:onProperty ontosec:Issue ; 
+                                      a owl:Restriction],
+                                     [owl:someValuesFrom ontosec:SourceCodeVerification ; 
+                                      owl:onProperty ontosec:Provide ; 
+                                      a owl:Restriction].
+ontosec:ManufacturerCertificate dc11:format "A certificate which is issued by the device manufacturer like Nokia or Samsung for example.";
+                                a owl:Class;
+                                rdfs:subClassOf ontosec:Certificate.
+ontosec:Mechanism a owl:Class;
+                  rdfs:comment "Security mechanisms used for security services";
+                  rdfs:subClassOf owl:Thing.
+ontosec:MechanismType a owl:Class;
+                      rdfs:subClassOf ontosec:ValueTypes.
+ontosec:Memorability a owl:Class;
+                     rdfs:comment "A limited period of time during which the use of the application will be memorised.";
+                     rdfs:subClassOf ontosec:Usability.
+ontosec:Memory a owl:Class;
+               rdfs:subClassOf ontosec:Resource.
+ontosec:MemoryCardLock a owl:Class;
+                       rdfs:comment "Memory card can be protected with a password each time someone tries to access the card"@en;
+                       rdfs:subClassOf [owl:someValuesFrom ontosec:AccessControl ; 
+                                        owl:onProperty ontosec:Satisfice ; 
+                                        a owl:Restriction],
+                                       [owl:someValuesFrom ontosec:AccessControl ; 
+                                        owl:onProperty ontosec:Satisfice ; 
+                                        a owl:Restriction],
+                                       ontosec:LockingMechanism.
+ontosec:MessageDigest a owl:Class;
+                      rdfs:comment "A function that takes a string (or message) of any length as input and produces a fixed-length string as output,it is used for authentication and message integrity.";
+                      rdfs:subClassOf [owl:someValuesFrom xsd:positiveInteger ; 
+                                       owl:onProperty ontosec:HasOutputLength ; 
+                                       a owl:Restriction],
+                                      [owl:someValuesFrom xsd:positiveInteger ; 
+                                       owl:onProperty ontosec:HasOutputLength ; 
+                                       a owl:Restriction],
+                                      ontosec:CoreCounterMeasure.
+ontosec:Messaging a owl:Class;
+                  rdfs:subClassOf ontosec:CommChannel.
+ontosec:MessagingFunctionsGroup a ontosec:FunctionGroups;
+                                rdfs:comment "Set of permissions related to sending or receiving messages like SMS".
+ontosec:MisUseAttack a owl:Class;
+                     rdfs:subClassOf ontosec:UnTrustedAPIAttack.
+ontosec:MobeyForum a ontosec:OrganizationsAndStandards.
+ontosec:Mobile2Market a ontosec:CertificationAuthority.
+ontosec:MobileNetworkProvidervalues a owl:Class;
+                                    rdfs:comment "Mobile network Cell ID to which the device is attached.";
+                                    rdfs:subClassOf ontosec:LocalisationData.
+ontosec:MobileVPN a owl:Class;
+                  rdfs:subClassOf ontosec:VPN.
+ontosec:MotorollaMobileVPN a ontosec:MobileVPN.
+ontosec:Mutual a ontosec:AuthenticationWay.
+ontosec:MutualReliableChannel a ontosec:AuthenticationLevel.
+ontosec:NFC a owl:Class;
+            rdfs:comment "A short-range point-to-point wireless communication technology. The technology is a simple extension of the ISO/IEC 14443 proximity-card standard (contactless card, RFID) that combines the interface of a smartcard and a reader into a single device. An NFC device can communicate with both existing ISO/IEC 14443 smartcards and readers, as well as with other NFC devices, and is thereby compatible with existing contactless infrastructure already in use for public transportation and payment.";
+            rdfs:subClassOf ontosec:PANetwork.
+ontosec:NFCEnabled a owl:Class;
+                   rdfs:comment "The device may be or not equiped with Near Field Communication Ship (NFC).";
+                   rdfs:subClassOf ontosec:DeviceCapabilities.
+ontosec:NIST a ontosec:OrganizationsAndStandards.
+ontosec:NeedhamShroeder a owl:Class;
+                        rdfs:subClassOf ontosec:AuthenticationProtocol.
+ontosec:NetAccessFunctionGroup rdfs:comment "Contains permissions related to network data connections.".
+ontosec:Network a owl:Class;
+                rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty ontosec:HasBandwidth ; 
+                                 a owl:Restriction],
+                                [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty ontosec:hasNetworkLatency ; 
+                                 a owl:Restriction],
+                                [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty ontosec:HasBandwidth ; 
+                                 a owl:Restriction],
+                                [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty ontosec:hasNetworkLatency ; 
+                                 a owl:Restriction],
+                                ontosec:Resource.
+ontosec:NetworkLayer a owl:Class;
+                     rdfs:subClassOf ontosec:SecurityLayer.
+ontosec:NoAuthentication a ontosec:AuthenticationLevel.
+ontosec:NoSensitiveInfoOnExternalMemory a owl:Class;
+                                        rdfs:subClassOf ontosec:BestPractises.
+ontosec:Nokia_Mobile_VPN a ontosec:VPN.
+ontosec:NonRepudiation a owl:Class;
+                       rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onClass ontosec:NonRepudiationType ; 
+                                        owl:onProperty ontosec:hasType ; 
+                                        a owl:Restriction],
+                                       [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onClass ontosec:NonRepudiationType ; 
+                                        owl:onProperty ontosec:hasType ; 
+                                        a owl:Restriction],
+                                       <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>.
+ontosec:NonRepudiationType a owl:Class;
+                           rdfs:subClassOf ontosec:ValueTypes.
+ontosec:NonVolatile a owl:Class;
+                    rdfs:subClassOf ontosec:FixedMemory.
+ontosec:O.T.P a owl:Class;
+              rdfs:comment "Password used for once and generated from time, counter and/or key. May be a displayed from a hardware device.";
+              rdfs:subClassOf ontosec:Password.
+ontosec:Offline a ontosec:OperationMode.
+ontosec:OneSideVerification a ontosec:AuthenticationWay,
+                              ontosec:AuthenticationLevel.
+ontosec:OperationMode a owl:Class;
+                      rdfs:subClassOf ontosec:ValueTypes.
+ontosec:Operator a owl:Class;
+                 rdfs:comment "Telecom Network Operator knowing as MNO";
+                 rdfs:subClassOf [owl:someValuesFrom ontosec:TrustedThirdParty ; 
+                                  owl:onProperty ontosec:hasTrustIn ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:BestPractises ; 
+                                  owl:onProperty ontosec:Provide ; 
+                                  a owl:Restriction],
+                                 [owl:allValuesFrom ontosec:OperatorCertificate ; 
+                                  owl:onProperty ontosec:Issue ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:OperatorCertificate ; 
+                                  owl:onProperty ontosec:Issue ; 
+                                  a owl:Restriction],
+                                 ontosec:Actor,
+                                 [owl:someValuesFrom ontosec:SourceCodeVerification ; 
+                                  owl:onProperty ontosec:Provide ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:TrustedThirdParty ; 
+                                  owl:onProperty ontosec:hasTrustIn ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:SourceCodeVerification ; 
+                                  owl:onProperty ontosec:Provide ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:OperatorCertificate ; 
+                                  owl:onProperty ontosec:Issue ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:BestPractises ; 
+                                  owl:onProperty ontosec:Provide ; 
+                                  a owl:Restriction],
+                                 [owl:allValuesFrom ontosec:OperatorCertificate ; 
+                                  owl:onProperty ontosec:Issue ; 
+                                  a owl:Restriction].
+ontosec:OperatorCertificate dc11:format "A certificate which is issued by the mobile network operator.";
+                            a owl:Class;
+                            rdfs:subClassOf [owl:unionOf (ontosec:SmartCard
+                                                          [owl:someValuesFrom ontosec:Device ; 
+                                                          owl:onProperty ontosec:storedOn ; 
+                                                          a owl:Restriction]) ; 
+                                             a owl:Class],
+                                            [owl:unionOf (ontosec:SmartCard
+                                                          [owl:someValuesFrom ontosec:Device ; 
+                                                          owl:onProperty ontosec:storedOn ; 
+                                                          a owl:Restriction]) ; 
+                                             a owl:Class],
+                                            ontosec:Certificate.
+ontosec:OrganizationsAndStandards a owl:Class;
+                                  rdfs:comment "Organizations and associations providing standards in the mobile field arena.";
+                                  rdfs:subClassOf ontosec:ValueTypes.
+ontosec:Output a owl:Class;
+               rdfs:subClassOf ontosec:Resource.
+ontosec:PANetwork a owl:Class;
+                  rdfs:subClassOf ontosec:Network.
+ontosec:PGPCertificate a owl:Class;
+                       rdfs:subClassOf ontosec:CertificateFormat.
+ontosec:PIN a ontosec:SmartCardLock;
+            rdfs:comment "Personal Identification Number".
+ontosec:PKI a owl:Class;
+            rdfs:comment "Public-key infrastructure (PKI) consists of protocols, services, and standards supporting applications of public-key cryptography. PKI sometimes refers simply to a trust hierarchy based on public-key certificates, and in other contexts embraces encryption and digital signature services provided to end-user applications as well. RSA (http://www.rsa.com/rsalabs/node.asp?id=2268)";
+            rdfs:subClassOf [owl:someValuesFrom ontosec:CertificationAuthority ; 
+                             owl:onProperty ontosec:Use ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:Integrity ; 
+                             owl:onProperty ontosec:Satisfice ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:Confidentiality ; 
+                             owl:onProperty ontosec:Satisfice ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:NonRepudiation ; 
+                             owl:onProperty ontosec:Satisfice ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:CertificationAuthority ; 
+                             owl:onProperty ontosec:Use ; 
+                             a owl:Restriction],
+                            ontosec:SecurityInfrastructure,
+                            [owl:someValuesFrom ontosec:Authentication ; 
+                             owl:onProperty ontosec:Satisfice ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:AsymmetricEncryption ; 
+                             owl:onProperty ontosec:Use ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:Integrity ; 
+                             owl:onProperty ontosec:Satisfice ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:Confidentiality ; 
+                             owl:onProperty ontosec:Satisfice ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:Certificate ; 
+                             owl:onProperty ontosec:Use ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:Authentication ; 
+                             owl:onProperty ontosec:Satisfice ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:Certificate ; 
+                             owl:onProperty ontosec:Use ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:NonRepudiation ; 
+                             owl:onProperty ontosec:Satisfice ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:AsymmetricEncryption ; 
+                             owl:onProperty ontosec:Use ; 
+                             a owl:Restriction].
+ontosec:PRNG a owl:Class;
+             rdfs:comment "Pseudo Random Number Generation";
+             rdfs:subClassOf [owl:someValuesFrom ontosec:PRNGAlgorithm ; 
+                              owl:onProperty ontosec:Use ; 
+                              a owl:Restriction],
+                             [owl:someValuesFrom ontosec:PRNGAlgorithm ; 
+                              owl:onProperty ontosec:Use ; 
+                              a owl:Restriction],
+                             ontosec:KeyGeneration.
+ontosec:PRNGAlgorithm a owl:Class;
+                      rdfs:comment "Pseudo Random Number Generation algorithm";
+                      rdfs:subClassOf ontosec:Algorithm.
+ontosec:PUK a ontosec:SmartCardLock;
+            rdfs:comment "Personal Unblocking Keys".
+ontosec:Parallel a ontosec:OperationMode.
+ontosec:PassiveThreat a ontosec:ThreatType.
+ontosec:Password a owl:Class;
+                 rdfs:subClassOf ontosec:AuthenticationToken.
+ontosec:Performance a owl:Class;
+                    rdfs:subClassOf ontosec:Availability.
+ontosec:Phishing a owl:Class;
+                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ByPassingAuthentication>.
+ontosec:PhysicalLayer a owl:Class;
+                      rdfs:subClassOf ontosec:SecurityLayer.
+ontosec:Platform a owl:Class;
+                 rdfs:comment "The software device platform layer";
+                 rdfs:subClassOf [owl:someValuesFrom ontosec:KeyManagement ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:MessageDigest ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:AccessControlMethods ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:Algorithm ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:ResourceMonitoring ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:LogInSystem ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:KeyManagement ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 ontosec:Actor,
+                                 [owl:someValuesFrom ontosec:LogInSystem ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:AccessControlMethods ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:MessageDigest ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:Algorithm ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction],
+                                 [owl:someValuesFrom ontosec:ResourceMonitoring ; 
+                                  owl:onProperty ontosec:ImplementMechanism ; 
+                                  a owl:Restriction].
+ontosec:Poor a ontosec:RNGEfficiency.
+ontosec:Portability a owl:Class;
+                    rdfs:comment "ability of Application running on several devices or/and platforms.";
+                    rdfs:subClassOf ontosec:Quality.
+ontosec:PreemptDisplay a ontosec:LockingScreen.
+ontosec:Prevention a ontosec:MechanismType.
+ontosec:PrivateKey a owl:Class;
+                   rdfs:subClassOf ontosec:Keys.
+ontosec:PrivateKeyPoP a owl:Class;
+                      rdfs:subClassOf ontosec:AuthenticationProtocolType.
+ontosec:Processing a owl:Class;
+                   rdfs:subClassOf ontosec:Resource.
+ontosec:Provide a owl:TransitiveProperty,
+                  owl:ObjectProperty;
+                rdfs:subPropertyOf ontosec:Relationship.
+ontosec:Public a ontosec:ConfidentialityLevel.
+ontosec:PublicKey a owl:Class;
+                  rdfs:subClassOf ontosec:Keys.
+ontosec:Quality a owl:Class;
+                rdfs:subClassOf ontosec:Constraints.
+ontosec:QualitySatisfaction a owl:ObjectProperty.
+ontosec:RAM a owl:Class;
+            rdfs:subClassOf ontosec:FixedMemory.
+ontosec:RC4 a owl:Class;
+            rdfs:comment "A free algorithm provided by  RSA security, implemented since 1970.";
+            rdfs:subClassOf ontosec:StreamCipherAlgorithm.
+ontosec:RF a owl:Class;
+           rdfs:subClassOf ontosec:PANetwork.
+ontosec:RIPE-MAC a owl:Class;
+                 rdfs:subClassOf ontosec:MACAlgorithm.
+ontosec:RIPE-MD a owl:Class;
+                rdfs:subClassOf ontosec:CryptographicHashFunction.
+ontosec:RMS a ontosec:DataRecords;
+            rdfs:comment "Record Management Store are data structure used to store JME data".
+ontosec:RNGEfficiency a owl:Class;
+                      rdfs:subClassOf ontosec:ValueTypes.
+ontosec:ROM a owl:Class;
+            rdfs:subClassOf ontosec:FixedMemory.
+ontosec:RSA a owl:Class;
+            rdfs:comment "RSA signature algorithm (American National Standard ANSI X9-31)";
+            rdfs:subClassOf [owl:someValuesFrom ontosec:RSAAlgorithm ; 
+                             owl:onProperty ontosec:Use ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:RSAAlgorithm ; 
+                             owl:onProperty ontosec:Use ; 
+                             a owl:Restriction],
+                            ontosec:DigitalSignatureAlgorithm.
+ontosec:RSAAlgorithm a owl:Class;
+                     rdfs:subClassOf ontosec:AsymmetricAlgorithm.
+ontosec:ReadUserDataFunctionGroup a ontosec:FunctionGroups;
+                                  rdfs:comment "Read User Data: Set of permissions to read user’s data like phone book or calendar entries".
+ontosec:Recovery a ontosec:MechanismType.
+ontosec:ReduceCodeSize a owl:Class;
+                       rdfs:subClassOf ontosec:BestPractises.
+ontosec:RegistrationAuthority a owl:Class;
+                              rdfs:comment "Registration authority is an administrative entity which is responsable of verifying the identity of the claimer of a certificate";
+                              rdfs:subClassOf ontosec:TrustedThirdParty.
+ontosec:Relationship a owl:ObjectProperty.
+ontosec:Reliability a owl:Class;
+                    rdfs:subClassOf ontosec:Availability.
+ontosec:RemoteDeviceLock a owl:Class;
+                         rdfs:comment "Sending a Short message to lock the device"@en;
+                         rdfs:subClassOf ontosec:DeviceLock.
+ontosec:Resource a owl:Class;
+                 rdfs:subClassOf owl:Thing.
+ontosec:ResourceMonitoring a owl:Class;
+                           rdfs:subClassOf [owl:someValuesFrom ontosec:AccessControl ; 
+                                            owl:onProperty ontosec:Satisfice ; 
+                                            a owl:Restriction],
+                                           [owl:someValuesFrom ontosec:Availability ; 
+                                            owl:onProperty ontosec:Satisfice ; 
+                                            a owl:Restriction],
+                                           [owl:someValuesFrom ontosec:AccessControl ; 
+                                            owl:onProperty ontosec:Satisfice ; 
+                                            a owl:Restriction],
+                                           [owl:someValuesFrom ontosec:Availability ; 
+                                            owl:onProperty ontosec:Satisfice ; 
+                                            a owl:Restriction],
+                                           ontosec:Techniques.
+ontosec:RingTones a owl:Class;
+                  rdfs:comment "Audio files used as rings in mobile devices.";
+                  rdfs:subClassOf ontosec:StandardFiles.
+ontosec:SANS_Institute a ontosec:OrganizationsAndStandards.
+ontosec:SD rdfs:comment "Multi Media Card".
+ontosec:SET a owl:Class;
+            rdfs:comment "Secure Electronic Transaction";
+            rdfs:subClassOf ontosec:BestPractises.
+ontosec:SHA1 a owl:Class;
+             rdfs:subClassOf ontosec:CryptographicHashFunction.
+ontosec:SHAMIR3Pass a owl:Class;
+                    rdfs:subClassOf ontosec:KeyExchangeProtocol.
+ontosec:SIM a owl:Class;
+            rdfs:comment "Subscriber Identity Module; A smart card for GSM networks access.";
+            rdfs:subClassOf [owl:someValuesFrom ontosec:DigitalSignatureAlgorithm ; 
+                             owl:onProperty ontosec:Provide ; 
+                             a owl:Restriction],
+                            ontosec:SmartCard,
+                            [owl:someValuesFrom ontosec:AsymmetricAlgorithm ; 
+                             owl:onProperty ontosec:Provide ; 
+                             a owl:Restriction],
+                            [owl:allValuesFrom ontosec:BlockCipherAlgorithm ; 
+                             owl:onProperty ontosec:Provide ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:CryptographicHashFunction ; 
+                             owl:onProperty ontosec:Provide ; 
+                             a owl:Restriction],
+                            [owl:allValuesFrom ontosec:BlockCipherAlgorithm ; 
+                             owl:onProperty ontosec:Provide ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:AsymmetricAlgorithm ; 
+                             owl:onProperty ontosec:Provide ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:DigitalSignatureAlgorithm ; 
+                             owl:onProperty ontosec:Provide ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom ontosec:CryptographicHashFunction ; 
+                             owl:onProperty ontosec:Provide ; 
+                             a owl:Restriction].
+ontosec:SKID a owl:Class;
+             rdfs:subClassOf ontosec:AuthenticationProtocol.
+ontosec:SMS a owl:Class;
+            rdfs:subClassOf ontosec:Messaging.
+ontosec:SNOW a owl:Class;
+             rdfs:subClassOf ontosec:RC4.
+ontosec:SSL a owl:Class;
+            rdfs:subClassOf ontosec:SecureNetworkCommunication.
+ontosec:STRANDOM a owl:Class;
+                 rdfs:subClassOf ontosec:PRNGAlgorithm.
+ontosec:Satisfice a owl:ObjectProperty;
+                  rdfs:domain ontosec:Mechanism;
+                  rdfs:range <http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services>;
+                  rdfs:subPropertyOf ontosec:Relationship.
+ontosec:Secret a ontosec:ConfidentialityLevel.
+ontosec:SecretKey a owl:Class;
+                  rdfs:subClassOf ontosec:Keys.
+ontosec:SecureNetworkCommunication a owl:Class;
+                                   rdfs:subClassOf [owl:someValuesFrom ontosec:Confidentiality ; 
+                                                    owl:onProperty ontosec:Satisfice ; 
+                                                    a owl:Restriction],
+                                                   [owl:someValuesFrom ontosec:Confidentiality ; 
+                                                    owl:onProperty ontosec:Satisfice ; 
+                                                    a owl:Restriction],
+                                                   ontosec:SecurityTools.
+ontosec:SecurityInfrastructure a owl:Class;
+                               rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+ontosec:SecurityLayer a owl:Class;
+                      rdfs:subClassOf ontosec:ValueTypes.
+ontosec:SecurityTools a owl:Class;
+                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+ontosec:SemanticIntegrity a ontosec:IntegrityType.
+ontosec:SeparateDelivery-DRM a owl:Class;
+                             rdfs:subClassOf ontosec:DigitalRightsManagement.
+ontosec:Session a owl:Class;
+                rdfs:subClassOf ontosec:Duration.
+ontosec:Skills a owl:Class;
+               rdfs:comment "Additional skills that should be acquired to achieve some tasks or goals.";
+               rdfs:subClassOf ontosec:Cost.
+ontosec:SmartCard a owl:Class;
+                  rdfs:comment "A smart card is any limited-sized card with embedded integrated circuits. The smart card may integrate or not processing capabilities.";
+                  rdfs:subClassOf [owl:someValuesFrom ontosec:SymmetricEncryption ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom ontosec:MessageDigest ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom ontosec:DigitalSignature ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom ontosec:MessageDigest ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom ontosec:KeyStore ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom ontosec:SmartCardLock ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom ontosec:AsymmetricEncryption ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:allValuesFrom ontosec:SmartCardMemory ; 
+                                   owl:onProperty ontosec:hasMemory ; 
+                                   a owl:Restriction],
+                                  ontosec:Actor,
+                                  [owl:someValuesFrom ontosec:KeyStore ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom ontosec:SmartCardLock ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:allValuesFrom ontosec:SmartCardMemory ; 
+                                   owl:onProperty ontosec:hasMemory ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom ontosec:SymmetricEncryption ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                   owl:onProperty ontosec:hasIMSI ; 
+                                   a owl:Restriction],
+                                  [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                   owl:onProperty ontosec:hasIMSI ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom ontosec:AsymmetricEncryption ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom ontosec:DigitalSignature ; 
+                                   owl:onProperty ontosec:ImplementMechanism ; 
+                                   a owl:Restriction].
+ontosec:SmartCardCloning a owl:Class;
+                         rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareCloning>.
+ontosec:SmartCardLock a owl:Class;
+                      rdfs:subClassOf [owl:someValuesFrom ontosec:AccessControl ; 
+                                       owl:onProperty ontosec:Satisfice ; 
+                                       a owl:Restriction],
+                                      [owl:someValuesFrom ontosec:AccessControl ; 
+                                       owl:onProperty ontosec:Satisfice ; 
+                                       a owl:Restriction],
+                                      ontosec:LockingMechanism.
+ontosec:SmartCardMemory a owl:Class;
+                        rdfs:comment "Memory available on smart card like SIM, USIM or others;";
+                        rdfs:subClassOf ontosec:Add-OnMemory.
+ontosec:Socket a owl:Class;
+               rdfs:subClassOf ontosec:Internet.
+ontosec:Software a owl:Class;
+                 rdfs:comment "All the applications and data provided with or installed on the device.";
+                 rdfs:subClassOf ontosec:Asset.
+ontosec:SoftwareLayer a owl:Class;
+                      rdfs:subClassOf ontosec:SecurityLayer.
+ontosec:SourceCodeVerification a owl:Class;
+                               rdfs:subClassOf ontosec:SecurityTools.
+ontosec:Speaker a owl:Class;
+                rdfs:subClassOf ontosec:Output.
+ontosec:StandardFiles a owl:Class;
+                      rdfs:subClassOf ontosec:LocalFiles.
+ontosec:Standards a owl:Class;
+                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+ontosec:Static_password a owl:Class;
+                        rdfs:comment "The standard couple of login and password authentication";
+                        rdfs:subClassOf ontosec:Password.
+ontosec:Steganography a owl:Class;
+                      rdfs:comment "Steganography is the art and science of writing hidden messages in such a way that no-one, apart from the sender and intended recipient, suspects the existence of the message, a form of security through obscurity. Wikipedia";
+                      rdfs:subClassOf ontosec:Encryption.
+ontosec:SteganographyAlgorithm a owl:Class;
+                               rdfs:subClassOf ontosec:Algorithm.
+ontosec:Store a owl:ObjectProperty;
+              rdfs:subPropertyOf ontosec:Relationship.
+ontosec:StoredData a owl:Class;
+                   rdfs:comment "Data stored either in the device or on the memory card.";
+                   rdfs:subClassOf [owl:intersectionOf ([owl:unionOf (ontosec:ApplicationData
+                                                                     ontosec:ConfigurationData) ; 
+                                                        a owl:Class]
+                                                        [owl:someValuesFrom [owl:unionOf (ontosec:LocalDataBase
+                                                                                         ontosec:LocalFiles) ; 
+                                                                            a owl:Class] ; 
+                                                        owl:onProperty ontosec:hasDataStructure ; 
+                                                        a owl:Restriction]) ; 
+                                    a owl:Class],
+                                   [owl:intersectionOf ([owl:unionOf (ontosec:ApplicationData
+                                                                     ontosec:ConfigurationData) ; 
+                                                        a owl:Class]
+                                                        [owl:someValuesFrom [owl:unionOf (ontosec:LocalDataBase
+                                                                                         ontosec:LocalFiles) ; 
+                                                                            a owl:Class] ; 
+                                                        owl:onProperty ontosec:hasDataStructure ; 
+                                                        a owl:Restriction]) ; 
+                                    a owl:Class],
+                                   ontosec:Data.
+ontosec:StreamCipherAlgorithm a owl:Class;
+                              rdfs:subClassOf ontosec:SymmetricAlgorithm.
+ontosec:SymbianSigned a ontosec:CertificationAuthority.
+ontosec:SymmetricAlgorithm a owl:Class;
+                           rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                            owl:onClass ontosec:SecretKey ; 
+                                            owl:onProperty ontosec:hasKey ; 
+                                            a owl:Restriction],
+                                           [owl:someValuesFrom ontosec:Efficiency ; 
+                                            owl:onProperty ontosec:Help ; 
+                                            a owl:Restriction],
+                                           [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                            owl:onClass ontosec:SecretKey ; 
+                                            owl:onProperty ontosec:hasKey ; 
+                                            a owl:Restriction],
+                                           [owl:someValuesFrom ontosec:Efficiency ; 
+                                            owl:onProperty ontosec:Help ; 
+                                            a owl:Restriction],
+                                           ontosec:Algorithm.
+ontosec:SymmetricEncryption a owl:Class;
+                            rdfs:comment "Also known as conventional, secret-key, and single-key algorithms; the encryption and decryption key are either the same or can be calculated from one another. Block ciphers and stream ciphers are both used for symmetric encryption.";
+                            rdfs:subClassOf [owl:someValuesFrom ontosec:SymmetricAlgorithm ; 
+                                             owl:onProperty ontosec:Use ; 
+                                             a owl:Restriction],
+                                            [owl:someValuesFrom ontosec:SymmetricAlgorithm ; 
+                                             owl:onProperty ontosec:Use ; 
+                                             a owl:Restriction],
+                                            ontosec:Encryption.
+ontosec:SymmetricKeyPoP a owl:Class;
+                        rdfs:subClassOf ontosec:AuthenticationProtocolType.
+ontosec:TLS a owl:Class;
+            rdfs:comment "Transport Layer Security is an IETF standard that is intended to replace the SSL protocol. (IETF Working Group)";
+            rdfs:subClassOf ontosec:SecureNetworkCommunication.
+ontosec:TRNG a owl:Class;
+             rdfs:comment "True Random Number Generation : extract randomness from physical phenomena and introduce it into computing device.";
+             rdfs:subClassOf [owl:someValuesFrom ontosec:Input ; 
+                              owl:onProperty ontosec:Use ; 
+                              a owl:Restriction],
+                             [owl:someValuesFrom ontosec:Input ; 
+                              owl:onProperty ontosec:Use ; 
+                              a owl:Restriction],
+                             ontosec:KeyGeneration.
+ontosec:Technical a owl:Class;
+                  rdfs:comment "All limitations related to technologies like the network bandwidth or processor capabilities.";
+                  rdfs:subClassOf ontosec:Constraints.
+ontosec:Techniques a owl:Class;
+                   rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+ontosec:TestOnRealDevices a owl:Class;
+                          rdfs:subClassOf ontosec:BestPractises.
+ontosec:TestPhase a owl:Class;
+                  rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:ThreatType a owl:Class;
+                   rdfs:subClassOf ontosec:ValueTypes.
+ontosec:Time a owl:Class;
+             rdfs:subClassOf ontosec:Duration.
+ontosec:TimeAnalysis a owl:Class;
+                     rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SideChannelAttack>.
+ontosec:TimeBasedOTP a owl:Class;
+                     rdfs:comment "A client and server time synchronization is required for the authentication token verification.";
+                     rdfs:subClassOf ontosec:O.T.P.
+ontosec:TimeStampToken a owl:Class;
+                       rdfs:comment "A digital signature that makes possible the verification of the sending time of a message.";
+                       rdfs:subClassOf ontosec:AuthenticationToken.
+ontosec:Timeliness a owl:Class;
+                   rdfs:subClassOf ontosec:Usability.
+ontosec:TopSecret a ontosec:ConfidentialityLevel.
+ontosec:TouchScreen a owl:Class;
+                    rdfs:subClassOf ontosec:Input;
+                    owl:equivalentClass [owl:intersectionOf (ontosec:DisplayScreen
+                                                             ontosec:KeyPad) ; 
+                                         a owl:Class],
+                                        [owl:intersectionOf (ontosec:DisplayScreen
+                                                             ontosec:KeyPad) ; 
+                                         a owl:Class].
+ontosec:Training a owl:Class;
+                 rdfs:comment "Requirement for additional training to use some tools or to do some technalical or management tasks.";
+                 rdfs:subClassOf ontosec:Cost.
+ontosec:Transaction a owl:Class;
+                    rdfs:subClassOf ontosec:Duration.
+ontosec:TransmittedData a owl:Class;
+                        rdfs:comment "Messaging data or data transferred through Internet connection";
+                        rdfs:subClassOf ontosec:Data.
+ontosec:TrustedAPIAttack a owl:Class;
+                         rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ApplicationAPIAttack>.
+ontosec:TrustedThirdParty a owl:Class;
+                          rdfs:comment "security authority or its agent, trusted by other entities with respect to security-related activities. In the context of ISO/IEC 9798, a trusted third party is trusted by a claimant and/or a verifier for the purposes of authentication.  ISO/IEC 9798";
+                          rdfs:subClassOf [owl:someValuesFrom ontosec:TrustedThirdParty ; 
+                                           owl:onProperty ontosec:hasTrustIn ; 
+                                           a owl:Restriction],
+                                          [owl:someValuesFrom ontosec:Certificate ; 
+                                           owl:onProperty ontosec:Issue ; 
+                                           a owl:Restriction],
+                                          [owl:someValuesFrom ontosec:SourceCodeVerification ; 
+                                           owl:onProperty ontosec:Provide ; 
+                                           a owl:Restriction],
+                                          [owl:someValuesFrom ontosec:TrustedThirdParty ; 
+                                           owl:onProperty ontosec:hasTrustIn ; 
+                                           a owl:Restriction],
+                                          [owl:someValuesFrom ontosec:Certificate ; 
+                                           owl:onProperty ontosec:Issue ; 
+                                           a owl:Restriction],
+                                          [owl:someValuesFrom ontosec:SourceCodeVerification ; 
+                                           owl:onProperty ontosec:Provide ; 
+                                           a owl:Restriction],
+                                          ontosec:Actor.
+ontosec:TrustedThirdPartyCertificate dc11:format "A certificate which is issued by a trusted third party.";
+                                     a owl:Class;
+                                     rdfs:subClassOf ontosec:Certificate.
+ontosec:TunneledPassword a owl:Class;
+                         rdfs:subClassOf ontosec:AuthenticationProtocolType.
+ontosec:TypeSafe-Unsafe a ontosec:CodingStandards;
+                        rdfs:comment "Don't mix type safe and type-unsafe API".
+ontosec:TypeSafeAPIUse a owl:Class;
+                       rdfs:subClassOf ontosec:BestPractises.
+ontosec:UICC a owl:Class;
+             rdfs:comment "The UICC is a generic platform for smart card applications. It has been standardised by ETSI EP SCP (ETSI Project Smart Card Platform) with the aim of defining a physical and logical platform for all smart card applications and to develop advanced security methods for financial transactions, to take an example. Mobey forum";
+             rdfs:subClassOf ontosec:SmartCard.
+ontosec:UMTS a owl:Class;
+             rdfs:subClassOf ontosec:3G.
+ontosec:USIM a owl:Class;
+             rdfs:comment "A (U)SIM is a special type of smart card that typically contains a processor and between 16 to 128 KB of persistent Electronically Erasable, Programmable ROM (EEPROM). It also includes RAM for program execution and ROM for the operating system, user authentication and data encryption algorithms, and other applications.";
+             rdfs:subClassOf ontosec:SmartCard.
+ontosec:UnTrustedAPIAttack a owl:Class;
+                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ApplicationAPIAttack>.
+ontosec:UnifiedTestingInitiativeRootCertificate a owl:Class;
+                                                rdfs:subClassOf ontosec:DeviceCapabilities.
+ontosec:UnsafeDataTypeAttack a owl:Class;
+                             rdfs:subClassOf ontosec:TrustedAPIAttack.
+ontosec:Usability a owl:Class;
+                  rdfs:comment "A good response time of the application.";
+                  rdfs:subClassOf ontosec:Quality.
+ontosec:Use a owl:TransitiveProperty,
+              owl:ObjectProperty;
+            rdfs:subPropertyOf ontosec:Relationship.
+ontosec:UsePhase a owl:Class;
+                 rdfs:subClassOf ontosec:ApplicationLifeCyclePhase.
+ontosec:VPN a owl:Class;
+            rdfs:comment "Virtula private network. FIPS 140-2";
+            rdfs:subClassOf [owl:someValuesFrom [owl:unionOf (ontosec:IPSec
+                                                              ontosec:SSL
+                                                              ontosec:TLS) ; 
+                                                 a owl:Class] ; 
+                             owl:onProperty ontosec:Use ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom [owl:unionOf (ontosec:IPSec
+                                                              ontosec:SSL
+                                                              ontosec:TLS) ; 
+                                                 a owl:Class] ; 
+                             owl:onProperty ontosec:Use ; 
+                             a owl:Restriction],
+                            ontosec:SecurityInfrastructure.
+ontosec:ValueTypes a owl:Class;
+                   rdfs:comment "Additional and required types for the ontology";
+                   rdfs:subClassOf owl:Thing.
+ontosec:VeriSignTesting-BasedACSRootSymbian a ontosec:X509Certificate.
+ontosec:Verisign a ontosec:CertificationAuthority.
+ontosec:VibrationKit a owl:Class;
+                     rdfs:subClassOf ontosec:Output.
+ontosec:VideoInput a owl:Class;
+                   rdfs:subClassOf ontosec:Input.
+ontosec:Videos a owl:Class;
+               rdfs:subClassOf ontosec:StandardFiles.
+ontosec:Voice a owl:Class;
+              rdfs:subClassOf ontosec:Manual.
+ontosec:WANetwork a owl:Class;
+                  rdfs:subClassOf ontosec:Network.
+ontosec:WPKI a owl:Class;
+             rdfs:comment "Wireless Public Key Infrastructure.";
+             rdfs:subClassOf ontosec:PKI;
+             owl:equivalentClass [owl:intersectionOf (ontosec:PKI
+                                                      [owl:someValuesFrom ontosec:CommChannel ; 
+                                                      owl:onProperty ontosec:Use ; 
+                                                      a owl:Restriction]) ; 
+                                  a owl:Class],
+                                 [owl:intersectionOf (ontosec:PKI
+                                                      [owl:someValuesFrom ontosec:CommChannel ; 
+                                                      owl:onProperty ontosec:Use ; 
+                                                      a owl:Restriction]) ; 
+                                  a owl:Class].
+ontosec:WiFi a owl:Class;
+             rdfs:subClassOf ontosec:LANetwork.
+ontosec:WithoutVerification a ontosec:AuthenticationLevel.
+ontosec:X509Certificate a owl:Class;
+                        rdfs:subClassOf ontosec:CertificateFormat.
+ontosec:Yahalom a owl:Class;
+                rdfs:subClassOf ontosec:AuthenticationProtocol.
+ontosec:Yarrow a owl:Class;
+               rdfs:subClassOf ontosec:PRNGAlgorithm.
+ontosec:ZeroKnowledgePassword a owl:Class;
+                              rdfs:subClassOf ontosec:AuthenticationProtocolType.
+ontosec:hasAuthenticationProtocolType a owl:ObjectProperty;
+                                      rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasCardType a owl:DatatypeProperty.
+ontosec:hasChainingMode a owl:ObjectProperty;
+                        rdfs:domain ontosec:BlockCipherAlgorithm;
+                        rdfs:range ontosec:ChainingMode;
+                        rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasDataStructure a owl:ObjectProperty;
+                         rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasDigitalSignatureData a owl:DatatypeProperty;
+                                rdfs:domain ontosec:Certificate;
+                                rdfs:range xsd:hexBinary.
+ontosec:hasDuration a owl:ObjectProperty;
+                    rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasFormat a owl:ObjectProperty.
+ontosec:hasIMEI a owl:FunctionalProperty,
+                  owl:DatatypeProperty;
+                rdfs:domain ontosec:Device;
+                rdfs:range xsd:positiveInteger.
+ontosec:hasIMSI a owl:DatatypeProperty;
+                rdfs:domain ontosec:SmartCard;
+                rdfs:range xsd:positiveInteger.
+ontosec:hasInitialisationVector a owl:DatatypeProperty;
+                                rdfs:domain ontosec:BlockCipherAlgorithm;
+                                rdfs:range xsd:hexBinary.
+ontosec:hasInput a owl:ObjectProperty;
+                 rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasIssuer a owl:ObjectProperty;
+                  rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasKey a owl:ObjectProperty;
+               rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasKeyLifeTime a owl:ObjectProperty;
+                       rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasLevel a owl:ObjectProperty;
+                 rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasMemory a owl:ObjectProperty;
+                  rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasNetwork a owl:ObjectProperty;
+                   rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasNetworkBandwidth a owl:DatatypeProperty;
+                            rdfs:domain ontosec:Network;
+                            rdfs:range xsd:positiveInteger.
+ontosec:hasNetworkLatency a owl:DatatypeProperty;
+                          rdfs:domain ontosec:Network;
+                          rdfs:range xsd:positiveInteger.
+ontosec:hasOutput a owl:ObjectProperty;
+                  rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasPadding a owl:DatatypeProperty;
+                   rdfs:domain ontosec:BlockCipherAlgorithm;
+                   rdfs:range xsd:hexBinary.
+ontosec:hasProcessing a owl:ObjectProperty;
+                      rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasRNGDeterminism a owl:DatatypeProperty;
+                          rdfs:domain ontosec:KeyGeneration;
+                          rdfs:range xsd:boolean.
+ontosec:hasRNGEfficiency a owl:ObjectProperty;
+                         rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasScreenSize a owl:DatatypeProperty;
+                      rdfs:domain ontosec:DisplayScreen;
+                      rdfs:range xsd:float.
+ontosec:hasSignatureAlgorithm a owl:ObjectProperty;
+                              rdfs:domain ontosec:Certificate;
+                              rdfs:range ontosec:DigitalSignatureAlgorithm;
+                              rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasSubjectName a owl:DatatypeProperty;
+                       rdfs:domain ontosec:Certificate;
+                       rdfs:range xsd:string.
+ontosec:hasThreatType a owl:DatatypeProperty;
+                      rdfs:comment "A Threat type may be a passive or an active threat.";
+                      rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>;
+                      rdfs:range xsd:string.
+ontosec:hasTrustIn a owl:ReflexiveProperty,
+                     owl:ObjectProperty.
+ontosec:hasType a owl:ReflexiveProperty,
+                  owl:ObjectProperty;
+                rdfs:subPropertyOf ontosec:Relationship.
+ontosec:hasValidity a owl:DatatypeProperty;
+                    rdfs:domain ontosec:Certificate;
+                    rdfs:range xsd:duration.
+ontosec:isUsedAt a owl:ObjectProperty.
+ontosec:storedOn a owl:ObjectProperty;
+                 rdfs:subPropertyOf ontosec:Relationship.
+ontosec:vCard a owl:Class;
+              rdfs:comment "vCard is a virtual electronic business card format.";
+              rdfs:subClassOf ontosec:StandardFiles.
+<http://www.semanticweb.org/ontologies/2008/11/OntologyServices.owl#Services> a owl:Class;
+                                                                              rdfs:comment "Security services ontology"@en;
+                                                                              rdfs:subClassOf owl:Thing.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#AccessControl> a <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#AccessToUntrustedWebSite> a owl:Class;
+                                                                                               rdfs:comment "Several attacks may be achieved after access to hacked web sites like cross site scripting (XSS) for example.";
+                                                                                               rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ApplicationAPIAttack> a owl:Class;
+                                                                                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#BatteryLimitation> a owl:Class;
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Bluetooth> a <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerableServiceAutoStart>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#BruteForce> a owl:Class;
+                                                                                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ByPassingAuthentication>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#BufferOverFlow> a owl:Class;
+                                                                                     rdfs:comment "By passing data through an API where it is known that the API is designed to receive X bytes and we are passing X+N bytes, it can be arranged that the N bytes overflow into an area that was used by other storage (if it is a heap overflow) or will cause the return address to be corrupted (if it is a stack overflow). OMTP";
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MalformedInput>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ByPassingAuthentication> a owl:Class;
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CodeInjection> a owl:Class;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MalformedInput>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CommunicationVulnerability> a owl:Class;
+                                                                                                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure> a owl:Class;
+                                                                                     rdfs:subClassOf owl:Thing.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CryptographicAttack> a owl:Class;
+                                                                                          rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#DefaultPIN> a owl:Class;
+                                                                                 rdfs:comment "Always set to manufacturer default values";
+                                                                                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#InsecureDefaultSettings>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#DefaultPassword> a owl:Class;
+                                                                                      rdfs:comment "Always set to manufacturer default values";
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#InsecureDefaultSettings>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#DevicePortability> a owl:Class;
+                                                                                        rdfs:comment "The easy portability of the device make it vulnerable to rabbers and theft.";
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#DoS> a owl:Class;
+                                                                          rdfs:comment "Most common type involves flooding a host until it cannot respond to legitimate traffic.";
+                                                                          rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Eavesdropping> a owl:Class;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>;
+                                                                                    owl:equivalentClass <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Interception>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Emanation> a owl:Class;
+                                                                                rdfs:comment """The fact of making internal data available to third parties by radio.. In that case,the issuer is the passive victim of the attack.
+Almost all electrical devices emit radiation to the exterior that can be intercepted by other equipment (radio receivers) causing a leak of information. This threat is frequently but inaccurately called, a TEMPEST attack (“Transient Electromagnetic Pulse Standard”).""";
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#EquipmentDos> a owl:Class;
+                                                                                   rdfs:comment "The attacker causes an overload or a disruption in the system such that network functions  in an abnormal manner. The abnormal behavior could be legitimate subscribers not receiving service, illegitimate subscribers receiving service or the entire network may disabled as a result of the attack.";
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ExternalBatteryRemovel> a owl:Class;
+                                                                                             rdfs:comment "Bypassing security barries may be performed through a battery removal. For example in a DRM situation, a song may have been played, but if the rights count is not decremented until the end of the song, then removing the power source could result in the user playing the song indefinitely(OMPT).";
+                                                                                             rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ExternalMemoryCardRemoval> a owl:Class;
+                                                                                                rdfs:comment "Bypassing security barries may be performed through a battery removal. For example in a DRM situation, a song may have been played, but if the rights count is not decremented until the end of the song, then removing the memory card could result in the user playing the song indefinitely(OMPT).";
+                                                                                                rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#FOTAUnAuthorizedReFlash> a owl:Class;
+                                                                                              rdfs:comment "UnAuthorized reflash via Firmware Over The Air. FOTA consists in replacing one version of the general OS(s) with another over the Air.";
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Fabrication> a owl:Class;
+                                                                                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>;
+                                                                                  owl:equivalentClass <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Replay>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#FormatStringAttack> a owl:Class;
+                                                                                         rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MalformedInput>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareAttack> a owl:Class;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareCloning> a owl:Class;
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#InputOutputLimitation> a owl:Class;
+                                                                                            rdfs:comment "Limited screen display and small keypad ad some aggravation to attacks like phishing for example.";
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#InsecureDefaultSettings> a owl:Class;
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInConfig>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Interception> a owl:Class;
+                                                                                   rdfs:comment "The attacker intercepts information without modifing or deleting them. This is a passive attack. This affects the privacy of the subscriber and the network operator.";
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Interruption> a owl:Class;
+                                                                                   rdfs:comment "The attacker caused an Interruption by destroying resources. The attacker may delete a subscriber data in the entity such as an HLR.";
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MalformedInput> a owl:Class;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MissingErrorHandling> a owl:Class;
+                                                                                           rdfs:comment "Missing error handling may reveal hidden coding details.";
+                                                                                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MissingInputValidation> a owl:Class;
+                                                                                             rdfs:comment "Leaving inputs to a lightweight validation i's one of the most relevant applicationn vulnerability.";
+                                                                                             rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#MultipleServicesIntegration> a owl:Class;
+                                                                                                  rdfs:comment "The integration of several networkign services like access to PAN, LAN and WAN in the same divice makes hard the set up of access control policies. This integration  agravates also the multi-session attacks.";
+                                                                                                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CommunicationVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NAKAttack> a owl:Class;
+                                                                                rdfs:comment "Concurrent processes may cause logical breaks. These breaks could be exploited by malicious code to get access to protected resources.";
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack> a owl:Class;
+                                                                                                  rdfs:comment "These attacks belong to the mobile network operator. Most of them require physical air interface equipments like fake base station or modified antenna.";
+                                                                                                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NotAuthenticatedSoftInstallation> a owl:Class;
+                                                                                                       rdfs:comment "Several untrusted softwares are available for free download or through the trasnfer from an other device. These softwares may be infected with viruses or have trojans. They may also come up with bad code that leads to denial of service.";
+                                                                                                       rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#OTASoftwareUpdate> a owl:Class;
+                                                                                        rdfs:comment "Software Update can be performed Over The Air without user konwledge or confirmation. These softwares may be infected or trojanized.";
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability> a owl:Class;
+                                                                                            rdfs:comment "Features related to the physical aspect of the device and its properties.";
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PowerAnalysis> a owl:Class;
+                                                                                    rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SideChannelAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#ProcessingPowerLimitation> a owl:Class;
+                                                                                                rdfs:comment "Limited Processing power is boundary for cryptographic enhanced tasks.";
+                                                                                                rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#PhysicalVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Replay> a owl:Class;
+                                                                             rdfs:comment "In this case the attacker may insert spurious objects into the system. The attacker may insert fake signaling messages, the effects could result in the attacker masquerading as an authority.";
+                                                                             rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#NetworkInfrastructureAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#RoamingConfigChallenges> a owl:Class;
+                                                                                              rdfs:comment "Switching from one network to an other should respect security policies.";
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CommunicationVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SideChannelAttack> a owl:Class;
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#HardwareAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SmartCardUpdate> a owl:Class;
+                                                                                      rdfs:comment "The procedure of updating the SIM card is a heavy task for the operator.";
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CommunicationVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareAttack> a owl:Class;
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareVulnerability> a owl:Class;
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#StatisticalAttack> a owl:Class;
+                                                                                        rdfs:comment "A cryptanalysis that exploits the predictibility of a particular data segment or a prdicatable relationships among different data segments in a cipher codestream to deduce the plaintext without the knowledge of the decryption key or to substantially reduce the search space such that a brute force attack is feasable.";
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CryptographicAttack>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#TestWithEmulatorOnly> a owl:Class;
+                                                                                           rdfs:comment "After developement, applications should be tested with real and different devices and not only with emulators.";
+                                                                                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat> a owl:Class;
+                                                                             rdfs:subClassOf [owl:someValuesFrom xsd:string ; 
+                                                                                              owl:onProperty ontosec:hasThreatType ; 
+                                                                                              a owl:Restriction],
+                                                                                             [owl:someValuesFrom <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability> ; 
+                                                                                              owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#enabledBy> ; 
+                                                                                              a owl:Restriction],
+                                                                                             [owl:someValuesFrom ontosec:Asset ; 
+                                                                                              owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threatens> ; 
+                                                                                              a owl:Restriction],
+                                                                                             [owl:someValuesFrom xsd:string ; 
+                                                                                              owl:onProperty ontosec:hasThreatType ; 
+                                                                                              a owl:Restriction],
+                                                                                             [owl:someValuesFrom <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability> ; 
+                                                                                              owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#enabledBy> ; 
+                                                                                              a owl:Restriction],
+                                                                                             [owl:someValuesFrom ontosec:Asset ; 
+                                                                                              owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threatens> ; 
+                                                                                              a owl:Restriction],
+                                                                                             owl:Thing.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threatens> a owl:ObjectProperty;
+                                                                                rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>;
+                                                                                owl:inverseOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#victimOf>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#UnsafeMessageAcceptance> a owl:Class;
+                                                                                              rdfs:comment "Non authenticated SMS or MMS may deal to denial fo service or virus infection.";
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#UnsafeStorageDevicePlugging> a owl:Class;
+                                                                                                  rdfs:comment "Exchanging Memory card may lead to virus infection.";
+                                                                                                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#UseofUntrustedAPI> a owl:Class;
+                                                                                        rdfs:comment "Some API, components may be downloaded and used by developers without any security garantee.";
+                                                                                        rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#UseofVulnerableProgLanguage> a owl:Class;
+                                                                                                  rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability> a owl:Class;
+                                                                                    rdfs:subClassOf [owl:someValuesFrom <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat> ; 
+                                                                                                     owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isExploitedBy> ; 
+                                                                                                     a owl:Restriction],
+                                                                                                    [owl:someValuesFrom <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure> ; 
+                                                                                                     owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isCorrectedBy> ; 
+                                                                                                     a owl:Restriction],
+                                                                                                    [owl:someValuesFrom ontosec:Asset ; 
+                                                                                                     owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#existsOn> ; 
+                                                                                                     a owl:Restriction],
+                                                                                                    [owl:someValuesFrom <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat> ; 
+                                                                                                     owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isExploitedBy> ; 
+                                                                                                     a owl:Restriction],
+                                                                                                    [owl:someValuesFrom <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure> ; 
+                                                                                                     owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isCorrectedBy> ; 
+                                                                                                     a owl:Restriction],
+                                                                                                    [owl:someValuesFrom ontosec:Asset ; 
+                                                                                                     owl:onProperty <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#existsOn> ; 
+                                                                                                     a owl:Restriction],
+                                                                                                    owl:Thing.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInConfig> a owl:Class;
+                                                                                            rdfs:comment "Some default configurations of services may be exploited by hackers.";
+                                                                                            rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInDevelopment> a owl:Class;
+                                                                                                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerabilityInUse> a owl:Class;
+                                                                                         rdfs:comment "Vulnerabilities during the use of the application or service.";
+                                                                                         rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#SoftwareVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#VulnerableServiceAutoStart> a owl:Class;
+                                                                                                 rdfs:comment "Some services like Bluetooth for example starts automatically which may lead to intrusion and access controls attacks.";
+                                                                                                 rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#InsecureDefaultSettings>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#WirelessTransmission> a owl:Class;
+                                                                                           rdfs:comment "Wireless transmission could be exploited by hacker to eavesdrop traffic, analyse authentication tokens and sensitive information in general.";
+                                                                                           rdfs:subClassOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CommunicationVulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#enabledBy> a owl:ObjectProperty;
+                                                                                rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>;
+                                                                                rdfs:range <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#existsOn> a owl:ObjectProperty;
+                                                                               rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#hasVulnerability> a owl:ObjectProperty;
+                                                                                       rdfs:range <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isCorrectedBy> a owl:ObjectProperty;
+                                                                                    rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>;
+                                                                                    rdfs:range <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#CounterMeasure>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#isExploitedBy> a owl:ObjectProperty;
+                                                                                    rdfs:domain <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Vulnerability>;
+                                                                                    rdfs:range <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>;
+                                                                                    owl:inverseOf <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#enabledBy>.
+<http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#victimOf> a owl:ObjectProperty;
+                                                                               rdfs:range <http://www.semanticweb.org/ontologies/2009/1/3/VulnThreatAttack.owl#Threat>.
+owl:Thing a owl:Class;
+          rdfs:comment "".

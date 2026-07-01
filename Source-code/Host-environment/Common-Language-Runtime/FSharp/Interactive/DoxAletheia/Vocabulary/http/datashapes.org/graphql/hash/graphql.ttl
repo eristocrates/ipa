@@ -1,0 +1,399 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix graphql: <http://datashapes.org/graphql#>.
+@prefix swa: <http://topbraid.org/swa#>.
+@prefix tosh: <http://topbraid.org/tosh#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix shacl: <http://www.w3.org/ns/shacl#>.
+
+<http://datashapes.org/graphql> a owl:Ontology;
+                                rdfs:comment "A vocabulary to annotate RDF schemas (in particular SHACL shapes) with metadata to define mappings to GraphQL.";
+                                rdfs:label "GraphQL Vocabulary";
+                                owl:imports <http://datashapes.org/dash>.
+graphql:ClassShape a shacl:NodeShape;
+                   rdfs:label "GraphQL class shape";
+                   shacl:property [shacl:path [shacl:inversePath graphql:protectedClass] ; 
+                                   shacl:order 2.0 ; 
+                                   shacl:nodeKind shacl:IRI ; 
+                                   shacl:name "protected class of" ; 
+                                   shacl:group graphql:SchemaPropertyGroup ; 
+                                   shacl:description "Protected classes (including subclasses) can only be queried if reached through a field from another shape." ; 
+                                   shacl:class graphql:Schema ; 
+                                   a shacl:PropertyShape],
+                                  [shacl:path [shacl:inversePath graphql:publicClass] ; 
+                                   shacl:order 0.0 ; 
+                                   shacl:nodeKind shacl:IRI ; 
+                                   shacl:name "public class of" ; 
+                                   shacl:group graphql:SchemaPropertyGroup ; 
+                                   shacl:description "Public classes (including subclasses) can be queried without restrictions, unless marked as protected or private. This also includes shapes linked to these classes via sh:targetClass or dash:applicableToClass." ; 
+                                   shacl:class graphql:Schema ; 
+                                   a shacl:PropertyShape];
+                   shacl:targetClass rdfs:Class.
+graphql:InputObjectType a rdfs:Class,
+                          shacl:NodeShape;
+                        rdfs:comment "Represents an input object type in a GraphQL schema.";
+                        rdfs:label "Input object type";
+                        rdfs:subClassOf rdfs:Resource;
+                        shacl:property [shacl:path graphql:inputValue ; 
+                                        shacl:name "input value" ; 
+                                        shacl:description "The input value(s) of the input object type." ; 
+                                        shacl:class graphql:InputValue ; 
+                                        a shacl:PropertyShape].
+graphql:InputType dash:abstract true;
+                  a rdfs:Class,
+                    shacl:NodeShape;
+                  rdfs:label "Input type";
+                  rdfs:subClassOf rdfs:Resource.
+graphql:InputValue a rdfs:Class,
+                     shacl:NodeShape;
+                   rdfs:comment "The definition of an input value, consisting of a name, type and an optional default value.";
+                   rdfs:label "Input value";
+                   rdfs:subClassOf rdfs:Resource;
+                   shacl:property [shacl:path graphql:defaultValue ; 
+                                   shacl:name "default value" ; 
+                                   shacl:maxCount 1  ; 
+                                   shacl:description "The default value (if any), as an RDF node." ; 
+                                   a shacl:PropertyShape],
+                                  [shacl:path graphql:name ; 
+                                   shacl:minCount 1  ; 
+                                   shacl:maxCount 1  ; 
+                                   shacl:description "The GraphQL name of the input type." ; 
+                                   shacl:datatype xsd:string ; 
+                                   a shacl:PropertyShape],
+                                  [shacl:path graphql:type ; 
+                                   shacl:name "type" ; 
+                                   shacl:minCount 1  ; 
+                                   shacl:maxCount 1  ; 
+                                   shacl:description "The allowed type of the input value." ; 
+                                   shacl:class graphql:InputType ; 
+                                   a shacl:PropertyShape].
+graphql:JSON2RDFTestCase a rdfs:Class,
+                           shacl:NodeShape;
+                         rdfs:comment "A test case that can be used to verify that a given JSON object is translated into RDF triples using shape definitions from a given graphql:Service. The service must be in the test case graph.";
+                         rdfs:label "JSON-to-RDF test case";
+                         rdfs:subClassOf dash:TestCase;
+                         shacl:property [shacl:path dash:expectedResult ; 
+                                         shacl:minCount 1  ; 
+                                         shacl:maxCount 1  ; 
+                                         shacl:description "The TTL of the resulting RDF." ; 
+                                         shacl:datatype xsd:string ; 
+                                         a shacl:PropertyShape],
+                                        [shacl:path graphql:json ; 
+                                         shacl:name "json" ; 
+                                         shacl:minCount 1  ; 
+                                         shacl:maxCount 1  ; 
+                                         shacl:description "The JSON text." ; 
+                                         shacl:datatype xsd:string ; 
+                                         a shacl:PropertyShape],
+                                        [shacl:path graphql:schema ; 
+                                         shacl:nodeKind shacl:IRI ; 
+                                         shacl:name "service" ; 
+                                         shacl:minCount 1  ; 
+                                         shacl:maxCount 1  ; 
+                                         shacl:description "The GraphQL service." ; 
+                                         shacl:class graphql:Schema ; 
+                                         a shacl:PropertyShape].
+graphql:ListType a rdfs:Class,
+                   shacl:NodeShape;
+                 rdfs:label "List type";
+                 rdfs:subClassOf graphql:InputType;
+                 shacl:property [shacl:path graphql:memberType ; 
+                                 shacl:nodeKind shacl:BlankNode ; 
+                                 shacl:name "member type" ; 
+                                 shacl:minCount 1  ; 
+                                 shacl:maxCount 1  ; 
+                                 shacl:description "The type of members." ; 
+                                 shacl:class graphql:InputType ; 
+                                 a shacl:PropertyShape].
+graphql:MutationTestCase a rdfs:Class,
+                           shacl:NodeShape;
+                         rdfs:comment """A test case that runs a given GraphQL mutation (graphql:query) and compares its output JSON with an expected JSON string. Formatting of the strings is ignored. The mutation is executed over a given \"before\" graph which must be isomorphic to a given \"after\" graph. The TestCase is also a graphql:Schema defining which shapes to publish.""";
+                         rdfs:label "GraphQL mutation test case";
+                         rdfs:subClassOf graphql:Query,
+                                         dash:TestCase,
+                                         graphql:Schema;
+                         shacl:property [shacl:path graphql:dataGraph ; 
+                                         shacl:name "before graph" ; 
+                                         shacl:minCount 1  ; 
+                                         shacl:maxCount 1  ; 
+                                         shacl:description """The TTL source code of the graph \"before\" the mutation. Uses the same namespace prefixes as the test case.""" ; 
+                                         shacl:datatype xsd:string ; 
+                                         a shacl:PropertyShape],
+                                        [shacl:path dash:expectedResult ; 
+                                         shacl:minCount 1  ; 
+                                         shacl:maxCount 1  ; 
+                                         shacl:description "The expected JSON response object as a string." ; 
+                                         shacl:datatype xsd:string ; 
+                                         a shacl:PropertyShape],
+                                        [shacl:path graphql:expectedGraph ; 
+                                         shacl:name "after graph" ; 
+                                         shacl:minCount 1  ; 
+                                         shacl:maxCount 1  ; 
+                                         shacl:description """The TTL source code of the expected graph \"after\" the mutation. Uses the same namespace prefixes as the test case.""" ; 
+                                         shacl:datatype xsd:string ; 
+                                         a shacl:PropertyShape].
+graphql:NameShape a shacl:NodeShape;
+                  rdfs:comment "Defines syntax restrictions on the use of the graphql:name property.";
+                  rdfs:label "Name shape";
+                  owl:versionInfo "TODO: Add checks against duplicate names within the same shape (including superclasses and sh:node references).";
+                  shacl:property [shacl:pattern "^[_A-Za-z][_0-9A-Za-z]*$" ; 
+                                  shacl:path graphql:name ; 
+                                  shacl:maxCount 1  ; 
+                                  shacl:datatype xsd:string ; 
+                                  a shacl:PropertyShape];
+                  shacl:targetSubjectsOf graphql:name.
+graphql:NamedType a rdfs:Class,
+                    shacl:NodeShape;
+                  rdfs:label "Named type";
+                  rdfs:subClassOf graphql:InputType;
+                  shacl:property [shacl:path graphql:name ; 
+                                  shacl:minCount 1  ; 
+                                  shacl:maxCount 1  ; 
+                                  shacl:description "The type name." ; 
+                                  shacl:datatype xsd:string ; 
+                                  a shacl:PropertyShape].
+graphql:NodeShapeShape a shacl:NodeShape;
+                       rdfs:label "GraphQL node shape shape";
+                       shacl:property [shacl:path [shacl:inversePath graphql:privateShape] ; 
+                                       shacl:order 4.0 ; 
+                                       shacl:nodeKind shacl:IRI ; 
+                                       shacl:name "private shape of" ; 
+                                       shacl:group graphql:SchemaPropertyGroup ; 
+                                       shacl:description "Private shapes cannot be queried." ; 
+                                       shacl:class graphql:Schema ; 
+                                       a shacl:PropertyShape],
+                                      [shacl:path [shacl:inversePath graphql:protectedShape] ; 
+                                       shacl:order 3.0 ; 
+                                       shacl:nodeKind shacl:IRI ; 
+                                       shacl:name "protected shape of" ; 
+                                       shacl:group graphql:SchemaPropertyGroup ; 
+                                       shacl:description "Protected shapes can only be queried if reached through a field from another shape." ; 
+                                       shacl:class graphql:Schema ; 
+                                       a shacl:PropertyShape],
+                                      [shacl:path [shacl:inversePath graphql:publicShape] ; 
+                                       shacl:order 1.0 ; 
+                                       shacl:nodeKind shacl:IRI ; 
+                                       shacl:name "public shape of" ; 
+                                       shacl:group graphql:SchemaPropertyGroup ; 
+                                       shacl:description "Public shapes can be queried without restrictions." ; 
+                                       shacl:class graphql:Schema ; 
+                                       a shacl:PropertyShape];
+                       shacl:targetClass shacl:NodeShape.
+graphql:NonNullType a rdfs:Class,
+                      shacl:NodeShape;
+                    rdfs:label "Non null type";
+                    rdfs:subClassOf graphql:InputType;
+                    shacl:property [shacl:path graphql:type ; 
+                                    shacl:nodeKind shacl:BlankNode ; 
+                                    shacl:name "type" ; 
+                                    shacl:minCount 1  ; 
+                                    shacl:maxCount 1  ; 
+                                    shacl:description "The type that is not-nulled." ; 
+                                    shacl:class graphql:InputType ; 
+                                    a shacl:PropertyShape].
+graphql:Query a rdfs:Class,
+                shacl:NodeShape;
+              rdfs:comment "Represents specific GraphQL queries, stored by their query string and possibly other properties with metadata.";
+              rdfs:label "GraphQL query";
+              rdfs:subClassOf rdfs:Resource;
+              shacl:property [shacl:path graphql:queryString ; 
+                              shacl:minCount 1  ; 
+                              shacl:maxCount 1  ; 
+                              shacl:datatype xsd:string ; 
+                              a shacl:PropertyShape],
+                             [shacl:path graphql:variables ; 
+                              shacl:maxCount 1  ; 
+                              shacl:datatype xsd:string ; 
+                              a shacl:PropertyShape].
+graphql:QueryTestCase a rdfs:Class,
+                        shacl:NodeShape;
+                      rdfs:comment "A test case that runs a given GraphQL query (graphql:query) and compares its output JSON with an expected JSON string. Formatting of the strings is ignored. The TestCase is also a graphql:Schema defining which shapes to publish.";
+                      rdfs:label "GraphQL query test case";
+                      rdfs:subClassOf dash:TestCase,
+                                      graphql:Query,
+                                      graphql:Schema;
+                      shacl:property [shacl:path dash:expectedResult ; 
+                                      shacl:minCount 1  ; 
+                                      shacl:maxCount 1  ; 
+                                      shacl:description "The expected JSON response object as a string." ; 
+                                      shacl:datatype xsd:string ; 
+                                      a shacl:PropertyShape].
+graphql:ScalarType a rdfs:Class,
+                     shacl:NodeShape;
+                   rdfs:comment """Represents a scalar type as defined by a GraphQL schema. The primary purpose of these types is for round-tripping, otherwise they are basically the same as node shapes. The instances must be URIs, and the GraphQL name is derived from them.
+
+This is currently not marked as a subClassOf sh:NodeShape, although this may happen in the future. The idea is that we don't want all constraint parameters to apply here, only selected ones such as sh:datatype. In the SHACL spec, anything that has constraints counts as a node shape, even if it doesn't have a matching rdf:type triple.""";
+                   rdfs:label "Scalar type";
+                   rdfs:subClassOf rdfs:Resource;
+                   shacl:property [shacl:path shacl:datatype ; 
+                                   shacl:nodeKind shacl:IRI ; 
+                                   shacl:maxCount 1  ; 
+                                   shacl:description "The (RDF/XSD) datatype that this scalar type refers to." ; 
+                                   a shacl:PropertyShape].
+graphql:Schema a rdfs:Class,
+                 shacl:NodeShape;
+               rdfs:comment """A collection of shapes that are part of a GraphQL schema. Includes declarations about which shapes shall be exposed/published by a GraphQL service. The set of public node shapes consists of all values of graphql:publicShape, all values of graphql:publicClass and their subclasses, all node shapes from any namespace graphql:publicNamespace, minus any explicitly excluded shapes via graphql:privateShape.
+
+An RDF graph may contain multiple GraphQL schemas, each providing a different API or view on the underlying data. GraphQL services can include each other using owl:imports. To simplify common usage patterns, owl:Ontology has been marked as a subclass, so that all Ontologies are also graphql:Schemas once this graphql namespace is imported.""";
+               rdfs:label "GraphQL Schema";
+               rdfs:subClassOf rdfs:Resource;
+               shacl:nodeKind shacl:IRI;
+               shacl:property graphql:Schema-protectedShape,
+                              [shacl:path graphql:name ; 
+                               shacl:maxCount 1  ; 
+                               shacl:description "A system name that can be used in URLs to identify this schema." ; 
+                               shacl:datatype xsd:string ; 
+                               a shacl:PropertyShape],
+                              graphql:Schema-privateShape,
+                              [shacl:path graphql:queryShape ; 
+                               shacl:nodeKind shacl:IRI ; 
+                               shacl:name "query shape" ; 
+                               shacl:maxCount 1  ; 
+                               shacl:description "The declared root shape of a GraphQL schema, specified using schema { query: ... } in GraphQL schema syntax. Can be used to round-trip GraphQL files." ; 
+                               shacl:class shacl:NodeShape ; 
+                               a shacl:PropertyShape],
+                              graphql:Schema-protectedClass,
+                              graphql:Schema-publicShape,
+                              graphql:Schema-publicNamespace,
+                              [shacl:path graphql:defaultPrefix ; 
+                               shacl:maxCount 1  ; 
+                               shacl:class shacl:PrefixDeclaration ; 
+                               a shacl:PropertyShape],
+                              graphql:Schema-publicClass.
+graphql:Schema-privateShape a shacl:PropertyShape;
+                            shacl:class shacl:NodeShape;
+                            shacl:description "Defines the shapes that shall not be published, overriding what has been specified to be public (e.g. via graphql:publicShape).";
+                            shacl:group graphql:ShapesPropertyGroup;
+                            shacl:name "private shape";
+                            shacl:nodeKind shacl:IRI;
+                            shacl:order 20 ;
+                            shacl:path graphql:privateShape.
+graphql:Schema-protectedClass a shacl:PropertyShape;
+                              shacl:class rdfs:Class;
+                              shacl:description "Links to classes so that the class and all its subclasses are published, assuming they are also node shapes. Protected classes can however not be queried from the generated root query object.";
+                              shacl:group graphql:ShapesPropertyGroup;
+                              shacl:name "protected class";
+                              shacl:nodeKind shacl:IRI;
+                              shacl:order 11 ;
+                              shacl:path graphql:protectedClass.
+graphql:Schema-protectedShape a shacl:PropertyShape;
+                              shacl:class shacl:NodeShape;
+                              shacl:description "Specifies the shape(s) that the GraphQL schema is publishing but not accessible from the generated root query object.";
+                              shacl:group graphql:ShapesPropertyGroup;
+                              shacl:name "protected shape";
+                              shacl:nodeKind shacl:IRI;
+                              shacl:order 10 ;
+                              shacl:path graphql:protectedShape.
+graphql:Schema-publicClass a shacl:PropertyShape;
+                           shacl:class rdfs:Class;
+                           shacl:description "Links to classes so that the class and all its subclasses are published, assuming they are also node shapes. Also publishes any shapes linked to the class and its subclasses via sh:targetClass or dash:applicableToClass.";
+                           shacl:group graphql:ShapesPropertyGroup;
+                           shacl:name "public class";
+                           shacl:nodeKind shacl:IRI;
+                           shacl:order 2 ;
+                           shacl:path graphql:publicClass.
+graphql:Schema-publicNamespace a shacl:PropertyShape;
+                               shacl:class shacl:PrefixDeclaration;
+                               shacl:description "The namespace(s) of node shapes that shall be published by the GraphQL schema. Will use the values of sh:namespace of the linked prefix declarations.";
+                               shacl:group graphql:ShapesPropertyGroup;
+                               shacl:name "public namespace";
+                               shacl:order 0 ;
+                               shacl:path graphql:publicNamespace.
+graphql:Schema-publicShape a shacl:PropertyShape;
+                           shacl:class shacl:NodeShape;
+                           shacl:description "Specifies the shape(s) that the GraphQL schema is publishing.";
+                           shacl:group graphql:ShapesPropertyGroup;
+                           shacl:name "public shape";
+                           shacl:nodeKind shacl:IRI;
+                           shacl:order 1 ;
+                           shacl:path graphql:publicShape.
+graphql:SchemaPropertyGroup tosh:editGroupDescription "The properties in this group define how the current shape/class is made available to GraphQL services.";
+                            tosh:openable true;
+                            a shacl:PropertyGroup;
+                            rdfs:label "GraphQL Schema";
+                            shacl:order 1.5.
+graphql:ShapesPropertyGroup a shacl:PropertyGroup;
+                            rdfs:label "Shapes";
+                            shacl:order 5 .
+graphql:WriterTestCase a rdfs:Class,
+                         shacl:NodeShape;
+                       rdfs:comment "A test case that can be used to verify that a RDF/SHACL to GraphQL writer works correctly. The expected result must be the complete GraphQL schema string.";
+                       rdfs:label "Writer test case";
+                       rdfs:subClassOf dash:TestCase;
+                       shacl:property [shacl:path graphql:canRoundTrip ; 
+                                       shacl:name "can round trip" ; 
+                                       shacl:maxCount 1  ; 
+                                       shacl:description "True to include a test comparing that reloading the generated string yields the same graph." ; 
+                                       shacl:datatype xsd:boolean ; 
+                                       a shacl:PropertyShape],
+                                      [shacl:path graphql:rdfGraph ; 
+                                       shacl:name "RDF graph" ; 
+                                       shacl:minCount 1  ; 
+                                       shacl:maxCount 1  ; 
+                                       shacl:description "The URI of the RDF graph to load." ; 
+                                       shacl:datatype xsd:anyURI ; 
+                                       a shacl:PropertyShape].
+graphql:defaultPrefix a rdf:Property;
+                      rdfs:comment "Points at a prefix declaration of the default namespace for the shapes derived by GraphQL types. This property can be used to round-trip .graphql files.";
+                      rdfs:label "default prefix".
+graphql:fieldName a shacl:Function;
+                  rdfs:comment "Gets the GraphQL field name for a property path at a given node shape.";
+                  rdfs:label "field name";
+                  shacl:parameter [shacl:path graphql:nodeShape ; 
+                                   shacl:order 0  ; 
+                                   shacl:nodeKind shacl:IRI ; 
+                                   shacl:name "node shape" ; 
+                                   shacl:class shacl:NodeShape ; 
+                                   a shacl:Parameter],
+                                  [shacl:path graphql:path ; 
+                                   shacl:order 1  ; 
+                                   shacl:nodeKind shacl:BlankNodeOrIRI ; 
+                                   shacl:name "path" ; 
+                                   shacl:description "The property path expression (value of sh:path)." ; 
+                                   a shacl:Parameter];
+                  shacl:returnType xsd:string.
+graphql:isIDField a rdf:Property;
+                  rdfs:comment "Can be attached to property shapes to indicate they should be round-tripped as GraphQL type ID.";
+                  rdfs:label "is ID field";
+                  rdfs:range xsd:boolean.
+graphql:isInterface a rdf:Property;
+                    rdfs:comment "If set to true for a node shape, then it should become a GraphQL interface.";
+                    rdfs:label "is GraphQL interface";
+                    rdfs:range xsd:boolean.
+graphql:name a rdf:Property;
+             rdfs:comment "Defines a GraphQL name for a given subject. The values need to match the regular expression specified in http://facebook.github.io/graphql/October2016/#Name.";
+             rdfs:label "name";
+             rdfs:range xsd:string.
+graphql:query a rdf:Property;
+              rdfs:comment "The GraphQL query string.";
+              rdfs:label "query".
+graphql:queryShape a rdf:Property;
+                   rdfs:label "query shape";
+                   rdfs:range shacl:NodeShape.
+graphql:queryString a rdf:Property;
+                    rdfs:comment "The text of the actual query in GraphQL syntax.";
+                    rdfs:label "query string".
+graphql:schema a rdf:Property.
+graphql:uriTemplate a rdf:Property;
+                    rdfs:comment """Can be used to attach a URI template to node shapes, meaning that JSON objects that are processed with the given node shape will become URI resources with a URI derived from the given template. Example: \"ex:Person-{$id}\".
+
+URI templates can include {...} blocks that contain a variable reference such as $id if the corresponding GraphQL type has a field named \"id\". Fields are mandatory by default, meaning that if a JSON converter attempts to produce a URI that lacks a mandatory field then the conversion fails with an exception.""";
+                    rdfs:domain shacl:NodeShape;
+                    rdfs:label "GraphQL URI template";
+                    rdfs:range xsd:string.
+graphql:variables a rdf:Property;
+                  rdfs:comment "An optional JSON object with variables that shall be passed into the query for execution.";
+                  rdfs:label "variables".
+tosh:PropertyShapeShape shacl:property tosh:PropertyShapeShape-name.
+tosh:PropertyShapeShape-name tosh:editWidget swa:PlainTextFieldEditor;
+                             a shacl:PropertyShape;
+                             shacl:description "The name of the associated GraphQL field, must follow GraphQL naming syntax.";
+                             shacl:group tosh:AboutPropertyGroup;
+                             shacl:name "GraphQL field name";
+                             shacl:order 0.5;
+                             shacl:path graphql:name.
+owl:Ontology rdfs:subClassOf graphql:Schema.

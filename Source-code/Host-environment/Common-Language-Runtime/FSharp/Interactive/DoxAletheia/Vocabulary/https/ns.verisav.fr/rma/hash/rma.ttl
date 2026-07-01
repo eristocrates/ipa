@@ -1,0 +1,534 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix rma: <https://ns.verisav.fr/rma#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix aerdcat: <http://www.w3.org/ns/dcat#>.
+@prefix submit: <https://ns.verisav.fr/dpp#>.
+@prefix schemas: <https://schema.org/>.
+
+rma: ccrel:license <https://creativecommons.org/licenses/by/4.0/>;
+     dcterms:created "2025-12-16"^^xsd:date;
+     dcterms:creator [foaf:name "Kévin Boutillier" ; 
+                      rdfs:seeAlso <https://orcid.org/0009-0001-0356-4421> ; 
+                      rdfs:seeAlso <https://www.verisav.fr/en/founders/kevin-boutillier> ; 
+                      rdfs:seeAlso <https://www.linkedin.com/in/kévinboutillier> ; 
+                      a foaf:Person];
+     dcterms:description "Vocabulary for Return Merchandise Authorization (RMA) and service ticket management, standardizing communication between consumers, retailers, and repairers."@en,
+                         "Vocabulaire pour les Autorisations de Retour de Marchandise (RMA) et la gestion de tickets SAV, standardisant la communication entre consommateurs, distributeurs et réparateurs."@fr;
+     dcterms:license <https://creativecommons.org/licenses/by/4.0/>;
+     dcterms:modified "2025-12-28"^^xsd:date;
+     dcterms:publisher <https://www.verisav.fr/>;
+     dcterms:rights "Copyright © 2025 Verisav SAS. Tous droits réservés."@fr,
+                    "Copyright © 2025 Verisav SAS. All rights reserved."@en;
+     dcterms:title "Verisav RMA / Ticketing Vocabulary"@en;
+     vann:preferredNamespacePrefix "rma";
+     vann:preferredNamespaceUri "https://ns.verisav.fr/rma#";
+     a voaf:Vocabulary,
+       owl:Ontology;
+     rdfs:comment "Version 1.0.0 (2025-12-28): Version initiale. Vocabulaire pour gérer les demandes de retour, tickets SAV, litiges et résolutions dans les workflows de service après-vente."@fr,
+                  "Version 1.0.0 (2025-12-28): Initial release. Vocabulary for managing return requests, service tickets, disputes, and resolutions in after-sales service workflows."@en;
+     rdfs:label "Vocabulaire RMA Verisav"@fr,
+                "Verisav RMA Vocabulary"@en;
+     owl:imports schemas:,
+                 submit:;
+     owl:versionInfo "1.0.0";
+     aerdcat:distribution [aerdcat:accessURL <https://www.verisav.fr/api/rma/rma.jsonld> ; 
+                           dcterms:title "RMA Vocabulary (JSON-LD via API)"@en ; 
+                           dcterms:format "application/ld+json" ; 
+                           a aerdcat:Distribution],
+                          [aerdcat:downloadURL <https://ns.verisav.fr/rma/rma.jsonld> ; 
+                           dcterms:format "application/ld+json" ; 
+                           a aerdcat:Distribution],
+                          [aerdcat:downloadURL <https://ns.verisav.fr/rma/rma.ttl> ; 
+                           dcterms:format "text/turtle" ; 
+                           a aerdcat:Distribution],
+                          [aerdcat:accessURL <https://www.verisav.fr/api/graphql> ; 
+                           dcterms:title "Verisav Vocabularies GraphQL API"@en ; 
+                           dcterms:format "application/graphql" ; 
+                           dcterms:description "GraphQL API for querying all Verisav vocabularies (DPP, RMA, WTY)"@en ; 
+                           a aerdcat:Distribution];
+     schemas:potentialAction [schemas:target <https://www.verisav.fr/api/v1/vocabulary/rma/search?q=%7Bquery%7D> ; 
+                              schemas:query-input "required name=query" ; 
+                              a schemas:SearchAction].
+rma:Approval a owl:Class;
+             rdfs:comment "An approval or authorization for a return request or resolution."@en;
+             rdfs:isDefinedBy rma:;
+             rdfs:label "Approval"@en,
+                        "Approbation"@fr;
+             rdfs:subClassOf schemas:Action;
+             status:term_status "stable".
+rma:Dispute a owl:Class;
+            rdfs:comment "A dispute or complaint about a product (e.g., arrived broken, not as described, defective)."@en;
+            rdfs:isDefinedBy rma:;
+            rdfs:label "Dispute"@en,
+                       "Litige"@fr;
+            rdfs:subClassOf schemas:Complaint;
+            status:term_status "stable".
+rma:Message a owl:Class;
+            rdfs:comment "A message in a ticket conversation thread between customer, retailer, or repairer."@en;
+            rdfs:isDefinedBy rma:;
+            rdfs:label "Message"@en,
+                       "Message"@fr;
+            rdfs:subClassOf schemas:Message;
+            status:term_status "stable".
+rma:Resolution a owl:Class;
+               rdfs:comment "A resolution proposed or applied to a return request or dispute (refund, exchange, store credit, repair)."@en;
+               rdfs:isDefinedBy rma:;
+               rdfs:label "Resolution"@en,
+                          "Résolution"@fr;
+               rdfs:subClassOf schemas:Thing;
+               status:term_status "stable".
+rma:ReturnRequest a owl:Class;
+                  rdfs:comment "A request for returning a product to a retailer or manufacturer."@en;
+                  rdfs:isDefinedBy rma:;
+                  rdfs:label "Return Request"@en,
+                             "Demande de Retour"@fr;
+                  rdfs:subClassOf schemas:Action;
+                  status:term_status "stable".
+rma:ShippingLabel a owl:Class;
+                  rdfs:comment "A shipping label for returning a product, containing carrier and tracking information."@en;
+                  rdfs:isDefinedBy rma:;
+                  rdfs:label "Shipping Label"@en,
+                             "Étiquette d'Expédition"@fr;
+                  rdfs:subClassOf schemas:DigitalDocument;
+                  status:term_status "stable".
+rma:Ticket a owl:Class;
+           rdfs:comment "A service ticket that tracks customer service interactions and issue resolution."@en;
+           rdfs:isDefinedBy rma:;
+           rdfs:label "Service Ticket"@en,
+                      "Ticket SAV"@fr;
+           rdfs:subClassOf schemas:Thing;
+           status:term_status "stable".
+rma:Tracking a owl:Class;
+             rdfs:comment "Tracking information for a returned package, including carrier events and status."@en;
+             rdfs:isDefinedBy rma:;
+             rdfs:label "Package Tracking"@en,
+                        "Suivi Colis"@fr;
+             rdfs:subClassOf schemas:Thing;
+             status:term_status "stable".
+rma:approvalComment a owl:DatatypeProperty;
+                    rdfs:comment "Comment associated with the approval or rejection."@en;
+                    rdfs:domain rma:Approval;
+                    rdfs:isDefinedBy rma:;
+                    rdfs:label "approval comment"@en,
+                               "commentaire d'approbation"@fr;
+                    rdfs:range xsd:string;
+                    status:term_status "stable".
+rma:approvalDate a owl:DatatypeProperty;
+                 rdfs:comment "Date when the approval was given."@en;
+                 rdfs:domain rma:Approval;
+                 rdfs:isDefinedBy rma:;
+                 rdfs:label "approval date"@en,
+                            "date d'approbation"@fr;
+                 rdfs:range xsd:dateTime;
+                 status:term_status "stable".
+rma:approvalStatus a owl:DatatypeProperty;
+                   rdfs:comment "Status of the approval (pending, approved, rejected)."@en;
+                   rdfs:domain rma:Approval;
+                   rdfs:isDefinedBy rma:;
+                   rdfs:label "approval status"@en,
+                              "statut d'approbation"@fr;
+                   rdfs:range xsd:string;
+                   status:term_status "stable".
+rma:approvedBy a owl:ObjectProperty;
+               rdfs:comment "The person or organization who approved the return request or resolution."@en;
+               rdfs:domain rma:Approval;
+               rdfs:isDefinedBy rma:;
+               rdfs:label "approved by"@en,
+                          "approuvé par"@fr;
+               rdfs:range schemas:Person,
+                          schemas:Organization;
+               status:term_status "stable".
+rma:authoredBy a owl:ObjectProperty;
+               rdfs:comment "The person or organization who authored a message."@en;
+               rdfs:domain rma:Message;
+               rdfs:isDefinedBy rma:;
+               rdfs:label "authored by"@en,
+                          "rédigé par"@fr;
+               rdfs:range schemas:Person,
+                          schemas:Organization;
+               status:term_status "stable".
+rma:carrierName a owl:DatatypeProperty;
+                rdfs:comment "Name of the shipping carrier (e.g., DHL, FedEx, UPS, Colissimo)."@en;
+                rdfs:domain rma:ShippingLabel,
+                            rma:Tracking;
+                rdfs:isDefinedBy rma:;
+                rdfs:label "carrier name"@en,
+                           "nom du transporteur"@fr;
+                rdfs:range xsd:string;
+                status:term_status "stable".
+rma:carrierService a owl:DatatypeProperty;
+                   rdfs:comment "Type of carrier service (standard, express, overnight, etc.)."@en;
+                   rdfs:domain rma:ShippingLabel;
+                   rdfs:isDefinedBy rma:;
+                   rdfs:label "carrier service"@en,
+                              "service transporteur"@fr;
+                   rdfs:range xsd:string;
+                   status:term_status "stable".
+rma:concernsProduct a owl:ObjectProperty;
+                    rdfs:comment "Links a return request, ticket, or dispute to the product it concerns."@en;
+                    rdfs:domain rma:Dispute,
+                                rma:ReturnRequest,
+                                rma:Ticket;
+                    rdfs:isDefinedBy rma:;
+                    rdfs:label "concerns product"@en,
+                               "concerne le produit"@fr;
+                    rdfs:range schemas:Product,
+                               submit:ProductPassport;
+                    status:term_status "stable".
+rma:disputeDate a owl:DatatypeProperty;
+                rdfs:comment "Date when the dispute was raised."@en;
+                rdfs:domain rma:Dispute;
+                rdfs:isDefinedBy rma:;
+                rdfs:label "dispute date"@en,
+                           "date du litige"@fr;
+                rdfs:range xsd:dateTime;
+                status:term_status "stable".
+rma:disputeDescription a owl:DatatypeProperty;
+                       rdfs:comment "Detailed description of the dispute or complaint."@en;
+                       rdfs:domain rma:Dispute;
+                       rdfs:isDefinedBy rma:;
+                       rdfs:label "dispute description"@en,
+                                  "description du litige"@fr;
+                       rdfs:range xsd:string;
+                       status:term_status "stable".
+rma:disputeType a owl:DatatypeProperty;
+                rdfs:comment "Type of dispute (defective, damaged_shipping, wrong_item, not_as_described, missing_parts, etc.)."@en;
+                rdfs:domain rma:Dispute;
+                rdfs:isDefinedBy rma:;
+                rdfs:label "dispute type"@en,
+                           "type de litige"@fr;
+                rdfs:range xsd:string;
+                status:term_status "stable".
+rma:estimatedDeliveryDate a owl:DatatypeProperty;
+                          rdfs:comment "Estimated delivery date for the package."@en;
+                          rdfs:domain rma:Tracking;
+                          rdfs:isDefinedBy rma:;
+                          rdfs:label "estimated delivery date"@en,
+                                     "date de livraison estimée"@fr;
+                          rdfs:range xsd:date;
+                          status:term_status "stable".
+rma:expectedReturnDate a owl:DatatypeProperty;
+                       rdfs:comment "Expected date for receiving the returned product."@en;
+                       rdfs:domain rma:ReturnRequest;
+                       rdfs:isDefinedBy rma:;
+                       rdfs:label "expected return date"@en,
+                                  "date de retour attendue"@fr;
+                       rdfs:range xsd:date;
+                       status:term_status "stable".
+rma:handledBy a owl:ObjectProperty;
+              rdfs:comment "The retailer, repairer, or organization handling the return request or ticket."@en;
+              rdfs:domain rma:ReturnRequest,
+                          rma:Ticket;
+              rdfs:isDefinedBy rma:;
+              rdfs:label "handled by"@en,
+                         "traité par"@fr;
+              rdfs:range schemas:Organization;
+              status:term_status "stable".
+rma:hasApproval a owl:ObjectProperty;
+                rdfs:comment "Links a return request or resolution to an approval."@en;
+                rdfs:domain rma:ReturnRequest,
+                            rma:Resolution;
+                rdfs:isDefinedBy rma:;
+                rdfs:label "has approval"@en,
+                           "a pour approbation"@fr;
+                rdfs:range rma:Approval;
+                status:term_status "stable".
+rma:hasDispute a owl:ObjectProperty;
+               rdfs:comment "Links a return request or ticket to a dispute."@en;
+               rdfs:domain rma:ReturnRequest,
+                           rma:Ticket;
+               rdfs:isDefinedBy rma:;
+               rdfs:label "has dispute"@en,
+                          "a pour litige"@fr;
+               rdfs:range rma:Dispute;
+               status:term_status "stable".
+rma:hasMessage a owl:ObjectProperty;
+               rdfs:comment "Links a ticket to messages in the conversation thread."@en;
+               rdfs:domain rma:Ticket;
+               rdfs:isDefinedBy rma:;
+               rdfs:label "has message"@en,
+                          "a pour message"@fr;
+               rdfs:range rma:Message;
+               status:term_status "stable".
+rma:hasResolution a owl:ObjectProperty;
+                  rdfs:comment "Links a return request, ticket, or dispute to a resolution."@en;
+                  rdfs:domain rma:Ticket,
+                              rma:ReturnRequest,
+                              rma:Dispute;
+                  rdfs:isDefinedBy rma:;
+                  rdfs:label "has resolution"@en,
+                             "a pour résolution"@fr;
+                  rdfs:range rma:Resolution;
+                  status:term_status "stable".
+rma:hasReturnRequest a owl:ObjectProperty;
+                     rdfs:comment "Links a product or ticket to a return request."@en;
+                     rdfs:domain schemas:Product,
+                                 rma:Ticket;
+                     rdfs:isDefinedBy rma:;
+                     rdfs:label "has return request"@en,
+                                "a pour demande de retour"@fr;
+                     rdfs:range rma:ReturnRequest;
+                     status:term_status "stable".
+rma:hasShippingLabel a owl:ObjectProperty;
+                     rdfs:comment "Links a return request to a shipping label."@en;
+                     rdfs:domain rma:ReturnRequest;
+                     rdfs:isDefinedBy rma:;
+                     rdfs:label "has shipping label"@en,
+                                "a pour étiquette d'expédition"@fr;
+                     rdfs:range rma:ShippingLabel;
+                     status:term_status "stable".
+rma:hasTicket a owl:ObjectProperty;
+              rdfs:comment "Links a product or return request to a service ticket."@en;
+              rdfs:domain schemas:Product,
+                          rma:ReturnRequest;
+              rdfs:isDefinedBy rma:;
+              rdfs:label "has ticket"@en,
+                         "a pour ticket"@fr;
+              rdfs:range rma:Ticket;
+              status:term_status "stable".
+rma:hasTracking a owl:ObjectProperty;
+                rdfs:comment "Links a return request or shipping label to tracking information."@en;
+                rdfs:domain rma:ReturnRequest,
+                            rma:ShippingLabel;
+                rdfs:isDefinedBy rma:;
+                rdfs:label "has tracking"@en,
+                           "a pour suivi"@fr;
+                rdfs:range rma:Tracking;
+                status:term_status "stable".
+rma:isInternal a owl:DatatypeProperty;
+               rdfs:comment "Whether the message is internal (not visible to customer)."@en;
+               rdfs:domain rma:Message;
+               rdfs:isDefinedBy rma:;
+               rdfs:label "is internal"@en,
+                          "est interne"@fr;
+               rdfs:range xsd:boolean;
+               status:term_status "stable".
+rma:labelCreatedDate a owl:DatatypeProperty;
+                     rdfs:comment "Date when the shipping label was created."@en;
+                     rdfs:domain rma:ShippingLabel;
+                     rdfs:isDefinedBy rma:;
+                     rdfs:label "label created date"@en,
+                                "date de création de l'étiquette"@fr;
+                     rdfs:range xsd:dateTime;
+                     status:term_status "stable".
+rma:labelExpiryDate a owl:DatatypeProperty;
+                    rdfs:comment "Expiry date of the shipping label."@en;
+                    rdfs:domain rma:ShippingLabel;
+                    rdfs:isDefinedBy rma:;
+                    rdfs:label "label expiry date"@en,
+                               "date d'expiration de l'étiquette"@fr;
+                    rdfs:range xsd:date;
+                    status:term_status "stable".
+rma:labelUrl a owl:DatatypeProperty;
+             rdfs:comment "URL or link to download the shipping label."@en;
+             rdfs:domain rma:ShippingLabel;
+             rdfs:isDefinedBy rma:;
+             rdfs:label "label URL"@en,
+                        "URL de l'étiquette"@fr;
+             rdfs:range xsd:anyURI;
+             status:term_status "stable".
+rma:lastTrackingUpdate a owl:DatatypeProperty;
+                       rdfs:comment "Date and time of the last tracking update."@en;
+                       rdfs:domain rma:Tracking;
+                       rdfs:isDefinedBy rma:;
+                       rdfs:label "last tracking update"@en,
+                                  "dernière mise à jour de suivi"@fr;
+                       rdfs:range xsd:dateTime;
+                       status:term_status "stable".
+rma:messageDate a owl:DatatypeProperty;
+                rdfs:comment "Date and time when the message was sent."@en;
+                rdfs:domain rma:Message;
+                rdfs:isDefinedBy rma:;
+                rdfs:label "message date"@en,
+                           "date du message"@fr;
+                rdfs:range xsd:dateTime;
+                status:term_status "stable".
+rma:messageText a owl:DatatypeProperty;
+                rdfs:comment "Text content of the message."@en;
+                rdfs:domain rma:Message;
+                rdfs:isDefinedBy rma:;
+                rdfs:label "message text"@en,
+                           "texte du message"@fr;
+                rdfs:range xsd:string;
+                status:term_status "stable".
+rma:messageType a owl:DatatypeProperty;
+                rdfs:comment "Type of message (customer_message, support_response, internal_note, system_notification)."@en;
+                rdfs:domain rma:Message;
+                rdfs:isDefinedBy rma:;
+                rdfs:label "message type"@en,
+                           "type de message"@fr;
+                rdfs:range xsd:string;
+                status:term_status "stable".
+rma:requestedBy a owl:ObjectProperty;
+                rdfs:comment "The person or organization who requested the return or created the ticket."@en;
+                rdfs:domain rma:Ticket,
+                            rma:ReturnRequest;
+                rdfs:isDefinedBy rma:;
+                rdfs:label "demandé par"@fr,
+                           "requested by"@en;
+                rdfs:range schemas:Organization,
+                           schemas:Person;
+                status:term_status "stable".
+rma:resolutionAmount a owl:DatatypeProperty;
+                     rdfs:comment "Amount for refund or store credit resolution."@en;
+                     rdfs:domain rma:Resolution;
+                     rdfs:isDefinedBy rma:;
+                     rdfs:label "resolution amount"@en,
+                                "montant de résolution"@fr;
+                     rdfs:range xsd:decimal;
+                     status:term_status "stable".
+rma:resolutionCurrency a owl:DatatypeProperty;
+                       rdfs:comment "Currency code for the resolution amount (ISO 4217)."@en;
+                       rdfs:domain rma:Resolution;
+                       rdfs:isDefinedBy rma:;
+                       rdfs:label "resolution currency"@en,
+                                  "devise de résolution"@fr;
+                       rdfs:range xsd:string;
+                       status:term_status "stable".
+rma:resolutionDate a owl:DatatypeProperty;
+                   rdfs:comment "Date when the resolution was proposed or applied."@en;
+                   rdfs:domain rma:Resolution;
+                   rdfs:isDefinedBy rma:;
+                   rdfs:label "resolution date"@en,
+                              "date de résolution"@fr;
+                   rdfs:range xsd:dateTime;
+                   status:term_status "stable".
+rma:resolutionDescription a owl:DatatypeProperty;
+                          rdfs:comment "Description of the proposed or applied resolution."@en;
+                          rdfs:domain rma:Resolution;
+                          rdfs:isDefinedBy rma:;
+                          rdfs:label "resolution description"@en,
+                                     "description de résolution"@fr;
+                          rdfs:range xsd:string;
+                          status:term_status "stable".
+rma:resolutionStatus a owl:DatatypeProperty;
+                     rdfs:comment "Status of the resolution (proposed, approved, rejected, applied, cancelled)."@en;
+                     rdfs:domain rma:Resolution;
+                     rdfs:isDefinedBy rma:;
+                     rdfs:label "resolution status"@en,
+                                "statut de résolution"@fr;
+                     rdfs:range xsd:string;
+                     status:term_status "stable".
+rma:resolutionType a owl:DatatypeProperty;
+                   rdfs:comment "Type of resolution (refund, exchange, store_credit, repair, replacement, rejection)."@en;
+                   rdfs:domain rma:Resolution;
+                   rdfs:isDefinedBy rma:;
+                   rdfs:label "resolution type"@en,
+                              "type de résolution"@fr;
+                   rdfs:range xsd:string;
+                   status:term_status "stable".
+rma:resultsInWorkOrder a owl:ObjectProperty;
+                       rdfs:comment "Links a return request or resolution to a work order if repair is needed."@en;
+                       rdfs:domain rma:ReturnRequest,
+                                   rma:Resolution;
+                       rdfs:isDefinedBy rma:;
+                       rdfs:label "results in work order"@en,
+                                  "résulte en ordre de travail"@fr;
+                       rdfs:range submit:WorkOrder;
+                       status:term_status "stable".
+rma:returnReason a owl:DatatypeProperty;
+                 rdfs:comment "Reason for the return (defective, wrong_item, not_as_described, changed_mind, etc.)."@en;
+                 rdfs:domain rma:ReturnRequest;
+                 rdfs:isDefinedBy rma:;
+                 rdfs:label "return reason"@en,
+                            "raison du retour"@fr;
+                 rdfs:range xsd:string;
+                 status:term_status "stable".
+rma:returnRequestDate a owl:DatatypeProperty;
+                      rdfs:comment "Date when the return request was created."@en;
+                      rdfs:domain rma:ReturnRequest;
+                      rdfs:isDefinedBy rma:;
+                      rdfs:label "return request date"@en,
+                                 "date de demande de retour"@fr;
+                      rdfs:range xsd:dateTime;
+                      status:term_status "stable".
+rma:returnRequestNumber a owl:DatatypeProperty;
+                        rdfs:comment "Unique identifier for the return request (RMA number)."@en;
+                        rdfs:domain rma:ReturnRequest;
+                        rdfs:isDefinedBy rma:;
+                        rdfs:label "return request number"@en,
+                                   "numéro de demande de retour"@fr;
+                        rdfs:range xsd:string;
+                        status:term_status "stable".
+rma:returnRequestStatus a owl:DatatypeProperty;
+                        rdfs:comment "Status of the return request (pending, approved, rejected, in_transit, received, processed, completed)."@en;
+                        rdfs:domain rma:ReturnRequest;
+                        rdfs:isDefinedBy rma:;
+                        rdfs:label "return request status"@en,
+                                   "statut de demande de retour"@fr;
+                        rdfs:range xsd:string;
+                        status:term_status "stable".
+rma:ticketClosedDate a owl:DatatypeProperty;
+                     rdfs:comment "Date when the ticket was closed."@en;
+                     rdfs:domain rma:Ticket;
+                     rdfs:isDefinedBy rma:;
+                     rdfs:label "ticket closed date"@en,
+                                "date de fermeture du ticket"@fr;
+                     rdfs:range xsd:dateTime;
+                     status:term_status "stable".
+rma:ticketCreatedDate a owl:DatatypeProperty;
+                      rdfs:comment "Date when the ticket was created."@en;
+                      rdfs:domain rma:Ticket;
+                      rdfs:isDefinedBy rma:;
+                      rdfs:label "ticket created date"@en,
+                                 "date de création du ticket"@fr;
+                      rdfs:range xsd:dateTime;
+                      status:term_status "stable".
+rma:ticketNumber a owl:DatatypeProperty;
+                 rdfs:comment "Unique identifier for the service ticket."@en;
+                 rdfs:domain rma:Ticket;
+                 rdfs:isDefinedBy rma:;
+                 rdfs:label "ticket number"@en,
+                            "numéro de ticket"@fr;
+                 rdfs:range xsd:string;
+                 status:term_status "stable".
+rma:ticketPriority a owl:DatatypeProperty;
+                   rdfs:comment "Priority level of the ticket (low, normal, high, urgent)."@en;
+                   rdfs:domain rma:Ticket;
+                   rdfs:isDefinedBy rma:;
+                   rdfs:label "ticket priority"@en,
+                              "priorité du ticket"@fr;
+                   rdfs:range xsd:string;
+                   status:term_status "stable".
+rma:ticketStatus a owl:DatatypeProperty;
+                 rdfs:comment "Status of the ticket (open, in_progress, waiting_customer, waiting_vendor, resolved, closed)."@en;
+                 rdfs:domain rma:Ticket;
+                 rdfs:isDefinedBy rma:;
+                 rdfs:label "ticket status"@en,
+                            "statut du ticket"@fr;
+                 rdfs:range xsd:string;
+                 status:term_status "stable".
+rma:trackingNumber a owl:DatatypeProperty;
+                   rdfs:comment "Carrier tracking number for the package."@en;
+                   rdfs:domain rma:Tracking;
+                   rdfs:isDefinedBy rma:;
+                   rdfs:label "tracking number"@en,
+                              "numéro de suivi"@fr;
+                   rdfs:range xsd:string;
+                   status:term_status "stable".
+rma:trackingStatus a owl:DatatypeProperty;
+                   rdfs:comment "Current tracking status (label_created, in_transit, out_for_delivery, delivered, exception)."@en;
+                   rdfs:domain rma:Tracking;
+                   rdfs:isDefinedBy rma:;
+                   rdfs:label "tracking status"@en,
+                              "statut de suivi"@fr;
+                   rdfs:range xsd:string;
+                   status:term_status "stable".
+rma:trackingUrl a owl:DatatypeProperty;
+                rdfs:comment "URL to track the package on carrier's website."@en;
+                rdfs:domain rma:Tracking;
+                rdfs:isDefinedBy rma:;
+                rdfs:label "tracking URL"@en,
+                           "URL de suivi"@fr;
+                rdfs:range xsd:anyURI;
+                status:term_status "stable".

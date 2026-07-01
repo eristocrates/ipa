@@ -34,6 +34,7 @@ open UUIDNext
 open UUIDNext.Tools
 
 
+
 #r "nuget: dotNetRdf"
 
 open VDS.RDF.Parsing
@@ -62,7 +63,7 @@ let html_directory_path = @"D:\Persistence\HTML\LCG"
    html_directory_path
 
    |]
-|> Array.map (fun directory_path -> System.IO.Directory.CreateDirectory(directory_path))
+|> Array.map (fun directory_path -> Directory.CreateDirectory(directory_path))
 
 
 
@@ -391,7 +392,7 @@ type LMDB_Transaction_Builder(environment: LightningEnvironment, mode: LMDB_Tran
             finally
                 compensation ()
 
-    member _.Using(resource: 'Resource, body: 'Resource -> LightningTransaction -> 'OutputType) : LightningTransaction -> 'OutputType when 'Resource :> System.IDisposable =
+    member _.Using(resource: 'Resource, body: 'Resource -> LightningTransaction -> 'OutputType) : LightningTransaction -> 'OutputType when 'Resource :> IDisposable =
 
         fun (transaction: LightningTransaction) ->
             use resource = resource
@@ -1077,7 +1078,7 @@ module Atomic_IRI =
 module Escaped =
 
     let literal_string (value: string) =
-        let builder = System.Text.StringBuilder(value.Length)
+        let builder = StringBuilder(value.Length)
 
         for character in value do
             match character with

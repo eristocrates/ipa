@@ -1,5 +1,8 @@
 #r "nuget: LightningDB"
+
 open LightningDB
+open System
+open System.IO
 
 let lmdb_directory_path = @"D:\Persistence\LMDB\LCG"
 
@@ -8,7 +11,7 @@ let bytes_to_gib (bytes: int64) = float bytes / 1024.0 / 1024.0 / 1024.0
 let map_size = int64 4 * GiB
 let mutable batch_size = 250_000
 
-System.IO.Directory.CreateDirectory(lmdb_directory_path)
+Directory.CreateDirectory(lmdb_directory_path)
 |> ignore
 
 

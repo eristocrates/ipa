@@ -1,0 +1,128 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix httpvoc: <http://www.w3.org/2006/http#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix hartigprov: <http://purl.org/net/provenance/ns#>.
+@prefix prvtypes: <http://purl.org/net/provenance/types#>.
+@prefix trig: <http://www.w3.org/2004/03/trix/rdfg-1/>.
+@prefix nsprov: <http://www.w3.org/ns/prov#>.
+
+<http://purl.org/net/provenance/types> a foaf:Document;
+                                       rdfs:label "Document that defines the types module of the Provenance Vocabulary"@en;
+                                       foaf:primaryTopic prvtypes:.
+prvtypes: dcterms:created "2009-11-07T12:00:00Z"^^xsd:dateTime;
+          dcterms:creator <http://users.ox.ac.uk/~zool0770/foaf.rdf#me>,
+                          <http://olafhartig.de/foaf.rdf#olaf>;
+          dcterms:description "Extends the Provenance Vocabulary by defining subclasses of the types of provenance elements introduced in the core ontology."@en;
+          dcterms:modified "2012-03-14T12:00:00Z"^^xsd:dateTime;
+          dcterms:title "Provenance Vocabulary types module namespace"@en;
+          a owl:Ontology;
+          owl:imports hartigprov:.
+prvtypes:DataAccessor a owl:Class;
+                      rdfs:comment "DataAccessor is a concept that represents a system (i.e. a non-human agent) which performed the data access in order to retrieve an information resource from the Web."@en;
+                      rdfs:isDefinedBy prvtypes:;
+                      rdfs:label "Data Accessor"@en;
+                      rdfs:subClassOf hartigprov:NonHumanAgent;
+                      owl:equivalentClass irw:WebClient.
+prvtypes:DataCreatingDevice a owl:Class;
+                            rdfs:comment "DataCreatingDevice is a concept that represents a device which performed the creation of a data item. Examples for data creating devices are sensors."@en;
+                            rdfs:isDefinedBy prvtypes:;
+                            rdfs:label "Data Creating Device"@en;
+                            rdfs:subClassOf prvtypes:DataCreator,
+                                            hartigprov:NonHumanAgent;
+                            owl:disjointWith prvtypes:DataCreatingService,
+                                             prvtypes:DataCreatingEntity.
+prvtypes:DataCreatingEntity a owl:Class;
+                            rdfs:comment "DataCreatingEntity is a concept that represents a human agent who performed the creation of a data item, either directly or by being responsible for a non-human data creator (see the concepts prvTypes:DataCreatingService and prvTypes:DataCreatingDevice)."@en;
+                            rdfs:isDefinedBy prvtypes:;
+                            rdfs:label "Data Creating Entity"@en;
+                            rdfs:subClassOf prvtypes:DataCreator,
+                                            hartigprov:HumanAgent;
+                            owl:disjointWith prvtypes:DataCreatingDevice,
+                                             prvtypes:DataCreatingService.
+prvtypes:DataCreatingService a owl:Class;
+                             rdfs:comment "DataCreatingService is a concept that represents a software service which performed the creation of a data item. Examples for data creating services are reasoners, query engines, and workflow engines."@en;
+                             rdfs:isDefinedBy prvtypes:;
+                             rdfs:label "Data Creating Service"@en;
+                             rdfs:subClassOf prvtypes:DataCreator,
+                                             hartigprov:NonHumanAgent;
+                             owl:disjointWith prvtypes:DataCreatingDevice,
+                                              prvtypes:DataCreatingEntity.
+prvtypes:DataCreator a owl:Class;
+                     rdfs:comment "DataCreator is a concept that represents an agent which performed the creation of a data item."@en;
+                     rdfs:isDefinedBy prvtypes:;
+                     rdfs:label "Data Creator"@en;
+                     rdfs:subClassOf nsprov:Agent.
+prvtypes:HTTPBasedDataAccess a owl:Class;
+                             rdfs:comment "An HTTPBasedDataAccess represents the completed execution of accessing a data item using the HTTP protocol."@en;
+                             rdfs:isDefinedBy prvtypes:;
+                             rdfs:label "HTTP-based Data Access"@en;
+                             rdfs:subClassOf hartigprov:DataAccess.
+prvtypes:Measurement a owl:Class;
+                     rdfs:comment "Measurement is a concept that represents the execution of a measurement."@en;
+                     rdfs:isDefinedBy prvtypes:;
+                     rdfs:label "Measurement"@en;
+                     rdfs:subClassOf hartigprov:DataCreation.
+prvtypes:Query a owl:Class;
+               rdfs:isDefinedBy prvtypes:;
+               rdfs:label "Query"@en;
+               rdfs:subClassOf hartigprov:CreationGuideline.
+prvtypes:QueryExecution a owl:Class;
+                        rdfs:isDefinedBy prvtypes:;
+                        rdfs:label "Query Execution"@en;
+                        rdfs:subClassOf [owl:someValuesFrom prvtypes:Query ; 
+                                         owl:onProperty hartigprov:usedGuideline ; 
+                                         a owl:Restriction],
+                                        hartigprov:DataCreation.
+prvtypes:QueryResult a owl:Class;
+                     rdfs:comment "QueryResult is the result of a query execution."@en;
+                     rdfs:isDefinedBy prvtypes:;
+                     rdfs:label "Query Result"@en;
+                     rdfs:subClassOf [owl:allValuesFrom prvtypes:QueryExecution ; 
+                                      owl:onProperty hartigprov:createdBy ; 
+                                      a owl:Restriction],
+                                     hartigprov:DataItem.
+prvtypes:QueryTemplate a owl:Class;
+                       rdfs:comment "A QueryTemplate is a query that contains placeholders which are replaced by actual data to create an executable query."@en;
+                       rdfs:isDefinedBy prvtypes:;
+                       rdfs:label "Query Template"@en;
+                       rdfs:subClassOf hartigprov:CreationGuideline.
+prvtypes:SPARQLQuery a owl:Class;
+                     rdfs:isDefinedBy prvtypes:;
+                     rdfs:label "SPARQL Query"@en;
+                     rdfs:subClassOf prvtypes:Query;
+                     owl:disjointWith prvtypes:SQLQuery.
+prvtypes:SQLQuery a owl:Class;
+                  rdfs:isDefinedBy prvtypes:;
+                  rdfs:label "SQL Query"@en;
+                  rdfs:subClassOf prvtypes:Query;
+                  owl:disjointWith prvtypes:SPARQLQuery.
+prvtypes:Sensor a owl:Class;
+                rdfs:isDefinedBy prvtypes:;
+                rdfs:label "Sensor"@en;
+                rdfs:subClassOf prvtypes:DataCreatingDevice.
+prvtypes:TriplifyMapping a owl:Class;
+                         rdfs:comment "TriplifyMapping is a concept that represents the mapping defined in a Triplify configuration file."@en;
+                         rdfs:isDefinedBy prvtypes:;
+                         rdfs:label "Triplify Mapping"@en;
+                         rdfs:subClassOf hartigprov:CreationGuideline.
+prvtypes:exchangedHTTPMessage a owl:ObjectProperty;
+                              rdfs:comment "This property refers to an HTTP message (request or response) that has been exchanged during an HTTP based data access."@en;
+                              rdfs:domain hartigprov:DataAccess;
+                              rdfs:isDefinedBy prvtypes:;
+                              rdfs:label "involved exchange of"@en;
+                              rdfs:range httpvoc:Message.
+void:Dataset a owl:Class;
+             rdfs:subClassOf hartigprov:DataItem.
+irw:WebClient a owl:Class.
+rdf:Statement a owl:Class;
+              rdfs:subClassOf hartigprov:DataItem.
+trig:Graph a owl:Class;
+           rdfs:subClassOf hartigprov:DataItem.
+httpvoc:Message a owl:Class.

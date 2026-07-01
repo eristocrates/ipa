@@ -1,0 +1,90 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix lswmo: <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-modelling.owl#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix sio: <http://semanticscience.org/resource/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-modelling.owl> ccrel:license "http://creativecommons.org/licenses/by/3.0/"^^xsd:anyURI;
+                                                                    <http://protege.stanford.edu/plugins/owl/protege#defaultLanguage> "en";
+                                                                    dc11:contributor """Contributors are those that engage in discussions during the development of this ontology (in alphabetical order):
+karl benedict
+luis garnica
+cj grady
+bill hudspeth
+deana pennington
+soren scott
+aimee stewart""";
+                                                                    dc11:creator "Natalia Villanueva-Rosales"@en,
+                                                                                 "http://cybershare.utep.edu"^^xsd:anyURI,
+                                                                                 "Nicholas del Rio"@en,
+                                                                                 "ELSEWeb team"@en;
+                                                                    dc11:description """The ELSEWeb Modelling ontology provides simple classes for describing data models. This project provides foundational support for the ELSEWeb project(http://elseweb.cybershare.utep.edu/).
+website: http://elseweb.cybershare.utep.edu/ontologies
+email: nvillanuevarosales@utep.edu
+"""@en;
+                                                                    dc11:issued "2014-05-01"^^xsd:date;
+                                                                    dc11:rights "free to use,share,modify. modify with attribution [http://creativecommons.org/licenses/by/3.0/].";
+                                                                    dc11:title "ELSEWeb Modelling Ontology"@en;
+                                                                    dcterms:identifier "elseweb-modelling.owl";
+                                                                    dcterms:modified "2015-09-24"^^xsd:date;
+                                                                    vann:preferredNamespacePrefix "elseweb-modelling"@en;
+                                                                    vann:preferredNamespaceUri "http://ontology.cybershare.utep.edu/ELSEWeb/";
+                                                                    a owl:Ontology;
+                                                                    rdfs:isDefinedBy <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-modelling.owl>;
+                                                                    owl:versionIRI <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-modelling.owl>;
+                                                                    owl:versionInfo "1.2".
+lswmo:SpeciesModellingAlgorithm sio:example "Bioclim";
+                                a owl:Class;
+                                rdfs:comment "Following SIO's definition of algorithm, a species modelling algorithm is an effective method expressed as a finite list of well-defined instructions for calculating a model about species.";
+                                rdfs:label "species modelling algorithm";
+                                owl:equivalentClass [owl:intersectionOf ([owl:someValuesFrom lswmo:SpeciesModellingParameters ; 
+                                                                         owl:onProperty lswmo:behaviorControlledBy ; 
+                                                                         a owl:Restriction]
+                                                                         [owl:someValuesFrom lswmo:SpeciesModellingSoftware ; 
+                                                                         owl:onProperty lswmo:implementedIn ; 
+                                                                         a owl:Restriction]
+                                                                         [owl:someValuesFrom rdfs:Literal ; 
+                                                                         owl:onProperty lswmo:hasAlgorithmName ; 
+                                                                         a owl:Restriction]) ; 
+                                                     a owl:Class].
+lswmo:SpeciesModellingParameter sio:example "Standard deviation cutoff";
+                                a owl:Class;
+                                rdfs:comment "Following SIO's definition of parameter, a species modelling parameter  is variable whose value changes the characteristics of a species model.";
+                                rdfs:label "species modelling parameter";
+                                owl:equivalentClass [owl:intersectionOf ([owl:someValuesFrom rdfs:Literal ; 
+                                                                         owl:onProperty lswmo:boundToValue ; 
+                                                                         a owl:Restriction]
+                                                                         [owl:someValuesFrom rdfs:Literal ; 
+                                                                         owl:onProperty lswmo:hasParameterName ; 
+                                                                         a owl:Restriction]) ; 
+                                                     a owl:Class].
+lswmo:SpeciesModellingParameters a owl:Class;
+                                 rdfs:comment "A set of modelling parameter(s) required by a specific species modeling algorithm.";
+                                 rdfs:label "species modelling parameters";
+                                 owl:equivalentClass [owl:someValuesFrom lswmo:SpeciesModellingParameter ; 
+                                                      owl:onProperty lswmo:hasParameterMember ; 
+                                                      a owl:Restriction].
+lswmo:SpeciesModellingSoftware a owl:Class;
+                               rdfs:comment "Following SIO's definition of software application, a species modelling software is a software that can be directly executed by some processing unit and offers species modelling services.";
+                               rdfs:label "species modelling software".
+lswmo:behaviorControlledBy a owl:ObjectProperty;
+                           rdfs:label "behaviour controlled by".
+lswmo:boundToValue a owl:DatatypeProperty;
+                   rdfs:label "bound to value".
+lswmo:controlsBehaviorOf a owl:ObjectProperty;
+                         rdfs:label "controls behavior of".
+lswmo:hasAlgorithmName a owl:DatatypeProperty;
+                       rdfs:label "has algorithm name".
+lswmo:hasParameterMember a owl:ObjectProperty;
+                         rdfs:label "has parameter member".
+lswmo:hasParameterName a owl:DatatypeProperty;
+                       rdfs:label "has parameter name".
+lswmo:implementedIn a owl:ObjectProperty;
+                    rdfs:label "implemented in".
+sio:example a owl:AnnotationProperty.

@@ -1,0 +1,79 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+<file:///var/www/vocab.org/www/htdocs/vann/> dcterms:type dcmitype:Text;
+                                             <http://web.resource.org/cc/license> <http://creativecommons.org/licenses/by/1.0/>;
+                                             a <http://web.resource.org/cc/Work>.
+<http://creativecommons.org/licenses/by/1.0/> <http://web.resource.org/cc/permits> <http://web.resource.org/cc/DerivativeWorks>,
+                                                                                   <http://web.resource.org/cc/Distribution>,
+                                                                                   <http://web.resource.org/cc/Reproduction>;
+                                              <http://web.resource.org/cc/requires> <http://web.resource.org/cc/Attribution>,
+                                                                                    <http://web.resource.org/cc/Notice>;
+                                              a <http://web.resource.org/cc/License>.
+<http://iandavis.com/id/me> a foaf:Person;
+                            foaf:name "Ian Davis".
+vann: dcterms:creator <http://iandavis.com/id/me>;
+      dcterms:date "2010-06-07";
+      dcterms:description "This document describes a vocabulary for annotating descriptions of vocabularies with examples and usage notes."@en;
+      dcterms:identifier "http://purl.org/vocab/vann/vann-vocab-20050401";
+      dcterms:isVersionOf vann:;
+      dcterms:replaces vann:vann-vocab-20040305;
+      dcterms:rights "Copyright © 2005 Ian Davis";
+      dcterms:title "VANN: A vocabulary for annotating vocabulary descriptions"@en;
+      vann:preferredNamespacePrefix "vann";
+      vann:preferredNamespaceUri "http://purl.org/vocab/vann/";
+      a owl:Ontology.
+vann:changes a owl:AnnotationProperty;
+             rdfs:comment "A reference to a resource that describes changes between this version of a vocabulary and the previous."@en;
+             rdfs:isDefinedBy vann:;
+             rdfs:label "Changes"@en;
+             rdfs:subPropertyOf rdfs:seeAlso.
+vann:example a owl:AnnotationProperty;
+             rdfs:comment "A reference to a resource that provides an example of how this resource can be used."@en;
+             rdfs:isDefinedBy vann:;
+             rdfs:label "Example"@en;
+             rdfs:subPropertyOf rdfs:seeAlso.
+vann:preferredNamespacePrefix a owl:AnnotationProperty;
+                              rdfs:comment "The preferred namespace prefix to use when using terms from this vocabulary in an XML document."@en;
+                              rdfs:isDefinedBy vann:;
+                              rdfs:label "Preferred Namespace Prefix"@en.
+vann:preferredNamespaceUri a owl:AnnotationProperty;
+                           rdfs:comment "The preferred namespace URI to use when using terms from this vocabulary in an XML document."@en;
+                           rdfs:isDefinedBy vann:;
+                           rdfs:label "Preferred Namespace Uri"@en.
+vann:termGroup a owl:AnnotationProperty;
+               rdfs:comment "A group of related terms in a vocabulary."@en;
+               rdfs:isDefinedBy vann:;
+               rdfs:label "Term Group"@en.
+vann:usageNote a owl:AnnotationProperty;
+               rdfs:comment "A reference to a resource that provides information on how this resource is to be used."@en;
+               rdfs:isDefinedBy vann:;
+               rdfs:label "Usage Note"@en;
+               rdfs:subPropertyOf rdfs:seeAlso.
+<http://vocab.org/vann/.html> dc11:format "text/html";
+                              a foaf:Document,
+                                dcmitype:Text;
+                              rdfs:label "HTML".
+<http://vocab.org/vann/.json> dc11:format "application/json";
+                              a foaf:Document,
+                                dcmitype:Text;
+                              rdfs:label "JSON".
+<http://vocab.org/vann/.rdf> dcterms:hasFormat <http://vocab.org/vann/.turtle>,
+                                               <http://vocab.org/vann/.json>,
+                                               <http://vocab.org/vann/.html>;
+                             a dcmitype:Text,
+                               foaf:Document;
+                             foaf:primaryTopic vann:;
+                             foaf:topic vann:.
+<http://vocab.org/vann/.turtle> dc11:format "text/plain";
+                                a foaf:Document,
+                                  dcmitype:Text;
+                                rdfs:label "Turtle".

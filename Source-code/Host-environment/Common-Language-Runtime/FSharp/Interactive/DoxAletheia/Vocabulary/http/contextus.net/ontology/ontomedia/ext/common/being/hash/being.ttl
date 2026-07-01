@@ -1,0 +1,713 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix oc: <http://contextus.net/ontology/ontomedia/core/expression#>.
+@prefix osr: <http://contextus.net/ontology/ontomedia/core/space#>.
+@prefix being: <http://contextus.net/ontology/ontomedia/ext/common/being#>.
+@prefix trait: <http://contextus.net/ontology/ontomedia/ext/common/trait#>.
+@prefix date: <http://contextus.net/ontology/ontomedia/misc/date#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+oc:Collection a owl:Class.
+oc:Context a owl:Class.
+oc:Event a owl:Class.
+oc:Item a owl:Class.
+oc:Physical-Item a owl:Class.
+osr:Space a owl:Class.
+being: dc11:creator "K Faith Lawrence (mailto:kf03r@ecs.soton.ac.uk)",
+                    "Michael O. Jewell (mailto:moj@ecs.soton.ac.uk)",
+                    "Mischa M Tuffield (mailto:mmt04r@ecs.soton.ac.uk)";
+       dc11:description "OntoMedia (Ontology for Media) has been designed to describe the interactions occurring in multimedia."@en;
+       dc11:title "OntoMedia Being Representation"@en;
+       dcterms:created "2005-05-11";
+       a owl:Ontology;
+       rdfs:label "OntoMedia Being Representation";
+       owl:imports foaf:;
+       owl:versionInfo "0.25".
+being:Adopted a owl:Class;
+              rdfs:comment "This class represents an adopted bond that exists between beings or groups of beings";
+              rdfs:label "Adopted Family Bond";
+              rdfs:subClassOf being:Family.
+being:Alliance a owl:Class;
+               rdfs:comment "This class represents an alliance that exists between beings or groups of beings";
+               rdfs:label "Alliance";
+               rdfs:subClassOf being:Bond.
+being:Being a owl:Class;
+            rdfs:comment "This class represents an Entity with a personality";
+            rdfs:label "Being";
+            rdfs:subClassOf oc:Entity;
+            owl:equivalentClass <http://xmlns.com/foaf/0.1/#Person>.
+being:Blood a owl:Class;
+            rdfs:comment "This class represents a blood bond that exists between beings or groups of beings";
+            rdfs:label "Blood Family Bond";
+            rdfs:subClassOf being:Family.
+being:Bond a owl:Class;
+           rdfs:comment "This class represents a bond that exists between beings or groups of beings";
+           rdfs:label "Bond";
+           rdfs:subClassOf oc:Abstract-Item.
+being:Bonded-Group a owl:Class;
+                   rdfs:comment "This class represents a bonded group";
+                   rdfs:label "Bonded Group";
+                   rdfs:subClassOf being:Community.
+being:Character a owl:Class;
+                rdfs:comment "This class represents an fictionalised contruction of an entity with a personality";
+                rdfs:label "Character";
+                rdfs:subClassOf being:Being.
+being:Community a owl:Class;
+                rdfs:comment "This class represents a community";
+                rdfs:label "Community";
+                rdfs:subClassOf being:Group.
+being:Company a owl:Class;
+              rdfs:comment "This class represents a company";
+              rdfs:label "Company";
+              rdfs:subClassOf being:Organisation.
+being:Deal a owl:Class;
+           rdfs:comment "This class represents a deal that exists between beings or groups of beings";
+           rdfs:label "Deal";
+           rdfs:subClassOf being:Bond.
+being:Emotional-Crisis a owl:Class;
+                       rdfs:comment "This class represents a emotional crisis";
+                       rdfs:label "Emotional Crisis";
+                       rdfs:subClassOf oc:Abstract-Item.
+being:Enmity a owl:Class;
+             rdfs:comment "This class represents an emnity that exists between beings or groups of beings";
+             rdfs:label "Enmity";
+             rdfs:subClassOf being:Bond.
+being:Family a owl:Class;
+             rdfs:comment "This class represents a family bond that exists between beings or groups of beings";
+             rdfs:label "Family Bond";
+             rdfs:subClassOf being:Bond.
+being:Foster a owl:Class;
+             rdfs:comment "This class represents a foster bond that exists between beings or groups of beings";
+             rdfs:label "Foster Family Bond";
+             rdfs:subClassOf being:Family.
+being:Friendship a owl:Class;
+                 rdfs:comment "This class represents an friendship that exists between beings or groups of beings";
+                 rdfs:label "Friendship";
+                 rdfs:subClassOf being:Alliance.
+being:Government a owl:Class;
+                 rdfs:comment "This class represents a governing group";
+                 rdfs:label "Government";
+                 rdfs:subClassOf being:Organisation.
+being:Group a owl:Class;
+            rdfs:comment "This class represents a group of beings";
+            rdfs:label "Group";
+            rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (being:Being
+                                                             being:Group) ; 
+                                                a owl:Class] ; 
+                             owl:onProperty oc:contains ; 
+                             a owl:Restriction],
+                            [owl:allValuesFrom [owl:unionOf (being:Being
+                                                             being:Group) ; 
+                                                a owl:Class] ; 
+                             owl:onProperty oc:contains ; 
+                             a owl:Restriction],
+                            oc:Collection;
+            owl:equivalentClass <http://xmlns.com/foaf/0.1/#Group>.
+being:Household a owl:Class;
+                rdfs:comment "This class represents a household";
+                rdfs:label "Household";
+                rdfs:subClassOf being:Community.
+being:Mental-Illness a owl:Class;
+                     rdfs:comment "This class represents a mental illness";
+                     rdfs:label "Mental Illness";
+                     rdfs:subClassOf oc:Abstract-Item.
+being:Organisation a owl:Class;
+                   rdfs:comment "This class represents an organisation";
+                   rdfs:label "Organisation";
+                   rdfs:subClassOf being:Group;
+                   owl:equivalentClass <http://xmlns.com/foaf/0.1/#Organization>.
+being:Partnership a owl:Class;
+                  rdfs:comment "This class represents a partnership";
+                  rdfs:label "Partnership";
+                  rdfs:subClassOf being:Bonded-Group.
+being:Physical-Illness a owl:Class;
+                       rdfs:comment "This class represents a physical illness";
+                       rdfs:label "Physical Illness";
+                       rdfs:subClassOf oc:Abstract-Item.
+being:Physical-Injury a owl:Class;
+                      rdfs:comment "This class represents a physical injury";
+                      rdfs:label "Physical Injury";
+                      rdfs:subClassOf oc:Abstract-Item.
+being:Pledge a owl:Class;
+             rdfs:comment "This class represents a promise that exists between beings or groups of beings";
+             rdfs:label "Pledge";
+             rdfs:subClassOf being:Bond.
+being:Possession a owl:Class;
+                 rdfs:comment "This class represents a the bond between two entities where one claims ownership of the other";
+                 rdfs:label "Possession";
+                 rdfs:subClassOf being:Bond.
+being:Profession a owl:Class;
+                 rdfs:comment "This class represents a profession";
+                 rdfs:label "Profession";
+                 rdfs:subClassOf oc:Abstract-Item.
+being:Proto-Being a owl:Class;
+                  rdfs:comment "This class represents something that may develop into a being for cases where the being/item divide isn't clear";
+                  rdfs:label "Proto-Being";
+                  rdfs:subClassOf being:Being.
+being:Step a owl:Class;
+           rdfs:comment "This class represents a step bond that exists between beings or groups of beings";
+           rdfs:label "Step Family Bond";
+           rdfs:subClassOf being:Family.
+being:carries-title a owl:ObjectProperty;
+                    rdfs:comment "This property specifies a title which can be used by any members of the group";
+                    rdfs:domain [owl:unionOf (being:Profession
+                                              being:Group) ; 
+                                 a owl:Class],
+                                [owl:unionOf (being:Profession
+                                              being:Group) ; 
+                                 a owl:Class];
+                    rdfs:label "Carries Title";
+                    rdfs:range trait:Name.
+being:carries-uniform a owl:ObjectProperty;
+                      rdfs:comment "This property specifies a uniform which is worn by any members of the group";
+                      rdfs:domain [owl:unionOf (being:Profession
+                                                being:Group) ; 
+                                   a owl:Class],
+                                  [owl:unionOf (being:Profession
+                                                being:Group) ; 
+                                   a owl:Class];
+                      rdfs:label "Carries Uniform";
+                      rdfs:range oc:Physical-Item.
+being:cured a owl:ObjectProperty;
+            rdfs:comment "This property specifies a cure event";
+            rdfs:domain [owl:unionOf (being:Physical-Injury
+                                      being:Physical-Illness
+                                      being:Mental-Illness) ; 
+                         a owl:Class],
+                        [owl:unionOf (being:Physical-Injury
+                                      being:Physical-Illness
+                                      being:Mental-Illness) ; 
+                         a owl:Class];
+            rdfs:label "Cured";
+            rdfs:range oc:Event.
+being:deal-conditions a owl:ObjectProperty;
+                      rdfs:comment "This property specifies the conditions of the deal";
+                      rdfs:domain being:Deal;
+                      rdfs:label "Deal Conditions";
+                      rdfs:range being:Pledge.
+being:dealbroker a owl:ObjectProperty;
+                 rdfs:comment "This property specifies the broker of the deal";
+                 rdfs:domain being:Deal;
+                 rdfs:label "Deal Broker";
+                 rdfs:range [owl:unionOf (being:Group
+                                          being:Being) ; 
+                             a owl:Class],
+                            [owl:unionOf (being:Group
+                                          being:Being) ; 
+                             a owl:Class].
+being:dealmaker a owl:ObjectProperty;
+                rdfs:comment "This property specifies the broker of the deal";
+                rdfs:domain being:Deal;
+                rdfs:label "Deal Broker";
+                rdfs:range [owl:unionOf (being:Group
+                                         being:Being) ; 
+                            a owl:Class],
+                           [owl:unionOf (being:Group
+                                         being:Being) ; 
+                            a owl:Class].
+being:diagnosed a owl:ObjectProperty;
+                rdfs:comment "This property specifies a diagnosis event";
+                rdfs:domain [owl:unionOf (being:Physical-Injury
+                                          being:Physical-Illness
+                                          being:Emotional-Crisis
+                                          being:Mental-Illness) ; 
+                             a owl:Class],
+                            [owl:unionOf (being:Physical-Injury
+                                          being:Physical-Illness
+                                          being:Emotional-Crisis
+                                          being:Mental-Illness) ; 
+                             a owl:Class];
+                rdfs:label "Diagnosed";
+                rdfs:range oc:Event.
+being:entered-remission a owl:ObjectProperty;
+                        rdfs:comment "This property specifies an entering remission event";
+                        rdfs:domain [owl:unionOf (being:Physical-Illness
+                                                  being:Mental-Illness) ; 
+                                     a owl:Class],
+                                    [owl:unionOf (being:Physical-Illness
+                                                  being:Mental-Illness) ; 
+                                     a owl:Class];
+                        rdfs:label "Entered Remission";
+                        rdfs:range oc:Event.
+being:governed-by a owl:ObjectProperty;
+                  rdfs:comment "This property specifies a class of items of which the group or collection is made";
+                  rdfs:domain [owl:unionOf (being:Group
+                                            osr:Space) ; 
+                               a owl:Class],
+                              [owl:unionOf (being:Group
+                                            osr:Space) ; 
+                               a owl:Class];
+                  rdfs:label "Governed By";
+                  rdfs:range being:Government;
+                  owl:inverseOf being:governs.
+being:governs a owl:ObjectProperty;
+              rdfs:comment "This property specifies a class of items of which the group or collection is made";
+              rdfs:domain being:Government;
+              rdfs:label "Governs";
+              rdfs:range [owl:unionOf (being:Group
+                                       osr:Space) ; 
+                          a owl:Class],
+                         [owl:unionOf (being:Group
+                                       osr:Space) ; 
+                          a owl:Class];
+              owl:inverseOf being:governed-by.
+being:has-crisis a owl:ObjectProperty;
+                 rdfs:comment "This property specifies the emotional crisis of a being";
+                 rdfs:domain being:Being;
+                 rdfs:label "Has Crisis";
+                 rdfs:range oc:Event;
+                 rdfs:subPropertyOf being:has-emotional-health.
+being:has-emotional-health a owl:ObjectProperty;
+                           rdfs:comment "This property specifies the emotional well-being of a being";
+                           rdfs:domain being:Being;
+                           rdfs:label "Emotional Health";
+                           rdfs:range being:Emotional-Crisis.
+being:has-loco-parentis a owl:ObjectProperty;
+                        rdfs:comment "This property specifies that the specified being acting in loco parentis of the being";
+                        rdfs:domain being:Family;
+                        rdfs:label "Has Loco Parentis";
+                        rdfs:range being:Being;
+                        rdfs:subPropertyOf being:is-relation-of;
+                        owl:inverseOf being:in-loco-parentis.
+being:has-mental-disorder a owl:ObjectProperty;
+                          rdfs:comment "This property specifies the emotional well-being of a being";
+                          rdfs:domain being:Being;
+                          rdfs:label "Mental Health";
+                          rdfs:range being:Mental-Illness.
+being:has-number-of-parts a owl:ObjectProperty;
+                          rdfs:comment "This property specifies the number of parts contained by the collection";
+                          rdfs:domain oc:Collection;
+                          rdfs:label "Has Number Of Parts";
+                          rdfs:range rdfs:Literal.
+being:has-physical-illness a owl:ObjectProperty;
+                           rdfs:comment "This property specifies the emotional well-being of a being";
+                           rdfs:domain being:Being;
+                           rdfs:label "Physical Illness";
+                           rdfs:range being:Physical-Illness.
+being:has-physical-injury a owl:ObjectProperty;
+                          rdfs:comment "This property specifies the emotional well-being of a being";
+                          rdfs:domain being:Being;
+                          rdfs:label "Physical Injury";
+                          rdfs:range being:Physical-Injury.
+being:have-bonded-to a owl:ObjectProperty;
+                     rdfs:comment "This property represents a pledge that the entity has a bond with the named entity";
+                     rdfs:domain being:Pledge;
+                     rdfs:label "Have Bonded To";
+                     rdfs:range [owl:unionOf (being:Group
+                                              <http://contextus.net/ontology/ontomedia/ext/detail/know#Culture>
+                                              being:Profession
+                                              being:Being) ; 
+                                 a owl:Class],
+                                [owl:unionOf (being:Group
+                                              <http://contextus.net/ontology/ontomedia/ext/detail/know#Culture>
+                                              being:Profession
+                                              being:Being) ; 
+                                 a owl:Class].
+being:have-done a owl:ObjectProperty;
+                rdfs:comment "This property represents a pledge that the entity has done the named thing";
+                rdfs:domain being:Pledge;
+                rdfs:label "Have Done";
+                rdfs:range oc:Event.
+being:have-not-bonded-to a owl:ObjectProperty;
+                         rdfs:comment "This property represents a pledge that the entity does not have a bond with the named entity";
+                         rdfs:domain being:Pledge;
+                         rdfs:label "Have Not Bonded To";
+                         rdfs:range [owl:unionOf (being:Group
+                                                  <http://contextus.net/ontology/ontomedia/ext/detail/know#Culture>
+                                                  being:Profession
+                                                  being:Being) ; 
+                                     a owl:Class],
+                                    [owl:unionOf (being:Group
+                                                  <http://contextus.net/ontology/ontomedia/ext/detail/know#Culture>
+                                                  being:Profession
+                                                  being:Being) ; 
+                                     a owl:Class].
+being:have-not-done a owl:ObjectProperty;
+                    rdfs:comment "This property represents a pledge that the entity has not done the named thing";
+                    rdfs:domain being:Pledge;
+                    rdfs:label "Have Not Done";
+                    rdfs:range oc:Event.
+being:in-loco-parentis a owl:ObjectProperty;
+                       rdfs:comment "This property specifies that the being is acting in loco parentis of the specified being";
+                       rdfs:domain being:Family;
+                       rdfs:label "In Loco Parentis";
+                       rdfs:range being:Being;
+                       rdfs:subPropertyOf being:is-relation-of;
+                       owl:inverseOf being:has-loco-parentis.
+being:is-a a owl:ObjectProperty;
+           rdfs:comment "This property represents a pledge that the entity is the named thing";
+           rdfs:domain being:Pledge;
+           rdfs:label "Is A";
+           rdfs:range oc:Entity.
+being:is-child-of a owl:ObjectProperty;
+                  rdfs:comment "This property specifies that the being is the child of the specified being";
+                  rdfs:domain being:Family;
+                  rdfs:label "Is Child Of";
+                  rdfs:range being:Being;
+                  rdfs:subPropertyOf being:is-relation-of;
+                  owl:inverseOf being:is-parent-of.
+being:is-not-a a owl:ObjectProperty;
+               rdfs:comment "This property represents a pledge that the entity is not the named thing";
+               rdfs:domain being:Pledge;
+               rdfs:label "Is Not A";
+               rdfs:range oc:Entity.
+being:is-parent-of a owl:ObjectProperty;
+                   rdfs:comment "This property specifies that the being is the parent of the specified being";
+                   rdfs:domain being:Family;
+                   rdfs:label "Is Parent Of";
+                   rdfs:range being:Being;
+                   rdfs:subPropertyOf being:is-relation-of;
+                   owl:inverseOf being:is-child-of.
+being:is-relation-of a owl:ObjectProperty;
+                     rdfs:comment "This property specifies that the Being is the child of the specified Being";
+                     rdfs:domain being:Family;
+                     rdfs:label "Is Relation Of";
+                     rdfs:range being:Being;
+                     owl:inverseOf being:is-relation-of.
+being:of-type a owl:ObjectProperty;
+              rdfs:comment "This property specifies a class of items of which the group or collection is made";
+              rdfs:domain [owl:unionOf (being:Group
+                                        oc:Collection) ; 
+                           a owl:Class],
+                          [owl:unionOf (being:Group
+                                        oc:Collection) ; 
+                           a owl:Class];
+              rdfs:label "Of Type";
+              rdfs:range [owl:allValuesFrom [owl:unionOf (oc:Item
+                                                          being:Being
+                                                          osr:Space) ; 
+                                             a owl:Class] ; 
+                          owl:onProperty rdf:hasParent ; 
+                          a owl:Restriction],
+                         [owl:allValuesFrom [owl:unionOf (oc:Item
+                                                          being:Being
+                                                          osr:Space) ; 
+                                             a owl:Class] ; 
+                          owl:onProperty rdf:hasParent ; 
+                          a owl:Restriction].
+being:owned-by a owl:ObjectProperty;
+               rdfs:comment "This property specifies ownership by an entity";
+               rdfs:domain being:Possession;
+               rdfs:label "Owns";
+               rdfs:range oc:Entity.
+being:owns a owl:ObjectProperty;
+           rdfs:comment "This property specifies the ownership of an entity";
+           rdfs:domain being:Possession;
+           rdfs:label "Owns";
+           rdfs:range oc:Entity.
+being:place-of-birth a owl:FunctionalProperty;
+                     rdfs:comment "This property specifies the place the being was born or created";
+                     rdfs:domain being:Being;
+                     rdfs:label "Place of Birth";
+                     rdfs:range osr:Space.
+being:place_of_citizenship a owl:ObjectProperty;
+                           rdfs:comment "This property specifies the place that the being is a citizan of";
+                           rdfs:domain being:Being;
+                           rdfs:label "Place of Citizenship";
+                           rdfs:range osr:Space.
+being:pledge-maker a owl:ObjectProperty;
+                   rdfs:comment "This property the entity making the pledge";
+                   rdfs:domain being:Pledge;
+                   rdfs:label "Pledge Maker";
+                   rdfs:range [owl:unionOf (being:Group
+                                            being:Being) ; 
+                               a owl:Class],
+                              [owl:unionOf (being:Group
+                                            being:Being) ; 
+                               a owl:Class].
+being:pledge-reciever a owl:ObjectProperty;
+                      rdfs:comment "This property represents the reciever of the pledge";
+                      rdfs:domain being:Pledge;
+                      rdfs:label "Pledged Reciever";
+                      rdfs:range [owl:unionOf (being:Group
+                                               <http://contextus.net/ontology/ontomedia/ext/detail/know#Knowledge>
+                                               osr:Space
+                                               being:Being) ; 
+                                  a owl:Class],
+                                 [owl:unionOf (being:Group
+                                               <http://contextus.net/ontology/ontomedia/ext/detail/know#Knowledge>
+                                               osr:Space
+                                               being:Being) ; 
+                                  a owl:Class].
+being:portrays a owl:ObjectProperty;
+               rdfs:comment "This property specifies what entity or event is being portrayed";
+               rdfs:domain [owl:unionOf (oc:Physical-Item
+                                         being:Being
+                                         being:Group
+                                         osr:Space
+                                         oc:Event) ; 
+                            a owl:Class],
+                           [owl:unionOf (oc:Physical-Item
+                                         being:Being
+                                         being:Group
+                                         osr:Space
+                                         oc:Event) ; 
+                            a owl:Class];
+               rdfs:label "Portrays";
+               rdfs:range [owl:unionOf (oc:Physical-Item
+                                        being:Character
+                                        being:Group
+                                        osr:Space
+                                        oc:Event) ; 
+                           a owl:Class],
+                          [owl:unionOf (oc:Physical-Item
+                                        being:Character
+                                        being:Group
+                                        osr:Space
+                                        oc:Event) ; 
+                           a owl:Class];
+               rdfs:subPropertyOf oc:is-linked-to;
+               owl:inverseOf <http://contextus.net/ontology/ontomedia/ext/fiction/char#portrayed-by>.
+being:reads a owl:ObjectProperty;
+            rdfs:comment "This property specifies a language or alphabet read by the being";
+            rdfs:domain being:Being;
+            rdfs:label "Reads";
+            rdfs:range <http://contextus.net/ontology/ontomedia/ext/detail/know#Alphabet>.
+being:recovered a owl:ObjectProperty;
+                rdfs:comment "This property specifies a recovery event";
+                rdfs:domain [owl:unionOf (being:Physical-Injury
+                                          being:Physical-Illness
+                                          being:Emotional-Crisis
+                                          being:Mental-Illness) ; 
+                             a owl:Class],
+                            [owl:unionOf (being:Physical-Injury
+                                          being:Physical-Illness
+                                          being:Emotional-Crisis
+                                          being:Mental-Illness) ; 
+                             a owl:Class];
+                rdfs:label "Recovered";
+                rdfs:range oc:Event.
+being:rehabilitated a owl:ObjectProperty;
+                    rdfs:comment "This property specifies a rehabilitation event";
+                    rdfs:domain [owl:unionOf (being:Physical-Injury
+                                              being:Physical-Illness
+                                              being:Mental-Illness) ; 
+                                 a owl:Class],
+                                [owl:unionOf (being:Physical-Injury
+                                              being:Physical-Illness
+                                              being:Mental-Illness) ; 
+                                 a owl:Class];
+                    rdfs:label "Rehabilitated";
+                    rdfs:range oc:Event.
+being:resolved a owl:ObjectProperty;
+               rdfs:comment "This property specifies a crisis resolution event";
+               rdfs:domain being:Emotional-Crisis;
+               rdfs:label "Resolved";
+               rdfs:range oc:Event.
+being:sibling-of a owl:ObjectProperty;
+                 rdfs:comment "This property specifies that the being is a sibling of the specified being";
+                 rdfs:domain being:Family;
+                 rdfs:label "Sibling Of";
+                 rdfs:range being:Being;
+                 rdfs:subPropertyOf being:is-relation-of;
+                 owl:inverseOf being:sibling-of.
+being:speaks a owl:ObjectProperty;
+             rdfs:comment "This property specifies a language spoken by the being";
+             rdfs:domain being:Being;
+             rdfs:label "Speaks";
+             rdfs:range <http://contextus.net/ontology/ontomedia/ext/detail/know#Language>.
+being:speaks-basic a owl:ObjectProperty;
+                   rdfs:comment "This property specifies a language spoken at a basic level by the being";
+                   rdfs:domain being:Being;
+                   rdfs:label "Speaks Basic";
+                   rdfs:range <http://contextus.net/ontology/ontomedia/ext/detail/know#Language>;
+                   rdfs:subPropertyOf being:speaks.
+being:speaks-fluently a owl:ObjectProperty;
+                      rdfs:comment "This property specifies a language spoken fluently by the being";
+                      rdfs:domain being:Being;
+                      rdfs:label "Speaks Fluently";
+                      rdfs:range <http://contextus.net/ontology/ontomedia/ext/detail/know#Language>;
+                      rdfs:subPropertyOf being:speaks.
+being:speaks-pidgin a owl:ObjectProperty;
+                    rdfs:comment "This property specifies a language almost spoken by the being";
+                    rdfs:domain being:Being;
+                    rdfs:label "Speaks Pidgin";
+                    rdfs:range <http://contextus.net/ontology/ontomedia/ext/detail/know#Language>;
+                    rdfs:subPropertyOf being:speaks.
+being:treated a owl:ObjectProperty;
+              rdfs:comment "This property specifies a treatment event";
+              rdfs:domain [owl:unionOf (being:Physical-Injury
+                                        being:Physical-Illness
+                                        being:Emotional-Crisis
+                                        being:Mental-Illness) ; 
+                           a owl:Class],
+                          [owl:unionOf (being:Physical-Injury
+                                        being:Physical-Illness
+                                        being:Emotional-Crisis
+                                        being:Mental-Illness) ; 
+                           a owl:Class];
+              rdfs:label "Treated";
+              rdfs:range oc:Event.
+being:used-by a owl:ObjectProperty;
+              rdfs:comment "This property specifies who/what an entity is typically used by";
+              rdfs:domain [owl:unionOf (<http://contextus.net/ontology/ontomedia/misc/name#NameOrdering>
+                                        date:Calendar
+                                        oc:Physical-Item) ; 
+                           a owl:Class],
+                          [owl:unionOf (<http://contextus.net/ontology/ontomedia/misc/name#NameOrdering>
+                                        date:Calendar
+                                        oc:Physical-Item) ; 
+                           a owl:Class];
+              rdfs:label "Used By";
+              rdfs:range [owl:unionOf (being:Being
+                                       being:Group
+                                       being:Profession
+                                       oc:Context) ; 
+                          a owl:Class],
+                         [owl:unionOf (being:Being
+                                       being:Group
+                                       being:Profession
+                                       oc:Context) ; 
+                          a owl:Class].
+being:uses a owl:ObjectProperty;
+           rdfs:comment "This property specifies an entity typically used by the refering entity";
+           rdfs:domain [owl:unionOf (being:Being
+                                     being:Group
+                                     being:Profession
+                                     oc:Context) ; 
+                        a owl:Class],
+                       [owl:unionOf (being:Being
+                                     being:Group
+                                     being:Profession
+                                     oc:Context) ; 
+                        a owl:Class];
+           rdfs:label "Uses";
+           rdfs:range [owl:unionOf (<http://contextus.net/ontology/ontomedia/misc/name#NameOrdering>
+                                    date:Calendar
+                                    oc:Physical-Item) ; 
+                       a owl:Class],
+                      [owl:unionOf (<http://contextus.net/ontology/ontomedia/misc/name#NameOrdering>
+                                    date:Calendar
+                                    oc:Physical-Item) ; 
+                       a owl:Class].
+being:voiced-by a owl:ObjectProperty;
+                rdfs:comment "This property specifies what the entity or event is being portrayed by";
+                rdfs:domain [owl:unionOf (oc:Physical-Item
+                                          being:Being
+                                          being:Group
+                                          osr:Space
+                                          oc:Event) ; 
+                             a owl:Class],
+                            [owl:unionOf (oc:Physical-Item
+                                          being:Being
+                                          being:Group
+                                          osr:Space
+                                          oc:Event) ; 
+                             a owl:Class];
+                rdfs:label "Voiced By";
+                rdfs:range [owl:unionOf (oc:Physical-Item
+                                         being:Being
+                                         being:Group) ; 
+                            a owl:Class],
+                           [owl:unionOf (oc:Physical-Item
+                                         being:Being
+                                         being:Group) ; 
+                            a owl:Class];
+                rdfs:subPropertyOf being:portrays;
+                owl:inverseOf being:voices.
+being:voices a owl:ObjectProperty;
+             rdfs:comment "This property specifies what entity or event is being portrayed";
+             rdfs:domain [owl:unionOf (oc:Physical-Item
+                                       being:Being
+                                       being:Group) ; 
+                          a owl:Class],
+                         [owl:unionOf (oc:Physical-Item
+                                       being:Being
+                                       being:Group) ; 
+                          a owl:Class];
+             rdfs:label "Voices";
+             rdfs:range [owl:unionOf (oc:Physical-Item
+                                      being:Being
+                                      being:Group
+                                      osr:Space
+                                      oc:Event) ; 
+                         a owl:Class],
+                        [owl:unionOf (oc:Physical-Item
+                                      being:Being
+                                      being:Group
+                                      osr:Space
+                                      oc:Event) ; 
+                         a owl:Class];
+             rdfs:subPropertyOf being:portrays;
+             owl:inverseOf being:voiced-by.
+being:wears a owl:ObjectProperty;
+            rdfs:comment "This property specifies an item worn by the being";
+            rdfs:domain oc:Physical-Item;
+            rdfs:label "Wears";
+            rdfs:range <http://contextus.net/ontology/ontomedia/ext/detail/know#Alphabet>.
+being:wears-type a owl:ObjectProperty;
+                 rdfs:comment "This property specifies a class of items worn by the being";
+                 rdfs:domain being:Being;
+                 rdfs:label "Wears Type";
+                 rdfs:range [owl:allValuesFrom [owl:unionOf (oc:Physical-Item) ; 
+                                                a owl:Class] ; 
+                             owl:onProperty rdf:hasParent ; 
+                             a owl:Restriction],
+                            [owl:allValuesFrom [owl:unionOf (oc:Physical-Item) ; 
+                                                a owl:Class] ; 
+                             owl:onProperty rdf:hasParent ; 
+                             a owl:Restriction].
+being:will-bond-to a owl:ObjectProperty;
+                   rdfs:comment "This property represents a pledge that the entity will bond with the named entity";
+                   rdfs:domain being:Pledge;
+                   rdfs:label "Will Bond To";
+                   rdfs:range [owl:unionOf (being:Group
+                                            <http://contextus.net/ontology/ontomedia/ext/detail/know#Culture>
+                                            being:Profession
+                                            being:Being) ; 
+                               a owl:Class],
+                              [owl:unionOf (being:Group
+                                            <http://contextus.net/ontology/ontomedia/ext/detail/know#Culture>
+                                            being:Profession
+                                            being:Being) ; 
+                               a owl:Class].
+being:will-do a owl:ObjectProperty;
+              rdfs:comment "This property represents a pledge that the entity will do the named thing";
+              rdfs:domain being:Pledge;
+              rdfs:label "Will Do";
+              rdfs:range oc:Event.
+being:will-not-bond-to a owl:ObjectProperty;
+                       rdfs:comment "This property represents a pledge that the entity will not have a bond with the named entity";
+                       rdfs:domain being:Pledge;
+                       rdfs:label "Will Not Bond To";
+                       rdfs:range [owl:unionOf (being:Group
+                                                <http://contextus.net/ontology/ontomedia/ext/detail/know#Culture>
+                                                being:Profession
+                                                being:Being) ; 
+                                   a owl:Class],
+                                  [owl:unionOf (being:Group
+                                                <http://contextus.net/ontology/ontomedia/ext/detail/know#Culture>
+                                                being:Profession
+                                                being:Being) ; 
+                                   a owl:Class].
+being:will-not-do a owl:ObjectProperty;
+                  rdfs:comment "This property represents a pledge that the entity will not do the named thing";
+                  rdfs:domain being:Pledge;
+                  rdfs:label "Will Not Do";
+                  rdfs:range oc:Event.
+being:works-for a owl:ObjectProperty;
+                rdfs:comment "This property represents the entity being worked for";
+                rdfs:domain being:Profession;
+                rdfs:label "Works For";
+                rdfs:range [owl:unionOf (being:Group
+                                         being:Being
+                                         being:Profession) ; 
+                            a owl:Class],
+                           [owl:unionOf (being:Group
+                                         being:Being
+                                         being:Profession) ; 
+                            a owl:Class].
+being:writes a owl:ObjectProperty;
+             rdfs:comment "This property specifies a language or alphabet read by the being";
+             rdfs:domain being:Being;
+             rdfs:label "Writes";
+             rdfs:range <http://contextus.net/ontology/ontomedia/ext/detail/know#Alphabet>.
+<http://contextus.net/ontology/ontomedia/ext/detail/know#Culture> a owl:Class.
+<http://contextus.net/ontology/ontomedia/ext/detail/know#Knowledge> a owl:Class.
+date:Calendar a owl:Class.
+<http://contextus.net/ontology/ontomedia/misc/name#NameOrdering> a owl:Class.

@@ -1,0 +1,213 @@
+@base <http://www.w3.org/2000/10/swap/pim/ical>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix : <http://www.w3.org/2000/10/swap/pim/ical#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix s: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ss: <http://www.w3.org/2000/10/swap/util/sniffSchema#>.
+@prefix str: <http://www.w3.org/2000/10/swap/string#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix swap_ical: <http://www.w3.org/2000/10/swap/pim/ical#>.
+
+rdf:type a rdf:Property;
+         ss:domainIntersects :Vcalendar,
+                             :Vevent,
+                             :Vtimezone,
+                             :Vtodo;
+         ss:label "type".
+log:forSome a rdf:Property;
+            ss:label "forSome";
+            ss:rangeIntersects :Vevent,
+                               :Vtimezone,
+                               :Vtodo.
+:Vcalendar a rdfs:Class;
+           ss:intersectsDomainOf rdf:type,
+                                 :calscale,
+                                 :prodid,
+                                 :version;
+           ss:label "Vcalendar".
+:Vevent a rdfs:Class;
+        ss:intersectsDomainOf rdf:type,
+                              :attendee,
+                              :categories,
+                              :class,
+                              :description,
+                              :dtend,
+                              :dtstamp,
+                              :dtstart,
+                              :location,
+                              :organizer,
+                              :rrule,
+                              :sequence,
+                              :summary,
+                              :transp,
+                              :uid,
+                              :valarm;
+        ss:label "Vevent".
+:Vtimezone a rdfs:Class;
+           ss:intersectsDomainOf rdf:type,
+                                 :daylight,
+                                 :standard,
+                                 :tzid;
+           ss:label "Vtimezone".
+:Vtodo a rdfs:Class;
+       ss:intersectsDomainOf rdf:type,
+                             :class,
+                             :dtstamp,
+                             :percentComplete,
+                             :priority,
+                             :sequence,
+                             :status,
+                             :summary,
+                             :uid;
+       ss:label "Vtodo".
+:action a rdf:Property;
+        ss:label "action".
+:attendee a rdf:Property;
+          ss:domainIntersects :Vevent;
+          ss:label "attendee".
+:byday a rdf:Property;
+       ss:label "byday";
+       ss:rangeIntersects rdfs:Literal.
+:bymonth a rdf:Property;
+         ss:label "bymonth";
+         ss:rangeIntersects rdfs:Literal.
+:calscale a rdf:Property;
+          ss:domainIntersects :Vcalendar;
+          ss:label "calscale".
+:categories a rdf:Property;
+            ss:domainIntersects :Vevent;
+            ss:label "categories";
+            ss:rangeIntersects rdfs:Literal.
+:class a rdf:Property;
+       ss:domainIntersects :Vevent,
+                           :Vtodo;
+       ss:label "class".
+:cn a rdf:Property;
+    ss:label "cn";
+    ss:rangeIntersects rdfs:Literal.
+:cutype a rdf:Property;
+        ss:label "cutype";
+        ss:rangeIntersects rdfs:Literal.
+:date a rdf:Property;
+      ss:label "date";
+      ss:rangeIntersects rdfs:Literal.
+:daylight a rdf:Property;
+          ss:domainIntersects :Vtimezone;
+          ss:label "daylight".
+:description a rdf:Property;
+             ss:domainIntersects :Vevent;
+             ss:label "description";
+             ss:rangeIntersects rdfs:Literal.
+:dtend a rdf:Property;
+       ss:domainIntersects :Vevent;
+       ss:label "dtend".
+:dtstamp a rdf:Property;
+         ss:domainIntersects :Vevent,
+                             :Vtodo;
+         ss:label "dtstamp";
+         ss:rangeIntersects rdfs:Literal.
+:dtstart a rdf:Property;
+         ss:domainIntersects :Vevent;
+         ss:label "dtstart".
+:duration a rdf:Property;
+          ss:label "duration";
+          ss:rangeIntersects rdfs:Literal.
+:freq a rdf:Property;
+      ss:label "freq";
+      ss:rangeIntersects rdfs:Literal.
+:interval a rdf:Property;
+          ss:label "interval";
+          ss:rangeIntersects rdfs:Literal.
+:language a rdf:Property;
+          ss:label "language";
+          ss:rangeIntersects rdfs:Literal.
+:location a rdf:Property;
+          ss:domainIntersects :Vevent;
+          ss:label "location";
+          ss:rangeIntersects rdfs:Literal.
+:organizer a rdf:Property;
+           ss:domainIntersects :Vevent;
+           ss:label "organizer".
+:partstat a rdf:Property;
+          ss:label "partstat";
+          ss:rangeIntersects rdfs:Literal.
+:percentComplete a rdf:Property;
+                 ss:domainIntersects :Vtodo;
+                 ss:label "percentComplete";
+                 ss:rangeIntersects rdfs:Literal.
+:priority a rdf:Property;
+          ss:domainIntersects :Vtodo;
+          ss:label "priority";
+          ss:rangeIntersects rdfs:Literal.
+:prodid a rdf:Property;
+        ss:domainIntersects :Vcalendar;
+        ss:label "prodid";
+        ss:rangeIntersects rdfs:Literal.
+:related a rdf:Property;
+         ss:label "related";
+         ss:rangeIntersects rdfs:Literal.
+:role a rdf:Property;
+      ss:label "role";
+      ss:rangeIntersects rdfs:Literal.
+:rrule a rdf:Property;
+       ss:domainIntersects :Vevent;
+       ss:label "rrule".
+:rsvp a rdf:Property;
+      ss:label "rsvp";
+      ss:rangeIntersects rdfs:Literal.
+:sequence a rdf:Property;
+          ss:domainIntersects :Vevent,
+                              :Vtodo;
+          ss:label "sequence";
+          ss:rangeIntersects rdfs:Literal.
+:standard a rdf:Property;
+          ss:domainIntersects :Vtimezone;
+          ss:label "standard".
+:status a rdf:Property;
+        ss:domainIntersects :Vtodo;
+        ss:label "status";
+        ss:rangeIntersects rdfs:Literal.
+:summary a rdf:Property;
+         ss:domainIntersects :Vevent,
+                             :Vtodo;
+         ss:label "summary";
+         ss:rangeIntersects rdfs:Literal.
+:transp a rdf:Property;
+        ss:domainIntersects :Vevent;
+        ss:label "transp".
+:trigger a rdf:Property;
+         ss:label "trigger".
+:tzid a rdf:Property;
+      ss:domainIntersects :Vtimezone;
+      ss:label "tzid";
+      ss:rangeIntersects rdfs:Literal.
+:tzname a rdf:Property;
+        ss:label "tzname";
+        ss:rangeIntersects rdfs:Literal.
+:tzoffsetfrom a rdf:Property;
+              ss:label "tzoffsetfrom";
+              ss:rangeIntersects rdfs:Literal.
+:tzoffsetto a rdf:Property;
+            ss:label "tzoffsetto";
+            ss:rangeIntersects rdfs:Literal.
+:uid a rdf:Property;
+     ss:domainIntersects :Vevent,
+                         :Vtodo;
+     ss:label "uid";
+     ss:rangeIntersects rdfs:Literal.
+:valarm a rdf:Property;
+        ss:domainIntersects :Vevent;
+        ss:label "valarm".
+:value a rdf:Property;
+       ss:label "value";
+       ss:rangeIntersects rdfs:Literal.
+:version a rdf:Property;
+         ss:domainIntersects :Vcalendar;
+         ss:label "version";
+         ss:rangeIntersects rdfs:Literal.
+ss:intersectsDomainOf rdfs:subPropertyOf rdfs:seeAlso.

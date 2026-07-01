@@ -1,0 +1,157 @@
+@base <https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/92-slo.ontology>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix nrl: <http://tracker.api.gnome.org/ontology/v3/nrl#>.
+@prefix nie: <http://tracker.api.gnome.org/ontology/v3/nie#>.
+@prefix nco: <http://tracker.api.gnome.org/ontology/v3/nco#>.
+@prefix slo: <http://tracker.api.gnome.org/ontology/v3/slo#>.
+@prefix w3: <http://www.w3.org/>.
+
+slo: nrl:lastModified "2011-06-08T12:09:00Z";
+     nrl:prefix "slo";
+     a nrl:Namespace,
+       nrl:Ontology.
+slo:GeoLocation nrl:notify true;
+                a rdfs:Class;
+                rdfs:comment "A place in the space, can be defined by coordinates or text";
+                rdfs:label "Location";
+                rdfs:subClassOf nie:InformationElement.
+slo:Landmark nrl:notify true;
+             a rdfs:Class;
+             rdfs:comment "Use the nie title, description, ... properties";
+             rdfs:label "Point with special relevance for the user";
+             rdfs:subClassOf nie:InformationElement.
+slo:LandmarkCategory nrl:notify true;
+                     a rdfs:Class;
+                     rdfs:comment "Predefined set of instances for categories of landmarks";
+                     rdfs:label "Landmark category";
+                     rdfs:subClassOf nie:InformationElement.
+slo:Route a rdfs:Class;
+          rdfs:label "Minimum box containing all the points traversed in route";
+          rdfs:subClassOf slo:GeoLocation.
+slo:altitude nrl:maxCardinality 1 ;
+             a rdf:Property;
+             rdfs:comment "Altitude following WGS 84 reference";
+             rdfs:domain slo:GeoLocation;
+             rdfs:label "Altitude";
+             rdfs:range xsd:double.
+slo:belongsToCategory a rdf:Property;
+                      rdfs:comment "Relation of a landmark with a landmark category";
+                      rdfs:domain slo:Landmark;
+                      rdfs:label "Belongs to category";
+                      rdfs:range slo:LandmarkCategory.
+slo:boundingLatitudeMax nrl:maxCardinality 1 ;
+                        a rdf:Property;
+                        rdfs:comment "Northern latitude of the bounding box";
+                        rdfs:domain slo:GeoLocation;
+                        rdfs:label "Latitude";
+                        rdfs:range xsd:double.
+slo:boundingLatitudeMin nrl:maxCardinality 1 ;
+                        a rdf:Property;
+                        rdfs:comment "Southern latitude of the bounding box";
+                        rdfs:domain slo:GeoLocation;
+                        rdfs:label "Latitude";
+                        rdfs:range xsd:double.
+slo:boundingLongitudeMax nrl:maxCardinality 1 ;
+                         a rdf:Property;
+                         rdfs:comment "Eastern longitude of the bounding box";
+                         rdfs:domain slo:GeoLocation;
+                         rdfs:label "Longitude";
+                         rdfs:range xsd:double.
+slo:boundingLongitudeMin nrl:maxCardinality 1 ;
+                         a rdf:Property;
+                         rdfs:comment "Western longitude of the bounding box";
+                         rdfs:domain slo:GeoLocation;
+                         rdfs:label "Longitude";
+                         rdfs:range xsd:double.
+slo:categoryIconUrl nrl:maxCardinality 1 ;
+                    a rdf:Property;
+                    rdfs:comment "Url of the icon that corresponds to this category.";
+                    rdfs:domain slo:LandmarkCategory;
+                    rdfs:label "Landmark category icon";
+                    rdfs:range rdfs:Resource.
+slo:endTime nrl:maxCardinality 1 ;
+            a rdf:Property;
+            rdfs:domain slo:Route;
+            rdfs:label "Time when the last point in the route was saved";
+            rdfs:range xsd:dateTime.
+slo:hasContact a rdf:Property;
+               rdfs:comment "The contact information of the landmark in question";
+               rdfs:domain slo:Landmark;
+               rdfs:label "Landmark contact information";
+               rdfs:range nco:Contact.
+slo:horizontalAccuracy nrl:maxCardinality 1 ;
+                       a rdf:Property;
+                       rdfs:comment "Represents the error estimate of horizontal (earths-surface) accuracy in meters.";
+                       rdfs:domain slo:GeoLocation;
+                       rdfs:label "Longitude";
+                       rdfs:range xsd:double.
+slo:iconUrl nrl:maxCardinality 1 ;
+            a rdf:Property;
+            rdfs:comment "Url of the icon that corresponds to this landmark.";
+            rdfs:domain slo:Landmark;
+            rdfs:label "Landmark icon";
+            rdfs:range rdfs:Resource.
+slo:isRemovable nrl:maxCardinality 1 ;
+                a rdf:Property;
+                rdfs:comment "Flag to indicate if this instance is removable. This restriction is not enforced by tracker; it is API responsability to honor the value";
+                rdfs:domain slo:LandmarkCategory;
+                rdfs:label "Is removable";
+                rdfs:range xsd:boolean.
+slo:latitude nrl:maxCardinality 1 ;
+             a rdf:Property;
+             rdfs:comment "Positive values for the north hemisphere, negative for the south";
+             rdfs:domain slo:GeoLocation;
+             rdfs:label "Latitude";
+             rdfs:range xsd:double.
+slo:location nrl:indexed true;
+             nrl:maxCardinality 1 ;
+             a rdf:Property;
+             rdfs:comment "This can be subclassed to add semantics";
+             rdfs:domain nie:InformationElement;
+             rdfs:label "Property linking something to a location";
+             rdfs:range slo:GeoLocation.
+slo:longitude nrl:maxCardinality 1 ;
+              a rdf:Property;
+              rdfs:comment "Positive to the East of the Greenwich meridian, negative to the West (following WGS-84)";
+              rdfs:domain slo:GeoLocation;
+              rdfs:label "Longitude";
+              rdfs:range xsd:double.
+slo:postalAddress nrl:indexed true;
+                  nrl:maxCardinality 1 ;
+                  a rdf:Property;
+                  rdfs:comment "Representation of the location as text address";
+                  rdfs:domain slo:GeoLocation;
+                  rdfs:label "As postal address";
+                  rdfs:range nco:PostalAddress.
+slo:radius nrl:maxCardinality 1 ;
+           a rdf:Property;
+           rdfs:comment "Radius from the center to define an area. Some applications can use it in 2D sense, making then a circle instead of a sphere";
+           rdfs:domain slo:GeoLocation;
+           rdfs:label "Radius";
+           rdfs:range xsd:double.
+slo:routeDetails nrl:maxCardinality 1 ;
+                 a rdf:Property;
+                 rdfs:comment "FIXME Domain can be resource if we handle map-files correctly in the ontology";
+                 rdfs:domain slo:Route;
+                 rdfs:label "Pointer to a file containing route details (e.g. KML file).";
+                 rdfs:range xsd:string.
+slo:startTime nrl:maxCardinality 1 ;
+              a rdf:Property;
+              rdfs:domain slo:Route;
+              rdfs:label "Time when the first point in the route was saved";
+              rdfs:range xsd:dateTime.
+slo:timestamp nrl:maxCardinality 1 ;
+              a rdf:Property;
+              rdfs:comment "Timestamp when the geolocation is referenced. Create subproperties for certain use cases";
+              rdfs:domain slo:GeoLocation;
+              rdfs:label "Timestamp";
+              rdfs:range xsd:dateTime.
+slo:verticalAccuracy nrl:maxCardinality 1 ;
+                     a rdf:Property;
+                     rdfs:comment "Represents the error estimate of vertical (earths-surface) accuracy in meters.";
+                     rdfs:domain slo:GeoLocation;
+                     rdfs:label "Latitude";
+                     rdfs:range xsd:double.

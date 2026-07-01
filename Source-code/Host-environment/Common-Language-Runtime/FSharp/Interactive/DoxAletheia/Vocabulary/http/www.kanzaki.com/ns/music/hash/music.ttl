@@ -1,0 +1,1239 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wiki: <http://en.wikipedia.org/wiki/>.
+@prefix ex: <http://purl.org/net/ns/ex#>.
+@prefix ont: <http://purl.org/net/ns/ontology-annot#>.
+@prefix music: <http://www.kanzaki.com/ns/music#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+_:B72f867264604f4f00d8f50bf6bedaf06 ex:code """
+<m:Concert>
+ <dc:title>Tokyo Green Symphony Orchestra 12th Concert</dc:title>
+ <dc:date>2003-11-02T14:00+09:00</dc:date>
+ <m:conductor foaf:name=\"Yuri Nitta\"/>
+ <m:performer>
+  <m:Violinist>
+   <foaf:name>Tomoko Kawada</foaf:name>
+   <m:performs rdf:nodeID=\"p1\"/>
+  </m:Violinist>
+ </m:performer>
+ <m:performer>
+  <m:Orchestra foaf:name=\"Tokyo Green Symphony Orchestra\"/>
+ </m:performer>
+ <m:program>
+  <m:Concerto rdf:nodeID=\"p1\">
+   <m:composer foaf:name=\"Bruch\"/>
+   <dc:title>Violin Concerto No.1 g minor</dc:title>
+   <m:opus>op.26</m:opus>
+  </m:Concerto>
+ </m:program>
+ <m:program>
+  <m:Symphony>
+   <m:composer foaf:name=\"Brahms\"/>
+   <dc:title>Symphony No.2 D major</dc:title>
+   <m:opus>op.73</m:opus>
+  </m:Symphony>
+ </m:program>
+ <m:venue>
+  <m:Venue geo:lat=\"35.69\" geo:long=\"139.81\">
+   <dc:title>Sumida Triphony</dc:title>
+  </m:Venue>
+ </m:venue>
+</m:Concert>
+ """;
+                                    ex:exampleOf <http://www.kanzaki.com/ns/music>;
+                                    ex:image <http://www.kanzaki.com/works/2007/misc/music-vocab-sample2.png>;
+                                    ex:pfx "m:";
+                                    a ex:Example;
+                                    rdfs:comment "Another description of a concert with its title, date, program and venue. See also examples in the definition of 'performer' for more erabolate model (the preferred domain of this property is m:Performance, not m:Concert).",
+                                                 "ある演奏会の名称、日時、プログラム、会場の記述例。より精密なモデルの案として、'performer'の定義セクションにある例も参照。"@ja.
+_:B9c85a13e3657438ab58976329411fb59 ex:code """
+<m:Concert>
+ <dc:date>2008-02-11</dc:date>
+ <m:conductor>
+  <m:Conductor rdf:about=\"http://www.kanzaki.com/bass/conductor#長田雅人\">
+   <foaf:name>Masato Osada</foaf:name>
+  </m:Conductor>
+ </m:conductor>
+ <m:performer>
+  <m:Orchestra rdf:about=\"http://www.kanzaki.com/bass/orch#オーケストラ・ダスビダーニャ\">
+   <foaf:name>orchestra 'do svidanya'</foaf:name>
+  </m:Orchestra>
+ </m:performer>
+ <m:program>
+  <m:Symphony rdf:about=\"http://www.kanzaki.com/music/mcat/shostakovich/op.103#s\">
+   <dc:title>Symphony No.11 g-minor</dc:title>
+   <m:opus>op.103</m:opus>
+   <m:composer>
+    <m:Composer rdf:about=\"http://www.kanzaki.com/ns/psi/en/Dmitri_Shostakovich#s\"/>
+   </m:composer>
+  </m:Symphony>
+ </m:program>
+</m:Concert>
+ """;
+                                    ex:exampleOf <http://www.kanzaki.com/ns/music>;
+                                    ex:image <http://www.kanzaki.com/works/2007/misc/music-vocab-sample1.png>;
+                                    ex:pfx "m:";
+                                    a ex:Example;
+                                    rdfs:comment "A simple description of a concert.",
+                                                 "演奏会の簡単な記述例。"@ja.
+_:Bcee09613dc2973f274afe644dc1982f0 ex:code """
+<m:Concert>
+ <dc:title>Tokyo Green Symphony Orchestra 12th Concert</dc:title>
+ <dc:date>2003-11-02T14:00+09:00</dc:date>
+ <m:conductorName>Yuri Nitta</m:conductorName>
+ <m:performerName>Violin: Tomoko Kawada</m:performerName>
+ <m:performerName>Orchestra: Tokyo Green Symphony Orchestra</m:performerName>
+ <m:programLine>Bruch: Violin Concerto No.1 g minor</m:programLine>
+ <m:programLine>Brahms: Symphony No.2 D major</m:programLine>
+ <cal:location>Sumida Triphony</cal:location>
+</m:Concert>
+ """;
+                                    ex:exampleOf <http://www.kanzaki.com/ns/music>;
+                                    ex:pfx "m:";
+                                    a ex:Example;
+                                    rdfs:comment "A simplified description of a concert with its title, date, program and venue. All property values are literal string here.",
+                                                 "ある演奏会の名称、日時、プログラム、会場を、文字列だけで記述する例。"@ja.
+_:Be6f7be147e55f70ddae8c14dd2842bb2 ex:code """
+<m:Symphony>
+ <m:composer rdf:parseType=\"Resource\">
+  <foaf:name>シューベルト</foaf:name>
+  <foaf:homepage rdf:resource=\"http://www.kanzaki.com/music/mw/sym/schubert\"/>
+ </m:composer>
+ <dc:title>Symohony No.7 'Unfinished'</dc:title>
+ <m:opus>D.759</m:opus>
+ <m:key rdf:resource=\"http://www.kanzaki.com/ns/music#h-moll\"/>
+ <dcterms:created>1822-01</dcterms:created>
+ <m:premiere rdf:parseType=\"Resource\">
+  <dc:date>1865-12-17</dc:date>
+  <cal:location>Wien Musikfereinsall</cal:location>
+ </m:premiere>
+ <m:sections rdf:parseType=\"Collection\">
+  <m:Movement>
+   <m:marks>Allegro moderato</m:marks>
+   <m:key rdf:resource=\"http://www.kanzaki.com/ns/music#h-moll\"/>
+   <m:meter>3/4</m:meter>
+  </m:Movement>
+  <m:Movement>
+   <m:marks>Andante con moto</m:marks>
+   <m:key rdf:resource=\"http://www.kanzaki.com/ns/music#Es-dur\"/>
+   <m:meter>3/8</m:meter>
+  </m:Movement>
+ </m:sections>
+</m:Symphony>
+ """;
+                                    ex:exampleOf <http://www.kanzaki.com/ns/music>;
+                                    ex:image <http://www.kanzaki.com/works/2007/misc/music-vocab-sample3.png>;
+                                    ex:pfx "m:";
+                                    ex:trial <http://purl.org/net/masterwork/schubert/D.759>;
+                                    a ex:Example;
+                                    rdfs:comment "A description of a symphony with its composition data and descriptions of movements. Note now key values are expressed as URIs.",
+                                                 "交響曲の楽曲情報と楽章データの記述例。調性の記述をURIに変更。"@ja.
+wiki:A_flat_major a foaf:Document.
+wiki:A_flat_minor a foaf:Document.
+wiki:A_major a foaf:Document.
+wiki:A_minor a foaf:Document.
+wiki:A_sharp_minor a foaf:Document.
+wiki:B_flat_major a foaf:Document.
+wiki:B_flat_minor a foaf:Document.
+wiki:B_major a foaf:Document.
+wiki:B_minor a foaf:Document.
+wiki:C_flat_major a foaf:Document.
+wiki:C_major a foaf:Document.
+wiki:C_minor a foaf:Document.
+wiki:C_sharp_major a foaf:Document.
+wiki:C_sharp_minor a foaf:Document.
+wiki:D_flat_major a foaf:Document.
+wiki:D_major a foaf:Document.
+wiki:D_minor a foaf:Document.
+wiki:D_sharp_minor a foaf:Document.
+wiki:E_flat_major a foaf:Document.
+wiki:E_flat_minor a foaf:Document.
+wiki:E_major a foaf:Document.
+wiki:E_minor a foaf:Document.
+wiki:F_major a foaf:Document.
+wiki:F_minor a foaf:Document.
+wiki:F_sharp_major a foaf:Document.
+wiki:F_sharp_minor a foaf:Document.
+wiki:G_flat_major a foaf:Document.
+wiki:G_major a foaf:Document.
+wiki:G_minor a foaf:Document.
+wiki:G_sharp_minor a foaf:Document.
+dc11:creator a owl:ObjectProperty.
+dc11:description a owl:DatatypeProperty.
+dc11:identifier a owl:DatatypeProperty.
+dc11:source a owl:ObjectProperty.
+dcterms:alternative a owl:DatatypeProperty.
+dcterms:description a owl:ObjectProperty.
+<http://www.kanzaki.com/ns/music> ont:created "2003-07-04";
+                                  ont:creator [foaf:name "神崎正英"@ja ; 
+                                               foaf:homepage <http://www.kanzaki.com/> ; 
+                                               rdfs:seeAlso <http://www.kanzaki.com/info/webwho.rdf> ; 
+                                               a foaf:Person];
+                                  ont:modified "2007-10-31";
+                                  a owl:Ontology;
+                                  rdfs:comment "A vocabulary, or music ontology, to describe classical music and performances. Classes (categories) for musical works, events, instruments and performers, as well as related properties are defined. Make sure to distinguish musical works (e.g. Opera) from performance events (Opera_Event), or works (String_Quartette) from performer (StringQuartetEnsemble in this vocab), whose natural language terms are used interchangeblly. The present version experiments more precise model to describe a musical work, its representations (performances, scores, etc) and a musical event to present a representation (a concert). Includes 30 keys as individuals.",
+                                               "音楽作品、楽器、演奏情報を記述するためのボキャブラリ。Opera_Event（演奏）とOpera（作品）や、String_Quartette（作品）とStringQuartetEnsemble（団体）のように、日常語では両方の意味に使われるクラスの区別に注意。このバージョンでは、音楽作品、その表現（演奏、楽譜など）とイベント（演奏会）をより精密にモデリングするべく実験中。"@ja;
+                                  rdfs:label "Music Vocabulary";
+                                  owl:imports <http://www.kanzaki.com/ns/dliser.rdf>;
+                                  owl:versionInfo "Version 0.9.6 - OWL DL version. Some stable, some experimental. Changed terms: Opera_Performance to Opera_Event, Ballet_Performance to Ballet_Event.".
+music:A-dur dcterms:alternative "A major";
+            dcterms:description wiki:A_major;
+            a music:Key;
+            rdfs:comment "Major key based on A, whose key signature has 3 sharps.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "A dur".
+music:Alto a owl:Class;
+           rdfs:comment "An Alto singer";
+           rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+           rdfs:label "Alto";
+           rdfs:subClassOf music:Singer.
+music:Artist a owl:Class;
+             rdfs:comment "A person or group (or any agent) who creates or performs art works";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Artist";
+             rdfs:subClassOf foaf:Agent.
+music:As-dur dcterms:alternative "A-Flat major";
+             dcterms:description wiki:A_flat_major;
+             a music:Key;
+             rdfs:comment "Major key based on A flat, whose key signature has 4 flats.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "As dur".
+music:B-dur dcterms:alternative "B-Flat major";
+            dcterms:description wiki:B_flat_major;
+            a music:Key;
+            rdfs:comment "Major key based on B flat, whose key signature has 2 flats.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "B dur".
+music:Ballet a owl:Class;
+             rdfs:comment "A musical work for a dance form featuring a staged presentation of group or solo dancing. Note 'Ballet_Event' in this vocabulary describes the performance of a ballet.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Ballet (Work)";
+             rdfs:subClassOf music:Oeuvre.
+music:BalletCompany a owl:Class;
+                    rdfs:comment "A musical group that performs ballet works.";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "Ballet Company";
+                    rdfs:subClassOf music:MusicalGroup.
+music:Ballet_Event a owl:Class;
+                   rdfs:comment """An event of ballet performance
+  """;
+                   rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                   rdfs:label "Ballet Event";
+                   rdfs:subClassOf music:Musical_Event.
+music:Ballet_Performance a owl:DeprecatedClass,
+                           owl:Class;
+                         owl:equivalentClass music:Ballet_Event.
+music:Baritone a owl:Class;
+               rdfs:comment "A Baritone singer";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Baritone";
+               rdfs:subClassOf music:Singer.
+music:Bass a owl:Class;
+           rdfs:comment "A Bass singer";
+           rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+           rdfs:label "Bass";
+           rdfs:subClassOf music:Singer.
+music:BassClarinet a owl:Class;
+                   rdfs:comment "A larger member of the clarinet family, usually in key B-flat.";
+                   rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                   rdfs:label "Bass Clarinet";
+                   rdfs:subClassOf music:Clarinet.
+music:BassClarinettist a owl:Class;
+                       rdfs:comment "A Bass Clarinet player";
+                       rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                       rdfs:label "Bass_Clarinettist";
+                       rdfs:subClassOf [owl:someValuesFrom music:BassClarinet ; 
+                                        owl:onProperty music:plays ; 
+                                        a owl:Restriction],
+                                       music:Clarinettist.
+music:BassetHorn a owl:Class;
+                 rdfs:comment "A larger member of the clarinet family, typically in lower F, and has darker and less brilliant timbre.";
+                 rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                 rdfs:label "Basset Horn";
+                 rdfs:subClassOf music:Clarinet.
+music:Bassoon a owl:Class;
+              rdfs:comment "A low-pitched woodwind instrument with a double reed, having a long wooden body attached to a U-shaped lateral tube that leads to the mouthpiece. A Fagotto.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Bassoon";
+              rdfs:subClassOf music:Woodwind_Instrument.
+music:Bassoonist a owl:Class;
+                 rdfs:comment "A Fagotto player";
+                 rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                 rdfs:label "Bassoonist";
+                 rdfs:subClassOf [owl:someValuesFrom music:Bassoon ; 
+                                  owl:onProperty music:plays ; 
+                                  a owl:Restriction],
+                                 music:Player.
+music:Brass_Instrument a owl:Class;
+                       rdfs:comment "A wind musical instrument, that consists of a brass tube  blown by means of a cup-shaped or funnel-shaped mouthpiece.";
+                       rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                       rdfs:label "Brass Instrument";
+                       rdfs:subClassOf music:Musical_Instrument.
+music:C-dur dcterms:alternative "C major";
+            dcterms:description wiki:C_major;
+            a music:Key;
+            rdfs:comment "Major key based on C, whose key signature has no sharp or flat.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "C dur".
+music:Cantata a owl:Class;
+              rdfs:comment "A vocal composition accompanied by instruments and generally containing more than one movement.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Cantata";
+              rdfs:subClassOf music:Choral_Music.
+music:Celesta a owl:Class;
+              rdfs:comment "A musical instrument with a keyboard and metal plates struck by hammers that produce bell-like tones.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Celesta";
+              rdfs:subClassOf music:Keyboard_Instrument.
+music:CelestaPlayer a owl:Class;
+                    rdfs:comment "A Celesta player";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "CelestaPlayer";
+                    rdfs:subClassOf [owl:someValuesFrom music:Celesta ; 
+                                     owl:onProperty music:plays ; 
+                                     a owl:Restriction],
+                                    music:Player.
+music:Cellist a owl:Class;
+              rdfs:comment "A Cello player";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Cellist";
+              rdfs:subClassOf [owl:someValuesFrom music:Cello ; 
+                               owl:onProperty music:plays ; 
+                               a owl:Restriction],
+                              music:Player.
+music:Cello a owl:Class;
+            rdfs:comment "A stringed instrument of the violin family, with bass to tenor tone. Usually played in sitting position.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Cello";
+            rdfs:subClassOf music:String_Instrument.
+music:Ces-dur dcterms:alternative "C-Flat major";
+              dcterms:description wiki:C_flat_major;
+              a music:Key;
+              rdfs:comment "Major key based on C flat, whose key signature has 7 flats.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Ces dur".
+music:Chamber_Music a owl:Class;
+                    rdfs:comment "A genre of music composed for performance by small ensemble";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "Chamber Music";
+                    rdfs:subClassOf music:Oeuvre.
+music:Choral_Music a owl:Class;
+                   rdfs:comment "A genre of music composed for performance by a chorus or choir";
+                   rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                   rdfs:label "Choral Music";
+                   rdfs:subClassOf music:Oeuvre.
+music:Choreographer a owl:Class;
+                    rdfs:comment "someone who creates new dances, or directs an opera";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "Choreographer";
+                    rdfs:subClassOf music:Director.
+music:Chorus a owl:Class;
+             rdfs:comment "A musical group of singers.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Chorus";
+             rdfs:subClassOf music:MusicalGroup.
+music:Cis-dur dcterms:alternative "C-Sharp major";
+              dcterms:description wiki:C_sharp_major;
+              a music:Key;
+              rdfs:comment "Major key based on C sharp, whose key signature has 7 sharps.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Cis dur".
+music:Clarinet a owl:Class;
+               rdfs:comment "A woodwind instrument having a straight cylindrical tube with a flaring bell and a single-reed mouthpiece.";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Clarinet";
+               rdfs:subClassOf music:Woodwind_Instrument.
+music:Clarinettist a owl:Class;
+                   rdfs:comment "A Clarinet player";
+                   rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                   rdfs:label "Clarinettist";
+                   rdfs:subClassOf [owl:someValuesFrom music:Clarinet ; 
+                                    owl:onProperty music:plays ; 
+                                    a owl:Restriction],
+                                   music:Player.
+music:Composer a owl:Class;
+               rdfs:comment "A person (or any agent) who composed art works";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Composer";
+               rdfs:subClassOf music:Artist.
+music:Concert a owl:Class;
+              rdfs:comment "An event of musical performance by players or singers not involving theatrical staging";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Concert";
+              rdfs:subClassOf music:Musical_Event.
+music:Concerto a owl:Class;
+               rdfs:comment "A composition for orchestra and a soloist";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Concerto";
+               rdfs:subClassOf music:Orchestral_Work.
+music:Conductor a owl:Class;
+                rdfs:comment "A Conductor";
+                rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                rdfs:label "Conductor";
+                rdfs:subClassOf music:Director,
+                                music:Musician.
+music:Contrabass a owl:Class;
+                 rdfs:comment "The largest member of string insrtument, usually with four or five strings.";
+                 rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                 rdfs:label "Contrabass";
+                 rdfs:subClassOf music:String_Instrument.
+music:Contrabassist a owl:Class;
+                    rdfs:comment "A Contrabass player";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "Contrabassist";
+                    rdfs:subClassOf [owl:someValuesFrom music:Contrabass ; 
+                                     owl:onProperty music:plays ; 
+                                     a owl:Restriction],
+                                    music:Player.
+music:Contrafagotto a owl:Class;
+                    rdfs:comment "A larger mebmer of the basoon family, producing the lowest tone in the woodwind section.";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "Contrafagotto";
+                    rdfs:subClassOf music:Bassoon.
+music:ContrafagottoPlayer a owl:Class;
+                          rdfs:comment "A Contrafagotto player";
+                          rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                          rdfs:label "ContrafagottoPlayer";
+                          rdfs:subClassOf [owl:someValuesFrom music:Contrafagotto ; 
+                                           owl:onProperty music:plays ; 
+                                           a owl:Restriction],
+                                          music:Bassoonist.
+music:Countertenor a owl:Class;
+                   rdfs:comment "A Countertenor singer";
+                   rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                   rdfs:label "Countertenor";
+                   rdfs:subClassOf music:Singer.
+music:D-dur dcterms:alternative "D major";
+            dcterms:description wiki:D_major;
+            a music:Key;
+            rdfs:comment "Major key based on D, whose key signature has 2 sharps.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "D dur".
+music:Des-dur dcterms:alternative "D-Flat major";
+              dcterms:description wiki:D_flat_major;
+              a music:Key;
+              rdfs:comment "Major key based on D flat, whose key signature has 5 flats.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Des dur".
+music:Director a owl:Class;
+               rdfs:comment "An artist who directs a musical group";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Director";
+               rdfs:subClassOf music:Artist.
+music:E-dur dcterms:alternative "E major";
+            dcterms:description wiki:E_major;
+            a music:Key;
+            rdfs:comment "Major key based on E, whose key signature has 4 sharps.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "E dur".
+music:EnglishHorn a owl:Class;
+                  rdfs:comment "A double-reed woodwind instrument, larger member of the oboe family.";
+                  rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                  rdfs:label "English Horn";
+                  rdfs:subClassOf music:Oboe.
+music:EnglishHornPlayer a owl:Class;
+                        rdfs:comment "An English Horn player";
+                        rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                        rdfs:label "English Horn player";
+                        rdfs:subClassOf [owl:someValuesFrom music:EnglishHorn ; 
+                                         owl:onProperty music:plays ; 
+                                         a owl:Restriction],
+                                        music:Oboist.
+music:Ensemble a owl:Class;
+               rdfs:comment "A musical group which perfroms in relatively small size, particularly chamber music";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Ensemble";
+               rdfs:subClassOf music:MusicalGroup.
+music:Es-dur dcterms:alternative "E-Flat major";
+             dcterms:description wiki:E_flat_major;
+             a music:Key;
+             rdfs:comment "Major key based on E flat, whose key signature has 3 flats.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Es dur".
+music:F-dur dcterms:alternative "F major";
+            dcterms:description wiki:F_major;
+            a music:Key;
+            rdfs:comment "Major key based on F, whose key signature has 1 flat.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "F dur".
+music:Fis-dur dcterms:alternative "F-Sharp major";
+              dcterms:description wiki:F_sharp_major;
+              a music:Key;
+              rdfs:comment "Major key based on F sharp, whose key signature has 6 sharps.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Fis dur".
+music:Flute a owl:Class;
+            rdfs:comment "A high-pitched woodwind instrument; a slender tube closed at one end with finger holes on one end and an opening near the closed end across which the breath is blown";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Flute";
+            rdfs:subClassOf music:Woodwind_Instrument.
+music:Flutist a owl:Class;
+              rdfs:comment "A Flute player";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Flutist";
+              rdfs:subClassOf [owl:someValuesFrom music:Flute ; 
+                               owl:onProperty music:plays ; 
+                               a owl:Restriction],
+                              music:Player.
+music:G-dur dcterms:alternative "G major";
+            dcterms:description wiki:G_major;
+            a music:Key;
+            rdfs:comment "Major key based on G, whose key signature has 1 sharp.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "G dur".
+music:Ges-dur dcterms:alternative "G-Flat major";
+              dcterms:description wiki:G_flat_major;
+              a music:Key;
+              rdfs:comment "Major key based on G flat, whose key signature has 6 flats.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Ges dur".
+music:Guitar a owl:Class;
+             rdfs:comment "A musical instrument having a large flat-backed sound box, a long fretted neck, and usually six strings, played by strumming or plucking.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Guitar";
+             rdfs:subClassOf music:String_Instrument.
+music:Guitarist a owl:Class;
+                rdfs:comment "A Guitar player";
+                rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                rdfs:label "Guitarist";
+                rdfs:subClassOf [owl:someValuesFrom music:Guitar ; 
+                                 owl:onProperty music:plays ; 
+                                 a owl:Restriction],
+                                music:Player.
+music:H-dur dcterms:alternative "B major";
+            dcterms:description wiki:B_major;
+            a music:Key;
+            rdfs:comment "Major key based on B, whose key signature has 5 sharps.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "H dur".
+music:Harp a owl:Class;
+           rdfs:comment "An instrument with usually 46 or 47 strings that are played by plucking with the fingers.";
+           rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+           rdfs:label "Harp";
+           rdfs:subClassOf music:String_Instrument.
+music:Harpist a owl:Class;
+              rdfs:comment "A Harp player";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Harpist";
+              rdfs:subClassOf [owl:someValuesFrom music:Harp ; 
+                               owl:onProperty music:plays ; 
+                               a owl:Restriction],
+                              music:Player.
+music:Harpsichord a owl:Class;
+                  rdfs:comment "A keyboard instrument whose strings are plucked by means of quills or plectrums. Cembalo.";
+                  rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                  rdfs:label "Harpsichord";
+                  rdfs:subClassOf music:Keyboard_Instrument.
+music:Horn a owl:Class;
+           rdfs:comment "A brass instrument with a long narrow tube that is coiled in a circle before ending in a flaring bell, usually being equipped with valves. A French Horn.";
+           rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+           rdfs:label "Horn";
+           rdfs:subClassOf music:Brass_Instrument.
+music:Hornist a owl:Class;
+              rdfs:comment "A Horn player";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Hornist";
+              rdfs:subClassOf [owl:someValuesFrom music:Horn ; 
+                               owl:onProperty music:plays ; 
+                               a owl:Restriction],
+                              music:Player.
+music:Key a owl:Class;
+          rdfs:comment "A key of a musical work (e.g. C-dur, b-moll)";
+          rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+          rdfs:label "Key".
+music:Keyboard_Instrument a owl:Class;
+                          rdfs:comment "A musical instrument that has a set of keys that consist of scale.";
+                          rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                          rdfs:label "Keyboard Instrument";
+                          rdfs:subClassOf music:Musical_Instrument.
+music:Mandolin a owl:Class;
+               rdfs:comment "A pear-shaped small stringed instrument descended from the lute, played with a pick.";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Mandolin";
+               rdfs:subClassOf music:String_Instrument.
+music:MezzoSoprano a owl:Class;
+                   rdfs:comment "A Mezzo Soprano singer";
+                   rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                   rdfs:label "Mezzo Soprano";
+                   rdfs:subClassOf music:Singer.
+music:Movement a owl:Class;
+               rdfs:comment "A subsection of a musical work. Typically a movement of a symphony, but also a piece of suit, etc.";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Movement";
+               rdfs:subClassOf music:Musical_Work.
+music:MusicDirector a owl:Class;
+                    rdfs:comment "The person who leads a musical group";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "Music Director";
+                    rdfs:subClassOf music:Director,
+                                    music:Musician.
+music:MusicalGroup a owl:Class;
+                   rdfs:comment "A group that performs art works";
+                   rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                   rdfs:label "Musical Group";
+                   rdfs:subClassOf music:Artist.
+music:Musical_Event a owl:Class;
+                    rdfs:comment "An event of musical performance by players or singers, including theatrical staging. Typically the event has date and location. Note this is different from Performance, which is a 'representation' of a musical work realized at a musical event or recording, etc.";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "Musical Event".
+music:Musical_Instrument a owl:Class;
+                         rdfs:comment "An instrument to play music";
+                         rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                         rdfs:label "Musical Instrument".
+music:Musical_Representation a owl:Class;
+                             rdfs:comment "Representation of a musical work, such as a score, sheet music, perfornamce, recoding, etc.";
+                             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                             rdfs:label "Musical Representation".
+music:Musical_Work a owl:Class;
+                   rdfs:comment "A musical work in any form, e.g. a composition, its movement, phrase, theme etc.";
+                   rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                   rdfs:label "Musical Work".
+music:Musician a owl:Class;
+               rdfs:comment "An artist who performs, composes or conducts music";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Musician";
+               rdfs:subClassOf music:Artist.
+music:Oboe a owl:Class;
+           rdfs:comment "A woodwind instrument with a conical bore and a double-reed mouthpiece.";
+           rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+           rdfs:label "Oboe";
+           rdfs:subClassOf music:Woodwind_Instrument.
+music:Oboist a owl:Class;
+             rdfs:comment "An Oboe player";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Oboist";
+             rdfs:subClassOf [owl:someValuesFrom music:Oboe ; 
+                              owl:onProperty music:plays ; 
+                              a owl:Restriction],
+                             music:Player.
+music:Oeuvre a owl:Class;
+             rdfs:comment "A (complete) musical work by a composer.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Oeuvre";
+             rdfs:subClassOf music:Musical_Work.
+music:Opera a owl:Class;
+            rdfs:comment "A musical work with drama, song, chorus and orchestral music. Note 'Opera_Event' in this vocabulary describes the performance of an opera.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Opera (Work)";
+            rdfs:subClassOf music:Oeuvre.
+music:OperaCompany a owl:Class;
+                   rdfs:comment "A musical group that performs opera works.";
+                   rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                   rdfs:label "Opera Company";
+                   rdfs:subClassOf music:MusicalGroup.
+music:Opera_Event a owl:Class;
+                  rdfs:comment "An event of opera performance (not an opera as a musical work, which is defined here as 'Opera')";
+                  rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                  rdfs:label "Opera Event";
+                  rdfs:subClassOf music:Musical_Event.
+music:Opera_Performance a owl:DeprecatedClass,
+                          owl:Class;
+                        owl:equivalentClass music:Opera_Event.
+music:Oratorio a owl:Class;
+               rdfs:comment "A large musical composition for orchestra, vocal soloists and chorus";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Oratorio";
+               rdfs:subClassOf music:Choral_Music.
+music:Orchestra a owl:Class;
+                rdfs:comment "A musical group which perfroms large scale symphonic works";
+                rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                rdfs:label "Orchestra";
+                rdfs:subClassOf music:MusicalGroup.
+music:Orchestral_Work a owl:Class;
+                      rdfs:comment "A composition for orchestra (and a soloist or soloists, optionally with chorus)";
+                      rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                      rdfs:label "Orchestral Work";
+                      rdfs:subClassOf music:Oeuvre.
+music:Overture a owl:Class;
+               rdfs:comment "An orchestral music composed for the opening of an opera or oratorio, often played as an independend work in concerts";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Overture";
+               rdfs:subClassOf music:Orchestral_Work.
+music:Part a owl:Class;
+           rdfs:comment "A music for a particular instrument or voice taken from a full score (Note: in this ontology, Part is not a division of an orchestra).";
+           rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+           rdfs:label "Part";
+           rdfs:subClassOf music:Written_Representation.
+music:Percussion a owl:Class;
+                 rdfs:comment "A musical instrument that produces sound by striking the body.";
+                 rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                 rdfs:label "Percussion";
+                 rdfs:subClassOf music:Musical_Instrument.
+music:Percussionist a owl:Class;
+                    rdfs:comment "A Percussion player";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "Percussionist";
+                    rdfs:subClassOf [owl:someValuesFrom music:Percussion ; 
+                                     owl:onProperty music:plays ; 
+                                     a owl:Restriction],
+                                    music:Player.
+music:Performance a owl:Class;
+                  rdfs:comment "Representation of a musical work in the form of performace, e.g. playing instruments, singing etc. Note a concert is a Musical_Event where a Performance is presented.";
+                  rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                  rdfs:label "Peroformance";
+                  rdfs:subClassOf music:Musical_Representation.
+music:Pianist a owl:Class;
+              rdfs:comment "A Piano player";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Pianist";
+              rdfs:subClassOf [owl:someValuesFrom music:Piano ; 
+                               owl:onProperty music:plays ; 
+                               a owl:Restriction],
+                              music:Player.
+music:Piano a owl:Class;
+            rdfs:comment "A musical instrument with a manual keyboard actuating hammers that strike wire strings. A pianoforte.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Pian";
+            rdfs:subClassOf music:Keyboard_Instrument.
+music:Piccolo a owl:Class;
+              rdfs:comment "A piccolo flute, smaller member of the flute family.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Piccolo";
+              rdfs:subClassOf music:Flute.
+music:PiccoloPlayer a owl:Class;
+                    rdfs:comment "A Piccolo flute player";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "Piccolo player";
+                    rdfs:subClassOf [owl:someValuesFrom music:Piccolo ; 
+                                     owl:onProperty music:plays ; 
+                                     a owl:Restriction],
+                                    music:Flutist.
+music:Player a owl:Class;
+             rdfs:comment "An artist who performs a musical instrument";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Player";
+             rdfs:subClassOf music:Musician.
+music:Recital a owl:Class;
+              rdfs:comment "An event of musical performance especially by soloists";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Recital";
+              rdfs:subClassOf music:Musical_Event.
+music:Religious_Music a owl:Class;
+                      rdfs:comment "A genre of music composed for performance as part of religious ceremonies";
+                      rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                      rdfs:label "Religious Music";
+                      rdfs:subClassOf music:Oeuvre.
+music:Saxophone a owl:Class;
+                rdfs:comment "A woodwind instrument with a single-reed mouthpiece and a (usually curved) conical metal tube, including soprano, alto, tenor, and baritone sizes.";
+                rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                rdfs:label "Saxophone";
+                rdfs:subClassOf music:Woodwind_Instrument.
+music:Score a owl:Class;
+            rdfs:comment "A full score or piano-vocal score of a work, either published or manuscript.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Score";
+            rdfs:subClassOf music:Written_Representation.
+music:Singer a owl:Class;
+             rdfs:comment "An artist who sings a song";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Singer";
+             rdfs:subClassOf music:Musician.
+music:Sketch a owl:Class;
+             rdfs:comment "A sketch, or a brief prelimary composition of a work.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Sketch";
+             rdfs:subClassOf music:Written_Representation.
+music:Soprano a owl:Class;
+              rdfs:comment "A Soprano singer";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Soprano";
+              rdfs:subClassOf music:Singer.
+music:SopranoClarinet a owl:Class;
+                      rdfs:comment "A smaller member of the clarinet family, commonly in key E-flat.";
+                      rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                      rdfs:label "Soprano Clarinet";
+                      rdfs:subClassOf music:Clarinet.
+music:StringQuartetEnsemble a owl:Class;
+                            rdfs:comment "A musical group of four string players. Note 'String_Quartette' is SQ as musical work in this vocabulary.";
+                            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                            rdfs:label "Qtring Quartet";
+                            rdfs:subClassOf music:MusicalGroup.
+music:String_Instrument a owl:Class;
+                        rdfs:comment "A stringed musical instrument, in which sound is produced by plucking, striking, or bowing taut strings.";
+                        rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                        rdfs:label "String Instrument";
+                        rdfs:subClassOf music:Musical_Instrument.
+music:String_Quartet a owl:Class;
+                     rdfs:comment "A music composed for instrumental quartet with 2 violins and a viola and a cello. Note 'StringQuartetEnsemble' is SQ ensemble in this vocabulary.";
+                     rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                     rdfs:label "String Quartet";
+                     rdfs:subClassOf music:Chamber_Music.
+music:String_Quartette a owl:DeprecatedClass,
+                         owl:Class;
+                       owl:equivalentClass music:String_Quartet.
+music:Suite a owl:Class;
+            rdfs:comment "A musical composition of several movements only loosely connected";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Suite";
+            rdfs:subClassOf music:Oeuvre.
+music:Symphonic_Poem a owl:Class;
+                     rdfs:comment "An orchestral composition based on a thematic subject";
+                     rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                     rdfs:label "Symphonic Poem";
+                     rdfs:subClassOf music:Orchestral_Work.
+music:Symphony a owl:Class;
+               rdfs:comment "A large and complex work for symphony orchestra";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Symphony";
+               rdfs:subClassOf music:Orchestral_Work.
+music:Tenor a owl:Class;
+            rdfs:comment "A Tenor singer";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Tenor";
+            rdfs:subClassOf music:Singer.
+music:Text a owl:Class;
+           rdfs:comment "Text of a musical work (e.g. lyric or verse)";
+           rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+           rdfs:label "Text";
+           rdfs:subClassOf music:Oeuvre.
+music:Timpani a owl:Class;
+              rdfs:comment "A set of large copper or brass hemispherical drums with a parchment head that can be tuned by adjusting the tension.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Timpani";
+              rdfs:subClassOf music:Percussion.
+music:Timpanist a owl:Class;
+                rdfs:comment "A Timpani player";
+                rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                rdfs:label "Timpanist";
+                rdfs:subClassOf [owl:someValuesFrom music:Timpani ; 
+                                 owl:onProperty music:plays ; 
+                                 a owl:Restriction],
+                                music:Player.
+music:Trombone a owl:Class;
+               rdfs:comment "A brass instrument consisting of a long cylindrical tube, and having a movable U-shaped slide for producing different pitches.";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Trombone";
+               rdfs:subClassOf music:Brass_Instrument.
+music:Trombonist a owl:Class;
+                 rdfs:comment "A Trombone player";
+                 rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                 rdfs:label "Trombonist";
+                 rdfs:subClassOf [owl:someValuesFrom music:Trombone ; 
+                                  owl:onProperty music:plays ; 
+                                  a owl:Restriction],
+                                 music:Player.
+music:Trumpet a owl:Class;
+              rdfs:comment "A A soprano brass instrument consisting of a long metal tube looped once and ending in a flared bell, usually being equipped with valves or pistons.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Trumpet";
+              rdfs:subClassOf music:Brass_Instrument.
+music:Trumpeter a owl:Class;
+                rdfs:comment "A Trumpet player";
+                rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                rdfs:label "Trumpeter";
+                rdfs:subClassOf [owl:someValuesFrom music:Trumpet ; 
+                                 owl:onProperty music:plays ; 
+                                 a owl:Restriction],
+                                music:Player.
+music:Tuba a owl:Class;
+           rdfs:comment "A large, valved, brass instrument with a bass pitch.";
+           rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+           rdfs:label "Tuba";
+           rdfs:subClassOf music:Brass_Instrument.
+music:TubaPlayer a owl:Class;
+                 rdfs:comment "A Tuba player";
+                 rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                 rdfs:label "TubaPlayer";
+                 rdfs:subClassOf [owl:someValuesFrom music:Tuba ; 
+                                  owl:onProperty music:plays ; 
+                                  a owl:Restriction],
+                                 music:Player.
+music:Venue a owl:Class;
+            rdfs:comment "A venue for musical performance, e.g. concert hall, opera house, recital hall, etc.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Venue".
+music:Viola a owl:Class;
+            rdfs:comment "A stringed instrument of the violin family, slightly larger than a violin, tuned a fifth lower, and having a deeper, more sonorous tone.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Viola";
+            rdfs:subClassOf music:String_Instrument.
+music:Violin a owl:Class;
+             rdfs:comment "A musical instrument played with a bow, having four strings. Usually plays the highest part of the string section.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Violin";
+             rdfs:subClassOf music:String_Instrument.
+music:Violinist a owl:Class;
+                rdfs:comment "A Violn player";
+                rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                rdfs:label "Violinist";
+                rdfs:subClassOf [owl:someValuesFrom music:Violin ; 
+                                 owl:onProperty music:plays ; 
+                                 a owl:Restriction],
+                                music:Player.
+music:Violist a owl:Class;
+              rdfs:comment "A Viola player";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Violist";
+              rdfs:subClassOf [owl:someValuesFrom music:Viola ; 
+                               owl:onProperty music:plays ; 
+                               a owl:Restriction],
+                              music:Player.
+music:Woodwind_Instrument a owl:Class;
+                          rdfs:comment "A wind musical instrument, in which sound is produced by the vibration of reeds in the mouthpiece, or by the passing of air across the mouthpiece.";
+                          rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                          rdfs:label "Woodwind Instrument";
+                          rdfs:subClassOf music:Musical_Instrument.
+music:Written_Representation a owl:Class;
+                             rdfs:comment "Representation of a musical work in the form of a written expression, e.g. score, parts, autograph, printed music, sketch, etc.";
+                             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                             rdfs:label "Written Representation";
+                             rdfs:subClassOf music:Musical_Representation.
+music:a-moll dcterms:alternative "A minor";
+             dcterms:description wiki:A_minor;
+             a music:Key;
+             rdfs:comment "";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "a moll".
+music:ais-moll dcterms:alternative "A-Sharp minor";
+               dcterms:description wiki:A_sharp_minor;
+               a music:Key;
+               rdfs:comment "Minor key based on A sharp, whose key signature has 7 sharps.";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "ais moll".
+music:artist_description a owl:ObjectProperty;
+                         rdfs:comment "A description of the subject artist or agent. Super-property of #plays, #performs.";
+                         rdfs:domain foaf:Agent;
+                         rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                         rdfs:label "Artist Description";
+                         rdfs:range owl:Thing.
+music:as-moll dcterms:alternative "A-Flat minor";
+              dcterms:description wiki:A_flat_minor;
+              a music:Key;
+              rdfs:comment "Minor key based on A flat, whose key signature has 7 flats.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "as moll".
+music:b-moll dcterms:alternative "B-Flat minor";
+             dcterms:description wiki:B_flat_minor;
+             a music:Key;
+             rdfs:comment "Minor key based on B flat, whose key signature has 5 flats.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "b moll".
+music:c-moll dcterms:alternative "C minor";
+             dcterms:description wiki:C_minor;
+             a music:Key;
+             rdfs:comment "Minor key based on C, whose key signature has 3 flats.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "c moll".
+music:cis-moll dcterms:alternative "C-Sharp minor";
+               dcterms:description wiki:C_sharp_minor;
+               a music:Key;
+               rdfs:comment "Minor key based on C sharp, whose key signature has 4 sharps.";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "cis moll".
+music:composer a owl:ObjectProperty;
+               rdfs:comment "The subject musical work is composed by a person, a group, a software program etc.";
+               rdfs:domain music:Oeuvre;
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Composer";
+               rdfs:range foaf:Agent;
+               rdfs:subPropertyOf music:description,
+                                  dc11:creator.
+music:composition a owl:ObjectProperty;
+                  rdfs:comment "Describes the composition process of the subject. Composition period or completion date, place, revision etc. can be described as properties of the object composition process.";
+                  rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                  rdfs:label "Composition";
+                  rdfs:subPropertyOf music:description.
+music:conductor a owl:ObjectProperty;
+                rdfs:comment "The subject performance is coducted by the object (or the subject musical event has a conductor). See comment of #performer.";
+                rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                rdfs:label "Conductor";
+                rdfs:subPropertyOf music:performer.
+music:conductorName a owl:DatatypeProperty;
+                    rdfs:comment "The subject musical event has a conductor. Literal version of #conductor.";
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "Conductor Name";
+                    rdfs:subPropertyOf music:performerName.
+music:d-moll dcterms:alternative "D minor";
+             dcterms:description wiki:D_minor;
+             a music:Key;
+             rdfs:comment "Minor key based on D, whose key signature has 1 flat.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "d moll".
+music:derivedFrom ex:example [ex:code """
+<m:Symphony rdf:about=\"http://purl.org/net/masterwork/beethoven/op.125\">
+ <m:source>
+  <m:Score rdf:about=\"urn:musicalsource:lvb/125/autograph\">
+   <dc:title>Autograph score</dc:title>
+  </m:Score>
+ </m:source>
+ <m:source>
+  <m:Score rdf:about=\"urn:musicalsource:lvb/125/copystscore1\">
+   <dc:title>A copyist's socore used as engraver's copy</dc:title>
+   <m:derivedFrom rdf:resource=\"urn:musicalsource:lvb/125/autograph\"/>
+  </m:Score>
+ </m:source>
+</m:Symphony>
+""" ; 
+                              a ex:Example];
+                  a owl:ObjectProperty;
+                  rdfs:comment "The subject is (was) derived from the object, e.g a copy score is derived from the composer manuscript (or, possibly, a CD recording is derived from a performance at a concert).";
+                  rdfs:domain music:Musical_Representation;
+                  rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                  rdfs:label "Derived From";
+                  rdfs:range music:Musical_Representation;
+                  rdfs:subPropertyOf dc11:source.
+music:description a owl:ObjectProperty;
+                  rdfs:comment "A description of the subject musical work. Super-property of some properties in this vocabulary, as well as description of a general descriptive resource such as time-line of composing process.";
+                  rdfs:domain music:Musical_Work;
+                  rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                  rdfs:label "Description";
+                  rdfs:range owl:Thing.
+music:dis-moll dcterms:alternative "D-Sharp minor";
+               dcterms:description wiki:D_sharp_minor;
+               a music:Key;
+               rdfs:comment "Minor key based on D sharp, whose key signature has 6 sharps.";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "dis moll".
+music:e-moll dcterms:alternative "E minor";
+             dcterms:description wiki:E_minor;
+             a music:Key;
+             rdfs:comment "Minor key based on E, whose key signature has 1 sharp.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "e moll".
+music:es-moll dcterms:alternative "E-Flat minor";
+              dcterms:description wiki:E_flat_minor;
+              a music:Key;
+              rdfs:comment "Minor key based on E flat, whose key signature has 6 flats.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "es moll".
+music:event_description a owl:ObjectProperty;
+                        rdfs:comment "A description of the subject musical event. Super-property of #program, #presents, #venue.";
+                        rdfs:domain music:Musical_Event;
+                        rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                        rdfs:label "Event Description";
+                        rdfs:range owl:Thing.
+music:f-moll dcterms:alternative "F minor";
+             dcterms:description wiki:F_minor;
+             a music:Key;
+             rdfs:comment "Minor key based on F, whose key signature has 4 flats.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "f moll".
+music:fis-moll dcterms:alternative "F-Sharp minor";
+               dcterms:description wiki:F_sharp_minor;
+               a music:Key;
+               rdfs:comment "Minor key based on F sharp, whose key signature has 3 sharps.";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "fis moll".
+music:form a owl:DatatypeProperty;
+           rdfs:comment "The subject musical work or its movement has a form, such as sonata, minuet, etc. Would be better defined as ObjectProperty.";
+           rdfs:domain music:Musical_Work;
+           rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+           rdfs:label "Form";
+           rdfs:range rdfs:Literal;
+           rdfs:subPropertyOf dc11:description.
+music:g-moll dcterms:alternative "G minor";
+             dcterms:description wiki:G_minor;
+             a music:Key;
+             rdfs:comment "Minor key based on G, whose key signature has 2 flats.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "g moll".
+music:gis-moll dcterms:alternative "G-Sharp minor";
+               dcterms:description wiki:G_sharp_minor;
+               a music:Key;
+               rdfs:comment "Minor key based on G sharp, whose key signature has 5 sharps.";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "gis moll".
+music:h-moll dcterms:alternative "B minor";
+             dcterms:description wiki:B_minor;
+             a music:Key;
+             rdfs:comment "Minor key based on B, whose key signature has 2 sharps.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "h moll".
+music:key a owl:ObjectProperty;
+          rdfs:comment "The subject musical work or its movement has a key, such as C major, d minor, etc.";
+          rdfs:domain music:Musical_Work;
+          rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+          rdfs:label "Key";
+          rdfs:range music:Key;
+          rdfs:subPropertyOf music:description.
+music:keyName a owl:DatatypeProperty;
+              rdfs:comment "The subject musical work or its movement has a key. Textual version of #key.";
+              rdfs:domain music:Musical_Work;
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Key Name";
+              rdfs:range rdfs:Literal;
+              rdfs:subPropertyOf dc11:description.
+music:marks a owl:DatatypeProperty;
+            rdfs:comment "The subject musical work or its movement has instruction mark(s) of tempo and/or expression";
+            rdfs:domain music:Musical_Work;
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Marks";
+            rdfs:range rdfs:Literal;
+            rdfs:subPropertyOf dc11:description.
+music:meter a owl:DatatypeProperty;
+            rdfs:comment "The subject musical work or its movement has a time measure such as 3/4, 4/4, 6/8 etc";
+            rdfs:domain music:Musical_Work;
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Meter";
+            rdfs:range rdfs:Literal;
+            rdfs:subPropertyOf dc11:description.
+music:opus a owl:DatatypeProperty;
+           rdfs:comment "The subject musical composition has an identifier assigned by a composer (e.g. 'op.131') or other editor (e.g. 'KV.551')";
+           rdfs:domain music:Oeuvre;
+           rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+           rdfs:label "Opus";
+           rdfs:range rdfs:Literal;
+           rdfs:subPropertyOf dc11:identifier.
+music:performer ex:example [ex:code """
+<!--Preferred description.-->
+<m:Concert>
+ <m:presents>
+  <m:Performance>
+   <m:conductor foaf:name=\"Sir Roger Norrington\"/>
+   <m:performer foaf:name=\"R.S.O. Stuttgart\"/>
+   <m:represents>
+    <m:Symphony>
+     <m:composer foaf:name=\"Brahms\"/>
+     <dc:title>Symphony No.2 D major</dc:title>
+    </m:Symphony>
+   </m:represents>
+  </m:Performance>
+ </m:presents>
+</m:Concert>
+""" ; 
+                            a ex:Example],
+                           [ex:code """
+<!--Possibly more intuitive description.-->
+<m:Concert>
+ <m:conductor foaf:name=\"Sir Roger Norrington\"/>
+ <m:performer foaf:name=\"R.S.O. Stuttgart\"/>
+ <m:program>
+  <m:Symphony>
+   <m:composer foaf:name=\"Brahms\"/>
+   <dc:title>Symphony No.2 D major</dc:title>
+  </m:Symphony>
+ </m:program>
+</m:Concert>
+
+<!-- An application may infer that:
+{X a m:Concert; m:performer Y; m:program Z.} =>
+{X m:presents [a m:Performance; m:performer Y; m:represents Z] .}
+-->
+""" ; 
+                            a ex:Example];
+                a owl:ObjectProperty;
+                rdfs:comment """The subject has a performer (an artist, a group, a machine etc.). The preferred domain of this property is #Performance, so as to model that \"a concert presents a performance (of a musical work) that is realized by this performer\". However, in natural language, we often say that \"a concert has performers who play these musical works\", i.e. the domain of 'performer' is #Musical_Event in this case, and it would be more intuitive model. Hence, the domain is leave unrestricted here for a moment. """;
+                rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                rdfs:label "Performer";
+                rdfs:range foaf:Agent.
+music:performerName a owl:DatatypeProperty;
+                    rdfs:comment "The subject musical event has a performer. Literal version of #performer.";
+                    rdfs:domain music:Musical_Event;
+                    rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                    rdfs:label "PerformerName";
+                    rdfs:range rdfs:Literal;
+                    rdfs:subPropertyOf dc11:description.
+music:performs a owl:ObjectProperty;
+               rdfs:comment "The subject artist (or group, machine, etc) performs a musical work.";
+               rdfs:domain foaf:Agent;
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Performs";
+               rdfs:subPropertyOf music:artist_description;
+               owl:inverseOf music:performer.
+music:plays a owl:ObjectProperty;
+            rdfs:comment "The subject artist (or group, machine, etc) plays an musical instrument. If :me :plays :Violin, then :me a :Violininst.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Plays";
+            rdfs:range music:Musical_Instrument;
+            rdfs:subPropertyOf music:artist_description.
+music:premiere ex:example [ex:code """
+<m:Symphony>
+ <m:composer foaf:name=\"Shubert\"/>
+ <dc:title>Symohony No.7 'Unfinished'</dc:title>
+ <m:opus>D.759</m:opus>
+ <dcterms:created>1822-01</dcterms:created>
+ <m:premiere rdf:parseType=\"Resource\">
+  <dc:date>1865-12-17</dc:date>
+  <cal:location>Wien Musikfereinsall</cal:location>
+ </m:premiere>
+</m:Symphony>
+""" ; 
+                           a ex:Example];
+               a owl:ObjectProperty;
+               rdfs:comment "The subject musical work was first performed at an concert";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Premiere";
+               rdfs:range music:Musical_Event;
+               rdfs:subPropertyOf music:description.
+music:presents a owl:ObjectProperty;
+               rdfs:comment "The subject musical event presents a performance of a musical work. An experiment to have better model to describe musical work, its representation and an event to present the representation.";
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Presents";
+               rdfs:range music:Performance;
+               rdfs:subPropertyOf music:event_description.
+music:program a owl:ObjectProperty;
+              rdfs:comment "The subject musical event presents a musical work as its program";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Program";
+              rdfs:range music:Oeuvre;
+              rdfs:subPropertyOf music:event_description.
+music:programLine a owl:DatatypeProperty;
+                  rdfs:comment "The subject musical event presents a musical work as its program. Literal version of #program.";
+                  rdfs:domain music:Musical_Event;
+                  rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                  rdfs:label "Program Line";
+                  rdfs:range rdfs:Literal;
+                  rdfs:subPropertyOf dc11:description.
+music:published ex:example [ex:code """
+<m:Symphony>
+ <m:composer foaf:name=\"Beethoven\"/>
+ <dc:title>Symphony No.9</dc:title>
+ <m:opus>Op.125</m:opus>
+ <m:published>
+  <m:Score>
+   <dc:date>1826-08</dc:date>
+   <dc:description>The first published edition</dc:description>
+   <dc:publisher>Schott</dc:publisher>
+  </m:Score>
+ </m:published>
+</m:Symphony>
+""" ; 
+                            a ex:Example];
+                a owl:ObjectProperty;
+                rdfs:comment "The subject musical work is published as a score or sheet music (still not sure what kind of class is appropriate as the range)";
+                rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                rdfs:label "published";
+                rdfs:range music:Written_Representation;
+                rdfs:subPropertyOf music:description.
+music:represents a owl:ObjectProperty;
+                 rdfs:comment "The subject (performance, score, etc) is a representation of the object musical work. An experiment to have better model.";
+                 rdfs:domain music:Musical_Representation;
+                 rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+                 rdfs:label "Represents";
+                 rdfs:range music:Musical_Work.
+music:sections a owl:ObjectProperty;
+               rdfs:comment "The subject musical work has subsections such as movements. Current model recommends RDF Collection as the object.";
+               rdfs:domain music:Oeuvre;
+               rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+               rdfs:label "Sections";
+               rdfs:range owl:Thing;
+               rdfs:subPropertyOf music:description.
+music:soloist a owl:ObjectProperty;
+              rdfs:comment "The subject performance is performed by this soloist (or the subject musical event has a soloist. See comment of #performer.";
+              rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+              rdfs:label "Soloist";
+              rdfs:subPropertyOf music:performer.
+music:source a owl:ObjectProperty;
+             rdfs:comment "The subject musical work has a historical source, such as sketch, autograph score or published score.";
+             rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+             rdfs:label "Source";
+             rdfs:range music:Written_Representation;
+             rdfs:subPropertyOf music:description.
+music:venue a owl:ObjectProperty;
+            rdfs:comment "The subject musical event is presented at the object venue.";
+            rdfs:isDefinedBy <http://www.kanzaki.com/ns/music>;
+            rdfs:label "Venue";
+            rdfs:range music:Venue;
+            rdfs:subPropertyOf music:event_description.
+<http://www.kanzaki.com/ns/music-rdfs.rdf> a owl:Ontology.
+<http://www.kanzaki.com/works/2007/misc/music-vocab-sample2.png> a foaf:Image;
+                                                                 rdfs:label "'circles and arrows' graphical representation of this example".
+<http://www.kanzaki.com/works/2007/misc/music-vocab-sample3.png> a foaf:Image;
+                                                                 rdfs:label "'circles and arrows' graphical representation of this example".
+foaf:Agent a owl:Class.

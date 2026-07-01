@@ -1,0 +1,263 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix swperson: <http://data.semanticweb.org/person/>.
+@prefix wiki: <http://en.wikipedia.org/wiki/>.
+@prefix gold: <http://purl.org/linguistics/gold/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix planet: <http://dbpedia.org/>.
+@prefix resource: <http://dbpedia.org/resource/>.
+@prefix lexvo: <http://lexvo.org/ontology#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix lingvoj: <http://www.lingvoj.org/ontology#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://lexvo.org/ontology> dcterms:contributor swperson:bernard-vatant;
+                            dcterms:creator <http://www.demelo.org/gdm/#GDM>;
+                            dcterms:modified "2014-01-29"^^<xsd:date>;
+                            dcterms:subject resource:Language;
+                            a owl:Ontology;
+                            rdfs:comment "Lexvo.org Ontology";
+                            rdfs:label "Lexvo.org Ontology"@en;
+                            rdfs:seeAlso <http://www.lexvo.org/>;
+                            owl:versionInfo "Lexvo.org Ontology Version 0.23 (2014-01-29)"@en;
+                            foaf:homepage <http://www.lexvo.org/>.
+lexvo:CJKRadical a owl:Class;
+                 rdfs:comment "A CJK character radical."@en;
+                 rdfs:label "radical"@en;
+                 rdfs:seeAlso wiki:Radical_%28Chinese_character%29;
+                 skos:note """CJK radicals are slightly more abstract than characters, because the same radical can be manifested as different
+    characters, e.g. radical 4 can take the form of '丿', '乀', or '乁'."""@en.
+lexvo:Character a owl:NamedIndividual,
+                  owl:Class;
+                rdfs:comment """An abstract character as defined by the Unicode Standard,
+  Version 5, in Chapter 3.4."""@en;
+                rdfs:label "character"@en;
+                owl:sameAs gold:Character;
+                skos:note "The same abstract character may be rendered in different forms, depending on the language and on typeface characters."@en.
+lexvo:GeographicRegion a owl:Class;
+                       rdfs:comment "Geographic regions on Earth or elsewhere."@en;
+                       rdfs:label "geographic region"@en.
+lexvo:Language <http://lexvo.org/ontologysomewhatSameAs> lingvoj:Lingvo;
+               a owl:Class;
+               rdfs:comment "Groups of human language variants that are or were spoken, written, or signed at some point in time."@en;
+               rdfs:label "language"@en;
+               rdfs:seeAlso wiki:Language;
+               rdfs:subClassOf dcterms:LinguisticSystem;
+               skos:note """This definition includes languages, particular language variants (e.g. dialects), and larger groups of language 
+    variants (e.g. macrolanguages and language families), as the distinction between them is largely conventional."""@en.
+lexvo:Script a owl:Class;
+             rdfs:comment """A writing system considered abstractly, i.e. independent
+    of language-specific variations."""@en;
+             rdfs:label "script"@en.
+lexvo:Term <http://lexvo.org/ontologynearlySameAs> <http://lexonto.ontoware.org/lmf#FormRepresentation>;
+           <http://lexvo.org/ontologysubClassOf> skosxl:Label;
+           a owl:Class;
+           rdfs:comment "A term in a specific language."@en;
+           rdfs:label "term"@en.
+lexvo:broader <http://lexvo.org/ontologysomewhatSameAs> skos:broader;
+              a owl:ObjectProperty;
+              rdfs:comment "The property of having a broader, more generic concept."@en;
+              rdfs:label "broader"@en;
+              skos:note "Similar to skos:broader but domain and range are not restricted to skos:Concept instances."@en.
+lexvo:characterRadical a owl:ObjectProperty;
+                       rdfs:comment """The property of a CJK character being conventionally
+    associated with a CJK character radical."""@en;
+                       rdfs:domain lexvo:Character;
+                       rdfs:label "translation"@en;
+                       rdfs:range lexvo:CJKRadical.
+lexvo:containsCharacter a owl:ObjectProperty;
+                        rdfs:comment "The property of a term containing a specific character."@en;
+                        rdfs:domain lexvo:Term;
+                        rdfs:label "contains character"@en;
+                        rdfs:range lexvo:Character.
+lexvo:evokes a owl:ObjectProperty;
+             rdfs:comment "The property of conceptually evoking some object."@en;
+             rdfs:label "evokes"@en;
+             owl:inverseOf lexvo:evokes.
+lexvo:hasCharacterComponent a owl:ObjectProperty;
+                            rdfs:comment "The property of a character being composed of another character."@en;
+                            rdfs:domain lexvo:Character;
+                            rdfs:label "character component"@en;
+                            rdfs:range lexvo:Character;
+                            skos:note "Especially for CJK characters."@en.
+lexvo:hasMember a owl:ObjectProperty;
+                rdfs:comment "The property of having a member."@en;
+                rdfs:label "has member"@en;
+                skos:note "For instance for geographic regions."@en.
+lexvo:inScript a owl:ObjectProperty;
+               rdfs:comment """The property of a document being written in a specific script,
+    or a language being written or having being written in a specific script by a considerable
+    group of language users."""@en;
+               rdfs:label "in script"@en;
+               rdfs:range lexvo:Script.
+lexvo:involvedIn a owl:ObjectProperty;
+                 rdfs:comment "The property of being involved in something, e.g. for semantic participants' involvement in a semantic frame."@en;
+                 rdfs:label "involved in"@en;
+                 owl:inverseOf lexvo:involves.
+lexvo:involves a owl:ObjectProperty;
+               rdfs:comment "The property of involving some entity, e.g. for semantic participants involved in a semantic frame."@en;
+               rdfs:label "involves"@en.
+lexvo:isFocusOf a owl:ObjectProperty;
+                rdfs:label "is focus of"@en;
+                owl:inverseOf foaf:focus;
+                skos:note """The isFocusOf relates an entity to relevant SKOS concepts 
+    that are conceptualizations of the same entity. This is the inverse of the
+    standard foaf:focus property, which connects a SKOS concept to a relevant
+    non-conceptualized entity."""@en.
+lexvo:iso15924Alphacode a owl:DatatypeProperty;
+                        rdfs:domain lexvo:Script;
+                        rdfs:label "ISO 15924 alphabetic code"@en;
+                        rdfs:seeAlso <http://unicode.org/iso15924/>.
+lexvo:iso639P1Code a owl:DatatypeProperty;
+                   rdfs:domain lexvo:Language;
+                   rdfs:label "ISO 639-1 code"@en.
+lexvo:iso639P2BCode a owl:DatatypeProperty;
+                    rdfs:domain lexvo:Language;
+                    rdfs:label "ISO 639-2 Bibliographical code"@en;
+                    rdfs:seeAlso <http://www.loc.gov/standards/iso639-2/>.
+lexvo:iso639P2TCode a owl:DatatypeProperty;
+                    rdfs:domain lexvo:Language;
+                    rdfs:label "ISO 639-2 Terminological code"@en;
+                    rdfs:seeAlso <http://www.loc.gov/standards/iso639-2/>.
+lexvo:iso639P3Code a owl:DatatypeProperty;
+                   rdfs:domain lexvo:Language;
+                   rdfs:label "ISO 639-3 code"@en;
+                   rdfs:seeAlso <http://www.sil.org/ISO639-3/>.
+lexvo:iso639P5Code a owl:DatatypeProperty;
+                   rdfs:domain lexvo:Language;
+                   rdfs:label "ISO 639-5 code"@en;
+                   rdfs:seeAlso <http://www.loc.gov/standards/iso639-5/>.
+lexvo:label a owl:ObjectProperty;
+            rdfs:comment """the semiotic property of possessing a natural language label (as opposed to artificial identifiers), e.g. the city of Paris is lexicalized in Italian using the Italian term \"Parigi\"."""@en,
+                         "If C lvont:Label L and L skosxl:literalForm V, then X rdfs:label V."@en;
+            rdfs:label "has label"@en;
+            rdfs:range skosxl:Label;
+            rdfs:subPropertyOf lexvo:representedBy;
+            owl:inverseOf lexvo:means;
+            skos:note """This property is more general than skosxl:prefLabel and skosxl:altLabel, as it does not make any normative claims about which labels are preferred. It merely describes
+    the fact that a certain label can be used to refer to something."""@en.
+lexvo:language a owl:ObjectProperty;
+               rdfs:comment "The property of a resource being mainly encoded in a specific language."@en;
+               rdfs:label "in language"@en;
+               rdfs:range lexvo:Language;
+               rdfs:subPropertyOf dcterms:language,
+                                  dc11:language.
+lexvo:lexicalCategory a owl:ObjectProperty;
+                      rdfs:comment "A lexical category that a term can be used in."@en;
+                      rdfs:label "lexical category"@en;
+                      skos:note """ For example, the English term \"score\" can be used as a noun and as a verb."""@en.
+lexvo:marcCode a owl:DatatypeProperty;
+               rdfs:domain lexvo:Language;
+               rdfs:label "MARC 21 / USMARC code"@en;
+               rdfs:seeAlso <http://www.loc.gov/marc/>.
+lexvo:means a owl:ObjectProperty;
+            rdfs:comment """the semiotic property of a natural language word meaning something, i.e. a
+    relationship between words and resources that they represent (or represented) to a considerable number of humans"""@en;
+            rdfs:label "means"@en;
+            rdfs:subPropertyOf lexvo:represents.
+lexvo:memberOf a owl:ObjectProperty;
+               rdfs:comment "The property of being a member of a group."@en;
+               rdfs:label "member of"@en;
+               owl:inverseOf lexvo:hasMember;
+               skos:note "For instance for geographic regions."@en.
+lexvo:narrower <http://lexvo.org/ontologysomewhatSameAs> skos:narrower;
+               a owl:ObjectProperty;
+               rdfs:comment "The property of having a narrower, less generic concept."@en;
+               rdfs:label "narrower"@en;
+               owl:inverseOf lexvo:broader;
+               skos:note "Similar to skos:narrower but domain and range are not restricted to skos:Concept instances."@en.
+lexvo:nearlySameAs <http://lexvo.org/ontologysomewhatSameAs> owl:sameAs;
+                   a owl:SymmetricProperty,
+                     owl:ObjectProperty;
+                   rdfs:comment """The property of being at least nearly the same as something else. For instance,
+    the geographical area comprising the island of Malta is nearly the same as the island of Malta."""@en;
+                   rdfs:label "nearly same as"@en;
+                   rdfs:subPropertyOf lexvo:somewhatSameAs.
+lexvo:nonRadicalStrokes a owl:DatatypeProperty;
+                        rdfs:comment """The property of a character conventionally being
+    written with a specific number strokes, excluding the strokes of its radical."""@en;
+                        rdfs:domain lexvo:Character;
+                        rdfs:label "non-radical strokes"@en;
+                        rdfs:range xsd:nonNegativeInteger;
+                        skos:note "Especially for CJK characters."@en.
+lexvo:representedBy a owl:ObjectProperty;
+                    rdfs:label "represented by"@en;
+                    owl:inverseOf lexvo:represents.
+lexvo:represents a owl:ObjectProperty;
+                 rdfs:comment """the semiotic property of semantically representing something, i.e. a
+    relationship between words and other signs and resources that they represent (or represented) to a considerable number of humans"""@en;
+                 rdfs:label "represents"@en.
+lexvo:scriptFor a owl:ObjectProperty;
+                rdfs:comment """The property of a script being used for a particular language by
+   a considerable of language users (but not necessarily the majority of all language users)."""@en;
+                rdfs:domain lexvo:Script;
+                rdfs:label "script for"@en;
+                rdfs:range lexvo:Language;
+                owl:inverseOf lexvo:usesScript.
+lexvo:somewhatSameAs <http://lexvo.org/ontologysomewhatSameAs> skos:broadMatch;
+                     a owl:SymmetricProperty,
+                       owl:ObjectProperty;
+                     rdfs:comment """The property of being at least somewhat the same as something else. For instance,
+    the City of Los Angeles is somewhat the same as the Greater Los Angeles area."""@en;
+                     rdfs:label "somewhat same as"@en.
+lexvo:strength a owl:ObjectProperty,
+                 owl:AnnotationProperty;
+               rdfs:comment "The strength of an rdf:Statement, given is a value in [0,1]."@en;
+               rdfs:domain rdf:Statement;
+               rdfs:label "strength"@en.
+lexvo:strictlySameAs a owl:NamedIndividual,
+                       owl:SymmetricProperty,
+                       owl:ObjectProperty;
+                     rdfs:comment "The property of genuine identity in the Leibnizian sense."@en;
+                     rdfs:label "same as"@en;
+                     rdfs:subPropertyOf lexvo:nearlySameAs;
+                     owl:sameAs owl:sameAs.
+lexvo:translation <http://lexvo.org/ontologynearlySameAs> gold:translation;
+                  a owl:SymmetricProperty,
+                    owl:ObjectProperty;
+                  rdfs:comment """translational equivalence between words and other signs
+    and resources that they represent to or represented to a considerable number of humans"""@en;
+                  rdfs:label "translation"@en;
+                  skos:note "Domain and range are usually Term objects, however string literals are acceptable as well for the range."@en.
+lexvo:usedIn a owl:ObjectProperty;
+             rdfs:comment """The property of a language or writing system
+    being used somewhat extensively in a particular geographical region 
+    at some point in time."""@en;
+             rdfs:label "used in"@en;
+             rdfs:range lexvo:GeographicRegion.
+lexvo:usesScript a owl:ObjectProperty;
+                 rdfs:comment """The property of a language being written or having being written in a specific 
+    script by a considerable group of language users."""@en;
+                 rdfs:label "uses script"@en;
+                 rdfs:range lexvo:Script.
+lexvo:variant a owl:ObjectProperty;
+              rdfs:comment "The property of being a variant of another resource."@en;
+              rdfs:label "variant"@en;
+              skos:note "Especially for terms and characters."@en.
+<http://lexvo.org/ontologynearlySameAs> a owl:AnnotationProperty.
+<http://lexvo.org/ontologysomewhatSameAs> a owl:AnnotationProperty.
+<http://lexvo.org/ontologysubClassOf> a owl:AnnotationProperty.
+dc11:language a owl:ObjectProperty.
+dcterms:LinguisticSystem a owl:Class.
+dcterms:language a owl:ObjectProperty.
+gold:Character a owl:NamedIndividual.
+owl:sameAs a owl:NamedIndividual,
+             owl:ObjectProperty;
+           rdfs:subPropertyOf lexvo:nearlySameAs.
+skos:broadMatch a owl:ObjectProperty;
+                rdfs:subPropertyOf lexvo:somewhatSameAs.
+skos:exactMatch a owl:ObjectProperty;
+                rdfs:subPropertyOf lexvo:nearlySameAs.
+skos:note a owl:AnnotationProperty.
+skosxl:Label a owl:Class.
+skosxl:altLabel a owl:ObjectProperty;
+                rdfs:subPropertyOf lexvo:label.
+skosxl:prefLabel a owl:ObjectProperty;
+                 rdfs:subPropertyOf lexvo:label.
+foaf:focus a owl:ObjectProperty.

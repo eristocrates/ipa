@@ -1,0 +1,657 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix kwijibo: <http://kwijibo.talis.com/>.
+@prefix mexperf: <http://mex.aksw.org/mex-perf#>.
+@prefix voidext: <http://purl.org/query/voidext#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix kontakt: <http://richard.cyganiak.de/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix nsprov: <http://www.w3.org/ns/prov#>.
+
+mexperf:ClassificationMeasure a owl:Class;
+                              rdfs:subClassOf mexperf:PerformanceMeasure.
+mexperf:PerformanceMeasure a owl:Class;
+                           rdfs:subClassOf nsprov:Entity.
+dcterms:ProvenanceStatement a rdfs:Class;
+                            rdfs:isDefinedBy dcterms:ProvenanceStatement;
+                            rdfs:label "Provenance Statement".
+<http://purl.org/query/tarcisiomf> a foaf:Person;
+                                   foaf:homepage <https://www.researchgate.net/profile/Tarcisio_Mendes_De_Farias>;
+                                   foaf:mbox <mailto:tarcisio.mendesdefarias@unil.ch>;
+                                   foaf:name "Tarcisio Mendes de Farias".
+<http://purl.org/query/voidext> dcterms:created "2019-01-30"^^xsd:date;
+                                dcterms:creator <http://purl.org/query/tarcisiomf>;
+                                dcterms:description "The Extension of the Vocabulary of Interlinked Datasets (VoID) RDF Schema that includes the concept of virtual links. This extension enhances interoperability among heterogeneous and distributed RDF data sets by bridging them through explicitly defined virtual links.";
+                                dcterms:isVersionOf <http://rdfs.org/ns/void.ttl>;
+                                dcterms:license <https://creativecommons.org/licenses/by/3.0/>;
+                                dcterms:modified "2019-06-30"^^xsd:date;
+                                dcterms:publisher <https://www.sib.swiss/about-sib/organization>;
+                                dcterms:title "Extended Vocabulary of Interlinked Datasets (VoIDext)";
+                                dcterms:type <http://purl.org/adms/assettype/Ontology>;
+                                vann:preferredNamespacePrefix "voidext";
+                                vann:preferredNamespaceUri "http://purl.org/query/voidext#";
+                                a owl:Ontology;
+                                foaf:homepage <http://purl.org/query/voidext>.
+voidext:ComplexLinkSet voidext:queryLinkset """prefix void:    <http://rdfs.org/ns/void#>
+prefix voidext:<http://purl.org/query/voidext#>
+prefix dcterms: <http://purl.org/dc/terms/>
+
+SELECT distinct ?links ?source_dataset1_name ?target_dataset2_name ?predicate 
+ ?intersection_type ?subj_type ?obj_type  ?source_endpoint ?target_endpoint 
+ ?resourceMapping {
+  
+ #values(?dataset1){ (bioquery:EBI_ORDO) }
+ #values(?dataset2){ (bioquery:DRUGBANK) }
+
+ ?links a voidext:ComplexLinkSet.
+ ?links  voidext:intersectAt ?set2;
+         voidext:intersectionType/rdfs:label ?intersection_type.
+ ?set2   voidext:isSubsetOf ?target_db.
+ ?target_db dcterms:title ?target_dataset2_name;
+            void:sparqlEndpoint ?target_endpoint.
+ ?set2 void:linkPredicate ?predicate2 .
+ 
+
+ ?links  voidext:intersectAt ?set1.
+ ?set1 void:linkPredicate ?predicate .
+ ?set1 voidext:isSubsetOf ?source_db .
+ ?source_db dcterms:title ?source_dataset1_name;
+            void:sparqlEndpoint ?source_endpoint.
+optional{ ?set1 voidext:linkPredicateDomain ?subj_type}
+optional{ ?set1 voidext:linkPredicateRange ?obj_type.}
+optional{ ?links voidext:recommendedMapping ?set1.
+               ?set1 voidext:resourceMapping  ?resourceMapping}
+filter(?source_db != ?target_db)        
+                         
+} order by ?links"""^^rdfs:Literal;
+                       voidext:querySharedInstanceSet """prefix void:    <http://rdfs.org/ns/void#>
+prefix voidext:<http://purl.org/query/voidext#>
+prefix dcterms: <http://purl.org/dc/terms/>
+
+SELECT distinct ?links ?source_dataset1_name ?target_dataset2_name ?sharedType
+  ?resourceMapping ?source_endpoint ?target_endpoint{
+  
+ #values(?source_db){ (bioquery:EBI) }
+ #values(?target_db){ (bioquery:UNIPROT) }
+
+ ?links a voidext:ComplexLinkSet.
+ ?links voidext:intersectAt ?set1; voidext:intersectAt ?set2.
+ ?set1  voidext:isSubsetOf ?target_db.
+ ?target_db dcterms:title ?target_dataset2_name;
+           void:sparqlEndpoint ?target_endpoint.
+ ?set2 voidext:sharedInstanceType  ?sharedType .
+ ?set2 voidext:isSubsetOf ?source_db .
+ ?source_db dcterms:title ?source_dataset1_name;
+            void:sparqlEndpoint ?source_endpoint.
+
+ optional{   ?links voidext:recommendedMapping ?set2.
+             ?set2 voidext:resourceMapping  ?resourceMapping}
+ filter(?target_db != ?source_db)        
+                         
+} order by ?links"""^^rdfs:Literal;
+                       a owl:Class,
+                         rdfs:Class;
+                       rdfs:comment "It is a complex virtual link set. A complex link set is composed of exactly two link sets xor two shared instance sets where xor is the exclusive or. For example, two link sets that intersects at some graph node (e.g. the object nodes of link predicates)."@en;
+                       rdfs:label "Complex link set"@en;
+                       rdfs:subClassOf voidext:VirtualLinkSet;
+                       owl:disjointWith void:Dataset;
+                       owl:equivalentClass [a owl:Class ; 
+                                            owl:intersectionOf ([owl:unionOf ([owl:onClass voidext:SharedInstanceSet ; 
+                                                                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ; 
+                                                                             owl:onProperty voidext:intersectAt ; 
+                                                                             a owl:Restriction]
+                                                                             [owl:onClass void:Linkset ; 
+                                                                             owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ; 
+                                                                             owl:onProperty voidext:intersectAt ; 
+                                                                             a owl:Restriction]) ; 
+                                                                a owl:Class]
+                                                                [owl:complementOf voidext:SimpleLinkSet ; 
+                                                                a owl:Class])].
+voidext:LINK_SHAREDINSTANCE_SET a owl:Class;
+                                owl:unionOf (void:Linkset
+                                             voidext:SharedInstanceSet).
+voidext:LinkSetIntersection a owl:Class,
+                              rdfs:Class;
+                            rdfs:comment "The possible intersection types between the RDF graph nodes in different void:Dataset(s) (i.e. either the subject or the object node of a link predicate). The instances of this class are exclusively voidext:OBJECT_OBJECT, voidext:OBJECT_SUBJECT, and voidext:SUBJECT_SUBJECT."@en;
+                            rdfs:label "Linkset intersection"@en.
+voidext:MODIFIED_TARGET_1 dcterms:creator <http://purl.org/query/tarcisiomf>;
+                          dcterms:description "The void:target property domain was modified in voidext schema to be the union of the classes: void:Linkset, and voidext:SharedInstanceSet instead of only the void:Linkset class from the original VoID vocabulary.";
+                          dcterms:issued "2019-06-30"^^xsd:date;
+                          a dcterms:ProvenanceStatement;
+                          rdfs:label "modified void:target domain".
+voidext:OBJECT_OBJECT a voidext:LinkSetIntersection;
+                      rdfs:comment "The intersection between two void:Dataset(s) (i.e. knowledge graphs) occurs at the object node in both datasets."@en;
+                      rdfs:label "Object-object intersection"@en.
+voidext:SUBJECT_OBJECT a voidext:LinkSetIntersection;
+                       rdfs:comment "The intersection between two void:Dataset(s) (i.e. knowledge graphs) occurs at the object node of one data set (graph) and the subject node of another data set (graph)."@en;
+                       rdfs:label "Subject-object intersection"@en.
+voidext:SUBJECT_SUBJECT a voidext:LinkSetIntersection;
+                        rdfs:comment "The intersection between two void:Dataset(s) (i.e. knowledge graphs) occurs at the subject node in both datasets."@en;
+                        rdfs:label "Subject-subject intersection"@en.
+voidext:SharedInstanceSet a owl:Class,
+                            rdfs:Class;
+                          rdfs:comment "A shared instance set between exactly two datasets. For example, two datasets that contain the same OWL/RDFS class instances."@en;
+                          rdfs:label "Shared instance set"@en;
+                          rdfs:subClassOf void:Dataset.
+voidext:SimpleLinkSet voidext:queryLinkset """prefix void:    <http://rdfs.org/ns/void#>
+prefix voidext:<http://purl.org/query/voidext#>
+prefix dcterms: <http://purl.org/dc/terms/>
+
+SELECT distinct ?links  ?source  ?predicate_from_endpoint ?subj_from ?subj_type ?predicate 
+ ?obj_type  ?obj_from  ?resourceMapping {
+
+###if we want to specify the target datasets that contain one of the resources
+###related with a virtual link.
+#values(?dataset_link_subj){  (bioquery:OMA)  }
+#values(?dataset_link_obj){  (bioquery:UNIPROT)  }
+
+?links  a void:Linkset.
+{
+ ?links void:subjectsTarget ?dataset_link_subj .
+ ?links void:objectsTarget ?dataset_link_obj.  
+} UNION {
+ ?links void:target ?dataset_link_subj.
+ ?links void:target ?dataset_link_obj .}
+ ?links void:linkPredicate ?predicate;
+        voidext:isSubsetOf ?source_db.
+ ?dataset_link_subj void:sparqlEndpoint ?subj_from.
+ ?dataset_link_obj void:sparqlEndpoint ?obj_from.
+ ?source_db dcterms:title ?source;
+            void:sparqlEndpoint ?predicate_from_endpoint.
+
+ optional {?links  voidext:linkPredicateRange ?obj_type}.
+ optional {?links voidext:linkPredicateDomain ?subj_type. }
+ optional{ ?links voidext:resourceMapping  ?resourceMapping}
+
+filter not exists { ?complexLink  voidext:intersectAt ?links.}       
+filter ( ?dataset_link_subj  !=  ?dataset_link_obj )       
+
+} order by ?links"""^^rdfs:Literal;
+                      voidext:querySharedInstanceSet """prefix void:    <http://rdfs.org/ns/void#>
+prefix voidext:<http://purl.org/query/voidext#>
+prefix dcterms: <http://purl.org/dc/terms/>
+
+SELECT distinct ?links ?dataset1_name  ?dataset2_name  ?sharedType  
+                       ?dataset1_endpoint ?dataset2_endpoint {
+  
+ #values(?dataset1){ (bioquery:BGEE) }
+ #values(?dataset2){ (bioquery:OMA) }
+
+?links a voidext:SharedInstanceSet.
+?links void:target ?dataset1.
+?links void:target ?dataset2.
+?links voidext:sharedInstanceType ?sharedType. 
+?dataset1   dcterms:title ?dataset1_name;
+                   void:sparqlEndpoint ?dataset1_endpoint.
+?dataset2  dcterms:title ?dataset2_name;
+                   void:sparqlEndpoint ?dataset2_endpoint.
+
+filter not exists { ?complexLink voidext:intersectAt ?links .}  
+filter(?dataset1 != ?dataset2)                     
+} order by ?links"""^^rdfs:Literal;
+                      a owl:Class,
+                        rdfs:Class;
+                      rdfs:comment "A simple link set must be a linkset that does not target another linkset (i.e. it has exactly one link predicate) or a set with exactly the same shared instances of the same type (i.e. class) in both datasets. The instances of this class must be also instances of either void:Linkset or voidext:SharedInstanceSet."@en;
+                      rdfs:label "Simple link set"@en;
+                      rdfs:subClassOf voidext:VirtualLinkSet;
+                      owl:equivalentClass [owl:unionOf ([a owl:Class ; 
+                                                        owl:intersectionOf (voidext:SharedInstanceSet
+                                                                            [owl:complementOf [owl:onClass void:Dataset ; 
+                                                                                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                                                              owl:onProperty voidext:isSubsetOf ; 
+                                                                                              a owl:Restriction] ; 
+                                                                            a owl:Class])]
+                                                        [a owl:Class ; 
+                                                        owl:intersectionOf (void:Linkset
+                                                                            [owl:complementOf [owl:someValuesFrom void:Linkset ; 
+                                                                                              owl:onProperty void:target ; 
+                                                                                              a owl:Restriction] ; 
+                                                                            a owl:Class])]) ; 
+                                           a owl:Class].
+voidext:VirtualLinkSet a owl:Class,
+                         rdfs:Class;
+                       rdfs:comment "A set of virtual links between two datasets. A virtual link is a connection between resources such as literals and instances with some commonality. Each of these resources is from a different RDF dataset. A resource mapping can be also considered when defining common resources between datasets. For example, the datasets uses different prefix namespaces for similar instances in a given domain scope. A virtual link can be interpreted as an intersection data point between two datasets. In addition, a virtual link is not concretely stored. The link may be physically established during a federated query execution, for example. This class must only have instances of its subclasses. It is recommendable to comment (rdfs:comment) the scope of the virtual link set."@en;
+                       rdfs:label "Virtual link set"@en.
+voidext:hasPerformanceMeasure a owl:ObjectProperty,
+                                rdf:Property;
+                              rdfs:comment "This property assings the performance of the virtual link set, for example, in terms of recall and precision. The values to be assigned (property range) are represented with the ontology MEX Performance Ontology."@en;
+                              rdfs:domain voidext:VirtualLinkSet;
+                              rdfs:label "has performance measure"@en;
+                              rdfs:range mexperf:PerformanceMeasure.
+voidext:intersectAt a owl:ObjectProperty,
+                      rdf:Property;
+                    rdfs:comment "This property is used to assign exactly either two shared instance sets (voidext:SharedInstanceSet) or two link sets (void:Linkset) to compose a complex link set (voidext:ComplexLinkSet). For each void:Linkset, either the subject or the object node of its link predicate intersects an RDF node of the link predicate from the other link set. In other words, the subject xor the object of a link predicate matches the subject xor the object of the other link predicate, where xor is the exclusive or. These link predicates must be from different datasets."@en;
+                    rdfs:domain voidext:ComplexLinkSet;
+                    rdfs:label "intersects at"@en;
+                    rdfs:range voidext:LINK_SHAREDINSTANCE_SET.
+voidext:intersectionType a owl:ObjectProperty,
+                           rdf:Property;
+                         rdfs:comment "This property assigns the intersection type of two RDF triples in different datasets (void:Dataset). In other words, if the intersection occurs at the subject xor the object node of a link predicate."@en;
+                         rdfs:domain voidext:ComplexLinkSet;
+                         rdfs:label "intersection type"@en;
+                         rdfs:range voidext:LinkSetIntersection.
+voidext:isSubsetOf a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:domain void:Dataset;
+                   rdfs:label "is subset of";
+                   rdfs:range void:Dataset;
+                   owl:inverseOf void:subset.
+voidext:linkPredicateDomain a rdf:Property;
+                            rdfs:comment "The link predicate's subject type (i.e. class), if any. Moreover, in the case of a void:Linkset that is classified as a simple link set (voidext:SimpleLinkSet), if the two datasets are linked through the link predicate's subject then the link predicate domain must be specified. Indeed, this subject matches a second resource in an external dataset. Therefore, the type of this second resource is asserted as the link predicate domain."@en;
+                            rdfs:domain void:Linkset;
+                            rdfs:label "link predicate domain"@en;
+                            rdfs:range rdfs:Class.
+voidext:linkPredicateRange a rdf:Property;
+                           rdfs:comment "The link predicate's object type (i.e. class), if any. Moreover, in the case of a void:Linkset that is not classified as a simple link set, if the two datasets are linked through the link predicate's object then the link predicate range must be specified. Indeed, this object matches a second resource in an external dataset. Therefore, the type of this second resource is asserted as the link predicate range."@en;
+                           rdfs:domain void:Linkset;
+                           rdfs:label "link predicate range"@en;
+                           rdfs:range rdfs:Class.
+voidext:queryLinkset a owl:AnnotationProperty,
+                       rdf:Property;
+                     rdfs:comment "This property must only assign one standard SPARQL query per category (i.e. subclass) of VirtualLinkSet to retrieve the formal definition of linkset (i.e. query projection) as presented in the voidext specification."@en;
+                     rdfs:label "query for linkset"@en;
+                     rdfs:range rdfs:Literal.
+voidext:querySharedInstanceSet a owl:AnnotationProperty,
+                                 rdf:Property;
+                               rdfs:comment "This property must only assign one standard SPARQL query per category (i.e. subclass) of VirtualLinkSet to retrieve the formal definition of shared instance set (i.e. query projection) as presented in the voidext specification."@en;
+                               rdfs:label "query for shared instance set"@en;
+                               rdfs:range rdfs:Literal.
+voidext:recommendedMapping a owl:ObjectProperty,
+                             owl:FunctionalProperty,
+                             rdf:Property;
+                           rdfs:comment "If more than one mapping is defined in the different void:Linkset(s) that are part of a voidext:ComplexLinkSet, one of the resource mappings may be recommended by asserting this property. The recommended mapping is the one stated to the void:Linkset assigned as the value of this property. If no mapping is explicitly recommended, solely one of them must arbitrarily be applied to establish a virtual link. At most one mapping function can be defined either per linkset or per shared instance set."@en;
+                           rdfs:domain voidext:ComplexLinkSet;
+                           rdfs:label "recommended mapping from"@en;
+                           rdfs:range voidext:LINK_SHAREDINSTANCE_SET.
+voidext:resourceMapping dcterms:description """Example of a value assigned with this property is the following 
+    \"?objectsTarget a <urn:Example>. BIND(IF(contains(?objectsTarget, \"Example:\" ), IRI(concat(\"http://example.org/uniprot:\",strafter(?objectsTarget,\"Example:\"))), ?objectsTargetConverted)
+         as ?converted_object)
+     FILTER(BOUND(?obj_converted))\". 
+     This will convert strings that contains \"Example:\" into IRIs defined in http://example.org/ namespace.""";
+                        a owl:DatatypeProperty,
+                          owl:FunctionalProperty,
+                          rdf:Property;
+                        rdfs:comment """The preprocessing of a resource (i.e. IRI or literal) in a source void:Dataset in order
+to match another resource in the target void:Dataset. A resource is either the subject or the 
+object of an RDF triple. The resource preprocessing (i.e. the resource mapping)
+must be defined with the SPARQL language by mainly using SPARQL built-ins for assignments
+(e.g. BIND), and expression and testing values (e.g. IF and FILTER). BIND is used to assign
+the output of a function.""";
+                        rdfs:domain voidext:LINK_SHAREDINSTANCE_SET;
+                        rdfs:label "resource mapped with"@en;
+                        rdfs:range rdfs:Literal.
+voidext:sharedInstanceType a rdf:Property;
+                           rdfs:comment "This property assings the type (i.e. class) of the shared instances from a given void:Dataset. Shared instances implies equivalent or similar instance IRIs that belong to different datasets."@en;
+                           rdfs:domain voidext:SharedInstanceSet;
+                           rdfs:label "shared instance type"@en;
+                           rdfs:range rdfs:Class.
+voidext:supportFederatedQuery a owl:DatatypeProperty,
+                                rdf:Property;
+                              rdfs:comment "This property should be used to explicitly assert that a void:Dataset supports SPARQL 1.1. federated queries to be able to access the dataset with the SERVICE keyword and perform federated join queries."@en;
+                              rdfs:domain void:Dataset;
+                              rdfs:label "supports SPARQL 1.1 federated query"@en;
+                              rdfs:range xsd:boolean.
+void:Dataset dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                             <http://vocab.deri.ie/void#keiale>,
+                             <http://vocab.deri.ie/void#junzha>,
+                             <http://vocab.deri.ie/void#cygri>;
+             a owl:Class,
+               rdfs:Class;
+             rdfs:comment "A set of RDF triples that are published, maintained or aggregated by a single provider.";
+             rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+             rdfs:label "dataset".
+void:DatasetDescription dcterms:creator <http://vocab.deri.ie/void#cygri>,
+                                        <http://vocab.deri.ie/void#junzha>,
+                                        <http://vocab.deri.ie/void#keiale>,
+                                        <http://vocab.deri.ie/void#Michael%20Hausenblas>;
+                        a owl:Class,
+                          rdfs:Class;
+                        rdfs:comment "A web resource whose foaf:primaryTopic or foaf:topics include void:Datasets.";
+                        rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                        rdfs:label "dataset description";
+                        rdfs:subClassOf foaf:Document.
+void:Linkset dcterms:created "2010-01-26"^^xsd:date;
+             dcterms:creator <http://vocab.deri.ie/void#junzha>,
+                             <http://vocab.deri.ie/void#cygri>,
+                             <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                             <http://vocab.deri.ie/void#keiale>;
+             a rdfs:Class,
+               owl:Class;
+             rdfs:comment "A collection of RDF links between two void:Datasets.";
+             rdfs:label "linkset";
+             rdfs:subClassOf void:Dataset.
+void:TechnicalFeature dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                      <http://vocab.deri.ie/void#keiale>,
+                                      <http://vocab.deri.ie/void#junzha>,
+                                      <http://vocab.deri.ie/void#cygri>;
+                      a owl:Class,
+                        rdfs:Class;
+                      rdfs:comment "A technical feature of a void:Dataset, such as a supported RDF serialization format.";
+                      rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                      rdfs:label "technical feature".
+void:class dcterms:creator <http://vocab.deri.ie/void#keiale>,
+                           <http://vocab.deri.ie/void#cygri>,
+                           <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                           <http://vocab.deri.ie/void#junzha>;
+           a owl:FunctionalProperty,
+             rdf:Property;
+           rdfs:comment "The rdfs:Class that is the rdf:type of all entities in a class-based partition.";
+           rdfs:domain void:Dataset;
+           rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+           rdfs:label "class";
+           rdfs:range rdfs:Class.
+void:classPartition dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                    <http://vocab.deri.ie/void#cygri>,
+                                    <http://vocab.deri.ie/void#keiale>,
+                                    <http://vocab.deri.ie/void#junzha>;
+                    a rdf:Property;
+                    rdfs:comment "A subset of a void:Dataset that contains only the entities of a certain rdfs:Class.";
+                    rdfs:domain void:Dataset;
+                    rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                    rdfs:label "class partition";
+                    rdfs:range void:Dataset;
+                    rdfs:subPropertyOf void:subset.
+void:classes dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                             <http://vocab.deri.ie/void#cygri>,
+                             <http://vocab.deri.ie/void#keiale>,
+                             <http://vocab.deri.ie/void#junzha>;
+             a owl:DatatypeProperty,
+               rdf:Property;
+             rdfs:comment "The total number of distinct classes in a void:Dataset. In other words, the number of distinct resources occuring as objects of rdf:type triples in the dataset.";
+             rdfs:domain void:Dataset;
+             rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+             rdfs:label "classes";
+             rdfs:range xsd:integer.
+void:dataDump dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                              <http://vocab.deri.ie/void#cygri>,
+                              <http://vocab.deri.ie/void#keiale>,
+                              <http://vocab.deri.ie/void#junzha>;
+              a rdf:Property;
+              rdfs:comment "An RDF dump, partial or complete, of a void:Dataset.";
+              rdfs:domain void:Dataset;
+              rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+              rdfs:label "Data Dump";
+              rdfs:range rdfs:Resource.
+void:distinctObjects dcterms:creator <http://vocab.deri.ie/void#junzha>,
+                                     <http://vocab.deri.ie/void#cygri>,
+                                     <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                     <http://vocab.deri.ie/void#keiale>;
+                     a owl:DatatypeProperty,
+                       rdf:Property;
+                     rdfs:comment "The total number of distinct objects in a void:Dataset. In other words, the number of distinct resources that occur in the object position of triples in the dataset. Literals are included in this count.";
+                     rdfs:domain void:Dataset;
+                     rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                     rdfs:label "distinct objects";
+                     rdfs:range xsd:integer.
+void:distinctSubjects dcterms:creator <http://vocab.deri.ie/void#junzha>,
+                                      <http://vocab.deri.ie/void#cygri>,
+                                      <http://vocab.deri.ie/void#keiale>,
+                                      <http://vocab.deri.ie/void#Michael%20Hausenblas>;
+                      a rdf:Property,
+                        owl:DatatypeProperty;
+                      rdfs:comment "The total number of distinct subjects in a void:Dataset. In other words, the number of distinct resources that occur in the subject position of triples in the dataset.";
+                      rdfs:domain void:Dataset;
+                      rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                      rdfs:label "distinct subjects";
+                      rdfs:range xsd:integer.
+void:documents dcterms:creator <http://vocab.deri.ie/void#cygri>,
+                               <http://vocab.deri.ie/void#keiale>,
+                               <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                               <http://vocab.deri.ie/void#junzha>;
+               a rdf:Property,
+                 owl:DatatypeProperty;
+               rdfs:comment "The total number of documents, for datasets that are published as a set of individual documents, such as RDF/XML documents or RDFa-annotated web pages. Non-RDF documents, such as web pages in HTML or images, are usually not included in this count. This property is intended for datasets where the total number of triples or entities is hard to determine. void:triples or void:entities should be preferred where practical.";
+               rdfs:domain void:Dataset;
+               rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+               rdfs:label "number of documents";
+               rdfs:range xsd:integer.
+void:entities dcterms:creator <http://vocab.deri.ie/void#cygri>,
+                              <http://vocab.deri.ie/void#junzha>,
+                              <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                              <http://vocab.deri.ie/void#keiale>;
+              a rdf:Property,
+                owl:DatatypeProperty;
+              rdfs:comment "The total number of entities that are described in a void:Dataset.";
+              rdfs:domain void:Dataset;
+              rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+              rdfs:label "number of entities";
+              rdfs:range xsd:integer.
+void:exampleResource dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                     <http://vocab.deri.ie/void#keiale>,
+                                     <http://vocab.deri.ie/void#junzha>,
+                                     <http://vocab.deri.ie/void#cygri>;
+                     a rdf:Property;
+                     rdfs:domain void:Dataset;
+                     rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                     rdfs:label "example resource of dataset";
+                     rdfs:range rdfs:Resource.
+void:feature dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                             <http://vocab.deri.ie/void#keiale>,
+                             <http://vocab.deri.ie/void#junzha>,
+                             <http://vocab.deri.ie/void#cygri>;
+             a rdf:Property;
+             rdfs:domain void:Dataset;
+             rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+             rdfs:label "feature";
+             rdfs:range void:TechnicalFeature.
+void:inDataset dcterms:creator <http://vocab.deri.ie/void#keiale>,
+                               <http://vocab.deri.ie/void#cygri>,
+                               <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                               <http://vocab.deri.ie/void#junzha>;
+               a rdf:Property;
+               rdfs:comment "Points to the void:Dataset that a document is a part of.";
+               rdfs:domain foaf:Document;
+               rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+               rdfs:label "in dataset";
+               rdfs:range void:Dataset.
+void:linkPredicate dcterms:creator <http://vocab.deri.ie/void#cygri>,
+                                   <http://vocab.deri.ie/void#junzha>,
+                                   <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                   <http://vocab.deri.ie/void#keiale>;
+                   a rdf:Property;
+                   rdfs:comment "It specifies the RDF predicate in a given dataset that relates to another dataset. In other words, the link predicate is the RDF property in the predicate position of an RDF triple that links two datasets.";
+                   rdfs:domain void:Linkset;
+                   rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                   rdfs:label "a link predicate";
+                   rdfs:range rdf:Property.
+void:objectsTarget dcterms:created "2010-01-26"^^xsd:date;
+                   dcterms:creator <http://vocab.deri.ie/void#keiale>,
+                                   <http://vocab.deri.ie/void#junzha>,
+                                   <http://vocab.deri.ie/void#cygri>,
+                                   <http://vocab.deri.ie/void#Michael%20Hausenblas>;
+                   a rdf:Property,
+                     owl:FunctionalProperty;
+                   rdfs:comment "The dataset describing the objects of the triples contained in the Linkset.";
+                   rdfs:domain void:Linkset;
+                   rdfs:label "Objects Target";
+                   rdfs:range void:Dataset;
+                   rdfs:subPropertyOf void:target.
+void:openSearchDescription dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                           <http://vocab.deri.ie/void#keiale>,
+                                           <http://vocab.deri.ie/void#cygri>,
+                                           <http://vocab.deri.ie/void#junzha>;
+                           a rdf:Property;
+                           rdfs:comment "An OpenSearch description document for a free-text search service over a void:Dataset.";
+                           rdfs:domain void:Dataset;
+                           rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                           rdfs:label "open search description";
+                           rdfs:range foaf:Document.
+void:properties dcterms:creator <http://vocab.deri.ie/void#keiale>,
+                                <http://vocab.deri.ie/void#cygri>,
+                                <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                <http://vocab.deri.ie/void#junzha>;
+                a rdf:Property,
+                  owl:DatatypeProperty;
+                rdfs:comment "The total number of distinct properties in a void:Dataset. In other words, the number of distinct resources that occur in the predicate position of triples in the dataset.";
+                rdfs:domain void:Dataset;
+                rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                rdfs:label "number of properties";
+                rdfs:range xsd:integer.
+void:property dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                              <http://vocab.deri.ie/void#keiale>,
+                              <http://vocab.deri.ie/void#junzha>,
+                              <http://vocab.deri.ie/void#cygri>;
+              a rdf:Property,
+                owl:FunctionalProperty;
+              rdfs:comment "The rdf:Property that is the predicate of all triples in a property-based partition.";
+              rdfs:domain void:Dataset;
+              rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+              rdfs:label "property";
+              rdfs:range rdf:Property.
+void:propertyPartition dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                       <http://vocab.deri.ie/void#junzha>,
+                                       <http://vocab.deri.ie/void#cygri>,
+                                       <http://vocab.deri.ie/void#keiale>;
+                       a rdf:Property;
+                       rdfs:comment "A subset of a void:Dataset that contains only the triples of a certain rdf:Property.";
+                       rdfs:domain void:Dataset;
+                       rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                       rdfs:label "property partition";
+                       rdfs:range void:Dataset;
+                       rdfs:subPropertyOf void:subset.
+void:rootResource dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                  <http://vocab.deri.ie/void#keiale>,
+                                  <http://vocab.deri.ie/void#junzha>,
+                                  <http://vocab.deri.ie/void#cygri>;
+                  a rdf:Property;
+                  rdfs:comment "A top concept or entry point for a void:Dataset that is structured in a tree-like fashion. All resources in a dataset can be reached by following links from its root resources in a small number of steps.";
+                  rdfs:domain void:Dataset;
+                  rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                  rdfs:label "root resource".
+void:sparqlEndpoint dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                    <http://vocab.deri.ie/void#keiale>,
+                                    <http://vocab.deri.ie/void#junzha>,
+                                    <http://vocab.deri.ie/void#cygri>;
+                    a rdf:Property;
+                    rdfs:domain void:Dataset;
+                    rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                    rdfs:label "has a SPARQL endpoint at".
+void:subjectsTarget dcterms:created "2010-01-26"^^xsd:date;
+                    dcterms:creator <http://vocab.deri.ie/void#cygri>,
+                                    <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                    <http://vocab.deri.ie/void#keiale>,
+                                    <http://vocab.deri.ie/void#junzha>;
+                    a owl:FunctionalProperty,
+                      rdf:Property;
+                    rdfs:comment "The dataset describing the subjects of triples contained in the Linkset.";
+                    rdfs:domain void:Linkset;
+                    rdfs:label "Subjects Target";
+                    rdfs:range void:Dataset;
+                    rdfs:subPropertyOf void:target.
+void:subset dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                            <http://vocab.deri.ie/void#keiale>,
+                            <http://vocab.deri.ie/void#junzha>,
+                            <http://vocab.deri.ie/void#cygri>;
+            a rdf:Property;
+            rdfs:domain void:Dataset;
+            rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+            rdfs:label "has subset";
+            rdfs:range void:Dataset.
+void:target dcterms:contributor <http://purl.org/query/tarcisiomf>;
+            dcterms:created "2010-01-26"^^xsd:date;
+            dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                            <http://vocab.deri.ie/void#cygri>,
+                            <http://vocab.deri.ie/void#junzha>,
+                            <http://vocab.deri.ie/void#keiale>;
+            dcterms:modified "2019-06-30"^^xsd:date;
+            dcterms:provenance voidext:MODIFIED_TARGET_1;
+            a rdf:Property;
+            rdfs:comment "One of the two datasets linked by the Linkset or the Shared instance set.";
+            rdfs:domain voidext:LINK_SHAREDINSTANCE_SET;
+            rdfs:label "Target";
+            rdfs:range void:Dataset.
+void:triples dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                             <http://vocab.deri.ie/void#junzha>,
+                             <http://vocab.deri.ie/void#cygri>,
+                             <http://vocab.deri.ie/void#keiale>;
+             a owl:DatatypeProperty,
+               rdf:Property;
+             rdfs:comment "The total number of triples contained in a void:Dataset.";
+             rdfs:domain void:Dataset;
+             rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+             rdfs:label "number of triples";
+             rdfs:range xsd:integer.
+void:uriLookupEndpoint dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                       <http://vocab.deri.ie/void#keiale>,
+                                       <http://vocab.deri.ie/void#junzha>,
+                                       <http://vocab.deri.ie/void#cygri>;
+                       a rdf:Property;
+                       rdfs:comment "Defines a simple URI look-up protocol for accessing a dataset.";
+                       rdfs:domain void:Dataset;
+                       rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                       rdfs:label "has an URI look-up endpoint at".
+void:uriRegexPattern dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                     <http://vocab.deri.ie/void#keiale>,
+                                     <http://vocab.deri.ie/void#junzha>,
+                                     <http://vocab.deri.ie/void#cygri>;
+                     a rdf:Property;
+                     rdfs:comment "Defines a regular expression pattern matching URIs in the dataset.";
+                     rdfs:domain void:Dataset;
+                     rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                     rdfs:label "has URI regular expression pattern".
+void:uriSpace dcterms:creator <http://vocab.deri.ie/void#keiale>,
+                              <http://vocab.deri.ie/void#junzha>,
+                              <http://vocab.deri.ie/void#cygri>,
+                              <http://vocab.deri.ie/void#Michael%20Hausenblas>;
+              a owl:DatatypeProperty,
+                rdf:Property;
+              rdfs:comment "A URI that is a common string prefix of all the entity URIs in a void:Dataset.";
+              rdfs:domain void:Dataset;
+              rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+              rdfs:label "URI space";
+              rdfs:range rdfs:Literal.
+void:vocabulary dcterms:creator <http://vocab.deri.ie/void#Michael%20Hausenblas>,
+                                <http://vocab.deri.ie/void#keiale>,
+                                <http://vocab.deri.ie/void#junzha>,
+                                <http://vocab.deri.ie/void#cygri>;
+                a rdf:Property;
+                rdfs:comment "A vocabulary that is used in the dataset.";
+                rdfs:domain void:Dataset;
+                rdfs:isDefinedBy <http://vocab.deri.ie/void>;
+                rdfs:label "vocabulary".
+<http://vocab.deri.ie/void#Department%20of%20Zoology%2C%20University%20of%20Oxford> a dcterms:Agent;
+                                                                                    foaf:homepage <http://www.zoo.ox.ac.uk/>;
+                                                                                    foaf:member <http://vocab.deri.ie/void#junzha>;
+                                                                                    foaf:name "Department of Zoology, University of Oxford".
+<http://vocab.deri.ie/void#Digital%20Enterprise%20Research%20Institute%2C%20NUI%20Galway> a dcterms:Agent;
+                                                                                          foaf:homepage <http://www.deri.ie/>;
+                                                                                          foaf:member <http://vocab.deri.ie/void#cygri>;
+                                                                                          foaf:name "Digital Enterprise Research Institute, NUI Galway".
+<http://vocab.deri.ie/void#LiDRC> a dcterms:Agent;
+                                  foaf:homepage <http://linkeddata.deri.ie/>;
+                                  foaf:member <http://vocab.deri.ie/void#Michael%20Hausenblas>;
+                                  foaf:name "LiDRC".
+<http://vocab.deri.ie/void#Michael%20Hausenblas> a foaf:Person;
+                                                 foaf:homepage <http://sw-app.org/about.html>;
+                                                 foaf:mbox <mailto:michael.hausenblas@deri.org>;
+                                                 foaf:name "Michael Hausenblas".
+<http://vocab.deri.ie/void#Talis> a dcterms:Agent;
+                                  foaf:homepage <http://www.talis.com/>;
+                                  foaf:member <http://vocab.deri.ie/void#keiale>;
+                                  foaf:name "Talis".
+<http://vocab.deri.ie/void#cygri> a foaf:Person;
+                                  foaf:homepage kontakt:;
+                                  foaf:mbox <mailto:richard.cyganiak@deri.org>;
+                                  foaf:name "Richard Cyganiak".
+<http://vocab.deri.ie/void#junzha> a foaf:Person;
+                                   foaf:homepage <http://users.ox.ac.uk/~zool0770/>;
+                                   foaf:mbox <mailto:jun.zhao@zoo.ox.ac.uk>;
+                                   foaf:name "Jun Zhao".
+<http://vocab.deri.ie/void#keiale> a foaf:Person;
+                                   foaf:homepage kwijibo:;
+                                   foaf:mbox <mailto:Keith.Alexander@talis.com>;
+                                   foaf:name "Keith Alexander".
+nsprov:Entity a owl:Class.
+sd:Dataset rdfs:subClassOf void:Dataset.
+sd:Graph rdfs:subClassOf void:Dataset.
+<https://www.sib.swiss/about-sib/organization> a dcterms:Agent;
+                                               foaf:homepage <http://www.sib.swiss/>;
+                                               foaf:member <http://purl.org/query/tarcisiomf>;
+                                               foaf:name "SIB Swiss Institute of Bioinformatics".

@@ -1,0 +1,81 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix omn: <http://open-multinet.info/ontology/omn#>.
+@prefix omnfed: <http://open-multinet.info/ontology/omn-federation#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+<http://alex.willner.ws/about#me> a foaf:Person.
+omn:Group a owl:Class.
+<http://open-multinet.info/ontology/omn-federation> ccrel:license <http://creativecommons.org/licenses/by/4.0/>;
+                                                    dc11:contributor <mailto:jorge.lopez_vergara@uam.es>,
+                                                                     <http://www.commit-nl.nl/people/morsey>,
+                                                                     <mailto:chrisap@noc.ntua.gr>,
+                                                                     <mailto:yahya.al-hazmi@tu-berlin.de>,
+                                                                     <mailto:yxin@renci.org>,
+                                                                     <mailto:loughnane@campus.tu-berlin.de>,
+                                                                     <mailto:brecht.vermeulen@iminds.be>,
+                                                                     <https://staff.fnwi.uva.nl/p.grosso>,
+                                                                     <mailto:ibaldin@renci.org>,
+                                                                     <mailto:thijs.walcarius@intec.ugent.be>;
+                                                    dc11:creator <http://alex.willner.ws/about#me>;
+                                                    dc11:description <http://raw.githubusercontent.com/open-multinet/playground-rspecs-ontology/master/ontologies/pics/omn-federation.png>,
+                                                                     "This ontology defines concepts related to federation of internet infrastructures."@en;
+                                                    dc11:publisher <http://open-multinet.org/>;
+                                                    dc11:rights <http://creativecommons.org/licenses/by/4.0/>;
+                                                    dc11:title "Open-Multinet Upper Federation Ontology"@en;
+                                                    dcterms:created "2014-11-11"^^xsd:date;
+                                                    dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
+                                                    dcterms:modified "2015-04-04"^^xsd:date;
+                                                    vann:preferredNamespacePrefix "omn-federation";
+                                                    vann:preferredNamespaceUri omnfed:;
+                                                    a owl:Ontology,
+                                                      voaf:Vocabulary;
+                                                    rdfs:label "omn-federation"@en;
+                                                    owl:imports omn:;
+                                                    owl:versionInfo "2015-04-04".
+omnfed:Federation a owl:Class;
+                  rdfs:label "Federation"@en;
+                  rdfs:subClassOf foaf:Organization.
+omnfed:FederationMember a owl:Class;
+                        rdfs:label "member of a federation"@en;
+                        rdfs:subClassOf foaf:Organization.
+omnfed:Infrastructure a owl:Class;
+                      rdfs:comment "an infrastructure such as a testbed or cloud facility"@en,
+                                   "Example: FUESCO Playground"@en;
+                      rdfs:label "Infrastructure"@en;
+                      rdfs:seeAlso <http://fp7-novi.eu/im.owl#Platform>;
+                      rdfs:subClassOf omn:Group.
+omnfed:administers a owl:ObjectProperty;
+                   rdfs:comment "an organization (e.g. a federation member) administers its own infrastructure"@en;
+                   rdfs:domain foaf:Organization;
+                   rdfs:label "administers"@en;
+                   rdfs:range omnfed:Infrastructure;
+                   owl:inverseOf omnfed:isAdministeredBy.
+omnfed:hasFederationMember a owl:ObjectProperty;
+                           rdfs:comment "a federation can have an organization as a member"@en;
+                           rdfs:domain omnfed:Federation;
+                           rdfs:label "has federation member"@en;
+                           rdfs:range omnfed:FederationMember.
+omnfed:isAdministeredBy a owl:ObjectProperty;
+                        rdfs:comment "an infrastructure can be administered by an organization (e.g. a federation member)"@en;
+                        rdfs:domain omnfed:Infrastructure;
+                        rdfs:label "is administered by"@en;
+                        rdfs:range foaf:Organization.
+omnfed:partOfFederation a owl:ObjectProperty;
+                        rdfs:comment "an organization can be part of a federation"@en;
+                        rdfs:domain omnfed:FederationMember;
+                        rdfs:label "is part of federation"@en;
+                        rdfs:range omnfed:Federation;
+                        owl:inverseOf omnfed:hasFederationMember.
+owl:AllDisjointClasses a owl:Class.
+owl:IrreflexiveProperty a owl:Class.
+owl:NamedIndividual a owl:Class.
+foaf:Organization a owl:Class.

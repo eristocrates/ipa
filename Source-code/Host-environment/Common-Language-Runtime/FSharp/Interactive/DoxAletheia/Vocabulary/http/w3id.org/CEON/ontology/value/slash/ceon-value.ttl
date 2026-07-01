@@ -1,0 +1,161 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix ceon: <http://w3id.org/CEON/>.
+@prefix ceon-actorODP: <http://w3id.org/CEON/ontology/actorODP/>.
+@prefix ceon-resourceODP: <http://w3id.org/CEON/ontology/resourceODP/>.
+@prefix ceon-value: <http://w3id.org/CEON/ontology/value/>.
+@prefix cpa: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+ceon-resourceODP:Resource a owl:Class.
+ceon-value: dcterms:contributor "Eva Blomqvist",
+                                "Robin Keskisärkkä",
+                                "Mikael Lindecrantz";
+            dcterms:created "2025-05-20"^^xsd:date;
+            dcterms:creator "Huanyu Li";
+            dcterms:description "A core ODP of the CEON ontology network, defining aspects of the value concept.";
+            dcterms:issued "2025-06-30"^^xsd:date;
+            dcterms:license "https://creativecommons.org/licenses/by/4.0/";
+            dcterms:publisher "Onto-DESIDE";
+            dcterms:title "Circular Economy Ontology Network (CEON) - Value Module";
+            vann:preferredNamespacePrefix "ceon-value";
+            vann:preferredNamespaceUri "https://w3id.org/CEON/ontoloy/value/";
+            cpa:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE1-3, CE5-16, CE5-17, CE5-19, CE7-8, CE9-4, CE10-10, CE11-2, C2-1, C4-4, C4-6, C5-2.";
+            a owl:Ontology;
+            rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the value concept.";
+            rdfs:seeAlso <https://github.com/LiUSemWeb/CEON>;
+            owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/>;
+            owl:versionIRI <http://w3id.org/CEON/ontology/value/0.3/>;
+            owl:versionInfo 0.3.
+ceon-value:EconomicValue a owl:Class;
+                         rdfs:comment "Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.";
+                         rdfs:label "Economic Value";
+                         rdfs:subClassOf ceon-value:Value;
+                         owl:equivalentClass ceon-value:UseValue.
+ceon-value:EnvironmentalValue a owl:Class;
+                              rdfs:comment "Environmental value represents how a thing (e.g., a product or service) match some environmental goals or needs of an actor under some circumstances.";
+                              rdfs:label "Environmental Value";
+                              rdfs:subClassOf ceon-value:Value.
+ceon-value:ExchangeValue a owl:Class;
+                         rdfs:comment "Exchange value represents the worth of a product, resource, service in a exchange setting, i.e., a product, resource, service is traded or sold.";
+                         rdfs:label "Exchange Value";
+                         rdfs:subClassOf ceon-value:Value.
+ceon-value:SocialValue a owl:Class;
+                       rdfs:comment "Social value represents how a thing (e.g., a product or service) match some social goals or needs of an actor under some circumstances.";
+                       rdfs:label "Social Value";
+                       rdfs:subClassOf ceon-value:Value.
+ceon-value:UseValue a owl:Class;
+                    rdfs:comment "Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.";
+                    rdfs:label "Use Value";
+                    rdfs:subClassOf ceon-value:Value.
+ceon-value:Value a owl:Class;
+                 rdfs:comment """Gain(s) or benefit(s) from satisfying needs and expectations,	in relation to the use	and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time."""@en;
+                 rdfs:isDefinedBy "ISO 59004:2024 - 3.1.7 value";
+                 rdfs:label "Value".
+ceon-value:ValueConsumer a owl:NamedIndividual,
+                           ceon-value:ValueParticipationRole.
+ceon-value:ValueContributor a owl:NamedIndividual,
+                              ceon-value:ValueParticipationRole.
+ceon-value:ValueCreator a owl:NamedIndividual,
+                          ceon-value:ValueParticipationRole.
+ceon-value:ValueDestroyer a owl:NamedIndividual,
+                            ceon-value:ValueParticipationRole.
+ceon-value:ValueDistributor a owl:NamedIndividual,
+                              ceon-value:ValueParticipationRole.
+ceon-value:ValueEvaluator a owl:NamedIndividual,
+                            ceon-value:ValueParticipationRole.
+ceon-value:ValueParticipation a owl:Class;
+                              rdfs:comment "A participation that may create/destory/miss value.";
+                              rdfs:label "Value Participation";
+                              rdfs:subClassOf [owl:someValuesFrom ceon-value:Value ; 
+                                               owl:onProperty ceon-value:hasAssociatedValue ; 
+                                               a owl:Restriction],
+                                              ceon-actorODP:Participation.
+ceon-value:ValueParticipationRole a owl:Class;
+                                  rdfs:comment "A role that a value participant can take.";
+                                  rdfs:label "Value Participation Role";
+                                  rdfs:subClassOf ceon-actorODP:Role.
+ceon-value:ValuePerception a owl:Class;
+                           rdfs:comment "Value perception of an actor determines specifc values.";
+                           rdfs:label "Value Perception".
+ceon-value:ValueProposition a owl:Class;
+                            rdfs:comment "Proposed or intended value outcome of some process, action or collaboration.";
+                            rdfs:label "Value Proposition";
+                            rdfs:subClassOf [owl:someValuesFrom ceon-value:Value ; 
+                                             owl:onProperty ceon-value:hasAimedValue ; 
+                                             a owl:Restriction],
+                                            [owl:someValuesFrom ceon-actorODP:Actor ; 
+                                             owl:onProperty ceon-value:targettingActor ; 
+                                             a owl:Restriction],
+                                            [owl:someValuesFrom ceon-value:ValueParticipation ; 
+                                             owl:onProperty ceon-value:targettingValueParticipation ; 
+                                             a owl:Restriction].
+ceon-value:hasAimedValue a owl:ObjectProperty;
+                         rdfs:comment "A value proposition has specific aimed values.";
+                         rdfs:domain ceon-value:ValueProposition;
+                         rdfs:label "has aimed value";
+                         rdfs:range ceon-value:Value.
+ceon-value:hasAssociatedValue a owl:ObjectProperty;
+                              rdfs:comment "A value perception about creating/destoring/missing some value.";
+                              rdfs:domain ceon-value:ValuePerception;
+                              rdfs:label "has associated value";
+                              rdfs:range ceon-value:Value;
+                              rdfs:subPropertyOf owl:topObjectProperty.
+ceon-value:hasPerception a owl:ObjectProperty;
+                         rdfs:comment "An actor perceive specific values, or a value proposition is about specific values.";
+                         rdfs:domain [owl:unionOf (ceon-actorODP:Actor
+                                                   ceon-value:ValueProposition) ; 
+                                      a owl:Class];
+                         rdfs:label "has perception";
+                         rdfs:range ceon-value:ValuePerception.
+ceon-value:hasVPTargets a owl:ObjectProperty;
+                        rdfs:comment "A value proposition is proposed about specific actors, participations or resources.";
+                        rdfs:label "has value proposition targets".
+ceon-value:hasValuableResource a owl:ObjectProperty;
+                               rdfs:comment "A value participation has participating resources.";
+                               rdfs:domain ceon-value:ValueParticipation;
+                               rdfs:label "has valuable resource";
+                               rdfs:range ceon-resourceODP:Resource;
+                               rdfs:subPropertyOf owl:topObjectProperty.
+ceon-value:hasValueParticipantRole a owl:ObjectProperty;
+                                   rdfs:comment "Holds the value of the role of the value participant in this value participation relation.";
+                                   rdfs:domain ceon-value:ValueParticipation;
+                                   rdfs:label "has value participant role";
+                                   rdfs:range ceon-value:ValueParticipationRole;
+                                   rdfs:subPropertyOf ceon-actorODP:participantRole.
+ceon-value:onValueParticipation a owl:ObjectProperty;
+                                rdfs:comment "A perception is on specific value participations.";
+                                rdfs:domain ceon-value:ValuePerception;
+                                rdfs:label "on value participation";
+                                rdfs:range ceon-value:ValueParticipation.
+ceon-value:proposedBy a owl:ObjectProperty;
+                      rdfs:comment "A value proposition is proposed by specific actors.";
+                      rdfs:domain ceon-value:ValueProposition;
+                      rdfs:label "proposed by";
+                      rdfs:range ceon-actorODP:Actor.
+ceon-value:targettingActor a owl:ObjectProperty;
+                           rdfs:comment "A value proposition is about some actors.";
+                           rdfs:domain ceon-value:ValueProposition;
+                           rdfs:label "targetting actor";
+                           rdfs:range ceon-actorODP:Actor;
+                           rdfs:subPropertyOf ceon-value:hasVPTargets.
+ceon-value:targettingResource a owl:ObjectProperty;
+                              rdfs:comment "A value proposition is about some resources.";
+                              rdfs:domain ceon-value:ValueProposition;
+                              rdfs:label "targetting resource";
+                              rdfs:range ceon-resourceODP:Resource;
+                              rdfs:subPropertyOf ceon-value:hasVPTargets.
+ceon-value:targettingValueParticipation a owl:ObjectProperty;
+                                        rdfs:comment "A value proposition is about some participation.";
+                                        rdfs:domain ceon-value:ValueProposition;
+                                        rdfs:label "targetting value participation";
+                                        rdfs:range ceon-value:ValueParticipation;
+                                        rdfs:subPropertyOf ceon-value:hasVPTargets.
+xsd:date a rdfs:Datatype.
+xsd:gMonthYear a rdfs:Datatype.
+xsd:gYear a rdfs:Datatype.

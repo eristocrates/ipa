@@ -1,0 +1,82 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix hr: <http://iserve.kmi.open.ac.uk/ns/hrests#>.
+@prefix msm: <http://iserve.kmi.open.ac.uk/ns/msm#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix htir: <http://www.w3.org/2011/http#>.
+
+<http://iserve.kmi.open.ac.uk/ns/hrests> dcterms:created "2010-03-10"^^xsd:date;
+                                         dcterms:creator <http://jacek.cz/#me>,
+                                                         <http://kmi.open.ac.uk/>,
+                                                         <http://identifiers.kmi.open.ac.uk/people/carlos-pedrinaci/>,
+                                                         <http://vitvar.com/>;
+                                         dcterms:description "This is a description of the Web API Grounding Model, a simple model for capturing Web API details relevant for invocation support"@en;
+                                         dcterms:issued "2010-03-10"^^xsd:date;
+                                         dcterms:modified "2012-03-14"^^xsd:date,
+                                                          "2011-12-03"^^xsd:date,
+                                                          "2013-05-08"^^xsd:date,
+                                                          "2013-10-03"^^xsd:date;
+                                         a owl:Ontology;
+                                         rdfs:label "Web API Grounding Model"@en;
+                                         owl:imports <http://www.w3.org/2011/http>,
+                                                     <http://iserve.kmi.open.ac.uk/ns/msm>,
+                                                     <http://www.w3.org/2011/http-methods>;
+                                         owl:priorVersion <http://purl.org/hrests/v2#>;
+                                         owl:versionInfo "1.2".
+hr:AuthenticationCredential a rdfs:Class;
+                            rdfs:description "an input parameter that carries an authentication credential (this class is intended for use in sawsdl:modelReference on msm:MessagePart)"@en;
+                            rdfs:isDefinedBy hr:;
+                            rdfs:label "Authentication Credential"@en.
+hr:MediaType a rdfs:Datatype;
+             rdfs:description "a data type for literals that specify media types"@en;
+             rdfs:isDefinedBy hr:;
+             rdfs:label "Media Type"@en.
+hr:OutputFormatParameter a rdfs:Class;
+                         rdfs:description "an input parameter that dictates the output format that the service should return (this class is intended for use in sawsdl:modelReference on msm:MessagePart)"@en;
+                         rdfs:isDefinedBy hr:;
+                         rdfs:label "Output Format Parameter"@en.
+hr:URITemplate a rdfs:Class;
+               rdfs:description "URI template for use as a service address, possibly with parameters"@en;
+               rdfs:isDefinedBy hr:;
+               rdfs:label "URI Template"@en.
+hr:acceptsContentType a rdf:Property;
+                      rdfs:description "the content type accepted by the operation"@en;
+                      rdfs:domain msm:Operation;
+                      rdfs:isDefinedBy hr:;
+                      rdfs:label "accepts Content Type"@en;
+                      rdfs:range hr:MediaType.
+hr:automaticallyExtractedDescription a rdf:Property;
+                                     rdfs:isDefinedBy hr:;
+                                     rdfs:label "automatically Extracted Description"@en;
+                                     rdfs:range rdfs:Literal.
+hr:hasAddress a rdf:Property;
+              rdfs:description "the address of the operation or service (expected to be used on msm:Service or msm:Operation)"@en;
+              rdfs:isDefinedBy hr:;
+              rdfs:label "has Address"@en;
+              rdfs:range hr:URITemplate.
+hr:hasComment a rdf:Property;
+              rdfs:isDefinedBy hr:;
+              rdfs:label "has Comment"@en;
+              rdfs:subPropertyOf rdfs:comment.
+hr:hasMethod a rdf:Property;
+             rdfs:description "the method of an operation"@en;
+             rdfs:domain msm:Operation;
+             rdfs:isDefinedBy hr:;
+             rdfs:label "has Method"@en;
+             rdfs:range hr:Method.
+hr:isGroundedIn a rdf:Property;
+                rdfs:description "the URI template parameter in which a message part is grounded (may be accompanied by sawsdl lowering schema mapping)"@en;
+                rdfs:domain msm:MessagePart;
+                rdfs:isDefinedBy hr:;
+                rdfs:label "is Grounded In"@en.
+hr:producesContentType a rdf:Property;
+                       rdfs:description "the content type produced by the operation"@en;
+                       rdfs:domain msm:Operation;
+                       rdfs:isDefinedBy hr:;
+                       rdfs:label "produces Content Type"@en;
+                       rdfs:range hr:MediaType.
+htir:Method a rdfs:Class;
+            rdfs:subClassOf hr:Method.

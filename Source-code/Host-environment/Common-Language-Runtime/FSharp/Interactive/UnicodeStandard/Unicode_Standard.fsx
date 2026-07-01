@@ -221,6 +221,37 @@ let ASCII_punctuation_and_symbols =
 
                                  |]
 
+let ucd_whitespace =
+    Code_Subspace.from_union [|
+
+                                Code_Subspace.from_int 0x0009
+                                Code_Subspace.from_int 0x000A
+                                Code_Subspace.from_int 0x000B
+                                Code_Subspace.from_int 0x000C
+                                Code_Subspace.from_int 0x000D
+                                Code_Subspace.from_int 0x0020
+                                Code_Subspace.from_int 0x0085
+                                Code_Subspace.from_int 0x00A0
+                                Code_Subspace.from_int 0x1680
+                                Code_Subspace.from_int 0x2000
+                                Code_Subspace.from_int 0x2001
+                                Code_Subspace.from_int 0x2002
+                                Code_Subspace.from_int 0x2003
+                                Code_Subspace.from_int 0x2004
+                                Code_Subspace.from_int 0x2005
+                                Code_Subspace.from_int 0x2006
+                                Code_Subspace.from_int 0x2007
+                                Code_Subspace.from_int 0x2008
+                                Code_Subspace.from_int 0x2009
+                                Code_Subspace.from_int 0x200A
+                                Code_Subspace.from_int 0x2028
+                                Code_Subspace.from_int 0x2029
+                                Code_Subspace.from_int 0x202F
+                                Code_Subspace.from_int 0x205F
+                                Code_Subspace.from_int 0x3000
+
+                                 |]
+
 let commercial_at = Code_Subspace.from_string "@"
 let left_square_bracket = Code_Subspace.from_string "["
 let right_square_bracket = Code_Subspace.from_string "]"

@@ -1,0 +1,42 @@
+@base <http://www.w3.org/2000/10/swap/set>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix : <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix set: <http://www.w3.org/2000/10/swap/set#>.
+
+set:difference a rdf:Property;
+               rdfs:comment """The subject is a list of sets,
+    and the objet is the difference of the sets in the object""";
+               rdfs:label "difference";
+               rdfs:range rdfs:Class.
+set:in a rdf:Property;
+       rdfs:comment """This set contains that as a member.
+    Cwm will bind the subject to each of the members of the object.""";
+       rdfs:label "in";
+       rdfs:range rdfs:Class.
+set:intersection a rdf:Property;
+                 rdfs:comment """The subject is a list of sets,
+    and the objet is the intersection of the sets in the object""";
+                 rdfs:label "intersection";
+                 rdfs:range rdfs:Class.
+set:member a rdf:Property;
+           rdfs:comment """This is a member of that set.
+    Cwm will bind the object to each of the members of the suject.""";
+           rdfs:domain rdfs:Class;
+           rdfs:label "member";
+           owl:inverseOf set:in.
+set:symmetricDifference a rdf:Property;
+                        rdfs:comment """The subject is a list of sets,
+    and the objet is the symmetricDifference of the sets in the object""";
+                        rdfs:label "symmetric difference";
+                        rdfs:range rdfs:Class.
+set:union a rdf:Property;
+          rdfs:comment """The subject is a list [sic] of sets,
+    and the objet is the union of the sets in the object""";
+          rdfs:label "union";
+          rdfs:range rdfs:Class.

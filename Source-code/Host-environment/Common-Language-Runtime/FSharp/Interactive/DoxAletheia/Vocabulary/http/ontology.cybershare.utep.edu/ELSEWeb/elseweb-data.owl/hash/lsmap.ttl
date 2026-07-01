@@ -1,0 +1,114 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix oboe: <http://ecoinformatics.org/oboe/oboe.1.0/oboe-core.owl#>.
+@prefix edac: <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl#>.
+@prefix lslife: <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper.owl#>.
+@prefix lswmo: <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-modelling.owl#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix sio: <http://semanticscience.org/resource/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix lsweb: <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix aerdcat: <http://www.w3.org/ns/dcat#>.
+@prefix nsprov: <http://www.w3.org/ns/prov#>.
+
+lsweb:Characteristic rdfs:subClassOf oboe:Characteristic,
+                                     sio:SIO_000614.
+lsweb:DatasetManifestation a owl:Class;
+                           rdfs:subClassOf aerdcat:Distribution.
+lsweb:Entity rdfs:subClassOf oboe:Entity,
+                             sio:SIO_000776.
+lsweb:Format a owl:Class;
+             rdfs:subClassOf dcterms:MediaTypeOrExtent.
+lsweb:GeographicRegion sio:example "America";
+                       a owl:Class;
+                       rdfs:subClassOf dcterms:Location.
+lsweb:GeospatialDataset a owl:Class;
+                        rdfs:subClassOf aerdcat:Dataset.
+lsweb:Provider a owl:Class;
+               rdfs:subClassOf nsprov:Agent.
+lsweb:Theme a owl:Class;
+            rdfs:subClassOf skos:Concept.
+lsweb:TimePeriod a owl:Class;
+                 rdfs:subClassOf dcterms:PeriodOfTime.
+lsweb:Unit a owl:Class;
+           rdfs:subClassOf oboe:Unit,
+                           sio:SIO_000074.
+lsweb:encodedInFormat a owl:ObjectProperty;
+                      rdfs:subPropertyOf aerdcat:mediaType.
+lsweb:hasManifestation rdfs:subPropertyOf aerdcat:distribution.
+edac:Processing rdfs:subClassOf lswmo:ServiceActivity.
+edac:wasAssociatedWith rdfs:subPropertyOf nsprov:wasAssociatedWith.
+edac:wasMeasuredBy rdfs:subPropertyOf nsprov:wasGeneratedBy.
+edac:wasModelledBy rdfs:subPropertyOf nsprov:wasGeneratedBy.
+lslife:LifemapperServiceActivity a owl:Class;
+                                 rdfs:subClassOf lswmo:ServiceActivity.
+lslife:LifemapperServiceAgent a owl:Class;
+                              rdfs:subClassOf lswmo:ServiceAgent.
+lslife:ProjectionActivity a owl:Class;
+                          rdfs:subClassOf lslife:LifemapperServiceActivity.
+lswmo:ServiceActivity a owl:Class;
+                      rdfs:subClassOf nsprov:Activity.
+lswmo:ServiceAgent a owl:Class;
+                   rdfs:subClassOf nsprov:SoftwareAgent.
+lswmo:SpeciesModellingAlgorithm rdfs:subClassOf sio:SIO_000094.
+lswmo:SpeciesModellingParameter rdfs:subClassOf sio:SIO_000144.
+lswmo:SpeciesModellingParameters rdfs:subClassOf sio:SIO_000616.
+lswmo:SpeciesModellingSoftware rdfs:subClassOf lslife:LifemapperServiceAgent,
+                                               lswmo:ServiceAgent,
+                                               sio:SIO_000140.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-service.owl#CardioSHAREActivity> rdfs:subClassOf lswmo:ServiceActivity.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-service.owl#SADIActivity> rdfs:subClassOf lswmo:ServiceActivity.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-service.owl#SADIService> rdfs:subClassOf lswmo:ServiceAgent.
+<http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-service.owl#SHAREClient> rdfs:subClassOf lswmo:ServiceAgent.
+<http://ontology.cybershare.utep.edu/ELSEWeb/mappings/elseweb-mappings.owl> ccrel:license "http://creativecommons.org/licenses/by/3.0/"^^xsd:anyURI;
+                                                                            <http://protege.stanford.edu/plugins/owl/protege#defaultLanguage> "en";
+                                                                            dc11:contributor """Contributors are those that engage in discussions during the development of this ontology (in alphabetical order):
+karl benedict
+luis garnica
+cj grady
+bill hudspeth
+deana pennington
+soren scott
+aimee stewart""";
+                                                                            dc11:creator "ELSEWeb team"@en,
+                                                                                         "Natalia Villanueva-Rosales"@en,
+                                                                                         "http://cybershare.utep.edu"^^xsd:anyURI,
+                                                                                         "Nicholas del Rio"@en;
+                                                                            dc11:description """The ELSEWeb mappings ontology imports related upper level ontologies and vocabularies and aligns ELSEWeb ontologies to importec classes. This ontology provides support for the ELSEWeb project(http://elseweb.cybershare.utep.edu/).
+website: http://elseweb.cybershare.utep.edu/ontologies
+email: nvillanuevarosales@utep.edu
+"""@en;
+                                                                            dc11:issued "2014-05-01"^^xsd:date;
+                                                                            dc11:rights "free to use,share,modify. modify with attribution [http://creativecommons.org/licenses/by/3.0/].";
+                                                                            dc11:title "ELSEWeb Mappings Ontology"@en;
+                                                                            dcterms:identifier "elseweb-mappings.owl";
+                                                                            dcterms:modified "2015-09-24"^^xsd:date;
+                                                                            vann:preferredNamespacePrefix "elseweb-mappings"@en;
+                                                                            vann:preferredNamespaceUri "http://ontology.cybershare.utep.edu/ELSEWeb/";
+                                                                            a owl:Ontology;
+                                                                            rdfs:isDefinedBy <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-mappings.owl>;
+                                                                            owl:imports <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-modelling.owl>,
+                                                                                        <http://semanticscience.org/ontology/sio.owl>,
+                                                                                        <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper-parameters.owl>,
+                                                                                        <http://www.w3.org/ns/dcat>,
+                                                                                        <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-service.owl>,
+                                                                                        <http://ecoinformatics.org/oboe/oboe.1.0/oboe-core.owl>,
+                                                                                        <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-lifemapper.owl>,
+                                                                                        <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-edac.owl>,
+                                                                                        <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-data.owl>,
+                                                                                        <http://www.w3.org/ns/prov-o#>;
+                                                                            owl:versionIRI <http://ontology.cybershare.utep.edu/ELSEWeb/elseweb-mappings.owl>;
+                                                                            owl:versionInfo "1.2".
+dcterms:Location a owl:Class;
+                 rdfs:label "location".
+dcterms:PeriodOfTime a owl:Class;
+                     rdfs:label "period of time".
+skos:Concept a owl:Class;
+             rdfs:label "concept".
+nsprov:Agent a owl:Class.

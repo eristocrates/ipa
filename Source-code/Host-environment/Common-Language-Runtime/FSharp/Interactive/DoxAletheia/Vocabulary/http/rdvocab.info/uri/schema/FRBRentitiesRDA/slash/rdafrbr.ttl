@@ -1,0 +1,109 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdafrbr: <http://rdvocab.info/uri/schema/FRBRentitiesRDA/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+
+<http://metadataregistry.org/uri/RegStatus/1002> a skos:Concept;
+                                                 skos:prefLabel "New-Proposed"@en.
+<http://rdvocab.info/uri/schema/FRBRentitiesRDA> dc11:title "FRBR Entities for RDA"@en;
+                                                 skos:note "Registration of FRBR entities for use in RDA.  "@en.
+rdafrbr:Agent <http://metadataregistry.org/uri/profile/RegAp/hasSubClass> rdafrbr:Person,
+                                                                          rdafrbr:CorporateBody,
+                                                                          rdafrbr:Family;
+              <http://metadataregistry.org/uri/profile/RegAp/name> "Agent"@en;
+              <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+              a owl:Class;
+              rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+              rdfs:label "Agent"@en;
+              skos:scopeNote "Based on FRBRoo/CIDOC-CRM concept of E39 Actor as agent."@en.
+rdafrbr:Concept <http://metadataregistry.org/uri/profile/RegAp/name> "Concept"@en;
+                <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                a owl:Class;
+                rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+                rdfs:label "Concept"@en;
+                rdfs:subClassOf rdafrbr:Subject;
+                skos:definition "An abstract notion or idea."@en.
+rdafrbr:CorporateBody <http://metadataregistry.org/uri/profile/RegAp/name> "CorporateBody"@en;
+                      <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                      a owl:Class;
+                      rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+                      rdfs:label "Corporate Body"@en;
+                      rdfs:subClassOf rdafrbr:Agent;
+                      skos:definition "An organization or group of individuals and/or organizations acting as a unit."@en.
+rdafrbr:Event <http://metadataregistry.org/uri/profile/RegAp/name> "Event"@en;
+              <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+              a owl:Class;
+              rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+              rdfs:label "Event"@en;
+              rdfs:subClassOf rdafrbr:Subject;
+              skos:definition "An action or occurrence."@en.
+rdafrbr:Expression <http://metadataregistry.org/uri/profile/RegAp/name> "Expression"@en;
+                   <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                   a owl:Class;
+                   rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+                   rdfs:label "Expression"@en;
+                   skos:definition "The intellectual or artistic realization of a work in the form of alpha-numeric, musical, or choreographic notation, sound, image, object, movement, etc., or any combination of such forms."@en.
+rdafrbr:Family <http://metadataregistry.org/uri/profile/RegAp/name> "Family"@en;
+               <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+               a owl:Class;
+               rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+               rdfs:label "Family"@en;
+               rdfs:subClassOf rdafrbr:Agent.
+rdafrbr:Item <http://metadataregistry.org/uri/profile/RegAp/name> "Item"@en;
+             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+             a owl:Class;
+             rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+             rdfs:label "Item"@en;
+             skos:definition "A single exemplar of a manifestation. "@en.
+rdafrbr:Manifestation <http://metadataregistry.org/uri/profile/RegAp/name> "Manifestation"@en;
+                      <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                      a owl:Class;
+                      rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+                      rdfs:label "Manifestation"@en;
+                      skos:definition "The physical embodiment of an expression of a work. "@en.
+rdafrbr:Name <http://metadataregistry.org/uri/profile/RegAp/name> "Name"@en;
+             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+             a owl:Class;
+             rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+             rdfs:label "Name"@en;
+             skos:definition "A word, character, or group of words and/or characters by which a person, family, or corporate body is known."@en.
+rdafrbr:Object <http://metadataregistry.org/uri/profile/RegAp/name> "Object"@en;
+               <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+               a owl:Class;
+               rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+               rdfs:label "Object"@en;
+               rdfs:subClassOf rdafrbr:Subject;
+               skos:definition "A material thing."@en.
+rdafrbr:Person <http://metadataregistry.org/uri/profile/RegAp/name> "Person"@en;
+               <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+               a owl:Class;
+               rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+               rdfs:label "Person"@en;
+               rdfs:subClassOf rdafrbr:Agent;
+               skos:definition "An individual."@en.
+rdafrbr:Place <http://metadataregistry.org/uri/profile/RegAp/name> "Place"@en;
+              <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+              a owl:Class;
+              rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+              rdfs:label "Place"@en;
+              rdfs:subClassOf rdafrbr:Subject;
+              skos:definition "A location."@en.
+rdafrbr:Subject <http://metadataregistry.org/uri/profile/RegAp/hasSubClass> rdafrbr:Concept,
+                                                                            rdafrbr:Place,
+                                                                            rdafrbr:Event,
+                                                                            rdafrbr:Object;
+                <http://metadataregistry.org/uri/profile/RegAp/name> "Subject"@en;
+                <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                a owl:Class;
+                rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+                rdfs:label "Subject"@en.
+rdafrbr:Work <http://metadataregistry.org/uri/profile/RegAp/name> "Work"@en;
+             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+             a owl:Class;
+             rdfs:isDefinedBy <http://rdvocab.info/uri/schema/FRBRentitiesRDA>;
+             rdfs:label "Work"@en;
+             skos:definition "A distinct intellectual or artistic creation. "@en.

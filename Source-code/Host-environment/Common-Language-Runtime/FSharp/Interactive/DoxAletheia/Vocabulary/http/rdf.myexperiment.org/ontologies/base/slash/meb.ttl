@@ -1,0 +1,705 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix meb: <http://rdf.myexperiment.org/ontologies/base/>.
+@prefix snarm: <http://rdf.myexperiment.org/ontologies/snarm/>.
+@prefix sioc: <http://rdfs.org/sioc/ns#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix planet: <http://dbpedia.org/>.
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+dbpedia-owl:residence a owl:ObjectProperty.
+dc11:contributor a owl:AnnotationProperty.
+dc11:creator a owl:AnnotationProperty.
+dc11:date a owl:AnnotationProperty.
+dc11:format a owl:AnnotationProperty.
+dc11:language a owl:AnnotationProperty.
+dc11:publisher a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:Agent a owl:Class.
+dcterms:created a owl:DatatypeProperty;
+                rdfs:range xsd:dateTime.
+dcterms:description a owl:DatatypeProperty;
+                    rdfs:range xsd:string.
+dcterms:hasVersion a owl:ObjectProperty;
+                   owl:inverseOf dcterms:isVersionOf.
+dcterms:identifier a owl:DatatypeProperty;
+                   rdfs:range xsd:string.
+dcterms:isVersionOf a owl:ObjectProperty;
+                    owl:inverseOf dcterms:hasVersion.
+dcterms:modified a owl:DatatypeProperty;
+                 rdfs:range xsd:dateTime.
+dcterms:title a owl:DatatypeProperty;
+              rdfs:range xsd:string.
+dcterms:type a owl:DatatypeProperty;
+             rdfs:range xsd:string.
+meb: dc11:contributor "David R Newman";
+     dc11:creator <http://id.ecs.soton.ac.uk/person/9421>;
+     dc11:date "2009-01-28"^^xsd:date;
+     dc11:format "rdf/xml";
+     dc11:language "en";
+     dc11:publisher <http://rdf.myexperiment.org/>;
+     dc11:title "The myExperiment Base Ontology"@en;
+     a owl:Ontology;
+     rdfs:comment "This provides the base elements required by myExperiment for content management, social networking and object annotation.";
+     rdfs:label "myExperiment Base v1.0";
+     owl:imports snarm:;
+     owl:versionInfo "$Date: 2013/03/26 $".
+meb:Actor a owl:Class;
+          rdfs:comment "An object that can perform an action";
+          rdfs:isDefinedBy meb:;
+          rdfs:label "Actor";
+          rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty dcterms:modified ; 
+                           a owl:Restriction],
+                          [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty sioc:name ; 
+                           a owl:Restriction],
+                          [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty dcterms:created ; 
+                           a owl:Restriction],
+                          [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty dcterms:description ; 
+                           a owl:Restriction],
+                          [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty foaf:name ; 
+                           a owl:Restriction],
+                          dcterms:Agent;
+          owl:disjointWith meb:Submission.
+meb:Annotatable a owl:Class;
+                rdfs:comment "An object that can be annotated with Annotations";
+                rdfs:isDefinedBy meb:;
+                rdfs:label "Annotatable";
+                rdfs:subClassOf [owl:minCardinality "0"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty meb:has-annotation ; 
+                                 a owl:Restriction],
+                                meb:Interface.
+meb:Annotation a owl:Class;
+               rdfs:comment "An Annotation of a Annotatable object";
+               rdfs:isDefinedBy meb:;
+               rdfs:label "Annotation";
+               rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                owl:onProperty meb:annotates ; 
+                                a owl:Restriction],
+                               meb:Submission,
+                               [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                owl:onProperty meb:has-annotator ; 
+                                a owl:Restriction];
+               owl:disjointWith meb:Message,
+                                meb:Announcement,
+                                meb:Contribution,
+                                meb:Request.
+meb:Announcement a owl:Class;
+                 rdfs:comment "A public Announcement";
+                 rdfs:isDefinedBy meb:;
+                 rdfs:label "Announcement";
+                 rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty dcterms:title ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty meb:text ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty meb:has-announcer ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty dcterms:modified ; 
+                                  a owl:Restriction],
+                                 meb:Submission;
+                 owl:disjointWith meb:Annotation,
+                                  meb:Request,
+                                  meb:Contribution,
+                                  meb:Message.
+meb:ContentType a owl:Class;
+                rdfs:comment "The type of content for an Upload";
+                rdfs:isDefinedBy meb:;
+                rdfs:label "ContentType";
+                rdfs:subClassOf meb:Contribution.
+meb:Contribution a owl:Class;
+                 rdfs:comment "An object that is contributed by a User";
+                 rdfs:isDefinedBy meb:;
+                 rdfs:label "Contribution";
+                 rdfs:subClassOf meb:Submission,
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty sioc:has_owner ; 
+                                  a owl:Restriction],
+                                 [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty meb:has-policy ; 
+                                  a owl:Restriction],
+                                 [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty dcterms:description ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty dcterms:modified ; 
+                                  a owl:Restriction];
+                 owl:disjointWith meb:Annotation,
+                                  meb:Message,
+                                  meb:Announcement,
+                                  meb:Request.
+meb:Friendship a owl:Class;
+               rdfs:comment "A Friendship between two Users";
+               rdfs:isDefinedBy meb:;
+               rdfs:label "Friendship";
+               rdfs:subClassOf meb:Request;
+               owl:disjointWith meb:Invitation,
+                                meb:Membership.
+meb:FriendshipInvitation a owl:Class;
+                         rdfs:comment "A FriendshipInvitation to an external email address";
+                         rdfs:isDefinedBy meb:;
+                         rdfs:label "FriendshipInvitation";
+                         rdfs:subClassOf meb:Invitation;
+                         owl:disjointWith meb:MembershipInvitation.
+meb:Group a owl:Class;
+          rdfs:comment "A Group of Users";
+          rdfs:isDefinedBy meb:;
+          rdfs:label "Group";
+          rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty dcterms:description ; 
+                           a owl:Restriction],
+                          meb:Actor,
+                          [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty sioc:has_owner ; 
+                           a owl:Restriction],
+                          [owl:minCardinality "0"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty sioc:has_member ; 
+                           a owl:Restriction];
+          owl:disjointWith meb:User;
+          owl:equivalentClass sioc:UserGroup.
+meb:GroupAnnouncement a owl:Class;
+                      rdfs:comment "An Announcement to a Group";
+                      rdfs:isDefinedBy meb:;
+                      rdfs:label "GroupAnnouncement";
+                      rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                       owl:onProperty meb:announced-to ; 
+                                       a owl:Restriction],
+                                      [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                       owl:onProperty meb:public-announcement ; 
+                                       a owl:Restriction],
+                                      meb:Announcement.
+meb:Interface a owl:Class;
+              rdfs:comment "Superclass for all Interface classes";
+              rdfs:isDefinedBy meb:;
+              rdfs:label "Interface".
+meb:Invitation a owl:Class;
+               rdfs:comment "A Request could be an external Invitation";
+               rdfs:isDefinedBy meb:;
+               rdfs:label "Invitation";
+               rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                owl:onProperty foaf:mbox_sha1sum ; 
+                                a owl:Restriction],
+                               [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                owl:onProperty sioc:has_owner ; 
+                                a owl:Restriction],
+                               meb:Request;
+               owl:disjointWith meb:Membership,
+                                meb:Friendship.
+meb:License a owl:Class;
+            rdfs:comment "A License under which an Upload is licensed under";
+            rdfs:isDefinedBy meb:;
+            rdfs:label "License";
+            rdfs:subClassOf [owl:minCardinality "0"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty <http://web.resource.org/cc/prohibits> ; 
+                             a owl:Restriction],
+                            [owl:minCardinality "0"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty <http://web.resource.org/cc/permits> ; 
+                             a owl:Restriction],
+                            [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty dcterms:identifier ; 
+                             a owl:Restriction],
+                            <http://web.resource.org/cc/License>,
+                            [owl:minCardinality "0"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty <http://web.resource.org/cc/requires> ; 
+                             a owl:Restriction],
+                            meb:Contribution.
+meb:Membership a owl:Class;
+               rdfs:comment "A Membership of a User to a Group";
+               rdfs:isDefinedBy meb:;
+               rdfs:label "Membership";
+               rdfs:subClassOf meb:Request;
+               owl:disjointWith meb:Invitation,
+                                meb:Friendship.
+meb:MembershipInvitation a owl:Class;
+                         rdfs:comment "A MembershipInvitation to an external email address";
+                         rdfs:isDefinedBy meb:;
+                         rdfs:label "MembershipInvitation";
+                         rdfs:subClassOf meb:Invitation;
+                         owl:disjointWith meb:FriendshipInvitation.
+meb:Message a owl:Class;
+            rdfs:comment "A Message sent between two Users";
+            rdfs:isDefinedBy meb:;
+            rdfs:label "Message";
+            rdfs:subClassOf meb:Submission,
+                            [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty meb:text ; 
+                             a owl:Restriction];
+            owl:disjointWith meb:Annotation,
+                             meb:Contribution,
+                             meb:Request,
+                             meb:Announcement.
+meb:Request a owl:Class;
+            rdfs:comment "A Request can be made by an Actor to another Actor";
+            rdfs:isDefinedBy meb:;
+            rdfs:label "Request";
+            rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty meb:accepted-at ; 
+                             a owl:Restriction],
+                            meb:Submission,
+                            [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty meb:has-accepter ; 
+                             a owl:Restriction],
+                            [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty sioc:has_owner ; 
+                             a owl:Restriction],
+                            [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty meb:has-requester ; 
+                             a owl:Restriction];
+            owl:disjointWith meb:Annotation,
+                             meb:Announcement,
+                             meb:Message,
+                             meb:Contribution.
+meb:Submission a owl:Class;
+               rdfs:comment "An object that has been submitted.  This might be a Contribution, Annotation, Request or an Attibution/Creditation of an Upload";
+               rdfs:isDefinedBy meb:;
+               rdfs:label "Submission";
+               rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                owl:onProperty dcterms:created ; 
+                                a owl:Restriction];
+               owl:disjointWith meb:Actor;
+               owl:equivalentClass sioc:Item.
+meb:Upload a owl:Class;
+           rdfs:comment "An object that can be contributed by a User that requires uploading";
+           rdfs:isDefinedBy meb:;
+           rdfs:label "Upload";
+           rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty dcterms:title ; 
+                            a owl:Restriction],
+                           [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty <http://web.resource.org/cc/license> ; 
+                            a owl:Restriction],
+                           [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty meb:has-content-type ; 
+                            a owl:Restriction],
+                           [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty meb:content-url ; 
+                            a owl:Restriction],
+                           meb:Contribution.
+meb:User a owl:Class;
+         rdfs:comment "A User";
+         rdfs:isDefinedBy meb:;
+         rdfs:label "User";
+         rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty meb:username ; 
+                          a owl:Restriction],
+                         [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty foaf:mbox ; 
+                          a owl:Restriction],
+                         [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty foaf:homepage ; 
+                          a owl:Restriction],
+                         [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty foaf:mbox_sha1sum ; 
+                          a owl:Restriction],
+                         [owl:minCardinality "0"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty dbpedia-owl:residence ; 
+                          a owl:Restriction],
+                         [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty foaf:based_near ; 
+                          a owl:Restriction],
+                         [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty sioc:avatar ; 
+                          a owl:Restriction],
+                         meb:Actor,
+                         [owl:minCardinality "0"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty sioc:member_of ; 
+                          a owl:Restriction];
+         owl:disjointWith meb:Group;
+         owl:equivalentClass sioc:UserAccount.
+meb:Version a owl:Class;
+            rdfs:comment "A Contribution may be a Version of another Contribution";
+            rdfs:isDefinedBy meb:;
+            rdfs:label "Version";
+            rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty dcterms:isVersionOf ; 
+                             a owl:Restriction],
+                            [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty meb:version-number ; 
+                             a owl:Restriction],
+                            meb:Interface.
+meb:Versionable a owl:Class;
+                rdfs:comment "A Contribution that can be a Version";
+                rdfs:isDefinedBy meb:;
+                rdfs:label "Versionable";
+                rdfs:subClassOf [owl:minCardinality "0"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty meb:has-version ; 
+                                 a owl:Restriction],
+                                meb:Interface.
+meb:accepted-at a owl:FunctionalProperty,
+                  owl:DatatypeProperty;
+                rdfs:comment "A Request can be accepted-at a certain dateTime";
+                rdfs:domain meb:Request;
+                rdfs:isDefinedBy meb:;
+                rdfs:label "accepted-at";
+                rdfs:range xsd:dateTime.
+meb:activated-at a owl:FunctionalProperty,
+                   owl:DatatypeProperty;
+                 rdfs:comment "A User account is a activated-at certain dateTime";
+                 rdfs:domain meb:User;
+                 rdfs:isDefinedBy meb:;
+                 rdfs:label "activated-at";
+                 rdfs:range xsd:dateTime.
+meb:annotates a owl:FunctionalProperty,
+                owl:ObjectProperty;
+              rdfs:comment "An Annotation is associated with a particular Contribution";
+              rdfs:domain meb:Annotation;
+              rdfs:isDefinedBy meb:;
+              rdfs:label "annotates";
+              rdfs:range meb:Annotatable;
+              owl:inverseOf meb:has-annotation.
+meb:annotator-of a owl:ObjectProperty;
+                 rdfs:comment "A User is an annotator-of an Annotation";
+                 rdfs:domain meb:User;
+                 rdfs:isDefinedBy meb:;
+                 rdfs:label "annotator";
+                 rdfs:range meb:Annotation;
+                 rdfs:subPropertyOf sioc:owner_of;
+                 owl:inverseOf meb:has-annotator.
+meb:announced-to a owl:FunctionalProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment "The Group a GroupAnnouncement has been announced to";
+                 rdfs:domain meb:GroupAnnouncement;
+                 rdfs:isDefinedBy meb:;
+                 rdfs:label "announced-to";
+                 rdfs:range meb:Group.
+meb:contact-details a owl:DatatypeProperty;
+                    rdfs:comment "A User has contact-details";
+                    rdfs:domain meb:User;
+                    rdfs:isDefinedBy meb:;
+                    rdfs:label "contact-details";
+                    rdfs:range xsd:string.
+meb:content-url a owl:ObjectProperty;
+                rdfs:comment "An Upload has content at a URL";
+                rdfs:isDefinedBy meb:;
+                rdfs:label "content-url".
+meb:count a owl:FunctionalProperty,
+            owl:DatatypeProperty;
+          rdfs:comment "Certain Annotations may be a count of something";
+          rdfs:domain meb:Annotation;
+          rdfs:isDefinedBy meb:;
+          rdfs:label "count";
+          rdfs:range xsd:nonNegativeInteger.
+meb:country a owl:FunctionalProperty,
+              owl:DatatypeProperty;
+            rdfs:comment "A User is based in a country";
+            rdfs:domain meb:User;
+            rdfs:isDefinedBy meb:;
+            rdfs:label "country";
+            rdfs:range xsd:string.
+meb:deleted-by-recipient a owl:DatatypeProperty;
+                         rdfs:comment "The recipient has deleted this Message from their inbox";
+                         rdfs:domain meb:Message;
+                         rdfs:isDefinedBy meb:;
+                         rdfs:label "deleted-by-recipient";
+                         rdfs:range xsd:boolean.
+meb:deleted-by-sender a owl:DatatypeProperty;
+                      rdfs:comment "The sender has deleted this Message from their inbox";
+                      rdfs:domain meb:Message;
+                      rdfs:isDefinedBy meb:;
+                      rdfs:label "deleted-by-sender";
+                      rdfs:range xsd:boolean.
+meb:email a owl:ObjectProperty;
+          rdfs:comment "A User has an email address";
+          rdfs:domain meb:User;
+          rdfs:isDefinedBy meb:;
+          rdfs:label "email";
+          rdfs:subPropertyOf foaf:mbox.
+meb:email-confirmed-at a owl:FunctionalProperty,
+                         owl:DatatypeProperty;
+                       rdfs:comment "An email is confirmed at a certain dateTime";
+                       rdfs:domain meb:User;
+                       rdfs:isDefinedBy meb:;
+                       rdfs:label "email-confirmed-at";
+                       rdfs:range xsd:dateTime.
+meb:field a owl:DatatypeProperty;
+          rdfs:comment "A User works in a field";
+          rdfs:domain meb:User;
+          rdfs:isDefinedBy meb:;
+          rdfs:label "field";
+          rdfs:range xsd:string.
+meb:filename a owl:FunctionalProperty,
+               owl:DatatypeProperty;
+             rdfs:comment "A File has a filename";
+             rdfs:domain meb:Upload;
+             rdfs:isDefinedBy meb:;
+             rdfs:label "filename";
+             rdfs:range xsd:string.
+meb:from a owl:ObjectProperty;
+         rdfs:comment "A Message is sent from a User";
+         rdfs:domain meb:Message;
+         rdfs:isDefinedBy meb:;
+         rdfs:label "from";
+         rdfs:range meb:User.
+meb:has-accepter a owl:FunctionalProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment "A Request must have an accepter that can accept";
+                 rdfs:domain meb:Request;
+                 rdfs:isDefinedBy meb:;
+                 rdfs:label "has-accepter";
+                 rdfs:range meb:Actor.
+meb:has-annotation a owl:InverseFunctionalProperty,
+                     owl:ObjectProperty;
+                   rdfs:comment "An Annotable may have a Annotation";
+                   rdfs:domain meb:Annotatable;
+                   rdfs:isDefinedBy meb:;
+                   rdfs:label "has-annotation";
+                   rdfs:range meb:Annotation;
+                   owl:inverseOf meb:annotates.
+meb:has-annotator a owl:FunctionalProperty,
+                    owl:ObjectProperty;
+                  rdfs:comment "An Annotation has User as annotator";
+                  rdfs:domain meb:Annotation;
+                  rdfs:isDefinedBy meb:;
+                  rdfs:label "has-annotator";
+                  rdfs:range meb:User;
+                  rdfs:subPropertyOf sioc:has_owner;
+                  owl:inverseOf meb:annotator-of.
+meb:has-announcement a owl:ObjectProperty;
+                     rdfs:comment "Groups may have GroupAnnouncements";
+                     rdfs:domain meb:Group;
+                     rdfs:isDefinedBy meb:;
+                     rdfs:label "has-announcement";
+                     rdfs:range meb:GroupAnnouncement;
+                     owl:inverseOf meb:announced-to.
+meb:has-announcer a owl:FunctionalProperty,
+                    owl:ObjectProperty;
+                  rdfs:comment "An Announcement has an annoucer that is a User";
+                  rdfs:domain meb:Announcement;
+                  rdfs:isDefinedBy meb:;
+                  rdfs:label "has-announcer";
+                  rdfs:range meb:User;
+                  rdfs:subPropertyOf sioc:has_owner.
+meb:has-content-type a owl:FunctionalProperty,
+                       owl:ObjectProperty;
+                     rdfs:comment "An Upload has a ContentType";
+                     rdfs:domain meb:Upload;
+                     rdfs:isDefinedBy meb:;
+                     rdfs:label "has-content-type";
+                     rdfs:range meb:ContentType.
+meb:has-current-version a owl:FunctionalProperty,
+                          owl:ObjectProperty;
+                        rdfs:comment "A Versionable object has a current version";
+                        rdfs:isDefinedBy meb:;
+                        rdfs:label "has-current-version";
+                        rdfs:subPropertyOf meb:has-version.
+meb:has-friendship a owl:InverseFunctionalProperty,
+                     owl:ObjectProperty;
+                   rdfs:comment "A User has a Friendship (with another User)";
+                   rdfs:domain meb:User;
+                   rdfs:isDefinedBy meb:;
+                   rdfs:label "has-friendship";
+                   rdfs:range meb:Friendship.
+meb:has-membership a owl:InverseFunctionalProperty,
+                     owl:ObjectProperty;
+                   rdfs:comment "A User has a Membership (of a Group)";
+                   rdfs:domain meb:User;
+                   rdfs:isDefinedBy meb:;
+                   rdfs:label "has-membership";
+                   rdfs:range meb:Membership.
+meb:has-policy a owl:FunctionalProperty,
+                 owl:ObjectProperty;
+               rdfs:comment "A Contribution has a Policy for access rights management";
+               rdfs:domain meb:Contribution;
+               rdfs:isDefinedBy meb:;
+               rdfs:label "has-policy";
+               rdfs:range snarm:Policy.
+meb:has-requester a owl:FunctionalProperty,
+                    owl:ObjectProperty;
+                  rdfs:comment "A Request must have a requester";
+                  rdfs:domain meb:Request;
+                  rdfs:isDefinedBy meb:;
+                  rdfs:label "has-requester";
+                  rdfs:range meb:Actor.
+meb:has-shared-item a owl:ObjectProperty;
+                    rdfs:comment "Contributions that are shared within a Group";
+                    rdfs:domain meb:Group;
+                    rdfs:isDefinedBy meb:;
+                    rdfs:label "has-shared-item";
+                    rdfs:range meb:Contribution.
+meb:has-version a owl:ObjectProperty;
+                rdfs:comment "A Versionable object has at least one version";
+                rdfs:domain meb:Versionable;
+                rdfs:isDefinedBy meb:;
+                rdfs:label "has-version";
+                rdfs:range meb:Version;
+                rdfs:subPropertyOf dcterms:hasVersion.
+meb:interests a owl:DatatypeProperty;
+              rdfs:comment "A User's interests";
+              rdfs:domain meb:User;
+              rdfs:isDefinedBy meb:;
+              rdfs:label "interests";
+              rdfs:range xsd:string.
+meb:is-current-version a owl:DatatypeProperty;
+                       rdfs:comment "A User's interests";
+                       rdfs:domain meb:Versionable;
+                       rdfs:isDefinedBy meb:;
+                       rdfs:label "is-current-version";
+                       rdfs:range xsd:boolean.
+meb:is-friends-with a owl:SymmetricProperty,
+                      owl:ObjectProperty;
+                    rdfs:comment "A User may be friends with another User";
+                    rdfs:domain meb:User;
+                    rdfs:isDefinedBy meb:;
+                    rdfs:label "is-friends-with";
+                    rdfs:range meb:User;
+                    rdfs:subPropertyOf foaf:knows.
+meb:last-seen-at a owl:FunctionalProperty,
+                   owl:DatatypeProperty;
+                 rdfs:comment "The last time a User was seen";
+                 rdfs:domain meb:User;
+                 rdfs:isDefinedBy meb:;
+                 rdfs:label "last-seen-at";
+                 rdfs:range xsd:dateTime.
+meb:membership-policy a owl:FunctionalProperty,
+                        owl:DatatypeProperty;
+                      rdfs:comment "The policy for Users joining a Group (e.g. open, invite only, etc.)";
+                      rdfs:domain meb:Group;
+                      rdfs:isDefinedBy meb:;
+                      rdfs:label "";
+                      rdfs:range xsd:string.
+meb:occupation a owl:DatatypeProperty;
+               rdfs:comment "A User has an occupation";
+               rdfs:domain meb:User;
+               rdfs:isDefinedBy meb:;
+               rdfs:label "occupation";
+               rdfs:range xsd:string.
+meb:openid-url a owl:FunctionalProperty,
+                 owl:ObjectProperty;
+               rdfs:comment "A User may have an openid-url represented as a uri";
+               rdfs:domain meb:User;
+               rdfs:isDefinedBy meb:;
+               rdfs:label "openid-url".
+meb:organisation a owl:DatatypeProperty;
+                 rdfs:comment "A User is part of an organisation";
+                 rdfs:domain meb:User;
+                 rdfs:isDefinedBy meb:;
+                 rdfs:label "organisation";
+                 rdfs:range xsd:string.
+meb:public-announcement a owl:FunctionalProperty,
+                          owl:DatatypeProperty;
+                        rdfs:comment "Is the GroupAnnouncement viewable (public) to those outside the Group";
+                        rdfs:domain meb:GroupAnnouncement;
+                        rdfs:isDefinedBy meb:;
+                        rdfs:label "public-announcement";
+                        rdfs:range xsd:boolean.
+meb:read-at a owl:FunctionalProperty,
+              owl:DatatypeProperty;
+            rdfs:comment "A Message is a read-at a particular dateTime";
+            rdfs:domain meb:Message;
+            rdfs:isDefinedBy meb:;
+            rdfs:label "read-at";
+            rdfs:range xsd:dateTime.
+meb:receive-notifications a owl:FunctionalProperty,
+                            owl:DatatypeProperty;
+                          rdfs:comment "Does the user receive-notifications";
+                          rdfs:domain meb:User;
+                          rdfs:isDefinedBy meb:;
+                          rdfs:label "receive-notifications";
+                          rdfs:range xsd:boolean.
+meb:reply-to a owl:FunctionalProperty,
+               owl:ObjectProperty;
+             rdfs:comment "A Message may have a Message it is a reply-to";
+             rdfs:domain meb:Message;
+             rdfs:isDefinedBy meb:;
+             rdfs:label "reply-to";
+             rdfs:range meb:Message.
+meb:request-token a owl:FunctionalProperty,
+                    owl:DatatypeProperty;
+                  rdfs:comment "Requests may have a request-token as a string";
+                  rdfs:domain meb:Request;
+                  rdfs:isDefinedBy meb:;
+                  rdfs:label "request-token";
+                  rdfs:range xsd:string.
+meb:revision-comments a owl:FunctionalProperty,
+                        owl:DatatypeProperty;
+                      rdfs:comment "Comments may be associated with a particular Version of something";
+                      rdfs:domain meb:Version;
+                      rdfs:isDefinedBy meb:;
+                      rdfs:label "revision-comments";
+                      rdfs:range xsd:string.
+meb:subject a owl:FunctionalProperty,
+              owl:DatatypeProperty;
+            rdfs:comment "A Message has a subject";
+            rdfs:domain meb:Message;
+            rdfs:isDefinedBy meb:;
+            rdfs:label "subject";
+            rdfs:range xsd:string.
+meb:text a owl:FunctionalProperty,
+           owl:DatatypeProperty;
+         rdfs:comment "A Submission has some text associated with it";
+         rdfs:domain meb:Submission;
+         rdfs:isDefinedBy meb:;
+         rdfs:label "text";
+         rdfs:range xsd:string.
+meb:to a owl:ObjectProperty;
+       rdfs:comment "A Message is sent to a User";
+       rdfs:domain meb:Message;
+       rdfs:isDefinedBy meb:;
+       rdfs:label "to";
+       rdfs:range meb:User.
+meb:unconfirmed-email a owl:FunctionalProperty,
+                        owl:ObjectProperty;
+                      rdfs:comment "An email that has yet to be confirmed";
+                      rdfs:domain meb:User;
+                      rdfs:isDefinedBy meb:;
+                      rdfs:label "unconfirmed-email".
+meb:uri a owl:FunctionalProperty,
+          owl:ObjectProperty;
+        rdfs:comment "The URI for some object";
+        rdfs:isDefinedBy meb:;
+        rdfs:label "uri".
+meb:username a owl:FunctionalProperty,
+               owl:DatatypeProperty;
+             rdfs:comment "A User may have a username represented as a string";
+             rdfs:isDefinedBy meb:;
+             rdfs:label "username";
+             rdfs:range xsd:string.
+meb:version-number a owl:FunctionalProperty,
+                     owl:DatatypeProperty;
+                   rdfs:comment "A Version has a version-number";
+                   rdfs:domain meb:Version;
+                   rdfs:isDefinedBy meb:;
+                   rdfs:label "version-number";
+                   rdfs:range xsd:positiveInteger.
+snarm:Policy a owl:Class.
+sioc:Item a owl:Class.
+sioc:UserAccount a owl:Class.
+sioc:UserGroup a owl:Class.
+sioc:avatar a owl:ObjectProperty.
+sioc:has_member a owl:ObjectProperty;
+                owl:inverseOf sioc:member_of.
+sioc:has_owner a owl:ObjectProperty;
+               owl:inverseOf sioc:owner_of.
+sioc:member_of a owl:ObjectProperty;
+               owl:inverseOf sioc:has_member.
+sioc:name a owl:DatatypeProperty;
+          rdfs:range xsd:string.
+sioc:owner_of a owl:ObjectProperty;
+              owl:inverseOf sioc:has_owner.
+<http://web.resource.org/cc/License> a owl:Class.
+<http://web.resource.org/cc/license> a owl:ObjectProperty.
+<http://web.resource.org/cc/permits> a owl:ObjectProperty.
+<http://web.resource.org/cc/prohibits> a owl:ObjectProperty.
+<http://web.resource.org/cc/requires> a owl:ObjectProperty.
+foaf:based_near a owl:DatatypeProperty;
+                rdfs:range xsd:string.
+foaf:homepage a owl:ObjectProperty.
+foaf:knows a owl:ObjectProperty.
+foaf:mbox a owl:ObjectProperty.
+foaf:mbox_sha1sum a owl:DatatypeProperty;
+                  rdfs:range xsd:string.
+foaf:name a owl:DatatypeProperty;
+          rdfs:range xsd:string.

@@ -1,0 +1,1304 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix odp: <http://ontologydesignpatterns.org/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix w3id: <https://w3id.org/>.
+@prefix sw-quality: <https://w3id.org/squap/SoftwareQuality/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+<http://ontologydesignpatterns.org/opla/isNativeTo> a owl:AnnotationProperty.
+<http://ontologydesignpatterns.org/opla/reusesPatternAsTemplate> a owl:AnnotationProperty.
+dc11:creator a owl:AnnotationProperty.
+dc11:description a owl:AnnotationProperty.
+dc11:rights a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+<https://w3id.org/squap/> <http://ontologydesignpatterns.org/opla/reusesPatternAsTemplate> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>,
+                                                                                           <http://ontologydesignpatterns.org/cp/owl/parameterregion.owl>;
+                          dc11:creator "Daniel Russo (DISI, University of Bologna)",
+                                       "Valentina Presutti (STLab, ISTC-CNR)",
+                                       "Paolo Ciancarini (DISI, University of Bologna)",
+                                       "Andrea Giovanni Nuzzolese (STLab, ISTC-CNR)";
+                          dc11:description <https://raw.githubusercontent.com/anuzzolese/squap/master/ont/images/squap-ont.png>,
+                                           <https://i.creativecommons.org/l/by/4.0/88x31.png>,
+                                           "Quality, architecture, and process are considered the keystones of software engineering. ISO defines them in three separate standards. However, their interaction has been poorly studied, so far. The SQuAP model (Software Quality, Architecture, Process) describes twenty-eight main factors that impact on software quality in banking systems, and each factor is described as a relation among some characteristics from the three ISO standards. Hence, SQuAP makes such relations emerge rigorously, although informally. SQaAP-Ont is an OWL ontology that formalises those relations in order to represent and reason via Linked Data about software engineering in a three-dimensional model consisting of quality, architecture, and process characteristics.";
+                          dcterms:issued "2018-05-15";
+                          dcterms:license <https://creativecommons.org/licenses/by/4.0/>;
+                          dcterms:modified "2019-07-12";
+                          a owl:Ontology;
+                          rdfs:comment "Quality, architecture, and process are considered the keystones of software engineering. ISO defines them in three separate standards. However, their interaction has been poorly studied, so far. The SQuAP model (Software Quality, Architecture, Process) describes twenty-eight main factors that impact on software quality in banking systems, and each factor is described as a relation among some characteristics from the three ISO standards. Hence, SQuAP makes such relations emerge rigorously, although informally. SQaAP-Ont is an OWL ontology that formalises those relations in order to represent and reason via Linked Data about software engineering in a three-dimensional model consisting of quality, architecture, and process characteristics.";
+                          rdfs:label "SQuAP Ontology";
+                          owl:backwardCompatibleWith <https://w3id.org/squap/0.1>;
+                          owl:priorVersion <https://w3id.org/squap/0.1>;
+                          owl:versionIRI <https://w3id.org/squap/0.2>.
+<https://w3id.org/squap/ArchitecturalAlignment> a owl:Class;
+                                                rdfs:comment "The software quality characteristic meant as architectural alignment.";
+                                                rdfs:label "Architectural alignment";
+                                                rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityCharacteristic>;
+                                                owl:disjointWith <https://w3id.org/squap/ProcessMaturity>,
+                                                                 <https://w3id.org/squap/SoftwareQuality>.
+<https://w3id.org/squap/ArchitecturalAlignment/ArchitectureDescription> a owl:Class,
+                                                                          owl:NamedIndividual,
+                                                                          <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                                        rdfs:label "Architecture description";
+                                                                        rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic>;
+                                                                        <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/ArchitectureFramework> a owl:Class,
+                                                                        owl:NamedIndividual,
+                                                                        <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                                      rdfs:label "Architecture framework";
+                                                                      rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>;
+                                                                      <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/ArchitectureModel> a owl:Class,
+                                                                    owl:NamedIndividual,
+                                                                    <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                                  rdfs:label "Architecture model";
+                                                                  rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>;
+                                                                  <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/ArchitectureRational> a owl:Class,
+                                                                       owl:NamedIndividual,
+                                                                       <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                                     rdfs:label "Architecture rational";
+                                                                     rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>;
+                                                                     <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/ArchitectureView> a owl:Class,
+                                                                   owl:NamedIndividual,
+                                                                   <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                                 rdfs:label "Architecture view";
+                                                                 rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>;
+                                                                 <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/ArchitectureViewpoint> a owl:Class,
+                                                                        owl:NamedIndividual,
+                                                                        <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                                      rdfs:label "Architecture viewpoint";
+                                                                      rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic>;
+                                                                      <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/Concern> a owl:Class,
+                                                          owl:NamedIndividual,
+                                                          <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                        rdfs:label "Concern";
+                                                        rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic>;
+                                                        <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/Correspondence> a owl:Class,
+                                                                 owl:NamedIndividual,
+                                                                 <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                               rdfs:label "Correspondence";
+                                                               rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>;
+                                                               <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/CorrespondenceRules> a owl:Class,
+                                                                      owl:NamedIndividual,
+                                                                      <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                                    rdfs:label "Correspondence rules";
+                                                                    rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>;
+                                                                    <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/Environment> a owl:Class,
+                                                              owl:NamedIndividual,
+                                                              <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                            rdfs:label "Environment";
+                                                            rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic>;
+                                                            <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/ModelKind> a owl:Class,
+                                                            owl:NamedIndividual,
+                                                            <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                          rdfs:label "Model kind";
+                                                          rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>;
+                                                          <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic> a owl:Class,
+                                                                          owl:NamedIndividual,
+                                                                          <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                                        rdfs:label "Objective characteristic";
+                                                                        rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment>.
+<https://w3id.org/squap/ArchitecturalAlignment/Stakeholder> a owl:Class,
+                                                              owl:NamedIndividual,
+                                                              <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                            rdfs:label "Stakeholder";
+                                                            rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic>;
+                                                            <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignment/SubjectiveCharacteristic> a owl:Class,
+                                                                           owl:NamedIndividual,
+                                                                           <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                                         rdfs:label "Subjective characteristic";
+                                                                         rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment>.
+<https://w3id.org/squap/ArchitecturalAlignment/System-of-Interest> a owl:Class,
+                                                                     owl:NamedIndividual,
+                                                                     <https://w3id.org/squap/ArchitecturalAlignment>;
+                                                                   rdfs:label "System-of-Interest";
+                                                                   rdfs:subClassOf <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>;
+                                                                   <https://w3id.org/squap/specializes> <https://w3id.org/squap/ArchitecturalAlignment/ObjectiveCharacteristic>.
+<https://w3id.org/squap/ArchitecturalAlignmentResult> a owl:Class;
+                                                      rdfs:label "Architectural alignment result";
+                                                      rdfs:subClassOf <https://w3id.org/squap/MeasurementResult>.
+<https://w3id.org/squap/Concept> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                 a owl:Class;
+                                 rdfs:comment """A concept. 
+Once defined, a Concept can be used in other descriptions.""";
+                                 rdfs:label "Concept";
+                                 owl:disjointWith <https://w3id.org/squap/Description>,
+                                                  <https://w3id.org/squap/Situation>.
+<https://w3id.org/squap/Description> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                     a owl:Class;
+                                     rdfs:comment "A Description represents a conceptualization. It can be thought also as a 'descriptive context' that defines concepts in order to see a 'relational context' out of a set of data or observations.";
+                                     rdfs:label "Description";
+                                     owl:disjointWith <https://w3id.org/squap/Situation>.
+<https://w3id.org/squap/Factor/ApplicationAndMaintenanceContractsVsDocumentation> a owl:NamedIndividual,
+                                                                                    owl:Class,
+                                                                                    <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                                  rdfs:comment "Application & Maintenance (AM) contracts are set to outsource the development and maintenance, to decrease internal costs.Typically, they do not provide an adequate documentation.";
+                                                                                  rdfs:label "Application and maintenance contracts vs documentation";
+                                                                                  rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                                  <https://w3id.org/squap/usesConcept> sw-quality:Analysability,
+                                                                                                                       <https://w3id.org/squap/ArchitecturalAlignment/Concern>,
+                                                                                                                       <https://w3id.org/squap/ArchitecturalAlignment/System-of-Interest>,
+                                                                                                                       <https://w3id.org/squap/ProcessMaturity/Management>,
+                                                                                                                       <https://w3id.org/squap/ArchitecturalAlignment/Stakeholder>,
+                                                                                                                       <https://w3id.org/squap/ProcessMaturity/Maintenance>,
+                                                                                                                       sw-quality:FunctionalCorrectness,
+                                                                                                                       <https://w3id.org/squap/ProcessMaturity/Documentation>,
+                                                                                                                       <https://w3id.org/squap/ProcessMaturity/QualityAssurance>,
+                                                                                                                       <https://w3id.org/squap/ProcessMaturity/Improvement>,
+                                                                                                                       sw-quality:FunctionalCompleteness,
+                                                                                                                       sw-quality:Modifiability,
+                                                                                                                       sw-quality:Replaceability.
+<https://w3id.org/squap/Factor/ContractingAndSkills> a owl:NamedIndividual,
+                                                       owl:Class,
+                                                       <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                     rdfs:comment "Outsourcing is the main cause of poor software quality.";
+                                                     rdfs:label "Contracting and skills";
+                                                     rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                     <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ProcessMaturity/Infrastructure>,
+                                                                                          <https://w3id.org/squap/ProcessMaturity/Training>,
+                                                                                          <https://w3id.org/squap/ProcessMaturity/Acquisition>,
+                                                                                          <https://w3id.org/squap/ArchitecturalAlignment/Concern>,
+                                                                                          <https://w3id.org/squap/ProcessMaturity/Improvement>,
+                                                                                          <https://w3id.org/squap/ProcessMaturity/Supply>.
+<https://w3id.org/squap/Factor/CustomSoftwareQuality> a owl:NamedIndividual,
+                                                        <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                        owl:Class;
+                                                      rdfs:comment "The perceived quality of custom software applications is decreasing.";
+                                                      rdfs:label "Custom software quality";
+                                                      rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                      <https://w3id.org/squap/usesConcept> sw-quality:FunctionalAppropriateness,
+                                                                                           <https://w3id.org/squap/ProcessMaturity/Verification>,
+                                                                                           <https://w3id.org/squap/ArchitecturalAlignment/Concern>,
+                                                                                           <https://w3id.org/squap/ProcessMaturity/Acquisition>,
+                                                                                           sw-quality:Operability.
+<https://w3id.org/squap/Factor/DataAnalysisVsFunctionalAnalysis> a owl:Class,
+                                                                   owl:NamedIndividual,
+                                                                   <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                 rdfs:comment "Poor data analysis influences functional analysis and so, system integrity.";
+                                                                 rdfs:label "Data analysis vs functional analysis";
+                                                                 rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                 <https://w3id.org/squap/usesConcept> sw-quality:FunctionalCorrectness,
+                                                                                                      <https://w3id.org/squap/ProcessMaturity/Development>,
+                                                                                                      <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureFramework>,
+                                                                                                      <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureModel>,
+                                                                                                      <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureView>.
+<https://w3id.org/squap/Factor/DeveloperProfessionalismVsRates> a owl:Class,
+                                                                  owl:NamedIndividual,
+                                                                  <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                rdfs:comment "Decreasing developer's professionalism and the decrease of professional rates appears to be quite connected.";
+                                                                rdfs:label "Developer professionalism vs rates";
+                                                                rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ArchitecturalAlignment/Environment>,
+                                                                                                     sw-quality:Maturity,
+                                                                                                     <https://w3id.org/squap/ProcessMaturity/Management>,
+                                                                                                     <https://w3id.org/squap/ProcessMaturity/Supply>,
+                                                                                                     <https://w3id.org/squap/ArchitecturalAlignment/Concern>.
+<https://w3id.org/squap/Factor/DeveloperProfessionalismVsSkills> a <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                                   owl:Class,
+                                                                   owl:NamedIndividual;
+                                                                 rdfs:comment "No adequate resources to invest in education and to train developers, especially those with no formal education in IT.";
+                                                                 rdfs:label "Developer professionalism vs skills";
+                                                                 rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                 <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ProcessMaturity/Management>,
+                                                                                                      <https://w3id.org/squap/ProcessMaturity/Supply>,
+                                                                                                      sw-quality:Maturity,
+                                                                                                      <https://w3id.org/squap/ProcessMaturity/Training>,
+                                                                                                      <https://w3id.org/squap/ArchitecturalAlignment/Concern>.
+<https://w3id.org/squap/Factor/DocumentationStandardsAndTools> a owl:Class,
+                                                                 owl:NamedIndividual,
+                                                                 <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                               rdfs:comment "Poor documentation hinders software maintainability and increases evolution costs.";
+                                                               rdfs:label "Documentation standards and tools";
+                                                               rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                               <https://w3id.org/squap/usesConcept> sw-quality:Reusability,
+                                                                                                    sw-quality:Adaptability,
+                                                                                                    <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureDescription>,
+                                                                                                    <https://w3id.org/squap/ArchitecturalAlignment/Concern>,
+                                                                                                    <https://w3id.org/squap/ProcessMaturity/Documentation>,
+                                                                                                    <https://w3id.org/squap/ArchitecturalAlignment/CorrespondenceRules>.
+<https://w3id.org/squap/Factor/DocumentationVsTimeAndBudget> a owl:NamedIndividual,
+                                                               owl:Class,
+                                                               <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                             rdfs:comment "Time and budget constraints have a direct impact on software documentation. Due to low budget for new developments and urgency for new applications, documentation is the first element which is skipped.";
+                                                             rdfs:label "Documentation vs time and budget";
+                                                             rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                             <https://w3id.org/squap/usesConcept> sw-quality:Learnability,
+                                                                                                  <https://w3id.org/squap/ProcessMaturity/Documentation>,
+                                                                                                  sw-quality:Adaptability,
+                                                                                                  sw-quality:Replaceability,
+                                                                                                  sw-quality:Maturity,
+                                                                                                  sw-quality:Modifiability,
+                                                                                                  <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureRational>,
+                                                                                                  <https://w3id.org/squap/ProcessMaturity/Management>,
+                                                                                                  sw-quality:Testability,
+                                                                                                  sw-quality:Reusability,
+                                                                                                  <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureDescription>,
+                                                                                                  sw-quality:Analysability.
+<https://w3id.org/squap/Factor/EstablishmentOfInternalAndExternalDevelopmentProcesses> a owl:NamedIndividual,
+                                                                                         owl:Class,
+                                                                                         <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                                       rdfs:comment "Merging internal and external development processes is extremely difficult.";
+                                                                                       rdfs:label "Establishment of internal and external development processes";
+                                                                                       rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                                       <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ArchitecturalAlignment/Concern>,
+                                                                                                                            <https://w3id.org/squap/ProcessMaturity/Supply>,
+                                                                                                                            sw-quality:Maturity,
+                                                                                                                            <https://w3id.org/squap/ProcessMaturity/Acquisition>,
+                                                                                                                            <https://w3id.org/squap/ProcessMaturity/QualityAssurance>.
+<https://w3id.org/squap/Factor/FunctionalAnalysisVsDataModeling> a owl:Class,
+                                                                   owl:NamedIndividual,
+                                                                   <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                 rdfs:comment "Difficulties in functional analysis lies in bad data modeling and identification of data sources.";
+                                                                 rdfs:label "Functional analysis vs data modeling";
+                                                                 rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                 <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureFramework>,
+                                                                                                      <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureView>,
+                                                                                                      <https://w3id.org/squap/ProcessMaturity/Development>.
+<https://w3id.org/squap/Factor/IncreaseOfMaintenanceCosts> a <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                             owl:Class,
+                                                             owl:NamedIndividual;
+                                                           rdfs:comment "Some factors have a direct impact on maintenance costs. The overall architectural complexity, the decreasing software quality and incomplete documentation are the most important drivers of high maintenance costs and time.";
+                                                           rdfs:label "Increase of maintenance costs";
+                                                           rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                           <https://w3id.org/squap/usesConcept> sw-quality:Testability,
+                                                                                                sw-quality:Analysability,
+                                                                                                sw-quality:Replaceability,
+                                                                                                <https://w3id.org/squap/ArchitecturalAlignment/CorrespondenceRules>,
+                                                                                                <https://w3id.org/squap/ArchitecturalAlignment/Correspondence>,
+                                                                                                <https://w3id.org/squap/ProcessMaturity/Documentation>,
+                                                                                                sw-quality:Reusability,
+                                                                                                sw-quality:Adaptability.
+<https://w3id.org/squap/Factor/InterfacesArchitecturalComplexity> a <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                                    owl:NamedIndividual,
+                                                                    owl:Class;
+                                                                  rdfs:comment "This factor is a direct consequence of the first one. Module interfaces complexity led to a typical anti-pattern.";
+                                                                  rdfs:label "Interfaces architectural complexity";
+                                                                  rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                  <https://w3id.org/squap/usesConcept> sw-quality:Accountability,
+                                                                                                       <https://w3id.org/squap/ProcessMaturity/Development>,
+                                                                                                       sw-quality:Integrity,
+                                                                                                       sw-quality:Modifiability,
+                                                                                                       <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureModel>.
+<https://w3id.org/squap/Factor/ItalianApplicationsVsQualityAndMaintainability> a <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                                                 owl:NamedIndividual,
+                                                                                 owl:Class;
+                                                                               rdfs:comment "Regarding Italian applications, they appear to have more functionalities but incur in higher maintenance costs.";
+                                                                               rdfs:label "Italian applications vs quality and maintainability";
+                                                                               rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                               <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ProcessMaturity/Supply>,
+                                                                                                                    sw-quality:Replaceability,
+                                                                                                                    sw-quality:Reusability,
+                                                                                                                    <https://w3id.org/squap/ArchitecturalAlignment/Concern>,
+                                                                                                                    <https://w3id.org/squap/ProcessMaturity/Maintenance>,
+                                                                                                                    <https://w3id.org/squap/ProcessMaturity/Acquisition>,
+                                                                                                                    <https://w3id.org/squap/ProcessMaturity/QualityAssurance>,
+                                                                                                                    <https://w3id.org/squap/ArchitecturalAlignment/Correspondence>,
+                                                                                                                    sw-quality:Installability,
+                                                                                                                    sw-quality:Adaptability.
+<https://w3id.org/squap/Factor/LackingToolsAndMethodologies> a owl:Class,
+                                                               <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                               owl:NamedIndividual;
+                                                             rdfs:comment "Finding and implementing the right tools & methodologies is quite a hard task.";
+                                                             rdfs:label "Lacking tools and methodologies";
+                                                             rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                             <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ProcessMaturity/Development>,
+                                                                                                  sw-quality:Testability,
+                                                                                                  sw-quality:Modularity,
+                                                                                                  sw-quality:Analysability,
+                                                                                                  sw-quality:Reusability,
+                                                                                                  <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureDescription>,
+                                                                                                  sw-quality:Modifiability,
+                                                                                                  sw-quality:Maturity,
+                                                                                                  <https://w3id.org/squap/ProcessMaturity/QualityAssurance>,
+                                                                                                  <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureModel>,
+                                                                                                  <https://w3id.org/squap/ArchitecturalAlignment/Concern>,
+                                                                                                  <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureView>.
+<https://w3id.org/squap/Factor/LowerDevelopersExpertiseAndProfessionalism> a owl:NamedIndividual,
+                                                                             owl:Class,
+                                                                             <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                           rdfs:comment "Short time to market expectations and shrinking IT budget is generally considered the main reason for low software quality.";
+                                                                           rdfs:label "Lower developers expertise and professionalism";
+                                                                           rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                           <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ProcessMaturity/Supply>,
+                                                                                                                <https://w3id.org/squap/ArchitecturalAlignment/Concern>,
+                                                                                                                <https://w3id.org/squap/ProcessMaturity/Training>,
+                                                                                                                <https://w3id.org/squap/ArchitecturalAlignment/Stakeholder>.
+<https://w3id.org/squap/Factor/MeasurementOfSoftwareQuality> a <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                               owl:Class,
+                                                               owl:NamedIndividual;
+                                                             rdfs:comment "Losing control over the system quality is a concern.";
+                                                             rdfs:label "Measurement of software quality";
+                                                             rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                             <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ArchitecturalAlignment/Stakeholder>,
+                                                                                                  sw-quality:FunctionalCorrectness,
+                                                                                                  <https://w3id.org/squap/ProcessMaturity/Verification>,
+                                                                                                  <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureView>,
+                                                                                                  <https://w3id.org/squap/ProcessMaturity/Validation>,
+                                                                                                  <https://w3id.org/squap/ProcessMaturity/Audit>,
+                                                                                                  sw-quality:Non-repudiation,
+                                                                                                  <https://w3id.org/squap/ProcessMaturity/QualityAssurance>,
+                                                                                                  sw-quality:Integrity,
+                                                                                                  sw-quality:Accountability,
+                                                                                                  <https://w3id.org/squap/ArchitecturalAlignment/Concern>,
+                                                                                                  sw-quality:Maturity.
+<https://w3id.org/squap/Factor/ModuleInterfacesComplexity> a owl:NamedIndividual,
+                                                             <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                             owl:Class;
+                                                           rdfs:comment "A banking information system is characterized by a high number of modules;if these are strongly coupled this increases the number of interfaces and their complexity.";
+                                                           rdfs:label "Module interfaces complexity";
+                                                           rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                           <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ProcessMaturity/Maintenance>,
+                                                                                                <https://w3id.org/squap/ArchitecturalAlignment/Stakeholder>,
+                                                                                                <https://w3id.org/squap/ProcessMaturity/QualityAssurance>,
+                                                                                                <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureModel>,
+                                                                                                <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureView>,
+                                                                                                <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureRational>,
+                                                                                                <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureDescription>,
+                                                                                                <https://w3id.org/squap/ArchitecturalAlignment/System-of-Interest>,
+                                                                                                sw-quality:Modularity.
+<https://w3id.org/squap/Factor/NewPackagesFunctionalitiesVsComplexity> a owl:Class,
+                                                                         owl:NamedIndividual,
+                                                                         <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                       rdfs:comment "The demand for more functionalities rose in the last years, along with their complexity.";
+                                                                       rdfs:label "New packages functionalities vs complexity";
+                                                                       rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                       <https://w3id.org/squap/usesConcept> sw-quality:Replaceability,
+                                                                                                            <https://w3id.org/squap/ProcessMaturity/Maintenance>,
+                                                                                                            <https://w3id.org/squap/ProcessMaturity/Verification>,
+                                                                                                            sw-quality:Analysability,
+                                                                                                            <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureFramework>,
+                                                                                                            <https://w3id.org/squap/ArchitecturalAlignment/CorrespondenceRules>,
+                                                                                                            sw-quality:Reusability,
+                                                                                                            <https://w3id.org/squap/ProcessMaturity/ConfigurationManagement>,
+                                                                                                            <https://w3id.org/squap/ProcessMaturity/ProblemResolution>,
+                                                                                                            sw-quality:Operability,
+                                                                                                            sw-quality:Adaptability.
+<https://w3id.org/squap/Factor/Non-ItalianApplicationsVsQualityAndMaintainability> a <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                                                     owl:Class,
+                                                                                     owl:NamedIndividual;
+                                                                                   rdfs:comment "Non-Italian applications are more maintainable but have less functionalities.";
+                                                                                   rdfs:label "Non-Italian applications vs quality and maintainability";
+                                                                                   rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                                   <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ArchitecturalAlignment/CorrespondenceRules>,
+                                                                                                                        <https://w3id.org/squap/ProcessMaturity/Supply>,
+                                                                                                                        <https://w3id.org/squap/ProcessMaturity/QualityAssurance>,
+                                                                                                                        <https://w3id.org/squap/ProcessMaturity/Acquisition>,
+                                                                                                                        sw-quality:Installability,
+                                                                                                                        sw-quality:Adaptability,
+                                                                                                                        sw-quality:Reusability,
+                                                                                                                        <https://w3id.org/squap/ProcessMaturity/Maintenance>,
+                                                                                                                        <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureFramework>,
+                                                                                                                        sw-quality:Replaceability.
+<https://w3id.org/squap/Factor/PackagesDocumentationVsSystemAnalysis> a owl:Class,
+                                                                        <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                                        owl:NamedIndividual;
+                                                                      rdfs:comment "The lack of documentation in packages impacts directly on the logical data model and quality controls.";
+                                                                      rdfs:label "Packages documentation vs system analysis";
+                                                                      rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                                      <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ProcessMaturity/Documentation>,
+                                                                                                           sw-quality:Modifiability,
+                                                                                                           sw-quality:Replaceability,
+                                                                                                           <https://w3id.org/squap/ArchitecturalAlignment/Environment>,
+                                                                                                           <https://w3id.org/squap/ArchitecturalAlignment/System-of-Interest>,
+                                                                                                           sw-quality:Analysability.
+<https://w3id.org/squap/Factor/PackagesVsDocumentation> a <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                          owl:NamedIndividual,
+                                                          owl:Class;
+                                                        rdfs:comment "The lack of documentation for software packages is perceived as a commercial strategy of suppliers to lock-in customers.";
+                                                        rdfs:label "Packages vs documentation";
+                                                        rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                        <https://w3id.org/squap/usesConcept> sw-quality:Installability,
+                                                                                             <https://w3id.org/squap/ProcessMaturity/Documentation>,
+                                                                                             sw-quality:Modularity,
+                                                                                             sw-quality:Testability,
+                                                                                             sw-quality:Reusability,
+                                                                                             <https://w3id.org/squap/ProcessMaturity/Maintenance>,
+                                                                                             sw-quality:Analysability,
+                                                                                             sw-quality:Adaptability,
+                                                                                             sw-quality:Modifiability,
+                                                                                             <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureDescription>,
+                                                                                             <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureViewpoint>,
+                                                                                             sw-quality:Replaceability.
+<https://w3id.org/squap/Factor/QualityVsRequirements> a owl:Class,
+                                                        owl:NamedIndividual,
+                                                        <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                      rdfs:comment "Poorly defined requirements lead to misunderstandings with software developers, which will deliver lower quality software. The functional quality will be low if the requirements' clarity is low.";
+                                                      rdfs:label "Quality vs requirements";
+                                                      rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                      <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ProcessMaturity/Development>,
+                                                                                           <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureView>,
+                                                                                           sw-quality:FunctionalCompleteness,
+                                                                                           <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureViewpoint>,
+                                                                                           <https://w3id.org/squap/ArchitecturalAlignment/Concern>.
+<https://w3id.org/squap/Factor/QualityVsSystemAnalysis> a owl:NamedIndividual,
+                                                          owl:Class,
+                                                          <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                        rdfs:comment "Even though the design phase is perceived as the most important up-front activity, it is poorly implemented.";
+                                                        rdfs:label "Quality vs system analysis";
+                                                        rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                        <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ArchitecturalAlignment/Stakeholder>,
+                                                                                             <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureView>,
+                                                                                             sw-quality:FunctionalCorrectness,
+                                                                                             sw-quality:FunctionalCompleteness,
+                                                                                             sw-quality:FunctionalAppropriateness,
+                                                                                             sw-quality:Replaceability,
+                                                                                             <https://w3id.org/squap/ProcessMaturity/QualityAssurance>,
+                                                                                             sw-quality:Analysability.
+<https://w3id.org/squap/Factor/QualityVsTimeAndBudget> a owl:Class,
+                                                         owl:NamedIndividual,
+                                                         <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                       rdfs:comment "The whole panel agreed unanimously that there is a direct relationship among quality and time and budget.";
+                                                       rdfs:label "Quality vs time and budget";
+                                                       rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                       <https://w3id.org/squap/usesConcept> sw-quality:Modifiability,
+                                                                                            <https://w3id.org/squap/ArchitecturalAlignment/Concern>,
+                                                                                            sw-quality:TimeBehaviour,
+                                                                                            sw-quality:Interoperability,
+                                                                                            <https://w3id.org/squap/ProcessMaturity/Management>,
+                                                                                            sw-quality:Analysability,
+                                                                                            sw-quality:Testability,
+                                                                                            <https://w3id.org/squap/ProcessMaturity/Maintenance>,
+                                                                                            sw-quality:Co-existence,
+                                                                                            sw-quality:ResourceUtilization,
+                                                                                            <https://w3id.org/squap/ProcessMaturity/Development>.
+<https://w3id.org/squap/Factor/RequirementsVsMethodologies> a owl:Class,
+                                                              owl:NamedIndividual,
+                                                              <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                            rdfs:comment "Poor methodologies to elicit business goals and needs lead to the definition of unclear software requirements.";
+                                                            rdfs:label "Requirements vs methodologies";
+                                                            rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                            <https://w3id.org/squap/usesConcept> sw-quality:FunctionalCompleteness,
+                                                                                                 <https://w3id.org/squap/ArchitecturalAlignment/CorrespondenceRules>,
+                                                                                                 <https://w3id.org/squap/ProcessMaturity/Development>,
+                                                                                                 <https://w3id.org/squap/ArchitecturalAlignment/Stakeholder>,
+                                                                                                 sw-quality:FunctionalCorrectness.
+<https://w3id.org/squap/Factor/RequirementsVsTechnicalJargon> a owl:NamedIndividual,
+                                                                owl:Class,
+                                                                <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                              rdfs:comment "The (mis-)use of technical jargon of different departments for requirement elicitation leads to low software quality.";
+                                                              rdfs:label "Requirements vs technical jargon";
+                                                              rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                              <https://w3id.org/squap/usesConcept> sw-quality:FunctionalCorrectness,
+                                                                                                   <https://w3id.org/squap/ProcessMaturity/Management>,
+                                                                                                   <https://w3id.org/squap/ProcessMaturity/Development>,
+                                                                                                   <https://w3id.org/squap/ArchitecturalAlignment/Stakeholder>.
+<https://w3id.org/squap/Factor/SystemAnalysisVsDocumentation> a owl:NamedIndividual,
+                                                                <https://w3id.org/squap/SoftwareQualityFactor>,
+                                                                owl:Class;
+                                                              rdfs:comment "Inadequate documentation impacts on the system analysis and so on software quality.";
+                                                              rdfs:label "System analysis vs documentation";
+                                                              rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                              <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ArchitecturalAlignment/ArchitectureDescription>,
+                                                                                                   sw-quality:Integrity,
+                                                                                                   sw-quality:FaultTolerance,
+                                                                                                   sw-quality:FunctionalCorrectness,
+                                                                                                   <https://w3id.org/squap/ProcessMaturity/Documentation>,
+                                                                                                   sw-quality:Accountability,
+                                                                                                   sw-quality:FunctionalAppropriateness,
+                                                                                                   sw-quality:FunctionalCompleteness.
+<https://w3id.org/squap/Factor/WebTechnologiesVsMethodologies> a owl:NamedIndividual,
+                                                                 owl:Class,
+                                                                 <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                               rdfs:comment "There is the idea that the adoption of such technologies lead to less rigorous approach to software engineering. In this regard, Agile is considered a scapegoat of such sloppiness.";
+                                                               rdfs:label "Web technologies vs methodologies";
+                                                               rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                               <https://w3id.org/squap/usesConcept> <https://w3id.org/squap/ProcessMaturity/Development>,
+                                                                                                    <https://w3id.org/squap/ArchitecturalAlignment/Correspondence>,
+                                                                                                    <https://w3id.org/squap/ArchitecturalAlignment/CorrespondenceRules>,
+                                                                                                    sw-quality:Maturity,
+                                                                                                    <https://w3id.org/squap/ArchitecturalAlignment/Environment>.
+<https://w3id.org/squap/FactorOccurrence> a owl:Class;
+                                          rdfs:label "Factor occurrence";
+                                          rdfs:subClassOf [owl:someValuesFrom <https://w3id.org/squap/MeasurementResult> ; 
+                                                           owl:onProperty <https://w3id.org/squap/isAffectedBy> ; 
+                                                           a owl:Restriction],
+                                                          [owl:someValuesFrom <https://w3id.org/squap/SoftwareQualityFactor> ; 
+                                                           owl:onProperty <https://w3id.org/squap/satisfiesFactor> ; 
+                                                           a owl:Restriction],
+                                                          <https://w3id.org/squap/Situation>.
+<https://w3id.org/squap/MeasurementResult> a owl:Class;
+                                           rdfs:comment "A measurement result.";
+                                           rdfs:label "Measurement result";
+                                           rdfs:subClassOf [owl:someValuesFrom <https://w3id.org/squap/SoftwareQualityCharacteristic> ; 
+                                                            owl:onProperty <https://w3id.org/squap/assesses> ; 
+                                                            a owl:Restriction],
+                                                           [owl:qualifiedCardinality "1" ; 
+                                                            owl:onProperty <https://w3id.org/squap/hasMetric> ; 
+                                                            owl:onClass <https://w3id.org/squap/Metric> ; 
+                                                            a owl:Restriction],
+                                                           [owl:qualifiedCardinality "1" ; 
+                                                            owl:onProperty <https://w3id.org/squap/hasValue> ; 
+                                                            owl:onClass <https://w3id.org/squap/Value> ; 
+                                                            a owl:Restriction].
+<https://w3id.org/squap/Metric> a owl:Class;
+                                rdfs:comment "A metric, e.g. precision.";
+                                rdfs:label "Metric".
+<https://w3id.org/squap/Parameter> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/parameterregion.owl>;
+                                   a owl:Class;
+                                   rdfs:comment """A Concept that classifies something having a certain value, e.g. 'High' can be said of people taller than 185 cm.
+However, in order to formally represent this constraint, we need to add an anonymous type to a parameter instance, using a property that convey the semantics of the parameter, e.g.:
+High rdf:type Person and (some hasHeight (Height and (oneOf isTallerThan 185) and (oneOf hasUnitOfMeasure centimeter)))""";
+                                   rdfs:label "Parameter";
+                                   rdfs:subClassOf <https://w3id.org/squap/Concept>.
+<https://w3id.org/squap/ProcessMaturity> a owl:Class;
+                                         rdfs:comment "The software quality characteristic meant as process maturity.";
+                                         rdfs:label "Process maturity";
+                                         rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityCharacteristic>;
+                                         owl:disjointWith <https://w3id.org/squap/SoftwareQuality>.
+<https://w3id.org/squap/ProcessMaturity/Acquisition> a owl:Class,
+                                                       owl:NamedIndividual,
+                                                       <https://w3id.org/squap/ProcessMaturity>;
+                                                     rdfs:label "Acquisition";
+                                                     rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Primary>;
+                                                     <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Primary>.
+<https://w3id.org/squap/ProcessMaturity/Audit> a owl:Class,
+                                                 owl:NamedIndividual,
+                                                 <https://w3id.org/squap/ProcessMaturity>;
+                                               rdfs:label "Audit";
+                                               rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Supporting>;
+                                               <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Supporting>.
+<https://w3id.org/squap/ProcessMaturity/ConfigurationManagement> a owl:Class,
+                                                                   owl:NamedIndividual,
+                                                                   <https://w3id.org/squap/ProcessMaturity>;
+                                                                 rdfs:label "Configuration management";
+                                                                 rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Supporting>;
+                                                                 <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Supporting>.
+<https://w3id.org/squap/ProcessMaturity/Development> a owl:Class,
+                                                       owl:NamedIndividual,
+                                                       <https://w3id.org/squap/ProcessMaturity>;
+                                                     rdfs:label "Development";
+                                                     rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Primary>;
+                                                     <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Primary>.
+<https://w3id.org/squap/ProcessMaturity/Documentation> a owl:Class,
+                                                         owl:NamedIndividual,
+                                                         <https://w3id.org/squap/ProcessMaturity>;
+                                                       rdfs:label "Documentation";
+                                                       rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Supporting>;
+                                                       <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Supporting>.
+<https://w3id.org/squap/ProcessMaturity/Improvement> a owl:Class,
+                                                       owl:NamedIndividual,
+                                                       <https://w3id.org/squap/ProcessMaturity>;
+                                                     rdfs:label "Improvement";
+                                                     rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Organisational>;
+                                                     <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Organisational>.
+<https://w3id.org/squap/ProcessMaturity/Infrastructure> a owl:Class,
+                                                          owl:NamedIndividual,
+                                                          <https://w3id.org/squap/ProcessMaturity>;
+                                                        rdfs:label "Infrastructure";
+                                                        rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Organisational>;
+                                                        <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Organisational>.
+<https://w3id.org/squap/ProcessMaturity/JointReview> a owl:Class,
+                                                       owl:NamedIndividual,
+                                                       <https://w3id.org/squap/ProcessMaturity>;
+                                                     rdfs:label "Joint review";
+                                                     rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Supporting>;
+                                                     <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Supporting>.
+<https://w3id.org/squap/ProcessMaturity/Maintenance> a owl:Class,
+                                                       owl:NamedIndividual,
+                                                       <https://w3id.org/squap/ProcessMaturity>;
+                                                     rdfs:label "Maintenance";
+                                                     rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Primary>;
+                                                     <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Primary>.
+<https://w3id.org/squap/ProcessMaturity/Management> a owl:Class,
+                                                      owl:NamedIndividual,
+                                                      <https://w3id.org/squap/ProcessMaturity>;
+                                                    rdfs:label "Management";
+                                                    rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Organisational>;
+                                                    <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Organisational>.
+<https://w3id.org/squap/ProcessMaturity/Operation> a owl:Class,
+                                                     owl:NamedIndividual,
+                                                     <https://w3id.org/squap/ProcessMaturity>;
+                                                   rdfs:label "Operation";
+                                                   rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Primary>;
+                                                   <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Primary>.
+<https://w3id.org/squap/ProcessMaturity/Organisational> a owl:Class,
+                                                          owl:NamedIndividual,
+                                                          <https://w3id.org/squap/ProcessMaturity>;
+                                                        rdfs:label "Organisational";
+                                                        rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity>.
+<https://w3id.org/squap/ProcessMaturity/Primary> a owl:Class,
+                                                   owl:NamedIndividual,
+                                                   <https://w3id.org/squap/ProcessMaturity>;
+                                                 rdfs:label "Primary";
+                                                 rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity>.
+<https://w3id.org/squap/ProcessMaturity/ProblemResolution> a owl:Class,
+                                                             owl:NamedIndividual,
+                                                             <https://w3id.org/squap/ProcessMaturity>;
+                                                           rdfs:label "Problem resolution";
+                                                           rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Supporting>;
+                                                           <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Supporting>.
+<https://w3id.org/squap/ProcessMaturity/QualityAssurance> a owl:Class,
+                                                            owl:NamedIndividual,
+                                                            <https://w3id.org/squap/ProcessMaturity>;
+                                                          rdfs:label "Quality assurance";
+                                                          rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Supporting>;
+                                                          <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Supporting>.
+<https://w3id.org/squap/ProcessMaturity/Supply> a owl:Class,
+                                                  owl:NamedIndividual,
+                                                  <https://w3id.org/squap/ProcessMaturity>;
+                                                rdfs:label "Supply";
+                                                rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Primary>;
+                                                <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Primary>.
+<https://w3id.org/squap/ProcessMaturity/Supporting> a owl:Class,
+                                                      owl:NamedIndividual,
+                                                      <https://w3id.org/squap/ProcessMaturity>;
+                                                    rdfs:label "Supporting";
+                                                    rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity>.
+<https://w3id.org/squap/ProcessMaturity/Training> a owl:Class,
+                                                    owl:NamedIndividual,
+                                                    <https://w3id.org/squap/ProcessMaturity>;
+                                                  rdfs:label "Training";
+                                                  rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Organisational>;
+                                                  <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Organisational>.
+<https://w3id.org/squap/ProcessMaturity/Validation> a owl:Class,
+                                                      owl:NamedIndividual,
+                                                      <https://w3id.org/squap/ProcessMaturity>;
+                                                    rdfs:label "Validation";
+                                                    rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Supporting>;
+                                                    <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Supporting>.
+<https://w3id.org/squap/ProcessMaturity/Verification> a owl:Class,
+                                                        owl:NamedIndividual,
+                                                        <https://w3id.org/squap/ProcessMaturity>;
+                                                      rdfs:label "Verification";
+                                                      rdfs:subClassOf <https://w3id.org/squap/ProcessMaturity/Supporting>;
+                                                      <https://w3id.org/squap/specializes> <https://w3id.org/squap/ProcessMaturity/Supporting>.
+<https://w3id.org/squap/ProcessMaturityResult> a owl:Class;
+                                               rdfs:label "Process maturity result";
+                                               rdfs:subClassOf <https://w3id.org/squap/MeasurementResult>.
+<https://w3id.org/squap/Region> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/parameterregion.owl>;
+                                a owl:Class;
+                                rdfs:comment "Any region in a dimensional space (a dimensional space is a maximal Region), which can be used as a value for a quality of an Entity.";
+                                rdfs:label "Region".
+<https://w3id.org/squap/Situation> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                   a owl:Class;
+                                   rdfs:comment "A view on a set of entities. It can be seen as a 'relational context', reifying a relation.";
+                                   rdfs:label "Situation".
+<https://w3id.org/squap/SoftwareQuality> a owl:Class;
+                                         rdfs:comment "The software quality characteristic meant as softwarea quality.";
+                                         rdfs:label "Software quality";
+                                         rdfs:subClassOf <https://w3id.org/squap/SoftwareQualityCharacteristic>.
+sw-quality:AccessibilityInUse a owl:Class,
+                                owl:NamedIndividual,
+                                <https://w3id.org/squap/SoftwareQuality>;
+                              rdfs:label "Accessibility in use";
+                              rdfs:subClassOf sw-quality:FlexibilityInUse;
+                              <https://w3id.org/squap/specializes> sw-quality:FlexibilityInUse.
+sw-quality:Accountability a owl:Class,
+                            owl:NamedIndividual,
+                            <https://w3id.org/squap/SoftwareQuality>;
+                          rdfs:label "Accountability";
+                          rdfs:subClassOf sw-quality:Security;
+                          <https://w3id.org/squap/specializes> sw-quality:Security.
+sw-quality:Accuracy a owl:Class,
+                      owl:NamedIndividual,
+                      <https://w3id.org/squap/SoftwareQuality>;
+                    rdfs:label "Accuracy";
+                    rdfs:subClassOf sw-quality:FunctionalSuitability;
+                    <https://w3id.org/squap/specializes> sw-quality:FunctionalSuitability.
+sw-quality:Adaptability a owl:Class,
+                          owl:NamedIndividual,
+                          <https://w3id.org/squap/SoftwareQuality>;
+                        rdfs:label "Adaptability";
+                        rdfs:subClassOf sw-quality:Transferability;
+                        <https://w3id.org/squap/specializes> sw-quality:Transferability.
+sw-quality:Analysability a owl:Class,
+                           owl:NamedIndividual,
+                           <https://w3id.org/squap/SoftwareQuality>;
+                         rdfs:label "Analysability";
+                         rdfs:subClassOf sw-quality:Compatibility;
+                         <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:Appropriateness a owl:Class,
+                             owl:NamedIndividual,
+                             <https://w3id.org/squap/SoftwareQuality>;
+                           rdfs:label "Appropriateness";
+                           rdfs:subClassOf sw-quality:FunctionalSuitability;
+                           <https://w3id.org/squap/specializes> sw-quality:FunctionalSuitability.
+sw-quality:AppropriatenessRecognisability a owl:Class,
+                                            owl:NamedIndividual,
+                                            <https://w3id.org/squap/SoftwareQuality>;
+                                          rdfs:label "Appropriateness recognisability";
+                                          rdfs:subClassOf sw-quality:Operability;
+                                          <https://w3id.org/squap/specializes> sw-quality:Operability.
+sw-quality:Attractiveness a owl:Class,
+                            owl:NamedIndividual,
+                            <https://w3id.org/squap/SoftwareQuality>;
+                          rdfs:label "Attractiveness";
+                          rdfs:subClassOf sw-quality:Operability;
+                          <https://w3id.org/squap/specializes> sw-quality:Operability.
+sw-quality:Authenticity a owl:Class,
+                          owl:NamedIndividual,
+                          <https://w3id.org/squap/SoftwareQuality>;
+                        rdfs:label "Authenticity";
+                        rdfs:subClassOf sw-quality:Security;
+                        <https://w3id.org/squap/specializes> sw-quality:Security.
+sw-quality:Availability a owl:Class,
+                          owl:NamedIndividual,
+                          <https://w3id.org/squap/SoftwareQuality>;
+                        rdfs:label "Availability";
+                        rdfs:subClassOf sw-quality:Reliability;
+                        <https://w3id.org/squap/specializes> sw-quality:Reliability.
+sw-quality:Changeability a owl:Class,
+                           owl:NamedIndividual,
+                           <https://w3id.org/squap/SoftwareQuality>;
+                         rdfs:label "Changeability";
+                         rdfs:subClassOf sw-quality:Compatibility;
+                         <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:Co-existence a owl:Class,
+                          owl:NamedIndividual,
+                          <https://w3id.org/squap/SoftwareQuality>;
+                        rdfs:label "Co-existence";
+                        rdfs:subClassOf sw-quality:Compatibility;
+                        <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:Comfort a owl:Class,
+                     owl:NamedIndividual,
+                     <https://w3id.org/squap/SoftwareQuality>;
+                   rdfs:label "Comfort";
+                   rdfs:subClassOf sw-quality:SatisfactionInUse;
+                   <https://w3id.org/squap/specializes> sw-quality:SatisfactionInUse.
+sw-quality:CommercialDamageInUse a owl:Class,
+                                   owl:NamedIndividual,
+                                   <https://w3id.org/squap/SoftwareQuality>;
+                                 rdfs:label "Commercial damage in use";
+                                 rdfs:subClassOf sw-quality:Safety;
+                                 <https://w3id.org/squap/specializes> sw-quality:Safety.
+sw-quality:Compatibility a owl:Class,
+                           owl:NamedIndividual,
+                           <https://w3id.org/squap/SoftwareQuality>;
+                         rdfs:label "Compatibility";
+                         rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                         sw-quality:SoftwareProductQuality;
+                         <https://w3id.org/squap/specializes> sw-quality:SoftwareProductQuality.
+sw-quality:CompatibilityCompliance a owl:Class,
+                                     owl:NamedIndividual,
+                                     <https://w3id.org/squap/SoftwareQuality>;
+                                   rdfs:label "Compatibility compliance";
+                                   rdfs:subClassOf sw-quality:Compatibility;
+                                   <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:Confidentiality a owl:Class,
+                             owl:NamedIndividual,
+                             <https://w3id.org/squap/SoftwareQuality>;
+                           rdfs:label "Confidentiality";
+                           rdfs:subClassOf sw-quality:Security;
+                           <https://w3id.org/squap/specializes> sw-quality:Security.
+sw-quality:ContextConformityInUse a owl:Class,
+                                    owl:NamedIndividual,
+                                    <https://w3id.org/squap/SoftwareQuality>;
+                                  rdfs:label "Context conformity in use";
+                                  rdfs:subClassOf sw-quality:FlexibilityInUse;
+                                  <https://w3id.org/squap/specializes> sw-quality:FlexibilityInUse.
+sw-quality:ContextExtendibilityInUse a owl:Class,
+                                       owl:NamedIndividual,
+                                       <https://w3id.org/squap/SoftwareQuality>;
+                                     rdfs:label "Context extendibility in use";
+                                     rdfs:subClassOf sw-quality:FlexibilityInUse;
+                                     <https://w3id.org/squap/specializes> sw-quality:FlexibilityInUse.
+sw-quality:EaseOfUse a owl:Class,
+                       owl:NamedIndividual,
+                       <https://w3id.org/squap/SoftwareQuality>;
+                     rdfs:label "Ease of use";
+                     rdfs:subClassOf sw-quality:Operability;
+                     <https://w3id.org/squap/specializes> sw-quality:Operability.
+sw-quality:EffectivenessInUse a owl:Class,
+                                owl:NamedIndividual,
+                                <https://w3id.org/squap/SoftwareQuality>;
+                              rdfs:label "Effectiveness in use";
+                              rdfs:subClassOf sw-quality:UsabilityInUse;
+                              <https://w3id.org/squap/specializes> sw-quality:UsabilityInUse.
+sw-quality:EfficiencyInUse a owl:Class,
+                             owl:NamedIndividual,
+                             <https://w3id.org/squap/SoftwareQuality>;
+                           rdfs:label "Efficiency in use";
+                           rdfs:subClassOf sw-quality:UsabilityInUse;
+                           <https://w3id.org/squap/specializes> sw-quality:UsabilityInUse.
+sw-quality:EnvironmentalHarmInUse a owl:Class,
+                                    owl:NamedIndividual,
+                                    <https://w3id.org/squap/SoftwareQuality>;
+                                  rdfs:label "Environmental harm in use";
+                                  rdfs:subClassOf sw-quality:Safety;
+                                  <https://w3id.org/squap/specializes> sw-quality:Safety.
+sw-quality:FaultTolerance a owl:Class,
+                            owl:NamedIndividual,
+                            <https://w3id.org/squap/SoftwareQuality>;
+                          rdfs:label "Fault tolerance";
+                          rdfs:subClassOf sw-quality:Reliability;
+                          <https://w3id.org/squap/specializes> sw-quality:Reliability.
+sw-quality:FlexibilityInUse a owl:Class,
+                              owl:NamedIndividual,
+                              <https://w3id.org/squap/SoftwareQuality>;
+                            rdfs:label "Flexibility in use";
+                            rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                            sw-quality:FlexibilityInUse,
+                                            sw-quality:QualityInUse;
+                            <https://w3id.org/squap/specializes> sw-quality:FlexibilityInUse,
+                                                                 sw-quality:QualityInUse.
+sw-quality:FlexibilityInUseCompliance a owl:Class,
+                                        owl:NamedIndividual,
+                                        <https://w3id.org/squap/SoftwareQuality>;
+                                      rdfs:label "Flexibility in use compliance";
+                                      rdfs:subClassOf sw-quality:FlexibilityInUse;
+                                      <https://w3id.org/squap/specializes> sw-quality:FlexibilityInUse.
+sw-quality:FunctionalAppropriateness a owl:Class,
+                                       owl:NamedIndividual,
+                                       <https://w3id.org/squap/SoftwareQuality>;
+                                     rdfs:label "Functional appropriateness";
+                                     rdfs:subClassOf sw-quality:FunctionalSuitability;
+                                     <https://w3id.org/squap/specializes> sw-quality:FunctionalSuitability.
+sw-quality:FunctionalCompleteness a owl:Class,
+                                    owl:NamedIndividual,
+                                    <https://w3id.org/squap/SoftwareQuality>;
+                                  rdfs:label "Functional completeness";
+                                  rdfs:subClassOf sw-quality:FunctionalSuitability;
+                                  <https://w3id.org/squap/specializes> sw-quality:FunctionalSuitability.
+sw-quality:FunctionalCorrectness a owl:Class,
+                                   owl:NamedIndividual,
+                                   <https://w3id.org/squap/SoftwareQuality>;
+                                 rdfs:label "Functional correctness";
+                                 rdfs:subClassOf sw-quality:FunctionalSuitability;
+                                 <https://w3id.org/squap/specializes> sw-quality:FunctionalSuitability.
+sw-quality:FunctionalSuitability a owl:Class,
+                                   owl:NamedIndividual,
+                                   <https://w3id.org/squap/SoftwareQuality>;
+                                 rdfs:label "Functional suitability";
+                                 rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                                 sw-quality:SoftwareProductQuality;
+                                 <https://w3id.org/squap/specializes> sw-quality:SoftwareProductQuality.
+sw-quality:Helpfulness a owl:Class,
+                         owl:NamedIndividual,
+                         <https://w3id.org/squap/SoftwareQuality>;
+                       rdfs:label "Helpfulness";
+                       rdfs:subClassOf sw-quality:Operability;
+                       <https://w3id.org/squap/specializes> sw-quality:Operability.
+sw-quality:Installability a owl:Class,
+                            owl:NamedIndividual,
+                            <https://w3id.org/squap/SoftwareQuality>;
+                          rdfs:label "Installability";
+                          rdfs:subClassOf sw-quality:Transferability;
+                          <https://w3id.org/squap/specializes> sw-quality:Transferability.
+sw-quality:Integrity a owl:Class,
+                       owl:NamedIndividual,
+                       <https://w3id.org/squap/SoftwareQuality>;
+                     rdfs:label "Integrity";
+                     rdfs:subClassOf sw-quality:Security;
+                     <https://w3id.org/squap/specializes> sw-quality:Security.
+sw-quality:Interoperability a owl:Class,
+                              owl:NamedIndividual,
+                              <https://w3id.org/squap/SoftwareQuality>;
+                            rdfs:label "Interoperability";
+                            rdfs:subClassOf sw-quality:Compatibility;
+                            <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:Learnability a owl:Class,
+                          owl:NamedIndividual,
+                          <https://w3id.org/squap/SoftwareQuality>;
+                        rdfs:label "Learnability";
+                        rdfs:subClassOf sw-quality:Operability;
+                        <https://w3id.org/squap/specializes> sw-quality:Operability.
+sw-quality:Likability a owl:Class,
+                        owl:NamedIndividual,
+                        <https://w3id.org/squap/SoftwareQuality>;
+                      rdfs:label "Likability";
+                      rdfs:subClassOf sw-quality:SatisfactionInUse;
+                      <https://w3id.org/squap/specializes> sw-quality:SatisfactionInUse.
+sw-quality:Maintainability a owl:Class,
+                             owl:NamedIndividual,
+                             <https://w3id.org/squap/SoftwareQuality>;
+                           rdfs:label "Maintainability";
+                           rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                           sw-quality:Compatibility;
+                           <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:MaintainabilityCompliance a owl:Class,
+                                       owl:NamedIndividual,
+                                       <https://w3id.org/squap/SoftwareQuality>;
+                                     rdfs:label "Maintainability compliance";
+                                     rdfs:subClassOf sw-quality:Compatibility;
+                                     <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:Maturity a owl:Class,
+                      owl:NamedIndividual,
+                      <https://w3id.org/squap/SoftwareQuality>;
+                    rdfs:label "Maturity";
+                    rdfs:subClassOf sw-quality:Reliability;
+                    <https://w3id.org/squap/specializes> sw-quality:Reliability.
+sw-quality:Modifiability a owl:Class,
+                           owl:NamedIndividual,
+                           <https://w3id.org/squap/SoftwareQuality>;
+                         rdfs:label "Modifiability";
+                         rdfs:subClassOf sw-quality:Maintainability;
+                         <https://w3id.org/squap/specializes> sw-quality:Maintainability.
+sw-quality:ModificationStability a owl:Class,
+                                   owl:NamedIndividual,
+                                   <https://w3id.org/squap/SoftwareQuality>;
+                                 rdfs:label "Modification stability";
+                                 rdfs:subClassOf sw-quality:Compatibility;
+                                 <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:Modularity a owl:Class,
+                        owl:NamedIndividual,
+                        <https://w3id.org/squap/SoftwareQuality>;
+                      rdfs:label "Modularity";
+                      rdfs:subClassOf sw-quality:Compatibility;
+                      <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:Non-repudiation a owl:Class,
+                             owl:NamedIndividual,
+                             <https://w3id.org/squap/SoftwareQuality>;
+                           rdfs:label "Non-repudiation";
+                           rdfs:subClassOf sw-quality:Security;
+                           <https://w3id.org/squap/specializes> sw-quality:Security.
+sw-quality:Operability a owl:Class,
+                         owl:NamedIndividual,
+                         <https://w3id.org/squap/SoftwareQuality>;
+                       rdfs:label "Operability";
+                       rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                       sw-quality:SoftwareProductQuality;
+                       <https://w3id.org/squap/specializes> sw-quality:SoftwareProductQuality.
+sw-quality:OperabilityCompliance a owl:Class,
+                                   owl:NamedIndividual,
+                                   <https://w3id.org/squap/SoftwareQuality>;
+                                 rdfs:label "Operability compliance";
+                                 rdfs:subClassOf sw-quality:Operability;
+                                 <https://w3id.org/squap/specializes> sw-quality:Operability.
+sw-quality:OperatorHealthAndSafety a owl:Class,
+                                     owl:NamedIndividual,
+                                     <https://w3id.org/squap/SoftwareQuality>;
+                                   rdfs:label "Operator health and safety";
+                                   rdfs:subClassOf sw-quality:Safety;
+                                   <https://w3id.org/squap/specializes> sw-quality:Safety.
+sw-quality:PerformanceEfficiency a owl:Class,
+                                   owl:NamedIndividual,
+                                   <https://w3id.org/squap/SoftwareQuality>;
+                                 rdfs:label "Performance efficiency";
+                                 rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                                 sw-quality:SoftwareProductQuality;
+                                 <https://w3id.org/squap/specializes> sw-quality:SoftwareProductQuality.
+sw-quality:PerformanceEfficiencyCompliance a owl:Class,
+                                             owl:NamedIndividual,
+                                             <https://w3id.org/squap/SoftwareQuality>;
+                                           rdfs:label "Performance efficiency compliance";
+                                           rdfs:subClassOf sw-quality:PerformanceEfficiency;
+                                           <https://w3id.org/squap/specializes> sw-quality:PerformanceEfficiency.
+sw-quality:Pleasure a owl:Class,
+                      owl:NamedIndividual,
+                      <https://w3id.org/squap/SoftwareQuality>;
+                    rdfs:label "Pleasure";
+                    rdfs:subClassOf sw-quality:SatisfactionInUse;
+                    <https://w3id.org/squap/specializes> sw-quality:SatisfactionInUse.
+sw-quality:Portability a owl:Class,
+                         owl:NamedIndividual,
+                         <https://w3id.org/squap/SoftwareQuality>;
+                       rdfs:label "Portability";
+                       rdfs:subClassOf sw-quality:Transferability;
+                       <https://w3id.org/squap/specializes> sw-quality:Transferability.
+sw-quality:PublicHealthAndSafety a owl:Class,
+                                   owl:NamedIndividual,
+                                   <https://w3id.org/squap/SoftwareQuality>;
+                                 rdfs:label "Public health and safety";
+                                 rdfs:subClassOf sw-quality:Safety;
+                                 <https://w3id.org/squap/specializes> sw-quality:Safety.
+sw-quality:QualityInUse a owl:Class,
+                          owl:NamedIndividual,
+                          <https://w3id.org/squap/SoftwareQuality>;
+                        rdfs:label "Quality in use";
+                        rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>.
+sw-quality:Recoverability a owl:Class,
+                            owl:NamedIndividual,
+                            <https://w3id.org/squap/SoftwareQuality>;
+                          rdfs:label "Recoverability";
+                          rdfs:subClassOf sw-quality:Reliability;
+                          <https://w3id.org/squap/specializes> sw-quality:Reliability.
+sw-quality:Reliability a owl:Class,
+                         owl:NamedIndividual,
+                         <https://w3id.org/squap/SoftwareQuality>;
+                       rdfs:label "Reliability";
+                       rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                       sw-quality:SoftwareProductQuality;
+                       <https://w3id.org/squap/specializes> sw-quality:SoftwareProductQuality.
+sw-quality:ReliabilityCompliance a owl:Class,
+                                   owl:NamedIndividual,
+                                   <https://w3id.org/squap/SoftwareQuality>;
+                                 rdfs:label "Reliability compliance";
+                                 rdfs:subClassOf sw-quality:Reliability;
+                                 <https://w3id.org/squap/specializes> sw-quality:Reliability.
+sw-quality:Replaceability a owl:Class,
+                            owl:NamedIndividual,
+                            <https://w3id.org/squap/SoftwareQuality>;
+                          rdfs:label "Replaceability";
+                          rdfs:subClassOf sw-quality:Compatibility;
+                          <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:ResourceUtilization a owl:Class,
+                                 owl:NamedIndividual,
+                                 <https://w3id.org/squap/SoftwareQuality>;
+                               rdfs:label "Resource utilization";
+                               rdfs:subClassOf sw-quality:PerformanceEfficiency;
+                               <https://w3id.org/squap/specializes> sw-quality:PerformanceEfficiency.
+sw-quality:Reusability a owl:Class,
+                         owl:NamedIndividual,
+                         <https://w3id.org/squap/SoftwareQuality>;
+                       rdfs:label "Reusability";
+                       rdfs:subClassOf sw-quality:Compatibility;
+                       <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:Safety a owl:Class,
+                    owl:NamedIndividual,
+                    <https://w3id.org/squap/SoftwareQuality>;
+                  rdfs:label "Safety";
+                  rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                  sw-quality:QualityInUse;
+                  <https://w3id.org/squap/specializes> sw-quality:QualityInUse.
+sw-quality:SafetyCompliance a owl:Class,
+                              owl:NamedIndividual,
+                              <https://w3id.org/squap/SoftwareQuality>;
+                            rdfs:label "Safety compliance";
+                            rdfs:subClassOf sw-quality:Safety;
+                            <https://w3id.org/squap/specializes> sw-quality:Safety.
+sw-quality:SatisfactionInUse a owl:Class,
+                               owl:NamedIndividual,
+                               <https://w3id.org/squap/SoftwareQuality>;
+                             rdfs:label "Satisfaction in use";
+                             rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                             sw-quality:UsabilityInUse;
+                             <https://w3id.org/squap/specializes> sw-quality:UsabilityInUse.
+sw-quality:Security a owl:Class,
+                      owl:NamedIndividual,
+                      <https://w3id.org/squap/SoftwareQuality>;
+                    rdfs:label "Security";
+                    rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                    sw-quality:SoftwareProductQuality;
+                    <https://w3id.org/squap/specializes> sw-quality:SoftwareProductQuality.
+sw-quality:SecurityCompliance a owl:Class,
+                                owl:NamedIndividual,
+                                <https://w3id.org/squap/SoftwareQuality>;
+                              rdfs:label "Security compliance";
+                              rdfs:subClassOf sw-quality:Security;
+                              <https://w3id.org/squap/specializes> sw-quality:Security.
+sw-quality:SoftwareProductQuality a owl:Class,
+                                    owl:NamedIndividual,
+                                    <https://w3id.org/squap/SoftwareQuality>;
+                                  rdfs:label "Software product quality";
+                                  rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>.
+sw-quality:TechnicalAccessibility a owl:Class,
+                                    owl:NamedIndividual,
+                                    <https://w3id.org/squap/SoftwareQuality>;
+                                  rdfs:label "Technical accessibility";
+                                  rdfs:subClassOf sw-quality:Operability;
+                                  <https://w3id.org/squap/specializes> sw-quality:Operability.
+sw-quality:Testability a owl:Class,
+                         owl:NamedIndividual,
+                         <https://w3id.org/squap/SoftwareQuality>;
+                       rdfs:label "Testability";
+                       rdfs:subClassOf sw-quality:Compatibility;
+                       <https://w3id.org/squap/specializes> sw-quality:Compatibility.
+sw-quality:TimeBehaviour a owl:Class,
+                           owl:NamedIndividual,
+                           <https://w3id.org/squap/SoftwareQuality>;
+                         rdfs:label "Time behaviour";
+                         rdfs:subClassOf sw-quality:PerformanceEfficiency;
+                         <https://w3id.org/squap/specializes> sw-quality:PerformanceEfficiency.
+sw-quality:Transferability a owl:Class,
+                             owl:NamedIndividual,
+                             <https://w3id.org/squap/SoftwareQuality>;
+                           rdfs:label "Transferability";
+                           rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                           sw-quality:SoftwareProductQuality;
+                           <https://w3id.org/squap/specializes> sw-quality:SoftwareProductQuality.
+sw-quality:TransferabilityCompliance a owl:Class,
+                                       owl:NamedIndividual,
+                                       <https://w3id.org/squap/SoftwareQuality>;
+                                     rdfs:label "Transferability compliance";
+                                     rdfs:subClassOf sw-quality:Transferability;
+                                     <https://w3id.org/squap/specializes> sw-quality:Transferability.
+sw-quality:Trust a owl:Class,
+                   owl:NamedIndividual,
+                   <https://w3id.org/squap/SoftwareQuality>;
+                 rdfs:label "Trust";
+                 rdfs:subClassOf sw-quality:SatisfactionInUse;
+                 <https://w3id.org/squap/specializes> sw-quality:SatisfactionInUse.
+sw-quality:UsabilityInUse a owl:Class,
+                            owl:NamedIndividual,
+                            <https://w3id.org/squap/SoftwareQuality>;
+                          rdfs:label "Usability in use";
+                          rdfs:subClassOf <https://w3id.org/squap/SoftwareQuality>,
+                                          sw-quality:QualityInUse;
+                          <https://w3id.org/squap/specializes> sw-quality:QualityInUse.
+sw-quality:UsabilityInUseCompliance a owl:Class,
+                                      owl:NamedIndividual,
+                                      <https://w3id.org/squap/SoftwareQuality>;
+                                    rdfs:label "Usability in use compliance";
+                                    rdfs:subClassOf sw-quality:UsabilityInUse;
+                                    <https://w3id.org/squap/specializes> sw-quality:UsabilityInUse.
+<https://w3id.org/squap/SoftwareQualityCharacteristic> a owl:Class;
+                                                       rdfs:comment "The concept of the sotftware quality characteristic";
+                                                       rdfs:label "Software quality characteristic";
+                                                       rdfs:subClassOf <https://w3id.org/squap/Concept>;
+                                                       owl:equivalentClass [owl:unionOf (<https://w3id.org/squap/ArchitecturalAlignment>
+                                                                                         <https://w3id.org/squap/ProcessMaturity>
+                                                                                         <https://w3id.org/squap/SoftwareQuality>) ; 
+                                                                            a owl:Class].
+<https://w3id.org/squap/SoftwareQualityFactor> a owl:Class;
+                                               rdfs:label "Software quality factor";
+                                               rdfs:subClassOf [owl:someValuesFrom <https://w3id.org/squap/SoftwareQualityCharacteristic> ; 
+                                                                owl:onProperty <https://w3id.org/squap/usesQualityCharacteristic> ; 
+                                                                a owl:Restriction],
+                                                               [owl:onProperty <https://w3id.org/squap/usesQualityCharacteristic> ; 
+                                                                owl:allValuesFrom <https://w3id.org/squap/SoftwareQualityCharacteristic> ; 
+                                                                a owl:Restriction],
+                                                               <https://w3id.org/squap/Description>.
+<https://w3id.org/squap/SoftwareQualityResult> a owl:Class;
+                                               rdfs:label "Software quality result";
+                                               rdfs:subClassOf <https://w3id.org/squap/MeasurementResult>.
+<https://w3id.org/squap/Value> a owl:Class;
+                               rdfs:label "Value";
+                               rdfs:subClassOf [owl:onProperty <https://w3id.org/squap/value> ; 
+                                                owl:cardinality "1" ; 
+                                                a owl:Restriction],
+                                               <https://w3id.org/squap/Region>.
+<https://w3id.org/squap/affectsMeasurementOf> a owl:ObjectProperty;
+                                              rdfs:domain <https://w3id.org/squap/MeasurementResult>;
+                                              rdfs:label "affects measurement of";
+                                              rdfs:range <https://w3id.org/squap/FactorOccurrence>;
+                                              rdfs:subPropertyOf owl:topObjectProperty;
+                                              owl:inverseOf <https://w3id.org/squap/isAffectedBy>.
+<https://w3id.org/squap/assesses> a owl:ObjectProperty;
+                                  rdfs:domain <https://w3id.org/squap/MeasurementResult>;
+                                  rdfs:label "assesses";
+                                  rdfs:range <https://w3id.org/squap/SoftwareQualityCharacteristic>;
+                                  rdfs:subPropertyOf <https://w3id.org/squap/isClassifiedBy>;
+                                  owl:inverseOf <https://w3id.org/squap/isAssessedBy>.
+<https://w3id.org/squap/classifies> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                    a owl:ObjectProperty;
+                                    rdfs:domain <https://w3id.org/squap/Concept>;
+                                    rdfs:label "classifies";
+                                    rdfs:range owl:Thing.
+<https://w3id.org/squap/hasMetric> a owl:ObjectProperty;
+                                   rdfs:domain <https://w3id.org/squap/MeasurementResult>;
+                                   rdfs:label "has metric";
+                                   rdfs:range <https://w3id.org/squap/Metric>;
+                                   rdfs:subPropertyOf owl:topObjectProperty;
+                                   owl:inverseOf <https://w3id.org/squap/isMetricOf>.
+<https://w3id.org/squap/hasParameter> a owl:ObjectProperty;
+                                      rdfs:comment "The relation between a metric and a parameter.";
+                                      rdfs:domain <https://w3id.org/squap/Metric>;
+                                      rdfs:label "has parameter";
+                                      rdfs:range <https://w3id.org/squap/Parameter>;
+                                      owl:inverseOf <https://w3id.org/squap/isParameterOf>.
+<https://w3id.org/squap/hasValue> a owl:ObjectProperty;
+                                  rdfs:domain <https://w3id.org/squap/MeasurementResult>;
+                                  rdfs:label "has value";
+                                  rdfs:range <https://w3id.org/squap/Value>;
+                                  rdfs:subPropertyOf owl:topObjectProperty;
+                                  owl:inverseOf <https://w3id.org/squap/isValueOf>.
+<https://w3id.org/squap/isAffectedBy> a owl:ObjectProperty;
+                                      rdfs:domain <https://w3id.org/squap/FactorOccurrence>;
+                                      rdfs:label "is affected by";
+                                      rdfs:range <https://w3id.org/squap/MeasurementResult>;
+                                      rdfs:subPropertyOf owl:topObjectProperty.
+<https://w3id.org/squap/isAssessedBy> a owl:ObjectProperty;
+                                      rdfs:domain <https://w3id.org/squap/SoftwareQualityCharacteristic>;
+                                      rdfs:label "is assessed by";
+                                      rdfs:range <https://w3id.org/squap/MeasurementResult>;
+                                      rdfs:subPropertyOf <https://w3id.org/squap/classifies>.
+<https://w3id.org/squap/isClassifiedBy> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                        a owl:ObjectProperty;
+                                        rdfs:domain owl:Thing;
+                                        rdfs:label "is classified by";
+                                        rdfs:range <https://w3id.org/squap/Concept>.
+<https://w3id.org/squap/isConceptUsedIn> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                         a owl:ObjectProperty;
+                                         rdfs:domain <https://w3id.org/squap/Concept>;
+                                         rdfs:label "is concept used in";
+                                         rdfs:range <https://w3id.org/squap/Description>;
+                                         owl:inverseOf <https://w3id.org/squap/usesConcept>.
+<https://w3id.org/squap/isFactorSatisfiedBy> a owl:ObjectProperty;
+                                             rdfs:domain <https://w3id.org/squap/SoftwareQualityFactor>;
+                                             rdfs:label "is factor satisfied by";
+                                             rdfs:range <https://w3id.org/squap/FactorOccurrence>;
+                                             rdfs:subPropertyOf <https://w3id.org/squap/isSatisfiedBy>;
+                                             owl:inverseOf <https://w3id.org/squap/satisfiesFactor>.
+<https://w3id.org/squap/isMetricOf> a owl:ObjectProperty;
+                                    rdfs:domain <https://w3id.org/squap/Metric>;
+                                    rdfs:label "is metric of";
+                                    rdfs:range <https://w3id.org/squap/MeasurementResult>;
+                                    rdfs:subPropertyOf owl:topObjectProperty.
+<https://w3id.org/squap/isParameterOf> a owl:ObjectProperty;
+                                       rdfs:comment "The relation between a parameter and a metric.";
+                                       rdfs:domain <https://w3id.org/squap/Parameter>;
+                                       rdfs:label "is parameter of";
+                                       rdfs:range <https://w3id.org/squap/Metric>.
+<https://w3id.org/squap/isParametrizedBy> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/parameterregion.owl>;
+                                          a owl:ObjectProperty;
+                                          rdfs:domain <https://w3id.org/squap/Region>;
+                                          rdfs:label "is parametrized by";
+                                          rdfs:range <https://w3id.org/squap/Parameter>;
+                                          rdfs:subPropertyOf <https://w3id.org/squap/isClassifiedBy>.
+<https://w3id.org/squap/isQualityCharacteristicUsedIn> a owl:ObjectProperty;
+                                                       rdfs:domain <https://w3id.org/squap/SoftwareQualityCharacteristic>;
+                                                       rdfs:label "is quality characteristic used in";
+                                                       rdfs:range <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                       rdfs:subPropertyOf <https://w3id.org/squap/isConceptUsedIn>;
+                                                       owl:inverseOf <https://w3id.org/squap/usesQualityCharacteristic>.
+<https://w3id.org/squap/isSatisfiedBy> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                       a owl:ObjectProperty;
+                                       rdfs:domain <https://w3id.org/squap/Description>;
+                                       rdfs:label "is satisfied by";
+                                       rdfs:range <https://w3id.org/squap/Situation>;
+                                       owl:inverseOf <https://w3id.org/squap/satisfies>.
+<https://w3id.org/squap/isSpecializedBy> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                         a owl:ObjectProperty,
+                                           owl:TransitiveProperty;
+                                         rdfs:domain <https://w3id.org/squap/Concept>;
+                                         rdfs:label "is specialized by";
+                                         rdfs:range <https://w3id.org/squap/Concept>;
+                                         owl:inverseOf <https://w3id.org/squap/specializes>.
+<https://w3id.org/squap/isValueOf> a owl:ObjectProperty;
+                                   rdfs:domain <https://w3id.org/squap/Value>;
+                                   rdfs:label "is value of";
+                                   rdfs:range <https://w3id.org/squap/MeasurementResult>;
+                                   rdfs:subPropertyOf owl:topObjectProperty.
+<https://w3id.org/squap/parametrizes> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/parameterregion.owl>;
+                                      a owl:ObjectProperty;
+                                      rdfs:domain <https://w3id.org/squap/Parameter>;
+                                      rdfs:label "parametrizes";
+                                      rdfs:range <https://w3id.org/squap/Region>;
+                                      rdfs:subPropertyOf <https://w3id.org/squap/classifies>.
+<https://w3id.org/squap/satisfies> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                   a owl:ObjectProperty;
+                                   rdfs:domain <https://w3id.org/squap/Situation>;
+                                   rdfs:label "satisfies";
+                                   rdfs:range <https://w3id.org/squap/Description>.
+<https://w3id.org/squap/satisfiesFactor> a owl:ObjectProperty;
+                                         rdfs:domain <https://w3id.org/squap/FactorOccurrence>;
+                                         rdfs:label "satisfies factor";
+                                         rdfs:range <https://w3id.org/squap/SoftwareQualityFactor>;
+                                         rdfs:subPropertyOf <https://w3id.org/squap/satisfies>.
+<https://w3id.org/squap/specializes> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                     a owl:ObjectProperty,
+                                       owl:TransitiveProperty;
+                                     rdfs:domain <https://w3id.org/squap/Concept>;
+                                     rdfs:label "specializes";
+                                     rdfs:range <https://w3id.org/squap/Concept>.
+<https://w3id.org/squap/usesConcept> <http://ontologydesignpatterns.org/opla/isNativeTo> <http://ontologydesignpatterns.org/cp/owl/descriptionandsituation.owl>;
+                                     a owl:ObjectProperty;
+                                     rdfs:domain <https://w3id.org/squap/Description>;
+                                     rdfs:label "uses concept";
+                                     rdfs:range <https://w3id.org/squap/Concept>;
+                                     owl:propertyChainAxiom (<https://w3id.org/squap/usesConcept>
+                                                             <https://w3id.org/squap/specializes>).
+<https://w3id.org/squap/usesQualityCharacteristic> a owl:ObjectProperty;
+                                                   rdfs:domain <https://w3id.org/squap/SoftwareQualityFactor>;
+                                                   rdfs:label "uses quality characteristic";
+                                                   rdfs:range <https://w3id.org/squap/SoftwareQualityCharacteristic>;
+                                                   rdfs:subPropertyOf <https://w3id.org/squap/usesConcept>.
+<https://w3id.org/squap/value> a owl:DatatypeProperty;
+                               rdfs:domain <https://w3id.org/squap/Value>;
+                               rdfs:label "value";
+                               rdfs:range rdfs:Literal.

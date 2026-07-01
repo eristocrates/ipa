@@ -1,0 +1,277 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix eli: <http://data.europa.eu/eli/ontology#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix w3id: <https://w3id.org/>.
+@prefix lh: <https://w3id.org/legalhtml/ov#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<https://w3id.org/legalhtml/ov> dcterms:creator <https://art.uniroma2.it/stellato>,
+                                                <https://art.uniroma2.it/fiorelli>;
+                                dcterms:description "An ontology for metadata about legal texts represented using the LegalHTML format"@en;
+                                dcterms:issued "2022-12-18"^^xsd:date;
+                                dcterms:license <http://joinup.ec.europa.eu/software/page/eupl>;
+                                dcterms:title "LegalHTML Ontology"@en;
+                                vann:preferredNamespacePrefix "lh";
+                                vann:preferredNamespaceUri "https://w3id.org/legalhtml/ov#";
+                                a owl:Ontology;
+                                owl:imports dcterms:,
+                                            eli:;
+                                owl:versionIRI <https://w3id.org/legalhtml/ov-1.0.0-rc.1>;
+                                owl:versionInfo "1.0.0-rc.1".
+lh:Change a owl:Class;
+          rdfs:label "change"@en;
+          rdfs:subClassOf owl:Thing;
+          skos:definition "A modification affecting a legal resource"@en.
+lh:ChangeSet a owl:Class;
+             rdfs:label "change set"@en;
+             rdfs:subClassOf owl:Thing;
+             skos:definition "A collection of related modifications to a legal resource (e.g. originating from the same amendment)"@en.
+lh:ConsolidatedResource a owl:Class;
+                        rdfs:label "consolidated resource"@en;
+                        rdfs:subClassOf eli:LegalResource;
+                        skos:definition "A consolidated legal resource accounting for subsequent amendments"@en.
+lh:EfficacyChange a owl:Class;
+                  rdfs:label "efficacy change"@en;
+                  rdfs:subClassOf lh:Change;
+                  skos:definition "A modification in the efficacy of a legal resource"@en.
+lh:EndOfEfficacy a owl:Class;
+                 rdfs:label "end of efficacy"@en;
+                 rdfs:subClassOf lh:EfficacyChange.
+lh:EndOfEnactment a owl:Class;
+                  rdfs:label "end of enactment"@en;
+                  rdfs:subClassOf lh:ForceChange.
+lh:EntryIntoEfficacy a owl:Class;
+                     rdfs:label "entry into efficacy"@en;
+                     rdfs:subClassOf lh:EfficacyChange.
+lh:EntryIntoForce a owl:Class;
+                  rdfs:label "entry into force"@en;
+                  rdfs:subClassOf lh:ForceChange.
+lh:Extraefficacy a owl:Class;
+                 rdfs:label "extraefficacy"@en;
+                 rdfs:subClassOf lh:EfficacyChange.
+lh:ForceChange a owl:Class;
+               rdfs:label "force change"@en;
+               rdfs:subClassOf lh:Change;
+               skos:definition "A modification in the force of a legal resource"@en.
+lh:Inapplication a owl:Class;
+                 rdfs:label "inapplication"@en;
+                 rdfs:subClassOf lh:EfficacyChange.
+lh:Insertion a owl:Class;
+             rdfs:label "insertion"@en;
+             rdfs:subClassOf lh:TextualChange;
+             skos:definition "An insertion of text into a legal resource"@en.
+lh:Legislature a owl:Class;
+               rdfs:label "legislature"@en;
+               rdfs:subClassOf owl:Thing;
+               skos:definition "An assembly that is empowered to legislate for a political entity such as a country or city"@en.
+lh:PostponementOfEfficacy a owl:Class;
+                          rdfs:label "postponement of efficacy"@en;
+                          rdfs:subClassOf lh:EfficacyChange.
+lh:PostponementOfEntryIntoForce a owl:Class;
+                                rdfs:label "postponement of entry into force"@en;
+                                rdfs:subClassOf lh:ForceChange.
+lh:ProcedureStage a owl:Class;
+                  rdfs:label "procedure stage"@en;
+                  rdfs:subClassOf owl:Thing;
+                  skos:definition "A stage of a procedure"@en.
+lh:ProrogationOfEfficacy a owl:Class;
+                         rdfs:label "prorogation of efficacy"@en;
+                         rdfs:subClassOf lh:EfficacyChange.
+lh:ProrogationOfForce a owl:Class;
+                      rdfs:label "prorogation of force"@en;
+                      rdfs:subClassOf lh:ForceChange.
+lh:ReEnactment a owl:Class;
+               rdfs:label "re-enactment"@en;
+               rdfs:subClassOf lh:ForceChange.
+lh:Repeal a owl:Class;
+          rdfs:label "repeal"@en;
+          rdfs:subClassOf lh:TextualChange;
+          skos:definition "A deletion of text from a legal resource"@en.
+lh:Retroactivity a owl:Class;
+                 rdfs:label "retroactivity"@en;
+                 rdfs:subClassOf lh:EfficacyChange.
+lh:Role a owl:Class;
+        rdfs:label "role"@en;
+        rdfs:subClassOf owl:Thing;
+        skos:definition "A role within an organization"@en.
+lh:Signature a owl:Class;
+             rdfs:label "signature"@en;
+             rdfs:subClassOf owl:Thing;
+             skos:definition "A signature on a legal resource made by someone in some organization with certain role"@en.
+lh:Status a owl:Class;
+          rdfs:label "status"@en;
+          rdfs:subClassOf owl:Thing;
+          skos:definition "A status of a file, document, etc.".
+lh:Substitution a owl:Class;
+                rdfs:label "substitution"@en;
+                rdfs:subClassOf lh:TextualChange;
+                skos:definition "A substitution of text inside a legal resource"@en.
+lh:TextualChange a owl:Class;
+                 rdfs:label "textual change"@en;
+                 rdfs:subClassOf lh:Change;
+                 skos:definition "A textual modificaiton to a legal resource"@en.
+lh:Unconstitutionality a owl:Class;
+                       rdfs:label "uncostitutionality"@en;
+                       rdfs:subClassOf lh:ForceChange.
+lh:actingEntity a owl:ObjectProperty;
+                rdfs:domain eli:LegalResource;
+                rdfs:label "acting entity"@en;
+                rdfs:range eli:Agent;
+                skos:definition "Each of the acting entities of a legal resource"@en.
+lh:addendum a owl:ObjectProperty;
+            rdfs:domain lh:Insertion;
+            rdfs:label "addendum"@en;
+            skos:definition "Technical reference to the inserted text"@en.
+lh:addressee a owl:ObjectProperty;
+             rdfs:domain eli:LegalResource;
+             rdfs:label "addressee"@en;
+             rdfs:range owl:Thing;
+             skos:definition "A person or entity to which a legal resource is addressed"@en.
+lh:amendedText a owl:ObjectProperty;
+               rdfs:domain lh:TextualChange;
+               rdfs:label "amended text"@en;
+               rdfs:range eli:LegalResourceSubdivision;
+               skos:definition "Reference to the part of the act that is being modified"@en.
+lh:amendingText a owl:ObjectProperty;
+                rdfs:domain lh:TextualChange;
+                rdfs:label "amending text"@en;
+                rdfs:range eli:LegalResourceSubdivision;
+                skos:definition "Reference to the part of the amending act that specifies the modification being done"@en.
+lh:applicability a owl:ObjectProperty;
+                 rdfs:domain eli:LegalResource;
+                 rdfs:label "applicability"@en;
+                 rdfs:range owl:Thing;
+                 skos:definition "Reference to an entity directly bound by the application of a legal resource"@en.
+lh:change a owl:ObjectProperty;
+          rdfs:domain lh:ChangeSet;
+          rdfs:label "change"@en;
+          rdfs:range lh:Change;
+          skos:definition "Reference to a change in a change set"@en.
+lh:changeSet a owl:ObjectProperty;
+             rdfs:domain lh:ConsolidatedResource;
+             rdfs:label "change set"@en;
+             rdfs:range lh:ChangeSet;
+             skos:definition "Reference to a change set being consolidated by a consolidated resource"@en.
+lh:changingAct a owl:ObjectProperty;
+               rdfs:domain lh:ChangeSet;
+               rdfs:label "changing act"@en;
+               rdfs:range eli:LegalResource;
+               skos:definition "the act making the modification"@en.
+lh:deletion a owl:ObjectProperty;
+            rdfs:domain lh:Repeal;
+            rdfs:label "deletion"@en;
+            skos:definition "Technical reference to the deleted text"@en.
+lh:entryIntoForce a owl:DatatypeProperty;
+                  rdfs:domain lh:ChangeSet;
+                  rdfs:label "entry into force"@en;
+                  rdfs:range xsd:date;
+                  skos:definition "The date of first entry into force"@en.
+lh:forceChange a owl:ObjectProperty;
+               rdfs:label "force change"@en;
+               rdfs:range lh:ForceChange;
+               rdfs:subPropertyOf lh:change;
+               skos:definition "Reference to a force change"@en.
+lh:issuer a owl:ObjectProperty;
+          rdfs:domain eli:LegalResource;
+          rdfs:label "issuer"@en;
+          rdfs:range eli:Agent;
+          skos:definition "An entity responsible for originating a legal resource"@en.
+lh:legislature a owl:ObjectProperty;
+               rdfs:domain eli:LegalResource;
+               rdfs:label "legislature"@en;
+               rdfs:range lh:Legislature;
+               skos:definition "Reference to the legislature responsible for originating a legal resource"@en.
+lh:originalLanguage a owl:ObjectProperty;
+                    rdfs:domain eli:LegalResource;
+                    rdfs:label "original language"@en;
+                    rdfs:range dcterms:LinguisticSystem;
+                    skos:definition "The language in which a legal resource has been originally drafted"@en.
+lh:procedureID a owl:DatatypeProperty;
+               rdfs:domain eli:LegalResource;
+               rdfs:label "procedure identifier"@en;
+               rdfs:range rdfs:Literal;
+               skos:definition "Unique reference for a procedure"@en.
+lh:procedureStage a owl:ObjectProperty;
+                  rdfs:domain eli:LegalResource;
+                  rdfs:label "procedure stage"@en;
+                  rdfs:range lh:ProcedureStage;
+                  skos:definition "Reference to the stage of a procedure"@en.
+lh:proposingEntity a owl:ObjectProperty;
+                   rdfs:domain eli:LegalResource;
+                   rdfs:label "proposing entity"@en;
+                   rdfs:range eli:Agent;
+                   skos:definition "An entity responsible for the proposal"@en.
+lh:published a owl:DatatypeProperty;
+             rdfs:domain lh:ChangeSet;
+             rdfs:label "published"@en;
+             rdfs:range xsd:date;
+             skos:definition "The date of publication"@en.
+lh:reference a owl:DatatypeProperty;
+             rdfs:domain eli:LegalResource;
+             rdfs:label "reference"@en;
+             rdfs:range rdfs:Literal;
+             skos:definition "An identifier assigned to a legal resource by an entity"@en.
+lh:relevance a owl:ObjectProperty;
+             rdfs:domain eli:LegalResource;
+             rdfs:label "relevance"@en;
+             rdfs:range eli:Agent;
+             skos:definition "An entity governed by legal acts relevant for a legal resource"@en.
+lh:replacedContent a owl:ObjectProperty;
+                   rdfs:domain lh:Substitution;
+                   rdfs:label "replaced content"@en;
+                   skos:definition "Technical reference to the replaced text"@en.
+lh:replacement a owl:ObjectProperty;
+               rdfs:domain lh:Substitution;
+               rdfs:label "replacement"@en;
+               skos:definition "Technical reference to the replacement text"@en.
+lh:signatory a owl:ObjectProperty;
+             rdfs:domain lh:Signature;
+             rdfs:label "signatory"@en;
+             rdfs:range eli:Person;
+             skos:definition "The person who affixed the signature"@en.
+lh:signatoryOrganization a owl:ObjectProperty;
+                         rdfs:domain lh:Signature;
+                         rdfs:label "signatory organization"@en;
+                         rdfs:range eli:Organization;
+                         skos:definition "The organization on behalf of which the signatory affixed a signature on a legal resource"@en.
+lh:signatoryRole a owl:ObjectProperty;
+                 rdfs:domain lh:Signature;
+                 rdfs:label "signatory role"@en;
+                 rdfs:range lh:Role;
+                 skos:definition "The role played within an organization by someones who affixed a signature on a legal resource on behalf of it"@en.
+lh:signature a owl:ObjectProperty;
+             rdfs:domain eli:LegalResource;
+             rdfs:label "signature"@en;
+             rdfs:range lh:Signature;
+             skos:definition "Reference to a signature on a legal resource"@en.
+lh:signatureDate a owl:DatatypeProperty;
+                 rdfs:domain eli:LegalResource;
+                 rdfs:label "signature date"@en;
+                 rdfs:range dcterms:date;
+                 skos:definition "The signature date of a legal resource"@en.
+lh:signaturePlace a owl:ObjectProperty;
+                  rdfs:domain eli:LegalResource;
+                  rdfs:label "signature place"@en;
+                  rdfs:range dcterms:Location;
+                  skos:definition "The signature place of a legal resource"@en.
+lh:startOfApplicability a owl:DatatypeProperty;
+                        rdfs:domain lh:ChangeSet;
+                        rdfs:label "start of applicability"@en;
+                        rdfs:range xsd:date;
+                        skos:definition "The date of first applicability"@en.
+lh:status a owl:ObjectProperty;
+          rdfs:domain eli:LegalResource;
+          rdfs:label "status"@en;
+          rdfs:range lh:Status;
+          skos:definition "The status of a language resource"@en.
+lh:textualChange a owl:ObjectProperty;
+                 rdfs:label "textual change"@en;
+                 rdfs:range lh:TextualChange;
+                 rdfs:subPropertyOf lh:change;
+                 skos:definition "Reference to a textual change"@en.

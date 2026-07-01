@@ -1,0 +1,615 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix opmo: <http://openprovenance.org/model/opmo#>.
+@prefix opmv: <http://purl.org/net/opmv/ns#>.
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+_:B8a424d98db65cd0356a7331f1ac25abb a owl:AllDisjointClasses;
+                                    owl:members (opmv:Process).
+<http://openprovenance.org/model/opmo> dc11:contributor "Luc Moreau, Simon Miles, Paolo Missier, Paul Groth, Joe Futrelle, Li Ding,  Daniel Garijo Verdejo, Jeff Pan, Jun Zhao, Mike Jewell";
+                                       dc11:title "The OWL Ontology for the Open Provenance Model"@en;
+                                       dcterms:created "2010-10-12"^^xsd:date;
+                                       dcterms:modified "2010-10-13"^^xsd:date;
+                                       dcterms:title "The OPM OWL Ontology"@en;
+                                       void:exampleResource opmo:Used;
+                                       a void:Dataset,
+                                         foaf:Document,
+                                         owl:Ontology,
+                                         owl:Thing;
+                                       rdfs:label "The OWL Ontology for the Open Provenance Model"@en;
+                                       owl:imports <http://purl.org/net/opmv/ns>.
+opmo:AValue a owl:Class;
+            rdfs:comment "The serial representation of an artifact Value";
+            rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+            rdfs:label "AValue";
+            rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
+                             owl:onProperty opmo:content ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom xsd:anyURI ; 
+                             owl:onProperty opmo:encoding ; 
+                             a owl:Restriction],
+                            opmo:Entity.
+opmo:Account a owl:Class;
+             rdfs:comment "The class representing an OPM Account.";
+             rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+             rdfs:label "Account";
+             rdfs:subClassOf opmo:Entity.
+opmo:Annotable a owl:Class;
+               rdfs:comment "The set of OPM entities that can be annotated.";
+               rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+               rdfs:label "Annotable";
+               rdfs:subClassOf opmo:Entity;
+               owl:equivalentClass [owl:unionOf (opmo:Account
+                                                 opmo:Annotation
+                                                 opmo:Edge
+                                                 opmo:Node
+                                                 opmo:OPMGraph
+                                                 opmo:Role) ; 
+                                    a owl:Class].
+opmo:Annotation a owl:Class;
+                rdfs:comment "OPM class used to annotate Annotable entities.";
+                rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                rdfs:label "Annotation";
+                rdfs:subClassOf opmo:Entity.
+opmo:Edge a owl:Class;
+          rdfs:comment "A (causal) relationship is represented by an arc and denotes the presence of a dependency between the source of the arc (the effect) and the destination of the arc (the cause).";
+          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+          rdfs:label "Edge";
+          rdfs:subClassOf opmo:Entity.
+opmo:Entity a owl:Class;
+            rdfs:comment "The class of all constituents of an OPM graph.";
+            rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+            rdfs:label "Entity".
+opmo:EventEdge a owl:Class;
+               rdfs:comment "An EventEdge denotes an Edge associated with a time instant.";
+               rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+               rdfs:label "EventEdge";
+               rdfs:subClassOf opmo:Entity;
+               owl:equivalentClass [owl:unionOf (opmo:Used
+                                                 opmo:WasGeneratedBy) ; 
+                                    a owl:Class].
+opmo:Node a owl:Class;
+          rdfs:comment "Node is the class of nodes in an OPM graph. Nodes can be a source or effect of edges.";
+          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+          rdfs:label "Node";
+          rdfs:subClassOf opmo:Entity.
+opmo:OPMGraph a owl:Class;
+              rdfs:comment "The class of all OPM graphs.";
+              rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+              rdfs:label "OPMGraph";
+              rdfs:subClassOf opmo:Entity.
+opmo:OTime a owl:Class;
+           rdfs:comment "Observed time.";
+           rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+           rdfs:label "OTime";
+           rdfs:subClassOf opmo:Entity.
+opmo:Property a owl:Class;
+              rdfs:comment "Building block allowing for the construction of annotations.  It consists of key-value pair.";
+              rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+              rdfs:label "Property";
+              rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
+                               owl:onProperty opmo:value ; 
+                               a owl:Restriction],
+                              [owl:onProperty opmo:value ; 
+                               owl:allValuesFrom rdfs:Literal ; 
+                               a owl:Restriction],
+                              opmo:Entity.
+opmo:Role a owl:Class;
+          rdfs:comment "A role designates an artifact’s or agent’s function in a process. Roles are constituents of “used”, “was generated by”, and “was controlled by” edges, aimed at distinguishing the nature of the dependency when multiple such edges are connected to a same process.";
+          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+          rdfs:label "Role";
+          rdfs:subClassOf [owl:onProperty opmo:value ; 
+                           owl:allValuesFrom xsd:string ; 
+                           a owl:Restriction],
+                          opmo:Entity.
+opmo:Used a owl:Thing,
+            owl:Class;
+          rdfs:comment """A “used” edge from process to an artifact is a relationship intended to indicate that the process required the availability of the artifact to be able to complete its execution. When several artifacts are connected to a same process by multiple “used” edges, all of them were required for the process to complete.
+
+Used is a class that  encompasses all the properties defined by OPM for this kind of edge. It is a reification of the opmv:used property.""";
+          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+          rdfs:label "Used";
+          rdfs:seeAlso opmo:Used;
+          rdfs:subClassOf [owl:someValuesFrom opmv:Process ; 
+                           owl:onProperty opmo:effectUsed ; 
+                           a owl:Restriction],
+                          [owl:someValuesFrom opmo:Role ; 
+                           owl:onProperty opmo:role ; 
+                           a owl:Restriction],
+                          [owl:onProperty opmo:effectUsed ; 
+                           owl:allValuesFrom opmv:Process ; 
+                           a owl:Restriction],
+                          opmo:Edge,
+                          [owl:onProperty opmo:causeUsed ; 
+                           owl:allValuesFrom opmv:Artifact ; 
+                           a owl:Restriction],
+                          [owl:someValuesFrom opmv:Artifact ; 
+                           owl:onProperty opmo:causeUsed ; 
+                           a owl:Restriction];
+          owl:disjointWith opmo:WasGeneratedBy,
+                           opmo:WasDerivedFrom,
+                           opmo:WasControlledBy,
+                           opmo:WasTriggeredBy.
+opmo:WasControlledBy a owl:Class;
+                     rdfs:comment """An edge “was controlled by” from a process P to an agent Ag is a  dependency that indicates that the start and end of process P was controlled by agent Ag.
+
+WasControlledBy is a class that  encompasses all the properties defined by OPM for this kind of edge. It is a reification of the opmv:wasControlledBy property.""";
+                     rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                     rdfs:label "WasControlledBy";
+                     rdfs:seeAlso opmv:wasControlledBy;
+                     rdfs:subClassOf [owl:someValuesFrom opmv:Process ; 
+                                      owl:onProperty opmo:effectWasControlledBy ; 
+                                      a owl:Restriction],
+                                     opmo:Edge,
+                                     [owl:someValuesFrom opmv:Agent ; 
+                                      owl:onProperty opmo:causeWasControlledBy ; 
+                                      a owl:Restriction],
+                                     [owl:onProperty opmo:effectWasControlledBy ; 
+                                      owl:allValuesFrom opmv:Process ; 
+                                      a owl:Restriction],
+                                     [owl:onProperty opmo:causeWasControlledBy ; 
+                                      owl:allValuesFrom opmv:Agent ; 
+                                      a owl:Restriction],
+                                     [owl:someValuesFrom opmo:Role ; 
+                                      owl:onProperty opmo:role ; 
+                                      a owl:Restriction];
+                     owl:disjointWith opmo:WasDerivedFrom,
+                                      opmo:WasTriggeredBy,
+                                      opmo:WasGeneratedBy.
+opmo:WasDerivedFrom a owl:Class;
+                    rdfs:comment """An edge “was derived from” from artifact A2 to artifact A1 is a relationship that indicates that artifact A1 needs to have been generated for A2 to be generated. The piece of state associated with A2 is dependent on the presence of A1 or on the piece of state associated with A1 .
+
+WasDerivedFrom is a class that  encompasses all the properties defined by OPM for this kind of edge. It is a reification of the opmv:wasDerivedFrom property.""";
+                    rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                    rdfs:label "WasDerivedFrom";
+                    rdfs:seeAlso opmv:wasDerivedFrom;
+                    rdfs:subClassOf [owl:someValuesFrom opmv:Artifact ; 
+                                     owl:onProperty opmo:effectWasDerivedFrom ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom opmv:Artifact ; 
+                                     owl:onProperty opmo:causeWasDerivedFrom ; 
+                                     a owl:Restriction],
+                                    opmo:Edge,
+                                    [owl:onProperty opmo:causeWasDerivedFrom ; 
+                                     owl:allValuesFrom opmv:Artifact ; 
+                                     a owl:Restriction],
+                                    [owl:onProperty opmo:effectWasDerivedFrom ; 
+                                     owl:allValuesFrom opmv:Artifact ; 
+                                     a owl:Restriction];
+                    owl:disjointWith opmo:WasGeneratedBy,
+                                     opmo:WasTriggeredBy.
+opmo:WasGeneratedBy a owl:Class;
+                    rdfs:comment """A “was generated by” edge from an artifact to a process is a relationship intended to mean that the process was required to initiate its execution for the artifact to have been generated. When several artifacts are connected to a same process by multiple “was generated by” edges, the process had to have begun, for all of them to be generated.
+
+WasGeneratedBy is a class that  encompasses all the properties defined by OPM for this kind of edge. It is a reification of the opmv:wasGeneratedBy property.""";
+                    rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                    rdfs:label "WasGeneratedBy";
+                    rdfs:seeAlso opmv:wasGeneratedBy;
+                    rdfs:subClassOf [owl:onProperty opmo:effectWasGeneratedBy ; 
+                                     owl:allValuesFrom opmv:Artifact ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom opmv:Process ; 
+                                     owl:onProperty opmo:causeWasGeneratedBy ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom opmv:Artifact ; 
+                                     owl:onProperty opmo:effectWasGeneratedBy ; 
+                                     a owl:Restriction],
+                                    opmo:Edge,
+                                    [owl:someValuesFrom opmo:Role ; 
+                                     owl:onProperty opmo:role ; 
+                                     a owl:Restriction],
+                                    [owl:onProperty opmo:causeWasGeneratedBy ; 
+                                     owl:allValuesFrom opmv:Process ; 
+                                     a owl:Restriction];
+                    owl:disjointWith opmo:WasTriggeredBy.
+opmo:WasTriggeredBy a owl:Class;
+                    rdfs:comment """An edge “was triggered by” from a process P2 to a process P1 is a causal dependency that indicates that the start of process P1 was required for P2 to be able to complete.
+
+WasTriggeredBy is a class that  encompasses all the properties defined by OPM for this kind of edge. It is a reification of the opmv:wasTriggeredBy property.""";
+                    rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                    rdfs:label "WasTriggeredBy";
+                    rdfs:seeAlso opmv:wasTriggeredBy;
+                    rdfs:subClassOf [owl:someValuesFrom opmv:Process ; 
+                                     owl:onProperty opmo:causeWasTriggeredBy ; 
+                                     a owl:Restriction],
+                                    [owl:onProperty opmo:causeWasTriggeredBy ; 
+                                     owl:allValuesFrom opmv:Process ; 
+                                     a owl:Restriction],
+                                    [owl:onProperty opmo:effectWasTriggeredBy ; 
+                                     owl:allValuesFrom opmv:Process ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom opmv:Process ; 
+                                     owl:onProperty opmo:effectWasTriggeredBy ; 
+                                     a owl:Restriction],
+                                    opmo:Edge.
+opmo:account a owl:ObjectProperty;
+             rdfs:comment "Object Property to express the member of an OPM entity to some Account.";
+             rdfs:domain [owl:unionOf (opmo:Annotation
+                                       opmo:Edge
+                                       opmo:Node) ; 
+                          a owl:Class];
+             rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+             rdfs:label "account";
+             rdfs:range opmo:Account.
+opmo:annotation a owl:ObjectProperty;
+                rdfs:comment "Object property to associate an Annotable entity and an Annotation.";
+                rdfs:domain opmo:Annotable;
+                rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                rdfs:label "annotation";
+                rdfs:range opmo:Annotation.
+opmo:avalue a owl:ObjectProperty;
+            rdfs:comment "Denotes a serialization of an application value associated with an Artifact. Such serialization should have a type (expressed in a type system suitable for the serialization). Serialization technologies include XML, JSON, and ntriples.";
+            rdfs:domain opmv:Artifact;
+            rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+            rdfs:label "avalue";
+            rdfs:range opmo:AValue.
+opmo:cause a owl:ObjectProperty,
+             owl:FunctionalProperty;
+           rdfs:comment "The cause of an Edge.";
+           rdfs:domain opmo:Edge;
+           rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+           rdfs:label "cause";
+           rdfs:range opmo:Node.
+opmo:causeUsed a owl:ObjectProperty,
+                 owl:FunctionalProperty;
+               rdfs:comment "The cause of a Used edge.";
+               rdfs:domain opmo:Used;
+               rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+               rdfs:label "causeUsed";
+               rdfs:range opmv:Artifact;
+               rdfs:subPropertyOf opmo:cause.
+opmo:causeWasControlledBy a owl:ObjectProperty,
+                            owl:FunctionalProperty;
+                          rdfs:comment "The cause of a WasControlledBy edge.";
+                          rdfs:domain opmo:WasControlledBy;
+                          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                          rdfs:label "causeWasControlledBy";
+                          rdfs:range opmv:Agent;
+                          rdfs:subPropertyOf opmo:cause.
+opmo:causeWasDerivedFrom a owl:ObjectProperty,
+                           owl:FunctionalProperty;
+                         rdfs:comment "The cause of a WasDerivedFrom edge.";
+                         rdfs:domain opmo:WasDerivedFrom;
+                         rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                         rdfs:label "causeWasDerivedFrom";
+                         rdfs:range opmv:Artifact;
+                         rdfs:subPropertyOf opmo:cause.
+opmo:causeWasGeneratedBy a owl:ObjectProperty,
+                           owl:FunctionalProperty;
+                         rdfs:comment "The cause of a WasGeneratedBy edge.";
+                         rdfs:domain opmo:WasGeneratedBy;
+                         rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                         rdfs:label "causeWasGeneratedBy";
+                         rdfs:range opmv:Process;
+                         rdfs:subPropertyOf opmo:cause.
+opmo:causeWasTriggeredBy a owl:ObjectProperty,
+                           owl:FunctionalProperty;
+                         rdfs:comment "The cause of a WasTriggeredBy edge.";
+                         rdfs:domain opmo:WasTriggeredBy;
+                         rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                         rdfs:label "causeWasTriggeredBy";
+                         rdfs:range opmv:Process;
+                         rdfs:subPropertyOf opmo:cause.
+opmo:content a owl:DatatypeProperty,
+               owl:FunctionalProperty;
+             rdfs:comment "Content of the serial representation of Artifact.";
+             rdfs:domain opmo:AValue;
+             rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+             rdfs:label "content";
+             rdfs:range rdfs:Literal.
+opmo:datapropertyAbbreviation a owl:DatatypeProperty;
+                              rdfs:comment "The OPM Ontology offers several data properties that are abbreviation of common properties defined by OPM.";
+                              rdfs:domain opmo:Annotable;
+                              rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                              rdfs:label "datapropertyAbbreviation".
+opmo:effect a owl:ObjectProperty,
+              owl:FunctionalProperty;
+            rdfs:comment "The effect of an Edge.";
+            rdfs:domain opmo:Edge;
+            rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+            rdfs:label "effect";
+            rdfs:range opmo:Node.
+opmo:effectInverse a owl:ObjectProperty;
+                   rdfs:comment "Convenience class introduced to describe the inverse of an effect. It is used to express property chains.";
+                   rdfs:domain opmo:Node;
+                   rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                   rdfs:label "effectInverse";
+                   rdfs:range opmo:Edge;
+                   owl:inverseOf opmo:effect.
+opmo:effectUsed a owl:ObjectProperty,
+                  owl:FunctionalProperty;
+                rdfs:comment "The effect of a Used edge.";
+                rdfs:domain opmo:Used;
+                rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                rdfs:label "effectUsed";
+                rdfs:range opmv:Process;
+                rdfs:subPropertyOf opmo:effect.
+opmo:effectUsedInverse a owl:ObjectProperty,
+                         owl:InverseFunctionalProperty;
+                       rdfs:comment "The cause of a Process by means of a Used edge.";
+                       rdfs:domain opmv:Process;
+                       rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                       rdfs:label "effectUsedInverse";
+                       rdfs:range opmo:Used;
+                       rdfs:subPropertyOf opmo:effectInverse;
+                       owl:inverseOf opmo:effectUsed.
+opmo:effectWasControlledBy a owl:ObjectProperty,
+                             owl:FunctionalProperty;
+                           rdfs:comment "The effect of a WasControlledBy edge.";
+                           rdfs:domain opmo:WasControlledBy;
+                           rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                           rdfs:label "effectWasControlledBy";
+                           rdfs:range opmv:Process;
+                           rdfs:subPropertyOf opmo:effect.
+opmo:effectWasControlledByInverse a owl:ObjectProperty,
+                                    owl:InverseFunctionalProperty;
+                                  rdfs:comment "The cause of a Process by means of a WasControlledBy edge.";
+                                  rdfs:domain opmv:Process;
+                                  rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                                  rdfs:label "effectWasControlledByInverse";
+                                  rdfs:range opmo:WasControlledBy;
+                                  rdfs:subPropertyOf opmo:effectInverse;
+                                  owl:inverseOf opmo:effectWasControlledBy.
+opmo:effectWasDerivedFrom a owl:ObjectProperty;
+                          rdfs:comment "The effect of a WasDerivedFrom edge.";
+                          rdfs:domain opmo:WasDerivedFrom;
+                          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                          rdfs:label "effectWasDerivedFrom";
+                          rdfs:range opmv:Artifact;
+                          rdfs:subPropertyOf opmo:effect.
+opmo:effectWasDerivedFromInverse a owl:ObjectProperty,
+                                   owl:InverseFunctionalProperty;
+                                 rdfs:comment "The cause of an Artifact by means of a WasDerivedFrom edge.";
+                                 rdfs:domain opmv:Artifact;
+                                 rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                                 rdfs:label "effectWasDerivedFromInverse";
+                                 rdfs:range opmo:WasDerivedFrom;
+                                 rdfs:subPropertyOf opmo:effectInverse;
+                                 owl:inverseOf opmo:effectWasDerivedFrom.
+opmo:effectWasGeneratedBy a owl:ObjectProperty,
+                            owl:FunctionalProperty;
+                          rdfs:comment "The effect of a WasGeneratedBy edge.";
+                          rdfs:domain opmo:WasGeneratedBy;
+                          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                          rdfs:label "effectWasGeneratedBy";
+                          rdfs:range opmv:Artifact;
+                          rdfs:subPropertyOf opmo:effect.
+opmo:effectWasGeneratedByInverse a owl:ObjectProperty,
+                                   owl:InverseFunctionalProperty;
+                                 rdfs:comment "The cause of an Artifact by means of a WasGeneratedBy edge.";
+                                 rdfs:domain opmv:Artifact;
+                                 rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                                 rdfs:label "effectWasGeneratedByInverse";
+                                 rdfs:range opmo:WasGeneratedBy;
+                                 rdfs:subPropertyOf opmo:effectInverse;
+                                 owl:inverseOf opmo:effectWasGeneratedBy.
+opmo:effectWasTriggeredBy a owl:ObjectProperty,
+                            owl:FunctionalProperty;
+                          rdfs:comment "The effect of a WasTriggeredBy edge.";
+                          rdfs:domain opmo:WasTriggeredBy;
+                          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                          rdfs:label "effectWasTriggeredBy";
+                          rdfs:range opmv:Process;
+                          rdfs:subPropertyOf opmo:effect.
+opmo:effectWasTriggeredByInverse a owl:ObjectProperty,
+                                   owl:InverseFunctionalProperty;
+                                 rdfs:comment "The cause of a Process by means of a WasTriggeredBy edge.";
+                                 rdfs:domain opmv:Process;
+                                 rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                                 rdfs:label "effectWasTriggeredByInverse";
+                                 rdfs:range opmo:WasTriggeredBy;
+                                 rdfs:subPropertyOf opmo:effectInverse;
+                                 owl:inverseOf opmo:effectWasTriggeredBy.
+opmo:encoding a owl:DatatypeProperty,
+                owl:FunctionalProperty;
+              rdfs:comment "Denotes how a serialization was constructed. For instance, using the Java bean serializer to create an XML document, by applying a specified transformation to the application data, e.g. anonymisation, by passing a reference to the actual value, or by creating a set of RDF triples.";
+              rdfs:domain opmo:AValue;
+              rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+              rdfs:label "encoding";
+              rdfs:range xsd:anyURI.
+opmo:endTime a owl:ObjectProperty,
+               owl:FunctionalProperty;
+             rdfs:comment "The time at which the agent ended controlling a process.";
+             rdfs:domain opmo:WasControlledBy;
+             rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+             rdfs:label "endTime";
+             rdfs:range opmo:OTime.
+opmo:exactlyAt a owl:DatatypeProperty,
+                 owl:FunctionalProperty;
+               rdfs:comment "The event occurred exactly at this time. This is meant to be an abbreviation for an OTime where noEarlierThan and noLaterThan are identical. exactlyAt should be  disjoint from noLaterThan  U noEarlierThan.";
+               rdfs:domain opmo:OTime;
+               rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+               rdfs:label "exactlyAt";
+               rdfs:range xsd:dateTime.
+opmo:hasAccount a owl:ObjectProperty;
+                rdfs:comment "Property that denotes the constituency relationship between an OPM graph and an account, meaning that the object of this property is an account of the subject.";
+                rdfs:domain opmo:OPMGraph;
+                rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                rdfs:label "hasAccount";
+                rdfs:range opmo:Account;
+                rdfs:subPropertyOf opmo:hasConstituent.
+opmo:hasAgent a owl:ObjectProperty;
+              rdfs:comment "Property that denotes the constituency relationship between an OPM graph and an agent, meaning that the object of this property is an agent of the subject.";
+              rdfs:domain opmo:OPMGraph;
+              rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+              rdfs:label "hasAgent";
+              rdfs:range opmv:Agent;
+              rdfs:subPropertyOf opmo:hasConstituent.
+opmo:hasArtifact a owl:ObjectProperty;
+                 rdfs:comment "Property that denotes the constituency relationship between an OPM graph and an artifact, meaning that the object of this property is an artifact of the subject.";
+                 rdfs:domain opmo:OPMGraph;
+                 rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                 rdfs:label "hasArtifact";
+                 rdfs:range opmv:Artifact;
+                 rdfs:subPropertyOf opmo:hasConstituent.
+opmo:hasConstituent a owl:ObjectProperty;
+                    rdfs:comment "(Abstract) Property that denotes the constituency relationship between an OPM graph and one of its constituent entity, meaning that the object of this property is a constituent of the subject.";
+                    rdfs:domain opmo:OPMGraph;
+                    rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                    rdfs:label "hasContituent".
+opmo:hasDependency a owl:ObjectProperty;
+                   rdfs:comment "Property that denotes the constituency relationship between an OPM graph and an edge, meaning that the object of this property is an edge of the subject.";
+                   rdfs:domain opmo:OPMGraph;
+                   rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                   rdfs:label "hasDependency";
+                   rdfs:range opmo:Edge;
+                   rdfs:subPropertyOf opmo:hasConstituent.
+opmo:hasProcess a owl:ObjectProperty;
+                rdfs:comment "Property that denotes the constituency relationship between an OPM graph and a process, meaning that the object of this property is a process of the subject.";
+                rdfs:domain opmo:OPMGraph;
+                rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                rdfs:label "hasProcess";
+                rdfs:range opmv:Process;
+                rdfs:subPropertyOf opmo:hasConstituent.
+opmo:key a owl:ObjectProperty,
+           owl:FunctionalProperty;
+         rdfs:comment "The key of a Property.";
+         rdfs:domain opmo:Property;
+         rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+         rdfs:label "key".
+opmo:label a owl:DatatypeProperty;
+           rdfs:comment "This property provides a human-readable version of an OPM entity.";
+           rdfs:domain opmo:Annotable;
+           rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+           rdfs:label "label";
+           rdfs:range xsd:string;
+           rdfs:subPropertyOf opmo:datapropertyAbbreviation.
+opmo:noEarlierThan a owl:DatatypeProperty,
+                     owl:FunctionalProperty;
+                   rdfs:comment "the event occurred no earlier than this time";
+                   rdfs:domain opmo:OTime;
+                   rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                   rdfs:label "noEarlierThan";
+                   rdfs:range xsd:dateTime.
+opmo:noLaterThan a owl:DatatypeProperty,
+                   owl:FunctionalProperty;
+                 rdfs:comment "the event occurred no later than this time";
+                 rdfs:domain opmo:OTime;
+                 rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                 rdfs:label "noLaterThan";
+                 rdfs:range xsd:dateTime.
+opmo:pname a owl:DatatypeProperty;
+           rdfs:comment "The persistent name of an entity.  Denotes a persistent name that can be used by OPM graph queriers to compare OPM entities across graphs. The scope of this name is intended to be global.";
+           rdfs:domain opmo:Annotable;
+           rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+           rdfs:label "pname";
+           rdfs:range xsd:anyURI;
+           rdfs:subPropertyOf opmo:datapropertyAbbreviation.
+opmo:profile a owl:DatatypeProperty;
+             rdfs:comment "This property applies to an OPM graph and denotes a profile that is supported by that graph.";
+             rdfs:domain opmo:Annotable;
+             rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+             rdfs:label "profile";
+             rdfs:range xsd:string;
+             rdfs:subPropertyOf opmo:datapropertyAbbreviation.
+opmo:property a owl:ObjectProperty;
+              rdfs:comment "Object Property that associates an Annotation instance with a (set of) Propery(ies).";
+              rdfs:domain opmo:Annotation;
+              rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+              rdfs:label "property";
+              rdfs:range opmo:Property.
+opmo:role a owl:ObjectProperty,
+            owl:FunctionalProperty;
+          rdfs:comment "The role of an edge.";
+          rdfs:domain [owl:unionOf (opmo:Used
+                                    opmo:WasControlledBy
+                                    opmo:WasGeneratedBy) ; 
+                       a owl:Class];
+          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+          rdfs:label "role";
+          rdfs:range opmo:Role.
+opmo:startTime a owl:ObjectProperty,
+                 owl:FunctionalProperty;
+               rdfs:comment "The time at which the agent began controlling a process.";
+               rdfs:domain opmo:WasControlledBy;
+               rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+               rdfs:label "startTime";
+               rdfs:range opmo:OTime.
+opmo:time a owl:ObjectProperty,
+            owl:FunctionalProperty;
+          rdfs:comment "A piece of timing information associated with an EventEdge.";
+          rdfs:domain opmo:EventEdge;
+          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+          rdfs:label "time";
+          rdfs:range opmo:OTime.
+opmo:type a owl:DatatypeProperty;
+          rdfs:comment "The subtype of an entity.";
+          rdfs:domain opmo:Annotable;
+          rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+          rdfs:label "type";
+          rdfs:range xsd:anyURI;
+          rdfs:subPropertyOf opmo:datapropertyAbbreviation.
+opmo:usedStar a owl:ObjectProperty;
+              rdfs:comment "A multi-step used property.";
+              rdfs:domain opmv:Process;
+              rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+              rdfs:label "used*";
+              rdfs:range opmv:Artifact;
+              owl:propertyChainAxiom (opmv:used
+                                      opmo:wasDerivedFromStar).
+opmo:value a owl:DatatypeProperty,
+             owl:FunctionalProperty;
+           rdfs:comment "the value of a role or a property";
+           rdfs:domain [owl:unionOf (opmo:Property
+                                     opmo:Role) ; 
+                        a owl:Class];
+           rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+           rdfs:label "value".
+opmo:wasDerivedFromStar a owl:ObjectProperty,
+                          owl:TransitiveProperty;
+                        rdfs:comment "the transitive closure of wasDerivedFrom";
+                        rdfs:domain opmv:Artifact;
+                        rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                        rdfs:label "wasDerivedFrom*";
+                        rdfs:range opmv:Artifact.
+opmo:wasGeneratedByStar a owl:ObjectProperty;
+                        rdfs:comment "A multi-step wasGeneratedBy edge.";
+                        rdfs:domain opmv:Artifact;
+                        rdfs:isDefinedBy <http://openprovenance.org/model/opmo>;
+                        rdfs:label "wasGeneratedBy*";
+                        rdfs:range opmv:Process;
+                        owl:propertyChainAxiom (opmo:wasDerivedFromStar
+                                                opmv:wasGeneratedBy).
+dc11:contributor a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:created a owl:DatatypeProperty.
+dcterms:modified a owl:DatatypeProperty.
+dcterms:title a owl:DatatypeProperty.
+opmv:Agent a owl:Class;
+           rdfs:subClassOf opmo:Node.
+opmv:Artifact a owl:Class;
+              rdfs:subClassOf opmo:Node.
+opmv:Process a owl:Class;
+             rdfs:subClassOf opmo:Node.
+opmv:used a owl:ObjectProperty,
+            owl:Thing;
+          rdfs:subPropertyOf opmo:usedStar;
+          owl:propertyChainAxiom (opmo:effectUsedInverse
+                                  opmo:causeUsed).
+opmv:wasControlledBy a owl:Thing.
+opmv:wasDerivedFrom a owl:ObjectProperty,
+                      owl:Thing;
+                    rdfs:seeAlso "http://openprovenance.org/opmo#WasDerivedFrom";
+                    rdfs:subPropertyOf opmo:wasDerivedFromStar;
+                    owl:propertyChainAxiom (opmo:effectWasDerivedFromInverse
+                                            opmo:causeWasDerivedFrom).
+opmv:wasGeneratedBy a owl:ObjectProperty,
+                      owl:Thing;
+                    rdfs:subPropertyOf opmo:wasGeneratedByStar;
+                    owl:propertyChainAxiom (opmo:effectWasGeneratedByInverse
+                                            opmo:causeWasGeneratedBy).
+opmv:wasTriggeredBy a owl:ObjectProperty,
+                      owl:Thing;
+                    owl:propertyChainAxiom (opmo:effectWasTriggeredByInverse
+                                            opmo:causeWasTriggeredBy).
+void:Dataset a owl:Class.
+void:exampleResource a owl:ObjectProperty.
+owl:Thing a owl:Class.
+foaf:Document a owl:Class.

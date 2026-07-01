@@ -1,0 +1,283 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix omn: <http://open-multinet.info/ontology/omn#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix omnlife: <http://open-multinet.info/ontology/omn-lifecycle#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://alex.willner.ws/about#me> a foaf:Person.
+omn:Attribute a owl:Class.
+omn:Component a owl:Class.
+omn:Group a owl:Class.
+omn:Reservation a owl:Class.
+omn:Resource a owl:Class.
+omn:Service a owl:Class.
+omn:Topology a owl:Class.
+<http://open-multinet.info/ontology/omn-lifecycle> ccrel:license <http://creativecommons.org/licenses/by/4.0/>;
+                                                   dc11:contributor <mailto:yahya.al-hazmi@tu-berlin.de>,
+                                                                    <https://staff.fnwi.uva.nl/p.grosso>,
+                                                                    <mailto:loughnane@campus.tu-berlin.de>,
+                                                                    <http://www.commit-nl.nl/people/morsey>,
+                                                                    <mailto:thijs.walcarius@intec.ugent.be>,
+                                                                    <mailto:jorge.lopez_vergara@uam.es>,
+                                                                    <mailto:ibaldin@renci.org>,
+                                                                    <mailto:brecht.vermeulen@iminds.be>,
+                                                                    <mailto:chrisap@noc.ntua.gr>,
+                                                                    <mailto:yxin@renci.org>;
+                                                   dc11:creator <http://alex.willner.ws/about#me>;
+                                                   dc11:description "This ontology defines generic concepts related to the life cycle of resource or service."@en,
+                                                                    <https://raw.githubusercontent.com/open-multinet/playground-rspecs-ontology/master/ontologies/pics/omn-lifecycle.png>;
+                                                   dc11:publisher <http://open-multinet.org/>;
+                                                   dc11:rights "This ontology is distributed under a Creative Commons Attribute License - http://creativecommons.org/licenses/by/4.0/"@en;
+                                                   dc11:title "Open-Multinet Upper Lifecycle Ontology"@en;
+                                                   dcterms:created "2014-11-11"^^xsd:date;
+                                                   dcterms:license <http://creativecommons.org/licenses/by/4.0/>;
+                                                   dcterms:modified "2015-04-08"^^xsd:date;
+                                                   vann:preferredNamespacePrefix "omn-lifecycle";
+                                                   vann:preferredNamespaceUri omnlife:;
+                                                   a voaf:Vocabulary,
+                                                     owl:Ontology;
+                                                   rdfs:label "omn-lifecycle"@en;
+                                                   owl:versionInfo "2015-04-08".
+omnlife:Active a owl:Class,
+                 owl:NamedIndividual,
+                 omnlife:State;
+               rdfs:comment "The related resource/service is actively performing an action"@en;
+               rdfs:label "Active"@en;
+               rdfs:seeAlso "GENI geni_ready_busy operational state"@en;
+               rdfs:subClassOf omnlife:State.
+omnlife:Allocated a owl:Class,
+                    omnlife:ReservationState,
+                    owl:NamedIndividual;
+                  rdfs:comment "The related resources/services are reserved"@en;
+                  rdfs:label "Allocated"@en;
+                  rdfs:seeAlso "GENI geni_allocated allocation state"@en;
+                  rdfs:subClassOf omnlife:ReservationState.
+omnlife:Cleaned a owl:Class,
+                  owl:NamedIndividual,
+                  omnlife:State;
+                rdfs:comment "The related resource/service has been cleaned"@en;
+                rdfs:label "Cleaned"@en;
+                rdfs:subClassOf omnlife:State.
+omnlife:Confirmation a owl:Class;
+                     rdfs:comment "A collection (group) of resources/services/groups confirmed to be allocated for the user."@en;
+                     rdfs:subClassOf omn:Topology.
+omnlife:Error a owl:NamedIndividual,
+                omnlife:State,
+                owl:Class;
+              rdfs:comment "The related resource/service is in an error state"@en;
+              rdfs:label "Error"@en;
+              rdfs:seeAlso "GENI geni_failed operational state"@en;
+              rdfs:subClassOf omnlife:State.
+omnlife:Initialized a owl:NamedIndividual,
+                      omnlife:State,
+                      owl:Class;
+                    rdfs:comment "The related resource/service has been initialized"@en;
+                    rdfs:label "Initialized"@en;
+                    rdfs:subClassOf omnlife:State.
+omnlife:Installed a owl:NamedIndividual,
+                    owl:Class,
+                    omnlife:State;
+                  rdfs:comment "The related resource/service has been installed"@en;
+                  rdfs:label "Installed"@en;
+                  rdfs:subClassOf omnlife:State.
+omnlife:Manifest a owl:Class;
+                 rdfs:comment "A collection (group) of resources/services/groups allocated for the user."@en;
+                 rdfs:subClassOf omn:Topology.
+omnlife:NotYetInitialized a owl:NamedIndividual,
+                            omnlife:State,
+                            owl:Class;
+                          rdfs:comment "The related resource/service are not yet active/ready"@en;
+                          rdfs:label "NotYetInitialized"@en;
+                          rdfs:seeAlso "GENI geni_instantiating operational state"@en;
+                          rdfs:subClassOf omnlife:State.
+omnlife:Offering a owl:Class;
+                 rdfs:comment "A collection (group) of services and resources provided by an Infrastructure. The collection is the result of the application of Policies."@en;
+                 rdfs:subClassOf omn:Topology.
+omnlife:Pending a owl:Class,
+                  owl:NamedIndividual,
+                  omnlife:State;
+                rdfs:comment "The related resource/service is not yet provisioned"@en;
+                rdfs:label "Pending"@en;
+                rdfs:seeAlso "GENI geni_pending_allocation operational state"@en;
+                rdfs:subClassOf omnlife:State.
+omnlife:Preinit a owl:NamedIndividual,
+                  omnlife:State,
+                  owl:Class;
+                rdfs:comment "The related resource/service is currently configuring"@en;
+                rdfs:label "Preinit"@en;
+                rdfs:seeAlso "GENI geni_configuring operational state"@en;
+                rdfs:subClassOf omnlife:State.
+omnlife:Provisioned a owl:Class,
+                      owl:NamedIndividual,
+                      omnlife:ReservationState;
+                    rdfs:comment "The related resources/services are provisioned"@en;
+                    rdfs:label "Provisioned"@en;
+                    rdfs:seeAlso "GENI geni_provisioned allocation state"@en;
+                    rdfs:subClassOf omnlife:ReservationState.
+omnlife:Ready a owl:NamedIndividual,
+                owl:Class,
+                omnlife:State;
+              rdfs:comment "The related resource/service is ready"@en;
+              rdfs:label "Ready"@en;
+              rdfs:seeAlso "GENI geni_ready operational state"@en;
+              rdfs:subClassOf omnlife:State.
+omnlife:Removing a owl:Class,
+                   owl:NamedIndividual,
+                   omnlife:State;
+                 rdfs:comment "The related resource/service gets removed"@en;
+                 rdfs:label "Removing"@en;
+                 rdfs:subClassOf omnlife:State.
+omnlife:Request a owl:Class;
+                rdfs:comment "A collection (group) of resources/services/groups requested by the user"@en;
+                rdfs:subClassOf omn:Topology.
+omnlife:ReservationState a owl:Class;
+                         rdfs:comment "The current state of a reservation"@en;
+                         rdfs:label "Reservation State"@en;
+                         rdfs:subClassOf omn:Attribute.
+omnlife:Started a omnlife:State,
+                  owl:Class,
+                  owl:NamedIndividual;
+                rdfs:comment "The related resource/service has been started"@en;
+                rdfs:label "Started"@en;
+                rdfs:subClassOf omnlife:State.
+omnlife:State a owl:Class;
+              rdfs:comment "The current state of the resource, service or group"@en;
+              rdfs:label "State"@en;
+              rdfs:subClassOf omn:Attribute.
+omnlife:Stopped a owl:NamedIndividual,
+                  omnlife:State,
+                  owl:Class;
+                rdfs:comment "The related resource/service is stopped"@en;
+                rdfs:label "Stopped"@en;
+                rdfs:subClassOf omnlife:State.
+omnlife:Stopping a owl:NamedIndividual,
+                   owl:Class,
+                   omnlife:State;
+                 rdfs:comment "The related resource/service is stopping"@en;
+                 rdfs:label "Stopping"@en;
+                 rdfs:seeAlso "GENI geni_stopping operational state"@en;
+                 rdfs:subClassOf omnlife:State.
+omnlife:Unallocated a owl:NamedIndividual,
+                      omnlife:ReservationState,
+                      owl:Class;
+                    rdfs:comment "The related resources/services are not reserved"@en;
+                    rdfs:label "Unallocated"@en;
+                    rdfs:seeAlso "GENI geni_unallocated allocation state"@en;
+                    rdfs:subClassOf omnlife:ReservationState.
+omnlife:Uncompleted a omnlife:State,
+                      owl:NamedIndividual,
+                      owl:Class;
+                    rdfs:comment "The related resource/service is not complete"@en;
+                    rdfs:label "Uncompleted"@en;
+                    rdfs:subClassOf omnlife:State.
+omnlife:Updating a owl:Class,
+                   owl:NamedIndividual,
+                   omnlife:State;
+                 rdfs:comment "The related resource/service is getting updated"@en;
+                 rdfs:label "Updating"@en;
+                 rdfs:subClassOf omnlife:State.
+omnlife:hasAuthenticationInformation a owl:DatatypeProperty;
+                                     rdfs:comment "A specific authentification information for the management system"@en;
+                                     rdfs:domain omn:Resource,
+                                                 omn:Service;
+                                     rdfs:range xsd:string;
+                                     rdfs:seeAlso "GENI Slice X.509 certificates"@en.
+omnlife:hasID a owl:DatatypeProperty;
+              rdfs:comment "A unique identifier set by the management system"@en;
+              rdfs:domain omn:Resource,
+                          omn:Service;
+              rdfs:range xsd:string;
+              rdfs:seeAlso "GENI Manifest RSpec v3: component_id"@en.
+omnlife:hasReservationState a owl:FunctionalProperty,
+                              owl:IrreflexiveProperty,
+                              owl:ObjectProperty;
+                            rdfs:domain omn:Reservation;
+                            rdfs:range omnlife:ReservationState;
+                            rdfs:subPropertyOf omnlife:hasState.
+omnlife:hasState a owl:FunctionalProperty,
+                   owl:ObjectProperty,
+                   owl:IrreflexiveProperty;
+                 rdfs:domain [owl:unionOf (omn:Component
+                                           omn:Group
+                                           omn:Resource
+                                           omn:Service) ; 
+                              a owl:Class];
+                 rdfs:range omnlife:State.
+omnlife:implementedBy a owl:ObjectProperty;
+                      rdfs:domain [owl:unionOf (omn:Component
+                                                omn:Group
+                                                omn:Resource
+                                                omn:Service) ; 
+                                   a owl:Class];
+                      rdfs:range [owl:unionOf (omn:Component
+                                               omn:Group
+                                               omn:Resource
+                                               omn:Service) ; 
+                                  a owl:Class].
+omnlife:implements a owl:ObjectProperty;
+                   rdfs:domain [owl:unionOf (omn:Component
+                                             omn:Group
+                                             omn:Resource
+                                             omn:Service) ; 
+                                a owl:Class];
+                   rdfs:range [owl:unionOf (omn:Component
+                                            omn:Group
+                                            omn:Resource
+                                            omn:Service) ; 
+                               a owl:Class];
+                   owl:inverseOf omnlife:implementedBy.
+omnlife:isReservationStateOf a owl:ObjectProperty;
+                             rdfs:domain omnlife:ReservationState;
+                             rdfs:range omn:Reservation;
+                             rdfs:subPropertyOf omnlife:isStateOf.
+omnlife:isStateOf a owl:ObjectProperty;
+                  rdfs:domain omnlife:State;
+                  rdfs:range [owl:unionOf (omn:Component
+                                           omn:Group
+                                           omn:Resource
+                                           omn:Service) ; 
+                              a owl:Class];
+                  owl:inverseOf omnlife:hasState.
+omnlife:parentOf a owl:ObjectProperty;
+                 rdfs:domain [owl:unionOf (omn:Component
+                                           omn:Group
+                                           omn:Resource
+                                           omn:Service) ; 
+                              a owl:Class];
+                 rdfs:range [owl:unionOf (omn:Component
+                                          omn:Group
+                                          omn:Resource
+                                          omn:Service) ; 
+                             a owl:Class].
+omnlife:parentTo a owl:ObjectProperty;
+                 rdfs:domain [owl:unionOf (omn:Component
+                                           omn:Group
+                                           omn:Resource
+                                           omn:Service) ; 
+                              a owl:Class];
+                 rdfs:range [owl:unionOf (omn:Component
+                                          omn:Group
+                                          omn:Resource
+                                          omn:Service) ; 
+                             a owl:Class];
+                 owl:inverseOf omnlife:parentOf.
+omnlife:usesService a owl:IrreflexiveProperty,
+                      owl:ObjectProperty;
+                    rdfs:domain [owl:unionOf (omn:Component
+                                              omn:Group
+                                              omn:Resource
+                                              omn:Service) ; 
+                                 a owl:Class];
+                    rdfs:range omn:Service.
+owl:AllDisjointClasses a owl:Class.
+owl:IrreflexiveProperty a owl:Class.
+owl:NamedIndividual a owl:Class.

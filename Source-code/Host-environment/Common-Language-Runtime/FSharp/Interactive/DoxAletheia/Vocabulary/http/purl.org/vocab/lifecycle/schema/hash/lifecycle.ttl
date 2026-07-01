@@ -1,0 +1,86 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix lifecycle: <http://purl.org/vocab/lifecycle/schema#>.
+
+lifecycle:Action rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Action>.
+lifecycle:Lifecycle rdfs:comment "Plays the role of StateSet proposed in http://ontologydesignpatterns.org/wiki/Submissions:Object_with_states";
+                    rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Set>.
+lifecycle:State rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Situation>.
+lifecycle:Task owl:equivalentClass <http://www.loa-cnr.it/ontologies/DUL.owl#Task>.
+lifecycle:TaskGroup rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Set>.
+lifecycle:TaskProgress rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Situation>.
+lifecycle:Transition rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Event>.
+<http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle> ccrel:license <http://creativecommons.org/licenses/by/4.0/>;
+                                                                dc11:creator <http://www.irit.fr/recherches/MELODI/ontologies/contributors#monteil>,
+                                                                             <http://www.irit.fr/recherches/MELODI/ontologies/contributors#drira>,
+                                                                             <http://www.irit.fr/recherches/MELODI/ontologies/contributors#seydoux>,
+                                                                             <http://www.irit.fr/recherches/MELODI/ontologies/contributors#hernandez>,
+                                                                             "Nicolas Seydoux, Khalil Drira, Nathalie Hernandez, Thierry Monteil";
+                                                                dc11:publisher "LAAS-CNRS (https://www.laas.fr)",
+                                                                               "IRIT (https://www.irit.fr/)";
+                                                                dc11:title "IoT-Lifecycle";
+                                                                dcterms:issued "2015-02-20";
+                                                                dcterms:modified "2016-02-26";
+                                                                vann:preferredNamespacePrefix "iot-lifecycle";
+                                                                vann:preferredNamespaceURI "http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle";
+                                                                voaf:extends lifecycle:;
+                                                                a owl:Ontology,
+                                                                  voaf:Vocabulary;
+                                                                rdfs:comment """This ontology is a specialization of the lifecycle vocabulary (http://purl.org/vocab/lifecycle/schema) meant to be used in the context of IoT. It is used as a module in the IoT core domain ontology IoT-O (www.irit.fr/recherches/MELODI/ontologies/IoT-O). 
+
+IoT-Lifecycle adds a specific state definition (ParametrizedState) and a specific transition (Update) that is useful to model actuators.""";
+                                                                owl:imports <http://vocab.org/lifecycle/schema-20080603.rdf>,
+                                                                            <http://www.loa-cnr.it/ontologies/DUL.owl>;
+                                                                owl:versionInfo "2.0";
+                                                                foaf:primaryTopic "State machines".
+<http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#ParametrizedState> a owl:Class;
+                                                                                  rdfs:comment "In the case of IoT, a continuous space will be associated with a numerical value and with a specific kind of Transition, an Update.";
+                                                                                  rdfs:label "Parametrized State";
+                                                                                  rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
+                                                                                                   owl:onProperty <http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#stateParametrizedBy> ; 
+                                                                                                   a owl:Restriction],
+                                                                                                  lifecycle:State.
+<http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#Update> a owl:Class;
+                                                                       rdfs:comment """This special kind of Transition concerns Continuous states, and marks an update of the state value without having a \"real\" change of state.""";
+                                                                       rdfs:label "Update";
+                                                                       rdfs:subClassOf lifecycle:Transition.
+<http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#impactsState> a owl:ObjectProperty;
+                                                                             rdfs:comment "This relationships links an entity that impacts a Ressource State and said State. For instance, if an Actuator is updated by an Actuation, this Actuation impacts the Actuator's State.";
+                                                                             rdfs:domain <http://www.loa-cnr.it/ontologies/DUL.owl#Entity>;
+                                                                             rdfs:label "impacts state";
+                                                                             rdfs:range lifecycle:State.
+<http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#isTriggeredBy> a owl:ObjectProperty;
+                                                                              rdfs:comment "Relation between a Transition and whatever Entity can trigger it";
+                                                                              rdfs:domain lifecycle:Transition;
+                                                                              rdfs:label "is triggered by";
+                                                                              rdfs:range <http://www.loa-cnr.it/ontologies/DUL.owl#Entity>.
+<http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#possibleUpdate> a owl:ObjectProperty;
+                                                                               rdfs:comment "Indicates that an update is acessible for a ParametrizedState";
+                                                                               rdfs:domain <http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#ParametrizedState>;
+                                                                               rdfs:label "possible update";
+                                                                               rdfs:range <http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#Update>;
+                                                                               rdfs:subPropertyOf lifecycle:possibleTransition.
+<http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#stateParametrizedBy> a owl:ObjectProperty;
+                                                                                    rdfs:domain <http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#ParametrizedState>;
+                                                                                    rdfs:label "state parametrized by";
+                                                                                    rdfs:range <http://www.loa-cnr.it/ontologies/DUL.owl#Entity>.
+<http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#triggersTransition> a owl:ObjectProperty;
+                                                                                   rdfs:comment "Characterizes an entity able to trigger a transition : agent, software, condition...";
+                                                                                   rdfs:domain <http://www.loa-cnr.it/ontologies/DUL.owl#Entity>;
+                                                                                   rdfs:label "triggers transition";
+                                                                                   rdfs:range lifecycle:Transition.
+<http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#updatesState> a owl:ObjectProperty;
+                                                                             rdfs:comment "This Update regards the provided ParametrizedState";
+                                                                             rdfs:domain <http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#Update>;
+                                                                             rdfs:label "updates state";
+                                                                             rdfs:range <http://www.irit.fr/recherches/MELODI/ontologies/IoT-Lifecycle#ParametrizedState>;
+                                                                             rdfs:subPropertyOf lifecycle:possibleState.

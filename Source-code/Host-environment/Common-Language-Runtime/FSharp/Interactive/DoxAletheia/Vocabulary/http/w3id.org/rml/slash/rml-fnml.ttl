@@ -1,0 +1,128 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix vaem: <http://www.linkedmodel.org/schema/vaem#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix rml-fnml: <http://w3id.org/rml/>.
+
+ccrel:license a owl:AnnotationProperty.
+dcterms:contributor a owl:AnnotationProperty.
+dcterms:created a owl:AnnotationProperty.
+dcterms:creator a owl:AnnotationProperty.
+dcterms:description a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+dcterms:publisher a owl:AnnotationProperty.
+dcterms:title a owl:AnnotationProperty.
+bibo:status a owl:AnnotationProperty.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+rml-fnml:ExpressionMap a owl:Class.
+rml-fnml:FunctionExecution a owl:Class;
+                           rdfs:comment "Represents a function execution."@en;
+                           rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                           rdfs:label "Function Execution".
+rml-fnml:FunctionMap a owl:Class;
+                     rdfs:comment "Represents a function map."@en;
+                     rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                     rdfs:label "Function Map";
+                     rdfs:subClassOf rml-fnml:TermMap.
+rml-fnml:Input a owl:Class;
+               rdfs:comment "Represents a input for an execution."@en;
+               rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+               rdfs:label "Input".
+rml-fnml:ParameterMap a owl:Class;
+                      rdfs:comment "Represents a parameter map."@en;
+                      rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                      rdfs:label "Parameter Map";
+                      rdfs:subClassOf rml-fnml:TermMap.
+rml-fnml:ReturnMap a owl:Class;
+                   rdfs:comment "Represents a return map."@en;
+                   rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                   rdfs:label "Return Map";
+                   rdfs:subClassOf rml-fnml:TermMap.
+rml-fnml:TermMap a owl:Class.
+<http://w3id.org/rml/fnml/> dcterms:contributor "Ben de Meester",
+                                                "Ana Iglesias Molina",
+                                                "Samaneh Jozashoori";
+                            dcterms:created "2023-03-14";
+                            dcterms:description "RML-FNML provides data transformations for generating knowledge graphs from (semi-)structured data"@en;
+                            dcterms:license <http://purl.org/NET/rdflicense/cc-by4.0>;
+                            dcterms:modified "2023-06-15";
+                            dcterms:publisher <https://www.w3.org/community/kg-construct/>;
+                            dcterms:title "RML-FNML"@en;
+                            bibo:status "draft";
+                            vann:preferredNamespacePrefix "rml";
+                            vann:preferredNamespaceUri "http://w3id.org/rml/";
+                            a owl:Ontology;
+                            owl:versionIRI rml-fnml:fnml;
+                            owl:versionInfo "0.1.0".
+rml-fnml:function a owl:ObjectProperty;
+                  rdfs:comment "Specifies a data transformation function."@en;
+                  rdfs:domain rml-fnml:FunctionExecution;
+                  rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                  rdfs:label "function";
+                  rdfs:range rdfs:Resource.
+rml-fnml:functionExecution a owl:ObjectProperty;
+                           rdfs:comment "Denotes the execution of a function with its required input parameters and values."@en;
+                           rdfs:domain rml-fnml:ExpressionMap;
+                           rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                           rdfs:label "function execution";
+                           rdfs:range rml-fnml:FunctionExecution.
+rml-fnml:functionMap a owl:ObjectProperty;
+                     rdfs:comment "A Function Map element to generate the data transformation function."@en;
+                     rdfs:domain rml-fnml:Input;
+                     rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                     rdfs:label "function map";
+                     rdfs:range rml-fnml:FunctionMap.
+rml-fnml:input a owl:ObjectProperty;
+               rdfs:comment "Specifies the Input element of a Function Map."@en;
+               rdfs:domain rml-fnml:FunctionExecution;
+               rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+               rdfs:label "input";
+               rdfs:range rml-fnml:Input.
+rml-fnml:inputValue a owl:ObjectProperty;
+                    rdfs:comment "Specifies the value of a parameter of a function."@en;
+                    rdfs:domain rml-fnml:Input;
+                    rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                    rdfs:label "value".
+rml-fnml:inputValueMap a owl:ObjectProperty;
+                       rdfs:comment "A Value map element to generate the value of a parameter of a function."@en;
+                       rdfs:domain rml-fnml:Input;
+                       rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                       rdfs:label "value map";
+                       rdfs:range rml-fnml:TermMap.
+rml-fnml:parameter a owl:ObjectProperty;
+                   rdfs:comment "Specifies the parameter of a function."@en;
+                   rdfs:domain rml-fnml:Input;
+                   rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                   rdfs:label "parameter";
+                   rdfs:range rdfs:Resource.
+rml-fnml:parameterMap a owl:ObjectProperty;
+                      rdfs:comment "A Parameter Map element to generate the parameter of a function."@en;
+                      rdfs:domain rml-fnml:Input;
+                      rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                      rdfs:label "parameter map";
+                      rdfs:range rml-fnml:ParameterMap.
+rml-fnml:return a owl:ObjectProperty;
+                rdfs:comment "Specifies the return output of a function."@en;
+                rdfs:domain rml-fnml:ExpressionMap;
+                rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                rdfs:label "return";
+                rdfs:range rdfs:Resource.
+rml-fnml:returnMap a owl:ObjectProperty;
+                   rdfs:comment "A Return Map element to generate the return output of a function."@en;
+                   rdfs:domain rml-fnml:ExpressionMap;
+                   rdfs:isDefinedBy <http://w3id.org/rml/fnml/>;
+                   rdfs:label "return map";
+                   rdfs:range rml-fnml:ReturnMap.
+vaem:acronym a owl:AnnotationProperty.
+rdfs:Resource a owl:Class.
+foaf:name a owl:AnnotationProperty.

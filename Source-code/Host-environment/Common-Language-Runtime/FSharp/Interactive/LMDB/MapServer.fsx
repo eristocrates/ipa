@@ -105,9 +105,15 @@ open ClosedXML.Excel
 
 #r "nuget: FSharp.ViewEngine"
 open FSharp.ViewEngine
-open type Html
 
+#r "nuget: Fss-lib.Core"
 
+open Fss
+open Fss.Types
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\HtmlErgonomics.fsx"
+open HtmlErgonomics
+open type HtmlErgonomics.Html_Tag
 
 #r "nuget: Catalyst.Models.English"
 
@@ -140,8 +146,7 @@ module nlp =
             |> Array.toSeq
         pipeline.Process documents
 
-
-let should_triplify = true
+let should_triplify = false
 
 type InforProdSql = SqlDataProvider<ConnectionString=Prod.connection_string, IndividualsAmount=10000, UseOptionTypes=Common.NullableColumnType.OPTION>
 
@@ -467,9 +472,100 @@ let xsi_namespace =
     |> XPathNavigator.xmlns namespace_manager "xsi" "http://www.w3.org/2001/XMLSchema-instance"
 *)
 
+(*
+
+LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
+|> Array.collect (fun Layer ->
+    Layer.Subtypes
+    |> Array.map (fun Subtype -> Subtype.Name)
+)
+|>Array.distinct
+|>Array.sort
+|> String.concat "\n"
+|> clip
+
+*)
+
+let layer'field'productFamily'table'column_names =
+    [|
+
+       "Conduit", "UNITID", "AssetManagement.Storm", "StormLiftStation", "ID"
+       "Conduit", "NOTES", "AssetManagement.Storm", "StormLiftStation", "UnitDesc"
+       "Conduit", "OUTFALLID", "AssetManagement.Storm", "StormLiftStation", "Area"
+       "Conduit", "MAINTBY", "AssetManagement.Storm", "StormLiftStation", "Organization"
+       "Conduit", "OWNER", "AssetManagement.Storm", "StormLiftStation", "Ownership"
+       "Culvert Cross Drain", "UNITID", "AssetManagement.Storm", "StormServiceLine", "ID"
+       "Culvert Cross Drain", "NOTES", "AssetManagement.Storm", "StormServiceLine", "UnitDesc"
+       "Culvert Cross Drain", "OUTFALLID", "AssetManagement.Storm", "StormServiceLine", "Area"
+       "Culvert Cross Drain", "MAINTBY", "AssetManagement.Storm", "StormServiceLine", "Organization"
+       "Culvert Cross Drain", "OWNER", "AssetManagement.Storm", "StormServiceLine", "Ownership"
+       "Debris Trap", "UNITID", "AssetManagement.Storm", "StormValve", "ID"
+       "Debris Trap", "NOTES", "AssetManagement.Storm", "StormValve", "UnitDesc"
+       "Debris Trap", "OUTFALLID", "AssetManagement.Storm", "StormValve", "Area"
+       "Debris Trap", "MAINTBY", "AssetManagement.Storm", "StormValve", "Organization"
+       "Debris Trap", "OWNER", "AssetManagement.Storm", "StormValve", "Ownership"
+       "Debris Trap", "LOCATION", "AssetManagement.Storm", "StormValve", "AddressQualifier"
+       "Debris Trap", "x", "AssetManagement.Storm", "StormValve", "XCoordinate"
+       "Debris Trap", "y", "AssetManagement.Storm", "StormValve", "YCoordinate"
+       "Debris Trap", "ZVALUE", "AssetManagement.Storm", "StormValve", "ZCoordinate"
+       "Ditch", "UNITID", "AssetManagement.Storm", "StormBackflowPreventer", "ID"
+       "Ditch", "NOTES", "AssetManagement.Storm", "StormBackflowPreventer", "UnitDesc"
+       "Ditch", "OUTFALLID", "AssetManagement.Storm", "StormBackflowPreventer", "Area"
+       "Ditch", "MAINTBY", "AssetManagement.Storm", "StormBackflowPreventer", "Organization"
+       "Ditch", "OWNER", "AssetManagement.Storm", "StormBackflowPreventer", "Ownership"
+       "End Point", "UNITID", "AssetManagement.Storm", "StormNode", "ID"
+       "End Point", "NOTES", "AssetManagement.Storm", "StormNode", "UnitDesc"
+       "End Point", "OUTFALLID", "AssetManagement.Storm", "StormNode", "Area"
+       "End Point", "MAINTBY", "AssetManagement.Storm", "StormNode", "Organization"
+       "End Point", "OWNER", "AssetManagement.Storm", "StormNode", "Ownership"
+       "End Point", "LOCATION", "AssetManagement.Storm", "StormNode", "AddressQualifier"
+       "End Point", "x", "AssetManagement.Storm", "StormNode", "XCoordinate"
+       "End Point", "y", "AssetManagement.Storm", "StormNode", "YCoordinate"
+       "End Point", "ZVALUE", "AssetManagement.Storm", "StormNode", "ZCoordinate"
+       "Inlet", "UNITID", "AssetManagement.Storm", "StormInlet", "ID"
+       "Inlet", "NOTES", "AssetManagement.Storm", "StormInlet", "UnitDesc"
+       "Inlet", "OUTFALLID", "AssetManagement.Storm", "StormInlet", "Area"
+       "Inlet", "MAINTBY", "AssetManagement.Storm", "StormInlet", "Organization"
+       "Inlet", "OWNER", "AssetManagement.Storm", "StormInlet", "Ownership"
+       "Inlet", "LOCATION", "AssetManagement.Storm", "StormInlet", "AddressQualifier"
+       "Inlet", "x", "AssetManagement.Storm", "StormInlet", "XCoordinate"
+       "Inlet", "y", "AssetManagement.Storm", "StormInlet", "YCoordinate"
+       "Inlet", "ZVALUE", "AssetManagement.Storm", "StormInlet", "ZCoordinate"
+       "Junction Fixed", "UNITID", "AssetManagement.Storm", "StormManhole", "ID"
+       "Junction Fixed", "NOTES", "AssetManagement.Storm", "StormManhole", "UnitDesc"
+       "Junction Fixed", "OUTFALLID", "AssetManagement.Storm", "StormManhole", "Area"
+       "Junction Fixed", "MAINTBY", "AssetManagement.Storm", "StormManhole", "Organization"
+       "Junction Fixed", "OWNER", "AssetManagement.Storm", "StormManhole", "Ownership"
+       "Junction Fixed", "LOCATION", "AssetManagement.Storm", "StormManhole", "AddressQualifier"
+       "Junction Fixed", "x", "AssetManagement.Storm", "StormManhole", "XCoordinate"
+       "Junction Fixed", "y", "AssetManagement.Storm", "StormManhole", "YCoordinate"
+       "Junction Fixed", "ZVALUE", "AssetManagement.Storm", "StormManhole", "ZCoordinate"
+       "Outfall", "UNITID", "AssetManagement.UsageArea", "Complex", "ID"
+       "Outfall", "NOTES", "AssetManagement.UsageArea", "Complex", "UnitDesc"
+       "Outfall", "OUTFALLID", "AssetManagement.UsageArea", "Complex", "Area"
+       "Outfall", "x", "AssetManagement.UsageArea", "Complex", "XCoordinate"
+       "Outfall", "y", "AssetManagement.UsageArea", "Complex", "YCoordinate"
+       "Stormwater Pond", "UNITID", "AssetManagement.Storm", "StormMiscellaneous", "ID"
+       "Stormwater Pond", "NOTES", "AssetManagement.Storm", "StormMiscellaneous", "UnitDesc"
+       "Stormwater Pond", "MAINTBY", "AssetManagement.Storm", "StormMiscellaneous", "Organization"
+       "Stormwater Pond", "OWNER", "AssetManagement.Storm", "StormMiscellaneous", "Ownership"
+       "Stormwater Pond", "LOCATION", "AssetManagement.Storm", "StormMiscellaneous", "AddressQualifier"
+       "Stormwater Pond", "PONDTYPE", "AssetManagement.Storm", "StormMiscellaneous", "UnitType"
+       "Stormwater Pond", "x", "AssetManagement.Storm", "StormMiscellaneous", "XCoordinate"
+       "Stormwater Pond", "y", "AssetManagement.Storm", "StormMiscellaneous", "YCoordinate"
+       "Stormwater Pond", "ZVALUE", "AssetManagement.Storm", "StormMiscellaneous", "ZCoordinate"
+       "Stormwater Pond Discharge", "UNITID", "AssetManagement.Storm", "StormLevee", "ID"
+       "Stormwater Pond Discharge", "NOTES", "AssetManagement.Storm", "StormLevee", "UnitDesc"
+       "Stormwater Pond Discharge", "OUTFALLID", "AssetManagement.Storm", "StormLevee", "Area"
+       "Stormwater Pond Discharge", "MAINTBY", "AssetManagement.Storm", "StormLevee", "Organization"
+       "Stormwater Pond Discharge", "OWNER", "AssetManagement.Storm", "StormLevee", "Ownership"
+       "Stormwater Pond Discharge", "LOCATION", "AssetManagement.Storm", "StormLevee", "AddressQualifier"
+       "Stormwater Pond Discharge", "x", "AssetManagement.Storm", "StormLevee", "XCoordinate"
+       "Stormwater Pond Discharge", "y", "AssetManagement.Storm", "StormLevee", "YCoordinate"
+       "Stormwater Pond Discharge", "ZVALUE", "AssetManagement.Storm", "StormLevee", "ZCoordinate"
 
 
-
+       |]
 
 let layer_name_by_FeatureClass'Name =
     Map.ofArray [|
@@ -1261,10 +1357,16 @@ module concept =
                           local_name_id = local_name.lexical_form_id }
             }
 
+        let organization = _vocab "organization"
+        let addressqualifier = _vocab "addressqualifier"
         let database = _vocab "database"
-        let table_definition = _vocab "table_definition"
+        let unittype = _vocab "unittype"
+        let xcoordinate = _vocab "xcoordinate"
+        let ycoordinate = _vocab "ycoordinate"
+        let zcoordinate = _vocab "zcoordinate"
         let column = _vocab "column"
         let asset = _vocab "asset"
+        let asset_type = _vocab "asset_type"
         let table = _vocab "table"
         let identification_code = _vocab "identification_code"
 
@@ -4312,9 +4414,9 @@ module LCG_Stormwater_Inventory =
 
     let workspace = _vocab "workspace"
 
-module swin =
+module ms4 =
     let _namespace_name =
-        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/swin/" }
+        lmdb_read_write { return! Lexical_Form.from_string $"{Workplace.ontology_base}/ms4/" }
 
     let _prefix (local_name_string: string) (transaction: LightningTransaction) =
         let local_name =
@@ -4346,6 +4448,9 @@ module swin =
     let _feature_attribute (layer_name: string) (ATTRIBUTE: string) (transaction: LightningTransaction) =
         _prefix $"{layer_name}.{ATTRIBUTE}" transaction
 
+    let Stormwater_Editing_Training_Manual = _vocab "Stormwater_Editing_Training_Manual"
+    let subtype = _vocab "subtype"
+    let Subtype = _vocab "Subtype"
     let maintainer = _vocab "maintainer"
     let material = _vocab "material"
     let pond_type = _vocab "pond_type"
@@ -4354,6 +4459,7 @@ module swin =
     let origin = _vocab "origin"
     let Point_Origin = _vocab "Point-Origin"
     let Linear_Origin = _vocab "Linear-Origin"
+    let Coordinates = _vocab "Coordinates"
 
     let LCG_Stormwater_Inventory = _vocab "LCG_Stormwater_Inventory"
     let code = _vocab "code"
@@ -4821,9 +4927,9 @@ module swin =
     let LCPW_OverlayStormwaterInfrastructure_D_WM =
         _vocab "LCPW_OverlayStormwaterInfrastructure_D_WM"
 
-    let x_coordinate = _vocab "x_coordinate"
-    let y_coordinate = _vocab "y_coordinate"
-    let z_coordinate = _vocab "z_coordinate"
+    let xcoordinate = _vocab "xcoordinate"
+    let ycoordinate = _vocab "ycoordinate"
+    let zcoordinate = _vocab "zcoordinate"
     let hyd = _vocab "hyd"
     let Hyd = _vocab "Hyd"
 
@@ -6015,7 +6121,7 @@ module Coded_Value_Domain =
                     [|
 
                        for DomainName in DomainNames do
-                           (DomainName, swin._prefix DomainName current_transaction)
+                           (DomainName, ms4._prefix DomainName current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6111,7 +6217,7 @@ module Coded_Value =
                     [|
 
                        for FieldName, DomainName, CodedValueName, CodedValueCode in FieldName'DomainName'CodedValueName'CodedValueCodes do
-                           ((DomainName, CodedValueName), swin._prefix $"{DomainName}.{CodedValueName}" current_transaction)
+                           ((DomainName, CodedValueName), ms4._prefix $"{DomainName}.{CodedValueName}" current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6127,7 +6233,7 @@ module Coded_Value =
                     [|
 
                        for FieldName, DomainName, CodedValueName, CodedValueCode in FieldName'DomainName'CodedValueName'CodedValueCodes do
-                           ((FieldName, CodedValueCode), swin._prefix $"{DomainName}.{CodedValueName}" current_transaction)
+                           ((FieldName, CodedValueCode), ms4._prefix $"{DomainName}.{CodedValueName}" current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6211,7 +6317,7 @@ let ChildLayerName'ParentLayerName'ParentLayerId =
 
 
 module Feature_Layer =
-    let Ids =
+    let LayerIds =
         LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers
         |> Array.Parallel.map (fun Layer -> Layer.Id)
         |> Array.distinct
@@ -6250,8 +6356,8 @@ module Feature_Layer =
                 return
                     [|
 
-                       for Id in Ids do
-                           (Id, RDF_Literal.datatyped $"{Id}" xsd.int current_transaction)
+                       for LayerId in LayerIds do
+                           (LayerId, RDF_Literal.datatyped $"{LayerId}" xsd.int current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6328,7 +6434,7 @@ module Feature_Layer =
                     [|
 
                        for Layer in LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers do
-                           (Layer.Name, swin._prefix $"{Layer.Name}_Feature_Layer" current_transaction)
+                           (Layer.Name, ms4._prefix $"{Layer.Name}_Feature_Layer" current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6343,7 +6449,7 @@ module Feature_Layer =
                     [|
 
                        for Layer in LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers do
-                           (Layer.Name, swin._prefix $"{Layer.Name}_Feature" current_transaction)
+                           (Layer.Name, ms4._prefix $"{Layer.Name}_Feature" current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6358,7 +6464,7 @@ module Feature_Layer =
                     [|
 
                        for Type in Types do
-                           (Type, swin._prefix Type current_transaction)
+                           (Type, ms4._prefix Type current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6373,7 +6479,7 @@ module Feature_Layer =
                     [|
 
                        for GeometryType in GeometryTypes do
-                           (GeometryType, swin._prefix GeometryType current_transaction)
+                           (GeometryType, ms4._prefix GeometryType current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6384,7 +6490,6 @@ module Feature_Layer =
 
 
 // TODO consider ontolex concept mapping
-// TODO let GIS know subtypes are missing from interraster feature layers
 (*
 let LayerName'Stcode'Stname =
 XRay.LCG_Stormwater_Inventory.xml.WorkspaceDefinition.DatasetDefinitions.DataElements
@@ -6492,7 +6597,7 @@ module Subtype =
                 [|
 
                    for LayerName, SubtypeCode, SubtypeName in LayerName'SubtypeCode'SubtypeName do
-                       ((LayerName, SubtypeCode), swin._prefix $"{LayerName}.{SubtypeName}" current_transaction)
+                       ((LayerName, SubtypeCode), ms4._prefix $"{LayerName}.{SubtypeName}" current_transaction)
 
                    |]
                 |> Map.ofArray
@@ -6568,7 +6673,7 @@ module Layer_Field =
                     [|
 
                        for FieldName in FieldNames do
-                           (FieldName, swin._prefix FieldName current_transaction)
+                           (FieldName, ms4._prefix FieldName current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6585,7 +6690,7 @@ module Layer_Field =
 
                        for LayerName, FieldName in FieldMonikers do
                            let moniker = $"{LayerName}.{FieldName}"
-                           (moniker, swin._prefix moniker current_transaction)
+                           (moniker, ms4._prefix moniker current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6600,7 +6705,7 @@ module Layer_Field =
                     [|
 
                        for FieldType in FieldTypes do
-                           (FieldType, swin._prefix FieldType current_transaction)
+                           (FieldType, ms4._prefix FieldType current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -6813,7 +6918,10 @@ let Features =
             let Relatedfeature =
 
                 try
-                    Feature.Attributes.Relatedfeature.String
+                    match Feature.Attributes.Relatedfeature.String with
+                    | Some "NO"
+                    | Some "NOT ASSESSED" -> None
+                    | _ -> Feature.Attributes.Relatedfeature.String
 
                 with
                 | _ -> None
@@ -6966,7 +7074,7 @@ let Features_with_Unitid_and_Globalid =
 
 
 
-module Id =
+module FeatureId =
     let Unitids =
         Features
         |> Array.Parallel.choose (fun Feature -> Feature.Unitid)
@@ -7128,7 +7236,7 @@ module Id =
                     [|
 
                        for Unitid in Unitids do
-                           (Unitid, swin._prefix Unitid current_transaction)
+                           (Unitid, ms4._prefix Unitid current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7144,7 +7252,7 @@ module Id =
                     [|
 
                        for Globalid in Globalids do
-                           (Globalid, swin._prefix $"{Globalid.ToString().ToUpper()}" current_transaction)
+                           (Globalid, ms4._prefix $"{Globalid.ToString().ToUpper()}" current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7160,7 +7268,7 @@ module Id =
                     [|
 
                        for Facilityid in Facilityids do
-                           (Facilityid, swin._prefix Facilityid current_transaction)
+                           (Facilityid, ms4._prefix Facilityid current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7176,7 +7284,7 @@ module Id =
                     [|
 
                        for Attachedtoid in Attachedtoids do
-                           (Attachedtoid, swin._prefix $"{Attachedtoid}" current_transaction)
+                           (Attachedtoid, ms4._prefix $"{Attachedtoid}" current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7192,7 +7300,7 @@ module Id =
                     [|
 
                        for Outfallid in Outfallids do
-                           (Outfallid, swin._prefix Outfallid current_transaction)
+                           (Outfallid, ms4._prefix Outfallid current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7208,7 +7316,7 @@ module Id =
                     [|
 
                        for HydId in HydIds do
-                           (HydId, swin._prefix HydId current_transaction)
+                           (HydId, ms4._prefix HydId current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7224,7 +7332,7 @@ module Id =
                     [|
 
                        for Parentid in Parentids do
-                           (Parentid, swin._prefix Parentid current_transaction)
+                           (Parentid, ms4._prefix Parentid current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7239,7 +7347,7 @@ module Id =
                     [|
 
                        for Structureid in Structureids do
-                           (Structureid, swin._prefix Structureid current_transaction)
+                           (Structureid, ms4._prefix Structureid current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7254,7 +7362,7 @@ module Id =
                     [|
 
                        for Upstreamstuctureid in Upstreamstuctureids do
-                           (Upstreamstuctureid, swin._prefix Upstreamstuctureid current_transaction)
+                           (Upstreamstuctureid, ms4._prefix Upstreamstuctureid current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7497,7 +7605,7 @@ module Attribute =
                     [|
 
                        for DrainageBasin in DrainageBasins do
-                           (DrainageBasin, swin._prefix DrainageBasin current_transaction)
+                           (DrainageBasin, ms4._prefix DrainageBasin current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7512,7 +7620,7 @@ module Attribute =
                     [|
 
                        for Outfalltype in Outfalltypes do
-                           (Outfalltype, swin._prefix $"{Outfalltype} Outfall" current_transaction)
+                           (Outfalltype, ms4._prefix $"{Outfalltype} Outfall" current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -7538,7 +7646,7 @@ module Attribute =
 
 
 
-                           (Structuretype, swin._prefix local_name current_transaction)
+                           (Structuretype, ms4._prefix local_name current_transaction)
 
                        |]
                     |> Map.ofArray
@@ -8148,7 +8256,7 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
 
     let layer_owl_class = Feature_Layer.Iri.layer_owl_class[Feature.LayerName]
     Assert.spog individual_feature is_a layer_owl_class oit._graph transaction
-    Assert.spog individual_feature is_a swin.Feature oit._graph transaction
+    Assert.spog individual_feature is_a ms4.Feature oit._graph transaction
     Assert.spog individual_feature is_a owl.NamedIndividual oit._graph transaction
 
     if
@@ -8156,74 +8264,82 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
         && not (layers_without_listed_subtype.Contains(Feature.LayerName))
     then
         try
-            let subtype_owl_class = Subtype.iri[(Feature.LayerName, Feature.Subtypefield.Value)]
+            Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.SUBTYPEFIELD"] Attribute.Literal.subtype_field[Feature.Subtypefield.Value] oit._graph transaction
 
-            Assert.spog individual_feature is_a subtype_owl_class oit._graph transaction
+            let subtype_owl_class = Subtype.iri[(Feature.LayerName, Feature.Subtypefield.Value)]
+            let subtype_predicate = ms4._prefix $"{Feature.LayerName}.SUBTYPE" transaction
+            Assert.spog subtype_owl_class rdfs.subClassOf ms4.Subtype oit._graph transaction
+            Assert.spog subtype_predicate rdfs.subPropertyOf ms4.subtype oit._graph transaction
+
+            Assert.spog individual_feature subtype_predicate subtype_owl_class oit._graph transaction
             Assert.spog subtype_owl_class rdfs.label Subtype.name[(Feature.LayerName, Feature.Subtypefield.Value)] oit._graph transaction
 
         with
         | err -> failwith $"Subtype.iri[({Feature.LayerName}, {Feature.Subtypefield.Value})] failed with message {err.Message}"
 
     if Feature.Attachedtoid.IsSome then
-        Assert.spog individual_feature swin.attached_to Id.Iri.individual_feature_by_Attachedtoid[Feature.Attachedtoid.Value] oit._graph transaction
+        Assert.spog individual_feature ms4.attached_to FeatureId.Iri.individual_feature_by_Attachedtoid[Feature.Attachedtoid.Value] oit._graph transaction
 
     if Feature.Facilityid.IsSome then
 
-        let individual_facility = Id.Iri.individual_facility[Feature.Facilityid.Value]
+        let individual_facility =
+            FeatureId.Iri.individual_facility[Feature.Facilityid.Value]
 
-        Assert.spog individual_feature swin.facility individual_facility oit._graph transaction
-        Assert.spog individual_facility is_a swin.Facility oit._graph transaction
+        Assert.spog individual_feature ms4.facility individual_facility oit._graph transaction
+        Assert.spog individual_facility is_a ms4.Facility oit._graph transaction
         Assert.spog individual_facility is_a owl.NamedIndividual oit._graph transaction
 
-        Assert.spog individual_facility Layer_Field.Iri.layer_field[$"{Feature.LayerName}.FACILITYID"] Id.Literal.facility_id[Feature.Facilityid.Value] oit._graph transaction
+        Assert.spog individual_facility Layer_Field.Iri.layer_field[$"{Feature.LayerName}.FACILITYID"] FeatureId.Literal.facility_id[Feature.Facilityid.Value] oit._graph transaction
 
     if Feature.HydId.IsSome then
 
-        let individual_hyd = Id.Iri.individual_hyd[Feature.HydId.Value]
+        let individual_hyd = FeatureId.Iri.individual_hyd[Feature.HydId.Value]
 
-        Assert.spog individual_feature swin.hyd individual_hyd oit._graph transaction
-        Assert.spog individual_hyd is_a swin.Hyd oit._graph transaction
+        Assert.spog individual_feature ms4.hyd individual_hyd oit._graph transaction
+        Assert.spog individual_hyd is_a ms4.Hyd oit._graph transaction
         Assert.spog individual_hyd is_a owl.NamedIndividual oit._graph transaction
-        Assert.spog individual_hyd Layer_Field.Iri.layer_field[$"{Feature.LayerName}.HYD_ID"] Id.Literal.hyd_id[Feature.HydId.Value] oit._graph transaction
+        Assert.spog individual_hyd Layer_Field.Iri.layer_field[$"{Feature.LayerName}.HYD_ID"] FeatureId.Literal.hyd_id[Feature.HydId.Value] oit._graph transaction
 
     if Feature.Outfallid.IsSome then
 
-        let individual_outfall = Id.Iri.individual_outfall[Feature.Outfallid.Value]
+        let individual_outfall = FeatureId.Iri.individual_outfall[Feature.Outfallid.Value]
 
-        Assert.spog individual_feature swin.outfall individual_outfall oit._graph transaction
-        Assert.spog individual_outfall is_a swin.Outfall oit._graph transaction
+        Assert.spog individual_feature ms4.outfall individual_outfall oit._graph transaction
+        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.OUTFALLID"] FeatureId.Literal.outfall_id[Feature.Outfallid.Value] oit._graph transaction
+
+        Assert.spog individual_outfall is_a ms4.Outfall oit._graph transaction
         Assert.spog individual_outfall is_a owl.NamedIndividual oit._graph transaction
 
-        Assert.spog individual_outfall Layer_Field.Iri.layer_field[$"{Feature.LayerName}.OUTFALLID"] Id.Literal.outfall_id[Feature.Outfallid.Value] oit._graph transaction
 
     if Feature.Parentid.IsSome then
 
-        let individual_parent = Id.Iri.individual_parent[Feature.Parentid.Value]
-        Assert.spog individual_feature swin.parent individual_parent oit._graph transaction
+        let individual_parent = FeatureId.Iri.individual_parent[Feature.Parentid.Value]
+        Assert.spog individual_feature ms4.parent individual_parent oit._graph transaction
 
     if Feature.StructureId.IsSome then
 
-        let individual_structure = Id.Iri.individual_structure[Feature.StructureId.Value]
+        let individual_structure =
+            FeatureId.Iri.individual_structure[Feature.StructureId.Value]
 
-        Assert.spog individual_feature swin.structure individual_structure oit._graph transaction
-        Assert.spog individual_structure is_a swin.Structure oit._graph transaction
+        Assert.spog individual_feature ms4.structure individual_structure oit._graph transaction
+        Assert.spog individual_structure is_a ms4.Structure oit._graph transaction
         Assert.spog individual_structure is_a owl.NamedIndividual oit._graph transaction
 
-        Assert.spog individual_structure Layer_Field.Iri.layer_field[$"{Feature.LayerName}.STRUCTUREID"] Id.Literal.structure_id[Feature.StructureId.Value] oit._graph transaction
+        Assert.spog individual_structure Layer_Field.Iri.layer_field[$"{Feature.LayerName}.STRUCTUREID"] FeatureId.Literal.structure_id[Feature.StructureId.Value] oit._graph transaction
 
 
     if Feature.Upstreamstuctureid.IsSome then
 
         let individual_upstream_structure =
-            Id.Iri.individual_upstream_structure[Feature.Upstreamstuctureid.Value]
+            FeatureId.Iri.individual_upstream_structure[Feature.Upstreamstuctureid.Value]
 
 
 
-        Assert.spog individual_feature swin.upstream_structure individual_upstream_structure oit._graph transaction
-        Assert.spog individual_upstream_structure is_a swin.Upstream_Structure oit._graph transaction
+        Assert.spog individual_feature ms4.upstream_structure individual_upstream_structure oit._graph transaction
+        Assert.spog individual_upstream_structure is_a ms4.Upstream_Structure oit._graph transaction
         Assert.spog individual_upstream_structure is_a owl.NamedIndividual oit._graph transaction
 
-        Assert.spog individual_upstream_structure Layer_Field.Iri.layer_field[$"{Feature.LayerName}.UPSTREAMSTUCTUREID"] Id.Literal.upstream_structure_id[Feature.Upstreamstuctureid.Value] oit._graph transaction
+        Assert.spog individual_upstream_structure Layer_Field.Iri.layer_field[$"{Feature.LayerName}.UPSTREAMSTUCTUREID"] FeatureId.Literal.upstream_structure_id[Feature.Upstreamstuctureid.Value] oit._graph transaction
 
 
 
@@ -8252,8 +8368,8 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
         let drainage_basin_label =
             Attribute.Literal.drainage_basin[Feature.Drainagebasin.Value]
 
-        Assert.spog individual_feature swin.drainage_basin individual_drainage_basin oit._graph transaction
-        Assert.spog individual_drainage_basin is_a swin.Drainage_Basin oit._graph transaction
+        Assert.spog individual_feature ms4.drainage_basin individual_drainage_basin oit._graph transaction
+        Assert.spog individual_drainage_basin is_a ms4.Drainage_Basin oit._graph transaction
         Assert.spog individual_drainage_basin rdfs.label drainage_basin_label oit._graph transaction
 
     if Feature.Filterlocation.IsSome
@@ -8262,8 +8378,8 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
             let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.FILTERLOCATION"]
 
             Assert.spog individual_feature layer_field Attribute.Literal.filter_location[Feature.Filterlocation.Value] oit._graph transaction
-            Assert.spog individual_feature swin.filter_location Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("FILTERLOCATION", Feature.Filterlocation.Value)] oit._graph transaction
-            Assert.spog swin.filter_location swin.field layer_field oit._graph transaction
+            Assert.spog individual_feature ms4.filter_location Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("FILTERLOCATION", Feature.Filterlocation.Value)] oit._graph transaction
+            Assert.spog ms4.filter_location ms4.field layer_field oit._graph transaction
         with
         | err -> failwith $"(FILTERLOCATION, {Feature.Filterlocation.Value}) failed with message {err.Message}"
 
@@ -8296,8 +8412,8 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
             let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.MAINTBY"]
 
             Assert.spog individual_feature layer_field Attribute.Literal.maint_by[code] oit._graph transaction
-            Assert.spog individual_feature swin.maintainer Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("MAINTBY", code)] oit._graph transaction
-            Assert.spog swin.maintainer swin.field layer_field oit._graph transaction
+            Assert.spog individual_feature ms4.maintainer Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("MAINTBY", code)] oit._graph transaction
+            Assert.spog ms4.maintainer ms4.field layer_field oit._graph transaction
 
         with
         | err -> failwith $"(MAINTBY, {Feature.Maintby.Value}) failed with message {err.Message}"
@@ -8309,8 +8425,8 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
 
 
             Assert.spog individual_feature layer_field Attribute.Literal.material[code] oit._graph transaction
-            Assert.spog individual_feature swin.material Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("MATERIAL", code)] oit._graph transaction
-            Assert.spog swin.material swin.field layer_field oit._graph transaction
+            Assert.spog individual_feature ms4.material Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("MATERIAL", code)] oit._graph transaction
+            Assert.spog ms4.material ms4.field layer_field oit._graph transaction
         with
         | err -> failwith $"(MATERIAL, {Feature.Material.Value}) failed with message {err.Message}"
     if Feature.Notes.IsSome
@@ -8335,9 +8451,9 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
                 Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("OWNER", code)]
             let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.OWNER"]
             Assert.spog individual_feature layer_field Attribute.Literal.owner[code] oit._graph transaction
-            Assert.spog individual_feature swin.owner owner oit._graph transaction
-            Assert.spog swin.owner swin.field layer_field oit._graph transaction
-            Assert.spog owner is_a swin.Owner oit._graph transaction
+            Assert.spog individual_feature ms4.owner owner oit._graph transaction
+            Assert.spog ms4.owner ms4.field layer_field oit._graph transaction
+            Assert.spog owner is_a ms4.Owner oit._graph transaction
         with
         | err -> failwith $"(OWNER, {Feature.Owner.Value}) failed with message {err.Message}"
     if Feature.Pipeshape.IsSome
@@ -8347,8 +8463,8 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
             let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.PIPESHAPE"]
 
             Assert.spog individual_feature layer_field Attribute.Literal.pipe_shape[code] oit._graph transaction
-            Assert.spog individual_feature swin.pipe_shape Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("PIPESHAPE", code)] oit._graph transaction
-            Assert.spog swin.pipe_shape swin.field layer_field oit._graph transaction
+            Assert.spog individual_feature ms4.pipe_shape Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("PIPESHAPE", code)] oit._graph transaction
+            Assert.spog ms4.pipe_shape ms4.field layer_field oit._graph transaction
 
         with
         | err -> failwith $"(PIPESHAPE, {Feature.Pipeshape.Value}) failed with message {err.Message}"
@@ -8357,8 +8473,8 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
 
         let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.PONDTYPE"]
         Assert.spog individual_feature layer_field Attribute.Literal.pond_type[Feature.Pondtype.Value] oit._graph transaction
-        Assert.spog individual_feature swin.pond_type Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("PONDTYPE", Feature.Pondtype.Value)] oit._graph transaction
-        Assert.spog swin.pond_type swin.field layer_field oit._graph transaction
+        Assert.spog individual_feature ms4.pond_type Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("PONDTYPE", Feature.Pondtype.Value)] oit._graph transaction
+        Assert.spog ms4.pond_type ms4.field layer_field oit._graph transaction
 
     if Feature.Pondyr.IsSome && Feature.Pondyr.Value <> 0 then
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.PONDYR"] Attribute.Literal.pond_yr[Feature.Pondyr.Value] oit._graph transaction
@@ -8382,8 +8498,6 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
         Assert.spog individual_feature is_a Attribute.Iri.structure_type[Feature.Structuretype.Value] oit._graph transaction
 
 
-    if Feature.Subtypefield.IsSome then
-        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.SUBTYPEFIELD"] Attribute.Literal.subtype_field[Feature.Subtypefield.Value] oit._graph transaction
 
     if Feature.Surfacetype.IsSome
        && Feature.Surfacetype.Value |> is_not_nullish then
@@ -8391,8 +8505,8 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
             let code = Normalize.surface_type Feature.Surfacetype.Value
             let layer_field = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.SURFACETYPE"]
             Assert.spog individual_feature layer_field Attribute.Literal.surface_type[code] oit._graph transaction
-            Assert.spog individual_feature swin.surface_type Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("SURFACETYPE", code)] oit._graph transaction
-            Assert.spog swin.surface_type swin.field layer_field oit._graph transaction
+            Assert.spog individual_feature ms4.surface_type Coded_Value.Iri.individual_coded_value_by_FieldName'CodedValueCode[("SURFACETYPE", code)] oit._graph transaction
+            Assert.spog ms4.surface_type ms4.field layer_field oit._graph transaction
         with
         | err -> failwith $"(SURFACETYPE, {Feature.Surfacetype.Value}) failed with message {err.Message}"
 
@@ -8412,14 +8526,19 @@ let shared_feature_assertions (Feature: Esri_Feature) (individual_feature: RDF_T
         Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.WIDTH"] Attribute.Literal.width[Feature.Width.Value] oit._graph transaction
 
     if Feature.X.IsSome && Feature.X.Value <> 0 then
-        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.x"] Coordinate.Literal.x[Feature.X.Value] oit._graph transaction
+        let x_predicate = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.x"]
+        Assert.spog individual_feature x_predicate Coordinate.Literal.x[Feature.X.Value] oit._graph transaction
+        Assert.spog x_predicate rdfs.subPropertyOf ms4.xcoordinate oit._graph transaction
+
 
     if Feature.Y.IsSome && Feature.Y.Value <> 0 then
-        Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.y"] Coordinate.Literal.y[Feature.Y.Value] oit._graph transaction
+        let y_predicate = Layer_Field.Iri.layer_field[$"{Feature.LayerName}.y"]
+        Assert.spog individual_feature y_predicate Coordinate.Literal.y[Feature.Y.Value] oit._graph transaction
+        Assert.spog y_predicate rdfs.subPropertyOf ms4.ycoordinate oit._graph transaction
 
     if Feature.Zvalue.IsSome
        && Feature.Zvalue.Value <> 0M then
-        Assert.spog individual_feature swin.z_coordinate Coordinate.Literal.z[Feature.Zvalue.Value] oit._graph transaction
+        Assert.spog individual_feature ms4.zcoordinate Coordinate.Literal.z[Feature.Zvalue.Value] oit._graph transaction
 // with | err -> printf "Feature %A failed with error: %s" Feature err.Message
 
 
@@ -10199,17 +10318,22 @@ module Map =
 
 
     let moniker_to_target_column_type (productFamily_name: string) (table_name: string) (column_name: string) =
-        let clrTable =
-            Hansen8ClientProxies.dll.DefinedTypes
-            |> Seq.tryFind (fun moniker -> moniker.FullName = $"Hansen.{productFamily_name}.{table_name}")
-            |> Option.get
+        match productFamily_name, table_name, column_name with
+        | _, _, "Organization" -> "System.String"
+        | _, _, _ ->
+            let clrTable =
+                Hansen8ClientProxies.dll.DefinedTypes
+                |> Seq.tryFind (fun moniker -> moniker.FullName = $"Hansen.{productFamily_name}.{table_name}")
+                |> Option.get
+            try
+                let clrColumn =
+                    clrTable.DeclaredFields
+                    |> Seq.tryFind (fun declared_field -> declared_field.Name = column_name)
+                    |> Option.get
 
-        let clrColumn =
-            clrTable.DeclaredFields
-            |> Seq.tryFind (fun declared_field -> declared_field.Name = column_name)
-            |> Option.get
-
-        clrColumn.FieldType.FullName
+                clrColumn.FieldType.FullName
+            with
+            | err -> failwithf "Hansen.%s.%s.%s failed with message %s" productFamily_name table_name column_name err.Message
 
     let layer_field_to_table_column<'ValueType> (layer_name: string) (field_name: string) (productFamily_name: string) (table_name: string) (column_name: string) (transaction: LightningTransaction) =
 
@@ -10319,9 +10443,9 @@ if should_triplify then
         // TODO maybe ask gis for the name of the geodatabase
         do! Assert.spog oit.Geodatabase is_a om.Database oit._graph
         do! Assert.spog oit.H8Import_Tool is_a om.DataService oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM is_a om.DataService oit._graph
-        do! Assert.spog oit.Geodatabase dcat.accessService swin.LCPW_OverlayStormwaterInfrastructure_D_WM oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM dcat.endpointURL (Atomic_IRI.term_from_string "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/MapServer" current_transaction) oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM is_a om.DataService oit._graph
+        do! Assert.spog oit.Geodatabase dcat.accessService ms4.LCPW_OverlayStormwaterInfrastructure_D_WM oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM dcat.endpointURL (Atomic_IRI.term_from_string "https://interraster.leoncountyfl.gov/interraster/rest/services/MapServices/LCPW_OverlayStormwaterInfrastructure_D_WM/MapServer" current_transaction) oit._graph
 
 
 
@@ -10335,31 +10459,37 @@ if should_triplify then
         do! Assert.spog esri.DETable rdfs.subClassOf esri.DEDataset oit._graph
         do! Assert.spog esri.DEFeatureDataset rdfs.subClassOf esri.DEGeoDataset oit._graph
         do! Assert.spog esri.DEFeatureClass rdfs.subClassOf esri.DETable oit._graph
-        do! Assert.spog swin.Feature_Layer rdfs.subClassOf swin.Layer oit._graph
-        do! Assert.spog swin.Group_Layer rdfs.subClassOf swin.Layer oit._graph
-        do! Assert.spog swin.Upstream_Structure rdfs.subClassOf swin.Structure oit._graph
-        do! Assert.spog swin.Downstream_Structure rdfs.subClassOf swin.Structure oit._graph
+        do! Assert.spog ms4.Feature_Layer rdfs.subClassOf ms4.Layer oit._graph
+        do! Assert.spog ms4.Group_Layer rdfs.subClassOf ms4.Layer oit._graph
+        do! Assert.spog ms4.Upstream_Structure rdfs.subClassOf ms4.Structure oit._graph
+        do! Assert.spog ms4.Downstream_Structure rdfs.subClassOf ms4.Structure oit._graph
 
         // rdfs subproperties
-        do! Assert.spog swin.feature_dataset rdfs.subPropertyOf swin.data_element oit._graph
-        do! Assert.spog swin.feature_layer rdfs.subPropertyOf swin.layer oit._graph
-        do! Assert.spog swin.group_layer rdfs.subPropertyOf swin.layer oit._graph
-        do! Assert.spog swin.parent_layer rdfs.subPropertyOf swin.layer oit._graph
-        do! Assert.spog swin.child_layer rdfs.subPropertyOf swin.layer oit._graph
-        do! Assert.spog swin.upstream_structure rdfs.subPropertyOf swin.structure oit._graph
-        do! Assert.spog swin.downstream_structure rdfs.subPropertyOf swin.structure oit._graph
+        do! Assert.spog ms4.feature_dataset rdfs.subPropertyOf ms4.data_element oit._graph
+        do! Assert.spog ms4.feature_layer rdfs.subPropertyOf ms4.layer oit._graph
+        do! Assert.spog ms4.group_layer rdfs.subPropertyOf ms4.layer oit._graph
+        do! Assert.spog ms4.parent_layer rdfs.subPropertyOf ms4.layer oit._graph
+        do! Assert.spog ms4.child_layer rdfs.subPropertyOf ms4.layer oit._graph
+        do! Assert.spog ms4.upstream_structure rdfs.subPropertyOf ms4.structure oit._graph
+        do! Assert.spog ms4.downstream_structure rdfs.subPropertyOf ms4.structure oit._graph
+        do! Assert.spog skos.closeMatch rdfs.subPropertyOf skos.mappingRelation oit._graph
+        do! Assert.spog skos.exactMatch rdfs.subPropertyOf skos.mappingRelation oit._graph
+        do! Assert.spog skos.exactMatch rdfs.subPropertyOf skos.closeMatch oit._graph
+        do! Assert.spog skos.relatedMatch rdfs.subPropertyOf skos.mappingRelation oit._graph
+        do! Assert.spog skos.broadMatch rdfs.subPropertyOf skos.mappingRelation oit._graph
+        do! Assert.spog skos.narrowMatch rdfs.subPropertyOf skos.mappingRelation oit._graph
 
 
-        do! Assert.spog swin.description rdfs.subPropertyOf dcterms.description oit._graph
-        do! Assert.spog swin.serviceDescription rdfs.subPropertyOf dcterms.description oit._graph
+        do! Assert.spog ms4.description rdfs.subPropertyOf dcterms.description oit._graph
+        do! Assert.spog ms4.serviceDescription rdfs.subPropertyOf dcterms.description oit._graph
         do! Assert.spog esri.Description rdfs.subPropertyOf dcterms.description oit._graph
 
-        do! Assert.spog swin.title rdfs.subPropertyOf dcterms.title oit._graph
+        do! Assert.spog ms4.title rdfs.subPropertyOf dcterms.title oit._graph
 
-        do! Assert.spog swin.summary rdfs.subPropertyOf dcterms.``abstract`` oit._graph
+        do! Assert.spog ms4.summary rdfs.subPropertyOf dcterms.``abstract`` oit._graph
         do! Assert.spog esri.``abstract`` rdfs.subPropertyOf dcterms.``abstract`` oit._graph
 
-        do! Assert.spog swin.name rdfs.subPropertyOf rdfs.label oit._graph
+        do! Assert.spog ms4.name rdfs.subPropertyOf rdfs.label oit._graph
         do! Assert.spog esri.DisplayName rdfs.subPropertyOf rdfs.label oit._graph
 
 
@@ -10399,11 +10529,11 @@ if should_triplify then
 
 
 
-        do! Assert.spog swin.LCG_Stormwater_Inventory is_a esri.esriLocalDatabaseWorkspace oit._graph
+        do! Assert.spog ms4.LCG_Stormwater_Inventory is_a esri.esriLocalDatabaseWorkspace oit._graph
 
         for DomainName in DomainNames do
             let individual_domain = Coded_Value_Domain.Iri.individual_domain[DomainName]
-            do! Assert.spog swin.LCG_Stormwater_Inventory esri.coded_value_domain individual_domain oit._graph
+            do! Assert.spog ms4.LCG_Stormwater_Inventory esri.coded_value_domain individual_domain oit._graph
             do! Assert.spog individual_domain is_a esri.CodedValueDomain oit._graph
 
         for FieldName, DomainName, CodedValueName, CodedValueCode in FieldName'DomainName'CodedValueName'CodedValueCodes do
@@ -10413,265 +10543,265 @@ if should_triplify then
                 Coded_Value.Iri.individual_coded_value_by_DomainName'CodedValueName[(DomainName, CodedValueName)]
 
             do! Assert.spog super_field esri.coded_value_domain individual_domain oit._graph
-            do! Assert.spog individual_domain swin.coded_value individual_coded_value oit._graph
+            do! Assert.spog individual_domain ms4.coded_value individual_coded_value oit._graph
             do! Assert.spog individual_coded_value is_a esri.CodedValue oit._graph
             do! Assert.spog individual_coded_value esri.Name Coded_Value.Literal.name[CodedValueName] oit._graph
             do! Assert.spog individual_coded_value esri.Code Coded_Value.Literal.code[CodedValueCode] oit._graph
 
 
-        do! Assert.spog swin.LCG_Stormwater_Inventory swin.feature_dataset swin.DrainageNetwork_Feature_Dataset oit._graph
-        do! Assert.spog swin.LCG_Stormwater_Inventory swin.feature_dataset swin.DrainageNonNetwork_Feature_Dataset oit._graph
+        do! Assert.spog ms4.LCG_Stormwater_Inventory ms4.feature_dataset ms4.DrainageNetwork_Feature_Dataset oit._graph
+        do! Assert.spog ms4.LCG_Stormwater_Inventory ms4.feature_dataset ms4.DrainageNonNetwork_Feature_Dataset oit._graph
 
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset is_a esri.DEFeatureDataset oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset is_a esri.DEFeatureDataset oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset is_a esri.DEFeatureDataset oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset is_a esri.DEFeatureDataset oit._graph
 
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.group_layer swin.Drainage_Network_Group_Layer oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset is_a swin.Non_Drainage_Network_Group_Layer oit._graph
-
-
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.EndPoint_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.BridgePoint_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.Inlet_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.Conduit_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.Ditch_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.Connectivity_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.Junction_fixed_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.StormwaterPond_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.Bridge_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.DitchPoint_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.GenericStormAsset_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.StormwaterPondDischarge_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.CulvertCrossDrain_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.PrivatePoint_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNetwork_Feature_Dataset swin.feature_class swin.StormwaterPond_MediaPoints_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.group_layer ms4.Drainage_Network_Group_Layer oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset is_a ms4.Non_Drainage_Network_Group_Layer oit._graph
 
 
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.MediaPoints_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.Damage_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.DebrisTrap_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.Interference_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.MediaPointsWithoutPhotos_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.Outfall_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.Outfall_DrainageArea_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.Outfall_DrainageArea_MOF_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.Outfall_DrainageArea_MS4_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.PollutionControlBox_Feature_Class oit._graph
-        do! Assert.spog swin.DrainageNonNetwork_Feature_Dataset swin.feature_class swin.StormwaterPondTopOfBank_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.EndPoint_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.BridgePoint_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.Inlet_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.Conduit_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.Ditch_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.Connectivity_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.Junction_fixed_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.StormwaterPond_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.Bridge_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.DitchPoint_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.GenericStormAsset_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.StormwaterPondDischarge_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.CulvertCrossDrain_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.PrivatePoint_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNetwork_Feature_Dataset ms4.feature_class ms4.StormwaterPond_MediaPoints_Feature_Class oit._graph
 
 
-        do! Assert.spog swin.Bridge_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.BridgePoint_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Conduit_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Connectivity_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.CulvertCrossDrain_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Damage_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.DebrisTrap_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Ditch_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.DitchPoint_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.EndPoint_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.GenericStormAsset_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Inlet_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Interference_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Junction_fixed_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.MediaPoints_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.MediaPointsWithoutPhotos_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Outfall_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Outfall_DrainageArea_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Outfall_DrainageArea_MOF_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.Outfall_DrainageArea_MS4_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.PollutionControlBox_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.PrivatePoint_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.StormwaterPond_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.StormwaterPond_MediaPoints_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.StormwaterPondDischarge_Feature_Class is_a esri.DEFeatureClass oit._graph
-        do! Assert.spog swin.StormwaterPondTopOfBank_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.MediaPoints_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.Damage_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.DebrisTrap_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.Interference_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.MediaPointsWithoutPhotos_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.Outfall_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.Outfall_DrainageArea_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.Outfall_DrainageArea_MOF_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.Outfall_DrainageArea_MS4_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.PollutionControlBox_Feature_Class oit._graph
+        do! Assert.spog ms4.DrainageNonNetwork_Feature_Dataset ms4.feature_class ms4.StormwaterPondTopOfBank_Feature_Class oit._graph
 
 
-        do! Assert.spog swin.Bridge_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.BridgePoint_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Conduit_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Connectivity_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.CulvertCrossDrain_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Damage_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.DebrisTrap_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Ditch_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.DitchPoint_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.EndPoint_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.GenericStormAsset_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Inlet_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Interference_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Junction_fixed_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.MediaPoints_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.MediaPointsWithoutPhotos_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Outfall_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Outfall_DrainageArea_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Outfall_DrainageArea_MOF_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.Outfall_DrainageArea_MS4_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.PollutionControlBox_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.PrivatePoint_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.StormwaterPond_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.StormwaterPond_MediaPoints_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.StormwaterPondDischarge_Feature_Class is_a swin.Feature_Class oit._graph
-        do! Assert.spog swin.StormwaterPondTopOfBank_Feature_Class is_a swin.Feature_Class oit._graph
+        do! Assert.spog ms4.Bridge_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.BridgePoint_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Conduit_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Connectivity_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.CulvertCrossDrain_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Damage_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.DebrisTrap_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Ditch_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.DitchPoint_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.EndPoint_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.GenericStormAsset_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Inlet_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Interference_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Junction_fixed_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.MediaPoints_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.MediaPointsWithoutPhotos_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Outfall_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Outfall_DrainageArea_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Outfall_DrainageArea_MOF_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.Outfall_DrainageArea_MS4_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.PollutionControlBox_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.PrivatePoint_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.StormwaterPond_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.StormwaterPond_MediaPoints_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.StormwaterPondDischarge_Feature_Class is_a esri.DEFeatureClass oit._graph
+        do! Assert.spog ms4.StormwaterPondTopOfBank_Feature_Class is_a esri.DEFeatureClass oit._graph
 
 
-        do! Assert.spog swin.Bridge_Feature_Class esri.Description swin._literal.description.Bridge oit._graph
-        do! Assert.spog swin.BridgePoint_Feature_Class esri.Description swin._literal.description.BridgePoint oit._graph
-        do! Assert.spog swin.Conduit_Feature_Class esri.Description swin._literal.description.Conduit oit._graph
-        do! Assert.spog swin.Connectivity_Feature_Class esri.Description swin._literal.description.Connectivity oit._graph
-        do! Assert.spog swin.CulvertCrossDrain_Feature_Class esri.Description swin._literal.description.CulvertCrossDrain oit._graph
-        do! Assert.spog swin.DebrisTrap_Feature_Class esri.Description swin._literal.description.DebrisTrap oit._graph
-        do! Assert.spog swin.Ditch_Feature_Class esri.Description swin._literal.description.Ditch oit._graph
-        do! Assert.spog swin.DitchPoint_Feature_Class esri.Description swin._literal.description.DitchPoint oit._graph
-        do! Assert.spog swin.EndPoint_Feature_Class esri.Description swin._literal.description.EndPoint oit._graph
-        do! Assert.spog swin.GenericStormAsset_Feature_Class esri.Description swin._literal.description.GenericStormAsset oit._graph
-        do! Assert.spog swin.Inlet_Feature_Class esri.Description swin._literal.description.Inlet oit._graph
-        do! Assert.spog swin.Interference_Feature_Class esri.Description swin._literal.description.Interference oit._graph
-        do! Assert.spog swin.Junction_fixed_Feature_Class esri.Description swin._literal.description.Junction_fixed oit._graph
-        do! Assert.spog swin.PollutionControlBox_Feature_Class esri.Description swin._literal.description.PollutionControlBox oit._graph
-        do! Assert.spog swin.PrivatePoint_Feature_Class esri.Description swin._literal.description.PrivatePoint oit._graph
-        do! Assert.spog swin.StormwaterPondDischarge_Feature_Class esri.Description swin._literal.description.StormwaterPondDischarge oit._graph
+        do! Assert.spog ms4.Bridge_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.BridgePoint_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Conduit_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Connectivity_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.CulvertCrossDrain_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Damage_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.DebrisTrap_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Ditch_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.DitchPoint_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.EndPoint_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.GenericStormAsset_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Inlet_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Interference_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Junction_fixed_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.MediaPoints_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.MediaPointsWithoutPhotos_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Outfall_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Outfall_DrainageArea_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Outfall_DrainageArea_MOF_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.Outfall_DrainageArea_MS4_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.PollutionControlBox_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.PrivatePoint_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.StormwaterPond_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.StormwaterPond_MediaPoints_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.StormwaterPondDischarge_Feature_Class is_a ms4.Feature_Class oit._graph
+        do! Assert.spog ms4.StormwaterPondTopOfBank_Feature_Class is_a ms4.Feature_Class oit._graph
 
 
-        do! Assert.spog swin.Bridge_Feature_Class swin.feature_layer swin.Bridge_Feature_Layer oit._graph
-        do! Assert.spog swin.BridgePoint_Feature_Class swin.feature_layer swin.Bridge_Point_Feature_Layer oit._graph
-        do! Assert.spog swin.Conduit_Feature_Class swin.feature_layer swin.Conduit_Feature_Layer oit._graph
-        do! Assert.spog swin.Connectivity_Feature_Class swin.feature_layer swin.Connectivity_Feature_Layer oit._graph
-        do! Assert.spog swin.CulvertCrossDrain_Feature_Class swin.feature_layer swin.Culvert_Cross_Drain_Feature_Layer oit._graph
-        do! Assert.spog swin.Damage_Feature_Class swin.feature_layer swin.Damage_Feature_Layer oit._graph
-        do! Assert.spog swin.DebrisTrap_Feature_Class swin.feature_layer swin.Debris_Trap_Feature_Layer oit._graph
-        do! Assert.spog swin.Ditch_Feature_Class swin.feature_layer swin.Ditch_Feature_Layer oit._graph
-        do! Assert.spog swin.DitchPoint_Feature_Class swin.feature_layer swin.Ditch_Point_Feature_Layer oit._graph
-        do! Assert.spog swin.EndPoint_Feature_Class swin.feature_layer swin.End_Point_Feature_Layer oit._graph
-        do! Assert.spog swin.GenericStormAsset_Feature_Class swin.feature_layer swin.Generic_Storm_Asset_Feature_Layer oit._graph
-        do! Assert.spog swin.Inlet_Feature_Class swin.feature_layer swin.Inlet_Feature_Layer oit._graph
-        do! Assert.spog swin.Interference_Feature_Class swin.feature_layer swin.Interference_Feature_Layer oit._graph
-        do! Assert.spog swin.Junction_fixed_Feature_Class swin.feature_layer swin.Junction_Fixed_Feature_Layer oit._graph
-        do! Assert.spog swin.MediaPoints_Feature_Class swin.feature_layer swin.Media_Points_Feature_Layer oit._graph
-        do! Assert.spog swin.MediaPointsWithoutPhotos_Feature_Class swin.feature_layer swin.Media_Points_Without_Photos_Feature_Layer oit._graph
-        do! Assert.spog swin.Outfall_Feature_Class swin.feature_layer swin.Outfall_Feature_Layer oit._graph
-        do! Assert.spog swin.Outfall_DrainageArea_Feature_Class swin.feature_layer swin.Outfall_Drainage_Area_Feature_Layer oit._graph
-        do! Assert.spog swin.Outfall_DrainageArea_MOF_Feature_Class swin.feature_layer swin.Outfall_Drainage_Area_MOF_Feature_Layer oit._graph
-        do! Assert.spog swin.Outfall_DrainageArea_MS4_Feature_Class swin.feature_layer swin.Outfall_Drainage_Area_MS4_Feature_Layer oit._graph
-        do! Assert.spog swin.PollutionControlBox_Feature_Class swin.feature_layer swin.Pollution_Control_Box_Feature_Layer oit._graph
-        do! Assert.spog swin.PrivatePoint_Feature_Class swin.feature_layer swin.Private_Point_Feature_Layer oit._graph
-        do! Assert.spog swin.StormwaterPond_Feature_Class swin.feature_layer swin.Stormwater_Pond_Feature_Layer oit._graph
-        do! Assert.spog swin.StormwaterPond_MediaPoints_Feature_Class swin.feature_layer swin.Stormwater_Pond_Media_Points_Feature_Layer oit._graph
-        do! Assert.spog swin.StormwaterPondDischarge_Feature_Class swin.feature_layer swin.Stormwater_Pond_Discharge_Feature_Layer oit._graph
-        do! Assert.spog swin.StormwaterPondTopOfBank_Feature_Class swin.feature_layer swin.Stormwater_Pond_Top_of_Bank_Feature_Layer oit._graph
+        do! Assert.spog ms4.Bridge_Feature_Class esri.Description ms4._literal.description.Bridge oit._graph
+        do! Assert.spog ms4.BridgePoint_Feature_Class esri.Description ms4._literal.description.BridgePoint oit._graph
+        do! Assert.spog ms4.Conduit_Feature_Class esri.Description ms4._literal.description.Conduit oit._graph
+        do! Assert.spog ms4.Connectivity_Feature_Class esri.Description ms4._literal.description.Connectivity oit._graph
+        do! Assert.spog ms4.CulvertCrossDrain_Feature_Class esri.Description ms4._literal.description.CulvertCrossDrain oit._graph
+        do! Assert.spog ms4.DebrisTrap_Feature_Class esri.Description ms4._literal.description.DebrisTrap oit._graph
+        do! Assert.spog ms4.Ditch_Feature_Class esri.Description ms4._literal.description.Ditch oit._graph
+        do! Assert.spog ms4.DitchPoint_Feature_Class esri.Description ms4._literal.description.DitchPoint oit._graph
+        do! Assert.spog ms4.EndPoint_Feature_Class esri.Description ms4._literal.description.EndPoint oit._graph
+        do! Assert.spog ms4.GenericStormAsset_Feature_Class esri.Description ms4._literal.description.GenericStormAsset oit._graph
+        do! Assert.spog ms4.Inlet_Feature_Class esri.Description ms4._literal.description.Inlet oit._graph
+        do! Assert.spog ms4.Interference_Feature_Class esri.Description ms4._literal.description.Interference oit._graph
+        do! Assert.spog ms4.Junction_fixed_Feature_Class esri.Description ms4._literal.description.Junction_fixed oit._graph
+        do! Assert.spog ms4.PollutionControlBox_Feature_Class esri.Description ms4._literal.description.PollutionControlBox oit._graph
+        do! Assert.spog ms4.PrivatePoint_Feature_Class esri.Description ms4._literal.description.PrivatePoint oit._graph
+        do! Assert.spog ms4.StormwaterPondDischarge_Feature_Class esri.Description ms4._literal.description.StormwaterPondDischarge oit._graph
 
 
-        do! Assert.spog swin.Bridge_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Bridge_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Conduit_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Connectivity_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Culvert_Cross_Drain_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Damage_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Debris_Trap_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Ditch_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Ditch_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.End_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Generic_Storm_Asset_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Inlet_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Interference_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Junction_Fixed_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Media_Points_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Media_Points_Without_Photos_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Outfall_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Outfall_Drainage_Area_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Outfall_Drainage_Area_MOF_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Outfall_Drainage_Area_MS4_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Pollution_Control_Box_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Private_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Stormwater_Pond_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Stormwater_Pond_Media_Points_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Stormwater_Pond_Discharge_Feature_Layer is_a esri.GPFeatureLayer oit._graph
-        do! Assert.spog swin.Stormwater_Pond_Top_of_Bank_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Bridge_Feature_Class ms4.feature_layer ms4.Bridge_Feature_Layer oit._graph
+        do! Assert.spog ms4.BridgePoint_Feature_Class ms4.feature_layer ms4.Bridge_Point_Feature_Layer oit._graph
+        do! Assert.spog ms4.Conduit_Feature_Class ms4.feature_layer ms4.Conduit_Feature_Layer oit._graph
+        do! Assert.spog ms4.Connectivity_Feature_Class ms4.feature_layer ms4.Connectivity_Feature_Layer oit._graph
+        do! Assert.spog ms4.CulvertCrossDrain_Feature_Class ms4.feature_layer ms4.Culvert_Cross_Drain_Feature_Layer oit._graph
+        do! Assert.spog ms4.Damage_Feature_Class ms4.feature_layer ms4.Damage_Feature_Layer oit._graph
+        do! Assert.spog ms4.DebrisTrap_Feature_Class ms4.feature_layer ms4.Debris_Trap_Feature_Layer oit._graph
+        do! Assert.spog ms4.Ditch_Feature_Class ms4.feature_layer ms4.Ditch_Feature_Layer oit._graph
+        do! Assert.spog ms4.DitchPoint_Feature_Class ms4.feature_layer ms4.Ditch_Point_Feature_Layer oit._graph
+        do! Assert.spog ms4.EndPoint_Feature_Class ms4.feature_layer ms4.End_Point_Feature_Layer oit._graph
+        do! Assert.spog ms4.GenericStormAsset_Feature_Class ms4.feature_layer ms4.Generic_Storm_Asset_Feature_Layer oit._graph
+        do! Assert.spog ms4.Inlet_Feature_Class ms4.feature_layer ms4.Inlet_Feature_Layer oit._graph
+        do! Assert.spog ms4.Interference_Feature_Class ms4.feature_layer ms4.Interference_Feature_Layer oit._graph
+        do! Assert.spog ms4.Junction_fixed_Feature_Class ms4.feature_layer ms4.Junction_Fixed_Feature_Layer oit._graph
+        do! Assert.spog ms4.MediaPoints_Feature_Class ms4.feature_layer ms4.Media_Points_Feature_Layer oit._graph
+        do! Assert.spog ms4.MediaPointsWithoutPhotos_Feature_Class ms4.feature_layer ms4.Media_Points_Without_Photos_Feature_Layer oit._graph
+        do! Assert.spog ms4.Outfall_Feature_Class ms4.feature_layer ms4.Outfall_Feature_Layer oit._graph
+        do! Assert.spog ms4.Outfall_DrainageArea_Feature_Class ms4.feature_layer ms4.Outfall_Drainage_Area_Feature_Layer oit._graph
+        do! Assert.spog ms4.Outfall_DrainageArea_MOF_Feature_Class ms4.feature_layer ms4.Outfall_Drainage_Area_MOF_Feature_Layer oit._graph
+        do! Assert.spog ms4.Outfall_DrainageArea_MS4_Feature_Class ms4.feature_layer ms4.Outfall_Drainage_Area_MS4_Feature_Layer oit._graph
+        do! Assert.spog ms4.PollutionControlBox_Feature_Class ms4.feature_layer ms4.Pollution_Control_Box_Feature_Layer oit._graph
+        do! Assert.spog ms4.PrivatePoint_Feature_Class ms4.feature_layer ms4.Private_Point_Feature_Layer oit._graph
+        do! Assert.spog ms4.StormwaterPond_Feature_Class ms4.feature_layer ms4.Stormwater_Pond_Feature_Layer oit._graph
+        do! Assert.spog ms4.StormwaterPond_MediaPoints_Feature_Class ms4.feature_layer ms4.Stormwater_Pond_Media_Points_Feature_Layer oit._graph
+        do! Assert.spog ms4.StormwaterPondDischarge_Feature_Class ms4.feature_layer ms4.Stormwater_Pond_Discharge_Feature_Layer oit._graph
+        do! Assert.spog ms4.StormwaterPondTopOfBank_Feature_Class ms4.feature_layer ms4.Stormwater_Pond_Top_of_Bank_Feature_Layer oit._graph
 
 
-        do! Assert.spog swin.Bridge_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Bridge_Point_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Conduit_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Connectivity_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Culvert_Cross_Drain_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Damage_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Debris_Trap_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Ditch_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Ditch_Point_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.End_Point_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Generic_Storm_Asset_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Inlet_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Interference_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Junction_Fixed_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Media_Points_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Media_Points_Without_Photos_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Outfall_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Outfall_Drainage_Area_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Outfall_Drainage_Area_MOF_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Outfall_Drainage_Area_MS4_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Pollution_Control_Box_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Private_Point_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Stormwater_Pond_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Stormwater_Pond_Media_Points_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Stormwater_Pond_Discharge_Feature_Layer is_a swin.Feature_Layer oit._graph
-        do! Assert.spog swin.Stormwater_Pond_Top_of_Bank_Feature_Layer is_a swin.Feature_Layer oit._graph
+        do! Assert.spog ms4.Bridge_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Bridge_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Conduit_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Connectivity_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Culvert_Cross_Drain_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Damage_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Debris_Trap_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Ditch_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Ditch_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.End_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Generic_Storm_Asset_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Inlet_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Interference_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Junction_Fixed_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Media_Points_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Media_Points_Without_Photos_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Outfall_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Outfall_Drainage_Area_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Outfall_Drainage_Area_MOF_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Outfall_Drainage_Area_MS4_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Pollution_Control_Box_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Private_Point_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Stormwater_Pond_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Stormwater_Pond_Media_Points_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Stormwater_Pond_Discharge_Feature_Layer is_a esri.GPFeatureLayer oit._graph
+        do! Assert.spog ms4.Stormwater_Pond_Top_of_Bank_Feature_Layer is_a esri.GPFeatureLayer oit._graph
 
 
+        do! Assert.spog ms4.Bridge_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Bridge_Point_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Conduit_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Connectivity_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Culvert_Cross_Drain_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Damage_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Debris_Trap_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Ditch_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Ditch_Point_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.End_Point_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Generic_Storm_Asset_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Inlet_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Interference_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Junction_Fixed_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Media_Points_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Media_Points_Without_Photos_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Outfall_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Outfall_Drainage_Area_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Outfall_Drainage_Area_MOF_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Outfall_Drainage_Area_MS4_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Pollution_Control_Box_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Private_Point_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Stormwater_Pond_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Stormwater_Pond_Media_Points_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Stormwater_Pond_Discharge_Feature_Layer is_a ms4.Feature_Layer oit._graph
+        do! Assert.spog ms4.Stormwater_Pond_Top_of_Bank_Feature_Layer is_a ms4.Feature_Layer oit._graph
 
 
 
 
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM is_a esri.MapService oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.currentVersion LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.currentVersion oit._graph // "currentVersion"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.serviceDescription LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.serviceDescription oit._graph // "serviceDescription"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.mapName LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.mapName oit._graph // "mapName"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportsDynamicLayers LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportsDynamicLayers oit._graph // "supportsDynamicLayers"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.spatialReference LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.spatialReference oit._graph // "spatialReference"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.singleFusedMapCache LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.singleFusedMapCache oit._graph // "singleFusedMapCache"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.minScale LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.minScale oit._graph // "minScale"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.maxScale LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxScale oit._graph // "maxScale"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.units LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.units oit._graph // "units"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatTypes LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatTypes oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PNG32 oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PNG24 oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PNG oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.JPG oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.DIB oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.TIFF oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.EMF oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PS oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PDF oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.GIF oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.SVG oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.SVGZ oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.BMP oit._graph // "supportedImageFormatTypes"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.Keywords LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keywords oit._graph // "Keywords"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.stormwater oit._graph // "Keywords"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.swmf oit._graph // "Keywords"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.drainage oit._graph // "Keywords"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.leon_county oit._graph // "Keywords"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.public_works oit._graph // "Keywords"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.lcpw oit._graph // "Keywords"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.tallahassee oit._graph // "Keywords"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.florida oit._graph // "Keywords"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.capabilities LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capabilities oit._graph // "capabilities"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.capability LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capability.Data oit._graph // "capabilities"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.capability LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capability.Query oit._graph // "capabilities"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.capability LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capability.Map oit._graph // "capabilities"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedQueryFormats LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedQueryFormats oit._graph // "supportedQueryFormats"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedQueryFormat LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedQueryFormat.JSON oit._graph // "supportedQueryFormats"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportedQueryFormat LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedQueryFormat.geoJSON oit._graph // "supportedQueryFormats"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.exportTilesAllowed LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.exportTilesAllowed oit._graph // "exportTilesAllowed"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.supportsDatumTransformation LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportsDatumTransformation oit._graph // "supportsDatumTransformation"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.maxRecordCount LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxRecordCount oit._graph // "maxRecordCount"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.maxImageHeight LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxImageHeight oit._graph // "maxImageHeight"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.maxImageWidth LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxImageWidth oit._graph // "maxImageWidth"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.culture LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.culture oit._graph // "culture"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.name LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.name oit._graph // "name"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.guid LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.guid oit._graph // "guid"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.catalogPath LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.catalogPath oit._graph // "catalogPath"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.summary LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.summary oit._graph // "summary"
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.title LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.title oit._graph // "title"
+
+
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM is_a esri.MapService oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.currentVersion LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.currentVersion oit._graph // "currentVersion"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.serviceDescription LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.serviceDescription oit._graph // "serviceDescription"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.mapName LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.mapName oit._graph // "mapName"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportsDynamicLayers LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportsDynamicLayers oit._graph // "supportsDynamicLayers"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.spatialReference LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.spatialReference oit._graph // "spatialReference"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.singleFusedMapCache LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.singleFusedMapCache oit._graph // "singleFusedMapCache"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.minScale LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.minScale oit._graph // "minScale"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.maxScale LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxScale oit._graph // "maxScale"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.units LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.units oit._graph // "units"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatTypes LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatTypes oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PNG32 oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PNG24 oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PNG oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.JPG oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.DIB oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.TIFF oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.EMF oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PS oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.PDF oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.GIF oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.SVG oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.SVGZ oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedImageFormatType LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedImageFormatType.BMP oit._graph // "supportedImageFormatTypes"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.Keywords LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keywords oit._graph // "Keywords"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.stormwater oit._graph // "Keywords"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.swmf oit._graph // "Keywords"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.drainage oit._graph // "Keywords"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.leon_county oit._graph // "Keywords"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.public_works oit._graph // "Keywords"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.lcpw oit._graph // "Keywords"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.tallahassee oit._graph // "Keywords"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.Keyword LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.Keyword.florida oit._graph // "Keywords"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.capabilities LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capabilities oit._graph // "capabilities"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.capability LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capability.Data oit._graph // "capabilities"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.capability LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capability.Query oit._graph // "capabilities"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.capability LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.capability.Map oit._graph // "capabilities"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedQueryFormats LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedQueryFormats oit._graph // "supportedQueryFormats"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedQueryFormat LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedQueryFormat.JSON oit._graph // "supportedQueryFormats"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportedQueryFormat LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportedQueryFormat.geoJSON oit._graph // "supportedQueryFormats"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.exportTilesAllowed LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.exportTilesAllowed oit._graph // "exportTilesAllowed"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.supportsDatumTransformation LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.supportsDatumTransformation oit._graph // "supportsDatumTransformation"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.maxRecordCount LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxRecordCount oit._graph // "maxRecordCount"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.maxImageHeight LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxImageHeight oit._graph // "maxImageHeight"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.maxImageWidth LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.maxImageWidth oit._graph // "maxImageWidth"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.culture LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.culture oit._graph // "culture"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.name LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.name oit._graph // "name"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.guid LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.guid oit._graph // "guid"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.catalogPath LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.catalogPath oit._graph // "catalogPath"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.summary LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.summary oit._graph // "summary"
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.title LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.title oit._graph // "title"
 
         (*
     do! Assert.spog gis.LCPW_OverlayStormwaterInfrastructure_D_WM gis.tags LCPW_OverlayStormwaterInfrastructure_D_WM._literal.value.tags oit._graph // "tags"
@@ -10689,35 +10819,35 @@ if should_triplify then
     *)
 
 
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.group_layer swin.Drainage_Network_Group_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.group_layer swin.Non_Drainage_Network_Group_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.group_layer ms4.Drainage_Network_Group_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.group_layer ms4.Non_Drainage_Network_Group_Layer oit._graph
 
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Bridge_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Bridge_Point_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Conduit_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Connectivity_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Culvert_Cross_Drain_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Damage_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Debris_Trap_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Ditch_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Ditch_Point_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.End_Point_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Generic_Storm_Asset_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Inlet_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Interference_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Junction_Fixed_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Media_Points_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Media_Points_Without_Photos_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Outfall_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Outfall_Drainage_Area_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Outfall_Drainage_Area_MOF_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Outfall_Drainage_Area_MS4_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Pollution_Control_Box_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Private_Point_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Stormwater_Pond_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Stormwater_Pond_Media_Points_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Stormwater_Pond_Discharge_Feature_Layer oit._graph
-        do! Assert.spog swin.LCPW_OverlayStormwaterInfrastructure_D_WM swin.feature_layer swin.Stormwater_Pond_Top_of_Bank_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Bridge_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Bridge_Point_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Conduit_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Connectivity_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Culvert_Cross_Drain_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Damage_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Debris_Trap_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Ditch_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Ditch_Point_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.End_Point_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Generic_Storm_Asset_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Inlet_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Interference_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Junction_Fixed_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Media_Points_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Media_Points_Without_Photos_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Outfall_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Outfall_Drainage_Area_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Outfall_Drainage_Area_MOF_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Outfall_Drainage_Area_MS4_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Pollution_Control_Box_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Private_Point_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Stormwater_Pond_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Stormwater_Pond_Media_Points_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Stormwater_Pond_Discharge_Feature_Layer oit._graph
+        do! Assert.spog ms4.LCPW_OverlayStormwaterInfrastructure_D_WM ms4.feature_layer ms4.Stormwater_Pond_Top_of_Bank_Feature_Layer oit._graph
 
 
 
@@ -10728,8 +10858,8 @@ if should_triplify then
         for ChildLayerName, ParentLayerName, ParentLayerId in ChildLayerName'ParentLayerName'ParentLayerId do
             let child_layer = Feature_Layer.Iri.feature_layer_by_Name[ChildLayerName]
             let parent_layer = Feature_Layer.Iri.feature_layer_by_Name[ParentLayerName]
-            do! Assert.spog child_layer swin.parent_layer parent_layer oit._graph
-            do! Assert.spog parent_layer swin.child_layer child_layer oit._graph
+            do! Assert.spog child_layer ms4.parent_layer parent_layer oit._graph
+            do! Assert.spog parent_layer ms4.child_layer child_layer oit._graph
         // TODO update when feature layer gets subtypes back
         (*
     // Subtypes
@@ -10753,10 +10883,10 @@ if should_triplify then
         // Field Aliases
         for Field'Name, Field'Alias in FieldName'FieldAlias do
             let super_field = Layer_Field.Iri.super_field[Field'Name]
-            let! field_alias = swin._prefix Field'Alias
+            let! field_alias = ms4._prefix Field'Alias
             let! alias = RDF_Literal.simple Field'Alias
             do! Assert.spog super_field owl.sameAs field_alias oit._graph
-            do! Assert.spog field_alias swin.name alias oit._graph
+            do! Assert.spog field_alias ms4.name alias oit._graph
 
         // Layers
         for Layer in LCPW_OverlayStormwaterInfrastructure_D_WM.json.Layers do
@@ -10767,26 +10897,26 @@ if should_triplify then
 
             do! Assert.spog layer_owl_class is_a owl.Class oit._graph
             do! Assert.spog layer_owl_class rdfs.label layer_name oit._graph
-            do! Assert.spog layer_owl_class rdfs.subClassOf swin.Feature oit._graph
+            do! Assert.spog layer_owl_class rdfs.subClassOf ms4.Feature oit._graph
 
             do! Assert.spog feature_layer is_a layer_type oit._graph
             do! Assert.spog layer_type rdfs.subClassOf esri.GPFeatureLayer oit._graph
 
             try
                 let layer_abstract = Feature_Layer.Literal.abstract_description[Layer.Name]
-                do! Assert.spog feature_layer swin.name layer_name oit._graph
+                do! Assert.spog feature_layer ms4.name layer_name oit._graph
                 do! Assert.spog feature_layer esri.``abstract`` layer_abstract oit._graph
             with
             | _ -> ()
 
 
-            do! Assert.spog feature_layer swin.currentVersion Feature_Layer.Literal.current_version[Layer.CurrentVersion] oit._graph
+            do! Assert.spog feature_layer ms4.currentVersion Feature_Layer.Literal.current_version[Layer.CurrentVersion] oit._graph
 
             if Layer.GeometryType.IsSome then
-                do! Assert.spog feature_layer swin.geometryType Feature_Layer.Iri.geometry_type[Layer.GeometryType.Value] oit._graph
+                do! Assert.spog feature_layer ms4.geometryType Feature_Layer.Iri.geometry_type[Layer.GeometryType.Value] oit._graph
 
             if Layer.Count.IsSome then
-                do! Assert.spog feature_layer swin.count Feature_Layer.Literal.count[Layer.Count.Value] oit._graph
+                do! Assert.spog feature_layer ms4.count Feature_Layer.Literal.count[Layer.Count.Value] oit._graph
 
 
             for Field in Layer.Fields do
@@ -10799,8 +10929,8 @@ if should_triplify then
                 do! Assert.spog layer_field is_a esri.Field oit._graph
                 do! Assert.spog layer_field is_a field_type oit._graph
                 do! Assert.spog field_type rdfs.subClassOf esri.Field oit._graph
-                do! Assert.spog layer_field swin.name Layer_Field.Literal.name[FieldName] oit._graph
-                do! Assert.spog feature_layer swin.field layer_field oit._graph
+                do! Assert.spog layer_field ms4.name Layer_Field.Literal.name[FieldName] oit._graph
+                do! Assert.spog feature_layer ms4.field layer_field oit._graph
 
 
                 if Field.Domain.IsSome then
@@ -10889,10 +11019,10 @@ if should_triplify then
 
             if layer_names_with_unit_ids.Contains(Feature.LayerName) then
                 let Unitid = Feature.Unitid.Value
-                let individual_feature = Id.Iri.individual_feature_by_Unitid[Unitid]
-                let unit_id = Id.Literal.unit_id[Unitid]
+                let individual_feature = FeatureId.Iri.individual_feature_by_Unitid[Unitid]
+                let unit_id = FeatureId.Literal.unit_id[Unitid]
 
-                do! Assert.spog feature_layer swin.feature individual_feature oit._graph
+                do! Assert.spog feature_layer ms4.feature individual_feature oit._graph
                 do! Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.UNITID"] unit_id oit._graph
 
 
@@ -10900,18 +11030,18 @@ if should_triplify then
 
             if layer_names_with_globalids_without_unit_ids.Contains(Feature.LayerName) then
                 let Globalid = Feature.Globalid.Value
-                let individual_feature = Id.Iri.individual_feature_by_Globalid[Globalid]
-                let global_id = Id.Literal.global_id[Globalid]
+                let individual_feature = FeatureId.Iri.individual_feature_by_Globalid[Globalid]
+                let global_id = FeatureId.Literal.global_id[Globalid]
                 do! Assert.spog individual_feature Layer_Field.Iri.layer_field[$"{Feature.LayerName}.GLOBALID"] global_id oit._graph
                 do! shared_feature_assertions Feature individual_feature
         (*
             if layer_names_with_global_id_and_unit_ids.Contains(Feature.LayerName) then
                 let Unitid = Feature.Unitid.Value
                 let Globalid = Feature.Globalid.Value
-                let individual_feature_from_unit_id = Id.Iri.individual_feature_by_Unitid[Unitid]
+                let individual_feature_from_unit_id = FeatureId.Iri.individual_feature_by_Unitid[Unitid]
 
                 let individual_feature_from_global_id =
-                    Id.Iri.individual_feature_by_Globalid[Globalid]
+                    FeatureId.Iri.individual_feature_by_Globalid[Globalid]
 
                 do! Assert.spog individual_feature_from_unit_id owl.sameAs individual_feature_from_global_id oit._graph
     *)
@@ -11182,52 +11312,8 @@ if should_triplify then
             do! Assert.spog map h8importtool.CreatedDate (RDF_Literal.autotyped DateTime.Now current_transaction) oit._graph
             do! Assert.spog map woedms.created_by leonad.collierb oit._graph
             do! Assert.spog map h8importtool.CreatedBy (RDF_Literal.simple @"LEONAD\collierb" current_transaction) oit._graph
-
-        do! Map.layer_field_to_table_column "Conduit" "UNITID" "AssetManagement.Storm" "StormLiftStation" "ID"
-        do! Map.layer_field_to_table_column "Conduit" "NOTES" "AssetManagement.Storm" "StormLiftStation" "UnitDesc"
-        do! Map.layer_field_to_table_column "Culvert Cross Drain" "UNITID" "AssetManagement.Storm" "StormServiceLine" "ID"
-        do! Map.layer_field_to_table_column "Culvert Cross Drain" "NOTES" "AssetManagement.Storm" "StormServiceLine" "UnitDesc"
-        do! Map.layer_field_to_table_column "Debris Trap" "UNITID" "AssetManagement.Storm" "StormValve" "ID"
-        do! Map.layer_field_to_table_column "Debris Trap" "NOTES" "AssetManagement.Storm" "StormValve" "UnitDesc"
-        do! Map.layer_field_to_table_column "Debris Trap" "LOCATION" "AssetManagement.Storm" "StormValve" "AddressQualifier"
-        do! Map.layer_field_to_table_column "Debris Trap" "x" "AssetManagement.Storm" "StormValve" "XCoordinate"
-        do! Map.layer_field_to_table_column "Debris Trap" "y" "AssetManagement.Storm" "StormValve" "YCoordinate"
-        do! Map.layer_field_to_table_column "Ditch" "UNITID" "AssetManagement.Storm" "StormBackflowPreventer" "ID"
-        do! Map.layer_field_to_table_column "Ditch" "NOTES" "AssetManagement.Storm" "StormBackflowPreventer" "UnitDesc"
-        do! Map.layer_field_to_table_column "End Point" "UNITID" "AssetManagement.Storm" "StormNode" "ID"
-        do! Map.layer_field_to_table_column "End Point" "NOTES" "AssetManagement.Storm" "StormNode" "UnitDesc"
-        do! Map.layer_field_to_table_column "End Point" "LOCATION" "AssetManagement.Storm" "StormNode" "AddressQualifier"
-        do! Map.layer_field_to_table_column "End Point" "x" "AssetManagement.Storm" "StormNode" "XCoordinate"
-        do! Map.layer_field_to_table_column "End Point" "y" "AssetManagement.Storm" "StormNode" "YCoordinate"
-        do! Map.layer_field_to_table_column "End Point" "ZVALUE" "AssetManagement.Storm" "StormNode" "ZCoordinate"
-        do! Map.layer_field_to_table_column "Inlet" "UNITID" "AssetManagement.Storm" "StormInlet" "ID"
-        do! Map.layer_field_to_table_column "Inlet" "NOTES" "AssetManagement.Storm" "StormInlet" "UnitDesc"
-        do! Map.layer_field_to_table_column "Inlet" "LOCATION" "AssetManagement.Storm" "StormInlet" "AddressQualifier"
-        do! Map.layer_field_to_table_column "Inlet" "x" "AssetManagement.Storm" "StormInlet" "XCoordinate"
-        do! Map.layer_field_to_table_column "Inlet" "y" "AssetManagement.Storm" "StormInlet" "YCoordinate"
-        do! Map.layer_field_to_table_column "Inlet" "ZVALUE" "AssetManagement.Storm" "StormInlet" "ZCoordinate"
-        do! Map.layer_field_to_table_column "Junction Fixed" "UNITID" "AssetManagement.Storm" "StormManhole" "ID"
-        do! Map.layer_field_to_table_column "Junction Fixed" "NOTES" "AssetManagement.Storm" "StormManhole" "UnitDesc"
-        do! Map.layer_field_to_table_column "Junction Fixed" "LOCATION" "AssetManagement.Storm" "StormManhole" "AddressQualifier"
-        do! Map.layer_field_to_table_column "Junction Fixed" "x" "AssetManagement.Storm" "StormManhole" "XCoordinate"
-        do! Map.layer_field_to_table_column "Junction Fixed" "y" "AssetManagement.Storm" "StormManhole" "YCoordinate"
-        do! Map.layer_field_to_table_column "Junction Fixed" "ZVALUE" "AssetManagement.Storm" "StormManhole" "ZCoordinate"
-        do! Map.layer_field_to_table_column "Outfall" "UNITID" "AssetManagement.UsageArea" "Complex" "ID"
-        do! Map.layer_field_to_table_column "Outfall" "NOTES" "AssetManagement.UsageArea" "Complex" "UnitDesc"
-        do! Map.layer_field_to_table_column "Outfall" "x" "AssetManagement.UsageArea" "Complex" "XCoordinate"
-        do! Map.layer_field_to_table_column "Outfall" "y" "AssetManagement.UsageArea" "Complex" "YCoordinate"
-        do! Map.layer_field_to_table_column "Stormwater Pond" "UNITID" "AssetManagement.Storm" "StormMiscellaneous" "ID"
-        do! Map.layer_field_to_table_column "Stormwater Pond" "NOTES" "AssetManagement.Storm" "StormMiscellaneous" "UnitDesc"
-        do! Map.layer_field_to_table_column "Stormwater Pond" "LOCATION" "AssetManagement.Storm" "StormMiscellaneous" "AddressQualifier"
-        do! Map.layer_field_to_table_column "Stormwater Pond" "x" "AssetManagement.Storm" "StormMiscellaneous" "XCoordinate"
-        do! Map.layer_field_to_table_column "Stormwater Pond" "y" "AssetManagement.Storm" "StormMiscellaneous" "YCoordinate"
-        do! Map.layer_field_to_table_column "Stormwater Pond" "ZVALUE" "AssetManagement.Storm" "StormMiscellaneous" "ZCoordinate"
-        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "UNITID" "AssetManagement.Storm" "StormLevee" "ID"
-        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "NOTES" "AssetManagement.Storm" "StormLevee" "UnitDesc"
-        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "LOCATION" "AssetManagement.Storm" "StormLevee" "AddressQualifier"
-        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "x" "AssetManagement.Storm" "StormLevee" "XCoordinate"
-        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "y" "AssetManagement.Storm" "StormLevee" "YCoordinate"
-        do! Map.layer_field_to_table_column "Stormwater Pond Discharge" "ZVALUE" "AssetManagement.Storm" "StormLevee" "ZCoordinate"
+        for layer_name, field_name, productFamily_name, table_name, column_name in layer'field'productFamily'table'column_names do
+            do! Map.layer_field_to_table_column layer_name field_name productFamily_name table_name column_name
 
 
 
@@ -11393,31 +11479,40 @@ if should_triplify then
                         do! Assert.spog lexical_sense ontolex.usage lexical_usage oit._graph
                         do! Assert.spog lexical_usage is_a termlex.Usage oit._graph
                         do! Assert.spog lexical_usage skos.definition definition oit._graph
+                        do! Assert.spog terminological_concept is_a skos.Concept oit._graph
+                        do! Assert.spog terminological_concept skos.inScheme oit.GIS_Concept_Scheme oit._graph
+                        // TODO maintain parity with gis_headwords
                         match headword, subject_area with
                         | "feature", _ ->
                             do! Assert.spog terminological_concept skos.narrowMatch concept.infor.asset oit._graph
-                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry swin.Feature swin.feature
-                        | "feature layer", _ ->
-                            do! Assert.spog terminological_concept skos.closeMatch concept.infor.table_definition oit._graph
-                            do! Assert.spog terminological_concept skos.related concept.gis.feature_class oit._graph
-                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry swin.Feature_Layer swin.feature_layer
+                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.Feature ms4.feature
                         | "feature class", _ ->
-                            do! Assert.spog terminological_concept skos.closeMatch concept.infor.table_definition oit._graph
-                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry swin.Feature_Class swin.feature_class
+                            do! Assert.spog terminological_concept skos.closeMatch concept.infor.asset_type oit._graph
+                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.Feature_Class ms4.feature_class
+                        | "feature layer", _ ->
+                            do! Assert.spog terminological_concept skos.closeMatch concept.infor.table oit._graph
+                            do! Assert.spog terminological_concept skos.related concept.gis.feature_class oit._graph
+                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.Feature_Layer ms4.feature_layer
                         | "field", "database structures" ->
                             do! Assert.spog terminological_concept skos.exactMatch concept.infor.column oit._graph
                             do! Assert.spog terminological_concept skos.related concept.gis.column oit._graph
-                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry swin.Feature_Class swin.feature_class
-                        | "column", "computing" -> do! Assert.spog terminological_concept skos.exactMatch concept.infor.column oit._graph
+                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.Feature_Class ms4.feature_class
                         | "identifier", _ ->
                             do! Assert.spog terminological_concept skos.exactMatch concept.infor.identification_code oit._graph
-                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry swin.UNITID rdf.nil
+                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.UNITID rdf.nil
                         | "geodatabase", _ ->
                             do! Assert.spog terminological_concept skos.closeMatch concept.infor.database oit._graph
                             do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry oit.Geodatabase oit.database
-                        | "table", _ ->
-                            do! Assert.spog terminological_concept skos.exactMatch concept.infor.table oit._graph
-                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.Table infor.table
+                        | "subtype", _ ->
+                            do! Assert.spog terminological_concept skos.exactMatch concept.infor.unittype oit._graph
+                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.Subtype ms4.subtype
+                        | "coordinates", _ ->
+                            do! Assert.spog terminological_concept skos.exactMatch concept.infor.xcoordinate oit._graph
+                            do! Assert.spog terminological_concept skos.exactMatch concept.infor.ycoordinate oit._graph
+                            do! Assert.spog terminological_concept skos.exactMatch concept.infor.zcoordinate oit._graph
+                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.Coordinates ms4.xcoordinate
+                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.Coordinates ms4.ycoordinate
+                            do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.Coordinates ms4.zcoordinate
 
                         | _ -> ()
 
@@ -11473,7 +11568,10 @@ if should_triplify then
         do! Assert.spog hansen.system is_a skos.Concept oit._graph
         do! Assert.spog hansen.work_management is_a skos.Concept oit._graph
         for term in H8Help_gloss.xml.Terms do
-            let headword = term.Word
+            let headword =
+                match term.Word with
+                | "table definition" -> "table"
+                | _ -> term.Word
 
             let subject_area =
                 match term.Family with
@@ -11580,11 +11678,13 @@ if should_triplify then
                 do! Assert.spog lexical_usage is_a termlex.Usage oit._graph
                 do! Assert.spog lexical_usage skos.definition definition oit._graph
                 do! Assert.spog terminological_concept is_a skos.Concept oit._graph
+                do! Assert.spog terminological_concept skos.inScheme oit.WOEDMS_Concept_Scheme oit._graph
 
+                // TODO maintain parity with infor_headwords
                 match headword with
                 | "asset" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.Asset infor.asset
                 | "asset type" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.AssetType rdf.nil
-                | "table definition" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.Table infor.table
+                | "table" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.Table infor.table
                 | "column" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.Column infor.column
                 | "database" ->
                     do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry oit.InforProdSql oit.database
@@ -11624,25 +11724,6 @@ if should_triplify then
 
 
     }
-    // TODO next test
-    (*
-    lmdb_read_write {
-    let! transaction = lmdb_read_write.Current_Transaction
-
-    let key = Encoding.UTF8.GetBytes "Lexical_Form_ID"
-    let value = 411472UL.to_byte_array
-
-    let result =
-        transaction.Put(
-            Lightning_Memory_Map.ID_Kind'Next_ID.handle,
-            key,
-            value
-        )
-
-    return result
-}
-
-    *)
 
     lmdb_read_write {
         let! current_transaction = lmdb_read_write.Current_Transaction
@@ -11654,6 +11735,8 @@ if should_triplify then
                             MetaData.navigator
                             |> xpath """//productFamily[@name = "AssetManagement.AgencyDefined"]/table[@name = "SimpleAgencyAsset"]/column"""
                             MetaData.navigator |> xpath """//domainColumn"""
+                            MetaData.navigator
+                            |> xpath """//table[@name = "Asset"]/column[@name = "AddressQualifier"]"""
 
                              |]
         for asset_column in asset_columns do
@@ -11708,14 +11791,19 @@ if should_triplify then
             do! Assert.spog lexical_usage is_a termlex.Usage oit._graph
             do! Assert.spog lexical_usage skos.definition definition oit._graph
             do! Assert.spog terminological_concept is_a skos.Concept oit._graph
-
+            do! Assert.spog terminological_concept skos.inScheme oit.WOEDMS_Concept_Scheme oit._graph
+            // TODO maintain parity with infor_headwords
             match headword with
             | "ID" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.ID rdf.nil
             | "UnitDesc" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.UnitDesc rdf.nil
+            | "UnitType" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.UnitType rdf.nil
             | "AddressQualifier" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.AddressQualifier rdf.nil
             | "XCoordinate" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.XCoordinate rdf.nil
             | "YCoordinate" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.YCoordinate rdf.nil
             | "ZCoordinate" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.ZCoordinate rdf.nil
+            | "Organization" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.Organization rdf.nil
+            | "Area" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.Area rdf.nil
+            | "Ownership" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.Ownership rdf.nil
             | _ -> ()
 
             let tokens =
@@ -11756,26 +11844,69 @@ if should_triplify then
         let! current_transaction = lmdb_read_write.Current_Transaction
 
         do! Assert.spog hansen.Reference_Guide is_a lexicog.LexicographicResource oit._graph
+        do! Assert.spog ms4.Stormwater_Editing_Training_Manual is_a lexicog.LexicographicResource oit._graph
+        let infor_flag = true
+        let gis_flag = false
+        // TODO next add these attribute definitions
+        (*
+
+- Lifecycle: Always active.
+- Facility ID: Infor Number.
+- MaintBy: Easement Grantee.
+- Source: The document used i.e, As-built 88
+- Location: Name of the Road or Subdivision Name.
+- Inventory Date: Date on the document.
+- Inventory Type: Typically aerial imagery.
+- Original Source: The document (e.g., Stormwater Asbuilt Survey /23601.Stormwater.dwg).
+- Date Created: When you input the inventory.
+- Accuracy Code: TLCGIS.
+- Material.
+- ZValue: Top listed on Asbuilt.
+- Slot Elev: Listed as Throat, slot, or mouth on Asbuilt.
+- InvertElev: Inv on Asbuilt, use 'south' if both north and south exist.
+- Imagery Year: Year of the imagery used for digitization.
+- Structure ID? - Lifecycle: Always active.
+- Location: N, S, E, or W side of pond.
+- Z Value: inverse
+- Upstream elevation: Southern Inverse of the top inlet.
+- Downstream elevation: Northern Inverse of the bottom inlet.
+- Length: L feet or LF (calculate if not given).
+- Perct_grid (see above for calculations)
+
+        *)
         let manual_definitions =
             [|
 
-               "Data layer", "The main component of the data layer is an Oracle or SQL Server database that stores the agency’s data. The data layer consists of an Oracle or SQL Server database that stores your agency’s data."
-               "Business layer", "The purpose of the Infor Public Sector business layer is to make the system’s full range of business logic accessible by isolating it from both the database and the user interface. "
-               "Presentation layer", "Conceptually, the presentation layer is the simplest of the three layers—it’s the user interface. I"
-               "Storm Inlet", "An inlet is an opening in a storm main that serves as a drainage point for surface wate"
+               infor_flag, "asset_management", "Data layer", "The main component of the data layer is an Oracle or SQL Server database that stores the agency,s data. The data layer consists of an Oracle or SQL Server database that stores your agency’s data."
+               infor_flag, "asset_management", "Business layer", "The purpose of the Infor Public Sector business layer is to make the system’s full range of business logic accessible by isolating it from both the database and the user interface. "
+               infor_flag, "asset_management", "Presentation layer", "Conceptually, the presentation layer is the simplest of the three layers—it’s the user interface."
+               gis_flag, "stormwater_editing", "MaintBy", "Easement Grantee."
+               gis_flag, "stormwater_editing", "Location", "Name of the Road or Subdivision Name."
+
+
 
 
                |]
-        for definiendum, definiens in manual_definitions do
+        for is_infor, subject_area, definiendum, definiens in manual_definitions do
+            let lexicographic_resource =
+                if is_infor then
+                    hansen.Reference_Guide
+                else
+                    ms4.Stormwater_Editing_Training_Manual
+            let prefix_term =
+                if is_infor then
+                    hansen._prefix
+                else
+                    ms4._prefix
+            let concept_scheme = if is_infor then "infor" else "gis"
 
-            let subject_area = "asset_management"
-            let! lexicographic_entry = hansen._prefix definiendum
+            let! lexicographic_entry = prefix_term definiendum
             let! lexical_entry = entry._minuscule definiendum
             let! lexical_form = data.text.plain definiendum
             let! canonical_form = RDF_Literal.US definiendum
-            let! lexicographic_area = hansen._prefix subject_area
+            let! lexicographic_area = prefix_term subject_area
 
-            do! Assert.spog hansen.Reference_Guide lexicog.entry lexicographic_entry oit._graph
+            do! Assert.spog lexicographic_resource lexicog.entry lexicographic_entry oit._graph
             do! Assert.spog lexicographic_entry is_a lexicog.Entry oit._graph
             do! Assert.spog lexicographic_entry lexicog.describes lexical_entry oit._graph
             do! Assert.spog oit.lexicon lime.entry lexical_entry oit._graph
@@ -11785,10 +11916,10 @@ if should_triplify then
 
             let! definition = RDF_Literal.US definiens
 
-            let! lexicographic_subcomponent = hansen._prefix $"reference_guide.{subject_area}"
+            let! lexicographic_subcomponent = prefix_term $"reference_guide.{subject_area}"
             let! lexical_sense = sense._minuscule $"{subject_area}.{definiendum}"
             let! lexical_usage = usage._minuscule $"{subject_area}.{definiendum}"
-            let! terminological_concept = concept._minuscule $"infor.{definiendum}"
+            let! terminological_concept = concept._minuscule $"{concept_scheme}.{definiendum}"
 
             do! Assert.spog lexicographic_entry lexicog.subComponent lexicographic_subcomponent oit._graph
             do! Assert.spog lexicographic_subcomponent is_a lexicog.LexicographicComponent oit._graph
@@ -11801,12 +11932,25 @@ if should_triplify then
             do! Assert.spog lexical_usage is_a termlex.Usage oit._graph
             do! Assert.spog lexical_usage skos.definition definition oit._graph
             do! Assert.spog terminological_concept is_a skos.Concept oit._graph
+            if is_infor then
+                do! Assert.spog terminological_concept skos.inScheme oit.WOEDMS_Concept_Scheme oit._graph
+            else
+                do! Assert.spog terminological_concept skos.inScheme oit.GIS_Concept_Scheme oit._graph
 
+
+            // TODO maintain parity with infor_headwords
             match definiendum with
             | "Data layer" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry rdf.nil infor.data_layer
             | "Business layer" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry rdf.nil infor.business_layer
             | "Presentation layer" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry rdf.nil infor.presentation_layer
-            | "Storm Inlet" -> do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry infor.Hansen.AssetManagement.Storm.StormInlet.table rdf.nil
+            | "MaintBy" ->
+                do! Assert.spog terminological_concept skos.closeMatch concept.infor.organization oit._graph
+                do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.MAINTBY rdf.nil
+            | "Location" ->
+                do! Assert.spog terminological_concept skos.closeMatch concept.infor.addressqualifier oit._graph
+                do! shared_terminological_assertions terminological_concept lexical_sense lexical_entry ms4.LOCATION rdf.nil
+
+
             | _ -> ()
 
             let tokens =
@@ -11878,9 +12022,9 @@ if should_triplify then
         do! Assert.spog gis.PIPESHAPE h8importtool.MapColumn infor.PipeShape oit._graph
         do! Assert.spog gis.WIDTH h8importtool.MapColumn infor.Width oit._graph
 
-        do! Assert.spog gis.x_coordinate h8importtool.MapColumn infor.XCoordinate oit._graph
-        do! Assert.spog gis.y_coordinate h8importtool.MapColumn infor.YCoordinate oit._graph
-        do! Assert.spog gis.z_coordinate h8importtool.MapColumn infor.ZCoordinate oit._graph
+        do! Assert.spog gis.xcoordinate h8importtool.MapColumn infor.XCoordinate oit._graph
+        do! Assert.spog gis.ycoordinate h8importtool.MapColumn infor.YCoordinate oit._graph
+        do! Assert.spog gis.zcoordinate h8importtool.MapColumn infor.ZCoordinate oit._graph
 
         do! Assert.spog gis.LOCATION h8importtool.MapColumn infor.AddressQualifier oit._graph
 
@@ -11932,94 +12076,8 @@ stopwatch.Stop()
 
 
 module Tabular =
-    module Hypertext =
 
-        let table_from_rows (rows: string array array) =
-            table {
-                if rows.Length > 0 then
-                    thead {
-                        tr {
-                            for header in rows[0] do
-                                th { header }
-                        }
-                    }
 
-                    tbody {
-                        for row in rows[1..] do
-                            tr {
-                                for cell in row do
-                                    td { cell }
-                            }
-                    }
-            }
-
-        let document_from_layers (stem: string) (tabular_content_by_layer: (string * string array array) array) =
-            html {
-                _lang "en"
-                style {
-                    _type "text/css"
-                    """
-                body {
-                    font-family: Tahoma
-                }
-
-                table {
-                    font-size: 90%;
-                    vertical-align: top;
-                    border-style: solid;
-                    border-width: 0px;
-                    border-color: gray;
-                    border-collapse: collapse;
-                    border-spacing: 1pt;
-                    background-color: white
-                }
-
-                th {
-                    text-align: left;
-                    font-family: Verdana;
-                    vertical-align: bottom
-                }
-
-                tr {
-                    vertical-align: top
-                }
-
-                a {}
-
-                td {
-                    border-width: 1px;
-                    border-color: black;
-                    padding: 2px;
-                    border-style: solid;
-                    border-collapse: collapse;
-                    border-spacing: 1pt;
-                    background-color: white
-                }
-
-                hr {
-                    color: #3333FF;
-                }
-                """
-                }
-                head {
-                    meta { _charset "utf-8" }
-                    title stem
-                }
-
-                body {
-                    for layer_name, rows_in_layer in tabular_content_by_layer do
-                        h2 { layer_name }
-                        table_from_rows rows_in_layer
-                }
-            }
-
-        let render_document (stem: string) tabular_content_by_layer =
-            tabular_content_by_layer
-            |> document_from_layers stem
-            |> Render.toHtmlDocString
-
-        let render_table rows =
-            rows |> table_from_rows |> Render.toString
 
     module Csv =
 
@@ -12054,7 +12112,7 @@ module Tabular =
             let sanitized = invalid_characters.Replace(sheet_name, "_").Trim()
 
             let non_empty =
-                if System.String.IsNullOrWhiteSpace(sanitized) then
+                if String.IsNullOrWhiteSpace(sanitized) then
                     "Sheet"
                 else
                     sanitized
@@ -12251,7 +12309,7 @@ let serialize_ttl (graph: VDS.RDF.IGraph) (quads: Quad array) (stem: string) =
     graph
     |> NetRdf.PREFIX "woedms" woedms._namespace_name
 
-    graph |> NetRdf.PREFIX "swin" swin._namespace_name
+    graph |> NetRdf.PREFIX "ms4" ms4._namespace_name
 
     graph
     |> NetRdf.PREFIX "LCG_Stormwater_Inventory" LCG_Stormwater_Inventory._namespace_name
@@ -12407,7 +12465,8 @@ let layer'unitid_terms =
     }
     |> Array.distinct
 
-let target_sample_size = 1
+
+let target_sample_size = 3
 
 let sample_features_by_layer =
 
@@ -12444,7 +12503,53 @@ let sample_features_by_layer =
                     |> Graph_Traversal.bothE
                     |> Graph_Traversal.to_quads
                     <| current_transaction
-                layer_name, sample_quads
+                let filtered_sample_quads =
+                    sample_quads
+                    |> Array.choose (fun quad ->
+                        let predicate_string = RDF_Predicate.string_value quad.predicate current_transaction
+                        let predicate_is_excluded =
+                            set [
+
+                                  "maintainer"
+                                  "material"
+                                  "owner"
+                                  "pipe_shape"
+                                  "surface_type"
+                                  "pond_type"
+                                  "filter_location"
+                                  "FILTER_LOCATION"
+                                  "ELEVATION"
+                                  "NUM_BARRELS"
+                                  "DIAMETER"
+                                  "INVERTELEV"
+                                  "LFEET"
+                                  "RELATEDFEATURE"
+                                  "facility"
+                                  "parent"
+                                  "MATERIAL"
+                                  "PIPESHAPE"
+                                  "HEIGHT"
+                                  "WIDTH"
+                                  "outfall"
+                                  "SUBTYPEFIELD"
+                                  "attached_to"
+                                  "upstream_structure"
+                                  "STRUCTURETYPE"
+                                  "SLOT_ELEV"
+                                  "DEPTH"
+                                  "WATERBODYNAME"
+                                  "SURFACETYPE"
+                                  "FILTERLOCATION"
+                                  "FILTERTYPE"
+
+
+                                   ]
+                            |> Set.exists (fun excluded_predicate_substring -> predicate_string.Contains(excluded_predicate_substring))
+                        if predicate_is_excluded then
+                            None
+                        else
+                            Some quad)
+                layer_name, filtered_sample_quads
 
             )
 
@@ -12508,7 +12613,7 @@ let sample_features =
 
 let sample_layers =
     sample_quads
-    |> Array.Parallel.filter (fun quad -> RDF_Predicate.term quad.predicate = swin.feature)
+    |> Array.Parallel.filter (fun quad -> RDF_Predicate.term quad.predicate = ms4.feature)
     |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
     |> Array.distinctBy (fun term -> RDF_Term.term_id term)
 
@@ -12517,7 +12622,7 @@ let sample_layer_quads =
         return!
             Graph_Traversal.traversal_with_graph oit._graph
             |> Graph_Traversal.V sample_layers
-            |> Graph_Traversal.inE swin.layer
+            |> Graph_Traversal.inE ms4.layer
             |> Graph_Traversal.to_quads
 
     }
@@ -12543,10 +12648,10 @@ let columns_by_layer quads_by_layer =
             |> Array.map (fun (layer_name, sample_quads_in_layer) ->
                 let columns_in_layer =
                     sample_quads_in_layer
-                    |> Array.filter (fun quad -> RDF_Predicate.term quad.predicate = swin.feature)
+                    |> Array.filter (fun quad -> RDF_Predicate.term quad.predicate = ms4.feature)
                     |> Array.collect (fun quad ->
                         let layer_term = RDF_Subject.term quad.subject
-                        Quad_Query.quads_by_pattern (Graph_Pattern.sp_g layer_term swin.field oit._graph) current_transaction)
+                        Quad_Query.quads_by_pattern (Graph_Pattern.sp_g layer_term ms4.field oit._graph) current_transaction)
                     |> Array.map (fun quad ->
 
                         match RDF_Object.term quad.object with
@@ -12571,25 +12676,18 @@ let column_cells_by_layer_feature quads_by_layer =
             |> Array.map (fun (layer_name, sample_quads_in_layer) ->
                 let column_cells_in_layer =
                     sample_quads_in_layer
-                    |> Array.filter (fun quad -> RDF_Predicate.term quad.predicate <> swin.feature)
+                    |> Array.filter (fun quad -> RDF_Predicate.term quad.predicate <> ms4.feature)
                     |> Array.groupBy (fun quad -> RDF_Subject.term quad.subject)
                     |> Array.map (fun (feature, feature_quads) ->
                         feature_quads
                         |> Array.map (fun quad ->
+
+
                             let column =
-                                match RDF_Predicate.term quad.predicate with
-                                | RDF_Term.FromNamespacedIRI (term_id, term) ->
-                                    let local_name =
-                                        Get.String_by_Lexical_Form_ID term.local_name_id current_transaction
-                                    match local_name with
-                                    // TODO consider any column name overrides
-                                    | _ -> local_name
-                            let cell =
-                                match RDF_Object.term quad.object with
-                                | RDF_Term.FromNamespacedIRI (term_id, term) -> Get.String_by_Lexical_Form_ID term.local_name_id current_transaction
-                                | RDF_Term.FromSimpleLiteral (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
-                                | RDF_Term.FromDatatypedLiteral (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
-                                | RDF_Term.FromRegionString (term_id, term) -> Get.String_by_Lexical_Form_ID term.lexical_form_id current_transaction
+                                match RDF_Predicate.string_value quad.predicate current_transaction with
+                                // TODO consider any column name overrides
+                                | local_name -> local_name
+                            let cell = RDF_Object.string_value quad.object current_transaction
                             column, cell)
                         |> Array.filter (fun (column, cell) -> column <> "type")
                         |> Array.sortBy (fun (column, cell) -> column))
@@ -12641,23 +12739,6 @@ csv_content_by_layer sample_features_by_layer
 |> Array.iter (fun (layer_name, csv_content) -> Tabular.Csv.save csv_content $"{layer_name}_Sample")
 
 
-let html_content_by_layer quads_by_layer =
-    tabular_content_by_layer quads_by_layer
-    |> Array.map (fun (layer_name, rows_in_layer) ->
-        let html_content =
-            Tabular.Hypertext.table_from_rows rows_in_layer
-            |> Render.toString
-        (layer_name, html_content)
-
-    )
-
-let html_document_content =
-    tabular_content_by_layer sample_features_by_layer
-    |> Tabular.Hypertext.render_document "Sample Data"
-
-let html_document_path = Path.Combine(html_directory_path, "sample_data.html")
-
-File.WriteAllText(html_document_path, html_document_content)
 
 
 let metadata_workbook = new XLWorkbook()
@@ -12690,12 +12771,12 @@ let sample_data_graph = new VDS.RDF.ThreadSafeGraph()
 let sample_data_quads =
 
     let excluded_predicate_terms =
-        set [ swin.owner
-              swin.z_coordinate
-              swin.maintainer
-              swin.material
-              swin.surface_type
-              swin.pipe_shape
+        set [ ms4.owner
+              ms4.zcoordinate
+              ms4.maintainer
+              ms4.material
+              ms4.surface_type
+              ms4.pipe_shape
 
                ]
     let excluded_predicate_substrings =
@@ -12733,7 +12814,7 @@ let sample_data_quads =
         set [
 
               owl.NamedIndividual
-              swin.Feature
+              ms4.Feature
               esri.GPFeatureLayer
 
                ]
@@ -13163,24 +13244,33 @@ let gis_headwords =
           "field"
           "identifier"
           "geodatabase"
+          "subtype"
+          "coordinates"
+          "MaintBy"
+          "Location"
 
 
            ]
 
 let infor_headwords =
     set [
-
+          // H8Help headwords
           "asset"
-          "table definition"
+          "table"
           "column"
           "identification code"
+          "table"
+          // asset column headwords
           "ID"
           "UnitDesc"
           "AddressQualifier"
           "XCoordinate"
           "YCoordinate"
           "ZCoordinate"
-          "table"
+          "Organization"
+          "Area"
+          "Ownership"
+          // manual headwords
           "Data layer"
           "Business layer"
           "Presentation layer"
@@ -13211,6 +13301,7 @@ let excluded_senses =
           "data_models.column"
           "asset_management.feature"
           "core.field"
+          "esri_software.organization"
 
            ]
 
@@ -13357,29 +13448,719 @@ let lexical_quads =
     }
 
 
-(*
+
 let test_quads =
 
+
     lmdb_read_only {
+
         let! current_transaction = lmdb_read_only.Current_Transaction
-        let! term_quads =
-            Graph_Pattern._pog is_a termlex.TerminologicalConcept oit._graph
-            |> Quad_Query.quads_by_pattern
-        let! feature_layer_test = entry._minuscule "feature_layer"
-        let! feature_layer_quads =
-            Graph_Traversal.traversal_with_graph oit._graph
-            |> Graph_Traversal.V [| feature_layer_test |]
-            |> Graph_Traversal.bothE
-            |> Graph_Traversal.to_quads
-        return term_quads
+        return
+            layer'unitid_terms
+            |> Array.choose (fun (layer_name, unitid_term) ->
+
+                let unitid_quads =
+                    Quad_Query.quads_by_pattern (Graph_Pattern._p_g unitid_term oit._graph) current_transaction
+
+                if unitid_quads.Length > 0 then
+                    Some(layer_name, unitid_quads)
+                else
+                    None)
+            |> Array.collect (fun (layer_name, unitid_quads) ->
+
+                let features =
+                    unitid_quads
+                    |> Array.map (fun quad -> quad.subject |> RDF_Subject.term)
+
+
+
+                let feature_quads =
+                    features
+                    |> Array.map (fun feature ->
+                        let subject_quads =
+                            Quad_Query.quads_by_pattern (Graph_Pattern.s__g feature oit._graph) current_transaction
+                        let maint_owner_quads =
+                            subject_quads
+                            |> Array.choose (fun quad ->
+
+                                let predicate_string = RDF_Predicate.string_value quad.predicate current_transaction
+                                if
+                                    predicate_string.EndsWith("MAINTBY")
+                                    || predicate_string.EndsWith("OWNER")
+                                then
+                                    Some quad
+                                else
+                                    None)
+
+
+                        feature, maint_owner_quads
+
+                    )
+                feature_quads
+                |> Array.choose (fun (feature, maint_owner_quads) ->
+                    let feature_maintainer =
+                        maint_owner_quads
+                        |> Array.tryPick (fun quad ->
+                            let predicate_string = RDF_Predicate.string_value quad.predicate current_transaction
+                            match predicate_string with
+                            | _ when predicate_string.EndsWith("MAINTBY") -> Some(RDF_Object.string_value quad.object current_transaction)
+                            | _ -> None
+
+                        )
+
+                    let feature_owner =
+                        maint_owner_quads
+                        |> Array.tryPick (fun quad ->
+                            let predicate_string = RDF_Predicate.string_value quad.predicate current_transaction
+                            match predicate_string with
+                            | _ when predicate_string.EndsWith("OWNER") -> Some(RDF_Object.string_value quad.object current_transaction)
+                            | _ -> None
+
+                        )
+                    if feature_maintainer.IsNone || feature_owner.IsNone then
+                        None
+                    else if feature_maintainer.Value <> feature_owner.Value then
+                        Some(feature)
+                    else
+                        None)
+
+
+            )
 
     }
 
-*)
+test_quads |> Array.randomChoice
+
+
 let lexical_graph = new VDS.RDF.ThreadSafeGraph()
 serialize_ttl lexical_graph lexical_quads "lex"
 // serialize_ttl lexical_graph test_quads "lex"
 
+
+
+let mapping_relation_quads =
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        return
+            Quad_Query.quads_by_pattern (Graph_Pattern._pog rdfs.subPropertyOf skos.mappingRelation oit._graph) current_transaction
+            |> Array.collect (fun mapping_relation_quad ->
+                let mapping_relation = RDF_Subject.term mapping_relation_quad.subject
+
+                Quad_Query.quads_by_pattern (Graph_Pattern._p_g mapping_relation oit._graph) current_transaction
+
+            )
+
+    }
+// |> Array.distinctBy (fun quad -> quad.subject)
+
+
+let concept_to_canonical_form (concept_term: RDF_Term) =
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        let entry_pattern = Graph_Pattern._pog termlex.evokes concept_term oit._graph
+        return
+            Quad_Query.quads_by_pattern entry_pattern current_transaction
+            |> Array.collect (fun quad ->
+                let concept_entry = RDF_Subject.term quad.subject
+                let lexical_form_pattern =
+                    Graph_Pattern.sp_g concept_entry ontolex.lexicalForm oit._graph
+                Quad_Query.quads_by_pattern lexical_form_pattern current_transaction
+                |> Array.collect (fun quad ->
+                    let lexical_form = RDF_Object.term quad.object
+                    let canonical_form_pattern =
+                        Graph_Pattern.sp_g lexical_form ontolex.canonicalForm oit._graph
+                    Quad_Query.quads_by_pattern canonical_form_pattern current_transaction
+                    |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)))
+
+
+    }
+    |> Array.head
+
+
+let concept_to_definition (concept_term: RDF_Term) =
+    lmdb_read_only {
+        let! current_transaction = lmdb_read_only.Current_Transaction
+        let sense_pattern =
+            Graph_Pattern.sp_g concept_term termlex.lexicalizedSense oit._graph
+        return
+            Quad_Query.quads_by_pattern sense_pattern current_transaction
+            |> Array.collect (fun quad ->
+                let lexicalized_sense = RDF_Object.term quad.object
+                let usage_pattern = Graph_Pattern.sp_g lexicalized_sense ontolex.usage oit._graph
+                Quad_Query.quads_by_pattern usage_pattern current_transaction
+                |> Array.collect (fun quad ->
+                    let lexical_usage = RDF_Object.term quad.object
+                    let definition_pattern = Graph_Pattern.sp_g lexical_usage skos.definition oit._graph
+                    Quad_Query.quads_by_pattern definition_pattern current_transaction
+                    |> Array.map (fun quad -> RDF_Object.string_value quad.object current_transaction)))
+
+
+    }
+    |> Array.head
+
+(*
+
+for mapping_relation_quad in mapping_relation_quads do
+    let gis_concept = RDF_Subject.term mapping_relation_quad.subject
+    let gis_string = lmdb_read_only {return! RDF_Subject.string_value mapping_relation_quad.subject }
+    let conceptual_match = lmdb_read_only {return! RDF_Predicate.string_value mapping_relation_quad.predicate}
+    let infor_concept = RDF_Object.term mapping_relation_quad.object
+    let infor_string = lmdb_read_only {return! RDF_Object.string_value mapping_relation_quad.object }
+    let test_concept = infor_concept
+    let test_string = infor_string
+    try
+        concept_to_definition test_concept
+    with
+    | err ->
+        failwith $"concept {test_string} failed with error {err.Message}"
+
+*)
+
+
+
+
+
+
+
+
+let gis_header (header: string) =
+    let field_string =
+        if header.Contains(".") then
+            let header_start = header.LastIndexOf(".") + 1
+            header[header_start..]
+        else
+            header
+    match field_string with
+    | "outfall" -> "OUTFALLID"
+    | "drainage_basin" -> "DRAINAGEBBASIN"
+    | "x" -> "Geometry.x"
+    | "y" -> "Geometry.y"
+    | "zcoordinate" -> "ZVALUE"
+    | "facility" -> "FACILITYID"
+    | "parent" -> "PARENTID"
+    | _ -> field_string
+
+let layer_to_table_moniker (layer: string) =
+
+    layer'field'productFamily'table'column_names
+    |> Array.pick (fun (layer_name, field_name, productFamily_name, table_name, column_name) ->
+        if layer_name = layer then
+            Some(productFamily_name, table_name)
+        else
+            None
+
+    )
+
+let maybe_infor_header (layer: string) (header: string) =
+    layer'field'productFamily'table'column_names
+    |> Array.tryPick (fun (layer_name, field_name, productFamily_name, table_name, column_name) ->
+        let productFamily_name, table_name = layer_to_table_moniker layer
+        match header with
+        | "drainage_basin" -> Some(productFamily_name, table_name, "AddressQualifier")
+        | "zcoordinate" -> Some(productFamily_name, table_name, "ZCoordinate")
+        | _ when header.EndsWith("SUBTYPE") -> Some(productFamily_name, table_name, "UnitType")
+        | _ when $"{layer_name.low_lined}.{field_name}" = header -> Some(productFamily_name, table_name, column_name)
+        | _ -> None
+
+    )
+
+
+let css_document_path = Path.Combine(html_directory_path, "styles.css")
+
+/// "https://infor{environment}.leoncountyfl.gov/{environment_database}/HFrame.htm?{?monk,id,isQuery,hasMenu,showHeader}"
+let asset_uri_template (environment: string) (environment_database: string) (monk: string) (id: string) (showHeader: bool) =
+    $"https://infor{environment}.leoncountyfl.gov/{environment_database}/HFrame.htm?monk={monk}&id={id}&hasMenu=false&showHeader={(string showHeader).ToLowerInvariant()}"
+
+
+
+(*
+
+
+for mapping_relation_quad in mapping_relation_quads do
+    let gis_concept = RDF_Subject.term mapping_relation_quad.subject
+    let gis_concept_string =
+        lmdb_read_only { return! RDF_Subject.string_value mapping_relation_quad.subject }
+    let conceptual_match =
+        lmdb_read_only { return! RDF_Predicate.string_value mapping_relation_quad.predicate }
+    let infor_concept = RDF_Object.term mapping_relation_quad.object
+    let infor_concept_string =
+        lmdb_read_only { return! RDF_Object.string_value mapping_relation_quad.object }
+    try
+        printfn "%s" (concept_to_canonical_form infor_concept)
+
+    with
+    | err -> failwith $"infor_concept {infor_concept_string} failed with error {err.Message}"
+
+
+*)
+
+
+
+let documentation_title =
+    "Esri-Infor Stormwater Inventory Integration Documentation"
+
+let html_element =
+    html {
+        _lang "en"
+        head {
+            title documentation_title
+            link {
+                _href "styles.css"
+                _rel "stylesheet"
+                _type "text/css"
+            }
+            meta {
+                _charset "utf-8"
+                _name "viewport"
+                _content "width=device-width, initial-scale=1.0"
+            }
+
+            style {
+                _type "text/css"
+
+                css
+                    "body"
+                    [
+
+                      FontFamily.value "Tahoma"
+
+                      ]
+                css
+                    "table"
+                    [
+
+                      Percent 100 |> Width.value
+                      TableLayout.fixed'
+                      BorderCollapse.collapse
+                      BorderSpacing.value Zero
+                      Percent 90 |> FontSize.value
+                      VerticalAlign.top
+                      BorderStyle.solid
+                      BorderWidth.value Zero
+                      BorderColor.gray
+                      BackgroundColor.white
+
+                      ]
+                css
+                    "header, caption"
+                    [
+
+                      TextAlign.center
+
+                      ]
+                css
+                    "caption"
+                    [
+
+                      CaptionSide.top
+                      FontWeight.bold
+                      Em' 0.5 |> MarginBlockEnd.value
+                      Px 10 |> PaddingTop.value
+                      Px 10 |> PaddingBottom.value
+                      Em' 1.5 |> FontSize.value
+
+                      ]
+
+                css
+                    "th"
+                    [
+
+                      TextAlign.left
+                      FontFamily.value "Verdana"
+                      VerticalAlign.bottom
+
+                      ]
+
+                css "tr" [ VerticalAlign.top ]
+
+                css
+                    "td"
+                    [
+
+                      Px 1 |> BorderWidth.value
+                      BorderColor.black
+                      Px 2 |> Padding.value
+                      BorderStyle.solid
+                      BorderCollapse.collapse
+                      Pt 1.0 |> BorderSpacing.value
+                      BackgroundColor.white
+
+                      ]
+
+                css "hr" [ Color.hex "3333FF" ]
+                css "dt::after" [ Content.value ": " ] |> raw
+                css
+                    "a"
+                    [
+
+                      Position.relative
+                      TextDecoration.none
+                      Color.hex "0066cc"
+
+                      ]
+
+                css
+                    "dt"
+                    [ FontWeight.bold
+                      BoxSizing.borderBox
+                      Cursor.auto
+
+                      1 |> GridColumnStart.value ]
+                css
+                    "dl"
+                    [ Display.grid
+
+                      // First column: term column.
+                      Px 180 |> GridTemplateColumns.value
+
+                      // Second column: implicit definition column.
+                      Fr 1.0 |> GridAutoColumns.value
+
+                      Rem 0.75 |> GridColumnGap.value
+                      Rem 0.5 |> RowGap.value ]
+
+                css
+                    "dd"
+                    [ 2 |> GridColumnStart.value
+                      Zero |> Margin.value ]
+                css
+                    "aside"
+                    [
+
+                      Display.block
+                      Em' 0.9 |> FontSize.value
+                      Rem 0.5 |> MarginBlockStart.value
+                      Zero |> MarginInline.value ]
+
+            }
+        }
+
+        body {
+            header { h1 { documentation_title } }
+            main {
+                article {
+                    header { h2 { "Terminology" } }
+
+                    article {
+                        header { h3 { "Terms by Esri/GIS Usage" } }
+
+                        dl {
+                            let mutable coordinates_is_processed = false
+
+                            for mapping_relation_quad in mapping_relation_quads do
+                                let gis_concept = RDF_Subject.term mapping_relation_quad.subject
+                                let gis_term = concept_to_canonical_form gis_concept
+                                let gis_definition = concept_to_definition gis_concept
+
+                                let conceptual_match =
+                                    match lmdb_read_only { return! RDF_Predicate.string_value mapping_relation_quad.predicate } with
+                                    | "closeMatch" -> "Closely matches"
+                                    | "exactMatch" -> "Exactly matches"
+                                    | "relatedMatch" -> "Relates to"
+                                    | "broadMatch" -> "Broadly matches"
+                                    | "narrowMatch" -> "Narrowly matches"
+                                    | _ -> ""
+                                let infor_concept = RDF_Object.term mapping_relation_quad.object
+                                let infor_term = concept_to_canonical_form infor_concept
+                                let infor_definition = concept_to_definition infor_concept
+                                match gis_term with
+                                | "coordinates" when coordinates_is_processed = false ->
+
+                                    dt {
+                                        dfn {
+                                            _id gis_term.low_lined
+                                            concept_to_canonical_form gis_concept
+
+                                        }
+                                    }
+                                    dd {
+                                        concept_to_definition gis_concept
+
+                                        aside {
+                                            _ariaLabel $"{gis_term.low_lined}-matches"
+                                            $"{conceptual_match} WOEDMS usage of "
+                                            a {
+                                                _href $"#XCoordinate"
+                                                "XCoordinate"
+                                            }
+                                            ", "
+                                            a {
+                                                _href $"#YCoordinate"
+                                                "YCoordinate"
+                                            }
+                                            ", "
+                                            a {
+                                                _href $"#ZCoordinate"
+                                                "ZCoordinate"
+                                            }
+                                        }
+                                    }
+                                    coordinates_is_processed <- true
+                                | "coordinates" when coordinates_is_processed -> ()
+                                | _ ->
+                                    dt {
+                                        dfn {
+                                            _id gis_term.low_lined
+                                            concept_to_canonical_form gis_concept
+
+                                        }
+                                    }
+                                    dd {
+                                        concept_to_definition gis_concept
+
+                                        aside {
+                                            _ariaLabel $"{gis_term.low_lined}-matches"
+                                            $"{conceptual_match} WOEDMS usage of "
+                                            a {
+                                                _href $"#{infor_term.low_lined}"
+                                                infor_term
+                                            }
+                                        }
+                                    }
+                        // dt { concept_to_canonical_form infor_concept }
+                        // dd { concept_to_definition infor_concept }
+
+                        }
+                    }
+                    article {
+                        header { h3 { "Terms by Infor/WOEDMS Usage" } }
+
+                        dl {
+
+                            for mapping_relation_quad in mapping_relation_quads do
+                                let gis_concept = RDF_Subject.term mapping_relation_quad.subject
+                                let gis_term = concept_to_canonical_form gis_concept
+                                let gis_definition = concept_to_definition gis_concept
+                                let conceptual_match =
+                                    match lmdb_read_only { return! RDF_Predicate.string_value mapping_relation_quad.predicate } with
+                                    | "closeMatch" -> "Closely matches"
+                                    | "exactMatch" -> "Exactly matches"
+                                    | "relatedMatch" -> "Relates to"
+                                    // inverted due to natural langugage sentence structure
+                                    | "broadMatch" -> "Narrowly matches"
+                                    | "narrowMatch" -> "Broadly matches"
+                                    | _ -> ""
+                                let infor_concept = RDF_Object.term mapping_relation_quad.object
+                                let infor_term = concept_to_canonical_form infor_concept
+                                let infor_definition = concept_to_definition infor_concept
+                                dt {
+                                    dfn {
+                                        _id infor_term.low_lined
+                                        infor_term
+
+                                    }
+                                }
+                                dd {
+                                    infor_definition
+
+                                    aside {
+                                        _ariaLabel $"{infor_term.low_lined}-matches"
+                                        $"{conceptual_match} GIS usage of "
+                                        a {
+                                            _href $"#{gis_term.low_lined}"
+                                            gis_term
+                                        }
+                                    }
+                                }
+
+                        // dt { concept_to_canonical_form gis_concept }
+                        // dd { concept_to_definition gis_concept }
+
+                        }
+                    }
+                }
+
+
+                article {
+                    header {
+                        h2 { "Sample Dataset" }
+                        p { "Below are a random sampling of 3 Features from each Feature Layer and both the Esri and Infor representations of the same underlying Feature Attributes." }
+                    }
+
+
+
+
+                    for layer_name_raw, rows in tabular_content_by_layer sample_features_by_layer do
+                        let layer_name = layer_name_raw.Replace("_", " ")
+                        let row_index_end = rows.Length - 1
+                        let column_index_end = rows[0].Length - 1
+                        table {
+                            caption {
+                                let productFamily_name, table_name = layer_to_table_moniker layer_name
+                                $"{layer_name} Feature Layer to {table_name} Asset Table"
+                            }
+                            if rows.Length > 0 then
+                                thead {
+                                    tr {
+                                        th {
+                                            _id "legend"
+                                            "Esri"
+                                        }
+                                        for column_index = 0 to column_index_end do
+                                            let header = rows[0][column_index]
+                                            th {
+                                                _id (header.Replace(".", "_"))
+                                                gis_header header
+                                            }
+                                    }
+                                    tr {
+
+                                        th {
+                                            _id "legend"
+                                            "Infor"
+                                        }
+                                        for column_index = 0 to column_index_end do
+                                            let header = rows[0][column_index]
+                                            match maybe_infor_header layer_name header with
+                                            | Some (productFamily_name, table_name, column_name) ->
+                                                th {
+                                                    _id $"{productFamily_name}_{table_name}_{column_name}"
+                                                    $"{column_name}"
+                                                }
+                                            | None ->
+
+                                                th {
+                                                    _id String.Empty
+                                                    String.Empty
+                                                }
+                                    }
+                                }
+                                tbody {
+                                    for row_index = 1 to row_index_end do
+                                        let row = rows[row_index]
+                                        let id_index =
+                                            rows[0]
+                                            |> Array.findIndex (fun header -> header.EndsWith("UNITID"))
+                                        let unit_id = rows[row_index][id_index]
+                                        let should_print_prod_environment = false
+                                        let infor_environment =
+                                            match should_print_prod_environment with
+                                            | true -> "prod"
+                                            | false -> "test"
+                                        let environment_database =
+                                            match should_print_prod_environment with
+                                            | true -> "operations"
+                                            | false -> "update_operations"
+                                        let productFamily_name, table_name = layer_to_table_moniker layer_name
+                                        let info_viewer_applet =
+                                            match table_name with
+                                            | "Complex" -> "ComplexAssetInfoViewerApplet"
+                                            | "StormBackflowPreventer" -> "StormBackflowInfoViewerApplet"
+                                            | "StormInlet" -> "StormInletInfoViewerApplet"
+                                            | "StormLevee" -> "StormLeveeInfoViewerApplet"
+                                            | "StormLiftStation" -> "StormLiftStationInfoViewerApplet"
+                                            | "StormManhole" -> "StormManholeInfoViewerApplet"
+                                            | "StormMiscellaneous" -> "StormMiscellaneousInfoViewerApplet"
+                                            | "StormNode" -> "StormNodeInfoViewerApplet"
+                                            | "StormServiceLine" -> "StormServiceLineInfoViewerApplet"
+                                            | "StormValve" -> "StormValveInfoViewerApplet"
+                                            | _ -> failwithf "variable info_viewer_applet failed to match on table %s. %s needs an InfoViewerApplet name, which can be sourced manually from Monikers_debug.config" table_name table_name
+
+                                        let moniker = $"Hansen.{productFamily_name}.{info_viewer_applet}"
+                                        let showHeader = false
+                                        let asset_url =
+                                            asset_uri_template infor_environment environment_database moniker unit_id showHeader
+
+
+
+                                        tr {
+                                            td {
+                                                _headers "legend"
+                                                a {
+                                                    _href asset_url.low_lined
+                                                    unit_id
+                                                }
+                                            }
+                                            for column_index = 0 to column_index_end do
+                                                let header = rows[0][column_index]
+                                                let cell = rows[row_index][column_index]
+
+                                                td {
+                                                    _headers header
+                                                    match header with
+                                                    | "drainage_basin" -> cell.Replace("_", " ")
+                                                    | _ when header.EndsWith("SUBTYPE") ->
+                                                        // TODO consider refactoring to separate substring after period function
+                                                        let subtype = gis_header cell
+                                                        let unit_type =
+                                                            match subtype with
+                                                            | "Assessed" -> "ASD"
+                                                            | "Box_Culvert" -> "BCV"
+                                                            | "Bubble_Up_Structure" -> "BUS"
+                                                            | "CleanOut" -> "CLO"
+                                                            | "Collection" -> "CLT"
+                                                            | "Combination" -> "CMB"
+                                                            | "Curb" -> "CRB"
+                                                            | "Ditch_Inlet" -> "DIN"
+                                                            | "DitchBlock" -> "DBL"
+                                                            | "DitchBottom" -> "DBT"
+                                                            | "DitchLink" -> "DLI"
+                                                            | "Endpoint_Not_Assessed" -> "ENA"
+                                                            | "Flared" -> "FLD"
+                                                            | "FlowLine" -> "FLO"
+                                                            | "Generic" -> "GEN"
+                                                            | "Grate" -> "GRT"
+                                                            | "Headwall" -> "HDW"
+                                                            | "Inlet" -> "INL"
+                                                            | "Inlet_Not_Assessed" -> "INA"
+                                                            | "JunctionBox_rectangular" -> "JBR"
+                                                            | "Junction_Not_Assessed" -> "JNA"
+                                                            | "Manhole_circular" -> "MHC"
+                                                            | "MiterEnd" -> "MTE"
+                                                            | "NPDES_MS4_Weir" -> "WIR"
+                                                            | "NoTreatment" -> "NTM"
+                                                            | "Other" -> "OTH"
+                                                            | "Outfall" -> "OUT"
+                                                            | "OutfallStructure" -> "OFS"
+                                                            | "PondLine" -> "PLI"
+                                                            | "Primary" -> "PRI"
+                                                            | "Road_Side" -> "RDS"
+                                                            | "Secondary" -> "SND"
+                                                            | "UndergroundConnection" -> "UGC"
+                                                            | "WeirSpillway" -> "WSW"
+                                                            | _ -> failwith $"subtype {cell} needs an infor code"
+                                                        $"{subtype} ({unit_type})"
+                                                    | _ -> cell
+                                                }
+                                        }
+                                }
+                        }
+                }
+
+            }
+        }
+    }
+
+
+let html_document =
+    html_element
+    |> Render.toHtmlDocString
+    |> HtmlDocument.Parse
+
+let publication_directory_path =
+    @"C:\Users\CollierB\OneDrive\OneDrive - Leon County Government\Publications"
+
+let documentation_directory_path =
+    Path.Combine(publication_directory_path, documentation_title.low_lined)
+
+Directory.CreateDirectory documentation_directory_path
+
+let documentation_date_stem = DateTime.Now.ToString("yyyy-MM-dd")
+
+let html_document_content = html_document.ToString()
+
+let html_document_path =
+    Path.Combine(documentation_directory_path, $"{documentation_date_stem}.html")
+
+File.WriteAllText(html_document_path, html_document_content)
+
+let docx_document_path =
+    Path.Combine(documentation_directory_path, $"{documentation_date_stem}.docx")
+
+let docx_document =
+    html_element
+    |> Render.toString
+    |> Render.toDocx docx_document_path
 
 LCG.print_stats ()
 // printfn "%s elapsed=%O" "transaction stopwatch:" stopwatch.Elapsed

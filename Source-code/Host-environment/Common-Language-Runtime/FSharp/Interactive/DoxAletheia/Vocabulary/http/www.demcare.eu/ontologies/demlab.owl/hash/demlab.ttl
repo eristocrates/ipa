@@ -1,0 +1,1967 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcam: <http://purl.org/dc/dcam/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix demlab: <http://www.demcare.eu/ontologies/demlab.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+dcam:VocabularyEncodingScheme a owl:Class.
+dc11:contributor a owl:AnnotationProperty.
+dc11:coverage a owl:AnnotationProperty.
+dc11:creator a owl:AnnotationProperty.
+dc11:format a owl:AnnotationProperty.
+dc11:identifier a owl:AnnotationProperty.
+dc11:language a owl:AnnotationProperty.
+dc11:publisher a owl:AnnotationProperty.
+dc11:relation a owl:AnnotationProperty.
+dc11:rights a owl:AnnotationProperty.
+dc11:source a owl:AnnotationProperty.
+dc11:subject a owl:AnnotationProperty.
+dc11:type a owl:AnnotationProperty.
+dcterms: dcterms:modified "2012-06-14"^^xsd:date;
+         dcterms:publisher <http://purl.org/dc/aboutdcmi#DCMI>;
+         dcterms:title "DCMI Metadata Terms - other"@en.
+dcterms:Agent dcterms:description "Examples of Agent include person, organization, and software agent."@en;
+              dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Agent-001>;
+              dcterms:issued "2008-01-14"^^xsd:date;
+              a dcterms:AgentClass,
+                owl:NamedIndividual,
+                owl:Class;
+              rdfs:comment "A resource that acts or has the power to act."@en;
+              rdfs:isDefinedBy dcterms:;
+              rdfs:label "Agent"@en.
+dcterms:AgentClass dcterms:description "Examples of Agent Class include groups seen as classes, such as students, women, charities, lecturers."@en;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#AgentClass-003>;
+                   dcterms:issued "2008-01-14"^^xsd:date;
+                   dcterms:modified "2012-06-14"^^xsd:date;
+                   a owl:Class;
+                   rdfs:comment "A group of agents."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Agent Class"@en;
+                   rdfs:subClassOf rdfs:Class.
+dcterms:BibliographicResource dcterms:hasVersion <http://dublincore.org/usage/terms/history/#BibliographicResource-001>;
+                              dcterms:issued "2008-01-14"^^xsd:date;
+                              a owl:Class;
+                              rdfs:comment "A book, article, or other documentary resource."@en;
+                              rdfs:isDefinedBy dcterms:;
+                              rdfs:label "Bibliographic Resource"@en.
+dcterms:Box dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Box-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a rdfs:Datatype;
+            rdfs:comment "The set of regions in space defined by their geographic coordinates according to the DCMI Box Encoding Scheme."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "DCMI Box"@en;
+            rdfs:seeAlso <http://dublincore.org/documents/dcmi-box/>.
+dcterms:DCMIType dcterms:hasVersion <http://dublincore.org/usage/terms/history/#DCMIType-005>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2012-06-14"^^xsd:date;
+                 a dcam:VocabularyEncodingScheme,
+                   owl:NamedIndividual;
+                 rdfs:comment "The set of classes specified by the DCMI Type Vocabulary, used to categorize the nature or genre of the resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "DCMI Type Vocabulary"@en;
+                 rdfs:seeAlso dcmitype:.
+dcterms:DDC dcterms:hasVersion <http://dublincore.org/usage/terms/history/#DDC-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a dcam:VocabularyEncodingScheme,
+              owl:NamedIndividual;
+            rdfs:comment "The set of conceptual resources specified by the Dewey Decimal Classification."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "DDC"@en;
+            rdfs:seeAlso <http://www.oclc.org/dewey/>.
+dcterms:FileFormat dcterms:description "Examples include the formats defined by the list of Internet Media Types."@en;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#FileFormat-001>;
+                   dcterms:issued "2008-01-14"^^xsd:date;
+                   a owl:Class;
+                   rdfs:comment "A digital resource format."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "File Format"@en;
+                   rdfs:subClassOf dcterms:MediaType.
+dcterms:Frequency dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Frequency-001>;
+                  dcterms:issued "2008-01-14"^^xsd:date;
+                  a owl:Class;
+                  rdfs:comment "A rate at which something recurs."@en;
+                  rdfs:isDefinedBy dcterms:;
+                  rdfs:label "Frequency"@en.
+dcterms:IMT dcterms:hasVersion <http://dublincore.org/usage/terms/history/#IMT-004>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a dcam:VocabularyEncodingScheme,
+              owl:NamedIndividual;
+            rdfs:comment "The set of media types specified by the Internet Assigned Numbers Authority."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "IMT"@en;
+            rdfs:seeAlso <http://www.iana.org/assignments/media-types/>.
+dcterms:ISO3166 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#ISO3166-004>;
+                dcterms:issued "2000-07-11"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a rdfs:Datatype;
+                rdfs:comment "The set of codes listed in ISO 3166-1 for the representation of names of countries."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "ISO 3166"@en;
+                rdfs:seeAlso <http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html>.
+dcterms:ISO639-2 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#ISO639-2-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a rdfs:Datatype;
+                 rdfs:comment "The three-letter alphabetic codes listed in ISO639-2 for the representation of names of languages."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "ISO 639-2"@en;
+                 rdfs:seeAlso <http://lcweb.loc.gov/standards/iso639-2/langhome.html>.
+dcterms:ISO639-3 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#ISO639-3-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 a rdfs:Datatype;
+                 rdfs:comment "The set of three-letter codes listed in ISO 639-3 for the representation of names of languages."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "ISO 639-3"@en;
+                 rdfs:seeAlso <http://www.sil.org/iso639-3/>.
+dcterms:Jurisdiction dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Jurisdiction-001>;
+                     dcterms:issued "2008-01-14"^^xsd:date;
+                     a owl:Class;
+                     rdfs:comment "The extent or range of judicial, law enforcement, or other authority."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Jurisdiction"@en;
+                     rdfs:subClassOf dcterms:LocationPeriodOrJurisdiction.
+dcterms:LCC dcterms:hasVersion <http://dublincore.org/usage/terms/history/#LCC-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a dcam:VocabularyEncodingScheme,
+              owl:NamedIndividual;
+            rdfs:comment "The set of conceptual resources specified by the Library of Congress Classification."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "LCC"@en;
+            rdfs:seeAlso <http://lcweb.loc.gov/catdir/cpso/lcco/lcco.html>.
+dcterms:LCSH dcterms:hasVersion <http://dublincore.org/usage/terms/history/#LCSH-003>;
+             dcterms:issued "2000-07-11"^^xsd:date;
+             dcterms:modified "2008-01-14"^^xsd:date;
+             a dcam:VocabularyEncodingScheme,
+               owl:NamedIndividual;
+             rdfs:comment "The set of labeled concepts specified by the Library of Congress Subject Headings."@en;
+             rdfs:isDefinedBy dcterms:;
+             rdfs:label "LCSH"@en.
+dcterms:LicenseDocument dcterms:hasVersion <http://dublincore.org/usage/terms/history/#LicenseDocument-001>;
+                        dcterms:issued "2008-01-14"^^xsd:date;
+                        a owl:Class;
+                        rdfs:comment "A legal document giving official permission to do something with a Resource."@en;
+                        rdfs:isDefinedBy dcterms:;
+                        rdfs:label "License Document"@en;
+                        rdfs:subClassOf dcterms:RightsStatement.
+dcterms:LinguisticSystem dcterms:description "Examples include written, spoken, sign, and computer languages."@en;
+                         dcterms:hasVersion <http://dublincore.org/usage/terms/history/#LinguisticSystem-001>;
+                         dcterms:issued "2008-01-14"^^xsd:date;
+                         a owl:Class;
+                         rdfs:comment "A system of signs, symbols, sounds, gestures, or rules used in communication."@en;
+                         rdfs:isDefinedBy dcterms:;
+                         rdfs:label "Linguistic System"@en.
+dcterms:Location dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Location-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 a owl:Class;
+                 rdfs:comment "A spatial region or named place."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Location"@en;
+                 rdfs:subClassOf dcterms:LocationPeriodOrJurisdiction.
+dcterms:LocationPeriodOrJurisdiction dcterms:hasVersion <http://dublincore.org/usage/terms/history/#LocationPeriodOrJurisdiction-001>;
+                                     dcterms:issued "2008-01-14"^^xsd:date;
+                                     a owl:Class;
+                                     rdfs:comment "A location, period of time, or jurisdiction."@en;
+                                     rdfs:isDefinedBy dcterms:;
+                                     rdfs:label "Location, Period, or Jurisdiction"@en.
+dcterms:MESH dcterms:hasVersion <http://dublincore.org/usage/terms/history/#MESH-003>;
+             dcterms:issued "2000-07-11"^^xsd:date;
+             dcterms:modified "2008-01-14"^^xsd:date;
+             a dcam:VocabularyEncodingScheme,
+               owl:NamedIndividual;
+             rdfs:comment "The set of labeled concepts specified by the Medical Subject Headings."@en;
+             rdfs:isDefinedBy dcterms:;
+             rdfs:label "MeSH"@en;
+             rdfs:seeAlso <http://www.nlm.nih.gov/mesh/meshhome.html>.
+dcterms:MediaType dcterms:hasVersion <http://dublincore.org/usage/terms/history/#MediaType-001>;
+                  dcterms:issued "2008-01-14"^^xsd:date;
+                  a owl:Class;
+                  rdfs:comment "A file format or physical medium."@en;
+                  rdfs:isDefinedBy dcterms:;
+                  rdfs:label "Media Type"@en;
+                  rdfs:subClassOf dcterms:MediaTypeOrExtent.
+dcterms:MediaTypeOrExtent dcterms:hasVersion <http://dublincore.org/usage/terms/history/#MediaTypeOrExtent-001>;
+                          dcterms:issued "2008-01-14"^^xsd:date;
+                          a owl:Class;
+                          rdfs:comment "A media type or extent."@en;
+                          rdfs:isDefinedBy dcterms:;
+                          rdfs:label "Media Type or Extent"@en.
+dcterms:MethodOfAccrual dcterms:hasVersion <http://dublincore.org/usage/terms/history/#MethodOfAccrual-001>;
+                        dcterms:issued "2008-01-14"^^xsd:date;
+                        a owl:Class;
+                        rdfs:comment "A method by which resources are added to a collection."@en;
+                        rdfs:isDefinedBy dcterms:;
+                        rdfs:label "Method of Accrual"@en.
+dcterms:MethodOfInstruction dcterms:hasVersion <http://dublincore.org/usage/terms/history/#MethodOfInstruction-001>;
+                            dcterms:issued "2008-01-14"^^xsd:date;
+                            a owl:Class;
+                            rdfs:comment "A process that is used to engender knowledge, attitudes, and skills."@en;
+                            rdfs:isDefinedBy dcterms:;
+                            rdfs:label "Method of Instruction"@en.
+dcterms:NLM dcterms:hasVersion <http://dublincore.org/usage/terms/history/#NLM-002>;
+            dcterms:issued "2005-06-13"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a dcam:VocabularyEncodingScheme,
+              owl:NamedIndividual;
+            rdfs:comment "The set of conceptual resources specified by the National Library of Medicine Classification."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "NLM"@en;
+            rdfs:seeAlso <http://wwwcf.nlm.nih.gov/class/>.
+dcterms:Period dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Period-003>;
+               dcterms:issued "2000-07-11"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a rdfs:Datatype;
+               rdfs:comment "The set of time intervals defined by their limits according to the DCMI Period Encoding Scheme."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "DCMI Period"@en;
+               rdfs:seeAlso <http://dublincore.org/documents/dcmi-period/>.
+dcterms:PeriodOfTime dcterms:hasVersion <http://dublincore.org/usage/terms/history/#PeriodOfTime-001>;
+                     dcterms:issued "2008-01-14"^^xsd:date;
+                     a owl:Class;
+                     rdfs:comment "An interval of time that is named or defined by its start and end dates."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Period of Time"@en;
+                     rdfs:subClassOf dcterms:LocationPeriodOrJurisdiction.
+dcterms:PhysicalMedium dcterms:description "Examples include paper, canvas, or DVD."@en;
+                       dcterms:hasVersion <http://dublincore.org/usage/terms/history/#PhysicalMedium-001>;
+                       dcterms:issued "2008-01-14"^^xsd:date;
+                       a owl:Class;
+                       rdfs:comment "A physical material or carrier."@en;
+                       rdfs:isDefinedBy dcterms:;
+                       rdfs:label "Physical Medium"@en;
+                       rdfs:subClassOf dcterms:MediaType.
+dcterms:PhysicalResource dcterms:hasVersion <http://dublincore.org/usage/terms/history/#PhysicalResource-001>;
+                         dcterms:issued "2008-01-14"^^xsd:date;
+                         a owl:Class;
+                         rdfs:comment "A material thing."@en;
+                         rdfs:isDefinedBy dcterms:;
+                         rdfs:label "Physical Resource"@en.
+dcterms:Point dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Point-003>;
+              dcterms:issued "2000-07-11"^^xsd:date;
+              dcterms:modified "2008-01-14"^^xsd:date;
+              a rdfs:Datatype;
+              rdfs:comment "The set of points in space defined by their geographic coordinates according to the DCMI Point Encoding Scheme."@en;
+              rdfs:isDefinedBy dcterms:;
+              rdfs:label "DCMI Point"@en;
+              rdfs:seeAlso <http://dublincore.org/documents/dcmi-point/>.
+dcterms:Policy dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Policy-001>;
+               dcterms:issued "2008-01-14"^^xsd:date;
+               a owl:Class;
+               rdfs:comment "A plan or course of action by an authority, intended to influence and determine decisions, actions, and other matters."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Policy"@en.
+dcterms:ProvenanceStatement dcterms:hasVersion <http://dublincore.org/usage/terms/history/#ProvenanceStatement-001>;
+                            dcterms:issued "2008-01-14"^^xsd:date;
+                            a owl:Class;
+                            rdfs:comment "A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation."@en;
+                            rdfs:isDefinedBy dcterms:;
+                            rdfs:label "Provenance Statement"@en.
+dcterms:RFC1766 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#RFC1766-003>;
+                dcterms:issued "2000-07-11"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a rdfs:Datatype;
+                rdfs:comment "The set of tags, constructed according to RFC 1766, for the identification of languages."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "RFC 1766"@en;
+                rdfs:seeAlso <http://www.ietf.org/rfc/rfc1766.txt>.
+dcterms:RFC3066 dcterms:description "RFC 3066 has been obsoleted by RFC 4646."@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#RFC3066-002>;
+                dcterms:issued "2002-07-13"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a rdfs:Datatype;
+                rdfs:comment "The set of tags constructed according to RFC 3066 for the identification of languages."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "RFC 3066"@en;
+                rdfs:seeAlso <http://www.ietf.org/rfc/rfc3066.txt>.
+dcterms:RFC4646 dcterms:description "RFC 4646 obsoletes RFC 3066."@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#RFC4646-001>;
+                dcterms:issued "2008-01-14"^^xsd:date;
+                a rdfs:Datatype;
+                rdfs:comment "The set of tags constructed according to RFC 4646 for the identification of languages."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "RFC 4646"@en;
+                rdfs:seeAlso <http://www.ietf.org/rfc/rfc4646.txt>.
+dcterms:RFC5646 dcterms:description "RFC 5646 obsoletes RFC 4646."@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#RFC5646-001>;
+                dcterms:issued "2010-10-11"^^xsd:date;
+                a rdfs:Datatype;
+                rdfs:comment "The set of tags constructed according to RFC 5646 for the identification of languages."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "RFC 5646"@en;
+                rdfs:seeAlso <http://www.ietf.org/rfc/rfc5646.txt>.
+dcterms:RightsStatement dcterms:hasVersion <http://dublincore.org/usage/terms/history/#RightsStatement-001>;
+                        dcterms:issued "2008-01-14"^^xsd:date;
+                        a owl:Class;
+                        rdfs:comment "A statement about the intellectual property rights (IPR) held in or over a Resource, a legal document giving official permission to do something with a resource, or a statement about access rights."@en;
+                        rdfs:isDefinedBy dcterms:;
+                        rdfs:label "Rights Statement"@en.
+dcterms:SizeOrDuration dcterms:description "Examples include a number of pages, a specification of length, width, and breadth, or a period in hours, minutes, and seconds."@en;
+                       dcterms:hasVersion <http://dublincore.org/usage/terms/history/#SizeOrDuration-001>;
+                       dcterms:issued "2008-01-14"^^xsd:date;
+                       a owl:Class;
+                       rdfs:comment "A dimension or extent, or a time taken to play or execute."@en;
+                       rdfs:isDefinedBy dcterms:;
+                       rdfs:label "Size or Duration"@en;
+                       rdfs:subClassOf dcterms:MediaTypeOrExtent.
+dcterms:Standard dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Standard-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 a owl:Class;
+                 rdfs:comment "A basis for comparison; a reference point against which other things can be evaluated."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Standard"@en.
+dcterms:TGN dcterms:hasVersion <http://dublincore.org/usage/terms/history/#TGN-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a dcam:VocabularyEncodingScheme,
+              owl:NamedIndividual;
+            rdfs:comment "The set of places specified by the Getty Thesaurus of Geographic Names."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "TGN"@en;
+            rdfs:seeAlso <http://www.getty.edu/research/tools/vocabulary/tgn/index.html>.
+dcterms:UDC dcterms:hasVersion <http://dublincore.org/usage/terms/history/#UDC-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a dcam:VocabularyEncodingScheme,
+              owl:NamedIndividual;
+            rdfs:comment "The set of conceptual resources specified by the Universal Decimal Classification."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "UDC"@en;
+            rdfs:seeAlso <http://www.udcc.org/>.
+dcterms:URI dcterms:hasVersion <http://dublincore.org/usage/terms/history/#URI-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a rdfs:Datatype;
+            rdfs:comment "The set of identifiers constructed according to the generic syntax for Uniform Resource Identifiers as specified by the Internet Engineering Task Force."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "URI"@en;
+            rdfs:seeAlso <http://www.ietf.org/rfc/rfc3986.txt>.
+dcterms:W3CDTF dcterms:hasVersion <http://dublincore.org/usage/terms/history/#W3CDTF-003>;
+               dcterms:issued "2000-07-11"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a rdfs:Datatype;
+               rdfs:comment "The set of dates and times constructed according to the W3C Date and Time Formats Specification."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "W3C-DTF"@en;
+               rdfs:seeAlso <http://www.w3.org/TR/NOTE-datetime>.
+dcterms:abstract dcterms:hasVersion <http://dublincore.org/usage/terms/history/#abstract-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:AnnotationProperty;
+                 rdfs:comment "A summary of the resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Abstract"@en;
+                 rdfs:subPropertyOf dcterms:description,
+                                    dc11:description.
+dcterms:accessRights dcterms:description "Access Rights may include information regarding access or restrictions based on privacy, security, or other policies."@en;
+                     dcterms:hasVersion <http://dublincore.org/usage/terms/history/#accessRights-002>;
+                     dcterms:issued "2003-02-15"^^xsd:date;
+                     dcterms:modified "2008-01-14"^^xsd:date;
+                     a owl:ObjectProperty,
+                       owl:AnnotationProperty;
+                     rdfs:comment "Information about who can access the resource or an indication of its security status."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Access Rights"@en;
+                     rdfs:range dcterms:RightsStatement;
+                     rdfs:subPropertyOf dc11:rights,
+                                        dcterms:rights.
+dcterms:accrualMethod dcterms:hasVersion <http://dublincore.org/usage/terms/history/#accrualMethod-003>;
+                      dcterms:issued "2005-06-13"^^xsd:date;
+                      dcterms:modified "2010-10-11"^^xsd:date;
+                      a owl:ObjectProperty,
+                        owl:AnnotationProperty;
+                      rdfs:comment "The method by which items are added to a collection."@en;
+                      rdfs:domain dcmitype:Collection;
+                      rdfs:isDefinedBy dcterms:;
+                      rdfs:label "Accrual Method"@en;
+                      rdfs:range dcterms:MethodOfAccrual.
+dcterms:accrualPeriodicity dcterms:hasVersion <http://dublincore.org/usage/terms/history/#accrualPeriodicity-003>;
+                           dcterms:issued "2005-06-13"^^xsd:date;
+                           dcterms:modified "2010-10-11"^^xsd:date;
+                           a owl:AnnotationProperty,
+                             owl:ObjectProperty;
+                           rdfs:comment "The frequency with which items are added to a collection."@en;
+                           rdfs:domain dcmitype:Collection;
+                           rdfs:isDefinedBy dcterms:;
+                           rdfs:label "Accrual Periodicity"@en;
+                           rdfs:range dcterms:Frequency.
+dcterms:accrualPolicy dcterms:hasVersion <http://dublincore.org/usage/terms/history/#accrualPolicy-003>;
+                      dcterms:issued "2005-06-13"^^xsd:date;
+                      dcterms:modified "2010-10-11"^^xsd:date;
+                      a owl:AnnotationProperty,
+                        owl:ObjectProperty;
+                      rdfs:comment "The policy governing the addition of items to a collection."@en;
+                      rdfs:domain dcmitype:Collection;
+                      rdfs:isDefinedBy dcterms:;
+                      rdfs:label "Accrual Policy"@en;
+                      rdfs:range dcterms:Policy.
+dcterms:alternative dcterms:description "The distinction between titles and alternative titles is application-specific."@en;
+                    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#alternative-003>;
+                    dcterms:issued "2000-07-11"^^xsd:date;
+                    dcterms:modified "2010-10-11"^^xsd:date;
+                    a owl:AnnotationProperty,
+                      owl:DatatypeProperty;
+                    rdfs:comment "An alternative name for the resource."@en;
+                    rdfs:isDefinedBy dcterms:;
+                    rdfs:label "Alternative Title"@en;
+                    rdfs:range rdfs:Literal;
+                    rdfs:subPropertyOf dcterms:title,
+                                       dc11:title.
+dcterms:audience dcterms:hasVersion <http://dublincore.org/usage/terms/history/#audience-003>;
+                 dcterms:issued "2001-05-21"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:ObjectProperty;
+                 rdfs:comment "A class of entity for whom the resource is intended or useful."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Audience"@en;
+                 rdfs:range dcterms:AgentClass.
+dcterms:available dcterms:hasVersion <http://dublincore.org/usage/terms/history/#available-003>;
+                  dcterms:issued "2000-07-11"^^xsd:date;
+                  dcterms:modified "2008-01-14"^^xsd:date;
+                  a owl:AnnotationProperty,
+                    owl:DatatypeProperty;
+                  rdfs:comment "Date (often a range) that the resource became or will become available."@en;
+                  rdfs:isDefinedBy dcterms:;
+                  rdfs:label "Date Available"@en;
+                  rdfs:range rdfs:Literal;
+                  rdfs:subPropertyOf dc11:date,
+                                     dcterms:date.
+dcterms:bibliographicCitation dcterms:description "Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible."@en;
+                              dcterms:hasVersion <http://dublincore.org/usage/terms/history/#bibliographicCitation-002>;
+                              dcterms:issued "2003-02-15"^^xsd:date;
+                              dcterms:modified "2008-01-14"^^xsd:date;
+                              a owl:AnnotationProperty,
+                                owl:DatatypeProperty;
+                              rdfs:comment "A bibliographic reference for the resource."@en;
+                              rdfs:domain dcterms:BibliographicResource;
+                              rdfs:isDefinedBy dcterms:;
+                              rdfs:label "Bibliographic Citation"@en;
+                              rdfs:range rdfs:Literal;
+                              rdfs:subPropertyOf dc11:identifier,
+                                                 dcterms:identifier.
+dcterms:conformsTo dcterms:hasVersion <http://dublincore.org/usage/terms/history/#conformsTo-003>;
+                   dcterms:issued "2001-05-21"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:ObjectProperty,
+                     owl:AnnotationProperty;
+                   rdfs:comment "An established standard to which the described resource conforms."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Conforms To"@en;
+                   rdfs:range dcterms:Standard;
+                   rdfs:subPropertyOf dc11:relation,
+                                      dcterms:relation.
+dcterms:contributor dcterms:description "Examples of a Contributor include a person, an organization, or a service."@en;
+                    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#contributorT-001>;
+                    dcterms:issued "2008-01-14"^^xsd:date;
+                    dcterms:modified "2010-10-11"^^xsd:date;
+                    a owl:AnnotationProperty,
+                      owl:ObjectProperty;
+                    rdfs:comment "An entity responsible for making contributions to the resource."@en;
+                    rdfs:isDefinedBy dcterms:;
+                    rdfs:label "Contributor"@en;
+                    rdfs:range dcterms:Agent;
+                    rdfs:subPropertyOf dc11:contributor.
+dcterms:coverage dcterms:description "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN]. Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges."@en;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#coverageT-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:ObjectProperty,
+                   owl:AnnotationProperty;
+                 rdfs:comment "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Coverage"@en;
+                 rdfs:range dcterms:LocationPeriodOrJurisdiction;
+                 rdfs:subPropertyOf dc11:coverage.
+dcterms:created dcterms:hasVersion <http://dublincore.org/usage/terms/history/#created-003>;
+                dcterms:issued "2000-07-11"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a owl:DatatypeProperty,
+                  owl:AnnotationProperty;
+                rdfs:comment "Date of creation of the resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "Date Created"@en;
+                rdfs:range rdfs:Literal;
+                rdfs:subPropertyOf dc11:date,
+                                   dcterms:date.
+dcterms:creator dcterms:description "Examples of a Creator include a person, an organization, or a service."@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#creatorT-002>;
+                dcterms:issued "2008-01-14"^^xsd:date;
+                dcterms:modified "2010-10-11"^^xsd:date;
+                a owl:ObjectProperty,
+                  owl:AnnotationProperty;
+                rdfs:comment "An entity primarily responsible for making the resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "Creator"@en;
+                rdfs:range dcterms:Agent;
+                rdfs:subPropertyOf dcterms:contributor,
+                                   dc11:creator.
+dcterms:date dcterms:description "Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."@en;
+             dcterms:hasVersion <http://dublincore.org/usage/terms/history/#dateT-001>;
+             dcterms:issued "2008-01-14"^^xsd:date;
+             dcterms:modified "2008-01-14"^^xsd:date;
+             a owl:DatatypeProperty,
+               owl:AnnotationProperty;
+             rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en;
+             rdfs:isDefinedBy dcterms:;
+             rdfs:label "Date"@en;
+             rdfs:range rdfs:Literal;
+             rdfs:subPropertyOf dc11:date.
+dcterms:dateAccepted dcterms:description "Examples of resources to which a Date Accepted may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal)."@en;
+                     dcterms:hasVersion <http://dublincore.org/usage/terms/history/#dateAccepted-002>;
+                     dcterms:issued "2002-07-13"^^xsd:date;
+                     dcterms:modified "2008-01-14"^^xsd:date;
+                     a owl:DatatypeProperty,
+                       owl:AnnotationProperty;
+                     rdfs:comment "Date of acceptance of the resource."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Date Accepted"@en;
+                     rdfs:range rdfs:Literal;
+                     rdfs:subPropertyOf dc11:date,
+                                        dcterms:date.
+dcterms:dateCopyrighted dcterms:hasVersion <http://dublincore.org/usage/terms/history/#dateCopyrighted-002>;
+                        dcterms:issued "2002-07-13"^^xsd:date;
+                        dcterms:modified "2008-01-14"^^xsd:date;
+                        a owl:DatatypeProperty,
+                          owl:AnnotationProperty;
+                        rdfs:comment "Date of copyright."@en;
+                        rdfs:isDefinedBy dcterms:;
+                        rdfs:label "Date Copyrighted"@en;
+                        rdfs:range rdfs:Literal;
+                        rdfs:subPropertyOf dcterms:date,
+                                           dc11:date.
+dcterms:dateSubmitted dcterms:description "Examples of resources to which a Date Submitted may be relevant are a thesis (submitted to a university department) or an article (submitted to a journal)."@en;
+                      dcterms:hasVersion <http://dublincore.org/usage/terms/history/#dateSubmitted-002>;
+                      dcterms:issued "2002-07-13"^^xsd:date;
+                      dcterms:modified "2008-01-14"^^xsd:date;
+                      a owl:DatatypeProperty,
+                        owl:AnnotationProperty;
+                      rdfs:comment "Date of submission of the resource."@en;
+                      rdfs:isDefinedBy dcterms:;
+                      rdfs:label "Date Submitted"@en;
+                      rdfs:range rdfs:Literal;
+                      rdfs:subPropertyOf dc11:date,
+                                         dcterms:date.
+dcterms:description dcterms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en;
+                    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#descriptionT-001>;
+                    dcterms:issued "2008-01-14"^^xsd:date;
+                    dcterms:modified "2008-01-14"^^xsd:date;
+                    a owl:AnnotationProperty;
+                    rdfs:comment "An account of the resource."@en;
+                    rdfs:isDefinedBy dcterms:;
+                    rdfs:label "Description"@en;
+                    rdfs:subPropertyOf dc11:description.
+dcterms:educationLevel dcterms:hasVersion <http://dublincore.org/usage/terms/history/#educationLevel-002>;
+                       dcterms:issued "2002-07-13"^^xsd:date;
+                       dcterms:modified "2008-01-14"^^xsd:date;
+                       a owl:AnnotationProperty,
+                         owl:ObjectProperty;
+                       rdfs:comment "A class of entity, defined in terms of progression through an educational or training context, for which the described resource is intended."@en;
+                       rdfs:isDefinedBy dcterms:;
+                       rdfs:label "Audience Education Level"@en;
+                       rdfs:range dcterms:AgentClass;
+                       rdfs:subPropertyOf dcterms:audience.
+dcterms:extent dcterms:hasVersion <http://dublincore.org/usage/terms/history/#extent-003>;
+               dcterms:issued "2000-07-11"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:ObjectProperty,
+                 owl:AnnotationProperty;
+               rdfs:comment "The size or duration of the resource."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Extent"@en;
+               rdfs:range dcterms:SizeOrDuration;
+               rdfs:subPropertyOf dc11:format,
+                                  dcterms:format.
+dcterms:format dcterms:description "Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."@en;
+               dcterms:hasVersion <http://dublincore.org/usage/terms/history/#formatT-001>;
+               dcterms:issued "2008-01-14"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:AnnotationProperty,
+                 owl:ObjectProperty;
+               rdfs:comment "The file format, physical medium, or dimensions of the resource."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Format"@en;
+               rdfs:range dcterms:MediaTypeOrExtent;
+               rdfs:subPropertyOf dc11:format.
+dcterms:hasFormat dcterms:hasVersion <http://dublincore.org/usage/terms/history/#hasFormat-003>;
+                  dcterms:issued "2000-07-11"^^xsd:date;
+                  dcterms:modified "2008-01-14"^^xsd:date;
+                  a owl:AnnotationProperty;
+                  rdfs:comment "A related resource that is substantially the same as the pre-existing described resource, but in another format."@en;
+                  rdfs:isDefinedBy dcterms:;
+                  rdfs:label "Has Format"@en;
+                  rdfs:subPropertyOf dcterms:relation,
+                                     dc11:relation;
+                  skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:hasPart dcterms:hasVersion <http://dublincore.org/usage/terms/history/#hasPart-003>;
+                dcterms:issued "2000-07-11"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a owl:AnnotationProperty;
+                rdfs:comment "A related resource that is included either physically or logically in the described resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "Has Part"@en;
+                rdfs:subPropertyOf dc11:relation,
+                                   dcterms:relation;
+                skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:hasVersion dcterms:hasVersion <http://dublincore.org/usage/terms/history/#hasVersion-003>;
+                   dcterms:issued "2000-07-11"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:AnnotationProperty;
+                   rdfs:comment "A related resource that is a version, edition, or adaptation of the described resource."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Has Version"@en;
+                   rdfs:subPropertyOf dc11:relation,
+                                      dcterms:relation;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:identifier dcterms:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system."@en;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#identifierT-001>;
+                   dcterms:issued "2008-01-14"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:DatatypeProperty,
+                     owl:AnnotationProperty;
+                   rdfs:comment "An unambiguous reference to the resource within a given context."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Identifier"@en;
+                   rdfs:range rdfs:Literal;
+                   rdfs:subPropertyOf dc11:identifier.
+dcterms:instructionalMethod dcterms:description "Instructional Method will typically include ways of presenting instructional materials or conducting instructional activities, patterns of learner-to-learner and learner-to-instructor interactions, and mechanisms by which group and individual levels of learning are measured.  Instructional methods include all aspects of the instruction and learning processes from planning and implementation through evaluation and feedback."@en;
+                            dcterms:hasVersion <http://dublincore.org/usage/terms/history/#instructionalMethod-002>;
+                            dcterms:issued "2005-06-13"^^xsd:date;
+                            dcterms:modified "2008-01-14"^^xsd:date;
+                            a owl:ObjectProperty;
+                            rdfs:comment "A process, used to engender knowledge, attitudes and skills, that the described resource is designed to support."@en;
+                            rdfs:isDefinedBy dcterms:;
+                            rdfs:label "Instructional Method"@en;
+                            rdfs:range dcterms:MethodOfInstruction.
+dcterms:isFormatOf dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isFormatOf-003>;
+                   dcterms:issued "2000-07-11"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:AnnotationProperty;
+                   rdfs:comment "A related resource that is substantially the same as the described resource, but in another format."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Is Format Of"@en;
+                   rdfs:subPropertyOf dc11:relation,
+                                      dcterms:relation;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:isPartOf dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isPartOf-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:AnnotationProperty;
+                 rdfs:comment "A related resource in which the described resource is physically or logically included."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Is Part Of"@en;
+                 rdfs:subPropertyOf dc11:relation,
+                                    dcterms:relation;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:isReferencedBy dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isReferencedBy-003>;
+                       dcterms:issued "2000-07-11"^^xsd:date;
+                       dcterms:modified "2008-01-14"^^xsd:date;
+                       a owl:AnnotationProperty;
+                       rdfs:comment "A related resource that references, cites, or otherwise points to the described resource."@en;
+                       rdfs:isDefinedBy dcterms:;
+                       rdfs:label "Is Referenced By"@en;
+                       rdfs:subPropertyOf dc11:relation,
+                                          dcterms:relation;
+                       skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:isReplacedBy dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isReplacedBy-003>;
+                     dcterms:issued "2000-07-11"^^xsd:date;
+                     dcterms:modified "2008-01-14"^^xsd:date;
+                     a owl:AnnotationProperty;
+                     rdfs:comment "A related resource that supplants, displaces, or supersedes the described resource."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Is Replaced By"@en;
+                     rdfs:subPropertyOf dc11:relation,
+                                        dcterms:relation;
+                     skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:isRequiredBy dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isRequiredBy-003>;
+                     dcterms:issued "2000-07-11"^^xsd:date;
+                     dcterms:modified "2008-01-14"^^xsd:date;
+                     a owl:AnnotationProperty;
+                     rdfs:comment "A related resource that requires the described resource to support its function, delivery, or coherence."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Is Required By"@en;
+                     rdfs:subPropertyOf dc11:relation,
+                                        dcterms:relation;
+                     skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:isVersionOf dcterms:description "Changes in version imply substantive changes in content rather than differences in format."@en;
+                    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isVersionOf-003>;
+                    dcterms:issued "2000-07-11"^^xsd:date;
+                    dcterms:modified "2008-01-14"^^xsd:date;
+                    a owl:AnnotationProperty;
+                    rdfs:comment "A related resource of which the described resource is a version, edition, or adaptation."@en;
+                    rdfs:isDefinedBy dcterms:;
+                    rdfs:label "Is Version Of"@en;
+                    rdfs:subPropertyOf dcterms:relation,
+                                       dc11:relation;
+                    skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:issued dcterms:hasVersion <http://dublincore.org/usage/terms/history/#issued-003>;
+               dcterms:issued "2000-07-11"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:DatatypeProperty,
+                 owl:AnnotationProperty;
+               rdfs:comment "Date of formal issuance (e.g., publication) of the resource."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Date Issued"@en;
+               rdfs:range rdfs:Literal;
+               rdfs:subPropertyOf dcterms:date,
+                                  dc11:date.
+dcterms:language dcterms:description "Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]."@en;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#languageT-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:AnnotationProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment "A language of the resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Language"@en;
+                 rdfs:range dcterms:LinguisticSystem;
+                 rdfs:subPropertyOf dc11:language.
+dcterms:license dcterms:hasVersion <http://dublincore.org/usage/terms/history/#license-002>;
+                dcterms:issued "2004-06-14"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a owl:ObjectProperty,
+                  owl:AnnotationProperty;
+                rdfs:comment "A legal document giving official permission to do something with the resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "License"@en;
+                rdfs:range dcterms:LicenseDocument;
+                rdfs:subPropertyOf dc11:rights,
+                                   dcterms:rights.
+dcterms:mediator dcterms:description "In an educational context, a mediator might be a parent, teacher, teaching assistant, or care-giver."@en;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#mediator-003>;
+                 dcterms:issued "2001-05-21"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:ObjectProperty,
+                   owl:AnnotationProperty;
+                 rdfs:comment "An entity that mediates access to the resource and for whom the resource is intended or useful."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Mediator"@en;
+                 rdfs:range dcterms:AgentClass;
+                 rdfs:subPropertyOf dcterms:audience.
+dcterms:medium dcterms:hasVersion <http://dublincore.org/usage/terms/history/#medium-003>;
+               dcterms:issued "2000-07-11"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:ObjectProperty,
+                 owl:AnnotationProperty;
+               rdfs:comment "The material or physical carrier of the resource."@en;
+               rdfs:domain dcterms:PhysicalResource;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Medium"@en;
+               rdfs:range dcterms:PhysicalMedium;
+               rdfs:subPropertyOf dcterms:format,
+                                  dc11:format.
+dcterms:modified dcterms:hasVersion <http://dublincore.org/usage/terms/history/#modified-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:DatatypeProperty,
+                   owl:AnnotationProperty;
+                 rdfs:comment "Date on which the resource was changed."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Date Modified"@en;
+                 rdfs:range rdfs:Literal;
+                 rdfs:subPropertyOf dcterms:date,
+                                    dc11:date.
+dcterms:provenance dcterms:description "The statement may include a description of any changes successive custodians made to the resource."@en;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#provenance-002>;
+                   dcterms:issued "2004-09-20"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:ObjectProperty;
+                   rdfs:comment "A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Provenance"@en;
+                   rdfs:range dcterms:ProvenanceStatement.
+dcterms:publisher dcterms:description "Examples of a Publisher include a person, an organization, or a service."@en;
+                  dcterms:hasVersion <http://dublincore.org/usage/terms/history/#publisherT-001>;
+                  dcterms:issued "2008-01-14"^^xsd:date;
+                  dcterms:modified "2010-10-11"^^xsd:date;
+                  a owl:AnnotationProperty,
+                    owl:ObjectProperty;
+                  rdfs:comment "An entity responsible for making the resource available."@en;
+                  rdfs:isDefinedBy dcterms:;
+                  rdfs:label "Publisher"@en;
+                  rdfs:range dcterms:Agent;
+                  rdfs:subPropertyOf dc11:publisher.
+dcterms:references dcterms:hasVersion <http://dublincore.org/usage/terms/history/#references-003>;
+                   dcterms:issued "2000-07-11"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:AnnotationProperty;
+                   rdfs:comment "A related resource that is referenced, cited, or otherwise pointed to by the described resource."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "References"@en;
+                   rdfs:subPropertyOf dc11:relation,
+                                      dcterms:relation;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:relation dcterms:description "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#relationT-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:AnnotationProperty;
+                 rdfs:comment "A related resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Relation"@en;
+                 rdfs:subPropertyOf dc11:relation;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:replaces dcterms:hasVersion <http://dublincore.org/usage/terms/history/#replaces-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:AnnotationProperty;
+                 rdfs:comment "A related resource that is supplanted, displaced, or superseded by the described resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Replaces"@en;
+                 rdfs:subPropertyOf dc11:relation,
+                                    dcterms:relation;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:requires dcterms:hasVersion <http://dublincore.org/usage/terms/history/#requires-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:AnnotationProperty;
+                 rdfs:comment "A related resource that is required by the described resource to support its function, delivery, or coherence."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Requires"@en;
+                 rdfs:subPropertyOf dc11:relation,
+                                    dcterms:relation;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:rights dcterms:description "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."@en;
+               dcterms:hasVersion <http://dublincore.org/usage/terms/history/#rightsT-001>;
+               dcterms:issued "2008-01-14"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:AnnotationProperty,
+                 owl:ObjectProperty;
+               rdfs:comment "Information about rights held in and over the resource."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Rights"@en;
+               rdfs:range dcterms:RightsStatement;
+               rdfs:subPropertyOf dc11:rights.
+dcterms:rightsHolder dcterms:hasVersion <http://dublincore.org/usage/terms/history/#rightsHolder-002>;
+                     dcterms:issued "2004-06-14"^^xsd:date;
+                     dcterms:modified "2008-01-14"^^xsd:date;
+                     a owl:ObjectProperty;
+                     rdfs:comment "A person or organization owning or managing rights over the resource."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Rights Holder"@en;
+                     rdfs:range dcterms:Agent.
+dcterms:source dcterms:description "The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en;
+               dcterms:hasVersion <http://dublincore.org/usage/terms/history/#sourceT-001>;
+               dcterms:issued "2008-01-14"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:AnnotationProperty;
+               rdfs:comment "A related resource from which the described resource is derived."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Source"@en;
+               rdfs:subPropertyOf dc11:source,
+                                  dcterms:relation;
+               skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:spatial dcterms:hasVersion <http://dublincore.org/usage/terms/history/#spatial-003>;
+                dcterms:issued "2000-07-11"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a owl:ObjectProperty,
+                  owl:AnnotationProperty;
+                rdfs:comment "Spatial characteristics of the resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "Spatial Coverage"@en;
+                rdfs:range dcterms:Location;
+                rdfs:subPropertyOf dcterms:coverage,
+                                   dc11:coverage.
+dcterms:subject dcterms:description "Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary."@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#subjectT-002>;
+                dcterms:issued "2008-01-14"^^xsd:date;
+                dcterms:modified "2012-06-14"^^xsd:date;
+                a owl:AnnotationProperty;
+                rdfs:comment "The topic of the resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "Subject"@en;
+                rdfs:subPropertyOf dc11:subject;
+                skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:tableOfContents dcterms:hasVersion <http://dublincore.org/usage/terms/history/#tableOfContents-003>;
+                        dcterms:issued "2000-07-11"^^xsd:date;
+                        dcterms:modified "2008-01-14"^^xsd:date;
+                        a owl:AnnotationProperty;
+                        rdfs:comment "A list of subunits of the resource."@en;
+                        rdfs:isDefinedBy dcterms:;
+                        rdfs:label "Table Of Contents"@en;
+                        rdfs:subPropertyOf dcterms:description,
+                                           dc11:description.
+dcterms:temporal dcterms:hasVersion <http://dublincore.org/usage/terms/history/#temporal-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:AnnotationProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment "Temporal characteristics of the resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Temporal Coverage"@en;
+                 rdfs:range dcterms:PeriodOfTime;
+                 rdfs:subPropertyOf dcterms:coverage,
+                                    dc11:coverage.
+dcterms:title dcterms:hasVersion <http://dublincore.org/usage/terms/history/#titleT-002>;
+              dcterms:issued "2008-01-14"^^xsd:date;
+              dcterms:modified "2010-10-11"^^xsd:date;
+              a owl:DatatypeProperty,
+                owl:AnnotationProperty;
+              rdfs:comment "A name given to the resource."@en;
+              rdfs:isDefinedBy dcterms:;
+              rdfs:label "Title"@en;
+              rdfs:range rdfs:Literal;
+              rdfs:subPropertyOf dc11:title.
+dcterms:type dcterms:description "Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element."@en;
+             dcterms:hasVersion <http://dublincore.org/usage/terms/history/#typeT-001>;
+             dcterms:issued "2008-01-14"^^xsd:date;
+             dcterms:modified "2008-01-14"^^xsd:date;
+             a owl:AnnotationProperty,
+               owl:ObjectProperty;
+             rdfs:comment "The nature or genre of the resource."@en;
+             rdfs:isDefinedBy dcterms:;
+             rdfs:label "Type"@en;
+             rdfs:range rdfs:Class;
+             rdfs:subPropertyOf dc11:type.
+dcterms:valid dcterms:hasVersion <http://dublincore.org/usage/terms/history/#valid-003>;
+              dcterms:issued "2000-07-11"^^xsd:date;
+              dcterms:modified "2008-01-14"^^xsd:date;
+              a owl:AnnotationProperty,
+                owl:DatatypeProperty;
+              rdfs:comment "Date (often a range) of validity of a resource."@en;
+              rdfs:isDefinedBy dcterms:;
+              rdfs:label "Date Valid"@en;
+              rdfs:range rdfs:Literal;
+              rdfs:subPropertyOf dc11:date,
+                                 dcterms:date.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+<http://www.demcare.eu/ontologies/demlab.owl> ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
+                                              dc11:creator "Georgios Meditskos, Ioannis Kompatsiaris"@en;
+                                              dc11:description """The ontology has been developed in the framework of the Dem@Care project for representing the experimentation protocol towards diagnostic support and assessment of Dementia in a controlled environment. The aim of the protocol is to provide a brief overview of their health status of the participants during consultation (cognition, behaviours and function), and to correlate the system (sensor) data with the data collected using typical dementia care assessment tools.
+
+The ontology describes the basic Steps of the experimentation protocol (Directed Activities, Semi-directed Activities and Free Discussion with the Clinician), the Tasks that are involved, as well as the measurement types relevant to each Task. The defined protocol can be reused and further extended, adding new steps, tasks and measured data.
+
+Documentation regarding the ontology vocabulary can be found at http://www.demcare.eu/ontologies/demlab.html"""@en;
+                                              dcterms:date "2014-09-02";
+                                              dcterms:rights "This ontology is licensed under Creative Commons CC BY 3.0 It is developed in the framework of the Dem@Care project (http://www.demcare.eu/) and supported by the Information Technologies Institute (http://www.iti.gr) of the Centre for Research and Technology Hellas."@en;
+                                              dcterms:title "Dem@Care Lab Ontology for Dementia Assessment"@en;
+                                              vann:preferredNamespacePrefix "demlab";
+                                              a owl:Ontology,
+                                                owl:NamedIndividual;
+                                              rdfs:seeAlso "http://www.demcare.eu/",
+                                                           "http://www.demcare.eu/downloads/D8.1ExperimentationProtocols.pdf";
+                                              owl:imports <http://www.w3.org/2006/time>,
+                                                          foaf:;
+                                              owl:versionIRI <http://www.demcare.eu/ontologies/demlab.owl/1.0>;
+                                              owl:versionInfo 1.0.
+demlab:ActivityStatusType a owl:Class;
+                          owl:equivalentClass [owl:oneOf (demlab:completed
+                                                          demlab:incomplete
+                                                          demlab:omitted) ; 
+                                               a owl:Class],
+                                              [owl:oneOf (demlab:completed
+                                                          demlab:incomplete
+                                                          demlab:omitted) ; 
+                                               a owl:Class].
+demlab:AnswerPhoneTask a owl:Class;
+                       rdfs:comment """- The phone is scheduled to ring 10 minutes after the entering of the participant inside the room. 
+- During this task, the clinician explains that there is a mistake on the phone bill: the amount was wrong. Consequently, it is expected that the participant corrects his/her phone check and corrects the account balance (tasks normally established before the phone call according to the constraint)."""@en;
+                       rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:ArticulationControlTask a owl:Class;
+                               rdfs:comment """The participant is asked to pronounce repeatedly a predefined diadochokinetic “Pataka” token as rapid as possible stopping this action upon a sign by the clinician. The clinician will stop the action in 10 sec.
+
+This task is used for assessing:
+- Latency: time of latency between the end of instructions (stimulation) and the beginning of the task
+- Stress level
+- Voice: e.g. speech rate, pause rate etc."""@en;
+                               rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (demlab:LatencyData
+                                                                                demlab:StressData
+                                                                                demlab:VoiceData) ; 
+                                                                   a owl:Class] ; 
+                                                owl:onProperty demlab:measuredData ; 
+                                                a owl:Restriction],
+                                               [owl:allValuesFrom [owl:unionOf (demlab:LatencyData
+                                                                                demlab:StressData
+                                                                                demlab:VoiceData) ; 
+                                                                   a owl:Class] ; 
+                                                owl:onProperty demlab:measuredData ; 
+                                                a owl:Restriction],
+                                               demlab:DirectedTask.
+demlab:AutonomyAssessment a owl:Class;
+                          rdfs:comment "Autonomy is assessed based on the performance of the participant during the SemiDirectedActivitiesStep. The property iadl_e (Instrumental Activities of Daily Living for Elderly) can be used to quantify autonomy"@en;
+                          rdfs:seeAlso demlab:iadl_e,
+                                       demlab:SemiDirectedActivitiesStep;
+                          rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                           owl:onProperty demlab:iadl_e ; 
+                                           a owl:Restriction],
+                                          [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                           owl:onProperty demlab:iadl_e ; 
+                                           a owl:Restriction],
+                                          demlab:ClinicalAssessment.
+demlab:CallPsychologistTask a owl:Class;
+                            rdfs:comment """- The participant has to call the psychologist. Two phone numbers are proposed to the participant (1 visit card of the hair dressing,+ 1 visit card of the CHUN with phone number of a psychologist). 
+- According the constraint, the participant has to call the psychologist within the 5 first minutes."""@en;
+                            rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:ClinicalAssessment a owl:Class;
+                          rdfs:comment "Root concept for the five types of clinical assessment"@en;
+                          rdfs:seeAlso demlab:NeuropsychiatricAndMoodAssessment,
+                                       demlab:MotricityAbilitiesAssessment,
+                                       demlab:DiagnosisAssessment,
+                                       demlab:CognitiveAbilitiesAssessment,
+                                       demlab:AutonomyAssessment.
+demlab:ClinicalRecord a owl:Class;
+                      rdfs:comment "A ClinicalRecord contains information about the five types of clinical assessment"@en;
+                      rdfs:seeAlso demlab:containsAssessment,
+                                   demlab:ClinicalAssessment;
+                      rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                       owl:onClass demlab:Participant ; 
+                                       owl:onProperty demlab:isClinicalRecordOf ; 
+                                       a owl:Restriction],
+                                      [owl:allValuesFrom [owl:unionOf (demlab:AutonomyAssessment
+                                                                       demlab:CognitiveAbilitiesAssessment
+                                                                       demlab:DiagnosisAssessment
+                                                                       demlab:MotricityAbilitiesAssessment
+                                                                       demlab:NeuropsychiatricAndMoodAssessment) ; 
+                                                          a owl:Class] ; 
+                                       owl:onProperty demlab:containsAssessment ; 
+                                       a owl:Restriction],
+                                      [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                       owl:onClass demlab:Participant ; 
+                                       owl:onProperty demlab:isClinicalRecordOf ; 
+                                       a owl:Restriction],
+                                      [owl:allValuesFrom [owl:unionOf (demlab:AutonomyAssessment
+                                                                       demlab:CognitiveAbilitiesAssessment
+                                                                       demlab:DiagnosisAssessment
+                                                                       demlab:MotricityAbilitiesAssessment
+                                                                       demlab:NeuropsychiatricAndMoodAssessment) ; 
+                                                          a owl:Class] ; 
+                                       owl:onProperty demlab:containsAssessment ; 
+                                       a owl:Restriction].
+demlab:CognitiveAbilitiesAssessment a owl:Class;
+                                    rdfs:comment """The Cognitive abilities assessment is performed in terms of five scores:
+- Mini-Mental State Exam (MMSE). 
+- Frontal Assessment Battery (FAB). 
+- Trail making test A and B. 
+- Short Cognitive Battery. 
+- The Free and Cued Selective Reminding Test"""@en;
+                                    rdfs:seeAlso demlab:hasMMSEScore,
+                                                 demlab:trailMakingTest,
+                                                 demlab:fabScore,
+                                                 demlab:freeAndCuedRemindingAssessment,
+                                                 demlab:shortCognitiveBatteryAssessment;
+                                    rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:shortCognitiveBatteryAssessment ; 
+                                                     a owl:Restriction],
+                                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:freeAndCuedRemindingAssessment ; 
+                                                     a owl:Restriction],
+                                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:hasMMSEScore ; 
+                                                     a owl:Restriction],
+                                                    demlab:ClinicalAssessment,
+                                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:trailMakingTest ; 
+                                                     a owl:Restriction],
+                                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:freeAndCuedRemindingAssessment ; 
+                                                     a owl:Restriction],
+                                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:hasMMSEScore ; 
+                                                     a owl:Restriction],
+                                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:fabScore ; 
+                                                     a owl:Restriction],
+                                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:shortCognitiveBatteryAssessment ; 
+                                                     a owl:Restriction],
+                                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:fabScore ; 
+                                                     a owl:Restriction],
+                                                    [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:trailMakingTest ; 
+                                                     a owl:Restriction].
+demlab:CognitiveAbilitiesData a owl:Class;
+                              rdfs:comment "Explore functional abilities for the completion of specific activities"@en;
+                              rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                               owl:onClass demlab:ActivityStatusType ; 
+                                               owl:onProperty demlab:activityStatus ; 
+                                               a owl:Restriction],
+                                              [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                               owl:onProperty demlab:repetitions ; 
+                                               a owl:Restriction],
+                                              [owl:onDataRange xsd:boolean ; 
+                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                               owl:onProperty demlab:compliantInstructionsOrder ; 
+                                               a owl:Restriction],
+                                              [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                               owl:onClass demlab:ActivityStatusType ; 
+                                               owl:onProperty demlab:activityStatus ; 
+                                               a owl:Restriction],
+                                              [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                               owl:onProperty demlab:repetitions ; 
+                                               a owl:Restriction],
+                                              [owl:onDataRange xsd:boolean ; 
+                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                               owl:onProperty demlab:compliantInstructionsOrder ; 
+                                               a owl:Restriction],
+                                              demlab:MeasuredData.
+demlab:CountingBackwardsTask a owl:Class;
+                             rdfs:comment """(MonoTask) The participant is standing and the clinician asks him/her to count aloud backwards: 
+- From 305 to 285 (to change tens and hundreds) one by one; or 
+- From 20 to 0 if they make counting mistakes after 2 attempts of the previous backwards counting
+
+This task is used for assessing:
+- Latency: time of latency between the end of instructions (stimulation) and the beginning of the task
+- Stress level
+- Voice: e.g. speech fluency and articulation"""@en;
+                             rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (demlab:LatencyData
+                                                                              demlab:StressData
+                                                                              demlab:VoiceData) ; 
+                                                                 a owl:Class] ; 
+                                              owl:onProperty demlab:measuredData ; 
+                                              a owl:Restriction],
+                                             [owl:allValuesFrom [owl:unionOf (demlab:LatencyData
+                                                                              demlab:StressData
+                                                                              demlab:VoiceData) ; 
+                                                                 a owl:Class] ; 
+                                              owl:onProperty demlab:measuredData ; 
+                                              a owl:Restriction],
+                                             demlab:DirectedTask.
+demlab:DiagnosisAssessment a owl:Class;
+                           rdfs:comment "Diagnosis established the day of the recording session. Participant is assigned to one of this 3 categories: Healthy Control participants, Alzheimer’s disease at pre-dementia stage, Alzheimer ’s disease at dementia stage"@en;
+                           rdfs:seeAlso demlab:PersonWithPredementia,
+                                        demlab:PersonWithDementia,
+                                        demlab:DiagnosisType,
+                                        demlab:HealthyControlParticipant,
+                                        demlab:hasClinicalDiagnosis;
+                           rdfs:subClassOf demlab:ClinicalAssessment,
+                                           [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                            owl:onClass demlab:DiagnosisType ; 
+                                            owl:onProperty demlab:hasClinicalDiagnosis ; 
+                                            a owl:Restriction],
+                                           [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                            owl:onClass demlab:DiagnosisType ; 
+                                            owl:onProperty demlab:hasClinicalDiagnosis ; 
+                                            a owl:Restriction].
+demlab:DiagnosisType a owl:Class;
+                     owl:equivalentClass [owl:oneOf (demlab:healthy
+                                                     demlab:dementia
+                                                     demlab:predementia) ; 
+                                          a owl:Class],
+                                         [owl:oneOf (demlab:healthy
+                                                     demlab:dementia
+                                                     demlab:predementia) ; 
+                                          a owl:Class].
+demlab:DirectedActivitiesStep a owl:Class;
+                              rdfs:comment "This ProtocolStep is conducted by a clinician, who details step by step the different activities to do by the participant. This step involves five Tasks. The tasks Walking, CountingBackwards and WalkingAndCountingBackwards are used for characterizing participants’ gait in mono and dual tasks, and the impact of cognitive activity on gait (e.g., walking speed, step length, stops during the walking exercise done in dual task). The tasks SentenceRepeating and ArticulationControl are vocally-directed tasks: one task consists of repeating a sentence after the clinician (this task is repeated with three sentences), and the other is an articulation control exercise done to evaluate the neuromuscular mechanism of speech production."@en;
+                              rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (demlab:ArticulationControlTask
+                                                                               demlab:CountingBackwardsTask
+                                                                               demlab:SentenceRepeatingTask
+                                                                               demlab:Task
+                                                                               demlab:WalkingCountingBackwardsTask
+                                                                               demlab:WalkingTask) ; 
+                                                                  a owl:Class] ; 
+                                               owl:onProperty demlab:involvesTask ; 
+                                               a owl:Restriction],
+                                              [owl:allValuesFrom [owl:unionOf (demlab:ArticulationControlTask
+                                                                               demlab:CountingBackwardsTask
+                                                                               demlab:SentenceRepeatingTask
+                                                                               demlab:Task
+                                                                               demlab:WalkingCountingBackwardsTask
+                                                                               demlab:WalkingTask) ; 
+                                                                  a owl:Class] ; 
+                                               owl:onProperty demlab:involvesTask ; 
+                                               a owl:Restriction],
+                                              demlab:ProtocolStep.
+demlab:DirectedDiscussionTask a owl:Class;
+                              rdfs:subClassOf demlab:DiscussionTask.
+demlab:DirectedExpressionTask a owl:Class;
+                              rdfs:comment "The clinician asks the same questions than the ones asked on the read article, e.g. What is the topic of the article?"@en;
+                              rdfs:subClassOf demlab:DirectedDiscussionTask.
+demlab:DirectedTask a owl:Class;
+                    rdfs:comment "Root concept for grouping the Tasks relevant to the DirectedActivitiesStep"@en;
+                    rdfs:seeAlso demlab:Task,
+                                 demlab:DirectedActivitiesStep;
+                    rdfs:subClassOf demlab:Task.
+demlab:DiscussionInvolvementData a owl:Class;
+                                 rdfs:comment """- Assessment of the impact of cognitive load imposed by the picture description task on speech fluency
+- Memory and self-appraisal assessment
+- Verbal fluency and mood (Apathy) assessment"""@en;
+                                 rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                  owl:onProperty demlab:verbalReactionSpontaneity ; 
+                                                  a owl:Restriction],
+                                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                  owl:onProperty demlab:verbalReactionSpontaneity ; 
+                                                  a owl:Restriction],
+                                                 demlab:MeasuredData.
+demlab:DiscussionTask a owl:Class;
+                      rdfs:comment """Root concept for grouping the Tasks relevant to the DiscussionWithClinicianStep
+
+The relevant tasks are used for assessing:
+- Stress level
+- Voice: e.g. speech rate, pause rate etc."""@en;
+                      rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (demlab:StressData
+                                                                       demlab:VoiceData) ; 
+                                                          a owl:Class] ; 
+                                       owl:onProperty demlab:measuredData ; 
+                                       a owl:Restriction],
+                                      [owl:allValuesFrom [owl:unionOf (demlab:StressData
+                                                                       demlab:VoiceData) ; 
+                                                          a owl:Class] ; 
+                                       owl:onProperty demlab:measuredData ; 
+                                       a owl:Restriction],
+                                      demlab:Task.
+demlab:DiscussionWithClinicianStep a owl:Class;
+                                   rdfs:comment "This ProtocolStep involves two Tasks. The first task (DirectedExpressionTask) is a directed discussion during which the clinician assesses the episodic memory of participant through questions related to events and activities of SemiDirectedActivitiesStep. The second task (PictureDescriptionTask) assesses the verbal fluency and mood of participant using a picture that the participant has to describe (with the picture in the eyes) and then to involve a discussion about their interests for the activity represented. This part is done with two different pictures."@en;
+                                   rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (demlab:DirectedExpressionTask
+                                                                                    demlab:PictureDescriptionTask
+                                                                                    demlab:PictureDiscussionTask) ; 
+                                                                       a owl:Class] ; 
+                                                    owl:onProperty demlab:involvesTask ; 
+                                                    a owl:Restriction],
+                                                   [owl:allValuesFrom [owl:unionOf (demlab:DirectedExpressionTask
+                                                                                    demlab:PictureDescriptionTask
+                                                                                    demlab:PictureDiscussionTask) ; 
+                                                                       a owl:Class] ; 
+                                                    owl:onProperty demlab:involvesTask ; 
+                                                    a owl:Restriction],
+                                                   demlab:ProtocolStep.
+demlab:EstablishAccountBalanceTask a owl:Class;
+                                   rdfs:comment """- Three bills (Electricity/Gaz/Phone) are proposed. The account balance is given. 
+- The participant has to establish the amount balance after having taken into account the three bills."""@en;
+                                   rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:FindBusLineOnMapTask a owl:Class;
+                            rdfs:comment """- A real bus map is showed to the participant with the indication of the current location of the participant. 
+- The participant has to write on a sheet of paper located next to the bus map the bus lines to take for the itinerary (From Hospital to Station train). Two itineraries are accepted."""@en;
+                            rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:FreeDiscussionTask a owl:Class;
+                          rdfs:subClassOf demlab:DiscussionTask.
+demlab:FunctionalAbilitiesData a owl:Class;
+                               rdfs:comment "Explore functional abilities for the completion of specific activities"@en;
+                               rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                owl:onClass demlab:HandTrajectoryType ; 
+                                                owl:onProperty demlab:handTrajectory ; 
+                                                a owl:Restriction],
+                                               [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                owl:onClass demlab:HandTrajectoryType ; 
+                                                owl:onProperty demlab:handTrajectory ; 
+                                                a owl:Restriction],
+                                               demlab:MeasuredData.
+demlab:GaitData a owl:Class;
+                rdfs:comment "Gait assessment and impact of a cognitive activity on gait performance"@en;
+                rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty demlab:walkingSpeedInstantaneous ; 
+                                 a owl:Restriction],
+                                [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty demlab:walkingSpeed ; 
+                                 a owl:Restriction],
+                                [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty demlab:walkingSpeed ; 
+                                 a owl:Restriction],
+                                [owl:onDataRange xsd:boolean ; 
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty demlab:stoppingDisplacement ; 
+                                 a owl:Restriction],
+                                [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty demlab:dynamicBalance ; 
+                                 a owl:Restriction],
+                                [owl:onDataRange xsd:boolean ; 
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty demlab:stoppingDisplacement ; 
+                                 a owl:Restriction],
+                                [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty demlab:walkingSpeedInstantaneous ; 
+                                 a owl:Restriction],
+                                demlab:MeasuredData,
+                                [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty demlab:stepLength ; 
+                                 a owl:Restriction],
+                                [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty demlab:dynamicBalance ; 
+                                 a owl:Restriction],
+                                [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty demlab:stepLength ; 
+                                 a owl:Restriction].
+demlab:HandTrajectoryType a owl:Class.
+demlab:HealthyControlParticipant a owl:Class;
+                                 rdfs:comment "A Healthy Control Participant is defined as the participant whose clinical record contains a healthy clinical diagnosis"@en;
+                                 rdfs:seeAlso demlab:healthy,
+                                              demlab:DiagnosisType,
+                                              demlab:DiagnosisAssessment,
+                                              demlab:ClinicalRecord;
+                                 rdfs:subClassOf demlab:Participant;
+                                 owl:equivalentClass [owl:someValuesFrom [owl:intersectionOf (demlab:ClinicalRecord
+                                                                                              [owl:someValuesFrom [owl:intersectionOf (demlab:DiagnosisAssessment
+                                                                                                                                      [owl:someValuesFrom [owl:oneOf (demlab:healthy) ; 
+                                                                                                                                                          a owl:Class] ; 
+                                                                                                                                      owl:onProperty demlab:hasClinicalDiagnosis ; 
+                                                                                                                                      a owl:Restriction]) ; 
+                                                                                                                  a owl:Class] ; 
+                                                                                              owl:onProperty demlab:containsAssessment ; 
+                                                                                              a owl:Restriction]) ; 
+                                                                          a owl:Class] ; 
+                                                      owl:onProperty demlab:hasClinicalRecord ; 
+                                                      a owl:Restriction],
+                                                     [owl:someValuesFrom [owl:intersectionOf (demlab:ClinicalRecord
+                                                                                              [owl:someValuesFrom [owl:intersectionOf (demlab:DiagnosisAssessment
+                                                                                                                                      [owl:someValuesFrom [owl:oneOf (demlab:healthy) ; 
+                                                                                                                                                          a owl:Class] ; 
+                                                                                                                                      owl:onProperty demlab:hasClinicalDiagnosis ; 
+                                                                                                                                      a owl:Restriction]) ; 
+                                                                                                                  a owl:Class] ; 
+                                                                                              owl:onProperty demlab:containsAssessment ; 
+                                                                                              a owl:Restriction]) ; 
+                                                                          a owl:Class] ; 
+                                                      owl:onProperty demlab:hasClinicalRecord ; 
+                                                      a owl:Restriction].
+demlab:LatencyData a owl:Class;
+                   rdfs:comment "Explore the time of latency [stimulation, response] during the DirectedActivitiesTask (Explore sensitivity of this measure for assessing the apathy)"@en;
+                   rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty demlab:latency ; 
+                                    a owl:Restriction],
+                                   [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty demlab:latency ; 
+                                    a owl:Restriction],
+                                   demlab:MeasuredData.
+demlab:LeaveRoomTask a owl:Class;
+                     rdfs:comment "The participant has to leave the room when he/she feels that all activities are performed and achieved"@en;
+                     rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:MeasuredData a owl:Class;
+                    rdfs:comment "MeasuredData is the root concept that groups the measurement types that are collected during the Tasks.".
+demlab:MotricityAbilitiesAssessment a owl:Class;
+                                    rdfs:comment """Motricity abilities assessment:
+- Part III of the Unified Parkinson’s Disease Rating Scale (UPDRS) ."""@en;
+                                    rdfs:seeAlso demlab:hasUPDRSScore;
+                                    rdfs:subClassOf [owl:onDataRange xsd:int ; 
+                                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:hasUPDRSScore ; 
+                                                     a owl:Restriction],
+                                                    [owl:onDataRange xsd:int ; 
+                                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                     owl:onProperty demlab:hasUPDRSScore ; 
+                                                     a owl:Restriction],
+                                                    demlab:ClinicalAssessment.
+demlab:NeuropsychiatricAndMoodAssessment a owl:Class;
+                                         rdfs:comment """Neuropsychiatric/Mood assessments:
+- NPI 
+- DSM-IV Criteria for depression 
+- Apathy Inventory (AI) and diagnostic criteria for apathy."""@en;
+                                         rdfs:seeAlso demlab:npi,
+                                                      demlab:dsm_ivDepressionCriteria,
+                                                      demlab:apathyInventory;
+                                         rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                          owl:onProperty demlab:dsm_ivDepressionCriteria ; 
+                                                          a owl:Restriction],
+                                                         [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                          owl:onProperty demlab:dsm_ivDepressionCriteria ; 
+                                                          a owl:Restriction],
+                                                         [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                          owl:onProperty demlab:apathyInventory ; 
+                                                          a owl:Restriction],
+                                                         demlab:ClinicalAssessment,
+                                                         [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                          owl:onProperty demlab:npi ; 
+                                                          a owl:Restriction],
+                                                         [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                          owl:onProperty demlab:npi ; 
+                                                          a owl:Restriction],
+                                                         [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                          owl:onProperty demlab:apathyInventory ; 
+                                                          a owl:Restriction].
+demlab:OrganisationEfficiencyData a owl:Class;
+                                  rdfs:comment "Explore ability to organize with efficiency the different activities"@en;
+                                  rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                   owl:onProperty demlab:distanceWalked ; 
+                                                   a owl:Restriction],
+                                                  [owl:someValuesFrom demlab:Zone ; 
+                                                   owl:onProperty demlab:areasOfInterestExplored ; 
+                                                   a owl:Restriction],
+                                                  [owl:someValuesFrom demlab:Zone ; 
+                                                   owl:onProperty demlab:areasOfNoInterestExplored ; 
+                                                   a owl:Restriction],
+                                                  [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                   owl:onProperty demlab:distanceWalked ; 
+                                                   a owl:Restriction],
+                                                  [owl:someValuesFrom demlab:Zone ; 
+                                                   owl:onProperty demlab:areasOfInterestExplored ; 
+                                                   a owl:Restriction],
+                                                  [owl:someValuesFrom demlab:Zone ; 
+                                                   owl:onProperty demlab:areasOfNoInterestExplored ; 
+                                                   a owl:Restriction],
+                                                  demlab:MeasuredData.
+demlab:Participant a owl:Class;
+                   rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onClass demlab:ClinicalRecord ; 
+                                    owl:onProperty demlab:hasClinicalRecord ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom demlab:Protocol ; 
+                                    owl:onProperty demlab:participates ; 
+                                    a owl:Restriction],
+                                   [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onClass demlab:ClinicalRecord ; 
+                                    owl:onProperty demlab:hasClinicalRecord ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom demlab:Protocol ; 
+                                    owl:onProperty demlab:participates ; 
+                                    a owl:Restriction],
+                                   foaf:Person.
+demlab:PayBillTask a owl:Class;
+                   rdfs:comment """- Three bills (Electricity/Gaz/Phone) are proposed. The participant has to pay the phone bill by check. 
+- The check is well completed if the amount, order (i.e. Phone Company), date and signature are right."""@en;
+                   rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:PersonWithDementia a owl:Class;
+                          rdfs:comment "A Person with Dementia is defined as the participant whose clinical record contains a dementia clinical diagnosis"@en;
+                          rdfs:seeAlso demlab:dementia,
+                                       demlab:DiagnosisType,
+                                       demlab:DiagnosisAssessment,
+                                       demlab:ClinicalRecord;
+                          rdfs:subClassOf demlab:Participant;
+                          owl:equivalentClass [owl:someValuesFrom [owl:intersectionOf (demlab:ClinicalRecord
+                                                                                       [owl:someValuesFrom [owl:intersectionOf (demlab:DiagnosisAssessment
+                                                                                                                               [owl:someValuesFrom [owl:oneOf (demlab:dementia) ; 
+                                                                                                                                                   a owl:Class] ; 
+                                                                                                                               owl:onProperty demlab:hasClinicalDiagnosis ; 
+                                                                                                                               a owl:Restriction]) ; 
+                                                                                                           a owl:Class] ; 
+                                                                                       owl:onProperty demlab:containsAssessment ; 
+                                                                                       a owl:Restriction]) ; 
+                                                                   a owl:Class] ; 
+                                               owl:onProperty demlab:hasClinicalRecord ; 
+                                               a owl:Restriction],
+                                              [owl:someValuesFrom [owl:intersectionOf (demlab:ClinicalRecord
+                                                                                       [owl:someValuesFrom [owl:intersectionOf (demlab:DiagnosisAssessment
+                                                                                                                               [owl:someValuesFrom [owl:oneOf (demlab:dementia) ; 
+                                                                                                                                                   a owl:Class] ; 
+                                                                                                                               owl:onProperty demlab:hasClinicalDiagnosis ; 
+                                                                                                                               a owl:Restriction]) ; 
+                                                                                                           a owl:Class] ; 
+                                                                                       owl:onProperty demlab:containsAssessment ; 
+                                                                                       a owl:Restriction]) ; 
+                                                                   a owl:Class] ; 
+                                               owl:onProperty demlab:hasClinicalRecord ; 
+                                               a owl:Restriction].
+demlab:PersonWithPredementia a owl:Class;
+                             rdfs:comment "A Person with Predementia is defined as the participant whose clinical record contains a predementia clinical diagnosis"@en;
+                             rdfs:seeAlso demlab:predementia,
+                                          demlab:DiagnosisType,
+                                          demlab:DiagnosisAssessment,
+                                          demlab:ClinicalRecord;
+                             rdfs:subClassOf demlab:Participant;
+                             owl:equivalentClass [owl:someValuesFrom [owl:intersectionOf (demlab:ClinicalRecord
+                                                                                          [owl:someValuesFrom [owl:intersectionOf (demlab:DiagnosisAssessment
+                                                                                                                                  [owl:someValuesFrom [owl:oneOf (demlab:predementia) ; 
+                                                                                                                                                      a owl:Class] ; 
+                                                                                                                                  owl:onProperty demlab:hasClinicalDiagnosis ; 
+                                                                                                                                  a owl:Restriction]) ; 
+                                                                                                              a owl:Class] ; 
+                                                                                          owl:onProperty demlab:containsAssessment ; 
+                                                                                          a owl:Restriction]) ; 
+                                                                      a owl:Class] ; 
+                                                  owl:onProperty demlab:hasClinicalRecord ; 
+                                                  a owl:Restriction],
+                                                 [owl:someValuesFrom [owl:intersectionOf (demlab:ClinicalRecord
+                                                                                          [owl:someValuesFrom [owl:intersectionOf (demlab:DiagnosisAssessment
+                                                                                                                                  [owl:someValuesFrom [owl:oneOf (demlab:predementia) ; 
+                                                                                                                                                      a owl:Class] ; 
+                                                                                                                                  owl:onProperty demlab:hasClinicalDiagnosis ; 
+                                                                                                                                  a owl:Restriction]) ; 
+                                                                                                              a owl:Class] ; 
+                                                                                          owl:onProperty demlab:containsAssessment ; 
+                                                                                          a owl:Restriction]) ; 
+                                                                      a owl:Class] ; 
+                                                  owl:onProperty demlab:hasClinicalRecord ; 
+                                                  a owl:Restriction].
+demlab:PictureDescriptionTask a owl:Class;
+                              rdfs:comment "The clinician shows to the participant one picture representing daily activity and asks the participants to give a verbal description of the picture in a few sentences"@en;
+                              rdfs:subClassOf demlab:FreeDiscussionTask.
+demlab:PictureDiscussionTask a owl:Class;
+                             rdfs:comment "The clinician asks if the participant likes doing this activity and why"@en;
+                             rdfs:subClassOf demlab:FreeDiscussionTask.
+demlab:PrepareDrugBoxTask a owl:Class;
+                          rdfs:comment """- 4 types of drugs are proposed to the participant. 
+- The participant has to respect the posology prescribed (2 types of drugs at different moment of the day) and the date (day and moment of the day)."""@en;
+                          rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:PrepareHotTeaTask a owl:Class;
+                         rdfs:comment """- The participant has to switch on the electric kettle. 
+- The participant has to pour the hot water on the glass containing the tea bag."""@en;
+                         rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:Protocol a owl:Class;
+                rdfs:comment "A Protocol instance contains information regarding the participant and the duration of the protocol session. It can be also associated with one or more ProtocolSteps that define the Tasks and the corresponding MeasuredData."@en;
+                rdfs:seeAlso demlab:MeasuredData,
+                             demlab:ProtocolStep,
+                             demlab:Task;
+                rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onClass time:Instant ; 
+                                 owl:onProperty time:hasBeginning ; 
+                                 a owl:Restriction],
+                                [owl:someValuesFrom demlab:ProtocolStep ; 
+                                 owl:onProperty demlab:hasProtocolStep ; 
+                                 a owl:Restriction],
+                                [owl:someValuesFrom demlab:ProtocolStep ; 
+                                 owl:onProperty demlab:hasProtocolStep ; 
+                                 a owl:Restriction],
+                                [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onClass time:Instant ; 
+                                 owl:onProperty time:hasEnd ; 
+                                 a owl:Restriction],
+                                [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onClass foaf:Person ; 
+                                 owl:onProperty demlab:hasParticipant ; 
+                                 a owl:Restriction],
+                                [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onClass time:Instant ; 
+                                 owl:onProperty time:hasBeginning ; 
+                                 a owl:Restriction],
+                                [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onClass time:Instant ; 
+                                 owl:onProperty time:hasEnd ; 
+                                 a owl:Restriction],
+                                [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onClass foaf:Person ; 
+                                 owl:onProperty demlab:hasParticipant ; 
+                                 a owl:Restriction].
+demlab:ProtocolStep a owl:Class;
+                    rdfs:comment "A ProtocolStep defines the Tasks of interest. Three ProtocolStep types are currently defined in Dem@Care: DirectedActivities, SemiDirectedActivities and DiscussionWithTheClinician"@en;
+                    rdfs:seeAlso demlab:SemiDirectedActivitiesStep,
+                                 demlab:DirectedActivitiesStep,
+                                 demlab:Task,
+                                 demlab:DiscussionWithClinicianStep;
+                    rdfs:subClassOf [owl:someValuesFrom demlab:Task ; 
+                                     owl:onProperty demlab:involvesTask ; 
+                                     a owl:Restriction],
+                                    [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onClass time:Instant ; 
+                                     owl:onProperty time:hasEnd ; 
+                                     a owl:Restriction],
+                                    [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onClass time:Instant ; 
+                                     owl:onProperty time:hasEnd ; 
+                                     a owl:Restriction],
+                                    [owl:someValuesFrom demlab:Task ; 
+                                     owl:onProperty demlab:involvesTask ; 
+                                     a owl:Restriction],
+                                    [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onClass time:Instant ; 
+                                     owl:onProperty time:hasBeginning ; 
+                                     a owl:Restriction],
+                                    [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onClass time:Instant ; 
+                                     owl:onProperty time:hasBeginning ; 
+                                     a owl:Restriction].
+demlab:ReadArticleTask a owl:Class;
+                       rdfs:comment """Three articles are proposed to the participant (Topics: Collection Cars; Cooking; Sightseeing). The three articles have the same words number and level of difficulty. Below each articles, the 3 following questions are asked
+- Q1/ What is the topic of the article? 
+- Q2/ What is the percentage of French interested in the … (Collection Car / Cooking / Sightseeing, text adapted to the article topic)? 
+- Q3/ Who is interviewed?"""@en;
+                       rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:SemiDirectedActivitiesStep a owl:Class;
+                                  rdfs:comment "This ProtocolStep consists of assessing the autonomy of the participant. The participant has to organize himself/herself and correctly perform a list of Instrumental Activities of Daily Living (e.g., managing finance, using phone, preparing tea) within a timeframe of 15minutes. For this step, the participant is alone in the experimental setting and can refer to the instruction sheet of paper with the IADLs to perform at any time."@en;
+                                  rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (demlab:AnswerPhoneTask
+                                                                                   demlab:CallPsychologistTask
+                                                                                   demlab:EstablishAccountBalanceTask
+                                                                                   demlab:FindBusLineOnMapTask
+                                                                                   demlab:LeaveRoomTask
+                                                                                   demlab:PayBillTask
+                                                                                   demlab:PrepareDrugBoxTask
+                                                                                   demlab:PrepareHotTeaTask
+                                                                                   demlab:Task
+                                                                                   demlab:TurnOnTVTask
+                                                                                   demlab:WaterPlantTask) ; 
+                                                                      a owl:Class] ; 
+                                                   owl:onProperty demlab:involvesTask ; 
+                                                   a owl:Restriction],
+                                                  [owl:allValuesFrom [owl:unionOf (demlab:AnswerPhoneTask
+                                                                                   demlab:CallPsychologistTask
+                                                                                   demlab:EstablishAccountBalanceTask
+                                                                                   demlab:FindBusLineOnMapTask
+                                                                                   demlab:LeaveRoomTask
+                                                                                   demlab:PayBillTask
+                                                                                   demlab:PrepareDrugBoxTask
+                                                                                   demlab:PrepareHotTeaTask
+                                                                                   demlab:Task
+                                                                                   demlab:TurnOnTVTask
+                                                                                   demlab:WaterPlantTask) ; 
+                                                                      a owl:Class] ; 
+                                                   owl:onProperty demlab:involvesTask ; 
+                                                   a owl:Restriction],
+                                                  demlab:ProtocolStep.
+demlab:SemiDirectedTask a owl:Class;
+                        rdfs:comment """In this Task the participant has to organize himself/herself and correctly perform a list of Instrumental Activities of Daily Living (e.g., managing finance, using phone, preparing tea) within a timeframe of 15minutes.
+
+The relevant tasks are used for assessing:
+- Cognitive abilities through activity repetitions, missed activities, order of activities
+- Functional abilities for the completion of specific activities: e.g. hand trajectories
+- Stress level"""@en;
+                        rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (demlab:CognitiveAbilitiesData
+                                                                         demlab:FunctionalAbilitiesData
+                                                                         demlab:StressData) ; 
+                                                            a owl:Class] ; 
+                                         owl:onProperty demlab:measuredData ; 
+                                         a owl:Restriction],
+                                        [owl:allValuesFrom [owl:unionOf (demlab:CognitiveAbilitiesData
+                                                                         demlab:FunctionalAbilitiesData
+                                                                         demlab:StressData) ; 
+                                                            a owl:Class] ; 
+                                         owl:onProperty demlab:measuredData ; 
+                                         a owl:Restriction],
+                                        demlab:Task.
+demlab:SentenceRepeatingTask a owl:Class;
+                             rdfs:comment """- The participant is asked to repeat a short sentence after the assessor. 
+- The assessor reads aloud a sentence. The participant repeats the sentence. The action is done once by sentence. Three sentences must be repeated.
+
+This task is used for assessing:
+- Latency: time of latency between the end of instructions (stimulation) and the beginning of the task
+- Stress level
+- Voice: e.g. verbal reaction time"""@en;
+                             rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (demlab:LatencyData
+                                                                              demlab:StressData
+                                                                              demlab:VoiceData) ; 
+                                                                 a owl:Class] ; 
+                                              owl:onProperty demlab:measuredData ; 
+                                              a owl:Restriction],
+                                             [owl:allValuesFrom [owl:unionOf (demlab:LatencyData
+                                                                              demlab:StressData
+                                                                              demlab:VoiceData) ; 
+                                                                 a owl:Class] ; 
+                                              owl:onProperty demlab:measuredData ; 
+                                              a owl:Restriction],
+                                             demlab:DirectedTask.
+demlab:StressData a owl:Class;
+                  rdfs:comment "Explore stress level"@en;
+                  rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                   owl:onProperty demlab:stressLevel ; 
+                                   a owl:Restriction],
+                                  [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                   owl:onProperty demlab:stressLevel ; 
+                                   a owl:Restriction],
+                                  demlab:MeasuredData.
+demlab:Task a owl:Class;
+            rdfs:comment "Each Task involves the collection of one or more measurements (MeasuredData instances)."@en,
+                         "";
+            rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onClass time:Instant ; 
+                             owl:onProperty time:hasEnd ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom demlab:MeasuredData ; 
+                             owl:onProperty demlab:measuredData ; 
+                             a owl:Restriction],
+                            [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onClass time:Instant ; 
+                             owl:onProperty time:hasBeginning ; 
+                             a owl:Restriction],
+                            [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onClass time:Instant ; 
+                             owl:onProperty time:hasEnd ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom demlab:MeasuredData ; 
+                             owl:onProperty demlab:measuredData ; 
+                             a owl:Restriction],
+                            [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onClass time:Instant ; 
+                             owl:onProperty time:hasBeginning ; 
+                             a owl:Restriction].
+demlab:TurnOnTVTask a owl:Class;
+                    rdfs:comment "The TV is turn off. The participant has to take the remote control and turns on the TV"@en;
+                    rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:VoiceData a owl:Class;
+                 rdfs:comment """- Vocal biomarkers extraction for cognitive load assessment
+- Assessment of mutual influence of cognitive activities an motor activities
+- Assessment of the verbal reaction time and the impact of cognitive load imposed by the sentence recall task on speech fluency
+- Assessment of the level of the participants’ control over the neuromuscular mechanism of speech production"""@en;
+                 rdfs:subClassOf [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:vowelDuration ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:pauseRate ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:speechRate ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:pauseRate ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:verbalReactionTime ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:vowelDuration ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:speechFluency ; 
+                                  a owl:Restriction],
+                                 demlab:MeasuredData,
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:articulation ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:verbalReactionTime ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:articulation ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:speechRate ; 
+                                  a owl:Restriction],
+                                 [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty demlab:speechFluency ; 
+                                  a owl:Restriction].
+demlab:WalkingCountingBackwardsTask a owl:Class;
+                                    rdfs:comment """(DualTask) The clinician asks the participant to walk and count aloud backwards simultaneously: 
+- From 305 until the end of the walking tasks; or 
+- From 20 to 0 for participants who don’t manage to count backwards from 305 to 285 during the CountingBackwardsTask
+
+This task is used for assessing:
+- Gait: walking speed, step length, etc.
+- Latency: time of latency between the end of instructions (stimulation) and the beginning of the task
+- Stress level
+- Voice: e.g. speech fluency and articulation"""@en;
+                                    rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (demlab:GaitData
+                                                                                     demlab:LatencyData
+                                                                                     demlab:StressData
+                                                                                     demlab:VoiceData) ; 
+                                                                        a owl:Class] ; 
+                                                     owl:onProperty demlab:measuredData ; 
+                                                     a owl:Restriction],
+                                                    [owl:allValuesFrom [owl:unionOf (demlab:GaitData
+                                                                                     demlab:LatencyData
+                                                                                     demlab:StressData
+                                                                                     demlab:VoiceData) ; 
+                                                                        a owl:Class] ; 
+                                                     owl:onProperty demlab:measuredData ; 
+                                                     a owl:Restriction],
+                                                    demlab:DirectedTask.
+demlab:WalkingTask a owl:Class;
+                   rdfs:comment """(MonoTask) The clinician asks the participant to walk 4 meters across the room, to turn and then to come back (total walking distance: 8m).
+
+This task is used for assessing:
+- Gait: walking speed, step length, etc.
+- Latency: time of latency between the end of instructions (stimulation) and the beginning of the task
+- Stress level"""@en;
+                   rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (demlab:GaitData
+                                                                    demlab:LatencyData
+                                                                    demlab:StressData) ; 
+                                                       a owl:Class] ; 
+                                    owl:onProperty demlab:measuredData ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom demlab:GaitData ; 
+                                    owl:onProperty demlab:measuredData ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom demlab:LatencyData ; 
+                                    owl:onProperty demlab:measuredData ; 
+                                    a owl:Restriction],
+                                   [owl:allValuesFrom [owl:unionOf (demlab:GaitData
+                                                                    demlab:LatencyData
+                                                                    demlab:StressData) ; 
+                                                       a owl:Class] ; 
+                                    owl:onProperty demlab:measuredData ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom demlab:GaitData ; 
+                                    owl:onProperty demlab:measuredData ; 
+                                    a owl:Restriction],
+                                   [owl:someValuesFrom demlab:LatencyData ; 
+                                    owl:onProperty demlab:measuredData ; 
+                                    a owl:Restriction],
+                                   demlab:DirectedTask.
+demlab:WaterPlantTask a owl:Class;
+                      rdfs:comment "The participant has to take the water can, and water the plant nearby."@en;
+                      rdfs:subClassOf demlab:SemiDirectedTask.
+demlab:Zone a owl:Class;
+            rdfs:comment "Allows the definition of zones (areas) of interest, e.g. phone zone"@en.
+demlab:activityStatus a owl:ObjectProperty;
+                      rdfs:comment "The status of a semi-directed activity";
+                      rdfs:domain demlab:CognitiveAbilitiesData;
+                      rdfs:range demlab:ActivityStatusType;
+                      rdfs:seeAlso demlab:CognitiveAbilitiesData,
+                                   demlab:ActivityStatusType.
+demlab:apathyInventory a owl:DatatypeProperty;
+                       rdfs:comment "Apathy Inventory (AI) and diagnostic criteria for apathy"@en;
+                       rdfs:domain demlab:NeuropsychiatricAndMoodAssessment;
+                       rdfs:seeAlso demlab:NeuropsychiatricAndMoodAssessment.
+demlab:areasOfInterestExplored a owl:ObjectProperty;
+                               rdfs:comment "Zones of no interest"@en;
+                               rdfs:domain demlab:OrganisationEfficiencyData;
+                               rdfs:range demlab:Zone;
+                               rdfs:seeAlso demlab:OrganisationEfficiencyData.
+demlab:areasOfNoInterestExplored a owl:ObjectProperty;
+                                 rdfs:comment "Zones of interest"@en;
+                                 rdfs:domain demlab:OrganisationEfficiencyData;
+                                 rdfs:range demlab:Zone;
+                                 rdfs:seeAlso demlab:OrganisationEfficiencyData.
+demlab:articulation a owl:DatatypeProperty;
+                    rdfs:comment "Measures the articulation control of the participant"@en;
+                    rdfs:domain demlab:VoiceData.
+demlab:completed a demlab:ActivityStatusType,
+                   owl:NamedIndividual.
+demlab:compliantInstructionsOrder a owl:DatatypeProperty;
+                                  rdfs:comment "Whether the participant followed the activity order suggested by the instructions sheet"@en;
+                                  rdfs:domain demlab:CognitiveAbilitiesData;
+                                  rdfs:seeAlso demlab:CognitiveAbilitiesData.
+demlab:containsAssessment a owl:ObjectProperty;
+                          rdfs:comment "A ClinicalRecord contains a ClinicalAssessment";
+                          rdfs:domain demlab:ClinicalRecord;
+                          rdfs:range demlab:ClinicalAssessment;
+                          rdfs:seeAlso demlab:ClinicalRecord,
+                                       demlab:ClinicalAssessment.
+demlab:dementia a demlab:DiagnosisType,
+                  owl:NamedIndividual.
+demlab:distanceWalked a owl:DatatypeProperty;
+                      rdfs:comment "Total distance walked"@en;
+                      rdfs:domain demlab:OrganisationEfficiencyData;
+                      rdfs:seeAlso demlab:OrganisationEfficiencyData.
+demlab:dsm_ivDepressionCriteria a owl:DatatypeProperty;
+                                rdfs:comment "DSM-IV Criteria for depression"@en;
+                                rdfs:domain demlab:NeuropsychiatricAndMoodAssessment;
+                                rdfs:seeAlso "http://en.wikipedia.org/wiki/Diagnostic_and_Statistical_Manual_of_Mental_Disorders"@en.
+demlab:dynamicBalance a owl:DatatypeProperty;
+                      rdfs:comment "Dynamical balance during the walking (e.g., people trajectory study)"@en;
+                      rdfs:domain demlab:GaitData;
+                      rdfs:seeAlso demlab:GaitData.
+demlab:fabScore a owl:DatatypeProperty;
+                rdfs:comment "Frontal Assessment Battery score"@en;
+                rdfs:domain demlab:CognitiveAbilitiesAssessment;
+                rdfs:seeAlso demlab:CognitiveAbilitiesAssessment.
+demlab:freeAndCuedRemindingAssessment a owl:DatatypeProperty;
+                                      rdfs:comment "The Free and Cued Selective Reminding Test"@en;
+                                      rdfs:domain demlab:CognitiveAbilitiesAssessment;
+                                      rdfs:seeAlso demlab:CognitiveAbilitiesAssessment.
+demlab:handTrajectory a owl:ObjectProperty;
+                      rdfs:comment "Associates an instance of FunctionalAbilitiesData with a hand trajectory type"@en;
+                      rdfs:domain demlab:FunctionalAbilitiesData;
+                      rdfs:range demlab:HandTrajectoryType;
+                      rdfs:seeAlso demlab:HandTrajectoryType,
+                                   demlab:FunctionalAbilitiesData.
+demlab:hasClinicalDiagnosis a owl:ObjectProperty;
+                            rdfs:comment "The value of the DiagnosisAssessment"@en;
+                            rdfs:domain demlab:DiagnosisAssessment;
+                            rdfs:range demlab:DiagnosisType;
+                            rdfs:seeAlso demlab:DiagnosisType,
+                                         demlab:DiagnosisAssessment;
+                            rdfs:subPropertyOf owl:topObjectProperty.
+demlab:hasClinicalRecord a owl:ObjectProperty;
+                         rdfs:comment "Each participant is associated with a clinical record"@en;
+                         rdfs:domain demlab:Participant;
+                         rdfs:range demlab:ClinicalRecord;
+                         rdfs:seeAlso demlab:ClinicalRecord.
+demlab:hasMMSEScore a owl:DatatypeProperty;
+                    rdfs:comment "Mini-Mental State Exam score"@en;
+                    rdfs:domain demlab:CognitiveAbilitiesAssessment;
+                    rdfs:seeAlso demlab:CognitiveAbilitiesAssessment.
+demlab:hasParticipant a owl:ObjectProperty;
+                      rdfs:comment "The participant of the protocol"@en;
+                      rdfs:domain demlab:Protocol;
+                      rdfs:range demlab:Participant;
+                      rdfs:seeAlso demlab:Protocol,
+                                   demlab:Person.
+demlab:hasProtocolStep a owl:ObjectProperty;
+                       rdfs:comment "Each Protocol consists of one or more ProtocolSteps"@en;
+                       rdfs:domain demlab:Protocol;
+                       rdfs:range demlab:ProtocolStep;
+                       rdfs:seeAlso demlab:ProtocolStep,
+                                    demlab:Protocol.
+demlab:hasUPDRSScore a owl:DatatypeProperty;
+                     rdfs:comment "Part III of the Unified Parkinson’s Disease Rating Scale"@en;
+                     rdfs:domain demlab:MotricityAbilitiesAssessment;
+                     rdfs:seeAlso demlab:MotricityAbilitiesAssessment.
+demlab:healthy demlab:hasClinicalDiagnosis demlab:dementia;
+               a demlab:DiagnosisType,
+                 owl:NamedIndividual.
+demlab:iadl_e a owl:DatatypeProperty;
+              rdfs:comment "Allows the quantification of autonomy"@en;
+              rdfs:domain demlab:AutonomyAssessment;
+              rdfs:seeAlso demlab:AutonomyAssessment.
+demlab:incomplete a demlab:ActivityStatusType,
+                    owl:NamedIndividual.
+demlab:involvesTask a owl:ObjectProperty;
+                    rdfs:comment "Each ProtocolStep involves one or more Tasks"@en;
+                    rdfs:domain demlab:ProtocolStep;
+                    rdfs:range demlab:Task;
+                    rdfs:seeAlso demlab:Task,
+                                 demlab:ProtocolStep.
+demlab:isClinicalRecordOf a owl:ObjectProperty;
+                          owl:inverseOf demlab:hasClinicalRecord.
+demlab:latency a owl:DatatypeProperty;
+               rdfs:comment "Time of latency between the end of instructions (stimulation) and the beginning of the task"@en;
+               rdfs:domain demlab:LatencyData;
+               rdfs:seeAlso demlab:LatencyData.
+demlab:measuredData a owl:ObjectProperty;
+                    rdfs:domain demlab:Task;
+                    rdfs:range demlab:MeasuredData;
+                    rdfs:seeAlso demlab:Task,
+                                 demlab:MeasuredData,
+                                 "Associates a Task with a MeasuredData instance"@en.
+demlab:npi a owl:DatatypeProperty;
+           rdfs:comment "Neuropsychiatric Inventory"@en;
+           rdfs:domain demlab:NeuropsychiatricAndMoodAssessment;
+           rdfs:seeAlso demlab:NeuropsychiatricAndMoodAssessment.
+demlab:omitted a demlab:ActivityStatusType,
+                 owl:NamedIndividual.
+demlab:participates a owl:ObjectProperty;
+                    rdfs:seeAlso demlab:hasParticipant;
+                    owl:inverseOf demlab:hasParticipant.
+demlab:pauseRate a owl:DatatypeProperty;
+                 rdfs:comment "Pause rate during sentence repetition and mono/dual tasks"@en;
+                 rdfs:domain demlab:VoiceData;
+                 rdfs:seeAlso demlab:WalkingCountingBackwardsTask,
+                              demlab:VoiceData,
+                              demlab:SentenceRepeatingTask,
+                              demlab:CountingBackwardsTask,
+                              demlab:ArticulationControlTask.
+demlab:predementia a demlab:DiagnosisType,
+                     owl:NamedIndividual.
+demlab:repetitions a owl:DatatypeProperty;
+                   rdfs:comment "Number of repetitions during semi-directed activities"@en;
+                   rdfs:domain demlab:CognitiveAbilitiesData;
+                   rdfs:seeAlso demlab:SemiDirectedTask.
+demlab:shortCognitiveBatteryAssessment a owl:DatatypeProperty;
+                                       rdfs:comment "Short Cognitive Battery"@en;
+                                       rdfs:domain demlab:CognitiveAbilitiesAssessment;
+                                       rdfs:seeAlso demlab:CognitiveAbilitiesAssessment.
+demlab:speechFluency a owl:DatatypeProperty;
+                     rdfs:comment "Speech fluency during sentence repetition and picture description tasks"@en;
+                     rdfs:domain demlab:VoiceData;
+                     rdfs:seeAlso demlab:VoiceData.
+demlab:speechRate a owl:DatatypeProperty;
+                  rdfs:comment "Speech fluency during sentence repetition and picture description tasks"@en;
+                  rdfs:domain demlab:VoiceData;
+                  rdfs:seeAlso demlab:VoiceData.
+demlab:stepLength a owl:DatatypeProperty;
+                  rdfs:comment "Step length"@en;
+                  rdfs:domain demlab:GaitData;
+                  rdfs:seeAlso demlab:GaitData.
+demlab:stoppingDisplacement a owl:DatatypeProperty;
+                            rdfs:comment "Stopping displacement during walking"@en;
+                            rdfs:domain demlab:GaitData;
+                            rdfs:seeAlso demlab:GaitData.
+demlab:stressLevel a owl:DatatypeProperty;
+                   rdfs:domain demlab:StressData;
+                   rdfs:seeAlso demlab:StressData,
+                                "Stress level"@en.
+demlab:trailMakingTest a owl:DatatypeProperty;
+                       rdfs:comment "Trail making test A and B"@en;
+                       rdfs:domain demlab:CognitiveAbilitiesAssessment;
+                       rdfs:seeAlso demlab:CognitiveAbilitiesAssessment.
+demlab:verbalReactionSpontaneity a owl:DatatypeProperty;
+                                 rdfs:comment "Time between the end of assessor’s speech and the beginning of participant’s speech (Discussion Task)"@en;
+                                 rdfs:domain demlab:DiscussionInvolvementData;
+                                 rdfs:seeAlso demlab:DiscussionInvolvementData.
+demlab:verbalReactionTime a owl:DatatypeProperty;
+                          rdfs:comment "Time interval between the end of assessor’s speech and the beginning of participant’s speech (Sentence Repetition Task)"@en;
+                          rdfs:domain demlab:VoiceData;
+                          rdfs:seeAlso demlab:VoiceData.
+demlab:vowelDuration a owl:DatatypeProperty;
+                     rdfs:comment demlab:VoiceData;
+                     rdfs:domain demlab:VoiceData;
+                     rdfs:seeAlso "Vowel duration"@en;
+                     rdfs:subPropertyOf owl:topDataProperty.
+demlab:walkingSpeed a owl:DatatypeProperty;
+                    rdfs:comment "Walking speed"@en;
+                    rdfs:domain demlab:GaitData;
+                    rdfs:seeAlso demlab:GaitData.
+demlab:walkingSpeedInstantaneous a owl:DatatypeProperty;
+                                 rdfs:comment "Walking speed instantaneous (mono task walking activity/dual task)"@en;
+                                 rdfs:domain demlab:GaitData;
+                                 rdfs:seeAlso demlab:GaitData.
+xsd:date a rdfs:Datatype.
+skos:note a owl:AnnotationProperty.
