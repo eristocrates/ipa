@@ -5,7 +5,8 @@
 secret/
 .git/objects/pack/
 Application/Microsoft/Edge/data_dir/
-C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\packages\
+Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/*.nq
+C:/Repositories/eristocrates/ipa/Source-code/Host-environment/Common-Language-Runtime/FSharp/Project/MyProvider/packages/
 
 # ------------------------------------------------------------
 # GENERATED: ignores files >= 100 MiB
