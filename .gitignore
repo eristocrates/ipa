@@ -12,6 +12,7 @@ C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Ru
 # root: C:\Repositories\eristocrates\ipa
 # ------------------------------------------------------------
 .git/objects/pack/pack-88ea8cb40b1997cd6e35551754c02de933a9b0a0.pack
+.git/objects/pack/pack-8ff8b05fa6a5bf0473a1bb3dcd159c22df7a13e2.pack
 .git/objects/pack/pack-f9b9b8199abe090a5206fd8521fa29b9c5fddaa8.pack
 .git/objects/pack/tmp_pack_swa5ds
 Application/MMT/content/MMT/LATIN2/.git/objects/pack/pack-43b870377222ffe65ac4f272dcb155d5f932a01c.pack
@@ -34,3 +35,4 @@ Language/Xml/basex/Basex122/data/ucd.all.flat/tbl.basex
 Persistence/Database/Embedded/Document/FastDB/Unicode/Unicode/Triples.db
 Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/lov.normalized.cleaned.nq
 Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/lov.normalized.nq
+Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/lov.nq
