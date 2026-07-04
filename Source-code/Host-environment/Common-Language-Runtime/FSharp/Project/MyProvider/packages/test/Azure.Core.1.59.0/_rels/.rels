@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Azure.Core.nuspec" Id="R1DB366735A41C9E2" />
-  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/25ab9aa7f92e4733be630919d2d5d8a8.psmdcp" Id="RC6AB672064817D42" />
-</Relationships>

@@ -1,8 +1,20 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix onto: <http://www.ontotext.com/>.
+@prefix proton: <http://www.ontotext.com/proton/>.
+@prefix pext: <http://www.ontotext.com/proton/protonext#>.
 @prefix w3: <http://www.w3.org/>.
-@prefix dbug: <https://eristocrates.dev/ontology/dbug/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix library: <http://purl.org/library/>.
+@prefix rel: <http://purl.org/vocab/relationship/>.
+@prefix dbug: <https://eristocrates.dev/ontology/dbug/>.
+@prefix om: <https://open-metadata.org/ontology/>.
 
-dbug:Alice a foaf:Person.
+dbug:Bob rel:friendOf dbug:Alice;
+         pext:isInterestedIn dbug:The_Mona_Lisa;
+         a foaf:Person;
+         foaf:birthday "1990-07-04"^^xsd:date.
+dbug:La_Joconde_%C3%A0_Washington a library:Video;
+                                  foaf:focus dbug:The_Mona_Lisa.
+dbug:The_Mona_Lisa om:createdBy dbug:Leonardo_da_Vinci.

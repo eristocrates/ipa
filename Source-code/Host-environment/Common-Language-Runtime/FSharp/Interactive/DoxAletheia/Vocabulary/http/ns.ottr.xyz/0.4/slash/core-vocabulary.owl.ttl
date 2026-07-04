@@ -1,0 +1,154 @@
+@base <https://spec.ottr.xyz/wOTTR/0.4.5/core-vocabulary.owl.ttl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix o-wottr: <http://spec.ottr.xyz/wOTTR/0.4.4/tpl/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix ex: <http://example.net/ns#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix ottr: <http://ns.ottr.xyz/0.4/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix shsh: <http://www.w3.org/ns/shacl-shacl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+
+ottr:Argument skos:definition "An *argument* specifies an input value for a given instance.".
+ottr:ArgumentModifier skos:definition "An *argument modifier* is a flag or marker that is used to identify the argument that play a special role in modified expansions. See also ExpansionModifier.";
+                      skos:note "See also the instances of the class.".
+ottr:BaseTemplate rdfs:subClassOf ottr:Signature;
+                  skos:definition "A *base template* is a signature with no pattern. The expansion of an instance of a base template is the instance itself.".
+ottr:ExpansionModifier skos:definition "An *expansion modifier* is a flag or marker that is used to alter the behaviour of expanding the marked instance";
+                       skos:note "See also the instances of the class. Rename to InstanceModifier?".
+ottr:Instance skos:definition "An *instance* is an instantiation of a signature, template or base template. The instance must refer to a signature and provide arguments that match the corresponding parameters of the signature.".
+ottr:NullableTriple ottr:parameters ([ottr:modifier ottr:optional ; 
+                                     ottr:type ottr:IRI ; 
+                                     ottr:variable _:b9]
+                                     [ottr:modifier ottr:nonBlank ; 
+                                     ottr:modifier ottr:optional ; 
+                                     ottr:type ottr:IRI ; 
+                                     ottr:variable _:b6]
+                                     [ottr:modifier ottr:optional ; 
+                                     ottr:type rdfs:Resource ; 
+                                     ottr:variable _:b1]);
+                    a ottr:BaseTemplate.
+ottr:Parameter skos:definition "A *parameter* specifies the variable terms or resources of a pattern and the permissible values for the corresponding instance arguments.".
+ottr:ParameterModifier skos:definition "A *parameter modifier* is a flag or marker that is set on a parameter to alter the permissible corresponding argument values and/or the behaviour of expanding instances.";
+                       skos:note "See also the instances of the class.".
+ottr:Signature skos:definition "A *signature* specifies the permissible input for instances. It does this through its list of parameters. The IRI of the signature is a unique name that its instances must reference.".
+ottr:Status skos:definition "A *status* indicates the maturity and level of support and endorsement of an artefact.".
+ottr:Template rdfs:subClassOf ottr:Signature;
+              skos:definition "A *template* is a signature that additionally specifies a pattern. The pattern, which is a set of instances, determines the result of the direct expansion (1-step expansion) of an instance of the template.".
+ottr:Triple ottr:parameters ([ottr:type ottr:IRI ; 
+                             ottr:variable _:b9]
+                             [ottr:modifier ottr:nonBlank ; 
+                             ottr:type ottr:IRI ; 
+                             ottr:variable _:b6]
+                             [ottr:type rdfs:Resource ; 
+                             ottr:variable _:b1]);
+            a ottr:BaseTemplate.
+ottr:annotation a owl:AnnotationProperty;
+                rdfs:domain ottr:Signature;
+                rdfs:range ottr:Instance;
+                skos:definition "Associates a signature with an optional set of annotation instances.".
+ottr:arguments a owl:AnnotationProperty;
+               rdfs:domain ottr:Instance;
+               skos:definition "Associates an instance with a list of arguments.".
+ottr:candidate a ottr:Status;
+               skos:definition "A candidate template is a draft template which additionally contains a complete set of metadata and is endorsed by a named individual or organisation who aims to promote the template to recommendation status. The endorser is expected to actively participate in the support and promotion of the template; failure to do so may result in deprecation of the template. A candidate template should be considered stable.".
+ottr:cross a ottr:ExpansionModifier;
+           skos:definition "cross is an expansion modifier which sets the list expansion operation to cross product.".
+ottr:default a owl:AnnotationProperty;
+             rdfs:domain ottr:Parameter;
+             skos:definition "Sets an optional default value of a parameter. The default value is used in case an argument value is unspecified or ottr:none.".
+ottr:deprecated a ottr:Status;
+                skos:definition "A deprecated template is discouraged from use. An explanation for why a template is deprecated should be given.".
+ottr:draft a ottr:Status;
+           skos:definition "A draft template must be a syntactically correct and well-founded template, i.e., the template is completely defined and does not contain any formal errors. A draft template should not be considered mature or stable. In terms of its lifecycle, it is published in order to be available to others, both for use and for further development.".
+ottr:incomplete a ottr:Status;
+                skos:definition "An incomplete template is of the lowest status, which is the default if no status is stated for a template. The only requirement to an incomplete template is that it must be syntactically correct.".
+ottr:listExpand a ottr:ArgumentModifier;
+                skos:definition "listExpand is an argument modifier that selects arguments for list expansion.".
+ottr:modifier a owl:AnnotationProperty.
+ottr:name a owl:AnnotationProperty;
+          rdfs:range xsd:token;
+          skos:definition "A human readable name or label.".
+ottr:nonBlank a ottr:ParameterModifier;
+              skos:definition "nonBlank is a parameter modifier which makes blank nodes illegal instance argument values for this parameter.".
+ottr:none a owl:Thing;
+          skos:definition "none is an individual which is used to designate a missing argument value.".
+ottr:of a owl:AnnotationProperty;
+        rdfs:domain ottr:Instance;
+        rdfs:range ottr:Signature;
+        skos:definition "Associates an instance with its required signature.".
+ottr:optional a ottr:ParameterModifier;
+              skos:definition "optional is a parameter modifier which makes the value none a permissible instance argument value for this parameter.".
+ottr:parameters a owl:AnnotationProperty;
+                rdfs:domain ottr:Signature;
+                skos:definition "Associates a signature with one required list of parameters.".
+ottr:pattern a owl:AnnotationProperty;
+             rdfs:domain ottr:Template;
+             rdfs:range ottr:Instance;
+             skos:definition "Associates a template with an optional set of pattern instances.".
+ottr:proposedRecommendation a ottr:Status;
+                            skos:definition "After a period in candidate status, a candidate template may be proposed as a recommendation and given the status of proposed recommendation. This triggers a public vote to promote the template to recommended status. Relevant comments and issues collected during the voting phase must be addressed if the template can be given the status of recommended.".
+ottr:recommendation a ottr:Status;
+                    skos:definition "A recommended template is of the highest status. This means that the template is of high quality and is well-integrated into the library.".
+ottr:status a owl:AnnotationProperty;
+            rdfs:domain ottr:Signature;
+            rdfs:range ottr:Status;
+            skos:definition "Associates a signature with its status.".
+ottr:type a owl:AnnotationProperty;
+          rdfs:domain ottr:Parameter;
+          skos:definition "Sets an optional type of a parameter. A missing type implicitly sets the type to the most general type.".
+ottr:value a owl:AnnotationProperty;
+           rdfs:domain ottr:Argument;
+           skos:definition "Associates an argument with its argument value.".
+ottr:values a owl:AnnotationProperty;
+            rdfs:domain ottr:Instance;
+            skos:definition "Associates an instance with a list of argument values".
+ottr:variable a owl:AnnotationProperty;
+              rdfs:domain ottr:Parameter;
+              skos:definition "Sets the required variable of a parameter.".
+ottr:zipMax a ottr:ExpansionModifier;
+            skos:definition "zipMax is an expansion modifier which sets the list expansion operation to zip, extending smaller list to the lenght of the longest list by appending empty values.".
+ottr:zipMin a ottr:ExpansionModifier;
+            skos:definition "zipMin is an expansion modifier which sets the list expansion operation to zip with the shortest list as length.".
+<http://spec.ottr.xyz/wOTTR/0.4/core-vocabulary> cc:licence <https://creativecommons.org/licenses/by/4.0/>;
+                                                 dc:abstract "Reasonable Ontology Templates (OTTR) is a language for representing ontology modelling patterns, and is designed to support interaction with OWL or RDF knowledge bases at a higher level of abstraction, using modelling patterns rather than OWL axioms or RDF triples. This includes: (1) building knowledge bases by instantiating templates; (2) retrieving information from the knowledge base by querying for instances of templates; communicating (presenting, transferring and visualising) the knowledge base as a set of template instances at different levels of abstraction; (3) and securing and improving the quality and sustainability of the knowledge base via structural and semantic analysis of the templates used to construct the knowledge base.";
+                                                 dc:contributor <http://folk.uio.no/leifhka/>;
+                                                 dc:creator <http://folk.uio.no/martige/foaf#me>;
+                                                 dc:date "2019-03-28";
+                                                 dc:description "This ontology defines the RDF serialisation of Reasonable Ontology Templates (OTTR), called Web Reasonable Ontology Templates (wOTTR).";
+                                                 dc:modified "2019-10-03",
+                                                             "2020-12-02",
+                                                             "2020-12-03",
+                                                             "2023-06-06";
+                                                 dc:title "Reasonable Ontology Templates (OTTR)";
+                                                 dcterms:bibliographicCitation "Martin G. Skjæveland, Daniel P. Lupp, Leif Harald Karlsen, and Henrik Forssell. Practical Ontology Pattern Instantiation, Discovery, and Maintenance with Reasonable Ontology Templates In: Vrandečić D. et al. (eds) The Semantic Web—ISWC 2018. ISWC 2018. LNCS vol 11136. Springer. 2018.";
+                                                 vann:preferredNamespacePrefix "ottr";
+                                                 vann:preferredNamespaceURI "http://ns.ottr.xyz/0.4/";
+                                                 a owl:Ontology;
+                                                 rdfs:label "Reasonable Ontology Templates (OTTR)";
+                                                 rdfs:seeAlso <http://spec.ottr.xyz/wOTTR/0.4/>;
+                                                 owl:versionInfo "0.4.5";
+                                                 skos:changeNote """
+  Version 0.4.2, 2020-12-02: 
+   - Added basetemplate ottr:NullableTriple. 
+   - Added ottr:Status, and the statuses: ottr:incomplete, ottr:draft, ottr:candidate, ottr:proposedRecommendation, ottr:recommendation.
+  """,
+                                                                 """
+  Version 0.4.3, 2020-12-03: 
+   - Added change notes
+  """,
+                                                                 """
+  Version 0.4.5, 2023-06-06: 
+   - Added ottr:name as parameter name.
+  """;
+                                                 foaf:logo "https://ottr.xyz/logo/wOTTR.jpg".

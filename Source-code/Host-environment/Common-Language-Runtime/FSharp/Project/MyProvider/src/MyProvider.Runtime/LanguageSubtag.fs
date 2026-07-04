@@ -2,7 +2,7 @@ namespace MyNamespace
 
 /// https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 [<RequireQualifiedAccess ; StructuralComparison; StructuralEquality>]
-type Language_Subtag =
+type Language_Tag =
     /// <summary>
     ///   <para>Type: language</para>
     ///   <para>Subtag: aa</para>
@@ -59548,6 +59548,8 @@ type Language_Subtag =
     /// </summary>
     | zzj
 
+    member this.rdf_string = this.ToString
+
 /// https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 [<RequireQualifiedAccess ; StructuralComparison; StructuralEquality>]
 type Region_Subtag =
@@ -61714,3 +61716,5 @@ type Region_Subtag =
     ///   <para>Added: 2005-10-16</para>
     /// </summary>
     | ``419``
+
+    member this.rdf_string = this.ToString

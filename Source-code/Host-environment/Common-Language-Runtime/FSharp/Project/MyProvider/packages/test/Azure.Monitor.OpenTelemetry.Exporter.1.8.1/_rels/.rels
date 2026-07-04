@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Azure.Monitor.OpenTelemetry.Exporter.nuspec" Id="REC05EE83A3D26DB1" />
-  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/74c871b2793a4c89b27c2807281bf09b.psmdcp" Id="R36F357C9EC5C87CA" />
-</Relationships>

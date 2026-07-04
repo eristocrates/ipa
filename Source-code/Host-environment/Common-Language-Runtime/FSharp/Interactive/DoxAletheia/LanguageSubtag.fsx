@@ -30,6 +30,7 @@ open FSharp.Compiler.Diagnostics
 open FSharp.Compiler.Interactive.Shell
 
 
+
 #r "nuget:  Fabulous.AST"
 open Fabulous.AST
 open Fantomas.Core.SyntaxOak
@@ -48,7 +49,7 @@ Comments.*\r\n\s
 
 *)
 
-let ocaml_ident_keywords =
+let ocaml_ident_ccccccds =
     set [
 
           "asr"
@@ -242,9 +243,9 @@ module RegistryXmlDocs =
 let codegen_by_registry_type (target_type: Registry_Type) =
     let type_binding =
         match target_type with
-        | Registry_Type.language -> "Language_Subtag"
+        | Registry_Type.language -> "Language_Tag"
         | Registry_Type.region -> "Region_Subtag"
-    Union(type_binding) {
+    (Union(type_binding) {
 
     let target_records = 
         records
@@ -286,6 +287,11 @@ let codegen_by_registry_type (target_type: Registry_Type) =
         |> _.xmlDocs(RegistryXmlDocs.xmldoc_by_record record)        
 
 
+    }
+    ).members() {
+            Member(
+                "this.rdf_string","this.ToString"
+            )
     }
     |> _.attribute(Attribute("RequireQualifiedAccess ; StructuralComparison; StructuralEquality"))
     |> _.xmlDocs( XmlDocs "https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry"        )

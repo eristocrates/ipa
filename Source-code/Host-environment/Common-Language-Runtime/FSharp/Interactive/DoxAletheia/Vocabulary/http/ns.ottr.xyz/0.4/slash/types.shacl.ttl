@@ -1,0 +1,92 @@
+@base <https://spec.ottr.xyz/rOTTR/0.2.0/types.shacl.ttl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix ottr: <http://ns.ottr.xyz/0.4/>.
+@prefix t-pnd: <http://types.ottr.xyz/std/0.1/PunnedTypes#>.
+@prefix rottr: <http://spec.ottr.xyz/rottr/0.2/>.
+@prefix o-rottr: <http://spec.ottr.xyz/rottr/0.2/tpl/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix shacl: <http://www.w3.org/ns/shacl#>.
+
+ottr:BasicTypeShape a sh:NodeShape;
+                    sh:in (rdfs:Resource
+                           ottr:Bot
+                           ottr:IRI
+                           owl:Class
+                           owl:NamedIndividual
+                           rdfs:Datatype
+                           owl:ObjectProperty
+                           owl:DatatypeProperty
+                           owl:AnnotationProperty
+                           rdfs:Literal
+                           xsd:string
+                           xsd:normalizedString
+                           xsd:token
+                           xsd:language
+                           xsd:Name
+                           xsd:NCName
+                           xsd:NMTOKEN
+                           owl:real
+                           owl:rational
+                           xsd:decimal
+                           xsd:integer
+                           xsd:long
+                           xsd:int
+                           xsd:short
+                           xsd:byte
+                           xsd:nonNegativeInteger
+                           xsd:positiveInteger
+                           xsd:unsignedLong
+                           xsd:unsignedInt
+                           xsd:unsignedShort
+                           xsd:unsignedByte
+                           xsd:nonPositiveInteger
+                           xsd:negativeInteger
+                           xsd:double
+                           xsd:float
+                           xsd:date
+                           xsd:dateTime
+                           xsd:dateTimeStamp
+                           xsd:time
+                           xsd:gYear
+                           xsd:gMonth
+                           xsd:gDay
+                           xsd:gYearMonth
+                           xsd:gMonthDay
+                           xsd:duration
+                           xsd:yearMonthDuration
+                           xsd:dayTimeDuration
+                           xsd:hexBinary
+                           xsd:base64Binary
+                           xsd:boolean
+                           xsd:anyURI
+                           rdf:HTML
+                           rdf:XMLLiteral
+                           t-pnd:Punned-Class-ObjectProperty
+                           t-pnd:Punned-Class-DatatypeProperty
+                           t-pnd:Punned-Class-AnnotationProperty
+                           t-pnd:Punned-Datatype-NamedIndividual
+                           t-pnd:Punned-Datatype-ObjectProperty
+                           t-pnd:Punned-Datatype-DatatypeProperty
+                           t-pnd:Punned-Datatype-AnnotationProperty
+                           t-pnd:Punned-NamedIndividual-ObjectProperty
+                           t-pnd:Punned-NamedIndividual-DatatypeProperty
+                           t-pnd:Punned-NamedIndividual-AnnotationProperty
+                           t-pnd:Punned-Class-NamedIndividual-ObjectProperty
+                           t-pnd:Punned-Class-NamedIndividual-DatatypeProperty
+                           t-pnd:Punned-Class-NamedIndividual-AnnotationProperty
+                           t-pnd:Punned-Datatype-NamedIndividual-ObjectProperty
+                           t-pnd:Punned-Datatype-NamedIndividual-DatatypeProperty
+                           t-pnd:Punned-Datatype-NamedIndividual-AnnotationProperty).
+ottr:ListTypeShape a sh:NodeShape;
+                   sh:in (rdf:List
+                          ottr:NEList).
+ottr:TypeShape a sh:NodeShape;
+               sh:or (ottr:BasicTypeShape
+                      ottr:ListTypeShape
+                      ottr:LUB).

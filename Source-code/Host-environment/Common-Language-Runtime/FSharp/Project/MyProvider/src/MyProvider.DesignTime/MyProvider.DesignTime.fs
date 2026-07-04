@@ -11,7 +11,7 @@ open ProviderImplementation
 open ProviderImplementation.ProvidedTypes
 open VDS.RDF
 open VDS.RDF.Parsing
-
+open FSharp.Data
 
 
 // Put any utility helpers here
@@ -243,6 +243,7 @@ let try_namespaced_name (node: RDF_Node) (namespace_names: string array) =
     namespace_names
     |> Array.tryFind (fun namespace_name -> node.string_value.StartsWith(namespace_name))
 *)
+
 [<TypeProvider>]
 type RdfGenerativeProvider(config: TypeProviderConfig) as this =
     inherit TypeProviderForNamespaces
@@ -358,6 +359,23 @@ type RdfGenerativeProvider(config: TypeProviderConfig) as this =
 
                 iri_string, labels, comments
             )
+        myType.AddMembers(
+            [
+                        ProvidedProperty(
+                            "_namespace_name",
+                            typeof<string>,
+                            isStatic = true,
+                            getterCode = fun args -> <@@ rdf_namespace_name @@>
+                        )
+                        ProvidedProperty(
+                            "_vocabulary",
+                            typeof<Iri>,
+                            isStatic = true,
+                            getterCode = fun args -> <@@ NamespacedIri(rdf_namespace_name, "") |> Iri.FromNamespacedIri @@>
+                        )
+                
+            ]
+        )
         myType.AddMembersDelayed(fun () ->
 
             [
@@ -373,17 +391,17 @@ type RdfGenerativeProvider(config: TypeProviderConfig) as this =
                     let term_property =
                         ProvidedProperty(
                             property_name,
-                            typeof<Named_Resource>,
+                            typeof<Iri>,
                             isStatic = true,
-                            getterCode = fun args -> <@@ NamespacedIri(rdf_namespace_name, local_part) @@>
+                            getterCode = fun args -> <@@ NamespacedIri(rdf_namespace_name, local_part) |> Iri.FromNamespacedIri @@>
                         )
 
                     if comments.Length > 0 then
                         let commentText =
                             comments
-                            |> String.concat "\n\n"
+                            |> String.concat "\n"
 
-                        sprintf "<para>%s</para>\n%s" commentText iri_string
+                        sprintf "%s\n\n%s" commentText iri_string
                         |> term_property.AddXmlDoc
 
                     term_property
@@ -396,7 +414,7 @@ type RdfGenerativeProvider(config: TypeProviderConfig) as this =
 
     let myParamType =
         let t =
-            ProvidedTypeDefinition(asm, ns, "RDF_Generative_Provider", Some typeof<obj>, isErased = false)
+            ProvidedTypeDefinition(asm, ns, "RDF_Vocabulary", Some typeof<obj>, isErased = false)
 
         t.DefineStaticParameters(
             parameters =
@@ -419,3 +437,4 @@ type RdfGenerativeProvider(config: TypeProviderConfig) as this =
         t
 
     do this.AddNamespace(ns, [ myParamType ])
+

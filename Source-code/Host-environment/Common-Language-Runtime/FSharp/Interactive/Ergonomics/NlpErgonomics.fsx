@@ -19,22 +19,25 @@ When you add a process using Add(), Catalyst automatically maintains a logical o
 
 English.Register()
 Storage.Current <- DiskStorage("catalyst-models")
-let nlp = Pipeline.For(Language.English)
 
-let recognizer =
-    AveragePerceptronEntityRecognizer.FromStoreAsync(Language.English, Version.Latest, "WikiNER")
-    |> Async.AwaitTask
-    |> Async.RunSynchronously
+module nlp =
+    let pipeline = Pipeline.For(Language.English)
 
-nlp.Add(recognizer) |> ignore
+    let recognizer =
+        AveragePerceptronEntityRecognizer.FromStoreAsync(Language.English, Version.Latest, "WikiNER")
+        |> Async.AwaitTask
+        |> Async.RunSynchronously
 
-let pipeline (input: string) =
-    let doc = Document(input, Language.English)
-    nlp.ProcessSingle(doc)
+    pipeline.Add(recognizer) |> ignore
 
-let doc = pipeline "The quick brown fox jumps over the lazy dog"
-let tokens = doc.ToTokenList()
+    let process_single (input: string) =
+        let document = Document(input, Language.English)
+        pipeline.ProcessSingle(document)
 
-tokens[4]
-let doc_json = doc.ToJson()
-printfn "%s" doc_json
+    let process_multiple (inputs: string array) =
+        let documents =
+            inputs
+            |> Array.map (fun input -> Document(input, Language.English) :> IDocument)
+            |> Array.toSeq
+
+        pipeline.Process documents

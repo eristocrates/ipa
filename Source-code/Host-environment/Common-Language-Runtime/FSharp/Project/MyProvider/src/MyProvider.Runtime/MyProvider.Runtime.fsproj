@@ -1,5 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
@@ -11,7 +11,10 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="LanguageSubtag.fs" />
     <Compile Include="MyProvider.Runtime.fs" />
-    <None Include="paket.references" />
+	<Compile Include="MimeTypes.fs" />
+	<Compile Include="MimePath.fs" />
+	<Compile Include="MimeSubstring.fs" />
+	<None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="4.7.2" />
@@ -20,8 +23,8 @@
       <PrivateAssets>all</PrivateAssets>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\..\.paket\Paket.Restore.targets" />
   <PropertyGroup>
-	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

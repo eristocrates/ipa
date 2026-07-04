@@ -208,8 +208,8 @@ let multipart_distributions =
           "https://raw.githubusercontent.com/linkml/linkml/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/validation.ttl" |]
 
        "http://www.essepuntato.it/2008/12/earmark#",
-       [| "https://sourceforge.net/p/dwellonit/code/HEAD/tree/EARMARK/Current%20Version/earmark_ghost-1_2.owl?format=raw" // "dwellonit.earmark.ghost"
-          "https://sourceforge.net/p/dwellonit/code/HEAD/tree/EARMARK/Current%20Version/earmark_shell-2_0.owl?format=raw" |] // "dwellonit.earmark.shell"
+       [| "https://essepuntato.github.io/earmark/ghost/current/ghost.owl" // "dwellonit.earmark.ghost"
+          "https://essepuntato.it/earmark/shell/current/shell.owl" |] // "dwellonit.earmark.shell"
        "http://www.ontology-of-units-of-measure.org/resource/om-2/",
        [|
 
@@ -279,6 +279,11 @@ let multipart_distributions =
 let manual_distributions =
     [|
 
+       "http://kaiko.getalp.org/dbnary#", "https://kaiko.getalp.org/static/datamodel/2.1.2/ontology.ttl"
+       "http://www.w3.org/2011/http-headers#", "https://www.w3.org/2011/http-headers.rdf"
+       "http://www.w3.org/2011/http-methods#", "http://www.w3.org/2011/http-methods.rdf"
+       "http://www.w3.org/2011/http-statusCodes#", "http://www.w3.org/2011/http-statusCodes.rdf"
+       "https://www.w3.org/ns/posix/stat#", "https://www.w3.org/ns/posix/stat.rdf"
        "http://www.w3.org/2001/XMLSchema#", "https://raw.githubusercontent.com/ruby-rdf/rdf/refs/heads/develop/etc/xsd.ttl"
        "https://www.w3.org/ns/activitystreams#", "https://www.w3.org/ns/activitystreams-owl"
        "http://www.w3.org/ns/json-ld#", "https://www.w3.org/ns/json-ld.jsonld"
@@ -1112,11 +1117,13 @@ let unmatched_namespaces =
 
     )
 
-test <@ unmatched_namespaces.Length = 0 @>
 
 let manual_match_content =
     [|
 
+       "https://www.w3.org/ns/posix/stat#", "posix"
+       "http://www.w3.org/2011/http-headers#", "http_headers"
+       "http://www.w3.org/2011/http-statusCodes#", "http_statusCodes"
        "https://eristocrates.dev/ontology/dbug/", "dbug"
        "http://www.w3.org/2006/time#", "owl_time"
        "https://termlex.oeg.fi.upm.es/termlex#", "termlex"
@@ -1223,6 +1230,10 @@ let match_content =
 
 File.WriteAllLines(@"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Namespace_Prefixes.fsx", match_content)
 
+
+
+
+test <@ unmatched_namespaces.Length = 0 @>
 
 
 // TODO handle the ~90 duplicate prefixes
@@ -1442,7 +1453,7 @@ let lov_content =
             | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
             | _ -> file_stem.Replace('-', '_').Replace('.', '_')
 
-        $"""type {type_binding} = RDF_Generative_Provider<"{namespace_name}", @"{ttl_path}"> """
+        $"""type {type_binding} = RDF_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
 
     )
 
@@ -1632,7 +1643,7 @@ let manual_content =
             | prefix when reserved_keywords.Contains(prefix) -> $"{prefix}_"
             | _ -> file_stem.Replace('-', '_').Replace('.', '_')
 
-        $"""type {type_binding} = RDF_Generative_Provider<"{namespace_name}", @"{ttl_path}"> """
+        $"""type {type_binding} = RDF_Vocabulary<"{namespace_name}", @"{ttl_path}"> """
 
     )
 
@@ -1717,7 +1728,7 @@ let multipart_content =
                     .Replace('-', '_')
                     .Replace('.', '_')
 
-        $"""type {type_binding} = RDF_Generative_Provider<"{namespace_name}", @"{ttl_paths}"> """
+        $"""type {type_binding} = RDF_Vocabulary<"{namespace_name}", @"{ttl_paths}"> """
 
     )
 
@@ -1741,3 +1752,5 @@ open MyProvider
 
 File.WriteAllLines(Path.Combine(__SOURCE_DIRECTORY__, "RdfProvided.txt"), provider_content)
 File.WriteAllLines(Path.Combine(__SOURCE_DIRECTORY__, "ErroredNamespaces.txt"), errored_namespaces)
+
+// TODO investigate linkml output

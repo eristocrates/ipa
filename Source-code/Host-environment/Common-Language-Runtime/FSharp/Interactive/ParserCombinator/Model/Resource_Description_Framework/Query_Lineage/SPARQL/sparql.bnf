@@ -231,7 +231,7 @@ iri                       ::= IRIREF |	PrefixedName
 PrefixedName              ::= PNAME_LN | PNAME_NS
 BlankNode                 ::= BLANK_NODE_LABEL |	ANON
 
-@terminals
+( * @terminals *)
 
 IRIREF                    ::= '<' ([^<>"{}|^`\]-[#x00-#x20])* '>'
 PNAME_NS                  ::= PN_PREFIX? ':'
@@ -281,3 +281,5 @@ PLX                       ::= PERCENT | PN_LOCAL_ESC
 PERCENT                   ::= '%' HEX HEX
 HEX                       ::= [0-9] | [A-F] | [a-f]
 PN_LOCAL_ESC              ::= '\' ( '_' | '~' | '.' | '-' | '!' | '$' | '&' | "'" | '(' | ')' | '*' | '+' | ',' | ';' | '=' | '/' | '?' | '#' | '@' | '%' )
+
+    
