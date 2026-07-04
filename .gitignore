@@ -5,13 +5,7 @@
 secret/
 .git/objects/pack/
 Application/Microsoft/Edge/data_dir/
-Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/*.nq
 C:/Repositories/eristocrates/ipa/Source-code/Host-environment/Common-Language-Runtime/FSharp/Project/MyProvider/packages/
-
-# ------------------------------------------------------------
-# GENERATED: ignores files >= 100 MiB
-# root: C:\Repositories\eristocrates\ipa
-# ------------------------------------------------------------
 .git/objects/pack/pack-88ea8cb40b1997cd6e35551754c02de933a9b0a0.pack
 .git/objects/pack/pack-8ff8b05fa6a5bf0473a1bb3dcd159c22df7a13e2.pack
 .git/objects/pack/pack-f9b9b8199abe090a5206fd8521fa29b9c5fddaa8.pack
@@ -34,6 +28,13 @@ Language/Rdf/Sparql/sparql-anything-v1.1.0.jar
 Language/Xml/basex/Basex122/data/LCPW_OverlayStormwaterInfrastructure_D_WM/tbl.basex
 Language/Xml/basex/Basex122/data/ucd.all.flat/tbl.basex
 Persistence/Database/Embedded/Document/FastDB/Unicode/Unicode/Triples.db
+
+# ------------------------------------------------------------
+# GENERATED: ignores files >= 100 MiB
+# root: C:\Repositories\eristocrates\ipa
+# ------------------------------------------------------------
+.git/objects/pack/pack-3d808c6c2600eb056c68f90946c8e18172bfd5f7.pack
+.git/objects/pack/pack-ce965b10826d4208c4641d09004644f1fd3f1a8a.pack
 Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/lov.normalized.cleaned.nq
 Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/lov.normalized.nq
 Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/lov.nq
