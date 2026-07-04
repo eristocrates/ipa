@@ -21,6 +21,21 @@ open Yog.Render
 open Yog.Render.Dot
 open Yog.Render.Mermaid
 
+
+#r "nuget: QuikGraph"
+#r "nuget: QuikGraph.Serialization"
+#r "nuget: QuikGraph.Graphviz"
+#r "nuget: QuikGraph.Data"
+#r "nuget: QuikGraph.MSAGL"
+#r "nuget: QuikGraph.Petri"
+
+open QuikGraph
+open QuikGraph.Serialization
+open QuikGraph.Graphviz
+open QuikGraph.Data
+open QuikGraph.MSAGL
+open QuikGraph.Petri
+
 #r "nuget: dotNetRdf"
 
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\netstandard2.0\MyProvider.Runtime.dll"
@@ -1077,9 +1092,10 @@ type Draft_Document =
 
 
 let global_prefix_map = global_prefix_declarations |> Map.ofArray
-
-let curie (iri: Namespaced_Iri) =
-    sprintf "%s:%s" global_prefix_map[iri.namespace_name] iri.local_name
+let prefixed_name (delimiter:string) (iri: Namespaced_Iri) = 
+    match global_prefix_map[iri.namespace_name], iri.local_name with 
+    | prefix_label, local_name -> sprintf "%s%s%s" prefix_label delimiter local_name
+let curie (iri: Namespaced_Iri) = iri |> prefixed_name ":" 
 
 let map_prefixes (graph: IGraph) =
     global_prefix_declarations
@@ -1124,6 +1140,12 @@ type Vertex =
         | FromObject (Object_Term.FromIri (Iri.FromNamespacedIri iri)) -> curie iri
         | FromSubject subject_term -> subject_term.rdf_string
         | FromObject object_term -> object_term.rdf_string
+    member this.d2_label = 
+        match this with
+        | FromSubject (Subject_Term.FromIri (Iri.FromNamespacedIri iri)) -> iri |> prefixed_name @"\:"
+        | FromObject (Object_Term.FromIri (Iri.FromNamespacedIri iri)) -> iri |> prefixed_name @"\:"
+        | FromSubject subject_term -> subject_term.rdf_string
+        | FromObject object_term -> object_term.rdf_string
 
 
 
@@ -1164,6 +1186,16 @@ type Edge =
         | FromPredicate predicate_term ->
             match predicate_term with
             | Predicate_Term.FromIri (Iri.FromNamespacedIri iri) -> curie iri
+            | Predicate_Term.FromIri iri -> iri.rdf_string
+    member this.d2_label =
+        match this with
+        | FromTriple triple ->
+            match triple.curPredicate with
+            | Predicate_Term.FromIri (Iri.FromNamespacedIri iri) -> iri |> prefixed_name @"\:"
+            | Predicate_Term.FromIri iri -> iri.rdf_string
+        | FromPredicate predicate_term ->
+            match predicate_term with
+            | Predicate_Term.FromIri (Iri.FromNamespacedIri iri) -> iri |> prefixed_name @"\:"
             | Predicate_Term.FromIri iri -> iri.rdf_string
 
 
@@ -1241,7 +1273,10 @@ type Rdf_Graph =
 
     member this.as_igraph(igraph: IGraph) = NTriples.parse this.nt_text igraph
 
+type YoGraph = Graph<Vertex,Edge>
 
+type Quik_Edge = TaggedEdge<Vertex,Edge>
+type Quik_Graph = BidirectionalGraph<Vertex,Quik_Edge>
 
 
 module Rdf_Graph =
@@ -1270,10 +1305,34 @@ module Rdf_Graph =
             Vertex.FromObject triple.curObject,
             Edge.FromPredicate triple.curPredicate)
         |> Array.Parallel.map (fun (in_vertex, out_vertex, out_edge) ->
-            sprintf "%s -> %s : %s" in_vertex.yog_label out_vertex.yog_label out_edge.yog_label)
+            sprintf "%s -> %s : %s" in_vertex.d2_label out_vertex.d2_label out_edge.d2_label)
 
     let to_d2_text (rdf_graph: Rdf_Graph) =
         rdf_graph |> to_d2_lines |> String.concat "\n"
+    let to_ddot_lines (rdf_graph: Rdf_Graph) =
+        rdf_graph.triples
+        |> Set.toArray
+        |> Array.Parallel.map (fun triple -> triple.ddot
+        )
+
+    let to_ddot_text (rdf_graph: Rdf_Graph) =
+        rdf_graph |> to_ddot_lines |> String.concat "\n"
+    let to_quik_graph (rdf_graph: Rdf_Graph) = 
+        let quik_graph = new Quik_Graph()
+        rdf_graph.triples
+        |> Set.toArray
+        |> Array.map (fun triple ->
+            quik_graph.AddVerticesAndEdge(
+                new Quik_Edge(
+                    Vertex.FromSubject triple.curSubject,
+                    Vertex.FromObject triple.curObject,
+                    Edge.FromPredicate triple.curPredicate
+                    )
+                )
+        )
+        |> ignore
+        quik_graph
+
 
 
 module Turtle =
@@ -1307,13 +1366,20 @@ module ddot =
         { syntax_name = "ddot.it"
           file_extension = "ddot" }
 
+    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+        let file_text =
+            { triples = draft.triples }
+            |> Rdf_Graph.to_ddot_text
+
+        let file_path = syntax.file_path parent_directory stem
+        File.WriteAllText(file_path, file_text)
 module Dot =
 
     let syntax =
         { syntax_name = "Graphviz"
           file_extension = "dot" }
 
-    let options: Dot.Options<Vertex, Edge> =
+    let yog_options: Dot.Options<Vertex, Edge> =
         {
 
           NodeLabel = (fun vertex_id vertex -> vertex.yog_label)
@@ -1328,14 +1394,38 @@ module Dot =
         }
 
 
-    let write_yograph (parent_directory: string) (stem: string) yograph =
+    let write_yograph (parent_directory: string) (stem: string) (yograph:YoGraph) =
         let file_path = syntax.file_path parent_directory stem
-        Dot.writeFile file_path options yograph
+        Dot.writeFile file_path yog_options yograph
+    let write_quik_graph (parent_directory: string) (stem: string) (quik_graph:Quik_Graph) =
+            let dot_graph = new GraphvizAlgorithm<Vertex, Quik_Edge>(quik_graph)
 
-    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+            dot_graph.FormatVertex.Add (fun args ->
+
+                args.VertexFormat.Label <- args.Vertex.yog_label
+
+            )
+            dot_graph.FormatEdge.Add (fun args ->
+
+                args.EdgeFormat.Label.Value <- args.Edge.Tag.yog_label
+
+            )
+
+
+
+            dot_graph.Generate(new FileDotEngine(), (syntax.file_path parent_directory stem ))
+            |> ignore
+    let write_draft_from_yograph (parent_directory: string) (stem: string) (draft: Draft_Document) =
         { triples = draft.triples }
         |> Rdf_Graph.to_yograph
-        |> write_yograph parent_directory stem
+        |> write_yograph parent_directory $"{stem}.yog"
+    let write_draft_from_quik_graph (parent_directory: string) (stem: string) (draft: Draft_Document) =
+        { triples = draft.triples }
+        |> Rdf_Graph.to_quik_graph
+        |> write_quik_graph parent_directory $"{stem}.quik"
+    let write_draft (parent_directory: string) (stem: string) (draft: Draft_Document) =
+        draft |> write_draft_from_yograph parent_directory stem
+        draft |> write_draft_from_quik_graph parent_directory stem
 
 module Mermaid =
 
@@ -1473,6 +1563,16 @@ let inline (->-)
     (object: ^ObjectType when ^ObjectType: (member as_object: Object_Term))
     =
     PredicateObjectList.from_terms predicate.as_predicate [| object.as_object |]
+let inline (->|)
+    (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Predicate_Term))
+    (object_terms: ^ObjectType list when ^ObjectType: (member as_object: Object_Term))
+    =
+    let objects = 
+        object_terms
+        |> List.toArray
+        |> Array.Parallel.map (fun object_term -> object_term.as_object)
+
+    PredicateObjectList.from_terms predicate.as_predicate objects
 
 let inline (->=) (predicate: ^PredicateType when ^PredicateType: (member as_predicate: Predicate_Term)) value_object =
     PredicateObjectList.from_terms
@@ -1789,6 +1889,44 @@ type dbug =
     static member syris = dbug._prefix "syris"
     static member Leonardo_da_Vinci = dbug._prefix "Leonardo_da_Vinci"
     static member La_Joconde_a_Washington = dbug._prefix "La_Joconde_à_Washington"
+    static member archipelago = dbug._prefix "archipelago"
+
+
+// TODO look into formalizing https://archipelago.gg/
+// TODO look into getting python ast ( maybe even from f# somehow?)
+
+
+
+type sanctuary =
+    static member _namespace_name = "https://eristocrates.dev/ontology/sanctuary/"
+
+    static member _prefix local_name =
+        NamespacedIri(sanctuary._namespace_name, local_name)
+        |> Iri.FromNamespacedIri
+    
+    static member eristocrates = sanctuary._prefix "eristocrates"
+    static member siamesederp = sanctuary._prefix "siamesederp"
+
+let write_draft parent_directory stem draft = 
+    Turtle.write_draft parent_directory stem draft
+    Dot.write_draft parent_directory stem draft
+    ddot.write_draft parent_directory stem draft
+    Mermaid.write_draft parent_directory stem draft
+    D2.write_draft parent_directory stem draft
+
+!>sanctuary.siamesederp -~|> [
+     a ->- foaf.Person
+     pext.isInterestedIn ->| [ schemas.Car ; lib.VideoGame ]
+]
+|> write_draft __SOURCE_DIRECTORY__ "test_graph"
+
+
+
+
+
+
+
+
 
 
 (*
@@ -1800,7 +1938,11 @@ type dbug =
 <the Mona Lisa> <was created by> <Leonardo da Vinci>.
 <the video 'La Joconde à Washington'> <is about> <the Mona Lisa>.
 
+
 *)
+
+
+(*
 
 !>dbug.Bob
 -~| [
@@ -1816,7 +1958,6 @@ type dbug =
 --> dbug.Leonardo_da_Vinci
 -!> dbug.La_Joconde_a_Washington
 -~|> [
-
        a ->- lib.Video
        foaf.focus ->- dbug.The_Mona_Lisa ]
 |> Turtle.write_draft __SOURCE_DIRECTORY__ "test_graph"
@@ -1833,6 +1974,13 @@ type dbug =
       foaf.knows ->- dbug.Bob
       foaf.name ->=| [ "Alice"; "alice" ] ]
 |> Turtle.write_draft __SOURCE_DIRECTORY__ "test_graph"
+
+
+
+*)
+
+
+
 
 
 // TODO rework lmdb?

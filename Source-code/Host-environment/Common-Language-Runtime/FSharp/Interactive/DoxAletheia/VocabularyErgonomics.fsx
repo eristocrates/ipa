@@ -278,7 +278,6 @@ let multipart_distributions =
 
 let manual_distributions =
     [|
-
        "http://kaiko.getalp.org/dbnary#", "https://kaiko.getalp.org/static/datamodel/2.1.2/ontology.ttl"
        "http://www.w3.org/2011/http-headers#", "https://www.w3.org/2011/http-headers.rdf"
        "http://www.w3.org/2011/http-methods#", "http://www.w3.org/2011/http-methods.rdf"
@@ -1121,6 +1120,7 @@ let unmatched_namespaces =
 let manual_match_content =
     [|
 
+       "https://eristocrates.dev/ontology/sanctuary/", "sanctuary"
        "https://www.w3.org/ns/posix/stat#", "posix"
        "http://www.w3.org/2011/http-headers#", "http_headers"
        "http://www.w3.org/2011/http-statusCodes#", "http_statusCodes"

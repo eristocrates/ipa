@@ -7,14 +7,9 @@
 @prefix w3: <http://www.w3.org/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix library: <http://purl.org/library/>.
-@prefix rel: <http://purl.org/vocab/relationship/>.
-@prefix dbug: <https://eristocrates.dev/ontology/dbug/>.
-@prefix om: <https://open-metadata.org/ontology/>.
+@prefix schemas: <https://schema.org/>.
+@prefix sanctuary: <https://eristocrates.dev/ontology/sanctuary/>.
 
-dbug:Bob rel:friendOf dbug:Alice;
-         pext:isInterestedIn dbug:The_Mona_Lisa;
-         a foaf:Person;
-         foaf:birthday "1990-07-04"^^xsd:date.
-dbug:La_Joconde_%C3%A0_Washington a library:Video;
-                                  foaf:focus dbug:The_Mona_Lisa.
-dbug:The_Mona_Lisa om:createdBy dbug:Leonardo_da_Vinci.
+sanctuary:siamesederp pext:isInterestedIn library:VideoGame,
+                                          schemas:Car;
+                      a foaf:Person.
