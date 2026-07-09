@@ -1,7 +1,0 @@
-digraph G {
-0 [label="Bob"];
-1 [label="Charlie"];
-2 [label="Alice"];
-0 -> 1 [label="Knows"];
-2 -> 1 [label="Knows"];
-}

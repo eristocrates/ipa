@@ -1,1 +1,0 @@
-distinct-values(//article/*/name())

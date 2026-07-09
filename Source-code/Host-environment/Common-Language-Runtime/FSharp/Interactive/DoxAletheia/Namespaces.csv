@@ -1,5 +1,0 @@
-namespaceIriString                           , downloadIriString                            , preferredNamespacePrefix, quiriePrefix
-"http://www.w3.org/1999/02/22-rdf-syntax-ns#", "http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf"                   , "rdf"       , 
-"http://www.w3.org/2000/01/rdf-schema#"      , "http://www.w3.org/2000/01/rdf-schema#"      , "rdfs"                  , "rdfs"      , 
-"http://www.w3.org/2002/07/owl#"             , "http://www.w3.org/2002/07/owl#"             , "owl"                   , "owl"       , 
-"http://xmlns.com/foaf/0.1/"                 , "https://xmlns.com/foaf/spec/index.rdf"      , "foaf"                  , "foaf"

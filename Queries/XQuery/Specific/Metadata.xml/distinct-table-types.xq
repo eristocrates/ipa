@@ -1,1 +1,0 @@
-distinct-values(//table/@type)
