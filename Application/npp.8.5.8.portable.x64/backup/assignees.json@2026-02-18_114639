@@ -1,0 +1,1701 @@
+[
+    {
+        "id": 10744815,
+        "name": "Me",
+        "full_name": "Brandon Collier",
+        "klass": "",
+        "avatar": {
+            "type": "initials",
+            "initials": "BC",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "email": "collierb@leoncountyfl.gov",
+        "is_user": true
+    },
+    {
+        "id": 6750453,
+        "name": "ADM - Administrative Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "AQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 11648884,
+        "name": "Adrian Castillo",
+        "email": "CastilloA@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "AC",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 13843273,
+        "name": "Aidan Abbey",
+        "email": "AbbeyAi@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "AA",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693022,
+        "name": "Alan Russell",
+        "email": "russella@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "image",
+            "image_class": "avatar_image",
+            "sso_image_class": "",
+            "avatar_url": "https://s3.us-east-1.amazonaws.com/production.main.customer.data/avatars/90b5aebd167bb6b67247/download_card.png?versionId=Ahd5zZKZZ7FtAUEbtucGGbVIrrSlwNQg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAREFPCQSX36KL3J6M%2F20251230%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251230T031924Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Signature=11cb08f373d4a44f59ac91b14864361bec710ba608ea1e6688fed4792e093b21",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693023,
+        "name": "Alan Wittmier",
+        "email": "WittmierA@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "AW",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6747656,
+        "name": "Amanda Holaway",
+        "email": "HolawayA@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 11565924,
+        "name": "Anntina Gray",
+        "email": "GrayAn@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "AG",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6706959,
+        "name": "APP - Accela Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "AQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 6706978,
+        "name": "APP - Banner Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "AQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 6706995,
+        "name": "APP - Public Safety Applications Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "AQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 6706982,
+        "name": "APP - Work Order Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "AQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 9272971,
+        "name": "Austin Segree",
+        "email": "SegreeA@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "AS",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 8206497,
+        "name": "Austin Smith",
+        "email": "SmithAu@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "AS",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693024,
+        "name": "Bang Dinh",
+        "email": "DinhB@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "BD",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 9056008,
+        "name": "Bill Kristoph",
+        "email": "KristophB@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "BK",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6625540,
+        "name": "Bill Simpson",
+        "email": "SimpsonBi@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "BS",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 10744815,
+        "name": "Brandon Collier",
+        "email": "collierb@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "BC",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 11648883,
+        "name": "Brandon Sampson",
+        "email": "SampsonB@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "BS",
+            "color": "var(--colors-foreground-7-700)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693025,
+        "name": "Carolyn Novak",
+        "email": "NovakC@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "CN",
+            "color": "var(--colors-foreground-7-700)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6747427,
+        "name": "Chad Gordon",
+        "email": "GordonC@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "CG",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 10937598,
+        "name": "Chad Wittmier",
+        "email": "WittmierC@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "image",
+            "image_class": "avatar_image",
+            "sso_image_class": "",
+            "avatar_url": "https://s3.us-east-1.amazonaws.com/production.main.customer.data/avatars/7592ba2913e5745a0e22/cwpurple_card.png?versionId=sNjyF8QqS68tsu3KjzY8tfF6PK65F4XI&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAREFPCQSX36KL3J6M%2F20251230%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251230T031924Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Signature=955447bc45fc1fea77345ac502b96e09f0f98ba013d5b94afffb62a4a1f7fe9c",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "out_of_office": {
+            "id": 3096,
+            "assignee_id": 10937598,
+            "start_at": "2025-12-08",
+            "end_at": "2025-12-08",
+            "message": "Hello! I'm currently out of the office. This ticket will be reassigned to the helpdesk team so someone will be able to assist you while I'm away. For immediate assistance, please contact the helpdesk at 850-606-5502 or TSC@leoncountyfl.gov.",
+            "acting_assignee_id": 6750231,
+            "active": false,
+            "account_id": 76804,
+            "now_out_of_office": false
+        },
+        "type": "UserGroup"
+    },
+    {
+        "id": 8930227,
+        "name": "Cheryl LaChapelle",
+        "email": "LaChapelleC@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "CL",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "out_of_office": {
+            "id": 1728,
+            "assignee_id": 8930227,
+            "start_at": "2025-11-20",
+            "end_at": "2025-12-01",
+            "message": "I am out of the office and will return Monday, December 1st.  Please direct all emails to TSC@LeonCountyFL.gov, or call extension 5502 for assistance.  \n\nThank you.  ",
+            "acting_assignee_id": 11648883,
+            "active": true,
+            "account_id": 76804,
+            "now_out_of_office": false
+        },
+        "type": "UserGroup"
+    },
+    {
+        "id": 6712585,
+        "name": "Clerk - Finweb Support - External",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-200)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 13149091,
+        "name": "COURT - Court-Related IT Support",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "CS",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 6715542,
+        "name": "Court - Courtroom AV Support - External",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-700)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 13148992,
+        "name": "Court IT Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6693026,
+        "name": "Dan Thomas",
+        "email": "ThomasD@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "DT",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6630729,
+        "name": "David Gross",
+        "email": "GrossD@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "DG",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693027,
+        "name": "Debora Benore",
+        "email": "BenoreD@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "DB",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6621393,
+        "name": "Derek Lanier",
+        "email": "LanierD@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "DL",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "out_of_office": {
+            "id": 424,
+            "assignee_id": 6621393,
+            "start_at": "2020-11-26",
+            "end_at": "2020-11-30",
+            "message": "I am out of office returning Nov.30",
+            "acting_assignee_id": -1,
+            "active": true,
+            "account_id": 76804,
+            "now_out_of_office": false
+        },
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693028,
+        "name": "Drew Nagy-Kato",
+        "email": "NagyKatoD@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "DN",
+            "color": "var(--colors-foreground-7-200)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693031,
+        "name": "Elizabeth Ostrus",
+        "email": "OstrusE@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "EO",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6764326,
+        "name": "GIS - GIS Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "GQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 6748900,
+        "name": "Isaac Shuler",
+        "email": "ShulerI@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "IS",
+            "color": "var(--colors-foreground-7-200)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693035,
+        "name": "Jacob Coble",
+        "email": "CobleJ@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "JC",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6568482,
+        "name": "Janna Richardson",
+        "email": "richardsonj@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "image",
+            "image_class": "avatar_image",
+            "sso_image_class": "",
+            "avatar_url": "https://s3.us-east-1.amazonaws.com/production.main.customer.data/avatars/7bb30e34017bf20cf142/Janna_Richardson__card.jpg?versionId=T6.ZJ2BYLT80RE1g0qBTN5y8cz_xurqV&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAREFPCQSX36KL3J6M%2F20251230%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251230T031924Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Signature=0f1985e9d9123d655bad784ec0bdf8b6f9f0ce20cefa1bf709e1906340c26d77",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693037,
+        "name": "Jason Cox",
+        "email": "CoxJ@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "JC",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693039,
+        "name": "Jerry Bentley",
+        "email": "BentleyJ@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "JB",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693040,
+        "name": "Jessie Sanders",
+        "email": "SandersJe@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "JS",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6568086,
+        "name": "Jimmy Grantham",
+        "email": "granthamj@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "image",
+            "image_class": "avatar_image",
+            "sso_image_class": "",
+            "avatar_url": "https://s3.us-east-1.amazonaws.com/production.main.customer.data/avatars/c2615624b5a0e0b9a2e3/me_card.jpg?versionId=4JRSmTRquD5vqukYYlsr2.E8s19DA.JJ&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAREFPCQSX36KL3J6M%2F20251230%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251230T031924Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Signature=73aa1bb5dd402123b237a74e3c295db8c8551b0b6b96364cbf2eccf91e3ba723",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "out_of_office": {
+            "id": 341,
+            "assignee_id": 6568086,
+            "start_at": "2025-06-09",
+            "end_at": "2025-06-15",
+            "message": "I'm out of the office.  Contact TSC at 850-606-5502 for help. ",
+            "acting_assignee_id": 6750231,
+            "active": false,
+            "account_id": 76804,
+            "now_out_of_office": false
+        },
+        "type": "UserGroup"
+    },
+    {
+        "id": 6706973,
+        "name": "JIS - Justice Information System Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "JQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 6621769,
+        "name": "John Grams",
+        "email": "GramsJ@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "JG",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "out_of_office": {
+            "id": 704,
+            "assignee_id": 6621769,
+            "start_at": "2025-11-20",
+            "end_at": "2025-12-02",
+            "message": "I am out of office until Tuesday, December 2nd.",
+            "acting_assignee_id": 6750231,
+            "active": false,
+            "account_id": 76804,
+            "now_out_of_office": false
+        },
+        "type": "UserGroup"
+    },
+    {
+        "id": 6624906,
+        "name": "Jon Adcock",
+        "email": "AdcockJ@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "JA",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693041,
+        "name": "Josh Forman",
+        "email": "FormanJ@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "JF",
+            "color": "var(--colors-foreground-7-700)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 8710284,
+        "name": "Kaleb Simmons",
+        "email": "SimmonsK@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "KS",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6605339,
+        "name": "Kawanis Wiggins",
+        "email": "WigginsK@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "KW",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6630731,
+        "name": "Kerstin Walling",
+        "email": "WallingK@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "KW",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693044,
+        "name": "Marcus Curtis",
+        "email": "CurtisMa@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "MC",
+            "color": "var(--colors-foreground-7-200)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6746422,
+        "name": "Mary Dean Barwick",
+        "email": "BarwickM@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "MB",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6621386,
+        "name": "Matthew Brown",
+        "email": "BrownM@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "MB",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "out_of_office": {
+            "id": 529,
+            "assignee_id": 6621386,
+            "start_at": "2025-06-12",
+            "end_at": "2025-06-22",
+            "message": "I am out of the office. Please contact 606-5502 for immediate assistance.",
+            "acting_assignee_id": 13453855,
+            "active": true,
+            "account_id": 76804,
+            "now_out_of_office": false
+        },
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693045,
+        "name": "Michelle Taylor",
+        "email": "TAYLORM@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "MT",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 12617897,
+        "name": "Naya-Darice Ramos",
+        "email": "RamosN@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "NR",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693029,
+        "name": "Ned Cake",
+        "email": "CakeE@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "NC",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 13453855,
+        "name": "Nick Pfrenger",
+        "email": "PfrengerN@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "NP",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 12261702,
+        "name": "Nikola Bogdanov",
+        "email": "BogdanovN@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "NB",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6706935,
+        "name": "NWK - Audio Visual Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "NQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 6706928,
+        "name": "NWK - Connectivity Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "NQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 6706896,
+        "name": "NWK - Phone Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "NQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 7816438,
+        "name": "OIT - ACD Process Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-700)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6750101,
+        "name": "OIT Group - Accela Team",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6750433,
+        "name": "OIT Group - Admin Team",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-200)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6750123,
+        "name": "OIT Group - Banner Team",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7525994,
+        "name": "OIT Group - Document Management Support Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7526010,
+        "name": "OIT Group - DocuSign Support Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6764325,
+        "name": "OIT Group - GIS Support Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6750231,
+        "name": "OIT Group - Helpdesk Team",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7526021,
+        "name": "OIT Group - Horizons Support Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7526100,
+        "name": "OIT Group - Ivanti Support Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6750146,
+        "name": "OIT Group - JIS Team",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7527527,
+        "name": "OIT Group - Knowbe4 Support Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7527537,
+        "name": "OIT Group - LANSweeper Enterprise Support Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-200)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6750153,
+        "name": "OIT Group - Network Team",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-200)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6750136,
+        "name": "OIT Group - Public Safety Apps Team",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7565538,
+        "name": "OIT Group - Purchasing",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7527549,
+        "name": "OIT Group - Service Desk Support Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7527551,
+        "name": "OIT Group - SmartSheet Support Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6750156,
+        "name": "OIT Group - Systems Team",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7527552,
+        "name": "OIT Group - Tabfusion Support Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7565447,
+        "name": "OIT Group - Training Requests Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6750158,
+        "name": "OIT Group - Web Team",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-700)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6750145,
+        "name": "OIT Group - Work Order Mgmt Team",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-200)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 7563645,
+        "name": "OIT Group TSC - Mobile Device Management",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6693048,
+        "name": "Pamela Stalnaker",
+        "email": "StalnakerP@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "PS",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 10510267,
+        "name": "Patrick Murphy",
+        "email": "MurphyPa@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "PM",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6625311,
+        "name": "Pedro Montoya",
+        "email": "MontoyaP@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "PM",
+            "color": "var(--colors-foreground-7-200)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "out_of_office": {
+            "id": 400,
+            "assignee_id": 6625311,
+            "start_at": "2025-01-11",
+            "end_at": "2025-01-26",
+            "message": "I am out of office.",
+            "acting_assignee_id": 6750145,
+            "active": true,
+            "account_id": 76804,
+            "now_out_of_office": false
+        },
+        "type": "UserGroup"
+    },
+    {
+        "id": 10806748,
+        "name": "Puja Bhandari",
+        "email": "BhandariP@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "PB",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693053,
+        "name": "Rao Manepalli",
+        "email": "ManepalliR@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "RM",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 13594282,
+        "name": "Rayna Brockman",
+        "email": "BrockmanR@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "RB",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 13003980,
+        "name": "Rhett Pinelo",
+        "email": "PineloRh@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "RP",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 13348193,
+        "name": "Ryan Curtis",
+        "email": "CurtisRy@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "RC",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6747852,
+        "name": "Sam Kersey",
+        "email": "KerseyS@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "SK",
+            "color": "var(--colors-foreground-7-200)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 7191004,
+        "name": "SAO - State Attorney IT Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "SQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 7191042,
+        "name": "SAO IT Group",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-300)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6693051,
+        "name": "Scott Weisman",
+        "email": "WeismanS@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "SW",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6640590,
+        "name": "Shailaja Sheel",
+        "email": "SheelS@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "SS",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6706945,
+        "name": "SYS - Server Related Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "SQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 6568099,
+        "name": "System - VIP Users",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6706942,
+        "name": "Systems Central",
+        "email": "systems_central@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "SC",
+            "color": "var(--colors-foreground-7-800)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6568093,
+        "name": "Technology Group - Change Advisory Board",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-600)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 6568094,
+        "name": "Technology Group - Emergency CAB",
+        "email": "",
+        "klass": "group_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "group",
+            "color": "var(--colors-foreground-7-700)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "RealGroup"
+    },
+    {
+        "id": 11899604,
+        "name": "Terrence Coffie",
+        "email": "CoffieT@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "TC",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693054,
+        "name": "Tim Fike",
+        "email": "FikeT@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "TF",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693055,
+        "name": "Tricia McClenahan",
+        "email": "McClenahanT@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "TM",
+            "color": "var(--colors-foreground-7-500)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6706997,
+        "name": "TSC - Helpdesk Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "TQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 9931250,
+        "name": "Violet Rosenzweig",
+        "email": "RosenzweigV@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "VR",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6706989,
+        "name": "WEB - Website Support Queue",
+        "email": "",
+        "klass": "queue_in_select ",
+        "disabled": false,
+        "avatar": {
+            "type": "queue",
+            "initials": "WQ",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": false,
+        "type": "AssignableQueueGroup"
+    },
+    {
+        "id": 9909293,
+        "name": "Will Whittle",
+        "email": "WhittleW@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "WW",
+            "color": "var(--colors-foreground-7-100)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693046,
+        "name": "Zack Wetzel",
+        "email": "wetzelz@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "ZW",
+            "color": "var(--colors-foreground-7-400)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    },
+    {
+        "id": 6693057,
+        "name": "Zane Weaver",
+        "email": "WeaverZ@leoncountyfl.gov",
+        "klass": "",
+        "disabled": false,
+        "avatar": {
+            "type": "initials",
+            "initials": "ZW",
+            "color": "var(--colors-foreground-7-700)",
+            "klass": "Group"
+        },
+        "is_user": true,
+        "type": "UserGroup"
+    }
+]

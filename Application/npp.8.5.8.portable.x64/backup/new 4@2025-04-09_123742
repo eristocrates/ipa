@@ -1,0 +1,44 @@
+= let
+    // Get all tables in the workbook
+    Source = Excel.CurrentWorkbook(),
+
+    // Rename "Name" columns in nested tables to avoid conflicts
+    RenameColumns = Table.TransformColumns(
+        Source,
+        {
+            "Content", 
+            each if Table.HasColumns(_, "Name") then 
+                Table.RenameColumns(_, {{"Name", "OriginalName"}}) 
+            else _
+        }
+    ),
+
+    // Add a column to track the source table name
+    AddSourceTable = if Table.HasColumns(RenameColumns, "SourceTable") then
+        RenameColumns
+    else
+        Table.AddColumn(RenameColumns, "SourceTable", each [Name]),
+
+    // Expand all tables while preserving the source name
+    ExpandedTables = Table.ExpandTableColumn(
+        AddSourceTable,
+        "Content",
+        Table.ColumnNames(AddSourceTable[Content]{0})
+		),
+		
+    // Filter to only rows with a "Common ID"
+    FilteredRows = Table.SelectRows(ExpandedTables, each ([Common ID] <> null)),
+	
+
+    // Group by "Common ID" and aggregate source tables
+    GroupedData = Table.Group(
+        FilteredRows,
+        {"Common ID"},
+        {
+            "SourceTables", 
+            each Text.Combine(List.Distinct([SourceTable]), ", "), 
+            type text
+        }
+    )
+in
+    GroupedData

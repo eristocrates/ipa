@@ -1,0 +1,25 @@
+= let
+    // 1. Get the specific table
+    Source = Excel.CurrentWorkbook(){[Name="NPDESInventory"]}[Content],
+    
+    // 2. For EACH COLUMN, get distinct non-null values
+    GetUniqueValues = (columnName) => 
+        List.RemoveNulls(
+            List.Distinct(
+                Table.Column(Source, columnName)
+            )
+        ),
+    
+    // 3. Create one column per original column, containing its unique values
+    UniqueValueColumns = List.Transform(
+        Table.ColumnNames(Source),
+        each GetUniqueValues(_)
+    ),
+    
+    // 4. Build the output table
+    Result = Table.FromColumns(
+        UniqueValueColumns,
+        Table.ColumnNames(Source)
+    )
+in
+    Result

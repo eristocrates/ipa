@@ -1,0 +1,787 @@
+<?xml version="1.0"?>
+<!--Messaging 
+loaded 2/5/2026 8:07:25 AM(local time)
+level "Just this site" [en(US)]
+by /LM/W3SVC/1/ROOT/operations1134147574756437798-->
+<MESSAGING nodeId="0"
+           tenantId=""
+           logicalId="lid://infor.ips.ips"
+           messagingEnabled="False"
+           defaultMapperType="Hansen.Core.Messaging.Mapping.Mapper">
+	<MAPPINGS nodeId="20000001">
+		<MAPPING nodeId="20000010"
+		         verb="Sync"
+		         description="BOD mapping for employee"
+		         businessObjectMoniker="Hansen.Resources.Employee"
+		         noun="Personnel">
+			<INBOUND nodeId="20000012"
+			         automaticPollingEnabled="True"
+			         mappingFile="Resources\SyncPersonnelImport.xml"/>
+			<FORMATTERS nodeId="20000098"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+		</MAPPING>
+		<MAPPING nodeId="20000016"
+		         verb="Sync"
+		         description="BOD mapping for budget number under Resources"
+		         businessObjectMoniker="Hansen.Resources.BudgetNumber"
+		         noun="LawsonGLAccountMaster">
+			<INBOUND nodeId="20000018"
+			         automaticPollingEnabled="True"
+			         mappingFile="Resources\SyncGLAccountMasterImport.xml"/>
+			<FORMATTERS nodeId="20000097"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+		</MAPPING>
+		<MAPPING nodeId="20000021"
+		         businessObjectMoniker="Hansen.Inventory.MaterialsManagement.Requisition"
+		         noun="Requisition"
+		         verb="Process"
+		         description="BOD mapping for inventory requisition">
+			<OUTBOUND nodeId="20000022"
+			          mappingFile="Inventory\MaterialsManagement\ProcessRequisitionExport.xml"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000023"
+		         businessObjectMoniker="Hansen.Inventory.MaterialsManagement.Requisition"
+		         noun="Requisition"
+		         verb="Acknowledge"
+		         description="BOD mapping for requisition acknowledgement">
+			<INBOUND nodeId="20000024"
+			         automaticPollingEnabled="True"
+			         mappingFile="Inventory\MaterialsManagement\AcknowledgeRequisitionImport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000028"
+		         verb="Process"
+		         noun="ReceiveDelivery"
+		         businessObjectMoniker="Hansen.Inventory.ReturnFromIssueTransaction"
+		         description="BOD mapping for a return from issue transaction">
+			<OUTBOUND nodeId="20000030"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="Inventory\ProcessReceiveDeliveryExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000034"
+		         verb="Process"
+		         description="BOD mapping for issue transaction"
+		         businessObjectMoniker="Hansen.Inventory.IssueTransaction"
+		         noun="Shipment">
+			<OUTBOUND nodeId="20000036"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="Inventory\ProcessShipmentExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000040"
+		         verb="Sync"
+		         noun="AssetMaster"
+		         businessObjectMoniker="Hansen.AssetManagement.Asset"
+		         description="BOD mapping for asset (Inbound is for Lawson and the Outbound is for general use)">
+			<INBOUND nodeId="20000042"
+			         automaticPollingEnabled="True"
+			         mappingFile="AssetManagement\SyncAssetMasterImport.xml"/>
+			<FORMATTERS nodeId="20000096"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+			<OUTBOUND nodeId="20000185"
+			          automaticMessagingEnabled="True"
+			          mappingFile="AssetManagement\SyncAssetMaster.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000046"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.Inventory.PartCatalog"
+		         noun="ItemMaster"
+		         description="BOD mapping for part catalog">
+			<INBOUND nodeId="20000048"
+			         automaticPollingEnabled="True"
+			         mappingFile="Inventory\SyncItemMasterImport.xml"/>
+			<FORMATTERS nodeId="20000095"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+		</MAPPING>
+		<MAPPING nodeId="20000052"
+		         verb="Sync"
+		         noun="PurchaseOrder"
+		         businessObjectMoniker="Hansen.Inventory.MaterialsManagement.PurchaseOrder"
+		         description="BOD mapping for purchase order">
+			<INBOUND nodeId="20000054"
+			         automaticPollingEnabled="True"
+			         mappingFile="Inventory\MaterialsManagement\SyncPurchaseOrderImport.xml"/>
+			<FORMATTERS nodeId="20000099"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+		</MAPPING>
+		<MAPPING nodeId="20000058"
+		         verb="Sync"
+		         noun="ReceiveDelivery"
+		         businessObjectMoniker="Hansen.Inventory.ReceiptTransaction"
+		         description="BOD mapping for receipt transaction">
+			<INBOUND nodeId="20000060"
+			         automaticPollingEnabled="True"
+			         mappingFile="Inventory\SyncReceiveDeliveryImport.xml"/>
+			<FORMATTERS nodeId="20000100"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+		</MAPPING>
+		<MAPPING nodeId="20000064"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.Billing.RefundPayment"
+		         noun="RemittanceAdvice"
+		         description="BOD mapping for requesting and updating a refund payment">
+			<INBOUND nodeId="20000066"
+			         automaticPollingEnabled="True"
+			         mappingFile="Billing\SyncRemittanceAdviceImport.xml"/>
+			<FORMATTERS nodeId="20000101"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+		</MAPPING>
+		<MAPPING nodeId="20000070"
+		         businessObjectMoniker="Hansen.Resources.JournalSummary"
+		         noun="SourceSystemJournalEntry"
+		         verb="Process"
+		         description="BOD mapping for Journal entries">
+			<OUTBOUND nodeId="20000072"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="Resources\ProcessSourceSystemJournalEntryExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000083"
+		         businessObjectMoniker="Hansen.Billing.RefundPayment"
+		         noun="RemittanceAdvice"
+		         description="BOD mapping for requesting and updating a refund payment"
+		         verb="Process">
+			<OUTBOUND nodeId="20000087"
+			          automaticPollingEnabled="True"
+			          automaticMessagingEnabled="True"
+			          mappingFile="Billing\ProcessRemittanceAdviceExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="50000120"
+		         mapperType="Hansen.Core.Messaging.Mapping.DotLiquidMapper"
+		         verb="Publish"
+		         noun="AddressOutput"
+		         businessObjectMoniker="Hansen.Property.Address"
+		         description="Publish Address Info to the client">
+			<OUTBOUND nodeId="50000122"
+			          processorExtensionType=""
+			          processingManagerType="Hansen.Core.Messaging.Processing.GenericOutboundProcessingManager"
+			          automaticPollingEnabled="False"
+			          toLogicalId=""
+			          automaticMessagingEnabled="True"
+			          queueingEnabled="False"
+			          defaultPriority="0"
+			          mappingFile="Resources\AddressContextPublish.liquid"/>
+			<LISTENERS nodeId="50000126"
+			           clearDefaults="True"/>
+			<FORMATTERS nodeId="50000132"
+			            clearDefaults="True"/>
+			<INBOUND nodeId="50000134"
+			         mappingFile=""/>
+		</MAPPING>
+		<MAPPING nodeId="50000136"
+		         mapperType="Hansen.Core.Messaging.Mapping.DotLiquidMapper"
+		         verb="Publish"
+		         noun="ContactOutput"
+		         businessObjectMoniker="Hansen.Resources.Contact"
+		         description="Publish Contact Info to the client">
+			<OUTBOUND nodeId="50000138"
+			          toLogicalId=""
+			          processingManagerType="Hansen.Core.Messaging.Processing.GenericOutboundProcessingManager"
+			          queueingEnabled="False"
+			          defaultPriority="0"
+			          processorExtensionType=""
+			          automaticPollingEnabled="False"
+			          automaticMessagingEnabled="True"
+			          mappingFile="Resources\ContactContextPublish.liquid"/>
+			<LISTENERS nodeId="50000142"
+			           clearDefaults="True"/>
+			<FORMATTERS nodeId="50000148"
+			            clearDefaults="True"/>
+			<INBOUND nodeId="50000150"
+			         mappingFile=""/>
+		</MAPPING>
+		<MAPPING nodeId="50000152"
+		         businessObjectMoniker="ValidateContactBusiness"
+		         mapperType="Hansen.Core.Messaging.Mapping.DotLiquidMapper"
+		         verb="Publish"
+		         noun="ContactBusinessOutput"
+		         description="Publish Business Contact Info to the client">
+			<OUTBOUND nodeId="50000154"
+			          processorExtensionType=""
+			          processingManagerType="Hansen.Core.Messaging.Processing.GenericOutboundProcessingManager"
+			          automaticPollingEnabled="False"
+			          toLogicalId=""
+			          automaticMessagingEnabled="True"
+			          queueingEnabled="False"
+			          defaultPriority="0"
+			          mappingFile="Resources\ContactBusinessContextPublish.liquid"/>
+			<LISTENERS nodeId="50000158"
+			           clearDefaults="True"/>
+			<FORMATTERS nodeId="50000164"
+			            clearDefaults="True"/>
+			<INBOUND nodeId="50000166"
+			         mappingFile=""/>
+		</MAPPING>
+		<MAPPING nodeId="20000168"
+		         mapperType="Hansen.Core.Messaging.Mapping.DotLiquidMapper"
+		         verb="Publish"
+		         noun="InfoViewerInit"
+		         businessObjectMoniker="InfoViewerApplet_Drillback"
+		         description="Publish viewer record context for associated drillback">
+			<OUTBOUND nodeId="20000170"
+			          queueingEnabled="False"
+			          automaticMessagingEnabled="True"
+			          toLogicalId=""
+			          automaticPollingEnabled="False"
+			          processorExtensionType=""
+			          processingManagerType="Hansen.Core.Messaging.Processing.GenericOutboundProcessingManager"
+			          defaultPriority="0"
+			          mappingFile="Resources\InfoViewerContextPublish.liquid"/>
+			<LISTENERS nodeId="20000174"
+			           clearDefaults="True"/>
+			<FORMATTERS nodeId="20000178"
+			            clearDefaults="True"/>
+			<INBOUND nodeId="20000180"
+			         mappingFile=""/>
+		</MAPPING>
+		<MAPPING nodeId="20000183"
+		         businessObjectMoniker="Hansen.AssetManagement.AssetInspection"
+		         verb="Sync"
+		         noun="InspectionOrder">
+			<OUTBOUND nodeId="20000184"
+			          automaticMessagingEnabled="True"
+			          mappingFile="AssetManagement\SyncInspectionOrder.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000186"
+		         verb="Process"
+		         businessObjectMoniker="Hansen.AssetManagement.Asset"
+		         noun="AssetMaster">
+			<INBOUND nodeId="20000187"
+			         mappingFile="AssetManagement\ProcessAssetMaster.xml"
+			         automaticPollingEnabled="True"/>
+			<FORMATTERS nodeId="20000278"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+		</MAPPING>
+		<MAPPING nodeId="20000188"
+		         verb="Process"
+		         noun="InspectionOrder"
+		         businessObjectMoniker="Hansen.AssetManagement.AssetInspection">
+			<INBOUND nodeId="20000189"
+			         mappingFile="AssetManagement\ProcessInspectionOrder.xml"
+			         automaticPollingEnabled="True"/>
+			<FORMATTERS nodeId="20000279"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+		</MAPPING>
+		<MAPPING nodeId="50000259"
+		         verb="Process"
+		         noun="CustomerCall"
+		         businessObjectMoniker="Hansen.CRM.ServiceRequest"
+		         description="BOD mapping for inserting and updating a service request">
+			<FORMATTERS nodeId="50000261"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+			<INBOUND nodeId="50000263"
+			         automaticPollingEnabled="True"
+			         mappingFile="CRM\ProcessCustomerCallImport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="50000265"
+		         verb="Process"
+		         noun="MaintenanceOrder"
+		         businessObjectMoniker="Hansen.WorkManagement.WorkOrder"
+		         description="BOD mapping for inserting and updating a work order">
+			<FORMATTERS nodeId="50000267"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+			<INBOUND nodeId="50000269"
+			         automaticPollingEnabled="True"
+			         mappingFile="WorkManagement\ProcessMaintenanceOrderImport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="50000271"
+		         verb="Sync"
+		         noun="CustomerCall"
+		         businessObjectMoniker="Hansen.CRM.ServiceRequest"
+		         description="BOD mapping for service request">
+			<OUTBOUND nodeId="50000273"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CRM\SyncCustomerCallExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="50000275"
+		         verb="Sync"
+		         noun="MaintenanceOrder"
+		         businessObjectMoniker="Hansen.WorkManagement.WorkOrder"
+		         description="BOD mapping for work order">
+			<OUTBOUND nodeId="50000277"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="WorkManagement\SyncMaintenanceOrderExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000280"
+		         noun="PublicSectorInspection"
+		         businessObjectMoniker="DummyMoniker"
+		         verb="Process">
+			<FORMATTERS nodeId="20000281"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+			<INBOUND nodeId="20000282"
+			         automaticPollingEnabled="True"
+			         mappingFile="CDR\ProcessCDRInspectionImport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000283"
+		         noun="PublicSectorHearing"
+		         businessObjectMoniker="Hansen.CDR.CodeEnforcement.CaseHearing"
+		         verb="Sync">
+			<OUTBOUND nodeId="20000284"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CDR\SyncCDRHearingExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000285"
+		         noun="PublicSectorHearing"
+		         businessObjectMoniker="Hansen.CDR.Planning.PlanHearing"
+		         verb="Sync">
+			<OUTBOUND nodeId="20000286"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CDR\SyncCDRHearingExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000287"
+		         noun="PublicSectorInspection"
+		         businessObjectMoniker="Hansen.CDR.Use.Inspection"
+		         verb="Sync">
+			<OUTBOUND nodeId="20000288"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CDR\SyncCDRInspectionExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000289"
+		         noun="PublicSectorInspection"
+		         businessObjectMoniker="Hansen.CDR.Project.Inspection"
+		         verb="Sync">
+			<OUTBOUND nodeId="20000290"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CDR\SyncCDRInspectionExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000291"
+		         noun="PublicSectorInspection"
+		         businessObjectMoniker="Hansen.CDR.Building.Inspection"
+		         verb="Sync">
+			<OUTBOUND nodeId="20000292"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CDR\SyncCDRInspectionExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000293"
+		         noun="PublicSectorInspection"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.CodeEnforcement.Inspection">
+			<OUTBOUND nodeId="20000294"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CDR\SyncCDRInspectionExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000295"
+		         noun="PublicSectorInspection"
+		         businessObjectMoniker="Hansen.CDR.TradeLicense.Inspection"
+		         verb="Sync">
+			<OUTBOUND nodeId="20000296"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CDR\SyncCDRInspectionExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000297"
+		         noun="PublicSectorInspection"
+		         businessObjectMoniker="Hansen.CDR.BusinessLicense.Inspection"
+		         verb="Sync">
+			<OUTBOUND nodeId="20000298"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CDR\SyncCDRInspectionExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000299"
+		         businessObjectMoniker="Hansen.CDR.Planning.Inspection"
+		         verb="Sync"
+		         noun="PublicSectorInspection">
+			<OUTBOUND nodeId="20000300"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CDR\SyncCDRInspectionExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000302"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.Building.Review"
+		         noun="PublicSectorReview">
+			<OUTBOUND nodeId="20000304"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRReviewExport.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000306"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.Project.Review"
+		         noun="PublicSectorReview">
+			<OUTBOUND nodeId="20000308"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRReviewExport.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000310"
+		         noun="PublicSectorReview"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.Planning.Review">
+			<OUTBOUND nodeId="20000312"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRReviewExport.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000314"
+		         noun="PublicSectorReview"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.CodeEnforcement.Review">
+			<OUTBOUND nodeId="20000316"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRReviewExport.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000318"
+		         noun="PublicSectorReview"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.BusinessLicense.Review">
+			<OUTBOUND nodeId="20000320"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRReviewExport.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000322"
+		         noun="PublicSectorReview"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.TradeLicense.Review">
+			<OUTBOUND nodeId="20000324"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRReviewExport.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000326"
+		         noun="PublicSectorReview"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.Use.Review">
+			<OUTBOUND nodeId="20000328"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRReviewExport.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000330"
+		         verb="Sync"
+		         noun="PublicSectorPermit"
+		         businessObjectMoniker="Hansen.CDR.Building.BuildingApplication">
+			<OUTBOUND nodeId="20000332"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="CDR\SyncCDRPermitExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000334"
+		         noun="PublicSectorPermit"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.Project.ProjectApplication">
+			<OUTBOUND nodeId="20000336"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRPermitExport.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000338"
+		         noun="PublicSectorPermit"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.Planning.PlanningApplication">
+			<OUTBOUND nodeId="20000340"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRPermitExport.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000342"
+		         noun="PublicSectorPermit"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.Use.UseApplication">
+			<OUTBOUND nodeId="20000344"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRPermitExport.xml"
+			          automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="20000345"
+		         businessObjectMoniker="Hansen.Resources.ContactIdentity"
+		         verb="Sync"
+		         description="BOD mapping for ContactMaster"
+		         noun="ContactMaster">
+			<OUTBOUND nodeId="20000346"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="Resources\SyncContactMaster.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000347"
+		         description="BOD mapping for Parcel"
+		         businessObjectMoniker="Hansen.Property.Parcel"
+		         noun="PublicSectorParcelMaster"
+		         verb="Sync">
+			<OUTBOUND nodeId="20000348"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="Property\SyncPublicSectorParcelMaster.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000349"
+		         description="BOD mapping for Address"
+		         noun="PublicSectorLocationMaster"
+		         businessObjectMoniker="Hansen.Property.Address"
+		         verb="Sync">
+			<OUTBOUND nodeId="20000350"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="Property\SyncPublicSectorLocation.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000351"
+		         noun="CustomerPartyMaster"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.Billing.Account"
+		         description="BOD mapping for account">
+			<OUTBOUND nodeId="20000352"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="Billing\SyncCustomerPartyMasterExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000353"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.CodeEnforcement.Case"
+		         noun="PublicSectorCase">
+			<OUTBOUND nodeId="20000354"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRCaseExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000355"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.CDR.TradeLicense.TradeLicense"
+		         noun="PublicSectorLicense">
+			<OUTBOUND nodeId="20000356"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRLicenseExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="20000357"
+		         verb="Sync"
+		         noun="PublicSectorLicense"
+		         businessObjectMoniker="Hansen.CDR.BusinessLicense.LicenseApplication">
+			<OUTBOUND nodeId="20000358"
+			          automaticMessagingEnabled="True"
+			          mappingFile="CDR\SyncCDRLicenseExport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="aa270cc4a6024b69bd22a8ad3d4d993f"
+		         businessObjectMoniker="Hansen.Core.AccessControl.AccessRole"
+		         noun="SecurityRoleMaster"
+		         verb="Sync"
+		         description="BOD mapping for Access Roles">
+			<OUTBOUND nodeId="e04563b53cef4480a3ef5c565f0d7efe"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="Core\SyncSecurityRoleMaster.xml"/>
+			<FORMATTERS nodeId="29a03ac9a5b043d19fde8d00e4c6d512"/>
+		</MAPPING>
+		<MAPPING nodeId="dca73d3882c5440d8db18780e64ca39e"
+		         businessObjectMoniker=""
+		         noun=""
+		         verb="Acknowledge"
+		         description="Default Rejected BOD">
+			<OUTBOUND nodeId="52241ff1f65e48a59766325f634552b3"
+			          automaticMessagingEnabled="True"
+			          processingManagerType="Hansen.Core.Messaging.Processing.AcknowledgeRejectedOutboundProcessingManager"/>
+			<FORMATTERS nodeId="0e8393c453994392be17c5267936ef24"
+			            clearDefaults="True"/>
+			<LISTENERS nodeId="6450fdd3bacc4692979066aa3c972a1d"
+			           clearDefaults="True"/>
+		</MAPPING>
+		<MAPPING nodeId="ddd02a3e40b24f9eaf5ba604e62e932d"
+		         businessObjectMoniker=""
+		         noun=""
+		         verb="Confirm"
+		         description="Default Reject BOD">
+			<OUTBOUND nodeId="4f73da67c8194479821f1551a3b4f64f"
+			          automaticMessagingEnabled="True"
+			          processingManagerType="Hansen.Core.Messaging.Processing.ConfirmRejectedOutboundProcessingManager"/>
+			<FORMATTERS nodeId="36527ae949214cc5ae8b2f87c86a9096"
+			            clearDefaults="True"/>
+			<LISTENERS nodeId="41cd082b8f454db495318e5b3e1ba23d"
+			           clearDefaults="True"/>
+		</MAPPING>
+		<MAPPING nodeId="fdd48634d3d44e94b902224ac70cdbcb"
+		         businessObjectMoniker="DummyMoniker"
+		         description="BOD mapping for CSF Code Definition (Budget number segment 3-4, budget number segment 6-15)"
+		         noun="CodeDefinition"
+		         verb="Sync">
+			<FORMATTERS nodeId="00739ca28f374a44b95c5a4bfe37fbbb"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+			<INBOUND nodeId="35169744fbab489caae716d0e7b58b94"
+			         mappingFile="Resources\SyncCodeDefinitionImport.xml"
+			         automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="42e86057171244aca693d246401f6b30"
+		         businessObjectMoniker="Hansen.Resources.BudgetNumberSegment2"
+		         description="CSF BOD mapping for Accounting Entity (Budget number segment 2)"
+		         noun="AccountingEntity"
+		         verb="Sync">
+			<FORMATTERS nodeId="07ea13bdffef4c90ab917c626f471f8f"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+			<INBOUND nodeId="8716844f86b64208a0c2d42ce3329fb4"
+			         mappingFile="Resources\SyncAccountingEntityImport.xml"
+			         automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="933279540c98479989ca43c53b82283d"
+		         businessObjectMoniker="Hansen.Resources.BudgetNumberSegment5"
+		         description="CSF BOD mapping for Project Master (Budget number segment 5)"
+		         noun="ProjectMaster"
+		         verb="Sync">
+			<FORMATTERS nodeId="c7745d1b7ca849c080d6b846b0a60c66"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+			<INBOUND nodeId="46f4b2b61e8a4056a293bd484ca13fba"
+			         mappingFile="Resources\SyncProjectMasterImport.xml"
+			         automaticPollingEnabled="True"/>
+		</MAPPING>
+		<MAPPING nodeId="bdce1e4f0f1c44cbba36771e80267f21"
+		         noun="SupplierPartyMaster"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.Resources.Vendor"
+		         description="BOD mapping for vendor under Resources">
+			<FORMATTERS nodeId="d9acb86b6459452db23858358f456f93"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+			<INBOUND nodeId="a2e98c142a64443fb9d2bb65a987ea82"
+			         automaticPollingEnabled="True"
+			         mappingFile="Resources\SyncSupplierPartyMasterImport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="9ec93ab2f02742f9875f2b142e8a1c26"
+		         noun="SecurityUserMaster"
+		         verb="Sync"
+		         businessObjectMoniker="Hansen.Core.AccessControl.AccessUser"
+		         description="Used to map users between Mingle and IPS.">
+			<FORMATTERS nodeId="12d20ea751c14783900bd89fe7543832"/>
+			<INBOUND nodeId="845ad94b4cde4935a3131db3e0de975a"
+			         mappingFile="Core\SyncSecurityUserMaster.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="b91d576a47534584869bd7f82576dd89"
+		         businessObjectMoniker="Hansen.CRM.ServiceRequest"
+		         noun="CustomerCall"
+		         verb="Publish"/>
+		<MAPPING nodeId="023db82a66a545dcaacb0c6a2e1c089f"
+		         businessObjectMoniker="Hansen.Core.Messaging.IONFile"
+		         noun="WSLGenericFile"
+		         verb="Process"
+		         description="BOD mapping for File attachment under Core">
+			<FORMATTERS nodeId="d11530e630c4445a9b6b5a35e9456271"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+			<OUTBOUND nodeId="6880a366caa641e49b4a4251ed50b898"
+			          automaticMessagingEnabled="True"
+			          automaticPollingEnabled="True"
+			          mappingFile="Core\ProcessWSLGenericFileImport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="ac98506007ec47b680ed2a1251fbb33d"
+		         businessObjectMoniker="Hansen.Core.Messaging.IONFile"
+		         description="BOD mapping for File attachment under Core"
+		         noun="WSLGenericFile"
+		         verb="Sync">
+			<FORMATTERS nodeId="703ec465938e486eb00b56d70f3760b4"
+			            fieldFormatterType="Hansen.Core.Messaging.Mapping.Components.Formatters.NullFieldFormatter"/>
+			<INBOUND nodeId="3ee64ca5adee44e5a51aedf938a3be29"
+			         automaticPollingEnabled="True"
+			         mappingFile="Core\SyncWSLGenericFileImport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="0965bda0c7d34d7fb1e833f34e83eda5"
+		         verb="Acknowledge"
+		         noun="AssetMaster"
+		         businessObjectMoniker="Hansen.AssetManagement.Asset">
+			<OUTBOUND nodeId="c6278dd5bb384e5ca6d25d2241d45e98"
+			          automaticMessagingEnabled="True"
+			          processingManagerType="Hansen.Core.Messaging.Processing.AcknowledgeAcceptedOutboundProcessingManager"/>
+			<FORMATTERS nodeId="29c34f7f5e8b465ca6281138bc81ad2f"
+			            clearDefaults="True"/>
+			<LISTENERS nodeId="b48f01b789414562b15d8dcf63999363"
+			           clearDefaults="True"/>
+		</MAPPING>
+		<MAPPING nodeId="84ba443d814749b3ab74276d7735124d"
+		         businessObjectMoniker="SmartHelp"
+		         noun="SmartHelp"
+		         verb="Publish"
+		         description="Send Business context to Smart Help"
+		         mapperType="Hansen.Core.Messaging.Mapping.DotLiquidMapper">
+			<FORMATTERS nodeId="0e6f8588343542bc8c8aca9053c04a9c"
+			            clearDefaults="True"/>
+			<INBOUND nodeId="4552c82481254852897638ccd323831a"
+			         mappingFile=""/>
+			<LISTENERS nodeId="e69091b2855041dcab912bfda6fd6419"
+			           clearDefaults="True"/>
+			<OUTBOUND nodeId="0eeba0d7b40d4af9bef251c95aea4ce2"
+			          automaticMessagingEnabled="True"
+			          mappingFile="Resources\SmartHelpPublish.liquid"
+			          processingManagerType="Hansen.Core.Messaging.Processing.GenericOutboundProcessingManager"
+			          processorExtensionType=""
+			          toLogicalId=""
+			          defaultPriority="0"
+			          queueingEnabled="False"
+			          automaticPollingEnabled="False"/>
+		</MAPPING>
+		<MAPPING nodeId="98114efacd80433db0c947b7b058c678"
+		         businessObjectMoniker="Hansen.Inventory.ReturnFromIssueTransaction"
+		         noun="ReceiveDelivery"
+		         verb="Acknowledge"
+		         description="BOD mapping for receive delivery acknowledgement">
+			<INBOUND nodeId="24968cba1c8446f68291acb35ffc3825"
+			         automaticPollingEnabled="True"
+			         mappingFile="Inventory\AcknowledgeReceiveDeliveryImport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="a4446e20afc34b81880a472f2771829f"
+		         noun="Shipment"
+		         verb="Acknowledge"
+		         businessObjectMoniker="Hansen.Inventory.IssueTransaction"
+		         description="BOD mapping for shipment acknowledgement">
+			<INBOUND nodeId="4bcb452552654205a5849e68ddb4018b"
+			         automaticPollingEnabled="True"
+			         mappingFile="Inventory\AcknowledgeShipmentImport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="5cf9c4019f134f85a03f8d6d2b7834a0"
+		         noun="RemittanceAdvice"
+		         verb="Acknowledge"
+		         businessObjectMoniker="Hansen.Billing.RefundPayment"
+		         description="BOD mapping for remittance advice acknowledgement">
+			<INBOUND nodeId="83ab7b95b5b14a75b86228fa26e0005b"
+			         automaticPollingEnabled="True"
+			         mappingFile="Billing\AcknowledgeRemittanceAdviceImport.xml"/>
+		</MAPPING>
+		<MAPPING nodeId="3b40e606fd41452ca09292db4874c690"
+		         businessObjectMoniker="Hansen.Resources.JournalSummary"
+		         noun="SourceSystemJournalEntry"
+		         verb="Acknowledge"
+		         description="BOD mapping for sourcesystemjournalentry acknowledgement">
+			<INBOUND nodeId="9c7228a99138449aa480f0dc6d74c8cb"
+			         automaticPollingEnabled="True"
+			         mappingFile="Resources\AcknowledgeSourceSystemJournalEntryImport.xml"/>
+		</MAPPING>
+	</MAPPINGS>
+	<INBOUNDPROCESSING nodeId="20000003"
+	                   defaultProcessingManagerType="Hansen.Core.Messaging.Processing.Components.InboundProcessingManager"
+	                   pollerType="Hansen.Core.BatchManager.Pollers.Ion.IonInboxTaskPoller"
+	                   mappingRoot="D:\www\production\operations\Core\Messaging\Mappings\Import"
+	                   whiteListChecking="False">
+		<HANDLERS nodeId="20000088">
+			<HANDLER nodeId="20000089"
+			         handlerType="Hansen.Core.Messaging.Handlers.InboundMessageHandler"
+			         description="Handles the actions taken when a message needs to be imported."/>
+		</HANDLERS>
+	</INBOUNDPROCESSING>
+	<OUTBOUNDPROCESSING nodeId="20000004"
+	                    defaultProcessingManagerType="Hansen.Core.Messaging.Processing.Components.OutboundProcessingManager"
+	                    mappingRoot="D:\www\production\operations\Core\Messaging\Mappings\Export"
+	                    pollerType="Hansen.Core.BatchManager.Pollers.Ion.IonOutboxTaskPoller">
+		<HANDLERS nodeId="20000090">
+			<HANDLER nodeId="20000091"
+			         handlerType="Hansen.Core.Messaging.Handlers.OutboundMessageHandler"
+			         description="Handles the actions taken when a message needs to be exported."/>
+			<HANDLER nodeId="a0fd57f8166f446a9fd50f1825324cef"
+			         handlerType="Hansen.Core.Messaging.Handlers.ControlCommandOutboundHandler"
+			         description="Creates a command and adds it to the page after the message has been exported."/>
+			<HANDLER nodeId="391baf29595a42fea7d3a0b9698b322c"
+			         handlerType="Hansen.Core.Messaging.Handlers.O365CalendarHandler"
+			         description="CalendarHandler"/>
+		</HANDLERS>
+	</OUTBOUNDPROCESSING>
+	<LISTENERS nodeId="20000092">
+		<LISTENER nodeId="20000093"
+		          listenerType="Hansen.Core.Messaging.Listeners.FormulaMessagingListener"
+		          description="Responsible for invoking the workflow events:  BeforeMessageExported, AfterMessageExported and AfterMessageImported."/>
+		<LISTENER nodeId="20000094"
+		          listenerType="Hansen.Core.Messaging.Listeners.DefaultMessagingListener"
+		          description="Listens and responds to messaging events with system default actions.  Current this involves sending acknowledgements for nouns where outbound acknowledgements are supported by the Mapping configuration."/>
+	</LISTENERS>
+</MESSAGING>

@@ -1,0 +1,50 @@
+{
+    "responses": [
+        {
+            "name": "f33e1937-13a2-4539-b1cb-c9be26845001",
+            "httpStatusCode": 200,
+            "headers": {
+                "Pragma": "no-cache",
+                "x-ms-ratelimit-remaining-tenant-reads": "249",
+                "x-ms-request-id": "60acb311-e4f7-4884-8d83-ceea1d67318b",
+                "x-ms-correlation-request-id": "752a2924-aadb-4255-92e7-53d8c77552f8",
+                "x-ms-routing-request-id": "EASTUS:20260312T222042Z:60acb311-e4f7-4884-8d83-ceea1d67318b",
+                "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+                "X-Content-Type-Options": "nosniff",
+                "X-Cache": "CONFIG_NOCACHE",
+                "X-MSEdge-Ref": "Ref A: D81D7BF7221540A1A059197537282532 Ref B: BL2AA2010204033 Ref C: 2026-03-12T22:20:42Z",
+                "Cache-Control": "no-cache",
+                "Date": "Thu, 12 Mar 2026 22:20:42 GMT"
+            },
+            "content": {
+                "value": [
+                    {
+                        "id": "/tenants/854ed59b-aa79-47ab-bff4-86a4211bbe97",
+                        "tenantId": "854ed59b-aa79-47ab-bff4-86a4211bbe97",
+                        "countryCode": "US",
+                        "displayName": "Leon County Government",
+                        "domains": [
+                            "leonvotes.gov",
+                            "leonvotes.org",
+                            "FLPD2.COM",
+                            "C8F27ZDT4BH8THVS20DGE6H5G6.smtp.exclaimer.cloud",
+                            "visittallahassee.com",
+                            "LeonCountyFl.onmicrosoft.com",
+                            "leoncountyfl.gov",
+                            "LeonCountyFl.mail.onmicrosoft.com",
+                            "leongov.com",
+                            "dist2me.org",
+                            "Leonpa.gov",
+                            "Leonpa.org",
+                            "leonflsheriff.gov"
+                        ],
+                        "tenantCategory": "Home",
+                        "defaultDomain": "leoncountyfl.gov",
+                        "tenantType": "AAD"
+                    }
+                ]
+            },
+            "contentLength": 541
+        }
+    ]
+}

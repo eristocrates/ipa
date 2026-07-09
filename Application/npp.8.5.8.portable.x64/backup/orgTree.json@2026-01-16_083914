@@ -1,0 +1,1076 @@
+{
+  "radiganj": {
+    "officeMetadata": {
+      "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users(accountEnabled,ageGroup,assignedLicenses,assignedPlans,businessPhones,city,companyName,consentProvidedForMinor,country,createdDateTime,creationType,department,displayName,employeeHireDate,employeeId,employeeLeaveDateTime,employeeOrgData,employeeType,externalUserState,externalUserStateChangeDateTime,faxNumber,givenName,imAddresses,isManagementRestricted,isResourceAccount,jobTitle,lastPasswordChangeDateTime,legalAgeGroupClassification,licenseAssignmentStates,mail,mailNickname,mobilePhone,officeLocation,onPremisesDistinguishedName,onPremisesDomainName,onPremisesExtensionAttributes,onPremisesImmutableId,onPremisesLastSyncDateTime,onPremisesProvisioningErrors,onPremisesSamAccountName,onPremisesSecurityIdentifier,onPremisesSyncEnabled,onPremisesUserPrincipalName,otherMails,passwordPolicies,postalCode,preferredDataLocation,preferredLanguage,provisionedPlans,proxyAddresses,securityIdentifier,serviceProvisioningErrors,showInAddressList,signInSessionsValidFromDateTime,state,streetAddress,surname,usageLocation,userPrincipalName,userType,aboutMe,birthday,hireDate,interests,mySite,pastProjects,preferredName,responsibilities,schools,skills)/$entity",
+      "accountEnabled": true,
+      "businessPhones": [
+        "850-606-1400"
+      ],
+      "city": "Tallahassee",
+      "companyName": "Leon County Government",
+      "createdDateTime": "2022-04-13T16:38:23Z",
+      "department": "LCG - Operations",
+      "displayName": "Justin Radigan",
+      "employeeId": "90030357",
+      "givenName": "Justin",
+      "imAddresses": [
+        "radiganj@leoncountyfl.gov"
+      ],
+      "jobTitle": "Traffic Sign Technician",
+      "lastPasswordChangeDateTime": "2025-06-16T19:10:20Z",
+      "mail": "radiganj@leoncountyfl.gov",
+      "mailNickname": "RadiganJ",
+      "onPremisesDistinguishedName": "CN=RadiganJ,OU=Public_Works,OU=Board,OU=Leon,DC=LeonAD,DC=gov",
+      "onPremisesDomainName": "LeonAD.gov",
+      "onPremisesImmutableId": "ZGgGsEXf2E6fEAvP0s1N2g==",
+      "onPremisesLastSyncDateTime": "2025-06-16T19:39:02Z",
+      "onPremisesSamAccountName": "RadiganJ",
+      "onPremisesSecurityIdentifier": "S-1-5-21-1544231702-2463214364-265622845-38019",
+      "onPremisesSyncEnabled": true,
+      "onPremisesUserPrincipalName": "RadiganJ@leoncountyfl.gov",
+      "otherMails": [],
+      "passwordPolicies": "None",
+      "proxyAddresses": [
+        "smtp:RadiganJ@LeonCountyFl.onmicrosoft.com",
+        "SMTP:radiganj@leoncountyfl.gov",
+        "X500:/o=LeonAD-Exchange/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=e9d9752680ef4d2baf442e858f2cd0e1-RadiganJ",
+        "x500:/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=c1ad48e43ca74b40a44508de6c9e0333-RadiganJ",
+        "X500:/o=City of Tallahassee/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=1e5d8f3dd61a4b24b1432b6b94d17f50-Radi",
+        "X500:/o=LCPA/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=b6bc450f447a4ae5a608e646c2048dd7-RadiganJ"
+      ],
+      "securityIdentifier": "S-1-12-1-1447531394-1238095418-2373840829-410243409",
+      "signInSessionsValidFromDateTime": "2025-06-16T19:10:20Z",
+      "state": "Florida",
+      "surname": "Radigan",
+      "usageLocation": "US",
+      "userPrincipalName": "RadiganJ@leoncountyfl.gov",
+      "userType": "Member",
+      "birthday": "0001-01-01T08:00:00Z",
+      "hireDate": "0001-01-01T08:00:00Z",
+      "interests": [],
+      "mySite": "https://leoncountyfl-my.sharepoint.com/personal/radiganj_leoncountyfl_gov/",
+      "pastProjects": [],
+      "preferredName": "",
+      "responsibilities": [],
+      "schools": [],
+      "skills": [],
+      "assignedLicenses": [
+        {
+          "disabledPlans": [],
+          "skuId": "5726ecb1-0b9a-4914-8897-8b7abc7c35cc"
+        },
+        {
+          "disabledPlans": [],
+          "skuId": "e823ca47-49c4-46b3-b38d-ca11d5abe3d2"
+        }
+      ],
+      "assignedPlans": [
+        {
+          "assignedDateTime": "2022-08-23T13:16:35Z",
+          "capabilityStatus": "Enabled",
+          "service": "MicrosoftCommunicationsOnline",
+          "servicePlanId": "986d454b-9027-4d9f-880b-f1b68f920cc4"
+        },
+        {
+          "assignedDateTime": "2023-10-25T19:25:44Z",
+          "capabilityStatus": "Enabled",
+          "service": "SCO",
+          "servicePlanId": "c1ec4a95-1f05-45b3-a911-aa3fa01094f5"
+        },
+        {
+          "assignedDateTime": "2023-10-25T19:25:44Z",
+          "capabilityStatus": "Enabled",
+          "service": "MultiFactorService",
+          "servicePlanId": "8a256a2b-b617-496d-b51b-e76466e88db0"
+        },
+        {
+          "assignedDateTime": "2023-10-25T19:25:44Z",
+          "capabilityStatus": "Enabled",
+          "service": "RMSOnline",
+          "servicePlanId": "1b66aedf-8ca1-4f73-af76-ec76c6180f98"
+        },
+        {
+          "assignedDateTime": "2023-10-25T19:25:44Z",
+          "capabilityStatus": "Enabled",
+          "service": "Adallom",
+          "servicePlanId": "932ad362-64a8-4783-9106-97849a1a30b9"
+        },
+        {
+          "assignedDateTime": "2023-10-25T19:25:44Z",
+          "capabilityStatus": "Enabled",
+          "service": "AADPremiumService",
+          "servicePlanId": "41781fb2-bc02-4b7c-bd55-b576c07bb09d"
+        },
+        {
+          "assignedDateTime": "2023-10-25T19:25:44Z",
+          "capabilityStatus": "Enabled",
+          "service": "WindowsDefenderATP",
+          "servicePlanId": "292cc034-7b7c-4950-aaf5-943befd3f1d4"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "exchange",
+          "servicePlanId": "6e5b7995-bd4f-4cbd-9d19-0e32010c72f0"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "MicrosoftOffice",
+          "servicePlanId": "de9234ff-6483-44d9-b15e-dca72fdd27af"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "OfficeForms",
+          "servicePlanId": "24af5f65-d0f3-467b-9f78-ea798c4aeffc"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "ProjectProgramsAndPortfolios",
+          "servicePlanId": "e7d09ae4-099a-4c34-a2a2-3e166e95c44a"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "ProjectWorkManagement",
+          "servicePlanId": "5b4ef465-7ea1-459a-9f91-033317755a51"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "TeamspaceAPI",
+          "servicePlanId": "304767db-7d23-49e8-a945-4a7eb65f9f28"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "MicrosoftStream",
+          "servicePlanId": "2c1ada27-dbaa-46f9-bda6-ecb94445f758"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "exchange",
+          "servicePlanId": "8c3069c0-ccdb-44be-ab77-986203a67df2"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "To-Do",
+          "servicePlanId": "c87f142c-d1e9-4363-8630-aaea9c4d9ae5"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "ProcessSimpleGCC",
+          "servicePlanId": "c537f360-6a00-4ace-a7f5-9128d0ac1e4b"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "exchange",
+          "servicePlanId": "5136a095-5cf0-4aff-bec3-e84448b38ea5"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "WhiteboardServices",
+          "servicePlanId": "94a54592-cd8b-425e-87c6-97868b000b91"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "SharePoint",
+          "servicePlanId": "153f85dd-d912-4762-af6c-d6e0fb4f6692"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "CRM",
+          "servicePlanId": "06162da2-ebf9-4954-99a0-00fee96f95cc"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "SharePoint",
+          "servicePlanId": "8f9f0f3b-ca90-406c-a842-95579171f8ec"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "RMSOnline",
+          "servicePlanId": "6a76346d-5d6e-4051-9fe3-ed3f312b5597"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "CRM",
+          "servicePlanId": "a70bbf38-cdda-470d-adb8-5804b8770f41"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "exchange",
+          "servicePlanId": "199a5c09-e0ca-4e37-8f7c-b05d533e1ea2"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "PowerAppsServiceGCC",
+          "servicePlanId": "0a20c815-5e81-4727-9bdc-2b5a117850c3"
+        },
+        {
+          "assignedDateTime": "2023-12-13T17:42:53Z",
+          "capabilityStatus": "Enabled",
+          "service": "MicrosoftCommunicationsOnline",
+          "servicePlanId": "a31ef4a2-f787-435e-8335-e47eb0cafc94"
+        }
+      ],
+      "licenseAssignmentStates": [
+        {
+          "skuId": "5726ecb1-0b9a-4914-8897-8b7abc7c35cc",
+          "disabledPlans": [],
+          "assignedByGroup": "86c01acb-41ba-4514-924a-3f03fc00cad5",
+          "state": "Active",
+          "error": "None",
+          "lastUpdatedDateTime": "2022-08-23T13:16:34.9721212Z"
+        },
+        {
+          "skuId": "e823ca47-49c4-46b3-b38d-ca11d5abe3d2",
+          "disabledPlans": [],
+          "assignedByGroup": "90f21dc2-c11d-4b84-a98c-ca79ded33f42",
+          "state": "Active",
+          "error": "None",
+          "lastUpdatedDateTime": "2023-10-25T19:25:44.7339185Z"
+        }
+      ],
+      "onPremisesExtensionAttributes": {
+        "extensionAttribute1": "TRANSPORTATION MAINTENANCE",
+        "extensionAttribute2": "723003",
+        "extensionAttribute3": "431",
+        "extensionAttribute4": "Daniel Foister",
+        "extensionAttribute5": "FoisterD@leoncountyfl.gov",
+        "extensionAttribute6": null,
+        "extensionAttribute7": "MFA_Enable",
+        "extensionAttribute8": null,
+        "extensionAttribute9": null,
+        "extensionAttribute10": null,
+        "extensionAttribute11": null,
+        "extensionAttribute12": null,
+        "extensionAttribute13": null,
+        "extensionAttribute14": "CN",
+        "extensionAttribute15": "1"
+      },
+      "onPremisesProvisioningErrors": [],
+      "provisionedPlans": [
+        {
+          "capabilityStatus": "Enabled",
+          "provisioningStatus": "Success",
+          "service": "MicrosoftCommunicationsOnline"
+        },
+        {
+          "capabilityStatus": "Enabled",
+          "provisioningStatus": "Success",
+          "service": "MicrosoftCommunicationsOnline"
+        },
+        {
+          "capabilityStatus": "Enabled",
+          "provisioningStatus": "Success",
+          "service": "SharePoint"
+        },
+        {
+          "capabilityStatus": "Enabled",
+          "provisioningStatus": "Success",
+          "service": "SharePoint"
+        },
+        {
+          "capabilityStatus": "Enabled",
+          "provisioningStatus": "Success",
+          "service": "exchange"
+        },
+        {
+          "capabilityStatus": "Enabled",
+          "provisioningStatus": "Success",
+          "service": "exchange"
+        },
+        {
+          "capabilityStatus": "Enabled",
+          "provisioningStatus": "Success",
+          "service": "exchange"
+        },
+        {
+          "capabilityStatus": "Enabled",
+          "provisioningStatus": "Success",
+          "service": "exchange"
+        }
+      ],
+      "serviceProvisioningErrors": []
+    },
+    "sharepointMetadata": {
+      "__metadata": {
+        "id": "https://leoncountyfl.sharepoint.com/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)",
+        "uri": "https://leoncountyfl.sharepoint.com/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)",
+        "type": "SP.UserProfiles.PersonProperties"
+      },
+      "AccountName": "i:0#.f|membership|radiganj@leoncountyfl.gov",
+      "DirectReports": {
+        "__metadata": {
+          "type": "Collection(Edm.String)"
+        },
+        "results": []
+      },
+      "DisplayName": "Justin Radigan",
+      "Email": "radiganj@leoncountyfl.gov",
+      "ExtendedManagers": {
+        "__metadata": {
+          "type": "Collection(Edm.String)"
+        },
+        "results": [
+          "i:0#.f|membership|longv@leoncountyfl.gov",
+          "i:0#.f|membership|ezzagaghin@leoncountyfl.gov",
+          "i:0#.f|membership|pellb@leoncountyfl.gov",
+          "i:0#.f|membership|rileya@leoncountyfl.gov",
+          "i:0#.f|membership|jonesroy@leoncountyfl.gov",
+          "i:0#.f|membership|feaginj@leoncountyfl.gov",
+          "i:0#.f|membership|foisterd@leoncountyfl.gov"
+        ]
+      },
+      "ExtendedReports": {
+        "__metadata": {
+          "type": "Collection(Edm.String)"
+        },
+        "results": [
+          "i:0#.f|membership|radiganj@leoncountyfl.gov"
+        ]
+      },
+      "IsFollowed": false,
+      "LatestPost": null,
+      "Peers": {
+        "__metadata": {
+          "type": "Collection(Edm.String)"
+        },
+        "results": [
+          "i:0#.f|membership|mackc@leoncountyfl.gov",
+          "i:0#.f|membership|williamsdex@leoncountyfl.gov",
+          "i:0#.f|membership|zamorae@leoncountyfl.gov",
+          "i:0#.f|membership|bruggnerp@leoncountyfl.gov"
+        ]
+      },
+      "PersonalSiteHostUrl": "https://leoncountyfl-my.sharepoint.com:443/",
+      "PersonalUrl": "https://leoncountyfl-my.sharepoint.com/personal/radiganj_leoncountyfl_gov/",
+      "PictureUrl": null,
+      "Title": "Traffic Sign Technician",
+      "UserProfileProperties": {
+        "results": [
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "UserProfile_GUID",
+            "Value": "19fd7bc2-b515-44c6-a931-2821226a75f9",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SID",
+            "Value": "i:0h.f|membership|10032001ef919287@live.com",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "ADGuid",
+            "Value": "System.Byte[]",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "AccountName",
+            "Value": "i:0#.f|membership|radiganj@leoncountyfl.gov",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "FirstName",
+            "Value": "Justin",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PhoneticFirstName",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "LastName",
+            "Value": "Radigan",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PhoneticLastName",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "PreferredName",
+            "Value": "Justin Radigan",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PhoneticDisplayName",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "WorkPhone",
+            "Value": "850-606-1400",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "Department",
+            "Value": "LCG - Operations",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "Title",
+            "Value": "Traffic Sign Technician",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-Department",
+            "Value": "LCG - Operations",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "Manager",
+            "Value": "i:0#.f|membership|foisterd@leoncountyfl.gov",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "AboutMe",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "PersonalSpace",
+            "Value": "/personal/radiganj_leoncountyfl_gov/",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "PictureURL",
+            "Value": "https://leoncountyfl-my.sharepoint.com:443/User%20Photos/Profile%20Pictures/56479382-d63a-49cb-bdef-7d8d51d17318_MThumb.jpg",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "UserName",
+            "Value": "RadiganJ@leoncountyfl.gov",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "QuickLinks",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "WebSite",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "PublicSiteRedirect",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-JobTitle",
+            "Value": "Traffic Sign Technician",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-Dotted-line",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-Peers",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-Responsibility",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-SipAddress",
+            "Value": "radiganj@leoncountyfl.gov",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-MySiteUpgrade",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-ProxyAddresses",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-HireDate",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-DisplayOrder",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-ClaimID",
+            "Value": "RadiganJ@leoncountyfl.gov",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-ClaimProviderID",
+            "Value": "membership",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-ResourceSID",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-ResourceAccountName",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-MasterAccountName",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-UserPrincipalName",
+            "Value": "RadiganJ@leoncountyfl.gov",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-O15FirstRunExperience",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PersonalSiteInstantiationState",
+            "Value": "2",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-DistinguishedName",
+            "Value": "CN=56479382-d63a-49cb-bdef-7d8d51d17318,OU=854ed59b-aa79-47ab-bff4-86a4211bbe97,OU=Tenants,OU=MSOnline,DC=SPODS192274,DC=msft,DC=net",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-SourceObjectDN",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-ClaimProviderType",
+            "Value": "Forms",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-SavedAccountName",
+            "Value": "i:0#.f|membership|radiganj@leoncountyfl.gov",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-SavedSID",
+            "Value": "System.Byte[]",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-ObjectExists",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PersonalSiteCapabilities",
+            "Value": "4",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PersonalSiteFirstCreationTime",
+            "Value": "7/14/2022 12:01:18 PM",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PersonalSiteLastCreationTime",
+            "Value": "7/14/2022 12:01:18 PM",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PersonalSiteNumberOfRetries",
+            "Value": "1",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PersonalSiteFirstCreationError",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-FeedIdentifier",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "WorkEmail",
+            "Value": "radiganj@leoncountyfl.gov",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "CellPhone",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "Fax",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "HomePhone",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "Office",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-Location",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "Assistant",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PastProjects",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-Skills",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-School",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-Birthday",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-StatusNotes",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-Interests",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-HashTags",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-EmailOptin",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PrivacyPeople",
+            "Value": "False",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PrivacyActivity",
+            "Value": "0",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PictureTimestamp",
+            "Value": "63873688582",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PicturePlaceholderState",
+            "Value": "1",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PictureExchangeSyncState",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-TimeZone",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "OfficeGraphEnabled",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-UserType",
+            "Value": "0",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-HideFromAddressLists",
+            "Value": "False",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-RecipientTypeDetails",
+            "Value": "2147483648",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "DelveFlags",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "VideoUserPopup",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "msOnline-ObjectId",
+            "Value": "56479382-d63a-49cb-bdef-7d8d51d17318",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-PointPublishingUrl",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-TenantInstanceId",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-SharePointHomeExperienceState",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-MultiGeoFlags",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "PreferredDataLocation",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-UserIdentityType",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-UserIdentityParent",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-UserEhamsLocation",
+            "Value": "",
+            "ValueType": "Edm.String"
+          },
+          {
+            "__metadata": {
+              "type": "SP.KeyValue"
+            },
+            "Key": "SPS-AgentIdentityBlueprintId",
+            "Value": "",
+            "ValueType": "Edm.String"
+          }
+        ]
+      },
+      "UserUrl": "https://leoncountyfl-my.sharepoint.com:443/Person.aspx?accountname=i%3A0%23%2Ef%7Cmembership%7Cradiganj%40leoncountyfl%2Egov"
+    }
+  }
+}

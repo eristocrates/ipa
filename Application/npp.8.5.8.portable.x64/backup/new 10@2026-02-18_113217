@@ -1,0 +1,1618 @@
+[
+    {
+        "id": 10899501,
+        "email": "collierb@leoncountyfl.gov",
+        "name": "Me",
+        "user_id": 9894151,
+        "site_id": 184152,
+        "site": "Public Works - Admin Building",
+        "department_id": 233802,
+        "department": "LCG - Management Information Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "BC",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 6896656,
+        "value": "2nd Circuit Warrants",
+        "description": "2ndCircuitWarrants@leoncountyfl.gov",
+        "name": "2nd Circuit Warrants",
+        "user_id": 6588371,
+        "site_id": null,
+        "site": null,
+        "department_id": 236165,
+        "department": "Court Administration",
+        "avatar": {
+            "type": "initials",
+            "initials": "2W",
+            "color": "var(--colors-foreground-7-400)"
+        }
+    },
+    {
+        "id": 14110167,
+        "value": "A'Mya Keaton",
+        "description": "A'Mya.Keaton@LeonFLSheriff.gov",
+        "name": "A'Mya Keaton",
+        "user_id": 12695063,
+        "site_id": null,
+        "site": null,
+        "department_id": 285721,
+        "department": "LCSO-Detention Medical",
+        "avatar": {
+            "type": "initials",
+            "initials": "AK",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 14699290,
+        "value": "Aaliyah Smith",
+        "description": "SmithAal@leoncountyfl.gov",
+        "name": "Aaliyah Smith",
+        "user_id": 13179529,
+        "site_id": null,
+        "site": null,
+        "department_id": 236142,
+        "department": "LCG - Permit and Code Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AS",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 6576854,
+        "value": "Aaron Brown",
+        "description": "Aaron.Brown@LeonFLSheriff.gov",
+        "name": "Aaron Brown",
+        "user_id": 6298320,
+        "site_id": null,
+        "site": null,
+        "department_id": 285345,
+        "department": "LCSO-Detention Operations",
+        "avatar": {
+            "type": "initials",
+            "initials": "AB",
+            "color": "var(--colors-foreground-7-100)"
+        }
+    },
+    {
+        "id": 6577600,
+        "value": "Aaron Ford",
+        "description": "FordA@leoncountyfl.gov",
+        "name": "Aaron Ford",
+        "user_id": 6299058,
+        "site_id": null,
+        "site": null,
+        "department_id": 236148,
+        "department": "LCG - Operations",
+        "avatar": {
+            "type": "initials",
+            "initials": "AF",
+            "color": "var(--colors-foreground-7-300)"
+        }
+    },
+    {
+        "id": 13380389,
+        "value": "Aaron Montgomery",
+        "description": "MontgomeryA@leoncountyfl.gov",
+        "name": "Aaron Montgomery",
+        "user_id": 12047993,
+        "site_id": null,
+        "site": null,
+        "department_id": 236124,
+        "department": "LCG - Emergency Medical Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AM",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 13019115,
+        "value": "Abigail Bailey",
+        "description": "Abigail.Bailey@LeonFLSheriff.gov",
+        "name": "Abigail Bailey",
+        "user_id": 11727406,
+        "site_id": null,
+        "site": null,
+        "department_id": 285345,
+        "department": "LCSO-Detention Operations",
+        "avatar": {
+            "type": "initials",
+            "initials": "AB",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 14718023,
+        "value": "Abigail Legg",
+        "description": "LeggA@leoncountyfl.gov",
+        "name": "Abigail Legg",
+        "user_id": 13196591,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AL",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 14527773,
+        "value": "Abigail Newhouse",
+        "description": "NewhouseA@leoncountyfl.gov",
+        "name": "Abigail Newhouse",
+        "user_id": 13033442,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AN",
+            "color": "var(--colors-foreground-7-300)"
+        }
+    },
+    {
+        "id": 6579101,
+        "value": "Abigail Thomas (Sanders)",
+        "description": "ThomasAb@leoncountyfl.gov",
+        "name": "Abigail Thomas (Sanders)",
+        "user_id": 6300539,
+        "site_id": null,
+        "site": null,
+        "department_id": 236144,
+        "department": "LCG - Human Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "A(",
+            "color": "var(--colors-foreground-7-400)"
+        }
+    },
+    {
+        "id": 12227642,
+        "value": "Abigale Tabor",
+        "description": "TaborAb@leoncountyfl.gov",
+        "name": "Abigale Tabor",
+        "user_id": 11056444,
+        "site_id": null,
+        "site": null,
+        "department_id": 236146,
+        "department": "LCG - Library Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AT",
+            "color": "var(--colors-foreground-7-500)"
+        }
+    },
+    {
+        "id": 7313784,
+        "value": "Abrey Sadberry",
+        "description": "SadberryA@leoncountyfl.gov",
+        "name": "Abrey Sadberry",
+        "user_id": 6964302,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AS",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 7635158,
+        "value": "ACD Process Request",
+        "description": "ACD@leoncountyfl.gov",
+        "name": "ACD Process Request",
+        "user_id": 7244441,
+        "site_id": null,
+        "site": null,
+        "department_id": 233802,
+        "department": "LCG - Management Information Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AR",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 6578817,
+        "value": "Acelo Pedroso",
+        "description": "PedrosoA@leoncountyfl.gov",
+        "name": "Acelo Pedroso",
+        "user_id": 6300258,
+        "site_id": null,
+        "site": null,
+        "department_id": 236165,
+        "department": "Court Administration",
+        "avatar": {
+            "type": "initials",
+            "initials": "AP",
+            "color": "var(--colors-foreground-7-300)"
+        }
+    },
+    {
+        "id": 12189254,
+        "value": "Adalee Hallam",
+        "description": "Adalee.Hallam@LeonFLSheriff.gov",
+        "name": "Adalee Hallam",
+        "user_id": 11020285,
+        "site_id": null,
+        "site": null,
+        "department_id": 285715,
+        "department": "LCSO-Information Technology",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 14206081,
+        "value": "Adalee Hallam",
+        "description": "HallamA@leonflsheriff.gov",
+        "name": "Adalee Hallam",
+        "user_id": 12776600,
+        "site_id": null,
+        "site": null,
+        "department_id": 376619,
+        "department": "LCSO- Information Technology",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-100)"
+        }
+    },
+    {
+        "id": 9833962,
+        "value": "Adalises Vaughn",
+        "description": "Adalises.Vaughn@LeonFLSheriff.gov",
+        "name": "Adalises Vaughn",
+        "user_id": 9028870,
+        "site_id": null,
+        "site": null,
+        "department_id": 285358,
+        "department": "LCSO-Uniform Patrol",
+        "avatar": {
+            "type": "initials",
+            "initials": "AV",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 6576774,
+        "value": "Adam Bayer",
+        "description": "Adam.Bayer@LeonFLSheriff.gov",
+        "name": "Adam Bayer",
+        "user_id": 6298240,
+        "site_id": null,
+        "site": null,
+        "department_id": 285794,
+        "department": "LCSO-SVU",
+        "avatar": {
+            "type": "initials",
+            "initials": "AB",
+            "color": "var(--colors-foreground-7-100)"
+        }
+    },
+    {
+        "id": 6576787,
+        "value": "Adam Bragg",
+        "description": "Adam.Bragg@LeonFLSheriff.gov",
+        "name": "Adam Bragg",
+        "user_id": 6298253,
+        "site_id": null,
+        "site": null,
+        "department_id": 285358,
+        "department": "LCSO-Uniform Patrol",
+        "avatar": {
+            "type": "initials",
+            "initials": "AB",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 7014831,
+        "value": "Adam Cook",
+        "description": "cookad@leoncountyfl.gov",
+        "name": "Adam Cook",
+        "user_id": 6694896,
+        "site_id": null,
+        "site": null,
+        "department_id": 285743,
+        "department": "LCSO-",
+        "avatar": {
+            "type": "initials",
+            "initials": "AC",
+            "color": "var(--colors-foreground-7-100)"
+        }
+    },
+    {
+        "id": 6577302,
+        "value": "Adam Ellington",
+        "description": "Adam.Ellington@LeonFLSheriff.gov",
+        "name": "Adam Ellington",
+        "user_id": 6298761,
+        "site_id": null,
+        "site": null,
+        "department_id": 285358,
+        "department": "LCSO-Uniform Patrol",
+        "avatar": {
+            "type": "initials",
+            "initials": "AE",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 14742509,
+        "value": "Adam Esper",
+        "description": "Adam.Esper@leonflsheriff.gov",
+        "name": "Adam Esper",
+        "user_id": 13214836,
+        "site_id": null,
+        "site": null,
+        "department_id": 285358,
+        "department": "LCSO-Uniform Patrol",
+        "avatar": {
+            "type": "initials",
+            "initials": "AE",
+            "color": "var(--colors-foreground-7-500)"
+        }
+    },
+    {
+        "id": 13647374,
+        "value": "Adam Hoch",
+        "description": "Adam.Hoch@LeonFLSheriff.gov",
+        "name": "Adam Hoch",
+        "user_id": 12283592,
+        "site_id": null,
+        "site": null,
+        "department_id": 285358,
+        "department": "LCSO-Uniform Patrol",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-100)"
+        }
+    },
+    {
+        "id": 9795847,
+        "value": "Adam Kelley",
+        "description": "Adam.Kelley@LeonFLSheriff.gov",
+        "name": "Adam Kelley",
+        "user_id": 9000229,
+        "site_id": null,
+        "site": null,
+        "department_id": 285358,
+        "department": "LCSO-Uniform Patrol",
+        "avatar": {
+            "type": "initials",
+            "initials": "AK",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 6578640,
+        "value": "Adam Mospens",
+        "description": "MospensA@leoncountyfl.gov",
+        "name": "Adam Mospens",
+        "user_id": 6300083,
+        "site_id": null,
+        "site": null,
+        "department_id": 236124,
+        "department": "LCG - Emergency Medical Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AM",
+            "color": "var(--colors-foreground-7-400)"
+        }
+    },
+    {
+        "id": 9990089,
+        "value": "Adam Shagan",
+        "description": "ShaganA@leoncountyfl.gov",
+        "name": "Adam Shagan",
+        "user_id": 9155206,
+        "site_id": null,
+        "site": null,
+        "department_id": null,
+        "department": null,
+        "avatar": {
+            "type": "initials",
+            "initials": "AS",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 6579191,
+        "value": "Adam Shideler",
+        "description": "Adam.Shideler@LeonFLSheriff.gov",
+        "name": "Adam Shideler",
+        "user_id": 6300628,
+        "site_id": null,
+        "site": null,
+        "department_id": 285358,
+        "department": "LCSO-Uniform Patrol",
+        "avatar": {
+            "type": "initials",
+            "initials": "AS",
+            "color": "var(--colors-foreground-7-500)"
+        }
+    },
+    {
+        "id": 6578255,
+        "value": "Addison Lawler",
+        "description": "Addison.Lawler@LeonFLSheriff.gov",
+        "name": "Addison Lawler",
+        "user_id": 6299705,
+        "site_id": null,
+        "site": null,
+        "department_id": 285730,
+        "department": "LCSO-Traffic",
+        "avatar": {
+            "type": "initials",
+            "initials": "AL",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 6579249,
+        "value": "Adrenne Smith",
+        "description": "Adrenne.Smith@LeonFLSheriff.gov",
+        "name": "Adrenne Smith",
+        "user_id": 6300686,
+        "site_id": null,
+        "site": null,
+        "department_id": 285345,
+        "department": "LCSO-Detention Operations",
+        "avatar": {
+            "type": "initials",
+            "initials": "AS",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 8469560,
+        "value": "Adrian Carroll",
+        "description": "CarrollAd@leoncountyfl.gov",
+        "name": "Adrian Carroll",
+        "user_id": 7906170,
+        "site_id": null,
+        "site": null,
+        "department_id": 236165,
+        "department": "Court Administration",
+        "avatar": {
+            "type": "initials",
+            "initials": "AC",
+            "color": "var(--colors-foreground-7-300)"
+        }
+    },
+    {
+        "id": 11696540,
+        "value": "Adrian Castillo",
+        "description": "CastilloA@leoncountyfl.gov",
+        "name": "Adrian Castillo",
+        "user_id": 10580791,
+        "site_id": null,
+        "site": null,
+        "department_id": 233802,
+        "department": "LCG - Management Information Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AC",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 6578674,
+        "value": "Adrian Mood",
+        "description": "MoodA@leoncountyfl.gov",
+        "name": "Adrian Mood",
+        "user_id": 6300117,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AM",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 6577833,
+        "value": "Ahshadd Harris",
+        "description": "Ahshadd.Harris@LeonFLSheriff.gov",
+        "name": "Ahshadd Harris",
+        "user_id": 6299287,
+        "site_id": null,
+        "site": null,
+        "department_id": 285345,
+        "department": "LCSO-Detention Operations",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 13820185,
+        "value": "Aidan Abbey",
+        "description": "AbbeyAi@leoncountyfl.gov",
+        "name": "Aidan Abbey",
+        "user_id": 12442440,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AA",
+            "color": "var(--colors-foreground-7-100)"
+        }
+    },
+    {
+        "id": 12263596,
+        "value": "Aidia Kirksey",
+        "description": "AMKirksey@leoncountyfl.gov",
+        "name": "Aidia Kirksey",
+        "user_id": 11087834,
+        "site_id": null,
+        "site": null,
+        "department_id": 285737,
+        "department": "Clerk Administration",
+        "avatar": {
+            "type": "initials",
+            "initials": "AK",
+            "color": "var(--colors-foreground-7-300)"
+        }
+    },
+    {
+        "id": 7360120,
+        "value": "Aimee Lim",
+        "description": "aimee.lim@flpd2.com",
+        "name": "Aimee Lim",
+        "user_id": 7002038,
+        "site_id": null,
+        "site": null,
+        "department_id": 235997,
+        "department": "Public Defender's Office",
+        "avatar": {
+            "type": "initials",
+            "initials": "AL",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 10088121,
+        "value": "Akin Akinyemi",
+        "description": "AAkinyemi@leonpa.gov",
+        "name": "Akin Akinyemi",
+        "user_id": 9236879,
+        "site_id": null,
+        "site": null,
+        "department_id": 238720,
+        "department": "Property Appraiser",
+        "avatar": {
+            "type": "initials",
+            "initials": "AA",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 9880672,
+        "value": "Alainnah White",
+        "description": "WhiteAl@leoncountyfl.gov",
+        "name": "Alainnah White",
+        "user_id": 9066974,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AW",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 13708558,
+        "value": "Alan Alovus",
+        "description": "AlovusAl@leoncountyfl.gov",
+        "name": "Alan Alovus",
+        "user_id": 12335250,
+        "site_id": null,
+        "site": null,
+        "department_id": 236117,
+        "department": "LCG - Strategic Initiatives",
+        "avatar": {
+            "type": "initials",
+            "initials": "AA",
+            "color": "var(--colors-foreground-7-300)"
+        }
+    },
+    {
+        "id": 15017173,
+        "value": "Alan Nelson",
+        "description": "NelsonAl@leoncountyfl.gov",
+        "name": "Alan Nelson",
+        "user_id": 13441334,
+        "site_id": null,
+        "site": null,
+        "department_id": 233802,
+        "department": "LCG - Management Information Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AN",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 6524017,
+        "value": "Alan Russell",
+        "description": "russella@leoncountyfl.gov",
+        "name": "Alan Russell",
+        "user_id": 6249827,
+        "site_id": null,
+        "site": null,
+        "department_id": 233802,
+        "department": "LCG - Management Information Services",
+        "avatar": {
+            "type": "image",
+            "image_class": "avatar_image",
+            "sso_image_class": "",
+            "avatar_url": "https://s3.us-east-1.amazonaws.com/production.main.customer.data/avatars/90b5aebd167bb6b67247/download_card.png?versionId=Ahd5zZKZZ7FtAUEbtucGGbVIrrSlwNQg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAREFPCQSX36KL3J6M%2F20260218%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260218T163201Z&X-Amz-Expires=600&X-Amz-SignedHeaders=host&X-Amz-Signature=ca13334f68b6c26c9772e076d3f0687bd8169f453e81b93c8b3cae98b012854a"
+        }
+    },
+    {
+        "id": 6579628,
+        "value": "Alan Wilson",
+        "description": "Alan.Wilson@LeonFLSheriff.gov",
+        "name": "Alan Wilson",
+        "user_id": 6301061,
+        "site_id": null,
+        "site": null,
+        "department_id": 285748,
+        "department": "LCSO-Warrants",
+        "avatar": {
+            "type": "initials",
+            "initials": "AW",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 6524018,
+        "value": "Alan Wittmier",
+        "description": "WittmierA@leoncountyfl.gov",
+        "name": "Alan Wittmier",
+        "user_id": 6249828,
+        "site_id": null,
+        "site": null,
+        "department_id": 233802,
+        "department": "LCG - Management Information Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AW",
+            "color": "var(--colors-foreground-7-500)"
+        }
+    },
+    {
+        "id": 8433747,
+        "value": "Alanna Dickey",
+        "description": "Alanna.Dickey@LeonFLSheriff.gov",
+        "name": "Alanna Dickey",
+        "user_id": 7877879,
+        "site_id": null,
+        "site": null,
+        "department_id": 285814,
+        "department": "LCSO-Media Relations",
+        "avatar": {
+            "type": "initials",
+            "initials": "AD",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 6578877,
+        "value": "Albert Pondexter",
+        "description": "PondexterA@leoncountyfl.gov",
+        "name": "Albert Pondexter",
+        "user_id": 6300317,
+        "site_id": null,
+        "site": null,
+        "department_id": 236153,
+        "department": "LCG - Supervised Pretrial Release",
+        "avatar": {
+            "type": "initials",
+            "initials": "AP",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 11338699,
+        "value": "Alden Hutchison",
+        "description": "HutchisonAl@leoncountyfl.gov",
+        "name": "Alden Hutchison",
+        "user_id": 10269237,
+        "site_id": null,
+        "site": null,
+        "department_id": 236146,
+        "department": "LCG - Library Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 9990115,
+        "value": "Alec Guarino",
+        "description": "GuarinoA@leoncountyfl.gov",
+        "name": "Alec Guarino",
+        "user_id": 9155232,
+        "site_id": null,
+        "site": null,
+        "department_id": null,
+        "department": null,
+        "avatar": {
+            "type": "initials",
+            "initials": "AG",
+            "color": "var(--colors-foreground-7-100)"
+        }
+    },
+    {
+        "id": 10645200,
+        "value": "Aleisha Edenfield",
+        "description": "EdenfieldA@leoncountyfl.gov",
+        "name": "Aleisha Edenfield",
+        "user_id": 9687271,
+        "site_id": null,
+        "site": null,
+        "department_id": 236146,
+        "department": "LCG - Library Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AE",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 8379940,
+        "value": "Alejandro Garcia",
+        "description": "garciaa@leoncountyfl.gov",
+        "name": "Alejandro Garcia",
+        "user_id": 7833634,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AG",
+            "color": "var(--colors-foreground-7-300)"
+        }
+    },
+    {
+        "id": 11981557,
+        "value": "Alena Toy",
+        "description": "ToyA@leoncountyfl.gov",
+        "name": "Alena Toy",
+        "user_id": 10830211,
+        "site_id": null,
+        "site": null,
+        "department_id": 236124,
+        "department": "LCG - Emergency Medical Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AT",
+            "color": "var(--colors-foreground-7-400)"
+        }
+    },
+    {
+        "id": 6579185,
+        "value": "Alessandra Shurina",
+        "description": "ShurinaA@leonvotes.gov",
+        "name": "Alessandra Shurina",
+        "user_id": 6300622,
+        "site_id": 155541,
+        "site": "Elections - 520",
+        "department_id": 236166,
+        "department": "SOE - Supervisor of Elections",
+        "avatar": {
+            "type": "initials",
+            "initials": "AS",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 14032999,
+        "value": "Alessia Shaw",
+        "description": "ARShaw@leoncountyfl.gov",
+        "name": "Alessia Shaw",
+        "user_id": 12629505,
+        "site_id": null,
+        "site": null,
+        "department_id": 236161,
+        "department": "Clerk of Courts",
+        "avatar": {
+            "type": "initials",
+            "initials": "AS",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 6577318,
+        "value": "Alex Edwards",
+        "description": "Alex.Edwards@LeonFLSheriff.gov",
+        "name": "Alex Edwards",
+        "user_id": 6298777,
+        "site_id": null,
+        "site": null,
+        "department_id": 285715,
+        "department": "LCSO-Information Technology",
+        "avatar": {
+            "type": "initials",
+            "initials": "AE",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 10461623,
+        "value": "Alex Garcia",
+        "description": "Alex.Garcia@LeonFLSheriff.gov",
+        "name": "Alex Garcia",
+        "user_id": 9536055,
+        "site_id": null,
+        "site": null,
+        "department_id": 285358,
+        "department": "LCSO-Uniform Patrol",
+        "avatar": {
+            "type": "initials",
+            "initials": "AG",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 12762288,
+        "value": "Alex Henley",
+        "description": "henleya@leoncountyfl.gov",
+        "name": "Alex Henley",
+        "user_id": 11504814,
+        "site_id": null,
+        "site": null,
+        "department_id": 236128,
+        "department": "LCG - Parks and Recreation",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 6578477,
+        "value": "Alex MacKinnon",
+        "description": "MacKinnonA@leoncountyfl.gov",
+        "name": "Alex MacKinnon",
+        "user_id": 6299925,
+        "site_id": null,
+        "site": null,
+        "department_id": 285763,
+        "department": "LCG - Emergency Management Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AM",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 10106120,
+        "value": "Alex Walker",
+        "description": "alex.walker@flpd2.com",
+        "name": "Alex Walker",
+        "user_id": 9252308,
+        "site_id": null,
+        "site": null,
+        "department_id": 235997,
+        "department": "Public Defender's Office",
+        "avatar": {
+            "type": "initials",
+            "initials": "AW",
+            "color": "var(--colors-foreground-7-500)"
+        }
+    },
+    {
+        "id": 14608235,
+        "value": "Alexander Caldwell",
+        "description": "CaldwellA@leonvotes.gov",
+        "name": "Alexander Caldwell",
+        "user_id": 13103237,
+        "site_id": null,
+        "site": null,
+        "department_id": 236166,
+        "department": "SOE - Supervisor of Elections",
+        "avatar": {
+            "type": "initials",
+            "initials": "AC",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 6578533,
+        "value": "Alexander Michael",
+        "description": "MichaelA@leoncountyfl.gov",
+        "name": "Alexander Michael",
+        "user_id": 6299980,
+        "site_id": null,
+        "site": null,
+        "department_id": 236124,
+        "department": "LCG - Emergency Medical Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AM",
+            "color": "var(--colors-foreground-7-500)"
+        }
+    },
+    {
+        "id": 13318712,
+        "value": "Alexander Payne",
+        "description": "PayneA@leoncountyfl.gov",
+        "name": "Alexander Payne",
+        "user_id": 11994990,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AP",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 6579030,
+        "value": "Alexander Rhodes",
+        "description": "RhodesA@leoncountyfl.gov",
+        "name": "Alexander Rhodes",
+        "user_id": 6300468,
+        "site_id": null,
+        "site": null,
+        "department_id": 236124,
+        "department": "LCG - Emergency Medical Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AR",
+            "color": "var(--colors-foreground-7-500)"
+        }
+    },
+    {
+        "id": 14944327,
+        "value": "Alexander Stanwood",
+        "description": "StanwoodA@leoncountyfl.gov",
+        "name": "Alexander Stanwood",
+        "user_id": 13378609,
+        "site_id": null,
+        "site": null,
+        "department_id": 236124,
+        "department": "LCG - Emergency Medical Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AS",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 10496344,
+        "value": "Alexandra Flowers",
+        "description": "Alexandra.Flowers@LeonFLSheriff.gov",
+        "name": "Alexandra Flowers",
+        "user_id": 9564303,
+        "site_id": null,
+        "site": null,
+        "department_id": 285810,
+        "department": "LCSO-RTCC",
+        "avatar": {
+            "type": "initials",
+            "initials": "AF",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 11413825,
+        "value": "Alexandra Lewis",
+        "description": "ALewis@leonpa.gov",
+        "name": "Alexandra Lewis",
+        "user_id": 10332764,
+        "site_id": null,
+        "site": null,
+        "department_id": 238720,
+        "department": "Property Appraiser",
+        "avatar": {
+            "type": "initials",
+            "initials": "AL",
+            "color": "var(--colors-foreground-7-500)"
+        }
+    },
+    {
+        "id": 6578643,
+        "value": "Alexandra Mosca",
+        "description": "MoscaA@leonvotes.gov",
+        "name": "Alexandra Mosca",
+        "user_id": 6300086,
+        "site_id": 155541,
+        "site": "Elections - 520",
+        "department_id": 236166,
+        "department": "SOE - Supervisor of Elections",
+        "avatar": {
+            "type": "initials",
+            "initials": "AM",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 8020795,
+        "value": "Alexandria Hill",
+        "description": "HillAl@leoncountyfl.gov",
+        "name": "Alexandria Hill",
+        "user_id": 7554164,
+        "site_id": null,
+        "site": null,
+        "department_id": 236124,
+        "department": "LCG - Emergency Medical Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-500)"
+        }
+    },
+    {
+        "id": 9689238,
+        "value": "Alexandria Oliphant",
+        "description": "Alexandria.Oliphant@LeonFLSheriff.gov",
+        "name": "Alexandria Oliphant",
+        "user_id": 8917287,
+        "site_id": null,
+        "site": null,
+        "department_id": 285721,
+        "department": "LCSO-Detention Medical",
+        "avatar": {
+            "type": "initials",
+            "initials": "AO",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 6579391,
+        "value": "Alexandria Thompson-Maloy",
+        "description": "Thompson-MaloyA@leoncountyfl.gov",
+        "name": "Alexandria Thompson-Maloy",
+        "user_id": 6300827,
+        "site_id": null,
+        "site": null,
+        "department_id": 238740,
+        "department": "Tax Collector",
+        "avatar": {
+            "type": "initials",
+            "initials": "AT",
+            "color": "var(--colors-foreground-7-400)"
+        }
+    },
+    {
+        "id": 7558167,
+        "value": "Alexandria Warren",
+        "description": "WarrenA@leoncountyfl.gov",
+        "name": "Alexandria Warren",
+        "user_id": 7175465,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AW",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 9982401,
+        "value": "Alexis Cejas Carbonell",
+        "description": "CejasCarbonellA@leoncountyfl.gov",
+        "name": "Alexis Cejas Carbonell",
+        "user_id": 9149343,
+        "site_id": null,
+        "site": null,
+        "department_id": 236124,
+        "department": "LCG - Emergency Medical Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AC",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 9714195,
+        "value": "Alexis Hovis",
+        "description": "InternOMB@leoncountyfl.gov",
+        "name": "Alexis Hovis",
+        "user_id": 8936353,
+        "site_id": null,
+        "site": null,
+        "department_id": 236122,
+        "department": "LCG - Office of Management and Budget",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 10006968,
+        "value": "Alexis McFall",
+        "description": "AMcFall@Dist2ME.org",
+        "name": "Alexis McFall",
+        "user_id": 9168115,
+        "site_id": null,
+        "site": null,
+        "department_id": 376613,
+        "department": "Leon County Medical Examiner",
+        "avatar": {
+            "type": "initials",
+            "initials": "AM",
+            "color": "var(--colors-foreground-7-400)"
+        }
+    },
+    {
+        "id": 14718028,
+        "value": "Alexis Perez",
+        "description": "PerezA@leoncountyfl.gov",
+        "name": "Alexis Perez",
+        "user_id": 13196596,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AP",
+            "color": "var(--colors-foreground-7-500)"
+        }
+    },
+    {
+        "id": 10489366,
+        "value": "Alexis Prado",
+        "description": "Alexis.Prado@LeonFLSheriff.gov",
+        "name": "Alexis Prado",
+        "user_id": 9558782,
+        "site_id": null,
+        "site": null,
+        "department_id": 285358,
+        "department": "LCSO-Uniform Patrol",
+        "avatar": {
+            "type": "initials",
+            "initials": "AP",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 10488202,
+        "value": "Alexis Walker",
+        "description": "Alexis.Walker@LeonFLSheriff.gov",
+        "name": "Alexis Walker",
+        "user_id": 9557849,
+        "site_id": null,
+        "site": null,
+        "department_id": 285345,
+        "department": "LCSO-Detention Operations",
+        "avatar": {
+            "type": "initials",
+            "initials": "AW",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 11827171,
+        "value": "alexsia.davis@gal.fl.gov",
+        "description": "alexsia.davis@gal.fl.gov",
+        "name": "alexsia.davis@gal.fl.gov",
+        "user_id": 10693691,
+        "site_id": null,
+        "site": null,
+        "department_id": 236325,
+        "department": "GAL - Guardian Ad Litem",
+        "avatar": {
+            "type": "initials",
+            "initials": "AL",
+            "color": "var(--colors-foreground-7-400)"
+        }
+    },
+    {
+        "id": 6576618,
+        "value": "Alfreda Coleman",
+        "description": "ALCOLEMA@leoncountyfl.gov",
+        "name": "Alfreda Coleman",
+        "user_id": 6298088,
+        "site_id": null,
+        "site": null,
+        "department_id": 236161,
+        "department": "Clerk of Courts",
+        "avatar": {
+            "type": "initials",
+            "initials": "AC",
+            "color": "var(--colors-foreground-7-100)"
+        }
+    },
+    {
+        "id": 13379464,
+        "value": "Alicia Aiken",
+        "description": "ANAiken@leoncountyfl.gov",
+        "name": "Alicia Aiken",
+        "user_id": 12047222,
+        "site_id": null,
+        "site": null,
+        "department_id": 285737,
+        "department": "Clerk Administration",
+        "avatar": {
+            "type": "initials",
+            "initials": "AA",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 6578409,
+        "value": "Aline Logan",
+        "description": "LoganA@leoncountyfl.gov",
+        "name": "Aline Logan",
+        "user_id": 6299858,
+        "site_id": null,
+        "site": null,
+        "department_id": 236165,
+        "department": "Court Administration",
+        "avatar": {
+            "type": "initials",
+            "initials": "AL",
+            "color": "var(--colors-foreground-7-300)"
+        }
+    },
+    {
+        "id": 6577056,
+        "value": "Alisa Colson",
+        "description": "ColsonA@leoncountyfl.gov",
+        "name": "Alisa Colson",
+        "user_id": 6298518,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AC",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 13454523,
+        "value": "Alisha Rehak",
+        "description": "RehakA@leoncountyfl.gov",
+        "name": "Alisha Rehak",
+        "user_id": 12111566,
+        "site_id": null,
+        "site": null,
+        "department_id": 236157,
+        "department": "LCG - Purchasing",
+        "avatar": {
+            "type": "initials",
+            "initials": "AR",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 6578088,
+        "value": "Alison Joyner",
+        "description": "joynera@leoncountyfl.gov",
+        "name": "Alison Joyner",
+        "user_id": 6299542,
+        "site_id": null,
+        "site": null,
+        "department_id": 238740,
+        "department": "Tax Collector",
+        "avatar": {
+            "type": "initials",
+            "initials": "AJ",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 10837816,
+        "value": "Alison Ramos-Coleman",
+        "description": "RamosColemanA@leoncountyfl.gov",
+        "name": "Alison Ramos-Coleman",
+        "user_id": 9843459,
+        "site_id": null,
+        "site": null,
+        "department_id": 236143,
+        "department": "LCG - Housing Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AR",
+            "color": "var(--colors-foreground-7-400)"
+        }
+    },
+    {
+        "id": 13887684,
+        "value": "Alison Rivera",
+        "description": "RiveraAl@leoncountyfl.gov",
+        "name": "Alison Rivera",
+        "user_id": 12502925,
+        "site_id": null,
+        "site": null,
+        "department_id": 236124,
+        "department": "LCG - Emergency Medical Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AR",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 6577015,
+        "value": "Allan Christian",
+        "description": "ChristianA@leoncountyfl.gov",
+        "name": "Allan Christian",
+        "user_id": 6298478,
+        "site_id": null,
+        "site": null,
+        "department_id": 236155,
+        "department": "LCG - Fleet Management",
+        "avatar": {
+            "type": "initials",
+            "initials": "AC",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    },
+    {
+        "id": 10088122,
+        "value": "Allen Adams",
+        "description": "AAdams@leonpa.gov",
+        "name": "Allen Adams",
+        "user_id": 9236880,
+        "site_id": null,
+        "site": null,
+        "department_id": 238720,
+        "department": "Property Appraiser",
+        "avatar": {
+            "type": "initials",
+            "initials": "AA",
+            "color": "var(--colors-foreground-7-100)"
+        }
+    },
+    {
+        "id": 9762503,
+        "value": "Allie Richards",
+        "description": "RichardsAl@leoncountyfl.gov",
+        "name": "Allie Richards",
+        "user_id": 8974115,
+        "site_id": null,
+        "site": null,
+        "department_id": 236119,
+        "department": "LCG - County Commission",
+        "avatar": {
+            "type": "initials",
+            "initials": "AR",
+            "color": "var(--colors-foreground-7-400)"
+        }
+    },
+    {
+        "id": 10012182,
+        "value": "Allison Chipman",
+        "description": "ChipmanA@leoncountyfl.gov",
+        "name": "Allison Chipman",
+        "user_id": 9172080,
+        "site_id": null,
+        "site": null,
+        "department_id": 236168,
+        "department": "State Attorney",
+        "avatar": {
+            "type": "initials",
+            "initials": "AC",
+            "color": "var(--colors-foreground-7-100)"
+        }
+    },
+    {
+        "id": 6577754,
+        "value": "Allison Hall",
+        "description": "HallAll@leoncountyfl.gov",
+        "name": "Allison Hall",
+        "user_id": 6299210,
+        "site_id": null,
+        "site": null,
+        "department_id": 236124,
+        "department": "LCG - Emergency Medical Services",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-300)"
+        }
+    },
+    {
+        "id": 6800855,
+        "value": "Allison Humphrey",
+        "description": "Allison.Humphrey@flpd2.com",
+        "name": "Allison Humphrey",
+        "user_id": 6495389,
+        "site_id": null,
+        "site": null,
+        "department_id": 235997,
+        "department": "Public Defender's Office",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 7661064,
+        "value": "Allison Veno",
+        "description": "AGVeno@leoncountyfl.gov",
+        "name": "Allison Veno",
+        "user_id": 7267349,
+        "site_id": null,
+        "site": null,
+        "department_id": 236161,
+        "department": "Clerk of Courts",
+        "avatar": {
+            "type": "initials",
+            "initials": "AV",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 6577642,
+        "value": "Alloydice Gaines",
+        "description": "Alloydice.Gaines@LeonFLSheriff.gov",
+        "name": "Alloydice Gaines",
+        "user_id": 6299099,
+        "site_id": null,
+        "site": null,
+        "department_id": 285345,
+        "department": "LCSO-Detention Operations",
+        "avatar": {
+            "type": "initials",
+            "initials": "AG",
+            "color": "var(--colors-foreground-7-400)"
+        }
+    },
+    {
+        "id": 10237890,
+        "value": "Allura Lathem",
+        "description": "LathemAl@leoncountyfl.gov",
+        "name": "Allura Lathem",
+        "user_id": 9356173,
+        "site_id": null,
+        "site": null,
+        "department_id": 236165,
+        "department": "Court Administration",
+        "avatar": {
+            "type": "initials",
+            "initials": "AL",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 14975261,
+        "value": "Allura Miller",
+        "description": "Allura.Miller@leonflsheriff.gov",
+        "name": "Allura Miller",
+        "user_id": 13405887,
+        "site_id": null,
+        "site": null,
+        "department_id": 353810,
+        "department": "LCSO-YesCare",
+        "avatar": {
+            "type": "initials",
+            "initials": "AM",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 6579081,
+        "value": "Alnise Rodriguez-Vega",
+        "description": "Alnise.Rodriguez-Vega@LeonFLSheriff.gov",
+        "name": "Alnise Rodriguez-Vega",
+        "user_id": 6300519,
+        "site_id": null,
+        "site": null,
+        "department_id": 285362,
+        "department": "LCSO-Records Management",
+        "avatar": {
+            "type": "initials",
+            "initials": "AR",
+            "color": "var(--colors-foreground-7-800)"
+        }
+    },
+    {
+        "id": 10819888,
+        "value": "Alvin Ford",
+        "description": "FordAl@leoncountyfl.gov",
+        "name": "Alvin Ford",
+        "user_id": 9828237,
+        "site_id": null,
+        "site": null,
+        "department_id": 236157,
+        "department": "LCG - Purchasing",
+        "avatar": {
+            "type": "initials",
+            "initials": "AF",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 13866120,
+        "value": "Alvin Herring",
+        "description": "HerringA@leoncountyfl.gov",
+        "name": "Alvin Herring",
+        "user_id": 12484101,
+        "site_id": null,
+        "site": null,
+        "department_id": 236129,
+        "department": "LCG - Solid Waste",
+        "avatar": {
+            "type": "initials",
+            "initials": "AH",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 9640858,
+        "value": "Alvin Roberts",
+        "description": "Alvin.Roberts@LeonFLSheriff.gov",
+        "name": "Alvin Roberts",
+        "user_id": 8878713,
+        "site_id": null,
+        "site": null,
+        "department_id": 285346,
+        "department": "LCSO-Reserves",
+        "avatar": {
+            "type": "initials",
+            "initials": "AR",
+            "color": "var(--colors-foreground-7-200)"
+        }
+    },
+    {
+        "id": 12954191,
+        "value": "Alyssa.Clark@gal.fl.gov",
+        "description": "Alyssa.Clark@gal.fl.gov",
+        "name": "Alyssa.Clark@gal.fl.gov",
+        "user_id": 11672901,
+        "site_id": null,
+        "site": null,
+        "department_id": 236325,
+        "department": "GAL - Guardian Ad Litem",
+        "avatar": {
+            "type": "initials",
+            "initials": "AL",
+            "color": "var(--colors-foreground-7-600)"
+        }
+    },
+    {
+        "id": 10088120,
+        "value": "Amanda Bradham",
+        "description": "aBradham@leonpa.gov",
+        "name": "Amanda Bradham",
+        "user_id": 9236878,
+        "site_id": null,
+        "site": null,
+        "department_id": 238720,
+        "department": "Property Appraiser",
+        "avatar": {
+            "type": "initials",
+            "initials": "AB",
+            "color": "var(--colors-foreground-7-700)"
+        }
+    }
+]

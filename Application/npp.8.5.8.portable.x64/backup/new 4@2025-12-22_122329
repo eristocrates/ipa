@@ -1,0 +1,1064 @@
+    "jonesarr": {
+        "officeMetadata": {
+            "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users(accountEnabled,ageGroup,assignedLicenses,assignedPlans,businessPhones,city,companyName,consentProvidedForMinor,country,createdDateTime,creationType,sment,displayName,employeeHireDate,employeeId,employeeLeaveDateTime,employeeOrgData,employeeType,externalUserState,externalUserStateChangeDateTime,faxNumber,givenName,imAddresses,isManagementRestricted,isResourceAccount,jobTitle,lastPasswordChangeDateTime,legalAgeGroupClassification,licenseAssignmentStates,mail,mailNickname,mobilePhone,officeLocation,onPremisesDistinguishedName,onPremisesDomainName,onPremisesExtensionAttributes,onPremisesImmutableId,onPremisesLastSyncDateTime,onPremisesProvisioningErrors,onPremisesSamAccountName,onPremisesSecurityIdentifier,onPremisesSyncEnabled,onPremisesUserPrincipalName,otherMails,passwordPolicies,postalCode,preferredDataLocation,preferredLanguage,provisionedPlans,proxyAddresses,securityIdentifier,serviceProvisioningErrors,showInAddressList,signInSessionsValidFromDateTime,state,streetAddress,surname,usageLocation,userPrincipalName,userType,aboutMe,birthday,hireDate,interests,mySite,pastProjects,preferredName,responsibilities,schools,skills)/$entity",
+            "accountEnabled": false,
+            "businessPhones": [
+                "850-606-5615"
+            ],
+            "city": "Tallahassee",
+            "companyName": "Leon County Government",
+            "createdDateTime": "2025-04-09T20:52:42Z",
+            "department": "LCG - Supervised Pretrial Release",
+            "displayName": "Arronice Jones",
+            "employeeId": "90033460",
+            "givenName": "Arronice",
+            "imAddresses": [
+            ],
+            "jobTitle": "Probation/Pretrial Officer I",
+            "lastPasswordChangeDateTime": "2025-09-15T13:00:19Z",
+            "mail": "JonesArr@leoncountyfl.gov",
+            "mailNickname": "JonesArr",
+            "onPremisesDistinguishedName": "CN=250922-JonesArr,OU=Delete-PreStage,OU=Leon,DC=LeonAD,DC=gov",
+            "onPremisesDomainName": "LeonAD.gov",
+            "onPremisesImmutableId": "95Y1DvfyL0i7KTNPm5/Cng==",
+            "onPremisesLastSyncDateTime": "2025-09-29T13:34:47Z",
+            "onPremisesSamAccountName": "JonesArr",
+            "onPremisesSecurityIdentifier": "S-1-5-21-1544231702-2463214364-265622845-47270",
+            "onPremisesSyncEnabled": true,
+            "onPremisesUserPrincipalName": "JonesArr@leoncountyfl.gov",
+            "otherMails": [
+            ],
+            "proxyAddresses": [
+                "X500:/o=LeonAD-Exchange/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=2b2d5c980c094c679d8eefa35cf7b77f-JonesArr",
+                "x500:/o=ExchangeLabs/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=a2c6ee456cc64c3783b40a9c97381b27-6f990c03-96",
+                "smtp:JonesArr@LeonCountyFl.mail.onmicrosoft.com",
+                "smtp:JonesArr@LeonCountyFl.onmicrosoft.com",
+                "SMTP:JonesArr@leoncountyfl.gov"
+            ],
+            "securityIdentifier": "S-1-12-1-1872301059-1246402223-1038868665-337483186",
+            "showInAddressList": false,
+            "signInSessionsValidFromDateTime": "2025-09-15T13:00:19Z",
+            "state": "Florida",
+            "surname": "Jones",
+            "usageLocation": "US",
+            "userPrincipalName": "JonesArr@leoncountyfl.gov",
+            "userType": "Member",
+            "birthday": "0001-01-01T08:00:00Z",
+            "hireDate": "0001-01-01T08:00:00Z",
+            "interests": [
+            ],
+            "mySite": "https://leoncountyfl-my.sharepoint.com/personal/jonesarr_leoncountyfl_gov/",
+            "pastProjects": [
+            ],
+            "preferredName": "",
+            "responsibilities": [
+            ],
+            "schools": [
+            ],
+            "skills": [
+            ],
+            "assignedLicenses": [
+            ],
+            "assignedPlans": [
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "MicrosoftCommunicationsOnline",
+                    "servicePlanId": "a31ef4a2-f787-435e-8335-e47eb0cafc94"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "PowerAppsServiceGCC",
+                    "servicePlanId": "0a20c815-5e81-4727-9bdc-2b5a117850c3"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "exchange",
+                    "servicePlanId": "199a5c09-e0ca-4e37-8f7c-b05d533e1ea2"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "CRM",
+                    "servicePlanId": "a70bbf38-cdda-470d-adb8-5804b8770f41"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "RMSOnline",
+                    "servicePlanId": "6a76346d-5d6e-4051-9fe3-ed3f312b5597"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "SharePoint",
+                    "servicePlanId": "8f9f0f3b-ca90-406c-a842-95579171f8ec"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "CRM",
+                    "servicePlanId": "06162da2-ebf9-4954-99a0-00fee96f95cc"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "SharePoint",
+                    "servicePlanId": "153f85dd-d912-4762-af6c-d6e0fb4f6692"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "WhiteboardServices",
+                    "servicePlanId": "94a54592-cd8b-425e-87c6-97868b000b91"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "exchange",
+                    "servicePlanId": "a6520331-d7d4-4276-95f5-15c0933bc757"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "exchange",
+                    "servicePlanId": "5136a095-5cf0-4aff-bec3-e84448b38ea5"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "ProcessSimpleGCC",
+                    "servicePlanId": "c537f360-6a00-4ace-a7f5-9128d0ac1e4b"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "WindowsDefenderATP",
+                    "servicePlanId": "292cc034-7b7c-4950-aaf5-943befd3f1d4"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "To-Do",
+                    "servicePlanId": "c87f142c-d1e9-4363-8630-aaea9c4d9ae5"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "exchange",
+                    "servicePlanId": "8c3069c0-ccdb-44be-ab77-986203a67df2"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "MicrosoftStream",
+                    "servicePlanId": "2c1ada27-dbaa-46f9-bda6-ecb94445f758"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "TeamspaceAPI",
+                    "servicePlanId": "304767db-7d23-49e8-a945-4a7eb65f9f28"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "AADPremiumService",
+                    "servicePlanId": "41781fb2-bc02-4b7c-bd55-b576c07bb09d"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "ProjectWorkManagement",
+                    "servicePlanId": "5b4ef465-7ea1-459a-9f91-033317755a51"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "ProjectProgramsAndPortfolios",
+                    "servicePlanId": "e7d09ae4-099a-4c34-a2a2-3e166e95c44a"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "Adallom",
+                    "servicePlanId": "932ad362-64a8-4783-9106-97849a1a30b9"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "RMSOnline",
+                    "servicePlanId": "1b66aedf-8ca1-4f73-af76-ec76c6180f98"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "OfficeForms",
+                    "servicePlanId": "24af5f65-d0f3-467b-9f78-ea798c4aeffc"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "MicrosoftOffice",
+                    "servicePlanId": "de9234ff-6483-44d9-b15e-dca72fdd27af"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "exchange",
+                    "servicePlanId": "6e5b7995-bd4f-4cbd-9d19-0e32010c72f0"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "MultiFactorService",
+                    "servicePlanId": "8a256a2b-b617-496d-b51b-e76466e88db0"
+                },
+                {
+                    "assignedDateTime": "2025-09-23T12:37:03Z",
+                    "capabilityStatus": "Deleted",
+                    "service": "SCO",
+                    "servicePlanId": "c1ec4a95-1f05-45b3-a911-aa3fa01094f5"
+                }
+            ],
+            "licenseAssignmentStates": [
+            ],
+            "onPremisesExtensionAttributes": {
+                "extensionAttribute1": "PRETRIAL RELEASE",
+                "extensionAttribute2": "661004",
+                "extensionAttribute3": "544",
+                "extensionAttribute4": "Ashley Jones",
+                "extensionAttribute5": "JonesAsh@leoncountyfl.gov",
+                "extensionAttribute6": "09/16/2025",
+                "extensionAttribute7": "MFA_Enable",
+                "extensionAttribute8": null,
+                "extensionAttribute9": null,
+                "extensionAttribute10": null,
+                "extensionAttribute11": null,
+                "extensionAttribute12": null,
+                "extensionAttribute13": null,
+                "extensionAttribute14": "CN",
+                "extensionAttribute15": "1"
+            },
+            "onPremisesProvisioningErrors": [
+            ],
+            "provisionedPlans": [
+                {
+                    "capabilityStatus": "Deleted",
+                    "provisioningStatus": "Success",
+                    "service": "MicrosoftCommunicationsOnline"
+                },
+                {
+                    "capabilityStatus": "Deleted",
+                    "provisioningStatus": "Success",
+                    "service": "SharePoint"
+                },
+                {
+                    "capabilityStatus": "Deleted",
+                    "provisioningStatus": "Success",
+                    "service": "SharePoint"
+                },
+                {
+                    "capabilityStatus": "Deleted",
+                    "provisioningStatus": "Success",
+                    "service": "exchange"
+                },
+                {
+                    "capabilityStatus": "Deleted",
+                    "provisioningStatus": "Success",
+                    "service": "exchange"
+                },
+                {
+                    "capabilityStatus": "Deleted",
+                    "provisioningStatus": "Success",
+                    "service": "exchange"
+                },
+                {
+                    "capabilityStatus": "Deleted",
+                    "provisioningStatus": "Success",
+                    "service": "exchange"
+                },
+                {
+                    "capabilityStatus": "Deleted",
+                    "provisioningStatus": "Success",
+                    "service": "exchange"
+                }
+            ],
+            "serviceProvisioningErrors": [
+            ]
+        },
+        "sharepointMetadata": {
+            "__metadata": {
+                "id": "https://leoncountyfl.sharepoint.com/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)",
+                "uri": "https://leoncountyfl.sharepoint.com/_api/SP.UserProfiles.PeopleManager/GetPropertiesFor(accountName=@v)",
+                "type": "SP.UserProfiles.PersonProperties"
+            },
+            "AccountName": "i:0#.f|membership|jonesarr@leoncountyfl.gov",
+            "DirectReports": {
+                "__metadata": {
+                    "type": "Collection(Edm.String)"
+                },
+                "results": [
+                ]
+            },
+            "DisplayName": "Arronice Jones",
+            "Email": "JonesArr@leoncountyfl.gov",
+            "ExtendedManagers": {
+                "__metadata": {
+                    "type": "Collection(Edm.String)"
+                },
+                "results": [
+                    "i:0#.f|membership|longv@leoncountyfl.gov",
+                    "i:0#.f|membership|lamys@leoncountyfl.gov",
+                    "i:0#.f|membership|broxtont@leoncountyfl.gov",
+                    "i:0#.f|membership|jonesash@leoncountyfl.gov"
+                ]
+            },
+            "ExtendedReports": {
+                "__metadata": {
+                    "type": "Collection(Edm.String)"
+                },
+                "results": [
+                    "i:0#.f|membership|jonesarr@leoncountyfl.gov"
+                ]
+            },
+            "IsFollowed": false,
+            "LatestPost": null,
+            "Peers": {
+                "__metadata": {
+                    "type": "Collection(Edm.String)"
+                },
+                "results": [
+                    "i:0#.f|membership|mereditha@leoncountyfl.gov",
+                    "i:0#.f|membership|mixsonc@leoncountyfl.gov",
+                    "i:0#.f|membership|rodrigueze@leoncountyfl.gov",
+                    "i:0#.f|membership|roulhace@leoncountyfl.gov",
+                    "i:0#.f|membership|havearde@leoncountyfl.gov",
+                    "i:0#.f|membership|dempsf@leoncountyfl.gov",
+                    "i:0#.f|membership|calhounga@leoncountyfl.gov",
+                    "i:0#.f|membership|jacksonjam@leoncountyfl.gov",
+                    "i:0#.f|membership|daviskeny@leoncountyfl.gov",
+                    "i:0#.f|membership|grimesm@leoncountyfl.gov",
+                    "i:0#.f|membership|conneym@leoncountyfl.gov",
+                    "i:0#.f|membership|griggsq@leoncountyfl.gov",
+                    "i:0#.f|membership|hillten@leoncountyfl.gov"
+                ]
+            },
+            "PersonalSiteHostUrl": "https://leoncountyfl-my.sharepoint.com:443/",
+            "PersonalUrl": "https://leoncountyfl-my.sharepoint.com/personal/jonesarr_leoncountyfl_gov/",
+            "PictureUrl": null,
+            "Title": "Probation/Pretrial Officer I",
+            "UserProfileProperties": {
+                "results": [
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "UserProfile_GUID",
+                        "Value": "e81663da-a58f-4ced-b81f-b55943703a04",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SID",
+                        "Value": "i:0h.f|membership|100320047f546e6c@live.com",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "ADGuid",
+                        "Value": "System.Byte[]",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "AccountName",
+                        "Value": "i:0#.f|membership|jonesarr@leoncountyfl.gov",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "FirstName",
+                        "Value": "Arronice",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PhoneticFirstName",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "LastName",
+                        "Value": "Jones",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PhoneticLastName",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "PreferredName",
+                        "Value": "Arronice Jones",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PhoneticDisplayName",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "WorkPhone",
+                        "Value": "850-606-5615",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "Department",
+                        "Value": "LCG - Supervised Pretrial Release",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "Title",
+                        "Value": "Probation/Pretrial Officer I",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-Department",
+                        "Value": "LCG - Supervised Pretrial Release",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "Manager",
+                        "Value": "i:0#.f|membership|jonesash@leoncountyfl.gov",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "AboutMe",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "PersonalSpace",
+                        "Value": "/personal/jonesarr_leoncountyfl_gov/",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "PictureURL",
+                        "Value": "https://leoncountyfl-my.sharepoint.com:443/User%20Photos/Profile%20Pictures/6f990c03-96af-4a4a-b9e0-eb3db2951d14_MThumb.jpg",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "UserName",
+                        "Value": "JonesArr@leoncountyfl.gov",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "QuickLinks",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "WebSite",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "PublicSiteRedirect",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-JobTitle",
+                        "Value": "Probation/Pretrial Officer I",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-Dotted-line",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-Peers",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-Responsibility",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-SipAddress",
+                        "Value": "jonesarr@leoncountyfl.gov",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-MySiteUpgrade",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-ProxyAddresses",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-HireDate",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-DisplayOrder",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-ClaimID",
+                        "Value": "JonesArr@leoncountyfl.gov",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-ClaimProviderID",
+                        "Value": "membership",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-ResourceSID",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-ResourceAccountName",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-MasterAccountName",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-UserPrincipalName",
+                        "Value": "JonesArr@leoncountyfl.gov",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-O15FirstRunExperience",
+                        "Value": "262160",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PersonalSiteInstantiationState",
+                        "Value": "2",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-DistinguishedName",
+                        "Value": "CN=6f990c03-96af-4a4a-b9e0-eb3db2951d14,OU=854ed59b-aa79-47ab-bff4-86a4211bbe97,OU=Tenants,OU=MSOnline,DC=SPODS192274,DC=msft,DC=net",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-SourceObjectDN",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-ClaimProviderType",
+                        "Value": "Forms",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-SavedAccountName",
+                        "Value": "i:0#.f|membership|jonesarr@leoncountyfl.gov",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-SavedSID",
+                        "Value": "System.Byte[]",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-ObjectExists",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PersonalSiteCapabilities",
+                        "Value": "4",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PersonalSiteFirstCreationTime",
+                        "Value": "4/16/2025 12:44:04 PM",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PersonalSiteLastCreationTime",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PersonalSiteNumberOfRetries",
+                        "Value": "1",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PersonalSiteFirstCreationError",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-FeedIdentifier",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "WorkEmail",
+                        "Value": "JonesArr@leoncountyfl.gov",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "CellPhone",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "Fax",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "HomePhone",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "Office",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-Location",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "Assistant",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PastProjects",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-Skills",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-School",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-Birthday",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-StatusNotes",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-Interests",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-HashTags",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-EmailOptin",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PrivacyPeople",
+                        "Value": "False",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PrivacyActivity",
+                        "Value": "0",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PictureTimestamp",
+                        "Value": "63880603848",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PicturePlaceholderState",
+                        "Value": "1",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PictureExchangeSyncState",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-TimeZone",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "OfficeGraphEnabled",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-UserType",
+                        "Value": "0",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-HideFromAddressLists",
+                        "Value": "True",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-RecipientTypeDetails",
+                        "Value": "34359738368",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "DelveFlags",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "VideoUserPopup",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "msOnline-ObjectId",
+                        "Value": "6f990c03-96af-4a4a-b9e0-eb3db2951d14",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-PointPublishingUrl",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-TenantInstanceId",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-SharePointHomeExperienceState",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-MultiGeoFlags",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "PreferredDataLocation",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-UserIdentityType",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-UserIdentityParent",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-UserEhamsLocation",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    },
+                    {
+                        "__metadata": {
+                            "type": "SP.KeyValue"
+                        },
+                        "Key": "SPS-AgentIdentityBlueprintId",
+                        "Value": "",
+                        "ValueType": "Edm.String"
+                    }
+                ]
+            },
+            "UserUrl": "https://leoncountyfl-my.sharepoint.com:443/Person.aspx?accountname=i%3A0%23%2Ef%7Cmembership%7Cjonesarr%40leoncountyfl%2Egov"
+        }
+    },
+    "mereditha": {

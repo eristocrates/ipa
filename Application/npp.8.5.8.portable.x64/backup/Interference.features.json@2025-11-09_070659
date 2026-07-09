@@ -1,0 +1,245 @@
+{
+    "displayFieldName": "LIFECYCLE",
+    "fieldAliases": {
+        "OBJECTID": "OBJECTID",
+        "LIFECYCLE": "Lifecycle",
+        "PARENTID": "PARENTID",
+        "OWNER": "Owner",
+        "MAINTBY": "MaintBy",
+        "SOURCE": "Source",
+        "FACILITYID": "FACILITYID",
+        "LEGACYID": "LEGACYID",
+        "ATTACHEDTOID": "ATTACHEDTOID",
+        "NEEDSATTENTION": "NeedsAttention",
+        "LOCATION": "LOCATION",
+        "INVENTORYDATE": "INVENTORYDATE",
+        "INVENTORYTYPE": "InventoryType",
+        "EASTING": "EASTING",
+        "NORTHING": "NORTHING",
+        "ZVALUE": "ZVALUE",
+        "Z29": "Z29",
+        "DIGITALPICTUREID": "DIGITALPICTUREID",
+        "FIELDCOMPLETE": "FieldComplete",
+        "ATTRIBUTECOMPLETE": "AttributeComplete",
+        "NOTES": "NOTES",
+        "PRFRESOLUTION": "PRFResolution",
+        "DRAWINGID": "DRAWINGID",
+        "ORIGINALSOURCE": "ORIGINALSOURCE",
+        "DATECREATED": "DATECREATED",
+        "WHOCREATED": "WhoCreated",
+        "UPDATESOURCE": "UPDATESOURCE",
+        "DATEMODIFIED": "DATEMODIFIED",
+        "WHOMODIFIED": "WHOMODIFIED",
+        "ACCURACYCODE": "AccuracyCode",
+        "HYPERLINK_AR": "HYPERLINK_AR",
+        "FIELDCOMMENTS": "FIELDCOMMENTS",
+        "SOURCEYEAR": "SOURCEYEAR"
+    },
+    "geometryType": "esriGeometryPoint",
+    "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+    },
+    "fields": [
+        {
+            "name": "OBJECTID",
+            "type": "esriFieldTypeOID",
+            "alias": "OBJECTID"
+        },
+        {
+            "name": "LIFECYCLE",
+            "type": "esriFieldTypeString",
+            "alias": "Lifecycle",
+            "length": 50
+        },
+        {
+            "name": "PARENTID",
+            "type": "esriFieldTypeString",
+            "alias": "PARENTID",
+            "length": 50
+        },
+        {
+            "name": "OWNER",
+            "type": "esriFieldTypeString",
+            "alias": "Owner",
+            "length": 50
+        },
+        {
+            "name": "MAINTBY",
+            "type": "esriFieldTypeString",
+            "alias": "MaintBy",
+            "length": 50
+        },
+        {
+            "name": "SOURCE",
+            "type": "esriFieldTypeString",
+            "alias": "Source",
+            "length": 50
+        },
+        {
+            "name": "FACILITYID",
+            "type": "esriFieldTypeString",
+            "alias": "FACILITYID",
+            "length": 20
+        },
+        {
+            "name": "LEGACYID",
+            "type": "esriFieldTypeString",
+            "alias": "LEGACYID",
+            "length": 20
+        },
+        {
+            "name": "ATTACHEDTOID",
+            "type": "esriFieldTypeString",
+            "alias": "ATTACHEDTOID",
+            "length": 15
+        },
+        {
+            "name": "NEEDSATTENTION",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "NeedsAttention"
+        },
+        {
+            "name": "LOCATION",
+            "type": "esriFieldTypeString",
+            "alias": "LOCATION",
+            "length": 100
+        },
+        {
+            "name": "INVENTORYDATE",
+            "type": "esriFieldTypeDate",
+            "alias": "INVENTORYDATE",
+            "length": 8
+        },
+        {
+            "name": "INVENTORYTYPE",
+            "type": "esriFieldTypeString",
+            "alias": "InventoryType",
+            "length": 20
+        },
+        {
+            "name": "EASTING",
+            "type": "esriFieldTypeDouble",
+            "alias": "EASTING"
+        },
+        {
+            "name": "NORTHING",
+            "type": "esriFieldTypeDouble",
+            "alias": "NORTHING"
+        },
+        {
+            "name": "ZVALUE",
+            "type": "esriFieldTypeDouble",
+            "alias": "ZVALUE"
+        },
+        {
+            "name": "Z29",
+            "type": "esriFieldTypeDouble",
+            "alias": "Z29"
+        },
+        {
+            "name": "DIGITALPICTUREID",
+            "type": "esriFieldTypeString",
+            "alias": "DIGITALPICTUREID",
+            "length": 30
+        },
+        {
+            "name": "FIELDCOMPLETE",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "FieldComplete"
+        },
+        {
+            "name": "ATTRIBUTECOMPLETE",
+            "type": "esriFieldTypeSmallInteger",
+            "alias": "AttributeComplete"
+        },
+        {
+            "name": "NOTES",
+            "type": "esriFieldTypeString",
+            "alias": "NOTES",
+            "length": 255
+        },
+        {
+            "name": "PRFRESOLUTION",
+            "type": "esriFieldTypeString",
+            "alias": "PRFResolution",
+            "length": 60
+        },
+        {
+            "name": "DRAWINGID",
+            "type": "esriFieldTypeString",
+            "alias": "DRAWINGID",
+            "length": 255
+        },
+        {
+            "name": "ORIGINALSOURCE",
+            "type": "esriFieldTypeString",
+            "alias": "ORIGINALSOURCE",
+            "length": 75
+        },
+        {
+            "name": "DATECREATED",
+            "type": "esriFieldTypeDate",
+            "alias": "DATECREATED",
+            "length": 8
+        },
+        {
+            "name": "WHOCREATED",
+            "type": "esriFieldTypeString",
+            "alias": "WhoCreated",
+            "length": 50
+        },
+        {
+            "name": "UPDATESOURCE",
+            "type": "esriFieldTypeString",
+            "alias": "UPDATESOURCE",
+            "length": 50
+        },
+        {
+            "name": "DATEMODIFIED",
+            "type": "esriFieldTypeDate",
+            "alias": "DATEMODIFIED",
+            "length": 8
+        },
+        {
+            "name": "WHOMODIFIED",
+            "type": "esriFieldTypeString",
+            "alias": "WHOMODIFIED",
+            "length": 50
+        },
+        {
+            "name": "ACCURACYCODE",
+            "type": "esriFieldTypeString",
+            "alias": "AccuracyCode",
+            "length": 40
+        },
+        {
+            "name": "HYPERLINK_AR",
+            "type": "esriFieldTypeString",
+            "alias": "HYPERLINK_AR",
+            "length": 100
+        },
+        {
+            "name": "FIELDCOMMENTS",
+            "type": "esriFieldTypeString",
+            "alias": "FIELDCOMMENTS",
+            "length": 60
+        },
+        {
+            "name": "SOURCEYEAR",
+            "type": "esriFieldTypeString",
+            "alias": "SOURCEYEAR",
+            "length": 4
+        }
+    ],
+    "features": [
+    ],
+    "name": "Interference",
+    "id": "25",
+    "type": "Feature Layer",
+    "subtypes": [
+    ],
+    "typeIdField": null,
+    "subtypeFieldName": null,
+    "subtypeField": null
+}

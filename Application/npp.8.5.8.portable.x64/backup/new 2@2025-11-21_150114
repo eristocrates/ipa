@@ -1,0 +1,8 @@
+		<table name="StormInlet"
+			       databaseName="COMPSTIN"
+			       hasNullRecord="true"
+			       type="SimpleAsset"
+			       deploymentStatus="Deploy"
+			       isLicensed="true"
+			       description="Storm Inlet"
+			       remarks="">
