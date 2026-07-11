@@ -1,0 +1,255 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix mo: <http://purl.org/ontology/mo/>.
+@prefix po: <http://purl.org/ontology/po/>.
+@prefix theatre: <http://purl.org/theatre#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix being: <http://purl.org/ontomedia/ext/common/being#>.
+@prefix frbrcore: <http://purl.org/vocab/frbr/core#>.
+@prefix particip: <http://purl.org/vocab/participation/schema#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wgspos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+theatre: dc11:creator <http://lukeblaney.co.uk/#me>;
+         a owl:Ontology;
+         rdfs:comment "A vocabulary for theatrical data.  It defines concepts such as shows, productions, seasons etc.";
+         owl:priorVersion <http://bedlamtheatre.co.uk/schema#>.
+theatre:AccessibilityProvision a owl:Class;
+                               rdfs:comment "A Provision which makes an ev:Event more accessible";
+                               rdfs:label "AccessibilityProvision".
+theatre:Meeting a owl:Class;
+                rdfs:comment "An event which involves discussion/planning, often with a formal tone.";
+                rdfs:label "Meeting";
+                rdfs:subClassOf event:Event.
+theatre:PerformableProject a owl:Class;
+                           rdfs:comment "A Project which intends to evoke a response from an Audience.";
+                           rdfs:label "PerformableProject";
+                           rdfs:subClassOf foaf:Project;
+                           status:term_status "archaic".
+theatre:Portrayal a owl:Class;
+                  rdfs:comment "A Position which involes portraying a Character.";
+                  rdfs:label "Portrayal";
+                  rdfs:subClassOf theatre:Position.
+theatre:Position a owl:Class;
+                 rdfs:comment "A set of responibilities.";
+                 rdfs:label "Position".
+theatre:PressNight a owl:Class;
+                   rdfs:comment "A performance which reviewers are encouraged to attend.";
+                   rdfs:label "PressNight";
+                   rdfs:subClassOf mo:Performance.
+theatre:Production a owl:Class;
+                   rdfs:comment "The realisation of a theatrical work.";
+                   rdfs:label "Production";
+                   rdfs:subClassOf frbrcore:Expression.
+theatre:ProductionCompany a owl:Class;
+                          rdfs:comment "An Organisation which puts on Productions.";
+                          rdfs:label "ProductionCompany";
+                          rdfs:subClassOf foaf:Organization.
+theatre:Rehearsal a owl:Class;
+                  rdfs:comment "An event which involves preparatory work for a Performance.";
+                  rdfs:label "Rehearsal";
+                  rdfs:subClassOf event:Event.
+theatre:RehearsalReading a owl:Class;
+                         rdfs:comment "An unpolished performance in which the cast read from scripts.";
+                         rdfs:label "RehearsalReading";
+                         rdfs:subClassOf mo:Performance.
+theatre:Rehersal a owl:Class;
+                 rdfs:comment "An event which involves preparatory work for a Performance.";
+                 rdfs:label "Rehersal";
+                 rdfs:subClassOf event:Event;
+                 status:term_status "archaic".
+theatre:RehersalReading a owl:Class;
+                        rdfs:comment "An unpolished performance in which the cast read from scripts.";
+                        rdfs:label "RehersalReading";
+                        rdfs:subClassOf mo:Performance;
+                        status:term_status "archaic".
+theatre:Season a owl:Class;
+               rdfs:comment "A collection of Productions and/or Performances";
+               rdfs:label "Season".
+theatre:Show a owl:Class;
+             rdfs:comment "The writing/devising which may enable a Production.";
+             rdfs:label "Show";
+             rdfs:subClassOf frbrcore:Work;
+             status:term_status "archaic".
+theatre:Venue a owl:Class;
+              rdfs:comment "A Nestable Spatial Thing used for Theatrical Events.";
+              rdfs:label "Venue";
+              rdfs:subClassOf wgspos:SpatialThing.
+theatre:Voice a owl:Class;
+              rdfs:comment "The voice classification for a Singer or singing part.";
+              rdfs:label "Voice";
+              rdfs:subClassOf mo:Instrument.
+theatre:Workshop a owl:Class;
+                 rdfs:comment "An event which involves participation, mainly with an educational focus.";
+                 rdfs:label "Workshop";
+                 rdfs:subClassOf event:Event.
+theatre:accessibility_provision a owl:ObjectProperty;
+                                rdfs:comment "Associates an Accessibility Provision with an Event";
+                                rdfs:domain event:Event;
+                                rdfs:label "accessibility_provision";
+                                rdfs:range theatre:AccessibilityProvision.
+theatre:agent a owl:ObjectProperty;
+              rdfs:comment "Associates a Role with an Agent.";
+              rdfs:domain particip:Role;
+              rdfs:label "agent";
+              rdfs:range foaf:Agent;
+              owl:sameAs particip:holder;
+              status:term_status "archaic".
+theatre:audience_restriction a owl:ObjectProperty;
+                             rdfs:comment "A restriction on who can attend a particular performance";
+                             rdfs:domain theatre:Performance;
+                             rdfs:label "audience_restriction";
+                             rdfs:range xsd:string.
+theatre:based_on a owl:ObjectProperty;
+                 rdfs:comment "Indicates a Work that another Work was based on .";
+                 rdfs:domain frbrcore:Work;
+                 rdfs:label "based_on";
+                 rdfs:range frbrcore:Work.
+theatre:credit a owl:ObjectProperty;
+               rdfs:comment "Associates a Project with a Role.";
+               rdfs:label "credit";
+               rdfs:range particip:Role;
+               owl:inverseOf theatre:project;
+               owl:unionOf ([a rdfs:domain]
+                            [a rdfs:domain]
+                            [a rdfs:domain]
+                            [a rdfs:domain]);
+               status:term_status "unstable".
+theatre:event a owl:ObjectProperty;
+              rdfs:comment "Associates a Project with an Event.";
+              rdfs:domain foaf:Project;
+              rdfs:label "event";
+              rdfs:range event:Event.
+theatre:genre a owl:ObjectProperty;
+              rdfs:comment "Associates a Genre with a Work.";
+              rdfs:domain frbrcore:Work;
+              rdfs:label "genre";
+              rdfs:range mo:Genre.
+theatre:manifestation a owl:ObjectProperty;
+                      rdfs:comment "Associates a Performableproject with a Production.";
+                      rdfs:domain theatre:Performableproject;
+                      rdfs:label "manifestation";
+                      rdfs:range theatre:Production;
+                      status:term_status "archaic".
+theatre:parent_season a owl:ObjectProperty;
+                      rdfs:comment "Associates a season with its commissioning season.";
+                      rdfs:domain theatre:Season;
+                      rdfs:label "parent_season";
+                      rdfs:range theatre:Season;
+                      status:term_status "archaic".
+theatre:parent_venue a owl:ObjectProperty;
+                     rdfs:comment "Associates a Venue with its containing Venue.";
+                     rdfs:domain theatre:Venue;
+                     rdfs:label "parent_venue";
+                     rdfs:range theatre:Venue.
+theatre:part_of_season a owl:TransitiveProperty;
+                       rdfs:comment "Indicates that something is part of a season";
+                       rdfs:label "part_of_season";
+                       rdfs:range theatre:Season;
+                       owl:unionOf ([a rdfs:domain]
+                                    [a rdfs:domain]
+                                    [a rdfs:domain]).
+theatre:performance a owl:ObjectProperty;
+                    rdfs:comment "Associates a Production with a Performance.";
+                    rdfs:domain theatre:Production;
+                    rdfs:label "performance";
+                    rdfs:range theatre:Performance;
+                    rdfs:subPropertyOf theatre:event;
+                    owl:inverseOf theatre:performance_of.
+theatre:performance_of a owl:ObjectProperty;
+                       rdfs:comment "Associates a Production with a Performance.";
+                       rdfs:domain theatre:Performance;
+                       rdfs:label "performance_of";
+                       rdfs:range theatre:Production;
+                       owl:inverseOf theatre:performance.
+theatre:portrays a owl:ObjectProperty;
+                 rdfs:comment "Associates a Portrayal with a Character.";
+                 rdfs:domain theatre:Portrayal;
+                 rdfs:label "portrays";
+                 rdfs:range being:Character.
+theatre:position a owl:ObjectProperty;
+                 rdfs:comment "Associates a Role with a Position.";
+                 rdfs:domain particip:Role;
+                 rdfs:label "position";
+                 rdfs:range theatre:Position.
+theatre:premiere a owl:ObjectProperty;
+                 rdfs:comment "Indicates the first performance of a Show or Production in a particular area.";
+                 rdfs:label "premiere";
+                 rdfs:range mo:Performance;
+                 owl:unionOf ([a rdfs:domain]);
+                 status:term_status "unstable".
+theatre:primary_season a owl:ObjectProperty;
+                       rdfs:comment "Associates a production with its commissioning season.";
+                       rdfs:domain theatre:Production;
+                       rdfs:label "primary_season";
+                       rdfs:range theatre:Season;
+                       status:term_status "archaic".
+theatre:production a owl:ObjectProperty;
+                   rdfs:comment "Associates a Season with a Production.";
+                   rdfs:domain theatre:Season;
+                   rdfs:label "production";
+                   rdfs:range theatre:Production;
+                   status:term_status "archaic".
+theatre:production_of a owl:ObjectProperty;
+                      rdfs:comment "Indicates that a Production is an expression of a given work or production.";
+                      rdfs:domain theatre:Production;
+                      rdfs:label "production_of";
+                      owl:unionOf ([a rdfs:range]
+                                   [a rdfs:range]).
+theatre:project a owl:ObjectProperty;
+                rdfs:comment "Associates a Role with a Project.";
+                rdfs:domain particip:Role;
+                rdfs:label "project";
+                owl:inverseOf theatre:credit;
+                owl:unionOf ([a rdfs:range]
+                             [a rdfs:range]
+                             [a rdfs:range]
+                             [a rdfs:range]).
+theatre:put_on_by a owl:ObjectProperty;
+                  rdfs:comment "The Company which puts on a Production";
+                  rdfs:domain theatre:Production;
+                  rdfs:label "put_on_by";
+                  rdfs:range theatre:ProductionCompany.
+theatre:recorded_for a owl:ObjectProperty;
+                     rdfs:comment "A performance recorded for either Simulcast or later broadcast.";
+                     rdfs:domain mo:Performance;
+                     rdfs:label "recorded_for";
+                     rdfs:range po:Broadcast.
+theatre:scored_voice a owl:ObjectProperty;
+                     rdfs:comment "Indicates the voice classification that a particular Operatic character has been written for.";
+                     rdfs:domain being:Character;
+                     rdfs:label "scored_voice";
+                     rdfs:range theatre:Voice.
+theatre:sponsor a owl:ObjectProperty;
+                rdfs:comment "The Person or Organisation who sponsors a given production or performance";
+                rdfs:label "sponsor";
+                rdfs:range foaf:Agent;
+                owl:unionOf ([a rdfs:domain]
+                             [a rdfs:domain]).
+theatre:time_of_day a owl:ObjectProperty;
+                    rdfs:comment "A human readable indication of when in the day a performance occurs";
+                    rdfs:domain theatre:Performance;
+                    rdfs:label "time_of_day";
+                    rdfs:range xsd:string.
+theatre:venue a owl:ObjectProperty;
+              rdfs:comment "Associates an Event with the Venue it is held in.";
+              rdfs:domain theatre:Event;
+              rdfs:label "venue";
+              rdfs:range theatre:Venue;
+              rdfs:subPropertyOf event:place.
+theatre:worldPremiere a owl:ObjectProperty;
+                      rdfs:comment "Indicates the first performance of a Show or Production on a particular planet.";
+                      rdfs:label "worldPremiere";
+                      rdfs:range mo:Performance;
+                      rdfs:subPropertyOf theatre:premiere;
+                      owl:unionOf ([a rdfs:domain]);
+                      status:term_status "unstable".
+particip:Role a owl:Class;
+              rdfs:comment "The occupation of a Position by an Agent for a particular Project.";
+              rdfs:label "Role".

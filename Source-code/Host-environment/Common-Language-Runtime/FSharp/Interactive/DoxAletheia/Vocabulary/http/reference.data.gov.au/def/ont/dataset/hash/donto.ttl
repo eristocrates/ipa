@@ -1,0 +1,1682 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcam: <http://purl.org/dc/dcam/>.
+@prefix donto: <http://reference.data.gov.au/def/ont/dataset#>.
+@prefix agls: <http://www.agls.gov.au/agls/terms/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vcard2006: <http://www.w3.org/2006/vcard/ns#>.
+@prefix aerdcat: <http://www.w3.org/ns/dcat#>.
+@prefix nsprov: <http://www.w3.org/ns/prov#>.
+
+<http://creativecommons.org/licenses/by/4.0/> a owl:NamedIndividual.
+<http://linked.data.gov.au/> a owl:NamedIndividual.
+<http://purl.org/dc/aboutdcmi#DCMI> a owl:NamedIndividual.
+dcam:VocabularyEncodingScheme a owl:Class.
+dcmitype:Collection a owl:Class.
+dc11: dcterms:modified "2012-06-14"^^xsd:date;
+      dcterms:publisher <http://purl.org/dc/aboutdcmi#DCMI>;
+      dcterms:title "Dublin Core Metadata Element Set, Version 1.1"@en.
+dc11:contributor dcterms:description "Examples of a Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity."@en;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#contributor-006>;
+                 dcterms:issued "1999-07-02"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 rdfs:comment "An entity responsible for making contributions to the resource."@en;
+                 rdfs:isDefinedBy dc11:;
+                 rdfs:label "Contributor"@en;
+                 skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:coverage dcterms:description "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN]. Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges."@en;
+              dcterms:hasVersion <http://dublincore.org/usage/terms/history/#coverage-006>;
+              dcterms:issued "1999-07-02"^^xsd:date;
+              dcterms:modified "2008-01-14"^^xsd:date;
+              a owl:AnnotationProperty;
+              rdfs:comment "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant."@en;
+              rdfs:isDefinedBy dc11:;
+              rdfs:label "Coverage"@en;
+              skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:creator dcterms:description "Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity."@en;
+             dcterms:hasVersion <http://dublincore.org/usage/terms/history/#creator-006>;
+             dcterms:issued "1999-07-02"^^xsd:date;
+             dcterms:modified "2008-01-14"^^xsd:date;
+             rdfs:comment "An entity primarily responsible for making the resource."@en;
+             rdfs:isDefinedBy dc11:;
+             rdfs:label "Creator"@en;
+             skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:date dcterms:description "Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."@en;
+          dcterms:hasVersion <http://dublincore.org/usage/terms/history/#date-006>;
+          dcterms:issued "1999-07-02"^^xsd:date;
+          dcterms:modified "2008-01-14"^^xsd:date;
+          rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en;
+          rdfs:isDefinedBy dc11:;
+          rdfs:label "Date"@en;
+          skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:description dcterms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#description-006>;
+                 dcterms:issued "1999-07-02"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 rdfs:comment "An account of the resource."@en;
+                 rdfs:isDefinedBy dc11:;
+                 rdfs:label "Description"@en;
+                 skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:format dcterms:description "Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."@en;
+            dcterms:hasVersion <http://dublincore.org/usage/terms/history/#format-007>;
+            dcterms:issued "1999-07-02"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a owl:AnnotationProperty;
+            rdfs:comment "The file format, physical medium, or dimensions of the resource."@en;
+            rdfs:isDefinedBy dc11:;
+            rdfs:label "Format"@en;
+            skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:identifier dcterms:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#identifier-006>;
+                dcterms:issued "1999-07-02"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a owl:AnnotationProperty;
+                rdfs:comment "An unambiguous reference to the resource within a given context."@en;
+                rdfs:isDefinedBy dc11:;
+                rdfs:label "Identifier"@en;
+                skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:language dcterms:description "Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]."@en;
+              dcterms:hasVersion <http://dublincore.org/usage/terms/history/#language-007>;
+              dcterms:issued "1999-07-02"^^xsd:date;
+              dcterms:modified "2008-01-14"^^xsd:date;
+              a owl:AnnotationProperty;
+              rdfs:comment "A language of the resource."@en;
+              rdfs:isDefinedBy dc11:;
+              rdfs:label "Language"@en;
+              rdfs:seeAlso <http://www.ietf.org/rfc/rfc4646.txt>;
+              skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:mandate a owl:AnnotationProperty.
+dc11:publisher dcterms:description "Examples of a Publisher include a person, an organization, or a service. Typically, the name of a Publisher should be used to indicate the entity."@en;
+               dcterms:hasVersion <http://dublincore.org/usage/terms/history/#publisher-006>;
+               dcterms:issued "1999-07-02"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:AnnotationProperty;
+               rdfs:comment "An entity responsible for making the resource available."@en;
+               rdfs:isDefinedBy dc11:;
+               rdfs:label "Publisher"@en;
+               skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:relation dcterms:description "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system. "@en;
+              dcterms:hasVersion <http://dublincore.org/usage/terms/history/#relation-006>;
+              dcterms:issued "1999-07-02"^^xsd:date;
+              dcterms:modified "2008-01-14"^^xsd:date;
+              a owl:AnnotationProperty;
+              rdfs:comment "A related resource."@en;
+              rdfs:isDefinedBy dc11:;
+              rdfs:label "Relation"@en;
+              skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:rights dcterms:description "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."@en;
+            dcterms:hasVersion <http://dublincore.org/usage/terms/history/#rights-006>;
+            dcterms:issued "1999-07-02"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a owl:AnnotationProperty;
+            rdfs:comment "Information about rights held in and over the resource."@en;
+            rdfs:isDefinedBy dc11:;
+            rdfs:label "Rights"@en;
+            skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:source dcterms:description "The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en;
+            dcterms:hasVersion <http://dublincore.org/usage/terms/history/#source-006>;
+            dcterms:issued "1999-07-02"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a owl:AnnotationProperty;
+            rdfs:comment "A related resource from which the described resource is derived."@en;
+            rdfs:isDefinedBy dc11:;
+            rdfs:label "Source"@en;
+            skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:subject dcterms:description "Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary."@en;
+             dcterms:hasVersion <http://dublincore.org/usage/terms/history/#subject-007>;
+             dcterms:issued "1999-07-02"^^xsd:date;
+             dcterms:modified "2012-06-14"^^xsd:date;
+             a owl:ObjectProperty;
+             rdfs:comment "The topic of the resource."@en;
+             rdfs:isDefinedBy dc11:;
+             rdfs:label "Subject"@en;
+             skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:title dcterms:hasVersion <http://dublincore.org/usage/terms/history/#title-006>;
+           dcterms:issued "1999-07-02"^^xsd:date;
+           dcterms:modified "2008-01-14"^^xsd:date;
+           a owl:AnnotationProperty;
+           rdfs:comment "A name given to the resource."@en;
+           rdfs:isDefinedBy dc11:;
+           rdfs:label "Title"@en;
+           skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dc11:type dcterms:description "Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element."@en;
+          dcterms:hasVersion <http://dublincore.org/usage/terms/history/#type-006>;
+          dcterms:issued "1999-07-02"^^xsd:date;
+          dcterms:modified "2008-01-14"^^xsd:date;
+          a owl:AnnotationProperty;
+          rdfs:comment "The nature or genre of the resource."@en;
+          rdfs:isDefinedBy dc11:;
+          rdfs:label "Type"@en;
+          skos:note """A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document \"DCMI Metadata Terms\" (http://dublincore.org/documents/dcmi-terms/) for an explanation."""@en.
+dcterms: dcterms:modified "2012-06-14"^^xsd:date;
+         dcterms:publisher <http://purl.org/dc/aboutdcmi#DCMI>;
+         dcterms:title "DCMI Metadata Terms - other"@en;
+         a owl:NamedIndividual.
+dcterms:Agent dcterms:description "Examples of Agent include person, organization, and software agent."@en;
+              dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Agent-001>;
+              dcterms:issued "2008-01-14"^^xsd:date;
+              a owl:Class,
+                owl:NamedIndividual,
+                dcterms:AgentClass;
+              rdfs:comment "A resource that acts or has the power to act."@en;
+              rdfs:isDefinedBy dcterms:;
+              rdfs:label "Agent"@en.
+dcterms:AgentClass dcterms:description "Examples of Agent Class include groups seen as classes, such as students, women, charities, lecturers."@en;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#AgentClass-003>;
+                   dcterms:issued "2008-01-14"^^xsd:date;
+                   dcterms:modified "2012-06-14"^^xsd:date;
+                   a owl:Class,
+                     owl:NamedIndividual;
+                   rdfs:comment "A group of agents."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Agent Class"@en;
+                   rdfs:subClassOf rdfs:Class.
+dcterms:BibliographicResource dcterms:hasVersion <http://dublincore.org/usage/terms/history/#BibliographicResource-001>;
+                              dcterms:issued "2008-01-14"^^xsd:date;
+                              a owl:Class,
+                                owl:NamedIndividual;
+                              rdfs:comment "A book, article, or other documentary resource."@en;
+                              rdfs:isDefinedBy dcterms:;
+                              rdfs:label "Bibliographic Resource"@en.
+dcterms:Box dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Box-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a rdfs:Datatype,
+              owl:NamedIndividual;
+            rdfs:comment "The set of regions in space defined by their geographic coordinates according to the DCMI Box Encoding Scheme."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "DCMI Box"@en;
+            rdfs:seeAlso <http://dublincore.org/documents/dcmi-box/>.
+dcterms:DCMIType dcterms:hasVersion <http://dublincore.org/usage/terms/history/#DCMIType-005>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2012-06-14"^^xsd:date;
+                 a owl:NamedIndividual,
+                   dcam:VocabularyEncodingScheme;
+                 rdfs:comment "The set of classes specified by the DCMI Type Vocabulary, used to categorize the nature or genre of the resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "DCMI Type Vocabulary"@en;
+                 rdfs:seeAlso dcmitype:.
+dcterms:DDC dcterms:hasVersion <http://dublincore.org/usage/terms/history/#DDC-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a owl:NamedIndividual,
+              dcam:VocabularyEncodingScheme;
+            rdfs:comment "The set of conceptual resources specified by the Dewey Decimal Classification."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "DDC"@en;
+            rdfs:seeAlso <http://www.oclc.org/dewey/>.
+dcterms:FileFormat dcterms:description "Examples include the formats defined by the list of Internet Media Types."@en;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#FileFormat-001>;
+                   dcterms:issued "2008-01-14"^^xsd:date;
+                   a owl:Class,
+                     owl:NamedIndividual;
+                   rdfs:comment "A digital resource format."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "File Format"@en;
+                   rdfs:subClassOf dcterms:MediaType.
+dcterms:Frequency dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Frequency-001>;
+                  dcterms:issued "2008-01-14"^^xsd:date;
+                  a owl:Class,
+                    owl:NamedIndividual;
+                  rdfs:comment "A rate at which something recurs."@en;
+                  rdfs:isDefinedBy dcterms:;
+                  rdfs:label "Frequency"@en.
+dcterms:IMT dcterms:hasVersion <http://dublincore.org/usage/terms/history/#IMT-004>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a owl:NamedIndividual,
+              dcam:VocabularyEncodingScheme;
+            rdfs:comment "The set of media types specified by the Internet Assigned Numbers Authority."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "IMT"@en;
+            rdfs:seeAlso <http://www.iana.org/assignments/media-types/>.
+dcterms:ISO3166 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#ISO3166-004>;
+                dcterms:issued "2000-07-11"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a rdfs:Datatype,
+                  owl:NamedIndividual;
+                rdfs:comment "The set of codes listed in ISO 3166-1 for the representation of names of countries."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "ISO 3166"@en;
+                rdfs:seeAlso <http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html>.
+dcterms:ISO639-2 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#ISO639-2-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a rdfs:Datatype,
+                   owl:NamedIndividual;
+                 rdfs:comment "The three-letter alphabetic codes listed in ISO639-2 for the representation of names of languages."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "ISO 639-2"@en;
+                 rdfs:seeAlso <http://lcweb.loc.gov/standards/iso639-2/langhome.html>.
+dcterms:ISO639-3 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#ISO639-3-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 a rdfs:Datatype,
+                   owl:NamedIndividual;
+                 rdfs:comment "The set of three-letter codes listed in ISO 639-3 for the representation of names of languages."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "ISO 639-3"@en;
+                 rdfs:seeAlso <http://www.sil.org/iso639-3/>.
+dcterms:Jurisdiction dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Jurisdiction-001>;
+                     dcterms:issued "2008-01-14"^^xsd:date;
+                     a owl:Class,
+                       owl:NamedIndividual;
+                     rdfs:comment "The extent or range of judicial, law enforcement, or other authority."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Jurisdiction"@en;
+                     rdfs:subClassOf dcterms:LocationPeriodOrJurisdiction.
+dcterms:LCC dcterms:hasVersion <http://dublincore.org/usage/terms/history/#LCC-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a owl:NamedIndividual,
+              dcam:VocabularyEncodingScheme;
+            rdfs:comment "The set of conceptual resources specified by the Library of Congress Classification."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "LCC"@en;
+            rdfs:seeAlso <http://lcweb.loc.gov/catdir/cpso/lcco/lcco.html>.
+dcterms:LCSH dcterms:hasVersion <http://dublincore.org/usage/terms/history/#LCSH-003>;
+             dcterms:issued "2000-07-11"^^xsd:date;
+             dcterms:modified "2008-01-14"^^xsd:date;
+             a owl:NamedIndividual,
+               dcam:VocabularyEncodingScheme;
+             rdfs:comment "The set of labeled concepts specified by the Library of Congress Subject Headings."@en;
+             rdfs:isDefinedBy dcterms:;
+             rdfs:label "LCSH"@en.
+dcterms:LicenseDocument dcterms:hasVersion <http://dublincore.org/usage/terms/history/#LicenseDocument-001>;
+                        dcterms:issued "2008-01-14"^^xsd:date;
+                        a owl:Class,
+                          owl:NamedIndividual;
+                        rdfs:comment "A legal document giving official permission to do something with a Resource."@en;
+                        rdfs:isDefinedBy dcterms:;
+                        rdfs:label "License Document"@en;
+                        rdfs:subClassOf dcterms:RightsStatement.
+dcterms:LinguisticSystem dcterms:description "Examples include written, spoken, sign, and computer languages."@en;
+                         dcterms:hasVersion <http://dublincore.org/usage/terms/history/#LinguisticSystem-001>;
+                         dcterms:issued "2008-01-14"^^xsd:date;
+                         a owl:Class,
+                           owl:NamedIndividual;
+                         rdfs:comment "A system of signs, symbols, sounds, gestures, or rules used in communication."@en;
+                         rdfs:isDefinedBy dcterms:;
+                         rdfs:label "Linguistic System"@en.
+dcterms:Location dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Location-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 a owl:Class,
+                   owl:NamedIndividual;
+                 rdfs:comment "A spatial region or named place."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Location"@en;
+                 rdfs:subClassOf dcterms:LocationPeriodOrJurisdiction.
+dcterms:LocationPeriodOrJurisdiction dcterms:hasVersion <http://dublincore.org/usage/terms/history/#LocationPeriodOrJurisdiction-001>;
+                                     dcterms:issued "2008-01-14"^^xsd:date;
+                                     a owl:Class,
+                                       owl:NamedIndividual;
+                                     rdfs:comment "A location, period of time, or jurisdiction."@en;
+                                     rdfs:isDefinedBy dcterms:;
+                                     rdfs:label "Location, Period, or Jurisdiction"@en.
+dcterms:MESH dcterms:hasVersion <http://dublincore.org/usage/terms/history/#MESH-003>;
+             dcterms:issued "2000-07-11"^^xsd:date;
+             dcterms:modified "2008-01-14"^^xsd:date;
+             a owl:NamedIndividual,
+               dcam:VocabularyEncodingScheme;
+             rdfs:comment "The set of labeled concepts specified by the Medical Subject Headings."@en;
+             rdfs:isDefinedBy dcterms:;
+             rdfs:label "MeSH"@en;
+             rdfs:seeAlso <http://www.nlm.nih.gov/mesh/meshhome.html>.
+dcterms:MediaType dcterms:hasVersion <http://dublincore.org/usage/terms/history/#MediaType-001>;
+                  dcterms:issued "2008-01-14"^^xsd:date;
+                  a owl:Class,
+                    owl:NamedIndividual;
+                  rdfs:comment "A file format or physical medium."@en;
+                  rdfs:isDefinedBy dcterms:;
+                  rdfs:label "Media Type"@en;
+                  rdfs:subClassOf dcterms:MediaTypeOrExtent.
+dcterms:MediaTypeOrExtent dcterms:hasVersion <http://dublincore.org/usage/terms/history/#MediaTypeOrExtent-001>;
+                          dcterms:issued "2008-01-14"^^xsd:date;
+                          a owl:Class,
+                            owl:NamedIndividual;
+                          rdfs:comment "A media type or extent."@en;
+                          rdfs:isDefinedBy dcterms:;
+                          rdfs:label "Media Type or Extent"@en.
+dcterms:MethodOfAccrual dcterms:hasVersion <http://dublincore.org/usage/terms/history/#MethodOfAccrual-001>;
+                        dcterms:issued "2008-01-14"^^xsd:date;
+                        a owl:Class,
+                          owl:NamedIndividual;
+                        rdfs:comment "A method by which resources are added to a collection."@en;
+                        rdfs:isDefinedBy dcterms:;
+                        rdfs:label "Method of Accrual"@en.
+dcterms:MethodOfInstruction dcterms:hasVersion <http://dublincore.org/usage/terms/history/#MethodOfInstruction-001>;
+                            dcterms:issued "2008-01-14"^^xsd:date;
+                            a owl:Class,
+                              owl:NamedIndividual;
+                            rdfs:comment "A process that is used to engender knowledge, attitudes, and skills."@en;
+                            rdfs:isDefinedBy dcterms:;
+                            rdfs:label "Method of Instruction"@en.
+dcterms:NLM dcterms:hasVersion <http://dublincore.org/usage/terms/history/#NLM-002>;
+            dcterms:issued "2005-06-13"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a owl:NamedIndividual,
+              dcam:VocabularyEncodingScheme;
+            rdfs:comment "The set of conceptual resources specified by the National Library of Medicine Classification."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "NLM"@en;
+            rdfs:seeAlso <http://wwwcf.nlm.nih.gov/class/>.
+dcterms:Period dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Period-003>;
+               dcterms:issued "2000-07-11"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a rdfs:Datatype,
+                 owl:NamedIndividual;
+               rdfs:comment "The set of time intervals defined by their limits according to the DCMI Period Encoding Scheme."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "DCMI Period"@en;
+               rdfs:seeAlso <http://dublincore.org/documents/dcmi-period/>.
+dcterms:PeriodOfTime dcterms:hasVersion <http://dublincore.org/usage/terms/history/#PeriodOfTime-001>;
+                     dcterms:issued "2008-01-14"^^xsd:date;
+                     a owl:Class,
+                       owl:NamedIndividual;
+                     rdfs:comment "An interval of time that is named or defined by its start and end dates."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Period of Time"@en;
+                     rdfs:subClassOf dcterms:LocationPeriodOrJurisdiction.
+dcterms:PhysicalMedium dcterms:description "Examples include paper, canvas, or DVD."@en;
+                       dcterms:hasVersion <http://dublincore.org/usage/terms/history/#PhysicalMedium-001>;
+                       dcterms:issued "2008-01-14"^^xsd:date;
+                       a owl:Class,
+                         owl:NamedIndividual;
+                       rdfs:comment "A physical material or carrier."@en;
+                       rdfs:isDefinedBy dcterms:;
+                       rdfs:label "Physical Medium"@en;
+                       rdfs:subClassOf dcterms:MediaType.
+dcterms:PhysicalResource dcterms:hasVersion <http://dublincore.org/usage/terms/history/#PhysicalResource-001>;
+                         dcterms:issued "2008-01-14"^^xsd:date;
+                         a owl:Class,
+                           owl:NamedIndividual;
+                         rdfs:comment "A material thing."@en;
+                         rdfs:isDefinedBy dcterms:;
+                         rdfs:label "Physical Resource"@en.
+dcterms:Point dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Point-003>;
+              dcterms:issued "2000-07-11"^^xsd:date;
+              dcterms:modified "2008-01-14"^^xsd:date;
+              a rdfs:Datatype,
+                owl:NamedIndividual;
+              rdfs:comment "The set of points in space defined by their geographic coordinates according to the DCMI Point Encoding Scheme."@en;
+              rdfs:isDefinedBy dcterms:;
+              rdfs:label "DCMI Point"@en;
+              rdfs:seeAlso <http://dublincore.org/documents/dcmi-point/>.
+dcterms:Policy dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Policy-001>;
+               dcterms:issued "2008-01-14"^^xsd:date;
+               a owl:Class,
+                 owl:NamedIndividual;
+               rdfs:comment "A plan or course of action by an authority, intended to influence and determine decisions, actions, and other matters."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Policy"@en.
+dcterms:ProvenanceStatement dcterms:hasVersion <http://dublincore.org/usage/terms/history/#ProvenanceStatement-001>;
+                            dcterms:issued "2008-01-14"^^xsd:date;
+                            a owl:Class,
+                              owl:NamedIndividual;
+                            rdfs:comment "A statement of any changes in ownership and custody of a resource since its creation that are significant for its authenticity, integrity, and interpretation."@en;
+                            rdfs:isDefinedBy dcterms:;
+                            rdfs:label "Provenance Statement"@en.
+dcterms:RFC1766 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#RFC1766-003>;
+                dcterms:issued "2000-07-11"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a rdfs:Datatype,
+                  owl:NamedIndividual;
+                rdfs:comment "The set of tags, constructed according to RFC 1766, for the identification of languages."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "RFC 1766"@en;
+                rdfs:seeAlso <http://www.ietf.org/rfc/rfc1766.txt>.
+dcterms:RFC3066 dcterms:description "RFC 3066 has been obsoleted by RFC 4646."@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#RFC3066-002>;
+                dcterms:issued "2002-07-13"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a rdfs:Datatype,
+                  owl:NamedIndividual;
+                rdfs:comment "The set of tags constructed according to RFC 3066 for the identification of languages."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "RFC 3066"@en;
+                rdfs:seeAlso <http://www.ietf.org/rfc/rfc3066.txt>.
+dcterms:RFC4646 dcterms:description "RFC 4646 obsoletes RFC 3066."@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#RFC4646-001>;
+                dcterms:issued "2008-01-14"^^xsd:date;
+                a rdfs:Datatype,
+                  owl:NamedIndividual;
+                rdfs:comment "The set of tags constructed according to RFC 4646 for the identification of languages."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "RFC 4646"@en;
+                rdfs:seeAlso <http://www.ietf.org/rfc/rfc4646.txt>.
+dcterms:RFC5646 dcterms:description "RFC 5646 obsoletes RFC 4646."@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#RFC5646-001>;
+                dcterms:issued "2010-10-11"^^xsd:date;
+                a rdfs:Datatype,
+                  owl:NamedIndividual;
+                rdfs:comment "The set of tags constructed according to RFC 5646 for the identification of languages."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "RFC 5646"@en;
+                rdfs:seeAlso <http://www.ietf.org/rfc/rfc5646.txt>.
+dcterms:RightsStatement dcterms:hasVersion <http://dublincore.org/usage/terms/history/#RightsStatement-001>;
+                        dcterms:issued "2008-01-14"^^xsd:date;
+                        a owl:Class,
+                          owl:NamedIndividual;
+                        rdfs:comment "A statement about the intellectual property rights (IPR) held in or over a Resource, a legal document giving official permission to do something with a resource, or a statement about access rights."@en;
+                        rdfs:isDefinedBy dcterms:;
+                        rdfs:label "Rights Statement"@en.
+dcterms:SizeOrDuration dcterms:description "Examples include a number of pages, a specification of length, width, and breadth, or a period in hours, minutes, and seconds."@en;
+                       dcterms:hasVersion <http://dublincore.org/usage/terms/history/#SizeOrDuration-001>;
+                       dcterms:issued "2008-01-14"^^xsd:date;
+                       a owl:Class,
+                         owl:NamedIndividual;
+                       rdfs:comment "A dimension or extent, or a time taken to play or execute."@en;
+                       rdfs:isDefinedBy dcterms:;
+                       rdfs:label "Size or Duration"@en;
+                       rdfs:subClassOf dcterms:MediaTypeOrExtent.
+dcterms:Standard dcterms:hasVersion <http://dublincore.org/usage/terms/history/#Standard-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 a owl:Class,
+                   owl:NamedIndividual;
+                 rdfs:comment "A basis for comparison; a reference point against which other things can be evaluated."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Standard"@en.
+dcterms:SubjectScheme a owl:Class.
+dcterms:TGN dcterms:hasVersion <http://dublincore.org/usage/terms/history/#TGN-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a owl:NamedIndividual,
+              dcam:VocabularyEncodingScheme;
+            rdfs:comment "The set of places specified by the Getty Thesaurus of Geographic Names."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "TGN"@en;
+            rdfs:seeAlso <http://www.getty.edu/research/tools/vocabulary/tgn/index.html>.
+dcterms:UDC dcterms:hasVersion <http://dublincore.org/usage/terms/history/#UDC-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a owl:NamedIndividual,
+              dcam:VocabularyEncodingScheme;
+            rdfs:comment "The set of conceptual resources specified by the Universal Decimal Classification."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "UDC"@en;
+            rdfs:seeAlso <http://www.udcc.org/>.
+dcterms:URI dcterms:hasVersion <http://dublincore.org/usage/terms/history/#URI-003>;
+            dcterms:issued "2000-07-11"^^xsd:date;
+            dcterms:modified "2008-01-14"^^xsd:date;
+            a rdfs:Datatype,
+              owl:NamedIndividual;
+            rdfs:comment "The set of identifiers constructed according to the generic syntax for Uniform Resource Identifiers as specified by the Internet Engineering Task Force."@en;
+            rdfs:isDefinedBy dcterms:;
+            rdfs:label "URI"@en;
+            rdfs:seeAlso <http://www.ietf.org/rfc/rfc3986.txt>.
+dcterms:W3CDTF dcterms:hasVersion <http://dublincore.org/usage/terms/history/#W3CDTF-003>;
+               dcterms:issued "2000-07-11"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a rdfs:Datatype,
+                 owl:NamedIndividual;
+               rdfs:comment "The set of dates and times constructed according to the W3C Date and Time Formats Specification."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "W3C-DTF"@en;
+               rdfs:seeAlso <http://www.w3.org/TR/NOTE-datetime>.
+dcterms:abstract dcterms:hasVersion <http://dublincore.org/usage/terms/history/#abstract-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:NamedIndividual,
+                   owl:AnnotationProperty;
+                 rdfs:comment "A summary of the resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Abstract"@en;
+                 rdfs:subPropertyOf dcterms:description,
+                                    dc11:description.
+dcterms:accessRights dcterms:description "Access Rights may include information regarding access or restrictions based on privacy, security, or other policies."@en;
+                     dcterms:hasVersion <http://dublincore.org/usage/terms/history/#accessRights-002>;
+                     dcterms:issued "2003-02-15"^^xsd:date;
+                     dcterms:modified "2008-01-14"^^xsd:date;
+                     a owl:ObjectProperty,
+                       owl:AnnotationProperty,
+                       owl:NamedIndividual;
+                     rdfs:comment "Information about who can access the resource or an indication of its security status."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Access Rights"@en;
+                     rdfs:range dcterms:RightsStatement;
+                     rdfs:subPropertyOf dc11:rights,
+                                        dcterms:rights.
+dcterms:accrualMethod dcterms:hasVersion <http://dublincore.org/usage/terms/history/#accrualMethod-003>;
+                      dcterms:issued "2005-06-13"^^xsd:date;
+                      dcterms:modified "2010-10-11"^^xsd:date;
+                      a owl:NamedIndividual,
+                        owl:ObjectProperty;
+                      rdfs:comment "The method by which items are added to a collection."@en;
+                      rdfs:domain dcmitype:Collection;
+                      rdfs:isDefinedBy dcterms:;
+                      rdfs:label "Accrual Method"@en;
+                      rdfs:range dcterms:MethodOfAccrual.
+dcterms:accrualPeriodicity dcterms:hasVersion <http://dublincore.org/usage/terms/history/#accrualPeriodicity-003>;
+                           dcterms:issued "2005-06-13"^^xsd:date;
+                           dcterms:modified "2010-10-11"^^xsd:date;
+                           a owl:NamedIndividual,
+                             owl:ObjectProperty;
+                           rdfs:comment "The frequency with which items are added to a collection."@en;
+                           rdfs:domain dcmitype:Collection;
+                           rdfs:isDefinedBy dcterms:;
+                           rdfs:label "Accrual Periodicity"@en;
+                           rdfs:range dcterms:Frequency.
+dcterms:accrualPolicy dcterms:hasVersion <http://dublincore.org/usage/terms/history/#accrualPolicy-003>;
+                      dcterms:issued "2005-06-13"^^xsd:date;
+                      dcterms:modified "2010-10-11"^^xsd:date;
+                      a owl:NamedIndividual,
+                        owl:ObjectProperty;
+                      rdfs:comment "The policy governing the addition of items to a collection."@en;
+                      rdfs:domain dcmitype:Collection;
+                      rdfs:isDefinedBy dcterms:;
+                      rdfs:label "Accrual Policy"@en;
+                      rdfs:range dcterms:Policy.
+dcterms:alternative dcterms:description "The distinction between titles and alternative titles is application-specific."@en;
+                    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#alternative-003>;
+                    dcterms:issued "2000-07-11"^^xsd:date;
+                    dcterms:modified "2010-10-11"^^xsd:date;
+                    a owl:AnnotationProperty,
+                      owl:NamedIndividual,
+                      owl:DatatypeProperty;
+                    rdfs:comment "An alternative name for the resource."@en;
+                    rdfs:isDefinedBy dcterms:;
+                    rdfs:label "Alternative Title"@en;
+                    rdfs:range rdfs:Literal;
+                    rdfs:subPropertyOf dcterms:title,
+                                       dc11:title.
+dcterms:audience dcterms:hasVersion <http://dublincore.org/usage/terms/history/#audience-003>;
+                 dcterms:issued "2001-05-21"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:ObjectProperty,
+                   owl:NamedIndividual;
+                 rdfs:comment "A class of entity for whom the resource is intended or useful."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Audience"@en;
+                 rdfs:range dcterms:AgentClass.
+dcterms:available dcterms:hasVersion <http://dublincore.org/usage/terms/history/#available-003>;
+                  dcterms:issued "2000-07-11"^^xsd:date;
+                  dcterms:modified "2008-01-14"^^xsd:date;
+                  a owl:AnnotationProperty,
+                    owl:NamedIndividual,
+                    owl:DatatypeProperty;
+                  rdfs:comment "Date (often a range) that the resource became or will become available."@en;
+                  rdfs:isDefinedBy dcterms:;
+                  rdfs:label "Date Available"@en;
+                  rdfs:range rdfs:Literal;
+                  rdfs:subPropertyOf dc11:date,
+                                     dcterms:date.
+dcterms:bibliographicCitation dcterms:description "Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible."@en;
+                              dcterms:hasVersion <http://dublincore.org/usage/terms/history/#bibliographicCitation-002>;
+                              dcterms:issued "2003-02-15"^^xsd:date;
+                              dcterms:modified "2008-01-14"^^xsd:date;
+                              a owl:NamedIndividual,
+                                owl:AnnotationProperty,
+                                owl:DatatypeProperty;
+                              rdfs:comment "A bibliographic reference for the resource."@en;
+                              rdfs:domain dcterms:BibliographicResource;
+                              rdfs:isDefinedBy dcterms:;
+                              rdfs:label "Bibliographic Citation"@en;
+                              rdfs:range rdfs:Literal;
+                              rdfs:subPropertyOf dc11:identifier,
+                                                 dcterms:identifier.
+dcterms:conformsTo dcterms:hasVersion <http://dublincore.org/usage/terms/history/#conformsTo-003>;
+                   dcterms:issued "2001-05-21"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:ObjectProperty,
+                     owl:AnnotationProperty,
+                     owl:NamedIndividual;
+                   rdfs:comment "An established standard to which the described resource conforms."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Conforms To"@en;
+                   rdfs:range dcterms:Standard;
+                   rdfs:subPropertyOf dc11:relation,
+                                      dcterms:relation.
+dcterms:contributor dcterms:description "Examples of a Contributor include a person, an organization, or a service."@en;
+                    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#contributorT-001>;
+                    dcterms:issued "2008-01-14"^^xsd:date;
+                    dcterms:modified "2010-10-11"^^xsd:date;
+                    a owl:NamedIndividual,
+                      owl:AnnotationProperty,
+                      owl:ObjectProperty;
+                    rdfs:comment "An entity responsible for making contributions to the resource."@en;
+                    rdfs:isDefinedBy dcterms:;
+                    rdfs:label "Contributor"@en;
+                    rdfs:range dcterms:Agent;
+                    rdfs:subPropertyOf dc11:contributor.
+dcterms:coverage dcterms:description "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN]. Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges."@en;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#coverageT-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:NamedIndividual,
+                   owl:ObjectProperty,
+                   owl:AnnotationProperty;
+                 rdfs:comment "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Coverage"@en;
+                 rdfs:range dcterms:LocationPeriodOrJurisdiction;
+                 rdfs:subPropertyOf dc11:coverage.
+dcterms:created dcterms:hasVersion <http://dublincore.org/usage/terms/history/#created-003>;
+                dcterms:issued "2000-07-11"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a owl:NamedIndividual,
+                  owl:DatatypeProperty,
+                  owl:AnnotationProperty;
+                rdfs:comment "Date of creation of the resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "Date Created"@en;
+                rdfs:range rdfs:Literal;
+                rdfs:subPropertyOf dc11:date,
+                                   dcterms:date.
+dcterms:creator dcterms:description "Examples of a Creator include a person, an organization, or a service."@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#creatorT-002>;
+                dcterms:issued "2008-01-14"^^xsd:date;
+                dcterms:modified "2010-10-11"^^xsd:date;
+                a owl:ObjectProperty,
+                  owl:NamedIndividual,
+                  owl:AnnotationProperty;
+                rdfs:comment "An entity primarily responsible for making the resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "Creator"@en;
+                rdfs:range dcterms:Agent;
+                rdfs:subPropertyOf dcterms:contributor,
+                                   dc11:creator.
+dcterms:date dcterms:description "Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."@en;
+             dcterms:hasVersion <http://dublincore.org/usage/terms/history/#dateT-001>;
+             dcterms:issued "2008-01-14"^^xsd:date;
+             dcterms:modified "2008-01-14"^^xsd:date;
+             a owl:DatatypeProperty,
+               owl:NamedIndividual,
+               owl:AnnotationProperty;
+             rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en;
+             rdfs:isDefinedBy dcterms:;
+             rdfs:label "Date"@en;
+             rdfs:range rdfs:Literal;
+             rdfs:subPropertyOf dc11:date.
+dcterms:dateAccepted dcterms:description "Examples of resources to which a Date Accepted may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal)."@en;
+                     dcterms:hasVersion <http://dublincore.org/usage/terms/history/#dateAccepted-002>;
+                     dcterms:issued "2002-07-13"^^xsd:date;
+                     dcterms:modified "2008-01-14"^^xsd:date;
+                     a owl:DatatypeProperty,
+                       owl:NamedIndividual,
+                       owl:AnnotationProperty;
+                     rdfs:comment "Date of acceptance of the resource."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Date Accepted"@en;
+                     rdfs:range rdfs:Literal;
+                     rdfs:subPropertyOf dc11:date,
+                                        dcterms:date.
+dcterms:dateCopyrighted dcterms:hasVersion <http://dublincore.org/usage/terms/history/#dateCopyrighted-002>;
+                        dcterms:issued "2002-07-13"^^xsd:date;
+                        dcterms:modified "2008-01-14"^^xsd:date;
+                        a owl:NamedIndividual,
+                          owl:DatatypeProperty,
+                          owl:AnnotationProperty;
+                        rdfs:comment "Date of copyright."@en;
+                        rdfs:isDefinedBy dcterms:;
+                        rdfs:label "Date Copyrighted"@en;
+                        rdfs:range rdfs:Literal;
+                        rdfs:subPropertyOf dcterms:date,
+                                           dc11:date.
+dcterms:dateSubmitted dcterms:description "Examples of resources to which a Date Submitted may be relevant are a thesis (submitted to a university department) or an article (submitted to a journal)."@en;
+                      dcterms:hasVersion <http://dublincore.org/usage/terms/history/#dateSubmitted-002>;
+                      dcterms:issued "2002-07-13"^^xsd:date;
+                      dcterms:modified "2008-01-14"^^xsd:date;
+                      a owl:NamedIndividual,
+                        owl:DatatypeProperty,
+                        owl:AnnotationProperty;
+                      rdfs:comment "Date of submission of the resource."@en;
+                      rdfs:isDefinedBy dcterms:;
+                      rdfs:label "Date Submitted"@en;
+                      rdfs:range rdfs:Literal;
+                      rdfs:subPropertyOf dc11:date,
+                                         dcterms:date.
+dcterms:description dcterms:description "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en;
+                    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#descriptionT-001>;
+                    dcterms:issued "2008-01-14"^^xsd:date;
+                    dcterms:modified "2008-01-14"^^xsd:date;
+                    a owl:NamedIndividual;
+                    rdfs:comment "An account of the resource."@en;
+                    rdfs:isDefinedBy dcterms:;
+                    rdfs:label "Description"@en;
+                    rdfs:subPropertyOf dc11:description.
+dcterms:educationLevel dcterms:hasVersion <http://dublincore.org/usage/terms/history/#educationLevel-002>;
+                       dcterms:issued "2002-07-13"^^xsd:date;
+                       dcterms:modified "2008-01-14"^^xsd:date;
+                       a owl:NamedIndividual,
+                         owl:ObjectProperty;
+                       rdfs:comment "A class of entity, defined in terms of progression through an educational or training context, for which the described resource is intended."@en;
+                       rdfs:isDefinedBy dcterms:;
+                       rdfs:label "Audience Education Level"@en;
+                       rdfs:range dcterms:AgentClass;
+                       rdfs:subPropertyOf dcterms:audience.
+dcterms:extent dcterms:hasVersion <http://dublincore.org/usage/terms/history/#extent-003>;
+               dcterms:issued "2000-07-11"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:NamedIndividual,
+                 owl:ObjectProperty;
+               rdfs:comment "The size or duration of the resource."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Extent"@en;
+               rdfs:range dcterms:SizeOrDuration;
+               rdfs:subPropertyOf dc11:format,
+                                  dcterms:format.
+dcterms:format dcterms:description "Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."@en;
+               dcterms:hasVersion <http://dublincore.org/usage/terms/history/#formatT-001>;
+               dcterms:issued "2008-01-14"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:AnnotationProperty,
+                 owl:NamedIndividual;
+               rdfs:comment "The file format, physical medium, or dimensions of the resource."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Format"@en;
+               rdfs:range dcterms:MediaTypeOrExtent;
+               rdfs:subPropertyOf dc11:format.
+dcterms:hasFormat dcterms:hasVersion <http://dublincore.org/usage/terms/history/#hasFormat-003>;
+                  dcterms:issued "2000-07-11"^^xsd:date;
+                  dcterms:modified "2008-01-14"^^xsd:date;
+                  a owl:NamedIndividual,
+                    owl:AnnotationProperty;
+                  rdfs:comment "A related resource that is substantially the same as the pre-existing described resource, but in another format."@en;
+                  rdfs:isDefinedBy dcterms:;
+                  rdfs:label "Has Format"@en;
+                  rdfs:subPropertyOf dcterms:relation,
+                                     dc11:relation;
+                  skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:hasPart dcterms:hasVersion <http://dublincore.org/usage/terms/history/#hasPart-003>;
+                dcterms:issued "2000-07-11"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a owl:NamedIndividual,
+                  owl:AnnotationProperty;
+                rdfs:comment "A related resource that is included either physically or logically in the described resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "Has Part"@en;
+                rdfs:subPropertyOf dc11:relation,
+                                   dcterms:relation;
+                skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:hasVersion dcterms:hasVersion <http://dublincore.org/usage/terms/history/#hasVersion-003>;
+                   dcterms:issued "2000-07-11"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:NamedIndividual;
+                   rdfs:comment "A related resource that is a version, edition, or adaptation of the described resource."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Has Version"@en;
+                   rdfs:subPropertyOf dc11:relation,
+                                      dcterms:relation;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:identifier dcterms:description "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#identifierT-001>;
+                   dcterms:issued "2008-01-14"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:DatatypeProperty,
+                     owl:NamedIndividual,
+                     owl:AnnotationProperty;
+                   rdfs:comment "An unambiguous reference to the resource within a given context."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Identifier"@en;
+                   rdfs:range rdfs:Literal;
+                   rdfs:subPropertyOf dc11:identifier.
+dcterms:instructionalMethod dcterms:description "Instructional Method will typically include ways of presenting instructional materials or conducting instructional activities, patterns of learner-to-learner and learner-to-instructor interactions, and mechanisms by which group and individual levels of learning are measured.  Instructional methods include all aspects of the instruction and learning processes from planning and implementation through evaluation and feedback."@en;
+                            dcterms:hasVersion <http://dublincore.org/usage/terms/history/#instructionalMethod-002>;
+                            dcterms:issued "2005-06-13"^^xsd:date;
+                            dcterms:modified "2008-01-14"^^xsd:date;
+                            a owl:NamedIndividual,
+                              owl:ObjectProperty;
+                            rdfs:comment "A process, used to engender knowledge, attitudes and skills, that the described resource is designed to support."@en;
+                            rdfs:isDefinedBy dcterms:;
+                            rdfs:label "Instructional Method"@en;
+                            rdfs:range dcterms:MethodOfInstruction.
+dcterms:isBasedOn dcterms:issued "2002-04-18";
+                  dcterms:modified "2009-02-02";
+                  dcterms:type rdf:Property;
+                  a owl:NamedIndividual,
+                    owl:AnnotationProperty;
+                  rdfs:comment "A related resource of which the described resource is a performance, production, derivation, translation or interpretation."@en-au;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Has Version"@en-au;
+                  rdfs:subPropertyOf dcterms:relation,
+                                     dc11:relation.
+dcterms:isBasisFor dcterms:issued "2002-04-18";
+                   dcterms:modified "2009-02-02";
+                   dcterms:type rdf:Property;
+                   a owl:NamedIndividual,
+                     owl:AnnotationProperty;
+                   rdfs:comment "A related resource that is a performance, production, derivation, translation or interpretation of the described resource."@en-au;
+                   rdfs:isDefinedBy agls:;
+                   rdfs:label "Is Version Of"@en-au;
+                   rdfs:subPropertyOf dcterms:relation,
+                                      dc11:relation.
+dcterms:isFormatOf dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isFormatOf-003>;
+                   dcterms:issued "2000-07-11"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:AnnotationProperty,
+                     owl:NamedIndividual;
+                   rdfs:comment "A related resource that is substantially the same as the described resource, but in another format."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Is Format Of"@en;
+                   rdfs:subPropertyOf dc11:relation,
+                                      dcterms:relation;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:isPartOf dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isPartOf-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:AnnotationProperty,
+                   owl:NamedIndividual;
+                 rdfs:comment "A related resource in which the described resource is physically or logically included."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Is Part Of"@en;
+                 rdfs:subPropertyOf dc11:relation,
+                                    dcterms:relation;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:isReferencedBy dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isReferencedBy-003>;
+                       dcterms:issued "2000-07-11"^^xsd:date;
+                       dcterms:modified "2008-01-14"^^xsd:date;
+                       a owl:AnnotationProperty,
+                         owl:NamedIndividual;
+                       rdfs:comment "A related resource that references, cites, or otherwise points to the described resource."@en;
+                       rdfs:isDefinedBy dcterms:;
+                       rdfs:label "Is Referenced By"@en;
+                       rdfs:subPropertyOf dc11:relation,
+                                          dcterms:relation;
+                       skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:isReplacedBy dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isReplacedBy-003>;
+                     dcterms:issued "2000-07-11"^^xsd:date;
+                     dcterms:modified "2008-01-14"^^xsd:date;
+                     a owl:AnnotationProperty,
+                       owl:NamedIndividual;
+                     rdfs:comment "A related resource that supplants, displaces, or supersedes the described resource."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Is Replaced By"@en;
+                     rdfs:subPropertyOf dc11:relation,
+                                        dcterms:relation;
+                     skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:isRequiredBy dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isRequiredBy-003>;
+                     dcterms:issued "2000-07-11"^^xsd:date;
+                     dcterms:modified "2008-01-14"^^xsd:date;
+                     a owl:NamedIndividual,
+                       owl:AnnotationProperty;
+                     rdfs:comment "A related resource that requires the described resource to support its function, delivery, or coherence."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Is Required By"@en;
+                     rdfs:subPropertyOf dc11:relation,
+                                        dcterms:relation;
+                     skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:isVersionOf dcterms:description "Changes in version imply substantive changes in content rather than differences in format."@en;
+                    dcterms:hasVersion <http://dublincore.org/usage/terms/history/#isVersionOf-003>;
+                    dcterms:issued "2000-07-11"^^xsd:date;
+                    dcterms:modified "2008-01-14"^^xsd:date;
+                    a owl:NamedIndividual,
+                      owl:AnnotationProperty;
+                    rdfs:comment "A related resource of which the described resource is a version, edition, or adaptation."@en;
+                    rdfs:isDefinedBy dcterms:;
+                    rdfs:label "Is Version Of"@en;
+                    rdfs:subPropertyOf dcterms:relation,
+                                       dc11:relation;
+                    skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:issued dcterms:hasVersion <http://dublincore.org/usage/terms/history/#issued-003>;
+               dcterms:issued "2000-07-11"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:NamedIndividual,
+                 owl:DatatypeProperty;
+               rdfs:comment "Date of formal issuance (e.g., publication) of the resource."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Date Issued"@en;
+               rdfs:range rdfs:Literal;
+               rdfs:subPropertyOf dcterms:date,
+                                  dc11:date.
+dcterms:language dcterms:description "Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]."@en;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#languageT-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:AnnotationProperty,
+                   owl:ObjectProperty,
+                   owl:NamedIndividual;
+                 rdfs:comment "A language of the resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Language"@en;
+                 rdfs:range dcterms:LinguisticSystem;
+                 rdfs:subPropertyOf dc11:language.
+dcterms:license dcterms:hasVersion <http://dublincore.org/usage/terms/history/#license-002>;
+                dcterms:issued "2004-06-14"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a owl:ObjectProperty,
+                  owl:NamedIndividual,
+                  owl:AnnotationProperty;
+                rdfs:comment "A legal document giving official permission to do something with the resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "License"@en;
+                rdfs:range dcterms:LicenseDocument;
+                rdfs:subPropertyOf dc11:rights,
+                                   dcterms:rights.
+dcterms:mediator dcterms:description "In an educational context, a mediator might be a parent, teacher, teaching assistant, or care-giver."@en;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#mediator-003>;
+                 dcterms:issued "2001-05-21"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:ObjectProperty,
+                   owl:NamedIndividual;
+                 rdfs:comment "An entity that mediates access to the resource and for whom the resource is intended or useful."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Mediator"@en;
+                 rdfs:range dcterms:AgentClass;
+                 rdfs:subPropertyOf dcterms:audience.
+dcterms:medium dcterms:hasVersion <http://dublincore.org/usage/terms/history/#medium-003>;
+               dcterms:issued "2000-07-11"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:NamedIndividual,
+                 owl:ObjectProperty,
+                 owl:AnnotationProperty;
+               rdfs:comment "The material or physical carrier of the resource."@en;
+               rdfs:domain dcterms:PhysicalResource;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Medium"@en;
+               rdfs:range dcterms:PhysicalMedium;
+               rdfs:subPropertyOf dcterms:format,
+                                  dc11:format.
+dcterms:modified dcterms:hasVersion <http://dublincore.org/usage/terms/history/#modified-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:DatatypeProperty,
+                   owl:NamedIndividual;
+                 rdfs:comment "Date on which the resource was changed."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Date Modified"@en;
+                 rdfs:range rdfs:Literal;
+                 rdfs:subPropertyOf dcterms:date,
+                                    dc11:date.
+dcterms:provenance dcterms:description "The statement may include a description of any changes successive custodians made to the resource."@en;
+                   dcterms:hasVersion <http://dublincore.org/usage/terms/history/#provenance-002>;
+                   dcterms:issued "2004-09-20"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:ObjectProperty,
+                     owl:NamedIndividual;
+                   rdfs:comment "A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "Provenance"@en;
+                   rdfs:range dcterms:ProvenanceStatement.
+dcterms:publisher dcterms:description "Examples of a Publisher include a person, an organization, or a service."@en;
+                  dcterms:hasVersion <http://dublincore.org/usage/terms/history/#publisherT-001>;
+                  dcterms:issued "2008-01-14"^^xsd:date;
+                  dcterms:modified "2010-10-11"^^xsd:date;
+                  a owl:NamedIndividual,
+                    owl:ObjectProperty;
+                  rdfs:comment "An entity responsible for making the resource available."@en;
+                  rdfs:isDefinedBy dcterms:;
+                  rdfs:label "Publisher"@en;
+                  rdfs:range dcterms:Agent;
+                  rdfs:subPropertyOf dc11:publisher.
+dcterms:references dcterms:hasVersion <http://dublincore.org/usage/terms/history/#references-003>;
+                   dcterms:issued "2000-07-11"^^xsd:date;
+                   dcterms:modified "2008-01-14"^^xsd:date;
+                   a owl:AnnotationProperty,
+                     owl:NamedIndividual;
+                   rdfs:comment "A related resource that is referenced, cited, or otherwise pointed to by the described resource."@en;
+                   rdfs:isDefinedBy dcterms:;
+                   rdfs:label "References"@en;
+                   rdfs:subPropertyOf dc11:relation,
+                                      dcterms:relation;
+                   skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:relation dcterms:description "Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system. "@en;
+                 dcterms:hasVersion <http://dublincore.org/usage/terms/history/#relationT-001>;
+                 dcterms:issued "2008-01-14"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:NamedIndividual,
+                   owl:AnnotationProperty;
+                 rdfs:comment "A related resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Relation"@en;
+                 rdfs:subPropertyOf dc11:relation;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:replaces dcterms:hasVersion <http://dublincore.org/usage/terms/history/#replaces-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:NamedIndividual,
+                   owl:AnnotationProperty;
+                 rdfs:comment "A related resource that is supplanted, displaced, or superseded by the described resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Replaces"@en;
+                 rdfs:subPropertyOf dc11:relation,
+                                    dcterms:relation;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:requires dcterms:hasVersion <http://dublincore.org/usage/terms/history/#requires-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:AnnotationProperty,
+                   owl:NamedIndividual;
+                 rdfs:comment "A related resource that is required by the described resource to support its function, delivery, or coherence."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Requires"@en;
+                 rdfs:subPropertyOf dc11:relation,
+                                    dcterms:relation;
+                 skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:rights dcterms:description "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."@en;
+               dcterms:hasVersion <http://dublincore.org/usage/terms/history/#rightsT-001>;
+               dcterms:issued "2008-01-14"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:AnnotationProperty,
+                 owl:NamedIndividual,
+                 owl:ObjectProperty;
+               rdfs:comment "Information about rights held in and over the resource."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Rights"@en;
+               rdfs:range dcterms:RightsStatement;
+               rdfs:subPropertyOf dc11:rights.
+dcterms:rightsHolder dcterms:hasVersion <http://dublincore.org/usage/terms/history/#rightsHolder-002>;
+                     dcterms:issued "2004-06-14"^^xsd:date;
+                     dcterms:modified "2008-01-14"^^xsd:date;
+                     a owl:ObjectProperty,
+                       owl:NamedIndividual;
+                     rdfs:comment "A person or organization owning or managing rights over the resource."@en;
+                     rdfs:isDefinedBy dcterms:;
+                     rdfs:label "Rights Holder"@en;
+                     rdfs:range dcterms:Agent.
+dcterms:source dcterms:description "The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system."@en;
+               dcterms:hasVersion <http://dublincore.org/usage/terms/history/#sourceT-001>;
+               dcterms:issued "2008-01-14"^^xsd:date;
+               dcterms:modified "2008-01-14"^^xsd:date;
+               a owl:AnnotationProperty,
+                 owl:NamedIndividual;
+               rdfs:comment "A related resource from which the described resource is derived."@en;
+               rdfs:isDefinedBy dcterms:;
+               rdfs:label "Source"@en;
+               rdfs:subPropertyOf dc11:source,
+                                  dcterms:relation;
+               skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:spatial dcterms:hasVersion <http://dublincore.org/usage/terms/history/#spatial-003>;
+                dcterms:issued "2000-07-11"^^xsd:date;
+                dcterms:modified "2008-01-14"^^xsd:date;
+                a owl:ObjectProperty,
+                  owl:AnnotationProperty,
+                  owl:NamedIndividual;
+                rdfs:comment "Spatial characteristics of the resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "Spatial Coverage"@en;
+                rdfs:range dcterms:Location;
+                rdfs:subPropertyOf dcterms:coverage,
+                                   dc11:coverage.
+dcterms:subject dcterms:description "Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary."@en;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#subjectT-002>;
+                dcterms:issued "2008-01-14"^^xsd:date;
+                dcterms:modified "2012-06-14"^^xsd:date;
+                a owl:NamedIndividual,
+                  owl:AnnotationProperty;
+                rdfs:comment "The topic of the resource."@en;
+                rdfs:isDefinedBy dcterms:;
+                rdfs:label "Subject"@en;
+                rdfs:subPropertyOf dc11:subject;
+                skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en.
+dcterms:tableOfContents dcterms:hasVersion <http://dublincore.org/usage/terms/history/#tableOfContents-003>;
+                        dcterms:issued "2000-07-11"^^xsd:date;
+                        dcterms:modified "2008-01-14"^^xsd:date;
+                        a owl:NamedIndividual,
+                          owl:AnnotationProperty;
+                        rdfs:comment "A list of subunits of the resource."@en;
+                        rdfs:isDefinedBy dcterms:;
+                        rdfs:label "Table Of Contents"@en;
+                        rdfs:subPropertyOf dc11:description,
+                                           dcterms:description.
+dcterms:temporal dcterms:hasVersion <http://dublincore.org/usage/terms/history/#temporal-003>;
+                 dcterms:issued "2000-07-11"^^xsd:date;
+                 dcterms:modified "2008-01-14"^^xsd:date;
+                 a owl:NamedIndividual,
+                   owl:AnnotationProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment "Temporal characteristics of the resource."@en;
+                 rdfs:isDefinedBy dcterms:;
+                 rdfs:label "Temporal Coverage"@en;
+                 rdfs:range dcterms:PeriodOfTime;
+                 rdfs:subPropertyOf dcterms:coverage,
+                                    dc11:coverage.
+dcterms:title dcterms:hasVersion <http://dublincore.org/usage/terms/history/#titleT-002>;
+              dcterms:issued "2008-01-14"^^xsd:date;
+              dcterms:modified "2010-10-11"^^xsd:date;
+              a owl:DatatypeProperty,
+                owl:NamedIndividual;
+              rdfs:comment "A name given to the resource."@en;
+              rdfs:isDefinedBy dcterms:;
+              rdfs:label "Title"@en;
+              rdfs:range rdfs:Literal;
+              rdfs:subPropertyOf dc11:title.
+dcterms:type dcterms:description "Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element."@en;
+             dcterms:hasVersion <http://dublincore.org/usage/terms/history/#typeT-001>;
+             dcterms:issued "2008-01-14"^^xsd:date;
+             dcterms:modified "2008-01-14"^^xsd:date;
+             a owl:NamedIndividual,
+               owl:AnnotationProperty,
+               owl:ObjectProperty;
+             rdfs:comment "The nature or genre of the resource."@en;
+             rdfs:isDefinedBy dcterms:;
+             rdfs:label "Type"@en;
+             rdfs:range rdfs:Class;
+             rdfs:subPropertyOf dc11:type.
+dcterms:valid dcterms:hasVersion <http://dublincore.org/usage/terms/history/#valid-003>;
+              dcterms:issued "2000-07-11"^^xsd:date;
+              dcterms:modified "2008-01-14"^^xsd:date;
+              a owl:AnnotationProperty,
+                owl:DatatypeProperty,
+                owl:NamedIndividual;
+              rdfs:comment "Date (often a range) of validity of a resource."@en;
+              rdfs:isDefinedBy dcterms:;
+              rdfs:label "Date Valid"@en;
+              rdfs:range rdfs:Literal;
+              rdfs:subPropertyOf dc11:date,
+                                 dcterms:date.
+<http://reference.data.gov.au/def/datasetOntology> dcterms:creator <http://linked.data.gov.au/>;
+                                                   dcterms:publisher <http://linked.data.gov.au/>;
+                                                   dcterms:rights <http://creativecommons.org/licenses/by/4.0/>;
+                                                   a owl:NamedIndividual.
+<http://reference.data.gov.au/def/datasetOntology#> dcterms:publisher <http://purl.org/dc/aboutdcmi#DCMI>;
+                                                    a owl:NamedIndividual.
+<http://reference.data.gov.au/def/ont/dataset> dc11:contributor <http://reference.data.gov.au/def/ont/d.lowe@bom.gov.au>;
+                                               dc11:publisher "Australian Government Linked Data Working Group"@en;
+                                               dcterms:contributor <http://reference.data.gov.au/def/ont/simon.cox@csiro.au>,
+                                                                   <http://reference.data.gov.au/def/ont/armin.haller@anu.edu.au>,
+                                                                   <http://reference.data.gov.au/def/ont/nicholas.car@ga.gov.au>;
+                                               dcterms:created "2015-06-19"^^xsd:date;
+                                               dcterms:license <https://creativecommons.org/licenses/by/4.0/>;
+                                               dcterms:modified "2017-09-26"^^xsd:date;
+                                               dcterms:title "Dataset Ontology"@en;
+                                               a owl:Ontology;
+                                               rdfs:comment """The data.gov.au Dataset Ontology is an OWL ontology designed to describe the characteristics of datasets published on data.gov.au.
+
+The ontology contains elements which describe the publication, update, origin, governance, spatial and temporal coverage and other contextual information about the dataset. The ontology also covers aspects of organisational custodianship and governance.
+ 
+By using this ontology to describe datasets on data.gov.au publishers increase discoverability and enable the consumption of this information in other applications/systems as Linked Data. It further enables decentralised publishing of catalogs and facilitates federated dataset search across sites, e.g. in datasets that are published by the States.
+ 
+Other publishers of Linked Data may make assertions about data published using this ontology, e.g. they may publish information about the use of the dataset in other applications."""@en;
+                                               owl:imports <http://www.w3.org/2006/vcard/ns>,
+                                                           <http://www.w3.org/2006/time>,
+                                                           <http://www.w3.org/ns/prov-o>,
+                                                           <http://www.opengis.net/ont/geosparql>,
+                                                           <http://www.w3.org/ns/dcat>;
+                                               owl:priorVersion <https://github.com/AGLDWG/TR/blob/master/government.ttl>;
+                                               owl:versionIRI <http://reference.data.gov.au/def/ont/dataset/1.0>;
+                                               owl:versionInfo "1.0"@en.
+donto:AGIFTFunction dc11:source agls:FunctionClass;
+                    a owl:Class;
+                    rdfs:comment "The Government Function defined by the Australian Governments' Interactive Functions Thesaurus that best describes the data contained within a Dataset."@en;
+                    rdfs:label "Function"@en;
+                    rdfs:seeAlso <https://data.naa.gov.au/def/agift/export/def/agift.rdf>;
+                    rdfs:subClassOf donto:Classifier.
+donto:AssociatedOrganisation a owl:Class;
+                             rdfs:comment "An AssociatedOrganisation is an Organisation that is responsible for an Event that changed a Dataset the Organisation is associated with."@en;
+                             rdfs:subClassOf nsprov:Association.
+donto:Catalog a owl:Class;
+              rdfs:comment "A Catalog is a curated collection of metadata about datasets."@en;
+              rdfs:isDefinedBy "https://www.w3.org/ns/dcat#Catalog"@en;
+              rdfs:label "Catalog"@en;
+              rdfs:subClassOf aerdcat:Catalog,
+                              nsprov:Entity.
+donto:Classifier a owl:Class;
+                 rdfs:comment "A classifier used for Australian Government Data."@en;
+                 rdfs:subClassOf skos:Concept.
+donto:Dataset a owl:Class;
+              rdfs:comment "A Dataset is a collection of resources, published or curated by an agent, and openly available for download in one or more formats."@en;
+              rdfs:label "Dataset"@en;
+              rdfs:subClassOf [owl:someValuesFrom dcterms:LicenseDocument ; 
+                               owl:onProperty dcterms:license ; 
+                               a owl:Restriction],
+                              [owl:someValuesFrom rdfs:Literal ; 
+                               owl:onProperty donto:dateChangeEvent ; 
+                               a owl:Restriction],
+                              [owl:someValuesFrom rdfs:Literal ; 
+                               owl:onProperty donto:dateUpdated ; 
+                               a owl:Restriction],
+                              [owl:onProperty donto:agiftFunction ; 
+                               owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                               a owl:Restriction],
+                              aerdcat:Dataset,
+                              nsprov:Entity.
+donto:DatasetChangeEvent a owl:Class;
+                         rdfs:comment "A Dataset Change Event is a description of an event that happens at a given point in time and that results in any type of change to the Dataset."@en;
+                         rdfs:label "Dataset Change Event"@en;
+                         rdfs:subClassOf nsprov:Activity.
+donto:DatasetPublicationEvent a owl:Class;
+                              rdfs:comment "A Dataset Publication Event is a description of an event that happens at a given point in time and that results in the publication of a Dataset on data.gov.au."@en;
+                              rdfs:label "Dataset Publication Event"@en;
+                              rdfs:subClassOf donto:DatasetChangeEvent.
+donto:Distribution a owl:Class;
+                   rdfs:comment "A Distribution defines the available form of a Dataset, i.e. different formats of the Dataset or different type of endpoints the Dataset can be retrieved from."@en;
+                   rdfs:label "Distribution"@en;
+                   rdfs:subClassOf aerdcat:Distribution,
+                                   nsprov:Entity.
+donto:Document a owl:Class;
+               rdfs:label "Document"@en;
+               rdfs:subClassOf nsprov:Entity;
+               owl:equivalentClass foaf:Document.
+donto:Federal a owl:Class;
+              rdfs:comment "Federal Government denotes the federal democratic administrative authority of the Commonwealth of Australia."@en;
+              rdfs:label "Federal Government"@en;
+              rdfs:subClassOf donto:LevelOfGovernment.
+donto:FieldOfResearch a owl:Class;
+                      rdfs:comment "The Field of Research defined by the Australian and New Zealand Standard Research Classification (ANZSRC) that best describes the type of methods applied to obtain the data contained within a Dataset."@en;
+                      rdfs:label "Field of Research"@en;
+                      rdfs:subClassOf donto:Classifier.
+donto:GazettedLocality a owl:Class;
+                       rdfs:comment "Locality with a name authorised by a government agency";
+                       rdfs:label "Spatial Gazetteer"@en;
+                       rdfs:subClassOf donto:Locality.
+donto:Geometry a owl:Class;
+               rdfs:subClassOf donto:SpatialThing,
+                               geosparql:Geometry.
+donto:GovernmentAgency a owl:Class;
+                       rdfs:comment "A Government Agency is a kind of Organisation in the Commonwealth of Australia that is a distinct and recognisable body which has responsibility for carrying out administrative functions."@en;
+                       rdfs:label "Government Agency"@en;
+                       rdfs:seeAlso <http://recordsearch.naa.gov.au/manual/Provenance/AgencyDefinition.htm#DEFINITION>;
+                       rdfs:subClassOf donto:Organisation.
+donto:LevelOfGovernment a owl:Class;
+                        rdfs:comment "Level of Government is a description that is used to describe the Jurisidiction of an Organisation."@en;
+                        rdfs:label "Level of Government"@en.
+donto:LocalGovernmentArea a owl:Class;
+                          rdfs:comment "Local Government is the lowest tier of government in the Commonwealth of Australia administered under the states and territories."@en;
+                          rdfs:label "Local Government"@en;
+                          rdfs:subClassOf [owl:onProperty donto:inState ; 
+                                           owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                           a owl:Restriction],
+                                          donto:LevelOfGovernment.
+donto:Locality a owl:Class;
+               rdfs:comment "Locality is a Spatial Thing corresponding to a place or area, which is denoted by a commonly recognised, or formally designated, name or description.";
+               rdfs:subClassOf donto:SpatialThing.
+donto:MaintenanceResponsibility a owl:Class;
+                                rdfs:comment "Provides information about the maintenance arrangements for the dataset. At a minimum the Agent and start-time for the maintenance responsibility is required."@en;
+                                rdfs:label "Dataset Maintenance Arrangement"@en;
+                                rdfs:subClassOf [owl:onProperty nsprov:wasAssociatedWith ; 
+                                                 owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                 a owl:Restriction],
+                                                [owl:onProperty nsprov:endedAtTime ; 
+                                                 owl:minCardinality "0"^^xsd:nonNegativeInteger ; 
+                                                 a owl:Restriction],
+                                                [owl:onProperty nsprov:startedAtTime ; 
+                                                 owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                                 a owl:Restriction],
+                                                nsprov:Activity.
+donto:Organisation a owl:Class;
+                   rdfs:comment "An Organisation is a kind of Agent representing, for example, a business or government, or organisational subunits thereof."@en;
+                   rdfs:label "Organisation"@en;
+                   rdfs:subClassOf dcterms:Agent,
+                                   nsprov:Organization.
+donto:Point a owl:Class;
+            rdfs:comment "A Point is a point in space using its geographic coordinates."@en,
+                         "This is a stub class which allows us to defer which external vocabulary to adopt. Adoption can be at run-time through a owl:equivalentClass axiom - likely to be from WGS84_pos or OGC GeoSPARQL or both, or something else as proposed by the W3C SDWWG.";
+            rdfs:label "Point"@en;
+            rdfs:seeAlso <http://www.w3.org/2003/01/geo/wgs84_pos>;
+            rdfs:subClassOf donto:Geometry.
+donto:Polygon a owl:Class;
+              rdfs:comment "This is a stub class which allows us to defer which external vocabulary to adopt. Adoption can be at run-time through a owl:equivalentClass axiom in the data - likely to be from WGS84_pos or OGC GeoSPARQL or both, or something else as proposed by the W3C SDWWG.";
+              rdfs:label "Polygon"@en;
+              rdfs:subClassOf donto:Geometry.
+donto:Role a owl:Class;
+           rdfs:comment "A Role corresponds to the involvement of an Agent in an Event, e.g. fulfilling a publisher, contributor or custodian Role."@en;
+           rdfs:label "Role"@en;
+           rdfs:subClassOf nsprov:Role.
+donto:SpatialThing a owl:Class;
+                   rdfs:comment "A Spatial Thing describes the spatial characteristics of the resources within a Dataset, i.e. the geographical area where data was collected, a place which is the predominant subject of the Dataset, or a location which is the focus of an activity described in the Dataset."@en,
+                                "This is a stub class which allows us to defer which external vocabulary to adopt. Adoption can be at run-time through a owl:equivalentClass axiom in the data - likely to be  w3 geo or OGC GeoSPARQL or both, or something else as proposed by SDWWG.";
+                   rdfs:label "Spatial Thing"@en;
+                   rdfs:subClassOf geosparql:SpatialObject.
+donto:StateOrTerritory a owl:Class;
+                       rdfs:comment "States and Territories Government are the second tier of Government in the Commonwealth of Australia. The Commonwealth of Australia comprises of six states and various territories some of which enjoy a large degree of self-governance."@en;
+                       rdfs:label "State and Territories Government"@en;
+                       rdfs:subClassOf donto:LevelOfGovernment.
+donto:Timelnterval a owl:Class;
+                   rdfs:comment "A Time Interval describes a time period (interval) during which data was collected or observations were made that are described in the Dataset."@en,
+                                "Note that this is a subclass of the Interval class from OWL-Time.";
+                   rdfs:label "Time Interval"@en;
+                   rdfs:subClassOf time:Interval.
+donto:agiftFunction a owl:ObjectProperty;
+                    rdfs:comment "The AGIFT classification for this dataset";
+                    rdfs:label "AGIFT Theme";
+                    rdfs:range donto:AGIFTFunction;
+                    rdfs:subPropertyOf donto:classifiedAs.
+donto:classifiedAs a owl:ObjectProperty;
+                   rdfs:comment "A relation to define the main category of the dataset. A dataset can have multiple themes."@en;
+                   rdfs:domain donto:Dataset;
+                   rdfs:range donto:Classifier;
+                   rdfs:subPropertyOf aerdcat:theme.
+donto:dateChangeEvent a owl:DatatypeProperty;
+                      rdfs:comment "The date a change was made."@en;
+                      rdfs:label "Change Event Date"@en;
+                      rdfs:range xsd:dateTime;
+                      rdfs:subPropertyOf dcterms:dateAccepted.
+donto:dateUpdated a owl:DatatypeProperty;
+                  rdfs:comment "A relation to define when the Dataset was updated, i.e. a minor change that is not reflected in a Dataset Change Event."@en;
+                  rdfs:label "Update Date"@en;
+                  rdfs:range xsd:dateTime;
+                  rdfs:subPropertyOf donto:dateChangeEvent.
+donto:fileSize a owl:DatatypeProperty;
+               rdfs:comment "The size of a distribution in bytes."@en;
+               rdfs:label "File Size"@en;
+               owl:equivalentProperty aerdcat:byteSize.
+donto:hasAgent a owl:ObjectProperty;
+               rdfs:comment "Defines a relationship for the Agent responsible for a DatasetChangeEvent through an Association that defines the Organisation that the Agent is associated with for that Event."@en;
+               rdfs:range dcterms:Agent;
+               rdfs:subPropertyOf nsprov:agent.
+donto:hasContact a owl:ObjectProperty;
+                 rdfs:comment "Defines an agent who is the contact for inquiries on a Dataset."@en;
+                 owl:equivalentProperty aerdcat:contactPoint.
+donto:hasDataset a owl:ObjectProperty;
+                 rdfs:comment "Defines a Dataset to be part of a Catalog."@en;
+                 owl:equivalentProperty aerdcat:dataset;
+                 owl:inverseOf donto:inCatalog.
+donto:hasDistribution a owl:ObjectProperty;
+                      rdfs:comment "Defines the available distribution(s) for a Dataset."@en;
+                      rdfs:domain donto:Dataset;
+                      rdfs:range donto:Distribution;
+                      rdfs:subPropertyOf aerdcat:distribution.
+donto:hasDownloadURL a owl:ObjectProperty;
+                     rdfs:comment "Defines the URLs that contains the Distribution of the Dataset in a given format."@en;
+                     owl:equivalentProperty aerdcat:downloadURL.
+donto:hasLandingPage a owl:ObjectProperty;
+                     rdfs:comment "Defines a relation that associates a Catalog, Dataset or Distribution with its (one) main Web page that can be navigated to in a Web browser to gain access to the dataset, its distributions and/or additional information."@en;
+                     rdfs:range foaf:Document;
+                     rdfs:subPropertyOf aerdcat:landingPage.
+donto:hasLevelOfGovernment a owl:ObjectProperty;
+                           rdfs:comment "Defines a relation that denotes the Level of Government of an Organisation, typically a Government Agency."@en;
+                           rdfs:domain donto:Organisation;
+                           rdfs:range donto:LevelOfGovernment.
+donto:hasLicense a owl:ObjectProperty;
+                 rdfs:comment "A relation that associates a Catalog, Dataset or Distribution to its license document under which it is made available."@en;
+                 rdfs:subPropertyOf dcterms:license.
+donto:hasLocalGovernmentArea a owl:ObjectProperty;
+                             rdfs:comment "Defines a relation that denotes the Local Government representing a Locality (a Spatial Thing)."@en;
+                             rdfs:domain donto:Locality;
+                             rdfs:range donto:LocalGovernmentArea.
+donto:hasMember a owl:ObjectProperty;
+                owl:inverseOf donto:isMemberOf.
+donto:hasPurpose a owl:DatatypeProperty;
+                 rdfs:comment "The purpose of a Dataset."@en;
+                 rdfs:domain donto:Dataset;
+                 rdfs:range rdfs:Literal.
+donto:hasSpatialExtent a owl:ObjectProperty;
+                       rdfs:comment "Spatial extent corresponds to the geographic area within which all items in the dataset fall.";
+                       rdfs:domain [owl:unionOf (donto:Dataset
+                                                 donto:Locality) ; 
+                                    a owl:Class];
+                       rdfs:range donto:SpatialThing.
+donto:hasTemporalExtent a owl:ObjectProperty;
+                        rdfs:comment "Temporal extent corresponds to the time interval within which all items in the dataset occur.";
+                        rdfs:domain donto:Dataset;
+                        rdfs:range donto:Timelnterval.
+donto:hasUpdateFrequency a owl:ObjectProperty;
+                         rdfs:comment "Describes the anticipated frequency of updates of a Dataset."@en.
+donto:inCatalog a owl:ObjectProperty.
+donto:inState a owl:ObjectProperty;
+              rdfs:comment "Defines the State or Territory a Locality is located in."@en;
+              rdfs:domain donto:Locality;
+              rdfs:range donto:StateOrTerritory.
+donto:isAssociatedWith a owl:ObjectProperty;
+                       rdfs:comment "Defines an association between a Dataset Change Event (e.g. Publishing) and an Association that defines the Agent and/or the Organisation responsible for that Change Event."@en;
+                       rdfs:domain donto:DatasetChangeEvent;
+                       rdfs:range nsprov:Association;
+                       rdfs:subPropertyOf nsprov:qualifiedAssociation;
+                       owl:inverseOf donto:participatesIn.
+donto:isChangedBy a owl:ObjectProperty;
+                  rdfs:comment "Defines a relation that relates a Dataset Change Event to a Dataset. Typically, at least, a Publishing Change Event should be defined that describes when a Dataset is published on the Web."@en;
+                  rdfs:domain donto:Dataset;
+                  rdfs:range donto:DatasetChangeEvent;
+                  rdfs:subPropertyOf nsprov:wasInfluencedBy;
+                  owl:inverseOf donto:resultedIn.
+donto:isDescribedBy a owl:ObjectProperty;
+                    rdfs:comment "Defines a relation that associates a Thing to a Dataset that describes the Dataset in more detail."@en;
+                    rdfs:domain donto:Dataset;
+                    rdfs:range owl:Thing;
+                    rdfs:subPropertyOf foaf:isPrimaryTopicOf.
+donto:isMemberOf a owl:ObjectProperty;
+                 rdfs:comment "Defines a relation that denotes the beloning of an Agent to an Organisation."@en;
+                 rdfs:domain vcard2006:Agent;
+                 rdfs:range donto:Organisation.
+donto:keyword a owl:DatatypeProperty;
+              rdfs:comment "A keyword associated with the Dataset."@en;
+              rdfs:label "Keyword"@en;
+              owl:equivalentProperty aerdcat:keyword.
+donto:maintenanceArrangement a owl:ObjectProperty;
+                             rdfs:comment "Links to a description of a maintenance activity."@en;
+                             rdfs:domain dcmitype:Dataset;
+                             rdfs:range donto:MaintenanceResponsibility;
+                             rdfs:subPropertyOf nsprov:wasInfluencedBy.
+donto:participatesIn a owl:ObjectProperty.
+donto:playsRole a owl:ObjectProperty;
+                rdfs:comment "A relation that defines the Role someone plays in a Dataset Change event defined through an Association entity."@en;
+                rdfs:domain nsprov:Association;
+                rdfs:range donto:Role;
+                rdfs:subPropertyOf nsprov:hadRole;
+                owl:inverseOf donto:roleOf.
+donto:publisher a owl:AnnotationProperty,
+                  owl:ObjectProperty;
+                rdfs:comment "A Publisher plays the Role of uploading the Dataset to data.gov.au."@en;
+                rdfs:subPropertyOf dcterms:publisher.
+donto:resultedIn a owl:ObjectProperty.
+donto:roleOf a owl:ObjectProperty.
+donto:title a owl:AnnotationProperty,
+              owl:DatatypeProperty;
+            rdfs:subPropertyOf dcterms:title.
+donto:updateDate a owl:AnnotationProperty,
+                   owl:DatatypeProperty;
+                 rdfs:subPropertyOf dcterms:modified.
+<http://www.agls.gov.au/agls/1.2/availability> a owl:AnnotationProperty.
+<http://www.agls.gov.au/agls/1.2/function> a owl:AnnotationProperty.
+<http://www.agls.gov.au/agls/1.2/mandate> a owl:AnnotationProperty.
+agls: dcterms:created "2002-04-18";
+      dcterms:creator "National Archives of Australia"@en-au;
+      dcterms:description "The AGLS Metadata Terms Namespace provides URIs for the AGLS Metadata Terms Vocabulary. Vocabulary terms are declared using RDF Schema language to support RDF applications. The AGLS Metadata Terms form a richer vocabulary, which is intended to facilitate discovery of resources. It will be updated according to AGLS Working Group decisions."@en-au;
+      dcterms:language "English";
+      dcterms:modified "2010-06-30";
+      dcterms:publisher "National Archives of Australia"@en-au;
+      dcterms:rights "Copyright Commonwealth of Australia 2007";
+      dcterms:title "The AGLS Metadata Terms Namespace providing access to its content by means of an RDF Schema."@en-au.
+agls:AGLSAgentClass dcterms:issued "2008-05-27";
+                    dcterms:modified "2010-04-13";
+                    a owl:Class;
+                    rdfs:comment "A set of agent encoding schemes and/or formats"@en-au;
+                    rdfs:isDefinedBy agls:;
+                    rdfs:label "AGLS Agent Class"@en-au.
+agls:AZNSCO dcterms:issued "2002-04-18";
+            dcterms:modified "2009-02-02";
+            a rdfs:Datatype;
+            rdfs:comment "The set of occupations specified by the Australian Bureau of Statistics."@en-au;
+            rdfs:isDefinedBy agls:;
+            rdfs:label "Australian and New Zealand Standard Classification of Occupations"@en-au;
+            rdfs:seeAlso <http://www.abs.gov.au/anzsco/>.
+agls:AgentClass a owl:Class.
+agls:AglsAgent dcterms:issued "2002-04-18";
+               dcterms:modified "2009-02-02";
+               a rdfs:Datatype;
+               rdfs:comment "The set of agents defined by contact details according to Dublin Core Structured Values"@en-au;
+               rdfs:isDefinedBy agls:;
+               rdfs:label "AAGLS Agent Scheme"@en-au;
+               rdfs:seeAlso <http://www.agls.gov.au/documents/AglsAgent/>.
+agls:AglsAvail dcterms:issued "2002-04-18";
+               dcterms:modified "2009-02-02";
+               a rdfs:Datatype;
+               rdfs:comment "The set of resource availability or physical access to a resource defined by contact details according to Dublin Core Structured Values"@en-au;
+               rdfs:isDefinedBy agls:;
+               rdfs:label "AGLS Availability Scheme"@en-au;
+               rdfs:seeAlso <http://www.agls.gov.au/documents/AglsAvail/>.
+agls:AudienceClass a owl:Class.
+agls:AvailClass dcterms:issued "2007-12-12";
+                dcterms:modified "2009-02-02";
+                a owl:Class;
+                rdfs:comment "A set of availability encoding schemes and/or formats"@en-au;
+                rdfs:isDefinedBy agls:;
+                rdfs:label "Availability Class"@en-au.
+agls:DocumentClass dcterms:issued "2007-12-12";
+                   dcterms:modified "2009-02-02";
+                   a owl:Class;
+                   rdfs:comment "A set of document encoding schemes and/or formats"@en-au;
+                   rdfs:isDefinedBy agls:;
+                   rdfs:label "Document Class"@en-au.
+agls:FunctionClass dcterms:issued "2007-12-12";
+                   dcterms:modified "2010-04-13";
+                   a owl:Class;
+                   rdfs:comment "A set of function encoding schemes and/or formats"@en-au;
+                   rdfs:isDefinedBy agls:;
+                   rdfs:label "Function Class"@en-au.
+agls:GOLD dcterms:issued "2002-04-18";
+          dcterms:modified "2009-02-02";
+          a rdfs:Datatype;
+          rdfs:comment "The set of agents defined by contact details according to X500 syntax."@en-au;
+          rdfs:isDefinedBy agls:;
+          rdfs:label "Government Online Directory"@en-au;
+          rdfs:seeAlso <http://gold.directory.gov.au/>.
+agls:Geocode dcterms:issued "2008-10-21";
+             dcterms:modified "2010-04-13";
+             a rdfs:Datatype;
+             rdfs:comment "Geographic coordinates expressed as latitude and longitude."@en-au;
+             rdfs:isDefinedBy agls:;
+             rdfs:label "Geocode"@en-au.
+agls:JuriClass dcterms:issued "2007-12-12";
+               dcterms:modified "2009-02-02";
+               a owl:Class;
+               rdfs:comment "A set of jurisdiction encoding schemes and/or formats"@en-au;
+               rdfs:isDefinedBy agls:;
+               rdfs:label "Jurisdiction Class"@en-au.
+agls:ServiceClass dcterms:issued "2007-12-12";
+                  dcterms:modified "2010-04-13";
+                  a owl:Class;
+                  rdfs:comment "A set of service encoding schemes and/or formats"@en-au;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Service Class"@en-au.
+agls:act dcterms:issued "2002-04-18";
+         dcterms:modified "2009-02-02";
+         dcterms:type rdf:Property;
+         a owl:AnnotationProperty;
+         rdfs:comment "A specific piece of legislation which requires or drives the creation or provision of the resource."@en-au;
+         rdfs:isDefinedBy agls:;
+         rdfs:label "Act"@en-au;
+         rdfs:subPropertyOf <http://www.agls.gov.au/agls/1.2/mandate>,
+                            agls:mandate.
+agls:aggregationLevel dcterms:description "There are only two values possible for this refinement, either item or collection."@en-au;
+                      dcterms:issued "2002-04-18";
+                      dcterms:modified "2007-12-19";
+                      dcterms:type rdf:Property;
+                      a owl:AnnotationProperty,
+                        owl:ObjectProperty;
+                      rdfs:comment "The level of aggregation of the described resource."@en-au;
+                      rdfs:domain dcterms:Collection;
+                      rdfs:isDefinedBy agls:;
+                      rdfs:label "Aggregation Level"@en-au;
+                      rdfs:subPropertyOf dcterms:type,
+                                         dc11:type.
+agls:agls-audience dcterms:issued "2002-04-18";
+                   dcterms:modified "2009-02-02";
+                   a owl:Class;
+                   rdfs:comment "The set of audience types specified by the AGLS Audience Scheme."@en-au;
+                   rdfs:isDefinedBy agls:;
+                   rdfs:label "AGLS Audience Vocabulary"@en-au;
+                   rdfs:seeAlso <http://www.agls.gov.au/documents/agls-audience/>.
+agls:availability dcterms:issued "2007-12-19";
+                  dcterms:modified "2009-02-02";
+                  dcterms:type rdf:Property;
+                  a owl:AnnotationProperty;
+                  rdfs:comment "How the resource can be obtained or accessed, or contact information."@en-au;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Availability"@en-au;
+                  rdfs:subPropertyOf <http://www.agls.gov.au/agls/1.2/availability>.
+agls:case dcterms:issued "2002-04-18";
+          dcterms:modified "2009-02-02";
+          dcterms:type rdf:Property;
+          a owl:AnnotationProperty;
+          rdfs:comment "A specific piece of case law which requires or drives the creation or provision of the resource."@en-au;
+          rdfs:isDefinedBy agls:;
+          rdfs:label "Case"@en-au;
+          rdfs:subPropertyOf <http://www.agls.gov.au/agls/1.2/mandate>,
+                             agls:mandate.
+agls:category dcterms:description "There are only three valid values for this property, 'service', 'document' or 'agency'."@en-au;
+              dcterms:issued "2002-04-18";
+              dcterms:modified "2009-02-02";
+              dcterms:type rdf:Property;
+              a owl:ObjectProperty,
+                owl:AnnotationProperty;
+              rdfs:comment "The generic type of the resource being described."@en-au;
+              rdfs:isDefinedBy agls:;
+              rdfs:label "Category"@en-au;
+              rdfs:subPropertyOf dcterms:type,
+                                 dc11:type.
+agls:dateLicensed dcterms:issued "2007-12-12";
+                  dcterms:modified "2009-02-02";
+                  dcterms:type rdf:Property;
+                  a owl:AnnotationProperty,
+                    owl:DatatypeProperty;
+                  rdfs:comment "Date a license was applied or became effective."@en-au;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Date Licensed"@en-au;
+                  rdfs:range rdfs:Literal;
+                  rdfs:subPropertyOf dc11:date,
+                                     dcterms:date.
+agls:documentType dcterms:description "Document is used in its widest sense and includes such things as software, sound files and images."@en-au;
+                  dcterms:issued "2002-04-18";
+                  dcterms:modified "2007-12-19";
+                  dcterms:type rdf:Property;
+                  a owl:AnnotationProperty,
+                    owl:ObjectProperty;
+                  rdfs:comment "The form of the resource where category = 'document'."@en-au;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Document Type"@en-au;
+                  rdfs:subPropertyOf dcterms:type,
+                                     dc11:type.
+agls:function dcterms:issued "2007-12-19";
+              dcterms:modified "2007-12-19";
+              dcterms:type rdf:Property;
+              a owl:AnnotationProperty;
+              rdfs:comment "The business function to which the resource relates."@en-au;
+              rdfs:isDefinedBy agls:;
+              rdfs:label "Function"@en-au;
+              rdfs:subPropertyOf <http://www.agls.gov.au/agls/1.2/function>.
+agls:jurisdiction dcterms:description "Jurisdiction is a description of the territory over which a particular government exercises its authority or a particular business transacts its operations, to which the resource content is applicable."@en-au;
+                  dcterms:issued "2002-04-18";
+                  dcterms:modified "2007-12-19";
+                  dcterms:type rdf:Property;
+                  a owl:ObjectProperty,
+                    owl:AnnotationProperty;
+                  rdfs:comment "The name of the political/administrative entity covered by the resource."@en-au;
+                  rdfs:domain dcterms:Jurisdiction;
+                  rdfs:isDefinedBy agls:;
+                  rdfs:label "Jurisdiction"@en-au;
+                  rdfs:subPropertyOf dcterms:coverage,
+                                     dc11:coverage.
+agls:mandate dcterms:issued "2007-12-19";
+             dcterms:modified "2009-02-02";
+             dcterms:type rdf:Property;
+             a owl:AnnotationProperty;
+             rdfs:comment "A specific legal instrument which requires a resource to be created or made available."@en-au;
+             rdfs:isDefinedBy agls:;
+             rdfs:label "Mandate"@en-au;
+             rdfs:subPropertyOf dc11:mandate,
+                                <http://www.agls.gov.au/agls/1.2/mandate>.
+agls:protectiveMarking dcterms:issued "2007-12-12";
+                       dcterms:modified "2009-02-06";
+                       dcterms:type rdf:Property;
+                       a owl:AnnotationProperty,
+                         owl:ObjectProperty;
+                       rdfs:comment "A protective marking applied to the resource."@en-au;
+                       rdfs:isDefinedBy agls:;
+                       rdfs:label "Protective Marking"@en-au;
+                       rdfs:subPropertyOf dcterms:rights,
+                                          dc11:rights.
+agls:regulation dcterms:issued "2002-04-18";
+                dcterms:modified "2009-02-02";
+                dcterms:type rdf:Property;
+                a owl:AnnotationProperty;
+                rdfs:comment "A specific regulation which requires or drives the creation or provision of the resource."@en-au;
+                rdfs:isDefinedBy agls:;
+                rdfs:label "Regulation"@en-au;
+                rdfs:subPropertyOf <http://www.agls.gov.au/agls/1.2/mandate>,
+                                   agls:mandate.
+agls:serviceType dcterms:issued "2002-04-18";
+                 dcterms:modified "2007-12-19";
+                 dcterms:type rdf:Property;
+                 a owl:ObjectProperty,
+                   owl:AnnotationProperty;
+                 rdfs:comment "The form of the resource where category = 'service'."@en-au;
+                 rdfs:isDefinedBy agls:;
+                 rdfs:label "Service Type"@en-au;
+                 rdfs:subPropertyOf dc11:type,
+                                    dcterms:type.
+rdf:Property a owl:NamedIndividual.
+rdfs:Class a owl:Class.
+aerdcat:byteSize rdfs:domain aerdcat:Distribution;
+                 rdfs:range xsd:decimal.
+aerdcat:downloadURL rdfs:comment "Defines a relation between a Dataset and the URL that contains the distribution of the dataset in a given format."@en.
+foaf:isPrimaryTopicOf a owl:ObjectProperty.

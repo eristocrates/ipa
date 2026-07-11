@@ -1,0 +1,67 @@
+@base <https://github.com/GNOME/tinysparql/raw/refs/heads/main/src/ontologies/nepomuk/31-nao.ontology>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix nao: <http://tracker.api.gnome.org/ontology/v3/nao#>.
+@prefix nrl: <http://tracker.api.gnome.org/ontology/v3/nrl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+
+nao: nrl:lastModified "2010-12-25T16:00:00Z";
+     nrl:prefix "nao";
+     a nrl:Namespace,
+       nrl:Ontology.
+nao:Tag nrl:notify true;
+        a rdfs:Class;
+        rdfs:comment "Represents a generic tag";
+        rdfs:subClassOf rdfs:Resource.
+nao:deprecated nrl:maxCardinality 1 ;
+               a rdf:Property;
+               rdfs:comment "If this property is assigned, the subject class, property, or resource, is deprecated and should not be used in production systems any longer. It may be removed without further notice.";
+               rdfs:domain rdfs:Resource;
+               rdfs:label "deprecated";
+               rdfs:range xsd:boolean.
+nao:description nrl:fulltextIndexed true;
+                nrl:maxCardinality 1 ;
+                nrl:weight 3 ;
+                a rdf:Property;
+                rdfs:comment "In the context of the social semantic desktop the textual annotation provided via rdfs:comment is meant for technical users, the textual annotation here is aimed at average users and is meant to be used to define custom descriptions of resources on the desktop";
+                rdfs:domain nao:Tag;
+                rdfs:range xsd:string;
+                rdfs:subPropertyOf rdfs:comment.
+nao:hasTag nrl:indexed true;
+           a rdf:Property;
+           rdfs:comment "Defines an existing tag for a resource";
+           rdfs:domain rdfs:Resource;
+           rdfs:range rdfs:Resource.
+nao:identifier nrl:maxCardinality 1 ;
+               a rdf:Property;
+               rdfs:comment "Defines a generic identifier for a resource";
+               rdfs:domain rdfs:Resource;
+               rdfs:range xsd:string.
+nao:isRelated a rdf:Property;
+              rdfs:comment "This property defines a symmetric relation between any two resources. In order for this property to be used legally, the relationship must be symmetric.";
+              rdfs:domain rdfs:Resource;
+              rdfs:label "Is related";
+              rdfs:range rdfs:Resource.
+nao:lastModified nrl:maxCardinality 1 ;
+                 a rdf:Property;
+                 rdfs:comment "last modification date";
+                 rdfs:domain rdfs:Resource;
+                 rdfs:label "lastModified";
+                 rdfs:range xsd:dateTime;
+                 rdfs:subPropertyOf dc:date.
+nao:numericRating nrl:maxCardinality 1 ;
+                  a rdf:Property;
+                  rdfs:comment "Annotation for a resource in the form of a numeric rating (float value), allowed values are between 1 and 10 whereas 0 is interpreted as not set";
+                  rdfs:domain rdfs:Resource;
+                  rdfs:range xsd:double.
+nao:prefLabel nrl:fulltextIndexed true;
+              nrl:maxCardinality 1 ;
+              nrl:weight 10 ;
+              a rdf:Property;
+              rdfs:comment "A preferred label for a resource";
+              rdfs:domain nao:Tag;
+              rdfs:range xsd:string.

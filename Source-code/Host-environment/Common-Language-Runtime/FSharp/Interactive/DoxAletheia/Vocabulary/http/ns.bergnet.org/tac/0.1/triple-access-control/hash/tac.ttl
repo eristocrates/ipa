@@ -1,0 +1,89 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix tac: <http://ns.bergnet.org/tac/0.1/triple-access-control#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix trig: <http://www.w3.org/2004/03/trix/rdfg-1/>.
+
+<http://ns.bergnet.org/tac/0.1/triple-access-control> dc11:created "2011-09-02";
+                                                      dc11:creator <http://www.bergnet.org/people/bergi/card#me>;
+                                                      dc11:description "TripleAccessControl extension for WebAccessControl"@en;
+                                                      dc11:title "TripleAccessControl Ontology"@en;
+                                                      a owl:Ontology;
+                                                      owl:imports acl:,
+                                                                  <http://www.w3.org/2006/gen/ont>,
+                                                                  foaf:,
+                                                                  dc11:,
+                                                                  <http://www.w3.org/ns/auth/acl>,
+                                                                  trig:;
+                                                      status:term_status "testing"@en.
+tac:Filter a owl:Class;
+           rdfs:comment "A triple filter."@en;
+           rdfs:label "Filter"@en;
+           status:term_status "testing".
+tac:TripleAuthorization a owl:Class;
+                        rdfs:comment "A triple authorization."@en;
+                        rdfs:label "TripleAuthorization"@en;
+                        rdfs:subClassOf acl:Authorization;
+                        status:term_status "testing"@en.
+tac:accessToTriple a owl:ObjectProperty;
+                   rdfs:comment "Contains triple authorization information."@en;
+                   rdfs:domain tac:TripleAuthorization,
+                               acl:Authorization;
+                   rdfs:label "accesToTriple"@en;
+                   rdfs:range tac:TripleAuthorization;
+                   status:term_status "testing"@en.
+tac:children a owl:ObjectProperty;
+             rdfs:comment "Contains sub triple authorization informations."@en;
+             rdfs:domain tac:TripleAuthorization;
+             rdfs:label "children"@en;
+             rdfs:range tac:Authorization;
+             status:term_status "testing"@en.
+tac:filter a owl:ObjectProperty;
+           rdfs:comment "Contains triple filter rules."@en;
+           rdfs:domain tac:TripleAuthorization;
+           rdfs:label "filter"@en;
+           rdfs:range tac:Filter;
+           status:term_status "testing"@en.
+tac:graph a owl:ObjectProperty;
+          rdfs:comment "Graph for a triple filter."@en;
+          rdfs:domain tac:Filter;
+          rdfs:label "graph";
+          rdfs:range trig:Graph;
+          status:term_status "testing"@en.
+tac:mode a owl:ObjectProperty;
+         rdfs:comment "Access mode is defined per triple authorization."@en;
+         rdfs:domain tac:TripleAuthorization;
+         rdfs:label "mode"@en;
+         rdfs:subPropertyOf acl:mode;
+         status:term_status "testing"@en.
+tac:object a owl:ObjectProperty;
+           rdfs:comment "Object for a triple filter"@en;
+           rdfs:domain tac:Filter;
+           rdfs:label "object"@en;
+           status:term_status "testing"@en.
+tac:predicate a owl:ObjectProperty;
+              rdfs:comment "Predicate for a triple filter."@en;
+              rdfs:domain tac:Filter;
+              rdfs:label "predicate"@en;
+              status:term_status "testing"@en.
+tac:required a owl:ObjectProperty;
+             rdfs:comment "If this property is true access to the parent triple is only granted if childrens are found."@en;
+             rdfs:domain tac:TripleAuthorization;
+             rdfs:label "required"@en;
+             status:term_status "testing"@en.
+tac:statement a owl:ObjectProperty;
+              rdfs:comment "Statement for a triple filter."@en;
+              rdfs:domain tac:Filter;
+              rdfs:label "statement"@en;
+              status:term_status "testing"@en.
+tac:subject a owl:ObjectProperty;
+            rdfs:comment "Subject for a triple filter."@en;
+            rdfs:domain tac:Filter;
+            rdfs:label "subject"@en;
+            status:term_status "testing"@en.

@@ -1,0 +1,651 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix mvco: <http://purl.oclc.org/NET/mvco.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://purl.oclc.org/NET/mvco.owl> a owl:Ontology;
+                                    rdfs:comment "ISO/IEC 21000-19 Media Value Chain Ontology (MVCO)"@en;
+                                    owl:versionInfo "1.0".
+mvco:Action a owl:Class;
+            rdfs:comment "The exercise of a Right."@en;
+            rdfs:subClassOf owl:Thing,
+                            [owl:onProperty mvco:actedBy ; 
+                             owl:allValuesFrom mvco:User ; 
+                             a owl:Restriction],
+                            [owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty mvco:actedBy ; 
+                             a owl:Restriction];
+            owl:disjointWith mvco:IPEntity,
+                             mvco:Permission,
+                             mvco:User;
+            owl:versionInfo "1.0".
+mvco:Adaptation a owl:Class;
+                rdfs:comment "A Work that is derived from another Work"@en;
+                rdfs:subClassOf [owl:onProperty mvco:resultedFrom ; 
+                                 owl:allValuesFrom [owl:unionOf (mvco:MakeAdaptation
+                                                                 mvco:Synchronise) ; 
+                                                    a owl:Class] ; 
+                                 a owl:Restriction],
+                                mvco:IPEntity;
+                owl:disjointWith mvco:Work,
+                                 mvco:Manifestation,
+                                 mvco:Instance,
+                                 mvco:Copy,
+                                 mvco:Product;
+                owl:versionInfo "1.0".
+mvco:AdaptationInstance a owl:Class;
+                        rdfs:comment "An object or event which is an example of an Identified Adaptation Manifestation (e.g. a File)"@en;
+                        owl:equivalentClass [owl:intersectionOf (mvco:Instance
+                                                                 [owl:someValuesFrom mvco:MakeAdaptationInstance ; 
+                                                                 owl:onProperty mvco:resultedFrom ; 
+                                                                 a owl:Restriction]) ; 
+                                             a owl:Class];
+                        owl:versionInfo "1.0".
+mvco:AdaptationInstanceCopy a owl:Class;
+                            rdfs:comment "A copy of an AdaptationInstance"@en;
+                            owl:equivalentClass [owl:intersectionOf (mvco:Copy
+                                                                     [owl:onProperty mvco:resultedFrom ; 
+                                                                     owl:someValuesFrom mvco:MakeAdaptationInstanceCopy ; 
+                                                                     a owl:Restriction]) ; 
+                                                 a owl:Class];
+                            owl:versionInfo "1.0".
+mvco:AdaptationManifestation a owl:Class;
+                             rdfs:comment "An object or event which is an expression of an Adaptation"@en;
+                             owl:equivalentClass [owl:intersectionOf (mvco:Manifestation
+                                                                      [owl:onProperty mvco:resultedFrom ; 
+                                                                      owl:someValuesFrom mvco:MakeAdaptationManifestation ; 
+                                                                      a owl:Restriction]) ; 
+                                                  a owl:Class];
+                             owl:versionInfo "1.0".
+mvco:AdaptationManifestationCopy a owl:Class;
+                                 rdfs:comment "A copy of an AdaptationManifestation"@en;
+                                 owl:equivalentClass [owl:intersectionOf (mvco:Copy
+                                                                          [owl:onProperty mvco:resultedFrom ; 
+                                                                          owl:someValuesFrom mvco:MakeAdaptationManifestationCopy ; 
+                                                                          a owl:Restriction]) ; 
+                                                      a owl:Class];
+                                 owl:versionInfo "1.0".
+mvco:Adaptor a owl:Class;
+             rdfs:comment "A User who produces an Adaptation"@en;
+             rdfs:subClassOf mvco:User;
+             owl:equivalentClass [owl:onProperty mvco:acts ; 
+                                  owl:someValuesFrom mvco:MakeAdaptation ; 
+                                  a owl:Restriction];
+             owl:versionInfo "1.0".
+mvco:Anonymous a mvco:User.
+mvco:Broadcast a owl:Class;
+               rdfs:comment "The Function that Delivers Content to a Device in a point-to-multipoint modality"@en;
+               rdfs:subClassOf mvco:PublicCommunication;
+               owl:versionInfo "1.0".
+mvco:Collective a owl:Class;
+                rdfs:comment "Set of two or more Users."@en;
+                rdfs:subClassOf mvco:User;
+                owl:versionInfo "1.0".
+mvco:ContentHandler a owl:Class;
+                    rdfs:comment "User who is appointed to act on Content on behalf and within the scope and responsability of another User´s rights."@en;
+                    rdfs:subClassOf mvco:User;
+                    owl:equivalentClass [owl:onProperty mvco:actOnBehalfOf ; 
+                                         owl:someValuesFrom mvco:User ; 
+                                         a owl:Restriction];
+                    owl:versionInfo "1.0".
+mvco:Copy a owl:Class;
+          rdfs:comment "A mechanical reproduction of analogue or digital representations of a given IP Entity. In the case of digital Copies the result is virtually identical  while in the case of analogue Copies the results can vary considerably in quality."@en;
+          rdfs:subClassOf [owl:someValuesFrom mvco:MakeCopy ; 
+                           owl:onProperty mvco:resultedFrom ; 
+                           a owl:Restriction],
+                          mvco:IPEntity;
+          owl:disjointWith mvco:Instance,
+                           mvco:Manifestation,
+                           mvco:Product,
+                           mvco:Work;
+          owl:versionInfo "1.0".
+mvco:CopyrightExceptionFact a owl:Class;
+                            rdfs:comment "Fact related to the invokation of a CopyrightException";
+                            rdfs:subClassOf mvco:Fact;
+                            owl:versionInfo "1.0".
+mvco:CopyrightExceptionPermission a owl:Class;
+                                  rdfs:comment "Permission to invoke one right exceptionally.";
+                                  rdfs:subClassOf [owl:someValuesFrom mvco:CopyrightExceptionFact ; 
+                                                   owl:onProperty mvco:hasRequired ; 
+                                                   a owl:Restriction],
+                                                  mvco:Permission;
+                                  owl:versionInfo "1.0".
+mvco:CreateWork a owl:Class;
+                rdfs:comment "The action of creating a Work."@en;
+                rdfs:subClassOf [owl:complementOf [owl:someValuesFrom mvco:IPEntity ; 
+                                                   owl:onProperty mvco:actedOver ; 
+                                                   a owl:Restriction] ; 
+                                 a owl:Class],
+                                [owl:allValuesFrom mvco:Work ; 
+                                 owl:onProperty mvco:resultsIn ; 
+                                 a owl:Restriction],
+                                mvco:Action;
+                owl:disjointWith mvco:EndUserAction,
+                                 mvco:MakeAdaptation,
+                                 mvco:Produce,
+                                 mvco:PublicCommunication,
+                                 mvco:MakeManifestation,
+                                 mvco:MakeCopy,
+                                 mvco:Synchronise,
+                                 mvco:Distribute,
+                                 mvco:MakeInstance;
+                owl:versionInfo "1.0".
+mvco:Creator a owl:Class;
+             rdfs:comment "A User who generates a Work and makes its first Manifestation, also referred to as author"@en;
+             rdfs:subClassOf mvco:User;
+             owl:equivalentClass [owl:someValuesFrom mvco:CreateWork ; 
+                                  owl:onProperty mvco:acts ; 
+                                  a owl:Restriction];
+             owl:versionInfo "1.0".
+mvco:Distribute mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Producer"^^xsd:anyURI,
+                                  "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI;
+                a owl:Class;
+                rdfs:comment "The Function of selling, renting and lending"@en;
+                rdfs:subClassOf [owl:cardinality "0"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty mvco:resultsIn ; 
+                                 a owl:Restriction],
+                                [owl:onProperty mvco:actedOver ; 
+                                 owl:allValuesFrom mvco:Product ; 
+                                 a owl:Restriction],
+                                mvco:Action;
+                owl:disjointWith mvco:PublicCommunication,
+                                 mvco:MakeAdaptation,
+                                 mvco:MakeCopy,
+                                 mvco:Produce,
+                                 mvco:Synchronise,
+                                 mvco:EndUserAction,
+                                 mvco:MakeInstance,
+                                 mvco:MakeManifestation;
+                owl:versionInfo "1.0".
+mvco:Distributor a owl:Class;
+                 rdfs:comment "A User who distributes a Product"@en;
+                 rdfs:subClassOf mvco:User;
+                 owl:equivalentClass [owl:someValuesFrom mvco:Distribute ; 
+                                      owl:onProperty mvco:acts ; 
+                                      a owl:Restriction];
+                 owl:versionInfo "1.0".
+mvco:Download a owl:Class;
+              rdfs:comment "The Action of transferring a file or program from a central computer to a smaller computer or to a computer at a remote location"@en;
+              rdfs:subClassOf mvco:PublicCommunication;
+              owl:versionInfo "1.0".
+mvco:EndUser a owl:Class;
+             rdfs:comment "A User in a Value-Chain who ultimately consumes Content."@en;
+             rdfs:subClassOf mvco:User;
+             owl:equivalentClass [owl:someValuesFrom mvco:EndUserAction ; 
+                                  owl:onProperty mvco:acts ; 
+                                  a owl:Restriction];
+             owl:versionInfo "1.0".
+mvco:EndUserAction mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Distributor"^^xsd:anyURI;
+                   a owl:Class;
+                   rdfs:comment "Action performed by an EndUser";
+                   rdfs:subClassOf [owl:onProperty mvco:actedOver ; 
+                                    owl:allValuesFrom mvco:Product ; 
+                                    a owl:Restriction],
+                                   mvco:Action;
+                   owl:disjointWith mvco:PublicCommunication,
+                                    mvco:Produce,
+                                    mvco:MakeInstance,
+                                    mvco:MakeAdaptation,
+                                    mvco:Synchronise,
+                                    mvco:MakeManifestation,
+                                    mvco:MakeCopy;
+                   owl:versionInfo "1.0".
+mvco:Fact a owl:Class;
+          rdfs:comment "Positive proposition.";
+          owl:disjointWith mvco:User;
+          owl:equivalentClass [owl:onProperty mvco:isTrue ; 
+                               owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                               a owl:Restriction];
+          owl:versionInfo "1.0".
+mvco:IPEntity a owl:Class;
+              rdfs:comment "Types of IP Represented as Content: Work, Adaptation, Manifestation, Instance..."@en;
+              rdfs:subClassOf owl:Thing,
+                              [owl:onProperty mvco:resultedFrom ; 
+                               owl:allValuesFrom mvco:Action ; 
+                               a owl:Restriction],
+                              [owl:onProperty mvco:hasRightsOwner ; 
+                               owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                               a owl:Restriction],
+                              [owl:allValuesFrom mvco:User ; 
+                               owl:onProperty mvco:hasRightsOwner ; 
+                               a owl:Restriction],
+                              [owl:allValuesFrom mvco:IPEntity ; 
+                               owl:onProperty mvco:isMadeUpOf ; 
+                               a owl:Restriction];
+              owl:disjointWith mvco:User,
+                               mvco:Permission;
+              owl:versionInfo "1.0".
+mvco:Instance a owl:Class;
+              rdfs:comment "An object or event which is an example of an Identified Manifestation (e.g. a File)"@en;
+              rdfs:subClassOf mvco:IPEntity,
+                              [owl:someValuesFrom mvco:MakeInstance ; 
+                               owl:onProperty mvco:resultedFrom ; 
+                               a owl:Restriction];
+              owl:disjointWith mvco:Manifestation,
+                               mvco:Product,
+                               mvco:Work;
+              owl:versionInfo "1.0".
+mvco:Instantiator a owl:Class;
+                  rdfs:comment "A User who interprets a Manifestation of a Work making an Instance"@en;
+                  rdfs:subClassOf mvco:User;
+                  owl:equivalentClass [owl:someValuesFrom mvco:MakeInstance ; 
+                                       owl:onProperty mvco:acts ; 
+                                       a owl:Restriction];
+                  owl:versionInfo "1.0".
+mvco:MakeAdaptation mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Adaptor"^^xsd:anyURI,
+                                      "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI;
+                    a owl:Class;
+                    rdfs:comment "The Action of making an Adaptation"@en;
+                    rdfs:subClassOf [owl:onProperty mvco:actedOver ; 
+                                     owl:allValuesFrom [owl:unionOf (mvco:Adaptation
+                                                                     mvco:Work) ; 
+                                                        a owl:Class] ; 
+                                     a owl:Restriction],
+                                    [owl:allValuesFrom mvco:Adaptation ; 
+                                     owl:onProperty mvco:resultsIn ; 
+                                     a owl:Restriction],
+                                    mvco:Action;
+                    owl:disjointWith mvco:MakeCopy,
+                                     mvco:Synchronise,
+                                     mvco:MakeInstance,
+                                     mvco:MakeManifestation,
+                                     mvco:Produce,
+                                     mvco:PublicCommunication;
+                    owl:versionInfo "1.0".
+mvco:MakeAdaptationInstance a owl:Class;
+                            rdfs:comment "The Action of making an Instance from an AdaptationManifestation"@en;
+                            rdfs:subClassOf [owl:onProperty mvco:resultsIn ; 
+                                             owl:allValuesFrom mvco:AdaptationInstance ; 
+                                             a owl:Restriction];
+                            owl:equivalentClass [owl:intersectionOf (mvco:MakeInstance
+                                                                     [owl:someValuesFrom mvco:AdaptationManifestation ; 
+                                                                     owl:onProperty mvco:actedOver ; 
+                                                                     a owl:Restriction]) ; 
+                                                 a owl:Class];
+                            owl:versionInfo "1.0".
+mvco:MakeAdaptationInstanceCopy a owl:Class;
+                                rdfs:comment "The Action of making an AdaptationInstanceCopy"@en;
+                                rdfs:subClassOf [owl:onProperty mvco:resultsIn ; 
+                                                 owl:allValuesFrom mvco:AdaptationInstanceCopy ; 
+                                                 a owl:Restriction];
+                                owl:equivalentClass [owl:intersectionOf (mvco:MakeCopy
+                                                                         [owl:someValuesFrom mvco:AdaptationInstance ; 
+                                                                         owl:onProperty mvco:actedOver ; 
+                                                                         a owl:Restriction]) ; 
+                                                     a owl:Class];
+                                owl:versionInfo "1.0".
+mvco:MakeAdaptationManifestation a owl:Class;
+                                 rdfs:comment "The action of making an AdaptationManifestation from an Adaptation."@en;
+                                 rdfs:subClassOf [owl:onProperty mvco:resultsIn ; 
+                                                  owl:allValuesFrom mvco:AdaptationManifestation ; 
+                                                  a owl:Restriction];
+                                 owl:equivalentClass [owl:intersectionOf (mvco:MakeManifestation
+                                                                          [owl:someValuesFrom mvco:Adaptation ; 
+                                                                          owl:onProperty mvco:actedOver ; 
+                                                                          a owl:Restriction]) ; 
+                                                      a owl:Class];
+                                 owl:versionInfo "1.0".
+mvco:MakeAdaptationManifestationCopy a owl:Class;
+                                     rdfs:comment "The Action of making an AdaptationManifestationCopy";
+                                     rdfs:subClassOf [owl:onProperty mvco:resultsIn ; 
+                                                      owl:allValuesFrom mvco:AdaptationManifestationCopy ; 
+                                                      a owl:Restriction];
+                                     owl:equivalentClass [owl:intersectionOf (mvco:MakeCopy
+                                                                              [owl:onProperty mvco:actedOver ; 
+                                                                              owl:someValuesFrom mvco:AdaptationManifestation ; 
+                                                                              a owl:Restriction]) ; 
+                                                          a owl:Class];
+                                     owl:versionInfo "1.0".
+mvco:MakeCopy mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI,
+                                "http://purl.oclc.org/NET/mvco.owl#Instantiator"^^xsd:anyURI;
+              a owl:Class;
+              rdfs:comment "The Action of making a Copy"@en;
+              rdfs:subClassOf mvco:Action,
+                              [owl:allValuesFrom [owl:unionOf (mvco:Instance
+                                                               mvco:Manifestation) ; 
+                                                  a owl:Class] ; 
+                               owl:onProperty mvco:actedOver ; 
+                               a owl:Restriction],
+                              [owl:onProperty mvco:resultsIn ; 
+                               owl:allValuesFrom mvco:Copy ; 
+                               a owl:Restriction];
+              owl:disjointWith mvco:MakeInstance,
+                               mvco:Synchronise,
+                               mvco:Produce,
+                               mvco:PublicCommunication,
+                               mvco:MakeManifestation;
+              owl:versionInfo "1.0".
+mvco:MakeInstance a owl:Class;
+                  rdfs:comment "The Action of making an Instance from a Manifestation."@en;
+                  rdfs:subClassOf [owl:someValuesFrom mvco:Manifestation ; 
+                                   owl:onProperty mvco:actedOver ; 
+                                   a owl:Restriction],
+                                  mvco:Action,
+                                  [owl:someValuesFrom mvco:Instance ; 
+                                   owl:onProperty mvco:resultsIn ; 
+                                   a owl:Restriction];
+                  owl:disjointWith mvco:Produce,
+                                   mvco:PublicCommunication,
+                                   mvco:Synchronise,
+                                   mvco:MakeManifestation;
+                  owl:versionInfo "1.0".
+mvco:MakeManifestation a owl:Class;
+                       rdfs:comment "The action of making a Manifestation."@en;
+                       rdfs:subClassOf mvco:Action,
+                                       [owl:someValuesFrom [owl:unionOf (mvco:Adaptation
+                                                                         mvco:Work) ; 
+                                                            a owl:Class] ; 
+                                        owl:onProperty mvco:actedOver ; 
+                                        a owl:Restriction],
+                                       [owl:allValuesFrom mvco:Manifestation ; 
+                                        owl:onProperty mvco:resultsIn ; 
+                                        a owl:Restriction];
+                       owl:disjointWith mvco:Produce,
+                                        mvco:PublicCommunication,
+                                        mvco:Synchronise;
+                       owl:versionInfo "1.0".
+mvco:MakeWorkInstance a owl:Class;
+                      rdfs:comment "The Action of making an Instance from a Work Manifestation."@en;
+                      rdfs:subClassOf [owl:allValuesFrom mvco:WorkInstance ; 
+                                       owl:onProperty mvco:resultsIn ; 
+                                       a owl:Restriction];
+                      owl:equivalentClass [owl:intersectionOf (mvco:MakeInstance
+                                                               [owl:onProperty mvco:actedOver ; 
+                                                               owl:someValuesFrom mvco:WorkManifestation ; 
+                                                               a owl:Restriction]) ; 
+                                           a owl:Class];
+                      owl:versionInfo "1.0".
+mvco:MakeWorkInstanceCopy a owl:Class;
+                          rdfs:comment "The Action of making a WorkInstanceCopy"@en;
+                          rdfs:subClassOf [owl:allValuesFrom mvco:WorkInstanceCopy ; 
+                                           owl:onProperty mvco:resultsIn ; 
+                                           a owl:Restriction];
+                          owl:equivalentClass [owl:intersectionOf (mvco:MakeCopy
+                                                                   [owl:someValuesFrom mvco:WorkInstance ; 
+                                                                   owl:onProperty mvco:actedOver ; 
+                                                                   a owl:Restriction]) ; 
+                                               a owl:Class];
+                          owl:versionInfo "1.0".
+mvco:MakeWorkManifestation a owl:Class;
+                           rdfs:comment "The action of making a Manifestation from Work."@en;
+                           rdfs:subClassOf [owl:allValuesFrom mvco:WorkManifestation ; 
+                                            owl:onProperty mvco:resultsIn ; 
+                                            a owl:Restriction];
+                           owl:equivalentClass [owl:intersectionOf (mvco:MakeManifestation
+                                                                    [owl:someValuesFrom mvco:Work ; 
+                                                                    owl:onProperty mvco:actedOver ; 
+                                                                    a owl:Restriction]) ; 
+                                                a owl:Class];
+                           owl:versionInfo "1.0".
+mvco:MakeWorkManifestationCopy a owl:Class;
+                               rdfs:comment "The Action of making a WorkManifestationCopy"@en;
+                               rdfs:subClassOf [owl:onProperty mvco:resultsIn ; 
+                                                owl:allValuesFrom mvco:WorkManifestationCopy ; 
+                                                a owl:Restriction];
+                               owl:equivalentClass [owl:intersectionOf (mvco:MakeCopy
+                                                                        [owl:someValuesFrom mvco:WorkManifestation ; 
+                                                                        owl:onProperty mvco:actedOver ; 
+                                                                        a owl:Restriction]) ; 
+                                                    a owl:Class];
+                               owl:versionInfo "1.0".
+mvco:Manifestation a owl:Class;
+                   rdfs:comment "An object or event which is an expression of a Work."@en;
+                   rdfs:subClassOf mvco:IPEntity,
+                                   [owl:onProperty mvco:resultedFrom ; 
+                                    owl:someValuesFrom mvco:MakeManifestation ; 
+                                    a owl:Restriction];
+                   owl:disjointWith mvco:Product,
+                                    mvco:Work;
+                   owl:versionInfo "1.0".
+mvco:ModifyCopy a owl:Class;
+                rdfs:comment "Action of modifying a copy."@en;
+                rdfs:subClassOf mvco:EndUserAction;
+                owl:versionInfo "1.0".
+mvco:MoveContent a owl:Class;
+                 rdfs:comment "The action of moving the location of a content"@en;
+                 rdfs:subClassOf mvco:EndUserAction;
+                 owl:versionInfo "1.0".
+mvco:Permission a owl:Class;
+                rdfs:comment "Authorisation from one RightsOwner to one or more Users to perform one or more Actions on a given IPEntity."@en;
+                rdfs:subClassOf owl:Thing,
+                                [owl:allValuesFrom mvco:User ; 
+                                 owl:onProperty mvco:issuedBy ; 
+                                 a owl:Restriction],
+                                [owl:onProperty mvco:permitsAction ; 
+                                 owl:someValuesFrom mvco:Action ; 
+                                 a owl:Restriction],
+                                [owl:onProperty mvco:hasRequired ; 
+                                 owl:allValuesFrom mvco:Fact ; 
+                                 a owl:Restriction],
+                                [owl:onProperty mvco:issuedBy ; 
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger ; 
+                                 a owl:Restriction],
+                                [owl:onProperty mvco:permitsAction ; 
+                                 owl:allValuesFrom mvco:Action ; 
+                                 a owl:Restriction];
+                owl:disjointWith mvco:User;
+                owl:versionInfo "1.0".
+mvco:Produce mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Instantiator"^^xsd:anyURI,
+                               "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI;
+             a owl:Class;
+             rdfs:comment "The Function of making Products"@en;
+             rdfs:subClassOf [owl:allValuesFrom [owl:unionOf (mvco:Copy
+                                                              mvco:Instance
+                                                              mvco:Manifestation) ; 
+                                                 a owl:Class] ; 
+                              owl:onProperty mvco:actedOver ; 
+                              a owl:Restriction],
+                             [owl:onProperty mvco:resultsIn ; 
+                              owl:allValuesFrom mvco:Product ; 
+                              a owl:Restriction],
+                             mvco:Action;
+             owl:disjointWith mvco:PublicCommunication,
+                              mvco:Synchronise;
+             owl:versionInfo "1.0".
+mvco:Producer a owl:Class;
+              rdfs:comment "A User who produces a Product from an Instance."@en;
+              rdfs:subClassOf mvco:User;
+              owl:equivalentClass [owl:onProperty mvco:acts ; 
+                                   owl:someValuesFrom mvco:Produce ; 
+                                   a owl:Restriction];
+              owl:versionInfo "1.0".
+mvco:Product a owl:Class;
+             rdfs:comment "A Content Item that adds value to IP Entities by including them with an appropriate Licence for the purpose of Publishing"@en;
+             rdfs:subClassOf mvco:IPEntity,
+                             [owl:onProperty mvco:resultedFrom ; 
+                              owl:someValuesFrom mvco:Produce ; 
+                              a owl:Restriction];
+             owl:disjointWith mvco:Work;
+             owl:versionInfo "1.0".
+mvco:PublicCommunication mvco:impliesAlso "http://purl.oclc.org/NET/mvco.owl#Render"^^xsd:anyURI;
+                         mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI,
+                                           "http://purl.oclc.org/NET/mvco.owl#Producer"^^xsd:anyURI;
+                         a owl:Class;
+                         rdfs:comment "The Function of publicly displaying/performing, e.g. live performance, radio, television, internet streaming, multicast of Instances and Manifestations, and download"@en;
+                         rdfs:subClassOf mvco:Action,
+                                         [owl:allValuesFrom [owl:unionOf (mvco:Copy
+                                                                          mvco:Instance
+                                                                          mvco:Product) ; 
+                                                             a owl:Class] ; 
+                                          owl:onProperty mvco:actedOver ; 
+                                          a owl:Restriction];
+                         owl:disjointWith mvco:Synchronise;
+                         owl:versionInfo "1.0".
+mvco:Render a owl:Class;
+            rdfs:comment "The Action of generating a human-perceivable signal"@en;
+            rdfs:subClassOf mvco:EndUserAction;
+            owl:versionInfo "1.0".
+mvco:Stream a owl:Class;
+            rdfs:comment "The Function of Delivering Content to a Device where the transferred Content is Processed for Rendering only and not Stored"@en;
+            rdfs:subClassOf mvco:PublicCommunication;
+            owl:versionInfo "1.0".
+mvco:Synchronise mvco:impliesAlso "http://purl.oclc.org/NET/mvco.owl#ModifyCopy"^^xsd:anyURI,
+                                  "http://purl.oclc.org/NET/mvco.owl#Render"^^xsd:anyURI;
+                 mvco:rightGivenBy "http://purl.oclc.org/NET/mvco.owl#Creator"^^xsd:anyURI;
+                 a owl:Class;
+                 rdfs:comment "The Action of concurrently performing/displaying two distinct IP Entities each for a different human sense e.g. text and audio or video and song"@en;
+                 rdfs:subClassOf mvco:Action,
+                                 [owl:allValuesFrom mvco:Work ; 
+                                  owl:onProperty mvco:actedOver ; 
+                                  a owl:Restriction];
+                 owl:versionInfo "1.0".
+mvco:UseData a owl:Class;
+             rdfs:comment "Data documenting the functions Actions performed by a Device User on a content item and the associated context";
+             owl:disjointWith mvco:User;
+             owl:versionInfo "1.0".
+mvco:User a owl:Class;
+          rdfs:comment "Any person or legal entity in a Value-Chain connecting (and including) Creator and End-User."@en;
+          rdfs:subClassOf owl:Thing,
+                          [owl:onProperty mvco:acts ; 
+                           owl:allValuesFrom mvco:Action ; 
+                           a owl:Restriction],
+                          [owl:allValuesFrom mvco:Collective ; 
+                           owl:onProperty mvco:belongsTo ; 
+                           a owl:Restriction];
+          owl:versionInfo "1.0".
+mvco:Work a owl:Class;
+          rdfs:comment "A creation that retains intellectual or artistic attributes independently of its Manifestations"@en;
+          rdfs:subClassOf mvco:IPEntity,
+                          [owl:allValuesFrom mvco:CreateWork ; 
+                           owl:onProperty mvco:resultedFrom ; 
+                           a owl:Restriction];
+          owl:versionInfo "1.0".
+mvco:WorkInstance a owl:Class;
+                  rdfs:comment "An object or event which is an example of an Identified Manifestation of a Work (e.g. a File)"@en;
+                  owl:equivalentClass [owl:intersectionOf (mvco:Instance
+                                                           [owl:onProperty mvco:resultedFrom ; 
+                                                           owl:someValuesFrom mvco:MakeWorkInstance ; 
+                                                           a owl:Restriction]) ; 
+                                       a owl:Class];
+                  owl:versionInfo "1.0".
+mvco:WorkInstanceCopy a owl:Class;
+                      rdfs:comment "A copy of a WorkInstance"@en;
+                      owl:equivalentClass [owl:intersectionOf (mvco:Copy
+                                                               [owl:someValuesFrom mvco:MakeWorkInstanceCopy ; 
+                                                               owl:onProperty mvco:resultedFrom ; 
+                                                               a owl:Restriction]) ; 
+                                           a owl:Class];
+                      owl:versionInfo "1.0".
+mvco:WorkManifestation a owl:Class;
+                       rdfs:comment "An object or event which is an expression of a Manifestation of a Work"@en;
+                       owl:equivalentClass [owl:intersectionOf (mvco:Manifestation
+                                                                [owl:someValuesFrom mvco:MakeWorkManifestation ; 
+                                                                owl:onProperty mvco:resultedFrom ; 
+                                                                a owl:Restriction]) ; 
+                                            a owl:Class];
+                       owl:versionInfo "1.0".
+mvco:WorkManifestationCopy a owl:Class;
+                           rdfs:comment "A copy of a WorkManifestation."@en;
+                           owl:equivalentClass [owl:intersectionOf (mvco:Copy
+                                                                    [owl:onProperty mvco:resultedFrom ; 
+                                                                    owl:someValuesFrom mvco:MakeWorkManifestationCopy ; 
+                                                                    a owl:Restriction]) ; 
+                                                a owl:Class];
+                           owl:versionInfo "1.0".
+mvco:actOnBehalfOf a owl:ObjectProperty,
+                     owl:TransitiveProperty;
+                   rdfs:comment "Relates a ContentHandler with the User under the auspices of which the ContentHandler operates."@en;
+                   rdfs:domain mvco:ContentHandler;
+                   rdfs:range mvco:User;
+                   owl:versionInfo "1.0".
+mvco:actedBy a owl:ObjectProperty;
+             rdfs:comment "Role who has executed the Action";
+             rdfs:domain mvco:Action;
+             rdfs:range mvco:User;
+             owl:versionInfo "1.0".
+mvco:actedOver a owl:ObjectProperty;
+               rdfs:comment "Specifies which IPEntity is the object the Action";
+               rdfs:domain mvco:Action;
+               rdfs:range mvco:IPEntity;
+               owl:versionInfo "1.0".
+mvco:acts a owl:ObjectProperty;
+          rdfs:comment "Performance of an Action by a User";
+          rdfs:domain mvco:User;
+          rdfs:range mvco:Action;
+          owl:inverseOf mvco:actedBy;
+          owl:versionInfo "1.0".
+mvco:belongsTo a owl:ObjectProperty,
+                 owl:TransitiveProperty;
+               rdfs:comment "Relates a User with a Collective"@en;
+               rdfs:domain mvco:User;
+               rdfs:range mvco:Collective;
+               owl:versionInfo "1.0".
+mvco:hasRequired a owl:ObjectProperty;
+                 rdfs:comment "For a Permission to be valid, the Fact has to hold";
+                 rdfs:domain mvco:Permission;
+                 rdfs:range mvco:Fact;
+                 owl:versionInfo "1.0".
+mvco:hasRightsOwner a owl:ObjectProperty,
+                      owl:FunctionalProperty;
+                    rdfs:comment "Defines the owner of the Rights over an IP Entity."@en;
+                    rdfs:domain mvco:IPEntity;
+                    rdfs:range mvco:User;
+                    owl:versionInfo "1.0".
+mvco:hasSocialTag a owl:DatatypeProperty;
+                  rdfs:comment "Attributes a social tag: text, commentary, critique, synopsis (e.g. FOAF)...";
+                  rdfs:domain [owl:unionOf (mvco:IPEntity
+                                            mvco:User) ; 
+                               a owl:Class];
+                  rdfs:range xsd:string;
+                  owl:versionInfo "1.0".
+mvco:impliesAlso a owl:AnnotationProperty.
+mvco:isDigital a owl:DatatypeProperty,
+                 owl:FunctionalProperty;
+               rdfs:comment "distinguishes between digital management of both digital and non digital IP Entities";
+               rdfs:domain mvco:IPEntity;
+               rdfs:range xsd:boolean;
+               owl:versionInfo "1.0".
+mvco:isMadeUpOf a owl:ObjectProperty;
+                rdfs:comment "Relates a composite IPEntity with its constituent IPEntities"@en;
+                rdfs:domain mvco:IPEntity;
+                rdfs:range mvco:IPEntity;
+                owl:versionInfo "1.0".
+mvco:isRightsOwnerOf a owl:ObjectProperty;
+                     rdfs:comment "Declares who is the rights owner of this IP Entity";
+                     rdfs:domain mvco:User;
+                     rdfs:range mvco:IPEntity;
+                     owl:inverseOf mvco:hasRightsOwner;
+                     owl:versionInfo "1.0".
+mvco:isTrue a owl:DatatypeProperty,
+              owl:FunctionalProperty;
+            rdfs:comment "Truth of a proposition";
+            rdfs:domain mvco:Fact;
+            rdfs:range xsd:boolean;
+            owl:versionInfo "1.0".
+mvco:issuedBy a owl:ObjectProperty;
+              rdfs:comment "Declares who has issued a permission";
+              rdfs:domain mvco:Permission;
+              rdfs:range mvco:User;
+              owl:versionInfo "1.0".
+mvco:permitsAction a owl:ObjectProperty;
+                   rdfs:comment "Relation used to express the Actions that are allowed to be performed."@en;
+                   rdfs:domain mvco:Permission;
+                   rdfs:range mvco:Action;
+                   owl:versionInfo "1.0".
+mvco:resultedFrom a owl:ObjectProperty;
+                  rdfs:comment "The dependance of one IP Entity on another."@en;
+                  rdfs:domain mvco:IPEntity;
+                  rdfs:range mvco:Action;
+                  owl:inverseOf mvco:resultsIn;
+                  owl:versionInfo "1.0".
+mvco:resultsIn a owl:ObjectProperty,
+                 owl:FunctionalProperty;
+               rdfs:comment "Declares which IPentity arises as a result of the execution of an Action. It is a functional relation."@en;
+               rdfs:domain mvco:Action;
+               rdfs:range mvco:IPEntity;
+               owl:versionInfo "1.0".
+mvco:rightGivenBy a owl:AnnotationProperty.
+dc11:title a owl:DatatypeProperty,
+             owl:FunctionalProperty;
+           rdfs:comment "Title of the ontology";
+           rdfs:range xsd:string.
+owl:Thing a owl:Class.
+<urn:mpeg:mpeg21:2002:01-DII-NS#RelatedIdentifier> a owl:DatatypeProperty,
+                                                     owl:FunctionalProperty;
+                                                   rdfs:comment "It allows the identification information that is related to a Digital Item (or parts thereof).";
+                                                   rdfs:domain mvco:IPEntity;
+                                                   rdfs:range xsd:string.

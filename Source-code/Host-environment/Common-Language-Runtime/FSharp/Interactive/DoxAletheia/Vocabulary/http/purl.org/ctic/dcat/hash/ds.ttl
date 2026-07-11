@@ -1,0 +1,156 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ds: <http://purl.org/ctic/dcat#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+<http://data.fundacionctic.org/vocab/catalog/dcat_20130322.html> dc11:format [rdfs:label "HTML" ; 
+                                                                              rdf:value "text/html" ; 
+                                                                              a dcterms:IMT];
+                                                                 a dcmitype:Text.
+<http://data.fundacionctic.org/vocab/catalog/dcat_20130322.rdf> dc11:format [rdfs:label "RDF" ; 
+                                                                             rdf:value "application/rdf+xml" ; 
+                                                                             a dcterms:IMT];
+                                                                a dcmitype:Text.
+ds: ccrel:license <http://creativecommons.org/licenses/by-nc-sa/3.0>;
+    dc11:creator "CTIC CT";
+    dc11:date "2013-03-22";
+    dc11:identifier "http://data.fundacionctic.org/vocab/catalog/dcat_20130322";
+    dc11:rights "CTIC CT - Creative Commons 3.0 (BY-NC-SA)"@en,
+                "CTIC CT - Creative Commons 3.0 (BY-NC-SA)"@es;
+    dc11:title "Vocabulario de Catálogos de Datasets"@es,
+               "Dataset Catalog Vocabulary"@en;
+    dcterms:hasFormat <http://data.fundacionctic.org/vocab/catalog/dcat_20130322.html>,
+                      <http://data.fundacionctic.org/vocab/catalog/dcat_20130322.rdf>;
+    dcterms:isVersionOf ds:;
+    dcterms:issued "2009-09-28";
+    dcterms:replaces <http://data.fundacionctic.org/vocab/catalog/datasets_20111105>;
+    vann:preferredNamespacePrefix "ds";
+    vann:preferredNamespaceUri "http://purl.org/ctic/dcat#";
+    a owl:Ontology;
+    rdfs:comment "This vocabulary is used for modelling catalogs of datasets and its relationships with the datasets"@en,
+                 "Este vocabulario se utiliza para modelar los catálogos de conjuntos de datos y las relaciones con los datasets"@es;
+    skos:historyNote [dc11:creator "CTIC-CT" ; 
+                      dc11:date "2013-03-22" ; 
+                      rdf:value "Added the concept extinct catalog or initiative to the related concept scheme"@es ; 
+                      rdf:value "Añadido un concepto iniciativa o catálogo extinto a la taxonomía relacionada."@es],
+                     [dc11:creator "CTIC-CT" ; 
+                      dc11:date "2011-11-05" ; 
+                      rdf:value "Added a concept scheme to represent the information access mode: indirect access, and direct access"@es ; 
+                      rdf:value "Añadido un esquema de conceptos para representar el modo de acceso a la información: acceso indirecto y acceso directo"@es].
+ds:Catalog dcterms:issued "2009-09-28";
+           a rdfs:Class;
+           rdfs:comment "Catalog which have defined datasets in"@en,
+                        "Catálogo donde se expresan conjuntos de datos"@es;
+           rdfs:isDefinedBy ds:;
+           rdfs:label "Catalog of Datasets"@en,
+                      "Catálogo de datasets"@es;
+           skos:definition "Catalog which have defined datasets in"@en,
+                           "Catálogo donde se expresan conjuntos de datos"@es.
+ds:Dataset dcterms:issued "2009-09-28";
+           a rdfs:Class;
+           rdfs:comment "Un conjunto de datos"@es,
+                        "A dataset"@en;
+           rdfs:isDefinedBy ds:;
+           rdfs:label "Dataset"@en,
+                      "Dataset"@es;
+           rdfs:subClassOf dcterms:Dataset;
+           skos:definition "A dataset"@en,
+                           "Un conjunto de datos"@es;
+           skos:historyNote [dc11:creator "CTIC-CT" ; 
+                             dc11:date "2010-03-01" ; 
+                             rdf:value "dcterms:Dataset es un término más amplio que void:Dataset, de forma que admite datasets que no son linked data"@es ; 
+                             rdf:value "dcterms:Dataset term is broader than void:Dataset, allowing non-linked data datasets"@en].
+ds:accessMode-direct a skos:Concept;
+                     skos:inScheme ds:accessModeScheme;
+                     skos:prefLabel "Acceso directo"@es,
+                                    "Direct Access"@en.
+ds:accessMode-indirect a skos:Concept;
+                       skos:inScheme ds:accessModeScheme;
+                       skos:prefLabel "Acceso indirecto"@es,
+                                      "Indirect Access"@en.
+ds:accessModeScheme a skos:ConceptScheme;
+                    rdfs:comment "Concept scheme of the different access modes to the information distributions"@en,
+                                 "Taxonomía de los tipos de acceso a las distribuciones de la información"@es;
+                    rdfs:label "Taxonomy of the information access mode"@en,
+                               "Taxonomía de los tipos de acceso a la información"@es;
+                    skos:definition "Concept scheme of the different access modes to the information distributions"@en,
+                                    "Taxonomía de los tipos de acceso a las distribuciones de la información"@es.
+ds:member dcterms:issued "2010-04-06";
+          a rdf:Property;
+          rdfs:comment "Property which defines a Dataset member of the Catalog"@en,
+                       "Propiedad que define que el Catálogo tiene un Dataset como miembro del mismo"@es;
+          rdfs:domain ds:Catalog;
+          rdfs:isDefinedBy ds:;
+          rdfs:label "Un Catálogo tiene un Dataset como miembro del mismo"@es,
+                     "A Catalog has a Dataset member"@en;
+          rdfs:range ds:Dataset;
+          skos:definition "Property which defines a Dataset member of the Catalog"@en,
+                          "Propiedad que define que el Catálogo tiene un Dataset como miembro del mismo"@es.
+ds:memberOf dcterms:issued "2009-09-28";
+            a rdf:Property;
+            rdfs:comment "Property which defines a Catalog that contains the Dataset"@en,
+                         "Propiedad que define un Catálogo al que pertenece el Dataset"@es;
+            rdfs:domain ds:Dataset;
+            rdfs:isDefinedBy ds:;
+            rdfs:label "Un Dataset es miembro de un Catálogo"@es,
+                       "A Dataset is a member of a Catalog"@en;
+            rdfs:range ds:Catalog;
+            skos:changeNote [dc11:creator "CTIC-CT" ; 
+                             dc11:date "2010-04-06" ; 
+                             rdf:value "Definición de la propiedad mejorada"@es ; 
+                             rdf:value "Improved definition for the property"@en];
+            skos:definition "Property which defines a Catalog that contains the Dataset"@en,
+                            "Propiedad que define un Catálogo al que pertenece el Dataset"@es.
+ds:status dcterms:issued "2010-09-01";
+          a rdf:Property;
+          rdfs:comment "Propiedad que define el estado del catálogo en función de una taxonomía determinada"@es,
+                       "Property which defines the status of the Dataset according to a defined taxonomy"@en;
+          rdfs:isDefinedBy ds:;
+          rdfs:label "Estado del catálogo"@es,
+                     "Catalog status"@en;
+          rdfs:range ds:Dataset;
+          skos:definition "Propiedad que define el estado del catálogo en función de una taxonomía determinada"@es,
+                          "Property which defines the status of the Dataset according to a defined taxonomy"@en.
+ds:status-announced a skos:Concept;
+                    skos:inScheme ds:statusScheme;
+                    skos:prefLabel "Catálogo anunciado"@es,
+                                   "Catalog announced"@en.
+ds:status-data a skos:Concept;
+               skos:inScheme ds:statusScheme;
+               skos:prefLabel "Datos disponibles en la Web"@es,
+                              "Data available on the Web"@en.
+ds:status-extinct a skos:Concept;
+                  skos:inScheme ds:statusScheme;
+                  skos:prefLabel "Iniciativa extinta"@es,
+                                 "Extinct initiative"@en.
+ds:status-ldFormat a skos:Concept;
+                   skos:inScheme ds:statusScheme;
+                   skos:prefLabel "Datos en formato Linked Data disponibles en la Web"@es,
+                                  "Data in Linked Data format available on the Web"@en.
+ds:status-linkedData a skos:Concept;
+                     skos:inScheme ds:statusScheme;
+                     skos:prefLabel "Datos enlazados con otros datos en la Web"@es,
+                                    "Data linked with other data on the Web"@en.
+ds:status-nonProprietaryFormat a skos:Concept;
+                               skos:inScheme ds:statusScheme;
+                               skos:prefLabel "Datos en formato no propietario disponibles en la Web"@es,
+                                              "Data in a non-proprietary format available on the Web"@en.
+ds:status-structuredData a skos:Concept;
+                         skos:inScheme ds:statusScheme;
+                         skos:prefLabel "Datos estructurados disponibles en la Web"@es,
+                                        "Structured data available on the Web"@en.
+ds:statusScheme a skos:ConceptScheme;
+                rdfs:comment "Concept scheme of the different statuses for a catalog"@en,
+                             "Esquema de conceptos de los estados que puede tomar un catálogo"@es;
+                rdfs:label "Taxonomy of the catalog statuses"@en,
+                           "Taxonomía de los estados de un catálogo"@es;
+                skos:definition "Concept scheme of the different statuses for a catalog"@en,
+                                "Esquema de conceptos de los estados que puede tomar un catálogo"@es.

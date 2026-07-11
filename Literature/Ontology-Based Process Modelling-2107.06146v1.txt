@@ -1,0 +1,612 @@
+Ontology-Based Process Modelling -
+Will we live to see it?
+Carl Corea1, Michael Fellmann2, and Patrick Delfmann1
+1 University of Koblenz-Landau, Germany
+{ccorea,delfmann}@uni-koblenz.de
+2 University of Rostock, Germany
+michael.fellmann@uni-rostock.de
+Abstract. In theory, ontology-based process modelling (OBPM) bares
+great potential to extend business process management. Many works
+have studied OBPM and are clear on the potential amenities, such as
+eliminating ambiguities or enabling advanced reasoning over company
+processes. However, despite this approval in academia, a widespread in-
+dustry adoption is still nowhere to be seen. This can be mainly attributed
+to the fact, that it still requires high amounts of manual labour to ini-
+tially create ontologies and annotations to process models. As long as
+these problems are not addressed, implementing OBPM seems unfeasi-
+ble in practice. In this work, we therefore identify requirements needed
+for a successful implementation of OBPM and assess the current state of
+research w.r.t. these requirements. Our results indicate that the research
+progress for means to facilitate OBPM are still alarmingly low and there
+needs to be urgent work on extending existing approaches.
+Keywords: Ontology-Based Process Modelling · Ontologies · Research
+Agenda
+1 Introduction
+In the scope of Business Process Management, process models have evolved as
+central artifacts for the design, enactment and analysis of company processes [62].
+Many modelling languages, such as the Business Process Model and Notation3,
+are available and have received widespread adoption in practice. While these
+standards oﬀer support for the representation of company processes, the actual
+content of the model is still the responsibility of the modeller. That is, process
+models are designed by human modellers, often times also in a collaborative
+and incremental manner. In this setting, modelling errors can occur frequently
+[46,19]. For example, humans might accidentally model a non-compliant sequence
+of activities or use ambiguous activity labels.
+To conquer such modelling problems, there is a broad consensus in academia
+that business process models should be extended with an additional conceptual
+3 https://www.omg.org/bpmn/
+arXiv:2107.06146v1 
+[cs.AI]  12 Jul 2021
+
+2 C. Corea et al.
+layer, namely ontologies [19]. Ontologies are artifacts that can be used to formally
+conceptualize a domain of interest [11]. As shown in Figure 1, ontology-based
+process models can thus be created by extending process models with ontologies,
+which allows to deﬁne unambiguous semantics of process models and create a
+shared understanding of business processes for humans and machines alike. To
+clarify, the ontologies addressed in this works are limited to models that are
+coded in description logics, e.g., OWL-ontologies linked to process models.
+Process Model
+2
+Corea, Delfmann - Detecting Compliance
+Ontology
+Fig.1: Exemplary Ontology-Based Process Model.
+Many works have discussed the potential beneﬁts of OBPM, e.g. eliminat-
+ing ambiguous process descriptions or advanced compliance reasoning using
+ontology-based reasoning [19,11]. Still, industry adoptions are sparse. Based on
+reports such as [46], this can be mainly attributed to the problems in creating
+the ontology-based process models themselves. First, ontologies must initially
+be created. As this requires a high expertise in knowledge representation, this
+is currently still a diﬃcult task for companies. Second, even given an ontology,
+the ontology has to be annotated to the process model. As ﬁnding the connec-
+tions between ontology- and process model elements is a complex task, manual
+annotation can be seen as highly unfeasible in practice [46].
+While there have been works proposing initial means for the problems raised
+above, the lack of industry adoptions suggests that companies need more support
+in implementing OBPM. In this report, we therefore investigate what methods
+and results are still missing to support companies in implementing OBPM and
+leverage industry adoption. Here, our contributions are as follows:
+• Requirements for OBPM. We identify requirements needed for success-
+fully implementing and maintaining ontology-based process models for com-
+panies.
+• Literature Analysis. We identify the state-of-the-art of OBPM research
+based on a literature review and assess to which extent current results sup-
+port the identiﬁed requirements.
+• Research Agenda. We identify current research gaps and distill a research
+agenda to guide future research and tool development.
+This work is structured as follows. In Section 2, we provide preliminaries and
+raise requirements for implementing OBPM. In Section 3, we analyze the state-
+
+Ontology-Based Process Modelling - Will we live to see it? 3
+of-the-art on OBPM research and identify research gaps, from which we distill
+a corresponding research agenda in Section 4. We conclude in Section 5.
+2 Preliminaries
+2.1 Ontology-Based Process Models
+Ontology-based process models [56] allow to deﬁne the semantics of business pro-
+cess model elements by extending traditional process models with an additional
+ontology-layer. To this aim, elements of business process models can be anno-
+tated to ontology concepts via mappings, also referred to as semantic annotation
+[20,46]. This creates a shared conceptual and terminological understanding and
+deﬁnes a machine-accessible semantics of company processes.
+Figure 1 shows an exemplary ontology-based process model. A company on-
+tology can be used to deﬁne important company knowledge, e.g., concepts such
+as organizational units, tasks, services or business rules. These ontology concepts
+can then be annotated to elements of the process model [56]. Technically, this is
+performed by creating axiomatical knowledge in the ontology, i.e., instances of
+ontology concepts, which each represent a process model element. In this way,
+the semantics and relations of the process model elements can be formalized.
+Regarding ontology-based process models, the potential advantages are clear
+from an academic standpoint [19,46,12,34,26,56]. Such artifacts foster a shared
+semantic understanding for humans and machines and allow for advanced reason-
+ing capabilities over process models for companies. Still, a widespread industry
+adoption cannot be observed. As this could be attributed to companies having
+problems implementing OBPM, we therefore investigate requirements of imple-
+menting OBPM in the following to gain an understanding about whether there
+could be any obstacles impeding industry adoption.
+2.2 Requirements for implementing OBPM
+On a high-level, implementing OBPM can be distinguished into ensuring three
+components: an ontology, a process model and a mapping between the ontology
+and the process model. This might seem trivial, however, to anticipate the results
+of our literature analysis, there was no approach that supported companies in
+creating and maintaining all three of these components. For example, virtually
+all existing approaches assume “ready-to-go” ontologies that can be used as a
+basis for extending process models. Here, following works such as [24], we argue
+that this assumption might not be plausible in an enterprise setting, an rather,
+companies must also be supported in the initial creation of ontologies (R1). Also,
+following woks such as [46], both the ontology- and process model labels should
+be initially standardized, as a basis for extending process models (R2).
+Furthermore, companies must be able to create mapping of ontologies and
+process models. Here, there is a broad consensus that companies should be sup-
+ported by means of mapping- and annotation techniques (R3) [46,12].
+
+4 C. Corea et al.
+When mappings are created, these mappings between ontology concepts and
+process model element have to be checked for plausibility. A problem here is that
+the mappings are mostly created based on terminological similarity between
+ontology concepts and process model elements. This however means that the
+semantic contexts of these elements are mostly disregarded, which in turn can
+lead to implausible mappings. For instance, consider the example in Figure 2.
+On the ontology level, the company has deﬁned departments and activities,
+both of which are mutually exclusive. Furthermore, we see a specialized review
+department. Given a linguistic-based mapping approach matches the ontology
+concept Review department with the activity Review department (this would be
+highly sensible based on various linguistic-based similarity measures), this would
+result in a case where a process element is both an activity and a department,
+which, as deﬁned in the ontology, is not possible.
+#Department
+#ReviewDepartment
+#Activity
+#a1 Review
+department
+mutually 
+exclusive
+……
+Fig.2: Exemplary linguistic-based annotation leading to incoherent mappings.
+Thus, while the mapping might be sensible from a terminological viewpoint,
+from a global perspective, the ontology-based process model is inconsistent, i.e.,
+it cannot be instantiated. In the ﬁeld of ontology matching, this problem is re-
+ferred to as mapping incoherence (i.e., mappings that induce inconsistencies)
+and is widely acknowledged as a challenging task [40]. Further challenges are
+also mappings that are simply implausible in a real-life sense, e.g., mapping a
+process model activity from a sales process to an ontology concept describing a
+purchase process if they have similar labels. An annotation veriﬁcation is there-
+fore necessary during modelling to ensure the plausibility of annotations (R4).
+Soundness checks are especially relevant in the scope of model evolution. For
+instance, given an annotated process model, if either the underlying ontology
+or process is edited, the corresponding counterpart should be altered as well
+to ensure consistent co-evolution. Here, companies need to be supported in co-
+evolving ontologies and process models in a synchronized manner through an
+automatic application of change patterns, e.g. deleting something in the ontology
+if a corresponding element is deleted in the process model (R5).
+Only if the requirements R1-R5 are met, the ontology-based process model
+can and should be used for ontology-based reasoning. For example, the process
+model can be veriﬁed for compliance by means of ontology-based reasoning (R6).
+Withal, an important requirement of implementing OBPM is that the ca-
+pabilities w.r.t. R1-R6 have to be tailored to the skill set of the stakeholders
+involved in the respective companies’ business process managament. Otherwise,
+it cannot be ensured that the technical capabilities can even be used correctly.
+
+Ontology-Based Process Modelling - Will we live to see it? 5
+Therefore, an important aspect of implementing OBPM are means for assessing
+the actual usability of the underlying technical capabilities (R7).
+Consequently, we raise the following requirements for implementing OBPM:
+R1. Ontology Support: Support to create ontologies.
+R2. Terminological Standardization: Support to standardize ontologies and
+process models.
+R3. Annotation Support: Support to create semantic annotations.
+R4. Annotation Veriﬁcation: Support to verify soundness (consistency, plau-
+sibility) of annotations.
+R5. Evolution Support: Support to further evolve and maintain ontology-
+based models (in a synchronized manner).
+R6. Ontology-based reasoning: Support to exploit the ontology-based pro-
+cess model, e.g., reasoning about process model, ontology-based recommen-
+dations during modelling.
+R7. Use Case and Contextual Fit: The implemented means for OBPM must
+be aligned with the skill set of the involved stakeholders. Also, OBPM re-
+sults must actually oﬀer competitive advantages, e.g., increased eﬃciency,
+increased understanding accuracy, or less mental eﬀort needed for humans.
+Our requirements catalogue is an extension of [63] who raise initial require-
+ments regarding the implementation of modelling and analysis in OBPM (here:
+R5 and R6). As discussed, all the identiﬁed requirements must be met, as oth-
+erwise, it can be expected that OBPM can not be successfully implemented
+(e.g., the OBPM cannot be created without an ontology, etc.). In the following,
+we therefore assess the state-of-the-art on OBPM research, in order to verify
+whether there exist suﬃcient means to meet these requirements.
+3 OBPM “State-Of-The-Art” Analysis
+In this section, we present our research method and literature analysis.
+3.1 Method
+To assess the current state-of-the-art on OBPM research w.r.t. the requirements
+proposed in Section 2.2, we conducted a literature review following the standard
+literature review method as proposed in [58]. First, we conducted brief searches
+to gain an initial overview, following the suggestion in [49]. We then used concept-
+mapping techniques to derive suitable keywords for a keyword-based literature
+search as proposed by [58]. In result, we utilized the keyword combination of
+“Ontolog*” AND “Process Model*”, and “Semantic” AND “Process Model*”.
+In iterative pre-testing, we found that these keywords are suitable to retrieve a
+substantial amount of relevant work. We queried 6 pertinent literature databases,
+i.e., ACM digital library, AISel, IEEE, Emeralds Publishing, INFORMS Pubs,
+Science Direct and Springer Link. This resulted in a total of 434 identiﬁed works.
+
+6 C. Corea et al.
+We then conducted a screening process in two review phases, as suggested by [10].
+In review phase I, we eliminated duplicates and ﬁltered out irrelevant articles
+based on their title and abstract. Then, in review phase II, all remaining articles
+were read in full and assessed for relevance. Here, we deﬁned an article to be
+relevant if its primary focus is OBPM or an intersection of BPM and OBPM.
+Also, due to funding constraints, the article had to be publically available to
+be included. Based on these review phases, we identiﬁed 47 works as relevant.
+For the works selected to be relevant, we further performed a backward- and
+forward-search (by references), as suggested in [61]. This resulted in 4 additional
+identiﬁed works. To summarize, we could identify 51 (47 keyword-based + 4
+f/b) relevant works by means of our literature review. In the following, we assess
+these works in regard to our proposed requirements.
+3.2 Literature Analysis
+Table 1 shows which of the raised requirements R1-R7 is satisﬁed (x), resp.
+partially satisﬁed (o), by the identiﬁed relevant works.
+Work R1 R2 R3 R4 R5 R6 R7
+Lin et al. (2005)[36] o o
+Thomas et al. (2005)[55] o o
+Lautenbacher et al. (2006)[33] o o
+Ma et al. (2006)[37] o o
+Barjis et al. (2007)[1] x
+Born et al. (2007)[5] x x
+Ehrig et al. (2007)[15] o
+H¨oﬀerer et al. (2007)[29] x
+Sujanto et al. (2008)[52] x
+Cabral et al. (2009)[6] o o
+Di Franc. et al. (2009)[12] x
+Fengel et al. (2009)[22] x x
+Hinge et al. (2009)[27] o
+Markovic et al. (2009)[39] x
+Norton et al. (2009)[42] o
+Thomas et al. (2009)[56] o/m x
+Barnickel et al. (2010)[2] m x
+Hua et al. (2010)[28] o o
+Tan et al. (2010)[54] o o o
+Benaben et al. (2011)[4] x
+Fellmann et al. (2011)[20] o/m x
+Fellmann et al. (2011)[21] x x
+Kim et al. (2011)[32] o o
+Gong et al. (2012)[25] x
+Stolfa et al. (2012)[51] o
+Fill et al. (2013)[23] o
+Work R1 R2 R3 R4 R5 R6 R7
+Kherbouche et al. (2013)[31] o o
+De Cesare et al. (2014)[8] x
+Maalouf et al. (2014)[38] o o o
+Rospocher et al. (2014)[48] o o
+Wang et al. (2014)[59] o o
+Di Martino et al. (2015)[13] x
+Kalogeraki et al. (2015)[30] x
+Leopold et al. (2015)[34] x o
+Ngo et al. (2015)[41] o o o
+Fan et al. (2016)[17] x o x o x
+Pham et al. (2016)[45] x
+Corea et al. (2017)[11] x
+Eﬀendi et al. (2017)[14] x
+Elstermann et al. (2017)[16] o o
+Fauzan et al. (2017)[18] x x
+Gailly et al. (2017)[24] x
+Hassen et al. (2017)[26] m x
+Pawelozek et al. (2017)[44] m x
+Riehle et al. (2017)[46] x x
+Soltysik et al. (2017)[50] m x
+Sungoko et al. (2017)[53] x x
+Bartolini et al. (2019)[3] o x
+Wang et al. (2019)[60] o/m o
+Yanuariﬁani et al. (2019)[64] o o
+Cao et al. (2021)[7] x
+Table 1: Support of the considered works w.r.t. the identiﬁed requirements for
+implementing OBPM (x = satisﬁed; o = partially satisﬁed; m = manual).
+
+Ontology-Based Process Modelling - Will we live to see it? 7
+From the identiﬁed literature, it can be observed that the level of research in
+regard to 5 out of the 7 raised requirements is alarmingly low (R1, R2, R4, R5,
+R7). Also, regarding R3, many of the works only partially satisfy this require-
+ment due to diﬀerent limitations (cf. the below discussion). In result, we see the
+following research gaps:
+• Insuﬃcient ontology support. Virtually all identiﬁed approaches assume
+“ready-to-go” ontologies for an extension of process models. This places a
+heavy burden on companies for adopting these approaches, as initially cre-
+ating the ontology is left at the company’s responsibility. Here, novel ap-
+proaches are needed that integrate ontology creation in the OBPM-lifecycle,
+e.g., ontology-mining from textual descriptions, model repositories or process
+data (event logs).
+• Limitations in annotation support. Creating semantic annotations can
+be seen as one of the most important components of implementing OBPM.
+For creating semantic annotations, we can identify three main approaches
+from the identiﬁed literature, namely manual annotation, transformation,
+and matching. 1) Manual annotation (denoted m in Table 1) is geared to-
+wards creating annotations manually. While we agree that this could be
+used for revision or ﬁne-tuning, a completely manual annotation of process
+models must be considered as unfeasible, as this forces modelers to compare
+thousands of elements and map their relations manually [46]. 2) Approaches
+with annotation through transformation (denoted o in Table 1) implement an
+automated annotation by transforming every process model element into an
+ontology instance. While this creates a representation of the process model on
+the ontology level, a major limitation of this approach is that the annotations
+are on a pure syntactical level, i.e., process model elements are instantiated
+as an instance of their type, however, the “real-life” semantics of the process
+activities cannot be captured. 3) To facilitate such a form of “semantic” an-
+notations, a third line of approaches proposes means to match process model
+element and ontology concept semantics by matching semantically equiva-
+lent model and ontology elements, mainly by means of linguistic analysis
+(denoted x in Table 1). Regarding this line of approaches, while see some
+results based on terminological matching, we see a strong lack of works inte-
+grating and/or combining other matching techniques, e.g., constraint-based
+matching, graph-based matching, instance (data) based matching, model
+based matching or incorporating context information in matching (cf. e.g.
+the classiﬁcation of matching techniques in [43]). Here, more approaches and
+comparative studies are needed to facilitate better automated annotation.
+Also, supervised machine-learning approaches are needed that can mimic
+human annotations.
+• Missing veriﬁcation support. As motivated in Section 2, a natural lan-
+guage based matching between process model elements and ontology ele-
+ments without considering their contexts can lead to the resulting ontology-
+based process model being inconsistent or implausible. Yet, the majority of
+annotation approaches via matching implement such an annotation based
+
+8 C. Corea et al.
+on linguistic mapping (cf. [5,22,29,18,12,34,46]). While this raises strong de-
+mand for annotation veriﬁcation, we see from Table 1 that there is currently
+no suﬃcient support for verifying consistency process model and the ontol-
+ogy. Here, novel approaches are needed for analyzing and resolving inconsis-
+tencies in ontology-based process models.
+• Missing evolution support. Current works for annotations are mainly
+geared towards an initialization of an ontology-based process model. How-
+ever, as ontologies or the process models may need to be evolved over time,
+the other corresponding artifact also needs to be altered in a synchronized
+manner. Here, new methods are needed that can support companies in model
+evolution. Otherwise, there is no suﬃcient support for sustainable OBPM.
+• Missing studies with human participants. As a major warning-sign, we
+found almost no studies investigating the use of OBPM with human partic-
+ipants. Therefore, the eﬀects for workers of introducing OBPM are unclear,
+e.g., do ontology-based process modelling really improve understanding and
+eﬃciency, or are they too complicated to use? Such experimental research
+should urgently be conducted. This also becomes apparent when assessing
+the considered works of our literature analysis in the scope of the core ele-
+ments of BPM-framework by [47]. This framework identiﬁes six core elements
+of business process management, namely strategic alignment, governance,
+methods, technologies, people and culture. As can be seen in Figure 3, the
+identiﬁed works are mainly geared towards the dimensions of concrete meth-
+ods and technologies. Here, we see a clear lack of research regarding OBPM
+relative to the skill sets of the involved people, organizational culture and
+structures.
+Fig.3: Focus of the identiﬁed works (cf. Table 1) in the scope of the six-core-
+elements of BPM framework [47] (Multiple counting possible).
+4 Research Agenda
+In regard to the results of our literature analysis, it seems that much research
+is still needed to implement the requirements R1-R7 identiﬁed in this work.
+Based on the identiﬁed research gaps, we therefore propose the following research
+agenda to guide future research and leverage the implementation of OBPM,
+shown in Table 2
+
+Ontology-Based Process Modelling - Will we live to see it? 9
+Research Gap Research needed
+Ontology Support • Integrating ontology creation in the OBPM-lifecycle
+• Ontology mining (e.g. from data, textual descriptions)
+• Recommendations during ontology-modelling
+Annotation Support • Improving mapping approaches, e.g., with novel matching techniques
+(cf. the classiﬁcation in [43]) and novel similarity measures
+• Combining matching techniques to leverage matching
+• In case of repositories of ontology-based process models: Identify simi-
+larities of models in order to recommend annotations, e.g. via collabo-
+rative ﬁltering, cf. [9]
+• Creating AI systems that can learn/mimic human annotations
+• Consideration of context information for annotation suggestions (e.g.
+preceding and succeeding elements, granularity of surrounding model
+contents, general topic of the model, industry-speciﬁc process knowl-
+edge)
+• For evaluating matching techniques: Evaluation based on probabilistic
+gold standards [35] (i.e. averaged over multiple users), to avoid bias of
+the creator of the gold standard
+Annotation Veriﬁcation • Identifying incoherent or implausible mappings between process models
+and ontologies
+• Analyzing inconsistencies or pin-pointing highly problematic elements,
+e.g. by means of element-based inconsistency measures
+• Means for resolving inconsistencies, e.g. in the scope of systems for
+semi-automated/guided inconsistency resolution
+Evolution Support • Support of change propagation during modelling, e.g., automatedly syn-
+chronizing process model and ontology if an element is deleted in one
+of the two artifacts
+• Using ontology-based reasoning and insights from process monitoring
+to recommend changes needed in the process models or ontologies
+• Leveraging insights from process monitoring to recommend changes
+needed for the company ontology
+• Means for long-term model management, e.g. versioning
+Contextual Fit/People • Evaluation of approaches and tools for OBPM with human participants,
+i.e., do all the studied results really oﬀer competitive advantages, for
+example in the form of increased eﬃciency, understanding accuracy or
+reduced cognitive load
+• Guidelines for the design of OBPM tools and interfaces
+• More research on how OBPM aﬀects people and company culture (cf.
+Figure 3)
+Other • Maturity models and procedure models for guiding companies in adopt-
+ing OBPM
+• Success stories/case studies to share knowledge and leverage OBPM
+adoption
+• OBPM lifecycle models, e.g., how to integrate insights from process
+monitoring and ontology-based reasoning to improve process models
+and ontologies
+• Monitoring process execution for ontology-based process execution
+Table 2: Proposed Research Agenda
+From a technical perspective, the distilled research agenda identiﬁes numer-
+ous technical challenges that need to be addressed in regard to implementing
+
+10 C. Corea et al.
+OBPM, e.g., in the areas of ontology-support, annotation support, annotation
+veriﬁcation and evolution support. Furthermore, research investigating the con-
+textual ﬁt of OBPM is much needed. Here, on the one hand, there is work needed
+to assessing the added value of OBPM. On the other hand, the (cognitive) eﬀects
+of introducing OBPM are still unclear, e.g., how can OBPM results be aligned
+with the skill sets of the involved stakeholders and does OBPM really oﬀer pos-
+itive cognitive eﬀects for humans, such as better understanding eﬃciency?
+5 Conclusion
+So, OBPM: will we live to see it? As a main takeaway, while the primary focus
+in research has been on R6 (ontology-based reasoning, cf. Section 3), the pro-
+posed requirements show that there are many more components still needed for
+implementing OBPM, especially in regard to initializing and evolving models.
+To this aim, our distilled research agenda provides a guideline for developing
+these needed results, and – on a positive note – shows that the ﬁeld of OBPM
+oﬀers many opportunities for future research. If we would have to propose one
+“paradigm change”, we would opt for less works such as “yet another approach
+for using ontology-based process models” and more awareness for the initial cre-
+ation and long-term management of ontology-based process models themselves.
+Also, the number of works that investigate the actual cognitive eﬀects and us-
+ability of process models is alarmingly low, which urgently has to be addressed
+to ensure that academic results and company use cases are aligned. Should these
+requirements be met, OBPM can and will be successfully implemented.
+We identify the following limitations. First, this review was limited to on-
+tologies formalized with description logics. While this is an important fragment
+of OBPM, further works could also investigate the role of foundational ontolo-
+gies in regard to OBPM. Second, the requirements identiﬁed in this work were
+derived from a design science perspective, i.e., they are requirements needed for
+an initial implementation. While we could already use these initial requirements
+to show limitations in the state of the art, these requirements were not further
+evaluated. In future works, we will therefore evaluate these requirements with
+domain experts. Last, this work investigates the state of the art of scientiﬁc
+contributions. In future work, we will further investigate industrial applications
+and solutions and consolidate them with the ﬁndings of this work.
+Acknowledgements
+We thank Hagen Kerber for his preliminary research for this report. We also
+thank Silvano Colombo Tosatto and colleagues for letting us borrow their title
+idea [57].
+References
+1. Barjis, J.: Executable ontological business process model. In: Proceedings of the
+ECIS 2007. University of St. Gallen (2007)
+
+Ontology-Based Process Modelling - Will we live to see it? 11
+2. Barnickel, N., B¨ottcher, J., Paschke, A.: Incorporating semantic bridges into in-
+formation ﬂow of cross-organizational business process models. In: Proceedings of
+the SEMANTICS 2010. ACM (2010)
+3. Bartolini, C., Calabr´o, A., Marchetti, E.: Enhancing business process modelling
+with data protection compliance: An ontology-based proposal. In: Proceedings of
+the ICISSP 2019. SciTePress (2019)
+4. Benaben, F., Pingaud, H., Rajsiri, V., Lorre, J.P.: Collaborative process deduction
+through a knowl.-based system. In: Proceedings of the DEXA 2011. IEEE (2011)
+5. Born, M., D¨orr, F., Weber, I.: User-friendly semantic annotation in business process
+modeling. In: Proceedings of the WISE 2007. Springer (2007)
+6. Cabral, L., Norton, B., Domingue, J.: The business process modelling ontology. In:
+Proceedings of the SBPM 2009 (2009)
+7. Cao, J., He, Y.L., Zhu, Q.: An ontology-based procedure knowledge framework for
+the process industry. The Canadian Journal of Chemical Engineering 99(2) (2021)
+8. de Cesare, S., Juric, D., Lycett, M.: Toward the automation of business process
+ontology generation. In: Proceedings of the CBI 2014. IEEE (2014)
+9. Chan, N.N., Gaaloul, W., Tata, S.: Assisting business process design by activity
+neighborhood context matching. In: International Conference on Service-Oriented
+Computing. pp. 541–549. Springer (2012)
+10. Colquhoun, H.L., Levac, D., O’Brien, K.K., Straus, S., Tricco, A.C., Perrier, L.,
+Kastner, M., Moher, D.: Scoping reviews: time for clarity in deﬁnition, methods,
+and reporting. Journal of clinical epidemiology 67(12) (2014)
+11. Corea, C., Delfmann, P.: Detecting compliance with business rules in ont.-based
+process modeling. In: Proceedings of the WI 2017. University of St. Gallen (2017)
+12. Di Francescomarino, C., Tonella, P.: Supporting ontology-based semantic anno-
+tation of business processes with automated suggestions. In: Proceedings of the
+BPMDS 2009. Springer (2009)
+13. Di Martino, B., Esposito, A., Nacchia, S., Maisto, S.A.: Semantic annotation of
+bpmn: current approaches and new methodologies. In: Proceedings of the iiWAS
+2015. ACM (2015)
+14. Eﬀendi, Y.A., Sarno, R.: Swrl rules for identifying short loops in business process
+ontology model. In: Proceedings of the ICTS 2017. IEEE (2017)
+15. Ehrig, M., Koschmider, A., Oberweis, A.: Measuring similarity between semantic
+business process models. In: Proceedings of the APCCM 2007. Australian Com-
+puter Society, Inc. (2007)
+16. Elstermann, M.: Proposal for using semantic technologies as a means to store and
+exchange subject-oriented process models. In: Proceedings of the S-BPM ONE
+2017. ACM (2017)
+17. Fan, S., Hua, Z., Storey, V.C., Zhao, J.L.: A process ontology based approach
+to easing semantic ambiguity in business process modeling. Data & Knowledge
+Engineering 102 (2016)
+18. Fauzan, A.C., Sarno, R., Ariyani, N.F.: Structure-based ont. matching of business
+process model for fraud detection. In: Proceedings of the ICTS 2017. IEEE (2017)
+19. Fellmann, M., Delfmann, P., Koschmider, A., Laue, R., Leopold, H., Schoknecht,
+A.: Semantic technology in business process modeling and analysis. part 1: Match-
+ing, modeling support, correctness and compliance. EMISA Forum 2015 (2015)
+20. Fellmann, M., Hogrebe, F., Thomas, O., N¨uttgens, M.: Checking the semantic cor-
+rectness of process models-an ontology-driven approach using domain knowledge
+and rules. Enterprise Modelling and Information Systems Architectures 6(3) (2011)
+
+12 C. Corea et al.
+21. Fellmann, M., Thomas, O., Busch, B.: A query-driven approach for checking the
+semantic correctness of ontology-based process representations. In: International
+Conference on Business Information Systems. pp. 62–73. Springer (2011)
+22. Fengel, J., Rebstock, M.: Model-based domain ontology engineering. In: Proceed-
+ings of the SBPM 2009. ACM (2009)
+23. Fill, H.G., Schremser, D., Karagiannis, D.: A generic approach for the semantic an-
+notation of conceptual models using a service-oriented architecture. International
+Journal of Knowledge Management 9(1) (2013)
+24. Gailly, F., Alkhaldi, N., Casteleyn, S., Verbeke, W.: Recommendation-based con-
+ceptual modeling and ontology evolution framework (cmoe+). Business & Infor-
+mation Systems Engineering 59(4) (2017)
+25. Gong, P., Jiang, J.M., Zhang, S., Chen, Z.Q.: Executability analysis for semanti-
+cally annotated process model. In: Proceedings of the APSCC 2012. IEEE (2012)
+26. Hassen, M.B., Turki, M., Gargouri, F.: Using core ontologies for extending sensitive
+business process modeling with the knowledge perspective. In: Proceedings of the
+ECBS 2017. ACM (2017)
+27. Hinge, K., Ghose, A., Koliadis, G.: A tool for semantic eﬀect annotation of business
+process models. In: Proceedings of the EDOC 2009. IEEE (2009)
+28. Hua, Z., Zhao, J.L., Storey, V.C.: Exploring a domain ontology based approach to
+business process design. In: Proceedings of the ICIS 2010 (2010)
+29. H¨oﬀerer, P.: Achieving business process model interoperability using metamodels
+and ontologies. In: Proceedings of the ECIS 2007. University of St. Gallen (2007)
+30. Kalogeraki, E.M., Panayiotopoulos, T., Apostolou, D.: Semantic queries in bpmn
+2.0: a contemporary method for information retrieval. In: Proceedings of the IISA
+2015. IEEE (2015)
+31. Kherbouche, O.M., Ahmad, A., Bouneﬀa, M., Basson, H.: Ont.-based impact as-
+sessment in dynamic bus. processes. In: Proceedings of the FIT 2013. IEEE (2013)
+32. Kim, G., Suh, Y.: Semantic business process space for intelligent management of
+sales order business processes. Information Systems Frontiers 13(4) (2011)
+33. Lautenbacher, F., Bauer, B.: Semantic reference-and business process modeling
+enables an automatic synthesis. In: Proceedings of the SBPM 2006. ACM (2006)
+34. Leopold, H., Meilicke, C., Fellmann, M., Pittke, F., Stuckenschmidt, H., Mendling,
+J.: Towards the automated annotation of process models. In: Proceeding of the
+CAISE 2015. Springer (2015)
+35. Leopold, H., Niepert, M., Weidlich, M., Mendling, J., Dijkman, R., Stuckenschmidt,
+H.: Probabilistic optimization of semantic process model matching. In: Proceedings
+of the BPM 2012. Springer (2012)
+36. Lin, Y., Ding, H.: Ontology-based semantic annotation for semantic interoperabil-
+ity of process models. In: Proceedings of the CIMCA 2006. IEEE (2005)
+37. Ma, Z., Wang, G., Ren, B., Wang, J.: Research on owl-based process model trasfor-
+mation for interoperability. In: Proceedings of the ITIC 2006. IET (2006)
+38. Maalouf, E., Sokhn, M.: Semantic based auto-completion of business process mod-
+elling in egovernment. Informatik (2014)
+39. Markovic, I., Hasibether, F., Jain, S., Stojanovic, N.: Process-oriented semantic
+business modeling. In: Proceedings of the WI 2009. Springer (2009)
+40. Meilicke, C., Stuckenschmidt, H.: Incoherence as a basis for measuring the quality
+of ontology mappings. In: Proceedings of the International Workshop on Ontology
+Matching (OM) collocated with ISWC (2008)
+41. Ngo, C.D., Tran, H.N., Champeau, J.: Using process ont. together with process
+editor to facilitate tool integration. In: Proceedings of the MODELSWARD 2015.
+IEEE (2015)
+
+Ontology-Based Process Modelling - Will we live to see it? 13
+42. Norton, B., Cabral, L., Nitzsche, J.: Ontology-based translation of business process
+models. In: Proceedings of the ICIW 2009. IEEE (2009)
+43. Otero-Cerdeira, L., Rodr´ıguez-Mart´ınez, F.J., G´omez-Rodr´ıguez, A.: Ontology
+matching: A literature review. Expert Systems with Applications 42(2) (2015)
+44. Pawe loszek, I.: Process-oriented approach to competency management using on-
+tologies. In: Proceedings of the FedCSIS 2017. IEEE (2017)
+45. Pham, T.A., Thanh, N.L.: An ontology-based approach for business process com-
+pliance checking. In: Proceedings of the ICUIMC 2016. ACM (2016)
+46. Riehle, D.M., Jannaber, S., Delfmann, P., Thomas, O., Becker, J.: Automatically
+annotating business process models with ontology concepts at design-time. In:
+Proceedings of the ER 2017. Springer (2017)
+47. Rosemann, M., vom Brocke, J.: The six core elements of business process manage-
+ment. In: Handbook on business process management 1. Springer (2015)
+48. Rospocher, M., Ghidini, C., Seraﬁni, L.: An ontology for the business process
+modelling notation. In: Proceedings of the FOIS 2014 (2014)
+49. Rowley, J., Slack, F.: Conducting a literature review. Management research (2004)
+50. So ltysik, A., ˙Zytniewski, M.: Organizational knowledge resources integration in
+hrm processes. In: Proceedings of the ICICIS 2017. IEEE (2017)
+51. ˇStolfa, J., ˇStolfa, S., Koˇzusznik, J., Moudr´a, T.: Business process formal modeling
+in graphical ontology tool. In: Proceedings of the MEDES 2012 (2012)
+52. Sujanto, F., Burstein, F., Ceglowski, A., Churilov, L.: Application of domain on-
+tology for decision support in medical emergency coordination (2008)
+53. Sungkono, K.R., Sarno, R., Ariyani, N.F.: Reﬁning bus. process model with invis-
+ible prime tasks using swrl rules. In: Proceedings of the ICTS 2017. IEEE (2017)
+54. Tan, W., Yang, F., Shen, W.: An approach on business process ontology for cscw
+using psl. In: Proceedings of the CSCWD. IEEE (2010)
+55. Thomas, M., Redmond, R., Yoon, V., Singh, R.: A semantic approach to monitor
+business process. Communications of the ACM 48(12) (2005)
+56. Thomas, O., Fellmann, M.: Semantic process modeling–design and implementation
+of an ontology-based representation of business processes. Business & Information
+Systems Engineering 1(6) (2009)
+57. Tosatto, S.C., Governatori, G., van Beest, N.: Checking regulatory compliance:
+Will we live to see it? In: Proceedings of the BPM 2019. Springer (2019)
+58. Vom Brocke, J., Simons, A., Riemer, K., Niehaves, B., Plattfaut, R., Cleven, A.:
+Standing on the shoulders of giants: Challenges and recommendations of literature
+search in information systems research. Communications of the association for
+information systems 37(1) (2015)
+59. Wang, P., Li, H., Zhang, B.: Context-aware workﬂow modeling approach using owl.
+In: Proceedings of the CCDC 2014. IEEE (2014)
+60. Wang, R., Nellippallil, A.B., Wang, G., Yan, Y., Allen, J.K., Mistree, F.: Ontology-
+based uncertainty management approach in designing of robust decision workﬂows.
+Journal of Engineering Design 30(10-12) (2019)
+61. Webster, J., Watson, R.: Analyzing the past to prepare for the future: Writing a
+literature review. MIS quarterly (2002)
+62. Weske, M.: Business Process Management Architectures. Springer (2007)
+63. Wetzstein, B., Ma, Z., Filipowska, A., Kaczmarek, M., Bhiri, S., Losada, S., Cobo,
+J.M.L., Cicurel, L.: Semantic business process management: A lifecycle based re-
+quirements analysis. In: Proceedings of the SBPM 2017. Citeseer (2007)
+64. Yanuariﬁani, A.P., Chua, F.F., Chan, G.Y.: Automating business process model
+generation from ont.-based requirements. In: Proceedings of the ICSCA 2019 (2019)

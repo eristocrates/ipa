@@ -1,0 +1,25 @@
+let NestedTypeArraysText = 
+    $"""
+#r "nuget: Iride"
+
+
+open Iride
+open VDS.RDF
+
+open VDS.RDF.Parsing
+open VDS.RDF.Parsing.Tokens
+
+
+#load @"{{type_provider_file_path}}"
+open {{type_provider_module}}
+
+
+
+
+let graph = new Graph()
+FileLoader.Load(graph, filePath)
+
+
+{codegen}
+    """.TrimStart().TrimEnd()
+

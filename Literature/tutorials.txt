@@ -1,0 +1,2056 @@
+Living Systems® Process Suite
+LSPS Tutorials
+Living Systems Process Suite Documentation
+3.2
+Tue Jan 12 2021
+Whitestein Technologies AG | Hinterbergstrasse 20 | CH-6330 Cham
+Tel +41 44-256-5000 | Fax +41 44-256-5001 | http://www.whitestein.com
+Copyright © 2007-2021 Whitestein Technologies AG
+All rights reserved.
+
+Copyright © 2007-2021 Whitestein Technologies AG.
+This document is part of the Living Systems® Process Suite product, and its use is governed by the corresponding
+license agreement. All rights reserved.
+Whitestein Technologies, Living Systems, and the corresponding logos are registered trademarks of Whitestein
+Technologies AG. Java and all Java-based trademarks are trademarks of Oracle and/or its afﬁliates. Other company,
+product, or service names may be trademarks or service marks of their respective holders.
+
+Contents
+1 Main Page 1
+2 Forms Tutorials 3
+2.1 Chart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.1.1 Creating a Donut Chart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.1.2 Creating a Bar Chart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.1.2.1 Setting Category as X Axis Values . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.1.3 Creating an Area Chart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.1.3.1 Creating an Area Chart with Time X Axis . . . . . . . . . . . . . . . . . . . . . 7
+2.1.4 Creating a Line Chart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2.2 Validating a Record from a Form . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2.2.1 Log Conﬁrmation of Order . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+2.3 CRUD Grid . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+2.3.1 Creating Database Data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+2.3.2 Creating the Form . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+2.3.3 Adjusting Presentation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.3.4 Creating the Document . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+2.4 Validation of Multiple Components . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+2.5 Editing Grid Data in a Popup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+2.5.1 Creating the Public Popup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+2.5.2 Using the Public Popup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+2.6 Filter over Grid and Table with a Custom Data Source . . . . . . . . . . . . . . . . . . . . . . . . 27
+2.6.1 Creating a Custom Data Source . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+2.6.2 Creating the Form . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+
+iv CONTENTS
+3 UI Forms Tutorials 31
+3.1 Editable Table . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+3.2 Table with Derived Values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+3.3 Calendar with Adding Entries Functionality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+3.4 Pop-up with Save and Cancel Buttons . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+4 Process Tutorials 45
+4.1 Agile Processes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+4.1.1 Designing the Skeleton . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+4.1.2 Designing Omitting . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+4.1.2.1 Real-World Adaptations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+4.1.3 Designing Deactivation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
+4.1.4 Designing Activation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
+4.1.4.1 Real-World Adaptations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
+4.2 Creating a Model Instance from Document and Navigating to its To-Do on Submit . . . . . . . . . 55
+5 Data Model Tutorials 57
+5.1 Creating Custom To-Do List . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+5.1.1 Creating the Data Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+5.1.2 Creating the Todo Items . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+5.1.2.1 Creating the Form for the To-Do . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+5.1.3 Creating a List of Todo Items . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+5.1.4 Adding the Custom To-Do List to the Navigation Menu . . . . . . . . . . . . . . . . . . . . 63
+5.1.5 Localizing Name of the Menu Item . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+5.1.6 Excluding the Todo Items Document from Documents . . . . . . . . . . . . . . . . . . . . 65
+5.2 Validating a Related Record . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 66
+6 Model-Update Tutorials 67
+6.1 Model Update Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+6.1.1 Updating a Variable Value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68
+6.1.2 Updating a Task Parameter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 71
+6.1.3 Updating an Event Type . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 77
+6.1.4 Updating a Data Type . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 80
+7 Deploy LSPS Application on a Local Server 87
+7.1 Setting up Local MySQL Database . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 87
+7.2 Setting up Local WildFly . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 88
+7.3 Connecting to Local WildFly from PDS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 90
+
+Chapter 1
+Main Page
+A series of complete tutorials that focus on different goals you might want to achieve in your models:
+• Forms Tutorials and UI Forms Tutorials to help you create the GUI you require
+• Process Tutorials with design patterns for your business processes
+• Data Model Tutorials with solutions for your data models and related issues
+• Model-Update Tutorials
+
+2 Main Page
+
+Chapter 2
+Forms Tutorials
+Important: These tutorials use the experimental forms module. To use fully supported charts, use the
+ui module for your forms.
+• Chart
+• Validating a Record from a Form
+• CRUD Grid
+• Validation of Multiple Components
+• Editing Grid Data in a Popup
+• Filter over Grid and Table with a Custom Data Source
+2.1 Chart
+Important: This tutorial uses the experimental forms module. To use fully supported charts, use the ui
+module.
+You can download an example implementation here. To import it to your workspace, go to Import > Exist-
+ing Projects into Workspace; select Select archive file and locate the charts.zip ﬁle and select
+ChartTutorial.
+2.1.1 Creating a Donut Chart
+A donut chart is a special case of the pie chart: the pie slice series have the inner size plotting property larger than
+0 and a custom size.
+To create a donut chart, do the following:
+1. Insert a pie chart component into the form.
+2. Deﬁne the data series: you can do so either in the Pie slice series property in the Properties view of the Pie
+Chart or using the addPieSliceSeries() method.
+
+4 Forms Tutorials
+def PieSliceSeries innerSeries := new PieSliceSeries("Inner Slice Series", [
+new forms::PieSlice("Big slice", 10),
+new forms::PieSlice("Small slice", 10)
+]
+);
+def PieSliceSeries middleSeries := new PieSliceSeries("Middle Slice Series", [
+new forms::PieSlice("Another small slice", 30),
+new forms::PieSlice("Another small slice", 20),
+new forms::PieSlice("Another big slice", 50)
+]
+);
+def PieSliceSeries outerSeries := new PieSliceSeries("Outer Slice Series", [
+new forms::PieSlice("Another small slice", 30),
+new forms::PieSlice("Another small slice", 20),
+new forms::PieSlice("Another big slice", 50)
+]
+);
+//The dataseries as rendered in the order (z-index) as in the returned list
+//(outerSeries is the lowest):
+[ outerSeries, middleSeries, innerSeries ]
+3. Deﬁne the required inner size and total size in the plotting options for each series.
+...
+def PlotOptionsPie middleSeriesPlotting := new PlotOptionsPie(
+//inner border at the perimeter of the chart:
+innerSize -> new AttributeSize("20%"),
+size -> new AttributeSize("60%"),
+startAngle -> 90, borderWidth -> 2);
+~
+innerSeries.plotOptions := middleSeriesPlotting;
+[ outerSeries, middleSeries, innerSeries ]
+
+2.1 Chart 5
+2.1.2 Creating a Bar Chart
+To render a data series as a bar chart, do the following:
+1. Insert the Cartesian Chart component into your form.
+2. Deﬁne its data series in its Properties view.
+3. Set the plotOptions property of the data series to PlotOptionColumn.
+myDataSeries.plotOptions := new PlotOptionsColumn(
+dataLabels -> new DataLabels(formatter -> "this.y"),
+color -> new Color(0, 255, 150));
+Note that CategoryDataSeries are plotted as bar charts by default.
+Example TimeDataSeries plotted as a bar chart
+def TimeDataSeries tds := new TimeDataSeries([
+new TimeDataSeriesItem(now(), 1, 3),
+new TimeDataSeriesItem(now()+seconds(3), -1, 5),
+new TimeDataSeriesItem(now()+seconds(5), 2, 7)]
+);
+tds.plotOptions := new PlotOptionsColumn(range -> true);
+[tds]
+
+6 Forms Tutorials
+2.1.2.1 Setting Category as X Axis Values
+To use the category name as the x axis values, set the X Axis to an Axis with category -> []. You can do so
+directly in the X Axis ﬁeld on the Detail tab of the Properties view or anywhere with the addXAxis() method of the
+chart.
+c.addXAxis( new Axis(categories -> []))
+If you need to override some of the category names, deﬁne the names in the categories list of the chart; for ex-
+ample, c.addXAxis( new Axis(categories -> ["Year 2014", null , "Year 2016"]))
+overrides the category names of the ﬁrst and third item.
+
+2.1 Chart 7
+2.1.3 Creating an Area Chart
+To render a data series as an area chart in the Cartesian Chart, set its plot options to PlotOptionsLineArea.
+def CategoryDataSeries cds := new CategoryDataSeries(
+[
+new CategoryDataSeriesItem("first", 1, 4),
+new CategoryDataSeriesItem("second", -1, 2),
+new CategoryDataSeriesItem("third", 0, 3)
+]
+);
+cds.plotOptions := new PlotOptionsLineArea(spline -> true, range -> true);
+[ cds ]
+2.1.3.1 Creating an Area Chart with Time X Axis
+To create an area chart that will have time axis, use the TimeDataSeries in the Cartesian Chart and set the type of
+the X axis to AxisType.datetime.
+
+8 Forms Tutorials
+2.1.4 Creating a Line Chart
+By default, ListDataSeries are rendered as line charts. If you want to plot another series type as a line chart, set its
+plot options to PlotOptionsLine.
+cds.plotOptions := new PlotOptionsLine(spline -> true);
+[ cds ]
+
+2.2 Validating a Record from a Form 9
+2.2 Validating a Record from a Form
+In this tutorial, you will:
+• create a page that will add an entry to the database and log the event,
+• validate values of a record deﬁned as user input in a form, and
+• start a process when a user performs some action on a page.
+Requirements:
+• Create an order based on user input.
+• Make sure the user enters all data in the correct format.
+• Make sure the order is persisted only after the user submits it.
+Important: This tutorial uses the forms Module to implement the GUI. This module is experimental
+and the resulting form is not compatible with the ui Modules, which is the previous and supported
+implementation.
+Create a structure with the ∗order-placing module:∗
+1. Open the Modeling perspective.
+2. Go to File -> New -> GO-BPMN Project.
+3. In the pop-up enter the project name OrderProcessing and click Next.
+4. In the Module name ﬁeld, enter order-placing and click Next.
+
+10 Forms Tutorials
+5. In the imports dialog:
+(a) Import the forms module: click Add, expand the Standard Library node and double-click forms.
+(b) Remove the ui module.
+6. Click OK and Finish.
+Create the data structure that will represent the Order:
+1. Right-click the order-placing Module and go to New -> Data Type Deﬁnition.
+2. Click Finish in the dialog box.
+3. Right-click the canvas in the opened graphical editor and select Shared Record.
+Figure 2.1 Creating Order shared Record
+4. Name the Record Order.
+5. Select the Record and press Insert to insert a ﬁeld into the Record. Deﬁne the following ﬁelds:
+• item of type String
+• price of type Decimal
+Create the form for the Order page:
+1. Import the forms module.
+
+2.2 Validating a Record from a Form 11
+2. Right-click the order-placing Module and go to New -> Form Deﬁnition.
+3. Enter the name of your form OrderForm and select Use FormComponent-based UI to use the forms
+module.
+4. Create a form variable for the new order:
+(a) In the Outline view, right-click the root node and go to New -> Variable.
+(b) In its Properties View, deﬁne the variable properties:
+• Name: order
+• Type: Order
+(c) Switch to the Methods tab and deﬁne a non-parametric form constructor that initializes the order variable
+to new Order().
+5. In the Form tab of the editor, insert the following components as displayed below and deﬁne the components'
+properties in their Properties views.
+• Form Layout
+• Text Field with properties:
+– ID: itemField
+– Caption: "Item:"
+– Binding: Reference to the ﬁeld of the order variable &order.item
+• Decimal Field with properties:
+– ID: priceField
+– Caption: "Price:"
+– Binding: Reference to ﬁeld of the order variable &order.price
+• Button:
+– ID: createButton
+– Caption: "Place Order"
+– Click Listener: Submit on click {e-> Forms.submit(); }
+Deﬁne the Order page as a document:
+1. Right-click the order-placing Module and go to New -> Document Deﬁnition.
+
+12 Forms Tutorials
+2. In the editor with the docs ﬁle, click Add and deﬁne the name and title of the document on the right.
+3. Deﬁne the page content in the UIDeﬁnition:
+new OrderForm();
+Currently you have a runnable model. When you run it and open the document, an order entry id created and
+persisted in the database: this happens when the order variable is instantiated. However, we want to create the
+entry only later after the order data has been validated. This problem can be solved with change proxies: Change
+proxies are intended to hold preliminary versions of shared records: their values are not persisted automatically.
+To persist the values and create the actual shared record, you need to explicitly merge the proxy.
+1. In the form constructor, initialize the order variable as a change proxy over the shared-record type: call
+proxy(Order).
+public OrderForm(){
+order := proxy(Order);
+}
+2. Deﬁne the merge of the proxy object in the Click Listener expression of the createButton:
+{ e ->
+mergeProxies(false, order);
+Forms.submit()
+}
+3. Add a Cancel button that will navigate away from the screen, for example, { e -> new App←↩
+Navigation(code -> "todoList")}.
+You still need to make sure that the user enters the required values into their order: Deﬁne constraints for the ﬁelds
+of the Order record and use them for validation of the form:
+1. Right-click the order-placing module and go to New -> Constraint Deﬁnition.
+2. In the editor with constraints, deﬁne the constraints as shown below.
+Figure 2.2 Constraints for the Order Record
+
+2.2 Validating a Record from a Form 13
+3. To check if the input meets the constraints, trigger validation of the order when the createButton is clicked: in
+the Click Listener expression, call the validate() function.
+{ e ->
+def List<ConstraintViolation> errors := validate(order, null, null, null);
+if errors.isEmpty() then
+mergeProxies(false, order);
+Forms.submit();
+else
+//Displays the errors on the createButton
+//if the user never enters any value in the item
+//and price field:
+showDataErrorMessages(errors, createButton)
+end
+}
+4. Now the messages from constraints are all displayed on the createButton; Enable displaying of the messages
+on the respective input components by calling c.inferValidator(null) on the input ﬁelds.
+Now we can upload the module to test the document:
+1. Make sure the server is running.
+2. Right-click the Module and go to Upload As -> Model
+3. Go to http://localhost:8080/lsps-application and log in.
+4. Click Documents in the menu on the left.
+5. Test the Order page.
+Figure 2.3 Order page
+
+14 Forms Tutorials
+2.2.1 Log Conﬁrmation of Order
+We will now extend the Order page to instantiate a process that will log a message when the user places an order.
+Note that you could call the log() function from the UI deﬁnition when the user performs some action, too.
+However, for demonstration purposes, we will run a BPMN Process to do so. This will allow you to deﬁne potentially
+a complex ﬂow of actions.
+First, let's create the process:
+1. Create a logging module with a BPMN process.
+2. In the graphical editor with the process ﬁle, right-click into empty space on the canvas and under New select
+the None Start Event.
+Figure 2.4 Creating process elements
+3. Drag the quicklinker icon next to the None Start Event to a spot where you want to insert the next process
+element, the Log task.
+
+2.2 Validating a Record from a Form 15
+Figure 2.5 Dragging quicklinker
+4. In the context menu, select Task and then Log task.
+5. On the Parameters tab in the Properties view of the task, deﬁne the message that should be logged and its
+message level.
+6. Connect the task to a Simple End Event.
+Figure 2.6 Finished process
+Now we will add to the createButton in the Order document an expression that will create an instance of the
+logging model and trigger the process:
+7. Open the order form and add a call to the createModelInstance function into the Click Listener of the create←↩
+Order button. Note that you can pass a process entity from the call if the process needs to work with a shared
+record from the document, in our case the order.
+
+16 Forms Tutorials
+{ e ->
+def List<ConstraintViolation> errors := validate(order, null, null, null);
+if errors.isEmpty() then
+//when the form is valid, the shared record instance is created based on the proxy Order object:
+mergeProxies(false, order);
+//creates a model instance of the order-placing module
+//which instantiates the log Process:
+createModelInstance(true, getModel("logging", "1.0"), order, null);
+Forms.submit();
+else
+showDataErrorMessages(errors, orderButton)
+end;
+8. Save the deﬁnitions and upload the modules.
+9. Go to the application and create an order from the document.
+Let's check that the logging model with the process was instantiated:
+1. Back in PDS, switch to the Management perspective.
+2. Refresh the Models view: It now contains an entry of the loggin model instance.
+2.3 CRUD Grid
+We will create a document with an editable overview of persisted entities: the user will be able to switch the entity
+type displayed in the grid, edit and delete any entry.
+2.3.1 Creating Database Data
+First, prepare the persisted data that will be displayed in the document:
+1. Create a data type hierarchy of shared Records Book, Author, and Publisher. Create relationships between
+Book and Author, and Book and Publisher as depicted below.
+
+2.3 CRUD Grid 17
+2. Initialize database data, for example:
+(a) Create a process deﬁnition.
+(b) In the process, create a workﬂow that will be executed: for example, a None Start Event with an outgoing
+Flow to a Simple End Event.
+(c) On the Assignment tab of the Flow, deﬁne an expression that will initialize the database data, for
+example:
+def Author heller := new Author(firstName -> "Joseph", surname -> "Heller");
+def Author vonnegut := new Author(firstName -> "Kurt", surname -> "Vonnegut");
+def Author kerouac := new Author(firstName -> "Jack", surname -> "Kerouac");
+~
+def Publisher sas := new Publisher(name -> "Simon & Schuster");
+def Publisher p := new Publisher(name -> "Putnam");
+def Publisher dp := new Publisher(name -> "Delacorte Press");
+def Publisher vp := new Publisher(name -> "Viking Press");
+~
+new Book(year -> 1961, title -> "Catch 22", authors -> {heller}, publisher -> sas);
+new Book(year -> 1988, title -> "Picture This", authors -> {heller}, publisher -> p);
+new Book(year -> 1973, title -> "Breakfast of Champions", authors -> {vonnegut}, publisher -> dp);
+new Book(year -> 1969, title -> "Slaughterhouse-Five", authors -> {vonnegut}, publisher -> dp);
+new Book(year -> 1957, title -> "On the Road", authors -> {kerouac}, publisher -> vp);
+3. Run the module.
+The quickest way to test your models is to do the development testing on the PDS Embedded Server: click
+to start it and connect PDS to the server, and then right-click the module and go to Run As > Model to
+upload the module and create its model instance.
+
+18 Forms Tutorials
+2.3.2 Creating the Form
+We will create a Grid over the shared Records that will display values of the Record ﬁelds:
+1. Create a form deﬁnition.
+2. In the form, insert the Vertical Layout and Grid component.
+3. Deﬁne the Grid component properties:
+• Deﬁne its name as EntityGrid
+• Set its data source to Type and the value to Author
+• Select the Editor enabled ﬂag in the Editing property.
+4. For each Author property, insert a Grid Columns into the Grid and set the Value Provider to Property path
+and insert the property path: you will insert columns for the Author.id, Author.firstName, and
+Author.surname property paths. Also select the Editable ﬂag on each column.
+5. If you have not done so yet, run PDS Embedded Server by clicking , right-click the form and go to Run
+As > Form Preview: this will open a preview of the form in your browser.
+Note if you click a row, you can edit the entries: edits are reﬂected on the database when you save the edits
+or press Enter.
+Now we are facing the following problem: the Grid is static and it will always display only Authors and the user
+cannot change this. You need to allow the user to change the type of entity that is displayed in the grid and
+when they select an entity, you need to update the content of the Grid. And not only the content: you need to
+actually update which Columns are displayed. To achieve this, we will use the dynamic features of the forms.
+6. First, let us externalize the setting of the displayed entity type:
+(a) Create a form variable currentEntity of type Type<Record> that will hold the entity the user
+selects.
+(b) On the Grid, set value of the data source to currentEntity.
+(c) Run preview of the form: right-click the form and go to Run As > Form Preview. The preview will fail
+with a runtime exception since the currentEntity variable is null.
+The ﬁrst solution that comes to mind is to initialize the variable from a component higher in the hierarchy,
+in our case, the vertical layout component, during form initialization: However, this will result in the same
+exception because these expressions are executed after the form tree is initialized. You can check this
+in the form expression (right-click into the form and select Display Widget Expression). Hence we
+need to initialize the variable sooner: you can do so in a form constructor:
+(d) Open the methods ﬁle of the form: the ﬁle is created automatically along with the form ﬁle and bears the
+same name.
+(e) Deﬁne a new constructor with the variable initialization:
+public EntityOverview(){
+currentEntity := type(Author);
+}
+
+2.3 CRUD Grid 19
+7. Now you need to adapt the columns and their value providers according to the currentEntity value. You need
+to do this dynamically as opposed to modeling individual column since each entity has different columns:
+(a) Delete the Grid Columns in the Grid.
+(b) On the Init tab of the Grid, deﬁne how to add the columns:
+//get a list of properties of the entity in the currentEntity variable:
+def List<Property> properties := currentEntity.getProperties();
+~
+foreach Property p in properties do
+def forms::GridColumn col := c.addColumn(new PropertyPathValueProvider(p));
+end
+(c) Run preview of the form: right-click the form and go to Run As > Form Preview.
+The next problem you are facing is that the Grid adds columns for properties on related Records. Let us
+ﬁlter properties of these complex types: adjust the Init expression on the Grid as follows:
+def List<Property> properties := currentEntity.getProperties();
+~
+foreach Property p in properties do
+//exclude properties with Records or Collections:
+if !(
+p.getPropertyType().isSubtypeOf(type(Record)) ||
+p.getPropertyType().isSubtypeOf(type(Collection<Object>))
+)
+then
+def forms::GridColumn col := c.addColumn(new PropertyPathValueProvider(p), null,
+//Boolean sortable:
+null,
+// Boolean editable:
+true,
+// Editor editor:
+null);
+end
+end
+8. Provide the user a component that will change the value of the currentEntity:
+(a) Add a local variable options of type Map<Object, String> and initialize it from the
+constructor:
+EntityOverview {
+public entityOverview(){
+currentEntity := type(Author);
+//added initialization of options:
+options := [Author -> "Author", Book -> "Book", Publisher -> "Publisher"];
+}
+}
+(b) Add a Single Select List component above the Grid.
+(c) In its properties, set:
+• Binding to Reference and its value to &currentEntity
+• Options to Map and its value to options
+
+20 Forms Tutorials
+(d) On the Init tab, deﬁne the action when the user selects an entity:
+c.setOnChangeListener({ e ->
+//remove all columns:
+foreach forms::GridColumn c in EntityGrid.getColumns() do
+c.remove()
+end;
+//update the type data source of the grid:
+EntityGrid.setDataSource(new forms::TypeDataSource(currentEntity));
+~
+//get list of properties of the entity record:
+def List<Property> properties := currentEntity.getProperties();
+~
+//create colums for properties in the grid:
+foreach Property p in properties do
+if !(
+p.getPropertyType().isSubtypeOf(type(Record)) ||
+p.getPropertyType().isSubtypeOf(type(Collection<Object>))
+)
+then
+def forms::GridColumn col := EntityGrid.addColumn(new PropertyPathValueProvider(p));
+end
+end;
+} );
+c.setNullSelectionAllowed(false);
+Since the adding of columns on click and on init are identical starting from the properties declaration,
+consider deﬁning a function. Here we deﬁne extension method of the Grid component:
+@ExtensionMethod
+~
+public Grid getGridWithColumns(Grid g, Type<Record> currentEntity) {
+~
+def List<Property> properties := currentEntity.getProperties();
+~
+properties.compact().collect(
+{ p ->
+if !(p.getPropertyType().isSubtypeOf(type(Record)) ||
+p.getPropertyType().isSubtypeOf(type(Collection<Object>)))
+then
+g.addColumn(new PropertyPathValueProvider(p), null,
+//Boolean sortable:
+true,
+// Boolean editable:
+true,
+// Editor editor:
+null)
+end
+}
+);
+g;
+}
+Adapt the assembly of columns on grid to EntityGrid.getGridWithColumns(currentEntity).
+9. Add the column with the Delete button: if you deﬁned the getGridWithColumns extension method then
+you need to add EntityGrid.addButtonColumn("Delete", { e:Record -> delete←↩
+Records({e}); EntityGrid.refresh()});. If you have not, you will need to add it to the code
+that creates the columns in the Single-Select component and to the Init code of the Grid.
+10. There is one more issue to take care of in and that is the headers of columns. Normally, to display a name of
+a Record or it ﬁeld, you would set the caption, which is a String, for each component with the values of the
+record or ﬁeld. As this can be pretty annoying, you can deﬁne labels: They are deﬁned on records and ﬁelds
+and used exactly in such cases:
+11. Set the labels on Field of the Author, Book, and Publisher Records.
+
+2.3 CRUD Grid 21
+12. Set the column header to the label value: if you deﬁned the getGridWithColumns() extension method then
+you need to add a setHeader(core::getLabel(p)) call to the generated columns. If you have not,
+you will need to add it to the code that creates the columns in the Single-Select component and to the Init
+code of the Grid.
+public Grid getGridWithColumns(Grid g, Type<Record> currentEntity) {
+~
+def List<Property> properties := currentEntity.getProperties();
+~
+properties.compact().collect(
+{ p -> if !(p.getPropertyType().isSubtypeOf(type(Record)) ||
+p.getPropertyType().isSubtypeOf(type(Collection<Object>)))
+then
+g.addColumn(new PropertyPathValueProvider(p), null,
+//Boolean sortable:
+true,
+// Boolean editable:
+true,
+// Editor editor:
+null)
+//adding header to each column:
+.setHeader(core::getLabel(p));
+end
+}
+);
+g.addButtonColumn("Delete", { e:Record -> deleteRecords({e}); g.refresh()});
+g
+}
+13. Run preview of the form.
+2.3.3 Adjusting Presentation
+In the preview, you can spot that the Single-Select List and the Grid have empty space below: their size does not
+get adapted to their content.
+To ﬁx this, set the number of rows to the number of displayed items:
+• on the Single Select List, set the number of rows to the number of displayed options:
+c.setRows(options.size());
+• on the Grid, set the number of rows to the number of data-source entries: You will need to get the number of
+entries for the selected Record and set this as the height of the Grid on initialization and whenever the user
+changes the displayed entity:
+...
+g.addButtonColumn("Delete", { e:Record -> deleteRecords({e}); g.refresh()});
+g.setHeightByRows(countAll(currentEntity));
+g
+}
+...
+If you need to adjust the presentation further, such as, adding margin, consider using CSS or JavaScript.
+
+22 Forms Tutorials
+2.3.4 Creating the Document
+The ﬁnal step is to create a page with the form: a page is represented by a document deﬁnition. When you upload a
+document deﬁnition, it is included in the list of documents, which are accessible from the Application User Interface.
+For more information on documents, refer to Documents-related documentation.
+To deﬁne a new document, do the following:
+1. Create a document deﬁnition ﬁle:
+(a) Right-click your module.
+(b) In the context menu, go to New > Document Deﬁnition
+(c) In the New Document Deﬁnition dialog, deﬁne the deﬁnition ﬁle properties: check its location and modify
+its name.
+2. Open the document deﬁnition ﬁle.
+3. In the Documents area of the Document Editor, click Add.
+4. In the right part, deﬁne the properties of the document:
+• Name: "entityOverviewDoc"
+• Title: "Entity Overview"
+• UI deﬁnition: new EntityOverview()
+5. Upload your Module and check the Document on the Documents tab of the Application User Interface.
+2.4 Validation of Multiple Components
+Required result:
+A forms::form component becomes invalid as part of front-end validation when some components hold a certain
+combination of values: in the example, a Text Field will be valid only if another Text Field contains a correct value
+and if the combination of the values of the ﬁelds is valid.
+1. Create a form with two Text Fields.
+
+2.4 Validation of Multiple Components 23
+2. Set ﬁeld IDs, for example, to a and b.
+3. Deﬁne a method on the form that add custom error messages to components when they contain invalid
+values:
+//rules for validation of the fields:
+private void validateGroup(){
+~
+//error message for field a:
+def String error1 := (a.getValue() == "1" and b.getValue()== "1") ? "Values must not equal 1." : null;
+//error message for field b:
+def String error2 := (b.getValue()== "3") ? "b value must not equal 3." : null;
+def String all := joinErrors(error1, error2);
+~
+//setting the errors as custom error messages on a:
+if !all.isBlank() then
+a.setCustomErrorMessage(all);
+end
+}
+~
+//concatenate errors from components:
+private String joinErrors(String... errors) {
+def String concatenated := join(errors, "<br>");
+concatenated.isEmpty() ? null : concatenated;
+}
+4. Call the method whenever a value is changed on either of the ﬁelds or whenever applicable. click.
+//Init on text fields:
+c.setOnChangeListener({ e ->
+validateGroup()
+})
+
+24 Forms Tutorials
+2.5 Editing Grid Data in a Popup
+Important: This tutorial uses the experimental forms module. To use fully supported charts, use the
+ui module for your forms.
+Required result: The user accesses a Grid with entries of a shared Record type via a document. When they click
+the Edit column in a row, a Popup with editable data of the row is displayed. They can either save the changes or
+drop the changes. The Popup is reusable.
+Note that this tutorial does not implement optimistic locking so if a record is changed from a different transaction
+while being edited, the changes are overridden.
+We will use the Applicant shared record displayed below.
+Figure 2.7 Applicant record with the Level enumeration used in the Applicant Record ﬁeld
+2.5.1 Creating the Public Popup
+First we will create a form for the popup. The form will be used and displayed on two occasions: when the user will
+be creating a new applicant and when they will be editing an existing applicant.
+To create the public popup ApplicantDetailsPopup, do the following:
+1. Create a form deﬁnition ApplicantDetailsPopup.
+2. IntheOutlineview, selecttheformrootcomponentand, initsPropertiesview, setitstypetoforms::Popup
+and make sure it is public.
+
+2.5 Editing Grid Data in a Popup 25
+3. Create the applicant form variable, which will hold the data of the new or edited applicant: right-click the root
+node in the Outline view and
+4. Deﬁne form constructors in the methods ﬁle of the form:
+• a non-parametric constructor we will use when creating a new applicant:
+It initializes the applicant variable to a proxy of the ∗Applicant∗∗ type.
+• a parametric constructor we will use when editing an existing applicant:
+It takes the Applicant parameter and stores its proxy the form variable.
+ApplicantDetailsPopup {
+//constructor called for a new applicant:
+public ApplicantDetailsPopup(){
+//change proxy of the Applicant type is assigned
+//so that applicant is created only after the user clicks Save:
+applicant := proxy(Applicant)
+}
+//constructor called for an existing applicant:
+public ApplicantDetailsPopup(Applicant applicant){
+//change proxy of the applicant object is assigned
+//so that changes on the applicant are stored only after the user clicks Save:
+this.applicant := proxy(applicant)
+}
+}
+5. Design the form: keep in mind it represents the content of a popup; bind the input ﬁelds to the application
+variable as appropriate.
+
+26 Forms Tutorials
+6. Deﬁne the click listener expression on the Save button:
+{ click:ClickEvent ->
+//apply the changes
+mergeProxies(false, applicant);
+//close the popup:
+this.setVisible(false)
+}
+7. Deﬁne the click listener expression on the Close button:
+{ click:ClickEvent ->
+this.setVisible(false)
+}
+2.5.2 Using the Public Popup
+Create the ApplicantList form with the list of applicants with the following components:
+1. Insert a Vertical Layout.
+2. Insert a Grid:
+(a) In its properties:
+i. Set ID to applicantListGrid.
+ii. Set the data source to Type and its value to the record type Applicant.
+(b) Insert a Grid Column for each applicant property:
+• Set the Value Provider to Property Paths.
+• Set the values of value providers to the Applicant ﬁelds, such as Applicant.name.
+• Set the appropriate Renderer, for example, for the Applicant.level, set the Enumeration renderer.
+(c) Insert a Grid Column that will render the Edit button that will open the public Popup with the row data:
+i. Set Value Provider to Constant with the value "Edit".
+ii. Set Renderer to Button.
+iii. Below deﬁne the button action so that it creates and displays the popup with the data of the edited
+applicant:
+
+2.6 Filter over Grid and Table with a Custom Data Source 27
+{ clickedApplicant:Applicant ->
+//create the popup with details:
+def ApplicantDetailsPopup appDetailsPopup := new ApplicantDetailsPopup(clickedApplicant);
+//display the popup:
+appDetailsPopup.setVisible(true);
+//set listener on the popup, so the grid with applicants is updated when the popup closes:
+appDetailsPopup.setPopupCloseListener({ e->applicantListGrid.refresh()});
+}
+3. Below the Grid insert a Create Applicant Button that will create a new applicant using the non-parameteric
+constructor of the public popup:
+{ click:ClickEvent ->
+//creates the public popup with the non-parametric constructor:
+def ApplicantDetailsPopup appDetailsPopup := new ApplicantDetailsPopup();
+appDetailsPopup.setVisible(true);
+//refreshes the grid so it contains the new applicant:
+appDetailsPopup.setPopupCloseListener({ e->applicantListGrid.refresh()});
+}
+Figure 2.8 Resulting form
+Now you can use the ApplicantList form in documents or user tasks as their UIDeﬁnition.
+You can download the tutorial example here.
+2.6 Filter over Grid and Table with a Custom Data Source
+Note: This tutorial uses the forms module as its form implementation.
+Required outcome: A grid and a table that pull data from a custom data source and support ﬁltering.
+Note: You can download the tutorial model here: go to File > Import; select General > Archive File;
+locate the zip ﬁle; select the modules to import (dataInit and ﬁlterGrid).
+
+28 Forms Tutorials
+2.6.1 Creating a Custom Data Source
+To create and customize a data source for a tabular forms component, do the following:
+1. First create a shared record Applicant and a query that returns its instances:
+(a) Create shared Record Applicant with ﬁelds firstName and lastName
+(b) Create a standard query that will return the record and deal with potential ﬁltering:
+i. Create a standard query that returns all Applicants.
+ii. Deﬁne possible ﬁlters as its input parameters; in our case, we can ﬁlter either by ﬁrstName or
+lastName so we will allow two parameters.
+iii. In the condition of the query deﬁne the behavior of the query so applies ﬁlters when passed:
+if isBlank(firstNameFilter) and isBlank(lastNameFilter) then
+true
+elsif !isBlank(firstNameFilter) and !isBlank(lastNameFilter) then
+a.firstName like ("*" + firstNameFilter + "*") and a.lastName like ("*" + lastNameFilter + "*")
+elsif !isBlank(firstNameFilter) and isBlank(lastNameFilter) then
+a.firstName like ("*" + firstNameFilter + "*")
+else
+a.lastName like ("*" + lastNameFilter + "*")
+end
+2. Create the data source for your Grid or Table:
+(a) Create a record that represents your data source type.
+(b) Import the forms::DataSource interface.
+(c) Make the record implement the forms::DataSource interface.
+(d) Add ﬁelds to the record that represent the ﬁlters.
+Figure 2.9 Custom data source record with the source record
+3. Implement the interface methods: adapt the getCount()and getData()methods to handle the ﬁltering.
+The ﬁlters are passed as input parameters to the methods. Here is an example of the methods:
+
+2.6 Filter over Grid and Table with a Custom Data Source 29
+ApplicantDataSource {
+~
+public Integer getCount(Collection<forms::Filter> filters){
+~
+def String firstNameFilterSubstring := getFilterValue("firstName", filters);
+def String lastNameFilterSubstring := getFilterValue("lastName", filters);
+~
+//count query that filters the results:
+getApplicants_count(firstNameFilterSubstring, lastNameFilterSubstring);
+}
+~
+public List<Object> getData(Integer startIndex*, Integer count*, Collection<forms::Filter> filters, Set<Sort> sortSpecs){
+~
+def String firstNameFilterSubstring := getFilterValue("firstName", filters);
+def String lastNameFilterSubstring := getFilterValue("lastName", filters);
+~
+//query that gets results and applies filters:
+getApplicants(firstNameFilterSubstring, lastNameFilterSubstring);
+}
+~
+private String getFilterValue (String filterParameterName, Collection<forms::Filter> filters){
+//get first filter with matching name:
+def forms::Filter firstMatchingFilter := getFirst(filters, { f -> f.id == filterParameterName});
+// get search substring in filters:
+def String filterSubstring := firstMatchingFilter == null ? null : (firstMatchingFilter as SubstringFilter).value;
+filterSubstring
+}
+~
+public Boolean supportsFilter(forms::Filter filter*){
+if
+filter.id == "firstName" || filter.id == "lastName" then true;
+else
+false
+end
+}
+~
+public Boolean supportsSort(Sort sort*){
+false
+}
+public String toString() {
+#"ApplicantDataSource"
+}
+}
+2.6.2 Creating the Form
+1. On the Grid, set the data source to Custom with the value of the data source instance.
+new ApplicantDataSource()
+2. Select the column that should ﬁlter its value to open its properties:
+(a) On the Detail tab, deﬁne the value Provider as Property path and the value of the property,
+Applicant.firstName or Applicant.lastName.
+(b) On the Filtering tab, select the Filterable option and deﬁne Filter conﬁguration: new Filter←↩
+Config(filterId -> "firstName")ornew FilterConfig(filterId -> "last←↩
+Name").
+
+30 Forms Tutorials
+
+Chapter 3
+UI Forms Tutorials
+• Editable Table
+• Table with Derived Values
+• Calendar with Adding Entries Functionality
+• Pop-up with Save and Cancel Buttons
+3.1 Editable Table
+Required result:
+• ui::Table with columns with editable values.
+• One of the columns contains a drop-down list with the possible options. The options are based on an enu-
+meration.
+• The table values are persisted when you click the Submit button.
+Figure 3.1 Resulting form
+To create a document or a to-do with such a table, you need to do the following:
+1. Create the data type model with a shared record for the persisted entity and the enumeration.
+
+32 UI Forms Tutorials
+Figure 3.2 The underlying data type hierarchy
+2. Create the form deﬁnition.
+(a) Create a form variable of the shared record type (Applicant): The table will use the variable as its iterator.
+(b) In the form, add the Table component and deﬁne its properties on the Detail tab:
+i. Set Data Iterator as the reference to the form variable.
+ii. Set Data Kind.
+iii. Deﬁne the Data expression.
+In this pattern, we assume you are using the Data Kind set to Data with the Data expression deﬁned as
+a closure with two input parameters:{x, y -> getAllApplicants()}
+(c) In the table component, insert the Table Column components.
+(d) In the columns, add the Input components.
+Figure 3.3 Asset table with columns with two text boxes and one combo box
+In the example, we inserted two Text Boxes and one Combo Box:
+i. On Text Boxes, deﬁne the binding to the reference to the iterator ﬁelds, for example, &i.surname.
+ii. On the Combo Box component, deﬁne the binding to the iterator ﬁeld and the options to be dis-
+played in the drop-down area.
+To bind options to the enumeration, convert the enumeration literals to options. You can do so using the
+collect() and literalToName() functions.
+
+3.2 Table with Derived Values 33
+collect(literals(type(Level)),
+{e -> new ui::Option(value -> e,
+label -> literalToName(e))})
+(e) Deﬁne the Submit button:
+i. Insert the Button component into the form.
+ii. Create ActionListener on it.
+iii. On the listener properties, select the Submit action on the Actions tab.
+(f) Optionally, set the text that should be displayed in the table if it contains no entries: on the Presentation
+Hint tab of the table properties, add the no-data-message hint.
+3. Create a document or a process with a to-do that uses the form.
+3.2 Table with Derived Values
+Required result: A table with a column with a value derived from another column value: One column value is
+persisted; the derived value is transient. The column values depend on each other and adapt to each other when
+either is changed.
+Figure 3.4 When you change Interest Rate, the Withdrawal Date changes. Withdrawal Date is not persisted.
+1. Create the underlying data type hierarchy with the base shared record and a non-shared record with ﬁelds
+for the derived values:
+(a) Create or import the base shared record.
+(b) Create a record with the derived ﬁeld.
+(c) Deﬁne an association between the records: the derived record is the target of the relationship.
+
+34 UI Forms Tutorials
+Figure 3.5 Base shared record TimeDeposit associated with the derived non-shared record Withdrawal
+Important: In such scenarios, you cannot use the supertyping mechanism since a shared
+record is involved:
+• If you used a derived non-shared record that is the supertype of the base shared record,
+the derived record would include the ﬁelds of the base shared record but the shared record
+itself could not be recovered efﬁciently.
+• If you used a derived non-shared record that is the supertype of the base shared record, If
+you decided to deﬁne the base shared record as the supertype of the wrapper non-shared
+record, whenever you decide to refresh the table with the record data, new shared record
+instances would be created and written in the database.
+2. Create the form deﬁnition.
+(a) Create a local variable of the derived record type.
+The variable will serve as the iterator variable for the table.
+(b) Create a local variable of the collection type with the derived records (for example, List<Withdrawal>),
+and initialize it so it holds the available Withdrawal object, for example, with the collect() function.
+
+3.3 Calendar with Adding Entries Functionality 35
+Figure 3.6 The collection form variable with the initial value
+(c) In the form, insert the Table component and deﬁne its properties:
+• Data Kind as Data
+• Data as a closure that returns the local variable with data.
+• Data Iterator as reference to the iterator variable
+(d) In the table component, insert Table Column components and input components as their child
+components: deﬁne their ID and the binding of the input components to the respective ﬁeld of the
+iteration variable (in the example, &currentWithdrawal.timedeposit.interestRate and
+&currentWithdrawal.withdrawalDate).
+(e) On each input component deﬁne the following:
+i. Create ValueChangeListeners: as the component to refresh, deﬁne the other input component and
+as Handle expression, deﬁne the new value of the iterator ﬁeld, for example, using a function. Do
+not deﬁne the column as the component to be refreshed. Columns do not support the refresh
+action.
+currentWithdrawal.withdrawalDate:= countWithdrawalDate(currentWithdrawal.timedeposit.interest)
+ii. Set the Immediate property to true otherwise change of a value will not trigger change of the
+other value: the change would take place only after another event triggers the processing.
+When set to true, the value changes are processed whenever the user clicks out of the input component or
+presses Enter.
+3. Create a document or a process with a to-do that uses the form.
+3.3 Calendar with Adding Entries Functionality
+Required result: Form with a calendar into which you can add entries by selecting days in the calendar: entries
+details are deﬁned in a pop-up dialog.
+Do the following:
+
+36 UI Forms Tutorials
+1. Create or import the shared record for your calendar entries.
+Figure 3.7 Shared record for calendar entries derived from the CalendarItem record
+2. Create a form deﬁnition, open it and insert a Vertical Layout component.
+3. Create a local variable of the calendar entry type.
+The variable will hold the data about a new calendar entry. For the example above, the variable will be of the
+CalendarEntry type.
+4. Create the calendar:
+(a) Insert the Calendar component into the vertical layout.
+
+3.3 Calendar with Adding Entries Functionality 37
+Figure 3.8 Vertical layout with calendar component
+(b) Deﬁne the properties of the calendar:
+• Data: closure that returns all calendar entries (The closure is called on calendar initialization and
+refresh: After you add a new calendar entry to the database, the calendar needs to be refreshed
+so as to load and render the new calendar entry.)
+{ a, b -> (toSet(findAll(type(CustomCalendarItem)))) }
+• To item: transformation of the data object to CalendarItem so the Calendar component knows how
+to display them; in this case, transformation of the CalendarEntry to ui::CalendarItem.
+{ calItem:CalendarEntry -> new CalendarItem(caption -> calItem.caption, description -> calItem.description, from -> calItem.from, to -> calItem.to, allDay -> calItem.allDay, style -> calItem.style)}
+5. Create the popup:
+(a) In the form, insert the pop-up component and deﬁne its properties:
+• ID: although component ID is not required, you will need it when displaying the pop-up (on button
+click, the visibility variable will be set to true the pop-up component will be refreshed so as to have
+it rendered).
+• Visible: enter a name of a Boolean variable that holds the visibility of the popup.
+You can deﬁne a Boolean form variable; make sure to set its initial value to false.
+(b) Nest the pop-up component in a View Model: right-click the popup and selects Insert Parent > View
+Model. Deﬁne its ID.
+Note: The view model component isolates the data in the pop-up component from the data in
+the form context: it creates an evaluation context over the screen context. You will initialize the
+calendar entry variable when the pop-up is displayed and get the dates the user selects in the
+pop-up, all this will take place in the new evaluation context.
+If you don't nest the pop-up in a view model component, the initialization of the variable will
+create a shared record with incomplete data in the screen context. When nested in the view
+model, the data is written into the screen context only after it is submitted or persisted by a
+listener.
+6. Create the content of the popup: insert the Form Layout component and into it input components so the user
+to provide the other details for the CalendarEntry. Make sure the input components are bound to the correct
+ﬁeld of the CalendarEntry variable.
+
+38 UI Forms Tutorials
+Figure 3.9 Calendar form
+7. On the calendar component, create a CalendarCreateListener that will display the popup with the selected
+dates, when the user selects a time period by clicking and dragging:
+• Set its visibility to true and refresh it:
+– On the Basic tab, enter the pop-up ID as the Refresh components value.
+– On the Basic tab, deﬁne the handle expression so it sets the variable with the pop-up visibility
+to true.
+• Initialize calendar entry with the clicked dates: on the Basic tab, in the Handle expression, extract the
+dates from the event into the CalendarEntry variable:
+calEntry:=new CalendarEntry(
+from -> _event.from,
+to -> _event.to
+)
+8. Deﬁne the submit button in the pop-up that will persist the provided data and close the pop-up:
+• In the pop-up component of the form, insert the button component and deﬁne its properties.
+• Create the ActionListener on the button with the following:
+– Handle expression hides the pop-up.
+– Refresh the pop-up and the calendar.
+– Merge the view model (On the Advanced tab, enter the ID of the view model in the Merge view
+model components property)
+– Persist to save the new event in the database so it is picked up by the findAll()call on calendar
+refresh.
+
+3.4 Pop-up with Save and Cancel Buttons 39
+Figure 3.10 Listener on the submit button
+3.4 Pop-up with Save and Cancel Buttons
+Required result: When you click a button in your form, a popup where you can edit the form data is displayed. The
+pop-up contains an Save and a Cancel button. When you click the Save button, the pop-up closes and the data in
+the form contains the new data. When you click Cancel, the data in the pop-up is discarded and the pop-up closes.
+
+40 UI Forms Tutorials
+To create a pop-up window with a Save and Cancel button, do the following:
+1. Open the form with the data you want to edit in the popup.
+In the example, the data already exists and is stored in a form variable. If you want to create new data from
+the popup, make sure to initialize the data in the View Model we create in the next step.
+Figure 3.11 Form with user details
+2. Insert the View Model component into the form and deﬁne its ID.
+The view model creates a new context for its child components. It holds the differences to the form context.
+This will allow us to discard or save the differences in a single step: we will either merge the view-model
+context or discard it (for more details on how it works, refer to view model).
+3. Insert the Popup component into the View Model component.
+If you plan to create a complex component tree in the popup, consider using the dynamic popup to
+prevent performance issues: the dynamic popup is created only when the popup is requested, while the
+modeled popup is created when the form is initialized, which can be time consuming.
+4. Deﬁne the popup behavior:
+(a) Create a Boolean form variable with the initial value to false and set the variable as value in the
+Visible property of the popup.
+(b) Create the logic that will open the popup, for example, insert a Button with an ActionListener that sets
+the visibility variable to true and refreshes the popup.
+
+3.4 Pop-up with Save and Cancel Buttons 41
+Figure 3.12 Setting Popup visibility for the ∗Save∗ button click
+5. Create the popup content:
+(a) Insert a layout component and input components into the Popup component.
+(b) Bind input components to the local variable and deﬁne the labels.
+(c) Insert the Button component for the Save button and attach to it an ActionListener that will execute the
+following:
+• Merge the changed data to the form context: On the Advanced tab in the Merge view model
+components property, insert the ID of your view model.
+• Close the popup: on the Basic tab in the Handle expression, set the popup visibility to false and
+in the Refresh components, insert the ID of the popup component.
+• Refresh the data in the form (outside of the view model): in the Refresh components, insert the IDs
+of the components.
+
+42 UI Forms Tutorials
+(d) Insert the Button component for the Cancel button and attach to it an ActionListener that will execute
+the following:
+• Close the popup: on the Basic tab in the Handle expression, set the popup visibility to false and
+in the Refresh components, insert the ID of the popup component.
+• Discard the changes in the View Model: On the Advanced tab in the Clear view model components
+property, enter the name of your view model.
+• Set the listener to execute in the form context: On the Advanced tab, set the Execution context
+property to Top level.
+If left set to default, the listener would execute in the execution context created by the view model. Since we
+are discarding the data from the view model, the visibility setting would be discarded as well and the popup
+would remain open.
+
+3.4 Pop-up with Save and Cancel Buttons 43
+Figure 3.13 Setting cancel as View Model action for the Cancel button click
+6. Run the Form Preview and check the functionality.
+
+44 UI Forms Tutorials
+
+Chapter 4
+Process Tutorials
+• The pattern of agile processes allows you to design processes in which you can skip an Activity or a ﬂow, and
+switch between Activities or ﬂows as required without breaking your data.
+• To create a model instance over a record with your business data can be useful in the cases when you allow
+your users to create entities for documents: The user creates an shared record from a document, for example,
+an order, and on submit a new model instance takes care of further actions over the entity, such as processing
+the order.
+4.1 Agile Processes
+Required result: A process will recover its progress based on data after restart and it is possible to switch from
+one activity to another activity arbitrarily.
+Note: You can download an example implementation here. To import the model, do the following:
+1. Create a GO-BPMN project.
+2. Right-click the project and select Import > Archive ﬁle.
+3. Enter the path to the zip ﬁle into the From archive ﬁle ﬁeld.
+4. Click Finish.
+Patterns of agile mechanisms solve the following:
+• Set the correct execution state after restart: on restart, the process omits activities that were already
+performed.
+For example, if you interrupted an order-dispatch process at a moment when the order is ready to be dis-
+patched, on restart, the process omits the invoicing and payment activities and proceeds to the dispatch
+activity.
+This also allows you to update the underlying model easily: you stop your model instances, upload a new
+version of the model, and resume the stopped model instance according to the new model. The new model
+instance get into the same or equivalent execution status as the original model instance on resume.
+• Skip arbitrarily through activities: skipping is used to implement such features as breadcrumb navigation;
+the user can switch between activities freely. On switch, the process deactivates the current activity and
+activates another.
+
+46 Process Tutorials
+The pattern is as follows:
+• Each "skippable" ﬂow sequence is implemented as a process or a task type: the sequence has the activity
+reﬂection type enabled so it can be triggered by the Execute task.
+• The sequence is executed by an Execute task of a wrapper process, which wraps the Execute task in the
+skipping mechanism.
+• The wrapper process takes a parameter with the current step: if the current step does not correspond to the
+required step, the Execute task is not executed.
+• The wrapper process is called as a subprocess from an orchestrating main process.
+• If the skippable ﬂow sequence signalizes that it should be deactivated, the Executable task handles the
+signalization, deactivates the wrapper process and activates another wrapper process.
+4.1.1 Designing the Skeleton
+We will create the main process that will run a series of Reusable Subprocesses. In our case the Reusable Subpro-
+cesses will run a simple process with a User task, instead of the Execute task so we can keep it simple.
+Design the subprocess:
+1. Create a BPMN-based process that will hold the Activity. We will refer to this process as the step.
+The step holds the activity that you want to execute or omit depending on the business data, so this could be
+the dispatch order or payment order; the process would be more complicated in real-word scenarios.
+2. Unselect the Instantiate Automatically option in the process properties to prevent bogus instances of the step
+process.
+3. Deﬁne the parameters of the activity as required.
+Use a task that will stop the execution, so you can check the behavior of the process easily: for example, use
+the User task and design a form, for example, with a submit button.
+Design the coordinating parent process:
+1. Create a BPMN-based process with a ﬂow of Reusable Processes: set the step process as their content:
+In a new process deﬁnition, insert a None Start Event and a few Reusable Sub-Processes connected by
+normal ﬂows so that one instance of the Reusable Processes is running at a time.
+
+4.1 Agile Processes 47
+You have a functional model: run it and check that the process instance has one step sub-Processes running
+at a time and that the step sub-process is not instantiated as its own process instance.
+
+48 Process Tutorials
+Figure 4.1 Model instance details of a successful run
+4.1.2 Designing Omitting
+The omitting mechanism of the step process will check if the given subprocess instance actually needs to run: we
+will send the subprocess the input for the condition from the parent process.
+TODO: The goal is to create the skipping and omitting mechanism inside the Subprocess around an activity. The
+activity represents individual steps of the Process which we want to be able to skip or omit.
+Let's design the omitting mechanism:
+1. In the step process, design the evaluation of the condition:
+(a) Deﬁne the omitCondition parameter of type Boolean.
+(b) Design the workﬂow that will avoid the activity and that will be used when the omitCondition will
+be true.
+
+4.1 Agile Processes 49
+(c) Make the ﬂow pointing to the activity the default ﬂow.
+2. In the ﬂow process, pass the omitCondition argument to each Reusable Process.
+We will make it depend on global Integer variable lastSuccessfulStep but in a real solution, it should depend
+on business data:
+• on the ﬁrst Reusable Subprocess omitCondition -> lastSuccessfulStep >= 1 (When
+the last successful step equals or is larger than 1, the condition is true.)
+• on the second Reusable Subprocess omitCondition -> lastSuccessfulStep >= 2
+(When the last successful step equals or is larger than 2, the condition is true.)
+3. Test the process, set the initial value of lastSuccessfulStep to a value (0, 1, and 2) and run a model instance
+with the value. Check the behavior of the subprocesses: make sure the skipping works as expected.
+
+50 Process Tutorials
+Figure 4.2 Run with lastSuccessfulStep set to 1. The subprocess that used the omitting ﬂow displayed
+below.
+4.1.2.1 Real-World Adaptations
+• In real models, you omit different types of Activities:
+Deﬁne the Activity in the step sub-process as the Executable task type and pass its activity as a parameter of
+the sub-process along with the condition parameter.
+• To evaluate the conditions for omitting, use business data persisted in the database. Modify these as part of
+each step sub-process.
+4.1.3 Designing Deactivation
+The deactivation mechanism terminates the current sub-process instance under speciﬁc circumstances. It could be
+either when it receives a signal or when a condition becomes true.
+We will use a Signal: On the activity in the step process, an interrupting Catch Signal Intermediate Event will wait
+for the Activity to throw a Signal: when this happens, the Activity will be deactivated. The outgoing ﬂows of the
+intermediate event will enter a No Exit End Event so they terminate the sub-process instance without letting the
+subprocess produce a token: we do not want the parent process to continue the ﬂow.
+To sum it up, when the Activity throws the Signal in one of the step instances:
+
+4.1 Agile Processes 51
+1. The Activity is terminated by its Catch Signal Intermediate Event;
+2. The step subprocess instance ﬁnishes.
+3. The coordinating process instance ﬁnishes since no sub-process instance is running.
+To design the deactivation mechanism, do the following:
+1. Adapt the Activity in the step process so it throws a Signal when it should be deactivated; for example, if you
+are using a User task, edit its form so it calls sendSignal(false, {thisModelInstance()},
+"deactivate") when the user clicks a "Deactivate" button.
+2. Adapt the step so when it receives a Signal it ﬁnishes:
+(a) Add an interrupting Intermediate Catch Signal Event to the boundary of the Activity (set the ﬁlter to catch
+any signal from the activity, for example, { r:Object -> true}).
+(b) Connect the event to a No Exit End Event:
+The event will consume the token of the reusable sub-process just like Simple End Event but it does not
+produce a token that would leave the sub-process. We can create another token on another sub-process
+instance.
+3. In the coordinating Process, change the Reusable Subprocesses to Inline Event Subprocess. Note that only
+inline event sub-processes can ﬁnish with a No Exit Event. They are executed as part of their parent: if
+deﬁned in a process, they create process instances (while non-inline-event subprocesses create subprocess
+instances).
+
+52 Process Tutorials
+4. Run the model and deactivate it in one of the steps.
+Figure 4.3 Model instance deactivated in the ﬁrst subprocess. The diagram with the activity deactivated by
+the Catch Signal Event is below.
+4.1.4 Designing Activation
+Now we can omit already performed activities and we can deactivate them. To get all the features of agile processes
+we now need to create the activation mechanism that will create a step instance when a step is deactivated. This
+will allow us to switch from one step to another arbitrarily.
+To be able to do this, we need to let the parent process know which task it needs to create: we will pass the
+information as a parameter to the step process:
+1. Add the id Integer parameter to the step so that you can start a particular sub-process after deactivation.
+
+4.1 Agile Processes 53
+2. Add information on which step should be activated after deactivation: sendSignal(false, {this←↩
+ModelInstance()}, goto). In a form, the "goto" information could be based on user input. If you are
+using a User task as your activity, the Deactivate button turns into a Go To Activity button. Also consider
+navigating away from the to-do since you will be looking at the to-do of the deactivated task if you do not.
+3. Add the Signal Start Event: since all Signal Start Events in all steps will be listening for a Signal, deﬁne its
+ﬁlter to match the id parameter which is sent as part of the Signal (goto). It must match the id of the step: {
+activateStep:Integer -> activateStep == id }
+
+54 Process Tutorials
+4. Inthecoordinatingprocess, addtheidparametervaluetothereusablesub-processesandthegotoparameter
+if you added the goto parameter to your subprocess.
+
+4.2 Creating a Model Instance from Document and Navigating to its To-Do on Submit 55
+5. Run the model.
+4.1.4.1 Real-World Adaptations
+• Typically, you will skip to a step based on input provided by a user in a to-do: in such a case, you will need to
+adapt the respective form so it passes the go-to data: a listener could send the signal with a goto value from
+an input ﬁeld.
+4.2 Creating a Model Instance from Document and Navigating to its To-Do on Submit
+To create a model instance from a document and then navigate to one of its To-dos, do the following:
+1. Open the form of your document:
+• For ui-module forms, deﬁne a listener that will create the model instance as follows:
+(a) Attach a listener of the required type to a component.
+(b) Create the model instance in its persist action, for example, createModelInstance(true,
+getModel("myModelName"), null)
+(c) Deﬁne a listener with the Submit action (it represents the moment when you want to submit the
+data and navigate away from the document).
+
+56 Process Tutorials
+• For forms-module forms, deﬁne the following expression on the respective component listener (typically
+the click listener of an action component, such as a Button):
+{ e -> createModelInstance(true, getModel("runMe"), null); Forms.submit()}
+2. Optionally, deﬁne the Navigate property in the document deﬁnition so the document navigates to a to-do
+generated by the model instance when submitted:
+\navigates to the first to-do generated by the document:
+{todos:Set<Todo> -> new TodoNavigation(todo -> todos[0], openAsReadOnly -> false)}
+
+Chapter 5
+Data Model Tutorials
+• Creating Custom To-Do List
+• Validating a Related Record
+5.1 Creating Custom To-Do List
+Important: To complete this tutorial, you need the enterprise edition of PDS with SDK installed.
+Typically, the default To-Do list will not cut it in the real world of business and you will require custom business-
+related data for a to-do while retaining the related mechanisms, such as, priority of the todo, its allocation, locking,
+annotations, delegation, substitution, etc.
+Since the Todo is represented by the Todo record which is a system record, you cannot simply add a ﬁeld to it.
+However, you can create a new Record related to the Todo Record and add the business data to this Record: in this
+tutorial, we create the TodoItem record with an additional ﬁeld and a relationship to the Todo record:
+• To create instances of TodoItem on runtime, we will create the record in the issueAction parameter of
+the User tasks.
+• To query the to-do information of a TodoItem record, we will use joins from the TodoItem to the Todo.
+Note: The pattern of records related to system records can be applied analogously to other system
+records, for example, to extend the data held by Person.
+5.1.1 Creating the Data Model
+Before you start, create a project:
+1. Open the Modeling perspective in your PDS.
+2. Go to File -> New -> GO-BPMN Project.
+3. In the pop-up enter the project name custom_todo_list_model and click Finish.
+
+58 Data Model Tutorials
+Since Todo is a system record and system records cannot be extended directly, you need to create a record that
+will represent our todo item with the business data and is related to the Todo system record:
+1. Create a module that will hold the data hierarchy:
+(a) Go to File -> New -> GO-BPMN Module.
+(b) In the popup, do the following:
+• Select the custom_todo_list_model project.
+• In the Module name ﬁeld, enter custom_todo_list_data.
+• Unselect the executable module option since this module is intended as a module import and never
+be instantiated by itself.
+(c) Click Finish.
+2. Create a data type deﬁnition: right-click the module and go to New -> Data Type Deﬁnition.
+3. Create the shared record with the business data, TodoItem:
+(a) Right-click the canvas in the graphical editor and go to New > Shared Record.
+(b) Enter the record name TodoItem.
+(c) Insert the ﬁeld priority of type Integer into the TodoItem record.
+4. Establish a relationship to the Todo record:
+(a) Right-click the canvas in the graphical editor and go to New > Record Import.
+(b) In the human module, select Todo (alternatively start typing todo) and click OK.
+(c) To create a relationship between TodoItem to Todo, drag the quicklinker from TodoItem to Todo.
+(d) Select the relationship and set the properties of the Todo end in the Properties view:
+• Name: todo
+• Multiplicity: Single (one TodoItem relates to one Todo)
+
+5.1 Creating Custom To-Do List 59
+Note: To display the ﬁelds and methods of the imported Todo record, right-click the record
+and under Compartments select the required items.
+5.1.2 Creating the Todo Items
+Todos are created when a User Task of a process instance is executed: to create the todo item related to the todo,
+create it in the issueAction closure of the User Task: issueAction is executed right after a todo is created and
+has the todo created by the User Task as its input parameter.
+Let's create a process that will create a Todo and its TodoItem:
+1. Create the module that will hold the process:
+(a) Right-click your project and go to New -> GO-BPMN module.
+(b) In the module name ﬁeld, enter custom_todo_list_process and click Finish.
+(c) Import the custom_todo_list_data module (double-click the module Imports node in the custom_←↩
+todo_list_process module).
+2. Create the process deﬁnition and design the process:
+(a) Right-click the custom_todo_list_process module and go to New -> Process Deﬁnition.
+(b) Enter the name CreateTodoItem and select the BPMN-based process option.
+(c) In the process, create a local variable newTodoItem of the TodoItem type (in the Outline view of the
+process deﬁnition, right-click the root node and select New > Variable). It will hold the new todo item,
+so we can pass it to the todo form where we will edit its priority ﬁeld.
+(d) Design a process ﬂow with a User task.
+
+60 Data Model Tutorials
+(e) In the Properties of the User task, deﬁne the parameters of the task: in the issueAction parameter,
+create the TodoItem record over the to-do:
+title /* String */ -> "Dummy Submit for Guest",
+performers /* Set<Performer> */ -> {getPerson("guest")},
+uiDefinition /* UIDefinition */ -> submitForm(newTodoItem) ,
+issueAction /* {Todo:void} */ -> { t:Todo -> newTodoItem := new TodoItem(todo -> t)}
+Note that the submitForm does not exist yet; we will create it in the next step.
+Note: If you attempted to change the value of the related to-do directly, for example, on a ﬂow assign-
+ment with newTodoItem.todo.title := "";, you will get a validation error since Todo is a
+system record and ﬁelds of system records cannot be accessed directly.
+5.1.2.1 Creating the Form for the To-Do
+Create the form that will be used to gather the priority data for the TodoItem and submit the todo:
+1. Right-click the custom_todo_list_process module and go to New -> Form Deﬁnition.
+2. Enter submitForm as the name of your form and make sure the Use FormComponent-based UI is not
+selected.
+Note: The Use FormComponent-based UI setting deﬁnes which module of the Standard Library
+isusedtocreatetheform: whennotselectedtheui moduleisused. Formsoftheuimoduleare
+event driven. When the option is selected, the forms module is used: the forms are created
+more like in Vaadin. Generally the latter option is more powerful but requires more programming
+skills and is considered experimental in this version.
+3. Create the form parameter newTodoItemParam of type TodoItem (in the Outline view of the form deﬁnition,
+right-click the root node and select New > Parameter).
+4. In the editor with the form, insert the following components and deﬁne their properties in their Properties view.
+• Form Layout
+• Text Box with properties:
+– Label: "Priority:"
+– Binding: &newTodoItemParam.priority
+• Button:
+– Text: "Submit"
+– ActionListener on the button with Submit selected on the Action tab
+
+5.1 Creating Custom To-Do List 61
+5.1.3 Creating a List of Todo Items
+Now we will create a page that will display the list of the todo items that have not been submitted yet (their todo is
+alive) and are assigned to the current user.
+First, create a query that will retrieve todo items:
+1. Right-click the custom_todo_list_data module and go to New -> Query Deﬁnition.
+2. In the query editor, click Add.
+3. On the right deﬁne the query name as getTodoItems, set TodoItem as the record type, and set an
+iterator name, for example ti.
+4. At this stage, the query returns all TodoItems. Restrict it so it returns only those todo items that are related to
+a LIVE todo:
+(a) Join the system todo table: select the Join Todo List.
+(b) Deﬁne the iterator for the returned todos in the Query Todo Iterator, for example t.
+(c) In the Todo List Criteria, deﬁne an expression that ﬁlters the todos from the joined todo list:
+//returns todos of the current person:
+new TodoListCriteria(person -> getCurrentPerson(),
+//exclude interrupted, accomplished, suspended todos:
+includeAllStates -> false,
+//exclude rejected todos:
+includeRejected -> false,
+//exclude to-dos allocated by other persons:
+includeAllocatedByOthers -> false,
+//exclude to-dos of substitutes:
+includeSubstituted -> false)
+5. Now the query returns all todo items with a to-do of the currently logged-in person. However, only todo with a
+matching id should be returned. Deﬁne the condition in the Condition property:
+ti.todo.id == t.id
+The query is ready and you can create a document with a form that will display the todo items:
+1. Create the custom_todo_list_ui non-executable module that will hold the document.
+2. Import the custom_todo_list_data module.
+3. Createthedocumentthatrepresentsthepagewiththetodoitems: Right-clickthecustom_todo_list_uimodule
+and go to New -> Document Deﬁnition. Create a document with the properties:
+• Name: todoItemsList
+• Title: "My Todo Items"
+• UI deﬁnition: listOfTodoItems()
+4. The UI deﬁnition does not exist yet, let us create it:
+(a) Right-click the custom_todo_list_ui module and go to New -> Form Deﬁnition.
+(b) Set the form name to listOfTodoItems and click Finish.
+5. In the editor with the form, insert a Vertical Layout.
+6. Into the layout, insert the Grid component and deﬁne its properties:
+(a) Set Data Kind to Query
+(b) Set Data to getTodoItems()
+
+62 Data Model Tutorials
+(c) Create Columns with the content set to Property path with the respective custom todo item properties,
+for example, TodoItem.todo.id.
+7. Create a Column that will contain a link:
+(a) Set Content to Closure and deﬁne the closure that returns the link content below (You need to use the
+Closure type since a property path of type Integer cannot use the renderer Link):
+{ i:TodoItem -> i.todo.id.toString() }
+(b) Set the Renderer to Link.
+(c) Create a RendererClickListener on the Link:
+i. Right-click the link in the form and open the Event Handling tab of the Properties view.
+ii. Under the Private Listeners section, click Add.
+iii. On the Actions tab, select the Navigation option and add the navigation expression:
+def TodoItem ti := ((_event as RendererClickEvent).rowObject) as TodoItem;
+new TodoNavigation(todo -> ti.todo, openAsReadOnly -> null)
+If you haven't done so yet, now is the time to test the modules:
+8. Run PDS Embedded Server by clicking the Start Embedded Server button .
+9. Generate todos: right-click the custom_todo_list_process module and go to Run As > Model.
+10. Upload the document with the todo items list: right-click the custom_todo_list_ui module and go to Upload
+As > Model.
+11. Open your browser and go to http://localhost:8080/lsps-application and check the Docu-
+ments of the guest user.
+12. Check the list of to-dos: Open Documents and click My Todo Items.
+13. Click a link to navigate to the todo.
+14. Stop PDS Embedded Server by clicking the Stop Embedded Server button .
+
+5.1 Creating Custom To-Do List 63
+5.1.4 Adding the Custom To-Do List to the Navigation Menu
+Now this is all nice and neat but the user can still access the default To-do List page: generally you want to substitute
+the To-Do List in the Application User Interface with our to-do item list.
+To be able to do this, you need to modify the Application User Interface and deploy it to your server:
+1. Go to File > New > Other
+2. In the popup dialog, select LSPS Application and click Next.
+3. In the updated popup, enter the maven artifact details and click Finish.
+This will generate the sources of the Application User Interface. For more details, refer to documentation on
+development of Custom Application User Interface.
+Let us remove the default To-Do List item and add our list item to the navigation menu:
+1. Since this is Java code, switch to the Java perspective.
+2. Remove the To-Do List item:
+(a) Open the <YOUR_APP>.vaadin.core.AppLayout.java ﬁle.
+(b) Comment out the respective line in the buildMenu() method.
+@SuppressWarnings("unused")
+protected void buildMenu() {
+/*if (ui.getUser().hasRight(HumanRights.READ_ALL_TODO) || ui.getUser().hasRight(HumanRights.READ_OWN_TODO)) {
+todoMenuItem = navigationMenu.addViewMenuItem(TodoListView.TITLE, TodoListView.ID, FontAwesome.LIST, todoBadge, null);
+}*/
+if (ui.getUser().hasRight(HumanRights.ACCESS_DOCUMENTS)) {
+documentMenuItem = navigationMenu.addViewMenuItem(DocumentsView.TITLE, DocumentsView.ID, FontAwesome.FILE_TEXT_O, documentBadge, null);
+}
+(c) Build the application and run the SDK Embedded Server: open the run conﬁguration drop-down menu
+and click the build launcher and then embedded server launcher for you application.
+
+64 Data Model Tutorials
+Important: Note that this is a different server from PDS Embedded Server and has your
+application hot-deployed.
+(d) Open the browser and check that the To-Do List item is no longer available in the navigation menu.
+3. Now add the navigation item to the custom to-do list:
+(a) First copy the fully qualiﬁed name of the module with the document: right-click the document deﬁnition
+and select Copy Qualiﬁed Name.
+(b) Add the document to buildMenu() of <YOUR_APP>.vaadin.core.AppLayout.java←↩
+: paste the qualiﬁed name of the document to prevent typos. Do not forget to remove the if statement
+around or set its condition to true and the other example items as applicable.
+if (hasRightToOpenDocument("custom_todo_list_ui::todoItemsList")) {
+navigationMenu.addDocumentItem(
+"My Todo Items",
+"custom_todo_list_ui::todoItemsList",
+null,
+FontAwesome.ADN,
+null,
+null
+);
+}
+4. Rebuild the application and restart the server preferably in debug mode.
+
+5.1 Creating Custom To-Do List 65
+Figure 5.1 Rebuilding the application
+5. Upload the ui module and run the process module.
+5.1.5 Localizing Name of the Menu Item
+You can now access the document directly from the navigation menu, but it contains the ??? characters: these
+signalize that the system failed to ﬁnd the localization string. Let's create the string:
+1. Open properties ﬁle in the com.whitestein.lsps.vaadin.webapp package (<YOUR_A←↩
+PP>-vaadin project), for example, the localization.properties ﬁle with the default localizations.
+2. Add the localization key.
+# navigation menu items
+nav.todoitems = To-do List
+nav.documents = Documents
+nav.runProcess = Run Model
+# This is the new key:
+nav.itemsList = My Todo Items
+3. Adapt the addDocumentItem() call: navigationMenu.addDocumentItem("nav.←↩
+todoitems", "custom_todo_list_ui::listOfTodoItems", null, FontAwesome.←↩
+ADN, null, null);
+4. Rebuild the application and restart the server.
+5.1.6 Excluding the Todo Items Document from Documents
+Right now the document is accessible from the dedicated navigation menu plus it is available as a document in the
+Documents menu. To remove it, open the DocumentsView class and adapt the load() method; for example:
+private void load() {
+try {
+List<DocumentInfo> documents = genericDocumentService.getNonParametricDocuments();
+~
+for (DocumentInfo document : documents) {
+//Added this to exclude the document from the table:
+if (!"custom_todo_list_ui::todoItemsList".equals(document.getId())) {
+container.addBean(document);
+}
+}
+
+66 Data Model Tutorials
+Note that you will need to adapt the calculation of documentBadge on documentMenuItem with the number
+of available documents.
+Simple example of badge calculation
+//constant with the document name:
+private static final String DOCUMENT_IN_MENU = "custom_todo_list_ui::todoItemsList";
+~
+private void calculateBadges() {
+try {
+todoBadge = (int) todoService.getTodoCount(new TodoListCriteria());
+try {
+List<DocumentInfo> nonParametricDocuments = documentService.getNonParametricDocuments();
+//exclude of the document from the count:
+documentBadge = 0;
+for (DocumentInfo documentInfo : nonParametricDocuments) {
+if (!DOCUMENT_IN_MENU.equals(documentInfo.getId())) {
+documentBadge++;
+}
+}
+~
+} catch (ErrorException e) {
+throw new RuntimeException(e);
+}
+ModuleCriteria criteria = new ModuleCriteria();
+criteria.setIncludeImports(false);
+criteria.setIncludeExecutableOnly(true);
+criteria.setIncludeLatestOnly(true);
+ModuleList findModules = modelManagementService.findModules(criteria);
+runModelBadge = (int) findModules.getTotal();
+} catch (RuntimeException ex) {
+LspsUI.getCurrent().error(ex);
+}
+}
+5.2 Validating a Related Record
+To validate related records of a record (cascade validation), do the following:
+1. Deﬁne the constraints for the related record.
+2. Deﬁne the constraint that will trigger the validation of the related records:
+• If the relationship is to-one:
+(a) Set the record property to the relevant property path, for example, Book.author.
+(b) Set the constraint type to RecordValidity.
+• If the relationship is to-many:
+(a) Set the record property to the relevant property path, for example, Author.books.
+(b) Set the constraint type to RecordCollectionValidity.
+Important: Make sure the validation does not result in inﬁnite recursive validation (the
+relationship record does not validate the parent record).
+3. Call the validate() function on the main record.
+Example: Underlying data model Constraints
+def Author author := new Author(books -> {new Book(title -> null)},
+name -> null); validate (author, null, null, null); Since the Author.←↩
+books.RecordCollectionValidity constraint deﬁnes RecordCollectionValidity, the validate()
+checks also the created book constraints and violations on the constraints Author.name.NotNull and
+Book.title.NotNull are returned.
+
+Chapter 6
+Model-Update Tutorials
+This tutorial demonstrates the possibilities of the model-update feature. Mind that updating models can be
+complex: consider using another approach such as agile processes pattern to prevent model update.
+Model Update Examples
+6.1 Model Update Examples
+This series of simple tutorials demonstrate how to update the model of running model instances.
+Mind that updating models can be very complex: consider using another approach such as agile processes pattern
+to avoid the need for model update altogether.
+Generally, model update is performed in as follows:
+1. Open the PDS and connect to the LSPS Server.
+2. Import the original model into your workspace.
+3. Import or create the target model into your workspace.
+4. Deﬁne rules for the model update in the model-update deﬁnition.
+5. Run the model update with the model-update deﬁnition.
+6. Unload the modules that are no longer used.
+Note: If you are updating Java implementations as well (this is the case when updating to a newer
+standard library or to a custom LSPS Application with new custom java implementations,
+consider suspending the model instances that use the resources that are modiﬁed. Then you can
+redeploy the LSPS Application EAR. Note that if you want to run according to both, the original and
+target models, your implementations must be backward compatible (in such a case it is not necessary
+to suspend the pertinent model instances).
+This section contains examples of simple model updates with the following modiﬁcations in the target models:
+• variable value
+• task parameter change
+• event change
+• data type change
+
+68 Model-Update Tutorials
+6.1.1 Updating a Variable Value
+Required action: Update a model instance so that a variable value changes to a value derived from its original value.
+In the example update, we will introduce the following changes on global variables:
+• A variable will be removed.
+• A variable will have its value modiﬁed to a value derived from the removed variable.
+1. Design the source model with a process deﬁnition and a variable deﬁnition:
+(a) Create a module with a global variable deﬁnition with the following variables:
+• varSet of type Set<String> with the initial value {"old value 1", "old value
+2"}
+• varString of type String with the initial value "42"
+(b) Create a process deﬁnition with a None Start Event, a Conditional Intermediate Event, and a Simple
+End Event.
+(c) Set the Condition parameter of the Conditional Intermediate Event to falseto keep the model instance
+running so it can be updated.
+Figure 6.1 Process
+2. Design the target model:
+(a) Copy and paste the old module.
+(b) Modify the global variables
+• Modify varSet to have the initial value {"new value 1", "new value 2"}
+• Delete varString
+• Create varInt of type Integer with the initial value 1.
+3. Create the .muc ﬁle:
+(a) Right-click the parent project, go to New > Model Update Conﬁguration and follow the instructions.
+(b) Open the Variables page in the newly opened editor with your muc ﬁle
+(c) Adjust the mapping if necessary: Map the new variable deﬁnition ﬁle to the old variable deﬁnition ﬁle and
+varInt to varString. Mapping of VarSet should be recognized automatically after the variable
+deﬁnition ﬁle is mapped.
+(d) Deﬁne the transformation expressions on the new variables:
+• varSet: {"transformation value"}
+• varInt: toInteger(toString(old("varString")))
+
+6.1 Model Update Examples 69
+Figure 6.2 The muc ﬁle with variables and their transformation expressions
+When you perform the model update, the system does the following:
+1. First attempts to transform variable values according to their transformation expression.
+2. If the expression does not exist, the system performs the transformation deﬁned for the variable data type.
+3. If neither the variable transformation expression nor the data type transformation exist, the variable is initial-
+ized. This typically applies to variables that were added in the new model.
+Note: When updating local variables of processes, sub-processes, and tasks, the update is deter-
+mined by the update strategy of the parent element:
+• If the strategy of the parent element is continue, the parent context is preserved. The execution
+continues in the old transformed context: Its local variables are transformed as deﬁned by their
+transformation expression.
+• If the strategy of the parent element is restart, the parent context is dropped and a new context is
+created: any local variables are discarded and new variables are initialized. The transformation
+expression on the variables is not applied.
+To upload the resources and perform the model update, do the following:
+1. Make sure your server with the Execution Engine, possibly the PDS or SDK Embedded Server, is running
+and your PDS is connected to it.
+2. Upload the model to the server and create its model instance: In the GO-BPMN Explorer, right-click the
+source module and go to Run As > Model.
+3. Upload the target model to the server: In the GO-BPMN Explorer right-click the module and go to Upload As
+> Model.
+4. Switch to the Management perspective.
+5. Refresh the Module Management and Model Instances view and check that both models are uploaded and
+the source model is instantiated.
+
+70 Model-Update Tutorials
+6. In the Model Instances view, open the detail of the source-model instance and check the values of the global
+variables.
+Figure 6.3 Detail of the old model with old global variables
+7. Perform the update:
+(a) In the Model Instances view, click the Model Update ( ).
+(b) In the Model Update dialog window, provide the path to your muc ﬁle in the Conﬁguration ﬁle ﬁeld and
+click Next.
+(c) In the refreshed dialog, check that the model instance is listed and selected in the Filtered Model
+Instances section and click Next. Check the summary of the model update and click Finish.
+(d) Refresh the Model Instances view: The model instance should be in the Updated status.
+(e) Display the detail of the model instance.
+Figure 6.4 Detail View of the Updated Model Instance with New Global Variables
+Note that the variables hold now the values deﬁned by their transformation expression.
+
+6.1 Model Update Examples 71
+6.1.2 Updating a Task Parameter
+Required action: Perform model update to a new model with changed task Parameters and have a post process log
+information about the update.
+For this scenario, you should consider whether the task can be instantiated at the moment the model update is
+started or when the model instance is started after update:
+• A task cannot be instantiated if it is atomic since it cannot be holding the token at that moment. Such tasks
+include the Log, Assign, Lock Task, etc. Changes on such tasks are considered as a removal of the old
+task and adding of a new task.
+• A task can be instantiated when its task type requires asynchronous or multi-step execution, or waits for
+an event. These are tasks that can hold an execution token and become a transaction border. Such
+task types include the User, HttpCall, Web Service Client, and Server Tasks of the Standard Library and
+possibly custom tasks.
+For these tasks, you need to deﬁne their transformation strategy so that if such a task is running at the
+moment you start the model update, or it will be running after the model instance starts after model update,
+the task is handled according to the transformation strategy. The strategy can be either restart or continue:
+– If the strategy is set to restart, the task ignores its old context and restarts as a new task.
+– If the strategy is set to continue, the task continues in its old context.
+Let us update the Performers and Form parameter of a User Task. We will change the following:
+• Perfomers
+{anyPerformer()} will be changed in the new model to {getPerson("admin")}
+• Underlying Form
+The form content will be changed in the new model.
+We will consider the outcome of both the restart and continue strategy.
+Proceed as follows:
+1. Design the old model as a module with a process and deﬁne its form deﬁnition with arbitrary content.
+
+72 Model-Update Tutorials
+Figure 6.5 Old model
+2. Design the new model: Copy and paste the old module and modify the Performers parameter of the User
+Task and modify the content of its form deﬁnition.
+
+6.1 Model Update Examples 73
+Figure 6.6 New model
+3. Create the .muc ﬁle: Right-click the parent project, go to New > Model Update Conﬁguration and follow
+the instructions.
+4. Open the .muc ﬁle and on the Processes page locate the task parameter: The transformation strategy is set
+to Continue by default.
+
+74 Model-Update Tutorials
+Figure 6.7 Model update conﬁguration with the parameter change
+Note that no changes on the form are detected since forms do not require any special handling on model
+update but are simply substituted with their new version.
+5. Deﬁne a post process on the module that will log a message:
+(a) In the .muc ﬁle, right-click the new module and click Create Post-process.
+i. On the opened page, design the post process with a Log Task.
+ii. Deﬁne the message parameter of the Log Task.
+
+6.1 Model Update Examples 75
+Figure 6.8 Post-Process
+Make sure the transformation strategies on the module, process, and task of your muc ﬁle are set
+to Continue. This is the default transformation strategy.
+To perform the model update, do the following:
+1. Make sure your server with the Execution Engine, possibly on the PDS or SDK Embedded Server, is running
+and your PDS is connected to it.
+2. Upload the model to the server and create a model instance of the old model: In the GO-BPMN Explorer,
+right-click the old module and go to Run As > Model.
+3. Upload the new model to the server: In the GO-BPMN Explorer right-click the new module and go to Upload
+As > Model.
+4. Switch to the Management perspective.
+
+76 Model-Update Tutorials
+Figure 6.9 Management perspective with an instance of the old model
+5. Refresh the Module Management and Model Instances view and check that both models are uploaded and
+the source model is instantiated.
+6. Go to the Application User Interface and lock the generated to-do:
+(a) Open a browser and go to http://DOMAIN/lsps-application/
+(b) Log in as the user guest (By default, the password is set to guest for the guest user).
+(c) Click TO-DO LIST.
+(d) Open the to-do, which was generated by the old model instance.
+(e) With the to-do content displayed, log out, so the guest user locks the to-do.
+7. Back in the Management perspective, perform the update:
+(a) In the Model Instances view, click the Model Update ( ).
+(b) In the Model Update dialog window, provide the path to your muc ﬁle in the Conﬁguration ﬁle ﬁeld and
+click Next.
+(c) In the refreshed dialog, check that the model instance is listed and selected in the Filtered Model
+Instances section and click Next. Check the summary of the model update and click Finish.
+(d) Refresh the Model Instances view: The model instance should be in the Updated status. If the model
+instance is in the Pre-processes state, hit the Refresh button again.
+If the model instance is in the Pre-processes state, hit the Refresh button again. The model instance
+is still suspended: If you check the to-do list of the guest user, the to-do is not available since the user
+task is suspended.
+(e) Check the Log view for the log message of the post-process.
+
+6.1 Model Update Examples 77
+Figure 6.10 Log view with the post-process log message
+(f) Select the model instance and click Resume ( ) button. The model instance becomes Running.
+8. Go to the Application User Interface as the guest user. The to-do list of the guest user still contains the locked
+to-do in spite of the fact that the new model allows only the admin user as the to-do performer. However, its
+content already follows the form of the new model.
+Set the transformation strategy on the User Task of your muc ﬁle to Restart. Leave the strategy on the parent
+process and module set to Continue and perform the model update anew. The to-do will be discarded.
+Note: If you set the strategy on the parent process and module to Restart, the entire process/module
+will be discarded on update and a new process/module will be instantiated.
+6.1.3 Updating an Event Type
+Required action: Update a model instance so that its None Start Event is changed to a Conditional Start Event and
+Timer Intermediate Event changes in a Conditional Intermediate Event.
+A change of an event type does not allow to deﬁne any pre- or post-processing on the event, or a transformation
+expression since the change is detected as a removal of the old event and addition of the new event. If required,
+deﬁne model-update processes on the parent modules and process.
+1. Design the old model with a process deﬁnition:
+(a) Create a module with the old process.
+
+78 Model-Update Tutorials
+(b) Create a process deﬁnition with a None Start Event, a Conditional Flow Event, and a Simple End Event.
+(c) Set the Delay parameter of the Timer Intermediate Event, for example, to new Duration(years
+-> 1).
+2. Design the new model: copy and paste the old module, change the None Start Event to a Conditional Start
+Event and the Timer Intermediate Event to Conditional Intermediate Event, and set their condition, for exam-
+ple, to false.
+3. Create the .muc ﬁle:
+(a) Right-click the parent project, go to New > Model Update Conﬁguration and follow the wizard.
+(b) Open the .muc ﬁle and on the Process page and check the element mapping.
+The change mapping might be incorrect as shown in Model Update Conﬁguration with Incorrect Map-
+ping: The newUpdateEventType Process is recognized as a new Process, while we want it to be
+mapped to the oldUpdateEventType Process.
+Figure 6.11 Model Update Conﬁguration with Incorrect Mapping
+(c) Rigth-click the element and adjust the mapping if needed.
+
+6.1 Model Update Examples 79
+Figure 6.12 Model Update Conﬁguration with Corrected Mapping
+The transformation strategies on the Process is set to Continue. This is the default transformation
+strategy. If we used the Restart strategy, the process would be restarted on update if on the element at
+the given moment.
+To perform the model update, do the following:
+1. Make sure your server with the Execution Engine, possibly on the PDS or SDK Embedded Server, is running
+and your PDS is connected to it.
+2. Upload the model to the server and create a model instance of the old model: In the GO-BPMN Explorer,
+right-click the old module and go to Run As > Model.
+3. Upload the new model to the server: In the GO-BPMN Explorer right-click the new module and go to Upload
+As > Model.
+4. Switch to the Management perspective.
+5. Refresh the Module Management and Model Instances view and check that both models are uploaded and
+the source model is instantiated.
+6. Switch to the Management perspective.
+7. Refresh the Module Management and Model Instances view and check that the old model is instantiated and
+the new model uploaded.
+8. IntheModelInstancesview, openthedetailofyouroldmodelandchecktheexecutiondiagramoftheprocess.
+Figure 6.13 Execution Diagram of the Old Model Instance
+
+80 Model-Update Tutorials
+9. Perform the update:
+(a) In the Model Instances view, click the Model Update ( ) button.
+(b) In the Model Update dialog window, provide the path to your muc ﬁle in the Conﬁguration ﬁle ﬁeld and
+click Next.
+(c) In the refreshed dialog, do not apply any ﬁltering, just click Next so that any available instances of the
+old model are updated (in this case, exactly one model instance is running).
+(d) Check the summary of the model update and click Finish.
+(e) Refresh the Model Instances view: The model instance should be in the Updated status.
+(f) Click the Continue ( ) button to trigger the execution of the updated model instance.
+10. Check the execution diagram of the updated model instance.
+Figure 6.14 Execution Diagram of the Updated Model Instance
+Note that the execution remains on the new Conditional Event.
+Now set the transformation strategies on the process to Restart so the Process is restarted on update if on the
+event. Perform model update as described above: The execution remains on the new Conditional Start Event since
+the process instance was restarted.
+6.1.4 Updating a Data Type
+Required action: Update a model instance with a changed data type of a record property.
+Important: Itisnotrecommendedtoupdatesharedrecordsviamodelupdatesincechangesonshared
+records are reﬂected on the database. While it is safe to add a new ﬁeld to a shared record and remove
+not-nullable ﬁelds using model update, modiﬁcations to ﬁelds, such as modiﬁcation of their data types,
+might result in corrupted database schema or data loss. It is recommended to migrate the database
+directly, not via update of shared records.
+When you are updating a model instance to a model with changed non-shared record types, all record instances
+will be updated according to the transformation expression.
+We will update a model instance's data hierarchy as follows:
+
+6.1 Model Update Examples 81
+Figure 6.15 Old and new data type models
+The data type update will involve the following changes:
+• The ISBN record is removed: No further actions are required.
+• The Book.isbn ﬁeld is changed from the ISBN type to String: The new isbn ﬁeld must concatenate and format
+the old instance of ISBN for the given Book instance.
+• The keyword ﬁeld is changed from a string to a list of strings and renamed to keywords: The new keywords
+ﬁeld should import the old keyword string.
+1. Design the old model with a process deﬁnition, variable deﬁnition, and data type deﬁnition as shown in Old
+model for data type update:
+(a) Create a module with the old data type hierarchy with the Book and ISBN records.
+(b) Create a global variable deﬁnition with a bookSet variable of type Set<Book> and a book variable of
+type Book.
+(c) Create a process deﬁnition with a None Start Event, a Conditional Flow Event, and a Simple End Event.
+(d) On the ﬂow from the None Start Event deﬁne an assignment expression that creates three Book in-
+stances assigned to the bookSet global variable:
+bookSet := {
+new Book(title -> "Brave New World",
+isbn -> new ISBN(ean -> 978, group -> 1, publisher -> 85399, title -> 393, checkDigit -> 0),
+keyword -> "science fiction"),
+
+82 Model-Update Tutorials
+new Book(title -> "Catch-22",
+isbn -> new ISBN(ean -> 978, group -> 1, publisher -> 4055, title -> 387, checkDigit -> 7),
+keyword -> "army"),
+book := new Book(title -> "Brave New World",
+isbn -> new ISBN(ean -> 978, group -> 1, publisher -> 85399, title -> 393, checkDigit -> 0),
+keyword -> "science fiction")
+}
+(e) Set the Condition parameter on the Conditional Flow Event to false. The Conditional Flow Event will
+hold the execution so that the process creates the record instances and then remains running.
+Figure 6.16 Old model
+2. Design the new model: copy and paste the old model, modify the data type model, and remove the assign-
+ment expression on the ﬂow.
+3. Create the .muc ﬁle:
+(a) Right-click the parent project, go to New > Model Update Conﬁguration and follow the wizard.
+(b) Open the .muc ﬁle and on the Data Types page and deﬁne the transformation expressions for the isbn
+record ﬁeld and the new keywords ﬁeld:
+• isbn:
+toString(old("isbn.ean")) + "-" +
+old("isbn.group") + "-" +
+old("isbn.publisher") + "-" +
+old("isbn.title") + "-" +
+old("isbn.checkDigit")
+This expression will take individual ﬁelds from the old record and concatenate them into a new
+hyphenated isbn value.
+
+6.1 Model Update Examples 83
+• keywords: [old("keyword")] This expression will take the keyword string and add it to a new
+list of keywords.
+Figure 6.17 Model Update Conﬁguration with the Data Type Changes
+To perform the model update, do the following:
+4. Make sure your server with the Execution Engine, possibly on the PDS or SDK Embedded Server, is running
+and your PDS is connected to it.
+5. Upload the model to the server and create a model instance of the old model: In the GO-BPMN Explorer,
+right-click the old module and go to Run As > Model.
+6. Upload the new model to the server: In the GO-BPMN Explorer right-click the new module and go to Upload
+As > Model.
+7. Switch to the Management perspective.
+8. Refresh the Module Management and Model Instances view and check that both models are uploaded and
+the source model is instantiated.
+9. IntheModelInstancesview, openthedetailofyouroldmodelandchecktheexecutiondiagramoftheprocess.
+
+84 Model-Update Tutorials
+Figure 6.18 Detail of the Old Model with Old Global Variables
+10. Perform the update:
+(a) In the Model Instances view, click the Model Update ( ) button.
+(b) In the Model Update dialog window, provide the path to your muc ﬁle in the Conﬁguration ﬁle ﬁeld and
+click Next.
+(c) In the refreshed dialog, do not apply any ﬁltering, just click Next so that any available instances of the
+old model are updated (in this case, exactly one model instance is running).
+(d) Check the summary of the model update and click Finish.
+(e) Refresh the Model Instances view: The model instance should be in the Updated status.
+(f) Select the model instance and click Resume ( ). The model instance becomes Running.
+11. Check the Log view for the log message of the post-process.
+Figure 6.19 Detail View of the Updated Model Instance with New Global Variables
+
+6.1 Model Update Examples 85
+The variables hold values of the new data types: the record values were transformed according to the transformation
+expression deﬁned for the data types.
+
+86 Model-Update Tutorials
+
+Chapter 7
+Deploy LSPS Application on a Local Server
+In this tutorial, you set up a MySQL database with LSPS tables, set up the WildFly server, deploy the LSPS Appli-
+cation to the WildFly server, and connect to the server from PDS. We assume you are on Linux.
+Important: This environment is not intended for production. For simplicity, resources are set up in the
+home directory and no security aspects are taken into consideration. More detailed deploy instructions
+are available in the Deployment Guide.
+You will need the following:
+• MySQL (version 5.7.23)
+• JDBC driver for MySQL
+• WildFly (WildFly 11)
+• lsps-runtime (requires licensed)
+7.1 Setting up Local MySQL Database
+1. Install MySQL: make sure to perform this as the administrator on Windows.
+2. Log in as root user:
+mysql -u root -p
+3. Create LSPS database and user:
+CREATE USER ’lsps’@localhost;
+CREATE DATABASE lsps DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+GRANT ALL PRIVILEGES ON lsps.* TO lsps@’’ IDENTIFIED BY ’lsps’;
+FLUSH PRIVILEGES;
+4. In the [mysqld] section of the mysqld.conf ﬁle, add max_allowed_packet=512M. On Windows, de-
+ﬁne this in your C:\ProgramData\MySQL\MySQL Server 5.7\my.ini in the mysql installation
+directory.
+$ grep max_allowed /etc/mysql/mysql.conf.d/mysqld.cnf
+max_allowed_packet = 512M
+
+88 Deploy LSPS Application on a Local Server
+5. Initialize the database with the migrate.sh script from lsps-runtime/db-migration.
+./migrate.sh databaseUrl:jdbc:mysql://localhost/lsps user:lsps password:lsps
+Initialized Database
+mysql> USE lsps;
+Database changed
+mysql> SHOW TABLES;
++--------------------------------+
+| Tables_in_lsps |
++--------------------------------+
+| LSPS_ACTIVE_USERS_TRACK |
+| LSPS_BINARY_DATA |
+| LSPS_BINARY_DATA_METADATAS |
+| LSPS_DASHBOARD_TABS |
+...
+7.2 Setting up Local WildFly
+1. Download WildFly and extract to your home.
+~$ unzip Downloads/wildfly-11.0.0.Final.zip
+~$ mv wildfly-11.0.0.Final/ wildfly
+2. Set up JAVA_HOME and add JAVA_HOME/bin to PATH.
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export PATH=$JAVA_HOME/bin:$PATH
+3. Set up data source for the MySQL database:
+(a) Add JDBC driver:
+~$ cd Downloads
+~/Downloads/$ unzip mysql-connector-java-5.1.46.zip
+~$ cd ..; mkdir -p wildfly/modules/com/mysql/main
+~$ cp Downloads/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar wildfly/modules/com/mysql/main/mysql-connector-java.jar
+(b) Conﬁgure the driver in wildﬂy/modules/com/mysql/main/module.xml.
+~$ cat wildfly/modules/com/mysql/main/module.xml
+<module xmlns="urn:jboss:module:1.0" name="com.mysql">
+<resources>
+<resource-root path="mysql-connector-java.jar"/>
+</resources>
+<dependencies>
+<module name="javax.api"/>
+<module name="javax.transaction.api"/>
+</dependencies>
+</module>
+(c) Add the authentication jar:
+~$ mkdir -p wildfly/modules/com/whitestein/lsps/security/main
+~$ cp ~/Downloads/lsps-runtime/lsps-security-jboss-3.2.jar wildfly/modules/com/whitestein/lsps/security/main/lsps-security-jboss.jar
+(d) Conﬁgure the authentication module:
+
+7.2 Setting up Local WildFly 89
+cat wildfly/modules/com/whitestein/lsps/security/main/module.xml
+<module xmlns="urn:jboss:module:1.0" name="com.whitestein.lsps.security">
+<resources>
+<resource-root path="lsps-security-jboss.jar"/>
+</resources>
+<dependencies>
+<module name="javax.api"/>
+<module name="javax.transaction.api"/>
+<module name="org.picketbox" />
+</dependencies>
+</module>
+4. Create the admin user for WildFly:
+~$ ./wildfly/bin/add-user.sh -u admin -p admin
+5. Set up proﬁle conﬁguration in wildfly/standalone/configuration/standalone-full.←↩
+xml:
+• Add LSPS_DS transaction datasource that connects to your lsps database:
+<datasources>
+<!-- ADDED: -->
+<xa-datasource jndi-name="java:/jdbc/LSPS_DS" pool-name="LSPS_DS" enabled="true" use-java-context="false">
+<xa-datasource-property name="URL">
+jdbc:mysql://localhost:3306/lsps
+</xa-datasource-property>
+<driver>mysqlxa</driver>
+<transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+<xa-pool>
+<min-pool-size>10</min-pool-size>
+<max-pool-size>20</max-pool-size>
+<prefill>true</prefill>
+</xa-pool>
+<security>
+<user-name>lsps</user-name>
+<password>lsps</password>
+</security>
+</xa-datasource>
+• Add driver connection:
+<drivers>
+<driver name="h2" module="com.h2database.h2">
+<xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+</driver>
+<!-- ADDED: --_>
+<driver name="mysqlxa" module="com.mysql">
+<xa-datasource-class>com.mysql.cj.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+</driver>
+• Add the security realm to the security subsystem:
+<subsystem xmlns="urn:jboss:domain:security:2.0">
+<security-domains>
+<security-domain name="lspsRealm" cache-type="default">
+<authentication>
+<login-module code="com.whitestein.lsps.security.jboss.LSPSRealm" flag="required" module="com.whitestein.lsps.security">
+<module-option name="dsJndiName" value="/jdbc/LSPS_DS"/>
+</login-module>
+</authentication>
+</security-domain>
+• Prolong the locking isolation on the web cache container:
+<cache-container name="web" default-cache="passivation" module="org.wildfly.clustering.web.infinispan">
+<local-cache name="passivation">
+<locking isolation="REPEATABLE_READ" acquire-timeout="600000"/>
+
+90 Deploy LSPS Application on a Local Server
+• Add mail session LSPS_MAIL:
+<mail-session name="lspsmail" jndi-name="java:jboss/mail/LSPS_MAIL">
+<smtp-server outbound-socket-binding-ref="mail-smtp"/>
+</mail-session>
+• Conﬁgure JMS:
+– Enablepersistenceonjms<subsystem xmlns="urn:jboss:domain:messaging-activemq←↩
+:2.0">:
+<server name="default" persistence-enabled="true">
+– Add queue and topic:
+<jms-queue name="LSPS_QUEUE" entries="java:jboss/jms/LSPS_QUEUE"/>
+<jms-topic name="LSPS_TOPIC" entries="java:jboss/jms/LSPS_TOPIC"/>
+6. Adjust JAVA_OPTS:
+• On Linux, in wildﬂy/bin/standalone.conf:
+~$ cat wildfly/bin/standalone.conf
+if [ "x$JBOSS_MODULES_SYSTEM_PKGS" = "x" ]; then
+JBOSS_MODULES_SYSTEM_PKGS="org.jboss.byteman"
+fi
+if [ "x$JAVA_OPTS" = "x" ]; then
+JAVA_OPTS="-Xms64m -Xmx800M -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true"
+JAVA_OPTS="$JAVA_OPTS -Djboss.server.default.config=standalone-full.xml"
+JAVA_OPTS="$JAVA_OPTS -Dorg.eclipse.emf.ecore.EPackage.Registry.INSTANCE=org.eclipse.emf.ecore.impl.EPackageRegistryImpl"
+JAVA_OPTS="$JAVA_OPTS -Dorg.apache.el.parser.COERCE_TO_ZERO=false"
+JAVA_OPTS="$JAVA_OPTS -Dcom.whitestein.lsps.vaadin.ui.debug=true"
+else
+echo "JAVA_OPTS already set in environment; overriding default settings with values: $JAVA_OPTS"
+fi
+• On Windows, add at the end of wildﬂy/bin/standalone.conf.bat:
+set "JAVA_OPTS=-Xms64m -Xmx800M -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true"
+rem # ADD THE FOLLOWING:
+set "JAVA_OPTS=%JAVA_OPTS% -Djboss.server.default.config=standalone-full.xml"
+set "JAVA_OPTS=%JAVA_OPTS% -Dorg.eclipse.emf.ecore.EPackage.Registry.INSTANCE=org.eclipse.emf.ecore.impl.EPackageRegistryImpl"
+set "JAVA_OPTS=%JAVA_OPTS% -Dorg.apache.el.parser.COERCE_TO_ZERO=false"
+7. Deploy the ear with LSPS Application: here we deploy the default ear from lsps-runtime.
+cp ~/Downloads/lsps-runtime/lsps-application-3.2.ear ~/wildfly/standalone/deployments/
+8. Start the server:
+~/wildfly/bin$ ./standalone.sh
+7.3 Connecting to Local WildFly from PDS
+To connect your PDS to the server, do the following:
+1. In the Modeling perspective of PDS, go to Server Connection > Server Connection Settings
+2. In the dialog, click Add.
+3. Enter the connection properties and test the connection.
+
+7.3 Connecting to Local WildFly from PDS 91
+4. Make sure the connection is selected in the Server Connections.
+5. In the status bar, check that the connection is active.
+Now you can use the management perspective to "communicate" with the LSPS Application on your
+server.
+
+92 Deploy LSPS Application on a Local Server

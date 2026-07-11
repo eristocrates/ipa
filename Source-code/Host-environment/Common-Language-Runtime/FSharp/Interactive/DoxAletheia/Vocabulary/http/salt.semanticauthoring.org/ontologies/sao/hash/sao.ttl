@@ -1,0 +1,44 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sao: <http://salt.semanticauthoring.org/ontologies/sao#>.
+@prefix sdo: <http://salt.semanticauthoring.org/ontologies/sdo#>.
+@prefix w3: <http://www.w3.org/>.
+
+sao:Annotation a rdfs:Class;
+               rdfs:label "Annotation";
+               rdfs:subClassOf rdfs:Resource.
+sao:CitationContext a rdfs:Class;
+                    rdfs:label "CitationContext";
+                    rdfs:subClassOf sao:Annotation.
+sao:annotates a rdf:Property;
+              rdfs:domain sao:Annotation;
+              rdfs:label "annotates";
+              rdfs:range sdo:TextChunk,
+                         sdo:Sentence,
+                         sdo:Section,
+                         sdo:Paragraph.
+sao:cites a rdf:Property;
+          rdfs:domain sdo:Publication;
+          rdfs:label "cites";
+          rdfs:range sdo:Publication.
+sao:hasCitationContext a rdf:Property;
+                       rdfs:domain sdo:Publication;
+                       rdfs:label "hasCitationContext";
+                       rdfs:range sao:CitationContext.
+sao:hasCitationKey a rdf:Property;
+                   rdfs:domain sdo:Publication;
+                   rdfs:label "hasCitationKey";
+                   rdfs:range rdfs:Literal.
+sao:hasTopic a rdf:Property;
+             rdfs:domain sao:Annotation;
+             rdfs:label "hasTopic";
+             rdfs:range rdfs:Resource.
+sao:isCitedBy a rdf:Property;
+              rdfs:domain sdo:Publication;
+              rdfs:label "isCitedBy";
+              rdfs:range sdo:Publication.
+sao:pointsTo a rdf:Property;
+             rdfs:domain sao:CitationContext;
+             rdfs:label "pointsTo";
+             rdfs:range sdo:Publication.

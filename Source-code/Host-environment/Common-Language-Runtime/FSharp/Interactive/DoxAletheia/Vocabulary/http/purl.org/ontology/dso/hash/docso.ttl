@@ -1,0 +1,80 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gr: <http://purl.org/goodrelations/v1#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix daia: <http://purl.org/ontology/daia/>.
+@prefix service: <http://purl.org/ontology/service#>.
+@prefix ssso: <http://purl.org/ontology/ssso#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix docso: <http://purl.org/ontology/dso#>.
+@prefix schema: <http://schema.org/>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+<http://purl.org/ontology/dso> ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
+                               dcterms:creator "Jakob Voß";
+                               dcterms:description "A micro-ontology that defines a set of typical document-related services such as provided by libraries, museums and archives."@en;
+                               dcterms:modified "2013-12-05"^^xsd:date;
+                               dcterms:title "Document Service Ontology";
+                               vann:preferredNamespacePrefix "dso";
+                               vann:preferredNamespaceUri "http://purl.org/ontology/dso#";
+                               a owl:Ontology,
+                                 voaf:Vocabulary;
+                               rdfs:label "DSO";
+                               owl:versionInfo "0.6.5rev1".
+docso:DocumentService a owl:Class;
+                      rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                      rdfs:label "DocumentService"@en;
+                      rdfs:seeAlso schema:Offer,
+                                   ssso:ServiceEvent,
+                                   gr:Offering;
+                      rdfs:subClassOf service:Service;
+                      status:term_status "testing".
+docso:Interloan a owl:Class;
+                rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                rdfs:label "Interloan"@en;
+                rdfs:subClassOf docso:DocumentService;
+                status:term_status "testing".
+docso:Loan a owl:Class;
+           rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+           rdfs:label "Loan"@en;
+           rdfs:subClassOf docso:DocumentService;
+           status:term_status "testing".
+docso:OpenAccess a owl:Class;
+                 rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                 rdfs:label "OpenAccess"@en,
+                            "Digitization"@en;
+                 rdfs:subClassOf docso:DocumentService;
+                 status:term_status "unstable",
+                                    "testing".
+docso:Presentation a owl:Class;
+                   rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                   rdfs:label "Presentation"@en;
+                   rdfs:subClassOf docso:DocumentService;
+                   status:term_status "testing".
+docso:hasDocument a owl:ObjectProperty;
+                  rdfs:domain docso:DocumentService;
+                  rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                  rdfs:label "hasDocument"@en;
+                  rdfs:seeAlso daia:availableFor,
+                               bibo:Document,
+                               foaf:Document,
+                               daia:unavailableFor;
+                  owl:inverseOf docso:hasService;
+                  status:term_status "testing".
+docso:hasService a owl:ObjectProperty;
+                 rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                 rdfs:label "hasService"@en;
+                 rdfs:range docso:DocumentService;
+                 rdfs:seeAlso daia:unavailableFor,
+                              bibo:Document,
+                              foaf:Document,
+                              daia:availableFor;
+                 owl:inverseOf docso:hasDocument;
+                 status:term_status "testing".

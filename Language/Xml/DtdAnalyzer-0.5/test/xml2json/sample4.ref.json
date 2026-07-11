@@ -1,0 +1,66 @@
+{
+    "header": {
+        "type": "sample4",
+        "version": "0.3"
+    },
+    "result": [
+        {
+            "uids": [
+                "284822047"
+            ],
+            "status": "OK",
+            "284822047": {
+                "uid": "284822047",
+                "title": "Cat [Donor vector pTKIP-cat]",
+                "gi": 284822047,
+                "statistics": [
+                    {
+                        "type": "all",
+                        "count": 4
+                    },
+                    {
+                        "type": "blob_size",
+                        "count": 5964
+                    }
+                ],
+                "properties": {
+                    "aa": 2,
+                    "qual": 32,
+                    "value": "34"
+                },
+                "moreprops": {
+                    "indexed": true,
+                    "prop": "ADB98021.1"
+                },
+                "booleans": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    true,
+                    true,
+                    true
+                ],
+                "test1": [
+                    "fleegle",
+                    "bingo",
+                    "drooper",
+                    "snorky"
+                ],
+                "test2": {
+                    "a2a": "guitar",
+                    "a2b": "violin",
+                    "c2a": "bingo",
+                    "c2b": "drooper",
+                    "c2cs": [
+                        "snorky",
+                        "drooper"
+                    ]
+                },
+                "a3a": "foo",
+                "c3a": "bar",
+                "c3b": "buzz"
+            }
+        }
+    ]
+}

@@ -1,0 +1,114 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix imo: <http://imgpedia.dcc.uchile.cl/ontology#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix planet: <http://dbpedia.org/>.
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/>.
+@prefix ogp: <http://ogp.me/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+imo:CLD a owl:Class;
+        rdfs:label "Color Layout Descriptor"@en,
+                   "Descriptor de la Distribución del Color"@es;
+        rdfs:subClassOf imo:Descriptor.
+imo:Descriptor a owl:Class;
+               rdfs:label "Descriptor"@en,
+                          "Descriptor"@es.
+imo:GHD a owl:Class;
+        rdfs:label "Gray Histogram Descriptor"@en,
+                   "Histograma de Grises"@es;
+        rdfs:subClassOf imo:Descriptor.
+imo:HOG a owl:Class;
+        rdfs:label "Histogram of Oriented Gradient"@en,
+                   "Histograma de Orientación del Gradiente"@es;
+        rdfs:subClassOf imo:Descriptor.
+imo:Image a owl:Class;
+          rdfs:label "Image"@en,
+                     "Imagen"@es;
+          rdfs:subClassOf dbpedia-owl:StillImage,
+                          schema:ImageObject.
+imo:ImageRelation a owl:Class;
+                  rdfs:label "Image Relation"@en,
+                             "Relación entre Imágenes"@es.
+imo:appearsIn a owl:ObjectProperty;
+              rdfs:domain imo:Image;
+              rdfs:label "Tha image appears in the resource"@en,
+                         "La imagen aparece en el recurso"@es;
+              rdfs:range owl:Thing;
+              rdfs:subPropertyOf dbpedia-owl:related.
+imo:describes a owl:ObjectProperty;
+              rdfs:domain imo:Descriptor;
+              rdfs:label "Describes an image"@en,
+                         "Descriptor de una imagen"@es;
+              rdfs:range imo:Image.
+imo:distance a owl:DatatypeProperty;
+             rdfs:domain imo:ImageRelation;
+             rdfs:label "The distance between the images in the relation"@en,
+                        "La distancia entre las imágenes de la relación"@es;
+             rdfs:range xsd:float.
+imo:fileURL a owl:ObjectProperty;
+            rdfs:domain imo:Image;
+            rdfs:label "The URL of the image in Wikimedia Commons"@en,
+                       "La URL de la imagen en Wikimedia Commons"@es;
+            rdfs:subPropertyOf ogp:image.
+imo:height a owl:DatatypeProperty;
+           rdfs:domain imo:Image;
+           rdfs:label "Image height in pixels"@en,
+                      "Altura de la imagen en unidades de pixel"@es;
+           rdfs:range xsd:integer;
+           rdfs:subPropertyOf schema:height,
+                              ogp:image:height.
+imo:similar a owl:ObjectProperty;
+            rdfs:domain imo:Image;
+            rdfs:label "A similar image"@en,
+                       "Una imagen similar"@es;
+            rdfs:range imo:Image;
+            rdfs:subPropertyOf dbpedia-owl:similar.
+imo:sourceImg a owl:ObjectProperty;
+              rdfs:domain imo:ImageRelation;
+              rdfs:label "The source of an image relation"@en,
+                         "El sujeto de la relación entre imágenes"@es;
+              rdfs:range imo:Image.
+imo:targetImg a owl:ObjectProperty;
+              rdfs:domain imo:ImageRelation;
+              rdfs:label "The target of an image relation"@en,
+                         "El objeto de la relación entre imágenes"@es;
+              rdfs:range imo:Image.
+imo:usesDescriptor a owl:ObjectProperty;
+                   rdfs:domain imo:ImageRelation;
+                   rdfs:label "The descriptor used in the relation"@en,
+                              "El descriptor usado en la relación"@es;
+                   rdfs:range imo:Descriptor.
+imo:value a owl:DatatypeProperty;
+          rdfs:domain imo:Descriptor;
+          rdfs:label "Descriptor value"@en,
+                     "Valor del descriptor"@es;
+          rdfs:range xsd:string;
+          rdfs:subPropertyOf rdf:value.
+imo:width a owl:DatatypeProperty;
+          rdfs:domain imo:Image;
+          rdfs:label "Image width in pixels"@en,
+                     "Ancho de la imagen en unidades de pixel"@es;
+          rdfs:range xsd:integer;
+          rdfs:subPropertyOf schema:width,
+                             ogp:image:width.
+<http://njh.me/> ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
+                 dcterms:creator <http://aidanhogan.com/foaf.rdf#me>,
+                                 <http://scferrada.github.io/rdf/foaf.ttl#me>;
+                 dcterms:issued "2016-05-06"^^xsd:date;
+                 dcterms:modified "2018-01-12"^^xsd:date;
+                 vann:preferredNamespacePrefix "imo";
+                 vann:preferredNamespaceUri "http://imgpedia.dcc.uchile.cl/ontology#"^^xsd:anyURI;
+                 a owl:Ontology,
+                   voaf:Vocabulary;
+                 rdfs:comment "The IMGpedia Ontology provides terms to describe descriptors and similarity relations between images"@en,
+                              "La Ontologia de IMGpedia provee terminos para referirse a descriptores visuales y relaciones de similitud entre imagenes"@es;
+                 rdfs:label "The IMGpedia Ontology"@en,
+                            "La Ontología de IMGpedia"@es.

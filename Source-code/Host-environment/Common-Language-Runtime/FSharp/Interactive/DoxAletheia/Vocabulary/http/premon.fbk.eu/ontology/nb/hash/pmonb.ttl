@@ -1,0 +1,140 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix pmo: <http://premon.fbk.eu/ontology/core#>.
+@prefix pmonb: <http://premon.fbk.eu/ontology/nb#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://premon.fbk.eu/ontology/nb> dcterms:creator "Francesco Corcoglioniti",
+                                                   "Marco Rospocher <https://dkm.fbk.eu/rospocher>";
+                                   dcterms:description <http://premon.fbk.eu/images/nb.svg>,
+                                                       """The NomBank module of the PreMOn ontology defines [pmonb:Roleset](http://premon.fbk.eu/ontology/nb#Roleset) and [pmonb:SemanticRole](http://premon.fbk.eu/ontology/nb#SemanticRole) as subclasses of [pmo:SemanticClass](http://premon.fbk.eu/ontology/core#SemanticClass) and [pmo:SemanticRole](http://premon.fbk.eu/ontology/core#SemanticRole), respectively.
+
+Each [pmonb:SemanticRole](http://premon.fbk.eu/ontology/nb#SemanticRole) instance is related (via property [pmonb:argument](http://premon.fbk.eu/ontology/nb#argument)) to exactly one [pmonb:Argument](http://premon.fbk.eu/ontology/nb#Argument), which is defined as the disjoint union of two subclasses: 
+
+* [pmonb:NumberedArgument](http://premon.fbk.eu/ontology/nb#NumberedArgument), containing the individuals corresponding to numbered argument (e.g., *Arg0*, *Arg1*); and, 
+* [pmonb:Modifier](http://premon.fbk.eu/ontology/nb#Modifier), containing the individuals corresponding to modifiers (e.g., *ArgM-LOC*, *ArgM-TMP*).
+
+We also define class [pmonb:Tag](http://premon.fbk.eu/ontology/nb#Tag) to capture (via property [pmonb:tag](http://premon.fbk.eu/ontology/nb#tag)) some specific annotations of markables (e.g., *PRD*, *REF*, *SUPPORT*) in the examples."""@en;
+                                   dcterms:issued "2015-10-28"^^xsd:date;
+                                   dcterms:license <http://creativecommons.org/licenses/by-sa/4.0/>;
+                                   dcterms:modified "2017-05-01"^^xsd:date;
+                                   dcterms:publisher "DKM, Fondazione Bruno Kessler <http://dkm.fbk.eu/>";
+                                   dcterms:rights "This ontology is licensed under CC-BY-SA <http://creativecommons.org/licenses/by-sa/4.0/>"@en;
+                                   dcterms:title "Predicate Model for Ontologies (PreMOn) - NomBank ontology module"@en;
+                                   vann:preferredNamespacePrefix "pmonb";
+                                   vann:preferredNamespaceUri "http://premon.fbk.eu/ontology/nb#";
+                                   a owl:Ontology;
+                                   rdfs:comment "The NomBank module of the PreMOn ontology extends the core module for representing concepts specific to NomBank. The modelling is based on the [NomBank Specifications](http://nlp.cs.nyu.edu/meyers/nombank/nombank-specs-2007.pdf)."@en;
+                                   rdfs:isDefinedBy <http://premon.fbk.eu/ontology/nb.ttl>;
+                                   owl:imports <http://premon.fbk.eu/ontology/core>,
+                                               <http://www.w3.org/ns/lemon/ontolex>;
+                                   owl:versionInfo "2017a".
+pmonb:Argument a owl:Class;
+               rdfs:label "Argument (NB)"@en;
+               rdfs:subClassOf skos:Concept;
+               owl:equivalentClass [owl:unionOf (pmonb:Modifier
+                                                 pmonb:NumberedArgument) ; 
+                                    a owl:Class].
+pmonb:Modifier a owl:Class;
+               rdfs:label "Modifier (NB)"@en;
+               rdfs:subClassOf [owl:oneOf (pmonb:argm-cau
+                                           pmonb:argm-tmp
+                                           pmonb:argm-dis
+                                           pmonb:argm-dir
+                                           pmonb:argm-prd
+                                           pmonb:argm-ext
+                                           pmonb:argm-mnr
+                                           pmonb:argm-loc
+                                           pmonb:argm-neg
+                                           pmonb:argm-pnc
+                                           pmonb:argm-adv) ; 
+                                a owl:Class],
+                               pmonb:Argument;
+               owl:disjointWith pmonb:NumberedArgument.
+pmonb:NumberedArgument a owl:Class;
+                       rdfs:label "Numbered Argument (NB)"@en;
+                       rdfs:subClassOf [owl:oneOf (pmonb:arg5
+                                                   pmonb:arg4
+                                                   pmonb:arg3
+                                                   pmonb:arg2
+                                                   pmonb:arg1
+                                                   pmonb:arg0) ; 
+                                        a owl:Class],
+                                       pmonb:Argument.
+pmonb:Roleset a owl:Class;
+              rdfs:label "Roleset (NB)"@en;
+              rdfs:subClassOf [owl:onProperty pmo:semRole ; 
+                               owl:allValuesFrom pmonb:SemanticRole ; 
+                               a owl:Restriction],
+                              pmo:SemanticClass.
+pmonb:SemanticRole a owl:Class;
+                   rdfs:label "Semantic Role (NB)"@en;
+                   rdfs:subClassOf [owl:someValuesFrom pmonb:Argument ; 
+                                    owl:onProperty pmonb:argument ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty [owl:inverseOf pmo:semRole] ; 
+                                    owl:allValuesFrom pmonb:Roleset ; 
+                                    a owl:Restriction],
+                                   pmo:SemanticRole.
+pmonb:Tag a owl:Class;
+          rdfs:label "Tag"@en.
+pmonb:arg0 a owl:NamedIndividual,
+             pmonb:NumberedArgument.
+pmonb:arg1 a owl:NamedIndividual,
+             pmonb:NumberedArgument.
+pmonb:arg2 a owl:NamedIndividual,
+             pmonb:NumberedArgument.
+pmonb:arg3 a owl:NamedIndividual,
+             pmonb:NumberedArgument.
+pmonb:arg4 a owl:NamedIndividual,
+             pmonb:NumberedArgument.
+pmonb:arg5 a owl:NamedIndividual,
+             pmonb:NumberedArgument.
+pmonb:argm-adv a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argm-cau a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argm-dir a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argm-dis a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argm-ext a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argm-loc a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argm-mnr a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argm-neg a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argm-pnc a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argm-prd a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argm-tmp a owl:NamedIndividual,
+                 pmonb:Modifier.
+pmonb:argument a owl:FunctionalProperty,
+                 owl:ObjectProperty;
+               rdfs:domain pmonb:SemanticRole;
+               rdfs:label "argument"@en;
+               rdfs:range pmonb:Argument.
+pmonb:core a owl:FunctionalProperty,
+             owl:DatatypeProperty;
+           rdfs:comment "Set to true if the semantic role explicitly occurs in a frame file"@en;
+           rdfs:domain pmonb:SemanticRole;
+           rdfs:label "core"@en;
+           rdfs:range xsd:boolean.
+pmonb:tag a owl:ObjectProperty;
+          rdfs:label "tag"@en;
+          rdfs:range pmonb:Tag.
+pmonb:tag-prd a owl:NamedIndividual,
+                pmonb:Tag.
+pmonb:tag-ref a owl:NamedIndividual,
+                pmonb:Tag.
+pmonb:tag-support a owl:NamedIndividual,
+                    pmonb:Tag.

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT foo1    ANY   >
+
+<!--
+<content-model spec="any" 
+               minified="ANY" 
+               spaced="ANY"/>
+-->
+
+<!ELEMENT foo2   EMPTY  >
+
+<!--
+<content-model spec="empty" 
+               minified="EMPTY" 
+               spaced="EMPTY"/>
+-->
+
+
+<!ELEMENT foo3 (#PCDATA)>
+
+<!--
+<content-model spec="text" 
+               minified="(#PCDATA)" 
+               spaced="( #PCDATA )"/>
+-->
+
+
+<!ELEMENT foo4 (#PCDATA  | day |month)*>
+
+<!--
+<content-model spec="mixed" 
+               minified="(#PCDATA|day|month)*" 
+               spaced="( #PCDATA | day | month )">
+  <child>day</child>
+  <child>month</child>
+</content-model>
+-->
+
+
+<!ELEMENT foo5 (chapter|appendix)+>
+
+<!--
+<content-model spec="element" 
+               minified="(chapter|appendix)+" 
+               spaced="( chapter | appendix )+">
+  <choice q="+">
+    <child>chapter</child>
+    <child>appendix</child>
+  </choice>
+</content-model>
+-->
+
+
+<!ELEMENT foo6 (chapter+|(section+|appendix?|glossary)+)>
+
+<!--
+<content-model spec="element" 
+               minified="(chapter+|(section+|appendix?|glossary)+)"
+               spaced="( chapter+ | ( section+ | appendix? | glossary )+ )">
+  <choice>
+    <child q="+">chapter</child>
+    <choice q="+">
+      <child q="+">section</child>
+      <child q="?">appendix</child>
+      <child>glossary</child>
+    </choice>
+  </choice>
+</content-model>
+-->
+
+
+<!ELEMENT foo7 (abstract?,(intro|preface),section+)?>
+
+<!--
+<content-model spec="element" 
+               minified="(abstract?,(intro|preface),section+)?"
+               spaced="( abstract?, ( intro | preface ), section+ )?">
+  <seq q="?">
+    <child q="?">abstract</child>
+    <choice>
+      <child>intro</child>
+      <child>preface</child>
+    </choice>
+    <child q="+">section</child>
+  </seq>
+</content-model>
+-->
+
+<!ELEMENT foo8 (a)>
+
+<!--
+Note that a choice of one is the same as a sequence of one.  So we
+arbitrarily choose <choice> in this case.
+  
+<content-model spec="element" 
+               minified="(a)" 
+               spaced="( a )">
+  <choice>
+    <child>a</child>
+  </choice>
+</content-model>
+-->
+
+<!ELEMENT foo9 (a|(b+ , ( c   |  d ))? )? >
+
+<!-- 
+<content-model spec="element" 
+               minified="(a|(b+,(c|d))?)?" 
+               spaced="( a | ( b+, ( c | d ) )? )?">
+  <choice q="?">
+    <child>a</child>
+    <seq q="?">
+      <child q="+">b</child>
+      <choice>
+        <child>c</child>
+        <child>d</child>
+      </choice>
+    </seq>
+  </choice>
+</content-model>
+-->
+
+<!ELEMENT foo10 ( a, (b|c), a+, (d|a) )>
+
+
+
+
+<!ELEMENT day EMPTY >
+<!ELEMENT month EMPTY >
+<!ELEMENT chapter EMPTY >
+<!ELEMENT appendix EMPTY >
+<!ELEMENT section EMPTY >
+<!ELEMENT glossary EMPTY >
+<!ELEMENT abstract EMPTY >
+<!ELEMENT intro EMPTY >
+<!ELEMENT preface EMPTY >
+

@@ -1,0 +1,48 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cart: <http://purl.org/net/cartCoord#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wgspos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+
+dc11:creator a owl:AnnotationProperty.
+dc11:description a owl:AnnotationProperty.
+dc11:language a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+cart: dc11:creator "Diarmuid Ryan";
+      dc11:description "Ontology for representation of cartesian co-ordinates";
+      dc11:language "en";
+      dc11:title "cartCoordOnt";
+      a owl:Ontology;
+      rdfs:comment "Date Created: 3/7/15. Last Modified: 3/7/15.",
+                   """This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+        				http://creativecommons.org/licenses/by-sa/4.0/""".
+cart:Point a owl:Class;
+           rdfs:subClassOf wgspos:SpatialThing.
+cart:Point_List a owl:Class;
+                rdfs:subClassOf wgspos:SpatialThing.
+cart:hasPlacement a owl:ObjectProperty;
+                  rdfs:label "has Point";
+                  rdfs:range wgspos:SpatialThing.
+cart:hasPoint a owl:ObjectProperty;
+              rdfs:domain cart:Point_List;
+              rdfs:label "has Point";
+              rdfs:range cart:Point.
+cart:xcoord a owl:FunctionalProperty,
+              owl:DatatypeProperty;
+            rdfs:domain cart:Point;
+            rdfs:label "X Coordinate";
+            rdfs:range xsd:double.
+cart:ycoord a owl:FunctionalProperty,
+              owl:DatatypeProperty;
+            rdfs:domain cart:Point;
+            rdfs:label "Y Coordinate";
+            rdfs:range xsd:double.
+cart:zcoord a owl:FunctionalProperty,
+              owl:DatatypeProperty;
+            rdfs:domain cart:Point;
+            rdfs:label "Z Coordinate";
+            rdfs:range xsd:double.

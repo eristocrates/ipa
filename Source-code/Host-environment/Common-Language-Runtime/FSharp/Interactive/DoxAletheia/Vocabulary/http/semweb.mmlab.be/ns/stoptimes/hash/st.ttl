@@ -1,0 +1,52 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix st: <http://semweb.mmlab.be/ns/stoptimes#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://pieter.pm/#me> foaf:mbox "Pieter.Colpaert@UGent.be";
+                       foaf:name "Pieter Colpaert".
+<http://semweb.mmlab.be/ns/stoptimes> dcterms:hasFormat <https://raw.githubusercontent.com/OpenTransport/StopTimes/master/stoptimes.ttl>;
+                                      dcterms:issued "2014-10-31"^^xsd:date;
+                                      dcterms:license <http://creativecommons.org/licenses/by/3.0/>;
+                                      dcterms:modified "2015-09-04"^^xsd:date;
+                                      dcterms:rights "Copyright 2014, 2015 - Open Transport contributors";
+                                      a foaf:Document;
+                                      foaf:primaryTopic st:Ontology.
+st:Arrival a rdfs:Class;
+           rdfs:comment "A location and a time where a vehicle stops for the purpose of unloading people or things"@en;
+           rdfs:label "Arrival"@en.
+st:Departure a rdfs:Class;
+             rdfs:comment "A location and a departure time where a vehicle departs where people or things can be loaded"@en;
+             rdfs:label "Arrival"@en.
+st:Ontology dcterms:creator <http://pieter.pm/#me>;
+            vann:preferredNamespacePrefix "st";
+            vann:preferredNamespaceUri "http://semweb.mmlab.be/ns/stoptimes#";
+            a owl:Ontology;
+            rdfs:comment "This ontology provides the predicates necessary to describe an arrival of a transit vehicle and its departure at a certain Stop."@en;
+            rdfs:label "The Stop Times ontology"@en.
+st:StopTime a rdfs:Class;
+            rdfs:comment "A location and a time where a vehicle stops for the purpose of loading and/or unloading people or things"@en;
+            rdfs:label "Stop Time"@en.
+st:arrivalDelay a rdf:Property;
+                rdfs:comment "The time in seconds in which the st:arrivalTime differs from the scheduled arrival time"@en;
+                rdfs:label "Arrival Delay"@en;
+                rdfs:range xsd:duration.
+st:avgStopTimes a rdf:Property;
+                rdfs:comment "The average st:StopTimes per day"@en;
+                rdfs:label "Average Stop Times"@en;
+                rdfs:range xsd:double.
+st:departureDelay a rdf:Property;
+                  rdfs:comment "The time in seconds in which the st:departureTime differs from the scheduled departure time"@en;
+                  rdfs:label "Departure Delay"@en;
+                  rdfs:range xsd:duration.
+st:nextStopTime a rdf:Property;
+                rdfs:comment "The next stop time on this vehicle's trajectory."@en;
+                rdfs:domain st:StopTime;
+                rdfs:label "Next Stop Time"@en;
+                rdfs:range st:StopTime.

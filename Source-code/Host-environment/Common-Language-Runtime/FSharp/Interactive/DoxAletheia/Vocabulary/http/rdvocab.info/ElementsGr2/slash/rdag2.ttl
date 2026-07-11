@@ -1,0 +1,530 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdag2: <http://rdvocab.info/ElementsGr2/>.
+@prefix rdafrbr: <http://rdvocab.info/uri/schema/FRBRentitiesRDA/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+
+<http://metadataregistry.org/uri/RegStatus/1002> a skos:Concept;
+                                                 skos:prefLabel "New-Proposed"@en.
+<http://rdvocab.info/ElementsGr2> dc11:title "RDA Group 2 Elements"@en;
+                                  skos:note "This is the provisional registration of the RDA Group 2 Element Vocabulary, managed by the DCMI/RDA Task Group. "@en.
+rdag2:addressOfTheCorporateBody <http://metadataregistry.org/uri/profile/RegAp/name> "addressOfTheCorporateBody"@en;
+                                <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                a rdf:Property;
+                                rdfs:domain rdafrbr:CorporateBody;
+                                rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                rdfs:label "Address of the corporate body"@en;
+                                skos:definition "The address of a corporate body’s headquarters or offices, or an e-mail or Internet address for the body."@en;
+                                skos:scopeNote "FRAD 4.3."@en.
+rdag2:addressOfThePerson <http://metadataregistry.org/uri/profile/RegAp/name> "addressOfThePerson"@en;
+                         <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                         a rdf:Property;
+                         rdfs:domain rdafrbr:Person;
+                         rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                         rdfs:label "Address of the person"@en;
+                         skos:definition "The address of a person’s place of residence, business, or employer, and/or an e-mail or Internet address."@en;
+                         skos:scopeNote "FRAD 4.1."@en.
+rdag2:affiliation <http://metadataregistry.org/uri/profile/RegAp/name> "affiliation"@en;
+                  <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                  a rdf:Property;
+                  rdfs:domain rdafrbr:Person;
+                  rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                  rdfs:label "Affiliation"@en;
+                  skos:definition "A group with which a person is affiliated or has been affiliated through employment, membership, cultural identity, etc."@en;
+                  skos:scopeNote "FRAD 4.1."@en.
+rdag2:associatedInstitution <http://metadataregistry.org/uri/profile/RegAp/name> "associatedInstitution"@en;
+                            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                            a rdf:Property;
+                            rdfs:domain rdafrbr:CorporateBody;
+                            rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                            rdfs:label "Associated institution"@en;
+                            skos:definition "An institution commonly associated with a corporate body."@en.
+rdag2:biographicalInformation <http://metadataregistry.org/uri/profile/RegAp/name> "biographicalInformation"@en;
+                              <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                              a rdf:Property;
+                              rdfs:domain rdafrbr:Person;
+                              rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                              rdfs:label "Biographical information"@en;
+                              skos:definition "Information pertaining to the life or history of a person."@en;
+                              skos:scopeNote "FRAD 4.1."@en.
+rdag2:cataloguersNote <http://metadataregistry.org/uri/profile/RegAp/name> "cataloguersNote"@en;
+                      <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                      a rdf:Property;
+                      rdfs:domain rdafrbr:Agent;
+                      rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                      rdfs:label "Cataloguer's note"@en;
+                      rdfs:subPropertyOf rdag2:name;
+                      skos:definition "An annotation that might be helpful to those using or revising the authorized access point representing an entity or relationship data, or creating an authorized access point representing a related entity."@en.
+rdag2:corporateHistory <http://metadataregistry.org/uri/profile/RegAp/name> "corporateHistory"@en;
+                       <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                       a rdf:Property;
+                       rdfs:domain rdafrbr:CorporateBody;
+                       rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                       rdfs:label "Corporate history"@en;
+                       skos:definition "Information pertaining to the history of a corporate body."@en;
+                       skos:scopeNote "FRAD 4.3."@en.
+rdag2:countryAssociatedWithThePerson <http://metadataregistry.org/uri/profile/RegAp/name> "countryAssociatedWithThePerson"@en;
+                                     <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                     a rdf:Property;
+                                     rdfs:domain rdafrbr:Person;
+                                     rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                     rdfs:label "Country associated with the person"@en;
+                                     skos:definition "A country with which a person is identified."@en;
+                                     skos:scopeNote "FRAD 4.1."@en.
+rdag2:dateAssociatedWithTheCorporateBody <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdag2:dateOfConferenceEtc,
+                                                                                                        rdag2:dateOfEstablishment,
+                                                                                                        rdag2:dateOfTermination;
+                                         <http://metadataregistry.org/uri/profile/RegAp/name> "dateAssociatedWithTheCorporateBody"@en;
+                                         <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                         a rdf:Property;
+                                         rdfs:domain rdafrbr:CorporateBody;
+                                         rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                         rdfs:label "Date associated with the corporate body"@en;
+                                         skos:definition "The date or range of dates on which a conference, etc., is held, or a date with which a corporate body is otherwise associated (e.g., date of founding)."@en;
+                                         skos:scopeNote "FRBR 4.7.4 and FRAD 4.3."@en.
+rdag2:dateAssociatedWithTheFamily <http://metadataregistry.org/uri/profile/RegAp/name> "dateAssociatedWithTheFamily"@en;
+                                  <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                  a rdf:Property;
+                                  rdfs:domain rdafrbr:Family;
+                                  rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                  rdfs:label "Date associated with the family"@en;
+                                  skos:definition "A significant date associated with a family."@en;
+                                  skos:scopeNote "FRAD 4.2."@en.
+rdag2:dateAssociatedWithThePerson <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdag2:dateOfDeath,
+                                                                                                 rdag2:dateOfBirth,
+                                                                                                 rdag2:periodOfActivityOfThePerson;
+                                  <http://metadataregistry.org/uri/profile/RegAp/name> "dateAssociatedWithThePerson"@en;
+                                  <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                  a rdf:Property;
+                                  rdfs:domain rdafrbr:Person;
+                                  rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                  rdfs:label "Date associated with the person"@en;
+                                  skos:definition "A significant date associated with a person (e.g., date of birth, date of death)."@en;
+                                  skos:scopeNote "FRBR 4.6.2 and FRAD 4.1."@en.
+rdag2:dateOfBirth <http://metadataregistry.org/uri/profile/RegAp/name> "dateOfBirth"@en;
+                  <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                  a rdf:Property;
+                  rdfs:domain rdafrbr:Person;
+                  rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                  rdfs:label "Date of birth"@en;
+                  rdfs:subPropertyOf rdag2:DateAssociatedWithThePerson;
+                  skos:definition "The year a person was born. Date of birth may also include the month and day of the person’s birth."@en.
+rdag2:dateOfConferenceEtc <http://metadataregistry.org/uri/profile/RegAp/name> "dateOfConferenceEtc"@en;
+                          <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                          a rdf:Property;
+                          rdfs:domain rdafrbr:CorporateBody;
+                          rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                          rdfs:label "Date of conference, etc."@en;
+                          rdfs:subPropertyOf rdag2:dateAssociatedWithTheCorporateBody;
+                          skos:definition "The date or range of dates on which a conference, congress, meeting, exhibition, fair, festival, etc., was held."@en;
+                          skos:scopeNote "FRBR 4.7.4 and FRAD 4.3."@en.
+rdag2:dateOfDeath <http://metadataregistry.org/uri/profile/RegAp/name> "dateOfDeath"@en;
+                  <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                  a rdf:Property;
+                  rdfs:domain rdafrbr:Person;
+                  rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                  rdfs:label "Date of death"@en;
+                  rdfs:subPropertyOf rdag2:DateAssociatedWithThePerson;
+                  skos:definition "The year a person died. Date of death may also include the month and day of the person’s death."@en;
+                  skos:scopeNote "FRBR 4.6.2 and FRAD 4.1."@en.
+rdag2:dateOfEstablishment <http://metadataregistry.org/uri/profile/RegAp/name> "dateOfEstablishment"@en;
+                          <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                          a rdf:Property;
+                          rdfs:domain rdafrbr:CorporateBody;
+                          rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                          rdfs:label "Date of establishment"@en;
+                          rdfs:subPropertyOf rdag2:dateAssociatedWithTheCorporateBody;
+                          skos:definition "The date on which a corporate body was established or founded."@en;
+                          skos:scopeNote "FRBR 4.7.4 and FRAD 4.3."@en.
+rdag2:dateOfTermination <http://metadataregistry.org/uri/profile/RegAp/name> "dateOfTermination"@en;
+                        <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                        a rdf:Property;
+                        rdfs:domain rdafrbr:CorporateBody;
+                        rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                        rdfs:label "Date of termination"@en;
+                        rdfs:subPropertyOf rdag2:dateAssociatedWithTheCorporateBody;
+                        skos:definition "The date on which a corporate body was terminated or dissolved."@en;
+                        skos:scopeNote "FRBR 4.7.4 and FRAD 4.3."@en.
+rdag2:dateOfUsage <http://metadataregistry.org/uri/profile/RegAp/name> "dateOfUsage"@en;
+                  <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                  a rdf:Property;
+                  rdfs:domain rdafrbr:Name;
+                  rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                  rdfs:label "Date of usage"@en;
+                  skos:definition "A date or range of dates associated with the use of the name designated as the preferred name for a person."@en.
+rdag2:familyHistory <http://metadataregistry.org/uri/profile/RegAp/name> "familyHistory"@en;
+                    <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                    a rdf:Property;
+                    rdfs:domain rdafrbr:Family;
+                    rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                    rdfs:label "Family history"@en;
+                    skos:definition "Information pertaining to the history of a family."@en;
+                    skos:scopeNote "FRAD 4.2."@en.
+rdag2:fieldOfActivityOfTheCorporateBody <http://metadataregistry.org/uri/profile/RegAp/name> "fieldOfActivityOfTheCorporateBody"@en;
+                                        <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                        a rdf:Property;
+                                        rdfs:domain rdafrbr:CorporateBody;
+                                        rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                        rdfs:label "Field of activity of the corporate body"@en;
+                                        skos:definition "A field of business in which a corporate body is engaged, its area of competence, responsibility, jurisdiction, etc."@en;
+                                        skos:scopeNote "FRAD 4.3."@en.
+rdag2:fieldOfActivityOfThePerson <http://metadataregistry.org/uri/profile/RegAp/name> "fieldOfActivityOfThePerson"@en;
+                                 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                 a rdf:Property;
+                                 rdfs:domain rdafrbr:Person;
+                                 rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                 rdfs:label "Field of activity of the person"@en;
+                                 skos:definition "A field of endeavour, area of expertise, etc., in which a person is engaged or was engaged."@en;
+                                 skos:scopeNote "FRBR 4.6.4 and FRAD 4.1."@en.
+rdag2:fullerFormOfName <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdag2:fullerFormOfNamePerson;
+                       <http://metadataregistry.org/uri/profile/RegAp/name> "fullerFormOfName"@en;
+                       <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                       a rdf:Property;
+                       rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                       rdfs:label "Fuller form of name"@en;
+                       skos:definition "The full form of a part of a name represented only by an initial or abbreviation in the form chosen as the preferred name, or a part of the name not included in the form chosen as the preferred name."@en;
+                       skos:scopeNote "FRBR 4.6.1 and FRAD 4.1."@en.
+rdag2:fullerFormOfNamePerson <http://metadataregistry.org/uri/profile/RegAp/name> "fullerFormOfNamePerson"@en;
+                             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                             a rdf:Property;
+                             rdfs:domain rdafrbr:Person;
+                             rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                             rdfs:label "Fuller form of name (Person)"@en;
+                             rdfs:subPropertyOf rdag2:fullerFormOfName;
+                             skos:definition "The full form of a part of a name represented only by an initial or abbreviation in the form chosen as the preferred name, or a part of the name not included in the form chosen as the preferred name."@en.
+rdag2:gender <http://metadataregistry.org/uri/profile/RegAp/name> "gender"@en;
+             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+             a rdf:Property;
+             rdfs:domain rdafrbr:Person;
+             rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+             rdfs:label "Gender"@en;
+             skos:definition "The gender with which a person identifies."@en;
+             skos:scopeNote "FRAD 4.1."@en.
+rdag2:hereditaryTitle <http://metadataregistry.org/uri/profile/RegAp/name> "hereditaryTitle"@en;
+                      <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                      a rdf:Property;
+                      rdfs:domain rdafrbr:Family;
+                      rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                      rdfs:label "Hereditary title"@en;
+                      skos:definition "A title of nobility, etc., associated with a family."@en;
+                      skos:scopeNote "FRAD 4.2."@en.
+rdag2:identifierForTheCorporateBody <http://metadataregistry.org/uri/profile/RegAp/name> "identifierForTheCorporateBody"@en;
+                                    <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                    a rdf:Property;
+                                    rdfs:domain rdafrbr:CorporateBody;
+                                    rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                    rdfs:label "Identifier for the corporate body"@en;
+                                    skos:definition """A character string uniquely associated with a corporate body, or with a surrogate for a corporate body (e.g., an authority record), that
+serves to differentiate that corporate body from other corporate bodies."""@en;
+                                    skos:scopeNote "FRAD 5.2."@en.
+rdag2:identifierForTheFamily <http://metadataregistry.org/uri/profile/RegAp/name> "identifierForTheFamily"@en;
+                             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                             a rdf:Property;
+                             rdfs:domain rdafrbr:Family;
+                             rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                             rdfs:label "Identifier for the family"@en;
+                             skos:definition "A character string uniquely associated with a family, or with a surrogate for a family (e.g., an authority record), that serves to differentiate that family from other families."@en;
+                             skos:scopeNote "FRAD 5.2."@en.
+rdag2:identifierForThePerson <http://metadataregistry.org/uri/profile/RegAp/name> "identifierForThePerson"@en;
+                             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                             a rdf:Property;
+                             rdfs:domain rdafrbr:Person;
+                             rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                             rdfs:label "Identifier for the person"@en;
+                             skos:definition "A character string uniquely associated with a person, or with a surrogate for a person (e.g., an authority record), that serves to differentiate that person from other persons."@en.
+rdag2:languageOfTheCorporateBody <http://metadataregistry.org/uri/profile/RegAp/name> "languageOfTheCorporateBody"@en;
+                                 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                 a rdf:Property;
+                                 rdfs:domain rdafrbr:CorporateBody;
+                                 rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                 rdfs:label "Language of the corporate body"@en;
+                                 skos:definition "A language a corporate body uses in its communications."@en;
+                                 skos:scopeNote "FRAD 4.3."@en.
+rdag2:languageOfThePerson <http://metadataregistry.org/uri/profile/RegAp/name> "languageOfThePerson"@en;
+                          <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                          a rdf:Property;
+                          rdfs:domain rdafrbr:Person;
+                          rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                          rdfs:label "Language of the person"@en;
+                          skos:definition "A language a person uses when writing for publication, broadcasting, etc."@en;
+                          skos:scopeNote "FRAD 4.1."@en.
+rdag2:locationOfConferenceEtc <http://metadataregistry.org/uri/profile/RegAp/name> "locationOfConferenceEtc"@en;
+                              <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                              a rdf:Property;
+                              rdfs:domain rdafrbr:CorporateBody;
+                              rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                              rdfs:label "Location of conference, etc."@en;
+                              rdfs:subPropertyOf rdag2:placeAssociatedWithTheCorporateBody;
+                              skos:definition "A local place in which a conference, congress, meeting, exhibition, fair, festival, etc., was held."@en.
+rdag2:locationOfHeadquarters <http://metadataregistry.org/uri/profile/RegAp/name> "locationOfHeadquarters"@en;
+                             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                             a rdf:Property;
+                             rdfs:domain rdafrbr:CorporateBody;
+                             rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                             rdfs:label "Location of headquarters"@en;
+                             rdfs:subPropertyOf rdag2:placeAssociatedWithTheCorporateBody;
+                             skos:definition "A country, state, province, etc., or local place in which an organization has its headquarters."@en;
+                             skos:scopeNote "FRBR 4.7.3 and FRAD 4.3."@en.
+rdag2:name <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdag2:cataloguersNote,
+                                                                          rdag2:statusOfIdentification,
+                                                                          rdag2:sourceConsulted;
+           <http://metadataregistry.org/uri/profile/RegAp/name> "name"@en;
+           <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+           a rdf:Property;
+           rdfs:domain rdafrbr:Agent;
+           rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+           rdfs:label "Name"@en;
+           rdfs:range rdafrbr:Name.
+rdag2:nameOfTheCorporateBody <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdag2:preferredNameForTheCorporateBody,
+                                                                                            rdag2:variantNameForTheCorporateBody;
+                             <http://metadataregistry.org/uri/profile/RegAp/name> "nameOfTheCorporateBody"@en;
+                             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                             a rdf:Property;
+                             rdfs:domain rdafrbr:CorporateBody;
+                             rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                             rdfs:label "Name of the corporate body"@en;
+                             skos:definition "A word, character, or group of words and/or characters by which a corporate body is known."@en;
+                             skos:scopeNote "FRBR 4.7.1 and FRAD 5.2."@en.
+rdag2:nameOfTheFamily <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdag2:preferredNameForTheFamily,
+                                                                                     rdag2:variantNameForTheFamily;
+                      <http://metadataregistry.org/uri/profile/RegAp/name> "nameOfTheFamily"@en;
+                      <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                      a rdf:Property;
+                      rdfs:domain rdafrbr:Family;
+                      rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                      rdfs:label "Name of the family"@en;
+                      skos:definition "A word, character, or group of words and/or characters by which a family is known."@en;
+                      skos:scopeNote "FRAD 5.2."@en.
+rdag2:nameOfThePerson <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdag2:preferredNameForThePerson,
+                                                                                     rdag2:variantNameForThePerson;
+                      <http://metadataregistry.org/uri/profile/RegAp/name> "nameOfThePerson"@en;
+                      <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                      a rdf:Property;
+                      rdfs:domain rdafrbr:Person;
+                      rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                      rdfs:label "Name of the person"@en;
+                      skos:definition "A word, character, or group of words and/or characters by which a person is known."@en;
+                      skos:scopeNote "FRBR 4.6.1 and FRAD 5.2."@en.
+rdag2:note <http://metadataregistry.org/uri/profile/RegAp/name> "note"@en;
+           <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+           a rdf:Property;
+           rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+           rdfs:label "Note"@en;
+           skos:definition "An annotation providing additional information relating to data recorded in another element."@en.
+rdag2:numberOfAConferenceEtc <http://metadataregistry.org/uri/profile/RegAp/name> "numberOfAConferenceEtc"@en;
+                             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                             a rdf:Property;
+                             rdfs:domain rdafrbr:CorporateBody;
+                             rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                             rdfs:label "Number of a conference, etc."@en;
+                             skos:definition "A designation of the sequencing of a conference, etc., within a series of conferences, etc."@en.
+rdag2:otherDesignationAssociatedWithTheCorporateBody <http://metadataregistry.org/uri/profile/RegAp/name> "otherDesignationAssociatedWithTheCorporateBody"@en;
+                                                     <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                                     a rdf:Property;
+                                                     rdfs:domain rdafrbr:CorporateBody;
+                                                     rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                                     rdfs:label "Other designation associated with the corporate body"@en;
+                                                     skos:definition "A word, phrase, or abbreviation indicating incorporation or legal status of a corporate body, or any term serving to differentiate the body from other corporate bodies, persons, etc."@en;
+                                                     skos:scopeNote "FRBR 4.7.2, 4.7.5 and FRAD 4.3."@en.
+rdag2:otherDesignationAssociatedWithThePerson <http://metadataregistry.org/uri/profile/RegAp/name> "otherDesignationAssociatedWithThePerson"@en;
+                                              <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                              a rdf:Property;
+                                              rdfs:domain rdafrbr:Person;
+                                              rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                              rdfs:label "Other designation associated with the person"@en;
+                                              skos:definition "A term other than a title that is associated with a person’s name."@en;
+                                              skos:scopeNote "FRBR 4.6.4 and FRAD 4.1."@en.
+rdag2:periodOfActivityOfThePerson <http://metadataregistry.org/uri/profile/RegAp/name> "periodOfActivityOfThePerson"@en;
+                                  <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                  a rdf:Property;
+                                  rdfs:domain rdafrbr:Person;
+                                  rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                  rdfs:label "Period of activity of the person"@en;
+                                  rdfs:subPropertyOf rdag2:DateAssociatedWithThePerson;
+                                  skos:definition "A date or range of dates indicative of the period in which a person was active in his or her primary field of endeavour."@en;
+                                  skos:scopeNote "FRBR 4.6.2 and FRAD 4.1."@en.
+rdag2:placeAssociatedWithTheCorporateBody <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdag2:locationOfConferenceEtc,
+                                                                                                         rdag2:locationOfHeadquarters;
+                                          <http://metadataregistry.org/uri/profile/RegAp/name> "placeAssociatedWithTheCorporateBody"@en;
+                                          <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                          a rdf:Property;
+                                          rdfs:domain rdafrbr:CorporateBody;
+                                          rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                          rdfs:label "Place associated with the corporate body"@en;
+                                          skos:definition """A significant location associated with a corporate body (e.g., location of a conference, etc., location of the headquarters of an
+organization)."""@en;
+                                          skos:scopeNote "FRBR 4.7.3 and FRAD 4.3."@en.
+rdag2:placeAssociatedWithTheFamily <http://metadataregistry.org/uri/profile/RegAp/name> "placeAssociatedWithTheFamily"@en;
+                                   <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                   a rdf:Property;
+                                   rdfs:domain rdafrbr:Family;
+                                   rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                   rdfs:label "Place associated with the family"@en;
+                                   skos:definition "A place where a family resides or has resided or has some connection."@en;
+                                   skos:scopeNote "FRAD 4.2."@en.
+rdag2:placeOfBirth <http://metadataregistry.org/uri/profile/RegAp/name> "placeOfBirth"@en;
+                   <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                   a rdf:Property;
+                   rdfs:domain rdafrbr:Person;
+                   rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                   rdfs:label "Place of birth"@en;
+                   skos:definition "The town, city, province, state, and/or country in which a person was born."@en;
+                   skos:scopeNote "FRAD 4.1."@en.
+rdag2:placeOfDeath <http://metadataregistry.org/uri/profile/RegAp/name> "placeOfDeath"@en;
+                   <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                   a rdf:Property;
+                   rdfs:domain rdafrbr:Person;
+                   rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                   rdfs:label "Place of death"@en;
+                   skos:definition "The town, city, province, state, and/or country in which a person died."@en;
+                   skos:scopeNote "FRAD 4.1."@en.
+rdag2:placeOfResidence <http://metadataregistry.org/uri/profile/RegAp/name> "placeOfResidence"@en;
+                       <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                       a rdf:Property;
+                       rdfs:domain rdafrbr:Person;
+                       rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                       rdfs:label "Place of residence"@en;
+                       skos:definition "A town, city, province, state, and/or country in which a person resides or has resided."@en;
+                       skos:scopeNote "FRAD 4.1."@en.
+rdag2:preferredNameForTheCorporateBody <http://metadataregistry.org/uri/profile/RegAp/name> "preferredNameForTheCorporateBody"@en;
+                                       <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                       a rdf:Property;
+                                       rdfs:domain rdafrbr:CorporateBody;
+                                       rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                       rdfs:label "Preferred name for the corporate body"@en;
+                                       rdfs:subPropertyOf rdag2:nameOfTheCorporateBody;
+                                       skos:definition "The name or form of name chosen as the basis for the authorized access point representing that body."@en;
+                                       skos:scopeNote "FRBR 4.6.1 and FRAD 5.2."@en.
+rdag2:preferredNameForTheFamily <http://metadataregistry.org/uri/profile/RegAp/name> "preferredNameForTheFamily"@en;
+                                <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                a rdf:Property;
+                                rdfs:domain rdafrbr:Family;
+                                rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                rdfs:label "Preferred name for the family"@en;
+                                rdfs:subPropertyOf rdag2:nameOfTheFamily;
+                                skos:definition "The name or form of name chosen as the basis for the authorized access point representing that family."@en;
+                                skos:scopeNote "FRAD 5.2."@en.
+rdag2:preferredNameForThePerson <http://metadataregistry.org/uri/profile/RegAp/name> "preferredNameForThePerson"@en;
+                                <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                a rdf:Property;
+                                rdfs:domain rdafrbr:Person;
+                                rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                rdfs:label "Preferred name for the person"@en;
+                                rdfs:subPropertyOf rdag2:nameOfThePerson;
+                                skos:definition "The name or form of name chosen as the basis for the authorized access point representing that person."@en;
+                                skos:scopeNote "FRBR 4.6.1 and FRAD 5.2."@en.
+rdag2:professionOrOccupation <http://metadataregistry.org/uri/profile/RegAp/name> "professionOrOccupation"@en;
+                             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                             a rdf:Property;
+                             rdfs:domain rdafrbr:Person;
+                             rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                             rdfs:label "Profession or occupation"@en;
+                             skos:definition "A profession or occupation in which a person works or has worked."@en;
+                             skos:scopeNote "FRAD 4.1."@en.
+rdag2:prominentMemberOfTheFamily <http://metadataregistry.org/uri/profile/RegAp/name> "prominentMemberOfTheFamily"@en;
+                                 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                 a rdf:Property;
+                                 rdfs:domain rdafrbr:Family;
+                                 rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                 rdfs:label "Prominent member of the family"@en;
+                                 skos:definition "A well-known individual who is a member of a family."@en;
+                                 skos:scopeNote "FRAD 4.2."@en.
+rdag2:scopeOfUsage <http://metadataregistry.org/uri/profile/RegAp/name> "scopeOfUsage"@en;
+                   <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                   a rdf:Property;
+                   rdfs:domain rdafrbr:Name;
+                   rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                   rdfs:label "Scope of usage"@en;
+                   skos:definition "The type or form of work associated with the name designated as the preferred name for a person, family, or corporate body."@en.
+rdag2:sourceConsulted <http://metadataregistry.org/uri/profile/RegAp/name> "sourceConsulted"@en;
+                      <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                      a rdf:Property;
+                      rdfs:domain rdafrbr:Agent;
+                      rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                      rdfs:label "Source consulted"@en;
+                      rdfs:subPropertyOf rdag2:name;
+                      skos:definition "A resource used in determining the name, title,or other identifying attributes of an entity, or in determining the relationship between entities."@en.
+rdag2:statusOfIdentification <http://metadataregistry.org/uri/profile/RegAp/name> "statusOfIdentification"@en;
+                             <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                             a rdf:Property;
+                             rdfs:domain rdafrbr:Agent;
+                             rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                             rdfs:label "Status of identification"@en;
+                             rdfs:subPropertyOf rdag2:name;
+                             skos:definition "An indication of the level of authentication of the data identifying an entity."@en.
+rdag2:titleOfThePerson <http://metadataregistry.org/uri/profile/RegAp/name> "titleOfThePerson"@en;
+                       <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                       a rdf:Property;
+                       rdfs:domain rdafrbr:Person;
+                       rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                       rdfs:label "Title of the person"@en;
+                       skos:definition "A word or phrase indicative of royalty, nobility, or ecclesiastical rank or office, or a term of address for a person of religious vocation."@en;
+                       skos:scopeNote "FRBR 4.6.3 and FRAD 4.1."@en.
+rdag2:typeOfFamily <http://metadataregistry.org/uri/profile/RegAp/name> "typeOfFamily"@en;
+                   <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                   a rdf:Property;
+                   rdfs:domain rdafrbr:Family;
+                   rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                   rdfs:label "Type of family"@en;
+                   skos:definition "A categorization or generic descriptor for the type of family."@en.
+rdag2:undifferentiatedNameIndicator <http://metadataregistry.org/uri/profile/RegAp/hasSubproperty> rdag2:undifferentiatedNameIndicatorPerson,
+                                                                                                   rdag2:undifferentiatedNameIndicatorCorporateBody,
+                                                                                                   rdag2:undifferentiatedNameIndicatorFamily;
+                                    <http://metadataregistry.org/uri/profile/RegAp/name> "undifferentiatedNameIndicator"@en;
+                                    <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                    a rdf:Property;
+                                    rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                    rdfs:label "Undifferentiated name indicator"@en;
+                                    skos:definition "A categorization indicating that the core elements recorded are insufficient to differentiate between two or more entities with the same name."@en.
+rdag2:undifferentiatedNameIndicatorCorporateBody <http://metadataregistry.org/uri/profile/RegAp/name> "undifferentiatedNameIndicatorCorporateBody"@en;
+                                                 <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                                 a rdf:Property;
+                                                 rdfs:domain rdafrbr:CorporateBody;
+                                                 rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                                 rdfs:label "Undifferentiated name indicator (Corporate Body)"@en;
+                                                 rdfs:subPropertyOf rdag2:undifferentiatedNameIndicator;
+                                                 skos:definition "A categorization indicating that the core elements recorded are insufficient to differentiate between two or more corporate bodies with the same name."@en.
+rdag2:undifferentiatedNameIndicatorFamily <http://metadataregistry.org/uri/profile/RegAp/name> "undifferentiatedNameIndicatorFamily"@en;
+                                          <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                          a rdf:Property;
+                                          rdfs:domain rdafrbr:Family;
+                                          rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                          rdfs:label "Undifferentiated name indicator (Family)"@en;
+                                          rdfs:subPropertyOf rdag2:undifferentiatedNameIndicator;
+                                          skos:definition "A categorization indicating that the core elements recorded are insufficient to differentiate between two or more families with the same name."@en.
+rdag2:undifferentiatedNameIndicatorPerson <http://metadataregistry.org/uri/profile/RegAp/name> "undifferentiatedNameIndicatorPerson"@en;
+                                          <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                          a rdf:Property;
+                                          rdfs:domain rdafrbr:Person;
+                                          rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                          rdfs:label "Undifferentiated name indicator (Person)"@en;
+                                          rdfs:subPropertyOf rdag2:undifferentiatedNameIndicator;
+                                          skos:definition "A categorization indicating that the core elements recorded are insufficient to differentiate between two or more persons with the same name."@en.
+rdag2:variantNameForTheCorporateBody <http://metadataregistry.org/uri/profile/RegAp/name> "variantNameForTheCorporateBody"@en;
+                                     <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                                     a rdf:Property;
+                                     rdfs:domain rdafrbr:CorporateBody;
+                                     rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                                     rdfs:label "Variant name for the corporate body"@en;
+                                     rdfs:subPropertyOf rdag2:nameOfTheCorporateBody;
+                                     skos:definition """A name or form of name by which a corporate body is known that differs from the name or form of name chosen as the preferred
+name."""@en.
+rdag2:variantNameForTheFamily <http://metadataregistry.org/uri/profile/RegAp/name> "variantNameForTheFamily"@en;
+                              <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                              a rdf:Property;
+                              rdfs:domain rdafrbr:Family;
+                              rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                              rdfs:label "Variant name for the family"@en;
+                              rdfs:subPropertyOf rdag2:nameOfTheFamily;
+                              skos:definition "A name or form of name by which a family is known that differs from the name or form of name chosen as the preferred name."@en.
+rdag2:variantNameForThePerson <http://metadataregistry.org/uri/profile/RegAp/name> "variantNameForThePerson"@en;
+                              <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1002>;
+                              a rdf:Property;
+                              rdfs:domain rdafrbr:Person;
+                              rdfs:isDefinedBy <http://rdvocab.info/ElementsGr2>;
+                              rdfs:label "Variant name for the person"@en;
+                              rdfs:subPropertyOf rdag2:nameOfThePerson;
+                              skos:definition "A name or form of name by which a person is known that differs from the name or form of name chosen as the preferred name."@en.

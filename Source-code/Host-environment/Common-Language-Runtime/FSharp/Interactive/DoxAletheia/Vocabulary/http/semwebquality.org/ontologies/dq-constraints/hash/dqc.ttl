@@ -1,0 +1,1953 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dqc: <http://semwebquality.org/ontologies/dq-constraints#>.
+@prefix sp: <http://spinrdf.org/sp#>.
+@prefix spin: <http://spinrdf.org/spin#>.
+@prefix spl: <http://spinrdf.org/spl#>.
+@prefix smf: <http://topbraid.org/sparqlmotionfunctions#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix fn: <http://www.w3.org/2005/xpath-functions#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+_:B001c6fbf9a80fc057024cf721434c59d sp:varName "b".
+_:B043e3101ef8fae4e38161f06bc044f4e sp:varName "s".
+_:B05dbe0d60d7941e968f93c65c3cedcad sp:varName "value".
+_:B0a15e7fc7ffdca2439e65b8a640e19ab sp:varName "8".
+_:B0a272103742d760acf8d73a38efd8606 sp:varName "2".
+_:B0cb8b01a83d3de840395bb72563a0f93 sp:varName "s".
+_:B18d75847d79491a043f4b9ebee2ae829 sp:varName "s".
+_:B1bf4dd94236d0456dcfad2b970051f47 sp:varName "value".
+_:B1cc5d50bd121da61c4fea2ac23ff8520 sp:varName "s2".
+_:B1cf03fbbf08c9ca7ed2f23d2d21e7f88 sp:varName "11".
+_:B2363f0fb0f18a9b5059b53fb8a52a9a4 sp:varName "value2".
+_:B2449edea83c44a127ab4e6462765cb09 sp:varName "value".
+_:B24b6af48880120ac39ada3dc3bbdb2f1 sp:varName "12".
+_:B24cf648d189177477feeba0f82de0348 sp:varName "s".
+_:B24d252a77ca44b206d813706cbfd6a8b sp:varName "s2".
+_:B29d8cc3257ea6371bc9c4be823cdbe38 sp:varName "b".
+_:B2a5de8806463b00f50d07d384cbbba48 sp:varName "value".
+_:B32509a76fc15b0620d3a05767f73e7d1 sp:varName "check".
+_:B32ed09fc10e5ca00dc732a348a7bd40e sp:varName "s".
+_:B36c7fae58ae6377aab95357b52f5380e sp:varName "12".
+_:B386ad564d937951b43bcf0ffa2ec9640 sp:varName "value".
+_:B38f04b2d3962255f3bb280d87398bc6e sp:varName "s2".
+_:B39573b09fc162824873f7254e00f7f97 sp:varName "10".
+_:B3e62633afd0b5e179547d42a3f49ad9c sp:varName "value1".
+_:B3f0c78cbbcaa3536b44008148d992d54 sp:varName "s".
+_:B3f3f7234127c5cf4f6be2c295a798965 sp:varName "5".
+_:B4735331f3f5da525c3bb7d92f4f0d84a sp:varName "value2".
+_:B474fc99e471c0223c3990d3f5b095918 sp:varName "instance".
+_:B49ece17925c190a82592ee4817972c18 sp:varName "1".
+_:B4ccd642aa43601c222794d72d4b111ed sp:varName "value".
+_:B4d365f7a8321bad9e10ca5df1656bcdc sp:varName "value1".
+_:B4e029592804372652d1a87dd4afed064 sp:varName "s".
+_:B4eaedc8e395bd80ad3cf5f8cfd8c2804 sp:varName "a".
+_:B4ff42f1a8032cb3dcd4e6455d0b9e66c sp:varName "instance".
+_:B515a21842bbf395cdccfeb54dac03653 sp:varName "value1".
+_:B52ad0f8337fdd0c70f61846140a6146d sp:varName "from".
+_:B56a2c1051967ce73a40476683923cbc0 sp:varName "value1".
+_:B57153f86b53fa2e0b870a2d91e80be30 sp:varName "s".
+_:B5b7b4541ef28bee77e68319e629e9082 sp:varName "s".
+_:B5fbbfc283ec00f03ea946636bc76ba2d sp:varName "s".
+_:B610cd47b6f24ea72bafa46e6cd585076 sp:varName "instance".
+_:B61950cf647c95bc8a71e8ddeac1b758b sp:varName "6".
+_:B61e27d203aae990bc784fd1d4e2bf07f sp:varName "8".
+_:B640f94944ecdf39dff0af44916297b2e sp:varName "value1".
+_:B66033c9fa1882331f443173bc3a14408 sp:varName "s".
+_:B661b231d12229520c7a42dddba3bf8a7 sp:varName "s2".
+_:B6c13d5692e5fd8c068470d534045f41f sp:varName "ean".
+_:B6faaef1b59ac46b40d55037cecf1de4c sp:varName "value".
+_:B748500947cbbcce4a17c67446e22f81c sp:varName "node".
+_:B77b7909b0f36b4ec7a70113282d40203 sp:varName "2".
+_:B79fb3d9f71795320d6484efe7056adbe sp:varName "s".
+_:B7fad0a8bf20a66d6709462e11bb6ff3c sp:varName "value".
+_:B830b2dce97040a2d0b2c63ea0a4be746 sp:varName "3".
+_:B845d9d710b70da0f6b7285a12acffa06 sp:varName "uniqueValue1".
+_:B86957617acef45fd0bd7920166d156af sp:varName "value1".
+_:B86a3acb6379d00fd2afb2543b422b210 sp:varName "s".
+_:B893f1d7b05b13c5a77321722ba192f05 sp:varName "value1".
+_:B8cfde04bb81d90a689dab9bc5e45c21c sp:varName "s2".
+_:B8de26f9d84970171665d3042d5defca0 sp:varName "uniqueValue2".
+_:B8edb597f68de368027a650124e1d1fb6 sp:varName "13".
+_:B949117962b025d0c8279b4aeec13c02e sp:varName "ean".
+_:B9718b1889276ea5e419003ddfbae4d2c sp:varName "3".
+_:B9b6c15f52f1558e81f130fc5a23ae2c2 sp:varName "value".
+_:B9b6ede0a9f1e84bbc43ad54128a3bf1a sp:varName "6".
+_:B9baaa7cf7853f5a7cae7d2336415f002 sp:varName "s".
+_:B9c9bff57399fd854cd654b1afd4bbaa8 sp:varName "value".
+_:B9f51a1e2ff4739d9fe2da01dec41acaf sp:varName "1".
+_:Ba07c4f7f45152435a65e5f304c7307c5 sp:varName "value2".
+_:Ba47457640fd11d7e6d583659492460eb sp:varName "uniqueValue2".
+_:Ba94c852bbaf0925cd7be2f25b715b605 sp:varName "node".
+_:Baa4a5c7edfebd6d744f2978c9463ff6d sp:varName "uniqueValue1".
+_:Baf08cc987d43a2fe25dd8a0d606d2ecf sp:varName "5".
+_:Bb02dd0bdb39ca2c35e46ca6d25ca460a sp:varName "9".
+_:Bb04db965e73381b5120680d42619ebdf sp:varName "4".
+_:Bb5038e0d68759b0c6e169aebf2cdc080 sp:varName "s".
+_:Bb9b3020a31650a4ceb7a71e2a30a630c sp:varName "value1".
+_:Bba8db777ef86e841390137cd37083a90 sp:varName "value".
+_:Bbaa02e0f40a0e6a9b1de32d5a1d52233 sp:varName "7".
+_:Bc23ff2cb34194d5936767b1c6f07a1b5 sp:varName "s".
+_:Bcc52f7baa05f0dd8ce5f60a8a30967b1 sp:varName "11".
+_:Bd17c543a56c4a289224e5b42e1013473 sp:varName "4".
+_:Bd1f2c53750436d60dca6affe8995a763 sp:varName "s".
+_:Bd52fe249115bf7f075daf575d9d93a2a sp:varName "s".
+_:Bdac8756732f7bc02ea400489a2c4d615 sp:varName "10".
+_:Bddcb3dbf2a5f3763eee7a4287d123f6f sp:varName "value".
+_:Bde835a47e3945c2ff100ad86e89473b6 sp:varName "s2".
+_:Be7a3a5b91b1d95f06226f20540b1b3b8 sp:varName "13".
+_:Bea08dfc8638975e8edb13495c17f482c sp:varName "through".
+_:Bed76dce01a8ddb468e54de92a2b48b21 sp:varName "s".
+_:Bef34cb94d081537ee659a1a604c1eaf9 sp:varName "check".
+_:Bef91c18a1cdf1820188a7b2f253d17bc sp:varName "a".
+_:Bf43a677efe75042729f419caa82520e6 sp:varName "s2".
+_:Bf51c028295e9a42fba14e9b1708b57a7 sp:varName "value".
+_:Bf80821a67af396689fb0e7b8fbd9d446 sp:varName "s2".
+_:Bf993a046533ee53c7db71385acf391d9 sp:varName "7".
+_:Bfadf0381537b760d8ffb698d33783848 sp:varName "value".
+_:Bfcda24a3e9dba01d7a3e722ea5445299 sp:varName "s".
+_:Bfddd5fcb3c1cb6d30cdcb30461ad5aa6 sp:varName "9".
+_:Bff8586249213af7abdaf25a891308a4b sp:varName "value".
+dc11:creator a owl:AnnotationProperty;
+             rdfs:label "Creator"@en.
+dc11:date a owl:AnnotationProperty;
+          rdfs:label "Date"@en.
+dc11:subject a owl:AnnotationProperty;
+             rdfs:label "Subject"@en.
+dc11:title a owl:AnnotationProperty;
+           rdfs:label "Title"@en.
+dcterms:license a owl:AnnotationProperty;
+                rdfs:comment "A legal document giving official permission to do something with the resource."@en;
+                rdfs:label "License"@en.
+<http://semwebquality.org/ontologies/dq-constraints> dc11:creator "Christian Fuerber, Martin Hepp, and Markus Wischnewski"@en;
+                                                     dc11:date "2011-03-28";
+                                                     dc11:subject "Semantic Data Quality Management"@en;
+                                                     dc11:title "The Data Quality Constraints Library"@en;
+                                                     dcterms:license <http://www.gnu.org/licenses/lgpl.html>;
+                                                     a owl:Ontology;
+                                                     rdfs:comment "This RDF document contains a library of data quality constraints represented as SPARQL query templates based on the SPARQL Inferencing Framework (SPIN). The data quality constraint templates are especially useful for the identification of data quality problems during data entry and for periodic quality checks during data usage."@en;
+                                                     rdfs:label "The Data Quality Constraints Library"@en;
+                                                     owl:imports <http://spinrdf.org/spin>;
+                                                     owl:versionInfo "V 1.1 Release 2011-03-28".
+dqc:ConstraintTemplates spin:abstract true;
+                        a spin:Template;
+                        rdfs:comment "Constraint templates are generalized SPARQL query templates based on the SPARQL Inferencing Framework (SPIN). The query templates represent generic data quality rules that may be used to identify data quality problems, i.e. violations of previously defined constraints."@en;
+                        rdfs:label "data quality constraint templates";
+                        rdfs:subClassOf spin:Templates.
+dqc:EAN-13All spin:body [sp:where ([sp:subject _:B474fc99e471c0223c3990d3f5b095918 ; 
+                                   sp:predicate spin:_arg1 ; 
+                                   sp:object _:B949117962b025d0c8279b4aeec13c02e]
+                                   [sp:variable _:B49ece17925c190a82592ee4817972c18 ; 
+                                   sp:expression [sp:arg3 1  ; 
+                                                  sp:arg2 0  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:B77b7909b0f36b4ec7a70113282d40203 ; 
+                                   sp:expression [sp:arg3 2  ; 
+                                                  sp:arg2 1  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:B830b2dce97040a2d0b2c63ea0a4be746 ; 
+                                   sp:expression [sp:arg3 3  ; 
+                                                  sp:arg2 2  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:Bd17c543a56c4a289224e5b42e1013473 ; 
+                                   sp:expression [sp:arg3 4  ; 
+                                                  sp:arg2 3  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:Baf08cc987d43a2fe25dd8a0d606d2ecf ; 
+                                   sp:expression [sp:arg3 5  ; 
+                                                  sp:arg2 4  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:B61950cf647c95bc8a71e8ddeac1b758b ; 
+                                   sp:expression [sp:arg3 6  ; 
+                                                  sp:arg2 5  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:Bbaa02e0f40a0e6a9b1de32d5a1d52233 ; 
+                                   sp:expression [sp:arg3 7  ; 
+                                                  sp:arg2 6  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:B0a15e7fc7ffdca2439e65b8a640e19ab ; 
+                                   sp:expression [sp:arg3 8  ; 
+                                                  sp:arg2 7  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:Bfddd5fcb3c1cb6d30cdcb30461ad5aa6 ; 
+                                   sp:expression [sp:arg3 9  ; 
+                                                  sp:arg2 8  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:Bdac8756732f7bc02ea400489a2c4d615 ; 
+                                   sp:expression [sp:arg3 10  ; 
+                                                  sp:arg2 9  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:Bcc52f7baa05f0dd8ce5f60a8a30967b1 ; 
+                                   sp:expression [sp:arg3 11  ; 
+                                                  sp:arg2 10  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:B36c7fae58ae6377aab95357b52f5380e ; 
+                                   sp:expression [sp:arg3 12  ; 
+                                                  sp:arg2 11  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:B8edb597f68de368027a650124e1d1fb6 ; 
+                                   sp:expression [sp:arg3 13  ; 
+                                                  sp:arg2 12  ; 
+                                                  sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:variable _:B9c9bff57399fd854cd654b1afd4bbaa8 ; 
+                                   sp:expression [sp:arg2 [sp:arg2 [sp:arg1 _:Bcc52f7baa05f0dd8ce5f60a8a30967b1 ; 
+                                                                    a xsd:int] ; 
+                                                           sp:arg1 [sp:arg2 [sp:arg1 _:Bfddd5fcb3c1cb6d30cdcb30461ad5aa6 ; 
+                                                                             a xsd:int] ; 
+                                                                    sp:arg1 [sp:arg2 [sp:arg1 _:Bbaa02e0f40a0e6a9b1de32d5a1d52233 ; 
+                                                                                      a xsd:int] ; 
+                                                                             sp:arg1 [sp:arg2 [sp:arg1 _:Baf08cc987d43a2fe25dd8a0d606d2ecf ; 
+                                                                                               a xsd:int] ; 
+                                                                                      sp:arg1 [sp:arg2 [sp:arg1 _:B830b2dce97040a2d0b2c63ea0a4be746 ; 
+                                                                                                        a xsd:int] ; 
+                                                                                               sp:arg1 [sp:arg1 _:B49ece17925c190a82592ee4817972c18 ; 
+                                                                                                        a xsd:int] ; 
+                                                                                               a sp:add] ; 
+                                                                                      a sp:add] ; 
+                                                                             a sp:add] ; 
+                                                                    a sp:add] ; 
+                                                           a sp:add] ; 
+                                                  sp:arg1 [sp:arg2 3  ; 
+                                                           sp:arg1 [sp:arg2 [sp:arg1 _:B36c7fae58ae6377aab95357b52f5380e ; 
+                                                                             a xsd:int] ; 
+                                                                    sp:arg1 [sp:arg2 [sp:arg1 _:Bdac8756732f7bc02ea400489a2c4d615 ; 
+                                                                                      a xsd:int] ; 
+                                                                             sp:arg1 [sp:arg2 [sp:arg1 _:B0a15e7fc7ffdca2439e65b8a640e19ab ; 
+                                                                                               a xsd:int] ; 
+                                                                                      sp:arg1 [sp:arg2 [sp:arg1 _:B61950cf647c95bc8a71e8ddeac1b758b ; 
+                                                                                                        a xsd:int] ; 
+                                                                                               sp:arg1 [sp:arg2 [sp:arg1 _:Bd17c543a56c4a289224e5b42e1013473 ; 
+                                                                                                                 a xsd:int] ; 
+                                                                                                        sp:arg1 [sp:arg1 _:B77b7909b0f36b4ec7a70113282d40203 ; 
+                                                                                                                 a xsd:int] ; 
+                                                                                                        a sp:add] ; 
+                                                                                               a sp:add] ; 
+                                                                                      a sp:add] ; 
+                                                                             a sp:add] ; 
+                                                                    a sp:add] ; 
+                                                           a sp:mul] ; 
+                                                  a sp:add] ; 
+                                   a sp:Let]
+                                   [sp:variable _:B32509a76fc15b0620d3a05767f73e7d1 ; 
+                                   sp:expression [sp:arg3 [sp:arg1 [sp:arg1 _:B9c9bff57399fd854cd654b1afd4bbaa8 ; 
+                                                                    a sp:str] ; 
+                                                           a fn:string-length] ; 
+                                                  sp:arg2 [sp:arg2 1  ; 
+                                                           sp:arg1 [sp:arg1 [sp:arg1 _:B9c9bff57399fd854cd654b1afd4bbaa8 ; 
+                                                                             a sp:str] ; 
+                                                                    a fn:string-length] ; 
+                                                           a sp:sub] ; 
+                                                  sp:arg1 [sp:arg1 _:B9c9bff57399fd854cd654b1afd4bbaa8 ; 
+                                                           a sp:str] ; 
+                                                  a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                   a sp:Let]
+                                   [sp:expression [sp:arg2 [sp:arg1 [sp:arg2 "^[0-9]{13}$" ; 
+                                                                    sp:arg1 [sp:arg1 _:B949117962b025d0c8279b4aeec13c02e ; 
+                                                                             a sp:str] ; 
+                                                                    a sp:regex] ; 
+                                                           a sp:not] ; 
+                                                  sp:arg1 [sp:arg2 [sp:arg2 10  ; 
+                                                                    sp:arg1 [sp:arg2 [sp:arg1 _:B8edb597f68de368027a650124e1d1fb6 ; 
+                                                                                      a xsd:int] ; 
+                                                                             sp:arg1 [sp:arg1 _:B32509a76fc15b0620d3a05767f73e7d1 ; 
+                                                                                      a xsd:int] ; 
+                                                                             a sp:add] ; 
+                                                                    a sp:ne] ; 
+                                                           sp:arg1 [sp:arg2 0  ; 
+                                                                    sp:arg1 [sp:arg2 [sp:arg1 _:B8edb597f68de368027a650124e1d1fb6 ; 
+                                                                                      a xsd:int] ; 
+                                                                             sp:arg1 [sp:arg1 _:B32509a76fc15b0620d3a05767f73e7d1 ; 
+                                                                                      a xsd:int] ; 
+                                                                             a sp:add] ; 
+                                                                    a sp:ne] ; 
+                                                           a sp:and] ; 
+                                                  a sp:or] ; 
+                                   a sp:Filter]) ; 
+                         sp:text """CONSTRUCT 
+  { _:c0 rdf:type spin:ConstraintViolation .
+    _:c0 spin:violationRoot ?instance .
+    _:c0 spin:violationPath ?arg1 .}
+WHERE
+  { ?instance ?arg1 ?ean
+    LET (?1 := afn:substr(str(?ean), 0, 1))
+    LET (?2 := afn:substr(str(?ean), 1, 2))
+    LET (?3 := afn:substr(str(?ean), 2, 3))
+    LET (?4 := afn:substr(str(?ean), 3, 4))
+    LET (?5 := afn:substr(str(?ean), 4, 5))
+    LET (?6 := afn:substr(str(?ean), 5, 6))
+    LET (?7 := afn:substr(str(?ean), 6, 7))
+    LET (?8 := afn:substr(str(?ean), 7, 8))
+    LET (?9 := afn:substr(str(?ean), 8, 9))
+    LET (?10 := afn:substr(str(?ean), 9, 10))
+    LET (?11 := afn:substr(str(?ean), 10, 11))
+    LET (?12 := afn:substr(str(?ean), 11, 12))
+    LET (?13 := afn:substr(str(?ean), 12, 13))
+    LET (?value := ( ( ( ( ( ( ( xsd:int(?2) + xsd:int(?4) ) + xsd:int(?6) ) + xsd:int(?8) ) + xsd:int(?10) ) + xsd:int(?12) ) * 3 ) + ( ( ( ( ( xsd:int(?1) + xsd:int(?3) ) + xsd:int(?5) ) + xsd:int(?7) ) + xsd:int(?9) ) + xsd:int(?11) ) ))
+    LET (?check := afn:substr(str(?value), ( fn:string-length(str(?value)) - 1 ), fn:string-length(str(?value))))
+    FILTER ( ( ( ( xsd:int(?check) + xsd:int(?13) ) != 0 ) && ( ( xsd:int(?check) + xsd:int(?13) ) != 10 ) ) || ( ! regex(str(?ean), \"^[0-9]{13}$\") ) )
+  }""" ; 
+                         sp:templates ([sp:subject _:B4fd778962865f0d31dfd384824a56f81 ; 
+                                       sp:predicate rdf:type ; 
+                                       sp:object spin:ConstraintViolation]
+                                       [sp:subject _:B4fd778962865f0d31dfd384824a56f81 ; 
+                                       sp:predicate spin:violationRoot ; 
+                                       sp:object _:B474fc99e471c0223c3990d3f5b095918]
+                                       [sp:subject _:B4fd778962865f0d31dfd384824a56f81 ; 
+                                       sp:predicate spin:violationPath ; 
+                                       sp:object spin:_arg1]) ; 
+                         a sp:Construct];
+              spin:constraint [spl:valueType rdf:Property ; 
+                               spl:predicate sp:arg1 ; 
+                               rdfs:comment "Please enter the property holding the EAN-13!" ; 
+                               a spl:Argument];
+              spin:labelTemplate "Incorrect EAN-13 in {?arg1}!";
+              a spin:Template;
+              rdfs:comment "This query flags wrong EAN-13 values."@en;
+              rdfs:label "EAN-13 All";
+              rdfs:subClassOf dqc:SyntaxConstraints.
+dqc:EAN-13Class spin:body [sp:where ([sp:subject _:B610cd47b6f24ea72bafa46e6cd585076 ; 
+                                     sp:predicate rdf:type ; 
+                                     sp:object spin:_arg1]
+                                     [sp:subject _:B610cd47b6f24ea72bafa46e6cd585076 ; 
+                                     sp:predicate spin:_arg2 ; 
+                                     sp:object _:B6c13d5692e5fd8c068470d534045f41f]
+                                     [sp:variable _:B9f51a1e2ff4739d9fe2da01dec41acaf ; 
+                                     sp:expression [sp:arg3 1  ; 
+                                                    sp:arg2 0  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:B0a272103742d760acf8d73a38efd8606 ; 
+                                     sp:expression [sp:arg3 2  ; 
+                                                    sp:arg2 1  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:B9718b1889276ea5e419003ddfbae4d2c ; 
+                                     sp:expression [sp:arg3 3  ; 
+                                                    sp:arg2 2  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:Bb04db965e73381b5120680d42619ebdf ; 
+                                     sp:expression [sp:arg3 4  ; 
+                                                    sp:arg2 3  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:B3f3f7234127c5cf4f6be2c295a798965 ; 
+                                     sp:expression [sp:arg3 5  ; 
+                                                    sp:arg2 4  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:B9b6ede0a9f1e84bbc43ad54128a3bf1a ; 
+                                     sp:expression [sp:arg3 6  ; 
+                                                    sp:arg2 5  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:Bf993a046533ee53c7db71385acf391d9 ; 
+                                     sp:expression [sp:arg3 7  ; 
+                                                    sp:arg2 6  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:B61e27d203aae990bc784fd1d4e2bf07f ; 
+                                     sp:expression [sp:arg3 8  ; 
+                                                    sp:arg2 7  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:Bb02dd0bdb39ca2c35e46ca6d25ca460a ; 
+                                     sp:expression [sp:arg3 9  ; 
+                                                    sp:arg2 8  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:B39573b09fc162824873f7254e00f7f97 ; 
+                                     sp:expression [sp:arg3 10  ; 
+                                                    sp:arg2 9  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:B1cf03fbbf08c9ca7ed2f23d2d21e7f88 ; 
+                                     sp:expression [sp:arg3 11  ; 
+                                                    sp:arg2 10  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:B24b6af48880120ac39ada3dc3bbdb2f1 ; 
+                                     sp:expression [sp:arg3 12  ; 
+                                                    sp:arg2 11  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:Be7a3a5b91b1d95f06226f20540b1b3b8 ; 
+                                     sp:expression [sp:arg3 13  ; 
+                                                    sp:arg2 12  ; 
+                                                    sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:variable _:B05dbe0d60d7941e968f93c65c3cedcad ; 
+                                     sp:expression [sp:arg2 [sp:arg2 [sp:arg1 _:B1cf03fbbf08c9ca7ed2f23d2d21e7f88 ; 
+                                                                      a xsd:int] ; 
+                                                             sp:arg1 [sp:arg2 [sp:arg1 _:Bb02dd0bdb39ca2c35e46ca6d25ca460a ; 
+                                                                               a xsd:int] ; 
+                                                                      sp:arg1 [sp:arg2 [sp:arg1 _:Bf993a046533ee53c7db71385acf391d9 ; 
+                                                                                        a xsd:int] ; 
+                                                                               sp:arg1 [sp:arg2 [sp:arg1 _:B3f3f7234127c5cf4f6be2c295a798965 ; 
+                                                                                                 a xsd:int] ; 
+                                                                                        sp:arg1 [sp:arg2 [sp:arg1 _:B9718b1889276ea5e419003ddfbae4d2c ; 
+                                                                                                          a xsd:int] ; 
+                                                                                                 sp:arg1 [sp:arg1 _:B9f51a1e2ff4739d9fe2da01dec41acaf ; 
+                                                                                                          a xsd:int] ; 
+                                                                                                 a sp:add] ; 
+                                                                                        a sp:add] ; 
+                                                                               a sp:add] ; 
+                                                                      a sp:add] ; 
+                                                             a sp:add] ; 
+                                                    sp:arg1 [sp:arg2 3  ; 
+                                                             sp:arg1 [sp:arg2 [sp:arg1 _:B24b6af48880120ac39ada3dc3bbdb2f1 ; 
+                                                                               a xsd:int] ; 
+                                                                      sp:arg1 [sp:arg2 [sp:arg1 _:B39573b09fc162824873f7254e00f7f97 ; 
+                                                                                        a xsd:int] ; 
+                                                                               sp:arg1 [sp:arg2 [sp:arg1 _:B61e27d203aae990bc784fd1d4e2bf07f ; 
+                                                                                                 a xsd:int] ; 
+                                                                                        sp:arg1 [sp:arg2 [sp:arg1 _:B9b6ede0a9f1e84bbc43ad54128a3bf1a ; 
+                                                                                                          a xsd:int] ; 
+                                                                                                 sp:arg1 [sp:arg2 [sp:arg1 _:Bb04db965e73381b5120680d42619ebdf ; 
+                                                                                                                   a xsd:int] ; 
+                                                                                                          sp:arg1 [sp:arg1 _:B0a272103742d760acf8d73a38efd8606 ; 
+                                                                                                                   a xsd:int] ; 
+                                                                                                          a sp:add] ; 
+                                                                                                 a sp:add] ; 
+                                                                                        a sp:add] ; 
+                                                                               a sp:add] ; 
+                                                                      a sp:add] ; 
+                                                             a sp:mul] ; 
+                                                    a sp:add] ; 
+                                     a sp:Let]
+                                     [sp:variable _:Bef34cb94d081537ee659a1a604c1eaf9 ; 
+                                     sp:expression [sp:arg3 [sp:arg1 [sp:arg1 _:B05dbe0d60d7941e968f93c65c3cedcad ; 
+                                                                      a sp:str] ; 
+                                                             a fn:string-length] ; 
+                                                    sp:arg2 [sp:arg2 1  ; 
+                                                             sp:arg1 [sp:arg1 [sp:arg1 _:B05dbe0d60d7941e968f93c65c3cedcad ; 
+                                                                               a sp:str] ; 
+                                                                      a fn:string-length] ; 
+                                                             a sp:sub] ; 
+                                                    sp:arg1 [sp:arg1 _:B05dbe0d60d7941e968f93c65c3cedcad ; 
+                                                             a sp:str] ; 
+                                                    a <http://jena.hpl.hp.com/ARQ/function#substr>] ; 
+                                     a sp:Let]
+                                     [sp:expression [sp:arg2 [sp:arg1 [sp:arg2 "^[0-9]{13}$" ; 
+                                                                      sp:arg1 [sp:arg1 _:B6c13d5692e5fd8c068470d534045f41f ; 
+                                                                               a sp:str] ; 
+                                                                      a sp:regex] ; 
+                                                             a sp:not] ; 
+                                                    sp:arg1 [sp:arg2 [sp:arg2 10  ; 
+                                                                      sp:arg1 [sp:arg2 [sp:arg1 _:Be7a3a5b91b1d95f06226f20540b1b3b8 ; 
+                                                                                        a xsd:int] ; 
+                                                                               sp:arg1 [sp:arg1 _:Bef34cb94d081537ee659a1a604c1eaf9 ; 
+                                                                                        a xsd:int] ; 
+                                                                               a sp:add] ; 
+                                                                      a sp:ne] ; 
+                                                             sp:arg1 [sp:arg2 0  ; 
+                                                                      sp:arg1 [sp:arg2 [sp:arg1 _:Be7a3a5b91b1d95f06226f20540b1b3b8 ; 
+                                                                                        a xsd:int] ; 
+                                                                               sp:arg1 [sp:arg1 _:Bef34cb94d081537ee659a1a604c1eaf9 ; 
+                                                                                        a xsd:int] ; 
+                                                                               a sp:add] ; 
+                                                                      a sp:ne] ; 
+                                                             a sp:and] ; 
+                                                    a sp:or] ; 
+                                     a sp:Filter]) ; 
+                           sp:text """CONSTRUCT 
+  { _:c0 rdf:type spin:ConstraintViolation .
+    _:c0 spin:violationRoot ?instance .
+    _:c0 spin:violationPath ?arg2 .}
+WHERE
+  { ?instance rdf:type ?arg1 .
+    ?instance ?arg2 ?ean
+    LET (?1 := afn:substr(str(?ean), 0, 1))
+    LET (?2 := afn:substr(str(?ean), 1, 2))
+    LET (?3 := afn:substr(str(?ean), 2, 3))
+    LET (?4 := afn:substr(str(?ean), 3, 4))
+    LET (?5 := afn:substr(str(?ean), 4, 5))
+    LET (?6 := afn:substr(str(?ean), 5, 6))
+    LET (?7 := afn:substr(str(?ean), 6, 7))
+    LET (?8 := afn:substr(str(?ean), 7, 8))
+    LET (?9 := afn:substr(str(?ean), 8, 9))
+    LET (?10 := afn:substr(str(?ean), 9, 10))
+    LET (?11 := afn:substr(str(?ean), 10, 11))
+    LET (?12 := afn:substr(str(?ean), 11, 12))
+    LET (?13 := afn:substr(str(?ean), 12, 13))
+    LET (?value := ( ( ( ( ( ( ( xsd:int(?2) + xsd:int(?4) ) + xsd:int(?6) ) + xsd:int(?8) ) + xsd:int(?10) ) + xsd:int(?12) ) * 3 ) + ( ( ( ( ( xsd:int(?1) + xsd:int(?3) ) + xsd:int(?5) ) + xsd:int(?7) ) + xsd:int(?9) ) + xsd:int(?11) ) ))
+    LET (?check := afn:substr(str(?value), ( fn:string-length(str(?value)) - 1 ), fn:string-length(str(?value))))
+    FILTER ( ( ( ( xsd:int(?check) + xsd:int(?13) ) != 0 ) && ( ( xsd:int(?check) + xsd:int(?13) ) != 10 ) ) || ( ! regex(str(?ean), \"^[0-9]{13}$\") ) )
+  }""" ; 
+                           sp:templates ([sp:subject _:B22ec42350f4ba4455f73f6bfa699324a ; 
+                                         sp:predicate rdf:type ; 
+                                         sp:object spin:ConstraintViolation]
+                                         [sp:subject _:B22ec42350f4ba4455f73f6bfa699324a ; 
+                                         sp:predicate spin:violationRoot ; 
+                                         sp:object _:B610cd47b6f24ea72bafa46e6cd585076]
+                                         [sp:subject _:B22ec42350f4ba4455f73f6bfa699324a ; 
+                                         sp:predicate spin:violationPath ; 
+                                         sp:object spin:_arg2]) ; 
+                           a sp:Construct];
+                spin:constraint [spl:valueType rdf:Property ; 
+                                 spl:predicate sp:arg2 ; 
+                                 rdfs:comment "Please enter the property holding the EAN-13!" ; 
+                                 a spl:Argument],
+                                [spl:valueType rdfs:Class ; 
+                                 spl:predicate sp:arg1 ; 
+                                 rdfs:comment "Please enter the class holding the instances that shall be tested!" ; 
+                                 a spl:Argument];
+                spin:labelTemplate "Incorrect EAN-13 in {?arg2} of {?arg1} class instances!";
+                a spin:Template;
+                rdfs:comment "This query flags wrong EAN-13 values in instances of a specified class."@en;
+                rdfs:label "EAN-13 Class";
+                rdfs:subClassOf dqc:SyntaxConstraints.
+dqc:ExclusiveFunctionalDependencyAll spin:body [sp:where ([sp:subject _:B32ed09fc10e5ca00dc732a348a7bd40e ; 
+                                                          sp:predicate spin:_arg1 ; 
+                                                          sp:object spin:_arg2]
+                                                          [sp:expression [sp:arg1 [sp:arg3 spin:_arg4 ; 
+                                                                                  sp:arg2 spin:_arg3 ; 
+                                                                                  sp:arg1 _:B32ed09fc10e5ca00dc732a348a7bd40e ; 
+                                                                                  a spl:hasValue] ; 
+                                                                         a sp:not] ; 
+                                                          a sp:Filter]) ; 
+                                                sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg3 .
+}
+WHERE {
+    ?s ?arg1 ?arg2 .
+    FILTER (!spl:hasValue(?s, ?arg3, ?arg4)) 
+}""" ; 
+                                                sp:templates ([sp:subject _:B492186ed07158607df7d766a06431ca5 ; 
+                                                              sp:predicate rdf:type ; 
+                                                              sp:object spin:ConstraintViolation]
+                                                              [sp:subject _:B492186ed07158607df7d766a06431ca5 ; 
+                                                              sp:predicate spin:violationRoot ; 
+                                                              sp:object _:B32ed09fc10e5ca00dc732a348a7bd40e]
+                                                              [sp:subject _:B492186ed07158607df7d766a06431ca5 ; 
+                                                              sp:predicate spin:violationPath ; 
+                                                              sp:object spin:_arg3]) ; 
+                                                a sp:Construct];
+                                     spin:constraint [spl:valueType rdf:Property ; 
+                                                      spl:predicate sp:arg1 ; 
+                                                      rdfs:comment "Select property 1 of functional dependency!" ; 
+                                                      a spl:Argument],
+                                                     [spl:valueType xsd:string ; 
+                                                      spl:predicate sp:arg2 ; 
+                                                      rdfs:comment "Enter functionally dependent value 1 of property 1!" ; 
+                                                      a spl:Argument],
+                                                     [spl:valueType xsd:string ; 
+                                                      spl:predicate sp:arg4 ; 
+                                                      rdfs:comment "Enter functionally dependent value 2 of property 2!" ; 
+                                                      a spl:Argument],
+                                                     [spl:valueType rdf:Property ; 
+                                                      spl:predicate sp:arg3 ; 
+                                                      rdfs:comment "Select property 2 of functional dependency!" ; 
+                                                      a spl:Argument];
+                                     spin:labelTemplate """Value \"{?arg2}\" of {?arg1} must only have value \"{?arg4}\" in {?arg3} in all instances!""";
+                                     a spin:Template;
+                                     rdfs:comment "This query flags instances with property ?arg1 and value ?arg2 that do not have value ?arg4 with property ?arg3. It is only suitable for value dependencies with one to one cardinality. The query does not tolerate homonyms and is not restricted to a specific class."@en;
+                                     rdfs:label "exclusive functional dependency check in all instances"@en;
+                                     rdfs:subClassOf dqc:FunctionalDependencyConstraints.
+dqc:ExclusiveFunctionalDependencyClass spin:body [sp:where ([sp:subject spin:_this ; 
+                                                            sp:predicate rdf:type ; 
+                                                            sp:object spin:_arg1]
+                                                            [sp:subject spin:_this ; 
+                                                            sp:predicate spin:_arg2 ; 
+                                                            sp:object spin:_arg3]
+                                                            [sp:expression [sp:arg1 [sp:arg3 spin:_arg5 ; 
+                                                                                    sp:arg2 spin:_arg4 ; 
+                                                                                    sp:arg1 spin:_this ; 
+                                                                                    a spl:hasValue] ; 
+                                                                           a sp:not] ; 
+                                                            a sp:Filter]) ; 
+                                                  sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?this .
+    _:b0 spin:violationPath ?arg4 .
+}
+WHERE {
+    ?this a ?arg1 .
+    ?this ?arg2 ?arg3 .
+    FILTER (!spl:hasValue(?this, ?arg4, ?arg5)) 
+}""" ; 
+                                                  sp:templates ([sp:subject _:Bfd0a354d8f72a7770407f86916bfa6bd ; 
+                                                                sp:predicate rdf:type ; 
+                                                                sp:object spin:ConstraintViolation]
+                                                                [sp:subject _:Bfd0a354d8f72a7770407f86916bfa6bd ; 
+                                                                sp:predicate spin:violationRoot ; 
+                                                                sp:object spin:_this]
+                                                                [sp:subject _:Bfd0a354d8f72a7770407f86916bfa6bd ; 
+                                                                sp:predicate spin:violationPath ; 
+                                                                sp:object spin:_arg4]) ; 
+                                                  a sp:Construct];
+                                       spin:constraint [spl:valueType rdfs:Class ; 
+                                                        spl:predicate sp:arg1 ; 
+                                                        rdfs:comment "Select class that holds instances to be tested!" ; 
+                                                        a spl:Argument],
+                                                       [spl:valueType xsd:string ; 
+                                                        spl:predicate sp:arg5 ; 
+                                                        rdfs:comment "Enter functionally dependent value 2 of property 2!" ; 
+                                                        a spl:Argument],
+                                                       [spl:valueType xsd:string ; 
+                                                        spl:predicate sp:arg3 ; 
+                                                        rdfs:comment "Enter functionally dependent value 1 of property 1!" ; 
+                                                        a spl:Argument],
+                                                       [spl:valueType rdf:Property ; 
+                                                        spl:predicate sp:arg2 ; 
+                                                        rdfs:comment "Select property 1 of functional dependency!" ; 
+                                                        a spl:Argument],
+                                                       [spl:valueType rdf:Property ; 
+                                                        spl:predicate sp:arg4 ; 
+                                                        rdfs:comment "Select property 2 of functional dependency!" ; 
+                                                        a spl:Argument];
+                                       spin:labelTemplate """Value \"{?arg3}\" of {?arg2} must only have value \"{?arg5}\" in {?arg4} in instances of class {?arg1}!""";
+                                       a spin:Template;
+                                       rdfs:comment "This query flags instances of class ?arg1 with property ?arg2 and value ?arg3 that do not have value ?arg5 with property ?arg4. It is only suitable for value dependencies with one to one cardinality. The query does not tolerate homonyms. Not defined dependencies will not be flagged."@en;
+                                       rdfs:label "exclusive functional dependency check in class instances"@en;
+                                       rdfs:subClassOf dqc:FunctionalDependencyConstraints.
+dqc:FiveDigitNumericAll spin:body [sp:where ([sp:subject _:B86a3acb6379d00fd2afb2543b422b210 ; 
+                                             sp:predicate spin:_arg1 ; 
+                                             sp:object _:B9b6c15f52f1558e81f130fc5a23ae2c2]
+                                             [sp:expression [sp:arg1 [sp:arg2 "^[0-9]{5}$" ; 
+                                                                     sp:arg1 [sp:arg1 _:B9b6c15f52f1558e81f130fc5a23ae2c2 ; 
+                                                                              a sp:str] ; 
+                                                                     a sp:regex] ; 
+                                                            a sp:not] ; 
+                                             a sp:Filter]) ; 
+                                   sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg1 .
+}
+WHERE {
+    ?s ?arg1 ?value .
+    FILTER (!regex(str(?value), \"^[0-9]{5}$\"^^xsd:string)) 
+}""" ; 
+                                   sp:templates ([sp:subject _:B705685fb1b271d16c0e3436907c1465a ; 
+                                                 sp:predicate rdf:type ; 
+                                                 sp:object spin:ConstraintViolation]
+                                                 [sp:subject _:B705685fb1b271d16c0e3436907c1465a ; 
+                                                 sp:predicate spin:violationRoot ; 
+                                                 sp:object _:B86a3acb6379d00fd2afb2543b422b210]
+                                                 [sp:subject _:B705685fb1b271d16c0e3436907c1465a ; 
+                                                 sp:predicate spin:violationPath ; 
+                                                 sp:object spin:_arg1]) ; 
+                                   a sp:Construct];
+                        spin:constraint [spl:valueType rdf:Property ; 
+                                         spl:predicate sp:arg1 ; 
+                                         rdfs:comment "Select the property that contains the US zip codes!" ; 
+                                         a spl:Argument];
+                        spin:labelTemplate "Syntax rule: {?arg1} must contain 5-digit numeric value in all instances!";
+                        a spin:Template;
+                        rdfs:comment "This query flags all instances that do not have a five digit numeric value for property ?arg1."@en;
+                        rdfs:label "syntax check in all instances:  5 digit numeric values"@en;
+                        rdfs:subClassOf dqc:SyntaxConstraints.
+dqc:FunctionalDependencyConstraints spin:abstract true;
+                                    a spin:Template;
+                                    rdfs:comment "Functional dependencies are dependencies between the values of two or more different properties. Functional dependency constraints check the abidance of functional dependencies."@en;
+                                    rdfs:label "functional dependency constraints"@en;
+                                    rdfs:subClassOf dqc:ConstraintTemplates.
+dqc:FunctionalDependencyTrustedReferenceAll spin:body [sp:where ([sp:elements ([sp:subject _:B24cf648d189177477feeba0f82de0348 ; 
+                                                                              sp:predicate spin:_arg1 ; 
+                                                                              sp:object _:B893f1d7b05b13c5a77321722ba192f05]
+                                                                              [sp:elements ([sp:subject _:B24cf648d189177477feeba0f82de0348 ; 
+                                                                                           sp:predicate spin:_arg2 ; 
+                                                                                           sp:object _:B2363f0fb0f18a9b5059b53fb8a52a9a4]) ; 
+                                                                              a sp:Optional]) ; 
+                                                                 a sp:Optional]
+                                                                 [sp:elements ([sp:subject _:Bf80821a67af396689fb0e7b8fbd9d446 ; 
+                                                                              sp:predicate rdf:type ; 
+                                                                              sp:object spin:_arg3]
+                                                                              [sp:subject _:Bf80821a67af396689fb0e7b8fbd9d446 ; 
+                                                                              sp:predicate spin:_arg4 ; 
+                                                                              sp:object _:B893f1d7b05b13c5a77321722ba192f05]
+                                                                              [sp:subject _:Bf80821a67af396689fb0e7b8fbd9d446 ; 
+                                                                              sp:predicate spin:_arg5 ; 
+                                                                              sp:object _:B2363f0fb0f18a9b5059b53fb8a52a9a4]) ; 
+                                                                 a sp:NotExists]) ; 
+                                                       sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg1 .
+    _:b0 spin:violationPath ?arg2 .
+}
+WHERE {
+    OPTIONAL {
+        ?s ?arg1 ?value1 .
+        OPTIONAL {
+            ?s ?arg2 ?value2 .
+        } 
+    } 
+    NOT EXISTS {
+        ?s2 a ?arg3 .
+        ?s2 ?arg4 ?value1 .
+        ?s2 ?arg5 ?value2 .
+    } 
+}""" ; 
+                                                       sp:templates ([sp:subject _:Bca882624b004366408fb0629afd972b8 ; 
+                                                                     sp:predicate rdf:type ; 
+                                                                     sp:object spin:ConstraintViolation]
+                                                                     [sp:subject _:Bca882624b004366408fb0629afd972b8 ; 
+                                                                     sp:predicate spin:violationRoot ; 
+                                                                     sp:object _:B24cf648d189177477feeba0f82de0348]
+                                                                     [sp:subject _:Bca882624b004366408fb0629afd972b8 ; 
+                                                                     sp:predicate spin:violationPath ; 
+                                                                     sp:object spin:_arg1]
+                                                                     [sp:subject _:Bca882624b004366408fb0629afd972b8 ; 
+                                                                     sp:predicate spin:violationPath ; 
+                                                                     sp:object spin:_arg2]) ; 
+                                                       a sp:Construct];
+                                            spin:constraint [spl:valueType rdfs:Class ; 
+                                                             spl:predicate sp:arg3 ; 
+                                                             rdfs:comment "Select class of trusted reference that holds instances with legal value combinations!" ; 
+                                                             a spl:Argument],
+                                                            [spl:valueType rdf:Property ; 
+                                                             spl:predicate sp:arg2 ; 
+                                                             rdfs:comment "Select property 2 of functional dependency!" ; 
+                                                             a spl:Argument],
+                                                            [spl:valueType rdf:Property ; 
+                                                             spl:predicate sp:arg1 ; 
+                                                             rdfs:comment "Select property 1 of functional dependency!" ; 
+                                                             a spl:Argument],
+                                                            [spl:valueType rdf:Property ; 
+                                                             spl:predicate sp:arg5 ; 
+                                                             rdfs:comment "Select second property of trusted reference that holds legal values for property 2!" ; 
+                                                             a spl:Argument],
+                                                            [spl:valueType rdf:Property ; 
+                                                             spl:predicate sp:arg4 ; 
+                                                             rdfs:comment "Select first property of trusted reference that holds legal values for property 1!" ; 
+                                                             a spl:Argument];
+                                            spin:labelTemplate "Value combinations of properties {?arg1} and {?arg2} must always be identical with value combinations of properties {?arg4} and {?arg5} in class {?arg3} for all instances!";
+                                            a spin:Template;
+                                            rdfs:comment "This query flags instances with properties ?arg1 and ?arg2 that do not have a corresponding value combination in instances of the trusted reference in class ?arg3. The semantics of property ?arg1 should be equal with property ?arg4, and the semantics of property ?arg2 should be equal with ?arg5. The query tolerates homonymous values, i.e. the same value may be assigned to different dependent values by using different instances in the trusted reference. Value combinations that cannot be found in the trusted reference will also be flagged as incorrect. The query will also test the existence of a single value in the trusted reference when one property of the tested data is missing."@en;
+                                            rdfs:label "Functional dependency check in all instances with trusted reference"@en;
+                                            rdfs:subClassOf dqc:FunctionalDependencyConstraints.
+dqc:FunctionalDependencyTrustedReferenceClass spin:body [sp:where ([sp:subject _:B79fb3d9f71795320d6484efe7056adbe ; 
+                                                                   sp:predicate rdf:type ; 
+                                                                   sp:object spin:_arg1]
+                                                                   [sp:elements ([sp:subject _:B79fb3d9f71795320d6484efe7056adbe ; 
+                                                                                sp:predicate spin:_arg2 ; 
+                                                                                sp:object _:Bb9b3020a31650a4ceb7a71e2a30a630c]
+                                                                                [sp:elements ([sp:subject _:B79fb3d9f71795320d6484efe7056adbe ; 
+                                                                                             sp:predicate spin:_arg3 ; 
+                                                                                             sp:object _:B4735331f3f5da525c3bb7d92f4f0d84a]) ; 
+                                                                                a sp:Optional]) ; 
+                                                                   a sp:Optional]
+                                                                   [sp:elements ([sp:subject _:B661b231d12229520c7a42dddba3bf8a7 ; 
+                                                                                sp:predicate rdf:type ; 
+                                                                                sp:object spin:_arg4]
+                                                                                [sp:subject _:B661b231d12229520c7a42dddba3bf8a7 ; 
+                                                                                sp:predicate spin:_arg5 ; 
+                                                                                sp:object _:Bb9b3020a31650a4ceb7a71e2a30a630c]
+                                                                                [sp:subject _:B661b231d12229520c7a42dddba3bf8a7 ; 
+                                                                                sp:predicate [sp:varName "arg6"] ; 
+                                                                                sp:object _:B4735331f3f5da525c3bb7d92f4f0d84a]) ; 
+                                                                   a sp:NotExists]) ; 
+                                                         sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg2 .
+    _:b0 spin:violationPath ?arg3 .
+}
+WHERE {
+    ?s a ?arg1 .
+    OPTIONAL {
+        ?s ?arg2 ?value1 .
+        OPTIONAL {
+            ?s ?arg3 ?value2 .
+        } 
+    } 
+    NOT EXISTS {
+        ?s2 a ?arg4 .
+        ?s2 ?arg5 ?value1 .
+        ?s2 ?arg6 ?value2 .
+    } 
+}""" ; 
+                                                         sp:templates ([sp:subject _:B7b54f901e7a2e6019879873c6ae6f86e ; 
+                                                                       sp:predicate rdf:type ; 
+                                                                       sp:object spin:ConstraintViolation]
+                                                                       [sp:subject _:B7b54f901e7a2e6019879873c6ae6f86e ; 
+                                                                       sp:predicate spin:violationRoot ; 
+                                                                       sp:object _:B79fb3d9f71795320d6484efe7056adbe]
+                                                                       [sp:subject _:B7b54f901e7a2e6019879873c6ae6f86e ; 
+                                                                       sp:predicate spin:violationPath ; 
+                                                                       sp:object spin:_arg2]
+                                                                       [sp:subject _:B7b54f901e7a2e6019879873c6ae6f86e ; 
+                                                                       sp:predicate spin:violationPath ; 
+                                                                       sp:object spin:_arg3]) ; 
+                                                         a sp:Construct];
+                                              spin:constraint [spl:valueType rdf:Property ; 
+                                                               spl:predicate sp:arg5 ; 
+                                                               rdfs:comment "Select first property of trusted reference that holds legal values for property 1!" ; 
+                                                               a spl:Argument],
+                                                              [spl:valueType rdf:Property ; 
+                                                               spl:predicate sp:arg3 ; 
+                                                               rdfs:comment "Select property 2 of functional dependency!" ; 
+                                                               a spl:Argument],
+                                                              [spl:valueType rdfs:Class ; 
+                                                               spl:predicate sp:arg4 ; 
+                                                               rdfs:comment "Select class of trusted reference that holds instances with legal value combinations!" ; 
+                                                               a spl:Argument],
+                                                              [spl:valueType rdf:Property ; 
+                                                               spl:predicate sp:arg6 ; 
+                                                               rdfs:comment "Select second property of trusted reference that holds legal values for property 2!" ; 
+                                                               a spl:Argument],
+                                                              [spl:valueType rdf:Property ; 
+                                                               spl:predicate sp:arg2 ; 
+                                                               rdfs:comment "Select property 1 of functional dependency!" ; 
+                                                               a spl:Argument],
+                                                              [spl:valueType rdfs:Class ; 
+                                                               spl:predicate sp:arg1 ; 
+                                                               rdfs:comment "Select class that holds instances to be tested!" ; 
+                                                               a spl:Argument];
+                                              spin:labelTemplate "Value combinations of properties {?arg2} and {?arg3} must always be identical with value combinations of properties {?arg5} and {?arg6} of class {?arg4}  for all instances of class {?arg1}!";
+                                              a spin:Template;
+                                              rdfs:comment "This query flags instances of class ?arg 1 with properties ?arg2 and ?arg3 that do not have the exact value combination in instances of the trusted reference in class ?arg4. The semantics of property ?arg2 should be equal with property ?arg5, and the semantics of property ?arg3 should be equal with ?arg6. The query tolerates homonymous values, i.e. the same value may be assigned to different dependent values. Value combinations that cannot be found in the trusted reference will also be flagged. The query will also test the existence of a single value in the trusted reference when one property of the tested data is missing."@en;
+                                              rdfs:label "Functional dependency check in class instances with trusted reference"@en;
+                                              rdfs:subClassOf dqc:FunctionalDependencyConstraints.
+dqc:FunctionalDependencyTrustedReference_ClassOverBlankNode spin:body [sp:where ([sp:subject _:B5b7b4541ef28bee77e68319e629e9082 ; 
+                                                                                 sp:predicate rdf:type ; 
+                                                                                 sp:object spin:_arg1]
+                                                                                 [sp:elements ([sp:subject _:B5b7b4541ef28bee77e68319e629e9082 ; 
+                                                                                              sp:predicate spin:_arg2 ; 
+                                                                                              sp:object _:B748500947cbbcce4a17c67446e22f81c]
+                                                                                              [sp:elements ([sp:subject _:B748500947cbbcce4a17c67446e22f81c ; 
+                                                                                                           sp:predicate spin:_arg3 ; 
+                                                                                                           sp:object _:B515a21842bbf395cdccfeb54dac03653]) ; 
+                                                                                              a sp:Optional]
+                                                                                              [sp:elements ([sp:subject _:B5b7b4541ef28bee77e68319e629e9082 ; 
+                                                                                                           sp:predicate spin:_arg4 ; 
+                                                                                                           sp:object _:Ba07c4f7f45152435a65e5f304c7307c5]) ; 
+                                                                                              a sp:Optional]) ; 
+                                                                                 a sp:Optional]
+                                                                                 [sp:elements ([sp:subject _:B38f04b2d3962255f3bb280d87398bc6e ; 
+                                                                                              sp:predicate rdf:type ; 
+                                                                                              sp:object spin:_arg5]
+                                                                                              [sp:subject _:B38f04b2d3962255f3bb280d87398bc6e ; 
+                                                                                              sp:predicate [sp:varName "arg6"] ; 
+                                                                                              sp:object _:B515a21842bbf395cdccfeb54dac03653]
+                                                                                              [sp:subject _:B38f04b2d3962255f3bb280d87398bc6e ; 
+                                                                                              sp:predicate [sp:varName "arg7"] ; 
+                                                                                              sp:object _:Ba07c4f7f45152435a65e5f304c7307c5]) ; 
+                                                                                 a sp:NotExists]) ; 
+                                                                       sp:text """CONSTRUCT { 
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg3 .
+    _:b0 spin:violationPath ?arg4 .
+}
+WHERE {
+    ?s a ?arg1 .
+    OPTIONAL {
+        ?s ?arg2 ?node .
+        OPTIONAL {
+            ?node ?arg3 ?value1 .
+        } 
+        OPTIONAL {
+            ?s ?arg4 ?value2 .
+        } 
+    } 
+    NOT EXISTS {
+        ?s2 a ?arg5 .
+        ?s2 ?arg6 ?value1 .
+        ?s2 ?arg7 ?value2 .
+    } 
+}""" ; 
+                                                                       sp:templates ([sp:subject _:B46bb1189fda5589b0d672f8072e865cf ; 
+                                                                                     sp:predicate rdf:type ; 
+                                                                                     sp:object spin:ConstraintViolation]
+                                                                                     [sp:subject _:B46bb1189fda5589b0d672f8072e865cf ; 
+                                                                                     sp:predicate spin:violationRoot ; 
+                                                                                     sp:object _:B5b7b4541ef28bee77e68319e629e9082]
+                                                                                     [sp:subject _:B46bb1189fda5589b0d672f8072e865cf ; 
+                                                                                     sp:predicate spin:violationPath ; 
+                                                                                     sp:object spin:_arg3]
+                                                                                     [sp:subject _:B46bb1189fda5589b0d672f8072e865cf ; 
+                                                                                     sp:predicate spin:violationPath ; 
+                                                                                     sp:object spin:_arg4]) ; 
+                                                                       a sp:Construct];
+                                                            spin:constraint [spl:valueType rdf:Property ; 
+                                                                             spl:predicate sp:arg7 ; 
+                                                                             rdfs:comment "Select second property of trusted reference that holds legal values for property 2!" ; 
+                                                                             a spl:Argument],
+                                                                            [spl:valueType rdf:Property ; 
+                                                                             spl:predicate sp:arg6 ; 
+                                                                             rdfs:comment "Select first property of trusted reference that holds legal values for property 1!" ; 
+                                                                             a spl:Argument],
+                                                                            [spl:valueType rdf:Property ; 
+                                                                             spl:predicate sp:arg4 ; 
+                                                                             rdfs:comment "Select property 2 of functional dependency!" ; 
+                                                                             a spl:Argument],
+                                                                            [spl:valueType rdf:Property ; 
+                                                                             spl:predicate sp:arg2 ; 
+                                                                             rdfs:comment "Select property that holds blank nodes!" ; 
+                                                                             a spl:Argument],
+                                                                            [spl:valueType rdfs:Class ; 
+                                                                             spl:predicate sp:arg1 ; 
+                                                                             rdfs:comment "Select class that holds instances to be tested!" ; 
+                                                                             a spl:Argument],
+                                                                            [spl:valueType rdfs:Class ; 
+                                                                             spl:predicate sp:arg5 ; 
+                                                                             rdfs:comment "Select class of trusted reference that holds instances with legal value combinations!" ; 
+                                                                             a spl:Argument],
+                                                                            [spl:valueType rdf:Property ; 
+                                                                             spl:predicate sp:arg3 ; 
+                                                                             rdfs:comment "Select property 1 of functional dependency!" ; 
+                                                                             a spl:Argument];
+                                                            spin:labelTemplate "Value combinations of properties {?arg3} and {?arg4} must always be identical with value combinations of properties {?arg6} and {?arg7} of class {?arg5}  for all instances of class {?arg1}!";
+                                                            a spin:Template;
+                                                            rdfs:comment """This query is designed to test (blank node) instances of the property-and-node element (rdf:parseType=\"Resource\") ?arg2 that are part of the instances of class ?arg 1. The query flags instances of property ?arg2 with properties ?arg3 and ?arg4 that do not have the exact value combination in instances of the trusted reference in class ?arg5. The semantics of property ?arg3 should be equal with property ?arg6, and the semantics of property ?arg4 should be equal with ?arg7. The query tolerates homonymous values, i.e. the same value may be assigned to different dependent values. Value combinations that cannot be found in the trusted reference will also be flagged. The query will also test the existence of a single value in the trusted reference when one property of the tested data is missing."""@en;
+                                                            rdfs:label "Functional dependency check in blank node instances of a class with trusted reference"@en;
+                                                            rdfs:subClassOf dqc:FunctionalDependencyConstraints.
+dqc:FunctionalDependentEmptyValueAll spin:body [sp:where ([sp:subject _:Bb5038e0d68759b0c6e169aebf2cdc080 ; 
+                                                          sp:predicate spin:_arg1 ; 
+                                                          sp:object spin:_arg2]
+                                                          [sp:expression [sp:arg1 [sp:arg3 "" ; 
+                                                                                  sp:arg2 spin:_arg3 ; 
+                                                                                  sp:arg1 _:Bb5038e0d68759b0c6e169aebf2cdc080 ; 
+                                                                                  a spl:hasValue] ; 
+                                                                         a sp:not] ; 
+                                                          a sp:Filter]) ; 
+                                                sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg3 .
+}
+WHERE {
+    ?s ?arg1 ?arg2 .
+    FILTER (!spl:hasValue(?s, ?arg3, \"\"^^xsd:string)) 
+}""" ; 
+                                                sp:templates ([sp:subject _:B6dba93dccac4677f2aa99a4989de07b2 ; 
+                                                              sp:predicate rdf:type ; 
+                                                              sp:object spin:ConstraintViolation]
+                                                              [sp:subject _:B6dba93dccac4677f2aa99a4989de07b2 ; 
+                                                              sp:predicate spin:violationRoot ; 
+                                                              sp:object _:Bb5038e0d68759b0c6e169aebf2cdc080]
+                                                              [sp:subject _:B6dba93dccac4677f2aa99a4989de07b2 ; 
+                                                              sp:predicate spin:violationPath ; 
+                                                              sp:object spin:_arg3]) ; 
+                                                a sp:Construct];
+                                     spin:constraint [spl:valueType rdf:Property ; 
+                                                      spl:predicate sp:arg1 ; 
+                                                      rdfs:comment "Select property 1 of functional dependency!" ; 
+                                                      a spl:Argument],
+                                                     [spl:valueType xsd:string ; 
+                                                      spl:predicate sp:arg2 ; 
+                                                      rdfs:comment "Enter functionally dependent value 1 of property 1!"@en ; 
+                                                      a spl:Argument],
+                                                     [spl:valueType rdf:Property ; 
+                                                      spl:predicate sp:arg3 ; 
+                                                      rdfs:comment "Select property that must contain empty literal!" ; 
+                                                      a spl:Argument];
+                                     spin:labelTemplate "When {?arg1} has value {?arg2}, then {?arg3} has to be empty!";
+                                     a spin:Template;
+                                     rdfs:comment "This query returns all instances with value ?arg2 for property ?arg1 that do not have an empty literal string for property ?arg3."@en;
+                                     rdfs:subClassOf dqc:FunctionalDependencyConstraints.
+dqc:InconsistentValueRangeAll spin:body [sp:where ([sp:subject _:B4ff42f1a8032cb3dcd4e6455d0b9e66c ; 
+                                                   sp:predicate spin:_arg1 ; 
+                                                   sp:object _:B52ad0f8337fdd0c70f61846140a6146d]
+                                                   [sp:subject _:B4ff42f1a8032cb3dcd4e6455d0b9e66c ; 
+                                                   sp:predicate spin:_arg2 ; 
+                                                   sp:object _:Bea08dfc8638975e8edb13495c17f482c]
+                                                   [sp:expression [sp:arg2 _:Bea08dfc8638975e8edb13495c17f482c ; 
+                                                                  sp:arg1 _:B52ad0f8337fdd0c70f61846140a6146d ; 
+                                                                  a sp:ge] ; 
+                                                   a sp:Filter]) ; 
+                                         sp:text """CONSTRUCT 
+  { _:c0 rdf:type spin:ConstraintViolation .
+    _:c0 spin:violationRoot ?instance .
+    _:c0 spin:violationPath ?arg1 .
+    _:c0 spin:violationPath ?arg2 .}
+WHERE
+  { ?instance ?arg1 ?from .
+    ?instance ?arg2 ?through
+    FILTER ( ?from >= ?through )
+  }""" ; 
+                                         sp:templates ([sp:subject _:B9b7b27fa7696f8e8f616642c6591b073 ; 
+                                                       sp:predicate rdf:type ; 
+                                                       sp:object spin:ConstraintViolation]
+                                                       [sp:subject _:B9b7b27fa7696f8e8f616642c6591b073 ; 
+                                                       sp:predicate spin:violationRoot ; 
+                                                       sp:object _:B4ff42f1a8032cb3dcd4e6455d0b9e66c]
+                                                       [sp:subject _:B9b7b27fa7696f8e8f616642c6591b073 ; 
+                                                       sp:predicate spin:violationPath ; 
+                                                       sp:object spin:_arg1]
+                                                       [sp:subject _:B9b7b27fa7696f8e8f616642c6591b073 ; 
+                                                       sp:predicate spin:violationPath ; 
+                                                       sp:object spin:_arg2]) ; 
+                                         a sp:Construct];
+                              spin:constraint [spl:valueType rdf:Property ; 
+                                               spl:predicate sp:arg2 ; 
+                                               rdfs:comment "Please enter the datatype property that shall hold the greater value!" ; 
+                                               a spl:Argument],
+                                              [spl:valueType rdf:Property ; 
+                                               spl:predicate sp:arg1 ; 
+                                               rdfs:comment "Please enter the datatype property that shall hold the lower value!" ; 
+                                               a spl:Argument];
+                              spin:labelTemplate "Value in {?arg1} cannot be greater than value of {?arg2}!";
+                              a spin:Template;
+                              rdfs:comment "This query flags all instances with inconsistant value ranges. Among others it is suitable for value ranges with datatypes xsd:integer, xsd:int, xsd:float, xsd:date, and xsd:dateTime. The literals must be typed."@en;
+                              rdfs:label "Inconsistent value range all";
+                              rdfs:subClassOf dqc:ValueRangeConstraints.
+dqc:LegalValueConstraints spin:abstract true;
+                          a spin:Template;
+                          rdfs:comment "Legal value constraints identify values that are either not explicitly allowed or explicitly illegal."@en;
+                          rdfs:label "legal value constraints"@en;
+                          rdfs:subClassOf dqc:ConstraintTemplates.
+dqc:LettersAll spin:body [sp:where ([sp:subject _:B043e3101ef8fae4e38161f06bc044f4e ; 
+                                    sp:predicate spin:_arg1 ; 
+                                    sp:object _:B6faaef1b59ac46b40d55037cecf1de4c]
+                                    [sp:expression [sp:arg1 [sp:arg2 "^([A-Za-z])*$" ; 
+                                                            sp:arg1 [sp:arg1 _:B6faaef1b59ac46b40d55037cecf1de4c ; 
+                                                                     a sp:str] ; 
+                                                            a sp:regex] ; 
+                                                   a sp:not] ; 
+                                    a sp:Filter]) ; 
+                          sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg1 .
+}
+WHERE {
+    ?s ?arg1 ?value .
+    FILTER (!regex(str(?value), \"^([A-Za-z])*$\"^^xsd:string)) 
+}""" ; 
+                          sp:templates ([sp:subject _:B550c49c7359e1482c9229c4376bbe482 ; 
+                                        sp:predicate rdf:type ; 
+                                        sp:object spin:ConstraintViolation]
+                                        [sp:subject _:B550c49c7359e1482c9229c4376bbe482 ; 
+                                        sp:predicate spin:violationRoot ; 
+                                        sp:object _:B043e3101ef8fae4e38161f06bc044f4e]
+                                        [sp:subject _:B550c49c7359e1482c9229c4376bbe482 ; 
+                                        sp:predicate spin:violationPath ; 
+                                        sp:object spin:_arg1]) ; 
+                          a sp:Construct];
+               spin:constraint [spl:valueType rdf:Property ; 
+                                spl:predicate sp:arg1 ; 
+                                rdfs:comment "Select property to be tested!" ; 
+                                a spl:Argument];
+               spin:labelTemplate "Syntax rule: only letters allowed in {?arg1}!";
+               a spin:Template;
+               rdfs:comment "This query flags all instances with property ?arg1 that do not have letters as literal values. The query tolerates language tags."@en;
+               rdfs:label "syntax check in all instances: only letters allowed"@en;
+               rdfs:subClassOf dqc:SyntaxConstraints.
+dqc:LettersAndDotsAll spin:body [sp:where ([sp:subject _:B66033c9fa1882331f443173bc3a14408 ; 
+                                           sp:predicate spin:_arg1 ; 
+                                           sp:object _:Bddcb3dbf2a5f3763eee7a4287d123f6f]
+                                           [sp:expression [sp:arg1 [sp:arg2 "^([A-Za-z\\. ])*$" ; 
+                                                                   sp:arg1 [sp:arg1 _:Bddcb3dbf2a5f3763eee7a4287d123f6f ; 
+                                                                            a sp:str] ; 
+                                                                   a sp:regex] ; 
+                                                          a sp:not] ; 
+                                           a sp:Filter]) ; 
+                                 sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg1 .
+}
+WHERE {
+    ?s ?arg1 ?value .
+    FILTER (!regex(str(?value), \"^([A-Za-z\\\\. ])*$\"^^xsd:string)) 
+}""" ; 
+                                 sp:templates ([sp:subject _:B56eea82e97bffb041372eb7443e6f35c ; 
+                                               sp:predicate rdf:type ; 
+                                               sp:object spin:ConstraintViolation]
+                                               [sp:subject _:B56eea82e97bffb041372eb7443e6f35c ; 
+                                               sp:predicate spin:violationRoot ; 
+                                               sp:object _:B66033c9fa1882331f443173bc3a14408]
+                                               [sp:subject _:B56eea82e97bffb041372eb7443e6f35c ; 
+                                               sp:predicate spin:violationPath ; 
+                                               sp:object spin:_arg1]) ; 
+                                 a sp:Construct];
+                      spin:constraint [spl:valueType rdf:Property ; 
+                                       spl:predicate sp:arg1 ; 
+                                       rdfs:comment "Select property to be tested!" ; 
+                                       a spl:Argument];
+                      spin:labelTemplate "Syntax rule: only letters and dots allowed in {?arg1}!";
+                      a spin:Template;
+                      rdfs:comment "This query flags all instances with property ?arg1 that have characters other than letters or dots in literal values. The query tolerates language tags."@en;
+                      rdfs:label "syntax check in all instances: only letters and dots allowed"@en;
+                      rdfs:subClassOf dqc:SyntaxConstraints.
+dqc:ListedIllegalValueAll spin:body [sp:where ([sp:subject _:Bd1f2c53750436d60dca6affe8995a763 ; 
+                                               sp:predicate spin:_arg1 ; 
+                                               sp:object _:B7fad0a8bf20a66d6709462e11bb6ff3c]
+                                               [sp:elements ([sp:subject _:B24d252a77ca44b206d813706cbfd6a8b ; 
+                                                            sp:predicate rdf:type ; 
+                                                            sp:object spin:_arg2]
+                                                            [sp:subject _:B24d252a77ca44b206d813706cbfd6a8b ; 
+                                                            sp:predicate spin:_arg3 ; 
+                                                            sp:object _:B640f94944ecdf39dff0af44916297b2e]
+                                                            [sp:expression [sp:arg2 [sp:arg1 _:B7fad0a8bf20a66d6709462e11bb6ff3c ; 
+                                                                                    a sp:str] ; 
+                                                                           sp:arg1 [sp:arg1 _:B640f94944ecdf39dff0af44916297b2e ; 
+                                                                                    a sp:str] ; 
+                                                                           a sp:eq] ; 
+                                                            a sp:Filter]) ; 
+                                               a sp:Optional]
+                                               [sp:expression [sp:arg1 _:B640f94944ecdf39dff0af44916297b2e ; 
+                                                              a sp:bound] ; 
+                                               a sp:Filter]) ; 
+                                     sp:text """CONSTRUCT 
+  { _:c0 rdf:type spin:ConstraintViolation .
+    _:c0 spin:violationRoot ?s .
+    _:c0 spin:violationPath ?arg1 .}
+WHERE
+  { ?s ?arg1 ?value
+    OPTIONAL
+      { ?s2 rdf:type ?arg2 .
+        ?s2 ?arg3 ?value1
+        FILTER ( str(?value1) = str(?value) )
+      }
+    FILTER bound(?value1)
+  }""" ; 
+                                     sp:templates ([sp:subject _:B7493a2f8afb1b5c6619ebb094a681276 ; 
+                                                   sp:predicate rdf:type ; 
+                                                   sp:object spin:ConstraintViolation]
+                                                   [sp:subject _:B7493a2f8afb1b5c6619ebb094a681276 ; 
+                                                   sp:predicate spin:violationRoot ; 
+                                                   sp:object _:Bd1f2c53750436d60dca6affe8995a763]
+                                                   [sp:subject _:B7493a2f8afb1b5c6619ebb094a681276 ; 
+                                                   sp:predicate spin:violationPath ; 
+                                                   sp:object spin:_arg1]) ; 
+                                     a sp:Construct];
+                          spin:constraint [spl:valueType rdf:Property ; 
+                                           spl:predicate sp:arg1 ; 
+                                           rdfs:comment "Select property to be tested!" ; 
+                                           a spl:Argument],
+                                          [spl:valueType rdfs:Class ; 
+                                           spl:predicate sp:arg2 ; 
+                                           rdfs:comment "Select class with instances holding the illegal values!" ; 
+                                           a spl:Argument],
+                                          [spl:valueType rdf:Property ; 
+                                           spl:predicate sp:arg3 ; 
+                                           rdfs:comment "Select property holding the illegal values!" ; 
+                                           a spl:Argument];
+                          spin:labelTemplate "Property {?arg1} cannot have the same values as property {?arg3} in class {?arg2}!";
+                          a spin:Template;
+                          rdfs:comment "This query flags all instances with property ?arg1 that have values which are contained in property ?arg3 of instances of class ?arg2. The query tolerates chaotic assignments of language tags."@en;
+                          rdfs:label "Illegal value check in all instances"@en;
+                          rdfs:subClassOf dqc:LegalValueConstraints.
+dqc:ListedIllegalValueClass spin:body [sp:where ([sp:subject _:B18d75847d79491a043f4b9ebee2ae829 ; 
+                                                 sp:predicate rdf:type ; 
+                                                 sp:object spin:_arg1]
+                                                 [sp:subject _:B18d75847d79491a043f4b9ebee2ae829 ; 
+                                                 sp:predicate spin:_arg2 ; 
+                                                 sp:object _:Bba8db777ef86e841390137cd37083a90]
+                                                 [sp:elements ([sp:subject _:Bf43a677efe75042729f419caa82520e6 ; 
+                                                              sp:predicate rdf:type ; 
+                                                              sp:object spin:_arg3]
+                                                              [sp:subject _:Bf43a677efe75042729f419caa82520e6 ; 
+                                                              sp:predicate spin:_arg4 ; 
+                                                              sp:object _:B86957617acef45fd0bd7920166d156af]
+                                                              [sp:expression [sp:arg2 [sp:arg1 _:Bba8db777ef86e841390137cd37083a90 ; 
+                                                                                      a sp:str] ; 
+                                                                             sp:arg1 [sp:arg1 _:B86957617acef45fd0bd7920166d156af ; 
+                                                                                      a sp:str] ; 
+                                                                             a sp:eq] ; 
+                                                              a sp:Filter]) ; 
+                                                 a sp:Optional]
+                                                 [sp:expression [sp:arg1 _:B86957617acef45fd0bd7920166d156af ; 
+                                                                a sp:bound] ; 
+                                                 a sp:Filter]) ; 
+                                       sp:text """CONSTRUCT
+{   _:c0 rdf:type spin:ConstraintViolation .
+    _:c0 spin:violationRoot ?s .
+    _:c0 spin:violationPath ?arg2 .
+}
+WHERE
+  { ?s rdf:type ?arg1 .
+    ?s ?arg2 ?value
+    OPTIONAL
+      { ?s2 rdf:type ?arg3 .
+        ?s2 ?arg4 ?value1
+        FILTER ( str(?value1) = str(?value) )
+      }
+    FILTER bound(?value1)
+  }""" ; 
+                                       sp:templates ([sp:subject _:Bde8e969da97bfdfdcd4e1676b2a84263 ; 
+                                                     sp:predicate rdf:type ; 
+                                                     sp:object spin:ConstraintViolation]
+                                                     [sp:subject _:Bde8e969da97bfdfdcd4e1676b2a84263 ; 
+                                                     sp:predicate spin:violationRoot ; 
+                                                     sp:object _:B18d75847d79491a043f4b9ebee2ae829]
+                                                     [sp:subject _:Bde8e969da97bfdfdcd4e1676b2a84263 ; 
+                                                     sp:predicate spin:violationPath ; 
+                                                     sp:object spin:_arg2]) ; 
+                                       a sp:Construct];
+                            spin:constraint [spl:valueType rdfs:Class ; 
+                                             spl:predicate sp:arg1 ; 
+                                             rdfs:comment "Select class with instances to be tested!" ; 
+                                             a spl:Argument],
+                                            [spl:valueType rdf:Property ; 
+                                             spl:predicate sp:arg2 ; 
+                                             rdfs:comment "Select property to be tested!" ; 
+                                             a spl:Argument],
+                                            [spl:valueType rdf:Property ; 
+                                             spl:predicate sp:arg4 ; 
+                                             rdfs:comment "Select property that holds illegal values!" ; 
+                                             a spl:Argument],
+                                            [spl:valueType rdfs:Class ; 
+                                             spl:predicate sp:arg3 ; 
+                                             rdfs:comment "Select class that holds instances with illegal values!" ; 
+                                             a spl:Argument];
+                            spin:labelTemplate "Instances of class {?arg1} cannot have the same values for property {?arg2} as property {?arg4} in class {?arg3}!";
+                            a spin:Template;
+                            rdfs:comment "This query flags all instances of class ?arg1 with property ?arg2 that have values which are contained in property ?arg4 of instances of class ?arg3. The query tolerates chaotic assignments of language tags."@en;
+                            rdfs:label "Illegal value check in class instances"@en;
+                            rdfs:subClassOf dqc:LegalValueConstraints.
+dqc:ListedLegalValueAll spin:body [sp:where ([sp:subject _:B5fbbfc283ec00f03ea946636bc76ba2d ; 
+                                             sp:predicate spin:_arg1 ; 
+                                             sp:object _:B2a5de8806463b00f50d07d384cbbba48]
+                                             [sp:elements ([sp:subject _:B8cfde04bb81d90a689dab9bc5e45c21c ; 
+                                                          sp:predicate rdf:type ; 
+                                                          sp:object spin:_arg2]
+                                                          [sp:subject _:B8cfde04bb81d90a689dab9bc5e45c21c ; 
+                                                          sp:predicate spin:_arg3 ; 
+                                                          sp:object _:B4d365f7a8321bad9e10ca5df1656bcdc]
+                                                          [sp:expression [sp:arg2 [sp:arg1 _:B2a5de8806463b00f50d07d384cbbba48 ; 
+                                                                                  a sp:str] ; 
+                                                                         sp:arg1 [sp:arg1 _:B4d365f7a8321bad9e10ca5df1656bcdc ; 
+                                                                                  a sp:str] ; 
+                                                                         a sp:eq] ; 
+                                                          a sp:Filter]) ; 
+                                             a sp:Optional]
+                                             [sp:expression [sp:arg1 [sp:arg1 _:B4d365f7a8321bad9e10ca5df1656bcdc ; 
+                                                                     a sp:bound] ; 
+                                                            a sp:not] ; 
+                                             a sp:Filter]) ; 
+                                   sp:text """CONSTRUCT 
+  { _:c0 rdf:type spin:ConstraintViolation .
+    _:c0 spin:violationRoot ?s .
+    _:c0 spin:violationPath ?arg1 .}
+WHERE
+  { ?s ?arg1 ?value
+    OPTIONAL
+      { ?s2 rdf:type ?arg2 .
+        ?s2 ?arg3 ?value1
+        FILTER ( str(?value1) = str(?value) )
+      }
+    FILTER ( ! bound(?value1) )
+  }""" ; 
+                                   sp:templates ([sp:subject _:Bf211f62ae72f64cec1ffbe4df0a5f8a1 ; 
+                                                 sp:predicate rdf:type ; 
+                                                 sp:object spin:ConstraintViolation]
+                                                 [sp:subject _:Bf211f62ae72f64cec1ffbe4df0a5f8a1 ; 
+                                                 sp:predicate spin:violationRoot ; 
+                                                 sp:object _:B5fbbfc283ec00f03ea946636bc76ba2d]
+                                                 [sp:subject _:Bf211f62ae72f64cec1ffbe4df0a5f8a1 ; 
+                                                 sp:predicate spin:violationPath ; 
+                                                 sp:object spin:_arg1]) ; 
+                                   a sp:Construct];
+                        spin:constraint [spl:valueType rdf:Property ; 
+                                         spl:predicate sp:arg3 ; 
+                                         rdfs:comment "Select property that holds legal values!" ; 
+                                         a spl:Argument],
+                                        [spl:valueType rdf:Property ; 
+                                         spl:predicate sp:arg1 ; 
+                                         rdfs:comment "Select property to be tested!" ; 
+                                         a spl:Argument],
+                                        [spl:valueType rdfs:Class ; 
+                                         spl:predicate sp:arg2 ; 
+                                         rdfs:comment "Select class that holds instances with legal values!" ; 
+                                         a spl:Argument];
+                        spin:labelTemplate "Property {?arg1} can only contain the same values as property {?arg3} in instances of class {?arg2}!";
+                        a spin:Template;
+                        rdfs:comment "This query flags all instances with property ?arg1 that have values which are not contained in  property ?arg3 of instances of class ?arg2. The query tolerates chaotic assignments of language tags."@en;
+                        rdfs:label "Legal value check in all instances"@en;
+                        rdfs:subClassOf dqc:LegalValueConstraints.
+dqc:ListedLegalValueClass spin:body [sp:where ([sp:subject _:B57153f86b53fa2e0b870a2d91e80be30 ; 
+                                               sp:predicate rdf:type ; 
+                                               sp:object spin:_arg1]
+                                               [sp:subject _:B57153f86b53fa2e0b870a2d91e80be30 ; 
+                                               sp:predicate spin:_arg2 ; 
+                                               sp:object _:B2449edea83c44a127ab4e6462765cb09]
+                                               [sp:elements ([sp:subject _:Bde835a47e3945c2ff100ad86e89473b6 ; 
+                                                            sp:predicate rdf:type ; 
+                                                            sp:object spin:_arg3]
+                                                            [sp:subject _:Bde835a47e3945c2ff100ad86e89473b6 ; 
+                                                            sp:predicate spin:_arg4 ; 
+                                                            sp:object _:B56a2c1051967ce73a40476683923cbc0]
+                                                            [sp:expression [sp:arg2 [sp:arg1 _:B2449edea83c44a127ab4e6462765cb09 ; 
+                                                                                    a sp:str] ; 
+                                                                           sp:arg1 [sp:arg1 _:B56a2c1051967ce73a40476683923cbc0 ; 
+                                                                                    a sp:str] ; 
+                                                                           a sp:eq] ; 
+                                                            a sp:Filter]) ; 
+                                               a sp:Optional]
+                                               [sp:expression [sp:arg1 [sp:arg1 _:B56a2c1051967ce73a40476683923cbc0 ; 
+                                                                       a sp:bound] ; 
+                                                              a sp:not] ; 
+                                               a sp:Filter]) ; 
+                                     sp:text """CONSTRUCT 
+  { _:c0 rdf:type spin:ConstraintViolation .
+    _:c0 spin:violationRoot ?s .
+    _:c0 spin:violationPath ?arg2 .}
+WHERE
+  { ?s rdf:type ?arg1 .
+    ?s ?arg2 ?value
+    OPTIONAL
+      { ?s2 rdf:type ?arg3 .
+        ?s2 ?arg4 ?value1
+        FILTER ( str(?value1) = str(?value) )
+      }
+    FILTER ( ! bound(?value1) )
+  }""" ; 
+                                     sp:templates ([sp:subject _:B262d55c39fe7a3d1062519e9bce32a0a ; 
+                                                   sp:predicate rdf:type ; 
+                                                   sp:object spin:ConstraintViolation]
+                                                   [sp:subject _:B262d55c39fe7a3d1062519e9bce32a0a ; 
+                                                   sp:predicate spin:violationRoot ; 
+                                                   sp:object _:B57153f86b53fa2e0b870a2d91e80be30]
+                                                   [sp:subject _:B262d55c39fe7a3d1062519e9bce32a0a ; 
+                                                   sp:predicate spin:violationPath ; 
+                                                   sp:object spin:_arg2]) ; 
+                                     a sp:Construct];
+                          spin:constraint [spl:valueType rdf:Property ; 
+                                           spl:predicate sp:arg2 ; 
+                                           rdfs:comment "Select property to be tested!" ; 
+                                           a spl:Argument],
+                                          [spl:valueType rdfs:Class ; 
+                                           spl:predicate sp:arg1 ; 
+                                           rdfs:comment "Select class with instances to be tested!" ; 
+                                           a spl:Argument],
+                                          [spl:valueType rdfs:Class ; 
+                                           spl:predicate sp:arg3 ; 
+                                           rdfs:comment "Select class that holds instances with legal values!" ; 
+                                           a spl:Argument],
+                                          [spl:valueType rdf:Property ; 
+                                           spl:predicate sp:arg4 ; 
+                                           rdfs:comment "Select property that holds legal values!" ; 
+                                           a spl:Argument];
+                          spin:labelTemplate "Instances of class {?arg1} can only contain the same values for property {?arg2} as property {?arg4} in instances of class {?arg3}!";
+                          a spin:Template;
+                          rdfs:comment "This query flags all instances of class ?arg1 with property ?arg2 that have values which are not contained in property ?arg4 of instances of class ?arg3. The query tolerates chaotic assignments of language tags."@en;
+                          rdfs:label "Legal value check in class instances"@en;
+                          rdfs:subClassOf dqc:LegalValueConstraints.
+dqc:ListedLegalValueClassOverBlankNode spin:body [sp:where ([sp:subject _:Bed76dce01a8ddb468e54de92a2b48b21 ; 
+                                                            sp:predicate rdf:type ; 
+                                                            sp:object spin:_arg1]
+                                                            [sp:subject _:Bed76dce01a8ddb468e54de92a2b48b21 ; 
+                                                            sp:predicate spin:_arg2 ; 
+                                                            sp:object _:Ba94c852bbaf0925cd7be2f25b715b605]
+                                                            [sp:subject _:Ba94c852bbaf0925cd7be2f25b715b605 ; 
+                                                            sp:predicate spin:_arg3 ; 
+                                                            sp:object _:Bf51c028295e9a42fba14e9b1708b57a7]
+                                                            [sp:elements ([sp:subject _:B1cc5d50bd121da61c4fea2ac23ff8520 ; 
+                                                                         sp:predicate rdf:type ; 
+                                                                         sp:object spin:_arg4]
+                                                                         [sp:subject _:B1cc5d50bd121da61c4fea2ac23ff8520 ; 
+                                                                         sp:predicate spin:_arg5 ; 
+                                                                         sp:object _:B3e62633afd0b5e179547d42a3f49ad9c]
+                                                                         [sp:expression [sp:arg2 [sp:arg1 _:B3e62633afd0b5e179547d42a3f49ad9c ; 
+                                                                                                 a sp:str] ; 
+                                                                                        sp:arg1 [sp:arg1 _:Bf51c028295e9a42fba14e9b1708b57a7 ; 
+                                                                                                 a sp:str] ; 
+                                                                                        a sp:eq] ; 
+                                                                         a sp:Filter]) ; 
+                                                            a sp:Optional]
+                                                            [sp:expression [sp:arg1 [sp:arg1 _:B3e62633afd0b5e179547d42a3f49ad9c ; 
+                                                                                    a sp:bound] ; 
+                                                                           a sp:not] ; 
+                                                            a sp:Filter]) ; 
+                                                  sp:text """CONSTRUCT 
+  { _:c0 rdf:type spin:ConstraintViolation .
+    _:c0 spin:violationRoot ?s .
+    _:c0 spin:violationPath ?arg2 .
+    _:c0 spin:violationPath ?arg3 .}
+WHERE
+  { ?s rdf:type ?arg1 .
+    ?s ?arg2 ?node .
+    ?node ?arg3 ?value
+    OPTIONAL
+      { ?s2 rdf:type ?arg4 .
+        ?s2 ?arg5 ?value1
+        FILTER ( str(?value) = str(?value1) )
+      }
+    FILTER ( ! bound(?value1) )
+  }""" ; 
+                                                  sp:templates ([sp:subject _:B8a3d08334c155def4748883a78f113cf ; 
+                                                                sp:predicate rdf:type ; 
+                                                                sp:object spin:ConstraintViolation]
+                                                                [sp:subject _:B8a3d08334c155def4748883a78f113cf ; 
+                                                                sp:predicate spin:violationRoot ; 
+                                                                sp:object _:Bed76dce01a8ddb468e54de92a2b48b21]
+                                                                [sp:subject _:B8a3d08334c155def4748883a78f113cf ; 
+                                                                sp:predicate spin:violationPath ; 
+                                                                sp:object spin:_arg2]
+                                                                [sp:subject _:B8a3d08334c155def4748883a78f113cf ; 
+                                                                sp:predicate spin:violationPath ; 
+                                                                sp:object spin:_arg3]) ; 
+                                                  a sp:Construct];
+                                       spin:constraint [spl:valueType rdfs:Class ; 
+                                                        spl:predicate sp:arg1 ; 
+                                                        rdfs:comment "Select class with instances to be tested!" ; 
+                                                        a spl:Argument],
+                                                       [spl:valueType rdf:Property ; 
+                                                        spl:predicate sp:arg3 ; 
+                                                        rdfs:comment "Select property to be tested!" ; 
+                                                        a spl:Argument],
+                                                       [spl:valueType rdf:Property ; 
+                                                        spl:predicate sp:arg2 ; 
+                                                        rdfs:comment "Select property that holds blank nodes!" ; 
+                                                        a spl:Argument],
+                                                       [spl:valueType rdf:Property ; 
+                                                        spl:predicate sp:arg5 ; 
+                                                        rdfs:comment "Select property that holds legal values!" ; 
+                                                        a spl:Argument],
+                                                       [spl:valueType rdfs:Class ; 
+                                                        spl:predicate sp:arg4 ; 
+                                                        rdfs:comment "Select class that holds instances with legal values!" ; 
+                                                        a spl:Argument];
+                                       spin:labelTemplate "Instances of property-and-node element {?arg2} in class {?arg1} can only contain the same values for property {?arg3} as property {?arg5} in instances of class {?arg4}!";
+                                       a spin:Template;
+                                       rdfs:comment """This query flags all instances of property-and-node element ?arg2 (rdf:parseType=\"Resource\") with property ?arg3 in class ?arg1 that have values which are not contained in property ?arg5 of instances of class ?arg3. The query tolerates chaotic assignments of language tags."""@en;
+                                       rdfs:label "Legal value check in blank node instances of a class"@en;
+                                       rdfs:subClassOf dqc:LegalValueConstraints.
+dqc:LowerLimitAll spin:body [sp:where ([sp:subject _:Bc23ff2cb34194d5936767b1c6f07a1b5 ; 
+                                       sp:predicate spin:_arg1 ; 
+                                       sp:object _:B1bf4dd94236d0456dcfad2b970051f47]
+                                       [sp:expression [sp:arg2 spin:_arg2 ; 
+                                                      sp:arg1 [sp:arg2 xsd:decimal ; 
+                                                               sp:arg1 _:B1bf4dd94236d0456dcfad2b970051f47 ; 
+                                                               a smf:cast] ; 
+                                                      a sp:lt] ; 
+                                       a sp:Filter]) ; 
+                             sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg1 .
+}
+WHERE {
+    ?s ?arg1 ?value .
+    FILTER (smf:cast(?value, xsd:decimal) < ?arg2) 
+}""" ; 
+                             sp:templates ([sp:subject _:Bd962f1654095f18ea5b769d0dd979375 ; 
+                                           sp:predicate rdf:type ; 
+                                           sp:object spin:ConstraintViolation]
+                                           [sp:subject _:Bd962f1654095f18ea5b769d0dd979375 ; 
+                                           sp:predicate spin:violationRoot ; 
+                                           sp:object _:Bc23ff2cb34194d5936767b1c6f07a1b5]
+                                           [sp:subject _:Bd962f1654095f18ea5b769d0dd979375 ; 
+                                           sp:predicate spin:violationPath ; 
+                                           sp:object spin:_arg1]) ; 
+                             a sp:Construct];
+                  spin:constraint [spl:valueType xsd:decimal ; 
+                                   spl:predicate sp:arg2 ; 
+                                   rdfs:comment "Enter lower limit!" ; 
+                                   a spl:Argument],
+                                  [spl:valueType rdf:Property ; 
+                                   spl:predicate sp:arg1 ; 
+                                   rdfs:comment "Select property to be tested!"@en ; 
+                                   a spl:Argument];
+                  spin:labelTemplate "Values in {?arg1} must be greater than {?arg2}!";
+                  a spin:Template;
+                  rdfs:comment "This query returns all instances that have a value for property ?arg1 below the user defined limit ?arg2. The query tolerates chaotic datatype assignments."@en;
+                  rdfs:label "Lower limit check in all instances"@en;
+                  rdfs:subClassOf dqc:ValueRangeConstraints.
+dqc:LowerLimitClass spin:body [sp:where ([sp:subject _:Bfcda24a3e9dba01d7a3e722ea5445299 ; 
+                                         sp:predicate rdf:type ; 
+                                         sp:object spin:_arg1]
+                                         [sp:subject _:Bfcda24a3e9dba01d7a3e722ea5445299 ; 
+                                         sp:predicate spin:_arg2 ; 
+                                         sp:object _:B386ad564d937951b43bcf0ffa2ec9640]
+                                         [sp:expression [sp:arg2 spin:_arg3 ; 
+                                                        sp:arg1 [sp:arg2 xsd:decimal ; 
+                                                                 sp:arg1 _:B386ad564d937951b43bcf0ffa2ec9640 ; 
+                                                                 a smf:cast] ; 
+                                                        a sp:lt] ; 
+                                         a sp:Filter]) ; 
+                               sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg2 .
+}
+WHERE {
+    ?s a ?arg1 .
+    ?s ?arg2 ?value .
+    FILTER (smf:cast(?value, xsd:decimal) < ?arg3) 
+}""" ; 
+                               sp:templates ([sp:subject _:B4472b3d79453f493a33fe159a993047f ; 
+                                             sp:predicate rdf:type ; 
+                                             sp:object spin:ConstraintViolation]
+                                             [sp:subject _:B4472b3d79453f493a33fe159a993047f ; 
+                                             sp:predicate spin:violationRoot ; 
+                                             sp:object _:Bfcda24a3e9dba01d7a3e722ea5445299]
+                                             [sp:subject _:B4472b3d79453f493a33fe159a993047f ; 
+                                             sp:predicate spin:violationPath ; 
+                                             sp:object spin:_arg2]) ; 
+                               a sp:Construct];
+                    spin:constraint [spl:valueType rdf:Property ; 
+                                     spl:predicate sp:arg2 ; 
+                                     rdfs:comment "Select property to be tested!"@en ; 
+                                     a spl:Argument],
+                                    [spl:valueType xsd:decimal ; 
+                                     spl:predicate sp:arg3 ; 
+                                     rdfs:comment "Enter lower limit! {@en}" ; 
+                                     a spl:Argument],
+                                    [spl:valueType rdfs:Class ; 
+                                     spl:predicate sp:arg1 ; 
+                                     rdfs:comment "Select class that contains instances to be tested!"@en ; 
+                                     a spl:Argument];
+                    spin:labelTemplate "Values in {?arg2} for instances of class {?arg1} must be greater than {?arg3}!";
+                    a spin:Template;
+                    rdfs:comment "This query returns all instances of class ?arg1 that have a value for property ?arg2 below the user defined limit ?arg3. The query tolerates chaotic datatype assignments."@en;
+                    rdfs:label "Lower limit check in all instances of a class"@en;
+                    rdfs:subClassOf dqc:ValueRangeConstraints.
+dqc:MissingElementConstraints spin:abstract true;
+                              a spin:Template;
+                              rdfs:comment "Missing element constraints identify elements in the data set that are missing but required."@en;
+                              rdfs:label "missing element constraints"@en;
+                              rdfs:subClassOf dqc:ConstraintTemplates.
+dqc:MissingLiterals spin:body [sp:where ([sp:subject _:B9baaa7cf7853f5a7cae7d2336415f002 ; 
+                                         sp:predicate rdf:type ; 
+                                         sp:object spin:_arg1]
+                                         [sp:subject _:B9baaa7cf7853f5a7cae7d2336415f002 ; 
+                                         sp:predicate spin:_arg2 ; 
+                                         sp:object ""]) ; 
+                               sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg2 .
+}
+WHERE {
+    ?s a ?arg1 .
+    ?s ?arg2 \"\"^^xsd:string .
+}""" ; 
+                               sp:templates ([sp:subject _:B4a6a3ea56b5a2e7660e125c9ceeaad56 ; 
+                                             sp:predicate rdf:type ; 
+                                             sp:object spin:ConstraintViolation]
+                                             [sp:subject _:B4a6a3ea56b5a2e7660e125c9ceeaad56 ; 
+                                             sp:predicate spin:violationRoot ; 
+                                             sp:object _:B9baaa7cf7853f5a7cae7d2336415f002]
+                                             [sp:subject _:B4a6a3ea56b5a2e7660e125c9ceeaad56 ; 
+                                             sp:predicate spin:violationPath ; 
+                                             sp:object spin:_arg2]) ; 
+                               a sp:Construct];
+                    spin:constraint [spl:valueType rdfs:Class ; 
+                                     spl:predicate sp:arg1 ; 
+                                     rdfs:comment "Select class to be tested!"@en ; 
+                                     a spl:Argument],
+                                    [spl:valueType rdf:Property ; 
+                                     spl:predicate sp:arg2 ; 
+                                     rdfs:comment "Select property to be tested!" ; 
+                                     a spl:Argument];
+                    spin:labelTemplate "Mandatory literals in {?arg2} of class {?arg1}!";
+                    a spin:Template;
+                    rdfs:comment "This query returns all instances of class ?arg1 where the literal for ?arg2 is empty. It does not return instances where the whole property ?arg2 is missing."@en;
+                    rdfs:label "mandatory literal value check in instances of a class"@en;
+                    rdfs:subClassOf dqc:MissingElementConstraints.
+dqc:MissingLiteralsAndProperties spin:body [sp:where ([sp:elements (([sp:subject spin:_this ; 
+                                                                   sp:predicate rdf:type ; 
+                                                                   sp:object spin:_arg1]
+                                                                   [sp:subject spin:_this ; 
+                                                                   sp:predicate spin:_arg2 ; 
+                                                                   sp:object ""])
+                                                                   ([sp:subject spin:_this ; 
+                                                                   sp:predicate rdf:type ; 
+                                                                   sp:object spin:_arg1]
+                                                                   [sp:elements ([sp:subject spin:_this ; 
+                                                                                sp:predicate spin:_arg2 ; 
+                                                                                sp:object [sp:varName "value"]]) ; 
+                                                                   a sp:NotExists])) ; 
+                                                      a sp:Union]) ; 
+                                            sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?this .
+    _:b0 spin:violationPath ?arg2 .
+}
+WHERE {
+    {
+        ?this a ?arg1 .
+        ?this ?arg2 \"\" .
+    }
+    UNION
+    {
+        ?this a ?arg1 .
+        NOT EXISTS {
+            ?this ?arg2 ?value .
+        } 
+    } 
+}""" ; 
+                                            sp:templates ([sp:subject _:B853e7afc4df09d0ee78000849411f5f9 ; 
+                                                          sp:predicate rdf:type ; 
+                                                          sp:object spin:ConstraintViolation]
+                                                          [sp:subject _:B853e7afc4df09d0ee78000849411f5f9 ; 
+                                                          sp:predicate spin:violationRoot ; 
+                                                          sp:object spin:_this]
+                                                          [sp:subject _:B853e7afc4df09d0ee78000849411f5f9 ; 
+                                                          sp:predicate spin:violationPath ; 
+                                                          sp:object spin:_arg2]) ; 
+                                            a sp:Construct];
+                                 spin:constraint [spl:valueType rdf:Property ; 
+                                                  spl:predicate sp:arg2 ; 
+                                                  rdfs:comment "Select property to be tested!" ; 
+                                                  a spl:Argument],
+                                                 [spl:valueType rdfs:Class ; 
+                                                  spl:predicate sp:arg1 ; 
+                                                  rdfs:comment "Select class that contains intances to be tested!" ; 
+                                                  a spl:Argument];
+                                 spin:labelTemplate "Property {?arg2} is mandatory and must not contain empty literals for instances of class {?arg1}!";
+                                 a spin:Template;
+                                 rdfs:comment "This query returns all instances of class ?arg1 where the literal for ?arg2 is empty or the whole property ?arg2 is missing."@en;
+                                 rdfs:label "Mandatory literal value and property check in instances of a class"@en;
+                                 rdfs:subClassOf dqc:MissingElementConstraints.
+dqc:MissingProperties spin:body [sp:where ([sp:subject _:Bd52fe249115bf7f075daf575d9d93a2a ; 
+                                           sp:predicate rdf:type ; 
+                                           sp:object spin:_arg1]
+                                           [sp:elements ([sp:subject _:Bd52fe249115bf7f075daf575d9d93a2a ; 
+                                                        sp:predicate spin:_arg2 ; 
+                                                        sp:object [sp:varName "value"]]) ; 
+                                           a sp:NotExists]) ; 
+                                 sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg2 .
+}
+WHERE {
+    ?s a ?arg1 .
+    NOT EXISTS {
+        ?s ?arg2 ?value .
+    } 
+}""" ; 
+                                 sp:templates ([sp:subject _:Bfdd99e9800603cb05b2ecdc3ba8c50b9 ; 
+                                               sp:predicate rdf:type ; 
+                                               sp:object spin:ConstraintViolation]
+                                               [sp:subject _:Bfdd99e9800603cb05b2ecdc3ba8c50b9 ; 
+                                               sp:predicate spin:violationRoot ; 
+                                               sp:object _:Bd52fe249115bf7f075daf575d9d93a2a]
+                                               [sp:subject _:Bfdd99e9800603cb05b2ecdc3ba8c50b9 ; 
+                                               sp:predicate spin:violationPath ; 
+                                               sp:object spin:_arg2]) ; 
+                                 a sp:Construct];
+                      spin:constraint [spl:valueType rdfs:Class ; 
+                                       spl:predicate sp:arg1 ; 
+                                       rdfs:comment "Select class that contains instances to be tested!"@en ; 
+                                       a spl:Argument],
+                                      [spl:valueType rdf:Property ; 
+                                       spl:predicate sp:arg2 ; 
+                                       rdfs:comment "Select property to be tested!"@en ; 
+                                       a spl:Argument];
+                      spin:labelTemplate "Property {?arg2} is mandatory but may contain empty literals for instances of class {?arg1}!";
+                      a spin:Template;
+                      rdfs:comment "This query returns all instances of class ?arg1 where property ?arg2 is missing. It explicitly tolerates empty literal values in property ?arg2."@en;
+                      rdfs:label "Mandatory property check in instances of a class"@en;
+                      rdfs:subClassOf dqc:MissingElementConstraints.
+dqc:NumbersAll spin:body [sp:where ([sp:subject _:B3f0c78cbbcaa3536b44008148d992d54 ; 
+                                    sp:predicate spin:_arg1 ; 
+                                    sp:object _:Bff8586249213af7abdaf25a891308a4b]
+                                    [sp:expression [sp:arg1 [sp:arg2 "^([0-9])*$" ; 
+                                                            sp:arg1 [sp:arg1 _:Bff8586249213af7abdaf25a891308a4b ; 
+                                                                     a sp:str] ; 
+                                                            a sp:regex] ; 
+                                                   a sp:not] ; 
+                                    a sp:Filter]) ; 
+                          sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg1 .
+}
+WHERE {
+    ?s ?arg1 ?value .
+    FILTER (!regex(str(?value), \"^([0-9])*$\"^^xsd:string)) 
+}""" ; 
+                          sp:templates ([sp:subject _:Bb53eef7784bba703ae32f3a3377c0dc0 ; 
+                                        sp:predicate rdf:type ; 
+                                        sp:object spin:ConstraintViolation]
+                                        [sp:subject _:Bb53eef7784bba703ae32f3a3377c0dc0 ; 
+                                        sp:predicate spin:violationRoot ; 
+                                        sp:object _:B3f0c78cbbcaa3536b44008148d992d54]
+                                        [sp:subject _:Bb53eef7784bba703ae32f3a3377c0dc0 ; 
+                                        sp:predicate spin:violationPath ; 
+                                        sp:object spin:_arg1]) ; 
+                          a sp:Construct];
+               spin:constraint [spl:valueType rdf:Property ; 
+                                spl:predicate sp:arg1 ; 
+                                rdfs:comment "Select property to be tested!" ; 
+                                a spl:Argument];
+               spin:labelTemplate "Syntax rule: only numbers allowed in {?arg1}!";
+               a spin:Template;
+               rdfs:comment "This query flags all instances with property ?arg1 that have characters other than numbers as literal values."@en;
+               rdfs:label "syntax check in all instances: only numbers allowed"@en;
+               rdfs:subClassOf dqc:SyntaxConstraints.
+dqc:SyntaxConstraints spin:abstract true;
+                      a spin:Template;
+                      rdfs:comment "Syntax constraints identify values that do not adhere to syntactical rules. {@en} ";
+                      rdfs:label "syntax constraints"@en;
+                      rdfs:subClassOf dqc:ConstraintTemplates.
+dqc:UniqueValueAll spin:body [sp:where ([sp:subject _:B4eaedc8e395bd80ad3cf5f8cfd8c2804 ; 
+                                        sp:predicate spin:_arg1 ; 
+                                        sp:object _:Baa4a5c7edfebd6d744f2978c9463ff6d]
+                                        [sp:subject _:B001c6fbf9a80fc057024cf721434c59d ; 
+                                        sp:predicate spin:_arg1 ; 
+                                        sp:object _:B8de26f9d84970171665d3042d5defca0]
+                                        [sp:expression [sp:arg2 [sp:arg2 _:B001c6fbf9a80fc057024cf721434c59d ; 
+                                                                sp:arg1 _:B4eaedc8e395bd80ad3cf5f8cfd8c2804 ; 
+                                                                a sp:ne] ; 
+                                                       sp:arg1 [sp:arg2 [sp:arg1 _:B8de26f9d84970171665d3042d5defca0 ; 
+                                                                         a sp:str] ; 
+                                                                sp:arg1 [sp:arg1 _:Baa4a5c7edfebd6d744f2978c9463ff6d ; 
+                                                                         a sp:str] ; 
+                                                                a sp:eq] ; 
+                                                       a sp:and] ; 
+                                        a sp:Filter]) ; 
+                              sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?a .
+    _:b0 spin:violationPath ?arg1 .
+}
+WHERE {
+    ?a ?arg1 ?uniqueValue1 .
+    ?b ?arg1 ?uniqueValue2 .
+    FILTER ((str(?uniqueValue1) = str(?uniqueValue2)) && (?a != ?b)) 
+}""" ; 
+                              sp:templates ([sp:subject _:B6883d14f724694cf11a6b9f673925e7b ; 
+                                            sp:predicate rdf:type ; 
+                                            sp:object spin:ConstraintViolation]
+                                            [sp:subject _:B6883d14f724694cf11a6b9f673925e7b ; 
+                                            sp:predicate spin:violationRoot ; 
+                                            sp:object _:B4eaedc8e395bd80ad3cf5f8cfd8c2804]
+                                            [sp:subject _:B6883d14f724694cf11a6b9f673925e7b ; 
+                                            sp:predicate spin:violationPath ; 
+                                            sp:object spin:_arg1]) ; 
+                              a sp:Construct];
+                   spin:constraint [spl:valueType rdf:Property ; 
+                                    spl:predicate sp:arg1 ; 
+                                    rdfs:comment "Select property to be tested!"@en ; 
+                                    a spl:Argument];
+                   spin:labelTemplate "Values in {?arg1} must be unique!";
+                   a spin:Template;
+                   rdfs:comment "This query returns all instances where the value for property ?arg1 is not unique in the tested data set. The query tolerates chaotic language tag assignments."@en;
+                   rdfs:label "Uniqueness check for all values in a property"@en;
+                   rdfs:subClassOf dqc:UniquenessConstraints.
+dqc:UniqueValueClass spin:body [sp:where ([sp:subject _:Bef91c18a1cdf1820188a7b2f253d17bc ; 
+                                          sp:predicate rdf:type ; 
+                                          sp:object spin:_arg1]
+                                          [sp:subject _:Bef91c18a1cdf1820188a7b2f253d17bc ; 
+                                          sp:predicate spin:_arg2 ; 
+                                          sp:object _:B845d9d710b70da0f6b7285a12acffa06]
+                                          [sp:subject _:B29d8cc3257ea6371bc9c4be823cdbe38 ; 
+                                          sp:predicate rdf:type ; 
+                                          sp:object spin:_arg1]
+                                          [sp:subject _:B29d8cc3257ea6371bc9c4be823cdbe38 ; 
+                                          sp:predicate spin:_arg2 ; 
+                                          sp:object _:Ba47457640fd11d7e6d583659492460eb]
+                                          [sp:expression [sp:arg2 [sp:arg2 _:B29d8cc3257ea6371bc9c4be823cdbe38 ; 
+                                                                  sp:arg1 _:Bef91c18a1cdf1820188a7b2f253d17bc ; 
+                                                                  a sp:ne] ; 
+                                                         sp:arg1 [sp:arg2 [sp:arg1 _:Ba47457640fd11d7e6d583659492460eb ; 
+                                                                           a sp:str] ; 
+                                                                  sp:arg1 [sp:arg1 _:B845d9d710b70da0f6b7285a12acffa06 ; 
+                                                                           a sp:str] ; 
+                                                                  a sp:eq] ; 
+                                                         a sp:and] ; 
+                                          a sp:Filter]) ; 
+                                sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?a .
+    _:b0 spin:violationPath ?arg2 .
+}
+WHERE {
+    ?a a ?arg1 .
+    ?a ?arg2 ?uniqueValue1 .
+    ?b a ?arg1 .
+    ?b ?arg2 ?uniqueValue2 .
+    FILTER ((str(?uniqueValue1) = str(?uniqueValue2)) && (?a != ?b)) 
+}""" ; 
+                                sp:templates ([sp:subject _:B2256573173e741cfcdae2ffba74a0ecf ; 
+                                              sp:predicate rdf:type ; 
+                                              sp:object spin:ConstraintViolation]
+                                              [sp:subject _:B2256573173e741cfcdae2ffba74a0ecf ; 
+                                              sp:predicate spin:violationRoot ; 
+                                              sp:object _:Bef91c18a1cdf1820188a7b2f253d17bc]
+                                              [sp:subject _:B2256573173e741cfcdae2ffba74a0ecf ; 
+                                              sp:predicate spin:violationPath ; 
+                                              sp:object spin:_arg2]) ; 
+                                a sp:Construct];
+                     spin:constraint [spl:valueType rdf:Property ; 
+                                      spl:predicate sp:arg2 ; 
+                                      rdfs:comment "Select property to be tested! {@en}" ; 
+                                      a spl:Argument],
+                                     [spl:valueType rdfs:Class ; 
+                                      spl:predicate sp:arg1 ; 
+                                      rdfs:comment "Select class that contains instances to be tested!"@en ; 
+                                      a spl:Argument];
+                     spin:labelTemplate "{?arg2} in {?arg1} must be unique!";
+                     a spin:Template;
+                     rdfs:comment "This query returns all instances of class ?arg1 where the value for property ?arg2 is not unique in the tested data set. The query tolerates chaotic language tag assignments."@en;
+                     rdfs:label "Uniqueness check for all values in instances of a class"@en;
+                     rdfs:subClassOf dqc:UniquenessConstraints.
+dqc:UniquenessConstraints spin:abstract true;
+                          a spin:Template;
+                          rdfs:comment "Uniqueness constraints identify values that shall be unique, but are redundant within a certain data set."@en;
+                          rdfs:label "uniqueness constraints"@en;
+                          rdfs:subClassOf dqc:ConstraintTemplates.
+dqc:UpperLimitAll spin:body [sp:where ([sp:subject _:B4e029592804372652d1a87dd4afed064 ; 
+                                       sp:predicate spin:_arg1 ; 
+                                       sp:object _:B4ccd642aa43601c222794d72d4b111ed]
+                                       [sp:expression [sp:arg2 spin:_arg2 ; 
+                                                      sp:arg1 [sp:arg2 xsd:decimal ; 
+                                                               sp:arg1 _:B4ccd642aa43601c222794d72d4b111ed ; 
+                                                               a smf:cast] ; 
+                                                      a sp:gt] ; 
+                                       a sp:Filter]) ; 
+                             sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg1 .
+}
+WHERE {
+    ?s ?arg1 ?value .
+    FILTER (smf:cast(?value, xsd:decimal) > ?arg2) 
+}""" ; 
+                             sp:templates ([sp:subject _:Bcc50c66fc16a8efb027b1ae5ad6cdb33 ; 
+                                           sp:predicate rdf:type ; 
+                                           sp:object spin:ConstraintViolation]
+                                           [sp:subject _:Bcc50c66fc16a8efb027b1ae5ad6cdb33 ; 
+                                           sp:predicate spin:violationRoot ; 
+                                           sp:object _:B4e029592804372652d1a87dd4afed064]
+                                           [sp:subject _:Bcc50c66fc16a8efb027b1ae5ad6cdb33 ; 
+                                           sp:predicate spin:violationPath ; 
+                                           sp:object spin:_arg1]) ; 
+                             a sp:Construct];
+                  spin:constraint [spl:valueType xsd:decimal ; 
+                                   spl:predicate sp:arg2 ; 
+                                   rdfs:comment "Enter upper limit!" ; 
+                                   a spl:Argument],
+                                  [spl:valueType rdf:Property ; 
+                                   spl:predicate sp:arg1 ; 
+                                   rdfs:comment "Select property to be tested!"@en ; 
+                                   a spl:Argument];
+                  spin:labelTemplate "Values in {?arg1} must be lower than {?arg2}!";
+                  a spin:Template;
+                  rdfs:comment "This query returns all instances that have a value for property ?arg1 above the user defined limit ?arg2. The query tolerates chaotic datatype assignments."@en;
+                  rdfs:label "Upper limit check in all instances"@en;
+                  rdfs:subClassOf dqc:ValueRangeConstraints.
+dqc:UpperLimitClass spin:body [sp:where ([sp:subject _:B0cb8b01a83d3de840395bb72563a0f93 ; 
+                                         sp:predicate rdf:type ; 
+                                         sp:object spin:_arg1]
+                                         [sp:subject _:B0cb8b01a83d3de840395bb72563a0f93 ; 
+                                         sp:predicate spin:_arg2 ; 
+                                         sp:object _:Bfadf0381537b760d8ffb698d33783848]
+                                         [sp:expression [sp:arg2 spin:_arg3 ; 
+                                                        sp:arg1 [sp:arg2 xsd:decimal ; 
+                                                                 sp:arg1 _:Bfadf0381537b760d8ffb698d33783848 ; 
+                                                                 a smf:cast] ; 
+                                                        a sp:gt] ; 
+                                         a sp:Filter]) ; 
+                               sp:text """CONSTRUCT {
+    _:b0 a spin:ConstraintViolation .
+    _:b0 spin:violationRoot ?s .
+    _:b0 spin:violationPath ?arg2 .
+}
+WHERE {
+    ?s a ?arg1 .
+    ?s ?arg2 ?value .
+    FILTER (smf:cast(?value, xsd:decimal) > ?arg3) 
+}""" ; 
+                               sp:templates ([sp:subject _:B47ef93e3a89a690c3b4bb77cc353d1d3 ; 
+                                             sp:predicate rdf:type ; 
+                                             sp:object spin:ConstraintViolation]
+                                             [sp:subject _:B47ef93e3a89a690c3b4bb77cc353d1d3 ; 
+                                             sp:predicate spin:violationRoot ; 
+                                             sp:object _:B0cb8b01a83d3de840395bb72563a0f93]
+                                             [sp:subject _:B47ef93e3a89a690c3b4bb77cc353d1d3 ; 
+                                             sp:predicate spin:violationPath ; 
+                                             sp:object spin:_arg2]) ; 
+                               a sp:Construct];
+                    spin:constraint [spl:valueType xsd:decimal ; 
+                                     spl:predicate sp:arg3 ; 
+                                     rdfs:comment "Enter upper limit!"@en ; 
+                                     a spl:Argument],
+                                    [spl:valueType rdf:Property ; 
+                                     spl:predicate sp:arg2 ; 
+                                     rdfs:comment "Select property to be tested!"@en ; 
+                                     a spl:Argument],
+                                    [spl:valueType rdfs:Class ; 
+                                     spl:predicate sp:arg1 ; 
+                                     rdfs:comment "Select class that contains instances to be tested!"@en ; 
+                                     a spl:Argument];
+                    spin:labelTemplate "Values in {?arg2} for instances of class {?arg1} must be lower than {?arg3}!";
+                    a spin:Template;
+                    rdfs:comment "This query returns all instances of class ?arg1 that have a value for property ?arg2 above the user defined limit ?arg3. The query tolerates chaotic datatype assignments."@en;
+                    rdfs:label "Upper limit check in all instances of a class"@en;
+                    rdfs:subClassOf dqc:ValueRangeConstraints.
+dqc:ValueRangeConstraints spin:abstract true;
+                          a spin:Template;
+                          rdfs:comment "Value range constraints allow the identification of values that do not obey a certain upper and/or lower limit."@en;
+                          rdfs:label "value range constraints"@en;
+                          rdfs:subClassOf dqc:ConstraintTemplates.
+sp:arg6 a rdf:Property;
+        rdfs:comment "The sixth argument of a function call.";
+        rdfs:label "arg6";
+        rdfs:subPropertyOf sp:arg.
+sp:arg7 a rdf:Property;
+        rdfs:comment "The seventh argument of a function call.";
+        rdfs:label "arg7";
+        rdfs:subPropertyOf sp:arg.

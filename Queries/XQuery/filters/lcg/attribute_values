@@ -1,0 +1,57 @@
+WorkspaceDefinition@xsi:type | esri:WorkspaceDefinition
+Domains@xsi:type | esri:ArrayOfDomain
+Domain@xsi:type | esri:CodedValueDomain
+CodedValues@xsi:type | esri:ArrayOfCodedValue
+CodedValue@xsi:type | esri:CodedValue
+Code@xsi:type | xs:string | xs:short
+DatasetDefinitions@xsi:type | esri:ArrayOfDataElement
+DataElement@xsi:type | esri:DEFeatureClass | esri:DEFeatureDataset | esri:DERelationshipClass
+Metadata@xsi:type | esri:XmlPropertySet
+metadata@xml:lang | en
+languageCode@value | eng
+countryCode@value | USA
+GeoBndBox@esriExtentType | search | native
+geometObjs@Name | Outfall | StormwaterPondTopOfBank | DrainageNetwork_Junctions
+esriterm@Name | Connectivity | DitchPoint | DrainageNetwork_Junctions
+Children@xsi:type | esri:ArrayOfDataElement
+detailed@Name | PWOPER.Junction_Has_PollutionControlBox | PWOPER.Inlet_Has_DebrisTrap | PWOPER.Junction_Has_Interference
+geoBox@esriExtentType | decdegrees
+Fields@xsi:type | esri:Fields
+FieldArray@xsi:type | esri:ArrayOfField
+Field@xsi:type | esri:Field
+DefaultValue@xsi:type | xs:int | xs:string | xs:short
+GeometryDef@xsi:type | esri:GeometryDef
+SpatialReference@xsi:type | esri:ProjectedCoordinateSystem
+Indexes@xsi:type | esri:Indexes
+IndexArray@xsi:type | esri:ArrayOfIndex
+Index@xsi:type | esri:Index
+RelationshipClassNames@xsi:type | esri:Names
+ExtensionProperties@xsi:type | esri:PropertySet
+PropertyArray@xsi:type | esri:ArrayOfPropertySetProperty
+Subtypes@xsi:type | esri:ArrayOfSubtype
+Subtype@xsi:type | esri:Subtype
+FieldInfos@xsi:type | esri:ArrayOfSubtypeFieldInfo
+SubtypeFieldInfo@xsi:type | esri:SubtypeFieldInfo
+ControllerMemberships@xsi:type | esri:ArrayOfControllerMembership
+Extent@xsi:type | esri:EnvelopeN
+creator@user | ramprakash
+creator@computer | RAMPRAKASH9459
+geodatabase@flavor | Access
+connectionProperty@name | DATABASE
+connectionProperty@value | C:\Projects\Port_Of_Miami\QC\FinalData\WaterGeodatabase.mdb
+objectClass@table | WAccessManhole
+objectClass@aliasName | WAccessManhole
+objectClass@oidField | OBJECTID
+objectClass@shapeField | Shape
+objectClass@modelName | WAccessManhole
+field@name | LastUser | Buried | Comments
+field@aliasName | AssetSeqID | OBJECTID | Source
+field@modelName | LastUser | Shape | Name
+field@domain | EnabledDomain | AncillaryRoleDomain | ABooleanString
+index@name | FDO_OBJECTID | Shape_INDEX
+OriginClassNames@xsi:type | esri:Names
+DestinationClassNames@xsi:type | esri:Names
+OriginClassKeys@xsi:type | esri:ArrayOfRelationshipClassKey
+RelationshipClassKey@xsi:type | esri:RelationshipClassKey
+RelationshipRules@xsi:type | esri:ArrayOfRelationshipRule
+WorkspaceData@xsi:type | esri:WorkspaceData

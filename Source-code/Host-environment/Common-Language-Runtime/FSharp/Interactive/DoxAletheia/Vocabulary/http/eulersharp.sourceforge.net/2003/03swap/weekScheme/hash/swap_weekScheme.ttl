@@ -1,0 +1,53 @@
+@base <http://eulersharp.sourceforge.net/2003/03swap/weekScheme>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dce: <http://purl.org/dc/elements/1.1/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix event: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix wesc: <http://eulersharp.sourceforge.net/2003/03swap/weekScheme#>.
+@prefix events: <http://eulersharp.sourceforge.net/2003/03swap/event#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix swap_weekScheme: <http://eulersharp.sourceforge.net/2003/03swap/weekScheme#>.
+
+wesc: dce:contributor "Jos De Roo; Agfa Healthcare/Belgium"@en;
+      dce:creator "Hans Cools, MD; Agfa Healthcare/Belgium"@en;
+      dce:description "Formal general description of a working week scheme."@en;
+      dce:format "OWL Full"@en;
+      dce:publisher "Agfa Healthcare/Belgium"@en;
+      dce:title "Week Scheme"@en;
+      a owl:Ontology;
+      rdfs:comment "Used in e.g. rules to calculate availbility knowing opening hours."@en.
+wesc:Day a rdfs:Class;
+         rdfs:isDefinedBy wesc:;
+         rdfs:label "working day"@en;
+         rdfs:subClassOf event:Event;
+         skos:definition "Event in which there is a day working scheme."@en.
+wesc:Duty a rdfs:Class;
+          rdfs:isDefinedBy wesc:;
+          rdfs:label "duty"@en;
+          rdfs:subClassOf event:Event;
+          skos:definition "Event in which there is a different working scheme from the day working scheme."@en.
+wesc:hasDayEnd a owl:DatatypeProperty,
+                 owl:FunctionalProperty;
+               rdfs:domain wesc:Day;
+               rdfs:range xsd:duration;
+               skos:definition "Specifying the end of a day period relatively to the week start."@en.
+wesc:hasDayStart a owl:DatatypeProperty,
+                   owl:FunctionalProperty;
+                 rdfs:domain wesc:Day;
+                 rdfs:range xsd:duration;
+                 skos:definition "Specifying the start of a day period relatively to the week start."@en.
+wesc:hasDutyEnd a owl:DatatypeProperty,
+                  owl:FunctionalProperty;
+                rdfs:domain wesc:Duty;
+                rdfs:range xsd:duration;
+                skos:definition "Specifying the end of a duty period relatively to the week start."@en.
+wesc:hasDutyStart a owl:DatatypeProperty,
+                    owl:FunctionalProperty;
+                  rdfs:domain wesc:Duty;
+                  rdfs:range xsd:duration;
+                  skos:definition "Specifying the start of a duty period relatively to the week start."@en.

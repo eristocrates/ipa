@@ -1,0 +1,78 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdac: <http://rdaregistry.info/Elements/c/>.
+@prefix rda: <http://www.rdaregistry.info/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+
+<http://metadataregistry.org/uri/RegStatus/1001> a skos:Concept;
+                                                 skos:prefLabel "Published"@en.
+rdac: dc11:title "RDA Classes"@en;
+      skos:note "Classes derived from RDA entities based on FRBR and FRAD entities."@en;
+      foaf:homepage <http://www.rdaregistry.info/Elements/c/>.
+rdac:C10001 <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdac:Work.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "Work"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            a owl:Class;
+            rdfs:isDefinedBy rdac:;
+            rdfs:label "Work"@en;
+            skos:definition "A distinct intellectual or artistic creation (i.e., the intellectual or artistic content)."@en.
+rdac:C10002 <http://metadataregistry.org/uri/profile/RegAp/hasSubClass> rdac:C10005,
+                                                                        rdac:C10004,
+                                                                        rdac:C10008;
+            <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdac:Agent.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "Agent"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            a owl:Class;
+            rdfs:isDefinedBy rdac:;
+            rdfs:label "Agent"@en;
+            skos:definition "A person, family, or corporate body."@en.
+rdac:C10003 <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdac:Item.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "Item"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            a owl:Class;
+            rdfs:isDefinedBy rdac:;
+            rdfs:label "Item"@en;
+            skos:definition "A single exemplar or instance of a manifestation."@en.
+rdac:C10004 <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdac:Person.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "Person"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            a owl:Class;
+            rdfs:isDefinedBy rdac:;
+            rdfs:label "Person"@en;
+            rdfs:subClassOf rdac:C10002;
+            skos:definition "An individual or an identity established by an individual (either alone or in collaboration with one or more other individuals)."@en.
+rdac:C10005 <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdac:CorporateBody.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "CorporateBody"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            a owl:Class;
+            rdfs:isDefinedBy rdac:;
+            rdfs:label "Corporate body"@en;
+            rdfs:subClassOf rdac:C10002;
+            skos:definition "An organization or group of persons and/or organizations that is identified by a particular name and that acts, or may act, as a unit."@en.
+rdac:C10006 <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdac:Expression.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "Expression"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            a owl:Class;
+            rdfs:isDefinedBy rdac:;
+            rdfs:label "Expression"@en;
+            skos:definition "The intellectual or artistic realization of a work in the form of alpha-numeric, musical or choreographic notation, sound, image, object, movement, etc., or any combination of such forms."@en.
+rdac:C10007 <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdac:Manifestation.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "Manifestation"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            a owl:Class;
+            rdfs:isDefinedBy rdac:;
+            rdfs:label "Manifestation"@en;
+            skos:definition "The physical embodiment of an expression of a work."@en.
+rdac:C10008 <http://metadataregistry.org/uri/profile/RegAp/lexicalAlias> rdac:Family.en;
+            <http://metadataregistry.org/uri/profile/RegAp/name> "Family"@en;
+            <http://metadataregistry.org/uri/profile/RegAp/status> <http://metadataregistry.org/uri/RegStatus/1001>;
+            a owl:Class;
+            rdfs:isDefinedBy rdac:;
+            rdfs:label "Family"@en;
+            rdfs:subClassOf rdac:C10002;
+            skos:definition "Two or more persons related by birth, marriage, adoption, civil union, or similar legal status, or who otherwise present themselves as a family."@en.

@@ -1,0 +1,221 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix changeset: <http://purl.org/vocab/changeset/schema#>.
+
+<http://iandavis.com/id/me> a foaf:Person;
+                            foaf:name "Ian Davis".
+<http://purl.org/vocab/changeset/schema> dcterms:creator <http://iandavis.com/id/me>,
+                                                         "Sam Tunnicliffe";
+                                         dcterms:date "2006-03-21";
+                                         dcterms:identifier "http://purl.org/vocab/changeset/schema-20060321";
+                                         dcterms:isVersionOf changeset:;
+                                         dcterms:issued "2005-12-14";
+                                         dcterms:replaces <http://purl.org/vocab/changeset/schema-20051214>;
+                                         dcterms:rights "Copyright © 2005 Talis Information Ltd.";
+                                         dcterms:title "Changeset"@en;
+                                         vann:example <http://vocab.org/changeset/changesets-example-20060321.html>,
+                                                      <http://vocab.org/changeset/changesets-example2-20060321.html>,
+                                                      <http://vocab.org/changeset/changesets-example3-20060321.html>;
+                                         vann:preferredNamespacePrefix "cs";
+                                         vann:preferredNamespaceUri "http://purl.org/vocab/changeset/schema#";
+                                         a owl:Ontology;
+                                         rdfs:comment """
+      The vocabulary introduces the notion of a ChangeSet which encapsulates the delta between two versions of a 
+      resource description. In this context a resource description is the set of triples that in some way comprise a 
+      description of a resource. The delta is represented by two sets of triples: additions and removals. A ChangeSet can be used to 
+      modify a resource description by first removing all triples from the description that are in the removals set and
+      adding the triples in the additions set.
+    """@en,
+                                                      """
+      This vocabulary defines a set of terms for describing changes to resource descriptions.
+    """@en;
+                                         skos:changeNote [dcterms:date "2006-03-21" ; 
+                                                          dcterms:creator <http://iandavis.com/id/me> ; 
+                                                          rdfs:label "Improved documentation"@en],
+                                                         [dcterms:date "2006-06-23" ; 
+                                                          dcterms:creator <http://iandavis.com/id/me> ; 
+                                                          rdfs:label "Fixed invalid RDF"@en];
+                                         skos:historyNote [dcterms:date "2009-05-18" ; 
+                                                           dcterms:creator <http://iandavis.com/id/me> ; 
+                                                           rdfs:label "Updated dublin core properties to new namespace"@en],
+                                                          [dcterms:date "2006-03-21" ; 
+                                                           dcterms:creator <http://iandavis.com/id/me> ; 
+                                                           rdfs:label "Introduced statement property"@en].
+changeset:ChangeSet dcterms:issued "2005-12-14";
+                    a owl:Class;
+                    rdfs:isDefinedBy <http://purl.org/vocab/changeset/schema>;
+                    rdfs:label "ChangeSet"@en;
+                    rdfs:subClassOf [owl:intersectionOf ([owl:onProperty changeset:statement ; 
+                                                         owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                         a owl:Restriction]
+                                                         [owl:onProperty changeset:previousChangeSet ; 
+                                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                         a owl:Restriction]
+                                                         [owl:onProperty changeset:subjectOfChange ; 
+                                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                         a owl:Restriction]
+                                                         [owl:onProperty changeset:createdDate ; 
+                                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                         a owl:Restriction]
+                                                         [owl:onProperty changeset:creatorName ; 
+                                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                         a owl:Restriction]
+                                                         [owl:onProperty changeset:changeReason ; 
+                                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                         a owl:Restriction]) ; 
+                                     a owl:Class];
+                    skos:changeNote [dcterms:date "2006-03-21" ; 
+                                     dcterms:creator "Ian Davis" ; 
+                                     rdf:value "Improved documentation"];
+                    skos:definition "The encapsulation of a delta between two versions of a resource description"@en;
+                    skos:historyNote [dcterms:date "2006-03-21" ; 
+                                      dcterms:creator "Ian Davis" ; 
+                                      rdf:value "Added property cardinality restrictions"].
+changeset:addition dcterms:issued "2005-12-14";
+                   a owl:ObjectProperty;
+                   rdfs:comment """
+      By convention the subject of the triple being added should be the same as the subjectOfChange
+    """@en;
+                   rdfs:domain changeset:ChangeSet;
+                   rdfs:isDefinedBy <http://purl.org/vocab/changeset/schema>;
+                   rdfs:label "addition"@en;
+                   rdfs:range rdf:Statement;
+                   rdfs:subPropertyOf changeset:statement;
+                   skos:changeNote [dcterms:date "2006-03-21" ; 
+                                    dcterms:creator "Ian Davis" ; 
+                                    rdf:value "Added definitition and documentation"];
+                   skos:definition "a triple to be added to the resource description"@en;
+                   skos:historyNote [dcterms:date "2006-03-21" ; 
+                                     dcterms:creator "Ian Davis" ; 
+                                     rdf:value "Made a sub-property of statement"],
+                                    [dcterms:date "2006-03-21" ; 
+                                     dcterms:creator "Ian Davis" ; 
+                                     rdf:value "Made owl:ObjectProperty"].
+changeset:changeReason dcterms:issued "2005-12-14";
+                       a owl:DatatypeProperty;
+                       rdfs:domain changeset:ChangeSet;
+                       rdfs:isDefinedBy <http://purl.org/vocab/changeset/schema>;
+                       rdfs:label "changeReason"@en;
+                       rdfs:range rdfs:Literal;
+                       skos:definition "a  short, human readable description of the purpose for the changeset"@en;
+                       skos:historyNote [dcterms:date "2006-03-21" ; 
+                                         dcterms:creator "Ian Davis" ; 
+                                         rdf:value "Made owl:DatatypeProperty"].
+changeset:createdDate dcterms:issued "2005-12-14";
+                      a owl:DatatypeProperty;
+                      rdfs:comment """
+      The date should be in W3CDTF format
+    """@en;
+                      rdfs:domain changeset:ChangeSet;
+                      rdfs:isDefinedBy <http://purl.org/vocab/changeset/schema>;
+                      rdfs:label "createdDate"@en;
+                      rdfs:subPropertyOf dc11:date;
+                      skos:definition "the date that the changeset was created"@en;
+                      skos:historyNote [dcterms:date "2006-03-21" ; 
+                                        dcterms:creator "Ian Davis" ; 
+                                        rdf:value "Made owl:DatatypeProperty"].
+changeset:creatorName dcterms:issued "2005-12-14";
+                      a owl:DatatypeProperty;
+                      rdfs:domain changeset:ChangeSet;
+                      rdfs:isDefinedBy <http://purl.org/vocab/changeset/schema>;
+                      rdfs:label "creatorName"@en;
+                      rdfs:range rdfs:Literal;
+                      skos:definition "the name of the entity responsible for creating the changeset"@en;
+                      skos:historyNote [dcterms:date "2006-03-21" ; 
+                                        dcterms:creator "Ian Davis" ; 
+                                        rdf:value "Made owl:DatatypeProperty"].
+changeset:precedingChangeSet dcterms:issued "2005-12-14";
+                             a owl:ObjectProperty;
+                             rdfs:comment """
+      This property can be used to build a history of changes to a particular resource description. The first
+      ChangeSet in the history will have no precedingChangeSet property. Each subsequent ChangeSet added
+      to the history references the preceding one resulting in a singly-linked list of changes.  Care must be taken
+      not to introduce cycles in the history.
+    """@en,
+                                          """
+      In systems that assume a closed world, the most recent ChangeSet for a particular resource description 
+      can be discovered by looking for the ChangeSet that is not the value of a precedingChangeSet property. 
+      Conversely, the earliest ChangeSet is the one that is not the subject of a precedingChangeSet property.
+    """@en;
+                             rdfs:domain changeset:ChangeSet;
+                             rdfs:isDefinedBy <http://purl.org/vocab/changeset/schema>;
+                             rdfs:label "precedingChangeSet"@en;
+                             rdfs:range changeset:ChangeSet;
+                             skos:changeNote [dcterms:date "2006-03-21" ; 
+                                              dcterms:creator "Ian Davis" ; 
+                                              rdf:value "Added definitition and documentation"];
+                             skos:definition "the changeset that immediately precedes this one"@en;
+                             skos:historyNote [dcterms:date "2006-03-21" ; 
+                                               dcterms:creator "Ian Davis" ; 
+                                               rdf:value "Made owl:ObjectProperty"].
+changeset:removal dcterms:issued "2005-12-14";
+                  a owl:ObjectProperty;
+                  rdfs:comment """
+      By convention the subject of the triple being removed should be the same as the subjectOfChange
+    """@en;
+                  rdfs:domain changeset:ChangeSet;
+                  rdfs:isDefinedBy <http://purl.org/vocab/changeset/schema>;
+                  rdfs:label "removal"@en;
+                  rdfs:range rdf:Statement;
+                  rdfs:subPropertyOf changeset:statement;
+                  skos:changeNote [dcterms:date "2006-03-21" ; 
+                                   dcterms:creator "Ian Davis" ; 
+                                   rdf:value "Added definitition and documentation"];
+                  skos:definition "a triple to be removed from the resource description"@en;
+                  skos:historyNote [dcterms:date "2006-03-21" ; 
+                                    dcterms:creator "Ian Davis" ; 
+                                    rdf:value "Made owl:ObjectProperty"],
+                                   [dcterms:date "2006-03-21" ; 
+                                    dcterms:creator "Ian Davis" ; 
+                                    rdf:value "Made a sub-property of statement"].
+changeset:statement dcterms:issued "2006-03-21";
+                    a owl:ObjectProperty;
+                    rdfs:domain changeset:ChangeSet;
+                    rdfs:isDefinedBy <http://purl.org/vocab/changeset/schema>;
+                    rdfs:label "statement"@en;
+                    rdfs:range rdf:Statement;
+                    skos:definition "a triple included in this set of changes"@en.
+changeset:subjectOfChange dcterms:issued "2005-12-14";
+                          a owl:ObjectProperty;
+                          rdfs:domain changeset:ChangeSet;
+                          rdfs:isDefinedBy <http://purl.org/vocab/changeset/schema>;
+                          rdfs:label "subjectOfChange"@en;
+                          rdfs:range rdfs:Resource;
+                          skos:changeNote [dcterms:date "2006-03-21" ; 
+                                           dcterms:creator "Ian Davis" ; 
+                                           rdf:value "Added definitition and documentation"];
+                          skos:definition "the resource to which this set of changes applies"@en;
+                          skos:historyNote [dcterms:date "2006-03-21" ; 
+                                            dcterms:creator "Ian Davis" ; 
+                                            rdf:value "Made owl:ObjectProperty"].
+<http://vocab.org/changeset/changesets-example-20060321.html> dcterms:title "A Simple ChangeSet".
+<http://vocab.org/changeset/changesets-example2-20060321.html> dcterms:title "Linked ChangeSets".
+<http://vocab.org/changeset/changesets-example3-20060321.html> dcterms:title "Implementing Undo With ChangeSets".
+<http://vocab.org/changeset/schema.html> dc11:format "text/html";
+                                         a dcmitype:Text,
+                                           foaf:Document;
+                                         rdfs:label "HTML".
+<http://vocab.org/changeset/schema.json> dc11:format "application/json";
+                                         a dcmitype:Text,
+                                           foaf:Document;
+                                         rdfs:label "JSON".
+<http://vocab.org/changeset/schema.rdf> dcterms:hasFormat <http://vocab.org/changeset/schema.html>,
+                                                          <http://vocab.org/changeset/schema.json>,
+                                                          <http://vocab.org/changeset/schema.turtle>;
+                                        a foaf:Document,
+                                          dcmitype:Text;
+                                        foaf:primaryTopic <http://purl.org/vocab/changeset/schema>;
+                                        foaf:topic <http://purl.org/vocab/changeset/schema>.
+<http://vocab.org/changeset/schema.turtle> dc11:format "text/plain";
+                                           a dcmitype:Text,
+                                             foaf:Document;
+                                           rdfs:label "Turtle".

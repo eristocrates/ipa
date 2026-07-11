@@ -1,0 +1,164 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix p-plan: <http://purl.org/net/p-plan#>.
+@prefix nsprov: <http://www.w3.org/ns/prov#>.
+
+dcterms:created a owl:AnnotationProperty.
+dcterms:description a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+dcterms:title a owl:AnnotationProperty.
+p-plan: dcterms:created "2012-11-10"^^xsd:date;
+        dcterms:creator "http://delicias.dia.fi.upm.es/members/DGarijo#me"^^xsd:anyURI,
+                        "http://www.isi.edu/~gil/"^^xsd:anyURI;
+        dcterms:description "PROV extension for linking Plans and parts of plans to their respective executions."@en;
+        dcterms:license "http://creativecommons.org/licenses/by-nc-sa/2.0/";
+        dcterms:modified "2014-03-12"^^xsd:date;
+        dcterms:title "The P-Plan ontology"@en;
+        vann:preferredNamespacePrefix "p-plan";
+        vann:preferredNamespaceUri "http://purl.org/net/p-plan#";
+        a owl:NamedIndividual,
+          owl:Ontology,
+          owl:Thing;
+        rdfs:comment "PROV extension for linking Plans and parts of plans to their respective executions. Created by Daniel Garijo and Yolanda Gil";
+        owl:versionInfo "1.3".
+p-plan:Activity a owl:Class;
+                rdfs:comment "A p-plan:Activity represents the execution process planned in a p-plan:Step"@en;
+                rdfs:isDefinedBy p-plan:;
+                rdfs:label "Activity"@en;
+                rdfs:subClassOf nsprov:Activity.
+p-plan:Bundle a owl:Class;
+              rdfs:isDefinedBy p-plan:;
+              rdfs:label "Bundle"@en;
+              rdfs:subClassOf nsprov:Bundle,
+                              p-plan:Entity;
+              nsprov:definition "A p-plan:Bundle is a specific type of prov:Bundle that contains the provenance assertions of the execution of a p-plan:Plan"@en.
+p-plan:Entity a owl:Class;
+              rdfs:isDefinedBy p-plan:;
+              rdfs:label "Entity"@en;
+              rdfs:subClassOf nsprov:Entity;
+              nsprov:definition "A p-plan:Entity represents the input of the execution of a p-plan:Activity. It corresponds to a p-plan:Variable."@en.
+p-plan:MultiStep a owl:Class;
+                 rdfs:isDefinedBy p-plan:;
+                 rdfs:label "MultiStep"@en;
+                 rdfs:subClassOf p-plan:Step,
+                                 p-plan:Plan;
+                 nsprov:definition "A multi step is the representation of a plan that appears as a step of another plan."@en.
+p-plan:Plan a owl:Class;
+            rdfs:isDefinedBy p-plan:;
+            rdfs:label "Plan"@en;
+            rdfs:subClassOf nsprov:Plan,
+                            p-plan:Entity;
+            nsprov:definition "A p-plan:Plan is a specific type of prov:Plan. It is composed of smaller steps that use and produce Variables."@en.
+p-plan:Step a owl:Class;
+            rdfs:isDefinedBy p-plan:;
+            rdfs:label "Step"@en;
+            nsprov:definition "A p-plan:Step represents the planned execution activity"@en.
+p-plan:Variable a owl:Class;
+                rdfs:isDefinedBy p-plan:;
+                rdfs:label "Variable"@en;
+                nsprov:definition "A p-plan:Variable represents a description of the input of the planned Activity (p-plan:Step)"@en.
+p-plan:correspondsToStep a owl:FunctionalProperty,
+                           owl:ObjectProperty;
+                         rdfs:domain p-plan:Activity;
+                         rdfs:isDefinedBy p-plan:;
+                         rdfs:label "correspondsToStep"@en;
+                         rdfs:range p-plan:Step;
+                         nsprov:definition "p-plan:correspondsToStep links a p-plan:Activity to its planned p-plan:Step"@en.
+p-plan:correspondsToVariable a owl:FunctionalProperty,
+                               owl:ObjectProperty;
+                             rdfs:domain p-plan:Entity;
+                             rdfs:isDefinedBy p-plan:;
+                             rdfs:label "correspondsToVariable"@en;
+                             rdfs:range p-plan:Variable;
+                             nsprov:definition "p-plan:correspondsToVariable binds a p-plan:Entity (used by a p-plan:Activity in the execution of a plan) to the p-plan:Variable it represented it in the p-plan:Plan."@en.
+p-plan:hasInputVar a owl:ObjectProperty;
+                   rdfs:domain p-plan:Step;
+                   rdfs:isDefinedBy p-plan:;
+                   rdfs:label "hasInputVar"@en;
+                   rdfs:range p-plan:Variable;
+                   nsprov:definition "p-plan:hasInputVar binds a p-plan:Step to the p-plan:Variable that takes as input for the planned execution"@en.
+p-plan:hasOutputVar a owl:ObjectProperty;
+                    rdfs:domain p-plan:Step;
+                    rdfs:isDefinedBy p-plan:;
+                    rdfs:label "hasOutputVar"@en;
+                    rdfs:range p-plan:Variable;
+                    owl:inverseOf p-plan:isOutputVarOf;
+                    nsprov:definition "p-plan:hasOutputVar binds a p-plan:Step to the p-plan:Variable that will be produced as output in the planned execution"@en.
+p-plan:isDecomposedAsPlan a owl:ObjectProperty;
+                          rdfs:domain p-plan:MultiStep;
+                          rdfs:isDefinedBy p-plan:;
+                          rdfs:label "isDecomposedAsPlan"@en;
+                          rdfs:range p-plan:Plan;
+                          nsprov:definition "The p-plan:isDecomposedAsPlan relationship binds a p-plan:MultiStep to the p-plan:Plan holding the definition of that step. That is, p-plan:isDecomposedAsPlan links the MultiStep to the Plan sptecification where it is decomposed."@en.
+p-plan:isInputVarOf a owl:ObjectProperty;
+                    rdfs:domain p-plan:Variable;
+                    rdfs:isDefinedBy p-plan:;
+                    rdfs:label "isInputVarOf"@en;
+                    rdfs:range p-plan:Step;
+                    owl:inverseOf p-plan:hasInputVar;
+                    nsprov:definition "p-plan:isInputVarOf links an input variable of a step to the step."@en.
+p-plan:isOutputVarOf a owl:FunctionalProperty,
+                       owl:ObjectProperty;
+                     rdfs:domain p-plan:Variable;
+                     rdfs:isDefinedBy p-plan:;
+                     rdfs:label "isOutputVarOf"@en;
+                     rdfs:range p-plan:Step;
+                     nsprov:definition "p-plan:isOutputVarOf is intended to link an output variable of a step to the step."@en.
+p-plan:isPreceededBy a owl:TransitiveProperty,
+                       owl:ObjectProperty;
+                     rdfs:comment p-plan:;
+                     rdfs:domain p-plan:Step;
+                     rdfs:isDefinedBy "Property that asserts which Step preceeds the current one."@en;
+                     rdfs:label "isPreceededBy"@en;
+                     rdfs:range p-plan:Step.
+p-plan:isStepOfPlan a owl:ObjectProperty;
+                    rdfs:domain p-plan:Step;
+                    rdfs:isDefinedBy p-plan:;
+                    rdfs:label "isStepOfPlan"@en;
+                    rdfs:range p-plan:Plan;
+                    nsprov:definition "p-plan:isStepOfPlan links a p-plan:Step to the p-plan:Plan which it corresponds to."@en.
+p-plan:isSubPlanOfPlan a owl:ObjectProperty;
+                       rdfs:domain p-plan:Plan;
+                       rdfs:isDefinedBy p-plan:;
+                       rdfs:label "isSubPlanOfPlan"@en;
+                       rdfs:range p-plan:Plan;
+                       rdfs:subPropertyOf owl:topObjectProperty;
+                       nsprov:definition "A p-plan:Plan may be a subplan of another bigger p-plan:Plan. p-plan:isSubPlanOfPlan is used to state the link among the two different plans. Note that if p1 is a p-plan:subPlan of p2, p1will not necessarily be a step of p2. A multistep will represent p1 in p2, and link to p1 with the p-plan.hasStepDecomposition relationship."@en.
+p-plan:isVariableOfPlan a owl:ObjectProperty;
+                        rdfs:domain p-plan:Variable;
+                        rdfs:isDefinedBy p-plan:;
+                        rdfs:label "isVariableofPlan"@en;
+                        rdfs:range p-plan:Plan;
+                        nsprov:definition "p-plan:IsVariableOfPlan binds a p-plan:Variable to the p-plan:Plan it corresponds to."@en.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+nsprov: a owl:NamedIndividual,
+          owl:Thing.
+nsprov:Activity a owl:Class;
+                rdfs:isDefinedBy nsprov:.
+nsprov:Bundle a owl:Class;
+              rdfs:isDefinedBy nsprov:;
+              rdfs:subClassOf nsprov:Entity.
+nsprov:Entity a owl:Class;
+              rdfs:isDefinedBy nsprov:.
+nsprov:Plan a owl:Class;
+            rdfs:isDefinedBy nsprov:;
+            rdfs:subClassOf nsprov:Entity.
+nsprov:definition a owl:AnnotationProperty.
+nsprov:used a owl:ObjectProperty;
+            rdfs:domain nsprov:Activity;
+            rdfs:isDefinedBy nsprov:;
+            rdfs:range nsprov:Entity.
+nsprov:wasDerivedFrom a owl:ObjectProperty;
+                      rdfs:domain nsprov:Entity;
+                      rdfs:isDefinedBy nsprov:;
+                      rdfs:range nsprov:Entity.
+nsprov:wasGeneratedBy a owl:ObjectProperty;
+                      rdfs:domain nsprov:Entity;
+                      rdfs:isDefinedBy nsprov:;
+                      rdfs:range nsprov:Activity.

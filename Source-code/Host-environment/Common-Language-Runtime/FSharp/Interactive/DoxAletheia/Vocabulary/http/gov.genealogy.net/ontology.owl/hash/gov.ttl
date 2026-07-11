@@ -1,0 +1,280 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gov: <http://gov.genealogy.net/ontology.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://gov.genealogy.net/ontology.owl> dc11:created "2013-10-15"^^xsd:date;
+                                        dc11:creator <http://datahub.io/user/jzedlitz>;
+                                        dc11:date "2015-07-29"^^xsd:date;
+                                        dc11:publisher <http://datahub.io/organization/compgen>;
+                                        dcterms:modified "2015-07-29"^^xsd:date;
+                                        a owl:Ontology;
+                                        rdfs:label "Ontologie zur Modellierung historischer Verwaltungsinformationen."@de,
+                                                   "Ontology for modelling historic administrative information."@en.
+gov:GovItem a owl:Class.
+gov:GovObject a owl:Class;
+              rdfs:label "Objekt (Wohnplatz oder Verwaltungseinheit)"@de,
+                         "object (settlement or administrative unit)"@en;
+              rdfs:subClassOf gov:GovItem.
+gov:Note a owl:Class;
+         rdfs:label "Notiz"@de,
+                    "note"@en.
+gov:Position a owl:Class;
+             rdfs:label "geographische Position"@de,
+                        "geographic position"@en.
+gov:Property a owl:Class;
+             rdfs:label "Eigenschaft"@de,
+                        "property"@en.
+gov:PropertyForObject a owl:Class;
+                      rdfs:label "Eigenschaft für ein Objekt"@de,
+                                 "property of an object"@en;
+                      rdfs:subClassOf gov:Property.
+gov:PropertyForSource a owl:Class;
+                      rdfs:label "Eigenschaft für eine Quelle"@de,
+                                 "property of a source"@en;
+                      rdfs:subClassOf gov:Property.
+gov:PropertyName a owl:Class;
+                 rdfs:label "Eigenschaft 'Name'"@de,
+                            "property 'name'"@en;
+                 rdfs:subClassOf gov:PropertyForObject.
+gov:PropertyType a owl:Class;
+                 rdfs:label "Eigenschaft 'Objekttyp'"@de,
+                            "property 'object type'"@en;
+                 rdfs:subClassOf gov:PropertyForObject.
+gov:Relation a owl:Class;
+             rdfs:label "Beziehung zwischen zwei Objekten"@de,
+                        "relationship between two objects"@en.
+gov:Source a owl:Class;
+           rdfs:label "Quelle"@de,
+                      "source"@en;
+           rdfs:subClassOf gov:GovItem.
+gov:SourceReference a owl:Class;
+                    rdfs:label "Quellenangabe"@de,
+                               "source citation"@en.
+gov:Timespan a owl:Class;
+             rdfs:label "Zeitraum"@de,
+                        "time span"@en.
+gov:Type a owl:Class;
+         rdfs:label "Typ"@de,
+                    "type"@en.
+gov:begin a owl:DatatypeProperty;
+          rdfs:label "Beginn"@de,
+                     "begin"@en.
+gov:containsInformationAbout a owl:ObjectProperty;
+                             rdfs:domain gov:Source;
+                             rdfs:label "die Quelle enthält Informationen über diese Objekte"@de,
+                                        "the source contains information about these objects"@en;
+                             rdfs:range gov:Relation;
+                             rdfs:subPropertyOf gov:relation.
+gov:end a owl:DatatypeProperty;
+        rdfs:label "Ende"@de,
+                   "end"@en.
+gov:hasArea a owl:ObjectProperty;
+            rdfs:domain gov:GovObject;
+            rdfs:label "Fläche (in m²)"@de,
+                       "area (in m²)"@en;
+            rdfs:range gov:PropertyForObject;
+            rdfs:subPropertyOf gov:property.
+gov:hasAuthor a owl:ObjectProperty;
+              rdfs:domain gov:Source;
+              rdfs:label "Name des Autors der Publikation"@de,
+                         "name of the publication's author"@en;
+              rdfs:range gov:PropertyForSource;
+              rdfs:subPropertyOf gov:property.
+gov:hasDenomination a owl:ObjectProperty;
+                    rdfs:domain gov:GovObject;
+                    rdfs:label "Konfession"@de,
+                               "denomination"@en;
+                    rdfs:range gov:PropertyForObject;
+                    rdfs:subPropertyOf gov:property.
+gov:hasHouseholds a owl:ObjectProperty;
+                  rdfs:domain gov:GovObject;
+                  rdfs:label "Anzahl der Haushalte"@de,
+                             "number of households"@en;
+                  rdfs:range gov:PropertyForObject;
+                  rdfs:subPropertyOf gov:property.
+gov:hasISBN a owl:ObjectProperty;
+            rdfs:domain gov:Source;
+            rdfs:label "International Standard Book Number (ISBN)"@de,
+                       "International Standard Book Number (ISBN)"@en;
+            rdfs:range gov:PropertyForSource;
+            rdfs:subPropertyOf gov:property.
+gov:hasMunicipalityId a owl:ObjectProperty;
+                      rdfs:domain gov:GovObject;
+                      rdfs:label "Gemeindeschlüssel"@de,
+                                 "municipality code"@en;
+                      rdfs:range gov:PropertyForObject;
+                      rdfs:subPropertyOf gov:property.
+gov:hasName a owl:ObjectProperty;
+            rdfs:domain gov:GovObject;
+            rdfs:label "Name"@de,
+                       "name"@en;
+            rdfs:range gov:PropertyName;
+            rdfs:subPropertyOf gov:property.
+gov:hasPopulation a owl:ObjectProperty;
+                  rdfs:domain gov:GovObject;
+                  rdfs:label "Einwohnerzahl"@de,
+                             "population"@en;
+                  rdfs:range gov:PropertyForObject;
+                  rdfs:subPropertyOf gov:property.
+gov:hasPostalCode a owl:ObjectProperty;
+                  rdfs:domain gov:GovObject;
+                  rdfs:label "Postleitzahl"@de,
+                             "postal code"@en;
+                  rdfs:range gov:PropertyForObject;
+                  rdfs:subPropertyOf gov:property.
+gov:hasSubtitle a owl:ObjectProperty;
+                rdfs:domain gov:Source;
+                rdfs:label "Untertitel"@de,
+                           "subtitle"@en;
+                rdfs:range gov:PropertyForSource;
+                rdfs:subPropertyOf gov:property.
+gov:hasTitle a owl:ObjectProperty;
+             rdfs:domain gov:Source;
+             rdfs:label "Title"@de,
+                        "title"@en;
+             rdfs:range gov:PropertyForSource;
+             rdfs:subPropertyOf gov:property,
+                                dcterms:title.
+gov:hasType a owl:ObjectProperty;
+            rdfs:domain gov:GovObject;
+            rdfs:label "Objekttyp"@de,
+                       "object type"@en;
+            rdfs:range gov:PropertyType;
+            rdfs:subPropertyOf gov:property.
+gov:hasURL a owl:DatatypeProperty;
+           rdfs:domain gov:GovItem;
+           rdfs:label "Webseite"@de,
+                      "web site"@en;
+           rdfs:range xsd:anyURI;
+           rdfs:subPropertyOf owl:topDataProperty.
+gov:hasWNumber a owl:ObjectProperty;
+               rdfs:domain gov:GovObject;
+               rdfs:label """\"W-Nummer\" (Hilfspostleitzahl)"""@de,
+                          """\"W number\" (identification for former German municipalities)"""@en;
+               rdfs:range gov:PropertyForObject;
+               rdfs:subPropertyOf gov:property.
+gov:height a owl:DatatypeProperty;
+           rdfs:domain gov:Position;
+           rdfs:label "Höhe über dem Meeresspiegel in Metern"@de,
+                      "altitude in meters"@en;
+           rdfs:range xsd:int.
+gov:isLocatedIn a owl:ObjectProperty;
+                rdfs:domain gov:GovObject;
+                rdfs:label "Gebäude steht in"@de,
+                           "building is located in"@en;
+                rdfs:range gov:Relation;
+                rdfs:subPropertyOf gov:relation.
+gov:isPartOf a owl:ObjectProperty;
+             rdfs:domain gov:GovObject;
+             rdfs:label "ist Teil von"@de,
+                        "is part of"@en;
+             rdfs:range gov:Relation;
+             rdfs:subPropertyOf gov:relation.
+gov:isReplacedBy a owl:ObjectProperty,
+                   owl:IrreflexiveProperty;
+                 rdfs:domain gov:GovItem;
+                 rdfs:label "Objekt wurde ersetzt durch"@de,
+                            "object is deprecated and has been replaced by"@en;
+                 rdfs:range gov:GovItem.
+gov:language a owl:DatatypeProperty;
+             rdfs:label "Sprache (ISO-639-2)"@de,
+                        "language (ISO-639-2)"@en.
+gov:lastModification a owl:DatatypeProperty;
+                     rdfs:domain gov:GovItem;
+                     rdfs:label "Datum des letzten Änderung"@de,
+                                "date of last modification"@en;
+                     rdfs:range xsd:dateTime;
+                     rdfs:subPropertyOf dcterms:modified.
+gov:latitude a owl:DatatypeProperty;
+             rdfs:domain gov:Position;
+             rdfs:label "geographische Breite"@de,
+                        "latitute"@en;
+             rdfs:range xsd:double.
+gov:longitude a owl:DatatypeProperty;
+              rdfs:domain gov:Position;
+              rdfs:label "geographische Länge"@de,
+                         "longitude"@en;
+              rdfs:range xsd:double.
+gov:note a owl:ObjectProperty;
+         rdfs:label "Notiz"@de,
+                    "note"@en;
+         rdfs:range gov:Note.
+gov:noteText a owl:DatatypeProperty;
+             rdfs:domain gov:Note;
+             rdfs:label "Text der Notiz"@de,
+                        "note text"@en;
+             rdfs:range xsd:string.
+gov:position a owl:ObjectProperty;
+             rdfs:domain gov:GovObject;
+             rdfs:label "geographische Position"@de,
+                        "geographic position"@en;
+             rdfs:range gov:Position;
+             rdfs:subPropertyOf owl:topObjectProperty.
+gov:property a owl:ObjectProperty;
+             rdfs:domain gov:GovItem;
+             rdfs:label "allgemeine Eigenschaft"@de,
+                        "generic property"@en;
+             rdfs:range gov:Property.
+gov:ref a owl:ObjectProperty;
+        rdfs:domain gov:Relation;
+        rdfs:label "Referenz"@de,
+                   "reference"@en;
+        rdfs:range gov:GovObject.
+gov:relation a owl:ObjectProperty;
+             rdfs:domain gov:GovItem;
+             rdfs:label "allgemeine Beziehung"@de,
+                        "generic relation"@en;
+             rdfs:range gov:Relation.
+gov:represents a owl:ObjectProperty;
+               rdfs:comment """Beispiele: 1) eine Kirche als sichtbares Gebäude repräsentiert eine Kirchengemeinde, 2) eine
+    Stadt repräsentiert als Hauptstadt ein Land"""@de,
+                            """examples: 1) a church as a visible building represents a parish 2) a town represents a country
+    as its capital"""@en;
+               rdfs:domain gov:GovObject;
+               rdfs:label "Objekt repräsentiert ein anderes Objekt"@de,
+                          "object represents another object"@en;
+               rdfs:range gov:Relation;
+               rdfs:subPropertyOf gov:relation.
+gov:source a owl:ObjectProperty;
+           rdfs:label "Quellenangabe"@de,
+                      "source citation"@en.
+gov:sourceNote a owl:DatatypeProperty;
+               rdfs:domain gov:SourceReference;
+               rdfs:label "Notiz zur Quellenangabe"@de,
+                          "note to the source"@en;
+               rdfs:range xsd:string.
+gov:sourceRef a owl:ObjectProperty;
+              rdfs:domain gov:SourceReference;
+              rdfs:label "Quelle"@de,
+                         "source"@en;
+              rdfs:range gov:Source.
+gov:time a owl:ObjectProperty;
+         rdfs:comment "Zeitdauer, zu der die Information gültig war oder die Beziehung bestand"@de,
+                      """time period in which the statement was correct or there was relation
+    relationship."""@en;
+         rdfs:domain [owl:unionOf (gov:Property
+                                   gov:Relation) ; 
+                      a owl:Class];
+         rdfs:label "Gültigkeitsdauer"@de,
+                    "lifetime"@en;
+         rdfs:range gov:Timespan.
+gov:type a owl:ObjectProperty;
+         rdfs:domain gov:PropertyType;
+         rdfs:label "Objekttyp"@de,
+                    "object type"@en;
+         rdfs:range gov:Type;
+         rdfs:subPropertyOf owl:topObjectProperty.
+gov:typeName a owl:DatatypeProperty;
+             rdfs:domain gov:Type;
+             rdfs:label "Name des Typs"@de,
+                        "type's name"@en.
+gov:value a owl:DatatypeProperty;
+          rdfs:domain gov:Property;
+          rdfs:label "Wert"@de,
+                     "value"@en.

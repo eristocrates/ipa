@@ -1,0 +1,2645 @@
+
+
+i
+i
+“K23723˙FM” — 2018/10/11 — 14:15 — page 2 — #2 i
+i
+i
+i
+i
+i
+Graph Theory and Its
+Applications, Third Edition
+
+i
+i
+“K23723˙FM” — 2018/10/11 — 14:15 — page 4 — #4 i
+i
+i
+i
+i
+i
+Textbooks in Mathematics
+Series editors:
+Al Boggess and Ken Rosen
+A CONCRETE INTRODUCTION TO REAL ANALYSIS, SECOND EDITION
+Robert Carlson
+MATHEMATICAL MODELING FOR BUSINESS ANALYTICS
+William P. Fox
+ELEMENTARY LINEAR ALGEBRA
+James R. Kirkwood and Bessie H. Kirkwood
+APPLIED FUNCTIONAL ANALYSIS, THIRD EDITION
+J. Tinsley Oden and Leszek Demkowicz
+AN INTRODUCTION TO NUMBER THEORY WITH CRYPTOGRAPHY, SECOND EDITION
+James R. Kraft and Lawrence Washington
+MATHEMATICAL MODELING: BRANCHING BEYOND CALCULUS
+Crista Arangala, Nicolas S. Luke and Karen A. Yokley
+ELEMENTARY DIFFERENTIAL EQUATIONS, SECOND EDITION
+Charles Roberts
+ELEMENTARY INTRODUCTION TO THE LEBESGUE INTEGRAL
+Steven G. Krantz
+LINEAR METHODS FOR THE LIBERAL ARTS
+David Hecker and Stephen Andrilli
+CRYPTOGRAPHY: THEORY AND PRACTICE, FOURTH EDITION
+Douglas R. Stinson and Maura B. Paterson
+DISCRETE MATHEMATICS WITH DUCKS, SECOND EDITION
+Sarah-Marie Belcastro
+BUSINESS PROCESS MODELING, SIMULATION AND DESIGN, THIRD EDITION
+Manual Laguna and Johan Marklund
+GRAPH THEORY AND ITS APPLICATIONS, THIRD EDITION
+Jonathan L. Gross, Jay Yellen and Mark Anderson
+
+i
+i
+“K23723˙FM” — 2018/10/11 — 14:15 — page 6 — #6 i
+i
+i
+i
+i
+i
+Graph Theory and Its
+Applications, Third Edition
+Jonathan L. Gross
+Jay Yellen
+Mark Anderson
+
+i
+i
+“K23723˙FM” — 2018/10/11 — 14:15 — page 8 — #8 i
+i
+i
+i
+i
+i
+CRC Press
+Taylor & Francis Group
+6000 Broken Sound Parkway NW, Suite 300
+Boca Raton, FL 33487-2742
+© 2019 by Taylor & Francis Group, LLC
+CRC Press is an imprint of Taylor & Francis Group, an Informa business
+No claim to original U.S. Government works
+Printed on acid-free paper
+Version Date: 20191011
+International Standard Book Number-13:  978-1-4822-4948-4 (Hardback)
+This book contains information obtained from authentic and highly regarded sources. Reasonable efforts have been
+made to publish reliable data and information, but the author and publisher cannot assume responsibility for the
+validity of all materials or the consequences of their use. The authors and publishers have attempted to trace the copy-
+right holders of all material reproduced in this publication and apologize to copyright holders if permission to publish
+in this form has not been obtained. If any copyright material has not been acknowledged please write and let us know
+so we may rectify in any future reprint.
+Except as permitted under U.S. Copyright Law, no part of this book may be reprinted, reproduced, transmitted, or
+utilized in any form by any electronic, mechanical, or other means, now known or hereafter invented, including pho-
+tocopying, microfilming, and recording, or in any information storage or retrieval system, without written permission
+from the publishers.
+For permission to photocopy or use material electronically from this work, please access www.copyright.com (http://
+www.copyright.com/) or contact the Copyright Clearance Center, Inc. (CCC), 222 Rosewood Drive, Danvers, MA
+01923, 978-750-8400. CCC is a not-for-profit organization that provides licenses and registration for a variety of users.
+For organizations that have been granted a photocopy license by the CCC, a separate system of payment has been
+arranged.
+Trademark Notice: Product or corporate names may be trademarks or registered trademarks, and are used only for
+identification and explanation without intent to infringe.
+Visit the Taylor & Francis Web site at
+http://www.taylorandfrancis.com
+and the CRC Press Web site at
+http://www.crcpress.com
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page v — #2 i
+i
+i
+i
+i
+i
+Jonathan dedicates this book to Alisa.
+Jay dedicates this book to the memory of his brother Marty.
+Mark dedicates this book to Libertad.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page vi — #3 i
+i
+i
+i
+i
+i
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page vii — #4 i
+i
+i
+i
+i
+i
+CONTENTS
+Preface xi
+Authors xiii
+1 INTRODUCTION TO GRAPH MODELS 1
+1.1 Graphs and Digraphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.2 Common Families of Graphs . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+1.3 Graph Modeling Applications . . . . . . . . . . . . . . . . . . . . . . . . . 22
+1.4 Walks and Distance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+1.5 Paths, Cycles, and Trees . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+1.6 Vertex and Edge Attributes: More Applications . . . . . . . . . . . . . . . 49
+1.7 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+2 STRUCTURE AND REPRESENTATION 59
+2.1 Graph Isomorphism . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+2.2 Automorphisms and Symmetry . . . . . . . . . . . . . . . . . . . . . . . . 68
+2.3 Subgraphs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+2.4 Some Graph Operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . 83
+2.5 Tests for Non-Isomorphism . . . . . . . . . . . . . . . . . . . . . . . . . . 93
+2.6 Matrix Representations . . . . . . . . . . . . . . . . . . . . . . . . . . . . 100
+2.7 More Graph Operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . 105
+2.8 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 113
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 115
+3 TREES 121
+3.1 Characterizations and Properties of Trees . . . . . . . . . . . . . . . . . . 122
+3.2 Rooted Trees, Ordered Trees, and Binary Trees . . . . . . . . . . . . . . . 130
+3.3 Binary-Tree Traversals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 138
+3.4 Binary-Search Trees . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 143
+3.5 Huﬀman Trees and Optimal Preﬁx Codes . . . . . . . . . . . . . . . . . . 148
+3.6 Priority Trees . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 152
+3.7 Counting Labeled Trees: Pr¨ufer Encoding . . . . . . . . . . . . . . . . . . 157
+3.8 Counting Binary Trees: Catalan Recursion . . . . . . . . . . . . . . . . . . 163
+3.9 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 165
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 168
+4 SPANNING TREES 173
+4.1 Tree Growing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 174
+4.2 Depth-First and Breadth-First Search . . . . . . . . . . . . . . . . . . . . 181
+4.3 Minimum Spanning Trees and Shortest Paths . . . . . . . . . . . . . . . . 186
+4.4 Applications of Depth-First Search . . . . . . . . . . . . . . . . . . . . . . 193
+4.5 Cycles, Edge-Cuts, and Spanning Trees . . . . . . . . . . . . . . . . . . . 201
+vii
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page viii — #5 i
+i
+i
+i
+i
+i
+viii Contents
+4.6 Graphs and Vector Spaces . . . . . . . . . . . . . . . . . . . . . . . . . . . 207
+4.7 Matroids and the Greedy Algorithm . . . . . . . . . . . . . . . . . . . . . 218
+4.8 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 223
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 224
+5 CONNECTIVITY 229
+5.1 Vertex- and Edge-Connectivity . . . . . . . . . . . . . . . . . . . . . . . . 230
+5.2 Constructing Reliable Networks . . . . . . . . . . . . . . . . . . . . . . . . 235
+5.3 Max-Min Duality and Menger’s Theorems . . . . . . . . . . . . . . . . . . 243
+5.4 Block Decompositions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252
+5.5 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 256
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 257
+6 OPTIMAL GRAPH TRAVERSALS 259
+6.1 Eulerian Trails and Tours . . . . . . . . . . . . . . . . . . . . . . . . . . . 260
+6.2 DeBruijn Sequences and Postman Problems . . . . . . . . . . . . . . . . . 264
+6.3 Hamiltonian Paths and Cycles . . . . . . . . . . . . . . . . . . . . . . . . 279
+6.4 Gray Codes and Traveling Salesman Problems . . . . . . . . . . . . . . . . 284
+6.5 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 294
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 295
+7 PLANARITY AND KURATOWSKI’S THEOREM 297
+7.1 Planar Drawings and Some Basic Surfaces . . . . . . . . . . . . . . . . . . 298
+7.2 Subdivision and Homeomorphism . . . . . . . . . . . . . . . . . . . . . . . 305
+7.3 Extending Planar Drawings . . . . . . . . . . . . . . . . . . . . . . . . . . 309
+7.4 Kuratowski’s Theorem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 316
+7.5 Algebraic Tests for Planarity . . . . . . . . . . . . . . . . . . . . . . . . . 324
+7.6 Planarity Algorithm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 337
+7.7 Crossing Numbers and Thickness . . . . . . . . . . . . . . . . . . . . . . . 340
+7.8 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 345
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 347
+8 GRAPH COLORINGS 351
+8.1 Vertex-Colorings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 352
+8.2 Map-Colorings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 367
+8.3 Edge-Colorings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 374
+8.4 Factorization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 388
+8.5 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 393
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 395
+9 SPECIAL DIGRAPH MODELS 399
+9.1 Directed Paths and Mutual Reachability . . . . . . . . . . . . . . . . . . . 400
+9.2 Digraphs as Models for Relations . . . . . . . . . . . . . . . . . . . . . . . 411
+9.3 Tournaments . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 417
+9.4 Project Scheduling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 422
+9.5 Finding the Strong Components of a Digraph . . . . . . . . . . . . . . . . 429
+9.6 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 435
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 436
+10 NETWORK FLOWS AND APPLICATIONS 441
+10.1 Flows and Cuts in Networks . . . . . . . . . . . . . . . . . . . . . . . . . . 442
+10.2 Solving the Maximum-Flow Problem . . . . . . . . . . . . . . . . . . . . . 450
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page ix — #6 i
+i
+i
+i
+i
+i
+Contents ix
+10.3 Flows and Connectivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . 460
+10.4 Matchings, Transversals, and Vertex Covers . . . . . . . . . . . . . . . . . 469
+10.5 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 482
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 483
+11 GRAPH COLORINGS AND SYMMETRY 487
+11.1 Automorphisms of Simple Graphs . . . . . . . . . . . . . . . . . . . . . . . 488
+11.2 Equivalence Classes of Colorings . . . . . . . . . . . . . . . . . . . . . . . 493
+11.3 Supplementary Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . 499
+Glossary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 500
+A APPENDIX 501
+A.1 Logic Fundamentals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 501
+A.2 Relations and Functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . 502
+A.3 Some Basic Combinatorics . . . . . . . . . . . . . . . . . . . . . . . . . . . 505
+A.4 Algebraic Structures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 506
+A.5 Algorithmic Complexity . . . . . . . . . . . . . . . . . . . . . . . . . . . . 511
+A.6 Supplementary Reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . 514
+B BIBLIOGRAPHY 515
+B.1 General Reading . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 515
+B.2 References . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 517
+SOLUTIONS AND HINTS 523
+INDEX OF APPLICATIONS 563
+INDEX OF ALGORITHMS 565
+GENERAL INDEX 567
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page x — #7 i
+i
+i
+i
+i
+i
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page xi — #8 i
+i
+i
+i
+i
+i
+PREFACE
+Graphs have proven to be useful models for a wide variety of problems, arising in
+computer science, operations research, and in the natural and social sciences. This text
+targets the need for a comprehensive approach to the theory, integrating a careful expo-
+sition of classical developments with emerging methods, models, and practical needs. It
+is suitable for classroom presentation at the introductory graduate or advanced under-
+graduate level, or for self-study and reference by working professionals.
+Graph theory has evolved as a collection of seemingly disparate topics. The intent
+of the authors is to present this material in a more cohesive framework. In the process,
+important techniques and analytic tools are transformed into a uniﬁed mathematical
+methodology.
+Emphasis throughout is conceptual, with more than 600 graph drawings included to
+strengthen intuition and more than 1500 exercises ranging from routine drill to more chal-
+lenging problem solving. Applications and concrete examples are designed to stimulate
+interest and to demonstrate the relevance of new concepts.
+Algorithms are presented in a concise format, and computer science students will ﬁnd
+numerous projects inviting them to convert algorithms to computer programs. Software
+design issues are addressed throughout the book in the form of computational notes,
+which can be skipped by those not interested in implementation. These design issues
+include the eﬃcient use of computational resources, software reusability, and the user
+interface.
+This book is a collection of topics drawn from the second edition of Graph Theory
+and Its Applications, written by the ﬁrst two authors of this book. The topics chosen
+provide a strong foundation in graph theory.
+Summary of Contents
+Chapters 1 through 6 concentrate on graph representation, basic properties, modeling,
+and applications. Graphical constructions here are concrete and primarily spatial. When
+necessary, we introduce abstractions in a supportive role.
+Chapter 7, which is devoted to planarity and Kuratowski’s theorem, presents some
+of the underpinnings of topological graph theory. Chapter 8 is about graph colorings,
+including vertex- and edge-colorings, map-colorings, and the related topics of cliques,
+independence numbers, and graph factorization.
+The material in Chapters 9 and 10, special digraph models and network ﬂows, overlaps
+with various areas in operations research and computer science.
+Chapter 11 explores the connections between a graph’s automorphisms (its symme-
+tries) and its colorings.
+The appendix provides a review of a variety of topics which a student would typically
+encounter in earlier math classes.
+To the Instructor
+The book is well-suited for a variety of one-semester courses. A general course in
+graph theory might include many of the topics covered in the ﬁrst eight chapters. A
+xi
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page xii — #9 i
+i
+i
+i
+i
+i
+xii Preface
+course oriented toward operations research/optimization should include most or all of the
+material in Chapters 4 (spanning trees), 5 (connectivity), 6 (traversability), 8 (colorings),
+9 (digraph models), and 10 (ﬂows). A course emphasizing the role of data structures and
+algorithms might include more material from Chapter 3 (trees). A course designed to
+have strong ties to geometry, linear algebra, and group theory, might include parts of
+Chapters 4 (graphs and vector spaces), 7 (planarity), 8 (graph colorings), and 11 (graph
+symmetry).
+The deﬁnitions and results from all of Chapter 1, most of Chapter 2, and from §3.1
+are used throughout the text, and we recommend that they be covered in any course
+that uses the book. The remaining chapters are largely independent of each other, with
+the following exceptions:
+• §3.2 is used in §4.1.
+• §4.1 and §4.2 are used in §5.4 and §9.5.
+• §4.5 is referred to in §5.3 and §6.1.
+• Parts of Chapter 5 are used in §10.3.
+Features of This Book
+• Applications. The Index of Applications lists 70 applications, distributed through-
+out the text.
+• Algorithms. The Index of Algorithms points to 51 algorithms, outlined in the text
+with enough detail to make software implementation feasible.
+• Foreshadowing. The ﬁrst three chapters now preview a number of concepts, mostly
+via the exercises, that are more fully developed in later chapters. This makes it
+easier to encourage students to take earlier excursions in research areas that may
+be of particular interest to the instructor.
+• Solutions and Hints. Each exercise marked with a superscriptS has a solution or
+hint appearing in the back of the book.
+• Supplementary Exercises. In addition to the section exercises, each chapter con-
+cludes with a section of supplementary exercises, which are intended to develop
+the problem-solving skills of students and test whether they can go beyond what
+has been explicitly taught. Most of these exercises were designed as examination
+questions for students at Columbia University.
+Websites
+Suggestions and comments from readers are welcomed and may be sent to the
+authors’ website at www.graphtheory.com. Thanks to our founding webmaster Aaron
+Gross for his years of maintaining this website. The general website for CRC Press is
+www.crcpress.com. As with our previous graph theory books, we will post the corrections
+to all known errors on our website.
+Jonathan L. Gross, Jay Yellen, and Mark Anderson
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page xiii — #10 i
+i
+i
+i
+i
+i
+ABOUT THE AUTHORS
+Jonathan L. Gross is Professor of Computer Science at
+Columbia University. His research in topology, graph the-
+ory, and cultural sociometry has earned him an Alfred P.
+Sloan Fellowship, an IBM Postdoctoral Fellowship, and var-
+ious research grants from the Oﬃce of Naval Research, the
+National Science Foundation, and the Russell Sage Foun-
+dation.
+Professor Gross has created and delivered numerous soft-
+ware development short courses for Bell Laboratories and
+for IBM. These include mathematical methods for perfor-
+mance evaluation at the advanced level and for develop-
+ing reusable software at a basic level. He has received sev-
+eral awards for outstanding teaching at Columbia University, including the career Great
+Teacher Award from the Society of Columbia Graduates. His peak semester enrollment
+in his graph theory course at Columbia was 101 students.
+His previous books include Topological Graph Theory, coauthored with Thomas W.
+Tucker; Measuring Culture, coauthored with Steve Rayner, constructs network-theoretic
+tools for measuring sociological phenomena; and Combinatorial Methods with Computer
+Applications.
+Prior to Columbia University, Professor Gross was in the Mathematics Department at
+Princeton University. His undergraduate work was at M.I.T., and he wrote his Ph.D.
+thesis on 3-dimensional topology at Dartmouth College.
+Jay Yellen is Professor of Mathematics at Rollins College.
+He received his B.S. and M.S. in Mathematics at Polytech-
+nic University of New York and did his doctoral work in
+ﬁnite group theory at Colorado State University. Dr. Yellen
+has had regular faculty appointments at Allegheny College,
+State University of New York at Fredonia, and Florida In-
+stitute of Technology, where he was Chair of Operations
+Research from 1995 to 1999. He has had visiting appoint-
+ments at Emory University, Georgia Institute of Technol-
+ogy, and Columbia University, University of Nottingham,
+UK, and KU Leuven, Belgium.
+In addition to the Handbook of Graph Theory, which he co-edited with Professor
+Gross, Professor Yellen has written manuscripts used at IBM for two courses in
+discrete mathematics within the Principles of Computer Science Series and has con-
+tributed two sections to the Handbook of Discrete and Combinatorial Mathematics. He
+also has designed and conducted several summer workshops on creative problem solving
+for secondary-school mathematics teachers, which were funded by the National Science
+Foundation and New York State. He has been a recipient of a Student’s Choice Professor
+Award at Rollins College.
+Dr. Yellen has published research articles in character theory of ﬁnite groups, graph
+theory, power-system scheduling, and timetabling. His current research interests include
+graph theory, discrete optimization, and the development of course-scheduling software
+based on graph coloring.
+xiii
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page xiv — #11 i
+i
+i
+i
+i
+i
+xiv Authors
+Mark Anderson is Professor of Mathematics and Com-
+puter Science at Rollins College. He received his doctor-
+ate from the University of Virginia for work in algebraic
+and diﬀerential topology. After arriving at Rollins College,
+he switched his emphasis to graph theory and also earned
+a masters degree in Computer Science from the Univer-
+sity of Central Florida. He has publications in the areas of
+algebraic topology (cobordism), topological graph theory
+(crossing number and Cayley maps), graph coloring (using
+voltage graphs), as well as graph security (eternal domina-
+tion). He is currently working on problems in robust graph
+coloring, which combines ideas from graph coloring with
+those of graph security. Undergraduate students have done collaborative research with
+Dr. Anderson in topological graph theory, graph coloring, and software testing.
+Methods included in this book appear in a wide range of courses that Professor An-
+derson has designed. In his Artiﬁcial Intelligence course, students explore graph search
+algorithms; in Data Compression, they discover Huﬀman codes; in Coding Theory, they
+work with the geometry of the n-dimensional hypercube. Courses that use algebra to
+answer geometric questions include Algebraic Topology and Transformational Geometry.
+The Geometry of Islamic Patterns involves imbeddings of graphs on surfaces as a way of
+characterizing planar tilings. Courses he has developed for students with majors outside
+math and computer science include The Mathematics of Games and Gaming and Zero,
+A Revolutionary Idea.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 1 — #12 i
+i
+i
+i
+i
+i
+Chapter 1
+INTRODUCTION TO GRAPH MODELS
+INTRODUCTION
+Conﬁgurations of nodes and connections occur in a great diversity of applications.
+They may represent physical networks, such as electrical circuits, roadways, or organic
+molecules. And they are also used in representing less tangible interactions as might occur
+in ecosystems, sociological relationships, databases, or the ﬂow of control in a computer
+program.
+Formally, such conﬁgurations are modeled by combinatorial structures called graphs,
+consisting of two sets called vertices and edges and an incidence relation between them.
+The vertices and edges may have additional attributes, such as color or weight, or any-
+thing else useful to a particular model. Graph models tend to fall into a handful of
+categories. For instance, the network of one-way streets of a city requires a model in
+which each edge is assigned a direction; two atoms in an organic molecule may have more
+than one bond between them; and a computer program is likely to have loop structures.
+These examples require graphs with directions on their edges, with multiple connections
+between vertices, or with connections from a vertex to itself.
+In the past these diﬀerent types of graphs were often regarded as separate entities,
+each with its own set of deﬁnitions and properties. We have adopted a uniﬁed approach by
+introducing all of these various graphs at once. This allows us to establish properties that
+are shared by several classes of graphs without having to repeat arguments. Moreover,
+this broader perspective has an added bonus: it inspires computer representations that
+lead to the design of fully reusable software for applications.
+We begin by introducing the basic terminology needed to view graphs both as con-
+ﬁgurations in space and as combinatorial objects that lend themselves to computer rep-
+resentation. Pure and applied examples illustrate how diﬀerent kinds of graphs arise as
+models.
+1
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 2 — #13 i
+i
+i
+i
+i
+i
+2 Chapter 1 INTRODUCTION TO GRAPH MODELS
+1.1 GRAPHS AND DIGRAPHS
+We think of a graph as a set of points in a plane or in 3-space and a set of line segments
+(possibly curved), each of which either joins two points or joins a point to itself.
+u
+w
+a b
+c
+d
+h f g
+k
+v
+p q
+r s
+A B
+Figure 1.1.1 Line drawings of a graph A and a graph B.
+Graphs are highly versatile models for analyzing a wide range of practical problems
+in which points and connections between them have some physical or conceptual inter-
+pretation. Placing such analysis on solid footing requires precise deﬁnitions, terminology,
+and notation.
+definition: A graph G = (V,E) is a mathematical structure consisting of two ﬁnite
+sets V and E. The elements of V are called vertices (or nodes), and the elements of E
+are called edges. Each edge has a set of one or two vertices associated to it, which are
+called its endpoints.
+terminology: An edge is said to join its endpoints. A vertex joined by an edge to a
+vertex v is said to be a neighbor of v.
+definition: The (open) neighborhood of a vertex v in a graph G, denoted N(v), is
+the set of all the neighbors of v. The closed neighborhood of v is given by N[v] =
+N(v) ∪ {v}.
+notation: When G is not the only graph under consideration, the notations VG and
+EG (or V (G) and E(G)) are used for the vertex- and edge-sets of G, and the notations
+NG(v) and NG[v] are used for the neighborhoods of v.
+Example 1.1.1: The vertex- and edge-sets of graph A in Figure 1.1.1 are given by
+VA = {p,q,r,s} and EA = {pq,pr,ps,rs,qs}
+and the vertex- and edge-sets of graph B are given by
+VB = {u,v,w} and EB = {a,b,c,d,f,g,h,k}
+Notice that in graph A, we are able to denote each edge simply by juxtaposing its
+endpoints, because those endpoints are unique to that edge. On the other hand, in graph
+B, where some edges have the same set of endpoints, we use explicit names to denote
+the edges.
+Simple Graphs and General Graphs
+In certain applications of graph theory and in some theoretical contexts, there are
+frequent instances in which an edge joins a vertex to itself or multiple edges have the
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 3 — #14 i
+i
+i
+i
+i
+i
+Section 1.1 Graphs and Digraphs 3
+same set of endpoints. In other applications or theoretical contexts, such instances are
+absent.
+definition: A proper edge is an edge that joins two distinct vertices.
+definition: A self-loop is an edge that joins a single endpoint to itself.†
+definition: A multi-edge is a collection of two or more edges having identical end-
+points. The edge multiplicity is the number of edges within the multi-edge.
+definition: A simple graph has neither self-loops nor multi-edges.
+definition: A loopless graph (or multi-graph) may have multi-edges but no self-
+loops.
+definition: A (general) graph may have self-loops and/or multi-edges.
+Example 1.1.1 continued: Graph A in Figure 1.1.1 is simple. Graph B is not simple;
+the edges a,b, and k are self-loops, and the edge-sets {f,g,h} and {a,b} are multi-edges.
+terminology: When we use the term graph without a modiﬁer, we mean a general
+graph. An exception to this convention occurs when an entire section concerns simple
+graphs only, in which case, we make an explicit declaration at the beginning of that
+section.
+terminology note: Some authors use the term graph without a modiﬁer to mean
+simple graph, and they use pseudograph to mean general graph.
+Null and Trivial Graphs
+definition: A null graph is a graph whose vertex- and edge-sets are empty.
+definition: A trivial graph is a graph consisting of one vertex and no edges.
+Edge Directions
+An edge between two vertices creates a connection in two opposite senses at once.
+Assigning a direction makes one of these senses forward and the other backward. In a line
+drawing, the choice of forward direction is indicated by placing an arrow on an edge.
+definition: A directed edge (or arc) is an edge, one of whose endpoints is designated
+as the tail, and whose other endpoint is designated as the head.
+terminology: An arc is said to be directed from its tail to its head.
+notation: In a general digraph, the head and tail of an arc e may be denoted head(e)
+and tail(e), respectively.
+definition: Two arcs between a pair of vertices are said to be oppositely directed if
+they do not have the same head and tail.
+definition: A multi-arc is a set of two or more arcs having the same tail and same
+head. The arc multiplicity is the number of arcs within the multi-arc.
+definition: A directed graph (or digraph) is a graph each of whose edges is directed.
+†We use the term “self-loop” instead of the more commonly used term “loop” because loop means
+something else in many applications.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 4 — #15 i
+i
+i
+i
+i
+i
+4 Chapter 1 INTRODUCTION TO GRAPH MODELS
+definition: A digraph is simple if it has neither self-loops nor multi-arcs.
+notation: In a simple digraph, an arc from vertex u to vertex v may be denoted by uv
+or by the ordered pair [u,v].
+Example 1.1.2: The digraph in Figure 1.1.2 is simple. Its arcs are uv, vu, and vw.
+u v w
+Figure 1.1.2 A simple digraph with a pair of oppositely directed arcs.
+definition: A mixed graph (or partially directed graph) is a graph that has both
+undirected and directed edges.
+definition: The underlying graph of a directed or mixed graph G is the graph that
+results from removing all the designations of head and tail from the directed edges of G
+(i.e., deleting all the edge-directions).
+Example 1.1.3: The digraph D in Figure 1.1.3 has the graph G as its underlying graph.
+u
+w
+c
+d
+h
+g
+vD
+u
+w
+c
+d
+h
+g
+vG
+Figure 1.1.3 A digraph and its underlying graph.
+Simple and non-simple graphs and digraphs all commonly arise as models; the nu-
+merous and varied examples in §1.3 illustrate the robustness of our comprehensive graph
+model.
+Formal Speciﬁcation of Graphs and Digraphs
+Except for the smallest graphs, line drawings are inadequate for describing a graph;
+imagine trying to draw a graph to represent a telephone network for a small city. Since
+many applications involve computations on graphs having hundreds, or even thousands,
+of vertices, another, more formal kind of speciﬁcation of a graph is often needed.
+The speciﬁcation must include (implicitly or explicitly) a function endpts that speci-
+ﬁes, for each edge, the subset of vertices on which that edge is incident (i.e., its endpoint
+set). In a simple graph, the juxtaposition notation for each edge implicitly speciﬁes its
+endpoints, making formal speciﬁcation simpler for simple graphs than for general graphs.
+definition: A formal speciﬁcation of a simple graph is given by an adjacency
+table with a row for each vertex, containing the list of neighbors of that vertex.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 5 — #16 i
+i
+i
+i
+i
+i
+Section 1.1 Graphs and Digraphs 5
+Example 1.1.4: Figure 1.1.4 shows a line drawing and a formal speciﬁcation for a simple
+graph.
+p q
+r s
+p : q r s
+q : p s
+r : p s
+s : p q r
+Figure 1.1.4 A simple graph and its formal speciﬁcation.
+definition: A formal speciﬁcation of a general graph G = (V,E,endpts) consists
+of a list of its vertices, a list of its edges, and a two-row incidence table (specifying
+the endpts function) whose columns are indexed by the edges. The entries in the column
+corresponding to edge e are the endpoints of e. The same endpoint appears twice if e is
+a self-loop. (An isolated vertex will appear only in the vertex list.)
+Example 1.1.5: Figure 1.1.5 shows a line drawing and a formal speciﬁcation for a gen-
+eral graph.
+u
+w
+a b
+c
+d
+h f g
+k
+v V = {u,v,w} and E = {a,b,c,d,f,g,h,k}
+edge a b c d f g h k
+endpts u u u w v v w v
+u u v u w w v v
+Figure 1.1.5 A general graph and its formal speciﬁcation.
+definition: A formal speciﬁcation of a general digraph or a mixed graph
+D = (V,E,endpts,head,tail) is obtained from the formal speciﬁcation of the underly-
+ing graph by adding the functions head : EG → VG and tail : EG → VG, which designate
+the head vertex and tail vertex of each arc.
+One way to specify these designations in the incidence table is to mark in each column
+the endpoint that is the head of the corresponding arc.
+Remark: A mixed graph is speciﬁed by simply restricting the functions head and tail
+to a proper subset of EG. In this case, a column of the incidence table that has no mark
+means that the corresponding edge is undirected.
+Example 1.1.6: Figure 1.1.6 gives the formal speciﬁcation for the digraph shown, in-
+cluding the corresponding values of the functions head and tail. A superscript “h” is used
+to indicate the head vertex.
+Remark: Our approach treats a digraph as an augmented type of graph, where each
+edge e of a digraph is still associated with a subset endpts(e), but which now also includes
+a mark on one of the endpoints to specify the head of the directed edge.
+This viewpoint is partly motivated by its impact on computer implementations of graph
+algorithms (see the computational notes), but it has some advantages from a mathemat-
+ical perspective as well. Regarding digraphs as augmented graphs makes it easier to view
+certain results that tend to be established separately for graphs and for digraphs as a
+single result that applies to both.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 6 — #17 i
+i
+i
+i
+i
+i
+6 Chapter 1 INTRODUCTION TO GRAPH MODELS
+u
+w
+a b
+c
+d
+h
+f g
+k
+v
+edge a b c d f g h k
+endpts u uh u w vh v w v
+uh u vh uh w wh vh vh
+head(a) = tail(a) = head(b) = tail(b) = head(d) = tail(c) = u;
+head(c) = head(h) = head(f) = tail(g) = head(k) = tail(k) = v;
+head(g) = tail(d) = tail(h) = tail(f) = w.
+Figure 1.1.6 A general digraph and its formal speciﬁcation.
+Also, our formal incidence speciﬁcation permits us to reverse the direction of an edge e at
+any time, just by reversing the values of head(e) and tail(e). This amounts to switching
+the h mark in the relevant column of the incidence table or reversing the arrowhead in
+the digraph drawing.
+computational note 1: These formal speciﬁcations for a graph and a digraph can
+easily be implemented with a variety of programmer-deﬁned data structures, whatever
+is most appropriate to the application. A discussion of the comparative advantages and
+disadvantages of a few of the most common computer information structures for graphs
+and digraphs appears at the end of Chapter 2.
+computational note 2: (A caution to software designers) From the perspective of
+object-oriented software design, the ordered-pair representation of arcs in a digraph treats
+digraphs as a diﬀerent class of objects from graphs. This could seriously undermine
+software reuse. Large portions of computer code might have to be rewritten in order to
+adapt an algorithm that was originally designed for a digraph to work on an undirected
+graph.
+The ordered-pair representation could also prove awkward in implementing algorithms
+for which the graphs or digraphs are dynamic structures (i.e., they change during the
+algorithm). Whenever the direction on a particular edge must be reversed, the associated
+ordered pair has to be deleted and replaced by its reverse. Even worse, if a directed edge
+is to become undirected, then an ordered pair must be replaced with an unordered pair.
+Similarly, the undirected and directed edges of a mixed graph would require two diﬀerent
+types of objects.
+computational note 3: For some applications (network layouts on a surface, for in-
+stance), the direction of ﬂow around a self-loop has practical importance, and distin-
+guishing between the ends of a self-loop becomes necessary. This distinction is made in
+Chapters 8 and 16 but not elsewhere.
+Mathematical Modeling with Graphs
+To bring the power of mathematics to bear on real-world problems, one must ﬁrst
+model the problem mathematically. Graphs are remarkably versatile tools for modeling,
+and their wide-ranging versatility is a central focus throughout the text.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 7 — #18 i
+i
+i
+i
+i
+i
+Section 1.1 Graphs and Digraphs 7
+Example 1.1.7: The mixed graph in Figure 1.1.7 is a model for a roadmap. The vertices
+represent landmarks, and the directed and undirected edges represent the one-way and
+two-way streets, respectively.
+Gas
+Station
+Hardware
+Store
+Train
+Station
+Bank
+School
+GroceryFirehouseDentist
+LibraryPizzeria
+Town Hall Doctor
+Park
+Candy
+Store
+Figure 1.1.7 Road-map of landmarks in a small town.
+Example 1.1.8: The digraph in Figure 1.1.8 represents the hierarchy within a company.
+This illustrates how, beyond physical networks, graphs and digraphs are used to model
+social relationships.
+Department Head
+Supervisors
+Staff Members
+Figure 1.1.8 A corporate hierarchy.
+Degree of a Vertex
+definition: Adjacent vertices are two vertices that are joined by an edge.
+definition: Adjacent edges are two distinct edges that have an endpoint in common.
+definition: If vertex v is an endpoint of edge e, then v is said to be incident on e, and
+e is incident on v.
+definition: The degree (or valence) of a vertex v in a graph G, denoted deg(v), is
+the number of proper edges incident on v plus twice the number of self-loops.†
+terminology: A vertex of degree d is also called a d-valent vertex.
+notation: The smallest and largest degrees in a graph G are denoted δmin and δmax
+(or δmin(G) and δmax(G) when there is more than one graph under discussion). Some
+authors use δ instead of δmin and ∆ instead of δmax.
+definition: The degree sequence of a graph is the sequence formed by arranging the
+vertex degrees in non-increasing order.
+†Applications of graph theory to physical chemistry motivate the use of the term valence.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 8 — #19 i
+i
+i
+i
+i
+i
+8 Chapter 1 INTRODUCTION TO GRAPH MODELS
+Example 1.1.9: Figure 1.1.9 shows a graph and its degree sequence.
+y
+z
+u
+w
+a b
+c
+d
+h f g
+k
+v
+x 〈6,6,4,1,1,0〉
+v u w z y x
+Figure 1.1.9 A graph and its degree sequence.
+Although each graph has a unique degree sequence, two structurally diﬀerent graphs
+can have identical degree sequences.
+Example 1.1.10: Figure 1.1.10 shows two diﬀerent graphs, G and H, with the same
+degree sequence.
+G H
+Figure 1.1.10 Two graphs whose degree sequences are both 〈3,3,2,2,2,2〉.
+The following result shows that the degree sequence of a simple graph must have at
+least two equal terms. This has an interesting interpretation in a sociological model that
+appears in Section 1.3 (see Application 1.3.2).
+Proposition 1.1.1: A non-trivial simple graph G must have at least one pair of vertices
+whose degrees are equal.
+Proof: Suppose that the graph G has n vertices. Then there appear to be n possible
+degree values, namely 0,...,n − 1. However, there cannot be both a vertex of degree
+0 and a vertex of degree n − 1, since the presence of a vertex of degree 0 implies that
+each of the remaining n − 1 vertices is adjacent to at most n − 2 other vertices. Hence,
+the n vertices of G can realize at most n−1 possible values for their degrees. Thus, the
+pigeonhole principle implies that at least two of the n vertices have equal degree. ♦
+The work of Leonhard Euler (1707–1783) is regarded as the beginning of graph theory
+as a mathematical discipline. The following theorem of Euler establishes a fundamental
+relationship between the vertices and edges of a graph.
+Theorem 1.1.2: [Euler’s Degree-Sum Theorem]The sum of the degrees of the ver-
+tices of a graph is twice the number of edges.
+Proof: Each edge contributes two to the degree sum. ♦
+Corollary 1.1.3: In a graph, there is an even number of vertices having odd degree.
+Proof: Consider separately, the sum of the degrees that are odd and the sum of those
+that are even. The combined sum is even by Theorem 1.1.2, and since the sum of the
+even degrees is even, the sum of the odd degrees must also be even. Hence, there must
+be an even number of vertices of odd degree. ♦
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 9 — #20 i
+i
+i
+i
+i
+i
+Section 1.1 Graphs and Digraphs 9
+Remark: By Theorem 1.1.2, the sum of the terms of a degree sequence of a graph is
+even. Theorem 1.1.4 establishes the following converse: any non-increasing, nonnegative
+sequence of integers whose sum is even is the degree sequence of some graph. Example
+1.1.11 illustrates the construction used in its proof.
+Example 1.1.11: To construct a graph whose degree sequence is 〈5,4,3,3,2,1,0〉, start
+with seven isolated vertices v1,v2,...,v7. For the even-valued terms of the sequence,
+draw the appropriate number of self-loops on the corresponding vertices. Thus, v2 gets
+two self-loops, v5 gets one self-loop, and v7 remains isolated. For the four remaining odd-
+valued terms, group the corresponding vertices into any two pairs, for instance, v1, v3
+and v4, v6. Then join each pair by a single edge and add to each vertex the appropriate
+number of self-loops. The resulting graph is shown in Figure 1.1.11.
+v1
+v2
+v3
+v4
+v5
+v6
+v7
+Figure 1.1.11 Constructing a graph with degree sequence 〈5,4,3,3,2,1,0〉.
+Theorem 1.1.4: Suppose that 〈d1,d2,...,dn〉 is a sequence of nonnegative integers
+whose sum is even. Then there exists a graph with vertices v1,v2,...,vn such that
+deg(vi) = di , for i = 1,...,n.
+Proof: Start with n isolated vertices v1,v2,...,vn. For each i, if di is even, draw d1
+2
+self-loops on vertex vi, and if di is odd, draw d1−1
+2 self-loops. By Corollary 1.1.3, there
+is an even number of odd di’s. Thus, the construction can be completed by grouping the
+vertices associated with the odd terms into pairs and then joining each pair by a single
+edge. ♦
+Graphic Sequences
+The construction in Theorem 1.1.4 is straightforward but hinges on allowing the
+graph to be non-simple. A more interesting problem is determining when a sequence is
+the degree sequence of a simple graph.
+definition: A non-increasing sequence 〈d1,d2,...,dn〉 is said to be graphic if it is the
+degree sequence of some simple graph. That simple graph is said to realize the sequence.
+Remark: If 〈d1,d2,...,dn〉 is the degree sequence of a simple graph, then, clearly, d1 ≤
+n − 1.
+Theorem 1.1.5: Let 〈d1,d2,...,dn〉 be a graphic sequence, with d1 ≥ d2 ≥ ... ≥ dn.
+Then there is a simple graph with vertex-set {v1,...,vn} satisfying deg(vi) = di for
+i = 1,2,...,n, such that v1 is adjacent to vertices v2,...,vd1+1.
+Proof: Among all simple graphs with vertex-set {v1,v2,...,vn} and deg(vi) = di, i =
+1,2,...,n, let G be one for which r = |NG(v1) ∩ {v2,...,vd1+1}| is maximum. If r = d1,
+then the conclusion follows. If r < d1, then there exists a vertex vs,2 ≤ s ≤ d1 + 1,
+such that v1 is not adjacent to vs, and there exists a vertex vt,t > d1 + 1 such that v1
+is adjacent to vt (since deg(v1) = d1). Moreover, since deg(vs) ≥ deg(vt), there exists a
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 10 — #21 i
+i
+i
+i
+i
+i
+10 Chapter 1 INTRODUCTION TO GRAPH MODELS
+vertex vk such that vk is adjacent to vs but not to vt. Let ˜G be the graph obtained from
+G by replacing the edges v1vt and vsvk with the edges v1vs and vtvk (as shown in Figure
+1.1.12). Then the degrees are all preserved and vs ∈ N˜G(v1) ∩ {v3,...,vd1+1}. Thus,
+|N˜G(v1) ∩ {v2,...,vd1+1}| = r +1, which contradicts the choice of G and completes the
+proof. ♦
+v1
+vs
+vt
+vk
+v1
+vs
+vt
+vk
+Figure 1.1.12 Switching adjacencies while preserving all degrees.
+Corollary 1.1.6: [Havel (1955) and Hakimi (1961)] A sequence 〈d1,d2,...,dn〉
+of nonnegative integers such that d1 ≤ n − 1 and d1 ≥ d2 ≥ ... ≥ dn is graphic if
+and only if the sequence 〈d2 − 1,...,dd1+1 − 1,dd1+2,...,dn〉 is graphic.
+♦ (Exercises)
+Remark: Corollary 1.1.6 yields a recursive algorithm that decides whether a non-
+increasing sequence is graphic.
+Algorithm 1.1.1: GraphicSequence (〈d1, d2,...,dn〉)
+Input: a non-increasing sequence 〈d1, d2,...,dn〉.
+Output: TRUE if the sequence is graphic, FALSE if it is not.
+If d1 ≥ n or dn < 0
+Return FALSE
+Else
+If d1 = 0
+Return TRUE
+Else
+Let 〈a1, a2,...,an−1〉 be a non-increasing permutation
+of 〈d2 − 1,...,dd1+1 − 1,dd1+2,...,dn〉.
+Return GraphicSequence(〈a1, a2,...,an−1〉)
+Remark: An iterative version of the algorithm GraphicSequence based on repeated
+application of Corollary 1.1.6 can also be written and is left as an exercise (see Exercises).
+Also, given a graphic sequence, the steps of the iterative version can be reversed to
+construct a graph realizing the sequence. However many zeroes you get at the end of
+the forward pass, start with that many isolated vertices. Then backtrack the algorithm,
+adding a vertex each time. The following example illustrates these ideas.
+Example 1.1.12: We start with the sequence 〈3,3,2,2,1,1〉. Figure 1.1.13 illustrates an
+iterative version of the algorithm GraphicSequence and then illustrates the backtracking
+steps leading to a graph that realizes the original sequence. The hollow vertex shown in
+each backtracking step is the new vertex added at that step.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 11 — #22 i
+i
+i
+i
+i
+i
+Section 1.1 Graphs and Digraphs 11
+< 3, 3, 2, 2, 1, 1 >
+Cor. 1.1.7
+< 2, 1, 1, 1, 1 >
+Cor. 1.1.7
+< 0, 0, 1, 1 >
+permute
+< 1, 1, 0, 0 >
+Cor. 1.1.7
+< 0, 0, 0 >
+Figure 1.1.13 Testing and realizing the sequence 〈3,3,2,2,1,1〉.
+Indegree and Outdegree in a Digraph
+The deﬁnition of vertex degree is slightly reﬁned for digraphs.
+definition: The indegree of a vertex v in a digraph is the number of arcs directed to
+v; the outdegree of vertex v is the number of arcs directed from v. Each self-loop at v
+counts one toward the indegree of v and one toward the outdegree.
+u
+w
+a b
+c
+d
+h
+f g
+k
+v
+vertex u v w
+indegree 3 4 1
+outdegree 3 2 3
+Figure 1.1.14 The indegrees and outdegrees of the vertices of a digraph.
+The next theorem is the digraph version of Euler’s Degree-Sum Theorem 1.1.2.
+Theorem 1.1.7: In a digraph, the sum of the indegrees and the sum the outdegrees
+both equal the number of edges.
+Proof: Each directed edge e contributes one to the indegree at head(e) and one to the
+outdegree at tail(e). ♦
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 12 — #23 i
+i
+i
+i
+i
+i
+12 Chapter 1 INTRODUCTION TO GRAPH MODELS
+EXERCISES for Section 1.1
+In Exercises 1.1.1 through 1.1.3, construct a line drawing, an incidence table, and the
+degree sequence of the graph with the given formal speciﬁcation.
+1.1.1S V = {u,w,x,z}; E = {e,f,g}
+endpts(e) = {w}; endpts(f) = {x,w}; endpts(g) = {x,z}
+1.1.2 V = {u,v,x,y,z}; E = {a,b,c,d}
+endpts(e) = {u,v}; endpts(b) = {x,v}; endpts(c) = {u,v}; endpts(d) = {x}
+1.1.3 V = {u,v,x,y,z}; E = {e,f,g,h,k}
+endpts(e) = endpts(f) = {u,v};endpts(g) = {x,z};endpts(h) = endpts(k) = {y}
+In Exercises 1.1.4 through 1.1.6, construct a line drawing for the digraph or mixed graph
+with vertex-set V = {u,v,w,x,y}, edge-set E = {e,f,g,h}, and the given incidence table.
+1.1.4S edges e f g h
+endpts y xh vh vh
+wh u x u
+1.1.5 edges e f g h
+endpts x vh v v
+wh u uh uh
+1.1.6 edges e f g h
+endpts u xh v v
+wh u y u
+In Exercises 1.1.7 through 1.1.9, give a formal speciﬁcation for the given digraph.
+1.1.7S a
+b
+c
+x
+z
+y
+d
+1.1.8
+u
+v x
+yz
+a
+b
+de
+f g
+1.1.9
+u
+v x
+yz
+a
+b
+de
+f g
+c
+h
+In Exercises 1.1.10 through 1.1.12, give a formal speciﬁcation for the underlying graph
+of the digraph indicated.
+1.1.10S The digraph of Exercise 1.1.7.
+1.1.11 The digraph of Exercise 1.1.8.
+1.1.12 The digraph of Exercise 1.1.9.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 13 — #24 i
+i
+i
+i
+i
+i
+Section 1.1 Graphs and Digraphs 13
+1.1.13 Draw a graph with the given degree sequence.
+a. 〈8,7,3〉 b. 〈9,8,8,6,5,3,1〉
+1.1.14 Draw a simple graph with the given degree sequence.
+a. 〈6,4,4,3,3,2,1,1〉 b. 〈5,5,5,3,3,3,3,3〉
+For each of the number sequences in Exercises 1.1.15 through 1.1.18, either draw a simple
+graph that realizes it, or explain, without resorting to Corollary 1.1.6 or Algorithm 1.1.1,
+why no such graph can exist.
+1.1.15S a. 〈2,2,1,0,0〉 b. 〈4,3,2,1,0〉
+1.1.16 a. 〈4,2,2,1,1〉 b. 〈2,2,2,2〉
+1.1.17 a. 〈4,3,2,2,1〉 b. 〈4,3,3,3,1〉
+1.1.18 a. 〈4,4,4,4,3,3,3,3〉 b. 〈3,2,2,1,0〉
+1.1.19 Apply Algorithm 1.1.1 to each of the following sequences to determine whether
+it is graphic. If the sequence is graphic, then draw a simple graph that realizes it.
+a. 〈7,6,6,5,4,3,2,1〉 b. 〈5,5,5,4,2,1,1,1〉
+c. 〈7,7,6,5,4,4,3,2〉 d. 〈5,5,4,4,2,2,1,1〉
+1.1.20 Use Theorem 1.1.5 to prove Corollary 1.1.6.
+1.1.21 Write an iterative version of Algorithm 1.1.1 that applies Corollary 1.1.6 repeat-
+edly until a sequence of all zeros or a sequence with a negative term results.
+1.1.22S Given a group of nine people, is it possible for each person to shake hands with
+exactly three other people?
+1.1.23 Draw a graph whose degree sequence has no duplicate terms.
+1.1.24S What special property of a function must the endpts function have for a graph
+to have no multi-edges?
+1.1.25 Draw a digraph for each of the following indegree and outdegree sequences, such
+that the indegree and outdegree of each vertex occupy the same position in both se-
+quences.
+a. in: 〈1,1,1〉 out: 〈1,1,1〉
+b. in: 〈2,1〉 out: 〈3,0〉
+definition: A pair of sequences 〈a1,a2,...,an〉 and 〈b1,b2,...,bn〉 is called digraphic if
+there exists a simple digraph with vertex-set {v1,v2,...,vn} such that outdegree(vi) = ai
+and indegree(vi) = bi for i = 1,2,...,n.
+1.1.26 Determine whether the pair of sequences 〈3,1,1,0〉 and 〈1,1,1,2〉 is digraphic.
+1.1.27 Establish a result like Corollary 1.1.6 for a pair sequences to be digraphic.
+1.1.28 How many diﬀerent degree sequences can be realized for a graph having three
+vertices and three edges?
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 14 — #25 i
+i
+i
+i
+i
+i
+14 Chapter 1 INTRODUCTION TO GRAPH MODELS
+1.1.29 Given a list of three vertices and a list of seven edges, show that 37 diﬀerent
+formal speciﬁcations for simple graphs are possible.
+1.1.30 Given a list of four vertices and a list of seven edges, show that (7
+2
+)56210 diﬀerent
+formal speciﬁcations are possible if there are exactly two self-loops.
+1.1.31 Given a list of three vertices and a list of seven edges, how many diﬀerent formal
+speciﬁcations are possible if exactly three of the edges are directed?
+1.1.32S Does there exist a simple graph with ﬁve vertices, such that every vertex is
+incident with at least one edge, but no two edges are adjacent?
+1.1.33 Prove or disprove: There exists a simple graph with 13 vertices, 31 edges, three
+1-valent vertices, and seven 4-valent vertices.
+definition: Let G = (V,E) be a graph and let W ⊆ V. Then W is a vertex cover of
+G if every edge is incident on at least one vertex in W. (See §10.4.)
+1.1.34 Find upper and lower bounds for the size of a minimum (smallest) vertex cover
+of an n-vertex connected simple graph G. Then draw three 8-vertex graphs, one that
+achieves the lower bound, one that achieves the upper bound, and one that achieves
+neither.
+1.1.35 Find a minimum vertex cover for the underlying graph of the mixed graph shown
+in Figure 1.1.7.
+1.1.36S The graph shown below represents a network of tunnels, where the edges are
+sections of tunnel and the vertices are junction points. Suppose that a guard placed at a
+junction can monitor every section of tunnel leaving it. Determine the minimum number
+of guards and a placement for them so that every section of tunnel is monitored.
+a
+b
+d j
+k i
+h
+g
+e
+fc
+definition: An independent set of vertices in a graph G is a set of mutually non-
+adjacent vertices. (See §2.3.)
+1.1.37 Find upper and lower bounds for the size of a maximum (largest) independent
+set of vertices in an n-vertex connected graph. Then draw three 8-vertex graphs, one
+that achieves the lower bound, one that achieves the upper bound, and one that achieves
+neither.
+1.1.38 Find a maximum independent set of vertices in the underlying graph of the mixed
+graph shown in Figure 1.1.7.
+1.1.39S Find a maximum independent set of vertices in the graph of Exercise 1.1.36.
+definition: A matching in a graph G is a set of mutually non-adjacent edges in G.
+(See §8.3 and §10.4.)
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 15 — #26 i
+i
+i
+i
+i
+i
+Section 1.2 Common Families of Graphs 15
+1.1.40 Find upper and lower bounds for the size of a maximum (largest) matching in an
+n-vertex connected graph. Then draw three 8-vertex graphs, one that achieves the lower
+bound, one that achieves the upper bound, and one that achieves neither.
+1.1.41 Find a maximum matching in the underlying graph of the mixed graph shown in
+Figure 1.1.7.
+1.1.42S Find a maximum matching in the graph of Exercise 1.1.36.
+definition: Let G = (V,E) be a graph and let W ⊆ V. Then W dominates G (or is a
+dominating set of G) if every vertex in V is in W or is adjacent to at least one vertex
+in W. That is, ∀v ∈ V,∃w ∈ W,v ∈ N[w].
+1.1.43 Find upper and lower bounds for the size of a minimum (smallest) dominating
+set of an n-vertex graph. Then draw three 8-vertex graphs, one that achieves the lower
+bound, one that achieves the upper bound, and one that achieves neither.
+1.1.44 Find a minimum dominating set for the underlying graph of the mixed graph
+shown in Figure 1.1.7.
+1.1.45S Find a minimum dominating set for the graph of Exercise 1.1.36.
+1.2 COMMON FAMILIES OF GRAPHS
+There is a multitude of standard examples that recur throughout graph theory.
+Complete Graphs
+definition: A complete graph is a simple graph such that every pair of vertices is
+joined by an edge. Any complete graph on n vertices is denoted Kn.
+Example 1.2.1: Complete graphs on one, two, three, four, and ﬁve vertices are shown
+in Figure 1.2.1.
+K1 K2 K3 K4 K5
+Figure 1.2.1 The ﬁrst ﬁve complete graphs.
+Bipartite Graphs
+definition: A bipartite graph G is a graph whose vertex-set V can be partitioned into
+two subsets U and W, such that each edge of G has one endpoint in U and one endpoint
+in W. The pair U, W is called a (vertex) bipartition of G, and U and W are called
+the bipartition subsets.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 16 — #27 i
+i
+i
+i
+i
+i
+16 Chapter 1 INTRODUCTION TO GRAPH MODELS
+Example 1.2.2: Two bipartite graphs are shown in Figure 1.2.2. The bipartition subsets
+are indicated by the solid and hollow vertices.
+Figure 1.2.2 Two bipartite graphs.
+Proposition 1.2.1: A bipartite graph cannot have any self-loops.
+Proof: This is an immediate consequence of the deﬁnition. ♦
+Example 1.2.3: The smallest possible simple graph that is not bipartite is the complete
+graph K3, shown in Figure 1.2.3.
+Figure 1.2.3 The smallest non-bipartite simple graph.
+definition: A complete bipartite graph is a simple bipartite graph such that every
+vertex in one of the bipartition subsets is joined to every vertex in the other bipartition
+subset. Any complete bipartite graph that has m vertices in one of its bipartition subsets
+and n vertices in the other is denoted Km,n.†
+Example 1.2.4: The complete bipartite graph K3,4 is shown in Figure 1.2.4.
+Figure 1.2.4 The complete bipartite graph K3,4.
+Regular Graphs
+definition: A regular graph is a graph whose vertices all have equal degree. A k-
+regular graph is a regular graph whose common degree is k.
+definition: The ﬁve regular polyhedra illustrated in Figure 1.2.5 are known as the
+platonic solids. Their vertex and edge conﬁgurations form regular graphs called the
+platonic graphs.
+definition: The Petersen graph is the 3-regular graph represented by the line drawing
+in Figure 1.2.6. Because it possesses a number of interesting graph-theoretic properties,
+the Petersen graph is frequently used both to illustrate established theorems and to test
+conjectures.
+†The sense in which Km,n is a unique object is described in §2.1.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 17 — #28 i
+i
+i
+i
+i
+i
+Section 1.2 Common Families of Graphs 17
+Tetrahedron Cube Octahedron
+Dodecahedron Icosahedron
+Figure 1.2.5 The ﬁve platonic graphs.
+Figure 1.2.6 The Petersen graph.
+Example 1.2.5: The oxygen molecule O2, made up of two oxygen atoms linked by a
+double bond, can be represented by the 2-regular graph shown in Figure 1.2.7.
+Figure 1.2.7 A 2-regular graph representing the oxygen molecule O2.
+Bouquets and Dipoles
+One-vertex and two-vertex (non-simple) graphs often serve as building blocks for
+various interconnection networks, including certain parallel architectures.
+definition: A graph consisting of a single vertex with n self-loops is called a bouquet
+and is denoted Bn.
+B2 B4
+Figure 1.2.8 Bouquets B2 and B4.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 18 — #29 i
+i
+i
+i
+i
+i
+18 Chapter 1 INTRODUCTION TO GRAPH MODELS
+definition: A graph consisting of two vertices and n edges joining them is called a
+dipole and is denoted Dn.
+Example 1.2.6: The graph representation of the oxygen molecule in Figure 1.2.7 is an
+instance of the dipole D2. Figure 1.2.9 shows the dipoles D3 and D4.
+D3 D4
+Figure 1.2.9 Dipoles D3 and D4.
+Path Graphs and Cycle Graphs
+definition: A path graph P is a simple graph with |VP | = |EP |+1 that can be drawn
+so that all of its vertices and edges lie on a single straight line. A path graph with n
+vertices and n – 1 edges is denoted Pn.
+Example 1.2.7: Path graphs P2 and P4 are shown in Figure 1.2.10.
+P2 P4
+Figure 1.2.10 Path graphs P2 and P4.
+definition: A cycle graph is a single vertex with a self-loop or a simple graph C with
+|VC| = |EC| that can be drawn so that all of its vertices and edges lie on a single circle.
+An n-vertex cycle graph is denoted Cn.
+Example 1.2.8: The cycle graphs C1,C2, and C4 are shown in Figure 1.2.11.
+C1 C4C2
+Figure 1.2.11 Cycle graphs C1, C2, and C4.
+Remark: The terms path and cycle also refer to special sequences of vertices and edges
+within a graph and are deﬁned in §1.4 and §1.5.
+Hypercubes and Circular Ladders
+definition: The hypercube graph Qn is the n-regular graph whose vertex-set is the
+set of bitstrings of length n, such that there is an edge between two vertices if and only
+if they diﬀer in exactly one bit.
+Example 1.2.9: The 8-vertex cube graph that appeared in Figure 1.2.5 is a hypercube
+graph Q3 (see Exercises).
+definition: The circular ladder graph CLn is visualized as two concentric n-cycles
+in which each of the n pairs of corresponding vertices is joined by an edge.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 19 — #30 i
+i
+i
+i
+i
+i
+Section 1.2 Common Families of Graphs 19
+Example 1.2.10: The circular ladder graph CL4 is shown in Figure 1.2.12.
+Figure 1.2.12 Circular ladder graph CL4.
+Circulant Graphs
+definition: To the group of integers Zn = {0,1,...,n − 1} under addition modulo n
+and a set S ⊆ {1,...,n − 1}, we associate the circulant graph circ(n : S) whose vertex
+set is Zn, such that two vertices i and j are adjacent if and only if there is a number
+s ∈ S such that i + s = j mod n or j + s = i mod n. In this regard, the elements of the
+set S are called connections.
+notation: It is often convenient to specify the connection set S = {s1,...,sr} without
+the braces, and to write circ(n : s1,...,sr).
+Example 1.2.11: Figure 1.2.13 shows three circulant graphs.
+0
+1
+23
+4
+0
+1
+23
+4
+5 0
+1
+2
+34
+5
+6
+7
+circ(5 : 1,2) circ(6 : 1,2) circ(8 : 1,4)
+Figure 1.2.13 Three circulant graphs.
+Remark: Notice that circulant graphs are simple graphs. Circulant graphs are a spe-
+cial case of Cayley graphs, which are themselves derived from a special case of voltage
+graphs.
+Intersection and Interval Graphs
+definition: A simple graph G with vertex-set VG = {v1,v2 ...,vn} is an intersection
+graph if there exists a family of sets F = {S1,S2,...,Sn} such that vertex vi is adjacent
+to vj if and only if i 6= j and Si ∩ Sj 6= ∅.
+definition: A simple graph is an interval graph if it is an intersection graph corre-
+sponding to a family of intervals on the real line.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 20 — #31 i
+i
+i
+i
+i
+i
+20 Chapter 1 INTRODUCTION TO GRAPH MODELS
+Example 1.2.12: The graph in Figure 1.2.14 is an interval graph for the following family
+of intervals:
+a ↔ (1,3) b ↔ (2,6) c ↔ (5,8) d ↔ (4,7)
+a b
+cd
+Figure 1.2.14 An interval graph.
+Application 1.2.1: Archeology Suppose that a collection of artifacts was found at
+the site of a town known to have existed from 1000 BC to AD 1000. In the graph shown
+below, the vertices correspond to artifact types, and two vertices are adjacent if some
+grave contains artifacts of both types. It is reasonable to assume that artifacts found
+in the same grave have overlapping time intervals during which they were in use. If the
+graph is an interval graph, then there is an assignment of subintervals of the interval
+(−1000,1000) (by suitable scaling, if necessary) that is consistent with the archeological
+ﬁnd.
+a1  a2
+a3
+a4
+a5
+Figure 1.2.15 A graph model of an archeological ﬁnd.
+Line Graphs
+Line graphs are a special case of intersection graphs.
+definition: The line graph L(G) of a graph G has a vertex for each edge of G, and
+two vertices in L(G) are adjacent if and only if the corresponding edges in G have a
+vertex in common.
+Thus, the line graph L(G) is the intersection graph corresponding to the endpoint
+sets of the edges of G.
+Example 1.2.13: Figure 1.2.16 shows a graph G and its line graph L(G).
+a
+b
+c
+d
+e
+f
+G L(G)
+a
+b
+c
+de
+f
+Figure 1.2.16 A graph and its line graph.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 21 — #32 i
+i
+i
+i
+i
+i
+Section 1.2 Common Families of Graphs 21
+EXERCISES for Section 1.2
+1.2.1S Find the number of edges for each of the following graphs.
+a. Kn b. Km,n
+1.2.2 What is the maximum possible number of edges in a simple bipartite graph on m
+vertices?
+1.2.3 Draw the smallest possible non-bipartite graph.
+1.2.4S Determine the values of n for which the given graph is bipartite.
+a. Kn b. Cn c. Pn
+1.2.5 Draw a 3-regular bipartite graph that is not K3,3.
+In Exercises 1.2.6 to 1.2.8, determine whether the given graph is bipartite. In each case,
+give a vertex bipartition or explain why the graph is not bipartite.
+1.2.6S x z x y
+z
+vu
+w
+u v
+1.2.7
+u v
+w
+x
+z
+1.2.8x z x y
+z
+vu
+w
+u v
+1.2.9 Label the vertices of the cube graph in Figure 1.2.5 with 3-bit binary strings so
+that the labels on adjacent vertices diﬀer in exactly one bit.
+1.2.10 Prove that the graph Qn is bipartite.
+1.2.11 For each of the platonic graphs, is it possible to trace a tour of all the vertices
+by starting at one vertex, traveling only along edges, never revisiting a vertex, and never
+lifting the pen oﬀ the paper? Is it possible to make the tour return to the starting vertex?
+1.2.12S Prove or disprove: There does not exist a 5-regular graph on 11 vertices.
+definition: A tournament is a digraph whose underlying graph is a complete graph.
+1.2.13 a. Draw all the 3-vertex tournaments whose vertices are u , v, x.
+b. Determine the number of 4-vertex tournaments whose vertices are u, v, x, y.
+1.2.14 Prove that every tournament has at most one vertex of indegree 0 and at most
+one vertex of outdegree 0.
+1.2.15S Suppose that n vertices v1,v2,...,vn are drawn in the plane. How many diﬀerent
+n-vertex tournaments can be drawn on those vertices?
+1.2.16 Chartrand and Lesniak [ChLe04] deﬁne a pair of sequences of nonnegative inte-
+gers 〈a1,a2,...ar〉 and 〈b1,b2,...bt〉 to be bigraphical if there exists a bipartite graph
+G with bipartition subsets U = {u1,u2,...ur} and W = {w1,w2,...wt} such that
+deg(ui) = ai,i = 1,2,...,r, and deg(wi) = bi,i = 1,2,...,t. Prove that a pair of
+non-increasing sequences of nonnegative integers 〈a1,a2,...,ar〉 and 〈b1,b2,...,bt〉 with
+r ≥ 2, 0 < a1 ≤ t, and 0 < a1 ≤ r is bigraphical if and only if the pair 〈a2,...,ar〉 and
+〈b1 − 1,b2 − 1,...,ba1 − 1,ba1+1,ba1+2,...,bt〉 is bigraphical.
+1.2.17 Find all the 4-vertex circulant graphs.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 22 — #33 i
+i
+i
+i
+i
+i
+22 Chapter 1 INTRODUCTION TO GRAPH MODELS
+1.2.18 Show that each of the following graphs is a circulant graph.
+a. b. c.
+1.2.19 State a necessary and suﬃcient condition on the positive integers n and k for
+circ( n : k) to be the cycle graph Cn.
+1.2.20 Find necessary and suﬃcient conditions on the positive integers n and k for
+circ(n : k) to be the graph consisting of n/2 mutually non-adjacent edges.
+1.2.21 Determine the size of a smallest dominating set (deﬁned in §1.1 exercises) in the
+graph indicated.
+a. Kn b. Km,n c. Cn d. Pn e. CLn
+1.2.22 Determine the size of a smallest vertex cover (deﬁned in §1.1 exercises) in the
+graph indicated.
+a. Kn b. Km,n c. Cn d. Pn e. CLn
+1.2.23 Determine the size of a largest independent set of vertices (deﬁned in §1.1 exer-
+cises) in the graph indicated.
+a. Kn b. Km,n c. Cn d. Pn e. CLn
+1.2.24 Determine the size of a maximum matching (deﬁned in §1.1 exercises) in the
+graph indicated.
+a. Kn b. Km,n c. Cn d. Pn e. CLn
+1.2.25S Show that the complete graph Kn is an interval graph for all n ≥ 1.
+1.2.26 Draw the interval graph for the intervals (0,2),(3,8),(1,4),(3,4),(2,5),(7,9).
+1.2.27S Show that the graph modeling the archeological ﬁnd in Application 1.2.1 is an
+interval graph by using a family of subintervals of the interval (−1000,1000).
+1.2.28 Prove that the cycle graph Cn is not an interval graph for any n ≥ 4.
+1.2.29 Draw the intersection graph for the family of all subsets of the set {1, 2, 3}.
+1.2.30 Prove that every simple graph is an intersection graph by describing how to
+construct a suitable family of sets.
+1.3 GRAPH MODELING APPLICATIONS
+Diﬀerent kinds of graphs arise in modeling real-world problems. Sometimes, simple
+graphs are adequate; other times, non-simple graphs are needed. The analysis of some
+of the applications considered in this section is deferred to later chapters, where the
+necessary theoretical methods are fully developed.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 23 — #34 i
+i
+i
+i
+i
+i
+Section 1.3 Graph Modeling Applications 23
+Models That Use Simple Graphs
+Application 1.3.1: Personnel-Assignment Problem Suppose that a company re-
+quires a number of diﬀerent types of jobs, and suppose each employee is suited for some
+of these jobs, but not others. Assuming that each person can perform at most one job
+at a time, how should the jobs be assigned so that the maximum number of jobs can
+be performed simultaneously? In the bipartite graph of Figure 1.3.1, the hollow vertices
+represent the employees, the solid vertices the jobs, and each edge represents a suitable
+job assignment. The bold edges represent a largest possible set of suitable assignments.
+Chapter 10 provides a fast algorithm to solve large instances of this classical problem in
+operations research.
+J
+J
+J
+J
+J
+E
+E
+E
+E
+E
+E
+E
+1
+2
+3
+4
+5
+1
+2
+3
+4
+5
+6
+7
+Figure 1.3.1 An optimal assignment of employees to jobs.
+Application 1.3.2: Sociological-Acquaintance Networks In an acquaintance net-
+work, the vertices represent persons, such as the students in a college class. An edge
+joining two vertices indicates that the corresponding pair of persons knew each other
+when the course began. The simple graph in Figure 1.3.2 shows a typical acquaintance
+network. Including the Socratic concept of self-knowledge would require the model to
+allow self-loops. For instance, a self-loop drawn at the vertex representing Slim might
+mean that she was “in touch” with herself.
+Marty
+Susan
+Larry
+Betsey
+Tony
+Tara Skippy
+Slim
+Figure 1.3.2 An acquaintance network.
+By Proposition 1.1.1, every group of two or more persons must contain at least two who
+know the same number of persons in the group. The acquaintance network of Figure
+1.3.2 has degree sequence 〈6,4,4,4,3,3,3,3〉.
+Application 1.3.3: Geographic Adjacency In the geographical model in Figure
+1.3.3, each vertex represents a northeastern state, and each adjacency represents sharing
+a border.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 24 — #35 i
+i
+i
+i
+i
+i
+24 Chapter 1 INTRODUCTION TO GRAPH MODELS
+PA NY MA
+ME
+VT
+NH
+RICTDE
+MD
+WV OH
+NJ
+Figure 1.3.3 Geographic adjacency of the northeastern states.
+Application 1.3.4: Geometric Polyhedra The vertex and edge conﬁguration of any
+polyhedron in 3-space forms a simple graph, which topologists call its 1-skeleton. The
+1-skeletons of the platonic solids, appearing in the previous section, are regular graphs.
+Figure 1.3.4 shows a polyhedron whose 1-skeleton is not regular.
+Figure 1.3.4 A non-regular 1-skeleton of a polyhedron.
+Application 1.3.5: Interconnection Networks for Parallel Architectures
+Numerous processors can be linked together on a single chip for a multi-processor com-
+puter that can execute parallel algorithms. In a graph model for such an interconnection
+network, each vertex represents an individual processor, and each edge represents a direct
+link between two processors. Figure 1.3.5 illustrates the underlying graph structure of
+one such interconnection network, called a wrapped butterﬂy.
+Figure 1.3.5 A wrapped-butterﬂy-interconnection-network model.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 25 — #36 i
+i
+i
+i
+i
+i
+Section 1.3 Graph Modeling Applications 25
+Application 1.3.6: Assigning Broadcasting Frequencies When the radio transmit-
+ters in a geographical region are assigned broadcasting frequencies, some pairs of trans-
+mitters require diﬀerent frequencies to avoid interference. A graph model can be used for
+the problem of minimizing the number of diﬀerent frequencies assigned.
+Suppose that the seven radio transmitters, A,B,...,G, must be assigned frequencies.
+For simplicity, assume that if two transmitters are less than 100 miles apart, they must
+broadcast at diﬀerent frequencies. Consider a graph whose vertices represent the trans-
+mitters, and whose edges indicate those pairs that are less than 100 miles apart. Figure
+1.3.6 shows a table of distances for the seven transmitters and the corresponding graph
+on seven vertices.
+AB
+55 110
+87 142
+77 91
+75 114 82
+107 41
+123
+85
+133 98 139
+93
+108 60 150 88A
+B
+C
+D
+E
+F
+C D E F G
+G
+F
+E
+D
+C
+B
+Figure 1.3.6 A simple graph for a radio-frequency-assignment problem.
+The problem of assigning radio frequencies to avoid interference is equivalent to the
+problem of coloring the vertices of the graph so that adjacent vertices get diﬀerent col-
+ors. The minimum number of frequencies will equal the minimum number of diﬀerent
+colors required for such a coloring. This and several other graph-coloring problems and
+applications are discussed in Chapter 8.
+Models Requiring Non-Simple Graphs
+Application 1.3.7: Roadways between States If in the Geographic-Adjacency Ap-
+plication 1.3.3, each edge joining two vertices represented a road that crosses a border
+between the corresponding two states, then the graph would be non-simple, since pairs
+of bordering states have more than one road joining them.
+Application 1.3.8: Chemical Molecules The benzene molecule shown in Figure 1.3.7
+has double bonds for some pairs of its atoms, so it is modeled by a non-simple graph.
+Since each carbon atom has valence 4, corresponding to four electrons in its outer shell,
+it is represented by a vertex of degree 4; and since each hydrogen atom has one electron
+in its only shell, it is represented by a vertex of degree 1.
+H
+H
+H
+H
+HH
+C C
+C
+C C
+C
+Figure 1.3.7 The benzene molecule.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 26 — #37 i
+i
+i
+i
+i
+i
+26 Chapter 1 INTRODUCTION TO GRAPH MODELS
+Models That Use Simple Digraphs
+For each of the next series of applications, a link in one direction does not imply a
+link in the opposite direction.
+Application 1.3.9: Ecosystems The feeding relationships among the plant and an-
+imal species of an ecosystem are called a food web and may be modeled by a simple
+digraph. The food web for a Canadian willow forest is illustrated in Figure 1.3.8.† Each
+species in the system is represented by a vertex, and a directed edge from vertex u to
+vertex v means that the species corresponding to u feeds on the species corresponding
+to v.
+meadow
+willow
+leaf
+beetle
+pussy
+willow
+sandbat
+willow
+flea
+beetle
+garter
+snakefrog
+spider
+yellow
+warblerbronze
+grackle
+snail
+sawfly
+Figure 1.3.8 The food web in a Canadian willow forest.
+Application 1.3.10: Activity-Scheduling Networks In large projects, often there
+are some tasks that cannot start until certain others are completed. Figure 1.3.9 shows
+a digraph model of the precedence relationships among some tasks for building a house.
+Vertices correspond to tasks. An arc from vertex u to vertex v means that task v cannot
+start until task u is completed. To simplify the drawing, arcs that are implied by transi-
+tivity are not drawn. This digraph is the cover diagram of a partial ordering of the tasks.
+A diﬀerent model, in which the tasks are represented by the arcs of a digraph, is studied
+in Chapter 9.
+Activities
+1 Foundation
+2 Walls and Ceilings
+3 Roof
+4 Electrical wiring
+5 Windows
+6 Siding
+7 Paint interior
+8 Paint exterior
+1!!   Foundation
+2!!   Walls and ceilings
+3!!   Roof
+4!!   Electrical wiring
+5!!   Windows
+6!!   Siding
+7!!   Paint interior
+8!!   Paint exterior
+Activity
+1
+2
+7
+5
+4
+6
+3 8
+Figure 1.3.9 An activity digraph for building a house.
+†This illustration was adapted from [WiWa90], p. 69.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 27 — #38 i
+i
+i
+i
+i
+i
+Section 1.3 Graph Modeling Applications 27
+Application 1.3.11: Flow Diagrams for Computer Programs A computer program
+is often designed as a collection of program blocks, with appropriate ﬂow control. A
+digraph is a natural model for this decomposition. Each program block is associated
+with a vertex, and if control at the last instruction of block u can transfer to the ﬁrst
+instruction of block v, then an arc is drawn from vertex u to vertex v. Computer ﬂow
+diagrams do not usually have multi-arcs. Unless a single block is permitted both to change
+values of some variables and to retest those values, a ﬂow diagram with a self-loop would
+mean that the program has an inﬁnite loop.
+Models Requiring Non-Simple Digraphs
+Application 1.3.12: Markov Diagrams Suppose that the inhabitants of some remote
+area purchase only two brands of breakfast cereal, O’s and W’s. The consumption pat-
+terns of the two brands are encapsulated by the transition matrix shown in Figure 1.3.10.
+For instance, if someone just bought O’s, there is a 0.4 chance that the person’s next
+purchase will be W’s and a 0.6 chance it will be O’s.
+In a Markov process, the transition probability of going from one state to another depends
+only on the current state. Here, states “O” and “W” correspond to whether the most
+recent purchase was O’s or W’s, respectively. The digraph model for this Markov process,
+called a Markov diagram, is shown in Figure 1.3.10. Each arc is labeled with the transition
+probability of moving from the state at the tail vertex to the state at the head. Thus,
+the probabilities on the outgoing edges from each vertex must sum to 1. This Markov
+diagram is an example of a weighted graph (see §1.6). Other examples of Markov diagrams
+appear in Chapter 9.
+W'sO's
+.4
+.3
+.7.6
+O’s W’s
+O’s .6 .4
+W’s .3 .7
+Figure 1.3.10 A Markov diagram and its transition matrix.
+Application 1.3.13: Lexical Scanners The source code of a computer program may
+be regarded as a string of symbols. A lexical scanner must scan these symbols, one at
+a time, and recognize which symbols “go together” to form a syntactic token or lexeme.
+We now consider a single-purpose scanner whose task is to recognize whether an input
+string of characters is a valid identiﬁer in the C programming language. Such a scanner
+is a special case of a ﬁnite-state recognizer and can be modeled by a labeled digraph, as
+in Figure 1.3.11. One vertex represents the start state, in eﬀect before any symbols have
+been scanned. Another represents the accept state, in which the substring of symbols
+scanned so far forms a valid C identiﬁer. The third vertex is the reject state, indicating
+that the substring has been discarded because it is not a valid C identiﬁer. The arc labels
+tell what kinds of symbols cause a transition from the tail state to the head state. If the
+ﬁnal state after the input string is completely scanned is the accept state, then the string
+is a valid C identiﬁer.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 28 — #39 i
+i
+i
+i
+i
+i
+28 Chapter 1 INTRODUCTION TO GRAPH MODELS
+start
+non-letter
+letter accept
+any
+char
+reject
+letter or
+digit
+any char except
+letter or digit
+Figure 1.3.11 Finite-state recognizer for identiﬁers.
+EXERCISES for Section 1.3
+1.3.1S Solve the radio-frequency-assignment problem in Application 1.3.6 by determining
+the minimum number of colors needed to color the vertices of the associated graph. Argue
+why the graph cannot be colored with fewer colors.
+1.3.2 What is wrong with a computer program having the following abstract ﬂow pat-
+tern?
+start
+1.3.3S Referring to the Markov diagram in Application 1.3.12, suppose that someone
+just purchased a box of O’s. What is the probability that his next three purchases are
+W’s, O’s, and then W’s?
+1.3.4 Modify the ﬁnite-state recognizer in Application 1.3.13 so that it accepts only
+those strings that begin with two letters and whose remaining characters, if any, are
+digits. (Hint: Consider adding one or more new states.)
+1.3.5S Which strings are accepted by the following ﬁnite-state recognizer?
+1
+1
+1
+0
+0
+0start accept
+reject
+In Exercises 1.3.6 through 1.3.13, design appropriate graph or digraph models and prob-
+lems for the given situation. That is, specify the vertices and edges and any additional
+features.
+1.3.6S Two-person rescue teams are being formed from a pool of n volunteers from
+several countries. The only requirement is that both members of a team must have a
+language in common.
+1.3.7 Suppose that meetings must be scheduled for several committees. Two commit-
+tees must be assigned diﬀerent meeting times if there is at least one person on both
+committees.
+1.3.8 Represent the “relative strength” of a ﬁnite collection of logical propositional forms.
+For example, the proposition p∧q is at least as strong as p∨q since the ﬁrst implies the
+second (i.e., (p ∧ q) ⇒ (p ∨ q) is a tautology).
+
+i
+i
+“Current˙Book” — 2018/10/18 — 18:20 — page 29 — #40 i
+i
+i
+i
+i
+i
+Section 1.4 Walks and Distance 29
+1.3.9 Suppose there are three power generators to be built in three of the seven most
+populated cities of a certain country. The distances between each pair of cities is given
+in the table shown. One would like to situate the generators so that each city is within
+50 miles of at least one generator.
+B C D E F G
+A 80 110 15 60 100 80
+B 40 45 55 70 90
+C 65 20 50 80
+D 35 55 40
+E 25 60
+F 70
+1.3.10 Suppose there are k machines and l jobs, and each machine can do only a subset
+of the jobs. a) Draw a graph to model this situation. b) Express in terms of your graph
+model, the problem of assigning jobs to machines so that the maximum number of jobs
+can be performed simultaneously.
+1.3.11 A bridge tournament for ﬁve teams is to be scheduled so that each team plays
+two other teams.
+1.3.12 Let R be a binary relation on a set S. (Relations are discussed in Appendix A.2.)
+a. Describe a digraph model for a binary relation on a ﬁnite set.
+b. Draw the digraph for the relation R on the set S = {l, 2, 3, 4, 5}, given by
+R = {(1,2),(2,1),(1,1),(1,5),(4,5),(3,3)}.
+1.3.13S Describe in graph-theory terms, the digraph properties corresponding to each of
+the following possible properties of binary relations.
+a. reﬂexive; b. symmetric; c. transitive; d. antisymmetric.
+1.4 WALKS AND DISTANCE
+Many applications call for graph models that can represent traversal and distance.
+For instance, the number of node-links traversed by an email message on its route from
+sender to recipient is a form of distance. Beyond physical distance, another example is
+that a sequence of tasks in an activity-scheduling network forms a critical path if a delay
+in any one of the tasks would cause a delay in the overall project completion. This section
+and the following one clarify the notion of walk and related terminology.
+Walks and Directed Walks
+In proceeding continuously from a starting vertex to a destination vertex of a physical
+representation of a graph, one would alternately encounter vertices and edges. Accord-
+ingly, a walk in a graph is modeled by such a sequence.
+
+i
+i
+“Current˙Book” — 2018/10/18 — 18:20 — page 30 — #41 i
+i
+i
+i
+i
+i
+30 Chapter 1 INTRODUCTION TO GRAPH MODELS
+definition: In a graph G, a walk from vertex v0 to vertex vn is an alternating sequence
+W = 〈v0,e1,v1,e2,...,vn−1,en,vn〉
+of vertices and edges, such that endpts(ei) = {vi−1,vi}, for i = 1, ..., n. If G is a digraph
+(or mixed graph), then W is a directed walk if each edge ei is directed from vertex
+vi−1 to vertex vi, i.e., tail(ei) = vi−1 and head(ei) = vi.
+In a simple graph, there is only one edge between two consecutive vertices of a walk,
+so one could abbreviate the representation as a vertex sequence
+W = 〈v0,v1,...,vn〉
+In a general graph, one might abbreviate the representation as an edge sequence from
+the starting vertex to the destination vertex
+W = 〈v0,e1,e2,...,en,vn〉
+terminology: A walk (or directed walk) from a vertex x to a vertex y is also called an
+x-y walk (or x-y directed walk).
+definition: The length of a walk or directed walk is the number of edge-steps in the
+walk sequence.
+definition: A walk of length 0, i.e., with one vertex and no edges, is called a trivial
+walk.
+definition: A closed walk (or closed directed walk) is a walk (or directed walk)
+that begins and ends at the same vertex. An open walk (or open directed walk)
+begins and ends at diﬀerent vertices.
+Example 1.4.1: In Figure 1.4.1, there is an open walk of length 6,
+< OH, PA, NY, VT, MA, NY, PA >
+that starts at Ohio and ends at Pennsylvania. Notice that the given walk is an ineﬃcient
+route, since it contains two repeated vertices and retraces an edge. §1.5 establishes the
+terminology necessary for distinguishing between walks that repeat vertices and/or edges
+and those that do not.
+PA NY MA
+ME
+VT
+NH
+RICTDE
+MD
+WV OH
+NJ
+Figure 1.4.1 Geographic adjacency of the northeastern states.
+Example 1.4.2: In the Markov diagram from Application 1.3.12, shown in Figure 1.4.2,
+the choice sequence of a cereal eater who buys O’s, switches to W’s, sticks with W’s for
+two more boxes, and then switches back to O’s is represented by the closed directed walk
+< O, W, W, W, O >
+
+i
+i
+“Current˙Book” — 2018/10/18 — 18:20 — page 31 — #42 i
+i
+i
+i
+i
+i
+Section 1.4 Walks and Distance 31
+W'sO's
+.4
+.3
+.7.6
+O’s W’s
+O’s .6 .4
+W’s .3 .7
+Figure 1.4.2 Markov process from Application 1.3.12.
+The product of the transition probabilities along a walk in any Markov diagram equals the
+probability that the process will follow that walk during an experimental trial. Thus, the
+probability that this walk occurs, when starting from O’s equals .4×.7×.7×.3 = 0.0588.
+Example 1.4.3: In the lexical scanner of Application 1.3.13, the identiﬁer counter12
+would generate an open directed walk of length 9 from the start vertex to the accept
+vertex.
+definition: The concatenation of two walks W1 = 〈v0,e1,...,vk−1,ek,vk〉 and W2 =
+〈vk,ek+1,vk+1,ek+2,...,vn−1,en,vn〉 such that walk W2 begins where walk W1 ends, is
+the walk
+W1 ◦ W2 = 〈v0,e1,...,vk−1,ek,vk,ek+1,...,vn−1,en,vn〉
+Example 1.4.4: Figure 1.4.3 shows the concatenation of a walk of length 2 with a walk
+of length 3.
+u
+v
+x
+y
+z
+we f
+k l m
+W1 =< u,e,v,f,x >
+W2 =< x,k,y,l,z,m,w >
+W1 ◦ W2 =< u,e,v,f,x,k,y,l,z,m,w >
+Figure 1.4.3 Concatenation of two walks.
+definition: A subwalk of a walk W = 〈v0,e1,v1,e2,...,vn−1,en,vn〉 is a subsequence
+of consecutive entries S = 〈vj,ej+1,vj+1,...,ek,vk〉 such that 0 ≤ j ≤ k ≤ n, that begins
+and ends at a vertex. Thus, the subwalk is itself a walk.
+Example 1.4.5: In the ﬁgure below, the closed directed walk 〈v,x,y,z,v〉 is a subwalk
+of the open directed walk 〈u,v,x,y,z,v,w,t〉.
+u v
+z
+y
+x
+w t
+Distance
+definition: The distance d(s,t) from a vertex s to a vertex t in a graph G is the length
+of a shortest s−t walk if one exists; otherwise, d(s, t) = ∞. For digraphs, the directed
+distance ~d(s,t) is the length of a shortest directed walk from s to t.
+
+i
+i
+“Current˙Book” — 2018/10/18 — 18:20 — page 32 — #43 i
+i
+i
+i
+i
+i
+32 Chapter 1 INTRODUCTION TO GRAPH MODELS
+Example 1.4.6: In Figure 1.4.4, the distance from West Virginia to Maine is ﬁve. That
+is, starting in West Virginia, one cannot get to Maine without crossing at least ﬁve state
+borders.
+PA NY MA
+ME
+VT
+NH
+RICTDE
+MD
+WV OH
+NJ
+Figure 1.4.4 Geographic adjacency of the northeastern states.
+A shortest walk (or directed walk) contains no repeated vertices or edges (see Ex-
+ercises). It is instructive to think about how one might ﬁnd a shortest walk. Ad hoc
+approaches are adequate for small graphs, but a systematic algorithm is essential for
+larger graphs (see §4.3).
+s t
+Figure 1.4.5 How might you ﬁnd a shortest walk from s to t in this graph?
+Eccentricity, Diameter, and Radius
+definition: The eccentricity of a vertex v in a graph G, denoted ecc( v), is the distance
+from v to a vertex farthest from v. That is,
+ecc(v) = max
+x∈VG
+{d(v,x)}
+definition: The diameter of a graph G, denoted diam(G), is the maximum of the
+vertex eccentricities in G or, equivalently, the maximum distance between two vertices
+in G. That is,
+diam(G) = max
+x∈VG
+{ecc(x)} = max
+x,y∈VG
+{d(x,y)}
+definition: The radius of a graph G, denoted rad(G), is the minimum of the vertex
+eccentricities. That is,
+rad(G) = min
+x∈VG
+{ecc(x)}
+definition: A central vertex v of a graph G is a vertex with minimum eccentricity.
+Thus, ecc(v) = rad(G).
+Example 1.4.7: The graph of Figure 1.4.6 has diameter 4, achieved by the vertex pairs
+u, v and u, w. The vertices x and y have eccentricity 2 and all other vertices have greater
+eccentricity. Thus, the graph has radius 2 and central vertices x and y.
+
+i
+i
+“Current˙Book” — 2018/10/18 — 18:20 — page 33 — #44 i
+i
+i
+i
+i
+i
+Section 1.4 Walks and Distance 33
+u
+v
+w
+x
+y
+Figure 1.4.6 A graph with diameter 4 and radius 2.
+Example 1.4.8: Let G be the graph whose vertex-set is the set of all people on the
+planet and whose edges correspond to the pairs of people who are acquainted. Then
+according to the six degrees of separation conjecture, the graph G has diameter 6.
+Connectedness
+definition: Vertex v is reachable from vertex u if there is a walk from u to v.
+definition: A graph is connected if for every pair of vertices u and v, there is a walk
+from u to v.
+definition: A digraph is connected if its underlying graph is connected.
+terminology note: Some authors use the term weakly connected digraph instead of
+connected digraph.
+Example 1.4.9: The non-connected graph in Figure 1.4.7 is made up of connected
+pieces called components, and each component consists of vertices that are all reachable
+from one another. This concept is deﬁned formally in §2.3.
+y
+z
+u
+w
+a b
+c
+d
+h
+f g
+k
+v
+x
+Figure 1.4.7 A non-connected graph with three components.
+Strongly Connected Digraphs
+definition: Two vertices u and v in a digraph D are said to be mutually reachable
+if D contains both a directed u-v walk and a directed v-u walk.
+definition: A digraph D is strongly connected if every two of its vertices are mutually
+reachable.
+Example 1.4.10: The digraph shown in Figure 1.4.8 is strongly connected.
+u
+v
+w
+x
+y
+Figure 1.4.8 A strongly connected digraph.
+
+i
+i
+“Current˙Book” — 2018/10/18 — 18:20 — page 34 — #45 i
+i
+i
+i
+i
+i
+34 Chapter 1 INTRODUCTION TO GRAPH MODELS
+Example 1.4.11: Suppose the graph in Figure 1.4.9 represents the network of roads in
+a certain national park. The park oﬃcials would like to make all of the roads one-way,
+but only if visitors will still be able to drive from anyone intersection to any other.
+a b
+c
+de
+f
+g
+Figure 1.4.9 A national park’s system of roads.
+This problem can be expressed in graph-theoretic terms with the following deﬁnition.
+definition: A graph is said to be strongly orientable if there is an assignment of
+directions to its edges so that the resulting digraph is strongly connected. Such an as-
+signment is called a strong orientation.
+Chapter 9 includes a characterization of strongly orientable graphs, which leads to
+the design of a polynomial-time algorithm for determining whether a graph is strongly
+orientable.
+Application of Connectedness to Rigidity
+Application 1.4.1: Rigidity of Rectangular Frameworks† Consider a 2-dimensional
+framework of steel beams connected by joints that allow each beam to swivel in the plane.
+The framework is said to be rigid if none of its beams can swivel. The rectangle shown
+below is not rigid, since it can be deformed into a parallelogram.
+Adding one diagonal brace would make the framework rigid, since the brace keeps the
+horizontal and vertical edges perpendicular to each other.
+† No subsequent material depends on this application.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 35 — #46 i
+i
+i
+i
+i
+i
+Section 1.4 Walks and Distance 35
+A rectangular framework with some diagonal braces might be rigid or non-rigid. For
+example, framework B in Figure 1.4.10 is rigid, but framework A is not.
+A
+non-rigid
+rigid
+B
+Figure 1.4.10 Two rectangular frameworks.
+Surprisingly, the problem of determining whether a given framework is rigid can be
+reduced to a simple problem concerning connectivity in a bipartite graph.
+Transforming the Problem: Suppose that an imaginary line is drawn through the
+middle of each row and each column of rectangles in the framework, as illustrated in the
+ﬁgure below. The framework is rigid if and only if each row-line ri stays perpendicular
+to each column-line cj,1,2....
+c1
+r1
+r2
+r3
+c2 c3
+Illustration: Consider the following rigid 2-by-2 framework.
+The brace in row 1, column 2 keeps r1 ⊥c2. Similarly, the other two braces keep c2 ⊥r2
+and r2 ⊥c1. Thus, each pair of consecutive entries in the sequence r1,c2,r2,c1 is per-
+pendicular. This implies, by simple plane geometry, that r1 ⊥c1, even though the (1, 1)
+rectangle is not braced. Therefore, the framework is rigid.
+More generally, a framework is rigid if for each i and j there is a perpendicularity sequence
+that begins with ri and ends with cj. This observation leads to a simple method for
+determining whether a given rectangular framework is rigid.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 36 — #47 i
+i
+i
+i
+i
+i
+36 Chapter 1 INTRODUCTION TO GRAPH MODELS
+Construct a bipartite graph by ﬁrst drawing two sets of vertices, r1,r2,... and c1,c2,...,
+one set corresponding to the rows of the framework, and the other set corresponding to
+the columns. Then draw an edge between vertices ri and cj if there is a brace in the row
+i, column j rectangle of the framework.
+By the observation above regarding perpendicularity sequences, the framework is rigid if
+and only if there is a walk in the bipartite graph between every pair of vertices, ri and
+cj. This simple criterion takes the form of the following theorem.
+Theorem 1.4.1: A rectangular framework is rigid if and only if its associated bipartite
+graph is connected. ♦
+Illustration: Figure 1.4.11 shows the two frameworks A and B from Figure 1.4.11 along
+with their associated bipartite graphs. Notice that for the non-rigid framework A, each
+deformable rectangle corresponds to a pair of vertices in the bipartite graph that has no
+walk between them. On the other hand, for the rigid framework B, the bipartite graph
+is connected.
+A
+non-rigid
+rigid
+B
+r1
+c1 c2 c3
+c1 c2 c3
+non-connected
+connected
+r2 r3
+r1 r2 r3
+Figure 1.4.11 Sample applications for Theorem 1.4.1 on rigid frameworks.
+EXERCISES for Section 1.4
+1.4.1S Determine which of the following vertex sequences represent walks in the graph
+below.
+a. 〈u,v〉; b. 〈v〉; c. 〈u,z,v〉; d. 〈u,v,w,v〉
+u v
+x w
+z y
+1.4.2 Find all walks of length 4 or 5 from vertex w to vertex r in the following graph.
+w
+u v z y
+s
+x r
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 37 — #48 i
+i
+i
+i
+i
+i
+Section 1.4 Walks and Distance 37
+1.4.3 Find all directed walks from x to d in the following digraph.
+x
+y
+a b c
+df z
+1.4.4S Which of the following incidence tables represent connected graphs?
+edge a b c d
+endpts u v w x
+u w x v
+edge a b c d
+endpts u v v x
+v w x v
+edge a b c d
+endpts u v w x
+v v x x
+1.4.5 Express the walk 〈u,v,w,x,v,z,y,z,v〉 as the concatenation of a series of walks
+such that each walk has no repeated vertices.
+In Exercises 1.4.6 through 1.4.8, determine whether the given incidence table represents
+a strongly connected digraph. Assume that there are no isolated vertices.
+1.4.6S edges a b c d
+endpts u v v x
+vh wh xh vh
+1.4.7 edges a b c d
+endpts u vh w x
+vh w xh vh
+1.4.8 edges a b c d e
+endpts u v wh v w
+vh uh x xh vh
+1.4.9 Explain why all graphs having at least one edge have walks of arbitrarily large
+length. Can you make the same statement for digraphs?
+1.4.10S Draw a simple digraph that has directed walks of arbitrarily large length.
+1.4.11 For each of the following graphs, either ﬁnd a strong orientation or argue why no
+such orientation exists.
+a. b.
+1.4.12S Find the distance between vertices x and y in the following graph.
+x
+y
+1.4.13 Is there an even-length walk between two antipodal vertices (i.e., endpoints of a
+long diagonal) of a cube?
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 38 — #49 i
+i
+i
+i
+i
+i
+38 Chapter 1 INTRODUCTION TO GRAPH MODELS
+1.4.14 Draw an 8-vertex connected graph with as few edges as possible.
+1.4.15S Draw a 7-vertex connected graph such that the removal of any one edge results
+in a non-connected graph.
+1.4.16 Draw an 8-vertex connected graph with no closed walks, except those that retrace
+at least one edge.
+1.4.17 Draw a 5-vertex connected graph that remains connected after the removal of any
+two of its vertices.
+In Exercises 1.4.18 through 1.4.28, determine the diameter, radius, and central vertices
+of the graph indicated.
+1.4.18S The graph in Exercise 1.4.1.
+1.4.19 The graph in Exercise 1.4.2.
+1.4.20 Path graph Pn,n ≥ 3 (from §1.2).
+1.4.21 Cycle graph Cn,n ≥ 4 (from §1.2).
+1.4.22 Complete graph Kn , n ≥ 3.
+1.4.23 Complete bipartite graph Km,n, m ≥ n ≥ 3 (from §1.2).
+1.4.24 The Petersen graph (from §1.2).
+1.4.25 Hypercube graph Q3; can you generalize to Qn? (from §1.2).
+1.4.26 Circular ladder graph CLn , n ≥ 4 (from §1.2).
+1.4.27 Dodecahedral graph (from §1.2).
+1.4.28 Icosahedral graph (from §1.2).
+1.4.29 Determine the radius and diameter of each of the following circulant graphs (from
+§1.2).
+a. circ(5 : 1,2); b. circ(6 : 1,2); c. circ(8 : 1,2).
+1.4.30 Describe the diameter and radius of the circulant graph circ(n : m) in terms of
+integer n and connection m.
+1.4.31 Describe the diameter and radius of the circulant graph circ(n : a,b) in terms of
+integer n and the connections a and b.
+1.4.32S Let G be a connected graph. Prove that
+rad(G) ≤ diam(G) ≤ 2 · rad(G)
+1.4.33 Prove that a digraph must have a closed directed walk if each of its vertices has
+nonzero outdegree.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 39 — #50 i
+i
+i
+i
+i
+i
+Section 1.4 Walks and Distance 39
+In Exercises 1.4.34 through 1.4.36, use a bipartite graph model to determine whether the
+given rectangular framework is rigid.
+1.4.34S
+1.4.35
+1.4.36
+1.4.37 Show that the framework shown below is not rigid. Can moving one brace make
+the framework rigid?
+1.4.38S Let u and v be any two vertices of a connected graph G. Prove that there exists
+a u − v walk containing all the vertices of G.
+1.4.39 Prove that a shortest walk between two vertices cannot repeat a vertex or an
+edge.
+1.4.40 Let D be a digraph. Prove that mutual reachability is an equivalence relation on
+VD.
+1.4.41S Let x and y be two diﬀerent vertices in the complete graph K4. Find the number
+of x-y walks of length 2 and of length 3.
+1.4.42 Let x and y be two diﬀerent adjacent vertices in the complete bipartite graph
+K3,3. Find the number of x-y walks of length 2 and of length 3.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 40 — #51 i
+i
+i
+i
+i
+i
+40 Chapter 1 INTRODUCTION TO GRAPH MODELS
+1.4.43 Let x and y be two diﬀerent non-adjacent vertices in the complete bipartite graph
+K3,3. Find the number of x-y walks of length 2 and of length 3.
+1.4.44 Prove that the distance function d on a graph G satisﬁes the triangle inequality.
+That is,
+For all x,y,z ∈ VG, d(x,z) ≤ d(x,y) + d(y,z).
+1.4.45 Let G be a connected graph. Prove that if d(x,y) ≥ 2, then there exists a vertex
+w such that d(x, y) = d(x, w) + d(w, y).
+1.4.46S Let G be an n-vertex simple graph such that deg(v) ≥ (n−1)
+2 for every vertex
+v ∈ VG. Prove that graph G is connected.
+1.5 PATHS, CYCLES, AND TREES
+By stripping away its extraneous detours, an x-y walk can eventually be reduced to
+one that has no repetition of vertices or edges. Working with these shorter x-y walks
+simpliﬁes discussion in many situations.
+Trails and Paths
+definition: A trail is a walk with no repeated edges.
+definition: A path is a trail with no repeated vertices (except possibly the initial and
+ﬁnal vertices).
+definition: A walk, trail, or path is trivial if it has only one vertex and no edges.
+terminology note: Unfortunately, there is no universally agreed-upon terminology
+for walks, trails, and paths. For instance, some authors use the term path instead of walk
+and simple path instead of path. Others use the term path instead of trail. It is best to
+check the terminology when reading articles about this material.
+Example 1.5.1: For the graph shown in Figure 1.5.1, W = 〈v,a,e,f,a,d,z〉 is the edge
+sequence of a walk but not a trail, because edge a is repeated, and T = 〈v,a,b,c,d,e,u〉
+is a trail but not a path, because vertex x is repeated.
+u
+v
+x
+y
+z
+a
+b c
+de
+f W =< v,a,e,f,a,d,z >
+T =< v,a,b,c,d,e,u >
+Figure 1.5.1 Walk W is not a trail, and trail T is not a path.
+Remark: Directed trails and directed paths are directed walks that satisfy conditions
+analogous to those of their undirected counterparts. For example, a directed trail is a
+directed walk in which no directed edge appears more than once. When it is clear from
+the context that the objects under discussion are directed, then the modiﬁer directed will
+be omitted.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 41 — #52 i
+i
+i
+i
+i
+i
+Section 1.5 Paths, Cycles, and Trees 41
+Deleting Closed Subwalks from Walks
+definition: Given a walk W = 〈v0,e1,...,vn−1,en,vn〉 that contains a nontrivial,
+closed subwalk W′ = 〈vk,ek+1,...,vm−1,em,vk〉, the reduction of walk W by sub-
+walk W′, denoted W − W′, is the walk
+W − W′ = 〈v0,e1,...,vk−1,ek,vk,em+1,vm+1,...,vn−1,en〉
+Thus, W −W′ is obtained by deleting from W all of the vertices and edges of W′ except
+vk. Or, less formally, W − W′ is obtained by deleting W′ from W.
+Example 1.5.2: Figure 1.5.2 shows a simple graph and the edge sequences of three
+walks, W, W′, and W − W′. Observe that W − W′ is traversed by starting a traversal
+of walk W at vertex u and avoiding the detour W′ at vertex v by continuing directly to
+vertex w.
+u v x
+y
+z
+w t
+a b c
+de
+f
+g
+W =< u,a,b,c,d,e,f,g,t >
+W′ =< v,b,c,d,e,v >
+W − W′ =< u,a,f,g,t >
+Figure 1.5.2 Walk W is not a trail, and trail T is not a path.
+Remark: The reduction of a walk by a (nontrivial) closed subwalk yields a walk that is
+obviously shorter than the original walk.
+definition: Given two walks A and B, the walk B is said to be a reduced walk of A
+if there exists a sequence of walks A = W1,W2,...,Wr = B such that for each i = 1,
+..., r − 1, walk Wi+1 is the reduction of Wi by some closed subwalk of Wi.
+The next three results show that the concepts of distance and reachability in a graph
+can be deﬁned in terms of paths instead of walks. This often simpliﬁes arguments in
+which the detours of a walk can be ignored.
+Lemma 1.5.1: Every open x-y walk W is either an x-y path or contains a closed subwalk.
+Proof: If W is not an x-y path, then the subsequence of W between repeated vertices
+deﬁnes a closed subwalk of W. ♦
+Theorem 1.5.2: Let W be an open x-y walk. Then either W is an x-y path or there is
+an x-y path that is a reduced walk of W.
+Proof: If W is not an x-y path, then delete a closed subwalk from W to obtain a shorter
+x-y walk. Repeat the process until the resulting x-y walk contains no closed subwalks
+and, hence, is an x-y path, by Lemma 1.5.1. ♦
+Corollary 1.5.3: The distance from a vertex x to a reachable vertex y is always realiz-
+able by an x-y path.
+Proof: A shortest x-y walk must be an x-y path, by Theorem 1.5.2. ♦
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 42 — #53 i
+i
+i
+i
+i
+i
+42 Chapter 1 INTRODUCTION TO GRAPH MODELS
+Cycles
+definition: A nontrivial closed path is called a cycle.
+definition: An acyclic graph is a graph that has no cycles.
+definition: A cycle that includes every vertex of a graph is call a Hamiltonian cycle.†
+definition: A Hamiltonian graph is a graph that has a Hamiltonian cycle. (§6.3
+elaborates on Hamiltonian graphs.)
+Example 1.5.3: The graph in Figure 1.5.3 is Hamiltonian. The edges of the Hamiltonian
+cycle 〈u,z,y,x,w,t,v,u〉 are shown in bold.
+u
+v w x
+yzt
+Figure 1.5.3 A Hamiltonian graph.
+The following result gives an important characterization of bipartite graphs.
+Theorem 1.5.4: A graph G is bipartite if and only if it has no cycles of odd length.
+Proof: Necessity (⇒): Suppose that G is bipartite. Since traversing each edge in a walk
+switches sides of the bipartition, it requires an even number of steps for a walk to return
+to the side from which it started. Thus, a cycle must have even length.
+Suﬃciency (⇐): Let G be a graph with n ≥ 2 vertices and no cycles of odd length.
+Without loss of generality, assume that G is connected. Pick any vertex u of G, and
+deﬁne a partition (X,Y ) of V as follows:
+X = {x | d(u,x) is even}
+Y = {y | d(u,y) is odd}
+If (X,Y ) is not a bipartition of G, then there are two vertices in one of the sets, say v
+and w, that are joined by an edge, say e. Let P1 be a shortest u−v path, and let P2 be
+a shortest u−w path. By deﬁnition of the sets X and Y , the lengths of these paths are
+both even or both odd. Starting from vertex u, let z be the last vertex common to both
+paths (see Figure 1.5.4).
+Since P1 and P2 are both shortest paths, their u → z sections have equal length. Thus,
+the lengths of the z → v section of P1 and the z → w section of P2 are either both even
+or both odd. But then the concatenation of those two sections with edge e forms a cycle
+of odd length, contradicting the hypothesis. Hence, (X,Y ) is a bipartition of G. ♦
+eu z
+v
+w
+Figure 1.5.4 Figure for suﬃciency part of Theorem 1.5.4 proof.
+†The term “Hamiltonian” is in honor of the Irish mathematician William Rowan Hamilton.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 43 — #54 i
+i
+i
+i
+i
+i
+Section 1.5 Paths, Cycles, and Trees 43
+The following proposition is similar to Theorem 1.5.2.
+Proposition 1.5.5: Every nontrivial, closed trail T contains a subwalk that is a cycle.
+Proof: Let T′ be a minimum-length, nontrivial, closed subwalk of T. Its minimum length
+implies that T′ has no proper closed subwalks, and, hence, its only repeated vertices are
+its ﬁrst and last. Thus, T′ is a cycle. ♦
+Remark: The assertion of Proposition 1.5.5 is no longer true if T is merely a closed
+walk (see Exercises).
+definition: A collection of edge-disjoint cycles, C1,C2,...,Cm, is called a decompo-
+sition of a closed trail T if each cycle Ci is either a subwalk or a reduced walk of T and
+the edge-sets of the cycles partition the edge-set of trail T.
+Theorem 1.5.6: A closed trail can be decomposed into edge-disjoint cycles.
+Proof: A closed trail having only one edge is itself a cycle. By way of induction, assume
+that the theorem is true for all closed trails having m or fewer edges. Next, let T be a
+closed trail with m + 1 edges. By Proposition 1.5.5, the trail T contains a cycle, say C,
+and T − C is a closed trail having m or fewer edges. By the induction hypothesis, the
+trail T −C can be decomposed into edge-disjoint cycles. Therefore, these cycles together
+with C form an edge-decomposition of trail T. ♦
+Example 1.5.4: The three cycles C1,C2, and C3 form a decomposition of the closed
+trail T in Figure 1.5.5. The edge-based abbreviated representation of walks is used here
+to emphasize the edge partition of the decomposition.
+C1
+C2
+C3
+u
+v w x
+yzt
+k
+a b
+c
+d e g
+h
+i
+jf
+T =< u,a,b,c,d,e,f,g,h,i,j,k,u >
+C1 =< z,k,c,f,z >; C2 =< u,a,b,e,d,u >; C3 =< w,h,i,j,g,w >
+Figure 1.5.5 A closed trail T decomposed into three cycles.
+Eulerian Trails
+definition: An Eulerian trail in a graph is a trail that contains every edge of that
+graph.
+definition: An Eulerian tour is a closed Eulerian trail.
+definition: An Eulerian graph is a connected graph that has an Eulerian tour.†
+†The term “Eulerian” is in honor of the Swiss mathematician Leonhard Euler.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 44 — #55 i
+i
+i
+i
+i
+i
+44 Chapter 1 INTRODUCTION TO GRAPH MODELS
+Example 1.5.5: The trail T = 〈u,a,b,c,d,e,f,g,h,i,j,k,u〉 in Figure 1.5.6 is an Eu-
+lerian tour. Its decomposition into edge-disjoint cycles, as in Figure 1.5.5, is a property
+that holds for all Eulerian tours and is part of a classical characterization of Eulerian
+graphs given in §4.5.
+u
+v w x
+yzt
+k
+a b
+c
+d e g
+h
+i
+jf
+Figure 1.5.6 An Eulerian graph.
+Application 1.5.1: Traversing the Edges of a Network Suppose that the graph
+shown in Figure 1.5.6 represents a network of railroad tracks. A special cart equipped
+with a sensing device will traverse every section of the network, checking for imperfec-
+tions. Can the cart be routed so that it traverses each section of track exactly once and
+then returns to its starting point?
+The problem is equivalent to determining whether the graph is Eulerian, and as seen
+from Example 1.5.5, trail T does indeed provide the desired routing.
+Algorithms to construct Eulerian tours and several other applications involving Eu-
+lerian graphs appear in Chapter 6.
+Girth
+definition: The girth of a graph G with at least one cycle is the length of a shortest
+cycle in G. The girth of an acyclic graph is undeﬁned.
+Example 1.5.6: The girth of the graph in Figure 1.5.7 below is 3 since there is a 3-cycle
+but no 2-cycle or 1-cycle.
+Figure 1.5.7 A graph with girth 3.
+Trees
+definition: A tree is a connected graph that has no cycles.
+tree non-tree non-tree
+Figure 1.5.8 A tree and two non-trees.
+
+i
+i
+“Current˙Book” — 2018/10/16 — 17:36 — page 45 — #56 i
+i
+i
+i
+i
+i
+Section 1.5 Paths, Cycles, and Trees 45
+Trees are central to the structural understanding of graphs, and they have a wide
+range of applications, including information processing. Trees often occur with additional
+attributes such as roots and vertex orderings. Chapters 3 and 4 are devoted entirely to
+establishing and applying many of the properties of trees. The following examples provide
+a preview of some of the material on trees and illustrate how they arise naturally.
+Application 1.5.2: Physical Chemistry A hydrocarbon is a chemical molecule com-
+posed of hydrogen and carbon atoms. It is said to be saturated if it includes the maximum
+number of hydrogen atoms for its number of carbon atoms. Saturation occurs when no
+two carbon atoms have a multiple bond, that is, when the hydrocarbon’s structural model
+is a simple graph. We may recall from elementary chemistry that a hydrogen atom has
+one electron, and thus it is always 1-valent in a molecule. Also, a carbon atom has four
+electrons in its outer orbit, making it 4-valent. The saturated hydrocarbons butane and
+isobutane both have the same chemical formula, i.e., C4H10, as shown in Figure 1.5.9,
+so they are said to be isomers.
+H
+H H H
+H
+H H
+H
+H
+H
+HH
+H
+HH
+HH
+H
+H
+H
+C C C
+C
+C
+C
+C
+C
+Figure 1.5.9 Two saturated hydrocarbons: butane and isobutane.
+Application 1.5.3: Operating-System Directories Many information structures of
+computer science are based on trees. The directories and subdirectories (or folders and
+subfolders) containing a computer user’s ﬁles are typically represented by the operating
+system as vertices in a rooted tree (see §3.2), as illustrated in Figure 1.5.10.
+Hard Disk
+Docs UtilsSoftware
+Comm. Draw Write Programs
+C Fortran
+General Teaching Research
+Figure 1.5.10 A directory structure modeled by a rooted tree.
+Application 1.5.4: Information Retrieval Binary trees (see §3.2) store ordered data
+in a manner that permits an eﬃcient search. In particular, if n nodes of a binary tree are
+used appropriately to store the keys of n data elements, then a search can be completed
+in running time O(logn). Figure 1.5.11 shows a set of 3-digit keys that are stored in a

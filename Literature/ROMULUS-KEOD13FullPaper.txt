@@ -1,0 +1,1235 @@
+Addressing Issues in Foundational Ontology Mediation
+Zubeida Casmod Khan and C. Maria Keet
+School of Mathematics, Statistics, and Computer Science, University of KwaZulu-Natal, and UKZN/CSIR-Meraka Centre
+for Artiﬁcial Intelligence Research, Durban, South Africa
+zkhan@csir.co.za, keet@ukzn.ac.za
+Keywords: Foundational Ontology; Ontology Mediation; Semantic Interoperability; Ontology Alignment; Ontology
+Mapping; Ontology Matching; Ontology Merging.
+Abstract: An approach in achieving semantic interoperability among heterogeneous systems is to offer infrastructure to
+assist with linking and integration using a foundational ontology. Due to the creation of multiple foundational
+ontologies, this also means linking and integrating those ones. In order to achieve this, we have selected
+the widely used foundational ontologies DOLCE, BFO, and GFO, and their related modules, on which to
+perform ontology mediation (alignment, mapping, and merging). The foundational ontologies were aligned
+by identifying correspondences between ontology entities using seven tools, documentation, and our manual
+alignments, and comparing their effectiveness. Thereafter, based on the alignments, we created correspon-
+dencesin theontologyﬁlesresultingin entitymappingsand merged ontologies. However, duringthe mapping
+process, it was found that differences in foundational ontologies, such as their hierarchical structure, conﬂict-
+ing axioms due to complement and disjointness, and incompatible domain and range restriction, cause logical
+inconsistencies in foundational ontology alignments, thereby greatly reducing the number of mappings. We
+analyse and present these logical inconsistencies with possible solutions to some of them.
+1 INTRODUCTION
+There has been an exponential growth in ontology de-
+velopment for the Semantic Web, including a move
+toward modular and networked ontologies. Founda-
+tional ontologies are commonly used to facilitate se-
+mantic interoperability. However, Semantic Web sys-
+tem developers use their ontologies with a preferred
+foundational ontology. The semantics and underlying
+Ontology of each foundational ontology differs, caus-
+ing a problem in semantic interoperability. Heteroge-
+neous systems on the Semantic Web are restricted to
+committing to a single foundational ontology in order
+to promote interoperability. However, no single foun-
+dationalontologyisusedacrossallsystems,therewith
+preventinginteroperability. Inorderfortheseapplica-
+tions to share and process information correctly, there
+is a need for foundational ontology interoperability,
+so that ontology developers committing to a preferred
+foundational ontology will achieve seamless linking
+to other domain ontologies linked to another foun-
+dational ontology. Such an infrastructure was envi-
+sioned as the “WonderWeb Foundational Ontologies
+Library” (WFOL) (Masolo et al., 2003), but this in-
+frastructure still does not exist. The main precondi-
+tions for a WFOL are content comparisons and ontol-
+ogy mediation. Ontology mediation refers to identi-
+fying and solving differences between heterogeneous
+ontologies, in order to allow reuse and interoperabil-
+ity. Its three main processes are alignment, mapping,
+and merging (de Bruijn et al., 2006). There are only
+few paper-based alignments of foundational ontolo-
+gies, being between GFO and DOLCE (Herre, 2010)
+and between DOLCE and BFO (Seyed, 2009; Temal
+et al., 2010), which, however, are partial, with older
+versions of the ontologies, informal, and/or aligned
+but not mapped. To the best of our knowledge, no
+systematiccomparisonofthecontentsoffoundational
+ontologies has been done, nor full alignments, let
+alone providing consistent mappings.
+We aim to contribute to ﬁll this gap of seman-
+tic interoperability by selecting three well-known
+foundational ontologies, DOLCE (Masolo et al.,
+2003), BFO (http://www.ifomis.org/bfo) with
+RO (Smith et al., 2005), and GFO (Herre, 2010) with
+which we perform a rigorous foundational ontology
+content comparison and mediation to aid in achieving
+foundational ontology interchangeability. The align-
+mentprocessiscarriedoutbyusingthemanualalign-
+ment as a gold standard and (semi-)automated align-
+ment with seven alignment tools to examine them
+on their capabilities to align foundational ontologies.
+
+The accuracy and percentage of alignments that were
+found vary greatly among the tools due to their di-
+verse alignment algorithms, ranging from 18 to 94%
+and 17 to 31%, respectively. Further alignment is-
+suesappearinthetransitivityofalignmentsacrossthe
+three foundational ontologies due to absence of some
+entity or conﬂicting parthood theories, whilst some
+may be resolved by asserting them as sibling classes.
+Mapping the aligned entities whilst keeping a consis-
+tent ontology reduces the feasible set from 85 align-
+ments to 43 successful mappings due to disjointness
+and complement axioms elsewhere in the ontology,
+and due to incompatible domain and range axioms,
+which in some cases can be solved from a logic view-
+point by asserting subsumption instead. For each me-
+diation process (alignment, mapping and mediation),
+we present the issues encountered for foundational
+ontology mediation and aim to solve these issues.
+In the remainder of the paper, we provide a liter-
+ature review in Section 2. A high-level content com-
+parison of the foundational ontologies is described in
+Section 3, which is followed by an analysis of align-
+ments in Section 4, and of the mappings in Section 5.
+We discuss the results in Section 6 and conclude in
+Section 7.
+2 LITERATURE REVIEW
+There has not been much work done in comparing
+content of the foundational ontologies. By this, we
+mean comparing their classes, properties and rela-
+tions. Some work on comparing the primitive rela-
+tions of BFO (i.e., the Relation Ontology (RO)) and
+DOLCE has been done (Seyed, 2009) where it is
+found that the philosophies behind the foundational
+ontologies affect the way the relations are modelled.
+For instance, BFO is based on realist principles and
+has no abstract entities while GFO is both descriptive
+and realist in nature and allows abstract entities in an
+ontology, and BFO’s parthood relation has part does
+not consider abstract entities, while GFO has a part-
+hoodrelationabstract has part thatconsidersabstract
+entities at a higher-level than its has part relation.
+Temal et al. (Temal et al., 2010) created a BFO-
+DOLCE mapping in order to integrate medical in-
+formation. The classes (universals or categories) are
+mapped with equivalence and subsumption relations.
+Basedontheolderso-calledSNAPandSPANversion
+of BFO, they found that all BFO universals were suc-
+cessfullymappedtoDOLCE,butnotallDOLCEenti-
+ties could be mapped to BFO. These alignments were
+not checked on consistency of the mappings and were
+done on some First Order Logic version of the on-
+tologies, where the SNAP-BFO has, e.g., Boundary,
+that BFO v1.1 in OWL does not have, and DOLCE
+is claimed to have Collection, which appears neither
+in the principal documentation (Masolo et al., 2003)
+norintheOWLizedversionofDOLCE.Someoftheir
+alignments are useful, however, which we will return
+to in Section 4.
+FromacomputationalviewpointinsteadofanOn-
+tology and modelling viewpoint, we consider several
+aspects of ontology mediation and matching. Ontol-
+ogy mediation (de Bruijn et al., 2006) is divided into
+three operations: mapping, alignment, and merging.
+To be precise in the terminology we use throughout
+the paper, we provide several deﬁnitions on ontology
+matching in this section, which are taken from (Eu-
+zenat and Shvaiko, 2007), Chapter 3. First, there is
+the actual mediation, or matching, process:
+Deﬁnition1(MatchingProcess). Thematchingpro-
+cess can be seen as a function f which, from a pair of
+ontologies to match o and o′, an input alignment A, a
+set of parameters p and a set of oracles and resources
+r, returns an alignment A′ between these ontologies:
+A′ = f(o,o′,A,p,r).
+To be able to talk about an actual alignment or
+mapping, the notion of “entity language” has to be
+introduced, which is used to express precisely those
+entities that will be matched.
+Deﬁnition 2 (Entity language). Given an ontology
+language L, an entity language QL is a function from
+any ontology o ⊆ L which deﬁnes the matchable enti-
+ties of ontology o.
+Then, a correspondence consists of a relation be-
+tween two entities in different ontologies, which is
+uniquely identiﬁed and hassome conﬁdencevalue as-
+signed to it.
+Deﬁnition 3 (Correspondence). Given two ontolo-
+gies o and o′ with associated entity languages QL
+and QL′, a set of alignment relations θ and a conﬁ-
+dencestructureoverΞ,acorrespondenceisa5-tuple:
+〈id,e,e′,r,n〉, such that id is a unique identiﬁer of the
+given correspondence, e ⊆ QL(o) and e′ ⊆ Q′
+L′(o′),
+r ⊆ θ, and n ⊆ Ξ.
+Ontology alignment, then, is the process of spec-
+ifying correspondences between entities, by using a
+particular alignment relation, such as equivalence,
+subsumption, or a predeﬁned similarity relation.
+Deﬁnition 4 (Alignment). Given two ontologies o
+and o′, an alignment is made up of a set of correspon-
+dences between pairs of entities belonging to QL(o)
+and QL′(o′) respectively.
+Ontology mapping deals with creating correspon-
+dences between ontologies based on alignments such
+that the resultant ontology is still consistent and does
+not have unsatisﬁable classes or relations. Euzenat
+
+and Shvaiko do consider this with respect to models
+of aligned ontologies, which is too lengthy to repeat
+here,andDeBruijnetal. doesnotprovideadeﬁnition
+of their idea of mapping as a ‘consistent alignment in
+the context of the whole ontology’ either. Therefore,
+we capture the gist in the following deﬁnition, using
+Euzenat and Shvaiko’s notational conventions.
+Deﬁnition 5 (Mapping). Given two ontologies o and
+o′, a mapping is made up of a set of correspon-
+dences between pairs of entities belonging to QL(o)
+and QL′(o′), respectively, and this mapping is satis-
+ﬁable and does not lead to an unsatisﬁable entity in
+either o or o′.
+In merging, a new merged ontology is created
+from the original ontologies.
+Deﬁnition 6 (Merging). Given two ontologies o and
+o′, a merging is the creation of a new ontology o′′
+containingoando′ andallmappingsbetweenentities
+belonging to QL(o) and QL′(o′) such that o′′ does not
+have unsatisﬁable entities and is consistent.
+Overviews of approaches, frameworks, and tech-
+nologies used to perform ontology mapping, align-
+ment and merging are discussed elsewhere (e.g.,
+(de Bruijn et al., 2006)), and more detail about al-
+gorithms and issues can be found in (Euzenat and
+Shvaiko, 2007).
+A number of tasks for the problem at hand are
+based on ontology mediation. Performing founda-
+tional ontology mediation with automated tools is a
+good approach and a starting point because there are
+many foundational ontology modules, and founda-
+tional ontologies are constantly being updated. It is
+rather time-consuming to explore each foundational
+ontology, especially when there are differences in
+hierarchy and structure. By applying several tools
+to align foundational ontologies, one can determine
+which tools are better suited for foundational ontolo-
+gies, and the type of alignments that are misaligned
+or not discovered by tools. We summarize the align-
+ment tools that are used in the experimental evalua-
+tion, of which we note that LogMap, YAM++, Hot-
+Match, Hertuda and Optima have been evaluated with
+positive results by the Ontology Alignment Evalua-
+tion Initiative (OAEI) in terms of their precision, re-
+call and other performance measures.
+H-Match (Castano et al., 2003) is an algorithm
+for matching ontologies at different depth levels, with
+different accuracies, based on user choices. The algo-
+rithm takes into account linguistic and semantic fea-
+tures of ontologies to perform matching and uses one
+offourmatchingmodels: surface,shallow,deeporin-
+tensive. The surface model only considers linguistic
+afﬁnity between entity names to measure similarity.
+In shallow, deep and intensive models, context is also
+considered to determine entity similarity.
+PROMPT (Noy and Musen, 2000) is an ontology
+matching plug-in for Prot´eg´e that allows for compar-
+ison, mappings, and merging between ontologies. It
+is a semi-automatic method that invokes algorithms
+based on a combination of concept-representation
+structure, the relations between entities and user’s ac-
+tions. PROMPT offers the user four different algo-
+rithms to use for initial comparison: lexical match-
+ing, FOAM plugin, lexical matching with synonyms
+and using UMLS concept identiﬁers for matching. It
+is only supported in older versions of Prot´eg´e, which
+makes it unstable.
+LogMap (Jim´enez-Ruiz and Cuenca Grau, 2011)
+automatically generates mappings between ontolo-
+gies using logic-based semantics of the input ontolo-
+gies. It offers an improvement to other mapping tools
+in that it addresses scalability and logical inconsisten-
+cies. LogMap allows a user to upload ontologies in a
+number of formats and implements existing reasoners
+to check the satisﬁability of the ontologies.
+YAM++ (Ngo and Bellahsene, 2012) aligns en-
+tities by information retrieval or machine learning if
+training data is available. Three matchers are imple-
+mentedinYAM++: anelementlevelmatcher, a struc-
+tural matcher and a semantic matcher. The element
+levelandstructuralmapperdiscoveralignmentswhile
+the semantic matcher revises these alignments to re-
+move inconsistencies and ensure logical mappings.
+HotMatch (Dang et al., 2012) is a tool based on a
+combination of many matching algorithms. The two
+types of algorithms are element level and structural
+matching. However, there is more than one of each
+implemented. TherearealsoﬁltersinHotMatch,used
+to remove duplicate mappings found by the matchers.
+Uponinputofasourceandtargetontology,HotMatch
+deploys its matchers and ﬁlters sequentially resulting
+in mappings between the two.
+Hertuda (Hertling, 2012) is an entity matcher that
+applies element level matching with a string compar-
+ison. The alignments generated by Hertuda are only
+satisﬁable in OWL Lite/DL. As a result, object prop-
+erties in the ontologies are handled separately. This
+may cause some difﬁculties in aligning object prop-
+erties in the foundational ontologies because their do-
+mains and ranges affect the alignments.
+Optima (Kolli and Doshi, 2008) is a fully auto-
+matic tool which iteratively improves alignments. It
+is aimed at aligning large ontologies but may also be
+used for smaller ontologies. Its similarity measure is
+based on both syntactic and semantic similarity.
+
+3 FOUNDATIONAL ONTOLOGY
+CONTENT COMPARISON
+In this section, we provide an informal content com-
+parison between the foundational ontology pairs by
+identifying differences and similarities between the
+them. A content comparison is beneﬁcial in that it
+forms the basis for performing ontology mediation
+operations. A content comparison does not include
+abstract comparisons such as those based on philo-
+sophicalchoices,ontologicalalignmentsandsoftware
+engineering properties, which has been addressed
+elsewhere (Khan and Keet, 2012), but rather a high-
+level comparison of the structure, organisation, and
+entities of the foundational ontologies.
+DOLCE, BFO and GFO contain both 3D and 4D
+entities. BothBFOandGFOnametheseentitiesCon-
+tinuant and Occurrent while DOLCE names them en-
+durant and perdurant. Some syntactic variants ex-
+ist between DOLCE, BFO, and GFO, e.g., DOLCE’s
+space-region vs. BFO’s SpatialRegion vs. GFO’s
+Spatial region. In DOLCE, BFO, and GFO, classes
+that share the same name and idea are process, func-
+tion and role.
+DOLCE entities are of type particular, BFO’s en-
+tities are Universals while GFO contains a combina-
+tion of the two, both Individual and Universal entities.
+DOLCE and BFO have similar structures at a high-
+level only in that both have separate branches of 3D
+and 4D entities. GFO’s high-level structure is differ-
+ent as it offers a distinction between Category and In-
+dividual entities. DOLCE’s endurant and perdurant
+branches are linked by participation relations; BFO’s
+and GFO’s 3D and 4D entity branches are completely
+independent of each other.
+DOLCE and GFO have advanced support for rep-
+resenting entity properties (e.g., colour) and their val-
+ues (e.g., blue) while BFO has limited support for
+this. To describe these entities, DOLCE uses the
+terms quality, quale and quality-space, BFO uses the
+term Quality while GFO names these entities Prop-
+erty, Property value and Value space. DOLCE’s
+quality branch is disjoint to its endurant and perdu-
+rant branches. In BFO, on the other hand, Qual-
+ity is subsumed by Continuant branch, while GFO
+has Property subsumed by the higher-level Individ-
+ual. BFO’s temporal entities, including temporal re-
+gions, intervals, and instants, are subsumed by Oc-
+current, while DOLCE’s temporal entities are split up
+into three parts, being temporal regions that are sub-
+sumed by abstract entities, temporal qualities that are
+subsumed by quality entities, and subclasses of perdu-
+rants. All of GFO’s temporal entities are subsumed
+by its Space-time entity, which is disjoint to its Con-
+crete and Abstract entities. Most of DOLCE’s spatial
+entities are subsumed by its abstract entity with the
+exception of spatial-location-q which is subsumed by
+quality, while GFO’s spatial entities are subsumed by
+its space-time entity. BFO’s SpatialRegion entity is
+subsumed by Continuant. DOLCE and GFO have ab-
+stract entities while BFO does not.
+DOLCE and GFO contain relational properties.
+BFO does not have relational properties included in
+the ontology, but rather as a separate ontology, the
+Relational Ontology (RO) (Smith et al., 2005). BFO
+2.0 is currently being developed, where BFO is in-
+tegrated with RO. DOLCE’s relational properties are
+all based on either of its six primitive relations: part-
+hood, temporary parthood, constitution, participation,
+quality,andquale. Formereology,DOLCEadoptsthe
+axioms of General Extensional Mereology (GEM).
+BFO core is a comprehensive mereology represented
+in ﬁrst-order logic and contains collections, sums and
+universal axioms. GFO’s mereology contains the fol-
+lowing axioms: antisymmetry, transitivity, set inclu-
+sion,properparthood,andotherGFO-speciﬁcaxioms
+based on these.
+Thus, the organisation of entities within the three
+ontologies differ. In some cases, entities that seem
+similar fall in contradicting or disjoint classes. These
+differences in structure and organisation may cause
+inconsistencies when performing mapping, as we
+shall see later in detail.
+4 ALIGNMENT
+For foundational ontology alignment, i.e., aligning on
+an entity-by-entity basis, certain aspects of the un-
+derlying philosophies of each foundational ontology
+have been ignored, because else it would result in few
+ornoalignmentsandforpracticalusageoftheirOWL
+ﬁles, they are less pressing issues (e.g., DOLCE is
+descriptive and contains particulars, while BFO is re-
+alist and contains universals). We align classes and
+object properties with equivalence relations ﬁrst, and
+use subsumption relations afterward to resolve some
+mapping inconsistencies.
+We create alignments for 20 pairs of ontologies.
+These ontologies include DOLCE-Lite, BFO, GFO,
+FunctionalParticipation, SpatialRelations, and Tem-
+poralRelations (which are more-detailed modules of
+DOLCE), BFORO and GFO-Basic. BFORO refers
+to the merged ontology of BFO with the RO, and
+GFO-Basicisaless-detailedmoduleofGFO.Weper-
+form ontology alignment by using existing tools, doc-
+umentation and manually using the content compari-
+son, entity axioms and annotations. Further, for each
+resource (tool, documentation or manual alignment),
+we measure its accuracy by ﬁrstly examining each of
+
+its output alignments to determine whether or not the
+equivalence relation is correct. Thereafter we deﬁne
+accuracy as the number of ‘correct’ alignments over
+the total alignments given by the resource (Eq. 1),
+where ‘correct’ denotes the alignment is also in the
+set of alignments found manually, i.e., what is typi-
+cally considered as the ‘gold standard’. We deﬁne the
+found measure of the resources as the number of cor-
+rect alignments over the total possible correct align-
+ments, after manual intervention (Eq. 2).
+Accuracy = |correct alignments|
+|total alignmentsresource| ×100 (1)
+Found = |correct alignments|
+|total alignmentsgold| ×100 (2)
+4.1 Alignment results
+Wedescribetheresultsofthemanualalignmentsﬁrst,
+and then the results obtained with the matching tools.
+4.1.1 Manual alignments
+The yield of the manual alignments between the
+main foundational ontologies (DOLCE-Lite, BFO
+and GFO) resulted in 17 alignments for DOLCE-Lite
+↔ BFO, 23 alignments for BFO ↔ GFO and 35
+alignments for GFO ↔ DOLCE-Lite, hence, 75 in to-
+tal; the complete set of alignments can be accessed
+at http://www.thezfiles.co.za/ROMULUS/. Of
+these 75 alignments, 37 are for alignments be-
+tween object properties and are displayed in Ta-
+bles 1, 2, and 3. The mapped class alignments
+are available and discussed elsewhere (Khan and
+Keet, 2013) and online accessible, and the differ-
+encebetweenclassalignmentsandmappingsforGFO
+↔ DOLCE-Lite are displayed in Table 4. When
+we consider entity alignments including the related
+modules of the foundational ontologies (e.g., GFO-
+Basic), there is a total of 85 alignments. Natu-
+rally, there are many more than 85 alignments if
+we consider identical alignments that occur among
+the same entities in related modules; e.g., DOLCE-
+Lite:particular ↔ GFO:Individual and FunctionalPar-
+ticipation:particular ↔ GFO:Individual. There are 14
+alignments common between these three ontologies,
+which is displayed in Table 5.
+The manual alignments were aided by the GFO
+documentation (Herre, 2010) and checked against the
+alignments proposed by (Temal et al., 2010; Seyed,
+2009). The GFO documentation (Herre, 2010) con-
+tains a list of similarities between GFO and DOLCE
+which helped with the alignment process. Some of
+the alignments could not be used, however, due to
+changes in the two foundational ontologies. We were
+Table 1: Equivalence alignments for relational properties
+between DOLCE-Lite and BFO; the alignments numbered
+in bold font can also be mapped.
+DOLCE-Lite BFORO
+1. generic-location located in
+2. generic-location-of location of
+3. part has part
+4. part-of part of
+5. proper-part has proper part
+6. proper-part-of proper part of
+7. participant has participant
+8. participant-in participates in
+Table 2: Equivalence alignments for relational properties
+between DOLCE-Lite and GFO; the alignments numbered
+in bold font can also be mapped.
+DOLCE-Lite GFO
+1. generic-constituent has constituent part
+2. generic-constituent-of constituent part of
+3. generically-
+dependant-on
+depends on
+4. generic-dependant necessary for
+5. has-quale has value
+6. quale-of value of
+7. boundary has boundary
+8. boundary-of boundary of
+9. q-present-at exists at
+10. temporary-
+participant-in
+agent in
+11. temporary-participant has agent
+12. generic-location occupies
+13. generic-location-of occupied by
+14. part abstract has part
+15. part-of abstract part of
+16. proper-part has proper part
+17. proper-part-of proper part of
+18. participant has participant
+19. participant-in participates in
+Table 3: Equivalence alignments for relational properties in
+BFO and GFO; the alignments in bold are also mapped.
+BFORO GFO
+1. has part has part
+2. part of part of
+3. has proper-part has proper part
+4. proper part of proper part of
+5. has participant has participant
+6. participant in participates
+7. located in occupies
+8. location of occupied by
+9. has agent has agent
+10. agent in agent in
+
+able to use 42% of the alignments from the docu-
+mentation. We discuss four equivalence alignments
+from (Temal et al., 2010). We changed the align-
+ment bfo:ProcessualEntities ↔ dolce:perdurant to
+bfo:Occurrent ↔ dolce:perdurant, because by deﬁni-
+tion occurrents and perdurants both represent entities
+that have temporal parts and unfold in time. Temal
+et al.’s alignment of bfo:Quality with dolce:physical-
+quality is more precise than ours, because, as men-
+tioned above, we chose to ignore the some philoso-
+phies (the realist debate) with the hope of achieving
+a higher number of alignments. That is, our mapping
+has bfo:Quality ↔ dolce:quality, thereby ignoring the
+fact that BFO does not consider abstract entities. We
+agree with bfo:SpatialRegion ↔ dolce:space-region
+and bfo:TemporalRegion ↔ dolce:temporal-region,
+and use this equivalence, too. Seyed (Seyed, 2009)
+examined only three relations—dependency, quality,
+and constitution—and found that they are different in
+DOLCE and BFO. The basic numbers of the align-
+ments are included in Table 6.
+Table 4: Equivalence alignments for classes between
+DOLCE-Lite and GFO ontologies; the alignments num-
+bered in bold font can also be mapped.
+DOLCE-Lite GFO
+1. particular Individual
+2. endurant Presential
+3. physical-endurant Discrete presential
+4. physical-object Material object
+5. amount-of-matter Amount of substrate
+6. perdurant Occurrent
+7. process Process
+8. state State
+9. abstract Abstract
+10. set Set
+11. quality Property
+12. quale Property value
+13. quality-space Value space
+14. time-interval Chronoid
+15. space-region Spatial Region
+16. temporal-region Temporal Region
+4.1.2 Automated alignments
+Table 7 lists the numbers of alignments found by the
+selected tools. We describe some further data in the
+remainder of this section.
+H-Match generated many alignments, but most of
+the output was not accurate. Many entity pairs that
+were matched using H-Match were found to be incor-
+rectly aligned; e.g., DOLCE-Lite:quale ↔ bfo:Role.
+This resulted in us being able to use only 18% of
+these alignments, with the rest being false positives.
+Table 5: Common alignments between DOLCE-Lite, BFO
+and GFO.
+DOLCE-Lite BFORO GFO
+Class
+1. endurant Independent
+Continuant
+Presential
+2. physical-object Object Material object
+3. perdurant Occurrent Occurrent
+4. process Process Process
+5. quality Quality Property
+6. space-region SpatialRegion Spatial region
+7. temporal-
+region
+Temporal-
+Region
+Temporal region
+Relational property
+1. proper-part has proper part has proper part
+2. proper-part-of proper part of proper part of
+3. participant has participant has participant
+4. participant-in participates in participates in
+5. generic-
+location
+located in occupies
+6. generic-
+location-of
+location of occupied by
+Table 6: Comparison of manually performed alignment ac-
+curacies of the GFO documentation (Herre, 2010), related
+works, and ours, and aggregates for mappings.
+Seyed Herre Temal
+et al.
+Ours
+Class alignments
+DOLCE-Lite
+↔ BFO
+- - 2/7 9/9
+BFO ↔ GFO - - - 13/13
+GFO ↔
+DOLCE-Lite
+- 13/31 - 16/16
+Object property alignments
+DOLCE-Lite
+↔ BFO
+0 - - 8/8
+BFO ↔ GFO - - - 10/10
+GFO ↔
+DOLCE-Lite
+- 0 - 19/19
+Overall alignments
+Total 0/0 13/31 2/7 75/75
+Accuracy 0% 42% 29% 100%
+Found 0% 37% 12% 100%
+Overall mappings
+Total 0/0 8/31 1/7 40/40
+Accuracy 0% 26% 14% 100%
+Found 0% 61% 9% 100%
+PROMPT was generally unstable resulting in force
+closure of the application. It generated suggestions
+of which we were able to use 56%, with the rest being
+false positives; e.g., bfo:Site ↔ gfo:Situoid.
+While LogMap provided few alignments between
+the foundational ontologies (less than ten in all
+cases), most alignments were accurate. The one
+false positive in LogMap was the alignment of
+bfo:IndependentContinuant ↔ gfo:Independent.
+
+Table 7: Comparison of alignment accuracies of the matching tools and aggregates for mappings.
+H-Match PROMPT LogMap YAM++ Hot Match Hertuda Optima
+Class alignments
+DOLCE-Lite↔BFO 4/16 3/8 2/2 4/4 3/3 3/3 4/12
+BFO↔GFO 5/31 7/12 7/8 6/7 7/7 7/7 8/14
+GFO↔DOLCE-Lite 4/25 4/8 3/3 8/11 5/5 5/5 5/16
+Object property alignments
+DOLCE-Lite↔BFO 0 0 0 0 0 0 0/1
+BFO↔GFO 0 0 4/4 0 0 0 1/3
+GFO↔DOLCE-Lite 0 4/4 0 5/14 5/7 6/8 2/23
+Overall alignments
+Total 13/72 18/32 16/17 23/36 20/22 21/23 20/69
+Accuracy 18% 56% 94% 64% 91% 91% 29%
+Found 17% 24% 21% 31% 27% 28% 27%
+Overall mappings
+Total 10/72 11/32 16/17 15/36 11/22 12/23 13/69
+Accuracy 14% 34% 94% 42% 50% 52% 19%
+Found 25% 28% 40% 38% 28% 30% 33%
+YAM++ generated many alignments. However, while
+most of the alignments for DOLCE ↔ BFO and BFO
+↔ GFO were accurate, only about half were accurate
+for GFO ↔ DOLCE. Overall we were able to use
+almost64%ofitsalignments. LikeLogMap,YAM++
+also incorrectly aligned bfo:IndependentContinuant
+↔ gfo:Independent. Some of YAM++’s other false
+positive alignments include dolce:generic-constituent
+↔ gfo:has sequence constituent, dolce:quality-
+space ↔ gfo:Space and dolce:temporary-proper-part
+↔ gfo:has constituent part.
+HotMatch generated a fair amount of alignments
+between the ontologies. Overall, we were able to
+use 91% of HotMatch’s alignments, with just 2 align-
+ments out of all 22 being false positives. Hertuda’s
+output was surprisingly similar to HotMatch’s output,
+with just one more alignment than HotMatch. We
+were able to use 91% of Hertuda’s alignments, with
+just 2 alignments out of all 23 being false positives.
+CommonfalsepositivesinYAM++,HertudaandHot-
+Match were the alignments between dolce:part ↔
+gfo:has part and dolce:part-of ↔ gfo:part of, which
+is discussed in Section 4.2.1. Optima generated many
+alignments for each pair. However, there were many
+falsepositives,consequentlywewereabletouse29%
+of its alignments overall. This may be because Op-
+tima is aimed at aligning large ontologies and the
+foundational ontologies in question are of reasonable
+size. Optima incorrectly aligned gfo:Continuous ↔
+bfo:Continuant, dolce:Region ↔ bfo:SpatialRegion
+and dolce:dependent-place ↔ bfo:Dependent.
+4.2 Alignment Issues
+We have encountered two types of issues in align-
+ment: transitivity, where there was no ‘full circle’
+alignment between some entities of the three ontolo-
+gies, and approximate alignments, where there is no
+clear relationship to describe the match.
+4.2.1 Transitivity
+Transitivity in entity alignments works as follows: if
+the equivalence relation holds between entities from
+the ﬁrst and second ontology and it holds between
+entities from the second and third ontology; it nec-
+essarily holds between entities from the ﬁrst and
+third ontology. Applying transitivity to entity align-
+ments assists in detecting errors. For instance, if
+one were to align dolce:endurant ↔ gfo:Persistant,
+and gfo:Persistant ↔ bfo:Continuant, then by tran-
+sitivity this means that dolce:endurant is equivalent
+to bfo:Continuant, which is incorrect. In most cases,
+the foundational ontology alignments are transitive.
+There were two types of exceptions, being the ab-
+sence of an entity and what can be termed conse-
+quences of conﬂicting philosophies.
+Absence of an entity. An alignment cannot be a
+candidate for transitivity if there is an equivalence be-
+tween only two out of the three ontologies. From the
+three main ontology alignments, the following ones
+were not transitive due to the absence of an entity:
+• Absence of a DOLCE entity (7 cases): bfo:Entity
+↔ gfo:Entity, bfo:DependentContinuant ↔
+gfo:Dependent, bfo:ObjectBoundary↔gfo:Mate-
+rial boundary, bfo:Function ↔ gfo:Function,
+bfo:Role ↔ gfo:Role, bfo:has agent ↔
+gfo:has agent, bfo:agent in ↔ gfo:agent in.
+• Absence of a GFO entity (1 case): dolce:spatio-
+temporal-region ↔ bfo:SpatioTemporalRegion
+• AbsenceofaBFOentity(17cases): gfo:Individual
+↔ dolce:particular, gfo:Amount of substrate
+↔ dolce:amount-of-matter, gfo:State ↔
+
+dolce:state, gfo:Abstract ↔ dolce:abstract,
+gfo:Set ↔ dolce:set, gfo:Property value ↔
+dolce:quale, gfo:Value space ↔ dolce:quality-
+space, gfo:Chronoid ↔ dolce:time interval,
+gfo:has constituant part ↔ dolce:generic-
+consitituant, gfo:constituant part of ↔
+dolce:generic-constituant-of, gfo:necessary for
+↔ dolce:generic-dependent, gfo:depends on ↔
+dolce:generically-dependent-on, gfo:has value
+↔ dolce:has-quale, gfo:value of ↔ dolce:quale-
+of, gfo:has boundary ↔ dolce:boundary,
+gfo:boundary of ↔ dolce:boundary-of,
+gfo:exists at ↔ dolce:q-present-at
+From this type of transitivity issue, we see that for the
+three main ontology alignments, in most cases BFO
+entities are absent. There are a few cases of absent
+DOLCEentitiesandonecaseofanabsentGFOentity.
+Conﬂicting philosophies. The philosophies of
+foundational ontologies affect their entities to a cer-
+tain extent. In some cases, two entities that are
+aligned to each other may not be aligned to the same
+entity of a third ontology.
+• dolce:physical-endurant ↔ bfo:Material-
+Entity, dolce:physical-endurant ↔ gfo:Discrete
+presential and bfo:MaterialEntity ↔ gfo:Material
+persistant. Let us align bfo:MaterialEntity ↔
+dolce:physical-endurant, ignore their underlying
+philosophies (i.e., that BFO is an ontology of
+universals and DOLCE of particulars). However,
+in GFO, there are two entities for representing
+this type of entity, based on distinct philosophical
+notions: gfo:Discrete presential, being subsumed
+gfo:Individual, is suited for dolce:physical-
+endurant while gfo:Material persistant, being
+subsumed by gfo:Universal, is suited for
+bfo:MaterialEntity.
+• dolce:part ↔ bfo:has part, dolce:part ↔
+gfo:has abstract part and bfo:has part ↔
+gfo:has part (idem for their inverses). In
+DOLCE, both the domain and range of part is
+particular. In BFORO, there is no domain and
+range for has part. In GFO, both the domain and
+range of abstract has part is Item, while both the
+domain and range for has part is Concrete. The
+former relational property may be better suited
+for DOLCE because it is a descriptive ontology
+and contains abstract entities. The latter is better
+suited for BFORO as it is a realist ontology,
+representing the world as is, thereby containing
+concrete entities only.
+The ontology matching tools discussed in Sec-
+tion 4.1.2 misaligned dolce:part ↔ gfo:has part and
+their inverses. This is because object property incon-
+sistencies are not fully recognised by reasoners (Keet,
+2012), hence their conﬂicting domains and ranges did
+not affect the satisﬁability of the ontology.
+4.2.2 Approximate Alignments
+There are a number of approximate alignments be-
+tween foundational ontology entities. By this we
+meanthattheyarenotequivalenttoeachotherorsub-
+sumed by one another, but share some common char-
+acteristics. By identifying these relations between
+theseentities,foundationalontologydeveloperscould
+possibly relate them as sibling classes by grouping
+them both under a common superclass. We mention
+three of them.
+• dolce:arbitrary-sum, bfo:ObjectAggregate and
+gfo:Conﬁguration: All three of these entities de-
+scribe a collection of something. dolce:arbitrary-
+sum, however, has no unity criterion e.g., a pencil
+and laundry basket are together a dolce:arbitrary-
+sum, and it can contain both dolce:physical-
+endurant and dolce:non-physical-endurant enti-
+ties. dolce: physical-endurant is not restricted
+just to instances of dolce:physical-object but can
+possibly include dolce:feature and dolce:amount-
+of-matter. bfo:ObjectAggregate, on the other
+hand, has overall unity and can be considered
+as a whole. It is restricted to bfo:Object only,
+and in the case of BFO, all objects are physi-
+cal. gfo:Conﬁguration is simply a collection of
+gfo:Presential facts. gfo:Presentials are not re-
+stricted to whole physical objects and can include
+other gfo:Presential entities. For this reason, it
+cannot equate to bfo:ObjectAggregate. Further-
+more, it holds a restriction that it must contain
+at least one material entity. dolce:arbitrary-sum
+could contain physical, non-physical or both enti-
+ties, with no restrictions.
+• dolce:state and bfo:SpatioTemporalInstant:
+DOLCE describes dolce:state by using an exam-
+ple of a rock erosion describing state as a time in-
+terval of the erosion is collapsed into a time point.
+Similarly BFO deﬁnes bfo:SpatioTemporalInstant
+as a “connected spatiotemporal region at a
+speciﬁc moment”. The difference between the
+two lies in the fact that dolce:state is homeomeric
+while bfo:SpatioTemporalInstant is not.
+• dolce:relevant-part and bfo:FiatObjectPart:
+DOLCE describes dolce:relevant-part as a feature
+that is a relevant part of their host; e.g., the edge
+of a cube. BFO deﬁnes bfo:FiatObjectPart as a
+material entity that is part of an object but not
+demarcated by physical discontinuities; e.g.,
+the lower portion of the leg. In this sense they
+are both part objects that are physical entities.
+However, it is unclear whether dolce:relevant-part
+
+is demarcated by physical discontinuities or not
+and whether BFO’s ﬁat object parts are ‘relevant’
+somehow. This requires further investigation.
+5 MAPPING AND MERGING
+Ontology Mapping uses the alignments from the
+alignment process to create correspondences between
+entities in the ontologies. The output from the align-
+ment process is broader, while the output from the
+mapping process is narrower as inconsistencies affect
+the mapping process. Merging is performed by creat-
+ing a new ontology of the source ontologies with their
+mappingsbetweeneachother. Ontologymappingand
+merging was performed by relating classes and object
+properties in Prot´eg´e. Entities were mapped in the
+order of their level in the hierarchy, from higher to
+lower level, because foundational ontologies by deﬁ-
+nition are general high-level ontologies. Therefore, in
+mapping, preference must be ﬁrst given to high-level
+entities to have agreement among general entities and
+avoid inconsistencies at that level.
+Alignments that cannot be mapped due to logical
+inconsistencies result in unsuccessful mappings. The
+inconsistencieswereidentiﬁedbyusingthefollowing
+method. For each candidate class mapping:
+1. Assert the equivalence for the found alignment.
+2. Run the automated reasoner.
+3. Check if there are any unsatisﬁable classes.
+4. If there are unsatisﬁable classes, use the reasoner
+explanation feature to generate an explanation.
+5. Analyse explanations.
+6. Remove inconsistent mapping, if applicable.
+For each candidate object property mapping, since
+object property inconsistencies and ﬂaws are not
+properly recognised by reasoners (Keet, 2012), we
+identiﬁed inconsistencies by checking if an object
+property pair’s domain and range restrictions are sat-
+isﬁable by using the above method.
+The numbers in bold face in Table 5 represent the
+alignments that resulted in successful mappings be-
+tween the common entities of the three main ontolo-
+gies. From the 14 alignments in Table 5, six success-
+ful mappings exist. Recall from the previous section
+on alignment, there was a total of 85 distinct align-
+mentsbetweenallfoundationalontologiesandrelated
+modules, and 75 alignments between the main foun-
+dational ontologies. Performing the method to iden-
+tify inconsistencies in alignments resulted in 42 dis-
+tinct logical inconsistencies of which 35 alone were
+from the main ontologies. From all the distinct equiv-
+alence alignments, only half were satisﬁable and re-
+sultedinsuccessfulmappings. Comparingthesemap-
+pings to the alignments found by the tools, LogMap
+doubled its percentage found to 40% and performed
+bestcomparedtothesixothersevaluated(seeTable7,
+bottom three rows).
+To solve inconsistencies in the mapping attempts,
+we analysed each alignment on the logical explana-
+tion for the inconsistency and the description of the
+entityprovidedbythefoundationalontologydevelop-
+ers,andcheckedwhetheritwaspossibletochangethe
+alignment from equivalence to subsumption. How-
+ever, there are still many unsolvable inconsistencies,
+mainly due to hierarchical and structural differences
+in the foundational ontologies. Due to space limi-
+tations, we describe only a representative selection
+of the logical inconsistencies and (logically satisﬁ-
+able) possible solutions; the full list of inconsisten-
+cies is available at http://www.thezfiles.co.za/
+ROMULUS/.
+Inconsistencies due to disjoint classes. For this
+type of inconsistency, the entities to be aligned are
+disjoint to each other, either directly, through higher-
+level equivalence relations or through their subclasses
+or superclasses. If entities are disjoint, they cannot
+overlap, hence cannot be equivalent.
+• dolce:temporal-region - gfo:Temporal region -
+bfo:TemporalRegion: The issue with incompat-
+ible temporal regions between BFO, GFO, and
+DOLCE is depicted in Fig. 1 and is a result of
+the OWL DisjointClasses class axiom between
+gfo:Concrete, gfo:Space Time and gfo:Abstract,
+and between dolce:Abstract and dolce:Per-
+durant, or, from the other viewpoint: because
+BFO made TemporalRegion an Occurrent,
+DOLCE made it Abstract, and GFO neither. This
+does not seem to be resolvable.
+• bfo:Role - gfo:Role: gfo:Processual role is a sub-
+class of gfo:Role and gfo:Process. gfo:Process
+is a subclass of gfo:Occurrent. gfo:Occurrent is
+equivalent to bfo:Occurrent. bfo:Role is a sub-
+class of bfo:Continuant. bfo:Continuant is dis-
+joint to bfo:Occurrent. In this equivalence re-
+lation, both gfo:Role and gfo:Occurrent are su-
+perclasses of gfo:Processual role, and bfo:Role
+is a subclass of bfo:Continuant; gfo:Occurrent
+and bfo:Continuant are disjoint, hence the two
+classes cannot be equivalent. Solution: Logi-
+cally, bfo:Role cannot be equivalent to gfo:Role.
+However, bfo:Role can be subsumed by gfo:Role.
+Therefore the relation can be changed to gfo:Role
+subsumes bfo:Role.
+• gfo:necessary for - dolce:generic-dependent: If
+we were to equate these object properties, we
+would have to assume that their domains and
+ranges are equivalent, which is not the case;
+the situation is depicted in Fig. 2. Solution:
+
+bfo:TemporalRegion
+bfo:Occurent gfo:Occurrent
+gfo:Concrete gfo:Space_Time
+gfo:Temporal_Region
+×
+≡
+declaring equivalence results in inconsistency due to
+disjointness among higher-level categories
+×gfo:Abstract dolce:Abstract≡
+dolce:temporal-region
+×dolce:Perdurant≡
+bfo:TemporalRegion
+bfo:Occurent
+Figure1: Graphicaldepictionofwhythealignedgfo:Temporal Region,bfo:TemporalRegion,anddolce:temporal-region cannot
+be mapped in any way without causing an inconsistency; ≡: aligned entities, ×: disjoint entities.
+gfo:Item
+gfo:Category gfo:Individual× ≡ 
+declaring equivalence results in
+inconsistency due to disjointness
+and mappings among higher-
+level categories
+dolce:Particular
+gfo:necessary_for
+dolce:generic-dependent
+Figure 2: Visualisation of the root cause of the
+non-mappablegfo:necessary for andDOLCE-Lite:generic-
+dependent; ×: disjointness, ≡: equivalence mapping.
+Logically, gfo:necessary for cannot be equiva-
+lent to dolce:generic-dependent, because equat-
+ing their domains and ranges causes inconsis-
+tencies. However, dolce:generic-dependent’s
+domain and range, dolce:particular can logi-
+cally be subsumed by gfo:necessary for’s do-
+main and range, gfo:Item. Therefore the relation
+can be changed to gfo:necessary for subsumes
+bfo:generic-dependent.
+• dolce:generic-location - bfo:located in: This
+issue is due to disjointness among domain/range.
+dolce:generic-location’s range is dolce:particular
+and bfo:located in’s range is bfo:Continuant.
+bfo:Continuant is disjoint to bfo:Occurrent
+and bfo:Occurrent ≡ dolce:perdurant. In
+DOLCE, perdurant v ∃has-Quality.temporal-
+location-q and the domain of dolce:has-
+Quality is dolce:particular (the superclass of
+dolce:perdurant). Thus, bfo:Continuant is dis-
+joint to ∃has-Quality.temporal-location-q, and
+cannot be equivalent, causing the range re-
+strictions to be unsatisﬁable in the alignment.
+Therefore dolce:generic-location cannot map to
+bfo:located in.
+Other unresolvable cases are, among others, dolce:set
+- gfo:Set and dolce:quality-space - gfo:Value space.
+Inconsistencies due to complement classes. For
+this type of inconsistency, the entities to be aligned
+were found to be complements of each other, either
+directly, through higher-level equivalences or through
+subsumption. We describe here one such case.
+gfo:Material_persistant
+gfo:Universal gfo:Item
+≡ 
+declaring equivalence results in
+inconsistency due to the complement
+bfo:IC
+instantiated_by some
+gfo:Individual
+NOT instantiated_by some
+gfo:Presential
+bfo:MaterialEntity
+Figure 3: Visualisation of the root cause of the non-
+mappable bfo:MaterialEntity and gfo:Material persistant; ≡:
+equivalence mapping, IC = IndependentContinuant.
+• bfo:MaterialEntity - gfo:Material persistant,
+which is visualised in Fig. 3. The cru-
+cial aspect in GFO is the class axiom
+Universal v ∃instantiated by.Item, and the com-
+plement for individuals. Concerning mappings,
+bfo:IndependentContinuant ≡ gfo:Presential.
+However, GFO has Presential v Individual
+and Individual v ¬∃instantiated by.Item.
+Thus, gfo:Material persistant is a subclass
+of gfo:instantiated by some gfo:Item while
+bfo:MaterialEntity is a subclass of the com-
+plement of that class, hence bfo:MaterialEntity
+cannot be equivalent to gfo:Material persistant.
+Solution: The alignment can be changed into
+bfo:MaterialEntity - gfo:Discrete presential,
+which avoids the complement issue but it is
+not free of argument (recall the “conﬂicting
+philosophies” item in Section 4.2.1).
+6 DISCUSSION
+Given the size of the ontologies and our high toler-
+ancebyignoringunderlyingphilosophies,theamount
+of alignments, and, even more so, the amount of map-
+pings is less than one may have expected; or: once
+investigated in detail, the foundational ontologies are,
+atpresent,notparticularlyinterchangeableevenatthe
+logical level. Only six pairwise mappings exist, i.e.,
+theybeing,essentially,equivalentthroughoutallthree
+examined foundational ontologies.
+Concerning feasibility to carry out automated
+alignments, in most cases, the tools evaluated with
+
+the OAEI performed better than the others, with the
+exception of Optima. LogMap had the highest ac-
+curacy, because it also considers the logic-based se-
+mantics of the ontologies and uses automated reason-
+ing services throughout the process, therewith elim-
+inating those false positives that would have led to
+a logical inconsistency. However, LogMap gener-
+ated very few alignments compared to other accu-
+rate tools (YAM++, Hertuda and HotMatch), indicat-
+ing that the additional heuristics implemented are too
+strict at least for foundational ontology alignment.
+Most false positive alignments generated by
+the tools, such as bfo:IndependentContinuant ↔
+gfo:Independent, indicate that the algorithms imple-
+ment syntactic matching, which, based on the results
+we obtained, is not sufﬁcient or suitable for foun-
+dational ontology matching because many entities
+have a common syntax e.g., dolce:quality-space ↔
+gfo:Space bothhavethestring‘space’incommonbut
+areentirelydifferententities; Table8includesaselec-
+tionofsuchfalsepositivesthatarecausedbysyntactic
+matching in the tools when aligning the three founda-
+tionalontologies. Thetoolsfailedtorecognisesimple
+alignments such as dolce:perdurant ↔ gfo:Occurrent,
+bfo:Quality ↔ gfo:Property. In this sense, semantic
+matching is not considered, or if it is, it fails to recog-
+nise synonyms of the philosophical scope on which
+foundational ontologies are built upon. Structural
+matching is not an effective method either, due to the
+fact that the hierarchies and structures of the founda-
+tional ontologies differ greatly which causes the root
+distances of mappable entities to differ. For aligning
+foundational ontologies, it will be useful if existing
+semantic matchers would include something alike a
+‘philosophy WordNet’ that specialises in philosophi-
+cal terms, synonyms, and deﬁnitions used in founda-
+tional ontologies.
+The results of the tool analysis is a good indica-
+tion of which tools to experiment with for founda-
+tional ontology alignment in general. However, they
+found less than a third of the actual alignments at this
+stage, and therefore it is still vital to perform manual
+alignment for foundational ontologies. The tools also
+did not generate subsumption relations for any of the
+alignments, but this could perhaps be an extension to
+the basic idea of LogMap by means of another call
+to the reasoner. One could investigate whether Op-
+tima is useful to identify accurate alignments among
+the larger foundational ontologies SUMO (Niles and
+Pease, 2001) and YAMATO (Mizoguchi, 2010).
+On a positive note, the systematised list of issues
+now can be taken up by ontologists. While some of
+the inconsistencies found are quite elaborate, others
+should be easier to resolve both ontologically (philo-
+sophically) and where in the ontology the entity is
+Table 8: False positives caused by syntactic matching gen-
+erated by the alignment tools; the terms in italics represent
+the strings that are common between aligned entities.
+DOLCE-Lite BFO
+physical-region ConnectedSpatio
+TemporalRegion
+non-physical-object Object
+region SpatioTemporalRegion
+BFO GFO
+IndependentContinuant Independent
+Site Situoid
+Continuant Continuous
+GFO DOLCE-Lite
+has sequence
+constituent
+generic-constituent
+has-part part
+Space quality-space
+positioned; e.g., the notion of a mathematical Set is
+fairly well investigated already, and likewise the dif-
+ferent theories of parthood. As such, the results pre-
+sented here provide a solid foundation for ample on-
+tological investigations. From an engineering view-
+point and in case of urgent need for interoperability,
+one could take a quite different strategy: OWL 2 EL
+doesnothavenegation,andthereforeitshouldbepos-
+sibletoassertmoremappingsbetweentheOWL2EL
+modules of the foundational ontologies. Whether that
+isthebeststrategyisadifferentmatter,anditdoesnot
+take away the substantial list for which there was no
+transitivity due to ‘missing’ entities. In any case, we
+now know that some mappings are possible, hence,
+also some foundational ontology interoperability.
+7 CONCLUSION
+The foundational ontologies DOLCE, BFO, and GFO
+were pairwise aligned and mapped. They were
+aligned manually, which served as the ‘gold stan-
+dard’, and with the aid of seven alignment tools. The
+accuracy and percentage of alignment found were
+compared, where LogMap had the highest accuracy
+with 94% and HotMatch and Hertuda as close sec-
+ond, and YAM++ found the most correct alignments
+(31% of the total manual alignments among the three
+main ontologies (75)). The evaluation of the tools in-
+dicated that the algorithms currently implemented by
+thetoolsarenotwell-suitedforfoundationalontology
+mediation. Semantic matching in the tools need to be
+improved to include philosophical synonyms which
+are used in foundational ontologies. Declaring the
+correspondences in all ontology ﬁles based on its 85
+
+alignments resulted in only 43 mappings, with the re-
+maining 42 causing logical inconsistencies. The in-
+consistencies are due primarily to differences in their
+respective hierarchical structure with conﬂicting ax-
+ioms, such as complement and disjointness, and in-
+compatible domain and range restriction. On closer
+inspection, some inconsistencies may be resolved us-
+ing subsumption or making them sibling classes.
+Future research includes mapping other founda-
+tional ontologies, adding subsumption mappings, and
+evaluating the current alignments with the founda-
+tional ontology developers. We also aim to imple-
+mentafacilityforcommunityinputonthealignments
+and mappings, which could to be facilitated via the
+foundational ontology library that is available online
+at http://www.thezfiles.co.za/ROMULUS/.
+REFERENCES
+Castano, S., Ferrara, A., and Montanelli, S. (2003). H-
+MATCH: an algorithm for dynamically matching on-
+tologies in peer-based systems. In The ﬁrst Inter-
+national Workshop on Semantic Web and Databases
+(SWDB’03), pages 231–250, Humboldt-Universitt,
+Berlin, Germany.
+Dang, T. T., Gabriel, A., Hertling, S., Roskosch, P.,
+Wlotzka, M., Zilke, J. R., Janssen, F., and Paulheim,
+H. (2012). HotMatch results for OEAI 2012. In Sev-
+enth International Workshop on Ontology Matching
+(OM’12), volume 946 of CEUR Workshop Proceed-
+ings. CEUR-WS.org.
+de Bruijn, J., Ehrig, M., Feier, C., Mart´ıns-Recuerda, F.,
+Scharffe, F., and Weiten, M. (2006). Ontology medi-
+ation, merging, and aligning. In Semantic Web Tech-
+nologies, pages 1–20. Wiley Online Library.
+Euzenat, J. and Shvaiko, P. (2007). Ontology Matching.
+Springer.
+Herre,H.(2010). GeneralFormalOntology(GFO):Afoun-
+dational ontology for conceptual modelling. In The-
+ory and Applications of Ontology: Computer Appli-
+cations, chapter 14, pages 297–345. Springer.
+Hertling, S. (2012). Hertuda results for OEAI 2012. In Sev-
+enth International Workshop on Ontology Matching
+(OM’12), volume 946 of CEUR Workshop Proceed-
+ings. CEUR-WS.org.
+Jim´enez-Ruiz, E. and Cuenca Grau, B. (2011). LogMap:
+Logic-based and scalable ontology matching. In 10th
+International Semantic Web Conference (ISWC’11),
+volume 7031 of Lecture Notes in Computer Science,
+pages 273–288. Springer.
+Keet, C. M. (2012). Detecting and revising ﬂaws in OWL
+object property expressions. In ten Teije et al., A., ed-
+itor, 18thInternational Conferenceon KnowledgeEn-
+gineering and Knowledge Management (EKAW’12),
+volume 7603 of Lecture Notes in Artiﬁcial Intelli-
+gence, pages 252–266. Springer. Oct 8-12, Galway,
+Ireland.
+Khan,Z.andKeet,C.M.(2012). ONSET:Automatedfoun-
+dational ontology selection and explanation. In ten
+Teije et al., A., editor, 18th International Conference
+on Knowledge Engineering and Knowledge Manage-
+ment (EKAW’12), volume 7603 of Lecture Notes in
+Artiﬁcial Intelligence, pages 237–251. Springer. Oct
+8-12, Galway, Ireland.
+Khan, Z. and Keet, C. M. (2013). Toward semantic in-
+teroperability with aligned foundational ontologies in
+ROMULUS. In Seventh International Conference on
+Knowledge Capture (K-CAP’13). ACM proceedings.
+23-26 June, Banff, Canada. (poster/demo, in press).
+Kolli, R. and Doshi, P. (2008). OPTIMA: tool for ontology
+alignment with application to semantic reconciliation
+of sensor metadata for publication in SensorMap. In
+IEEE International Conference on Semantic Comput-
+ing (ICSC’08), pages 484–485. IEEE. 4-7 Aug. 2008,
+Santa Clara, CA, USA.
+Masolo, C., Borgo, S., Gangemi, A., Guarino, N., and
+Oltramari, A. (2003). Ontology library. Won-
+derWeb Deliverable D18 (ver. 1.0, 31-12-2003).
+http://wonderweb.semanticweb.org.
+Mizoguchi, R. (2010). YAMATO: yet another more ad-
+vanced top-level ontology. In Proceedings of the Sixth
+Australasian Ontology Workshop, Conferences in Re-
+search and Practice in Information, pages 1–16. Syd-
+ney : ACS.
+Ngo, D. and Bellahsene, Z. (2012). YAM++ : A multi-
+strategy based approach for ontology matching task.
+In ten Teije et al., A., editor, 18th International
+Conference on Knowledge Engineering and Knowl-
+edge Management (EKAW’12), volume 7603 of Lec-
+ture Notes in Artiﬁcial Intelligence, pages 421–425.
+Springer. Oct 8-12, Galway, Ireland. Demo.
+Niles, I. and Pease, A. (2001). Towards a standard upper
+ontology. In Second International Conference on For-
+mal Ontology in Information Systems (FOIS’01). IOS
+Press. Ogunquit, Maine, October 17-19, 2001.
+Noy, N. F. and Musen, M. A. (2000). PROMPT: Al-
+gorithm and tool for automated ontology merging
+and alignment. In Seventeenth National Conference
+on Artiﬁcial Intelligence and Twelfth Conference on
+on Innovative Applications of Artiﬁcial Intelligence
+(AAAI/IAAI), pages 450–455. AAAI Press.
+Seyed, A. P. (2009). BFO/DOLCE primitive relation com-
+parison. In The 12th Annual Bio-Ontologies Meeting
+Colocated with Intelligent Systems for Molecular Bi-
+ology (ISMB’09). Stockholm, Sweden, 28 June 2009.
+Smith, B., Ceusters, W., Klagges, B., Kohler, J., Kumar, A.,
+Lomax, J., Mungall, C., Neuhaus, F., Rector, A., and
+Rosse, C. (2005). Relations in biomedical ontologies.
+Genome Biology, 6(5):46.
+Temal, L., Rosier, A., Dameron, O., and Burgun, A. (2010).
+Mapping BFO and DOLCE. Studies in Health Tech-
+nology and Informatics, 160(Pt 2):1065–9.

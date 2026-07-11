@@ -1,0 +1,35 @@
+@base <http://purl.org/swan/2.0/>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix swan: <http://purl.org/swan/2.0/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dr: <http://purl.org/swan/2.0/discourse-relationships/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix swande: <http://purl.org/swan/2.0/discourse-elements/>.
+
+dct:contributor a owl:AnnotationProperty.
+dct:creator a owl:AnnotationProperty.
+dct:date a owl:AnnotationProperty.
+dct:format a owl:AnnotationProperty.
+dct:language a owl:AnnotationProperty.
+dct:publisher a owl:AnnotationProperty.
+dct:title a owl:AnnotationProperty.
+swan: dct:contributor "Paolo Ciccarese";
+      dct:creator <http://www.hcklab.org/foaf.rdf#me>;
+      dct:date "October 12, 2010";
+      dct:format "rdf/xml";
+      dct:language "en";
+      dct:publisher "Mindinformatics, Massachusetts General Hospital";
+      dct:title "SWAN Ontology for Scientific Discourse v. 2.0"@en;
+      a owl:Ontology;
+      rdfs:label "SWAN ontology v. 2.0";
+      owl:imports <http://purl.org/swan/2.0/agents/>,
+                  swande:,
+                  dr:,
+                  <http://purl.org/spar/fabio>.

@@ -1,0 +1,69 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix idemo: <http://rdf.insee.fr/def/demo#>.
+@prefix igeo: <http://rdf.insee.fr/def/geo#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix adms: <http://www.w3.org/ns/adms#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix planet: <http://dbpedia.org/>.
+@prefix resource: <http://dbpedia.org/resource/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://rdf.insee.fr/def/demo> ccrel:license <http://www.data.gouv.fr/Licence-Ouverte-Open-Licence>;
+                               dc11:rights "Copyright © 2013 INSEE";
+                               dcterms:creator [foaf:name "Franck Cotton" ; 
+                                                a foaf:Person],
+                                               [foaf:name "Franck Cotton" ; 
+                                                a foaf:Person];
+                               dcterms:description "Ontologie des classes et propriétés utilisées pour la démographie, notamment le recensement de la population"@fr;
+                               dcterms:issued "2012-08-14";
+                               dcterms:modified "2012-12-26";
+                               dcterms:publisher resource:INSEE;
+                               dcterms:title "Ontologie démographique de l'INSEE"@fr;
+                               vann:preferredNamespacePrefix "idemo";
+                               vann:preferredNamespaceUri idemo:;
+                               voaf:classNumber 1 ;
+                               voaf:propertyNumber 5 ;
+                               a owl:Ontology,
+                                 voaf:Vocabulary;
+                               owl:versionInfo "Version 0.3 - 2012-12-26".
+idemo:PopulationLegale a owl:Class;
+                       rdfs:comment "Population légale datée et déclinée en 'municipale', 'comptée à part' et 'totale'"@fr;
+                       rdfs:isDefinedBy <http://rdf.insee.fr/def/demo>;
+                       rdfs:label "Population légale"@fr.
+idemo:date a owl:DatatypeProperty;
+           rdfs:domain idemo:PopulationLegale;
+           rdfs:isDefinedBy <http://rdf.insee.fr/def/demo>;
+           rdfs:label "date de référence"@fr;
+           rdfs:range xsd:date.
+idemo:population a owl:ObjectProperty;
+                 rdfs:domain igeo:TerritoireFrancais;
+                 rdfs:isDefinedBy <http://rdf.insee.fr/def/demo>;
+                 rdfs:label "population"@fr;
+                 rdfs:range idemo:PopulationLegale.
+idemo:populationCompteeAPart a owl:DatatypeProperty;
+                             rdfs:domain idemo:PopulationLegale;
+                             rdfs:isDefinedBy <http://rdf.insee.fr/def/demo>;
+                             rdfs:label "population comptée à part"@fr;
+                             rdfs:range xsd:nonNegativeInteger;
+                             adms:relatedWebPage <http://insee.fr/fr/methodes/definitions/popul-comptee-a-part-rrp.htm>.
+idemo:populationMunicipale a owl:DatatypeProperty;
+                           rdfs:domain idemo:PopulationLegale;
+                           rdfs:isDefinedBy <http://rdf.insee.fr/def/demo>;
+                           rdfs:label "population municipale"@fr;
+                           rdfs:range xsd:nonNegativeInteger;
+                           adms:relatedWebPage <http://insee.fr/fr/methodes/definitions/population-municipale-rrp.htm>.
+idemo:populationTotale a owl:DatatypeProperty;
+                       rdfs:domain idemo:PopulationLegale;
+                       rdfs:isDefinedBy <http://rdf.insee.fr/def/demo>;
+                       rdfs:label "population totale"@fr;
+                       rdfs:range xsd:nonNegativeInteger;
+                       adms:relatedWebPage <http://insee.fr/fr/methodes/definitions/population-totale-rrp.htm>.
+igeo:TerritoireFrancais a owl:Class.

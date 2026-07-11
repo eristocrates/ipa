@@ -1,0 +1,1143 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix eurio: <http://data.europa.eu/s66#>.
+@prefix eurovoc: <http://eurovoc.europa.eu/>.
+@prefix frapo: <http://purl.org/cerif/frapo/>.
+@prefix fabio: <http://purl.org/spar/fabio/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix adms: <http://www.w3.org/ns/adms#>.
+@prefix locn: <http://www.w3.org/ns/locn#>.
+@prefix org: <http://www.w3.org/ns/org#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix w3id: <https://w3id.org/>.
+@prefix dg: <https://w3id.org/dingo#>.
+@prefix cpov: <http://data.europa.eu/m8g/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix schema: <http://schema.org/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vcard2006: <http://www.w3.org/2006/vcard/ns#>.
+@prefix aerdcat: <http://www.w3.org/ns/dcat#>.
+
+_:B10709f42655290615a69babcddf6933a a owl:AllDisjointClasses;
+                                    owl:members (eurio:ProjectDeliverable
+                                                 eurio:ProjectPublication
+                                                 eurio:ProjectReportSummary).
+_:B2757b133748b0521831844bad093564f aerdcat:accessURL eurio:;
+                                    aerdcat:downloadURL eurio:.
+[] foaf:mbox "cordis@publications.europa.eu".
+_:Bc014ed49817da222bb93ddd32830ef37 a owl:AllDisjointClasses;
+                                    owl:members (eurio:ForProfitOrganisation
+                                                 eurio:FundingAgency
+                                                 eurio:HigherOrSecondaryEducation
+                                                 eurio:PublicBody
+                                                 eurio:ResearchOrganisation
+                                                 eurio:SME).
+_:Be7fe4c47e901838fb47ac58556155d1e a owl:AllDisjointClasses;
+                                    owl:members (eurio:JournalPaper
+                                                 eurio:ProceedingsPaper).
+eurio:Acronym a owl:Class;
+              rdfs:comment "An abbreviation formed from the initial letters of other words and pronounced as a word. It can refer to any type of entities in the CORDIS conceptual framework, and may be stated explicitly or extracted automatically from text."@en;
+              rdfs:isDefinedBy eurio:;
+              rdfs:label "Acronym"@en;
+              rdfs:subClassOf [owl:cardinality 1  ; 
+                               owl:onProperty eurio:shortForm ; 
+                               a owl:Restriction],
+                              [owl:cardinality 1  ; 
+                               owl:onProperty eurio:definition ; 
+                               a owl:Restriction].
+eurio:AdministrativeArea a owl:Class;
+                         rdfs:comment "An administrative geographical area that is typically managed by a public body. It can be a country, a region, a municipality, a province, a sub-municipality area, etc."@en;
+                         rdfs:isDefinedBy eurio:;
+                         rdfs:label "Administrative Area"@en;
+                         rdfs:subClassOf [owl:cardinality 1  ; 
+                                          owl:onProperty eurio:name ; 
+                                          a owl:Restriction];
+                         skos:broadMatch schema:AdministrativeArea,
+                                         cpov:AdminUnit.
+eurio:Book a owl:Class;
+           rdfs:comment "A non-serial document that is complete in one volume or a designated finite number of volumes. A book published by a publisher is usually identified by an International Standard Book Number (ISBN), and may be manifested as a physical printed publication on paper bound in a hard or soft cover, or in electronic format as an 'e-book'."@en;
+           rdfs:isDefinedBy eurio:;
+           rdfs:label "Book"@en;
+           rdfs:subClassOf eurio:ProjectPublication;
+           skos:broadMatch fabio:Book.
+eurio:Coordinates a owl:Class;
+                  rdfs:comment "The geo coordinates for a location of entities that participate in or form part of research projects."@en;
+                  rdfs:isDefinedBy eurio:;
+                  rdfs:label "Coordinates"@en;
+                  rdfs:subClassOf [owl:cardinality 1  ; 
+                                   owl:onProperty eurio:longitude ; 
+                                   a owl:Restriction],
+                                  [owl:cardinality 1  ; 
+                                   owl:onProperty eurio:latitude ; 
+                                   a owl:Restriction];
+                  skos:broadMatch locn:Geometry;
+                  skos:closeMatch schema:GeoCoordinates.
+eurio:Country a owl:Class;
+              rdfs:comment "A country"@en;
+              rdfs:isDefinedBy eurio:;
+              rdfs:label "Country"@en;
+              rdfs:subClassOf [owl:maxCardinality 1  ; 
+                               owl:onProperty eurio:hasEUCountryCode ; 
+                               a owl:Restriction],
+                              eurio:AdministrativeArea;
+              skos:broadMatch schema:Country.
+eurio:DetectedAcronym a owl:Class;
+                      rdfs:comment "Any acronym that has been detected, automatically or manually, from the description of an entity or from any other form of natural language text."@en;
+                      rdfs:isDefinedBy eurio:;
+                      rdfs:label "Detected Acronym"@en;
+                      rdfs:subClassOf eurio:Acronym;
+                      owl:disjointWith eurio:TitleAcronym.
+eurio:ForProfitOrganisation a owl:Class;
+                            rdfs:comment "A for profit entity"@en;
+                            rdfs:isDefinedBy eurio:;
+                            rdfs:label "For Profit Organisation"@en;
+                            rdfs:subClassOf eurio:Organisation;
+                            skos:broadMatch dg:ForProfitOrganisation.
+eurio:FundingAgency a owl:Class;
+                    rdfs:comment "An organisation that materially administrates funding schemes and disburses related grants. In the context of CORDIS, it represents the various European agencies responsible for funding research projects (e.g. ERC, EASME, REA, etc.)."@en;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "Funding Agency"@en;
+                    rdfs:subClassOf eurio:Organisation;
+                    skos:broadMatch dg:FundingAgency.
+eurio:FundingScheme a owl:Class;
+                    rdfs:comment "Set of rules and conditions which forms the basis for public funding of European research. In CORDIS, they represent the different legal frameworks (e.g. FP6, FP7, H2020). They can also be used to represent the different calls inside each framework by using the recursive relation “partOfScheme”."@en;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "Funding Scheme"@en;
+                    rdfs:subClassOf [owl:cardinality 1  ; 
+                                     owl:onProperty eurio:isImplementedBy ; 
+                                     a owl:Restriction],
+                                    [owl:allValuesFrom xsd:nonNegativeInteger ; 
+                                     owl:onProperty eurio:duration ; 
+                                     a owl:Restriction],
+                                    [owl:minCardinality 1  ; 
+                                     owl:onProperty eurio:url ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality 1  ; 
+                                     owl:onProperty eurio:hasFundingSchemeCategory ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality 1  ; 
+                                     owl:onProperty eurio:title ; 
+                                     a owl:Restriction];
+                    skos:broadMatch dg:FundingScheme.
+eurio:Grant a owl:Class;
+            rdfs:comment "A disbursed fund paid to a recipient or beneficiary within the context of a funded research project. In the context of CORDIS, it represents a grant of a specific EU programme (e.g. an H2020 grant)."@en;
+            rdfs:isDefinedBy eurio:;
+            rdfs:label "Grant"@en;
+            rdfs:subClassOf [owl:cardinality 1  ; 
+                             owl:onProperty eurio:startDate ; 
+                             a owl:Restriction],
+                            [owl:minCardinality 1  ; 
+                             owl:onProperty eurio:hasBeneficiary ; 
+                             a owl:Restriction],
+                            [owl:cardinality 1  ; 
+                             owl:onProperty eurio:isDisbursedBy ; 
+                             a owl:Restriction],
+                            [owl:someValuesFrom xsd:nonNegativeInteger ; 
+                             owl:onProperty eurio:duration ; 
+                             a owl:Restriction],
+                            [owl:cardinality 1  ; 
+                             owl:onProperty eurio:hasFundingAmount ; 
+                             a owl:Restriction],
+                            [owl:cardinality 1  ; 
+                             owl:onProperty eurio:endDate ; 
+                             a owl:Restriction],
+                            [owl:minCardinality 1  ; 
+                             owl:onProperty eurio:hasFundingScheme ; 
+                             a owl:Restriction],
+                            [owl:minCardinality 1  ; 
+                             owl:onProperty eurio:funds ; 
+                             a owl:Restriction],
+                            [owl:minCardinality 1  ; 
+                             owl:onProperty eurio:hasPayment ; 
+                             a owl:Restriction];
+            skos:broadMatch dg:Grant.
+eurio:GrantPayment a owl:Class;
+                   rdfs:comment "A single payment to a recipient or beneficiary of a Grant within a research project."@en;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "Grant Payment"@en;
+                   rdfs:subClassOf [owl:cardinality 1  ; 
+                                    owl:onProperty eurio:hasPaymentAmount ; 
+                                    a owl:Restriction];
+                   skos:broadMatch dg:GrantPayment.
+eurio:HigherOrSecondaryEducation a owl:Class;
+                                 rdfs:comment "Institution that provides education."@en;
+                                 rdfs:isDefinedBy eurio:;
+                                 rdfs:label "Higher Or Secondary Education"@en;
+                                 rdfs:subClassOf eurio:Organisation;
+                                 skos:broadMatch dg:EducationOrganisation,
+                                                 schema:EducationalOrganization.
+eurio:JournalPaper a owl:Class;
+                   rdfs:comment "An article, typically the realization of a research paper reporting original research findings, published in a journal issue."@en;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "Journal Paper"@en;
+                   rdfs:subClassOf eurio:ProjectPublication;
+                   skos:broadMatch fabio:JournalArticle.
+eurio:MonetaryAmount a owl:Class;
+                     rdfs:comment "A monetary value or range. This type can be used to describe an amount of money such as $50 USD, or a range as in describing a bank account being suitable for a balance between £1,000 and £1,000,000 GBP, or the value of a salary, etc."@en;
+                     rdfs:isDefinedBy eurio:;
+                     rdfs:label "Monetary Amount"@en;
+                     rdfs:subClassOf [owl:cardinality 1  ; 
+                                      owl:onProperty eurio:value ; 
+                                      a owl:Restriction];
+                     skos:broadMatch schema:MonetaryAmount.
+eurio:NonPeerReviewedPublication a owl:Class;
+                                 rdfs:comment "A work that hasn't undergone peer reviewing prior to its publication."@en;
+                                 rdfs:isDefinedBy eurio:;
+                                 rdfs:label "Non Peer-Reviewed Publication"@en;
+                                 rdfs:subClassOf eurio:ProjectPublication.
+eurio:Organisation a owl:Class;
+                   rdfs:comment "Represents a group of people, with the same purpose, organized together into a community or other social, commercial or political structure that participate in CORDIS projects."@en;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "Organisation"@en;
+                   rdfs:subClassOf [owl:cardinality 1  ; 
+                                    owl:onProperty eurio:identifier ; 
+                                    a owl:Restriction],
+                                   [owl:allValuesFrom eurio:OrganisationRole ; 
+                                    owl:onProperty eurio:hasRole ; 
+                                    a owl:Restriction],
+                                   [owl:cardinality 1  ; 
+                                    owl:onProperty eurio:vatNumber ; 
+                                    a owl:Restriction],
+                                   [owl:maxCardinality 1  ; 
+                                    owl:onProperty eurio:url ; 
+                                    a owl:Restriction],
+                                   [owl:cardinality 1  ; 
+                                    owl:onProperty eurio:rcn ; 
+                                    a owl:Restriction],
+                                   [owl:minCardinality 1  ; 
+                                    owl:onProperty eurio:hasSite ; 
+                                    a owl:Restriction],
+                                   [owl:cardinality 1  ; 
+                                    owl:onProperty eurio:legalName ; 
+                                    a owl:Restriction];
+                   skos:broadMatch dg:Organisation,
+                                   org:Organization.
+eurio:OrganisationRole a owl:Class;
+                       rdfs:comment "Function assumed by or ascribed to an organisation that takes part in a particular project. In CORDIs, it represents roles such as coordinator, partner, consortium member, etc."@en;
+                       rdfs:isDefinedBy eurio:;
+                       rdfs:label "Organisation Role"@en;
+                       rdfs:subClassOf [owl:cardinality 1  ; 
+                                        owl:onProperty eurio:isRoleOf ; 
+                                        a owl:Restriction],
+                                       [owl:allValuesFrom eurio:Organisation ; 
+                                        owl:onProperty eurio:isRoleOf ; 
+                                        a owl:Restriction],
+                                       eurio:Role;
+                       skos:broadMatch dg:OrganisationRole.
+eurio:OrganisationUnit a owl:Class;
+                       rdfs:comment "A department or unit which is part of some larger Organization and only has full recognition within the context of that Organization. In CORDIS, it represents for instance the different departments of a university that participate in a particular project."@en;
+                       rdfs:isDefinedBy eurio:;
+                       rdfs:label "Organisation Unit"@en;
+                       skos:broadMatch org:OrganizationalUnit.
+eurio:PostalAddress a owl:Class;
+                    rdfs:comment "The postal address of entities that participate in or form part of research projects."@en;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "Postal Address"@en;
+                    rdfs:subClassOf [owl:cardinality 1  ; 
+                                     owl:onProperty eurio:postalCode ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality 1  ; 
+                                     owl:onProperty eurio:streetAddress ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality 1  ; 
+                                     owl:onProperty eurio:addressCountry ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality 1  ; 
+                                     owl:onProperty eurio:fullAddress ; 
+                                     a owl:Restriction],
+                                    [owl:cardinality 1  ; 
+                                     owl:onProperty eurio:addressLocality ; 
+                                     a owl:Restriction];
+                    skos:broadMatch schema:PostalAddress,
+                                    locn:Address.
+eurio:ProceedingsPaper a owl:Class;
+                       rdfs:comment "A paper, typically the realization of a research paper reporting original research findings, usually presented at a workshop and published within a workshop proceedings volume."@en;
+                       rdfs:isDefinedBy eurio:;
+                       rdfs:label "Procedings Paper"@en;
+                       rdfs:subClassOf eurio:ProjectPublication;
+                       skos:broadMatch fabio:WorkshopPaper.
+eurio:Project a owl:Class;
+              rdfs:comment "A planned research work that has one or more objectives (divided or not into tasks) and is conducted by one or more organisations. In CORDIS, it represents a project funded by an EU programme."@en;
+              rdfs:isDefinedBy eurio:;
+              rdfs:label "Project"@en;
+              rdfs:subClassOf [owl:cardinality 1  ; 
+                               owl:onProperty eurio:title ; 
+                               a owl:Restriction],
+                              [owl:cardinality 1  ; 
+                               owl:onProperty eurio:abstract ; 
+                               a owl:Restriction],
+                              [owl:minCardinality 1  ; 
+                               owl:onProperty eurio:isFundedBy ; 
+                               a owl:Restriction],
+                              [owl:cardinality 1  ; 
+                               owl:onProperty eurio:hasTotalCost ; 
+                               a owl:Restriction],
+                              [owl:maxCardinality 1  ; 
+                               owl:onProperty eurio:doi ; 
+                               a owl:Restriction],
+                              [owl:cardinality 1  ; 
+                               owl:onProperty eurio:signatureDate ; 
+                               a owl:Restriction],
+                              [owl:minCardinality 1  ; 
+                               owl:onProperty eurio:hasInvolvedParty ; 
+                               a owl:Restriction],
+                              [owl:cardinality 1  ; 
+                               owl:onProperty eurio:endDate ; 
+                               a owl:Restriction],
+                              [owl:cardinality 1  ; 
+                               owl:onProperty eurio:rcn ; 
+                               a owl:Restriction],
+                              [owl:cardinality 1  ; 
+                               owl:onProperty eurio:duration ; 
+                               a owl:Restriction],
+                              [owl:cardinality 1  ; 
+                               owl:onProperty eurio:projectStatus ; 
+                               a owl:Restriction],
+                              [owl:maxCardinality 1  ; 
+                               owl:onProperty eurio:url ; 
+                               a owl:Restriction],
+                              [owl:cardinality 1  ; 
+                               owl:onProperty eurio:identifier ; 
+                               a owl:Restriction],
+                              [owl:cardinality 1  ; 
+                               owl:onProperty eurio:startDate ; 
+                               a owl:Restriction];
+              skos:broadMatch dg:Project.
+eurio:ProjectDeliverable a owl:Class;
+                         rdfs:comment "A document referring to the results obtained during the development of a project."@en;
+                         rdfs:isDefinedBy eurio:;
+                         rdfs:label "Project Deliverable"@en;
+                         rdfs:subClassOf [owl:maxCardinality 1  ; 
+                                          owl:onProperty eurio:description ; 
+                                          a owl:Restriction],
+                                         [owl:cardinality 1  ; 
+                                          owl:onProperty eurio:hasResultType ; 
+                                          a owl:Restriction],
+                                         eurio:Result;
+                         skos:broadMatch fabio:ProjectReportDocument.
+eurio:ProjectPublication a owl:Class;
+                         rdfs:comment "A scientific publication (e.g., journal article, conference paper, thesis dissertation, book, etc.) that resulted from the project activities."@en;
+                         rdfs:isDefinedBy eurio:;
+                         rdfs:label "Project Publication"@en;
+                         rdfs:subClassOf eurio:Result,
+                                         [owl:cardinality 1  ; 
+                                          owl:onProperty eurio:journalNumber ; 
+                                          a owl:Restriction],
+                                         [owl:cardinality 1  ; 
+                                          owl:onProperty eurio:publisher ; 
+                                          a owl:Restriction],
+                                         [owl:cardinality 1  ; 
+                                          owl:onProperty eurio:publishedYear ; 
+                                          a owl:Restriction],
+                                         [owl:cardinality 1  ; 
+                                          owl:onProperty eurio:journalTitle ; 
+                                          a owl:Restriction],
+                                         [owl:cardinality 1  ; 
+                                          owl:onProperty eurio:author ; 
+                                          a owl:Restriction],
+                                         [owl:maxCardinality 1  ; 
+                                          owl:onProperty eurio:publishedPages ; 
+                                          a owl:Restriction];
+                         skos:broadMatch fabio:Expression.
+eurio:ProjectReportSummary a owl:Class;
+                           rdfs:comment "A document reporting on the progress of an on-going or completed project at a given period.."@en;
+                           rdfs:isDefinedBy eurio:;
+                           rdfs:label "Project Report Summary"@en;
+                           rdfs:subClassOf [owl:maxCardinality 1  ; 
+                                            owl:onProperty eurio:startDate ; 
+                                            a owl:Restriction],
+                                           [owl:cardinality 1  ; 
+                                            owl:onProperty eurio:abstract ; 
+                                            a owl:Restriction],
+                                           eurio:Result,
+                                           [owl:maxCardinality 1  ; 
+                                            owl:onProperty eurio:endDate ; 
+                                            a owl:Restriction],
+                                           [owl:maxCardinality 1  ; 
+                                            owl:onProperty eurio:finalResults ; 
+                                            a owl:Restriction],
+                                           [owl:maxCardinality 1  ; 
+                                            owl:onProperty eurio:workPerformed ; 
+                                            a owl:Restriction];
+                           skos:broadMatch fabio:ProjectReportSummary.
+eurio:PublicBody a owl:Class;
+                 rdfs:comment "Organisation or agency depending on a government, State or other supranational organisation and mainly operated by the government."@en;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "Public Body"@en;
+                 rdfs:subClassOf eurio:Organisation;
+                 skos:closeMatch dg:GovernamentalOrganisation,
+                                 frapo:NotForProfitOrganization.
+eurio:ResearchOrganisation a owl:Class;
+                           rdfs:comment "Organisations devoted to research activities."@en;
+                           rdfs:isDefinedBy eurio:;
+                           rdfs:label "Research Organisation"@en;
+                           rdfs:subClassOf eurio:Organisation;
+                           skos:broadMatch dg:ResearchPerformingOrganisation.
+eurio:Result a owl:Class;
+             rdfs:comment "Any tangible or intangible output of the project (such as data, knowledge and information, whatever their form or nature, whether or not they can be protected), which are generated in the project."@en;
+             rdfs:isDefinedBy eurio:;
+             rdfs:label "Result"@en;
+             rdfs:subClassOf [owl:cardinality 1  ; 
+                              owl:onProperty eurio:title ; 
+                              a owl:Restriction],
+                             [owl:cardinality 1  ; 
+                              owl:onProperty eurio:language ; 
+                              a owl:Restriction],
+                             [owl:maxCardinality 1  ; 
+                              owl:onProperty eurio:url ; 
+                              a owl:Restriction].
+eurio:Role a owl:Class;
+           rdfs:comment "The function assumed by or ascribed to an entity (typically an organisation) in a particular project. It can be used to precise or represent additional information about a relationship or property such as participation or membership. In CORDIS, it represents the participation of an organisation in a research project."@en;
+           rdfs:isDefinedBy eurio:;
+           rdfs:label "Role"@en;
+           rdfs:subClassOf [owl:cardinality 1  ; 
+                            owl:onProperty eurio:startDate ; 
+                            a owl:Restriction],
+                           [owl:cardinality 1  ; 
+                            owl:onProperty eurio:roleLabel ; 
+                            a owl:Restriction],
+                           [owl:cardinality 1  ; 
+                            owl:onProperty eurio:endDate ; 
+                            a owl:Restriction],
+                           [owl:cardinality 1  ; 
+                            owl:onProperty eurio:isInvolvedIn ; 
+                            a owl:Restriction];
+           skos:broadMatch dg:Role.
+eurio:SME a owl:Class;
+          rdfs:comment "Small and Medium Enterprises."@en;
+          rdfs:isDefinedBy eurio:;
+          rdfs:label "SME"@en;
+          rdfs:subClassOf eurio:Organisation;
+          skos:broadMatch frapo:SME.
+eurio:Site a owl:Class;
+           rdfs:comment "The physical extension of entities that participate in or form part of research projects."@en;
+           rdfs:isDefinedBy eurio:;
+           rdfs:label "Site"@en;
+           rdfs:subClassOf [owl:cardinality 1  ; 
+                            owl:onProperty eurio:name ; 
+                            a owl:Restriction],
+                           [owl:cardinality 1  ; 
+                            owl:onProperty eurio:hasAddress ; 
+                            a owl:Restriction],
+                           [owl:maxCardinality 1  ; 
+                            owl:onProperty eurio:hasCoordinates ; 
+                            a owl:Restriction],
+                           [owl:minCardinality 1  ; 
+                            owl:onProperty eurio:hasGeographicalLocation ; 
+                            a owl:Restriction],
+                           [owl:cardinality 1  ; 
+                            owl:onProperty eurio:isSiteOf ; 
+                            a owl:Restriction];
+           skos:broadMatch org:Site.
+eurio:ThesisDissertation a owl:Class;
+                         rdfs:comment "A book authored by a student containing a formal presentations of research outputs submitted for examination in completion of a course of study at an institution of higher education, to fulfil the requirements for an academic degree. Also know as a dissertation."@en;
+                         rdfs:isDefinedBy eurio:;
+                         rdfs:label "Thesis Dissertation"@en;
+                         rdfs:subClassOf eurio:ProjectPublication;
+                         skos:broadMatch fabio:Thesis.
+eurio:TitleAcronym a owl:Class;
+                   rdfs:comment "An acronym explicitly defined as the title or name of another entity (e.g. Project, Organisation, Funding Scheme, etc.)."@en;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "Title Acronym"@en;
+                   rdfs:subClassOf eurio:Acronym.
+eurio:abstract a owl:DatatypeProperty;
+               rdfs:comment "The general summary and ideas of a CORDIS entity, e.g., project, result."@en;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "abstract"@en;
+               rdfs:range xsd:string.
+eurio:addressCountry a owl:DatatypeProperty;
+                     rdfs:comment "The country of the place or address. You can also provide the two-letter ISO 3166-1 alpha-2 country code."@en;
+                     rdfs:domain eurio:PostalAddress;
+                     rdfs:isDefinedBy eurio:;
+                     rdfs:label "address country"@en;
+                     rdfs:range xsd:string.
+eurio:addressLocality a owl:DatatypeProperty;
+                      rdfs:comment "The locality, town or city of the place or address."@en;
+                      rdfs:domain eurio:PostalAddress;
+                      rdfs:isDefinedBy eurio:;
+                      rdfs:label "address locality"@en;
+                      rdfs:range xsd:string.
+eurio:author a owl:DatatypeProperty;
+             rdfs:comment "The list of authors."@en;
+             rdfs:isDefinedBy eurio:;
+             rdfs:label "author"@en;
+             rdfs:range xsd:string.
+eurio:code a owl:FunctionalProperty,
+             owl:DatatypeProperty;
+           rdfs:comment "A CORDA code."@en;
+           rdfs:domain eurio:FundingScheme;
+           rdfs:isDefinedBy eurio:;
+           rdfs:label "code"@en;
+           rdfs:range xsd:string.
+eurio:currency a owl:DatatypeProperty;
+               rdfs:comment "The currency in which the monetary amount is expressed."@en;
+               rdfs:domain eurio:MonetaryAmount;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "currency"@en;
+               rdfs:range xsd:string.
+eurio:date a owl:DatatypeProperty;
+           rdfs:comment "The date in which the grant payment took place."@en;
+           rdfs:isDefinedBy eurio:;
+           rdfs:label "date"@en;
+           rdfs:range xsd:date.
+eurio:definition a owl:DatatypeProperty;
+                 rdfs:comment "The definition of the acronym."@en;
+                 rdfs:domain eurio:Acronym;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "definition"@en;
+                 rdfs:range xsd:string.
+eurio:description a owl:DatatypeProperty;
+                  rdfs:comment "A brief summary of the entity (project, etc.)."@en;
+                  rdfs:isDefinedBy eurio:;
+                  rdfs:label "description"@en;
+                  rdfs:range xsd:string.
+eurio:disburses a owl:ObjectProperty;
+                rdfs:comment "Relates the funding agency to the grant(s) that it disburses."@en;
+                rdfs:domain eurio:FundingAgency;
+                rdfs:isDefinedBy eurio:;
+                rdfs:label "disburses"@en;
+                rdfs:range eurio:Grant;
+                owl:inverseOf eurio:isDisbursedBy.
+eurio:doi a owl:FunctionalProperty,
+            owl:DatatypeProperty;
+          rdfs:comment "The digital object identifier of a publication."@en;
+          rdfs:isDefinedBy eurio:;
+          rdfs:label "doi"@en;
+          rdfs:range xsd:anyURI.
+eurio:duration a owl:DatatypeProperty;
+               rdfs:comment "The period of time an entity (e.g. project, grant, etc.) has taken, represented as number of months."@en;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "duration"@en;
+               rdfs:range xsd:nonNegativeInteger.
+eurio:endDate a owl:DatatypeProperty;
+              rdfs:comment "The date on which an entity (e.g. project, grant, etc.) is finalized or ceases to exist."@en;
+              rdfs:isDefinedBy eurio:;
+              rdfs:label "end date"@en;
+              rdfs:range xsd:date;
+              rdfs:subPropertyOf eurio:date.
+eurio:finalResults a owl:DatatypeProperty;
+                   rdfs:comment "A brief description of the project findings."@en;
+                   rdfs:domain eurio:ProjectReportSummary;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "final results"@en;
+                   rdfs:range xsd:string.
+eurio:fullAddress a owl:DatatypeProperty;
+                  rdfs:comment "The full address of a physical location of an entity."@en;
+                  rdfs:domain eurio:PostalAddress;
+                  rdfs:isDefinedBy eurio:;
+                  rdfs:label "full address"@en;
+                  rdfs:range xsd:string.
+eurio:funds a owl:ObjectProperty;
+            rdfs:comment "Relates the grant with the project(s) that are completely or partially funded by it."@en;
+            rdfs:domain eurio:Grant;
+            rdfs:isDefinedBy eurio:;
+            rdfs:label "funds"@en;
+            rdfs:range eurio:Project;
+            owl:inverseOf eurio:isFundedBy.
+eurio:hasAcronym a owl:ObjectProperty;
+                 rdfs:comment "Relates an entity (e.g. project, grant, etc.) with its acronym(s). This includes acronyms representing the entity’s title as well as any additional acronyms extracted from other attributes of the entity."@en;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "has acronym"@en;
+                 rdfs:range eurio:Acronym;
+                 owl:inverseOf eurio:isAcronymOf.
+eurio:hasAddress a owl:ObjectProperty;
+                 rdfs:comment "Relates a physical location to its registered address."@en;
+                 rdfs:domain eurio:Site;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "has address"@en;
+                 rdfs:range eurio:PostalAddress.
+eurio:hasAssociatedFundingScheme a owl:ObjectProperty;
+                                 rdfs:comment "Relates an entity other than funding scheme (e.g., result, etc.) with associated funding schemes."@en;
+                                 rdfs:isDefinedBy eurio:;
+                                 rdfs:label "has associated funding scheme"@en;
+                                 rdfs:range eurio:FundingScheme.
+eurio:hasBeneficiary a owl:ObjectProperty;
+                     rdfs:comment "Relates the grant to the organisation role(s) that are a beneficiary of the grant. "@en;
+                     rdfs:domain eurio:Grant;
+                     rdfs:isDefinedBy eurio:;
+                     rdfs:label "has beneficiary"@en;
+                     rdfs:range eurio:Role;
+                     owl:inverseOf eurio:isBeneficiaryOf.
+eurio:hasCoordinates a owl:ObjectProperty;
+                     rdfs:comment "The geo-coordinates of a place"@en;
+                     rdfs:domain eurio:Site;
+                     rdfs:isDefinedBy eurio:;
+                     rdfs:label "has coordinates"@en;
+                     rdfs:range eurio:Coordinates.
+eurio:hasEUCountryCode a owl:ObjectProperty;
+                       rdfs:comment "The country code of the location or address according to the EU country codes."@en;
+                       rdfs:domain eurio:Country;
+                       rdfs:isDefinedBy eurio:;
+                       rdfs:label "has EU country code"@en;
+                       rdfs:range skos:Concept.
+eurio:hasEuroSciVocClassification a owl:ObjectProperty;
+                                  rdfs:comment "One or more values from the EuroSciVoc taxonomy that represent the main fields of science of the project."@en;
+                                  rdfs:domain eurio:Project;
+                                  rdfs:isDefinedBy eurio:;
+                                  rdfs:label "has EuroSciVoc classification"@en;
+                                  rdfs:range skos:Concept.
+eurio:hasFundingAmount a owl:ObjectProperty;
+                       rdfs:comment "Relates the grant or funding scheme to the amount of money available for funding."@en;
+                       rdfs:domain [owl:unionOf (eurio:FundingScheme
+                                                 eurio:Grant) ; 
+                                    a owl:Class];
+                       rdfs:isDefinedBy eurio:;
+                       rdfs:label "has funding amount"@en;
+                       rdfs:range eurio:MonetaryAmount.
+eurio:hasFundingScheme a owl:ObjectProperty;
+                       rdfs:comment "Relates the grant to the funding scheme of which the grant forms a part."@en;
+                       rdfs:domain eurio:Grant;
+                       rdfs:isDefinedBy eurio:;
+                       rdfs:label "has funding scheme"@en;
+                       rdfs:range eurio:FundingScheme;
+                       owl:inverseOf eurio:hasGrant.
+eurio:hasFundingSchemeCall a owl:ObjectProperty;
+                           rdfs:comment "Indicates the Call under which a project has been funded."@en;
+                           rdfs:domain eurio:Grant;
+                           rdfs:isDefinedBy eurio:;
+                           rdfs:label "has funding scheme call"@en;
+                           rdfs:range eurio:FundingScheme;
+                           rdfs:subPropertyOf eurio:hasFundingScheme.
+eurio:hasFundingSchemeCategory a owl:ObjectProperty;
+                               rdfs:comment "A list of terms specifying the different categories / types of funding schemes."@en;
+                               rdfs:domain eurio:FundingScheme;
+                               rdfs:isDefinedBy eurio:;
+                               rdfs:label "has funding scheme category"@en;
+                               rdfs:range skos:Concept.
+eurio:hasFundingSchemeProgramme a owl:ObjectProperty;
+                                rdfs:comment "Indicates the legal basis under which a project has been funded."@en;
+                                rdfs:domain eurio:Grant;
+                                rdfs:isDefinedBy eurio:;
+                                rdfs:label "has funding scheme programme"@en;
+                                rdfs:range eurio:FundingScheme;
+                                rdfs:subPropertyOf eurio:hasFundingScheme.
+eurio:hasFundingSchemeTopic a owl:ObjectProperty;
+                            rdfs:comment "Indicates the Topic under which a project has been funded."@en;
+                            rdfs:domain eurio:Grant;
+                            rdfs:isDefinedBy eurio:;
+                            rdfs:label "has funding scheme topic"@en;
+                            rdfs:range eurio:FundingScheme;
+                            rdfs:subPropertyOf eurio:hasFundingScheme.
+eurio:hasFundingSchemeType a owl:ObjectProperty;
+                           rdfs:comment "Indicates the type of action under which a project has been funded."@en;
+                           rdfs:domain eurio:Grant;
+                           rdfs:isDefinedBy eurio:;
+                           rdfs:label "has funding scheme type"@en;
+                           rdfs:range eurio:FundingScheme;
+                           rdfs:subPropertyOf eurio:hasFundingScheme.
+eurio:hasGeographicalLocation a owl:ObjectProperty;
+                              rdfs:comment "The basic containment relation between a place and one that contains it"@en;
+                              rdfs:domain eurio:Site;
+                              rdfs:isDefinedBy eurio:;
+                              rdfs:label "has geographical location"@en;
+                              rdfs:range eurio:AdministrativeArea.
+eurio:hasGrant a owl:ObjectProperty;
+               rdfs:comment "Relates a funding scheme with the grants that form part of it. "@en;
+               rdfs:domain eurio:FundingScheme;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "has grant"@en;
+               rdfs:range eurio:Grant.
+eurio:hasISOCountryCode a owl:ObjectProperty;
+                        rdfs:comment "The 2-digit ISO country code."@en;
+                        rdfs:domain eurio:Country;
+                        rdfs:isDefinedBy eurio:;
+                        rdfs:label "has ISO country code"@en;
+                        rdfs:range skos:Concept.
+eurio:hasInvolvedParty a owl:ObjectProperty;
+                       rdfs:comment "Relates the Project to the roles that are involved in the project."@en;
+                       rdfs:domain eurio:Project;
+                       rdfs:isDefinedBy eurio:;
+                       rdfs:label "has involved party"@en;
+                       rdfs:range eurio:Role;
+                       owl:inverseOf eurio:isInvolvedIn.
+eurio:hasNUTS0code a owl:ObjectProperty;
+                   rdfs:comment "A value representing the NUTS-0 code of the place or address."@en;
+                   rdfs:domain eurio:AdministrativeArea;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "has NUTS 0 code"@en;
+                   rdfs:range skos:Concept;
+                   rdfs:subPropertyOf eurio:hasNUTSCode.
+eurio:hasNUTS1code a owl:ObjectProperty;
+                   rdfs:comment "A value representing the NUTS-1 code of the place or address."@en;
+                   rdfs:domain eurio:AdministrativeArea;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "has NUTS 1 code"@en;
+                   rdfs:range skos:Concept;
+                   rdfs:subPropertyOf eurio:hasNUTSCode.
+eurio:hasNUTS2code a owl:ObjectProperty;
+                   rdfs:comment "A value representing the NUTS-2 code of the place or address."@en;
+                   rdfs:domain eurio:AdministrativeArea;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "has NUTS 2 code"@en;
+                   rdfs:range skos:Concept;
+                   rdfs:subPropertyOf eurio:hasNUTSCode.
+eurio:hasNUTS3code a owl:ObjectProperty;
+                   rdfs:comment "A value representing the NUTS-3 code of the place or address."@en;
+                   rdfs:domain eurio:AdministrativeArea;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "has NUTS 3 code"@en;
+                   rdfs:range skos:Concept;
+                   rdfs:subPropertyOf eurio:hasNUTSCode.
+eurio:hasNUTSCode a owl:ObjectProperty;
+                  rdfs:comment "A value representing the NUTS code of the place or address."@en;
+                  rdfs:domain eurio:AdministrativeArea;
+                  rdfs:isDefinedBy eurio:;
+                  rdfs:label "has NUTS code"@en;
+                  rdfs:range skos:Concept.
+eurio:hasNextFundingScheme a owl:ObjectProperty;
+                           rdfs:comment "Relates a funding scheme with the next funding scheme."@en;
+                           rdfs:domain eurio:FundingScheme;
+                           rdfs:isDefinedBy eurio:;
+                           rdfs:label "has next funding scheme"@en;
+                           rdfs:range eurio:FundingScheme.
+eurio:hasPayment a owl:ObjectProperty;
+                 rdfs:comment "Relates the grant to its payment(s)."@en;
+                 rdfs:domain eurio:Grant;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "has payment"@en;
+                 rdfs:range eurio:GrantPayment;
+                 owl:inverseOf eurio:isPaymentOf.
+eurio:hasPaymentAmount a owl:ObjectProperty;
+                       rdfs:comment "Relates the payment to the amount of money that was given to the beneficiary of the payment."@en;
+                       rdfs:domain eurio:GrantPayment;
+                       rdfs:isDefinedBy eurio:;
+                       rdfs:label "has payment amount"@en;
+                       rdfs:range eurio:MonetaryAmount.
+eurio:hasPreviousFundingScheme a owl:ObjectProperty;
+                               rdfs:comment "Relates a funding scheme with the previous funding scheme."@en;
+                               rdfs:domain eurio:FundingScheme;
+                               rdfs:isDefinedBy eurio:;
+                               rdfs:label "has previous funding scheme"@en;
+                               rdfs:range eurio:FundingScheme.
+eurio:hasRecipient a owl:ObjectProperty;
+                   rdfs:comment "Relates the grant payment to the organisation role(s) which have received the grant payment. Inverse property of isRecipientOf."@en;
+                   rdfs:domain eurio:GrantPayment;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "has recipient"@en;
+                   rdfs:range eurio:Role;
+                   owl:inverseOf eurio:isRecipientOf.
+eurio:hasRelatedProject a owl:SymmetricProperty,
+                          owl:ObjectProperty;
+                        rdfs:comment "Represents a generic non parent-child relation between two CORDIS projects."@en;
+                        rdfs:domain eurio:Project;
+                        rdfs:isDefinedBy eurio:;
+                        rdfs:label "has related project"@en;
+                        rdfs:range eurio:Project.
+eurio:hasRelatedScheme a owl:SymmetricProperty,
+                         owl:ObjectProperty;
+                       rdfs:comment "Represents a generic non parent-child relation between two funding schemes."@en;
+                       rdfs:domain eurio:FundingScheme;
+                       rdfs:isDefinedBy eurio:;
+                       rdfs:label "has related scheme"@en;
+                       rdfs:range eurio:FundingScheme.
+eurio:hasResult a owl:ObjectProperty;
+                rdfs:comment "Relates the project with its result(s)."@en;
+                rdfs:domain [owl:unionOf (eurio:Project) ; 
+                             a owl:Class];
+                rdfs:isDefinedBy eurio:;
+                rdfs:label "has result"@en;
+                rdfs:range eurio:Result;
+                owl:inverseOf eurio:isResultOf.
+eurio:hasResultType a owl:ObjectProperty;
+                    rdfs:comment "A list of terms specifying the types of results that can have a project."@en;
+                    rdfs:domain eurio:Result;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "has result type"@en;
+                    rdfs:range skos:Concept.
+eurio:hasRole a owl:ObjectProperty;
+              rdfs:comment "Relates the organisation to the roles that the organisation takes."@en;
+              rdfs:domain eurio:Organisation;
+              rdfs:isDefinedBy eurio:;
+              rdfs:label "has role"@en;
+              rdfs:range eurio:Role;
+              owl:inverseOf eurio:isRoleOf.
+eurio:hasSite a owl:ObjectProperty;
+              rdfs:comment "relates an organisation to its physical site"@en;
+              rdfs:domain eurio:Organisation;
+              rdfs:isDefinedBy eurio:;
+              rdfs:label "has site"@en;
+              rdfs:range eurio:Site.
+eurio:hasSubOrganisation a owl:ObjectProperty;
+                         rdfs:comment "Relates the organisation with another organisation which is a sub-part or child of it."@en;
+                         rdfs:domain eurio:Organisation;
+                         rdfs:isDefinedBy eurio:;
+                         rdfs:label "has sub-organisation"@en;
+                         rdfs:range eurio:Organisation;
+                         owl:inverseOf eurio:isSubOrganisationOf.
+eurio:hasSubScheme a owl:ObjectProperty;
+                   rdfs:comment "Relates the funding scheme to its sub-schemes."@en;
+                   rdfs:domain eurio:FundingScheme;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "has subscheme"@en;
+                   rdfs:range eurio:FundingScheme;
+                   owl:inverseOf eurio:isSubSchemeOf.
+eurio:hasTotalCost a owl:ObjectProperty;
+                   rdfs:comment "Relates the project with the amount of money expected, required, or given in payment for the project."@en;
+                   rdfs:domain eurio:Project;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "has total cost"@en;
+                   rdfs:range eurio:MonetaryAmount.
+eurio:hasUnit a owl:ObjectProperty;
+              rdfs:comment "Relates the organisation with a unit or department that forms part of the organisation."@en;
+              rdfs:domain eurio:Organisation;
+              rdfs:isDefinedBy eurio:;
+              rdfs:label "has unit"@en;
+              rdfs:range eurio:OrganisationUnit;
+              owl:inverseOf eurio:isUnitOf.
+eurio:identifier a owl:FunctionalProperty,
+                   owl:DatatypeProperty;
+                 rdfs:comment "The internal CORDA identifier."@en;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "identifier"@en;
+                 rdfs:range xsd:string.
+eurio:implements a owl:ObjectProperty;
+                 rdfs:comment "Relates a funding agency to the funding schemes that it implements and administers."@en;
+                 rdfs:domain eurio:FundingAgency;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "implements"@en;
+                 rdfs:range eurio:FundingScheme;
+                 owl:inverseOf eurio:isImplementedBy.
+eurio:isAcronymOf a owl:ObjectProperty;
+                  rdfs:comment "Relates the acronym to the entity or entities to which it belongs."@en;
+                  rdfs:domain eurio:Acronym;
+                  rdfs:isDefinedBy eurio:;
+                  rdfs:label "is acronym of"@en.
+eurio:isBeneficiaryOf a owl:ObjectProperty;
+                      rdfs:comment "Relates the role to the grant(s) of which the role is a beneficiary."@en;
+                      rdfs:domain eurio:Role;
+                      rdfs:isDefinedBy eurio:;
+                      rdfs:label "is beneficiary of"@en;
+                      rdfs:range eurio:Grant.
+eurio:isDisbursedBy a owl:ObjectProperty;
+                    rdfs:comment "Relates the grant to the funding agency that disburses the grant."@en;
+                    rdfs:domain eurio:Grant;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "is disbursed by"@en;
+                    rdfs:range eurio:FundingAgency.
+eurio:isFundedBy a owl:ObjectProperty;
+                 rdfs:comment "Relates the project with the grant(s) that completely or partially fund the project."@en;
+                 rdfs:domain eurio:Project;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "is funded by"@en;
+                 rdfs:range eurio:Grant.
+eurio:isImplementedBy a owl:ObjectProperty;
+                      rdfs:comment "Relates the funding scheme with the funding agency that implements and administers the scheme."@en;
+                      rdfs:domain eurio:FundingScheme;
+                      rdfs:isDefinedBy eurio:;
+                      rdfs:label "is implemented by"@en;
+                      rdfs:range eurio:FundingAgency.
+eurio:isInvolvedIn a owl:ObjectProperty;
+                   rdfs:comment "Relates the role to the Project in which it is involved."@en;
+                   rdfs:domain eurio:Role;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "is involved in"@en;
+                   rdfs:range eurio:Project.
+eurio:isPaymentOf a owl:ObjectProperty;
+                  rdfs:comment "Relates a payment to the grant of which it is a part."@en;
+                  rdfs:domain eurio:GrantPayment;
+                  rdfs:isDefinedBy eurio:;
+                  rdfs:label "is payment of"@en;
+                  rdfs:range eurio:Grant.
+eurio:isRecipientOf a owl:ObjectProperty;
+                    rdfs:comment "Relates the organisation role with the grant payment(s) which they have received. Inverse property of hasRecipient."@en;
+                    rdfs:domain eurio:Role;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "is recipient of"@en;
+                    rdfs:range eurio:GrantPayment.
+eurio:isResultOf a owl:ObjectProperty;
+                 rdfs:comment "Relates the results with the Project(s) involved."@en;
+                 rdfs:domain eurio:Result;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "is result of"@en;
+                 rdfs:range [owl:unionOf (eurio:Project) ; 
+                             a owl:Class].
+eurio:isRoleOf a owl:ObjectProperty;
+               rdfs:comment "Relates the organisation role to the organisation which assumes the role."@en;
+               rdfs:domain eurio:Role;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "is role of"@en;
+               rdfs:range eurio:Organisation.
+eurio:isSiteOf a owl:ObjectProperty;
+               rdfs:comment "Indicates an entity which has presence at the given site"@en;
+               rdfs:domain eurio:Site;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "is site of"@en;
+               rdfs:range eurio:Organisation.
+eurio:isSubOrganisationOf a owl:ObjectProperty;
+                          rdfs:comment "Relates the organisation with another organisation of which it is a sub-part."@en;
+                          rdfs:domain eurio:Organisation;
+                          rdfs:isDefinedBy eurio:;
+                          rdfs:label "is sub-organisation of"@en;
+                          rdfs:range eurio:Organisation.
+eurio:isSubSchemeOf a owl:ObjectProperty;
+                    rdfs:comment "Relates the funding scheme to its parent scheme of which this funding scheme forms a part. "@en;
+                    rdfs:domain eurio:FundingScheme;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "is subscheme of"@en;
+                    rdfs:range eurio:FundingScheme.
+eurio:isUnitOf a owl:ObjectProperty;
+               rdfs:comment "Relates the unit to the organisation of which the unit forms a part. "@en;
+               rdfs:domain eurio:OrganisationUnit;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "is unit of"@en;
+               rdfs:range eurio:Organisation.
+eurio:isbn a owl:FunctionalProperty,
+             owl:DatatypeProperty;
+           rdfs:comment "The international standard book number of book publications."@en;
+           rdfs:domain eurio:ProjectPublication;
+           rdfs:isDefinedBy eurio:;
+           rdfs:label "isbn"@en;
+           rdfs:range xsd:string.
+eurio:issn a owl:FunctionalProperty,
+             owl:DatatypeProperty;
+           rdfs:comment "The international standard serial number of journal publications."@en;
+           rdfs:domain eurio:ProjectPublication;
+           rdfs:isDefinedBy eurio:;
+           rdfs:label "issn"@en;
+           rdfs:range xsd:string.
+eurio:journalNumber a owl:DatatypeProperty;
+                    rdfs:comment "The journal number of a published result."@en;
+                    rdfs:domain eurio:ProjectPublication;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "journal number"@en;
+                    rdfs:range xsd:string.
+eurio:journalTitle a owl:DatatypeProperty;
+                   rdfs:comment "The title of the journal of a published result."@en;
+                   rdfs:domain eurio:ProjectPublication;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "journal title"@en;
+                   rdfs:range xsd:string.
+eurio:keyword a owl:DatatypeProperty;
+              rdfs:comment "Word or words that represent the main idea of a referred entity (e.g., project. project result, etc.)"@en;
+              rdfs:isDefinedBy eurio:;
+              rdfs:label "keyword"@en;
+              rdfs:range xsd:string.
+eurio:language a owl:DatatypeProperty;
+               rdfs:comment "The language used in a project result."@en;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "language"@en;
+               rdfs:range xsd:string.
+eurio:latitude a owl:DatatypeProperty;
+               rdfs:comment "The latitude of a location. For example 37.42242 (WGS 84)."@en;
+               rdfs:domain eurio:Coordinates;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "latitude"@en;
+               rdfs:range xsd:decimal.
+eurio:legalName a owl:DatatypeProperty;
+                rdfs:comment "The official name of the organization, e.g. the registered company name."@en;
+                rdfs:domain eurio:Organisation;
+                rdfs:isDefinedBy eurio:;
+                rdfs:label "legal name"@en;
+                rdfs:range xsd:string.
+eurio:longitude a owl:DatatypeProperty;
+                rdfs:comment "The longitude of a location. For example -122.08585 (WGS 84)."@en;
+                rdfs:domain eurio:Coordinates;
+                rdfs:isDefinedBy eurio:;
+                rdfs:label "longitude"@en;
+                rdfs:range xsd:decimal.
+eurio:name a owl:DatatypeProperty;
+           rdfs:comment "The name of an entity"@en;
+           rdfs:isDefinedBy eurio:;
+           rdfs:label "name"@en;
+           rdfs:range xsd:string.
+eurio:order a owl:DatatypeProperty;
+            rdfs:domain eurio:OrganisationRole;
+            rdfs:range xsd:nonNegativeInteger.
+eurio:periodFrom a owl:DatatypeProperty;
+                 rdfs:comment "The date that the reporting period started."@en;
+                 rdfs:domain eurio:ProjectReportSummary;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "period from"@en;
+                 rdfs:range xsd:date.
+eurio:periodNumber a owl:DatatypeProperty;
+                   rdfs:comment "The number of the reporting period."@en;
+                   rdfs:domain eurio:ProjectReportSummary;
+                   rdfs:isDefinedBy eurio:;
+                   rdfs:label "period number"@en;
+                   rdfs:range xsd:nonNegativeInteger.
+eurio:periodTo a owl:DatatypeProperty;
+               rdfs:comment "The date that the reporting period ended."@en;
+               rdfs:domain eurio:ProjectReportSummary;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "period to"@en;
+               rdfs:range xsd:date.
+eurio:postOfficeBoxNumber a owl:DatatypeProperty;
+                          rdfs:comment "The post office box number for PO box addresses."@en;
+                          rdfs:domain eurio:PostalAddress;
+                          rdfs:isDefinedBy eurio:;
+                          rdfs:label "post office box number"@en;
+                          rdfs:range xsd:string.
+eurio:postalCode a owl:DatatypeProperty;
+                 rdfs:comment "The postal code of the place or address."@en;
+                 rdfs:domain eurio:PostalAddress;
+                 rdfs:isDefinedBy eurio:;
+                 rdfs:label "postal code"@en;
+                 rdfs:range xsd:string.
+eurio:projectStatus a owl:DatatypeProperty;
+                    rdfs:comment "The current status (signed, ongoing, terminated, etc.) of the project."@en;
+                    rdfs:domain eurio:Project;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "project status"@en;
+                    rdfs:range [owl:oneOf ("CANCEL"
+                                           "CLOSED"
+                                           "ONGOING"
+                                           "SIGNED"
+                                           "TERMINATED") ; 
+                                a rdfs:Datatype].
+eurio:publishedPages a owl:DatatypeProperty;
+                     rdfs:comment "The pages of a published result."@en;
+                     rdfs:domain eurio:ProjectPublication;
+                     rdfs:isDefinedBy eurio:;
+                     rdfs:label "published pages"@en;
+                     rdfs:range xsd:string.
+eurio:publishedYear a owl:DatatypeProperty;
+                    rdfs:comment "The year of publication."@en;
+                    rdfs:domain eurio:ProjectPublication;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "published year"@en;
+                    rdfs:range xsd:nonNegativeInteger.
+eurio:publisher a owl:DatatypeProperty;
+                rdfs:comment "Represents the publishing body of a published result."@en;
+                rdfs:domain eurio:ProjectPublication;
+                rdfs:isDefinedBy eurio:;
+                rdfs:label "publisher"@en;
+                rdfs:range xsd:string.
+eurio:rcn a owl:FunctionalProperty,
+            owl:DatatypeProperty;
+          rdfs:comment "Internal CORDIS identifier used for the identification of the domain entities (e.g., projects, project results, organisations, funding schemes, etc.). Stands for Resource Control Number."@en;
+          rdfs:isDefinedBy eurio:;
+          rdfs:label "rcn"@en;
+          rdfs:range xsd:nonNegativeInteger.
+eurio:refersTo a owl:ObjectProperty;
+               rdfs:comment "The entity to which this acronym refers. This can either be an entity inside of the knowledge graph or an external entity of any type."@en;
+               rdfs:domain eurio:Acronym;
+               rdfs:isDefinedBy eurio:;
+               rdfs:label "refers to"@en.
+eurio:roleLabel a owl:DatatypeProperty;
+                rdfs:comment "Title for capturing the role of an organisation."@en;
+                rdfs:domain eurio:OrganisationRole;
+                rdfs:isDefinedBy eurio:;
+                rdfs:label "role label"@en;
+                rdfs:range [owl:oneOf ("coordinator"
+                                       "international partner"
+                                       "participant"
+                                       "partner"
+                                       "third party") ; 
+                            a rdfs:Datatype].
+eurio:shortForm a owl:DatatypeProperty;
+                rdfs:comment "The value of the acronym."@en;
+                rdfs:domain eurio:Acronym;
+                rdfs:isDefinedBy eurio:;
+                rdfs:label "short form"@en;
+                rdfs:range xsd:string.
+eurio:signatureDate a owl:DatatypeProperty;
+                    rdfs:comment "The day a grant agreement has been signed."@en;
+                    rdfs:domain eurio:Project;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "signature date"@en;
+                    rdfs:range xsd:date;
+                    rdfs:subPropertyOf eurio:date.
+eurio:startDate a owl:DatatypeProperty;
+                rdfs:comment "The time an entity (e.g. project, grant, etc.) is initialized or starts to take effect."@en;
+                rdfs:isDefinedBy eurio:;
+                rdfs:label "start date"@en;
+                rdfs:range xsd:date;
+                rdfs:subPropertyOf eurio:date.
+eurio:streetAddress a owl:DatatypeProperty;
+                    rdfs:comment "The street name and number of the place or address."@en;
+                    rdfs:domain eurio:PostalAddress;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "street address"@en;
+                    rdfs:range xsd:string.
+eurio:terminationDate a owl:DatatypeProperty;
+                      rdfs:comment "The termination date of a project."@en;
+                      rdfs:isDefinedBy eurio:;
+                      rdfs:label "termination date"@en;
+                      rdfs:range xsd:date;
+                      rdfs:subPropertyOf eurio:date.
+eurio:title a owl:DatatypeProperty;
+            rdfs:comment "The entity’s (e.g. project, work package, etc.) official name or title."@en;
+            rdfs:isDefinedBy eurio:;
+            rdfs:label "title"@en;
+            rdfs:range xsd:string.
+eurio:url a owl:DatatypeProperty;
+          rdfs:comment "A URL that links internet resources related to a CORDIS entity."@en;
+          rdfs:isDefinedBy eurio:;
+          rdfs:label "URL"@en;
+          rdfs:range xsd:anyURI.
+eurio:value a owl:DatatypeProperty;
+            rdfs:comment "The value of amount being expressed."@en;
+            rdfs:isDefinedBy eurio:;
+            rdfs:label "value"@en;
+            rdfs:range xsd:decimal.
+eurio:vatNumber a owl:DatatypeProperty;
+                rdfs:comment "The unique number that identifies a taxable organisation or non-taxable legal entity that is registered for VAT."@en;
+                rdfs:domain eurio:Organisation;
+                rdfs:isDefinedBy eurio:;
+                rdfs:label "VAT number"@en;
+                rdfs:range xsd:string.
+eurio:workPerformed a owl:DatatypeProperty;
+                    rdfs:comment "A summary of the work carried out during the development of the project."@en;
+                    rdfs:domain eurio:ProjectReportSummary;
+                    rdfs:isDefinedBy eurio:;
+                    rdfs:label "work performed"@en;
+                    rdfs:range xsd:string.
+<http://publications.europa.eu/resource/authority/language/ENG> a skos:Concept.
+<http://publications.europa.eu/resource/dataset/eurio> dcterms:creator [foaf:name "Publications Office of the European Commission"@en ; 
+                                                                        a foaf:Agent];
+                                                       dcterms:description "The EUropean Research Information Ontology (EURIO) conceptualises, formally encodes and makes available in an open, structured and machine-readable format data about research projects funded by the EU's framework programmes for research and innovation."@en;
+                                                       dcterms:issued "2021-12-01T00:00:00"^^xsd:dateTime;
+                                                       dcterms:language <http://publications.europa.eu/resource/authority/language/ENG>;
+                                                       dcterms:license <https://creativecommons.org/licenses/by/4.0/>;
+                                                       dcterms:modified "2025-05-08T00:00:00"^^xsd:dateTime;
+                                                       dcterms:publisher <http://publications.europa.eu/resource/authority/corporate-body/PUBL>;
+                                                       dcterms:title "EURIO: EUropean Research Information Ontology"@en;
+                                                       dcterms:type <http://purl.org/adms/assettype/Ontology>;
+                                                       vann:preferredNamespacePrefix "eurio";
+                                                       a aerdcat:Dataset,
+                                                         adms:Asset,
+                                                         owl:Ontology;
+                                                       rdfs:comment "CORDIS is the portal responsible for publishing the results of EU-funded research and innovation projects. EURIO (EUropean Research Information Ontology) is the conceptual data model developed by the Publications Office of the European Commission to represent and structure the CORDIS content in a semantic format improving its transparency, reusability and accessibility."@en;
+                                                       owl:versionIRI <http://data.europa.eu/s66/v2.5#>;
+                                                       owl:versionInfo "2.5.0";
+                                                       adms:status <http://purl.org/adms/status/Completed>;
+                                                       adms:versionNotes "Update to delete person class and contact details."@en;
+                                                       aerdcat:contactPoint [vcard2006:hasEmail <mailto:op-info@publications.europa.eu> ; 
+                                                                             vcard2006:fn "Publications Office of the European Union"@en ; 
+                                                                             a vcard2006:Organization ; 
+                                                                             a vcard2006:Kind];
+                                                       aerdcat:contributor [foaf:name "Cognizone" ; 
+                                                                            a foaf:Agent];
+                                                       aerdcat:distribution [dcterms:license <https://creativecommons.org/licenses/by/4.0/> ; 
+                                                                             aerdcat:accessURL <https://op.europa.eu/en/web/eu-vocabularies/eurio> ; 
+                                                                             dcterms:downloadURL <https://op.europa.eu/s/eurio-v2.5.ttl> ; 
+                                                                             a aerdcat:Distribution];
+                                                       aerdcat:keyword "ontology"@en,
+                                                                       "research"@en,
+                                                                       "EU projects"@en;
+                                                       aerdcat:theme eurovoc:100142.
+dc11:creator a owl:AnnotationProperty.
+dc11:description a owl:AnnotationProperty.
+dc11:publisher a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:contributor a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+xsd:date a rdfs:Datatype.
+skos:Concept a owl:Class.
+skos:broadMatch a owl:AnnotationProperty.
+skos:closeMatch a owl:AnnotationProperty.
+skos:definition a owl:AnnotationProperty.
+skos:exactMatch a owl:AnnotationProperty.
+skos:note a owl:AnnotationProperty.
+aerdcat:accessURL a owl:AnnotationProperty.
+aerdcat:distribution a owl:AnnotationProperty.
+aerdcat:downloadURL a owl:AnnotationProperty.
+foaf:mbox a owl:AnnotationProperty.
+dg:EducationOrganisation skos:broadMatch schema:EducationalOrganization.

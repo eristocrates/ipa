@@ -1,0 +1,339 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix xkos: <http://rdf-vocabulary.ddialliance.org/xkos#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix iso-thes: <http://purl.org/iso25964/skos-thes#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://rdf-vocabulary.ddialliance.org/xkos> ccrel:license <http://creativecommons.org/licenses/by/4.0/>;
+                                             dc11:contributor "R.T.A.M. Grim",
+                                                              "Daniel Gillman",
+                                                              "Wendy L. Thomas",
+                                                              "Thomas Bosch",
+                                                              "Richard Cyganiak",
+                                                              "Jannik Jensen",
+                                                              "Yves Jaques";
+                                             dc11:creator "Franck Cotton";
+                                             dc11:rights "Copyright © 2016 The DDI Alliance";
+                                             dc11:title "XKOS : une extension de SKOS pour la représentation des nomenclatures statistiques"@fr,
+                                                        "XKOS: an SKOS extension for representing statistical classifications"@en;
+                                             vann:preferredNamespacePrefix "xkos";
+                                             vann:preferredNamespaceUri xkos:;
+                                             voaf:classNumber 4 ;
+                                             voaf:extends <http://www.w3.org/2004/02/skos/core>;
+                                             voaf:propertyNumber 40 ;
+                                             a voaf:Vocabulary,
+                                               owl:Ontology;
+                                             rdfs:comment "Cette ontologie est basée sur le travail commencé à Dagstuhl Schloss en septembre 2011"@fr,
+                                                          "This ontology is based on work initiated at Dagstuhl Schloss in September 2011"@en;
+                                             owl:versionInfo "Version 1.0.2 - 2016-03-15",
+                                                             "Version 1.0.3 - 2016-03-15",
+                                                             "Version 1.0.1 - 2014-11-26",
+                                                             "Version 1.1 - 2016-03-20".
+xkos:ClassificationLevel a owl:Class,
+                           rdfs:Class;
+                         rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                         rdfs:label "Niveau de nomenclature"@fr,
+                                    "Classification level"@en;
+                         rdfs:subClassOf skos:Collection.
+xkos:ConceptAssociation a owl:Class,
+                          rdfs:Class;
+                        rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                        rdfs:label "Association de concepts"@fr,
+                                   "Concept association"@en.
+xkos:Correspondence a owl:Class,
+                      rdfs:Class;
+                    rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                    rdfs:label "Correspondance"@fr,
+                               "Correspondence"@en.
+xkos:ExplanatoryNote a owl:Class,
+                       rdfs:Class;
+                     rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                     rdfs:label "Note explicative"@fr,
+                                "Explanatory note"@en.
+xkos:additionalContentNote a owl:AnnotationProperty,
+                             rdf:Property;
+                           rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                           rdfs:label "contenu limite"@fr,
+                                      "additional content"@en;
+                           rdfs:subPropertyOf xkos:inclusionNote.
+xkos:after a owl:TransitiveProperty,
+             rdf:Property;
+           rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+           rdfs:label "après"@fr,
+                      "after"@en;
+           rdfs:subPropertyOf xkos:temporal.
+xkos:before a owl:TransitiveProperty,
+              rdf:Property;
+            rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+            rdfs:label "avant"@fr,
+                       "before"@en;
+            rdfs:subPropertyOf xkos:temporal.
+xkos:belongsTo a owl:ObjectProperty,
+                 rdf:Property;
+               rdfs:domain skos:ConceptScheme;
+               rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+               rdfs:label "appartient à"@fr,
+                          "belongs to"@en.
+xkos:caseLaw a owl:AnnotationProperty,
+               rdf:Property;
+             rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+             rdfs:label "jurisprudence"@fr,
+                        "case law"@en;
+             rdfs:subPropertyOf skos:note.
+xkos:causal a owl:ObjectProperty,
+              rdf:Property;
+            rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+            rdfs:label "en relation causale"@fr,
+                       "has causal"@en;
+            rdfs:subPropertyOf skos:related.
+xkos:causedBy a owl:ObjectProperty,
+                rdf:Property;
+              rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+              rdfs:label "est causé par"@fr,
+                         "caused by"@en;
+              rdfs:subPropertyOf xkos:causal.
+xkos:causes a owl:ObjectProperty,
+              rdf:Property;
+            rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+            rdfs:label "est la cause de"@fr,
+                       "causes"@en;
+            rdfs:subPropertyOf xkos:causal.
+xkos:classifiedUnder a owl:ObjectProperty,
+                       rdf:Property;
+                     rdfs:domain rdfs:Resource;
+                     rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                     rdfs:label "classé sous"@fr,
+                                "classified under"@en;
+                     rdfs:range skos:Concept.
+xkos:compares a owl:ObjectProperty,
+                rdf:Property;
+              rdfs:domain xkos:Correspondence;
+              rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+              rdfs:label "compare"@fr,
+                         "compares"@en;
+              rdfs:range skos:ConceptScheme.
+xkos:coreContentNote a owl:AnnotationProperty,
+                       rdf:Property;
+                     rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                     rdfs:label "contenu central"@fr,
+                                "core content"@en;
+                     rdfs:subPropertyOf xkos:inclusionNote.
+xkos:covers a owl:ObjectProperty,
+              rdf:Property;
+            rdfs:domain [owl:unionOf (skos:ConceptScheme
+                                      xkos:ClassificationLevel) ; 
+                         a owl:Class];
+            rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+            rdfs:label "couvre"@fr,
+                       "covers"@en;
+            rdfs:range skos:Concept.
+xkos:coversExhaustively a owl:ObjectProperty,
+                          rdf:Property;
+                        rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                        rdfs:label "couvre exhaustivement"@fr,
+                                   "covers exhaustively"@en;
+                        rdfs:subPropertyOf xkos:covers.
+xkos:coversMutuallyExclusively a owl:ObjectProperty,
+                                 rdf:Property;
+                               rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                               rdfs:label "couvre sans recouvrement"@fr,
+                                          "covers mutually exclusively"@en;
+                               rdfs:subPropertyOf xkos:covers.
+xkos:depth a owl:DatatypeProperty,
+             rdf:Property;
+           rdfs:domain xkos:ClassificationLevel;
+           rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+           rdfs:label "profondeur"@fr,
+                      "depth"@en;
+           rdfs:range xsd:positiveInteger.
+xkos:disjoint a owl:ObjectProperty,
+                rdf:Property;
+              rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+              rdfs:label "disjoint de"@fr,
+                         "disjoint from"@en;
+              rdfs:subPropertyOf skos:related.
+xkos:exclusionNote a owl:AnnotationProperty,
+                     rdf:Property;
+                   rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                   rdfs:label "exclusions"@fr,
+                              "exclusions"@en;
+                   rdfs:subPropertyOf skos:scopeNote.
+xkos:follows a owl:ObjectProperty,
+               rdf:Property;
+             rdfs:domain skos:ConceptScheme;
+             rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+             rdfs:label "suit"@fr,
+                        "follows"@en;
+             rdfs:range skos:ConceptScheme.
+xkos:generalizes a owl:ObjectProperty,
+                   rdf:Property;
+                 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                 rdfs:label "généralise"@fr,
+                            "generalizes"@en;
+                 rdfs:subPropertyOf skos:narrower;
+                 owl:equivalentProperty iso-thes:narrowerGeneric;
+                 owl:inverseOf xkos:specializes.
+xkos:hasPart a owl:ObjectProperty,
+               rdf:Property;
+             rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+             rdfs:label "a pour partie"@fr,
+                        "has part"@en;
+             rdfs:subPropertyOf skos:narrower;
+             owl:equivalentProperty iso-thes:narrowerPartitive;
+             owl:inverseOf xkos:isPartOf;
+             skos:exactMatch dcterms:hasPart.
+xkos:inclusionNote a owl:AnnotationProperty,
+                     rdf:Property;
+                   rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                   rdfs:label "inclusions"@fr,
+                              "inclusions"@en;
+                   rdfs:subPropertyOf skos:scopeNote.
+xkos:isPartOf a owl:ObjectProperty,
+                rdf:Property;
+              rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+              rdfs:label "est une partie de"@fr,
+                         "is a part of"@en;
+              rdfs:subPropertyOf skos:broader;
+              owl:equivalentProperty iso-thes:broaderPartitive;
+              owl:inverseOf xkos:hasPart;
+              skos:exactMatch dcterms:isPartOf.
+xkos:levels a owl:ObjectProperty,
+              rdf:Property;
+            rdfs:domain skos:ConceptScheme;
+            rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+            rdfs:label "liste des niveaux"@fr,
+                       "level list"@en;
+            rdfs:range rdf:List.
+xkos:madeOf a owl:ObjectProperty,
+              rdf:Property;
+            rdfs:domain xkos:Correspondence;
+            rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+            rdfs:label "comprend"@fr,
+                       "made of"@en;
+            rdfs:range xkos:ConceptAssociation.
+xkos:maxLength a owl:DatatypeProperty,
+                 rdf:Property;
+               rdfs:domain skosxl:Label;
+               rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+               rdfs:label "longueur maximale"@fr,
+                          "maximum length"@en;
+               rdfs:range xsd:positiveInteger.
+xkos:next a owl:ObjectProperty,
+            rdf:Property;
+          rdfs:comment "successeur immédiat dans la séquence",
+                       "immediate successor in the sequence"@en;
+          rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+          rdfs:label "suivant"@fr,
+                     "next"@en;
+          rdfs:subPropertyOf xkos:succeeds.
+xkos:notationPattern a owl:DatatypeProperty,
+                       rdf:Property;
+                     rdfs:domain xkos:ClassificationLevel;
+                     rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                     rdfs:label "gabarit de code"@fr,
+                                "code pattern"@en;
+                     rdfs:range xsd:string.
+xkos:numberOfLevels a owl:DatatypeProperty,
+                      rdf:Property;
+                    rdfs:domain skos:ConceptScheme;
+                    rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                    rdfs:label "nombre de niveaux"@fr,
+                               "number of levels"@en;
+                    rdfs:range xsd:positiveInteger.
+xkos:organizedBy a owl:ObjectProperty,
+                   rdf:Property;
+                 rdfs:domain xkos:ClassificationLevel;
+                 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                 rdfs:label "organisé en"@fr,
+                            "organized by"@en;
+                 rdfs:range skos:Concept.
+xkos:plainText a owl:AnnotationProperty,
+                 rdf:Property;
+               rdfs:comment "This property is expected to store plain text literals, without HTML or XML markup."@en;
+               rdfs:domain xkos:ExplanatoryNote;
+               rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+               rdfs:label "texte brut"@fr,
+                          "plain text"@en;
+               rdfs:range rdf:PlainLiteral.
+xkos:precedes a owl:TransitiveProperty,
+                rdf:Property;
+              rdfs:comment "prédécesseur dans la séquence"@fr,
+                           "predecessor in the sequence"@en;
+              rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+              rdfs:label "précède"@fr,
+                         "precedes"@en;
+              rdfs:subPropertyOf xkos:sequential.
+xkos:previous a owl:ObjectProperty,
+                rdf:Property;
+              rdfs:comment "prédécesseur immédiat dans la séquence"@fr,
+                           "immediate predecessor in the sequence"@en;
+              rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+              rdfs:label "précédent"@fr,
+                         "previous"@en;
+              rdfs:subPropertyOf xkos:precedes.
+xkos:sequential a owl:ObjectProperty,
+                  rdf:Property;
+                rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                rdfs:label "en relation séquentielle"@fr,
+                           "has sequential"@en;
+                rdfs:subPropertyOf skos:related.
+xkos:sourceConcept a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:domain xkos:ConceptAssociation;
+                   rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                   rdfs:label "concept source"@fr,
+                              "source concept"@en;
+                   rdfs:range skos:Concept.
+xkos:specializes a owl:ObjectProperty,
+                   rdf:Property;
+                 rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                 rdfs:label "spécialise"@fr,
+                            "specializes"@en;
+                 rdfs:subPropertyOf skos:broader;
+                 owl:equivalentProperty iso-thes:broaderGeneric;
+                 owl:inverseOf xkos:generalizes.
+xkos:succeeds a owl:TransitiveProperty,
+                rdf:Property;
+              rdfs:comment "successeur dans la séquence",
+                           "successor in the sequence"@en;
+              rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+              rdfs:label "succède à"@fr,
+                         "succeeds"@en;
+              rdfs:subPropertyOf xkos:sequential.
+xkos:supersedes a owl:ObjectProperty,
+                  rdf:Property;
+                rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                rdfs:label "remplace"@fr,
+                           "supersedes"@en;
+                rdfs:subPropertyOf xkos:follows;
+                skos:exactMatch dcterms:replaces.
+xkos:targetConcept a owl:ObjectProperty,
+                     rdf:Property;
+                   rdfs:domain xkos:ConceptAssociation;
+                   rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+                   rdfs:label "concept cible"@fr,
+                              "target concept"@en;
+                   rdfs:range skos:Concept.
+xkos:temporal a owl:ObjectProperty,
+                rdf:Property;
+              rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+              rdfs:label "en relation temporelle"@fr,
+                         "has temporal"@en;
+              rdfs:subPropertyOf xkos:sequential.
+xkos:variant a owl:ObjectProperty,
+               rdf:Property;
+             rdfs:domain skos:ConceptScheme;
+             rdfs:isDefinedBy <http://rdf-vocabulary.ddialliance.org/xkos>;
+             rdfs:label "variante"@fr,
+                        "variant"@en;
+             rdfs:range skos:ConceptScheme.

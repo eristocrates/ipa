@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE Result SYSTEM "sample1.dtd">
+  
+<Result>
+  <DbList>
+    <DbName>pubmed</DbName>
+    <DbName>protein</DbName>
+  </DbList>
+  <DbInfo>
+    <DbName>pubmed</DbName>
+    <MenuName>PubMed</MenuName>
+    <Description>PubMed bibliographic record</Description>
+  </DbInfo>
+</Result>

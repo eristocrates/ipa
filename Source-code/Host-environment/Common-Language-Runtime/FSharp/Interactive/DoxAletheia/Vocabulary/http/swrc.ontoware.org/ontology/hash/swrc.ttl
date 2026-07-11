@@ -1,0 +1,1043 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix swrc: <http://swrc.ontoware.org/ontology#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+dc11:contributor a owl:ObjectProperty;
+                 rdfs:comment """Definition: 	An entity responsible for making contributions to the content of the resource.
+Comment: 	Examples of Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity.""",
+                              """check domain. Olivier 2006-06-07
+Philipp: checked.""",
+                              """check range. Olivier 2006-06-07
+Philipp: checked.""";
+                 rdfs:domain [owl:unionOf (swrc:Document
+                                           swrc:Product
+                                           swrc:Project) ; 
+                              a owl:Class];
+                 rdfs:label "beteiligter"@de;
+                 rdfs:range [owl:unionOf (swrc:Person
+                                          swrc:Organization) ; 
+                             a owl:Class].
+dc11:coverage a owl:DatatypeProperty;
+              rdfs:comment """Definition: 	The extent or scope of the content of the resource.
+Comment: 	Typically, Coverage will include spatial location (a place name or geographic coordinates), temporal period (a period label, date, or date range) or jurisdiction (such as a named administrative entity). Recommended best practice is to select a value from a controlled vocabulary (for example, the Thesaurus of Geographic Names [TGN]) and to use, where appropriate, named places or time periods in preference to numeric identifiers such as sets of coordinates or date ranges.""";
+              rdfs:label "abdeckungsspektrum"@de.
+dc11:creator a owl:ObjectProperty;
+             rdfs:comment """Definition: 	An entity primarily responsible for making the content of the resource (for instance an author).
+Comment: 	Examples of Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity.""";
+             rdfs:label "urheber"@de.
+dc11:date a owl:DatatypeProperty;
+          rdfs:comment """Definition: 	A date of an event in the lifecycle of the resource.
+
+Comment: 	Typically, Date will be associated with the creation or availability of the resource. Recommended best practice for encoding the date value is defined in a profile of ISO 8601 [W3CDTF] and includes (among others) dates of the form YYYY-MM-DD.""";
+          rdfs:label "datum"@de.
+dc11:description a owl:DatatypeProperty;
+                 rdfs:comment """Definition: 	An account of the content of the resource.
+Comment: 	Examples of Description include, but is not limited to: an abstract, table of contents, reference to a graphical representation of content or a free-text account of the content.""";
+                 rdfs:label "inhaltlicheBeschreibung"@de.
+dc11:format a owl:DatatypeProperty;
+            rdfs:comment """Definition: 	The physical or digital manifestation of the resource.
+Comment: 	Typically, Format may include the media-type or dimensions of the resource. Format may be used to identify the software, hardware, or other equipment needed to display or operate the resource. Examples of dimensions include size and duration. Recommended best practice is to select a value from a controlled vocabulary (for example, the list of Internet Media Types [MIME] defining computer media formats).""";
+            rdfs:label "Format"@de.
+dc11:identifier a owl:DatatypeProperty;
+                rdfs:comment """Definition: 	An unambiguous reference to the resource within a given context.
+Comment: 	Recommended best practice is to identify the resource by means of a string or number conforming to a formal identification system. Formal identification systems include but are not limited to the Uniform Resource Identifier (URI) (including the Uniform Resource Locator (URL)), the Digital Object Identifier (DOI) and the International Standard Book Number (ISBN).""";
+                rdfs:label "identifikation"@de.
+dc11:language a owl:DatatypeProperty;
+              rdfs:comment """Definition: 	A language of the intellectual content of the resource.
+Comment: 	Recommended best practice is to use RFC 3066 [RFC3066] which, in conjunction with ISO639 [ISO639]), defines two- and three-letter primary language tags with optional subtags. Examples include \"en\" or \"eng\" for English, \"akk\" for Akkadian\", and \"en-GB\" for English used in the United Kingdom.""";
+              rdfs:label "sprache"@de.
+dc11:publisher a owl:ObjectProperty;
+               rdfs:comment """check range. Olivier 2006-06-07
+Philipp: checked.""",
+                            """Definition: 	An entity responsible for making the resource available
+Comment: 	Examples of Publisher include a person, an organization, or a service. Typically, the name of a Publisher should be used to indicate the entity.""",
+                            """check domain. Olivier 2006-06-07
+Philipp: checked.""";
+               rdfs:domain swrc:Document;
+               rdfs:label "herausgeber"@de;
+               rdfs:range [owl:unionOf (swrc:Organization
+                                        swrc:Person) ; 
+                           a owl:Class];
+               owl:inverseOf swrc:publisherOf.
+dc11:relation a owl:DatatypeProperty;
+              rdfs:comment """Definition: 	A reference to a related resource.
+Comment: 	Recommended best practice is to identify the referenced resource by means of a string or number conforming to a formal identification system.""";
+              rdfs:label "beziehung"@de.
+dc11:rights a owl:DatatypeProperty;
+            rdfs:comment """Definition: 	Information about rights held in and over the resource.
+Comment: 	Typically, Rights will contain a rights management statement for the resource, or reference a service providing such information. Rights information often encompasses Intellectual Property Rights (IPR), Copyright, and various Property Rights. If the Rights element is absent, no assumptions may be made about any rights held in or over the resource.""";
+            rdfs:label "rechtlicheBedingungen"@de.
+dc11:source a owl:DatatypeProperty;
+            rdfs:comment """Definition: 	A Reference to a resource from which the present resource is derived.
+Comment: 	The present resource may be derived from the Source resource in whole or in part. Recommended best practice is to identify the referenced resource by means of a string or number conforming to a formal identification system.""";
+            rdfs:label "quelle"@de.
+dc11:subject a owl:DatatypeProperty;
+             rdfs:comment """Definition: 	A topic of the content of the resource.
+Comment: 	Typically, Subject will be expressed as keywords, key phrases or classification codes that describe a topic of the resource. Recommended best practice is to select a value from a controlled vocabulary or formal classification scheme.""";
+             rdfs:label "schlagwoerter"@de.
+dc11:title a owl:DatatypeProperty;
+           rdfs:comment """Definition: 	A name given to the resource.
+Comment: 	Typically, Title will be a name by which the resource is formally known.""",
+                        "swrc:booktitle removed, since it is redundant to this property here.";
+           rdfs:label "titel"@de.
+dc11:type a owl:DatatypeProperty;
+          rdfs:comment """Definition: 	The nature or genre of the content of the resource.
+Comment: 	Type includes terms describing general categories, functions, genres, or aggregation levels for content. Recommended best practice is to select a value from a controlled vocabulary (for example, the DCMI Type Vocabulary [DCT1]). To describe the physical or digital manifestation of the resource, use the FORMAT element.""";
+          rdfs:label "typ"@de.
+swrc:AcademicStaff a owl:Class;
+                   rdfs:label "Wissenschaftlicher_Mitarbeiter"@de;
+                   rdfs:subClassOf [owl:onProperty swrc:editor ; 
+                                    owl:allValuesFrom swrc:Publication ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty swrc:headOf ; 
+                                    owl:allValuesFrom swrc:Project ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty swrc:worksAtProject ; 
+                                    owl:allValuesFrom swrc:Project ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty swrc:memberOfPC ; 
+                                    owl:allValuesFrom swrc:Event ; 
+                                    a owl:Restriction],
+                                   swrc:Employee,
+                                   [owl:onProperty swrc:headOfGroup ; 
+                                    owl:allValuesFrom swrc:ResearchGroup ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty swrc:cooperateWith ; 
+                                    owl:allValuesFrom swrc:Person ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty swrc:organizerOrChairOf ; 
+                                    owl:allValuesFrom swrc:Event ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty swrc:supervises ; 
+                                    owl:allValuesFrom swrc:PhDStudent ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty swrc:publication ; 
+                                    owl:allValuesFrom swrc:Publication ; 
+                                    a owl:Restriction];
+                   owl:disjointWith swrc:AdministrativeStaff,
+                                    swrc:Manager,
+                                    swrc:TechnicalStaff.
+swrc:AdministrativeStaff a owl:Class;
+                         rdfs:label "Verwaltungsangestellter"@de;
+                         rdfs:subClassOf swrc:Employee;
+                         owl:disjointWith swrc:TechnicalStaff,
+                                          swrc:AcademicStaff,
+                                          swrc:Manager.
+swrc:Article a owl:Class;
+             rdfs:comment "A peer reviewed , refereed article from a journal.";
+             rdfs:label "Artikel"@de;
+             rdfs:subClassOf swrc:Publication.
+swrc:AssistantProfessor a owl:Class;
+                        rdfs:label "Privatdozent"@de;
+                        rdfs:subClassOf swrc:FacultyMember.
+swrc:AssociateProfessor a owl:Class;
+                        rdfs:label "Ausserordentlicher_Professor"@de;
+                        rdfs:subClassOf swrc:FacultyMember.
+swrc:Association a owl:Class;
+                 rdfs:label "Verband"@de;
+                 rdfs:subClassOf swrc:Organization;
+                 owl:disjointWith swrc:Department,
+                                  swrc:ResearchGroup,
+                                  swrc:Enterprise,
+                                  swrc:University,
+                                  swrc:Institute.
+swrc:Book a owl:Class;
+          rdfs:comment "A complete book, not formed from separate papers.";
+          rdfs:label "Buch"@de;
+          rdfs:subClassOf swrc:Publication.
+swrc:Booklet a owl:Class;
+             rdfs:comment "A work that is printed and bound but without a named publisher or sponsering institution.";
+             rdfs:label "Broschuere"@de;
+             rdfs:subClassOf swrc:Publication.
+swrc:Collection a owl:Class;
+                rdfs:comment "A book produced from a collection of separate papers.";
+                rdfs:label "Sammelband"@de;
+                rdfs:subClassOf swrc:Publication.
+swrc:Colloquium a owl:Class;
+                rdfs:label "Kolloquium"@de;
+                rdfs:subClassOf swrc:Event,
+                                [owl:onProperty swrc:participant ; 
+                                 owl:allValuesFrom swrc:Person ; 
+                                 a owl:Restriction];
+                owl:disjointWith swrc:Seminar,
+                                 swrc:Workshop,
+                                 swrc:Lecture,
+                                 swrc:Conference,
+                                 swrc:Exhibition,
+                                 swrc:Meeting.
+swrc:Conference a owl:Class;
+                rdfs:label "Konferenz"@de;
+                rdfs:subClassOf [owl:onProperty swrc:participant ; 
+                                 owl:allValuesFrom swrc:Person ; 
+                                 a owl:Restriction],
+                                swrc:Event;
+                owl:disjointWith swrc:Colloquium,
+                                 swrc:Workshop,
+                                 swrc:Meeting,
+                                 swrc:Lecture,
+                                 swrc:Exhibition,
+                                 swrc:Seminar.
+swrc:Department a owl:Class;
+                rdfs:label "Fachbereich"@de;
+                rdfs:subClassOf [owl:onProperty swrc:hasParts ; 
+                                 owl:allValuesFrom swrc:Institute ; 
+                                 a owl:Restriction],
+                                swrc:Organization;
+                owl:disjointWith swrc:University,
+                                 swrc:Association,
+                                 swrc:Institute,
+                                 swrc:Enterprise,
+                                 swrc:ResearchGroup.
+swrc:DevelopmentProject a owl:Class;
+                        rdfs:comment "disjoint with researchProject? maybe not. Olivier 2006-06-07";
+                        rdfs:label "Entwicklungsvorhaben"@de;
+                        rdfs:subClassOf swrc:Project.
+swrc:DiplomaThesis a owl:Class;
+                   rdfs:label "Diplomarbeit"@de;
+                   rdfs:subClassOf swrc:Thesis;
+                   owl:disjointWith swrc:PhDThesis,
+                                    swrc:MasterThesis.
+swrc:Document a owl:Class;
+              rdfs:comment """Dublin Core elements added. 
+See: http://dublincore.org/documents/dces/
+
+for document types see:
+http://www.bsz-bw.de/diglib/medserv/konvent/metadat/dcresour.html""";
+              rdfs:label "Dokument"@de;
+              rdfs:subClassOf [owl:onProperty dc11:coverage ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:identifier ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:description ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:relation ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction],
+                              owl:Thing,
+                              [owl:onProperty dc11:format ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:date ; 
+                               owl:allValuesFrom xsd:date ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:creator ; 
+                               owl:allValuesFrom [owl:unionOf (swrc:Person
+                                                               swrc:Organization) ; 
+                                                  a owl:Class] ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:source ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction],
+                              [owl:onProperty swrc:organization ; 
+                               owl:allValuesFrom swrc:Organization ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:publisher ; 
+                               owl:allValuesFrom [owl:unionOf (swrc:Person
+                                                               swrc:Organization) ; 
+                                                  a owl:Class] ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:contributor ; 
+                               owl:allValuesFrom [owl:unionOf (swrc:Person
+                                                               swrc:Organization) ; 
+                                                  a owl:Class] ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:language ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:subject ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:rights ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:title ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction],
+                              [owl:onProperty dc11:type ; 
+                               owl:allValuesFrom xsd:string ; 
+                               a owl:Restriction].
+swrc:Employee a owl:Class;
+              rdfs:label "Mitarbeiter"@de;
+              rdfs:subClassOf [owl:onProperty swrc:affiliation ; 
+                               owl:allValuesFrom swrc:Organization ; 
+                               a owl:Restriction],
+                              swrc:Person.
+swrc:Enterprise a owl:Class;
+                rdfs:label "Unternehmen"@de;
+                rdfs:subClassOf swrc:Organization;
+                owl:disjointWith swrc:Institute,
+                                 swrc:Association,
+                                 swrc:Department,
+                                 swrc:ResearchGroup,
+                                 swrc:University.
+swrc:Event a owl:Class;
+           rdfs:label "Ereignis"@de;
+           rdfs:subClassOf [owl:onProperty swrc:atEvent ; 
+                            owl:allValuesFrom swrc:Event ; 
+                            a owl:Restriction],
+                           [owl:onProperty swrc:hasPartEvent ; 
+                            owl:allValuesFrom swrc:Event ; 
+                            a owl:Restriction].
+swrc:ExchangeProfessor a owl:Class;
+                       rdfs:label "Austauschprofessor"@de;
+                       rdfs:subClassOf swrc:FacultyMember.
+swrc:Exhibition a owl:Class;
+                rdfs:label "Messe"@de;
+                rdfs:subClassOf swrc:Event,
+                                [owl:onProperty swrc:participant ; 
+                                 owl:allValuesFrom swrc:Person ; 
+                                 a owl:Restriction];
+                owl:disjointWith swrc:Seminar,
+                                 swrc:Colloquium,
+                                 swrc:Meeting,
+                                 swrc:Workshop,
+                                 swrc:Conference,
+                                 swrc:Lecture.
+swrc:FacultyMember a owl:Class;
+                   rdfs:label "Fakultaetsmitglied"@de;
+                   rdfs:subClassOf swrc:AcademicStaff.
+swrc:FullProfessor a owl:Class;
+                   rdfs:label "Ordentlicher_Professor"@de;
+                   rdfs:subClassOf swrc:FacultyMember.
+swrc:Graduate a owl:Class;
+              rdfs:comment """disjoint with undergrad? Olivier 2006-06-07
+Philipp: I wouldn't make it disjoint, since someone can be a bachelor-graduate, but if he is doing his master he is a master-undergraduate at the same time.""";
+              rdfs:label "Absolvent"@de;
+              rdfs:subClassOf swrc:Student.
+swrc:GraduateClass a owl:Class;
+                   rdfs:comment "see: http://www.neurolabor.de/socrate/ects_ganz.htm";
+                   rdfs:label "Oberseminar"@de;
+                   rdfs:subClassOf swrc:Seminar;
+                   owl:disjointWith swrc:UndergraduateAdvancedClass,
+                                    swrc:UndergraduateIntermediateClass.
+swrc:HonoraryProfessor a owl:Class;
+                       rdfs:label "Honorarprofessor"@de;
+                       rdfs:subClassOf swrc:FacultyMember.
+swrc:InBook a owl:Class;
+            rdfs:comment "A part of a book, which may be a chapter and/or range of pages.";
+            rdfs:label "Teil_eines_Buches"@de;
+            rdfs:subClassOf swrc:Publication.
+swrc:InCollection a owl:Class;
+                  rdfs:comment "A single paper or article from a published collection.";
+                  rdfs:label "Teil_eines_Buches_mit_eigenem_Titel"@de;
+                  rdfs:subClassOf swrc:Publication.
+swrc:InProceedings a owl:Class;
+                   rdfs:comment "A single paper from a published workshop or conference proceedings.";
+                   rdfs:label "Artikel_eines_Tagungsbandes"@de;
+                   rdfs:subClassOf swrc:Publication.
+swrc:Institute a owl:Class;
+               rdfs:label "Institut"@de;
+               rdfs:subClassOf [owl:onProperty swrc:hasParts ; 
+                                owl:allValuesFrom swrc:ResearchGroup ; 
+                                a owl:Restriction],
+                               swrc:Organization;
+               owl:disjointWith swrc:University,
+                                swrc:ResearchGroup,
+                                swrc:Enterprise,
+                                swrc:Department,
+                                swrc:Association.
+swrc:Journal a owl:Class;
+             rdfs:comment "An entire issue of a refereed learned journal.";
+             rdfs:label "Journal"@de;
+             rdfs:subClassOf swrc:Publication.
+swrc:Lecture a owl:Class;
+             rdfs:label "Vortrag"@de;
+             rdfs:subClassOf swrc:Event,
+                             [owl:onProperty swrc:givenBy ; 
+                              owl:allValuesFrom swrc:Person ; 
+                              a owl:Restriction];
+             owl:disjointWith swrc:Conference,
+                              swrc:Workshop,
+                              swrc:Seminar,
+                              swrc:Colloquium,
+                              swrc:Meeting,
+                              swrc:Exhibition.
+swrc:Lecturer a owl:Class;
+              rdfs:label "Lehrbeauftragter"@de;
+              rdfs:subClassOf swrc:AcademicStaff.
+swrc:Magazine a owl:Class;
+              rdfs:comment "An entire issue of an unrefereed journal or magazine.";
+              rdfs:label "Magazin"@de;
+              rdfs:subClassOf swrc:Publication.
+swrc:Manager a owl:Class;
+             rdfs:label "Manager"@de;
+             rdfs:subClassOf swrc:Employee;
+             owl:disjointWith swrc:TechnicalStaff,
+                              swrc:AcademicStaff,
+                              swrc:AdministrativeStaff.
+swrc:Manual a owl:Class;
+            rdfs:comment "An operations manual for a product.";
+            rdfs:label "Handbuch"@de;
+            rdfs:subClassOf swrc:Publication.
+swrc:MasterThesis a owl:Class;
+                  rdfs:comment "A university Masters thesis.";
+                  rdfs:label "Master_Thesis"@de;
+                  rdfs:subClassOf swrc:Thesis;
+                  owl:disjointWith swrc:DiplomaThesis,
+                                   swrc:PhDThesis.
+swrc:Meeting a owl:Class;
+             rdfs:label "Besprechung"@de;
+             rdfs:subClassOf swrc:Event,
+                             [owl:onProperty swrc:participant ; 
+                              owl:allValuesFrom swrc:Person ; 
+                              a owl:Restriction];
+             owl:disjointWith swrc:Exhibition,
+                              swrc:Conference,
+                              swrc:Workshop,
+                              swrc:Seminar,
+                              swrc:Colloquium,
+                              swrc:Lecture.
+swrc:Misc a owl:Class;
+          rdfs:comment "Work of another or undetermined type. This is the default scheme value if the scheme is not explicitly stated.";
+          rdfs:label "Sonstiges"@de;
+          rdfs:subClassOf swrc:Publication.
+swrc:Organization a owl:Class;
+                  rdfs:label "Organisation"@de;
+                  rdfs:subClassOf owl:Thing,
+                                  [owl:onProperty swrc:develops ; 
+                                   owl:allValuesFrom swrc:Product ; 
+                                   a owl:Restriction],
+                                  [owl:onProperty swrc:carriesOut ; 
+                                   owl:allValuesFrom swrc:Project ; 
+                                   a owl:Restriction],
+                                  [owl:onProperty swrc:technicalReport ; 
+                                   owl:allValuesFrom swrc:TechnicalReport ; 
+                                   a owl:Restriction],
+                                  [owl:onProperty swrc:cooperateWith ; 
+                                   owl:allValuesFrom swrc:Organization ; 
+                                   a owl:Restriction],
+                                  [owl:onProperty swrc:employs ; 
+                                   owl:allValuesFrom swrc:Person ; 
+                                   a owl:Restriction],
+                                  [owl:onProperty swrc:publisherOf ; 
+                                   owl:allValuesFrom swrc:Publication ; 
+                                   a owl:Restriction],
+                                  [owl:onProperty swrc:finances ; 
+                                   owl:allValuesFrom swrc:Project ; 
+                                   a owl:Restriction];
+                  owl:disjointWith swrc:Product.
+swrc:Person a owl:Class;
+            rdfs:label "Person"@de;
+            rdfs:subClassOf [owl:onProperty swrc:lastName ; 
+                             owl:allValuesFrom xsd:string ; 
+                             a owl:Restriction],
+                            [owl:onProperty swrc:firstName ; 
+                             owl:allValuesFrom xsd:string ; 
+                             a owl:Restriction],
+                            [owl:onProperty swrc:address ; 
+                             owl:allValuesFrom xsd:string ; 
+                             a owl:Restriction],
+                            [owl:onProperty swrc:phone ; 
+                             owl:allValuesFrom xsd:string ; 
+                             a owl:Restriction],
+                            [owl:onProperty swrc:email ; 
+                             owl:allValuesFrom xsd:string ; 
+                             a owl:Restriction],
+                            [owl:onProperty swrc:fax ; 
+                             owl:allValuesFrom xsd:string ; 
+                             a owl:Restriction],
+                            [owl:onProperty swrc:homepage ; 
+                             owl:allValuesFrom xsd:anyURI ; 
+                             a owl:Restriction],
+                            owl:Thing;
+            owl:disjointWith swrc:Product.
+swrc:PhDStudent a owl:Class;
+                rdfs:label "Doktorand"@de;
+                rdfs:subClassOf [owl:onProperty swrc:worksAtProject ; 
+                                 owl:allValuesFrom swrc:Project ; 
+                                 a owl:Restriction],
+                                [owl:onProperty swrc:supervisor ; 
+                                 owl:allValuesFrom swrc:AcademicStaff ; 
+                                 a owl:Restriction],
+                                [owl:onProperty swrc:publication ; 
+                                 owl:allValuesFrom swrc:Publication ; 
+                                 a owl:Restriction],
+                                swrc:Graduate.
+swrc:PhDThesis a owl:Class;
+               rdfs:comment "A university Doctoral thesis.";
+               rdfs:label "Doktorarbeit"@de;
+               rdfs:subClassOf swrc:Thesis;
+               owl:disjointWith swrc:DiplomaThesis,
+                                swrc:MasterThesis.
+swrc:Proceedings a owl:Class;
+                 rdfs:comment "A whole published workshop or conference proceedings.";
+                 rdfs:label "Tagungsband"@de;
+                 rdfs:subClassOf swrc:Publication.
+swrc:Product a owl:Class;
+             rdfs:label "Produkt"@de;
+             rdfs:subClassOf [owl:onProperty swrc:price ; 
+                              owl:allValuesFrom xsd:string ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:vendor ; 
+                              owl:allValuesFrom [owl:unionOf (swrc:Person
+                                                              swrc:Organization) ; 
+                                                 a owl:Class] ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:developedBy ; 
+                              owl:allValuesFrom swrc:Organization ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:creationDate ; 
+                              owl:allValuesFrom xsd:date ; 
+                              a owl:Restriction],
+                             owl:Thing;
+             owl:disjointWith swrc:Person,
+                              swrc:Organization.
+swrc:ProfessorEmeritus a owl:Class;
+                       rdfs:label "Emeritierter_Professor"@de;
+                       rdfs:subClassOf swrc:FacultyMember.
+swrc:Project a owl:Class;
+             rdfs:label "Projekt"@de;
+             rdfs:subClassOf [owl:onProperty swrc:status ; 
+                              owl:allValuesFrom xsd:string ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:projectInfo ; 
+                              owl:allValuesFrom swrc:Publication ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:member ; 
+                              owl:allValuesFrom swrc:Person ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:outcomeProduct ; 
+                              owl:allValuesFrom swrc:Product ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:homepage ; 
+                              owl:allValuesFrom xsd:anyURI ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:head ; 
+                              owl:allValuesFrom swrc:Employee ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:isAbout ; 
+                              owl:allValuesFrom swrc:Topic ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:startDate ; 
+                              owl:allValuesFrom xsd:date ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:carriedOutBy ; 
+                              owl:allValuesFrom swrc:Organization ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:outcomeDocument ; 
+                              owl:allValuesFrom swrc:Document ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:financedBy ; 
+                              owl:allValuesFrom swrc:Organization ; 
+                              a owl:Restriction],
+                             [owl:onProperty swrc:endDate ; 
+                              owl:allValuesFrom xsd:date ; 
+                              a owl:Restriction],
+                             owl:Thing.
+swrc:ProjectMeeting a owl:Class;
+                    rdfs:label "Projektbesprechung"@de;
+                    rdfs:subClassOf swrc:Meeting.
+swrc:ProjectReport a owl:Class;
+                   rdfs:label "Projekt_Bericht"@de;
+                   rdfs:subClassOf [owl:onProperty swrc:describesProject ; 
+                                    owl:allValuesFrom swrc:Project ; 
+                                    a owl:Restriction],
+                                   swrc:Report;
+                   owl:disjointWith swrc:TechnicalReport.
+swrc:Publication a owl:Class;
+                 rdfs:label "Publikation"@de;
+                 rdfs:subClassOf [owl:onProperty swrc:cite ; 
+                                  owl:allValuesFrom swrc:Publication ; 
+                                  a owl:Restriction],
+                                 swrc:Document;
+                 owl:disjointWith swrc:Unpublished.
+swrc:Report a owl:Class;
+            rdfs:label "Bericht"@de;
+            rdfs:subClassOf swrc:Publication.
+swrc:ResearchGroup a owl:Class;
+                   rdfs:label "Forschungsgruppe"@de;
+                   rdfs:subClassOf [owl:onProperty swrc:head ; 
+                                    owl:allValuesFrom swrc:Employee ; 
+                                    a owl:Restriction],
+                                   swrc:Organization,
+                                   [owl:onProperty swrc:member ; 
+                                    owl:allValuesFrom swrc:Employee ; 
+                                    a owl:Restriction];
+                   owl:disjointWith swrc:Association,
+                                    swrc:Department,
+                                    swrc:Institute,
+                                    swrc:University,
+                                    swrc:Enterprise.
+swrc:ResearchPaper a owl:Class;
+                   rdfs:comment "A piece of research work.";
+                   rdfs:label "Forschungsarbeit"@de;
+                   rdfs:subClassOf swrc:Publication.
+swrc:ResearchProject a owl:Class;
+                     rdfs:label "Forschungsprojekt"@de;
+                     rdfs:subClassOf swrc:Project.
+swrc:ResearchTopic a owl:Class;
+                   rdfs:label "Forschungsthema"@de;
+                   rdfs:subClassOf [owl:onProperty swrc:isWorkedOnBy ; 
+                                    owl:allValuesFrom swrc:AcademicStaff ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty swrc:dealtWithIn ; 
+                                    owl:allValuesFrom swrc:Project ; 
+                                    a owl:Restriction],
+                                   swrc:Topic.
+swrc:Root a owl:ObjectProperty;
+          rdfs:comment """meaning not clear. Olivier 2006-06-07
+Philipp: Hmm, I didn't create that property, therefore i don't know the intention of it.
+""";
+          rdfs:label "wurzel"@de.
+swrc:RootRelation a owl:ObjectProperty;
+                  rdfs:comment """meaning not clear. Olivier 2006-06-07
+Philipp: Hmm, I didn't create that property, therefore i don't know the intention of it.
+""";
+                  rdfs:label "wurzelRelation"@de.
+swrc:Seminar a owl:Class;
+             rdfs:label "Seminar"@de;
+             rdfs:subClassOf [owl:onProperty swrc:participant ; 
+                              owl:allValuesFrom swrc:Person ; 
+                              a owl:Restriction],
+                             swrc:Event;
+             owl:disjointWith swrc:Colloquium,
+                              swrc:Workshop,
+                              swrc:Conference,
+                              swrc:Exhibition,
+                              swrc:Meeting,
+                              swrc:Lecture.
+swrc:SoftwareComponent a owl:Class;
+                       rdfs:label "Softwarekomponente"@de;
+                       rdfs:subClassOf swrc:Product.
+swrc:SoftwareProject a owl:Class;
+                     rdfs:label "Softwareprojekt"@de;
+                     rdfs:subClassOf swrc:DevelopmentProject.
+swrc:Student a owl:Class;
+             rdfs:label "Student"@de;
+             rdfs:subClassOf [owl:onProperty swrc:studiesAt ; 
+                              owl:allValuesFrom swrc:University ; 
+                              a owl:Restriction],
+                             swrc:Person.
+swrc:TechnicalReport a owl:Class;
+                     rdfs:label "technischer_Bericht"@de;
+                     rdfs:subClassOf swrc:Report;
+                     owl:disjointWith swrc:ProjectReport.
+swrc:TechnicalStaff a owl:Class;
+                    rdfs:label "Technischer_Angestellter"@de;
+                    rdfs:subClassOf swrc:Employee;
+                    owl:disjointWith swrc:AdministrativeStaff,
+                                     swrc:Manager,
+                                     swrc:AcademicStaff.
+swrc:Thesis a owl:Class;
+            rdfs:label "Abschlussarbeit"@de;
+            rdfs:subClassOf [owl:onProperty swrc:school ; 
+                             owl:allValuesFrom swrc:University ; 
+                             a owl:Restriction],
+                            swrc:Publication.
+swrc:Topic a owl:Class;
+           rdfs:comment """If changing this concept (or its subconcepts) consider that the swrc topic ontology depends on the foresaid one.
+The swrc topic ontology can be found at:
+http://ontoware.org/frs/download.php/187/swrc-swtopics.owl""";
+           rdfs:label "Thema"@de.
+swrc:Undergraduate a owl:Class;
+                   rdfs:label "Student_ohne_Abschluss"@de;
+                   rdfs:subClassOf swrc:Student.
+swrc:UndergraduateAdvancedClass a owl:Class;
+                                rdfs:comment "see: http://www.neurolabor.de/socrate/ects_ganz.htm";
+                                rdfs:label "Hauptseminar"@de;
+                                rdfs:subClassOf swrc:Seminar;
+                                owl:disjointWith swrc:UndergraduateIntermediateClass,
+                                                 swrc:GraduateClass.
+swrc:UndergraduateIntermediateClass a owl:Class;
+                                    rdfs:comment """see: http://www.neurolabor.de/socrate/ects_ganz.htm
+
+http://dict.leo.org/cgi-bin/dict/urlexp/20030705201638""";
+                                    rdfs:label "Proseminar "@de;
+                                    rdfs:subClassOf swrc:Seminar;
+                                    owl:disjointWith swrc:GraduateClass,
+                                                     swrc:UndergraduateAdvancedClass.
+swrc:University a owl:Class;
+                rdfs:label "Unversität"@de;
+                rdfs:subClassOf [owl:onProperty swrc:hasParts ; 
+                                 owl:allValuesFrom swrc:Department ; 
+                                 a owl:Restriction],
+                                [owl:onProperty swrc:student ; 
+                                 owl:allValuesFrom swrc:Student ; 
+                                 a owl:Restriction],
+                                swrc:Organization;
+                owl:disjointWith swrc:Institute,
+                                 swrc:Department,
+                                 swrc:Enterprise,
+                                 swrc:ResearchGroup,
+                                 swrc:Association.
+swrc:Unpublished a owl:Class;
+                 rdfs:comment "A document with an author and title, but not formally published.";
+                 rdfs:label "Ein_nicht_formell_publiziertes_Dokument"@de;
+                 rdfs:subClassOf swrc:Document;
+                 owl:disjointWith swrc:Publication.
+swrc:UnrefereedArticle a owl:Class;
+                       rdfs:comment """An unrefereed article from a journal, magazine or newspaper.
+
+possible german translation for \"unrefereed\", also: unredigiert ?!""";
+                       rdfs:label "Nicht_begutachteter_Artikel"@de;
+                       rdfs:subClassOf swrc:Publication.
+swrc:VisitingProfessor a owl:Class;
+                       rdfs:label "Gastdozent"@de;
+                       rdfs:subClassOf swrc:FacultyMember.
+swrc:Workshop a owl:Class;
+              rdfs:label "Workshop"@de;
+              rdfs:subClassOf swrc:Event,
+                              [owl:onProperty swrc:participant ; 
+                               owl:allValuesFrom swrc:Person ; 
+                               a owl:Restriction];
+              owl:disjointWith swrc:Seminar,
+                               swrc:Meeting,
+                               swrc:Conference,
+                               swrc:Exhibition,
+                               swrc:Colloquium,
+                               swrc:Lecture.
+swrc:abstract a owl:DatatypeProperty;
+              rdfs:label "zusammenfassung"@de;
+              rdfs:range xsd:string.
+swrc:address a owl:DatatypeProperty;
+             rdfs:label "adresse"@de;
+             rdfs:range xsd:string.
+swrc:affiliation a owl:ObjectProperty;
+                 rdfs:domain swrc:Person;
+                 rdfs:label "zugehoerigkeit"@de;
+                 rdfs:range swrc:Organization;
+                 owl:inverseOf swrc:employs.
+swrc:atEvent a owl:TransitiveProperty,
+               owl:ObjectProperty;
+             rdfs:domain swrc:Event;
+             rdfs:label "beiEreignis"@de;
+             rdfs:range swrc:Event;
+             owl:inverseOf swrc:hasPartEvent.
+swrc:carriedOutBy a owl:ObjectProperty;
+                  rdfs:domain swrc:Project;
+                  rdfs:label "durchgefuehrtVon"@de;
+                  rdfs:range [owl:unionOf (swrc:Organization
+                                           swrc:Person) ; 
+                              a owl:Class];
+                  owl:inverseOf swrc:carriesOut.
+swrc:carriesOut a owl:ObjectProperty;
+                rdfs:domain [owl:unionOf (swrc:Organization
+                                          swrc:Person) ; 
+                             a owl:Class];
+                rdfs:label "durchfuehren"@de;
+                rdfs:range swrc:Project;
+                owl:inverseOf swrc:carriedOutBy.
+swrc:chapter a owl:DatatypeProperty;
+             rdfs:label "kapitel"@de.
+swrc:cite a owl:ObjectProperty;
+          rdfs:comment """check domain. Olivier 2006-06-07
+Philipp: checked.""";
+          rdfs:domain [owl:unionOf (swrc:Document
+                                    swrc:Person) ; 
+                       a owl:Class];
+          rdfs:label "zitiert"@de;
+          rdfs:range swrc:Document;
+          owl:inverseOf swrc:citedBy.
+swrc:citedBy a owl:ObjectProperty;
+             rdfs:domain swrc:Document;
+             rdfs:label "zitiertVon"@de;
+             rdfs:range [owl:unionOf (swrc:Document
+                                      swrc:Person) ; 
+                         a owl:Class];
+             owl:inverseOf swrc:cite.
+swrc:cooperateWith a owl:SymmetricProperty,
+                     owl:ObjectProperty;
+                   rdfs:domain [owl:unionOf (swrc:Person
+                                             swrc:Organization) ; 
+                                a owl:Class];
+                   rdfs:label "zusammenarbeitenMit"@de;
+                   rdfs:range [owl:unionOf (swrc:Organization
+                                            swrc:Person) ; 
+                               a owl:Class];
+                   owl:inverseOf swrc:cooperateWith.
+swrc:creationDate a owl:DatatypeProperty;
+                  rdfs:label "Herstellungsdatum"@de;
+                  rdfs:subPropertyOf swrc:date.
+swrc:date a owl:DatatypeProperty;
+          rdfs:label "datum"@de;
+          rdfs:range xsd:date.
+swrc:dealtWithIn a owl:ObjectProperty;
+                 rdfs:domain swrc:Topic;
+                 rdfs:label "behandeltIn"@de;
+                 rdfs:range swrc:Project.
+swrc:describesProject a owl:ObjectProperty;
+                      rdfs:domain swrc:Document;
+                      rdfs:label "beschreibtProjekt"@de;
+                      rdfs:range swrc:Project;
+                      owl:inverseOf swrc:projectInfo.
+swrc:developedBy a owl:ObjectProperty;
+                 rdfs:domain swrc:Product;
+                 rdfs:label "entwickeltVon"@de;
+                 rdfs:range [owl:unionOf (swrc:Organization
+                                          swrc:Person) ; 
+                             a owl:Class];
+                 owl:inverseOf swrc:develops.
+swrc:develops a owl:ObjectProperty;
+              rdfs:domain [owl:unionOf (swrc:Organization
+                                        swrc:Person) ; 
+                           a owl:Class];
+              rdfs:label "entwickelt"@de;
+              rdfs:range swrc:Product;
+              owl:inverseOf swrc:developedBy.
+swrc:edition a owl:DatatypeProperty;
+             rdfs:label "ausgabe"@de.
+swrc:editor a owl:ObjectProperty;
+            rdfs:domain swrc:Person;
+            rdfs:label "editor"@de.
+swrc:email a owl:DatatypeProperty;
+           rdfs:domain [owl:unionOf (swrc:Person
+                                     swrc:Organization) ; 
+                        a owl:Class];
+           rdfs:label "email"@de;
+           rdfs:range xsd:string.
+swrc:employs a owl:ObjectProperty;
+             rdfs:domain swrc:Organization;
+             rdfs:label "beschaeftigt"@de;
+             rdfs:range swrc:Person;
+             owl:inverseOf swrc:affiliation.
+swrc:endDate a owl:DatatypeProperty;
+             rdfs:label "endDatum"@de;
+             rdfs:subPropertyOf swrc:date.
+swrc:eventTitle a owl:DatatypeProperty;
+                rdfs:label "ereignisTitel"@de;
+                rdfs:range xsd:string;
+                rdfs:subPropertyOf swrc:title.
+swrc:fax a owl:DatatypeProperty;
+         rdfs:label "fax"@de;
+         rdfs:range xsd:string.
+swrc:financedBy a owl:ObjectProperty;
+                rdfs:domain swrc:Project;
+                rdfs:label "finanziertVon"@de;
+                rdfs:range swrc:Organization;
+                owl:inverseOf swrc:finances.
+swrc:finances a owl:ObjectProperty;
+              rdfs:domain swrc:Organization;
+              rdfs:label "finanziert"@de;
+              rdfs:range swrc:Project;
+              owl:inverseOf swrc:financedBy.
+swrc:firstName a owl:DatatypeProperty;
+               rdfs:label "vorname"@de;
+               rdfs:range xsd:string;
+               rdfs:subPropertyOf swrc:name.
+swrc:givenBy a owl:ObjectProperty;
+             rdfs:comment """check domain. Olivier 2006-06-07
+Philipp: checked.""";
+             rdfs:domain [owl:unionOf (swrc:Lecture
+                                       swrc:Seminar) ; 
+                          a owl:Class];
+             rdfs:label "gehaltenVon"@de;
+             rdfs:range swrc:Person.
+swrc:hasPartEvent a owl:TransitiveProperty,
+                    owl:ObjectProperty;
+                  rdfs:comment "Example: FIFA World Cup 2006 hasPartEvent Final";
+                  rdfs:domain swrc:Event;
+                  rdfs:label "hatTeilEreignis"@de;
+                  rdfs:range swrc:Event;
+                  owl:inverseOf swrc:atEvent.
+swrc:hasParts a owl:ObjectProperty;
+              rdfs:label "hatTeile"@de.
+swrc:head a owl:ObjectProperty;
+          rdfs:domain swrc:ResearchGroup;
+          rdfs:label "leiter"@de;
+          rdfs:range swrc:Person;
+          owl:inverseOf swrc:headOfGroup.
+swrc:headOf a owl:ObjectProperty;
+            rdfs:domain swrc:Person;
+            rdfs:label "leiterVon"@de;
+            rdfs:range [owl:unionOf (swrc:Organization
+                                     swrc:Project) ; 
+                        a owl:Class].
+swrc:headOfGroup a owl:ObjectProperty;
+                 rdfs:comment "added domain and range. Olivier 2006-06-07",
+                              "made a subproperty of headOf. Olivier 2006-06-07";
+                 rdfs:domain swrc:Person;
+                 rdfs:label "leiterVonGruppe"@de;
+                 rdfs:range swrc:ResearchGroup;
+                 rdfs:subPropertyOf swrc:headOf;
+                 owl:inverseOf swrc:head.
+swrc:homepage a owl:DatatypeProperty;
+              rdfs:label "homepage"@de;
+              rdfs:range xsd:string.
+swrc:howpublished a owl:DatatypeProperty;
+                  rdfs:label "veroeffentlichungsArt"@de.
+swrc:institution a owl:ObjectProperty;
+                 rdfs:comment """meaning not clear
+Philipp: Hmm, I didn't create that property, therefore i don't know the intention of it.""";
+                 rdfs:label "einrichtung"@de;
+                 rdfs:subPropertyOf swrc:organization.
+swrc:isAbout a owl:ObjectProperty;
+             rdfs:comment """check domain. Olivier 2006-06-07
+Philipp: checked.""";
+             rdfs:domain [owl:unionOf (swrc:Project
+                                       swrc:Document
+                                       swrc:Event
+                                       swrc:Product) ; 
+                          a owl:Class];
+             rdfs:label "ueber"@de;
+             rdfs:range swrc:Topic.
+swrc:isWorkedOnBy a owl:ObjectProperty;
+                  rdfs:domain swrc:Topic;
+                  rdfs:label "wirdBearbeitetVon"@de;
+                  rdfs:range swrc:Person.
+swrc:isbn a owl:DatatypeProperty;
+          rdfs:label "isbn"@de;
+          rdfs:subPropertyOf dc11:identifier.
+swrc:journal a owl:DatatypeProperty;
+             rdfs:label "journal"@de.
+swrc:keywords a owl:DatatypeProperty;
+              rdfs:label "schlagwoerter"@de.
+swrc:lastName a owl:DatatypeProperty;
+              rdfs:label "nachname"@de;
+              rdfs:range xsd:string;
+              rdfs:subPropertyOf swrc:name.
+swrc:location a owl:DatatypeProperty;
+              rdfs:label "ort"@de.
+swrc:member a owl:ObjectProperty;
+            rdfs:comment """can an organization be a member of another organization? olivier 2006-06-07
+Philipp: Hmm could be possible. Therefore I added Organization to the range that one can state: Organization (has)member Organization.""";
+            rdfs:domain swrc:Organization;
+            rdfs:label "hatMitglied"@de;
+            rdfs:range [owl:unionOf (swrc:Person
+                                     swrc:Organization) ; 
+                        a owl:Class].
+swrc:memberOfPC a owl:ObjectProperty;
+                rdfs:domain swrc:Person;
+                rdfs:label "mitgliedVonPC"@de.
+swrc:month a owl:DatatypeProperty;
+           rdfs:label "monat"@de.
+swrc:name a owl:DatatypeProperty;
+          rdfs:label "name"@de;
+          rdfs:range xsd:string.
+swrc:note a owl:DatatypeProperty;
+          rdfs:label "bemerkung"@de;
+          rdfs:range xsd:string.
+swrc:number a owl:DatatypeProperty;
+            rdfs:label "nummer"@de.
+swrc:organization a owl:ObjectProperty;
+                  rdfs:comment """meaning not clear. Olivier 2006-06-07
+Philipp: This property appears in the class definition of swrc:Document. I think it is obsolete, since you may link a document via the dc:creator, dc:contributor or dc:publisher property to an organization.""";
+                  rdfs:label "organisation"@de.
+swrc:organizerOrChairOf a owl:ObjectProperty;
+                        rdfs:domain swrc:Person;
+                        rdfs:label "veranstalterOderVorsitzenderVon"@de;
+                        rdfs:range swrc:Event.
+swrc:outcomeDocument a owl:ObjectProperty;
+                     rdfs:domain swrc:Project;
+                     rdfs:label "ergebnisDokument"@de;
+                     rdfs:range swrc:Document.
+swrc:outcomeProduct a owl:ObjectProperty;
+                    rdfs:domain swrc:Project;
+                    rdfs:label "ergebnisProdukt"@de;
+                    rdfs:range swrc:Product.
+swrc:pages a owl:DatatypeProperty;
+           rdfs:label "seiten"@de.
+swrc:participant a owl:ObjectProperty;
+                 rdfs:domain swrc:Event;
+                 rdfs:label "teilnehmer"@de;
+                 rdfs:range swrc:Person.
+swrc:phone a owl:DatatypeProperty;
+           rdfs:domain [owl:unionOf (swrc:Person
+                                     swrc:Organization) ; 
+                        a owl:Class];
+           rdfs:label "telefon"@de.
+swrc:photo a owl:DatatypeProperty;
+           rdfs:label "foto"@de.
+swrc:price a owl:DatatypeProperty;
+           rdfs:label "preis"@de.
+swrc:product a owl:ObjectProperty;
+             rdfs:comment """meaning not clear. Olivier 2006-06-07
+Philipp: Hmm, I didn't create that property, therefore i don't know the intention of it.""";
+             rdfs:label "produkt"@de.
+swrc:projectInfo a owl:ObjectProperty;
+                 rdfs:domain swrc:Project;
+                 rdfs:label "projektInfo"@de;
+                 rdfs:range swrc:Document;
+                 owl:inverseOf swrc:describesProject.
+swrc:publication a owl:ObjectProperty;
+                 rdfs:comment """hasPublication (?). Olivier 2006-06-07
+Philipp: Yes, I think it is meant as \"hasPublication\". Anytime you have just the verb, it is meant as has + verb in a property.""",
+                              """check domain. Olivier 2006-06-07
+Philipp: checked.""";
+                 rdfs:domain [owl:unionOf (swrc:Person
+                                           swrc:Organization) ; 
+                              a owl:Class];
+                 rdfs:label "publikation"@de;
+                 rdfs:range swrc:Document.
+swrc:publisherOf a owl:ObjectProperty;
+                 rdfs:comment """check domain. Olivier 2006-06-07
+Philipp: checked.""",
+                              """check range. Olivier 2006-06-07
+Philipp: checked.""";
+                 rdfs:domain [owl:unionOf (swrc:Organization
+                                           swrc:Person) ; 
+                              a owl:Class];
+                 rdfs:label "herausgeberVon"@de;
+                 rdfs:range swrc:Document;
+                 owl:inverseOf dc11:publisher.
+swrc:school a owl:ObjectProperty;
+            rdfs:comment """meaning is not clear. Olivier 2006-06-07
+Philipp: This property appears in the class description of Thesis and I think should relate a Thesis to the associated university.""";
+            rdfs:label "schule"@de.
+swrc:series a owl:DatatypeProperty;
+            rdfs:label "serie"@de.
+swrc:source a owl:DatatypeProperty;
+            rdfs:label "quelle"@de.
+swrc:startDate a owl:DatatypeProperty;
+               rdfs:label "startDatum"@de;
+               rdfs:subPropertyOf swrc:date.
+swrc:status a owl:DatatypeProperty;
+            rdfs:label "status"@de.
+swrc:student a owl:ObjectProperty;
+             rdfs:domain swrc:University;
+             rdfs:label "student"@de;
+             rdfs:range swrc:Student;
+             owl:inverseOf swrc:studiesAt.
+swrc:studiesAt a owl:ObjectProperty;
+               rdfs:domain swrc:Student;
+               rdfs:label "studiertAn"@de;
+               rdfs:range swrc:University;
+               owl:inverseOf swrc:student.
+swrc:supervises a owl:ObjectProperty;
+                rdfs:domain swrc:Person;
+                rdfs:label "betreut"@de;
+                rdfs:range swrc:Person;
+                owl:inverseOf swrc:supervisor.
+swrc:supervisor a owl:ObjectProperty;
+                rdfs:domain swrc:Person;
+                rdfs:label "hatBetreuer"@de;
+                rdfs:range swrc:Person;
+                owl:inverseOf swrc:supervises.
+swrc:technicalReport a owl:ObjectProperty;
+                     rdfs:comment """check domain. Olivier 2006-06-07
+Philipp: checked.
+""";
+                     rdfs:domain [owl:unionOf (swrc:Person
+                                               swrc:Organization) ; 
+                                  a owl:Class];
+                     rdfs:label "fachbericht"@de;
+                     rdfs:range swrc:TechnicalReport.
+swrc:title a owl:DatatypeProperty;
+           rdfs:label "titel"@de;
+           rdfs:range xsd:string.
+swrc:type a owl:DatatypeProperty;
+          rdfs:label "typ"@de.
+swrc:vendor a owl:ObjectProperty;
+            rdfs:domain swrc:Product;
+            rdfs:label "verkaeufer"@de;
+            rdfs:range [owl:unionOf (swrc:Person
+                                     swrc:Organization) ; 
+                        a owl:Class].
+swrc:volume a owl:DatatypeProperty;
+            rdfs:label "volume"@de.
+swrc:worksAtProject a owl:ObjectProperty;
+                    rdfs:domain swrc:Person;
+                    rdfs:label "arbeitetAnProjekt"@de;
+                    rdfs:range swrc:Project.
+swrc:year a owl:DatatypeProperty;
+          rdfs:label "jahr"@de.
+<http://swrc.ontoware.org/ontology-07> a owl:Ontology;
+                                       rdfs:comment "Updated version of the swrc ontology (v0.7.1) based on the original swrc ontology. Responsible ontology engineer: Philipp Zaltenbach. Date: 22.06.2007. Contributions made by: Olivier Dameron.";
+                                       owl:versionInfo "0.7.1".

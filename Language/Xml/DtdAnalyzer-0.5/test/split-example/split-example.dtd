@@ -1,0 +1,81 @@
+<!--~~ Banana Split Example DTD
+
+This is a sample DTD to illustrate and to test various features of the
+DtdAnalyzer.
+
+This is the main ".dtd" module of this DTD.  These notes will be inserted into
+the main index.html page of the documenation.  Note that since this is the main
+module, we should use the "!dtd" annotations, and not any "!module" annotations
+here.
+
+Here is how you make links to other documentation pages:
+
+* Element tags must be preceded with a backtick:  \`\<split> -> `<split>.
+* Attribute:  \@instrument -> @instrument
+* Parameter entity:  \%banana.ent; -> %banana.ent;
+* General entity:  \&fleegle-pic; -> &fleegle-pic;
+
+~~-->
+
+<!--~~ <split>
+Specifies the main ingredients of a banana split.
+Remember the following:
+
+* One banana,
+* Two banana,
+* Three banana,
+* Four.
+
+~~ model
+Four bananas make a bunch and so do many more.
+
+~~ tags
+root rock-group mess-of-fun
+
+~~ examples
+Here is an example of how the XML might look.  Note that because this block is indented four
+spaces, it will appear as a code block (per Markdown).
+
+    <split>
+      <banana instrument='guitar'>Fleegle</banana>
+      <banana instrument='drums'>Bingo</banana>
+      <banana instrument='bass'>Drooper</banana>
+      <banana instrument='keyboard'>Snorky</banana>
+    </split>
+
+~~ schematron
+  <report test='count(banana) &lt; 4'>
+    You need four bananas to make a bunch.  Many more is okay, too.
+  </report>
+~~-->
+
+<!ELEMENT split (banana)*>
+
+<!--~~ %inline.ent;
+This entity declares some "core" things, that really just happen to be a few
+elements that look suspiciously like HTML.
+~~-->
+
+<!ENTITY % inline.ent PUBLIC "-//NLM//external ent dummy public id 1//EN" "core/inline.ent">
+%inline.ent;
+
+<!--~~ %InLine.ent;
+This is an entity that differs from another only in case.  When we generate documentation for
+a Windows machine, we add a suffix to the "slug" and the filename, because the Windows filesystem
+is case-insensitive.  This is the default behavior.  To turn it of (if you know, for example,
+that the documentation will be deployed to a Unix computer) use -nosuffixes.
+~~-->
+
+<!ENTITY % InLine.ent PUBLIC "-//NLM//external ent dummy public id 3//EN" "InLine.ent">
+%InLine.ent;
+
+
+
+<!--~~ %banana.ent;
+In the split DTD, we bring in the banana.ent module in order to get all the 
+slippery things assocatied with bananas.
+~~-->
+
+<!ENTITY % banana.ent PUBLIC "-//NLM//external ent dummy public id 2//EN" "banana.ent">
+%banana.ent;
+

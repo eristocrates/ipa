@@ -1,0 +1,1108 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ecrm: <http://erlangen-crm.org/current/>.
+@prefix efrbroo: <http://erlangen-crm.org/efrbroo/>.
+@prefix saws: <http://purl.org/saws/ontology#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+_:B3b528d882d81d4fa4cf745eab356974c a owl:AllDisjointClasses;
+                                    owl:members (saws:Definition
+                                                 saws:Narrative
+                                                 saws:OtherContentItem
+                                                 saws:Statement).
+_:B669ba5831dc8df91f0139555cc6d46ad a owl:AllDisjointProperties;
+                                    owl:members (saws:hasAddedDecoration
+                                                 saws:hasAddedMarginalia
+                                                 saws:hasMadeComment).
+_:B67123045d26d23e0dd378d36971f20a1 a owl:AllDisjointProperties;
+                                    owl:members (saws:commentMadeBy
+                                                 saws:decorationAddedBy
+                                                 saws:marginaliaAddedBy).
+_:B9754605a3f19ddc410cfe3d4203986f7 a owl:AllDisjointProperties;
+                                    owl:members (saws:commentMadeBy
+                                                 saws:decorationAddedBy
+                                                 saws:marginaliaAddedBy).
+_:Bcb29e72cdf303217b312256d2629c36b a owl:AllDisjointClasses;
+                                    owl:members (saws:Definition
+                                                 saws:Narrative
+                                                 saws:OtherContentItem
+                                                 saws:Statement).
+_:Bfb06b99d7619cb199ea8d3810957f39b a owl:AllDisjointProperties;
+                                    owl:members (saws:hasAddedDecoration
+                                                 saws:hasAddedMarginalia
+                                                 saws:hasMadeComment).
+ecrm:E21_Person rdfs:comment "Note for SAWS: this includes any human being, named or otherwise"@en;
+                rdfs:label "person"@en.
+ecrm:E35_Title rdfs:label "title"@en.
+ecrm:E39_Actor rdfs:comment "Note for SAWS: we can use Actor to refer to any living being (not necessarily a person, not necessarily still alive) who is identified/named/referred to within a linguistic object, though we may wish to use a more specific class such as Person, AttributedAuthor, Scribe etc."@en;
+               rdfs:label "actor"@en.
+ecrm:E41_Appellation rdfs:comment "Note for SAWS: we can use Appellation to state a person’s name or other name of interest e.g. of a church"@en;
+                     rdfs:label "appellation"@en.
+ecrm:E51_Contact_Point rdfs:label "contact point"@en.
+ecrm:E53_Place rdfs:label "place"@en.
+ecrm:E56_Language rdfs:comment """Note for SAWS: This represents language in which a material is written - this is put in the TEI header. 
+
+NB in the TEI header we should use standards for languages, e.g. the more detailed ISO standards at http://www.loc.gov/standards/iso639-2/ , so use “http://id.loc.gov/vocabulary/iso639-2/grc” for Ancient Greek rather than “Greek”"""@en;
+                  rdfs:label "language"@en.
+ecrm:P130_shows_features_of rdfs:subPropertyOf saws:isRelatedTo.
+ecrm:P148_has_component rdfs:subPropertyOf saws:hasMember.
+ecrm:P148i_is_component_of owl:propertyDisjointWith saws:isNotPresentIn.
+ecrm:P72i_is_language_of owl:inverseOf saws:isInLanguage.
+ecrm:P86i_contains a owl:TransitiveProperty.
+<http://purl.org/saws/ontology> a owl:Ontology;
+                                rdfs:comment "Ontology for the Sharing Ancient Wisdoms (SAWS) project, to represent the information and knowledge available in medieval gnomologia (collections of wise sayings). SAWS concentrates mainly on Ancient Greek and Arabic manuscripts containing wisdom literature. All class descriptions are provided by domain experts and the ontology has been developed through collaboration between these experts and ontology developers."@en;
+                                rdfs:seeAlso "http://www.ancientwisdoms.ac.uk"^^xsd:anyURI;
+                                owl:imports efrbroo:;
+                                owl:priorVersion "1.4"^^xsd:double;
+                                owl:versionInfo "Version 2.0. Produced after intensive discussions in Goettingen (September 2012) with SAWS project partners and various collaborators."@en.
+saws:AbstractManuscriptText a owl:Class;
+                            rdfs:comment "The text that is written in an manuscript"@en;
+                            rdfs:label "abstract manuscript text"@en;
+                            rdfs:subClassOf saws:OriginalMaterial.
+saws:AttributedAuthor a owl:Class;
+                      rdfs:comment "Person to whom original authorship of a linguistic object is attributed, as the source of that linguistic object"@en;
+                      rdfs:label "attributed author"@en;
+                      rdfs:subClassOf ecrm:E21_Person;
+                      owl:disjointWith saws:Editor.
+saws:CollectionInstance a owl:Class;
+                        rdfs:comment "The gnomologium or other compilation/collection on which we are working"@en;
+                        rdfs:label "collection instance"@en;
+                        rdfs:subClassOf saws:OriginalMaterial.
+saws:Comment a owl:Class;
+             rdfs:comment """Comment on a part of the material, usually from the modern editor. 
+
+N.B. The Comment class is for comments on a material that do not physically exist on that material. If a comment has been physically written on a material (usually in the margin), then this should be represented as an instance of Marginalia. """@en;
+             rdfs:label "comment"@en;
+             rdfs:subClassOf [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                  efrbroo:F23_Expression_Fragment) ; 
+                              a owl:Class],
+                             [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                  efrbroo:F23_Expression_Fragment) ; 
+                              a owl:Class];
+             owl:disjointWith saws:Marginalia.
+saws:ContentItem a owl:Class;
+                 rdfs:comment "A basic unit of interest within the Material: a division of a collection instance/section, for more exact reference than when using a section – this identifies basic units of interest in the material for SAWS (marked in TEI as <seg>)"@en;
+                 rdfs:label "content item"@en;
+                 rdfs:subClassOf [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                      efrbroo:F23_Expression_Fragment) ; 
+                                  a owl:Class],
+                                 [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                      efrbroo:F23_Expression_Fragment) ; 
+                                  a owl:Class].
+saws:DecorativeItem a owl:Class;
+                    rdfs:comment "Decorative element (picture, ornamentation, etc) within the material, either meaning-bearing or non meaning-bearing"@en;
+                    rdfs:label "decorative item"@en;
+                    rdfs:subClassOf ecrm:E36_Visual_Item.
+saws:Definition a owl:Class;
+                rdfs:comment "A content item that is defining a concept or term used in the material"@en;
+                rdfs:label "definition"@en;
+                rdfs:subClassOf saws:ContentItem.
+saws:Edition a owl:Class;
+             rdfs:comment "Any edited material, known or unknown, including texts such as the Bible and Kekaumenos"@en;
+             rdfs:label "edition"@en;
+             rdfs:subClassOf saws:Material;
+             owl:disjointWith saws:OriginalMaterial.
+saws:Editor a owl:Class;
+            rdfs:comment "A modern scholar editing material to produce an edition, in the age of printing and beyond"@en;
+            rdfs:label "editor"@en;
+            rdfs:subClassOf ecrm:E21_Person;
+            owl:disjointWith saws:Transmitter,
+                             saws:Scribe.
+saws:EditorSection a owl:Class;
+                   rdfs:comment "Any division within a linguistic object created by an editor, e.g. to make the navigation of the text clearer or to mark a region of interest"@en;
+                   rdfs:label "editor section"@en;
+                   rdfs:subClassOf saws:Section;
+                   owl:disjointWith saws:ScribeSection.
+saws:EditorTitle a owl:Class;
+                 rdfs:comment "Indicates a title that was assigned outside the manuscript by an editor"@en;
+                 rdfs:label "editor title"@en;
+                 rdfs:subClassOf ecrm:E35_Title;
+                 owl:disjointWith saws:ScribeTitle.
+saws:Epilogue a owl:Class;
+              rdfs:label "epilogue"@en;
+              rdfs:subClassOf saws:Section;
+              owl:disjointWith saws:Prologue.
+saws:Family a owl:Class;
+            rdfs:comment "A grouping of related Materials - this is a concept, an interpretation, rather than a physical thing"@en;
+            rdfs:label "family"@en;
+            rdfs:subClassOf efrbroo:F15_Complex_Work.
+saws:HypothesisedInstance a owl:Class;
+                          rdfs:comment "The physical instance of an abstract manuscript text or collection instance which we hypothesise may have existed, but which we do not have - it is presumed lost or destroyed"@en;
+                          rdfs:label "hypothesised instance"@en;
+                          rdfs:subClassOf [owl:unionOf (saws:AbstractManuscriptText
+                                                        saws:CollectionInstance) ; 
+                                           a owl:Class],
+                                          [owl:unionOf (saws:AbstractManuscriptText
+                                                        saws:CollectionInstance) ; 
+                                           a owl:Class],
+                                          saws:OriginalMaterial.
+saws:Institution a owl:Class;
+                 rdfs:comment "An Institution can own materials, be located at places, and include persons as members"@en;
+                 rdfs:label "institution"@en;
+                 rdfs:subClassOf ecrm:E74_Group.
+saws:Lacuna a owl:Class;
+            rdfs:comment "A physical gap in the physical manuscript"@en;
+            rdfs:label "lacuna"@en;
+            rdfs:subClassOf ecrm:E53_Place.
+saws:Locus a owl:Class;
+           rdfs:comment "A physical location within a physical manuscript"@en;
+           rdfs:label "locus"@en;
+           rdfs:subClassOf ecrm:E53_Place.
+saws:ManuscriptPart a owl:Class;
+                    rdfs:comment "A physical section of a physical manuscript"@en;
+                    rdfs:label "manuscript part"@en;
+                    rdfs:subClassOf saws:Locus.
+saws:Marginalia a owl:Class;
+                rdfs:comment """Remark(s) physically written in the margin of the material by a scribe, not necessarily the original scribe. 
+
+N.B. If a comment has been physically written on a material (usually in the margin), then this should be represented as an instance of Marginalia. The Comment class is for comments on a material that don’t physically exist on that material"""@en;
+                rdfs:label "marginalia"@en;
+                rdfs:subClassOf [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                     efrbroo:F23_Expression_Fragment) ; 
+                                 a owl:Class],
+                                [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                     efrbroo:F23_Expression_Fragment) ; 
+                                 a owl:Class].
+saws:Material a owl:Class;
+              rdfs:comment "Any of the texts we are working on in SAWS or that we are referring to"@en;
+              rdfs:label "material"@en;
+              rdfs:subClassOf [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                   efrbroo:F22_Self-Contained_Expression) ; 
+                               a owl:Class],
+                              [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                   efrbroo:F22_Self-Contained_Expression) ; 
+                               a owl:Class].
+saws:Narrative a owl:Class;
+               rdfs:comment "Narrative text that is not a saying itself, that either stands alone or is the text surrounding or immediately preceding or following the Statement (saying), e.g. 'Aristotle says...', 'The frogs asked for a king.’, ‘Aristotle is a lover of knowledge’"@en;
+               rdfs:label "narrative"@en;
+               rdfs:subClassOf saws:ContentItem.
+saws:OriginalMaterial a owl:Class;
+                      rdfs:comment "A material produced by scribe transcription rather than being edited in modern times"@en;
+                      rdfs:label "original material"@en;
+                      rdfs:subClassOf saws:Material.
+saws:OtherContentItem a owl:Class;
+                      rdfs:comment "A unit of the material within a content item, as identified by the modern editor, which isn’t a narrative, statement, or definition"@en;
+                      rdfs:label "other content item"@en;
+                      rdfs:subClassOf saws:ContentItem.
+saws:PhysicalManuscript a owl:Class;
+                        rdfs:comment "The physical object on which the material we are working on exists"@en;
+                        rdfs:label "physical manuscript"@en;
+                        rdfs:subClassOf efrbroo:F4_Manifestation_Singleton;
+                        owl:disjointWith saws:ReconstructedManuscript.
+saws:Prologue a owl:Class;
+              rdfs:label "prologue"@en;
+              rdfs:subClassOf saws:Section.
+saws:ReconstructedManuscript a owl:Class;
+                             rdfs:comment "Manuscript whose parts are now distributed as separate manuscript parts, so no longer exists as a whole, but can still be identified"@en;
+                             rdfs:label "reconstructed manuscript"@en;
+                             rdfs:subClassOf efrbroo:F4_Manifestation_Singleton.
+saws:Scribe a owl:Class;
+            rdfs:comment "The producer / author / copier of a linguistic object (excluding editions), in the medieval age. The scribe can be named or unnamed"@en;
+            rdfs:label "scribe"@en;
+            rdfs:subClassOf ecrm:E21_Person.
+saws:ScribeSection a owl:Class;
+                   rdfs:comment "Any division within a linguistic object indicated by a scribe"@en;
+                   rdfs:label "scribe section"@en;
+                   rdfs:subClassOf saws:Section.
+saws:ScribeTitle a owl:Class;
+                 rdfs:comment "Indicates a title that was assigned within the manuscript by a scribe"@en;
+                 rdfs:label "scribe title"@en;
+                 rdfs:subClassOf ecrm:E35_Title.
+saws:Section a owl:Class;
+             rdfs:comment "A division of a linguistic object e.g. chapter, verse, for larger-scale reference than when using a content item. These can be nested/numbered"@en;
+             rdfs:label "section"@en;
+             rdfs:subClassOf [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                  efrbroo:F22_Self-Contained_Expression) ; 
+                              a owl:Class],
+                             [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                  efrbroo:F22_Self-Contained_Expression) ; 
+                              a owl:Class].
+saws:Statement a owl:Class;
+               rdfs:comment "The actual saying, e.g. 'All men are mortal'"@en;
+               rdfs:label "statement"@en;
+               rdfs:subClassOf saws:ContentItem.
+saws:Transmitter a owl:Class;
+                 rdfs:comment "Person who is described in the text content as having transmitted a content item or other linguistic objects, for example ‘[Transmitter] said that [AttributedAuthor] said … (ContentItem)"@en;
+                 rdfs:label "transmitter"@en;
+                 rdfs:subClassOf ecrm:E21_Person.
+saws:areMarginaliaOn a owl:ObjectProperty;
+                     rdfs:comment "To indicate that Marginalia have been written on the manuscript,e .g. in the margins"@en;
+                     rdfs:domain saws:Marginalia;
+                     rdfs:label "are marginalia on"@en;
+                     rdfs:range saws:OriginalMaterial;
+                     rdfs:subPropertyOf saws:refersTo.
+saws:commentMadeBy a owl:ObjectProperty;
+                   rdfs:comment """A comment has been made by a modern-day scholar/editor. 
+
+NB to represent marginalia physically written in the margins of the manuscript, use: Marginalia marginaliaAddedBy Scribe."""@en;
+                   rdfs:domain saws:Comment;
+                   rdfs:label "comment made by"@en;
+                   rdfs:range saws:Editor;
+                   rdfs:seeAlso """LinguisticObject isWrittenBy Person
+Marginalia marginaliaAddedBy Scribe"""@en;
+                   rdfs:subPropertyOf saws:isRelatedTo;
+                   owl:inverseOf saws:hasMadeComment;
+                   owl:propertyChainAxiom (ecrm:P94i_was_created_by
+                                           ecrm:P14_carried_out_by),
+                                          (ecrm:P94i_was_created_by
+                                           ecrm:P14_carried_out_by).
+saws:containsTextInLanguage a owl:ObjectProperty;
+                            rdfs:domain [owl:unionOf (saws:ManuscriptPart
+                                                      saws:PhysicalManuscript
+                                                      saws:ReconstructedManuscript) ; 
+                                         a owl:Class],
+                                        [owl:unionOf (saws:ManuscriptPart
+                                                      saws:PhysicalManuscript
+                                                      saws:ReconstructedManuscript) ; 
+                                         a owl:Class];
+                            rdfs:range ecrm:E56_Language;
+                            owl:propertyChainAxiom (ecrm:P128_carries
+                                                    saws:isInLanguage),
+                                                   (ecrm:P128_carries
+                                                    saws:isInLanguage).
+saws:decorationAddedBy a owl:ObjectProperty;
+                       rdfs:comment """A DecorativeItem has been physically added onto the manuscript by a Person
+
+NB to represent marginalia notes (text) physically written in the margins of the manuscript, use: Marginalia marginaliaAddedBy Scribe @en"""@en;
+                       rdfs:domain saws:DecorativeItem;
+                       rdfs:label "decoration added by"@en;
+                       rdfs:range ecrm:E21_Person;
+                       rdfs:seeAlso "Marginalia marginaliaAddedBy Scribe"@en;
+                       rdfs:subPropertyOf saws:isRelatedTo;
+                       owl:propertyChainAxiom (ecrm:P94i_was_created_by
+                                               ecrm:P14_carried_out_by),
+                                              (ecrm:P94i_was_created_by
+                                               ecrm:P14_carried_out_by).
+saws:follows a owl:TransitiveProperty,
+               owl:ObjectProperty;
+             rdfs:comment "A Section/ContentItem/CollectionInstance comes after another Section/ContentItem/CollectionInstance in the document"@en;
+             rdfs:domain ecrm:E33_Linguistic_Object;
+             rdfs:label "follows"@en;
+             rdfs:range ecrm:E33_Linguistic_Object;
+             rdfs:subPropertyOf saws:isRelatedTo.
+saws:formsPartOf a owl:ObjectProperty;
+                 rdfs:comment "Physical Manuscripts can be composed of many Manuscript Parts – this relationship would be stated once for each part. This relationship can be used both for existing Manuscript Parts or for Manuscript Parts which used to be parts of a manuscript"@en;
+                 rdfs:label "forms part of"@en;
+                 rdfs:subPropertyOf saws:isRelatedTo,
+                                    ecrm:P46i_forms_part_of;
+                 owl:inverseOf saws:hasPart.
+saws:hasAddedDecoration a owl:ObjectProperty;
+                        rdfs:comment """A Person has physically added a DecorativeItem onto the manuscript
+
+NB to represent where scribes have written marginalia notes (text) physically onto the manuscript, use: Scribe hasAddedMarginalia Marginalia"""@en;
+                        rdfs:domain ecrm:E21_Person;
+                        rdfs:label "has added decoration"@en;
+                        rdfs:range saws:DecorativeItem;
+                        rdfs:seeAlso "Scribe hasAddedMarginalia Marginalia"@en;
+                        rdfs:subPropertyOf saws:isRelatedTo;
+                        owl:inverseOf saws:decorationAddedBy;
+                        owl:propertyChainAxiom (ecrm:P14i_performed
+                                                ecrm:P94_has_created),
+                                               (ecrm:P14i_performed
+                                                ecrm:P94_has_created).
+saws:hasAddedMarginalia a owl:ObjectProperty;
+                        rdfs:comment """A Scribe has physically added Marginalia onto a manuscript.
+
+NB to represent where a modern-day scholar/editor makes a comment, not written onto the manuscript, use: Editor hasMadeComment Comment """@en;
+                        rdfs:domain saws:Scribe;
+                        rdfs:label "has added marginalia"@en;
+                        rdfs:range saws:Marginalia;
+                        rdfs:seeAlso """Person hasWritten LinguisticObject
+Editor hasMadeComment Comment"""@en;
+                        rdfs:subPropertyOf saws:isRelatedTo;
+                        owl:inverseOf saws:marginaliaAddedBy;
+                        owl:propertyChainAxiom (ecrm:P14i_performed
+                                                ecrm:P94_has_created),
+                                               (ecrm:P14i_performed
+                                                ecrm:P94_has_created).
+saws:hasAncestor a owl:TransitiveProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment "An ancestor OriginalMaterial is a source material (direct or indirect) for the production of part or all of the descendant OriginalMaterial"@en;
+                 rdfs:label "has ancestor"@en;
+                 rdfs:subPropertyOf saws:isInSameFamilyAs;
+                 owl:propertyChainAxiom (saws:hasParent
+                                         saws:hasAncestor),
+                                        (saws:hasParent
+                                         saws:hasAncestor);
+                 owl:propertyDisjointWith saws:hasDescendant.
+saws:hasChild a owl:ObjectProperty;
+              rdfs:comment "The parent OriginalMaterial is a direct source for the production of part or all of the child OriginalMaterial"@en;
+              rdfs:label "hasChild"@en;
+              rdfs:subPropertyOf saws:hasDescendant;
+              owl:inverseOf saws:isChildOf;
+              owl:propertyDisjointWith saws:hasParent.
+saws:hasComment a owl:ObjectProperty;
+                rdfs:comment "To indicate that something has been commented about in an editorial Comment "@en;
+                rdfs:domain ecrm:E1_CRM_Entity;
+                rdfs:label "has comment"@en;
+                rdfs:range saws:Comment;
+                rdfs:subPropertyOf saws:isReferencedBy.
+saws:hasComponent a owl:ObjectProperty;
+                  rdfs:domain efrbroo:F2_Expression;
+                  rdfs:range efrbroo:F2_Expression;
+                  rdfs:subPropertyOf efrbroo:R5_has_component.
+saws:hasDescendant a owl:TransitiveProperty,
+                     owl:ObjectProperty;
+                   rdfs:comment "An ancestor OriginalMaterial is a source material (direct or indirect) for the production of part or all of the descendant OriginalMaterial"@en;
+                   rdfs:label "has descendant"@en;
+                   rdfs:subPropertyOf saws:isInSameFamilyAs;
+                   owl:inverseOf saws:isDescendantOf;
+                   owl:propertyChainAxiom (saws:hasChild
+                                           saws:hasDescendant),
+                                          (saws:hasChild
+                                           saws:hasDescendant).
+saws:hasMadeComment a owl:ObjectProperty;
+                    rdfs:comment """A modern-day scholar/editor has made a comment. 
+
+NB to represent scribes physically writing marginalia on the manuscript, use: Scribe hasAddedMarginalia.\"@en"""@en;
+                    rdfs:domain saws:Editor;
+                    rdfs:label "has made comment"@en;
+                    rdfs:range saws:Comment;
+                    rdfs:seeAlso """Person hasWritten LinguisticObject
+Scribe hasAddedMarginalia Marginalia """@en;
+                    rdfs:subPropertyOf saws:isRelatedTo;
+                    owl:propertyChainAxiom (ecrm:P14i_performed
+                                            ecrm:P94_has_created),
+                                           (ecrm:P14i_performed
+                                            ecrm:P94_has_created).
+saws:hasMarginalia a owl:ObjectProperty;
+                   rdfs:comment "To indicate that a manuscript has had Marginalia written on it, e.g. in the margins"@en;
+                   rdfs:domain saws:OriginalMaterial;
+                   rdfs:label "has marginalia"@en;
+                   rdfs:range saws:Marginalia;
+                   rdfs:subPropertyOf saws:isReferencedBy;
+                   owl:inverseOf saws:areMarginaliaOn.
+saws:hasMember a owl:ObjectProperty,
+                 owl:TransitiveProperty,
+                 owl:ReflexiveProperty;
+               rdfs:comment """We use hasMember to indicate:
+- A Family contains the specified original material (i.e. one
+produced by Scribe transcription rather than being edited in modern times)
+- An Institution has as a member this Person"""@en;
+               rdfs:domain ecrm:E1_CRM_Entity;
+               rdfs:label "has member"@en;
+               rdfs:range ecrm:E1_CRM_Entity;
+               rdfs:seeAlso """dct:hasPart
+efrbroo:R10_has_member
+ecrm:P107_has_current_or_former_member"""@en;
+               rdfs:subPropertyOf saws:isRelatedTo;
+               owl:inverseOf saws:isMemberOf.
+saws:hasOwned a owl:ObjectProperty;
+              rdfs:comment """A Person has owned (either currently or in the past) the Material of Interest. This would normally be based on a specific statement/mark of ownership.
+
+[nb this will always need a date?]"""@en;
+              rdfs:domain [owl:unionOf (ecrm:E21_Person
+                                        saws:Institution) ; 
+                           a owl:Class],
+                          [owl:unionOf (ecrm:E21_Person
+                                        saws:Institution) ; 
+                           a owl:Class];
+              rdfs:label "has owned"@en;
+              rdfs:range saws:Material;
+              rdfs:subPropertyOf saws:isRelatedTo;
+              owl:propertyChainAxiom (ecrm:P51i_is_former_or_current_owner_of
+                                      ecrm:P128_carries),
+                                     (ecrm:P51i_is_former_or_current_owner_of
+                                      ecrm:P128_carries).
+saws:hasParent a owl:ObjectProperty;
+               rdfs:comment "The parent OriginalMaterial is a direct source for the production of part or all of the child OriginalMaterial"@en;
+               rdfs:label "has parent"@en;
+               rdfs:subPropertyOf saws:hasAncestor;
+               owl:inverseOf saws:isParentOf.
+saws:hasPart a owl:ObjectProperty;
+             rdfs:comment "Physical Manuscripts can be composed of many Manuscript Parts – this relationship would be stated once for each part. This relationship can be used both for existing Manuscript Parts or for Manuscript Parts which used to be parts of a manuscript"@en;
+             rdfs:label "has part"@en;
+             rdfs:subPropertyOf saws:isRelatedTo,
+                                ecrm:P46_is_composed_of.
+saws:hasUsed a owl:ObjectProperty;
+             rdfs:comment """A Person has used (either currently or in the past) the OriginalMaterial in their work.
+
+[nb this will always need a date?]"""@en;
+             rdfs:domain efrbroo:F10_Person;
+             rdfs:label "has used"@en;
+             rdfs:range saws:OriginalMaterial;
+             rdfs:subPropertyOf saws:isRelatedTo;
+             owl:inverseOf saws:usedBy;
+             owl:propertyChainAxiom (ecrm:P14i_performed
+                                     ecrm:P16_used_specific_object),
+                                    (ecrm:P14i_performed
+                                     ecrm:P16_used_specific_object).
+saws:hasWritten a owl:ObjectProperty;
+                rdfs:comment """A Person has written (or has transcribed) a LinguisticObject.
+NB This also includes:
+Editor hasWritten Comment
+Scribe hasWritten Marginalia"""@en;
+                rdfs:domain ecrm:E21_Person;
+                rdfs:label "has written"@en;
+                rdfs:range ecrm:E33_Linguistic_Object;
+                rdfs:seeAlso """Editor hasMadeComment Comment
+Scribe hasAddedMarginalia Marginalia"""@en;
+                rdfs:subPropertyOf saws:isRelatedTo;
+                owl:propertyChainAxiom (ecrm:P14i_performed
+                                        ecrm:P94_has_created),
+                                       (ecrm:P14i_performed
+                                        ecrm:P94_has_created).
+saws:isAncestorOf a owl:TransitiveProperty,
+                    owl:ObjectProperty;
+                  rdfs:comment "An ancestor OriginalMaterial is a source material (direct or indirect) for the production of part or all of the descendant OriginalMaterial"@en;
+                  rdfs:label "is ancestor of"@en;
+                  rdfs:subPropertyOf saws:isInSameFamilyAs;
+                  owl:inverseOf saws:hasAncestor;
+                  owl:propertyChainAxiom (saws:isParentOf
+                                          saws:isAncestorOf),
+                                         (saws:isParentOf
+                                          saws:isAncestorOf).
+saws:isAttributedAuthorOf a owl:ObjectProperty;
+                          rdfs:comment "An author has been attributed as the author of this LinguisticObject (any Linguistic Object except Edition)"@en;
+                          rdfs:domain saws:AttributedAuthor;
+                          rdfs:label "is attributed author of"@en;
+                          rdfs:range [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                          [owl:complementOf saws:Edition ; 
+                                                          a owl:Class]) ; 
+                                      a owl:Class],
+                                     [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                          [owl:complementOf saws:Edition ; 
+                                                          a owl:Class]) ; 
+                                      a owl:Class];
+                          rdfs:subPropertyOf saws:hasWritten.
+saws:isAttributedToAuthor a owl:ObjectProperty;
+                          rdfs:comment "A LinguisticObject (except Edition) is attributed to this AttributedAuthor"@en;
+                          rdfs:domain [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                           [owl:complementOf saws:Edition ; 
+                                                           a owl:Class]) ; 
+                                       a owl:Class],
+                                      [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                           [owl:complementOf saws:Edition ; 
+                                                           a owl:Class]) ; 
+                                       a owl:Class];
+                          rdfs:label "is attributed to author"@en;
+                          rdfs:range saws:AttributedAuthor;
+                          rdfs:subPropertyOf saws:isWrittenBy;
+                          owl:inverseOf saws:isAttributedAuthorOf.
+saws:isBasedOn a owl:ObjectProperty;
+               rdfs:comment "An edition is based upon one or more textual materials (manuscripts, collections etc). One <relation> per each textual material)"@en;
+               rdfs:domain saws:Edition;
+               rdfs:label "is based on"@en;
+               rdfs:range ecrm:E33_Linguistic_Object;
+               rdfs:subPropertyOf saws:isRelatedTo;
+               owl:inverseOf saws:isSourceFor.
+saws:isBySameScribeAs a owl:TransitiveProperty,
+                        owl:ObjectProperty,
+                        owl:SymmetricProperty;
+                      rdfs:comment "The two manuscripts (or parts of the manuscripts) have been copied/produced by the same Person"@en;
+                      rdfs:domain [owl:unionOf (saws:ManuscriptPart
+                                                saws:PhysicalManuscript
+                                                saws:ReconstructedManuscript) ; 
+                                   a owl:Class],
+                                  [owl:unionOf (saws:ManuscriptPart
+                                                saws:PhysicalManuscript
+                                                saws:ReconstructedManuscript) ; 
+                                   a owl:Class];
+                      rdfs:label "is by same scribe as"@en;
+                      rdfs:range [owl:unionOf (saws:ManuscriptPart
+                                               saws:PhysicalManuscript
+                                               saws:ReconstructedManuscript) ; 
+                                  a owl:Class],
+                                 [owl:unionOf (saws:ManuscriptPart
+                                               saws:PhysicalManuscript
+                                               saws:ReconstructedManuscript) ; 
+                                  a owl:Class];
+                      rdfs:seeAlso """Person hasWritten LinguisticObject
+LinguisticObject isWrittenBy Person
+
+PhysicalManuscript/ReconstructedManuscript/ManuscriptPart isFromSamePlaceAs PhysicalManuscript/ReconstructedManuscript/ManuscriptPart"""@en;
+                      rdfs:subPropertyOf saws:isRelatedTo.
+saws:isChildOf a owl:ObjectProperty;
+               rdfs:comment "The parent OriginalMaterial is a direct source for the production of part or all of the child OriginalMaterial"@en;
+               rdfs:label "is child of"@en;
+               rdfs:subPropertyOf saws:isDescendantOf.
+saws:isCloseRenderingOf a owl:ObjectProperty;
+                        rdfs:comment """From one dialect or genre into another. This property specifies the source and target LinguisticObject involved (respectively) when rendering one LinguisticObject instance to express it in a related but different way (not necessarily in a different Language), resulting in a new LinguisticObject e.g. poetry into prose, or from one dialect to another, or a paraphrase being made.  This property indicates that the new LinguisticObject is a close rendering of the original LinguisticObject.
+
+For comparing between text of the same language, or comparing between different languages where the direction of translation is unknown or indirect"""@en;
+                        rdfs:domain ecrm:E33_Linguistic_Object;
+                        rdfs:label "is close rendering of"@en;
+                        rdfs:range ecrm:E33_Linguistic_Object;
+                        rdfs:seeAlso "isLooseRenderingOf"@en;
+                        rdfs:subPropertyOf saws:isVariantOf.
+saws:isCloseTranslationOf a owl:ObjectProperty,
+                            owl:AsymmetricProperty;
+                          rdfs:comment """A LinguisticObject is related to another LinguisticObject in that it conveys the same ideas, but is expressed in a different language (FRBRoo: an Expression of the same Work in a different Language). This property indicates that the translated text is a close interpretation of the original text 
+
+For comparing between different languages (where a translation act is known to have taken place directly between those documents, in a particular direction)"""@en;
+                          rdfs:domain ecrm:E33_Linguistic_Object;
+                          rdfs:label "is close translation of"@en;
+                          rdfs:range ecrm:E33_Linguistic_Object;
+                          rdfs:seeAlso """isLooseTranslationOf
+isCloseRenderingOf"""@en;
+                          rdfs:subPropertyOf saws:isDirectTranslationOf.
+saws:isCommentOn a owl:ObjectProperty;
+                 rdfs:comment "To indicate that an editorial Comment is being made about something"@en;
+                 rdfs:domain saws:Comment;
+                 rdfs:label "is comment on"@en;
+                 rdfs:range ecrm:E1_CRM_Entity;
+                 rdfs:subPropertyOf saws:refersTo;
+                 owl:inverseOf saws:hasComment.
+saws:isComponentOf a owl:ObjectProperty;
+                   rdfs:domain efrbroo:F2_Expression;
+                   rdfs:range efrbroo:F2_Expression;
+                   rdfs:subPropertyOf efrbroo:R5i_is_component_of;
+                   owl:inverseOf saws:hasComponent.
+saws:isCopiedBy a owl:ObjectProperty;
+                rdfs:comment "A LinguisticObject (except Edition) is copied by this Scribe"@en;
+                rdfs:domain [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                 [owl:complementOf saws:Edition ; 
+                                                 a owl:Class]) ; 
+                             a owl:Class],
+                            [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                 [owl:complementOf saws:Edition ; 
+                                                 a owl:Class]) ; 
+                             a owl:Class];
+                rdfs:label "is copied by"@en;
+                rdfs:range saws:Scribe;
+                rdfs:subPropertyOf saws:isWrittenBy;
+                owl:inverseOf saws:isCopierOf.
+saws:isCopierOf a owl:ObjectProperty;
+                rdfs:comment "A Scribe has written or copied this LinguisticObject (any Linguistic Object except Edition)"@en;
+                rdfs:domain saws:Scribe;
+                rdfs:label "is copier of"@en;
+                rdfs:range [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                [owl:complementOf saws:Edition ; 
+                                                a owl:Class]) ; 
+                            a owl:Class],
+                           [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                [owl:complementOf saws:Edition ; 
+                                                a owl:Class]) ; 
+                            a owl:Class];
+                rdfs:subPropertyOf saws:hasWritten.
+saws:isDescendantOf a owl:TransitiveProperty,
+                      owl:ObjectProperty;
+                    rdfs:comment "An ancestor OriginalMaterial is a source material (direct or indirect) for the production of part or all of the descendant OriginalMaterial"@en;
+                    rdfs:label "is descendant of"@en;
+                    rdfs:subPropertyOf saws:isInSameFamilyAs;
+                    owl:propertyChainAxiom (saws:isChildOf
+                                            saws:isDescendantOf),
+                                           (saws:isChildOf
+                                            saws:isDescendantOf).
+saws:isDifferentTo a owl:SymmetricProperty,
+                     owl:ObjectProperty;
+                   rdfs:comment "To explicitly say that two things are different from each other"@en;
+                   rdfs:label "is different to"@en.
+saws:isDirectTranslationOf a owl:ObjectProperty,
+                             owl:AsymmetricProperty;
+                           rdfs:comment """To indicate that the translator worked directly from an MS or text which we have identified, to produce the target linguistic object. A LinguisticObject is related to another LinguisticObject in that it conveys the same ideas (FRBRoo: Work), but is expressed in a different language (FRBRoo: a different and longer Expression).
+
+For comparing between different languages (where a translation act is known to have taken place directly between those documents, in a particular direction)"""@en;
+                           rdfs:domain ecrm:E33_Linguistic_Object;
+                           rdfs:label "is direct translation of"@en;
+                           rdfs:range ecrm:E33_Linguistic_Object;
+                           rdfs:seeAlso """isIndirectTranslationOf
+isTransliterationOf"""@en;
+                           rdfs:subPropertyOf ecrm:P73_has_translation;
+                           owl:propertyDisjointWith saws:isIndirectTranslationOf.
+saws:isEditedBy a owl:ObjectProperty;
+                rdfs:comment "An Edition is edited by an Editor (someone from the SAWS team or another modern-day scholar)"@en;
+                rdfs:domain saws:Edition;
+                rdfs:label "is edited by"@en;
+                rdfs:range saws:Editor;
+                rdfs:subPropertyOf saws:isWrittenBy;
+                owl:inverseOf saws:isEditorOf.
+saws:isEditorOf a owl:ObjectProperty;
+                rdfs:comment "An Editor (a modern-day scholar, e.g. someone from the SAWS team) has edited an Edition"@en;
+                rdfs:domain saws:Editor;
+                rdfs:label "is editor of"@en;
+                rdfs:range saws:Edition;
+                rdfs:subPropertyOf saws:hasWritten.
+saws:isFromSamePlaceAs a owl:SymmetricProperty,
+                         owl:ObjectProperty,
+                         owl:TransitiveProperty;
+                       rdfs:comment "The two manuscripts (or parts of the manuscripts) have been copied/produced in the same Place/Institution"@en;
+                       rdfs:domain [owl:unionOf (saws:ManuscriptPart
+                                                 saws:PhysicalManuscript
+                                                 saws:ReconstructedManuscript) ; 
+                                    a owl:Class],
+                                   [owl:unionOf (saws:ManuscriptPart
+                                                 saws:PhysicalManuscript
+                                                 saws:ReconstructedManuscript) ; 
+                                    a owl:Class];
+                       rdfs:label "is from same place as"@en;
+                       rdfs:range [owl:unionOf (saws:ManuscriptPart
+                                                saws:PhysicalManuscript
+                                                saws:ReconstructedManuscript) ; 
+                                   a owl:Class],
+                                  [owl:unionOf (saws:ManuscriptPart
+                                                saws:PhysicalManuscript
+                                                saws:ReconstructedManuscript) ; 
+                                   a owl:Class];
+                       rdfs:seeAlso """(Place or Institution) isLocationForWritingOf Material
+Material isWrittenAt (Place or Institution)
+
+PhysicalManuscript/ReconstructedManuscript/ManuscriptPart isBySameScribeAs  PhysicalManuscript/ReconstructedManuscriptPart"""@en;
+                       rdfs:subPropertyOf saws:isRelatedTo;
+                       owl:propertyChainAxiom (saws:isWrittenAt
+                                               saws:isLocationForWritingOf),
+                                              (saws:isWrittenAt
+                                               saws:isLocationForWritingOf).
+saws:isIdentifiedBy a owl:ObjectProperty;
+                    rdfs:domain [owl:unionOf (saws:Editor
+                                              saws:Scribe) ; 
+                                 a owl:Class],
+                                [owl:unionOf (saws:Editor
+                                              saws:Scribe) ; 
+                                 a owl:Class];
+                    rdfs:range [owl:unionOf (saws:EditorSection
+                                             saws:ScribeSection) ; 
+                                a owl:Class],
+                               [owl:unionOf (saws:EditorSection
+                                             saws:ScribeSection) ; 
+                                a owl:Class];
+                    rdfs:subPropertyOf ecrm:P94i_was_created_by.
+saws:isInLanguage a owl:ObjectProperty;
+                  rdfs:comment "A LinguisticObject is text in the specified Language"@en;
+                  rdfs:domain ecrm:E33_Linguistic_Object;
+                  rdfs:label "is in language"@en;
+                  rdfs:range ecrm:E56_Language;
+                  rdfs:subPropertyOf ecrm:P72_has_language.
+saws:isInSameFamilyAs a owl:TransitiveProperty,
+                        owl:SymmetricProperty,
+                        owl:ObjectProperty;
+                      rdfs:comment "Two OriginalMaterials are related by being part of the same Family of Original Materials"@en;
+                      rdfs:domain saws:OriginalMaterial;
+                      rdfs:label "is in same family as"@en;
+                      rdfs:range saws:OriginalMaterial;
+                      rdfs:subPropertyOf saws:isRelatedTo;
+                      owl:propertyChainAxiom (saws:isMemberOf
+                                              saws:hasMember),
+                                             (saws:isMemberOf
+                                              saws:hasMember).
+saws:isIndirectTranslationOf a owl:ObjectProperty;
+                             rdfs:comment """To indicate where the Scribe worked from a lost translation/version or series of translations/versions to produce the target LinguisticObject. This relation should be used when we know that one LinguisticObject is a source of another (in a different language) and we want to assert that one text is not a direct translation from a previous document but where other unknown documents were involved in the process of going from one to another.
+
+For comparing between text of the same language, or comparing between different languages where the direction of translation is unknown or indirect"""@en;
+                             rdfs:domain ecrm:E33_Linguistic_Object;
+                             rdfs:label "is indirect translation of"@en;
+                             rdfs:range ecrm:E33_Linguistic_Object;
+                             rdfs:seeAlso "isDirectTranslationOf"@en;
+                             rdfs:subPropertyOf saws:isVariantOf.
+saws:isLocatedAt a owl:TransitiveProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment """A physical thing is (or was) located at a particular location (Place or Locus)
+
+NB Use this relation if you are talking about a physically-existing object being located at a physical place. Use physicallyLocatedAt if you are talking about an abstract linguistic object being found at a particular locus."""@en;
+                 rdfs:domain ecrm:E18_Physical_Thing;
+                 rdfs:label "is located at"@en;
+                 rdfs:range ecrm:E53_Place;
+                 rdfs:seeAlso "physicallyLocatedAt"@en;
+                 rdfs:subPropertyOf saws:isRelatedTo,
+                                    ecrm:P53_has_former_or_current_location.
+saws:isLocationForWritingOf a owl:ObjectProperty;
+                            rdfs:comment "A Place is the location witnessing the writing (or transcription) of a LinguisticObject"@en;
+                            rdfs:domain [owl:unionOf (ecrm:E53_Place
+                                                      saws:Institution) ; 
+                                         a owl:Class],
+                                        [owl:unionOf (ecrm:E53_Place
+                                                      saws:Institution) ; 
+                                         a owl:Class];
+                            rdfs:label "is location for writing of"@en;
+                            rdfs:range ecrm:E33_Linguistic_Object;
+                            rdfs:seeAlso "isLocationOf"@en;
+                            rdfs:subPropertyOf saws:isRelatedTo.
+saws:isLocationOf a owl:TransitiveProperty,
+                    owl:ObjectProperty;
+                  rdfs:comment """A particular Place or Locus is (or was) the location of a physical thing.
+
+NB Use this relation if you are talking about the physical location of a physically-existing object. Use physicalLocationOf if you are talking about the physical location for an abstract linguistic object."""@en;
+                  rdfs:domain ecrm:E53_Place;
+                  rdfs:label "is location of"@en;
+                  rdfs:range ecrm:E18_Physical_Thing;
+                  rdfs:seeAlso "physicalLocationOf"@en;
+                  rdfs:subPropertyOf saws:isRelatedTo,
+                                     ecrm:P53i_is_former_or_current_location_of;
+                  owl:inverseOf saws:isLocatedAt.
+saws:isLongerTranslationOf a owl:ObjectProperty,
+                             owl:AsymmetricProperty;
+                           rdfs:comment """A LinguisticObject is an enhanced or expanded copy of another LinguisticObject.
+
+For comparing between different languages (where a translation act is known to have taken place directly between those documents, in a particular direction)"""@en;
+                           rdfs:domain ecrm:E33_Linguistic_Object;
+                           rdfs:label "is longer translation of"@en;
+                           rdfs:range ecrm:E33_Linguistic_Object;
+                           rdfs:seeAlso "isLongerVersionOf"@en;
+                           rdfs:subPropertyOf saws:isDirectTranslationOf.
+saws:isLongerVersionOf a owl:ObjectProperty;
+                       rdfs:comment """A LinguisticObject is related to another LinguisticObject in that it conveys the same ideas (FRBRoo: Work), but is expressed in a longer version (FRBRoo: a different and longer Expression) which is an extension of the original text in some way. 
+
+For comparing between text of the same language, or comparing between different languages where the direction of translation is unknown or indirect"""@en;
+                       rdfs:domain ecrm:E33_Linguistic_Object;
+                       rdfs:label "is longer version of"@en;
+                       rdfs:range ecrm:E33_Linguistic_Object;
+                       rdfs:subPropertyOf saws:isVariantOf;
+                       owl:inverseOf saws:isShorterVersionOf.
+saws:isLooseRenderingOf a owl:ObjectProperty;
+                        rdfs:comment """From one dialect or genre into another. This property specifies the source and target LinguisticObject involved (respectively) when rendering one LinguisticObject instance to express it in a related but different way (not necessarily in a different Language), resulting in a new LinguisticObject e.g. poetry into prose, or from one dialect to another, or a paraphrase being made. This property indicates that the new LinguisticObject is a loose rendering of the original LinguisticObject
+
+For comparing between text of the same language, or comparing between different languages where the direction of translation is unknown or indirect"""@en;
+                        rdfs:domain ecrm:E33_Linguistic_Object;
+                        rdfs:label "is loose rendering of"@en;
+                        rdfs:range ecrm:E33_Linguistic_Object;
+                        rdfs:seeAlso "isCloseRenderingOf"@en;
+                        rdfs:subPropertyOf saws:isVariantOf.
+saws:isLooseTranslationOf a owl:ObjectProperty,
+                            owl:AsymmetricProperty;
+                          rdfs:comment """A LinguisticObject is related to another LinguisticObject in that it conveys the same ideas (FRBRoo: Work), but is expressed in a different language (FRBRoo: a different and longer Expression). This property indicates that the translated text is a loose interpretation of the original text
+
+For comparing between different languages (where a translation act is known to have taken place directly between those documents, in a particular direction)"""@en;
+                          rdfs:domain ecrm:E33_Linguistic_Object;
+                          rdfs:label "is loose translation of"@en;
+                          rdfs:range ecrm:E33_Linguistic_Object;
+                          rdfs:seeAlso """isCloseTranslationOf
+isLooseRenderingOf"""@en;
+                          rdfs:subPropertyOf saws:isDirectTranslationOf.
+saws:isMemberOf a owl:TransitiveProperty,
+                  owl:ReflexiveProperty,
+                  owl:ObjectProperty;
+                rdfs:comment """We use isMemberOf to indicate:
+- An OriginalMaterial is member of a Family of related
+OriginalMaterials
+- A Person is member of an Institution"""@en;
+                rdfs:domain ecrm:E1_CRM_Entity;
+                rdfs:label "is member of"@en;
+                rdfs:range ecrm:E1_CRM_Entity;
+                rdfs:seeAlso """dct:isPartOf
+efrbroo:R10i_is_member_of
+ecrm:P107i_is_current_or_former_member_of"""@en;
+                rdfs:subPropertyOf saws:isRelatedTo.
+saws:isNotPresentIn a owl:ObjectProperty;
+                    rdfs:comment "To specify that a piece of text is missing from a LinguisticObject, for example if this text appears in a corresponding part of a manuscript from the same Family"@en;
+                    rdfs:domain ecrm:E33_Linguistic_Object;
+                    rdfs:label "is not present in"@en;
+                    rdfs:range ecrm:E33_Linguistic_Object.
+saws:isOlderThan a owl:ObjectProperty;
+                 rdfs:comment "A Physical man-made thing (physical manuscript) is older than (i.e. was produced earlier in time than) another specified Physical man-made thing"@en;
+                 rdfs:domain ecrm:E24_Physical_Man-Made_Thing;
+                 rdfs:label "is older than"@en;
+                 rdfs:range ecrm:E24_Physical_Man-Made_Thing;
+                 rdfs:subPropertyOf saws:isRelatedTo;
+                 owl:inverseOf saws:isYoungerThan;
+                 owl:propertyChainAxiom (ecrm:P108i_was_produced_by
+                                         ecrm:P120_occurs_before
+                                         ecrm:P108_has_produced),
+                                        (ecrm:P108i_was_produced_by
+                                         ecrm:P120_occurs_before
+                                         ecrm:P108_has_produced).
+saws:isParentOf a owl:ObjectProperty;
+                rdfs:comment "The parent OriginalMaterial is a direct source for the production of part or all of the child OriginalMaterial"@en;
+                rdfs:label "is parent of"@en;
+                rdfs:subPropertyOf saws:isAncestorOf.
+saws:isReferencedBy a owl:ObjectProperty;
+                    rdfs:comment "This property allows you to say that an object or some text (internal to that document or from an external source) is referred to in the text of a LinguisticObject, e.g. by being described or being alluded to"@en;
+                    rdfs:domain ecrm:E1_CRM_Entity;
+                    rdfs:label "is referenced by"@en;
+                    rdfs:range ecrm:E33_Linguistic_Object;
+                    rdfs:subPropertyOf saws:isRelatedTo,
+                                       ecrm:P67i_is_referred_to_by;
+                    owl:inverseOf saws:refersTo.
+saws:isRelatedTo a owl:SymmetricProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment """Two things are related in some way. This relation may be used
+where the details of the link are to be refined at a later date, or where some relation is seen but the annotater cannot be more specific than to indicate that this relationship exists."""@en;
+                 rdfs:domain ecrm:E33_Linguistic_Object;
+                 rdfs:label "is related to"@en;
+                 rdfs:range ecrm:E33_Linguistic_Object.
+saws:isSequentiallySameAs a owl:SymmetricProperty,
+                            owl:ObjectProperty,
+                            owl:TransitiveProperty;
+                          rdfs:comment "A CollectionInstance or Section has the same sequential structure as another CollectionInstance or Section. N.B. CollectionInstances contain sequences of ordered Sections. Sections contain sequences of ordered ContentItems"@en;
+                          rdfs:domain [owl:unionOf (saws:CollectionInstance
+                                                    saws:Section) ; 
+                                       a owl:Class],
+                                      [owl:unionOf (saws:CollectionInstance
+                                                    saws:Section) ; 
+                                       a owl:Class];
+                          rdfs:label "is sequentially same as"@en;
+                          rdfs:range [owl:unionOf (saws:CollectionInstance
+                                                   saws:Section) ; 
+                                      a owl:Class],
+                                     [owl:unionOf (saws:CollectionInstance
+                                                   saws:Section) ; 
+                                      a owl:Class];
+                          rdfs:seeAlso """isSequentiallySimilarTo
+isSubSequenceOf"""@en;
+                          rdfs:subPropertyOf saws:isRelatedTo.
+saws:isSequentiallySimilarTo a owl:ObjectProperty;
+                             rdfs:comment "A CollectionInstance or Section has a slightly different but related sequential structure to another CollectionInstance or Section. N.B. CollectionInstances contain sequences of ordered Sections. Sections contain sequences of ordered ContentItems"@en;
+                             rdfs:domain [owl:unionOf (saws:CollectionInstance
+                                                       saws:Section) ; 
+                                          a owl:Class],
+                                         [owl:unionOf (saws:CollectionInstance
+                                                       saws:Section) ; 
+                                          a owl:Class];
+                             rdfs:label "is sequentially similar to"@en;
+                             rdfs:range [owl:unionOf (saws:CollectionInstance
+                                                      saws:Section) ; 
+                                         a owl:Class],
+                                        [owl:unionOf (saws:CollectionInstance
+                                                      saws:Section) ; 
+                                         a owl:Class];
+                             rdfs:seeAlso """isSequentiallySameAs
+isSubSequenceOf"""@en;
+                             rdfs:subPropertyOf saws:isRelatedTo.
+saws:isShorterTranslationOf a owl:ObjectProperty,
+                              owl:AsymmetricProperty;
+                            rdfs:comment """A LinguisticObject is a condensed copy of another LinguisticObject.
+
+For comparing between different languages (where a translation act is known to have taken place directly between those documents, in a particular direction)"""@en;
+                            rdfs:domain ecrm:E33_Linguistic_Object;
+                            rdfs:label "is shorter translation of"@en;
+                            rdfs:range ecrm:E33_Linguistic_Object;
+                            rdfs:seeAlso "isShorterVersionOf"@en;
+                            rdfs:subPropertyOf saws:isDirectTranslationOf;
+                            owl:inverseOf saws:isLongerTranslationOf;
+                            owl:propertyDisjointWith saws:isShorterVersionOf.
+saws:isShorterVersionOf a owl:ObjectProperty;
+                        rdfs:comment """A LinguisticObject is related to another LinguisticObject in that it conveys the same ideas (FRBRoo: Work), but is expressed in a more concise version (FRBRoo: a different and shorter Expression)
+
+For comparing between text of the same language, or comparing between different languages where the direction of translation is unknown or indirect"""@en;
+                        rdfs:domain ecrm:E33_Linguistic_Object;
+                        rdfs:label "is shorter version of"@en;
+                        rdfs:range ecrm:E33_Linguistic_Object;
+                        rdfs:seeAlso "isShorterTranslationOf"@en;
+                        rdfs:subPropertyOf saws:isVariantOf.
+saws:isSiblingOf a owl:SymmetricProperty,
+                   owl:ObjectProperty;
+                 rdfs:comment "The two OriginalMaterials are produced using the same source(s) OriginalMaterial(s) (as indirect or direct source)"@en;
+                 rdfs:subPropertyOf saws:isInSameFamilyAs;
+                 owl:propertyChainAxiom (saws:hasAncestor
+                                         saws:isAncestorOf),
+                                        (saws:hasAncestor
+                                         saws:isAncestorOf).
+saws:isSourceFor a owl:ObjectProperty;
+                 rdfs:comment "A textual material (manuscripts, collections etc) is one of the source documents on which an edition is based. One <relation> per each textual material)"@en;
+                 rdfs:domain ecrm:E33_Linguistic_Object;
+                 rdfs:label "is source for"@en;
+                 rdfs:range saws:Edition;
+                 rdfs:subPropertyOf saws:isRelatedTo.
+saws:isSubSequenceOf a owl:ObjectProperty;
+                     rdfs:comment "A Section is formed of a sequence of ContentItems that is a subsequence of the sequence of ContentItems in another Section"@en;
+                     rdfs:domain saws:Section;
+                     rdfs:label "is sub sequence of"@en;
+                     rdfs:range saws:Section;
+                     rdfs:seeAlso """isSequentiallySameAs
+isSequentiallySimilarTo"""@en;
+                     rdfs:subPropertyOf saws:isRelatedTo.
+saws:isTransliterationOf a owl:ObjectProperty,
+                           owl:AsymmetricProperty;
+                         rdfs:comment "A LinguisticObject is a transliteration of another LinguisticObject, i.e. same words but using a different set of characters, e.g. kai isTransliterationOf και "@en;
+                         rdfs:domain ecrm:E33_Linguistic_Object;
+                         rdfs:label "is transliteration of"@en;
+                         rdfs:range ecrm:E33_Linguistic_Object;
+                         rdfs:seeAlso "isDirectTranslationOf"@en;
+                         rdfs:subPropertyOf saws:isDirectTranslationOf.
+saws:isTransmittedBy a owl:ObjectProperty;
+                     rdfs:comment "A LinguisticObject (except Edition) is transmitted by this Transmitter (Person)"@en;
+                     rdfs:domain [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                      [owl:complementOf saws:Edition ; 
+                                                      a owl:Class]) ; 
+                                  a owl:Class],
+                                 [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                      [owl:complementOf saws:Edition ; 
+                                                      a owl:Class]) ; 
+                                  a owl:Class];
+                     rdfs:label "is transmitted by"@en;
+                     rdfs:range saws:Transmitter;
+                     rdfs:subPropertyOf saws:isWrittenBy.
+saws:isTransmitterOf a owl:ObjectProperty;
+                     rdfs:comment "A Transmitter (Person) has transmitted this LinguisticObject (any Linguistic Object except Edition)"@en;
+                     rdfs:domain saws:Transmitter;
+                     rdfs:label "is transmitter of"@en;
+                     rdfs:range [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                     [owl:complementOf saws:Edition ; 
+                                                     a owl:Class]) ; 
+                                 a owl:Class],
+                                [owl:intersectionOf (ecrm:E33_Linguistic_Object
+                                                     [owl:complementOf saws:Edition ; 
+                                                     a owl:Class]) ; 
+                                 a owl:Class];
+                     rdfs:subPropertyOf saws:hasWritten;
+                     owl:inverseOf saws:isTransmittedBy.
+saws:isTwinOf a owl:SymmetricProperty,
+                owl:ObjectProperty;
+              rdfs:comment "The two OriginalMaterials are produced using the same direct source(s) OriginalMaterial"@en;
+              rdfs:label "is twin of"@en;
+              rdfs:subPropertyOf saws:isSiblingOf;
+              owl:propertyChainAxiom (saws:hasParent
+                                      saws:isParentOf),
+                                     (saws:hasParent
+                                      saws:isParentOf).
+saws:isUnrelatedTo a owl:SymmetricProperty,
+                     owl:ObjectProperty;
+                   rdfs:comment """To explicitly say two things are not at all related but are
+completely independent of each other"""@en;
+                   rdfs:label "is unrelated to"@en.
+saws:isVariantOf a owl:ObjectProperty;
+                 rdfs:comment """A LinguisticObject is a variant of another LinguisticObject. NB This property is specialised by its subproperties - this is the default option, but more specialised properties should be used where possible. isVariantOf can be used as a placeholder or temporary annotation in a preliminary stage of annotation
+
+For comparing between text of the same language, or comparing between different languages where the direction of translation is unknown or indirect"""@en;
+                 rdfs:domain ecrm:E33_Linguistic_Object;
+                 rdfs:label "is variant of"@en;
+                 rdfs:range ecrm:E33_Linguistic_Object;
+                 rdfs:seeAlso "isVariantTranslationOf"@en;
+                 rdfs:subPropertyOf ecrm:P130_shows_features_of;
+                 owl:propertyDisjointWith saws:isVariantTranslationOf.
+saws:isVariantTranslationOf a owl:ObjectProperty,
+                              owl:AsymmetricProperty;
+                            rdfs:comment """A LinguisticObject is a slightly modified copy of another LinguisticObject.
+
+For comparing between different languages (where a translation act is known to have taken place directly between those documents, in a particular direction)"""@en;
+                            rdfs:domain ecrm:E33_Linguistic_Object;
+                            rdfs:label "is variant translation of"@en;
+                            rdfs:range ecrm:E33_Linguistic_Object;
+                            rdfs:seeAlso "isVariant"@en;
+                            rdfs:subPropertyOf saws:isDirectTranslationOf.
+saws:isVerbatimOf a owl:ObjectProperty;
+                  rdfs:comment """A LinguisticObject is a verbatim, word-for-word copy of another LinguisticObject.
+
+For comparing between text of the same language, or comparing between different languages where the direction of translation is unknown or indirect"""@en;
+                  rdfs:domain ecrm:E33_Linguistic_Object;
+                  rdfs:label "is verbatim of"@en;
+                  rdfs:range ecrm:E33_Linguistic_Object;
+                  rdfs:seeAlso "isVerbatimTranslationOf"@en;
+                  rdfs:subPropertyOf saws:isVariantOf;
+                  owl:propertyDisjointWith saws:isVerbatimTranslationOf.
+saws:isVerbatimTranslationOf a owl:ObjectProperty,
+                               owl:AsymmetricProperty;
+                             rdfs:comment """A LinguisticObject is a verbatim, word-for-word copy of another LinguisticObject.
+
+For comparing between different languages (where a translation act is known to have taken place directly between those documents, in a particular direction)"""@en;
+                             rdfs:domain ecrm:E33_Linguistic_Object;
+                             rdfs:label "is verbatim translation of"@en;
+                             rdfs:seeAlso "isVerbatimOf"@en;
+                             rdfs:subPropertyOf saws:isDirectTranslationOf.
+saws:isWrittenAt a owl:ObjectProperty;
+                 rdfs:comment "A LinguisticObject is written (or transcribed) at a specified Place"@en;
+                 rdfs:domain ecrm:E33_Linguistic_Object;
+                 rdfs:label "is written at"@en;
+                 rdfs:range [owl:unionOf (ecrm:E53_Place
+                                          saws:Institution) ; 
+                             a owl:Class],
+                            [owl:unionOf (ecrm:E53_Place
+                                          saws:Institution) ; 
+                             a owl:Class];
+                 rdfs:seeAlso "isLocatedAt"@en;
+                 rdfs:subPropertyOf saws:isRelatedTo;
+                 owl:inverseOf saws:isLocationForWritingOf.
+saws:isWrittenBy a owl:ObjectProperty;
+                 rdfs:comment "A LinguisticObject is written (or transcribed) by a specified Person"@en;
+                 rdfs:domain ecrm:E33_Linguistic_Object;
+                 rdfs:label "is written by"@en;
+                 rdfs:range ecrm:E21_Person;
+                 rdfs:seeAlso """Comment commentMadeBy Editor
+Marginalia marginaliaAddedBy Scribe"""@en;
+                 rdfs:subPropertyOf saws:isRelatedTo;
+                 owl:inverseOf saws:hasWritten;
+                 owl:propertyChainAxiom (ecrm:P94i_was_created_by
+                                         ecrm:P14_carried_out_by),
+                                        (ecrm:P94i_was_created_by
+                                         ecrm:P14_carried_out_by).
+saws:isYoungerThan a owl:ObjectProperty;
+                   rdfs:comment "A Physical man-made thing (physical manuscript) is younger than (i.e. was produced later in time than) another specified Physical man-made thing"@en;
+                   rdfs:domain ecrm:E24_Physical_Man-Made_Thing;
+                   rdfs:label "is younger than"@en;
+                   rdfs:range ecrm:E24_Physical_Man-Made_Thing;
+                   rdfs:subPropertyOf saws:isRelatedTo;
+                   owl:propertyChainAxiom (ecrm:P108i_was_produced_by
+                                           ecrm:P120i_occurs_after
+                                           ecrm:P108_has_produced),
+                                          (ecrm:P108i_was_produced_by
+                                           ecrm:P120i_occurs_after
+                                           ecrm:P108_has_produced).
+saws:marginaliaAddedBy a owl:ObjectProperty;
+                       rdfs:comment """Marginalia have been physically added onto the manuscript by a Scribe
+
+NB to represent where a comment has been made by a modern-day scholar/editor, not written onto the manuscript, use: Comment commentMadeBy Editor"""@en;
+                       rdfs:domain saws:Marginalia;
+                       rdfs:label "marginalia added by"@en;
+                       rdfs:range saws:Scribe;
+                       rdfs:seeAlso """LinguisticObject isWrittenBy Person
+Comment commentMadeBy Editor"""@en;
+                       rdfs:subPropertyOf saws:isRelatedTo;
+                       owl:propertyChainAxiom (ecrm:P94i_was_created_by
+                                               ecrm:P14_carried_out_by),
+                                              (ecrm:P94i_was_created_by
+                                               ecrm:P14_carried_out_by).
+saws:ownedBy a owl:ObjectProperty;
+             rdfs:comment """The Material of interest has been owned (in the past or currently) by this particular Person. This would normally be based on a specific statement/mark of ownership.
+
+[nb this will always need a date?]"""@en;
+             rdfs:domain saws:Material;
+             rdfs:label "owned by"@en;
+             rdfs:range [owl:unionOf (efrbroo:F10_Person
+                                      saws:Institution) ; 
+                         a owl:Class],
+                        [owl:unionOf (efrbroo:F10_Person
+                                      saws:Institution) ; 
+                         a owl:Class];
+             rdfs:subPropertyOf saws:isRelatedTo;
+             owl:inverseOf saws:hasOwned;
+             owl:propertyChainAxiom (ecrm:P128i_is_carried_by
+                                     ecrm:P51_has_former_or_current_owner),
+                                    (ecrm:P128i_is_carried_by
+                                     ecrm:P51_has_former_or_current_owner).
+saws:physicalLocationOf a owl:ObjectProperty;
+                        rdfs:comment """This lets you describe the physical location of the LinguisticObject, e.g. a particular piece of text, or Marginalia, by recording the Locus that the notes are physically written on in a Material. You can describe the Locus (e.g. folio number, or position on the page) in free text, in as much detail as required, if there is no formal way to describe the location of the text/marginalia] 
+
+NB Use this relation if you are talking about the physical location for an abstract linguistic object. Use isLocationOf if you are talking about the physical location of a physically-existing object."""@en;
+                        rdfs:domain saws:Locus;
+                        rdfs:label "physical location of"@en;
+                        rdfs:range ecrm:E33_Linguistic_Object;
+                        rdfs:seeAlso "isLocationOf"@en;
+                        rdfs:subPropertyOf saws:isRelatedTo;
+                        owl:propertyChainAxiom (saws:isLocationOf
+                                                efrbroo:R18i_was_created_by
+                                                efrbroo:R17_created),
+                                               (saws:isLocationOf
+                                                efrbroo:R18i_was_created_by
+                                                efrbroo:R17_created).
+saws:physicallyLocatedAt a owl:ObjectProperty;
+                         rdfs:comment """This lets you describe the physical location of the LinguisticObject, e.g. a particular piece of text, or Marginalia, by recording the Locus that the notes are physically written on in a Material. You can describe the Locus (e.g. folio number, or position on the page) in free text, in as much detail as required, if there is no formal way to describe the location of the text/marginalia
+
+NB Use this relation if you are talking about an abstract linguistic object which is to be found at a particular locus. Use isLocatedAt if you are talking about a physically-existing object being located at a physical place."""@en,
+                                      "physically located at"@en;
+                         rdfs:domain ecrm:E33_Linguistic_Object;
+                         rdfs:range saws:Locus;
+                         rdfs:seeAlso "isLocatedAt"@en;
+                         rdfs:subPropertyOf saws:isRelatedTo;
+                         owl:inverseOf saws:physicalLocationOf;
+                         owl:propertyChainAxiom (efrbroo:R17i_was_created_by
+                                                 efrbroo:R18_created
+                                                 saws:isLocatedAt),
+                                                (efrbroo:R17i_was_created_by
+                                                 efrbroo:R18_created
+                                                 saws:isLocatedAt).
+saws:precedes a owl:TransitiveProperty,
+                owl:ObjectProperty;
+              rdfs:comment "A Section/ContentItem/CollectionInstance comes before another Section/ContentItem/CollectionInstance in the document"@en;
+              rdfs:label "precedes"@en;
+              rdfs:subPropertyOf saws:isRelatedTo;
+              owl:inverseOf saws:follows.
+saws:refersTo a owl:ObjectProperty;
+              rdfs:comment "This property allows you to say that the text of a LinguisticObject makes a reference to (or mentions) some other text or object, either within the text (e.g. as allusion) or external to the text (for external things, please give a URI for that object)"@en;
+              rdfs:domain ecrm:E33_Linguistic_Object;
+              rdfs:label "refers to"@en;
+              rdfs:range ecrm:E1_CRM_Entity;
+              rdfs:subPropertyOf saws:isRelatedTo,
+                                 ecrm:P67_refers_to.
+saws:usedBy a owl:ObjectProperty;
+            rdfs:comment """The Original Material of interest has been used by this particular Person in their work.
+
+[nb this will always need a date?]"""@en;
+            rdfs:domain saws:OriginalMaterial;
+            rdfs:label "used by"@en;
+            rdfs:range efrbroo:F10_Person;
+            rdfs:subPropertyOf saws:isRelatedTo;
+            owl:propertyChainAxiom (ecrm:P16i_was_used_for
+                                    ecrm:P14_carried_out_by),
+                                   (ecrm:P16i_was_used_for
+                                    ecrm:P14_carried_out_by).

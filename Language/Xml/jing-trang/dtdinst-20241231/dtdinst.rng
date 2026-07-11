@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <element name="doctype">
+      <zeroOrMore>
+        <ref name="decl"/>
+      </zeroOrMore>
+    </element>
+  </start>
+  <define name="decl">
+    <choice>
+      <ref name="elementDecl"/>
+      <ref name="attlistDecl"/>
+      <ref name="def"/>
+      <ref name="overriddenDef"/>
+      <ref name="externalIdRef"/>
+      <ref name="includedSection"/>
+      <ref name="ignoredSection"/>
+      <ref name="internalEntityDecl"/>
+      <ref name="externalEntityDecl"/>
+      <ref name="notationDecl"/>
+      <ref name="processingInstruction"/>
+      <ref name="comment"/>
+    </choice>
+  </define>
+  <define name="def">
+    <choice>
+      <ref name="modelGroupDef"/>
+      <ref name="attributeGroupDef"/>
+      <ref name="enumGroupDef"/>
+      <ref name="datatypeDef"/>
+      <ref name="attributeDefaultDef"/>
+      <ref name="flagDef"/>
+      <ref name="nameSpecDef"/>
+      <ref name="externalIdDef"/>
+      <ref name="paramDef"/>
+    </choice>
+  </define>
+  <define name="elementDecl">
+    <element name="element">
+      <ref name="nameSpec"/>
+      <ref name="modelGroup"/>
+    </element>
+  </define>
+  <define name="modelGroupDef">
+    <element name="modelGroup">
+      <ref name="name"/>
+      <ref name="modelGroup"/>
+    </element>
+  </define>
+  <define name="datatypeDef">
+    <element name="datatype">
+      <ref name="name"/>
+      <ref name="datatype"/>
+    </element>
+  </define>
+  <define name="attributeDefaultDef">
+    <element name="attributeDefault">
+      <ref name="name"/>
+      <ref name="attributeDefault"/>
+    </element>
+  </define>
+  <define name="flagDef">
+    <element name="flag">
+      <ref name="name"/>
+      <ref name="flag"/>
+    </element>
+  </define>
+  <define name="nameSpecDef">
+    <element name="nameSpec">
+      <ref name="name"/>
+      <ref name="nameSpec"/>
+    </element>
+  </define>
+  <define name="externalIdDef">
+    <element name="externalId">
+      <ref name="name"/>
+      <ref name="externalId"/>
+    </element>
+  </define>
+  <define name="paramDef">
+    <element name="param">
+      <ref name="name"/>
+      <text/>
+    </element>
+  </define>
+  <define name="overriddenDef">
+    <element name="overridden">
+      <choice>
+        <ref name="def"/>
+        <ref name="duplicateDef"/>
+      </choice>
+    </element>
+  </define>
+  <define name="duplicateDef">
+    <element name="duplicate">
+      <ref name="name"/>
+    </element>
+  </define>
+  <define name="includedSection">
+    <element name="includedSection">
+      <optional>
+        <attribute name="flag">
+          <data type="NCName"/>
+        </attribute>
+      </optional>
+      <zeroOrMore>
+        <ref name="decl"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="ignoredSection">
+    <element name="ignoredSection">
+      <optional>
+        <attribute name="flag">
+          <data type="NCName"/>
+        </attribute>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="externalIdRef">
+    <element name="externalIdRef">
+      <ref name="name"/>
+      <zeroOrMore>
+        <ref name="decl"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="internalEntityDecl">
+    <element name="internalEntity">
+      <ref name="name"/>
+      <text/>
+    </element>
+  </define>
+  <define name="externalEntityDecl">
+    <element name="externalEntity">
+      <ref name="name"/>
+      <ref name="externalId"/>
+    </element>
+  </define>
+  <define name="notationDecl">
+    <element name="notation">
+      <ref name="name"/>
+      <ref name="externalId"/>
+    </element>
+  </define>
+  <define name="processingInstruction">
+    <element name="processingInstruction">
+      <attribute name="target">
+        <data type="NCName"/>
+      </attribute>
+      <text/>
+    </element>
+  </define>
+  <define name="comment">
+    <element name="comment">
+      <text/>
+    </element>
+  </define>
+  <define name="datatype">
+    <choice>
+      <element name="tokenized">
+        <choice>
+          <attribute name="name">
+            <choice>
+              <value>NMTOKEN</value>
+              <value>NMTOKENS</value>
+              <value>ENTITY</value>
+              <value>ENTITIES</value>
+              <value>ID</value>
+              <value>IDREF</value>
+              <value>IDREFS</value>
+            </choice>
+          </attribute>
+          <group>
+            <optional>
+              <attribute name="name">
+                <value>NOTATION</value>
+              </attribute>
+            </optional>
+            <ref name="enumGroup"/>
+          </group>
+        </choice>
+      </element>
+      <element name="cdata">
+        <empty/>
+      </element>
+      <element name="datatypeRef">
+        <ref name="name"/>
+      </element>
+    </choice>
+  </define>
+  <define name="enumGroup">
+    <zeroOrMore>
+      <choice>
+        <element name="enum">
+          <data type="NMTOKEN"/>
+        </element>
+        <element name="enumGroupRef">
+          <ref name="name"/>
+        </element>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <define name="enumGroupDef">
+    <element name="enumGroup">
+      <ref name="name"/>
+      <ref name="enumGroup"/>
+    </element>
+  </define>
+  <define name="flag">
+    <choice>
+      <element name="include">
+        <empty/>
+      </element>
+      <element name="ignore">
+        <empty/>
+      </element>
+      <element name="flagRef">
+        <ref name="name"/>
+      </element>
+    </choice>
+  </define>
+  <define name="attlistDecl">
+    <element name="attlist">
+      <ref name="nameSpec"/>
+      <ref name="attributeGroup"/>
+    </element>
+  </define>
+  <define name="attributeGroupDef">
+    <element name="attributeGroup">
+      <ref name="name"/>
+      <ref name="attributeGroup"/>
+    </element>
+  </define>
+  <define name="attributeGroup">
+    <zeroOrMore>
+      <choice>
+        <element name="attribute">
+          <ref name="nameSpec"/>
+          <ref name="datatype"/>
+          <ref name="attributeDefault"/>
+        </element>
+        <element name="attributeGroupRef">
+          <ref name="name"/>
+        </element>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <define name="attributeDefault">
+    <choice>
+      <element name="implied">
+        <empty/>
+      </element>
+      <element name="required">
+        <empty/>
+      </element>
+      <element>
+        <choice>
+          <name>default</name>
+          <name>fixed</name>
+        </choice>
+        <text/>
+      </element>
+      <element name="attributeDefaultRef">
+        <ref name="name"/>
+      </element>
+    </choice>
+  </define>
+  <define name="modelGroup">
+    <choice>
+      <element name="modelGroupRef">
+        <ref name="name"/>
+      </element>
+      <element name="elementRef">
+        <ref name="nameSpec"/>
+      </element>
+      <element name="oneOrMore">
+        <ref name="modelGroup"/>
+      </element>
+      <element name="zeroOrMore">
+        <ref name="modelGroup"/>
+      </element>
+      <element name="optional">
+        <ref name="modelGroup"/>
+      </element>
+      <element name="pcdata">
+        <empty/>
+      </element>
+      <element name="choice">
+        <optional>
+          <ref name="modelGroup"/>
+          <oneOrMore>
+            <ref name="modelGroup"/>
+          </oneOrMore>
+        </optional>
+      </element>
+      <element name="sequence">
+        <optional>
+          <ref name="modelGroup"/>
+          <oneOrMore>
+            <ref name="modelGroup"/>
+          </oneOrMore>
+        </optional>
+      </element>
+    </choice>
+  </define>
+  <define name="externalId">
+    <optional>
+      <attribute name="system">
+        <data type="anyURI"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="public"/>
+    </optional>
+    <optional>
+      <attribute name="xml:base">
+        <data type="anyURI"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="name">
+    <attribute name="name">
+      <data type="NCName"/>
+    </attribute>
+  </define>
+  <define name="nameSpec">
+    <choice>
+      <element name="name">
+        <data type="Name"/>
+      </element>
+      <element name="nameSpecRef">
+        <ref name="name"/>
+      </element>
+    </choice>
+  </define>
+</grammar>

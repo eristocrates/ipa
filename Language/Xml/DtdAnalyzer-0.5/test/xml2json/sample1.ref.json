@@ -1,0 +1,13 @@
+{
+    "Result": {
+        "DbList": [
+            "pubmed",
+            "protein"
+        ],
+        "DbInfo": {
+            "DbName": "pubmed",
+            "MenuName": "PubMed",
+            "Description": "PubMed bibliographic record"
+        }
+    }
+}

@@ -1,0 +1,142 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ac: <http://umbel.org/umbel/ac/>.
+@prefix whisky: <http://vocab.org/whisky/terms/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dcmitype: <http://purl.org/dc/dcmitype/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+<http://vocab.org/whisky/terms> dc11:title "Vocabulary for describing whisky varieties"@en;
+                                a owl:Ontology;
+                                rdfs:comment "Created at vocamp oxford 2008"@en.
+<http://vocab.org/whisky/terms.html> dc11:format "text/html";
+                                     a dcmitype:Text,
+                                       foaf:Document;
+                                     rdfs:label "HTML".
+<http://vocab.org/whisky/terms.json> dc11:format "application/json";
+                                     a dcmitype:Text,
+                                       foaf:Document;
+                                     rdfs:label "JSON".
+<http://vocab.org/whisky/terms.rdf> dcterms:hasFormat <http://vocab.org/whisky/terms.html>,
+                                                      <http://vocab.org/whisky/terms.json>,
+                                                      <http://vocab.org/whisky/terms.turtle>;
+                                    a foaf:Document,
+                                      dcmitype:Text;
+                                    foaf:primaryTopic <http://vocab.org/whisky/terms>;
+                                    foaf:topic <http://vocab.org/whisky/terms>.
+<http://vocab.org/whisky/terms.turtle> dc11:format "text/plain";
+                                       a dcmitype:Text,
+                                         foaf:Document;
+                                       rdfs:label "Turtle".
+whisky:Brand a rdfs:Class;
+             rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+             rdfs:label "brand".
+whisky:Cask a rdfs:Class;
+            rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+            rdfs:label "cask".
+whisky:Distillery a rdfs:Class;
+                  rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                  rdfs:label "distillery".
+whisky:WaterSource a rdfs:Class;
+                   rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                   rdfs:label "water source".
+whisky:Whisky a rdfs:Class;
+              rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+              rdfs:label "Whisky",
+                         "Whiskey".
+whisky:WhiskyReview a rdfs:Class;
+                    rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                    rdfs:label "Whisky Review".
+whisky:abv a rdf:Property;
+           rdfs:comment "a standard measure of how much alcohol is contained in the drink";
+           rdfs:domain whisky:Whisky;
+           rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+           rdfs:label "alcohol by volume".
+whisky:age a rdf:Property;
+           rdfs:domain whisky:Whisky;
+           rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+           rdfs:label "age".
+whisky:agingCask a rdf:Property;
+                 rdfs:domain whisky:Whisky;
+                 rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                 rdfs:label "aging cask";
+                 rdfs:range whisky:Cask.
+whisky:body a rdf:Property;
+            rdfs:domain whisky:WhiskyReview;
+            rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+            rdfs:label "body".
+whisky:brand a rdf:Property;
+             rdfs:domain whisky:Whisky;
+             rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+             rdfs:label "brand";
+             rdfs:range whisky:Brand.
+whisky:character a rdf:Property;
+                 rdfs:domain whisky:Whisky;
+                 rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                 rdfs:label "character".
+whisky:colour a rdf:Property;
+              rdfs:domain whisky:WhiskyReview;
+              rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+              rdfs:label "colour".
+whisky:colourDescription a rdf:Property;
+                         rdfs:domain whisky:Whisky;
+                         rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                         rdfs:label "colour description".
+whisky:distillery a rdf:Property;
+                  rdfs:domain whisky:Whisky;
+                  rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                  rdfs:label "distillery";
+                  rdfs:range whisky:Distillery.
+whisky:expressionLabel a rdf:Property;
+                       rdfs:domain whisky:Whisky;
+                       rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                       rdfs:label "expression label".
+whisky:finish a rdf:Property;
+              rdfs:domain whisky:WhiskyReview;
+              rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+              rdfs:label "finish".
+whisky:finishingCask a rdf:Property;
+                     rdfs:domain whisky:Whisky;
+                     rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                     rdfs:label "finishing cask";
+                     rdfs:range whisky:Cask.
+whisky:grain a rdf:Property;
+             rdfs:domain whisky:Whisky;
+             rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+             rdfs:label "grain".
+whisky:material a rdf:Property;
+                rdfs:domain whisky:Cask;
+                rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                rdfs:label "material".
+whisky:nose a rdf:Property;
+            rdfs:domain whisky:WhiskyReview;
+            rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+            rdfs:label "nose".
+whisky:owner a rdf:Property;
+             rdfs:domain whisky:Distillery;
+             rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+             rdfs:label "owner";
+             rdfs:range foaf:Organization.
+whisky:palate a rdf:Property;
+              rdfs:domain whisky:WhiskyReview;
+              rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+              rdfs:label "palate".
+whisky:previousContents a rdf:Property;
+                        rdfs:domain whisky:Cask;
+                        rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                        rdfs:label "previous contents";
+                        rdfs:range ac:LiquidTangibleThing.
+whisky:region a rdf:Property;
+              rdfs:domain whisky:Distillery;
+              rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+              rdfs:label "region";
+              rdfs:range whisky:Region.
+whisky:waterSource a rdf:Property;
+                   rdfs:domain whisky:Distillery;
+                   rdfs:isDefinedBy <http://vocab.org/whisky/terms>;
+                   rdfs:label "water source";
+                   rdfs:range whisky:WaterSource.

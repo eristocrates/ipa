@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Result SYSTEM "sample4.dtd">
+
+<Result>
+  <DocumentSummarySet status="OK">
+    <DocumentSummary uid="284822047">
+      <Title>Cat [Donor vector pTKIP-cat]</Title>
+      <Gi>284822047</Gi>
+      <Statistics>
+        <Stat type="all" count="4"/>
+        <Stat type="blob_size" count="5964"/>
+      </Statistics>
+      <Properties aa="2" qual="32">34</Properties>
+      <MoreProps indexed="yes">
+        <prop>ADB98021.1</prop>
+      </MoreProps>
+      <Booleans>
+        <Boolean></Boolean>  <!-- empty string is false -->
+        <Boolean> no </Boolean>
+        <Boolean> 0</Boolean>
+        <Boolean>false  </Boolean>
+        <Boolean>bingo</Boolean>  <!-- true -->
+        <Boolean>yes</Boolean>
+        <Boolean>true</Boolean>
+      </Booleans>
+      <test1 a1="fleegle">
+        <c1>bingo</c1>
+        <c1>drooper</c1>
+        <c1>snorky</c1>
+      </test1>
+      <test2 a2a="guitar" a2b="violin">
+        <c2a>bingo</c2a>
+        <c2b>drooper</c2b>
+        <c2c>snorky</c2c>
+        <c2c>drooper</c2c>
+      </test2>
+      <test3 a3a="foo">
+        <c3a>bar</c3a>
+        <c3b>buzz</c3b>
+      </test3>
+    </DocumentSummary>
+  </DocumentSummarySet>
+</Result>

@@ -1,0 +1,131 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix am: <http://open-services.net/ns/asset#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+am: dcterms:description """
+			All vocabulary URIs defined in the OSLC
+			Asset Management (Asset) namespace.
+		"""^^rdf:XMLLiteral;
+    dcterms:title """The OSLC Asset Management(Asset) Vocabulary
+		""";
+    a owl:Ontology;
+    rdfs:label "Asset Management(Asset)";
+    rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetHome>,
+                 <http://open-services.net/bin/view/Main/AssetMgSpecificationV2>,
+                 <http://open-services.net/ns/asset/asset.rdf>.
+am:Artifact a rdfs:Class;
+            rdfs:comment "The Artifact fragment";
+            rdfs:isDefinedBy am:;
+            rdfs:label "Artifact";
+            rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Artifact>.
+am:Asset a rdfs:Class;
+         rdfs:comment "The Asset resource";
+         rdfs:isDefinedBy am:;
+         rdfs:label "Asset";
+         rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:artifact a rdf:Property;
+            rdfs:comment """The multi valued list of artifacts.
+		""";
+            rdfs:isDefinedBy am:;
+            rdfs:label "artifact";
+            rdfs:range am:Asset;
+            rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:artifactFactory a rdf:Property;
+                   rdfs:comment "Resource URI used to post new artifacts to the asset.";
+                   rdfs:isDefinedBy am:;
+                   rdfs:label "artifactFactory";
+                   rdfs:range am:Asset;
+                   rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:categorization a rdf:Property;
+                  rdfs:comment """	A categorization to classify an asset. The category schema values are 
+		    defined by the service provider. This specification does not define the resource for this 
+		    property, however it should contain a dcterms:title property.""";
+                  rdfs:isDefinedBy am:;
+                  rdfs:label "categorization";
+                  rdfs:range am:Asset;
+                  rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:content a rdf:Property;
+           rdfs:comment """The media resource reference URI (the artifact bytes).
+		""";
+           rdfs:isDefinedBy am:;
+           rdfs:label "content";
+           rdfs:range am:Artifact;
+           rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Artifact>.
+am:guid a rdf:Property;
+        rdfs:comment """An identifier for the asset. Assigned by the service provider
+		    when a resource is created. Different versions of the same asset will 
+		    share the same identifier.""";
+        rdfs:isDefinedBy am:;
+        rdfs:label "guid";
+        rdfs:range am:Asset;
+        rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:identifier a rdf:Property;
+              rdfs:comment """A unique identifier for a resource. Assigned by the service provider when 
+			a resource is created. """;
+              rdfs:isDefinedBy am:;
+              rdfs:label "identifier";
+              rdfs:range am:Asset;
+              rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:manufacturer a rdf:Property;
+                rdfs:comment "The name of the asset manufacturer.";
+                rdfs:isDefinedBy am:;
+                rdfs:label "manufacturer";
+                rdfs:range am:Asset;
+                rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:model a rdf:Property;
+         rdfs:comment "The value of the asset model.";
+         rdfs:isDefinedBy am:;
+         rdfs:label "model";
+         rdfs:range am:Asset;
+         rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:relationshipType a rdf:Property;
+                    rdfs:comment """The type of this relationship from the perspective of the 
+		    oslc_asset:relatedAsset resource based on values defined by the service provider.
+		    This specification does not define the resource for this property, however it 
+		    should contain a dcterms:title property.
+		""";
+                    rdfs:isDefinedBy am:;
+                    rdfs:label "relationshipType";
+                    rdfs:range am:Asset;
+                    rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:serialNumber a rdf:Property;
+                rdfs:comment "The serial number assigned by the asset manufacturer.";
+                rdfs:isDefinedBy am:;
+                rdfs:label "serialNumber";
+                rdfs:range am:Asset;
+                rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:size a rdf:Property;
+        rdfs:comment """The size of the artifact media resource in bytes.
+		""";
+        rdfs:isDefinedBy am:;
+        rdfs:label "size";
+        rdfs:range am:Artifact;
+        rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Artifact>.
+am:state a rdf:Property;
+         rdfs:comment """Used to indicate the state of the asset based on values defined by the service provider. 
+		This specification does not define the resource for this property, however it should contain a 
+		dcterms:title property.""";
+         rdfs:isDefinedBy am:;
+         rdfs:label "state";
+         rdfs:range am:Asset;
+         rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:tag a rdf:Property;
+       rdfs:comment """Specifies the asset tag value for an Asset. Asset tags are typically human 
+		    readable labels. For hardware assets, these tags are durable, securely attached to 
+		    equipment, and may also be readable by barcode and/or RFID.""";
+       rdfs:isDefinedBy am:;
+       rdfs:label "tag";
+       rdfs:range am:Asset;
+       rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+am:version a rdf:Property;
+           rdfs:comment """The version of the asset. Possible values may include '1.0', 
+		    '2.0', etc.""";
+           rdfs:isDefinedBy am:;
+           rdfs:label "version";
+           rdfs:range am:Asset;
+           rdfs:seeAlso <http://open-services.net/bin/view/Main/AssetMgSpecificationV2#Asset>.
+<http://open-services.net/ns/asset/asset.rdf> <http://www.rddl.org/nature> rdfs:.

@@ -1,0 +1,1429 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix qb: <http://purl.org/linked-data/cube#>.
+@prefix bio: <http://purl.org/vocab/bio/0.1/>.
+@prefix gtfs: <http://vocab.gtfs.org/terms#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix org: <http://www.w3.org/ns/org#>.
+@prefix sosa: <http://www.w3.org/ns/sosa/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix schema: <http://schema.org/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix wgspos: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix vcard2006: <http://www.w3.org/2006/vcard/ns#>.
+@prefix nsprov: <http://www.w3.org/ns/prov#>.
+
+<http://data.europa.eu/eli/ontology/Agent> a owl:Class;
+                                           rdfs:comment "Organization that generates a law"@en,
+                                                        "Organización que genera una norma"@es;
+                                           rdfs:label "ELI Agent"@es,
+                                                      "ELI Agent"@en;
+                                           rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                            owl:onProperty org:organization ; 
+                                                            a owl:Restriction],
+                                                           [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                            owl:onProperty org:organization ; 
+                                                            a owl:Restriction],
+                                                           owl:Thing.
+<http://data.europa.eu/eli/ontology/LegalResource> a owl:Class;
+                                                   rdfs:comment "Normas modeladas según la ontología ELI"@es,
+                                                                "Laws modeled according the ELI ontology"@en;
+                                                   rdfs:label "Legal resource"@en,
+                                                              "Recurso legal"@es;
+                                                   rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                                    owl:onProperty <http://data.europa.eu/eli/ontology/number> ; 
+                                                                    a owl:Restriction],
+                                                                   [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                                    owl:onProperty <http://data.europa.eu/eli/ontology/first_date_entry_in__force> ; 
+                                                                    a owl:Restriction],
+                                                                   owl:Thing,
+                                                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                                    owl:onProperty <http://data.europa.eu/eli/ontology/amended_by> ; 
+                                                                    a owl:Restriction],
+                                                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                                    owl:onProperty <http://data.europa.eu/eli/ontology/amends> ; 
+                                                                    a owl:Restriction],
+                                                                   [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                                    owl:onProperty <http://data.europa.eu/eli/ontology/date_publication> ; 
+                                                                    a owl:Restriction],
+                                                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                                    owl:onProperty <http://data.europa.eu/eli/ontology/date_applicability> ; 
+                                                                    a owl:Restriction],
+                                                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                                    owl:onProperty <http://data.europa.eu/eli/ontology/first_date_entry_in__force> ; 
+                                                                    a owl:Restriction],
+                                                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                                    owl:onProperty <http://data.europa.eu/eli/ontology/date_publication> ; 
+                                                                    a owl:Restriction].
+<http://data.europa.eu/eli/ontology/ResourceType> a owl:Class;
+                                                  rdfs:comment "Represents the law type"@en,
+                                                               "Representa el tipo de norma"@es;
+                                                  rdfs:label "ELI Tipo de recurso"@es,
+                                                             "ELI Resource type"@en.
+<http://data.europa.eu/eli/ontology/amended_by> a owl:ObjectProperty;
+                                                rdfs:comment "Enlace inversa  eli:amends"@es;
+                                                rdfs:domain <http://data.europa.eu/eli/ontology/LegalResource>;
+                                                rdfs:label "Enlace inversa con normativa que modifica"@es;
+                                                rdfs:range <http://data.europa.eu/eli/ontology/LegalResource>.
+<http://data.europa.eu/eli/ontology/amends> a owl:ObjectProperty;
+                                            rdfs:comment "Enlace con normativa a la cual modifica"@es;
+                                            rdfs:domain <http://data.europa.eu/eli/ontology/LegalResource>;
+                                            rdfs:label "Normativa a la cual modifica"@es;
+                                            rdfs:range <http://data.europa.eu/eli/ontology/LegalResource>.
+<http://data.europa.eu/eli/ontology/date_applicability> a owl:DatatypeProperty;
+                                                        rdfs:comment "Fecha de aplicación"@es;
+                                                        rdfs:domain [owl:unionOf (<http://data.europa.eu/eli/ontology/LegalResource>
+                                                                                  schema:CreativeWork) ; 
+                                                                     a owl:Class];
+                                                        rdfs:label "Fecha de aplicación"@es;
+                                                        rdfs:range xsd:dateTime.
+<http://data.europa.eu/eli/ontology/date_publication> a owl:DatatypeProperty;
+                                                      rdfs:comment "Fecha de publicación"@es;
+                                                      rdfs:domain [owl:unionOf (<http://data.europa.eu/eli/ontology/LegalResource>
+                                                                                schema:CreativeWork) ; 
+                                                                   a owl:Class];
+                                                      rdfs:label "Fecha de publicación"@es;
+                                                      rdfs:range xsd:dateTime.
+<http://data.europa.eu/eli/ontology/description> a owl:FunctionalProperty,
+                                                   owl:DatatypeProperty;
+                                                 rdfs:comment "Texto"@es;
+                                                 rdfs:domain <http://data.europa.eu/eli/ontology/LegalResource>;
+                                                 rdfs:label "Texto"@es;
+                                                 rdfs:range xsd:string.
+<http://data.europa.eu/eli/ontology/first_date_entry_in__force> a owl:DatatypeProperty;
+                                                                rdfs:comment "Fecha de entrada en vigor"@es;
+                                                                rdfs:domain [owl:unionOf (<http://data.europa.eu/eli/ontology/LegalResource>
+                                                                                          schema:CreativeWork) ; 
+                                                                             a owl:Class];
+                                                                rdfs:label "Fecha de entrada en vigor"@es;
+                                                                rdfs:range xsd:dateTime.
+<http://data.europa.eu/eli/ontology/id_local> a owl:FunctionalProperty,
+                                                owl:DatatypeProperty;
+                                              rdfs:comment "Tipo"@es;
+                                              rdfs:domain <http://data.europa.eu/eli/ontology/LegalResource>;
+                                              rdfs:label "Tipo"@es;
+                                              rdfs:range xsd:string.
+<http://data.europa.eu/eli/ontology/number> a owl:DatatypeProperty;
+                                            rdfs:comment "Identificador de la normativa"@es;
+                                            rdfs:domain <http://data.europa.eu/eli/ontology/LegalResource>;
+                                            rdfs:label "Identificador"@es;
+                                            rdfs:range xsd:string.
+<http://data.europa.eu/eli/ontology/passed_by> a owl:FunctionalProperty,
+                                                 owl:DatatypeProperty;
+                                               rdfs:comment "Enlace con agente"@es;
+                                               rdfs:domain <http://data.europa.eu/eli/ontology/LegalResource>;
+                                               rdfs:label "Agente"@es;
+                                               rdfs:range xsd:string.
+<http://data.europa.eu/eli/ontology/related_to> a owl:ObjectProperty;
+                                                rdfs:domain schema:ListItem;
+                                                rdfs:range <http://data.europa.eu/eli/ontology/LegalResource>.
+<http://data.europa.eu/eli/ontology/type_document> a owl:FunctionalProperty,
+                                                     owl:ObjectProperty;
+                                                   rdfs:comment "Enlace con tipo documento"@es;
+                                                   rdfs:domain <http://data.europa.eu/eli/ontology/LegalResource>;
+                                                   rdfs:label "Enlace con tipo documento"@es;
+                                                   rdfs:range <http://data.europa.eu/eli/ontology/ResourceType>.
+<http://data.tbfy.eu/ontology/ocds#Contract> a owl:Class;
+                                             rdfs:comment "Modela el contrato y su proceso"@es,
+                                                          "It models the contract and its process"@en;
+                                             rdfs:label "Contrato"@es,
+                                                        "Contract"@en;
+                                             rdfs:subClassOf [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                              owl:onProperty org:organization ; 
+                                                              a owl:Restriction],
+                                                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                              owl:onProperty org:organization ; 
+                                                              a owl:Restriction],
+                                                             owl:Thing,
+                                                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                              owl:onProperty dc11:title ; 
+                                                              a owl:Restriction],
+                                                             [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                              owl:onProperty dc11:title ; 
+                                                              a owl:Restriction].
+<http://data.tbfy.eu/ontology/ocds#Period> a owl:Class.
+<http://data.tbfy.eu/ontology/ocds#Tender> a owl:Class;
+                                           rdfs:comment "Modelado de licitación publica"@es,
+                                                        "Model for public tender"@en;
+                                           rdfs:label "Tender"@en,
+                                                      "Licitación"@es.
+<http://data.tbfy.eu/ontology/ocds#Value> a owl:Class.
+<http://data.tbfy.eu/ontology/ocds#contractId> a owl:FunctionalProperty,
+                                                 owl:DatatypeProperty;
+                                               rdfs:comment "Identificador"@es;
+                                               rdfs:domain [owl:unionOf (<http://data.tbfy.eu/ontology/ocds#Contract>
+                                                                         <http://data.tbfy.eu/ontology/ocds#Tender>) ; 
+                                                            a owl:Class];
+                                               rdfs:label "Identificador"@es;
+                                               rdfs:range xsd:string.
+<http://data.tbfy.eu/ontology/ocds#description> a owl:FunctionalProperty,
+                                                  owl:DatatypeProperty;
+                                                rdfs:comment "Descripción"@es;
+                                                rdfs:domain [owl:unionOf (<http://data.tbfy.eu/ontology/ocds#Contract>
+                                                                          <http://data.tbfy.eu/ontology/ocds#Tender>) ; 
+                                                             a owl:Class];
+                                                rdfs:label "Descripción"@es;
+                                                rdfs:range xsd:string.
+<http://data.tbfy.eu/ontology/ocds#endDate> a owl:DatatypeProperty;
+                                            rdfs:comment "Fecha de final"@es;
+                                            rdfs:domain <http://data.tbfy.eu/ontology/ocds#Period>;
+                                            rdfs:label "Fecha de final"@es;
+                                            rdfs:range xsd:dateTime.
+<http://data.tbfy.eu/ontology/ocds#hasContractPeriod> a owl:ObjectProperty;
+                                                      rdfs:comment "Enlace con Periodo"@es;
+                                                      rdfs:domain <http://data.tbfy.eu/ontology/ocds#Contract>;
+                                                      rdfs:label "Enlace con Periodo"@es;
+                                                      rdfs:range <http://data.tbfy.eu/ontology/ocds#Period>.
+<http://data.tbfy.eu/ontology/ocds#hasContractValue> a owl:ObjectProperty;
+                                                     rdfs:comment "Valor";
+                                                     rdfs:domain <http://data.tbfy.eu/ontology/ocds#Contract>;
+                                                     rdfs:range <http://data.tbfy.eu/ontology/ocds#Value>.
+<http://data.tbfy.eu/ontology/ocds#hasTenderPeriod> a owl:ObjectProperty;
+                                                    rdfs:domain <http://data.tbfy.eu/ontology/ocds#Tender>;
+                                                    rdfs:range <http://data.tbfy.eu/ontology/ocds#Period>.
+<http://data.tbfy.eu/ontology/ocds#isSupplierFor> a owl:ObjectProperty;
+                                                  rdfs:comment "Enlace con el contrato"@es;
+                                                  rdfs:domain org:Organization;
+                                                  rdfs:label "Contrato"@es;
+                                                  rdfs:range <http://data.tbfy.eu/ontology/ocds#Contract>.
+<http://data.tbfy.eu/ontology/ocds#isTendererFor> a owl:ObjectProperty;
+                                                  rdfs:comment "Enlace con la licitación"@es;
+                                                  rdfs:domain org:Organization;
+                                                  rdfs:label "Licitación"@es;
+                                                  rdfs:range <http://data.tbfy.eu/ontology/ocds#Tender>.
+<http://data.tbfy.eu/ontology/ocds#startDate> a owl:FunctionalProperty,
+                                                owl:DatatypeProperty;
+                                              rdfs:comment "Fecha de inicio"@es;
+                                              rdfs:domain <http://data.tbfy.eu/ontology/ocds#Period>;
+                                              rdfs:label "Fecha de inicio"@es;
+                                              rdfs:range xsd:dateTime.
+<http://data.tbfy.eu/ontology/ocds#valueAmount> a owl:FunctionalProperty,
+                                                  owl:DatatypeProperty;
+                                                rdfs:comment "ocds:valueAmount";
+                                                rdfs:domain <http://data.tbfy.eu/ontology/ocds#Value>;
+                                                rdfs:range xsd:float.
+<http://opendata.aragon.es/def/ei2av2> dc11:creator "Dirección General de Administración Electrónica y Sociedad de la Información. Departamento de Ciencia, Universidad y Sociedad del Conocimiento. Gobierno de Aragón"@es;
+                                       dc11:description "La iniciativa Aragón Open Data se inició por Acuerdo de 17 de julio de 2012 del Gobierno de Aragón. En virtud del mismo se ordenó el inicio del proyecto de apertura de datos públicos y el 6 de febrero de 2013 se implantó a través del Portal opendata.aragon.es. Uno de los resultados de la iniciativa es el modelo ontológico EI2A, que se presenta en su versión 2, simplificando la versión anterior para facilitar su reutilización y mantenimiento. En este sentido, el nuevo modelo reutiliza vocabularios y ontologías de referencia, minimizado las soluciones particulares. Este modelo se ha desarrollado en el ámbito del Proyecto de Evolución de la infraestructura semántica de la Aragón Open Data (2020-21)"@es,
+                                                        "https://github.com/aragonopendata/EI2A-ontologia/blob/master/docs/images/ei2a-diagrama.jpg";
+                                       dc11:rights "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International."@en;
+                                       a owl:Ontology,
+                                         owl:NamedIndividual;
+                                       rdfs:comment """The initiative Aragón Open Data was initiated by agreement of 17 of July of 2012 of the Government of Aragon. Under the same was ordered the start of the project to open public data and on February 6, 2013 was implemented through the Portal <a href=\"http://opendata.aragon.es/\"> opendata.aragon.es </a>. Throughout this time there have been numerous works to achieve automation in the publication of information to ensure that third parties can reuse it in the best way. Given the volume of data that begins to exist, within the line of work of automation in information management, all those elements that help in the improvement of the <b> structuring of information </b> and the <b> standardization of the data </b> contained in the databases are beginning to have a special relevance. Based on this, within the General Directorate of Electronic Administration and Information Society, the idea arises of generating a set of technical and legal rules that allow to deepen in that standardization and that lead to think in the creation of the Interoperable Information Scheme Of Aragon (E2IA). The E2IA thus emerges as the framework in which the open data and in general the information of the Government of Aragon can begin to be automated in a much more profound way. The E2IA has to have a number of technical, organizational and legal elements that need to be developed. For this reason, the Technological Institute of Aragon (ITAINNOVA) has been entrusted with carrying out actions consisting in identifying, studying and analyzing current research trends and technological development in relation to ontologies and dictionaries of data interoperability, defining the ontological proposal, performing The necessary tests to validate the ontological proposal and generate the text and web versions of the ontology."""@en,
+                                                    "Esta sección detalla la ontología de Información Interoperable de Aragón EI2A para describir datos básicos del dominio del Gobierno de Aragón, destinados a apoyar la interoperabilidad de datos con el objetivo de estandarizar información y explotarla en un futuro. En la descripción de la ontología se incorpora un diagrama de clases o entidades de la ontología que permiten visualizar su organización más fácilmente, el espacio de nombres utilizado y las clases, propiedades e individuos que la componen. De acuerdo a las recomendaciones de la Web Semántica, la ontología EI2A reutiliza diversas ontologías, esquemas y vocabularios para describir entidades que se adecuen al dominio del Gobierno de Aragón. Reutilizar ontologías facilita el intercambio de conocimiento y la comunicación entre personas, agentes inteligentes y sistemas. De esta forma, se consigue describir los conceptos deseados del dominio del Gobierno de Aragón introduciendo un número mínimo de nuevos elementos."@es;
+                                       rdfs:label "Estructura de Información Interoperable de Aragón EI2A v.2"@en;
+                                       owl:versionInfo "2.0.3"@es.
+<http://opendata.aragon.es/def/ei2av2#Axiom_1> a owl:Class;
+                                               owl:equivalentClass [owl:unionOf (org:ChangeEvent
+                                                                                 nsprov:Activity) ; 
+                                                                    a owl:Class].
+<http://opendata.aragon.es/def/ei2av2#Concept> a skos:Concept,
+                                                 owl:NamedIndividual;
+                                               rdfs:comment "Enlace con la categoría correspondiente"@es;
+                                               rdfs:label "Categoría"@es.
+<http://opendata.aragon.es/def/ei2av2#Legislature> a owl:Class;
+                                                   rdfs:comment "Evento que identifica a una legislatura del Gobierno de Aragón"@es,
+                                                                "Event that identifies a legislature of Aragon Government"@en;
+                                                   rdfs:label "Legislature"@en,
+                                                              "Legislatura"@es;
+                                                   rdfs:subClassOf schema:Event.
+<http://opendata.aragon.es/def/ei2av2#Thing_2> a owl:Thing,
+                                                 owl:NamedIndividual.
+<http://opendata.aragon.es/def/ei2av2#Thing_3> a owl:Thing,
+                                                 owl:NamedIndividual;
+                                               rdfs:comment "".
+<http://opendata.aragon.es/def/ei2av2#comment> a owl:DatatypeProperty,
+                                                 owl:AnnotationProperty;
+                                               rdfs:comment "subpropiedad de rdfs:comment"@es;
+                                               rdfs:domain sosa:Observation;
+                                               rdfs:label "subpropiedad de rdfs:comment"@es;
+                                               rdfs:range xsd:string;
+                                               rdfs:subPropertyOf rdfs:comment;
+                                               owl:equivalentProperty "".
+<http://opendata.aragon.es/def/ei2av2#isDefinedBy> a owl:FunctionalProperty,
+                                                     owl:DatatypeProperty;
+                                                   rdfs:comment "subpropiedad de rdfs:isDefinedBy";
+                                                   rdfs:domain qb:DataSet;
+                                                   rdfs:range xsd:string.
+<http://opendata.aragon.es/def/ei2av2#label> a owl:FunctionalProperty,
+                                               owl:DatatypeProperty,
+                                               owl:AnnotationProperty;
+                                             rdfs:comment "Valor"@es;
+                                             rdfs:domain qb:ComponentProperty;
+                                             rdfs:label "Valor"@es;
+                                             rdfs:range xsd:string;
+                                             rdfs:subPropertyOf rdfs:label.
+<http://opendata.aragon.es/def/ei2av2#legislature> a owl:ObjectProperty;
+                                                   rdfs:comment "Enlace con legislatura"@es;
+                                                   rdfs:domain org:Organization;
+                                                   rdfs:label "Legislatura"@es;
+                                                   rdfs:range <http://opendata.aragon.es/def/ei2av2#Legislature>.
+<http://opendata.aragon.es/def/ei2av2#order> a owl:FunctionalProperty,
+                                               owl:DatatypeProperty;
+                                             rdfs:comment "Orden"@es;
+                                             rdfs:domain [owl:unionOf (org:Organization
+                                                                       foaf:Post) ; 
+                                                          a owl:Class];
+                                             rdfs:label "Orden"@es;
+                                             rdfs:range xsd:int.
+<http://opendata.aragon.es/def/ei2av2#provenance> a owl:DatatypeProperty;
+                                                  rdfs:comment "Decreto"@es;
+                                                  rdfs:domain schema:CreativeWork;
+                                                  rdfs:label "Decreto"@es;
+                                                  rdfs:range xsd:string.
+<http://opendata.aragon.es/def/ei2av2#range> a owl:FunctionalProperty,
+                                               owl:DatatypeProperty;
+                                             rdfs:comment "Entidad relacionada"@es;
+                                             rdfs:domain qb:ComponentProperty;
+                                             rdfs:label "Entidad relacionada"@es;
+                                             rdfs:range xsd:string;
+                                             rdfs:subPropertyOf rdfs:range.
+dc11:creator a owl:AnnotationProperty.
+dc11:date a owl:DatatypeProperty;
+          rdfs:comment "Fecha"@es;
+          rdfs:domain [owl:unionOf (gtfs:Trip
+                                    org:Organization
+                                    sosa:Featureofinterest) ; 
+                       a owl:Class];
+          rdfs:label "Fecha"@es;
+          rdfs:range xsd:dateTime.
+dc11:description a owl:DatatypeProperty;
+                 rdfs:comment "Observaciones"@es;
+                 rdfs:domain [owl:unionOf (gtfs:Trip
+                                           org:Organization
+                                           <https://www.w3.org/TR/vocab-dcat-2/Dataset>) ; 
+                              a owl:Class];
+                 rdfs:label "Observaciones"@es;
+                 rdfs:range xsd:string.
+dc11:identifier a owl:DatatypeProperty;
+                rdfs:comment "Identificador"@es;
+                rdfs:domain [owl:unionOf (gtfs:Agency
+                                          gtfs:Route
+                                          gtfs:StopTime
+                                          gtfs:Trip
+                                          skos:Concept
+                                          org:Organization
+                                          org:Role
+                                          org:Site
+                                          sosa:Featureofinterest
+                                          foaf:Person
+                                          foaf:Post) ; 
+                             a owl:Class];
+                rdfs:label "Identificador"@es;
+                rdfs:range xsd:string.
+dc11:rights a owl:AnnotationProperty.
+dc11:source a owl:FunctionalProperty,
+              owl:DatatypeProperty;
+            rdfs:comment "Indentificador"@es;
+            rdfs:domain [owl:unionOf (skos:Collection
+                                      skos:Concept) ; 
+                         a owl:Class];
+            rdfs:label "Indentificador"@es;
+            rdfs:range xsd:string.
+dc11:title a owl:DatatypeProperty;
+           rdfs:comment "Título"@es;
+           rdfs:domain [owl:unionOf (<http://data.tbfy.eu/ontology/ocds#Contract>
+                                     <http://data.tbfy.eu/ontology/ocds#Tender>
+                                     qb:DataSet
+                                     gtfs:Agency
+                                     gtfs:Route
+                                     gtfs:Stop
+                                     org:Organization
+                                     org:Role
+                                     org:Site
+                                     sosa:Featureofinterest
+                                     <https://www.w3.org/TR/vocab-dcat-2/Dataset>) ; 
+                        a owl:Class];
+           rdfs:label "Título"@es;
+           rdfs:range xsd:string.
+qb:ComponentProperty a owl:Class;
+                     rdfs:comment "Indicates a property on a Dataset Cube. rdfs:Range indicates the object type. E.g.: org:organization"@en,
+                                  "Indica una propiedad de un Dataset Cube. rdfs:Range indica el tipo de objeto. Ejemplo org:organization"@es;
+                     rdfs:label "Componente"@es,
+                                "Component"@en.
+qb:ComponentSpecification a owl:Class;
+                          rdfs:comment "Used to define properties of a component (attribute, dimension etc) which are specific to its usage in a DSD"@en,
+                                       "Se usa para definir propiedades de un componente (atributo, dimensión, etc.) que son específicas de su uso en DataStructureDefinition"@es;
+                          rdfs:label "Especificación de componente"@es,
+                                     "Component specification"@en;
+                          rdfs:subClassOf [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                           owl:onProperty qb:measure ; 
+                                           a owl:Restriction],
+                                          [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                           owl:onProperty qb:dimension ; 
+                                           a owl:Restriction],
+                                          owl:Thing.
+qb:DataSet a owl:Class;
+           rdfs:comment "Represents a collection of observations, conforming to some common dimensional structure"@en,
+                        "Representa una colección de observaciones, conforme a una estructura de dimensiones común"@es;
+           rdfs:isDefinedBy <http://opendata.aragon.es/def/ei2av2#Concept>;
+           rdfs:label "Cube Dataset"@es,
+                      "Cube Dataset"@en;
+           rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty dc11:title ; 
+                            a owl:Restriction],
+                           [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty dc11:title ; 
+                            a owl:Restriction],
+                           owl:Thing.
+qb:DataStructureDefinition a owl:Class;
+                           rdfs:comment "Defines the structure of a DataSet"@en,
+                                        "Define la estructura de un Dataset"@es;
+                           rdfs:label "Definición de la estructura de datos"@es,
+                                      "Data Structure Definition"@en;
+                           rdfs:subClassOf [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                            owl:onProperty qb:component ; 
+                                            a owl:Restriction],
+                                           owl:Thing.
+qb:DimensionProperty a owl:Class;
+                     rdfs:comment "Representa las dimensiones de un cubo"@es,
+                                  "It represents the dimensions of the cube"@en;
+                     rdfs:label "Propiedad dimensión"@es,
+                                "Dimension property"@en;
+                     rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                      owl:onProperty qb:concept ; 
+                                      a owl:Restriction],
+                                     qb:ComponentProperty.
+qb:MeasureProperty a owl:Class;
+                   rdfs:comment "Representa el valor medido para el fenómeno observado"@es,
+                                "Represent the measured value of the phenomenon being observed"@en;
+                   rdfs:label "Medida"@es,
+                              "Measure"@en;
+                   rdfs:subClassOf qb:ComponentProperty.
+qb:Observation a owl:Class;
+               rdfs:comment "Una observación individual del cubo, puede tener una o más medidas asociadas"@es,
+                            "A single observation in the cube, may have one or more associated measured values"@en;
+               rdfs:label "Observation"@en,
+                          "Observación"@es;
+               rdfs:subClassOf [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                owl:onProperty qb:dataSet ; 
+                                a owl:Restriction],
+                               owl:Thing.
+qb:component a owl:ObjectProperty;
+             rdfs:comment "Enlace a las especificaciones de los componentes"@es;
+             rdfs:domain qb:DataStructureDefinition;
+             rdfs:label "Especificaciones de los componentes"@es;
+             rdfs:range qb:ComponentSpecification.
+qb:componentProperty a owl:ObjectProperty;
+                     rdfs:comment "Enlace a la entidad raiz de propiedades de componente"@es;
+                     rdfs:domain qb:ComponentSpecification;
+                     rdfs:label "propiedades de componente"@es;
+                     rdfs:range qb:ComponentProperty.
+qb:componentRequired a owl:FunctionalProperty,
+                       owl:DatatypeProperty;
+                     rdfs:comment "Indica si la dimensión o medidas son requeridos"@es;
+                     rdfs:domain qb:ComponentSpecification;
+                     rdfs:label "Indica la obligatoridad"@es;
+                     rdfs:range xsd:boolean.
+qb:concept a owl:ObjectProperty;
+           rdfs:comment "Enlace con Categoria Skos"@es;
+           rdfs:domain qb:DimensionProperty;
+           rdfs:label "Categorías"@es;
+           rdfs:range skos:Concept.
+qb:dataSet a owl:ObjectProperty;
+           rdfs:comment "Enlace al DataSet"@es;
+           rdfs:domain qb:Observation.
+qb:dimension a owl:ObjectProperty;
+             rdfs:comment "Enlace a dimensión"@es;
+             rdfs:domain qb:ComponentSpecification;
+             rdfs:label "Dimensión"@es;
+             rdfs:range qb:DimensionProperty.
+qb:measure a owl:ObjectProperty;
+           rdfs:comment "Enlace con medidas"@es;
+           rdfs:domain qb:ComponentSpecification;
+           rdfs:label "Medidas"@es;
+           rdfs:range qb:MeasureProperty.
+qb:order a owl:FunctionalProperty,
+           owl:DatatypeProperty;
+         rdfs:comment "Indica el orden de las dimensiones o medidas"@es;
+         rdfs:domain qb:ComponentSpecification;
+         rdfs:label "Orden"@es;
+         rdfs:range xsd:int.
+qb:structure a owl:FunctionalProperty,
+               owl:ObjectProperty;
+             rdfs:comment "Enlace a la definición de la estructura"@es;
+             rdfs:domain qb:DataSet;
+             rdfs:label "Definición de estructura"@es;
+             rdfs:range qb:DataStructureDefinition.
+bio:biography a owl:DatatypeProperty;
+              rdfs:comment "Datos biográficos de la persona"@es;
+              rdfs:domain foaf:Person;
+              rdfs:label "biografía"@es;
+              rdfs:range xsd:string.
+schema:CreativeWork a owl:Class;
+                    rdfs:comment "The most generic kind of creative work, including books, movies, photographs, software programs, etc"@en,
+                                 "Tipo genérico de trabajo creativo, incluyendo libros, obras de artes, etc."@es;
+                    rdfs:label "Creative work"@en,
+                               "Trabajo creativo"@es;
+                    rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:isPartOf ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty org:organization ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:expires ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:publisher ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:temporal ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty <http://data.europa.eu/eli/ontology/date_publication> ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:identifier ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:size ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:locationCreated ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:image ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:creator ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:inLanguage ; 
+                                     a owl:Restriction],
+                                    owl:Thing,
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty <http://opendata.aragon.es/def/ei2av2#provenance> ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty <http://data.europa.eu/eli/ontology/date_applicability> ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:hasPart ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:version ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:license ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty <http://data.europa.eu/eli/ontology/first_date_entry_in__force> ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:material ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty org:siteAddress ; 
+                                     a owl:Restriction],
+                                    [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                     owl:onProperty schema:citation ; 
+                                     a owl:Restriction].
+schema:Event a owl:Class;
+             rdfs:comment "Modela eventos como los días festivos"@es,
+                          "It models events such as holidays"@en;
+             rdfs:label "Evento"@es,
+                        "Event"@en;
+             rdfs:subClassOf owl:Thing,
+                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                              owl:onProperty schema:eventSchedule ; 
+                              a owl:Restriction],
+                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                              owl:onProperty schema:location ; 
+                              a owl:Restriction],
+                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                              owl:onProperty schema:endDate ; 
+                              a owl:Restriction],
+                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                              owl:onProperty schema:image ; 
+                              a owl:Restriction],
+                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                              owl:onProperty schema:identifier ; 
+                              a owl:Restriction].
+schema:ItemList a owl:Class;
+                rdfs:comment "Una lista de ítems de cualquier tipo, como los pasos de un trámite administrativo"@es,
+                             "A list of items of any sort, sucha as the steps of an administrative process"@en;
+                rdfs:label "Lista de Item"@es,
+                           "Item List"@en;
+                rdfs:subClassOf owl:Thing,
+                                [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty schema:previousItem ; 
+                                 a owl:Restriction],
+                                [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty schema:identifier ; 
+                                 a owl:Restriction],
+                                [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty schema:abstract ; 
+                                 a owl:Restriction],
+                                [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty schema:abstract ; 
+                                 a owl:Restriction],
+                                [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty schema:nextItem ; 
+                                 a owl:Restriction].
+schema:ListItem a owl:Class;
+                rdfs:comment "Un ítem de una lista, por ejemplo el paso de un trámite"@es,
+                             "An list item, e.g. a step in an administrative process"@en;
+                rdfs:label "List item"@en,
+                           "Ítem de una lista"@es;
+                rdfs:subClassOf owl:Thing,
+                                [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty schema:identifier ; 
+                                 a owl:Restriction],
+                                [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty skos:concept ; 
+                                 a owl:Restriction],
+                                [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty schema:abstract ; 
+                                 a owl:Restriction],
+                                [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty schema:itemListElement ; 
+                                 a owl:Restriction],
+                                [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty schema:identifier ; 
+                                 a owl:Restriction],
+                                [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty schema:abstract ; 
+                                 a owl:Restriction].
+schema:abstract a owl:DatatypeProperty;
+                rdfs:comment "Descripción"@es;
+                rdfs:domain [owl:unionOf (schema:CreativeWork
+                                          schema:ItemList
+                                          schema:ListItem) ; 
+                             a owl:Class];
+                rdfs:label "Descripción"@es;
+                rdfs:range xsd:string.
+schema:citation a owl:DatatypeProperty;
+                rdfs:comment "Bibliografía"@es;
+                rdfs:domain schema:CreativeWork;
+                rdfs:label "Bibliografía"@es;
+                rdfs:range xsd:string.
+schema:contributor a owl:ObjectProperty;
+                   rdfs:comment "Enlace con persona, colaborador"@es;
+                   rdfs:domain schema:CreativeWork;
+                   rdfs:label "Colaborador"@es.
+schema:creator a owl:DatatypeProperty;
+               rdfs:comment "Creador"@es;
+               rdfs:domain schema:CreativeWork;
+               rdfs:label "Creador"@es;
+               rdfs:range xsd:string.
+schema:description a owl:FunctionalProperty,
+                     owl:DatatypeProperty;
+                   rdfs:comment "Descripción"@es;
+                   rdfs:domain schema:Event;
+                   rdfs:label "Descripción"@es;
+                   rdfs:range xsd:string.
+schema:endDate a owl:DatatypeProperty;
+               rdfs:comment "Fecha de fin"@es;
+               rdfs:domain [owl:unionOf (schema:Event
+                                         gtfs:Agency) ; 
+                            a owl:Class];
+               rdfs:label "Fecha de fin"@es;
+               rdfs:range xsd:dateTime.
+schema:eventSchedule a owl:DatatypeProperty;
+                     rdfs:comment "Horario literal  del evento"@es;
+                     rdfs:domain schema:Event;
+                     rdfs:label "Horario del evento"@es;
+                     rdfs:range xsd:string.
+schema:expires a owl:DatatypeProperty;
+               rdfs:comment "Fecha de suspensión"@es;
+               rdfs:domain schema:CreativeWork;
+               rdfs:label "Fecha de suspensión"@es.
+schema:hasPart a owl:ObjectProperty;
+               rdfs:comment "Enlace con documento  al que pertenece"@es;
+               rdfs:domain schema:CreativeWork;
+               rdfs:label "Documento al que pertenece"@es;
+               rdfs:range schema:CreativeWork.
+schema:identifier a owl:DatatypeProperty;
+                  rdfs:comment "Identificador"@es;
+                  rdfs:domain [owl:unionOf (schema:CreativeWork
+                                            schema:Event
+                                            schema:ItemList
+                                            schema:ListItem) ; 
+                               a owl:Class];
+                  rdfs:label "Identificador"@es;
+                  rdfs:range xsd:string.
+schema:image a owl:DatatypeProperty;
+             rdfs:comment "Url de la imagen"@es;
+             rdfs:domain [owl:unionOf (schema:CreativeWork
+                                       schema:Event) ; 
+                          a owl:Class];
+             rdfs:label "Imagen";
+             rdfs:range xsd:string.
+schema:inLanguage a owl:DatatypeProperty;
+                  rdfs:comment "Idioma"@es;
+                  rdfs:domain schema:CreativeWork;
+                  rdfs:label "Idioma"@es;
+                  rdfs:range xsd:string.
+schema:isPartOf a owl:ObjectProperty;
+                rdfs:comment "Inversa de schema:hasPart"@es;
+                rdfs:domain schema:CreativeWork;
+                rdfs:label "Parte de documento"@es;
+                rdfs:range schema:CreativeWork.
+schema:itemListElement a owl:ObjectProperty;
+                       rdfs:domain schema:ListItem;
+                       rdfs:range schema:ListItem.
+schema:license a owl:DatatypeProperty;
+               rdfs:comment "Licencia"@es;
+               rdfs:domain schema:CreativeWork;
+               rdfs:label "Licencia"@es;
+               rdfs:range xsd:string.
+schema:location a owl:ObjectProperty;
+                rdfs:comment "Enlace con lugar"@es;
+                rdfs:domain schema:Event;
+                rdfs:label "Lugar"@es;
+                rdfs:range vcard2006:Location.
+schema:locationCreated a owl:ObjectProperty;
+                       rdfs:comment "Enlace con lugar de creación"@es;
+                       rdfs:domain schema:CreativeWork;
+                       rdfs:label "Lugar de creación"@es;
+                       rdfs:range vcard2006:Location.
+schema:material a owl:DatatypeProperty;
+                rdfs:comment "Material"@es;
+                rdfs:domain schema:CreativeWork;
+                rdfs:label "Material"@es;
+                rdfs:range xsd:string.
+schema:name a owl:FunctionalProperty,
+              owl:DatatypeProperty;
+            rdfs:comment "Nombre"@es;
+            rdfs:domain schema:Event;
+            rdfs:label "Nombre"@es;
+            rdfs:range xsd:string.
+schema:nextItem a owl:ObjectProperty;
+                rdfs:domain schema:ItemList;
+                rdfs:range schema:ItemList.
+schema:position a owl:FunctionalProperty,
+                  owl:DatatypeProperty;
+                rdfs:domain schema:ItemList;
+                rdfs:range xsd:int.
+schema:previousItem a owl:ObjectProperty;
+                    rdfs:domain schema:ItemList;
+                    rdfs:range schema:ListItem.
+schema:publisher a owl:DatatypeProperty;
+                 rdfs:comment "Editorial"@es;
+                 rdfs:domain schema:CreativeWork;
+                 rdfs:label "Editorial"@es;
+                 rdfs:range xsd:string.
+schema:size a owl:DatatypeProperty;
+            rdfs:comment "Tamaño"@es;
+            rdfs:domain schema:CreativeWork;
+            rdfs:label "Tamaño"@es;
+            rdfs:range xsd:string.
+schema:startDate a owl:FunctionalProperty,
+                   owl:DatatypeProperty;
+                 rdfs:comment "Fecha de inicio"@es;
+                 rdfs:domain [owl:unionOf (schema:Event
+                                           gtfs:Agency) ; 
+                              a owl:Class];
+                 rdfs:label "Fecha de inicio"@es;
+                 rdfs:range xsd:dateTime.
+schema:temporal a owl:DatatypeProperty;
+                rdfs:comment "Literal de fecha (año)"@es;
+                rdfs:domain schema:CreativeWork;
+                rdfs:label "Año"@es;
+                rdfs:range xsd:string.
+schema:title a owl:FunctionalProperty,
+               owl:DatatypeProperty;
+             rdfs:comment "Título"@es;
+             rdfs:domain [owl:unionOf (schema:CreativeWork
+                                       schema:ItemList
+                                       schema:ListItem) ; 
+                          a owl:Class];
+             rdfs:label "Título"@es;
+             rdfs:range xsd:string.
+schema:url a owl:DatatypeProperty;
+           rdfs:comment "URL"@es;
+           rdfs:domain schema:CreativeWork;
+           rdfs:label "URL"@es;
+           rdfs:range xsd:string.
+schema:version a owl:DatatypeProperty;
+               rdfs:comment "Edición"@es;
+               rdfs:domain schema:CreativeWork;
+               rdfs:label "Edición"@es;
+               rdfs:range xsd:string.
+gtfs:Agency a owl:Class;
+            rdfs:comment "Una empresa opera un cierto modo de transporte de manera programada"@es,
+                         "An agency operates a certain schedule based transport mode"@en;
+            rdfs:label "Empresa"@es,
+                       "Agency"@en;
+            rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty org:organization ; 
+                             a owl:Restriction],
+                            [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty org:organization ; 
+                             a owl:Restriction],
+                            owl:Thing.
+gtfs:Route a owl:Class;
+           rdfs:comment "It is a commercial route followed entirely or partly by gtfs:Trips"@en,
+                        "Es un grupo de viajes (gtfs:Trips) que se muestran a los usuarios como servicio independiente"@es;
+           rdfs:label "Ruta"@es,
+                      "Route"@en;
+           rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty gtfs:agency ; 
+                            a owl:Restriction],
+                           owl:Thing.
+gtfs:Stop a owl:Class;
+          rdfs:comment "A location where passengers board or disembark from a transit vehicle"@en,
+                       "Un lugar donde los pasajeros suben o bajan de un vehículo de transporte público"@es;
+          rdfs:label "Parada"@es,
+                     "Stop"@en;
+          rdfs:subClassOf [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty dc11:title ; 
+                           a owl:Restriction],
+                          [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty wgspos:lat ; 
+                           a owl:Restriction],
+                          [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty org:siteAddress ; 
+                           a owl:Restriction],
+                          [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty wgspos:long ; 
+                           a owl:Restriction],
+                          [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty wgspos:long ; 
+                           a owl:Restriction],
+                          owl:Thing,
+                          [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty wgspos:lat ; 
+                           a owl:Restriction],
+                          [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty dc11:title ; 
+                           a owl:Restriction],
+                          [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty org:siteAddress ; 
+                           a owl:Restriction].
+gtfs:StopTime a owl:Class;
+              rdfs:comment "Describes a stop time as part of a trip"@en,
+                           "Describe una hora de parada como parte de un viaje"@es;
+              rdfs:label "Stop time"@en,
+                         "Hora de parada"@es;
+              rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                               owl:onProperty gtfs:arrivalTime ; 
+                               a owl:Restriction],
+                              [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                               owl:onProperty dc11:identifier ; 
+                               a owl:Restriction],
+                              owl:Thing.
+gtfs:Trip a owl:Class;
+          rdfs:comment "Trayecto de dos o más paradas realizadas por un vehículo que se produce a una gtfs:StopTime"@es,
+                       "A collection of gtfs:StopTimes followed by a transit vehicle"@en;
+          rdfs:label "Viaje"@es,
+                     "Trip"@en;
+          rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty dc11:date ; 
+                           a owl:Restriction],
+                          owl:Thing.
+gtfs:agency a owl:ObjectProperty;
+            rdfs:comment "Agencia"@es;
+            rdfs:domain gtfs:Route;
+            rdfs:label "Agencia"@es;
+            rdfs:range gtfs:Agency.
+gtfs:arrivalTime a owl:DatatypeProperty;
+                 rdfs:comment "Llegada"@es;
+                 rdfs:domain gtfs:StopTime;
+                 rdfs:label "Llegada"@es;
+                 rdfs:range xsd:dateTime.
+gtfs:destinationStop a owl:FunctionalProperty,
+                       owl:ObjectProperty;
+                     rdfs:comment "Destino"@es;
+                     rdfs:domain gtfs:Route;
+                     rdfs:label "Destino"@es;
+                     rdfs:range gtfs:Stop.
+gtfs:originStop a owl:FunctionalProperty,
+                  owl:ObjectProperty;
+                rdfs:comment "Inicio"@es;
+                rdfs:domain gtfs:Route;
+                rdfs:label "Inicio"@es;
+                rdfs:range gtfs:Stop.
+gtfs:route a owl:FunctionalProperty,
+             owl:ObjectProperty;
+           rdfs:comment "Enlace con ruta"@es;
+           rdfs:domain gtfs:Trip;
+           rdfs:label "Ruta"@es.
+gtfs:routeType a owl:FunctionalProperty,
+                 owl:ObjectProperty;
+               rdfs:comment "Tipo de ruta"@es;
+               rdfs:domain gtfs:Route.
+gtfs:stop a owl:FunctionalProperty,
+            owl:ObjectProperty;
+          rdfs:comment "Parada"@es;
+          rdfs:domain gtfs:StopTime;
+          rdfs:label "Parada"@es;
+          rdfs:range gtfs:Stop.
+gtfs:stopSequence a owl:FunctionalProperty,
+                    owl:DatatypeProperty;
+                  rdfs:comment "";
+                  rdfs:domain gtfs:StopTime;
+                  rdfs:range xsd:int.
+gtfs:trip a owl:FunctionalProperty,
+            owl:ObjectProperty;
+          rdfs:comment "Enlace con viaje"@es;
+          rdfs:domain gtfs:StopTime;
+          rdfs:label "viaje"@es;
+          rdfs:range gtfs:Trip.
+rdfs:range a owl:DatatypeProperty.
+xsd:dateTimeStamp a owl:Class.
+owl:equivalentProperty a owl:AnnotationProperty.
+wgspos:lat a owl:DatatypeProperty;
+           rdfs:comment "Latitud"@es;
+           rdfs:domain [owl:unionOf (gtfs:Stop
+                                     vcard2006:Location) ; 
+                        a owl:Class];
+           rdfs:label "Latitud"@es;
+           rdfs:range xsd:float.
+wgspos:long a owl:DatatypeProperty;
+            rdfs:comment "Longitud"@es;
+            rdfs:domain [owl:unionOf (gtfs:Stop
+                                      vcard2006:Location) ; 
+                         a owl:Class];
+            rdfs:label "Longitud"@es;
+            rdfs:range xsd:float.
+skos:Collection a owl:Class.
+skos:Concept a owl:Class;
+             rdfs:comment "Utilizado para clasificar entidades, como los tipos de organizaciones"@es,
+                          "Used to classify entities, such as the organization types"@en;
+             rdfs:label "Concepto"@es,
+                        "Concept"@en.
+skos:altLabel a owl:AnnotationProperty.
+skos:broadMatch_ a owl:FunctionalProperty,
+                   owl:ObjectProperty;
+                 rdfs:domain skos:Concept;
+                 rdfs:range skos:Concept.
+skos:broader a owl:ObjectProperty;
+             rdfs:comment "Apunta a las categorías padre"@es;
+             rdfs:domain skos:Concept;
+             rdfs:label "Padre"@es;
+             rdfs:range skos:Concept.
+skos:concept a owl:ObjectProperty;
+             rdfs:comment "Enlace categoría"@es;
+             rdfs:domain schema:ListItem;
+             rdfs:label "Categoría";
+             rdfs:range skos:Concept.
+skos:inScheme a owl:FunctionalProperty,
+                owl:DatatypeProperty;
+              rdfs:comment "Tipo de documento"@es;
+              rdfs:domain <http://data.europa.eu/eli/ontology/ResourceType>;
+              rdfs:label "Tipo de documento"@es;
+              rdfs:range xsd:string.
+skos:member a owl:ObjectProperty;
+            rdfs:comment "Categorías raíz del tesauro"@es;
+            rdfs:domain skos:Collection;
+            rdfs:label "Categorías raíz del tesauro"@es;
+            rdfs:range skos:Concept.
+skos:prefLabel a owl:FunctionalProperty,
+                 owl:DatatypeProperty,
+                 owl:AnnotationProperty;
+               rdfs:comment "Etiqueta"@es;
+               rdfs:domain skos:Concept;
+               rdfs:label "Etiqueta"@es;
+               rdfs:range xsd:string.
+skos:scopeNote a owl:FunctionalProperty,
+                 owl:DatatypeProperty,
+                 owl:AnnotationProperty;
+               rdfs:domain skos:Collection;
+               rdfs:range xsd:string.
+time:TemporalEntity a owl:Class;
+                    rdfs:comment "Un instante o intervalo temporal"@es,
+                                 "A temporal interval or instant"@en;
+                    rdfs:label "Temporal entity"@en,
+                               "Entidad temporal"@es.
+time:hasBeginning a owl:DatatypeProperty;
+                  rdfs:comment "Fecha en la que finaliza la pertenicia al puesto"@es;
+                  rdfs:domain foaf:Post;
+                  rdfs:label "Fecha de inicio"@es;
+                  rdfs:range xsd:dateTime.
+time:hasEnd a owl:DatatypeProperty;
+            rdfs:comment "Fecha en la que finaliza la pertenicia al puesto"@es;
+            rdfs:domain foaf:Post;
+            rdfs:label "Fecha de fin"@es;
+            rdfs:range xsd:dateTime.
+time:inXSDDateTimeStamp a owl:FunctionalProperty,
+                          owl:ObjectProperty;
+                        rdfs:comment "null"@es;
+                        rdfs:domain time:TemporalEntity;
+                        rdfs:range xsd:dateTimeStamp.
+vcard2006:Location a owl:Class;
+                   rdfs:comment "An object representing a named geographical place"@en,
+                                "Un objeto que representa un sitio geográfico"@es;
+                   rdfs:label "Location"@en,
+                              "Lugar"@es;
+                   rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty vcard2006:region ; 
+                                    a owl:Restriction],
+                                   owl:Thing,
+                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty vcard2006:postal-code ; 
+                                    a owl:Restriction],
+                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty vcard2006:street-address ; 
+                                    a owl:Restriction],
+                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty wgspos:long ; 
+                                    a owl:Restriction],
+                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty org:siteAddress ; 
+                                    a owl:Restriction],
+                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty vcard2006:tel ; 
+                                    a owl:Restriction],
+                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty vcard2006:locality ; 
+                                    a owl:Restriction],
+                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty vcard2006:email ; 
+                                    a owl:Restriction],
+                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty wgspos:lat ; 
+                                    a owl:Restriction],
+                                   [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onProperty vcard2006:fn ; 
+                                    a owl:Restriction].
+vcard2006:email a owl:DatatypeProperty;
+                rdfs:comment "Email"@es;
+                rdfs:domain vcard2006:Location;
+                rdfs:label "Email"@es;
+                rdfs:range xsd:string.
+vcard2006:fn a owl:DatatypeProperty;
+             rdfs:comment "Nombre"@es;
+             rdfs:domain vcard2006:Location;
+             rdfs:label "Nombre"@es;
+             rdfs:range xsd:string.
+vcard2006:locality a owl:DatatypeProperty;
+                   rdfs:comment "Localidad"@es;
+                   rdfs:domain vcard2006:Location;
+                   rdfs:label "Localidad"@es;
+                   rdfs:range xsd:string.
+vcard2006:org a owl:ObjectProperty;
+              rdfs:comment "Enlace con organización"@es;
+              rdfs:domain vcard2006:Location;
+              rdfs:label "Organización"@es.
+vcard2006:postal-code a owl:DatatypeProperty;
+                      rdfs:comment "Código postal"@es;
+                      rdfs:domain vcard2006:Location;
+                      rdfs:label "Código postal"@es;
+                      rdfs:range xsd:int.
+vcard2006:region a owl:DatatypeProperty;
+                 rdfs:comment "Provincia"@es;
+                 rdfs:domain vcard2006:Location;
+                 rdfs:label "Provincia"@es;
+                 rdfs:range xsd:string.
+vcard2006:street-address a owl:DatatypeProperty;
+                         rdfs:comment "Dirección"@es;
+                         rdfs:domain vcard2006:Location;
+                         rdfs:label "Dirección"@es;
+                         rdfs:range xsd:string.
+vcard2006:tel a owl:DatatypeProperty;
+              rdfs:comment "Teléfono"@es;
+              rdfs:domain vcard2006:Location;
+              rdfs:label "Teléfono"@es;
+              rdfs:range xsd:int.
+org:ChangeEvent a owl:Class;
+                rdfs:comment "Represents an event which resulted in a major change to an organization such as a merger or complete restructuring. It is intended for situations where the resulting organization is sufficient distinct from the original organizations that it has a distinct identity and distinct URI. Extension vocabularies should define sub-classes of this to denote particular categories of event. The instant or interval at which the event occurred should be given by prov:startAtTime and prov:endedAtTime, a description should be given by dct:description"@en,
+                             "Evento que da como resultado un cambio sustancial en la organización, por ejemplo, una fusión o una reestructuración total. Está pensado para situaciones en las que la organización resultante es lo suficientemente distinta de las organizaciones originales, tiene una identidad distinta y una URI también distinta. Se deberían definir subtipos de eventos mediante vocabularios específicos (Extension vocabularies) para referirse a categorías de eventos específicos. El momento o periodo en el que el evento ocurre se debería expresar mediante las propiedades prov:startAtTime y prov:endedAtTime, y una descripción del mismo se debería incluir mediante el uso de la propiedad dct:description"@es;
+                rdfs:label "Evento de cambio"@es,
+                           "Change Event"@en;
+                rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty org:resultingOrganization ; 
+                                 a owl:Restriction],
+                                [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty org:originalOrganization ; 
+                                 a owl:Restriction],
+                                owl:Thing.
+org:Organization a owl:Class;
+                 rdfs:comment "Grupo de personas que se organiza en una comunidad u otro tipo de estructura social, comercial o política. Dicho grupo tiene un objetivo o motivo común para su existencia que va más allá del conjunto de personas que lo forman y que puede actuar como Agente. A menudo las organizaciones se pueden agrupar en estructuras jerárquicas"@es,
+                              "Represents a collection of people organized together into a community or other social, commercial or political structure. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures"@en;
+                 rdfs:label "Organization"@en,
+                            "Organización"@es;
+                 rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty org:subOrganizationOf ; 
+                                  a owl:Restriction],
+                                 [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty dc11:identifier ; 
+                                  a owl:Restriction],
+                                 [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty org:resultedFrom ; 
+                                  a owl:Restriction],
+                                 [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty dc11:date ; 
+                                  a owl:Restriction],
+                                 [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty org:changedBy ; 
+                                  a owl:Restriction],
+                                 [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty dc11:title ; 
+                                  a owl:Restriction],
+                                 owl:Thing,
+                                 [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty foaf:homepage ; 
+                                  a owl:Restriction],
+                                 [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty <http://opendata.aragon.es/def/ei2av2#order> ; 
+                                  a owl:Restriction],
+                                 [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty dc11:description ; 
+                                  a owl:Restriction],
+                                 [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty <http://opendata.aragon.es/def/ei2av2#legislature> ; 
+                                  a owl:Restriction].
+org:Role a owl:Class;
+         rdfs:comment "Función que una persona o agente desempeña en el seno de una organización. Las instancias de esta clase describen la actividad en abstracto; si lo que se pretende es incluir una instancia que refleje la función o actividad que desempeña una persona en concreto en una organización específica, se indica el uso de instancias de la clase org:Membership. Es común que dichas actividades se representen en una estructura taxonómica mediante SKOS"@es,
+                      "Denotes a role that a Person or other Agent can take in an organization. Instances of this class describe the abstract role; to denote a specific instance of a person playing that role in a specific organization use an instance of `org:Membership`. It is common for roles to be arranged in some taxonomic structure and we use SKOS to represent that"@en;
+         rdfs:label "Rol"@es,
+                    "Role"@en;
+         rdfs:subClassOf [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty dc11:identifier ; 
+                          a owl:Restriction],
+                         [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty dc11:title ; 
+                          a owl:Restriction],
+                         [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty dc11:identifier ; 
+                          a owl:Restriction],
+                         owl:Thing,
+                         [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty dc11:title ; 
+                          a owl:Restriction].
+org:Site a owl:Class;
+         rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty dc11:title ; 
+                          a owl:Restriction],
+                         [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty dc11:identifier ; 
+                          a owl:Restriction],
+                         [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty dc11:identifier ; 
+                          a owl:Restriction],
+                         [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                          owl:onProperty org:siteAddress ; 
+                          a owl:Restriction],
+                         owl:Thing.
+org:changedBy a owl:ObjectProperty;
+              rdfs:comment "Enlace con evento  modificación de organización"@es;
+              rdfs:domain org:Organization;
+              rdfs:label "Evento  modificación de organización"@es;
+              rdfs:range org:ChangeEvent.
+org:classification a owl:FunctionalProperty,
+                     owl:ObjectProperty;
+                   rdfs:comment "Enlace categoría"@es;
+                   rdfs:domain org:Organization;
+                   rdfs:label "Categoría"@es;
+                   rdfs:range skos:Concept.
+org:hasPost a owl:ObjectProperty;
+            rdfs:comment "Puesto, inversa de org:postIn"@es;
+            rdfs:domain org:Organization;
+            rdfs:label "Inversa Puesto"@es;
+            rdfs:range foaf:Post.
+org:hasSite a owl:ObjectProperty;
+            rdfs:comment "Enlace con Centro"@es;
+            rdfs:domain org:Organization;
+            rdfs:label "Centro"@es;
+            rdfs:range org:Site.
+org:heldBy a owl:FunctionalProperty,
+             owl:ObjectProperty;
+           rdfs:comment "Inversa de org:holds de persona"@es;
+           rdfs:domain foaf:Post;
+           rdfs:label "Enlace inverso a persona"@es;
+           rdfs:range foaf:Person.
+org:holds a owl:ObjectProperty;
+          rdfs:domain foaf:Person;
+          rdfs:range foaf:Post.
+org:identifier a owl:FunctionalProperty,
+                 owl:DatatypeProperty;
+               rdfs:comment "Identificador de la organización"@es;
+               rdfs:domain org:Organization;
+               rdfs:label "Identificador de la organización"@es;
+               rdfs:range xsd:string.
+org:linkedTo a owl:ObjectProperty;
+             rdfs:comment "Organizacion relacionada"@es;
+             rdfs:domain org:Organization;
+             rdfs:range org:Organization;
+             skos:altLabel "Organizacion relacionada"@es.
+org:organization a owl:ObjectProperty;
+                 rdfs:comment "Enlace con organización"@es;
+                 rdfs:domain [owl:unionOf (<http://data.europa.eu/eli/ontology/Agent>
+                                           <http://data.tbfy.eu/ontology/ocds#Contract>
+                                           <http://data.tbfy.eu/ontology/ocds#Tender>
+                                           schema:CreativeWork
+                                           schema:ListItem
+                                           gtfs:Agency) ; 
+                              a owl:Class];
+                 rdfs:label "Organización"@es;
+                 rdfs:range org:Organization.
+org:originalOrganization a owl:ObjectProperty;
+                         rdfs:comment "Organización que ha sido creada tras un evento, inversa org:resultedFrom"@es;
+                         rdfs:domain org:ChangeEvent;
+                         rdfs:label "Organización que ha sido creada tras un evento"@es;
+                         rdfs:range org:Organization.
+org:postIn a owl:ObjectProperty;
+           rdfs:comment "Indica la pertenencia a un organismo"@es;
+           rdfs:domain foaf:Post;
+           rdfs:label "Enlace con organismo"@es;
+           rdfs:range org:Organization.
+org:resultedFrom a owl:ObjectProperty;
+                 rdfs:comment "Enlace a evento creación de organización"@es;
+                 rdfs:domain org:Organization;
+                 rdfs:label "Evento creación de organización"@es;
+                 rdfs:range org:ChangeEvent.
+org:resultingOrganization a owl:ObjectProperty;
+                          rdfs:comment "Organización que ha sido modificada tras un evento, inversa org:changedBy"@es;
+                          rdfs:domain org:ChangeEvent;
+                          rdfs:label "Organización que ha sido modificada tras un evento"@es;
+                          rdfs:range org:Organization.
+org:role a owl:FunctionalProperty,
+           owl:ObjectProperty;
+         rdfs:comment "Enlace con Rol"@es;
+         rdfs:domain foaf:Post;
+         rdfs:label "Rol"@es;
+         rdfs:range org:Role.
+org:siteAddress a owl:ObjectProperty;
+                rdfs:comment "Indicates an address for the site in a suitable encoding. Use of vCard (using the vcard vocabulary) is encouraged but the range is left open to allow other encodings to be used. The address may include email, telephone, and geo-location information and is not restricted to a physical address"@en,
+                             "Enlace con lugar"@es,
+                             "Dirección de la sede según una codificación adecuada. Se recomienda el uso de vCard (que utiliza el vocabulario en vcard), pero el rango no se restringe únicamente al uso de este vocabulario sino que se permite el uso de otros códigos. La dirección puede constar de una dirección de correo electrónico, un número de teléfono o información de geo-localización, y no se limita a una dirección postal física"@es;
+                rdfs:domain [owl:unionOf (schema:CreativeWork
+                                          gtfs:Stop
+                                          vcard2006:Location
+                                          org:Site
+                                          sosa:Featureofinterest) ; 
+                             a owl:Class];
+                rdfs:label "Site address"@en,
+                           "Dirección de la sede"@es;
+                rdfs:range vcard2006:Location.
+org:subOrganizationOf a owl:ObjectProperty;
+                      rdfs:comment "Enlace con Organización padre"@es;
+                      rdfs:domain org:Organization;
+                      rdfs:label "Organización padre"@es;
+                      rdfs:range org:Organization.
+nsprov:Activity a owl:Class;
+                rdfs:comment "Una actividad ocurre en un periodo de tiempo y actúa con o sobre entidades; puede incluir consumir, procesar, transformar, modificar, mover, usar o generar entidades del grafo"@es,
+                             "An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities"@en;
+                rdfs:label "PROV Activity"@en,
+                           "PROV Actividad"@es.
+nsprov:SoftwareAgent a owl:Class;
+                     rdfs:comment "Es un software en ejecución que proporciona datos al grafo"@es,
+                                  "A software agent is running software that provides data to the graph"@en;
+                     rdfs:label "Software Agent"@en,
+                                "Agente de software"@es.
+nsprov:startedAtTime a owl:FunctionalProperty,
+                       owl:DatatypeProperty;
+                     rdfs:comment "Fecha de inicio del cambio"@es;
+                     rdfs:domain [owl:unionOf (org:ChangeEvent
+                                               nsprov:Activity) ; 
+                                  a owl:Class];
+                     rdfs:label "Fecha de inicio del cambio"@es;
+                     rdfs:range xsd:dateTime.
+nsprov:wasAssociatedWith a owl:ObjectProperty;
+                         rdfs:domain nsprov:Activity;
+                         rdfs:range [owl:unionOf (nsprov:SoftwareAgent
+                                                  <https://www.w3.org/TR/vocab-dcat-2/Dataset>) ; 
+                                     a owl:Class].
+nsprov:wasUsedBy a owl:FunctionalProperty,
+                   owl:DatatypeProperty;
+                 rdfs:domain [owl:unionOf (<http://data.europa.eu/eli/ontology/Agent>
+                                           <http://data.europa.eu/eli/ontology/LegalResource>
+                                           <http://data.europa.eu/eli/ontology/ResourceType>
+                                           <http://data.tbfy.eu/ontology/ocds#Contract>
+                                           <http://data.tbfy.eu/ontology/ocds#Period>
+                                           <http://data.tbfy.eu/ontology/ocds#Tender>
+                                           qb:ComponentProperty
+                                           qb:ComponentSpecification
+                                           qb:DataSet
+                                           qb:DataStructureDefinition
+                                           qb:Observation
+                                           schema:CreativeWork
+                                           schema:Event
+                                           schema:ItemList
+                                           schema:ListItem
+                                           gtfs:Agency
+                                           gtfs:Route
+                                           gtfs:Stop
+                                           gtfs:StopTime
+                                           gtfs:Trip
+                                           time:TemporalEntity
+                                           vcard2006:Location
+                                           org:ChangeEvent
+                                           org:Organization
+                                           org:Role
+                                           org:Site
+                                           sosa:Featureofinterest
+                                           sosa:Observation
+                                           foaf:Person
+                                           foaf:Post) ; 
+                              a owl:Class];
+                 rdfs:range xsd:string.
+sosa:Featureofinterest a owl:Class;
+                       rdfs:comment "La entidad cuya propiedad está siendo estimada o calculada en el curso de una Observation como parte de una recogida de datos"@es,
+                                    "The thing whose property is being estimated or calculated in the course of an Observation to arrive at a Result or whose property is being manipulated by an Actuator, or which is being sampled or transformed in an act of Sampling"@en;
+                       rdfs:label "Característica de interés"@es,
+                                  "Feature of Interest"@en;
+                       rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onProperty dc11:identifier ; 
+                                        a owl:Restriction],
+                                       [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onProperty dc11:date ; 
+                                        a owl:Restriction],
+                                       [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onProperty org:siteAddress ; 
+                                        a owl:Restriction],
+                                       [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onProperty dc11:title ; 
+                                        a owl:Restriction],
+                                       [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onProperty org:siteAddress ; 
+                                        a owl:Restriction],
+                                       [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onProperty dc11:title ; 
+                                        a owl:Restriction],
+                                       owl:Thing,
+                                       [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onProperty dc11:identifier ; 
+                                        a owl:Restriction],
+                                       [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onProperty dc11:date ; 
+                                        a owl:Restriction].
+sosa:ObservableProperty a owl:FunctionalProperty,
+                          owl:ObjectProperty;
+                        rdfs:comment "Enlace observacion"@es;
+                        rdfs:domain sosa:Featureofinterest;
+                        rdfs:label "observacion"@es;
+                        rdfs:range sosa:Observation.
+sosa:Observation a owl:Class;
+                 rdfs:comment "Acto de llevar a cabo una observación. Procedimiento para estimar o calcular el valor de una propiedad de un FeatureOfInterest. Enlaza con un Sensor para describir que hizo la Observación y cómo, enlaza con una ObservableProperty para describir de que estimación es el resultado y con un FeatureOfInterest para detallar con que propiedad estaba asociada"@es,
+                              "Act of carrying out an (Observation) Procedure to estimate or calculate a value of a property of a FeatureOfInterest. Links to a Sensor to describe what made the Observation and how; links to an ObservableProperty to describe what the result is an estimate of, and to a FeatureOfInterest to detail what that property was associated with"@en;
+                 rdfs:label "Observation"@en,
+                            "Observación"@es;
+                 rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onProperty <http://opendata.aragon.es/def/ei2av2#comment> ; 
+                                  a owl:Restriction],
+                                 owl:Thing.
+sosa:hasFeatureOfInterest a owl:FunctionalProperty,
+                            owl:ObjectProperty;
+                          rdfs:comment "Enlace a hasFEatureOfInterest";
+                          rdfs:domain sosa:Observation;
+                          rdfs:range sosa:Featureofinterest.
+sosa:hasResult a owl:FunctionalProperty,
+                 owl:DatatypeProperty;
+               rdfs:comment "Resultado"@es;
+               rdfs:domain sosa:Observation;
+               rdfs:range xsd:string.
+sosa:phenomenonTime a owl:FunctionalProperty,
+                      owl:ObjectProperty;
+                    rdfs:comment "Enlace con sosa:phenomenonTime"@es;
+                    rdfs:domain sosa:Observation;
+                    rdfs:range time:TemporalEntity.
+foaf:Person a owl:Class;
+            rdfs:comment "La clase Persona representa gente, con la condición de que sean personas, con independencia de que estén vivas o muertas, o reales o imaginarias. Es una subclase de Agent"@es,
+                         "The Person class represents people. Something is a Person if it is a person. We don't nitpic about whether they're alive, dead, real, or imaginary. The Person class is a sub-class of the Agent class, since all people are considered agents in FOAF"@en;
+            rdfs:label "Person"@en,
+                       "Persona"@es;
+            rdfs:subClassOf owl:Thing,
+                            [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty foaf:mbox ; 
+                             a owl:Restriction],
+                            [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty bio:biography ; 
+                             a owl:Restriction],
+                            [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty dc11:identifier ; 
+                             a owl:Restriction],
+                            [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                             owl:onProperty foaf:phone ; 
+                             a owl:Restriction].
+foaf:Post a owl:Class;
+          rdfs:comment "Post with the beginning and ending dates"@en,
+                       "Puesto con las fechas de inicio y fin"@es;
+          rdfs:label "Puesto"@es,
+                     "Post"@en;
+          rdfs:subClassOf [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty time:hasEnd ; 
+                           a owl:Restriction],
+                          [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty dc11:identifier ; 
+                           a owl:Restriction],
+                          [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty dc11:identifier ; 
+                           a owl:Restriction],
+                          [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                           owl:onProperty time:hasBeginning ; 
+                           a owl:Restriction],
+                          owl:Thing.
+foaf:familyName a owl:FunctionalProperty,
+                  owl:DatatypeProperty;
+                rdfs:comment "Apellidos"@es;
+                rdfs:domain foaf:Person;
+                rdfs:label "Apellidos"@es;
+                rdfs:range xsd:string.
+foaf:givenName a owl:FunctionalProperty,
+                 owl:DatatypeProperty;
+               rdfs:comment "Nombre persona"@es;
+               rdfs:domain foaf:Person;
+               rdfs:label "Nombre persona"@es;
+               rdfs:range xsd:string.
+foaf:homepage a owl:DatatypeProperty;
+              rdfs:comment "Página web"@es;
+              rdfs:domain [owl:unionOf (org:Organization
+                                        foaf:Person) ; 
+                           a owl:Class];
+              rdfs:label "Página web";
+              rdfs:range xsd:string.
+foaf:img a owl:DatatypeProperty;
+         rdfs:comment "Url de la imagen"@es;
+         rdfs:domain foaf:Person;
+         rdfs:label "Imagen de usuario"@es;
+         rdfs:range xsd:string.
+foaf:mbox a owl:DatatypeProperty;
+          rdfs:comment "Correo electrónico"@es;
+          rdfs:domain foaf:Person;
+          rdfs:label "Correo electrónico";
+          rdfs:range xsd:string.
+foaf:name a owl:FunctionalProperty,
+            owl:DatatypeProperty;
+          rdfs:comment "Nombre y apellidos de la persona"@es;
+          rdfs:domain [owl:unionOf (nsprov:SoftwareAgent
+                                    foaf:Person) ; 
+                       a owl:Class];
+          rdfs:label "Nombre completo"@es;
+          rdfs:range xsd:string.
+foaf:phone a owl:DatatypeProperty;
+           rdfs:comment "Teléfono"@es;
+           rdfs:domain foaf:Person;
+           rdfs:label "Teléfono"@es;
+           rdfs:range xsd:string.
+<https://www.geonames.org/ontology#SpatialThing> a owl:ObjectProperty;
+                                                 rdfs:comment "Enlace con geo"@es;
+                                                 rdfs:domain vcard2006:Location;
+                                                 rdfs:label "geo"@es.
+<https://www.w3.org/TR/vocab-dcat-2/Dataset> a owl:Class;
+                                             rdfs:comment "A collection of data, published or curated by a single agent, and available for access or download in one or more representations (from CKAN)"@en,
+                                                          "Una colección de datos, publicado o curado por un agente y disponible para ser accedio o descargado en una o más representaciones (de CKAN)"@es;
+                                             rdfs:label "DCAT Dataset"@es,
+                                                        "DCAT Dataset"@en;
+                                             rdfs:subClassOf [owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                              owl:onProperty dc11:title ; 
+                                                              a owl:Restriction],
+                                                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                              owl:onProperty dc11:description ; 
+                                                              a owl:Restriction],
+                                                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                              owl:onProperty <https://www.w3.org/TR/vocab-dcat-2/landingPage> ; 
+                                                              a owl:Restriction],
+                                                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                              owl:onProperty dc11:title ; 
+                                                              a owl:Restriction],
+                                                             [owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                              owl:onProperty <https://www.w3.org/TR/vocab-dcat-2/distribution> ; 
+                                                              a owl:Restriction],
+                                                             owl:Thing.
+<https://www.w3.org/TR/vocab-dcat-2/distribution> a owl:ObjectProperty;
+                                                  rdfs:comment "Una representación específica de un conjunto de datos."@es,
+                                                               "A specific representation of a dataset."@en;
+                                                  rdfs:domain <https://www.w3.org/TR/vocab-dcat-2/Dataset>.
+<https://www.w3.org/TR/vocab-dcat-2/keyword> a owl:DatatypeProperty;
+                                             rdfs:range xsd:string.
+<https://www.w3.org/TR/vocab-dcat-2/landingPage> a owl:ObjectProperty;
+                                                 rdfs:comment "Una página web a la que se puede navegar en un navegador web para obtener acceso al catálogo"@es,
+                                                              "A Web page that can be navigated to in a Web browser to gain access to the catalog";
+                                                 rdfs:domain <https://www.w3.org/TR/vocab-dcat-2/Dataset>.

@@ -1,0 +1,538 @@
+The Abstract Syntax as Ontology
+Krasimir Angelov
+Chalmers University of Technology
+August 25, 2009
+
+1 Introduction
+2 Types, Dependent Types and Reasoning
+3 Semantic Web
+4 Ratatui’s Ontology
+5 Conclusion
+
+1 Introduction
+2 Types, Dependent Types and Reasoning
+3 Semantic Web
+4 Ratatui’s Ontology
+5 Conclusion
+
+What is ontology?
+Ontology is the philosophical study of the nature of
+being, existence or reality in general, as well as of the
+basic categories of being and their relations.
+Traditionally listed as a part of the major branch of
+philosophy known as metaphysics, ontology deals with
+questions concerning what entities exist or can be said
+to exist, and how such entities can be grouped, related
+within a hierarchy, and subdivided according to
+similarities and diﬀerences.
+Wikipedia
+
+Ontologies in C++
+The Object Oriented Modeling is building an Ontologies for some
+concrete domain.
+C++
+class Shape { ...}
+class Triangle : Shape { ...}
+class Rectangle : Shape { ...}
+class Square : Rectangle { ...}
+The inheritance graph is also called Taxonomy
+
+Ontological Relations
+Classes have properties, members, ﬁelds they deﬁne relations
+between entities in the ontology.
+C++
+class Rectangle : Shape { Point topleft, bottomright; }
+class Point { int x,y; }
+
+Ontologies in Relational Databases
+The database schema is an ontology deﬁned using relational
+algebra.
+
+Ontologies in Semantic Web
+Object models could be deﬁned in a family of languages RDF,
+RDFS, OWL Lite, OWL Full
+<shapes:Rectangle rdf:about=”#R123”>
+<shapes:topleft>
+<shapes:Point>
+<shapes:x>10 </shapes:x>
+<shapes:y>10 </shapes:y>
+</shapes:Point>
+</shapes:topleft>
+<shapes:bottomright>
+<shapes:Point>
+<shapes:x>100 </shapes:x>
+<shapes:y>100 </shapes:y>
+</shapes:Point>
+</shapes:bottomright>
+</shapes:Rectangle>
+OWL allows light inference also: inverse properties, transitivity etc.
+
+Ontologies in First-Order Logic
+Suggested Upper Merged Ontology (SUMO)
+The biggest open source
+ontology - 20000 concepts
+and 70000 axioms
+Mapping to WordNet
+Language generation
+templates for Hindi,
+Chinese, Italian, German,
+Czech and English
+Partial export to OWL
+
+Ontologies in Type Theory
+Dependently Types Languages - GF, Agda, Epigram, Coq ...
+cat Shape;
+Triangle;
+Rectangle;
+Point;
+fun triangle : Point → Point → Point → Triangle;
+rectangle : Point → Point → Rectangle;
+shapeTri : Triangle → Shape;
+shapeRect : Rectangle → Shape;
+
+Why Ontology Matters in Linguistics?
+WordNet
+every synset is a semantic concept
+hierarchy of hypernyms and hyponyms
+other relations - meronym/holonym
+VerbNet
+primary valency dictionary
+...but also sortal restrictions
+FrameNet
+knowledge about situations
+
+Ontology vs Knowledge Base
+Ontology vs Knowledge Base
+The ontology is the schema - deﬁnition of classes and
+properties
+The knowledge base is a set of instances, related by properties
+In Grammatical Framework:
+Abstract Syntax ≡ Ontology
+Expressions ≡ Knowledge Base
+
+1 Introduction
+2 Types, Dependent Types and Reasoning
+3 Semantic Web
+4 Ratatui’s Ontology
+5 Conclusion
+
+Simple Types
+The simple types are well known from every programming language
+Types in Syntax
+cat NP,VP,S;
+fun everyone NP : NP;
+someone NP : NP;
+Types in Semantics
+cat Human,Company;
+fun john H : Human;
+google H : Company;
+Note: In GF there is not ﬁrm separation between syntax and
+semantics
+
+Dependent Types
+The dependent types are types indexed by some value. The
+dependency could be used to enforce semantic conditions.
+Example:
+Simply Typed
+cat Array;
+fun plus : Array → Array → Array
+Dependently Typed
+cat Array Int;
+fun plus : (k : Int) → Array k → Array k → Array k
+
+Reasoning
+Knowledge about the world could be encoded in the abstract
+syntax
+Travels Map
+cat City;
+Route City City;
+fun gothenburg C : City
+stockholm C : City
+london C : City
+fun got2stk R : Route gothenburg C stockholm C
+stk2lon R : Route stockholm C london C
+
+Reasoning
+We need one more function to make transfers
+Travels Map
+fun join : (c1,c2,c3 : City)
+→ Route c1 c2
+→ Route c2 c3
+→ Route c1 c3
+Travels Map
+join gothenburg C stockholm C london C got2stk R stk2lon R
+: Route gothenburg C london C
+
+Computation
+Every route has a distance which could be computed
+Distance
+fun dist : (c1,c2 : City) → Route c1 c2 → Int;
+def dist c1 c2 got2stk R = 110;
+dist c1 c2 stk2lon R = 420;
+dist c1 c2 (join c1 c3 c2 r13 r32) = dist c1 c3 r13 + dist c3 c2 r32;
+
+1 Introduction
+2 Types, Dependent Types and Reasoning
+3 Semantic Web
+4 Ratatui’s Ontology
+5 Conclusion
+
+RDF/RDFS in ﬁve sentences
+RDF/RDFS describes resources
+Every resource belongs to some class
+The descriptions are composed of statements which are
+the atomic units
+Every statement is a tripple of subject (resource), predicate
+(property) and object (value).
+Every class, statement, and property is also a resource.
+
+RDF/RDFS in four sentences
+cat Resource (c : Class);
+Class;
+Statement;
+Property (domain,range : Class);
+fun class : Class → Resource class C;
+statement : Statement → Resource statement C;
+property : (d,r : Class) → Property d r → Resource property C;
+
+Example Resources
+Abstract Syntax
+fun organization C,sector C : Class
+digitalgrammars R : Resource organization C;
+grammars sector R : Resource sector C;
+activeInSector P : Property organization C sector C
+Concrete Syntax
+lincat Resource,Class = Str;
+lin organization C = ”http://.../protont#Organization”;
+sector C = ”http://.../protonu#IndustrySector”;
+digitalgrammars R = ”http://www.digitalgrammars.com”;
+...
+
+RDF/RDFS in four sentences
+The statements are also known as assertions in logic:
+fun assert : (d,r : Class) →
+Resource d → Property d r → Value r → Statement;
+here the value category is needed because the object could be a
+literal also:
+cat Value (c : Class);
+fun res : (c : Class) → Resource c → Value c;
+lit : Literal → Value literal C;
+
+Example Statement
+English
+Digital Grammars is active in sector grammars.
+RDF Abstract Syntax
+assert organization C sector C digitalgrammars R activeInSector P grammars sector R
+RDF Concrete Syntax
+〈http://www.digitalgrammars.com〉
+〈http://.../protonu#activeInSector〉
+〈http://www.digitalgrammars.com/grammars〉
+
+Class Hierarchy in OWL
+Inheritance and Type Casting
+cat SubClass Class Class;
+Inheritance Class Class;
+fun trans : (c1,c2,c3 : Class)
+→ SubClass c1 c2
+→ Inheritance c2 c3
+→ Inheritance c1 c3
+fun upcast : (c1,c2 : Class)
+→ Inheritance c1 c2
+→ Resource c1
+→ Resource c2
+
+1 Introduction
+2 Types, Dependent Types and Reasoning
+3 Semantic Web
+4 Ratatui’s Ontology
+5 Conclusion
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+cat Quantity;
+fun whole : Int → Quantity; - - 1
+fraction : Int → Int → Quantity; - - 1/2
+whole plus : Int → Int → Int → Quantity; - - 1 1/2
+cat Unit;
+fun cup,tablespoon,teaspoon,can : Unit;
+cat Measure;
+fun measure : Quantity → Unit → Measure;
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+cat Product;
+fun onion,butter,margarine,
+basil,paprika,milk,powder,soup : Product;
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+cat Product;
+fun onion,butter,margarine,
+basil,paprika,milk,garlic,tomato : Product;
+fun powder,soup : Product → Product;
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+fun alternative,composite : Product → Product → Product;
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+cat Preparation;
+fun chopped,dried,condensed : Preparation;
+fun preparation : Preparation → Product → Product;
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+cat PreparationMod;
+fun ﬁnely : PreparationMod;
+fun preparation mod : PreparationMod → Preparation → Preparation;
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+cat Ingredient;
+fun ingredient : Measure → Product → Ingredient;
+ingredient (measure (fraction 1 4) teaspoon) (preparation dried basil) 1/4 teaspoon dried basil
+ingredient (measure (fraction 1 4) teaspoon) paprika 1/4 teaspoon paprika
+ingredient (measure (fraction 1 8) teaspoon) (powder garlic) 1/8 teaspoon garlic powder
+ingredient (measure (whole 1) cup) milk 1 cup milk
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+Directions:
+cat Direction;
+fun action : Action → Direction;
+operation : Operation → Duration → Direction;
+
+The Ontology
+Actions:
+cat Action;
+fun add : Product → Action;
+
+The Ontology
+Operations:
+cat Operation;
+fun soute : Product → Product → Operation;
+stir in : Product → Operation;
+cook : Temperature → Operation;
+cat Temperature;
+fun celsius : Int → Temperature;
+fun medium heat : Temperature;
+def medium heat = celsius 80;
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+cat Duration;
+fun until : Condition → Duration;
+for time : Int → TimeUnit → Duration;
+cat Condition;
+fun tender,blended,heated : Condition;
+cat TimeUnit;
+fun second,minute,hour : TimeUnit;
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+fun either : Duration → Duration → Duration;
+
+The Receipe
+INGREDIENTS
+1/4 cup ﬁnely chopped onion
+1 tablespoon butter or margarine
+1/4 teaspoon dried basil
+1/4 teaspoon paprika
+1/8 teaspoon garlic powder
+1 can condensed tomato soup
+1 cup milk
+DIRECTIONS
+Saute onion in butter until tender. Add basil, paprika and
+garlic powder. Stir in soup and milk until well blended. Cook
+over medium heat for 6 minutes or until heated through.
+
+The Ontology
+cat Receipe;
+fun receipe : [Ingredient] → [Direction] → Receipe;
+
+Defects in Ratatui
+The ontology permits some expressions which are syntactically
+correct but not semantically consistent.
+soute onion garlic soute onion in garlic
+stir in paprika stir in paprika
+Solution: Use Dependent Types
+
+Ratatui with Dependent Types
+cat Kind;
+fun liquid,oil,ﬁrm : Kind;
+cat Product Kind;
+fun alternative,
+composite : (k : Kind) → Product k → Product k → Product k;
+fun add : (k : Kind) → Product k → Direction;
+fun soute : Product ﬁrm → Product oil → Operation;
+stir in : Product liquid → Operation;
+
+Things that are not covered
+Some product could be mentioned in the description only if it
+is also declared in the ingredients
+The total quantity of every product in the description should
+be equal to the quantity in the ingredients
+
+Ratatui to RDF
+RDF Concrete Syntax
+gf2rdf : Resource measure C → Measure → [Statement]
+gf2rdf id (whole v) =
+[ assert ? ? id hasValue (lit (int v))
+]
+gf2rdf id (fraction m n) =
+[ assert ? ? id hasNomValue (lit (int m))
+, assert ? ? id hasDenomValue (lit (int n))
+]
+gf2rdf id (whole plus v m n) =
+[ assert ? ? id hasValue (lit (int n))
+, assert ? ? id hasNomValue (lit (int m))
+, assert ? ? id hasDenomValue (lit (int n))
+]
+
+Thank You
+Thank You and Have Fun !!!

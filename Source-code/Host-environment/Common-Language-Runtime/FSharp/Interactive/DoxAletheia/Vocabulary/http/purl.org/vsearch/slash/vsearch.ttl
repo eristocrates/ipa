@@ -1,0 +1,84 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vrank: <http://purl.org/voc/vrank#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix vsearch: <http://purl.org/vsearch/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+vsearch: dc11:creator <http://dblp.org/pers/hd/s/Stavrakantonakis:Ioannis>;
+         dcterms:created "2016-01-16"^^xsd:date;
+         dcterms:description "The vSearch vocabulary facilitates the querying and retrieval of vocabulary terms from a vocabularies directory. It can be used to map keywords with mapped result terms accompanied with a ranking value.";
+         dcterms:modified "2016-01-16"^^xsd:date;
+         dcterms:title "vSearch Vocabulary";
+         dcterms:type <http://purl.org/adms/assettype/Ontology>;
+         vann:preferredNamespacePrefix "vsearch";
+         vann:preferredNamespaceUri "http://purl.org/vsearch/";
+         a owl:Ontology;
+         owl:sameAs <http://vocab.sti2.at/vsearch/>;
+         owl:versionInfo "v0.1";
+         foaf:homepage <https://istavrak.github.io/vSearch>.
+vsearch:Query a owl:Class,
+                rdfs:Class;
+              rdfs:comment "A query.";
+              rdfs:isDefinedBy vsearch:;
+              rdfs:label "query"@en.
+vsearch:ResultTerm a owl:Class,
+                     rdfs:Class;
+                   rdfs:comment "A result term.";
+                   rdfs:isDefinedBy vsearch:;
+                   rdfs:label "result term"@en.
+vsearch:doQuery a owl:ObjectProperty,
+                  rdf:Property;
+                rdfs:comment "A query that an entity executes.";
+                rdfs:domain owl:Thing;
+                rdfs:isDefinedBy vsearch:;
+                rdfs:label "do query"@en;
+                rdfs:range vsearch:Query.
+vsearch:hasRank a owl:ObjectProperty,
+                  rdf:Property;
+                rdfs:comment "The rank for a result term.";
+                rdfs:domain <http://purl.org/ResultTerm>;
+                rdfs:isDefinedBy vsearch:;
+                rdfs:label "has rank"@en;
+                rdfs:range vrank:Rank.
+vsearch:hasResultTerm a owl:ObjectProperty,
+                        rdf:Property;
+                      rdfs:comment "A result term for a query.";
+                      rdfs:domain vsearch:Query;
+                      rdfs:isDefinedBy vsearch:;
+                      rdfs:label "has result term"@en;
+                      rdfs:range vsearch:ResultTerm.
+vsearch:keyword a owl:DatatypeProperty,
+                  rdf:Property;
+                rdfs:comment "The keyword of the query.";
+                rdfs:domain vsearch:Query;
+                rdfs:isDefinedBy vsearch:;
+                rdfs:label "keyword"@en;
+                rdfs:range xsd:string.
+vsearch:language a owl:DatatypeProperty,
+                   rdf:Property;
+                 rdfs:comment "The language of the query keyword.";
+                 rdfs:domain vsearch:Query;
+                 rdfs:isDefinedBy vsearch:;
+                 rdfs:label "language"@en;
+                 rdfs:range xsd:string.
+vsearch:rankValue a owl:DatatypeProperty,
+                    rdf:Property;
+                  rdfs:comment "The rank value of a term's ranking.";
+                  rdfs:domain vrank:Rank;
+                  rdfs:isDefinedBy <http://purl.org/voc/vrank/>;
+                  rdfs:label "rank value"@en;
+                  rdfs:range xsd:float.
+vsearch:termURI a owl:DatatypeProperty,
+                  rdf:Property;
+                rdfs:comment "The URI of the result term.";
+                rdfs:domain vsearch:ResultTerm;
+                rdfs:isDefinedBy vsearch:;
+                rdfs:label "term URI"@en;
+                rdfs:range xsd:string.

@@ -1,0 +1,1909 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix mus: <http://data.doremus.org/ontology#>.
+@prefix ecrm: <http://erlangen-crm.org/current/>.
+@prefix efrbroo: <http://erlangen-crm.org/efrbroo/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+mus: dc11:description "DOREMUS is an extension of the FRBRoo model for describing the music.";
+     dcterms:created "2017-01-24"^^xsd:date;
+     dcterms:creator <http://data.doremus.org/organization/DOREMUS>;
+     dcterms:issued "2016-05-02"^^xsd:date;
+     dcterms:license <https://creativecommons.org/licenses/by/4.0/>;
+     dcterms:modified "2018-01-17";
+     vann:preferredNamespacePrefix "mus";
+     vann:preferredNamespaceUri "http://data.doremus.org/ontology#";
+     a owl:Ontology;
+     owl:imports <http://www.w3.org/2004/02/skos/core>,
+                 efrbroo:;
+     owl:versionInfo """v0.2 05/06/2017 - starting enrichemnent for Manifestations - change in of type of several properties controlled by controlled vocabularies
+
+v0.2.1 Beta - test de gestion des vocabulaires contrôlés et propriétés avec valeur contrôlées -
+- import de l'ontologie SKOS
+- M4 devient le range de la propriété U11_has_Key
+- M4 est déclarée sous classe de skos:Concept
+- key est déclaré comme instance de la classe skos:ConceptScheme
+- M4 est déclarée comme equivalent au skos:ConceptScheme key
+
+Si l'utilisateur de l'ontologie n'utilise pas de vocabulaire contrôlé, cette équivalence peut être supprimée. On peut donner une valeur litérale à l'instance de M4_Key en utilisant la propriété rdfs:label et mettre des commentaires en utilisant rdfs:comment
+
+v0.2.2 11/01/2018 - enrichissements de classes et propriétés
+- voir tableau des nouvelles classes et propriétés pour le détail
+
+v0.2.3 08/04/2018
+- voir tableau des nouvelles classes et propriétés pour le détail
+
+v0.2.4 14/05/2018
+- diverses corrections
+
+v0.2.5 16/05/2018
+- diverses corrections
+
+v0.2.6 04/07/2018
+- diverses corrections selon tableau des nouvelles classes et propriétés
+
+v0.2.7 05/07/2018
+- diverses corrections selon tableau des nouvelles classes et propriétés
+
+v0.2.9 09/07/2018
+- changement du label FR de la classe M37"""@en.
+mus:CLI198i_should_be_container_of a owl:ObjectProperty;
+                                   rdfs:label "CLU198i should be container of"@en;
+                                   rdfs:subPropertyOf efrbroo:CLP2i_should_be_type_of;
+                                   owl:inverseOf mus:CLU198_should_have_container.
+mus:CLU197_should_have_binding a owl:ObjectProperty;
+                               rdfs:domain efrbroo:F3_Manifestation_Product_Type;
+                               rdfs:label "CLU197_should_have_binding"@en;
+                               rdfs:range mus:M170_Binding;
+                               rdfs:subPropertyOf efrbroo:CLP2_should_have_type;
+                               owl:inverseOf mus:CLU197i_should_be_binding_of.
+mus:CLU197i_should_be_binding_of a owl:ObjectProperty;
+                                 rdfs:label "CLU197i should be binding of"@en;
+                                 rdfs:subPropertyOf efrbroo:CLP2i_should_be_type_of.
+mus:CLU198_should_have_container a owl:ObjectProperty;
+                                 rdfs:domain efrbroo:F4_Manifestation_Singleton;
+                                 rdfs:label "CLU198 should have container"@en;
+                                 rdfs:range mus:M171_Container;
+                                 rdfs:subPropertyOf efrbroo:CLP2_should_have_type.
+mus:CLU206_should_have_media_type a owl:ObjectProperty;
+                                  rdfs:domain efrbroo:F3_Manifestation_Product_Type;
+                                  rdfs:label "CLU206 should have media type"@en;
+                                  rdfs:range mus:M168_Media_Type;
+                                  rdfs:subPropertyOf efrbroo:CLP2_should_have_type;
+                                  owl:inverseOf mus:CLU206i_should_be_media_type_of.
+mus:CLU206i_should_be_media_type_of a owl:ObjectProperty;
+                                    rdfs:label "CLU206i should be media type of"@en;
+                                    rdfs:subPropertyOf efrbroo:CLP2i_should_be_type_of.
+mus:CLU207_should_have_carrier_type a owl:ObjectProperty;
+                                    rdfs:domain efrbroo:F3_Manifestation_Product_Type;
+                                    rdfs:label "CLU207 should have carrier type"@en;
+                                    rdfs:range mus:M169_Carrier_Type;
+                                    rdfs:subPropertyOf efrbroo:CLP2_should_have_type;
+                                    owl:inverseOf mus:CLU207i_should_be_carrier_type_of.
+mus:CLU207i_should_be_carrier_type_of a owl:ObjectProperty;
+                                      rdfs:label "CLU207i should be carrier type of"@en;
+                                      rdfs:subPropertyOf efrbroo:CLP2i_should_be_type_of.
+mus:CLU210_should_have_pagination a owl:ObjectProperty;
+                                  rdfs:domain efrbroo:F3_Manifestation_Product_Type;
+                                  rdfs:label "CLU210 should have pagination"@en;
+                                  rdfs:range ecrm:E54_Dimension;
+                                  rdfs:subPropertyOf efrbroo:CLP43_should_have_dimension;
+                                  owl:inverseOf mus:CLU210i_should_be_pagination_of.
+mus:CLU210i_should_be_pagination_of a owl:ObjectProperty;
+                                    rdfs:label "CLU210i should be pagination of"@en;
+                                    rdfs:subPropertyOf efrbroo:CLP43i_should_be_dimension_of.
+mus:CLU217_should_have_playing_speed a owl:ObjectProperty;
+                                     rdfs:domain efrbroo:F3_Manifestation_Product_Type;
+                                     rdfs:label "CLU217 should have playing speed"@en;
+                                     rdfs:range mus:M173_Playing_Speed;
+                                     rdfs:subPropertyOf efrbroo:CLP2_should_have_type;
+                                     owl:inverseOf mus:CLU217i_should_be_playing_speed_of.
+mus:CLU217i_should_be_playing_speed_of a owl:ObjectProperty;
+                                       rdfs:label "CLU217i should be playing speed of"@en;
+                                       rdfs:subPropertyOf efrbroo:CLP2i_should_be_type_of.
+mus:CLU223_should_have_number_of_tape_tracks a owl:ObjectProperty;
+                                             rdfs:domain efrbroo:F3_Manifestation_Product_Type;
+                                             rdfs:label "CLU223 should have number of tape tracks"@en;
+                                             rdfs:range ecrm:E54_Dimension;
+                                             rdfs:subPropertyOf efrbroo:CLP2_should_have_type.
+mus:CLU223i_should_be_number_of_tape_tracks_of a owl:ObjectProperty;
+                                               rdfs:label "U223i should be number of tape tracks of"@en;
+                                               rdfs:subPropertyOf efrbroo:CLP2i_should_be_type_of;
+                                               owl:inverseOf mus:U223_has_number_of_tape_tracks.
+mus:CLU53_should_have_duration a owl:ObjectProperty;
+                               rdfs:domain efrbroo:F3_Manifestation_Product_Type;
+                               rdfs:label "CLU53 should have duration"@en;
+                               rdfs:range ecrm:E54_Dimension;
+                               rdfs:subPropertyOf efrbroo:CLP43_should_have_dimension;
+                               owl:inverseOf mus:CLU53i_should_be_duration_of.
+mus:CLU53i_should_be_duration_of a owl:ObjectProperty;
+                                 rdfs:label "CLU53i should be duration of"@en;
+                                 rdfs:subPropertyOf efrbroo:CLP43i_should_be_dimension_of.
+mus:M10_Catalogue_Name a owl:Class;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "M10 Nom de catalogue"@fr,
+                                  "M10 Catalogue Name"@en;
+                       rdfs:subClassOf ecrm:E90_Symbolic_Object.
+mus:M11_Catalogue_Number a owl:Class;
+                         rdfs:isDefinedBy mus:;
+                         rdfs:label "M11 Numéro de catalogue"@fr,
+                                    "M11 Catalogue Number"@en;
+                         rdfs:subClassOf ecrm:E90_Symbolic_Object.
+mus:M12_Opus_Number a owl:Class;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "M12 Opus Number"@en,
+                               "M12 Numéro d'opus"@fr;
+                    rdfs:subClassOf ecrm:E90_Symbolic_Object.
+mus:M13_Opus_Subnumber a owl:Class;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "M13 Sous-numéro d'opus"@fr,
+                                  "M13 Opus Subnumber"@en;
+                       rdfs:subClassOf ecrm:E90_Symbolic_Object.
+mus:M14_Medium_Of_Performance a owl:Class;
+                              rdfs:isDefinedBy mus:;
+                              rdfs:label "M14 Medium of performance"@en,
+                                         "M14 Distribution instrumentale ou vocale"@fr;
+                              rdfs:subClassOf ecrm:E55_Type.
+mus:M154_Label_Name a owl:Class;
+                    rdfs:label "M154 Nom du libellé"@fr,
+                               "M154 Label name"@en;
+                    rdfs:subClassOf ecrm:E41_Appellation.
+mus:M155_Cast_Statement a owl:Class;
+                        rdfs:label "M155 Cast statement"@en;
+                        rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M156_Title_Statement a owl:Class;
+                         rdfs:label "M156 Title statement"@en;
+                         rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M157_Statement_of_Responsibility a owl:Class;
+                                     rdfs:label "M157 Statement of responsibility"@en;
+                                     rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M158_Title_and_Statement_of_Responsibility a owl:Class;
+                                               rdfs:label "M158 Title and statement of responsability"@en;
+                                               rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M159_Edition_Statement a owl:Class;
+                           rdfs:label "M159 Edition statement"@en;
+                           rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M15_Dedication_Statement a owl:Class;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "M15 Mention de dédicace"@fr,
+                                        "M15 Dedication Statement"@en;
+                             rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M160_Publication_Statement a owl:Class;
+                               rdfs:label "M160 Publication statement"@en;
+                               rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M161_Distribution_Statement a owl:Class;
+                                rdfs:label "M161 Distribution statement"@en;
+                                rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M162_Series_Statement a owl:Class;
+                          rdfs:label "M162 Series statement"@en;
+                          rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M163_Music_Format_Statement a owl:Class;
+                                rdfs:label "M163 Music format statement"@en;
+                                rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M164_Multipart_Monograph_Statement a owl:Class;
+                                       rdfs:label "M164 Multipart monograph statement"@en;
+                                       rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M165_Title_Proper_of_Series a owl:Class;
+                                rdfs:label "M165 Titre propre de la série"@fr,
+                                           "M165 Title proper of series"@en;
+                                rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M166_Title_Proper_of_Multipart_Monograph a owl:Class;
+                                             rdfs:label "M166 Titre propre de monographie multipartie"@fr,
+                                                        "M166 Title proper of multipart monograph"@en;
+                                             rdfs:subClassOf ecrm:E33_Linguistic_Object.
+mus:M167_Publication_Expression_Fragment a owl:Class;
+                                         rdfs:label "M167 Publication expression fragment"@en,
+                                                    "M167 Fragment d'expression de publication"@fr;
+                                         rdfs:subClassOf efrbroo:F23_Expression_Fragment.
+mus:M168_Media_Type a owl:Class;
+                    rdfs:label "M168 Type de média"@fr,
+                               "M168 Media type"@en;
+                    rdfs:subClassOf ecrm:E55_Type.
+mus:M169_Carrier_Type a owl:Class;
+                      rdfs:label "M169 Type de support"@fr,
+                                 "M169 Carrier type"@en;
+                      rdfs:subClassOf ecrm:E55_Type.
+mus:M16_Maintenance a owl:Class;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "M16 Maintenance"@fr,
+                               "M16 Maintenance"@en;
+                    rdfs:subClassOf ecrm:E11_Modification.
+mus:M170_Binding a owl:Class;
+                 rdfs:label "M170 Reliure"@fr,
+                            "M170 Binding"@en;
+                 rdfs:subClassOf ecrm:E55_Type.
+mus:M171_Container a owl:Class;
+                   rdfs:label "M171 Container"@en;
+                   rdfs:subClassOf ecrm:E55_Type.
+mus:M172_Colour_Content a owl:Class;
+                        rdfs:label "M172 Couleur du contenu"@fr,
+                                   "M172 Colour content"@en;
+                        rdfs:subClassOf ecrm:E55_Type.
+mus:M173_Playing_Speed a owl:Class;
+                       rdfs:label "M173 Vitesse de lecture"@fr,
+                                  "M173 Playing speed"@en;
+                       rdfs:subClassOf ecrm:E55_Type.
+mus:M174_Content_Type a owl:Class;
+                      rdfs:label "M174 Type de contenu"@fr,
+                                 "M174 Content type"@en;
+                      rdfs:subClassOf ecrm:E55_Type.
+mus:M175_Music_Format a owl:Class;
+                      rdfs:label "M175 Music format"@en,
+                                 "M175 Format musical"@fr;
+                      rdfs:subClassOf ecrm:E55_Type.
+mus:M17_Controlled_Access_Point_Creator a owl:Class;
+                                        rdfs:comment """Scope note:
+Sous-classe de F50 Controlled Access Point, cette classe en reprend les caractéristiques, limitées au « créateur » de l’œuvre."""@fr,
+                                                     """Examples:
+…explosante-fixe… (F22) P1 is identified by F50 Controlled Access Point R8 consists of M17 Controlled Access Point Creator { Boulez, Pierre (1925, …) } and R8 consists of M18 Controlled Access Point Denomination R8 consists of F12 Nomen { …explosante-fixe… }"""@fr;
+                                        rdfs:isDefinedBy mus:;
+                                        rdfs:label "M17 Point d'accès contrôlé créateur"@fr,
+                                                   "M17 Controlled Access Point Creator"@en;
+                                        rdfs:subClassOf efrbroo:F50_Controlled_Access_Point.
+mus:M187i_is_multipart_monograph_statement_of a owl:ObjectProperty;
+                                              rdfs:label "U187i is multipart monograph statement of"@en;
+                                              rdfs:subPropertyOf ecrm:P148i_is_component_of;
+                                              owl:inverseOf mus:U187_has_multipart_monographs_statement.
+mus:M189i_is_main_series_statement_of a owl:ObjectProperty;
+                                      rdfs:label "U189i is main series statement of"@en;
+                                      rdfs:subPropertyOf ecrm:P148i_is_component_of;
+                                      owl:inverseOf mus:U189_has_main_series_statement.
+mus:M18_Controlled_Access_Point_Denomination a owl:Class;
+                                             rdfs:comment """Scope note:
+Sous-classe de F50 Controlled Access Point, cette classe en reprend les caractéristiques, limitées à la « dénomination » de l’œuvre. La dénomination peut être un titre significatif (« Le Sacre du Printemps »), ou un titre composé (« Sonates. Piano. Opus 27 no 2. Do dièse mineur.”)"""@fr,
+                                                          """Examples:
+…explosante-fixe… (F22) P1 is identified by F50 Controlled Access Point R8 consists of M17 Controlled Access Point Creator { Boulez, Pierre (1925, …) } and R8 consists of M18 Controlled Access Point Denomination R8 consists of F12 Nomen { …explosante-fixe… }"""@fr;
+                                             rdfs:isDefinedBy mus:;
+                                             rdfs:label "M18 Point d'accès contrôlé dénomination"@fr,
+                                                        "M18 Controlled Access Point Denomination"@en;
+                                             rdfs:subClassOf efrbroo:F50_Controlled_Access_Point.
+mus:M19_Categorization a owl:Class;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "M19 Style"@fr,
+                                  "M19 Style"@en;
+                       rdfs:subClassOf ecrm:E55_Type.
+mus:M1_Catalogue_Statement a owl:Class;
+                           rdfs:comment """Scope Note:
+Cette classe permet de décrire, lorsqu’elles existent, les références de catalogue de l’œuvre musicale. Par catalogue, on comprend tous les catalogues thématiques à proprement parler (donc à l’exclusion des numéros d’opus) ainsi que les classifications spécifiques telles que WoO ou Anh.
+Selon le niveau de granularité initial, elle est décrite par une simple chaîne de caractères, ou par les objets symboliques M10 Catalogue Name et M11 Catalogue Number qui la composent. La classe M10 Catalogue Name peut-être documentée via la propriété p70i is documented in."""@fr,
+                                        """Exemples :
+La cantate Ich habe genug de JS Bach [BWV 82] (F22) est identifiée par  (M1 Catalogue p3 has note E62 String) BWV 82
+La cantate Ich habe genug de JS Bach [BWV 82] (F22) est identifiée par  (M1 Catalogue p106 is composed of M10 Catalogue Name) BWV et (M1 Catalogue p106 is composed of Catalogue Number) 82.
+Komm, Gott Schöpfer, heiliger Geist. No 1 de JS Bach [BWV deest] (F22) est identifiée par (M1 Catalogue p3 has note E62 String) BWV deest.
+Duncan Gray [WoO 156, no 2] de Beethoven (F22) est identifiée par (M1 Catalogue p106 is composed of M10 Catalogue Name) WoO et (M1 Catalogue p106 is composed of Catalogue Number) 156, no 2.
+La Sonate pour Clavier en Ut majeur de Wilhelm Friedemann Bach identifiée BR A1 par le catalogue Bach Repertorium  et identifiée F200 par le catalogue Fasch (F22) : est identifiée par (M1 Catalogue p106 is composed of M10 Catalogue Name) BR et (M1 Catalogue p106 is composed of Catalogue Number) A1, et est identifiée par (M1 Catalogue p106 is composed of M10 Catalogue Name) F et (M1 Catalogue p106 is composed of Catalogue Number) 200."""@fr;
+                           rdfs:isDefinedBy mus:;
+                           rdfs:label "M1 Mention de catalogue"@fr,
+                                      "M1 Catalogue Statement"@en;
+                           rdfs:subClassOf ecrm:E41_Appellation.
+mus:M20_Music_Group_Formation a owl:Class;
+                              rdfs:isDefinedBy mus:;
+                              rdfs:label "M20 Type de formation musicale ou vocale"@fr,
+                                         "M20 Music Group Formation"@en;
+                              rdfs:subClassOf ecrm:E55_Type.
+mus:M21_Harmonic_Structure a owl:Class;
+                           rdfs:isDefinedBy mus:;
+                           rdfs:label "M21 Structure Harmonique"@fr,
+                                      "M21 Harmonic Structure"@en;
+                           rdfs:subClassOf ecrm:E55_Type.
+mus:M22_Form a owl:Class;
+             rdfs:isDefinedBy mus:;
+             rdfs:label "M22 Forme"@fr,
+                        "M22 Form"@en;
+             rdfs:subClassOf ecrm:E55_Type.
+mus:M23_Casting_Detail a owl:Class;
+                       rdfs:comment """Scope note:
+Cette classe décrit un détail de la distribution prévue par le compositeur, par exemple une sonate pour violon et piano est décrite par deux « composantes » M23 qui sont le violon et le piano. Elle est donc obligatoirement associée à la classe M6 Intended Casting dont elle détaille les composantes. Ces composantes comprennent notamment le ou les medium of performance prévus par le compositeur, l’éventuel rôle soliste du medium of performance, le personnage interprété (par exemple dans un opéra), la tessiture précise."""@fr,
+                                    """Examples:
+La Sonate pour piano opus 27, no 2 de Beethoven (F22) U13 has intended casting M6 Intended Casting U23 has casting detail M23 Casting Detail U1 has intended medium of performance M35 Cast Medium of Performance U39 has medium of performance M14 Medium of Performance { piano } and P90 has value { 1 }."""@fr;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "M23 Détail de la distribution"@fr,
+                                  "M23 Casting Detail"@en;
+                       rdfs:subClassOf ecrm:E29_Design_or_Procedure.
+mus:M24_Track a owl:Class;
+              rdfs:isDefinedBy mus:;
+              rdfs:label "M24 Track"@en,
+                         "M24 Piste"@fr;
+              rdfs:subClassOf mus:M46_Set_of_Tracks.
+mus:M25_Foreseen_Activity a owl:Class;
+                          rdfs:isDefinedBy mus:;
+                          rdfs:label "M25 Foreseen Activity"@en,
+                                     "M25 Activité prévisionnelle"@fr;
+                          rdfs:subClassOf ecrm:E29_Design_or_Procedure.
+mus:M26_Foreseen_Performance a owl:Class;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "M26 Performance prévisionnelle"@fr,
+                                        "M26 Foreseen Performance"@en;
+                             rdfs:subClassOf mus:M25_Foreseen_Activity.
+mus:M27_Foreseen_Individual_Performance a owl:Class;
+                                        rdfs:isDefinedBy mus:;
+                                        rdfs:label "M27 Performance individuelle prévisionnelle"@fr,
+                                                   "M27 Foreseen Individual Performance"@en;
+                                        rdfs:subClassOf mus:M26_Foreseen_Performance.
+mus:M28_Individual_Performance a owl:Class;
+                               rdfs:isDefinedBy mus:;
+                               rdfs:label "M28 Performance individuelle"@fr,
+                                          "M28 Individual Performance"@en;
+                               rdfs:subClassOf efrbroo:F31_Performance.
+mus:M29_Editing a owl:Class;
+                rdfs:isDefinedBy mus:;
+                rdfs:label "M29 Post-production"@fr,
+                           "M29 Editing"@en;
+                rdfs:subClassOf efrbroo:F28_Expression_Creation.
+mus:M2_Opus_Statement a owl:Class;
+                      rdfs:isDefinedBy mus:;
+                      rdfs:label "M2 Opus Statement"@en,
+                                 "M2 Mention d'opus"@fr;
+                      rdfs:subClassOf ecrm:E41_Appellation.
+mus:M30_Ambitus a owl:Class;
+                rdfs:isDefinedBy mus:;
+                rdfs:label "M30 Ambitus"@fr,
+                           "M30 Ambitus"@en;
+                rdfs:subClassOf ecrm:E55_Type.
+mus:M31_Actor_Function a owl:Class;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "M31 Fonction de l'agent"@fr,
+                                  "M31 Actor's Function"@en;
+                       rdfs:subClassOf ecrm:E55_Type.
+mus:M32_Actor_Responsibility a owl:Class;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "M32 Responsabilité de l'agent"@fr,
+                                        "M32 Actor's Responsibility"@en;
+                             rdfs:subClassOf ecrm:E55_Type.
+mus:M33_Set_of_Characters a owl:Class;
+                          rdfs:isDefinedBy mus:;
+                          rdfs:label "M33 Set of Characters"@en,
+                                     "M33 Ensemble de personnages"@fr;
+                          rdfs:subClassOf ecrm:E29_Design_or_Procedure.
+mus:M34_Award_Assignment a owl:Class;
+                         rdfs:isDefinedBy mus:;
+                         rdfs:label "M34 Award Assignment"@en,
+                                    "M34 Attribution de récompense"@fr;
+                         rdfs:subClassOf ecrm:E13_Attribute_Assignment.
+mus:M35_Representative_Publication_Assignment a owl:Class;
+                                              rdfs:isDefinedBy mus:;
+                                              rdfs:label "M35 Representative Publication Assignment"@en,
+                                                         "M35 Attribution d'Expression publicationnelle représentative"@fr;
+                                              rdfs:subClassOf ecrm:E13_Attribute_Assignment.
+mus:M36_Award a owl:Class;
+              rdfs:isDefinedBy mus:;
+              rdfs:label "M36 Récompense"@fr,
+                         "M36 Award"@en;
+              rdfs:subClassOf ecrm:E55_Type.
+mus:M37_Music_Scale a owl:Class;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "M37 Music Scale"@en,
+                               "M37 Echelle Musicale"@fr;
+                    rdfs:subClassOf ecrm:E55_Type.
+mus:M38_Rhythmic_Pattern a owl:Class;
+                         rdfs:isDefinedBy mus:;
+                         rdfs:label "M38 Rhythmic Pattern"@en,
+                                    "M38 Figure Rythmique"@fr;
+                         rdfs:subClassOf ecrm:E55_Type.
+mus:M39_Derivation_Type_Assignment a owl:Class;
+                                   rdfs:isDefinedBy mus:;
+                                   rdfs:label "M39 Derivation Type Assignment"@en,
+                                              "M39 Attribution de type de dérivation"@fr;
+                                   rdfs:subClassOf ecrm:E17_Type_Assignment.
+mus:M3_Order_Number a owl:Class;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "M3 Order Number"@en,
+                               "M3 Numéro d'ordre"@fr;
+                    rdfs:subClassOf ecrm:E41_Appellation.
+mus:M40_Context a owl:Class;
+                rdfs:isDefinedBy mus:;
+                rdfs:label "M40 Contexte"@fr,
+                           "M40 Context"@en;
+                rdfs:subClassOf ecrm:E55_Type.
+mus:M41_Metronome_Indication a owl:Class;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "M41 Metronome Indication"@en,
+                                        "M41 Indication Métronomique"@fr;
+                             rdfs:subClassOf ecrm:E29_Design_or_Procedure.
+mus:M42_Performed_Expression_Creation a owl:Class;
+                                      rdfs:isDefinedBy mus:;
+                                      rdfs:label "M42 Performed Expression Creation"@en,
+                                                 "M42 Création d'Expression interprétée"@fr;
+                                      rdfs:subClassOf efrbroo:F31_Performance,
+                                                      efrbroo:F28_Expression_Creation.
+mus:M43_Performed_Expression a owl:Class;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "M43 Performed Expression"@en,
+                                        "M43 Expression interprétée"@fr;
+                             rdfs:subClassOf efrbroo:F22_Self-Contained_Expression.
+mus:M44_Performed_Work a owl:Class;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "M44 Performed Work"@en,
+                                  "M44 Oeuvre interprétée"@fr;
+                       rdfs:subClassOf efrbroo:F14_Individual_Work.
+mus:M45_Descriptive_Expression_Assignment a owl:Class;
+                                          rdfs:isDefinedBy mus:;
+                                          rdfs:label "M45 Descriptive Expression Assignment"@en,
+                                                     "M45 Attribution d'Expression Descriptive"@fr;
+                                          rdfs:subClassOf ecrm:E13_Attribute_Assignment.
+mus:M46_Set_of_Tracks a owl:Class;
+                      rdfs:comment "Scope Note : ensemble des pistes constituant un enregistrement publié."@fr;
+                      rdfs:isDefinedBy mus:;
+                      rdfs:label "M46 Set of Tracks"@en,
+                                 "M46 Ensemble de Pistes"@fr;
+                      rdfs:subClassOf efrbroo:F22_Self-Contained_Expression.
+mus:M47_WoO_Number a owl:Class;
+                   rdfs:isDefinedBy mus:;
+                   rdfs:label "M47 WoO Number"@en,
+                              "M47 Numéro de WoO"@fr;
+                   rdfs:subClassOf ecrm:E90_Symbolic_Object.
+mus:M48_WoO_Subnumber a owl:Class;
+                      rdfs:isDefinedBy mus:;
+                      rdfs:label "WoO sous-numéro"@fr,
+                                 "M48 WoO Subnumber"@en;
+                      rdfs:subClassOf ecrm:E90_Symbolic_Object.
+mus:M49_Performer_Status a owl:Class;
+                         rdfs:label "M49 Statut de l'interprète"@fr,
+                                    "M49 Performer status"@en;
+                         rdfs:subClassOf ecrm:E55_Type.
+mus:M4_Key a owl:Class;
+           rdfs:comment """Scope note:
+Cette classe décrit la tonalité de l’œuvre.
+Les tonalités sont souvent listées sous forme de référentiels multilingues, c’est pourquoi la classe M4 Key est liée à la classe M7 Linguistic Appellation."""@fr,
+                        """Examples:	→ Le Concerto pour Piano et orchestre en Si bémol majeur de Beethoven a pour tonalité si bémol majeur :
+F22 Self-Contained Expression u11 has key M4 Key { Si bémol Majeur }"""@fr;
+           rdfs:isDefinedBy mus:;
+           rdfs:label "M4 Tonalité"@fr,
+                      "M4 Key"@en;
+           rdfs:subClassOf ecrm:E55_Type;
+           owl:equivalentClass [owl:hasValue <http://data.doremus.org/vocabulary/key/> ; 
+                                owl:onProperty skos:inScheme ; 
+                                a owl:Restriction].
+mus:M50_Creation_or_Performance_Mode a owl:Class;
+                                     rdfs:label "M50 Performance mode"@en,
+                                                "M50 Mode de performance"@fr;
+                                     rdfs:subClassOf ecrm:E55_Type.
+mus:M51_Type_Of_Recording_Equipment a owl:Class;
+                                    rdfs:label "M51 Type of recording equipment"@en,
+                                               "M51 Type d'équipement d'enregistrement"@fr;
+                                    rdfs:subClassOf ecrm:E55_Type.
+mus:M52_Equalization_Technique a owl:Class;
+                               rdfs:label "M52 Technique d'équalisation"@fr,
+                                          "M52 Equalization technique"@en;
+                               rdfs:subClassOf ecrm:E55_Type.
+mus:M53_Noise_Reduction_Technique a owl:Class;
+                                  rdfs:label "M53 Technique de réduction de bruit"@fr,
+                                             "M53 Noise reduction  technique"@fr;
+                                  rdfs:subClassOf ecrm:E55_Type.
+mus:M54_Sound_Spatialization_Technique a owl:Class;
+                                       rdfs:label "M54 Technique de spatialisation du son"@fr,
+                                                  "M54 Sound spatialization technique"@en;
+                                       rdfs:subClassOf ecrm:E55_Type.
+mus:M55_Condition_of_Performance a owl:Class;
+                                 rdfs:label "M55 Condition of performance"@en,
+                                            "M55 Condition de la performance"@fr;
+                                 rdfs:subClassOf ecrm:E55_Type.
+mus:M57_Vocal_or_Instrumental_Technique a owl:Class;
+                                        rdfs:label "M57 Vocal or instrumental technique"@en,
+                                                   "M57 Technique vocale ou instrumentale"@fr;
+                                        rdfs:subClassOf ecrm:E55_Type.
+mus:M58_Programming_Work a owl:Class;
+                         rdfs:label "M58 Programming Work"@en,
+                                    "M58 Oeuvre de programmation"@fr;
+                         rdfs:subClassOf efrbroo:F14_Individual_Work.
+mus:M59_Program a owl:Class;
+                rdfs:label "M59 Programme"@fr,
+                           "M59 Program"@en;
+                rdfs:subClassOf ecrm:E29_Design_or_Procedure.
+mus:M5_Genre a owl:Class;
+             rdfs:isDefinedBy mus:;
+             rdfs:label "M5 Genre"@fr,
+                        "M5 Genre"@en;
+             rdfs:subClassOf ecrm:E55_Type.
+mus:M60_Intended_Audience a owl:Class;
+                          rdfs:label "M60 Public visé"@fr,
+                                     "M60 Intended audience"@en;
+                          rdfs:subClassOf ecrm:E55_Type.
+mus:M61_Work_Type a owl:Class;
+                  rdfs:label "M61 Work type"@en,
+                             "M61 Type d'oeuvre"@fr;
+                  rdfs:subClassOf ecrm:E55_Type.
+mus:M62_Hierarchical_Level a owl:Class;
+                           rdfs:label "M62 Niveau hiérarchique"@fr,
+                                      "M62 Hierarchical level"@en;
+                           rdfs:subClassOf ecrm:E55_Type.
+mus:M6_Casting a owl:Class;
+               rdfs:comment """Scope note:
+Cette classe permet de décrire les « medium of performance » d’une œuvre, c’est-à-dire les instruments, machines, exécutants autres que musiciens (danseurs, acteurs, récitants,…) pour lesquels l’œuvre a été composée. Elle décrit donc l’intention du compositeur. M6 Casting est une « classe chapeau » qui représente la globalité de la distribution instrumentale et/ou vocale. Le détail de cette distribution est décrit via la classe M23 Casting Detail.
+Dans le cas de versions alternatives, on donnera deux M6 Casting différents pour la même expression."""@fr;
+               rdfs:isDefinedBy mus:;
+               rdfs:label "M6 Distribution vocale ou instrumentale"@fr,
+                          "M6 Casting"@en;
+               rdfs:subClassOf ecrm:E29_Design_or_Procedure.
+mus:M7_Linguistic_Appellation a owl:Class;
+                              rdfs:comment """Scope note:
+Cette classe permet de décrire une appellation et ses composantes linguistiques. Elle comprend donc les appellations originales et les traductions de ces appellations."""@fr;
+                              rdfs:isDefinedBy mus:;
+                              rdfs:label "M7 Linguistic Appellation"@en,
+                                         "M7 Appellation linguistique"@fr;
+                              rdfs:subClassOf ecrm:E41_Appellation,
+                                              ecrm:E33_Linguistic_Object.
+mus:M8_Tempo a owl:Class;
+             rdfs:isDefinedBy mus:;
+             rdfs:label "M8 Tempo"@fr,
+                        "M8 Tempo"@en;
+             rdfs:subClassOf ecrm:E29_Design_or_Procedure.
+mus:M9_Derivation_Type a owl:Class;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "M9 Type de dérivation"@fr,
+                                  "M9 Derivation Type"@en;
+                       rdfs:subClassOf ecrm:E55_Type.
+mus:U10_has_order_number a owl:DatatypeProperty;
+                         rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                         rdfs:isDefinedBy mus:;
+                         rdfs:label "U10 has order number"@en;
+                         rdfs:range xsd:positiveInteger.
+mus:U11_has_key a owl:ObjectProperty;
+                rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                rdfs:isDefinedBy mus:;
+                rdfs:label "U11 has key"@en;
+                rdfs:range mus:M4_Key;
+                rdfs:subPropertyOf ecrm:P2_has_type;
+                owl:inverseOf mus:U11i_is_key_of.
+mus:U11i_is_key_of a owl:ObjectProperty;
+                   rdfs:isDefinedBy mus:;
+                   rdfs:label "U11i is key of"@en;
+                   rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U12_has_genre a owl:ObjectProperty;
+                  rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                  rdfs:isDefinedBy mus:;
+                  rdfs:label "U12 has genre"@en;
+                  rdfs:range mus:M5_Genre;
+                  rdfs:subPropertyOf ecrm:P2_has_type;
+                  owl:inverseOf mus:U12i_is_genre_of.
+mus:U12i_is_genre_of a owl:ObjectProperty;
+                     rdfs:isDefinedBy mus:;
+                     rdfs:label "U12i is genre of"@en;
+                     rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U13_has_casting a owl:ObjectProperty;
+                    rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "U13 has casting"@en;
+                    rdfs:range mus:M6_Casting;
+                    rdfs:subPropertyOf ecrm:P67_refers_to;
+                    owl:inverseOf mus:U13i_is_casting_of.
+mus:U13i_is_casting_of a owl:ObjectProperty;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "U13i is casting of"@en;
+                       rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U14_has_tempo a owl:ObjectProperty;
+                  rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                  rdfs:isDefinedBy mus:;
+                  rdfs:label "U14 has tempo"@en;
+                  rdfs:range mus:M8_Tempo;
+                  rdfs:subPropertyOf ecrm:P67_refers_to;
+                  owl:inverseOf mus:U14i_is_tempo_of.
+mus:U14i_is_tempo_of a owl:ObjectProperty;
+                     rdfs:isDefinedBy mus:;
+                     rdfs:label "U14i is tempo of"@en;
+                     rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U15_has_history a owl:DatatypeProperty;
+                    rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "U15 has history"@en;
+                    rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U167_has_title_proper a owl:ObjectProperty;
+                          rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                          rdfs:label "U167 has title proper"@en;
+                          rdfs:range ecrm:E35_Title;
+                          rdfs:subPropertyOf ecrm:P102_has_title;
+                          owl:inverseOf mus:U167i_is_title_proper_of.
+mus:U167i_is_title_proper_of a owl:ObjectProperty;
+                             rdfs:label "U167i is title proper of"@en;
+                             rdfs:subPropertyOf ecrm:P102i_is_title_of.
+mus:U168_has_parallel_title a owl:ObjectProperty;
+                            rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                            rdfs:label "U168 has parallel title"@en;
+                            rdfs:range ecrm:E35_Title;
+                            rdfs:subPropertyOf ecrm:P102_has_title;
+                            owl:inverseOf mus:U168i_is_parallel_title_of.
+mus:U168i_is_parallel_title_of a owl:ObjectProperty;
+                               rdfs:label "U168i is parallel title of"@en;
+                               rdfs:subPropertyOf ecrm:P102i_is_title_of.
+mus:U169_was_issued_under_label_name a owl:ObjectProperty;
+                                     rdfs:domain efrbroo:F24_Publication_Expression;
+                                     rdfs:label "U169 was issued under label name"@en;
+                                     rdfs:range mus:M154_Label_Name.
+mus:U16_has_catalogue_statement a owl:ObjectProperty;
+                                rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                rdfs:isDefinedBy mus:;
+                                rdfs:label "U16 has catalogue statement"@en;
+                                rdfs:range mus:M1_Catalogue_Statement;
+                                rdfs:subPropertyOf ecrm:P1_is_identified_by;
+                                owl:inverseOf mus:U16i_is_catalogue_statement_of.
+mus:U16i_is_catalogue_statement_of a owl:ObjectProperty;
+                                   rdfs:isDefinedBy mus:;
+                                   rdfs:label "U16i is catalogue statement of"@en;
+                                   rdfs:subPropertyOf ecrm:P1i_identifies.
+mus:U170_has_title_statement a owl:ObjectProperty;
+                             rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                             rdfs:label "U170 has title statement"@en;
+                             rdfs:range mus:M156_Title_Statement;
+                             rdfs:subPropertyOf ecrm:P148_has_component;
+                             owl:inverseOf mus:U170i_is_title_statement_of.
+mus:U170i_is_title_statement_of a owl:ObjectProperty;
+                                rdfs:label "U170i is title statement of"@en;
+                                rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U171_has_parallel_title_statement a owl:InverseFunctionalProperty,
+                                        owl:ObjectProperty;
+                                      rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                      rdfs:label "U171 has parallel title statement"@en;
+                                      rdfs:range mus:M156_Title_Statement;
+                                      rdfs:subPropertyOf ecrm:P148_has_component;
+                                      owl:inverseOf mus:U171i_is_parallel_title_statement_of.
+mus:U171i_is_parallel_title_statement_of a owl:ObjectProperty;
+                                         rdfs:label "U171i is parallel title statement of"@en;
+                                         rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U172_has_statement_of_responsibility_relating_to_title a owl:ObjectProperty;
+                                                           rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                                           rdfs:label "U172 has statement of responsibility relating to title"@en;
+                                                           rdfs:range mus:M157_Statement_of_Responsibility;
+                                                           rdfs:subPropertyOf ecrm:P148_has_component;
+                                                           owl:inverseOf mus:U172i_is_statement_of_responsibility_relating_to_title_of.
+mus:U172i_is_statement_of_responsibility_relating_to_title_of a owl:ObjectProperty;
+                                                              rdfs:label "U172i is statement of responsibility relating to title of"@en;
+                                                              rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U173_has_parallel_statement_of_responsibility_relating_to_title a owl:ObjectProperty;
+                                                                    rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                                                    rdfs:label "U173 has parallel statement of responsibility relating to title"@en;
+                                                                    rdfs:range mus:M157_Statement_of_Responsibility;
+                                                                    rdfs:subPropertyOf ecrm:P148_has_component;
+                                                                    owl:inverseOf mus:U173i_is_parallel_statement_of_responsibility_relating_to_title_of.
+mus:U173i_is_parallel_statement_of_responsibility_relating_to_title_of a owl:ObjectProperty;
+                                                                       rdfs:label "U173i is parallel statement of responsibility relating to title of"@en;
+                                                                       rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U174_has_cast_statement a owl:ObjectProperty;
+                            rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                            rdfs:label "U174 has cast statement"@en;
+                            rdfs:range mus:M155_Cast_Statement;
+                            rdfs:subPropertyOf ecrm:P148_has_component;
+                            owl:inverseOf mus:U174i_is_cast_statement_of.
+mus:U174i_is_cast_statement_of a owl:ObjectProperty;
+                               rdfs:label "U174i is cast statement of"@en;
+                               rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U175_has_parallel_cast_statement a owl:ObjectProperty;
+                                     rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                     rdfs:label "U175 has parallel cast statement"@en;
+                                     rdfs:range mus:M155_Cast_Statement;
+                                     rdfs:subPropertyOf ecrm:P148_has_component.
+mus:U175i_is_parallel_cast_statement_of a owl:ObjectProperty;
+                                        rdfs:label "U175i is parallel cast statement of"@en;
+                                        rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U176_has_edition_statement a owl:ObjectProperty;
+                               rdfs:domain efrbroo:F24_Publication_Expression;
+                               rdfs:label "U176 has edition statement"@en;
+                               rdfs:range mus:M159_Edition_Statement;
+                               rdfs:subPropertyOf ecrm:P148_has_component;
+                               owl:inverseOf mus:U176i_is_edition_statement_of.
+mus:U176i_is_edition_statement_of a owl:ObjectProperty;
+                                  rdfs:label "U176i is edition statement of"@en;
+                                  rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U177_has_parallel_edition_statement a owl:ObjectProperty;
+                                        rdfs:domain efrbroo:F24_Publication_Expression;
+                                        rdfs:label "U177 has parallel edition statement"@en;
+                                        rdfs:range mus:M159_Edition_Statement;
+                                        rdfs:subPropertyOf ecrm:P148_has_component;
+                                        owl:inverseOf mus:U177i_is_parallel_edition_statement_of.
+mus:U177i_is_parallel_edition_statement_of a owl:ObjectProperty;
+                                           rdfs:label "U177i is parallel edition statement of"@en;
+                                           rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U178_has_statement_of_responsibility_relating_to_edition a owl:ObjectProperty;
+                                                             rdfs:domain efrbroo:F24_Publication_Expression;
+                                                             rdfs:label "U178 has statement of responsibility relating to edition"@en;
+                                                             rdfs:range mus:M157_Statement_of_Responsibility;
+                                                             rdfs:subPropertyOf ecrm:P148_has_component;
+                                                             owl:inverseOf mus:U178i_is_statement_of_responsibility_relating_to_edition_of.
+mus:U178i_is_statement_of_responsibility_relating_to_edition_of a owl:ObjectProperty;
+                                                                rdfs:label "U178i is statement of responsibility relating to edition of"@en;
+                                                                rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U179_has_parallel_statement_of_responsibility_relating_to_edition a owl:ObjectProperty;
+                                                                      rdfs:domain efrbroo:F24_Publication_Expression;
+                                                                      rdfs:label "U179 has parallel statement of responsibility relating to edition"@en;
+                                                                      rdfs:range mus:M157_Statement_of_Responsibility;
+                                                                      rdfs:subPropertyOf ecrm:P148_has_component;
+                                                                      owl:inverseOf mus:U179i_is_parallel_statement_of_responsibility_relating_to_edition_of.
+mus:U179i_is_parallel_statement_of_responsibility_relating_to_edition_of a owl:ObjectProperty;
+                                                                         rdfs:label "U179i is parallel statement of responsibility relating to edition of"@en;
+                                                                         rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U17_has_opus_statement a owl:ObjectProperty;
+                           rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                           rdfs:isDefinedBy mus:;
+                           rdfs:label "U17 has opus statement"@en;
+                           rdfs:range mus:M2_Opus_Statement;
+                           rdfs:subPropertyOf ecrm:P1_is_identified_by;
+                           owl:inverseOf mus:U17i_is_opus_statement_of.
+mus:U17i_is_opus_statement_of a owl:ObjectProperty;
+                              rdfs:isDefinedBy mus:;
+                              rdfs:label "U17i is opus statement of"@en;
+                              rdfs:subPropertyOf ecrm:P1i_identifies.
+mus:U180_has_additional_edition_statement a owl:ObjectProperty;
+                                          rdfs:domain efrbroo:F24_Publication_Expression;
+                                          rdfs:label "U180 has additional edition statement"@en;
+                                          rdfs:range mus:M159_Edition_Statement;
+                                          rdfs:subPropertyOf ecrm:P148_has_component;
+                                          owl:inverseOf mus:U180i_is_additional_edition_statement_of.
+mus:U180i_is_additional_edition_statement_of a owl:ObjectProperty;
+                                             rdfs:label "U180i is additional edition statement of"@en;
+                                             rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U181_has_parallel_additional_edition_statement a owl:ObjectProperty;
+                                                   rdfs:domain efrbroo:F24_Publication_Expression;
+                                                   rdfs:label "U181 has parallel additional edition statement"@en;
+                                                   rdfs:range mus:M159_Edition_Statement;
+                                                   rdfs:subPropertyOf ecrm:P148_has_component;
+                                                   owl:inverseOf mus:U181i_is_parallel_additional_edition_statement_of.
+mus:U181i_is_parallel_additional_edition_statement_of a owl:ObjectProperty;
+                                                      rdfs:label "U181i is parallel additional edition statement of"@en;
+                                                      rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U182_has_music_format_statement a owl:ObjectProperty;
+                                    rdfs:domain efrbroo:F24_Publication_Expression;
+                                    rdfs:label "U182 has music format statement"@en;
+                                    rdfs:range mus:M163_Music_Format_Statement;
+                                    rdfs:subPropertyOf ecrm:P148_has_component;
+                                    owl:inverseOf mus:U182i_is_music_format_statement_of.
+mus:U182i_is_music_format_statement_of a owl:ObjectProperty;
+                                       rdfs:label "U182i is music format statement of"@en;
+                                       rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U183_has_parallel_music_format_statement a owl:ObjectProperty;
+                                             rdfs:domain efrbroo:F24_Publication_Expression;
+                                             rdfs:label "U183 has parallel music format statement"@en;
+                                             rdfs:range mus:M163_Music_Format_Statement;
+                                             rdfs:subPropertyOf ecrm:P148_has_component;
+                                             owl:inverseOf mus:U183i_is_parallel_music_format_statement_of.
+mus:U183i_is_parallel_music_format_statement_of a owl:ObjectProperty;
+                                                rdfs:label "U183i is parallel music format statement of"@en;
+                                                rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U184_has_publication_statement a owl:ObjectProperty;
+                                   rdfs:domain efrbroo:F24_Publication_Expression;
+                                   rdfs:label "U184 has publication statement"@en;
+                                   rdfs:range mus:M160_Publication_Statement;
+                                   rdfs:subPropertyOf ecrm:P148_has_component;
+                                   owl:inverseOf mus:U184i_is_publication_statement_of.
+mus:U184i_is_publication_statement_of a owl:ObjectProperty;
+                                      rdfs:label "U184i is publication statement of"@en;
+                                      rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U185_has_distribution_statement a owl:ObjectProperty;
+                                    rdfs:domain efrbroo:F24_Publication_Expression;
+                                    rdfs:label "U185 has distribution statement"@en;
+                                    rdfs:range mus:M161_Distribution_Statement;
+                                    rdfs:subPropertyOf ecrm:P148_has_component;
+                                    owl:inverseOf mus:U185i_is_distribution_statement_of.
+mus:U185i_is_distribution_statement_of a owl:ObjectProperty;
+                                       rdfs:label "U185i is distribution statement of"@en;
+                                       rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U186_has_printing_or_manufacture_statement a owl:ObjectProperty;
+                                               rdfs:domain efrbroo:F24_Publication_Expression;
+                                               rdfs:label "U186 has printing or manufacture statement"@en;
+                                               rdfs:range ecrm:E33_Linguistic_Object;
+                                               rdfs:subPropertyOf ecrm:P148_has_component;
+                                               owl:inverseOf mus:U186i_is_printing_or_manufacture_statement_of.
+mus:U186i_is_printing_or_manufacture_statement_of a owl:ObjectProperty;
+                                                  rdfs:label "U186i is printing or manufacture statement of"@en;
+                                                  rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U187_has_multipart_monographs_statement a owl:ObjectProperty;
+                                            rdfs:domain efrbroo:F24_Publication_Expression;
+                                            rdfs:label "U187 has multipart monograph statement"@en;
+                                            rdfs:range mus:M164_Multipart_Monograph_Statement;
+                                            rdfs:subPropertyOf ecrm:P148_has_component.
+mus:U188_has_series_statement a owl:ObjectProperty;
+                              rdfs:domain efrbroo:F24_Publication_Expression;
+                              rdfs:label "U188 has series statement"@en;
+                              rdfs:range mus:M162_Series_Statement;
+                              rdfs:subPropertyOf ecrm:P148_has_component;
+                              owl:inverseOf mus:U188i_is_series_statement_of.
+mus:U188i_is_series_statement_of a owl:ObjectProperty;
+                                 rdfs:label "U188i is series statement of"@en;
+                                 rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U189_has_main_series_statement a owl:ObjectProperty;
+                                   rdfs:domain efrbroo:F24_Publication_Expression;
+                                   rdfs:label "U189 has main series statement"@en;
+                                   rdfs:range mus:M162_Series_Statement;
+                                   rdfs:subPropertyOf ecrm:P148_has_component.
+mus:U18_has_rhythmic_pattern a owl:ObjectProperty;
+                             rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "U18 has rhythmic pattern"@en;
+                             rdfs:range mus:M38_Rhythmic_Pattern;
+                             rdfs:subPropertyOf ecrm:P2_has_type;
+                             owl:inverseOf mus:U18i_is_rhythmic_pattern_of.
+mus:U18i_is_rhythmic_pattern_of a owl:ObjectProperty;
+                                rdfs:isDefinedBy mus:;
+                                rdfs:label "U18i is rhythmic pattern of"@en;
+                                rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U191_used_equalization_technique a owl:ObjectProperty;
+                                     rdfs:domain mus:M29_Editing;
+                                     rdfs:label "U191 used equalization technique"@en;
+                                     rdfs:range mus:M52_Equalization_Technique;
+                                     rdfs:subPropertyOf ecrm:P32_used_general_technique;
+                                     owl:inverseOf mus:U191i_was_technique_of_equalization.
+mus:U191i_was_technique_of_equalization a owl:ObjectProperty;
+                                        rdfs:label "U191i was technique of equalization"@en;
+                                        rdfs:subPropertyOf ecrm:P32i_was_technique_of.
+mus:U192_used_noise_reduction_technique a owl:ObjectProperty;
+                                        rdfs:domain mus:M29_Editing;
+                                        rdfs:label "U192 used noise reduction technique"@en;
+                                        rdfs:range mus:M53_Noise_Reduction_Technique;
+                                        rdfs:subPropertyOf ecrm:P32_used_general_technique;
+                                        owl:inverseOf mus:U192i_was_technique_of_noise_reduction.
+mus:U192i_was_technique_of_noise_reduction a owl:ObjectProperty;
+                                           rdfs:label "U192i was technique of noise reduction"@en;
+                                           rdfs:subPropertyOf ecrm:P32i_was_technique_of.
+mus:U193_used_historical_instruments a owl:DatatypeProperty;
+                                     rdfs:domain efrbroo:F31_Performance;
+                                     rdfs:label "U193 used historical instruments"@en;
+                                     rdfs:range xsd:string;
+                                     rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U194_has_system_requirements a owl:DatatypeProperty;
+                                 rdfs:domain ecrm:E71_Man-Made_Thing;
+                                 rdfs:label "U194 has system requirements"@en;
+                                 rdfs:range xsd:string;
+                                 rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U195_has_order_or_location_indication a owl:ObjectProperty;
+                                          rdfs:domain efrbroo:F2_Expression;
+                                          rdfs:label "U195 has order or location indication"@en;
+                                          rdfs:range ecrm:E73_Information_Object;
+                                          rdfs:subPropertyOf ecrm:P148_has_component.
+mus:U197_has_binding a owl:ObjectProperty;
+                     rdfs:domain efrbroo:F4_Manifestation_Singleton;
+                     rdfs:label "U197 has binding"@en;
+                     rdfs:range mus:M170_Binding;
+                     rdfs:subPropertyOf ecrm:P2_has_type;
+                     owl:inverseOf mus:U197i_is_binding_of.
+mus:U197i_is_binding_of a owl:ObjectProperty;
+                        rdfs:label "U197i is binding of"@en;
+                        rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U198_has_container a owl:ObjectProperty;
+                       rdfs:domain efrbroo:F4_Manifestation_Singleton;
+                       rdfs:label "U198 has container"@en;
+                       rdfs:range mus:M171_Container;
+                       rdfs:subPropertyOf ecrm:P2_has_type.
+mus:U199_has_sponsor a owl:DatatypeProperty;
+                     rdfs:domain efrbroo:F24_Publication_Expression;
+                     rdfs:label "U199 has sponsor"@en;
+                     rdfs:range xsd:string;
+                     rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U19_is_categorized_as a owl:ObjectProperty;
+                          rdfs:domain ecrm:E1_CRM_Entity;
+                          rdfs:isDefinedBy mus:;
+                          rdfs:label "U19 is categorized as"@en;
+                          rdfs:range mus:M19_Categorization;
+                          rdfs:subPropertyOf ecrm:P2_has_type;
+                          owl:inverseOf mus:U19i_categorizes.
+mus:U19i_categorizes a owl:ObjectProperty;
+                     rdfs:isDefinedBy mus:;
+                     rdfs:label "U19i categorizes"@en;
+                     rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U1_used_medium_of_performance a owl:ObjectProperty;
+                                  rdfs:comment "U1 instrument ou voix utilisé pour la performance"@fr;
+                                  rdfs:domain mus:M28_Individual_Performance;
+                                  rdfs:isDefinedBy mus:;
+                                  rdfs:label "U1 used medium of performance"@en;
+                                  rdfs:range mus:M14_Medium_Of_Performance;
+                                  rdfs:subPropertyOf ecrm:P125_used_object_of_type;
+                                  owl:inverseOf mus:U1i_medium_of_performance_was_used_in.
+mus:U1i_medium_of_performance_was_used_in a owl:ObjectProperty;
+                                          rdfs:isDefinedBy mus:;
+                                          rdfs:label "U1i medium of performance was used in"@en;
+                                          rdfs:subPropertyOf ecrm:P125i_was_type_of_object_used_in.
+mus:U200_has_supplementary_content a owl:DatatypeProperty;
+                                   rdfs:domain efrbroo:F24_Publication_Expression;
+                                   rdfs:label "U200 has supplementary content"@en;
+                                   rdfs:range xsd:string;
+                                   rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U201_has_illustrative_content a owl:DatatypeProperty;
+                                  rdfs:domain efrbroo:F24_Publication_Expression;
+                                  rdfs:label "U201 has illustrative content"@en;
+                                  rdfs:range xsd:string;
+                                  rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U202_has_colour_details a owl:DatatypeProperty;
+                            rdfs:domain efrbroo:F24_Publication_Expression;
+                            rdfs:label "U202 has colour details"@en;
+                            rdfs:range xsd:string;
+                            rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U203_has_summary_or_abstract a owl:DatatypeProperty;
+                                 rdfs:domain efrbroo:F24_Publication_Expression;
+                                 rdfs:label "U203 has summary or abstract"@en;
+                                 rdfs:range xsd:string;
+                                 rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U204_has_reproduction_note a owl:DatatypeProperty;
+                               rdfs:domain efrbroo:F24_Publication_Expression;
+                               rdfs:label "U204 has reproduction note"@en;
+                               rdfs:range xsd:string;
+                               rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U205_has_cast_detail a owl:DatatypeProperty;
+                         rdfs:domain mus:M42_Performed_Expression_Creation;
+                         rdfs:label "U205 has cast detail"@en;
+                         rdfs:range xsd:string;
+                         rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U206_has_media_type a owl:ObjectProperty;
+                        rdfs:domain efrbroo:F4_Manifestation_Singleton;
+                        rdfs:label "U206 has media type"@en;
+                        rdfs:range mus:M168_Media_Type;
+                        rdfs:subPropertyOf ecrm:P2_has_type;
+                        owl:inverseOf mus:U206i_is_media_type_of.
+mus:U206i_is_media_type_of a owl:ObjectProperty;
+                           rdfs:label "U206i is media type of"@en;
+                           rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U207_has_carrier_type a owl:ObjectProperty;
+                          rdfs:domain efrbroo:F4_Manifestation_Singleton;
+                          rdfs:label "U207 has  carrier type"@en;
+                          rdfs:range mus:M169_Carrier_Type;
+                          rdfs:subPropertyOf ecrm:P2_has_type.
+mus:U208_has_extent_of_carrier a owl:DatatypeProperty;
+                               rdfs:domain efrbroo:F3_Manifestation_Product_Type;
+                               rdfs:label "U208 has extent of carrier"@en;
+                               rdfs:range xsd:string;
+                               rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U20_has_music_group_formation a owl:ObjectProperty;
+                                  rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                  rdfs:isDefinedBy mus:;
+                                  rdfs:label "U20 has music group formation"@en;
+                                  rdfs:range mus:M20_Music_Group_Formation;
+                                  rdfs:subPropertyOf ecrm:P2_has_type;
+                                  owl:inverseOf mus:U20i_is_music_group_formation_of.
+mus:U20i_is_music_group_formation_of a owl:ObjectProperty;
+                                     rdfs:isDefinedBy mus:;
+                                     rdfs:label "U20i is music group formation of"@en;
+                                     rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U210_has_pagination a owl:ObjectProperty;
+                        rdfs:domain efrbroo:F4_Manifestation_Singleton;
+                        rdfs:label "U210 has pagination"@en;
+                        rdfs:range ecrm:E54_Dimension;
+                        rdfs:subPropertyOf ecrm:P43_has_dimension;
+                        owl:inverseOf mus:U210i_is_pagination_of.
+mus:U210i_is_pagination_of a owl:ObjectProperty;
+                           rdfs:label "U210i is pagination of"@en;
+                           rdfs:subPropertyOf ecrm:P43i_is_dimension_of.
+mus:U211_has_composition_of_material a owl:DatatypeProperty;
+                                     rdfs:domain ecrm:E71_Man-Made_Thing;
+                                     rdfs:label "U211 has composition of material"@en;
+                                     rdfs:range xsd:string;
+                                     rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U212_has_technical_features a owl:DatatypeProperty;
+                                rdfs:domain ecrm:E71_Man-Made_Thing;
+                                rdfs:label "U212 has technical features"@en;
+                                rdfs:range xsd:string;
+                                rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U213_has_recording_method a owl:DatatypeProperty;
+                              rdfs:domain ecrm:E73_Information_Object;
+                              rdfs:label "U213 has recording method"@en;
+                              rdfs:range xsd:string;
+                              rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U214_has_colour_content a owl:ObjectProperty;
+                            rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                            rdfs:label "U214 has colour content"@en;
+                            rdfs:range mus:M172_Colour_Content;
+                            rdfs:subPropertyOf ecrm:P2_has_type.
+mus:U215_has_groove_caracteristics a owl:DatatypeProperty;
+                                   rdfs:domain ecrm:E71_Man-Made_Thing;
+                                   rdfs:label "U215  has groove caracteristics"@en;
+                                   rdfs:range xsd:string;
+                                   rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U216_has_tape_configuration a owl:DatatypeProperty;
+                                rdfs:domain ecrm:E71_Man-Made_Thing;
+                                rdfs:label "U216 has tape configuration"@en;
+                                rdfs:range xsd:string;
+                                rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U217_has_playing_speed a owl:ObjectProperty;
+                           rdfs:domain efrbroo:F4_Manifestation_Singleton;
+                           rdfs:label "U217 has playing speed"@en;
+                           rdfs:range mus:M173_Playing_Speed;
+                           rdfs:subPropertyOf ecrm:P2_has_type.
+mus:U218_used_object_of_type_for_mastering a owl:ObjectProperty;
+                                           rdfs:domain mus:M29_Editing;
+                                           rdfs:label "U218 used object of type for mastering"@en;
+                                           rdfs:range mus:M51_Type_Of_Recording_Equipment;
+                                           rdfs:subPropertyOf ecrm:P125_used_object_of_type.
+mus:U219_used_object_of_type_for_mixing a owl:ObjectProperty;
+                                        rdfs:domain mus:M29_Editing;
+                                        rdfs:label "U219 used object of type for mixing"@en;
+                                        rdfs:range mus:M51_Type_Of_Recording_Equipment;
+                                        rdfs:subPropertyOf ecrm:P125_used_object_of_type.
+mus:U21_is_about_actor a owl:ObjectProperty;
+                       rdfs:domain ecrm:E89_Propositional_Object;
+                       rdfs:label "U21 is about actor"@en;
+                       rdfs:range ecrm:E39_Actor;
+                       rdfs:subPropertyOf ecrm:P129_is_about;
+                       owl:inverseOf mus:U21i_actor_is_subject_of.
+mus:U21i_actor_is_subject_of a owl:ObjectProperty;
+                             rdfs:label "U21i actor is subject of"@en;
+                             rdfs:subPropertyOf ecrm:P129i_is_subject_of.
+mus:U220_has_title_and_statement_of_responsibility a owl:ObjectProperty;
+                                                   rdfs:domain efrbroo:F2_Expression;
+                                                   rdfs:label "U220 has title and statement of responsibility"@en;
+                                                   rdfs:range mus:M158_Title_and_Statement_of_Responsibility;
+                                                   rdfs:subPropertyOf ecrm:P148_has_component;
+                                                   owl:inverseOf mus:U220i_is_title_and_statement_of_responsibility_of.
+mus:U220i_is_title_and_statement_of_responsibility_of a owl:ObjectProperty;
+                                                      rdfs:label "U220i is title and statement of responsibility of"@en;
+                                                      rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U221_has_title_proper_of_series a owl:ObjectProperty;
+                                    rdfs:domain efrbroo:F24_Publication_Expression;
+                                    rdfs:label "U221 has title proper of series"@en;
+                                    rdfs:range mus:M165_Title_Proper_of_Series;
+                                    rdfs:subPropertyOf ecrm:P148_has_component;
+                                    owl:inverseOf mus:U221i_is_title_proper_of_series_of.
+mus:U221i_is_title_proper_of_series_of a owl:ObjectProperty;
+                                       rdfs:label "U221i is  title proper of series of"@en;
+                                       rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U222_has_title_proper_of_sub-series a owl:ObjectProperty;
+                                        rdfs:domain efrbroo:F24_Publication_Expression;
+                                        rdfs:label "U222 has title proper of sub-series"@en;
+                                        rdfs:range mus:M165_Title_Proper_of_Series;
+                                        rdfs:subPropertyOf ecrm:P148_has_component;
+                                        owl:inverseOf mus:U222i_is_title_proper_of_sub-series_of.
+mus:U222i_is_title_proper_of_sub-series_of a owl:ObjectProperty;
+                                           rdfs:label "U222i is title proper of sub-series of"@en;
+                                           rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U223_has_number_of_tape_tracks a owl:ObjectProperty;
+                                   rdfs:domain efrbroo:F4_Manifestation_Singleton;
+                                   rdfs:label "U223 has number of tape tracks"@en;
+                                   rdfs:range ecrm:E54_Dimension;
+                                   rdfs:subPropertyOf ecrm:P43_has_dimension;
+                                   owl:inverseOf mus:U223i_is_number_of_tape_tracks_of.
+mus:U223i_is_number_of_tape_tracks_of a owl:ObjectProperty;
+                                      rdfs:label "U223i is number of tape tracks of"@en;
+                                      rdfs:subPropertyOf ecrm:P43i_is_dimension_of.
+mus:U224_has_title_proper_of_multipart_monograph a owl:ObjectProperty;
+                                                 rdfs:domain efrbroo:F24_Publication_Expression;
+                                                 rdfs:label "U224 has title proper of multipart monograph"@en;
+                                                 rdfs:range mus:M166_Title_Proper_of_Multipart_Monograph;
+                                                 rdfs:subPropertyOf ecrm:P148_has_component;
+                                                 owl:inverseOf mus:U224i_is_title_proper_of_multipart_monograph_of.
+mus:U224i_is_title_proper_of_multipart_monograph_of a owl:ObjectProperty;
+                                                    rdfs:label "U224i is title proper of multipart monograph of"@en;
+                                                    rdfs:subPropertyOf ecrm:P148i_is_component_of.
+mus:U225_used_sound_spatialization_technique a owl:ObjectProperty;
+                                             rdfs:domain efrbroo:F28_Expression_Creation;
+                                             rdfs:label "U225 used number of sound channels"@en;
+                                             rdfs:range mus:M54_Sound_Spatialization_Technique;
+                                             rdfs:subPropertyOf ecrm:P32_used_general_technique;
+                                             owl:inverseOf mus:U225i_was_sound_spatialization_technique_of.
+mus:U225i_was_sound_spatialization_technique_of a owl:ObjectProperty;
+                                                rdfs:label "U225i was sound spatialization technique of"@en;
+                                                rdfs:subPropertyOf ecrm:P32i_was_technique_of.
+mus:U226_has_responsibility_detail a owl:DatatypeProperty;
+                                   rdfs:domain efrbroo:F28_Expression_Creation;
+                                   rdfs:label "U226 has responsibility detail"@en;
+                                   rdfs:range xsd:string;
+                                   rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U227_has_content_type a owl:ObjectProperty;
+                          rdfs:label "U227 has content type"@en;
+                          rdfs:subPropertyOf ecrm:P2_has_type;
+                          owl:inverseOf mus:U227i_is_content_type_of.
+mus:U227i_is_content_type_of a owl:ObjectProperty;
+                             rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U228_has_other_distinguishing_characteristic_of_expression a owl:DatatypeProperty;
+                                                               rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                                               rdfs:label "U226 has other distinguishing characteristic of expression"@en;
+                                                               rdfs:range xsd:string;
+                                                               rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U229_has_music_format a owl:ObjectProperty;
+                          rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                          rdfs:label "U229 has music format"@en;
+                          rdfs:range mus:M175_Music_Format;
+                          rdfs:subPropertyOf ecrm:P2_has_type;
+                          owl:inverseOf mus:U229i_is_music_format_of.
+mus:U229i_is_music_format_of a owl:ObjectProperty;
+                             rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U22_is_about_place a owl:ObjectProperty;
+                       rdfs:domain ecrm:E89_Propositional_Object;
+                       rdfs:label "U22 is about place"@en;
+                       rdfs:range ecrm:E53_Place;
+                       rdfs:subPropertyOf ecrm:P129_is_about;
+                       owl:inverseOf mus:U22i_place_is_subject_of.
+mus:U22i_place_is_subject_of a owl:ObjectProperty;
+                             rdfs:label "U22i place is subject of"@en;
+                             rdfs:subPropertyOf ecrm:P129i_is_subject_of.
+mus:U23_has_casting_detail a owl:ObjectProperty;
+                           rdfs:domain mus:M6_Casting;
+                           rdfs:isDefinedBy mus:;
+                           rdfs:label "U23 has casting detail"@en;
+                           rdfs:range mus:M23_Casting_Detail;
+                           rdfs:subPropertyOf ecrm:P69_has_association_with;
+                           owl:inverseOf mus:U23i_is_casting_detail_of.
+mus:U23i_is_casting_detail_of a owl:ObjectProperty;
+                              rdfs:isDefinedBy mus:;
+                              rdfs:label "U23i is casting detail of"@en;
+                              rdfs:subPropertyOf ecrm:P69i_is_associated_with.
+mus:U24_has_award a owl:ObjectProperty;
+                  rdfs:domain ecrm:E77_Persistent_Item;
+                  rdfs:isDefinedBy mus:;
+                  rdfs:label "U24 has award"@en;
+                  rdfs:range mus:M36_Award;
+                  rdfs:subPropertyOf ecrm:P2_has_type;
+                  owl:inverseOf mus:U24i_is_award_of.
+mus:U24i_is_award_of a owl:ObjectProperty;
+                     rdfs:isDefinedBy mus:;
+                     rdfs:label "U24i is award of"@en;
+                     rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U25_has_scale a owl:ObjectProperty;
+                  rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                  rdfs:isDefinedBy mus:;
+                  rdfs:label "U25 has scale"@en;
+                  rdfs:range mus:M37_Music_Scale;
+                  rdfs:subPropertyOf ecrm:P2_has_type;
+                  owl:inverseOf mus:U25i_is_scale_of.
+mus:U25i_is_scale_of a owl:ObjectProperty;
+                     rdfs:isDefinedBy mus:;
+                     rdfs:label "U25i is scale of"@en;
+                     rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U26_has_maintained a owl:ObjectProperty;
+                       rdfs:domain mus:M16_Maintenance;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "U26 has maintained"@en;
+                       rdfs:range ecrm:E24_Physical_Man-Made_Thing;
+                       rdfs:subPropertyOf ecrm:P31_has_modified;
+                       owl:inverseOf mus:U26i_was_maintained_by.
+mus:U26i_was_maintained_by a owl:ObjectProperty;
+                           rdfs:isDefinedBy mus:;
+                           rdfs:label "U26i was maintained by"@en;
+                           rdfs:subPropertyOf ecrm:P31i_was_modified_by.
+mus:U27_performed_character a owl:ObjectProperty;
+                            rdfs:domain mus:M28_Individual_Performance;
+                            rdfs:isDefinedBy mus:;
+                            rdfs:label "U27 performed character"@en;
+                            rdfs:range efrbroo:F38_Character;
+                            rdfs:subPropertyOf ecrm:P16_used_specific_object;
+                            owl:inverseOf mus:U27i_character_was_performed_by.
+mus:U27i_character_was_performed_by a owl:ObjectProperty;
+                                    rdfs:isDefinedBy mus:;
+                                    rdfs:label "U27i character was performed by"@en;
+                                    rdfs:subPropertyOf ecrm:P16i_was_used_for.
+mus:U28_has_ambitus a owl:ObjectProperty;
+                    rdfs:comment "scope note: this property allows for describing the tessitura of a character, as can be drawn from the score."@en;
+                    rdfs:domain efrbroo:F38_Character;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "U28 has ambitus"@en;
+                    rdfs:range mus:M30_Ambitus;
+                    rdfs:subPropertyOf ecrm:P2_has_type;
+                    owl:inverseOf mus:U28i_is_ambitus_of.
+mus:U28i_is_ambitus_of a owl:ObjectProperty;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "U28i is ambitus of"@en;
+                       rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U29_edited a owl:ObjectProperty;
+               rdfs:domain mus:M29_Editing;
+               rdfs:isDefinedBy mus:;
+               rdfs:label "U29 edited"@en;
+               rdfs:range efrbroo:F22_Self-Contained_Expression;
+               rdfs:subPropertyOf ecrm:P16_used_specific_object;
+               owl:inverseOf mus:U29i_was_edited_by.
+mus:U29i_was_edited_by a owl:ObjectProperty;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "U29i was edited by"@en;
+                       rdfs:subPropertyOf ecrm:P16i_was_used_for.
+mus:U2_foresees_use_of_medium_of_performance a owl:ObjectProperty;
+                                             rdfs:domain ecrm:E29_Design_or_Procedure;
+                                             rdfs:isDefinedBy mus:;
+                                             rdfs:label "U2 instrument ou voix prévu pour la performance"@fr,
+                                                        "U2 foresees use of medium of performance"@en;
+                                             rdfs:range mus:M14_Medium_Of_Performance;
+                                             rdfs:subPropertyOf ecrm:P67_refers_to;
+                                             owl:inverseOf mus:U2i_is_foreseen_type_of_medium_of_performance_in.
+mus:U2i_is_foreseen_type_of_medium_of_performance_in a owl:ObjectProperty;
+                                                     rdfs:isDefinedBy mus:;
+                                                     rdfs:label "U2i is foreseen type of medium of performance in"@en,
+                                                                "U2i est le type d'instrument ou de voix prévu pour"@fr;
+                                                     rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U30_foresees_quantity_of_mop a owl:DatatypeProperty;
+                                 rdfs:domain mus:M23_Casting_Detail;
+                                 rdfs:isDefinedBy mus:;
+                                 rdfs:label "U30 foresees quantity of medium of performance"@en;
+                                 rdfs:range xsd:positiveInteger.
+mus:U31_had_function a owl:ObjectProperty;
+                     rdfs:domain ecrm:E7_Activity;
+                     rdfs:isDefinedBy mus:;
+                     rdfs:label "U31 had function"@en;
+                     rdfs:range mus:M31_Actor_Function;
+                     rdfs:subPropertyOf ecrm:P2_has_type;
+                     owl:inverseOf mus:U31i_was_function_of.
+mus:U31i_was_function_of a owl:ObjectProperty;
+                         rdfs:isDefinedBy mus:;
+                         rdfs:label "U31i was function of"@en;
+                         rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U32_had_responsibility a owl:ObjectProperty;
+                           rdfs:domain ecrm:E7_Activity;
+                           rdfs:isDefinedBy mus:;
+                           rdfs:label "U32 had responsibility"@en;
+                           rdfs:range mus:M32_Actor_Responsibility;
+                           rdfs:subPropertyOf ecrm:P2_has_type;
+                           owl:inverseOf mus:U32i_was_responsibility_of.
+mus:U32i_was_responsibility_of a owl:ObjectProperty;
+                               rdfs:isDefinedBy mus:;
+                               rdfs:label "U32i was responsibility of"@en;
+                               rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U33_has_set_of_characters a owl:ObjectProperty;
+                              rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                              rdfs:isDefinedBy mus:;
+                              rdfs:label "U33 has set of characters"@en;
+                              rdfs:range mus:M33_Set_of_Characters;
+                              rdfs:subPropertyOf ecrm:P67_refers_to;
+                              owl:inverseOf mus:U33i_is_set_of_characters_of.
+mus:U33i_is_set_of_characters_of a owl:ObjectProperty;
+                                 rdfs:isDefinedBy mus:;
+                                 rdfs:label "U33i is set of characters of"@en;
+                                 rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U34_foresees_character a owl:ObjectProperty;
+                           rdfs:domain mus:M33_Set_of_Characters;
+                           rdfs:isDefinedBy mus:;
+                           rdfs:label "U34 foresees character"@en;
+                           rdfs:range efrbroo:F38_Character;
+                           rdfs:subPropertyOf ecrm:P67_refers_to;
+                           owl:inverseOf mus:U34i_is_foreseen_character_of.
+mus:U34i_is_foreseen_character_of a owl:ObjectProperty;
+                                  rdfs:isDefinedBy mus:;
+                                  rdfs:label "U34i is foreseen character of"@en;
+                                  rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U35_foresees_function a owl:ObjectProperty;
+                          rdfs:domain ecrm:E29_Design_or_Procedure;
+                          rdfs:isDefinedBy mus:;
+                          rdfs:label "U35 foresees function"@en;
+                          rdfs:range mus:M31_Actor_Function;
+                          rdfs:subPropertyOf ecrm:P67_refers_to;
+                          owl:inverseOf mus:U35i_is_foreseen_function_of.
+mus:U35i_is_foreseen_function_of a owl:ObjectProperty;
+                                 rdfs:isDefinedBy mus:;
+                                 rdfs:label "U35i is foreseen function of"@en;
+                                 rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U36_foresees_responsibility a owl:ObjectProperty;
+                                rdfs:domain ecrm:E29_Design_or_Procedure;
+                                rdfs:isDefinedBy mus:;
+                                rdfs:label "U36 foresees responsibility"@en;
+                                rdfs:range mus:M32_Actor_Responsibility;
+                                rdfs:subPropertyOf ecrm:P67_refers_to;
+                                owl:inverseOf mus:U36i_is_foreseen_responsibility_of.
+mus:U36i_is_foreseen_responsibility_of a owl:ObjectProperty;
+                                       rdfs:isDefinedBy mus:;
+                                       rdfs:label "U36i is foreseen responsibility of"@en;
+                                       rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U37_foresees_performing_character a owl:ObjectProperty;
+                                      rdfs:domain ecrm:E29_Design_or_Procedure;
+                                      rdfs:isDefinedBy mus:;
+                                      rdfs:label "U37 foresees performing character"@en;
+                                      rdfs:range efrbroo:F38_Character;
+                                      rdfs:subPropertyOf ecrm:P67_refers_to;
+                                      owl:inverseOf mus:U37i_is_foreseen_character_in.
+mus:U37i_is_foreseen_character_in a owl:ObjectProperty;
+                                  rdfs:isDefinedBy mus:;
+                                  rdfs:label "U37i is foreseen character in"@en;
+                                  rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U38_has_descriptive_expression a owl:ObjectProperty;
+                                   rdfs:domain efrbroo:F15_Complex_Work;
+                                   rdfs:isDefinedBy mus:;
+                                   rdfs:label "U38 has descriptive expression"@en,
+                                              "U38 a pour expression descriptive"@fr;
+                                   rdfs:range efrbroo:F22_Self-Contained_Expression;
+                                   rdfs:subPropertyOf efrbroo:R3_is_realised_in;
+                                   owl:inverseOf mus:U38i_is_descriptive_expression_of.
+mus:U38i_is_descriptive_expression_of a owl:ObjectProperty;
+                                      rdfs:isDefinedBy mus:;
+                                      rdfs:label "U38i is descriptive expression of"@en;
+                                      rdfs:subPropertyOf efrbroo:R3i_realises.
+mus:U39_has_tuned a owl:ObjectProperty;
+                  rdfs:domain mus:M16_Maintenance;
+                  rdfs:isDefinedBy mus:;
+                  rdfs:label "U39 has tuned"@en;
+                  rdfs:range ecrm:E22_Man-Made_Object;
+                  rdfs:subPropertyOf mus:U26_has_maintained;
+                  owl:inverseOf mus:U39i_was_tuned_by.
+mus:U39i_was_tuned_by a owl:ObjectProperty;
+                      rdfs:isDefinedBy mus:;
+                      rdfs:label "U39i was tuned by"@en;
+                      rdfs:subPropertyOf mus:U26i_was_maintained_by.
+mus:U3_foresees_use_of_specific_object a owl:DatatypeProperty,
+                                         owl:ObjectProperty;
+                                       rdfs:domain ecrm:E29_Design_or_Procedure;
+                                       rdfs:isDefinedBy mus:;
+                                       rdfs:label "U3 utilisation prévue de l'objet spécifique"@fr,
+                                                  "U3 forees use of specific object"@en;
+                                       rdfs:range ecrm:E71_Man-Made_Thing,
+                                                  ecrm:E22_Man-Made_Object;
+                                       rdfs:subPropertyOf ecrm:P67_refers_to;
+                                       owl:inverseOf mus:U3i_is_foreseen_specific_object_in.
+mus:U3i_is_foreseen_specific_object_in a owl:ObjectProperty;
+                                       rdfs:isDefinedBy mus:;
+                                       rdfs:label "U3i is foreseen specific medium of performance in"@en,
+                                                  "U3i est le type d'objet spécifique prévu pour"@fr;
+                                       rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U40_has_catalogue_name a owl:ObjectProperty;
+                           rdfs:domain mus:M1_Catalogue_Statement;
+                           rdfs:isDefinedBy mus:;
+                           rdfs:label "U40 has catalogue name"@en;
+                           rdfs:range mus:M10_Catalogue_Name;
+                           rdfs:subPropertyOf ecrm:P106_is_composed_of;
+                           owl:inverseOf mus:U40i_is_catalogue_name_of.
+mus:U40i_is_catalogue_name_of a owl:ObjectProperty;
+                              rdfs:isDefinedBy mus:;
+                              rdfs:label "U40i is catalogue name of"@en;
+                              rdfs:subPropertyOf ecrm:P106i_forms_part_of.
+mus:U41_has_catalogue_number a owl:DatatypeProperty;
+                             rdfs:domain mus:M1_Catalogue_Statement;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "U41 has catalogue number"@en;
+                             rdfs:range xsd:string.
+mus:U42_has_opus_number a owl:DatatypeProperty;
+                        rdfs:domain mus:M2_Opus_Statement;
+                        rdfs:isDefinedBy mus:;
+                        rdfs:label "U42 has opus number"@en;
+                        rdfs:range xsd:string.
+mus:U43_has_opus_subnumber a owl:DatatypeProperty;
+                           rdfs:domain mus:M2_Opus_Statement;
+                           rdfs:isDefinedBy mus:;
+                           rdfs:label "U43 has opus subnumber"@en;
+                           rdfs:range xsd:string.
+mus:U44_has_dedication_statement a owl:ObjectProperty;
+                                 rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                 rdfs:isDefinedBy mus:;
+                                 rdfs:label "U44 has dedication statement"@en;
+                                 rdfs:range mus:M15_Dedication_Statement;
+                                 rdfs:subPropertyOf ecrm:P67_refers_to;
+                                 owl:inverseOf mus:U44i_is_dedication_statement_of.
+mus:U44i_is_dedication_statement_of a owl:ObjectProperty;
+                                    rdfs:isDefinedBy mus:;
+                                    rdfs:label "U44i is dedication statement of"@en;
+                                    rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U45_has_metronome_indication a owl:ObjectProperty;
+                                 rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                 rdfs:isDefinedBy mus:;
+                                 rdfs:label "U45 has metronome indication"@en,
+                                            "U45 a pour indication métronomique"@fr;
+                                 rdfs:range mus:M41_Metronome_Indication;
+                                 rdfs:subPropertyOf ecrm:P67_refers_to;
+                                 owl:inverseOf mus:U45i_is_metronome_indication_of.
+mus:U45i_is_metronome_indication_of a owl:ObjectProperty;
+                                    rdfs:isDefinedBy mus:;
+                                    rdfs:label "U45i is metronome indication of"@en;
+                                    rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U46_occurred_in_context a owl:ObjectProperty;
+                            rdfs:domain ecrm:E7_Activity;
+                            rdfs:isDefinedBy mus:;
+                            rdfs:label "U46 occurred in context"@en;
+                            rdfs:range mus:M40_Context;
+                            rdfs:subPropertyOf ecrm:P2_has_type;
+                            owl:inverseOf mus:U46i_was_context_of.
+mus:U46i_was_context_of a owl:ObjectProperty;
+                        rdfs:isDefinedBy mus:;
+                        rdfs:label "U46i was context of"@en;
+                        rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U47_has_derivation_type a owl:ObjectProperty;
+                            rdfs:domain ecrm:E89_Propositional_Object;
+                            rdfs:isDefinedBy mus:;
+                            rdfs:label "U47 has derivation type"@en;
+                            rdfs:range mus:M9_Derivation_Type;
+                            rdfs:subPropertyOf ecrm:P2_has_type;
+                            owl:inverseOf mus:U47i_is_derivation_type_of.
+mus:U47i_is_derivation_type_of a owl:ObjectProperty;
+                               rdfs:isDefinedBy mus:;
+                               rdfs:label "U47i is derivation type of"@en;
+                               rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U48_foresees_quantity_of_actors a owl:DatatypeProperty;
+                                    rdfs:domain mus:M23_Casting_Detail;
+                                    rdfs:isDefinedBy mus:;
+                                    rdfs:label "U48 foresees quantity of actors"@en;
+                                    rdfs:range xsd:positiveInteger.
+mus:U49_created_for_actor a owl:ObjectProperty;
+                          rdfs:comment "personne ou groupe pour lequel l'Expression a été créée."@fr;
+                          rdfs:domain efrbroo:F28_Expression_Creation;
+                          rdfs:isDefinedBy mus:;
+                          rdfs:label "U49 created for actor"@en;
+                          rdfs:range ecrm:E39_Actor;
+                          rdfs:subPropertyOf ecrm:P15_was_influenced_by;
+                          owl:inverseOf mus:U49i_actor_motivated.
+mus:U49i_actor_motivated a owl:ObjectProperty;
+                         rdfs:isDefinedBy mus:;
+                         rdfs:label "U49i actor motivated"@en;
+                         rdfs:subPropertyOf ecrm:P15i_influenced.
+mus:U4_had_princeps_publication a owl:ObjectProperty;
+                                rdfs:domain ecrm:E89_Propositional_Object;
+                                rdfs:isDefinedBy mus:;
+                                rdfs:label "U4 had princeps publication"@en,
+                                           "U4 a pour édition princeps"@fr;
+                                rdfs:range efrbroo:F30_Publication_Event;
+                                rdfs:subPropertyOf ecrm:P67_refers_to;
+                                owl:inverseOf mus:U4i_was_princeps_publication_of.
+mus:U4i_was_princeps_publication_of a owl:ObjectProperty;
+                                    rdfs:isDefinedBy mus:;
+                                    rdfs:label "U4i was princeps publication of"@en;
+                                    rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U50_has_annotation a owl:DatatypeProperty;
+                       rdfs:domain ecrm:E1_CRM_Entity;
+                       rdfs:label "U50 Has annotation"@en;
+                       rdfs:range xsd:string;
+                       rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U51_is_partial_or_full_recording_of a owl:ObjectProperty;
+                                        rdfs:domain mus:M46_Set_of_Tracks;
+                                        rdfs:isDefinedBy mus:;
+                                        rdfs:label "U51 is partial or full recording of"@en;
+                                        rdfs:range mus:M43_Performed_Expression;
+                                        rdfs:subPropertyOf ecrm:P130_shows_features_of;
+                                        owl:inverseOf mus:U51i_has_partial_or_full_recording.
+mus:U51i_has_partial_or_full_recording a owl:ObjectProperty;
+                                       rdfs:isDefinedBy mus:;
+                                       rdfs:label "U51i has partial or full recording"@en;
+                                       rdfs:subPropertyOf ecrm:P130i_features_are_also_found_on.
+mus:U52_has_context a owl:ObjectProperty;
+                    rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "U52 has context"@en;
+                    rdfs:range mus:M40_Context;
+                    rdfs:subPropertyOf ecrm:P2_has_type;
+                    owl:inverseOf mus:U52i_is_context_of.
+mus:U52i_is_context_of a owl:ObjectProperty;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "U52i is context of"@en;
+                       rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U53_has_duration a owl:ObjectProperty;
+                     rdfs:domain efrbroo:F2_Expression;
+                     rdfs:isDefinedBy mus:;
+                     rdfs:label "U53 has duration"@en;
+                     rdfs:range ecrm:E54_Dimension;
+                     rdfs:subPropertyOf ecrm:P43_has_dimension;
+                     owl:inverseOf mus:U53i_is_duration_of.
+mus:U53i_is_duration_of a owl:ObjectProperty;
+                        rdfs:isDefinedBy mus:;
+                        rdfs:label "U53i is duration of"@en;
+                        rdfs:subPropertyOf ecrm:P43i_is_dimension_of.
+mus:U54_is_performed_expression_of a owl:ObjectProperty;
+                                   rdfs:domain mus:M43_Performed_Expression;
+                                   rdfs:isDefinedBy mus:;
+                                   rdfs:label "U54 is performed expression of"@en;
+                                   rdfs:range efrbroo:F22_Self-Contained_Expression;
+                                   rdfs:subPropertyOf ecrm:P130_shows_features_of;
+                                   owl:inverseOf mus:U54i_has_performed_expression.
+mus:U54i_has_performed_expression a owl:ObjectProperty;
+                                  rdfs:isDefinedBy mus:;
+                                  rdfs:label "U54i has performed expression"@en;
+                                  rdfs:subPropertyOf ecrm:P130i_features_are_also_found_on.
+mus:U55_incorporates_performed_expression a owl:ObjectProperty;
+                                          rdfs:domain efrbroo:F24_Publication_Expression;
+                                          rdfs:isDefinedBy mus:;
+                                          rdfs:label "U55 incorporates performed expression"@en;
+                                          rdfs:range mus:M43_Performed_Expression;
+                                          rdfs:subPropertyOf ecrm:P165_incorporates;
+                                          owl:inverseOf mus:U55i_performed_expression_is_incorporated_in.
+mus:U55i_performed_expression_is_incorporated_in a owl:ObjectProperty;
+                                                 rdfs:isDefinedBy mus:;
+                                                 rdfs:label "U55i performed expression is incorporated in"@en;
+                                                 rdfs:subPropertyOf ecrm:P165i_is_incorporated_in.
+mus:U56_occurred_in_historical_context a owl:ObjectProperty;
+                                       rdfs:domain ecrm:E7_Activity;
+                                       rdfs:isDefinedBy mus:;
+                                       rdfs:label "U56 occurred in historical context"@en;
+                                       rdfs:range mus:M40_Context;
+                                       rdfs:subPropertyOf mus:U46_occurred_in_context;
+                                       owl:inverseOf mus:U56i_was_historical_context_of.
+mus:U56i_was_historical_context_of a owl:ObjectProperty;
+                                   rdfs:isDefinedBy mus:;
+                                   rdfs:label "U56i was historical context of"@en;
+                                   rdfs:subPropertyOf mus:U46i_was_context_of.
+mus:U57_occurred_in_religious_context a owl:ObjectProperty;
+                                      rdfs:domain ecrm:E7_Activity;
+                                      rdfs:isDefinedBy mus:;
+                                      rdfs:label "U57 occurred in religious context"@en;
+                                      rdfs:range mus:M40_Context;
+                                      rdfs:subPropertyOf mus:U46_occurred_in_context;
+                                      owl:inverseOf mus:U57i_was_religious_context_of.
+mus:U57i_was_religious_context_of a owl:ObjectProperty;
+                                  rdfs:isDefinedBy mus:;
+                                  rdfs:label "U57i was religious context of"@en;
+                                  rdfs:subPropertyOf mus:U46i_was_context_of.
+mus:U58_has_full_published_recording a owl:ObjectProperty;
+                                     rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                     rdfs:isDefinedBy mus:;
+                                     rdfs:label "U58 has full published recording"@en;
+                                     rdfs:range efrbroo:F24_Publication_Expression;
+                                     rdfs:subPropertyOf ecrm:P130i_features_are_also_found_on;
+                                     owl:inverseOf mus:U58i_is_full_published_recording_of.
+mus:U58i_is_full_published_recording_of a owl:ObjectProperty;
+                                        rdfs:isDefinedBy mus:;
+                                        rdfs:label "U58i is full published recording of"@en;
+                                        rdfs:subPropertyOf ecrm:P130_shows_features_of.
+mus:U59_has_partial_published_recording a owl:ObjectProperty;
+                                        rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                        rdfs:isDefinedBy mus:;
+                                        rdfs:label "U59 has partial published recording"@en;
+                                        rdfs:range efrbroo:F24_Publication_Expression;
+                                        rdfs:subPropertyOf ecrm:P130i_features_are_also_found_on;
+                                        owl:inverseOf mus:U59i_is_partial_published_recording_of.
+mus:U59i_is_partial_published_recording_of a owl:ObjectProperty;
+                                           rdfs:isDefinedBy mus:;
+                                           rdfs:label "U59i is partial published recording of"@en;
+                                           rdfs:subPropertyOf ecrm:P130_shows_features_of.
+mus:U5_had_premiere a owl:ObjectProperty;
+                    rdfs:domain ecrm:E89_Propositional_Object;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "U5 had premiere"@en,
+                               "U5 a une première"@fr;
+                    rdfs:range efrbroo:F31_Performance;
+                    rdfs:subPropertyOf ecrm:P67_refers_to;
+                    owl:inverseOf mus:U5i_was_premiere_of.
+mus:U5i_was_premiere_of a owl:ObjectProperty;
+                        rdfs:isDefinedBy mus:;
+                        rdfs:label "U5i was premiere of"@en;
+                        rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U60_occurred_in_cultural_context a owl:ObjectProperty;
+                                     rdfs:domain ecrm:E7_Activity;
+                                     rdfs:isDefinedBy mus:;
+                                     rdfs:label "U60 occurred in cultural context"@en;
+                                     rdfs:range mus:M40_Context;
+                                     rdfs:subPropertyOf mus:U46_occurred_in_context;
+                                     owl:inverseOf mus:U60i_was_cultural_context_of.
+mus:U60i_was_cultural_context_of a owl:ObjectProperty;
+                                 rdfs:isDefinedBy mus:;
+                                 rdfs:label "U60i was cultural context of"@en;
+                                 rdfs:subPropertyOf mus:U46i_was_context_of.
+mus:U61_occurred_in_geographical_context a owl:ObjectProperty;
+                                         rdfs:domain ecrm:E7_Activity;
+                                         rdfs:isDefinedBy mus:;
+                                         rdfs:label "U61 occurred in geographical context"@en;
+                                         rdfs:range mus:M40_Context;
+                                         rdfs:subPropertyOf mus:U46_occurred_in_context;
+                                         owl:inverseOf mus:U61i_was_geographical_context_of.
+mus:U61i_was_geographical_context_of a owl:ObjectProperty;
+                                     rdfs:isDefinedBy mus:;
+                                     rdfs:label "U61i was geographical context of"@en;
+                                     rdfs:subPropertyOf mus:U46i_was_context_of.
+mus:U62_has_form a owl:ObjectProperty;
+                 rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                 rdfs:isDefinedBy mus:;
+                 rdfs:label "U62 has form"@en;
+                 rdfs:range mus:M22_Form;
+                 rdfs:subPropertyOf ecrm:P2_has_type;
+                 owl:inverseOf mus:U62i_is_form_of.
+mus:U62i_is_form_of a owl:ObjectProperty;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "U62i is form of"@en;
+                    rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U63_has_religious_context a owl:ObjectProperty;
+                              rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                              rdfs:isDefinedBy mus:;
+                              rdfs:label "U63 has religious context"@en;
+                              rdfs:range mus:M40_Context;
+                              rdfs:subPropertyOf mus:U52_has_context;
+                              owl:inverseOf mus:U63i_is_religious_context_of.
+mus:U63i_is_religious_context_of a owl:ObjectProperty;
+                                 rdfs:isDefinedBy mus:;
+                                 rdfs:label "U63i is religious context of"@en;
+                                 rdfs:subPropertyOf mus:U52i_is_context_of.
+mus:U64_has_cultural_context a owl:ObjectProperty;
+                             rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "U64 has cultural context"@en;
+                             rdfs:range mus:M40_Context;
+                             rdfs:subPropertyOf mus:U52_has_context;
+                             owl:inverseOf mus:U64i_is_cultural_context_of.
+mus:U64i_is_cultural_context_of a owl:ObjectProperty;
+                                rdfs:isDefinedBy mus:;
+                                rdfs:label "U64i is cultural context of"@en;
+                                rdfs:subPropertyOf mus:U52i_is_context_of.
+mus:U65_has_geographical_context a owl:ObjectProperty;
+                                 rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                                 rdfs:isDefinedBy mus:;
+                                 rdfs:label "U65 has geographical context"@en;
+                                 rdfs:range mus:M40_Context;
+                                 rdfs:subPropertyOf mus:U52_has_context;
+                                 owl:inverseOf mus:U65i_is_geographical_context_of.
+mus:U65i_is_geographical_context_of a owl:ObjectProperty;
+                                    rdfs:isDefinedBy mus:;
+                                    rdfs:label "U65i is geographical context of"@en;
+                                    rdfs:subPropertyOf mus:U52i_is_context_of.
+mus:U66_has_historical_context a owl:ObjectProperty;
+                               rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                               rdfs:isDefinedBy mus:;
+                               rdfs:label "U66 has historical context"@en;
+                               rdfs:range mus:M40_Context;
+                               rdfs:subPropertyOf mus:U52_has_context;
+                               owl:inverseOf mus:U66i_is_historical_context_of.
+mus:U66i_is_historical_context_of a owl:ObjectProperty;
+                                  rdfs:isDefinedBy mus:;
+                                  rdfs:label "U66i is historical context of"@en;
+                                  rdfs:subPropertyOf mus:U52i_is_context_of.
+mus:U67_has_subtitle a owl:DatatypeProperty;
+                     rdfs:domain ecrm:E71_Man-Made_Thing;
+                     rdfs:isDefinedBy mus:;
+                     rdfs:label "U67 has subtitle"@en,
+                                "U67 a pour sous-titre"@fr;
+                     rdfs:range xsd:string;
+                     rdfs:subPropertyOf dc11:title.
+mus:U68_has_variant_title a owl:DatatypeProperty;
+                          rdfs:domain ecrm:E71_Man-Made_Thing;
+                          rdfs:isDefinedBy mus:;
+                          rdfs:label "U68 has variant title"@en,
+                                     "U68 a pour variante de titre"@fr;
+                          rdfs:range xsd:string;
+                          rdfs:subPropertyOf dc11:title.
+mus:U69_has_WoO_number a owl:DatatypeProperty;
+                       rdfs:domain mus:M2_Opus_Statement;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "U69 has WoO number"@en,
+                                  "U69 a pour numéro de WoO"@fr;
+                       rdfs:range xsd:string.
+mus:U6_foresees_actor a owl:ObjectProperty;
+                      rdfs:domain ecrm:E29_Design_or_Procedure;
+                      rdfs:isDefinedBy mus:;
+                      rdfs:label "U6 foresees actor"@en;
+                      rdfs:range ecrm:E39_Actor;
+                      rdfs:subPropertyOf ecrm:P67_refers_to;
+                      owl:inverseOf mus:U6i_is_foreseen_actor_of.
+mus:U6i_is_foreseen_actor_of a owl:ObjectProperty;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "U6i is foreseen actor of"@en;
+                             rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U70_has_original_title a owl:DatatypeProperty;
+                           rdfs:domain ecrm:E89_Propositional_Object;
+                           rdfs:isDefinedBy mus:;
+                           rdfs:label "U70 has original title"@en,
+                                      "U70 a pour titre originel"@fr;
+                           rdfs:range xsd:string;
+                           rdfs:subPropertyOf dc11:title.
+mus:U71_has_uniform_title a owl:DatatypeProperty;
+                          rdfs:domain ecrm:E89_Propositional_Object;
+                          rdfs:isDefinedBy mus:;
+                          rdfs:label "U71 has uniform title"@en,
+                                     "U71 a pour titre uniforme"@fr;
+                          rdfs:range xsd:string;
+                          rdfs:subPropertyOf dc11:title.
+mus:U72_has_title_note a owl:DatatypeProperty;
+                       rdfs:domain ecrm:E89_Propositional_Object;
+                       rdfs:isDefinedBy mus:;
+                       rdfs:label "U72 has title note"@en;
+                       rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U73_is_derivative_of a owl:ObjectProperty;
+                         rdfs:domain efrbroo:F2_Expression;
+                         rdfs:isDefinedBy mus:;
+                         rdfs:label "U73 is derivative of"@en;
+                         rdfs:range efrbroo:F2_Expression;
+                         rdfs:subPropertyOf ecrm:P130_shows_features_of;
+                         owl:inverseOf mus:U73i_has_derivative.
+mus:U73i_has_derivative a owl:ObjectProperty;
+                        rdfs:isDefinedBy mus:;
+                        rdfs:label "U73i has derivative"@en;
+                        rdfs:subPropertyOf ecrm:P130i_features_are_also_found_on.
+mus:U74_cited a owl:ObjectProperty;
+              rdfs:domain efrbroo:F28_Expression_Creation;
+              rdfs:isDefinedBy mus:;
+              rdfs:label "U74 cited"@en;
+              rdfs:range efrbroo:F22_Self-Contained_Expression;
+              rdfs:subPropertyOf ecrm:P16_used_specific_object;
+              owl:inverseOf mus:U74i_was_cited_by.
+mus:U74i_was_cited_by a owl:ObjectProperty;
+                      rdfs:isDefinedBy mus:;
+                      rdfs:label "U74i was cited by"@en;
+                      rdfs:subPropertyOf ecrm:P16i_was_used_for.
+mus:U75_has_harmonic_structure a owl:ObjectProperty;
+                               rdfs:domain efrbroo:F22_Self-Contained_Expression;
+                               rdfs:isDefinedBy mus:;
+                               rdfs:label "U75 has harmonic structure"@en;
+                               rdfs:range mus:M21_Harmonic_Structure;
+                               rdfs:subPropertyOf ecrm:P2_has_type;
+                               owl:inverseOf mus:U75i_is_harmonic_structure_of.
+mus:U75i_is_harmonic_structure_of a owl:ObjectProperty;
+                                  rdfs:isDefinedBy mus:;
+                                  rdfs:label "U75i is harmonic structure of"@en;
+                                  rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U76_has_WoO_subnumber a owl:DatatypeProperty;
+                          rdfs:domain mus:M2_Opus_Statement;
+                          rdfs:isDefinedBy mus:;
+                          rdfs:label "U76 has WoO subnumber"@en;
+                          rdfs:range xsd:string.
+mus:U77_foresees_performing_plan a owl:ObjectProperty;
+                                 rdfs:domain mus:M25_Foreseen_Activity;
+                                 rdfs:isDefinedBy mus:;
+                                 rdfs:label "U77 foresees performing plan"@en;
+                                 rdfs:range efrbroo:F25_Performance_Plan;
+                                 rdfs:subPropertyOf ecrm:P67_refers_to;
+                                 owl:inverseOf mus:U77i_is_foreseen_plan_in.
+mus:U77i_is_foreseen_plan_in a owl:ObjectProperty;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "U77i is foreseen plan in"@en;
+                             rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U78_estimated_duration a owl:DatatypeProperty;
+                           rdfs:comment """La durée éditeur n'est pas \"mesurée\" mais \"estimée\""""@fr;
+                           rdfs:label "U78 estimated duration"@en,
+                                      "U78 durée estimée"@fr.
+mus:U79_has_lowest_pitch a owl:DatatypeProperty;
+                         rdfs:domain mus:M30_Ambitus;
+                         rdfs:label "U79 has lowest pitch"@en;
+                         rdfs:range xsd:string;
+                         rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U7_foresees_place_at a owl:ObjectProperty;
+                         rdfs:domain ecrm:E29_Design_or_Procedure;
+                         rdfs:isDefinedBy mus:;
+                         rdfs:label "U7 foresees place at"@en;
+                         rdfs:range ecrm:E53_Place;
+                         rdfs:subPropertyOf ecrm:P67_refers_to;
+                         owl:inverseOf mus:U7i_is_foreseen_place_of.
+mus:U7i_is_foreseen_place_of a owl:ObjectProperty;
+                             rdfs:isDefinedBy mus:;
+                             rdfs:label "U7i is foreseen place of"@en;
+                             rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U80_has_highest_pitch a owl:DatatypeProperty;
+                          rdfs:domain mus:M30_Ambitus;
+                          rdfs:label "U80 has highest pitch"@en;
+                          rdfs:range xsd:string;
+                          rdfs:subPropertyOf ecrm:P3_has_note.
+mus:U81_had_performer_status a owl:ObjectProperty;
+                             rdfs:domain efrbroo:F31_Performance;
+                             rdfs:label "U81 had performer status"@en;
+                             rdfs:range mus:M49_Performer_Status;
+                             rdfs:subPropertyOf ecrm:P2_has_type;
+                             owl:inverseOf mus:U81i_is_performer_status_of.
+mus:U81i_is_performer_status_of a owl:ObjectProperty;
+                                rdfs:label "U81i is performer status of"@en;
+                                rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U82_has_foreseen_performer_status a owl:ObjectProperty;
+                                      rdfs:domain mus:M26_Foreseen_Performance;
+                                      rdfs:label "U82 has foreseen performer status"@en;
+                                      rdfs:range mus:M49_Performer_Status;
+                                      rdfs:subPropertyOf ecrm:P2_has_type;
+                                      owl:inverseOf mus:U82i_is_foreseen_performer_status_of.
+mus:U82i_is_foreseen_performer_status_of a owl:ObjectProperty;
+                                         rdfs:label "U82i is foreseen performer status of"@en;
+                                         rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U83_has_relative_key a owl:ObjectProperty,
+                           owl:NamedIndividual,
+                           owl:SymmetricObjectProperty;
+                         rdfs:comment "Examples: the key of 'C major' has 'A minor' as relative key"@en,
+                                      "Scope Note: Cette classe permet de connecter deux M4 Tonalité qui sont en relation par rapport à l'armure, c'est-à-dire l'une est la relatif majeur ou mineur de l'autre."@fr,
+                                      "Scope Note: This class allows to connect two M4 Keys that are in a relative relationship, i.e. one is the relative major or minor of the other one."@en,
+                                      "see also http://en.wikipedia.org/wiki/Relative_key",
+                                      "Exemples: la clé de 'Do majeur' a 'La mineur' pour tonalité relative"@fr;
+                         rdfs:domain mus:M4_Key;
+                         rdfs:isDefinedBy mus:;
+                         rdfs:label "U83 a pour tonalité relative"@fr,
+                                    "U83 has relative key"@en;
+                         rdfs:range mus:M4_Key.
+mus:U84_has_parallel_key a owl:ObjectProperty,
+                           owl:SymmetricObjectProperty,
+                           owl:NamedIndividual;
+                         rdfs:comment "Scope Note: This class allows to connect two M4 Keys that are in a parallel relationship, i.e. one is the parallel major or minor of the other one."@en,
+                                      "Examples: the key of 'C major' has 'C minor' as parallel key"@en,
+                                      "see also http://en.wikipedia.org/wiki/Parallel_key",
+                                      "Exemples: la clé de 'Do majeur' a 'Do mineur' pour tonalité parallèle"@fr,
+                                      "Scope Note: Cette classe permet de connecter deux M4 Tonalité qui sont en une relation parallèle, c'est-à-dire l'une est la parallèle majeur ou mineur de l'autre."@fr;
+                         rdfs:domain mus:M4_Key;
+                         rdfs:isDefinedBy mus:;
+                         rdfs:label "U84 a pour tonalité parallèle"@fr,
+                                    "U84 has parallel key"@en;
+                         rdfs:range mus:M4_Key.
+mus:U85_has_closely_related_key a owl:SymmetricObjectProperty,
+                                  owl:ObjectProperty,
+                                  owl:NamedIndividual;
+                                rdfs:comment "Exemples: la clé de 'Do majeur' a 'Sol majeur' et 'Re majeur' pour tonalités étroitement liées"@fr,
+                                             "see also http://en.wikipedia.org/wiki/Closely_related_key",
+                                             "Examples: the key of 'C major' has 'G major' and 'D minor' as closely related keys"@en,
+                                             "Scope Note: Cette classe permet de connecter deux M4 Tonalité qui sont étroitement liées d'un point de vue harmonique, par ex. ceux sont des destinations ou des transpositions fréquemment utilisées dans une modulation"@fr,
+                                             "Scope Note: This class allows to connect two M4 Keys that are mutually closely related from an harmonic point of view, e.g. they are commonly used destinations or transpositions in a modulation."@en;
+                                rdfs:domain mus:M4_Key;
+                                rdfs:isDefinedBy mus:;
+                                rdfs:label "U85 a pour tonalité étroitement lié"@fr,
+                                           "U85 has closely related key"@en;
+                                rdfs:range mus:M4_Key.
+mus:U87_has_member_casting_detail a owl:IrreflexiveProperty,
+                                    owl:ObjectProperty;
+                                  rdfs:domain mus:M23_Casting_Detail;
+                                  rdfs:label "U87 has member casting detail"@en;
+                                  rdfs:range mus:M23_Casting_Detail;
+                                  rdfs:subPropertyOf ecrm:P69_has_association_with;
+                                  owl:inverseOf mus:U87i_is_member_casting_detail_of;
+                                  skos:scopeNote "m.o.p section as foreseen by the composer, performer or programmer."@en.
+mus:U87i_is_member_casting_detail_of a owl:ObjectProperty;
+                                     rdfs:label "U87i is member casting detail of"@en;
+                                     rdfs:subPropertyOf ecrm:P69i_is_associated_with.
+mus:U88_has_medium_of_performance_section a owl:ObjectProperty;
+                                          rdfs:comment "U88 has medium of performance section"@en;
+                                          rdfs:domain mus:M23_Casting_Detail;
+                                          rdfs:range mus:M23_Casting_Detail;
+                                          rdfs:subPropertyOf mus:U87_has_member_casting_detail.
+mus:U88i_is_member_of_performance_section_of a owl:ObjectProperty;
+                                             rdfs:label "U88i is member of performance section of"@en;
+                                             rdfs:subPropertyOf mus:U87i_is_member_casting_detail_of.
+mus:U89_occured_in_performance_conditions a owl:ObjectProperty;
+                                          rdfs:domain ecrm:E5_Event;
+                                          rdfs:label "U89 occured in performance conditions"@en;
+                                          rdfs:range mus:M55_Condition_of_Performance;
+                                          rdfs:subPropertyOf ecrm:P2_has_type;
+                                          owl:inverseOf mus:U89i_were_performance_conditions_of.
+mus:U89i_were_performance_conditions_of a owl:ObjectProperty.
+mus:U8_foresees_time_span a owl:ObjectProperty;
+                          rdfs:domain ecrm:E29_Design_or_Procedure;
+                          rdfs:isDefinedBy mus:;
+                          rdfs:label "U8 foresees time-span"@en;
+                          rdfs:range ecrm:E52_Time-Span;
+                          rdfs:subPropertyOf ecrm:P67_refers_to;
+                          owl:inverseOf mus:U8i_is_foreseen_time_span_of.
+mus:U8i_is_foreseen_time_span_of a owl:ObjectProperty;
+                                 rdfs:isDefinedBy mus:;
+                                 rdfs:label "U8i is foreseen time-span of"@en;
+                                 rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U90_foresees_creation_or_performance_mode a owl:ObjectProperty;
+                                              rdfs:domain [owl:unionOf (mus:M23_Casting_Detail
+                                                                        efrbroo:F25_Performance_Plan) ; 
+                                                           a owl:Class];
+                                              rdfs:label "U90 foresees creation or performance mode"@en;
+                                              rdfs:range mus:M50_Creation_or_Performance_Mode;
+                                              rdfs:subPropertyOf ecrm:P67_refers_to;
+                                              owl:inverseOf mus:U90i_were_performance_conditions_of.
+mus:U90i_were_performance_conditions_of a owl:ObjectProperty;
+                                        rdfs:label "U90i were performance conditions of"@en;
+                                        rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U91_put_into_effect a owl:ObjectProperty;
+                        rdfs:domain ecrm:E7_Activity;
+                        rdfs:label "U91 put into effect"@en;
+                        rdfs:range mus:M59_Program;
+                        rdfs:subPropertyOf ecrm:P33_used_specific_technique;
+                        owl:inverseOf mus:U91i_was_put_into_effect_through.
+mus:U91i_was_put_into_effect_through a owl:ObjectProperty;
+                                     rdfs:label "U91i was put into effect through"@en;
+                                     rdfs:subPropertyOf ecrm:P33i_was_used_by.
+mus:U92_foresees_to_put_into_effect a owl:ObjectProperty;
+                                    rdfs:domain mus:M25_Foreseen_Activity;
+                                    rdfs:label "U92 foresees to put into effect"@en;
+                                    rdfs:range mus:M59_Program;
+                                    rdfs:subPropertyOf ecrm:P33_used_specific_technique;
+                                    owl:inverseOf mus:U92_is_foreseen_to_be_put_into_effect_through.
+mus:U92_is_foreseen_to_be_put_into_effect_through a owl:ObjectProperty;
+                                                  rdfs:label "U92 is foreseen to be put into effect  through"@en;
+                                                  rdfs:subPropertyOf ecrm:P33i_was_used_by.
+mus:U93_is_realised_in a owl:ObjectProperty;
+                       rdfs:domain mus:M58_Programming_Work;
+                       rdfs:label "U93 is realised in"@en;
+                       rdfs:range mus:M59_Program;
+                       rdfs:subPropertyOf efrbroo:R3_is_realised_in;
+                       owl:inverseOf mus:U93i_realises.
+mus:U93i_realises a owl:ObjectProperty;
+                  rdfs:label "U93 realises"@en;
+                  rdfs:subPropertyOf efrbroo:R3i_realises.
+mus:U94_has_work_type a owl:ObjectProperty;
+                      rdfs:domain efrbroo:F1_Work;
+                      rdfs:label "U93 has work type"@en;
+                      rdfs:range mus:M61_Work_Type;
+                      rdfs:subPropertyOf ecrm:P2_has_type;
+                      owl:inverseOf mus:U94i_is_work_type_of.
+mus:U94i_is_work_type_of a owl:ObjectProperty;
+                         rdfs:label "U94i is work type of"@en;
+                         rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U95_has_hierarchical_level a owl:ObjectProperty;
+                               rdfs:domain efrbroo:F1_Work;
+                               rdfs:label "U95 has hierarchical level"@en;
+                               rdfs:range mus:M62_Hierarchical_Level;
+                               rdfs:subPropertyOf ecrm:P2_has_type;
+                               owl:inverseOf mus:U95i_is_hierarchical_level_of.
+mus:U95i_is_hierarchical_level_of a owl:ObjectProperty;
+                                  rdfs:label "U95 is hierarchical leval of"@en;
+                                  rdfs:subPropertyOf ecrm:P2i_is_type_of.
+mus:U96_foresees_vocal_or_instrumental_technique a owl:ObjectProperty;
+                                                 rdfs:domain [owl:unionOf (mus:M23_Casting_Detail
+                                                                           efrbroo:F25_Performance_Plan) ; 
+                                                              a owl:Class];
+                                                 rdfs:label "U96 foresees vocal or instrumental technique"@en;
+                                                 rdfs:range ecrm:E1_CRM_Entity;
+                                                 rdfs:subPropertyOf ecrm:P67_refers_to;
+                                                 owl:inverseOf mus:U96i_is_foreseen_vocal_or_instrumental_technique_of.
+mus:U96i_is_foreseen_vocal_or_instrumental_technique_of a owl:ObjectProperty;
+                                                        rdfs:label "U96i is foreseen vocal or instrumental technique of"@en;
+                                                        rdfs:subPropertyOf ecrm:P67i_is_referred_to_by.
+mus:U9_has_quantity a owl:DatatypeProperty;
+                    rdfs:domain ecrm:E77_Persistent_Item;
+                    rdfs:isDefinedBy mus:;
+                    rdfs:label "U9 has quantity"@en;
+                    rdfs:range xsd:integer.
+<http://data.doremus.org/vocabulary/key/> a owl:NamedIndividual.
+efrbroo:F38_Character a owl:Class.
+efrbroo:F50_Controlled_Access_Point a owl:Class.
+dc11:title a owl:DatatypeProperty.
+owl:SymmetricObjectProperty a owl:Class.
+skos:inScheme a owl:ObjectProperty.
+skos:scopeNote a owl:AnnotationProperty.

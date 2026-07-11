@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Generate "production" version of docs for the split example, from scratch.
+# Uses the default values for css and js.
+
+rm -rf doc
+dtddocumentor -e -m split-example.dtd

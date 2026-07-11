@@ -1,0 +1,80 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ends: <http://labs.mondeca.com/vocab/endpointStatus#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix planet: <http://dbpedia.org/>.
+@prefix resource: <http://dbpedia.org/resource/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+resource:Mondeca a foaf:Organization;
+                 foaf:name "Mondeca".
+<http://labs.mondeca.com/foaf/mondeca.rdf#pyv> a foaf:Person;
+                                               foaf:name "Pierre-Yves Vandenbussche".
+<http://labs.mondeca.com/vocab/endpointStatus> ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
+                                               dcterms:creator <http://labs.mondeca.com/foaf/mondeca.rdf#pyv>;
+                                               dcterms:description "Endpoint Status vocabulary intends to dsecribe endpoint availability"@en;
+                                               dcterms:modified "2011-02-24";
+                                               dcterms:publisher resource:Mondeca;
+                                               dcterms:title "Vocabulary of endpoint status (availability, responseTime)"@en;
+                                               vann:preferredNamespacePrefix "ends";
+                                               vann:preferredNamespaceUri "http://labs.mondeca.com/vocab/endpointStatus#";
+                                               voaf:classNumber "1";
+                                               voaf:metadataVoc <http://xmlns.com/foaf/0.1>,
+                                                                <http://creativecommons.org/licenses/by/3.0/>,
+                                                                <http://purl.org/vocommons/voaf>,
+                                                                vann:,
+                                                                <http://purl.org/dc/terms>;
+                                               voaf:propertyNumber "4";
+                                               voaf:reliesOn dcterms:;
+                                               voaf:specializes <http://vocab.deri.ie/void>;
+                                               a voaf:Vocabulary,
+                                                 owl:Ontology;
+                                               rdfs:isdefinedby <http://labs.mondeca.com/vocab/endpointStatus>;
+                                               status:term_status "testing".
+ends:EndpointStatus a owl:Class;
+                    rdfs:comment "A Status of a void:Dataset endpoint at a particular time"@en;
+                    rdfs:isDefinedBy <http://labs.mondeca.com/vocab/endpointStatus>;
+                    rdfs:label "Endpoint status"@en;
+                    owl:unionOf ([owl:onProperty ends:statusIsAvailable ; 
+                                 owl:cardinality "1" ; 
+                                 a owl:Restriction]
+                                 [owl:onProperty dcterms:date ; 
+                                 owl:cardinality "1" ; 
+                                 a owl:Restriction]
+                                 [owl:onProperty ends:statusResponseTime ; 
+                                 owl:maxCardinality "1" ; 
+                                 a owl:Restriction]
+                                 [owl:onProperty dcterms:description ; 
+                                 owl:maxCardinality "1" ; 
+                                 a owl:Restriction]);
+                    status:term_status "testing".
+ends:status a owl:ObjectProperty;
+            rdfs:comment "Relation between a void:Dataset and an ends:EndpointStatus"@en;
+            rdfs:domain void:Dataset;
+            rdfs:isDefinedBy <http://labs.mondeca.com/vocab/endpointStatus>;
+            rdfs:label "has status"@en;
+            rdfs:range ends:EndpointStatus;
+            status:term_status "testing".
+ends:statusIsAvailable a owl:DatatypeProperty;
+                       rdfs:comment "Describes whether a void:Dataset endpoint is available or not"@en;
+                       rdfs:domain ends:EndpointStatus;
+                       rdfs:isDefinedBy <http://labs.mondeca.com/vocab/endpointStatus>;
+                       rdfs:label "is endpoint available"@en;
+                       rdfs:range xsd:boolean;
+                       status:term_status "testing".
+ends:statusResponseTime a owl:DatatypeProperty;
+                        rdfs:comment "If a void:Dataset endpoint is available, this property indicates in milliseconds the responseTime to a simple Select query"@en;
+                        rdfs:domain ends:EndpointStatus;
+                        rdfs:isDefinedBy <http://labs.mondeca.com/vocab/endpointStatus>;
+                        rdfs:label "endpoint response time"@en;
+                        rdfs:range xsd:integer;
+                        status:term_status "testing".

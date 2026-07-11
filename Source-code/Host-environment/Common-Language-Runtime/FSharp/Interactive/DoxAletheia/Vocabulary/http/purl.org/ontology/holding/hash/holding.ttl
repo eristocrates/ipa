@@ -1,0 +1,156 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gr: <http://purl.org/goodrelations/v1#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix ecpo: <http://purl.org/ontology/ecpo#>.
+@prefix holding: <http://purl.org/ontology/holding#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix rdaa: <http://rdaregistry.info/Elements/a/>.
+@prefix rdac: <http://rdaregistry.info/Elements/c/>.
+@prefix rdai: <http://rdaregistry.info/Elements/i/>.
+@prefix rdam: <http://rdaregistry.info/Elements/m/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix docso: <http://purl.org/ontology/dso#>.
+@prefix frbrcore: <http://purl.org/vocab/frbr/core#>.
+@prefix schema: <http://schema.org/>.
+
+gr:Location a owl:Class;
+            rdfs:isDefinedBy <http://purl.org/goodrelations/v1>;
+            rdfs:label "Location"@en;
+            owl:equivalentClass schema:Place.
+docso:DocumentService a owl:Class;
+                      rdfs:isDefinedBy <http://purl.org/ontology/dso>;
+                      rdfs:label "DocumentService".
+ecpo:Chronology a owl:Class;
+                rdfs:isDefinedBy <http://purl.org/ontology/ecpo>;
+                rdfs:label "Chronology"@en.
+<http://purl.org/ontology/holding> ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
+                                   dcterms:creator "Jakob Voß",
+                                                   "Carsten Klee";
+                                   dcterms:description "A vocabulary to express (library) holdings in RDF";
+                                   dcterms:modified "2014-06-30"^^xsd:date;
+                                   dcterms:title "Holding Ontology"@en;
+                                   vann:preferredNamespacePrefix "holding";
+                                   vann:preferredNamespaceUri "http://purl.org/ontology/holding#";
+                                   a voaf:Vocabulary,
+                                     owl:Ontology;
+                                   rdfs:label "Holding Ontology"@en;
+                                   owl:versionInfo "0.1.3rev1".
+holding:Agent a owl:Class;
+              rdfs:comment "Use one of bf:Agent or foaf:Agent"@en;
+              rdfs:label "Agent"@en;
+              owl:unionOf (<http://bibframe.org/vocab/Agent>
+                           foaf:Agent
+                           schema:Organization
+                           schema:Person
+                           rdac:Agent).
+holding:Document a owl:Class;
+                 rdfs:comment "Use one of bibo:Document, foaf:Document, bf:Work or bf:Instance"@en;
+                 rdfs:label "Document"@en;
+                 owl:unionOf (bibo:Document
+                              foaf:Document
+                              <http://bibframe.org/vocab/Work>
+                              <http://bibframe.org/vocab/Instance>
+                              schema:CreativeWork).
+holding:Item a owl:Class;
+             rdfs:comment "Use one of bf:HeldItem frbr:Item rdac:Item"@en;
+             rdfs:label "Item"@en;
+             owl:unionOf (<http://bibframe.org/vocab/HeldItem>
+                          frbrcore:Item
+                          rdac:Item).
+holding:broaderExemplar a owl:ObjectProperty;
+                        rdfs:comment "Relates a document to an item that contains an exemplar of the document as part."@en;
+                        rdfs:domain holding:Document;
+                        rdfs:label "broader exemplar"@en;
+                        rdfs:range holding:Item;
+                        rdfs:seeAlso rdai:containedInItem;
+                        owl:inverseOf holding:broaderExemplarOf.
+holding:broaderExemplarOf a owl:ObjectProperty;
+                          rdfs:comment "Relates an item to a document which is partly exemplified by the item."@en;
+                          rdfs:domain holding:Item;
+                          rdfs:label "broader exemplar of"@en;
+                          rdfs:range holding:Document;
+                          rdfs:seeAlso rdai:containsItem;
+                          owl:inverseOf holding:broaderExemplar.
+holding:collectedBy a owl:ObjectProperty;
+                    rdfs:comment "Relates an agent to a document and/or item that is collected by the agent."@en,
+                                 "Relates a document and/or item to an agent who collects it."@en;
+                    rdfs:domain holding:Document,
+                                holding:Agent,
+                                holding:Item;
+                    rdfs:label "collected by"@en,
+                               "collects"@en;
+                    rdfs:range holding:Item,
+                               holding:Agent,
+                               holding:Document;
+                    rdfs:seeAlso rdai:collector,
+                                 rdai:collectorOf;
+                    owl:inverseOf holding:collects,
+                                  holding:collectedBy.
+holding:exemplar a owl:ObjectProperty;
+                 rdfs:comment "Relates a document to an item that is an exemplar of the document."@en;
+                 rdfs:domain holding:Document;
+                 rdfs:label "has exemplar"@en;
+                 rdfs:range holding:Item;
+                 rdfs:seeAlso rdam:exemplarOfManifestation,
+                              frbrcore:exemplar;
+                 owl:inverseOf holding:exemplarOf.
+holding:exemplarOf a owl:ObjectProperty;
+                   rdfs:comment "Relates an item to the document that is exemplified by the item."@en;
+                   rdfs:domain holding:Item;
+                   rdfs:label "is examplar of"@en;
+                   rdfs:range holding:Document;
+                   rdfs:seeAlso rdai:manifestationExemplified,
+                                <http://bibframe.org/vocab/holdingFor>;
+                   owl:inverseOf holding:exemplar.
+holding:heldBy a owl:ObjectProperty;
+               rdfs:comment "Relates an item to an agent who holds the item."@en;
+               rdfs:domain holding:Item;
+               rdfs:label "held by"@en;
+               rdfs:range holding:Agent;
+               rdfs:seeAlso rdai:owner,
+                            rdai:currentOwner,
+                            <http://bibframe.org/vocab/heldBy>;
+               rdfs:subPropertyOf holding:collectedBy;
+               owl:inverseOf holding:holds.
+holding:holds a owl:ObjectProperty;
+              rdfs:comment "Relates an agent to an item which the agent holds."@en;
+              rdfs:domain holding:Agent;
+              rdfs:label "holds"@en;
+              rdfs:range holding:Item;
+              rdfs:seeAlso rdaa:ownerOf,
+                           rdaa:currentOwnerOf;
+              rdfs:subPropertyOf holding:collects;
+              owl:inverseOf holding:heldBy.
+holding:label a owl:DatatypeProperty;
+              rdfs:comment "A call number, shelf mark or similar label of an item"@en;
+              rdfs:domain holding:Item;
+              rdfs:label "label"@en;
+              rdfs:range rdfs:Literal;
+              rdfs:seeAlso <http://bibframe.org/vocab/label>,
+                           rdai:identifierForTheItem,
+                           gr:hasStockKeepingUnit,
+                           schema:sku,
+                           <http://bibframe.org/vocab/shelfMark>,
+                           schema:name;
+              rdfs:subPropertyOf dcterms:identifier.
+holding:narrowerExemplar a owl:ObjectProperty;
+                         rdfs:comment "Relates a document to an item that is an exemplar of a part of the document."@en;
+                         rdfs:domain holding:Document;
+                         rdfs:label "narrower exemplar"@en;
+                         rdfs:range holding:Item;
+                         rdfs:seeAlso rdai:containsItem;
+                         owl:inverseOf holding:narrowerExemplarOf.
+holding:narrowerExemplarOf a owl:ObjectProperty;
+                           rdfs:comment "Relates an item to a document which is partly exemplified by the item."@en;
+                           rdfs:domain holding:Item;
+                           rdfs:label "narrower exemplar of"@en;
+                           rdfs:range holding:Document;
+                           rdfs:seeAlso rdai:containedInItem;
+                           owl:inverseOf holding:narrowerExemplar.

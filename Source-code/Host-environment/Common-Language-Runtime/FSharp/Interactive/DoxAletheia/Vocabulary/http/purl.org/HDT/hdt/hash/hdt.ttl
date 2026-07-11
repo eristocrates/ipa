@@ -1,0 +1,272 @@
+@base <https://www.w3.org/submissions/2011/SUBM-HDT-RDFS-20110330/HDT.rdf>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix hdt: <http://purl.org/HDT/hdt#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+hdt: dcterms:modified "2010-10-03";
+     dcterms:publisher "http://hdt.dcc.uchile.cl/"@en-us;
+     dcterms:title "HDT Namespace for RDF HDT Specification in the http://purl.org/HDT/hdt# namespace"@en-us;
+     rdfs:comment "To comment on this schema, please contact rdfhdt@gmail.com.".
+hdt:Dataset dcterms:description "HDT Dataset"@en-us;
+            dcterms:issued "2010-10-03";
+            dcterms:modified "2010-10-03";
+            a rdfs:Class;
+            rdfs:subClassOf <http://rdfs.org/ns/void#Dataset>.
+hdt:IDCodification dcterms:description "Codification (number of bits) of the IDs in a stream."@en-us;
+                   dcterms:issued "2010-10-03";
+                   dcterms:modified "2010-10-03";
+                   a rdf:Property;
+                   rdfs:domain hdt:streamItem.
+hdt:additionalInformation dcterms:description "Additional information of an RDF HDT data set."@en-us;
+                          dcterms:issued "2010-10-03";
+                          dcterms:modified "2010-10-03";
+                          a rdf:Property;
+                          rdfs:domain hdt:Dataset;
+                          rdfs:range hdt:additionalItemCollection.
+hdt:additionalItemCollection dcterms:description "Collection of additional items of an RDF HDT data set"@en-us;
+                             dcterms:issued "2010-10-03";
+                             dcterms:modified "2010-10-03";
+                             a rdfs:Class;
+                             rdfs:subClassOf rdfs:Class.
+hdt:bitmapItem dcterms:description "A bitmap specification"@en-us;
+               dcterms:issued "2010-10-03";
+               dcterms:modified "2010-10-03";
+               a rdfs:Class;
+               rdfs:subClassOf rdfs:Class.
+hdt:dictionary dcterms:description "Dictionary specification of an RDF HDT data set"@en-us;
+               dcterms:issued "2010-10-03";
+               dcterms:modified "2010-10-03";
+               a rdf:Property;
+               rdfs:domain hdt:formatInformation;
+               rdfs:range hdt:dictionaryItemCollection.
+hdt:dictionaryEncoding dcterms:description "Encoding of the elements of an RDF HDT Dictionary."@en-us;
+                       dcterms:issued "2010-10-03";
+                       dcterms:modified "2010-10-03";
+                       a rdf:Property;
+                       rdfs:domain hdt:dictionaryItemCollection.
+hdt:dictionaryItemCollection dcterms:description "Collection of dictionary information items of an RDF HDT data set"@en-us;
+                             dcterms:issued "2010-10-03";
+                             dcterms:modified "2010-10-03";
+                             a rdfs:Class;
+                             rdfs:subClassOf rdfs:Class.
+hdt:dictionaryNamespaces dcterms:description "Namespaces of the elements of an RDF HDT Dictionary."@en-us;
+                         dcterms:issued "2010-10-03";
+                         dcterms:modified "2010-10-03";
+                         a rdf:Property;
+                         rdfs:domain hdt:dictionaryItemCollection;
+                         rdfs:range hdt:dictionaryNamespacesCollection.
+hdt:dictionaryNamespacesCollection dcterms:description "Collection of dictionary namespaces of an RDF HDT data set"@en-us;
+                                   dcterms:issued "2010-10-03";
+                                   dcterms:modified "2010-10-03";
+                                   a rdfs:Class;
+                                   rdfs:subClassOf rdfs:Class.
+hdt:dictionaryOrder dcterms:description "Order of the elements of an RDF HDT Dictionary inside each subset."@en-us;
+                    dcterms:issued "2010-10-03";
+                    dcterms:modified "2010-10-03";
+                    a rdf:Property;
+                    rdfs:domain hdt:dictionaryItemCollection.
+hdt:dictionarySeparator dcterms:description "Character to separate the elements and subsets of an RDF HDT Dictionary."@en-us;
+                        dcterms:issued "2010-10-03";
+                        dcterms:modified "2010-10-03";
+                        a rdf:Property;
+                        rdfs:domain hdt:dictionaryItemCollection.
+hdt:fileLocation dcterms:description "The location of a file."@en-us;
+                 dcterms:issued "2010-10-03";
+                 dcterms:modified "2010-10-03";
+                 a rdf:Property.
+hdt:formatInformation dcterms:description "Format information of an RDF HDT data set."@en-us;
+                      dcterms:issued "2010-10-03";
+                      dcterms:modified "2010-10-03";
+                      a rdf:Property;
+                      rdfs:domain hdt:Dataset;
+                      rdfs:range hdt:formatItemCollection.
+hdt:formatItemCollection dcterms:description "Collection of format items of an RDF HDT data set"@en-us;
+                         dcterms:issued "2010-10-03";
+                         dcterms:modified "2010-10-03";
+                         a rdfs:Class;
+                         rdfs:subClassOf rdfs:Class.
+hdt:logBits dcterms:description "Codification set to log(n) bits."@en-us;
+            dcterms:issued "2010-10-03";
+            dcterms:modified "2010-10-03";
+            a rdfs:Class.
+hdt:namespace dcterms:description "Namespace within an RDF HDT Dictionary."@en-us;
+              dcterms:issued "2010-10-03";
+              dcterms:modified "2010-10-03";
+              a rdf:Property;
+              rdfs:domain hdt:dictionaryNamespacesCollection;
+              rdfs:range hdt:namespaceItem.
+hdt:namespaceItem dcterms:description "A namespace within an RDF HDT data set"@en-us;
+                  dcterms:issued "2010-10-03";
+                  dcterms:modified "2010-10-03";
+                  a rdfs:Class;
+                  rdfs:subClassOf rdfs:Class.
+hdt:numberOfCommonSubjectObjects dcterms:description "Number of common Subject-Objects within an RDF HDT data set."@en-us;
+                                 dcterms:issued "2010-10-03";
+                                 dcterms:modified "2010-10-03".
+hdt:numberOfPredicates dcterms:description "Number of predicates within an RDF HDT data set"@en-us;
+                       dcterms:issued "2010-10-03";
+                       dcterms:modified "2010-10-03".
+hdt:objectBitmap dcterms:description "Object Bitmap specification within an RDF HDT data set."@en-us;
+                 dcterms:issued "2010-10-03";
+                 dcterms:modified "2010-10-03";
+                 a rdf:Property;
+                 rdfs:domain hdt:triplesItemCollection;
+                 rdfs:range hdt:bitmapItem.
+hdt:objectCodification dcterms:description "Codification (number of bits or logBits) of the object IDs in a stream."@en-us;
+                       dcterms:issued "2010-10-03";
+                       dcterms:modified "2010-10-03";
+                       a rdf:Property;
+                       rdfs:domain hdt:streamItem.
+hdt:objectStream dcterms:description "Object Stream specification within an RDF HDT data set."@en-us;
+                 dcterms:issued "2010-10-03";
+                 dcterms:modified "2010-10-03";
+                 a rdf:Property;
+                 rdfs:domain hdt:triplesItemCollection;
+                 rdfs:range hdt:streamItem.
+hdt:predicateBitmap dcterms:description "Predicate Bitmap specification within an RDF HDT data set."@en-us;
+                    dcterms:issued "2010-10-03";
+                    dcterms:modified "2010-10-03";
+                    a rdf:Property;
+                    rdfs:domain hdt:triplesItemCollection;
+                    rdfs:range hdt:bitmapItem.
+hdt:predicateCodification dcterms:description "Codification (number of bits or logBits) of the predicate IDs in a stream."@en-us;
+                          dcterms:issued "2010-10-03";
+                          dcterms:modified "2010-10-03";
+                          a rdf:Property;
+                          rdfs:domain hdt:streamItem.
+hdt:predicateStream dcterms:description "Predicate Stream specification within an RDF HDT data set."@en-us;
+                    dcterms:issued "2010-10-03";
+                    dcterms:modified "2010-10-03";
+                    a rdf:Property;
+                    rdfs:domain hdt:triplesItemCollection;
+                    rdfs:range hdt:streamItem.
+hdt:prefixLabel dcterms:description "A prefix label in a namespace within an RDF HDT Dictionary."@en-us;
+                dcterms:issued "2010-10-03";
+                dcterms:modified "2010-10-03";
+                a rdf:Property;
+                rdfs:domain hdt:namespaceItem.
+hdt:prefixURI dcterms:description "A prefix URI in a namespace within an RDF HDT Dictionary."@en-us;
+              dcterms:issued "2010-10-03";
+              dcterms:modified "2010-10-03";
+              a rdf:Property;
+              rdfs:domain hdt:namespaceItem.
+hdt:publicationInformation dcterms:description "Publication information of an RDF HDT data set."@en-us;
+                           dcterms:issued "2010-10-03";
+                           dcterms:modified "2010-10-03";
+                           a rdf:Property;
+                           rdfs:domain hdt:Dataset;
+                           rdfs:range hdt:publicationItemCollection.
+hdt:publicationItemCollection dcterms:description "Collection of publication items of an RDF HDT data set"@en-us;
+                              dcterms:issued "2010-10-03";
+                              dcterms:modified "2010-10-03";
+                              a rdfs:Class;
+                              rdfs:subClassOf rdfs:Class.
+hdt:statisticalInformation dcterms:description "Statistical information of an RDF HDT data set."@en-us;
+                           dcterms:issued "2010-10-03";
+                           dcterms:modified "2010-10-03";
+                           a rdf:Property;
+                           rdfs:domain hdt:Dataset;
+                           rdfs:range hdt:statisticalItemCollection.
+hdt:statisticalItemCollection dcterms:description "Collection of statistical items of an RDF HDT data set"@en-us;
+                              dcterms:issued "2010-10-03";
+                              dcterms:modified "2010-10-03";
+                              a rdfs:Class;
+                              rdfs:subClassOf rdfs:Class.
+hdt:streamItem dcterms:description "A stream specification"@en-us;
+               dcterms:issued "2010-10-03";
+               dcterms:modified "2010-10-03";
+               a rdfs:Class;
+               rdfs:subClassOf rdfs:Class.
+hdt:streamsOrder dcterms:description "Order of the Adjacency List within an RDF HDT data set."@en-us;
+                 dcterms:issued "2010-10-03";
+                 dcterms:modified "2010-10-03";
+                 a rdf:Property;
+                 rdfs:domain hdt:formatItemCollection;
+                 rdfs:range hdt:streamsOrders.
+hdt:streamsOrder_OPS dcterms:description "Object-Predicate-Subject Adjacency List order within an RDF HDT data set."@en-us;
+                     dcterms:issued "2010-10-03";
+                     dcterms:modified "2010-10-03";
+                     a hdt:streamsOrders.
+hdt:streamsOrder_OSP dcterms:description "Object-Subject-Predicate Adjacency List order within an RDF HDT data set."@en-us;
+                     dcterms:issued "2010-10-03";
+                     dcterms:modified "2010-10-03";
+                     a hdt:streamsOrders.
+hdt:streamsOrder_POS dcterms:description "Predicate-Object-Subject Adjacency List order within an RDF HDT data set."@en-us;
+                     dcterms:issued "2010-10-03";
+                     dcterms:modified "2010-10-03";
+                     a hdt:streamsOrders.
+hdt:streamsOrder_PSO dcterms:description "Predicate-Subject-Object Adjacency List order within an RDF HDT data set."@en-us;
+                     dcterms:issued "2010-10-03";
+                     dcterms:modified "2010-10-03";
+                     a hdt:streamsOrders.
+hdt:streamsOrder_SOP dcterms:description "Subject-Object-Predicate Adjacency List order within an RDF HDT data set."@en-us;
+                     dcterms:issued "2010-10-03";
+                     dcterms:modified "2010-10-03";
+                     a hdt:streamsOrders.
+hdt:streamsOrder_SPO dcterms:description "Subject-Predicate-Object Adjacency List order within an RDF HDT data set."@en-us;
+                     dcterms:issued "2010-10-03";
+                     dcterms:modified "2010-10-03";
+                     a hdt:streamsOrders.
+hdt:streamsOrders dcterms:description "An order of the Adjacency List within an RDF HDT data set."@en-us;
+                  dcterms:issued "2010-10-03";
+                  dcterms:modified "2010-10-03";
+                  a rdfs:Class;
+                  rdfs:subClassOf rdfs:Class.
+hdt:subjectBitmap dcterms:description "Subject Bitmap specification within an RDF HDT data set."@en-us;
+                  dcterms:issued "2010-10-03";
+                  dcterms:modified "2010-10-03";
+                  a rdf:Property;
+                  rdfs:domain hdt:triplesItemCollection;
+                  rdfs:range hdt:bitmapItem.
+hdt:subjectCodification dcterms:description "Codification (number of bits or logBits) of the subject IDs in a stream."@en-us;
+                        dcterms:issued "2010-10-03";
+                        dcterms:modified "2010-10-03";
+                        a rdf:Property;
+                        rdfs:domain hdt:streamItem.
+hdt:subjectObjectRatio dcterms:description "Subject-Object ratio of an RDF HDT data set"@en-us;
+                       dcterms:issued "2010-10-03";
+                       dcterms:modified "2010-10-03".
+hdt:subjectStream dcterms:description "Subject Stream specification within an RDF HDT data set."@en-us;
+                  dcterms:issued "2010-10-03";
+                  dcterms:modified "2010-10-03";
+                  a rdf:Property;
+                  rdfs:domain hdt:triplesItemCollection;
+                  rdfs:range hdt:streamItem.
+hdt:triples dcterms:description "Triples format specification of an RDF HDT data set."@en-us;
+            dcterms:issued "2010-10-03";
+            dcterms:modified "2010-10-03";
+            a rdf:Property;
+            rdfs:domain hdt:formatItemCollection;
+            rdfs:range hdt:triplesItemCollection.
+hdt:triplesBitmap dcterms:description "Triples Bitmap format specification of an RDF HDT data set."@en-us;
+                  dcterms:issued "2010-10-03";
+                  dcterms:modified "2010-10-03";
+                  a rdf:Property;
+                  rdfs:domain hdt:formatItemCollection;
+                  rdfs:range hdt:triplesItemCollection;
+                  rdfs:subPropertyOf hdt:triples.
+hdt:triplesCompact dcterms:description "Triples Compact format specification of an RDF HDT data set."@en-us;
+                   dcterms:issued "2010-10-03";
+                   dcterms:modified "2010-10-03";
+                   a rdf:Property;
+                   rdfs:domain hdt:formatItemCollection;
+                   rdfs:range hdt:triplesItemCollection;
+                   rdfs:subPropertyOf hdt:triples.
+hdt:triplesItemCollection dcterms:description "Collection of triples information items of an RDF HDT data set"@en-us;
+                          dcterms:issued "2010-10-03";
+                          dcterms:modified "2010-10-03";
+                          a rdfs:Class;
+                          rdfs:subClassOf rdfs:Class.
+hdt:triplesPlain dcterms:description "Triples Plain format specification of an RDF HDT data set."@en-us;
+                 dcterms:issued "2010-10-03";
+                 dcterms:modified "2010-10-03";
+                 a rdf:Property;
+                 rdfs:domain hdt:formatItemCollection;
+                 rdfs:range hdt:triplesItemCollection;
+                 rdfs:subPropertyOf hdt:triples.

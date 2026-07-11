@@ -1,0 +1,116 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix algo: <http://securitytoolbox.appspot.com/securityAlgorithms#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+algo: ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
+      dc11:contributor <mailto:gyrard@eurecom.fr>;
+      dc11:description "An ontology to describe various cryptographic algorithms"@en;
+      dc11:title "Security Algorithms"@en;
+      dcterms:creator <mailto:luo@itd.nrl.navy.mil>,
+                      <mailto:kim@itd.nrl.navy.mil>,
+                      <mailto:mkang@itd.nrl.navy.mil>;
+      dcterms:issued "2005-08-31"^^xsd:date;
+      dcterms:modified "2014-01-24"^^xsd:date;
+      dcterms:source <http://www.dtic.mil/cgi-bin/GetTRDoc?AD=ADA437938>;
+      vann:preferredNamespacePrefix "algo";
+      vann:preferredNamespaceUri "http://securitytoolbox.appspot.com/securityAlgorithms#";
+      a voaf:Vocabulary,
+        owl:Ontology;
+      rdfs:comment " An ontology to describe various cryptographic algorithms";
+      owl:versionInfo 0.2;
+      status:term_status "Finished";
+      skos:historyNote "Ontology extracted from the paper Security Ontology for Annotating Resources. [Kim et al. 2005] (See APPENDIX D. OWL Representations of the NRL Security Ontology) Security ontology to faciliate web service description and discovery."@en.
+algo:AES algo:hasNSALevel <http://securitytoolbox.appspot.com/securityAssurance.owl#Type3>;
+         a algo:SymmetricAlgorithm.
+algo:Algorithm a owl:Class;
+               rdfs:subClassOf [owl:onProperty algo:isNISTStandard ; 
+                                owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                a owl:Restriction].
+algo:AsymmetricAlgorithm a owl:Class;
+                         rdfs:subClassOf algo:EncryptionAlgorithm.
+algo:Blowfish a algo:SymmetricAlgorithm.
+algo:CAST a algo:SymmetricAlgorithm.
+algo:CBC-MAC a algo:MACAlgorithm.
+algo:CRAYON algo:hasNSALevel <http://securitytoolbox.appspot.com/securityAssurance.owl#Typel>;
+            a algo:SymmetricAlgorithm.
+algo:CRC-16 a algo:ChecksumAlgorithm.
+algo:CRC-32 a algo:ChecksumAlgorithm.
+algo:CRC-8 a algo:ChecksumAlgorithm.
+algo:ChecksumAlgorithm a owl:Class;
+                       rdfs:subClassOf algo:Algorithm.
+algo:DES algo:hasNSALevel <http://securitytoolbox.appspot.com/securityAssurance.owl#Type3>;
+         algo:keyLength "64"^^xsd:int;
+         a algo:SymmetricAlgorithm;
+         rdfs:comment "Refers only to single DES".
+algo:DiffieHellman a algo:KeyExchangeAlgorithm.
+algo:ECC a algo:AsymmetricAlgorithm;
+         rdfs:comment "Elliptic Curve Crypto".
+algo:EncryptionAlgorithm a owl:Class;
+                         rdfs:subClassOf algo:Algorithm.
+algo:HMAC a algo:MACAlgorithm.
+algo:HashAlgorithm a owl:Class;
+                   rdfs:comment """
+Key dependent function; useful in providing user authentication without a
+secret key
+""";
+                   rdfs:subClassOf algo:SignatureAlgorithm.
+algo:KEA a algo:KeyExchangeAlgorithm.
+algo:KeyExchangeAlgorithm a owl:Class;
+                          rdfs:subClassOf algo:Algorithm.
+algo:MACAlgorithm a owl:Class;
+                  rdfs:subClassOf algo:SignatureAlgorithm.
+algo:MD4 a algo:HashAlgorithm.
+algo:MD5 a algo:HashAlgorithm.
+algo:Oakley a algo:KeyExchangeAlgorithm.
+algo:RC4 a algo:SymmetricAlgorithm.
+algo:RIPE-MD a algo:HashAlgorithm.
+algo:RSA a algo:AsymmetricAlgorithm.
+algo:SHA-1 a algo:HashAlgorithm.
+algo:SHA-256 a algo:HashAlgorithm;
+             rdfs:comment "usually used with AES".
+algo:SignatureAlgorithm a owl:Class;
+                        rdfs:subClassOf algo:Algorithm.
+algo:Skipjack algo:hasNSALevel <http://securitytoolbox.appspot.com/securityAssurance.owl#Type2>;
+              a algo:SymmetricAlgorithm.
+algo:SymmetricAlgorithm a owl:Class;
+                        rdfs:subClassOf [owl:onProperty <http://securitytoolbox.appspot.com/hasNSALevel> ; 
+                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                         a owl:Restriction],
+                                        algo:EncryptionAlgorithm.
+algo:TripleDES a algo:SymmetricAlgorithm.
+algo:hasNSALevel a owl:ObjectProperty;
+                 rdfs:comment "These can be Typel, Type 2, Type3, or Type4";
+                 rdfs:domain algo:SynmmetricAlgorithm;
+                 rdfs:range <http://securitytoolbox.appspot.com/securityAssurance.owl#NSA>.
+algo:isNISTStandard a owl:DatatypeProperty;
+                    rdfs:comment "NIST FIPS Standard";
+                    rdfs:domain algo:Algorithm;
+                    rdfs:range xsd:boolean.
+algo:keyLength a owl:DatatypeProperty;
+               rdfs:domain algo:SymmetricAlgorithm;
+               rdfs:range xsd:nonNegativeInteger.
+algo:modeOfOperation a owl:DatatypeProperty;
+                     rdfs:comment "Can be CBC, ECB, OFB, CFB, or Counter";
+                     rdfs:domain algo:SymmetricAlgorithm;
+                     rdfs:range xsd:string.
+<http://securitytoolbox.appspot.com/securityAssurance.owl#Type3> a algo:hasNSALevel.
+<mailto:gyrard@eurecom.fr> a foaf:Person;
+                           foaf:name "Amelie Gyrard".
+<mailto:kim@itd.nrl.navy.mil> a foaf:Person;
+                              foaf:name "Anya Kim".
+<mailto:luo@itd.nrl.navy.mil> a foaf:Person;
+                              foaf:name "Jim Luo".
+<mailto:mkang@itd.nrl.navy.mil> a foaf:Person;
+                                foaf:name "Myong Kang".
