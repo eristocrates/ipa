@@ -22,7 +22,9 @@ secret/
 .git/objects/pack/
 Application/Microsoft/Edge/data_dir/
 Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/*.nq
-C:/Repositories/eristocrates/ipa/Source-code/Host-environment/Common-Language-Runtime/FSharp/Project/MyProvider/packages/
+Source-code/Host-environment/Common-Language-Runtime/FSharp/Project/MyProvider/packages/
+Application/MMT/content/MMT/examples
+Source-code/Host-environment/Common-Language-Runtime/FSharp/Interactive/DoxAletheia/Vocabulary/http/www.w3.org/2000/10/swap/pim/contact/hash/con.ttl
     """
 
 let rootDirectory = @"C:\Repositories\eristocrates\ipa"
