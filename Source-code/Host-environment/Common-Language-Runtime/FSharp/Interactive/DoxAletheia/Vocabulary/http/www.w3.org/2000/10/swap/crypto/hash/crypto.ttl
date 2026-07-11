@@ -1,0 +1,68 @@
+@base <http://www.w3.org/2000/10/swap/crypto>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix : <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix s: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix crypto: <http://www.w3.org/2000/10/swap/crypto#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+
+crypto:CanEncrypt rdfs:comment "PublicKeyObjects which are capable of encrypting things";
+                  rdfs:isSubClassOf crypto:PublicKeyObject.
+crypto:CanSign rdfs:comment """PublicKeyObjects which are capable of signing things.
+True if the algorithm is capable of signing data; false otherwise. To
+test if a given key object can sign data, use CanSign and HasPrivate.""";
+               rdfs:isSubClassOf crypto:PublicKeyObject.
+crypto:HasPrivate rdfs:comment """
+Some keys have private parts, some don't.  This is the class of those which do.
+""";
+                  rdfs:isSubClassOf crypto:PublicKeyObject.
+crypto:HashFunction a rdfs:Class;
+                    rdfs:comment """
+The crypographic hash functions are (being functions) unique and are,
+when secure, assumed unambiguous (the whole point of being hash
+functions). That is, when you have the right hash, you have the right
+document. Currently (2001/9) only SHA is given that property.
+""";
+                    rdfs:label "Any crypographic hash function".
+crypto:PublicKeyObject a rdfs:Class;
+                       rdfs:comment """An object corresponding to a key for some algorithm.
+The object can hold a public and optionally a private key.""".
+crypto:md5 a rdf:Property,
+             owl:FunctionalProperty;
+           rdfs:comment "The object is a MD5 hash of the subject.";
+           rdfs:domain string:String;
+           rdfs:label "MD5 hash";
+           rdfs:range string:String.
+crypto:publicKey a rdfs:Property;
+                 rdfs:comment """The object is a public key object that doesn't
+    contain the private key data in the subject.
+    This function extracts the public part.""";
+                 rdfs:domain crypto:PublicKeyObject;
+                 rdfs:range crypto:PublicKeyObject.
+crypto:sha a rdf:Property,
+             owl:FunctionalProperty,
+             owl:InverseFunctionalProperty;
+           rdfs:comment "The object is a SHA-1 hash of the subject.";
+           rdfs:domain string:String;
+           rdfs:label "SHA hash";
+           rdfs:range string:String.
+crypto:sign a rdf:Property;
+            rdfs:comment """The subject should be a list of two things, a hash
+string and a key (containing private and public parts). The object is
+calculated as a signature string by signing the hash with the key's
+private part.""";
+            rdfs:label "sign".
+crypto:verify a rdf:Property;
+              rdfs:comment """If the subject is a key object containing private and
+public parts and the obejct is a list of a hash and a signature, then
+this is true if and only if the signature is a valid signature of the
+hash with the key.""".
+crypto:verifyBoolean a rdf:Property;
+                     rdfs:comment """If the subject is a list containg a keypair, a hash,
+and a signature, then the object is either \"1\" if the signature
+validates or \"0\" if it does not.""".

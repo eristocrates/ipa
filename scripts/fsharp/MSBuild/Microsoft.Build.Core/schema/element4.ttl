@@ -1,0 +1,18 @@
+@prefix Microsoft.Build.Core.xsd: <urn:Microsoft.Build.Core.xsd:> .
+@prefix xml.spec: <https://www.w3.org/TR/xml/#> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xs: <http://www.w3.org/2001/XMLSchema#/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix msb: <http://schemas.microsoft.com/developer/msbuild/2003/>.
+
+msb:Task a msb:TaskType.
+msb:TaskType rdfs:subClassOf xs:element.
+xs:element a owl:Class.
+Microsoft.Build.Core.xsd:schema xml.spec:dt-parentchild Microsoft.Build.Core.xsd:schema:element4.
+Microsoft.Build.Core.xsd:schema:element4 xml.spec:dt-attr Microsoft.Build.Core.xsd:schema:element4-name,
+                                                          Microsoft.Build.Core.xsd:schema:element4-type,
+                                                          Microsoft.Build.Core.xsd:schema:element4-abstract;
+                                         xml.spec:dt-stag "element".

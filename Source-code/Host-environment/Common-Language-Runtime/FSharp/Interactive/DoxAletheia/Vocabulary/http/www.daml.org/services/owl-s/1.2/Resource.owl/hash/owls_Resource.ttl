@@ -1,0 +1,53 @@
+@base <http://www.daml.org/services/owl-s/1.2/Resource.owl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix r: <http://www.daml.org/services/owl-s/1.2/Resource.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owls_Resource: <http://www.daml.org/services/owl-s/1.2/Resource.owl#>.
+
+r: a owl:Ontology;
+   rdfs:comment "Resource Ontology for OWL-S";
+   owl:versionInfo "no version number yet...".
+r:AggregateResource a owl:Class;
+                    rdfs:label "Aggregate Resource";
+                    rdfs:subClassOf r:Resource.
+r:AllocationType a owl:Class;
+                 rdfs:label "Allocation Type".
+r:AtomicResource a owl:Class;
+                 rdfs:label "Atomic Resource";
+                 rdfs:subClassOf r:Resource.
+r:BatchCapacityResource a owl:Class;
+                        rdfs:label "Batch-capacity Resource";
+                        rdfs:subClassOf r:AtomicResource.
+r:CapacityType a owl:Class;
+               rdfs:label "Capacity Type".
+r:ConjunctiveAggregateResource a owl:Class;
+                               rdfs:label "Conjunctive Aggregate Resource";
+                               rdfs:subClassOf r:AggregateResource.
+r:ConsumableAllocation a r:AllocationType.
+r:ContinuousCapacity a r:CapacityType.
+r:DiscreteCapacity a r:CapacityType.
+r:DisjunctiveAggregateResource a owl:Class;
+                               rdfs:label "Disjunctive Aggregate Resource";
+                               rdfs:subClassOf r:AggregateResource.
+r:Resource a owl:Class;
+           rdfs:label "Resource".
+r:ReusableAllocation a r:AllocationType.
+r:UnitCapacityResource a owl:Class;
+                       rdfs:label "Unit-capacity Resource";
+                       rdfs:subClassOf r:AtomicResource.
+r:allocationType a owl:ObjectProperty;
+                 rdfs:domain r:Resource;
+                 rdfs:label "allocation type";
+                 rdfs:range r:AllocationType.
+r:capacityGranularity a rdf:Property;
+                      rdfs:domain r:Resource;
+                      rdfs:label "capacity granularity".
+r:capacityType a owl:ObjectProperty;
+               rdfs:domain r:Resource;
+               rdfs:label "capacity type";
+               rdfs:range r:CapacityType.

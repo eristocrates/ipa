@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Text Extractor</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        #dropZone { 
+            border: 2px dashed #ccc; padding: 20px; text-align: center; 
+            margin: 20px 0; cursor: pointer; 
+        }
+        #dropZone.highlight { background-color: #f0f0f0; border-color: #666; }
+        #fileList { margin: 10px 0; }
+        .fileItem { padding: 5px; border-bottom: 1px solid #eee; }
+        .progress { height: 20px; background: #f0f0f0; margin: 5px 0; }
+        .progress-bar { height: 100%; background: #4CAF50; width: 0%; }
+        #results { margin-top: 20px; }
+        button { 
+            background: #4CAF50; color: white; border: none; 
+            padding: 10px 15px; cursor: pointer; 
+        }
+        button:disabled { background: #cccccc; }
+    </style>
+</head>
+<body>
+    <h1>PDF Text Extractor</h1>
+    <p>Select PDFs or drag them into the box below to extract text</p>
+    
+    <div id="dropZone">
+        <p>Drag & drop PDF files here or click to select</p>
+        <input type="file" id="fileInput" multiple accept=".pdf" style="display: none;">
+        <button id="selectFiles">Select PDF Files</button>
+    </div>
+    
+    <div id="fileList"></div>
+    <div id="progressContainer" style="display: none;">
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p id="status">Processing...</p>
+    </div>
+    
+    <div id="results"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script>
+        // Initialize PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 
+            'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+
+        // DOM elements
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const selectFilesBtn = document.getElementById('selectFiles');
+        const fileList = document.getElementById('fileList');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const status = document.getElementById('status');
+        const results = document.getElementById('results');
+
+        // Track files and their handles
+        let files = [];
+        let fileHandles = [];
+
+        // Event listeners
+        selectFilesBtn.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('highlight');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('highlight');
+        });
+
+        dropZone.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('highlight');
+            
+            if (e.dataTransfer.items) {
+                // Use DataTransferItemList interface
+                const items = [...e.dataTransfer.items]
+                    .filter(item => item.kind === 'file' && item.type === 'application/pdf');
+                
+                if (items.length > 0) {
+                    files = items.map(item => item.getAsFile());
+                    await displayFileList();
+                }
+            } else {
+                // Use DataTransfer interface
+                files = [...e.dataTransfer.files]
+                    .filter(file => file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf'));
+                
+                if (files.length > 0) {
+                    await displayFileList();
+                }
+            }
+        });
+
+        // Handle file selection
+        async function handleFileSelect(e) {
+            files = [...e.target.files];
+            await displayFileList();
+        }
+
+        // Display selected files
+        async function displayFileList() {
+            fileList.innerHTML = '';
+            
+            if (files.length === 0) {
+                fileList.innerHTML = '<p>No PDF files selected</p>';
+                return;
+            }
+            
+            fileList.innerHTML = `<p>Selected ${files.length} PDF file(s):</p>`;
+            
+            for (let i = 0; i < files.length; i++) {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'fileItem';
+                fileItem.textContent = `${i + 1}. ${files[i].name}`;
+                fileList.appendChild(fileItem);
+            }
+            
+            const processBtn = document.createElement('button');
+            processBtn.textContent = 'Extract Text from PDFs';
+            processBtn.addEventListener('click', processPDFs);
+            fileList.appendChild(processBtn);
+        }
+
+        // Main processing function
+        async function processPDFs() {
+            if (files.length === 0) {
+                results.innerHTML = '<p style="color:red">No files selected</p>';
+                return;
+            }
+            
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            status.textContent = 'Processing...';
+            results.innerHTML = '';
+            
+            try {
+                // Request directory handle permission
+                const dirHandle = await window.showDirectoryPicker({
+                    startIn: 'documents',
+                    id: 'pdfTextExtractor',
+                    mode: 'readwrite'
+                });
+                
+                let successCount = 0;
+                let failCount = 0;
+                
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    status.textContent = `Processing ${i + 1} of ${files.length}: ${file.name}`;
+                    progressBar.style.width = `${(i / files.length) * 100}%`;
+                    
+                    try {
+                        // Extract text from PDF
+                        const text = await extractTextFromPDF(file);
+                        
+                        // Save to same directory
+                        const outputFilename = file.name.replace(/\.pdf$/i, '.txt');
+                        const fileHandle = await dirHandle.getFileHandle(outputFilename, { create: true });
+                        const writable = await fileHandle.createWritable();
+                        await writable.write(text);
+                        await writable.close();
+                        
+                        successCount++;
+                        results.innerHTML += `<p>✅ Saved: ${outputFilename}</p>`;
+                    } catch (err) {
+                        failCount++;
+                        results.innerHTML += `<p style="color:red">❌ Failed ${file.name}: ${err.message}</p>`;
+                        console.error(`Error processing ${file.name}:`, err);
+                    }
+                }
+                
+                progressBar.style.width = '100%';
+                status.textContent = `Complete! ${successCount} succeeded, ${failCount} failed.`;
+                
+            } catch (err) {
+                progressContainer.style.display = 'none';
+                results.innerHTML = `<p style="color:red">Error: ${err.message}</p>`;
+                console.error('Processing error:', err);
+            }
+        }
+
+        // PDF text extraction function
+        async function extractTextFromPDF(file) {
+            return new Promise((resolve, reject) => {
+                const fileReader = new FileReader();
+                
+                fileReader.onload = async function(e) {
+                    try {
+                        const typedArray = new Uint8Array(e.target.result);
+                        const pdf = await pdfjsLib.getDocument(typedArray).promise;
+                        let text = '';
+                        
+                        for (let i = 1; i <= pdf.numPages; i++) {
+                            const page = await pdf.getPage(i);
+                            const content = await page.getTextContent();
+                            text += content.items.map(item => item.str).join(' ') + '\n';
+                        }
+                        
+                        // Clean up text
+                        text = text
+                            .replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, ' ')
+                            .replace(/[ \t]+/g, ' ')
+                            .replace(/ \n/g, '\n')
+                            .replace(/\n\n+/g, '\n\n')
+                            .trim();
+                        
+                        resolve(text);
+                    } catch (err) {
+                        reject(err);
+                    }
+                };
+                
+                fileReader.onerror = reject;
+                fileReader.readAsArrayBuffer(file);
+            });
+        }
+    </script>
+</body>
+</html>

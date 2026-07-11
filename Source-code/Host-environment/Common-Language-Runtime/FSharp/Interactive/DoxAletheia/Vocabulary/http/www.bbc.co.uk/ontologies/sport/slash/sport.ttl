@@ -1,0 +1,524 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bbccore: <http://www.bbc.co.uk/ontologies/coreconcepts/>.
+@prefix bbcprov: <http://www.bbc.co.uk/ontologies/provenance/>.
+@prefix sport: <http://www.bbc.co.uk/ontologies/sport/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix event: <http://purl.org/NET/c4dm/event.owl#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix particip: <http://purl.org/vocab/participation/schema#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+<http://www.bbc.co.uk/ontologies/sport> dc11:creator <http://www.linkedin.com/in/tfgrahame>,
+                                                     <http://uk.linkedin.com/pub/stuart-williams/8/684/351>,
+                                                     <http://www.blockslabpillar.com/>,
+                                                     <http://uk.linkedin.com/in/paulwilton>,
+                                                     <http://uk.linkedin.com/pub/jem-rayfield/27/b19/757>,
+                                                     <http://uk.linkedin.com/in/brianwmcbride>;
+                                        dcterms:license <http://creativecommons.org/licenses/by/4.0#id>;
+                                        bbcprov:canonicalLocation "https://repo.dev.bbc.co.uk/services/linked-data/ontologies/domain/sport/sport-2.13.ttl";
+                                        bbcprov:changeReason "Making sport:SportingOrganisation subClass core:Organisation. Refining some descriptions."@en-gb;
+                                        bbcprov:provided "2015-05-14T08:53:58+00:00"^^xsd:dateTime;
+                                        bbcprov:provider <mailto:tom.grahame@bbc.co.uk>;
+                                        bbcprov:public true;
+                                        bbcprov:slug "sport";
+                                        bbcprov:version "3.2";
+                                        a bbcprov:Ontology,
+                                          owl:Ontology;
+                                        rdfs:comment "The Sport Ontology is a simple lightweight ontology for publishing data about competitive sports events.";
+                                        rdfs:label "Sport Ontology";
+                                        owl:imports foaf:,
+                                                    <http://www.bbc.co.uk/ontologies/asset/>,
+                                                    <http://www.bbc.co.uk/ontologies/coreconcepts>,
+                                                    <http://www.bbc.co.uk/ontologies/provenance>,
+                                                    <http://purl.org/NET/c4dm/event.owl>;
+                                        owl:priorVersion sport:3.1;
+                                        owl:versionIRI sport:3.2;
+                                        owl:versionInfo "3.2".
+sport:CompetesForRole a owl:Class;
+                      rdfs:comment "Legacy class, used for associating an athlete with the national team they competed for during the Summer Olympics. Deprecated due to improper naming."@en-gb;
+                      rdfs:isDefinedBy sport:2.0;
+                      rdfs:label "CompetesForRole";
+                      owl:deprecated true.
+sport:Competition a owl:Class;
+                  rdfs:comment "A competitive sporting event that usually appears as an occurrence of a recurring competition, for example the recurring English Football Premier League has a seasonal competition occurrence during 2012/13"@en-gb;
+                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                  rdfs:label "Competition"@en-gb;
+                  rdfs:subClassOf event:Event.
+sport:CompetitionType a owl:Class;
+                      rdfs:comment "Enumerated competition types, for example: domestic, international."@en-gb;
+                      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                      rdfs:label "CompetitionType"@en-gb.
+sport:CompetitiveSportingGroup a owl:Class;
+                               rdfs:comment "The group of people that are available to compete in a particular competition. Two groups with the same members are not necessarily the same group."@en-gb;
+                               rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                               rdfs:label "CompetitiveSportingGroup"@en-gb;
+                               rdfs:subClassOf foaf:Group.
+sport:CompetitiveSportingOrganisation a owl:Class;
+                                      rdfs:comment "A sporting organisation that participates in competitive sporting events. For example Manchester United or Team GB at the Olympics."@en-gb;
+                                      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                                      rdfs:label "CompetitiveSportingOrganisation"@en-gb;
+                                      rdfs:subClassOf sport:SportingOrganisation.
+sport:CompetitiveSportingRole a owl:Class;
+                              rdfs:comment "General description of the participation of players, drivers, riders etc, in groups and organisations."@en-gb;
+                              rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                              rdfs:label "CompetitiveSportingRole"@en-gb;
+                              rdfs:subClassOf particip:Role.
+sport:DivisionalCompetition a owl:Class;
+                            rdfs:comment "A Divisional Competition is a competition that is divided into a number of competitions. London 2012 is an example of a Divisional Competition."@en-gb;
+                            rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                            rdfs:label "DivisionalCompetition"@en-gb;
+                            rdfs:subClassOf sport:Competition.
+sport:EventGender a owl:Class;
+                  rdfs:comment "Enumerated type, typically Male, Female or Mixed."@en-gb;
+                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                  rdfs:label "EventGender"@en-gb.
+sport:GoverningBody a owl:Class;
+                    rdfs:comment "The Governing Body for a sport, such as The Football Association."@en-gb;
+                    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                    rdfs:label "GoverningBody"@en-gb;
+                    rdfs:subClassOf sport:SportingOrganisation.
+sport:GroupCompetition a owl:Class;
+                       rdfs:comment "An organisation as a collection of leagues used to select the top N competitors from each league."@en-gb;
+                       rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                       rdfs:label "GroupCompetition"@en-gb;
+                       rdfs:subClassOf sport:MultiRoundCompetition.
+sport:Home a owl:Class;
+           rdfs:comment "The home ground, stadium or location of a Competitive Sporting Organisation."@en-gb;
+           rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+           rdfs:label "Home"@en-gb.
+sport:KnockoutCompetition a owl:Class;
+                          rdfs:comment "A competition or stage of competition that progresses through rounds of individual fixtures whereby one team is eliminated as a result of each fixture."@en-gb;
+                          rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                          rdfs:label "KnockoutCompetition"@en-gb;
+                          rdfs:subClassOf sport:MultiRoundCompetition.
+sport:LeagueCompetition a owl:Class;
+                        rdfs:comment "A League Competition is a hierarchy of competitions or competition within such a hierarchy."@en-gb;
+                        rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                        rdfs:label "LeagueCompetition"@en-gb;
+                        rdfs:subClassOf sport:MultiRoundCompetition.
+sport:Match a owl:Class;
+            rdfs:comment "The smallest unit of sporting competition."@en-gb;
+            rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+            rdfs:label "Match"@en-gb;
+            rdfs:subClassOf sport:UnitCompetition.
+sport:MedalCompetition a owl:Class;
+                       rdfs:comment "A competition that results in the awarding of a medal to the winner or runner up in that competition."@en-gb;
+                       rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                       rdfs:label "MedalCompetition"@en-gb;
+                       rdfs:subClassOf sport:Competition.
+sport:MultiDisciplineCompetition a owl:Class;
+                                 rdfs:comment "A competition that incorporates a number of different sports, such as the Olympics."@en-gb;
+                                 rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                                 rdfs:label "MultiDisciplineCompetition"@en-gb;
+                                 rdfs:subClassOf sport:Competition.
+sport:MultiDisciplineRecurringCompetition a owl:Class;
+                                          rdfs:comment "A recurring sports competition the covers many sports, such as the Summer Olympics."@en-gb;
+                                          rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                                          rdfs:label "MultiDisciplineRecurringCompetition"@en-gb.
+sport:MultiRoundCompetition a owl:Class;
+                            rdfs:comment "A Competition organised as a sequence of rounds, for example the Premier League or group stage of the World Cup."@en-gb;
+                            rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                            rdfs:label "MultiRoundCompetition"@en-gb;
+                            rdfs:subClassOf sport:Competition.
+sport:MultiStageCompetition a owl:Class;
+                            rdfs:comment "A Multi-stage Competition is a competition that is organised as a set of stages. An example is the Football World Cup."@en-gb;
+                            rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                            rdfs:label "MultiStageCompetition"@en-gb;
+                            rdfs:subClassOf sport:Competition.
+sport:Person a owl:Class;
+             rdfs:comment "An athlete or other person with typically a participating role in a CompetitiveSportingOrganisation."@en-gb;
+             rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+             rdfs:label "Person"@en-gb;
+             rdfs:subClassOf bbccore:Person,
+                             foaf:Person.
+sport:RecurringCompetition a owl:Class;
+                           rdfs:comment "A recurring sports competition such as the Rugby Super League."@en-gb;
+                           rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                           rdfs:label "RecurringCompetition"@en-gb.
+sport:Round a owl:Class;
+            rdfs:comment "A round is one or more competitions that is part of a Multi-Round Competition. Examples include the first round of Wimbledon and the final round of the FA Cup."@en-gb;
+            rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+            rdfs:label "Round"@en-gb;
+            rdfs:subClassOf sport:Competition.
+sport:RoundType a owl:Class;
+                rdfs:comment "Enumerated round types, for example: preliminary, qualifying or final."@en-gb;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "RoundType"@en-gb.
+sport:Session a owl:Class;
+              rdfs:comment "A sub-division of a competition, that must be broken up due to the duration of that competition, occurring for example in snooker or cricket."@en-gb;
+              rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+              rdfs:label "Session"@en-gb;
+              rdfs:subClassOf sport:Competition.
+sport:SportingOrganisation a owl:Class;
+                           rdfs:comment "An organisation involved in Sport, for example a Football team or the UK Government Department for Culture, Media and Sport."@en-gb;
+                           rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                           rdfs:label "SportingOrganisation"@en-gb;
+                           rdfs:subClassOf bbccore:Organisation,
+                                           foaf:Organization.
+sport:SportsDiscipline a owl:Class;
+                       rdfs:comment "The type of discipline a sporting event involves."@en-gb;
+                       rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                       rdfs:label "SportsDiscipline"@en-gb.
+sport:UnitCompetition a owl:Class;
+                      rdfs:comment "A unit competition is the unit of competition defined by a competition discipline rules. Examples include a 100m race or Football match."@en-gb;
+                      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                      rdfs:label "UnitCompetition"@en-gb;
+                      rdfs:subClassOf sport:Competition.
+sport:Venue a owl:Class;
+            rdfs:comment "The location of a sporting event. May be a stadium, track, lake etc."@en-gb;
+            rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+            rdfs:label "Venue"@en-gb.
+sport:awayCompetitor a owl:ObjectProperty;
+                     rdfs:comment "Relates a match to one competitor, by definition or designation not the home competitor."@en-gb;
+                     rdfs:domain sport:Match;
+                     rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                     rdfs:label "awayCompetitor"@en-gb;
+                     rdfs:range foaf:Agent.
+sport:competesIn a owl:ObjectProperty;
+                 rdfs:comment "Relates a competitor, team or other agent to a competition."@en-gb;
+                 rdfs:domain foaf:Agent;
+                 rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                 rdfs:label "competesIn"@en-gb;
+                 rdfs:range sport:Competition;
+                 rdfs:subPropertyOf event:agent_in.
+sport:competitionType a owl:ObjectProperty;
+                      rdfs:comment "Relates something, typically a competition, to an enumerated competition type."@en-gb;
+                      rdfs:domain sport:Competition;
+                      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                      rdfs:label "competitionType"@en-gb;
+                      rdfs:range sport:CompetitionType.
+sport:dateOfBirth a owl:DatatypeProperty,
+                    owl:AnnotationProperty;
+                  rdfs:comment "Implemented because foaf has no notion of date of birth. Deprecated in favour of core:dateOfBirth."@en-gb;
+                  rdfs:domain sport:Person;
+                  rdfs:isDefinedBy sport:2.11;
+                  rdfs:label "dateOfBirth"@en-gb;
+                  rdfs:range xsd:date;
+                  owl:deprecated true.
+sport:discipline a owl:ObjectProperty;
+                 rdfs:comment "Relates something to a sporting discipline, for example a person to athletics."@en-gb;
+                 rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                 rdfs:label "discipline"@en-gb;
+                 rdfs:range sport:SportsDiscipline.
+sport:division a rdf:Property;
+               rdfs:comment "Division relates a DivisionalCompetition to a competition which is a division of that DivisionalCompetition. Used for the olympics";
+               rdfs:domain sport:DivisionalCompetition;
+               rdfs:isDefinedBy sport:2.0;
+               rdfs:range sport:Competition;
+               rdfs:seeAlso sport:hasDivisionList;
+               owl:deprecated true.
+sport:eventGender a owl:ObjectProperty;
+                  rdfs:comment "Relates a competition to a gender class instance."@en-gb;
+                  rdfs:domain sport:Competition;
+                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                  rdfs:label "eventGender"@en-gb;
+                  rdfs:range sport:EventGender.
+sport:firstRound a owl:ObjectProperty;
+                 rdfs:comment "Relates a multi-round competition to the first round in that competition."@en-gb;
+                 rdfs:domain sport:MultiRoundCompetition;
+                 rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                 rdfs:label "firstRound"@en-gb;
+                 rdfs:range sport:Round;
+                 rdfs:subPropertyOf sport:hasRound.
+sport:firstSession a owl:ObjectProperty;
+                   rdfs:comment "Relates a competition to the first session of a series of sessions."@en-gb;
+                   rdfs:domain sport:Competition;
+                   rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                   rdfs:label "firstSession"@en-gb;
+                   rdfs:range sport:Session;
+                   rdfs:subPropertyOf sport:hasSession.
+sport:firstStage a owl:ObjectProperty;
+                 rdfs:comment "Relates a multi-stage competition to its first stage in that competition."@en-gb;
+                 rdfs:domain sport:MultiStageCompetition;
+                 rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                 rdfs:label "firstStage"@en-gb;
+                 rdfs:range sport:Competition;
+                 rdfs:subPropertyOf sport:hasStage.
+sport:firstUnitCompetition a owl:ObjectProperty;
+                           rdfs:comment "Relates a competition to its first unit competition."@en-gb;
+                           rdfs:domain sport:Competition;
+                           rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                           rdfs:label "firstUnitCompetition"@en-gb;
+                           rdfs:range sport:UnitCompetition;
+                           rdfs:subPropertyOf sport:hasUnitCompetition.
+sport:flagImage a owl:ObjectProperty;
+                rdfs:comment "Legacy property used to associate a team with the country flag it represented during the olympics";
+                rdfs:domain sport:CompetitiveSportingGroup;
+                rdfs:isDefinedBy sport:2.0;
+                rdfs:range <http://www.bbc.co.uk/ontologies/asset/FlagImage>;
+                owl:deprecated true.
+sport:hasCompetedFor a owl:ObjectProperty;
+                     rdfs:comment "Associates an agent with sporting organisations non-temporally."@en-gb;
+                     rdfs:domain foaf:Agent;
+                     rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                     rdfs:label "hasCompetedFor"@en-gb;
+                     rdfs:range sport:SportingOrganisation.
+sport:hasCompetitor a owl:ObjectProperty;
+                    rdfs:comment "Relates a competition to a competitor in that competition."@en-gb;
+                    rdfs:domain sport:Competition;
+                    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                    rdfs:label "hasCompetitor"@en-gb;
+                    rdfs:range foaf:Agent.
+sport:hasDivision a owl:ObjectProperty;
+                  rdfs:comment "Relates a divisional competition to a division in that competition."@en-gb;
+                  rdfs:domain sport:DivisionalCompetition;
+                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                  rdfs:label "hasDivision"@en-gb;
+                  rdfs:range sport:Competition.
+sport:hasGroup a owl:ObjectProperty;
+               rdfs:comment "Relates a league competition to a corresponding group competition."@en-gb;
+               rdfs:domain sport:LeagueCompetition;
+               rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+               rdfs:label "hasGroup"@en-gb;
+               rdfs:range sport:GroupCompetition;
+               owl:inverseOf sport:isGroupOf.
+sport:hasHome a owl:ObjectProperty;
+              rdfs:comment "Relates a Competitive Sporting Organisation to its home ground, stadium or location."@en-gb;
+              rdfs:domain sport:CompetitiveSportingOrganisation;
+              rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+              rdfs:label "hasHome"@en-gb;
+              rdfs:range sport:Home.
+sport:hasMatch a owl:ObjectProperty;
+               rdfs:comment "Relates a round to a match."@en-gb;
+               rdfs:domain sport:Round;
+               rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+               rdfs:label "hasMatch"@en-gb;
+               rdfs:range sport:Match;
+               rdfs:subPropertyOf sport:hasUnitCompetition.
+sport:hasRound a owl:ObjectProperty;
+               rdfs:comment "Relates a multi-round competition to a round in that competition."@en-gb;
+               rdfs:domain sport:MultiRoundCompetition;
+               rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+               rdfs:label "hasRound"@en-gb;
+               rdfs:range sport:Round.
+sport:hasSession a owl:ObjectProperty;
+                 rdfs:comment "Relates a competition to a session within that competition."@en-gb;
+                 rdfs:domain sport:Competition;
+                 rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                 rdfs:label "hasSession"@en-gb;
+                 rdfs:range sport:Session.
+sport:hasStage a owl:ObjectProperty;
+               rdfs:comment "Relates a multi-stage competition to a stage that it contains."@en-gb;
+               rdfs:domain sport:MultiStageCompetition;
+               rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+               rdfs:label "hasStage"@en-gb;
+               rdfs:range sport:Competition.
+sport:hasUnitCompetition a owl:ObjectProperty;
+                         rdfs:comment "Relates a round to a unit competition in that round."@en-gb;
+                         rdfs:domain sport:Round;
+                         rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                         rdfs:label "hasUnitCompetition"@en-gb;
+                         rdfs:range sport:UnitCompetition.
+sport:homeCompetitor a owl:ObjectProperty;
+                     rdfs:comment "Relates a match to one competitor, by definition or designation not the away competitor."@en-gb;
+                     rdfs:domain sport:Match;
+                     rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                     rdfs:label "homeCompetitor"@en-gb;
+                     rdfs:range foaf:Agent;
+                     rdfs:subPropertyOf sport:hasCompetitor.
+sport:isCompetitiveSportingOrganisationOf a owl:ObjectProperty;
+                                          rdfs:comment "Relates a competitive sporting group to a competitive sporting organisation."@en-gb;
+                                          rdfs:domain sport:CompetitiveSportingOrganisation;
+                                          rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                                          rdfs:label "isCompetitiveSportingOrganisationOf"@en-gb;
+                                          rdfs:range sport:CompetitiveSportingGroup.
+sport:isGroupOf a owl:ObjectProperty;
+                rdfs:comment "Relates a group competition to its corresponding League competition."@en-gb;
+                rdfs:domain sport:GroupCompetition;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "isGroupOf"@en-gb;
+                rdfs:range sport:LeagueCompetition.
+sport:isMatchOf a owl:ObjectProperty;
+                rdfs:comment "Relates a match to a round."@en-gb;
+                rdfs:domain sport:Match;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "isMatchOf"@en-gb;
+                rdfs:range sport:Round;
+                owl:inverseOf sport:hasMatch.
+sport:isRoundOf a owl:ObjectProperty;
+                rdfs:comment "Relates a round to its corresponding multi-round competition."@en-gb;
+                rdfs:domain sport:Round;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "isRoundOf"@en-gb;
+                rdfs:range sport:MultiRoundCompetition;
+                owl:inverseOf sport:hasRound.
+sport:isSessionOf a owl:ObjectProperty;
+                  rdfs:comment "Relates a session to a competition."@en-gb;
+                  rdfs:domain sport:Session;
+                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                  rdfs:label "isSessionOf"@en-gb;
+                  rdfs:range sport:Competition;
+                  owl:inverseOf sport:hasSession.
+sport:isStageOf a owl:ObjectProperty;
+                rdfs:comment "Relates a stage to a multi-stage competition."@en-gb;
+                rdfs:domain sport:Competition;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "isStageOf"@en-gb;
+                rdfs:range sport:MultiStageCompetition;
+                owl:inverseOf sport:hasStage.
+sport:lastRound a owl:ObjectProperty;
+                rdfs:comment "Relates a multi-round competition to the last round in that competition."@en-gb;
+                rdfs:domain sport:MultiRoundCompetition;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "lastRound"@en-gb;
+                rdfs:range sport:Round;
+                rdfs:subPropertyOf sport:hasRound.
+sport:lastSession a owl:ObjectProperty;
+                  rdfs:comment "Relates a competition to the last session of a series of sessions."@en-gb;
+                  rdfs:domain sport:Competition;
+                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                  rdfs:label "lastSession"@en-gb;
+                  rdfs:range sport:Session;
+                  rdfs:subPropertyOf sport:hasSession.
+sport:lastStage a owl:ObjectProperty;
+                rdfs:comment "Relates a stage in a multi-stage competition to its last stage."@en-gb;
+                rdfs:domain sport:MultiStageCompetition;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "lastStage"@en-gb;
+                rdfs:range sport:Competition;
+                rdfs:subPropertyOf sport:hasStage.
+sport:lastUnitCompetition a owl:ObjectProperty;
+                          rdfs:comment "Relates a competition to its last unit competition."@en-gb;
+                          rdfs:domain sport:Competition;
+                          rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                          rdfs:label "lastUnitCompetition"@en-gb;
+                          rdfs:range sport:UnitCompetition;
+                          rdfs:subPropertyOf sport:hasUnitCompetition.
+sport:nextRound a owl:ObjectProperty;
+                rdfs:comment "Relates a round in a multi-round competition to its next round."@en-gb;
+                rdfs:domain sport:Round;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "nextRound"@en-gb;
+                rdfs:range sport:Round.
+sport:nextSession a owl:ObjectProperty;
+                  rdfs:comment "Relates a session to its next session."@en-gb;
+                  rdfs:domain sport:Session;
+                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                  rdfs:label "nextSession"@en-gb;
+                  rdfs:range sport:Session.
+sport:nextStage a owl:ObjectProperty;
+                rdfs:comment "Relates a stage in a multi-stage competition to its next stage."@en-gb;
+                rdfs:domain sport:Competition;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "nextStage"@en-gb;
+                rdfs:range sport:Competition.
+sport:nextUnitCompetition a owl:ObjectProperty;
+                          rdfs:comment "Relates a unit competition to its next unit competition."@en-gb;
+                          rdfs:domain sport:UnitCompetition;
+                          rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                          rdfs:label "nextUnitCompetition"@en-gb;
+                          rdfs:range sport:UnitCompetition.
+sport:prevRound a owl:ObjectProperty;
+                rdfs:comment "Relates a round in a multi-round competition to its previous round."@en-gb;
+                rdfs:domain sport:Round;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "prevRound"@en-gb;
+                rdfs:range sport:Round.
+sport:prevSession a owl:ObjectProperty;
+                  rdfs:comment "Relates a session to its previous session."@en-gb;
+                  rdfs:domain sport:Session;
+                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                  rdfs:label "prevSession"@en-gb;
+                  rdfs:range sport:Session.
+sport:prevStage a owl:ObjectProperty;
+                rdfs:comment "Relates a stage in a multi-stage competition to its previous stage."@en-gb;
+                rdfs:domain sport:Competition;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "prevStage"@en-gb;
+                rdfs:range sport:Competition.
+sport:prevUnitCompetition a owl:ObjectProperty;
+                          rdfs:comment "Relates a multi-round competition to its previous unit competition."@en-gb;
+                          rdfs:domain sport:UnitCompetition;
+                          rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                          rdfs:label "prevUnitCompetition"@en-gb;
+                          rdfs:range sport:UnitCompetition.
+sport:promotesTo a owl:ObjectProperty;
+                 rdfs:comment "Relates a competition to the next competition in a heirarchy that teams are promoted to. For example the nPower Championship promotes to the Premier League."@en-gb;
+                 rdfs:domain sport:Competition;
+                 rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                 rdfs:label "promotesTo"@en-gb;
+                 rdfs:range sport:Competition;
+                 owl:inverseOf sport:relegatesTo.
+sport:recurringCompetition a owl:ObjectProperty;
+                           rdfs:comment "Relates a competition to the recurring instance of that competition, for example the 2012/13 Premier League to the Premier League."@en-gb;
+                           rdfs:domain sport:Competition;
+                           rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                           rdfs:label "recurringCompetition"@en-gb;
+                           rdfs:range sport:RecurringCompetition.
+sport:relegatesTo a owl:ObjectProperty;
+                  rdfs:comment "Relates a competition to the previous competition in a heirarchy that teams are relegated to. For example the  Premier League relegates to the nPower Championship."@en-gb;
+                  rdfs:domain sport:Competition;
+                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                  rdfs:label "relegatesTo"@en-gb;
+                  rdfs:range sport:Competition;
+                  owl:inverseOf sport:promotesTo.
+sport:roundNumber a owl:DatatypeProperty;
+                  rdfs:comment "Indicates the sequential number of a round."@en-gb;
+                  rdfs:domain sport:Round;
+                  rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                  rdfs:label "roundNumber"@en-gb;
+                  rdfs:range xsd:int.
+sport:roundType a owl:ObjectProperty;
+                rdfs:comment "Relates a round to an enumerated round type."@en-gb;
+                rdfs:domain sport:Round;
+                rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                rdfs:label "roundType"@en-gb;
+                rdfs:range sport:RoundType.
+sport:subDiscipline a owl:ObjectProperty;
+                    rdfs:comment "Relates a discipline with a child discipline, for example gymnastics with rhythmic gymnastics."@en-gb;
+                    rdfs:domain sport:SportsDiscipline;
+                    rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                    rdfs:label "subDiscipline"@en-gb;
+                    rdfs:range sport:SportsDiscipline.
+sport:subDisciplineOf a owl:ObjectProperty,
+                        owl:TransitiveProperty;
+                      rdfs:comment "Relates a discipline with a parent discipline, for example rhythmic gymnastics with gymnastics."@en-gb;
+                      rdfs:domain sport:SportsDiscipline;
+                      rdfs:isDefinedBy <http://www.bbc.co.uk/ontologies/sport>;
+                      rdfs:label "subDisciplineOf"@en-gb;
+                      rdfs:range sport:SportsDiscipline.
+<http://www.bbc.co.uk/things/competition-types/club-cup> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/club-groupcup> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/club-groupcup-womens> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/club-league> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/domestic> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/domestic-cup> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/domestic-cup-womens> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/domestic-groupcup> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/domestic-groupcup-womens> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/domestic-league> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/domestic-league-womens> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/european-cup> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/european-groupcup> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/european-groupcup-womens> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/international> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/international-cup> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/international-cup-womens> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/international-group> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/international-group-womens> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/international-groupcup> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/competition-types/international-groupcup-womens> a sport:CompetitionType.
+<http://www.bbc.co.uk/things/event-gender/mens> a sport:EventGender.
+<http://www.bbc.co.uk/things/event-gender/mixed> a sport:EventGender.
+<http://www.bbc.co.uk/things/event-gender/womens> a sport:EventGender.
+<http://www.bbc.co.uk/things/round-types/final> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/final-qualifying> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/group> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/home-and-home> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/hosted> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/play-off> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/practice> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/qualifying> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/quarter-final> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/race> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/round-of-16> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/round-of-32> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/semi-final> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/single> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/single-elimination> a sport:RoundType.
+<http://www.bbc.co.uk/things/round-types/single-group> a sport:RoundType.

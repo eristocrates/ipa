@@ -1,0 +1,66 @@
+@base <http://www.daml.org/services/owl-s/1.2/ActorDefault.owl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix profile: <http://www.daml.org/services/owl-s/1.2/Profile.owl#>.
+@prefix : <http://www.daml.org/services/owl-s/1.2/ActorDefault.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owls_Profile: <http://www.daml.org/services/owl-s/1.2/Profile.owl#>.
+@prefix owls_ActorDefault: <http://www.daml.org/services/owl-s/1.2/ActorDefault.owl#>.
+
+<http://www.daml.org/services/owl-s/1.2/ActorDefault.owl> a owl:Ontology;
+                                                          rdfs:comment """
+      Actor Default Properties
+
+      These were originally defined in previous versions of the DAML-S Profile,
+      and provided a mechanism of declaring actors that were responsible for
+      some given role within a service.
+      
+      -- These properties have now been removed from the DAML-S 0.9 Profile, and defined separately. --
+      
+      The abstraction of these parameters from the Profile ontology facilitates
+      the usage of other ontologies for defining individual parameters, such
+      as the foaf or vCard ontologies.
+
+      See the discussion accompanying the DAML-S 0.9 release for further details.
+
+      Created by Terry Payne (terryp@cs.cmu.edu).
+    """;
+                                                          rdfs:seeAlso <http://www.daml.org/services>;
+                                                          owl:imports <http://www.daml.org/services/owl-s/1.2/Profile.owl>;
+                                                          owl:versionInfo """
+      $Id: ActorDefault.owl,v 1.8 2004/11/28 16:29:55 martin Exp $
+    """.
+:Actor a owl:Class;
+       rdfs:comment """
+      Actor represents a Requester or Provider who might request or offer a service.
+      The original Actor definition was provided within DAML-S V0.5, V0.6 and V0.7
+    """;
+       rdfs:label "DefaultActor";
+       rdfs:subClassOf owl:Thing.
+:email a owl:DatatypeProperty;
+       rdfs:domain :Actor;
+       rdfs:range xsd:string.
+:fax a owl:DatatypeProperty;
+     rdfs:domain :Actor;
+     rdfs:range xsd:string.
+:name a owl:DatatypeProperty;
+      rdfs:domain :Actor;
+      rdfs:range xsd:string.
+:phone a owl:DatatypeProperty;
+       rdfs:domain :Actor;
+       rdfs:range xsd:string.
+:physicalAddress a owl:DatatypeProperty;
+                 rdfs:domain :Actor;
+                 rdfs:range xsd:string.
+:title a owl:DatatypeProperty;
+       rdfs:domain :Actor;
+       rdfs:range xsd:string.
+:webURL a owl:DatatypeProperty;
+        rdfs:domain :Actor;
+        rdfs:range xsd:string.
+profile:contactInformation a owl:ObjectProperty;
+                           rdfs:range :Actor.

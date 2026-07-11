@@ -1,0 +1,14 @@
+@prefix Microsoft.Build.Core.xsd: <urn:Microsoft.Build.Core.xsd:> .
+@prefix loc.premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix xml.spec: <https://www.w3.org/TR/xml/#> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cidocrm: <http://www.cidoc-crm.org/cidoc-crm/>.
+@prefix xs: <http://www.w3.org/2001/XMLSchema#/>.
+
+Microsoft.Build.Core.xsd: a cidocrm:E73_Information_Object,
+                            loc.premis:File;
+                          xml.spec:dt-parentchild Microsoft.Build.Core.xsd:schema.
+Microsoft.Build.Core.xsd:schema a xs:schema.

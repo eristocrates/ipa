@@ -257,6 +257,7 @@ module Nonterminal =
                                   """ 
 
         }
+
     let text = 
         {
 
@@ -444,7 +445,16 @@ let test_string = """<digit> | <expression> "+" <digit>"""
 Nonterminal.list_.code_square_parser test_string.as_parser_input
 
 
-let test_output = Nonterminal.list_.code_square_parser test_string.as_parser_input |> happy_sad_result Result.Ok.with_some_output Result.with_none
+let test_output = 
+    Nonterminal.list_.code_square_parser test_string.as_parser_input
+    |> happy_sad_result Result.Ok.with_some_output Result.with_none
+    |> Option.map (fun code_square -> Strings.from_code_square code_square)
+
+
+
+Nonterminal.list_.code_square_parser test_string.as_parser_input
+|> happy_sad_result Result.Ok.with_some_output Result.with_none
+|> Option.map (fun code_square -> Strings.from_code_square code_square)
 
 
 

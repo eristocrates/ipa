@@ -1,0 +1,137 @@
+{
+  "data": {
+    "parody": false,
+    "verified_type": "none",
+    "receives_your_dm": true,
+    "created_at": "2023-05-18T03:07:43.000Z",
+    "verified": false,
+    "id": "1659032919262871553",
+    "most_recent_tweet_id": "2035156464486981873",
+    "name": "my name is Specter",
+    "is_identity_verified": false,
+    "description": "im 21 priv: @neutrelmilk",
+    "subscription_type": "None",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/1659032919262871553/1746490902",
+    "public_metrics": {
+      "followers_count": 9128,
+      "following_count": 681,
+      "tweet_count": 7456,
+      "listed_count": 18,
+      "like_count": 33916,
+      "media_count": 1333
+    },
+    "profile_image_url": "https://pbs.twimg.com/profile_images/1794963715613175808/rfma0CZZ_normal.jpg",
+    "entities": {
+      "description": {
+        "mentions": [
+          {
+            "start": 12,
+            "end": 24,
+            "username": "neutrelmilk"
+          }
+        ]
+      }
+    },
+    "protected": false,
+    "subscription": {
+      "subscribes_to_you": false
+    },
+    "username": "S0L0SIS",
+    "location": "DNI proships/zoos"
+  },
+  "includes": {
+    "tweets": [
+      {
+        "public_metrics": {
+          "retweet_count": 135,
+          "reply_count": 0,
+          "like_count": 0,
+          "quote_count": 0,
+          "bookmark_count": 0,
+          "impression_count": 0
+        },
+        "edit_history_tweet_ids": [
+          "2035156464486981873"
+        ],
+        "media_metadata": [
+          {
+            "media_key": "3_2035145068152258560"
+          },
+          {
+            "media_key": "3_2035145067996811264"
+          }
+        ],
+        "edit_controls": {
+          "edits_remaining": 5,
+          "is_edit_eligible": false,
+          "editable_until": "2026-03-21T01:48:07.000Z"
+        },
+        "referenced_tweets": [
+          {
+            "type": "retweeted",
+            "id": "2035145072656764947"
+          }
+        ],
+        "lang": "en",
+        "author_id": "1659032919262871553",
+        "entities": {
+          "urls": [
+            {
+              "start": 64,
+              "end": 87,
+              "url": "https://t.co/xK2LbbALmm",
+              "expanded_url": "https://x.com/machinewash666/status/2035145072656764947/photo/1",
+              "display_url": "pic.x.com/xK2LbbALmm",
+              "media_key": "3_2035145068152258560"
+            },
+            {
+              "start": 64,
+              "end": 87,
+              "url": "https://t.co/xK2LbbALmm",
+              "expanded_url": "https://x.com/machinewash666/status/2035145072656764947/photo/1",
+              "display_url": "pic.x.com/xK2LbbALmm",
+              "media_key": "3_2035145067996811264"
+            }
+          ],
+          "mentions": [
+            {
+              "start": 3,
+              "end": 18,
+              "username": "machinewash666",
+              "id": "1133138086169317376"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 40,
+              "end": 44,
+              "probability": 0.5942,
+              "type": "Person",
+              "normalized_text": "luigi"
+            }
+          ]
+        },
+        "conversation_id": "2035156464486981873",
+        "display_text_range": [
+          0,
+          87
+        ],
+        "id": "2035156464486981873",
+        "possibly_sensitive": false,
+        "attachments": {
+          "media_source_tweet_id": [
+            "2035145072656764947",
+            "2035145072656764947"
+          ],
+          "media_keys": [
+            "3_2035145068152258560",
+            "3_2035145067996811264"
+          ]
+        },
+        "reply_settings": "everyone",
+        "created_at": "2026-03-21T00:48:07.000Z",
+        "text": "RT @machinewash666: “It’s not working” -luigi behind the camera https://t.co/xK2LbbALmm"
+      }
+    ]
+  }
+}

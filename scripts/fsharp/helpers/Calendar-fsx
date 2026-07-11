@@ -1,0 +1,34 @@
+#if INTERACTIVE
+#r "nuget: Iride"
+#load "../ResourceDescriptionFramework.fsx"
+#load "PrefixDecl.fsx"
+#load "Writers.fsx"
+
+open ResourceDescriptionFramework
+open PrefixDecl
+open Writers
+#endif
+
+open Iride
+open Iride.Extensions
+open System
+open System.IO
+open System.Threading
+open System.Globalization
+
+Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US")
+
+Rdf.Statement Rdf.defaultGraph colon "this" rdf "type" colon "example"
+Rdf.Statement Rdf.defaultGraph dbug "this" rdf "type" dbug "example"
+let rootFolder = Directory.GetCurrentDirectory()
+
+let RdfArtifactDirectory =
+    Path.Combine(rootFolder, "artifacts", "ResourceDescriptionFramework")
+
+let datasetName = "calendar"
+let datasetDir = Path.Combine(RdfArtifactDirectory, datasetName, "datasets")
+
+
+let outPath = Path.Combine(__SOURCE_DIRECTORY__, "test.ttl")
+
+writeTtlToFile outPath Rdf.defaultGraph

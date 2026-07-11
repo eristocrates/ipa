@@ -1,0 +1,24 @@
+#if INTERACTIVE
+#r "nuget: Iride"
+#load "../ResourceDescriptionFramework.fsx"
+
+open ResourceDescriptionFramework
+#endif
+
+open Iride
+open Iride.Extensions
+open System
+open System.IO
+
+let colon: Rdf.prefixID =
+    { label = ""
+      reference = Rdf.IRIREF(VDS.RDF.UriFactory.Create "urn:adhoc#") }
+
+let rdf: Rdf.prefixID =
+    { label = "rdf"
+      reference = Rdf.IRIREF(VDS.RDF.UriFactory.Create "http://www.w3.org/1999/02/22-rdf-syntax-ns#") }
+
+
+let dbug: Rdf.prefixID =
+    { label = "dbug"
+      reference = Rdf.IRIREF(VDS.RDF.UriFactory.Create "urn:adhoc:dbug#") }

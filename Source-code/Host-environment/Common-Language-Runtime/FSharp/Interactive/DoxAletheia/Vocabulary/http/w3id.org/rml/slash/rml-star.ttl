@@ -1,0 +1,67 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix vaem: <http://www.linkedmodel.org/schema/vaem#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix rml-fnml: <http://w3id.org/rml/>.
+
+ccrel:license a owl:AnnotationProperty.
+dcterms:contributor a owl:AnnotationProperty.
+dcterms:created a owl:AnnotationProperty.
+dcterms:creator a owl:AnnotationProperty.
+dcterms:description a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+dcterms:publisher a owl:AnnotationProperty.
+dcterms:title a owl:AnnotationProperty.
+bibo:status a owl:AnnotationProperty.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+rml-fnml:AssertedTriplesMap a owl:Class;
+                            rdfs:comment "A type of Triples Map that is quoted and asserted in the resulting graph."@en;
+                            rdfs:isDefinedBy <http://w3id.org/rml/star/>;
+                            rdfs:label "Asserted Triples Map";
+                            rdfs:subClassOf rml-fnml:TriplesMap.
+rml-fnml:NonAssertedTriplesMap a owl:Class;
+                               rdfs:comment "A type of Triples Map that is quoted but not asserted in the resulting graph"@en;
+                               rdfs:isDefinedBy <http://w3id.org/rml/star/>;
+                               rdfs:label "Non Asserted Triples Map";
+                               rdfs:subClassOf rml-fnml:TriplesMap.
+rml-fnml:StarMap a owl:Class;
+                 rdfs:comment "Represents a star map able to generate RDF-star triples."@eb;
+                 rdfs:isDefinedBy <http://w3id.org/rml/star/>;
+                 rdfs:label "Star Map".
+rml-fnml:TriplesMap a owl:Class.
+rml-fnml:quotedTriplesMap a owl:ObjectProperty;
+                          rdfs:comment "An quoted TriplesMap element to generate a RDF-star triple as subject or object or another triple from a logical source record."@en;
+                          rdfs:domain rml-fnml:StarMap;
+                          rdfs:isDefinedBy <http://w3id.org/rml/star/>;
+                          rdfs:label "quoted triples map";
+                          rdfs:range [owl:unionOf (rml-fnml:AssertedTriplesMap
+                                                   rml-fnml:NonAssertedTriplesMap) ; 
+                                      a owl:Class].
+<http://w3id.org/rml/star/> dcterms:contributor "Ana Iglesias Molina",
+                                                "Julián Arenas Guerrero",
+                                                "David Chaves Fraga",
+                                                "Anastasia Dimou";
+                            dcterms:created "2023-03-14";
+                            dcterms:description "RML module for generating RDF-star graphs"@en;
+                            dcterms:license <http://purl.org/NET/rdflicense/cc-by4.0>;
+                            dcterms:modified "2023-06-15";
+                            dcterms:publisher <https://www.w3.org/community/kg-construct/>;
+                            dcterms:title "RML-star"@en;
+                            bibo:status "draft";
+                            vann:preferredNamespacePrefix "rml";
+                            vann:preferredNamespaceUri "http://w3id.org/rml/";
+                            a owl:Ontology;
+                            owl:versionIRI rml-fnml:star;
+                            owl:versionInfo "0.1.0".
+vaem:acronym a owl:AnnotationProperty.
+foaf:name a owl:AnnotationProperty.

@@ -75,7 +75,7 @@ let start_path =
 
 // Path.Combine(__SOURCE_DIRECTORY__, __SOURCE_FILE__)
 let source_dependency =
-    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\LMDB\MapServer.fsx"
+    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Extensions\XParsecExtensions.fsx"
     |> load_dependencies
 
 let rec dependency_mmd (current_file: Load_Dependency) =

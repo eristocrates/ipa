@@ -1,0 +1,56 @@
+@base <http://www.daml.org/services/owl-s/1.2/Process.owl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix shadow-rdf: <http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#>.
+@prefix expr: <http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix swrl: <http://www.w3.org/2003/11/swrl#>.
+@prefix service: <http://www.daml.org/services/owl-s/1.2/Service.owl#>.
+@prefix process: <http://www.daml.org/services/owl-s/1.2/Process.owl#>.
+@prefix grounding: <http://www.daml.org/services/owl-s/1.2/Grounding.owl#>.
+@prefix : <http://www.daml.org/services/owl-s/1.2/ProcessDeprecatedElements.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owls_Process: <http://www.daml.org/services/owl-s/1.2/Process.owl#>.
+
+<http://www.daml.org/services/owl-s/1.2/Process.owl> a owl:Ontology;
+                                                     rdfs:comment """
+    Upper-level OWL ontology for Processes.
+    Part of the DAML-S/OWL-S effort; see http://www.daml.org/services/owl-s/.
+  """;
+                                                     owl:imports <http://www.daml.org/services/owl-s/1.2/Process.owl>,
+                                                                 <http://www.daml.org/services/owl-s/1.2/generic/Expression.owl>,
+                                                                 <http://www.daml.org/services/owl-s/1.2/Service.owl>,
+                                                                 <http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl>;
+                                                     owl:versionInfo """
+    $Id: ProcessDeprecatedElements.owl,v 1.2 2005/05/23 06:56:42 martin Exp $
+  """.
+process:ConditionalEffect a owl:Class;
+                          rdfs:comment " Deprecated as of version 1.1 ".
+process:ConditionalOutput a owl:Class;
+                          rdfs:comment " Deprecated as of version 1.1 ".
+process:ProcessComponent a owl:Class;
+                         rdfs:comment """ 
+    Deprecated as of v. 1.1.
+    Note: the old concept ProcessComponent is no longer needed. ControlConstruct
+    which includes Perform as a subclass should be used anywhere that 
+    ProcessComponent might have been used (which in the OWL-S 1.0 ontology 
+    was only in describing the relationship to temporal aspects)
+  """;
+                         owl:equivalentClass process:ControlConstruct.
+process:Unordered a owl:Class;
+                  rdfs:comment """
+     Deprecated.  As of version 1.1, renamed to Any-Order.
+  """;
+                  owl:equivalentClass process:Any-Order.
+process:collapse a owl:ObjectProperty;
+                 rdfs:comment "This is a deprecated usage; collapsesTo is preferred.";
+                 owl:equivalentProperty process:collapsesTo.
+process:expand a owl:ObjectProperty;
+               rdfs:comment "This is a deprecated usage; expandsTo is preferred.";
+               owl:equivalentProperty process:expandsTo.
+<http://www.daml.org/services/owl-s/1.2/Service.owl> a owl:Ontology.
+<http://www.daml.org/services/owl-s/1.2/generic/Expression.owl> a owl:Ontology.
+<http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl> a owl:Ontology.

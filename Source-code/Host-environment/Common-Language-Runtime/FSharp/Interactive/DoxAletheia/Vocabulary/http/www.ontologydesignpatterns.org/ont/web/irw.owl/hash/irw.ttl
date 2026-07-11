@@ -1,0 +1,228 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix infor: <http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+infor:InformationObject rdfs:subClassOf irw:Resource;
+                        owl:equivalentClass irw:InformationResource.
+infor:InformationRealization rdfs:subClassOf irw:PhysicalEntityResource;
+                             owl:disjointWith irw:InformationResource.
+<http://www.ontologydesignpatterns.org/ont/web/irw.owl> a owl:Ontology;
+                                                        rdfs:comment "This ontology is an evolution of IRE ontology. It describes identification of resources on the Web, through the definition of relationships between resources and their representations on the Web. The requirement is to describe what can be identified by URIs and how this is handled e.g. in form of HTTP requests and reponds.";
+                                                        rdfs:label "The Identity of Resources on the Web ontology (IRW).";
+                                                        owl:imports <http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl>;
+                                                        owl:versionInfo "Created by Valentina Presutti with support from Harry Halpin and Aldo Gangemi".
+irw:AbstractResource a owl:Class;
+                     rdfs:comment "Abstract things. They are combinatorial spaces. They cannot be located in space-time. Examples are: the infinite set of integers, real numbers, formal entities, relations, functions, the infinite set of names that can be defined in namespaces.";
+                     rdfs:label "abstract resource";
+                     rdfs:subClassOf irw:NonInformationResource;
+                     owl:disjointWith irw:PhysicalEntityResource,
+                                      irw:ConceptualResource.
+irw:ConceptualResource a owl:Class;
+                       rdfs:comment "Resources that are created in the social communication process. A conceptual resource does not exist if it's not in a social communication. For example: legal entities, political entities, social relations, concepts, etc.";
+                       rdfs:label "conceptual resource";
+                       rdfs:subClassOf irw:NonInformationResource;
+                       owl:disjointWith irw:PhysicalEntityResource,
+                                        irw:AbstractResource.
+irw:InformationResource a owl:Class;
+                        rdfs:comment "They are *about* something, this something can be everything (rdfs:Resource, owl:Thing, ire:Entity) including AnalogResource. Their essential characteristics can be conveyed in a single message. They can be associated with a URI, and can have a WebRepresentation, in this case they are called WebResource. They have some realization, for example: the text of Moby Dick is an InformationResource, a book containing the text of Moby Dick is one of its realization. The intuition behind the class InformationResource is the same behind the class ir:InformationRealization (cloned from Dolce Ultra Lite).";
+                        rdfs:label "information resource";
+                        rdfs:subClassOf irw:Resource;
+                        owl:disjointWith irw:NonInformationResource,
+                                         owl:Nothing,
+                                         irw:WebRepresentation,
+                                         infor:InformationRealization;
+                        owl:equivalentClass infor:InformationObject.
+irw:MediaType a owl:Class;
+              rdfs:label "media type";
+              rdfs:subClassOf irw:Resource.
+irw:NonInformationResource a owl:Class;
+                           rdfs:comment "All Semantic Web resources that are not information resources. They include abstract, conceptual, and physical resources.";
+                           rdfs:label "non-information resources";
+                           rdfs:subClassOf [owl:allValuesFrom irw:SemanticWebURI ; 
+                                            owl:onProperty irw:isIdentifiedBy ; 
+                                            a owl:Restriction],
+                                           irw:Resource;
+                           owl:disjointWith irw:InformationResource.
+irw:PhysicalEntityResource a owl:Class;
+                           rdfs:comment """Something that occupies its own space and has its own mass in the real world, and can have a \"virtual delegate\" on the Web. For example physical people, artifacts, places, bodies, chimical substances, biological entities, etc.""";
+                           rdfs:label "physical resource";
+                           rdfs:subClassOf irw:NonInformationResource;
+                           owl:disjointWith irw:ConceptualResource,
+                                            irw:AbstractResource.
+irw:Resource a owl:Class;
+             rdfs:comment "This class is meant to express the same intuition of rdfs:Resource but it is defined here in order to have OWL-DL compaibility. In an OWL Full version of this ontology we would have this class owl:equivalentClass rdfs:Resource.";
+             rdfs:label "resource";
+             rdfs:subClassOf owl:Thing;
+             owl:equivalentClass [owl:unionOf (irw:InformationResource
+                                               irw:NonInformationResource) ; 
+                                  a owl:Class].
+irw:SemanticWebURI a owl:Class;
+                   rdfs:comment "The subset of URI that identify typically analog things. In general they identify any resource but are not directly resolvable. They do not identify an accessible information resource.They act as a virtual delegate for exactly one resource, typically analog. They cause a re-direct or any other type of mechanism that makes the web server resolve another URI that is associated with a WebReource (see range of redirectTo)";
+                   rdfs:label "semantic web uri";
+                   rdfs:subClassOf irw:URI,
+                                   [owl:onProperty irw:redirectsTo ; 
+                                    owl:minCardinality "1"^^xsd:int ; 
+                                    a owl:Restriction].
+irw:URI a owl:Class;
+        rdfs:label "uri";
+        rdfs:subClassOf irw:Resource,
+                        [owl:onProperty irw:identifies ; 
+                         owl:minCardinality "1"^^xsd:int ; 
+                         a owl:Restriction],
+                        [owl:onProperty irw:hasURIString ; 
+                         owl:cardinality "1"^^xsd:int ; 
+                         a owl:Restriction].
+irw:WebClient a owl:Class;
+              rdfs:label "web client";
+              rdfs:subClassOf irw:Resource.
+irw:WebRepresentation a owl:Class;
+                      rdfs:comment "The realization of a message encoding that 'goes on the wire' according to an interaction protocol (e.g. http) in order to resolve a Web accessible resource. Representation have neither a URL nor a URI, they are associated with the URL of the Web Resource they represent. Representation are disjoint with Web resources";
+                      rdfs:label "awww representation";
+                      rdfs:subClassOf infor:InformationRealization,
+                                      [owl:cardinality "1"^^xsd:int ; 
+                                       owl:onProperty irw:isEncodedIn ; 
+                                       a owl:Restriction];
+                      owl:disjointWith irw:InformationResource,
+                                       owl:Nothing.
+irw:WebResource a owl:Class;
+                rdfs:comment "InformationResources that have at least one WebRepresentation and at least a URI. For example, a WebResource containing the text of Moby Dick and its WebRepresentation encoded in HTML in English language.";
+                rdfs:label "web resource";
+                rdfs:subClassOf irw:InformationResource,
+                                [owl:onProperty infor:isRealizedBy ; 
+                                 owl:allValuesFrom irw:WebRepresentation ; 
+                                 a owl:Restriction],
+                                [owl:onProperty infor:isRealizedBy ; 
+                                 owl:minCardinality "1"^^xsd:int ; 
+                                 a owl:Restriction],
+                                [owl:minCardinality "1"^^xsd:int ; 
+                                 owl:onProperty irw:isIdentifiedBy ; 
+                                 a owl:Restriction].
+irw:WebServer a owl:Class;
+              rdfs:label "web server";
+              rdfs:subClassOf irw:Resource,
+                              [owl:onProperty irw:isResolutionOf ; 
+                               owl:minCardinality "1"^^xsd:int ; 
+                               a owl:Restriction].
+irw:accesses a owl:ObjectProperty,
+               owl:TransitiveProperty;
+             rdfs:comment "A causal connection from a resource to the thing identiﬁed.";
+             rdfs:domain irw:URI;
+             rdfs:label "accesses";
+             rdfs:range irw:Resource;
+             owl:inverseOf irw:isAccessedBy.
+irw:encodes a owl:ObjectProperty;
+            rdfs:domain irw:MediaType;
+            rdfs:label "encodes";
+            rdfs:range irw:WebRepresentation;
+            owl:inverseOf irw:isEncodedIn.
+irw:hasURIString a owl:FunctionalProperty,
+                   owl:DatatypeProperty;
+                 rdfs:comment """The name of this datatype property previously was \"hasURI\", but in this ontology a URI is modelled as a class, hence I though that it's better to clarify, even in the property name that it refers to the string value of a URI.""",
+                              "The value of the URI, a string compliant with the URI specification.";
+                 rdfs:domain irw:URI;
+                 rdfs:label "has URI string value";
+                 rdfs:range xsd:anyURI.
+irw:identifies a owl:FunctionalProperty,
+                 owl:ObjectProperty;
+               rdfs:comment """The relashionship between a URI and a resource. A URI identify only one resource, it acts as a \"virtual\" delegate for that resource on the Web. This is different from the refersTo relashionships. This latter holds between Resources, and it's not  functional. For example, http://www.example.com#me identifies only john, while john's homepage http://www.example.com/john.html refersTo me, the place where he works, his job, his personal interests, etc. If I want to describe John's characteristics e.g. his name, age, etc. on the Web, I will attach them to http://www.example.com#john. On the other hand, http://www.example.com/john.html identifies john's homepage, which is an information resource.""";
+               rdfs:domain irw:URI;
+               rdfs:label "identifies";
+               rdfs:range irw:Resource,
+                          owl:Thing;
+               owl:inverseOf irw:isIdentifiedBy.
+irw:isAbout a owl:ObjectProperty;
+            rdfs:domain irw:InformationResource;
+            rdfs:label "is about";
+            rdfs:range irw:Resource;
+            owl:inverseOf irw:isTopicOf.
+irw:isAccessedBy a owl:TransitiveProperty,
+                   owl:ObjectProperty;
+                 rdfs:domain irw:Resource;
+                 rdfs:label "requests";
+                 rdfs:range irw:URI;
+                 owl:inverseOf irw:accesses.
+irw:isEncodedIn a owl:ObjectProperty,
+                  owl:FunctionalProperty;
+                rdfs:domain irw:WebRepresentation;
+                rdfs:label "encoded in";
+                rdfs:range irw:MediaType;
+                owl:inverseOf irw:encodes.
+irw:isIdentifiedBy a owl:ObjectProperty;
+                   rdfs:domain irw:Resource,
+                               owl:Thing;
+                   rdfs:label "is identified by";
+                   rdfs:range irw:URI;
+                   owl:inverseOf irw:identifies.
+irw:isLocationOf a owl:ObjectProperty;
+                 rdfs:comment "A relation between a WebServer and a WebRepresentation. It indicates that a WebServer concretely can respond to an HTTP request with a particular Web Representation.";
+                 rdfs:domain irw:WebServer;
+                 rdfs:label "is location of";
+                 rdfs:range irw:WebRepresentation;
+                 owl:inverseOf irw:locatedOn.
+irw:isReferencedBy a owl:ObjectProperty;
+                   rdfs:comment "The relation between a resource and the information resource that is about it.";
+                   rdfs:domain irw:Resource;
+                   rdfs:label "is referenced by";
+                   rdfs:range irw:URI;
+                   rdfs:subPropertyOf irw:isAccessedBy;
+                   owl:inverseOf irw:refersTo.
+irw:isRequestedBy a owl:ObjectProperty;
+                  rdfs:comment "WebClients that have requested a URI, like in typical HTTP GET requests.";
+                  rdfs:domain irw:URI;
+                  rdfs:label "is requested by";
+                  rdfs:range irw:WebClient;
+                  owl:inverseOf irw:requests.
+irw:isResolutionOf a owl:ObjectProperty;
+                   rdfs:domain irw:WebServer;
+                   rdfs:label "is resolution of";
+                   rdfs:range irw:URI;
+                   rdfs:subPropertyOf irw:isAccessedBy;
+                   owl:inverseOf irw:resolvesTo.
+irw:isTopicOf a owl:ObjectProperty;
+              rdfs:domain irw:Resource;
+              rdfs:label "is topic of";
+              rdfs:range irw:InformationResource;
+              owl:inverseOf irw:isAbout.
+irw:locatedOn a owl:ObjectProperty;
+              rdfs:comment "A relation between a WebRepresentation and a WebServer, indicating that the WebRepresentation can be obtained by e.g. an HTTP request to the WebServer.";
+              rdfs:domain irw:WebRepresentation;
+              rdfs:label "located on";
+              rdfs:range irw:WebServer;
+              owl:inverseOf irw:isLocationOf.
+irw:redirectsTo a owl:ObjectProperty;
+                rdfs:comment "Redirections can be used outside the Semantic Web between just normal information resources, their domain and range says nothing about the type of resource. The only important aspect is that the reseource that is the destination of the redirection must be associated with a WebRepresentation, hence it must be a WebResource. This property can be used as top property for expressing special types of redirections e.g. TAG's 303 redirection or hash convention.";
+                rdfs:domain irw:URI;
+                rdfs:label "redirects to";
+                rdfs:range [owl:intersectionOf (irw:URI
+                                                [owl:onProperty irw:identifies ; 
+                                                owl:allValuesFrom irw:WebResource ; 
+                                                a owl:Restriction]) ; 
+                            a owl:Class];
+                rdfs:subPropertyOf irw:accesses.
+irw:refersTo a owl:ObjectProperty;
+             rdfs:comment "The relation between a URI and the resources it refers to.";
+             rdfs:domain irw:URI;
+             rdfs:label "refers to";
+             rdfs:range irw:Resource;
+             rdfs:subPropertyOf irw:accesses;
+             owl:inverseOf irw:isReferencedBy.
+irw:requests a owl:ObjectProperty;
+             rdfs:comment "Expresses the notion behind of a request operation of a web client, exempliﬁed by a typical HTTP GET request.";
+             rdfs:domain irw:WebClient;
+             rdfs:label "requests";
+             rdfs:range irw:URI;
+             owl:inverseOf irw:isRequestedBy.
+irw:resolvesTo a owl:ObjectProperty;
+               rdfs:comment "Relates a URI to a concrete Web server, which currently is done by mapping a URI to an IP address or addresses.";
+               rdfs:domain irw:URI;
+               rdfs:label "resolves to";
+               rdfs:range irw:WebServer;
+               rdfs:subPropertyOf irw:accesses;
+               owl:inverseOf irw:isResolutionOf.
+owl:Nothing owl:disjointWith irw:InformationResource,
+                             irw:WebRepresentation.
