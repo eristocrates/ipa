@@ -1,0 +1,40 @@
+﻿namespace Linkml.mappings.Namespace
+module mappings =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://w3id.org/linkml/" (Some "https://github.com/linkml/linkml/raw/refs/heads/main/packages/linkml_runtime/src/linkml_runtime/linkml_model/rdf/mappings.ttl") (Some "linkml.mappings") None
+    let SchemaDefinition = {_prefixID with _localName = "SchemaDefinition"}
+    let SlotDefinition = {_prefixID with _localName = "SlotDefinition"}
+    let TypeDefinition = {_prefixID with _localName = "TypeDefinition"}
+    let aliases = {_prefixID with _localName = "aliases"}
+    let ``base`` = {_prefixID with _localName = "base"}
+    let comments = {_prefixID with _localName = "comments"}
+    let default_curi_maps = {_prefixID with _localName = "default_curi_maps"}
+    let default_prefix = {_prefixID with _localName = "default_prefix"}
+    let default_range = {_prefixID with _localName = "default_range"}
+    let definition_uri = {_prefixID with _localName = "definition_uri"}
+    let description = {_prefixID with _localName = "description"}
+    let emit_prefixes = {_prefixID with _localName = "emit_prefixes"}
+    let from_schema = {_prefixID with _localName = "from_schema"}
+    let generation_date = {_prefixID with _localName = "generation_date"}
+    let id = {_prefixID with _localName = "id"}
+    let imported_from = {_prefixID with _localName = "imported_from"}
+    let imports = {_prefixID with _localName = "imports"}
+    let is_a = {_prefixID with _localName = "is_a"}
+    let license = {_prefixID with _localName = "license"}
+    let metamodel_version = {_prefixID with _localName = "metamodel_version"}
+    let multivalued = {_prefixID with _localName = "multivalued"}
+    let name = {_prefixID with _localName = "name"}
+    let notes = {_prefixID with _localName = "notes"}
+    let prefix_prefix = {_prefixID with _localName = "prefix_prefix"}
+    let prefix_reference = {_prefixID with _localName = "prefix_reference"}
+    let prefixes = {_prefixID with _localName = "prefixes"}
+    let range = {_prefixID with _localName = "range"}
+    let repr = {_prefixID with _localName = "repr"}
+    let slot_uri = {_prefixID with _localName = "slot_uri"}
+    let slots = {_prefixID with _localName = "slots"}
+    let source_file = {_prefixID with _localName = "source_file"}
+    let source_file_date = {_prefixID with _localName = "source_file_date"}
+    let source_file_size = {_prefixID with _localName = "source_file_size"}
+    let title = {_prefixID with _localName = "title"}
+    let types = {_prefixID with _localName = "types"}
+    let uri = {_prefixID with _localName = "uri"}
+    let version = {_prefixID with _localName = "version"}

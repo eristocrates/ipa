@@ -1,0 +1,122 @@
+namespace SharedKernel
+
+module InvalidFSharpIdentifier =
+    let keywordSet: string Set =
+        set [
+
+              "abstract"
+              "and"
+              "as"
+              "assert"
+              "base"
+              "begin"
+              "class"
+              "const"
+              "default"
+              "delegate"
+              "do"
+              "done"
+              "downcast"
+              "downto"
+              "elif"
+              "else"
+              "end"
+              "exception"
+              "extern"
+              "false"
+              "finally"
+              "fixed"
+              "for"
+              "fun"
+              "function"
+              "global"
+              "if"
+              "in"
+              "inherit"
+              "inline"
+              "interface"
+              "internal"
+              "lazy"
+              "let"
+              "match"
+              "member"
+              "module"
+              "mutable"
+              "namespace"
+              "new"
+              "null"
+              "of"
+              "open"
+              "or"
+              "override"
+              "private"
+              "public"
+              "rec"
+              "return"
+              "sig"
+              "static"
+              "struct"
+              "then"
+              "to"
+              "true"
+              "try"
+              "type"
+              "upcast"
+              "use"
+              "val"
+              "void"
+              "when"
+              "while"
+              "with"
+              "yield" ]
+
+    let futureSet: string Set =
+        set [ "break"
+              "checked"
+              "component"
+              "constraint"
+              "continue"
+              "fori"
+              "include"
+              "mixin"
+              "parallel"
+              "params"
+              "process"
+              "protected"
+              "pure"
+              "sealed"
+              "tailcall"
+              "trait"
+              "virtual" ]
+
+    let ocamlSet: string Set =
+        set [ "break"
+              "checked"
+              "component"
+              "const"
+              "constraint"
+              "continue"
+              "event"
+              "external"
+              "include"
+              "mixin"
+              "parallel"
+              "process"
+              "protected"
+              "pure"
+              "sealed"
+              "tailcall"
+              "trait"
+              "virtual"
+              "land"
+
+               ]
+
+    let reservedKeywordSet =
+        Set.unionMany (
+            seq {
+                keywordSet
+                ocamlSet
+                futureSet
+            }
+        )

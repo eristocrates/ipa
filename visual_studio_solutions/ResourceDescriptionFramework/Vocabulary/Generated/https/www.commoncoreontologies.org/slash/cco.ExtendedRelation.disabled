@@ -1,0 +1,62 @@
+﻿namespace Cco.ExtendedRelation.Namespace
+module ExtendedRelation =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://www.commoncoreontologies.org/" (Some @"https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-modules/ExtendedRelationOntology.ttl") (Some @"cco.ExtendedRelation") None
+    let ExtendedRelationOntology = {_prefixID with _localName = "ExtendedRelationOntology"}
+    let query_text'ont00001735 = {_prefixID with _localName = "ont00001735"}
+    let doctrinal_definition'ont00001737 = {_prefixID with _localName = "ont00001737"}
+    let ordinal_measurement_annotation'ont00001739 = {_prefixID with _localName = "ont00001739"}
+    let nominal_measurement_annotation'ont00001741 = {_prefixID with _localName = "ont00001741"}
+    let term_creator'ont00001742 = {_prefixID with _localName = "ont00001742"}
+    let content_license'ont00001743 = {_prefixID with _localName = "ont00001743"}
+    let copyright'ont00001744 = {_prefixID with _localName = "ont00001744"}
+    let doctrinal_source'ont00001745 = {_prefixID with _localName = "ont00001745"}
+    let measurement_annotation'ont00001746 = {_prefixID with _localName = "ont00001746"}
+    let ratio_measurement_annotation'ont00001747 = {_prefixID with _localName = "ont00001747"}
+    let doctrinal_label'ont00001748 = {_prefixID with _localName = "ont00001748"}
+    let doctrinal_acronym'ont00001749 = {_prefixID with _localName = "ont00001749"}
+    let has_token_unit'ont00001752 = {_prefixID with _localName = "ont00001752"}
+    let acronym'ont00001753 = {_prefixID with _localName = "ont00001753"}
+    let definition_source'ont00001754 = {_prefixID with _localName = "ont00001754"}
+    let interval_measurement_annotation'ont00001756 = {_prefixID with _localName = "ont00001756"}
+    let designator_annotation'ont00001757 = {_prefixID with _localName = "ont00001757"}
+    let http_query_string'ont00001758 = {_prefixID with _localName = "ont00001758"}
+    let code_license'ont00001759 = {_prefixID with _localName = "ont00001759"}
+    let is_curated_in_ontology'ont00001760 = {_prefixID with _localName = "ont00001760"}
+    let is_tokenized_by'ont00001761 = {_prefixID with _localName = "ont00001761"}
+    let term_editor'ont00001762 = {_prefixID with _localName = "ont00001762"}
+    let is_successor_of'ont00001775 = {_prefixID with _localName = "ont00001775"}
+    let has_process_part'ont00001777 = {_prefixID with _localName = "ont00001777"}
+    let has_object'ont00001778 = {_prefixID with _localName = "ont00001778"}
+    let has_all_members_located_in'ont00001782 = {_prefixID with _localName = "ont00001782"}
+    let role_of_aggregate'ont00001799 = {_prefixID with _localName = "ont00001799"}
+    let is_cause_of'ont00001803 = {_prefixID with _localName = "ont00001803"}
+    let is_disrupted_by'ont00001805 = {_prefixID with _localName = "ont00001805"}
+    let inheres_in_aggregate'ont00001809 = {_prefixID with _localName = "ont00001809"}
+    let is_output_of'ont00001816 = {_prefixID with _localName = "ont00001816"}
+    let caused_by'ont00001819 = {_prefixID with _localName = "ont00001819"}
+    let disposition_of_aggregate'ont00001829 = {_prefixID with _localName = "ont00001829"}
+    let has_some_member_located_in'ont00001832 = {_prefixID with _localName = "ont00001832"}
+    let affects'ont00001834 = {_prefixID with _localName = "ont00001834"}
+    let aggregate_bearer_of'ont00001836 = {_prefixID with _localName = "ont00001836"}
+    let is_input_of'ont00001841 = {_prefixID with _localName = "ont00001841"}
+    let is_site_of'ont00001845 = {_prefixID with _localName = "ont00001845"}
+    let is_part_of_process'ont00001857 = {_prefixID with _localName = "ont00001857"}
+    let is_temporal_region_of'ont00001874 = {_prefixID with _localName = "ont00001874"}
+    let is_affected_by'ont00001886 = {_prefixID with _localName = "ont00001886"}
+    let disrupts'ont00001888 = {_prefixID with _localName = "ont00001888"}
+    let aggregate_has_role'ont00001901 = {_prefixID with _localName = "ont00001901"}
+    let aggregate_has_quality'ont00001907 = {_prefixID with _localName = "ont00001907"}
+    let occurs_at'ont00001918 = {_prefixID with _localName = "ont00001918"}
+    let has_input'ont00001921 = {_prefixID with _localName = "ont00001921"}
+    let is_predecessor_of'ont00001928 = {_prefixID with _localName = "ont00001928"}
+    let process_starts'ont00001933 = {_prefixID with _localName = "ont00001933"}
+    let is_object_of'ont00001936 = {_prefixID with _localName = "ont00001936"}
+    let quality_of_aggregate'ont00001947 = {_prefixID with _localName = "ont00001947"}
+    let aggregate_has_disposition'ont00001956 = {_prefixID with _localName = "ont00001956"}
+    let inhibits'ont00001959 = {_prefixID with _localName = "ont00001959"}
+    let process_started_by'ont00001962 = {_prefixID with _localName = "ont00001962"}
+    let inhibited_by'ont00001970 = {_prefixID with _localName = "ont00001970"}
+    let has_output'ont00001986 = {_prefixID with _localName = "ont00001986"}
+    module ``2024_11_06_`` =
+        let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://www.commoncoreontologies.org/2024-11-06/" (Some @"https://github.com/CommonCoreOntology/CommonCoreOntologies/raw/refs/heads/develop/src/cco-modules/ExtendedRelationOntology.ttl") (Some "cco.ExtendedRelation.2024-11-06") None 
+        let ExtendedRelationOntology = {_prefixID with _localName = "ExtendedRelationOntology"}

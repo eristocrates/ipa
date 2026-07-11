@@ -1,0 +1,9 @@
+        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.obolibrary.org/obo/FOODON_" (Some "https://raw.githubusercontent.com/FoodOntology/foodon/master/foodon.owl") (Some "obo.foodon") None
+        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.obolibrary.org/obo/IAO_" (Some "http://purl.obolibrary.org/obo/iao.owl") (Some "obo.iao") None
+        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.obolibrary.org/obo/OBI_" (Some " http://purl.obolibrary.org/obo/obi.owl") (Some "obo.obi") None
+        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.obolibrary.org/obo/OMRSE_" (Some "http://purl.obolibrary.org/obo/omrse.owl") (Some "obo.omrse") None
+        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.obolibrary.org/obo/PATO_" (Some "http://purl.obolibrary.org/obo/pato.owl") (Some "obo.pato") None
+        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.obolibrary.org/obo/RO_" (Some " http://purl.obolibrary.org/obo/ro.owl") (Some "obo.ro") None
+        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.obolibrary.org/obo/NCIT_" (Some " http://purl.obolibrary.org/obo/ro.owl") (Some "obo.ro") None
+        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.obolibrary.org/obo/NCIT_" (Some @"C:\Repositories\Modernization\ConsoleFsharp\ResourceDescriptionFramework\Vocabulary\Generated\http\purl.obolibrary.org\obo\NCIT_\bare\ncit.owl") (Some "obo.ncit") None
+        Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://www.w3.org/2006/03/wn/wn20/instances/" (Some "https://www.w3.org/2006/03/wn/wn20/instances/index.rdf") (Some "wordnet.wn20") None

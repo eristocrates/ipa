@@ -1,0 +1,39 @@
+﻿namespace Swan.experiments.Namespace
+module experiments =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://purl.org/swan/2.0/experiment" (Some "https://rawcdn.githack.com/pav-ontology/swan-ontology/2.0.1/experiments.owl") (Some "swan.experiments") None
+    let ``#Assay`` = {_prefixID with _localName = "#Assay"}
+    let ``#Biological_Factor`` = {_prefixID with _localName = "#Biological_Factor"}
+    let ``#Biomaterial`` = {_prefixID with _localName = "#Biomaterial"}
+    let ``#Biomaterial_Characteristics`` = {_prefixID with _localName = "#Biomaterial_Characteristics"}
+    let ``#Case_Control_Design`` = {_prefixID with _localName = "#Case_Control_Design"}
+    let ``#Cohort_Based_Design`` = {_prefixID with _localName = "#Cohort_Based_Design"}
+    let ``#Cross-sectional_Design`` = {_prefixID with _localName = "#Cross-sectional_Design"}
+    let ``#Data`` = {_prefixID with _localName = "#Data"}
+    let ``#Data_Acquisition`` = {_prefixID with _localName = "#Data_Acquisition"}
+    let ``#Data_Analysis`` = {_prefixID with _localName = "#Data_Analysis"}
+    let ``#Data_Interpretation`` = {_prefixID with _localName = "#Data_Interpretation"}
+    let ``#Data_Processing`` = {_prefixID with _localName = "#Data_Processing"}
+    let ``#Derived_Data`` = {_prefixID with _localName = "#Derived_Data"}
+    let ``#Design`` = {_prefixID with _localName = "#Design"}
+    let ``#Environmental_Factor`` = {_prefixID with _localName = "#Environmental_Factor"}
+    let ``#Factor`` = {_prefixID with _localName = "#Factor"}
+    let ``#Interventional_Design`` = {_prefixID with _localName = "#Interventional_Design"}
+    let ``#Measurement`` = {_prefixID with _localName = "#Measurement"}
+    let ``#Methodological_Factor`` = {_prefixID with _localName = "#Methodological_Factor"}
+    let ``#Observational_Design`` = {_prefixID with _localName = "#Observational_Design"}
+    let ``#Population`` = {_prefixID with _localName = "#Population"}
+    let ``#Primary_Data`` = {_prefixID with _localName = "#Primary_Data"}
+    let ``#Protocol`` = {_prefixID with _localName = "#Protocol"}
+    let ``#Study`` = {_prefixID with _localName = "#Study"}
+    let ``#derived_from`` = {_prefixID with _localName = "#derived_from"}
+    let ``#has_biomaterial_characteristics`` = {_prefixID with _localName = "#has_biomaterial_characteristics"}
+    let ``#has_input`` = {_prefixID with _localName = "#has_input"}
+    let ``#has_keyword`` = {_prefixID with _localName = "#has_keyword"}
+    let ``#has_output`` = {_prefixID with _localName = "#has_output"}
+    let ``#has_part`` = {_prefixID with _localName = "#has_part"}
+    let ``#has_partcipant`` = {_prefixID with _localName = "#has_partcipant"}
+    let ``#has_study_description`` = {_prefixID with _localName = "#has_study_description"}
+    let ``#has_study_name`` = {_prefixID with _localName = "#has_study_name"}
+    let ``#is_about`` = {_prefixID with _localName = "#is_about"}
+    let ``#part_of`` = {_prefixID with _localName = "#part_of"}
+    let ``#participates_in`` = {_prefixID with _localName = "#participates_in"}

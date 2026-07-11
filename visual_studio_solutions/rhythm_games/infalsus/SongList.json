@@ -1,0 +1,652 @@
+{
+	"songs": {
+		"Reconnect": {
+			"title": "Reconnect",
+			"artist": "BlackY feat. Risa Yuzuki",
+			"version": null,
+			"bpm": 184,
+			"length": null,
+			"difficulties": {
+				"min": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"evo": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"ult": {
+					"level": 9,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"fbd": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		},
+		"Code:Leviathan": {
+			"title": "code:Leviathan",
+			"artist": "kanone",
+			"version": null,
+			"bpm": 162,
+			"length": null,
+			"difficulties": {
+				"min": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"evo": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"ult": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"fbd": {
+					"level": "?",
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		},
+		"Falsequre": {
+			"title": "Falsequre",
+			"artist": "Blacklolita",
+			"version": null,
+			"bpm": 175,
+			"length": null,
+			"difficulties": {
+				"min": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"evo": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"ult": {
+					"level": 10,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"fbd": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		},
+		"Shadows of Unknown": {
+			"title": "Shadows of Unknown",
+			"artist": "Sad Keyboard Guy feat. vally.exe",
+			"version": null,
+			"bpm": 190,
+			"length": null,
+			"difficulties": {
+				"min": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"evo": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"ult": {
+					"level": 10,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"fbd": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		},
+		"Hyaloüyne": {
+			"id": "hyalouyne",
+			"title": "Hyaloüyne",
+			"artist": "ak+q",
+			"version": "0.2.0",
+			"bpm": 152,
+			"length": "2:33",
+			"difficulties": {
+				"min": {
+					"level": 3,
+					"notes": {
+						"tap": 115,
+						"hold": 155,
+						"field": 140,
+						"flick": 39
+					}
+				},
+				"evo": {
+					"level": 6,
+					"notes": {
+						"tap": 228,
+						"hold": 329,
+						"field": 163,
+						"flick": 68
+					}
+				},
+				"ult": {
+					"level": 10,
+					"notes": {
+						"tap": 367,
+						"hold": 170,
+						"field": 374,
+						"flick": 150
+					}
+				},
+				"fbd": {
+					"version": "",
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		},
+		"Cold Sea": {
+			"title": "Cold Sea",
+			"artist": "Sakuzyo",
+			"version": null,
+			"bpm": 174,
+			"length": null,
+			"difficulties": {
+				"min": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"evo": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"ult": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"fbd": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		},
+		"Cryogenic": {
+			"id": "cryogenic",
+			"title": "Cryogenic",
+			"artist": "Camellia ft. Petra Gurin",
+			"version": "0.2.0",
+			"bpm": 145,
+			"length": "2:20",
+			"difficulties": {
+				"min": {
+					"level": 2,
+					"notes": {
+						"tap": 55,
+						"hold": 86,
+						"field": 184,
+						"flick": 48
+					}
+				},
+				"evo": {
+					"level": 5,
+					"notes": {
+						"tap": 143,
+						"hold": 135,
+						"field": 133,
+						"flick": 63
+					}
+				},
+				"ult": {
+					"level": 9,
+					"notes": {
+						"tap": 119,
+						"hold": 432,
+						"field": 253,
+						"flick": 176
+					}
+				},
+				"fbd": {
+					"version": "",
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		},
+		"À la mode": {
+			"id": "alamode",
+			"title": "à la mode",
+			"artist": "aran",
+			"version": "0.2.0",
+			"bpm": 140,
+			"length": "2:15",
+			"difficulties": {
+				"min": {
+					"level": 1,
+					"notes": {
+						"tap": 38,
+						"hold": 96,
+						"field": 176,
+						"flick": 20
+					}
+				},
+				"evo": {
+					"level": 5,
+					"notes": {
+						"tap": 88,
+						"hold": 84,
+						"field": 206,
+						"flick": 82
+					}
+				},
+				"ult": {
+					"level": 9,
+					"notes": {
+						"tap": 184,
+						"hold": 314,
+						"field": 248,
+						"flick": 187
+					}
+				},
+				"fbd": {
+					"level": 11,
+					"notes": {
+						"tap": 409,
+						"hold": 267,
+						"field": 262,
+						"flick": 160
+					}
+				}
+			}
+		},
+		"New Vision": {
+			"title": "New Vision",
+			"artist": "ii/night feat. shizuki",
+			"version": null,
+			"bpm": null,
+			"length": null,
+			"difficulties": {
+				"min": {
+					"level": 1,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"evo": {
+					"level": 4,
+					"notes": {
+						"total": 572
+					}
+				},
+				"ult": {
+					"level": 9,
+					"notes": {
+						"total": 1513
+					}
+				},
+				"fbd": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		},
+		"Sin Utopia": {
+			"title": "Sin Utopia",
+			"artist": "Kobaryo",
+			"version": null,
+			"bpm": null,
+			"length": null,
+			"difficulties": {
+				"min": {
+					"level": 3,
+					"notes": {
+						"total": 435
+					}
+				},
+				"evo": {
+					"level": 7,
+					"notes": {
+						"total": 691
+					}
+				},
+				"ult": {
+					"level": 10,
+					"notes": {
+						"total": 1246
+					}
+				},
+				"fbd": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		},
+		"MIRINAE": {
+			"title": "MIRINAE",
+			"artist": "TAK × Zekk",
+			"version": null,
+			"bpm": 180,
+			"length": null,
+			"difficulties": {
+				"min": {
+					"level": 2,
+					"notes": {
+						"total": 429
+					}
+				},
+				"evo": {
+					"level": 6,
+					"notes": {
+						"total": 638
+					}
+				},
+				"ult": {
+					"level": 9,
+					"notes": {
+						"total": 1044
+					}
+				},
+				"fbd": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		},
+		"Ordirehv": {
+			"id": "ordirehv",
+			"title": "Ordirehv",
+			"artist": "Feryquitous",
+			"version": "0.2.0",
+			"bpm": 191,
+			"length": "2:30",
+			"difficulties": {
+				"min": {
+					"level": 1,
+					"notes": {
+						"tap": 46,
+						"hold": 114,
+						"field": 278,
+						"flick": 35
+					}
+				},
+				"evo": {
+					"level": 4,
+					"notes": {
+						"tap": 129,
+						"hold": 64,
+						"field": 254,
+						"flick": 35
+					}
+				},
+				"ult": {
+					"level": 8,
+					"notes": {
+						"tap": 190,
+						"hold": 342,
+						"field": 414,
+						"flick": 94
+					}
+				},
+				"fbd": {
+					"level": 10,
+					"notes": {
+						"tap": 249,
+						"hold": 565,
+						"field": 334,
+						"flick": 94
+					}
+				}
+			}
+		},
+		"Ghost Ray": {
+			"id": "ghostray",
+			"title": "Ghost Ray",
+			"artist": "Qlarabelle \u0026 crayvxn",
+			"version": "0.2.0",
+			"bpm": 157,
+			"length": "2:35",
+			"difficulties": {
+				"min": {
+					"level": 1,
+					"notes": {
+						"tap": 46,
+						"hold": 137,
+						"field": 248,
+						"flick": 14
+					}
+				},
+				"evo": {
+					"level": 4,
+					"notes": {
+						"tap": 64,
+						"hold": 243,
+						"field": 250,
+						"flick": 42
+					}
+				},
+				"ult": {
+					"level": 8,
+					"notes": {
+						"tap": 65,
+						"hold": 486,
+						"field": 346,
+						"flick": 179
+					}
+				},
+				"fbd": {
+					"level": 10,
+					"notes": {
+						"tap": 180,
+						"hold": 660,
+						"field": 360,
+						"flick": 284
+					}
+				}
+			}
+		},
+		"Albedo": {
+			"id": "albedo",
+			"title": "Albedo",
+			"artist": "void (Mournfinale)",
+			"version": null,
+			"bpm": 163,
+			"length": null,
+			"difficulties": {
+				"min": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"evo": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"ult": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				},
+				"fbd": {
+					"level": null,
+					"notes": {
+						"tap": null,
+						"hold": null,
+						"field": null,
+						"flick": null
+					}
+				}
+			}
+		}
+	},
+	"sourceCategories": [
+		{
+			"name": "In Falsus originals",
+			"short": "Original",
+			"songs": [
+				"Reconnect",
+				"Code:Leviathan",
+				"Falsequre",
+				"Shadows of Unknown",
+				"Hyaloüyne",
+				"Cold Sea",
+				"Cryogenic",
+				"À la mode",
+				"New Vision",
+				"Sin Utopia",
+				"Albedo"
+			]
+		},
+		{
+			"name": "Arcaea originals",
+			"short": "Arcaea",
+			"songs": [
+				"MIRINAE"
+			]
+		},
+		{
+			"name": "Licensed songs",
+			"short": "Licensed",
+			"songs": [
+				"Ordirehv",
+				"Ghost Ray"
+			]
+		}
+	]
+}
