@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0092.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 3 92 Syntax The rules described here are sufficient to produce a well-formed PDF file. However, additional rules apply to organizing a PDF file to enable efficient incremental access to a document’s components in a network environment. This form of organization, called Linearized PDF, is described in Appendix F. 3.4.1 File Header The first line of a PDF file is a header identifying the version of the PDF specification to which the file conforms. For a file conforming to PDF 1.7, the header should be %PDF−1. 7 However, since any file conforming to an earlier version of PDF also conforms to version 1.7, an application that processes PDF 1.7 can also accept files with any of the following headers: %PDF−1. 0 %PDF−1. 1 %PDF−1. 2 %PDF−1. 3 %PDF−1. 4 %PDF−1. 5 %PDF−1. 6 (See also implementation notes 13 and 14 in Appendix H.) Beginning with PDF 1.4, the version in the file header can be overridden by the Version entry in the document’s catalog dictionary (located by means of the Root entry in the file’s trailer, as described in Section 3.4.4, “File Trailer”). This enables a PDF producer application to update the version using an incremental update (see Section 3.4.5, “Incremental Updates”). Under some conditions, a consumer application may be able to process PDF files conforming to a later version than it was designed to accept. New PDF features are often introduced in such a way that they can safely be ignored by a consumer that does not understand them (see Section H.1, “PDF Version Numbers”). Note: If a PDF file contains binary data, as most do (see Section 3.1, “Lexical Conventions”), it is recommended that the header line be immediately followed by a comment line containing at least four binary characters—that is, characters whose  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0092.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 3</span></div>
+<div class="pos" id="*41:362" style="top:41;left:362"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">92</span></div>
+<div class="pos" id="*49:567" style="top:49;left:567"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Syntax</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The rules described here are sufficient to produce a well-formed PDF file.</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">However, additional rules apply to organizing a PDF file to enable efficient</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">incremental access to a document’s components in a network environment. This</span></div>
+<div class="pos" id="*153:133" style="top:153;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">form of organization, called</span></div>
+<div class="pos" id="*153:297" style="top:153;left:297"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Linearized PDF,</span></div>
+<div class="pos" id="*153:392" style="top:153;left:392"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is described in Appendix F.</span></div>
+<div class="pos" id="*196:88" style="top:196;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">3.4.1 File Header</span></div>
+<div class="pos" id="*233:133" style="top:233;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The first line of a PDF file is a</span></div>
+<div class="pos" id="*233:342" style="top:233;left:342"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">header</span></div>
+<div class="pos" id="*233:387" style="top:233;left:387"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">identifying the version of the PDF</span></div>
+<div class="pos" id="*251:133" style="top:251;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specification to which the file conforms. For a file conforming to PDF 1.7, the</span></div>
+<div class="pos" id="*269:133" style="top:269;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">header should be</span></div>
+<div class="pos" id="*304:149" style="top:304;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">%PDF−1. 7</span></div>
+<div class="pos" id="*337:133" style="top:337;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">However, since any file conforming to an earlier version of PDF also conforms to</span></div>
+<div class="pos" id="*355:133" style="top:355;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">version 1.7, an application that processes PDF 1.7 can also accept files with any of</span></div>
+<div class="pos" id="*373:133" style="top:373;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the following headers:</span></div>
+<div class="pos" id="*408:149" style="top:408;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">%PDF−1. 0</span></div>
+<div class="pos" id="*425:149" style="top:425;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">%PDF−1. 1</span></div>
+<div class="pos" id="*441:149" style="top:441;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">%PDF−1. 2</span></div>
+<div class="pos" id="*458:149" style="top:458;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">%PDF−1. 3</span></div>
+<div class="pos" id="*475:149" style="top:475;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">%PDF−1. 4</span></div>
+<div class="pos" id="*491:149" style="top:491;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">%PDF−1. 5</span></div>
+<div class="pos" id="*508:149" style="top:508;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">%PDF−1. 6</span></div>
+<div class="pos" id="*541:133" style="top:541;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(See also implementation notes 13 and 14 in Appendix H.)</span></div>
+<div class="pos" id="*576:133" style="top:576;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Beginning with PDF 1.4, the version in the file header can be overridden by the</span></div>
+<div class="pos" id="*595:133" style="top:595;left:133"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Version</span></div>
+<div class="pos" id="*594:180" style="top:594;left:180"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the document’s catalog dictionary (located by means of the</span></div>
+<div class="pos" id="*595:576" style="top:595;left:576"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Root</span></div>
+<div class="pos" id="*612:133" style="top:612;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the file’s trailer, as described in Section 3.4.4, “File Trailer”). This enables</span></div>
+<div class="pos" id="*630:133" style="top:630;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">a PDF producer application to update the version using an incremental update</span></div>
+<div class="pos" id="*648:133" style="top:648;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see Section 3.4.5, “Incremental Updates”).</span></div>
+<div class="pos" id="*683:133" style="top:683;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Under some conditions, a consumer application may be able to process PDF files</span></div>
+<div class="pos" id="*701:133" style="top:701;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">conforming to a later version than it was designed to accept. New PDF features</span></div>
+<div class="pos" id="*719:133" style="top:719;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are often introduced in such a way that they can safely be ignored by a consumer</span></div>
+<div class="pos" id="*737:133" style="top:737;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that does not understand them (see Section H.1, “PDF Version Numbers”).</span></div>
+<div class="pos" id="*772:133" style="top:772;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*772:168" style="top:772;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">If a PDF file contains binary data, as most do (see Section 3.1, “Lexical Con-</span></div>
+<div class="pos" id="*790:133" style="top:790;left:133"><a href="pg_0048.htm"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">ventions”), it is recommended that the header line be immediately followed by a</span></a></div>
+<div class="pos" id="*808:133" style="top:808;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">comment line containing at least four binary characters—that is, characters whose</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0091.htm" title="Go to previous page">Previous</a> <a href="pg_0093.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(92);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

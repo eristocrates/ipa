@@ -1,0 +1,265 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix kontakt: <http://richard.cyganiak.de/>.
+@prefix vaem: <http://www.linkedmodel.org/schema/vaem#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix r2rml: <http://www.w3.org/ns/r2rml#>.
+
+<http://boris.villazon.terrazas.name/> a foaf:Person;
+                                       foaf:name "Boris Villazon-Terrazas".
+<http://richard.cyganiak.de/foaf.rdf#cygri> a foaf:Person;
+                                            foaf:name "Richard Cyganiak".
+w3: vaem:acronym "W3C";
+    a foaf:Organization;
+    rdfs:label "The World Wide Web Consortium (W3C)"@en.
+rdf:Property a owl:Class.
+rdfs:Class a owl:Class.
+rdfs:Datatype a owl:Class.
+rdfs:Resource a owl:Class.
+<http://www.w3.org/People/Ivan/> a foaf:Person;
+                                 foaf:name "Ivan Herman".
+r2rml: ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
+       dc11:contributor <http://www.w3.org/People/Ivan/>,
+                        <http://boris.villazon.terrazas.name/>;
+       dc11:creator <http://richard.cyganiak.de/foaf.rdf#cygri>;
+       dc11:descripion "RDB to RDF Mapping Language - Vocabulary"@en;
+       dc11:issued "2012-01-24"^^xsd:date;
+       dc11:modified "2012-07-16"^^xsd:date;
+       dc11:publisher w3:;
+       dc11:title "R2RML vocabulary"@en;
+       vann:preferredNamespacePrefix "rr";
+       vann:preferredNamespaceUri "http://www.w3.org/ns/r2rml#";
+       a voaf:Vocabulary,
+         owl:Ontology.
+r2rml:BaseTableOrView a owl:Class;
+                      rdfs:subClassOf r2rml:LogicalTable.
+r2rml:BlankNode a owl:Class;
+                rdfs:comment "Denotes a blank node, used with termType"@en.
+r2rml:GraphMap a owl:Class;
+               rdfs:comment "Represents a graph map."@en;
+               rdfs:subClassOf r2rml:TermMap.
+r2rml:IRI a owl:Class;
+          rdfs:comment "Denotes an IRI, used with termpType."@en.
+r2rml:Join a owl:Class;
+           rdfs:comment "Represents a join condition."@en;
+           rdfs:subClassOf [owl:onDataRange xsd:string ; 
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty r2rml:child ; 
+                            a owl:Restriction],
+                           [owl:onDataRange xsd:string ; 
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty r2rml:child ; 
+                            a owl:Restriction],
+                           [owl:onDataRange xsd:string ; 
+                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty r2rml:parent ; 
+                            a owl:Restriction],
+                           [owl:onDataRange xsd:string ; 
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                            owl:onProperty r2rml:parent ; 
+                            a owl:Restriction],
+                           owl:Thing.
+r2rml:Literal a owl:Class;
+              rdfs:comment "Denotes a Literal, used with termType."@en;
+              rdfs:subClassOf owl:Thing.
+r2rml:LogicalTable a owl:Class;
+                   rdfs:comment "Represents a logical table."@en;
+                   rdfs:subClassOf owl:Thing.
+r2rml:ObjectMap a owl:Class;
+                rdfs:comment "Represents an object map."@en;
+                rdfs:subClassOf [owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ; 
+                                 owl:onClass rdfs:Datatype ; 
+                                 owl:onProperty r2rml:datatype ; 
+                                 a owl:Restriction],
+                                [owl:onDataRange xsd:string ; 
+                                 owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ; 
+                                 owl:onProperty r2rml:language ; 
+                                 a owl:Restriction],
+                                [owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 owl:onClass rdfs:Resource ; 
+                                 owl:onProperty r2rml:object ; 
+                                 a owl:Restriction],
+                                [owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ; 
+                                 owl:onClass rdfs:Resource ; 
+                                 owl:onProperty r2rml:object ; 
+                                 a owl:Restriction],
+                                r2rml:TermMap,
+                                owl:Thing.
+r2rml:PredicateMap a owl:Class;
+                   rdfs:comment "Represents a predicate map."@en;
+                   rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                    owl:onClass rdf:Property ; 
+                                    owl:onProperty r2rml:predicate ; 
+                                    a owl:Restriction],
+                                   r2rml:TermMap,
+                                   owl:Thing.
+r2rml:PredicateObjectMap a owl:Class;
+                         rdfs:comment "Represents a predicate-object map."@en;
+                         rdfs:subClassOf [owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                          owl:onClass r2rml:PredicateMap ; 
+                                          owl:onProperty r2rml:predicateMap ; 
+                                          a owl:Restriction],
+                                         [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                          owl:onClass r2rml:ObjectMap ; 
+                                          owl:onProperty r2rml:objectMap ; 
+                                          a owl:Restriction],
+                                         owl:Thing.
+r2rml:R2RMLView a owl:Class;
+                rdfs:subClassOf r2rml:LogicalTable.
+r2rml:RefObjectMap a owl:Class;
+                   rdfs:comment "Denotes a reference to an object map."@en;
+                   rdfs:subClassOf owl:Thing.
+r2rml:SQL2008 a owl:NamedIndividual;
+              rdfs:comment "Core SQL 2008"@en.
+r2rml:SubjectMap a owl:Class;
+                 rdfs:comment "Represents a subject map."@en;
+                 rdfs:subClassOf [owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ; 
+                                  owl:onClass rdfs:Class ; 
+                                  owl:onProperty r2rml:class ; 
+                                  a owl:Restriction],
+                                 r2rml:TermMap,
+                                 owl:Thing.
+r2rml:TermMap a owl:Class;
+              rdfs:comment "A function that generates an RDF term from a logical table row."@en;
+              rdfs:label "Term Map"@en.
+r2rml:TriplesMap a owl:Class;
+                 rdfs:comment "Represents a triples map."@en;
+                 rdfs:subClassOf [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onClass r2rml:SubjectMap ; 
+                                  owl:onProperty r2rml:subjectMap ; 
+                                  a owl:Restriction],
+                                 [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                  owl:onClass r2rml:LogicalTable ; 
+                                  owl:onProperty r2rml:logicalTable ; 
+                                  a owl:Restriction],
+                                 owl:Thing.
+r2rml:child a owl:DatatypeProperty;
+            rdfs:comment "Names a column in the child table of a join."@en;
+            rdfs:domain r2rml:Join;
+            rdfs:range xsd:string.
+r2rml:class a owl:ObjectProperty;
+            rdfs:comment "The subject value generated for a logical table row will be asserted as an instance of this RDFS class."@en;
+            rdfs:domain r2rml:SubjectMap;
+            rdfs:range rdfs:Class.
+r2rml:column a owl:DatatypeProperty;
+             rdfs:comment "Name of a column in the logical table. When generating RDF triples from a logical table row, value from the specified column is used as the subject, predicate, or object (based upon the specific domain)."@en;
+             rdfs:domain r2rml:TermMap;
+             rdfs:range xsd:string.
+r2rml:constant a owl:ObjectProperty.
+r2rml:datatype a owl:ObjectProperty;
+               rdfs:comment "Specifies the datatype of the object component for the generated triple from a logical table row."@en;
+               rdfs:domain r2rml:ObjectMap;
+               rdfs:range rdfs:Datatype.
+r2rml:defaultGraph a owl:NamedIndividual;
+                   rdfs:comment "Denotes a default graph"@en.
+r2rml:graph a owl:ObjectProperty;
+            rdfs:comment "An IRI reference for use as the graph name of all triples generated with the GraphMap."@en;
+            rdfs:domain [owl:intersectionOf (r2rml:GraphMap
+                                             [owl:onDataRange xsd:string ; 
+                                             owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ; 
+                                             owl:onProperty r2rml:template ; 
+                                             a owl:Restriction]) ; 
+                         a owl:Class].
+r2rml:graphMap a owl:ObjectProperty;
+               rdfs:comment "Specifies a GraphMap. When used with a SubjectMap element, all the RDF triples generated from a logical row will be stored in the specified named graph. Otherwise, the RDF triple generated using the (predicate, object) pair will be stored in the specified named graph."@en;
+               rdfs:domain [owl:unionOf (r2rml:PredicateObjectMap
+                                         r2rml:SubjectMap) ; 
+                            a owl:Class];
+               rdfs:range r2rml:GraphMap.
+r2rml:inverseExpression a owl:DatatypeProperty;
+                        rdfs:comment "An expression that allows, at query processing time, use of index-based access to the the (underlying) relational tables, instead of simply retrieving the table rows first and then applying a filter. This property is useful for retrieval based on conditions involving subject, predicate, or object generated from logical table column(s) and involves some transformation."@en;
+                        rdfs:domain r2rml:TermMap;
+                        rdfs:range xsd:string.
+r2rml:joinCondition a owl:ObjectProperty;
+                    rdfs:comment "Specifies the join condition for joining the child logical table with the parent logical table of the foreign key constraint."@en;
+                    rdfs:domain r2rml:RefObjectMap;
+                    rdfs:range r2rml:Join.
+r2rml:language a owl:DatatypeProperty;
+               rdfs:comment "Specified the language for the object component for the generated triple from a logical table row."@en;
+               rdfs:domain r2rml:ObjectMap;
+               rdfs:range xsd:string.
+r2rml:logicalTable a owl:ObjectProperty;
+                   rdfs:comment "Definition of logical table to be mapped."@en;
+                   rdfs:domain r2rml:TriplesMap;
+                   rdfs:range r2rml:LogicalTable.
+r2rml:object a owl:ObjectProperty;
+             rdfs:comment "Specifies the object for the generated triple from the logical table row."@en;
+             rdfs:domain [owl:intersectionOf (r2rml:ObjectMap
+                                              [owl:onDataRange xsd:string ; 
+                                              owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ; 
+                                              owl:onProperty r2rml:column ; 
+                                              a owl:Restriction]) ; 
+                          a owl:Class];
+             rdfs:range rdfs:Resource.
+r2rml:objectMap a owl:ObjectProperty;
+                rdfs:comment "An ObjectMap element to generate the object component of the (predicate, object) pair from a logical table row."@en;
+                rdfs:domain r2rml:PredicateObjectMap;
+                rdfs:range [owl:unionOf (r2rml:ObjectMap
+                                         r2rml:RefObjectMap) ; 
+                            a owl:Class].
+r2rml:parent a owl:DatatypeProperty;
+             rdfs:comment "Names a column in the parent table of a join."@en;
+             rdfs:domain r2rml:Join;
+             rdfs:range xsd:string.
+r2rml:parentTriplesMap a owl:ObjectProperty;
+                       rdfs:comment "Specifies the TriplesMap element corresponding to the parent logical table of the foreign key constraint."@en;
+                       rdfs:domain r2rml:RefObjectMap;
+                       rdfs:range r2rml:TriplesMap.
+r2rml:predicate a owl:ObjectProperty;
+                rdfs:comment "Specifies the predicate for the generated triple from the logical table row."@en;
+                rdfs:domain [owl:intersectionOf (r2rml:PredicateMap
+                                                 [owl:onDataRange xsd:string ; 
+                                                 owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ; 
+                                                 owl:onProperty r2rml:column ; 
+                                                 a owl:Restriction]) ; 
+                             a owl:Class];
+                rdfs:range rdf:Property.
+r2rml:predicateMap a owl:ObjectProperty;
+                   rdfs:comment "A PredicateMap element to generate the predicate component of the (predicate, object) pair from a logical table row."@en;
+                   rdfs:domain r2rml:PredicateObjectMap;
+                   rdfs:range r2rml:PredicateMap.
+r2rml:predicateObjectMap a owl:ObjectProperty;
+                         rdfs:comment "A PredicateObjectMap element to generate (predicate, object) pair from a logical table row."@en;
+                         rdfs:range r2rml:PredicateObjectMap.
+r2rml:sqlQuery a owl:DatatypeProperty;
+               rdfs:comment "A valid SQL query."@en;
+               rdfs:domain r2rml:R2RMLView;
+               rdfs:range xsd:string.
+r2rml:sqlVersion a owl:ObjectProperty;
+                 rdfs:comment "An identifier for a SQL version."@en;
+                 rdfs:domain r2rml:R2RMLView.
+r2rml:subject a owl:ObjectProperty;
+              rdfs:comment "An IRI reference for use as subject for all the RDF triples generated from a logical table row."@en;
+              rdfs:domain [owl:intersectionOf (r2rml:SubjectMap
+                                               [owl:onDataRange xsd:string ; 
+                                               owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ; 
+                                               owl:onProperty r2rml:column ; 
+                                               a owl:Restriction]) ; 
+                           a owl:Class].
+r2rml:subjectMap a owl:ObjectProperty;
+                 rdfs:comment "A SubjectMap element to generate a subject from a logical table row."@en;
+                 rdfs:domain r2rml:TriplesMap;
+                 rdfs:range r2rml:SubjectMap.
+r2rml:tableName a owl:DatatypeProperty;
+                rdfs:comment "Schema-qualified name of a table or view."@en;
+                rdfs:domain r2rml:BaseTableOrView;
+                rdfs:range xsd:string.
+r2rml:template a owl:DatatypeProperty;
+               rdfs:comment "A template (format string) to specify how to generate a value for a subject, predicate, or object, using one or more columns from a logical table row."@en;
+               rdfs:domain r2rml:TermMap;
+               rdfs:range xsd:string.
+r2rml:termType a owl:ObjectProperty;
+               rdfs:comment "A string indicating whether subject or object generated using the value from column name specified for rr:column should be an IRI reference, blank node, or a literal."@en;
+               rdfs:domain r2rml:TermMap;
+               rdfs:range [owl:unionOf (r2rml:BlankNode
+                                        r2rml:IRI
+                                        r2rml:Literal) ; 
+                           a owl:Class].

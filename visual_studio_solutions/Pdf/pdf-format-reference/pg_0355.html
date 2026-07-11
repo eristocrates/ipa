@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0355.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 4.9 355 Form XObjects Example 4.30 q % Save graphics state 17 0 0 17 298 388 cm % Scale and translate coordinate space BI % Begin inline image object /W 17 % Width in samples /H 17 % Height in samples /CS /RGB % Color space /BPC 8 % Bits per component /F [ /A85 /LZW ] % Filters ID % Begin image data J1/gKA&gt;.]AN&amp;J?]-&lt;HW]aRVcg*bb.\eKAdVV%/PcZ … Omitted data … R.s(4KE3&amp;d&amp;7hb*7[%Ct2HCqC~&gt; EI % End inline image object Q % Restore graphics state 4.9 Form XObjects A form XObject is a PDF content stream that is a self-contained description of any sequence of graphics objects (including path objects, text objects, and sampled images). A form XObject may be painted multiple times—either on several pages or at several locations on the same page—and produces the same results each time, subject only to the graphics state at the time it is invoked. Not only is this shared definition economical to represent in the PDF file, but under suitable circumstances the PDF consumer application can optimize execution by caching the results of rendering the form XObject for repeated reuse. Note: The term form also refers to a completely different kind of object, an interactive form (sometimes called an AcroForm), discussed in Section 8.6, “Interactive Forms.” Whereas the form XObjects described in this section correspond to the notion of forms in the PostScript language, interactive forms are the PDF equivalent of the familiar paper instrument. Any unqualified use of the word form is understood to refer to an interactive form; the type of form described here is always referred to explicitly as a form XObject.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0355.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 4.9</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">355</span></div>
+<div class="pos" id="*49:524" style="top:49;left:524"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Form XObjects</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">Example 4.30</span></div>
+<div class="pos" id="*124:149" style="top:124;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">q</span></div>
+<div class="pos" id="*124:400" style="top:124;left:400"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Save graphics state</span></div>
+<div class="pos" id="*140:149" style="top:140;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">17 0 0 17 298 388 cm</span></div>
+<div class="pos" id="*140:400" style="top:140;left:400"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Scale and translate coordinate space</span></div>
+<div class="pos" id="*157:149" style="top:157;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">BI</span></div>
+<div class="pos" id="*157:399" style="top:157;left:399"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Begin inline image object</span></div>
+<div class="pos" id="*174:166" style="top:174;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/W 17</span></div>
+<div class="pos" id="*174:399" style="top:174;left:399"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Width in samples</span></div>
+<div class="pos" id="*190:166" style="top:190;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/H 17</span></div>
+<div class="pos" id="*190:400" style="top:190;left:400"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Height in samples</span></div>
+<div class="pos" id="*207:166" style="top:207;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/CS /RGB</span></div>
+<div class="pos" id="*207:399" style="top:207;left:399"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Color space</span></div>
+<div class="pos" id="*224:166" style="top:224;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/BPC 8</span></div>
+<div class="pos" id="*224:399" style="top:224;left:399"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Bits per component</span></div>
+<div class="pos" id="*240:166" style="top:240;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/F [ /A85 /LZW ]</span></div>
+<div class="pos" id="*240:399" style="top:240;left:399"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Filters</span></div>
+<div class="pos" id="*257:149" style="top:257;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ID</span></div>
+<div class="pos" id="*257:400" style="top:257;left:400"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Begin image data</span></div>
+<div class="pos" id="*274:149" style="top:274;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">J1/gKA&gt;.]AN&amp;J?]-&lt;HW]aRVcg*bb.\eKAdVV%/PcZ</span></div>
+<div class="pos" id="*290:149" style="top:290;left:149"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">… Omitted data …</span></div>
+<div class="pos" id="*307:149" style="top:307;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">R.s(4KE3&amp;d&amp;7hb*7[%Ct2HCqC~&gt;</span></div>
+<div class="pos" id="*324:149" style="top:324;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">EI</span></div>
+<div class="pos" id="*324:399" style="top:324;left:399"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% End inline image object</span></div>
+<div class="pos" id="*340:149" style="top:340;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Q</span></div>
+<div class="pos" id="*340:399" style="top:340;left:399"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Restore graphics state</span></div>
+<div class="pos" id="*382:97" style="top:382;left:97"><span id="*16" style="font-style:normal;font-weight:700;font-size:16px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">4.9 Form XObjects</span></div>
+<div class="pos" id="*421:133" style="top:421;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*421:146" style="top:421;left:146"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">form XObject</span></div>
+<div class="pos" id="*421:225" style="top:421;left:225"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is a PDF content stream that is a self-contained description of any</span></div>
+<div class="pos" id="*439:133" style="top:439;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sequence of graphics objects (including path objects, text objects, and sampled</span></div>
+<div class="pos" id="*457:133" style="top:457;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">images). A form XObject may be painted multiple times—either on several pages</span></div>
+<div class="pos" id="*475:133" style="top:475;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or at several locations on the same page—and produces the same results each</span></div>
+<div class="pos" id="*493:133" style="top:493;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">time, subject only to the graphics state at the time it is invoked. Not only is this</span></div>
+<div class="pos" id="*511:133" style="top:511;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">shared definition economical to represent in the PDF file, but under suitable cir-</span></div>
+<div class="pos" id="*529:133" style="top:529;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cumstances the PDF consumer application can optimize execution by caching the</span></div>
+<div class="pos" id="*547:133" style="top:547;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">results of rendering the form XObject for repeated reuse.</span></div>
+<div class="pos" id="*582:133" style="top:582;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*582:169" style="top:582;left:169"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">The term</span></div>
+<div class="pos" id="*582:227" style="top:582;left:227"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">form</span></div>
+<div class="pos" id="*582:260" style="top:582;left:260"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">also refers to a completely different kind of object, an</span></div>
+<div class="pos" id="*582:571" style="top:582;left:571"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">inter-</span></div>
+<div class="pos" id="*600:133" style="top:600;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">active form</span></div>
+<div class="pos" id="*600:203" style="top:600;left:203"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(sometimes called an</span></div>
+<div class="pos" id="*600:325" style="top:600;left:325"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">AcroForm),</span></div>
+<div class="pos" id="*600:398" style="top:600;left:398"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">discussed in Section 8.6, “Interactive</span></div>
+<div class="pos" id="*618:133" style="top:618;left:133"><a href="pg_0671.htm"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Forms.” Whereas the form XObjects described in this section correspond to the no-</span></a></div>
+<div class="pos" id="*636:133" style="top:636;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">tion of forms in the PostScript language, interactive forms are the PDF equivalent of</span></div>
+<div class="pos" id="*654:133" style="top:654;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">the familiar paper instrument. Any unqualified use of the word</span></div>
+<div class="pos" id="*654:495" style="top:654;left:495"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">form</span></div>
+<div class="pos" id="*654:527" style="top:654;left:527"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">is understood</span></div>
+<div class="pos" id="*672:133" style="top:672;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">to refer to an interactive form; the type of form described here is always referred to</span></div>
+<div class="pos" id="*690:133" style="top:690;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">explicitly as a</span></div>
+<div class="pos" id="*690:213" style="top:690;left:213"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">form XObject.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0354.htm" title="Go to previous page">Previous</a> <a href="pg_0356.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(355);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

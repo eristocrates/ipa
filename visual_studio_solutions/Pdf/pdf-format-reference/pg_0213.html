@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0213.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 4.3 213 Graphics State PARAMETER TYPE VALUE black generation function or name (PDF 1.2) A function that calculates the level of the black color component to use when converting RGB colors to CMYK (see Section 6.2.3, “Conversion from DeviceRGB to DeviceCMYK”). Initial value: installation-dependent. (PDF 1.2) A function that calculates the reduction in the levels of the cyan, magenta, and yellow color components to compensate for the amount of black added by black generation (see Section 6.2.3, “Conversion from DeviceRGB to DeviceCMYK”). Initial value: installation-dependent. (PDF 1.2) A function that adjusts device gray or color component levels to compensate for nonlinear response in a particular output device (see Section 6.3, “Transfer Functions”). Initial value: installation-dependent. (PDF 1.2) A halftone screen for gray and color rendering, specified as a halftone dictionary or stream (see Section 6.4, “Halftones”). Initial value: installation-dependent. The precision with which curves are to be rendered on the output device (see Section 6.5.1, “Flatness Tolerance”). The value of this parameter gives the maximum error tolerance, measured in output device pixels; smaller numbers give smoother curves at the expense of more computation and memory use. Initial value: 1.0. (PDF 1.3) The precision with which color gradients are to be rendered on the output device (see Section 6.5.2, “Smoothness Tolerance”). The value of this parameter gives the maximum error tolerance, expressed as a fraction of the range of each color component; smaller numbers give smoother color transitions at the expense of more computation and memory use. Initial value: installation-dependent. undercolor removal function or name transfer function, array, or name halftone dictionary, stream, or name number flatness smoothness number Some graphics state parameters are set with specific PDF operators, some are set by including a particular entry in a graphics state parameter dictionary, and some can be specified either way. The current line width, for example, can be set either with the w operator or (in PDF 1.3) with the LW entry in a graphics state parameter dictionary, whereas the current color is set only with specific operators, and the current halftone is set only with a graphics state parameter dictionary. It is expected that all future graphics state parameters will be specified with new entries in the graphics state parameter dictionary rather than with new operators.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0213.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 4.3</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">213</span></div>
+<div class="pos" id="*49:526" style="top:49;left:526"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Graphics State</span></div>
+<div class="pos" id="*104:74" style="top:104;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">PARAMETER</span></div>
+<div class="pos" id="*104:199" style="top:104;left:199"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*104:308" style="top:104;left:308"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*131:74" style="top:131;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">black generation</span></div>
+<div class="pos" id="*131:199" style="top:131;left:199"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">function or name</span></div>
+<div class="pos" id="*131:308" style="top:131;left:308"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.2)</span></div>
+<div class="pos" id="*131:364" style="top:131;left:364"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A function that calculates the level of the black color</span></div>
+<div class="pos" id="*147:308" style="top:147;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">component to use when converting</span></div>
+<div class="pos" id="*147:498" style="top:147;left:498"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*147:526" style="top:147;left:526"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">colors to</span></div>
+<div class="pos" id="*147:575" style="top:147;left:575"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*147:615" style="top:147;left:615"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see Sec-</span></div>
+<div class="pos" id="*164:308" style="top:164;left:308"><a href="pg_0481.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion 6.2.3, “Conversion from DeviceRGB to DeviceCMYK”). Initial</span></a></div>
+<div class="pos" id="*181:308" style="top:181;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value: installation-dependent.</span></div>
+<div class="pos" id="*209:308" style="top:209;left:308"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.2)</span></div>
+<div class="pos" id="*209:363" style="top:209;left:363"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A function that calculates the reduction in the levels of</span></div>
+<div class="pos" id="*226:308" style="top:226;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the cyan, magenta, and yellow color components to compensate for</span></div>
+<div class="pos" id="*242:308" style="top:242;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the amount of black added by black generation (see Section 6.2.3,</span></div>
+<div class="pos" id="*259:308" style="top:259;left:308"><a href="pg_0481.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">“Conversion from DeviceRGB to DeviceCMYK”). Initial value: in-</span></a></div>
+<div class="pos" id="*276:308" style="top:276;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stallation-dependent.</span></div>
+<div class="pos" id="*304:308" style="top:304;left:308"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.2)</span></div>
+<div class="pos" id="*304:363" style="top:304;left:363"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A function that adjusts device gray or color component</span></div>
+<div class="pos" id="*321:308" style="top:321;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">levels to compensate for nonlinear response in a particular output</span></div>
+<div class="pos" id="*338:308" style="top:338;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">device (see Section 6.3, “Transfer Functions”). Initial value:</span></div>
+<div class="pos" id="*354:308" style="top:354;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">installation-dependent.</span></div>
+<div class="pos" id="*383:308" style="top:383;left:308"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.2)</span></div>
+<div class="pos" id="*383:362" style="top:383;left:362"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A halftone screen for gray and color rendering, specified</span></div>
+<div class="pos" id="*399:308" style="top:399;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">as a halftone dictionary or stream (see Section 6.4, “Halftones”).</span></div>
+<div class="pos" id="*416:308" style="top:416;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Initial value: installation-dependent.</span></div>
+<div class="pos" id="*445:308" style="top:445;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The precision with which curves are to be rendered on the output</span></div>
+<div class="pos" id="*461:308" style="top:461;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">device (see Section 6.5.1, “Flatness Tolerance”). The value of this</span></div>
+<div class="pos" id="*478:308" style="top:478;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">parameter gives the maximum error tolerance, measured in output</span></div>
+<div class="pos" id="*495:308" style="top:495;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">device pixels; smaller numbers give smoother curves at the expense</span></div>
+<div class="pos" id="*511:308" style="top:511;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of more computation and memory use. Initial value: 1.0.</span></div>
+<div class="pos" id="*540:308" style="top:540;left:308"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.3)</span></div>
+<div class="pos" id="*540:363" style="top:540;left:363"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The precision with which color gradients are to be ren-</span></div>
+<div class="pos" id="*556:308" style="top:556;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dered on the output device (see Section 6.5.2, “Smoothness Toler-</span></div>
+<div class="pos" id="*573:308" style="top:573;left:308"><a href="pg_0509.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ance”). The value of this parameter gives the maximum error</span></a></div>
+<div class="pos" id="*590:308" style="top:590;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tolerance, expressed as a fraction of the range of each color compo-</span></div>
+<div class="pos" id="*606:308" style="top:606;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nent; smaller numbers give smoother color transitions at the</span></div>
+<div class="pos" id="*623:308" style="top:623;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">expense of more computation and memory use. Initial value:</span></div>
+<div class="pos" id="*640:308" style="top:640;left:308"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">installation-dependent.</span></div>
+<div class="pos" id="*209:74" style="top:209;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">undercolor removal</span></div>
+<div class="pos" id="*209:199" style="top:209;left:199"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">function or name</span></div>
+<div class="pos" id="*304:74" style="top:304;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">transfer</span></div>
+<div class="pos" id="*304:199" style="top:304;left:199"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">function,</span></div>
+<div class="pos" id="*321:199" style="top:321;left:199"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array, or name</span></div>
+<div class="pos" id="*383:74" style="top:383;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">halftone</span></div>
+<div class="pos" id="*383:199" style="top:383;left:199"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary,</span></div>
+<div class="pos" id="*399:199" style="top:399;left:199"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stream, or name</span></div>
+<div class="pos" id="*445:199" style="top:445;left:199"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">number</span></div>
+<div class="pos" id="*445:74" style="top:445;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">flatness</span></div>
+<div class="pos" id="*540:74" style="top:540;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">smoothness</span></div>
+<div class="pos" id="*540:199" style="top:540;left:199"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">number</span></div>
+<div class="pos" id="*674:133" style="top:674;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Some graphics state parameters are set with specific PDF operators, some are set</span></div>
+<div class="pos" id="*692:133" style="top:692;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">by including a particular entry in a</span></div>
+<div class="pos" id="*692:341" style="top:692;left:341"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">graphics state parameter dictionary,</span></div>
+<div class="pos" id="*692:547" style="top:692;left:547"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and some</span></div>
+<div class="pos" id="*710:133" style="top:710;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">can be specified either way. The current line width, for example, can be set either</span></div>
+<div class="pos" id="*728:133" style="top:728;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">with the</span></div>
+<div class="pos" id="*729:184" style="top:729;left:184"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">w</span></div>
+<div class="pos" id="*728:197" style="top:728;left:197"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operator or (in PDF 1.3) with the</span></div>
+<div class="pos" id="*729:393" style="top:729;left:393"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">LW</span></div>
+<div class="pos" id="*728:414" style="top:728;left:414"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in a graphics state parame-</span></div>
+<div class="pos" id="*746:133" style="top:746;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ter dictionary, whereas the current color is set only with specific operators, and</span></div>
+<div class="pos" id="*764:133" style="top:764;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the current halftone is set only with a graphics state parameter dictionary. It is</span></div>
+<div class="pos" id="*782:133" style="top:782;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">expected that all future graphics state parameters will be specified with new</span></div>
+<div class="pos" id="*800:133" style="top:800;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entries in the graphics state parameter dictionary rather than with new operators.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0212.htm" title="Go to previous page">Previous</a> <a href="pg_0214.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(213);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

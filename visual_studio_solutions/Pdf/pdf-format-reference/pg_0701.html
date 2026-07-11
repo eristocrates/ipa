@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0701.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 8.6 701 Interactive Forms KEY TYPE VALUE KeyUsage array of ASCII strings (Optional; PDF 1.7) An array of ASCII strings, where each string specifies an acceptable key-usage extension that must be present in the signing certificate. Multiple strings specify a range of acceptable key-usage extensions. The keyusage extension is described in RFC 3280 (see the Bibliography). Each character in a string represents a key-usage type, where the order of the characters indicates the key-usage extension it represents. The first through ninth characters in the array, from left to right, represent the required value for the following key-usage extensions: 1 2 3 digitalSignature non-Repudiation keyEncipherment 4 5 6 dataEncipherment 7 keyAgreement keyCertSign 8 9 cRLSign encipherOnly decipherOnly Any additional characters are ignored. Any missing characters or characters that are not one of the following values, should be set to ‘X’. The following character values are supported: 0 1 X Corresponding key-usage must not be set. Corresponding key-usage must be set. State of the corresponding key-usage does not matter. For example, the string values ‘1’ and ‘1XXXXXXXX’ represent settings where the key-usage type digitalSignature must be set and the state of all other key-usage types do not matter. The value of the corresponding flag in the Ff entry indicates whether this is a required constraint. Issuer array (Optional) An array of byte strings containing DER-encoded X.509v3 certificates of acceptable issuers. If the signer’s certificate chains up to any of the specified issuers (either directly or indirectly), the certificate is considered acceptable for signing. The value of the corresponding flag in the Ff entry indicates whether this is a required constraint. (Optional) An array of byte strings that contain Object Identifiers (OIDs) of the certificate policies that must be present in the signing certificate. An example of such a string is (2.16.840.1.113733.1.7.1.1). This field is only applicable if the value of Issuer is not empty. The certificate policies extension is described in RFC 3280 (see the Bibliography). The value of the corresponding flag in the Ff entry indicates whether this is a required constraint. OID array  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0701.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 8.6</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">701</span></div>
+<div class="pos" id="*49:509" style="top:49;left:509"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Interactive Forms</span></div>
+<div class="pos" id="*104:74" style="top:104;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*104:177" style="top:104;left:177"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*104:252" style="top:104;left:252"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*131:74" style="top:131;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">KeyUsage</span></div>
+<div class="pos" id="*131:177" style="top:131;left:177"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array of</span></div>
+<div class="pos" id="*147:177" style="top:147;left:177"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ASCII</span></div>
+<div class="pos" id="*164:177" style="top:164;left:177"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">strings</span></div>
+<div class="pos" id="*131:252" style="top:131;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Optional;</span></div>
+<div class="pos" id="*131:309" style="top:131;left:309"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">PDF 1.7)</span></div>
+<div class="pos" id="*131:360" style="top:131;left:360"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An array of ASCII strings, where each string specifies an</span></div>
+<div class="pos" id="*147:252" style="top:147;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">acceptable key-usage extension that must be present in the signing certificate.</span></div>
+<div class="pos" id="*164:252" style="top:164;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Multiple strings specify a range of acceptable key-usage extensions. The key-</span></div>
+<div class="pos" id="*181:252" style="top:181;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">usage extension is described in RFC 3280 (see the Bibliography).</span></div>
+<div class="pos" id="*206:252" style="top:206;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Each character in a string represents a key-usage type, where the order of the</span></div>
+<div class="pos" id="*222:252" style="top:222;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">characters indicates the key-usage extension it represents. The first through</span></div>
+<div class="pos" id="*239:252" style="top:239;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ninth characters in the array, from left to right, represent the required value for</span></div>
+<div class="pos" id="*256:252" style="top:256;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the following key-usage extensions:</span></div>
+<div class="pos" id="*281:269" style="top:281;left:269"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*306:269" style="top:306;left:269"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*331:269" style="top:331;left:269"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*281:294" style="top:281;left:294"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">digitalSignature</span></div>
+<div class="pos" id="*306:294" style="top:306;left:294"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">non-Repudiation</span></div>
+<div class="pos" id="*331:294" style="top:331;left:294"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">keyEncipherment</span></div>
+<div class="pos" id="*281:410" style="top:281;left:410"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*306:410" style="top:306;left:410"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*331:410" style="top:331;left:410"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*281:434" style="top:281;left:434"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dataEncipherment 7</span></div>
+<div class="pos" id="*306:437" style="top:306;left:437"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">keyAgreement</span></div>
+<div class="pos" id="*331:434" style="top:331;left:434"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">keyCertSign</span></div>
+<div class="pos" id="*306:537" style="top:306;left:537"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*331:537" style="top:331;left:537"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*281:563" style="top:281;left:563"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cRLSign</span></div>
+<div class="pos" id="*306:563" style="top:306;left:563"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">encipherOnly</span></div>
+<div class="pos" id="*331:563" style="top:331;left:563"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">decipherOnly</span></div>
+<div class="pos" id="*356:252" style="top:356;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Any additional characters are ignored. Any missing characters or characters</span></div>
+<div class="pos" id="*372:252" style="top:372;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that are not one of the following values, should be set to ‘</span></div>
+<div class="pos" id="*373:573" style="top:373;left:573"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*372:580" style="top:372;left:580"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">’. The following</span></div>
+<div class="pos" id="*389:252" style="top:389;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">character values are supported:</span></div>
+<div class="pos" id="*414:269" style="top:414;left:269"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*439:269" style="top:439;left:269"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*464:269" style="top:464;left:269"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*414:321" style="top:414;left:321"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Corresponding key-usage must not be set.</span></div>
+<div class="pos" id="*439:321" style="top:439;left:321"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Corresponding key-usage must be set.</span></div>
+<div class="pos" id="*464:321" style="top:464;left:321"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">State of the corresponding key-usage does not matter.</span></div>
+<div class="pos" id="*489:252" style="top:489;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">For example, the string values ‘</span></div>
+<div class="pos" id="*490:414" style="top:490;left:414"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*489:420" style="top:489;left:420"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">’ and ‘</span></div>
+<div class="pos" id="*490:451" style="top:490;left:451"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1XXXXXXXX</span></div>
+<div class="pos" id="*489:512" style="top:489;left:512"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">’ represent settings where the</span></div>
+<div class="pos" id="*506:252" style="top:506;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">key-usage type digitalSignature must be set and the state of all other key-usage</span></div>
+<div class="pos" id="*522:252" style="top:522;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">types do not matter.</span></div>
+<div class="pos" id="*547:252" style="top:547;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The value of the corresponding flag in the</span></div>
+<div class="pos" id="*548:480" style="top:548;left:480"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Ff</span></div>
+<div class="pos" id="*547:494" style="top:547;left:494"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry indicates whether this is a</span></div>
+<div class="pos" id="*564:252" style="top:564;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">required constraint.</span></div>
+<div class="pos" id="*593:74" style="top:593;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Issuer</span></div>
+<div class="pos" id="*593:177" style="top:593;left:177"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+<div class="pos" id="*593:252" style="top:593;left:252"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*593:311" style="top:593;left:311"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An array of byte strings containing DER-encoded X.509v3 certifi-</span></div>
+<div class="pos" id="*609:252" style="top:609;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cates of acceptable issuers. If the signer’s certificate chains up to any of the</span></div>
+<div class="pos" id="*626:252" style="top:626;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specified issuers (either directly or indirectly), the certificate is considered ac-</span></div>
+<div class="pos" id="*643:252" style="top:643;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ceptable for signing. The value of the corresponding flag in the</span></div>
+<div class="pos" id="*643:592" style="top:643;left:592"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Ff</span></div>
+<div class="pos" id="*643:606" style="top:643;left:606"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry indi-</span></div>
+<div class="pos" id="*659:252" style="top:659;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cates whether this is a required constraint.</span></div>
+<div class="pos" id="*688:252" style="top:688;left:252"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*688:311" style="top:688;left:311"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An array of byte strings that contain Object Identifiers (OIDs) of</span></div>
+<div class="pos" id="*704:252" style="top:704;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the certificate policies that must be present in the signing certificate. An exam-</span></div>
+<div class="pos" id="*721:252" style="top:721;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ple of such a string is</span></div>
+<div class="pos" id="*722:368" style="top:722;left:368"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(2.16.840.1.113733.1.7.1.1)</span></div>
+<div class="pos" id="*721:501" style="top:721;left:501"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. This field is only applicable if</span></div>
+<div class="pos" id="*738:252" style="top:738;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the value of</span></div>
+<div class="pos" id="*738:318" style="top:738;left:318"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Issuer</span></div>
+<div class="pos" id="*738:352" style="top:738;left:352"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is not empty. The certificate policies extension is described</span></div>
+<div class="pos" id="*754:252" style="top:754;left:252"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in RFC 3280 (see the Bibliography). The value of the corresponding flag in the</span></div>
+<div class="pos" id="*772:252" style="top:772;left:252"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Ff</span></div>
+<div class="pos" id="*771:265" style="top:771;left:265"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry indicates whether this is a required constraint.</span></div>
+<div class="pos" id="*688:74" style="top:688;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">OID</span></div>
+<div class="pos" id="*688:177" style="top:688;left:177"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0700.htm" title="Go to previous page">Previous</a> <a href="pg_0702.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(701);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0308.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 4 308 Graphics ShadingType entry. The following sections describe the available shading types and the dictionary entries specific to each. Type 1 (Function-Based) Shadings In type 1 (function-based) shadings, the color at every point in the domain is defined by a specified mathematical function. The function need not be smooth or continuous. This type is the most general of the available shading types and is useful for shadings that cannot be adequately described with any of the other types. Table 4.29 shows the shading dictionary entries specific to this type of shading, in addition to those common to all shading dictionaries (Table 4.28). Note: This type of shading cannot be used with an Indexed color space. TABLE 4.29 Additional entries specific to a type 1 shading dictionary KEY TYPE VALUE Domain array (Optional) An array of four numbers [ xmin xmax ymin ymax ] specifying the rectangular domain of coordinates over which the color function(s) are defined. Default value: [ 0.0 1.0 0.0 1.0 ]. (Optional) An array of six numbers specifying a transformation matrix mapping the coordinate space specified by the Domain entry into the shading’s target coordinate space. For example, to map the domain rectangle [ 0.0 1.0 0.0 1.0 ] to a 1-inch square with lower-left corner at coordinates (100, 100) in default user space, the Matrix value would be [ 72 0 0 72 100 100 ]. Default value: the identity matrix [ 1 0 0 1 0 0 ]. (Required) A 2-in, n-out function or an array of n 2-in, 1-out functions (where n is the number of color components in the shading dictionary’s color space). Each function’s domain must be a superset of that of the shading dictionary. If the value returned by the function for a given color component is out of range, it is adjusted to the nearest valid value. Matrix array Function function The domain rectangle (Domain) establishes an internal coordinate space for the shading that is independent of the target coordinate space in which it is to be painted. The color function(s) (Function) specify the color of the shading at each point within this domain rectangle. The transformation matrix (Matrix) then maps the domain rectangle into a corresponding rectangle or parallelogram in the target coordinate space. Points within the shading’s bounding box (BBox) that fall outside this transformed domain rectangle are painted with the shading’s  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0308.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 4</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">308</span></div>
+<div class="pos" id="*49:556" style="top:49;left:556"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Graphics</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ShadingType</span></div>
+<div class="pos" id="*99:214" style="top:99;left:214"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry. The following sections describe the available shading types</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and the dictionary entries specific to each.</span></div>
+<div class="pos" id="*160:133" style="top:160;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Type 1 (Function-Based) Shadings</span></div>
+<div class="pos" id="*196:133" style="top:196;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">In type 1 (function-based) shadings, the color at every point in the domain is</span></div>
+<div class="pos" id="*214:133" style="top:214;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">defined by a specified mathematical function. The function need not be smooth</span></div>
+<div class="pos" id="*232:133" style="top:232;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or continuous. This type is the most general of the available shading types and is</span></div>
+<div class="pos" id="*250:133" style="top:250;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">useful for shadings that cannot be adequately described with any of the other</span></div>
+<div class="pos" id="*268:133" style="top:268;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">types. Table 4.29 shows the shading dictionary entries specific to this type of</span></div>
+<div class="pos" id="*286:133" style="top:286;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">shading, in addition to those common to all shading dictionaries (Table 4.28).</span></div>
+<div class="pos" id="*321:133" style="top:321;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*321:167" style="top:321;left:167"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">This type of shading cannot be used with an</span></div>
+<div class="pos" id="*322:419" style="top:322;left:419"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Indexed</span></div>
+<div class="pos" id="*321:467" style="top:321;left:467"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">color space.</span></div>
+<div class="pos" id="*364:182" style="top:364;left:182"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 4.29 Additional entries specific to a type 1 shading dictionary</span></div>
+<div class="pos" id="*385:74" style="top:385;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*385:158" style="top:385;left:158"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*385:241" style="top:385;left:241"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*411:74" style="top:411;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Domain</span></div>
+<div class="pos" id="*411:158" style="top:411;left:158"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+<div class="pos" id="*411:241" style="top:411;left:241"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*411:302" style="top:411;left:302"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An array of four numbers</span></div>
+<div class="pos" id="*412:455" style="top:412;left:455"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[</span></div>
+<div class="pos" id="*411:459" style="top:411;left:459"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*417:465" style="top:417;left:465"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">min</span></div>
+<div class="pos" id="*411:488" style="top:411;left:488"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*417:495" style="top:417;left:495"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">max</span></div>
+<div class="pos" id="*411:522" style="top:411;left:522"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*417:528" style="top:417;left:528"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">min</span></div>
+<div class="pos" id="*411:551" style="top:411;left:551"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*417:557" style="top:417;left:557"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">max</span></div>
+<div class="pos" id="*412:576" style="top:412;left:576"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*411:586" style="top:411;left:586"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specifying the</span></div>
+<div class="pos" id="*428:241" style="top:428;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rectangular domain of coordinates over which the color function(s) are defined.</span></div>
+<div class="pos" id="*444:241" style="top:444;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Default value:</span></div>
+<div class="pos" id="*445:317" style="top:445;left:317"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ 0.0 1.0 0.0 1.0 ]</span></div>
+<div class="pos" id="*444:405" style="top:444;left:405"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*473:241" style="top:473;left:241"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*473:299" style="top:473;left:299"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An array of six numbers specifying a transformation matrix mapping</span></div>
+<div class="pos" id="*489:241" style="top:489;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the coordinate space specified by the</span></div>
+<div class="pos" id="*490:439" style="top:490;left:439"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Domain</span></div>
+<div class="pos" id="*489:484" style="top:489;left:484"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry into the shading’s target co-</span></div>
+<div class="pos" id="*506:241" style="top:506;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ordinate space. For example, to map the domain rectangle</span></div>
+<div class="pos" id="*507:551" style="top:507;left:551"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ 0.0 1.0 0.0 1.0 ]</span></div>
+<div class="pos" id="*506:642" style="top:506;left:642"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to a</span></div>
+<div class="pos" id="*523:241" style="top:523;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1-inch square with lower-left corner at coordinates (100, 100) in default user</span></div>
+<div class="pos" id="*539:241" style="top:539;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space, the</span></div>
+<div class="pos" id="*540:296" style="top:540;left:296"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Matrix</span></div>
+<div class="pos" id="*539:333" style="top:539;left:333"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value would be</span></div>
+<div class="pos" id="*540:416" style="top:540;left:416"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ 72 0 0 72 100 100 ]</span></div>
+<div class="pos" id="*539:531" style="top:539;left:531"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. Default value: the iden-</span></div>
+<div class="pos" id="*556:241" style="top:556;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tity matrix</span></div>
+<div class="pos" id="*557:300" style="top:557;left:300"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ 1 0 0 1 0 0 ]</span></div>
+<div class="pos" id="*556:377" style="top:556;left:377"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*585:241" style="top:585;left:241"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*585:299" style="top:585;left:299"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A 2-in,</span></div>
+<div class="pos" id="*585:339" style="top:585;left:339"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">n-out</span></div>
+<div class="pos" id="*585:371" style="top:585;left:371"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">function or an array of</span></div>
+<div class="pos" id="*585:493" style="top:585;left:493"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*585:503" style="top:585;left:503"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2-in, 1-out functions (where</span></div>
+<div class="pos" id="*585:655" style="top:585;left:655"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">n</span></div>
+<div class="pos" id="*601:241" style="top:601;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is the number of color components in the shading dictionary’s color space). Each</span></div>
+<div class="pos" id="*618:241" style="top:618;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">function’s domain must be a superset of that of the shading dictionary. If the val-</span></div>
+<div class="pos" id="*635:241" style="top:635;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ue returned by the function for a given color component is out of range, it is ad-</span></div>
+<div class="pos" id="*651:241" style="top:651;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">justed to the nearest valid value.</span></div>
+<div class="pos" id="*473:74" style="top:473;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Matrix</span></div>
+<div class="pos" id="*473:158" style="top:473;left:158"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+<div class="pos" id="*585:74" style="top:585;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Function</span></div>
+<div class="pos" id="*585:158" style="top:585;left:158"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">function</span></div>
+<div class="pos" id="*690:133" style="top:690;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The domain rectangle (</span></div>
+<div class="pos" id="*690:272" style="top:690;left:272"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Domain</span></div>
+<div class="pos" id="*690:318" style="top:690;left:318"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) establishes an internal coordinate space for the</span></div>
+<div class="pos" id="*708:133" style="top:708;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">shading that is independent of the target coordinate space in which it is to be</span></div>
+<div class="pos" id="*726:133" style="top:726;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">painted. The color function(s) (</span></div>
+<div class="pos" id="*727:317" style="top:727;left:317"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Function</span></div>
+<div class="pos" id="*726:369" style="top:726;left:369"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) specify the color of the shading at each</span></div>
+<div class="pos" id="*744:133" style="top:744;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">point within this domain rectangle. The transformation matrix (</span></div>
+<div class="pos" id="*745:528" style="top:745;left:528"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Matrix</span></div>
+<div class="pos" id="*744:566" style="top:744;left:566"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) then</span></div>
+<div class="pos" id="*762:133" style="top:762;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">maps the domain rectangle into a corresponding rectangle or parallelogram in</span></div>
+<div class="pos" id="*780:133" style="top:780;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the target coordinate space. Points within the shading’s bounding box (</span></div>
+<div class="pos" id="*781:543" style="top:781;left:543"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BBox</span></div>
+<div class="pos" id="*780:573" style="top:780;left:573"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) that</span></div>
+<div class="pos" id="*798:133" style="top:798;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">fall outside this transformed domain rectangle are painted with the shading’s</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0307.htm" title="Go to previous page">Previous</a> <a href="pg_0309.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(308);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

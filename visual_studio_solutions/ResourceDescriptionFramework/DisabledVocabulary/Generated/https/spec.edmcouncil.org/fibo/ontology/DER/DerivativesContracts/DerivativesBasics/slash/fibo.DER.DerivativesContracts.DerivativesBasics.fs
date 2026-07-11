@@ -1,0 +1,44 @@
+﻿namespace Fibo.DER.DerivativesContracts.DerivativesBasics.Namespace
+module DerivativesBasics =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/DerivativesBasics/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/DER/DerivativesContracts/DerivativesBasics.rdf") (Some @"fibo.DER.DerivativesContracts.DerivativesBasics") None
+    let CalculationAgent = {_prefixID with _localName = "CalculationAgent"}
+    let CashflowExpression = {_prefixID with _localName = "CashflowExpression"}
+    let CashflowFormula = {_prefixID with _localName = "CashflowFormula"}
+    let CashflowTerms = {_prefixID with _localName = "CashflowTerms"}
+    let ContractForDifference = {_prefixID with _localName = "ContractForDifference"}
+    let CreditDerivative = {_prefixID with _localName = "CreditDerivative"}
+    let DerivativeSettlementTerms = {_prefixID with _localName = "DerivativeSettlementTerms"}
+    let DerivativeTerms = {_prefixID with _localName = "DerivativeTerms"}
+    let DerivativesClearingOrganization = {_prefixID with _localName = "DerivativesClearingOrganization"}
+    let EconomicRateBasedDerivative = {_prefixID with _localName = "EconomicRateBasedDerivative"}
+    let ForwardRateAgreement = {_prefixID with _localName = "ForwardRateAgreement"}
+    let InterestRateDerivative = {_prefixID with _localName = "InterestRateDerivative"}
+    let IntroducingBroker = {_prefixID with _localName = "IntroducingBroker"}
+    let ObservableValue = {_prefixID with _localName = "ObservableValue"}
+    let OverTheCounterDerivativeInstrument = {_prefixID with _localName = "OverTheCounterDerivativeInstrument"}
+    let OverTheCounterInstrument = {_prefixID with _localName = "OverTheCounterInstrument"}
+    let ParametricCashflowTerms = {_prefixID with _localName = "ParametricCashflowTerms"}
+    let PayingParty = {_prefixID with _localName = "PayingParty"}
+    let RateBasedDerivative = {_prefixID with _localName = "RateBasedDerivative"}
+    let ReceivingParty = {_prefixID with _localName = "ReceivingParty"}
+    let UnderlyingAssetValuation = {_prefixID with _localName = "UnderlyingAssetValuation"}
+    let UniqueProductIdentifier = {_prefixID with _localName = "UniqueProductIdentifier"}
+    let UniqueProductIdentifierReferenceDataLibrary = {_prefixID with _localName = "UniqueProductIdentifierReferenceDataLibrary"}
+    let UniqueProductIdentifierRegistryEntry = {_prefixID with _localName = "UniqueProductIdentifierRegistryEntry"}
+    let UniqueProductIdentifierServiceProvider = {_prefixID with _localName = "UniqueProductIdentifierServiceProvider"}
+    let ValuationTerms = {_prefixID with _localName = "ValuationTerms"}
+    let hasAccretingNotionalAmount = {_prefixID with _localName = "hasAccretingNotionalAmount"}
+    let hasAdditionalCosts = {_prefixID with _localName = "hasAdditionalCosts"}
+    let hasAmortizingNotionalAmount = {_prefixID with _localName = "hasAmortizingNotionalAmount"}
+    let hasCalculationAgent = {_prefixID with _localName = "hasCalculationAgent"}
+    let hasConstantNotionalAmount = {_prefixID with _localName = "hasConstantNotionalAmount"}
+    let hasCustomNotionalAmount = {_prefixID with _localName = "hasCustomNotionalAmount"}
+    let hasFirstDeliveryDate = {_prefixID with _localName = "hasFirstDeliveryDate"}
+    let hasFirstNoticeDate = {_prefixID with _localName = "hasFirstNoticeDate"}
+    let hasLastDeliveryDate = {_prefixID with _localName = "hasLastDeliveryDate"}
+    let hasLastNoticeDate = {_prefixID with _localName = "hasLastNoticeDate"}
+    let hasSettlementTerms = {_prefixID with _localName = "hasSettlementTerms"}
+    let hasTickValue = {_prefixID with _localName = "hasTickValue"}
+    let hasUnderlyingAssetPrice = {_prefixID with _localName = "hasUnderlyingAssetPrice"}
+    let hasValuationTerms = {_prefixID with _localName = "hasValuationTerms"}
+    let specifiesValueOf = {_prefixID with _localName = "specifiesValueOf"}

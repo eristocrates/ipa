@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0972.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 10 972 Document Interchange KEY TYPE VALUE DestOutputProfile stream (Required if OutputConditionIdentifier does not specify a standard production condition; optional otherwise) An ICC profile stream defining the transformation from the PDF document’s source colors to output device colorants. The format of the profile stream is the same as that used in specifying an ICCBased color space (see “ICCBased Color Spaces” on page 252). The output transformation uses the profile’s “from CIE” information (BToA in ICC terminology); the “to CIE” (AToB) information can optionally be used to remap source color values to some other destination color space, such as for screen preview or hardcopy proofing. (See implementation note 168 in Appendix H.) Note: PDF/X is actually a family of standards representing varying levels of conformance. The standard for a given conformance level may prescribe further restrictions on the usage and meaning of entries in the output intent dictionary. Any such restrictions take precedence over the descriptions given in Table 10.51. The ICC profile information in an output intent dictionary supplements rather than replaces that in an ICCBased or default color space (see “ICCBased Color Spaces” on page 252 and “Default Color Spaces” on page 257). Those mechanisms are specifically intended for describing the characteristics of source color component values. An output intent can be used in conjunction with them to convert source colors to those required for a specific production condition or to enable the display or proofing of the intended output. The data in an output intent dictionary is provided for informational purposes only, and PDF consumer applications are free to disregard it. In particular, there is no expectation that PDF production tools will automatically convert colors expressed in the same source color space to the specified target space before generating output. (In some workflows, such conversion may, in fact, be undesirable. For example, when working with CMYK source colors tagged with a source ICC profile solely for purposes of characterization, converting such colors from four components to three and back is unnecessary and will result in a loss of fidelity in the values of the black component; see “Implicit Conversion of CIE-Based Color Spaces” on page 259 for further discussion.) On the other hand, when source colors are expressed in different base color spaces—for example, when combining separately generated images on the same PDF page—it is possible (though not required) to use the destination profile specified in the output intent dictionary to  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0972.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 10</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">972</span></div>
+<div class="pos" id="*49:483" style="top:49;left:483"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Document Interchange</span></div>
+<div class="pos" id="*104:74" style="top:104;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*104:241" style="top:104;left:241"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*104:324" style="top:104;left:324"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*131:74" style="top:131;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DestOutputProfile</span></div>
+<div class="pos" id="*131:241" style="top:131;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stream</span></div>
+<div class="pos" id="*131:324" style="top:131;left:324"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required if</span></div>
+<div class="pos" id="*131:388" style="top:131;left:388"><span id="*11" style="font-style:italic;font-weight:700;font-size:11px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">OutputConditionIdentifier</span></div>
+<div class="pos" id="*131:524" style="top:131;left:524"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">does not specify a standard</span></div>
+<div class="pos" id="*147:324" style="top:147;left:324"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">production condition; optional otherwise)</span></div>
+<div class="pos" id="*147:543" style="top:147;left:543"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An ICC profile stream</span></div>
+<div class="pos" id="*164:324" style="top:164;left:324"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">defining the transformation from the PDF document’s source</span></div>
+<div class="pos" id="*181:324" style="top:181;left:324"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">colors to output device colorants.</span></div>
+<div class="pos" id="*206:324" style="top:206;left:324"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The format of the profile stream is the same as that used in spec-</span></div>
+<div class="pos" id="*222:324" style="top:222;left:324"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ifying an</span></div>
+<div class="pos" id="*223:374" style="top:223;left:374"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ICCBased</span></div>
+<div class="pos" id="*222:425" style="top:222;left:425"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space (see “ICCBased Color Spaces” on</span></div>
+<div class="pos" id="*239:324" style="top:239;left:324"><a href="pg_0252.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">page 252). The output transformation uses the profile’s “from</span></a></div>
+<div class="pos" id="*256:324" style="top:256;left:324"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CIE” information (BToA in ICC terminology); the “to CIE”</span></div>
+<div class="pos" id="*272:324" style="top:272;left:324"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(AToB) information can optionally be used to remap source</span></div>
+<div class="pos" id="*289:324" style="top:289;left:324"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color values to some other destination color space, such as for</span></div>
+<div class="pos" id="*306:324" style="top:306;left:324"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">screen preview or hardcopy proofing. (See implementation note</span></div>
+<div class="pos" id="*322:324" style="top:322;left:324"><a href="pg_1127.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">168 in Appendix H.)</span></a></div>
+<div class="pos" id="*356:133" style="top:356;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*356:169" style="top:356;left:169"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">PDF/X is actually a family of standards representing varying levels of con-</span></div>
+<div class="pos" id="*374:133" style="top:374;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">formance. The standard for a given conformance level may prescribe further restric-</span></div>
+<div class="pos" id="*392:133" style="top:392;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">tions on the usage and meaning of entries in the output intent dictionary. Any such</span></div>
+<div class="pos" id="*410:133" style="top:410;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">restrictions take precedence over the descriptions given in Table 10.51.</span></div>
+<div class="pos" id="*445:133" style="top:445;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The ICC profile information in an output intent dictionary supplements rather</span></div>
+<div class="pos" id="*463:133" style="top:463;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">than replaces that in an</span></div>
+<div class="pos" id="*464:280" style="top:464;left:280"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ICCBased</span></div>
+<div class="pos" id="*463:339" style="top:463;left:339"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or default color space (see “ICCBased Color</span></div>
+<div class="pos" id="*481:133" style="top:481;left:133"><a href="pg_0252.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Spaces” on page 252 and “Default Color Spaces” on page 257). Those mechanisms</span></a></div>
+<div class="pos" id="*499:133" style="top:499;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are specifically intended for describing the characteristics of source color compo-</span></div>
+<div class="pos" id="*517:133" style="top:517;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nent values. An output intent can be used in conjunction with them to convert</span></div>
+<div class="pos" id="*535:133" style="top:535;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">source colors to those required for a specific production condition or to enable</span></div>
+<div class="pos" id="*554:133" style="top:554;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the display or proofing of the intended output.</span></div>
+<div class="pos" id="*588:133" style="top:588;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The data in an output intent dictionary is provided for informational purposes</span></div>
+<div class="pos" id="*606:133" style="top:606;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">only, and PDF consumer applications are free to disregard it. In particular, there</span></div>
+<div class="pos" id="*624:133" style="top:624;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is no expectation that PDF production tools will automatically convert colors</span></div>
+<div class="pos" id="*642:133" style="top:642;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">expressed in the same source color space to the specified target space before gen-</span></div>
+<div class="pos" id="*660:133" style="top:660;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">erating output. (In some workflows, such conversion may, in fact, be undesirable.</span></div>
+<div class="pos" id="*679:133" style="top:679;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">For example, when working with</span></div>
+<div class="pos" id="*679:330" style="top:679;left:330"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*679:374" style="top:679;left:374"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">source colors tagged with a source ICC</span></div>
+<div class="pos" id="*697:133" style="top:697;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">profile solely for purposes of characterization, converting such colors from four</span></div>
+<div class="pos" id="*715:133" style="top:715;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">components to three and back is unnecessary and will result in a loss of fidelity in</span></div>
+<div class="pos" id="*733:133" style="top:733;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the values of the black component; see “Implicit Conversion of CIE-Based Color</span></div>
+<div class="pos" id="*751:133" style="top:751;left:133"><a href="pg_0259.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Spaces” on page 259 for further discussion.) On the other hand, when source</span></a></div>
+<div class="pos" id="*769:133" style="top:769;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">colors are expressed in different base color spaces—for example, when combining</span></div>
+<div class="pos" id="*787:133" style="top:787;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">separately generated images on the same PDF page—it is possible (though not re-</span></div>
+<div class="pos" id="*805:133" style="top:805;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">quired) to use the destination profile specified in the output intent dictionary to</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0971.htm" title="Go to previous page">Previous</a> <a href="pg_0973.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(972);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

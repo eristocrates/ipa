@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0904.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 10 904 Document Interchange Note: The association of headers with rows and columns of data is typically determined heuristically by applications. Such heuristics may fail for complex tables; the standard attributes for tables shown in Table 10.36 can be used to make the association explicit. Usage Guidelines for Block-Level Structure Because different consumer applications use PDF’s logical structure facilities in different ways, Tagged PDF does not enforce any strict rules regarding the order and nesting of elements using the standard structure types. Furthermore, each export format has its own conventions for logical structure. However, adhering to certain general guidelines helps to achieve the most consistent and predictable interpretation among different Tagged PDF consumers. As described under “Grouping Elements” on page 899, a Tagged PDF document can have one or more levels of grouping elements, such as Document, Part, Art (Article), Sect (Section), and Div (Division). The descendants of these are BLSEs, such as H (Heading), P (Paragraph), and L (List), that hold the actual content. Their descendants, in turn, are either content items or ILSEs that further describe the content. Note: As noted earlier, elements with structure types that would ordinarily be treated as ILSEs can have a Placement attribute (see “General Layout Attributes” on page 917) that causes them to be treated as BLSEs instead. Such elements may be included as BLSEs in the same manner as headings and paragraphs. The block-level structure can follow one of two principal paradigms: • Strongly structured. The grouping elements nest to as many levels as necessary to reflect the organization of the material into articles, sections, subsections, and so on. At each level, the children of the grouping element consist of a heading (H), one or more paragraphs (P) for content at that level, and perhaps one or more additional grouping elements for nested subsections. • Weakly structured. The document is relatively flat, having perhaps only one or two levels of grouping elements, with all the headings, paragraphs, and other BLSEs as their immediate children. In this case, the organization of the material is not reflected in the logical structure; however, it can be expressed by the use of headings with specific levels (H1–H6).  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0904.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 10</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">904</span></div>
+<div class="pos" id="*49:483" style="top:49;left:483"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Document Interchange</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*99:168" style="top:99;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">The association of headers with rows and columns of data is typically deter-</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">mined heuristically by applications. Such heuristics may fail for complex tables; the</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">standard attributes for tables shown in Table 10.36 can be used to make the associa-</span></div>
+<div class="pos" id="*153:133" style="top:153;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">tion explicit.</span></div>
+<div class="pos" id="*196:133" style="top:196;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Usage Guidelines for Block-Level Structure</span></div>
+<div class="pos" id="*232:133" style="top:232;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Because different consumer applications use PDF’s logical structure facilities in</span></div>
+<div class="pos" id="*250:133" style="top:250;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">different ways, Tagged PDF does not enforce any strict rules regarding the order</span></div>
+<div class="pos" id="*268:133" style="top:268;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and nesting of elements using the standard structure types. Furthermore, each</span></div>
+<div class="pos" id="*286:133" style="top:286;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">export format has its own conventions for logical structure. However, adhering to</span></div>
+<div class="pos" id="*304:133" style="top:304;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">certain general guidelines helps to achieve the most consistent and predictable in-</span></div>
+<div class="pos" id="*322:133" style="top:322;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">terpretation among different Tagged PDF consumers.</span></div>
+<div class="pos" id="*357:133" style="top:357;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">As described under “Grouping Elements” on page 899, a Tagged PDF document</span></div>
+<div class="pos" id="*375:133" style="top:375;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">can have one or more levels of grouping elements, such as</span></div>
+<div class="pos" id="*376:487" style="top:376;left:487"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Document</span></div>
+<div class="pos" id="*375:547" style="top:375;left:547"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*376:556" style="top:376;left:556"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Part</span></div>
+<div class="pos" id="*375:578" style="top:375;left:578"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*376:586" style="top:376;left:586"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Art</span></div>
+<div class="pos" id="*393:133" style="top:393;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Article),</span></div>
+<div class="pos" id="*394:190" style="top:394;left:190"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Sect</span></div>
+<div class="pos" id="*393:218" style="top:393;left:218"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Section), and</span></div>
+<div class="pos" id="*394:303" style="top:394;left:303"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Div</span></div>
+<div class="pos" id="*393:326" style="top:393;left:326"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Division). The descendants of these are BLSEs,</span></div>
+<div class="pos" id="*411:133" style="top:411;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">such as</span></div>
+<div class="pos" id="*412:182" style="top:412;left:182"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">H</span></div>
+<div class="pos" id="*411:196" style="top:411;left:196"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Heading),</span></div>
+<div class="pos" id="*412:264" style="top:412;left:264"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">P</span></div>
+<div class="pos" id="*411:276" style="top:411;left:276"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Paragraph), and</span></div>
+<div class="pos" id="*412:382" style="top:412;left:382"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">L</span></div>
+<div class="pos" id="*411:393" style="top:411;left:393"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(List), that hold the actual content.</span></div>
+<div class="pos" id="*429:133" style="top:429;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Their descendants, in turn, are either content items or ILSEs that further describe</span></div>
+<div class="pos" id="*447:133" style="top:447;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the content.</span></div>
+<div class="pos" id="*482:133" style="top:482;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*482:168" style="top:482;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">As noted earlier, elements with structure types that would ordinarily be treat-</span></div>
+<div class="pos" id="*500:133" style="top:500;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">ed as ILSEs can have a</span></div>
+<div class="pos" id="*501:276" style="top:501;left:276"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Placement</span></div>
+<div class="pos" id="*500:340" style="top:500;left:340"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">attribute (see “General Layout Attributes” on</span></div>
+<div class="pos" id="*518:133" style="top:518;left:133"><a href="pg_0917.htm"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">page 917) that causes them to be treated as BLSEs instead. Such elements may be in-</span></a></div>
+<div class="pos" id="*536:133" style="top:536;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">cluded as BLSEs in the same manner as headings and paragraphs.</span></div>
+<div class="pos" id="*571:133" style="top:571;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The block-level structure can follow one of two principal paradigms:</span></div>
+<div class="pos" id="*603:133" style="top:603;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*606:145" style="top:606;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Strongly structured.</span></div>
+<div class="pos" id="*606:261" style="top:606;left:261"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The grouping elements nest to as many levels as necessary</span></div>
+<div class="pos" id="*624:145" style="top:624;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to reflect the organization of the material into articles, sections, subsections,</span></div>
+<div class="pos" id="*642:145" style="top:642;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and so on. At each level, the children of the grouping element consist of a head-</span></div>
+<div class="pos" id="*660:145" style="top:660;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ing (</span></div>
+<div class="pos" id="*661:172" style="top:661;left:172"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">H</span></div>
+<div class="pos" id="*660:181" style="top:660;left:181"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">), one or more paragraphs (</span></div>
+<div class="pos" id="*661:339" style="top:661;left:339"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">P</span></div>
+<div class="pos" id="*660:346" style="top:660;left:346"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) for content at that level, and perhaps one or</span></div>
+<div class="pos" id="*678:145" style="top:678;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">more additional grouping elements for nested subsections.</span></div>
+<div class="pos" id="*702:133" style="top:702;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*704:145" style="top:704;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Weakly structured.</span></div>
+<div class="pos" id="*704:256" style="top:704;left:256"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The document is relatively flat, having perhaps only one or</span></div>
+<div class="pos" id="*722:145" style="top:722;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">two levels of grouping elements, with all the headings, paragraphs, and other</span></div>
+<div class="pos" id="*740:145" style="top:740;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">BLSEs as their immediate children. In this case, the organization of the material</span></div>
+<div class="pos" id="*758:145" style="top:758;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is not reflected in the logical structure; however, it can be expressed by the use</span></div>
+<div class="pos" id="*776:145" style="top:776;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of headings with specific levels (</span></div>
+<div class="pos" id="*777:332" style="top:777;left:332"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">H1</span></div>
+<div class="pos" id="*776:348" style="top:776;left:348"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">–</span></div>
+<div class="pos" id="*777:356" style="top:777;left:356"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">H6</span></div>
+<div class="pos" id="*776:371" style="top:776;left:371"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">).</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0903.htm" title="Go to previous page">Previous</a> <a href="pg_0905.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(904);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

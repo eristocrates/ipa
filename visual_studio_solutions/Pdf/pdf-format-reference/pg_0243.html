@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0243.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 4.5 243 Color Spaces The CS and SC operators select the current stroking color space and current stroking color separately; RG sets them in combination. (The cs, sc, and rg operators perform the same functions for nonstroking operations.) Setting either current color space to DeviceRGB initializes the red, green, and blue components of the corresponding current color to 0.0. DeviceCMYK Color Space The DeviceCMYK color space allows colors to be specified according to the subtractive CMYK (cyan-magenta-yellow-black) model typical of printers and other paper-based output devices. In theory, each of the three standard process colorants used in printing (cyan, magenta, and yellow) absorbs one of the additive primary colors (red, green, and blue, respectively). Black, a fourth standard process colorant, absorbs all of the additive primaries in equal amounts. The four components in a DeviceCMYK color value represent the concentrations of these process colorants. Each component is specified by a number in the range 0.0 to 1.0, where 0.0 denotes the complete absence of a process colorant (that is, absorbs none of the corresponding additive primary) and 1.0 denotes maximum concentration (absorbs as much as possible of the additive primary). Note that the sense of these numbers is opposite to that of RGB color components. Example 4.4 shows alternative ways to select the DeviceCMYK color space and a specific color within that space for stroking operations. Example 4.4 /DeviceCMYK CS cyan magenta yellow black SC cyan magenta yellow black K % Set DeviceCMYK color space % Set color % Set both in one operation The CS and SC operators select the current stroking color space and current stroking color separately; K sets them in combination. (The cs, sc, and k operators perform the same functions for nonstroking operations.) Setting either current color space to DeviceCMYK initializes the cyan, magenta, and yellow components of the corresponding current color to 0.0 and the black component to 1.0.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0243.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 4.5</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">243</span></div>
+<div class="pos" id="*49:536" style="top:49;left:536"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Color Spaces</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*99:162" style="top:99;left:162"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CS</span></div>
+<div class="pos" id="*99:183" style="top:99;left:183"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*99:211" style="top:99;left:211"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">SC</span></div>
+<div class="pos" id="*99:232" style="top:99;left:232"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operators select the current stroking color space and current</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stroking color separately;</span></div>
+<div class="pos" id="*117:282" style="top:117;left:282"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">RG</span></div>
+<div class="pos" id="*117:302" style="top:117;left:302"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sets them in combination. (The</span></div>
+<div class="pos" id="*117:488" style="top:117;left:488"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">cs</span></div>
+<div class="pos" id="*117:500" style="top:117;left:500"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*117:506" style="top:117;left:506"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">sc</span></div>
+<div class="pos" id="*117:518" style="top:117;left:518"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*117:550" style="top:117;left:550"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">rg</span></div>
+<div class="pos" id="*117:565" style="top:117;left:565"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">opera-</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tors perform the same functions for nonstroking operations.) Setting either cur-</span></div>
+<div class="pos" id="*153:133" style="top:153;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rent color space to</span></div>
+<div class="pos" id="*154:246" style="top:154;left:246"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceRGB</span></div>
+<div class="pos" id="*153:314" style="top:153;left:314"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">initializes the red, green, and blue components of</span></div>
+<div class="pos" id="*171:133" style="top:171;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the corresponding current color to 0.0.</span></div>
+<div class="pos" id="*214:133" style="top:214;left:133"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceCMYK Color Space</span></div>
+<div class="pos" id="*251:133" style="top:251;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*252:160" style="top:252;left:160"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceCMYK</span></div>
+<div class="pos" id="*251:238" style="top:251;left:238"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space allows colors to be specified according to the sub-</span></div>
+<div class="pos" id="*269:133" style="top:269;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tractive</span></div>
+<div class="pos" id="*269:180" style="top:269;left:180"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*269:224" style="top:269;left:224"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(cyan-magenta-yellow-black) model typical of printers and other</span></div>
+<div class="pos" id="*287:133" style="top:287;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">paper-based output devices. In theory, each of the three standard</span></div>
+<div class="pos" id="*287:510" style="top:287;left:510"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">process colorants</span></div>
+<div class="pos" id="*305:133" style="top:305;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">used in printing (cyan, magenta, and yellow) absorbs one of the additive primary</span></div>
+<div class="pos" id="*323:133" style="top:323;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">colors (red, green, and blue, respectively). Black, a fourth standard process colo-</span></div>
+<div class="pos" id="*341:133" style="top:341;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rant, absorbs all of the additive primaries in equal amounts. The four components</span></div>
+<div class="pos" id="*359:133" style="top:359;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in a</span></div>
+<div class="pos" id="*360:159" style="top:360;left:159"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceCMYK</span></div>
+<div class="pos" id="*359:237" style="top:359;left:237"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color value represent the concentrations of these process colo-</span></div>
+<div class="pos" id="*377:133" style="top:377;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rants. Each component is specified by a number in the range 0.0 to 1.0, where 0.0</span></div>
+<div class="pos" id="*395:133" style="top:395;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">denotes the complete absence of a process colorant (that is, absorbs none of the</span></div>
+<div class="pos" id="*413:133" style="top:413;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">corresponding additive primary) and 1.0 denotes maximum concentration (ab-</span></div>
+<div class="pos" id="*431:133" style="top:431;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sorbs as much as possible of the additive primary). Note that the sense of these</span></div>
+<div class="pos" id="*449:133" style="top:449;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">numbers is opposite to that of</span></div>
+<div class="pos" id="*449:309" style="top:449;left:309"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*449:340" style="top:449;left:340"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color components.</span></div>
+<div class="pos" id="*484:133" style="top:484;left:133"><a href="pg_0243.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Example 4.4 shows alternative ways to select the</span></a></div>
+<div class="pos" id="*485:423" style="top:485;left:423"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceCMYK</span></div>
+<div class="pos" id="*484:501" style="top:484;left:501"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space and a</span></div>
+<div class="pos" id="*502:133" style="top:502;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specific color within that space for stroking operations.</span></div>
+<div class="pos" id="*537:133" style="top:537;left:133"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">Example 4.4</span></div>
+<div class="pos" id="*562:149" style="top:562;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/DeviceCMYK CS</span></div>
+<div class="pos" id="*579:149" style="top:579;left:149"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">cyan magenta yellow black</span></div>
+<div class="pos" id="*579:300" style="top:579;left:300"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SC</span></div>
+<div class="pos" id="*604:149" style="top:604;left:149"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">cyan magenta yellow black</span></div>
+<div class="pos" id="*604:300" style="top:604;left:300"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">K</span></div>
+<div class="pos" id="*562:366" style="top:562;left:366"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Set DeviceCMYK color space</span></div>
+<div class="pos" id="*579:366" style="top:579;left:366"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Set color</span></div>
+<div class="pos" id="*604:366" style="top:604;left:366"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Set both in one operation</span></div>
+<div class="pos" id="*637:133" style="top:637;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*638:159" style="top:638;left:159"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CS</span></div>
+<div class="pos" id="*637:177" style="top:637;left:177"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*638:201" style="top:638;left:201"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">SC</span></div>
+<div class="pos" id="*637:219" style="top:637;left:219"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operators select the current stroking color space and current strok-</span></div>
+<div class="pos" id="*655:133" style="top:655;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ing color separately;</span></div>
+<div class="pos" id="*656:253" style="top:656;left:253"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">K</span></div>
+<div class="pos" id="*655:264" style="top:655;left:264"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sets them in combination. (The</span></div>
+<div class="pos" id="*656:449" style="top:656;left:449"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">cs</span></div>
+<div class="pos" id="*655:461" style="top:655;left:461"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*656:467" style="top:656;left:467"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">sc</span></div>
+<div class="pos" id="*655:479" style="top:655;left:479"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*656:511" style="top:656;left:511"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">k</span></div>
+<div class="pos" id="*655:521" style="top:655;left:521"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operators per-</span></div>
+<div class="pos" id="*673:133" style="top:673;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">form the same functions for nonstroking operations.) Setting either current color</span></div>
+<div class="pos" id="*691:133" style="top:691;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space to</span></div>
+<div class="pos" id="*692:183" style="top:692;left:183"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceCMYK</span></div>
+<div class="pos" id="*691:260" style="top:691;left:260"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">initializes the cyan, magenta, and yellow components of the</span></div>
+<div class="pos" id="*709:133" style="top:709;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">corresponding current color to 0.0 and the black component to 1.0.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0242.htm" title="Go to previous page">Previous</a> <a href="pg_0244.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(243);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

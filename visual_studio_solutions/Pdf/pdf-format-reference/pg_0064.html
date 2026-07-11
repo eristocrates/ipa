@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0064.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 3 64 Syntax The definition of an indirect object in a PDF file consists of its object number and generation number, followed by the value of the object bracketed between the keywords obj and endobj. For example, the definition 12 0 obj ( Brillig ) endobj defines an indirect string object with an object number of 12, a generation number of 0, and the value Brillig. The object can be referred to from elsewhere in the file by an indirect reference consisting of the object number, the generation number, and the keyword R: 12 0 R Beginning with PDF 1.5, indirect objects may reside in object streams (see Section 3.4.6, “Object Streams”). They are referred to in the same way; however, their definition does not include the keywords obj and endobj. An indirect reference to an undefined object is not an error; it is simply treated as a reference to the null object. For example, if a file contains the indirect reference 17 0 R but does not contain the corresponding definition 17 0 obj … endobj then the indirect reference is considered to refer to the null object. Note: In the data structures that make up a PDF document, certain values are required to be specified as indirect object references. Except where this is explicitly called out, any object (other than a stream) may be specified either directly or as an indirect object reference; the semantics are entirely equivalent. Note in particular that content streams, which define the visible contents of the document, may not contain indirect references (see Section 3.7.1, “Content Streams”). Also, see implementation note 8 in Appendix H. Example 3.1 shows the use of an indirect object to specify the length of a stream. The value of the stream’s Length entry is an integer object that follows the stream  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0064.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 3</span></div>
+<div class="pos" id="*41:362" style="top:41;left:362"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">64</span></div>
+<div class="pos" id="*49:567" style="top:49;left:567"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Syntax</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The definition of an indirect object in a PDF file consists of its object number and</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">generation number, followed by the value of the object bracketed between the</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">keywords</span></div>
+<div class="pos" id="*136:192" style="top:136;left:192"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">obj</span></div>
+<div class="pos" id="*135:214" style="top:135;left:214"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*136:239" style="top:136;left:239"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">endobj</span></div>
+<div class="pos" id="*135:281" style="top:135;left:281"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. For example, the definition</span></div>
+<div class="pos" id="*170:149" style="top:170;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12 0 obj</span></div>
+<div class="pos" id="*186:166" style="top:186;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">( Brillig )</span></div>
+<div class="pos" id="*203:149" style="top:203;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">endobj</span></div>
+<div class="pos" id="*236:133" style="top:236;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">defines an indirect string object with an object number of 12, a generation</span></div>
+<div class="pos" id="*254:133" style="top:254;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">number of 0, and the value</span></div>
+<div class="pos" id="*255:292" style="top:255;left:292"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Brillig</span></div>
+<div class="pos" id="*254:324" style="top:254;left:324"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*289:133" style="top:289;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The object can be referred to from elsewhere in the file by an</span></div>
+<div class="pos" id="*289:505" style="top:289;left:505"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">indirect reference</span></div>
+<div class="pos" id="*307:133" style="top:307;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">consisting of the object number, the generation number, and the keyword</span></div>
+<div class="pos" id="*308:563" style="top:308;left:563"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*307:570" style="top:307;left:570"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">:</span></div>
+<div class="pos" id="*342:149" style="top:342;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12 0 R</span></div>
+<div class="pos" id="*375:133" style="top:375;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Beginning with PDF 1.5, indirect objects may reside in object streams (see</span></div>
+<div class="pos" id="*393:133" style="top:393;left:133"><a href="pg_0100.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Section 3.4.6, “Object Streams”). They are referred to in the same way; however,</span></a></div>
+<div class="pos" id="*411:133" style="top:411;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">their definition does not include the keywords</span></div>
+<div class="pos" id="*412:405" style="top:412;left:405"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">obj</span></div>
+<div class="pos" id="*411:428" style="top:411;left:428"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*412:453" style="top:412;left:453"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">endobj</span></div>
+<div class="pos" id="*411:494" style="top:411;left:494"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*446:133" style="top:446;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An indirect reference to an undefined object is not an error; it is simply treated as</span></div>
+<div class="pos" id="*464:133" style="top:464;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">a reference to the null object. For example, if a file contains the indirect reference</span></div>
+<div class="pos" id="*483:133" style="top:483;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">17 0 R</span></div>
+<div class="pos" id="*482:178" style="top:482;left:178"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">but does not contain the corresponding definition</span></div>
+<div class="pos" id="*517:149" style="top:517;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">17 0 obj</span></div>
+<div class="pos" id="*534:166" style="top:534;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*550:149" style="top:550;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">endobj</span></div>
+<div class="pos" id="*583:133" style="top:583;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">then the indirect reference is considered to refer to the null object.</span></div>
+<div class="pos" id="*618:133" style="top:618;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*618:168" style="top:618;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">In the data structures that make up a PDF document, certain values are re-</span></div>
+<div class="pos" id="*636:133" style="top:636;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">quired to be specified as indirect object references. Except where this is explicitly</span></div>
+<div class="pos" id="*654:133" style="top:654;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">called out, any object (other than a stream) may be specified either directly or as an</span></div>
+<div class="pos" id="*672:133" style="top:672;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">indirect object reference; the semantics are entirely equivalent. Note in particular</span></div>
+<div class="pos" id="*690:133" style="top:690;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">that content streams, which define the visible contents of the document, may not</span></div>
+<div class="pos" id="*708:133" style="top:708;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">contain indirect references (see Section 3.7.1, “Content Streams”). Also, see imple-</span></div>
+<div class="pos" id="*726:133" style="top:726;left:133"><a href="pg_1100.htm"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">mentation note 8 in Appendix H.</span></a></div>
+<div class="pos" id="*761:133" style="top:761;left:133"><a href="pg_0065.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Example 3.1 shows the use of an indirect object to specify the length of a stream.</span></a></div>
+<div class="pos" id="*779:133" style="top:779;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The value of the stream’s</span></div>
+<div class="pos" id="*780:279" style="top:780;left:279"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Length</span></div>
+<div class="pos" id="*779:324" style="top:779;left:324"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry is an integer object that follows the stream</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0063.htm" title="Go to previous page">Previous</a> <a href="pg_0065.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(64);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

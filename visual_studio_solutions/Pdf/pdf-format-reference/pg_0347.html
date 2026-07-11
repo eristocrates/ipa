@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0347.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 4.8 347 Images Note: The interpolation algorithm is implementation-dependent and is not specified by PDF. Image interpolation may not always be performed for some classes of images or on some output devices. Alternate Images Alternate images (PDF 1.3) provide a straightforward and backward-compatible way to include multiple versions of an image in a PDF file for different purposes. These variant representations of the image may differ, for example, in resolution or in color space. The primary goal is to reduce the need to maintain separate versions of a PDF document for low-resolution on-screen viewing and highresolution printing. In PDF 1.3, a base image (that is, the image XObject referred to in a resource dictionary) can contain an Alternates entry. The value of this entry is an array of alternate image dictionaries specifying variant representations of the base image. Each alternate image dictionary contains an image XObject for one variant and specifies its properties. Table 4.41 shows the contents of an alternate image dictionary. TABLE 4.41 Entries in an alternate image dictionary KEY TYPE VALUE Image DefaultForPrinting stream boolean (Required) The image XObject for the alternate image. (Optional) A flag indicating whether this alternate image is the default version to be used for printing. At most one alternate for a given base image may be so designated. If no alternate has this entry set to true, the base image is used for printing. OC dictionary (Optional; PDF 1.5) An optional content group (see Section 4.10.1, “Optional Content Groups”) or optional content membership dictionary (see “Optional Content Membership Dictionaries” on page 365”) that facilitates the selection of which alternate image to use. Example 4.29 shows an image with a single alternate. The base image is a grayscale image, and the alternate is a high-resolution RGB image stored on a Web server.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0347.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 4.8</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">347</span></div>
+<div class="pos" id="*49:567" style="top:49;left:567"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Images</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*99:167" style="top:99;left:167"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">The interpolation algorithm is implementation-dependent and is not specified</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">by PDF. Image interpolation may not always be performed for some classes of imag-</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">es or on some output devices.</span></div>
+<div class="pos" id="*178:133" style="top:178;left:133"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Alternate Images</span></div>
+<div class="pos" id="*215:133" style="top:215;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Alternate images (PDF 1.3)</span></div>
+<div class="pos" id="*215:296" style="top:215;left:296"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">provide a straightforward and backward-compatible</span></div>
+<div class="pos" id="*233:133" style="top:233;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">way to include multiple versions of an image in a PDF file for different purposes.</span></div>
+<div class="pos" id="*251:133" style="top:251;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">These variant representations of the image may differ, for example, in resolution</span></div>
+<div class="pos" id="*269:133" style="top:269;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or in color space. The primary goal is to reduce the need to maintain separate</span></div>
+<div class="pos" id="*287:133" style="top:287;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">versions of a PDF document for low-resolution on-screen viewing and high-</span></div>
+<div class="pos" id="*305:133" style="top:305;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">resolution printing.</span></div>
+<div class="pos" id="*340:133" style="top:340;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">In PDF 1.3, a</span></div>
+<div class="pos" id="*340:220" style="top:340;left:220"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">base image</span></div>
+<div class="pos" id="*340:289" style="top:340;left:289"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(that is, the image XObject referred to in a resource</span></div>
+<div class="pos" id="*358:133" style="top:358;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary) can contain an</span></div>
+<div class="pos" id="*358:291" style="top:358;left:291"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Alternates</span></div>
+<div class="pos" id="*358:355" style="top:358;left:355"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry. The value of this entry is an array of</span></div>
+<div class="pos" id="*376:133" style="top:376;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">alternate image dictionaries</span></div>
+<div class="pos" id="*376:296" style="top:376;left:296"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specifying variant representations of the base image.</span></div>
+<div class="pos" id="*394:133" style="top:394;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Each alternate image dictionary contains an image XObject for one variant and</span></div>
+<div class="pos" id="*412:133" style="top:412;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specifies its properties. Table 4.41 shows the contents of an alternate image dictio-</span></div>
+<div class="pos" id="*430:133" style="top:430;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nary.</span></div>
+<div class="pos" id="*473:228" style="top:473;left:228"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 4.41 Entries in an alternate image dictionary</span></div>
+<div class="pos" id="*494:74" style="top:494;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*494:191" style="top:494;left:191"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*494:258" style="top:494;left:258"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*520:74" style="top:520;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Image</span></div>
+<div class="pos" id="*548:74" style="top:548;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DefaultForPrinting</span></div>
+<div class="pos" id="*520:191" style="top:520;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stream</span></div>
+<div class="pos" id="*548:191" style="top:548;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">boolean</span></div>
+<div class="pos" id="*520:258" style="top:520;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*520:316" style="top:520;left:316"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The image XObject for the alternate image.</span></div>
+<div class="pos" id="*548:258" style="top:548;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*548:316" style="top:548;left:316"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A flag indicating whether this alternate image is the default ver-</span></div>
+<div class="pos" id="*565:258" style="top:565;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sion to be used for printing. At most one alternate for a given base image may</span></div>
+<div class="pos" id="*582:258" style="top:582;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">be so designated. If no alternate has this entry set to</span></div>
+<div class="pos" id="*582:542" style="top:582;left:542"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*582:564" style="top:582;left:564"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, the base image is</span></div>
+<div class="pos" id="*598:258" style="top:598;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">used for printing.</span></div>
+<div class="pos" id="*627:74" style="top:627;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">OC</span></div>
+<div class="pos" id="*627:191" style="top:627;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary</span></div>
+<div class="pos" id="*627:258" style="top:627;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; PDF 1.5)</span></div>
+<div class="pos" id="*627:363" style="top:627;left:363"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An optional content group (see Section 4.10.1, “Optional</span></div>
+<div class="pos" id="*644:258" style="top:644;left:258"><a href="pg_0364.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Content Groups”) or optional content membership dictionary (see “Optional</span></a></div>
+<div class="pos" id="*660:258" style="top:660;left:258"><a href="pg_0365.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Content Membership Dictionaries” on page 365”) that facilitates the selec-</span></a></div>
+<div class="pos" id="*677:258" style="top:677;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion of which alternate image to use.</span></div>
+<div class="pos" id="*715:133" style="top:715;left:133"><a href="pg_0348.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Example 4.29 shows an image with a single alternate. The base image is a gray-</span></a></div>
+<div class="pos" id="*733:133" style="top:733;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">scale image, and the alternate is a high-resolution</span></div>
+<div class="pos" id="*733:434" style="top:733;left:434"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*733:466" style="top:733;left:466"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">image stored on a Web</span></div>
+<div class="pos" id="*751:133" style="top:751;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">server.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0346.htm" title="Go to previous page">Previous</a> <a href="pg_0348.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(347);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

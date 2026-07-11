@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0481.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 6.2 481 Conversions among Device Color Spaces 6.2.1 Conversion between DeviceGray and DeviceRGB Black, white, and intermediate shades of gray can be considered special cases of RGB color. A grayscale value is described by a single number: 0.0 corresponds to black, 1.0 to white, and intermediate values to different gray levels. A gray level is equivalent to an RGB value with all three components the same. In other words, the RGB color value equivalent to a specific gray value is simply red = gray green = gray blue = gray The gray value for a given RGB value is computed according to the NTSC video standard, which determines how a color television signal is rendered on a blackand-white television set: gray = 0.3 × red + 0.59 × green + 0.11 × blue 6.2.2 Conversion between DeviceGray and DeviceCMYK Nominally, a gray level is the complement of the black component of CMYK. Therefore, the CMYK color value equivalent to a specific gray level is simply cyan magenta yellow black = = = = 0.0 0.0 0.0 1.0 – gray To obtain the equivalent gray level for a given CMYK value, the contributions of all components must be taken into account: · gray = 1.0 – min(1.0, 0.3 × cyan + 0.59 × magenta + 0.11 × yellow + black ) The interactions between the black component and the other three are elaborated below. 6.2.3 Conversion from DeviceRGB to DeviceCMYK Conversion of a color value from RGB to CMYK is a two-step process. The first step is to convert the red-green-blue value to equivalent cyan, magenta, and yel-  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0481.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 6.2</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">481</span></div>
+<div class="pos" id="*49:389" style="top:49;left:389"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Conversions among Device Color Spaces</span></div>
+<div class="pos" id="*99:88" style="top:99;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">6.2.1 Conversion between DeviceGray and DeviceRGB</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Black, white, and intermediate shades of gray can be considered special cases of</span></div>
+<div class="pos" id="*154:133" style="top:154;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*154:163" style="top:154;left:163"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color. A grayscale value is described by a single number: 0.0 corresponds to</span></div>
+<div class="pos" id="*172:133" style="top:172;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">black, 1.0 to white, and intermediate values to different gray levels.</span></div>
+<div class="pos" id="*206:133" style="top:206;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A gray level is equivalent to an</span></div>
+<div class="pos" id="*206:313" style="top:206;left:313"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*206:344" style="top:206;left:344"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value with all three components the same. In</span></div>
+<div class="pos" id="*224:133" style="top:224;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">other words, the</span></div>
+<div class="pos" id="*224:231" style="top:224;left:231"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*224:261" style="top:224;left:261"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color value equivalent to a specific gray value is simply</span></div>
+<div class="pos" id="*253:147" style="top:253;left:147"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">red</span></div>
+<div class="pos" id="*251:172" style="top:251;left:172"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*253:188" style="top:253;left:188"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">gray</span></div>
+<div class="pos" id="*270:134" style="top:270;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">green</span></div>
+<div class="pos" id="*267:172" style="top:267;left:172"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*270:188" style="top:270;left:188"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">gray</span></div>
+<div class="pos" id="*286:141" style="top:286;left:141"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">blue</span></div>
+<div class="pos" id="*283:172" style="top:283;left:172"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*286:188" style="top:286;left:188"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">gray</span></div>
+<div class="pos" id="*319:133" style="top:319;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The gray value for a given</span></div>
+<div class="pos" id="*319:290" style="top:319;left:290"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*319:321" style="top:319;left:321"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value is computed according to the NTSC video</span></div>
+<div class="pos" id="*337:133" style="top:337;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">standard, which determines how a color television signal is rendered on a black-</span></div>
+<div class="pos" id="*355:133" style="top:355;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and-white television set:</span></div>
+<div class="pos" id="*384:134" style="top:384;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">gray</span></div>
+<div class="pos" id="*381:166" style="top:381;left:166"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*384:182" style="top:384;left:182"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.3</span></div>
+<div class="pos" id="*381:203" style="top:381;left:203"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*384:215" style="top:384;left:215"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">red</span></div>
+<div class="pos" id="*381:237" style="top:381;left:237"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*384:249" style="top:384;left:249"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.59</span></div>
+<div class="pos" id="*381:277" style="top:381;left:277"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*384:288" style="top:384;left:288"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">green</span></div>
+<div class="pos" id="*381:323" style="top:381;left:323"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*384:335" style="top:384;left:335"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.11</span></div>
+<div class="pos" id="*381:363" style="top:381;left:363"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*384:374" style="top:384;left:374"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">blue</span></div>
+<div class="pos" id="*426:88" style="top:426;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">6.2.2 Conversion between DeviceGray and DeviceCMYK</span></div>
+<div class="pos" id="*463:133" style="top:463;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Nominally, a gray level is the complement of the black component of</span></div>
+<div class="pos" id="*463:560" style="top:463;left:560"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK.</span></div>
+<div class="pos" id="*481:133" style="top:481;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Therefore, the</span></div>
+<div class="pos" id="*481:218" style="top:481;left:218"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*481:262" style="top:481;left:262"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color value equivalent to a specific gray level is simply</span></div>
+<div class="pos" id="*510:157" style="top:510;left:157"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">cyan</span></div>
+<div class="pos" id="*527:134" style="top:527;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">magenta</span></div>
+<div class="pos" id="*543:148" style="top:543;left:148"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">yellow</span></div>
+<div class="pos" id="*559:154" style="top:559;left:154"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">black</span></div>
+<div class="pos" id="*508:191" style="top:508;left:191"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*524:191" style="top:524;left:191"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*540:191" style="top:540;left:191"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*557:191" style="top:557;left:191"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*510:207" style="top:510;left:207"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.0</span></div>
+<div class="pos" id="*527:207" style="top:527;left:207"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.0</span></div>
+<div class="pos" id="*543:207" style="top:543;left:207"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.0</span></div>
+<div class="pos" id="*559:207" style="top:559;left:207"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1.0</span></div>
+<div class="pos" id="*557:228" style="top:557;left:228"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*559:239" style="top:559;left:239"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">gray</span></div>
+<div class="pos" id="*593:133" style="top:593;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">To obtain the equivalent gray level for a given</span></div>
+<div class="pos" id="*593:405" style="top:593;left:405"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*593:449" style="top:593;left:449"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value, the contributions of</span></div>
+<div class="pos" id="*612:133" style="top:612;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">all components must be taken into account:</span></div>
+<div class="pos" id="*634:248" style="top:634;left:248"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">·</span></div>
+<div class="pos" id="*645:134" style="top:645;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">gray</span></div>
+<div class="pos" id="*642:167" style="top:642;left:167"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*645:182" style="top:645;left:182"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1.0</span></div>
+<div class="pos" id="*642:203" style="top:642;left:203"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*645:214" style="top:645;left:214"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">min(1.0</span></div>
+<div class="pos" id="*641:262" style="top:641;left:262"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*645:269" style="top:645;left:269"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.3</span></div>
+<div class="pos" id="*641:290" style="top:641;left:290"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*645:302" style="top:645;left:302"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">cyan</span></div>
+<div class="pos" id="*642:332" style="top:642;left:332"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*645:344" style="top:645;left:344"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.59</span></div>
+<div class="pos" id="*641:372" style="top:641;left:372"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*645:384" style="top:645;left:384"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">magenta</span></div>
+<div class="pos" id="*642:437" style="top:642;left:437"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*645:449" style="top:645;left:449"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.11</span></div>
+<div class="pos" id="*641:477" style="top:641;left:477"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*645:489" style="top:645;left:489"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">yellow</span></div>
+<div class="pos" id="*642:529" style="top:642;left:529"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*645:541" style="top:645;left:541"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">black</span></div>
+<div class="pos" id="*645:573" style="top:645;left:573"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">)</span></div>
+<div class="pos" id="*679:133" style="top:679;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The interactions between the black component and the other three are elaborated</span></div>
+<div class="pos" id="*697:133" style="top:697;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">below.</span></div>
+<div class="pos" id="*740:88" style="top:740;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">6.2.3 Conversion from DeviceRGB to DeviceCMYK</span></div>
+<div class="pos" id="*777:133" style="top:777;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Conversion of a color value from</span></div>
+<div class="pos" id="*777:332" style="top:777;left:332"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*777:363" style="top:777;left:363"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to</span></div>
+<div class="pos" id="*777:379" style="top:777;left:379"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*777:424" style="top:777;left:424"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is a two-step process. The first</span></div>
+<div class="pos" id="*795:133" style="top:795;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">step is to convert the red-green-blue value to equivalent cyan, magenta, and yel-</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0480.htm" title="Go to previous page">Previous</a> <a href="pg_0482.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(481);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

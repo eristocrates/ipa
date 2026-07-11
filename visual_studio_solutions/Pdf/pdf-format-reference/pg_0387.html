@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0387.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 5 5 Text This chapter describes the special facilities in PDF for dealing with text— specifically, for representing characters with glyphs from fonts. A glyph is a graphical shape and is subject to all graphical manipulations, such as coordinate transformation. Because of the importance of text in most page descriptions, PDF provides higher-level facilities that permit an application to describe, select, and render glyphs conveniently and efficiently. The first section is a general description of how glyphs from fonts are painted on the page. Subsequent sections cover the following topics in detail: • Text state. A subset of the graphics state parameters pertain to text, including parameters that select the font, scale the glyphs to an appropriate size, and accomplish other graphical effects. • Text objects and operators. The text operators specify the glyphs to be painted, represented by string objects whose values are interpreted as sequences of character codes. A text object encloses a sequence of text operators and associated parameters. • Font data structures. Font dictionaries and associated data structures provide information that a consumer application needs to interpret the text and position the glyphs properly. The definitions of the glyphs themselves are contained in font programs, which may be embedded in the PDF file, built into the application, or obtained from an external font file. 387  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0387.png" ALT=""></div>
+<div class="pos" id="*145:317" style="top:145;left:317"><span id="*15" style="font-style:normal;font-weight:700;font-size:15px;font-family:MyriadPro-Black,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 5</span></div>
+<div class="pos" id="*220:336" style="top:220;left:336"><span id="*1" style="font-style:normal;font-weight:700;font-size:1px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#FFFFFF;">5</span></div>
+<div class="pos" id="*198:338" style="top:198;left:338"><span id="*32" style="font-style:normal;font-weight:700;font-size:32px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">Text</span></div>
+<div class="pos" id="*299:133" style="top:299;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">This chapter describes the special facilities in PDF for dealing with text— specifi-</span></div>
+<div class="pos" id="*317:133" style="top:317;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cally, for representing characters with glyphs from fonts. A glyph is a graphical</span></div>
+<div class="pos" id="*335:133" style="top:335;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">shape and is subject to all graphical manipulations, such as coordinate transfor-</span></div>
+<div class="pos" id="*353:133" style="top:353;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">mation. Because of the importance of text in most page descriptions, PDF pro-</span></div>
+<div class="pos" id="*371:133" style="top:371;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">vides higher-level facilities that permit an application to describe, select, and</span></div>
+<div class="pos" id="*389:133" style="top:389;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">render glyphs conveniently and efficiently.</span></div>
+<div class="pos" id="*424:133" style="top:424;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The first section is a general description of how glyphs from fonts are painted on</span></div>
+<div class="pos" id="*442:133" style="top:442;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the page. Subsequent sections cover the following topics in detail:</span></div>
+<div class="pos" id="*474:133" style="top:474;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*476:145" style="top:476;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Text state.</span></div>
+<div class="pos" id="*476:208" style="top:476;left:208"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A subset of the graphics state parameters pertain to text, including</span></div>
+<div class="pos" id="*495:145" style="top:495;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">parameters that select the font, scale the glyphs to an appropriate size, and</span></div>
+<div class="pos" id="*513:145" style="top:513;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">accomplish other graphical effects.</span></div>
+<div class="pos" id="*537:133" style="top:537;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*539:145" style="top:539;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Text objects and operators.</span></div>
+<div class="pos" id="*539:302" style="top:539;left:302"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The text operators specify the glyphs to be painted,</span></div>
+<div class="pos" id="*557:145" style="top:557;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">represented by string objects whose values are interpreted as sequences of char-</span></div>
+<div class="pos" id="*575:145" style="top:575;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">acter codes. A text object encloses a sequence of text operators and associated</span></div>
+<div class="pos" id="*593:145" style="top:593;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">parameters.</span></div>
+<div class="pos" id="*617:133" style="top:617;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*620:145" style="top:620;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Font data structures.</span></div>
+<div class="pos" id="*620:270" style="top:620;left:270"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Font dictionaries and associated data structures provide</span></div>
+<div class="pos" id="*638:145" style="top:638;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">information that a consumer application needs to interpret the text and posi-</span></div>
+<div class="pos" id="*656:145" style="top:656;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion the glyphs properly. The definitions of the glyphs themselves are contained</span></div>
+<div class="pos" id="*674:145" style="top:674;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in</span></div>
+<div class="pos" id="*674:161" style="top:674;left:161"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">font programs,</span></div>
+<div class="pos" id="*674:247" style="top:674;left:247"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">which may be embedded in the PDF file, built into the appli-</span></div>
+<div class="pos" id="*692:145" style="top:692;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cation, or obtained from an external font file.</span></div>
+<div class="pos" id="*857:359" style="top:857;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">387</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0386.htm" title="Go to previous page">Previous</a> <a href="pg_0388.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(387);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

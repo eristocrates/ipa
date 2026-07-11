@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0281.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 4.5 281 Color Spaces Given a formula for converting any combination of black and gold tints to calibrated RGB, a 2-in, 3-out type 4 (PostScript calculator) function could be used for the tint transformation. Alternatively, a type 0 (sampled) function could be used, but this would require a large number of sample points to represent the function accurately; for example, sampling each input variable for 256 tint values between 0.0 and 1.0 would require 256 2 = 65,536 samples. But since the DeviceN color space is being used as the base of an Indexed color space, there are actually only 256 possible combinations of black and gold tint values. A more compact way to represent this information is to put the alternate color values directly into the lookup table alongside the DeviceN color values, as in Example 4.19. Example 4.19 10 0 obj % Color space [ /Indexed [ /DeviceN [ /Black /Gold /None /None /None ] [ /CalRGB &lt;&lt; /WhitePoint [ 1.0 1.0 1.0 ] /Gamma [ 2.2 2.2 2.2 ] &gt;&gt; ] 20 0 R % Tint transformation function ] 255 … Lookup table … ] endobj In this example, each entry in the lookup table has five components: two for the black and gold colorants and three more (specified as None) for the equivalent CalRGB color components. If the black and gold colorants are available on the output device, the None components are ignored; if black and gold are not available, the tint transformation function is used to convert a five-component color into a three-component equivalent in the alternate CalRGB color space. But because, by construction, the third, fourth, and fifth components are the CalRGB components, the tint transformation function can merely discard the first two components and return the last three. This can be easily expressed with a type 4 (PostScript calculator) function, as shown in Example 4.20.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0281.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 4.5</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">281</span></div>
+<div class="pos" id="*49:536" style="top:49;left:536"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Color Spaces</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Given a formula for converting any combination of black and gold tints to cali-</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">brated</span></div>
+<div class="pos" id="*117:173" style="top:117;left:173"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB,</span></div>
+<div class="pos" id="*117:206" style="top:117;left:206"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">a 2-in, 3-out type 4 (PostScript calculator) function could be used for</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the tint transformation. Alternatively, a type 0 (sampled) function could be used,</span></div>
+<div class="pos" id="*153:133" style="top:153;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">but this would require a large number of sample points to represent the function</span></div>
+<div class="pos" id="*171:133" style="top:171;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">accurately; for example, sampling each input variable for 256 tint values between</span></div>
+<div class="pos" id="*189:133" style="top:189;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.0 and 1.0 would require 256</span></div>
+<div class="pos" id="*185:316" style="top:185;left:316"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*186:325" style="top:186;left:325"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*189:337" style="top:189;left:337"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">65,536 samples. But since the</span></div>
+<div class="pos" id="*190:520" style="top:190;left:520"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*189:574" style="top:189;left:574"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color</span></div>
+<div class="pos" id="*207:133" style="top:207;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space is being used as the base of an</span></div>
+<div class="pos" id="*208:350" style="top:208;left:350"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Indexed</span></div>
+<div class="pos" id="*207:401" style="top:207;left:401"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space, there are actually only</span></div>
+<div class="pos" id="*225:133" style="top:225;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">256 possible combinations of black and gold tint values. A more compact way to</span></div>
+<div class="pos" id="*243:133" style="top:243;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">represent this information is to put the alternate color values directly into the</span></div>
+<div class="pos" id="*261:133" style="top:261;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">lookup table alongside the</span></div>
+<div class="pos" id="*262:289" style="top:262;left:289"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*261:341" style="top:261;left:341"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color values, as in Example 4.19.</span></div>
+<div class="pos" id="*296:133" style="top:296;left:133"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">Example 4.19</span></div>
+<div class="pos" id="*321:149" style="top:321;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10 0 obj</span></div>
+<div class="pos" id="*321:433" style="top:321;left:433"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Color space</span></div>
+<div class="pos" id="*338:166" style="top:338;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ /Indexed</span></div>
+<div class="pos" id="*354:199" style="top:354;left:199"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ /DeviceN</span></div>
+<div class="pos" id="*371:233" style="top:371;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ /Black /Gold /None /None /None ]</span></div>
+<div class="pos" id="*388:233" style="top:388;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ /CalRGB</span></div>
+<div class="pos" id="*404:266" style="top:404;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">&lt;&lt; /WhitePoint [ 1.0 1.0 1.0 ]</span></div>
+<div class="pos" id="*421:289" style="top:421;left:289"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/Gamma [ 2.2 2.2 2.2 ]</span></div>
+<div class="pos" id="*438:266" style="top:438;left:266"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">&gt;&gt;</span></div>
+<div class="pos" id="*454:233" style="top:454;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*471:233" style="top:471;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">20 0 R</span></div>
+<div class="pos" id="*471:433" style="top:471;left:433"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Tint transformation function</span></div>
+<div class="pos" id="*488:199" style="top:488;left:199"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*504:199" style="top:504;left:199"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">255</span></div>
+<div class="pos" id="*521:199" style="top:521;left:199"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">… Lookup table …</span></div>
+<div class="pos" id="*538:166" style="top:538;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*554:149" style="top:554;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">endobj</span></div>
+<div class="pos" id="*588:133" style="top:588;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">In this example, each entry in the lookup table has</span></div>
+<div class="pos" id="*588:435" style="top:588;left:435"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">five</span></div>
+<div class="pos" id="*588:459" style="top:588;left:459"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">components: two for the</span></div>
+<div class="pos" id="*606:133" style="top:606;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">black and gold colorants and three more (specified as</span></div>
+<div class="pos" id="*606:457" style="top:606;left:457"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">None</span></div>
+<div class="pos" id="*606:489" style="top:606;left:489"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) for the equivalent</span></div>
+<div class="pos" id="*624:133" style="top:624;left:133"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CalRGB</span></div>
+<div class="pos" id="*624:181" style="top:624;left:181"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color components. If the black and gold colorants are available on the</span></div>
+<div class="pos" id="*642:133" style="top:642;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">output device, the</span></div>
+<div class="pos" id="*642:250" style="top:642;left:250"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">None</span></div>
+<div class="pos" id="*642:288" style="top:642;left:288"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">components are ignored; if black and gold are not</span></div>
+<div class="pos" id="*660:133" style="top:660;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">available, the tint transformation function is used to convert a five-component</span></div>
+<div class="pos" id="*678:133" style="top:678;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color into a three-component equivalent in the alternate</span></div>
+<div class="pos" id="*679:484" style="top:679;left:484"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CalRGB</span></div>
+<div class="pos" id="*678:533" style="top:678;left:533"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space.</span></div>
+<div class="pos" id="*696:133" style="top:696;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">But because, by construction, the third, fourth, and fifth components</span></div>
+<div class="pos" id="*696:562" style="top:696;left:562"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">are</span></div>
+<div class="pos" id="*696:585" style="top:696;left:585"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the</span></div>
+<div class="pos" id="*715:133" style="top:715;left:133"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CalRGB</span></div>
+<div class="pos" id="*714:181" style="top:714;left:181"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">components, the tint transformation function can merely discard the</span></div>
+<div class="pos" id="*732:133" style="top:732;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">first two components and return the last three. This can be easily expressed</span></div>
+<div class="pos" id="*750:133" style="top:750;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">with a type 4 (PostScript calculator) function, as shown in Example 4.20.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0280.htm" title="Go to previous page">Previous</a> <a href="pg_0282.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(281);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

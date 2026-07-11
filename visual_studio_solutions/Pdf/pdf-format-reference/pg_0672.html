@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0672.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 8 672 Interactive Features Each field in a document’s interactive form is defined by a field dictionary (see Section 8.6.2, “Field Dictionaries”). For purposes of definition and naming, the fields can be organized hierarchically and can inherit attributes from their ancestors in the field hierarchy. A field’s children in the hierarchy may also include widget annotations (see “Widget Annotations” on page 640) that define its appearance on the page. A field whose children are widget annotations is called a terminal field. As a convenience, when a field has only a single associated widget annotation, the contents of the field dictionary and the annotation dictionary (Section 8.4.1, “Annotation Dictionaries”) may be merged into a single dictionary containing entries that pertain to both a field and an annotation. (This presents no ambiguity, since the contents of the two kinds of dictionaries do not conflict.) If such an object defines an appearance stream, the appearance must be consistent with the object’s current value as a field. Note: Fields containing text whose contents are not known in advance may need to construct their appearance streams dynamically instead of defining them statically in an appearance dictionary; see “Variable Text” on page 677. 8.6.1 Interactive Form Dictionary The contents and properties of a document’s interactive form are defined by an interactive form dictionary that is referenced from the AcroForm entry in the document catalog (see Section 3.6.1, “Document Catalog”). Table 8.67 shows the contents of this dictionary. TABLE 8.67 Entries in the interactive form dictionary KEY TYPE VALUE Fields array boolean (Required) An array of references to the document’s root fields (those with no ancestors in the field hierarchy). (Optional) A flag specifying whether to construct appearance streams and appearance dictionaries for all widget annotations in the document (see “Variable Text” on page 677). Default value: false. (Optional; PDF 1.3) A set of flags specifying various document-level characteristics related to signature fields (see Table 8.68, below, and “Signature Fields” on page 695). Default value: 0. NeedAppearances SigFlags integer  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0672.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 8</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">672</span></div>
+<div class="pos" id="*49:497" style="top:49;left:497"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Interactive Features</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Each field in a document’s interactive form is defined by a</span></div>
+<div class="pos" id="*99:488" style="top:99;left:488"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">field dictionary</span></div>
+<div class="pos" id="*99:581" style="top:99;left:581"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><a href="pg_0674.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Section 8.6.2, “Field Dictionaries”). For purposes of definition and naming, the</span></a></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">fields can be organized hierarchically and can inherit attributes from their an-</span></div>
+<div class="pos" id="*153:133" style="top:153;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cestors in the field hierarchy. A field’s children in the hierarchy may also include</span></div>
+<div class="pos" id="*171:133" style="top:171;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">widget annotations (see “Widget Annotations” on page 640) that define its ap-</span></div>
+<div class="pos" id="*189:133" style="top:189;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">pearance on the page. A field whose children are widget annotations is called a</span></div>
+<div class="pos" id="*207:133" style="top:207;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">terminal field.</span></div>
+<div class="pos" id="*242:133" style="top:242;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">As a convenience, when a field has only a single associated widget annotation, the</span></div>
+<div class="pos" id="*260:133" style="top:260;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">contents of the field dictionary and the annotation dictionary (Section 8.4.1, “An-</span></div>
+<div class="pos" id="*278:133" style="top:278;left:133"><a href="pg_0605.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">notation Dictionaries”) may be merged into a single dictionary containing entries</span></a></div>
+<div class="pos" id="*296:133" style="top:296;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that pertain to both a field and an annotation. (This presents no ambiguity, since</span></div>
+<div class="pos" id="*314:133" style="top:314;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the contents of the two kinds of dictionaries do not conflict.) If such an object de-</span></div>
+<div class="pos" id="*332:133" style="top:332;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">fines an appearance stream, the appearance must be consistent with the object’s</span></div>
+<div class="pos" id="*350:133" style="top:350;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">current value as a field.</span></div>
+<div class="pos" id="*383:133" style="top:383;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*383:168" style="top:383;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Fields containing text whose contents are not known in advance may need to</span></div>
+<div class="pos" id="*401:133" style="top:401;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">construct their appearance streams dynamically instead of defining them statically</span></div>
+<div class="pos" id="*420:133" style="top:420;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">in an appearance dictionary; see “Variable Text” on page 677.</span></div>
+<div class="pos" id="*463:88" style="top:463;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.6.1 Interactive Form Dictionary</span></div>
+<div class="pos" id="*498:133" style="top:498;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The contents and properties of a document’s interactive form are defined by an</span></div>
+<div class="pos" id="*516:133" style="top:516;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">interactive form dictionary</span></div>
+<div class="pos" id="*516:288" style="top:516;left:288"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that is referenced from the</span></div>
+<div class="pos" id="*517:445" style="top:517;left:445"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">AcroForm</span></div>
+<div class="pos" id="*516:506" style="top:516;left:506"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the doc-</span></div>
+<div class="pos" id="*534:133" style="top:534;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ument catalog (see Section 3.6.1, “Document Catalog”). Table 8.67 shows the</span></div>
+<div class="pos" id="*552:133" style="top:552;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">contents of this dictionary.</span></div>
+<div class="pos" id="*595:225" style="top:595;left:225"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 8.67 Entries in the interactive form dictionary</span></div>
+<div class="pos" id="*616:74" style="top:616;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*616:191" style="top:616;left:191"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*616:294" style="top:616;left:294"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*642:74" style="top:642;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Fields</span></div>
+<div class="pos" id="*642:191" style="top:642;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+<div class="pos" id="*687:191" style="top:687;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">boolean</span></div>
+<div class="pos" id="*642:294" style="top:642;left:294"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*642:353" style="top:642;left:353"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An array of references to the document’s</span></div>
+<div class="pos" id="*642:575" style="top:642;left:575"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">root fields</span></div>
+<div class="pos" id="*642:630" style="top:642;left:630"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(those</span></div>
+<div class="pos" id="*659:294" style="top:659;left:294"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">with no ancestors in the field hierarchy).</span></div>
+<div class="pos" id="*687:294" style="top:687;left:294"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*687:352" style="top:687;left:352"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A flag specifying whether to construct appearance streams</span></div>
+<div class="pos" id="*704:294" style="top:704;left:294"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and appearance dictionaries for all widget annotations in the docu-</span></div>
+<div class="pos" id="*721:294" style="top:721;left:294"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ment (see “Variable Text” on page 677). Default value:</span></div>
+<div class="pos" id="*721:580" style="top:721;left:580"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">false</span></div>
+<div class="pos" id="*721:604" style="top:721;left:604"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*749:294" style="top:749;left:294"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; PDF 1.3)</span></div>
+<div class="pos" id="*749:403" style="top:749;left:403"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A set of flags specifying various document-level</span></div>
+<div class="pos" id="*766:294" style="top:766;left:294"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">characteristics related to signature fields (see Table 8.68, below, and</span></div>
+<div class="pos" id="*782:294" style="top:782;left:294"><a href="pg_0695.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">“Signature Fields” on page 695). Default value: 0.</span></a></div>
+<div class="pos" id="*687:74" style="top:687;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">NeedAppearances</span></div>
+<div class="pos" id="*749:74" style="top:749;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">SigFlags</span></div>
+<div class="pos" id="*749:191" style="top:749;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">integer</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0671.htm" title="Go to previous page">Previous</a> <a href="pg_0673.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(672);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

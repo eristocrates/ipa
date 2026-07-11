@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1107.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="S E C T I O N H .3 1107 Implementation Notes 4.5.5, “Special Color Spaces” (DeviceN Color Spaces) 48. Acrobat viewers support the special meaning of None only when a DeviceN color space is used as a base color for an indexed color space. For all other uses of DeviceN, None is treated as a regular spot color name. 4.5.5, “Special Color Spaces” (Multitone Examples) 49. This method of representing multitones is used by Adobe Photoshop 5.0.2 and subsequent versions when exporting EPS files. Beginning with version 4.0, Acrobat exports Level 3 EPS files using this method, and can also export Level 1 EPS files that use the “Level 1 separation” conventions of Adobe Technical Note #5044, Color Separation Conventions for PostScript Language Programs. These conventions are used to emit multitone images as calls to “customcolorimage” with overprinting, which can then be placed in page layout applications such as Adobe PageMaker®, Adobe In-Design, and QuarkXPress. 4.6, “Patterns” 50. Acrobat viewers earlier than version 4.0 do not display patterns on the screen, although they do print them to PostScript output devices. 4.7, “External Objects” 51. Acrobat viewers that encounter an XObject of an unknown type display an error specifying the type of XObject but report no further errors thereafter. 4.8.4, “Image Dictionaries” 52. Image XObjects in PDF 1.2 and earlier versions are all implicitly unmasked images. A PDF consumer that does not recognize the Mask entry treats the image as unmasked without raising an error. 53. All Acrobat viewers ignore the Name entry in an image dictionary. 4.8.5, “Masked Images” 54. Explicit masking and color key masking are features of PostScript LanguageLevel 3. Acrobat 4.0 and later versions do not attempt to emulate the  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1107.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">S E C T I O N H .3</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1107</span></div>
+<div class="pos" id="*49:486" style="top:49;left:486"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Implementation Notes</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><a href="pg_0262.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">4.5.5, “Special Color Spaces” (DeviceN Color Spaces)</span></a></div>
+<div class="pos" id="*127:144" style="top:127;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">48. Acrobat viewers support the special meaning of</span></div>
+<div class="pos" id="*128:485" style="top:128;left:485"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">None</span></div>
+<div class="pos" id="*127:524" style="top:127;left:524"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">only when a</span></div>
+<div class="pos" id="*146:174" style="top:146;left:174"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*145:226" style="top:145;left:226"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space is used as a base color for an indexed color space. For</span></div>
+<div class="pos" id="*163:174" style="top:163;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">all other uses of</span></div>
+<div class="pos" id="*164:269" style="top:164;left:269"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*163:318" style="top:163;left:318"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*164:324" style="top:164;left:324"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">None</span></div>
+<div class="pos" id="*163:359" style="top:163;left:359"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is treated as a regular spot color name.</span></div>
+<div class="pos" id="*206:133" style="top:206;left:133"><a href="pg_0262.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">4.5.5, “Special Color Spaces” (Multitone Examples)</span></a></div>
+<div class="pos" id="*235:144" style="top:235;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">49. This method of representing multitones is used by Adobe Photoshop 5.0.2</span></div>
+<div class="pos" id="*253:174" style="top:253;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and subsequent versions when exporting EPS files. Beginning with ver-</span></div>
+<div class="pos" id="*271:174" style="top:271;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sion 4.0, Acrobat exports Level 3 EPS files using this method, and can also</span></div>
+<div class="pos" id="*289:174" style="top:289;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">export Level 1 EPS files that use the “Level 1 separation” conventions of</span></div>
+<div class="pos" id="*307:174" style="top:307;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Adobe Technical Note #5044,</span></div>
+<div class="pos" id="*307:351" style="top:307;left:351"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Color Separation Conventions for PostScript</span></div>
+<div class="pos" id="*325:174" style="top:325;left:174"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Language Programs.</span></div>
+<div class="pos" id="*325:294" style="top:325;left:294"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">These conventions are used to emit multitone images</span></div>
+<div class="pos" id="*343:174" style="top:343;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">as calls to “customcolorimage” with overprinting, which can then be</span></div>
+<div class="pos" id="*361:174" style="top:361;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">placed in page layout applications such as Adobe PageMaker</span></div>
+<div class="pos" id="*357:552" style="top:357;left:552"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">®</span></div>
+<div class="pos" id="*361:555" style="top:361;left:555"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, Adobe</span></div>
+<div class="pos" id="*379:174" style="top:379;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">In-Design, and QuarkXPress.</span></div>
+<div class="pos" id="*421:133" style="top:421;left:133"><a href="pg_0289.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">4.6, “Patterns”</span></a></div>
+<div class="pos" id="*449:144" style="top:449;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">50. Acrobat viewers earlier than version 4.0 do not display patterns on the</span></div>
+<div class="pos" id="*467:174" style="top:467;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">screen, although they do print them to PostScript output devices.</span></div>
+<div class="pos" id="*509:133" style="top:509;left:133"><a href="pg_0332.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">4.7, “External Objects”</span></a></div>
+<div class="pos" id="*538:144" style="top:538;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">51. Acrobat viewers that encounter an XObject of an unknown type display</span></div>
+<div class="pos" id="*556:174" style="top:556;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">an error specifying the type of XObject but report no further errors there-</span></div>
+<div class="pos" id="*574:174" style="top:574;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">after.</span></div>
+<div class="pos" id="*615:133" style="top:615;left:133"><a href="pg_0339.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">4.8.4, “Image Dictionaries”</span></a></div>
+<div class="pos" id="*644:144" style="top:644;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">52. Image XObjects in PDF 1.2 and earlier versions are all implicitly un-</span></div>
+<div class="pos" id="*662:174" style="top:662;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">masked images. A PDF consumer that does not recognize the</span></div>
+<div class="pos" id="*663:538" style="top:663;left:538"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Mask</span></div>
+<div class="pos" id="*662:573" style="top:662;left:573"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry</span></div>
+<div class="pos" id="*680:174" style="top:680;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">treats the image as unmasked without raising an error.</span></div>
+<div class="pos" id="*706:144" style="top:706;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">53. All Acrobat viewers ignore the</span></div>
+<div class="pos" id="*707:355" style="top:707;left:355"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Name</span></div>
+<div class="pos" id="*706:393" style="top:706;left:393"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in an image dictionary.</span></div>
+<div class="pos" id="*748:133" style="top:748;left:133"><a href="pg_0349.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">4.8.5, “Masked Images”</span></a></div>
+<div class="pos" id="*776:144" style="top:776;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">54. Explicit masking and color key masking are features of PostScript Lan-</span></div>
+<div class="pos" id="*795:174" style="top:795;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">guageLevel 3. Acrobat 4.0 and later versions do not attempt to emulate the</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1106.htm" title="Go to previous page">Previous</a> <a href="pg_1108.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1107);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

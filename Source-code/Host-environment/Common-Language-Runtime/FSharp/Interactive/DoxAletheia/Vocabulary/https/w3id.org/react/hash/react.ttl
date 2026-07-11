@@ -1,0 +1,218 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix w3id: <https://w3id.org/>.
+@prefix eep: <https://w3id.org/eep#>.
+@prefix hpont: <https://w3id.org/hpont#>.
+@prefix react: <https://w3id.org/react#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix bto: <https://w3id.org/bot#>.
+
+ccrel:license a owl:AnnotationProperty.
+dc11:date a owl:AnnotationProperty.
+dc11:description a owl:AnnotationProperty.
+dc11:publisher a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:contributor a owl:AnnotationProperty.
+dcterms:created a owl:AnnotationProperty.
+dcterms:creator a owl:AnnotationProperty.
+dcterms:description a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:title a owl:AnnotationProperty.
+bibo:status a owl:AnnotationProperty.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+voaf:Vocabulary a owl:Class.
+owl:versionInfo a owl:AnnotationProperty.
+status:term_status a owl:AnnotationProperty.
+bto:Space a owl:Class.
+hpont:HeatPumpSystem rdfs:subClassOf eep:Executor.
+w3id:react ccrel:license <https://creativecommons.org/licenses/by-nc/4.0/>;
+           dcterms:contributor """Ignacio Lazaro <mailto:ignacio.lazar@tekniker.es>
+Nikola Tomasevic <mailto:nikola.tomasevic@pupin.rs>
+Marko Jelic <mailto:marko.jelic@pupin.rs>
+Dea Pujic <mailto:dea.pujic@pupin.rs>
+Lluis Millet <mailto:lluis.millet.biosca@ise.fraunhofer.de>""";
+           dcterms:created "2021-06-01";
+           dcterms:creator "Iker Esnaola-Gonzalez <mailto:iker.esnaola@tekniker.es>";
+           dcterms:description """The REACT ontology aims to represent all the necessary knowledge to support the achievement of island energy independence through renewable energy generation and storage, a demand response platform, and promoting user engagement in a local energy community.
+
+The REACT ontology has been developed as part of the REACT project which has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement no. 824395."""@en,
+                               "The REACT Ontology";
+           dcterms:issued "2021-09-14"@en;
+           dcterms:title "The REACT Ontology"@en;
+           bibo:status "Work in Progress"@en;
+           vann:preferredNamespacePrefix "react";
+           vann:preferredNamespaceUri react:;
+           a owl:Ontology;
+           owl:imports w3id:affectedBy,
+                       w3id:eep,
+                       w3id:bot-0.3.2,
+                       w3id:hpont;
+           owl:versionInfo "0.3"@en.
+react: a owl:NamedIndividual,
+         voaf:Vocabulary.
+react:Battery a owl:Class;
+              rdfs:comment "A unit that creates electrical energy from stored chemical energy"@en;
+              rdfs:isDefinedBy react:;
+              rdfs:label "Battery"@en;
+              rdfs:subClassOf eep:Executor;
+              status:term_status "testing"@en.
+react:PVSystem a owl:Class;
+               rdfs:comment "A system composed of one or more solar panels combined that use energy from the sun to generate electricity"@en;
+               rdfs:isDefinedBy react:;
+               rdfs:label "PV System"@en;
+               rdfs:subClassOf eep:Executor;
+               status:term_status "testing"@en.
+react:equipmentCategory a owl:DatatypeProperty;
+                        rdfs:comment "Category to which a given equipment (eep:Executor) belongs to"@en;
+                        rdfs:domain eep:Executor;
+                        rdfs:isDefinedBy react:;
+                        rdfs:label "equipment Category"@en;
+                        status:term_status "testing".
+react:hasAccessType a owl:DatatypeProperty;
+                    rdfs:comment "The type of acces of a given Execution"@en;
+                    rdfs:domain eep:Execution;
+                    rdfs:isDefinedBy react:;
+                    rdfs:label "has Access Type"@en;
+                    status:term_status "stable".
+react:hasBatteryCapacity a owl:DatatypeProperty;
+                         rdfs:comment "The nominal charge stored by a given Battery."@en;
+                         rdfs:domain react:Battery;
+                         rdfs:isDefinedBy react:;
+                         rdfs:label "has Battery Capacity"@en;
+                         status:term_status "stable".
+react:hasDemandEnergyCarrier a owl:DatatypeProperty;
+                             rdfs:comment "Energy carriers present in a given facility (bot:Space) as demand"@en;
+                             rdfs:domain bto:Space;
+                             rdfs:isDefinedBy react:;
+                             rdfs:label "has Demand Energy Carrier"@en;
+                             status:term_status "stable".
+react:hasElectricitySupplier a owl:DatatypeProperty;
+                             rdfs:comment "Information of the Electricity Supplier of a given facility (bot:Space)"@en;
+                             rdfs:domain bto:Space;
+                             rdfs:isDefinedBy react:;
+                             rdfs:label "has Electricity Supplier"@en;
+                             status:term_status "testing".
+react:hasEnergy a owl:DatatypeProperty;
+                rdfs:comment "The nominal energy of a given Equipment (eep:Executor)"@en;
+                rdfs:domain eep:Executor;
+                rdfs:isDefinedBy react:;
+                rdfs:label "has Energy"@en;
+                status:term_status "stable".
+react:hasGenerationEnergyCarrier a owl:DatatypeProperty;
+                                 rdfs:comment "Energy carriers present in a given facility (bot:Space) as local generators"@en;
+                                 rdfs:domain bto:Space;
+                                 rdfs:isDefinedBy react:;
+                                 rdfs:label "has Generation Energy Carrier"@en;
+                                 status:term_status "stable".
+react:hasGridCode a owl:DatatypeProperty;
+                  rdfs:comment "Code to uniquely identify electricity supply points such as individual domestic residences"@en;
+                  rdfs:domain bto:Space;
+                  rdfs:isDefinedBy react:;
+                  rdfs:label "has Grid Code"@en;
+                  status:term_status "testing".
+react:hasGridType a owl:DatatypeProperty;
+                  status:term_status "testing".
+react:hasInstallationDate a owl:DatatypeProperty;
+                          rdfs:comment "Date when a given Equipment (eep:Executor) was installed."@en;
+                          rdfs:domain eep:Executor;
+                          rdfs:isDefinedBy react:;
+                          rdfs:label "has Installation Date";
+                          status:term_status "stable".
+react:hasMaxChargePower a owl:DatatypeProperty;
+                        rdfs:comment "Maximum charging power"@en;
+                        rdfs:domain react:Battery;
+                        rdfs:isDefinedBy react:;
+                        rdfs:label "has Max Charge Power"@en;
+                        status:term_status "testing".
+react:hasMaxDischargePower a owl:DatatypeProperty;
+                           rdfs:comment "Maximum discharging power"@en;
+                           rdfs:domain react:Battery;
+                           rdfs:isDefinedBy react:;
+                           rdfs:label "has Max Discharge Power"@en;
+                           status:term_status "testing".
+react:hasMaxGridExport a owl:DatatypeProperty;
+                       rdfs:comment "Maximum power fed"@en;
+                       rdfs:domain bto:Space;
+                       rdfs:isDefinedBy react:;
+                       rdfs:label "has Max Grid Export"@en;
+                       status:term_status "testing".
+react:hasMaxGridImport a owl:DatatypeProperty;
+                       rdfs:comment "Maximum power drawn from the grid"@en;
+                       rdfs:domain bto:Space;
+                       rdfs:isDefinedBy react:;
+                       rdfs:label "has Max Grid Import"@en;
+                       status:term_status "testing".
+react:hasMeasurementIndex a owl:DatatypeProperty;
+                          rdfs:comment "Measurement index of an Execution or a set of Executions. Measurement index for scalar values is set to 1. For vector values (e.g. 3-phase measurement), it is set to the corresponding value: 1,2,3…"@en;
+                          rdfs:domain eep:Execution;
+                          rdfs:isDefinedBy react:;
+                          rdfs:label "has Measurement Index"@en;
+                          status:term_status "stable".
+react:hasModuleQuantity a owl:DatatypeProperty;
+                        rdfs:comment "The quantity of modules that composes a given energy storage or production system"@en;
+                        rdfs:domain [owl:unionOf (react:Battery
+                                                  react:PVSystem) ; 
+                                     a owl:Class];
+                        rdfs:isDefinedBy react:;
+                        rdfs:label "has Module Quantity"@en;
+                        status:term_status "stable".
+react:hasSamplingMethod a owl:DatatypeProperty;
+                        rdfs:comment "Sampling method of a given Execution"@en;
+                        rdfs:domain eep:Execution;
+                        rdfs:isDefinedBy react:;
+                        rdfs:label "has Sampling Method"@en;
+                        status:term_status "stable".
+react:hasSerialNumber a owl:DatatypeProperty;
+                      rdfs:comment "Unique identifier of a phyisical equipment (eep:Executor)"@en;
+                      rdfs:domain eep:Executor;
+                      rdfs:isDefinedBy react:;
+                      rdfs:label "has Serial Number"@en;
+                      status:term_status "testing".
+react:hasTechnology a owl:DatatypeProperty;
+                    rdfs:comment "Base technology of a given Equipment (eep:Executor)"@en;
+                    rdfs:domain eep:Executor;
+                    rdfs:isDefinedBy react:;
+                    rdfs:label "has Technology"@en;
+                    status:term_status "stable".
+react:hasTotalProductionCapacity a owl:DatatypeProperty;
+                                 rdfs:comment "The nominal total production capacity of a given production system"@en;
+                                 rdfs:domain react:PVSystem;
+                                 rdfs:isDefinedBy react:;
+                                 rdfs:label "has Total Production Capacity"@en;
+                                 status:term_status "stable".
+react:hasTotalStorageCapacity a owl:DatatypeProperty;
+                              rdfs:comment "The nominal total storage capacity of a given storage system"@en;
+                              rdfs:domain react:Battery;
+                              rdfs:isDefinedBy react:;
+                              rdfs:label "has Total Storage Capacity"@en;
+                              status:term_status "stable".
+react:hasVoltage a owl:DatatypeProperty;
+                 rdfs:comment "The nominal voltage of a Battery."@en;
+                 rdfs:domain react:Battery;
+                 rdfs:isDefinedBy react:;
+                 rdfs:label "has Voltage";
+                 status:term_status "stable".
+react:isCurtailable a owl:DatatypeProperty;
+                    rdfs:comment "Whether a PV system has the possibility of curtailment or not"@en;
+                    rdfs:domain react:PVSystem;
+                    rdfs:isDefinedBy react:;
+                    rdfs:label "is Curtailable"@en;
+                    status:term_status "testing".
+react:isManagedBy a owl:ObjectProperty;
+                  rdfs:comment "Relationship between an Executor and another Executor that manages it."@en;
+                  rdfs:domain eep:Executor;
+                  rdfs:isDefinedBy react:;
+                  rdfs:label "isManagedBy"@en;
+                  rdfs:range eep:Executor;
+                  status:term_status "stable".

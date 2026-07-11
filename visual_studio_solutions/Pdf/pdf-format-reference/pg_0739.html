@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0739.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 8.7 739 Digital Signatures At minimum, it must include the signer’s X.509 signing certificate. This certificate is used to verify the signature value in Contents. The PKCS#7 object may optionally contain the following attributes: • Time stamp information as an unsigned attribute (PDF 1.6): The timestamp token must conform to RFC 3161 and must be computed and embedded into the PKCS#7 object as described in Appendix A of RFC 3161. • Revocation information as an signed attribute (PDF 1.6): This attribute can include all the revocation information that is necessary to carry out revocation checks for the signer's certificate and its issuer certificates. • One or more issuer certificates from the signer’s trust chain (PDF 1.6); see implementation note 146 in Appendix H. • One or more RFC 3281 attribute certificates associated with the signer certificate (PDF 1.7). Revocation Information The following object identifier identifies Adobe's revocation information attribute: adbe-revocationInfoArchival OBJECT IDENTIFIER ::= { adbe(1.2.840.113583) acrobat(1) security(1) 8 } The value of the revocation information attribute can include any of the following data types: • Certificate Revocation Lists (CRLs), described in RFC 3280 (see the Bibliography): CRLs are generally large and therefore not recommended to be embedded in the PKCS#7 object. • Online Certificate Status Protocol (OCSP) Responses, described in RFC 2560, X.509 Internet Public Key Infrastructure Online Certificate Status Protocol— OCSP (see the Bibliography): These are generally small and constant in size and are the suggested data type to be included in the PKCS#7 object. • Custom revocation information: The format is not prescribed by this specification, other than that it be encoded as an OCTET STRING. The application should be able to determine the type of data contained within the OCTET STRING by looking at the associated OBJECT IDENTIFIER.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0739.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 8.7</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">739</span></div>
+<div class="pos" id="*49:507" style="top:49;left:507"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Digital Signatures</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">At minimum, it must include the signer’s X.509 signing certificate. This certifi-</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cate is used to verify the signature value in</span></div>
+<div class="pos" id="*117:382" style="top:117;left:382"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Contents</span></div>
+<div class="pos" id="*117:434" style="top:117;left:434"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*151:133" style="top:151;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The PKCS#7 object may optionally contain the following attributes:</span></div>
+<div class="pos" id="*184:133" style="top:184;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*186:145" style="top:186;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Time stamp information as an unsigned attribute (PDF</span></div>
+<div class="pos" id="*186:467" style="top:186;left:467"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">1.6):</span></div>
+<div class="pos" id="*186:496" style="top:186;left:496"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The timestamp to-</span></div>
+<div class="pos" id="*204:145" style="top:204;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ken must conform to RFC 3161 and must be computed and embedded into the</span></div>
+<div class="pos" id="*222:145" style="top:222;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">PKCS#7 object as described in Appendix A of RFC 3161.</span></div>
+<div class="pos" id="*246:133" style="top:246;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*249:145" style="top:249;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Revocation information as an signed attribute (PDF</span></div>
+<div class="pos" id="*249:451" style="top:249;left:451"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">1.6):</span></div>
+<div class="pos" id="*249:480" style="top:249;left:480"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">This attribute can in-</span></div>
+<div class="pos" id="*267:145" style="top:267;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">clude all the revocation information that is necessary to carry out revocation</span></div>
+<div class="pos" id="*285:145" style="top:285;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">checks for the signer's certificate and its issuer certificates.</span></div>
+<div class="pos" id="*309:133" style="top:309;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*311:145" style="top:311;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">One or more issuer certificates from the signer’s trust chain (PDF</span></div>
+<div class="pos" id="*311:531" style="top:311;left:531"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">1.6);</span></div>
+<div class="pos" id="*311:561" style="top:311;left:561"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">see im-</span></div>
+<div class="pos" id="*329:145" style="top:329;left:145"><a href="pg_1122.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">plementation note 146 in Appendix H.</span></a></div>
+<div class="pos" id="*353:133" style="top:353;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*356:145" style="top:356;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">One or more RFC 3281 attribute certificates associated with the signer certifi-</span></div>
+<div class="pos" id="*374:145" style="top:374;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cate (PDF</span></div>
+<div class="pos" id="*374:206" style="top:374;left:206"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">1.7).</span></div>
+<div class="pos" id="*417:133" style="top:417;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Revocation Information</span></div>
+<div class="pos" id="*453:133" style="top:453;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The following object identifier identifies Adobe's revocation information at-</span></div>
+<div class="pos" id="*471:133" style="top:471;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tribute:</span></div>
+<div class="pos" id="*506:149" style="top:506;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">adbe-revocationInfoArchival OBJECT IDENTIFIER ::=</span></div>
+<div class="pos" id="*522:316" style="top:522;left:316"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">{ adbe(1.2.840.113583) acrobat(1) security(1) 8 }</span></div>
+<div class="pos" id="*556:133" style="top:556;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The value of the revocation information attribute can include any of the following</span></div>
+<div class="pos" id="*574:133" style="top:574;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">data types:</span></div>
+<div class="pos" id="*606:133" style="top:606;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*608:145" style="top:608;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Certificate Revocation Lists (CRLs), described in RFC 3280 (see the Bibliogra-</span></div>
+<div class="pos" id="*626:145" style="top:626;left:145"><a href="pg_1151.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">phy): CRLs are generally large and therefore not recommended to be embed-</span></a></div>
+<div class="pos" id="*645:145" style="top:645;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ded in the PKCS#7 object.</span></div>
+<div class="pos" id="*669:133" style="top:669;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*671:145" style="top:671;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Online Certificate Status Protocol (OCSP) Responses, described in RFC 2560,</span></div>
+<div class="pos" id="*689:145" style="top:689;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X.509 Internet Public Key Infrastructure Online Certificate Status Protocol—</span></div>
+<div class="pos" id="*707:145" style="top:707;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">OCSP</span></div>
+<div class="pos" id="*707:183" style="top:707;left:183"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see the Bibliography): These are generally small and constant in size and</span></div>
+<div class="pos" id="*725:145" style="top:725;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are the suggested data type to be included in the PKCS#7 object.</span></div>
+<div class="pos" id="*749:133" style="top:749;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*751:145" style="top:751;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Custom revocation information: The format is not prescribed by this specifica-</span></div>
+<div class="pos" id="*770:145" style="top:770;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion, other than that it be encoded as an</span></div>
+<div class="pos" id="*770:381" style="top:770;left:381"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">OCTET STRING</span></div>
+<div class="pos" id="*770:463" style="top:770;left:463"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. The application should</span></div>
+<div class="pos" id="*788:145" style="top:788;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">be able to determine the type of data contained within the</span></div>
+<div class="pos" id="*788:501" style="top:788;left:501"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">OCTET STRING</span></div>
+<div class="pos" id="*788:590" style="top:788;left:590"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">by</span></div>
+<div class="pos" id="*806:145" style="top:806;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">looking at the associated</span></div>
+<div class="pos" id="*806:291" style="top:806;left:291"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">OBJECT IDENTIFIER</span></div>
+<div class="pos" id="*806:399" style="top:806;left:399"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0738.htm" title="Go to previous page">Previous</a> <a href="pg_0740.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(739);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0207.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 4.2 207 Coordinate Systems The following transformations are shown in the figure: • A translation of 10 units in the x direction and 20 units in the y direction • A rotation of 30 degrees • A scaling by a factor of 3 in the x direction In the figure, the axes are shown with a dash pattern having a 2-unit dash and a 2-unit gap. In addition, the original (untransformed) axes are shown in a lighter color for reference. Notice that the scale-rotate-translate ordering results in a distortion of the coordinate system, leaving the x and y axes no longer perpendicular; the recommended translate-rotate-scale ordering results in no distortion. 4.2.3 Transformation Matrices This section discusses the mathematics of transformation matrices. It is not necessary to read this section to use the transformations described previously; the information is presented for the benefit of readers who want to gain a deeper understanding of the theoretical basis of coordinate transformations. To understand the mathematics of coordinate transformations in PDF, it is vital to remember two points: • Transformations alter coordinate systems, not graphics objects. All objects painted before a transformation is applied are unaffected by the transformation. Objects painted after the transformation is applied are interpreted in the transformed coordinate system. • Transformation matrices specify the transformation from the new (transformed) coordinate system to the original (untransformed) coordinate system. All coordinates used after the transformation are expressed in the transformed coordinate system. PDF applies the transformation matrix to find the equivalent coordinates in the untransformed coordinate system. Note: Many computer graphics textbooks consider transformations of graphics objects rather than of coordinate systems. Although either approach is correct and selfconsistent, some details of the calculations differ depending on which point of view is taken.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0207.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 4.2</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">207</span></div>
+<div class="pos" id="*49:499" style="top:49;left:499"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Coordinate Systems</span></div>
+<div class="pos" id="*99:136" style="top:99;left:136"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The following transformations are shown in the figure:</span></div>
+<div class="pos" id="*131:133" style="top:131;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*133:145" style="top:133;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A translation of 10 units in the</span></div>
+<div class="pos" id="*133:327" style="top:133;left:327"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*133:337" style="top:133;left:337"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">direction and 20 units in the</span></div>
+<div class="pos" id="*133:505" style="top:133;left:505"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*133:515" style="top:133;left:515"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">direction</span></div>
+<div class="pos" id="*157:133" style="top:157;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*160:145" style="top:160;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A rotation of 30 degrees</span></div>
+<div class="pos" id="*184:133" style="top:184;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*186:145" style="top:186;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A scaling by a factor of 3 in the</span></div>
+<div class="pos" id="*186:329" style="top:186;left:329"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*186:339" style="top:186;left:339"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">direction</span></div>
+<div class="pos" id="*221:133" style="top:221;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">In the figure, the axes are shown with a dash pattern having a 2-unit dash and a</span></div>
+<div class="pos" id="*239:133" style="top:239;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2-unit gap. In addition, the original (untransformed) axes are shown in a lighter</span></div>
+<div class="pos" id="*257:133" style="top:257;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color for reference. Notice that the scale-rotate-translate ordering results in a</span></div>
+<div class="pos" id="*275:133" style="top:275;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">distortion of the coordinate system, leaving the</span></div>
+<div class="pos" id="*275:408" style="top:275;left:408"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*275:418" style="top:275;left:418"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*275:443" style="top:275;left:443"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*275:453" style="top:275;left:453"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">axes no longer perpendic-</span></div>
+<div class="pos" id="*293:133" style="top:293;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ular; the recommended translate-rotate-scale ordering results in no distortion.</span></div>
+<div class="pos" id="*336:88" style="top:336;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">4.2.3 Transformation Matrices</span></div>
+<div class="pos" id="*373:133" style="top:373;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">This section discusses the mathematics of transformation matrices. It is not</span></div>
+<div class="pos" id="*391:133" style="top:391;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">necessary to read this section to use the transformations described previously;</span></div>
+<div class="pos" id="*409:133" style="top:409;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the information is presented for the benefit of readers who want to gain a deeper</span></div>
+<div class="pos" id="*427:133" style="top:427;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">understanding of the theoretical basis of coordinate transformations.</span></div>
+<div class="pos" id="*463:133" style="top:463;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">To understand the mathematics of coordinate transformations in PDF, it is vital</span></div>
+<div class="pos" id="*481:133" style="top:481;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to remember two points:</span></div>
+<div class="pos" id="*515:133" style="top:515;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*517:145" style="top:517;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Transformations alter coordinate systems, not graphics objects.</span></div>
+<div class="pos" id="*517:503" style="top:517;left:503"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">All objects paint-</span></div>
+<div class="pos" id="*535:145" style="top:535;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ed before a transformation is applied are unaffected by the transformation. Ob-</span></div>
+<div class="pos" id="*554:145" style="top:554;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">jects painted after the transformation is applied are interpreted in the</span></div>
+<div class="pos" id="*572:145" style="top:572;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">transformed coordinate system.</span></div>
+<div class="pos" id="*597:133" style="top:597;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*599:145" style="top:599;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Transformation matrices specify the transformation from the new (transformed)</span></div>
+<div class="pos" id="*617:145" style="top:617;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">coordinate system to the original (untransformed) coordinate system.</span></div>
+<div class="pos" id="*617:550" style="top:617;left:550"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">All coor-</span></div>
+<div class="pos" id="*635:145" style="top:635;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dinates used after the transformation are expressed in the transformed coordi-</span></div>
+<div class="pos" id="*654:145" style="top:654;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nate system. PDF applies the transformation matrix to find the equivalent</span></div>
+<div class="pos" id="*672:145" style="top:672;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">coordinates in the untransformed coordinate system.</span></div>
+<div class="pos" id="*708:133" style="top:708;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*708:168" style="top:708;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Many computer graphics textbooks consider transformations of graphics ob-</span></div>
+<div class="pos" id="*726:133" style="top:726;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">jects rather than of coordinate systems. Although either approach is correct and self-</span></div>
+<div class="pos" id="*744:133" style="top:744;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">consistent, some details of the calculations differ depending on which point of view</span></div>
+<div class="pos" id="*762:133" style="top:762;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">is taken.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0206.htm" title="Go to previous page">Previous</a> <a href="pg_0208.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(207);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

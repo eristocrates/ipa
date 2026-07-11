@@ -1,0 +1,44 @@
+﻿namespace Fibo.BP.SecuritiesIssuance.DebtIssuance.Namespace
+module DebtIssuance =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/BP/SecuritiesIssuance/DebtIssuance.rdf") (Some @"fibo.BP.SecuritiesIssuance.DebtIssuance") None
+    let ABSSecuritizationProcess = {_prefixID with _localName = "ABSSecuritizationProcess"}
+    let AdvancedRefunding = {_prefixID with _localName = "AdvancedRefunding"}
+    let AssetPoolCreationProcess = {_prefixID with _localName = "AssetPoolCreationProcess"}
+    let BondIssuanceProgramme = {_prefixID with _localName = "BondIssuanceProgramme"}
+    let BondOffering = {_prefixID with _localName = "BondOffering"}
+    let BondOfferingWithWarrant = {_prefixID with _localName = "BondOfferingWithWarrant"}
+    let CDOSecuritizationProcess = {_prefixID with _localName = "CDOSecuritizationProcess"}
+    let CompletedDebtsPool = {_prefixID with _localName = "CompletedDebtsPool"}
+    let CreditCardPoolCreationProcess = {_prefixID with _localName = "CreditCardPoolCreationProcess"}
+    let DebtInstrumentPoolCreationProcess = {_prefixID with _localName = "DebtInstrumentPoolCreationProcess"}
+    let DebtIssuanceProcessInformation = {_prefixID with _localName = "DebtIssuanceProcessInformation"}
+    let DebtIssuanceProgramme = {_prefixID with _localName = "DebtIssuanceProgramme"}
+    let DebtIssuancePurpose = {_prefixID with _localName = "DebtIssuancePurpose"}
+    let DebtSecuritizationProcess = {_prefixID with _localName = "DebtSecuritizationProcess"}
+    let HomeEquityLineOfCreditPoolCreationProcess = {_prefixID with _localName = "HomeEquityLineOfCreditPoolCreationProcess"}
+    let InAssembly = {_prefixID with _localName = "InAssembly"}
+    let InAssemblyDebtsPool = {_prefixID with _localName = "InAssemblyDebtsPool"}
+    let InIssuance = {_prefixID with _localName = "InIssuance"}
+    let IssuanceProcessActivity = {_prefixID with _localName = "IssuanceProcessActivity"}
+    let Issued = {_prefixID with _localName = "Issued"}
+    let LoanPoolCreationProcess = {_prefixID with _localName = "LoanPoolCreationProcess"}
+    let MTNRegistration = {_prefixID with _localName = "MTNRegistration"}
+    let MediumTermNoteIssuanceProgramme = {_prefixID with _localName = "MediumTermNoteIssuanceProgramme"}
+    let MediumTermNoteOffering = {_prefixID with _localName = "MediumTermNoteOffering"}
+    let MuniIssueUnderwriter = {_prefixID with _localName = "MuniIssueUnderwriter"}
+    let NewMoneyPurpose = {_prefixID with _localName = "NewMoneyPurpose"}
+    let NotYetIssued = {_prefixID with _localName = "NotYetIssued"}
+    let NotYetIssuedDebtsPool = {_prefixID with _localName = "NotYetIssuedDebtsPool"}
+    let PoolBackedSecuritySecuritizationProcess = {_prefixID with _localName = "PoolBackedSecuritySecuritizationProcess"}
+    let PoolBackedSecuritySecuritizationProcessActor = {_prefixID with _localName = "PoolBackedSecuritySecuritizationProcessActor"}
+    let RefundingPurpose = {_prefixID with _localName = "RefundingPurpose"}
+    let RemarketingPurpose = {_prefixID with _localName = "RemarketingPurpose"}
+    let RetailAssetPoolCreationProcess = {_prefixID with _localName = "RetailAssetPoolCreationProcess"}
+    let SecuritizationProcessActor = {_prefixID with _localName = "SecuritizationProcessActor"}
+    let UnderwriterTakedownForDebt = {_prefixID with _localName = "UnderwriterTakedownForDebt"}
+    let announces = {_prefixID with _localName = "announces"}
+    let hasDebtIssuancePurpose = {_prefixID with _localName = "hasDebtIssuancePurpose"}
+    let hasOriginalIssueDiscount = {_prefixID with _localName = "hasOriginalIssueDiscount"}
+    let isBankQualified = {_prefixID with _localName = "isBankQualified"}
+    let resultsIn = {_prefixID with _localName = "resultsIn"}
+    let underwriterTakedownAmount = {_prefixID with _localName = "underwriterTakedownAmount"}

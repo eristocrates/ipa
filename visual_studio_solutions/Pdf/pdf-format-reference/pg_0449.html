@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0449.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 5.6 449 Composite Fonts KEY TYPE VALUE WMode integer (Optional) A code that determines the writing mode for any CIDFont with which this CMap is combined. The possible values are 0 for horizontal and 1 for vertical. Default value: 0. The value of this entry should be the same as the value of WMode in the CMap file. UseCMap name or stream (Optional) The name of a predefined CMap, or a stream containing a CMap, that is to be used as the base for this CMap. This base allows the CMap to be defined differentially, specifying only the character mappings that differ from the base CMap. CMap Example and Operator Summary CMap files are fully documented in Adobe Technical Note #5014, Adobe CMap and CIDFont Files Specification. The following example of a CMap stream object illustrates and partially explains the contents of a CMap file. There are several reasons for including this material here: • It documents some restrictions on the contents of a CMap file that can be embedded in a PDF file. • It provides background to aid in understanding subsequent material, particularly “CMap Mapping” on page 453. • It is the basis for a PDF feature, the ToUnicode CMap, which is a minor extension of the CMap file format. This extension is described in Section 5.9, “Extraction of Text Content.” Example 5.10 is a sample CMap for a Japanese Shift-JIS encoding. Character codes in this encoding can be either 1 or 2 bytes in length. This CMap could be used with a CIDFont that uses the same CID ordering as specified in the CIDSystemInfo entry. Note that several of the entries in the stream dictionary are also replicated in the stream data.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0449.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 5.6</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">449</span></div>
+<div class="pos" id="*49:515" style="top:49;left:515"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Composite Fonts</span></div>
+<div class="pos" id="*104:74" style="top:104;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*104:174" style="top:104;left:174"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*104:258" style="top:104;left:258"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*131:74" style="top:131;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">WMode</span></div>
+<div class="pos" id="*131:174" style="top:131;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">integer</span></div>
+<div class="pos" id="*131:258" style="top:131;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*131:317" style="top:131;left:317"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A code that determines the writing mode for any CIDFont with</span></div>
+<div class="pos" id="*147:258" style="top:147;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">which this CMap is combined. The possible values are 0 for horizontal and 1</span></div>
+<div class="pos" id="*164:258" style="top:164;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for vertical. Default value: 0.</span></div>
+<div class="pos" id="*189:258" style="top:189;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The value of this entry should be the same as the value of</span></div>
+<div class="pos" id="*190:584" style="top:190;left:584"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">WMode</span></div>
+<div class="pos" id="*189:630" style="top:189;left:630"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the</span></div>
+<div class="pos" id="*206:258" style="top:206;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CMap file.</span></div>
+<div class="pos" id="*235:74" style="top:235;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UseCMap</span></div>
+<div class="pos" id="*234:174" style="top:234;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name or</span></div>
+<div class="pos" id="*251:174" style="top:251;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stream</span></div>
+<div class="pos" id="*234:258" style="top:234;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*234:316" style="top:234;left:316"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The name of a predefined CMap, or a stream containing a CMap,</span></div>
+<div class="pos" id="*251:258" style="top:251;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that is to be used as the base for this CMap. This base allows the CMap to be</span></div>
+<div class="pos" id="*267:258" style="top:267;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">defined differentially, specifying only the character mappings that differ from</span></div>
+<div class="pos" id="*284:258" style="top:284;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the base CMap.</span></div>
+<div class="pos" id="*326:133" style="top:326;left:133"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CMap Example and Operator Summary</span></div>
+<div class="pos" id="*363:133" style="top:363;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CMap files are fully documented in Adobe Technical Note #5014,</span></div>
+<div class="pos" id="*363:527" style="top:363;left:527"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Adobe CMap</span></div>
+<div class="pos" id="*381:133" style="top:381;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">and CIDFont Files Specification.</span></div>
+<div class="pos" id="*381:321" style="top:381;left:321"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The following example of a CMap stream object</span></div>
+<div class="pos" id="*399:133" style="top:399;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">illustrates and partially explains the contents of a CMap file. There are several</span></div>
+<div class="pos" id="*417:133" style="top:417;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">reasons for including this material here:</span></div>
+<div class="pos" id="*450:133" style="top:450;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*452:145" style="top:452;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">It documents some restrictions on the contents of a CMap file that can be</span></div>
+<div class="pos" id="*470:145" style="top:470;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">embedded in a PDF file.</span></div>
+<div class="pos" id="*494:133" style="top:494;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*497:145" style="top:497;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">It provides background to aid in understanding subsequent material, particu-</span></div>
+<div class="pos" id="*515:145" style="top:515;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">larly “CMap Mapping” on page 453.</span></div>
+<div class="pos" id="*539:133" style="top:539;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*541:145" style="top:541;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">It is the basis for a PDF feature, the</span></div>
+<div class="pos" id="*542:355" style="top:542;left:355"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ToUnicode</span></div>
+<div class="pos" id="*541:421" style="top:541;left:421"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CMap, which is a minor exten-</span></div>
+<div class="pos" id="*559:145" style="top:559;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sion of the CMap file format. This extension is described in Section 5.9,</span></div>
+<div class="pos" id="*577:145" style="top:577;left:145"><a href="pg_0469.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">“Extraction of Text Content.”</span></a></div>
+<div class="pos" id="*612:133" style="top:612;left:133"><a href="pg_0450.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Example 5.10 is a sample CMap for a Japanese Shift-JIS encoding. Character</span></a></div>
+<div class="pos" id="*630:133" style="top:630;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">codes in this encoding can be either 1 or 2 bytes in length. This CMap could be</span></div>
+<div class="pos" id="*648:133" style="top:648;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">used with a CIDFont that uses the same CID ordering as specified in the</span></div>
+<div class="pos" id="*667:133" style="top:667;left:133"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CIDSystemInfo</span></div>
+<div class="pos" id="*666:222" style="top:666;left:222"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry. Note that several of the entries in the stream dictionary are</span></div>
+<div class="pos" id="*684:133" style="top:684;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">also replicated in the stream data.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0448.htm" title="Go to previous page">Previous</a> <a href="pg_0450.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(449);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

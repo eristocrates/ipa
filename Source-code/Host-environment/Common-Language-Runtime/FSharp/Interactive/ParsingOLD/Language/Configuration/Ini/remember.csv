@@ -1,0 +1,9 @@
+file_path_relative, file_path_remote
+ini.json          , https://github.com/justinmk/tree-sitter-ini/blob/master/src/grammar.json
+ini.plist         , https://github.com/textmate/ini.tmbundle/blob/master/Syntaxes/Ini.plist
+ini.md            , https://github.com/prantlf/fast-ini/blob/master/doc/grammar.md
+ini.d.ts          , https://github.com/prantlf/fast-ini/blob/master/pkg/parser/src/index.d.ts
+ini.ini           , https://en.wikipedia.org/wiki/INI_file#Example
+
+
+

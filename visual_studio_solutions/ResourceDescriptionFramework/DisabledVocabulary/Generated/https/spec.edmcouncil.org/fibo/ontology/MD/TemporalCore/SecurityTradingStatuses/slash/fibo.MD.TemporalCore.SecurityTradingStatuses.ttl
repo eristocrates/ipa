@@ -1,0 +1,106 @@
+@prefix fibo.MD.TemporalCore.SecurityTradingStatuses: <https://spec.edmcouncil.org/fibo/ontology/MD/TemporalCore/SecurityTradingStatuses/> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/>.
+@prefix cmns-cls: <https://www.omg.org/spec/Commons/Classifiers/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/>.
+@prefix fibo-fnd-arr-lif: <https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Lifecycles/>.
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/>.
+@prefix fibo-md-temx-trs: <https://spec.edmcouncil.org/fibo/ontology/MD/TemporalCore/SecurityTradingStatuses/>.
+@prefix fibo-sec-sec-lst: <https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix xs: <http://www.w3.org/2001/XMLSchema#>.
+
+fibo-md-temx-trs: dcterms:abstract "This ontology defines the various kinds of trading status that a security may be in at any given point in time. These includes such terms as active and halted, inactive and so on, along with their qualifying terms.";
+                  dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+		
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""";
+                  a owl:Ontology;
+                  rdfs:label "SecurityTradingStatuses"@en;
+                  owl:imports <https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FinancialInstruments/FinancialInstruments/>,
+                              <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Arrangements/Lifecycles/>,
+                              <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Utilities/AnnotationVocabulary/>,
+                              <https://spec.edmcouncil.org/fibo/ontology/master/latest/SEC/Securities/SecuritiesListings/>,
+                              cmns-av:,
+                              cmns-cls:;
+                  owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/latest/MD/TemporalCore/SecurityTradingStatuses/>;
+                  fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional;
+                  cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.".
+fibo-md-temx-trs:Active a owl:Class;
+                        rdfs:isDefinedBy fibo-md-temx-trs:;
+                        rdfs:label "active"@en;
+                        rdfs:subClassOf fibo-md-temx-trs:SecurityTradingStatus;
+                        owl:disjointWith fibo-md-temx-trs:Inactive;
+                        skos:definition "Security is actively traded"@en.
+fibo-md-temx-trs:ActivelyTrading a owl:Class;
+                                 rdfs:isDefinedBy fibo-md-temx-trs:;
+                                 rdfs:label "actively trading"@en;
+                                 rdfs:subClassOf fibo-md-temx-trs:ExchangeSecurityTradingStatus;
+                                 owl:disjointWith fibo-md-temx-trs:TradingHalted;
+                                 skos:definition "Security is actively traded on the exchange or trading facility"@en.
+fibo-md-temx-trs:ExchangeSecurityTradingStatus a owl:Class;
+                                               rdfs:isDefinedBy fibo-md-temx-trs:;
+                                               rdfs:label "exchange security trading status"@en;
+                                               rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStatus,
+                                                               [a owl:Restriction ; 
+                                                                owl:onProperty cmns-cls:classifies ; 
+                                                                owl:someValuesFrom fibo-sec-sec-lst:Listing];
+                                               skos:definition "trading status of a listed security on a given trading exchange"@en.
+fibo-md-temx-trs:Inactive a owl:Class;
+                          rdfs:isDefinedBy fibo-md-temx-trs:;
+                          rdfs:label "inactive"@en;
+                          rdfs:subClassOf fibo-md-temx-trs:SecurityTradingStatus.
+fibo-md-temx-trs:Issued a owl:Class;
+                        rdfs:isDefinedBy fibo-md-temx-trs:;
+                        rdfs:label "issued"@en;
+                        rdfs:subClassOf fibo-md-temx-trs:SecurityLifecycleStatus;
+                        skos:definition "The security has been issued into the secondary market."@en.
+fibo-md-temx-trs:SecurityLifecycleStatus a owl:Class;
+                                         rdfs:isDefinedBy fibo-md-temx-trs:;
+                                         rdfs:label "security lifecycle status"@en;
+                                         rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStatus,
+                                                         [a owl:Restriction ; 
+                                                          owl:onProperty cmns-cls:classifies ; 
+                                                          owl:someValuesFrom fibo-fbc-fi-fi:Security];
+                                         skos:definition "status of a security within its lifecycle"@en.
+fibo-md-temx-trs:SecurityTradingStatus a owl:Class;
+                                       rdfs:isDefinedBy fibo-md-temx-trs:;
+                                       rdfs:label "security trading status"@en;
+                                       rdfs:subClassOf fibo-fnd-arr-lif:LifecycleStatus,
+                                                       [a owl:Restriction ; 
+                                                        owl:onProperty cmns-cls:classifies ; 
+                                                        owl:someValuesFrom fibo-fbc-fi-fi:Security];
+                                       skos:definition "status of the security in terms of whether it is trading or not, and any special considerations relating to trading"@en;
+                                       skos:editorialNote "Exchange Traded Security trading status is now a separate term, covering trading suspension on an exchange, so that does not form part of this term."@en.
+fibo-md-temx-trs:TradingHalted a owl:Class;
+                               rdfs:isDefinedBy fibo-md-temx-trs:;
+                               rdfs:label "trading halted"@en;
+                               rdfs:subClassOf fibo-md-temx-trs:ExchangeSecurityTradingStatus.
+fibo-md-temx-trs:WhenDistributed a owl:Class;
+                                 rdfs:isDefinedBy fibo-md-temx-trs:;
+                                 rdfs:label "when distributed"@en;
+                                 rdfs:subClassOf fibo-md-temx-trs:SecurityLifecycleStatus;
+                                 skos:definition "Used to refer to a security that trades after the date of issue but before the time at which the certificates are delivered"@en.
+fibo-md-temx-trs:WhenIssued a owl:Class;
+                            rdfs:isDefinedBy fibo-md-temx-trs:;
+                            rdfs:label "when issued"@en;
+                            rdfs:subClassOf fibo-md-temx-trs:SecurityLifecycleStatus;
+                            skos:definition "When Issued or Gray Market trading is when a security is traded ahead of the date at which it is to be issued."@en.
+fibo-md-temx-trs:Worthless a owl:Class;
+                           rdfs:isDefinedBy fibo-md-temx-trs:;
+                           rdfs:label "worthless"@en;
+                           rdfs:subClassOf fibo-md-temx-trs:SecurityLifecycleStatus;
+                           skos:definition "Announcement by the regulator that the security has become worthless."@en;
+                           cmns-av:explanatoryNote "e.g. bankruptcy hearings - might result in this being said."@en.

@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1109.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="S E C T I O N H .3 1109 Implementation Notes application is different from the one used by the application that produced the document. The font program with the altered glyph widths may or may not be embedded. If it is embedded, its widths should exactly match the widths in the font dictionary. If the font program is not embedded, Acrobat overrides the widths in the font program on the viewer application’s system with the widths specified in the font dictionary. It is important that the widths in the font dictionary match the actual glyph widths of the font program that was used to produce the document. Consumers of PDF files depend on these widths in many different contexts, including viewing, printing, fauxing (font substitution), reflow, and word search. These operations may malfunction if arbitrary adjustments are made to the widths so that they do not represent the glyph widths intended by the PDF producer. It is recommended that diagnostic and preflight tools check the glyph widths in the font dictionary against those in an embedded font program and flag any inconsistencies. It would also be helpful if the tools could optionally check for consistency with the widths in font programs that are not embedded. This is useful for checking a PDF file immediately after it is produced, when the original font programs are still available. Note: This implementation note is also referred to in Section 5.6.3, “CIDFonts” (Glyph Metrics in CIDFonts). 5.5.1, “Type 1 Fonts” (Standard Type 1 Fonts (Standard 14 Fonts)) 62. Acrobat 3.0 and earlier viewers may ignore attempts to override the standard fonts. TABLE H.3 Names of standard fonts STANDARD NAME ALTERNATIVE Courier Courier−Oblique Courier−Bold Courier−BoldOblique Helvetica CourierNew CourierNew,Italic CourierNew,Bold CourierNew,BoldItalic Arial  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1109.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">S E C T I O N H .3</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1109</span></div>
+<div class="pos" id="*49:486" style="top:49;left:486"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Implementation Notes</span></div>
+<div class="pos" id="*99:174" style="top:99;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">application is different from the one used by the application that produced</span></div>
+<div class="pos" id="*116:174" style="top:116;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the document.</span></div>
+<div class="pos" id="*142:174" style="top:142;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The font program with the altered glyph widths may or may not be em-</span></div>
+<div class="pos" id="*159:174" style="top:159;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">bedded. If it is embedded, its widths should exactly match the widths in</span></div>
+<div class="pos" id="*176:174" style="top:176;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the font dictionary. If the font program is not embedded, Acrobat over-</span></div>
+<div class="pos" id="*194:174" style="top:194;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rides the widths in the font program on the viewer application’s system</span></div>
+<div class="pos" id="*211:174" style="top:211;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">with the widths specified in the font dictionary.</span></div>
+<div class="pos" id="*237:174" style="top:237;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">It is important that the widths in the font dictionary match the actual</span></div>
+<div class="pos" id="*254:174" style="top:254;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">glyph widths of the font program that was used to produce the document.</span></div>
+<div class="pos" id="*272:174" style="top:272;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Consumers of PDF files depend on these widths in many different con-</span></div>
+<div class="pos" id="*289:174" style="top:289;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">texts, including viewing, printing, fauxing (font substitution), reflow, and</span></div>
+<div class="pos" id="*306:174" style="top:306;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">word search. These operations may malfunction if arbitrary adjustments</span></div>
+<div class="pos" id="*324:174" style="top:324;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are made to the widths so that they do not represent the glyph widths in-</span></div>
+<div class="pos" id="*341:174" style="top:341;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tended by the PDF producer.</span></div>
+<div class="pos" id="*367:174" style="top:367;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">It is recommended that diagnostic and preflight tools check the glyph</span></div>
+<div class="pos" id="*384:174" style="top:384;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">widths in the font dictionary against those in an embedded font program</span></div>
+<div class="pos" id="*401:174" style="top:401;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and flag any inconsistencies. It would also be helpful if the tools could op-</span></div>
+<div class="pos" id="*419:174" style="top:419;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tionally check for consistency with the widths in font programs that are</span></div>
+<div class="pos" id="*436:174" style="top:436;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">not embedded. This is useful for checking a PDF file immediately after it</span></div>
+<div class="pos" id="*454:174" style="top:454;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is produced, when the original font programs are still available.</span></div>
+<div class="pos" id="*479:149" style="top:479;left:149"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*479:185" style="top:479;left:185"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">This implementation note is also referred to in Section 5.6.3, “CIDFonts”</span></div>
+<div class="pos" id="*497:149" style="top:497;left:149"><a href="pg_0439.htm"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Glyph Metrics in CIDFonts).</span></a></div>
+<div class="pos" id="*540:133" style="top:540;left:133"><a href="pg_0412.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">5.5.1, “Type 1 Fonts” (Standard Type 1 Fonts (Standard 14 Fonts))</span></a></div>
+<div class="pos" id="*569:144" style="top:569;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">62. Acrobat 3.0 and earlier viewers may ignore attempts to override the stan-</span></div>
+<div class="pos" id="*587:174" style="top:587;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dard fonts.</span></div>
+<div class="pos" id="*630:271" style="top:630;left:271"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE H.3 Names of standard fonts</span></div>
+<div class="pos" id="*651:133" style="top:651;left:133"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">STANDARD NAME</span></div>
+<div class="pos" id="*651:368" style="top:651;left:368"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">ALTERNATIVE</span></div>
+<div class="pos" id="*677:133" style="top:677;left:133"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Courier</span></div>
+<div class="pos" id="*705:133" style="top:705;left:133"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Courier</span></div>
+<div class="pos" id="*701:170" style="top:701;left:170"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">−</span></div>
+<div class="pos" id="*705:177" style="top:705;left:177"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Oblique</span></div>
+<div class="pos" id="*734:133" style="top:734;left:133"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Courier</span></div>
+<div class="pos" id="*730:170" style="top:730;left:170"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">−</span></div>
+<div class="pos" id="*734:177" style="top:734;left:177"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Bold</span></div>
+<div class="pos" id="*762:133" style="top:762;left:133"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Courier</span></div>
+<div class="pos" id="*758:170" style="top:758;left:170"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">−</span></div>
+<div class="pos" id="*762:177" style="top:762;left:177"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">BoldOblique</span></div>
+<div class="pos" id="*790:133" style="top:790;left:133"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Helvetica</span></div>
+<div class="pos" id="*677:368" style="top:677;left:368"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CourierNew</span></div>
+<div class="pos" id="*704:368" style="top:704;left:368"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CourierNew,Italic</span></div>
+<div class="pos" id="*733:368" style="top:733;left:368"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CourierNew,Bold</span></div>
+<div class="pos" id="*761:368" style="top:761;left:368"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CourierNew,BoldItalic</span></div>
+<div class="pos" id="*790:368" style="top:790;left:368"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Arial</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1108.htm" title="Go to previous page">Previous</a> <a href="pg_1110.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1109);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

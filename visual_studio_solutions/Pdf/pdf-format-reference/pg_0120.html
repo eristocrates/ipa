@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0120.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 3 120 Syntax 4. Use the first (n + 5) bytes, up to a maximum of 16, of the output from the MD5 hash as the key for the RC4 or AES symmetric key algorithms, along with the string or stream data to be encrypted. If using the AES algorithm, the Cipher Block Chaining (CBC) mode, which requires an initialization vector, is used. The block size parameter is set to 16 bytes, and the initialization vector is a 16-byte random number that is stored as the first 16 bytes of the encrypted stream or string. The output is the encrypted data to be stored in the PDF file. Stream data is encrypted after applying all stream encoding filters and is decrypted before applying any stream decoding filters. The number of bytes to be encrypted or decrypted is given by the Length entry in the stream dictionary. Decryption of strings (other than those in the encryption dictionary) is done after escape-sequence processing and hexadecimal decoding as appropriate to the string representation described in Section 3.2.3, “String Objects.” 3.5.2 Standard Security Handler PDF’s standard security handler allows access permissions and up to two passwords to be specified for a document: an owner password and a user password. An application’s decision to encrypt a document is based on whether the user creating the document specifies any passwords or access restrictions (for example, in a security settings dialog box that the user can invoke before saving the PDF file). If so, the document is encrypted, and the permissions and information required to validate the passwords are stored in the encryption dictionary. (An application may also create an encrypted document without any user interaction if it has some other source of information about what passwords and permissions to use.) If a user attempts to open an encrypted document that has a user password, the application should prompt for a password. Correctly supplying either password enables the user to open the document, decrypt it, and display it on the screen. If the document does not have a user password, no password is requested; the application can simply open, decrypt, and display the document. Whether additional operations are allowed on a decrypted document depends on which password (if any) was supplied when the document was opened and on any access restrictions that were specified when the document was created: • Opening the document with the correct owner password (assuming it is not the same as the user password) allows full (owner) access to the document. This  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0120.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 3</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">120</span></div>
+<div class="pos" id="*49:567" style="top:49;left:567"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Syntax</span></div>
+<div class="pos" id="*99:151" style="top:99;left:151"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4.</span></div>
+<div class="pos" id="*99:174" style="top:99;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Use the first (n + 5) bytes, up to a maximum of 16, of the output from the MD5</span></div>
+<div class="pos" id="*115:174" style="top:115;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">hash as the key for the RC4 or AES symmetric key algorithms, along with the</span></div>
+<div class="pos" id="*132:174" style="top:132;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">string or stream data to be encrypted.</span></div>
+<div class="pos" id="*157:174" style="top:157;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If using the AES algorithm, the Cipher Block Chaining (CBC) mode, which re-</span></div>
+<div class="pos" id="*174:174" style="top:174;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">quires an initialization vector, is used. The block size parameter is set to 16 bytes,</span></div>
+<div class="pos" id="*190:174" style="top:190;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and the initialization vector is a 16-byte random number that is stored as the first</span></div>
+<div class="pos" id="*207:174" style="top:207;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">16 bytes of the encrypted stream or string.</span></div>
+<div class="pos" id="*232:174" style="top:232;left:174"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The output is the encrypted data to be stored in the PDF file.</span></div>
+<div class="pos" id="*265:133" style="top:265;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Stream data is encrypted after applying all stream encoding filters and is</span></div>
+<div class="pos" id="*283:133" style="top:283;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">decrypted before applying any stream decoding filters. The number of bytes to be</span></div>
+<div class="pos" id="*301:133" style="top:301;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">encrypted or decrypted is given by the</span></div>
+<div class="pos" id="*302:373" style="top:302;left:373"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Length</span></div>
+<div class="pos" id="*301:419" style="top:301;left:419"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the stream dictionary.</span></div>
+<div class="pos" id="*320:133" style="top:320;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Decryption of strings (other than those in the encryption dictionary) is done</span></div>
+<div class="pos" id="*338:133" style="top:338;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">after escape-sequence processing and hexadecimal decoding as appropriate to the</span></div>
+<div class="pos" id="*356:133" style="top:356;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">string representation described in Section 3.2.3, “String Objects.”</span></div>
+<div class="pos" id="*399:88" style="top:399;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">3.5.2 Standard Security Handler</span></div>
+<div class="pos" id="*434:133" style="top:434;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">PDF’s standard security handler allows</span></div>
+<div class="pos" id="*434:389" style="top:434;left:389"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">access permissions</span></div>
+<div class="pos" id="*434:506" style="top:434;left:506"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and up to two</span></div>
+<div class="pos" id="*452:133" style="top:452;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">passwords to be specified for a document: an</span></div>
+<div class="pos" id="*452:432" style="top:452;left:432"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">owner password</span></div>
+<div class="pos" id="*452:536" style="top:452;left:536"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and a</span></div>
+<div class="pos" id="*452:580" style="top:452;left:580"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">user</span></div>
+<div class="pos" id="*470:133" style="top:470;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">password.</span></div>
+<div class="pos" id="*470:193" style="top:470;left:193"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An application’s decision to encrypt a document is based on whether</span></div>
+<div class="pos" id="*488:133" style="top:488;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the user creating the document specifies any passwords or access restrictions (for</span></div>
+<div class="pos" id="*506:133" style="top:506;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">example, in a security settings dialog box that the user can invoke before saving</span></div>
+<div class="pos" id="*524:133" style="top:524;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the PDF file). If so, the document is encrypted, and the permissions and</span></div>
+<div class="pos" id="*542:133" style="top:542;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">information required to validate the passwords are stored in the encryption</span></div>
+<div class="pos" id="*560:133" style="top:560;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary. (An application may also create an encrypted document without any</span></div>
+<div class="pos" id="*579:133" style="top:579;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">user interaction if it has some other source of information about what passwords</span></div>
+<div class="pos" id="*597:133" style="top:597;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and permissions to use.)</span></div>
+<div class="pos" id="*630:133" style="top:630;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If a user attempts to open an encrypted document that has a user password, the</span></div>
+<div class="pos" id="*648:133" style="top:648;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">application should prompt for a password. Correctly supplying either password</span></div>
+<div class="pos" id="*666:133" style="top:666;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">enables the user to open the document, decrypt it, and display it on the screen. If</span></div>
+<div class="pos" id="*684:133" style="top:684;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the document does not have a user password, no password is requested; the</span></div>
+<div class="pos" id="*702:133" style="top:702;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">application can simply open, decrypt, and display the document. Whether</span></div>
+<div class="pos" id="*720:133" style="top:720;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">additional operations are allowed on a decrypted document depends on which</span></div>
+<div class="pos" id="*738:133" style="top:738;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">password (if any) was supplied when the document was opened and on any</span></div>
+<div class="pos" id="*756:133" style="top:756;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">access restrictions that were specified when the document was created:</span></div>
+<div class="pos" id="*787:133" style="top:787;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*790:145" style="top:790;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Opening the document with the correct owner password (assuming it is not the</span></div>
+<div class="pos" id="*808:145" style="top:808;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">same as the user password) allows full (owner) access to the document. This</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0119.htm" title="Go to previous page">Previous</a> <a href="pg_0121.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(120);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

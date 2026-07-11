@@ -1,0 +1,17 @@
+	TimePeriodInformation =  __	
+	[SingleDate/Time |  _	
+	MultipleDates/Times |  _	
+	RangeofDates/Times]  __	
+		
+	SingleDate/Time =  _	
+	CalendarDate +  _	
+	(TimeofDay)  __	
+		
+	MultipleDates/Times =  _	
+	2{SingleDate/Time}n  _	
+		
+	RangeofDates/Times =  __	
+	BeginningDate +  _	
+	(BeginningTime) +  _	
+	EndingDate +  _	
+	(EndingTime)  _	

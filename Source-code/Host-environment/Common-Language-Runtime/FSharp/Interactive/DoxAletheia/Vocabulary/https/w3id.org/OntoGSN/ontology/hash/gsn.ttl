@@ -1,0 +1,2658 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix w3id: <https://w3id.org/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix gsn: <https://w3id.org/OntoGSN/ontology#>.
+@prefix schema: <http://schema.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix swrl: <http://www.w3.org/2003/11/swrl#>.
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+_:B023f98ea50d83daac5f1cbb0f025456e a swrl:AtomList.
+([swrl:classPredicate gsn:Solution ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:ClassAtom]
+ [swrl:classPredicate gsn:Solution ; 
+ swrl:argument1 gsn:B ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:true ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:B ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:C ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:true ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:C ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B03a722a18c5fd74c86d04f0a02c550d3 a swrl:AtomList.
+_:B059eb9d4aea3c6bd2e847506d63ac55d a swrl:AtomList.
+([swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:X ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Goal ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:ClassAtom]) a swrl:AtomList.
+_:B06770d97908bd665d86c0089d36e07e7 a swrl:AtomList.
+_:B0745ee31c5699e201d1f178795d41b2a a swrl:AtomList.
+_:B075c3aaccabdf7bd28ccafcf33f18801 a swrl:AtomList.
+_:B07738bc91a3cbe85d32614657b50de6c a swrl:AtomList.
+_:B07cc14c79f01ecfa3df33dce44aa53be <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S8";
+                                    swrl:body ([swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:ClassAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+([swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:M1 ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M1 ; 
+ a swrl:ClassAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:contains ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:M1 ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:contract ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B09eeccae1bbd40a5f7e16f9a41d8fc2a a swrl:AtomList.
+_:B09f4eeb53acab820462a576383b4a91e <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S23";
+                                    swrl:body ([swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:M ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:N ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:N ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:M
+                                                               gsn:N) ; 
+                                               a swrl:BuiltinAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:away ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B0a64e91629bd39fb688c2b06ffa0a18e a swrl:AtomList.
+([swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:G1 ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M1 ; 
+ a swrl:ClassAtom]
+ [swrl:classPredicate gsn:Goal ; 
+ swrl:argument1 gsn:G1 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:G2 ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:G2 ; 
+ swrl:argument1 gsn:G1 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:away ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:G1 ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:contains ; 
+ swrl:argument2 gsn:G1 ; 
+ swrl:argument1 gsn:M1 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:contains ; 
+ swrl:argument2 gsn:G2 ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B0ad5756ea5e421cef2df3d72281fceec a swrl:AtomList.
+_:B0aea904d3f954e4da712a7b2985ac89a a swrl:AtomList.
+_:B0afdca06b822aba9afe29843cb2a93ba a swrl:AtomList.
+_:B0bc776e07bc26aaa9f8ee0a06977e0f4 a swrl:AtomList.
+_:B0c126ccadedd4e9ca74e6ea15decf01f a swrl:AtomList.
+_:B0c8d2c1f5affb1032eaf0296e40eb778 a swrl:AtomList.
+_:B0e83cf66280b9b231798d524899a9ee6 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S32";
+                                    swrl:body ([swrl:propertyPredicate gsn:inContextOf ; 
+                                               swrl:argument2 gsn:C1 ; 
+                                               swrl:argument1 gsn:G1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:inContextOf ; 
+                                               swrl:argument2 gsn:C2 ; 
+                                               swrl:argument1 gsn:G2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:G1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:G2 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:away ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:G2 ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:G2 ; 
+                                               swrl:argument1 gsn:G1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Context ; 
+                                               swrl:argument1 gsn:C2 ; 
+                                               a swrl:ClassAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:consistentWith ; 
+                                               swrl:argument2 gsn:C2 ; 
+                                               swrl:argument1 gsn:C1 ; 
+                                               a swrl:IndividualPropertyAtom]).
+_:B0ea775d7d4d5e9b7fdde582962328a19 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S1";
+                                    swrl:body ([swrl:classPredicate gsn:Assumption ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:inContextOf ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B0eeb720df1e5a07bbd513759a6f01398 a owl:Axiom;
+                                    owl:annotatedProperty rdfs:subClassOf;
+                                    owl:annotatedSource gsn:Solution;
+                                    owl:annotatedTarget _:B851115e685c89629d65bfe4fdd2da7a3;
+                                    skos:definition "GSN solutions make no claim, but are simply references to evidence items that provide support for a particular claim. They shall therefore be stated as noun-phrases."@en.
+([swrl:propertyPredicate gsn:inContextOf ; 
+ swrl:argument2 gsn:M1 ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:M1 ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M1 ; 
+ a swrl:ClassAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:contains ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:contract ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+([swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:M1 ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:M3 ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B0fbba372e729404bc629c7395c97ac59 a swrl:AtomList.
+_:B1002807cdd6e931c2751e29a745a29c9 a swrl:AtomList.
+([swrl:classPredicate gsn:Solution ; 
+ swrl:argument1 gsn:B ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B100d0c4b8749a53b4b605c2df8a23966 a swrl:AtomList.
+_:B10cdb2b371e0062616697d423608b335 a swrl:AtomList.
+_:B1262aa06b9de6709fb7d2810744c39ef a swrl:AtomList.
+_:B144a76ae23fa162cfc5c521af4337918 a swrl:AtomList.
+_:B156753a60adae62bedcbb925bae954ad a swrl:AtomList.
+_:B15ca2af34f6dd63bea65c4a22886fbe1 a owl:Restriction;
+                                    owl:onProperty gsn:statement;
+                                    owl:someValuesFrom xsd:string.
+_:B17bff3f7f4297bc8746b348929a71d66 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S35";
+                                    swrl:body ([swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M2 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:E1 ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:E2 ; 
+                                               swrl:argument1 gsn:M2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:inContextOf ; 
+                                               swrl:argument2 gsn:E2 ; 
+                                               swrl:argument1 gsn:E1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:M1
+                                                               gsn:M2) ; 
+                                               a swrl:BuiltinAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:inContextOf ; 
+                                               swrl:argument2 gsn:M2 ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:IndividualPropertyAtom]).
+_:B1866453a481352fe7938baf182a4ffb3 a swrl:AtomList.
+_:B1a0f93e167c3f1cd0a811b5fc38603a4 a swrl:AtomList.
+_:B1a56c276a8583640493bc88914f4bc50 a rdf:List.
+_:B1a9386516c910f9eefd4f781358c0332 a swrl:AtomList.
+_:B1acfe07caac5d09aea0e5a4ae5c978b8 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S21";
+                                    swrl:body ([swrl:classPredicate gsn:Template ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:undeveloped ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:published ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B1b5025fc643b30fcfd2fc0c1a24dd11d a swrl:AtomList.
+([swrl:propertyPredicate gsn:contains ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:M ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:contains ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:M ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:toBeSupportedByContract ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B1bf8b931f5c8a0cbfa46eb87a7d24c77 a swrl:AtomList.
+_:B1c0fb4e546c2c7bafe9cf280f337248f a swrl:AtomList.
+_:B1d38d9179f38aba751f3357c6c8812ea a swrl:AtomList.
+([swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:E ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+([swrl:propertyPredicate gsn:relationshipType ; 
+ swrl:argument2 "evidential" ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B1dfd6f6719fd46f93eb8d316d94680f7 a swrl:AtomList.
+_:B1e208b9ab4135966a3f5a30dd7431bb3 a swrl:AtomList.
+_:B1e69f86dec5e0ebf8f19a4735dc51aaa a swrl:AtomList.
+_:B1eeef850275fb07945f0d10ae8a2bca2 a swrl:AtomList.
+([swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:B ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B1f463ec2d1aa84d67f15ed72923701b1 a swrl:AtomList.
+([swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 <urn:swrl:var#C> ; 
+ swrl:argument1 <urn:swrl:var#B> ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:inContextOf ; 
+ swrl:argument2 <urn:swrl:var#A> ; 
+ swrl:argument1 <urn:swrl:var#B> ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Assumption ; 
+ swrl:argument1 <urn:swrl:var#A> ; 
+ a swrl:ClassAtom]
+ [swrl:classPredicate gsn:Goal ; 
+ swrl:argument1 <urn:swrl:var#C> ; 
+ a swrl:ClassAtom]) a swrl:AtomList.
+_:B1faaa4f611e9a45f1bffb7bb24121c47 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S36";
+                                    swrl:body ([swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:M2 ; 
+                                               swrl:argument1 gsn:E1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M2 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:E1 ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:M1
+                                                               gsn:M2) ; 
+                                               a swrl:BuiltinAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:M2 ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:IndividualPropertyAtom]).
+_:B1ff43e1fbf01205a663d2cac77425a24 a swrl:AtomList.
+() a swrl:AtomList.
+_:B211f6e77136d53f14451c179a4956acb a swrl:AtomList.
+_:B2155bf99e441902e6471f33ea8fd4d07 a swrl:AtomList.
+() a swrl:AtomList.
+_:B22ad5905b226c7c67034b4fac223c37a a swrl:AtomList.
+([swrl:propertyPredicate gsn:inDoubt ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:E ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B23e886f3d8c9cf8beef009f408fab869 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S14";
+                                    swrl:body ([swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:inContextOf ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Relationship ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B25a4acd7068cbedc321eb9be03deab47 a swrl:AtomList.
+([swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:inContextOf ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B25e52a1cda25d845c15e21fdc56a29a6 a swrl:AtomList.
+_:B265a823d8a7aa989343708f56d699209 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S31";
+                                    swrl:body ();
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B266e9fa1300f0b9fe8f84c18b7ca84fc a swrl:AtomList.
+_:B27b139d019a54c5f37a0861ef6656fad a swrl:AtomList.
+_:B287e02f4908314e687070be5b80c1ec7 a swrl:AtomList.
+([swrl:propertyPredicate gsn:away ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:toBeSupportedByContract ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M1 ; 
+ a swrl:ClassAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:contains ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:M1 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:contains ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:builtin swrlb:notEqual ; 
+ swrl:arguments (gsn:M1
+                 gsn:M2) ; 
+ a swrl:BuiltinAtom]) a swrl:AtomList.
+_:B292771e1f006ed3f153067e073cc2b03 a swrl:AtomList.
+([swrl:propertyPredicate gsn:defeated ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:E ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+([swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:G2 ; 
+ swrl:argument1 gsn:S ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:S ; 
+ swrl:argument1 gsn:G3 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:D ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:G1 ; 
+ swrl:argument1 gsn:S ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:challenges ; 
+ swrl:argument2 gsn:S ; 
+ swrl:argument1 gsn:D ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:S ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:classPredicate gsn:Strategy ; 
+ swrl:argument1 gsn:S ; 
+ a swrl:ClassAtom]) a swrl:AtomList.
+_:B2b156e1e2f0fcfafe90fd25aa0c29c8a a swrl:AtomList.
+_:B2c27f3bc5ef04930e904a3500588eb6a <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S11";
+                                    swrl:body ([swrl:classPredicate gsn:Solution ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B2c5dc65dd748165f7b5bdf90c23fb293 a swrl:AtomList.
+_:B2d13703fcbb0e54f32e91c62df7a8d54 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S29";
+                                    swrl:body ();
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B2d8474daedf008225c94b3de16bdf663 a swrl:AtomList.
+_:B2e31d88477a9b6e1da31115adbf2e572 a swrl:AtomList.
+_:B2f6d4b78a061dfd07207da661c269c22 a owl:Axiom;
+                                    owl:annotatedProperty rdfs:subClassOf;
+                                    owl:annotatedSource gsn:Argument;
+                                    owl:annotatedTarget _:B87ad031266c8e053d735ccd140035b27;
+                                    skos:definition "The corresponding argument could be located in a paragraph of accompanying text, a goal in the local argument, or a goal in a separate module."@en;
+                                    gsn:coreOrExtension "Confidence Argument Extension".
+_:B30a681de63deba3c91e63503ebf86a5c a swrl:AtomList.
+([swrl:propertyPredicate gsn:challenges ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:builtin <http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#makeOWLThing> ; 
+ swrl:arguments (gsn:B
+                 gsn:R) ; 
+ a swrl:BuiltinAtom]) a swrl:AtomList.
+_:B3160c6d06a30ebabf5b9c35125af66ed a swrl:AtomList.
+("contextual"
+ "evidential"
+ "inferential") a rdf:List.
+_:B3226a9272c6a067bebe956564a4f1dbe <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S52";
+                                    swrl:body ([swrl:propertyPredicate gsn:challenges ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ([swrl:classPredicate gsn:Defeater ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:ClassAtom]).
+_:B326ded2c70c4446473083e4fa98e84c4 a swrl:AtomList.
+_:B32a2b1488d868d14372b4427c023c8e1 a swrl:AtomList.
+_:B32ed6de4e2bdc33aecad12cf6b8bc636 a swrl:AtomList.
+_:B33e186e283e6e33c4a54cec727d37a80 a swrl:AtomList.
+_:B35501675d8a2d3ee49cf5aa6177b804b a swrl:AtomList.
+_:B35cc762b5216fef4f20a7cc728d9e414 a swrl:AtomList.
+([swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:B ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B380dbbf216095ebef84e7371d490c2f6 a swrl:AtomList.
+_:B3892e1b6d12a9ec1da87016896cc73ef a swrl:AtomList.
+([swrl:propertyPredicate gsn:contract ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B3ab8bae1402fe3ee1164af8c63909f36 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S10";
+                                    swrl:body ([swrl:classPredicate gsn:Solution ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B3b5465585b57197b9dc03e7406f55a3c a swrl:AtomList.
+([swrl:propertyPredicate gsn:challenges ; 
+ swrl:argument2 gsn:E ; 
+ swrl:argument1 gsn:G ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:true ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:G ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:classPredicate gsn:Goal ; 
+ swrl:argument1 gsn:G ; 
+ a swrl:ClassAtom]) a swrl:AtomList.
+_:B3e0b0c19e633dc2cc6230ce65cded122 a swrl:AtomList.
+_:B3e91a8b3d3c74349a44bf62c9a9ca57d a swrl:AtomList.
+_:B3ec31d40127edd2e756ecd21fbe762d1 a swrl:AtomList.
+_:B414b36016c789cbf84219868423f7dac a swrl:AtomList.
+_:B428deab0543566d27942b90675e2a8d0 a swrl:AtomList.
+([swrl:propertyPredicate gsn:contains ; 
+ swrl:argument2 gsn:G ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M1 ; 
+ a swrl:ClassAtom]
+ [swrl:classPredicate gsn:Module ; 
+ swrl:argument1 gsn:M2 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:substitutedBy ; 
+ swrl:argument2 gsn:G ; 
+ swrl:argument1 gsn:J ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:contains ; 
+ swrl:argument2 gsn:J ; 
+ swrl:argument1 gsn:M1 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Justification ; 
+ swrl:argument1 gsn:J ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:inContextOf ; 
+ swrl:argument2 gsn:J ; 
+ swrl:argument1 gsn:E ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:builtin swrlb:notEqual ; 
+ swrl:arguments (gsn:M1
+                 gsn:M2) ; 
+ a swrl:BuiltinAtom]) a swrl:AtomList.
+_:B4379948a9c0927dcaa070656e6321b29 a swrl:AtomList.
+_:B43f973429b5562d7aabb1572974c55b4 a swrl:AtomList.
+_:B462c3ad22ed4eba572a3267e72123b05 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S45";
+                                    swrl:body ([swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:S2 ; 
+                                               swrl:argument1 gsn:G ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:S1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:S1 ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:RelationshipWithConfidence ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:builtin <http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#makeOWLThing> ; 
+                                               swrl:arguments (gsn:S2
+                                                               gsn:R2) ; 
+                                               a swrl:BuiltinAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:S1 ; 
+                                               swrl:argument1 gsn:G ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:S2 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:G ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:S1
+                                                               gsn:S2) ; 
+                                               a swrl:BuiltinAtom]
+                                               [swrl:propertyPredicate gsn:associatedWith ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:G ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ([swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:S2 ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:RelationshipWithConfidence ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:G ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:associatedWith ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:assuranceClaimPoint ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B46e134a0de8425504fd76d6c27b84163 a swrl:AtomList.
+_:B4793c97f1d6e7733975f327abc2efe4c a swrl:AtomList.
+_:B47c7103f272b41ebbaa5bc8980fc0047 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S34";
+                                    swrl:body ([swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M2 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:E2 ; 
+                                               swrl:argument1 gsn:E1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:E1 ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:E2 ; 
+                                               swrl:argument1 gsn:M2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:M1
+                                                               gsn:M2) ; 
+                                               a swrl:BuiltinAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:M2 ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:IndividualPropertyAtom]).
+_:B481ac1f38c4de196a115bd7b52c9bfd0 a swrl:AtomList.
+_:B48a2bd980c09df3442b3349ab2ce8b5c a owl:Axiom;
+                                    owl:annotatedProperty rdfs:subClassOf;
+                                    owl:annotatedSource gsn:Assumption;
+                                    owl:annotatedTarget _:B905a508d61cf7e3aca71242bcc595d3e;
+                                    skos:definition "GSN assumptions provide additional information necessary for the correct understanding of the argument. This information is stated as fully as necessary, using complete sentences in the form noun phrase + verb phrase."@en.
+([swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:S ; 
+ swrl:argument1 gsn:G2 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:RelationshipWithConfidence ; 
+ swrl:argument1 gsn:R1 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:S ; 
+ swrl:argument1 gsn:R1 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:G1 ; 
+ swrl:argument1 gsn:S ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:builtin <http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#makeOWLThing> ; 
+ swrl:arguments (gsn:G2
+                 gsn:R2) ; 
+ a swrl:BuiltinAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:G1 ; 
+ swrl:argument1 gsn:R1 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Strategy ; 
+ swrl:argument1 gsn:S ; 
+ a swrl:ClassAtom]
+ [swrl:classPredicate gsn:Goal ; 
+ swrl:argument1 gsn:G1 ; 
+ a swrl:ClassAtom]
+ [swrl:classPredicate gsn:Goal ; 
+ swrl:argument1 gsn:G2 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:associatedWith ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R1 ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B4b815327a73acd343f89117cd1b7adbc a swrl:AtomList.
+("architecture"
+ "argument") a rdf:List.
+_:B4d271b5f2de3a7881d9b0488606b0c3a a swrl:AtomList.
+_:B4d28e5c0b1d93315f69d3632bbb27893 a swrl:AtomList.
+_:B4dc9efa8bbcdc6da49d1ccfc06c44397 a swrl:AtomList.
+([swrl:propertyPredicate gsn:assuranceClaimPoint ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:classPredicate gsn:ArtefactReference ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:ClassAtom]
+ [swrl:builtin <http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#makeOWLThing> ; 
+ swrl:arguments (gsn:A
+                 gsn:R) ; 
+ a swrl:BuiltinAtom]) a swrl:AtomList.
+_:B4e6b4c04c4e2339ac28ab3844108525e a rdf:List.
+_:B4ebffabb95ed268625dc62243d6278fc a swrl:AtomList.
+_:B4ed36b65ad72c952152e74a84748fe22 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S6";
+                                    swrl:body ();
+                                    swrl:head ([swrl:propertyPredicate gsn:top ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B4f1b58edd2c3e0e7066a6b2fbdb56047 a swrl:AtomList.
+_:B507cef6d1467ff454b493de7acd4680e a swrl:AtomList.
+() a swrl:AtomList.
+_:B52410a131706350e63afb15ae1bd8d23 a swrl:AtomList.
+_:B53508c5d8f555e78b8532ec3c22a8c2c a swrl:AtomList.
+_:B547b738ef830a23dc5ce2b2fca4b60ce a swrl:AtomList.
+_:B54865191f9f244c4296be6da23b2c294 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S26";
+                                    swrl:body ();
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+([swrl:propertyPredicate gsn:challenges ; 
+ swrl:argument2 gsn:R ; 
+ swrl:argument1 gsn:D ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:G3 ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:G1 ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Goal ; 
+ swrl:argument1 gsn:G1 ; 
+ a swrl:ClassAtom]
+ [swrl:classPredicate gsn:Goal ; 
+ swrl:argument1 gsn:G3 ; 
+ a swrl:ClassAtom]
+ [swrl:builtin <http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#makeOWLThing> ; 
+ swrl:arguments (gsn:G3
+                 gsn:S) ; 
+ a swrl:BuiltinAtom]
+ [swrl:classPredicate gsn:Goal ; 
+ swrl:argument1 gsn:G2 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:G1 ; 
+ swrl:argument1 gsn:G3 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:builtin swrlb:notEqual ; 
+ swrl:arguments (gsn:G1
+                 gsn:G2) ; 
+ a swrl:BuiltinAtom]) a swrl:AtomList.
+_:B564422492c0254c6677bd715f77435ec a swrl:AtomList.
+() a swrl:AtomList.
+_:B57dc8a5e43e3a2b1f188dda2de7762fa a swrl:AtomList.
+() a swrl:AtomList.
+_:B59485f4d149f9262a051e53af78bc7e6 a swrl:AtomList.
+_:B5a04b443ee36c1c06913f0f25f6ecaa8 a swrl:AtomList.
+_:B5b02c1e6ce1a103d1b1fba378dcbe3a9 a swrl:AtomList.
+_:B5b0f0d5d181d87f6133b47acf280eaca <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S51";
+                                    swrl:body ();
+                                    swrl:head ().
+([swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:E ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B5b2552a7f68c912f57d9449410e12f57 a swrl:AtomList.
+_:B5c1291a4d0a68478d60880b65f4ec19e a swrl:AtomList.
+_:B5cb31d8f0d5c12b12d75e0ec92a47ec7 a swrl:AtomList.
+_:B5cd98910e2af3b615f386bc1ee12dfc5 a swrl:AtomList.
+([swrl:propertyPredicate gsn:true ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:B ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B5e69cc32f26fd44f39c6ffd252f50666 a swrl:AtomList.
+_:B5e7d0f56770dfda65ebce77e5a4ba062 a swrl:AtomList.
+_:B5e808e352710343327afd66c048b05d0 a swrl:AtomList.
+_:B5ec7bbe3910831f4c9ca97da8dd51ff0 a swrl:AtomList.
+_:B5f180be486f4eb6634c804e7e8cf3cbd a owl:Class;
+                                    owl:equivalentClass [owl:onProperty gsn:top ; 
+                                                         owl:hasValue true ; 
+                                                         a owl:Restriction];
+                                    owl:intersectionOf (gsn:Goal
+                                                        [owl:complementOf [owl:someValuesFrom gsn:Goal ; 
+                                                                          owl:onProperty [owl:inverseOf gsn:supportedBy] ; 
+                                                                          a owl:Restriction] ; 
+                                                        a owl:Class]).
+_:B5f3da4a3d5c444dfa6947da7f1fa19eb a swrl:AtomList.
+() a swrl:AtomList.
+() a swrl:AtomList.
+_:B61eb4875055aa7f1eaa4e5b0b781e3c5 a swrl:AtomList.
+_:B62fd0c738b6b4b9f818fef6fcfdb4e74 a swrl:AtomList.
+_:B6329865f75a6915ceef448b18e8502f9 a swrl:AtomList.
+_:B6393c35b12242ab0c0e3bfd451aa252a a swrl:AtomList.
+([swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:R1 ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:R3 ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B64a3765f07df29c020e40ec925cb016c <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S49";
+                                    swrl:body ([swrl:propertyPredicate gsn:undeveloped ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:G ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:challenges ; 
+                                               swrl:argument2 gsn:E ; 
+                                               swrl:argument1 gsn:G ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:G ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:inDoubt ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:E ; 
+                                               a swrl:DatavaluedPropertyAtom]);
+                                    swrl:head ().
+_:B651ab34bf48456f11595e548a0cf735b a swrl:AtomList.
+_:B65752e48490d8eb520d8cfadf49d181e a swrl:AtomList.
+_:B661ea0cab0e86f3f6f2c2900737e4125 a swrl:AtomList.
+_:B661f527402ddba98cca50edf56bba1e4 a swrl:AtomList.
+_:B6628b3d30e0487e8aa83525164dac9e9 a swrl:AtomList.
+() a swrl:AtomList.
+([swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:S2 ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:RelationshipWithConfidence ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:G ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:associatedWith ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:assuranceClaimPoint ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B675a7881f581aaa953357bd3670d2fcd a swrl:AtomList.
+_:B678306c8f6ae07fab3e64813c163476c <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S16";
+                                    swrl:body ([swrl:classPredicate gsn:Assumption ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:inContextOf ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ().
+([swrl:classPredicate gsn:Strategy ; 
+ swrl:argument1 gsn:B ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B68474409be7f07aee9b53e71064d366f a swrl:AtomList.
+_:B68603a208ff30a7e7e7cd728eb3b326e a swrl:AtomList.
+_:B69d7533d2987bfbc811009a90052be3e a swrl:AtomList.
+() a swrl:AtomList.
+_:B6a88e34dd472258c1abb141721895dd2 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S28";
+                                    swrl:body ([swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:M ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:toBeSupportedByContract ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:contract ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:M ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M ; 
+                                               a swrl:ClassAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B6b8935c6353b716ebf26309a2ecc05fa a swrl:AtomList.
+_:B6bad4533a30b636cc49245ac6f336e68 a swrl:AtomList.
+_:B6d0d8b0903108c54ff81606e1697aab1 a swrl:AtomList.
+([swrl:propertyPredicate gsn:public ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:G ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:inContextOf ; 
+ swrl:argument2 gsn:C ; 
+ swrl:argument1 gsn:G ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Goal ; 
+ swrl:argument1 gsn:G ; 
+ a swrl:ClassAtom]) a swrl:AtomList.
+_:B6dce6341bfd1bd8696fb051f1042e643 a swrl:AtomList.
+([swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:B ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:C ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:C ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B6ea9682070a5b5025959ae4690f026fb a swrl:AtomList.
+_:B6ef193e344494e80cd8276e1d4d6af08 a swrl:AtomList.
+_:B6f132cbcf94d9d2d917f1af3a83bfd2b <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S7";
+                                    swrl:body ([swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R3 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:C ; 
+                                               swrl:argument1 gsn:R3 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:predicate ; 
+                                               swrl:argument2 gsn:P ; 
+                                               swrl:argument1 gsn:R3 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:predicate ; 
+                                               swrl:argument2 gsn:P ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:C ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:predicate ; 
+                                               swrl:argument2 gsn:P ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ().
+_:B70560578d6062d324a965ed96e64b1b0 a swrl:AtomList.
+() a swrl:AtomList.
+_:B708ea43191b9b37e057751ae78ade512 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S48";
+                                    swrl:body ();
+                                    swrl:head ().
+() a swrl:AtomList.
+_:B718783f9063a4b233cc2d5f2234f6127 a swrl:AtomList.
+([swrl:propertyPredicate gsn:public ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:C ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B71baeead74e5226f3c1f33dfa9086d05 a swrl:AtomList.
+([swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:J ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B7218f7de15754d5b63fd47bc03b1fb5e <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S25";
+                                    swrl:body ([swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:M ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:M ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate schema:identifier ; 
+                                               swrl:argument2 gsn:ID ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:A
+                                                               gsn:B) ; 
+                                               a swrl:BuiltinAtom]
+                                               [swrl:propertyPredicate schema:identifier ; 
+                                               swrl:argument2 gsn:ID ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:DatavaluedPropertyAtom]);
+                                    swrl:head ().
+_:B726491976fd4f33834f2a3c2ee347a67 a swrl:AtomList.
+_:B72e0473e23c5d5bcf3088abe7024e9a0 a swrl:AtomList.
+_:B72f636c7d227ba73b4700261f0714703 a swrl:AtomList.
+_:B73935abc171c4436a426022b642c5ec8 a swrl:AtomList.
+([swrl:classPredicate gsn:RelationshipWithConfidence ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate gsn:associatedWith ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate gsn:assuranceClaimPoint ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:G2 ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:S ; 
+ swrl:argument1 gsn:R2 ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B73f236ca33c5a9e0ab55e712b6b3268b a swrl:AtomList.
+_:B7437f97c39db6670badfc73338c324a7 a swrl:AtomList.
+([swrl:propertyPredicate schema:identifier ; 
+ swrl:argument2 gsn:N ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate schema:identifier ; 
+ swrl:argument2 gsn:M ; 
+ swrl:argument1 gsn:B ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:builtin swrlb:notEqual ; 
+ swrl:arguments (gsn:A
+                 gsn:B) ; 
+ a swrl:BuiltinAtom]
+ [swrl:builtin swrlb:equal ; 
+ swrl:arguments (gsn:N
+                 gsn:M) ; 
+ a swrl:BuiltinAtom]) a swrl:AtomList.
+([swrl:propertyPredicate gsn:defeated ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:E ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B75b48dc73aa2ecea1b0d1f8c31fa0fdf <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S19";
+                                    swrl:body ([swrl:propertyPredicate gsn:inContextOf ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:builtin <http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#makeOWLThing> ; 
+                                               swrl:arguments (gsn:B
+                                                               gsn:R) ; 
+                                               a swrl:BuiltinAtom]);
+                                    swrl:head ([swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Relationship ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:IndividualPropertyAtom]).
+_:B764a1f48d27699e4160c388f676ae3eb a swrl:AtomList.
+_:B7684c61cdaff3639e18545d76b606571 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S47";
+                                    swrl:body ();
+                                    swrl:head ().
+_:B7698ed35cab806bc4cad86492bbc0bf8 a swrl:AtomList.
+_:B77ad43a6456d4f4472cee2c204e7051b <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S40";
+                                    swrl:body ();
+                                    swrl:head ([swrl:classPredicate gsn:RelationshipWithConfidence ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:IndividualPropertyAtom]).
+([swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Relationship ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B78f1b70ad26a012ddac5859f6bba8efe a swrl:AtomList.
+([swrl:propertyPredicate gsn:relationshipType ; 
+ swrl:argument2 "contextual" ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B7bf591d84109255ff3c9f6af8d64af04 a swrl:AtomList.
+([swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 false ; 
+ swrl:argument1 gsn:C ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+() a swrl:AtomList.
+_:B7dd832d35fbaead5d4f58c6a6cc3a164 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S42";
+                                    swrl:body ([swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:S ; 
+                                               swrl:argument1 gsn:G1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:G2 ; 
+                                               swrl:argument1 gsn:S ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:RelationshipWithConfidence ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:builtin <http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#makeOWLThing> ; 
+                                               swrl:arguments (gsn:G2
+                                                               gsn:R2) ; 
+                                               a swrl:BuiltinAtom]
+                                               [swrl:classPredicate gsn:Strategy ; 
+                                               swrl:argument1 gsn:S ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:G1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:G2 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:S ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:associatedWith ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:G1 ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ([swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:S ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:RelationshipWithConfidence ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:G2 ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:associatedWith ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:assuranceClaimPoint ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:R2 ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B7e3a64dc90842aeb6825ecd8e4641071 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S5";
+                                    swrl:body ([swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:ClassAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:relationshipType ; 
+                                               swrl:argument2 "inferential" ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B7e62d9af98391bd53b459b748981fd7f <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S9";
+                                    swrl:body ([swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:C ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:C ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:C ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:ClassAtom]);
+                                    swrl:head ().
+_:B7ea47d3db2bd546f762b512bc969f86d a swrl:AtomList.
+() a swrl:AtomList.
+_:B80d1dc82ab626f90196d432d7888106a <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S12";
+                                    swrl:body ();
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:C ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B81a2e61dd038544787062f8951c5570e a swrl:AtomList.
+() a swrl:AtomList.
+_:B826daac51ff6b21c5e46ace6162e541f <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S44";
+                                    swrl:body ([swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:S2 ; 
+                                               swrl:argument1 gsn:G ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Solution ; 
+                                               swrl:argument1 gsn:S1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate rdf:object ; 
+                                               swrl:argument2 gsn:S1 ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:RelationshipWithConfidence ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:builtin <http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#makeOWLThing> ; 
+                                               swrl:arguments (gsn:S2
+                                                               gsn:R2) ; 
+                                               a swrl:BuiltinAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:S1 ; 
+                                               swrl:argument1 gsn:G ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Goal ; 
+                                               swrl:argument1 gsn:G ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:S1
+                                                               gsn:S2) ; 
+                                               a swrl:BuiltinAtom]
+                                               [swrl:propertyPredicate gsn:associatedWith ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:G ; 
+                                               swrl:argument1 gsn:R1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Solution ; 
+                                               swrl:argument1 gsn:S2 ; 
+                                               a swrl:ClassAtom]);
+                                    swrl:head ().
+_:B82e4efae480dc2a854887ce503930ba9 a swrl:AtomList.
+_:B8347525930d46aa9cd6698d7ee8b239c a swrl:AtomList.
+_:B838d38404273081518eed516060388ea <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S2";
+                                    swrl:body ();
+                                    swrl:head ().
+([swrl:propertyPredicate gsn:relationshipType ; 
+ swrl:argument2 "inferential" ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B851115e685c89629d65bfe4fdd2da7a3 a owl:Restriction;
+                                    owl:onProperty gsn:statement;
+                                    owl:someValuesFrom xsd:string.
+_:B85e2a7cd76a0174a243e9c0b7e9578a5 a swrl:AtomList.
+_:B85f6fcbbb33bd80a54413f3a97ecaffa a swrl:AtomList.
+_:B87ad031266c8e053d735ccd140035b27 a owl:Class;
+                                    owl:unionOf ([owl:intersectionOf ([owl:someValuesFrom gsn:ArtefactReference ; 
+                                                                     owl:onProperty gsn:contains ; 
+                                                                     a owl:Restriction]
+                                                                     [owl:someValuesFrom gsn:Goal ; 
+                                                                     owl:onProperty gsn:contains ; 
+                                                                     a owl:Restriction]) ; 
+                                                 a owl:Class]
+                                                 [owl:someValuesFrom xsd:string ; 
+                                                 owl:onProperty gsn:statement ; 
+                                                 a owl:Restriction]).
+_:B87c3f1fb3a2a12a908cace41f22c4ffe a swrl:AtomList.
+_:B882b48b24f09810107a4a933fdf58cd1 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S17";
+                                    swrl:body ();
+                                    swrl:head ([swrl:propertyPredicate gsn:inContextOf ; 
+                                               swrl:argument2 <urn:swrl:var#A> ; 
+                                               swrl:argument1 <urn:swrl:var#C> ; 
+                                               a swrl:IndividualPropertyAtom]).
+_:B8882e27631c50cfe796af1f5789b7029 a swrl:AtomList.
+() a swrl:AtomList.
+_:B8a0c4685895e4a2682bface58293c234 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S13";
+                                    swrl:body ();
+                                    swrl:head ([swrl:propertyPredicate gsn:true ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:C ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:B8a2de2612851976ffa077c1e4d2ba672 a rdf:List.
+_:B8acbbd763ecbbe15207e1ca020c640e8 a swrl:AtomList.
+_:B8b2bace396afef3f5e9a9f493ce5225c a swrl:AtomList.
+() a swrl:AtomList.
+_:B8c46cb7bce0f755f51c5134f51d11b98 a swrl:AtomList.
+_:B8cc6a43a42e6c1ecb035ff2cccfa85a0 a swrl:AtomList.
+_:B8cffb7786385e58477155dc8cfb41a22 a swrl:AtomList.
+_:B8d42e4d69f08db130db7761a84c1d45c a swrl:AtomList.
+_:B8f0dc08d1b7c8937cee5d841562d1f39 a swrl:AtomList.
+() a swrl:AtomList.
+_:B8fb66a8510e7e7bf28995949f1028bd3 a swrl:AtomList.
+_:B8ff12c7a85da969e5218b60a694b1689 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S33";
+                                    swrl:body ();
+                                    swrl:head ().
+([swrl:propertyPredicate rdf:subject ; 
+ swrl:argument2 gsn:A ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Relationship ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:ClassAtom]
+ [swrl:propertyPredicate rdf:object ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:R ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B905a508d61cf7e3aca71242bcc595d3e a owl:Restriction;
+                                    owl:onProperty gsn:statement;
+                                    owl:someValuesFrom xsd:string.
+() a swrl:AtomList.
+_:B90d525c69155654d8a5621fd169f5e66 a swrl:AtomList.
+([swrl:propertyPredicate gsn:defeated ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:E ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B93c87a02bb6d6a8dbdfe44a97b3bf67a a swrl:AtomList.
+_:B93faef22746d4957b78e76a7362ba6de a swrl:AtomList.
+_:B94c905578b3644852ff1c0ee35dfee9e a swrl:AtomList.
+_:B954e4beaac703d6362705822becda981 a swrl:AtomList.
+_:B95fd88ca8a434d9b9c84fdcae49d8000 a owl:Axiom;
+                                    owl:annotatedProperty rdfs:subClassOf;
+                                    owl:annotatedSource gsn:Goal;
+                                    owl:annotatedTarget _:Be37232b0c6d4f156bda5fcbddec12a5c;
+                                    skos:definition "GSN goals document the claims made in the argument (i.e. premises and conclusions). Each goal shall contain a single goal statement, expressed as a proposition in the form of a noun phrase + verb-phrase sentence."@en.
+() a swrl:AtomList.
+_:B97773e764474d8a9ea7f3f28a18ad5ec a swrl:AtomList.
+_:B98066e5c279af472a51e365f455dbadb a swrl:AtomList.
+() a swrl:AtomList.
+_:B99d2f094572729bd8398cf43b138bccb a swrl:AtomList.
+_:B9a08655264a399567718eb9a0c43402e <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S37";
+                                    swrl:body ([swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M3 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M2 ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:M3
+                                                               gsn:M1) ; 
+                                               a swrl:BuiltinAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:M2 ; 
+                                               swrl:argument1 gsn:M1 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:M3 ; 
+                                               swrl:argument1 gsn:M2 ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:M1
+                                                               gsn:M2) ; 
+                                               a swrl:BuiltinAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:M2
+                                                               gsn:M3) ; 
+                                               a swrl:BuiltinAtom]
+                                               [swrl:propertyPredicate gsn:supportedBy ; 
+                                               swrl:argument2 gsn:M1 ; 
+                                               swrl:argument1 gsn:M3 ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ().
+() a swrl:AtomList.
+_:B9aaa6c2d4bfd2cebc3c13f1083b6b045 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S30";
+                                    swrl:body ();
+                                    swrl:head ().
+_:B9b026b0b4bfc2ceed28a0e4ec718c194 a swrl:AtomList.
+() a swrl:AtomList.
+_:B9cb8c28741a74b2097fd26ffd06390bc <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S39";
+                                    swrl:body ([swrl:propertyPredicate gsn:contract ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:C ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:public ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:E ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:E ; 
+                                               swrl:argument1 gsn:C ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ().
+_:B9d01069ae37df6ea49e941a7823ed04e a swrl:AtomList.
+_:B9d695b0257d9a82b0ab7c881258d2c9c a swrl:AtomList.
+_:B9e1d24e2802f9ca468eff93e4e130741 a swrl:AtomList.
+() a swrl:AtomList.
+() a swrl:AtomList.
+_:Ba06de534dfae84954e3cc15b0c8e6b6c <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S20";
+                                    swrl:body ([swrl:propertyPredicate gsn:instantiationOf ; 
+                                               swrl:argument2 gsn:C ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:final ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:classPredicate gsn:Pattern ; 
+                                               swrl:argument1 gsn:C ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:C ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:Ba0b9bc89169e12fa4ad600d8ca1ad378 a swrl:AtomList.
+_:Ba1c4f1322a2d1c4f8e3ac6644f19877e a swrl:AtomList.
+_:Ba1cbd9b98774250f80403e4368f2fca1 a swrl:AtomList.
+_:Ba26125f59b0abfee8c4fd18611056246 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S27";
+                                    swrl:body ();
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:Ba2f21177d286a6f0bdbc0145e21bc020 a swrl:AtomList.
+() a swrl:AtomList.
+() a swrl:AtomList.
+_:Ba4303edb35493722fccc9e555015f79e <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S50";
+                                    swrl:body ();
+                                    swrl:head ().
+([swrl:propertyPredicate gsn:valid ; 
+ swrl:argument2 true ; 
+ swrl:argument1 gsn:S ; 
+ a swrl:DatavaluedPropertyAtom]
+ [swrl:propertyPredicate gsn:challenges ; 
+ swrl:argument2 gsn:E ; 
+ swrl:argument1 gsn:S ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:classPredicate gsn:Solution ; 
+ swrl:argument1 gsn:S ; 
+ a swrl:ClassAtom]) a swrl:AtomList.
+_:Ba4972f9df7f72c0935b99684476cf7b7 a swrl:AtomList.
+_:Ba5e9d177de475098d6af27730beaa4d9 a swrl:AtomList.
+() a swrl:AtomList.
+([swrl:propertyPredicate gsn:supportedBy ; 
+ swrl:argument2 gsn:B ; 
+ swrl:argument1 gsn:A ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:builtin <http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#makeOWLThing> ; 
+ swrl:arguments (gsn:B
+                 gsn:R) ; 
+ a swrl:BuiltinAtom]) a swrl:AtomList.
+_:Ba82435d8d626328cf6c1b4bc387c6f22 a swrl:AtomList.
+_:Ba85ea0afd990cb167200709a9f2bea09 a swrl:AtomList.
+_:Ba90be43020c6eb0f16c6f819a644e92a a swrl:AtomList.
+_:Ba912e739c7c80ac789ca1d29a845d2ca a swrl:AtomList.
+() a swrl:AtomList.
+_:Ba94190dbe01b4ed4ca866c3d397e42db a swrl:AtomList.
+_:Ba9a9cd17834a2de30d84dfa909a92961 a swrl:AtomList.
+() a swrl:AtomList.
+() a swrl:AtomList.
+_:Baa9f24d806df6dd710a198d2c89bcee4 a swrl:AtomList.
+() a swrl:AtomList.
+_:Baac5bf521b2ec9f3750c9e2a58faf7f0 a swrl:AtomList.
+_:Badd4d6e2e936158b7d87e36a03e8c908 a swrl:AtomList.
+_:Bae428e076d154db905944af24a477b7e a swrl:AtomList.
+_:Baed0995374ece7e2db3b18b2a59445c3 a swrl:AtomList.
+_:Bafb91fd0b0435d31e86151b7e0607d50 a swrl:AtomList.
+_:Bafeaf9c311db7ba3832e342348af4e8c a swrl:AtomList.
+_:Bb07bb532662a5cbec664fc62bbec2fb2 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S24";
+                                    swrl:body ([swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:A ; 
+                                               swrl:argument1 gsn:M ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:N ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:N ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:inContextOf ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:classPredicate gsn:Module ; 
+                                               swrl:argument1 gsn:M ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:builtin swrlb:notEqual ; 
+                                               swrl:arguments (gsn:M
+                                                               gsn:N) ; 
+                                               a swrl:BuiltinAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:away ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:B ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:Bb0a5c013c01e3893a3a482de2151d42f a swrl:AtomList.
+_:Bb266f3806ed4f438a9eb8f9129308334 a swrl:AtomList.
+_:Bb2a6cced4674e2e4f8f39169b8a1bb8a a swrl:AtomList.
+_:Bb2eb242f2844462cd7aa238839a58417 a owl:Axiom;
+                                    owl:annotatedProperty rdfs:subClassOf;
+                                    owl:annotatedSource gsn:Context;
+                                    owl:annotatedTarget _:Be5e2841527e2997c0c8b480943b89f4d;
+                                    skos:definition "Two kinds of GSN context statement exist. Where a context statement draws attention to explanatory contextual information (such as the definition of some term), this information shall be stated briefly using complete sentences of a noun-phrase + verb-phrase structure. Where a context statement is a reference to an artefact of some kind, which informs the reasoning step, the context statement shall be expressed as a noun phrase."@en.
+_:Bb33f56b46631fca7e7c5e7862b931be5 a swrl:AtomList.
+_:Bb415b9ed979257d7e968b66377ceabf3 a swrl:AtomList.
+_:Bb5274d7652b0fc3511a9139591124069 a swrl:AtomList.
+_:Bb5683825bcc2dfe0f614d79788bcee08 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S3";
+                                    swrl:body ();
+                                    swrl:head ().
+() a swrl:AtomList.
+_:Bb6808ba55e230d4b0e159d31dfab17c1 a swrl:AtomList.
+_:Bb77b402ec3523466084cec599c097769 a swrl:AtomList.
+_:Bb78816e1e79a26ed4877456a55272d21 a swrl:AtomList.
+_:Bb7d4a728d0890774da8207cd0f9baebe a swrl:AtomList.
+_:Bb88694e02d220b2dd6e51e6ac2e7456c <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S4";
+                                    swrl:body ();
+                                    swrl:head ().
+_:Bb9995282ca0a9aeabe0ae95c7b033097 a swrl:AtomList.
+_:Bba01fb6aad01a9057daee3ab38be515a a swrl:AtomList.
+() a swrl:AtomList.
+() a swrl:AtomList.
+_:Bbbe575dfa2dd90e95fb136ba389eee15 a swrl:AtomList.
+_:Bbbf1800bbef3efe404d066d7566ac1d1 a swrl:AtomList.
+_:Bbd6cb1b7f93f136af9fc0b3845eb9c64 a swrl:AtomList.
+_:Bbec35ae2c43047f66f1716fac7f1086d a swrl:AtomList.
+_:Bbffe22dd86ca3726dcaf112489bfe29c a swrl:AtomList.
+_:Bc0b362d57c989aa0ec5dfbe19724b89b a swrl:AtomList.
+_:Bc183fa150ac818f8cf84161d0bd0cdd3 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S22";
+                                    swrl:body ([swrl:classPredicate gsn:Template ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:propertyPredicate gsn:undeveloped ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate rdf:subject ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:propertyPredicate gsn:published ; 
+                                               swrl:argument2 true ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:contains ; 
+                                               swrl:argument2 gsn:B ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ([swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:A ; 
+                                               a swrl:DatavaluedPropertyAtom]
+                                               [swrl:propertyPredicate gsn:valid ; 
+                                               swrl:argument2 false ; 
+                                               swrl:argument1 gsn:R ; 
+                                               a swrl:DatavaluedPropertyAtom]).
+_:Bc2067f28988d8547087c52b0050c5c03 a swrl:AtomList.
+_:Bc292e63ca3f8c5c675d850589c662ce7 a swrl:AtomList.
+_:Bc341cfe80ec887d640a3ceeb3c661d3f a swrl:AtomList.
+_:Bc435b25a6be6a4a65910b701b21d8a71 a swrl:AtomList.
+_:Bc4980e416748b293a95e111efab31291 a swrl:AtomList.
+_:Bc4a595b119907837b6aac21442029bde a swrl:AtomList.
+_:Bc523744f034e2c989baaec8e2cd6ef71 a swrl:AtomList.
+() a swrl:AtomList.
+_:Bc5ef880dea77d29dc3ac01ef5f353405 a swrl:AtomList.
+() a swrl:AtomList.
+_:Bc921a4d71b89585a0df494db9989972d a swrl:AtomList.
+_:Bcba3b2ca8f3fc9316d8dae31476da5f4 a swrl:AtomList.
+("confidence"
+ "dialectic"
+ "risk") a rdf:List.
+_:Bcbde65dbd1d6716cfbab406ab8a47971 a swrl:AtomList.
+_:Bcc11f46654b900281404c8d2208a5c8c a swrl:AtomList.
+_:Bcd4b75ba70c2f5d453cc2078ec4f31d7 a swrl:AtomList.
+_:Bcd9a1db3e31d170446b044f8fa0600eb <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S46";
+                                    swrl:body ();
+                                    swrl:head ().
+() a swrl:AtomList.
+_:Bce014fca17169b6dc7c16fa193e8588f a swrl:AtomList.
+_:Bce6424503fdd5bef3d357884910bc67f a swrl:AtomList.
+() a swrl:AtomList.
+_:Bcee5c32ebfdc6aebe988e82579e19aeb a swrl:AtomList.
+() a swrl:AtomList.
+_:Bcfae704e906e214e5daa6033e7d2f789 a swrl:AtomList.
+_:Bd0f25be679e1fc4936366e2e606c04a1 a swrl:AtomList.
+_:Bd23a0db2a71e6f2efecd9b6ea0fcaed8 a swrl:AtomList.
+_:Bd363c95cbfa305398d27c33b0eaa83c5 a rdf:List.
+_:Bd3a7bf26a5a129a78087c4a2443f767f a swrl:AtomList.
+_:Bd59ab5d97cd6fa335780335bd743828f a swrl:AtomList.
+_:Bd5fc34f98303ef1ba0252cd00264ba10 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S38";
+                                    swrl:body ();
+                                    swrl:head ().
+_:Bd6a19beff39f1f28c6862d082cb2977a a swrl:AtomList.
+_:Bd7c238ca3ed71557b88afd180275231c a owl:Axiom;
+                                    owl:annotatedProperty rdfs:subClassOf;
+                                    owl:annotatedSource gsn:Strategy;
+                                    owl:annotatedTarget _:Be0303b4403c8cf33a50c8e1d8a888805;
+                                    skos:definition "GSN strategy statements describe the reasoning that connects parent goals and their supporting goals, but the core claims and the structure connecting those claims remain unchanged. Strategy statements contain a brief description of the argument approach."@en.
+() a swrl:AtomList.
+_:Bd85244f216761f1c6192461a9a95a170 a swrl:AtomList.
+_:Bd90cc34540780ccc284aeed90233ca68 a swrl:AtomList.
+() a swrl:AtomList.
+_:Bdac264047c1408427a4bd7a12e198c3b a swrl:AtomList.
+_:Bdb0b99d8569b92cf1786fb3fe27b242f <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S18";
+                                    swrl:body ();
+                                    swrl:head ().
+() a swrl:AtomList.
+() a swrl:AtomList.
+_:Bdb98628c5e9ec3feb7dee6757385d441 a swrl:AtomList.
+_:Bdbf3761dc81b7fe857ab65cd3639af98 a swrl:AtomList.
+_:Bdd46bc5fef86fce15ad25b9821d22851 a swrl:AtomList.
+() a swrl:AtomList.
+_:Bdd7012578b50efe9351637bea41f9416 a swrl:AtomList.
+_:Bdd8602e38f056c464612915d14c2fdc9 a swrl:AtomList.
+_:Bddfe39b25047a6659da706803f33a2d0 a swrl:AtomList.
+_:Bdecee8d1c1be9f3ae67469c31d96d8bb a swrl:AtomList.
+_:Bdf19f8b9c95f8159f16dbf417aec62a4 a swrl:AtomList.
+() a swrl:AtomList.
+_:Be0303b4403c8cf33a50c8e1d8a888805 a owl:Restriction;
+                                    owl:onProperty gsn:statement;
+                                    owl:someValuesFrom xsd:string.
+_:Be37232b0c6d4f156bda5fcbddec12a5c a owl:Restriction;
+                                    owl:onProperty gsn:statement;
+                                    owl:someValuesFrom xsd:string.
+_:Be4dc6b176bd7adc1b9abf360f919c21e a swrl:AtomList.
+_:Be5e2841527e2997c0c8b480943b89f4d a owl:Restriction;
+                                    owl:onProperty gsn:statement;
+                                    owl:someValuesFrom xsd:string.
+_:Be5e6d7b4885eaa309b522dbba068a75c a swrl:AtomList.
+_:Be67c489b4e089705656d491bca5a8c16 a swrl:AtomList.
+_:Be70ddcf5cfc3c198c0f9dfd1ebef5808 a swrl:AtomList.
+() a swrl:AtomList.
+() a swrl:AtomList.
+_:Be8b4a7efb838ac82b7e0e2052fc2f409 a swrl:AtomList.
+_:Be8f0cdff1ea5989a6fb57674d811225d a swrl:AtomList.
+_:Be98ebce37a91c407d134162a8098b380 a swrl:AtomList.
+() a swrl:AtomList.
+_:Bec22ee7a454fc311357a31a93b316783 a swrl:AtomList.
+_:Bec2beafee18f63583c7d5839685a1d65 a swrl:AtomList.
+_:Beec41bceb8d4df45f1dd466efa1c71be a swrl:AtomList.
+_:Beed702ad5d940c5726d6e9442d700f36 a swrl:AtomList.
+_:Beef446489869a353b26cb2734d937b15 a swrl:AtomList.
+_:Beff1f880893f5e302d11a4839536944f a swrl:AtomList.
+_:Bf085cb5a84806bccfc0237dfdf01316f a swrl:AtomList.
+_:Bf10cd3c170ce86d631d087ec284ac162 a swrl:AtomList.
+() a swrl:AtomList.
+() a swrl:AtomList.
+_:Bf2cf2153c974c40b4d5579966c75227e <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S43";
+                                    swrl:body ();
+                                    swrl:head ().
+_:Bf2db62f99ad492ed4dae0d2652506c68 a swrl:AtomList.
+_:Bf31c4e700c1027f8bbb8aeec96216318 a swrl:AtomList.
+_:Bf370620dc3726149a890b773e8cf06cd a rdf:List.
+_:Bf3da30879c3819b2a107209fa885df4b a swrl:AtomList.
+() a swrl:AtomList.
+_:Bf7149b60a38eb37a77450bc6df87794d a swrl:AtomList.
+_:Bf71c9dc8ad2840ea4bf9ef4bd7306352 a swrl:AtomList.
+() a swrl:AtomList.
+_:Bf91370994edf9d575c6738eb5adcea50 a swrl:AtomList.
+_:Bfad7ac47730240d2996a754238884f7e a swrl:AtomList.
+() a swrl:AtomList.
+_:Bfb0e7d627980fb3ea3313a3538043e32 a swrl:AtomList.
+() a swrl:AtomList.
+_:Bfc70788ff55dca1cf2a3558e4f4214ee a swrl:AtomList.
+_:Bfca1077ba6ccab2b4d8e837f10fe79b1 a swrl:AtomList.
+_:Bfcd903cfaf01d067a3324e394062b5aa a swrl:AtomList.
+_:Bfd5e7c7c62497e5cf104833c2f94d05b a swrl:AtomList.
+() a swrl:AtomList.
+() a swrl:AtomList.
+_:Bff14cbd6ae06dd445797a5eb7443f3f7 a owl:Axiom;
+                                    owl:annotatedProperty rdfs:subClassOf;
+                                    owl:annotatedSource gsn:Justification;
+                                    owl:annotatedTarget _:B15ca2af34f6dd63bea65c4a22886fbe1;
+                                    skos:definition "GSN justifications provide additional information necessary for the correct understanding of the argument. This information is stated as fully as necessary, using complete sentences in the form noun phrase + verb phrase."@en.
+_:Bff24e470bb15328f21b41a033de65944 <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> true;
+                                    a swrl:Imp;
+                                    rdfs:comment "";
+                                    rdfs:label "S41";
+                                    swrl:body ();
+                                    swrl:head ().
+() a swrl:AtomList.
+_:Bff601af8736aa170a430f37a9db25ef7 a swrl:AtomList.
+_:Bff8832359b9569b0f12e7a1f7fe616d3 a swrl:AtomList.
+_:Bffa308b05bb0bf096d86176ce0b8caf3 a swrl:AtomList.
+ccrel:license a owl:AnnotationProperty.
+dc11:contributor a owl:AnnotationProperty.
+dc11:created a owl:AnnotationProperty.
+dc11:creator a owl:AnnotationProperty.
+dc11:description a owl:AnnotationProperty.
+dc11:identifier a owl:AnnotationProperty.
+dc11:issued a owl:AnnotationProperty.
+dc11:modified a owl:AnnotationProperty.
+dc11:publisher a owl:AnnotationProperty.
+dc11:source a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:abstract a owl:AnnotationProperty.
+dcterms:bibliographicCitation a owl:AnnotationProperty.
+dcterms:created a owl:AnnotationProperty.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+schema:citation a owl:AnnotationProperty.
+schema:description a owl:AnnotationProperty,
+                     owl:DatatypeProperty.
+schema:disclaimer a owl:AnnotationProperty.
+schema:identifier a owl:DatatypeProperty.
+schema:license a owl:AnnotationProperty.
+schema:url a owl:AnnotationProperty.
+schema:version a owl:AnnotationProperty.
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> a owl:AnnotationProperty.
+rdf:Statement a owl:Class.
+rdf:object a owl:ObjectProperty.
+rdf:predicate a owl:ObjectProperty.
+rdf:subject a owl:ObjectProperty.
+xsd:date a rdfs:Datatype.
+skos:altLabel a owl:AnnotationProperty.
+skos:definition a owl:AnnotationProperty.
+skos:note a owl:AnnotationProperty.
+<https://w3id.org/OntoGSN/ontology> ccrel:license "https://creativecommons.org/licenses/by/4.0/";
+                                    dc11:contributor "Barbara Gallina, Dian Balta, Ingmar Kessler"@en;
+                                    dc11:creator "Standard: The Assurance Case Working Group (ACWG)"@en,
+                                                 "Tomas Bueno Momčilović"@en;
+                                    dc11:description "OntoGSN is an ontology for managing assurance cases in the Goal Structuring Notation (GSN). The goal of the ontology is to help users in linking the elements of their cases - claims and evidence - with the internationalized resource identifiers (IRIs) of represented concepts, events and data, and in evaluating the validity of their argument."@en;
+                                    dc11:identifier "SCSC-141C";
+                                    dc11:issued "2025-02-24"^^xsd:date;
+                                    dc11:modified "2025-06-19T00:00:00Z";
+                                    dc11:publisher "https://www.fortiss.org/"@en;
+                                    dc11:source "The Assurance Case Working Group (ACWG). (2021 May). Goal Structuring Notation Community Standard Version 3. URL: http://scsc.uk/SCSC-141C"@en;
+                                    dc11:title "OntoGSN"@en;
+                                    dcterms:bibliographicCitation "Bueno Momcilovic, T., Kessler, I., Gallina, B., & Balta, D. (2025). OntoGSN: An Ontology for Dynamic Management of Assurance Cases.";
+                                    dcterms:created "20th February 2025"@en;
+                                    vann:preferredNamespacePrefix "gsn";
+                                    schema:disclaimer "[Disclaimer from the GSN Community Standard v3.0]: While the authors and the publishers have used reasonable endeavours to ensure that the information and guidance given in this work is correct, all parties must rely on their own skill and judgement when making use of this work and obtain professional or specialist advice before taking, or refraining from, any action on the basis of the content of this work. Neither the authors nor the publishers make any representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to such information and guidance for any purpose, and they will not be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever (including as a result of negligence) arising out of, or in connection with, the use of this work. The views and opinions expressed in this publication are those of the authors and do not necessarily reflect those of their employers, the SCSC1 or other organisations."@en;
+                                    schema:url "https://w3id.org/OntoGSN/"^^xsd:anyURI;
+                                    schema:version 3.0;
+                                    a owl:Ontology;
+                                    owl:versionInfo 1.2;
+                                    skos:definition "GSN is a graphical argument notation which can be used to document explicitly the elements and structure of an argument and the argument’s relationship to evidence."@en.
+gsn:A a swrl:Variable.
+gsn:Argument a owl:Class;
+             rdfs:label "Argument"@en;
+             rdfs:subClassOf [owl:onProperty gsn:contains ; 
+                              owl:allValuesFrom gsn:GSNElement ; 
+                              a owl:Restriction],
+                             [owl:someValuesFrom xsd:string ; 
+                              owl:onProperty schema:identifier ; 
+                              a owl:Restriction],
+                             [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                              owl:onProperty schema:identifier ; 
+                              owl:onDataRange xsd:string ; 
+                              a owl:Restriction],
+                             _:B87ad031266c8e053d735ccd140035b27;
+             skos:definition "A body of information presented with the intention to establish one or more claims through the presentation of related supporting claims, evidence and contextual information."@en,
+                             "A connected series of claims intended to establish an overall claim."@en;
+             gsn:coreOrExtension "Core GSN"@en.
+gsn:Artefact a owl:Class;
+             rdfs:label "Artefact"@en;
+             skos:altLabel "Evidence"@en;
+             gsn:coreOrExtension "Core GSN"@en.
+gsn:ArtefactReference a owl:Class;
+                      rdfs:label "Artefact Reference"@en;
+                      rdfs:subClassOf gsn:GSNElement;
+                      gsn:coreOrExtension "Core GSN"@en.
+gsn:Assumption a owl:Class;
+               rdfs:label "Assumption"@en;
+               rdfs:subClassOf gsn:GSNElement,
+                               _:B905a508d61cf7e3aca71242bcc595d3e;
+               skos:definition "An assumption, rendered as an oval with the letter 'A' at the top- or bottom-right, presents an intentionally unsubstantiated statement."@en;
+               gsn:coreOrExtension "Core GSN"@en;
+               gsn:renderedAs "oval"@en.
+gsn:AssuranceCase a owl:Class;
+                  rdfs:label "Assurance Case"@en;
+                  rdfs:subClassOf [owl:someValuesFrom gsn:Argument ; 
+                                   owl:onProperty gsn:contains ; 
+                                   a owl:Restriction],
+                                  [owl:someValuesFrom gsn:Artefact ; 
+                                   owl:onProperty gsn:contains ; 
+                                   a owl:Restriction],
+                                  [owl:onProperty gsn:contains ; 
+                                   owl:allValuesFrom [owl:unionOf (gsn:Argument
+                                                                   gsn:Artefact) ; 
+                                                      a owl:Class] ; 
+                                   a owl:Restriction];
+                  skos:definition "A reasoned and compelling argument, supported by a body of evidence, that a system, service or organisation will operate as intended for a defined application in a defined environment."@en,
+                                  "Arguments and evidence intended to demonstrate that a system meets its assurance requirements."@en;
+                  gsn:coreOrExtension "Core GSN"@en.
+gsn:B a swrl:Variable.
+gsn:C a swrl:Variable.
+gsn:C1 a swrl:Variable.
+gsn:C2 a swrl:Variable.
+gsn:Catalogue a owl:Class;
+              rdfs:label "Catalogue"@en;
+              rdfs:subClassOf [owl:onProperty gsn:contains ; 
+                               owl:allValuesFrom gsn:Pattern ; 
+                               a owl:Restriction];
+              skos:definition "A pattern catalogue may be created to collate a series of patterns; where such a catalogue is created the structure and format of the definition should be consistent and each pattern’s definition should have a unique {pattern identifier}."@en;
+              gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:Context a owl:Class;
+            rdfs:label "Context"@en;
+            rdfs:subClassOf gsn:ArtefactReference,
+                            _:Be5e2841527e2997c0c8b480943b89f4d;
+            skos:definition "A context, rendered as shown left, presents a contextual artefact. This can be a reference to contextual information, or a statement."@en;
+            gsn:coreOrExtension "Core GSN"@en;
+            gsn:renderedAs "rounded rectangle"@en.
+gsn:D a swrl:Variable.
+gsn:Defeater a owl:Class;
+             rdfs:label "Defeater"@en;
+             owl:equivalentClass [owl:unionOf (gsn:Goal
+                                               gsn:Solution) ; 
+                                  a owl:Class];
+             skos:altLabel "Dialectic Element"@en;
+             skos:definition "The source of challenge being applied; can be directed at any part of an argument. A defeater (goal or solution) can challenge any element in a goal structure, e.g. goal, solution, strategy, context, assumption, justification.";
+             skos:note "Membership of this class is only meant to be inferred, not asserted! Please do not add individuals to this class manually (i.e., assertions)."@en,
+                       "The goal and solution statements should be clearly expressed such that the crux of the challenge is unequivocally communicated. Thus, the link between the part of the argument that is being challenged (target) and the dialectic element (source) is self-evident."@en;
+             gsn:coreOrExtension "Dialectic Extension"@en.
+gsn:E a swrl:Variable.
+gsn:E1 a swrl:Variable.
+gsn:E2 a swrl:Variable.
+gsn:G a swrl:Variable.
+gsn:G1 a swrl:Variable.
+gsn:G2 a swrl:Variable.
+gsn:G3 a swrl:Variable.
+gsn:GSNElement a owl:Class;
+               rdfs:label "GSN Element"@en;
+               rdfs:subClassOf [owl:someValuesFrom xsd:string ; 
+                                owl:onProperty schema:identifier ; 
+                                a owl:Restriction],
+                               [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                owl:onProperty schema:identifier ; 
+                                owl:onDataRange xsd:string ; 
+                                a owl:Restriction];
+               gsn:coreOrExtension "Core GSN"@en.
+gsn:Goal a owl:Class;
+         rdfs:label "Goal"@en;
+         rdfs:subClassOf _:Be37232b0c6d4f156bda5fcbddec12a5c,
+                         [owl:onProperty gsn:inContextOf ; 
+                          owl:allValuesFrom [owl:unionOf (gsn:Assumption
+                                                          gsn:Context
+                                                          gsn:Justification
+                                                          gsn:Module) ; 
+                                             a owl:Class] ; 
+                          a owl:Restriction],
+                         [owl:someValuesFrom gsn:Context ; 
+                          owl:onProperty gsn:inContextOf ; 
+                          a owl:Restriction],
+                         [owl:onProperty gsn:challenges ; 
+                          owl:allValuesFrom [owl:unionOf (gsn:GSNElement
+                                                          gsn:Relationship) ; 
+                                             a owl:Class] ; 
+                          a owl:Restriction],
+                         [owl:onProperty gsn:supportedBy ; 
+                          owl:allValuesFrom [owl:unionOf (gsn:Goal
+                                                          gsn:Module
+                                                          gsn:Solution
+                                                          gsn:Strategy) ; 
+                                             a owl:Class] ; 
+                          a owl:Restriction],
+                         gsn:GSNElement;
+         skos:altLabel "Claim"@en;
+         skos:definition "(Claim is) A proposition being asserted by the author that is a true or false statement."@en,
+                         "A goal, rendered as a rectangle, presents a claim forming part of the argument."@en;
+         gsn:coreOrExtension "Core GSN"@en;
+         gsn:renderedAs "rectangle"@en.
+gsn:ID a swrl:Variable.
+gsn:InstantiationDataReference a owl:Class;
+                               rdfs:label "Instantiation Data Reference"@en;
+                               skos:definition "This symbol indicates that the GSN argument below the attached element is to be instantiated as a template argument. It provides a reference to the information used to instantiate the template argument.";
+                               gsn:coreOrExtension "Argument Pattern Extension"@en;
+                               gsn:renderedAs "hollow triangle".
+gsn:J a swrl:Variable.
+gsn:Justification a owl:Class;
+                  rdfs:label "Justification"@en;
+                  rdfs:subClassOf gsn:GSNElement,
+                                  _:B15ca2af34f6dd63bea65c4a22886fbe1;
+                  skos:definition "A justification, rendered as an oval with the letter 'J' at the top- or bottom-right, presents a statement of rationale."@en;
+                  gsn:coreOrExtension "Core GSN"@en;
+                  gsn:renderedAs "oval"@en.
+gsn:M a swrl:Variable.
+gsn:M1 a swrl:Variable.
+gsn:M2 a swrl:Variable.
+gsn:M3 a swrl:Variable.
+gsn:Module a owl:Class;
+           rdfs:label "Module"@en;
+           rdfs:subClassOf [owl:onProperty gsn:contains ; 
+                            owl:allValuesFrom [owl:unionOf (gsn:Argument
+                                                            gsn:Module) ; 
+                                               a owl:Class] ; 
+                            a owl:Restriction],
+                           [owl:onProperty gsn:inContextOf ; 
+                            owl:allValuesFrom gsn:Module ; 
+                            a owl:Restriction],
+                           [owl:onProperty gsn:contains ; 
+                            owl:onClass gsn:Argument ; 
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                            a owl:Restriction],
+                           [owl:onProperty gsn:supportedBy ; 
+                            owl:allValuesFrom gsn:Module ; 
+                            a owl:Restriction],
+                           gsn:GSNElement;
+           skos:definition "Goal structures can be partitioned into separate, but interrelated, modules. This can allow the division of an overall goal structure into separate goal structures focusing on particular aspects of the overall argument. A module may contain one or more arguments and may contain other modules."@en;
+           gsn:coreOrExtension "Modular Extension"@en;
+           gsn:renderedAs "a rectangle with a second smaller rectangle adjoining at the top left".
+gsn:N a swrl:Variable.
+gsn:P a swrl:Variable.
+gsn:Pattern a owl:Class;
+            rdfs:label "Pattern"@en;
+            rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
+                             owl:onProperty schema:description ; 
+                             a owl:Restriction];
+            gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:R a swrl:Variable.
+gsn:R1 a swrl:Variable.
+gsn:R2 a swrl:Variable.
+gsn:R3 a swrl:Variable.
+gsn:Relationship a owl:Class;
+                 rdfs:label "Relationship"@en;
+                 rdfs:subClassOf [owl:onProperty rdf:object ; 
+                                  owl:allValuesFrom gsn:GSNElement ; 
+                                  a owl:Restriction],
+                                 [owl:onProperty rdf:subject ; 
+                                  owl:allValuesFrom [owl:unionOf (gsn:Defeater
+                                                                  gsn:Goal
+                                                                  gsn:Strategy) ; 
+                                                     a owl:Class] ; 
+                                  a owl:Restriction],
+                                 rdf:Statement;
+                 gsn:coreOrExtension "Core GSN"@en.
+gsn:RelationshipWithConfidence a owl:Class;
+                               rdfs:label "Relationship with Confidence"@en;
+                               rdfs:subClassOf gsn:Relationship,
+                                               [owl:someValuesFrom xsd:string ; 
+                                                owl:onProperty schema:identifier ; 
+                                                a owl:Restriction],
+                                               [owl:intersectionOf ([owl:someValuesFrom gsn:Argument ; 
+                                                                    owl:onProperty gsn:associatedWith ; 
+                                                                    a owl:Restriction]
+                                                                    [owl:someValuesFrom xsd:boolean ; 
+                                                                    owl:onProperty gsn:assuranceClaimPoint ; 
+                                                                    a owl:Restriction]) ; 
+                                                a owl:Class],
+                                               [owl:onProperty rdf:object ; 
+                                                owl:allValuesFrom [owl:unionOf (gsn:Context
+                                                                                gsn:Solution
+                                                                                gsn:Strategy) ; 
+                                                                   a owl:Class] ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty gsn:associatedWith ; 
+                                                owl:allValuesFrom [owl:intersectionOf (gsn:Argument
+                                                                                       [owl:onProperty gsn:argumentType ; 
+                                                                                       owl:hasValue "confidence" ; 
+                                                                                       a owl:Restriction]) ; 
+                                                                   a owl:Class] ; 
+                                                a owl:Restriction],
+                                               [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                                owl:onProperty schema:identifier ; 
+                                                owl:onDataRange xsd:string ; 
+                                                a owl:Restriction];
+                               skos:note "The corresponding argument could be located in a paragraph of accompanying text, a goal in the local argument, or a goal in a separate module."@en;
+                               gsn:coreOrExtension "Confidence Argument Extension"@en.
+gsn:S a swrl:Variable.
+gsn:S1 a swrl:Variable.
+gsn:S2 a swrl:Variable.
+gsn:Solution a owl:Class;
+             rdfs:label "Solution"@en;
+             rdfs:subClassOf [owl:onProperty gsn:challenges ; 
+                              owl:allValuesFrom [owl:unionOf (gsn:GSNElement
+                                                              gsn:Relationship) ; 
+                                                 a owl:Class] ; 
+                              a owl:Restriction],
+                             gsn:ArtefactReference,
+                             _:B851115e685c89629d65bfe4fdd2da7a3;
+             skos:definition "A solution, rendered as a circle, presents a reference to an evidence item."@en;
+             gsn:coreOrExtension "Core GSN"@en;
+             gsn:renderedAs "circle"@en.
+gsn:Strategy a owl:Class;
+             rdfs:label "Strategy"@en;
+             rdfs:subClassOf [owl:onProperty gsn:inContextOf ; 
+                              owl:allValuesFrom [owl:unionOf (gsn:Assumption
+                                                              gsn:Context
+                                                              gsn:Justification
+                                                              gsn:Module) ; 
+                                                 a owl:Class] ; 
+                              a owl:Restriction],
+                             [owl:onProperty gsn:supportedBy ; 
+                              owl:allValuesFrom gsn:Goal ; 
+                              a owl:Restriction],
+                             gsn:GSNElement,
+                             _:Be0303b4403c8cf33a50c8e1d8a888805;
+             skos:definition "A strategy, rendered as a parallelogram, describes the inference that exists between a goal and its supporting goal(s)."@en;
+             gsn:coreOrExtension "Core GSN"@en;
+             gsn:renderedAs "parallelogram"@en.
+gsn:Template a owl:Class;
+             rdfs:label "Template"@en;
+             rdfs:subClassOf gsn:Pattern;
+             skos:definition "A template argument is a special case of a pattern argument. It uses the core GSN and argument pattern extension to construct an argument structure which requires no further development."@en;
+             gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:View a owl:Class;
+         rdfs:label "View"@en;
+         skos:definition "The argument view depicts the argument inside an individual module."@en;
+         gsn:coreOrExtension "Modular Extension"@en.
+gsn:X a swrl:Variable.
+gsn:applicability a owl:AnnotationProperty;
+                  rdfs:domain gsn:Pattern;
+                  rdfs:label "applicability"@en;
+                  skos:definition "The applicability section should state under what circumstances the pattern can be applied, making clear the assumptions and principles underlying the pattern to avoid inappropriate application in a mismatched context. This section should record what contextual information is required in order to apply the pattern."@en;
+                  gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:argumentType a owl:DatatypeProperty;
+                 rdfs:domain gsn:Argument;
+                 rdfs:label "argument type"@en;
+                 rdfs:range [owl:oneOf () ; 
+                             a rdfs:Datatype];
+                 gsn:coreOrExtension "Confidence Argument Extension"@en.
+gsn:associatedWith a owl:ObjectProperty;
+                   rdfs:domain [owl:unionOf (gsn:ArtefactReference
+                                             gsn:RelationshipWithConfidence) ; 
+                                a owl:Class];
+                   rdfs:label "associated with"@en;
+                   rdfs:range gsn:Argument;
+                   gsn:coreOrExtension "Confidence Argument Extension"@en.
+gsn:assuranceClaimPoint a owl:DatatypeProperty;
+                        rdfs:domain [owl:unionOf (gsn:ArtefactReference
+                                                  gsn:RelationshipWithConfidence) ; 
+                                     a owl:Class];
+                        rdfs:label "assurance claim point"@en;
+                        rdfs:range xsd:boolean;
+                        skos:definition "An Assurance Claim Point (ACP) can be used in GSN to indicate that a confidence argument is associated with an assertion in a risk argument."@en;
+                        gsn:coreOrExtension "Confidence Argument Extension"@en;
+                        gsn:renderedAs "solid square".
+gsn:attachedTo a owl:ObjectProperty;
+               rdfs:domain gsn:InstantiationDataReference;
+               rdfs:label "attached to"@en;
+               rdfs:range gsn:Template;
+               gsn:coreOrExtension "Argument Pattern Extension"@en;
+               gsn:renderedAs "dotted line".
+gsn:away schema:description "An away assumption repeats an assumption presented in another argument module and is typically used only in Contract Modules. An away context repeats a reference to context presented in another argument module. An away goal reference repeats a claim presented in another argument module. An away justification repeats a justification presented in another argument module and is typically used only in Contract Modules. An away solution repeats a reference to evidence items presented in another argument module."@en;
+         a owl:DatatypeProperty;
+         rdfs:domain [owl:unionOf (gsn:Assumption
+                                   gsn:Context
+                                   gsn:Goal
+                                   gsn:Justification
+                                   gsn:Solution) ; 
+                      a owl:Class];
+         rdfs:label "away"@en;
+         rdfs:range xsd:boolean;
+         skos:definition "An away element reference repeats a claim or evidence presented in another argument module."@en;
+         gsn:coreOrExtension "Modular Extension"@en;
+         gsn:renderedAs "bisecting line in the lower half".
+gsn:challenges a owl:ObjectProperty;
+               rdfs:domain [owl:unionOf (gsn:Goal
+                                         gsn:Solution) ; 
+                            a owl:Class];
+               rdfs:label "challenges"@en;
+               rdfs:range gsn:GSNElement;
+               skos:definition "Allows a Challenge to any GSN entity to be documented. A goal, (core element) can be used in a dialectic context to assert a challenge to part of the argument. A solution, (core element) can be used to present a reference to an evidence item that asserts a challenge to part of the argument."@en;
+               skos:note "A challenge must be levied against the appropriate aspect of the goal structure."@en;
+               gsn:coreOrExtension "Dialectic Extension"@en;
+               gsn:renderedAs "dashed line with an open arrowhead".
+gsn:choice a owl:DatatypeProperty;
+           rdfs:domain gsn:Relationship;
+           rdfs:label "choice"@en;
+           rdfs:range xsd:boolean;
+           skos:definition "A GSN choice can be used to denote possible alternatives in satisfying a relationship."@en;
+           gsn:coreOrExtension "Argument Pattern Extension"@en;
+           gsn:renderedAs "solid diamond".
+gsn:collaboration a owl:AnnotationProperty;
+                  rdfs:domain gsn:Pattern;
+                  rdfs:label "collaboration"@en;
+                  skos:definition "The collaboration section should describe how elements of the pattern work together to achieve the desired effect, particularly where there are links that are not readily apparent from the argument structure."@en;
+                  gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:consequences a owl:AnnotationProperty;
+                 rdfs:domain gsn:Pattern;
+                 rdfs:label "consequences"@en;
+                 skos:definition "The consequences section should make clear what work remains after the pattern has been applied. This should highlight where further support to the argument is required, and assumptions that need to be discharged."@en;
+                 gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:consistentWith a owl:ObjectProperty,
+                     owl:SymmetricProperty;
+                   rdfs:domain [owl:unionOf (gsn:Assumption
+                                             gsn:Context) ; 
+                                a owl:Class];
+                   rdfs:label "consistent with"@en;
+                   rdfs:range [owl:unionOf (gsn:Assumption
+                                            gsn:Context) ; 
+                               a owl:Class];
+                   skos:definition "By making the relationship to the away goal the author is asserting not only the inference of support for the parent goal, but also that the context in which the away goal is declared is consistent with the context and assumptions in scope for the parent goal.";
+                   gsn:coreOrExtension "Modular Extension"@en.
+gsn:contains a owl:ObjectProperty;
+             rdfs:domain [owl:unionOf (gsn:Argument
+                                       gsn:AssuranceCase
+                                       gsn:Module) ; 
+                          a owl:Class];
+             rdfs:label "contains"@en;
+             rdfs:range [owl:unionOf (gsn:Argument
+                                      gsn:Artefact
+                                      gsn:Module) ; 
+                         a owl:Class];
+             gsn:coreOrExtension "Core GSN"@en.
+gsn:contract a owl:DatatypeProperty;
+             rdfs:domain gsn:Module;
+             rdfs:label "contract"@en;
+             rdfs:range xsd:boolean;
+             owl:propertyDisjointWith gsn:undeveloped;
+             skos:definition "A contract module is a special type of module that controls the relationship between argument module interfaces using arguments to define how a goal in one module is supported by one or more goals in one or more other modules."@en;
+             skos:note "A contract may be described in textual form (e.g. as a table) or for more complex relationships may be described within a contract module using GSN."@en,
+                       "Contract modules can be used in the support relationship between modules to aid decoupling. The de-coupling by use of a contract permits argument module construction in cases where the eventual source of support for an argument is unknown at the time of authoring or can be changed for example through re-use or planned product improvement or reconfiguration."@en;
+             gsn:coreOrExtension "Modular Extension"@en;
+             gsn:renderedAs "a rectangle with two smaller rectangles (of equal size to each other) adjoining at the top left and bottom right".
+gsn:coreOrExtension a owl:AnnotationProperty;
+                    rdfs:label "core or extension"@en;
+                    skos:definition "Indicator of the sourcing section in the GSN Community Standard v3."@en.
+gsn:defeated schema:description "Defeated Relationship indicates that the relationship is defeated. The Defeated decorator can be applied to any of the GSN relationships."@en;
+             a owl:DatatypeProperty;
+             rdfs:domain [owl:unionOf (gsn:GSNElement
+                                       gsn:Relationship) ; 
+                          a owl:Class];
+             rdfs:label "defeated"@en;
+             rdfs:range xsd:boolean;
+             skos:definition "This decorator symbol indicates that the element is defeated. The Defeated decorator can be applied to any of the GSN elements."@en;
+             gsn:coreOrExtension "Dialectic Extension"@en;
+             gsn:renderedAs "cross (‘X’) superimposed on a GSN element or relationship".
+gsn:examples a owl:AnnotationProperty;
+             rdfs:domain gsn:Pattern;
+             rdfs:label "examples"@en;
+             skos:definition "It may be useful to provide example illustrations of the application of the pattern, particularly for more abstract patterns. Illustrations should include a typical case and can be supplemented with atypical cases where more than one example is provided."@en;
+             gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:final a owl:DatatypeProperty;
+          rdfs:domain gsn:Argument;
+          rdfs:label "final"@en;
+          rdfs:range xsd:boolean;
+          gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:implementation a owl:AnnotationProperty;
+                   rdfs:domain gsn:Pattern;
+                   rdfs:label "implementation"@en;
+                   skos:definition "The implementation section should communicate how the application of the pattern is carried out e.g. the order in which elements should be developed; communicate hints or techniques that may ease successful application; highlight common or recognised pitfalls with the application of the pattern; and record potential misinterpretation of the terms or concepts in the pattern."@en;
+                   gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:inContextOf a owl:ObjectProperty,
+                  owl:AsymmetricProperty,
+                  owl:IrreflexiveProperty;
+                rdfs:domain [owl:unionOf (gsn:Goal
+                                          gsn:Strategy) ; 
+                             a owl:Class];
+                rdfs:label "in context of"@en;
+                rdfs:range [owl:unionOf (gsn:Assumption
+                                         gsn:Context
+                                         gsn:Justification
+                                         gsn:Module) ; 
+                            a owl:Class];
+                skos:definition "InContextOf, rendered as a line with a hollow arrowhead, declares a contextual relationship."@en;
+                gsn:coreOrExtension "Core GSN"@en;
+                gsn:renderedAs "line with a hollow arrowhead".
+gsn:inDoubt a owl:DatatypeProperty;
+            rdfs:domain [owl:unionOf (gsn:AssuranceCase
+                                      gsn:GSNElement
+                                      gsn:Relationship) ; 
+                         a owl:Class];
+            rdfs:label "in doubt"@en;
+            rdfs:range xsd:boolean;
+            skos:definition "The dialectic challenge within this structure asserts that if the claim presented in Goal CG1 is true then this is sufficient to establish that the claim in Goal G1 in the original structure is in doubt."@en;
+            gsn:coreOrExtension "Dialectic Extension"@en.
+gsn:instantiationOf a owl:ObjectProperty;
+                    rdfs:domain [owl:unionOf (gsn:Argument
+                                              gsn:GSNElement) ; 
+                                 a owl:Class];
+                    rdfs:label "instantiation of"@en;
+                    rdfs:range gsn:Pattern;
+                    gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:intent a owl:AnnotationProperty;
+           rdfs:domain gsn:Pattern;
+           rdfs:label "intent"@en;
+           skos:definition "The intent statement should state clearly what the pattern aims to achieve."@en;
+           gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:knownUses a owl:AnnotationProperty;
+              rdfs:domain gsn:Pattern;
+              rdfs:label "known uses"@en;
+              skos:definition "It may be useful to provide references to known applications of the pattern. These can serve as additional examples."@en;
+              gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:maxCardinality a owl:DatatypeProperty;
+                   rdfs:domain gsn:Relationship;
+                   rdfs:label "maximum cardinality"@en;
+                   rdfs:range xsd:nonNegativeInteger;
+                   gsn:coreOrExtension "Argument Pattern Extension"@en;
+                   gsn:renderedAs "text".
+gsn:minCardinality a owl:DatatypeProperty;
+                   rdfs:domain gsn:Relationship;
+                   rdfs:label "minimum cardinality"@en;
+                   rdfs:range xsd:nonNegativeInteger;
+                   gsn:coreOrExtension "Argument Pattern Extension"@en;
+                   gsn:renderedAs "text".
+gsn:motivation a owl:AnnotationProperty;
+               rdfs:domain gsn:Pattern;
+               rdfs:label "motivation"@en;
+               skos:definition "The motivation statement can be used to state why the pattern was created. It could be expressed in terms of previous experiences e.g. as the abstraction of a successfully presented argument, or challenges addressed e.g. argument topics that are often incompletely or poorly addressed."@en;
+               gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:multiple a owl:DatatypeProperty;
+             rdfs:domain gsn:Relationship;
+             rdfs:label "multiple"@en;
+             rdfs:range xsd:boolean;
+             gsn:coreOrExtension "Argument Pattern Extension"@en;
+             gsn:renderedAs "solid ball".
+gsn:offDiagram a owl:DatatypeProperty;
+               rdfs:domain gsn:GSNElement;
+               rdfs:label "off-diagram"@en;
+               rdfs:range xsd:boolean;
+               gsn:coreOrExtension "Core GSN"@en.
+gsn:optional a owl:DatatypeProperty;
+             rdfs:domain gsn:Relationship;
+             rdfs:label "optional"@en;
+             rdfs:range xsd:boolean;
+             skos:definition "Optional instantiation means that the relationship and the argument below may or may not be instantiated."@en;
+             gsn:coreOrExtension "Argument Pattern Extension"@en;
+             gsn:renderedAs "hollow ball"@en.
+gsn:participants a owl:AnnotationProperty;
+                 rdfs:domain gsn:Pattern;
+                 rdfs:label "participants"@en;
+                 skos:definition "The participants section augments the structure by providing a description of each element. This can provide more complete descriptions, clarify the role of the element in the overall argument and emphasise the aspects that require development or instantiation."@en;
+                 gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:public a owl:DatatypeProperty;
+           rdfs:domain [owl:unionOf (gsn:Assumption
+                                     gsn:Context
+                                     gsn:Goal
+                                     gsn:Justification
+                                     gsn:Solution) ; 
+                        a owl:Class];
+           rdfs:label "public"@en;
+           rdfs:range xsd:boolean;
+           skos:definition "This indicates that the element is publicly visible in one or more interfaces of the module and can be referenced as an away element."@en;
+           gsn:coreOrExtension "Modular Extension"@en;
+           gsn:renderedAs "miniature module symbol superimposed on an element at the top right".
+gsn:published a owl:DatatypeProperty;
+              rdfs:domain gsn:Argument;
+              rdfs:label "published"@en;
+              rdfs:range xsd:boolean;
+              gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:refersTo a owl:ObjectProperty;
+             rdfs:domain gsn:ArtefactReference;
+             rdfs:label "refers to"@en;
+             rdfs:range gsn:Artefact;
+             gsn:coreOrExtension "Core GSN"@en.
+gsn:relatedTo a owl:ObjectProperty;
+              rdfs:domain gsn:Pattern;
+              rdfs:label "related to"@en;
+              rdfs:range gsn:Pattern;
+              skos:definition "This section can be used to reference patterns that are related e.g. addressing the same intent in a different context."@en;
+              gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:relationshipType a owl:DatatypeProperty;
+                     rdfs:domain gsn:Relationship;
+                     rdfs:label "relationship type"@en;
+                     rdfs:range [owl:oneOf () ; 
+                                 a rdfs:Datatype];
+                     skos:definition "An evidential relationship is a declared relationship between a claim and an evidence item by which the claim is substantiated. An inferential relationship is a declared inference between claims in the argument. A contextual relationship draws attention to explanatory contextual information."@en,
+                                     "SupportedBy relationships – represented by lines with solid arrowheads – indicate inferential or evidential relationships between elements. InContextOf relationships – represented as lines with hollow arrowheads – declare contextual relationships."@en;
+                     gsn:coreOrExtension "Core GSN"@en.
+gsn:renderedAs a owl:AnnotationProperty;
+               rdfs:label "rendered as"@en;
+               gsn:coreOrExtension "Core GSN"@en.
+gsn:statement a owl:DatatypeProperty;
+              rdfs:domain [owl:unionOf (gsn:Argument
+                                        gsn:GSNElement) ; 
+                           a owl:Class];
+              rdfs:label "statement"@en;
+              rdfs:range xsd:string;
+              gsn:coreOrExtension "Core GSN"@en.
+gsn:structure a owl:AnnotationProperty;
+              rdfs:domain gsn:Pattern;
+              rdfs:label "structure"@en;
+              skos:definition "The structure uses the structural and element abstraction notations to present the pattern, clearly indicating where the argument needs to be further developed or populated with details to instantiate the pattern for a specific case."@en;
+              gsn:coreOrExtension "Argument Pattern Extension"@en.
+gsn:structured a owl:DatatypeProperty;
+               rdfs:domain gsn:Argument;
+               rdfs:label "structured"@en;
+               rdfs:range xsd:boolean;
+               skos:definition "A particular kind of argument where the relationships between the asserted claims, and from the evidence to the claims, are explicitly represented."@en;
+               gsn:coreOrExtension "Core GSN"@en.
+gsn:substitutedBy a owl:ObjectProperty;
+                  rdfs:domain gsn:Justification;
+                  rdfs:label "substituted by"@en;
+                  rdfs:range [owl:intersectionOf (gsn:Goal
+                                                  [owl:onProperty gsn:away ; 
+                                                  owl:hasValue true ; 
+                                                  a owl:Restriction]) ; 
+                              a owl:Class];
+                  skos:definition "There may be occasions when a goal or strategy requires fuller justification than can be provided within the confines of a GSN justification element. In such cases, an away goal can be substituted for the justification."@en;
+                  gsn:coreOrExtension "Modular Extension"@en.
+gsn:supportedBy a owl:ObjectProperty,
+                  owl:AsymmetricProperty,
+                  owl:IrreflexiveProperty;
+                rdfs:domain [owl:unionOf (gsn:Goal
+                                          gsn:Strategy) ; 
+                             a owl:Class];
+                rdfs:label "supported by"@en;
+                rdfs:range [owl:unionOf (gsn:Goal
+                                         gsn:Module
+                                         gsn:Solution
+                                         gsn:Strategy) ; 
+                            a owl:Class];
+                skos:definition "SupportedBy, rendered as a line with a solid arrowhead, allows support relationships between elements to be documented."@en;
+                gsn:coreOrExtension "Core GSN"@en;
+                gsn:renderedAs "line with a solid arrowhead".
+gsn:toBeSupportedByContract a owl:DatatypeProperty;
+                            rdfs:domain gsn:Goal;
+                            rdfs:label "to be supported by contract"@en;
+                            rdfs:range xsd:boolean;
+                            owl:propertyDisjointWith gsn:undeveloped;
+                            gsn:coreOrExtension "Modular Extension"@en;
+                            gsn:renderedAs "attached centrally immediately below the goal to which it relates".
+gsn:top a owl:DatatypeProperty;
+        rdfs:domain gsn:Goal;
+        rdfs:label "top (goal)"@en;
+        rdfs:range xsd:boolean;
+        skos:definition "A GSN Goal that presents the pinnacle claim in an argument. It is ‘top’ in terms of the argument hierarchy, rather than necessarily its physical layout. There may be more than one top goal in a GSN structure."@en,
+                        "The top goal presents the overall claim asserted by the author and it is up to the reader to determine their belief that it is adequately supported."@en;
+        gsn:coreOrExtension "Core GSN"@en.
+gsn:true a owl:DatatypeProperty;
+         rdfs:domain gsn:GSNElement;
+         rdfs:label "true"@en;
+         rdfs:range xsd:boolean;
+         gsn:coreOrExtension "Core GSN"@en.
+gsn:undeveloped a owl:DatatypeProperty;
+                rdfs:domain [owl:unionOf (gsn:Goal
+                                          gsn:Strategy) ; 
+                             a owl:Class];
+                rdfs:label "undeveloped"@en;
+                rdfs:range xsd:boolean;
+                skos:definition "Undeveloped element decorator, rendered as a hollow diamond applied to the bottom centre of an element, indicates that a line of argument has not been developed."@en;
+                gsn:coreOrExtension "Argument Pattern Extension"@en;
+                gsn:renderedAs "hollow diamond".
+gsn:uninstantiated a owl:DatatypeProperty;
+                   rdfs:domain gsn:GSNElement;
+                   rdfs:label "uninstantiated"@en;
+                   rdfs:range xsd:boolean;
+                   gsn:coreOrExtension "Argument Pattern Extension"@en;
+                   gsn:renderedAs "hollow triangle".
+gsn:valid a owl:DatatypeProperty;
+          rdfs:domain gsn:GSNElement;
+          rdfs:label "valid"@en;
+          rdfs:range xsd:boolean;
+          gsn:coreOrExtension "Core GSN"@en.
+gsn:viewType a owl:DatatypeProperty;
+             rdfs:domain gsn:View;
+             rdfs:label "view type"@en;
+             rdfs:range [owl:oneOf () ; 
+                         a rdfs:Datatype];
+             gsn:coreOrExtension "Modular Extension"@en.
+<urn:swrl:var#A> a swrl:Variable.
+<urn:swrl:var#B> a swrl:Variable.
+<urn:swrl:var#C> a swrl:Variable.

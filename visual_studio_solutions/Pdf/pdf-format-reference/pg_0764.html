@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0764.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 9 764 Multimedia Features TABLE 9.8 Entries common to all media clip dictionaries KEY TYPE VALUE Type name name (Optional) The type of PDF object that this dictionary describes; if present, must be MediaClip for a media clip dictionary. (Required) The subtype of media clip that this dictionary describes. May be MCD for media clip data (see “Media Clip Data” on page 764) or MCS for a media clip section (see “Media Clip Section” on page 767). The media clip is considered non-viable if the viewer application does not recognize the value of this entry. (Optional) The name of the media clip, for use in the user interface. S N text string Media Clip Data A media clip data dictionary defines the data for a media object that can be played. For example, it may reference a URL to a streaming video presentation or a movie embedded in the PDF file. Its entries are listed in Table 9.9. TABLE 9.9 Additional entries in a media clip data dictionary KEY TYPE VALUE D file specification or stream ASCII string (Required) A full file specification or form XObject that specifies the actual media data. (Optional; not allowed for form XObjects) An ASCII string identifying the type of data in D. The string should conform to the content type specification described in Internet RFC 2045, Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies (see the Bibliography). (Optional) A media permissions dictionary (see Table 9.10) containing permissions that control the use of the media data. Default value: a media permissions dictionary containing default values. (Optional) An array that provides alternate text descriptions for the media clip data in case it cannot be played; see “Multi-language Text Arrays” on page 942. (Optional) A media players dictionary (see “Media Players Dictionary” on page 777) that identifies, among other things, players that are legal and not legal for playing the media. Note: If the media players dictionary is non-viable, the media clip data is non-viable. CT P dictionary Alt array dictionary PL  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0764.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 9</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">764</span></div>
+<div class="pos" id="*49:493" style="top:49;left:493"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Multimedia Features</span></div>
+<div class="pos" id="*113:217" style="top:113;left:217"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 9.8 Entries common to all media clip dictionaries</span></div>
+<div class="pos" id="*133:74" style="top:133;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*133:149" style="top:133;left:149"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*133:224" style="top:133;left:224"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*160:74" style="top:160;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Type</span></div>
+<div class="pos" id="*160:149" style="top:160;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name</span></div>
+<div class="pos" id="*205:149" style="top:205;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name</span></div>
+<div class="pos" id="*160:224" style="top:160;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*160:282" style="top:160;left:282"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The type of PDF object that this dictionary describes; if present, must be</span></div>
+<div class="pos" id="*177:224" style="top:177;left:224"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">MediaClip</span></div>
+<div class="pos" id="*176:281" style="top:176;left:281"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for a media clip dictionary.</span></div>
+<div class="pos" id="*205:224" style="top:205;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*205:282" style="top:205;left:282"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The subtype of media clip that this dictionary describes. May be</span></div>
+<div class="pos" id="*205:619" style="top:205;left:619"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">MCD</span></div>
+<div class="pos" id="*205:647" style="top:205;left:647"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for</span></div>
+<div class="pos" id="*221:224" style="top:221;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">media clip data (see “Media Clip Data” on page 764) or</span></div>
+<div class="pos" id="*222:514" style="top:222;left:514"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">MCS</span></div>
+<div class="pos" id="*221:540" style="top:221;left:540"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for a media clip section</span></div>
+<div class="pos" id="*238:224" style="top:238;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see “Media Clip Section” on page 767). The media clip is considered non-viable if</span></div>
+<div class="pos" id="*255:224" style="top:255;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the viewer application does not recognize the value of this entry.</span></div>
+<div class="pos" id="*283:224" style="top:283;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*283:282" style="top:283;left:282"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The name of the media clip, for use in the user interface.</span></div>
+<div class="pos" id="*205:74" style="top:205;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">S</span></div>
+<div class="pos" id="*283:74" style="top:283;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">N</span></div>
+<div class="pos" id="*283:149" style="top:283;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">text string</span></div>
+<div class="pos" id="*330:133" style="top:330;left:133"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Media Clip Data</span></div>
+<div class="pos" id="*367:133" style="top:367;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*367:149" style="top:367;left:149"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">media clip data dictionary</span></div>
+<div class="pos" id="*367:312" style="top:367;left:312"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">defines the data for a media object that can be</span></div>
+<div class="pos" id="*385:133" style="top:385;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">played. For example, it may reference a URL to a streaming video presentation or</span></div>
+<div class="pos" id="*403:133" style="top:403;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">a movie embedded in the PDF file. Its entries are listed in Table 9.9.</span></div>
+<div class="pos" id="*446:206" style="top:446;left:206"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 9.9 Additional entries in a media clip data dictionary</span></div>
+<div class="pos" id="*467:74" style="top:467;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*467:122" style="top:467;left:122"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*467:224" style="top:467;left:224"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*493:74" style="top:493;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">D</span></div>
+<div class="pos" id="*493:122" style="top:493;left:122"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">file specification</span></div>
+<div class="pos" id="*510:122" style="top:510;left:122"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or stream</span></div>
+<div class="pos" id="*538:122" style="top:538;left:122"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ASCII string</span></div>
+<div class="pos" id="*493:224" style="top:493;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*493:283" style="top:493;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A full file specification or form XObject that specifies the actual media</span></div>
+<div class="pos" id="*510:224" style="top:510;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">data.</span></div>
+<div class="pos" id="*538:224" style="top:538;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; not allowed for form XObjects)</span></div>
+<div class="pos" id="*538:449" style="top:538;left:449"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An ASCII string identifying the type of</span></div>
+<div class="pos" id="*555:224" style="top:555;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">data in</span></div>
+<div class="pos" id="*555:264" style="top:555;left:264"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">D</span></div>
+<div class="pos" id="*555:272" style="top:555;left:272"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. The string should conform to the content type specification described in</span></div>
+<div class="pos" id="*571:224" style="top:571;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Internet RFC 2045,</span></div>
+<div class="pos" id="*571:331" style="top:571;left:331"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Multipurpose Internet Mail Extensions (MIME) Part One: For-</span></div>
+<div class="pos" id="*588:224" style="top:588;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">mat of Internet Message Bodies</span></div>
+<div class="pos" id="*588:386" style="top:588;left:386"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see the Bibliography).</span></div>
+<div class="pos" id="*616:224" style="top:616;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*616:283" style="top:616;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*616:296" style="top:616;left:296"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">media permissions dictionary</span></div>
+<div class="pos" id="*616:452" style="top:616;left:452"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see Table 9.10) containing permissions</span></div>
+<div class="pos" id="*633:224" style="top:633;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that control the use of the media data. Default value: a media permissions dictio-</span></div>
+<div class="pos" id="*650:224" style="top:650;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nary containing default values.</span></div>
+<div class="pos" id="*678:224" style="top:678;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*678:282" style="top:678;left:282"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">An array that provides alternate text descriptions for the media clip data</span></div>
+<div class="pos" id="*695:224" style="top:695;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in case it cannot be played; see “Multi-language Text Arrays” on page 942.</span></div>
+<div class="pos" id="*723:224" style="top:723;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*723:282" style="top:723;left:282"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*723:294" style="top:723;left:294"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">media players dictionary</span></div>
+<div class="pos" id="*723:424" style="top:723;left:424"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see “Media Players Dictionary” on page 777)</span></div>
+<div class="pos" id="*740:224" style="top:740;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that identifies, among other things, players that are legal and not legal for playing</span></div>
+<div class="pos" id="*757:224" style="top:757;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the media.</span></div>
+<div class="pos" id="*781:224" style="top:781;left:224"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*781:256" style="top:781;left:256"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">If the media players dictionary is non-viable, the media clip data is non-viable.</span></div>
+<div class="pos" id="*538:74" style="top:538;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CT</span></div>
+<div class="pos" id="*617:74" style="top:617;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">P</span></div>
+<div class="pos" id="*616:122" style="top:616;left:122"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary</span></div>
+<div class="pos" id="*678:74" style="top:678;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Alt</span></div>
+<div class="pos" id="*678:122" style="top:678;left:122"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+<div class="pos" id="*723:122" style="top:723;left:122"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary</span></div>
+<div class="pos" id="*723:74" style="top:723;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">PL</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0763.htm" title="Go to previous page">Previous</a> <a href="pg_0765.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(764);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0975.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 10.10 975 Prepress Support Trapping zones and trapping parameters are discussed fully in Sections 6.3.2 and 6.3.3, respectively, of the PostScript Language Reference, Third Edition. Trapping instructions are not directly specified in a PDF file (as they are in a PostScript file). Instead, they are specified in a job ticket that accompanies the PDF file or can be embedded within it. Various standards exist for the format of job tickets; two of them, JDF (Job Definition Format) and PJTF (Portable Job Ticket Format), are described in the CIP4 document JDF Specification and in Adobe Technical Note #5620, Portable Job Ticket Format (see the Bibliography). When trapping is performed before the production of final output, the resulting traps are placed in the PDF file for subsequent use. The traps themselves are described as a content stream in a trap network annotation (see below). The stream dictionary can include additional entries describing the method that was used to produce the traps and other information about their appearance. Trap Network Annotations A complete set of traps generated for a given page under a specified set of trapping instructions is called a trap network (PDF 1.3). It is a form XObject containing graphics objects for painting the required traps on the page. A page may have more than one trap network based on different trapping instructions, presumably intended for different output devices. All of the trap networks for a given page are contained in a single trap network annotation (see Section 8.4, “Annotations”). There can be at most one trap network annotation per page, which must be the last element in the page’s Annots array (see “Page Objects” on page 144). This ensures that the trap network is printed after all of the page’s other contents. (See implementation note 170 in Appendix H.) The form XObject defining a trap network is specified as an appearance stream in the N (normal) entry of the trap network annotation’s appearance dictionary (see Section 8.4.4, “Appearance Streams”). If more than one trap network is defined for the same page, the N entry holds a subdictionary containing the alternate trap networks, each identified by an arbitrary key. The AS (appearance state) entry in the annotation dictionary designates one of them as the current trap network to be displayed or printed. Note: The trap network annotation’s appearance dictionary may include R (rollover) or D (down) entries, but appearances defined in either of these entries are never printed.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0975.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 10.10</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">975</span></div>
+<div class="pos" id="*49:514" style="top:49;left:514"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Prepress Support</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Trapping zones and trapping parameters are discussed fully in Sections 6.3.2 and</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6.3.3, respectively, of the</span></div>
+<div class="pos" id="*117:281" style="top:117;left:281"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">PostScript Language Reference,</span></div>
+<div class="pos" id="*117:462" style="top:117;left:462"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Third Edition. Trapping</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">instructions are not directly specified in a PDF file (as they are in a PostScript</span></div>
+<div class="pos" id="*153:133" style="top:153;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">file). Instead, they are specified in a</span></div>
+<div class="pos" id="*153:350" style="top:153;left:350"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">job ticket</span></div>
+<div class="pos" id="*153:407" style="top:153;left:407"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that accompanies the PDF file or</span></div>
+<div class="pos" id="*171:133" style="top:171;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">can be embedded within it. Various standards exist for the format of job tickets;</span></div>
+<div class="pos" id="*189:133" style="top:189;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">two of them, JDF (Job Definition Format) and PJTF (Portable Job Ticket For-</span></div>
+<div class="pos" id="*207:133" style="top:207;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">mat), are described in the CIP4 document</span></div>
+<div class="pos" id="*207:385" style="top:207;left:385"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">JDF Specification</span></div>
+<div class="pos" id="*207:487" style="top:207;left:487"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and in Adobe Tech-</span></div>
+<div class="pos" id="*225:133" style="top:225;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nical Note #5620,</span></div>
+<div class="pos" id="*225:238" style="top:225;left:238"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Portable Job Ticket Format</span></div>
+<div class="pos" id="*225:393" style="top:225;left:393"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see the Bibliography).</span></div>
+<div class="pos" id="*260:133" style="top:260;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">When trapping is performed before the production of final output, the resulting</span></div>
+<div class="pos" id="*278:133" style="top:278;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">traps are placed in the PDF file for subsequent use. The traps themselves are</span></div>
+<div class="pos" id="*296:133" style="top:296;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">described as a content stream in a trap network annotation (see below). The</span></div>
+<div class="pos" id="*314:133" style="top:314;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stream dictionary can include additional entries describing the method that was</span></div>
+<div class="pos" id="*332:133" style="top:332;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">used to produce the traps and other information about their appearance.</span></div>
+<div class="pos" id="*375:133" style="top:375;left:133"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Trap Network Annotations</span></div>
+<div class="pos" id="*412:133" style="top:412;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A complete set of traps generated for a given page under a specified set of trap-</span></div>
+<div class="pos" id="*430:133" style="top:430;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ping instructions is called a</span></div>
+<div class="pos" id="*430:296" style="top:430;left:296"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">trap network (PDF 1.3).</span></div>
+<div class="pos" id="*430:436" style="top:430;left:436"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">It is a form XObject contain-</span></div>
+<div class="pos" id="*448:133" style="top:448;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ing graphics objects for painting the required traps on the page. A page may have</span></div>
+<div class="pos" id="*466:133" style="top:466;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">more than one trap network based on different trapping instructions, presumably</span></div>
+<div class="pos" id="*484:133" style="top:484;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">intended for different output devices. All of the trap networks for a given page are</span></div>
+<div class="pos" id="*502:133" style="top:502;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">contained in a single</span></div>
+<div class="pos" id="*502:263" style="top:502;left:263"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">trap network annotation</span></div>
+<div class="pos" id="*502:411" style="top:502;left:411"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see Section 8.4, “Annotations”).</span></div>
+<div class="pos" id="*520:133" style="top:520;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">There can be at most one trap network annotation per page, which must be the</span></div>
+<div class="pos" id="*538:133" style="top:538;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">last element in the page’s</span></div>
+<div class="pos" id="*539:279" style="top:539;left:279"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Annots</span></div>
+<div class="pos" id="*538:325" style="top:538;left:325"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array (see “Page Objects” on page 144). This en-</span></div>
+<div class="pos" id="*556:133" style="top:556;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sures that the trap network is printed after all of the page’s other contents. (See</span></div>
+<div class="pos" id="*574:133" style="top:574;left:133"><a href="pg_1128.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">implementation note 170 in Appendix H.)</span></a></div>
+<div class="pos" id="*609:133" style="top:609;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The form XObject defining a trap network is specified as an appearance stream in</span></div>
+<div class="pos" id="*627:133" style="top:627;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the</span></div>
+<div class="pos" id="*628:155" style="top:628;left:155"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">N</span></div>
+<div class="pos" id="*627:167" style="top:627;left:167"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(normal) entry of the trap network annotation’s appearance dictionary (see</span></div>
+<div class="pos" id="*645:133" style="top:645;left:133"><a href="pg_0612.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Section 8.4.4, “Appearance Streams”). If more than one trap network is defined</span></a></div>
+<div class="pos" id="*663:133" style="top:663;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for the same page, the</span></div>
+<div class="pos" id="*664:263" style="top:664;left:263"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">N</span></div>
+<div class="pos" id="*663:276" style="top:663;left:276"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry holds a subdictionary containing the alternate trap</span></div>
+<div class="pos" id="*681:133" style="top:681;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">networks, each identified by an arbitrary key. The</span></div>
+<div class="pos" id="*682:428" style="top:682;left:428"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">AS</span></div>
+<div class="pos" id="*681:447" style="top:681;left:447"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(appearance state) entry in</span></div>
+<div class="pos" id="*699:133" style="top:699;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the annotation dictionary designates one of them as the</span></div>
+<div class="pos" id="*699:468" style="top:699;left:468"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">current trap network</span></div>
+<div class="pos" id="*699:592" style="top:699;left:592"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to</span></div>
+<div class="pos" id="*717:133" style="top:717;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">be displayed or printed.</span></div>
+<div class="pos" id="*752:133" style="top:752;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*752:167" style="top:752;left:167"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">The trap network annotation’s appearance dictionary may include</span></div>
+<div class="pos" id="*753:540" style="top:753;left:540"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*752:551" style="top:752;left:551"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(rollover)</span></div>
+<div class="pos" id="*770:133" style="top:770;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*771:150" style="top:771;left:150"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">D</span></div>
+<div class="pos" id="*770:164" style="top:770;left:164"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(down) entries, but appearances defined in either of these entries are never</span></div>
+<div class="pos" id="*788:133" style="top:788;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">printed.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0974.htm" title="Go to previous page">Previous</a> <a href="pg_0976.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(975);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

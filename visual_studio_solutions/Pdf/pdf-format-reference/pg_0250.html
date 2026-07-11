@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0250.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 4 250 Graphics chromaticity coordinates and uppercase letters to specify tristimulus values. Given this information, Matrix and WhitePoint can be found as follows: z = yW × ( ( xG – xB ) × yR – ( xR – xB ) × yG + ( xR – xG ) × yB ) yR ( xG – xB ) × yW – ( xW – xB ) × yG + ( xW – xG ) × yB Y A = ----- × -------------------------------------------------------------------------------------------------------------------------------z R xR X A = Y A × ----yR ⎛ 1 – xR ⎞ Z A = Y A × ⎜ -------------- – 1 ⎟ ⎝ yR ⎠ yG ( xR – xB ) × yW – ( xW – xB ) × yR + ( xW – xR ) × yB ----- × ------------------------------------------------------------------------------------------------------------------------------YB = – z G xG X B = Y B × ----yG ⎛ 1 – xG ⎞ Z B = Y B × ⎜ -------------- – 1 ⎟ ⎝ yG ⎠ yB ( xR – xG ) × yW – ( xW – xG ) × yR + ( xW – xR ) × yG Y C = ----- × --------------------------------------------------------------------------------------------------------------------------------z B xB X C = Y C × ----yB ⎛ 1 – xB ⎞ Z C = Y C × ⎜ -------------- – 1 ⎟ ⎝ yB ⎠ XW = XA × R + XB × G + XC × B YW = YA × R + YB × G + YC × B ZW = ZA × R + ZB × G + ZC × B Lab Color Spaces A Lab color space is a CIE-based ABC color space with two transformation stages (see Figure 4.14 on page 245). In this type of space, A, B, and C represent the L*, a*, and b* components of a CIE 1976 L*a*b* space. The range of the first (L*) component is always 0 to 100; the ranges of the second and third (a* and b*) components are defined by the Range entry in the color space dictionary (see Table 4.15). Plate 3 illustrates the coordinates of a typical Lab color space; Plate 4 compares the gamuts (ranges of representable colors) for L*a*b*, RGB, and CMYK spaces.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0250.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 4</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">250</span></div>
+<div class="pos" id="*49:556" style="top:49;left:556"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Graphics</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">chromaticity coordinates and uppercase letters to specify tristimulus values. Giv-</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">en this information,</span></div>
+<div class="pos" id="*117:252" style="top:117;left:252"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Matrix</span></div>
+<div class="pos" id="*117:293" style="top:117;left:293"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*117:319" style="top:117;left:319"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">WhitePoint</span></div>
+<div class="pos" id="*117:387" style="top:117;left:387"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">can be found as follows:</span></div>
+<div class="pos" id="*146:134" style="top:146;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">z</span></div>
+<div class="pos" id="*143:149" style="top:143;left:149"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*146:166" style="top:146;left:166"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*153:173" style="top:153;left:173"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*142:190" style="top:142;left:190"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">× ( (</span></div>
+<div class="pos" id="*146:216" style="top:146;left:216"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*153:223" style="top:153;left:223"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*143:235" style="top:143;left:235"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*146:246" style="top:146;left:246"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*153:254" style="top:153;left:254"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*142:262" style="top:142;left:262"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*146:282" style="top:146;left:282"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*153:289" style="top:153;left:289"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*143:303" style="top:143;left:303"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*142:317" style="top:142;left:317"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*146:323" style="top:146;left:323"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*153:330" style="top:153;left:330"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*143:341" style="top:143;left:341"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*146:352" style="top:146;left:352"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*153:360" style="top:153;left:360"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*142:368" style="top:142;left:368"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*146:388" style="top:146;left:388"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*153:395" style="top:153;left:395"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*143:410" style="top:143;left:410"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*142:425" style="top:142;left:425"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*146:430" style="top:146;left:430"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*153:438" style="top:153;left:438"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*143:449" style="top:143;left:449"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*146:460" style="top:146;left:460"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*153:467" style="top:153;left:467"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*142:477" style="top:142;left:477"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*146:497" style="top:146;left:497"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*153:504" style="top:153;left:504"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*142:513" style="top:142;left:513"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">)</span></div>
+<div class="pos" id="*171:178" style="top:171;left:178"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*178:185" style="top:178;left:185"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*168:211" style="top:168;left:211"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*171:217" style="top:171;left:217"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*178:224" style="top:178;left:224"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*168:236" style="top:168;left:236"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*171:247" style="top:171;left:247"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*178:255" style="top:178;left:255"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*168:263" style="top:168;left:263"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*171:283" style="top:171;left:283"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*178:290" style="top:178;left:290"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*168:308" style="top:168;left:308"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*168:322" style="top:168;left:322"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*171:328" style="top:171;left:328"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*178:336" style="top:178;left:336"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*168:351" style="top:168;left:351"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*171:362" style="top:171;left:362"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*178:369" style="top:178;left:369"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*168:378" style="top:168;left:378"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*171:398" style="top:171;left:398"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*178:405" style="top:178;left:405"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*168:420" style="top:168;left:420"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*168:434" style="top:168;left:434"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*171:440" style="top:171;left:440"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*178:448" style="top:178;left:448"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*168:463" style="top:168;left:463"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*171:474" style="top:171;left:474"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*178:482" style="top:178;left:482"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*168:491" style="top:168;left:491"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*171:511" style="top:171;left:511"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*178:518" style="top:178;left:518"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*181:521" style="top:181;left:521"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-</span></div>
+<div class="pos" id="*184:134" style="top:184;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*192:144" style="top:192;left:144"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*182:161" style="top:182;left:161"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">= -----</span></div>
+<div class="pos" id="*181:198" style="top:181;left:198"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*181:211" style="top:181;left:211"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">--------------------------------------------------------------------------------------------------------------------------------</span></div>
+<div class="pos" id="*194:365" style="top:194;left:365"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">z</span></div>
+<div class="pos" id="*194:181" style="top:194;left:181"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*228:215" style="top:228;left:215"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*235:222" style="top:235;left:222"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*238:225" style="top:238;left:225"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-</span></div>
+<div class="pos" id="*241:135" style="top:241;left:135"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*248:145" style="top:248;left:145"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*239:162" style="top:239;left:162"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*241:179" style="top:241;left:179"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*248:188" style="top:248;left:188"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*238:201" style="top:238;left:201"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*238:215" style="top:238;left:215"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-----</span></div>
+<div class="pos" id="*251:215" style="top:251;left:215"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*258:222" style="top:258;left:222"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*226:375" style="top:226;left:375"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎛</span></div>
+<div class="pos" id="*228:384" style="top:228;left:384"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*225:394" style="top:225;left:394"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*228:405" style="top:228;left:405"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*235:413" style="top:235;left:413"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*226:448" style="top:226;left:448"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎞</span></div>
+<div class="pos" id="*238:415" style="top:238;left:415"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-</span></div>
+<div class="pos" id="*241:297" style="top:241;left:297"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*248:306" style="top:248;left:306"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*239:323" style="top:239;left:323"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*241:340" style="top:241;left:340"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*248:349" style="top:248;left:349"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*238:362" style="top:238;left:362"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*238:375" style="top:238;left:375"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎜</span></div>
+<div class="pos" id="*238:384" style="top:238;left:384"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-------------- –</span></div>
+<div class="pos" id="*241:441" style="top:241;left:441"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*238:448" style="top:238;left:448"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎟</span></div>
+<div class="pos" id="*251:375" style="top:251;left:375"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎝</span></div>
+<div class="pos" id="*251:395" style="top:251;left:395"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*258:402" style="top:258;left:402"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*251:448" style="top:251;left:448"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎠</span></div>
+<div class="pos" id="*280:189" style="top:280;left:189"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*287:196" style="top:287;left:196"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*276:223" style="top:276;left:223"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*280:229" style="top:280;left:229"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*287:236" style="top:287;left:236"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*277:247" style="top:277;left:247"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*280:258" style="top:280;left:258"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*287:266" style="top:287;left:266"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*276:274" style="top:276;left:274"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*280:294" style="top:280;left:294"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*287:301" style="top:287;left:301"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*277:319" style="top:277;left:319"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*276:333" style="top:276;left:333"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*280:339" style="top:280;left:339"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*287:347" style="top:287;left:347"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*277:362" style="top:277;left:362"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*280:373" style="top:280;left:373"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*287:380" style="top:287;left:380"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*276:389" style="top:276;left:389"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*280:409" style="top:280;left:409"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*287:416" style="top:287;left:416"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*277:430" style="top:277;left:430"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*276:444" style="top:276;left:444"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*280:450" style="top:280;left:450"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*287:458" style="top:287;left:458"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*277:473" style="top:277;left:473"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*280:484" style="top:280;left:484"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*287:492" style="top:287;left:492"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*276:500" style="top:276;left:500"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*280:520" style="top:280;left:520"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*287:527" style="top:287;left:527"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*290:530" style="top:290;left:530"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-</span></div>
+<div class="pos" id="*290:189" style="top:290;left:189"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-----</span></div>
+<div class="pos" id="*290:210" style="top:290;left:210"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*290:223" style="top:290;left:223"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-------------------------------------------------------------------------------------------------------------------------------</span></div>
+<div class="pos" id="*293:136" style="top:293;left:136"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*300:145" style="top:300;left:145"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*291:161" style="top:291;left:161"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">= – -</span></div>
+<div class="pos" id="*303:376" style="top:303;left:376"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">z</span></div>
+<div class="pos" id="*303:191" style="top:303;left:191"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*337:212" style="top:337;left:212"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*344:219" style="top:344;left:219"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*346:223" style="top:346;left:223"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-</span></div>
+<div class="pos" id="*350:134" style="top:350;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*357:144" style="top:357;left:144"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*347:160" style="top:347;left:160"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*350:177" style="top:350;left:177"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*357:186" style="top:357;left:186"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*347:199" style="top:347;left:199"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*346:212" style="top:346;left:212"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-----</span></div>
+<div class="pos" id="*360:212" style="top:360;left:212"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*367:219" style="top:367;left:219"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*334:363" style="top:334;left:363"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎛</span></div>
+<div class="pos" id="*337:372" style="top:337;left:372"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*334:382" style="top:334;left:382"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*337:393" style="top:337;left:393"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*344:401" style="top:344;left:401"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*334:438" style="top:334;left:438"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎞</span></div>
+<div class="pos" id="*346:404" style="top:346;left:404"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-</span></div>
+<div class="pos" id="*350:287" style="top:350;left:287"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*357:296" style="top:357;left:296"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*347:312" style="top:347;left:312"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*350:329" style="top:350;left:329"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*357:338" style="top:357;left:338"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*347:350" style="top:347;left:350"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*347:363" style="top:347;left:363"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎜</span></div>
+<div class="pos" id="*346:372" style="top:346;left:372"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-------------- –</span></div>
+<div class="pos" id="*350:430" style="top:350;left:430"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*347:438" style="top:347;left:438"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎟</span></div>
+<div class="pos" id="*359:363" style="top:359;left:363"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎝</span></div>
+<div class="pos" id="*360:383" style="top:360;left:383"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*367:390" style="top:367;left:390"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*359:438" style="top:359;left:438"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎠</span></div>
+<div class="pos" id="*388:177" style="top:388;left:177"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*396:184" style="top:396;left:184"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*385:210" style="top:385;left:210"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*388:216" style="top:388;left:216"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*396:224" style="top:396;left:224"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*386:235" style="top:386;left:235"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*388:246" style="top:388;left:246"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*396:253" style="top:396;left:253"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*385:263" style="top:385;left:263"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*388:283" style="top:388;left:283"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*396:290" style="top:396;left:290"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*386:308" style="top:386;left:308"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*385:322" style="top:385;left:322"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*388:328" style="top:388;left:328"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*396:335" style="top:396;left:335"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*386:351" style="top:386;left:351"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*388:362" style="top:388;left:362"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*396:369" style="top:396;left:369"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*385:379" style="top:385;left:379"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*388:399" style="top:388;left:399"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*396:406" style="top:396;left:406"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*386:420" style="top:386;left:420"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*385:434" style="top:385;left:434"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*388:440" style="top:388;left:440"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*396:448" style="top:396;left:448"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*386:463" style="top:386;left:463"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*388:474" style="top:388;left:474"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*396:482" style="top:396;left:482"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*385:490" style="top:385;left:490"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*388:510" style="top:388;left:510"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*396:517" style="top:396;left:517"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*402:134" style="top:402;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*409:144" style="top:409;left:144"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*399:160" style="top:399;left:160"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">= -----</span></div>
+<div class="pos" id="*398:197" style="top:398;left:197"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*398:210" style="top:398;left:210"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">---------------------------------------------------------------------------------------------------------------------------------</span></div>
+<div class="pos" id="*411:365" style="top:411;left:365"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">z</span></div>
+<div class="pos" id="*411:180" style="top:411;left:180"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*445:213" style="top:445;left:213"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*452:221" style="top:452;left:221"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*455:223" style="top:455;left:223"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-</span></div>
+<div class="pos" id="*459:134" style="top:459;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*466:144" style="top:466;left:144"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*456:161" style="top:456;left:161"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*459:178" style="top:459;left:178"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*466:187" style="top:466;left:187"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*455:200" style="top:455;left:200"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*455:213" style="top:455;left:213"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-----</span></div>
+<div class="pos" id="*468:214" style="top:468;left:214"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*475:221" style="top:475;left:221"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*443:370" style="top:443;left:370"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎛</span></div>
+<div class="pos" id="*445:378" style="top:445;left:378"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*443:388" style="top:443;left:388"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*445:399" style="top:445;left:399"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*452:407" style="top:452;left:407"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*443:442" style="top:443;left:442"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎞</span></div>
+<div class="pos" id="*459:291" style="top:459;left:291"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*466:301" style="top:466;left:301"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*456:317" style="top:456;left:317"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*459:334" style="top:459;left:334"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*466:344" style="top:466;left:344"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*455:356" style="top:455;left:356"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*456:370" style="top:456;left:370"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎜</span></div>
+<div class="pos" id="*455:378" style="top:455;left:378"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">-------------- –</span></div>
+<div class="pos" id="*459:435" style="top:459;left:435"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*456:442" style="top:456;left:442"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎟</span></div>
+<div class="pos" id="*468:370" style="top:468;left:370"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎝</span></div>
+<div class="pos" id="*468:389" style="top:468;left:389"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*475:396" style="top:475;left:396"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*468:442" style="top:468;left:442"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎠</span></div>
+<div class="pos" id="*497:134" style="top:497;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*504:144" style="top:504;left:144"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*495:165" style="top:495;left:165"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*497:181" style="top:497;left:181"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*504:191" style="top:504;left:191"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*494:205" style="top:494;left:205"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*497:218" style="top:497;left:218"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*495:233" style="top:495;left:233"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*497:248" style="top:497;left:248"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*504:258" style="top:504;left:258"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*494:270" style="top:494;left:270"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*497:283" style="top:497;left:283"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*495:299" style="top:495;left:299"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*497:314" style="top:497;left:314"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">X</span></div>
+<div class="pos" id="*504:324" style="top:504;left:324"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*494:337" style="top:494;left:337"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*497:350" style="top:497;left:350"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*521:135" style="top:521;left:135"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*528:144" style="top:528;left:144"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*518:165" style="top:518;left:165"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*521:181" style="top:521;left:181"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*528:191" style="top:528;left:191"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*517:204" style="top:517;left:204"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*521:217" style="top:521;left:217"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*518:232" style="top:518;left:232"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*521:247" style="top:521;left:247"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*528:257" style="top:528;left:257"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*517:269" style="top:517;left:269"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*521:282" style="top:521;left:282"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*518:298" style="top:518;left:298"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*521:313" style="top:521;left:313"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*528:322" style="top:528;left:322"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*517:335" style="top:517;left:335"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*521:348" style="top:521;left:348"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*544:135" style="top:544;left:135"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*551:144" style="top:551;left:144"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">W</span></div>
+<div class="pos" id="*542:165" style="top:542;left:165"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*544:181" style="top:544;left:181"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*551:191" style="top:551;left:191"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*541:204" style="top:541;left:204"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*544:217" style="top:544;left:217"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*542:232" style="top:542;left:232"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*544:247" style="top:544;left:247"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*551:256" style="top:551;left:256"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*541:268" style="top:541;left:268"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*544:281" style="top:544;left:281"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*542:298" style="top:542;left:298"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*544:312" style="top:544;left:312"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*551:321" style="top:551;left:321"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*541:334" style="top:541;left:334"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*544:347" style="top:544;left:347"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*599:133" style="top:599;left:133"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Lab Color Spaces</span></div>
+<div class="pos" id="*636:133" style="top:636;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*636:146" style="top:636;left:146"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Lab</span></div>
+<div class="pos" id="*636:171" style="top:636;left:171"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space is a CIE-based</span></div>
+<div class="pos" id="*636:325" style="top:636;left:325"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">ABC</span></div>
+<div class="pos" id="*636:356" style="top:636;left:356"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space with two transformation stages</span></div>
+<div class="pos" id="*654:133" style="top:654;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see Figure 4.14 on page 245). In this type of space,</span></div>
+<div class="pos" id="*654:436" style="top:654;left:436"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A, B,</span></div>
+<div class="pos" id="*654:468" style="top:654;left:468"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*654:494" style="top:654;left:494"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*654:507" style="top:654;left:507"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">represent the</span></div>
+<div class="pos" id="*654:587" style="top:654;left:587"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">L*,</span></div>
+<div class="pos" id="*672:133" style="top:672;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">a*,</span></div>
+<div class="pos" id="*672:154" style="top:672;left:154"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*672:181" style="top:672;left:181"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b*</span></div>
+<div class="pos" id="*672:198" style="top:672;left:198"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">components of a CIE 1976</span></div>
+<div class="pos" id="*672:363" style="top:672;left:363"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">L*a*b*</span></div>
+<div class="pos" id="*672:407" style="top:672;left:407"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space. The range of the first</span></div>
+<div class="pos" id="*672:580" style="top:672;left:580"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(L*)</span></div>
+<div class="pos" id="*690:133" style="top:690;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">component is always 0 to 100; the ranges of the second and third</span></div>
+<div class="pos" id="*690:535" style="top:690;left:535"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(a*</span></div>
+<div class="pos" id="*690:559" style="top:690;left:559"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*690:586" style="top:690;left:586"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b*)</span></div>
+<div class="pos" id="*708:133" style="top:708;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">components are defined by the</span></div>
+<div class="pos" id="*709:324" style="top:709;left:324"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Range</span></div>
+<div class="pos" id="*708:367" style="top:708;left:367"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the color space dictionary (see</span></div>
+<div class="pos" id="*726:133" style="top:726;left:133"><a href="pg_0251.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Table 4.15).</span></a></div>
+<div class="pos" id="*761:133" style="top:761;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Plate 3 illustrates the coordinates of a typical</span></div>
+<div class="pos" id="*761:404" style="top:761;left:404"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Lab</span></div>
+<div class="pos" id="*761:429" style="top:761;left:429"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space; Plate 4 compares</span></div>
+<div class="pos" id="*779:133" style="top:779;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the gamuts (ranges of representable colors) for</span></div>
+<div class="pos" id="*779:406" style="top:779;left:406"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">L*a*b*, RGB,</span></div>
+<div class="pos" id="*779:485" style="top:779;left:485"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*779:510" style="top:779;left:510"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*779:554" style="top:779;left:554"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">spaces.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0249.htm" title="Go to previous page">Previous</a> <a href="pg_0251.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(250);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

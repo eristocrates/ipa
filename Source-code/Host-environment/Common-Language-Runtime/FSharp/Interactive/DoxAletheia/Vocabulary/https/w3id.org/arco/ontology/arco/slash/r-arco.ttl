@@ -1,0 +1,1826 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cis: <http://dati.beniculturali.it/cis/>.
+@prefix odp: <http://ontologydesignpatterns.org/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix w3id: <https://w3id.org/>.
+@prefix ctlog: <https://w3id.org/arco/ontology/catalogue/>.
+@prefix cdesc: <https://w3id.org/arco/ontology/context-description/>.
+@prefix arco: <https://w3id.org/arco/ontology/core/>.
+@prefix ddesc: <https://w3id.org/arco/ontology/denotative-description/>.
+@prefix a-loc: <https://w3id.org/arco/ontology/location/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix r-arco: <https://w3id.org/arco/ontology/arco/>.
+
+_:B5593b534752f073dc914adc949e7d581 a owl:AllDisjointClasses;
+                                    owl:members (r-arco:CulturalPropertyCollection
+                                                 cdesc:ArchivalRecordSet
+                                                 ddesc:MeasurementCollection
+                                                 ddesc:SampleCollected
+                                                 a-loc:Coordinates).
+_:B578584eca12b028dd2d130b9dfab997a a owl:AllDisjointClasses;
+                                    owl:members (cdesc:Reliability
+                                                 ddesc:AgeRange
+                                                 ddesc:FontStyle
+                                                 ddesc:Orientation
+                                                 a-loc:Altitude
+                                                 a-loc:TypeOfContext).
+_:B7973cd9a7c9e4bc4498672375ceea4d4 a owl:AllDisjointClasses;
+                                    owl:members (cdesc:CulturalPropertyStage
+                                                 ddesc:CommunicationMedium
+                                                 ddesc:CulturalPropertyAccessibility
+                                                 ddesc:CulturalPropertyAvailability
+                                                 ddesc:FunctionalPurpose
+                                                 ddesc:Legibility).
+_:B8da40c4c7d1d2831d24dd4b43de93683 a owl:AllDisjointClasses;
+                                    owl:members (cdesc:AnomalyOrigin
+                                                 ddesc:CommunicationMedium
+                                                 ddesc:CulturalPropertyAccessibility
+                                                 ddesc:CulturalPropertyAvailability
+                                                 ddesc:FunctionalPurpose
+                                                 ddesc:Legibility).
+_:Baeb4ba96f80848b473eec92a0e7dbffe a owl:AllDisjointClasses;
+                                    owl:members (cdesc:Reliability
+                                                 arco:CulturalEntityCharacteristic
+                                                 ddesc:AgeRange
+                                                 ddesc:FontStyle
+                                                 ddesc:Orientation
+                                                 a-loc:Altitude).
+_:Bde207306ed2330f1d4bacc678003197f a owl:AllDisjointClasses;
+                                    owl:members (r-arco:CartographicClassification
+                                                 r-arco:MusicalInstrumentClassification
+                                                 r-arco:PhotographicHeritageClassification).
+cis:CulturalEntity a owl:Class.
+cis:GeographicalFeature a owl:Class.
+cis:SubjectDiscipline a owl:Class.
+cis:isRelatedToRiT a owl:ObjectProperty.
+<http://ontologydesignpatterns.org/opla/isNativeTo> a owl:AnnotationProperty.
+<http://ontologydesignpatterns.org/opla/reusesPatternAsTemplate> a owl:AnnotationProperty.
+dc11:language a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+<https://w3id.org/arco/ontology/arco> <http://ontologydesignpatterns.org/opla/reusesPatternAsTemplate> <http://www.ontologydesignpatterns.org/cp/owl/classification.owl>,
+                                                                                                       <http://www.ontologydesignpatterns.org/cp/owl/situation.owl>,
+                                                                                                       <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl>,
+                                                                                                       <http://www.ontologydesignpatterns.org/cp/owl/partof.owl>,
+                                                                                                       <http://www.ontologydesignpatterns.org/cp/owl/componency.owl>;
+                                      dc11:creator "Valentina Carriero (ISTC-CNR, STLab)",
+                                                   "Valentina Presutti (ISTC-CNR, STLab)",
+                                                   "Chiara Veninata (MiBAC, ICCD)",
+                                                   "Maria Letizia Mancinelli (MiBAC, ICCD)",
+                                                   "Aldo Gangemi (ISTC-CNR, STLab)",
+                                                   "Andrea Nuzzolese (ISTC-CNR, STLab)",
+                                                   "Ludovica Marinucci (ISTC-CNR, STLab)";
+                                      dc11:description "The ArCo module is the root of the network ArCo - Architecture of Knowledge. It imports all the other modules and models top-level distinctions from the cultural heritage domain."@en,
+                                                       "Questo è il modulo centrale della rete di ontologie di ArCo - Architettura della Conoscenza. Qui si modellano informazioni, relative al dominio dei beni culturali, considerate top-level. Vengono importati tutti gli altri moduli della rete."@it;
+                                      dc11:language <http://publications.europa.eu/resource/authority/language/ITA>,
+                                                    <http://publications.europa.eu/resource/authority/language/ENG>;
+                                      dc11:title "ArCo Ontology (ArCo network)"@en,
+                                                 "Ontologia ArCo (ArCo network)"@it;
+                                      dcterms:issued "2019-03-05";
+                                      dcterms:license <https://w3id.org/italia/controlled-vocabulary/licences/A31_CCBYSA40>,
+                                                      <https://creativecommons.org/licenses/by-sa/4.0/>;
+                                      dcterms:modified "2019-06-01";
+                                      a owl:Ontology;
+                                      rdfs:comment """The ArCo module is the root of the network ArCo - Architecture of Knowledge. It imports all the other modules and models top-level distinctions from the cultural heritage domain.
+In this module are used as template the following Ontology Design Patterns:
+- http://www.ontologydesignpatterns.org/cp/owl/classification.owl
+- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl
+- http://www.ontologydesignpatterns.org/cp/owl/componency.owl
+- http://www.ontologydesignpatterns.org/cp/owl/partof.owl
+- http://www.ontologydesignpatterns.org/cp/owl/situation.owl"""@en,
+                                                   """Questo è il modulo centrale della rete di ontologie di ArCo - Architettura della Conoscenza. Qui si modellano informazioni, relative al dominio dei beni culturali, considerate top-level. Vengono importati tutti gli altri moduli della rete.
+In questo modulo sono riusati come template i seguenti Ontology Design Patterns:
+- http://www.ontologydesignpatterns.org/cp/owl/classification.owl
+- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl
+- http://www.ontologydesignpatterns.org/cp/owl/componency.owl
+- http://www.ontologydesignpatterns.org/cp/owl/partof.owl
+- http://www.ontologydesignpatterns.org/cp/owl/situation.owl"""@it;
+                                      rdfs:label "ArCo Ontology (ArCo network)"@en,
+                                                 "Ontologia ArCo (ArCo network)"@it;
+                                      owl:imports <https://w3id.org/arco/ontology/context-description>,
+                                                  <https://w3id.org/arco/ontology/cultural-event>,
+                                                  <https://w3id.org/arco/ontology/denotative-description>,
+                                                  <https://w3id.org/arco/ontology/catalogue>,
+                                                  <https://w3id.org/arco/ontology/location>;
+                                      owl:versionInfo "Version 1.0"@en,
+                                                      "Versione 1.0"@it.
+r-arco:AlternativeMusicalInstrumentClassification a owl:Class;
+                                                  rdfs:comment "This class represents a classification different from the Hornbostel-Sachs classification."@en,
+                                                               "Questa classe rappresenta un sistema di classificazione diverso da quello Hornbostel-Sachs, con cui può essere codificato uno strumento musicale."@it;
+                                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                                  rdfs:label "Classificazione alternativa di strumento musicale"@it,
+                                                             "Alternative musical instrument classification"@en;
+                                                  rdfs:subClassOf r-arco:MusicalInstrumentClassification,
+                                                                  [owl:someValuesFrom <https://w3id.org/italia/onto/l0/Agent> ; 
+                                                                   owl:onProperty cdesc:hasAuthor ; 
+                                                                   a owl:Restriction],
+                                                                  [owl:onProperty cdesc:hasBibliography ; 
+                                                                   owl:allValuesFrom cdesc:Bibliography ; 
+                                                                   a owl:Restriction],
+                                                                  [owl:someValuesFrom rdfs:Literal ; 
+                                                                   owl:onProperty r-arco:taxon ; 
+                                                                   a owl:Restriction];
+                                                  owl:disjointWith r-arco:HornbostelSachsClassification;
+                                                  owl:versionInfo "stabile"@it,
+                                                                  "stable"@en;
+                                                  ctlog:iccdNormTag "Normativa SM 4.00: CL/CLA".
+r-arco:ArchaeologicalMaterial a owl:Class;
+                              rdfs:comment "Questa classe rappresenta un materiale archeologico, che è una parte di un lotto di materiali archeologici."@it,
+                                           "This class represents an archaeological material, that is a part of a lot of archaeological materials."@en;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                              rdfs:label "Materiale archeologico"@it,
+                                         "Archaeological material"@en;
+                              rdfs:subClassOf [owl:someValuesFrom r-arco:ArchaeologicalMaterialCategory ; 
+                                               owl:onProperty r-arco:hasArchaeologicalMaterialCategory ; 
+                                               a owl:Restriction],
+                                              [owl:someValuesFrom xsd:integer ; 
+                                               owl:onProperty r-arco:numberOfArchaeologicalMaterials ; 
+                                               a owl:Restriction],
+                                              r-arco:CulturalPropertyPart;
+                              owl:versionInfo "stabile"@it,
+                                              "stable"@en;
+                              ctlog:iccdNormTag "ICCD Normativa TMA: MA".
+r-arco:ArchaeologicalMaterialCategory a owl:Class;
+                                      rdfs:comment "Questa classe rappresenta la categoria di materiale, parte di un lotto di materiali archeologici. (es.: ceramiche, industria litica, intonaco, legno, etc.)"@it,
+                                                   "This class represents the category of an archaeological material, that is part of a lot of archaeological materials (e.g.: ceramics, plaster, lithic materials, etc.)"@en;
+                                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                      rdfs:label "Archaeological material category"@en,
+                                                 "Categoria del materiale archeologico"@it;
+                                      rdfs:subClassOf arco:Category,
+                                                      [owl:someValuesFrom r-arco:ArchaeologicalMaterial ; 
+                                                       owl:onProperty r-arco:isArchaeologicalMaterialCategoryOf ; 
+                                                       a owl:Restriction];
+                                      owl:versionInfo "stable"@en,
+                                                      "stabile"@it;
+                                      ctlog:iccdNormTag "ICCD Normativa TMA: MA/MAC/MACC".
+r-arco:ArchaeologicalProperty a owl:Class;
+                              rdfs:comment "This class represents an archaeological cultural property, consisting of archaeological complexes, archaeological monuments, anthropological materials, archaeological objects, stratigraphic records, archaeological sites, archaeological materials tables. Archaeological complexes: monumental complexes consisting of several building units (inhabited areas, fortified centers, sanctuaries, thermal complexes, etc.), catalogued regardless of their current conservation status. Archaeological monuments: single building units (a tower, a domus, a temple, etc.) catalogued regardless of their current conservation status. Anthropological materials: biological evidence related to archaeological and paleontological contexts. Archaeological objects: movable properties of archaeological origin (jewelry and jewelry, clothing, furnishings, architectural elements, paintings, archeobotanical and archeozoological objects, sculpture, tools and everyday objects, etc.). Stratigraphic records: stratigraphic sequences found in archaeological excavation contexts. Archaeological sites: portions of territory that preserve archaeological evidence. Archaeological materials tables: lots of archaeological materials."@en,
+                                           "Questa classe rappresenta un bene culturale archeologico, che può essere un complesso archeologico, un monumento archeologico, un reperto archeologico, un reperto antropologico, un saggio stratigrafico, un sito archeologico, o una tabella materiali archeologici. Complessi archeologici: complessi monumentali costituiti da più unità edilizie (abitati, centri fortificati, santuari, complessi termali, ecc.), catalogati a prescindere dal loro attuale stato di conservazione. Monumenti archeologici: singole unità edilizie (una torre, una domus, un tempio, ecc.) catalogate a prescindere dal loro attuale stato di conservazione. Reperti antropologici: testimonianze biologiche in relazione con contesti archeologici e paleontologici. Reperti archeologici: beni mobili di provenienza archeologica (gioielli e monili, vestimenti, arredi, elementi architettonici, opere di pittura, reperti archeobotanici e archeozoologici, scultura, strumenti e oggetti d’uso, ecc.). Saggi stratigrafici: sequenze stratigrafiche rinvenute in contesti di scavo archeologico. Siti archeologici: porzioni di territorio che conservano testimonianze archeologiche. Tabella materiali archeologici: lotti di materiali di provenienza archeologica"@it;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                              rdfs:label "Bene Archeologico"@it,
+                                         "Archaeological Property"@en;
+                              rdfs:subClassOf [owl:onProperty ddesc:anthropologicalMaterialMorphology ; 
+                                               owl:allValuesFrom rdfs:Literal ; 
+                                               a owl:Restriction],
+                                              [owl:onProperty cdesc:hasAgeOfDeathEstimate ; 
+                                               owl:allValuesFrom cdesc:AgeOfDeathEstimate ; 
+                                               a owl:Restriction],
+                                              [owl:onProperty a-loc:hasStratigraphicRoom ; 
+                                               owl:allValuesFrom <https://w3id.org/italia/onto/l0/Location> ; 
+                                               a owl:Restriction],
+                                              [owl:onProperty ddesc:hasSampleCollected ; 
+                                               owl:allValuesFrom ddesc:SampleCollected ; 
+                                               a owl:Restriction],
+                                              [owl:onProperty a-loc:hasStratigraphicArea ; 
+                                               owl:allValuesFrom <https://w3id.org/italia/onto/l0/Location> ; 
+                                               a owl:Restriction],
+                                              [owl:onProperty cdesc:hasSexEstimate ; 
+                                               owl:allValuesFrom cdesc:SexEstimate ; 
+                                               a owl:Restriction],
+                                              [owl:onProperty a-loc:hasStratigraphicSquare ; 
+                                               owl:allValuesFrom <https://w3id.org/italia/onto/l0/Location> ; 
+                                               a owl:Restriction],
+                                              [owl:onProperty cdesc:hasBiologicalTaxonomy ; 
+                                               owl:allValuesFrom cdesc:BiologicalTaxonomy ; 
+                                               a owl:Restriction],
+                                              r-arco:TangibleCulturalProperty,
+                                              [owl:onProperty cdesc:hasFindingContext ; 
+                                               owl:allValuesFrom cdesc:FindingContext ; 
+                                               a owl:Restriction];
+                              owl:versionInfo "stable"@en,
+                                              "stabile"@it.
+r-arco:ArchaeologicalScope a owl:NamedIndividual,
+                             r-arco:MibacScopeOfProtection;
+                           rdfs:label "Archeaological"@en,
+                                      "Archeologico"@it;
+                           owl:versionInfo "stabile"@it,
+                                           "stable"@en.
+r-arco:ArchitecturalLandscapeScope a owl:NamedIndividual,
+                                     r-arco:MibacScopeOfProtection;
+                                   rdfs:label "Architectural or Landscape"@en,
+                                              "Architettonico o Paesaggistico"@it;
+                                   owl:versionInfo "stabile"@it,
+                                                   "stable"@en.
+r-arco:ArchitecturalOrLandscapeHeritage a owl:Class;
+                                        rdfs:comment "Questa classe rappresenta un bene culturale architettonico e paesaggistico. Architettura: complessi monumentali, edifici pubblici e di culto, dimore gentilizie, architetture fortificate, edifici privati, edilizia rurale, fabbricati di archeologia industriale caratterizzati da particolare rilevanza storico artistica. Centri/nuclei storici: strutture insediative urbane più antiche dei territori comunali, caratterizzate da testimonianze storico artistiche di particolare rilevanza. Parchi e giardini: spazi verdi di particolare rilevanza  storica, artistica e ambientale. Esempi di questa tipologia di beni culturali sono i giardini e i parchi annessi alle proprietà nobiliari, gli orti e i giardini botanici, i parchi urbani, le aree verdi comprese nei siti archeologici, ma anche i piccoli giardini privati, i chiostri e i cortili, i cimiteri, sempre se caratterizzati da particolare rilevanza storico artistica."@it,
+                                                     "This class represents an architectural or landscape heritage. Architecture: monumental complexes, public and religious buildings, noble residences, fortified architectures, private buildings, rural buildings, industrial archeology buildings characterized by particular historical and artistic importance. Historical centers: urban settlement structures older than the municipal territories, characterized by particularly important historical artistic testimonies. Parks and gardens: green spaces of particular historical, artistic and environmental importance. Examples of this type of cultural heritage are gardens and parks annexed to noble properties, vegetable gardens and botanical gardens, urban parks, green areas included in archaeological sites, but also small private gardens, cloisters and courtyards, cemeteries, always if characterized by particular historical and artistic relevance."@en;
+                                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                        rdfs:label "Architectural or Landscape Heritage"@en,
+                                                   "Bene Architettonico o Paesaggistico"@it;
+                                        rdfs:subClassOf r-arco:ImmovableCulturalProperty;
+                                        owl:versionInfo "stabile"@it,
+                                                        "stable"@en.
+r-arco:CartographicClassification a owl:Class;
+                                  rdfs:comment "This class represents a cartographic classification of a cultural property, referring to the cartographic representation on specific thematic levels, based on a standard or a classification defined by the cataloguing agency."@en,
+                                               "Questa classe rappresenta una classificazione di un bene culturale relativamente alla rappresentazione cartografica del bene su specifici livelli tematici, con riferimento a uno standard oppure a un'organizzazione logica predefinita dall'Ente responsabile dell'attività di catalogazione."@it;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                  rdfs:label "Classificazione cartografica"@it,
+                                             "Cartographic classification"@en;
+                                  rdfs:subClassOf [owl:onProperty r-arco:hasThematicCategory ; 
+                                                   owl:allValuesFrom r-arco:ThematicCategory ; 
+                                                   a owl:Restriction],
+                                                  [owl:someValuesFrom r-arco:CartographicTheme ; 
+                                                   owl:onProperty r-arco:hasCartographicTheme ; 
+                                                   a owl:Restriction],
+                                                  [owl:someValuesFrom r-arco:CulturalProperty ; 
+                                                   owl:onProperty r-arco:isCartographicClassificationOf ; 
+                                                   a owl:Restriction],
+                                                  [owl:someValuesFrom r-arco:CartographicSymbol ; 
+                                                   owl:onProperty r-arco:hasCartographicSymbol ; 
+                                                   a owl:Restriction],
+                                                  arco:CulturalEntityClassification;
+                                  owl:versionInfo "stabile"@it,
+                                                  "stable"@en;
+                                  ctlog:iccdNormTag "ICCD Normativa Trasversale: CT".
+r-arco:CartographicSymbol a owl:Class;
+                          rdfs:comment "Questa classe rappresenta il simbolo con cui si rappresenta il bene su una base cartografica in relazione al tema di interesse."@it,
+                                       "This class represents the symbol used to represent the cultural property on a cartographic base map, referring to the cartographic theme."@en;
+                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                          rdfs:label "Cartographic symbol"@en,
+                                     "Simbolo cartografico"@it;
+                          rdfs:subClassOf [owl:someValuesFrom r-arco:CartographicClassification ; 
+                                           owl:onProperty r-arco:isCartographicSymbolOf ; 
+                                           a owl:Restriction],
+                                          arco:Concept,
+                                          [owl:onProperty r-arco:cartographicSymbolIdentifier ; 
+                                           owl:allValuesFrom rdfs:Literal ; 
+                                           a owl:Restriction];
+                          owl:versionInfo "stabile"@it,
+                                          "stable"@en;
+                          ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CT/CTM/CTMD".
+r-arco:CartographicTheme a owl:Class;
+                         rdfs:comment "Questa classe rappresenta il tema di riferimento associato a una classificazione cartografica di un bene culturale."@it,
+                                      "This class represents the cartographic theme associated to a cartographic classification of a cultural property."@en;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                         rdfs:label "Tema cartografico"@it,
+                                    "Cartographic theme"@en;
+                         rdfs:subClassOf [owl:someValuesFrom r-arco:CartographicTheme ; 
+                                          owl:onProperty r-arco:isCartographicThemeOf ; 
+                                          a owl:Restriction],
+                                         arco:Concept;
+                         owl:versionInfo "stable"@en,
+                                         "stabile"@it;
+                         ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CT/CTM/CTMT".
+r-arco:ComplexCulturalProperty a owl:Class;
+                               rdfs:comment "Questa classe rappresenta un bene culturale complesso, cioè costituito da più parti componenti."@it,
+                                            "This class represents a complex cultural property, that consists of different components."@en;
+                               rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                               rdfs:label "Bene Culturale Complesso"@it,
+                                          "Complex Cultural Property"@en;
+                               rdfs:subClassOf r-arco:CulturalProperty;
+                               owl:equivalentClass [owl:unionOf (r-arco:CulturalPropertyCollection
+                                                                 [owl:someValuesFrom r-arco:CulturalPropertyComponent ; 
+                                                                 owl:onProperty r-arco:hasCulturalPropertyComponent ; 
+                                                                 a owl:Restriction]) ; 
+                                                    a owl:Class];
+                               owl:versionInfo "stabile"@it,
+                                               "stable"@en;
+                               ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: se viene valorizzato il campo OG/OGT/OGTP, i valori dei campi OGTD e OGTT si riferiscono a un bene culturale complesso, rappresentato quindi per mezzo di questa classe, di cui OGTP è parte componente."@it.
+r-arco:CulturalProperty a owl:Class;
+                        rdfs:comment "Questa classe rappresenta un bene culturale, sia materiale che immateriale. Un bene culturale è una testimonianza materiale o immateriale, riconosciuta come parte del patrimonio culturale nazionale in quanto utile alla conoscenza e alla ricostruzione della storia e del paesaggio."@it,
+                                     "This class represents a cultural property, both tangible and intangible. A cultural property is the legacy, tangible or intangible, recognised as part of the national cultural heritage, since it helps know and reconstruct the history and the landscape."@en;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                        rdfs:label "Cultural Property"@en,
+                                   "Bene culturale"@it;
+                        rdfs:subClassOf [owl:onProperty r-arco:hasCulturalPropertyComponent ; 
+                                         owl:allValuesFrom r-arco:CulturalPropertyComponent ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasUse ; 
+                                         owl:allValuesFrom cdesc:Use ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty r-arco:uniqueIdentifier ; 
+                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasIntervention ; 
+                                         owl:allValuesFrom cdesc:Intervention ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasUrbanPlanningInstrument ; 
+                                         owl:allValuesFrom cdesc:UrbanPlanningInstrument ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:rights ; 
+                                         owl:allValuesFrom rdfs:Literal ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ctlog:isRelatedToInformationForm ; 
+                                         owl:allValuesFrom ctlog:InformationForm ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:title ; 
+                                         owl:allValuesFrom rdfs:Literal ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:subject ; 
+                                         owl:allValuesFrom rdfs:Literal ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasAuthorshipAttribution ; 
+                                         owl:allValuesFrom cdesc:AuthorshipAttribution ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:informationGatheredOnSite ; 
+                                         owl:allValuesFrom rdfs:Literal ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasTechnicalStatus ; 
+                                         owl:allValuesFrom ddesc:CulturalEntityTechnicalStatus ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasDesignationInTime ; 
+                                         owl:allValuesFrom ddesc:DesignationInTime ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:storageConditions ; 
+                                         owl:allValuesFrom rdfs:Literal ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty a-loc:hasTypeOfContext ; 
+                                         owl:allValuesFrom a-loc:TypeOfContext ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasMeasurementCollection ; 
+                                         owl:allValuesFrom ddesc:MeasurementCollection ; 
+                                         a owl:Restriction],
+                                        cis:CulturalEntity,
+                                        [owl:onProperty <https://w3id.org/italia/onto/CLV/hasGeometry> ; 
+                                         owl:allValuesFrom <https://w3id.org/italia/onto/CLV/Geometry> ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty r-arco:suffix ; 
+                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasSubject ; 
+                                         owl:allValuesFrom cdesc:Subject ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasSurvey ; 
+                                         owl:allValuesFrom cdesc:Survey ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasAffixedElement ; 
+                                         owl:allValuesFrom ddesc:AffixedElement ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasInventory ; 
+                                         owl:allValuesFrom cdesc:Inventory ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasCulturalPropertyAccessibility ; 
+                                         owl:allValuesFrom ddesc:CulturalPropertyAccessibility ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:historicalInformation ; 
+                                         owl:allValuesFrom rdfs:Literal ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasChangeOfAvailability ; 
+                                         owl:allValuesFrom cdesc:ChangeOfAvailability ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasConservationStatus ; 
+                                         owl:allValuesFrom ddesc:ConservationStatus ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty a-loc:hasCulturalPropertyAddress ; 
+                                         owl:allValuesFrom <https://w3id.org/italia/onto/CLV/Address> ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasIconographicOrDecorativeApparatus ; 
+                                         owl:allValuesFrom ddesc:IconographicOrDecorativeApparatus ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasAcquisition ; 
+                                         owl:allValuesFrom cdesc:Acquisition ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasProtectiveMeasure ; 
+                                         owl:allValuesFrom cdesc:ProtectiveMeasure ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:proposedIntervention ; 
+                                         owl:allValuesFrom rdfs:Literal ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty a-loc:hasCadastralIdentity ; 
+                                         owl:allValuesFrom a-loc:CadastralIdentity ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasLegalSituation ; 
+                                         owl:allValuesFrom cdesc:LegalSituation ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasDetectionMethod ; 
+                                         owl:allValuesFrom cdesc:DetectionMethod ; 
+                                         a owl:Restriction],
+                                        [owl:someValuesFrom cdesc:Documentation ; 
+                                         owl:onProperty cdesc:hasDocumentation ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasDating ; 
+                                         owl:allValuesFrom cdesc:Dating ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasCommission ; 
+                                         owl:allValuesFrom cdesc:Commission ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty r-arco:catalogueNumber ; 
+                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty r-arco:numberOfComponents ; 
+                                         owl:allValuesFrom rdfs:Literal ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasOrientation ; 
+                                         owl:allValuesFrom ddesc:Orientation ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasExportImportCertification ; 
+                                         owl:allValuesFrom cdesc:ExportImportCertification ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasFunctionalPurpose ; 
+                                         owl:allValuesFrom ddesc:FunctionalPurpose ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasLocationSubject ; 
+                                         owl:allValuesFrom a-loc:TimeIndexedTypedLocation ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty a-loc:hasTimeIndexedTypedLocation ; 
+                                         owl:allValuesFrom a-loc:TimeIndexedTypedLocation ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty r-arco:regionIdentifier ; 
+                                         owl:maxCardinality "1"^^xsd:nonNegativeInteger ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasRelatedWorkSituation ; 
+                                         owl:allValuesFrom cdesc:RelatedWorkSituation ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasCulturalPropertyType ; 
+                                         owl:allValuesFrom ddesc:CulturalPropertyType ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ctlog:isRelatedToAdditionalForm ; 
+                                         owl:allValuesFrom ctlog:AdditionalForm ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:isMemberOfCollection ; 
+                                         owl:allValuesFrom cdesc:CollectionMembership ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasTitle ; 
+                                         owl:allValuesFrom cdesc:Title ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty r-arco:hasCulturalPropertyResidual ; 
+                                         owl:allValuesFrom r-arco:CulturalPropertyResidual ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty cdesc:hasBibliography ; 
+                                         owl:allValuesFrom cdesc:Bibliography ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty ddesc:hasCulturalPropertyAvailability ; 
+                                         owl:allValuesFrom ddesc:CulturalPropertyAvailability ; 
+                                         a owl:Restriction];
+                        owl:versionInfo "stabile"@it,
+                                        "stable"@en.
+r-arco:CulturalPropertyCataloguingCategory a owl:Class;
+                                           rdfs:comment "Questa classe rappresenta una categoria di un bene culturale basata su una valutazione soggettiva del catalogatore durante il processo di catalogazione."@it,
+                                                        "This class represents a cultural property category based on a subjective evaluation of the cataloguing agent, during the cataloguing process."@en;
+                                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                           rdfs:label "Cultural property cataloguing category"@en,
+                                                      "Categoria di bene culturale basata su catalogazione"@it;
+                                           rdfs:subClassOf arco:Category,
+                                                           [owl:someValuesFrom r-arco:CulturalProperty ; 
+                                                            owl:onProperty r-arco:isCulturalPropertyCataloguingCategoryOf ; 
+                                                            a owl:Restriction];
+                                           owl:versionInfo "stable"@en,
+                                                           "stabile"@it;
+                                           ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: OG/OGT/OGTV".
+r-arco:CulturalPropertyCategory a owl:Class;
+                                rdfs:comment "Questa classe rappresenta la categoria di un bene culturale, che contiene le indicazioni che consentono di inquadrare l'individuazione terminologica del bene catalogato nell'ambito di una più ampia e complessa organizzazione semantica."@it,
+                                             "This class represents the category of a cultural property, which contains the information that allows us to frame the terminological identification of the properties catalogued in the context of a wider and more complex semantic structure."@en;
+                                rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                rdfs:label "Cultural Property Category"@en,
+                                           "Categoria del bene"@it;
+                                rdfs:subClassOf arco:Category,
+                                                [owl:onProperty <https://w3id.org/italia/onto/l0/name> ; 
+                                                 owl:allValuesFrom rdfs:Literal ; 
+                                                 a owl:Restriction],
+                                                [owl:someValuesFrom r-arco:CulturalProperty ; 
+                                                 owl:onProperty r-arco:isCulturalPropertyCategoryOf ; 
+                                                 a owl:Restriction];
+                                owl:versionInfo "stable"@en,
+                                                "stabile"@it;
+                                ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: OG/CTG -  Normativa AT: OG/OGT/OGTP - Normativa RA: OG/CLS - Normative CA e MA e Normativa VeAC: OG/OGT/OGTC"@it.
+r-arco:CulturalPropertyCollection a owl:Class;
+                                  rdfs:comment "This class represents a complex cultural property, when it is a series or a set."@en,
+                                               "Questa classe rappresenta un bene culturale complesso, quando questo si configuri come una serie o un insieme."@it;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                  rdfs:label "Insieme di beni culturali"@it,
+                                             "Cultural Property Collection"@en;
+                                  rdfs:subClassOf [owl:onProperty r-arco:numberOfMembers ; 
+                                                   owl:allValuesFrom rdfs:Literal ; 
+                                                   a owl:Restriction],
+                                                  <https://w3id.org/italia/onto/l0/Collection>;
+                                  owl:versionInfo "stable"@en,
+                                                  "stabile"@it.
+r-arco:CulturalPropertyComponent a owl:Class;
+                                 rdfs:comment "This class represents a component of a complex cultural property."@en,
+                                              "Questa classe rappresenta una parte componente di un bene culturale complesso."@it;
+                                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                 rdfs:label "Cultural Property Component"@en,
+                                            "Parte Componente di Bene Culturale"@it;
+                                 rdfs:subClassOf [owl:onProperty ddesc:positionInComplexCulturalProperty ; 
+                                                  owl:allValuesFrom rdfs:Literal ; 
+                                                  a owl:Restriction],
+                                                 [owl:someValuesFrom r-arco:ComplexCulturalProperty ; 
+                                                  owl:onProperty r-arco:isCulturalPropertyComponentOf ; 
+                                                  a owl:Restriction],
+                                                 r-arco:CulturalProperty;
+                                 owl:versionInfo "stabile"@it,
+                                                 "stable"@en;
+                                 ctlog:iccdNormTag "OG/OGT/OGTP".
+r-arco:CulturalPropertyInventoryCategory a owl:Class;
+                                         rdfs:comment "This class represents a category of a numismatic property, related to a classification based on an inventory approved by the specific subject area."@en,
+                                                      "Questa classe rappresenta la categoria di un bene numismatico, in riferimento a una classificazione che si basa su un repertorio riconosciuto nello specifico ambito disciplinare."@it;
+                                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                         rdfs:label "Cultural property inventory category"@en,
+                                                    "Categoria di bene culturale basata su repertorio"@it;
+                                         rdfs:subClassOf [owl:someValuesFrom r-arco:CulturalProperty ; 
+                                                          owl:onProperty r-arco:isCulturalPropertyInventoryCategoryOf ; 
+                                                          a owl:Restriction],
+                                                         arco:Category;
+                                         owl:versionInfo "stable"@en,
+                                                         "stabile"@it;
+                                         ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: OG/OGT/OGTS".
+r-arco:CulturalPropertyPart a owl:Class;
+                            rdfs:comment "This class represents a generic part of a cultural property, to which some specific information is referred."@en,
+                                         "Questa classe rappresenta, a un livello generico, una parte di un bene culturale descritto in una scheda cui si possono riferire informazioni specifiche."@it;
+                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                            rdfs:label "Parte di Bene Culturale"@it,
+                                       "Cultural Property Part"@en;
+                            rdfs:subClassOf cis:CulturalEntity,
+                                            [owl:onProperty r-arco:numberOfCulturalPropertyParts ; 
+                                             owl:allValuesFrom xsd:integer ; 
+                                             a owl:Restriction];
+                            owl:versionInfo "stabile"@it,
+                                            "stable"@en;
+                            ctlog:iccdNormTag """\"Riferimento alla parte\", presente in molti campi strutturati delle normative ICCD - ICCD Normativa AT 3.01: EL/ELE"""@it.
+r-arco:CulturalPropertyResidual a owl:Class;
+                                rdfs:comment "This class represents the residual part of a cultural property, that is what's left of the original cultural property."@en,
+                                             "Questa classe rappresenta la parte residuale di un bene culturale, cioè la parte che si conserva del bene culturale originale."@it;
+                                rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                rdfs:label "Parte Residuale di Bene Culturale"@it,
+                                           "Cultural Property Residual"@en;
+                                rdfs:subClassOf [owl:someValuesFrom r-arco:CulturalProperty ; 
+                                                 owl:onProperty r-arco:isCulturalPropertyResidualOf ; 
+                                                 a owl:Restriction],
+                                                r-arco:CulturalProperty,
+                                                [owl:onProperty r-arco:numberOfResiduals ; 
+                                                 owl:allValuesFrom xsd:integer ; 
+                                                 a owl:Restriction];
+                                owl:versionInfo "stable"@en,
+                                                "stabile"@it;
+                                ctlog:iccdNormTag "OG/OGT/OGTW".
+r-arco:DemoEthnoAnthropologicalHeritage a owl:Class;
+                                        rdfs:comment "This class represents a demo-ethno-anthropological heritage, both tangible and intangible. The intangible demoetnoanthropological properties are cultural properties consisting of unique and unrepeatable performances, structurally connected to the territory and to socially shared custom, transmitted through orality and bodily techniques, both in Italy and in Europe and beyond Europe (non-verbal communications, dances, parties and ceremonies, games, oral letters, music, customary norms, performances and shows, knowledge, techniques). Demo-ethno-anthropological tangible properties are cultural properties whose construction and/or use are structurally associated with a socially shared custom, transmitted through orality and bodily techniques, both in the Italian and European and extra-European areas (clothing and body ornaments, furnishings and furnishings, means of transport, rituals, instruments and accessories, properties on the territory)."@en,
+                                                     "Questa classe rappresenta un bene culturale demoetnoantropologico, che può essere di tipo immateriale e materiale. I beni demoetnoantropologici immateriali sono beni consistenti in performance uniche e irrepetibili strutturalmente connesse al territorio e a prassi socialmente condivise trasmesse attraverso l’oralità e le tecniche corporali, tanto in ambito italiano quanto in ambito europeo ed extra-europeo (comunicazioni non verbali, danze, feste e cerimonie, giochi, letterature orali, musiche, norme consuetudinarie, rappresentazioni e spettacoli, saperi, tecniche). I beni demoetnoantropologici materiali sono beni la cui costruzione e/o il cui uso sono strutturalmente associati a prassi socialmente condivise, trasmesse attraverso l'oralità e le tecniche corporali, tanto in ambito italiano quanto in ambito europeo ed extra-europeo (abbigliamento e ornamenti del corpo, arredi e suppellettili, mezzi di trasporto, ritualità, strumenti e accessori, beni sul territorio)."@it;
+                                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                        rdfs:label "Bene Demoetnoantropologico"@it,
+                                                   "Demo-ethno-anthropological Heritage"@en;
+                                        rdfs:subClassOf [owl:onProperty cdesc:hasResearch ; 
+                                                         owl:allValuesFrom cdesc:Research ; 
+                                                         a owl:Restriction],
+                                                        r-arco:CulturalProperty,
+                                                        [owl:onProperty cdesc:hasPrimaryDocumentation ; 
+                                                         owl:allValuesFrom cdesc:Documentation ; 
+                                                         a owl:Restriction];
+                                        owl:versionInfo "stable"@en,
+                                                        "stabile"@it.
+r-arco:EthnoAnthropologicalScope a owl:NamedIndividual,
+                                   r-arco:MibacScopeOfProtection;
+                                 rdfs:label "Ethno-anthropological"@en,
+                                            "Etnoantropologico"@it;
+                                 owl:versionInfo "stabile"@it,
+                                                 "stable"@en.
+r-arco:HSDefinition a owl:DatatypeProperty;
+                    rdfs:comment "This property represents the definition associated to a musical instrument, according to the Hornbostel-Sachs classification."@en,
+                                 "Questa proprietà rappresenta la definizione associata allo strumento musicale, secondo la classificazione Hornbostel-Sachs."@it;
+                    rdfs:domain r-arco:HornbostelSachsClassification;
+                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                    rdfs:label "definizione Hornbostel-Sachs"@it,
+                               "Hornbostel-Sachs definition"@en;
+                    rdfs:range rdfs:Literal;
+                    owl:versionInfo "stabile"@it,
+                                    "stable"@en;
+                    ctlog:iccdNormTag "Normativa SM 4.00: CL/CHS/CHSD".
+r-arco:HSEdition a owl:DatatypeProperty;
+                 rdfs:comment "Questa proprietà rappresenta l'indicazione bibliografica dell'edizione Hornbostel-Sachs utilizzata per la classificazione dello strumento musicale."@it,
+                              "This property represents the edition Horbonstel-Sachs used for classifying a musical instrument."@en;
+                 rdfs:domain r-arco:HornbostelSachsClassification;
+                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                 rdfs:label "edizione Hornbostel-Sachs"@it,
+                            "Hornbostel-Sachs edition"@en;
+                 rdfs:range rdfs:Literal;
+                 owl:versionInfo "stabile"@it,
+                                 "stable"@en;
+                 ctlog:iccdNormTag "Normativa SM 4.00: CL/CHS/CHSE".
+r-arco:HSNumber a owl:FunctionalProperty,
+                  owl:DatatypeProperty;
+                rdfs:comment "Questa proprietà rappresenta il codice numerico, secondo l'edizione specifica Hornbostel-Sachs, associato allo strumento musicale nell'ambito della classificazione Hornbostel-Sachs."@it,
+                             "This property represents the numerical code associated to a musical instrument according to a specific edition of the Hornbostel-Sachs classification."@en;
+                rdfs:domain r-arco:HornbostelSachsClassification;
+                rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                rdfs:label "Hornbostel-Sachs number"@en,
+                           "Codice numerico Hornbostel-Sachs"@it;
+                rdfs:range rdfs:Literal;
+                rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                owl:versionInfo "stabile"@it,
+                                "stable"@en;
+                ctlog:iccdNormTag "Normativa SM 4.00: CL/CHS/CHSN".
+r-arco:HistoricOrArtisticProperty a owl:Class;
+                                  rdfs:comment "Questa classe rappresenta un bene culturale storico e artistico, che può essere un disegno, una matrice incisa, un'opera o oggetto d'arte (contemporanea e non), una stampa, un vestimento antico o contemporaneo. Disegni: opere fatte a mano su qualsiasi supporto (carta, cartoncino, cartone, intonaco, legno, pergamena, pietra, seta, tavola, tela ecc.) e con particolari strumenti (carboncino, gessetto, inchiostro, lapis, matita, pastello, penna ecc.) e specifiche tecniche (acquarellatura, sanguigna ecc.). Matrici incise: lastre di vario materiale (acciaio, legno, linoleum, ottone, pietra, zinco rame ecc.) su cui vengono tracciate rappresentazioni pittoriche con particolari strumenti (bulino, punte di acciaio o di diamante, punzoni, raschietti ecc.) e con specifiche tecniche di incisione (acquaforte, acquatinta, litografia, mezzatinta, serigrafia, silografia, zincografia ecc.). Opere e oggetti d'arte: beni mobili costituenti parte integrante di monumenti artistici e storici o provenienti dallo smembramento dei monumenti stessi, conservati in collezioni, musei e pinacoteche (armi ed armature, arredi civili e religiosi, oggetti per il culto, oggetti d'uso, opere di pittura, tessuti e arazzi, sulture, ecc.). Opere e oggetti d'arte contemporanea: opere rappresentative  delle nuove correnti artistiche dei secc. XX e  XXI (assemblaggio, computer art, istallazione, istallazione ambientale, istallazione audio, istallazione video, istallazione multimediale interattiva, opera cinetico-visuale, performance, ready made, realtà virtuale, video arte ecc.). Stampe: esemplari prodotti dall'operazione mediante la quale da una matrice di incisione si ottengono copie uguali di rappresentazioni pittoriche su carta, cartoncino, cuoio,  pergamena, seta ecc. con varie tecniche di incisione (acquaforte, acquatinta, litografia, zincografia ecc.). Vestimenti antichi e contemporanei: abiti e costumi riguardanti l’abbigliamento maschile, femminile e infantile ad uso civile, connessi alle principali finalità d’uso e alle diverse occasioni della vita privata e sociale,  secondo le tipologie storiche dei secoli XVIII, XIX, XX  (abiti, biancheria intima, calzetteria, calzoni, camicie, costumi, cuffie, gonne, giacche, grembiuli, livree, maglie, mantelli, scialli, sciarpe, veli ecc.)."@it,
+                                               "This class represents an historic or artistic property: drawing, printing plate, (contemporary) artworks, print, historic and contemporary garment. Drawings: works done by hand on any support (paper, cardboard, plaster, wood, parchment, stone, silk, table, canvas, etc.) and with special tools (charcoal, chalk, ink, pencil, pastel, pen etc.) and technical specifications (watercolor, blood, etc.). Printing plates: plates of various materials (steel, wood, linoleum, brass, stone, copper zinc, etc.) on which pictorial representations are traced with particular tools (burin, steel or diamond points, punches, scrapers, etc.) and with technical specifications for etching (etching, aquatint, lithography, halftone, screen printing, silica, zincography, etc.). Artworks: movable cultural properties that are integral part of artistic and historical monuments or coming from the dismemberment of the monuments themselves, preserved in collections, museums and art galleries (weapons and armor, civil and religious furnishings, objects for worship, everyday objects, paintings, fabrics and tapestries, walls, etc.). Contemporary artworks: cultural properties representative of the new artistic currents of the centuries XX and XXI (assembly, computer art, installation, environmental installation, audio installation, video installation, interactive multimedia installation, kinetic-visual work, performance, ready-made, virtual reality, video art, etc.). Prints: specimens created through this process: equal copies of pictorial representations on paper, cardboard, leather, parchment, silk, etc. are obtained from a printing plate, with various engraving techniques (etching, aquatint, lithography, zincography, etc.). Historic and contemporary garments: clothes and costumes for men's, women's and children's clothing for civil use, connected to the main intended use and to different occasions of private and social life, according to the historical typologies of the XVIII, XIX and XX centuries (dresses, underwear, hosiery, trousers, shirts, costumes, headphones, skirts, jackets, aprons, liveries, sweaters, cloaks, shawls, scarves, veils, etc.)."@en;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                  rdfs:label "Historic Or Artistic Property"@en,
+                                             "Bene Storico o Artistico"@it;
+                                  rdfs:subClassOf r-arco:MovableCulturalProperty,
+                                                  [owl:onProperty cdesc:numberInCirculation ; 
+                                                   owl:allValuesFrom rdfs:Literal ; 
+                                                   a owl:Restriction],
+                                                  [owl:onProperty cdesc:hasFruition ; 
+                                                   owl:allValuesFrom cdesc:Fruition ; 
+                                                   a owl:Restriction];
+                                  owl:versionInfo "stable"@en,
+                                                  "stabile"@it.
+r-arco:HistoricalArtisticScope a owl:NamedIndividual,
+                                 r-arco:MibacScopeOfProtection;
+                               rdfs:label "Historical Artistic"@en,
+                                          "Storico Artistico"@it;
+                               owl:versionInfo "stabile"@it,
+                                               "stable"@en.
+r-arco:HornbostelSachsClassification a owl:Class;
+                                     rdfs:comment "This class represents the Hornbostel-Sachs classification of a musical instrument."@en,
+                                                  "Questa classe rappresenta la classificazione Hornbostel-Sachs di uno strumento musicale."@it;
+                                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                     rdfs:label "Hornbostel-Sachs classification"@en,
+                                                "Classificazione Hornbostel-Sachs"@it;
+                                     rdfs:subClassOf [owl:onProperty r-arco:HSDefinition ; 
+                                                      owl:allValuesFrom rdfs:Literal ; 
+                                                      a owl:Restriction],
+                                                     r-arco:MusicalInstrumentClassification,
+                                                     [owl:someValuesFrom rdfs:Literal ; 
+                                                      owl:onProperty r-arco:HSNumber ; 
+                                                      a owl:Restriction],
+                                                     [owl:onProperty r-arco:HSEdition ; 
+                                                      owl:allValuesFrom rdfs:Literal ; 
+                                                      a owl:Restriction];
+                                     owl:versionInfo "stabile"@it,
+                                                     "stable"@en;
+                                     ctlog:iccdNormTag "Normativa SM 4.00: CL/CHS".
+r-arco:ImmovableCulturalProperty a owl:Class;
+                                 rdfs:comment "This class represents an immovable cultural property, a property fastened and/or incorporated into the ground (buildings, monumental complexes, territorial areas, etc.) which generally has a significant spatial extent."@en,
+                                              "Questa classe rappresenta un bene materiale immobile, cioè un bene agganciato e/o incorporato al suolo (edifici, complessi monumentali, spazi territoriali, ecc.) che presentano, in genere, un consistente sviluppo spaziale. Si intende come un particolare tipo di Site (contenitore fisico), in quanto luogo fisico georeferenziato che possiede esso stesso un interesse culturale."@it;
+                                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                 rdfs:label "Bene immobile"@it,
+                                            "Immovable Cultural Property"@en;
+                                 rdfs:subClassOf r-arco:TangibleCulturalProperty;
+                                 owl:disjointWith r-arco:MovableCulturalProperty;
+                                 owl:versionInfo "stabile"@it,
+                                                 "stable"@en.
+r-arco:IntangibleCulturalProperty a owl:Class;
+                                  rdfs:comment "Questa classe rappresenta un bene immateriale, cioè quella parte del patrimonio culturale rappresentata da performance effimere di manifestazioni tradizionali, tecniche, saperi (feste, esecuzioni musicali e coreutiche, rappresentazioni teatrali, tecniche artigianali, letteratura orale, ecc.), colte nel momento in cui avvengono e di cui è possibile mantenere memoria solo attraverso la ripresa audio-visiva che le fissa stabilmente, cristallizzandole."@it,
+                                               "This class represents an intangible cultural property, that part of cultural heritage represented by ephemeral performances of traditional manifestations, techniques, knowledge (festivals, musical and dance performances, theatrical performances, craft techniques, oral literature, etc.), when they occur and of which it is possible to keep memory only through the audio-visual recording that fixes them permanently, crystallizing them."@en;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                  rdfs:label "Intangible Cultural Property"@en,
+                                             "Bene immateriale"@it;
+                                  rdfs:subClassOf r-arco:CulturalProperty;
+                                  owl:disjointWith r-arco:TangibleCulturalProperty;
+                                  owl:versionInfo "stabile"@it,
+                                                  "stable"@en.
+r-arco:MibacScopeOfProtection a owl:Class;
+                              rdfs:comment "Questa classe rappresenta l'ambito di tutela del MiBAC (archeologico, architettonico e paesaggistico, etnoantropologico, storico artistico), nel quale ricade il bene culturale in esame."@it,
+                                           "This class represents the MiBAC scope of protection (historical artistic, ethoanthropological, architectural landscape, archaeological) of a cultural property."@en;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                              rdfs:label "MiBAC Scope of protection"@en,
+                                         "Ambito di tutela MiBAC"@it;
+                              rdfs:subClassOf [owl:someValuesFrom r-arco:CulturalProperty ; 
+                                               owl:onProperty r-arco:isMibacScopeOfProtectionOf ; 
+                                               a owl:Restriction];
+                              owl:equivalentClass [owl:oneOf (r-arco:ArchaeologicalScope
+                                                              r-arco:ArchitecturalLandscapeScope
+                                                              r-arco:EthnoAnthropologicalScope
+                                                              r-arco:HistoricalArtisticScope) ; 
+                                                   a owl:Class];
+                              owl:versionInfo "stabile"@it,
+                                              "stable"@en.
+r-arco:MovableCulturalProperty a owl:Class;
+                               rdfs:comment """Questa classe rappresenta un bene materiale mobile, cioè un oggetto o un manufatto che può essere movimentato in vario modo. I beni mobili possono risultare \"immobilizzati per destinazione\", cioè incorporati saldamente nel contesto in cui si trovano."""@it,
+                                            """This class represents a movable cultural property, that is, an object or an artefact that can be moved in various ways. Movable cultural properties may be \"immobilized by destination\", i.e. incorporated firmly in the context in which they are located."""@en;
+                               rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                               rdfs:label "Movable Cultural Property"@en,
+                                          "Bene mobile"@it;
+                               rdfs:subClassOf [owl:onProperty cdesc:hasEstimate ; 
+                                                owl:allValuesFrom cdesc:Estimate ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty cdesc:isMemberOfCollection ; 
+                                                owl:allValuesFrom cdesc:CollectionMembership ; 
+                                                a owl:Restriction],
+                                               r-arco:TangibleCulturalProperty;
+                               owl:versionInfo "stable"@en,
+                                               "stable"@it.
+r-arco:MusicHeritage a owl:Class;
+                     rdfs:comment "Questa classe rappresenta un bene culturale musicale. Strumenti musicali: oggetti nati appositamente per produrre suoni organizzati secondo le diverse culture musicali, senza limiti spazio-temporali (strumenti e accessori di interesse archeologico, storico artistico, etnoantropologico). Strumenti musicali-Organo: oggetto nato per produrre suoni,  costituito da una serie di canne metalliche,  di forma, lunghezza e diametro diversi, nelle quali viene immessa, per mezzo di un mantice o altro meccanismo, una quantità d’aria regolata da una o più tastiere e da una pedaliera (corredato da accessori), caratterizzato da specifici aspetti  morfologici-decorativi e fonico-strumentali (organo idraulico, organo positivo, organo portativo, organo elettronico ecc.)"@it,
+                                  "This class represents a music heritage. Musical instruments: objects created specifically to produce sounds according to different musical cultures, without space-time limits (instruments and accessories of archaeological, artistic, ethno-anthropological interest). Musical instruments-Organ: an object created to produce sounds, consisting of a series of metal rods, of different shape, length and diameter, in which a quantity of air is introduced, by means of a bellows or other mechanism, regulated by one or more keyboards and a pedal board (accompanied by accessories), characterized by specific morphological-decorative and phonic-instrumental aspects (hydraulic organ, positive organ, portative organ, electronic organ, etc.)"@en;
+                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                     rdfs:label "Music Heritage"@en,
+                                "Bene Musicale"@it;
+                     rdfs:subClassOf [owl:onProperty ddesc:hasAccessory ; 
+                                      owl:allValuesFrom ddesc:Accessory ; 
+                                      a owl:Restriction],
+                                     [owl:onProperty r-arco:hasMusicalInstrumentClassification ; 
+                                      owl:allValuesFrom r-arco:MusicalInstrumentClassification ; 
+                                      a owl:Restriction],
+                                     [owl:onProperty cdesc:hasMusician ; 
+                                      owl:allValuesFrom <https://w3id.org/italia/onto/l0/Agent> ; 
+                                      a owl:Restriction],
+                                     r-arco:MovableCulturalProperty,
+                                     [owl:onProperty cdesc:hasMusicalEnsemble ; 
+                                      owl:allValuesFrom <https://w3id.org/italia/onto/l0/Agent> ; 
+                                      a owl:Restriction],
+                                     [owl:onProperty cdesc:hasResearch ; 
+                                      owl:allValuesFrom cdesc:Research ; 
+                                      a owl:Restriction];
+                     owl:versionInfo "stable"@en,
+                                     "stabile"@it.
+r-arco:MusicalInstrumentClassification a owl:Class;
+                                       rdfs:comment "Questa classe rappresenta una classificazione relativa a uno strumento musicale, secondo la classificazione di Hornbostel-Sachs ed eventualmente anche secondo altre classificazioni."@it,
+                                                    "This class represents a classification concerning a musical instrument, concerning the Hornbostel-Sachs classification or possibily other classifications."@en;
+                                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                       rdfs:label "Classificazione di strumento musicale"@it,
+                                                  "Musical instrument classification"@en;
+                                       rdfs:subClassOf [owl:someValuesFrom r-arco:MusicHeritage ; 
+                                                        owl:onProperty r-arco:isMusicalInstrumentClassificationOf ; 
+                                                        a owl:Restriction],
+                                                       arco:CulturalEntityClassification;
+                                       owl:versionInfo "stabile"@it,
+                                                       "stable"@en;
+                                       ctlog:iccdNormTag "Normativa SM 4.00: CL".
+r-arco:NaturalHeritage a owl:Class;
+                       rdfs:comment "Questa classe rappresenta un bene culturale naturalistico, relativo ai campi della botanica, della mineralogia, della paleontologia, della petrologia, della planetologia, della zoologia. Botanica: esemplari del mondo vegetale provenienti da collezioni di botanica  (raccolte di piante essiccate: erbari). Mineralogia: esemplari di minerali provenienti da collezioni di mineralogia (Augite, Goethite, scatola di quarzi ecc. ). Paleontologia: reperti fossili (animali, vegetali, ichnofossili, campioni e preparati per microscopio, ecc.). Petrologia: esemplari di rocce provenienti da collezioni (Riolite, Trachiandesite ecc). Planetologia: esemplari di meteoriti provenienti da collezioni ( Aubrite, Ureilite, Eucrite ecc.). Zoologia: esemplari del mondo animale provenienti da collezioni di zoologia (ustiolo, toporagno, mammifero, artropode, scatola di farfalle, collezione elmintologica, ecc.)"@it,
+                                    "This class represents a natural heritage, related to botany, mineralogy, paleontology, petrology, planetary science, zoology. Botany: specimens of the plant world from botanical collections (collections of dried plants: herbaria). Mineralogy: specimens of minerals from collections of mineralogy (Augite, Goethite, box of quartz etc.). Paleontology: fossil finds (animals, plants, ichnofossils, samples and microscope preparations, etc.). Petrology: specimens of rocks from collections (Riolite, Trachiandesite etc.). Planetology: meteorites from collections (Aubrite, Ureilite, Eucrite, etc.). Zoology: specimens of the animal world from zoology collections (ustiolo, shrew, mammal, arthropod, butterfly box, elmintological collection, etc.)"@en;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                       rdfs:label "Bene Naturalistico"@it,
+                                  "Natural Heritage"@en;
+                       rdfs:subClassOf r-arco:MovableCulturalProperty;
+                       owl:versionInfo "stabile"@it,
+                                       "stable"@en.
+r-arco:NumismaticProperty a owl:Class;
+                          rdfs:comment "Questa classe rappresenta un bene culturale numismatico, ovvero monete e altri oggetti di interesse numismatico (reperti premonetali e paramonetali, conii e punzoni monetali, pesi per il controllo monetale, sigilli e medaglie), pertinenti a  qualsiasi epoca."@it,
+                                       "This class represents a numismatic property, that is coins and other objects of numismatic interest (premonetal and paramonetal finds, coinage and monetary punches, weights for monetary control, seals and medals), pertinent to any age."@en;
+                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                          rdfs:label "Numismatic Property"@en,
+                                     "Bene Numismatico"@it;
+                          rdfs:subClassOf r-arco:MovableCulturalProperty,
+                                          [owl:onProperty cdesc:isCoinMemberOf ; 
+                                           owl:allValuesFrom cdesc:NumismaticSeries ; 
+                                           a owl:Restriction],
+                                          [owl:onProperty cdesc:hasCoinIssuance ; 
+                                           owl:allValuesFrom cdesc:CoinIssuance ; 
+                                           a owl:Restriction],
+                                          [owl:onProperty r-arco:hasNumismaticPropertyCategory ; 
+                                           owl:allValuesFrom r-arco:NumismaticProperty ; 
+                                           a owl:Restriction];
+                          owl:versionInfo "stabile"@it,
+                                          "stable"@en.
+r-arco:NumismaticPropertyCategory a owl:Class;
+                                  rdfs:comment "Questa classe rappresenta la categoria funzionale di un bene numismatico, in riferimento a una classificazione relativa alla funzione, o alla destinazione, o alla committenza del bene catalogato, secondo le classificazioni più consuete."@it,
+                                               "This class represents a functional category of a numismatic property, referring to a classification related to the function or the commission of the cultural property, according to the most common classifications."@en;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                  rdfs:label "Numismatic property classification"@en,
+                                             "Classificazione di bene numismatico"@it;
+                                  rdfs:subClassOf [owl:someValuesFrom r-arco:NumismaticProperty ; 
+                                                   owl:onProperty r-arco:isNumismaticPropertyCategoryOf ; 
+                                                   a owl:Restriction],
+                                                  arco:Category;
+                                  owl:versionInfo "stabile"@it,
+                                                  "stable"@en;
+                                  ctlog:iccdNormTag "ICCD Normativa NU 4.00: OG/OGT/OGTH".
+r-arco:PhotographicHeritage a owl:Class;
+                            rdfs:comment "Questa classe rappresenta un bene culturale fotografico, che può essere una fotografia o un fondo fotografico. Beni fotografici: negativi, positivi, processi fotografici che danno origine a prodotti unici (dagherrotipi, ferrotipi, polaroid, chimigrammi, ecc.), fotografia digitale; elementi complessi come album, cartelle, fotomontaggi, panorami, porfolii. Fondi fotografici: entità concettuali che si caratterizzano per l'accumulo di più unità fisiche omogenee o eterogenee dal punto di vista dei materiali che li compongono e che acquisiscono nella loro totalità valenza di bene culturale."@it,
+                                         "This class represents a photographic heritage. Photographs: negative, positive, photographic processes that give rise to unique products (daguerreotypes, ferrotypes, polaroids, chimigrams, etc.), digital photography; complex elements like albums, folders, photomontages, panoramas, porfolii. Photographic funds: conceptual entities that are characterized by the accumulation of multiple homogeneous or heterogeneous physical units from the point of view of the materials that compose them and which represent in their totality a cultural heritage."@en;
+                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                            rdfs:label "Photographic Heritage"@en,
+                                       "Bene Fotografico"@it;
+                            rdfs:subClassOf [owl:onProperty cdesc:isMemberOfPhotographicSeries ; 
+                                             owl:allValuesFrom cdesc:PhotographicSeriesMembership ; 
+                                             a owl:Restriction],
+                                            r-arco:MovableCulturalProperty,
+                                            [owl:onProperty arco:hasPart ; 
+                                             owl:allValuesFrom [owl:unionOf (cdesc:ArchivalRecord
+                                                                             cdesc:ArchivalRecordSet) ; 
+                                                                a owl:Class] ; 
+                                             a owl:Restriction],
+                                            [owl:onProperty cdesc:hasResponsibility ; 
+                                             owl:allValuesFrom cdesc:Responsibility ; 
+                                             a owl:Restriction],
+                                            [owl:onProperty cdesc:numberInCirculation ; 
+                                             owl:allValuesFrom rdfs:Literal ; 
+                                             a owl:Restriction],
+                                            [owl:onProperty r-arco:hasPhotographicHeritageClassification ; 
+                                             owl:allValuesFrom r-arco:PhotographicHeritageClassification ; 
+                                             a owl:Restriction];
+                            owl:versionInfo "stable"@en,
+                                            "stabile"@it.
+r-arco:PhotographicHeritageClassification a owl:Class;
+                                          rdfs:comment "Questa classe rappresenta una classificazione di un bene fotografico secondo un sistema di classificazione alternativo a Iconclass, che sia comunque riconosciuto e utilizzato a livello nazionale, o preferibilmente internazionale."@it,
+                                                       "This class represents a photographic entity's classification accorting to other classification systems as Iconclass. The system has to be recognised and used at national or preferably international level."@en;
+                                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                          rdfs:label "Photographic heritage classification"@en,
+                                                     "Classificazione di bene fotografico"@it;
+                                          rdfs:subClassOf [owl:someValuesFrom rdfs:Literal ; 
+                                                           owl:onProperty r-arco:classifiedSubject ; 
+                                                           a owl:Restriction],
+                                                          [owl:someValuesFrom r-arco:PhotographicHeritage ; 
+                                                           owl:onProperty r-arco:isPhotographicHeritageClassificationOf ; 
+                                                           a owl:Restriction],
+                                                          arco:CulturalEntityClassification,
+                                                          [owl:someValuesFrom r-arco:PhotographicHeritageClassificationType ; 
+                                                           owl:onProperty r-arco:hasPhotographicHeritageClassificationType ; 
+                                                           a owl:Restriction];
+                                          owl:versionInfo "stable"@en,
+                                                          "stabile"@it;
+                                          ctlog:iccdNormTag "ICCD Normativa F 4.00: SG/CLF".
+r-arco:PhotographicHeritageClassificationType a owl:Class;
+                                              rdfs:comment "This class represents photographic property's classification type,, according to to other classification systems as Iconclass. The system has to be recognised and used at national or preferably international level."@en,
+                                                           "Questa classe rappresenta il tipo di classificazione di un bene fotografico, relativamente a un sistema di classificazione alternativo a Iconclass, che sia comunque riconosciuto e utilizzato a livello nazionale, o preferibilmente internazionale."@it;
+                                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                              rdfs:label "Photographic heritage classification type"@en,
+                                                         "Tipo di classificazione di bene fotografico"@it;
+                                              rdfs:subClassOf [owl:someValuesFrom r-arco:PhotographicHeritageClassification ; 
+                                                               owl:onProperty r-arco:isPhotographicHeritageClassificationTypeOf ; 
+                                                               a owl:Restriction],
+                                                              arco:Type;
+                                              owl:versionInfo "stabile"@it,
+                                                              "stable"@en;
+                                              ctlog:iccdNormTag "ICCD Normativa F: SG/CLF/CLFT".
+r-arco:RFId a owl:Class;
+            rdfs:comment "Questa classe rappresenta l'identificatore a radiofrequenza RFId."@it,
+                         "This class represents the radio-frequency identification (RFID)."@en;
+            rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+            rdfs:label "Identificativo RFId"@it,
+                       "RFId Identifier"@en;
+            rdfs:subClassOf [owl:someValuesFrom owl:Thing ; 
+                             owl:onProperty r-arco:isRFIdOf ; 
+                             a owl:Restriction],
+                            [owl:onProperty arco:note ; 
+                             owl:allValuesFrom rdfs:Literal ; 
+                             a owl:Restriction];
+            owl:versionInfo "stable"@en,
+                            "stabile"@it;
+            ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: RF/RFI".
+r-arco:ReferenceCoinLegend a owl:Class;
+                           rdfs:comment "This class represents the reference coin legend."@en,
+                                        "Questa classe rappresenta la legenda tipo di un bene numismatico, inteso come parametro di classificazione attestato nei repertori di riferimento."@it;
+                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                           rdfs:label "Legenda tipo"@it,
+                                      "Reference coin legend"@en;
+                           rdfs:subClassOf arco:Concept,
+                                           [owl:someValuesFrom r-arco:NumismaticProperty ; 
+                                            owl:onProperty r-arco:isReferenceCoinLegendOf ; 
+                                            a owl:Restriction];
+                           owl:versionInfo "stabile"@it,
+                                           "stable"@en;
+                           ctlog:iccdNormTag "ICCD Normativa NU: OG/OGT/OGTL".
+r-arco:ScientificOrTechnologicalHeritage a owl:Class;
+                                         rdfs:comment "Questa classe rappresenta un bene culturale scientifico e tecnologico, ovvero strumenti di interesse per la storia della scienza e della tecnica (strumenti astronomici, di laboratorio, di misurazione ecc.) pertinenti a qualsiasi epoca e afferenti a specifiche discipline scientifiche ( apparecchio a specchi a piani rotanti, apparecchio per gli anelli colorati di Newton, campana di Savart, orologio di Farina, orologio solare, pendola, sestante, telescopio ecc.); macchine e macchinari, mezzi di trasporto ecc."@it,
+                                                      "This class represents a scientific and technological heritage, that is instruments of interest to the history of science and technology (astronomical, laboratory, measurement, etc.) relevant to any age and related to specific scientific disciplines (flat-mirror luminaire rotating, apparatus for the colored rings of Newton, bell of Savart, Farina clock, solar clock, pendulum, sextant, telescope, etc.); machines and machinery, means of transport, etc."@en;
+                                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                         rdfs:label "Bene Scientifico o Tecnologico"@it,
+                                                    "Scientific Or Technological Heritage"@en;
+                                         rdfs:subClassOf r-arco:MovableCulturalProperty;
+                                         owl:versionInfo "stabile"@it,
+                                                         "stable"@en.
+r-arco:TangibleCulturalProperty a owl:Class;
+                                rdfs:comment "Questa classe rappresenta un bene materiale, cioè fisicamente tangibile, sia mobile che immobile."@it,
+                                             "This class represents a tangible cultural property, either immovable or movable."@en;
+                                rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                rdfs:label "Bene materiale"@it,
+                                           "Tangible Cultural Property"@en;
+                                rdfs:subClassOf r-arco:CulturalProperty;
+                                owl:versionInfo "stabile"@it,
+                                                "stable"@en.
+r-arco:ThematicCategory a owl:Class;
+                        rdfs:comment "This class represents the thematic category associated to a cartographic classification of a cultural property (e.g.: Architecture)."@en,
+                                     "Questa classe rappresenta la categoria tematica associata alla classificazione cartografica di un bene culturale (es.: Architetture, Emergenze Archeologiche)"@it;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                        rdfs:label "Thematic category"@en,
+                                   "Categoria tematica"@it;
+                        rdfs:subClassOf [owl:someValuesFrom r-arco:CartographicClassification ; 
+                                         owl:onProperty r-arco:isThematicCategoryOf ; 
+                                         a owl:Restriction],
+                                        arco:Category;
+                        owl:versionInfo "stabile"@it,
+                                        "stable"@en;
+                        ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CT/CTM/CTMC".
+r-arco:archaeologicalSiteIdentifier a owl:DatatypeProperty,
+                                      owl:FunctionalProperty;
+                                    rdfs:comment "This property represents the archaeological site identifier."@en,
+                                                 "Questa proprietà rappresenta la sigla del saggio stratigrafico."@it;
+                                    rdfs:domain r-arco:ArchaeologicalProperty;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                    rdfs:label "sigla identificativa del saggio stratigrafico"@it,
+                                               "archaeological site identifier"@en;
+                                    rdfs:range rdfs:Literal;
+                                    rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                                    owl:versionInfo "stable"@en,
+                                                    "stabile"@it;
+                                    ctlog:iccdNormTag "ICCD Normativa SAS: OG/OGT/OGTI".
+r-arco:cartographicSymbolIdentifier a owl:DatatypeProperty;
+                                    rdfs:comment "Questa proprietà rappresenta il codice identificativo attribuito al simbolo cartografico."@it,
+                                                 "This property represents the identifier associated to the cartographic symbol."@en;
+                                    rdfs:domain r-arco:CartographicSymbol;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                    rdfs:label "identificativo del simbolo cartografico"@it,
+                                               "cartographic symbol identifier"@en;
+                                    rdfs:range rdfs:Literal;
+                                    rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                                    owl:versionInfo "stabile"@it,
+                                                    "stable"@en;
+                                    ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CT/CTM/CTMS".
+r-arco:catalogueNumber a owl:FunctionalProperty,
+                         owl:DatatypeProperty;
+                       rdfs:comment "This property represents the general catalogue number associated to a cultural property described by a catalogue record."@en,
+                                    "Questa proprietà permette di associare il numero di catalogo generale a un bene culturale descritto in una scheda catalografica."@it;
+                       rdfs:domain r-arco:CulturalProperty;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                       rdfs:label "catalogue number"@en,
+                                  "numero catalogo generale"@it;
+                       rdfs:range rdfs:Literal;
+                       rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                       owl:versionInfo "stabile"@it,
+                                       "stable"@en;
+                       ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CD/NCT/NCTN".
+r-arco:classifiedSubject a owl:FunctionalProperty,
+                           owl:DatatypeProperty;
+                         rdfs:comment "This property represents the subject of a photographic heritage as described in a photographic heritage classification other than Iconclass."@en,
+                                      "Questa proprietà rappresenta la descrizione codificata del/i soggetto/i raffigurato/i nell'opera secondo il sistema di classificazione scelto dall'Ente schedatore, in alternativa e/o in aggiunta ad Iconclass."@it;
+                         rdfs:domain r-arco:PhotographicHeritageClassification;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                         rdfs:label "classified subject"@en,
+                                    "soggetto classificato"@it;
+                         rdfs:range rdfs:Literal;
+                         owl:versionInfo "stable"@en,
+                                         "stabile"@it;
+                         ctlog:iccdNormTag "ICCD Normativa F 4.00: SG/CLF/CLFS".
+r-arco:definitionAndPositionOfComponents a owl:DatatypeProperty;
+                                         rdfs:comment "Questa proprietà rappresenta le informazioni sulla definizione e posizione delle parti componenti di un bene culturale complesso."@it,
+                                                      "This property represents information on definition and position of the components of a complex cultural property."@en;
+                                         rdfs:domain r-arco:ComplexCulturalProperty;
+                                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                         rdfs:label "definizione e posizione delle parti componenti"@it,
+                                                    "definition and position of components"@en;
+                                         rdfs:range rdfs:Literal;
+                                         owl:versionInfo "stabile"@it,
+                                                         "stable"@en;
+                                         ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: OG/OGC/OGCD".
+r-arco:digitalPhotographNote a owl:DatatypeProperty,
+                               owl:FunctionalProperty;
+                             rdfs:comment "This property represents notes on a digital photograph."@en,
+                                          "Questa proprietà rappresenta le note relative alla fotografia digitale. Può rappresentare informazioni utili a identificare le intenzioni dell'autore in relazione alla visualizzazione o rioggettivazione della fotografia digitale, come la dimensione del quadro, la risoluzione di stampa e relativa unità di misura, altre indicazioni per la stampa (tipo stampante, correzioni cromatiche, ecc.), categoria, URL, ecc."@it;
+                             rdfs:domain r-arco:PhotographicHeritage;
+                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                             rdfs:label "digital photograph note"@en,
+                                        "note sulla fotografia digitale"@it;
+                             rdfs:range rdfs:Literal;
+                             rdfs:subPropertyOf arco:note;
+                             owl:versionInfo "stabile"@it,
+                                             "stable"@en;
+                             ctlog:iccdNormTag "ICCD Normativa F: MT/FVC/FVCV".
+r-arco:endTime a owl:DatatypeProperty;
+               rdfs:comment "Questa proprietà rappresenta la data di fine di un intervallo temporale, che può essere espressa secondo criteri diversi e a diverso livello di dettaglio (secolo, intervallo di secoli, anno, intervallo di anni, aaaa/mm/gg, periodo storico, etc.)"@it,
+                            "This property represents the end time of a time interval, according to different criteria and level of detail (century, century interval, year, yyyy/mm/dd, historical period, etc.)."@en;
+               rdfs:domain <https://w3id.org/italia/onto/TI/TimeInterval>;
+               rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+               rdfs:label "data di fine"@it,
+                          "end time"@en;
+               rdfs:range rdfs:Literal;
+               rdfs:subPropertyOf <https://w3id.org/italia/onto/TI/time>;
+               owl:versionInfo "stabile"@it,
+                               "stable"@en.
+r-arco:hasAlternativeDiscipline a owl:ObjectProperty;
+                                rdfs:comment "This property relates a cultural property to a related scientific discipline, alternative to the main one."@en,
+                                             "Questa proprietà permette di associare un bene culturale a discipline scientifiche, alternative a quella principale, cui fa riferimento."@it;
+                                rdfs:domain r-arco:CulturalProperty;
+                                rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                rdfs:label "has alternative discipline"@en,
+                                           "ha altra disciplina"@it;
+                                rdfs:range cis:SubjectDiscipline;
+                                owl:inverseOf r-arco:isAlternativeDisciplineOf;
+                                owl:versionInfo "stable"@en,
+                                                "stabile"@it;
+                                ctlog:iccdNormTag "ICCD Normativa PST: CT/CTA".
+r-arco:hasArchaeologicalMaterialCategory a owl:ObjectProperty;
+                                         rdfs:comment "Questa proprietà collega un materiale archeologico alla sua categoria (es.: ceramiche, industria litica, intonaco, legno, etc.)"@it,
+                                                      "This property relates the archaeological material to its category (e.g.: ceramics, plaster, lithic materials, etc.)"@en;
+                                         rdfs:domain r-arco:ArchaeologicalMaterial;
+                                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                         rdfs:label "has archaeological material category"@en,
+                                                    "ha categoria di materiale archeologico"@it;
+                                         rdfs:range r-arco:ArchaeologicalMaterialCategory;
+                                         rdfs:subPropertyOf arco:hasCategory;
+                                         owl:inverseOf r-arco:isArchaeologicalMaterialCategoryOf;
+                                         owl:versionInfo "stabile"@it,
+                                                         "stable"@en;
+                                         ctlog:iccdNormTag "ICCD Normativa TMA: MA/MAC/MACC".
+r-arco:hasCartographicClassification a owl:ObjectProperty;
+                                     rdfs:comment "This property relates a cultural property to its cartographic classification."@en,
+                                                  "Questa proprietà collega un bene culturale alla sua classificazione cartografica."@it;
+                                     rdfs:domain r-arco:CulturalProperty;
+                                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                     rdfs:label "ha classificazione cartografica"@it,
+                                                "has cartographic classification"@en;
+                                     rdfs:range r-arco:CartographicClassification;
+                                     rdfs:subPropertyOf arco:hasClassification;
+                                     owl:inverseOf r-arco:isCartographicClassificationOf;
+                                     owl:versionInfo "stable"@en,
+                                                     "stabile"@it;
+                                     ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CT".
+r-arco:hasCartographicSymbol a owl:ObjectProperty;
+                             rdfs:comment "Questa proprietà collega una classificazione cartografica di un bene cultural al simbolo cartografico, in riferimento al tema."@it,
+                                          "This property relates a cartographic classification of a cultural property to the cartographic symbol related to the theme."@en;
+                             rdfs:domain r-arco:CartographicClassification;
+                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                             rdfs:label "has cartographic symbol"@en,
+                                        "ha simbolo cartografico"@it;
+                             rdfs:range r-arco:CartographicSymbol;
+                             rdfs:subPropertyOf arco:hasConcept;
+                             owl:inverseOf r-arco:isCartographicSymbolOf;
+                             owl:versionInfo "stabile"@it,
+                                             "stable"@en;
+                             ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CT/CTM/CTMD".
+r-arco:hasCartographicTheme a owl:ObjectProperty;
+                            rdfs:comment "This property relates a cartographic classification of a cultural property to the cartographic theme."@en,
+                                         "Questa proprietà collega una classificazione cartografica di un bene culturale al tema di riferimento."@it;
+                            rdfs:domain r-arco:CartographicClassification;
+                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                            rdfs:label "ha tema cartografico"@it,
+                                       "has cartographic theme"@en;
+                            rdfs:range r-arco:CartographicTheme;
+                            rdfs:subPropertyOf arco:hasConcept;
+                            owl:inverseOf r-arco:isCartographicThemeOf;
+                            owl:versionInfo "stabile"@it,
+                                            "stable"@en;
+                            ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CT/CTM/CTMT".
+r-arco:hasCataloguingAgency a owl:ObjectProperty;
+                            rdfs:comment "This property relates a cultural property to its cagaloguing agency. The relation is declared in the name of the property, but within the ontology this relation is also modeled, in a more expressive way, through the class AgentRole."@en,
+                                         "Questa proprietà rappresenta la relazione che collega un bene culturale al relativo ente schedatore. La relazione tra il ruolo e l'ente che lo riveste è espressa nel nome della proprietà, che quindi ne fornisce una rappresentazione semplificata, con ridotta espressività. Nell'ontologia questa relazione è modellata anche, in maniera più espressiva, dalla classe AgentRole, che permette di collegare l'ente e il suo ruolo."@it;
+                            rdfs:domain r-arco:CulturalProperty;
+                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                            rdfs:label "has cataloguing agency"@en,
+                                       "ha ente schedatore"@it;
+                            rdfs:range <https://w3id.org/italia/onto/l0/Agent>;
+                            rdfs:subPropertyOf r-arco:hasRelatedAgency;
+                            owl:inverseOf r-arco:isCataloguingAgencyOf;
+                            owl:versionInfo "stabile"@it,
+                                            "stable"@en;
+                            ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CD/ESC".
+r-arco:hasCulturalPropertyCataloguingCategory a owl:ObjectProperty;
+                                              rdfs:comment "This property relates a cultural property to a category based on a subjective evaluation of the cataloguing agent, during the cataloguing process."@en,
+                                                           "Questa proprietà collega un bene culturale a una categoria basata su una valutazione soggettiva del catalogatore durante il processo di catalogazione."@it;
+                                              rdfs:domain r-arco:CulturalProperty;
+                                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                              rdfs:label "has cultural property cataloguing category"@en,
+                                                         "ha categoria di bene culturale basata su catalogazione"@it;
+                                              rdfs:range r-arco:CulturalPropertyCataloguingCategory;
+                                              rdfs:subPropertyOf arco:hasCategory;
+                                              owl:inverseOf r-arco:isCulturalPropertyCataloguingCategoryOf;
+                                              owl:versionInfo "stabile"@it,
+                                                              "stable"@en;
+                                              ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: OG/OGT/OGTV".
+r-arco:hasCulturalPropertyCategory a owl:ObjectProperty;
+                                   rdfs:comment "Questa proprietà collega un bene culturale alla sua categoria."@it,
+                                                "This property relates a cultural property to its category."@en;
+                                   rdfs:domain r-arco:CulturalProperty;
+                                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                   rdfs:label "ha categoria"@it,
+                                              "has cultural property category"@en;
+                                   rdfs:range r-arco:CulturalPropertyCategory;
+                                   rdfs:subPropertyOf arco:hasCategory;
+                                   owl:inverseOf r-arco:isCulturalPropertyCategoryOf;
+                                   owl:versionInfo "stable"@en,
+                                                   "stabile"@it.
+r-arco:hasCulturalPropertyComponent a owl:ObjectProperty;
+                                    rdfs:comment "Questa proprietà collega un bene culturale complesso a una delle sue parti componenti."@it,
+                                                 "This property relates a cultural property to its components."@en;
+                                    rdfs:domain r-arco:ComplexCulturalProperty;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                    rdfs:label "has cultural property component"@en,
+                                               "ha parte componente di bene culturale"@it;
+                                    rdfs:range r-arco:CulturalPropertyComponent;
+                                    rdfs:subPropertyOf arco:hasComponent;
+                                    owl:inverseOf r-arco:isCulturalPropertyComponentOf;
+                                    owl:versionInfo "stable"@en,
+                                                    "stabile"@it;
+                                    ctlog:iccdNormTag "OG/OGT/OGTP".
+r-arco:hasCulturalPropertyInventoryCategory a owl:ObjectProperty;
+                                            rdfs:comment "This property relates a cultural property to a category based on a classification related to an inventory approved by the specific subject area."@en,
+                                                         "Questa proprietà collega un bene culturale a una categoria basata su una classificazione relativa a un repertorio riconosciuto dallo specifico ambito disciplinare."@it;
+                                            rdfs:domain r-arco:CulturalProperty;
+                                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                            rdfs:label "has cultural property inventory category"@en,
+                                                       "ha categoria basata su repertorio"@it;
+                                            rdfs:range r-arco:CulturalPropertyInventoryCategory;
+                                            rdfs:subPropertyOf arco:hasCategory;
+                                            owl:inverseOf r-arco:isCulturalPropertyInventoryCategoryOf;
+                                            owl:versionInfo "stable"@en,
+                                                            "stabile"@it;
+                                            ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: OG/OGT/OGTS".
+r-arco:hasCulturalPropertyResidual a owl:ObjectProperty;
+                                   rdfs:comment "Questa proprietà collega un bene culturale alla/alle sua/e parte/i residuale/i."@it,
+                                                "This property relates a cultural property to its residual."@en;
+                                   rdfs:domain r-arco:CulturalProperty;
+                                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                   rdfs:label "ha parte residuale di bene culturale"@it,
+                                              "has cultural property residual"@en;
+                                   rdfs:range r-arco:CulturalPropertyResidual;
+                                   rdfs:subPropertyOf arco:hasPart;
+                                   owl:inverseOf r-arco:isCulturalPropertyResidualOf;
+                                   owl:versionInfo "stable"@en,
+                                                   "stabile"@it;
+                                   ctlog:iccdNormTag "OG/OGT/OGTW".
+r-arco:hasHeritageProtectionAgency a owl:ObjectProperty;
+                                   rdfs:comment "This property relates a cultural property to its heritage protection agency. The relation is declared in the name of the property, but within the ontology this relation is also modeled, in a more expressive way, through the class AgentRole."@en,
+                                                "Questa proprietà rappresenta la relazione che collega un bene culturale al relativo ente competente per la tutela. La relazione tra il ruolo e l'ente che lo riveste è espressa nel nome della proprietà, che quindi ne fornisce una rappresentazione semplificata, con ridotta espressività. Nell'ontologia questa relazione è modellata anche, in maniera più espressiva, dalla classe AgentRole, che permette di collegare l'ente e il suo ruolo."@it;
+                                   rdfs:domain r-arco:CulturalProperty;
+                                   rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                   rdfs:label "has heritage protection agency"@en,
+                                              "ha ente competente per la tutela"@it;
+                                   rdfs:range <https://w3id.org/italia/onto/l0/Agent>;
+                                   rdfs:subPropertyOf r-arco:hasRelatedAgency;
+                                   owl:inverseOf r-arco:isHeritageProtectionAgencyOf;
+                                   owl:versionInfo "stable"@en,
+                                                   "stabile"@it;
+                                   ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CD/ECP".
+r-arco:hasMainDiscipline a owl:ObjectProperty;
+                         rdfs:comment "This property relates a cultural property to the main related scientific discipline."@en,
+                                      "Questa proprietà permette di associare un bene culturale alla disciplina scientifica più importante, o storicamente riconosciuta, cui fa riferimento."@it;
+                         rdfs:domain r-arco:CulturalProperty;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                         rdfs:label "ha disciplina principale"@it,
+                                    "has main discipline"@en;
+                         rdfs:range cis:SubjectDiscipline;
+                         owl:inverseOf r-arco:isMainDisciplineOf;
+                         owl:versionInfo "stable"@en,
+                                         "stabile"@it;
+                         ctlog:iccdNormTag "ICCD Normativa PST: CT/CTP".
+r-arco:hasMibacScopeOfProtection a owl:ObjectProperty;
+                                 rdfs:comment "This property relates a cultural property to ist MiBAC scope of protection"@en,
+                                              "Questa proprietà associa un bene culturale all'ambito di tutela nel quale ricade."@it;
+                                 rdfs:domain r-arco:CulturalProperty;
+                                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                 rdfs:label "ha ambito di tutela"@it,
+                                            "has MiBAC scope of protection"@en;
+                                 rdfs:range r-arco:MibacScopeOfProtection;
+                                 owl:inverseOf r-arco:isMibacScopeOfProtectionOf;
+                                 owl:versionInfo "stabile"@it,
+                                                 "stable"@en;
+                                 ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: OG/AMB".
+r-arco:hasMusicalInstrumentClassification a owl:ObjectProperty;
+                                          rdfs:comment "Questa proprietà collega un bene musicale a una classificazione con cui lo strumento può essere codificato."@it,
+                                                       "This property connects a cultural entity to a classification through which the instrument can be coded."@en;
+                                          rdfs:domain r-arco:MusicHeritage;
+                                          rdfs:isDefinedBy <https://w3id.org/arco/arco/>;
+                                          rdfs:label "has musical instrument classification"@en,
+                                                     "ha classificazione di strumento musicale"@it;
+                                          rdfs:range r-arco:MusicalInstrumentClassification;
+                                          rdfs:subPropertyOf arco:hasClassification;
+                                          owl:inverseOf r-arco:isMusicalInstrumentClassificationOf;
+                                          owl:versionInfo "stabile"@it,
+                                                          "stable"@en.
+r-arco:hasNumismaticPropertyCategory a owl:ObjectProperty;
+                                     rdfs:comment "Questa proprietà collega un bene numismatico a una sua categoria."@it,
+                                                  "This property relates a numismatic property to one of its categories."@en;
+                                     rdfs:domain r-arco:NumismaticProperty;
+                                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                     rdfs:label "has numismatic property category"@en,
+                                                "ha categoria di bene numismatico"@it;
+                                     rdfs:range r-arco:NumismaticPropertyCategory;
+                                     rdfs:subPropertyOf arco:hasCategory;
+                                     owl:inverseOf r-arco:isNumismaticPropertyCategoryOf;
+                                     owl:versionInfo "stable"@en,
+                                                     "stabile"@it;
+                                     ctlog:iccdNormTag "ICCD Normativa NU 4.00: OG/OGT/OGTH".
+r-arco:hasPhotographicHeritageClassification a owl:ObjectProperty;
+                                             rdfs:comment "This property connects a photographic property to a photographic property's classification, according to to other classification systems as Iconclass. The system has to be recognised and used at national or preferably international level."@en,
+                                                          "Questa proprietà collega un bene fotografico a una classificazione di un bene fotografico secondo un sistema di classificazione alternativo a Iconclass, che sia comunque riconosciuto e utilizzato a livello nazionale, o preferibilmente internazionale."@it;
+                                             rdfs:domain r-arco:PhotographicHeritage;
+                                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                             rdfs:label "ha classificazione di bene fotografico"@it,
+                                                        "has photographic heritage classification"@en;
+                                             rdfs:range r-arco:PhotographicHeritageClassification;
+                                             rdfs:subPropertyOf arco:hasClassification;
+                                             owl:inverseOf r-arco:isPhotographicHeritageClassificationOf;
+                                             owl:versionInfo "stable"@en,
+                                                             "stabile"@it;
+                                             ctlog:iccdNormTag "ICCD Normativa F 4.00: SG/CLF".
+r-arco:hasPhotographicHeritageClassificationType a owl:ObjectProperty;
+                                                 rdfs:comment "This property connects a photographic property's classification to the classification type, according to to other classification systems as Iconclass. The system has to be recognised and used at national or preferably international level."@en,
+                                                              "Questa proprietà collega una classificazione di un bene fotografico al tipo di classificazione, relativamente a un sistema di classificazione alternativo a Iconclass, che sia comunque riconosciuto e utilizzato a livello nazionale, o preferibilmente internazionale."@it;
+                                                 rdfs:domain r-arco:PhotographicHeritageClassification;
+                                                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                                 rdfs:label "ha tipo di classificazione di bene fotografico"@it,
+                                                            "has photographic heritage classification type"@en;
+                                                 rdfs:range r-arco:PhotographicHeritageClassificationType;
+                                                 rdfs:subPropertyOf arco:hasType;
+                                                 owl:inverseOf r-arco:isPhotographicHeritageClassificationTypeOf;
+                                                 owl:versionInfo "stabile"@it,
+                                                                 "stable"@en;
+                                                 ctlog:iccdNormTag "ICCD Normativa F: SG/CLF/CLFT".
+r-arco:hasRFId a owl:ObjectProperty;
+               rdfs:comment "This property relates an object to an RFId."@en,
+                            "Questa proprietà collega un oggetto a un identificatore a radiofrequenza RFId."@it;
+               rdfs:domain owl:Thing;
+               rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+               rdfs:label "ha identificativo RFId"@it,
+                          "has RFId identifier"@en;
+               rdfs:range r-arco:RFId;
+               owl:inverseOf r-arco:isRFIdOf;
+               owl:versionInfo "stabile"@it,
+                               "stable"@en.
+r-arco:hasReferenceCoinLegend a owl:ObjectProperty,
+                                owl:FunctionalProperty;
+                              rdfs:comment "This property relates a numismatic property with its reference coin legend."@en,
+                                           "Questa proprietà collega un bene numismatico alla sua legenda tipo."@it;
+                              rdfs:domain r-arco:NumismaticProperty;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                              rdfs:label "has reference coin legend"@en,
+                                         "ha legenda tipo"@it;
+                              rdfs:range r-arco:ReferenceCoinLegend;
+                              rdfs:subPropertyOf arco:hasConcept;
+                              owl:inverseOf r-arco:isReferenceCoinLegendOf;
+                              owl:versionInfo "stabile"@it,
+                                              "stable"@en;
+                              ctlog:iccdNormTag "ICCD Normativa NU: OG/OGT/OGTL".
+r-arco:hasRelatedAgency a owl:ObjectProperty;
+                        rdfs:comment "Questa proprietà rappresenta la relazione che collega un bene culturale a un ente che riveste un ruolo nei suoi confronti. La relazione tra il ruolo e l'ente che lo riveste è espressa, in maniera generica, nel nome della proprietà, che quindi ne fornisce una rappresentazione semplificata, con ridotta espressività. La proprietà è specializzata per mezzo di sottoproprietà. Nell'ontologia questa relazione è modellata anche, in maniera più espressiva, dalla classe AgentRole, che permette di collegare l'ente e il suo ruolo."@it,
+                                     "This property relates a cultural property to an agency that plays a role related to the cultural property. The relation is declared in the name of the property, but within the ontology this relation is also modeled, in a more expressive way, through the class AgentRole."@en;
+                        rdfs:domain r-arco:CulturalProperty;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                        rdfs:label "has related agency"@en,
+                                   "ha ente collegato"@it;
+                        rdfs:range <https://w3id.org/italia/onto/l0/Agent>;
+                        owl:inverseOf r-arco:isRelatedAgencyOf;
+                        owl:propertyChainAxiom (arco:hasAgentRole
+                                                arco:hasAgent);
+                        owl:versionInfo "stable"@en,
+                                        "stabile"@it.
+r-arco:hasThematicCategory a owl:ObjectProperty;
+                           rdfs:comment "Questa proprietà collega una classificazione cartografica di un bene culturale alla categoria tematica."@it,
+                                        "This property relates a cartographic classification of a cultural property to the thematic category."@en;
+                           rdfs:domain r-arco:CartographicClassification;
+                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                           rdfs:label "ha categoria tematica"@it,
+                                      "has thematic category"@en;
+                           rdfs:range r-arco:ThematicCategory;
+                           rdfs:subPropertyOf arco:hasCategory;
+                           owl:inverseOf r-arco:isThematicCategoryOf;
+                           owl:versionInfo "stabile"@it,
+                                           "stable"@en;
+                           ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CT/CTM/CTMC".
+r-arco:internationalIdentifier a owl:FunctionalProperty,
+                                 owl:DatatypeProperty;
+                               rdfs:comment "Questa proprietà rappresenta il numero di codice internazionale che identifica un bene scientifico e tecnologico. All'indirizzo http://www.isin.org/ è possibile reperire tutte le specifiche per l'adesione al progetto e l'attribuzione del codice internazionale. Il Registro Online è un database che raccoglie informazioni su strumenti scientifici di interesse storico promosso dal Museum of the History of Science di Oxford in collaborazione con la Commissione Strumenti Scientifici dell'International Union of the History and Philosophy of Science."@it,
+                                            "This property represents the international identifier of a scientific or technological heritage. More info can be found at https://www.isin.org/"@en;
+                               rdfs:domain r-arco:ScientificOrTechnologicalHeritage;
+                               rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                               rdfs:label "international identifier"@en,
+                                          "codice internazionale"@it;
+                               rdfs:range rdfs:Literal;
+                               rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                               owl:versionInfo "stable"@en,
+                                               "stabile"@it;
+                               ctlog:iccdNormTag "ICCD Normativa PST: AC/ACI".
+r-arco:isAlternativeDisciplineOf a owl:ObjectProperty;
+                                 rdfs:comment "This property relates a scientific discipline, alternative to the main one, related to a cultural property to that cultural property."@en,
+                                              "Questa proprietà permette di associare discipline scientifiche, alternative a quella principale, cui un bene culturale fa riferimento, al bene culturale stesso."@it;
+                                 rdfs:domain cis:SubjectDiscipline;
+                                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                 rdfs:label "è altra disciplina di"@it,
+                                            "is alternative discipline of"@en;
+                                 rdfs:range r-arco:CulturalProperty;
+                                 owl:versionInfo "stable"@en,
+                                                 "stabile"@it.
+r-arco:isArchaeologicalMaterialCategoryOf a owl:ObjectProperty;
+                                          rdfs:comment """Questa è la proprietà inversa di \"ha categoria di materiale archeologico\"."""@it,
+                                                       """This is the inverse property of \"has archaeological material category of\"."""@en;
+                                          rdfs:domain r-arco:ArchaeologicalMaterialCategory;
+                                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                          rdfs:label "is archaeological material category of"@en,
+                                                     "è categoria di materiale archeologico"@it;
+                                          rdfs:range r-arco:ArchaeologicalMaterial;
+                                          rdfs:subPropertyOf arco:isCategoryOf;
+                                          owl:versionInfo "stable"@en,
+                                                          "stabile"@it.
+r-arco:isCartographicClassificationOf a owl:ObjectProperty;
+                                      rdfs:comment """This is the inverse property of \"has cartographic classification\"."""@en,
+                                                   """Questa è la proprietà inversa di \"ha classificazione cartografica\"."""@it;
+                                      rdfs:domain r-arco:CartographicClassification;
+                                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                      rdfs:label "è classificazione cartografica di"@it,
+                                                 "is cartographic classification of"@en;
+                                      rdfs:range r-arco:CulturalProperty;
+                                      rdfs:subPropertyOf arco:isClassificationOf;
+                                      owl:versionInfo "stable"@en,
+                                                      "stabile"@it.
+r-arco:isCartographicSymbolOf a owl:ObjectProperty;
+                              rdfs:comment """Questa è la proprietà inversa di \"ha simbolo cartografico\"."""@it,
+                                           """This is the inverse property of \"has cartographic symbol\"."""@en;
+                              rdfs:domain r-arco:CartographicSymbol;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                              rdfs:label "is cartographic symbol of"@en,
+                                         "è simbolo cartografico di"@it;
+                              rdfs:range r-arco:CartographicClassification;
+                              rdfs:subPropertyOf arco:isConceptOf;
+                              owl:versionInfo "stabile"@it,
+                                              "stable"@en.
+r-arco:isCartographicThemeOf a owl:ObjectProperty;
+                             rdfs:comment """Questa è la proprietà inversa di \"ha tema cartografico\"."""@it,
+                                          """This is the inverse property of \"has cartographic theme\"."""@en;
+                             rdfs:domain r-arco:CartographicTheme;
+                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                             rdfs:label "è tema cartografico di"@it,
+                                        "is cartographic theme of"@en;
+                             rdfs:range r-arco:CartographicClassification;
+                             rdfs:subPropertyOf arco:isConceptOf;
+                             owl:versionInfo "stable"@en,
+                                             "stabile"@it.
+r-arco:isCataloguingAgencyOf a owl:ObjectProperty;
+                             rdfs:comment "Questa proprietà rappresenta la relazione che collega un ente schedatore al relativo bene culturale che ha schedato. La relazione tra il ruolo e l'ente che lo riveste è espressa nel nome della proprietà, che quindi ne fornisce una rappresentazione semplificata, con ridotta espressività. Nell'ontologia questa relazione è modellata anche, in maniera più espressiva, dalla classe AgentRole, che permette di collegare l'ente e il suo ruolo."@it,
+                                          "This property relates a cagaloguing agency to the catalogued cultural property. The relation is declared in the name of the property, but within the ontology this relation is also modeled, in a more expressive way, through the class AgentRole."@en;
+                             rdfs:domain <https://w3id.org/italia/onto/l0/Agent>;
+                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                             rdfs:label "is cataloguing agency of"@en,
+                                        "è ente schedatore di"@it;
+                             rdfs:range r-arco:CulturalProperty;
+                             rdfs:subPropertyOf r-arco:isRelatedAgencyOf;
+                             owl:versionInfo "stable"@en,
+                                             "stabile"@it;
+                             ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CD/ESC".
+r-arco:isCulturalPropertyCataloguingCategoryOf a owl:ObjectProperty;
+                                               rdfs:comment """Questa è la proprietà inversa a \"ha categoria di bene culturale basata su catalogazione\"."""@it,
+                                                            """This is the inverse property of \"has cultural property cataloguing category of\"."""@en;
+                                               rdfs:domain r-arco:CulturalPropertyCataloguingCategory;
+                                               rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                               rdfs:label "is cultural property cataloguing category of"@en,
+                                                          "è categoria di bene culturale basata su catalogazione di"@it;
+                                               rdfs:range r-arco:CulturalProperty;
+                                               rdfs:subPropertyOf arco:isCategoryOf;
+                                               owl:versionInfo "stable"@en,
+                                                               "stabile"@it.
+r-arco:isCulturalPropertyCategoryOf a owl:ObjectProperty;
+                                    rdfs:comment """This is the inverse property of \"has cultural property category\"."""@en,
+                                                 """Questa è la proprietà inversa di \"ha categoria\"."""@it;
+                                    rdfs:domain r-arco:CulturalPropertyCategory;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                    rdfs:label "è categoria di bene culturale"@it,
+                                               "is cultural property category of"@en;
+                                    rdfs:range r-arco:CulturalProperty;
+                                    rdfs:subPropertyOf arco:isCategoryOf;
+                                    owl:versionInfo "stable"@en,
+                                                    "stabile"@it.
+r-arco:isCulturalPropertyComponentOf a owl:ObjectProperty;
+                                     rdfs:comment """Questa proprietà, inversa a \"ha componente\", collega una delle parti componenti di un bene culturale complesso al bene complesso stesso."""@en,
+                                                  """This property, inverse of \"has component\", relates a component of a complex cultural property to the complex cultural property."""@en;
+                                     rdfs:domain r-arco:CulturalPropertyComponent;
+                                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                     rdfs:label "is cultural property component of"@en,
+                                                "è parte componente di bene culturale"@it;
+                                     rdfs:range r-arco:ComplexCulturalProperty;
+                                     rdfs:subPropertyOf arco:isPartOf;
+                                     owl:versionInfo "stabile"@it,
+                                                     "stable"@en;
+                                     ctlog:iccdNormTag "OG/OGT/OGTP".
+r-arco:isCulturalPropertyInventoryCategoryOf a owl:ObjectProperty;
+                                             rdfs:comment "Questa proprietà collega una categoria basata su una classificazione relativa a un repertorio riconosciuto dallo specifico ambito disciplinare a un bene culturale."@it,
+                                                          "This property relates a category based on a classification related to an inventory approved by the specific subject area to a cultural property."@en;
+                                             rdfs:domain r-arco:CulturalPropertyInventoryCategory;
+                                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                             rdfs:label "is cultural property inventory category of"@en,
+                                                        "è categoria basata su repertorio di"@it;
+                                             rdfs:range r-arco:CulturalProperty;
+                                             rdfs:subPropertyOf arco:isCategoryOf;
+                                             owl:versionInfo "stabile"@it,
+                                                             "stable"@en;
+                                             ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: OG/OGT/OGTS".
+r-arco:isCulturalPropertyResidualOf a owl:ObjectProperty;
+                                    rdfs:comment """This property, inverse of \"has residual\", relates a residual of a cultural property to the cultural property."""@en,
+                                                 """Questa proprietà, inversa a \"ha parte residuale\", collega una parte residuale di un bene culturale al bene culturale stesso."""@it;
+                                    rdfs:domain r-arco:CulturalPropertyResidual;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                    rdfs:label "is cultural property residual of"@en,
+                                               "è parte residuale di bene culturale"@it;
+                                    rdfs:range r-arco:CulturalProperty;
+                                    rdfs:subPropertyOf arco:isPartOf;
+                                    owl:versionInfo "stable"@en,
+                                                    "stabile"@it;
+                                    ctlog:iccdNormTag "OG/OGT/OGTW".
+r-arco:isHeritageProtectionAgencyOf a owl:ObjectProperty;
+                                    rdfs:comment "This property relates an heritage protection agency to the cultural property. The relation is declared in the name of the property, but within the ontology this relation is also modeled, in a more expressive way, through the class AgentRole."@en,
+                                                 "Questa proprietà rappresenta la relazione che collega un ente competente per la tutela al relativo bene culturale della cui tutela è competente. La relazione tra il ruolo e l'ente che lo riveste è espressa nel nome della proprietà, che quindi ne fornisce una rappresentazione semplificata, con ridotta espressività. Nell'ontologia questa relazione è modellata anche, in maniera più espressiva, dalla classe AgentRole, che permette di collegare l'ente e il suo ruolo."@it;
+                                    rdfs:domain <https://w3id.org/italia/onto/l0/Agent>;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                    rdfs:label "is heritage protection agency of"@en,
+                                               "è ente competente per la tutela di"@it;
+                                    rdfs:range r-arco:CulturalProperty;
+                                    rdfs:subPropertyOf r-arco:isRelatedAgencyOf;
+                                    owl:versionInfo "stable"@en,
+                                                    "stabile"@it;
+                                    ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CD/ECP".
+r-arco:isMainDisciplineOf a owl:ObjectProperty;
+                          rdfs:comment "Questa proprietà permette di associare la disciplina scientifica principale, cui un bene culturale fa riferimento, al bene culturale stesso."@it,
+                                       "This property relates the main scientific discipline related to a cultural property to that cultural property."@en;
+                          rdfs:domain cis:SubjectDiscipline;
+                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                          rdfs:label "is main discipline of"@en,
+                                     "è disciplina principale di"@it;
+                          rdfs:range r-arco:CulturalProperty;
+                          owl:versionInfo "stabile"@it,
+                                          "stable"@en.
+r-arco:isMibacScopeOfProtectionOf a owl:ObjectProperty;
+                                  rdfs:comment """This is the inverse property of \"has MiBAC scope of protection\"."""@en,
+                                               """Questa è la proprietà inversa di \"ha ambito di tutela\"."""@it;
+                                  rdfs:domain r-arco:MibacScopeOfProtection;
+                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                  rdfs:label "is MiBAC scope of protection of"@en,
+                                             "è ambito di tutela di"@it;
+                                  rdfs:range r-arco:CulturalProperty;
+                                  owl:versionInfo "stable"@en,
+                                                  "stabile"@it.
+r-arco:isMusicalInstrumentClassificationOf a owl:ObjectProperty;
+                                           rdfs:comment """Questa proprietà, inversa a \"ha classificazione di bene musicale\", collega un una classificazione con cui uno strumento musicale può essere codificato al bene musicale."""@it;
+                                           rdfs:domain r-arco:MusicalInstrumentClassification;
+                                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                           rdfs:label "is musical instrument classification of"@en,
+                                                      "è classificazione di strumento musicale di"@it;
+                                           rdfs:range r-arco:MusicHeritage;
+                                           rdfs:subPropertyOf arco:isClassificationOf;
+                                           owl:versionInfo "stable"@en,
+                                                           "stabile"@it.
+r-arco:isNumismaticPropertyCategoryOf a owl:ObjectProperty;
+                                      rdfs:comment "Questa proprietà collega una categoria di bene numismatico al bene numismatico cui si riferisce."@it;
+                                      rdfs:domain r-arco:NumismaticPropertyCategory;
+                                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                      rdfs:label "is numismatic property category of"@en,
+                                                 "è categoria di bene numismatico"@it;
+                                      rdfs:range r-arco:NumismaticProperty;
+                                      rdfs:subPropertyOf arco:isCategoryOf;
+                                      owl:versionInfo "stabile"@it,
+                                                      "stable"@en;
+                                      ctlog:iccdNormTag "ICCD Normativa NU 4.00: OG/OGT/OGTH".
+r-arco:isPhotographicHeritageClassificationOf a owl:ObjectProperty;
+                                              rdfs:domain r-arco:PhotographicHeritageClassification;
+                                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                              rdfs:label "is photographic heritage classification of"@en,
+                                                         "è classificazione di bene fotografico di"@it;
+                                              rdfs:range r-arco:PhotographicHeritage;
+                                              rdfs:subPropertyOf arco:isClassificationOf;
+                                              owl:versionInfo """Questa proprietà, inversa a \"ha classificazione di bene fotografico\", collega una classificazione di un bene fotografico secondo un sistema di classificazione alternativo a Iconclass, a un bene fotografico."""@it,
+                                                              "stabile"@it,
+                                                              "stable"@en.
+r-arco:isPhotographicHeritageClassificationTypeOf a owl:ObjectProperty;
+                                                  rdfs:comment """Questa è la proprietà inversa di \"ha tipo di classificazione di bene fotografico\"."""@it,
+                                                               """This is the inverse property of \"has photographic heritage classification type\"."""@en;
+                                                  rdfs:domain r-arco:PhotographicHeritageClassificationType;
+                                                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                                  rdfs:label "è tipo di classificazione di bene fotografico"@it,
+                                                             "is photographic heritage classification type of"@en;
+                                                  rdfs:range r-arco:PhotographicHeritageClassification;
+                                                  rdfs:subPropertyOf arco:isTypeOf;
+                                                  owl:versionInfo "stable"@en,
+                                                                  "stabile"@it.
+r-arco:isRFIdOf a owl:ObjectProperty;
+                rdfs:comment "This property relates a radio-frequency identification (RFID) to an object."@en,
+                             "Questa proprietà collega un identificatore a radiofrequenza RFId a un oggetto."@it;
+                rdfs:domain r-arco:RFId;
+                rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                rdfs:label "is RFId identifier of"@en,
+                           "è identificativo RFId di"@it;
+                rdfs:range owl:Thing;
+                owl:versionInfo "stable"@en,
+                                "stabile"@it.
+r-arco:isReferenceCoinLegendOf a owl:ObjectProperty;
+                               rdfs:comment """Questa è la proprietà inversa di \"ha legenda tipo\"."""@it,
+                                            """This is the inverse property of \"ha reference coin legend\"."""@en;
+                               rdfs:domain r-arco:ReferenceCoinLegend;
+                               rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                               rdfs:label "is reference coin legend of"@en,
+                                          "è legenda tipo di"@it;
+                               rdfs:range r-arco:NumismaticProperty;
+                               rdfs:subPropertyOf arco:isConceptOf;
+                               owl:versionInfo "stabile"@it,
+                                               "stable"@en.
+r-arco:isRelatedAgencyOf a owl:ObjectProperty;
+                         rdfs:comment """This property, inverse of \"has related agency\", relates an agency that plays a role related to a cultural property to that cultural property. The relation is declared in the name of the property, but within the ontology this relation is also modeled, in a more expressive way, through the class AgentRole."""@en,
+                                      """Questa proprietà, inversa a \"ha ente collegato\", rappresenta la relazione che collega un ente che riveste un ruolo nei confronti di un bene culturale al bene culturale stesso. La relazione tra il ruolo e l'ente che lo riveste è espressa, in maniera generica, nel nome della proprietà, che quindi ne fornisce una rappresentazione semplificata, con ridotta espressività. La proprietà è specializzata per mezzo di sottoproprietà. Nell'ontologia questa relazione è modellata anche, in maniera più espressiva, dalla classe TimeIndexedRole, che permette di collegare l'ente, il suo ruolo e la sua corrispondente estensione temporale."""@it;
+                         rdfs:domain <https://w3id.org/italia/onto/l0/Agent>;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                         rdfs:label "is related agency of"@en,
+                                    "è ente collegato a"@it;
+                         rdfs:range r-arco:CulturalProperty;
+                         owl:versionInfo "stabile"@it,
+                                         "stable"@en.
+r-arco:isThematicCategoryOf a owl:ObjectProperty;
+                            rdfs:comment """Questa è la proprietà inversa di \"ha categoria tematica\"."""@it,
+                                         """This is the inverse property of \"has thematic category\"."""@en;
+                            rdfs:domain r-arco:ThematicCategory;
+                            rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                            rdfs:label "è categoria tematica di"@it,
+                                       "is thematic category of"@en;
+                            rdfs:range r-arco:CartographicClassification;
+                            rdfs:subPropertyOf arco:isCategoryOf;
+                            owl:versionInfo "stabile"@it,
+                                            "stable"@en.
+r-arco:musicalInstrumentNote a owl:FunctionalProperty,
+                               owl:DatatypeProperty;
+                             rdfs:comment "This property represents notes on a musical instrument."@en,
+                                          "Questa proprietà rappresenta le note relative agli aspetti acustici di uno strumento musicale, ed eventualmente anche relative ai rilevamenti e ai criteri adottati in sede di restauro."@it;
+                             rdfs:domain r-arco:MusicHeritage;
+                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                             rdfs:label "musical instrument note"@en,
+                                        "note sullo strumento musicale"@it;
+                             rdfs:range rdfs:Literal;
+                             rdfs:subPropertyOf arco:note;
+                             owl:versionInfo "stabile"@it,
+                                             "stable"@en;
+                             ctlog:iccdNormTag "ICCD Normativa SM 4.00: AA/AAS".
+r-arco:numberOfArchaeologicalMaterials a owl:FunctionalProperty,
+                                         owl:DatatypeProperty;
+                                       rdfs:comment "numero di materiali archeologici componenti"@it,
+                                                    "This property represents the total quantity of an archaeological material that is part of a lot of archaeological materials."@en,
+                                                    "Questa proprietà rappresenta la quantità complessiva di uno stesso materiale archeologico componente di un lotto di materiali."@it;
+                                       rdfs:domain r-arco:ArchaeologicalMaterial;
+                                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                       rdfs:label "number of archeological materials"@en;
+                                       rdfs:range xsd:integer;
+                                       rdfs:subPropertyOf r-arco:numberOfParts;
+                                       owl:versionInfo "stable"@en,
+                                                       "stabile"@it;
+                                       ctlog:iccdNormTag "ICCD Normativa TMA: MA/MAC/MACQ".
+r-arco:numberOfComponents a owl:DatatypeProperty,
+                            owl:FunctionalProperty;
+                          rdfs:comment "This property represents the number of components of a complex cultural property."@en,
+                                       """Questa proprietà rappresenta il numero di esemplari/oggetti/elementi componenti di un bene culturale. Nel caso di un bene complesso identificato come serie o come insieme, si usa per specificare il numero, espresso in cifre, degli esemplari o degli oggetti componenti, oppure degli elementi componenti nel caso in cui il bene sia un insieme o una serie i cui esemplari/oggetti componenti comprendono ciascuno più elementi. Il range della proprietà è rdfs:Literal perché, nei casi in cui non sia stato possibile rilevare per motivi pratici la consistenza numerica, il valore della proprietà sarà \"QNR\"."""@it;
+                          rdfs:domain r-arco:ComplexCulturalProperty;
+                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                          rdfs:label "number of components"@en,
+                                     "numero di oggetti/elementi componenti"@it;
+                          rdfs:range rdfs:Literal;
+                          rdfs:subPropertyOf r-arco:numberOfParts;
+                          owl:versionInfo "stabile"@it,
+                                          "stable"@en;
+                          ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: OG/QNT/QNTN; OG/QNT/QNTI; OG/QNT/QNTS".
+r-arco:numberOfCulturalPropertyParts a owl:DatatypeProperty,
+                                       owl:FunctionalProperty;
+                                     rdfs:comment "This property represents the number of specimens of the same cultural property part (es.: the number of the teeth of an anthropological material)."@en,
+                                                  "Questa proprietà rappresenta il numero di esemplari di una stessa parte di un bene culturale (es.: il numero di denti di un reperto antropologico)"@it;
+                                     rdfs:domain r-arco:CulturalPropertyPart;
+                                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                                     rdfs:label "numero di parte di bene culturale"@it,
+                                                "number of cultural property part"@en;
+                                     rdfs:range xsd:integer;
+                                     rdfs:subPropertyOf r-arco:numberOfParts;
+                                     owl:versionInfo "stabile"@it,
+                                                     "stable"@en;
+                                     ctlog:iccdNormTag "ICCD Normativa AT 3.01: EL/ELE/ELEM".
+r-arco:numberOfMembers a owl:DatatypeProperty,
+                         owl:FunctionalProperty;
+                       rdfs:comment "This property represents the number of members of a cultural property that is a collection (e.g.: series)"@en,
+                                    "Questa proprietà rappresenta il numero di membri di un bene culturale che si identifica come una collezione (es.: serie)"@it;
+                       rdfs:domain r-arco:CulturalPropertyCollection;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                       rdfs:label "number of members"@en,
+                                  "numero di membri"@it;
+                       rdfs:range rdfs:Literal;
+                       rdfs:subPropertyOf r-arco:numberOfParts;
+                       owl:versionInfo "stable"@en,
+                                       "stabile"@it;
+                       ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: OG/QNT/QNTN; OG/QNT/QNTI; OG/QNT/QNTS".
+r-arco:numberOfParts a owl:DatatypeProperty,
+                       owl:FunctionalProperty;
+                     rdfs:comment "This property represents the number of parts of an entity."@en,
+                                  "Questa proprietà rappresenta il numero di parti di un'entità."@it;
+                     rdfs:domain owl:Thing;
+                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                     rdfs:label "numero di parti"@it,
+                                "number of parts"@en;
+                     rdfs:range xsd:integer;
+                     owl:versionInfo "stabile"@it,
+                                     "stable"@en.
+r-arco:numberOfResiduals a owl:FunctionalProperty,
+                           owl:DatatypeProperty;
+                         rdfs:comment "Questa proprietà rappresenta il numero di parti residuali, nel caso in cui si stia descrivendo un bene di cui si conservano più parti residuali."@it,
+                                      "This property represents the number of residuals (only if more than one) of a cultural property."@en;
+                         rdfs:domain r-arco:CulturalPropertyResidual;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                         rdfs:label "number of cultural property residual parts"@en,
+                                    "numero di parti residuali di bene culturale"@it;
+                         rdfs:range xsd:integer;
+                         rdfs:subPropertyOf r-arco:numberOfParts;
+                         owl:versionInfo "stable"@en,
+                                         "stabile"@it;
+                         ctlog:iccdNormTag "OG/QNT/QNTR".
+r-arco:regionIdentifier a owl:DatatypeProperty,
+                          owl:FunctionalProperty;
+                        rdfs:comment """This property represents the \"region identifier\" associated to a cultural property described by a catalogue record."""@en,
+                                     "Questa proprietà permette di associare il codice regione a un bene culturale descritto in una scheda catalografica."@it;
+                        rdfs:domain r-arco:CulturalProperty;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                        rdfs:label "region identifier"@en,
+                                   "codice regione"@it;
+                        rdfs:range rdfs:Literal;
+                        rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                        owl:versionInfo "stabile"@it,
+                                        "stable"@en;
+                        ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CD/NCT/NCTN".
+r-arco:startTime a owl:DatatypeProperty;
+                 rdfs:comment "Questa proprietà rappresenta la data di inizio di un intervallo temporale, che può essere espressa secondo criteri diversi e a diverso livello di dettaglio (secolo, intervallo di secoli, anno, intervallo di anni, aaaa/mm/gg, periodo storico, etc.)"@it,
+                              "This property represents the start time of a time interval, according to different criteria and level of detail (century, century interval, year, yyyy/mm/dd, historical period, etc.)."@en;
+                 rdfs:domain <https://w3id.org/italia/onto/TI/TimeInterval>;
+                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                 rdfs:label "start time"@en,
+                            "data di inizio"@it;
+                 rdfs:range rdfs:Literal;
+                 rdfs:subPropertyOf <https://w3id.org/italia/onto/TI/time>;
+                 owl:versionInfo "stabile"@it,
+                                 "stable"@en.
+r-arco:suffix a owl:DatatypeProperty,
+                owl:FunctionalProperty;
+              rdfs:comment "Questa proprietà permette di associare il suffisso a un bene culturale descritto in una scheda catalografica."@it,
+                           """This property represents the \"suffix\" associated to a cultural property described by a catalogue record."""@en;
+              rdfs:domain r-arco:CulturalProperty;
+              rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+              rdfs:label "suffix"@en,
+                         "suffisso"@it;
+              rdfs:range rdfs:Literal;
+              rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+              owl:versionInfo "stabile"@it,
+                              "stable"@en;
+              ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: CD/NCT/NCTS".
+r-arco:taxon a owl:DatatypeProperty;
+             rdfs:comment "This property represents the taxon code and the taxon definition associated to the musical instrument, according to a musical instrument classification."@en,
+                          "Questa proprietà rappresenta il codice tassonomico e la definizione attribuiti allo strumento musicale schedato nell'ambito del sistema di classificazione preso in considerazione."@it;
+             rdfs:domain r-arco:AlternativeMusicalInstrumentClassification;
+             rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+             rdfs:label "taxon"@en,
+                        "taxon"@it;
+             rdfs:range rdfs:Literal;
+             owl:versionInfo "stable"@en,
+                             "stabile"@it;
+             ctlog:iccdNormTag "Normativa SM 4.00: CL/CLA/CLAT".
+r-arco:uniqueIdentifier a owl:FunctionalProperty,
+                          owl:DatatypeProperty;
+                        rdfs:comment "This property represents the unique identifier (derived as the concatenation of the region identifier, the catalogue number and the suffix) of a cultural property describey by a catalogue record."@en,
+                                     "Questa proprietà permette di associare il codice univoco (ricavato dalla concatenazione di codice regione, numero di catalogo generale ed eventuale suffisso) a un bene culturale descritto in una scheda catalografica."@it;
+                        rdfs:domain r-arco:CulturalProperty;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/arco>;
+                        rdfs:label "unique identifier"@en,
+                                   "codice univoco"@it;
+                        rdfs:range rdfs:Literal;
+                        rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/identifier>;
+                        owl:versionInfo "stable"@en,
+                                        "stabile"@it;
+                        ctlog:iccdNormTag "ICCD Normativa Trasversale 4.00: concat(CD/NCT/NCTR + CD/NCT/NCTN + CD/NCT/NCTS)".
+ctlog:AdditionalForm a owl:Class.
+ctlog:InformationForm a owl:Class.
+ctlog:iccdNormTag a owl:AnnotationProperty.
+ctlog:isRelatedToAdditionalForm a owl:ObjectProperty.
+ctlog:isRelatedToInformationForm a owl:ObjectProperty.
+cdesc:Acquisition a owl:Class.
+cdesc:AgeOfDeathEstimate a owl:Class.
+cdesc:AnomalyOrigin a owl:Class.
+cdesc:ArchivalRecord a owl:Class.
+cdesc:ArchivalRecordSet a owl:Class.
+cdesc:AuthorshipAttribution a owl:Class.
+cdesc:Bibliography a owl:Class.
+cdesc:BiologicalTaxonomy a owl:Class.
+cdesc:ChangeOfAvailability a owl:Class.
+cdesc:CoinIssuance a owl:Class.
+cdesc:CollectionMembership a owl:Class.
+cdesc:Commission a owl:Class.
+cdesc:CulturalPropertyStage a owl:Class.
+cdesc:Dating a owl:Class.
+cdesc:DetectionMethod a owl:Class.
+cdesc:Documentation a owl:Class.
+cdesc:Estimate a owl:Class.
+cdesc:ExportImportCertification a owl:Class.
+cdesc:FindingContext a owl:Class.
+cdesc:Fruition a owl:Class.
+cdesc:Intervention a owl:Class.
+cdesc:Inventory a owl:Class.
+cdesc:LegalSituation a owl:Class.
+cdesc:NumismaticSeries a owl:Class.
+cdesc:PhotographicSeriesMembership a owl:Class.
+cdesc:ProtectiveMeasure a owl:Class.
+cdesc:RelatedWorkSituation a owl:Class.
+cdesc:Reliability a owl:Class.
+cdesc:Research a owl:Class.
+cdesc:Responsibility a owl:Class.
+cdesc:SexEstimate a owl:Class.
+cdesc:Subject a owl:Class.
+cdesc:Survey a owl:Class.
+cdesc:Title a owl:Class.
+cdesc:UrbanPlanningInstrument a owl:Class.
+cdesc:Use a owl:Class.
+cdesc:hasAcquisition a owl:ObjectProperty.
+cdesc:hasAgeOfDeathEstimate a owl:ObjectProperty.
+cdesc:hasAuthor a owl:ObjectProperty.
+cdesc:hasAuthorshipAttribution a owl:ObjectProperty.
+cdesc:hasBibliography a owl:ObjectProperty.
+cdesc:hasBiologicalTaxonomy a owl:ObjectProperty.
+cdesc:hasChangeOfAvailability a owl:ObjectProperty.
+cdesc:hasCoinIssuance a owl:ObjectProperty.
+cdesc:hasCommission a owl:ObjectProperty.
+cdesc:hasDating a owl:ObjectProperty.
+cdesc:hasDetectionMethod a owl:ObjectProperty.
+cdesc:hasDocumentation a owl:ObjectProperty.
+cdesc:hasEstimate a owl:ObjectProperty.
+cdesc:hasExportImportCertification a owl:ObjectProperty.
+cdesc:hasFindingContext a owl:ObjectProperty.
+cdesc:hasFruition a owl:ObjectProperty.
+cdesc:hasIntervention a owl:ObjectProperty.
+cdesc:hasInventory a owl:ObjectProperty.
+cdesc:hasLegalSituation a owl:ObjectProperty.
+cdesc:hasMusicalEnsemble a owl:ObjectProperty.
+cdesc:hasMusician a owl:ObjectProperty.
+cdesc:hasPrimaryDocumentation a owl:ObjectProperty.
+cdesc:hasProtectiveMeasure a owl:ObjectProperty.
+cdesc:hasRelatedWorkSituation a owl:ObjectProperty.
+cdesc:hasResearch a owl:ObjectProperty.
+cdesc:hasResponsibility a owl:ObjectProperty.
+cdesc:hasSexEstimate a owl:ObjectProperty.
+cdesc:hasSubject a owl:ObjectProperty.
+cdesc:hasSurvey a owl:ObjectProperty.
+cdesc:hasTitle a owl:ObjectProperty.
+cdesc:hasUrbanPlanningInstrument a owl:ObjectProperty.
+cdesc:hasUse a owl:ObjectProperty.
+cdesc:historicalInformation a owl:DatatypeProperty.
+cdesc:informationGatheredOnSite a owl:DatatypeProperty.
+cdesc:isCoinMemberOf a owl:ObjectProperty.
+cdesc:isMemberOfCollection a owl:ObjectProperty.
+cdesc:isMemberOfPhotographicSeries a owl:ObjectProperty.
+cdesc:numberInCirculation a owl:DatatypeProperty.
+cdesc:rights a owl:DatatypeProperty.
+cdesc:subject a owl:DatatypeProperty.
+cdesc:title a owl:DatatypeProperty.
+arco:Category a owl:Class.
+arco:Concept a owl:Class.
+arco:CulturalEntityCharacteristic a owl:Class.
+arco:CulturalEntityClassification a owl:Class.
+arco:Type a owl:Class.
+arco:hasAgent a owl:ObjectProperty.
+arco:hasAgentRole a owl:ObjectProperty.
+arco:hasCategory a owl:ObjectProperty.
+arco:hasClassification a owl:ObjectProperty.
+arco:hasComponent a owl:ObjectProperty.
+arco:hasConcept a owl:ObjectProperty.
+arco:hasPart a owl:ObjectProperty.
+arco:hasType a owl:ObjectProperty.
+arco:isCategoryOf a owl:ObjectProperty.
+arco:isClassificationOf a owl:ObjectProperty.
+arco:isConceptOf a owl:ObjectProperty.
+arco:isPartOf a owl:ObjectProperty.
+arco:isTypeOf a owl:ObjectProperty.
+arco:note a owl:DatatypeProperty.
+ddesc:Accessory a owl:Class.
+ddesc:AffixedElement a owl:Class.
+ddesc:AgeRange a owl:Class.
+ddesc:CommunicationMedium a owl:Class.
+ddesc:ConservationStatus a owl:Class.
+ddesc:CulturalEntityTechnicalStatus a owl:Class.
+ddesc:CulturalPropertyAccessibility a owl:Class.
+ddesc:CulturalPropertyAvailability a owl:Class.
+ddesc:CulturalPropertyType a owl:Class.
+ddesc:DesignationInTime a owl:Class.
+ddesc:FontStyle a owl:Class.
+ddesc:FunctionalPurpose a owl:Class.
+ddesc:IconographicOrDecorativeApparatus a owl:Class.
+ddesc:Legibility a owl:Class.
+ddesc:MeasurementCollection a owl:Class.
+ddesc:Orientation a owl:Class.
+ddesc:SampleCollected a owl:Class.
+ddesc:TechnicalDetailOccurrence a owl:Class.
+ddesc:anthropologicalMaterialMorphology a owl:DatatypeProperty.
+ddesc:hasAccessory a owl:ObjectProperty.
+ddesc:hasAffixedElement a owl:ObjectProperty.
+ddesc:hasConservationStatus a owl:ObjectProperty.
+ddesc:hasCulturalPropertyAccessibility a owl:ObjectProperty.
+ddesc:hasCulturalPropertyAvailability a owl:ObjectProperty.
+ddesc:hasCulturalPropertyType a owl:ObjectProperty.
+ddesc:hasDesignationInTime a owl:ObjectProperty.
+ddesc:hasFunctionalPurpose a owl:ObjectProperty.
+ddesc:hasIconographicOrDecorativeApparatus a owl:ObjectProperty.
+ddesc:hasLocationSubject a owl:ObjectProperty.
+ddesc:hasMeasurementCollection a owl:ObjectProperty.
+ddesc:hasOrientation a owl:ObjectProperty.
+ddesc:hasSampleCollected a owl:ObjectProperty.
+ddesc:hasTechnicalStatus a owl:ObjectProperty.
+ddesc:positionInComplexCulturalProperty a owl:DatatypeProperty.
+ddesc:proposedIntervention a owl:DatatypeProperty.
+ddesc:storageConditions a owl:DatatypeProperty.
+a-loc:Altitude a owl:Class.
+a-loc:CadastralIdentity a owl:Class.
+a-loc:Coordinates a owl:Class.
+a-loc:TimeIndexedTypedLocation a owl:Class.
+a-loc:TypeOfContext a owl:Class.
+a-loc:hasCadastralIdentity a owl:ObjectProperty.
+a-loc:hasCulturalPropertyAddress a owl:ObjectProperty.
+a-loc:hasStratigraphicArea a owl:ObjectProperty.
+a-loc:hasStratigraphicRoom a owl:ObjectProperty.
+a-loc:hasStratigraphicSquare a owl:ObjectProperty.
+a-loc:hasTimeIndexedTypedLocation a owl:ObjectProperty.
+a-loc:hasTypeOfContext a owl:ObjectProperty.
+<https://w3id.org/italia/onto/CLV/Address> a owl:Class.
+<https://w3id.org/italia/onto/CLV/Feature> a owl:Class.
+<https://w3id.org/italia/onto/CLV/Geometry> a owl:Class.
+<https://w3id.org/italia/onto/CLV/hasGeometry> a owl:ObjectProperty.
+<https://w3id.org/italia/onto/RO/Role> a owl:Class.
+<https://w3id.org/italia/onto/RO/isRoleInTimeOf> a owl:ObjectProperty.
+<https://w3id.org/italia/onto/TI/TimeInterval> a owl:Class.
+<https://w3id.org/italia/onto/TI/time> a owl:DatatypeProperty.
+<https://w3id.org/italia/onto/l0/Agent> a owl:Class.
+<https://w3id.org/italia/onto/l0/Characteristic> a owl:Class.
+<https://w3id.org/italia/onto/l0/Collection> a owl:Class.
+<https://w3id.org/italia/onto/l0/Description> a owl:Class.
+<https://w3id.org/italia/onto/l0/Location> a owl:Class.
+<https://w3id.org/italia/onto/l0/Topic> a owl:Class.
+<https://w3id.org/italia/onto/l0/identifier> a owl:DatatypeProperty.
+<https://w3id.org/italia/onto/l0/name> a owl:DatatypeProperty.

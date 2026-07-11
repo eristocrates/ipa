@@ -1,0 +1,43 @@
+﻿namespace Fibo.CAE.CorporateEvents.``ISO15022-CorporateActionIndividuals``.Namespace
+module ``ISO15022-CorporateActionIndividuals`` =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/ISO15022-CorporateActionIndividuals/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/CAE/CorporateEvents/ISO15022-CorporateActionIndividuals.rdf") (Some @"fibo.CAE.CorporateEvents.ISO15022-CorporateActionIndividuals") None
+    let BIDS = {_prefixID with _localName = "BIDS"}
+    let BONU = {_prefixID with _localName = "BONU"}
+    let BPUT = {_prefixID with _localName = "BPUT"}
+    let CAPD = {_prefixID with _localName = "CAPD"}
+    let CAPG = {_prefixID with _localName = "CAPG"}
+    let CHAN = {_prefixID with _localName = "CHAN"}
+    let CLSA = {_prefixID with _localName = "CLSA"}
+    let CONS = {_prefixID with _localName = "CONS"}
+    let CONV = {_prefixID with _localName = "CONV"}
+    let DECR = {_prefixID with _localName = "DECR"}
+    let DFLT = {_prefixID with _localName = "DFLT"}
+    let DRIP = {_prefixID with _localName = "DRIP"}
+    let DSCL = {_prefixID with _localName = "DSCL"}
+    let DTCH = {_prefixID with _localName = "DTCH"}
+    let DVCA = {_prefixID with _localName = "DVCA"}
+    let DVOP = {_prefixID with _localName = "DVOP"}
+    let DVSE = {_prefixID with _localName = "DVSE"}
+    let EXOF = {_prefixID with _localName = "EXOF"}
+    let EXRI = {_prefixID with _localName = "EXRI"}
+    let EXTM = {_prefixID with _localName = "EXTM"}
+    let EXWA = {_prefixID with _localName = "EXWA"}
+    let INFO = {_prefixID with _localName = "INFO"}
+    let INTR = {_prefixID with _localName = "INTR"}
+    let ISO15022CorporateActionClassificationScheme = {_prefixID with _localName = "ISO15022CorporateActionClassificationScheme"}
+    let LIQU = {_prefixID with _localName = "LIQU"}
+    let MCAL = {_prefixID with _localName = "MCAL"}
+    let MRGR = {_prefixID with _localName = "MRGR"}
+    let PARI = {_prefixID with _localName = "PARI"}
+    let PCAL = {_prefixID with _localName = "PCAL"}
+    let PRED = {_prefixID with _localName = "PRED"}
+    let PRIO = {_prefixID with _localName = "PRIO"}
+    let REDM = {_prefixID with _localName = "REDM"}
+    let REDO = {_prefixID with _localName = "REDO"}
+    let RHDI = {_prefixID with _localName = "RHDI"}
+    let SHPR = {_prefixID with _localName = "SHPR"}
+    let SOFF = {_prefixID with _localName = "SOFF"}
+    let SPLF = {_prefixID with _localName = "SPLF"}
+    let SPLR = {_prefixID with _localName = "SPLR"}
+    let TEND = {_prefixID with _localName = "TEND"}
+    let WRTH = {_prefixID with _localName = "WRTH"}

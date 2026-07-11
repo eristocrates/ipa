@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0480.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 6 480 Rendering 6.2 Conversions among Device Color Spaces Each raster output device has a native color space, which typically is one of the standard device color spaces (DeviceGray, DeviceRGB, or DeviceCMYK). In other words, most devices support reproduction of colors according to a grayscale (monochrome), RGB (red-green-blue), or CMYK (cyan-magenta-yellow-black) model. If the device supports continuous-tone output, reproduction occurs directly. Otherwise, it is accomplished by means of halftoning. A device’s native color space is also called its process color model. Process colors are ones that are produced by combinations of one or more standard process colorants. Colors specified in any device or CIE-based color space are rendered as process colors. (A device can also support additional spot colorants, which can be painted only by means of Separation or DeviceN color spaces. They are not involved in the rendering of device or CIE-based color spaces, nor are they subject to the conversions described below.) Note: Some devices provide a native color space that is not one of the three named above but consists of a different combination of colorants. In that case, conversion from the standard device color spaces to the device’s native color space is performed by device-dependent means. Knowing the native color space and other output capabilities of the device, the consumer application can automatically convert the color values specified in a document to those appropriate for the device’s native color space. For example, if a document specifies colors in the DeviceRGB color space but the device supports grayscale (such as a monochrome display) or CMYK (such as a color printer), the consumer application performs the necessary conversions. If the document specifies colors directly in the device’s native color space, no conversions are necessary. The algorithms used to convert among device color spaces are very simple. As perceived by a human viewer, the conversions produce only crude approximations of the original colors. More sophisticated control over color conversion can be achieved by means of CIE-based color specification and rendering. Additionally, device color spaces can be remapped into CIE-based color spaces (see “Default Color Spaces” on page 257).  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0480.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 6</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">480</span></div>
+<div class="pos" id="*49:549" style="top:49;left:549"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Rendering</span></div>
+<div class="pos" id="*98:97" style="top:98;left:97"><span id="*16" style="font-style:normal;font-weight:700;font-size:16px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">6.2 Conversions among Device Color Spaces</span></div>
+<div class="pos" id="*138:133" style="top:138;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Each raster output device has a</span></div>
+<div class="pos" id="*138:324" style="top:138;left:324"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">native color space,</span></div>
+<div class="pos" id="*138:435" style="top:138;left:435"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">which typically is one of the</span></div>
+<div class="pos" id="*156:133" style="top:156;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">standard device color spaces (</span></div>
+<div class="pos" id="*156:309" style="top:156;left:309"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceGray</span></div>
+<div class="pos" id="*156:374" style="top:156;left:374"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*156:382" style="top:156;left:382"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceRGB</span></div>
+<div class="pos" id="*156:445" style="top:156;left:445"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, or</span></div>
+<div class="pos" id="*156:469" style="top:156;left:469"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceCMYK</span></div>
+<div class="pos" id="*156:543" style="top:156;left:543"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">). In other</span></div>
+<div class="pos" id="*174:133" style="top:174;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">words, most devices support reproduction of colors according to a grayscale</span></div>
+<div class="pos" id="*192:133" style="top:192;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(monochrome),</span></div>
+<div class="pos" id="*192:231" style="top:192;left:231"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*192:263" style="top:192;left:263"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(red-green-blue), or</span></div>
+<div class="pos" id="*192:387" style="top:192;left:387"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*192:433" style="top:192;left:433"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(cyan-magenta-yellow-black)</span></div>
+<div class="pos" id="*210:133" style="top:210;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">model. If the device supports continuous-tone output, reproduction occurs di-</span></div>
+<div class="pos" id="*228:133" style="top:228;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rectly. Otherwise, it is accomplished by means of halftoning.</span></div>
+<div class="pos" id="*263:133" style="top:263;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A device’s native color space is also called its</span></div>
+<div class="pos" id="*263:402" style="top:263;left:402"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">process color model.</span></div>
+<div class="pos" id="*263:520" style="top:263;left:520"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Process colors</span></div>
+<div class="pos" id="*281:133" style="top:281;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are ones that are produced by combinations of one or more standard</span></div>
+<div class="pos" id="*281:564" style="top:281;left:564"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">process</span></div>
+<div class="pos" id="*299:133" style="top:299;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">colorants.</span></div>
+<div class="pos" id="*299:190" style="top:299;left:190"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Colors specified in any device or CIE-based color space are rendered as</span></div>
+<div class="pos" id="*317:133" style="top:317;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">process colors. (A device can also support additional</span></div>
+<div class="pos" id="*317:442" style="top:317;left:442"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">spot colorants,</span></div>
+<div class="pos" id="*317:527" style="top:317;left:527"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">which can be</span></div>
+<div class="pos" id="*335:133" style="top:335;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">painted only by means of</span></div>
+<div class="pos" id="*336:288" style="top:336;left:288"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Separation</span></div>
+<div class="pos" id="*335:356" style="top:335;left:356"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*336:373" style="top:336;left:373"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*335:427" style="top:335;left:427"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color spaces. They are not in-</span></div>
+<div class="pos" id="*353:133" style="top:353;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">volved in the rendering of device or CIE-based color spaces, nor are they subject</span></div>
+<div class="pos" id="*371:133" style="top:371;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to the conversions described below.)</span></div>
+<div class="pos" id="*406:133" style="top:406;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*406:168" style="top:406;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Some devices provide a native color space that is not one of the three named</span></div>
+<div class="pos" id="*424:133" style="top:424;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">above but consists of a different combination of colorants. In that case, conversion</span></div>
+<div class="pos" id="*442:133" style="top:442;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">from the standard device color spaces to the device’s native color space is performed</span></div>
+<div class="pos" id="*460:133" style="top:460;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">by device-dependent means.</span></div>
+<div class="pos" id="*495:133" style="top:495;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Knowing the native color space and other output capabilities of the device, the</span></div>
+<div class="pos" id="*513:133" style="top:513;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">consumer application can automatically convert the color values specified in a</span></div>
+<div class="pos" id="*531:133" style="top:531;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">document to those appropriate for the device’s native color space. For example, if</span></div>
+<div class="pos" id="*549:133" style="top:549;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">a document specifies colors in the</span></div>
+<div class="pos" id="*549:333" style="top:549;left:333"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceRGB</span></div>
+<div class="pos" id="*549:400" style="top:549;left:400"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space but the device supports</span></div>
+<div class="pos" id="*567:133" style="top:567;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">grayscale (such as a monochrome display) or</span></div>
+<div class="pos" id="*567:396" style="top:567;left:396"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*567:440" style="top:567;left:440"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(such as a color printer), the</span></div>
+<div class="pos" id="*585:133" style="top:585;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">consumer application performs the necessary conversions. If the document spec-</span></div>
+<div class="pos" id="*603:133" style="top:603;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ifies colors directly in the device’s native color space, no conversions are neces-</span></div>
+<div class="pos" id="*621:133" style="top:621;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sary.</span></div>
+<div class="pos" id="*656:133" style="top:656;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The algorithms used to convert among device color spaces are very simple. As</span></div>
+<div class="pos" id="*674:133" style="top:674;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">perceived by a human viewer, the conversions produce only crude approxima-</span></div>
+<div class="pos" id="*692:133" style="top:692;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tions of the original colors. More sophisticated control over color conversion can</span></div>
+<div class="pos" id="*710:133" style="top:710;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">be achieved by means of CIE-based color specification and rendering. Addition-</span></div>
+<div class="pos" id="*728:133" style="top:728;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ally, device color spaces can be remapped into CIE-based color spaces (see</span></div>
+<div class="pos" id="*746:133" style="top:746;left:133"><a href="pg_0257.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">“Default Color Spaces” on page 257).</span></a></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0479.htm" title="Go to previous page">Previous</a> <a href="pg_0481.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(480);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

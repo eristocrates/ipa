@@ -1,0 +1,10 @@
+	SpatialReferenceInformation =  __	
+	0{HorizontalCoordinateSystemDefinition}1 +  ___	
+	0{VerticalCoordinateSystemDefinition}1  ___	
+		
+	HorizontalCoordinateSystemDefinition =  ___	
+	0{CoordinateSystemName}1 +  __	
+	[Geographic |	
+	1{Planar}n |	
+	Local] +	
+	0{GeodeticModel}1  _	

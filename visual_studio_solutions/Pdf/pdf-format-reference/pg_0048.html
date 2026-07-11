@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0048.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 3 48 Syntax represent the document structure and are described separately. Section 3.7, “Content Streams and Resources,” discusses PDF content streams and their associated resources. Objects File structure Document structure Content stream FIGURE 3.1 PDF components In addition, this chapter describes some data structures, built from basic objects, that are so widely used that they can almost be considered basic object types in their own right. These objects are covered in Sections 3.8, “Common Data Structures”; 3.9, “Functions”; and 3.10, “File Specifications.” PDF’s object and file syntax is also used as the basis for other file formats. These include the Forms Data Format (FDF), described in Section 8.6.6, “Forms Data Format,” and the Portable Job Ticket Format (PJTF), described in Adobe Technical Note #5620, Portable Job Ticket Format. 3.1 Lexical Conventions At the most fundamental level, a PDF file is a sequence of 8-bit bytes. These bytes can be grouped into tokens according to the syntax rules described below. One or more tokens are assembled to form higher-level syntactic entities, principally objects, which are the basic data values from which a PDF document is constructed. PDF can be entirely represented using byte values corresponding to the visible printable subset of the ASCII character set, plus white space characters such as space, tab, carriage return, and line feed characters. ASCII is the American Standard Code for Information Interchange, a widely used convention for  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0048.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 3</span></div>
+<div class="pos" id="*41:362" style="top:41;left:362"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">48</span></div>
+<div class="pos" id="*49:567" style="top:49;left:567"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Syntax</span></div>
+<div class="pos" id="*99:145" style="top:99;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">represent the document structure and are described separately. Section 3.7,</span></div>
+<div class="pos" id="*117:145" style="top:117;left:145"><a href="pg_0151.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">“Content Streams and Resources,” discusses PDF content streams and their as-</span></a></div>
+<div class="pos" id="*135:145" style="top:135;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sociated resources.</span></div>
+<div class="pos" id="*210:300" style="top:210;left:300"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Objects</span></div>
+<div class="pos" id="*237:310" style="top:237;left:310"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">File</span></div>
+<div class="pos" id="*249:297" style="top:249;left:297"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">structure</span></div>
+<div class="pos" id="*270:294" style="top:270;left:294"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Document</span></div>
+<div class="pos" id="*281:297" style="top:281;left:297"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">structure</span></div>
+<div class="pos" id="*237:402" style="top:237;left:402"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Content</span></div>
+<div class="pos" id="*249:404" style="top:249;left:404"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stream</span></div>
+<div class="pos" id="*345:291" style="top:345;left:291"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">FIGURE 3.1</span></div>
+<div class="pos" id="*344:358" style="top:344;left:358"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">PDF components</span></div>
+<div class="pos" id="*386:133" style="top:386;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">In addition, this chapter describes some data structures, built from basic objects,</span></div>
+<div class="pos" id="*404:133" style="top:404;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that are so widely used that they can almost be considered basic object types in</span></div>
+<div class="pos" id="*422:133" style="top:422;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">their own right. These objects are covered in Sections 3.8, “Common Data</span></div>
+<div class="pos" id="*440:133" style="top:440;left:133"><a href="pg_0155.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Structures”; 3.9, “Functions”; and 3.10, “File Specifications.”</span></a></div>
+<div class="pos" id="*475:133" style="top:475;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">PDF’s object and file syntax is also used as the basis for other file formats. These</span></div>
+<div class="pos" id="*493:133" style="top:493;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">include the Forms Data Format (FDF), described in Section 8.6.6, “Forms Data</span></div>
+<div class="pos" id="*511:133" style="top:511;left:133"><a href="pg_0710.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Format,” and the Portable Job Ticket Format (PJTF), described in Adobe</span></a></div>
+<div class="pos" id="*529:133" style="top:529;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Technical Note #5620,</span></div>
+<div class="pos" id="*529:265" style="top:529;left:265"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Portable Job Ticket Format.</span></div>
+<div class="pos" id="*572:97" style="top:572;left:97"><span id="*16" style="font-style:normal;font-weight:700;font-size:16px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">3.1 Lexical Conventions</span></div>
+<div class="pos" id="*611:133" style="top:611;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">At the most fundamental level, a PDF file is a sequence of 8-bit bytes. These bytes</span></div>
+<div class="pos" id="*629:133" style="top:629;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">can be grouped into</span></div>
+<div class="pos" id="*629:252" style="top:629;left:252"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">tokens</span></div>
+<div class="pos" id="*629:292" style="top:629;left:292"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">according to the syntax rules described below. One or</span></div>
+<div class="pos" id="*647:133" style="top:647;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">more tokens are assembled to form higher-level syntactic entities, principally</span></div>
+<div class="pos" id="*665:133" style="top:665;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">objects,</span></div>
+<div class="pos" id="*665:183" style="top:665;left:183"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">which are the basic data values from which a PDF document is</span></div>
+<div class="pos" id="*683:133" style="top:683;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">constructed.</span></div>
+<div class="pos" id="*718:133" style="top:718;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">PDF can be entirely represented using byte values corresponding to the visible</span></div>
+<div class="pos" id="*736:133" style="top:736;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">printable subset of the ASCII character set, plus white space characters such as</span></div>
+<div class="pos" id="*754:133" style="top:754;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space, tab, carriage return, and line feed characters. ASCII is the American</span></div>
+<div class="pos" id="*772:133" style="top:772;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Standard Code for Information Interchange, a widely used convention for</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0047.htm" title="Go to previous page">Previous</a> <a href="pg_0049.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(48);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

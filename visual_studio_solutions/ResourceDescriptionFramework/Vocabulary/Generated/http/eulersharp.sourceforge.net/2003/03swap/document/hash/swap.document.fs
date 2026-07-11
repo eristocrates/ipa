@@ -1,0 +1,44 @@
+﻿namespace Swap.document.Namespace
+module document =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://eulersharp.sourceforge.net/2003/03swap/document#" (Some "http://eulersharp.sourceforge.net/2003/03swap/document") (Some "swap.document") None
+    let Author = {_prefixID with _localName = "Author"}
+    let Authoring = {_prefixID with _localName = "Authoring"}
+    let Content = {_prefixID with _localName = "Content"}
+    let DataDefinitionOntology = {_prefixID with _localName = "DataDefinitionOntology"}
+    let Deprecated = {_prefixID with _localName = "Deprecated"}
+    let Deprecating = {_prefixID with _localName = "Deprecating"}
+    let Deprecation = {_prefixID with _localName = "Deprecation"}
+    let DigitalContent = {_prefixID with _localName = "DigitalContent"}
+    let Document = {_prefixID with _localName = "Document"}
+    let Image = {_prefixID with _localName = "Image"}
+    let Letter = {_prefixID with _localName = "Letter"}
+    let Parent = {_prefixID with _localName = "Parent"}
+    let Record = {_prefixID with _localName = "Record"}
+    let Report = {_prefixID with _localName = "Report"}
+    let Summary = {_prefixID with _localName = "Summary"}
+    let about = {_prefixID with _localName = "about"}
+    let addedTo = {_prefixID with _localName = "addedTo"}
+    let authenticatedBy = {_prefixID with _localName = "authenticatedBy"}
+    let authoredBy = {_prefixID with _localName = "authoredBy"}
+    let contains = {_prefixID with _localName = "contains"}
+    let deprecatedBy = {_prefixID with _localName = "deprecatedBy"}
+    let deprecatedIn = {_prefixID with _localName = "deprecatedIn"}
+    let deprecates = {_prefixID with _localName = "deprecates"}
+    let deprecationOf = {_prefixID with _localName = "deprecationOf"}
+    let hasDeprecationDateTime = {_prefixID with _localName = "hasDeprecationDateTime"}
+    let hasDeprecator = {_prefixID with _localName = "hasDeprecator"}
+    let hasDigitalSize = {_prefixID with _localName = "hasDigitalSize"}
+    let hasHash = {_prefixID with _localName = "hasHash"}
+    let hasLanguage = {_prefixID with _localName = "hasLanguage"}
+    let hasMimeType = {_prefixID with _localName = "hasMimeType"}
+    let hasParent = {_prefixID with _localName = "hasParent"}
+    let hasReport = {_prefixID with _localName = "hasReport"}
+    let hasSha1Hash = {_prefixID with _localName = "hasSha1Hash"}
+    let hasSummary = {_prefixID with _localName = "hasSummary"}
+    let hasTitle = {_prefixID with _localName = "hasTitle"}
+    let imageOf = {_prefixID with _localName = "imageOf"}
+    let replaces = {_prefixID with _localName = "replaces"}
+    let reportOf = {_prefixID with _localName = "reportOf"}
+    let summaryOf = {_prefixID with _localName = "summaryOf"}
+    let transformedTo = {_prefixID with _localName = "transformedTo"}
+    let whereinDeprecated = {_prefixID with _localName = "whereinDeprecated"}

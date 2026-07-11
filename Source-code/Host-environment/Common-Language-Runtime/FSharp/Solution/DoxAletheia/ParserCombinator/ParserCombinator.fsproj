@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="ResourceIdentifier.fs" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.HighPerformance" Version="8.4.2" />
+		<PackageReference Include="FRange" Version="1.1.0" />
+		<PackageReference Include="FsCheck" Version="3.3.3" />
+		<PackageReference Include="FSharp.UMX" Version="1.1.0" />
+		<PackageReference Include="FsUnit" Version="7.1.1" />
+		<PackageReference Include="Hedgehog" Version="2.0.4" />
+		<PackageReference Include="MathNet.Numerics" Version="6.0.0-beta2" />
+		<PackageReference Include="MathNet.Numerics.FSharp" Version="6.0.0-beta2" />
+		<PackageReference Include="NeatIntervals" Version="1.0.0" />
+		<PackageReference Include="NUnit" Version="5.0.0-beta.1" />
+		<PackageReference Include="TickSpec" Version="2.0.5" />
+		<PackageReference Include="Unquote" Version="7.0.1" />
+		<PackageReference Include="XParsec" Version="1.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Ergonomic_Extensions\Ergonomic_Extensions.fsproj" />
+	  <ProjectReference Include="..\Unicodepoint\Unicodepoint.fsproj" />
+		<ProjectReference Include="..\Interval_Range\Interval_Range.fsproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0927.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 10.7 927 Tagged PDF KEY TYPE VALUE LineHeight number (Optional; inheritable) The element’s preferred height, measured in default or name user space units in the block-progression direction. The height of a line is determined by the largest LineHeight value for any complete or partial ILSE that it contains. The name Normal or Auto in place of a numeric value indicates that no specific height constraint is to be imposed. The element’s height is set to a reasonable value based on the content’s font size: Normal Auto Adjust the line height to include any nonzero value specified for BaselineShift (see below). Do not adjust for the value of BaselineShift. Default value: Normal. This attribute applies to all ILSEs (including implicit ones) that are children of this element or of its nested ILSEs, if any. It does not apply to nested BLSEs. Note: When translating to a specific export format, the values Normal and Auto, if specified, are used directly if they are available in the target format. The meaning of the term “reasonable value,” used above, is left to the consumer application to determine. It can be assumed to be approximately 1.2 times the font size, but this value may vary depending on the export format. In the absence of a numeric value for LineHeight or an explicit value for the font size, a reasonable method of calculating the line height from the information in a Tagged PDF file is to find the difference between the associated font’s Ascent and Descent values (see Section 5.7, “Font Descriptors”), map it from glyph space to default user space (see Section 5.3.3, “Text Space Details”), and use the maximum resulting value for any character in the line. TextDecorationColor array (Optional; inheritable; PDF 1.5) The color to be used for drawing text decorations. The value is an array of three numbers in the range 0.0 to 1.0, representing the red, green, and blue values, respectively, of an RGB color space. If this attribute is not specified, the border color for this element is the current fill color in effect at the start of its associated content. TextDecorationThickness number (Optional; inheritable; PDF 1.5) The thickness of each line drawn as part of the text decoration. The value is a non-negative number in default user space units representing the thickness (0 is interpreted as the thinnest possible line). If this attribute is not specified, it is derived from the current stroke thickness in effect at the start of the element’s associated content, transformed into default user space units.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0927.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 10.7</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">927</span></div>
+<div class="pos" id="*49:540" style="top:49;left:540"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Tagged PDF</span></div>
+<div class="pos" id="*104:74" style="top:104;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*104:219" style="top:104;left:219"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*104:274" style="top:104;left:274"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*131:74" style="top:131;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">LineHeight</span></div>
+<div class="pos" id="*131:219" style="top:131;left:219"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">number</span></div>
+<div class="pos" id="*131:274" style="top:131;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; inheritable)</span></div>
+<div class="pos" id="*131:393" style="top:131;left:393"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The element’s preferred height, measured in default</span></div>
+<div class="pos" id="*147:219" style="top:147;left:219"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or name user space units in the block-progression direction. The height of a line is</span></div>
+<div class="pos" id="*164:274" style="top:164;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">determined by the largest</span></div>
+<div class="pos" id="*165:419" style="top:165;left:419"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">LineHeight</span></div>
+<div class="pos" id="*164:482" style="top:164;left:482"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value for any complete or partial</span></div>
+<div class="pos" id="*181:274" style="top:181;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ILSE that it contains.</span></div>
+<div class="pos" id="*206:274" style="top:206;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The name</span></div>
+<div class="pos" id="*206:333" style="top:206;left:333"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Normal</span></div>
+<div class="pos" id="*206:375" style="top:206;left:375"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*206:391" style="top:206;left:391"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Auto</span></div>
+<div class="pos" id="*206:420" style="top:206;left:420"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in place of a numeric value indicates that no</span></div>
+<div class="pos" id="*222:274" style="top:222;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specific height constraint is to be imposed. The element’s height is set to a</span></div>
+<div class="pos" id="*239:274" style="top:239;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">reasonable value based on the content’s font size:</span></div>
+<div class="pos" id="*263:291" style="top:263;left:291"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Normal</span></div>
+<div class="pos" id="*304:291" style="top:304;left:291"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Auto</span></div>
+<div class="pos" id="*263:358" style="top:263;left:358"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Adjust the line height to include any nonzero value</span></div>
+<div class="pos" id="*279:357" style="top:279;left:357"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specified for</span></div>
+<div class="pos" id="*280:425" style="top:280;left:425"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BaselineShift</span></div>
+<div class="pos" id="*279:497" style="top:279;left:497"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see below).</span></div>
+<div class="pos" id="*303:358" style="top:303;left:358"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Do not adjust for the value of</span></div>
+<div class="pos" id="*304:515" style="top:304;left:515"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BaselineShift</span></div>
+<div class="pos" id="*303:584" style="top:303;left:584"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*327:274" style="top:327;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Default value:</span></div>
+<div class="pos" id="*327:350" style="top:327;left:350"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Normal</span></div>
+<div class="pos" id="*327:387" style="top:327;left:387"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*355:274" style="top:355;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">This attribute applies to all ILSEs (including implicit ones) that are chil-</span></div>
+<div class="pos" id="*372:274" style="top:372;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dren of this element or of its nested ILSEs, if any. It does not apply to nest-</span></div>
+<div class="pos" id="*388:274" style="top:388;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ed BLSEs.</span></div>
+<div class="pos" id="*412:274" style="top:412;left:274"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*412:306" style="top:412;left:306"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">When translating to a specific export format, the values</span></div>
+<div class="pos" id="*413:602" style="top:413;left:602"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">Normal</span></div>
+<div class="pos" id="*412:643" style="top:412;left:643"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*429:274" style="top:429;left:274"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">Auto</span></div>
+<div class="pos" id="*429:297" style="top:429;left:297"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">, if specified, are used directly if they are available in the target format.</span></div>
+<div class="pos" id="*445:274" style="top:445;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">The meaning of the term “reasonable value,” used above, is left to the con-</span></div>
+<div class="pos" id="*462:274" style="top:462;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">sumer application to determine. It can be assumed to be approximately 1.2</span></div>
+<div class="pos" id="*479:274" style="top:479;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">times the font size, but this value may vary depending on the export format.</span></div>
+<div class="pos" id="*495:274" style="top:495;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">In the absence of a numeric value for</span></div>
+<div class="pos" id="*496:468" style="top:496;left:468"><span id="*11" style="font-style:italic;font-weight:700;font-size:11px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">LineHeight</span></div>
+<div class="pos" id="*495:527" style="top:495;left:527"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">or an explicit value for the</span></div>
+<div class="pos" id="*512:274" style="top:512;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">font size, a reasonable method of calculating the line height from the infor-</span></div>
+<div class="pos" id="*529:274" style="top:529;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">mation in a Tagged PDF file is to find the difference between the associated</span></div>
+<div class="pos" id="*545:274" style="top:545;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">font’s</span></div>
+<div class="pos" id="*546:303" style="top:546;left:303"><span id="*11" style="font-style:italic;font-weight:700;font-size:11px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Ascent</span></div>
+<div class="pos" id="*545:339" style="top:545;left:339"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*546:362" style="top:546;left:362"><span id="*11" style="font-style:italic;font-weight:700;font-size:11px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Descent</span></div>
+<div class="pos" id="*545:406" style="top:545;left:406"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">values (see Section 5.7, “Font Descriptors”), map it</span></div>
+<div class="pos" id="*562:274" style="top:562;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">from glyph space to default user space (see Section 5.3.3, “Text Space De-</span></div>
+<div class="pos" id="*579:274" style="top:579;left:274"><a href="pg_0409.htm"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">tails”), and use the maximum resulting value for any character in the line.</span></a></div>
+<div class="pos" id="*607:74" style="top:607;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">TextDecorationColor</span></div>
+<div class="pos" id="*607:219" style="top:607;left:219"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+<div class="pos" id="*607:274" style="top:607;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; inheritable; PDF 1.5)</span></div>
+<div class="pos" id="*607:442" style="top:607;left:442"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The color to be used for drawing text dec-</span></div>
+<div class="pos" id="*624:274" style="top:624;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">orations. The value is an array of three numbers in the range 0.0 to 1.0,</span></div>
+<div class="pos" id="*640:274" style="top:640;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">representing the red, green, and blue values, respectively, of an RGB color</span></div>
+<div class="pos" id="*657:274" style="top:657;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space. If this attribute is not specified, the border color for this element is</span></div>
+<div class="pos" id="*674:274" style="top:674;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the current fill color in effect at the start of its associated content.</span></div>
+<div class="pos" id="*702:74" style="top:702;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">TextDecorationThickness</span></div>
+<div class="pos" id="*702:219" style="top:702;left:219"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">number</span></div>
+<div class="pos" id="*702:274" style="top:702;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; inheritable; PDF 1.5)</span></div>
+<div class="pos" id="*702:440" style="top:702;left:440"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The thickness of each line drawn as part of</span></div>
+<div class="pos" id="*719:274" style="top:719;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the text decoration. The value is a non-negative number in default user</span></div>
+<div class="pos" id="*736:274" style="top:736;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space units representing the thickness (0 is interpreted as the thinnest pos-</span></div>
+<div class="pos" id="*752:274" style="top:752;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sible line). If this attribute is not specified, it is derived from the current</span></div>
+<div class="pos" id="*769:274" style="top:769;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stroke thickness in effect at the start of the element’s associated content,</span></div>
+<div class="pos" id="*786:274" style="top:786;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">transformed into default user space units.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0926.htm" title="Go to previous page">Previous</a> <a href="pg_0928.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(927);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

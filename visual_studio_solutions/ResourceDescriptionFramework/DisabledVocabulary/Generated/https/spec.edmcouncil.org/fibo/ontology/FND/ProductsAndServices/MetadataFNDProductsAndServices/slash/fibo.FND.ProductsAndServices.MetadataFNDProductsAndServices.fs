@@ -1,0 +1,4 @@
+﻿namespace Fibo.FND.ProductsAndServices.MetadataFNDProductsAndServices.Namespace
+module MetadataFNDProductsAndServices =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/MetadataFNDProductsAndServices/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/ProductsAndServices/MetadataFNDProductsAndServices.rdf") (Some @"fibo.FND.ProductsAndServices.MetadataFNDProductsAndServices") None
+    let ProductsAndServicesModule = {_prefixID with _localName = "ProductsAndServicesModule"}

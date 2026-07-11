@@ -1,0 +1,454 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix swrl: <http://www.w3.org/2003/11/swrl#>.
+@prefix w3id: <https://w3id.org/>.
+@prefix icb: <https://w3id.org/isCharacterisedBy#>.
+@prefix tribont-material: <https://w3id.org/tribont/material#>.
+@prefix tribont-sample: <https://w3id.org/tribont/sample#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix tribont-core: <https://w3id.org/tribont/core#>.
+
+_:B0ebac22feb30caef553b00ac50d36e46 a owl:AllDisjointClasses;
+                                    owl:members (tribont-core:OperationProperty
+                                                 tribont-core:SystemProperty
+                                                 tribont-core:TechnicalProperty
+                                                 tribont-material:ElementConcentration
+                                                 tribont-sample:CoatingProperty).
+_:B155df76579c2647241752f1c95f1a139 a swrl:AtomList.
+[] owl:cardinality "1"^^xsd:nonNegativeInteger.
+([swrl:argument1 <urn:swrl:var#s> ; 
+ swrl:classPredicate tribont-sample:Sample ; 
+ a swrl:ClassAtom]
+ [swrl:argument2 <urn:swrl:var#sb> ; 
+ swrl:argument1 <urn:swrl:var#s> ; 
+ swrl:propertyPredicate icb:belongsTo ; 
+ a swrl:IndividualPropertyAtom]
+ [swrl:argument2 <urn:swrl:var#m> ; 
+ swrl:argument1 <urn:swrl:var#sb> ; 
+ swrl:propertyPredicate tribont-sample:hasCoreMaterial ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B27e30da9989b67fb885fe09a34e7f8b1 a swrl:AtomList.
+([swrl:argument2 <urn:swrl:var#m> ; 
+ swrl:argument1 <urn:swrl:var#s> ; 
+ swrl:propertyPredicate tribont-sample:preparationDate ; 
+ a swrl:DatavaluedPropertyAtom]) a swrl:AtomList.
+_:B2ce78ae433b481526f66ce6bfbca0e21 a swrl:AtomList.
+[] owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger.
+_:B5304c5b2e9d745381e65ea3b937884ca a swrl:Imp;
+                                    swrl:body ([swrl:argument1 <urn:swrl:var#s> ; 
+                                               swrl:classPredicate tribont-sample:Sample ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:argument2 <urn:swrl:var#sb> ; 
+                                               swrl:argument1 <urn:swrl:var#s> ; 
+                                               swrl:propertyPredicate icb:belongsTo ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:argument2 <urn:swrl:var#m> ; 
+                                               swrl:argument1 <urn:swrl:var#sb> ; 
+                                               swrl:propertyPredicate tribont-sample:preparationDate ; 
+                                               a swrl:DatavaluedPropertyAtom]);
+                                    swrl:head ().
+[] owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger.
+() a swrl:AtomList.
+_:B645e1b15bc30afbac8c9fdc43b56712a a swrl:AtomList.
+[] owl:maxCardinality "1"^^xsd:nonNegativeInteger.
+_:B71e49e93c67208a806a6873cb8a75e4f a swrl:Imp;
+                                    swrl:body ([swrl:argument1 <urn:swrl:var#ss> ; 
+                                               swrl:classPredicate tribont-sample:SampleSystem ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:argument2 <urn:swrl:var#ms> ; 
+                                               swrl:argument1 <urn:swrl:var#ss> ; 
+                                               swrl:propertyPredicate tribont-sample:hasMovingSample ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:argument2 <urn:swrl:var#sts> ; 
+                                               swrl:argument1 <urn:swrl:var#ss> ; 
+                                               swrl:propertyPredicate tribont-sample:hasStaticSample ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ([swrl:argument2 <urn:swrl:var#sts> ; 
+                                               swrl:argument1 <urn:swrl:var#ms> ; 
+                                               swrl:propertyPredicate tribont-sample:interactsWith ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:argument2 <urn:swrl:var#ms> ; 
+                                               swrl:argument1 <urn:swrl:var#sts> ; 
+                                               swrl:propertyPredicate tribont-sample:interactsWith ; 
+                                               a swrl:IndividualPropertyAtom]).
+[] owl:maxCardinality "1"^^xsd:nonNegativeInteger.
+_:B7ecaaa4c07eb115880d5dd793af29318 a swrl:AtomList.
+([swrl:argument2 <urn:swrl:var#c> ; 
+ swrl:argument1 <urn:swrl:var#s> ; 
+ swrl:propertyPredicate tribont-sample:hasCoating ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B8676ec6dac7987b7416ddad7b1fc5a9a a swrl:AtomList.
+_:B8b10cc03307f48f56f860bb82091017f a swrl:AtomList.
+() a swrl:AtomList.
+_:B9c3ee6306996f912e40365aa33109841 a swrl:Imp;
+                                    swrl:body ([swrl:argument1 <urn:swrl:var#s> ; 
+                                               swrl:classPredicate tribont-sample:Sample ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:argument2 <urn:swrl:var#sb> ; 
+                                               swrl:argument1 <urn:swrl:var#s> ; 
+                                               swrl:propertyPredicate icb:belongsTo ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:argument2 <urn:swrl:var#b> ; 
+                                               swrl:argument1 <urn:swrl:var#sb> ; 
+                                               swrl:propertyPredicate tribont-sample:hasBody ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ([swrl:argument2 <urn:swrl:var#b> ; 
+                                               swrl:argument1 <urn:swrl:var#s> ; 
+                                               swrl:propertyPredicate tribont-sample:hasBody ; 
+                                               a swrl:IndividualPropertyAtom]).
+([swrl:argument2 <urn:swrl:var#m> ; 
+ swrl:argument1 <urn:swrl:var#s> ; 
+ swrl:propertyPredicate tribont-sample:hasCoreMaterial ; 
+ a swrl:IndividualPropertyAtom]) a swrl:AtomList.
+_:B9d6c96a8b9cc11cd61b0976d63ee28fb a swrl:AtomList.
+_:B9f210034750f4d6b406e31713924df82 a swrl:AtomList.
+_:Ba1ddf44e2f5c96f3e95a63cd11b88c03 a swrl:AtomList.
+_:Ba2804676aef446ce8b5c4f7a73317cfe a swrl:Imp;
+                                    swrl:body ();
+                                    swrl:head ().
+() a swrl:AtomList.
+_:Bb197501fdc205f0a535ca81e4b189e25 a owl:AllDisjointClasses;
+                                    owl:members (tribont-core:Body
+                                                 tribont-material:Material
+                                                 tribont-sample:Coating
+                                                 tribont-sample:Sample
+                                                 tribont-sample:SampleBatch
+                                                 tribont-sample:SampleSystem).
+[] owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger.
+[] owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger.
+() a swrl:AtomList.
+_:Bd649db21708031dc02363ce17282eff3 a swrl:Imp;
+                                    swrl:body ([swrl:argument1 <urn:swrl:var#s> ; 
+                                               swrl:classPredicate tribont-sample:Sample ; 
+                                               a swrl:ClassAtom]
+                                               [swrl:argument2 <urn:swrl:var#sb> ; 
+                                               swrl:argument1 <urn:swrl:var#s> ; 
+                                               swrl:propertyPredicate icb:belongsTo ; 
+                                               a swrl:IndividualPropertyAtom]
+                                               [swrl:argument2 <urn:swrl:var#c> ; 
+                                               swrl:argument1 <urn:swrl:var#sb> ; 
+                                               swrl:propertyPredicate tribont-sample:hasCoating ; 
+                                               a swrl:IndividualPropertyAtom]);
+                                    swrl:head ().
+() a swrl:AtomList.
+_:Be940f35b3e419ffc82370621cdc22360 a swrl:AtomList.
+() a swrl:AtomList.
+[] owl:cardinality "1"^^xsd:nonNegativeInteger.
+ccrel:license a owl:AnnotationProperty.
+dcterms:contributor a owl:AnnotationProperty.
+dcterms:created a owl:AnnotationProperty.
+dcterms:creator a owl:AnnotationProperty.
+dcterms:description a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:publisher a owl:AnnotationProperty.
+dcterms:title a owl:AnnotationProperty.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+owl:cardinality a owl:AnnotationProperty.
+owl:maxCardinality a owl:AnnotationProperty.
+owl:maxQualifiedCardinality a owl:AnnotationProperty.
+owl:qualifiedCardinality a owl:AnnotationProperty.
+status:term_status a owl:AnnotationProperty.
+icb:Property a owl:Class.
+icb:SubjectOfInterest a owl:Class.
+icb:belongsTo a owl:ObjectProperty.
+icb:isCharacterisedBy a owl:ObjectProperty.
+tribont-core:Body a owl:Class.
+tribont-core:OperationProperty a owl:Class.
+tribont-core:Role a owl:Class.
+tribont-core:SystemProperty a owl:Class.
+tribont-core:TechnicalProperty a owl:Class.
+tribont-material:ElementConcentration a owl:Class.
+tribont-material:ElementRole a owl:Class;
+                             owl:disjointWith tribont-sample:SampleRole.
+tribont-material:FluidLubricant a owl:Class.
+tribont-material:Material a owl:Class.
+tribont-material:SolidLubricant a owl:Class.
+<https://w3id.org/tribont/sample> ccrel:license <https://creativecommons.org/licenses/by-nc/4.0/>;
+                                  <http://gbol.life/ontology/bibo#status> "published";
+                                  dcterms:bibliographicCitation "Work in progress";
+                                  dcterms:contributor """Izaskun Fernandez (Tekniker) 
+Domain expert:Iban Quintana (Tekniker) 
+Domain expert:Xana Fernandez (Tekniker)"""@en;
+                                  dcterms:created "2023-05-30";
+                                  dcterms:creator "Patricia Casla (Tekniker)"@en;
+                                  dcterms:description "The goal of this module is to represent the sample systems , and the undelaying samples, involved in the tribological experiments."@en;
+                                  dcterms:issued "2023-05-30";
+                                  dcterms:publisher "Tekniker";
+                                  dcterms:title "Sample module";
+                                  vann:preferredNamespacePrefix "sample";
+                                  vann:preferredNamespaceUri "https://w3id.org/tribont/sample";
+                                  a owl:Ontology;
+                                  owl:imports <https://w3id.org/tribont/material>;
+                                  owl:versionInfo 1.0.
+tribont-sample:CoatedSample a owl:Class;
+                            rdfs:comment "Sample body which has a coating moterial.";
+                            rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                            rdfs:label "CoatedSample";
+                            rdfs:subClassOf tribont-sample:Sample;
+                            owl:equivalentClass [a owl:Class ; 
+                                                 owl:intersectionOf (tribont-sample:Sample
+                                                                     [owl:someValuesFrom tribont-sample:Coating ; 
+                                                                     owl:onProperty tribont-sample:hasCoating ; 
+                                                                     a owl:Restriction])];
+                            status:term_status "Testing".
+tribont-sample:Coating a owl:Class;
+                       rdfs:comment "A thin layer covering of something.";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/material";
+                       rdfs:label "Coating";
+                       rdfs:subClassOf [owl:onClass tribont-material:Material ; 
+                                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                        owl:onProperty tribont-sample:hasCoreMaterial ; 
+                                        a owl:Restriction],
+                                       [owl:allValuesFrom tribont-material:Material ; 
+                                        owl:onProperty tribont-sample:hasCoreMaterial ; 
+                                        a owl:Restriction],
+                                       [owl:allValuesFrom tribont-sample:CoatingProperty ; 
+                                        owl:onProperty icb:isCharacterisedBy ; 
+                                        a owl:Restriction],
+                                       icb:SubjectOfInterest;
+                       status:term_status "Testing".
+tribont-sample:CoatingProperty a owl:Class;
+                               rdfs:comment "Qualifiable or quantifiable attribute, or characteristic of a coating.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "CoatingProperty";
+                               rdfs:subClassOf icb:Property;
+                               status:term_status "Testing".
+tribont-sample:CoatingThickness a owl:Class;
+                                rdfs:comment "Thickness of a coating.";
+                                rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                rdfs:label "CoatingThickness";
+                                rdfs:subClassOf tribont-sample:CoatingProperty;
+                                status:term_status "Testing".
+tribont-sample:CoatingType a owl:Class;
+                           rdfs:comment "Type of coating.";
+                           rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                           rdfs:label "CoatingType";
+                           rdfs:subClassOf tribont-sample:CoatingProperty;
+                           status:term_status "Testing".
+tribont-sample:LubricatedSampleSystem a owl:Class;
+                                      rdfs:comment "Sample system that includes a lubricant as part of it.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                      rdfs:label "LubricatedSampleSystem";
+                                      rdfs:subClassOf tribont-sample:SampleSystem;
+                                      owl:equivalentClass [a owl:Class ; 
+                                                           owl:intersectionOf (tribont-sample:SampleSystem
+                                                                               [owl:someValuesFrom tribont-sample:LubricationSample ; 
+                                                                               owl:onProperty tribont-sample:hasLubricationSample ; 
+                                                                               a owl:Restriction])];
+                                      status:term_status "Testing".
+tribont-sample:LubricationSample a owl:Class;
+                                 rdfs:comment "Portion of lubricant material selected from a larger quantity of lubricant material for Testing purposes. Lubricant material can be fluid or solid lubricants ";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                 rdfs:label "LubricationSample";
+                                 rdfs:subClassOf tribont-sample:Sample;
+                                 owl:equivalentClass [a owl:Class ; 
+                                                      owl:intersectionOf (tribont-sample:Sample
+                                                                          [owl:unionOf ([owl:someValuesFrom tribont-material:FluidLubricant ; 
+                                                                                       owl:onProperty tribont-sample:hasCoreMaterial ; 
+                                                                                       a owl:Restriction]
+                                                                                       [owl:someValuesFrom tribont-material:SolidLubricant ; 
+                                                                                       owl:onProperty tribont-sample:hasCoreMaterial ; 
+                                                                                       a owl:Restriction]) ; 
+                                                                          a owl:Class])];
+                                 status:term_status "Testing".
+tribont-sample:Sample a owl:Class;
+                      rdfs:comment "Portion of material which can be transformed or not for Testing purposes. For example the moving and static samples in a tribological tests are transformed following a specific manufacturing process to achieve the required body characteristics, while lubricants acting as lubrication body are not transformed.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                      rdfs:label "Sample";
+                      rdfs:subClassOf [owl:allValuesFrom tribont-material:Material ; 
+                                       owl:onProperty tribont-sample:hasCoreMaterial ; 
+                                       a owl:Restriction],
+                                      [owl:onClass tribont-core:Body ; 
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                       owl:onProperty tribont-sample:hasBody ; 
+                                       a owl:Restriction],
+                                      icb:SubjectOfInterest,
+                                      [owl:onClass tribont-sample:Coating ; 
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                       owl:onProperty tribont-sample:hasCoating ; 
+                                       a owl:Restriction],
+                                      [owl:allValuesFrom tribont-core:Body ; 
+                                       owl:onProperty tribont-sample:hasBody ; 
+                                       a owl:Restriction],
+                                      [owl:allValuesFrom tribont-sample:Coating ; 
+                                       owl:onProperty tribont-sample:hasCoating ; 
+                                       a owl:Restriction],
+                                      [owl:onClass tribont-sample:SampleRole ; 
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                       owl:onProperty tribont-sample:hasSampleRole ; 
+                                       a owl:Restriction],
+                                      [owl:allValuesFrom xsd:dateTime ; 
+                                       owl:onProperty tribont-sample:preparationDate ; 
+                                       a owl:Restriction],
+                                      [owl:allValuesFrom tribont-sample:SampleRole ; 
+                                       owl:onProperty tribont-sample:hasSampleRole ; 
+                                       a owl:Restriction],
+                                      [owl:allValuesFrom tribont-core:TechnicalProperty ; 
+                                       owl:onProperty icb:isCharacterisedBy ; 
+                                       a owl:Restriction];
+                      status:term_status "Testing".
+tribont-sample:SampleBatch a owl:Class;
+                           rdfs:comment "An aggrupation of samples which have been transformed at the same time using a same material and share a set of common atributes of characteristics.";
+                           rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                           rdfs:label "SampleBatch";
+                           rdfs:subClassOf icb:SubjectOfInterest,
+                                           [owl:onClass tribont-sample:Coating ; 
+                                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                            owl:onProperty tribont-sample:hasCoating ; 
+                                            a owl:Restriction],
+                                           [owl:onDataRange xsd:dateTime ; 
+                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                            owl:onProperty tribont-sample:preparationDate ; 
+                                            a owl:Restriction],
+                                           [owl:allValuesFrom tribont-material:Material ; 
+                                            owl:onProperty tribont-sample:hasCoreMaterial ; 
+                                            a owl:Restriction],
+                                           [owl:onClass tribont-core:Body ; 
+                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                            owl:onProperty tribont-sample:hasBody ; 
+                                            a owl:Restriction],
+                                           [owl:allValuesFrom tribont-sample:Coating ; 
+                                            owl:onProperty tribont-sample:hasCoating ; 
+                                            a owl:Restriction],
+                                           [owl:allValuesFrom tribont-core:Body ; 
+                                            owl:onProperty tribont-sample:hasBody ; 
+                                            a owl:Restriction];
+                           status:term_status "Testing".
+tribont-sample:SampleRole a owl:Class;
+                          rdfs:comment "The position or purpose that a sample has in a situation.";
+                          rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                          rdfs:label "SampleRole";
+                          rdfs:subClassOf tribont-core:Role;
+                          status:term_status "Testing".
+tribont-sample:SampleSystem a owl:Class;
+                            rdfs:comment "Object aggregate that has two or more elements that interact with each other, and it is used for Testing purposes. For example, a tribological sample system aggregates at least a static and a moving sample body and can include or not a lubrication sample body.";
+                            rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                            rdfs:label "SampleSystem";
+                            rdfs:subClassOf [owl:allValuesFrom tribont-sample:LubricationSample ; 
+                                             owl:onProperty tribont-sample:hasLubricationSample ; 
+                                             a owl:Restriction],
+                                            icb:SubjectOfInterest,
+                                            [owl:allValuesFrom tribont-core:SystemProperty ; 
+                                             owl:onProperty icb:isCharacterisedBy ; 
+                                             a owl:Restriction],
+                                            [owl:allValuesFrom tribont-sample:Sample ; 
+                                             owl:onProperty tribont-sample:hasMovingSample ; 
+                                             a owl:Restriction],
+                                            [owl:allValuesFrom tribont-sample:Sample ; 
+                                             owl:onProperty tribont-sample:hasStaticSample ; 
+                                             a owl:Restriction];
+                            status:term_status "Testing".
+tribont-sample:executionDate a owl:DatatypeProperty;
+                             rdfs:comment "Data when something has been executed.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                             rdfs:label "executionDate";
+                             status:term_status "Testing".
+tribont-sample:hasBody a owl:ObjectProperty;
+                       rdfs:comment "Relationship between something  and its body configuration..";
+                       rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                       rdfs:label "hasBody";
+                       status:term_status "Testing".
+tribont-sample:hasCoating a owl:ObjectProperty;
+                          rdfs:comment "Relationship between a sample  and its coating.";
+                          rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                          rdfs:label "hasCoating";
+                          owl:inverseOf tribont-sample:isCoatingFor;
+                          status:term_status "Testing".
+tribont-sample:hasCoreMaterial a owl:ObjectProperty;
+                               rdfs:comment "Relationship between something and the material of which it is made";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "hasCoreMaterial";
+                               owl:inverseOf tribont-sample:isCoreMaterialFor;
+                               status:term_status "Testing".
+tribont-sample:hasLubricationSample a owl:ObjectProperty;
+                                    rdfs:comment "Relationship between a sample system and a lubricant material that is part of it.";
+                                    rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                    rdfs:label "hasLubricationSample";
+                                    owl:inverseOf tribont-sample:isLubricationSampleFor;
+                                    status:term_status "Testing".
+tribont-sample:hasMovingSample a owl:ObjectProperty;
+                               rdfs:comment "Relationship between a sample system and a moving sample body that is part of it.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "hasMovingSample";
+                               owl:inverseOf tribont-sample:isMovingSampleFor;
+                               status:term_status "Testing".
+tribont-sample:hasSampleRole a owl:ObjectProperty;
+                             rdfs:comment "Relationship between a sample and its role.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                             rdfs:label "hasSampleRole";
+                             owl:inverseOf tribont-sample:isSampleRoleFor;
+                             status:term_status "Testing".
+tribont-sample:hasStaticSample a owl:ObjectProperty;
+                               rdfs:comment "Relationship between a sample system and a static sample body that is part of it.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "hasStaticSample";
+                               owl:inverseOf tribont-sample:isStaticSampleFor;
+                               status:term_status "Testing".
+tribont-sample:interactsWith a owl:ObjectProperty;
+                             rdfs:comment "Releation between sveral samples interacting one with each other.";
+                             rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                             rdfs:label "interactsWith";
+                             status:term_status "Testing".
+tribont-sample:isCoatingFor a owl:ObjectProperty;
+                            rdfs:comment "Relationship between a coating  and the sample  of which it is a part.";
+                            rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                            rdfs:label "isCoatingFor";
+                            status:term_status "Testing".
+tribont-sample:isCoreMaterialFor a owl:ObjectProperty;
+                                 rdfs:comment "Relationship between  the material it is made of and something";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                 rdfs:label "isCoreMaterialFor";
+                                 status:term_status "Testing".
+tribont-sample:isLubricationSampleFor a owl:ObjectProperty;
+                                      rdfs:comment "Relationship between a lubrication sample  and the sample system of which it is a part.";
+                                      rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                      rdfs:label "isLubricationSampleFor";
+                                      status:term_status "Testing".
+tribont-sample:isMovingSampleFor a owl:ObjectProperty;
+                                 rdfs:comment "Relationship between a moving sample  and the sample system of which it is a part.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                 rdfs:label "isMovingSampleFor";
+                                 status:term_status "Testing".
+tribont-sample:isSampleRoleFor a owl:ObjectProperty;
+                               rdfs:comment "Relationship between a role and the sample to which it applies,";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "isSampleRoleFor";
+                               status:term_status "Testing".
+tribont-sample:isStaticSampleFor a owl:ObjectProperty;
+                                 rdfs:comment "Relationship between a static sample  and the sample system of which it is a part.";
+                                 rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                                 rdfs:label "isStaticSampleFor";
+                                 status:term_status "Testing".
+tribont-sample:preparationDate a owl:DatatypeProperty;
+                               rdfs:comment "Data when something has been prepared.";
+                               rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                               rdfs:label "preparationDate";
+                               status:term_status "Testing".
+tribont-sample:reference a tribont-sample:SampleRole,
+                           owl:NamedIndividual;
+                         rdfs:comment "A reference against which the sample is tested.";
+                         rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                         rdfs:label "reference";
+                         status:term_status "Testing".
+tribont-sample:target a tribont-sample:SampleRole,
+                        owl:NamedIndividual;
+                      rdfs:comment "Target sample for the  testing  activity.";
+                      rdfs:isDefinedBy "https://w3id.org/tribont/sample";
+                      rdfs:label "target";
+                      status:term_status "Testing".
+<urn:swrl:var#b> a swrl:Variable.
+<urn:swrl:var#c> a swrl:Variable.
+<urn:swrl:var#m> a swrl:Variable.
+<urn:swrl:var#ms> a swrl:Variable.
+<urn:swrl:var#s> a swrl:Variable.
+<urn:swrl:var#sb> a swrl:Variable.
+<urn:swrl:var#ss> a swrl:Variable.
+<urn:swrl:var#sts> a swrl:Variable.

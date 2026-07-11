@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0139.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 3.6 139 Document Structure TABLE 3.25 Entries in the catalog dictionary KEY TYPE VALUE Type name name (Required) The type of PDF object that this dictionary describes; must be Catalog for the catalog dictionary. (Optional; PDF 1.4) The version of the PDF specification to which the document conforms (for example, 1.4) if later than the version specified in the file’s header (see Section 3.4.1, “File Header”). If the header specifies a later version, or if this entry is absent, the document conforms to the version specified in the header. This entry enables a PDF producer application to update the version using an incremental update; see Section 3.4.5, “Incremental Updates.” (See implementation note 33 in Appendix H.) Note: The value of this entry is a name object, not a number, and therefore must be preceded by a slash character (/) when written in the PDF file (for example, /1.4). Version Pages dictionary number tree (Required; must be an indirect reference) The page tree node that is the root of the document’s page tree (see Section 3.6.2, “Page Tree”). (Optional; PDF 1.3) A number tree (see Section 3.8.6, “Number Trees”) defining the page labeling for the document. The keys in this tree are page indices; the corresponding values are page label dictionaries (see Section 8.3.1, “Page Labels”). Each page index denotes the first page in a labeling range to which the specified page label dictionary applies. The tree must include a value for page index 0. (Optional; PDF 1.2) The document’s name dictionary (see Section 3.6.3, “Name Dictionary”). (Optional; PDF 1.1; must be an indirect reference) A dictionary of names and corresponding destinations (see “Named Destinations” on page 583). (Optional; PDF 1.2) A viewer preferences dictionary (see Section 8.1, “Viewer Preferences”) specifying the way the document is to be displayed on the screen. If this entry is absent, applications should use their own current user preference settings. PageLabels Names dictionary dictionary Dests ViewerPreferences dictionary  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0139.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 3.6</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">139</span></div>
+<div class="pos" id="*49:495" style="top:49;left:495"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Document Structure</span></div>
+<div class="pos" id="*113:248" style="top:113;left:248"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 3.25 Entries in the catalog dictionary</span></div>
+<div class="pos" id="*133:74" style="top:133;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*133:191" style="top:133;left:191"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*133:283" style="top:133;left:283"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*160:74" style="top:160;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Type</span></div>
+<div class="pos" id="*160:191" style="top:160;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name</span></div>
+<div class="pos" id="*205:191" style="top:205;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name</span></div>
+<div class="pos" id="*160:283" style="top:160;left:283"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*160:342" style="top:160;left:342"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The type of PDF object that this dictionary describes; must</span></div>
+<div class="pos" id="*176:283" style="top:176;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">be</span></div>
+<div class="pos" id="*177:298" style="top:177;left:298"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Catalog</span></div>
+<div class="pos" id="*176:342" style="top:176;left:342"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for the catalog dictionary.</span></div>
+<div class="pos" id="*205:283" style="top:205;left:283"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; PDF 1.4)</span></div>
+<div class="pos" id="*205:391" style="top:205;left:391"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The version of the PDF specification to which the</span></div>
+<div class="pos" id="*221:283" style="top:221;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">document conforms (for example,</span></div>
+<div class="pos" id="*222:466" style="top:222;left:466"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1.4</span></div>
+<div class="pos" id="*221:481" style="top:221;left:481"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) if later than the version specified</span></div>
+<div class="pos" id="*238:283" style="top:238;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the file’s header (see Section 3.4.1, “File Header”). If the header speci-</span></div>
+<div class="pos" id="*255:283" style="top:255;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">fies a later version, or if this entry is absent, the document conforms to</span></div>
+<div class="pos" id="*271:283" style="top:271;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the version specified in the header. This entry enables a PDF producer</span></div>
+<div class="pos" id="*288:283" style="top:288;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">application to update the version using an incremental update; see Sec-</span></div>
+<div class="pos" id="*305:283" style="top:305;left:283"><a href="pg_0098.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion 3.4.5, “Incremental Updates.” (See implementation note 33 in Ap-</span></a></div>
+<div class="pos" id="*321:283" style="top:321;left:283"><a href="pg_1095.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">pendix H.)</span></a></div>
+<div class="pos" id="*346:283" style="top:346;left:283"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*346:314" style="top:346;left:314"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">The value of this entry is a name object, not a number, and therefore</span></div>
+<div class="pos" id="*362:283" style="top:362;left:283"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">must be preceded by a slash character (</span></div>
+<div class="pos" id="*363:482" style="top:363;left:482"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/</span></div>
+<div class="pos" id="*362:486" style="top:362;left:486"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">) when written in the PDF file (for</span></div>
+<div class="pos" id="*379:283" style="top:379;left:283"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">example,</span></div>
+<div class="pos" id="*380:332" style="top:380;left:332"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">/1.4</span></div>
+<div class="pos" id="*379:350" style="top:379;left:350"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">).</span></div>
+<div class="pos" id="*205:74" style="top:205;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Version</span></div>
+<div class="pos" id="*407:74" style="top:407;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Pages</span></div>
+<div class="pos" id="*407:191" style="top:407;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary</span></div>
+<div class="pos" id="*453:191" style="top:453;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">number tree</span></div>
+<div class="pos" id="*407:283" style="top:407;left:283"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required; must be an indirect reference)</span></div>
+<div class="pos" id="*407:502" style="top:407;left:502"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*407:527" style="top:407;left:527"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">page tree node</span></div>
+<div class="pos" id="*407:608" style="top:407;left:608"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that is the</span></div>
+<div class="pos" id="*424:283" style="top:424;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">root of the document’s</span></div>
+<div class="pos" id="*424:404" style="top:424;left:404"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">page tree</span></div>
+<div class="pos" id="*424:452" style="top:424;left:452"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see Section 3.6.2, “Page Tree”).</span></div>
+<div class="pos" id="*453:283" style="top:453;left:283"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; PDF 1.3)</span></div>
+<div class="pos" id="*453:390" style="top:453;left:390"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A number tree (see Section 3.8.6, “Number Trees”)</span></div>
+<div class="pos" id="*469:283" style="top:469;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">defining the page labeling for the document. The keys in this tree are</span></div>
+<div class="pos" id="*486:283" style="top:486;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">page indices; the corresponding values are</span></div>
+<div class="pos" id="*486:519" style="top:486;left:519"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">page label dictionaries</span></div>
+<div class="pos" id="*486:641" style="top:486;left:641"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see</span></div>
+<div class="pos" id="*503:283" style="top:503;left:283"><a href="pg_0594.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Section 8.3.1, “Page Labels”). Each page index denotes the first page in a</span></a></div>
+<div class="pos" id="*519:283" style="top:519;left:283"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">labeling range</span></div>
+<div class="pos" id="*519:359" style="top:519;left:359"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to which the specified page label dictionary applies. The</span></div>
+<div class="pos" id="*536:283" style="top:536;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tree must include a value for page index 0.</span></div>
+<div class="pos" id="*564:283" style="top:564;left:283"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; PDF 1.2)</span></div>
+<div class="pos" id="*564:389" style="top:564;left:389"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The document’s name dictionary (see Section 3.6.3,</span></div>
+<div class="pos" id="*581:283" style="top:581;left:283"><a href="pg_0150.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">“Name Dictionary”).</span></a></div>
+<div class="pos" id="*610:283" style="top:610;left:283"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; PDF 1.1; must be an indirect reference)</span></div>
+<div class="pos" id="*610:544" style="top:610;left:544"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A dictionary of names</span></div>
+<div class="pos" id="*626:283" style="top:626;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and corresponding</span></div>
+<div class="pos" id="*626:393" style="top:626;left:393"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">destinations</span></div>
+<div class="pos" id="*626:461" style="top:626;left:461"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see “Named Destinations” on page</span></div>
+<div class="pos" id="*643:283" style="top:643;left:283"><a href="pg_0583.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">583).</span></a></div>
+<div class="pos" id="*671:283" style="top:671;left:283"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; PDF 1.2)</span></div>
+<div class="pos" id="*671:393" style="top:671;left:393"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A viewer preferences dictionary (see Section 8.1,</span></div>
+<div class="pos" id="*688:283" style="top:688;left:283"><a href="pg_0577.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">“Viewer Preferences”) specifying the way the document is to be dis-</span></a></div>
+<div class="pos" id="*705:283" style="top:705;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">played on the screen. If this entry is absent, applications should use their</span></div>
+<div class="pos" id="*721:283" style="top:721;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">own current user preference settings.</span></div>
+<div class="pos" id="*453:74" style="top:453;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">PageLabels</span></div>
+<div class="pos" id="*564:74" style="top:564;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Names</span></div>
+<div class="pos" id="*564:191" style="top:564;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary</span></div>
+<div class="pos" id="*610:191" style="top:610;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary</span></div>
+<div class="pos" id="*610:74" style="top:610;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Dests</span></div>
+<div class="pos" id="*671:74" style="top:671;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ViewerPreferences</span></div>
+<div class="pos" id="*671:191" style="top:671;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0138.htm" title="Go to previous page">Previous</a> <a href="pg_0140.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(139);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0527.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 7.2 527 Basic Compositing Computations shape that is 1.0 in the unmasked portions and 0.0 in the masked portions. The shape of a group object is the union of the shapes of the objects it contains. Note: Mathematically, elementary objects have “hard” edges, with a shape value of either 0.0 or 1.0 at every point. However, when such objects are rasterized to device pixels, the shape values along the boundaries may be anti-aliased, taking on fractional values representing fractional coverage of those pixels. When such anti-aliasing is performed, it is important to treat the fractional coverage as shape rather than opacity. • Mask shape. Shape values for compositing an object can be taken from an additional source, or soft mask, independent of the object itself. (See Section 7.4, “Soft Masks,” for a discussion of how such a mask might be generated.) The use of a soft mask to modify the shape of an object or group, called soft clipping, can produce effects such as a gradual transition between an object and its backdrop, as in a vignette. • Constant shape. The source shape can be modified at every point by a scalar shape constant. This is merely a convenience, since the same effect could be achieved with a shape mask whose value is the same everywhere. • Object opacity. Elementary objects have an opacity of 1.0 everywhere. The opacity of a group object is the result of the opacity computations for all of the objects it contains. • Mask opacity. Opacity values, like shape values, can be provided by a soft mask independent of the object being composited. • Constant opacity. The source opacity can be modified at every point by a scalar opacity constant. It is useful to think of this value as the “current opacity,” analogous to the current color used when painting elementary objects. All of these shape and opacity inputs range in value from 0.0 to 1.0, with a default value of 1.0. The intent is that any of the inputs make the painting operation more transparent as it goes toward 0.0. If more than one input goes toward 0.0, the effect is compounded. This is achieved mathematically by simply multiplying the three inputs of each type, producing intermediate values called the source shape and the source opacity: fs = fj × fm × fk qs = qj × qm × qk where the variables have the meanings shown in Table 7.4.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0527.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 7.2</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">527</span></div>
+<div class="pos" id="*49:426" style="top:49;left:426"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Basic Compositing Computations</span></div>
+<div class="pos" id="*99:145" style="top:99;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">shape that is 1.0 in the unmasked portions and 0.0 in the masked portions. The</span></div>
+<div class="pos" id="*117:145" style="top:117;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">shape of a group object is the union of the shapes of the objects it contains.</span></div>
+<div class="pos" id="*145:145" style="top:145;left:145"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*145:181" style="top:145;left:181"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Mathematically, elementary objects have “hard” edges, with a shape value</span></div>
+<div class="pos" id="*163:145" style="top:163;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">of either 0.0 or 1.0 at every point. However, when such objects are rasterized to</span></div>
+<div class="pos" id="*181:145" style="top:181;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">device pixels, the shape values along the boundaries may be</span></div>
+<div class="pos" id="*181:493" style="top:181;left:493"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">anti-aliased,</span></div>
+<div class="pos" id="*181:568" style="top:181;left:568"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">taking</span></div>
+<div class="pos" id="*199:145" style="top:199;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">on fractional values representing fractional coverage of those pixels. When such</span></div>
+<div class="pos" id="*217:145" style="top:217;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">anti-aliasing is performed, it is important to treat the fractional coverage as shape</span></div>
+<div class="pos" id="*235:145" style="top:235;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">rather than opacity.</span></div>
+<div class="pos" id="*260:133" style="top:260;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*263:145" style="top:263;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Mask shape.</span></div>
+<div class="pos" id="*263:218" style="top:263;left:218"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Shape values for compositing an object can be taken from an addi-</span></div>
+<div class="pos" id="*281:145" style="top:281;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tional source, or</span></div>
+<div class="pos" id="*281:248" style="top:281;left:248"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">soft mask,</span></div>
+<div class="pos" id="*281:311" style="top:281;left:311"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">independent of the object itself. (See Section 7.4,</span></div>
+<div class="pos" id="*299:145" style="top:299;left:145"><a href="pg_0545.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">“Soft Masks,” for a discussion of how such a mask might be generated.) The use</span></a></div>
+<div class="pos" id="*317:145" style="top:317;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of a soft mask to modify the shape of an object or group, called</span></div>
+<div class="pos" id="*317:509" style="top:317;left:509"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">soft clipping,</span></div>
+<div class="pos" id="*317:583" style="top:317;left:583"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">can</span></div>
+<div class="pos" id="*335:145" style="top:335;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">produce effects such as a gradual transition between an object and its backdrop,</span></div>
+<div class="pos" id="*353:145" style="top:353;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">as in a vignette.</span></div>
+<div class="pos" id="*378:133" style="top:378;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*381:145" style="top:381;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Constant shape.</span></div>
+<div class="pos" id="*381:242" style="top:381;left:242"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The source shape can be modified at every point by a scalar</span></div>
+<div class="pos" id="*399:145" style="top:399;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">shape constant.</span></div>
+<div class="pos" id="*399:239" style="top:399;left:239"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">This is merely a convenience, since the same effect could be</span></div>
+<div class="pos" id="*417:145" style="top:417;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">achieved with a shape mask whose value is the same everywhere.</span></div>
+<div class="pos" id="*442:133" style="top:442;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*445:145" style="top:445;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Object opacity.</span></div>
+<div class="pos" id="*445:239" style="top:445;left:239"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Elementary objects have an opacity of 1.0 everywhere. The</span></div>
+<div class="pos" id="*463:145" style="top:463;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">opacity of a group object is the result of the opacity computations for all of the</span></div>
+<div class="pos" id="*481:145" style="top:481;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">objects it contains.</span></div>
+<div class="pos" id="*506:133" style="top:506;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*508:145" style="top:508;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Mask opacity.</span></div>
+<div class="pos" id="*508:227" style="top:508;left:227"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Opacity values, like shape values, can be provided by a soft mask</span></div>
+<div class="pos" id="*526:145" style="top:526;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">independent of the object being composited.</span></div>
+<div class="pos" id="*551:133" style="top:551;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*553:145" style="top:553;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Constant opacity.</span></div>
+<div class="pos" id="*553:247" style="top:553;left:247"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The source opacity can be modified at every point by a scalar</span></div>
+<div class="pos" id="*571:145" style="top:571;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">opacity constant.</span></div>
+<div class="pos" id="*571:245" style="top:571;left:245"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">It is useful to think of this value as the “current opacity,” anal-</span></div>
+<div class="pos" id="*589:145" style="top:589;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ogous to the current color used when painting elementary objects.</span></div>
+<div class="pos" id="*624:133" style="top:624;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">All of these shape and opacity inputs range in value from 0.0 to 1.0, with a default</span></div>
+<div class="pos" id="*642:133" style="top:642;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value of 1.0. The intent is that any of the inputs make the painting operation more</span></div>
+<div class="pos" id="*660:133" style="top:660;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">transparent as it goes toward 0.0. If more than one input goes toward 0.0, the ef-</span></div>
+<div class="pos" id="*678:133" style="top:678;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">fect is compounded. This is achieved mathematically by simply multiplying the</span></div>
+<div class="pos" id="*696:133" style="top:696;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">three inputs of each type, producing intermediate values called the</span></div>
+<div class="pos" id="*696:532" style="top:696;left:532"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">source shape</span></div>
+<div class="pos" id="*714:133" style="top:714;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and the</span></div>
+<div class="pos" id="*714:180" style="top:714;left:180"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">source opacity:</span></div>
+<div class="pos" id="*743:137" style="top:743;left:137"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*750:142" style="top:750;left:142"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*740:153" style="top:740;left:153"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*743:170" style="top:743;left:170"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*750:175" style="top:750;left:175"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*740:182" style="top:740;left:182"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*743:193" style="top:743;left:193"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*750:198" style="top:750;left:198"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">m</span></div>
+<div class="pos" id="*740:211" style="top:740;left:211"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*743:223" style="top:743;left:223"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*750:227" style="top:750;left:227"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">k</span></div>
+<div class="pos" id="*766:134" style="top:766;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">q</span></div>
+<div class="pos" id="*773:142" style="top:773;left:142"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*763:153" style="top:763;left:153"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*766:169" style="top:766;left:169"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">q</span></div>
+<div class="pos" id="*773:176" style="top:773;left:176"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*762:183" style="top:762;left:183"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*766:195" style="top:766;left:195"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">q</span></div>
+<div class="pos" id="*773:203" style="top:773;left:203"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">m</span></div>
+<div class="pos" id="*762:216" style="top:762;left:216"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*766:228" style="top:766;left:228"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">q</span></div>
+<div class="pos" id="*773:235" style="top:773;left:235"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">k</span></div>
+<div class="pos" id="*805:133" style="top:805;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">where the variables have the meanings shown in Table 7.4.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0526.htm" title="Go to previous page">Previous</a> <a href="pg_0528.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(527);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

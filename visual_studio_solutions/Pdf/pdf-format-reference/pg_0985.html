@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0985.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="APPENDIX A A Operator Summary This appendix lists, in alphabetical order, all the operators used in PDF content streams. Table A.1 lists each operator, its corresponding PostScript language operators (when it is an exact or near-exact equivalent of the PDF operator), a description of the operator, and references to the table and page where each operator is introduced. TABLE A.1 PDF content stream operators OPERATOR POSTSCRIPT EQUIVALENT DESCRIPTION TABLE PAGE b closepath, fill, stroke fill, stroke closepath, eofill, stroke eofill, stroke Close, fill, and stroke path using nonzero winding number rule Fill and stroke path using nonzero winding number rule Close, fill, and stroke path using even-odd rule Fill and stroke path using even-odd rule 4.10 4.10 4.10 4.10 230 230 230 230 851 352 851 405 152 226 219 B b* B* BDC BI BMC BT BX c cm (PDF 1.2) Begin marked-content sequence with property list 10.7 Begin inline image object (PDF 1.2) Begin marked-content sequence Begin text object (PDF 1.1) Begin compatibility section curveto concat 4.42 10.7 5.4 3.29 4.9 4.7 Append curved segment to path (three control points) Concatenate matrix to current transformation matrix 985  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0985.png" ALT=""></div>
+<div class="pos" id="*145:312" style="top:145;left:312"><span id="*15" style="font-style:normal;font-weight:700;font-size:15px;font-family:MyriadPro-Black,Arial,Helvetica,sans-serif;color:#000000;">APPENDIX A</span></div>
+<div class="pos" id="*220:225" style="top:220;left:225"><span id="*1" style="font-style:normal;font-weight:700;font-size:1px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#FFFFFF;">A</span></div>
+<div class="pos" id="*198:227" style="top:198;left:227"><span id="*32" style="font-style:normal;font-weight:700;font-size:32px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">Operator Summary</span></div>
+<div class="pos" id="*299:133" style="top:299;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">This appendix lists, in alphabetical order, all the operators used in PDF content</span></div>
+<div class="pos" id="*317:133" style="top:317;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">streams. Table A.1 lists each operator, its corresponding PostScript language op-</span></div>
+<div class="pos" id="*335:133" style="top:335;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">erators (when it is an exact or near-exact equivalent of the PDF operator), a de-</span></div>
+<div class="pos" id="*353:133" style="top:353;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">scription of the operator, and references to the table and page where each</span></div>
+<div class="pos" id="*371:133" style="top:371;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operator is introduced.</span></div>
+<div class="pos" id="*414:256" style="top:414;left:256"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE A.1 PDF content stream operators</span></div>
+<div class="pos" id="*446:74" style="top:446;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">OPERATOR</span></div>
+<div class="pos" id="*435:158" style="top:435;left:158"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">POSTSCRIPT</span></div>
+<div class="pos" id="*446:158" style="top:446;left:158"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">EQUIVALENT</span></div>
+<div class="pos" id="*446:258" style="top:446;left:258"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">DESCRIPTION</span></div>
+<div class="pos" id="*446:587" style="top:446;left:587"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE</span></div>
+<div class="pos" id="*446:634" style="top:446;left:634"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">PAGE</span></div>
+<div class="pos" id="*473:74" style="top:473;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*473:158" style="top:473;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">closepath</span></div>
+<div class="pos" id="*472:209" style="top:472;left:209"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*473:215" style="top:473;left:215"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">fill</span></div>
+<div class="pos" id="*472:228" style="top:472;left:228"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*489:158" style="top:489;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">stroke</span></div>
+<div class="pos" id="*518:158" style="top:518;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">fill</span></div>
+<div class="pos" id="*517:171" style="top:517;left:171"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*518:177" style="top:518;left:177"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">stroke</span></div>
+<div class="pos" id="*546:158" style="top:546;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">closepath</span></div>
+<div class="pos" id="*546:209" style="top:546;left:209"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*546:215" style="top:546;left:215"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">eofill</span></div>
+<div class="pos" id="*546:241" style="top:546;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*563:158" style="top:563;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">stroke</span></div>
+<div class="pos" id="*592:158" style="top:592;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">eofill</span></div>
+<div class="pos" id="*591:183" style="top:591;left:183"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*592:190" style="top:592;left:190"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">stroke</span></div>
+<div class="pos" id="*472:258" style="top:472;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Close, fill, and stroke path using nonzero winding number</span></div>
+<div class="pos" id="*489:258" style="top:489;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rule</span></div>
+<div class="pos" id="*517:258" style="top:517;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Fill and stroke path using nonzero winding number rule</span></div>
+<div class="pos" id="*546:258" style="top:546;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Close, fill, and stroke path using even-odd rule</span></div>
+<div class="pos" id="*591:258" style="top:591;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Fill and stroke path using even-odd rule</span></div>
+<div class="pos" id="*472:587" style="top:472;left:587"><a href="pg_0230.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4.10</span></a></div>
+<div class="pos" id="*517:587" style="top:517;left:587"><a href="pg_0230.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4.10</span></a></div>
+<div class="pos" id="*546:587" style="top:546;left:587"><a href="pg_0230.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4.10</span></a></div>
+<div class="pos" id="*591:587" style="top:591;left:587"><a href="pg_0230.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4.10</span></a></div>
+<div class="pos" id="*472:634" style="top:472;left:634"><a href="pg_0230.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">230</span></a></div>
+<div class="pos" id="*517:634" style="top:517;left:634"><a href="pg_0230.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">230</span></a></div>
+<div class="pos" id="*546:634" style="top:546;left:634"><a href="pg_0230.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">230</span></a></div>
+<div class="pos" id="*591:634" style="top:591;left:634"><a href="pg_0230.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">230</span></a></div>
+<div class="pos" id="*619:634" style="top:619;left:634"><a href="pg_0851.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">851</span></a></div>
+<div class="pos" id="*648:634" style="top:648;left:634"><a href="pg_0352.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">352</span></a></div>
+<div class="pos" id="*676:634" style="top:676;left:634"><a href="pg_0851.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">851</span></a></div>
+<div class="pos" id="*705:634" style="top:705;left:634"><a href="pg_0405.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">405</span></a></div>
+<div class="pos" id="*733:634" style="top:733;left:634"><a href="pg_0152.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">152</span></a></div>
+<div class="pos" id="*762:634" style="top:762;left:634"><a href="pg_0226.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">226</span></a></div>
+<div class="pos" id="*790:634" style="top:790;left:634"><a href="pg_0219.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">219</span></a></div>
+<div class="pos" id="*518:74" style="top:518;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*546:74" style="top:546;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">b*</span></div>
+<div class="pos" id="*592:74" style="top:592;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">B*</span></div>
+<div class="pos" id="*620:74" style="top:620;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BDC</span></div>
+<div class="pos" id="*648:74" style="top:648;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BI</span></div>
+<div class="pos" id="*677:74" style="top:677;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BMC</span></div>
+<div class="pos" id="*705:74" style="top:705;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BT</span></div>
+<div class="pos" id="*734:74" style="top:734;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BX</span></div>
+<div class="pos" id="*762:74" style="top:762;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*791:74" style="top:791;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">cm</span></div>
+<div class="pos" id="*619:258" style="top:619;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.2)</span></div>
+<div class="pos" id="*619:312" style="top:619;left:312"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Begin marked-content sequence with property list 10.7</span></div>
+<div class="pos" id="*648:258" style="top:648;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Begin inline image object</span></div>
+<div class="pos" id="*676:258" style="top:676;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.2)</span></div>
+<div class="pos" id="*676:312" style="top:676;left:312"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Begin marked-content sequence</span></div>
+<div class="pos" id="*705:258" style="top:705;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Begin text object</span></div>
+<div class="pos" id="*733:258" style="top:733;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.1)</span></div>
+<div class="pos" id="*733:312" style="top:733;left:312"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Begin compatibility section</span></div>
+<div class="pos" id="*762:158" style="top:762;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">curveto</span></div>
+<div class="pos" id="*791:158" style="top:791;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">concat</span></div>
+<div class="pos" id="*648:587" style="top:648;left:587"><a href="pg_0352.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4.42</span></a></div>
+<div class="pos" id="*676:587" style="top:676;left:587"><a href="pg_0851.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10.7</span></a></div>
+<div class="pos" id="*705:587" style="top:705;left:587"><a href="pg_0405.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5.4</span></a></div>
+<div class="pos" id="*733:587" style="top:733;left:587"><a href="pg_0152.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3.29</span></a></div>
+<div class="pos" id="*762:587" style="top:762;left:587"><a href="pg_0226.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4.9</span></a></div>
+<div class="pos" id="*790:587" style="top:790;left:587"><a href="pg_0219.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4.7</span></a></div>
+<div class="pos" id="*762:258" style="top:762;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Append curved segment to path (three control points)</span></div>
+<div class="pos" id="*790:258" style="top:790;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Concatenate matrix to current transformation matrix</span></div>
+<div class="pos" id="*857:359" style="top:857;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">985</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0984.htm" title="Go to previous page">Previous</a> <a href="pg_0986.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(985);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

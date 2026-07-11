@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0418.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 5 418 Text 5.5.2 TrueType Fonts The TrueType font format was developed by Apple Computer, Inc., and has been adopted as a standard font format for the Microsoft Windows operating system. Specifications for the TrueType font file format are available in Apple’s TrueType Reference Manual and Microsoft’s TrueType 1.0 Font Files Technical Specification. Note: A TrueType font program can be embedded directly in a PDF file as a stream object. The Type 42 font format that is defined for PostScript does not apply to PDF. A TrueType font dictionary can contain the same entries as a Type 1 font dictionary (Table 5.8 on page 413), with the following differences: • The value of Subtype is TrueType. • The value of BaseFont is derived differently, as described below. • The value of Encoding is subject to limitations that are described in Section 5.5.5, “Character Encoding.” The PostScript name for the value of BaseFont is determined in one of two ways: • Use the PostScript name that is an optional entry in the “name” table of the TrueType font. • In the absence of such an entry in the “name” table, derive a PostScript name from the name by which the font is known in the host operating system. On a Windows system, the name is based on the lfFaceName field in a LOGFONT structure; in the Mac OS, it is based on the name of the FOND resource. If the name contains any spaces, the spaces are removed. If the font in a source document uses a bold or italic style but there is no font data for that style, the host operating system synthesizes the style. In this case, a comma and the style name (one of Bold, Italic, or BoldItalic) are appended to the font name. For example, for a TrueType font that is a bold variant of the New York font, the BaseFont value is written as /NewYork , Bold (as illustrated in Example 5.8).  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0418.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 5</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">418</span></div>
+<div class="pos" id="*49:580" style="top:49;left:580"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Text</span></div>
+<div class="pos" id="*99:88" style="top:99;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">5.5.2 TrueType Fonts</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*135:159" style="top:135;left:159"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">TrueType</span></div>
+<div class="pos" id="*135:217" style="top:135;left:217"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">font format was developed by Apple Computer, Inc., and has been</span></div>
+<div class="pos" id="*154:133" style="top:154;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">adopted as a standard font format for the Microsoft Windows operating system.</span></div>
+<div class="pos" id="*172:133" style="top:172;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Specifications for the TrueType font file format are available in Apple’s</span></div>
+<div class="pos" id="*172:550" style="top:172;left:550"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">TrueType</span></div>
+<div class="pos" id="*190:133" style="top:190;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Reference Manual</span></div>
+<div class="pos" id="*190:239" style="top:190;left:239"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and Microsoft’s</span></div>
+<div class="pos" id="*190:331" style="top:190;left:331"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">TrueType 1.0 Font Files Technical Specification.</span></div>
+<div class="pos" id="*224:133" style="top:224;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*224:168" style="top:224;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A TrueType font program can be embedded directly in a PDF file as a stream</span></div>
+<div class="pos" id="*242:133" style="top:242;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">object. The Type 42 font format that is defined for PostScript does not apply to PDF.</span></div>
+<div class="pos" id="*277:133" style="top:277;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A TrueType font dictionary can contain the same entries as a Type 1 font dictio-</span></div>
+<div class="pos" id="*295:133" style="top:295;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nary (Table 5.8 on page 413), with the following differences:</span></div>
+<div class="pos" id="*328:133" style="top:328;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*330:145" style="top:330;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The value of</span></div>
+<div class="pos" id="*331:220" style="top:331;left:220"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Subtype</span></div>
+<div class="pos" id="*330:273" style="top:330;left:273"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is</span></div>
+<div class="pos" id="*331:285" style="top:331;left:285"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">TrueType</span></div>
+<div class="pos" id="*330:339" style="top:330;left:339"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*354:133" style="top:354;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*356:145" style="top:356;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The value of</span></div>
+<div class="pos" id="*357:220" style="top:357;left:220"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BaseFont</span></div>
+<div class="pos" id="*356:278" style="top:356;left:278"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is derived differently, as described below.</span></div>
+<div class="pos" id="*380:133" style="top:380;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*383:145" style="top:383;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The value of</span></div>
+<div class="pos" id="*383:226" style="top:383;left:226"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Encoding</span></div>
+<div class="pos" id="*383:286" style="top:383;left:286"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is subject to limitations that are described in Section</span></div>
+<div class="pos" id="*401:145" style="top:401;left:145"><a href="pg_0425.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5.5.5, “Character Encoding.”</span></a></div>
+<div class="pos" id="*435:133" style="top:435;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The PostScript name for the value of</span></div>
+<div class="pos" id="*436:348" style="top:436;left:348"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BaseFont</span></div>
+<div class="pos" id="*435:405" style="top:435;left:405"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is determined in one of two ways:</span></div>
+<div class="pos" id="*468:133" style="top:468;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*470:145" style="top:470;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Use the PostScript name that is an optional entry in the “name” table of the</span></div>
+<div class="pos" id="*488:145" style="top:488;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">TrueType font.</span></div>
+<div class="pos" id="*512:133" style="top:512;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*515:145" style="top:515;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">In the absence of such an entry in the “name” table, derive a PostScript name</span></div>
+<div class="pos" id="*533:145" style="top:533;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">from the name by which the font is known in the host operating system. On a</span></div>
+<div class="pos" id="*551:145" style="top:551;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Windows system, the name is based on the</span></div>
+<div class="pos" id="*552:416" style="top:552;left:416"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">lfFaceName</span></div>
+<div class="pos" id="*551:487" style="top:551;left:487"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">field in a</span></div>
+<div class="pos" id="*552:548" style="top:552;left:548"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">LOGFONT</span></div>
+<div class="pos" id="*569:145" style="top:569;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">structure; in the Mac OS, it is based on the name of the</span></div>
+<div class="pos" id="*570:478" style="top:570;left:478"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">FOND</span></div>
+<div class="pos" id="*569:515" style="top:569;left:515"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">resource. If the</span></div>
+<div class="pos" id="*587:145" style="top:587;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name contains any spaces, the spaces are removed.</span></div>
+<div class="pos" id="*622:133" style="top:622;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If the font in a source document uses a bold or italic style but there is no font data</span></div>
+<div class="pos" id="*640:133" style="top:640;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for that style, the host operating system synthesizes the style. In this case, a com-</span></div>
+<div class="pos" id="*658:133" style="top:658;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ma and the style name (one of</span></div>
+<div class="pos" id="*658:315" style="top:658;left:315"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Bold</span></div>
+<div class="pos" id="*658:341" style="top:658;left:341"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*658:348" style="top:658;left:348"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Italic</span></div>
+<div class="pos" id="*658:375" style="top:658;left:375"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, or</span></div>
+<div class="pos" id="*658:398" style="top:658;left:398"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">BoldItalic</span></div>
+<div class="pos" id="*658:451" style="top:658;left:451"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) are appended to the font</span></div>
+<div class="pos" id="*676:133" style="top:676;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name. For example, for a TrueType font that is a bold variant of the New York</span></div>
+<div class="pos" id="*694:133" style="top:694;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">font, the</span></div>
+<div class="pos" id="*695:188" style="top:695;left:188"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BaseFont</span></div>
+<div class="pos" id="*694:247" style="top:694;left:247"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value is written as</span></div>
+<div class="pos" id="*695:360" style="top:695;left:360"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/NewYork , Bold</span></div>
+<div class="pos" id="*694:451" style="top:694;left:451"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(as illustrated in Example</span></div>
+<div class="pos" id="*712:133" style="top:712;left:133"><a href="pg_0419.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5.8).</span></a></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0417.htm" title="Go to previous page">Previous</a> <a href="pg_0419.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(418);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1103.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="S E C T I O N H .3 1103 Implementation Notes 3.5, “Encryption” 22. An option to use an unpublished algorithm was needed because of an export requirement of the U.S. Department of Commerce. This requirement no longer exists. Acrobat 7.0 does not use this algorithm to encrypt documents, although it can decrypt files that are encrypted with the algorithm. 23. Acrobat viewers will fail to open a document encrypted with a V value defined in a version of PDF that the viewer does not understand. 24. Security handlers are responsible for protecting the value of EFF from tampering if needed. Acrobat security handlers do not provide this protection. 3.5.2, “Standard Security Handler” (Standard Encryption Dictionary) 25. Acrobat viewers implement this limited mode of printing as “Print As Image,” except on UNIX systems, where this feature is not available. 3.5.2, “Standard Security Handler” (Encryption Key Algorithm) 26. The first element of the ID array generally remains the same for a given document. However, in some situations, Acrobat may regenerate the ID array if a new generation of a document is created. Security handlers are encouraged not to rely on the ID in the encryption key computation. 3.5.2, “Standard Security Handler” (Password Algorithms) 27. In Acrobat 2.0 and 2.1 viewers, the standard security handler uses the empty string if there is no owner password in step 1 of Algorithm 3.3. 3.5.4, “Crypt Filters” 28. In Acrobat 6.0, crypt filter usage is limited to allowing document-level metadata streams to be left as plaintext in an otherwise encrypted document. In Acrobat 7.0, crypt filter usage also includes the ability to encrypt embedded files while leaving the remainder of the document as plaintext. 29. In Acrobat 6.0 and later, when strings and streams in an encrypted document are edited, those streams and strings are encrypted with the StmF and StrF filters, respectively. In Acrobat 7.0, if the EFF entry in the encryption dictionary is set, embedded files are encrypted with the crypt filter  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1103.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">S E C T I O N H .3</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1103</span></div>
+<div class="pos" id="*49:486" style="top:49;left:486"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Implementation Notes</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><a href="pg_0115.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">3.5, “Encryption”</span></a></div>
+<div class="pos" id="*127:144" style="top:127;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">22. An option to use an unpublished algorithm was needed because of an ex-</span></div>
+<div class="pos" id="*145:174" style="top:145;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">port requirement of the U.S. Department of Commerce. This requirement</span></div>
+<div class="pos" id="*163:174" style="top:163;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">no longer exists. Acrobat 7.0 does not use this algorithm to encrypt docu-</span></div>
+<div class="pos" id="*181:174" style="top:181;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ments, although it can decrypt files that are encrypted with the algorithm.</span></div>
+<div class="pos" id="*208:144" style="top:208;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">23. Acrobat viewers will fail to open a document encrypted with a</span></div>
+<div class="pos" id="*208:539" style="top:208;left:539"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">V</span></div>
+<div class="pos" id="*208:551" style="top:208;left:551"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value de-</span></div>
+<div class="pos" id="*226:174" style="top:226;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">fined in a version of PDF that the viewer does not understand.</span></div>
+<div class="pos" id="*252:144" style="top:252;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">24. Security handlers are responsible for protecting the value of</span></div>
+<div class="pos" id="*253:548" style="top:253;left:548"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">EFF</span></div>
+<div class="pos" id="*252:575" style="top:252;left:575"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">from</span></div>
+<div class="pos" id="*270:174" style="top:270;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tampering if needed. Acrobat security handlers do not provide this pro-</span></div>
+<div class="pos" id="*288:174" style="top:288;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tection.</span></div>
+<div class="pos" id="*331:133" style="top:331;left:133"><a href="pg_0120.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">3.5.2, “Standard Security Handler” (Standard Encryption Dictionary)</span></a></div>
+<div class="pos" id="*360:144" style="top:360;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">25. Acrobat viewers implement this limited mode of printing as “Print As Im-</span></div>
+<div class="pos" id="*378:174" style="top:378;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">age,” except on UNIX systems, where this feature is not available.</span></div>
+<div class="pos" id="*421:133" style="top:421;left:133"><a href="pg_0120.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">3.5.2, “Standard Security Handler” (Encryption Key Algorithm)</span></a></div>
+<div class="pos" id="*449:144" style="top:449;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">26. The first element of the</span></div>
+<div class="pos" id="*450:321" style="top:450;left:321"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ID</span></div>
+<div class="pos" id="*449:338" style="top:449;left:338"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array generally remains the same for a given</span></div>
+<div class="pos" id="*467:174" style="top:467;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">document. However, in some situations, Acrobat may regenerate the</span></div>
+<div class="pos" id="*468:591" style="top:468;left:591"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ID</span></div>
+<div class="pos" id="*485:174" style="top:485;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array if a new generation of a document is created. Security handlers are</span></div>
+<div class="pos" id="*504:174" style="top:504;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">encouraged not to rely on the</span></div>
+<div class="pos" id="*504:349" style="top:504;left:349"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ID</span></div>
+<div class="pos" id="*504:365" style="top:504;left:365"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the encryption key computation.</span></div>
+<div class="pos" id="*547:133" style="top:547;left:133"><a href="pg_0120.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">3.5.2, “Standard Security Handler” (Password Algorithms)</span></a></div>
+<div class="pos" id="*575:144" style="top:575;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">27. In Acrobat 2.0 and 2.1 viewers, the standard security handler uses the</span></div>
+<div class="pos" id="*593:174" style="top:593;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">empty string if there is no owner password in step 1 of Algorithm 3.3.</span></div>
+<div class="pos" id="*636:133" style="top:636;left:133"><a href="pg_0131.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">3.5.4, “Crypt Filters”</span></a></div>
+<div class="pos" id="*665:144" style="top:665;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">28. In Acrobat 6.0, crypt filter usage is limited to allowing document-level</span></div>
+<div class="pos" id="*683:174" style="top:683;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">metadata streams to be left as plaintext in an otherwise encrypted docu-</span></div>
+<div class="pos" id="*701:174" style="top:701;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ment. In Acrobat 7.0, crypt filter usage also includes the ability to encrypt</span></div>
+<div class="pos" id="*719:174" style="top:719;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">embedded files while leaving the remainder of the document as plaintext.</span></div>
+<div class="pos" id="*744:144" style="top:744;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">29. In Acrobat 6.0 and later, when strings and streams in an encrypted docu-</span></div>
+<div class="pos" id="*762:174" style="top:762;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ment are edited, those streams and strings are encrypted with the</span></div>
+<div class="pos" id="*763:574" style="top:763;left:574"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">StmF</span></div>
+<div class="pos" id="*780:174" style="top:780;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*781:200" style="top:781;left:200"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">StrF</span></div>
+<div class="pos" id="*780:226" style="top:780;left:226"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">filters, respectively. In Acrobat 7.0, if the</span></div>
+<div class="pos" id="*781:463" style="top:781;left:463"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">EFF</span></div>
+<div class="pos" id="*780:487" style="top:780;left:487"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the encryp-</span></div>
+<div class="pos" id="*798:174" style="top:798;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion dictionary is set, embedded files are encrypted with the crypt filter</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1102.htm" title="Go to previous page">Previous</a> <a href="pg_1104.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1103);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

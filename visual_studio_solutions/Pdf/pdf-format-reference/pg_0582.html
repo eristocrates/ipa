@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0582.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 8 582 Interactive Features tions” on page 654 and “Remote Go-To Actions” on page 655). In each case, the destination specifies the view of the document to be presented when the outline item or annotation is opened or the action is performed. In addition, the optional OpenAction entry in a document’s catalog (Section 3.6.1, “Document Catalog”) may specify a destination to be displayed when the document is opened. A destination may be specified either explicitly by an array of parameters defining its properties or indirectly by name. Explicit Destinations Table 8.2 shows the allowed syntactic forms for specifying a destination explicitly in a PDF file. In each case, page is an indirect reference to a page object. All coordinate values (left, right, top, and bottom) are expressed in the default user space coordinate system. The page’s bounding box is the smallest rectangle enclosing all of its contents. (If any side of the bounding box lies outside the page’s crop box, the corresponding side of the crop box is used instead; see Section 10.10.1, “Page Boundaries,” for further discussion of the crop box.) Note: No page object can be specified for a destination associated with a remote goto action (see “Remote Go-To Actions” on page 655) because the destination page is in a different PDF document. In this case, the page parameter specifies a page number within the remote document instead of a page object in the current document. TABLE 8.2 Destination syntax SYNTAX MEANING [ page /XYZ left top zoom ] Display the page designated by page, with the coordinates (left, top) positioned at the upper-left corner of the window and the contents of the page magnified by the factor zoom. A null value for any of the parameters left, top, or zoom specifies that the current value of that parameter is to be retained unchanged. A zoom value of 0 has the same meaning as a null value. Display the page designated by page, with its contents magnified just enough to fit the entire page within the window both horizontally and vertically. If the required horizontal and vertical magnification factors are different, use the smaller of the two, centering the page within the window in the other dimension. [ page /Fit ]  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0582.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 8</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">582</span></div>
+<div class="pos" id="*49:497" style="top:49;left:497"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Interactive Features</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><a href="pg_0654.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tions” on page 654 and “Remote Go-To Actions” on page 655). In each case, the</span></a></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">destination specifies the view of the document to be presented when the outline</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">item or annotation is opened or the action is performed. In addition, the optional</span></div>
+<div class="pos" id="*154:133" style="top:154;left:133"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">OpenAction</span></div>
+<div class="pos" id="*153:208" style="top:153;left:208"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in a document’s catalog (Section 3.6.1, “Document Catalog”)</span></div>
+<div class="pos" id="*171:133" style="top:171;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">may specify a destination to be displayed when the document is opened. A desti-</span></div>
+<div class="pos" id="*189:133" style="top:189;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nation may be specified either explicitly by an array of parameters defining its</span></div>
+<div class="pos" id="*207:133" style="top:207;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">properties or indirectly by name.</span></div>
+<div class="pos" id="*250:133" style="top:250;left:133"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Explicit Destinations</span></div>
+<div class="pos" id="*287:133" style="top:287;left:133"><a href="pg_0582.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Table 8.2 shows the allowed syntactic forms for specifying a destination explicitly</span></a></div>
+<div class="pos" id="*305:133" style="top:305;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in a PDF file. In each case,</span></div>
+<div class="pos" id="*306:288" style="top:306;left:288"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">page</span></div>
+<div class="pos" id="*305:319" style="top:305;left:319"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is an indirect reference to a page object. All coor-</span></div>
+<div class="pos" id="*323:133" style="top:323;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dinate values (</span></div>
+<div class="pos" id="*324:218" style="top:324;left:218"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">left</span></div>
+<div class="pos" id="*323:236" style="top:323;left:236"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*324:243" style="top:324;left:243"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">right</span></div>
+<div class="pos" id="*323:269" style="top:323;left:269"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*324:277" style="top:324;left:277"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">top</span></div>
+<div class="pos" id="*323:294" style="top:323;left:294"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*324:328" style="top:324;left:328"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">bottom</span></div>
+<div class="pos" id="*323:368" style="top:323;left:368"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) are expressed in the default user space</span></div>
+<div class="pos" id="*341:133" style="top:341;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">coordinate system. The page’s</span></div>
+<div class="pos" id="*341:308" style="top:341;left:308"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">bounding box</span></div>
+<div class="pos" id="*341:389" style="top:341;left:389"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is the smallest rectangle enclosing all</span></div>
+<div class="pos" id="*359:133" style="top:359;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of its contents. (If any side of the bounding box lies outside the page’s crop box,</span></div>
+<div class="pos" id="*377:133" style="top:377;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the corresponding side of the crop box is used instead; see Section 10.10.1, “Page</span></div>
+<div class="pos" id="*395:133" style="top:395;left:133"><a href="pg_0962.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Boundaries,” for further discussion of the crop box.)</span></a></div>
+<div class="pos" id="*430:133" style="top:430;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*430:168" style="top:430;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">No page object can be specified for a destination associated with a remote go-</span></div>
+<div class="pos" id="*448:133" style="top:448;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">to action (see “Remote Go-To Actions” on page 655) because the destination page is</span></div>
+<div class="pos" id="*466:133" style="top:466;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">in a different PDF document. In this case, the</span></div>
+<div class="pos" id="*467:391" style="top:467;left:391"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">page</span></div>
+<div class="pos" id="*466:422" style="top:466;left:422"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">parameter specifies a page num-</span></div>
+<div class="pos" id="*484:133" style="top:484;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">ber within the remote document instead of a page object in the current document.</span></div>
+<div class="pos" id="*527:287" style="top:527;left:287"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 8.2 Destination syntax</span></div>
+<div class="pos" id="*548:74" style="top:548;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">SYNTAX</span></div>
+<div class="pos" id="*548:258" style="top:548;left:258"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">MEANING</span></div>
+<div class="pos" id="*574:74" style="top:574;left:74"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[</span></div>
+<div class="pos" id="*574:79" style="top:574;left:79"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">page</span></div>
+<div class="pos" id="*574:110" style="top:574;left:110"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/XYZ</span></div>
+<div class="pos" id="*574:140" style="top:574;left:140"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">left top zoom</span></div>
+<div class="pos" id="*574:206" style="top:574;left:206"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*574:258" style="top:574;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Display the page designated by</span></div>
+<div class="pos" id="*575:433" style="top:575;left:433"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">page</span></div>
+<div class="pos" id="*574:458" style="top:574;left:458"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, with the coordinates (</span></div>
+<div class="pos" id="*575:587" style="top:575;left:587"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">left</span></div>
+<div class="pos" id="*574:603" style="top:574;left:603"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*575:609" style="top:575;left:609"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">top</span></div>
+<div class="pos" id="*574:625" style="top:574;left:625"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) posi-</span></div>
+<div class="pos" id="*591:258" style="top:591;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tioned at the upper-left corner of the window and the contents of the page</span></div>
+<div class="pos" id="*607:258" style="top:607;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">magnified by the factor</span></div>
+<div class="pos" id="*608:384" style="top:608;left:384"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">zoom</span></div>
+<div class="pos" id="*607:412" style="top:607;left:412"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. A null value for any of the parameters</span></div>
+<div class="pos" id="*608:621" style="top:608;left:621"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">left</span></div>
+<div class="pos" id="*607:637" style="top:607;left:637"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*608:643" style="top:608;left:643"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">top</span></div>
+<div class="pos" id="*607:659" style="top:607;left:659"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*624:258" style="top:624;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*625:272" style="top:625;left:272"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">zoom</span></div>
+<div class="pos" id="*624:302" style="top:624;left:302"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specifies that the current value of that parameter is to be retained un-</span></div>
+<div class="pos" id="*641:258" style="top:641;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">changed. A</span></div>
+<div class="pos" id="*642:320" style="top:642;left:320"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">zoom</span></div>
+<div class="pos" id="*641:350" style="top:641;left:350"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value of 0 has the same meaning as a null value.</span></div>
+<div class="pos" id="*669:258" style="top:669;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Display the page designated by</span></div>
+<div class="pos" id="*670:423" style="top:670;left:423"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">page</span></div>
+<div class="pos" id="*669:448" style="top:669;left:448"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, with its contents magnified just enough</span></div>
+<div class="pos" id="*686:258" style="top:686;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to fit the entire page within the window both horizontally and vertically. If</span></div>
+<div class="pos" id="*703:258" style="top:703;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the required horizontal and vertical magnification factors are different, use</span></div>
+<div class="pos" id="*719:258" style="top:719;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the smaller of the two, centering the page within the window in the other</span></div>
+<div class="pos" id="*736:258" style="top:736;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dimension.</span></div>
+<div class="pos" id="*669:74" style="top:669;left:74"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[</span></div>
+<div class="pos" id="*669:79" style="top:669;left:79"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">page</span></div>
+<div class="pos" id="*669:110" style="top:669;left:110"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/Fit ]</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0581.htm" title="Go to previous page">Previous</a> <a href="pg_0583.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(582);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

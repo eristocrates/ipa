@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0340.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 4 340 Graphics TABLE 4.39 Additional entries specific to an image dictionary KEY TYPE VALUE Type name name integer integer name or array (Optional) The type of PDF object that this dictionary describes; if present, must be XObject for an image XObject. (Required) The type of XObject that this dictionary describes; must be Image for an image XObject. (Required) The width of the image, in samples. (Required) The height of the image, in samples. (Required for images, except those that use the JPXDecode filter; not allowed for image masks) The color space in which image samples are specified; it can be any type of color space except Pattern. If the image uses the JPXDecode filter, this entry is optional: Subtype Width Height ColorSpace • If ColorSpace is present, any color space specifications in the JPEG2000 data are ignored. • If ColorSpace is absent, the color space specifications in the JPEG2000 data are used. The Decode array is also ignored unless ImageMask is true. BitsPerComponent integer (Required except for image masks and images that use the JPXDecode filter) The number of bits used to represent each color component. Only a single value may be specified; the number of bits is the same for all color components. Valid values are 1, 2, 4, 8, and (in PDF 1.5) 16. If ImageMask is true, this entry is optional, and if specified, its value must be 1. If the image stream uses a filter, the value of BitsPerComponent must be consistent with the size of the data samples that the filter delivers. In particular, a CCITTFaxDecode or JBIG2Decode filter always delivers 1-bit samples, a RunLengthDecode or DCTDecode filter delivers 8-bit samples, and an LZWDecode or FlateDecode filter delivers samples of a specified size if a predictor function is used. If the image stream uses the JPXDecode filter, this entry is optional and ignored if present. The bit depth is determined in the process of decoding the JPEG2000 image. Intent name (Optional; PDF 1.1) The name of a color rendering intent to be used in rendering the image (see “Rendering Intents” on page 260). Default value: the current rendering intent in the graphics state.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0340.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 4</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">340</span></div>
+<div class="pos" id="*49:556" style="top:49;left:556"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Graphics</span></div>
+<div class="pos" id="*113:202" style="top:113;left:202"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 4.39 Additional entries specific to an image dictionary</span></div>
+<div class="pos" id="*133:74" style="top:133;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*133:191" style="top:133;left:191"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*133:274" style="top:133;left:274"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*160:74" style="top:160;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Type</span></div>
+<div class="pos" id="*160:191" style="top:160;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name</span></div>
+<div class="pos" id="*205:191" style="top:205;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name</span></div>
+<div class="pos" id="*250:191" style="top:250;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">integer</span></div>
+<div class="pos" id="*278:191" style="top:278;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">integer</span></div>
+<div class="pos" id="*307:191" style="top:307;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name or</span></div>
+<div class="pos" id="*323:191" style="top:323;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array</span></div>
+<div class="pos" id="*160:274" style="top:160;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*160:336" style="top:160;left:336"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The type of PDF object that this dictionary describes; if</span></div>
+<div class="pos" id="*176:274" style="top:176;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">present, must be</span></div>
+<div class="pos" id="*177:364" style="top:177;left:364"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">XObject</span></div>
+<div class="pos" id="*176:409" style="top:176;left:409"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for an image XObject.</span></div>
+<div class="pos" id="*205:274" style="top:205;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*205:334" style="top:205;left:334"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The type of XObject that this dictionary describes; must be</span></div>
+<div class="pos" id="*222:274" style="top:222;left:274"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Image</span></div>
+<div class="pos" id="*221:310" style="top:221;left:310"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for an image XObject.</span></div>
+<div class="pos" id="*250:274" style="top:250;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*250:332" style="top:250;left:332"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The width of the image, in samples.</span></div>
+<div class="pos" id="*278:274" style="top:278;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required)</span></div>
+<div class="pos" id="*278:332" style="top:278;left:332"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The height of the image, in samples.</span></div>
+<div class="pos" id="*307:274" style="top:307;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required for images, except those that use the</span></div>
+<div class="pos" id="*307:513" style="top:307;left:513"><span id="*11" style="font-style:italic;font-weight:700;font-size:11px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">JPXDecode</span></div>
+<div class="pos" id="*307:572" style="top:307;left:572"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">filter; not allowed</span></div>
+<div class="pos" id="*323:274" style="top:323;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">for image masks)</span></div>
+<div class="pos" id="*323:366" style="top:323;left:366"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The color space in which image samples are specified; it</span></div>
+<div class="pos" id="*340:274" style="top:340;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">can be any type of color space except</span></div>
+<div class="pos" id="*341:471" style="top:341;left:471"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Pattern</span></div>
+<div class="pos" id="*340:509" style="top:340;left:509"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*365:274" style="top:365;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If the image uses the</span></div>
+<div class="pos" id="*366:385" style="top:366;left:385"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">JPXDecode</span></div>
+<div class="pos" id="*365:447" style="top:365;left:447"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">filter, this entry is optional:</span></div>
+<div class="pos" id="*205:74" style="top:205;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Subtype</span></div>
+<div class="pos" id="*250:74" style="top:250;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Width</span></div>
+<div class="pos" id="*278:74" style="top:278;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Height</span></div>
+<div class="pos" id="*307:74" style="top:307;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ColorSpace</span></div>
+<div class="pos" id="*387:274" style="top:387;left:274"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*390:287" style="top:390;left:287"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If</span></div>
+<div class="pos" id="*391:298" style="top:391;left:298"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ColorSpace</span></div>
+<div class="pos" id="*390:361" style="top:390;left:361"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is present, any color space specifications in the JPEG2000</span></div>
+<div class="pos" id="*407:287" style="top:407;left:287"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">data are ignored.</span></div>
+<div class="pos" id="*428:274" style="top:428;left:274"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*432:287" style="top:432;left:287"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If</span></div>
+<div class="pos" id="*432:299" style="top:432;left:299"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ColorSpace</span></div>
+<div class="pos" id="*432:362" style="top:432;left:362"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is absent, the color space specifications in the JPEG2000</span></div>
+<div class="pos" id="*448:287" style="top:448;left:287"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">data are used. The</span></div>
+<div class="pos" id="*449:392" style="top:449;left:392"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Decode</span></div>
+<div class="pos" id="*448:436" style="top:448;left:436"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array is also ignored unless</span></div>
+<div class="pos" id="*449:589" style="top:449;left:589"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ImageMask</span></div>
+<div class="pos" id="*448:654" style="top:448;left:654"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is</span></div>
+<div class="pos" id="*466:287" style="top:466;left:287"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*465:309" style="top:465;left:309"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*494:74" style="top:494;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BitsPerComponent</span></div>
+<div class="pos" id="*494:191" style="top:494;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">integer</span></div>
+<div class="pos" id="*494:274" style="top:494;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Required except for image masks and images that use the</span></div>
+<div class="pos" id="*494:574" style="top:494;left:574"><span id="*11" style="font-style:italic;font-weight:700;font-size:11px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">JPXDecode</span></div>
+<div class="pos" id="*494:633" style="top:494;left:633"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">filter)</span></div>
+<div class="pos" id="*510:274" style="top:510;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The number of bits used to represent each color component. Only a single</span></div>
+<div class="pos" id="*527:274" style="top:527;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value may be specified; the number of bits is the same for all color compo-</span></div>
+<div class="pos" id="*544:274" style="top:544;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nents. Valid values are 1, 2, 4, 8, and (in PDF 1.5) 16. If</span></div>
+<div class="pos" id="*544:563" style="top:544;left:563"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ImageMask</span></div>
+<div class="pos" id="*544:626" style="top:544;left:626"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is</span></div>
+<div class="pos" id="*544:637" style="top:544;left:637"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*544:659" style="top:544;left:659"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*560:274" style="top:560;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">this entry is optional, and if specified, its value must be 1.</span></div>
+<div class="pos" id="*585:274" style="top:585;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If the image stream uses a filter, the value of</span></div>
+<div class="pos" id="*586:517" style="top:586;left:517"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BitsPerComponent</span></div>
+<div class="pos" id="*585:619" style="top:585;left:619"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">must be</span></div>
+<div class="pos" id="*602:274" style="top:602;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">consistent with the size of the data samples that the filter delivers. In par-</span></div>
+<div class="pos" id="*619:274" style="top:619;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ticular, a</span></div>
+<div class="pos" id="*619:322" style="top:619;left:322"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CCITTFaxDecode</span></div>
+<div class="pos" id="*619:413" style="top:619;left:413"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*619:427" style="top:619;left:427"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">JBIG2Decode</span></div>
+<div class="pos" id="*619:500" style="top:619;left:500"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">filter always delivers 1-bit sam-</span></div>
+<div class="pos" id="*635:274" style="top:635;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ples, a</span></div>
+<div class="pos" id="*636:311" style="top:636;left:311"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">RunLengthDecode</span></div>
+<div class="pos" id="*635:412" style="top:635;left:412"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*636:427" style="top:636;left:427"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DCTDecode</span></div>
+<div class="pos" id="*635:493" style="top:635;left:493"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">filter delivers 8-bit samples, and</span></div>
+<div class="pos" id="*652:274" style="top:652;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">an</span></div>
+<div class="pos" id="*653:291" style="top:653;left:291"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">LZWDecode</span></div>
+<div class="pos" id="*652:358" style="top:652;left:358"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*653:372" style="top:653;left:372"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">FlateDecode</span></div>
+<div class="pos" id="*652:441" style="top:652;left:441"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">filter delivers samples of a specified size if</span></div>
+<div class="pos" id="*669:274" style="top:669;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">a predictor function is used.</span></div>
+<div class="pos" id="*694:274" style="top:694;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If the image stream uses the</span></div>
+<div class="pos" id="*694:423" style="top:694;left:423"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">JPXDecode</span></div>
+<div class="pos" id="*694:484" style="top:694;left:484"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">filter, this entry is optional and ig-</span></div>
+<div class="pos" id="*710:274" style="top:710;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nored if present. The bit depth is determined in the process of decoding</span></div>
+<div class="pos" id="*727:274" style="top:727;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the JPEG2000 image.</span></div>
+<div class="pos" id="*755:74" style="top:755;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Intent</span></div>
+<div class="pos" id="*755:191" style="top:755;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name</span></div>
+<div class="pos" id="*755:274" style="top:755;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional; PDF 1.1)</span></div>
+<div class="pos" id="*755:383" style="top:755;left:383"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The name of a color rendering intent to be used in</span></div>
+<div class="pos" id="*772:274" style="top:772;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rendering the image (see “Rendering Intents” on page 260). Default value:</span></div>
+<div class="pos" id="*789:274" style="top:789;left:274"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the current rendering intent in the graphics state.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0339.htm" title="Go to previous page">Previous</a> <a href="pg_0341.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(340);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0520.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 7 520 Transparency 7.2.4 Blend Mode In principle, the blend function B (Cb , Cs ), used in the compositing formula to customize the blending operation, could be any function of the backdrop and source colors that yields another color, Cr, for the result. PDF defines a standard set of named blend functions, or blend modes, listed in Tables 7.2 and 7.3. Plates 18 and 19 illustrate the resulting visual effects for RGB and CMYK colors, respectively. A blend mode is termed separable if each component of the result color is completely determined by the corresponding components of the constituent backdrop and source colors—that is, if the blend mode function B is applied separately to each set of corresponding components: cr = B ( cb , cs ) where the lowercase variables cr, cb , and cs denote corresponding components of the colors Cr, Cb , and Cs , expressed in additive form. (Theoretically, a blend mode could have a different function for each color component and still be separable; however, none of the standard PDF blend modes have this property.) A separable blend mode can be used with any color space, since it applies independently to any number of components. Only separable blend modes can be used for blending spot colors. Table 7.2 lists the standard separable blend modes available in PDF. TABLE 7.2 Standard separable blend modes NAME RESULT Normal Selects the source color, ignoring the backdrop: B ( cb , cs ) = cs Multiply Multiplies the backdrop and source color values: B ( cb , cs ) = cb × cs The result color is always at least as dark as either of the two constituent colors. Multiplying any color with black produces black; multiplying with white leaves the original color unchanged. Painting successive overlapping objects with a color other than black or white produces progressively darker colors.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0520.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 7</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">520</span></div>
+<div class="pos" id="*49:532" style="top:49;left:532"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Transparency</span></div>
+<div class="pos" id="*99:88" style="top:99;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">7.2.4 Blend Mode</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">In principle, the blend function</span></div>
+<div class="pos" id="*135:326" style="top:135;left:326"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*135:336" style="top:135;left:336"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(C</span></div>
+<div class="pos" id="*142:350" style="top:142;left:350"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*135:357" style="top:135;left:357"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*135:363" style="top:135;left:363"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*142:373" style="top:142;left:373"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*135:378" style="top:135;left:378"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">), used in the compositing formula to</span></div>
+<div class="pos" id="*154:133" style="top:154;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">customize the blending operation, could be any function of the backdrop and</span></div>
+<div class="pos" id="*172:133" style="top:172;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">source colors that yields another color,</span></div>
+<div class="pos" id="*172:363" style="top:172;left:363"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*178:372" style="top:178;left:372"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*172:377" style="top:172;left:377"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, for the result. PDF defines a standard</span></div>
+<div class="pos" id="*190:133" style="top:190;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">set of named blend functions, or</span></div>
+<div class="pos" id="*190:328" style="top:190;left:328"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">blend modes,</span></div>
+<div class="pos" id="*190:407" style="top:190;left:407"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">listed in Tables 7.2 and 7.3. Plates</span></div>
+<div class="pos" id="*208:133" style="top:208;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">18 and 19 illustrate the resulting visual effects for</span></div>
+<div class="pos" id="*208:421" style="top:208;left:421"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*208:451" style="top:208;left:451"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*208:476" style="top:208;left:476"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*208:520" style="top:208;left:520"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">colors, respec-</span></div>
+<div class="pos" id="*226:133" style="top:226;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tively.</span></div>
+<div class="pos" id="*260:133" style="top:260;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A blend mode is termed</span></div>
+<div class="pos" id="*260:281" style="top:260;left:281"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">separable</span></div>
+<div class="pos" id="*260:338" style="top:260;left:338"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">if each component of the result color is com-</span></div>
+<div class="pos" id="*279:133" style="top:279;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">pletely determined by the corresponding components of the constituent back-</span></div>
+<div class="pos" id="*297:133" style="top:297;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">drop and source colors—that is, if the blend mode function</span></div>
+<div class="pos" id="*297:527" style="top:297;left:527"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*297:544" style="top:297;left:544"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is applied</span></div>
+<div class="pos" id="*315:133" style="top:315;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">separately to each set of corresponding components:</span></div>
+<div class="pos" id="*344:134" style="top:344;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*351:140" style="top:351;left:140"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*341:152" style="top:341;left:152"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*344:168" style="top:344;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*341:178" style="top:341;left:178"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">(</span></div>
+<div class="pos" id="*344:184" style="top:344;left:184"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*351:190" style="top:351;left:190"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*340:197" style="top:340;left:197"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*344:205" style="top:344;left:205"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*351:211" style="top:351;left:211"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*341:218" style="top:341;left:218"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">)</span></div>
+<div class="pos" id="*383:133" style="top:383;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">where the lowercase variables</span></div>
+<div class="pos" id="*383:309" style="top:383;left:309"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*389:315" style="top:389;left:315"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*383:320" style="top:383;left:320"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*383:327" style="top:383;left:327"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*389:332" style="top:389;left:332"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*383:339" style="top:383;left:339"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*383:371" style="top:383;left:371"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*389:377" style="top:389;left:377"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*383:385" style="top:383;left:385"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">denote corresponding components of</span></div>
+<div class="pos" id="*401:133" style="top:401;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the colors</span></div>
+<div class="pos" id="*401:198" style="top:401;left:198"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*407:207" style="top:407;left:207"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*401:212" style="top:401;left:212"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*401:221" style="top:401;left:221"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*407:230" style="top:407;left:230"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*401:237" style="top:401;left:237"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*401:274" style="top:401;left:274"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*407:283" style="top:407;left:283"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*401:289" style="top:401;left:289"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, expressed in additive form. (Theoretically, a blend</span></div>
+<div class="pos" id="*419:133" style="top:419;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">mode could have a different function for each color component and still be sepa-</span></div>
+<div class="pos" id="*437:133" style="top:437;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rable; however, none of the standard PDF blend modes have this property.) A</span></div>
+<div class="pos" id="*455:133" style="top:455;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">separable blend mode can be used with any color space, since it applies indepen-</span></div>
+<div class="pos" id="*473:133" style="top:473;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dently to any number of components. Only separable blend modes can be used</span></div>
+<div class="pos" id="*491:133" style="top:491;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for blending spot colors.</span></div>
+<div class="pos" id="*526:133" style="top:526;left:133"><a href="pg_0520.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Table 7.2 lists the standard separable blend modes available in PDF.</span></a></div>
+<div class="pos" id="*569:248" style="top:569;left:248"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 7.2 Standard separable blend modes</span></div>
+<div class="pos" id="*590:74" style="top:590;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">NAME</span></div>
+<div class="pos" id="*590:191" style="top:590;left:191"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">RESULT</span></div>
+<div class="pos" id="*617:74" style="top:617;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Normal</span></div>
+<div class="pos" id="*616:191" style="top:616;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Selects the source color, ignoring the backdrop:</span></div>
+<div class="pos" id="*639:209" style="top:639;left:209"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*637:218" style="top:637;left:218"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">(</span></div>
+<div class="pos" id="*639:224" style="top:639;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*646:229" style="top:646;left:229"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*636:236" style="top:636;left:236"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*639:243" style="top:639;left:243"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*646:248" style="top:646;left:248"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*637:255" style="top:637;left:255"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">) =</span></div>
+<div class="pos" id="*639:280" style="top:639;left:280"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*646:286" style="top:646;left:286"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*675:74" style="top:675;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Multiply</span></div>
+<div class="pos" id="*674:191" style="top:674;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Multiplies the backdrop and source color values:</span></div>
+<div class="pos" id="*700:209" style="top:700;left:209"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*697:218" style="top:697;left:218"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">(</span></div>
+<div class="pos" id="*700:224" style="top:700;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*706:229" style="top:706;left:229"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*696:236" style="top:696;left:236"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*700:243" style="top:700;left:243"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*706:248" style="top:706;left:248"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*697:255" style="top:697;left:255"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">) =</span></div>
+<div class="pos" id="*700:280" style="top:700;left:280"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*706:286" style="top:706;left:286"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*696:294" style="top:696;left:294"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*700:305" style="top:700;left:305"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*706:310" style="top:706;left:310"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*727:191" style="top:727;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The result color is always at least as dark as either of the two constituent colors. Multiply-</span></div>
+<div class="pos" id="*744:191" style="top:744;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ing any color with black produces black; multiplying with white leaves the original color</span></div>
+<div class="pos" id="*760:191" style="top:760;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">unchanged. Painting successive overlapping objects with a color other than black or white</span></div>
+<div class="pos" id="*777:191" style="top:777;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">produces progressively darker colors.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0519.htm" title="Go to previous page">Previous</a> <a href="pg_0521.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(520);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

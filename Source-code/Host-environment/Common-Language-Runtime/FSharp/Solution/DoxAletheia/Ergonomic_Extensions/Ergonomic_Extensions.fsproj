@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  
+	  <Compile Include="ConversionErgonomics.fs" />	  
+	  <Compile Include="BooleanExtensions.fs" />
+	  <Compile Include="ByteExtensions.fs" />
+    <Compile Include="RuneExtensions.fs" />
+    <Compile Include="StringExtensions.fs" />
+    
+    <Compile Include="IntervalErgonomics.fs" />
+	  <Compile Include="ArrayExtensions.fs" />
+	  <Compile Include="DiagnosticsErgonomics.fs" />
+	  <Compile Include="XParsecExtensions.fs" />
+	  <Compile Include="GrammarErgonomics.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    
+    <PackageReference Include="FRange" Version="1.1.0" />
+	  <PackageReference Include="NeatIntervals" Version="1.0.0" />
+	  <PackageReference Include="XParsec" Version="1.0.0" />
+	  <PackageReference Include="FSharp.UMX" Version="1.1.0" />
+	  <PackageReference Include="FSharp.Units" Version="1.0.15" />
+   
+  </ItemGroup>    
+  
+
+</Project>

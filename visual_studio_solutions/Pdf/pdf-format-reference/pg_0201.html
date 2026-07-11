@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0201.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 4.2 201 Coordinate Systems The user space coordinate system is initialized to a default state for each page of a document. The CropBox entry in the page dictionary specifies the rectangle of user space corresponding to the visible area of the intended output medium (display window or printed page). The positive x axis extends horizontally to the right and the positive y axis vertically upward, as in standard mathematical practice (subject to alteration by the Rotate entry in the page dictionary). The length of a unit along both the x and y axes is set by the UserUnit entry (PDF 1.6) in the page dictionary (see Table 3.27). If that entry is not present or supported, the default value of 1 ⁄ 72 inch is used. This coordinate system is called default user space. Note: In PostScript, the origin of default user space always corresponds to the lowerleft corner of the output medium. While this convention is common in PDF documents as well, it is not required; the page dictionary’s CropBox entry can specify any rectangle of default user space to be made visible on the medium. Note: The default for the size of the unit in default user space (1 ⁄ 72 inch) is approximately the same as a point, a unit widely used in the printing industry. It is not exactly the same, however; there is no universal definition of a point. Conceptually, user space is an infinite plane. Only a small portion of this plane corresponds to the imageable area of the output device: a rectangular region defined by the CropBox entry in the page dictionary. The region of default user space that is viewed or printed can be different for each page and is described in Section 10.10.1, “Page Boundaries.” Note: Because coordinates in user space (as in any other coordinate space) may be specified as either integers or real numbers, the unit size in default user space does not constrain positions to any arbitrary grid. The resolution of coordinates in user space is not related in any way to the resolution of pixels in device space. The transformation from user space to device space is defined by the current transformation matrix (CTM), an element of the PDF graphics state (see Section 4.3, “Graphics State”). A PDF consumer application can adjust the CTM for the native resolution of a particular output device, maintaining the deviceindependence of the PDF page description. Figure 4.3 shows how this allows an object specified in user space to appear the same regardless of the device on which it is rendered. The default user space provides a consistent, dependable starting place for PDF page descriptions regardless of the output device used. If necessary, a PDF con-  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0201.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 4.2</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">201</span></div>
+<div class="pos" id="*49:499" style="top:49;left:499"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Coordinate Systems</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The user space coordinate system is initialized to a default state for each page of a</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">document. The</span></div>
+<div class="pos" id="*117:228" style="top:117;left:228"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CropBox</span></div>
+<div class="pos" id="*117:283" style="top:117;left:283"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the page dictionary specifies the rectangle of</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">user space corresponding to the visible area of the intended output medium (dis-</span></div>
+<div class="pos" id="*153:133" style="top:153;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">play window or printed page). The positive</span></div>
+<div class="pos" id="*153:401" style="top:153;left:401"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*153:414" style="top:153;left:414"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">axis extends horizontally to the</span></div>
+<div class="pos" id="*171:133" style="top:171;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">right and the positive</span></div>
+<div class="pos" id="*171:261" style="top:171;left:261"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*171:271" style="top:171;left:271"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">axis vertically upward, as in standard mathematical prac-</span></div>
+<div class="pos" id="*189:133" style="top:189;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tice (subject to alteration by the</span></div>
+<div class="pos" id="*190:322" style="top:190;left:322"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Rotate</span></div>
+<div class="pos" id="*189:364" style="top:189;left:364"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the page dictionary). The length</span></div>
+<div class="pos" id="*207:133" style="top:207;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of a unit along both the</span></div>
+<div class="pos" id="*207:274" style="top:207;left:274"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*207:284" style="top:207;left:284"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*207:310" style="top:207;left:310"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*207:320" style="top:207;left:320"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">axes is set by the</span></div>
+<div class="pos" id="*208:420" style="top:208;left:420"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UserUnit</span></div>
+<div class="pos" id="*207:475" style="top:207;left:475"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry</span></div>
+<div class="pos" id="*207:510" style="top:207;left:510"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.6)</span></div>
+<div class="pos" id="*207:570" style="top:207;left:570"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the</span></div>
+<div class="pos" id="*225:133" style="top:225;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">page dictionary (see Table 3.27). If that entry is not present or supported, the de-</span></div>
+<div class="pos" id="*243:133" style="top:243;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">fault value of 1</span></div>
+<div class="pos" id="*240:218" style="top:240;left:218"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⁄</span></div>
+<div class="pos" id="*243:222" style="top:243;left:222"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">72 inch is used. This coordinate system is called</span></div>
+<div class="pos" id="*243:498" style="top:243;left:498"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">default user space.</span></div>
+<div class="pos" id="*278:133" style="top:278;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*278:167" style="top:278;left:167"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">In PostScript, the origin of default user space always corresponds to the lower-</span></div>
+<div class="pos" id="*296:133" style="top:296;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">left corner of the output medium. While this convention is common in PDF docu-</span></div>
+<div class="pos" id="*314:133" style="top:314;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">ments as well, it is not required; the page dictionary’s</span></div>
+<div class="pos" id="*315:434" style="top:315;left:434"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">CropBox</span></div>
+<div class="pos" id="*314:485" style="top:314;left:485"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">entry can specify any</span></div>
+<div class="pos" id="*332:133" style="top:332;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">rectangle of default user space to be made visible on the medium.</span></div>
+<div class="pos" id="*367:133" style="top:367;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*367:168" style="top:367;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">The default for the size of the unit in default user space (1</span></div>
+<div class="pos" id="*362:494" style="top:362;left:494"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">⁄</span></div>
+<div class="pos" id="*367:497" style="top:367;left:497"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">72 inch) is approx-</span></div>
+<div class="pos" id="*385:133" style="top:385;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">imately the same as a</span></div>
+<div class="pos" id="*385:257" style="top:385;left:257"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">point,</span></div>
+<div class="pos" id="*385:295" style="top:385;left:295"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">a unit widely used in the printing industry. It is not ex-</span></div>
+<div class="pos" id="*403:133" style="top:403;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">actly the same, however; there is no universal definition of a point.</span></div>
+<div class="pos" id="*438:133" style="top:438;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Conceptually, user space is an infinite plane. Only a small portion of this plane</span></div>
+<div class="pos" id="*456:133" style="top:456;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">corresponds to the imageable area of the output device: a rectangular region de-</span></div>
+<div class="pos" id="*474:133" style="top:474;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">fined by the</span></div>
+<div class="pos" id="*474:212" style="top:474;left:212"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CropBox</span></div>
+<div class="pos" id="*474:267" style="top:474;left:267"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the page dictionary. The region of default user</span></div>
+<div class="pos" id="*492:133" style="top:492;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space that is viewed or printed can be different for each page and is described in</span></div>
+<div class="pos" id="*510:133" style="top:510;left:133"><a href="pg_0962.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Section 10.10.1, “Page Boundaries.”</span></a></div>
+<div class="pos" id="*545:133" style="top:545;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*545:168" style="top:545;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Because coordinates in user space (as in any other coordinate space) may be</span></div>
+<div class="pos" id="*563:133" style="top:563;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">specified as either integers or real numbers, the unit size in default user space does</span></div>
+<div class="pos" id="*581:133" style="top:581;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">not constrain positions to any arbitrary grid. The resolution of coordinates in user</span></div>
+<div class="pos" id="*599:133" style="top:599;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">space is not related in any way to the resolution of pixels in device space.</span></div>
+<div class="pos" id="*633:133" style="top:633;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The transformation from user space to device space is defined by the</span></div>
+<div class="pos" id="*633:562" style="top:633;left:562"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">current</span></div>
+<div class="pos" id="*651:133" style="top:651;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">transformation matrix</span></div>
+<div class="pos" id="*651:265" style="top:651;left:265"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(CTM), an element of the PDF graphics state (see Section</span></div>
+<div class="pos" id="*670:133" style="top:670;left:133"><a href="pg_0210.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4.3, “Graphics State”). A PDF consumer application can adjust the CTM for the</span></a></div>
+<div class="pos" id="*688:133" style="top:688;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">native resolution of a particular output device, maintaining the device-</span></div>
+<div class="pos" id="*706:133" style="top:706;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">independence of the PDF page description. Figure 4.3 shows how this allows an</span></div>
+<div class="pos" id="*724:133" style="top:724;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">object specified in user space to appear the same regardless of the device on</span></div>
+<div class="pos" id="*742:133" style="top:742;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">which it is rendered.</span></div>
+<div class="pos" id="*776:133" style="top:776;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The default user space provides a consistent, dependable starting place for PDF</span></div>
+<div class="pos" id="*795:133" style="top:795;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">page descriptions regardless of the output device used. If necessary, a PDF con-</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0200.htm" title="Go to previous page">Previous</a> <a href="pg_0202.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(201);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

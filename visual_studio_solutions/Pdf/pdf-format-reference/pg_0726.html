@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0726.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 8 726 Interactive Features tion of the computation. Transform methods are described in detail in Section 8.7.1, “Transform Methods.” A PDF document may contain the following standard types of signatures: • One or more document (or ordinary) signatures. These signatures appear in signature form fields (see “Signature Fields” on page 695). The signature dictionary corresponding to each signature is the value of the form field (as specified by its V entry). The signature dictionary must contain a ByteRange entry representing a byte range digest, as described above. A signature is validated by recomputing the digest and comparing it with the one stored in the signature. Note: If a signed document is modified and saved by incremental update (see Section 3.4.5, “Incremental Updates”), the data corresponding to the byte range of the original signature is preserved. Therefore, if the signature is valid, it is possible to recreate the state of the document as it existed at the time of signing. • At most one MDP (modification detection and prevention) signature (PDF 1.5), also referred to as an author or certifying signature. The signature dictionary of an MDP signature must be the value of a signature field and must contain a ByteRange entry. It may also be referenced from the DocMDP entry in the permissions dictionary (see Section 8.7.3, “Permissions”). The signature dictionary must contain a signature reference dictionary (see Table 8.103) that has a DocMDP transform method. See “DocMDP” on page 731 for information on how these signatures are created and validated. A signature dictionary for an MDP or ordinary signature may also have a signature reference dictionary with a FieldMDP transform method; see “FieldMDP” on page 736. • At most two usage rights signatures (PDF 1.5). Its signature dictionary is referenced from the UR or UR3 (PDF 1.6) entry in the permissions dictionary (not from a signature field); see Table 8.107. The dictionary must contain a signature reference dictionary that has a UR transform method. See “UR” on page 733 for information on how these signatures are created and validated. • The Sig entry in the catalog of an FDF file (see “FDF Catalog” on page 713) specifies a signature dictionary.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0726.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 8</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">726</span></div>
+<div class="pos" id="*49:497" style="top:49;left:497"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Interactive Features</span></div>
+<div class="pos" id="*99:145" style="top:99;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion of the computation. Transform methods are described in detail in Section</span></div>
+<div class="pos" id="*117:145" style="top:117;left:145"><a href="pg_0731.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8.7.1, “Transform Methods.”</span></a></div>
+<div class="pos" id="*151:133" style="top:151;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A PDF document may contain the following standard types of signatures:</span></div>
+<div class="pos" id="*184:133" style="top:184;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*186:145" style="top:186;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">One or more</span></div>
+<div class="pos" id="*186:222" style="top:186;left:222"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">document</span></div>
+<div class="pos" id="*186:282" style="top:186;left:282"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(or</span></div>
+<div class="pos" id="*186:303" style="top:186;left:303"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">ordinary)</span></div>
+<div class="pos" id="*186:360" style="top:186;left:360"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">signatures. These signatures appear in sig-</span></div>
+<div class="pos" id="*204:145" style="top:204;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nature form fields (see “Signature Fields” on page 695). The signature dictio-</span></div>
+<div class="pos" id="*222:145" style="top:222;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nary corresponding to each signature is the value of the form field (as specified</span></div>
+<div class="pos" id="*240:145" style="top:240;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">by its</span></div>
+<div class="pos" id="*241:179" style="top:241;left:179"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">V</span></div>
+<div class="pos" id="*240:190" style="top:240;left:190"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry). The signature dictionary must contain a</span></div>
+<div class="pos" id="*241:468" style="top:241;left:468"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ByteRange</span></div>
+<div class="pos" id="*240:534" style="top:240;left:534"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry repre-</span></div>
+<div class="pos" id="*258:145" style="top:258;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">senting a byte range digest, as described above. A signature is validated by re-</span></div>
+<div class="pos" id="*276:145" style="top:276;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">computing the digest and comparing it with the one stored in the signature.</span></div>
+<div class="pos" id="*303:145" style="top:303;left:145"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*303:180" style="top:303;left:180"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">If a signed document is modified and saved by incremental update (see Sec-</span></div>
+<div class="pos" id="*321:145" style="top:321;left:145"><a href="pg_0098.htm"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">tion 3.4.5, “Incremental Updates”), the data corresponding to the byte range of the</span></a></div>
+<div class="pos" id="*339:145" style="top:339;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">original signature is preserved. Therefore, if the signature is valid, it is possible to</span></div>
+<div class="pos" id="*357:145" style="top:357;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">recreate the state of the document as it existed at the time of signing.</span></div>
+<div class="pos" id="*381:133" style="top:381;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*383:145" style="top:383;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">At most one</span></div>
+<div class="pos" id="*383:221" style="top:383;left:221"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">MDP (modification detection and prevention)</span></div>
+<div class="pos" id="*383:486" style="top:383;left:486"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">signature (PDF</span></div>
+<div class="pos" id="*383:578" style="top:383;left:578"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">1.5),</span></div>
+<div class="pos" id="*401:145" style="top:401;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">also referred to as an</span></div>
+<div class="pos" id="*401:270" style="top:401;left:270"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">author</span></div>
+<div class="pos" id="*401:311" style="top:401;left:311"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*401:328" style="top:401;left:328"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">certifying</span></div>
+<div class="pos" id="*401:384" style="top:401;left:384"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">signature. The signature dictionary of</span></div>
+<div class="pos" id="*420:145" style="top:420;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">an MDP signature must be the value of a signature field and must contain a</span></div>
+<div class="pos" id="*438:145" style="top:438;left:145"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ByteRange</span></div>
+<div class="pos" id="*438:212" style="top:438;left:212"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry. It may also be referenced from the</span></div>
+<div class="pos" id="*438:453" style="top:438;left:453"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DocMDP</span></div>
+<div class="pos" id="*438:507" style="top:438;left:507"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the per-</span></div>
+<div class="pos" id="*456:145" style="top:456;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">missions dictionary (see Section 8.7.3, “Permissions”). The signature dictio-</span></div>
+<div class="pos" id="*474:145" style="top:474;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nary must contain a signature reference dictionary (see Table 8.103) that has a</span></div>
+<div class="pos" id="*492:145" style="top:492;left:145"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DocMDP</span></div>
+<div class="pos" id="*492:201" style="top:492;left:201"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">transform method. See “DocMDP” on page 731 for information on</span></div>
+<div class="pos" id="*510:145" style="top:510;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">how these signatures are created and validated.</span></div>
+<div class="pos" id="*536:145" style="top:536;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A signature dictionary for an MDP or ordinary signature may also have a sig-</span></div>
+<div class="pos" id="*554:145" style="top:554;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">nature reference dictionary with a</span></div>
+<div class="pos" id="*555:352" style="top:555;left:352"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">FieldMDP</span></div>
+<div class="pos" id="*554:412" style="top:554;left:412"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">transform method; see “FieldM-</span></div>
+<div class="pos" id="*572:145" style="top:572;left:145"><a href="pg_0736.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">DP” on page 736.</span></a></div>
+<div class="pos" id="*596:133" style="top:596;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*599:145" style="top:599;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">At most two</span></div>
+<div class="pos" id="*599:221" style="top:599;left:221"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">usage rights</span></div>
+<div class="pos" id="*599:292" style="top:599;left:292"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">signatures (PDF</span></div>
+<div class="pos" id="*599:390" style="top:599;left:390"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">1.5).</span></div>
+<div class="pos" id="*599:419" style="top:599;left:419"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Its signature dictionary is refer-</span></div>
+<div class="pos" id="*617:145" style="top:617;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">enced from the</span></div>
+<div class="pos" id="*617:239" style="top:617;left:239"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UR</span></div>
+<div class="pos" id="*617:260" style="top:617;left:260"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*617:277" style="top:617;left:277"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UR3</span></div>
+<div class="pos" id="*617:305" style="top:617;left:305"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(PDF</span></div>
+<div class="pos" id="*617:340" style="top:617;left:340"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">1.6)</span></div>
+<div class="pos" id="*617:366" style="top:617;left:366"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the permissions dictionary (not</span></div>
+<div class="pos" id="*635:145" style="top:635;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">from a signature field); see Table 8.107. The dictionary must contain a signa-</span></div>
+<div class="pos" id="*653:145" style="top:653;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ture reference dictionary that has a</span></div>
+<div class="pos" id="*654:359" style="top:654;left:359"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UR</span></div>
+<div class="pos" id="*653:381" style="top:653;left:381"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">transform method. See “UR” on page</span></div>
+<div class="pos" id="*671:145" style="top:671;left:145"><a href="pg_0733.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">733 for information on how these signatures are created and validated.</span></a></div>
+<div class="pos" id="*695:133" style="top:695;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*697:145" style="top:697;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*698:173" style="top:698;left:173"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Sig</span></div>
+<div class="pos" id="*697:196" style="top:697;left:196"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the catalog of an FDF file (see “FDF Catalog” on page 713)</span></div>
+<div class="pos" id="*715:145" style="top:715;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specifies a signature dictionary.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0725.htm" title="Go to previous page">Previous</a> <a href="pg_0727.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(726);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

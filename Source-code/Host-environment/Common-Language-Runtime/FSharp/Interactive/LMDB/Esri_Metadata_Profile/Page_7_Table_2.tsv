@@ -1,0 +1,10 @@
+	Metadata =	
+	0{ESRIInformation}1 +  _	
+	IdentificationInformation +  _	
+	0{DataQualityInformation}1 +  __	
+	0{SpatialDataOrganizationInformation}1 +  ___	
+	0{SpatialReferenceInformation}1 +  __	
+	0{EntityandAttributeInformation}1 +  ___	
+	0{DistributionInformation}n +  _	
+	MetadataReferenceInformation +  __	
+	(BinaryEnclosures)  _	

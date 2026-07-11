@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0407.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 5.3 407 Text Objects At the beginning of a text object, Tm is the identity matrix; therefore, the origin of text space is initially the same as that of user space. The text-positioning operators, described in Table 5.5, alter Tm and thereby control the placement of glyphs that are subsequently painted. Also, the text-showing operators, described in Table 5.6 in the next section, update Tm (by altering its e and f translation components) to take into account the horizontal or vertical displacement of each glyph painted as well as any character or word-spacing parameters in the text state. Additionally, a text object keeps track of a text line matrix, Tlm , which captures the value of Tm at the beginning of a line of text. This is convenient for aligning evenly spaced lines of text. The text-positioning and text-showing operators read and set Tlm on specific occasions mentioned in Tables 5.5 and 5.6. Note: The text-positioning operators can appear only within text objects. 5.3.2 Text-Showing Operators The text-showing operators (Table 5.6) show text on the page, repositioning text space as they do so. All of the operators interpret the text string and apply the text state parameters as described below. TABLE 5.6 Text-showing operators OPERANDS OPERATOR DESCRIPTION string string Tj ' Show a text string. Move to the next line and show a text string. This operator has the same effect as the code T* string Tj aw ac string &quot; Move to the next line and show a text string, using aw as the word spacing and ac as the character spacing (setting the corresponding parameters in the text state). aw and ac are numbers expressed in unscaled text space units. This operator has the same effect as the following code: aw Tw ac Tc string '  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0407.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 5.3</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">407</span></div>
+<div class="pos" id="*49:537" style="top:49;left:537"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Text Objects</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">At the beginning of a text object,</span></div>
+<div class="pos" id="*99:325" style="top:99;left:325"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">T</span></div>
+<div class="pos" id="*106:333" style="top:106;left:333"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">m</span></div>
+<div class="pos" id="*99:345" style="top:99;left:345"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is the identity matrix; therefore, the origin of</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">text space is initially the same as that of user space. The</span></div>
+<div class="pos" id="*117:456" style="top:117;left:456"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">text-positioning operators,</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">described in Table 5.5, alter</span></div>
+<div class="pos" id="*135:298" style="top:135;left:298"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">T</span></div>
+<div class="pos" id="*142:306" style="top:142;left:306"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">m</span></div>
+<div class="pos" id="*135:319" style="top:135;left:319"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and thereby control the placement of glyphs that</span></div>
+<div class="pos" id="*153:133" style="top:153;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are subsequently painted. Also, the</span></div>
+<div class="pos" id="*153:340" style="top:153;left:340"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">text-showing operators,</span></div>
+<div class="pos" id="*153:476" style="top:153;left:476"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">described in Table 5.6</span></div>
+<div class="pos" id="*171:133" style="top:171;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the next section, update</span></div>
+<div class="pos" id="*171:292" style="top:171;left:292"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">T</span></div>
+<div class="pos" id="*178:300" style="top:178;left:300"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">m</span></div>
+<div class="pos" id="*171:313" style="top:171;left:313"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(by altering its</span></div>
+<div class="pos" id="*171:402" style="top:171;left:402"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">e</span></div>
+<div class="pos" id="*171:411" style="top:171;left:411"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*171:437" style="top:171;left:437"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*171:445" style="top:171;left:445"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">translation components) to</span></div>
+<div class="pos" id="*189:133" style="top:189;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">take into account the horizontal or vertical displacement of each glyph painted as</span></div>
+<div class="pos" id="*207:133" style="top:207;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">well as any character or word-spacing parameters in the text state.</span></div>
+<div class="pos" id="*242:133" style="top:242;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Additionally, a text object keeps track of a text line matrix,</span></div>
+<div class="pos" id="*242:485" style="top:242;left:485"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">T</span></div>
+<div class="pos" id="*249:494" style="top:249;left:494"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">lm</span></div>
+<div class="pos" id="*242:507" style="top:242;left:507"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, which captures</span></div>
+<div class="pos" id="*260:133" style="top:260;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the value of</span></div>
+<div class="pos" id="*260:206" style="top:260;left:206"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">T</span></div>
+<div class="pos" id="*267:214" style="top:267;left:214"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">m</span></div>
+<div class="pos" id="*260:227" style="top:260;left:227"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">at the beginning of a line of text. This is convenient for aligning</span></div>
+<div class="pos" id="*278:133" style="top:278;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">evenly spaced lines of text. The text-positioning and text-showing operators read</span></div>
+<div class="pos" id="*296:133" style="top:296;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and set</span></div>
+<div class="pos" id="*296:177" style="top:296;left:177"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">T</span></div>
+<div class="pos" id="*303:186" style="top:303;left:186"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">lm</span></div>
+<div class="pos" id="*296:201" style="top:296;left:201"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">on specific occasions mentioned in Tables 5.5 and 5.6.</span></div>
+<div class="pos" id="*331:133" style="top:331;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*331:167" style="top:331;left:167"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">The text-positioning operators can appear only within text objects.</span></div>
+<div class="pos" id="*374:88" style="top:374;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">5.3.2 Text-Showing Operators</span></div>
+<div class="pos" id="*409:133" style="top:409;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*409:160" style="top:409;left:160"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">text-showing operators</span></div>
+<div class="pos" id="*409:294" style="top:409;left:294"><a href="pg_0407.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Table 5.6) show text on the page, repositioning text</span></a></div>
+<div class="pos" id="*427:133" style="top:427;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space as they do so. All of the operators interpret the text string and apply the text</span></div>
+<div class="pos" id="*445:133" style="top:445;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">state parameters as described below.</span></div>
+<div class="pos" id="*488:273" style="top:488;left:273"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 5.6 Text-showing operators</span></div>
+<div class="pos" id="*509:74" style="top:509;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">OPERANDS</span></div>
+<div class="pos" id="*509:158" style="top:509;left:158"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">OPERATOR</span></div>
+<div class="pos" id="*509:241" style="top:509;left:241"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">DESCRIPTION</span></div>
+<div class="pos" id="*536:74" style="top:536;left:74"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">string</span></div>
+<div class="pos" id="*564:74" style="top:564;left:74"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">string</span></div>
+<div class="pos" id="*536:158" style="top:536;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Tj</span></div>
+<div class="pos" id="*564:158" style="top:564;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">'</span></div>
+<div class="pos" id="*535:241" style="top:535;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Show a text string.</span></div>
+<div class="pos" id="*564:241" style="top:564;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Move to the next line and show a text string. This operator has the same effect as</span></div>
+<div class="pos" id="*580:241" style="top:580;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the code</span></div>
+<div class="pos" id="*604:258" style="top:604;left:258"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">T*</span></div>
+<div class="pos" id="*619:258" style="top:619;left:258"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">string</span></div>
+<div class="pos" id="*619:291" style="top:619;left:291"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Tj</span></div>
+<div class="pos" id="*647:74" style="top:647;left:74"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">a</span></div>
+<div class="pos" id="*653:81" style="top:653;left:81"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">w</span></div>
+<div class="pos" id="*647:94" style="top:647;left:94"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">a</span></div>
+<div class="pos" id="*653:100" style="top:653;left:100"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*647:111" style="top:647;left:111"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">string</span></div>
+<div class="pos" id="*647:158" style="top:647;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">&quot;</span></div>
+<div class="pos" id="*646:241" style="top:646;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Move to the next line and show a text string, using</span></div>
+<div class="pos" id="*647:507" style="top:647;left:507"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">a</span></div>
+<div class="pos" id="*653:513" style="top:653;left:513"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">w</span></div>
+<div class="pos" id="*646:523" style="top:646;left:523"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">as the word spacing and</span></div>
+<div class="pos" id="*647:652" style="top:647;left:652"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">a</span></div>
+<div class="pos" id="*653:658" style="top:653;left:658"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*663:241" style="top:663;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">as the character spacing (setting the corresponding parameters in the text state).</span></div>
+<div class="pos" id="*680:241" style="top:680;left:241"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">a</span></div>
+<div class="pos" id="*686:248" style="top:686;left:248"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">w</span></div>
+<div class="pos" id="*680:258" style="top:680;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*680:281" style="top:680;left:281"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">a</span></div>
+<div class="pos" id="*686:287" style="top:686;left:287"><span id="*8" style="font-style:italic;font-weight:normal;font-size:8px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*680:294" style="top:680;left:294"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are numbers expressed in unscaled text space units. This operator has</span></div>
+<div class="pos" id="*696:241" style="top:696;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the same effect as the following code:</span></div>
+<div class="pos" id="*722:258" style="top:722;left:258"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">a</span></div>
+<div class="pos" id="*728:264" style="top:728;left:264"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">w</span></div>
+<div class="pos" id="*722:277" style="top:722;left:277"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Tw</span></div>
+<div class="pos" id="*739:258" style="top:739;left:258"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">a</span></div>
+<div class="pos" id="*744:264" style="top:744;left:264"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*739:274" style="top:739;left:274"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Tc</span></div>
+<div class="pos" id="*755:258" style="top:755;left:258"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">string</span></div>
+<div class="pos" id="*755:292" style="top:755;left:292"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">'</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0406.htm" title="Go to previous page">Previous</a> <a href="pg_0408.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(407);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

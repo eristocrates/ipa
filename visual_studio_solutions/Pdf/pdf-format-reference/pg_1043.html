@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1043.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION F.3 1043 Hint Tables ITEM SIZE (BITS) DESCRIPTION 5 See Table F.3, item 12 (One item for each shared object referenced from the page) The numerator of the fractional position for each shared object reference, in the same order as the preceding item. The fraction indicates where in the page’s content stream the shared object is first referenced. This item is interpreted as the numerator of a fraction whose denominator is specified once for the entire document (Table F.3, item 13). If the denominator is d, a numerator ranging from 0 to d − 1 indicates the corresponding portion of the page’s content stream. For example, if the denominator is 4, a numerator of 0, 1, 2, or 3 indicates that the first reference lies in the first, second, third, or fourth quarter of the content stream, respectively. There are two (or more) other possible values for the numerator, which indicate that the shared object is not referenced from the content stream but is needed by annotations or other objects that are drawn after the contents. The value d indicates that the shared object is needed before image XObjects and other nonshared objects that are at the end of the page. A value of d + 1 or greater indicates that the shared object is needed after those objects. This method of dividing the page into fractions is only approximate. Determining the first reference to a shared object entails inspecting the unencoded content stream. The relationship between positions in the unencoded and encoded streams is not necessarily linear. 6 See Table F.3, item 7 A number that, when added to the least offset to the start of the content stream (Table F.3, item 6), gives the offset in bytes of the start of the page’s content stream (the stream object, not the stream data), relative to the beginning of the page. (See implementation note 183 in Appendix H.) A number that, when added to the least content stream length (Table F.3, item 8), gives the length of the page’s content stream in bytes. This length includes object overhead preceding and following the stream data. (See implementation note 184 in Appendix H.) 7 See Table F.3, item 9 F.3.2 Shared Object Hint Table The shared object hint table gives information required to locate shared objects (see Section F.2.8, “Shared Objects (Part 8)”). Shared objects can be physically located in either of two places: objects that are referenced from the first page are located with the first-page objects (part 6); all other shared objects are located in the shared objects section (part 8).  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1043.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION F.3</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1043</span></div>
+<div class="pos" id="*49:542" style="top:49;left:542"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Hint Tables</span></div>
+<div class="pos" id="*104:74" style="top:104;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">ITEM</span></div>
+<div class="pos" id="*104:116" style="top:104;left:116"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">SIZE (BITS)</span></div>
+<div class="pos" id="*104:258" style="top:104;left:258"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">DESCRIPTION</span></div>
+<div class="pos" id="*131:74" style="top:131;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*131:116" style="top:131;left:116"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">See Table F.3, item 12</span></div>
+<div class="pos" id="*131:258" style="top:131;left:258"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(One item for each shared object referenced from the page)</span></div>
+<div class="pos" id="*131:567" style="top:131;left:567"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The numerator of</span></div>
+<div class="pos" id="*147:258" style="top:147;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the fractional position for each shared object reference, in the same order as</span></div>
+<div class="pos" id="*164:258" style="top:164;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the preceding item. The fraction indicates where in the page’s content stream</span></div>
+<div class="pos" id="*181:258" style="top:181;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the shared object is first referenced. This item is interpreted as the numerator</span></div>
+<div class="pos" id="*197:258" style="top:197;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of a fraction whose denominator is specified once for the entire document</span></div>
+<div class="pos" id="*214:258" style="top:214;left:258"><a href="pg_1041.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Table F.3, item 13).</span></a></div>
+<div class="pos" id="*239:258" style="top:239;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If the denominator is</span></div>
+<div class="pos" id="*239:377" style="top:239;left:377"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">d,</span></div>
+<div class="pos" id="*239:391" style="top:239;left:391"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">a numerator ranging from 0 to</span></div>
+<div class="pos" id="*239:563" style="top:239;left:563"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">d</span></div>
+<div class="pos" id="*236:573" style="top:236;left:573"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">−</span></div>
+<div class="pos" id="*239:583" style="top:239;left:583"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1 indicates the</span></div>
+<div class="pos" id="*256:258" style="top:256;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">corresponding portion of the page’s content stream. For example, if the</span></div>
+<div class="pos" id="*272:258" style="top:272;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">denominator is 4, a numerator of 0, 1, 2, or 3 indicates that the first reference</span></div>
+<div class="pos" id="*289:258" style="top:289;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">lies in the first, second, third, or fourth quarter of the content stream, respec-</span></div>
+<div class="pos" id="*306:258" style="top:306;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tively.</span></div>
+<div class="pos" id="*331:258" style="top:331;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">There are two (or more) other possible values for the numerator, which indi-</span></div>
+<div class="pos" id="*347:258" style="top:347;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cate that the shared object is not referenced from the content stream but is</span></div>
+<div class="pos" id="*364:258" style="top:364;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">needed by annotations or other objects that are drawn after the contents. The</span></div>
+<div class="pos" id="*381:258" style="top:381;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value</span></div>
+<div class="pos" id="*381:289" style="top:381;left:289"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">d</span></div>
+<div class="pos" id="*381:299" style="top:381;left:299"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">indicates that the shared object is needed before image XObjects and</span></div>
+<div class="pos" id="*397:258" style="top:397;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">other nonshared objects that are at the end of the page. A value of</span></div>
+<div class="pos" id="*397:620" style="top:397;left:620"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">d</span></div>
+<div class="pos" id="*394:630" style="top:394;left:630"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">+</span></div>
+<div class="pos" id="*397:640" style="top:397;left:640"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1 or</span></div>
+<div class="pos" id="*414:258" style="top:414;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">greater indicates that the shared object is needed after those objects.</span></div>
+<div class="pos" id="*439:258" style="top:439;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">This method of dividing the page into fractions is only approximate. Deter-</span></div>
+<div class="pos" id="*456:258" style="top:456;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">mining the first reference to a shared object entails inspecting the unencoded</span></div>
+<div class="pos" id="*472:258" style="top:472;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">content stream. The relationship between positions in the unencoded and</span></div>
+<div class="pos" id="*489:258" style="top:489;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">encoded streams is not necessarily linear.</span></div>
+<div class="pos" id="*518:74" style="top:518;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*518:116" style="top:518;left:116"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">See Table F.3, item 7</span></div>
+<div class="pos" id="*518:258" style="top:518;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A number that, when added to the least offset to the start of the content</span></div>
+<div class="pos" id="*534:258" style="top:534;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stream (Table F.3, item 6), gives the offset in bytes of the start of the page’s</span></div>
+<div class="pos" id="*551:258" style="top:551;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">content stream (the stream object, not the stream data), relative to the begin-</span></div>
+<div class="pos" id="*568:258" style="top:568;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ning of the page. (See implementation note 183 in Appendix H.)</span></div>
+<div class="pos" id="*596:258" style="top:596;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A number that, when added to the least content stream length (Table F.3,</span></div>
+<div class="pos" id="*613:258" style="top:613;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">item 8), gives the length of the page’s content stream in bytes. This length in-</span></div>
+<div class="pos" id="*629:258" style="top:629;left:258"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cludes object overhead preceding and following the stream data. (See imple-</span></div>
+<div class="pos" id="*646:258" style="top:646;left:258"><a href="pg_1129.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">mentation note 184 in Appendix H.)</span></a></div>
+<div class="pos" id="*596:74" style="top:596;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*596:116" style="top:596;left:116"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">See Table F.3, item 9</span></div>
+<div class="pos" id="*688:90" style="top:688;left:90"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">F.3.2 Shared Object Hint Table</span></div>
+<div class="pos" id="*725:133" style="top:725;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The shared object hint table gives information required to locate shared objects</span></div>
+<div class="pos" id="*743:133" style="top:743;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(see Section F.2.8, “Shared Objects (Part 8)”). Shared objects can be physically</span></div>
+<div class="pos" id="*761:133" style="top:761;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">located in either of two places: objects that are referenced from the first page are</span></div>
+<div class="pos" id="*779:133" style="top:779;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">located with the first-page objects (part 6); all other shared objects are located in</span></div>
+<div class="pos" id="*797:133" style="top:797;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the shared objects section (part 8).</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1042.htm" title="Go to previous page">Previous</a> <a href="pg_1044.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1043);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

@@ -1,0 +1,1596 @@
+@base <https://github.com/open-metadata/OpenMetadataStandards/raw/refs/heads/main/rdf/ontology/openmetadata.ttl>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix om: <https://open-metadata.org/ontology/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix dct: <http://purl.org/dc/terms/>.
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix spdx: <http://spdx.org/rdfterms/spdx#>.
+@prefix adms: <http://www.w3.org/ns/adms#>.
+@prefix dprod: <https://ekgf.github.io/dprod/>.
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
+@prefix dqv: <http://www.w3.org/ns/dqv#>.
+@prefix oa: <http://www.w3.org/ns/oa#>.
+@prefix dctype: <http://purl.org/dc/dcmitype/>.
+@prefix locn: <http://www.w3.org/ns/locn#>.
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix odrl: <http://www.w3.org/ns/odrl/2/>.
+@prefix qb: <http://purl.org/linked-data/cube#>.
+@prefix csvw: <http://www.w3.org/ns/csvw#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix vcard2006: <http://www.w3.org/2006/vcard/ns#>.
+@prefix nsprov: <http://www.w3.org/ns/prov#>.
+
+om: dct:created "2025-08-24"^^xsd:date;
+    dct:creator "OpenMetadata Team";
+    dct:description "Complete ontology for OpenMetadata covering all entities and relationships";
+    dct:license <https://www.apache.org/licenses/LICENSE-2.0>;
+    dct:modified "2026-04-23"^^xsd:date;
+    dct:title "OpenMetadata Ontology";
+    a owl:Ontology;
+    owl:imports dcat:,
+                prov:,
+                skos:;
+    owl:versionInfo "1.13.0".
+om:AIApplication a owl:Class;
+                 rdfs:comment "AI system such as a chatbot, agent, copilot, RAG application or multi-agent pipeline that may use multiple LLM models and tools";
+                 rdfs:label "AI Application";
+                 rdfs:subClassOf om:DataAsset,
+                                 dcat:DataService.
+om:AIGovernancePolicy a owl:Class;
+                      rdfs:comment "Policy rules for AI/LLM usage, compliance, and risk management (model approval, data access, bias thresholds, cost controls, etc.)";
+                      rdfs:label "AI Governance Policy";
+                      rdfs:subClassOf om:Entity,
+                                      om:Policy.
+om:APICollection a owl:Class;
+                 rdfs:comment "Collection of API endpoints";
+                 rdfs:label "API Collection";
+                 rdfs:subClassOf om:DataAsset,
+                                 dcat:Catalog.
+om:APIDocumentation a owl:Class;
+                    rdfs:comment "Documentation for API endpoints";
+                    rdfs:label "API Documentation";
+                    rdfs:subClassOf foaf:Document.
+om:APIEndpoint a owl:Class;
+               rdfs:comment "API endpoint providing data access service";
+               rdfs:label "API Endpoint";
+               rdfs:subClassOf om:DataAsset,
+                               dcat:DataService.
+om:APIService a owl:Class;
+              rdfs:label "API Service";
+              rdfs:subClassOf om:Service,
+                              dcat:DataService.
+om:AgentExecution a owl:Class;
+                  rdfs:comment "Single execution run of an AI agent, tracking inputs, outputs, lineage, metrics and errors for observability and governance";
+                  rdfs:label "Agent Execution";
+                  rdfs:subClassOf om:Entity,
+                                  prov:Activity.
+om:AssetCertification a owl:Class;
+                      rdfs:comment "Certification status of an asset";
+                      rdfs:label "Asset Certification";
+                      rdfs:subClassOf om:Entity.
+om:Bot a owl:Class;
+       rdfs:label "Bot";
+       rdfs:subClassOf om:Entity,
+                       prov:Agent.
+om:Catalog a owl:Class;
+           rdfs:comment "Curated collection of metadata about resources";
+           rdfs:label "Catalog";
+           rdfs:subClassOf dcat:Catalog,
+                           om:Entity.
+om:CatalogRecord a owl:Class;
+                 rdfs:comment "Metadata about when/how an entity was cataloged";
+                 rdfs:label "Catalog Record";
+                 rdfs:subClassOf dcat:CatalogRecord,
+                                 om:Entity.
+om:ChangeDescription a owl:Class;
+                     rdfs:comment "Description of changes that led to a version of an entity";
+                     rdfs:label "Change Description";
+                     rdfs:subClassOf om:Entity.
+om:Chart a owl:Class;
+         rdfs:label "Chart";
+         rdfs:subClassOf om:DataAsset.
+om:Classification a owl:Class;
+                  rdfs:comment "Tag Category";
+                  rdfs:label "Classification";
+                  rdfs:subClassOf om:Entity,
+                                  skos:ConceptScheme.
+om:Column a owl:Class;
+          rdfs:comment "Column in a table";
+          rdfs:label "Column";
+          rdfs:subClassOf om:Entity.
+om:Container a owl:Class;
+             rdfs:comment "Storage container organizing multiple datasets";
+             rdfs:label "Container";
+             rdfs:subClassOf om:DataAsset,
+                             dcat:Catalog.
+om:Dashboard a owl:Class;
+             rdfs:comment "Dashboard for data visualization";
+             rdfs:label "Dashboard";
+             rdfs:subClassOf om:DataAsset.
+om:DashboardDataModel a owl:Class;
+                      rdfs:comment "Dashboard Data Model entity to capture the data models used by dashboards";
+                      rdfs:label "Dashboard Data Model";
+                      rdfs:subClassOf om:DataAsset.
+om:DashboardDataModelColumn a owl:Class;
+                            rdfs:comment "Dashboard data model column context type used to attach custom properties to columns of a DashboardDataModel";
+                            rdfs:label "Dashboard Data Model Column";
+                            rdfs:subClassOf om:Column.
+om:DashboardService a owl:Class;
+                    rdfs:label "Dashboard Service";
+                    rdfs:subClassOf om:Service,
+                                    dcat:DataService.
+om:DataAsset a owl:Class;
+             rdfs:comment "Base class for all data assets";
+             rdfs:label "Data Asset";
+             rdfs:subClassOf om:Entity,
+                             dcat:Resource;
+             owl:equivalentClass dcat:Dataset.
+om:DataContract a owl:Class;
+                rdfs:label "Data Contract";
+                rdfs:subClassOf om:Entity.
+om:DataProduct a owl:Class;
+               rdfs:label "Data Product";
+               rdfs:subClassOf om:Entity.
+om:DataProductSLA a owl:Class;
+                  rdfs:comment "Service Level Agreement for a data product";
+                  rdfs:label "Data Product SLA";
+                  rdfs:subClassOf dprod:ServiceLevelAgreement.
+om:DataService a owl:Class;
+               rdfs:comment "Service that provides access to data";
+               rdfs:label "Data Service";
+               rdfs:subClassOf dcat:DataService,
+                               om:Service.
+om:Database a owl:Class;
+            rdfs:label "Database";
+            rdfs:subClassOf om:DataAsset,
+                            dcat:Catalog.
+om:DatabaseSchema a owl:Class;
+                  rdfs:label "Database Schema";
+                  rdfs:subClassOf om:DataAsset.
+om:DatabaseService a owl:Class;
+                   rdfs:label "Database Service";
+                   rdfs:subClassOf om:Service,
+                                   dcat:DataService.
+om:DatasetSeries a owl:Class;
+                 rdfs:comment "Collection of related datasets, e.g., time series or versions";
+                 rdfs:label "Dataset Series";
+                 rdfs:subClassOf dcat:DatasetSeries,
+                                 om:Entity.
+om:Directory a owl:Class;
+             rdfs:comment "File system directory";
+             rdfs:label "Directory";
+             rdfs:subClassOf om:DataAsset,
+                             dcat:Dataset.
+om:Distribution a owl:Class;
+                rdfs:comment "Specific representation of a dataset";
+                rdfs:label "Distribution";
+                rdfs:subClassOf dcat:Distribution,
+                                om:Entity.
+om:Domain a owl:Class;
+          rdfs:label "Domain";
+          rdfs:subClassOf om:Entity.
+om:DriveService a owl:Class;
+                rdfs:comment "File and document storage service";
+                rdfs:label "Drive Service";
+                rdfs:subClassOf om:Service,
+                                dcat:DataService.
+om:Entity a owl:Class;
+          rdfs:comment "Base class for all OpenMetadata entities";
+          rdfs:label "Entity";
+          rdfs:subClassOf dcat:Resource.
+om:EntityStatus a owl:Class;
+                rdfs:comment "Current status of an entity (Active, Deleted, Draft)";
+                rdfs:label "Entity Status";
+                rdfs:subClassOf om:Entity.
+om:File a owl:Class;
+        rdfs:comment "Individual file";
+        rdfs:label "File";
+        rdfs:subClassOf om:DataAsset,
+                        dcat:Distribution.
+om:Frequency a owl:Class;
+             rdfs:comment "Update frequency specification";
+             rdfs:label "Frequency";
+             rdfs:subClassOf dct:Frequency.
+om:Glossary a owl:Class;
+            rdfs:label "Glossary";
+            rdfs:subClassOf om:Entity,
+                            skos:ConceptScheme.
+om:GlossaryTerm a owl:Class;
+                rdfs:label "Glossary Term";
+                rdfs:subClassOf om:Entity,
+                                skos:Concept.
+om:InputPort a owl:Class;
+             rdfs:comment "Input port of a data product for consuming data";
+             rdfs:label "Input Port";
+             rdfs:subClassOf dprod:InputPort,
+                             dcat:DataService.
+om:LLMModel a owl:Class;
+            rdfs:comment "Registered Large Language Model deployment, fine-tune, or base model referenced by AI applications and agents";
+            rdfs:label "LLM Model";
+            rdfs:subClassOf om:DataAsset,
+                            dcat:DataService.
+om:LLMService a owl:Class;
+              rdfs:comment "Service managing Large Language Model providers (OpenAI, Anthropic, Bedrock, VertexAI, Ollama, etc.)";
+              rdfs:label "LLM Service";
+              rdfs:subClassOf om:Service,
+                              dcat:DataService.
+om:LearningResource a owl:Class;
+                    rdfs:comment "Learning resource such as an in-product tutorial, Storylane walkthrough, video or article contextualized for product surfaces";
+                    rdfs:label "Learning Resource";
+                    rdfs:subClassOf om:Entity,
+                                    foaf:Document.
+om:LicenseDocument a owl:Class;
+                   rdfs:comment "Legal document giving permissions";
+                   rdfs:label "License Document";
+                   rdfs:subClassOf dct:LicenseDocument.
+om:LifeCycle a owl:Class;
+             rdfs:comment "Life cycle properties of an entity including created, updated, accessed timestamps";
+             rdfs:label "Life Cycle";
+             rdfs:subClassOf om:Entity.
+om:Location a owl:Class;
+            rdfs:comment "Spatial region or location";
+            rdfs:label "Location";
+            rdfs:subClassOf dct:Location.
+om:MCPExecution a owl:Class;
+                rdfs:comment "Single execution session of an MCP server, tracking tool calls, resource accesses, prompt uses and data lineage for audit and compliance";
+                rdfs:label "MCP Execution";
+                rdfs:subClassOf om:Entity,
+                                prov:Activity.
+om:MCPServer a owl:Class;
+             rdfs:comment "Model Context Protocol server deployment that exposes tools, resources and prompts to AI applications";
+             rdfs:label "MCP Server";
+             rdfs:subClassOf om:DataAsset,
+                             dcat:DataService.
+om:MCPService a owl:Class;
+              rdfs:comment "Service for discovering and managing MCP (Model Context Protocol) servers";
+              rdfs:label "MCP Service";
+              rdfs:subClassOf om:Service,
+                              dcat:DataService.
+om:MLModel a owl:Class;
+           rdfs:comment "Machine learning model providing inference service";
+           rdfs:label "ML Model";
+           rdfs:subClassOf om:DataAsset,
+                           dcat:DataService.
+om:MLModelService a owl:Class;
+                  rdfs:label "ML Model Service";
+                  rdfs:subClassOf om:Service,
+                                  dcat:DataService.
+om:MediaType a owl:Class;
+             rdfs:comment "Media type or format";
+             rdfs:label "Media Type";
+             rdfs:subClassOf dct:MediaType.
+om:MessagingService a owl:Class;
+                    rdfs:label "Messaging Service";
+                    rdfs:subClassOf om:Service,
+                                    dcat:DataService.
+om:MetadataService a owl:Class;
+                   rdfs:label "Metadata Service";
+                   rdfs:subClassOf om:Service,
+                                   dcat:DataService.
+om:Metric a owl:Class;
+          rdfs:label "Metric";
+          rdfs:subClassOf om:DataAsset.
+om:ObservabilityService a owl:Class;
+                        rdfs:label "Observability Service";
+                        rdfs:subClassOf om:Service,
+                                        dcat:DataService.
+om:Organization a owl:Class;
+                rdfs:comment "Organization entity";
+                rdfs:label "Organization";
+                rdfs:subClassOf foaf:Organization,
+                                prov:Agent,
+                                om:Entity.
+om:OutputPort a owl:Class;
+              rdfs:comment "Output port of a data product for exposing data";
+              rdfs:label "Output Port";
+              rdfs:subClassOf dprod:OutputPort,
+                              dcat:DataService.
+om:PeriodOfTime a owl:Class;
+                rdfs:comment "Time period specification";
+                rdfs:label "Period of Time";
+                rdfs:subClassOf dct:PeriodOfTime.
+om:Pipeline a owl:Class;
+            rdfs:label "Pipeline";
+            rdfs:subClassOf om:DataAsset,
+                            dcat:DataService.
+om:PipelineService a owl:Class;
+                   rdfs:comment "ETL Service";
+                   rdfs:label "Pipeline Service";
+                   rdfs:subClassOf om:Service,
+                                   dcat:DataService.
+om:PipelineStatus a owl:Class;
+                  rdfs:comment "Status of a pipeline execution";
+                  rdfs:label "Pipeline Status";
+                  rdfs:subClassOf om:Entity.
+om:Policy a owl:Class;
+          rdfs:label "Policy";
+          rdfs:subClassOf om:Entity.
+om:Post a owl:Class;
+        rdfs:label "Post";
+        rdfs:subClassOf om:Entity.
+om:ProfilerConfig a owl:Class;
+                  rdfs:comment "Configuration for table profiling";
+                  rdfs:label "Profiler Config";
+                  rdfs:subClassOf om:Entity.
+om:PromptTemplate a owl:Class;
+                  rdfs:comment "Reusable prompt template with variables, system prompts and examples for consistent AI behavior";
+                  rdfs:label "Prompt Template";
+                  rdfs:subClassOf om:Entity.
+om:QualifiedRelationship a owl:Class;
+                         rdfs:comment "Relationship with additional context like role, time, etc.";
+                         rdfs:label "Qualified Relationship";
+                         rdfs:subClassOf dcat:Relationship.
+om:QualityService a owl:Class;
+                  rdfs:label "Quality Service";
+                  rdfs:subClassOf om:Service,
+                                  dcat:DataService.
+om:Query a owl:Class;
+         rdfs:label "Query";
+         rdfs:subClassOf om:DataAsset.
+om:Report a owl:Class;
+          rdfs:comment "Report as a specific representation of data";
+          rdfs:label "Report";
+          rdfs:subClassOf om:DataAsset,
+                          dcat:Distribution.
+om:ReportingService a owl:Class;
+                    rdfs:label "Reporting Service";
+                    rdfs:subClassOf om:Service,
+                                    dcat:DataService.
+om:Resource a owl:Class;
+            rdfs:comment "Any resource cataloged in OpenMetadata";
+            rdfs:label "Resource";
+            rdfs:subClassOf dcat:Resource.
+om:RightsStatement a owl:Class;
+                   rdfs:comment "Statement about intellectual property rights";
+                   rdfs:label "Rights Statement";
+                   rdfs:subClassOf dct:RightsStatement.
+om:Role a owl:Class;
+        rdfs:label "Role";
+        rdfs:subClassOf om:Entity.
+om:SearchIndex a owl:Class;
+               rdfs:label "Search Index";
+               rdfs:subClassOf om:DataAsset.
+om:SearchService a owl:Class;
+                 rdfs:label "Search Service";
+                 rdfs:subClassOf om:Service,
+                                 dcat:DataService.
+om:Service a owl:Class;
+           rdfs:comment "Base class for all services";
+           rdfs:label "Service";
+           rdfs:subClassOf om:Entity.
+om:Spreadsheet a owl:Class;
+               rdfs:comment "Spreadsheet document";
+               rdfs:label "Spreadsheet";
+               rdfs:subClassOf om:DataAsset,
+                               dcat:Dataset.
+om:Standard a owl:Class;
+            rdfs:comment "Technical standard or specification";
+            rdfs:label "Standard";
+            rdfs:subClassOf dct:Standard.
+om:StorageService a owl:Class;
+                  rdfs:label "Storage Service";
+                  rdfs:subClassOf om:Service,
+                                  dcat:DataService.
+om:StoredProcedure a owl:Class;
+                   rdfs:label "Stored Procedure";
+                   rdfs:subClassOf om:DataAsset.
+om:Table a owl:Class;
+         rdfs:label "Table";
+         rdfs:subClassOf om:DataAsset,
+                         dcat:Dataset.
+om:TableColumn a owl:Class;
+               rdfs:comment "Table column context type used to attach custom properties to columns of a Table";
+               rdfs:label "Table Column";
+               rdfs:subClassOf om:Column.
+om:TableProfile a owl:Class;
+                rdfs:comment "Profile data for a table including statistics";
+                rdfs:label "Table Profile";
+                rdfs:subClassOf om:Entity.
+om:Tag a owl:Class;
+       rdfs:label "Tag";
+       rdfs:subClassOf om:Entity,
+                       skos:Concept.
+om:Task a owl:Class;
+        rdfs:label "Task";
+        rdfs:subClassOf om:DataAsset.
+om:Team a owl:Class;
+        rdfs:label "Team";
+        rdfs:subClassOf om:Entity,
+                        prov:Agent,
+                        foaf:Group.
+om:TestCase a owl:Class;
+            rdfs:label "Test Case";
+            rdfs:subClassOf om:Entity.
+om:TestCaseParameter a owl:Class;
+                     rdfs:comment "Parameter definition for a test case";
+                     rdfs:label "Test Case Parameter";
+                     rdfs:subClassOf om:Entity.
+om:TestDefinition a owl:Class;
+                  rdfs:label "Test Definition";
+                  rdfs:subClassOf om:Entity.
+om:TestSuite a owl:Class;
+             rdfs:label "Test Suite";
+             rdfs:subClassOf om:Entity.
+om:Thread a owl:Class;
+          rdfs:label "Thread";
+          rdfs:subClassOf om:Entity.
+om:Topic a owl:Class;
+         rdfs:comment "Message topic providing streaming data access";
+         rdfs:label "Topic";
+         rdfs:subClassOf om:DataAsset,
+                         dcat:DataService.
+om:User a owl:Class;
+        rdfs:label "User";
+        rdfs:subClassOf om:Entity,
+                        prov:Agent,
+                        foaf:Person.
+om:Votes a owl:Class;
+         rdfs:comment "Votes on an entity (upvotes and downvotes)";
+         rdfs:label "Votes";
+         rdfs:subClassOf om:Entity.
+om:Worksheet a owl:Class;
+             rdfs:comment "Worksheet within a spreadsheet";
+             rdfs:label "Worksheet";
+             rdfs:subClassOf om:DataAsset.
+om:accessRights a owl:ObjectProperty;
+                rdfs:comment "Information about access restrictions";
+                rdfs:domain om:DataAsset;
+                rdfs:label "access rights";
+                rdfs:range dct:RightsStatement;
+                rdfs:subPropertyOf dcat:accessRights.
+om:accessURL a owl:ObjectProperty;
+             rdfs:comment "URL to access the distribution";
+             rdfs:domain om:Distribution;
+             rdfs:label "access URL";
+             rdfs:range rdfs:Resource;
+             rdfs:subPropertyOf dcat:accessURL.
+om:accrualPeriodicity a owl:ObjectProperty;
+                      rdfs:comment "Frequency of dataset updates";
+                      rdfs:domain om:DataAsset;
+                      rdfs:label "accrual periodicity";
+                      rdfs:range om:Frequency;
+                      rdfs:subPropertyOf dcat:accrualPeriodicity.
+om:accuracy a owl:DatatypeProperty;
+            rdfs:comment "Degree of data accuracy";
+            rdfs:domain om:DataAsset;
+            rdfs:label "accuracy";
+            rdfs:range xsd:decimal.
+om:addressedTo a owl:ObjectProperty;
+               rdfs:domain om:Post;
+               rdfs:label "addressed to";
+               rdfs:range prov:Agent.
+om:apiDocumentation a owl:ObjectProperty;
+                    rdfs:comment "Link to API documentation";
+                    rdfs:domain om:DataService;
+                    rdfs:label "API documentation";
+                    rdfs:range foaf:Document.
+om:applicationType a owl:DatatypeProperty;
+                   rdfs:comment "Type of AI application (Chatbot, Agent, Copilot, Assistant, RAG, CodeGenerator, DataAnalyst, AutomationBot, MultiAgent, Custom)";
+                   rdfs:domain om:AIApplication;
+                   rdfs:label "application type";
+                   rdfs:range xsd:string.
+om:appliedTo a owl:ObjectProperty;
+             rdfs:comment "Tag or classification applied to entity";
+             rdfs:domain om:Tag;
+             rdfs:label "applied to";
+             rdfs:range om:Entity.
+om:baseModel a owl:ObjectProperty;
+             rdfs:comment "Base model this model was trained or fine-tuned from";
+             rdfs:domain om:LLMModel;
+             rdfs:label "base model";
+             rdfs:range om:LLMModel.
+om:bbox a owl:DatatypeProperty;
+        rdfs:comment "Geographic bounding box";
+        rdfs:domain om:DataAsset;
+        rdfs:label "bounding box";
+        rdfs:range rdfs:Literal;
+        rdfs:subPropertyOf dcat:bbox.
+om:belongsToDatabase a owl:ObjectProperty;
+                     rdfs:domain om:Table;
+                     rdfs:label "belongs to database";
+                     rdfs:range om:Database;
+                     rdfs:subPropertyOf dct:isPartOf.
+om:belongsToSchema a owl:ObjectProperty;
+                   rdfs:domain om:Table;
+                   rdfs:label "belongs to schema";
+                   rdfs:range om:DatabaseSchema;
+                   rdfs:subPropertyOf dct:isPartOf.
+om:belongsToService a owl:ObjectProperty;
+                    rdfs:domain om:DataAsset;
+                    rdfs:label "belongs to service";
+                    rdfs:range om:Service;
+                    rdfs:subPropertyOf dcat:accessService.
+om:byteSize a owl:DatatypeProperty;
+            rdfs:comment "Size in bytes";
+            rdfs:domain om:Distribution;
+            rdfs:label "byte size";
+            rdfs:range xsd:nonNegativeInteger;
+            rdfs:subPropertyOf dcat:byteSize.
+om:catalog a owl:ObjectProperty;
+           rdfs:comment "Sub-catalog";
+           rdfs:domain om:Catalog;
+           rdfs:label "catalog";
+           rdfs:range om:Catalog;
+           rdfs:subPropertyOf dcat:catalog.
+om:cataloged a owl:DatatypeProperty;
+             rdfs:comment "Date when entity was added to catalog";
+             rdfs:domain om:CatalogRecord;
+             rdfs:label "cataloged";
+             rdfs:range xsd:dateTime.
+om:centroid a owl:DatatypeProperty;
+            rdfs:comment "Geographic center point";
+            rdfs:domain om:DataAsset;
+            rdfs:label "centroid";
+            rdfs:range rdfs:Literal;
+            rdfs:subPropertyOf dcat:centroid.
+om:certificationTagLabel a owl:ObjectProperty;
+                         rdfs:comment "Tag label for the certification";
+                         rdfs:domain om:AssetCertification;
+                         rdfs:label "certification tag label";
+                         rdfs:range om:Tag.
+om:checksum a owl:ObjectProperty;
+            rdfs:comment "Checksum for data integrity verification";
+            rdfs:domain om:File;
+            rdfs:label "checksum";
+            rdfs:range spdx:Checksum.
+om:columnCount a owl:DatatypeProperty;
+               rdfs:comment "Number of columns in the table";
+               rdfs:domain om:Table;
+               rdfs:label "column count";
+               rdfs:range xsd:integer.
+om:columnDataType a owl:DatatypeProperty;
+                  rdfs:comment "Data type of the column";
+                  rdfs:domain om:Column;
+                  rdfs:label "column data type";
+                  rdfs:range xsd:string;
+                  rdfs:subPropertyOf csvw:datatype.
+om:columnDescription a owl:DatatypeProperty;
+                     rdfs:comment "Description of what the column contains";
+                     rdfs:domain om:Column;
+                     rdfs:label "column description";
+                     rdfs:range xsd:string.
+om:completeness a owl:DatatypeProperty;
+                rdfs:comment "Degree of data completeness";
+                rdfs:domain om:DataAsset;
+                rdfs:label "completeness";
+                rdfs:range xsd:decimal.
+om:compressFormat a owl:ObjectProperty;
+                  rdfs:comment "Compression format of the distribution";
+                  rdfs:domain om:Distribution;
+                  rdfs:label "compression format";
+                  rdfs:range om:MediaType;
+                  rdfs:subPropertyOf dcat:compressFormat.
+om:concurrency a owl:DatatypeProperty;
+               rdfs:comment "Concurrency level of the pipeline";
+               rdfs:domain om:Pipeline;
+               rdfs:label "concurrency";
+               rdfs:range xsd:integer.
+om:conformsTo a owl:ObjectProperty;
+              rdfs:comment "Standard or schema that the resource conforms to";
+              rdfs:domain om:Entity;
+              rdfs:label "conforms to";
+              rdfs:range dct:Standard;
+              rdfs:subPropertyOf dct:conformsTo.
+om:conformsToStandard a owl:ObjectProperty;
+                      rdfs:comment "Standard the dataset conforms to";
+                      rdfs:domain om:DataAsset;
+                      rdfs:label "conforms to standard";
+                      rdfs:range om:Standard;
+                      rdfs:subPropertyOf dcat:conformsTo.
+om:consistency a owl:DatatypeProperty;
+               rdfs:comment "Degree of data consistency";
+               rdfs:domain om:DataAsset;
+               rdfs:label "consistency";
+               rdfs:range xsd:decimal.
+om:consumesFrom a owl:ObjectProperty;
+                rdfs:comment "Data products that this product consumes data from";
+                rdfs:domain om:DataProduct;
+                rdfs:label "consumes from";
+                rdfs:range om:DataProduct;
+                rdfs:subPropertyOf dprod:consumesFrom.
+om:contactPoint a owl:ObjectProperty;
+                rdfs:comment "Contact information for the dataset";
+                rdfs:domain om:DataAsset;
+                rdfs:label "contact point";
+                rdfs:range vcard:Kind;
+                rdfs:subPropertyOf dcat:contactPoint.
+om:contains a owl:ObjectProperty;
+            rdfs:comment "Hierarchical containment relationship";
+            rdfs:label "contains".
+om:containsPosts a owl:ObjectProperty;
+                 rdfs:domain om:Thread;
+                 rdfs:label "contains posts";
+                 rdfs:range om:Post.
+om:contributor a owl:ObjectProperty;
+               rdfs:comment "Entity responsible for contributions to the dataset";
+               rdfs:domain om:DataAsset;
+               rdfs:label "contributor";
+               rdfs:range prov:Agent;
+               rdfs:subPropertyOf dct:contributor.
+om:created a owl:DatatypeProperty;
+           rdfs:domain om:Entity;
+           rdfs:label "created";
+           rdfs:range xsd:dateTime;
+           rdfs:subPropertyOf dct:created.
+om:createdBy a owl:ObjectProperty;
+             rdfs:label "created by";
+             rdfs:subPropertyOf prov:wasGeneratedBy.
+om:creates a owl:ObjectProperty;
+           rdfs:domain om:User;
+           rdfs:label "creates";
+           rdfs:range om:Thread.
+om:creator a owl:ObjectProperty;
+           rdfs:comment "Entity primarily responsible for creating the dataset";
+           rdfs:domain om:DataAsset;
+           rdfs:label "creator";
+           rdfs:range prov:Agent;
+           rdfs:subPropertyOf dct:creator.
+om:dataModelType a owl:DatatypeProperty;
+                 rdfs:comment "Type of data model (TableauDataModel, SupersetDataModel, MetabaseDataModel, LookMlView, LookMlExplore, PowerBIDataModel, QlikDataModel)";
+                 rdfs:domain om:DashboardDataModel;
+                 rdfs:label "data model type";
+                 rdfs:range xsd:string.
+om:dataProductAssets a owl:ObjectProperty;
+                     rdfs:comment "Assets that are part of this data product";
+                     rdfs:domain om:DataProduct;
+                     rdfs:label "data product assets";
+                     rdfs:range om:DataAsset.
+om:dataProductDomain a owl:ObjectProperty;
+                     rdfs:comment "Domain this data product belongs to";
+                     rdfs:domain om:DataProduct;
+                     rdfs:label "data product domain";
+                     rdfs:range om:Domain.
+om:dataProductExpert a owl:ObjectProperty;
+                     rdfs:comment "Expert for this data product";
+                     rdfs:domain om:DataProduct;
+                     rdfs:label "data product expert";
+                     rdfs:range prov:Agent.
+om:dataProductOwner a owl:ObjectProperty;
+                    rdfs:comment "Owner of the data product";
+                    rdfs:domain om:DataProduct;
+                    rdfs:label "data product owner";
+                    rdfs:range prov:Agent;
+                    rdfs:subPropertyOf dcat:contactPoint.
+om:dataQualityDimension a owl:DatatypeProperty;
+                        rdfs:comment "Data quality dimension (Completeness, Accuracy, Consistency, Validity, Uniqueness, Integrity, SQL)";
+                        rdfs:domain om:TestDefinition;
+                        rdfs:label "data quality dimension";
+                        rdfs:range xsd:string.
+om:dataset a owl:ObjectProperty;
+           rdfs:comment "Dataset that is part of the catalog";
+           rdfs:domain om:Catalog;
+           rdfs:label "dataset";
+           rdfs:range om:DataAsset;
+           rdfs:subPropertyOf dcat:dataset.
+om:defaultsTo a owl:ObjectProperty;
+              rdfs:comment "Default value relationship";
+              rdfs:label "defaults to".
+om:deleted a owl:DatatypeProperty;
+           rdfs:comment "Whether the entity has been soft deleted";
+           rdfs:domain om:Entity;
+           rdfs:label "deleted";
+           rdfs:range xsd:boolean.
+om:description a owl:DatatypeProperty;
+               rdfs:domain om:Entity;
+               rdfs:label "description";
+               rdfs:range xsd:string;
+               rdfs:subPropertyOf dct:description.
+om:developmentStage a owl:DatatypeProperty;
+                    rdfs:domain om:AIApplication;
+                    rdfs:label "development stage";
+                    rdfs:range xsd:string.
+om:dimension a owl:ObjectProperty;
+             rdfs:comment "Dimension represented in the dataset";
+             rdfs:domain om:DataAsset;
+             rdfs:label "dimension";
+             rdfs:range qb:DimensionProperty.
+om:distribution a owl:ObjectProperty;
+                rdfs:comment "Available distribution of the dataset";
+                rdfs:domain om:DataAsset;
+                rdfs:label "distribution";
+                rdfs:range om:Distribution;
+                rdfs:subPropertyOf dcat:distribution.
+om:downVotes a owl:DatatypeProperty;
+             rdfs:comment "Number of down votes";
+             rdfs:domain om:Votes;
+             rdfs:label "down votes";
+             rdfs:range xsd:integer.
+om:downloadURL a owl:ObjectProperty;
+               rdfs:comment "Direct download URL";
+               rdfs:domain om:Distribution;
+               rdfs:label "download URL";
+               rdfs:range rdfs:Resource;
+               rdfs:subPropertyOf dcat:downloadURL.
+om:downstream a owl:ObjectProperty;
+              rdfs:comment "Data lineage downstream relationship";
+              rdfs:label "downstream";
+              owl:inverseOf om:upstream.
+om:editedBy a owl:ObjectProperty;
+            rdfs:domain om:Entity;
+            rdfs:label "edited by";
+            rdfs:range prov:Agent.
+om:endDate a owl:DatatypeProperty;
+           rdfs:comment "End of the temporal period";
+           rdfs:domain om:PeriodOfTime;
+           rdfs:label "end date";
+           rdfs:range xsd:dateTime;
+           rdfs:subPropertyOf dcat:endDate.
+om:endpointDescription a owl:DatatypeProperty;
+                       rdfs:domain om:Service;
+                       rdfs:label "endpoint description";
+                       rdfs:range xsd:string;
+                       rdfs:subPropertyOf dcat:endpointDescription.
+om:endpointURL a owl:DatatypeProperty;
+               rdfs:domain om:Service;
+               rdfs:label "endpoint URL";
+               rdfs:range xsd:anyURI;
+               rdfs:subPropertyOf dcat:endpointURL.
+om:executedAgent a owl:ObjectProperty;
+                 rdfs:comment "Agent execution was an execution of this AI application";
+                 rdfs:domain om:AgentExecution;
+                 rdfs:label "executed agent";
+                 rdfs:range om:AIApplication.
+om:executedMCPServer a owl:ObjectProperty;
+                     rdfs:comment "MCP execution was an execution of this MCP server";
+                     rdfs:domain om:MCPExecution;
+                     rdfs:label "executed MCP server";
+                     rdfs:range om:MCPServer.
+om:executionStatus a owl:DatatypeProperty;
+                   rdfs:comment "Status of an agent or MCP execution (Running, Success, Failed, Timeout, Cancelled, PartialSuccess)";
+                   rdfs:label "execution status";
+                   rdfs:range xsd:string.
+om:expert a owl:ObjectProperty;
+          rdfs:comment "User is expert on entity";
+          rdfs:domain om:User;
+          rdfs:label "expert";
+          rdfs:range om:Entity.
+om:first a owl:ObjectProperty;
+         rdfs:comment "First dataset in a series";
+         rdfs:domain om:DatasetSeries;
+         rdfs:label "first";
+         rdfs:range om:DataAsset;
+         rdfs:subPropertyOf dcat:first.
+om:follows a owl:ObjectProperty;
+           rdfs:domain prov:Agent;
+           rdfs:label "follows";
+           rdfs:range om:Entity.
+om:format a owl:ObjectProperty;
+          rdfs:comment "File format of the distribution";
+          rdfs:domain om:Distribution;
+          rdfs:label "format";
+          rdfs:range om:MediaType;
+          rdfs:subPropertyOf dcat:format.
+om:fromColumn a owl:ObjectProperty;
+              rdfs:comment "Source column used in transformation";
+              rdfs:domain om:Column;
+              rdfs:label "from column";
+              rdfs:range om:Column;
+              rdfs:subPropertyOf prov:used.
+om:fullyQualifiedName a owl:DatatypeProperty;
+                      rdfs:comment "Unique identifier for the entity within OpenMetadata";
+                      rdfs:domain om:Entity;
+                      rdfs:label "fully qualified name";
+                      rdfs:range xsd:string;
+                      rdfs:subPropertyOf dct:identifier.
+om:geometry a owl:DatatypeProperty;
+            rdfs:comment "Geometry of the spatial area";
+            rdfs:domain om:Location;
+            rdfs:label "geometry";
+            rdfs:range rdfs:Literal;
+            rdfs:subPropertyOf locn:geometry.
+om:governedBy a owl:ObjectProperty;
+              rdfs:comment "AI application, LLM model or MCP server is governed by an AI governance policy";
+              rdfs:label "governed by";
+              rdfs:range om:AIGovernancePolicy.
+om:hadRole a owl:ObjectProperty;
+           rdfs:comment "Role in a qualified relationship";
+           rdfs:domain om:QualifiedRelationship;
+           rdfs:label "had role";
+           rdfs:range dcat:Role;
+           rdfs:subPropertyOf dcat:hadRole.
+om:has a owl:ObjectProperty;
+       rdfs:comment "General possession relationship";
+       rdfs:label "has".
+om:hasBeginning a owl:ObjectProperty;
+                rdfs:comment "Beginning instant of the temporal period";
+                rdfs:domain om:PeriodOfTime;
+                rdfs:label "has beginning";
+                rdfs:range time:Instant;
+                rdfs:subPropertyOf time:hasBeginning.
+om:hasCertification a owl:ObjectProperty;
+                    rdfs:comment "Certification status of the asset";
+                    rdfs:domain om:Entity;
+                    rdfs:label "has certification";
+                    rdfs:range om:AssetCertification.
+om:hasChangeDescription a owl:ObjectProperty;
+                        rdfs:comment "Change that led to this version of the entity";
+                        rdfs:domain om:Entity;
+                        rdfs:label "has change description";
+                        rdfs:range om:ChangeDescription.
+om:hasColumn a owl:ObjectProperty;
+             rdfs:domain om:Table;
+             rdfs:label "has column";
+             rdfs:range om:Column.
+om:hasDataProducts a owl:ObjectProperty;
+                   rdfs:comment "Data products this entity is part of";
+                   rdfs:domain om:DataAsset;
+                   rdfs:label "has data products";
+                   rdfs:range om:DataProduct.
+om:hasDomains a owl:ObjectProperty;
+              rdfs:comment "Domains the entity belongs to";
+              rdfs:domain om:Entity;
+              rdfs:label "has domains";
+              rdfs:range om:Domain.
+om:hasEnd a owl:ObjectProperty;
+          rdfs:comment "Ending instant of the temporal period";
+          rdfs:domain om:PeriodOfTime;
+          rdfs:label "has end";
+          rdfs:range time:Instant;
+          rdfs:subPropertyOf time:hasEnd.
+om:hasEntityStatus a owl:ObjectProperty;
+                   rdfs:comment "Current status of the entity";
+                   rdfs:domain om:Entity;
+                   rdfs:label "has entity status";
+                   rdfs:range om:EntityStatus.
+om:hasFollowers a owl:ObjectProperty;
+                rdfs:comment "Users who follow this entity";
+                rdfs:domain om:Entity;
+                rdfs:label "has followers";
+                rdfs:range prov:Agent.
+om:hasIncrementalChangeDescription a owl:ObjectProperty;
+                                   rdfs:comment "Incremental change that led to this version";
+                                   rdfs:domain om:Entity;
+                                   rdfs:label "has incremental change description";
+                                   rdfs:range om:ChangeDescription.
+om:hasInputPort a owl:ObjectProperty;
+                rdfs:comment "Input port of the data product";
+                rdfs:domain om:DataProduct;
+                rdfs:label "has input port";
+                rdfs:range om:InputPort;
+                rdfs:subPropertyOf dprod:hasInputPort.
+om:hasLifeCycle a owl:ObjectProperty;
+                rdfs:comment "Life cycle properties of the entity";
+                rdfs:domain om:Entity;
+                rdfs:label "has life cycle";
+                rdfs:range om:LifeCycle.
+om:hasOutputPort a owl:ObjectProperty;
+                 rdfs:comment "Output port of the data product";
+                 rdfs:domain om:DataProduct;
+                 rdfs:label "has output port";
+                 rdfs:range om:OutputPort;
+                 rdfs:subPropertyOf dprod:hasOutputPort.
+om:hasOwner a owl:ObjectProperty;
+            rdfs:comment "Agent responsible for the entity";
+            rdfs:domain om:Entity;
+            rdfs:label "has owner";
+            rdfs:range prov:Agent;
+            rdfs:subPropertyOf dcat:contactPoint.
+om:hasOwners a owl:ObjectProperty;
+             rdfs:comment "Owners of this entity (plural)";
+             rdfs:domain om:Entity;
+             rdfs:label "has owners";
+             rdfs:range prov:Agent;
+             rdfs:subPropertyOf dcat:contactPoint.
+om:hasParameterDefinition a owl:ObjectProperty;
+                          rdfs:comment "Parameter definitions for a test";
+                          rdfs:domain om:TestDefinition;
+                          rdfs:label "has parameter definition";
+                          rdfs:range om:TestCaseParameter.
+om:hasPipelineStatus a owl:ObjectProperty;
+                     rdfs:comment "Latest status of the pipeline";
+                     rdfs:domain om:Pipeline;
+                     rdfs:label "has pipeline status";
+                     rdfs:range om:PipelineStatus.
+om:hasPolicy a owl:ObjectProperty;
+             rdfs:comment "ODRL policy associated with the dataset";
+             rdfs:domain om:DataAsset;
+             rdfs:label "has policy";
+             rdfs:range odrl:Policy;
+             rdfs:subPropertyOf odrl:hasPolicy.
+om:hasProfile a owl:ObjectProperty;
+              rdfs:comment "Latest profile data for the table";
+              rdfs:domain om:Table;
+              rdfs:label "has profile";
+              rdfs:range om:TableProfile.
+om:hasProfilerConfig a owl:ObjectProperty;
+                     rdfs:comment "Profiler configuration for the table";
+                     rdfs:domain om:Table;
+                     rdfs:label "has profiler config";
+                     rdfs:range om:ProfilerConfig.
+om:hasQualityAnnotation a owl:ObjectProperty;
+                        rdfs:comment "Quality annotation for the dataset";
+                        rdfs:domain om:DataAsset;
+                        rdfs:label "has quality annotation";
+                        rdfs:range oa:Annotation;
+                        rdfs:subPropertyOf dcat:hasQualityAnnotation.
+om:hasQualityMeasurement a owl:ObjectProperty;
+                         rdfs:comment "Quality measurement for the dataset";
+                         rdfs:domain om:DataAsset;
+                         rdfs:label "has quality measurement";
+                         rdfs:range dqv:QualityMeasurement;
+                         rdfs:subPropertyOf dcat:hasQualityMeasurement.
+om:hasSLA a owl:ObjectProperty;
+          rdfs:comment "Service Level Agreement for the data product";
+          rdfs:domain om:DataProduct;
+          rdfs:label "has SLA";
+          rdfs:range om:DataProductSLA.
+om:hasTag a owl:ObjectProperty;
+          rdfs:domain om:Entity;
+          rdfs:label "has tag";
+          rdfs:range om:Tag.
+om:hasVersion a owl:ObjectProperty;
+              rdfs:domain om:DataAsset;
+              rdfs:label "has version";
+              rdfs:range om:DataAsset;
+              rdfs:subPropertyOf dcat:hasVersion;
+              owl:inverseOf om:isVersionOf.
+om:hasVotes a owl:ObjectProperty;
+            rdfs:comment "Votes on the entity";
+            rdfs:domain om:Entity;
+            rdfs:label "has votes";
+            rdfs:range om:Votes.
+om:homepage a owl:ObjectProperty;
+            rdfs:comment "Homepage of the catalog";
+            rdfs:domain om:Catalog;
+            rdfs:label "homepage";
+            rdfs:range foaf:Document;
+            rdfs:subPropertyOf foaf:homepage.
+om:identifier a owl:DatatypeProperty;
+              rdfs:comment "Unique identifier of the dataset";
+              rdfs:domain om:DataAsset;
+              rdfs:label "identifier";
+              rdfs:range rdfs:Literal;
+              rdfs:subPropertyOf dct:identifier.
+om:impersonatedBy a owl:ObjectProperty;
+                  rdfs:comment "Bot user that performed the action on behalf of the actual user";
+                  rdfs:domain om:Entity;
+                  rdfs:label "impersonated by";
+                  rdfs:range om:Bot.
+om:inSeries a owl:ObjectProperty;
+            rdfs:comment "Links a dataset to its series";
+            rdfs:domain om:Table;
+            rdfs:label "in series";
+            rdfs:range om:DatasetSeries;
+            rdfs:subPropertyOf dcat:inSeries.
+om:isAbout a owl:ObjectProperty;
+           rdfs:comment "Thread or post is about an entity";
+           rdfs:label "is about".
+om:isNullable a owl:DatatypeProperty;
+              rdfs:comment "Whether this column can contain null values";
+              rdfs:domain om:Column;
+              rdfs:label "is nullable";
+              rdfs:range xsd:boolean;
+              rdfs:subPropertyOf csvw:null.
+om:isPrimaryKey a owl:DatatypeProperty;
+                rdfs:comment "Whether this column is a primary key";
+                rdfs:domain om:Column;
+                rdfs:label "is primary key";
+                rdfs:range xsd:boolean.
+om:isReferencedBy a owl:ObjectProperty;
+                  rdfs:comment "Related resource that references this dataset";
+                  rdfs:domain om:DataAsset;
+                  rdfs:label "is referenced by";
+                  rdfs:range rdfs:Resource;
+                  rdfs:subPropertyOf dct:isReferencedBy.
+om:isVersionOf a owl:ObjectProperty;
+               rdfs:comment "Links to the non-versioned or abstract dataset";
+               rdfs:domain om:DataAsset;
+               rdfs:label "is version of";
+               rdfs:range om:DataAsset;
+               rdfs:subPropertyOf dcat:isVersionOf.
+om:issued a owl:DatatypeProperty;
+          rdfs:comment "Date of formal issuance";
+          rdfs:domain om:DataAsset;
+          rdfs:label "issued";
+          rdfs:range xsd:dateTime;
+          rdfs:subPropertyOf dcat:issued.
+om:joinedWith a owl:ObjectProperty;
+              rdfs:comment "Join relationship between tables";
+              rdfs:domain om:Table;
+              rdfs:label "joined with";
+              rdfs:range om:Table.
+om:keyword a owl:DatatypeProperty;
+           rdfs:comment "Keywords describing the dataset";
+           rdfs:domain om:DataAsset;
+           rdfs:label "keyword";
+           rdfs:range xsd:string;
+           rdfs:subPropertyOf dcat:keyword.
+om:landingPage a owl:ObjectProperty;
+               rdfs:comment "Web page providing access and information";
+               rdfs:domain om:Entity;
+               rdfs:label "landing page";
+               rdfs:range foaf:Document;
+               rdfs:subPropertyOf dcat:landingPage.
+om:language a owl:ObjectProperty;
+            rdfs:comment "Language of the dataset";
+            rdfs:domain om:DataAsset;
+            rdfs:label "language";
+            rdfs:range dct:LinguisticSystem;
+            rdfs:subPropertyOf dcat:language.
+om:last a owl:ObjectProperty;
+        rdfs:comment "Last dataset in a series";
+        rdfs:domain om:DatasetSeries;
+        rdfs:label "last";
+        rdfs:range om:DataAsset;
+        rdfs:subPropertyOf dcat:last.
+om:license a owl:ObjectProperty;
+           rdfs:comment "License under which the dataset is available";
+           rdfs:domain om:DataAsset;
+           rdfs:label "license";
+           rdfs:range om:LicenseDocument;
+           rdfs:subPropertyOf dcat:license.
+om:lifeCycleAccessed a owl:ObjectProperty;
+                     rdfs:comment "Access details when entity was last accessed";
+                     rdfs:domain om:LifeCycle;
+                     rdfs:label "life cycle accessed".
+om:lifeCycleCreated a owl:ObjectProperty;
+                    rdfs:comment "Access details when entity was created";
+                    rdfs:domain om:LifeCycle;
+                    rdfs:label "life cycle created".
+om:lifeCycleUpdated a owl:ObjectProperty;
+                    rdfs:comment "Access details when entity was last updated";
+                    rdfs:domain om:LifeCycle;
+                    rdfs:label "life cycle updated".
+om:lifecycleStage a owl:DatatypeProperty;
+                  rdfs:comment "Current lifecycle stage (IDEATION, DESIGN, DEVELOPMENT, TESTING, PRODUCTION, DEPRECATED, RETIRED)";
+                  rdfs:domain om:DataProduct;
+                  rdfs:label "lifecycle stage";
+                  rdfs:range xsd:string.
+om:lineageCreatedAt a owl:DatatypeProperty;
+                    rdfs:comment "When the lineage was created";
+                    rdfs:domain om:DataAsset;
+                    rdfs:label "lineage created at";
+                    rdfs:range xsd:dateTime;
+                    rdfs:subPropertyOf prov:generatedAtTime.
+om:lineageCreatedBy a owl:ObjectProperty;
+                    rdfs:comment "User who created the lineage";
+                    rdfs:domain om:DataAsset;
+                    rdfs:label "lineage created by";
+                    rdfs:range prov:Agent;
+                    rdfs:subPropertyOf prov:wasAttributedTo.
+om:lineageSource a owl:DatatypeProperty;
+                 rdfs:comment "How the lineage was created (Manual, Pipeline, Query, etc.)";
+                 rdfs:domain om:DataAsset;
+                 rdfs:label "lineage source";
+                 rdfs:range xsd:string.
+om:measure a owl:ObjectProperty;
+           rdfs:comment "Measure represented in the dataset";
+           rdfs:domain om:DataAsset;
+           rdfs:label "measure";
+           rdfs:range qb:MeasureProperty.
+om:mediaType a owl:ObjectProperty;
+             rdfs:comment "Media type of the distribution";
+             rdfs:domain om:Distribution;
+             rdfs:label "media type";
+             rdfs:range om:MediaType;
+             rdfs:subPropertyOf dcat:mediaType.
+om:memberOf a owl:ObjectProperty;
+            rdfs:domain om:User;
+            rdfs:label "member of";
+            rdfs:range om:Team.
+om:mentionedIn a owl:ObjectProperty;
+               rdfs:comment "Entity is mentioned in a post or thread";
+               rdfs:label "mentioned in".
+om:modelCapability a owl:DatatypeProperty;
+                   rdfs:comment "Capability exposed by the LLM model (TextGeneration, CodeGeneration, Embeddings, Chat, Vision, Audio, FunctionCalling, ToolUse)";
+                   rdfs:domain om:LLMModel;
+                   rdfs:label "model capability";
+                   rdfs:range xsd:string.
+om:modelType a owl:DatatypeProperty;
+             rdfs:comment "Type of LLM model (BaseModel, FineTuned, Quantized, Distilled, Adapter, Custom)";
+             rdfs:domain om:LLMModel;
+             rdfs:label "model type";
+             rdfs:range xsd:string.
+om:modified a owl:DatatypeProperty;
+            rdfs:domain om:Entity;
+            rdfs:label "modified";
+            rdfs:range xsd:dateTime;
+            rdfs:subPropertyOf dct:modified.
+om:next a owl:ObjectProperty;
+        rdfs:comment "Next dataset in a series";
+        rdfs:domain om:DataAsset;
+        rdfs:label "next";
+        rdfs:range om:DataAsset;
+        rdfs:subPropertyOf dcat:next.
+om:numberOfColumns a owl:DatatypeProperty;
+                   rdfs:comment "Number of columns in the dataset";
+                   rdfs:domain om:Table;
+                   rdfs:label "number of columns";
+                   rdfs:range xsd:integer.
+om:numberOfRecords a owl:DatatypeProperty;
+                   rdfs:comment "Number of records in the dataset";
+                   rdfs:domain om:DataAsset;
+                   rdfs:label "number of records";
+                   rdfs:range xsd:integer.
+om:owns a owl:ObjectProperty;
+        rdfs:domain prov:Agent;
+        rdfs:label "owns";
+        rdfs:range om:Entity.
+om:packageFormat a owl:ObjectProperty;
+                 rdfs:comment "Package format of the distribution";
+                 rdfs:domain om:Distribution;
+                 rdfs:label "package format";
+                 rdfs:range om:MediaType;
+                 rdfs:subPropertyOf dcat:packageFormat.
+om:parentOf a owl:ObjectProperty;
+            rdfs:comment "Hierarchical parent relationship";
+            rdfs:label "parent of".
+om:pipeline a owl:ObjectProperty;
+            rdfs:comment "Pipeline that processes the data";
+            rdfs:domain om:DataAsset;
+            rdfs:label "pipeline";
+            rdfs:range om:Pipeline;
+            rdfs:subPropertyOf prov:wasGeneratedBy.
+om:pipelineLocation a owl:DatatypeProperty;
+                    rdfs:comment "Pipeline code location";
+                    rdfs:domain om:Pipeline;
+                    rdfs:label "pipeline location";
+                    rdfs:range xsd:string.
+om:policyType a owl:DatatypeProperty;
+              rdfs:comment "Type of AI governance policy (ModelApproval, DataAccess, BiasThreshold, ComplianceCheck, CostControl, PerformanceStandard, SecurityControl)";
+              rdfs:domain om:AIGovernancePolicy;
+              rdfs:label "policy type";
+              rdfs:range xsd:string.
+om:portDataAsset a owl:ObjectProperty;
+                 rdfs:comment "Data asset exposed through this port";
+                 rdfs:domain [a owl:Class ; 
+                              owl:unionOf (om:InputPort
+                                           om:OutputPort)];
+                 rdfs:label "port data asset";
+                 rdfs:range om:DataAsset.
+om:portEndpoint a owl:DatatypeProperty;
+                rdfs:comment "Endpoint URL or connection string for the port";
+                rdfs:domain [a owl:Class ; 
+                             owl:unionOf (om:InputPort
+                                          om:OutputPort)];
+                rdfs:label "port endpoint";
+                rdfs:range xsd:anyURI;
+                rdfs:subPropertyOf dcat:endpointURL.
+om:portFormat a owl:DatatypeProperty;
+              rdfs:comment "Data format supported by the port (JSON, CSV, PARQUET, etc.)";
+              rdfs:domain [a owl:Class ; 
+                           owl:unionOf (om:InputPort
+                                        om:OutputPort)];
+              rdfs:label "port format";
+              rdfs:range xsd:string.
+om:portName a owl:DatatypeProperty;
+            rdfs:comment "Name of the port";
+            rdfs:domain [a owl:Class ; 
+                         owl:unionOf (om:InputPort
+                                      om:OutputPort)];
+            rdfs:label "port name";
+            rdfs:range xsd:string.
+om:portProtocol a owl:DatatypeProperty;
+                rdfs:comment "Protocol used by the port (REST, GRPC, KAFKA, etc.)";
+                rdfs:domain [a owl:Class ; 
+                             owl:unionOf (om:InputPort
+                                          om:OutputPort)];
+                rdfs:label "port protocol";
+                rdfs:range xsd:string.
+om:prev a owl:ObjectProperty;
+        rdfs:comment "Previous dataset in a series";
+        rdfs:domain om:DataAsset;
+        rdfs:label "previous";
+        rdfs:range om:DataAsset;
+        rdfs:subPropertyOf dcat:prev.
+om:previousVersion a owl:ObjectProperty;
+                   rdfs:comment "Link to previous version";
+                   rdfs:domain om:DataAsset;
+                   rdfs:label "previous version";
+                   rdfs:range om:DataAsset;
+                   rdfs:subPropertyOf dcat:previousVersion.
+om:primaryTopic a owl:ObjectProperty;
+                rdfs:comment "Main entity described by this record";
+                rdfs:domain om:CatalogRecord;
+                rdfs:label "primary topic";
+                rdfs:range om:Entity;
+                rdfs:subPropertyOf foaf:primaryTopic.
+om:processedLineage a owl:DatatypeProperty;
+                    rdfs:comment "Whether lineage has been processed for this entity";
+                    rdfs:domain om:DataAsset;
+                    rdfs:label "processed lineage";
+                    rdfs:range xsd:boolean.
+om:provenance a owl:ObjectProperty;
+              rdfs:comment "Provenance statement";
+              rdfs:domain om:DataAsset;
+              rdfs:label "provenance";
+              rdfs:range dct:ProvenanceStatement;
+              rdfs:subPropertyOf dct:provenance.
+om:providesTo a owl:ObjectProperty;
+              rdfs:comment "Data products that consume data from this product";
+              rdfs:domain om:DataProduct;
+              rdfs:label "provides to";
+              rdfs:range om:DataProduct;
+              rdfs:subPropertyOf dprod:providesTo.
+om:publisher a owl:ObjectProperty;
+             rdfs:comment "Entity responsible for making the dataset available";
+             rdfs:domain om:DataAsset;
+             rdfs:label "publisher";
+             rdfs:range prov:Agent;
+             rdfs:subPropertyOf dcat:publisher.
+om:qualifiedAccess a owl:ObjectProperty;
+                   rdfs:comment "Qualified access information including authentication and authorization";
+                   rdfs:domain om:DataAsset;
+                   rdfs:label "qualified access";
+                   rdfs:range dcat:Relationship.
+om:qualifiedAttribution a owl:ObjectProperty;
+                        rdfs:comment "Detailed attribution with roles";
+                        rdfs:domain om:DataAsset;
+                        rdfs:label "qualified attribution";
+                        rdfs:range prov:Attribution;
+                        rdfs:subPropertyOf prov:qualifiedAttribution.
+om:qualifiedDerivation a owl:ObjectProperty;
+                       rdfs:comment "Detailed derivation with transformation info";
+                       rdfs:domain om:DataAsset;
+                       rdfs:label "qualified derivation";
+                       rdfs:range prov:Derivation;
+                       rdfs:subPropertyOf prov:qualifiedDerivation.
+om:qualifiedRelation a owl:ObjectProperty;
+                     rdfs:comment "Link to a qualified relationship";
+                     rdfs:domain om:Entity;
+                     rdfs:label "qualified relation";
+                     rdfs:range om:QualifiedRelationship;
+                     rdfs:subPropertyOf dcat:qualifiedRelation.
+om:reactedTo a owl:ObjectProperty;
+             rdfs:domain prov:Agent;
+             rdfs:label "reacted to";
+             rdfs:range om:Post.
+om:record a owl:ObjectProperty;
+          rdfs:comment "Links catalog to its records";
+          rdfs:domain om:Database;
+          rdfs:label "record";
+          rdfs:range om:CatalogRecord;
+          rdfs:subPropertyOf dcat:record.
+om:relatedTo a owl:ObjectProperty;
+             rdfs:comment "General relationship between entities";
+             rdfs:label "related to".
+om:relatesTo a owl:ObjectProperty;
+             rdfs:comment "Alternative spelling of relatedTo";
+             rdfs:label "relates to";
+             owl:equivalentProperty om:relatedTo.
+om:relation a owl:ObjectProperty;
+            rdfs:comment "Related resource";
+            rdfs:domain om:DataAsset;
+            rdfs:label "relation";
+            rdfs:range rdfs:Resource;
+            rdfs:subPropertyOf dct:relation.
+om:repliedTo a owl:ObjectProperty;
+             rdfs:domain om:Post;
+             rdfs:label "replied to";
+             rdfs:range om:Post.
+om:resourceCategory a owl:DatatypeProperty;
+                    rdfs:comment "Primary topic grouping (Discovery, Administration, DataGovernance, DataQuality, Observability, AI)";
+                    rdfs:domain om:LearningResource;
+                    rdfs:label "learning resource category";
+                    rdfs:range xsd:string.
+om:resourceDifficulty a owl:DatatypeProperty;
+                      rdfs:comment "Suggested proficiency tier (Intro, Intermediate, Advanced)";
+                      rdfs:domain om:LearningResource;
+                      rdfs:label "learning resource difficulty";
+                      rdfs:range xsd:string.
+om:resourceType a owl:DatatypeProperty;
+                rdfs:comment "Kind of learning asset (Storylane, Video, Article)";
+                rdfs:domain om:LearningResource;
+                rdfs:label "learning resource type";
+                rdfs:range xsd:string.
+om:retentionPeriod a owl:DatatypeProperty;
+                   rdfs:comment "Retention period of the data in ISO 8601 duration format";
+                   rdfs:domain om:Table;
+                   rdfs:label "retention period";
+                   rdfs:range xsd:duration.
+om:reviews a owl:ObjectProperty;
+           rdfs:domain prov:Agent;
+           rdfs:label "reviews";
+           rdfs:range om:Entity.
+om:rights a owl:ObjectProperty;
+          rdfs:comment "Rights statement for the dataset";
+          rdfs:domain om:DataAsset;
+          rdfs:label "rights";
+          rdfs:range om:RightsStatement;
+          rdfs:subPropertyOf dcat:rights.
+om:rowCount a owl:DatatypeProperty;
+            rdfs:comment "Number of rows in the table";
+            rdfs:domain om:Table;
+            rdfs:label "row count";
+            rdfs:range xsd:integer.
+om:sampleData a owl:ObjectProperty;
+              rdfs:comment "Sample data from the table";
+              rdfs:domain om:Table;
+              rdfs:label "sample data";
+              rdfs:range csvw:TableGroup.
+om:scheduleInterval a owl:DatatypeProperty;
+                    rdfs:comment "Scheduler interval in cron format";
+                    rdfs:domain om:Pipeline;
+                    rdfs:label "schedule interval";
+                    rdfs:range xsd:string.
+om:schemaDefinition a owl:DatatypeProperty;
+                    rdfs:comment "DDL schema definition for the table";
+                    rdfs:domain om:Table;
+                    rdfs:label "schema definition";
+                    rdfs:range xsd:string.
+om:serverType a owl:DatatypeProperty;
+              rdfs:comment "Type of MCP server (DataAccess, FileSystem, WebAPI, Database, Cloud, Security, Development, Communication, Custom)";
+              rdfs:domain om:MCPServer;
+              rdfs:label "MCP server type";
+              rdfs:range xsd:string.
+om:servesDataset a owl:ObjectProperty;
+                 rdfs:comment "Links a data service to datasets it serves";
+                 rdfs:domain om:Service;
+                 rdfs:label "serves dataset";
+                 rdfs:range om:DataAsset;
+                 rdfs:subPropertyOf dcat:servesDataset.
+om:service a owl:ObjectProperty;
+           rdfs:comment "Service that is part of the catalog";
+           rdfs:domain om:Catalog;
+           rdfs:label "service";
+           rdfs:range om:DataService;
+           rdfs:subPropertyOf dcat:service.
+om:serviceEndpoint a owl:ObjectProperty;
+                   rdfs:comment "Endpoint for accessing the service";
+                   rdfs:domain om:DataService;
+                   rdfs:label "service endpoint";
+                   rdfs:range rdfs:Resource.
+om:serviceLevel a owl:DatatypeProperty;
+                rdfs:comment "Service level agreement details";
+                rdfs:domain om:DataService;
+                rdfs:label "service level";
+                rdfs:range xsd:string.
+om:serviceStatus a owl:DatatypeProperty;
+                 rdfs:comment "Operational status of the service";
+                 rdfs:domain om:DataService;
+                 rdfs:label "service status";
+                 rdfs:range xsd:string.
+om:serviceType a owl:DatatypeProperty;
+               rdfs:domain om:Service;
+               rdfs:label "service type";
+               rdfs:range xsd:string;
+               rdfs:subPropertyOf dct:type.
+om:slaAvailability a owl:DatatypeProperty;
+                   rdfs:comment "Expected availability percentage";
+                   rdfs:domain om:DataProductSLA;
+                   rdfs:label "SLA availability";
+                   rdfs:range xsd:decimal.
+om:slaDataFreshness a owl:DatatypeProperty;
+                    rdfs:comment "Maximum data staleness in minutes";
+                    rdfs:domain om:DataProductSLA;
+                    rdfs:label "SLA data freshness";
+                    rdfs:range xsd:integer.
+om:slaDataQuality a owl:DatatypeProperty;
+                  rdfs:comment "Minimum data quality score";
+                  rdfs:domain om:DataProductSLA;
+                  rdfs:label "SLA data quality";
+                  rdfs:range xsd:decimal.
+om:slaResponseTime a owl:DatatypeProperty;
+                   rdfs:comment "Expected response time in milliseconds";
+                   rdfs:domain om:DataProductSLA;
+                   rdfs:label "SLA response time";
+                   rdfs:range xsd:integer.
+om:slaTier a owl:DatatypeProperty;
+           rdfs:comment "SLA tier level (GOLD, SILVER, BRONZE)";
+           rdfs:domain om:DataProductSLA;
+           rdfs:label "SLA tier";
+           rdfs:range xsd:string.
+om:source a owl:ObjectProperty;
+          rdfs:comment "Source of the dataset";
+          rdfs:domain om:DataAsset;
+          rdfs:label "source";
+          rdfs:range om:DataAsset;
+          rdfs:subPropertyOf dct:source.
+om:sourceHash a owl:DatatypeProperty;
+              rdfs:comment "Source hash of the entity for change detection";
+              rdfs:domain om:Entity;
+              rdfs:label "source hash";
+              rdfs:range xsd:string.
+om:sourceUrl a owl:DatatypeProperty;
+             rdfs:comment "URL to visit/manage the entity in the source system";
+             rdfs:domain om:Entity;
+             rdfs:label "source URL";
+             rdfs:range xsd:anyURI.
+om:spatial a owl:ObjectProperty;
+           rdfs:comment "Spatial area covered by the dataset";
+           rdfs:domain om:DataAsset;
+           rdfs:label "spatial coverage";
+           rdfs:range om:Location;
+           rdfs:subPropertyOf dcat:spatial.
+om:spatialResolution a owl:DatatypeProperty;
+                     rdfs:comment "Minimum spatial separation resolvable in the dataset";
+                     rdfs:domain om:DataAsset;
+                     rdfs:label "spatial resolution";
+                     rdfs:range xsd:decimal;
+                     rdfs:subPropertyOf dcat:spatialResolutionInMeters.
+om:sqlQuery a owl:DatatypeProperty;
+            rdfs:comment "SQL query used in transformation";
+            rdfs:domain om:DataAsset;
+            rdfs:label "SQL query";
+            rdfs:range xsd:string.
+om:startDate a owl:DatatypeProperty;
+             rdfs:comment "Start of the temporal period";
+             rdfs:domain om:PeriodOfTime;
+             rdfs:label "start date";
+             rdfs:range xsd:dateTime;
+             rdfs:subPropertyOf dcat:startDate.
+om:statisticalUnit a owl:ObjectProperty;
+                   rdfs:comment "Unit of observation in the dataset";
+                   rdfs:domain om:DataAsset;
+                   rdfs:label "statistical unit";
+                   rdfs:range skos:Concept.
+om:supportedDataTypes a owl:DatatypeProperty;
+                      rdfs:comment "Data types supported by this test definition";
+                      rdfs:domain om:TestDefinition;
+                      rdfs:label "supported data types";
+                      rdfs:range xsd:string.
+om:supportsDynamicAssertion a owl:DatatypeProperty;
+                            rdfs:comment "Whether the test case supports dynamic assertions";
+                            rdfs:domain om:TestDefinition;
+                            rdfs:label "supports dynamic assertion";
+                            rdfs:range xsd:boolean.
+om:supportsRowLevelPassedFailed a owl:DatatypeProperty;
+                                rdfs:comment "Whether the test case supports row level passed/failed";
+                                rdfs:domain om:TestDefinition;
+                                rdfs:label "supports row level passed failed";
+                                rdfs:range xsd:boolean.
+om:tableType a owl:DatatypeProperty;
+             rdfs:comment "Type of table (Regular, External, View, MaterializedView, etc.)";
+             rdfs:domain om:Table;
+             rdfs:label "table type";
+             rdfs:range xsd:string.
+om:templateVariable a owl:DatatypeProperty;
+                    rdfs:domain om:PromptTemplate;
+                    rdfs:label "template variable";
+                    rdfs:range xsd:string.
+om:temporal a owl:ObjectProperty;
+            rdfs:comment "Temporal period covered by the dataset";
+            rdfs:domain om:DataAsset;
+            rdfs:label "temporal coverage";
+            rdfs:range om:PeriodOfTime;
+            rdfs:subPropertyOf dcat:temporal.
+om:temporalResolution a owl:DatatypeProperty;
+                      rdfs:comment "Minimum time period resolvable in the dataset";
+                      rdfs:domain om:DataAsset;
+                      rdfs:label "temporal resolution";
+                      rdfs:range xsd:duration;
+                      rdfs:subPropertyOf dcat:temporalResolution.
+om:testPlatform a owl:DatatypeProperty;
+                rdfs:comment "Platform where tests are defined (OpenMetadata, GreatExpectations, dbt, Deequ, Soda, Other)";
+                rdfs:domain om:TestDefinition;
+                rdfs:label "test platform";
+                rdfs:range xsd:string.
+om:testedBy a owl:ObjectProperty;
+            rdfs:domain om:DataAsset;
+            rdfs:label "tested by";
+            rdfs:range om:TestCase.
+om:theme a owl:ObjectProperty;
+         rdfs:comment "Main category of the dataset";
+         rdfs:domain om:DataAsset;
+         rdfs:label "theme";
+         rdfs:range skos:Concept;
+         rdfs:subPropertyOf dcat:theme.
+om:themeTaxonomy a owl:ObjectProperty;
+                 rdfs:comment "Knowledge organization system for categorizing datasets";
+                 rdfs:domain om:Catalog;
+                 rdfs:label "theme taxonomy";
+                 rdfs:range skos:ConceptScheme;
+                 rdfs:subPropertyOf dcat:themeTaxonomy.
+om:timeliness a owl:DatatypeProperty;
+              rdfs:comment "How current the data is";
+              rdfs:domain om:DataAsset;
+              rdfs:label "timeliness";
+              rdfs:range xsd:string.
+om:title a owl:DatatypeProperty;
+         rdfs:comment "Title of the dataset";
+         rdfs:domain om:DataAsset;
+         rdfs:label "title";
+         rdfs:range rdfs:Literal;
+         rdfs:subPropertyOf dct:title.
+om:toColumn a owl:ObjectProperty;
+            rdfs:comment "Target column created by transformation";
+            rdfs:domain om:Column;
+            rdfs:label "to column";
+            rdfs:range om:Column;
+            rdfs:subPropertyOf prov:wasGeneratedBy.
+om:transformationFunction a owl:DatatypeProperty;
+                          rdfs:comment "Function applied to transform data";
+                          rdfs:domain om:DataAsset;
+                          rdfs:label "transformation function";
+                          rdfs:range xsd:string.
+om:transportType a owl:DatatypeProperty;
+                 rdfs:comment "Transport protocol used by the MCP server";
+                 rdfs:domain om:MCPServer;
+                 rdfs:label "MCP transport type";
+                 rdfs:range xsd:string.
+om:type a owl:ObjectProperty;
+        rdfs:comment "Nature or genre of the dataset";
+        rdfs:domain om:DataAsset;
+        rdfs:label "type";
+        rdfs:range rdfs:Class;
+        rdfs:subPropertyOf dct:type.
+om:uniqueness a owl:DatatypeProperty;
+              rdfs:comment "Degree of uniqueness in the data";
+              rdfs:domain om:DataAsset;
+              rdfs:label "uniqueness";
+              rdfs:range xsd:decimal.
+om:upVotes a owl:DatatypeProperty;
+           rdfs:comment "Number of up votes";
+           rdfs:domain om:Votes;
+           rdfs:label "up votes";
+           rdfs:range xsd:integer.
+om:updatedAt a owl:DatatypeProperty;
+             rdfs:comment "Last update time in Unix epoch milliseconds";
+             rdfs:domain om:Entity;
+             rdfs:label "updated at";
+             rdfs:range xsd:long.
+om:updatedBy a owl:DatatypeProperty;
+             rdfs:comment "User who made the update";
+             rdfs:domain om:Entity;
+             rdfs:label "updated by";
+             rdfs:range xsd:string.
+om:upstream a owl:ObjectProperty;
+            rdfs:comment "Data lineage upstream relationship";
+            rdfs:domain om:DataAsset;
+            rdfs:label "upstream";
+            rdfs:range om:DataAsset;
+            rdfs:subPropertyOf prov:wasDerivedFrom;
+            owl:equivalentProperty dcat:qualifiedRelation.
+om:usageSummary a owl:ObjectProperty;
+                rdfs:comment "Latest usage information for the entity";
+                rdfs:domain om:DataAsset;
+                rdfs:label "usage summary".
+om:uses a owl:ObjectProperty;
+        rdfs:label "uses";
+        rdfs:subPropertyOf prov:used.
+om:usesMCPServer a owl:ObjectProperty;
+                 rdfs:comment "AI application uses an MCP server for tools, resources or prompts";
+                 rdfs:domain om:AIApplication;
+                 rdfs:label "uses MCP server";
+                 rdfs:range om:MCPServer;
+                 rdfs:subPropertyOf prov:used.
+om:usesModel a owl:ObjectProperty;
+             rdfs:comment "AI application or agent execution uses an LLM model";
+             rdfs:label "uses model";
+             rdfs:range om:LLMModel;
+             rdfs:subPropertyOf prov:used.
+om:usesPromptTemplate a owl:ObjectProperty;
+                      rdfs:label "uses prompt template";
+                      rdfs:range om:PromptTemplate;
+                      rdfs:subPropertyOf prov:used.
+om:validity a owl:DatatypeProperty;
+            rdfs:comment "Degree to which data conforms to defined rules";
+            rdfs:domain om:DataAsset;
+            rdfs:label "validity";
+            rdfs:range xsd:decimal.
+om:version a owl:DatatypeProperty;
+           rdfs:comment "Version identifier";
+           rdfs:domain om:Entity;
+           rdfs:label "version";
+           rdfs:range xsd:string;
+           rdfs:subPropertyOf dcat:version.
+om:versionNotes a owl:DatatypeProperty;
+                rdfs:comment "Notes about this version";
+                rdfs:domain om:Entity;
+                rdfs:label "version notes";
+                rdfs:range xsd:string;
+                rdfs:subPropertyOf adms:versionNotes.
+om:voted a owl:ObjectProperty;
+         rdfs:domain prov:Agent;
+         rdfs:label "voted";
+         rdfs:range om:Entity.
+om:wasDerivedFrom a owl:ObjectProperty;
+                  rdfs:comment "Source dataset this was derived from";
+                  rdfs:domain om:DataAsset;
+                  rdfs:label "was derived from";
+                  rdfs:range om:DataAsset;
+                  rdfs:subPropertyOf prov:wasDerivedFrom.
+om:wasGeneratedBy a owl:ObjectProperty;
+                  rdfs:comment "Activity that generated the dataset";
+                  rdfs:domain om:DataAsset;
+                  rdfs:label "was generated by";
+                  rdfs:range prov:Activity;
+                  rdfs:subPropertyOf prov:wasGeneratedBy.

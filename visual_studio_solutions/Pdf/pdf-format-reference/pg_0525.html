@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0525.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 7.2 525 Basic Compositing Computations The above formulas apply to RGB spaces. Blending in CMYK spaces (including both DeviceCMYK and ICCBased calibrated CMYK spaces) is handled in the following way: • The C, M, and Y components are converted to their complementary R, G, and B components in the usual way. The formulas above are applied to the RGB color values. The results are converted back to C, M, and Y. • For the K component, the result is the K component of Cb for the Hue, Saturablend mode. tion, and Color blend modes; it is the K component of Cs for the Luminosity Note: An additional standard blend mode, Compatible, is a vestige of an earlier design and is no longer needed but is still recognized for the sake of compatibility. Its effect is equivalent to that of the Normal blend mode. See “Compatibility with Opaque Overprinting” on page 567 for further discussion. 7.2.5 Interpretation of Alpha The color compositing formula αs ⎛ αs ⎞ C r = ⎜1 – ----- ⎟ × C b + ----- × [ ( 1 – α b ) × C s + α b × B ( C b , C s ) ] αr ⎝ αr ⎠ produces a result color that is a weighted average of the backdrop color, the source color, and the blended B (Cb , Cs ) term, with the weighting determined by the backdrop and source alphas αb and αs . For the simplest blend mode, Normal, defined by · B ( cb , cs ) = cs the compositing formula collapses to a simple weighted average of the backdrop and source colors, controlled by the backdrop and source alpha values. For more interesting blend functions, the backdrop and source alphas control whether the effect of the blend mode is fully realized or is toned down by mixing the result with the backdrop and source colors. The result alpha, αr, is actually a computed result, described below in Section 7.2.6, “Shape and Opacity Computations.” The result color is normalized by the result alpha, ensuring that when this color and alpha are subsequently used to-  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0525.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 7.2</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">525</span></div>
+<div class="pos" id="*49:426" style="top:49;left:426"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Basic Compositing Computations</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The above formulas apply to</span></div>
+<div class="pos" id="*99:307" style="top:99;left:307"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*99:338" style="top:99;left:338"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">spaces. Blending in</span></div>
+<div class="pos" id="*99:457" style="top:99;left:457"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*99:501" style="top:99;left:501"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">spaces (including</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">both</span></div>
+<div class="pos" id="*117:164" style="top:117;left:164"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceCMYK</span></div>
+<div class="pos" id="*117:242" style="top:117;left:242"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*117:269" style="top:117;left:269"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ICCBased</span></div>
+<div class="pos" id="*117:327" style="top:117;left:327"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">calibrated</span></div>
+<div class="pos" id="*117:389" style="top:117;left:389"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*117:433" style="top:117;left:433"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">spaces) is handled in the fol-</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">lowing way:</span></div>
+<div class="pos" id="*167:133" style="top:167;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*170:145" style="top:170;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*170:172" style="top:170;left:172"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C, M,</span></div>
+<div class="pos" id="*170:208" style="top:170;left:208"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*170:234" style="top:170;left:234"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y</span></div>
+<div class="pos" id="*170:247" style="top:170;left:247"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">components are converted to their complementary</span></div>
+<div class="pos" id="*170:548" style="top:170;left:548"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">R, G,</span></div>
+<div class="pos" id="*170:582" style="top:170;left:582"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*188:145" style="top:188;left:145"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*188:157" style="top:188;left:157"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">components in the usual way. The formulas above are applied to the</span></div>
+<div class="pos" id="*188:551" style="top:188;left:551"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*188:581" style="top:188;left:581"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">col-</span></div>
+<div class="pos" id="*206:145" style="top:206;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or values. The results are converted back to</span></div>
+<div class="pos" id="*206:399" style="top:206;left:399"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C, M,</span></div>
+<div class="pos" id="*206:434" style="top:206;left:434"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*206:459" style="top:206;left:459"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Y.</span></div>
+<div class="pos" id="*230:133" style="top:230;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*232:145" style="top:232;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">For the</span></div>
+<div class="pos" id="*232:191" style="top:232;left:191"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">K</span></div>
+<div class="pos" id="*232:204" style="top:232;left:204"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">component, the result is the</span></div>
+<div class="pos" id="*232:371" style="top:232;left:371"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">K</span></div>
+<div class="pos" id="*232:384" style="top:232;left:384"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">component of</span></div>
+<div class="pos" id="*232:469" style="top:232;left:469"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*238:479" style="top:238;left:479"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*232:488" style="top:232;left:488"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for the</span></div>
+<div class="pos" id="*233:531" style="top:233;left:531"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Hue</span></div>
+<div class="pos" id="*232:555" style="top:232;left:555"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*233:562" style="top:233;left:562"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Satura-</span></div>
+<div class="pos" id="*268:145" style="top:268;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">blend mode.</span></div>
+<div class="pos" id="*251:145" style="top:251;left:145"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">tion</span></div>
+<div class="pos" id="*250:169" style="top:250;left:169"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*251:204" style="top:251;left:204"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Color</span></div>
+<div class="pos" id="*250:240" style="top:250;left:240"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">blend modes; it is the</span></div>
+<div class="pos" id="*250:374" style="top:250;left:374"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">K</span></div>
+<div class="pos" id="*250:388" style="top:250;left:388"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">component of</span></div>
+<div class="pos" id="*250:475" style="top:250;left:475"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*257:485" style="top:257;left:485"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*250:494" style="top:250;left:494"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for the</span></div>
+<div class="pos" id="*251:539" style="top:251;left:539"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Luminosity</span></div>
+<div class="pos" id="*303:133" style="top:303;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*303:168" style="top:303;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">An additional standard blend mode,</span></div>
+<div class="pos" id="*304:377" style="top:304;left:377"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Compatible</span></div>
+<div class="pos" id="*303:443" style="top:303;left:443"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">, is a vestige of an earlier de-</span></div>
+<div class="pos" id="*321:133" style="top:321;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">sign and is no longer needed but is still recognized for the sake of compatibility. Its</span></div>
+<div class="pos" id="*339:133" style="top:339;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">effect is equivalent to that of the</span></div>
+<div class="pos" id="*340:336" style="top:340;left:336"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Normal</span></div>
+<div class="pos" id="*339:385" style="top:339;left:385"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">blend mode. See “Compatibility with</span></div>
+<div class="pos" id="*357:133" style="top:357;left:133"><a href="pg_0567.htm"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Opaque Overprinting” on page 567 for further discussion.</span></a></div>
+<div class="pos" id="*400:88" style="top:400;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">7.2.5 Interpretation of Alpha</span></div>
+<div class="pos" id="*437:133" style="top:437;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The color compositing formula</span></div>
+<div class="pos" id="*465:278" style="top:465;left:278"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*477:288" style="top:477;left:288"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*467:171" style="top:467;left:171"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎛</span></div>
+<div class="pos" id="*465:199" style="top:465;left:199"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*477:208" style="top:477;left:208"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*467:215" style="top:467;left:215"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎞</span></div>
+<div class="pos" id="*483:134" style="top:483;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*490:144" style="top:490;left:144"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*480:156" style="top:480;left:156"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*480:171" style="top:480;left:171"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎜</span></div>
+<div class="pos" id="*483:177" style="top:483;left:177"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*480:187" style="top:480;left:187"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">– -----</span></div>
+<div class="pos" id="*480:215" style="top:480;left:215"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎟</span></div>
+<div class="pos" id="*480:226" style="top:480;left:226"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*483:238" style="top:483;left:238"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*490:248" style="top:490;left:248"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*480:262" style="top:480;left:262"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+ -----</span></div>
+<div class="pos" id="*480:296" style="top:480;left:296"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">× [ (</span></div>
+<div class="pos" id="*483:319" style="top:483;left:319"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*480:330" style="top:480;left:330"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*479:341" style="top:479;left:341"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*490:351" style="top:490;left:351"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*480:358" style="top:480;left:358"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*483:378" style="top:483;left:378"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*490:388" style="top:490;left:388"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*480:397" style="top:480;left:397"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*479:410" style="top:479;left:410"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*490:420" style="top:490;left:420"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*480:430" style="top:480;left:430"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*483:442" style="top:483;left:442"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*480:451" style="top:480;left:451"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">(</span></div>
+<div class="pos" id="*483:458" style="top:483;left:458"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*490:467" style="top:490;left:467"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*480:475" style="top:480;left:475"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*483:482" style="top:483;left:482"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*490:492" style="top:490;left:492"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*480:499" style="top:480;left:499"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">)</span></div>
+<div class="pos" id="*480:505" style="top:480;left:505"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">]</span></div>
+<div class="pos" id="*488:278" style="top:488;left:278"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*500:288" style="top:500;left:288"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*492:171" style="top:492;left:171"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎝</span></div>
+<div class="pos" id="*488:199" style="top:488;left:199"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*500:208" style="top:500;left:208"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*492:215" style="top:492;left:215"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">⎠</span></div>
+<div class="pos" id="*535:133" style="top:535;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">produces a result color that is a weighted average of the backdrop color, the</span></div>
+<div class="pos" id="*554:133" style="top:554;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">source color, and the blended</span></div>
+<div class="pos" id="*554:309" style="top:554;left:309"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*554:319" style="top:554;left:319"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(C</span></div>
+<div class="pos" id="*560:333" style="top:560;left:333"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*554:340" style="top:554;left:340"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*554:346" style="top:554;left:346"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*560:356" style="top:560;left:356"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*554:361" style="top:554;left:361"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) term, with the weighting determined by</span></div>
+<div class="pos" id="*572:133" style="top:572;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the backdrop and source alphas</span></div>
+<div class="pos" id="*567:320" style="top:567;left:320"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*578:329" style="top:578;left:329"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*572:338" style="top:572;left:338"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*567:363" style="top:567;left:363"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*578:372" style="top:578;left:372"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*572:378" style="top:572;left:378"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. For the simplest blend mode,</span></div>
+<div class="pos" id="*572:557" style="top:572;left:557"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Normal</span></div>
+<div class="pos" id="*572:600" style="top:572;left:600"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*590:133" style="top:590;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">defined by</span></div>
+<div class="pos" id="*612:155" style="top:612;left:155"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">·</span></div>
+<div class="pos" id="*623:134" style="top:623;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*620:144" style="top:620;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">(</span></div>
+<div class="pos" id="*623:150" style="top:623;left:150"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*630:156" style="top:630;left:156"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*620:164" style="top:620;left:164"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*623:171" style="top:623;left:171"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*630:177" style="top:630;left:177"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*620:184" style="top:620;left:184"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">) =</span></div>
+<div class="pos" id="*623:212" style="top:623;left:212"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*630:218" style="top:630;left:218"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*662:133" style="top:662;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the compositing formula collapses to a simple weighted average of the backdrop</span></div>
+<div class="pos" id="*680:133" style="top:680;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and source colors, controlled by the backdrop and source alpha values. For more</span></div>
+<div class="pos" id="*698:133" style="top:698;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">interesting blend functions, the backdrop and source alphas control whether the</span></div>
+<div class="pos" id="*717:133" style="top:717;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">effect of the blend mode is fully realized or is toned down by mixing the result</span></div>
+<div class="pos" id="*735:133" style="top:735;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">with the backdrop and source colors.</span></div>
+<div class="pos" id="*769:133" style="top:769;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The result alpha,</span></div>
+<div class="pos" id="*765:239" style="top:765;left:239"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*776:248" style="top:776;left:248"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*769:253" style="top:769;left:253"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, is actually a computed result, described below in Section</span></div>
+<div class="pos" id="*787:133" style="top:787;left:133"><a href="pg_0526.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7.2.6, “Shape and Opacity Computations.” The result color is normalized by the</span></a></div>
+<div class="pos" id="*805:133" style="top:805;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">result alpha, ensuring that when this color and alpha are subsequently used to-</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0524.htm" title="Go to previous page">Previous</a> <a href="pg_0526.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(525);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

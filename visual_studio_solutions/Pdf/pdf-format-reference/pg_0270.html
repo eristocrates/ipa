@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0270.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 4 270 Graphics A DeviceN color space is specified as follows: [ /DeviceN names alternateSpace tintTransform ] or [ /DeviceN names alternateSpace tintTransform attributes ] It is a four- or five-element array whose first element is the color space family name DeviceN. The remaining elements are parameters that a DeviceN color space requires. The names parameter is an array of name objects specifying the individual color components. The length of the array determines the number of components in the DeviceN color space, which is subject to an implementation limit; see Appendix C.The component names must all be different from one another, except for the name None, which can be repeated as described later in this section. (The special name All, used by Separation color spaces, is not allowed.) Color values are tint components in the range 0.0 to 1.0: • For DeviceN color spaces that do not have a subtype of NChannel, 0.0 always represents the minimum amount of colorant; 1.0 represents the maximum. Tints are always treated as subtractive colors, even if the device produces output for the designated component by an additive method. Thus, a tint value of 0.0 denotes the lightest color that can be achieved with the given colorant, and 1.0 the darkest. (This convention is the same one as for DeviceCMYK color components but opposite to the one for DeviceGray and DeviceRGB.) • For NChannel color spaces, values for additive process colors (such as RGB) are specified in their natural form, where 1.0 represents maximum intensity of color. When this space is set to the current color space (using the CS or cs operators), each component is given an initial value of 1.0. The SCN and scn operators respectively set the current stroking and nonstroking color. Operand values supplied to SCN or scn are interpreted as color component values in the order in which the colors are given in the names array, as are the values in a sampled image that uses a DeviceN color space. The alternateSpace parameter is an array or name object that can be any device or CIE-based color space but not another special color space (Pattern, Indexed, Separation, or DeviceN). When the color space is set to a DeviceN space, if any of  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0270.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 4</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">270</span></div>
+<div class="pos" id="*49:556" style="top:49;left:556"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Graphics</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*99:146" style="top:99;left:146"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*99:198" style="top:99;left:198"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space is specified as follows:</span></div>
+<div class="pos" id="*125:149" style="top:125;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ /DeviceN</span></div>
+<div class="pos" id="*125:207" style="top:125;left:207"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">names alternateSpace tintTransform</span></div>
+<div class="pos" id="*125:392" style="top:125;left:392"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*150:133" style="top:150;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*177:149" style="top:177;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ /DeviceN</span></div>
+<div class="pos" id="*177:207" style="top:177;left:207"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">names alternateSpace tintTransform attributes</span></div>
+<div class="pos" id="*177:446" style="top:177;left:446"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*210:133" style="top:210;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">It is a four- or five-element array whose first element is the color space family</span></div>
+<div class="pos" id="*228:133" style="top:228;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name</span></div>
+<div class="pos" id="*229:171" style="top:229;left:171"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*228:220" style="top:228;left:220"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. The remaining elements are parameters that a</span></div>
+<div class="pos" id="*229:519" style="top:229;left:519"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*228:574" style="top:228;left:574"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color</span></div>
+<div class="pos" id="*246:133" style="top:246;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space requires.</span></div>
+<div class="pos" id="*281:133" style="top:281;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*281:160" style="top:281;left:160"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">names</span></div>
+<div class="pos" id="*281:200" style="top:281;left:200"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">parameter is an array of name objects specifying the individual color</span></div>
+<div class="pos" id="*299:133" style="top:299;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">components. The length of the array determines the number of components in</span></div>
+<div class="pos" id="*317:133" style="top:317;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the</span></div>
+<div class="pos" id="*317:155" style="top:317;left:155"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*317:207" style="top:317;left:207"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space, which is subject to an implementation limit; see Appen-</span></div>
+<div class="pos" id="*335:133" style="top:335;left:133"><a href="pg_0991.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dix C.The component names must all be different from one another, except for</span></a></div>
+<div class="pos" id="*353:133" style="top:353;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the name</span></div>
+<div class="pos" id="*354:194" style="top:354;left:194"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">None</span></div>
+<div class="pos" id="*353:225" style="top:353;left:225"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, which can be repeated as described later in this section. (The</span></div>
+<div class="pos" id="*371:133" style="top:371;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">special name</span></div>
+<div class="pos" id="*372:211" style="top:372;left:211"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">All</span></div>
+<div class="pos" id="*371:227" style="top:371;left:227"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, used by</span></div>
+<div class="pos" id="*372:281" style="top:372;left:281"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Separation</span></div>
+<div class="pos" id="*371:348" style="top:371;left:348"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color spaces, is not allowed.)</span></div>
+<div class="pos" id="*406:133" style="top:406;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Color values are tint components in the range 0.0 to 1.0:</span></div>
+<div class="pos" id="*438:133" style="top:438;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*440:145" style="top:440;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">For</span></div>
+<div class="pos" id="*441:170" style="top:441;left:170"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*440:223" style="top:440;left:223"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color spaces that do not have a subtype of</span></div>
+<div class="pos" id="*441:478" style="top:441;left:478"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">NChannel</span></div>
+<div class="pos" id="*440:536" style="top:440;left:536"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, 0.0 always</span></div>
+<div class="pos" id="*458:145" style="top:458;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">represents the minimum amount of colorant; 1.0 represents the maximum.</span></div>
+<div class="pos" id="*476:145" style="top:476;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Tints are always treated as subtractive colors, even if the device produces out-</span></div>
+<div class="pos" id="*495:145" style="top:495;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">put for the designated component by an additive method. Thus, a tint value of</span></div>
+<div class="pos" id="*513:145" style="top:513;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0.0 denotes the lightest color that can be achieved with the given colorant, and</span></div>
+<div class="pos" id="*531:145" style="top:531;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1.0 the darkest. (This convention is the same one as for</span></div>
+<div class="pos" id="*531:494" style="top:531;left:494"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceCMYK</span></div>
+<div class="pos" id="*531:574" style="top:531;left:574"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color</span></div>
+<div class="pos" id="*549:145" style="top:549;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">components but opposite to the one for</span></div>
+<div class="pos" id="*549:378" style="top:549;left:378"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceGray</span></div>
+<div class="pos" id="*549:448" style="top:549;left:448"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*549:473" style="top:549;left:473"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceRGB</span></div>
+<div class="pos" id="*549:536" style="top:549;left:536"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.)</span></div>
+<div class="pos" id="*573:133" style="top:573;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*575:145" style="top:575;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">For</span></div>
+<div class="pos" id="*576:169" style="top:576;left:169"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">NChannel</span></div>
+<div class="pos" id="*575:230" style="top:575;left:230"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color spaces, values for additive process colors (such as</span></div>
+<div class="pos" id="*575:551" style="top:575;left:551"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB)</span></div>
+<div class="pos" id="*575:586" style="top:575;left:586"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are</span></div>
+<div class="pos" id="*593:145" style="top:593;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specified in their natural form, where 1.0 represents maximum intensity of col-</span></div>
+<div class="pos" id="*611:145" style="top:611;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or.</span></div>
+<div class="pos" id="*646:133" style="top:646;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">When this space is set to the current color space (using the</span></div>
+<div class="pos" id="*647:488" style="top:647;left:488"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CS</span></div>
+<div class="pos" id="*646:507" style="top:646;left:507"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*647:524" style="top:647;left:524"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">cs</span></div>
+<div class="pos" id="*646:540" style="top:646;left:540"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operators),</span></div>
+<div class="pos" id="*664:133" style="top:664;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">each component is given an initial value of 1.0. The</span></div>
+<div class="pos" id="*665:448" style="top:665;left:448"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">SCN</span></div>
+<div class="pos" id="*664:477" style="top:664;left:477"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*665:503" style="top:665;left:503"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">scn</span></div>
+<div class="pos" id="*664:527" style="top:664;left:527"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operators re-</span></div>
+<div class="pos" id="*682:133" style="top:682;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">spectively set the current stroking and nonstroking color. Operand values sup-</span></div>
+<div class="pos" id="*700:133" style="top:700;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">plied to</span></div>
+<div class="pos" id="*701:184" style="top:701;left:184"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">SCN</span></div>
+<div class="pos" id="*700:214" style="top:700;left:214"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or</span></div>
+<div class="pos" id="*701:231" style="top:701;left:231"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">scn</span></div>
+<div class="pos" id="*700:256" style="top:700;left:256"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are interpreted as color component values in the order in</span></div>
+<div class="pos" id="*718:133" style="top:718;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">which the colors are given in the</span></div>
+<div class="pos" id="*719:329" style="top:719;left:329"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">names</span></div>
+<div class="pos" id="*718:369" style="top:718;left:369"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array, as are the values in a sampled im-</span></div>
+<div class="pos" id="*736:133" style="top:736;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">age that uses a</span></div>
+<div class="pos" id="*737:219" style="top:737;left:219"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*736:271" style="top:736;left:271"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color space.</span></div>
+<div class="pos" id="*771:133" style="top:771;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*772:159" style="top:772;left:159"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">alternateSpace</span></div>
+<div class="pos" id="*771:244" style="top:771;left:244"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">parameter is an array or name object that can be any device or</span></div>
+<div class="pos" id="*789:133" style="top:789;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CIE-based color space but not another special color space (</span></div>
+<div class="pos" id="*790:501" style="top:790;left:501"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Pattern</span></div>
+<div class="pos" id="*789:544" style="top:789;left:544"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*790:553" style="top:790;left:553"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Indexed</span></div>
+<div class="pos" id="*789:600" style="top:789;left:600"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*808:133" style="top:808;left:133"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Separation</span></div>
+<div class="pos" id="*807:197" style="top:807;left:197"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, or</span></div>
+<div class="pos" id="*808:219" style="top:808;left:219"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*807:268" style="top:807;left:268"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">). When the color space is set to a</span></div>
+<div class="pos" id="*808:466" style="top:808;left:466"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DeviceN</span></div>
+<div class="pos" id="*807:518" style="top:807;left:518"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">space, if any of</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0269.htm" title="Go to previous page">Previous</a> <a href="pg_0271.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(270);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

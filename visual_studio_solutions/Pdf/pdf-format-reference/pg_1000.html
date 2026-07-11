@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1000.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="APPENDIX D 1000 Character Sets and Encodings CHAR NAME CHAR CODE (OCTAL) STD MAC WIN PDF CHAR NAME CHAR CODE (OCTAL) STD MAC WIN PDF _ v w x y ý underscore v w x y yacute 137 166 167 170 171 — 137 166 167 170 171 — 137 166 167 170 171 375 137 166 167 170 171 375 ÿ ¥ z ž 0 ydieresis yen z zcaron 2 zero — 245 172 — 060 330 264 172 — 060 377 245 172 236 060 377 245 172 236 060 1. In PDF 1.3, the euro character was added to the Adobe standard Latin character set. It is encoded as 200 in WinAnsiEncoding and 240 in PDFDocEncoding, assigning codes that were previously unused. Apple changed the Mac OS Latin-text encoding for code 333 from the currency character to the euro character. However, this incompatible change has not been reflected in PDF’s MacRomanEncoding, which continues to map code 333 to currency. If the euro character is desired, an encoding dictionary can be used to specify this single difference from MacRomanEncoding. 2. In PDF 1.3, the existing Zcaron and zcaron characters were added to WinAnsiEncoding as the previously unused codes 216 and 236. 3. In WinAnsiEncoding, all unused codes greater than 40 map to the bullet character. However, only code 225 is specifically assigned to the bullet character; other codes are subject to future reassignment. 4. The character names guillemotleft and guillemotright are misspelled. The correct spelling for this punctuation character is guillemet. However, the misspelled names are the ones actually used in the fonts and encodings containing these characters. 5. The hyphen character is also encoded as 255 in WinAnsiEncoding. The meaning of this duplicate code is “soft hyphen,” but it is typographically the same as hyphen. 6. The space character is also encoded as 312 in MacRomanEncoding and as 240 in WinAnsiEncoding. This duplicate code signifies a nonbreaking space; it is typographically the same as space.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1000.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">APPENDIX D</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1000</span></div>
+<div class="pos" id="*49:444" style="top:49;left:444"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Character Sets and Encodings</span></div>
+<div class="pos" id="*121:74" style="top:121;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-BoldSemiExt,Arial,Helvetica,sans-serif;color:#231F1F;">CHAR NAME</span></div>
+<div class="pos" id="*110:224" style="top:110;left:224"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-BoldSemiExt,Arial,Helvetica,sans-serif;color:#231F1F;">CHAR CODE (OCTAL)</span></div>
+<div class="pos" id="*121:217" style="top:121;left:217"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-BoldSemiExt,Arial,Helvetica,sans-serif;color:#231F1F;">STD MAC WIN PDF</span></div>
+<div class="pos" id="*121:399" style="top:121;left:399"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-BoldSemiExt,Arial,Helvetica,sans-serif;color:#231F1F;">CHAR NAME</span></div>
+<div class="pos" id="*110:549" style="top:110;left:549"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-BoldSemiExt,Arial,Helvetica,sans-serif;color:#231F1F;">CHAR CODE (OCTAL)</span></div>
+<div class="pos" id="*121:542" style="top:121;left:542"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-BoldSemiExt,Arial,Helvetica,sans-serif;color:#231F1F;">STD MAC WIN PDF</span></div>
+<div class="pos" id="*161:83" style="top:161;left:83"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">_</span></div>
+<div class="pos" id="*179:83" style="top:179;left:83"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">v</span></div>
+<div class="pos" id="*197:83" style="top:197;left:83"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">w</span></div>
+<div class="pos" id="*215:83" style="top:215;left:83"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*233:83" style="top:233;left:83"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*251:83" style="top:251;left:83"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">ý</span></div>
+<div class="pos" id="*161:116" style="top:161;left:116"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">underscore</span></div>
+<div class="pos" id="*179:116" style="top:179;left:116"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">v</span></div>
+<div class="pos" id="*197:116" style="top:197;left:116"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">w</span></div>
+<div class="pos" id="*215:116" style="top:215;left:116"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*233:116" style="top:233;left:116"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*251:116" style="top:251;left:116"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">yacute</span></div>
+<div class="pos" id="*161:216" style="top:161;left:216"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">137</span></div>
+<div class="pos" id="*179:216" style="top:179;left:216"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">166</span></div>
+<div class="pos" id="*197:216" style="top:197;left:216"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">167</span></div>
+<div class="pos" id="*215:216" style="top:215;left:216"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">170</span></div>
+<div class="pos" id="*233:216" style="top:233;left:216"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">171</span></div>
+<div class="pos" id="*251:219" style="top:251;left:219"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">—</span></div>
+<div class="pos" id="*161:249" style="top:161;left:249"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">137</span></div>
+<div class="pos" id="*179:249" style="top:179;left:249"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">166</span></div>
+<div class="pos" id="*197:249" style="top:197;left:249"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">167</span></div>
+<div class="pos" id="*215:249" style="top:215;left:249"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">170</span></div>
+<div class="pos" id="*233:249" style="top:233;left:249"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">171</span></div>
+<div class="pos" id="*251:253" style="top:251;left:253"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">—</span></div>
+<div class="pos" id="*161:283" style="top:161;left:283"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">137</span></div>
+<div class="pos" id="*179:283" style="top:179;left:283"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">166</span></div>
+<div class="pos" id="*197:283" style="top:197;left:283"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">167</span></div>
+<div class="pos" id="*215:283" style="top:215;left:283"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">170</span></div>
+<div class="pos" id="*233:283" style="top:233;left:283"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">171</span></div>
+<div class="pos" id="*251:283" style="top:251;left:283"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">375</span></div>
+<div class="pos" id="*161:316" style="top:161;left:316"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">137</span></div>
+<div class="pos" id="*179:316" style="top:179;left:316"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">166</span></div>
+<div class="pos" id="*197:316" style="top:197;left:316"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">167</span></div>
+<div class="pos" id="*215:316" style="top:215;left:316"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">170</span></div>
+<div class="pos" id="*233:316" style="top:233;left:316"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">171</span></div>
+<div class="pos" id="*251:316" style="top:251;left:316"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">375</span></div>
+<div class="pos" id="*161:408" style="top:161;left:408"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">ÿ</span></div>
+<div class="pos" id="*179:408" style="top:179;left:408"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">¥</span></div>
+<div class="pos" id="*197:408" style="top:197;left:408"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">z</span></div>
+<div class="pos" id="*215:408" style="top:215;left:408"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">ž</span></div>
+<div class="pos" id="*233:408" style="top:233;left:408"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*161:441" style="top:161;left:441"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">ydieresis</span></div>
+<div class="pos" id="*179:441" style="top:179;left:441"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">yen</span></div>
+<div class="pos" id="*197:441" style="top:197;left:441"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">z</span></div>
+<div class="pos" id="*215:441" style="top:215;left:441"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">zcaron</span></div>
+<div class="pos" id="*212:482" style="top:212;left:482"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*233:441" style="top:233;left:441"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">zero</span></div>
+<div class="pos" id="*161:544" style="top:161;left:544"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">—</span></div>
+<div class="pos" id="*179:541" style="top:179;left:541"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">245</span></div>
+<div class="pos" id="*197:541" style="top:197;left:541"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">172</span></div>
+<div class="pos" id="*215:544" style="top:215;left:544"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">—</span></div>
+<div class="pos" id="*233:541" style="top:233;left:541"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">060</span></div>
+<div class="pos" id="*161:574" style="top:161;left:574"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">330</span></div>
+<div class="pos" id="*179:574" style="top:179;left:574"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">264</span></div>
+<div class="pos" id="*197:574" style="top:197;left:574"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">172</span></div>
+<div class="pos" id="*215:578" style="top:215;left:578"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">—</span></div>
+<div class="pos" id="*233:574" style="top:233;left:574"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">060</span></div>
+<div class="pos" id="*161:608" style="top:161;left:608"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">377</span></div>
+<div class="pos" id="*179:608" style="top:179;left:608"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">245</span></div>
+<div class="pos" id="*197:608" style="top:197;left:608"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">172</span></div>
+<div class="pos" id="*215:608" style="top:215;left:608"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">236</span></div>
+<div class="pos" id="*233:608" style="top:233;left:608"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">060</span></div>
+<div class="pos" id="*161:641" style="top:161;left:641"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">377</span></div>
+<div class="pos" id="*179:641" style="top:179;left:641"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">245</span></div>
+<div class="pos" id="*197:641" style="top:197;left:641"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">172</span></div>
+<div class="pos" id="*215:641" style="top:215;left:641"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">236</span></div>
+<div class="pos" id="*233:641" style="top:233;left:641"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Minion-Regular,Arial,Helvetica,sans-serif;color:#000000;">060</span></div>
+<div class="pos" id="*311:133" style="top:311;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1. In PDF 1.3, the euro character was added to the Adobe standard Latin character set. It</span></div>
+<div class="pos" id="*328:149" style="top:328;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is encoded as 200 in</span></div>
+<div class="pos" id="*328:264" style="top:328;left:264"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">WinAnsiEncoding</span></div>
+<div class="pos" id="*328:361" style="top:328;left:361"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and 240 in</span></div>
+<div class="pos" id="*328:423" style="top:328;left:423"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">PDFDocEncoding</span></div>
+<div class="pos" id="*328:515" style="top:328;left:515"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, assigning codes</span></div>
+<div class="pos" id="*344:149" style="top:344;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that were previously unused. Apple changed the Mac OS Latin-text encoding for code</span></div>
+<div class="pos" id="*361:149" style="top:361;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">333 from the currency character to the euro character. However, this incompatible</span></div>
+<div class="pos" id="*378:149" style="top:378;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">change has</span></div>
+<div class="pos" id="*378:212" style="top:378;left:212"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">not</span></div>
+<div class="pos" id="*378:233" style="top:378;left:233"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">been reflected in PDF’s</span></div>
+<div class="pos" id="*378:361" style="top:378;left:361"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">MacRomanEncoding</span></div>
+<div class="pos" id="*378:469" style="top:378;left:469"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, which continues to map</span></div>
+<div class="pos" id="*394:149" style="top:394;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">code 333 to currency. If the euro character is desired, an encoding dictionary can be</span></div>
+<div class="pos" id="*411:149" style="top:411;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">used to specify this single difference from</span></div>
+<div class="pos" id="*412:371" style="top:412;left:371"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">MacRomanEncoding</span></div>
+<div class="pos" id="*411:480" style="top:411;left:480"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*436:133" style="top:436;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2. In PDF 1.3, the existing Zcaron and zcaron characters were added to</span></div>
+<div class="pos" id="*437:512" style="top:437;left:512"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">WinAnsiEncoding</span></div>
+<div class="pos" id="*453:149" style="top:453;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">as the previously unused codes 216 and 236.</span></div>
+<div class="pos" id="*478:133" style="top:478;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3. In</span></div>
+<div class="pos" id="*478:166" style="top:478;left:166"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">WinAnsiEncoding</span></div>
+<div class="pos" id="*478:259" style="top:478;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, all unused codes greater than 40 map to the bullet character.</span></div>
+<div class="pos" id="*494:149" style="top:494;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">However, only code 225 is specifically assigned to the bullet character; other codes are</span></div>
+<div class="pos" id="*511:149" style="top:511;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">subject to future reassignment.</span></div>
+<div class="pos" id="*536:133" style="top:536;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4. The character names guillemotleft and guillemotright are misspelled. The correct spell-</span></div>
+<div class="pos" id="*553:149" style="top:553;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ing for this punctuation character is</span></div>
+<div class="pos" id="*553:344" style="top:553;left:344"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">guillemet.</span></div>
+<div class="pos" id="*553:398" style="top:553;left:398"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">However, the misspelled names are the</span></div>
+<div class="pos" id="*569:149" style="top:569;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ones actually used in the fonts and encodings containing these characters.</span></div>
+<div class="pos" id="*594:133" style="top:594;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5. The hyphen character is also encoded as 255 in</span></div>
+<div class="pos" id="*595:400" style="top:595;left:400"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">WinAnsiEncoding</span></div>
+<div class="pos" id="*594:493" style="top:594;left:493"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. The meaning of this</span></div>
+<div class="pos" id="*611:149" style="top:611;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">duplicate code is “soft hyphen,” but it is typographically the same as hyphen.</span></div>
+<div class="pos" id="*636:133" style="top:636;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6. The space character is also encoded as 312 in</span></div>
+<div class="pos" id="*637:414" style="top:637;left:414"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">MacRomanEncoding</span></div>
+<div class="pos" id="*636:528" style="top:636;left:528"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and as 240 in</span></div>
+<div class="pos" id="*653:149" style="top:653;left:149"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">WinAnsiEncoding</span></div>
+<div class="pos" id="*653:242" style="top:653;left:242"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. This duplicate code signifies a nonbreaking space; it is typographi-</span></div>
+<div class="pos" id="*669:149" style="top:669;left:149"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cally the same as space.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0999.htm" title="Go to previous page">Previous</a> <a href="pg_1001.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1000);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

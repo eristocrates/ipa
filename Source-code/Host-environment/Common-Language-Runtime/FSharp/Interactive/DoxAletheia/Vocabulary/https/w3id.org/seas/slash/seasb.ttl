@@ -1,0 +1,54 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix w3id: <https://w3id.org/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix seas-stats: <https://w3id.org/seas/>.
+
+dcterms:contributor a owl:AnnotationProperty.
+dcterms:creator a owl:AnnotationProperty.
+dcterms:description a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+dcterms:title a owl:AnnotationProperty.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+voaf:Vocabulary a owl:Class.
+status:term_status a owl:AnnotationProperty.
+foaf:Person a owl:Class.
+foaf:name a owl:DatatypeProperty.
+seas-stats:Battery a owl:Class;
+                   rdfs:comment "The class of batteries, which are electric power storage systems."@en;
+                   rdfs:isDefinedBy seas-stats:BatteryOntology;
+                   rdfs:label "Battery";
+                   rdfs:subClassOf seas-stats:ElectricPowerStorageSystem;
+                   status:term_status "testing".
+seas-stats:BatteryOntology dcterms:creator <http://www.maxime-lefrancois.info/me#>;
+                           dcterms:description "This ontology defines batteries and their state of charge ratio property"@en;
+                           dcterms:issued "2016-10-30"^^xsd:date;
+                           dcterms:license <https://www.apache.org/licenses/LICENSE-2.0>;
+                           dcterms:modified "2016-11-03"^^xsd:date;
+                           dcterms:title "The SEAS Battery ontology."@en;
+                           vann:preferredNamespacePrefix "seas";
+                           vann:preferredNamespaceUri seas-stats:;
+                           a owl:Ontology,
+                             voaf:Vocabulary;
+                           owl:imports seas-stats:ElectricPowerSystemOntology;
+                           owl:versionIRI seas-stats:BatteryOntology-1.0;
+                           owl:versionInfo "v1.0".
+seas-stats:stateOfChargeRatio a owl:ObjectProperty,
+                                owl:FunctionalProperty;
+                              rdfs:comment "The state of charge of a battery, quantified by unitless values."@en;
+                              rdfs:domain seas-stats:Battery;
+                              rdfs:isDefinedBy seas-stats:BatteryOntology;
+                              rdfs:label "state of charge ratio"@en;
+                              rdfs:range seas-stats:PercentageProperty;
+                              rdfs:subPropertyOf seas-stats:hasProperty;
+                              status:term_status "testing".

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0477.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 6 6 Rendering The Adobe imaging model separates graphics (the specification of shapes and colors) from rendering (controlling a raster output device). Figures 4.12 and 4.13 on pages 238 and 239 illustrate this division. Chapter 4 describes the facilities for specifying the appearance of pages in a device-independent way. This chapter describes the facilities for controlling how shapes and colors are rendered on the raster output device. All of the facilities discussed here depend on the specific characteristics of the output device. PDF documents that are intended to be device-independent should limit themselves to the general graphics facilities described in Chapter 4. Nearly all of the rendering facilities that are under the control of a PDF document pertain to the reproduction of color. Colors are rendered by a multiple-step process outlined below. (Depending on the current color space and on the characteristics of the device, it is not always necessary to perform every step.) 1. If a color has been specified in a CIE-based color space (see Section 4.5.4, “CIE-Based Color Spaces”), it must first be transformed to the native color space of the raster output device (also called its process color model). 2. If a color has been specified in a device color space that is inappropriate for the output device (for example, RGB color with a CMYK or grayscale device), a color conversion function is invoked. 3. The device color values are now mapped through transfer functions, one for each color component. The transfer functions compensate for peculiarities of the output device, such as nonlinear gray-level response. This step is sometimes called gamma correction. 4. If the device cannot reproduce continuous tones, but only certain discrete colors such as black and white pixels, a halftone function is invoked, which approximates the desired colors by means of patterns of pixels. 477  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0477.png" ALT=""></div>
+<div class="pos" id="*145:317" style="top:145;left:317"><span id="*15" style="font-style:normal;font-weight:700;font-size:15px;font-family:MyriadPro-Black,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 6</span></div>
+<div class="pos" id="*220:290" style="top:220;left:290"><span id="*1" style="font-style:normal;font-weight:700;font-size:1px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#FFFFFF;">6</span></div>
+<div class="pos" id="*198:291" style="top:198;left:291"><span id="*32" style="font-style:normal;font-weight:700;font-size:32px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">Rendering</span></div>
+<div class="pos" id="*299:133" style="top:299;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The Adobe imaging model separates</span></div>
+<div class="pos" id="*299:347" style="top:299;left:347"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">graphics</span></div>
+<div class="pos" id="*299:397" style="top:299;left:397"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(the specification of shapes and col-</span></div>
+<div class="pos" id="*317:133" style="top:317;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ors) from</span></div>
+<div class="pos" id="*317:192" style="top:317;left:192"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">rendering</span></div>
+<div class="pos" id="*317:250" style="top:317;left:250"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(controlling a raster output device). Figures 4.12 and 4.13 on</span></div>
+<div class="pos" id="*335:133" style="top:335;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">pages 238 and 239 illustrate this division. Chapter 4 describes the facilities for</span></div>
+<div class="pos" id="*353:133" style="top:353;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specifying the appearance of pages in a device-independent way. This chapter de-</span></div>
+<div class="pos" id="*371:133" style="top:371;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">scribes the facilities for controlling how shapes and colors are rendered on the</span></div>
+<div class="pos" id="*389:133" style="top:389;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">raster output device. All of the facilities discussed here depend on the specific</span></div>
+<div class="pos" id="*407:133" style="top:407;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">characteristics of the output device. PDF documents that are intended to be de-</span></div>
+<div class="pos" id="*425:133" style="top:425;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">vice-independent should limit themselves to the general graphics facilities de-</span></div>
+<div class="pos" id="*443:133" style="top:443;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">scribed in Chapter 4.</span></div>
+<div class="pos" id="*478:133" style="top:478;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Nearly all of the rendering facilities that are under the control of a PDF document</span></div>
+<div class="pos" id="*496:133" style="top:496;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">pertain to the reproduction of color. Colors are rendered by a multiple-step pro-</span></div>
+<div class="pos" id="*514:133" style="top:514;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cess outlined below. (Depending on the current color space and on the character-</span></div>
+<div class="pos" id="*532:133" style="top:532;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">istics of the device, it is not always necessary to perform every step.)</span></div>
+<div class="pos" id="*567:133" style="top:567;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1. If a color has been specified in a CIE-based color space (see Section 4.5.4,</span></div>
+<div class="pos" id="*585:149" style="top:585;left:149"><a href="pg_0244.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">“CIE-Based Color Spaces”), it must first be transformed to the</span></a></div>
+<div class="pos" id="*585:535" style="top:585;left:535"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">native color</span></div>
+<div class="pos" id="*603:149" style="top:603;left:149"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">space</span></div>
+<div class="pos" id="*603:183" style="top:603;left:183"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of the raster output device (also called its</span></div>
+<div class="pos" id="*603:424" style="top:603;left:424"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">process color model).</span></div>
+<div class="pos" id="*629:133" style="top:629;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2. If a color has been specified in a device color space that is inappropriate for the</span></div>
+<div class="pos" id="*647:149" style="top:647;left:149"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">output device (for example,</span></div>
+<div class="pos" id="*647:318" style="top:647;left:318"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">RGB</span></div>
+<div class="pos" id="*647:350" style="top:647;left:350"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color with a</span></div>
+<div class="pos" id="*647:426" style="top:647;left:426"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMYK</span></div>
+<div class="pos" id="*647:472" style="top:647;left:472"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">or grayscale device), a</span></div>
+<div class="pos" id="*665:149" style="top:665;left:149"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">color conversion function</span></div>
+<div class="pos" id="*665:295" style="top:665;left:295"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is invoked.</span></div>
+<div class="pos" id="*692:133" style="top:692;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3. The device color values are now mapped through</span></div>
+<div class="pos" id="*692:451" style="top:692;left:451"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">transfer functions,</span></div>
+<div class="pos" id="*692:561" style="top:692;left:561"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">one for</span></div>
+<div class="pos" id="*710:149" style="top:710;left:149"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">each color component. The transfer functions compensate for peculiarities of</span></div>
+<div class="pos" id="*728:149" style="top:728;left:149"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the output device, such as nonlinear gray-level response. This step is some-</span></div>
+<div class="pos" id="*746:149" style="top:746;left:149"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">times called</span></div>
+<div class="pos" id="*746:222" style="top:746;left:222"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">gamma correction.</span></div>
+<div class="pos" id="*772:133" style="top:772;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4. If the device cannot reproduce continuous tones, but only certain discrete</span></div>
+<div class="pos" id="*790:149" style="top:790;left:149"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">colors such as black and white pixels, a</span></div>
+<div class="pos" id="*790:394" style="top:790;left:394"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">halftone function</span></div>
+<div class="pos" id="*790:498" style="top:790;left:498"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is invoked, which</span></div>
+<div class="pos" id="*808:149" style="top:808;left:149"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">approximates the desired colors by means of patterns of pixels.</span></div>
+<div class="pos" id="*857:359" style="top:857;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">477</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0476.htm" title="Go to previous page">Previous</a> <a href="pg_0478.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(477);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

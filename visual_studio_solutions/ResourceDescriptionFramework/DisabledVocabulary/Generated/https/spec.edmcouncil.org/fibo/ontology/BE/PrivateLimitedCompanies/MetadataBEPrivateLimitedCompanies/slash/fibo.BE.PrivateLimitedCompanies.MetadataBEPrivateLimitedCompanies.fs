@@ -1,0 +1,4 @@
+﻿namespace Fibo.BE.PrivateLimitedCompanies.MetadataBEPrivateLimitedCompanies.Namespace
+module MetadataBEPrivateLimitedCompanies =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/BE/PrivateLimitedCompanies/MetadataBEPrivateLimitedCompanies/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/PrivateLimitedCompanies/MetadataBEPrivateLimitedCompanies.rdf") (Some @"fibo.BE.PrivateLimitedCompanies.MetadataBEPrivateLimitedCompanies") None
+    let PrivateLimitedCompaniesModule = {_prefixID with _localName = "PrivateLimitedCompaniesModule"}

@@ -1,0 +1,53 @@
+@prefix fibo.BE.AllBE-NorthAmericanExamples: <https://spec.edmcouncil.org/fibo/ontology/BE/AllBE-NorthAmericanExamples/> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix fibo-bena-ex: <https://spec.edmcouncil.org/fibo/ontology/BE/AllBE-NorthAmericanExamples/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+fibo-bena-ex: dcterms:abstract """This ontology provides metadata about the FIBO Business Entities (BE) Domain, which covers defines business concepts that are used for data governance, interoperability, and in regulatory reporting about business entities.
+
+The business scope of the BE ontologies covers a range of business and legal entities that are considered by financial industry firms, regulators and other industry participants to be of relevance in the financial services domain, including:
+ - Legal entities generally
+ - Corporate structure, ownership and control, including primary executive roles for businesses,
+ - Functional entities such as governments and government entities, non-governmental organizations, international organizations, not-for-profit organization, etc.
+ - Concepts specific to corporations, partnerships, private limited companies, sole proprietorships, and trusts.""";
+              dcterms:contributor "Adaptive, Inc.",
+                                  "Bloomberg LP",
+                                  "Citigroup",
+                                  "Credit Suisse",
+                                  "Deutsche Bank",
+                                  "Exprentis",
+                                  "Federated Knowledge LLC",
+                                  "Hypercube Ltd.",
+                                  "John F. Gemski",
+                                  "Nordea Bank AB",
+                                  "Office of Financial Research (US Dept of the Treasury)",
+                                  "Pinnacle Bank (Morgan Hill, California)",
+                                  "State Street Bank and Trust",
+                                  "Statistics Canada",
+                                  "Tahoe Blue Ltd",
+                                  "Thematix Partners LLC",
+                                  "Wells Fargo",
+                                  "Working Ontologist",
+                                  "agnos.ai UK Ltd.";
+              dcterms:creator "https://wiki.edmcouncil.org/display/BE/FIBO+-+FCT+-+Business+Entities+Home"^^xsd:anyURI;
+              dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime;
+              dcterms:license "http://opensource.org/licenses/MIT"^^xsd:anyURI;
+              dcterms:modified "2023-01-27T18:00:00"^^xsd:dateTime;
+              dcterms:title "EDMC Financial Industry Business Ontology (FIBO) Business Entities (BE) Domain, North American Extension with Examples";
+              a owl:Ontology;
+              rdfs:label "Business Entities Domain, North American Extension with Examples";
+              rdfs:seeAlso "https://spec.edmcouncil.org/fibo/"^^xsd:anyURI;
+              owl:imports <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/AllBE-NorthAmerica/>,
+                          <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/LegalEntities/NorthAmericanEntities/USExampleEntities/>;
+              owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/latest/BE/AllBE-NorthAmericanExamples/>;
+              cmns-av:copyright "Copyright (c) 2015-2023 EDM Council, Inc.",
+                                "Copyright (c) 2015-2023 Object Management Group, Inc.";
+              cmns-av:explanatoryNote """The 'all' ontology for BE (North American Extension with Examples) is provided for convenience for FIBO users.  This ontology does not add new assertions, but imports most of the Production (Released) ontologies that comprise the FIBO Business Entities (BE) domain, including all of FND but excluding individuals for European governments and jurisdictions, and the related LCC region-specific ontologies. Note that the U.N. M49 Codes do not distinguish North and South America, and thus this ontology defines North America as the landmass north of the Panama-Colombia border (Northern America and Central America from an M49 code perspective), and the islands of the Caribbean (also identified as the Caribbean in the M49 subregion codes).  North American government entities and jurisdictions are provided only for a fraction of these countries and regions in FIBO 2.0, with the anticipation that additional entities will be added over time.
+	
+	The examples included by this version of BE define a number of companies that are used in various FIBO use cases and educational materials.  These nominals are not intended to be complete and are provided for educational purposes only.""".

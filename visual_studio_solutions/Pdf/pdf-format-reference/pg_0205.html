@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0205.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 4.2 205 Coordinate Systems A transformation matrix in PDF is specified by six numbers, usually in the form of an array containing six elements. In its most general form, this array is denoted [ a b c d e f ]; it can represent any linear transformation from one coordinate system to another. This section lists the arrays that specify the most common transformations; Section 4.2.3, “Transformation Matrices,” discusses more mathematical details of transformations, including information on specifying transformations that are combinations of those listed here: • Translations are specified as [ 1 • Scaling is obtained by [ sx 0 0 1 tx ty ], where tx and ty are the distances to translate the origin of the coordinate system in the horizontal and vertical dimensions, respectively. 0 0 sy 0 0 ]. This scales the coordinates so that 1 unit in the horizontal and vertical dimensions of the new coordinate system is the same size as sx and sy units, respectively, in the previous coordinate system. • Rotations are produced by [ cos θ sin θ −sin θ cos θ • Skew is specified by [ 1 tan α tan β α and the y axis by an angle β. of rotating the coordinate system axes by an angle θ counterclockwise. 0 0 ], which has the effect 1 0 0 ], which skews the x axis by an angle Figure 4.5 shows examples of each transformation. The directions of translation, rotation, and skew shown in the figure correspond to positive values of the array elements. ty sy q b a tx sx Translation Scaling Rotation Skewing FIGURE 4.5 Effects of coordinate transformations  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0205.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 4.2</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">205</span></div>
+<div class="pos" id="*49:499" style="top:49;left:499"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Coordinate Systems</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A transformation matrix in PDF is specified by six numbers, usually in the form</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of an array containing six elements. In its most general form, this array is denoted</span></div>
+<div class="pos" id="*136:133" style="top:136;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[</span></div>
+<div class="pos" id="*136:138" style="top:136;left:138"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">a b c d e f</span></div>
+<div class="pos" id="*136:212" style="top:136;left:212"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*135:216" style="top:135;left:216"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">; it can represent any linear transformation from one coordinate</span></div>
+<div class="pos" id="*153:133" style="top:153;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">system to another. This section lists the arrays that specify the most common</span></div>
+<div class="pos" id="*171:133" style="top:171;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">transformations; Section 4.2.3, “Transformation Matrices,” discusses more math-</span></div>
+<div class="pos" id="*189:133" style="top:189;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ematical details of transformations, including information on specifying transfor-</span></div>
+<div class="pos" id="*207:133" style="top:207;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">mations that are combinations of those listed here:</span></div>
+<div class="pos" id="*239:133" style="top:239;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*242:145" style="top:242;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Translations are specified as</span></div>
+<div class="pos" id="*242:315" style="top:242;left:315"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ 1</span></div>
+<div class="pos" id="*302:133" style="top:302;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*304:145" style="top:304;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Scaling is obtained by</span></div>
+<div class="pos" id="*305:283" style="top:305;left:283"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[</span></div>
+<div class="pos" id="*305:288" style="top:305;left:288"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*311:293" style="top:311;left:293"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*242:333" style="top:242;left:333"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0 0 1</span></div>
+<div class="pos" id="*242:375" style="top:242;left:375"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">t</span></div>
+<div class="pos" id="*249:379" style="top:249;left:379"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*242:391" style="top:242;left:391"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">t</span></div>
+<div class="pos" id="*249:395" style="top:249;left:395"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*242:401" style="top:242;left:401"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*242:405" style="top:242;left:405"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, where</span></div>
+<div class="pos" id="*242:453" style="top:242;left:453"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">t</span></div>
+<div class="pos" id="*249:457" style="top:249;left:457"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*242:466" style="top:242;left:466"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*242:492" style="top:242;left:492"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">t</span></div>
+<div class="pos" id="*249:497" style="top:249;left:497"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*242:506" style="top:242;left:506"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are the distances</span></div>
+<div class="pos" id="*260:145" style="top:260;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">to translate the origin of the coordinate system in the horizontal and vertical</span></div>
+<div class="pos" id="*278:145" style="top:278;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dimensions, respectively.</span></div>
+<div class="pos" id="*305:305" style="top:305;left:305"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0 0</span></div>
+<div class="pos" id="*305:332" style="top:305;left:332"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*311:337" style="top:311;left:337"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*305:349" style="top:305;left:349"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0 0 ]</span></div>
+<div class="pos" id="*304:375" style="top:304;left:375"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. This scales the coordinates so that 1</span></div>
+<div class="pos" id="*322:145" style="top:322;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">unit in the horizontal and vertical dimensions of the new coordinate system is</span></div>
+<div class="pos" id="*340:145" style="top:340;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the same size as</span></div>
+<div class="pos" id="*341:240" style="top:341;left:240"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*348:245" style="top:348;left:245"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*340:253" style="top:340;left:253"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*341:278" style="top:341;left:278"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*348:283" style="top:348;left:283"><span id="*9" style="font-style:italic;font-weight:normal;font-size:9px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*340:291" style="top:340;left:291"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">units, respectively, in the previous coordinate system.</span></div>
+<div class="pos" id="*364:133" style="top:364;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*367:145" style="top:367;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Rotations are produced by</span></div>
+<div class="pos" id="*367:301" style="top:367;left:301"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[</span></div>
+<div class="pos" id="*367:306" style="top:367;left:306"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cos</span></div>
+<div class="pos" id="*362:328" style="top:362;left:328"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">θ</span></div>
+<div class="pos" id="*367:343" style="top:367;left:343"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sin</span></div>
+<div class="pos" id="*362:363" style="top:362;left:363"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">θ</span></div>
+<div class="pos" id="*363:377" style="top:363;left:377"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">−sin</span></div>
+<div class="pos" id="*362:405" style="top:362;left:405"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">θ</span></div>
+<div class="pos" id="*367:420" style="top:367;left:420"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cos</span></div>
+<div class="pos" id="*362:442" style="top:362;left:442"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">θ</span></div>
+<div class="pos" id="*409:133" style="top:409;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*411:145" style="top:411;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Skew is specified by</span></div>
+<div class="pos" id="*412:264" style="top:412;left:264"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[ 1</span></div>
+<div class="pos" id="*411:283" style="top:411;left:283"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tan</span></div>
+<div class="pos" id="*407:304" style="top:407;left:304"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*411:320" style="top:411;left:320"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tan</span></div>
+<div class="pos" id="*407:342" style="top:407;left:342"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">β</span></div>
+<div class="pos" id="*425:145" style="top:425;left:145"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*429:158" style="top:429;left:158"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and the</span></div>
+<div class="pos" id="*429:205" style="top:429;left:205"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*429:215" style="top:429;left:215"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">axis by an angle</span></div>
+<div class="pos" id="*425:309" style="top:425;left:309"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">β</span></div>
+<div class="pos" id="*429:317" style="top:429;left:317"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*385:145" style="top:385;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of rotating the coordinate system axes by an angle</span></div>
+<div class="pos" id="*381:437" style="top:381;left:437"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">θ</span></div>
+<div class="pos" id="*385:448" style="top:385;left:448"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">counterclockwise.</span></div>
+<div class="pos" id="*367:456" style="top:367;left:456"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0 0 ]</span></div>
+<div class="pos" id="*367:482" style="top:367;left:482"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, which has the effect</span></div>
+<div class="pos" id="*412:357" style="top:412;left:357"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1 0 0 ]</span></div>
+<div class="pos" id="*411:397" style="top:411;left:397"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, which skews the</span></div>
+<div class="pos" id="*411:502" style="top:411;left:502"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*411:512" style="top:411;left:512"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">axis by an angle</span></div>
+<div class="pos" id="*464:133" style="top:464;left:133"><a href="pg_0205.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Figure 4.5 shows examples of each transformation. The directions of translation,</span></a></div>
+<div class="pos" id="*482:133" style="top:482;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rotation, and skew shown in the figure correspond to positive values of the array</span></div>
+<div class="pos" id="*500:133" style="top:500;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">elements.</span></div>
+<div class="pos" id="*657:88" style="top:657;left:88"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">t</span></div>
+<div class="pos" id="*662:92" style="top:662;left:92"><span id="*7" style="font-style:italic;font-weight:normal;font-size:7px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*647:237" style="top:647;left:237"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*652:241" style="top:652;left:241"><span id="*7" style="font-style:italic;font-weight:normal;font-size:7px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*664:494" style="top:664;left:494"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:ITCSymbolStd-Book,Arial,Helvetica,sans-serif;color:#000000;">q</span></div>
+<div class="pos" id="*646:565" style="top:646;left:565"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:ITCSymbolStd-Book,Arial,Helvetica,sans-serif;color:#000000;">b</span></div>
+<div class="pos" id="*674:594" style="top:674;left:594"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:ITCSymbolStd-Book,Arial,Helvetica,sans-serif;color:#000000;">a</span></div>
+<div class="pos" id="*723:130" style="top:723;left:130"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">t</span></div>
+<div class="pos" id="*727:134" style="top:727;left:134"><span id="*7" style="font-style:italic;font-weight:normal;font-size:7px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*721:295" style="top:721;left:295"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">s</span></div>
+<div class="pos" id="*726:299" style="top:726;left:299"><span id="*7" style="font-style:italic;font-weight:normal;font-size:7px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*747:120" style="top:747;left:120"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#231F1F;">Translation</span></div>
+<div class="pos" id="*747:288" style="top:747;left:288"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#231F1F;">Scaling</span></div>
+<div class="pos" id="*747:428" style="top:747;left:428"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#231F1F;">Rotation</span></div>
+<div class="pos" id="*747:561" style="top:747;left:561"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#231F1F;">Skewing</span></div>
+<div class="pos" id="*802:241" style="top:802;left:241"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">FIGURE 4.5</span></div>
+<div class="pos" id="*801:308" style="top:801;left:308"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Effects of coordinate transformations</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0204.htm" title="Go to previous page">Previous</a> <a href="pg_0206.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(205);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

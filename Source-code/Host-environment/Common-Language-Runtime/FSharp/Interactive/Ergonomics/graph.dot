@@ -1,0 +1,10 @@
+digraph G {
+  node [shape=ellipse];
+  edge [fontname="Helvetica", fontsize=10];
+  0 [label="example:Alice"];
+  1 [label="example:Bob"];
+  2 [label="example:Charlie"];
+  0 -> 1 [label="example:knows"];
+  0 -> 2 [label="example:knows"];
+  1 -> 2 [label="example:knows"];
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0877.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 10.6 877 Logical Structure KEY TYPE VALUE H boolean (Optional) If true, the attribute is hidden; that is, it should not be shown in any user interface element that presents the attributes of an object. Default value: false. PDF documents that contain user properties must provide a UserProperties entry with a value of true in the document’s mark information dictionary (see Table 10.8). This entry allows consumer applications to quickly determine whether it is necessary to search the structure tree for elements containing user properties. Example 10.14 shows a structure element containing user properties called Part Name, Part Number, Supplier, and Price. Example 10.14 100 0 obj &lt;&lt; /Type /StructElem /S /Figure % Structure type /P 50 0 R % Parent in structure tree /A &lt;&lt; /O /UserProperties % Attribute object /P [ % Array of user properties &lt;&lt; /N (Part Name) /V (Framostat) &gt;&gt; &lt;&lt; /N (Part Number) /V 11603 &gt;&gt; &lt;&lt; /N (Supplier) /V (Just Framostats) /H true &gt;&gt; % Hidden attribute &lt;&lt; /N (Price) /V -37.99 /F ($37.99) &gt;&gt; % Formatted value ] &gt;&gt; &gt;&gt; endobj 10.6.5 Example of Logical Structure Example 10.15 shows portions of a PDF file with a simple document structure. The structure tree root (object 300) contains elements with structure types Chap (object 301) and Para (object 304). The Chap element, titled Chapter 1, contains elements with types Head1 (object 302) and Para (object 303). These elements are mapped to the standard structure types specified in Tagged PDF (see Section 10.7.3, “Standard Structure Types”) by means of the role map specified in the structure tree root. Objects 302 through 304 have attached attributes (see Section 10.6.4, “Structure Attributes”and Section 10.7.4, “Standard Structure Attributes”).  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0877.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 10.6</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">877</span></div>
+<div class="pos" id="*49:511" style="top:49;left:511"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Logical Structure</span></div>
+<div class="pos" id="*104:74" style="top:104;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*104:124" style="top:104;left:124"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*104:191" style="top:104;left:191"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">VALUE</span></div>
+<div class="pos" id="*131:74" style="top:131;left:74"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">H</span></div>
+<div class="pos" id="*131:124" style="top:131;left:124"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">boolean</span></div>
+<div class="pos" id="*131:191" style="top:131;left:191"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Optional)</span></div>
+<div class="pos" id="*131:249" style="top:131;left:249"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If</span></div>
+<div class="pos" id="*131:260" style="top:131;left:260"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*131:282" style="top:131;left:282"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, the attribute is hidden; that is, it should not be shown in any user inter-</span></div>
+<div class="pos" id="*147:191" style="top:147;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">face element that presents the attributes of an object. Default value:</span></div>
+<div class="pos" id="*148:545" style="top:148;left:545"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">false</span></div>
+<div class="pos" id="*147:570" style="top:147;left:570"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*179:133" style="top:179;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">PDF documents that contain user properties must provide a</span></div>
+<div class="pos" id="*179:483" style="top:179;left:483"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">UserProperties</span></div>
+<div class="pos" id="*179:573" style="top:179;left:573"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry</span></div>
+<div class="pos" id="*197:133" style="top:197;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">with a value of</span></div>
+<div class="pos" id="*197:241" style="top:197;left:241"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">true</span></div>
+<div class="pos" id="*197:273" style="top:197;left:273"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the document’s mark information dictionary (see</span></div>
+<div class="pos" id="*215:133" style="top:215;left:133"><a href="pg_0856.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Table 10.8). This entry allows consumer applications to quickly determine</span></a></div>
+<div class="pos" id="*233:133" style="top:233;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">whether it is necessary to search the structure tree for elements containing user</span></div>
+<div class="pos" id="*251:133" style="top:251;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">properties.</span></div>
+<div class="pos" id="*283:133" style="top:283;left:133"><a href="pg_0877.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Example 10.14 shows a structure element containing user properties called</span></a></div>
+<div class="pos" id="*283:581" style="top:283;left:581"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Part</span></div>
+<div class="pos" id="*302:133" style="top:302;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Name</span></div>
+<div class="pos" id="*301:166" style="top:301;left:166"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*302:173" style="top:302;left:173"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Part Number</span></div>
+<div class="pos" id="*301:244" style="top:301;left:244"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*302:251" style="top:302;left:251"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Supplier</span></div>
+<div class="pos" id="*301:297" style="top:301;left:297"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*302:329" style="top:302;left:329"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Price</span></div>
+<div class="pos" id="*301:356" style="top:301;left:356"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*333:133" style="top:333;left:133"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">Example 10.14</span></div>
+<div class="pos" id="*358:149" style="top:358;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">100 0 obj</span></div>
+<div class="pos" id="*375:166" style="top:375;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">&lt;&lt; /Type /StructElem</span></div>
+<div class="pos" id="*391:183" style="top:391;left:183"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/S /Figure</span></div>
+<div class="pos" id="*391:433" style="top:391;left:433"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Structure type</span></div>
+<div class="pos" id="*408:183" style="top:408;left:183"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/P 50 0 R</span></div>
+<div class="pos" id="*408:433" style="top:408;left:433"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Parent in structure tree</span></div>
+<div class="pos" id="*425:183" style="top:425;left:183"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/A &lt;&lt; /O /UserProperties</span></div>
+<div class="pos" id="*425:433" style="top:425;left:433"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Attribute object</span></div>
+<div class="pos" id="*441:216" style="top:441;left:216"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/P [</span></div>
+<div class="pos" id="*441:433" style="top:441;left:433"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Array of user properties</span></div>
+<div class="pos" id="*458:233" style="top:458;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">&lt;&lt; /N (Part Name) /V (Framostat) &gt;&gt;</span></div>
+<div class="pos" id="*475:233" style="top:475;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">&lt;&lt; /N (Part Number) /V 11603 &gt;&gt;</span></div>
+<div class="pos" id="*491:233" style="top:491;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">&lt;&lt; /N (Supplier) /V (Just Framostats) /H true &gt;&gt; % Hidden attribute</span></div>
+<div class="pos" id="*508:233" style="top:508;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">&lt;&lt; /N (Price) /V -37.99 /F ($37.99) &gt;&gt;</span></div>
+<div class="pos" id="*508:483" style="top:508;left:483"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Formatted value</span></div>
+<div class="pos" id="*525:233" style="top:525;left:233"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">]</span></div>
+<div class="pos" id="*541:199" style="top:541;left:199"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">&gt;&gt;</span></div>
+<div class="pos" id="*558:166" style="top:558;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">&gt;&gt;</span></div>
+<div class="pos" id="*575:149" style="top:575;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">endobj</span></div>
+<div class="pos" id="*612:79" style="top:612;left:79"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">10.6.5 Example of Logical Structure</span></div>
+<div class="pos" id="*646:133" style="top:646;left:133"><a href="pg_0878.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Example 10.15 shows portions of a PDF file with a simple document structure.</span></a></div>
+<div class="pos" id="*664:133" style="top:664;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The structure tree root (object 300) contains elements with structure types</span></div>
+<div class="pos" id="*665:573" style="top:665;left:573"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Chap</span></div>
+<div class="pos" id="*682:133" style="top:682;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(object 301) and</span></div>
+<div class="pos" id="*683:234" style="top:683;left:234"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Para</span></div>
+<div class="pos" id="*682:263" style="top:682;left:263"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(object 304). The</span></div>
+<div class="pos" id="*683:369" style="top:683;left:369"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Chap</span></div>
+<div class="pos" id="*682:403" style="top:682;left:403"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">element, titled</span></div>
+<div class="pos" id="*683:491" style="top:683;left:491"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Chapter 1</span></div>
+<div class="pos" id="*682:547" style="top:682;left:547"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, contains</span></div>
+<div class="pos" id="*700:133" style="top:700;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">elements with types</span></div>
+<div class="pos" id="*701:251" style="top:701;left:251"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Head1</span></div>
+<div class="pos" id="*700:292" style="top:700;left:292"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(object 302) and</span></div>
+<div class="pos" id="*701:391" style="top:701;left:391"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Para</span></div>
+<div class="pos" id="*700:420" style="top:700;left:420"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(object 303).</span></div>
+<div class="pos" id="*732:133" style="top:732;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">These elements are mapped to the standard structure types specified in Tagged</span></div>
+<div class="pos" id="*750:133" style="top:750;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">PDF (see Section 10.7.3, “Standard Structure Types”) by means of the role map</span></div>
+<div class="pos" id="*768:133" style="top:768;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">specified in the structure tree root. Objects 302 through 304 have attached at-</span></div>
+<div class="pos" id="*786:133" style="top:786;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tributes (see Section 10.6.4, “Structure Attributes”and Section 10.7.4, “Standard</span></div>
+<div class="pos" id="*804:133" style="top:804;left:133"><a href="pg_0913.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Structure Attributes”).</span></a></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0876.htm" title="Go to previous page">Previous</a> <a href="pg_0878.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(877);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

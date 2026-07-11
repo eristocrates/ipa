@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0546.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="CHAPTER 7 546 Transparency 7.4.1 Deriving a Soft Mask from Group Alpha In the first method of defining a soft mask, the color, shape, and opacity of a transparency group G are first computed by the usual formula 〈 C, f, α 〉 = Composite ( C 0 , α 0 , G ) where C0 and α0 represent an arbitrary backdrop whose value does not contribute to the eventual result. The C, f, and α results are the group’s color, shape, and alpha, respectively, with the backdrop factored out. The mask value at each point is then derived from the alpha of the group. Since the group’s color is not used in this case, there is no need to compute it. The alpha value is passed through a separately specified transfer function, allowing the masking effect to be customized. 7.4.2 Deriving a Soft Mask from Group Luminosity The second method of deriving a soft mask from a transparency group begins by compositing the group with a fully opaque backdrop of some selected color. The mask value at any given point is then defined to be the luminosity of the resulting color. This allows the mask to be derived from the shape and color of an arbitrary piece of artwork drawn with ordinary painting operators. The color C used to create the mask from a group G is defined by · 〈 C g , f g , α g 〉 = Composite ( C 0 , 1, G ) C = ( 1 – αg ) × C0 + αg × Cg where C0 is the selected backdrop color.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0546.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CHAPTER 7</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">546</span></div>
+<div class="pos" id="*49:532" style="top:49;left:532"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Transparency</span></div>
+<div class="pos" id="*99:88" style="top:99;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">7.4.1 Deriving a Soft Mask from Group Alpha</span></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">In the first method of defining a soft mask, the color, shape, and opacity of a</span></div>
+<div class="pos" id="*154:133" style="top:154;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">transparency group</span></div>
+<div class="pos" id="*154:250" style="top:154;left:250"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*154:263" style="top:154;left:263"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are first computed by the usual formula</span></div>
+<div class="pos" id="*178:136" style="top:178;left:136"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">〈</span></div>
+<div class="pos" id="*183:142" style="top:183;left:142"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*179:151" style="top:179;left:151"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*183:159" style="top:183;left:159"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*179:163" style="top:179;left:163"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*178:170" style="top:178;left:170"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*178:182" style="top:178;left:182"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">〉</span></div>
+<div class="pos" id="*180:195" style="top:180;left:195"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*183:210" style="top:183;left:210"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Composite</span></div>
+<div class="pos" id="*180:276" style="top:180;left:276"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">(</span></div>
+<div class="pos" id="*183:282" style="top:183;left:282"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*190:292" style="top:190;left:292"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*179:299" style="top:179;left:299"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*178:307" style="top:178;left:307"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*190:316" style="top:190;left:316"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*179:324" style="top:179;left:324"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*183:331" style="top:183;left:331"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*180:344" style="top:180;left:344"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">)</span></div>
+<div class="pos" id="*222:133" style="top:222;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">where</span></div>
+<div class="pos" id="*222:172" style="top:222;left:172"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*228:181" style="top:228;left:181"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*222:191" style="top:222;left:191"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*218:217" style="top:218;left:217"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*228:226" style="top:228;left:226"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*222:236" style="top:222;left:236"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">represent an arbitrary backdrop whose value does not contrib-</span></div>
+<div class="pos" id="*240:133" style="top:240;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ute to the eventual result. The</span></div>
+<div class="pos" id="*240:311" style="top:240;left:311"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C, f,</span></div>
+<div class="pos" id="*240:338" style="top:240;left:338"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*236:364" style="top:236;left:364"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*240:376" style="top:240;left:376"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">results are the group’s color, shape, and</span></div>
+<div class="pos" id="*258:133" style="top:258;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">alpha, respectively, with the backdrop factored out.</span></div>
+<div class="pos" id="*293:133" style="top:293;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The mask value at each point is then derived from the alpha of the group. Since</span></div>
+<div class="pos" id="*311:133" style="top:311;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the group’s color is not used in this case, there is no need to compute it. The alpha</span></div>
+<div class="pos" id="*329:133" style="top:329;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value is passed through a separately specified transfer function, allowing the</span></div>
+<div class="pos" id="*347:133" style="top:347;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">masking effect to be customized.</span></div>
+<div class="pos" id="*390:88" style="top:390;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">7.4.2 Deriving a Soft Mask from Group Luminosity</span></div>
+<div class="pos" id="*427:133" style="top:427;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The second method of deriving a soft mask from a transparency group begins by</span></div>
+<div class="pos" id="*445:133" style="top:445;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">compositing the group with a fully opaque backdrop of some selected color. The</span></div>
+<div class="pos" id="*463:133" style="top:463;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">mask value at any given point is then defined to be the luminosity of the resulting</span></div>
+<div class="pos" id="*481:133" style="top:481;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">color. This allows the mask to be derived from the shape and color of an arbitrary</span></div>
+<div class="pos" id="*499:133" style="top:499;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">piece of artwork drawn with ordinary painting operators.</span></div>
+<div class="pos" id="*534:133" style="top:534;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The color</span></div>
+<div class="pos" id="*534:192" style="top:534;left:192"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*534:205" style="top:534;left:205"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">used to create the mask from a group</span></div>
+<div class="pos" id="*534:424" style="top:534;left:424"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*534:437" style="top:534;left:437"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is defined by</span></div>
+<div class="pos" id="*556:309" style="top:556;left:309"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">·</span></div>
+<div class="pos" id="*563:136" style="top:563;left:136"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">〈</span></div>
+<div class="pos" id="*567:142" style="top:567;left:142"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*574:152" style="top:574;left:152"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">g</span></div>
+<div class="pos" id="*564:159" style="top:564;left:159"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*567:166" style="top:567;left:166"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*574:170" style="top:574;left:170"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">g</span></div>
+<div class="pos" id="*564:177" style="top:564;left:177"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*563:184" style="top:563;left:184"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*574:194" style="top:574;left:194"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">g</span></div>
+<div class="pos" id="*563:202" style="top:563;left:202"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">〉</span></div>
+<div class="pos" id="*564:215" style="top:564;left:215"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*567:231" style="top:567;left:231"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Composite</span></div>
+<div class="pos" id="*564:296" style="top:564;left:296"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">(</span></div>
+<div class="pos" id="*567:302" style="top:567;left:302"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*574:312" style="top:574;left:312"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*564:319" style="top:564;left:319"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*567:327" style="top:567;left:327"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*564:334" style="top:564;left:334"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*567:341" style="top:567;left:341"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">G</span></div>
+<div class="pos" id="*564:354" style="top:564;left:354"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">)</span></div>
+<div class="pos" id="*594:199" style="top:594;left:199"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*591:215" style="top:591;left:215"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*591:231" style="top:591;left:231"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*594:236" style="top:594;left:236"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*591:247" style="top:591;left:247"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*590:258" style="top:590;left:258"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*601:268" style="top:601;left:268"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">g</span></div>
+<div class="pos" id="*591:274" style="top:591;left:274"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ×</span></div>
+<div class="pos" id="*594:294" style="top:594;left:294"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*601:304" style="top:601;left:304"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*591:316" style="top:591;left:316"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*590:331" style="top:590;left:331"><span id="*14" style="font-style:normal;font-weight:normal;font-size:14px;font-family:Symbol;color:#000000;">α</span></div>
+<div class="pos" id="*601:341" style="top:601;left:341"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">g</span></div>
+<div class="pos" id="*591:350" style="top:591;left:350"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">×</span></div>
+<div class="pos" id="*594:361" style="top:594;left:361"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*601:371" style="top:601;left:371"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">g</span></div>
+<div class="pos" id="*633:133" style="top:633;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">where</span></div>
+<div class="pos" id="*633:171" style="top:633;left:171"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*640:181" style="top:640;left:181"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*633:190" style="top:633;left:190"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is the selected backdrop color.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0545.htm" title="Go to previous page">Previous</a> <a href="pg_0547.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(546);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

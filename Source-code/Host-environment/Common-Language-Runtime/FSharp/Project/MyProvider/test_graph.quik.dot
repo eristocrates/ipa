@@ -1,0 +1,7 @@
+digraph G {
+0 [label="commonplace:Brandon_Collier"];
+1 [label="foaf:Person"];
+2 [label="commonplace:Tierra_Fisher"];
+0 -> 1 [label="rdf:type"];
+2 -> 1 [label="rdf:type"];
+}

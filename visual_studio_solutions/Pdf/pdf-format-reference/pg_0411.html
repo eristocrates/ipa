@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0411.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 5.4 411 Introduction to Font Data Structures ports two classes of font-related objects, called CIDFonts and CMaps, described in Section 5.6.1, “CID-Keyed Fonts Overview.” CIDFonts are listed in Table 5.7 because, like fonts, they are collections of glyphs; however, a CIDFont is never used directly but only as a component of a Type 0 font. TABLE 5.7 Font types TYPE SUBTYPE VALUE DESCRIPTION Type 0 Type 1 Type0 (PDF 1.2) A composite font—a font composed of glyphs from a descendant CIDFont (see Section 5.6, “Composite Fonts”) A font that defines glyph shapes using Type 1 font technology (see Section 5.5.1, “Type 1 Fonts”). A multiple master font—an extension of the Type 1 font that allows the generation of a wide variety of typeface styles from a single font (see “Multiple Master Fonts” on page 416) A font that defines glyphs with streams of PDF graphics operators (see Section 5.5.4, “Type 3 Fonts”) A font based on the TrueType font format (see Section 5.5.2, “TrueType Fonts”) (PDF 1.2) A CIDFont whose glyph descriptions are based on Type 1 font technology (see Section 5.6.3, “CIDFonts”) (PDF 1.2) A CIDFont whose glyph descriptions are based on TrueType font technology (see Section 5.6.3, “CIDFonts”) Type1 MMType1 Type 3 TrueType CIDFont Type3 TrueType CIDFontType0 CIDFontType2 For all font types, the term font dictionary refers to a PDF dictionary containing information about the font; likewise, a CIDFont dictionary contains information about a CIDFont. Except for Type 3, this dictionary is distinct from the font program that defines the font’s glyphs. That font program may be embedded in the PDF file as a stream object or be obtained from some external source. Note: This terminology differs from that used in the PostScript language. In PostScript, a font dictionary is a PostScript data structure that is created as a direct result of interpreting a font program. In PDF, a font program is always treated as if it were a separate file, even if its contents are embedded in the PDF file. The font program is interpreted by a specialized font interpreter when necessary; its contents never materialize as PDF objects.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0411.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 5.4</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">411</span></div>
+<div class="pos" id="*49:406" style="top:49;left:406"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Introduction to Font Data Structures</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ports two classes of font-related objects, called</span></div>
+<div class="pos" id="*99:403" style="top:99;left:403"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CIDFonts</span></div>
+<div class="pos" id="*99:461" style="top:99;left:461"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*99:486" style="top:99;left:486"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CMaps,</span></div>
+<div class="pos" id="*99:532" style="top:99;left:532"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">described in</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><a href="pg_0433.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Section 5.6.1, “CID-Keyed Fonts Overview.” CIDFonts are listed in Table 5.7 be-</span></a></div>
+<div class="pos" id="*135:133" style="top:135;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">cause, like fonts, they are collections of glyphs; however, a CIDFont is never used</span></div>
+<div class="pos" id="*153:133" style="top:153;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">directly but only as a component of a Type 0 font.</span></div>
+<div class="pos" id="*196:309" style="top:196;left:309"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 5.7 Font types</span></div>
+<div class="pos" id="*217:74" style="top:217;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TYPE</span></div>
+<div class="pos" id="*217:158" style="top:217;left:158"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">SUBTYPE VALUE</span></div>
+<div class="pos" id="*217:266" style="top:217;left:266"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">DESCRIPTION</span></div>
+<div class="pos" id="*243:74" style="top:243;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Type 0</span></div>
+<div class="pos" id="*288:74" style="top:288;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Type 1</span></div>
+<div class="pos" id="*244:158" style="top:244;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Type0</span></div>
+<div class="pos" id="*243:266" style="top:243;left:266"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.2)</span></div>
+<div class="pos" id="*243:320" style="top:243;left:320"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*243:333" style="top:243;left:333"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">composite</span></div>
+<div class="pos" id="*243:387" style="top:243;left:387"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">font—a font composed of glyphs from a descendant</span></div>
+<div class="pos" id="*260:266" style="top:260;left:266"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CIDFont (see Section 5.6, “Composite Fonts”)</span></div>
+<div class="pos" id="*288:266" style="top:288;left:266"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A font that defines glyph shapes using Type 1 font technology (see Section</span></div>
+<div class="pos" id="*305:266" style="top:305;left:266"><a href="pg_0412.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5.5.1, “Type 1 Fonts”).</span></a></div>
+<div class="pos" id="*333:266" style="top:333;left:266"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*333:278" style="top:333;left:278"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">multiple master</span></div>
+<div class="pos" id="*333:361" style="top:333;left:361"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">font—an extension of the Type 1 font that allows the gen-</span></div>
+<div class="pos" id="*350:266" style="top:350;left:266"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">eration of a wide variety of typeface styles from a single font (see “Multiple</span></div>
+<div class="pos" id="*366:266" style="top:366;left:266"><a href="pg_0416.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Master Fonts” on page 416)</span></a></div>
+<div class="pos" id="*395:266" style="top:395;left:266"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A font that defines glyphs with streams of PDF graphics operators (see Sec-</span></div>
+<div class="pos" id="*412:266" style="top:412;left:266"><a href="pg_0420.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion 5.5.4, “Type 3 Fonts”)</span></a></div>
+<div class="pos" id="*440:266" style="top:440;left:266"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A font based on the TrueType font format (see Section 5.5.2, “TrueType</span></div>
+<div class="pos" id="*457:266" style="top:457;left:266"><a href="pg_0418.htm"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Fonts”)</span></a></div>
+<div class="pos" id="*485:266" style="top:485;left:266"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.2)</span></div>
+<div class="pos" id="*485:321" style="top:485;left:321"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A CIDFont whose glyph descriptions are based on Type 1 font</span></div>
+<div class="pos" id="*502:266" style="top:502;left:266"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">technology (see Section 5.6.3, “CIDFonts”)</span></div>
+<div class="pos" id="*530:266" style="top:530;left:266"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.2)</span></div>
+<div class="pos" id="*530:320" style="top:530;left:320"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A CIDFont whose glyph descriptions are based on TrueType font</span></div>
+<div class="pos" id="*547:266" style="top:547;left:266"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">technology (see Section 5.6.3, “CIDFonts”)</span></div>
+<div class="pos" id="*289:158" style="top:289;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Type1</span></div>
+<div class="pos" id="*334:158" style="top:334;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">MMType1</span></div>
+<div class="pos" id="*395:74" style="top:395;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Type 3</span></div>
+<div class="pos" id="*440:74" style="top:440;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">TrueType</span></div>
+<div class="pos" id="*485:74" style="top:485;left:74"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">CIDFont</span></div>
+<div class="pos" id="*396:158" style="top:396;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Type3</span></div>
+<div class="pos" id="*441:158" style="top:441;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">TrueType</span></div>
+<div class="pos" id="*486:158" style="top:486;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CIDFontType0</span></div>
+<div class="pos" id="*531:158" style="top:531;left:158"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CIDFontType2</span></div>
+<div class="pos" id="*585:133" style="top:585;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">For all font types, the term</span></div>
+<div class="pos" id="*585:295" style="top:585;left:295"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">font dictionary</span></div>
+<div class="pos" id="*585:384" style="top:585;left:384"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">refers to a PDF dictionary containing</span></div>
+<div class="pos" id="*604:133" style="top:604;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">information about the font; likewise, a</span></div>
+<div class="pos" id="*604:363" style="top:604;left:363"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">CIDFont dictionary</span></div>
+<div class="pos" id="*604:480" style="top:604;left:480"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">contains information</span></div>
+<div class="pos" id="*622:133" style="top:622;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">about a CIDFont. Except for Type 3, this dictionary is distinct from the</span></div>
+<div class="pos" id="*622:554" style="top:622;left:554"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">font pro-</span></div>
+<div class="pos" id="*640:133" style="top:640;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">gram</span></div>
+<div class="pos" id="*640:167" style="top:640;left:167"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that defines the font’s glyphs. That font program may be embedded in the</span></div>
+<div class="pos" id="*658:133" style="top:658;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">PDF file as a stream object or be obtained from some external source.</span></div>
+<div class="pos" id="*693:133" style="top:693;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*692:169" style="top:692;left:169"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">This terminology differs from that used in the PostScript language. In Post-</span></div>
+<div class="pos" id="*710:133" style="top:710;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Script, a font dictionary is a PostScript data structure that is created as a direct re-</span></div>
+<div class="pos" id="*729:133" style="top:729;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">sult of interpreting a font program. In PDF, a font program is always treated as if it</span></div>
+<div class="pos" id="*747:133" style="top:747;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">were a separate file, even if its contents are embedded in the PDF file. The font pro-</span></div>
+<div class="pos" id="*765:133" style="top:765;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">gram is interpreted by a specialized font interpreter when necessary; its contents</span></div>
+<div class="pos" id="*783:133" style="top:783;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">never materialize as PDF objects.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0410.htm" title="Go to previous page">Previous</a> <a href="pg_0412.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(411);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

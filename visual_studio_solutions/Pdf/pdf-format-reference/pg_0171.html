@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0171.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 3.9 171 Functions That value is encoded: e i = Interpolate ( x i ′, Domain 2i , Domain 2i + 1 , Encode 2i , Encode 2i + 1 ) That value is clipped to the size of the sample table in that dimension: e i ′ = min ( max ( e i , 0 ) , Size i – 1 ) The encoded input values are real numbers, not restricted to integers. Interpolation is used to determine output values from the nearest surrounding values in the sample table. Each output value rj , for 0 ≤ j &lt; n, is then decoded: r j ′ = Interpolate ( r j , 0 , 2 BitsPerSample – 1 , Decode 2j , Decode 2j + 1 ) Finally, each decoded value is clipped to the range: y j = min ( max ( r j ′, Range 2j ) , Range 2j + 1 ) Sample data is represented as a stream of unsigned 8-bit bytes (integers in the range 0 to 255). The bytes constitute a continuous bit stream, with the high-order bit of each byte first. Each sample value is represented as a sequence of BitsPerSample bits. Successive values are adjacent in the bit stream; there is no padding at byte boundaries. For a function with multidimensional input (more than one input variable), the sample values in the first dimension vary fastest, and the values in the last dimension vary slowest. For example, for a function f (a, b, c), where a, b, and c vary from 0 to 9 in steps of 1, the sample values would appear in this order: f (0, 0, 0), f (1, 0, 0), … , f (9, 0, 0), f (0, 1, 0), f (1, 1, 0), … , f (9, 1, 0), f (0, 2, 0), f (1, 2, 0), … , f (9, 9, 0), f (0, 0, 1), f (1, 0, 1), and so on. For a function with multidimensional output (more than one output value), the values are stored in the same order as Range. The stream data must be long enough to contain the entire sample array, as indicated by Size, Range, and BitsPerSample; see “Stream Extent” on page 61. Example 3.19 illustrates a sampled function with 4-bit samples in an array containing 21 columns and 31 rows (651 values). The function takes two arguments, x and y, in the domain [−1.0 1.0 ], and returns one value, z, in that same range. The x argument is linearly transformed by the encoding to the  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0171.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 3.9</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">171</span></div>
+<div class="pos" id="*49:551" style="top:49;left:551"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Functions</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">That value is encoded:</span></div>
+<div class="pos" id="*128:134" style="top:128;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">e</span></div>
+<div class="pos" id="*135:141" style="top:135;left:141"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">i</span></div>
+<div class="pos" id="*125:151" style="top:125;left:151"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*128:167" style="top:128;left:167"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Interpolate</span></div>
+<div class="pos" id="*124:234" style="top:124;left:234"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*128:240" style="top:128;left:240"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*135:247" style="top:135;left:247"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">i</span></div>
+<div class="pos" id="*124:251" style="top:124;left:251"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">′,</span></div>
+<div class="pos" id="*126:262" style="top:126;left:262"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">Domain</span></div>
+<div class="pos" id="*135:306" style="top:135;left:306"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2i</span></div>
+<div class="pos" id="*124:318" style="top:124;left:318"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*126:325" style="top:126;left:325"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">Domain</span></div>
+<div class="pos" id="*135:369" style="top:135;left:369"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2i</span></div>
+<div class="pos" id="*133:383" style="top:133;left:383"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*135:393" style="top:135;left:393"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*124:400" style="top:124;left:400"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*126:408" style="top:126;left:408"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">Encode</span></div>
+<div class="pos" id="*135:449" style="top:135;left:449"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2i</span></div>
+<div class="pos" id="*124:460" style="top:124;left:460"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*126:467" style="top:126;left:467"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">Encode</span></div>
+<div class="pos" id="*135:508" style="top:135;left:508"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2i</span></div>
+<div class="pos" id="*133:522" style="top:133;left:522"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*135:532" style="top:135;left:532"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*124:540" style="top:124;left:540"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">)</span></div>
+<div class="pos" id="*167:133" style="top:167;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">That value is clipped to the size of the sample table in that dimension:</span></div>
+<div class="pos" id="*196:134" style="top:196;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">e</span></div>
+<div class="pos" id="*203:141" style="top:203;left:141"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">i</span></div>
+<div class="pos" id="*193:145" style="top:193;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">′</span></div>
+<div class="pos" id="*194:156" style="top:194;left:156"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*196:171" style="top:196;left:171"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">min</span></div>
+<div class="pos" id="*193:197" style="top:193;left:197"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*196:203" style="top:196;left:203"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">max</span></div>
+<div class="pos" id="*193:231" style="top:193;left:231"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*196:237" style="top:196;left:237"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">e</span></div>
+<div class="pos" id="*203:243" style="top:203;left:243"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">i</span></div>
+<div class="pos" id="*193:248" style="top:193;left:248"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*196:255" style="top:196;left:255"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*193:263" style="top:193;left:263"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ,</span></div>
+<div class="pos" id="*195:276" style="top:195;left:276"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">Size</span></div>
+<div class="pos" id="*204:300" style="top:204;left:300"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">i</span></div>
+<div class="pos" id="*194:307" style="top:194;left:307"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*196:318" style="top:196;left:318"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*193:325" style="top:193;left:325"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">)</span></div>
+<div class="pos" id="*236:133" style="top:236;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The encoded input values are real numbers, not restricted to integers.</span></div>
+<div class="pos" id="*254:133" style="top:254;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Interpolation is used to determine output values from the nearest surrounding</span></div>
+<div class="pos" id="*272:133" style="top:272;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">values in the sample table. Each output value</span></div>
+<div class="pos" id="*272:396" style="top:272;left:396"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*278:401" style="top:278;left:401"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*272:406" style="top:272;left:406"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, for 0</span></div>
+<div class="pos" id="*269:443" style="top:269;left:443"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">≤</span></div>
+<div class="pos" id="*272:454" style="top:272;left:454"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*269:461" style="top:269;left:461"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">&lt;</span></div>
+<div class="pos" id="*272:473" style="top:272;left:473"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">n,</span></div>
+<div class="pos" id="*272:487" style="top:272;left:487"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is then decoded:</span></div>
+<div class="pos" id="*302:134" style="top:302;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*309:140" style="top:309;left:140"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*298:144" style="top:298;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">′</span></div>
+<div class="pos" id="*299:155" style="top:299;left:155"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*302:171" style="top:302;left:171"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Interpolate</span></div>
+<div class="pos" id="*298:238" style="top:298;left:238"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*302:244" style="top:302;left:244"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*309:250" style="top:309;left:250"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*298:254" style="top:298;left:254"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*302:262" style="top:302;left:262"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*298:270" style="top:298;left:270"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*302:277" style="top:302;left:277"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*299:285" style="top:299;left:285"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:Times New Roman;color:#000000;">BitsPerSample</span></div>
+<div class="pos" id="*299:348" style="top:299;left:348"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">–</span></div>
+<div class="pos" id="*302:359" style="top:302;left:359"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*298:368" style="top:298;left:368"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*300:375" style="top:300;left:375"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">Decode</span></div>
+<div class="pos" id="*309:417" style="top:309;left:417"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2j</span></div>
+<div class="pos" id="*298:428" style="top:298;left:428"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">,</span></div>
+<div class="pos" id="*300:436" style="top:300;left:436"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">Decode</span></div>
+<div class="pos" id="*309:477" style="top:309;left:477"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2j</span></div>
+<div class="pos" id="*307:491" style="top:307;left:491"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*309:501" style="top:309;left:501"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*298:509" style="top:298;left:509"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">)</span></div>
+<div class="pos" id="*341:133" style="top:341;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Finally, each decoded value is clipped to the range:</span></div>
+<div class="pos" id="*370:134" style="top:370;left:134"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*378:141" style="top:378;left:141"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*368:152" style="top:368;left:152"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Times New Roman;color:#000000;">=</span></div>
+<div class="pos" id="*370:167" style="top:370;left:167"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">min</span></div>
+<div class="pos" id="*367:193" style="top:367;left:193"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*370:199" style="top:370;left:199"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">max</span></div>
+<div class="pos" id="*367:227" style="top:367;left:227"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">(</span></div>
+<div class="pos" id="*370:233" style="top:370;left:233"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">r</span></div>
+<div class="pos" id="*378:239" style="top:378;left:239"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">j</span></div>
+<div class="pos" id="*367:243" style="top:367;left:243"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">′,</span></div>
+<div class="pos" id="*369:254" style="top:369;left:254"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">Range</span></div>
+<div class="pos" id="*378:289" style="top:378;left:289"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2j</span></div>
+<div class="pos" id="*367:302" style="top:367;left:302"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">) ,</span></div>
+<div class="pos" id="*369:315" style="top:369;left:315"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Times New Roman;color:#000000;">Range</span></div>
+<div class="pos" id="*378:351" style="top:378;left:351"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2j</span></div>
+<div class="pos" id="*376:364" style="top:376;left:364"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Times New Roman;color:#000000;">+</span></div>
+<div class="pos" id="*378:374" style="top:378;left:374"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*367:380" style="top:367;left:380"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:Symbol;color:#000000;">)</span></div>
+<div class="pos" id="*410:133" style="top:410;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Sample data is represented as a stream of unsigned 8-bit bytes (integers in the</span></div>
+<div class="pos" id="*428:133" style="top:428;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">range 0 to 255). The bytes constitute a continuous bit stream, with the high-order</span></div>
+<div class="pos" id="*446:133" style="top:446;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">bit of each byte first. Each sample value is represented as a sequence of</span></div>
+<div class="pos" id="*465:133" style="top:465;left:133"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BitsPerSample</span></div>
+<div class="pos" id="*464:222" style="top:464;left:222"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">bits. Successive values are adjacent in the bit stream; there is no</span></div>
+<div class="pos" id="*482:133" style="top:482;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">padding at byte boundaries.</span></div>
+<div class="pos" id="*517:133" style="top:517;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">For a function with multidimensional input (more than one input variable), the</span></div>
+<div class="pos" id="*535:133" style="top:535;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">sample values in the first dimension vary fastest, and the values in the last</span></div>
+<div class="pos" id="*553:133" style="top:553;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dimension vary slowest. For example, for a function</span></div>
+<div class="pos" id="*553:447" style="top:553;left:447"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*553:452" style="top:553;left:452"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(a,</span></div>
+<div class="pos" id="*553:471" style="top:553;left:471"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">b, c),</span></div>
+<div class="pos" id="*553:502" style="top:553;left:502"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">where</span></div>
+<div class="pos" id="*553:542" style="top:553;left:542"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">a, b,</span></div>
+<div class="pos" id="*553:572" style="top:553;left:572"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*553:598" style="top:553;left:598"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*571:133" style="top:571;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">vary from 0 to 9 in steps of 1, the sample values would appear in this order:</span></div>
+<div class="pos" id="*589:133" style="top:589;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*589:138" style="top:589;left:138"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(0, 0, 0),</span></div>
+<div class="pos" id="*589:194" style="top:589;left:194"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*589:199" style="top:589;left:199"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(1, 0, 0), … ,</span></div>
+<div class="pos" id="*589:281" style="top:589;left:281"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*589:286" style="top:589;left:286"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(9, 0, 0),</span></div>
+<div class="pos" id="*589:342" style="top:589;left:342"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*589:347" style="top:589;left:347"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(0, 1, 0),</span></div>
+<div class="pos" id="*589:403" style="top:589;left:403"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*589:408" style="top:589;left:408"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(1, 1, 0), … ,</span></div>
+<div class="pos" id="*589:490" style="top:589;left:490"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*589:495" style="top:589;left:495"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(9, 1, 0),</span></div>
+<div class="pos" id="*589:551" style="top:589;left:551"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*589:556" style="top:589;left:556"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(0, 2, 0),</span></div>
+<div class="pos" id="*607:133" style="top:607;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*607:138" style="top:607;left:138"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(1, 2, 0), … ,</span></div>
+<div class="pos" id="*607:211" style="top:607;left:211"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*607:216" style="top:607;left:216"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(9, 9, 0),</span></div>
+<div class="pos" id="*607:267" style="top:607;left:267"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*607:272" style="top:607;left:272"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(0, 0, 1),</span></div>
+<div class="pos" id="*607:323" style="top:607;left:323"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*607:328" style="top:607;left:328"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(1, 0, 1), and so on.</span></div>
+<div class="pos" id="*642:133" style="top:642;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">For a function with multidimensional output (more than one output value), the</span></div>
+<div class="pos" id="*660:133" style="top:660;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">values are stored in the same order as</span></div>
+<div class="pos" id="*661:353" style="top:661;left:353"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Range</span></div>
+<div class="pos" id="*660:390" style="top:660;left:390"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*695:133" style="top:695;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The stream data must be long enough to contain the entire sample array, as</span></div>
+<div class="pos" id="*713:133" style="top:713;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">indicated by</span></div>
+<div class="pos" id="*714:207" style="top:714;left:207"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Size</span></div>
+<div class="pos" id="*713:231" style="top:713;left:231"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*714:237" style="top:714;left:237"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Range</span></div>
+<div class="pos" id="*713:274" style="top:713;left:274"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*714:306" style="top:714;left:306"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BitsPerSample</span></div>
+<div class="pos" id="*713:391" style="top:713;left:391"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">; see “Stream Extent” on page 61.</span></div>
+<div class="pos" id="*748:133" style="top:748;left:133"><a href="pg_0172.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Example 3.19 illustrates a sampled function with 4-bit samples in an array</span></a></div>
+<div class="pos" id="*766:133" style="top:766;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">containing 21 columns and 31 rows (651 values). The function takes two</span></div>
+<div class="pos" id="*784:133" style="top:784;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">arguments,</span></div>
+<div class="pos" id="*784:203" style="top:784;left:203"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*784:215" style="top:784;left:215"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*784:242" style="top:784;left:242"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y,</span></div>
+<div class="pos" id="*784:255" style="top:784;left:255"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the domain</span></div>
+<div class="pos" id="*784:345" style="top:784;left:345"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">[−1.0 1.0 ]</span></div>
+<div class="pos" id="*784:402" style="top:784;left:402"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and returns one value,</span></div>
+<div class="pos" id="*784:549" style="top:784;left:549"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">z,</span></div>
+<div class="pos" id="*784:564" style="top:784;left:564"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in that</span></div>
+<div class="pos" id="*802:133" style="top:802;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">same range. The</span></div>
+<div class="pos" id="*802:240" style="top:802;left:240"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*802:254" style="top:802;left:254"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">argument is linearly transformed by the encoding to the</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0170.htm" title="Go to previous page">Previous</a> <a href="pg_0172.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(171);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

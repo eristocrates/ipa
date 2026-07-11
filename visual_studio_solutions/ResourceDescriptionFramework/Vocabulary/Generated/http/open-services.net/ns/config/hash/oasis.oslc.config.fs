@@ -1,0 +1,47 @@
+﻿namespace Oasis.oslc.config.Namespace
+module config =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://open-services.net/ns/config#" (Some "https://docs.oasis-open-projects.org/oslc-op/config/v1.1/psd01/config-vocab.ttl") (Some "oasis.oslc.config") None
+    let Activity = {_prefixID with _localName = "Activity"}
+    let Baseline = {_prefixID with _localName = "Baseline"}
+    let ChangeSet = {_prefixID with _localName = "ChangeSet"}
+    let ChangeSetDelivery = {_prefixID with _localName = "ChangeSetDelivery"}
+    let ChangeSetSelections = {_prefixID with _localName = "ChangeSetSelections"}
+    let Component = {_prefixID with _localName = "Component"}
+    let Configuration = {_prefixID with _localName = "Configuration"}
+    let ConfigurationSettings = {_prefixID with _localName = "ConfigurationSettings"}
+    let Contribution = {_prefixID with _localName = "Contribution"}
+    let PersonalConfiguration = {_prefixID with _localName = "PersonalConfiguration"}
+    let Removals = {_prefixID with _localName = "Removals"}
+    let RemoveAll = {_prefixID with _localName = "RemoveAll"}
+    let Selections = {_prefixID with _localName = "Selections"}
+    let Stream = {_prefixID with _localName = "Stream"}
+    let UnboundSelections = {_prefixID with _localName = "UnboundSelections"}
+    let VersionResource = {_prefixID with _localName = "VersionResource"}
+    let acceptedBy = {_prefixID with _localName = "acceptedBy"}
+    let accepts = {_prefixID with _localName = "accepts"}
+    let baselineOfStream = {_prefixID with _localName = "baselineOfStream"}
+    let baselines = {_prefixID with _localName = "baselines"}
+    let branch = {_prefixID with _localName = "branch"}
+    let committed = {_prefixID with _localName = "committed"}
+    let committer = {_prefixID with _localName = "committer"}
+    let ``component`` = {_prefixID with _localName = "component"}
+    let configuration = {_prefixID with _localName = "configuration"}
+    let configurationSettings = {_prefixID with _localName = "configurationSettings"}
+    let configurations = {_prefixID with _localName = "configurations"}
+    let contribution = {_prefixID with _localName = "contribution"}
+    let contributionOrder = {_prefixID with _localName = "contributionOrder"}
+    let derivedFrom = {_prefixID with _localName = "derivedFrom"}
+    let globalConfigurationService = {_prefixID with _localName = "globalConfigurationService"}
+    let ``mutable`` = {_prefixID with _localName = "mutable"}
+    let overrides = {_prefixID with _localName = "overrides"}
+    let previousBaseline = {_prefixID with _localName = "previousBaseline"}
+    let progressMessage = {_prefixID with _localName = "progressMessage"}
+    let release = {_prefixID with _localName = "release"}
+    let selections = {_prefixID with _localName = "selections"}
+    let selects = {_prefixID with _localName = "selects"}
+    let sourceConfiguration = {_prefixID with _localName = "sourceConfiguration"}
+    let sourceVersionResource = {_prefixID with _localName = "sourceVersionResource"}
+    let streams = {_prefixID with _localName = "streams"}
+    let targetStream = {_prefixID with _localName = "targetStream"}
+    let targetVersionResource = {_prefixID with _localName = "targetVersionResource"}
+    let versionId = {_prefixID with _localName = "versionId"}

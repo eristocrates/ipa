@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0181.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 3.10 181 File Specifications without a drive by making the first component empty. (Empty components are ignored by other platforms.) • For Mac OS, all components are separated by colons ( : ). • For UNIX, all components are separated by slashes ( / ). An initial slash, if present, is preserved. Strings used to specify a file name are interpreted in the standard encoding for the platform on which the document is being viewed. Table 3.40 shows examples of file specifications on the most common platforms. TABLE 3.40 Examples of file specifications SYSTEM SYSTEM-DEPENDENT PATHS WRITTEN FORM DOS \ pdfdocs \ spec . pdf ( no drive ) r : \ pdfdocs \ spec . pdf pclib / eng : \ pdfdocs \ spec . pdf Mac HD : PDFDocs : spec . pdf / user / fred / pdfdocs / spec . pdf pdfdocs / spec . pdf ( relative ) ( / / pdfdocs / spec . pdf ) ( / r / pdfdocs / spec . pdf ) ( / pclib / eng / pdfdocs / spec . pdf ) ( /Mac HD/ PDFDocs/ spec . pdf ) ( / user / fred / pdfdocs / spec . pdf ) ( pdfdocs / spec . pdf ) Mac OS UNIX When creating documents that are to be viewed on multiple platforms, care must be taken to ensure file name compatibility. Only a subset of the U.S. ASCII character set should be used in file specifications: the uppercase alphabetic characters (A–Z), the numeric characters (0–9), and the underscore ( _ ). The period ( . ) has special meaning in DOS and Windows file names, and as the first character in a Mac OS pathname. In file specifications, the period should be used only to separate a base file name from a file extension. Some file systems are case-insensitive, and names within a directory should remain distinguishable if lowercase letters are changed to uppercase or vice versa. On DOS and Windows 3.1 systems and on some CD-ROM file systems, file names are limited to 8 characters plus a 3-character extension. File system software typically converts long names to short names by retaining the first 6 or 7 characters of the file name and the first 3 characters after the last period, if any. Since characters beyond the sixth or seventh are often converted to other values unrelated to the original value, file names must be distinguishable from the first 6 characters.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0181.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 3.10</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">181</span></div>
+<div class="pos" id="*49:506" style="top:49;left:506"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">File Specifications</span></div>
+<div class="pos" id="*99:145" style="top:99;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">without a drive by making the first component empty. (Empty components are</span></div>
+<div class="pos" id="*117:145" style="top:117;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ignored by other platforms.)</span></div>
+<div class="pos" id="*141:133" style="top:141;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*143:145" style="top:143;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">For Mac OS, all components are separated by colons (</span></div>
+<div class="pos" id="*144:458" style="top:144;left:458"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">:</span></div>
+<div class="pos" id="*143:462" style="top:143;left:462"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">).</span></div>
+<div class="pos" id="*167:133" style="top:167;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*170:145" style="top:170;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">For UNIX, all components are separated by slashes (</span></div>
+<div class="pos" id="*170:473" style="top:170;left:473"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/</span></div>
+<div class="pos" id="*170:479" style="top:170;left:479"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">). An initial slash, if</span></div>
+<div class="pos" id="*188:145" style="top:188;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">present, is preserved.</span></div>
+<div class="pos" id="*222:133" style="top:222;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Strings used to specify a file name are interpreted in the standard encoding for</span></div>
+<div class="pos" id="*240:133" style="top:240;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the platform on which the document is being viewed. Table 3.40 shows examples</span></div>
+<div class="pos" id="*258:133" style="top:258;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of file specifications on the most common platforms.</span></div>
+<div class="pos" id="*302:253" style="top:302;left:253"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 3.40 Examples of file specifications</span></div>
+<div class="pos" id="*322:133" style="top:322;left:133"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">SYSTEM</span></div>
+<div class="pos" id="*322:224" style="top:322;left:224"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">SYSTEM-DEPENDENT PATHS</span></div>
+<div class="pos" id="*322:419" style="top:322;left:419"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">WRITTEN FORM</span></div>
+<div class="pos" id="*348:133" style="top:348;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">DOS</span></div>
+<div class="pos" id="*349:224" style="top:349;left:224"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">\ pdfdocs \ spec . pdf ( no drive )</span></div>
+<div class="pos" id="*366:227" style="top:366;left:227"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">r : \ pdfdocs \ spec . pdf</span></div>
+<div class="pos" id="*382:224" style="top:382;left:224"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">pclib / eng : \ pdfdocs \ spec . pdf</span></div>
+<div class="pos" id="*410:224" style="top:410;left:224"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Mac HD : PDFDocs : spec . pdf</span></div>
+<div class="pos" id="*439:224" style="top:439;left:224"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/ user / fred / pdfdocs / spec . pdf</span></div>
+<div class="pos" id="*456:227" style="top:456;left:227"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">pdfdocs / spec . pdf ( relative )</span></div>
+<div class="pos" id="*348:419" style="top:348;left:419"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">( / / pdfdocs / spec . pdf )</span></div>
+<div class="pos" id="*363:419" style="top:363;left:419"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">( / r / pdfdocs / spec . pdf )</span></div>
+<div class="pos" id="*378:422" style="top:378;left:422"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">( / pclib / eng / pdfdocs / spec . pdf )</span></div>
+<div class="pos" id="*410:419" style="top:410;left:419"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">( /Mac HD/ PDFDocs/ spec . pdf )</span></div>
+<div class="pos" id="*439:419" style="top:439;left:419"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">( / user / fred / pdfdocs / spec . pdf )</span></div>
+<div class="pos" id="*456:422" style="top:456;left:422"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">( pdfdocs / spec . pdf )</span></div>
+<div class="pos" id="*410:133" style="top:410;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Mac OS</span></div>
+<div class="pos" id="*439:133" style="top:439;left:133"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">UNIX</span></div>
+<div class="pos" id="*494:133" style="top:494;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">When creating documents that are to be viewed on multiple platforms, care must</span></div>
+<div class="pos" id="*512:133" style="top:512;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">be taken to ensure file name compatibility. Only a subset of the U.S. ASCII</span></div>
+<div class="pos" id="*530:133" style="top:530;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">character set should be used in file specifications: the uppercase alphabetic</span></div>
+<div class="pos" id="*548:133" style="top:548;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">characters (</span></div>
+<div class="pos" id="*549:203" style="top:549;left:203"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">A</span></div>
+<div class="pos" id="*548:211" style="top:548;left:211"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">–</span></div>
+<div class="pos" id="*549:219" style="top:549;left:219"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Z</span></div>
+<div class="pos" id="*548:226" style="top:548;left:226"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">), the numeric characters (</span></div>
+<div class="pos" id="*549:391" style="top:549;left:391"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*548:398" style="top:548;left:398"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">–</span></div>
+<div class="pos" id="*549:406" style="top:549;left:406"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*548:413" style="top:548;left:413"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">), and the underscore (</span></div>
+<div class="pos" id="*549:558" style="top:549;left:558"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">_</span></div>
+<div class="pos" id="*548:566" style="top:548;left:566"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">). The</span></div>
+<div class="pos" id="*566:133" style="top:566;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">period (</span></div>
+<div class="pos" id="*567:181" style="top:567;left:181"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*566:186" style="top:566;left:186"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) has special meaning in DOS and Windows file names, and as the first</span></div>
+<div class="pos" id="*584:133" style="top:584;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">character in a Mac OS pathname. In file specifications, the period should be used</span></div>
+<div class="pos" id="*602:133" style="top:602;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">only to separate a base file name from a file extension.</span></div>
+<div class="pos" id="*637:133" style="top:637;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Some file systems are case-insensitive, and names within a directory should</span></div>
+<div class="pos" id="*655:133" style="top:655;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">remain distinguishable if lowercase letters are changed to uppercase or vice</span></div>
+<div class="pos" id="*673:133" style="top:673;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">versa. On DOS and Windows 3.1 systems and on some CD-ROM file systems,</span></div>
+<div class="pos" id="*691:133" style="top:691;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">file names are limited to 8 characters plus a 3-character extension. File system</span></div>
+<div class="pos" id="*709:133" style="top:709;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">software typically converts long names to short names by retaining the first 6 or</span></div>
+<div class="pos" id="*727:133" style="top:727;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7 characters of the file name and the first 3 characters after the last period, if any.</span></div>
+<div class="pos" id="*745:133" style="top:745;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Since characters beyond the sixth or seventh are often converted to other values</span></div>
+<div class="pos" id="*763:133" style="top:763;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">unrelated to the original value, file names must be distinguishable from the first</span></div>
+<div class="pos" id="*781:133" style="top:781;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6 characters.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0180.htm" title="Go to previous page">Previous</a> <a href="pg_0182.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(181);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

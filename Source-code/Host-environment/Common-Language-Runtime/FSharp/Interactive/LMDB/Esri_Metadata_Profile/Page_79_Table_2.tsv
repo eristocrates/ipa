@@ -1,0 +1,43 @@
+Point and Vector Object Information	ptvctinf			
+ESRI Terms Description	esriterm			
+ESRI Feature Type	efeatyp	S	N	E,F
+ESRI Feature Geometry	efeageom	S		E,F
+ESRI Topology	esritopo	S	N	E,F
+ESRI Feature Count	efeacnt	S	N	E,F
+Spatial Index	spindex	S	N	E,F
+Linear Referencing	linrefer	S	N	E,F
+Network Role	netwrole	S		E,F
+XY Rank	XYRank	S		E,F
+Z Rank	ZRank	S		E,F
+Topology Weight	topoWeight	S		E,F
+Events on Validation	validateEvents	S		E,F
+Participates in Topology Rules	partTopoRules			
+Topology Rule ID	topoRuleID	S		E,F
+Feature Description	featdesc		Y	E,F
+SDTS Terms Description	sdtsterm			
+SDTS Point and Vector Object Type	sdtstype	S	Y	Q,E,C,F
+Point and Vector Object Type Count	ptvctcnt	S	Y	Q,E,C,F
+VPF Terms Description	vpfterm			
+VPF Topology Level	vpflevel	S	Y	Q,E,C,F
+VPF Point and Vector Object Information	vpfinfo			
+VPF Point and Vector Object Type	vpftype	S	Y	Q,E,C,F
+Point and Vector Object Type Count	ptvctcnt	S	Y	Q,E,C,F
+Raster Object Information	rastinfo			
+*  Image Format	rastifor	S	Y	E,F
+Raster Object Type	rasttype	S	Y	Q,C,F
+Image Type	rastityp		Y	F
+Number of Bands	rastband	S	Y	E,F
+Row Count	rowcount	S	Y	Q,E,C,F
+Column Count	colcount	S	Y	Q,E,C,F
+Vertical Count	vrtcount	S	Y	Q,E,C,F
+Cell Size X Direction	rastxsz	S	Y	E,F
+Cell Size X Units	rastxu		Y	F
+Cell Size Y Direction	rastysz	S	Y	E,F
+Cell Size Y Units	rastyu		Y	F
+Bits Per Pixel	rastbpp	S	Y	E,F
+Background Nodata Value	rastnodt		Y	F
+Pyramid Layers	rastplyr	S	N	E,F
+Image Colormap	rastcmap	S	Y	E,F
+Compression Type	rastcomp	S	Y	E,F
+Raster Display Type	rastdtyp	S	Y	E,F
+Raster Origin	rastorig	S	Y	E,F

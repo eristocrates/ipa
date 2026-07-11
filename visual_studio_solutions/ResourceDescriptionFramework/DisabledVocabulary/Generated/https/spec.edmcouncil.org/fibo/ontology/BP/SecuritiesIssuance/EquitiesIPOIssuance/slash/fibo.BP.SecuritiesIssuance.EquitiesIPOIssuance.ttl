@@ -1,0 +1,257 @@
+@prefix fibo.BP.SecuritiesIssuance.EquitiesIPOIssuance: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/EquitiesIPOIssuance/> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/>.
+@prefix cmns-cxtdsg: <https://www.omg.org/spec/Commons/ContextualDesignators/>.
+@prefix cmns-doc: <https://www.omg.org/spec/Commons/Documents/>.
+@prefix cmns-dt: <https://www.omg.org/spec/Commons/DatesAndTimes/>.
+@prefix cmns-org: <https://www.omg.org/spec/Commons/Organizations/>.
+@prefix cmns-pts: <https://www.omg.org/spec/Commons/PartiesAndSituations/>.
+@prefix cmns-ra: <https://www.omg.org/spec/Commons/RegistrationAuthorities/>.
+@prefix cmns-rlcmp: <https://www.omg.org/spec/Commons/RolesAndCompositions/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix fibo-bp-iss-doc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceDocuments/>.
+@prefix fibo-bp-iss-ipo: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/EquitiesIPOIssuance/>.
+@prefix fibo-bp-iss-prc: <https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceProcess/>.
+@prefix fibo-fbc-fct-mkt: <https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/>.
+@prefix fibo-fbc-fi-fi: <https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/>.
+@prefix fibo-fbc-pas-fpas: <https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/>.
+@prefix fibo-fnd-acc-cur: <https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/>.
+@prefix fibo-fnd-dt-oc: <https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/>.
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xs: <http://www.w3.org/2001/XMLSchema#>.
+
+_:autos405 rdf:first fibo-bp-iss-ipo:CorporateBroker;
+           rdf:rest _:autos406.
+_:autos406 rdf:first fibo-bp-iss-ipo:Sponsor;
+           rdf:rest _:autos407.
+_:autos407 rdf:first fibo-bp-iss-ipo:ReportingAccountant;
+           rdf:rest _:autos408.
+_:autos408 rdf:first cmns-ra:RegistrationAuthority;
+           rdf:rest rdf:nil.
+fibo-bp-iss-ipo: dcterms:abstract "Issuance process for equity instruments that are issued via an Initial Public Offering (IPO).";
+                 dcterms:license """Copyright (c) 2013-2025 EDM Council, Inc.
+Copyright (c) 2013-2025 Object Management Group, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		
+		See https://opensource.org/licenses/MIT.""";
+                 a owl:Ontology;
+                 rdfs:label "Equities IPO Issuance Ontology"@en;
+                 owl:imports <https://spec.edmcouncil.org/fibo/ontology/master/latest/BP/SecuritiesIssuance/IssuanceDocuments/>,
+                             <https://spec.edmcouncil.org/fibo/ontology/master/latest/BP/SecuritiesIssuance/IssuanceProcess/>,
+                             <https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FinancialInstruments/FinancialInstruments/>,
+                             <https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FunctionalEntities/Markets/>,
+                             <https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/ProductsAndServices/FinancialProductsAndServices/>,
+                             <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Accounting/CurrencyAmount/>,
+                             <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/DatesAndTimes/Occurrences/>,
+                             <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Utilities/AnnotationVocabulary/>,
+                             <https://spec.edmcouncil.org/fibo/ontology/master/latest/SEC/Securities/SecuritiesListings/>,
+                             cmns-av:,
+                             cmns-cxtdsg:,
+                             cmns-dt:,
+                             cmns-doc:,
+                             cmns-org:,
+                             cmns-pts:,
+                             cmns-ra:,
+                             cmns-rlcmp:;
+                 owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/latest/BP/SecuritiesIssuance/EquitiesIPOIssuance/>;
+                 fibo-fnd-utl-av:hasMaturityLevel fibo-fnd-utl-av:Provisional;
+                 cmns-av:copyright "Copyright (c) 2013-2025 EDM Council, Inc.".
+fibo-bp-iss-ipo:AgreeBasisForAllocation a owl:Class;
+                                        rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                        rdfs:label "agree basis for allocation"@en;
+                                        rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep.
+fibo-bp-iss-ipo:Allocation a owl:Class;
+                           rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                           rdfs:label "allocation"@en;
+                           rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep.
+fibo-bp-iss-ipo:AllocationBasisDetails a owl:Class;
+                                       rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                       rdfs:label "allocation basis details"@en;
+                                       rdfs:subClassOf cmns-doc:Document.
+fibo-bp-iss-ipo:AllocationDetails a owl:Class;
+                                  rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                  rdfs:label "allocation details"@en;
+                                  rdfs:subClassOf cmns-doc:Document.
+fibo-bp-iss-ipo:AnnounceEquityIssue a owl:Class;
+                                    rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                    rdfs:label "announce equity issue"@en;
+                                    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep.
+fibo-bp-iss-ipo:ApplicationForShares a owl:Class;
+                                     rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                     rdfs:label "application for shares"@en;
+                                     rdfs:subClassOf cmns-doc:Document.
+fibo-bp-iss-ipo:AppointAdvisors a owl:Class;
+                                rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                rdfs:label "appoint advisors"@en;
+                                rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep,
+                                                [a owl:Restriction ; 
+                                                 owl:onProperty cmns-org:designates ; 
+                                                 owl:someValuesFrom [a owl:Class ; 
+                                                                     owl:unionOf _:autos405]],
+                                                [a owl:Restriction ; 
+                                                 owl:onProperty cmns-rlcmp:playsRole ; 
+                                                 owl:someValuesFrom fibo-fbc-fi-fi:Issuer].
+fibo-bp-iss-ipo:ApproveForFlotation a owl:Class;
+                                    rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                    rdfs:label "approve for flotation"@en;
+                                    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep,
+                                                    [a owl:Restriction ; 
+                                                     owl:onProperty cmns-org:isProvidedBy ; 
+                                                     owl:someValuesFrom fibo-fbc-fct-mkt:Exchange].
+fibo-bp-iss-ipo:CorporateBroker a owl:Class;
+                                rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                rdfs:label "corporate broker"@en;
+                                rdfs:subClassOf fibo-fbc-pas-fpas:Broker.
+fibo-bp-iss-ipo:EquityAnnouncement a owl:Class;
+                                   rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                   rdfs:label "equity announcement"@en;
+                                   rdfs:subClassOf cmns-doc:Notice.
+fibo-bp-iss-ipo:FilingDetails a owl:Class;
+                              rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                              rdfs:label "filing details"@en;
+                              rdfs:subClassOf cmns-doc:Document.
+fibo-bp-iss-ipo:FormalApprovalForListingAndTrading a owl:Class;
+                                                   rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                                   rdfs:label "formal approval for listing and trading"@en;
+                                                   rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep,
+                                                                   [a owl:Restriction ; 
+                                                                    owl:onProperty cmns-org:isProvidedBy ; 
+                                                                    owl:someValuesFrom fibo-fbc-fct-mkt:Exchange].
+fibo-bp-iss-ipo:IPOFullProspectus a owl:Class;
+                                  rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                  rdfs:label "i p o full prospectus"@en;
+                                  rdfs:subClassOf fibo-bp-iss-doc:FinalProspectus.
+fibo-bp-iss-ipo:IPOPreliminaryProspectus a owl:Class;
+                                         rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                         rdfs:label "i p o preliminary prospectus"@en;
+                                         rdfs:subClassOf fibo-bp-iss-doc:PreliminaryProspectus,
+                                                         [a owl:Restriction ; 
+                                                          owl:onProperty cmns-dt:precedes ; 
+                                                          owl:someValuesFrom fibo-bp-iss-ipo:IPOFullProspectus].
+fibo-bp-iss-ipo:IPOProcess a owl:Class;
+                           rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                           rdfs:label "i p o process"@en;
+                           rdfs:subClassOf [a owl:Restriction ; 
+                                            owl:onProperty cmns-dt:hasDatePeriod ; 
+                                            owl:someValuesFrom cmns-dt:DatePeriod].
+fibo-bp-iss-ipo:IPOSettlementDetails a owl:Class;
+                                     rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                     rdfs:label "i p o settlement details"@en;
+                                     rdfs:subClassOf cmns-doc:Document.
+fibo-bp-iss-ipo:IndicationOfInterest a owl:Class;
+                                     rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                     rdfs:label "indication of interest"@en;
+                                     rdfs:subClassOf cmns-doc:Document.
+fibo-bp-iss-ipo:InitialPublicOfferingProcessStep a owl:Class;
+                                                 rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                                 rdfs:label "initial public offering process step";
+                                                 rdfs:subClassOf fibo-fnd-dt-oc:OccurrenceKind,
+                                                                 [a owl:Restriction ; 
+                                                                  owl:onProperty cmns-cxtdsg:appliesTo ; 
+                                                                  owl:someValuesFrom fibo-bp-iss-ipo:IPOProcess];
+                                                 cmns-av:abbreviation "IPO process step".
+fibo-bp-iss-ipo:MarketingOfShareIssue a owl:Class;
+                                      rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                      rdfs:label "marketing of share issue"@en;
+                                      rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep.
+fibo-bp-iss-ipo:NoticeOfAllocation a owl:Class;
+                                   rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                   rdfs:label "notice of allocation"@en;
+                                   rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep.
+fibo-bp-iss-ipo:PotentialShareUnderwriter a owl:Class;
+                                          rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                          rdfs:label "potential share underwriter"@en;
+                                          rdfs:subClassOf fibo-bp-iss-prc:PotentialUnderwriter.
+fibo-bp-iss-ipo:PublishInitialProspectus a owl:Class;
+                                         rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                         rdfs:label "publish initial prospectus"@en;
+                                         rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep.
+fibo-bp-iss-ipo:PurchasePrice a owl:Class;
+                              rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                              rdfs:label "purchase price"@en;
+                              rdfs:subClassOf fibo-fnd-acc-cur:MonetaryPrice.
+fibo-bp-iss-ipo:PurchaseUnallocatedStock a owl:Class;
+                                         rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                         rdfs:label "purchase unallocated stock"@en;
+                                         rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep.
+fibo-bp-iss-ipo:ReceiveApplications a owl:Class;
+                                    rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                    rdfs:label "receive applications"@en;
+                                    rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep.
+fibo-bp-iss-ipo:RegisterWithRegulatoryAuthority a owl:Class;
+                                                rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                                rdfs:label "register with regulatory authority"@en;
+                                                rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep,
+                                                                [a owl:Restriction ; 
+                                                                 owl:onProperty cmns-org:isProvidedBy ; 
+                                                                 owl:someValuesFrom fibo-fbc-fct-mkt:Exchange].
+fibo-bp-iss-ipo:RegistrationStatementDocument a owl:Class;
+                                              rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                              rdfs:label "registration statement document"@en;
+                                              rdfs:subClassOf cmns-doc:Document.
+fibo-bp-iss-ipo:ReportingAccountant a owl:Class;
+                                    rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                    rdfs:label "reporting accountant"@en;
+                                    rdfs:subClassOf cmns-pts:PartyRole.
+fibo-bp-iss-ipo:SetPrice a owl:Class;
+                         rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                         rdfs:label "set price"@en;
+                         rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep.
+fibo-bp-iss-ipo:SettlementOfAllocatedShares a owl:Class;
+                                            rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                            rdfs:label "settlement of allocated shares"@en;
+                                            rdfs:subClassOf fibo-bp-iss-ipo:InitialPublicOfferingProcessStep.
+fibo-bp-iss-ipo:ShareRegister a owl:Class;
+                              rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                              rdfs:label "share register"@en;
+                              rdfs:subClassOf cmns-ra:Registry.
+fibo-bp-iss-ipo:Sponsor a owl:Class;
+                        rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                        rdfs:label "sponsor"@en;
+                        rdfs:subClassOf cmns-pts:PartyRole,
+                                        [a owl:Restriction ; 
+                                         owl:onProperty fibo-bp-iss-ipo:mayBe ; 
+                                         owl:someValuesFrom fibo-bp-iss-ipo:CorporateBroker].
+fibo-bp-iss-ipo:SyndicateMember a owl:Class;
+                                rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                rdfs:label "syndicate member"@en;
+                                rdfs:subClassOf cmns-pts:PartyRole.
+fibo-bp-iss-ipo:Underwriting a owl:Class;
+                             rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                             rdfs:label "underwriting"@en;
+                             rdfs:subClassOf [a owl:Restriction ; 
+                                              owl:onProperty fibo-bp-iss-ipo:shareUnderwriter ; 
+                                              owl:someValuesFrom fibo-bp-iss-ipo:PotentialShareUnderwriter],
+                                             [a owl:Restriction ; 
+                                              owl:onProperty fibo-bp-iss-ipo:syndicateMember ; 
+                                              owl:someValuesFrom fibo-bp-iss-ipo:SyndicateMember].
+fibo-bp-iss-ipo:lead a owl:ObjectProperty;
+                     rdfs:domain fibo-bp-iss-ipo:AppointAdvisors;
+                     rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                     rdfs:label "lead"@en;
+                     rdfs:range fibo-bp-iss-ipo:Sponsor.
+fibo-bp-iss-ipo:mayBe a owl:ObjectProperty;
+                      rdfs:domain fibo-bp-iss-ipo:Sponsor;
+                      rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                      rdfs:label "may be"@en;
+                      rdfs:range fibo-bp-iss-ipo:CorporateBroker.
+fibo-bp-iss-ipo:shareUnderwriter a owl:ObjectProperty;
+                                 rdfs:domain fibo-bp-iss-ipo:Underwriting;
+                                 rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                 rdfs:label "share underwriter"@en;
+                                 rdfs:range fibo-bp-iss-ipo:PotentialShareUnderwriter.
+fibo-bp-iss-ipo:syndicateMember a owl:ObjectProperty;
+                                rdfs:domain fibo-bp-iss-ipo:Underwriting;
+                                rdfs:isDefinedBy fibo-bp-iss-ipo:;
+                                rdfs:label "syndicate member"@en;
+                                rdfs:range fibo-bp-iss-ipo:SyndicateMember.

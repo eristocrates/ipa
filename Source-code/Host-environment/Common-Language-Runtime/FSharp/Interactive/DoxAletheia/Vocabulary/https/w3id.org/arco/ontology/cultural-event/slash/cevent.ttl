@@ -1,0 +1,436 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix cis: <http://dati.beniculturali.it/cis/>.
+@prefix odp: <http://ontologydesignpatterns.org/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix w3id: <https://w3id.org/>.
+@prefix ctlog: <https://w3id.org/arco/ontology/catalogue/>.
+@prefix cdesc: <https://w3id.org/arco/ontology/context-description/>.
+@prefix arco: <https://w3id.org/arco/ontology/core/>.
+@prefix cevent: <https://w3id.org/arco/ontology/cultural-event/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+
+cis:CulturalEvent a owl:Class.
+dc11:language a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:modified a owl:AnnotationProperty.
+<http://www.ontologydesignpatterns.org/opla/reusesPatternAsTemplate> a owl:AnnotationProperty.
+ctlog:iccdNormTag a owl:AnnotationProperty.
+cdesc:hasRelatedAgent a owl:ObjectProperty.
+cdesc:isAgentRelatedTo a owl:ObjectProperty.
+arco:Concept a owl:Class.
+arco:Situation a owl:Class.
+arco:hasCharacteristic a owl:ObjectProperty.
+arco:hasConcept a owl:ObjectProperty.
+arco:isCharacteristicOf a owl:ObjectProperty.
+arco:isConceptOf a owl:ObjectProperty.
+<https://w3id.org/arco/ontology/cultural-event> dc11:creator "Andrea Nuzzolese (ISTC-CNR, STLab)",
+                                                             "Ludovica Marinucci (ISTC-CNR, STLab)",
+                                                             "Marialetizia Mancinelli (MiBACT, ICCD)",
+                                                             "Aldo Gangemi (ISTC-CNR, STLab)",
+                                                             "Valentina Presutti (ISTC-CNR, STLab)",
+                                                             "Valentina Carriero (ISTC-CNR, STLab)",
+                                                             "Chiara Veninata (MiBACT, ICCD)";
+                                                dc11:description "The Cultural Event module models cultural events, i.e. events involving cultural properties."@en,
+                                                                 "Questo modulo modella gli eventi culturali, cioè eventi che coinvolgono un bene culturale."@it;
+                                                dc11:language <http://publications.europa.eu/resource/authority/language/ITA>,
+                                                              <http://publications.europa.eu/resource/authority/language/ENG>;
+                                                dc11:title "Ontologia degli Eventi Culturali (ArCo network)"@it,
+                                                           "Cultural Event Ontology (ArCo network)"@en;
+                                                dcterms:issued "2018-03-07";
+                                                dcterms:license <https://w3id.org/italia/controlled-vocabulary/licences/A31_CCBYSA40>,
+                                                                <https://creativecommons.org/licenses/by-sa/4.0/>;
+                                                dcterms:modified "2019-06-01";
+                                                <http://www.ontologydesignpatterns.org/opla/reusesPatternAsTemplate> <http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl>,
+                                                                                                                     <http://ontologydesignpatterns.org/cp/owl/sequence.owl>;
+                                                a owl:Ontology;
+                                                rdfs:comment """The Cultural Event module models cultural events, i.e. events involving cultural properties.
+In this module are used as template the following Ontology Design Patterns:
+- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl
+- http://www.ontologydesignpatterns.org/cp/owl/sequence.owl"""@en,
+                                                             """Questo modulo modella gli eventi culturali, cioè eventi che coinvolgono un bene culturale.
+In questo modulo sono riusati come template i seguenti Ontology Design Patterns:
+- http://www.ontologydesignpatterns.org/cp/owl/collectionentity.owl
+- http://www.ontologydesignpatterns.org/cp/owl/sequence.owl"""@it;
+                                                rdfs:label "Ontologia degli Eventi Culturali (ArCo network)"@it,
+                                                           "Cultural Event Ontology (ArCo network)"@en;
+                                                owl:imports <https://w3id.org/arco/ontology/catalogue>,
+                                                            <https://w3id.org/arco/ontology/core>;
+                                                owl:versionInfo "Version 1.0"@en,
+                                                                "Versione 1.0"@it.
+cevent:Exhibition a owl:Class;
+                  rdfs:comment "This class represents an exhibition, as a particular type of cultural event."@en,
+                               "Questa classe rappresenta una mostra, come sottocategoria di un generico evento culturale."@it;
+                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                  rdfs:label "Mostra"@it,
+                             "Exhibition"@en;
+                  rdfs:subClassOf cis:CulturalEvent;
+                  owl:versionInfo "stabile"@it,
+                                  "stable"@en;
+                  ctlog:iccdNormTag """ICCD Normativa Trasversale e altre normative di versione 4.00: se MS/MST/MSTI= \"mostra\""""@it.
+cevent:Hour a owl:NamedIndividual,
+              cevent:TimePeriodMeasurementUnit;
+            rdfs:label "Hour"@en,
+                       "Ora"@it.
+cevent:Minute a owl:NamedIndividual,
+                cevent:TimePeriodMeasurementUnit;
+              rdfs:label "Minute"@en,
+                         "Minuto"@it.
+cevent:Month a owl:NamedIndividual,
+               cevent:TimePeriodMeasurementUnit;
+             rdfs:label "Mese"@it,
+                        "Month"@en.
+cevent:RecurrentEvent a owl:Class;
+                      rdfs:comment "This class represents a recurrent event, that is an event as a collection of sequential events and identified by at least one unifying factor (e.g.: topic, place)."@en,
+                                   "Questa classe rappresenta un evento ricorrente, ovvero un evento inteso come collezione di eventi, posti in una sequenza temporale, e caratterizzato da almeno un fattore unificante (es.: il topic, il luogo)."@it;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                      rdfs:label "Evento ricorrente"@it,
+                                 "Recurrent event"@en;
+                      rdfs:subClassOf [owl:someValuesFrom cevent:RecurrentTimePeriod ; 
+                                       owl:onProperty cevent:hasRecurrentTimePeriod ; 
+                                       a owl:Restriction],
+                                      [owl:someValuesFrom <https://w3id.org/italia/onto/l0/EventOrSituation> ; 
+                                       owl:onProperty cevent:hasMemberEvent ; 
+                                       a owl:Restriction],
+                                      [owl:someValuesFrom cevent:UnifyingFactor ; 
+                                       owl:onProperty cevent:hasUnifyingFactor ; 
+                                       a owl:Restriction],
+                                      [owl:intersectionOf (arco:Situation
+                                                           <https://w3id.org/italia/onto/l0/Collection>) ; 
+                                       a owl:Class];
+                      owl:equivalentClass [owl:someValuesFrom [owl:unionOf ([owl:someValuesFrom <https://w3id.org/italia/onto/l0/EventOrSituation> ; 
+                                                                            owl:onProperty cevent:hasNextEvent ; 
+                                                                            a owl:Restriction]
+                                                                            [owl:someValuesFrom <https://w3id.org/italia/onto/l0/EventOrSituation> ; 
+                                                                            owl:onProperty cevent:hasPreviousEvent ; 
+                                                                            a owl:Restriction]) ; 
+                                                               a owl:Class] ; 
+                                           owl:onProperty cevent:hasMemberEvent ; 
+                                           a owl:Restriction];
+                      owl:versionInfo "stable"@en,
+                                      "stabile"@it;
+                      ctlog:iccdNormTag "ICCD Normativa BDI 4.00: RC".
+cevent:RecurrentTimePeriod a owl:Class;
+                           rdfs:comment "This class represents the time period that elapses between one of the member events of a recurrent event, as a collection of events, and the next one."@en,
+                                        "Questa classe rappresenta il periodo di tempo che intercorre tra un evento membro di un evento ricorrente, inteso come collezione di eventi, e un evento membro successivo."@it;
+                           rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                           rdfs:label "Recurrent time period"@en,
+                                      "Periodo di tempo ricorrente"@it;
+                           rdfs:subClassOf [owl:someValuesFrom xsd:integer ; 
+                                            owl:onProperty cevent:timePeriodValue ; 
+                                            a owl:Restriction],
+                                           [owl:someValuesFrom cevent:TimePeriodMeasurementUnit ; 
+                                            owl:onProperty cevent:hasTimePeriodMeasurementUnit ; 
+                                            a owl:Restriction],
+                                           [owl:someValuesFrom cevent:RecurrentEvent ; 
+                                            owl:onProperty cevent:isRecurrentTimePeriodOf ; 
+                                            a owl:Restriction];
+                           owl:versionInfo "stable"@en,
+                                           "stabile"@it.
+cevent:Second a owl:NamedIndividual,
+                cevent:TimePeriodMeasurementUnit;
+              rdfs:label "Second"@en,
+                         "Secondo"@it.
+cevent:TimePeriod a owl:Class;
+                  rdfs:comment "La classe che rappresenta un periodo di tempo."@it,
+                               "The class that represents a time period."@en;
+                  rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                  rdfs:label "Periodo di tempo"@it,
+                             "Time period"@en;
+                  rdfs:subClassOf <https://w3id.org/italia/onto/TI/TimeInterval>;
+                  owl:versionInfo "stabile"@it,
+                                  "stable"@en.
+cevent:TimePeriodMeasurementUnit a owl:Class;
+                                 rdfs:comment "Questa classe rappresenta l'unità di misura associata al periodo di tempo massimo che intercorre tra un evento membro di un evento ricorrente, inteso come collezione di eventi, e un evento membro successivo."@it,
+                                              "This class represents the unit of measurement associated to the maximum time period that elapses between one of the member events of a recurrent event, as a collection of events, and the next one."@en;
+                                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                                 rdfs:label "Unità di misura del periodo di tempo"@it,
+                                            "Time period measurement unit"@en;
+                                 rdfs:subClassOf <https://w3id.org/italia/onto/MU/MeasurementUnit>,
+                                                 [owl:someValuesFrom cevent:RecurrentTimePeriod ; 
+                                                  owl:onProperty cevent:isTimePeriodMeasurementUnitOf ; 
+                                                  a owl:Restriction];
+                                 owl:versionInfo "stabile"@it,
+                                                 "stable"@en.
+cevent:UnifyingFactor a owl:Class;
+                      rdfs:comment "Questa classe rappresenta un fattore unificante, ovvero un fattore che rappresenta un invariante comune a tutti gli eventi che sono membri dell'evento ricorrente."@it,
+                                   "This class represents a unifying factor, that is a factor that represents an invariant common to all the events that are members of the recurrent event."@en;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                      rdfs:label "Unifying factor"@en,
+                                 "Fattore unificante"@it;
+                      rdfs:subClassOf arco:Concept,
+                                      [owl:someValuesFrom cevent:RecurrentEvent ; 
+                                       owl:onProperty cevent:isUnifyingFactorOf ; 
+                                       a owl:Restriction];
+                      owl:versionInfo "stable"@en,
+                                      "stabile"@it.
+cevent:Week a owl:NamedIndividual,
+              cevent:TimePeriodMeasurementUnit;
+            rdfs:label "Settimana"@it,
+                       "Week"@en.
+cevent:Year a owl:NamedIndividual,
+              cevent:TimePeriodMeasurementUnit;
+            rdfs:label "Anno"@it,
+                       "Year"@en.
+cevent:eventTimeLocation a owl:DatatypeProperty;
+                         rdfs:comment "This property represents the time and location of a cultural event, when they are recorded together."@en,
+                                      "Questa proprietà rappresenta il luogo e il tempo di un evento culturale, quando espressi unitamente."@it;
+                         rdfs:domain cis:CulturalEvent;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                         rdfs:label "tempo e luogo dell'evento"@it,
+                                    "event time and location"@en;
+                         rdfs:range rdfs:Literal;
+                         owl:versionInfo "stable"@en,
+                                         "stabile"@it;
+                         ctlog:iccdNormTag "ICCD Normativa Trasversale e normative di versione 4.00: MS/MST/MSTL"@it.
+cevent:hasAgentRelatedToCulturalEvent a owl:ObjectProperty;
+                                      rdfs:comment "This class relates a cultural event to an agent playing a role related to that cultural event."@en,
+                                                   "Questa proprietà rappresenta la relazione che collega un evento culturale a un agente che riveste un ruolo relativo all'evento. La relazione tra il ruolo e l’agente che lo riveste è espressa, in maniera generica, nel nome della proprietà, che quindi ne fornisce una rappresentazione semplificata, con ridotta espressività. La relazione è poi specializzata da sottoproprietà. Nell’ontologia questa relazione è modellata anche, in maniera più espressiva, dalla classe TimeIndexedRole, che permette di collegare l’ente, il suo ruolo e la sua corrispondente estensione temporale."@it;
+                                      rdfs:domain cis:CulturalEvent;
+                                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                                      rdfs:label "ha agente collegato a evento culturale"@it,
+                                                 "has agent related to cultural event"@en;
+                                      rdfs:range <https://w3id.org/italia/onto/l0/Agent>;
+                                      rdfs:subPropertyOf cdesc:hasRelatedAgent;
+                                      owl:inverseOf cevent:isAgentRelatedToCulturalEventOf;
+                                      owl:propertyChainAxiom (<https://w3id.org/italia/onto/RO/hasRiT>
+                                                              <https://w3id.org/italia/onto/RO/isRoleInTimeOf>);
+                                      owl:versionInfo "stable"@en,
+                                                      "stabile"@it.
+cevent:hasEventOrganiser a owl:ObjectProperty;
+                         rdfs:comment "Questa proprietà collega un evento culturale all'ente o soggetto che ha organizzato quell'evento."@it,
+                                      "This property relates a cultural evento to the agency or person that is the organiser of that event."@en;
+                         rdfs:domain cis:CulturalEvent;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                         rdfs:label "has event organiser"@en,
+                                    "ha ente o soggetto organizzatore"@it;
+                         rdfs:range <https://w3id.org/italia/onto/l0/Agent>;
+                         rdfs:subPropertyOf cevent:hasAgentRelatedToCulturalEvent;
+                         owl:inverseOf cevent:isEventOrganiserOf;
+                         owl:versionInfo "stable"@en,
+                                         "stabile"@it;
+                         ctlog:iccdNormTag "Versioni 4.00 e ICCD Normativa Trasversale: MS/MST/MSTE - Versioni precedenti a 4.00: DO/MST/MSTO"@it.
+cevent:hasImmediateNextEvent a owl:ObjectProperty,
+                               owl:FunctionalProperty;
+                             rdfs:comment "Questa proprietà collega un evento che è membro di un evento ricorrente, inteso come collezione, all'evento immediatamente successivo."@it,
+                                          "This property relates an event that is member of a recurrent event, as a collection, to the immediate next event."@en;
+                             rdfs:domain <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                             rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                             rdfs:label "ha evento immediatamente successivo"@it,
+                                        "has immediate next event"@en;
+                             rdfs:range <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                             rdfs:subPropertyOf cevent:hasNextEvent;
+                             owl:inverseOf cevent:hasImmediatePreviousEvent;
+                             owl:versionInfo "stabile"@it,
+                                             "stable"@en.
+cevent:hasImmediatePreviousEvent a owl:FunctionalProperty,
+                                   owl:ObjectProperty;
+                                 rdfs:comment "Questa proprietà collega un evento che è membro di un evento ricorrente, inteso come collezione, all'evento immediatamente precedente."@it,
+                                              "This property relates an event that is member of a recurrent event, as a collection, to the immediate previous event."@en;
+                                 rdfs:domain <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                                 rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                                 rdfs:label "ha evento immediatamente precedente"@it,
+                                            "has immediate previous event"@en;
+                                 rdfs:range <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                                 rdfs:subPropertyOf cevent:hasPreviousEvent;
+                                 owl:versionInfo "stabile"@it,
+                                                 "stable"@en.
+cevent:hasMemberEvent a owl:ObjectProperty;
+                      rdfs:comment "Questa proprietà collega un evento ricorrente, inteso come collezione di eventi, a uno degli eventi membri della collezione."@it,
+                                   "This property relates a recurrent event, as a collection of events, to one of its member events."@en;
+                      rdfs:domain cevent:RecurrentEvent;
+                      rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                      rdfs:label "has member event"@en,
+                                 "ha evento membro"@it;
+                      rdfs:range <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                      rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/hasMember>;
+                      owl:inverseOf cevent:isEventMemberOf;
+                      owl:versionInfo "stable"@en,
+                                      "stabile"@it.
+cevent:hasNextEvent a owl:TransitiveProperty,
+                      owl:ObjectProperty;
+                    rdfs:comment "This property relates an event that is member of a recurrent event, as a collection, to one of the next events."@en,
+                                 "Questa proprietà collega un evento che è membro di un evento ricorrente, inteso come collezione, a uno degli eventi successivi."@it;
+                    rdfs:domain <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                    rdfs:label "has next event"@en,
+                               "ha evento successivo"@it;
+                    rdfs:range <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                    rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/precedes>;
+                    owl:inverseOf cevent:hasPreviousEvent;
+                    owl:versionInfo "stabile"@it,
+                                    "stable"@en.
+cevent:hasPreviousEvent a owl:TransitiveProperty,
+                          owl:ObjectProperty;
+                        rdfs:comment "Questa proprietà collega un evento che è membro di un evento ricorrente, inteso come collezione, a uno degli eventi precedenti."@it,
+                                     "This property relates an event that is member of a recurrent event, as a collection, to one of the previous events."@en;
+                        rdfs:domain <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                        rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                        rdfs:label "ha evento precedente"@it,
+                                   "has previous event"@en;
+                        rdfs:range <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                        rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/follows>;
+                        owl:versionInfo "stabile"@it,
+                                        "stable"@en.
+cevent:hasRecurrentTimePeriod a owl:ObjectProperty;
+                              rdfs:comment "This property relates a recurrent event to the time period that elapses between one of its member events and the next one."@en,
+                                           "Questa proprietà collega un evento ricorrente al periodo di tempo che intercorre tra uno dei suoi eventi membri e quello successivo."@it;
+                              rdfs:domain cevent:RecurrentEvent;
+                              rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                              rdfs:label "ha periodo ricorrente di tempo"@it,
+                                         "has recurrent time period"@en;
+                              rdfs:range cevent:RecurrentTimePeriod;
+                              owl:inverseOf cevent:isRecurrentTimePeriodOf;
+                              owl:propertyChainAxiom (cevent:hasMemberEvent
+                                                      cevent:hasTimePeriodBeforeNextEvent);
+                              owl:versionInfo "stable"@en,
+                                              "stabile"@it.
+cevent:hasTimePeriodBeforeNextEvent a owl:ObjectProperty;
+                                    rdfs:comment "This property relates an event, member of a recurrent event as a collection of events, to the time period that is between that event and the next one."@en,
+                                                 "Questa proprietà collega un evento, membro di un evento ricorrente inteso come collezione di eventi, al periodo di tempo che intercorre tra l'evento stesso e l'evento successivo."@it;
+                                    rdfs:domain <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                                    rdfs:label "has time period before next event"@en,
+                                               "ha periodo di tempo prima di evento successivo"@it;
+                                    rdfs:range cevent:RecurrentTimePeriod;
+                                    owl:inverseOf cevent:isTimePeriodBeforeNextEventOf;
+                                    owl:versionInfo "stabile"@it,
+                                                    "stable"@en.
+cevent:hasTimePeriodMeasurementUnit a owl:ObjectProperty;
+                                    rdfs:comment "This property relates the maximum time period that elapses between one of the member events of a recurrent event, as a collection of events, and the next one, to the unit of measurement associated to it."@en,
+                                                 "Questa proprietà collega il periodo di tempo massimo che intercorre tra un evento membro di un evento ricorrente, inteso come collezione di eventi, e un evento membro successivo alla sua unità di misura."@it;
+                                    rdfs:domain cevent:RecurrentTimePeriod;
+                                    rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                                    rdfs:label "has time period measurement unit"@en,
+                                               "ha unità di misura di periodo di tempo"@it;
+                                    rdfs:range cevent:TimePeriodMeasurementUnit;
+                                    rdfs:subPropertyOf arco:hasCharacteristic;
+                                    owl:inverseOf cevent:isTimePeriodMeasurementUnitOf;
+                                    owl:versionInfo "stable"@en,
+                                                    "stabile"@it.
+cevent:hasUnifyingFactor a owl:ObjectProperty;
+                         rdfs:comment "This property relates a recurrent event to a unifying factor."@en,
+                                      "Questa proprietà collega un evento ricorrente a un fattore unificante."@it;
+                         rdfs:domain cevent:RecurrentEvent;
+                         rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                         rdfs:label "has unifying factor"@en,
+                                    "ha fattore unificante"@it;
+                         rdfs:range cevent:UnifyingFactor;
+                         rdfs:subPropertyOf arco:hasConcept;
+                         owl:inverseOf cevent:isUnifyingFactorOf;
+                         owl:versionInfo "stabile"@it,
+                                         "stable"@en.
+cevent:isAgentRelatedToCulturalEventOf a owl:ObjectProperty;
+                                       rdfs:comment """Questa è la proprietà inversa a \"ha agente collegato a evento culturale\"."""@it,
+                                                    """This is the inverse property of \"has agent related to cultural event\"."""@en;
+                                       rdfs:domain <https://w3id.org/italia/onto/l0/Agent>;
+                                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                                       rdfs:label "is agent related to cultural event of"@en,
+                                                  "è agente collegato a evento culturale"@it;
+                                       rdfs:range cis:CulturalEvent;
+                                       rdfs:subPropertyOf cdesc:isAgentRelatedTo;
+                                       owl:versionInfo "stable"@en,
+                                                       "stabile"@it.
+cevent:isEventMemberOf a owl:ObjectProperty;
+                       rdfs:domain <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                       rdfs:isDefinedBy "Questa proprietà collega un evento, membro di un evento ricorrente inteso come una collezione di eventi, all'evento ricorrente di cui è membro."@it,
+                                        <https://w3id.org/arco/ontology/cultural-event>,
+                                        "This property relates an event, member of a recurrent event as a collection of events, to the recurrent event that is member of."@en;
+                       rdfs:label "is event member of"@en,
+                                  "è evento membro di"@it;
+                       rdfs:range cevent:RecurrentEvent;
+                       rdfs:subPropertyOf <https://w3id.org/italia/onto/l0/isMemberOf>;
+                       owl:versionInfo "stabile"@it,
+                                       "stable"@en.
+cevent:isEventOrganiserOf a owl:ObjectProperty;
+                          rdfs:comment """This is the inverse property of \"has event organiser\"."""@en,
+                                       """Questa è la proprietà inversa a \"ha ente o soggetto organizzatore\"."""@it;
+                          rdfs:domain <https://w3id.org/italia/onto/l0/Agent>;
+                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                          rdfs:label "is event organiser of"@en,
+                                     "è organizzatore di evento"@it;
+                          rdfs:range cis:CulturalEvent;
+                          rdfs:subPropertyOf cevent:isAgentRelatedToCulturalEventOf;
+                          owl:versionInfo "stable"@en,
+                                          "stabile"@it.
+cevent:isRecurrentTimePeriodOf a owl:ObjectProperty;
+                               rdfs:comment "This property relates the maximum time period that elapses between one of the member events of a recurrent event and the next one."@en,
+                                            "Questa proprietà collega il periodo di tempo massimo che intercorre tra uno degli eventi membri di un evento ricorrente e l'evento successivo."@it;
+                               rdfs:domain cevent:RecurrentTimePeriod;
+                               rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                               rdfs:label "è periodo di tempo di"@it,
+                                          "is recurrent time period of"@en;
+                               rdfs:range cevent:RecurrentEvent;
+                               owl:versionInfo "stabile"@it,
+                                               "stable"@en.
+cevent:isTimePeriodBeforeNextEventOf a owl:ObjectProperty;
+                                     rdfs:comment """Questa è la proprietà inversa a \"ha periodo di tempo prima di evento successivo\"."""@it,
+                                                  """This is the inverse property of \"has time period before next event\"."""@en;
+                                     rdfs:domain cevent:RecurrentTimePeriod;
+                                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                                     rdfs:label "è periodo di tempo prima di evento successivo di"@it,
+                                                "is time period before next event of"@en;
+                                     rdfs:range <https://w3id.org/italia/onto/l0/EventOrSituation>;
+                                     owl:versionInfo "stabile"@it,
+                                                     "stable"@en.
+cevent:isTimePeriodMeasurementUnitOf a owl:ObjectProperty;
+                                     rdfs:comment """Questa è la proprietà inversa a \"ha unità di misura di periodo di tempo\"."""@it,
+                                                  """This is the inverse property of \"has time period measurement unit\"."""@en;
+                                     rdfs:domain cevent:TimePeriodMeasurementUnit;
+                                     rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                                     rdfs:label "is time period measurement unit of"@en,
+                                                "è unità di misura di periodo di tempo"@it;
+                                     rdfs:range cevent:RecurrentTimePeriod;
+                                     rdfs:subPropertyOf arco:isCharacteristicOf;
+                                     owl:versionInfo "stabile"@it,
+                                                     "stable"@en.
+cevent:isUnifyingFactorOf a owl:ObjectProperty;
+                          rdfs:comment "This property relates a unifying factor to a recurrent event."@en,
+                                       "Questa proprietà collega un fattore unificante a un evento ricorrente."@it;
+                          rdfs:domain cevent:UnifyingFactor;
+                          rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                          rdfs:label "is unifying factor of"@en,
+                                     "è fattore unificante di"@it;
+                          rdfs:range cevent:RecurrentEvent;
+                          rdfs:subPropertyOf arco:isConceptOf;
+                          owl:versionInfo "stable"@en,
+                                          "stabile"@it.
+cevent:timePeriodValue a owl:DatatypeProperty,
+                         owl:FunctionalProperty;
+                       rdfs:comment "This property represents the value associated to the time period that elapses between one of the member events of a recurrent event, as a collection of events, and the next one."@en,
+                                    "Questa proprietà rappresenta il valore del periodo di tempo che intercorre tra il verificarsi di due eventi membri di un evento ricorrente."@it;
+                       rdfs:domain cevent:RecurrentTimePeriod;
+                       rdfs:isDefinedBy <https://w3id.org/arco/ontology/cultural-event>;
+                       rdfs:label "valore del periodo di tempo"@it,
+                                  "time period value"@en;
+                       rdfs:range xsd:integer;
+                       owl:versionInfo "stable"@en,
+                                       "stabile"@it.
+<https://w3id.org/italia/onto/MU/MeasurementUnit> a owl:Class;
+                                                  rdfs:subClassOf <https://w3id.org/italia/onto/l0/Characteristic>.
+<https://w3id.org/italia/onto/RO/hasRiT> a owl:ObjectProperty.
+<https://w3id.org/italia/onto/RO/isRoleInTimeOf> a owl:ObjectProperty.
+<https://w3id.org/italia/onto/TI/TimeInterval> rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity>.
+<https://w3id.org/italia/onto/l0/Agent> a owl:Class;
+                                        rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity>.
+<https://w3id.org/italia/onto/l0/Characteristic> a owl:Class;
+                                                 rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity>.
+<https://w3id.org/italia/onto/l0/Collection> a owl:Class;
+                                             rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity>.
+<https://w3id.org/italia/onto/l0/Description> rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity>.
+<https://w3id.org/italia/onto/l0/Entity> a owl:Class.
+<https://w3id.org/italia/onto/l0/EventOrSituation> a owl:Class;
+                                                   rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity>.
+<https://w3id.org/italia/onto/l0/Location> rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity>.
+<https://w3id.org/italia/onto/l0/Object> rdfs:subClassOf <https://w3id.org/italia/onto/l0/Entity>.
+<https://w3id.org/italia/onto/l0/follows> a owl:ObjectProperty.
+<https://w3id.org/italia/onto/l0/hasMember> a owl:ObjectProperty.
+<https://w3id.org/italia/onto/l0/isMemberOf> a owl:ObjectProperty;
+                                             rdfs:subPropertyOf owl:topObjectProperty.
+<https://w3id.org/italia/onto/l0/precedes> a owl:ObjectProperty.

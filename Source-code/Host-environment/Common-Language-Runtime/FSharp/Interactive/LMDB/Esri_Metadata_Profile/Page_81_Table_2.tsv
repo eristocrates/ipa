@@ -1,0 +1,38 @@
+Albers Conical Equal Area	albers	S		F
+Standard Parallel	stdparll	S	Y	Q,E,C,F
+Longitude of Central Meridian	longcm	S	Y	Q,E,C,F
+Latitude of Projection Origin	latprjo	S	Y	Q,E,C,F
+False Easting	feast	S	Y	Q,E,C,F
+False Northing	fnorth	S	Y	Q,E,C,F
+Azimuthal Equidistant	azimequi	S		F
+Longitude of Central Meridian	longcm	S	Y	Q,E,C,F
+Latitude of Projection Origin	latprjo	S	Y	Q,E,C,F
+False Easting	feast	S	Y	Q,E,C,F
+False Northing	fnorth	S	Y	Q,E,C,F
+Equidistant Conic	equicon	S		F
+Standard Parallel	stdparll	S	Y	Q,E,C,F
+Longitude of Central Meridian	longcm	S	Y	Q,E,C,F
+Latitude of Projection Origin	latprjo	S	Y	Q,E,C,F
+False Easting	feast	S	Y	Q,E,C,F
+False Northing	fnorth	S	Y	Q,E,C,F
+Equirectangular	equirect	S		F
+Standard Parallel	stdparll	S	Y	Q,E,C,F
+Longitude of Central Meridian	longcm	S	Y	Q,E,C,F
+False Easting	feast	S	Y	Q,E,C,F
+False Northing	fnorth	S	Y	Q,E,C,F
+General Vertical Near-Sided Perspective	gvnsp			F
+Height of Perspective Point Above  Surface	heightpt		Y	Q,E,C,F
+Longitude of Projection Center	longpc	S4	Y	Q,E,C,F
+Latitude of Projection Center	latprjc	S4	Y	Q,E,C,F
+False Easting	feast	S4	Y	Q,E,C,F
+False Northing	fnorth	S4	Y	Q,E,C,F
+Gnomonic	gnomonic			F
+Longitude of Projection Center	longpc	S4	Y	Q,E,C,F
+Latitude of Projection Center	latprjc	S4	Y	Q,E,C,F
+False Easting	feast	S4	Y	Q,E,C,F
+False Northing	fnorth	S4	Y	Q,E,C,F
+Lambert Azimuthal Equal Area	lamberta	S		F
+Longitude of Projection Center	longpc	S	Y	Q,E,C,F
+Latitude of Projection Center	latprjc	S	Y	Q,E,C,F
+False Easting	feast	S	Y	Q,E,C,F
+False Northing	fnorth	S	Y	Q,E,C,F

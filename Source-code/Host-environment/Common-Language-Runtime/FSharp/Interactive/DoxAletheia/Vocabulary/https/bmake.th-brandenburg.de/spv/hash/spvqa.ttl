@@ -1,0 +1,763 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix spvqa: <https://bmake.th-brandenburg.de/spv#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix wikidata: <http://www.wikidata.org/entity/>.
+@prefix schemas: <https://schema.org/>.
+
+wikidata:Q1391182 a schemas:Organization;
+                  rdfs:label "THB - Technische Hochschule Brandenburg"@de,
+                             "BUAS - Brandenburg University of Applied Sciences"@en;
+                  schemas:url "http://th-brandenburg.de".
+spvqa: ccrel:license <http://creativecommons.org/licenses/by/3.0/>;
+       dc11:creator <https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister/>;
+       dc11:description "The main contribution of this vocabulary are five specific classes for structuring and collecting the following qualitative characteristics of scholarly papers: research objectives, research methods, research findings, future work, critique. An additional inner structure is proposed for research objectives, qualifying them as schema:StructuredValue and combining them from two lists: research action types and research artifacts. The specific classes are subclasses of schema:ItemList. In addition, the classes for research methods, research action types and research artifacts are declared as subclasses of enumeration. Thus the typical methods, activities and research artifacts of the research area can be listed in the vocabulary itself."@en,
+                        <https://bmake.th-brandenburg.de/downloads/scholarlyPapers_schema.svg>;
+       dc11:issued "2017-06-05"^^xsd:date;
+       dc11:modified "2017-08-08"^^xsd:date;
+       dc11:publisher wikidata:Q1391182;
+       dc11:rights "Copyright © 2017 BMaKE, THB";
+       dc11:title "Scholarly Papers Vocabulary with Focus on Qualtitative Analysis";
+       vann:preferredNamespacePrefix "spv";
+       vann:preferredNamespaceUri "https://bmake.th-brandenburg.de/spv#";
+       a voaf:Vocabulary,
+         owl:Ontology;
+       rdfs:comment "This vocabulary is mainly defined under the reuse of schema.org classes, relations and attributes. It is aimed at the support of research groups in the field of Business Modeling and Knowledge Engineering (BMaKE) in their collaborative work for qualitatively analyzing scholarly papers as well as sharing the results of that analyses and judgements. The vocabulary is meant to be used at first as schema for OntoWiki. Since this system doesn't process blank nodes in the intended way, the abstract nodes for specifying qualitative aspects of scholarly papers shall be modeled explicitely."@en;
+       rdfs:label "spv vocabulary (BMaKE)"@en;
+       owl:versionInfo "v 0.3 - refinement for SemSci2017 workshop."@en;
+       skos:prefLabel "spv ontology"@en.
+spvqa:Critique a owl:Class;
+               rdfs:comment "Unformalized list of critical issues observed in an analyzed scientific paper."@en;
+               rdfs:isDefinedBy spvqa:;
+               rdfs:label "Critique"@en;
+               rdfs:subClassOf schemas:ItemList;
+               status:term_status "stable".
+spvqa:FutureWork a owl:Class;
+                 rdfs:comment "Unformalized list of future work announced in an analyzed scientific paper."@en;
+                 rdfs:isDefinedBy spvqa:;
+                 rdfs:label "Future Work"@en;
+                 rdfs:subClassOf schemas:ItemList;
+                 status:term_status "stable".
+spvqa:ResActTypeAnalyze a spvqa:ResearchActionType,
+                          owl:NamedIndividual;
+                        rdfs:comment "examine something systematically and in detail"@en;
+                        rdfs:isDefinedBy spvqa:;
+                        rdfs:label "analyze"@en;
+                        status:term_status "testing".
+spvqa:ResActTypeCollect a owl:NamedIndividual,
+                          spvqa:ResearchActionType;
+                        rdfs:comment "collect all parts or aspects of a complex object"@en;
+                        rdfs:isDefinedBy spvqa:;
+                        rdfs:label "collect"@en;
+                        status:term_status "testing".
+spvqa:ResActTypeConceptualize a owl:NamedIndividual,
+                                spvqa:ResearchActionType;
+                              rdfs:comment "define the essential terms (concepts) and relations of a domain"@en;
+                              rdfs:isDefinedBy spvqa:;
+                              rdfs:label "conceptualize"@en;
+                              status:term_status "testing".
+spvqa:ResActTypeConstruct a owl:NamedIndividual,
+                            spvqa:ResearchActionType;
+                          rdfs:comment "create something according to certain design or architectural principles"@en;
+                          rdfs:isDefinedBy spvqa:;
+                          rdfs:label "construct"@en;
+                          status:term_status "testing".
+spvqa:ResActTypeDefine a owl:NamedIndividual,
+                         spvqa:ResearchActionType;
+                       rdfs:comment "unambiguously describe or explain a concept"@en;
+                       rdfs:isDefinedBy spvqa:;
+                       rdfs:label "define"@en;
+                       status:term_status "testing".
+spvqa:ResActTypeDesign a spvqa:ResearchActionType,
+                         owl:NamedIndividual;
+                       rdfs:comment "basically design an object, mostly according to appropriate design principles"@en;
+                       rdfs:isDefinedBy spvqa:;
+                       rdfs:label "design"@en.
+spvqa:ResActTypeDevelop a spvqa:ResearchActionType,
+                          owl:NamedIndividual;
+                        rdfs:comment "create something new, mostly using specialist methods and tools"@en;
+                        rdfs:isDefinedBy spvqa:;
+                        rdfs:label "develop"@en;
+                        status:term_status "testing".
+spvqa:ResActTypeElicit a owl:NamedIndividual,
+                         spvqa:ResearchActionType;
+                       rdfs:comment "capture characteristics of objects under examination (eg by measurement)"@en;
+                       rdfs:isDefinedBy spvqa:;
+                       rdfs:label "elicit"@en;
+                       status:term_status "testing".
+spvqa:ResActTypeEnhance a owl:NamedIndividual,
+                          spvqa:ResearchActionType;
+                        rdfs:comment "improve an object in certain features or aspects"@en;
+                        rdfs:isDefinedBy spvqa:;
+                        rdfs:label "enhance"@en;
+                        status:term_status "testing".
+spvqa:ResActTypeEvaluate a owl:NamedIndividual,
+                           spvqa:ResearchActionType;
+                         rdfs:comment "assess a quantitative or qualitative property of an object"@en;
+                         rdfs:isDefinedBy spvqa:;
+                         rdfs:label "evaluate"@en;
+                         status:term_status "testing".
+spvqa:ResActTypeExtend a owl:NamedIndividual,
+                         spvqa:ResearchActionType;
+                       rdfs:comment "extend an object by properties or in its scope of functions or services"@en;
+                       rdfs:isDefinedBy spvqa:;
+                       rdfs:label "extend"@en;
+                       status:term_status "testing".
+spvqa:ResActTypeExtract a spvqa:ResearchActionType,
+                          owl:NamedIndividual;
+                        rdfs:comment "separate defined parts of a complex object and provide them in a suitable form"@en;
+                        rdfs:label "extract"@en;
+                        status:term_status "testing".
+spvqa:ResActTypeImplement a owl:NamedIndividual,
+                            spvqa:ResearchActionType;
+                          rdfs:comment "implement a designed object technically"@en;
+                          rdfs:isDefinedBy spvqa:;
+                          rdfs:label "implement"@en;
+                          status:term_status "testing".
+spvqa:ResActTypeIntegrate a spvqa:ResearchActionType,
+                            owl:NamedIndividual;
+                          rdfs:comment "merge several objects into a single unit"@en;
+                          rdfs:isDefinedBy spvqa:;
+                          rdfs:label "integrate"@en;
+                          status:term_status "testing".
+spvqa:ResActTypeProve a owl:NamedIndividual,
+                        spvqa:ResearchActionType;
+                      rdfs:comment "investigate how an object meets certain requirements; whether a statement (about an object) is true"@en;
+                      rdfs:isDefinedBy spvqa:;
+                      rdfs:label "prove"@en;
+                      status:term_status "testing".
+spvqa:ResActTypeProvide a spvqa:ResearchActionType,
+                          owl:NamedIndividual;
+                        rdfs:comment "provide an object in a suitable manner for use"@en;
+                        rdfs:isDefinedBy spvqa:;
+                        rdfs:label "provide"@en;
+                        status:term_status "testing".
+spvqa:ResActTypeStructure a owl:NamedIndividual,
+                            spvqa:ResearchActionType;
+                          rdfs:comment "systematically organize parts, aspects or the like of a complex object"@en;
+                          rdfs:isDefinedBy spvqa:;
+                          rdfs:label "structure"@en;
+                          status:term_status "testing".
+spvqa:ResArtifactApplication a spvqa:ResearchArtifact,
+                               owl:NamedIndividual;
+                             rdfs:comment "software artifact with a certain range of functions"@en;
+                             rdfs:isDefinedBy spvqa:;
+                             rdfs:label "Application"@en;
+                             status:term_status "testing".
+spvqa:ResArtifactBlueprint a owl:NamedIndividual,
+                             spvqa:ResearchArtifact;
+                           rdfs:comment "model or technical design of an object"@en;
+                           rdfs:isDefinedBy spvqa:;
+                           rdfs:label "Blueprint"@en;
+                           status:term_status "testing".
+spvqa:ResArtifactBusinessProcess a spvqa:ResearchArtifact,
+                                   owl:NamedIndividual;
+                                 rdfs:comment "set of interacting and interdependent activities that converts input to output"@en;
+                                 rdfs:isDefinedBy spvqa:;
+                                 rdfs:label "Business Process"@en;
+                                 status:term_status "testing".
+spvqa:ResArtifactDevFramework a owl:NamedIndividual,
+                                spvqa:ResearchArtifact;
+                              rdfs:comment "complex (technical) environment for the development of applications and IT systems"@en;
+                              rdfs:isDefinedBy spvqa:;
+                              rdfs:label "Development Framework"@en;
+                              status:term_status "testing".
+spvqa:ResArtifactDocumentation a spvqa:ResearchArtifact,
+                                 owl:NamedIndividual;
+                               rdfs:comment "technical, formal or semi-formal description of an object and the circumstances of its development or function"@en;
+                               rdfs:isDefinedBy spvqa:;
+                               rdfs:label "Documentation"@en;
+                               status:term_status "testing".
+spvqa:ResArtifactITSystem a owl:NamedIndividual,
+                            spvqa:ResearchArtifact;
+                          rdfs:comment "complex object of information technology whose parts interact and form a desing-related and functional whole"@en;
+                          rdfs:isDefinedBy spvqa:;
+                          rdfs:label "IT System"@en;
+                          status:term_status "testing".
+spvqa:ResArtifactInfrastructure a owl:NamedIndividual,
+                                  spvqa:ResearchArtifact;
+                                rdfs:comment "a combined set of hardware, software, networks, facilities, etc. (including all of the information technology), in order to develop, test, deliver, monitor, control or support IT services"@en;
+                                rdfs:isDefinedBy spvqa:;
+                                rdfs:label "IT Infrastructure"@en;
+                                status:term_status "testing".
+spvqa:ResArtifactLinkedData a owl:NamedIndividual,
+                              spvqa:ResearchArtifact;
+                            rdfs:comment "standard-based, structured data, mostly based on the Semantic Web stack"@en;
+                            rdfs:isDefinedBy spvqa:;
+                            rdfs:label "Linked Data"@en;
+                            status:term_status "testing".
+spvqa:ResArtifactMethod a owl:NamedIndividual,
+                          spvqa:ResearchArtifact;
+                        rdfs:comment "prescription of procedures or activities which is aimed at a specific result under appropriate conditions"@en;
+                        rdfs:isDefinedBy spvqa:;
+                        rdfs:label "Method"@en;
+                        status:term_status "testing".
+spvqa:ResArtifactModelingLanguage a owl:NamedIndividual,
+                                    spvqa:ResearchArtifact;
+                                  rdfs:comment "collection of syntactic rules (grammar) and semantic specifications for representing objects of a particular domain"@en;
+                                  rdfs:isDefinedBy spvqa:;
+                                  rdfs:label "Modeling Language"@en;
+                                  status:term_status "testing".
+spvqa:ResArtifactNLPArtifact a owl:NamedIndividual,
+                               spvqa:ResearchArtifact;
+                             rdfs:comment "result of a process of manipulation of natural language objects"@en;
+                             rdfs:isDefinedBy spvqa:;
+                             rdfs:label "NLP Artifact"@en;
+                             status:term_status "testing".
+spvqa:ResArtifactOntology a spvqa:ResearchArtifact,
+                            owl:NamedIndividual;
+                          rdfs:comment "semantic network of different configuration stages; up to formally specified conceptualizations of a domain"@en;
+                          rdfs:isDefinedBy spvqa:;
+                          rdfs:label "Ontology"@en;
+                          status:term_status "testing".
+spvqa:ResArtifactPolicy a owl:NamedIndividual,
+                          spvqa:ResearchArtifact;
+                        rdfs:comment "basic precepts in a particular field of action"@en;
+                        rdfs:isDefinedBy spvqa:;
+                        rdfs:label "Policy"@en;
+                        status:term_status "testing".
+spvqa:ResArtifactRequirements a owl:NamedIndividual,
+                                spvqa:ResearchArtifact;
+                              rdfs:comment "characteristics or features of an object required by potential users"@en;
+                              rdfs:isDefinedBy spvqa:;
+                              rdfs:label "Requirements"@en;
+                              status:term_status "testing".
+spvqa:ResArtifactStandard a spvqa:ResearchArtifact,
+                            owl:NamedIndividual;
+                          rdfs:comment "specific reference or prescription for actions in a particular field of action"@en;
+                          rdfs:isDefinedBy spvqa:;
+                          rdfs:label "Standard, Guideline"@en;
+                          status:term_status "testing".
+spvqa:ResArtifactSystem a owl:NamedIndividual,
+                          spvqa:ResearchArtifact;
+                        rdfs:comment "complex object whose parts interact and form a desing-related and functional whole"@en;
+                        rdfs:isDefinedBy spvqa:;
+                        rdfs:label "System"@en;
+                        status:term_status "testing".
+spvqa:ResArtifactTermDefinition a owl:NamedIndividual,
+                                  spvqa:ResearchArtifact;
+                                rdfs:comment "Unambiguously described or explained technical or business term"@en;
+                                rdfs:isDefinedBy spvqa:;
+                                rdfs:label "Term Definition"@en;
+                                status:term_status "testing".
+spvqa:ResArtifactWorkflow a owl:NamedIndividual,
+                            spvqa:ResearchArtifact;
+                          rdfs:comment "clearly specified sequence of activities to achieve a desired target state"@en;
+                          rdfs:isDefinedBy spvqa:;
+                          rdfs:label "Workflow"@en;
+                          status:term_status "testing".
+spvqa:ResMethActionResearch a owl:NamedIndividual,
+                              spvqa:ResearchMethod;
+                            rdfs:comment "Solving a practice problem by a mixed group of scientists and practical experts. Several cycles of analysis, action and evaluation steps, each with a low level of structured instruments such as group discussions or planning games, are conducted."@en;
+                            rdfs:isDefinedBy spvqa:;
+                            rdfs:label "Action Research (Wilde/Hess)"@en;
+                            status:term_status "stable";
+                            schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethArgumentDedAnalysis a spvqa:ResearchMethod,
+                                   owl:NamedIndividual;
+                                 rdfs:comment "Pure-language logical-deductive inferencing (as, for example, in philosophy)"@en;
+                                 rdfs:isDefinedBy spvqa:;
+                                 rdfs:label "Argumentative Deductive Analysis (Wilde/Hess)"@en;
+                                 status:term_status "stable";
+                                 schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethCaseStudy a owl:NamedIndividual,
+                         spvqa:ResearchMethod;
+                       rdfs:comment "The case study usually examines complex, difficult-to-distinguish phenomena in their natural context. It represents a special form of the qualitative-empirical methodology, which is investigated intensively by a few feature-bearers. It is either the objective examination of theses (behavioral approach) or the interpretation of behavioral patterns as the phenotypes of the realities constructed by the subjects (construction-oriented access)."@en;
+                       rdfs:isDefinedBy spvqa:;
+                       rdfs:label "Case Study (Wilde/Hess)"@en;
+                       status:term_status "stable";
+                       schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethConceptualDedAnalysis a spvqa:ResearchMethod,
+                                     owl:NamedIndividual;
+                                   rdfs:comment "Logic-deductive inferencing using semiformal models"@en;
+                                   rdfs:isDefinedBy spvqa:;
+                                   rdfs:label "Conceptual Deductive Analysis (Wilde/Hess)"@en;
+                                   status:term_status "stable";
+                                   schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethDesignScience a owl:NamedIndividual,
+                             spvqa:ResearchMethod;
+                           rdfs:comment "Design Science is an outcome-based information technology research methodology, which offers specific guidelines for evaluation and iteration within research projects."@en;
+                           rdfs:isDefinedBy spvqa:;
+                           rdfs:label "Design Science (Hevner)"@en;
+                           status:term_status "stable";
+                           schemas:url "http://doi.org/10.1007/978-1-4419-5653-8_2".
+spvqa:ResMethEthnography a spvqa:ResearchMethod,
+                           owl:NamedIndividual;
+                         rdfs:comment "Ethnography would like to generate insights through participatory observation. The difference to the case study lies in the very high extent in which the researcher is integrated into the investigated social environment. There is a very small objective distance."@en;
+                         rdfs:isDefinedBy spvqa:;
+                         rdfs:label "Ethnography (Wilde/Hess)"@en;
+                         status:term_status "stable";
+                         schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethFieldExperiment a owl:NamedIndividual,
+                               spvqa:ResearchMethod;
+                             rdfs:comment "The field experiment investigates causal relationships in a controlled environment by manipulating an experimental variable in a repeatable manner and measuring the effect of manipulation. The object to be investigated is examined in its natural environment (in the 'field'), whereby the possibilities of environmental control are significantly influenced."@en;
+                             rdfs:isDefinedBy spvqa:;
+                             rdfs:label "Field Experiment (Wilde/Hess)"@en;
+                             status:term_status "stable";
+                             schemas:url "http://doi.org/10.1007/s11576-007-0064-z>".
+spvqa:ResMethFormalDedAnalysis a spvqa:ResearchMethod,
+                                 owl:NamedIndividual;
+                               rdfs:comment "Logic-deductive inferencing using mathematical-formal models"@en;
+                               rdfs:isDefinedBy spvqa:;
+                               rdfs:label "Formal Deductive Analysis (Wilde/Hess)"@en;
+                               status:term_status "stable";
+                               schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethGroundedTheory a owl:NamedIndividual,
+                              spvqa:ResearchMethod;
+                            rdfs:comment "The Grounded Theory aims at the inductive acquisition of new theories by intensive observation of the object of investigation in the field. The various procedures for coding and evaluating the predominantly qualitative data are precisely specified."@en;
+                            rdfs:isDefinedBy spvqa:;
+                            rdfs:label "Grounded Theory (Wilde/Hess)"@en;
+                            status:term_status "stable";
+                            schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethLabExperiment a owl:NamedIndividual,
+                             spvqa:ResearchMethod;
+                           rdfs:comment "The laboratory experiment investigates causal relationships in a controlled environment by manipulating an experimental variable in a repetitive manner and measuring the effect of manipulation. The object to be investigated is examined in an artificial environment (in the 'laboratory'), whereby the possibilities of environmental control are significantly influenced."@en;
+                           rdfs:isDefinedBy spvqa:;
+                           rdfs:label "Laboratory Experiment (Wilde/Hess)"@en;
+                           status:term_status "stable";
+                           schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethLiteratureAnalysis a owl:NamedIndividual,
+                                  spvqa:ResearchMethod;
+                                rdfs:comment "A literature review is a written document that presents a logically argued case founded on a comprehensive understanding of the current state of knowledge about a topic of study. This case establishes a convincing thesis to answer the study’s question."@en;
+                                rdfs:isDefinedBy spvqa:;
+                                rdfs:label "Literature Analysis (Machi/McEvoy)"@en;
+                                status:term_status "stable";
+                                schemas:url "https://lccn.loc.gov/2015048510".
+spvqa:ResMethPrototyping a owl:NamedIndividual,
+                           spvqa:ResearchMethod;
+                         rdfs:comment "A preliminary version of an application system is developed and evaluated. Both steps can generate new insights."@en;
+                         rdfs:isDefinedBy spvqa:;
+                         rdfs:label "Prototyping (Wilde/Hess)"@en;
+                         status:term_status "stable";
+                         schemas:url "http://doi.org/10.1007/s11576-007-0064-z>".
+spvqa:ResMethQualitativeResearch a spvqa:ResearchMethod,
+                                   owl:NamedIndividual;
+                                 rdfs:comment "This method integrates survey techniques such as questionnaires, interviews, Delphi method, content analyzes, etc. into an aggregate. It comprises a one-time survey over several individuals, which is subsequently coded and evaluated qualitatively. The result is a cross-section profile characteristic for the sample participants, which usually allows conclusions to be drawn on the total population."@en;
+                                 rdfs:isDefinedBy spvqa:;
+                                 rdfs:label "Qualitative Research (Wilde/Hess)"@en;
+                                 status:term_status "stable";
+                                 schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethQuantitativeResearch a owl:NamedIndividual,
+                                    spvqa:ResearchMethod;
+                                  rdfs:comment "This method integrates survey techniques such as questionnaires, interviews, Delphi method, content analyzes, etc. into an aggregate. It comprises a one-time survey over several individuals, which is subsequently coded and evaluated quantatively. The result is a cross-section profile characteristic for the sample participants, which usually allows conclusions to be drawn on the total population."@en;
+                                  rdfs:isDefinedBy spvqa:;
+                                  rdfs:label "Quantitative Research (Wilde/Hess)"@en;
+                                  status:term_status "stable";
+                                  schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethReferenceModeling a owl:NamedIndividual,
+                                 spvqa:ResearchMethod;
+                               rdfs:comment "The reference modeling produces inductively (out of observations) or deductively (eg from theories or models) mostly simplified and optimized projections (ideal concepts) of systems, in order to deepen existing knowledge and generate design templates from this."@en;
+                               rdfs:isDefinedBy spvqa:;
+                               rdfs:label "Reference Modeling (Wilde/Hess)"@en;
+                               status:term_status "stable";
+                               schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResMethSimulation a spvqa:ResearchMethod,
+                          owl:NamedIndividual;
+                        rdfs:comment "The simulation models the behavior of the system to be investigated formally and compares environmental conditions with certain assignments of the model parameters. Both the model construction and the observation of the endogenous model parameters allow to gain insights."@en;
+                        rdfs:isDefinedBy spvqa:;
+                        rdfs:label "Simulation (Wilde/Hess)"@en;
+                        status:term_status "stable";
+                        schemas:url "http://doi.org/10.1007/s11576-007-0064-z".
+spvqa:ResearchActionType a owl:Class;
+                         rdfs:comment "The activity aspect of an elecited research objective taken from the list of types of research & development actions applied in Information Systems."@en;
+                         rdfs:isDefinedBy spvqa:;
+                         rdfs:label "Research Action Type"@en;
+                         rdfs:subClassOf schemas:Enumeration;
+                         status:term_status "stable".
+spvqa:ResearchArtifact a owl:Class;
+                       rdfs:comment "The artifact aspect of an elicited research objective taken from the list of all types of research & development artifacts characteristic for Information Systems."@en;
+                       rdfs:isDefinedBy spvqa:;
+                       rdfs:label "Rresearch Artifact"@en;
+                       rdfs:subClassOf schemas:Enumeration;
+                       status:term_status "stable".
+spvqa:ResearchFindings a owl:Class;
+                       rdfs:comment "Unformalized list of research findings documented in an analyzed scientific paper."@en;
+                       rdfs:isDefinedBy spvqa:;
+                       rdfs:label "Research Findings"@en;
+                       rdfs:subClassOf schemas:ItemList;
+                       status:term_status "stable".
+spvqa:ResearchMethod a owl:Class;
+                     rdfs:comment "Research method applied in an analyzed scientific paper taken from a list of all relevant research methods used in Information Systems."@en;
+                     rdfs:isDefinedBy spvqa:;
+                     rdfs:label "Research Method"@en;
+                     rdfs:subClassOf schemas:Enumeration;
+                     status:term_status "stable".
+spvqa:ResearchMethods a owl:Class;
+                      rdfs:comment "List of formalized research methods applied in an analyzed scientific paper."@en;
+                      rdfs:isDefinedBy spvqa:;
+                      rdfs:label "Research Methods"@en;
+                      rdfs:subClassOf schemas:ItemList;
+                      status:term_status "stable".
+spvqa:ResearchObjective a owl:Class;
+                        rdfs:comment "Abstract class for modeling an elicited research objective comprising a specific research activity and a research artifact to which the activity is applied."@en;
+                        rdfs:isDefinedBy spvqa:;
+                        rdfs:label "Research Objective"@en;
+                        rdfs:subClassOf schemas:StructuredValue;
+                        status:term_status "stable".
+spvqa:ResearchObjectives a owl:Class;
+                         rdfs:comment "List of formalized research objectives targeted in an analyzed scientific paper."@en;
+                         rdfs:isDefinedBy spvqa:;
+                         rdfs:label "Research Objectives"@en;
+                         rdfs:subClassOf schemas:ItemList;
+                         status:term_status "stable".
+spvqa:researchActionType a owl:ObjectProperty;
+                         rdfs:comment "Is used in combination with research action type to indicate a research objective of a scientific paper."@en;
+                         rdfs:domain spvqa:ResearchObjective;
+                         rdfs:isDefinedBy spvqa:;
+                         rdfs:label "research action type"@en;
+                         rdfs:range spvqa:ResearchActionType;
+                         status:term_status "stable".
+spvqa:researchArtifact a owl:ObjectProperty;
+                       rdfs:comment "Is used in combination with research action type to indicate a research objective of a scientific paper."@en;
+                       rdfs:domain spvqa:ResearchObjective;
+                       rdfs:isDefinedBy spvqa:;
+                       rdfs:label "research artifact"@en;
+                       rdfs:range spvqa:ResearchArtifact;
+                       status:term_status "stable".
+schemas:CreativeWork a owl:Class;
+                     rdfs:comment "Here used primarily for scientific papers, conference proceeding and related creative work."@en;
+                     rdfs:isDefinedBy schemas:;
+                     rdfs:label "Creative Work"@en.
+schemas:CreativeWorkSeries a owl:Class;
+                           rdfs:comment "The class of Conference proceedings - regardless of the publication format."@en;
+                           rdfs:isDefinedBy schemas:;
+                           rdfs:label "Creative Work Series"@en;
+                           rdfs:subClassOf schemas:CreativeWork.
+schemas:DataType a rdfs:Class;
+                 rdfs:comment "Encompasses basic data types for typing literals."@en;
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "Data Type"@en.
+schemas:Date a rdfs:Class;
+             rdfs:comment "General class for all literals indicating a data."@en;
+             rdfs:isDefinedBy schemas:;
+             rdfs:label "Date"@en;
+             rdfs:subClassOf schemas:DataType.
+schemas:DateTime a rdfs:Class;
+                 rdfs:comment "General class for all literals indicating a data and a time."@en;
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "Date and Time"@en;
+                 rdfs:subClassOf schemas:DataType.
+schemas:Enumeration a owl:Class;
+                    rdfs:comment "Enumerations of aspects specifying a scientific paper, like research methods, research artifacts and research action types."@en;
+                    rdfs:isDefinedBy schemas:;
+                    rdfs:label "Enumeration"@en;
+                    rdfs:subClassOf schemas:Intangible.
+schemas:Event a owl:Class;
+              rdfs:comment "Here used primarily for scientific conferences."@en;
+              rdfs:isDefinedBy schemas:;
+              rdfs:label "Event"@en.
+schemas:Intangible a owl:Class;
+                   rdfs:comment "A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc. (taken from schema.org)."@en;
+                   rdfs:isDefinedBy schemas:;
+                   rdfs:label "Intangible"@en.
+schemas:ItemList a owl:Class;
+                 rdfs:comment "Lists of aspects specifying a scientific paper, like research methods, research findings, research objectives, and future work."@en;
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "Item List"@en;
+                 rdfs:subClassOf schemas:Intangible.
+schemas:Language a owl:Class;
+                 rdfs:comment "Natural languages such as Spanish, German, Hindi, English, etc."@en;
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "Language"@en;
+                 rdfs:subClassOf schemas:Intangible.
+schemas:Organization a owl:Class;
+                     rdfs:comment "Here used for two objectives: (i) to denote the affiliations of authors and other person and (ii) to indicate publishers and conference organizers."@en;
+                     rdfs:isDefinedBy schemas:;
+                     rdfs:label "Organization"@en.
+schemas:Person a owl:Class;
+               rdfs:comment "Mainly used for identifying authors, editors, attendees, contributers, organizers and other human agents."@en;
+               rdfs:isDefinedBy schemas:;
+               rdfs:label "Person"@en.
+schemas:Place a owl:Class;
+              rdfs:comment "Here used for specifying the locations of conferences and organizations."@en;
+              rdfs:isDefinedBy schemas:;
+              rdfs:label "Place"@en.
+schemas:PublicationEvent a owl:Class;
+                         rdfs:comment "The class of scientific conferences."@en;
+                         rdfs:isDefinedBy schemas:;
+                         rdfs:label "Publication Event"@en;
+                         rdfs:subClassOf schemas:Event.
+schemas:ScholarlyArticle a owl:Class;
+                         rdfs:comment "The class of scientific papers."@en;
+                         rdfs:isDefinedBy schemas:;
+                         rdfs:label "Scholarly Article"@en;
+                         rdfs:subClassOf schemas:CreativeWork.
+schemas:StructuredValue a owl:Class;
+                        rdfs:comment "Structured values are used when the value of a property has a more complex structure than simply being a textual value or a reference to another thing. Here used for specifying research objectives characterized by research actions applied to research artifacts."@en;
+                        rdfs:isDefinedBy schemas:;
+                        rdfs:label "Structured Value"@en;
+                        rdfs:subClassOf schemas:Intangible.
+schemas:Text a rdfs:Class;
+             rdfs:comment "General class for all literals being of any textual Datatype."@en;
+             rdfs:isDefinedBy schemas:;
+             rdfs:label "Text"@en;
+             rdfs:subClassOf schemas:DataType.
+schemas:URL a rdfs:Class;
+            rdfs:comment "General class for all literals being an URL."@en;
+            rdfs:isDefinedBy schemas:;
+            rdfs:label "URL"@en;
+            rdfs:subClassOf schemas:Text.
+schemas:about a owl:ObjectProperty;
+              rdfs:comment "Is used to relate to subject matters of a creative work, mainly a scientific paper. Here mainly used to relate to blank or abstract nodes of type schema:ItemList for specifying lists of characteristics of a scientific paper, like research findings, research methods and research objectives."@en;
+              rdfs:domain schemas:CreativeWork;
+              rdfs:isDefinedBy schemas:;
+              rdfs:label "about"@en;
+              rdfs:range owl:Thing.
+schemas:additionalName a owl:DatatypeProperty;
+                       rdfs:comment "The additional name for person, can be used for a middle name."@en;
+                       rdfs:domain schemas:Person;
+                       rdfs:isDefinedBy schemas:;
+                       rdfs:label "additional name"@en;
+                       rdfs:range schemas:Text.
+schemas:affiliation a owl:ObjectProperty;
+                    rdfs:comment "Is used to indicate the affiliation of a person to an organization."@en;
+                    rdfs:domain schemas:Person;
+                    rdfs:label "affiliation"@en;
+                    rdfs:range schemas:Organization.
+schemas:alternateName a owl:DatatypeProperty;
+                      rdfs:comment "General datatype property, potentially usable for specifying alternative names of a resource."@en;
+                      rdfs:isDefinedBy schemas:;
+                      rdfs:label "alternative name"@en;
+                      rdfs:range schemas:Text.
+schemas:alternativeHeadline a owl:DatatypeProperty;
+                            rdfs:comment "A secondary title of a scientific paper."@en;
+                            rdfs:domain schemas:ScholarlyArticle;
+                            rdfs:isDefinedBy schemas:;
+                            rdfs:label "alternative headline"@en;
+                            rdfs:range schemas:Text.
+schemas:attendee a owl:ObjectProperty;
+                 rdfs:comment "Is used to indicate a person attending a conference."@en;
+                 rdfs:domain schemas:PublicationEvent;
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "attendee"@en;
+                 rdfs:range schemas:Person.
+schemas:author a owl:ObjectProperty;
+               rdfs:comment "Is used to indicate a author of a scientific paper."@en;
+               rdfs:domain schemas:ScholarlyArticle;
+               rdfs:isDefinedBy schemas:;
+               rdfs:label "author"@en;
+               rdfs:range schemas:Person.
+schemas:award a owl:DatatypeProperty;
+              rdfs:comment "An award won by or for this scientific paper."@en;
+              rdfs:domain schemas:ScholarlyArticle;
+              rdfs:isDefinedBy schemas:;
+              rdfs:label "award"@en;
+              rdfs:range schemas:Text.
+schemas:citation a owl:ObjectProperty;
+                 rdfs:comment "Is used to create references of a scientific paper to other items of creative work (particularly other papers)."@en;
+                 rdfs:domain schemas:ScholarlyArticle;
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "citation"@en;
+                 rdfs:range xsd:string.
+schemas:contributor a owl:ObjectProperty;
+                    rdfs:comment "Is used to indicate a person contributing to a conference."@en;
+                    rdfs:domain schemas:PublicationEvent;
+                    rdfs:isDefinedBy schemas:;
+                    rdfs:label "contributor"@en;
+                    rdfs:range schemas:Person.
+schemas:dateCreated a owl:DatatypeProperty;
+                    rdfs:comment "The date on which the CreativeWork was created or the item was added to a DataFeed."@en;
+                    rdfs:domain schemas:CreativeWork;
+                    rdfs:isDefinedBy schemas:;
+                    rdfs:label "date created"@en;
+                    rdfs:range schemas:Date.
+schemas:dateModified a owl:DatatypeProperty;
+                     rdfs:comment "The date on which the CreativeWork was modified or the item's entry was modified within a DataFeed."@en;
+                     rdfs:domain schemas:CreativeWork;
+                     rdfs:isDefinedBy schemas:;
+                     rdfs:label "date modified"@en;
+                     rdfs:range schemas:Date.
+schemas:description a owl:DatatypeProperty;
+                    rdfs:comment "General datatype property, potentially usable for description of all resources."@en;
+                    rdfs:isDefinedBy schemas:;
+                    rdfs:label "description"@en;
+                    rdfs:range schemas:Text.
+schemas:editor a owl:ObjectProperty;
+               rdfs:comment "Is used to indicate an editor of a scientific paper or conference proceedings."@en;
+               rdfs:domain schemas:CreativeWork;
+               rdfs:isDefinedBy schemas:;
+               rdfs:label "editor"@en;
+               rdfs:range schemas:Person.
+schemas:email a owl:DatatypeProperty;
+              rdfs:comment "Email address of a person or an organization."@en;
+              rdfs:domain [owl:unionOf (schemas:Person
+                                        schemas:Organization)];
+              rdfs:isDefinedBy schemas:;
+              rdfs:label "email"@en;
+              rdfs:range schemas:Text.
+schemas:endTime a owl:DatatypeProperty;
+                rdfs:comment "The end time of some event."@en;
+                rdfs:domain schemas:Event;
+                rdfs:isDefinedBy schemas:;
+                rdfs:label "end time"@en;
+                rdfs:range schemas:DateTime.
+schemas:familyName a owl:DatatypeProperty;
+                   rdfs:comment "The last name of a person."@en;
+                   rdfs:domain schemas:Person;
+                   rdfs:isDefinedBy schemas:;
+                   rdfs:label "family name"@en;
+                   rdfs:range schemas:Text.
+schemas:faxNumber a owl:DatatypeProperty;
+                  rdfs:comment "Fax number of a person or an organization."@en;
+                  rdfs:domain [owl:unionOf (schemas:Person
+                                            schemas:Organization)];
+                  rdfs:isDefinedBy schemas:;
+                  rdfs:label "fax number"@en;
+                  rdfs:range schemas:Text.
+schemas:givenName a owl:DatatypeProperty;
+                  rdfs:comment "The first name of a person."@en;
+                  rdfs:domain schemas:Person;
+                  rdfs:isDefinedBy schemas:;
+                  rdfs:label "given name"@en;
+                  rdfs:range schemas:Text.
+schemas:headline a owl:DatatypeProperty;
+                 rdfs:comment "Headline or title of a scientific paper."@en;
+                 rdfs:domain schemas:ScholarlyArticle;
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "headline"@en;
+                 rdfs:range schemas:Text.
+schemas:honoricPrefix a owl:DatatypeProperty;
+                      rdfs:comment "An honorific prefix preceding a person's name such as Dr/Mrs/Mr."@en;
+                      rdfs:domain schemas:Person;
+                      rdfs:isDefinedBy schemas:;
+                      rdfs:label "honoric prefix"@en;
+                      rdfs:range schemas:Text.
+schemas:honoricSuffix a owl:DatatypeProperty;
+                      rdfs:comment "An honorific suffix preceding a person's name such as M.D. /PhD/MSCSW."@en;
+                      rdfs:domain schemas:Person;
+                      rdfs:isDefinedBy schemas:;
+                      rdfs:label "honoric suffix"@en;
+                      rdfs:range schemas:Text.
+schemas:image a owl:DatatypeProperty;
+              rdfs:comment "General datatype property, potentially usable for relating an image of a resource."@en;
+              rdfs:isDefinedBy schemas:;
+              rdfs:label "image"@en;
+              rdfs:range schemas:URL.
+schemas:inLanguage a owl:DatatypeProperty;
+                   rdfs:comment "The language of the content or performance or used in an event."@en;
+                   rdfs:domain [owl:unionOf (schemas:Event
+                                             schemas:CreativeWork)];
+                   rdfs:label "in language"@en;
+                   rdfs:range schemas:Language.
+schemas:isPartOf a owl:ObjectProperty;
+                 rdfs:comment "Is used to indicate the proceedings where a scientific paper is published."@en;
+                 rdfs:domain schemas:ScholarlyArticle;
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "is part of"@en;
+                 rdfs:range schemas:CreativeWorkSeries.
+schemas:itemListElement a rdf:Property;
+                        rdfs:comment "For itemListElement values can be used simple strings or existing entities."@en;
+                        rdfs:domain schemas:ItemList;
+                        rdfs:isDefinedBy schemas:;
+                        rdfs:label "item list element"@en;
+                        rdfs:range [owl:unionOf (xsd:string
+                                                 owl:Thing) ; 
+                                    a owl:Class].
+schemas:jobTitle a owl:DatatypeProperty;
+                 rdfs:comment "The job title of the person (for example, Knowledge Engineer)."@en;
+                 rdfs:domain schemas:Person;
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "job title"@en;
+                 rdfs:range schemas:Text.
+schemas:keywords a owl:DatatypeProperty;
+                 rdfs:comment "Keywords or tags used to describe the content of a creative work. Multiple entries in a keywords list are typically delimited by commas."@en;
+                 rdfs:domain schemas:CreativeWork;
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "keywords"@en;
+                 rdfs:range schemas:Text.
+schemas:legalName a owl:DatatypeProperty;
+                  rdfs:comment "The legal name of an organization."@en;
+                  rdfs:domain schemas:Organization;
+                  rdfs:isDefinedBy schemas:;
+                  rdfs:label "legal name"@en;
+                  rdfs:range schemas:Text.
+schemas:location a owl:ObjectProperty;
+                 rdfs:comment "Is used for different purposes to refer to a geographical place, e. g. for event locations (termporal) or for organization locations (permanent)."@en;
+                 rdfs:domain [owl:unionOf (schemas:Organization
+                                           schemas:Event)];
+                 rdfs:isDefinedBy schemas:;
+                 rdfs:label "location"@en;
+                 rdfs:range schemas:Place.
+schemas:logo a owl:DatatypeProperty;
+             rdfs:comment "An associated logo of an organization."@en;
+             rdfs:domain schemas:Organization;
+             rdfs:isDefinedBy schemas:;
+             rdfs:label "logo"@en;
+             rdfs:range schemas:URL.
+schemas:name a owl:DatatypeProperty;
+             rdfs:comment "General datatype property, potentially usable for specifying the name of a resource."@en;
+             rdfs:isDefinedBy schemas:;
+             rdfs:label "name"@en;
+             rdfs:range schemas:Text.
+schemas:organizer a owl:ObjectProperty;
+                  rdfs:comment "Is used to indicate a person or an organization organizing a conference."@en;
+                  rdfs:domain schemas:PublicationEvent;
+                  rdfs:isDefinedBy schemas:;
+                  rdfs:label "organizer"@en;
+                  rdfs:range [owl:unionOf (schemas:Person
+                                           schemas:Organization)].
+schemas:pageEnd a owl:DatatypeProperty;
+                rdfs:comment "The page on which the scientific paper ends."@en;
+                rdfs:domain schemas:ScholarlyArticle;
+                rdfs:isDefinedBy schemas:;
+                rdfs:label "end page"@en;
+                rdfs:range xsd:string.
+schemas:pageStart a owl:DatatypeProperty;
+                  rdfs:comment "The page on which the scientific paper starts."@en;
+                  rdfs:domain schemas:ScholarlyArticle;
+                  rdfs:isDefinedBy schemas:;
+                  rdfs:label "start page"@en;
+                  rdfs:range xsd:string.
+schemas:publisher a owl:ObjectProperty;
+                  rdfs:comment "Is used to indicate a publishing organization of a scientific paper or conference proceedings."@en;
+                  rdfs:domain schemas:CreativeWork;
+                  rdfs:isDefinedBy schemas:;
+                  rdfs:label "publisher"@en;
+                  rdfs:range schemas:Organization.
+schemas:recordedIn a owl:ObjectProperty;
+                   rdfs:comment "Is used to relate a conference to the corresponding proceedings."@en;
+                   rdfs:domain schemas:PublicationEvent;
+                   rdfs:isDefinedBy schemas:;
+                   rdfs:label "recorded in"@en;
+                   rdfs:range schemas:CreativeWorkSeries.
+schemas:sameAs a owl:DatatypeProperty;
+               rdfs:comment "General datatype property, potentially usable for relating one resource to a URL representing the same resource."@en;
+               rdfs:isDefinedBy schemas:;
+               rdfs:label "same as"@en;
+               rdfs:range schemas:URL.
+schemas:startTime a owl:DatatypeProperty;
+                  rdfs:comment "The start time of some event."@en;
+                  rdfs:domain schemas:Event;
+                  rdfs:isDefinedBy schemas:;
+                  rdfs:label "start time"@en;
+                  rdfs:range schemas:DateTime.
+schemas:telephone a owl:DatatypeProperty;
+                  rdfs:comment "Telephone number of a person or an organization."@en;
+                  rdfs:domain [owl:unionOf (schemas:Person
+                                            schemas:Organization)];
+                  rdfs:isDefinedBy schemas:;
+                  rdfs:label "telephone"@en;
+                  rdfs:range schemas:Text.
+schemas:text a owl:DatatypeProperty;
+             rdfs:comment "The textual content of this creative work."@en;
+             rdfs:domain schemas:CreativeWork;
+             rdfs:isDefinedBy schemas:;
+             rdfs:label "text"@en;
+             rdfs:range schemas:Text.
+schemas:url a owl:ObjectProperty;
+            rdfs:comment "General datatype property, potentially usable for specifying the URL of a resource."@en;
+            rdfs:isDefinedBy schemas:;
+            rdfs:label "url"@en;
+            rdfs:range schemas:URL.
+<https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister/> a schemas:Person;
+                                                                    schemas:email "vera.meister@th-brandenburg.de";
+                                                                    schemas:name "Vera G. Meister".

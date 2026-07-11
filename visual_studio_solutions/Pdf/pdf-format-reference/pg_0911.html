@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0911.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 10.7 911 Tagged PDF TABLE 10.26 Standard structure types for Ruby and Warichu elements (PDF 1.5) STRUCTURE TYPE DESCRIPTION Ruby (Ruby) The wrapper around the entire ruby assembly. It contains one RB element followed by either an RT element or a three-element group consisting of RP, RT, and RP. Ruby elements and their content elements may not break across multiple lines. (Ruby base text) The full-size text to which the ruby annotation is applied. RB can contain text, other inline elements, or a mixture of both. It may have the RubyAlign attribute. (Ruby annotation text) The smaller-size text that is placed adjacent to the ruby base text. It can contain text, other inline elements, or a mixture of both. It may have the RubyAlign and RubyPosition attributes. (Ruby punctuation) Punctuation surrounding the ruby annotation text. It us used only when a ruby annotation cannot be properly formatted in a ruby style and instead is formatted as a normal comment, or when it is formatted as a warichu. It contains text (usually a single open or close parenthesis or similar bracketing character). (Warichu) The wrapper around the entire warichu assembly. It may contain a three-element group consisting of WP, WT, and WP. Warichu elements (and their content elements) may wrap across multiple lines, according to the warichu breaking rules described in the Japanese Industrial Standard (JIS) X 4051-1995. (Warichu text) The smaller-size text of a warichu comment that is formatted into two lines and placed between surrounding WP elements. (Warichu punctuation) The punctuation that surrounds the WT text. It contains text (usually a single open or close parenthesis or similar bracketing character). According to JIS X 4051-1995, the parentheses surrounding a warichu may be converted to a space (nominally 1/4 EM in width) at the discretion of the formatter. RB RT RP Warichu WT WP Illustration Elements Tagged PDF defines an illustration element as any structure element whose structure type (after role mapping, if any) is one of those listed in Table 10.27. The illustration’s content must consist of one or more complete graphics objects. It may not appear between the BT and ET operators delimiting a text object (see Section 5.3, “Text Objects”). It may include clipping only in the form of a contained marked clipping sequence, as defined in Section 10.5.2, “Marked Content and Clipping.” In Tagged PDF, all such marked clipping sequences must carry the marked-content tag Clip.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0911.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 10.7</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">911</span></div>
+<div class="pos" id="*49:540" style="top:49;left:540"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Tagged PDF</span></div>
+<div class="pos" id="*113:153" style="top:113;left:153"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 10.26 Standard structure types for Ruby and Warichu elements (PDF</span></div>
+<div class="pos" id="*113:563" style="top:113;left:563"><span id="*11" style="font-style:italic;font-weight:700;font-size:11px;font-family:MyriadPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">1.5)</span></div>
+<div class="pos" id="*133:74" style="top:133;left:74"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">STRUCTURE TYPE</span></div>
+<div class="pos" id="*133:191" style="top:133;left:191"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">DESCRIPTION</span></div>
+<div class="pos" id="*160:74" style="top:160;left:74"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Ruby</span></div>
+<div class="pos" id="*160:191" style="top:160;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Ruby) The wrapper around the entire ruby assembly. It contains one</span></div>
+<div class="pos" id="*160:556" style="top:160;left:556"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">RB</span></div>
+<div class="pos" id="*160:572" style="top:160;left:572"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">element followed</span></div>
+<div class="pos" id="*176:191" style="top:176;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">by either an</span></div>
+<div class="pos" id="*177:260" style="top:177;left:260"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">RT</span></div>
+<div class="pos" id="*176:277" style="top:176;left:277"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">element or a three-element group consisting of</span></div>
+<div class="pos" id="*177:534" style="top:177;left:534"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">RP</span></div>
+<div class="pos" id="*176:545" style="top:176;left:545"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*177:552" style="top:177;left:552"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">RT</span></div>
+<div class="pos" id="*176:564" style="top:176;left:564"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*177:595" style="top:177;left:595"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">RP</span></div>
+<div class="pos" id="*176:606" style="top:176;left:606"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+<div class="pos" id="*177:613" style="top:177;left:613"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Ruby</span></div>
+<div class="pos" id="*176:643" style="top:176;left:643"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ele-</span></div>
+<div class="pos" id="*193:191" style="top:193;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ments and their content elements may not break across multiple lines.</span></div>
+<div class="pos" id="*221:191" style="top:221;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Ruby base text) The full-size text to which the ruby annotation is applied.</span></div>
+<div class="pos" id="*222:585" style="top:222;left:585"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">RB</span></div>
+<div class="pos" id="*221:601" style="top:221;left:601"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">can contain</span></div>
+<div class="pos" id="*238:191" style="top:238;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">text, other inline elements, or a mixture of both. It may have the</span></div>
+<div class="pos" id="*239:529" style="top:239;left:529"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">RubyAlign</span></div>
+<div class="pos" id="*238:587" style="top:238;left:587"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">attribute.</span></div>
+<div class="pos" id="*266:191" style="top:266;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Ruby annotation text) The smaller-size text that is placed adjacent to the ruby base text. It</span></div>
+<div class="pos" id="*283:191" style="top:283;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">can contain text, other inline elements, or a mixture of both. It may have the</span></div>
+<div class="pos" id="*284:608" style="top:284;left:608"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">RubyAlign</span></div>
+<div class="pos" id="*300:191" style="top:300;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*301:214" style="top:301;left:214"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">RubyPosition</span></div>
+<div class="pos" id="*300:286" style="top:300;left:286"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">attributes.</span></div>
+<div class="pos" id="*328:191" style="top:328;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Ruby punctuation) Punctuation surrounding the ruby annotation text. It us used only</span></div>
+<div class="pos" id="*345:191" style="top:345;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">when a ruby annotation cannot be properly formatted in a ruby style and instead is for-</span></div>
+<div class="pos" id="*362:191" style="top:362;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">matted as a normal comment, or when it is formatted as a warichu. It contains text (usual-</span></div>
+<div class="pos" id="*378:191" style="top:378;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ly a single open or close parenthesis or similar bracketing character).</span></div>
+<div class="pos" id="*407:191" style="top:407;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Warichu) The wrapper around the entire warichu assembly. It may contain a three-ele-</span></div>
+<div class="pos" id="*423:191" style="top:423;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ment group consisting of</span></div>
+<div class="pos" id="*424:327" style="top:424;left:327"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">WP</span></div>
+<div class="pos" id="*423:342" style="top:423;left:342"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*424:348" style="top:424;left:348"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">WT</span></div>
+<div class="pos" id="*423:363" style="top:423;left:363"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*424:393" style="top:424;left:393"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">WP</span></div>
+<div class="pos" id="*423:408" style="top:423;left:408"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. Warichu elements (and their content elements)</span></div>
+<div class="pos" id="*440:191" style="top:440;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">may wrap across multiple lines, according to the warichu breaking rules described in the</span></div>
+<div class="pos" id="*457:191" style="top:457;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Japanese Industrial Standard (JIS) X 4051-1995.</span></div>
+<div class="pos" id="*485:191" style="top:485;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Warichu text) The smaller-size text of a warichu comment that is formatted into two lines</span></div>
+<div class="pos" id="*502:191" style="top:502;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and placed between surrounding</span></div>
+<div class="pos" id="*503:367" style="top:503;left:367"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">WP</span></div>
+<div class="pos" id="*502:387" style="top:502;left:387"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">elements.</span></div>
+<div class="pos" id="*530:191" style="top:530;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(Warichu punctuation) The punctuation that surrounds the</span></div>
+<div class="pos" id="*531:507" style="top:531;left:507"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">WT</span></div>
+<div class="pos" id="*530:527" style="top:530;left:527"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">text. It contains text (usu-</span></div>
+<div class="pos" id="*547:191" style="top:547;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ally a single open or close parenthesis or similar bracketing character). According to JIS X</span></div>
+<div class="pos" id="*564:191" style="top:564;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4051-1995, the parentheses surrounding a warichu may be converted to a space (nominal-</span></div>
+<div class="pos" id="*580:191" style="top:580;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ly 1/4 EM in width) at the discretion of the formatter.</span></div>
+<div class="pos" id="*221:74" style="top:221;left:74"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">RB</span></div>
+<div class="pos" id="*267:74" style="top:267;left:74"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">RT</span></div>
+<div class="pos" id="*328:74" style="top:328;left:74"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">RP</span></div>
+<div class="pos" id="*407:74" style="top:407;left:74"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Warichu</span></div>
+<div class="pos" id="*485:74" style="top:485;left:74"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">WT</span></div>
+<div class="pos" id="*530:74" style="top:530;left:74"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">WP</span></div>
+<div class="pos" id="*627:133" style="top:627;left:133"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Illustration Elements</span></div>
+<div class="pos" id="*664:133" style="top:664;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Tagged PDF defines an</span></div>
+<div class="pos" id="*664:270" style="top:664;left:270"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">illustration element</span></div>
+<div class="pos" id="*664:384" style="top:664;left:384"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">as any structure element whose struc-</span></div>
+<div class="pos" id="*682:133" style="top:682;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ture type (after role mapping, if any) is one of those listed in Table 10.27. The il-</span></div>
+<div class="pos" id="*700:133" style="top:700;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">lustration’s content must consist of one or more complete graphics objects. It may</span></div>
+<div class="pos" id="*718:133" style="top:718;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">not appear between the</span></div>
+<div class="pos" id="*719:274" style="top:719;left:274"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BT</span></div>
+<div class="pos" id="*718:292" style="top:718;left:292"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*719:318" style="top:719;left:318"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ET</span></div>
+<div class="pos" id="*718:336" style="top:718;left:336"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operators delimiting a text object (see Section</span></div>
+<div class="pos" id="*736:133" style="top:736;left:133"><a href="pg_0404.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5.3, “Text Objects”). It may include clipping only in the form of a contained</span></a></div>
+<div class="pos" id="*754:133" style="top:754;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">marked clipping sequence, as defined in Section 10.5.2, “Marked Content and</span></div>
+<div class="pos" id="*772:133" style="top:772;left:133"><a href="pg_0852.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Clipping.” In Tagged PDF, all such marked clipping sequences must carry the</span></a></div>
+<div class="pos" id="*790:133" style="top:790;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">marked-content tag</span></div>
+<div class="pos" id="*791:251" style="top:791;left:251"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Clip</span></div>
+<div class="pos" id="*790:272" style="top:790;left:272"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0910.htm" title="Go to previous page">Previous</a> <a href="pg_0912.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(911);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

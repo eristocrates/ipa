@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0605.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 8.4 605 Anno ta tions gation order explicit with the optional Tabs entry in a page object (see Table 3.27). The following are the possible values for this entry: • R (row order): Annotations are visited in rows running horizontally across the page. The direction within a row is determined by the Direction entry in the viewer preferences dictionary (see Section 8.1, “Viewer Preferences”). The first annotation visited is the first annotation in the topmost row. When the end of a row is encountered, the first annotation in the next row is visited. • C (column order): Annotations are visited in columns running vertically up and down the page. Columns are ordered by the Direction entry in the viewer preferences dictionary (see Section 8.1, “Viewer Preferences”). The first annotation visited is the one at the top of the first column. When the end of a column is encountered, the first annotation in the next column is visited. • S (structure order): Annotations are visited in the order in which they appear in the structure tree (see Section 10.6, “Logical Structure”). The order for annotations that are not included in the structure tree is application-dependent. Note: The descriptions above assume the page is being viewed in the orientation specified by the Rotate entry. The behavior of each annotation type is implemented by a software module called an annotation handler. Handlers for the standard annotation types are built directly into the PDF viewer application; handlers for additional types can be supplied as plug-in extensions. 8.4.1 Annotation Dictionaries The optional Annots entry in a page object (see “Page Objects” on page 144) holds an array of annotation dictionaries, each representing an annotation associated with the given page. Table 8.15 shows the required and optional entries that are common to all annotation dictionaries. The dictionary may contain additional entries specific to a particular annotation type; see the descriptions of individual annotation types in Section 8.4.5, “Annotation Types,” for details. Note: A given annotation dictionary may be referenced from the Annots array of only one page. Attempting to share an annotation dictionary among multiple pages produces unpredictable behavior. This requirement applies only to the annotation dictionary itself, not to subsidiary objects, which can be shared among multiple annotations without causing any difficulty.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0605.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 8.4</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">605</span></div>
+<div class="pos" id="*49:536" style="top:49;left:536"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Anno ta tions</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">gation order explicit with the optional</span></div>
+<div class="pos" id="*99:355" style="top:99;left:355"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Tabs</span></div>
+<div class="pos" id="*99:384" style="top:99;left:384"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in a page object (see Table 3.27).</span></div>
+<div class="pos" id="*117:133" style="top:117;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The following are the possible values for this entry:</span></div>
+<div class="pos" id="*149:133" style="top:149;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*153:145" style="top:153;left:145"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*151:156" style="top:151;left:156"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(row order): Annotations are visited in rows running horizontally across the</span></div>
+<div class="pos" id="*170:145" style="top:170;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">page. The direction within a row is determined by the</span></div>
+<div class="pos" id="*170:474" style="top:170;left:474"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Direction</span></div>
+<div class="pos" id="*170:533" style="top:170;left:533"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the</span></div>
+<div class="pos" id="*188:145" style="top:188;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">viewer preferences dictionary (see Section 8.1, “Viewer Preferences”). The first</span></div>
+<div class="pos" id="*206:145" style="top:206;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">annotation visited is the first annotation in the topmost row. When the end of a</span></div>
+<div class="pos" id="*224:145" style="top:224;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">row is encountered, the first annotation in the next row is visited.</span></div>
+<div class="pos" id="*248:133" style="top:248;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*252:145" style="top:252;left:145"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*250:158" style="top:250;left:158"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(column order): Annotations are visited in columns running vertically up</span></div>
+<div class="pos" id="*268:145" style="top:268;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and down the page. Columns are ordered by the</span></div>
+<div class="pos" id="*269:434" style="top:269;left:434"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Direction</span></div>
+<div class="pos" id="*268:492" style="top:268;left:492"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the viewer</span></div>
+<div class="pos" id="*286:145" style="top:286;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">preferences dictionary (see Section 8.1, “Viewer Preferences”). The first anno-</span></div>
+<div class="pos" id="*304:145" style="top:304;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tation visited is the one at the top of the first column. When the end of a col-</span></div>
+<div class="pos" id="*322:145" style="top:322;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">umn is encountered, the first annotation in the next column is visited.</span></div>
+<div class="pos" id="*346:133" style="top:346;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*350:145" style="top:350;left:145"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">S</span></div>
+<div class="pos" id="*349:154" style="top:349;left:154"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(structure order): Annotations are visited in the order in which they appear in</span></div>
+<div class="pos" id="*367:145" style="top:367;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the structure tree (see Section 10.6, “Logical Structure”). The order for annota-</span></div>
+<div class="pos" id="*385:145" style="top:385;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tions that are not included in the structure tree is application-dependent.</span></div>
+<div class="pos" id="*420:133" style="top:420;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*420:169" style="top:420;left:169"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">The descriptions above assume the page is being viewed in the orientation</span></div>
+<div class="pos" id="*438:133" style="top:438;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">specified by the</span></div>
+<div class="pos" id="*438:222" style="top:438;left:222"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Rotate</span></div>
+<div class="pos" id="*438:263" style="top:438;left:263"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">entry.</span></div>
+<div class="pos" id="*472:133" style="top:472;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The behavior of each annotation type is implemented by a software module</span></div>
+<div class="pos" id="*490:133" style="top:490;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">called an</span></div>
+<div class="pos" id="*490:187" style="top:490;left:187"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">annotation handler.</span></div>
+<div class="pos" id="*490:303" style="top:490;left:303"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Handlers for the standard annotation types are built</span></div>
+<div class="pos" id="*508:133" style="top:508;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">directly into the PDF viewer application; handlers for additional types can be</span></div>
+<div class="pos" id="*526:133" style="top:526;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">supplied as plug-in extensions.</span></div>
+<div class="pos" id="*569:88" style="top:569;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.4.1 Annotation Dictionaries</span></div>
+<div class="pos" id="*606:133" style="top:606;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The optional</span></div>
+<div class="pos" id="*607:215" style="top:607;left:215"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Annots</span></div>
+<div class="pos" id="*606:263" style="top:606;left:263"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in a page object (see “Page Objects” on page 144)</span></div>
+<div class="pos" id="*624:133" style="top:624;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">holds an array of</span></div>
+<div class="pos" id="*624:234" style="top:624;left:234"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">annotation dictionaries,</span></div>
+<div class="pos" id="*624:373" style="top:624;left:373"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">each representing an annotation associ-</span></div>
+<div class="pos" id="*642:133" style="top:642;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ated with the given page. Table 8.15 shows the required and optional entries that</span></div>
+<div class="pos" id="*660:133" style="top:660;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are common to all annotation dictionaries. The dictionary may contain addition-</span></div>
+<div class="pos" id="*679:133" style="top:679;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">al entries specific to a particular annotation type; see the descriptions of individ-</span></div>
+<div class="pos" id="*697:133" style="top:697;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ual annotation types in Section 8.4.5, “Annotation Types,” for details.</span></div>
+<div class="pos" id="*731:133" style="top:731;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*731:169" style="top:731;left:169"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">A given annotation dictionary may be referenced from the</span></div>
+<div class="pos" id="*732:513" style="top:732;left:513"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Annots</span></div>
+<div class="pos" id="*731:558" style="top:731;left:558"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">array of</span></div>
+<div class="pos" id="*749:133" style="top:749;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">only one page. Attempting to share an annotation dictionary among multiple pages</span></div>
+<div class="pos" id="*767:133" style="top:767;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">produces unpredictable behavior. This requirement applies only to the annotation</span></div>
+<div class="pos" id="*785:133" style="top:785;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">dictionary itself, not to subsidiary objects, which can be shared among multiple an-</span></div>
+<div class="pos" id="*804:133" style="top:804;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">notations without causing any difficulty.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0604.htm" title="Go to previous page">Previous</a> <a href="pg_0606.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(605);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

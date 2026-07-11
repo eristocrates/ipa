@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1034.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="APPENDIX F 1034 Linearized PDF KEY HINT TABLE C (Present only if a logical structure hierarchy exists; PDF 1.3) Logical structure hint table (see Section F.3.5, “Extended Generic Hint Tables”) (PDF 1.3) Page label hint table (see Section F.3.4, “Generic Hint Tables”) (Present only if a renditions name tree exists; PDF 1.5) Renditions name tree hint table (see Section F.3.5, “Extended Generic Hint Tables”) (Present only if embedded file streams exist; PDF 1.5) Embedded file stream hint table (see Section F.3.6, “Embedded File Stream Hint Tables”) L R B New keys may be registered for additional hint tables required for new PDF features or for application-specific data accessed by plug-in extensions. See Appendix E for further information. F.2.6 First-Page Section (Part 6) As mentioned earlier, the section containing objects belonging to the first page of the document may either precede or follow the primary hint stream. The starting file offset and length of this section can be determined from the hint tables. In addition, the E entry in the linearization parameter dictionary specifies the end of the first page (as an offset relative to the beginning of the file), and the O entry gives the object number of the first page’s page object. This part of the file contains all the objects needed to display the first page of the document. Ordinarily, the first page is page 0—that is, the leftmost leaf page node in the page tree. However, if the document catalog contains an OpenAction entry that specifies opening at some page other than page 0, that page is considered the first page and should be located here. The page number of the first page is given in the P entry of the linearization parameter dictionary. (See also implementation note 181 in Appendix H.) The following objects should be contained in the first-page section: • The page object for the first page. This object must be the first one in this part of the file. Its object number is given in the linearization parameter dictionary. This page object must explicitly specify all required attributes, such as  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1034.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">APPENDIX F</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1034</span></div>
+<div class="pos" id="*49:520" style="top:49;left:520"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Linearized PDF</span></div>
+<div class="pos" id="*104:133" style="top:104;left:133"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">KEY</span></div>
+<div class="pos" id="*104:191" style="top:104;left:191"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">HINT TABLE</span></div>
+<div class="pos" id="*131:133" style="top:131;left:133"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">C</span></div>
+<div class="pos" id="*131:191" style="top:131;left:191"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Present only if a logical structure hierarchy exists; PDF 1.3)</span></div>
+<div class="pos" id="*131:513" style="top:131;left:513"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Logical structure</span></div>
+<div class="pos" id="*147:191" style="top:147;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">hint table (see Section F.3.5, “Extended Generic Hint Tables”)</span></div>
+<div class="pos" id="*176:191" style="top:176;left:191"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(PDF 1.3)</span></div>
+<div class="pos" id="*176:245" style="top:176;left:245"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Page label hint table (see Section F.3.4, “Generic Hint Tables”)</span></div>
+<div class="pos" id="*204:191" style="top:204;left:191"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Present only if a renditions name tree exists; PDF 1.5)</span></div>
+<div class="pos" id="*204:488" style="top:204;left:488"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Renditions name tree</span></div>
+<div class="pos" id="*221:191" style="top:221;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">hint table (see Section F.3.5, “Extended Generic Hint Tables”)</span></div>
+<div class="pos" id="*249:191" style="top:249;left:191"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">(Present only if embedded file streams exist; PDF 1.5)</span></div>
+<div class="pos" id="*249:464" style="top:249;left:464"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Embedded file stream hint</span></div>
+<div class="pos" id="*266:191" style="top:266;left:191"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">table (see Section F.3.6, “Embedded File Stream Hint Tables”)</span></div>
+<div class="pos" id="*177:133" style="top:177;left:133"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">L</span></div>
+<div class="pos" id="*205:133" style="top:205;left:133"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">R</span></div>
+<div class="pos" id="*249:133" style="top:249;left:133"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">B</span></div>
+<div class="pos" id="*300:133" style="top:300;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">New keys may be registered for additional hint tables required for new PDF</span></div>
+<div class="pos" id="*318:133" style="top:318;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">features or for application-specific data accessed by plug-in extensions. See</span></div>
+<div class="pos" id="*336:133" style="top:336;left:133"><a href="pg_1019.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Appendix E for further information.</span></a></div>
+<div class="pos" id="*379:90" style="top:379;left:90"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">F.2.6 First-Page Section (Part 6)</span></div>
+<div class="pos" id="*416:133" style="top:416;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">As mentioned earlier, the section containing objects belonging to the first page of</span></div>
+<div class="pos" id="*434:133" style="top:434;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the document may either precede or follow the primary hint stream. The starting</span></div>
+<div class="pos" id="*452:133" style="top:452;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">file offset and length of this section can be determined from the hint tables. In</span></div>
+<div class="pos" id="*470:133" style="top:470;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">addition, the</span></div>
+<div class="pos" id="*471:210" style="top:471;left:210"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">E</span></div>
+<div class="pos" id="*470:220" style="top:470;left:220"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the linearization parameter dictionary specifies the end of</span></div>
+<div class="pos" id="*488:133" style="top:488;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the first page (as an offset relative to the beginning of the file), and the</span></div>
+<div class="pos" id="*489:559" style="top:489;left:559"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">O</span></div>
+<div class="pos" id="*488:573" style="top:488;left:573"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry</span></div>
+<div class="pos" id="*506:133" style="top:506;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">gives the object number of the first page’s page object.</span></div>
+<div class="pos" id="*541:133" style="top:541;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">This part of the file contains all the objects needed to display the first page of the</span></div>
+<div class="pos" id="*559:133" style="top:559;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">document. Ordinarily, the first page is page 0—that is, the leftmost leaf page node</span></div>
+<div class="pos" id="*577:133" style="top:577;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the page tree. However, if the document catalog contains an</span></div>
+<div class="pos" id="*578:499" style="top:578;left:499"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">OpenAction</span></div>
+<div class="pos" id="*577:573" style="top:577;left:573"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry</span></div>
+<div class="pos" id="*595:133" style="top:595;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that specifies opening at some page other than page 0, that page is considered the</span></div>
+<div class="pos" id="*613:133" style="top:613;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">first page and should be located here. The page number of the first page is given</span></div>
+<div class="pos" id="*631:133" style="top:631;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the</span></div>
+<div class="pos" id="*632:170" style="top:632;left:170"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">P</span></div>
+<div class="pos" id="*631:180" style="top:631;left:180"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry of the linearization parameter dictionary. (See also implementation</span></div>
+<div class="pos" id="*649:133" style="top:649;left:133"><a href="pg_1129.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">note 181 in Appendix H.)</span></a></div>
+<div class="pos" id="*684:133" style="top:684;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The following objects should be contained in the first-page section:</span></div>
+<div class="pos" id="*716:133" style="top:716;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*719:145" style="top:719;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The page object for the first page. This object must be the first one in this part</span></div>
+<div class="pos" id="*737:145" style="top:737;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of the file. Its object number is given in the linearization parameter dictionary.</span></div>
+<div class="pos" id="*755:145" style="top:755;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">This page object must explicitly specify all required attributes, such as</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1033.htm" title="Go to previous page">Previous</a> <a href="pg_1035.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1034);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

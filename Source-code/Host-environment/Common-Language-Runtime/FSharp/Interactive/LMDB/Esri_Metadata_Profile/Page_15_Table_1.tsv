@@ -1,0 +1,44 @@
+	Status =	
+	Progress +	
+	MaintenanceandUpdateFrequency  ___	
+		
+	SpatialDomain =  _	
+	BoundingCoordinates +  _	
+	0{LocalBoundingCoordinates}1 +  __	
+	0{MinimumAltitude}1 +  _	
+	0{MaximumAltitude}1 +  _	
+	(AltitudeUnits) +  _	
+	(1{DataSetG-Polygon}n) +  __	
+	(Data Frames)	
+		
+	BoundingCoordinates =  _	
+	WestBoundingCoordinate +  __	
+	EastBoundingCoordinate +  __	
+	NorthBoundingCoordinate +  __	
+	SouthBoundingCoordinate  __	
+		
+	Local BoundingCoordinates =  _	
+	LeftBoundingCoordinate +  __	
+	RightBoundingCoordinate +  __	
+	TopBoundingCoordinate +  __	
+	BottomBoundingCoordinate  __	
+		
+	DataSetG-Polygon =  __	
+	DataSetG-PolygonOuterG-Ring +  ____	
+	0{DataSetG-PolygonExclusionG-Ring}n  ____	
+		
+	DataSetG-PolygonOuterG-Ring =  ____	
+	[4{G-RingPoint}n |  _	
+	G-Ring]	
+		
+	DataSetG-PolygonExclusionG-Ring =  ____	
+	[4{G-RingPoint}n |  _	
+	G-Ring]	
+		
+	G-RingPoint =  _	
+	G-RingLatitude +  _	
+	G-RingLongitude  _	
+		
+	DataFrames =  _	
+	DataFrameCount +  __	
+	0{DataFrameName}n  __	

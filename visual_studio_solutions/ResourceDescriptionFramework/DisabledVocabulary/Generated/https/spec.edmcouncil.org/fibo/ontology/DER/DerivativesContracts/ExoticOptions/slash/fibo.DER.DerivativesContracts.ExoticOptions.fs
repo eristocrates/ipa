@@ -1,0 +1,44 @@
+﻿namespace Fibo.DER.DerivativesContracts.ExoticOptions.Namespace
+module ExoticOptions =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/ExoticOptions/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/DER/DerivativesContracts/ExoticOptions.rdf") (Some @"fibo.DER.DerivativesContracts.ExoticOptions") None
+    let ArithmeticCalculationStrategy = {_prefixID with _localName = "ArithmeticCalculationStrategy"}
+    let AsianOption = {_prefixID with _localName = "AsianOption"}
+    let AsianOptionClassifier = {_prefixID with _localName = "AsianOptionClassifier"}
+    let AverageRate = {_prefixID with _localName = "AverageRate"}
+    let AverageStrike = {_prefixID with _localName = "AverageStrike"}
+    let AveragingStrategy = {_prefixID with _localName = "AveragingStrategy"}
+    let BarrierOption = {_prefixID with _localName = "BarrierOption"}
+    let ChooserOption = {_prefixID with _localName = "ChooserOption"}
+    let CliquetOption = {_prefixID with _localName = "CliquetOption"}
+    let CommodoreOption = {_prefixID with _localName = "CommodoreOption"}
+    let CompoundOption = {_prefixID with _localName = "CompoundOption"}
+    let DigitalOption = {_prefixID with _localName = "DigitalOption"}
+    let DoubleBarrierOption = {_prefixID with _localName = "DoubleBarrierOption"}
+    let FixedLookbackStrikeExpression = {_prefixID with _localName = "FixedLookbackStrikeExpression"}
+    let FloatingLookbackStrikeExpression = {_prefixID with _localName = "FloatingLookbackStrikeExpression"}
+    let ForwardStartOption = {_prefixID with _localName = "ForwardStartOption"}
+    let GeometricCalculationStrategy = {_prefixID with _localName = "GeometricCalculationStrategy"}
+    let InterestRateCapOption = {_prefixID with _localName = "InterestRateCapOption"}
+    let InterestRateFloorOption = {_prefixID with _localName = "InterestRateFloorOption"}
+    let KnockInOption = {_prefixID with _localName = "KnockInOption"}
+    let KnockOutOption = {_prefixID with _localName = "KnockOutOption"}
+    let LookbackOption = {_prefixID with _localName = "LookbackOption"}
+    let LookbackStrikeTerms = {_prefixID with _localName = "LookbackStrikeTerms"}
+    let LowExercisePriceOption = {_prefixID with _localName = "LowExercisePriceOption"}
+    let MountainRangeOption = {_prefixID with _localName = "MountainRangeOption"}
+    let ObservedBestValue = {_prefixID with _localName = "ObservedBestValue"}
+    let ProjectedValueAtMaturity = {_prefixID with _localName = "ProjectedValueAtMaturity"}
+    let RainbowOption = {_prefixID with _localName = "RainbowOption"}
+    let Swaption = {_prefixID with _localName = "Swaption"}
+    let hasAsianTailPeriod = {_prefixID with _localName = "hasAsianTailPeriod"}
+    let hasFirstBarrierPrice = {_prefixID with _localName = "hasFirstBarrierPrice"}
+    let hasFirstRebateAmount = {_prefixID with _localName = "hasFirstRebateAmount"}
+    let hasLookbackPeriod = {_prefixID with _localName = "hasLookbackPeriod"}
+    let hasMonitoringFrequency = {_prefixID with _localName = "hasMonitoringFrequency"}
+    let hasMonitoringPeriod = {_prefixID with _localName = "hasMonitoringPeriod"}
+    let hasOptionTypeElectionDate = {_prefixID with _localName = "hasOptionTypeElectionDate"}
+    let hasSecondBarrierPrice = {_prefixID with _localName = "hasSecondBarrierPrice"}
+    let hasSecondRebateAmount = {_prefixID with _localName = "hasSecondRebateAmount"}
+    let isAboveStrikePrice = {_prefixID with _localName = "isAboveStrikePrice"}
+    let usesCurrencyInAveraging = {_prefixID with _localName = "usesCurrencyInAveraging"}
+    let usesWeightedAverage = {_prefixID with _localName = "usesWeightedAverage"}

@@ -1,0 +1,43 @@
+*    Cassini	cassini	S3		F
+Scale Factor at Central Meridian	sfctrmer	S	Y	E,F
+Longitude of Central Meridian	longcm	S	Y	E,F
+Latitude of Projection Origin	latprjo	S	Y	E
+False Easting	feast	S	Y	E,F
+False Northing	fnorth	S	Y	E,F
+*    Eckert I	eckert1	S3		F
+Longitude of Central Meridian	longcm	S	Y	E,F
+False Easting	feast	S	Y	E,F
+False Northing	fnorth	S	Y	E,F
+*    Eckert II	eckert2	S3		F
+Longitude of Central Meridian	longcm	S	Y	E,F
+False Easting	feast	S	Y	E,F
+False Northing	fnorth	S	Y	E,F
+*    Eckert III	eckert3	S3		F
+Longitude of Central Meridian	longcm	S	Y	E,F
+False Easting	feast	S	Y	E,F
+False Northing	fnorth	S	Y	E,F
+*    Eckert IV	eckert4	S3		F
+Longitude of Central Meridian	longcm	S	Y	E,F
+False Easting	feast	S	Y	E,F
+False Northing	fnorth	S	Y	E,F
+*    Eckert V	eckert5	S3		F
+Longitude of Central Meridian	longcm	S	Y	E,F
+False Easting	feast	S	Y	E,F
+False Northing	fnorth	S	Y	E,F
+*    Eckert VI	eckert6	S3		F
+Longitude of Central Meridian	longcm	S	Y	E,F
+False Easting	feast	S	Y	E,F
+False Northing	fnorth	S	Y	E,F
+*    Gall Stereographic	gallster	S3		F
+Longitude of Central Meridian	longcm	S	Y	E,F
+False Easting	feast	S	Y	E,F
+False Northing	fnorth	S	Y	E,F
+*    Loximuthal	loxmuth	S3		F
+Longitude of Central Meridian	longcm	S	Y	E,F
+Latitude of Projection Origin	latprjo	S	Y	E,F
+False Easting	feast	S	Y	E,F
+False Northing	fnorth	S	Y	E,F
+*    Mollweide	mollweid	S3		F
+Longitude of Central Meridian	longcm	S	Y	E,F
+False Easting	feast	S	Y	E,F
+False Northing	fnorth	S	Y	E,F

@@ -1,0 +1,43 @@
+	If MapProjectionName = "Double Stereographic"  __	
+	MapProjectionParameters =  __	
+	ScaleFactoratProjectionOrigin +  ____	
+	LongitudeofProjectionCenter +  ___	
+	LatitudeofProjectionCenter +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "Eckert I"  __	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "Eckert II"  __	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "Eckert III"  __	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "Eckert IV"  __	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "Eckert V"  __	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	If MapProjectionName = "Eckert VI"  __	
+	MapProjectionParameters =  __	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	

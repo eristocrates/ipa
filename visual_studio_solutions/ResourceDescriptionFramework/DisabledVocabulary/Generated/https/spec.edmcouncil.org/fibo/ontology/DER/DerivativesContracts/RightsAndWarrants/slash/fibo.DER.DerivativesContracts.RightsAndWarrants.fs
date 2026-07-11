@@ -1,0 +1,47 @@
+﻿namespace Fibo.DER.DerivativesContracts.RightsAndWarrants.Namespace
+module RightsAndWarrants =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/DER/DerivativesContracts/RightsAndWarrants.rdf") (Some @"fibo.DER.DerivativesContracts.RightsAndWarrants") None
+    let AllotmentRight = {_prefixID with _localName = "AllotmentRight"}
+    let AllotmentRightFormula = {_prefixID with _localName = "AllotmentRightFormula"}
+    let BarrierInstrumentBasedMiniFutureCertificate = {_prefixID with _localName = "BarrierInstrumentBasedMiniFutureCertificate"}
+    let BarrierUnderlyingMiniFutureCertificate = {_prefixID with _localName = "BarrierUnderlyingMiniFutureCertificate"}
+    let BasketWarrant = {_prefixID with _localName = "BasketWarrant"}
+    let BondPurchaseRight = {_prefixID with _localName = "BondPurchaseRight"}
+    let BondSubscriptionRight = {_prefixID with _localName = "BondSubscriptionRight"}
+    let CallPutWarrant = {_prefixID with _localName = "CallPutWarrant"}
+    let CallWarrant = {_prefixID with _localName = "CallWarrant"}
+    let CombinedInstrumentsPurchaseRight = {_prefixID with _localName = "CombinedInstrumentsPurchaseRight"}
+    let CombinedInstrumentsSubscriptionRight = {_prefixID with _localName = "CombinedInstrumentsSubscriptionRight"}
+    let CommodityWarrant = {_prefixID with _localName = "CommodityWarrant"}
+    let CommonConvertibleSharePurchaseRight = {_prefixID with _localName = "CommonConvertibleSharePurchaseRight"}
+    let CommonConvertibleShareSubscriptionRight = {_prefixID with _localName = "CommonConvertibleShareSubscriptionRight"}
+    let CommonSharePurchaseRight = {_prefixID with _localName = "CommonSharePurchaseRight"}
+    let CommonShareSubscriptionRight = {_prefixID with _localName = "CommonShareSubscriptionRight"}
+    let CompanyWarrant = {_prefixID with _localName = "CompanyWarrant"}
+    let ConstantLeverageCertificate = {_prefixID with _localName = "ConstantLeverageCertificate"}
+    let CoveredWarrant = {_prefixID with _localName = "CoveredWarrant"}
+    let CurrencyWarrant = {_prefixID with _localName = "CurrencyWarrant"}
+    let DebtWarrant = {_prefixID with _localName = "DebtWarrant"}
+    let EquityWarrant = {_prefixID with _localName = "EquityWarrant"}
+    let ExchangeTradedWarrant = {_prefixID with _localName = "ExchangeTradedWarrant"}
+    let ExoticWarrant = {_prefixID with _localName = "ExoticWarrant"}
+    let IndexWarrant = {_prefixID with _localName = "IndexWarrant"}
+    let LongMiniFutureCertificate = {_prefixID with _localName = "LongMiniFutureCertificate"}
+    let MiniFutureCertificate = {_prefixID with _localName = "MiniFutureCertificate"}
+    let NakedWarrant = {_prefixID with _localName = "NakedWarrant"}
+    let PerpetualWarrant = {_prefixID with _localName = "PerpetualWarrant"}
+    let PreferredConvertibleSharePurchaseRight = {_prefixID with _localName = "PreferredConvertibleSharePurchaseRight"}
+    let PreferredConvertibleShareSubscriptionRight = {_prefixID with _localName = "PreferredConvertibleShareSubscriptionRight"}
+    let PreferredSharePurchaseRight = {_prefixID with _localName = "PreferredSharePurchaseRight"}
+    let PreferredShareSubscriptionRight = {_prefixID with _localName = "PreferredShareSubscriptionRight"}
+    let PrivateWarrant = {_prefixID with _localName = "PrivateWarrant"}
+    let PublicWarrant = {_prefixID with _localName = "PublicWarrant"}
+    let PurchaseRight = {_prefixID with _localName = "PurchaseRight"}
+    let PutWarrant = {_prefixID with _localName = "PutWarrant"}
+    let ShortMiniFutureCertificate = {_prefixID with _localName = "ShortMiniFutureCertificate"}
+    let StructuredWarrant = {_prefixID with _localName = "StructuredWarrant"}
+    let SubscriptionRight = {_prefixID with _localName = "SubscriptionRight"}
+    let TraditionalWarrant = {_prefixID with _localName = "TraditionalWarrant"}
+    let Warrant = {_prefixID with _localName = "Warrant"}
+    let hasConversionRatio = {_prefixID with _localName = "hasConversionRatio"}
+    let hasOversubscribeOption = {_prefixID with _localName = "hasOversubscribeOption"}

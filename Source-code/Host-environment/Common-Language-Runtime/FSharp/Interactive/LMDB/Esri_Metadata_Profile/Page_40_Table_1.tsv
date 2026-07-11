@@ -1,0 +1,48 @@
+	GridCoordinateSystem =  __	
+	GridCoordinateSystemName +  ___	
+	[UniversalTransverseMercator |  __	
+	UniversalPolarStereographic |  __	
+	StatePlaneCoordinateSystem |  ___	
+	ARCCoordinateSystem |  __	
+	OtherGridSystem'sDefinition]  ___	
+		
+	UniversalTransverseMercator =  __	
+	UTMZoneNumber +  __	
+	TransverseMercator  _	
+		
+	UniversalPolarStereographic =  __	
+	UPSZoneIdentifier +  __	
+	PolarStereographic  _	
+		
+	StatePlaneCoordinateSystem =  ___	
+	SPCSZoneIdentifier +  __	
+	[LambertConformalConic |  __	
+	TransverseMercator |  _	
+	ObliqueMercator |  _	
+	Polyconic]	
+		
+	ARCCoordinateSystem =  __	
+	UPSZoneIdentifier +  __	
+	[Equirectangular |	
+	AzimuthalEquidistant]  _	
+		
+	LocalPlanar =  _	
+	LocalPlanarDescription +  __	
+	LocalPlanarGeoreferenceInformation  ___	
+		
+	PlanarCoordinateInformation =  __	
+	PlanarCoordinateEncodingMethod +  ___	
+	[CoordinateRepresentation |  _	
+	DistanceandBearingRepresentation] +  ___	
+	PlanarDistanceUnits  __	
+		
+	CoordinateRepresentation =  _	
+	AbscissaResolution +  _	
+	OrdinateResolution  _	
+		
+	DistanceandBearingRepresentation =  ___	
+	DistanceResolution +  _	
+	BearingResolution +  _	
+	BearingUnits +  _	
+	BearingReferenceDirection +  __	
+	BearingReferenceMeridian +  __	

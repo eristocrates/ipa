@@ -1,0 +1,41 @@
+Esri	Esri			
+* Metadata ID	MetaID	S		
+Creation Date	CreaDate	S		
+Creation Time	CreaTime	S		
+Synchronize Once	SyncOnce	S		
+Synchronization Date	SyncDate	S		
+Synchronization Time	SyncTime	S		
+Modification Date	ModDate	S		E
+Modification Time	ModTime	S		E
+Published Document ID	PublishedDocID			
+Publish Status	PublishStatus			
+ArcIMS Server	Server	S		
+ArcIMS Service	Service	S		
+ArcIMS Service Type	ServiceType	S		
+ArcIMS Feature Class Type	ServiceFCType	S		
+ArcIMS Feature Class Name	ServiceFCName	S		
+Data Properties	DataProperties			
+Topology Information	topoinfo			
+Topology Properties	topoProps			
+Topology Name	topoName	S		F
+Cluster Tolerance	clusterTol	S		E,F
+Maximum Error Count	maxErrors	S		E,F
+Topology Rule	topoRule			
+Topology Rule ID	topoRuleID	S		E,F
+Topology Rule Name	topoRuleName	S		F
+Topology Rule Type	topoRuleType	S		E,F
+RuleHelp	ruleHelp	S		F
+Topology Rule Origin	topoRuleOrigin			
+Feature Class Name	fcname	S		E,F
+Subtype Code	stcode	S		E,F
+Subtype Name	stname	S		E,F
+All Origin Subtypes	allOriginSubtypes	S		E,F
+Topology Rule Destination	topoRuleDest			
+Feature Class Name	fcname	S		E,F
+Subtype Code	stcode	S		E,F
+Subtype Name	stname	S		E,F
+All Destination Subtypes	allDestSubtypes	S		E,F
+Synchronize Automatically	Sync		P	
+Geocoding Information	RematchLocator			
+This information is unavailable at this time.				
+				

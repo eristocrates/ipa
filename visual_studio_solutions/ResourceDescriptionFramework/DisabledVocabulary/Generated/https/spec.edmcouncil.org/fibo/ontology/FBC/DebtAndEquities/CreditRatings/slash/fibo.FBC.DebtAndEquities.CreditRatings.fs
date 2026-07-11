@@ -1,0 +1,40 @@
+﻿namespace Fibo.FBC.DebtAndEquities.CreditRatings.Namespace
+module CreditRatings =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/FBC/DebtAndEquities/CreditRatings/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/DebtAndEquities/CreditRatings.rdf") (Some @"fibo.FBC.DebtAndEquities.CreditRatings") None
+    let AlertCreditMessage = {_prefixID with _localName = "AlertCreditMessage"}
+    let AlternativeAQuality = {_prefixID with _localName = "AlternativeAQuality"}
+    let CreditInquiry = {_prefixID with _localName = "CreditInquiry"}
+    let CreditInquiryType = {_prefixID with _localName = "CreditInquiryType"}
+    let CreditMessage = {_prefixID with _localName = "CreditMessage"}
+    let CreditMessageType = {_prefixID with _localName = "CreditMessageType"}
+    let CreditQuality = {_prefixID with _localName = "CreditQuality"}
+    let CreditRating = {_prefixID with _localName = "CreditRating"}
+    let CreditRatingAgency = {_prefixID with _localName = "CreditRatingAgency"}
+    let CreditRatingModel = {_prefixID with _localName = "CreditRatingModel"}
+    let CreditRatingModelType = {_prefixID with _localName = "CreditRatingModelType"}
+    let CreditRatingScale = {_prefixID with _localName = "CreditRatingScale"}
+    let CreditReport = {_prefixID with _localName = "CreditReport"}
+    let CreditReportCategory = {_prefixID with _localName = "CreditReportCategory"}
+    let CreditReportProduct = {_prefixID with _localName = "CreditReportProduct"}
+    let CreditTradeline = {_prefixID with _localName = "CreditTradeline"}
+    let CreditWatchDirection = {_prefixID with _localName = "CreditWatchDirection"}
+    let CreditWatchDowngrade = {_prefixID with _localName = "CreditWatchDowngrade"}
+    let CreditWatchOutlook = {_prefixID with _localName = "CreditWatchOutlook"}
+    let CreditWatchUpgrade = {_prefixID with _localName = "CreditWatchUpgrade"}
+    let FreezeCreditMessage = {_prefixID with _localName = "FreezeCreditMessage"}
+    let HardCreditInquiry = {_prefixID with _localName = "HardCreditInquiry"}
+    let InstrumentCreditRating = {_prefixID with _localName = "InstrumentCreditRating"}
+    let InvestmentCreditRating = {_prefixID with _localName = "InvestmentCreditRating"}
+    let InvestmentGradeQuality = {_prefixID with _localName = "InvestmentGradeQuality"}
+    let NonprimeQuality = {_prefixID with _localName = "NonprimeQuality"}
+    let OnWatchOutlook = {_prefixID with _localName = "OnWatchOutlook"}
+    let OrganizationCreditRating = {_prefixID with _localName = "OrganizationCreditRating"}
+    let PrimeQuality = {_prefixID with _localName = "PrimeQuality"}
+    let ShortTermCreditRating = {_prefixID with _localName = "ShortTermCreditRating"}
+    let SoftCreditInquiry = {_prefixID with _localName = "SoftCreditInquiry"}
+    let StableOutlook = {_prefixID with _localName = "StableOutlook"}
+    let SubprimeQuality = {_prefixID with _localName = "SubprimeQuality"}
+    let concernsParty = {_prefixID with _localName = "concernsParty"}
+    let hasCoveragePeriod = {_prefixID with _localName = "hasCoveragePeriod"}
+    let hasWatchDirection = {_prefixID with _localName = "hasWatchDirection"}
+    let hasWatchOutlook = {_prefixID with _localName = "hasWatchOutlook"}

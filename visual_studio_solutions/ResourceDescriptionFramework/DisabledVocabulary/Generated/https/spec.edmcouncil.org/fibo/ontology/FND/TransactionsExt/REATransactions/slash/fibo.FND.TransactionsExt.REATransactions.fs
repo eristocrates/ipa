@@ -1,0 +1,47 @@
+﻿namespace Fibo.FND.TransactionsExt.REATransactions.Namespace
+module REATransactions =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/REATransactions/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/TransactionsExt/REATransactions.rdf") (Some @"fibo.FND.TransactionsExt.REATransactions") None
+    let ContractualEconomicAgreement = {_prefixID with _localName = "ContractualEconomicAgreement"}
+    let ContractualTransaction = {_prefixID with _localName = "ContractualTransaction"}
+    let ContractualTransactionParty = {_prefixID with _localName = "ContractualTransactionParty"}
+    let CoveredTransaction = {_prefixID with _localName = "CoveredTransaction"}
+    let DischargingEvent = {_prefixID with _localName = "DischargingEvent"}
+    let EconomicAgreement = {_prefixID with _localName = "EconomicAgreement"}
+    let EconomicCommitment = {_prefixID with _localName = "EconomicCommitment"}
+    let EconomicContract = {_prefixID with _localName = "EconomicContract"}
+    let EconomicContractTermsSet = {_prefixID with _localName = "EconomicContractTermsSet"}
+    let EconomicResource = {_prefixID with _localName = "EconomicResource"}
+    let EconomicTransaction = {_prefixID with _localName = "EconomicTransaction"}
+    let LedgerEntry = {_prefixID with _localName = "LedgerEntry"}
+    let REAClaim = {_prefixID with _localName = "REAClaim"}
+    let Revaluation = {_prefixID with _localName = "Revaluation"}
+    let TransactionBusinessEvent = {_prefixID with _localName = "TransactionBusinessEvent"}
+    let TransactionEvent = {_prefixID with _localName = "TransactionEvent"}
+    let TransactionEventAspect = {_prefixID with _localName = "TransactionEventAspect"}
+    let TransactionParty = {_prefixID with _localName = "TransactionParty"}
+    let TransactionUndertaking = {_prefixID with _localName = "TransactionUndertaking"}
+    let Undertaking = {_prefixID with _localName = "Undertaking"}
+    let UndertakingEvent = {_prefixID with _localName = "UndertakingEvent"}
+    let bestows = {_prefixID with _localName = "bestows"}
+    let definedInContextOf = {_prefixID with _localName = "definedInContextOf"}
+    let givesRiseTo = {_prefixID with _localName = "givesRiseTo"}
+    let hasCorresponding = {_prefixID with _localName = "hasCorresponding"}
+    let hasCorrespondingAlternativeAspect = {_prefixID with _localName = "hasCorrespondingAlternativeAspect"}
+    let hasEnd = {_prefixID with _localName = "hasEnd"}
+    let hasPerspective = {_prefixID with _localName = "hasPerspective"}
+    let hasStart = {_prefixID with _localName = "hasStart"}
+    let hasTransactionComponent = {_prefixID with _localName = "hasTransactionComponent"}
+    let hasTransactionParty = {_prefixID with _localName = "hasTransactionParty"}
+    let isImbalanceIn = {_prefixID with _localName = "isImbalanceIn"}
+    let isMadeAsPartOf = {_prefixID with _localName = "isMadeAsPartOf"}
+    let isUndertakingTo = {_prefixID with _localName = "isUndertakingTo"}
+    let madeBy = {_prefixID with _localName = "madeBy"}
+    let setsOutContractualEconomicCommitment = {_prefixID with _localName = "setsOutContractualEconomicCommitment"}
+    let subject = {_prefixID with _localName = "subject"}
+    let takesMaterialForm = {_prefixID with _localName = "takesMaterialForm"}
+    let terminates = {_prefixID with _localName = "terminates"}
+    let transactedUnder = {_prefixID with _localName = "transactedUnder"}
+    let transactionEmbodiesEconomicAgreement = {_prefixID with _localName = "transactionEmbodiesEconomicAgreement"}
+    let transactionEventFollowsBusinessProcess = {_prefixID with _localName = "transactionEventFollowsBusinessProcess"}
+    let transactsWith = {_prefixID with _localName = "transactsWith"}
+    let triggers = {_prefixID with _localName = "triggers"}

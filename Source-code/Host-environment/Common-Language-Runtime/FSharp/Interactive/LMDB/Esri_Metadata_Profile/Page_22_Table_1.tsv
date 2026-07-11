@@ -1,0 +1,41 @@
+	SpatialDataOrganizationInformation =  ___	
+	0{IndirectSpatialReference}1 +  __	
+	0{DirectSpatialReferenceMethod +  ___	
+	([PointandVectorObjectInformation |  ____	
+	RasterObjectInformation] )}1 +  __	
+	0{GeometricNetworkInformation}1  __	
+		
+	PointandVectorObjectInformation =  ____	
+	0{ESRITermsDescription}n +  __	
+	[1{SDTSTermsDescription}n |  __	
+	VPFTermsDescription]  __	
+		
+	ESRITermsDescription =  __	
+	ESRIFeatureType +  __	
+	ESRIFeatureGeometry +  __	
+	ESRITopology +  _	
+	ESRIFeatureCount +  __	
+	SpatialIndex +  _	
+	LinearReferencing +  _	
+	0{XYRank}1 +  _	
+	0{ZRank}1 +  _	
+	0{TopologyWeight}1 +  _	
+	0{EventsOnValidation}1 +  __	
+	0{ParticipatesInTopologyRules}1 +  ___	
+	0{NetworkRole}1 +  _	
+	(FeatureDescription) +  _	
+		
+	ParticipatesInTopologyRules =  ___	
+	TopologyRuleID  __	
+		
+	SDTSTermsDescription =  __	
+	SDTSPointandVectorObjectType +  _____	
+	(PointandVectorObjectCount)  ____	
+		
+	VPFTermsDescription =  __	
+	VPFTopologyLevel +  __	
+	1{VPFPointandVectorObjectInformation}n  _____	
+		
+	VPFPointandVectorObjectInformation =  _____	
+	VPFPointandVectorObjectType +  _____	
+	(PointandVectorObjectCount)  ____	

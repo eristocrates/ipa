@@ -1,0 +1,251 @@
+// https://www.w3.org/TeamSubmission/n3/
+// https://w3c.github.io/N3/spec/
+// Language tag registry
+// https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+
+open System
+open System.Text
+open System.IO
+open System.Globalization
+
+#r "nuget: Unquote"
+#r "nuget: XParsec"
+
+#r "nuget: Hedgehog"
+
+#r "nuget: NeatIntervals"
+
+
+open Swensen.Unquote.Assertions
+
+#r "nuget: FsCheck"
+
+open FsCheck
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\ParserCombinator\Identifier\Resource\Internationalized\Internationalized_Resource_Identifier.fsx"
+
+open StringExtensions
+
+open Resource_Identifier
+open XParsecErgonomics
+open Unicode_Standard
+open XParsec
+open Internationalized_Resource_Identifier
+
+
+type RDF_Concept =
+    | IRI of IRI
+    | Literal of RDF_Literal
+    | BlankNode of RDF_Blank_Node
+    | Triple of RDF_Triple
+    | Quad of RDF_Quad
+    | Collection of RDF_Collection
+    | Graph of RDF_Graph
+    | Dataset of RDF_Dataset
+
+    static member FromSubject(rdf_subject: RDF_Subject) =
+        match rdf_subject with
+        | RDF_Subject.FromIRI iri -> IRI iri
+        | RDF_Subject.FromBlankNode rdf_blank_node -> BlankNode rdf_blank_node
+        | RDF_Subject.FromReifiedTriple triple -> Triple triple
+
+    static member FromPredicate(rdf_predicate: RDF_Predicate) =
+        match rdf_predicate with
+        | RDF_Predicate iri -> IRI iri
+
+    static member FromObject(rdf_object: RDF_Object) =
+
+        match rdf_object with
+
+        | RDF_Object.FromIRI iri -> IRI iri
+        | RDF_Object.FromBlankNode rdf_blank_node -> BlankNode rdf_blank_node
+        | RDF_Object.FromLiteral rdf_literal -> Literal rdf_literal
+        | RDF_Object.FromTriple rdf_triple -> Triple rdf_triple
+        | RDF_Object.FromCollection rdf_collection -> Collection rdf_collection
+
+and RDF_Graph =
+    {
+
+      graph_name: Graph_Name
+      base_iri: Resolved_IRI
+      triples: RDF_Triple array
+
+     }
+
+and RDF_Dataset =
+    {
+
+      default_graph: RDF_Graph
+      quads: RDF_Quad array
+
+     }
+
+and RDF_Collection = { objects: RDF_Object array }
+
+and RDF_Literal =
+    {
+
+      lexical_form: string
+      datatype_iri: IRI
+      language_tag: Language_Tag option
+      region_subtag: Region_Tag option
+      initial_text_direction: Base_Direction option
+
+     }
+
+
+and [<RequireQualifiedAccess>] Graph_Name =
+    | FromBlankNode of RDF_Blank_Node
+    | FromIRI of IRI
+
+and RDF_Triple =
+
+    | FromNormativeTriple of Normative_Triple
+    | FromSymmetricTriple of Symmetric_Triple
+    | FromGeneralizedTriple of Generalized_Triple
+    member this.SubjectTerm =
+        match this with
+        | FromNormativeTriple normative_triple -> RDF_Concept.FromSubject normative_triple.curSubject
+        | FromSymmetricTriple symmetric_triple -> RDF_Concept.FromObject symmetric_triple.curSubject
+        | FromGeneralizedTriple generalized_triple -> generalized_triple.curSubject
+
+    member this.PredicateTerm =
+        match this with
+        | FromNormativeTriple normative_triple -> RDF_Concept.FromPredicate normative_triple.curPredicate
+        | FromSymmetricTriple symmetric_triple -> RDF_Concept.FromPredicate symmetric_triple.curPredicate
+        | FromGeneralizedTriple generalized_triple -> generalized_triple.curPredicate
+
+    member this.ObjectTerm =
+        match this with
+        | FromNormativeTriple normative_triple -> RDF_Concept.FromObject normative_triple.curObject
+        | FromSymmetricTriple symmetric_triple -> RDF_Concept.FromObject symmetric_triple.curObject
+        | FromGeneralizedTriple generalized_triple -> generalized_triple.curObject
+
+
+
+and Normative_Triple =
+    { curSubject: RDF_Subject
+      curPredicate: RDF_Predicate
+      curObject: RDF_Object }
+
+and Symmetric_Triple =
+    { curSubject: RDF_Object
+      curPredicate: RDF_Predicate
+      curObject: RDF_Object }
+
+and Generalized_Triple =
+    { curSubject: RDF_Concept
+      curPredicate: RDF_Concept
+      curObject: RDF_Concept }
+
+and [<RequireQualifiedAccess>] RDF_Subject =
+    | FromIRI of IRI
+    | FromBlankNode of RDF_Blank_Node
+    | FromReifiedTriple of RDF_Triple
+
+and RDF_Predicate = RDF_Predicate of IRI
+
+and [<RequireQualifiedAccess>] RDF_Object =
+    | FromIRI of IRI
+    | FromBlankNode of RDF_Blank_Node
+    | FromLiteral of RDF_Literal
+    | FromTriple of RDF_Triple
+    | FromCollection of RDF_Collection
+
+and RDF_Quad =
+    { triple: RDF_Triple
+      graph_name: Graph_Name }
+
+and [<RequireQualifiedAccess>] RDF_Blank_Node = { blank_node_identifier: string }
+
+and [<RequireQualifiedAccess>] IRI =
+    | FromResolvedIRI of Resolved_IRI
+    | FromRelativeIRI of Relative_IRI
+    | FromCurie of Curie
+
+and [<RequireQualifiedAccess>] Resolved_IRI = private ResolvedIRI of string
+and [<RequireQualifiedAccess>] Relative_IRI = IRIReference of string
+
+and [<RequireQualifiedAccess>] Curie =
+    | Turtle of prefix_label: string * local_name: string
+    | Xml of prefix_label: string * local_name: string
+
+and [<RequireQualifiedAccess>] Language_Tag = BCP47 of string
+and [<RequireQualifiedAccess>] Region_Tag = BCP47 of string
+
+and [<RequireQualifiedAccess>] Base_Direction =
+    | ltr
+    | rtl
+
+
+type Resolved_IRI with
+    static member from_string(raw_string: string) =
+        parse
+            complete_parser
+            IRI.parser_combinator
+            from_input_string
+            raw_string
+            expecting
+            $"Expected {raw_string} to be a Resolved IRI"
+            return_string
+        |> ResolvedIRI
+        |> IRI.FromResolvedIRI
+        |> RDF_Concept.IRI
+
+
+
+let Triple (subject_term: RDF_Concept) (predicate_term: RDF_Concept) (object_term: RDF_Concept) =
+    let curSubject =
+        match subject_term with
+        | IRI iri -> RDF_Subject.FromIRI iri
+        | BlankNode blank_node -> RDF_Subject.FromBlankNode blank_node
+        | Triple triple -> RDF_Subject.FromReifiedTriple triple
+        | _ -> failwith "Normative Subject must be IRI or Blank Node or Reified Triple"
+
+    let curPredicate =
+        match predicate_term with
+        | IRI iri -> RDF_Predicate iri
+        | _ -> failwith "Normative Predicate must be IRI"
+
+    let curObject =
+        match object_term with
+        | IRI iri -> RDF_Object.FromIRI iri
+        | BlankNode rdf_blank_node -> RDF_Object.FromBlankNode rdf_blank_node
+        | Literal rdf_literal -> RDF_Object.FromLiteral rdf_literal
+        | Triple rdf_triple -> RDF_Object.FromTriple rdf_triple
+        | Collection collection -> RDF_Object.FromCollection collection
+        | _ -> failwith "Normative Object must be IRI or Blank Node or Literal or Triple"
+
+    FromNormativeTriple
+        { curSubject = curSubject
+          curPredicate = curPredicate
+          curObject = curObject }
+
+let Quad
+    (subject_term: RDF_Concept)
+    (predicate_term: RDF_Concept)
+    (object_term: RDF_Concept)
+    (graph_label: RDF_Concept)
+    =
+    let graph_name =
+        match graph_label with
+        | IRI iri -> Graph_Name.FromIRI iri
+        | BlankNode blank_node -> Graph_Name.FromBlankNode blank_node
+        | _ -> failwith "Graph Name must be IRI or Blank Node"
+
+    { triple = Triple subject_term predicate_term object_term
+      graph_name = graph_name }
+
+
+let Latin_Letter_A =
+    Resolved_IRI.from_string "https://eristocrates.dev/ontology/unicode/0041"
+
+let a = Resolved_IRI.from_string "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+
+let Unicode_Code_Point =
+    Resolved_IRI.from_string "https://eristocrates.dev/ontology/unicode/Code_Point"
+
+let Unicode = Resolved_IRI.from_string "https://eristocrates.dev/ontology/unicode/"
+
+let test_triple = Triple Latin_Letter_A a Unicode_Code_Point
+let test_quad = Quad Latin_Letter_A a Unicode_Code_Point Unicode

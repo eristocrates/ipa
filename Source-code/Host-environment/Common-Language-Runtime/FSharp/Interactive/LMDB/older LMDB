@@ -1,0 +1,999 @@
+open System
+open System.Xml
+open System.Text
+open System.Diagnostics
+open System.Globalization
+open System.IO
+
+#r "nuget: LightningDB"
+open LightningDB
+
+#r "nuget: MessagePack"
+#r "nuget: MessagePack.FSharpExtensions"
+
+open MessagePack
+open MessagePack.Resolvers
+open MessagePack.FSharp
+
+#r "nuget: Blake3"
+open Blake3
+
+
+
+let message_pack_options =
+    MessagePackSerializerOptions.Standard.WithResolver(
+        CompositeResolver.Create(FSharpResolver.Instance, StandardResolver.Instance)
+    )
+
+
+
+
+
+let GiB = 1024L * 1024L * 1024L
+let map_size = int64 2 * GiB
+let environment_directory_path = @"D:\Persistence\LMDB"
+
+System.IO.Directory.CreateDirectory(environment_directory_path)
+|> ignore
+
+let mutable batch_size = 250_000
+
+
+let environment = new LightningEnvironment(environment_directory_path)
+environment.MapSize <- map_size
+environment.MaxDatabases <- 14
+
+
+environment.Open()
+
+module MDBResultCode =
+
+    let succeeded (result_code: MDBResultCode) = result_code = MDBResultCode.Success
+
+    let failed (result_code: MDBResultCode) = result_code <> MDBResultCode.Success
+
+    let fail_if_not_success (operation_name: string) (result_code: MDBResultCode) =
+        if result_code <> MDBResultCode.Success then
+            failwith $"{operation_name} failed with MDBResultCode: {result_code}"
+
+type ID = private ID of uint64
+
+
+
+type Entity = private Entity of byte array
+
+type Component = private Component of byte array
+
+type Entity'Component =
+    { Entity: Entity
+      Component: Component }
+
+type Attribute'Value =
+    { Attribute_ID: uint64
+      Value_ID: uint64 }
+
+type Memory_Map =
+    {
+
+      name: string
+      handle: LightningDatabase
+
+     }
+
+[<MessagePackObject>]
+type Persistent_Term =
+    | ResolvedIRI of id: byte array
+    | RelativeIRI of id: byte array
+    | SkolemIRI of id: byte array
+    | Variable of id: byte array
+    | SimpleLiteral of id: byte array
+    | DatatypedLiteral of id: byte array * datatype_id: byte array
+    | LanguageString of id: byte array * language_id: byte array
+    | LanguageRegionString of id: byte array * language_id: byte array * region_id: byte array
+    | DirectedLanguageString of id: byte array * language_id: byte array * direction: byte array
+    | DirectedLanguageRegionString of
+        id: byte array *
+        language_id: byte array *
+        region: byte array *
+        direction: byte array
+
+
+[<MessagePackObject>]
+type Quad_Encoding =
+    {
+
+      [<Key(0)>]
+      subject_id: byte array
+      [<Key(1)>]
+      predicate_id: byte array
+      [<Key(2)>]
+      object_id: byte array
+      [<Key(3)>]
+      context_id: byte array
+
+     }
+
+
+[<MessagePackObject>]
+type Quad_Attribute =
+    | HasSubject
+    | HasPredicate
+    | HasObject
+    | HasContext
+    | SubjectOf
+    | PredicateOf
+    | ObjectOf
+    | ContextOf
+
+[<MessagePackObject>]
+type Attribute_Value =
+    {
+
+      [<Key(0)>]
+      attribute: Quad_Attribute
+      [<Key(1)>]
+      value_bytes: byte array
+
+     }
+
+
+
+
+
+module String =
+
+    let to_byte_array (string_value: string) = Encoding.UTF8.GetBytes(string_value)
+    let from_byte_array (bytes: byte array) = Encoding.UTF8.GetString(bytes)
+
+    let to_digest (string_value: string) =
+        Blake3
+            .Hasher
+            .Hash(to_byte_array string_value)
+            .AsSpan()
+            .ToArray()
+
+module UInt64 =
+
+    let to_byte_array (uint64_value: uint64) =
+        let bytes = BitConverter.GetBytes(uint64_value)
+
+
+        if BitConverter.IsLittleEndian then
+            Array.Reverse(bytes)
+
+        bytes
+
+    let from_byte_array (bytes: byte array) =
+
+        let copy = Array.copy bytes
+
+        if BitConverter.IsLittleEndian then
+            Array.Reverse(copy)
+
+        BitConverter.ToUInt64(copy, 0)
+
+
+module Bytes =
+    let from_string (string_value: string) = Encoding.UTF8.GetBytes(string_value)
+
+    let to_string (bytes: byte array) = Encoding.UTF8.GetString(bytes)
+    let from_int (int_value: int) = BitConverter.GetBytes(int_value)
+    let to_int (bytes: byte array) = BitConverter.ToInt32(bytes, 0)
+    let from_entity (Entity bytes) = bytes
+    let from_component (Component bytes) = bytes
+
+
+
+
+module Entity =
+    let from_raw_bytes (raw_bytes: byte array) =
+        Blake3.Hasher.Hash(raw_bytes).AsSpan().ToArray()
+        |> Entity
+
+    let from_trusted_bytes (bytes: byte array) = Entity bytes
+
+    let from_string (raw_entity: string) =
+        Bytes.from_string raw_entity |> from_raw_bytes
+
+    let bytes (Entity bytes) = bytes
+
+
+
+module ID =
+
+    let from_uint64 (value: uint64) = ID value
+
+    let value (ID value) = value
+
+    let to_bytes (ID value) =
+        let bytes = BitConverter.GetBytes(value)
+
+        if BitConverter.IsLittleEndian then
+            Array.Reverse(bytes)
+
+        bytes
+
+    let from_bytes (bytes: byte array) =
+        let copy = Array.copy bytes
+
+        if BitConverter.IsLittleEndian then
+            Array.Reverse(copy)
+
+        BitConverter.ToUInt64(copy, 0) |> ID
+
+    let next_by_memory_map (memory_map: Memory_Map) (transaction: LightningTransaction) =
+        use cursor = transaction.CreateCursor(memory_map.handle)
+
+        match cursor.Last() with
+        | struct (MDBResultCode.Success, id_key, _component_value) ->
+            id_key.AsSpan().ToArray()
+            |> from_bytes
+            |> value
+            |> fun value -> value + 1UL
+            |> from_uint64
+
+        | _ -> from_uint64 0UL
+
+    let next (memory_map: Memory_Map) (transaction: LightningTransaction) =
+        use cursor = transaction.CreateCursor(memory_map.handle)
+
+        match cursor.Last() with
+        | struct (MDBResultCode.Success, id_key, _component_value) ->
+            let id = UInt64.from_byte_array (id_key.AsSpan().ToArray())
+            UInt64.to_byte_array (id + 1UL)
+
+        | _ -> UInt64.to_byte_array 0UL
+
+module Component =
+    let from_string (value: string) =
+        Encoding.UTF8.GetBytes(value) |> Component
+
+    let from_int (value: int) =
+        BitConverter.GetBytes(value) |> Component
+
+    let from_bytes (bytes: byte array) = bytes |> Component
+
+
+    let to_string (Component bytes) = Encoding.UTF8.GetString(bytes)
+    let to_int (Component bytes) = BitConverter.ToInt32(bytes, 0)
+
+module Entity'Component =
+    let from_string (representation: string) =
+        let value_component = Component.from_string representation
+        let entity = Entity.from_raw_bytes (Bytes.from_component value_component)
+
+        { Entity = entity
+          Component = value_component }
+
+
+
+module Attribute_Value =
+
+    let from_ids (attribute_id: ID) (value_id: ID) =
+        { Attribute_ID = ID.value attribute_id
+          Value_ID = ID.value value_id }
+
+    let to_bytes (attribute_value: Attribute'Value) =
+        Array.concat [| attribute_value.Attribute_ID
+                        |> ID.from_uint64
+                        |> ID.to_bytes
+
+                        attribute_value.Value_ID
+                        |> ID.from_uint64
+                        |> ID.to_bytes |]
+
+    let from_bytes (bytes: byte array) =
+        if bytes.Length <> 16 then
+            failwith $"Expected Attribute_Value to be 16 bytes, got {bytes.Length}"
+
+        let attribute_id = bytes[0..7] |> ID.from_bytes
+
+        let value_id = bytes[8..15] |> ID.from_bytes
+
+        from_ids attribute_id value_id
+
+
+
+
+module Memory_Map =
+    let from_name_flags (name: string) (flags: DatabaseOpenFlags) =
+        use transaction = environment.BeginTransaction()
+
+        let handle =
+            transaction.OpenDatabase(
+                name,
+                DatabaseConfiguration(
+                    Flags = flags
+
+                )
+            )
+
+        transaction.Commit() |> ignore
+        { name = name; handle = handle }
+
+    let Term_ID_to_Attribute_Values =
+        from_name_flags
+            "Term_ID_to_Attribute_Values"
+            (DatabaseOpenFlags.Create
+             ||| DatabaseOpenFlags.DuplicatesSort)
+
+    let Quads_to_Attribute_Values =
+        from_name_flags
+            "Quads_to_Attribute_Values"
+            (DatabaseOpenFlags.Create
+             ||| DatabaseOpenFlags.DuplicatesSort)
+
+    let Digest_to_Form_ID = from_name_flags "Digest_to_Form_ID" DatabaseOpenFlags.Create
+    let Term_to_Term_ID = from_name_flags "Term_to_Term_ID" DatabaseOpenFlags.Create
+    let Term_ID_to_Term = from_name_flags "Term_ID_to_Term" DatabaseOpenFlags.Create
+
+    let Form_ID_to_Encoding =
+        from_name_flags "Form_ID_to_Encoding" DatabaseOpenFlags.Create
+
+    let Entity_to_ID = from_name_flags "Entity_to_ID" DatabaseOpenFlags.Create
+
+    let ID_to_Component = from_name_flags "ID_to_Component" DatabaseOpenFlags.Create
+
+    let ID_to_Tombstone = from_name_flags "ID_to_Tombstone" DatabaseOpenFlags.Create
+
+    let ID_to_Attribute_Values =
+        from_name_flags
+            "ID_to_Attribute_Values"
+            (DatabaseOpenFlags.Create
+             ||| DatabaseOpenFlags.DuplicatesSort
+             ||| DatabaseOpenFlags.DuplicatesFixed)
+
+module Tombstone =
+    let value = [| 1uy |]
+
+
+
+module Code_Line =
+
+    let from_entity'component (entity'component: Entity'Component) =
+        entity'component.Component |> Component.to_string
+
+
+
+
+type Byte_Map =
+    { key_bytes: byte array
+      value_bytes: byte array }
+
+module Byte_Map =
+    let from_string (string_value: string) =
+        { key_bytes = String.to_digest string_value
+          value_bytes = String.to_byte_array string_value }
+
+
+module Database =
+
+    module Put =
+
+        let Quads (quads: Quad_Encoding array) =
+
+            let stopwatch = Stopwatch.StartNew()
+            let mutable written = 0
+            use transaction = environment.BeginTransaction()
+
+            for quad in quads do
+                let quad_bytes = MessagePackSerializer.Serialize(quad, message_pack_options)
+
+                let S_quad =
+                    MessagePackSerializer.Serialize(
+                        { attribute = SubjectOf
+                          value_bytes = quad_bytes },
+                        message_pack_options
+                    )
+
+                let P_quad =
+                    MessagePackSerializer.Serialize(
+                        { attribute = PredicateOf
+                          value_bytes = quad_bytes },
+                        message_pack_options
+                    )
+
+                let O_quad =
+                    MessagePackSerializer.Serialize(
+                        { attribute = ObjectOf
+                          value_bytes = quad_bytes },
+                        message_pack_options
+                    )
+
+                let C_quad =
+                    MessagePackSerializer.Serialize(
+                        { attribute = ContextOf
+                          value_bytes = quad_bytes },
+                        message_pack_options
+                    )
+
+                let quad_S =
+                    MessagePackSerializer.Serialize(
+                        { attribute = HasSubject
+                          value_bytes = quad.subject_id },
+                        message_pack_options
+                    )
+
+                let quad_P =
+                    MessagePackSerializer.Serialize(
+                        { attribute = HasPredicate
+                          value_bytes = quad.predicate_id },
+                        message_pack_options
+                    )
+
+                let quad_O =
+                    MessagePackSerializer.Serialize(
+                        { attribute = HasObject
+                          value_bytes = quad.object_id },
+                        message_pack_options
+                    )
+
+                let quad_C =
+                    MessagePackSerializer.Serialize(
+                        { attribute = HasContext
+                          value_bytes = quad.context_id },
+                        message_pack_options
+                    )
+
+
+                transaction.Put(Memory_Map.Term_ID_to_Attribute_Values.handle, quad.subject_id, S_quad)
+                |> MDBResultCode.fail_if_not_success "Put Term ID -> attribute value"
+
+                transaction.Put(Memory_Map.Term_ID_to_Attribute_Values.handle, quad.predicate_id, P_quad)
+                |> MDBResultCode.fail_if_not_success "Put Term ID -> attribute value"
+
+                transaction.Put(Memory_Map.Term_ID_to_Attribute_Values.handle, quad.object_id, O_quad)
+                |> MDBResultCode.fail_if_not_success "Put Term ID -> attribute value"
+
+                transaction.Put(Memory_Map.Term_ID_to_Attribute_Values.handle, quad.context_id, C_quad)
+                |> MDBResultCode.fail_if_not_success "Put Term ID -> attribute value"
+
+                transaction.Put(Memory_Map.Quads_to_Attribute_Values.handle, quad_bytes, quad_S)
+                |> MDBResultCode.fail_if_not_success "Put Quad -> attribute value"
+
+                transaction.Put(Memory_Map.Quads_to_Attribute_Values.handle, quad_bytes, quad_P)
+                |> MDBResultCode.fail_if_not_success "Put Quad -> attribute value"
+
+                transaction.Put(Memory_Map.Quads_to_Attribute_Values.handle, quad_bytes, quad_O)
+                |> MDBResultCode.fail_if_not_success "Put Quad -> attribute value"
+
+                transaction.Put(Memory_Map.Quads_to_Attribute_Values.handle, quad_bytes, quad_C)
+                |> MDBResultCode.fail_if_not_success "Put Quad -> attribute value"
+
+                written <- written + 8
+
+
+
+
+
+            transaction.Commit() |> ignore
+
+
+            printfn "written=%i/%i elapsed=%O" written quads.Length stopwatch.Elapsed
+
+            stopwatch.Stop()
+
+        let Strings (strings: string array) =
+            let stopwatch = Stopwatch.StartNew()
+            let mutable written = 0
+            let byte_maps = strings |> Array.map Byte_Map.from_string
+
+            for byte_map_batch in byte_maps |> Array.chunkBySize batch_size do
+                use transaction = environment.BeginTransaction()
+
+                for byte_map in byte_map_batch do
+                    let digest = byte_map.key_bytes
+
+                    match transaction.Get(Memory_Map.Digest_to_Form_ID.handle, digest) with
+                    | struct (MDBResultCode.Success, _key, _id_value) -> ()
+
+                    | struct (MDBResultCode.NotFound, _, _) ->
+                        let form_id = ID.next Memory_Map.Form_ID_to_Encoding transaction
+
+
+                        transaction.Put(Memory_Map.Form_ID_to_Encoding.handle, form_id, byte_map.value_bytes)
+                        |> MDBResultCode.fail_if_not_success "Put Form ID -> Encoding"
+
+                        transaction.Put(Memory_Map.Digest_to_Form_ID.handle, digest, form_id)
+                        |> MDBResultCode.fail_if_not_success "Put Digest -> Form ID"
+
+                    | struct (result_code, _, _) ->
+                        failwith $"Get Digest -> Form ID failed with MDBResultCode: {result_code}"
+
+                transaction.Commit() |> ignore
+
+                written <- written + byte_map_batch.Length
+
+                printfn "written=%i/%i elapsed=%O" written byte_maps.Length stopwatch.Elapsed
+
+            stopwatch.Stop()
+
+        let Term_Keys (terms: Persistent_Term array) =
+            let stopwatch = Stopwatch.StartNew()
+            let mutable written = 0
+
+            let term_keys =
+                terms
+                |> Array.map (fun term -> MessagePackSerializer.Serialize(term, message_pack_options))
+
+            for term_batch in term_keys |> Array.chunkBySize batch_size do
+                use transaction = environment.BeginTransaction()
+
+                for term_key in term_batch do
+
+                    match transaction.Get(Memory_Map.Term_to_Term_ID.handle, term_key) with
+                    | struct (MDBResultCode.Success, _key, _id_value) -> ()
+
+                    | struct (MDBResultCode.NotFound, _, _) ->
+                        let term_id = ID.next Memory_Map.Term_ID_to_Term transaction
+
+
+                        transaction.Put(Memory_Map.Term_ID_to_Term.handle, term_id, term_key)
+                        |> MDBResultCode.fail_if_not_success "Put Term ID -> Term"
+
+                        transaction.Put(Memory_Map.Term_to_Term_ID.handle, term_key, term_id)
+                        |> MDBResultCode.fail_if_not_success "Put Term -> Term ID"
+
+                    | struct (result_code, _, _) ->
+                        failwith $"Get Term -> Term ID failed with MDBResultCode: {result_code}"
+
+                transaction.Commit() |> ignore
+
+                written <- written + term_batch.Length
+
+                printfn "written=%i/%i elapsed=%O" written term_batch.Length stopwatch.Elapsed
+
+            stopwatch.Stop()
+
+        let Entity'Components (entity'components: Entity'Component array) =
+            let stopwatch = Stopwatch.StartNew()
+            let mutable written = 0
+
+            for entity'component_batch in entity'components |> Array.chunkBySize batch_size do
+                use transaction = environment.BeginTransaction()
+
+                for entity'component in entity'component_batch do
+                    let entity_bytes = Entity.bytes entity'component.Entity
+
+                    match transaction.Get(Memory_Map.Entity_to_ID.handle, entity_bytes) with
+                    | struct (MDBResultCode.Success, _key, _id_value) -> ()
+
+                    | struct (MDBResultCode.NotFound, _, _) ->
+                        let id = ID.next_by_memory_map Memory_Map.ID_to_Component transaction
+
+                        let id_bytes = ID.to_bytes id
+
+                        transaction.Put(
+                            Memory_Map.ID_to_Component.handle,
+                            id_bytes,
+                            Bytes.from_component entity'component.Component
+                        )
+                        |> MDBResultCode.fail_if_not_success "Put ID -> component"
+
+                        transaction.Put(Memory_Map.Entity_to_ID.handle, entity_bytes, id_bytes)
+                        |> MDBResultCode.fail_if_not_success "Put entity -> ID"
+
+                    | struct (result_code, _, _) ->
+                        failwith $"Get entity -> ID failed with MDBResultCode: {result_code}"
+
+                transaction.Commit() |> ignore
+
+                written <- written + entity'component_batch.Length
+
+                printfn "written=%i/%i elapsed=%O" written entity'components.Length stopwatch.Elapsed
+
+            stopwatch.Stop()
+
+        let Entity'Attribute_Values (entity: Entity) (attribute'values: Attribute'Value array) =
+
+            use transaction = environment.BeginTransaction()
+
+            let entity_bytes = Entity.bytes entity
+
+            match transaction.Get(Memory_Map.Entity_to_ID.handle, entity_bytes) with
+            | struct (MDBResultCode.Success, _key, id_value) ->
+
+                let id = id_value.AsSpan().ToArray() |> ID.from_bytes
+
+                let id_bytes = ID.to_bytes id
+
+                for attribute'value in attribute'values do
+                    transaction.Put(
+                        Memory_Map.ID_to_Attribute_Values.handle,
+                        id_bytes,
+                        Attribute_Value.to_bytes attribute'value
+                    )
+                    |> MDBResultCode.fail_if_not_success "Put ID -> attribute value"
+
+                transaction.Commit() |> ignore
+
+                attribute'values.Length
+
+            | struct (MDBResultCode.NotFound, _, _) ->
+                transaction.Commit() |> ignore
+                0
+
+            | struct (result_code, _, _) -> failwith $"Get entity -> ID failed with MDBResultCode: {result_code}"
+
+    module Get =
+
+        let Keys_by_Memory_Map (memory_map: Memory_Map) =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            use cursor = transaction.CreateCursor(memory_map.handle)
+
+            cursor.AsEnumerable()
+            |> Seq.map (fun struct (key_bytes, _) -> key_bytes.AsSpan().ToArray())
+            |> Seq.toArray
+
+        let Values_by_Memory_Map (memory_map: Memory_Map) =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            use cursor = transaction.CreateCursor(memory_map.handle)
+
+            cursor.AsEnumerable()
+            |> Seq.map (fun struct (_, value_bytes) -> value_bytes.AsSpan().ToArray())
+            |> Seq.toArray
+
+        let Value_by_Memory_Map (memory_map: Memory_Map) (key_bytes: byte array) =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            match transaction.Get(memory_map.handle, key_bytes) with
+            | struct (MDBResultCode.Success, _key, value_bytes) -> Some(value_bytes.AsSpan().ToArray())
+
+            | struct (MDBResultCode.NotFound, _, _) -> None
+
+            | struct (result_code, _, _) -> failwith $"Get key -> value failed with MDBResultCode: {result_code}"
+
+        let Form_ID_by_String (string_value: string) =
+            let digest = String.to_digest string_value
+            Value_by_Memory_Map Memory_Map.Digest_to_Form_ID digest
+
+        let All_IDs () =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            use cursor = transaction.CreateCursor(Memory_Map.ID_to_Component.handle)
+
+            cursor.AsEnumerable()
+            |> Seq.map (fun struct (id_value, _component_value) -> id_value.AsSpan().ToArray() |> ID.from_bytes)
+            |> Seq.toArray
+
+
+        let All_Entity_IDs () =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            use cursor = transaction.CreateCursor(Memory_Map.Entity_to_ID.handle)
+
+            cursor.AsEnumerable()
+            |> Seq.map (fun struct (entity_value, id_value) ->
+                let entity =
+                    entity_value.AsSpan().ToArray()
+                    |> Entity.from_trusted_bytes
+
+                let id = id_value.AsSpan().ToArray() |> ID.from_bytes
+
+                entity, id)
+            |> Seq.toArray
+
+
+        let All_ID_Components () =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            use cursor = transaction.CreateCursor(Memory_Map.ID_to_Component.handle)
+
+            cursor.AsEnumerable()
+            |> Seq.map (fun struct (id_value, component_value) ->
+                let id = id_value.AsSpan().ToArray() |> ID.from_bytes
+
+                let Component =
+                    component_value.AsSpan().ToArray()
+                    |> Component.from_bytes
+
+                id, Component)
+            |> Seq.toArray
+
+        let ID_by_Entity (entity: Entity) =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            match transaction.Get(Memory_Map.Entity_to_ID.handle, Entity.bytes entity) with
+            | struct (MDBResultCode.Success, _key, id_value) ->
+                id_value.AsSpan().ToArray()
+                |> ID.from_bytes
+                |> Some
+
+            | struct (MDBResultCode.NotFound, _, _) -> None
+
+            | struct (result_code, _, _) -> failwith $"Get entity -> ID failed with MDBResultCode: {result_code}"
+
+
+        let ID_by_String (string_value: string) =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            match transaction.Get(Memory_Map.Digest_to_Form_ID.handle, String.to_digest string_value) with
+            | struct (MDBResultCode.Success, _key, id_value) -> Some(id_value.AsSpan().ToArray())
+
+            | struct (MDBResultCode.NotFound, _, _) -> None
+
+            | struct (result_code, _, _) -> failwith $"Get entity -> ID failed with MDBResultCode: {result_code}"
+
+
+        let Component_by_ID (id: ID) =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            match transaction.Get(Memory_Map.ID_to_Component.handle, ID.to_bytes id) with
+            | struct (MDBResultCode.Success, _key, component_value) ->
+                component_value.AsSpan().ToArray()
+                |> Component.from_bytes
+                |> Some
+
+            | struct (MDBResultCode.NotFound, _, _) -> None
+
+            | struct (result_code, _, _) -> failwith $"Get ID -> component failed with MDBResultCode: {result_code}"
+
+        let Component_by_Entity (entity: Entity) =
+            entity
+            |> ID_by_Entity
+            |> Option.bind Component_by_ID
+
+        let String_by_ID (id_bytes: byte array) =
+            use transaction = environment.BeginTransaction(TransactionBeginFlags.ReadOnly)
+
+            match transaction.Get(Memory_Map.Form_ID_to_Encoding.handle, id_bytes) with
+            | struct (MDBResultCode.Success, _key, component_value) ->
+                component_value.AsSpan().ToArray()
+                |> String.from_byte_array
+                |> Some
+
+            | struct (MDBResultCode.NotFound, _, _) -> None
+
+            | struct (result_code, _, _) -> failwith $"Get ID -> component failed with MDBResultCode: {result_code}"
+
+    module Disable =
+
+        let Entity (entity: Entity) =
+            use transaction = environment.BeginTransaction()
+
+            let entity_bytes = Entity.bytes entity
+
+            match transaction.Get(Memory_Map.Entity_to_ID.handle, entity_bytes) with
+            | struct (MDBResultCode.Success, _key, id_value) ->
+
+                let id = id_value.AsSpan().ToArray() |> ID.from_bytes
+
+                transaction.Put(Memory_Map.ID_to_Tombstone.handle, ID.to_bytes id, Tombstone.value)
+                |> MDBResultCode.fail_if_not_success "Put ID -> tombstone"
+
+                transaction.Commit() |> ignore
+
+                1
+
+            | struct (MDBResultCode.NotFound, _, _) ->
+                transaction.Commit() |> ignore
+                0
+
+            | struct (result_code, _, _) -> failwith $"Get entity -> ID failed with MDBResultCode: {result_code}"
+
+    module Enable =
+
+        let Entity (entity: Entity) =
+            use transaction = environment.BeginTransaction()
+
+            let entity_bytes = Entity.bytes entity
+
+            match transaction.Get(Memory_Map.Entity_to_ID.handle, entity_bytes) with
+            | struct (MDBResultCode.Success, _key, id_value) ->
+
+                let id = id_value.AsSpan().ToArray() |> ID.from_bytes
+
+                match transaction.Delete(Memory_Map.ID_to_Tombstone.handle, ID.to_bytes id) with
+                | MDBResultCode.Success ->
+                    transaction.Commit() |> ignore
+                    1
+
+                | MDBResultCode.NotFound ->
+                    transaction.Commit() |> ignore
+                    0
+
+                | result_code -> failwith $"Delete ID -> tombstone failed with MDBResultCode: {result_code}"
+
+            | struct (MDBResultCode.NotFound, _, _) ->
+                transaction.Commit() |> ignore
+                0
+
+            | struct (result_code, _, _) -> failwith $"Get entity -> ID failed with MDBResultCode: {result_code}"
+
+
+
+// TODO
+// consider what to do about triple terms/reified triples
+// consider what to do about triples
+
+
+
+
+type Lexical_Form =
+    {
+
+      string_value: string
+      form_id: byte array
+
+     }
+
+module Lexical_Form =
+    let from_string (string_value: string) =
+        let id_option = Database.Get.Form_ID_by_String string_value
+
+        match id_option with
+        | Some id ->
+            { string_value = string_value
+              form_id = id }
+        | None ->
+            Database.Put.Strings [| string_value |]
+
+            { string_value = string_value
+              form_id =
+                Database.Get.Form_ID_by_String string_value
+                |> Option.get }
+
+type Term =
+    {
+
+      key: Persistent_Term
+      term_id: byte array
+
+     }
+
+module Term =
+    let from_term_key (term_key: Persistent_Term) =
+        let id_option =
+            Database.Get.Value_by_Memory_Map
+                Memory_Map.Term_to_Term_ID
+                (MessagePackSerializer.Serialize(term_key, message_pack_options))
+
+        match id_option with
+        | Some id -> { key = term_key; term_id = id }
+        | None ->
+            Database.Put.Term_Keys [| term_key |]
+
+            { key = term_key
+              term_id =
+                Database.Get.Value_by_Memory_Map
+                    Memory_Map.Term_to_Term_ID
+                    (MessagePackSerializer.Serialize(term_key, message_pack_options))
+                |> Option.get }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let Alice_form = Lexical_Form.from_string "https://www.example.com/Alice"
+let knows_form = Lexical_Form.from_string "https://www.example.com/knows"
+let Bob_form = Lexical_Form.from_string "https://www.example.com/Bob"
+let example_form = Lexical_Form.from_string "https://www.example.com"
+
+let Bob_iri = ResolvedIRI Bob_form.form_id |> Term.from_term_key
+
+let knows_iri =
+    ResolvedIRI knows_form.form_id
+    |> Term.from_term_key
+
+let Alice_iri =
+    ResolvedIRI Alice_form.form_id
+    |> Term.from_term_key
+
+let example_iri =
+    ResolvedIRI example_form.form_id
+    |> Term.from_term_key
+
+
+let Bob'knows'Alice'example =
+    {
+
+      subject_id = Alice_iri.term_id
+      predicate_id = knows_iri.term_id
+      object_id = Bob_iri.term_id
+      context_id = example_iri.term_id
+
+    }
+
+
+Database.Put.Quads [| Bob'knows'Alice'example |]
+
+
+
+let test_attibute_value_bytes =
+    Database.Get.Values_by_Memory_Map Memory_Map.Term_ID_to_Attribute_Values
+    |> Array.distinct
+    |> Array.randomChoice
+
+let test_attribute_value =
+    MessagePackSerializer.Deserialize<Attribute_Value>(test_attibute_value_bytes, message_pack_options)
+
+let test_quad =
+    MessagePackSerializer.Deserialize<Quad_Encoding>(test_attribute_value.value_bytes, message_pack_options)
+
+let test_subject_bytes =
+    Database.Get.Value_by_Memory_Map Memory_Map.Term_ID_to_Term test_quad.subject_id
+    |> Option.get
+
+let test_subject =
+    MessagePackSerializer.Deserialize<Persistent_Term>(test_subject_bytes, message_pack_options)
+
+let test_subject_encoding =
+    let (ResolvedIRI subject_form_id) = test_subject
+
+    Database.Get.Value_by_Memory_Map Memory_Map.Form_ID_to_Encoding subject_form_id
+    |> Option.get
+
+let test_string = String.from_byte_array test_subject_encoding
+
+
+// TODO streamline all of this machinery
+// start with whatever ergonomics are of use when running this on ucdxml to prove viability of all this encoding at scale
+
+
+
+
+let true_form = Lexical_Form.from_string "true"
+
+let true_string_literal =
+    Term.from_term_key
+    <| SimpleLiteral true_form.form_id
+
+true_string_literal.term_id
+
+
+let xsd_string_form =
+    Lexical_Form.from_string "http://www.w3.org/2001/XMLSchema#string"
+
+let xsd_boolean_form =
+    Lexical_Form.from_string "http://www.w3.org/2001/XMLSchema#boolean"
+
+let true_string = SimpleLiteral true_form.form_id
+Database.Put.Term_Keys [| true_string |]
+
+let xsd_anyURI_form =
+    Lexical_Form.from_string "http://www.w3.org/2001/XMLSchema#anyURI"
+
+
+let example_string = Lexical_Form.from_string "example"
+
+
+
+Database.Put.Strings [|
+
+
+                         |]
+
+
+// Database.Get.Values_by_Memory_Map Memory_Map.Form_ID_to_Encoding
+
+
+Database.Get.Form_ID_by_String "example"
+|> Option.bind Database.Get.String_by_ID
+
+Database.Get.Form_ID_by_String "new"
+
+
+
+
+
+
+
+
+
+
+//

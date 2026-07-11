@@ -1,0 +1,359 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix glc: <https://glaciation-project.eu/MetadataReferenceModel#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+
+dc11:contributor a owl:AnnotationProperty.
+dc11:creator a owl:AnnotationProperty.
+dc11:issued a owl:AnnotationProperty.
+dcterms:abstract a owl:AnnotationProperty.
+dcterms:created a owl:AnnotationProperty.
+dcterms:description a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:title a owl:AnnotationProperty.
+bibo:status a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+vann:prefferedNamespacePrefix a owl:AnnotationProperty.
+<https://glaciation-project.eu/MetadataReferenceModel> dc11:contributor """\"Konstantin Tatarnikov\", \"Guangyuan Piao\", \"Alessio Chellini\", \"Paolo Tartara\", \"Péter Forgács\", \" Jonas Böhler\""""@en;
+                                                       dc11:creator """\"Michalis Mountantonakis\", \"Panagiotis Papadakos\", \"Rigo Wenning\""""@en;
+                                                       dc11:issued """\"2024-10-30\"""";
+                                                       dcterms:abstract "The Glaciation Reference Metadata Model (GLC-MRM) provides a conceptual model that allows making data ingestion and data processing interoperable for all the use cases of the Glaciation project. The model can be considered as a general conceptualization of a tasks scheduling problem that considers various measuring indicators over the deployed resources."@en;
+                                                       dcterms:created """\"2024-07-20\"""";
+                                                       dcterms:description """The GLACIATION platform develops a novel Distributed Knowledge Graph (DKG) that stretches across the edge-core-cloud architecture to reduce energy consumption, improving data processing and optimizing data movement operations. Towards this aim, the platform needs to consume the data and metadata that are fed into the DKG. The metadata can affect and inform the decision-making processes in the GLACIATION architecture and introduces the GLACIATION Metadata Reference Model that will be used for modelling the metadata in the DKG.
+
+The GLACIATION Reference Metadata Model makes data ingestion and processing interoperable inside the GLACIATION platform. Linked Data allows for a high level of flexibility and to tackle the variety and merging issues that emerge in heterogenous environments, especially due to the wide range of sensors and other data sources that the platform may integrate. The GLACIATION Reference Metadata Model is tailored to fit the specific purposes of the GLACIATION platform, while the GLACIATION use cases define the scope of the model for better interoperability.
+
+There are common metadata challenges for all use cases. This stems from the use of the Kubernetes orchestration system as a basis for the GLACIATION platform. In addition, common to the platform is the ingestion of data from other sources into the DKG that can then be used to affect processing decisions. There are direct data flows from sensors within the system, but also data and metadata from sources external to the system. This allows the system to react e.g. to environmental situations like weather or temperature, but also to requirements concerning security or privacy. Exemplary uses and specializations of the reference model to the GLACIATION use cases are also provided.
+
+The GLACIATION Metadata Reference Model can be used for scheduling and performing tasks. The model can be considered as a general conceptualization of a tasks scheduling problem that considers various measuring indicators over the deployed resources. It captures the assignment of time-constrained tasks to time constrained and energy consuming resources, that can satisfy various hard and soft constraints, even compositions of such constraints. The tasks can be monitored through various measuring resources using a variety of single or aggregated, predicted or real measurements.
+
+The model is generic, by being both domain and application independent, describing the scheduling tasks, without providing specific solutions on how they can be solved. It can be easily adjusted to each of the current three GLACIATION use cases, covering also the Kubernetes orchestration and its Telemetry System deployed by the project. The proposed model makes it feasible to answer the competency queries defined by each of the Glaciation's use case."""@en;
+                                                       dcterms:license <https://www.apache.org/licenses/LICENSE-2.0>;
+                                                       dcterms:title "The Metadata Reference Model for the EU GLACIATION Project"@en;
+                                                       bibo:status <http://purl.org/ontology/bibo/status/peerReviewed>;
+                                                       vann:preferredNamespaceUri <https://glaciation-project.eu/MetadataReferenceModel>;
+                                                       vann:prefferedNamespacePrefix "glc";
+                                                       a owl:Ontology;
+                                                       rdfs:label "GLACIATION Metadata Reference Model"@en;
+                                                       owl:versionIRI <https://glaciation-project.eu/MetadataReferenceModel/1.1.0/>;
+                                                       owl:versionInfo "1.1.0".
+glc:AggregatedMeasurement a owl:Class;
+                          rdfs:comment "Represents any AggregatedMeasurement, by using an AggregatedFunction, a time interval and time step resolution.";
+                          rdfs:label "AggregatedMeasurement";
+                          rdfs:subClassOf glc:Measurement.
+glc:Aspect a owl:Class;
+           rdfs:comment "It describes the Aspect of a Contstraint, e.g., time, power consumption.";
+           rdfs:label "Aspect";
+           rdfs:subClassOf glc:Class.
+glc:AssignedTask a owl:Class;
+                 rdfs:comment "An AssignedTask that will be performed by using some Resources and will be based on some Constraints.";
+                 rdfs:label "AssignedTask";
+                 rdfs:subClassOf glc:Task.
+glc:Class a owl:Class;
+          rdfs:comment "A generic Class for the GLACIATION project";
+          rdfs:label "Class".
+glc:Constraint a owl:Class;
+               rdfs:comment "For representing the Constraint(s) of a Task.";
+               rdfs:label "Constraint";
+               rdfs:subClassOf glc:Class.
+glc:ElectricalGrid a owl:Class;
+                   rdfs:comment "It represents an electrical grid";
+                   rdfs:label "Electrical Grid";
+                   rdfs:subClassOf glc:EnergyResource.
+glc:EnergyPowerGenerationResource a owl:Class;
+                                  rdfs:comment "It represents an energy resource that generates power";
+                                  rdfs:label "Energy Power Generation Resource";
+                                  rdfs:subClassOf glc:EnergyResource.
+glc:EnergyResource a owl:Class;
+                   rdfs:comment "It represents an energy resource";
+                   rdfs:label "Energy Resource";
+                   rdfs:subClassOf glc:WorkProducingResource.
+glc:HardConstraint a owl:Class;
+                   rdfs:comment "For representing the HardConstraints of a Task.";
+                   rdfs:label "HardConstraint";
+                   rdfs:subClassOf glc:Constraint.
+glc:Measurement a owl:Class;
+                rdfs:comment "Represents any Measurement, e.g., for energy.";
+                rdfs:label "Measurement";
+                rdfs:subClassOf glc:Class.
+glc:MeasurementProperty a owl:Class;
+                        rdfs:comment "Represents a MeasurementProperty, e.g., allocated CPU, energy, etc.";
+                        rdfs:label "MeasurementProperty";
+                        rdfs:subClassOf glc:Class.
+glc:MeasurementUnit a owl:Class;
+                    rdfs:comment "Represents a MeasurementUnit, e.g., Kwh.";
+                    rdfs:label "MeasurementUnit";
+                    rdfs:subClassOf glc:Class.
+glc:MeasuringResource a owl:Class;
+                      rdfs:comment "It represents any WorkProducingResource that can perform Measurements.";
+                      rdfs:label "MeasuringResource";
+                      rdfs:subClassOf glc:Class,
+                                      glc:WorkProducingResource.
+glc:Monitor a owl:Class;
+            rdfs:comment "Represents an entity that monitors an AssignedTask.";
+            rdfs:label "Monitor";
+            rdfs:subClassOf glc:Class.
+glc:NonWorkProducingResource a owl:Class;
+                             rdfs:comment "It represents any NonWorkProducingResource (e.g., dataset).";
+                             rdfs:label "NonWorkProducingResource";
+                             rdfs:subClassOf glc:Resource.
+glc:Resource a owl:Class;
+             rdfs:comment "It represents any Resource.";
+             rdfs:label "Resource";
+             rdfs:subClassOf glc:Class;
+             owl:disjointWith glc:Task.
+glc:Scheduler a owl:Class;
+              rdfs:comment "Responsible for Scheduling a SubmittedTask and for managing the Resources.";
+              rdfs:label "Scheduler";
+              rdfs:subClassOf glc:Class.
+glc:Site a owl:Class;
+         rdfs:comment "It represents any Site, e.g., a location, an island, etc.";
+         rdfs:label "Site";
+         rdfs:subClassOf glc:Class.
+glc:SoftConstraint a owl:Class;
+                   rdfs:comment "For representing the SoftConstraints of a Task.";
+                   rdfs:label "SoftConstraint";
+                   rdfs:subClassOf glc:Constraint.
+glc:SoftConstraintComposition a owl:Class;
+                              rdfs:comment "It describes the composition of SoftConstraints, e.g., the order of soft constraings according to a given preference priority, Pareto, Pareto optimal, etc.";
+                              rdfs:label "SoftConstraintComposition";
+                              rdfs:subClassOf glc:Class.
+glc:Status a owl:Class;
+           rdfs:comment "Represents information about a specific Status over a given time interval.";
+           rdfs:label "Status";
+           rdfs:subClassOf glc:Class.
+glc:SubmittedTask a owl:Class;
+                  rdfs:comment "A Submitted Task that will be processed by a Scheduler.";
+                  rdfs:label "SubmittedTask";
+                  rdfs:subClassOf glc:Task.
+glc:Task a owl:Class;
+         rdfs:comment "It describes any Task that has Constraints and a Status.";
+         rdfs:label "Task";
+         rdfs:subClassOf glc:Class.
+glc:WorkProducingResource a owl:Class;
+                          rdfs:comment "It represents any WorkProducingResource, e.g., a node, a CPU, etc.";
+                          rdfs:label "WorkProducingResource";
+                          rdfs:subClassOf glc:Resource.
+glc:assigns a owl:ObjectProperty;
+            rdfs:comment "A relationship between a Scheduler and an AssignedTask.";
+            rdfs:domain glc:Scheduler;
+            rdfs:label "assigns";
+            rdfs:range glc:AssignedTask;
+            rdfs:subPropertyOf owl:topObjectProperty.
+glc:composedBy a owl:ObjectProperty;
+               rdfs:comment "For keeping information about the SoftConstraints that are included in a Composition.";
+               rdfs:domain glc:SoftConstraintComposition;
+               rdfs:label "composedBy";
+               rdfs:range glc:SoftConstraint;
+               rdfs:subPropertyOf owl:topObjectProperty.
+glc:consumes a owl:ObjectProperty;
+             rdfs:comment "A property for recording the Resource(s) of each AssignedTask.";
+             rdfs:domain glc:AssignedTask;
+             rdfs:label "consumes";
+             rdfs:range glc:Resource;
+             rdfs:subPropertyOf owl:topObjectProperty.
+glc:consumesEnergyFrom a owl:ObjectProperty;
+                       rdfs:comment "The grid where a work producing resource consumes energy from";
+                       rdfs:domain glc:WorkProducingResource;
+                       rdfs:label "consumesEnergyFrom";
+                       rdfs:range glc:ElectricalGrid;
+                       rdfs:subPropertyOf owl:topObjectProperty.
+glc:endTime a owl:DatatypeProperty;
+            rdfs:comment "The end time of a Status of any Class.";
+            rdfs:domain glc:Status;
+            rdfs:label "endTime";
+            rdfs:range xsd:dateTimeStamp;
+            rdfs:subPropertyOf owl:topDataProperty.
+glc:endingInterval a owl:DatatypeProperty;
+                   rdfs:comment "The ending interval time of an AggregatedMeasurement.";
+                   rdfs:domain glc:AggregatedMeasurement;
+                   rdfs:label "endingInterval";
+                   rdfs:range xsd:dateTimeStamp;
+                   rdfs:subPropertyOf owl:topDataProperty.
+glc:hasAggregatedFuntion a owl:DatatypeProperty;
+                         rdfs:comment "The AggregatedFunction of an AggregatedMeasurement.";
+                         rdfs:domain glc:AggregatedMeasurement;
+                         rdfs:label "hasAggregatedFuntion";
+                         rdfs:range xsd:string;
+                         rdfs:subPropertyOf owl:topDataProperty.
+glc:hasAspect a owl:ObjectProperty;
+              rdfs:comment "For keeping information about the Aspect of each Constraint, e.g., time, power consumption.";
+              rdfs:domain glc:Constraint;
+              rdfs:label "hasAspect";
+              rdfs:range glc:Aspect;
+              rdfs:subPropertyOf owl:topObjectProperty.
+glc:hasComposition a owl:ObjectProperty;
+                   rdfs:comment "For keeping information about the Composition of the SoftConstraints of a Task.";
+                   rdfs:domain glc:Task;
+                   rdfs:label "hasComposition";
+                   rdfs:range glc:SoftConstraintComposition;
+                   rdfs:subPropertyOf owl:topObjectProperty.
+glc:hasConfiguration a owl:DatatypeProperty;
+                     rdfs:comment "The Configuration of any instance of a Class, e.g., Task, Resource, etc.";
+                     rdfs:domain glc:Class;
+                     rdfs:label "hasConfiguration";
+                     rdfs:range xsd:string;
+                     rdfs:subPropertyOf owl:topDataProperty.
+glc:hasConstraint a owl:ObjectProperty;
+                  rdfs:comment "A relationship for recording all the Constraints of a Task.";
+                  rdfs:domain glc:Task;
+                  rdfs:label "hasConstraint";
+                  rdfs:range glc:Constraint;
+                  rdfs:subPropertyOf owl:topObjectProperty.
+glc:hasDescription a owl:DatatypeProperty;
+                   rdfs:comment "The Description of any entity.";
+                   rdfs:domain glc:Class;
+                   rdfs:label "hasDescription";
+                   rdfs:range xsd:string;
+                   rdfs:subPropertyOf owl:topDataProperty.
+glc:hasID a owl:DatatypeProperty;
+          rdfs:comment "The ID of any entity.";
+          rdfs:domain glc:Class;
+          rdfs:label "hasID";
+          rdfs:range xsd:string;
+          rdfs:subPropertyOf owl:topDataProperty.
+glc:hasResourceMeasurement a owl:ObjectProperty;
+                           rdfs:comment "A relationship between a Resource and a Measurement.";
+                           rdfs:domain glc:Resource;
+                           rdfs:label "hasResourceMeasurement";
+                           rdfs:range glc:Measurement;
+                           rdfs:subPropertyOf owl:topObjectProperty.
+glc:hasStatus a owl:ObjectProperty;
+              rdfs:comment "A relationship between any Class and its Status.";
+              rdfs:domain glc:Class;
+              rdfs:label "hasStatus";
+              rdfs:range glc:Status;
+              rdfs:subPropertyOf owl:topObjectProperty.
+glc:hasSubResource a owl:ObjectProperty;
+                   rdfs:comment "Relationships for recording the SubResource(s) of each Resource (e.g, the hardware of a node).";
+                   rdfs:domain glc:Resource;
+                   rdfs:label "hasSubResource";
+                   rdfs:range glc:Resource;
+                   rdfs:subPropertyOf owl:topObjectProperty.
+glc:hasTaskMeasurement a owl:ObjectProperty;
+                       rdfs:comment "A relationship between a Task and a Measurement.";
+                       rdfs:domain glc:Task;
+                       rdfs:label "hasTaskMeasurement";
+                       rdfs:range glc:Measurement;
+                       rdfs:subPropertyOf owl:topObjectProperty.
+glc:hasTaskPredictedMeasurement a owl:ObjectProperty;
+                                rdfs:comment "A relationship for recording the PredictedMeasurements of a Task.";
+                                rdfs:domain glc:Task;
+                                rdfs:label "hasTaskPredictedMeasurement";
+                                rdfs:range glc:Measurement;
+                                rdfs:subPropertyOf glc:hasTaskMeasurement.
+glc:hasTaskRealizedMeasurement a owl:ObjectProperty;
+                               rdfs:comment "A relationship for recording the RealizedMeasurements (actual measurements) of a Task.";
+                               rdfs:domain glc:Task;
+                               rdfs:label "hasTaskRealizedMeasurement";
+                               rdfs:range glc:Measurement;
+                               rdfs:subPropertyOf glc:hasTaskMeasurement.
+glc:hasTimestamp a owl:DatatypeProperty;
+                 rdfs:comment "The date and time of a Measurement.";
+                 rdfs:domain glc:Measurement;
+                 rdfs:label "hasTimestamp";
+                 rdfs:range xsd:dateTimeStamp;
+                 rdfs:subPropertyOf owl:topDataProperty.
+glc:hasValue a owl:DatatypeProperty;
+             rdfs:comment "The Value of a Measurement.";
+             rdfs:domain glc:Measurement;
+             rdfs:label "hasValue";
+             rdfs:range xsd:string;
+             rdfs:subPropertyOf owl:topDataProperty.
+glc:isLocatedIn a owl:ObjectProperty;
+                rdfs:comment "The location of a Work Producing Resource";
+                rdfs:domain glc:WorkProducingResource;
+                rdfs:label "isLocatedIn";
+                rdfs:range glc:Site;
+                rdfs:subPropertyOf owl:topObjectProperty.
+glc:makesMeasurement a owl:ObjectProperty;
+                     rdfs:comment "A relationship between a MeasuringResource and a Measurement.";
+                     rdfs:domain glc:MeasuringResource;
+                     rdfs:label "makesMeasurement";
+                     rdfs:range glc:Measurement;
+                     rdfs:subPropertyOf owl:topObjectProperty.
+glc:manages a owl:ObjectProperty;
+            rdfs:comment "A relationship between a Scheduler and a Resource.";
+            rdfs:domain glc:Scheduler;
+            rdfs:label "manages";
+            rdfs:range glc:Resource;
+            rdfs:subPropertyOf owl:topObjectProperty.
+glc:measuredIn a owl:ObjectProperty;
+               rdfs:comment "For recording the MeasurimentUnit of each Measurement.";
+               rdfs:domain glc:Measurement;
+               rdfs:label "measuredIn";
+               rdfs:range glc:MeasurementUnit;
+               rdfs:subPropertyOf owl:topObjectProperty.
+glc:monitors a owl:ObjectProperty;
+             rdfs:comment "For recording which Monitor tracks an AssignedTask.";
+             rdfs:domain glc:Monitor;
+             rdfs:label "monitors";
+             rdfs:range glc:AssignedTask;
+             rdfs:subPropertyOf owl:topObjectProperty.
+glc:produces a owl:ObjectProperty;
+             rdfs:comment "For keeping information about the production Resource, e.g., the output, of an AssignedTask.";
+             rdfs:domain glc:AssignedTask;
+             rdfs:label "produces";
+             rdfs:range glc:Resource;
+             rdfs:subPropertyOf owl:topObjectProperty.
+glc:relatesToConstraint a owl:ObjectProperty;
+                        rdfs:comment "For keeping information about the Constraint that each Measurement relates to.";
+                        rdfs:domain glc:Measurement;
+                        rdfs:label "relatesToConstraint";
+                        rdfs:range glc:Constraint;
+                        rdfs:subPropertyOf owl:topObjectProperty.
+glc:relatesToMeasurementProperty a owl:ObjectProperty;
+                                 rdfs:comment "For recording the MeasurementProperty of each Measurement.";
+                                 rdfs:domain glc:Measurement;
+                                 rdfs:label "relatesToMeasurementProperty";
+                                 rdfs:range glc:MeasurementProperty;
+                                 rdfs:subPropertyOf owl:topObjectProperty.
+glc:reschedules a owl:ObjectProperty;
+                rdfs:comment "A relationship between a Scheduler and an AssignedTask that concerns rescheduling.";
+                rdfs:domain glc:Scheduler;
+                rdfs:label "reschedules";
+                rdfs:range glc:AssignedTask;
+                rdfs:subPropertyOf owl:topObjectProperty.
+glc:scheduledBy a owl:ObjectProperty;
+                rdfs:comment "A relationship between a SubmittedTask and a Scheduler.";
+                rdfs:domain glc:SubmittedTask;
+                rdfs:label "scheduledBy";
+                rdfs:range glc:Scheduler;
+                rdfs:subPropertyOf owl:topObjectProperty.
+glc:startTime a owl:DatatypeProperty;
+              rdfs:comment "The date and time of a Status.";
+              rdfs:domain glc:Status;
+              rdfs:label "startTime";
+              rdfs:range xsd:dateTimeStamp;
+              rdfs:subPropertyOf owl:topDataProperty.
+glc:startingInterval a owl:DatatypeProperty;
+                     rdfs:comment "The starting interval time of an AggregatedMeasurement.";
+                     rdfs:domain glc:AggregatedMeasurement;
+                     rdfs:label "startingInterval";
+                     rdfs:range xsd:dateTimeStamp;
+                     rdfs:subPropertyOf owl:topDataProperty.
+glc:statusCode a owl:DatatypeProperty;
+               rdfs:comment "The status code of a Status.";
+               rdfs:domain glc:Status;
+               rdfs:label "statusCode";
+               rdfs:range xsd:integer;
+               rdfs:subPropertyOf owl:topDataProperty.
+glc:timeStepResolution a owl:DatatypeProperty;
+                       rdfs:comment "The time step resolution of an AggregatedMeasurement.";
+                       rdfs:domain glc:AggregatedMeasurement;
+                       rdfs:label "timeStepResolution";
+                       rdfs:range xsd:string;
+                       rdfs:subPropertyOf owl:topDataProperty.
+glc:triggersReschedule a owl:ObjectProperty;
+                       rdfs:comment "A triggered event relationship about Rescheduling from a Monitor.";
+                       rdfs:domain glc:Monitor;
+                       rdfs:label "triggersReschedule";
+                       rdfs:range glc:Scheduler;
+                       rdfs:subPropertyOf owl:topObjectProperty.

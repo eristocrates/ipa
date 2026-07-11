@@ -1,0 +1,45 @@
+	EckertVI =  _	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	GallStereographic =  _	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	Loximuthal =	
+	LongitudeofCentralMeridian +  ___	
+	LatitudeofProjectionOrigin +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	Mollweide =	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	QuarticAuthalic =  _	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	WinkelI =  _	
+	StandardParallel +  _	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	WinkelII =  _	
+	StandardParallel +  _	
+	LongitudeofCentralMeridian +  ___	
+	FalseEasting +  _	
+	FalseNorthing  _	
+		
+	OtherESRIProjection =  __	
+	Appropriate data elements 4.1.2.1.23.1 through 4.1.2.1.23.18 to document	
+	the map projection parameters.  See Appendix A for the production rules.	
+		
+	MapProjectionParameters =  __	
+	Appropriate data elements 4.1.2.1.23.1 through 4.1.2.1.23.18 to document	
+the map projection parameters.  See Appendix A for more details.		

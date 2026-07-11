@@ -1,0 +1,1314 @@
+
+    unicode_chars
+    |> element_with'attribute_local_name "AHex"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "AHex" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun AHex_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char AHex_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "ASCII_Hex_Digit" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Alpha"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Alpha" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Alpha_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Alpha_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Alphabetic" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Bidi_C"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Bidi_C" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Bidi_C_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Bidi_C_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Bidi_Control" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Bidi_M"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Bidi_M" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Bidi_M_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Bidi_M_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Bidi_Mirrored" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Cased"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Cased" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Cased_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Cased_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Cased" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "CE"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "CE" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun CE_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char CE_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Composition_Exclusion" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "CI"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "CI" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun CI_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char CI_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Case_Ignorable" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Comp_Ex"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Comp_Ex" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Comp_Ex_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Comp_Ex_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Full_Composition_Exclusion" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "CWCF"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "CWCF" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun CWCF_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char CWCF_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Changes_When_Casefolded" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "CWCM"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "CWCM" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun CWCM_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char CWCM_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Changes_When_Casemapped" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "CWKCF"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "CWKCF" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun CWKCF_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char CWKCF_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Changes_When_NFKC_Casefolded" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "CWL"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "CWL" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun CWL_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char CWL_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Changes_When_Lowercased" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "CWT"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "CWT" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun CWT_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char CWT_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Changes_When_Titlecased" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "CWU"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "CWU" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun CWU_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char CWU_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Changes_When_Uppercased" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Dash"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Dash" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Dash_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Dash_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Dash" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Dep"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Dep" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Dep_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Dep_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Deprecated" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "DI"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "DI" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun DI_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char DI_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Default_Ignorable_Code_Point" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Dia"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Dia" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Dia_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Dia_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Diacritic" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "EBase"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "EBase" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun EBase_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char EBase_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Emoji_Modifier_Base" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "EComp"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "EComp" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun EComp_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char EComp_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Emoji_Component" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "EMod"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "EMod" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun EMod_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char EMod_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Emoji_Modifier" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Emoji"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Emoji" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Emoji_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Emoji_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Emoji" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "EPres"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "EPres" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun EPres_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char EPres_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Emoji_Presentation" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Ext"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Ext" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Ext_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Ext_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Extender" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "ExtPict"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "ExtPict" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun ExtPict_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char ExtPict_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Extended_Pictographic" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Gr_Base"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Gr_Base" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Gr_Base_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Gr_Base_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Grapheme_Base" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Gr_Ext"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Gr_Ext" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Gr_Ext_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Gr_Ext_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Grapheme_Extend" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Gr_Link"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Gr_Link" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Gr_Link_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Gr_Link_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Grapheme_Link" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Hex"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Hex" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Hex_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Hex_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Hex_Digit" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Hyphen"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Hyphen" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Hyphen_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Hyphen_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Hyphen" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "ID_Compat_Math_Continue"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "ID_Compat_Math_Continue" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun ID_Compat_Math_Continue_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char ID_Compat_Math_Continue_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "ID_Compat_Math_Continue" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "ID_Compat_Math_Start"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "ID_Compat_Math_Start" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun ID_Compat_Math_Start_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char ID_Compat_Math_Start_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "ID_Compat_Math_Start" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "IDC"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "IDC" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun IDC_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char IDC_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "ID_Continue" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Ideo"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Ideo" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Ideo_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Ideo_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Ideographic" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "IDS"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "IDS" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun IDS_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char IDS_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "ID_Start" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "IDSB"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "IDSB" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun IDSB_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char IDSB_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "IDS_Binary_Operator" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "IDST"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "IDST" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun IDST_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char IDST_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "IDS_Trinary_Operator" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "IDSU"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "IDSU" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun IDSU_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char IDSU_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "IDS_Unary_Operator" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Join_C"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Join_C" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Join_C_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Join_C_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Join_Control" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "kEH_NoMirror"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "kEH_NoMirror" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun kEH_NoMirror_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char kEH_NoMirror_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "kEH_NoMirror" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "kEH_NoRotate"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "kEH_NoRotate" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun kEH_NoRotate_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char kEH_NoRotate_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "kEH_NoRotate" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "LOE"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "LOE" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun LOE_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char LOE_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Logical_Order_Exception" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Lower"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Lower" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Lower_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Lower_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Lowercase" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Math"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Math" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Math_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Math_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Math" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "MCM"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "MCM" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun MCM_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char MCM_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Modifier_Combining_Mark" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "NChar"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "NChar" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun NChar_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char NChar_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Noncharacter_Code_Point" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "OAlpha"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "OAlpha" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun OAlpha_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char OAlpha_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Other_Alphabetic" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "ODI"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "ODI" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun ODI_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char ODI_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Other_Default_Ignorable_Code_Point" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "OGr_Ext"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "OGr_Ext" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun OGr_Ext_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char OGr_Ext_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Other_Grapheme_Extend" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "OIDC"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "OIDC" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun OIDC_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char OIDC_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Other_ID_Continue" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "OIDS"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "OIDS" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun OIDS_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char OIDS_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Other_ID_Start" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "OLower"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "OLower" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun OLower_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char OLower_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Other_Lowercase" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "OMath"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "OMath" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun OMath_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char OMath_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Other_Math" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "OUpper"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "OUpper" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun OUpper_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char OUpper_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Other_Uppercase" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Pat_Syn"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Pat_Syn" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Pat_Syn_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Pat_Syn_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Pattern_Syntax" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Pat_WS"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Pat_WS" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Pat_WS_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Pat_WS_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Pattern_White_Space" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "PCM"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "PCM" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun PCM_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char PCM_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Prepended_Concatenation_Mark" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "QMark"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "QMark" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun QMark_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char QMark_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Quotation_Mark" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Radical"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Radical" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Radical_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Radical_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Radical" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "RI"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "RI" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun RI_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char RI_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Regional_Indicator" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "SD"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "SD" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun SD_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char SD_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Soft_Dotted" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "STerm"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "STerm" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun STerm_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char STerm_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Sentence_Terminal" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Term"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Term" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Term_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Term_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Terminal_Punctuation" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "UIdeo"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "UIdeo" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun UIdeo_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char UIdeo_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Unified_Ideograph" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "Upper"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "Upper" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun Upper_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char Upper_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Uppercase" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "VS"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "VS" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun VS_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char VS_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Variation_Selector" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "WSpace"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "WSpace" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun WSpace_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char WSpace_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "White_Space" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "XIDC"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "XIDC" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun XIDC_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char XIDC_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "XID_Continue" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "XIDS"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "XIDS" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun XIDS_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char XIDS_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "XID_Start" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "XO_NFC"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "XO_NFC" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun XO_NFC_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char XO_NFC_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Expands_On_NFC" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "XO_NFD"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "XO_NFD" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun XO_NFD_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char XO_NFD_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Expands_On_NFD" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "XO_NFKC"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "XO_NFKC" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun XO_NFKC_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char XO_NFKC_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Expands_On_NFKC" Term.Tag
+
+    )
+
+    
+
+    unicode_chars
+    |> element_with'attribute_local_name "XO_NFKD"
+    |> Array.Parallel.filter (fun unicode_char ->
+
+        let attribute = xattribute "XO_NFKD" unicode_char |> Array.head
+        attribute = "Y"
+
+    )
+    |> Array.Parallel.iter (fun XO_NFKD_char ->
+
+        let unicodepoint_value = unicodepoint_from'unicode_char XO_NFKD_char
+        let unicodepoint = unicodepoint.Item unicodepoint_value
+        unicodepoint.RegisterTerm "Expands_On_NFKD" Term.Tag
+
+    )
+
+    

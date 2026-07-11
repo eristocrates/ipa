@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1108.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="APPENDIX H 1108 Compatibility and Implementation Notes effect of masked images when printing to LanguageLevel 1 or LanguageLevel 2 output devices; they print the base image without the mask. The Acrobat 4.0 viewer displays masked images, but only when the amount of data in the mask is below a certain limit. Above that, the viewer displays the base image without the mask. 4.9.1, “Form Dictionaries” 55. All Acrobat viewers ignore the Name entry in a form dictionary. 4.9.3, “Reference XObjects 56. Acrobat 6.0 and earlier viewers do not implement reference XObjects. The proxy is always used for viewing and printing. 5.2.5, “Text Rendering Mode” 57. In Acrobat 4.05 and earlier versions, text-showing operators such as Tj first perform the fills for all the glyphs in the string being shown, followed by the strokes for all the glyphs. This produces incorrect results if glyphs overlap. 5.3.2, “Text-Showing Operators” 58. In versions of Acrobat earlier than 3.0, the horizontal coordinate of the text position after the TJ operator paints a character glyph and moves by any specified offset must not be less than it was before the glyph was painted. 59. In Acrobat 4.0 and earlier viewers, position adjustments specified by numbers in a TJ array are performed incorrectly if the horizontal scaling parameter, Th , is different from its default value of 100. 5.5.1, “Type 1 Fonts” 60. All Acrobat viewers ignore the Name entry in a font dictionary. 61. Acrobat 5.0 and later viewers use the glyph widths stored in the font dictionary to override the widths of glyphs in the font program itself, which improves the consistency of the display and printing of the document. This addresses the situation in which the font program used by the viewer  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1108.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">APPENDIX H</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1108</span></div>
+<div class="pos" id="*49:384" style="top:49;left:384"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Compatibility and Implementation Notes</span></div>
+<div class="pos" id="*99:174" style="top:99;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">effect of masked images when printing to LanguageLevel 1 or Lan-</span></div>
+<div class="pos" id="*117:174" style="top:117;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">guageLevel 2 output devices; they print the base image without the mask.</span></div>
+<div class="pos" id="*143:174" style="top:143;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The Acrobat 4.0 viewer displays masked images, but only when the</span></div>
+<div class="pos" id="*161:174" style="top:161;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">amount of data in the mask is below a certain limit. Above that, the viewer</span></div>
+<div class="pos" id="*179:174" style="top:179;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">displays the base image without the mask.</span></div>
+<div class="pos" id="*221:133" style="top:221;left:133"><a href="pg_0357.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">4.9.1, “Form Dictionaries”</span></a></div>
+<div class="pos" id="*249:144" style="top:249;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">55. All Acrobat viewers ignore the</span></div>
+<div class="pos" id="*250:355" style="top:250;left:355"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Name</span></div>
+<div class="pos" id="*249:393" style="top:249;left:393"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in a form dictionary.</span></div>
+<div class="pos" id="*292:133" style="top:292;left:133"><a href="pg_0361.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">4.9.3, “Reference XObjects</span></a></div>
+<div class="pos" id="*321:144" style="top:321;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">56. Acrobat 6.0 and earlier viewers do not implement reference XObjects. The</span></div>
+<div class="pos" id="*339:174" style="top:339;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">proxy is always used for viewing and printing.</span></div>
+<div class="pos" id="*381:133" style="top:381;left:133"><a href="pg_0401.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">5.2.5, “Text Rendering Mode”</span></a></div>
+<div class="pos" id="*409:144" style="top:409;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">57. In Acrobat 4.05 and earlier versions, text-showing operators such as</span></div>
+<div class="pos" id="*410:593" style="top:410;left:593"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Tj</span></div>
+<div class="pos" id="*427:174" style="top:427;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">first perform the fills for all the glyphs in the string being shown, followed</span></div>
+<div class="pos" id="*445:174" style="top:445;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">by the strokes for all the glyphs. This produces incorrect results if glyphs</span></div>
+<div class="pos" id="*463:174" style="top:463;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">overlap.</span></div>
+<div class="pos" id="*506:133" style="top:506;left:133"><a href="pg_0407.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">5.3.2, “Text-Showing Operators”</span></a></div>
+<div class="pos" id="*535:144" style="top:535;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">58. In versions of Acrobat earlier than 3.0, the horizontal coordinate of the</span></div>
+<div class="pos" id="*552:174" style="top:552;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">text position after the</span></div>
+<div class="pos" id="*553:307" style="top:553;left:307"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">TJ</span></div>
+<div class="pos" id="*552:322" style="top:552;left:322"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operator paints a character glyph and moves by</span></div>
+<div class="pos" id="*570:174" style="top:570;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">any specified offset must not be less than it was before the glyph was</span></div>
+<div class="pos" id="*587:174" style="top:587;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">painted.</span></div>
+<div class="pos" id="*613:144" style="top:613;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">59. In Acrobat 4.0 and earlier viewers, position adjustments specified by num-</span></div>
+<div class="pos" id="*630:174" style="top:630;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">bers in a</span></div>
+<div class="pos" id="*631:231" style="top:631;left:231"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">TJ</span></div>
+<div class="pos" id="*630:247" style="top:630;left:247"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">array are performed incorrectly if the horizontal scaling pa-</span></div>
+<div class="pos" id="*647:174" style="top:647;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">rameter,</span></div>
+<div class="pos" id="*647:226" style="top:647;left:226"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">T</span></div>
+<div class="pos" id="*654:235" style="top:654;left:235"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">h</span></div>
+<div class="pos" id="*647:242" style="top:647;left:242"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, is different from its default value of 100.</span></div>
+<div class="pos" id="*690:133" style="top:690;left:133"><a href="pg_0412.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">5.5.1, “Type 1 Fonts”</span></a></div>
+<div class="pos" id="*718:144" style="top:718;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">60. All Acrobat viewers ignore the</span></div>
+<div class="pos" id="*719:355" style="top:719;left:355"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Name</span></div>
+<div class="pos" id="*718:393" style="top:718;left:393"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in a font dictionary.</span></div>
+<div class="pos" id="*744:144" style="top:744;left:144"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">61. Acrobat 5.0 and later viewers use the glyph widths stored in the font dic-</span></div>
+<div class="pos" id="*761:174" style="top:761;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tionary to override the widths of glyphs in the font program itself, which</span></div>
+<div class="pos" id="*779:174" style="top:779;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">improves the consistency of the display and printing of the document.</span></div>
+<div class="pos" id="*796:174" style="top:796;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">This addresses the situation in which the font program used by the viewer</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1107.htm" title="Go to previous page">Previous</a> <a href="pg_1109.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1108);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0559.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 7.5 559 Specifying Transparency in PDF • Objects painted by operators in the transparency group XObject’s content stream are composited into the group according to the rules described in Section 7.2.2, “Basic Compositing Formula.” The knockout flag (K) in the group attributes dictionary and the transparency-related parameters of the graphics state contribute to this computation. • If a group color space (CS) is specified in the group attributes dictionary, all painting operators convert source colors to that color space before compositing objects into the group, and the resulting color at each point is interpreted in that color space. If no group color space is specified, the prevailing color space is dynamically inherited from the parent group or page. (If not otherwise specified, the page group’s color space is inherited from the native color space of the output device.) • After execution of the transparency group XObject’s content stream, the graphics state reverts to its former state before the invocation of the Do operator (as it does for any form XObject). The group’s shape—the union of all objects painted into the group, clipped by the group XObject’s bounding box—is then painted into the parent group or page, using the group’s accumulated color and opacity at each point. Note: If the Do operator is invoked more than once for a given transparency group XObject, each invocation is treated as a separate transparency group. That is, the result is as if the group were independently composited with the backdrop on each invocation. Applications that perform caching of rendered form XObjects must take this requirement into account. The actions described above occur only for a transparency group XObject—a form XObject having a Group entry that designates a group attributes subdictionary whose group subtype (S) is Transparency. An ordinary form XObject— one having no Group entry—is not subject to any grouping behavior for transparency purposes. That is, the graphics objects it contains are composited individually, just as if they were painted directly into the parent group or page. 7.5.6 Patterns and Transparency In the transparent imaging model, the graphics objects making up the pattern cell of a tiling pattern (see Section 4.6.2, “Tiling Patterns”) can include transparent objects and transparency groups. Transparent compositing can occur both within the pattern cell and between it and the backdrop wherever the pattern is painted.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0559.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 7.5</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">559</span></div>
+<div class="pos" id="*49:432" style="top:49;left:432"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Specifying Transparency in PDF</span></div>
+<div class="pos" id="*96:133" style="top:96;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*99:145" style="top:99;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Objects painted by operators in the transparency group XObject’s content</span></div>
+<div class="pos" id="*117:145" style="top:117;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stream are composited into the group according to the rules described in Sec-</span></div>
+<div class="pos" id="*135:145" style="top:135;left:145"><a href="pg_0517.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tion 7.2.2, “Basic Compositing Formula.” The knockout flag (</span></a></div>
+<div class="pos" id="*136:498" style="top:136;left:498"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">K</span></div>
+<div class="pos" id="*135:506" style="top:135;left:506"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) in the group at-</span></div>
+<div class="pos" id="*153:145" style="top:153;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tributes dictionary and the transparency-related parameters of the graphics</span></div>
+<div class="pos" id="*171:145" style="top:171;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">state contribute to this computation.</span></div>
+<div class="pos" id="*195:133" style="top:195;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*197:145" style="top:197;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">If a group color space (</span></div>
+<div class="pos" id="*198:287" style="top:198;left:287"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">CS</span></div>
+<div class="pos" id="*197:302" style="top:197;left:302"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) is specified in the group attributes dictionary, all</span></div>
+<div class="pos" id="*215:145" style="top:215;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">painting operators convert source colors to that color space before compositing</span></div>
+<div class="pos" id="*233:145" style="top:233;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">objects into the group, and the resulting color at each point is interpreted in</span></div>
+<div class="pos" id="*251:145" style="top:251;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">that color space. If no group color space is specified, the prevailing color space</span></div>
+<div class="pos" id="*270:145" style="top:270;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">is dynamically inherited from the parent group or page. (If not otherwise spec-</span></div>
+<div class="pos" id="*288:145" style="top:288;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ified, the page group’s color space is inherited from the native color space of the</span></div>
+<div class="pos" id="*306:145" style="top:306;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">output device.)</span></div>
+<div class="pos" id="*330:133" style="top:330;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*332:145" style="top:332;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">After execution of the transparency group XObject’s content stream, the graph-</span></div>
+<div class="pos" id="*350:145" style="top:350;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ics state reverts to its former state before the invocation of the</span></div>
+<div class="pos" id="*351:503" style="top:351;left:503"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Do</span></div>
+<div class="pos" id="*350:523" style="top:350;left:523"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operator (as it</span></div>
+<div class="pos" id="*368:145" style="top:368;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">does for any form XObject). The group’s shape—the union of all objects paint-</span></div>
+<div class="pos" id="*386:145" style="top:386;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ed into the group, clipped by the group XObject’s bounding box—is then paint-</span></div>
+<div class="pos" id="*404:145" style="top:404;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ed into the parent group or page, using the group’s accumulated color and</span></div>
+<div class="pos" id="*422:145" style="top:422;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">opacity at each point.</span></div>
+<div class="pos" id="*457:133" style="top:457;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MinionPro-BoldIt,Arial,Helvetica,sans-serif;color:#000000;">Note:</span></div>
+<div class="pos" id="*457:168" style="top:457;left:168"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">If the</span></div>
+<div class="pos" id="*458:202" style="top:458;left:202"><span id="*12" style="font-style:italic;font-weight:700;font-size:12px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Do</span></div>
+<div class="pos" id="*457:222" style="top:457;left:222"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">operator is invoked more than once for a given transparency group</span></div>
+<div class="pos" id="*475:133" style="top:475;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">XObject, each invocation is treated as a separate transparency group. That is, the</span></div>
+<div class="pos" id="*493:133" style="top:493;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">result is as if the group were independently composited with the backdrop on each</span></div>
+<div class="pos" id="*511:133" style="top:511;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">invocation. Applications that perform caching of rendered form XObjects must take</span></div>
+<div class="pos" id="*529:133" style="top:529;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">this requirement into account.</span></div>
+<div class="pos" id="*564:133" style="top:564;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The actions described above occur only for a transparency group XObject—a</span></div>
+<div class="pos" id="*582:133" style="top:582;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">form XObject having a</span></div>
+<div class="pos" id="*583:277" style="top:583;left:277"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Group</span></div>
+<div class="pos" id="*582:319" style="top:582;left:319"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry that designates a group attributes subdic-</span></div>
+<div class="pos" id="*600:133" style="top:600;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tionary whose group subtype (</span></div>
+<div class="pos" id="*601:315" style="top:601;left:315"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">S</span></div>
+<div class="pos" id="*600:322" style="top:600;left:322"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) is</span></div>
+<div class="pos" id="*601:346" style="top:601;left:346"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Transparency</span></div>
+<div class="pos" id="*600:423" style="top:600;left:423"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. An ordinary form XObject—</span></div>
+<div class="pos" id="*618:133" style="top:618;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">one having no</span></div>
+<div class="pos" id="*619:218" style="top:619;left:218"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Group</span></div>
+<div class="pos" id="*618:258" style="top:618;left:258"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry—is not subject to any grouping behavior for transpar-</span></div>
+<div class="pos" id="*636:133" style="top:636;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ency purposes. That is, the graphics objects it contains are composited individu-</span></div>
+<div class="pos" id="*654:133" style="top:654;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ally, just as if they were painted directly into the parent group or page.</span></div>
+<div class="pos" id="*697:88" style="top:697;left:88"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">7.5.6 Patterns and Transparency</span></div>
+<div class="pos" id="*734:133" style="top:734;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">In the transparent imaging model, the graphics objects making up the pattern cell</span></div>
+<div class="pos" id="*752:133" style="top:752;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">of a tiling pattern (see Section 4.6.2, “Tiling Patterns”) can include transparent</span></div>
+<div class="pos" id="*770:133" style="top:770;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">objects and transparency groups. Transparent compositing can occur both within</span></div>
+<div class="pos" id="*788:133" style="top:788;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the pattern cell and between it and the backdrop wherever the pattern is painted.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0558.htm" title="Go to previous page">Previous</a> <a href="pg_0560.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(559);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

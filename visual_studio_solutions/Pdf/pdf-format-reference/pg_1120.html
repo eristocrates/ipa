@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_1120.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="APPENDIX H 1120 Compatibility and Implementation Notes 8.6.6, “Forms Data Format” (FDF Catalog) 128. The Acrobat implementation of interactive forms displays the value of the Status entry, if any, in an alert note when importing an FDF file. 129. The only Encoding value supported by Acrobat 4.0 is Shift−JIS. Acrobat 5.0 supports Shift−JIS, UHC, GBK, and BigFive. If any other value is specified, the default, PDFDocEncoding, is used. 8.6.6, “Forms Data Format” (FDF Fields) 130. Of all the possible entries shown in Table 8.96 on page 717, Acrobat 3.0 exports only the V entry when generating FDF, and Acrobat 4.0 and later versions export only the V and AP entries. Acrobat does, however, import FDF files containing fields that have any of the described entries. 131. If the FDF dictionary in an FDF file received as a result of a submit-form action contains an F entry specifying a form other than the one currently being displayed, Acrobat fetches the specified form before importing the FDF file. 132. When exporting a form to an FDF file, Acrobat sets the F entry in the FDF dictionary to a relative file specification giving the location of the FDF file relative to that of the file from which it was exported. 133. If an FDF file being imported contains fields whose fully qualified names are not in the form, Acrobat discards those fields. This feature can be useful, for example, if an FDF file containing commonly used fields (such as name and address) is used to populate various types of forms, not all of which necessarily include all of the fields available in the FDF file. 134. As shown in Table 8.96 on page 717, the only required entry in the field dictionary is T. One possible use for exporting FDF with fields containing T entries but no V entries is to indicate to a server which fields are desired in the FDF files returned in response. For example, a server accessing a database might use this information to decide whether to transmit all fields in a record or just some selected ones. As noted in implementation note 133, the Acrobat implementation of interactive forms ignores fields in the imported FDF file that do not exist in the form. 135. The Acrobat implementation of forms allows the option of submitting the data in a submit-form action in HTML Form format for the benefit of existing server scripts written to process such forms. Note, however, that any such existing scripts that generate new HTML forms in response need to be modified to generate FDF instead.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_1120.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">APPENDIX H</span></div>
+<div class="pos" id="*41:356" style="top:41;left:356"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">1120</span></div>
+<div class="pos" id="*49:384" style="top:49;left:384"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Compatibility and Implementation Notes</span></div>
+<div class="pos" id="*99:133" style="top:99;left:133"><a href="pg_0710.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.6.6, “Forms Data Format” (FDF Catalog)</span></a></div>
+<div class="pos" id="*126:137" style="top:126;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">128. The Acrobat implementation of interactive forms displays the value of the</span></div>
+<div class="pos" id="*145:174" style="top:145;left:174"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Status</span></div>
+<div class="pos" id="*144:214" style="top:144;left:214"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry, if any, in an alert note when importing an FDF file.</span></div>
+<div class="pos" id="*169:137" style="top:169;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">129. The only</span></div>
+<div class="pos" id="*170:229" style="top:170;left:229"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Encoding</span></div>
+<div class="pos" id="*169:287" style="top:169;left:287"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value supported by Acrobat 4.0 is</span></div>
+<div class="pos" id="*170:482" style="top:170;left:482"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Shift−JIS</span></div>
+<div class="pos" id="*169:530" style="top:169;left:530"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. Acrobat 5.0</span></div>
+<div class="pos" id="*187:174" style="top:187;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">supports</span></div>
+<div class="pos" id="*188:230" style="top:188;left:230"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Shift−JIS</span></div>
+<div class="pos" id="*187:278" style="top:187;left:278"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*188:286" style="top:188;left:286"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">UHC</span></div>
+<div class="pos" id="*187:311" style="top:187;left:311"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*188:319" style="top:188;left:319"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">GBK</span></div>
+<div class="pos" id="*187:342" style="top:187;left:342"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, and</span></div>
+<div class="pos" id="*188:377" style="top:188;left:377"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">BigFive</span></div>
+<div class="pos" id="*187:417" style="top:187;left:417"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. If any other value is specified,</span></div>
+<div class="pos" id="*205:174" style="top:205;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the default,</span></div>
+<div class="pos" id="*206:243" style="top:206;left:243"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">PDFDocEncoding</span></div>
+<div class="pos" id="*205:345" style="top:205;left:345"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">, is used.</span></div>
+<div class="pos" id="*241:133" style="top:241;left:133"><a href="pg_0710.htm"><span id="*14" style="font-style:normal;font-weight:700;font-size:14px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">8.6.6, “Forms Data Format” (FDF Fields)</span></a></div>
+<div class="pos" id="*268:137" style="top:268;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">130. Of all the possible entries shown in Table 8.96 on page 717, Acrobat 3.0</span></div>
+<div class="pos" id="*286:174" style="top:286;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">exports only the</span></div>
+<div class="pos" id="*287:274" style="top:287;left:274"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">V</span></div>
+<div class="pos" id="*286:286" style="top:286;left:286"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry when generating FDF, and Acrobat 4.0 and later</span></div>
+<div class="pos" id="*304:174" style="top:304;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">versions export only the</span></div>
+<div class="pos" id="*305:320" style="top:305;left:320"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">V</span></div>
+<div class="pos" id="*304:331" style="top:304;left:331"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*305:357" style="top:305;left:357"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">AP</span></div>
+<div class="pos" id="*304:377" style="top:304;left:377"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entries. Acrobat does, however, import</span></div>
+<div class="pos" id="*322:174" style="top:322;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">FDF files containing fields that have any of the described entries.</span></div>
+<div class="pos" id="*347:137" style="top:347;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">131. If the FDF dictionary in an FDF file received as a result of a submit-form</span></div>
+<div class="pos" id="*365:174" style="top:365;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">action contains an</span></div>
+<div class="pos" id="*366:286" style="top:366;left:286"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">F</span></div>
+<div class="pos" id="*365:296" style="top:365;left:296"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry specifying a form other than the one currently</span></div>
+<div class="pos" id="*383:174" style="top:383;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">being displayed, Acrobat fetches the specified form before importing the</span></div>
+<div class="pos" id="*401:174" style="top:401;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">FDF file.</span></div>
+<div class="pos" id="*426:137" style="top:426;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">132. When exporting a form to an FDF file, Acrobat sets the</span></div>
+<div class="pos" id="*427:497" style="top:427;left:497"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">F</span></div>
+<div class="pos" id="*426:507" style="top:426;left:507"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the FDF</span></div>
+<div class="pos" id="*445:174" style="top:445;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary to a relative file specification giving the location of the FDF file</span></div>
+<div class="pos" id="*463:174" style="top:463;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">relative to that of the file from which it was exported.</span></div>
+<div class="pos" id="*488:137" style="top:488;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">133. If an FDF file being imported contains fields whose fully qualified names</span></div>
+<div class="pos" id="*506:174" style="top:506;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">are not in the form, Acrobat discards those fields. This feature can be use-</span></div>
+<div class="pos" id="*524:174" style="top:524;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ful, for example, if an FDF file containing commonly used fields (such as</span></div>
+<div class="pos" id="*542:174" style="top:542;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">name and address) is used to populate various types of forms, not all of</span></div>
+<div class="pos" id="*560:174" style="top:560;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">which necessarily include all of the fields available in the FDF file.</span></div>
+<div class="pos" id="*585:137" style="top:585;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">134. As shown in Table 8.96 on page 717, the only required entry in the field</span></div>
+<div class="pos" id="*603:174" style="top:603;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary is</span></div>
+<div class="pos" id="*604:251" style="top:604;left:251"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">T</span></div>
+<div class="pos" id="*603:257" style="top:603;left:257"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. One possible use for exporting FDF with fields containing</span></div>
+<div class="pos" id="*622:174" style="top:622;left:174"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">T</span></div>
+<div class="pos" id="*621:185" style="top:621;left:185"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entries but no</span></div>
+<div class="pos" id="*622:270" style="top:622;left:270"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">V</span></div>
+<div class="pos" id="*621:281" style="top:621;left:281"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entries is to indicate to a server which fields are desired</span></div>
+<div class="pos" id="*639:174" style="top:639;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the FDF files returned in response. For example, a server accessing a</span></div>
+<div class="pos" id="*657:174" style="top:657;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">database might use this information to decide whether to transmit all</span></div>
+<div class="pos" id="*675:174" style="top:675;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">fields in a record or just some selected ones. As noted in implementation</span></div>
+<div class="pos" id="*693:174" style="top:693;left:174"><a href="pg_1120.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">note 133, the Acrobat implementation of interactive forms ignores fields</span></a></div>
+<div class="pos" id="*711:174" style="top:711;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">in the imported FDF file that do not exist in the form.</span></div>
+<div class="pos" id="*736:137" style="top:736;left:137"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">135. The Acrobat implementation of forms allows the option of submitting the</span></div>
+<div class="pos" id="*754:174" style="top:754;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">data in a submit-form action in HTML Form format for the benefit of ex-</span></div>
+<div class="pos" id="*772:174" style="top:772;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">isting server scripts written to process such forms. Note, however, that any</span></div>
+<div class="pos" id="*790:174" style="top:790;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">such existing scripts that generate new HTML forms in response need to</span></div>
+<div class="pos" id="*808:174" style="top:808;left:174"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">be modified to generate FDF instead.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_1119.htm" title="Go to previous page">Previous</a> <a href="pg_1121.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(1120);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

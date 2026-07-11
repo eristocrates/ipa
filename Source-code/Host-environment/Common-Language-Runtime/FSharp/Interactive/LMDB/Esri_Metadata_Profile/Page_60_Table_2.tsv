@@ -1,0 +1,15 @@
+	(MetadataUseConstraints) +  __	
+	(MetadataSecurityInformation) +  __	
+	0{MetadataExtensions}n  _	
+		
+	MetadataContact =  _	
+	ContactInformation (see Contact Information for production rules)  _	
+		
+	MetadataSecurityInformation =  __	
+	MetadataSecurityClassificationSystem +  ___	
+	MetadataSecurityClassification +  __	
+	MetadataSecurityHandlingDescription  ___	
+		
+	MetadataExtensions =  _	
+	0{OnlineLinkage}n +  _	
+	0{ProfileName}1  _	

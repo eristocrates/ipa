@@ -1,0 +1,4 @@
+﻿namespace Fibo.MD.DerivativesTemporal.MetadataMDDerivativesTemporal.Namespace
+module MetadataMDDerivativesTemporal =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/MD/DerivativesTemporal/MetadataMDDerivativesTemporal/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/MD/DerivativesTemporal/MetadataMDDerivativesTemporal.rdf") (Some @"fibo.MD.DerivativesTemporal.MetadataMDDerivativesTemporal") None
+    let DerivativesTemporalModule = {_prefixID with _localName = "DerivativesTemporalModule"}

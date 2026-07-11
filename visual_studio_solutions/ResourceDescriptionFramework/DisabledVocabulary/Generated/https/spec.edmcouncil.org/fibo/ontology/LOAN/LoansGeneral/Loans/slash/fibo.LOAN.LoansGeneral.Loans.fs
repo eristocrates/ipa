@@ -1,0 +1,42 @@
+﻿namespace Fibo.LOAN.LoansGeneral.Loans.Namespace
+module Loans =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansGeneral/Loans.rdf") (Some @"fibo.LOAN.LoansGeneral.Loans") None
+    let ClosedEndCredit = {_prefixID with _localName = "ClosedEndCredit"}
+    let CollateralizedLoan = {_prefixID with _localName = "CollateralizedLoan"}
+    let Comaker = {_prefixID with _localName = "Comaker"}
+    let CombinedLoanToValueRatio = {_prefixID with _localName = "CombinedLoanToValueRatio"}
+    let FeeSimpleOwnershipInterest = {_prefixID with _localName = "FeeSimpleOwnershipInterest"}
+    let FractionalOwnershipInterest = {_prefixID with _localName = "FractionalOwnershipInterest"}
+    let GuaranteedLoan = {_prefixID with _localName = "GuaranteedLoan"}
+    let IndividualPaymentTransaction = {_prefixID with _localName = "IndividualPaymentTransaction"}
+    let LenderLienPosition = {_prefixID with _localName = "LenderLienPosition"}
+    let Loan = {_prefixID with _localName = "Loan"}
+    let LoanPaymentSchedule = {_prefixID with _localName = "LoanPaymentSchedule"}
+    let LoanSpecificCustomerAccount = {_prefixID with _localName = "LoanSpecificCustomerAccount"}
+    let LoanToValueRatio = {_prefixID with _localName = "LoanToValueRatio"}
+    let OpenEndCredit = {_prefixID with _localName = "OpenEndCredit"}
+    let OwnershipInterest = {_prefixID with _localName = "OwnershipInterest"}
+    let PaymentHistory = {_prefixID with _localName = "PaymentHistory"}
+    let PrepaymentTerms = {_prefixID with _localName = "PrepaymentTerms"}
+    let PrimaryLienPosition = {_prefixID with _localName = "PrimaryLienPosition"}
+    let SecuredLoan = {_prefixID with _localName = "SecuredLoan"}
+    let Servicer = {_prefixID with _localName = "Servicer"}
+    let SubordinateLienPosition = {_prefixID with _localName = "SubordinateLienPosition"}
+    let TotalOutstandingPrincipal = {_prefixID with _localName = "TotalOutstandingPrincipal"}
+    let UnsecuredLoan = {_prefixID with _localName = "UnsecuredLoan"}
+    let hasBalloonPayment = {_prefixID with _localName = "hasBalloonPayment"}
+    let hasCost = {_prefixID with _localName = "hasCost"}
+    let hasFirstRateChangeTerm = {_prefixID with _localName = "hasFirstRateChangeTerm"}
+    let hasIndividualPayment = {_prefixID with _localName = "hasIndividualPayment"}
+    let hasLoanBalance = {_prefixID with _localName = "hasLoanBalance"}
+    let hasNegativeAmortization = {_prefixID with _localName = "hasNegativeAmortization"}
+    let hasPaymentHistory = {_prefixID with _localName = "hasPaymentHistory"}
+    let hasPrePaymentPenaltyTerm = {_prefixID with _localName = "hasPrePaymentPenaltyTerm"}
+    let hasPrincipalAmount = {_prefixID with _localName = "hasPrincipalAmount"}
+    let hasScheduledUnpaidBalance = {_prefixID with _localName = "hasScheduledUnpaidBalance"}
+    let hasTotalClosingCosts = {_prefixID with _localName = "hasTotalClosingCosts"}
+    let hasTotalPointsAndFees = {_prefixID with _localName = "hasTotalPointsAndFees"}
+    let isAssumable = {_prefixID with _localName = "isAssumable"}
+    let isInitiallyPayable = {_prefixID with _localName = "isInitiallyPayable"}
+    let isInterestOnly = {_prefixID with _localName = "isInterestOnly"}
+    let isServicedBy = {_prefixID with _localName = "isServicedBy"}

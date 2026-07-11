@@ -1,0 +1,647 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix fowl: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#>.
+@prefix vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>.
+
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food> a owl:Ontology;
+                                                       rdfs:comment """
+      Derived from the DAML Wine ontology at 
+      http://ontolingua.stanford.edu/doc/chimaera/ontologies/wines.daml
+      Substantially modified.
+    """;
+                                                       owl:imports <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine>.
+fowl:Bananas a fowl:SweetFruit.
+fowl:BeefCurry a fowl:SpicyRedMeat.
+fowl:BlandFish a owl:Class;
+               rdfs:subClassOf fowl:Fish;
+               owl:disjointWith fowl:NonBlandFish.
+fowl:BlandFishCourse a owl:Class;
+                     rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                      owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                         owl:hasValue fowl:Delicate ; 
+                                                         a owl:Restriction] ; 
+                                      a owl:Restriction];
+                     owl:intersectionOf (fowl:MealCourse
+                                         [owl:onProperty fowl:hasFood ; 
+                                         owl:allValuesFrom fowl:BlandFish ; 
+                                         a owl:Restriction]).
+fowl:Cake a fowl:SweetDessert.
+fowl:Cheese a fowl:CheeseNutsDessert.
+fowl:CheeseNutsDessert a owl:Class;
+                       rdfs:subClassOf fowl:Dessert;
+                       owl:disjointWith fowl:SweetDessert.
+fowl:CheeseNutsDessertCourse a owl:Class;
+                             rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                              owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                                 owl:hasValue fowl:Red ; 
+                                                                 a owl:Restriction] ; 
+                                              a owl:Restriction];
+                             owl:intersectionOf (fowl:MealCourse
+                                                 [owl:onProperty fowl:hasFood ; 
+                                                 owl:allValuesFrom fowl:CheeseNutsDessert ; 
+                                                 a owl:Restriction]).
+fowl:Chicken a fowl:LightMeatFowl.
+fowl:Clams a fowl:NonOysterShellfish.
+fowl:ConsumableThing a owl:Class.
+fowl:Crab a fowl:NonOysterShellfish.
+fowl:DarkMeatFowl a owl:Class;
+                  rdfs:subClassOf fowl:Fowl;
+                  owl:disjointWith fowl:LightMeatFowl.
+fowl:DarkMeatFowlCourse a owl:Class;
+                        rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                         owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                            owl:hasValue fowl:Red ; 
+                                                            a owl:Restriction] ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty fowl:hasDrink ; 
+                                         owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                            owl:hasValue fowl:Light ; 
+                                                            a owl:Restriction] ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty fowl:hasDrink ; 
+                                         owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                            owl:hasValue fowl:Delicate ; 
+                                                            a owl:Restriction] ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty fowl:hasDrink ; 
+                                         owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                            owl:hasValue fowl:Dry ; 
+                                                            a owl:Restriction] ; 
+                                         a owl:Restriction];
+                        owl:intersectionOf (fowl:MealCourse
+                                            [owl:onProperty fowl:hasFood ; 
+                                            owl:allValuesFrom fowl:DarkMeatFowl ; 
+                                            a owl:Restriction]).
+fowl:Delicate a owl:Thing;
+              owl:sameAs vin:Delicate.
+fowl:Dessert a owl:Class;
+             rdfs:subClassOf fowl:EdibleThing;
+             owl:disjointWith fowl:Fruit.
+fowl:DessertCourse a owl:Class;
+                   rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                    owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                       owl:hasValue fowl:Full ; 
+                                                       a owl:Restriction] ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty fowl:hasDrink ; 
+                                    owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                       owl:hasValue fowl:Strong ; 
+                                                       a owl:Restriction] ; 
+                                    a owl:Restriction],
+                                   [owl:onProperty fowl:hasDrink ; 
+                                    owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                       owl:hasValue fowl:Sweet ; 
+                                                       a owl:Restriction] ; 
+                                    a owl:Restriction];
+                   owl:intersectionOf (fowl:MealCourse
+                                       [owl:onProperty fowl:hasFood ; 
+                                       owl:allValuesFrom fowl:Dessert ; 
+                                       a owl:Restriction]).
+fowl:Dry a owl:Thing;
+         owl:sameAs vin:Dry.
+fowl:Duck a fowl:DarkMeatFowl.
+fowl:EatingGrape a owl:Class;
+                 rdfs:subClassOf fowl:Grape.
+fowl:EdibleThing a owl:Class;
+                 rdfs:subClassOf fowl:ConsumableThing.
+fowl:FettucineAlfRedo a fowl:PastaWithHeavyCreamSauce.
+fowl:Fish a owl:Class;
+          rdfs:subClassOf fowl:Seafood;
+          owl:disjointWith fowl:Shellfish.
+fowl:FishCourse a owl:Class;
+                rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                 owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                    owl:hasValue fowl:Medium ; 
+                                                    a owl:Restriction] ; 
+                                 a owl:Restriction],
+                                [owl:onProperty fowl:hasDrink ; 
+                                 owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                    owl:hasValue fowl:Dry ; 
+                                                    a owl:Restriction] ; 
+                                 a owl:Restriction];
+                owl:intersectionOf (fowl:MealCourse
+                                    [owl:onProperty fowl:hasFood ; 
+                                    owl:allValuesFrom fowl:Fish ; 
+                                    a owl:Restriction]).
+fowl:Flounder a fowl:BlandFish.
+fowl:Fowl a owl:Class;
+          rdfs:subClassOf fowl:EdibleThing;
+          owl:disjointWith fowl:Seafood,
+                           fowl:Dessert,
+                           fowl:Fruit.
+fowl:FraDiavolo a fowl:PastaWithSpicyRedSauce.
+fowl:Fruit a owl:Class;
+           owl:unionOf (fowl:SweetFruit
+                        fowl:NonSweetFruit).
+fowl:FruitCourse a owl:Class;
+                 rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                  owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                     owl:hasValue fowl:White ; 
+                                                     a owl:Restriction] ; 
+                                  a owl:Restriction],
+                                 [owl:onProperty fowl:hasDrink ; 
+                                  owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                     owl:hasValue fowl:Medium ; 
+                                                     a owl:Restriction] ; 
+                                  a owl:Restriction];
+                 owl:intersectionOf (fowl:MealCourse
+                                     [owl:onProperty fowl:hasFood ; 
+                                     owl:allValuesFrom fowl:Fruit ; 
+                                     a owl:Restriction]).
+fowl:Full a owl:Thing;
+          owl:sameAs vin:Full.
+fowl:GarlickyRoast a fowl:SpicyRedMeat.
+fowl:Goose a fowl:DarkMeatFowl.
+fowl:Grape a owl:Class;
+           rdfs:subClassOf fowl:SweetFruit.
+fowl:Halibut a fowl:BlandFish.
+fowl:Juice a owl:Class;
+           rdfs:subClassOf [owl:onProperty fowl:madeFromFruit ; 
+                            owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                            a owl:Restriction],
+                           fowl:PotableLiquid.
+fowl:Light a owl:Thing;
+           owl:sameAs vin:Light.
+fowl:LightMeatFowl a owl:Class;
+                   rdfs:subClassOf fowl:Fowl.
+fowl:LightMeatFowlCourse a owl:Class;
+                         rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                          owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                             owl:hasValue fowl:White ; 
+                                                             a owl:Restriction] ; 
+                                          a owl:Restriction],
+                                         [owl:onProperty fowl:hasDrink ; 
+                                          owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                             owl:hasValue fowl:Medium ; 
+                                                             a owl:Restriction] ; 
+                                          a owl:Restriction],
+                                         [owl:onProperty fowl:hasDrink ; 
+                                          owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                             owl:hasValue fowl:Moderate ; 
+                                                             a owl:Restriction] ; 
+                                          a owl:Restriction],
+                                         [owl:onProperty fowl:hasDrink ; 
+                                          owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                             owl:hasValue fowl:Dry ; 
+                                                             a owl:Restriction] ; 
+                                          a owl:Restriction];
+                         owl:intersectionOf (fowl:MealCourse
+                                             [owl:onProperty fowl:hasFood ; 
+                                             owl:allValuesFrom fowl:LightMeatFowl ; 
+                                             a owl:Restriction]).
+fowl:Lobster a fowl:NonOysterShellfish.
+fowl:Meal a owl:Class;
+          rdfs:subClassOf [owl:onProperty fowl:course ; 
+                           owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                           a owl:Restriction],
+                          [owl:onProperty fowl:course ; 
+                           owl:allValuesFrom fowl:MealCourse ; 
+                           a owl:Restriction],
+                          fowl:ConsumableThing;
+          owl:disjointWith fowl:MealCourse,
+                           fowl:PotableLiquid,
+                           fowl:EdibleThing.
+fowl:MealCourse a owl:Class;
+                rdfs:subClassOf [owl:onProperty fowl:hasFood ; 
+                                 owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 a owl:Restriction],
+                                [owl:onProperty fowl:hasDrink ; 
+                                 owl:minCardinality "1"^^xsd:nonNegativeInteger ; 
+                                 a owl:Restriction],
+                                [owl:onProperty fowl:hasDrink ; 
+                                 owl:allValuesFrom fowl:Wine ; 
+                                 a owl:Restriction],
+                                fowl:ConsumableThing;
+                owl:disjointWith fowl:PotableLiquid,
+                                 fowl:EdibleThing.
+fowl:Meat a owl:Class;
+          rdfs:subClassOf fowl:EdibleThing;
+          owl:disjointWith fowl:Fowl,
+                           fowl:Seafood,
+                           fowl:Dessert,
+                           fowl:Fruit.
+fowl:Medium a owl:Thing;
+            owl:sameAs vin:Medium.
+fowl:MixedFruit a fowl:SweetFruit.
+fowl:Moderate a owl:Thing;
+              owl:sameAs vin:Moderate.
+fowl:Mussels a fowl:NonOysterShellfish.
+fowl:NonBlandFish a owl:Class;
+                  rdfs:subClassOf fowl:Fish.
+fowl:NonBlandFishCourse a owl:Class;
+                        rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                         owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                            owl:hasValue fowl:Moderate ; 
+                                                            a owl:Restriction] ; 
+                                         a owl:Restriction];
+                        owl:intersectionOf (fowl:MealCourse
+                                            [owl:onProperty fowl:hasFood ; 
+                                            owl:allValuesFrom fowl:NonBlandFish ; 
+                                            a owl:Restriction]).
+fowl:NonConsumableThing a owl:Class;
+                        owl:complementOf fowl:ConsumableThing.
+fowl:NonOysterShellfish a owl:Class;
+                        rdfs:subClassOf fowl:Shellfish;
+                        owl:disjointWith fowl:OysterShellfish.
+fowl:NonOysterShellfishCourse a owl:Class;
+                              rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                               owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                                  owl:hasValue fowl:Dry ; 
+                                                                  a owl:Restriction] ; 
+                                               a owl:Restriction];
+                              owl:intersectionOf (fowl:MealCourse
+                                                  [owl:onProperty fowl:hasFood ; 
+                                                  owl:allValuesFrom fowl:NonOysterShellfish ; 
+                                                  a owl:Restriction]).
+fowl:NonRedMeat a owl:Class;
+                rdfs:subClassOf fowl:Meat;
+                owl:disjointWith fowl:RedMeat.
+fowl:NonRedMeatCourse a owl:Class;
+                      rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                       owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                          owl:hasValue fowl:White ; 
+                                                          a owl:Restriction] ; 
+                                       a owl:Restriction],
+                                      [owl:onProperty fowl:hasDrink ; 
+                                       owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                          owl:hasValue fowl:Medium ; 
+                                                          a owl:Restriction] ; 
+                                       a owl:Restriction],
+                                      [owl:onProperty fowl:hasDrink ; 
+                                       owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                          owl:hasValue fowl:Strong ; 
+                                                          a owl:Restriction] ; 
+                                       a owl:Restriction],
+                                      [owl:onProperty fowl:hasDrink ; 
+                                       owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                          owl:hasValue fowl:Dry ; 
+                                                          a owl:Restriction] ; 
+                                       a owl:Restriction];
+                      owl:intersectionOf (fowl:MealCourse
+                                          [owl:onProperty fowl:hasFood ; 
+                                          owl:allValuesFrom fowl:NonRedMeat ; 
+                                          a owl:Restriction]).
+fowl:NonSpicyRedMeat a owl:Class;
+                     rdfs:subClassOf fowl:RedMeat;
+                     owl:disjointWith fowl:SpicyRedMeat.
+fowl:NonSpicyRedMeatCourse a owl:Class;
+                           rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                            owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                               owl:hasValue fowl:Red ; 
+                                                               a owl:Restriction] ; 
+                                            a owl:Restriction],
+                                           [owl:onProperty fowl:hasDrink ; 
+                                            owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                               owl:hasValue fowl:Medium ; 
+                                                               a owl:Restriction] ; 
+                                            a owl:Restriction],
+                                           [owl:onProperty fowl:hasDrink ; 
+                                            owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                               owl:hasValue fowl:Dry ; 
+                                                               a owl:Restriction] ; 
+                                            a owl:Restriction],
+                                           [owl:onProperty fowl:hasDrink ; 
+                                            owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                               owl:allValuesFrom [owl:oneOf (fowl:Strong
+                                                                                             fowl:Moderate) ; 
+                                                                                  a owl:Class] ; 
+                                                               a owl:Restriction] ; 
+                                            a owl:Restriction];
+                           owl:intersectionOf (fowl:MealCourse
+                                               [owl:onProperty fowl:hasFood ; 
+                                               owl:allValuesFrom fowl:NonSpicyRedMeat ; 
+                                               a owl:Restriction]).
+fowl:NonSweetFruit a owl:Class;
+                   rdfs:subClassOf fowl:EdibleThing;
+                   owl:disjointWith fowl:SweetFruit.
+fowl:NonSweetFruitCourse a owl:Class;
+                         rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                          owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                             owl:hasValue fowl:Delicate ; 
+                                                             a owl:Restriction] ; 
+                                          a owl:Restriction],
+                                         [owl:onProperty fowl:hasDrink ; 
+                                          owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                             owl:hasValue fowl:OffDry ; 
+                                                             a owl:Restriction] ; 
+                                          a owl:Restriction];
+                         owl:intersectionOf (fowl:MealCourse
+                                             [owl:onProperty fowl:hasFood ; 
+                                             owl:allValuesFrom fowl:NonSweetFruit ; 
+                                             a owl:Restriction]).
+fowl:Nuts a fowl:CheeseNutsDessert.
+fowl:OffDry a owl:Thing;
+            owl:sameAs vin:OffDry.
+fowl:OtherTomatoBasedFood a owl:Class;
+                          rdfs:subClassOf fowl:EdibleThing;
+                          owl:disjointWith fowl:Pasta,
+                                           fowl:Meat,
+                                           fowl:Fowl,
+                                           fowl:Seafood,
+                                           fowl:Dessert,
+                                           fowl:Fruit.
+fowl:OtherTomatoBasedFoodCourse a owl:Class;
+                                rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                                 owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                                    owl:hasValue fowl:Red ; 
+                                                                    a owl:Restriction] ; 
+                                                 a owl:Restriction],
+                                                [owl:onProperty fowl:hasDrink ; 
+                                                 owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                                    owl:hasValue fowl:Medium ; 
+                                                                    a owl:Restriction] ; 
+                                                 a owl:Restriction],
+                                                [owl:onProperty fowl:hasDrink ; 
+                                                 owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                                    owl:hasValue fowl:Moderate ; 
+                                                                    a owl:Restriction] ; 
+                                                 a owl:Restriction],
+                                                [owl:onProperty fowl:hasDrink ; 
+                                                 owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                                    owl:hasValue fowl:Dry ; 
+                                                                    a owl:Restriction] ; 
+                                                 a owl:Restriction];
+                                owl:intersectionOf (fowl:MealCourse
+                                                    [owl:onProperty fowl:hasFood ; 
+                                                    owl:allValuesFrom fowl:OtherTomatoBasedFood ; 
+                                                    a owl:Restriction]).
+fowl:OysterShellfish a owl:Class;
+                     rdfs:subClassOf fowl:Shellfish.
+fowl:OysterShellfishCourse a owl:Class;
+                           rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                            owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                               owl:hasValue fowl:Sweet ; 
+                                                               a owl:Restriction] ; 
+                                            a owl:Restriction];
+                           owl:intersectionOf (fowl:MealCourse
+                                               [owl:onProperty fowl:hasFood ; 
+                                               owl:allValuesFrom fowl:OysterShellfish ; 
+                                               a owl:Restriction]).
+fowl:Oysters a fowl:OysterShellfish.
+fowl:Pasta a owl:Class;
+           rdfs:subClassOf fowl:EdibleThing;
+           owl:disjointWith fowl:Meat,
+                            fowl:Fowl,
+                            fowl:Seafood,
+                            fowl:Dessert,
+                            fowl:Fruit.
+fowl:PastaWithHeavyCreamCourse a owl:Class;
+                               rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                                owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                                   owl:hasValue fowl:White ; 
+                                                                   a owl:Restriction] ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty fowl:hasDrink ; 
+                                                owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                                   owl:hasValue fowl:Medium ; 
+                                                                   a owl:Restriction] ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty fowl:hasDrink ; 
+                                                owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                                   owl:hasValue fowl:Moderate ; 
+                                                                   a owl:Restriction] ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty fowl:hasDrink ; 
+                                                owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                                   owl:hasValue fowl:Dry ; 
+                                                                   a owl:Restriction] ; 
+                                                a owl:Restriction];
+                               owl:intersectionOf (fowl:MealCourse
+                                                   [owl:onProperty fowl:hasFood ; 
+                                                   owl:allValuesFrom fowl:PastaWithHeavyCreamSauce ; 
+                                                   a owl:Restriction]).
+fowl:PastaWithHeavyCreamSauce a owl:Class;
+                              rdfs:subClassOf fowl:PastaWithWhiteSauce.
+fowl:PastaWithLightCreamCourse a owl:Class;
+                               rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                                owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                                   owl:hasValue fowl:White ; 
+                                                                   a owl:Restriction] ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty fowl:hasDrink ; 
+                                                owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                                   owl:hasValue fowl:Light ; 
+                                                                   a owl:Restriction] ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty fowl:hasDrink ; 
+                                                owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                                   owl:hasValue fowl:Delicate ; 
+                                                                   a owl:Restriction] ; 
+                                                a owl:Restriction],
+                                               [owl:onProperty fowl:hasDrink ; 
+                                                owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                                   owl:hasValue fowl:Dry ; 
+                                                                   a owl:Restriction] ; 
+                                                a owl:Restriction];
+                               owl:intersectionOf (fowl:MealCourse
+                                                   [owl:onProperty fowl:hasFood ; 
+                                                   owl:allValuesFrom fowl:PastaWithLightCreamSauce ; 
+                                                   a owl:Restriction]).
+fowl:PastaWithLightCreamSauce a owl:Class;
+                              rdfs:subClassOf fowl:PastaWithWhiteSauce;
+                              owl:disjointWith fowl:PastaWithHeavyCreamSauce.
+fowl:PastaWithNonSpicyRedSauce a owl:Class;
+                               rdfs:subClassOf fowl:PastaWithRedSauce;
+                               owl:disjointWith fowl:PastaWithSpicyRedSauce.
+fowl:PastaWithNonSpicyRedSauceCourse a owl:Class;
+                                     rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                                      owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                                         owl:hasValue fowl:Red ; 
+                                                                         a owl:Restriction] ; 
+                                                      a owl:Restriction],
+                                                     [owl:onProperty fowl:hasDrink ; 
+                                                      owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                                         owl:hasValue fowl:Medium ; 
+                                                                         a owl:Restriction] ; 
+                                                      a owl:Restriction],
+                                                     [owl:onProperty fowl:hasDrink ; 
+                                                      owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                                         owl:hasValue fowl:Moderate ; 
+                                                                         a owl:Restriction] ; 
+                                                      a owl:Restriction],
+                                                     [owl:onProperty fowl:hasDrink ; 
+                                                      owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                                         owl:hasValue fowl:Dry ; 
+                                                                         a owl:Restriction] ; 
+                                                      a owl:Restriction];
+                                     owl:intersectionOf (fowl:MealCourse
+                                                         [owl:onProperty fowl:hasFood ; 
+                                                         owl:allValuesFrom fowl:PastaWithNonSpicyRedSauce ; 
+                                                         a owl:Restriction]).
+fowl:PastaWithRedSauce a owl:Class;
+                       rdfs:subClassOf fowl:Pasta.
+fowl:PastaWithSpicyRedSauce a owl:Class;
+                            rdfs:subClassOf fowl:PastaWithRedSauce.
+fowl:PastaWithSpicyRedSauceCourse a owl:Class;
+                                  rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                                   owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                                      owl:hasValue fowl:Red ; 
+                                                                      a owl:Restriction] ; 
+                                                   a owl:Restriction],
+                                                  [owl:onProperty fowl:hasDrink ; 
+                                                   owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                                      owl:hasValue fowl:Full ; 
+                                                                      a owl:Restriction] ; 
+                                                   a owl:Restriction],
+                                                  [owl:onProperty fowl:hasDrink ; 
+                                                   owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                                      owl:hasValue fowl:Strong ; 
+                                                                      a owl:Restriction] ; 
+                                                   a owl:Restriction],
+                                                  [owl:onProperty fowl:hasDrink ; 
+                                                   owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                                      owl:hasValue fowl:Dry ; 
+                                                                      a owl:Restriction] ; 
+                                                   a owl:Restriction];
+                                  owl:intersectionOf (fowl:MealCourse
+                                                      [owl:onProperty fowl:hasFood ; 
+                                                      owl:allValuesFrom fowl:PastaWithSpicyRedSauce ; 
+                                                      a owl:Restriction]).
+fowl:PastaWithWhiteClamSauce a fowl:PastaWithLightCreamSauce.
+fowl:PastaWithWhiteSauce a owl:Class;
+                         rdfs:subClassOf fowl:Pasta;
+                         owl:disjointWith fowl:PastaWithRedSauce.
+fowl:Peaches a fowl:SweetFruit.
+fowl:Pie a fowl:SweetDessert.
+fowl:Pizza a fowl:OtherTomatoBasedFood.
+fowl:Pork a fowl:NonRedMeat.
+fowl:PotableLiquid a owl:Class;
+                   rdfs:subClassOf fowl:ConsumableThing;
+                   owl:disjointWith fowl:EdibleThing.
+fowl:Red a owl:Thing;
+         owl:sameAs vin:Red.
+fowl:RedMeat a owl:Class;
+             rdfs:subClassOf fowl:Meat.
+fowl:RedMeatCourse a owl:Class;
+                   rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                    owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                       owl:hasValue fowl:Red ; 
+                                                       a owl:Restriction] ; 
+                                    a owl:Restriction];
+                   owl:intersectionOf (fowl:MealCourse
+                                       [owl:onProperty fowl:hasFood ; 
+                                       owl:allValuesFrom fowl:RedMeat ; 
+                                       a owl:Restriction]).
+fowl:RoastBeef a fowl:NonSpicyRedMeat.
+fowl:Rose a owl:Thing;
+          owl:sameAs vin:Rose.
+fowl:Scrod a fowl:BlandFish.
+fowl:Seafood a owl:Class;
+             rdfs:subClassOf fowl:EdibleThing;
+             owl:disjointWith fowl:Dessert,
+                              fowl:Fruit.
+fowl:SeafoodCourse a owl:Class;
+                   rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                    owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                       owl:hasValue fowl:White ; 
+                                                       a owl:Restriction] ; 
+                                    a owl:Restriction];
+                   owl:intersectionOf (fowl:MealCourse
+                                       [owl:onProperty fowl:hasFood ; 
+                                       owl:allValuesFrom fowl:Seafood ; 
+                                       a owl:Restriction]).
+fowl:Shellfish a owl:Class;
+               rdfs:subClassOf fowl:Seafood.
+fowl:ShellfishCourse a owl:Class;
+                     rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                      owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                         owl:allValuesFrom [owl:oneOf (fowl:Moderate
+                                                                                       fowl:Strong) ; 
+                                                                            a owl:Class] ; 
+                                                         a owl:Restriction] ; 
+                                      a owl:Restriction],
+                                     [owl:onProperty fowl:hasDrink ; 
+                                      owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                         owl:hasValue fowl:Full ; 
+                                                         a owl:Restriction] ; 
+                                      a owl:Restriction];
+                     owl:intersectionOf (fowl:MealCourse
+                                         [owl:onProperty fowl:hasFood ; 
+                                         owl:allValuesFrom fowl:Shellfish ; 
+                                         a owl:Restriction]).
+fowl:SpaghettiWithTomatoSauce a fowl:PastaWithNonSpicyRedSauce.
+fowl:SpicyRedMeat a owl:Class;
+                  rdfs:subClassOf fowl:RedMeat.
+fowl:SpicyRedMeatCourse a owl:Class;
+                        rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                         owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                            owl:hasValue fowl:Red ; 
+                                                            a owl:Restriction] ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty fowl:hasDrink ; 
+                                         owl:allValuesFrom [owl:onProperty vin:hasBody ; 
+                                                            owl:hasValue fowl:Full ; 
+                                                            a owl:Restriction] ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty fowl:hasDrink ; 
+                                         owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                            owl:hasValue fowl:Moderate ; 
+                                                            a owl:Restriction] ; 
+                                         a owl:Restriction],
+                                        [owl:onProperty fowl:hasDrink ; 
+                                         owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                            owl:hasValue fowl:Dry ; 
+                                                            a owl:Restriction] ; 
+                                         a owl:Restriction];
+                        owl:intersectionOf (fowl:MealCourse
+                                            [owl:onProperty fowl:hasFood ; 
+                                            owl:allValuesFrom fowl:SpicyRedMeat ; 
+                                            a owl:Restriction]).
+fowl:Steak a fowl:NonSpicyRedMeat.
+fowl:Strong a owl:Thing;
+            owl:sameAs vin:Strong.
+fowl:Sweet a owl:Thing;
+           owl:sameAs vin:Sweet.
+fowl:SweetDessert a owl:Class;
+                  rdfs:subClassOf fowl:Dessert.
+fowl:SweetDessertCourse a owl:Class;
+                        rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                         owl:allValuesFrom [owl:onProperty vin:hasColor ; 
+                                                            owl:hasValue fowl:White ; 
+                                                            a owl:Restriction] ; 
+                                         a owl:Restriction];
+                        owl:intersectionOf (fowl:MealCourse
+                                            [owl:onProperty fowl:hasFood ; 
+                                            owl:allValuesFrom fowl:SweetDessert ; 
+                                            a owl:Restriction]).
+fowl:SweetFruit a owl:Class;
+                rdfs:subClassOf fowl:EdibleThing.
+fowl:SweetFruitCourse a owl:Class;
+                      rdfs:subClassOf [owl:onProperty fowl:hasDrink ; 
+                                       owl:allValuesFrom [owl:onProperty vin:hasFlavor ; 
+                                                          owl:hasValue fowl:Moderate ; 
+                                                          a owl:Restriction] ; 
+                                       a owl:Restriction],
+                                      [owl:onProperty fowl:hasDrink ; 
+                                       owl:allValuesFrom [owl:onProperty vin:hasSugar ; 
+                                                          owl:hasValue fowl:Sweet ; 
+                                                          a owl:Restriction] ; 
+                                       a owl:Restriction];
+                      owl:intersectionOf (fowl:MealCourse
+                                          [owl:onProperty fowl:hasFood ; 
+                                          owl:allValuesFrom fowl:SweetFruit ; 
+                                          a owl:Restriction]).
+fowl:Swordfish a fowl:NonBlandFish.
+fowl:ThompsonSeedless a fowl:EatingGrape.
+fowl:Tuna a fowl:NonBlandFish.
+fowl:Turkey a fowl:LightMeatFowl.
+fowl:Veal a fowl:NonSpicyRedMeat.
+fowl:White a owl:Thing;
+           owl:sameAs vin:White.
+fowl:Wine a owl:Class;
+          owl:equivalentClass vin:Wine.
+fowl:course a owl:ObjectProperty;
+            rdfs:domain fowl:Meal;
+            rdfs:range fowl:MealCourse.
+fowl:hasDrink a owl:ObjectProperty;
+              rdfs:domain fowl:MealCourse;
+              rdfs:range fowl:PotableLiquid.
+fowl:hasFood a owl:ObjectProperty;
+             rdfs:domain fowl:MealCourse;
+             rdfs:range fowl:EdibleThing.
+fowl:madeFromFruit a owl:ObjectProperty;
+                   rdfs:domain fowl:ConsumableThing;
+                   rdfs:range fowl:Fruit.

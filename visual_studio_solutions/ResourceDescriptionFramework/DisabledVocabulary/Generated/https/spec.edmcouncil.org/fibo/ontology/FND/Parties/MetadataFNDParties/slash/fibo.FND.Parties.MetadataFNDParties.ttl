@@ -1,0 +1,35 @@
+@prefix fibo.FND.Parties.MetadataFNDParties: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/MetadataFNDParties/> .
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix cmns-av: <https://www.omg.org/spec/Commons/AnnotationVocabulary/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix fibo-fnd-pty-mod: <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/MetadataFNDParties/>.
+@prefix fibo-fnd-utl-av: <https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+fibo-fnd-pty-mod: dcterms:abstract "This is the metadata ontology used to describe the Foundations Parties Module.";
+                  dcterms:issued "2018-08-27T18:00:00"^^xsd:dateTime;
+                  dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI;
+                  dcterms:modified "2024-11-14T18:00:00"^^xsd:dateTime;
+                  a owl:Ontology;
+                  rdfs:label "Metadata for the EDMC-FIBO Foundations (FND) Parties Module";
+                  owl:imports <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Utilities/AnnotationVocabulary/>,
+                              cmns-av:;
+                  owl:versionIRI <https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Parties/MetadataFNDParties/>;
+                  cmns-av:copyright "Copyright (c) 2017-2024 EDM Council, Inc.",
+                                    "Copyright (c) 2017-2024 Object Management Group, Inc.".
+fibo-fnd-pty-mod:PartiesModule dcterms:abstract "The parties module extends the Commons Parties and Situations ontology with identifiers for party roles and very general tax identifiers.";
+                               dcterms:hasPart <https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/>;
+                               dcterms:license "https://opensource.org/licenses/MIT"^^xsd:anyURI;
+                               dcterms:title "FIBO FND Parties Module",
+                                             "Financial Industry Business Ontology (FIBO) Foundations (FND) Parties Module";
+                               a owl:NamedIndividual,
+                                 fibo-fnd-utl-av:Module;
+                               rdfs:isDefinedBy fibo-fnd-pty-mod:;
+                               rdfs:label "parties module";
+                               rdfs:seeAlso <https://spec.edmcouncil.org/fibo/>;
+                               cmns-av:copyright "Copyright (c) 2017-2024 EDM Council, Inc.",
+                                                 "Copyright (c) 2017-2024 Object Management Group, Inc.".

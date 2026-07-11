@@ -1,0 +1,443 @@
+(*
+let networkRequestTypes =
+    networkRequests |> Seq.map (fun request -> request.Type.Value) |> Seq.distinct
+
+networkRequestTypes
+|> Seq.iter (fun requestType -> printfn "Request Type: %s" requestType)
+
+*)
+// https://x.com/i/api/1.1/hashflags.json
+(*
+  fetch("https://x.com/i/api/graphql/uBpODvS60xZ1q2L88d-W2A/CommunityQuery?variables=%7B%22communityId%22%3A%221853007885191508412%22%7D&features=%7B%22c9s_list_members_action_api_enabled%22%3Afalse%2C%22c9s_superc9s_indication_enabled%22%3Afalse%7D", {
+    "headers": {
+      "accept": "*/*",
+      "accept-language": "en-US,en;q=0.9",
+      "authorization": "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA",
+      "content-type": "application/json",
+      "priority": "u=1, i",
+      "sec-ch-ua": "\"Chromium\";v=\"146\", \"Not-A.Brand\";v=\"24\", \"Microsoft Edge\";v=\"146\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-origin",
+      "x-client-transaction-id": "cBORuTVCQrOEmBmveEXn2j+0MgBSMjezcaztfHNHcpXhY7uIfi5vs8nrwTbAI/CBqGcS9nVD7Uq9E4rgxeTwHbtdeJmDcw",
+      "x-csrf-token": "2fc6701a6d0cc935da815f79f08aa7aefd33c8b683cb71dc2f999484186c39b34bcc90e1f4ae3c4fb2d7f7f2406a6181182045bb78b1e16be766b799bb36a83a3ae7420ba5227783a7bf98ea77a17593",
+      "x-twitter-active-user": "yes",
+      "x-twitter-auth-type": "OAuth2Session",
+      "x-twitter-client-language": "en"
+    },
+    "referrer": "https://x.com/i/communities/1853007885191508412",
+    "body": null,
+    "method": "GET",
+    "mode": "cors",
+    "credentials": "include"
+  });
+*)
+
+
+(*
+module PeopleCommunity_Query = 
+    [<Literal>]
+    let filePath = @"D:\Surface\Company\Twitter\PeopleCommunity_Query.json"
+    let json (text: string) = JsonProvider<filePath>.Parse(text)
+*)
+(*
+  twitterRequestsUrlsToIntercept.Contains(request.Request.Url)
+  || twitterRequestStartStringsToIntercept
+  |> Array.exists(fun startString -> request.Request.Url.StartsWith(startString))
+
+  || *)
+
+  (*
+    // TODO make sure  page is done loading before getting dom
+    let GetDocumentRequestResponse =
+  twitterTab.client.SendCommandAsync(Domains.DOM.GetDocument())
+
+let PerformSearchRequestResponse =
+  twitterTab.client.SendCommandAsync(Domains.DOM.PerformSearch("a[href*=communities]"))
+  |> Async.AwaitTask
+  |> Async.RunSynchronously
+
+let searchResultCount = PerformSearchRequestResponse.ResultCount
+let searchId = PerformSearchRequestResponse.SearchId
+
+let GetSearchResultsRequestResponse =
+  twitterTab.client.SendCommandAsync(Domains.DOM.GetSearchResults(searchId, 0, searchResultCount))
+  |> Async.AwaitTask
+  |> Async.RunSynchronously
+
+GetSearchResultsRequestResponse.NodeIds
+    |> Seq.iter(fun nodeId -> printfn "NodeId: %d" nodeId.Value)
+
+// TODO guard against nodeid of 0
+let testNodeId = GetSearchResultsRequestResponse.NodeIds.Item 0
+
+let DescribeNodeRequestResponse =
+  twitterTab.client.SendCommandAsync(Domains.DOM.DescribeNode(testNodeId))
+  |> Async.AwaitTask
+  |> Async.RunSynchronously
+
+let GetOuterHTMLRequestResponse =
+  twitterTab.client.SendCommandAsync(Domains.DOM.GetOuterHTML(testNodeId))
+  |> Async.AwaitTask
+  |> Async.RunSynchronously
+
+    (*
+      File.WriteAllText(
+        @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Microsoft\Edge\TypeProviderSamples\Twitter\href_containing_communities.html",
+        GetOuterHTMLRequestResponse.OuterHTML
+      )
+
+      *)
+let``a[href *= communities]`` =
+  HtmlProvider < a'href_communities'Sample >.Parse(GetOuterHTMLRequestResponse.OuterHTML)
+
+let communityLinks =
+  ``a[href *= communities]``.Html.Descendants["a"]
+  |> Seq.choose(fun aElement ->
+
+    aElement.TryGetAttribute("href")
+    |> Option.map(fun hrefAttribute ->
+
+
+      $"https://x.com/{hrefAttribute.Value()}"
+
+    ))
+  |> Seq.toList
+
+  *)
+(*
+File.WriteAllText(
+    @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Microsoft\Edge\TypeProviderSamples\Twitter\community_page.html",
+    communityPageRelocateResponse.NetworkGetResponseBodyRequestResult.Body
+)
+*)
+(*
+let twitterRequestsUrlsToIntercept =
+    Set.ofList
+        [
+
+          "https://x.com/i/api/1.1/hashflags.json"
+          "https://proxsee.pscp.tv/api/v2/loginTwitterToken"
+
+          ]
+
+let twitterRequestStartStringsToIntercept =
+    [|
+
+       "https://api.x.com/1.1/account/settings.json" // ?include_ext_sharing_audiospaces_listening_data_with_followers=true&include_mention_filter=true&include_nsfw_user_flag=true&include_nsfw_admin_flag=true&include_ranked_timeline=true&include_alt_text_compose=true&include_ext_dm_av_call_settings=true&ext=ssoConnections&include_country_code=true&include_ext_dm_nsfw_media_filter=true"
+
+       |]
+
+*)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let userByScreenName =
+    (UserByScreenName.json UserByScreenNameRequestResponse.Body).Data.User.Result
+
+
+userByScreenName.RestId
+userByScreenName.Core.Name
+userByScreenName.Core.ScreenName
+userByScreenName.Core.CreatedAt
+
+userByScreenName.IsBlueVerified
+
+let UserTweetsRequest = UserTweetsRequests.Item 0
+
+
+let UserTweetsRequestResponseBody =
+    twitterTab.client.SendCommandAsync(Domains.Network.GetResponseBody(UserTweetsRequest.RequestId))
+    |> Async.AwaitTask
+    |> Async.RunSynchronously
+
+let userTweets = (UserTweets.json UserTweetsRequestResponseBody.Body) //.Data.User.Result.Timeline.Timeline
+
+let communityUrlStrings =
+    userTweets.Data.User.Result.Timeline.Timeline.Instructions
+    |> Array.Parallel.collect (fun instruction ->
+        instruction.Entries
+        |> Array.Parallel.choose (fun entry -> entry.Content.ItemContent
+
+        )
+        |> Array.Parallel.filter (fun itemContent ->
+            itemContent.TweetResults.Result.Core.UserResults.Result.Core.ScreenName = userByScreenName.Core.ScreenName)
+        |> Array.Parallel.choose (fun itemContent -> itemContent.SocialContext)
+        |> Array.Parallel.filter (fun socialContext -> socialContext.ContextType = "Community")
+        |> Array.Parallel.map (fun socialContext -> socialContext.LandingUrl.Url)
+        |> Array.distinct
+
+    )
+
+
+
+let communityPageUriString = communityUrlStrings[0].Replace("twitter", "x")
+
+
+
+twitterTab.client.SendCommandAsync(Domains.Page.Navigate(communityPageUriString))
+|> Async.AwaitTask
+|> Async.RunSynchronously
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CommunityQueryRequests.Count
+
+let communityQueryRequest = CommunityQueryRequests |> Seq.item 0
+
+communityQueryRequest.RequestId
+
+let GetResponseBodyRequestResponse =
+    twitterTab.client.SendCommandAsync(Domains.Network.GetResponseBody(communityQueryRequest.RequestId))
+    |> Async.AwaitTask
+    |> Async.RunSynchronously
+
+
+let community =
+    (CommunityQuery.json GetResponseBodyRequestResponse.Body).Data.CommunityResults.Result
+
+community.Name
+community.Description
+
+let trendingHashtags =
+    community.TrendingHashtagsSlice.Items
+    |> Array.map (fun trending -> trending.Hashtag.TrimStart('#'))
+
+let creatorScreenName = community.CreatorResults.Result.Core.ScreenName
+community.MemberCount
+community.RestId
+let communityRules = community.Rules |> Array.map (fun rule -> rule.Name)
+
+let communityMembersPageUriString = $"{communityPageUriString}/members"
+
+
+
+twitterTab.client.SendCommandAsync(Domains.Page.Navigate(communityMembersPageUriString))
+|> Async.AwaitTask
+|> Async.RunSynchronously
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let there_were_new_requests (current: int) (last: int) =
+    if current > last then
+        printfn "New membersSliceTimeline_Query request detected. Total count: %d" current
+        true
+    else
+        printfn "No new membersSliceTimeline_Query request detected. Total count remains: %d" last
+        false
+
+
+// TODO Scroll to the bottom using window.scrollTo(0, document.body.scrollHeight) via Runtime.evaluate, wait for new network events, and repeat.
+let rec scroll () =
+
+    let lastCount = membersSliceTimeline_QueryRequests.Count
+    Thread.Sleep(1500)
+
+    twitterTab.client.SendCommandAsync(
+        Domains.Runtime.Evaluate(
+            """
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      left: 0,
+      behavior: "smooth",
+    });
+                """
+                .TrimStart()
+                .TrimEnd()
+        )
+    )
+    |> Async.AwaitTask
+    |> Async.RunSynchronously
+    |> ignore
+
+    Thread.Sleep(1500)
+    let currentCount = membersSliceTimeline_QueryRequests.Count
+
+    if there_were_new_requests currentCount lastCount then
+        scroll ()
+    else
+        printfn "Finished scrolling. Total membersSliceTimeline_Query request count: %d" currentCount
+
+let membersSliceTimeline_QueryRequest =
+    membersSliceTimeline_QueryRequests |> Seq.item 0
+
+let membersSliceTimeline_QueryRequestResponse =
+    twitterTab.client.SendCommandAsync(Domains.Network.GetResponseBody(membersSliceTimeline_QueryRequest.RequestId))
+    |> Async.AwaitTask
+    |> Async.RunSynchronously
+
+let membersSlice =
+    (membersSliceTimeline_Query.json membersSliceTimeline_QueryRequestResponse.Body) // Data.CommunityMembersSliceTimeline.CommunityMembersSliceTimeline
+
+let communityMembers =
+    membersSlice.Data.CommunityResults.Result.MembersSlice.ItemsResults
+    |> Array.Parallel.map (fun itemResult ->
+
+        itemResult.Result.Core.Name
+        itemResult.Result.Core.ScreenName
+
+
+    )

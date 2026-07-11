@@ -1,0 +1,450 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0327.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 4.6 327 Patterns TABLE 4.35 Data values in a Coons patch mesh EDGE FLAG NEXT SET OF DATA VALUES f=0 x1 y1 x2 y2 x3 y3 x4 y4 x5 y5 x6 y6 x7 y7 x8 y8 x9 y9 x10 y10 x11 y11 x12 y12 c1 c2 c3 c4 New patch; no implicit values f=1 x5 y5 x6 y6 x7 y7 x8 y8 x9 y9 x10 y10 x11 y11 x12 y12 c3 c4 Implicit values: (x1 , y1 ) = (x4 , y4 ) previous (x2 , y2 ) = (x5 , y5 ) previous (x3 , y3 ) = (x6 , y6 ) previous (x4 , y4 ) = (x7 , y7 ) previous c1 = c2 previous c2 = c3 previous f=2 x5 y5 x6 y6 x7 y7 x8 y8 x9 y9 x10 y10 x11 y11 x12 y12 c3 c4 Implicit values: (x1 , y1 ) = (x7 , y7 ) previous (x2 , y2 ) = (x8 , y8 ) previous (x3 , y3 ) = (x9 , y9 ) previous (x4 , y4 ) = (x10 , y10 ) previous c1 = c3 previous c2 = c4 previous f=3 x5 y5 x6 y6 x7 y7 x8 y8 x9 y9 x10 y10 x11 y11 x12 y12 c3 c4 Implicit values: (x1 , y1 ) = (x10 , y10 ) previous (x2 , y2 ) = (x11 , y11 ) previous (x3 , y3 ) = (x12 , y12 ) previous (x4 , y4 ) = (x1 , y1 ) previous c1 = c4 previous c2 = c1 previous Type 7 Shadings (Tensor-Product Patch Meshes) Type 7 shadings (tensor-product patch meshes) are identical to type 6, except that they are based on a bicubic tensor-product patch defined by 16 control points instead of the 12 control points that define a Coons patch. The shading dictionaries representing the two patch types differ only in the value of the ShadingType entry and in the number of control points specified for each patch in the data stream.  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0327.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 4.6</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">327</span></div>
+<div class="pos" id="*49:559" style="top:49;left:559"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Patterns</span></div>
+<div class="pos" id="*113:241" style="top:113;left:241"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">TABLE 4.35 Data values in a Coons patch mesh</span></div>
+<div class="pos" id="*133:133" style="top:133;left:133"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">EDGE FLAG</span></div>
+<div class="pos" id="*133:224" style="top:133;left:224"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">NEXT SET OF DATA VALUES</span></div>
+<div class="pos" id="*160:133" style="top:160;left:133"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*156:139" style="top:156;left:139"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*160:150" style="top:160;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">0</span></div>
+<div class="pos" id="*160:224" style="top:160;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*166:231" style="top:166;left:231"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*160:242" style="top:160;left:242"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*166:248" style="top:166;left:248"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*160:259" style="top:160;left:259"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*166:266" style="top:166;left:266"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*160:277" style="top:160;left:277"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*166:283" style="top:166;left:283"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*160:294" style="top:160;left:294"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*166:300" style="top:166;left:300"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*160:312" style="top:160;left:312"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*166:318" style="top:166;left:318"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*160:329" style="top:160;left:329"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*166:335" style="top:166;left:335"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*160:347" style="top:160;left:347"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*166:352" style="top:166;left:352"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*160:364" style="top:160;left:364"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*166:370" style="top:166;left:370"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*160:382" style="top:160;left:382"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*166:387" style="top:166;left:387"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*160:399" style="top:160;left:399"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*166:405" style="top:166;left:405"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*160:416" style="top:160;left:416"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*166:422" style="top:166;left:422"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*176:224" style="top:176;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*182:231" style="top:182;left:231"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*176:242" style="top:176;left:242"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*182:248" style="top:182;left:248"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*176:259" style="top:176;left:259"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*182:266" style="top:182;left:266"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*176:277" style="top:176;left:277"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*182:283" style="top:182;left:283"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*176:294" style="top:176;left:294"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*182:300" style="top:182;left:300"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*176:312" style="top:176;left:312"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*182:318" style="top:182;left:318"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*176:329" style="top:176;left:329"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*182:335" style="top:182;left:335"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*176:352" style="top:176;left:352"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*182:358" style="top:182;left:358"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*176:374" style="top:176;left:374"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*182:380" style="top:182;left:380"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11</span></div>
+<div class="pos" id="*176:397" style="top:176;left:397"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*182:403" style="top:182;left:403"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11</span></div>
+<div class="pos" id="*176:419" style="top:176;left:419"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*182:425" style="top:182;left:425"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12</span></div>
+<div class="pos" id="*176:442" style="top:176;left:442"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*182:448" style="top:182;left:448"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12</span></div>
+<div class="pos" id="*193:224" style="top:193;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*199:229" style="top:199;left:229"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*193:241" style="top:193;left:241"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*199:246" style="top:199;left:246"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*193:257" style="top:193;left:257"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*199:262" style="top:199;left:262"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*193:274" style="top:193;left:274"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*199:279" style="top:199;left:279"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*218:224" style="top:218;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">New patch; no implicit values</span></div>
+<div class="pos" id="*246:133" style="top:246;left:133"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*243:139" style="top:243;left:139"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*246:150" style="top:246;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*246:224" style="top:246;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*253:231" style="top:253;left:231"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*246:242" style="top:246;left:242"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*253:248" style="top:253;left:248"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*246:259" style="top:246;left:259"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*253:266" style="top:253;left:266"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*246:277" style="top:246;left:277"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*253:283" style="top:253;left:283"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*246:294" style="top:246;left:294"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*253:300" style="top:253;left:300"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*246:312" style="top:246;left:312"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*253:318" style="top:253;left:318"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*246:329" style="top:246;left:329"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*253:335" style="top:253;left:335"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*246:347" style="top:246;left:347"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*253:352" style="top:253;left:352"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*246:364" style="top:246;left:364"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*253:370" style="top:253;left:370"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*246:382" style="top:246;left:382"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*253:387" style="top:253;left:387"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*246:399" style="top:246;left:399"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*253:405" style="top:253;left:405"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*246:421" style="top:246;left:421"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*253:427" style="top:253;left:427"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*246:444" style="top:246;left:444"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*253:450" style="top:253;left:450"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11</span></div>
+<div class="pos" id="*246:466" style="top:246;left:466"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*253:472" style="top:253;left:472"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11</span></div>
+<div class="pos" id="*246:489" style="top:246;left:489"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*253:495" style="top:253;left:495"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12</span></div>
+<div class="pos" id="*246:511" style="top:246;left:511"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*253:517" style="top:253;left:517"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12</span></div>
+<div class="pos" id="*263:224" style="top:263;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*269:229" style="top:269;left:229"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*263:241" style="top:263;left:241"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*269:246" style="top:269;left:246"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*288:224" style="top:288;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Implicit values:</span></div>
+<div class="pos" id="*313:224" style="top:313;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*319:235" style="top:319;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*313:241" style="top:313;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*313:247" style="top:313;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*319:253" style="top:319;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*313:259" style="top:313;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*319:288" style="top:319;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*313:295" style="top:313;left:295"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*313:301" style="top:313;left:301"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*319:306" style="top:319;left:306"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*313:313" style="top:313;left:313"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*330:224" style="top:330;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*336:235" style="top:336;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*330:241" style="top:330;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*330:247" style="top:330;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*336:253" style="top:336;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*330:259" style="top:330;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*336:288" style="top:336;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*330:295" style="top:330;left:295"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*330:301" style="top:330;left:301"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*336:306" style="top:336;left:306"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*330:313" style="top:330;left:313"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*346:224" style="top:346;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*353:235" style="top:353;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*346:241" style="top:346;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*346:247" style="top:346;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*353:253" style="top:353;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*346:259" style="top:346;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*353:288" style="top:353;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*346:295" style="top:346;left:295"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*346:301" style="top:346;left:301"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*353:306" style="top:353;left:306"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*346:313" style="top:346;left:313"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*363:224" style="top:363;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*369:235" style="top:369;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*363:241" style="top:363;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*363:247" style="top:363;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*369:253" style="top:369;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*363:259" style="top:363;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*369:288" style="top:369;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*363:295" style="top:363;left:295"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*363:301" style="top:363;left:301"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*369:306" style="top:369;left:306"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*363:313" style="top:363;left:313"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*313:449" style="top:313;left:449"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*319:455" style="top:319;left:455"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*313:463" style="top:313;left:463"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">=</span></div>
+<div class="pos" id="*313:473" style="top:313;left:473"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*319:478" style="top:319;left:478"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*313:486" style="top:313;left:486"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">previous</span></div>
+<div class="pos" id="*330:449" style="top:330;left:449"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*336:455" style="top:336;left:455"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*330:463" style="top:330;left:463"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">=</span></div>
+<div class="pos" id="*330:473" style="top:330;left:473"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*336:478" style="top:336;left:478"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*330:486" style="top:330;left:486"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">previous</span></div>
+<div class="pos" id="*391:133" style="top:391;left:133"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*388:139" style="top:388;left:139"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*391:150" style="top:391;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*391:224" style="top:391;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*398:231" style="top:398;left:231"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*391:242" style="top:391;left:242"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*398:248" style="top:398;left:248"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*391:259" style="top:391;left:259"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*398:266" style="top:398;left:266"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*391:277" style="top:391;left:277"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*398:283" style="top:398;left:283"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*391:294" style="top:391;left:294"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*398:300" style="top:398;left:300"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*391:312" style="top:391;left:312"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*398:318" style="top:398;left:318"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*391:329" style="top:391;left:329"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*398:335" style="top:398;left:335"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*391:347" style="top:391;left:347"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*398:352" style="top:398;left:352"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*391:364" style="top:391;left:364"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*398:370" style="top:398;left:370"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*391:382" style="top:391;left:382"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*398:387" style="top:398;left:387"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*391:399" style="top:391;left:399"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*398:405" style="top:398;left:405"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*391:421" style="top:391;left:421"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*398:427" style="top:398;left:427"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*391:444" style="top:391;left:444"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*398:450" style="top:398;left:450"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11</span></div>
+<div class="pos" id="*391:466" style="top:391;left:466"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*398:472" style="top:398;left:472"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11</span></div>
+<div class="pos" id="*391:489" style="top:391;left:489"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*398:495" style="top:398;left:495"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12</span></div>
+<div class="pos" id="*391:511" style="top:391;left:511"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*398:517" style="top:398;left:517"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12</span></div>
+<div class="pos" id="*408:224" style="top:408;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*414:229" style="top:414;left:229"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*408:238" style="top:408;left:238"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*414:243" style="top:414;left:243"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*433:224" style="top:433;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Implicit values:</span></div>
+<div class="pos" id="*458:224" style="top:458;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*464:235" style="top:464;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*458:241" style="top:458;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*458:247" style="top:458;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*464:253" style="top:464;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*458:259" style="top:458;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*464:288" style="top:464;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*458:295" style="top:458;left:295"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*458:301" style="top:458;left:301"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*464:306" style="top:464;left:306"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*458:313" style="top:458;left:313"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*475:224" style="top:475;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*481:235" style="top:481;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*475:241" style="top:475;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*475:247" style="top:475;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*481:253" style="top:481;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*475:259" style="top:475;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*481:288" style="top:481;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*475:295" style="top:475;left:295"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*475:301" style="top:475;left:301"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*481:306" style="top:481;left:306"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*475:313" style="top:475;left:313"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*491:224" style="top:491;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*498:235" style="top:498;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*491:241" style="top:491;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*491:247" style="top:491;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*498:253" style="top:498;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*491:259" style="top:491;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*498:288" style="top:498;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*491:295" style="top:491;left:295"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*491:301" style="top:491;left:301"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*498:306" style="top:498;left:306"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*491:313" style="top:491;left:313"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*508:224" style="top:508;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*514:235" style="top:514;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*508:241" style="top:508;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*508:247" style="top:508;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*514:253" style="top:514;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*508:259" style="top:508;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*514:288" style="top:514;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*508:300" style="top:508;left:300"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*508:306" style="top:508;left:306"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*514:311" style="top:514;left:311"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*508:323" style="top:508;left:323"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*458:449" style="top:458;left:449"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*464:455" style="top:464;left:455"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*458:463" style="top:458;left:463"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">=</span></div>
+<div class="pos" id="*458:473" style="top:458;left:473"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*464:478" style="top:464;left:478"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*458:486" style="top:458;left:486"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">previous</span></div>
+<div class="pos" id="*475:449" style="top:475;left:449"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*481:455" style="top:481;left:455"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*475:463" style="top:475;left:463"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">=</span></div>
+<div class="pos" id="*475:473" style="top:475;left:473"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*481:478" style="top:481;left:478"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*475:486" style="top:475;left:486"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">previous</span></div>
+<div class="pos" id="*537:133" style="top:537;left:133"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">f</span></div>
+<div class="pos" id="*534:139" style="top:534;left:139"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:Symbol;color:#000000;">=</span></div>
+<div class="pos" id="*537:150" style="top:537;left:150"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*537:224" style="top:537;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*543:231" style="top:543;left:231"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*537:242" style="top:537;left:242"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*543:248" style="top:543;left:248"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">5</span></div>
+<div class="pos" id="*537:259" style="top:537;left:259"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*543:266" style="top:543;left:266"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*537:277" style="top:537;left:277"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*543:283" style="top:543;left:283"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">6</span></div>
+<div class="pos" id="*537:294" style="top:537;left:294"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*543:300" style="top:543;left:300"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*537:312" style="top:537;left:312"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*543:318" style="top:543;left:318"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">7</span></div>
+<div class="pos" id="*537:329" style="top:537;left:329"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*543:335" style="top:543;left:335"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*537:347" style="top:537;left:347"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*543:352" style="top:543;left:352"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">8</span></div>
+<div class="pos" id="*537:364" style="top:537;left:364"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*543:370" style="top:543;left:370"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*537:382" style="top:537;left:382"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*543:387" style="top:543;left:387"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">9</span></div>
+<div class="pos" id="*537:399" style="top:537;left:399"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*543:405" style="top:543;left:405"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*537:421" style="top:537;left:421"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*543:427" style="top:543;left:427"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*537:444" style="top:537;left:444"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*543:450" style="top:543;left:450"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11</span></div>
+<div class="pos" id="*537:466" style="top:537;left:466"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*543:472" style="top:543;left:472"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11</span></div>
+<div class="pos" id="*537:489" style="top:537;left:489"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">x</span></div>
+<div class="pos" id="*543:495" style="top:543;left:495"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12</span></div>
+<div class="pos" id="*537:511" style="top:537;left:511"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*543:517" style="top:543;left:517"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12</span></div>
+<div class="pos" id="*553:224" style="top:553;left:224"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*560:229" style="top:560;left:229"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*553:238" style="top:553;left:238"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*560:243" style="top:560;left:243"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*578:224" style="top:578;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Implicit values:</span></div>
+<div class="pos" id="*603:224" style="top:603;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*610:235" style="top:610;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*603:241" style="top:603;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*603:247" style="top:603;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*610:253" style="top:610;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*603:259" style="top:603;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*610:288" style="top:610;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*603:300" style="top:603;left:300"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*603:306" style="top:603;left:306"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*610:311" style="top:610;left:311"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">10</span></div>
+<div class="pos" id="*603:323" style="top:603;left:323"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*620:224" style="top:620;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*626:235" style="top:626;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*620:241" style="top:620;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*620:247" style="top:620;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*626:253" style="top:626;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*620:259" style="top:620;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*626:288" style="top:626;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11</span></div>
+<div class="pos" id="*620:300" style="top:620;left:300"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*620:306" style="top:620;left:306"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*626:311" style="top:626;left:311"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">11</span></div>
+<div class="pos" id="*620:323" style="top:620;left:323"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*637:224" style="top:637;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*643:235" style="top:643;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*637:241" style="top:637;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*637:247" style="top:637;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*643:253" style="top:643;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">3</span></div>
+<div class="pos" id="*637:259" style="top:637;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*643:288" style="top:643;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12</span></div>
+<div class="pos" id="*637:300" style="top:637;left:300"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*637:306" style="top:637;left:306"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*643:311" style="top:643;left:311"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">12</span></div>
+<div class="pos" id="*637:323" style="top:637;left:323"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*653:224" style="top:653;left:224"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(x</span></div>
+<div class="pos" id="*660:235" style="top:660;left:235"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*653:241" style="top:653;left:241"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*653:247" style="top:653;left:247"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*660:253" style="top:660;left:253"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*653:259" style="top:653;left:259"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) = (x</span></div>
+<div class="pos" id="*660:288" style="top:660;left:288"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*653:295" style="top:653;left:295"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">,</span></div>
+<div class="pos" id="*653:301" style="top:653;left:301"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">y</span></div>
+<div class="pos" id="*660:306" style="top:660;left:306"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*653:313" style="top:653;left:313"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) previous</span></div>
+<div class="pos" id="*603:450" style="top:603;left:450"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*610:455" style="top:610;left:455"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*603:463" style="top:603;left:463"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">=</span></div>
+<div class="pos" id="*603:473" style="top:603;left:473"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*610:478" style="top:610;left:478"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">4</span></div>
+<div class="pos" id="*603:486" style="top:603;left:486"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">previous</span></div>
+<div class="pos" id="*620:450" style="top:620;left:450"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*626:455" style="top:626;left:455"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">2</span></div>
+<div class="pos" id="*620:463" style="top:620;left:463"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">=</span></div>
+<div class="pos" id="*620:473" style="top:620;left:473"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">c</span></div>
+<div class="pos" id="*626:478" style="top:626;left:478"><span id="*9" style="font-style:normal;font-weight:normal;font-size:9px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">1</span></div>
+<div class="pos" id="*620:486" style="top:620;left:486"><span id="*12" style="font-style:normal;font-weight:normal;font-size:12px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">previous</span></div>
+<div class="pos" id="*700:133" style="top:700;left:133"><span id="*13" style="font-style:italic;font-weight:700;font-size:13px;font-family:MyriadPro-SemiboldIt,Arial,Helvetica,sans-serif;color:#000000;">Type 7 Shadings (Tensor-Product Patch Meshes)</span></div>
+<div class="pos" id="*736:133" style="top:736;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Type 7 shadings (tensor-product patch meshes) are identical to type 6, except that</span></div>
+<div class="pos" id="*754:133" style="top:754;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">they are based on a bicubic tensor-product patch defined by 16 control points in-</span></div>
+<div class="pos" id="*772:133" style="top:772;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">stead of the 12 control points that define a Coons patch. The shading dictionaries</span></div>
+<div class="pos" id="*790:133" style="top:790;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">representing the two patch types differ only in the value of the</span></div>
+<div class="pos" id="*791:494" style="top:791;left:494"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ShadingType</span></div>
+<div class="pos" id="*790:573" style="top:790;left:573"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry</span></div>
+<div class="pos" id="*808:133" style="top:808;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and in the number of control points specified for each patch in the data stream.</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0326.htm" title="Go to previous page">Previous</a> <a href="pg_0328.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(327);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix bibo: <http://purl.org/ontology/bibo/>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix w3id: <https://w3id.org/>.
+@prefix hpont: <https://w3id.org/hpont#>.
+@prefix ccrel: <http://creativecommons.org/ns#>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xmls: <http://www.w3.org/2001/XMLSchema#>.
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+
+_:Be6103a9e7ea782263d8ac71ba684e4f4 a owl:AllDifferent;
+                                    owl:distinctMembers (hpont:ata
+                                                         hpont:atw).
+ccrel:license a owl:AnnotationProperty.
+dc11:date a owl:AnnotationProperty.
+dc11:description a owl:AnnotationProperty.
+dc11:publisher a owl:AnnotationProperty.
+dc11:title a owl:AnnotationProperty.
+dcterms:contributor a owl:AnnotationProperty.
+dcterms:created a owl:AnnotationProperty.
+dcterms:creator a owl:AnnotationProperty.
+dcterms:description a owl:AnnotationProperty.
+dcterms:issued a owl:AnnotationProperty.
+dcterms:license a owl:AnnotationProperty.
+dcterms:title a owl:AnnotationProperty.
+bibo:status a owl:AnnotationProperty.
+vann:preferredNamespacePrefix a owl:AnnotationProperty.
+vann:preferredNamespaceUri a owl:AnnotationProperty.
+voaf:Vocabulary a owl:Class.
+owl:versionInfo a owl:AnnotationProperty.
+status:term_status a owl:AnnotationProperty.
+w3id:hpont ccrel:license <https://creativecommons.org/licenses/by-nc/4.0/>;
+           dcterms:contributor """Ignacio Lazaro <mailto:ignacio.lazar@tekniker.es>
+Daniel Coakley <mailto:d.coakley@uk.merce.mee.com>
+James Freeman <mailto:j.freeman@uk.merce.mee.com>
+Paulo Lissa <mailto:paulo.lissa@nuigalway.ie>""";
+           dcterms:created "2021-08-04";
+           dcterms:creator "Iker Esnaola-Gonzalez <mailto:iker.esnaola@tekniker.es>";
+           dcterms:description """The Heat Pump Ontology (HPOnt) aims to formalize and represent all the relevant information of Heat Pumps.
+
+The HPOnt has been developed as part of the REACT project which has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement no. 824395."""@en,
+                               "The Heat Pump Ontology";
+           dcterms:issued "2021-08-19";
+           dcterms:title "The Heat Pump Ontology (HPOnt)."@en;
+           bibo:status "Work in Progress"@en;
+           vann:preferredNamespacePrefix "hpont";
+           vann:preferredNamespaceUri hpont:;
+           a owl:Ontology;
+           owl:versionInfo 0.2.
+hpont: a owl:NamedIndividual,
+         voaf:Vocabulary.
+hpont:HeatPumpOperatingMode a owl:Class;
+                            rdfs:comment "The operating mode of a given Heat Pump system"@en;
+                            rdfs:isDefinedBy hpont:;
+                            rdfs:label "Heat Pump Operating Mode"@en;
+                            rdfs:subClassOf [owl:someValuesFrom hpont:HeatPumpOperatingMode ; 
+                                             owl:onProperty hpont:hasOperatingModeAvailable ; 
+                                             a owl:Restriction],
+                                            [owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; 
+                                             owl:onProperty hpont:hasTechnology ; 
+                                             owl:onClass hpont:HeatPumpTechnology ; 
+                                             a owl:Restriction];
+                            status:term_status "testing".
+hpont:HeatPumpSystem a owl:Class;
+                     rdfs:comment "A system composed of one or many devices that transfer heat from a colder area to a hotter area by using mechanical energy"@en;
+                     rdfs:isDefinedBy hpont:;
+                     rdfs:label "Heat Pump System"@en;
+                     status:term_status "stable".
+hpont:HeatPumpTechnology a owl:Class;
+                         rdfs:comment "The base technology of a given Heat Pump system"@en;
+                         rdfs:isDefinedBy hpont:;
+                         rdfs:label "Heat Pump Technology"@en;
+                         status:term_status "testing".
+hpont:ata bibo:status "testing";
+          a owl:NamedIndividual,
+            hpont:HeatPumpTechnology;
+          rdfs:comment "Air-to-air Heat Pump technology."@en;
+          rdfs:isDefinedBy hpont:;
+          rdfs:label "air-to-air"@en.
+hpont:atw bibo:status "testing";
+          a owl:NamedIndividual,
+            hpont:HeatPumpTechnology;
+          rdfs:comment "Air-to-water Heat Pump technology"@en;
+          rdfs:isDefinedBy hpont:;
+          rdfs:label "air-to-water"@en.
+hpont:dhwHeatingMode bibo:status "testing";
+                     a owl:NamedIndividual,
+                       hpont:HeatPumpOperatingMode;
+                     rdfs:comment "DHW heating operation mode of the Heat Pump"@en;
+                     rdfs:isDefinedBy hpont:;
+                     rdfs:label "DHW heating mode"@en.
+hpont:hasBufferStorageVolume a owl:DatatypeProperty;
+                             rdfs:comment "Buffer storage volume of the Heat Pump. Buffer storage is thermal energy storage using a tank for the circulating heat transfer fluid of the Heat Pump"@en;
+                             rdfs:domain hpont:HeatPumpSystem;
+                             rdfs:isDefinedBy hpont:;
+                             rdfs:label "has Buffer Storage Volume"@en;
+                             status:term_status "testing".
+hpont:hasDHWStorageVolume a owl:DatatypeProperty;
+                          rdfs:comment "DHW (Domestic Hot Water) storage volume of the Heat Pump. DHW storage is a tank that contains clean potable water for household hot water consumption"@en;
+                          rdfs:domain hpont:HeatPumpSystem;
+                          rdfs:isDefinedBy hpont:;
+                          rdfs:label "has DHW Storage Volume"@en;
+                          status:term_status "testing".
+hpont:hasNominalCoolingCapacity a owl:DatatypeProperty;
+                                rdfs:comment "Nominal cooling capacity of the Heat Pump"@en;
+                                rdfs:domain hpont:HeatPumpSystem;
+                                rdfs:isDefinedBy hpont:;
+                                rdfs:label "has Nominal Cooling Capacity"@en;
+                                status:term_status "testing".
+hpont:hasNominalHeatingCapacity a owl:DatatypeProperty;
+                                rdfs:comment "Nominal heating capacity of the Heat Pump"@en;
+                                rdfs:domain hpont:HeatPumpSystem;
+                                rdfs:isDefinedBy hpont:;
+                                rdfs:label "has Nominal Heating Capacity"@en;
+                                status:term_status "testing".
+hpont:hasNominalPowerConsumptionInCoolingMode a owl:DatatypeProperty;
+                                              rdfs:comment "Nominal power consumption of the Heat Pump when it is in cooling mode"@en;
+                                              rdfs:domain hpont:HeatPumpSystem;
+                                              rdfs:isDefinedBy hpont:;
+                                              rdfs:label "has Nominal Power Consumption In Cooling Mode"@en;
+                                              status:term_status "testing".
+hpont:hasNominalPowerConsumptionInHeatingMode a owl:DatatypeProperty;
+                                              rdfs:comment "Nominal power consumption of the Heat Pump when it is in heating mode"@en;
+                                              rdfs:domain hpont:HeatPumpSystem;
+                                              rdfs:isDefinedBy hpont:;
+                                              rdfs:label "has Nominal Power Consumption In Heating Mode"@en;
+                                              status:term_status "testing".
+hpont:hasNumberOfIndoorUnits a owl:DatatypeProperty;
+                             rdfs:comment "Number of indoor units that the Heat Pump has"@en;
+                             rdfs:domain hpont:HeatPumpSystem;
+                             rdfs:isDefinedBy hpont:;
+                             rdfs:label "has Number Of Indoor Units"@en;
+                             rdfs:range xsd:integer;
+                             status:term_status "testing".
+hpont:hasNumberOfOutdoorUnits a owl:DatatypeProperty;
+                              rdfs:comment "Number of outdoor units that the Heat Pump has"@en;
+                              rdfs:domain hpont:HeatPumpSystem;
+                              rdfs:isDefinedBy hpont:;
+                              rdfs:label "has Number Of Outdoor Units"@en;
+                              rdfs:range xsd:integer;
+                              status:term_status "testing".
+hpont:hasOperatingModeAvailable a owl:ObjectProperty;
+                                rdfs:comment "Operating modes available for the Heat Pump"@en;
+                                rdfs:domain hpont:HeatPumpSystem;
+                                rdfs:isDefinedBy hpont:;
+                                rdfs:label "has Operating Mode Available"@en;
+                                rdfs:range hpont:HeatPumpOperatingMode;
+                                status:term_status "testing".
+hpont:hasOutdoorModelUnitName a owl:DatatypeProperty;
+                              rdfs:comment "Name of the oudoor model unit"@en;
+                              rdfs:domain hpont:HeatPumpSystem;
+                              rdfs:isDefinedBy hpont:;
+                              rdfs:label "has Outdoor Model Unit Name"@en;
+                              rdfs:range xsd:string;
+                              status:term_status "testing".
+hpont:hasPowerSupplyType a owl:DatatypeProperty;
+                         rdfs:comment "Electric power supply type of the Heat Pump System"@en;
+                         rdfs:domain hpont:HeatPumpSystem;
+                         rdfs:isDefinedBy hpont:;
+                         rdfs:label "has Power Supply Type"@en;
+                         status:term_status "testing".
+hpont:hasTechnology a owl:ObjectProperty;
+                    rdfs:comment "Base technology of a given Heat Pump"@en;
+                    rdfs:domain hpont:HeatPumpSystem;
+                    rdfs:isDefinedBy hpont:;
+                    rdfs:label "has Technology"@en;
+                    rdfs:range hpont:HeatPumpTechnology;
+                    status:term_status "testing".
+hpont:spaceCoolingMode bibo:status "testing";
+                       a owl:NamedIndividual,
+                         hpont:HeatPumpOperatingMode;
+                       rdfs:comment "Space cooling operation mode of the Heat Pump"@en;
+                       rdfs:isDefinedBy hpont:;
+                       rdfs:label "Space cooling mode"@en.
+hpont:spaceHeatingMode bibo:status "testing";
+                       a owl:NamedIndividual,
+                         hpont:HeatPumpOperatingMode;
+                       rdfs:comment "Space heating operation mode of the Heat Pump"@en;
+                       rdfs:isDefinedBy hpont:;
+                       rdfs:label "Space heating mode"@en.

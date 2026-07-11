@@ -1,0 +1,42 @@
+﻿namespace Fibo.SEC.Debt.MortgageBackedSecurities.Namespace
+module MortgageBackedSecurities =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/SEC/Debt/MortgageBackedSecurities.rdf") (Some @"fibo.SEC.Debt.MortgageBackedSecurities") None
+    let AgencyMBSDeal = {_prefixID with _localName = "AgencyMBSDeal"}
+    let AgencyMBSIssuer = {_prefixID with _localName = "AgencyMBSIssuer"}
+    let AgencyMBSPool = {_prefixID with _localName = "AgencyMBSPool"}
+    let AgencyMortgagePool = {_prefixID with _localName = "AgencyMortgagePool"}
+    let CommercialMBS = {_prefixID with _localName = "CommercialMBS"}
+    let ``FHLMC-GoldPool`` = {_prefixID with _localName = "FHLMC-GoldPool"}
+    let ``FHLMC-Pool`` = {_prefixID with _localName = "FHLMC-Pool"}
+    let ``FNMA-Pool`` = {_prefixID with _localName = "FNMA-Pool"}
+    let ``GNMA-IIPool`` = {_prefixID with _localName = "GNMA-IIPool"}
+    let ``GNMA-PlatinumPool`` = {_prefixID with _localName = "GNMA-PlatinumPool"}
+    let ``GNMA-iPool`` = {_prefixID with _localName = "GNMA-iPool"}
+    let GovernmentMortgageAgency = {_prefixID with _localName = "GovernmentMortgageAgency"}
+    let IssuedAndSecuritizedAgencyMortagePool = {_prefixID with _localName = "IssuedAndSecuritizedAgencyMortagePool"}
+    let IssuedAndSecuritizedNonAgencyMortgagePool = {_prefixID with _localName = "IssuedAndSecuritizedNonAgencyMortgagePool"}
+    let MBSIssuer = {_prefixID with _localName = "MBSIssuer"}
+    let MBSPool = {_prefixID with _localName = "MBSPool"}
+    let MortgageBackedSecurity = {_prefixID with _localName = "MortgageBackedSecurity"}
+    let MortgageBackedSecurityOfferingProspectus = {_prefixID with _localName = "MortgageBackedSecurityOfferingProspectus"}
+    let MortgagePool = {_prefixID with _localName = "MortgagePool"}
+    let NonAgencyMBSIssuer = {_prefixID with _localName = "NonAgencyMBSIssuer"}
+    let NonAgencyMortgagePool = {_prefixID with _localName = "NonAgencyMortgagePool"}
+    let ``Pass-throughPool`` = {_prefixID with _localName = "Pass-throughPool"}
+    let PassThroughMBSDeal = {_prefixID with _localName = "PassThroughMBSDeal"}
+    let PassThroughMBSDealProspectus = {_prefixID with _localName = "PassThroughMBSDealProspectus"}
+    let PassThroughMBSInstrument = {_prefixID with _localName = "PassThroughMBSInstrument"}
+    let PassThroughMBSInstrumentNote = {_prefixID with _localName = "PassThroughMBSInstrumentNote"}
+    let PassThroughMBSIssueUnderwriter = {_prefixID with _localName = "PassThroughMBSIssueUnderwriter"}
+    let PayingAgent = {_prefixID with _localName = "PayingAgent"}
+    let PrivateLabelMBSDeal = {_prefixID with _localName = "PrivateLabelMBSDeal"}
+    let RealEstateMortgageInvestmentConduit = {_prefixID with _localName = "RealEstateMortgageInvestmentConduit"}
+    let ResidentialMBS = {_prefixID with _localName = "ResidentialMBS"}
+    let ``SBA-Pool`` = {_prefixID with _localName = "SBA-Pool"}
+    let SpecialistMortgageIssuer = {_prefixID with _localName = "SpecialistMortgageIssuer"}
+    let ``denomination.1`` = {_prefixID with _localName = "denomination.1"}
+    let hasNote = {_prefixID with _localName = "hasNote"}
+    let isAlso = {_prefixID with _localName = "isAlso"}
+    let isSliceOf = {_prefixID with _localName = "isSliceOf"}
+    let prime = {_prefixID with _localName = "prime"}
+    let responsibleFor = {_prefixID with _localName = "responsibleFor"}

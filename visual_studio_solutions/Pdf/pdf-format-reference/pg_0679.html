@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)/ -->
+<html>
+<head>
+<base href="https://www.verypdf.com/document/pdf-format-reference/">
+<link rel="canonical" href="https://www.verypdf.com/document/pdf-format-reference/pg_0679.htm" />
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.href = window.location.pathname + link.getAttribute('href');
+        });
+    });
+</script>
+<meta name="description" content="SECTION 8.6 679 Interactive Forms the dimensions of the annotation rectangle (the Rect entry in the widget annotation dictionary). • All other entries in the appearance stream’s form dictionary are set to their default values (see Section 4.9, “Form XObjects”). The appearance stream includes the following section of marked content, which represents the portion of the stream that draws the text: Example 8.14 /Tx BMC % Begin marked content with tag Tx q % Save graphics state … Any required graphics state changes, such as clipping … BT % Begin text object … Default appearance string ( DA ) … …Text-positioning and text-showing operators to show the variable text … ET % End text object Q % Restore graphics state EMC % End marked content The BMC (begin marked content) and EMC (end marked content) operators are discussed in Section 10.5, “Marked Content”. q (save graphics state) and Q (restore graphics state) are discussed in Section 4.3.3, “Graphics State Operators”. BT (begin text object) and ET (end text object) are discussed in Section 5.3, “Text Objects.” See Example 8.18 for an example. The default appearance string (DA) contains any graphics state or text state operators needed to establish the graphics state parameters, such as text size and color, for displaying the field’s variable text. Only operators that are allowed within text objects may occur in this string (see Figure 4.1 on page 197). At a minimum, the string must include a Tf (text font) operator along with its two operands, font and size. The specified font value must match a resource name in the Font entry of the default resource dictionary (referenced from the DR entry of the interactive form dictionary; see Table 8.67). A zero value for size means that the font is to be autosized: its size is computed as a function of the height of the annotation rectangle. The default appearance string should contain at most one Tm (text matrix) operator. If this operator is present, the viewer application should replace the horizontal and vertical translation components with positioning values it determines to be appropriate, based on the field value, the quadding (Q) attribute, and any layout rules it employs. If the default appearance string contains no Tm operator, the  ">
+<TITLE>PDF Format Reference - Adobe Portable Document Format</TITLE>
+<meta name="description" content="PDF Reference, Adobe Portable Document Format (PDF)">
+<meta name="keywords" content="pdf, document, format, reference, manual">
+<meta name="resource-type" content="document">
+<meta name="Reply-to" content="support@verypdf.com">
+<meta name="expires" content="never">
+<meta name="distribution" content="Global">
+<meta name="robots" content="INDEX,FOLLOW">
+<meta name="email" content="support@verypdf.com">
+<meta name="publisher" content="VeryPDF.com Inc">
+<meta name="copyright" content="Copyright (C) 2002-2013 VeryPDF.com Inc">
+<meta name="author" content="VeryPDF.com Inc">
+<meta name="classification" content="General Software">
+
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<style>
+<!-- 
+select {font-size:12px;}
+A:link {text-decoration: none; color: blue}
+A:visited {text-decoration: none; color: purple}
+A:active {text-decoration: red}
+A:hover {text-decoration: underline; color:red}
+-->
+</style>
+<script TYPE="text/javascript"> 
+<!-- hide 
+function killerrors()
+{ 
+return true; 
+} 
+window.onerror = killerrors; 
+// --> 
+</script>
+<style type="text/css">
+<!--
+.pos {position:absolute; z-index: 0; left: 0px; top: 0px;}
+-->
+</style>
+</head>
+<body vlink="#FFFFFF" link="#FFFFFF" bgcolor="#ffffff">
+
+<script TYPE="text/javascript">
+var currentpos,timer; 
+function initialize() 
+{ 
+timer=setInterval("scrollwindow()",10);
+} 
+function sc(){
+clearInterval(timer); 
+}
+function scrollwindow() 
+{ 
+currentpos=document.body.scrollTop; 
+window.scroll(0,++currentpos); 
+if (currentpos != document.body.scrollTop) 
+sc();
+} 
+document.onmousedown=sc
+document.ondblclick=initialize
+</script>
+<nobr>
+<div class="pos" id="*0:0" style="top:0;left:0"><img name="*738:925" width="738" height="925" src="pg_0679.png" ALT=""></div>
+<div class="pos" id="*49:133" style="top:49;left:133"><span id="*10" style="font-style:normal;font-weight:normal;font-size:10px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">SECTION 8.6</span></div>
+<div class="pos" id="*41:359" style="top:41;left:359"><span id="*10" style="font-style:normal;font-weight:700;font-size:10px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">679</span></div>
+<div class="pos" id="*49:509" style="top:49;left:509"><span id="*10" style="font-style:italic;font-weight:normal;font-size:10px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">Interactive Forms</span></div>
+<div class="pos" id="*99:145" style="top:99;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">the dimensions of the annotation rectangle (the</span></div>
+<div class="pos" id="*99:426" style="top:99;left:426"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Rect</span></div>
+<div class="pos" id="*99:455" style="top:99;left:455"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry in the widget anno-</span></div>
+<div class="pos" id="*117:145" style="top:117;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tation dictionary).</span></div>
+<div class="pos" id="*141:133" style="top:141;left:133"><span id="*17" style="font-style:normal;font-weight:700;font-size:17px;font-family:MinionPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">•</span></div>
+<div class="pos" id="*143:145" style="top:143;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">All other entries in the appearance stream’s form dictionary are set to their</span></div>
+<div class="pos" id="*161:145" style="top:161;left:145"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">default values (see Section 4.9, “Form XObjects”).</span></div>
+<div class="pos" id="*196:133" style="top:196;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The appearance stream includes the following section of marked content, which</span></div>
+<div class="pos" id="*214:133" style="top:214;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">represents the portion of the stream that draws the text:</span></div>
+<div class="pos" id="*249:133" style="top:249;left:133"><span id="*11" style="font-style:normal;font-weight:700;font-size:11px;font-family:MyriadPro-Bold,Arial,Helvetica,sans-serif;color:#000000;">Example 8.14</span></div>
+<div class="pos" id="*282:149" style="top:282;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">/Tx BMC</span></div>
+<div class="pos" id="*282:416" style="top:282;left:416"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Begin marked content with tag Tx</span></div>
+<div class="pos" id="*299:166" style="top:299;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">q</span></div>
+<div class="pos" id="*299:416" style="top:299;left:416"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Save graphics state</span></div>
+<div class="pos" id="*315:183" style="top:315;left:183"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*315:196" style="top:315;left:196"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">Any required graphics state changes, such as clipping</span></div>
+<div class="pos" id="*315:453" style="top:315;left:453"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*332:183" style="top:332;left:183"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">BT</span></div>
+<div class="pos" id="*332:416" style="top:332;left:416"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Begin text object</span></div>
+<div class="pos" id="*349:199" style="top:349;left:199"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*349:213" style="top:349;left:213"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">Default appearance string ( DA )</span></div>
+<div class="pos" id="*349:366" style="top:349;left:366"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*365:199" style="top:365;left:199"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*365:212" style="top:365;left:212"><span id="*11" style="font-style:italic;font-weight:normal;font-size:11px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">Text-positioning and text-showing operators to show the variable text</span></div>
+<div class="pos" id="*365:549" style="top:365;left:549"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">…</span></div>
+<div class="pos" id="*382:183" style="top:382;left:183"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ET</span></div>
+<div class="pos" id="*382:416" style="top:382;left:416"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% End text object</span></div>
+<div class="pos" id="*399:166" style="top:399;left:166"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Q</span></div>
+<div class="pos" id="*399:416" style="top:399;left:416"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% Restore graphics state</span></div>
+<div class="pos" id="*415:149" style="top:415;left:149"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">EMC</span></div>
+<div class="pos" id="*415:416" style="top:415;left:416"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:MyriadPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">% End marked content</span></div>
+<div class="pos" id="*449:133" style="top:449;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The</span></div>
+<div class="pos" id="*449:160" style="top:449;left:160"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BMC</span></div>
+<div class="pos" id="*449:192" style="top:449;left:192"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(begin marked content) and</span></div>
+<div class="pos" id="*449:362" style="top:449;left:362"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">EMC</span></div>
+<div class="pos" id="*449:393" style="top:449;left:393"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(end marked content) operators are</span></div>
+<div class="pos" id="*467:133" style="top:467;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">discussed in Section 10.5, “Marked Content”.</span></div>
+<div class="pos" id="*467:405" style="top:467;left:405"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">q</span></div>
+<div class="pos" id="*467:417" style="top:467;left:417"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(save graphics state) and</span></div>
+<div class="pos" id="*467:568" style="top:467;left:568"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Q</span></div>
+<div class="pos" id="*467:582" style="top:467;left:582"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(re-</span></div>
+<div class="pos" id="*485:133" style="top:485;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">store graphics state) are discussed in Section 4.3.3, “Graphics State Operators”.</span></div>
+<div class="pos" id="*486:589" style="top:486;left:589"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">BT</span></div>
+<div class="pos" id="*503:133" style="top:503;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(begin text object) and</span></div>
+<div class="pos" id="*504:275" style="top:504;left:275"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">ET</span></div>
+<div class="pos" id="*503:294" style="top:503;left:294"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(end text object) are discussed in Section 5.3, “Text</span></div>
+<div class="pos" id="*521:133" style="top:521;left:133"><a href="pg_0404.htm"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">Objects.” See Example 8.18 for an example.</span></a></div>
+<div class="pos" id="*556:133" style="top:556;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The default appearance string (</span></div>
+<div class="pos" id="*556:315" style="top:556;left:315"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DA</span></div>
+<div class="pos" id="*556:332" style="top:556;left:332"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) contains any graphics state or text state oper-</span></div>
+<div class="pos" id="*574:133" style="top:574;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">ators needed to establish the graphics state parameters, such as text size and color,</span></div>
+<div class="pos" id="*592:133" style="top:592;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">for displaying the field’s variable text. Only operators that are allowed within text</span></div>
+<div class="pos" id="*610:133" style="top:610;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">objects may occur in this string (see Figure 4.1 on page 197). At a minimum, the</span></div>
+<div class="pos" id="*628:133" style="top:628;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">string must include a</span></div>
+<div class="pos" id="*629:259" style="top:629;left:259"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Tf</span></div>
+<div class="pos" id="*628:273" style="top:628;left:273"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(text font) operator along with its two operands,</span></div>
+<div class="pos" id="*629:556" style="top:629;left:556"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">font</span></div>
+<div class="pos" id="*628:582" style="top:628;left:582"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">and</span></div>
+<div class="pos" id="*647:133" style="top:647;left:133"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">size</span></div>
+<div class="pos" id="*646:153" style="top:646;left:153"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">. The specified</span></div>
+<div class="pos" id="*647:240" style="top:647;left:240"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">font</span></div>
+<div class="pos" id="*646:266" style="top:646;left:266"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">value must match a resource name in the</span></div>
+<div class="pos" id="*647:506" style="top:647;left:506"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Font</span></div>
+<div class="pos" id="*646:536" style="top:646;left:536"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry of the</span></div>
+<div class="pos" id="*664:133" style="top:664;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">default resource dictionary (referenced from the</span></div>
+<div class="pos" id="*665:418" style="top:665;left:418"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">DR</span></div>
+<div class="pos" id="*664:438" style="top:664;left:438"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">entry of the interactive form</span></div>
+<div class="pos" id="*682:133" style="top:682;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">dictionary; see Table 8.67). A zero value for</span></div>
+<div class="pos" id="*683:389" style="top:683;left:389"><span id="*12" style="font-style:italic;font-weight:normal;font-size:12px;font-family:MyriadPro-It,Arial,Helvetica,sans-serif;color:#000000;">size</span></div>
+<div class="pos" id="*682:412" style="top:682;left:412"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">means that the font is to be</span></div>
+<div class="pos" id="*682:573" style="top:682;left:573"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">auto-</span></div>
+<div class="pos" id="*700:133" style="top:700;left:133"><span id="*13" style="font-style:italic;font-weight:normal;font-size:13px;font-family:MinionPro-It,Arial,Helvetica,sans-serif;color:#000000;">sized:</span></div>
+<div class="pos" id="*700:168" style="top:700;left:168"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">its size is computed as a function of the height of the annotation rectangle.</span></div>
+<div class="pos" id="*735:133" style="top:735;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">The default appearance string should contain at most one</span></div>
+<div class="pos" id="*736:467" style="top:736;left:467"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Tm</span></div>
+<div class="pos" id="*735:488" style="top:735;left:488"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">(text matrix) opera-</span></div>
+<div class="pos" id="*753:133" style="top:753;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tor. If this operator is present, the viewer application should replace the horizon-</span></div>
+<div class="pos" id="*771:133" style="top:771;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">tal and vertical translation components with positioning values it determines to</span></div>
+<div class="pos" id="*789:133" style="top:789;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">be appropriate, based on the field value, the quadding (</span></div>
+<div class="pos" id="*790:457" style="top:790;left:457"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Q</span></div>
+<div class="pos" id="*789:466" style="top:789;left:466"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">) attribute, and any lay-</span></div>
+<div class="pos" id="*807:133" style="top:807;left:133"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">out rules it employs. If the default appearance string contains no</span></div>
+<div class="pos" id="*808:508" style="top:808;left:508"><span id="*12" style="font-style:normal;font-weight:700;font-size:12px;font-family:MyriadPro-Semibold,Arial,Helvetica,sans-serif;color:#000000;">Tm</span></div>
+<div class="pos" id="*807:530" style="top:807;left:530"><span id="*13" style="font-style:normal;font-weight:normal;font-size:13px;font-family:MinionPro-Regular,Arial,Helvetica,sans-serif;color:#000000;">operator, the</span></div>
+</nobr>
+<div class="pos" id="*1:1" style="top:1;left:1"><a target="_blank" href="index.htm">Index</a> <a href="bookmark.htm">Bookmark</a> <a href="allpgs.htm">Pages</a> <a href="txtidx.htm">Text</a> </div>
+<div class="pos" id="*925:0" style="top:925;left:319"><a href="pg_0678.htm" title="Go to previous page">Previous</a> <a href="pg_0680.htm" title="Go to next page">Next</a>
+</div>
+<div class="pos" id="*945:0" style="top:945;left:0"><font size="1" face="Verdana">Pages: <a target="_blank" href="index.htm">Index</a> <a href="allpgs.htm">All Pages</a>
+</font></div>
+<div class="pos" id="*20:1" style="top:20;left:1"><span id="*11" style="font-style:normal;font-weight:normal;font-size:11px;font-family:Verdana;color:#0000FF;"><a target="_blank" href="/pdf2htm/index.html" title="VeryPDF PDF to HTML Converter Command Line">This HTML file was created by VeryPDF PDF to HTML Converter product.</a></span></div><script TYPE="text/javascript"> if(parent) if(parent.ltop){var currentZoom = parent.ltop.currentZoom; if(currentZoom != undefined){if(parent.ltop.isBrowser('Explorer', 0) == true)	document.body.style.zoom=currentZoom/100;else parent.ltop.MyNewZoomForFireFox(currentZoom);} parent.ltop.setgotopagestatus(679);
+parent.ltop.document.zoomList.zoomSelected.selectedIndex = (currentZoom-50)/10;}
+</script>
+</body>
+</html>

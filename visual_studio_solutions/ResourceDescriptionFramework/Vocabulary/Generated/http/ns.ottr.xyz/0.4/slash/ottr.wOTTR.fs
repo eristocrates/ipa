@@ -1,0 +1,42 @@
+﻿namespace Ottr.wOTTR.Namespace
+module wOTTR =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "http://ns.ottr.xyz/0.4/" (Some @"https://spec.ottr.xyz/wOTTR/0.4.5/core-vocabulary.owl.ttl") (Some @"ottr.wOTTR") None
+    let Argument = {_prefixID with _localName = "Argument"}
+    let ArgumentModifier = {_prefixID with _localName = "ArgumentModifier"}
+    let BaseTemplate = {_prefixID with _localName = "BaseTemplate"}
+    let ExpansionModifier = {_prefixID with _localName = "ExpansionModifier"}
+    let IRI = {_prefixID with _localName = "IRI"}
+    let Instance = {_prefixID with _localName = "Instance"}
+    let NullableTriple = {_prefixID with _localName = "NullableTriple"}
+    let Parameter = {_prefixID with _localName = "Parameter"}
+    let ParameterModifier = {_prefixID with _localName = "ParameterModifier"}
+    let Signature = {_prefixID with _localName = "Signature"}
+    let Status = {_prefixID with _localName = "Status"}
+    let Template = {_prefixID with _localName = "Template"}
+    let Triple = {_prefixID with _localName = "Triple"}
+    let annotation = {_prefixID with _localName = "annotation"}
+    let arguments = {_prefixID with _localName = "arguments"}
+    let candidate = {_prefixID with _localName = "candidate"}
+    let cross = {_prefixID with _localName = "cross"}
+    let ``default`` = {_prefixID with _localName = "default"}
+    let deprecated = {_prefixID with _localName = "deprecated"}
+    let draft = {_prefixID with _localName = "draft"}
+    let incomplete = {_prefixID with _localName = "incomplete"}
+    let listExpand = {_prefixID with _localName = "listExpand"}
+    let modifier = {_prefixID with _localName = "modifier"}
+    let name = {_prefixID with _localName = "name"}
+    let nonBlank = {_prefixID with _localName = "nonBlank"}
+    let none = {_prefixID with _localName = "none"}
+    let ``of`` = {_prefixID with _localName = "of"}
+    let optional = {_prefixID with _localName = "optional"}
+    let parameters = {_prefixID with _localName = "parameters"}
+    let pattern = {_prefixID with _localName = "pattern"}
+    let proposedRecommendation = {_prefixID with _localName = "proposedRecommendation"}
+    let recommendation = {_prefixID with _localName = "recommendation"}
+    let status = {_prefixID with _localName = "status"}
+    let ``type`` = {_prefixID with _localName = "type"}
+    let value = {_prefixID with _localName = "value"}
+    let values = {_prefixID with _localName = "values"}
+    let variable = {_prefixID with _localName = "variable"}
+    let zipMax = {_prefixID with _localName = "zipMax"}
+    let zipMin = {_prefixID with _localName = "zipMin"}

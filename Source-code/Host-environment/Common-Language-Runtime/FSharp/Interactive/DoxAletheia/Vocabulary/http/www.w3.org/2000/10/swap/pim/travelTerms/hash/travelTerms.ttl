@@ -1,0 +1,56 @@
+@base <http://www.w3.org/2000/10/swap/pim/travelTerms>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix : <http://www.w3.org/2000/10/swap/pim/travelTerms#>.
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dt: <http://www.w3.org/2001/XMLSchema#>.
+@prefix k: <http://opencyc.sourceforge.net/daml/cyc.daml#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix ont: <http://www.daml.org/2001/03/daml+oil#>.
+@prefix r: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix s: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix trav: <http://www.w3.org/2000/10/swap/pim/travelTerms#>.
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#>.
+@prefix w3: <http://www.w3.org/>.
+@prefix dc11: <http://purl.org/dc/elements/1.1/>.
+@prefix travelTerms: <http://www.w3.org/2000/10/swap/pim/travelTerms#>.
+
+<http://www.w3.org/2000/10/swap/pim/travelTerms> dc:description "$Id: travelTerms.rdf,v 1.1 2002/06/12 15:42:27 connolly Exp $";
+                                                 dc:title "Travel terms";
+                                                 rdfs:seeAlso <http://www.w3.org/2000/10/swap/pim/grokTravItin.pl>,
+                                                              <http://www.w3.org/2000/10/swap/pim/travel>,
+                                                              <http://www.w3.org/2000/10/swap/pim/travel.html>.
+:0_work log:forSome :_g0.
+:Flight rdfs:label "Flight";
+        rdfs:subClassOf k:Translocation.
+:TimeString a rdfs:Class;
+            rdfs:comment "@@TODO: relate this to xml schema time stuff, cyc calendar stuff, etc.",
+                         "a string of the form HH:MM; e.g. 12:00, 14:23";
+            rdfs:label "time string".
+:arrivalTime a ont:UniqueProperty;
+             rdfs:domain :Flight;
+             rdfs:label "arrival time";
+             rdfs:range :TimeString.
+:carrier a ont:UniqueProperty;
+         rdfs:domain :Flight;
+         rdfs:label "carrier";
+         rdfs:range k:AirlineCompany;
+         rdfs:subPropertyOf k:performedBy.
+:departureTime a ont:UniqueProperty;
+               rdfs:comment """a string representing the departure time,
+   in the timezone of the flight's fromLocation""",
+                            "hmm... model this as the time of a departure subevent?";
+               rdfs:domain :Flight;
+               rdfs:label "departure time";
+               rdfs:range :TimeString.
+:flightNumber a ont:UniqueProperty;
+              rdfs:comment "@@range specification needs a new datatyping property";
+              rdfs:domain :Flight;
+              rdfs:label "flight number";
+              rdfs:range :_g0;
+              rdfs:subPropertyOf k:nameString,
+                                 rdf:value.
+xsd:positiveInteger rdfs:range :_g0.

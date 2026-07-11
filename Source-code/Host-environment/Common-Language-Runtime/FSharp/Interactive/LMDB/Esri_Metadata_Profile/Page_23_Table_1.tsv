@@ -1,0 +1,44 @@
+	RasterObjectInformation =  __	
+	ImageFormat +  _	
+	RasterObjectType +  __	
+	(ImageType) +  _	
+	0{NumberofBands}1 +  __	
+	(RowCount +  _	
+	ColumnCount +  _	
+	0{VerticalCount}1) +  _	
+	0{CellSizeXDirection}1 +  ___	
+	(CellSizeXUnits) +  ___	
+	0{CellSizeYDirection}1 +  ___	
+	(CellSizeYUnits) +  ___	
+	0{BitsPerPixel}1 +  __	
+	(BackgroundNodataValue) +  __	
+	0{PyramidLayers}1 +  _	
+	0{ImageColormap}1 +  _	
+	0{CompressionType}1  _	
+	(RasterDisplayType) +  __	
+	0{RasterOrigin}1 +  _	
+		
+	GeometricNetworkInformation =  __	
+	NetworkType +  _	
+	0{ConnectivityRule}n +  _	
+	(1{NetworkElement}n)  _	
+		
+	ConnectivityRule =  _	
+	RuleType +  _	
+	(RuleCategory) +  _	
+	(RuleHelp) +  _	
+	0{FromEdgeFeatureClass}1 +  ___	
+	0{FromEdgeSubtype}1 +  __	
+	0{ToEdgeFeatureClass}1 +  ___	
+	0{ToEdgeSubtype}1 +  __	
+	0{DefaultJunctionFeatureClass}1 +  ___	
+	0{DefaultJunctionSubtype}1 +  __	
+	0{AvailableJunctions}n +  _	
+	0{EdgeFeatureClass}1 +  __	
+	0{EdgeSubtype}1 +  _	
+	0{EdgeMinimumCardinality}1 +  __	
+	0{EdgeMaximumCardinality }1 +  __	
+	0{JunctionFeatureClass}1 +  __	
+	0{JunctionSubtype}1 +  _	
+	0{JunctionMinimumCardinality}1 +  __	
+	0{JunctionMaximumCardinality}1  __	

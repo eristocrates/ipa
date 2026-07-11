@@ -1,0 +1,846 @@
+
+module ICharParsers =
+  // Code point substrate
+  // -----------------------------------------------------------------------------
+
+  let reader_from_code_points (code_points:[]int) = 
+    let memory = ReadOnlyMemory<int>(code_points)
+    Reader.ofMemory memory ()
+    
+  let reader_from_code_point (code_point:int) = 
+    reader_from_code_points [|code_point|]
+    
+  let reader_from_string (string_input: string) =
+      String.code_points string_input |> reader_from_code_points
+
+
+  let inline private is_unicode_scalar code_point =
+      code_point >= 0
+      && code_point <= 0x10FFFF
+      && not (code_point >= 0xD800 && code_point <= 0xDFFF)
+
+  let private append_code_point (string_builder: StringBuilder) (code_point: int) =
+      if not (is_unicode_scalar code_point) then
+          invalidArg (nameof code_point) $"Invalid Unicode scalar value: U+{code_point:X}."
+
+      if code_point <= 0xFFFF then
+          string_builder.Append(char code_point) |> ignore
+      else
+          string_builder.Append(Char.ConvertFromUtf32 code_point) |> ignore
+
+  let private code_point_span_to_string (code_points: ReadOnlySpan<int>) =
+      let string_builder = StringBuilder(code_points.Length)
+      for code_point in code_points do 
+          append_code_point string_builder code_point
+
+      string_builder.ToString()
+
+  let private code_point_span_starts_with (code_points: ReadOnlySpan<int>) (target_code_points: int[]) =
+      if code_points.Length < target_code_points.Length then
+          false
+      else
+          let mutable index = 0
+          let mutable ok = true
+          while ok && index < target_code_points.Length do
+              if code_points[index] <> target_code_points[index] then ok <- false
+              index <- index + 1
+
+          ok
+
+  let private spanEqualsStringBy
+      (comparison: StringComparison)
+      (expectedText: string)
+      (expectedCodePoints: int[])
+      (span: ReadOnlySpan<int>)
+      =
+      if span.Length < expectedCodePoints.Length then
+          false
+      elif comparison = StringComparison.Ordinal then
+          code_point_span_starts_with span expectedCodePoints
+      else
+          // Correctness path for case-insensitive/culture-sensitive comparison.
+          // This allocates. Keep Ordinal for the hot path.
+          let actual = code_point_span_to_string (span.Slice(0, expectedCodePoints.Length))
+          String.Equals(actual, expectedText, comparison)
+
+  let private expectedSeq (xs: int[]) =
+      ExpectedSeq(xs :> seq<int>)
+
+  let private expectedSeqOneOf (xss: int[] seq) =
+      ExpectedSeqOneOf(xss |> Seq.map (fun xs -> xs :> seq<int>))
+
+  // -----------------------------------------------------------------------------
+  // Error payloads parallel to XParsec.CharParsers.ParseError
+  // -----------------------------------------------------------------------------
+
+  module private ErrorPayload =
+      let asciiLetter =
+          Message "Expected code point in range 'A' - 'Z' or 'a' - 'z'."
+
+      let digit =
+          Message "Expected code point in range '0' - '9'."
+
+      let expectedNewline =
+          Message "Expected newline."
+
+      let intOutOfRange =
+          Message "Integer out of range."
+
+      let intInvalid =
+          Message "Invalid integer format."
+
+      let floatInvalid =
+          Message "Invalid float format."
+
+      let spaces1 =
+          Message "One or more whitespace code points expected."
+
+  // -----------------------------------------------------------------------------
+  // Predicates
+  // -----------------------------------------------------------------------------
+  let predicate_parse input_parser input_reader = 
+    match input_parser input_reader with 
+    | Ok _ -> true
+    | Error _ -> false
+
+  let isDigit cp =
+      cp >= int '0' && cp <= int '9'
+
+  let isAsciiLetter cp =
+      (cp >= int 'a' && cp <= int 'z')
+      || (cp >= int 'A' && cp <= int 'Z')
+
+  let isLetter cp =
+      if not (is_unicode_scalar cp) then
+          false
+      else
+          let category = Rune.GetUnicodeCategory(Rune cp)
+
+          match category with
+          | UnicodeCategory.UppercaseLetter
+          | UnicodeCategory.LowercaseLetter
+          | UnicodeCategory.TitlecaseLetter
+          | UnicodeCategory.ModifierLetter
+          | UnicodeCategory.OtherLetter -> true
+          | _ -> false
+
+  let private isSpaceCodePoint code_point =
+      code_point = int ' '
+      || code_point = int '\t'
+      || code_point = int '\r'
+      || code_point = int '\n'
+
+  // -----------------------------------------------------------------------------
+  // Single-token parsers
+  // -----------------------------------------------------------------------------
+
+  let inline pcodePoint code_point :Parser<int,int,unit,ReadableMemory<int>> = pitem code_point 
+
+  let inline skipCodePoint
+      (cp: int)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      skipItem cp reader
+
+  let inline codePointReturn
+      (cp: int)
+      (result: 'Parsed)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      itemReturn cp result reader
+
+  // BMP-char convenience aliases.
+  // These intentionally do not express astral code points. Use pcodePoint/prune/pstring
+  // for scalar-complete parsing.
+  let inline pchar
+      (c: char)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      pcodePoint (int c) reader
+
+  let inline skipChar
+      (c: char)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      skipCodePoint (int c) reader
+
+  let inline charReturn
+      (c: char)
+      (result: 'Parsed)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      codePointReturn (int c) result reader
+
+  let inline anyChar
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      pid reader
+
+  let inline skipAnyChar
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      skip reader
+
+  let inline anyCodePoint
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      pid reader
+
+  let any_from_code_points (code_points: int array) =
+      anyOf code_points
+
+  let any_from_string (string_input: string) =
+      String.code_points string_input |> any_from_code_points
+  let any_from_chars (chars: char array) =
+      chars |> Array.map int |> any_from_code_points
+
+  let asciiLetter
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      match reader.Peek() with
+      | ValueSome cp when isAsciiLetter cp ->
+          reader.Skip()
+          preturn cp reader
+      | ValueSome _ ->
+          fail ErrorPayload.asciiLetter reader
+      | ValueNone ->
+          fail EndOfInput reader
+
+  let digit
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      match reader.Peek() with
+      | ValueSome cp when isDigit cp ->
+          reader.Skip()
+          preturn cp reader
+      | ValueSome _ ->
+          fail ErrorPayload.digit reader
+      | ValueNone ->
+          fail EndOfInput reader
+
+  // -----------------------------------------------------------------------------
+  // String/scalar-sequence parsers
+  // -----------------------------------------------------------------------------
+
+  let stringReturn
+      (s: string)
+      (result: 'Parsed)
+      =
+      if isNull s then nullArg (nameof s)
+
+      let cps = String.code_points s
+
+      fun (reader: Reader<int, 'State, 'Input>) ->
+          if cps.Length = 0 then
+              preturn result reader
+          else
+              let span = reader.PeekN cps.Length
+
+              if span.IsEmpty then
+                  fail EndOfInput reader
+              elif code_point_span_starts_with span cps then
+                  reader.SkipN cps.Length
+                  preturn result reader
+              else
+                  fail (expectedSeq cps) reader
+
+  let pstring (s: string) =
+      stringReturn s s
+
+  let stringCIReturn
+      (s: string)
+      (result: 'Parsed)
+      =
+      if isNull s then nullArg (nameof s)
+
+      let cps = String.code_points s
+
+      fun (reader: Reader<int, 'State, 'Input>) ->
+          if cps.Length = 0 then
+              preturn result reader
+          else
+              let span = reader.PeekN cps.Length
+
+              if span.IsEmpty then
+                  fail EndOfInput reader
+              elif spanEqualsStringBy StringComparison.OrdinalIgnoreCase s cps span then
+                  reader.SkipN cps.Length
+                  preturn result reader
+              else
+                  fail (expectedSeq cps) reader
+
+  type private StringCandidate<'T> =
+      { Text: string
+        CodePoints: int[]
+        Result: 'T }
+
+  let private anyStringByReturnImpl
+      (comparison: StringComparison)
+      (xs: (string * 'T) seq)
+      (message: string option)
+      =
+      if isNull xs then nullArg (nameof xs)
+
+      let sorted =
+          xs
+          |> Seq.map (fun (s, result) ->
+              if String.IsNullOrEmpty s then
+                  invalidArg (nameof xs) "The input sequence must not contain null or empty strings."
+
+              { Text = s
+                CodePoints = String.code_points s
+                Result = result })
+          |> Seq.sortWith (fun x y ->
+              let lengthComparison = y.CodePoints.Length - x.CodePoints.Length
+
+              if lengthComparison <> 0 then
+                  sign lengthComparison
+              else
+                  String.Compare(x.Text, y.Text, comparison))
+          |> Array.ofSeq
+
+      if Array.isEmpty sorted then
+          invalidArg (nameof xs) "The input sequence must not be empty."
+
+      let maxLen = sorted[0].CodePoints.Length
+
+      let errorPayload =
+          match message with
+          | Some msg -> Message msg
+          | None -> sorted |> Seq.map _.CodePoints |> expectedSeqOneOf
+
+      fun (reader: Reader<int, 'State, 'Input>) ->
+          let span = reader.PeekN maxLen
+
+          if span.IsEmpty then
+              fail EndOfInput reader
+          else
+              let mutable found = ValueNone
+              let mutable i = 0
+
+              while found.IsNone && i < sorted.Length do
+                  let candidate = sorted[i]
+
+                  if spanEqualsStringBy comparison candidate.Text candidate.CodePoints span then
+                      found <- ValueSome candidate
+
+                  i <- i + 1
+
+              match found with
+              | ValueSome candidate ->
+                  reader.SkipN candidate.CodePoints.Length
+                  preturn candidate.Result reader
+
+              | ValueNone ->
+                  fail errorPayload reader
+
+  let anyStringByReturn comparison xs =
+      anyStringByReturnImpl comparison xs None
+
+  let anyStringByReturnL comparison xs message =
+      anyStringByReturnImpl comparison xs (Some message)
+
+  let anyStringBy comparison xs =
+      xs |> Seq.map (fun s -> s, s) |> anyStringByReturn comparison
+
+  let anyStringByL comparison xs message =
+      xs |> Seq.map (fun s -> s, s) |> anyStringByReturnL comparison <| message
+
+  let anyString xs =
+      anyStringBy StringComparison.Ordinal xs
+
+  let anyStringL xs message =
+      anyStringByL StringComparison.Ordinal xs message
+
+  let anyStringReturn xs =
+      anyStringByReturn StringComparison.Ordinal xs
+
+  let anyStringReturnL xs message =
+      anyStringByReturnL StringComparison.Ordinal xs message
+
+  let anyStringCI xs =
+      anyStringBy StringComparison.OrdinalIgnoreCase xs
+
+  let anyStringCIL xs message =
+      anyStringByL StringComparison.OrdinalIgnoreCase xs message
+
+  let anyStringCIReturn xs =
+      anyStringByReturn StringComparison.OrdinalIgnoreCase xs
+
+  let anyStringCIReturnL xs message =
+      anyStringByReturnL StringComparison.OrdinalIgnoreCase xs message
+
+  // -----------------------------------------------------------------------------
+  // manyChars family
+  // -----------------------------------------------------------------------------
+
+  let manyChars
+      (p: Parser<int, int, 'State, 'Input>)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      let start = reader.Position
+
+      match p reader with
+      | Ok cp ->
+          let sb = StringBuilder()
+          append_code_point sb cp
+
+          let mutable keepGoing = true
+
+          while keepGoing do
+              let pos = reader.Position
+
+              match p reader with
+              | Ok cp ->
+                  if pos = reader.Position then
+                      raise (InfiniteLoopException pos)
+
+                  append_code_point sb cp
+
+              | Error _ ->
+                  reader.Position <- pos
+                  keepGoing <- false
+
+          preturn (sb.ToString()) reader
+
+      | Error _ ->
+          reader.Position <- start
+          preturn "" reader
+
+  let many1Chars
+      (p: Parser<int, int, 'State, 'Input>)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      match p reader with
+      | Ok cp ->
+          let sb = StringBuilder()
+          append_code_point sb cp
+
+          let mutable keepGoing = true
+
+          while keepGoing do
+              let pos = reader.Position
+
+              match p reader with
+              | Ok cp ->
+                  if pos = reader.Position then
+                      raise (InfiniteLoopException pos)
+
+                  append_code_point sb cp
+
+              | Error _ ->
+                  reader.Position <- pos
+                  keepGoing <- false
+
+          preturn (sb.ToString()) reader
+
+      | Error err ->
+          Error err
+
+  let many1Chars2
+      (p1: Parser<int, int, 'State, 'Input>)
+      (p: Parser<int, int, 'State, 'Input>)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      match p1 reader with
+      | Ok cp ->
+          let sb = StringBuilder()
+          append_code_point sb cp
+
+          let mutable keepGoing = true
+
+          while keepGoing do
+              let pos = reader.Position
+
+              match p reader with
+              | Ok cp ->
+                  if pos = reader.Position then
+                      raise (InfiniteLoopException pos)
+
+                  append_code_point sb cp
+
+              | Error _ ->
+                  reader.Position <- pos
+                  keepGoing <- false
+
+          preturn (sb.ToString()) reader
+
+      | Error err ->
+          Error err
+
+  let manyCharsTill
+      (p: Parser<int, int, 'State, 'Input>)
+      (pEnd: Parser<'End, int, 'State, 'Input>)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      let sb = StringBuilder()
+      let mutable endResult = ValueNone
+      let mutable error = ValueNone
+
+      while endResult.IsNone && error.IsNone do
+          match pEnd reader with
+          | Ok x ->
+              endResult <- ValueSome x
+
+          | Error _ ->
+              let pos = reader.Position
+
+              match p reader with
+              | Ok cp ->
+                  if pos = reader.Position then
+                      raise (InfiniteLoopException pos)
+
+                  append_code_point sb cp
+
+              | Error err ->
+                  error <- ValueSome err
+
+      match error, endResult with
+      | ValueSome err, _ ->
+          Error err
+
+      | _, ValueSome x ->
+          preturn (sb.ToString(), x) reader
+
+      | _ ->
+          fail EndOfInput reader
+
+  // SIMD-adjacent variant: preserve the scalar array instead of rebuilding text.
+  let manyCodePoints
+      (p: Parser<int, int, 'State, 'Input>)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      let start = reader.Position
+
+      match p reader with
+      | Ok cp ->
+          let xs = ResizeArray<int>()
+          xs.Add cp
+
+          let mutable keepGoing = true
+
+          while keepGoing do
+              let pos = reader.Position
+
+              match p reader with
+              | Ok cp ->
+                  if pos = reader.Position then
+                      raise (InfiniteLoopException pos)
+
+                  xs.Add cp
+
+              | Error _ ->
+                  reader.Position <- pos
+                  keepGoing <- false
+
+          preturn (xs.ToArray()) reader
+
+      | Error _ ->
+          reader.Position <- start
+          preturn Array.empty<int> reader
+
+  // -----------------------------------------------------------------------------
+  // Whitespace and newline
+  // -----------------------------------------------------------------------------
+
+  let spaces
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      let mutable keepGoing = true
+
+      while keepGoing do
+          match reader.Peek() with
+          | ValueSome cp when isSpaceCodePoint cp ->
+              reader.Skip()
+
+          | _ ->
+              keepGoing <- false
+
+      preturn () reader
+
+  let spaces1
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      match reader.Peek() with
+      | ValueSome cp when isSpaceCodePoint cp ->
+          reader.Skip()
+
+          let mutable keepGoing = true
+
+          while keepGoing do
+              match reader.Peek() with
+              | ValueSome cp when isSpaceCodePoint cp ->
+                  reader.Skip()
+
+              | _ ->
+                  keepGoing <- false
+
+          preturn () reader
+
+      | ValueSome _ ->
+          fail ErrorPayload.spaces1 reader
+
+      | ValueNone ->
+          fail EndOfInput reader
+
+  let newlineReturn
+      (result: 'Parsed)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      let span = reader.PeekN 2
+
+      if span.IsEmpty then
+          fail EndOfInput reader
+      else
+          match span[0] with
+          | cp when cp = int '\n' ->
+              reader.Skip()
+              preturn result reader
+
+          | cp when cp = int '\r' ->
+              if span.Length = 2 && span[1] = int '\n' then
+                  reader.SkipN 2
+              else
+                  reader.Skip()
+
+              preturn result reader
+
+          | _ ->
+              fail ErrorPayload.expectedNewline reader
+
+  let newline reader =
+      newlineReturn (int '\n') reader
+
+  let skipNewline reader =
+      newlineReturn () reader
+
+  // -----------------------------------------------------------------------------
+  // Integer parsers over ASCII numeric syntax
+  // -----------------------------------------------------------------------------
+
+  let private digitValue cp =
+      if cp >= int '0' && cp <= int '9' then
+          cp - int '0'
+      elif cp >= int 'a' && cp <= int 'f' then
+          cp - int 'a' + 10
+      elif cp >= int 'A' && cp <= int 'F' then
+          cp - int 'A' + 10
+      else
+          -1
+
+  let private parseIntegerCore
+      (allowSign: bool)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      let mutable sign = BigInteger.One
+
+      if allowSign then
+          match reader.Peek() with
+          | ValueSome cp when cp = int '-' ->
+              reader.Skip()
+              sign <- -BigInteger.One
+
+          | ValueSome cp when cp = int '+' ->
+              reader.Skip()
+
+          | _ ->
+              ()
+
+      if reader.AtEnd then
+          fail EndOfInput reader
+      else
+          let mutable radix = 10
+          let prefix = reader.PeekN 2
+
+          if prefix.Length = 2 && prefix[0] = int '0' then
+              match prefix[1] with
+              | cp when cp = int 'x' || cp = int 'X' ->
+                  radix <- 16
+                  reader.SkipN 2
+
+              | cp when cp = int 'o' || cp = int 'O' ->
+                  radix <- 8
+                  reader.SkipN 2
+
+              | cp when cp = int 'b' || cp = int 'B' ->
+                  radix <- 2
+                  reader.SkipN 2
+
+              | _ ->
+                  ()
+
+          let digitStart = reader.Position
+          let mutable value = BigInteger.Zero
+          let mutable keepGoing = true
+
+          while keepGoing do
+              match reader.Peek() with
+              | ValueSome cp ->
+                  let d = digitValue cp
+
+                  if d >= 0 && d < radix then
+                      value <- value * bigint radix + bigint d
+                      reader.Skip()
+                  else
+                      keepGoing <- false
+
+              | ValueNone ->
+                  keepGoing <- false
+
+          if reader.Position = digitStart then
+              fail ErrorPayload.intInvalid reader
+          else
+              preturn (sign * value) reader
+
+  let private pintBounded
+      (minValue: BigInteger)
+      (maxValue: BigInteger)
+      (convert: BigInteger -> 'T)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      match parseIntegerCore true reader with
+      | Ok value when value >= minValue && value <= maxValue ->
+          preturn (convert value) reader
+
+      | Ok _ ->
+          fail ErrorPayload.intOutOfRange reader
+
+      | Error err ->
+          Error err
+
+  let private puintBounded
+      (maxValue: BigInteger)
+      (convert: BigInteger -> 'T)
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      match parseIntegerCore false reader with
+      | Ok value when value >= BigInteger.Zero && value <= maxValue ->
+          preturn (convert value) reader
+
+      | Ok _ ->
+          fail ErrorPayload.intOutOfRange reader
+
+      | Error err ->
+          Error err
+
+  let pbigint reader =
+      parseIntegerCore true reader
+
+  let pint64 reader =
+      pintBounded (bigint Int64.MinValue) (bigint Int64.MaxValue) int64 reader
+
+  let pint32 reader =
+      pintBounded (bigint Int32.MinValue) (bigint Int32.MaxValue) int reader
+
+  let pint16 reader =
+      pintBounded (bigint Int16.MinValue) (bigint Int16.MaxValue) int16 reader
+
+  let pint8 reader =
+      pintBounded (bigint SByte.MinValue) (bigint SByte.MaxValue) int8 reader
+
+  let puint64 reader =
+      puintBounded (bigint UInt64.MaxValue) uint64 reader
+
+  let puint32 reader =
+      puintBounded (bigint UInt32.MaxValue) uint32 reader
+
+  let puint16 reader =
+      puintBounded (bigint UInt16.MaxValue) uint16 reader
+
+  let puint8 reader =
+      puintBounded (bigint Byte.MaxValue) uint8 reader
+
+  // -----------------------------------------------------------------------------
+  // Float parser
+  // -----------------------------------------------------------------------------
+  // This covers decimal floats and IEEE spellings: NaN, Inf, Infinity, with signs.
+  // It intentionally does not implement XParsec's hexadecimal float syntax yet.
+  // If exact parity with CharParsers.pfloat is required, port that routine directly.
+
+  let private appendAscii (sb: StringBuilder) cp =
+      sb.Append(char cp) |> ignore
+
+  let private readDigitsInto (sb: StringBuilder) (reader: Reader<int, 'State, 'Input>) =
+      let start = reader.Position
+      let mutable keepGoing = true
+
+      while keepGoing do
+          match reader.Peek() with
+          | ValueSome cp when isDigit cp ->
+              appendAscii sb cp
+              reader.Skip()
+
+          | _ ->
+              keepGoing <- false
+
+      reader.Position <> start
+
+  let pfloat
+      (reader: Reader<int, 'State, 'Input>)
+      =
+      let special =
+          [ "infinity", Double.PositiveInfinity
+            "+infinity", Double.PositiveInfinity
+            "-infinity", Double.NegativeInfinity
+            "inf", Double.PositiveInfinity
+            "+inf", Double.PositiveInfinity
+            "-inf", Double.NegativeInfinity
+            "nan", Double.NaN
+            "+nan", Double.NaN
+            "-nan", Double.NaN ]
+
+      match anyStringCIReturn special reader with
+      | Ok value ->
+          preturn value reader
+
+      | Error _ ->
+          let sb = StringBuilder()
+
+          match reader.Peek() with
+          | ValueSome cp when cp = int '+' || cp = int '-' ->
+              appendAscii sb cp
+              reader.Skip()
+
+          | _ ->
+              ()
+
+          let hasIntegralDigits = readDigitsInto sb reader
+
+          if not hasIntegralDigits then
+              fail ErrorPayload.floatInvalid reader
+          else
+              match reader.Peek() with
+              | ValueSome cp when cp = int '.' ->
+                  appendAscii sb cp
+                  reader.Skip()
+                  readDigitsInto sb reader |> ignore
+
+              | _ ->
+                  ()
+
+              match reader.Peek() with
+              | ValueSome cp when cp = int 'e' || cp = int 'E' ->
+                  appendAscii sb cp
+                  reader.Skip()
+
+                  match reader.Peek() with
+                  | ValueSome cp when cp = int '+' || cp = int '-' ->
+                      appendAscii sb cp
+                      reader.Skip()
+
+                  | _ ->
+                      ()
+
+                  let hasExponentDigits = readDigitsInto sb reader
+
+                  if not hasExponentDigits then
+                      fail ErrorPayload.floatInvalid reader
+                  else
+                      match Double.TryParse(sb.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture) with
+                      | true, value -> preturn value reader
+                      | false, _ -> fail ErrorPayload.floatInvalid reader
+
+              | _ ->
+                  match Double.TryParse(sb.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture) with
+                  | true, value -> preturn value reader
+                  | false, _ -> fail ErrorPayload.floatInvalid reader

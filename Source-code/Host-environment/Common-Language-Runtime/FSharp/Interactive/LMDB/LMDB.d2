@@ -1,0 +1,16 @@
+direction: right
+lexical_form.value.string -> lexical_form.value.byte_array: UTF8.GetBytes
+lexical_form.value.string <- lexical_form.value.byte_array: UTF8.GetString
+lexical_form.value.byte_array -> lexical_form.digest.byte_array: Blake3.Hasher.Hash
+lexical_form.digest.byte_array -> lexical_form.id.byte_array: Memory_Map.Digest_to_Form_ID
+lexical_form.id.byte_array -> lexical_form.value.byte_array: Memory_Map.Form_ID_to_Encoding
+
+lexical_form.id.byte_array -> term.value: Term Constructor
+term.value -> term.id.byte_array: Memory_Map.Term_to_Term_ID
+term.id.byte_array -> term.value: Memory_Map.Term_ID_to_Term
+lexical_form.id.byte_array -> term.id: Memory_Map.Form_ID_to_Term_IDs
+term.id -> statement: Statement Constructor
+term.id.byte_array -> statement: Memory_Map.Term_to_Statement_S
+term.id.byte_array -> statement: Memory_Map.Term_to_Statement_P
+term.id.byte_array -> statement: Memory_Map.Term_to_Statement_O
+term.id.byte_array -> statement: Memory_Map.Term_to_Statement_C

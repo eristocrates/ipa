@@ -1,0 +1,42 @@
+﻿namespace Fibo.LOAN.LoansSpecific.CardAccounts.Namespace
+module CardAccounts =
+    let _prefixID = Communication.Internet.Standard.Resource.Identifier.Internationalized.inhabitant "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/" (Some @"https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CardAccounts.rdf") (Some @"fibo.LOAN.LoansSpecific.CardAccounts") None
+    let AmericanExpressNetwork = {_prefixID with _localName = "AmericanExpressNetwork"}
+    let CardAccount = {_prefixID with _localName = "CardAccount"}
+    let CardAuthenticationValue = {_prefixID with _localName = "CardAuthenticationValue"}
+    let CardAuthenticationValue2 = {_prefixID with _localName = "CardAuthenticationValue2"}
+    let CardExpirationDate = {_prefixID with _localName = "CardExpirationDate"}
+    let CardIdentificationNumber = {_prefixID with _localName = "CardIdentificationNumber"}
+    let CardProduct = {_prefixID with _localName = "CardProduct"}
+    let CardSecurityCode = {_prefixID with _localName = "CardSecurityCode"}
+    let CardValidationCode = {_prefixID with _localName = "CardValidationCode"}
+    let CardValidationCode2 = {_prefixID with _localName = "CardValidationCode2"}
+    let CardVerificationCodeValue = {_prefixID with _localName = "CardVerificationCodeValue"}
+    let CardVerificationValue = {_prefixID with _localName = "CardVerificationValue"}
+    let CardVerificationValue2 = {_prefixID with _localName = "CardVerificationValue2"}
+    let Cardholder = {_prefixID with _localName = "Cardholder"}
+    let CommercialCreditCardAgreement = {_prefixID with _localName = "CommercialCreditCardAgreement"}
+    let ConsumerCreditCardAgreement = {_prefixID with _localName = "ConsumerCreditCardAgreement"}
+    let CreditCard = {_prefixID with _localName = "CreditCard"}
+    let CreditCardAccount = {_prefixID with _localName = "CreditCardAccount"}
+    let CreditCardAgreement = {_prefixID with _localName = "CreditCardAgreement"}
+    let CreditCardNetwork = {_prefixID with _localName = "CreditCardNetwork"}
+    let CreditCardProduct = {_prefixID with _localName = "CreditCardProduct"}
+    let DebitCard = {_prefixID with _localName = "DebitCard"}
+    let DebitCardAccount = {_prefixID with _localName = "DebitCardAccount"}
+    let DebitCardProduct = {_prefixID with _localName = "DebitCardProduct"}
+    let DiscoverNetwork = {_prefixID with _localName = "DiscoverNetwork"}
+    let IssuingFinancialInstitution = {_prefixID with _localName = "IssuingFinancialInstitution"}
+    let JCBNetwork = {_prefixID with _localName = "JCBNetwork"}
+    let MagneticStripeVerificationCodeValue = {_prefixID with _localName = "MagneticStripeVerificationCodeValue"}
+    let MastercardNetwork = {_prefixID with _localName = "MastercardNetwork"}
+    let PaymentCard = {_prefixID with _localName = "PaymentCard"}
+    let PaymentCardAgreement = {_prefixID with _localName = "PaymentCardAgreement"}
+    let PrimaryCardAccountNumber = {_prefixID with _localName = "PrimaryCardAccountNumber"}
+    let SmartCard = {_prefixID with _localName = "SmartCard"}
+    let ThreeDigitVerificationCodeValue = {_prefixID with _localName = "ThreeDigitVerificationCodeValue"}
+    let VisaNetwork = {_prefixID with _localName = "VisaNetwork"}
+    let hasCardVerificationCode = {_prefixID with _localName = "hasCardVerificationCode"}
+    let hasCreditCardNetwork = {_prefixID with _localName = "hasCreditCardNetwork"}
+    let hasPrimaryAccountNumber = {_prefixID with _localName = "hasPrimaryAccountNumber"}
+    let usesCurrency = {_prefixID with _localName = "usesCurrency"}
