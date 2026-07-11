@@ -1,3 +1,6 @@
 {
-  "FSharp.inlayHints.typeAnnotations": false
+  "FSharp.inlayHints.typeAnnotations": false,
+  "powerquery.client.additionalSymbolsDirectories": [
+    "c:/Repositories/eristocrates/ipa/.vscode/excel-pq-symbols"
+  ]
 }
