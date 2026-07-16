@@ -1,6 +1,7 @@
 FSharp.Core
 dotNetRDF.Core
 FSharp.Data
+FSharp.Configuration
 CommunityToolkit.HighPerformance
 FRange
 FsCheck

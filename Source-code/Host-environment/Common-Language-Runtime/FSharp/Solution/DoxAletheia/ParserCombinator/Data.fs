@@ -15,6 +15,8 @@ open LightningDB
 open Blake3
 open BitFaster.Caching
 open BitFaster.Caching.Lfu
+open FSharp.Configuration
+
 
 open XParsec
 open DoxAletheia
@@ -67,9 +69,12 @@ let cache_capacity = 250
 
 
 
+
+
 let GiB = 1024L * 1024L * 1024L
 let bytes_to_gib (bytes: int64) = float bytes / 1024.0 / 1024.0 / 1024.0
-let map_size = int64 4 * GiB
+// TODO figure out how to let this be configurable without recompiling
+let map_size = 5
 
 Directory.CreateDirectory(lmdb_directory_path)
 |> ignore

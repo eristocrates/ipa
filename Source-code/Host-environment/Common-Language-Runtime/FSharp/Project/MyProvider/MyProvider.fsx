@@ -54,11 +54,16 @@ open DiagramStudio
 #r "nuget: Rubjerg.Graphviz"
 open Rubjerg.Graphviz
 
-#r "nuget: dotNetRdf"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\MyProvider.Runtime.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\Ergonomic_Extensions.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\XParsec.dll"
 #r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\ParserCombinator.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\FRange.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\NeatIntervals.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\UUIDNext.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\Blake3.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\dotNetRdf.dll"
+#r @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Project\MyProvider\src\MyProvider.Runtime\bin\Release\net8.0\LightningDB.dll"
 
 open VDS.RDF
 open VDS.RDF.Parsing
@@ -91,6 +96,17 @@ open Namespace_Prefixes
 
 open FSharp.Data
 
+
+
+#load @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\Ergonomics\PowershellErgonomics.fsx"
+open PowershellErgonomics
+open XParsec
+open FRange
+open NeatIntervals
+open UUIDNext
+open Blake3
+
+(*
 module The_16th_Sanctuary = 
     module Rhythm_Games = 
         module rhythm_game_chat = 
@@ -103,8 +119,7 @@ module The_16th_Sanctuary =
             let json = JsonProvider<sample_file_path>.Load sample_file_path
 
 
-
-
+*)
 
 
 
@@ -138,7 +153,6 @@ type owl_time =
 
 type foaf =
     Rdf_Vocabulary<"http://xmlns.com/foaf/0.1/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\xmlns.com\foaf\0.1\slash\foaf.ttl">
-
 
 
 (*
@@ -521,7 +535,6 @@ type xml =
 
 
 
-
 /// https://www.w3.org/TR/xmlschema-1/#Instance_Document_Constructions
 type xsi =
     static member _namespace_name = "https://www.w3.org/2001/XMLSchema-instance#"
@@ -539,6 +552,8 @@ type xsi =
 
     /// https://www.w3.org/TR/xmlschema-1/#xsi_schemaLocation
     static member noNamespaceSchemaLocation = xsi._prefix "noNamespaceSchemaLocation"
+
+
 
 type xdt =
     static member _namespace_name = "https://www.w3.org/2003/05/xpath-datatypes#"
@@ -558,7 +573,6 @@ type xdt =
 
     /// The type xdt:yearMonthDuration is derived from xs:duration by restricting its lexical representation to contain only the year and month components. The value space of xdt:yearMonthDuration is the set of xs:integer month values. The year and month components of xdt:yearMonthDuration correspond to the Gregorian year and month components defined in section 5.5.3.2 of ISO 8601, respectively.
     static member yearMonthDuration = xdt._prefix "yearMonthDuration"
-
 
 
 
@@ -896,7 +910,6 @@ module Rdf_Literal =
 
 
 
-
 // TODO next transition to
 //  open FSharp.HashCollections
 
@@ -1044,6 +1057,8 @@ let prefixed_name (delimiter: string) (iri: Namespaced_IRI) =
 
 let curie (iri: Namespaced_IRI) = iri |> prefixed_name ":"
 
+
+
 (*
 
 
@@ -1086,6 +1101,8 @@ module Edge =
             | Rdf_Predicate.FromIri iri -> iri.rdf_string
 
 *)
+
+
 let map_prefixes (graph: IGraph) =
     global_prefix_declarations
     |> Array.Parallel.iter (fun (namespace_name, prefix_label) ->
@@ -1111,6 +1128,7 @@ let map_prefixes (graph: IGraph) =
 
         if term_is_namespaced then
             graph.NamespaceMap.AddNamespace(prefix_label, new Uri(namespace_name)))
+
 
 // TODO next clean up printer code, and vertexes
 
@@ -1212,8 +1230,13 @@ module NTriples =
     let parser = NTriplesParser()
 
     let parse (text: string) (graph: IGraph) =
-        use reader = new StringReader(text)
-        parser.Load(graph, reader)
+        try
+            use reader = new StringReader(text)
+            parser.Load(graph, reader)
+        with 
+        | err -> 
+            clip text
+            failwithf "The text in the clipboard failed to parse with error %s" err.Message
 
     let iriref_nt (iriref: IRIREF) = "<" + iriref.as_rendered_string + ">"
 
@@ -1292,7 +1315,6 @@ module NTriples =
 
 
 
-
 (*
     member this.nt_lines =
         this.triples
@@ -1366,7 +1388,6 @@ module D2 =
 
         let file_path = syntax.file_path parent_directory stem
         File.WriteAllText(file_path, file_text)
-
 
 
 
@@ -1629,7 +1650,6 @@ module ddot =
 
 
 
-
 module Dot =
 
     let syntax =
@@ -1760,8 +1780,6 @@ let (^@@) lexical_form (language_tag, region_subtag) =
 let (^^) lexical_form datatype =
     DatatypedLiteral(lexical_form, datatype)
 // TODO consider something for long string literals
-
-
 
 
 // unary starters
@@ -2065,7 +2083,6 @@ let inline (->-^)
 
 
 
-
 type Named_Graph =
     { name: Rdf_Subject option
       graph: Rdf_Graph }
@@ -2335,7 +2352,6 @@ let write_draft parent_directory stem draft =
 
 
 
-
 type dbug =
     static member _namespace_name = "https://eristocrates.dev/ontology/dbug/"
 
@@ -2358,7 +2374,6 @@ type dbug =
     static member archipelago = dbug._prefix "archipelago"
 
 
-
 type commonplace =
     static member _namespace_name = "https://eristocrates.dev/ontology/commonplace/"
 
@@ -2378,6 +2393,7 @@ type sanctuary =
     static member eristocrates = sanctuary._prefix "eristocrates"
     static member siamesederp = sanctuary._prefix "siamesederp"
 
+(*
 
 
 
@@ -2429,13 +2445,25 @@ roles_by_name["cndr_scnr"]
 |> write_draft __SOURCE_DIRECTORY__ "test_graph"
 
 
+*)
+
+
+ 
+let test_draft = !| [ dbug.Alice; dbug.Bob ] --- a --> foaf.Person
+let test_graph = { triples = test_draft.triples}
+let test_igraph = Rdf_Graph.to_igraph test_graph
+// TODO deal with colon missing from iris
+(*
+<https//eristocrates.dev/ontology/dbug/Bob> <http//www.w3.org/1999/02/22-rdf-syntax-ns#type> <http//xmlns.com/foaf/0.1/Person> .
+<https//eristocrates.dev/ontology/dbug/Alice> <http//www.w3.org/1999/02/22-rdf-syntax-ns#type> <http//xmlns.com/foaf/0.1/Person> .
+*)
+!| [ dbug.eris; dbug.Bob ] --- a --> foaf.Person
+|> write_draft __SOURCE_DIRECTORY__ "test_graph"
 
 (*
 
 
 
-!| [ dbug.Alice; dbug.Bob ] --- a --> foaf.Person
-|> write_draft __SOURCE_DIRECTORY__ "test_graph"
 
 // TODO  next separate lmdb all string encodings and type serializations
 

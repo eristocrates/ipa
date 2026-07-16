@@ -1831,7 +1831,7 @@ module Rfc_Types =
         member this.as_code_line = this.as_raw_string.as_code_line
 
 
-        member this.as_rendered_string = this.as_raw_string.ToLowerInvariant()
+        member this.as_rendered_string = this.as_raw_string.ToLowerInvariant() + ":"
 
         member this.fsi_printer =
             let unames = Code_Line.Unames this.as_code_line
@@ -2457,11 +2457,11 @@ module Rfc_Types =
                     choice [ many ireg_name.code_point_parser
                              |>> (fun immutable_code_line ->
                                  immutable_code_line.AsSpan().ToArray() |> String.from_code_line |> data_store.ensure_string_index_for_string
-                                 |> UniformRegisteredName)
+                                 |> InternationalizedRegisteredName)
                              many reg_name.code_point_parser
                              |>> (fun immutable_code_line ->
                                  immutable_code_line.AsSpan().ToArray() |> String.from_code_line |> data_store.ensure_string_index_for_string
-                                 |> InternationalizedRegisteredName) ]
+                                 |> UniformRegisteredName) ]
 
             }
 

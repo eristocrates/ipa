@@ -11,6 +11,7 @@
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Blake3" Version="3.0.1" />
+		<PackageReference Include="FSharp.Configuration" Version="3.0.0" />
 		<PackageReference Include="LightningDB" Version="0.22.0" />
 		<PackageReference Include="BitFaster.Caching" Version="2.6.0" />
 		<PackageReference Update="FSharp.Core" Version="8.0.403" />

@@ -12,6 +12,7 @@ open ProviderImplementation.ProvidedTypes
 open VDS.RDF
 open VDS.RDF.Parsing
 open FSharp.Data
+open FSharp.Configuration
 
 
 // Put any utility helpers here

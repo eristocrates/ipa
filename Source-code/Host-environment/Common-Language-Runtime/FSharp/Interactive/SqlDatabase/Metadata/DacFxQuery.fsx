@@ -2,6 +2,8 @@ open System
 open System.IO
 open System.Threading
 
+#r "nuget: FSharp.Collections.ParallelSeq"
+open FSharp.Collections.ParallelSeq
 #r "nuget: Microsoft.SqlServer.DacFx"
 
 open Microsoft.SqlServer.Dac
@@ -76,130 +78,137 @@ module Inspection =
 
 
 
-Extraction.extract ()
+// Extraction.extract ()
 let model = Model.from_path ()
 
 
 let TableValuedFunctions =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "TableValuedFunction")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "TableValuedFunction")
 
 let ScalarFunctions =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "ScalarFunction")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "ScalarFunction")
 
 let Indexes =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "Index")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Index")
 
 let CheckConstraints =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "CheckConstraint")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "CheckConstraint")
 
 let DatabaseOptionss =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "DatabaseOptions")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "DatabaseOptions")
 
 let DefaultConstraints =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "DefaultConstraint")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "DefaultConstraint")
 
 let DmlTriggers =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "DmlTrigger")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "DmlTrigger")
 
 let ExtendedPropertys =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "ExtendedProperty")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "ExtendedProperty")
 
 let ForeignKeyConstraints =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "ForeignKeyConstraint")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "ForeignKeyConstraint")
 
 let Logins =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "Login")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Login")
 
 let PrimaryKeyConstraints =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "PrimaryKeyConstraint")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "PrimaryKeyConstraint")
 
 let Procedures =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "Procedure")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Procedure")
 
 let Roles =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "Role")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Role")
 
 let RoleMemberships =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "RoleMembership")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "RoleMembership")
 
 let Schemas =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "Schema")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Schema")
 
 let Statisticss =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "Statistics")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Statistics")
 
 let Synonyms =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "Synonym")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Synonym")
 
 let Tables =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "Table")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "Table")
 
 let TableTypes =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "TableType")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "TableType")
 
 let UniqueConstraints =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "UniqueConstraint")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "UniqueConstraint")
 
 let Users =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "User")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "User")
 
 let Views =
-    model.GetObjects(DacQueryScopes.UserDefined)
-    |> Seq.toArray
-    |> Array.Parallel.filter (fun model_object -> model_object.ObjectType.Name = "View")
+    model.GetObjects(DacQueryScopes.All)
+    |> PSeq.filter (fun model_object -> model_object.ObjectType.Name = "View")
 
 
 
-let random_object = Tables |> Array.randomChoice
+module RESOURCES =
+    module EMPLOYEE =
+
+
+        let table =
+            Tables
+            |> Seq.find (fun Table -> Table.Name.Parts.Contains("EMPLOYEE"))
+
+        let columns = table.GetChildren()
+
+        let CONTACTKEY =
+            columns
+            |> Seq.find (fun column -> column.Name.Parts.Contains("CONTACTKEY"))
+
+
+RESOURCES.EMPLOYEE.columns
+|> PSeq.iter (fun column -> printfn "%A" column.Name)
+
+RESOURCES.EMPLOYEE.CONTACTKEY
+
+
 
 let random_child =
-    random_object.GetChildren(DacQueryScopes.UserDefined)
+    RESOURCES.EMPLOYEE.table.GetChildren(DacQueryScopes.All)
     |> Seq.randomChoice
 
-random_child.ObjectType.Properties
-|> Seq.iter (fun property -> printfn "%A %30s: %O" random_child.Name property.Name (random_child.GetProperty property))
+RESOURCES.EMPLOYEE.CONTACTKEY.ObjectType.Properties
+|> Seq.iter (fun property ->
+    printfn
+        "%A %30s: %O"
+        RESOURCES.EMPLOYEE.CONTACTKEY.Name
+        property.Name
+        (RESOURCES.EMPLOYEE.CONTACTKEY.GetProperty property))
+
+RESOURCES.EMPLOYEE.CONTACTKEY.ObjectType.Relationships
+|> Seq.iter (fun relationship ->
+    printfn "%A %30s: %A" RESOURCES.EMPLOYEE.CONTACTKEY.Name relationship.Name relationship.Properties)
 
 let random_property =
     random_child.ObjectType.Properties
@@ -208,13 +217,16 @@ let random_property =
 
 
 
-model.DisplayServices.GetElementName(random_object, ElementNameStyle.FullyQualifiedName)
-random_object.ObjectType.Name
-random_object.ObjectType.Properties
-random_object.ObjectType.Relationships
+
+
+
+model.DisplayServices.GetElementName(RESOURCES.EMPLOYEE.CONTACTKEY, ElementNameStyle.FullyQualifiedName)
+RESOURCES.EMPLOYEE.CONTACTKEY.ObjectType.Name
+RESOURCES.EMPLOYEE.CONTACTKEY.ObjectType.Properties
+RESOURCES.EMPLOYEE.CONTACTKEY.ObjectType.Relationships
 
 model.DisplayServices.GetDisplayName(
-    random_object.Name,
+    RESOURCES.EMPLOYEE.CONTACTKEY.Name,
     Microsoft.SqlServer.Dac.Model.EscapeStyle.EscapeIfNecessary,
     true
 )

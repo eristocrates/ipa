@@ -20,9 +20,10 @@ nuget TickSpec >= 2.0.5
 nuget Unquote >= 7.0.1
 nuget UUIDNext >= 4.2.4
 nuget XParsec >= 1.0.0
-nuget Blake3 3.0.1
-nuget LightningDB 0.22.0
-nuget BitFaster.Caching 2.6.0
+nuget Blake3 >= 3.0.1
+nuget LightningDB >= 0.22.0
+nuget BitFaster.Caching >= 2.6.0
+nuget FSharp.Configuration >= 3.0.0
 
 # These lines are used by Paket to get the latest version of the Type Provider SDK files
 github fsprojects/FSharp.TypeProviders.SDK src/ProvidedTypes.fsi

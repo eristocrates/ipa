@@ -18,10 +18,16 @@ open FSharp.Data.Sql.MsSql
 
 open System.Linq
 
+#r "nuget: FSharp.Collections.ParallelSeq"
+open FSharp.Collections.ParallelSeq
+
+
+
 type InforProdSql =
     SqlDataProvider<ConnectionString=Prod.connection_string, IndividualsAmount=10000, UseOptionTypes=Common.NullableColumnType.OPTION>
 
 let operations = InforProdSql.GetDataContext()
+
 
 
 
@@ -94,9 +100,8 @@ let banner_employees =
 
 let banner_employee_ids = 
     banner_employees
-    |> Array.Parallel.map (fun banner_employee -> banner_employee.ID)
-    |> Set.ofArray
-
+    |> PSeq.map (fun banner_employee -> banner_employee.ID)
+    |> Set.ofSeq
 
 
 
@@ -104,26 +109,69 @@ let banner_employee_ids =
 let infor_employee_ids = 
 
     query {
-        for infor_employee in operations.Resources.EmployeeviewActive do
+        for infor_employee in operations.Resources.Employee do
             
             select (infor_employee.Empid)
+            
+
+    }
+    |> Set.ofSeq
+
+let infor_active_employee_ids = 
+
+    query {
+        for infor_active_employee in operations.Resources.EmployeeviewActive do
+            
+            select (infor_active_employee.Empid)
             
             
             
 
     }
     |> Set.ofSeq
+
+let infor_inactive_employee_ids = infor_employee_ids - infor_active_employee_ids
+
 let missing_employee_ids = banner_employee_ids - infor_employee_ids
+
+
+
+
 missing_employee_ids.Count
+
+
+
+
 let missing_employees = 
     banner_employees
     |> Array.Parallel.filter (fun banner_employee -> missing_employee_ids.Contains(banner_employee.ID))
 // TODO next finish solar wind tickets
 // TODO investigate api for adding employees
 missing_employees.Length
-missing_employees |> Array.tryFind (fun employee -> employee.Last_Name.ToLowerInvariant() = "ervin")
 
-infor_employee_ids.Contains("90034339")
+
+
+
+
+banner_employees |> Array.tryFind (fun employee -> employee.Last_Name.ToLowerInvariant() = "mckinney")
+
+
+let target_employee = missing_employees |> Array.find (fun employee -> employee.Last_Name.ToLowerInvariant() = "ervin")
+target_employee.ID |> clip
+target_employee.Last_Name |> clip
+target_employee.First_Name |> clip
+target_employee.Email.Value |> clip
+target_employee.Supervisor.Value.ID |> clip
+target_employee.Hired_Date.ToShortDateString() |> clip
+sprintf "%.2f" target_employee.Rate.Value |> clip
+
+
+
+
+
+
+
+infor_active_employee_ids.Contains("90034339")
 let infor_employee_contact_keys = 
     query {
         for infor_employee in operations.Resources.Employee do

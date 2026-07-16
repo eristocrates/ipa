@@ -53,13 +53,14 @@ module MetaDataCollection =
 
 
 
+
 let sprintDataTableShape (data_tabletable: DataTable) =
     data_tabletable.Columns
     |> Seq.cast<DataColumn>
     |> Seq.map (fun data_column -> sprintf "%s : %O" data_column.ColumnName data_column.DataType)
     |> String.concat "\n"
 
-sprintDataTableShape MetaDataCollection.Databases
+sprintDataTableShape MetaDataCollection.ForeignKeys
 |> clip
 
 
