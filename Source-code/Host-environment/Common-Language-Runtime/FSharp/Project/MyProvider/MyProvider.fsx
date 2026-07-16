@@ -1,6 +1,6 @@
 // C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\RdfProvided.txt
 fsi.ShowDeclarationValues <- false
-
+# time on
 open System
 open System.IO
 open System.Text
@@ -84,6 +84,66 @@ open Namespace_Prefixes
 // TODO investigate deedle https://fslab.org/Deedle/tutorial.html
 // RDFa Core Initial Context
 // https://www.w3.org/2011/rdfa-context/rdfa-1.1
+
+
+
+#r "nuget: FSharp.Data"
+
+open FSharp.Data
+
+module The_16th_Sanctuary = 
+    module Rhythm_Games = 
+        module rhythm_game_chat = 
+
+
+            [<Literal>]
+            let sample_file_path =
+                @"D:\Surface\Personal\16thSanctuary\The 16th Sanctuary - Rhythm Games - rhythm-game-chat [879472415682490408].json"
+
+            let json = JsonProvider<sample_file_path>.Load sample_file_path
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+type rdf =
+    Rdf_Vocabulary<"http://www.w3.org/1999/02/22-rdf-syntax-ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\1999\02\22-rdf-syntax-ns\hash\rdf.ttl">
+
+type xsd =
+    Rdf_Vocabulary<"http://www.w3.org/2001/XMLSchema#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2001\XMLSchema\hash\xsd.ttl">
+    
+type rdfs =
+    Rdf_Vocabulary<"http://www.w3.org/2000/01/rdf-schema#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2000\01\rdf-schema\hash\rdfs.ttl">
+    
+type owl =
+    Rdf_Vocabulary<"http://www.w3.org/2002/07/owl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2002\07\owl\hash\owl.ttl">
+
+
+type owl_time =
+    Rdf_Vocabulary<"http://www.w3.org/2006/time#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2006\time\hash\time.ttl">
+
+
+type foaf =
+    Rdf_Vocabulary<"http://xmlns.com/foaf/0.1/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\xmlns.com\foaf\0.1\slash\foaf.ttl">
+
+
+
+(*
+
+
 type as_ =
     Rdf_Vocabulary<"https://www.w3.org/ns/activitystreams#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\www.w3.org\ns\activitystreams\hash\as.ttl">
 
@@ -120,8 +180,6 @@ type odrl =
 type org =
     Rdf_Vocabulary<"http://www.w3.org/ns/org#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\org\hash\org.ttl">
 
-type owl =
-    Rdf_Vocabulary<"http://www.w3.org/2002/07/owl#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2002\07\owl\hash\owl.ttl">
 
 type prov =
     Rdf_Vocabulary<"http://www.w3.org/ns/prov#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\prov\hash\prov.ttl">
@@ -129,14 +187,10 @@ type prov =
 type qb =
     Rdf_Vocabulary<"http://purl.org/linked-data/cube#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\linked-data\cube\hash\qb.ttl">
 
-type rdf =
-    Rdf_Vocabulary<"http://www.w3.org/1999/02/22-rdf-syntax-ns#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\1999\02\22-rdf-syntax-ns\hash\rdf.ttl">
 
 type rdfa =
     Rdf_Vocabulary<"http://www.w3.org/ns/rdfa#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\ns\rdfa\hash\rdfa.ttl">
 
-type rdfs =
-    Rdf_Vocabulary<"http://www.w3.org/2000/01/rdf-schema#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2000\01\rdf-schema\hash\rdfs.ttl">
 // TODO get rif 	http://www.w3.org/2007/rif#
 // unfortunately involves implementing mapping https://www.w3.org/TR/rif-in-rdf/
 type rr =
@@ -171,8 +225,6 @@ type xhv =
     Rdf_Vocabulary<"http://www.w3.org/1999/xhtml/vocab#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\1999\xhtml\vocab\hash\xhv.ttl">
 // TODO process full xhtml dtd https://www.w3.org/TR/xhtml1/xhtml1.zip
 
-type xsd =
-    Rdf_Vocabulary<"http://www.w3.org/2001/XMLSchema#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2001\XMLSchema\hash\xsd.ttl">
 
 
 // Some vocabularies are currently in development at W3C and they may become W3C Recommendations or Notes, i.e., may become part of the table above. It is therefore advisable to consider their prefixes reserved for now. These are:
@@ -205,8 +257,6 @@ type dcterms =
 type dce =
     Rdf_Vocabulary<"http://purl.org/dc/elements/1.1/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\dc\elements\1.1\slash\dce.ttl">
 
-type foaf =
-    Rdf_Vocabulary<"http://xmlns.com/foaf/0.1/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\xmlns.com\foaf\0.1\slash\foaf.ttl">
 
 type gr =
     Rdf_Vocabulary<"http://purl.org/goodrelations/v1#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\purl.org\goodrelations\v1\hash\gr.ttl">
@@ -392,8 +442,6 @@ type nrl =
 type linkml =
     Rdf_Vocabulary<"https://w3id.org/linkml/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-meta.owl.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-annotations.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-annotations.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-datasets.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-datasets.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-extensions.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-extensions.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-mappings.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-mappings.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-meta.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-meta.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-types.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-types.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-units.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-units.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-validation.model.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\w3id.org\linkml\slash\linkml-validation.ttl">
 
-type owl_time =
-    Rdf_Vocabulary<"http://www.w3.org/2006/time#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.w3.org\2006\time\hash\time.ttl">
 
 type ermrk =
     Rdf_Vocabulary<"http://www.essepuntato.it/2008/12/earmark#", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.essepuntato.it\2008\12\earmark\hash\ermrk-ghost.owl.ttl;C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\http\www.essepuntato.it\2008\12\earmark\hash\ermrk-shell.owl.ttl">
@@ -450,6 +498,7 @@ module fibo =
     type PaymentsAndSchedules =
         Rdf_Vocabulary<"https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/PaymentsAndSchedules/", @"C:\Repositories\eristocrates\ipa\Source-code\Host-environment\Common-Language-Runtime\FSharp\Interactive\DoxAletheia\Vocabulary\https\spec.edmcouncil.org\fibo\ontology\master\2026Q1\FND\ProductsAndServices\PaymentsAndSchedules.ttl">
 
+*)
 let a = rdf.``type``
 
 /// https://www.w3.org/XML/1998/namespace
@@ -2319,26 +2368,6 @@ type commonplace =
 
 
 
-
-let (NamespacedName test_iri) = a
-let parse_test = IRIREF.parse rdf._namespace_name
-parse_test.as_rendered_string
-test_iri.as_prefixed_name ":" global_prefix_map
-test_iri.namespace_iriref.as_rendered_string
-global_prefix_map["https://eristocrates.dev/ontology/dbug/"]
-
-!| [ dbug.Alice; dbug.Bob ] --- a --> foaf.Person
-|> write_draft __SOURCE_DIRECTORY__ "test_graph"
-
-// TODO  next separate lmdb all string encodings and type serializations
-
-// TODO look into generation of force directed graphs (vasturiano, ngraph etc)
-// TODO look into fable for js generation
-// TODO look into formalizing https://archipelago.gg/
-// TODO look into getting python ast ( maybe even from f# somehow?)
-
-
-
 type sanctuary =
     static member _namespace_name = "https://eristocrates.dev/ontology/sanctuary/"
 
@@ -2352,20 +2381,71 @@ type sanctuary =
 
 
 
+let discord_users = 
+    The_16th_Sanctuary.Rhythm_Games.rhythm_game_chat.json.Messages
+    |> Array.Parallel.map (fun Message -> 
+
+        sanctuary._prefix Message.Author.Name
+
+    )
+    |> Array.distinct
+    |> Array.sort
+    |> Array.toList
+
+discord_users.Length
+
+
+let current_nickname_by_name = 
+    The_16th_Sanctuary.Rhythm_Games.rhythm_game_chat.json.Messages
+    |> Array.Parallel.map (fun Message -> 
+
+        Message.Author.Name, Message.Author.Nickname
+
+    )
+    |> Array.distinct
+    |> Array.sort
+    |> Map.ofArray
+let roles_by_name = 
+    The_16th_Sanctuary.Rhythm_Games.rhythm_game_chat.json.Messages
+    |> Array.Parallel.map (fun Message -> 
+
+        Message.Author.Name, Message.Author.Roles |> Array.Parallel.map (fun Role -> Role.Name)
+
+    )
+    |> Array.distinct
+    |> Array.sort
+    |> Map.ofArray
+
+roles_by_name["cndr_scnr"]
+
+
+
+
+
+
+
+!|discord_users
+-~|> [ a ->- foaf.Person ]
+|> write_draft __SOURCE_DIRECTORY__ "test_graph"
+
+
+
 (*
 
 
 
-!>sanctuary.siamesederp
--~|> [ a ->- foaf.Person
-       pext.isInterestedIn
-       ->| [ schemas.Car; lib.VideoGame ] ]
+!| [ dbug.Alice; dbug.Bob ] --- a --> foaf.Person
 |> write_draft __SOURCE_DIRECTORY__ "test_graph"
+
+// TODO  next separate lmdb all string encodings and type serializations
+
+// TODO look into generation of force directed graphs (vasturiano, ngraph etc)
+// TODO look into fable for js generation
+// TODO look into formalizing https://archipelago.gg/
+// TODO look into getting python ast ( maybe even from f# somehow?)
 
 
 *)
-
-
 
 
 
